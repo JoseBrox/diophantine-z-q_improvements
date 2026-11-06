@@ -1,0 +1,97 @@
+{
+  "status": "Research and exact implementation completed for review; arithmetic inputs explicitly conditional",
+  "source_commit": "28e87b1b62af0effd954605af7f70b2699dd5672",
+  "source_manuscript_sha256": "38d458ba4178083766c5ae56a894da595fe27170c1ef07f6b49750fc5edf7c37",
+  "local_branch": "research/polynomial-optimization",
+  "user_priorities": [
+    "number of variables",
+    "degree",
+    "coefficient size"
+  ],
+  "paper": "research/optimization/diophantine_optimization.tex",
+  "verification": "research/phase2/verification/all-checks.json",
+  "preferred_constructions": [
+    {
+      "package": "finite_fibre/polynomial-43-conic",
+      "total_variables": 43,
+      "witnesses": 42,
+      "degree_upper_bound": "2^9566680",
+      "height_upper_bound": "2^(2^86098389)",
+      "form": "exact indexed polynomial; fixed elliptic exclusion product not expanded"
+    },
+    {
+      "package": "finite_fibre/polynomial-45-conic-semilocal",
+      "total_variables": 45,
+      "witnesses": 44,
+      "degree_upper_bound": "2^243",
+      "height_upper_bound": "2^(2^246)",
+      "form": "materialized coefficient DAG and exact outer indexed polynomial"
+    },
+    {
+      "package": "finite_fibre/polynomial-558",
+      "total_variables": 558,
+      "witnesses": 557,
+      "degree_upper_bound": "2^3122",
+      "height_upper_bound": "2^(2^3127)",
+      "form": "implemented exact indexed original-source polynomial"
+    },
+    {
+      "package": "quartic/quartic-best",
+      "total_variables": 1367,
+      "witnesses": 1366,
+      "degree": 4,
+      "terms": 29419,
+      "residuals": 1322,
+      "form": "complete coefficient table over fixed integer K=3^(2^28)"
+    },
+    {
+      "package": "quartic/quartic-small-coefficients",
+      "total_variables": 1391,
+      "witnesses": 1390,
+      "degree": 4,
+      "height_upper_bound_strict": "2^1020",
+      "terms": 29489,
+      "residuals": 1346,
+      "form": "complete expanded ordinary integer coefficient table"
+    }
+  ],
+  "unconditional_lower_bounds": {
+    "any_number_field": {
+      "total_degree_at_least": 4,
+      "witnesses_at_least": 2
+    },
+    "sum_of_squares_of_quadratics": {
+      "total_variables_at_least": 5
+    },
+    "globally_nonnegative_three_variable_definition_over_Q": {
+      "degree_at_least": 8
+    },
+    "two_witnesses": "joint witness degree at least 3, at every input degree, including finite disjunction"
+  },
+  "conditional_mrdp_for_42_witnesses": {
+    "ce_Q_subset_witnesses": 463,
+    "rational_solvability_unknowns": 380
+  },
+  "arithmetic_dependencies": [
+    "558 and older source-preserving outputs inherit the pinned source arithmetic assertion.",
+    "43/45 and new quartics use the explicit source cyclic-group, pole, formal-logarithm, height and Lucas results, plus Sun arXiv:2610.20691v2 Theorem 4.1.",
+    "Source restricted pole converse and complete explicit five-contact height theorem have not received full independent audits here.",
+    "The cited prime-pattern theorem was checked against its primary source but not reproved in full.",
+    "Finite algebraic checks and small computations do not certify these external arithmetic inputs."
+  ],
+  "unexpanded_objects": [
+    "large finite-algebra multiplication matrices",
+    "outer indexed products",
+    "43-variable fixed elliptic exclusion product"
+  ],
+  "number_fields": "The released equation accepts every Q(i) input. No counterexample to field-dependent definability of every O_K in K was established; the general question remains unsettled here.",
+  "next_review_tasks": [
+    "Independent arithmetic audit of the restricted pole converse, explicit height bound and prime-pattern input.",
+    "Review shared-point completeness, scalar normalization, finite-algebra exceptional cases and quartic quotient domains.",
+    "Typeset the standalone TeX and review the proposed additions before any commit.",
+    "Seek fewer retained elliptic/pole coordinates; a cheaper size certificate; further quadratic-preserving eliminations."
+  ],
+  "global_optimality_claimed": false,
+  "commits_made": false,
+  "pushes_or_pull_requests_made": false
+}

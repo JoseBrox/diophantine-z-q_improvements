@@ -1,0 +1,126 @@
+% Section module: one-variable encoding of finite geometric fibers.
+\section{One witness for a constructible finite-fiber projection}
+\label{sec:one-finite-variable}
+
+A constructible set is a finite union of locally closed algebraic sets.
+The projection has finite geometric fibers if every fiber over an
+algebraic closure has only finitely many points. Finite rational fibers
+alone do not suffice for the argument. The construction below needs only
+one extra coordinate, including the conditions that denominators be
+nonzero; no useful degree or coefficient-height bound is claimed.
+
+\begin{theorem}\label{thm:finite-fibre-one-variable}
+Let $X\subseteq\mathbb A^{d+m}_{\mathbb Q}$ be constructible over
+$\mathbb Q$, and suppose the coordinate projection
+$\pi:X\to\mathbb A^d_{\mathbb Q}$ has finite geometric fibers.
+There is an effectively constructible polynomial
+$P\in\mathbb Z[\mathbf x,U]$ such that, for every $\mathbf a\in\mathbb Q^d$,
+\[
+ \mathbf a\in\pi(X(\mathbb Q))
+ \quad\Longleftrightarrow\quad
+ \exists U\in\mathbb Q:\ P(\mathbf a,U)=0.
+\]
+\end{theorem}
+\begin{proof}
+We give the construction including its exceptional loci. Decompose $X$
+into finitely many locally closed affine pieces; represent an inequation
+$h\ne0$ by the coordinate relation $hv=1$ when forming a coordinate ring.
+The added coordinate is uniquely determined, so geometric fibers stay
+finite. Decompose the image closure into irreducible pieces and restrict
+accordingly. On one piece let $R$ be the coordinate ring of the irreducible
+base closure $B$, let $L=\operatorname{Frac}(R)$, and let $A$ be the reduced
+coordinate ring of the affine source. Its generic fiber algebra
+$A_L$ is finite-dimensional, reduced, and separable over $L$; it is a
+finite product of finite separable field extensions.
+
+The primitive element theorem for a finite separable algebra gives
+$A_L\simeq L[T]/(h)$ with $h$ monic. Clearing the denominators of a
+primitive element, of expressions for the source generators in that
+primitive element, and of their finitely many relations gives a nonzero
+$g\in R$ for which
+\[
+ A_g\simeq R_g[T]/(h),\qquad h\in R_g[T]\text{ monic}.
+\]
+For precision, the map is surjective after clearing the generator
+expressions; its kernel vanishes over $L$ and is therefore zero because
+$R_g[T]/(h)$ is free over the domain $R_g$. Any intermediate relation
+which vanishes only over $L$ is made zero by a further localization.
+Thus this is an actual isomorphism on an open base set, not just a
+bijection on generic points. Consequently a rational point of $B\cap D(g)$
+has a rational lift exactly when the specialized monic $h$ has a rational
+root. The residual part lies over a proper closed subset of $B$, so
+induction on the dimension of the image closure gives finitely many such
+charts. Each chart comes with polynomial equations $E_i(\mathbf x)=0$
+for its base closure and one or more polynomial inequations; multiply the
+latter together to obtain $G(\mathbf x)\ne0$. Choose polynomial
+representatives in the ambient base space for all elements of $R$.
+
+It remains to express each chart with one quantified variable. Write its
+monic equation, after choosing a common coefficient denominator, as
+\[
+ h(T)=T^n+\sum_{j=1}^n\frac{N_j(\mathbf x)}{D(\mathbf x)}T^{n-j}.
+\]
+Add $D\ne0$ to the recorded chart conditions. A rational root of $h$
+may be zero; to cover this exactly, use the two fixed alternatives
+$h(T)$ and $h(T-1)$. If $r$ is a rational root of $h$, then the two
+polynomials have roots $r$ and $r+1$, at least one of which is nonzero.
+Conversely a rational root of either polynomial gives a rational root of
+$h$. The shifted polynomial is still monic and has the same permissible
+common denominator $D$.
+
+For either alternative, with its coefficient numerators again denoted
+$N_j$, set
+\[
+ \Psi(\mathbf x,U)=1+\sum_{j=1}^n
+ N_j(\mathbf x)D(\mathbf x)^{2j-1}G(\mathbf x)^jU^j.
+\]
+At $DG=0$ this polynomial is identically $1$. At $DG\ne0$, put
+$L_0=D^2G$. Then, for $U\ne0$,
+\[
+ \Psi(\mathbf x,U)=(L_0U)^n h(1/(L_0U)),
+\]
+where $h$ now denotes the selected alternative. Also
+$\Psi(\mathbf x,0)=1$. Hence a rational zero of $\Psi$ exists exactly
+when all inequations hold and that alternative has a nonzero rational
+root. This construction cannot acquire spurious solutions at a vanished
+denominator, because its value there is exactly one.
+
+The polynomial
+\[
+ Q(\mathbf x,U)=\Psi(\mathbf x,U)^2+\sum_iE_i(\mathbf x)^2
+\]
+therefore describes that chart and alternative. Multiply $Q$ over the
+finite list of charts and the two alternatives, always reusing the same
+variable $U$, and clear numerical coefficient denominators. This gives
+$P$. A product is zero if and only if some factor is zero, and over
+$\mathbb Q$ each displayed sum of squares is zero if and only if all of
+its summands vanish. The empty image is represented by $P=1$.
+All the steps are effective operations in polynomial rings over
+$\mathbb Q$, including ideal decomposition and localization, followed by
+finite-dimensional algebra over the resulting function fields. The
+induction terminates because the dimension of every exceptional base
+strictly decreases. This effectivity assertion does not mean that these
+computations have been executed for the source system.
+\end{proof}
+
+\begin{corollary}
+A finite-fiber presentation retaining $d$ rational coordinates, one of
+which is the designated input, yields a polynomial in at most $d+1$
+total variables, with at most $d$ existential witnesses and the same
+rational input projection. In particular, the presentation with $d=557$
+proved below gives at most $558$ total variables. Its identification
+with $\mathbb Z$ retains the arithmetic hypothesis of the source.
+\end{corollary}
+
+The elementary reciprocal transformation in this proof agrees with
+\cite[Section 10.6, equation (10.8)]{Sun2026Rational86}; the chart argument
+above extends it from the finite algebras explicitly treated there to all
+constructible sets with finite geometric fibers. This citation supports
+the algebraic device only. The bounded-variable undecidability theorem
+in that recent preprint and its analytic arithmetic inputs are not used.
+Its convention is that a monic degree-$n$ polynomial is written
+$T^n+\sum_{j=1}^n(N_j/D)T^{n-j}$: the reciprocal polynomial has exponent
+$U^j$ and denominator-clearing factor $D^{2j-1}$, not $D^{j-1}$.
+The two shifts are essential if zero could be the only rational root.
+All mathematical claims used here are proved above; no result about
+the arithmetic of that preprint is needed.

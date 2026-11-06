@@ -1,0 +1,178 @@
+\section{The compiled polynomials with forty-one and forty-three coordinates}
+\label{sec:p3-compiled-polynomials}
+
+We apply the guarded finite-algebra theorem to the direct
+Lucas-polynomial source of Section~\ref{sec:direct-integer-relation}.
+All formal generators, monic relations, coefficient conversions,
+denominator guards, and finite index ranges are supplied in the
+corresponding polynomial specification.
+
+\begin{theorem}\label{thm:p3-polynomial41}
+Under the stated source arithmetic inputs and Sun's simultaneous
+prime-pattern theorem, the supplied polynomial $P_{41}$ defines
+$\mathbb Z$ in $\mathbb Q$ using forty-one total coordinates,
+including the input. It has forty existential witnesses and satisfies
+\[
+        \deg P_{41}\le 2^{9566673},
+        \qquad H(P_{41})\le 2^{\,2^{86098382}}.
+\]
+The semilocal-anchor alternative $P_{43}^{\mathrm{loc}}$ uses
+forty-three total coordinates, forty-two existential witnesses, and
+satisfies
+\[
+        \deg P_{43}^{\mathrm{loc}}\le 2^{236},
+        \qquad H(P_{43}^{\mathrm{loc}})\le 2^{\,2^{240}}.
+\]
+Both are explicit indexed integer polynomials. These are upper bounds
+for degree and height, not exact expansion statistics.
+\end{theorem}
+\begin{proof}
+The source has forty retained rational coordinates and nineteen
+formal algebra generators, nine of degree four and ten of degree
+two. Its maximum finite rank is $2^{28}$. The semilocal alternative
+adds two retained coordinates and one quadratic generator, giving
+maximum rank $2^{29}$. Their rational input projections are
+$\mathbb Z$ by Proposition~\ref{prop:direct-Lucas-preservation}.
+
+The source-to-integer conversion is the same exact procedure proved
+in Section~\ref{sec:compiled-shared-polynomials}. For every rational
+square equation $q^2=N/D$, its denominator is guarded and the
+substitution $Z=Dq$ gives $Z^2=ND$. Subsequent powers-of-two
+clearings preserve the triangular monic presentation. Every
+quadratic generator is split into its zero case and nonzero case,
+with the appropriate closed equation or derivative guard. The nine
+point quartics retain their derivative guards. Thus the required
+geometric simplicity holds at every guarded point, including
+exceptional parameter specializations.
+
+Theorem~\ref{thm:explicit-guarded-finite-algebra} eliminates these
+formal generators with one additional coordinate. It gives the
+stated totals and preserves the rational projection of each source.
+The emitted specifications have respectively 6018 and 6039 integer
+coefficient-DAG nodes. The independent checker verifies the source
+hash, all affine and rational-square changes, guard coverage, monicity,
+triangularity, every finite index range, and the recursive degree and
+coefficient majorants. The bounds are exactly those displayed above.
+The fixed elliptic exclusion product is treated by the canonical
+clearing and height estimate already proved for that product.
+\end{proof}
+
+The packages are
+\nolinkurl{research/phase3/finite_fibre/polynomial-41/} and
+\nolinkurl{research/phase3/finite_fibre/polynomial-43-semilocal/}.
+Each contains its complete indexed specification, construction
+report, and passing independent verification receipt. The large
+multiplication matrices and outer products are not expanded.
+The semilocal variant has a materialized coefficient DAG; the
+forty-one-coordinate variant additionally contains the explicitly
+indexed elliptic exclusion product.
+
+The same producer also emits the two versions with input shift
+$C=2402$ from Proposition~\ref{p3:integer-shift}. Their retained
+counts, maximum ranks, and displayed degree and height bounds
+are the same. They have 6019 and 6040 coefficient-DAG nodes,
+respectively, and separate passing receipts. The additional
+coefficient node is a fixed integer, not a quantified coordinate.
+These variants remove the scalar-contact obstruction over fields
+with a real embedding; they do not resolve the other arithmetic
+obstructions over extensions.
+
+\section{Quartics obtained from the direct Lucas test}
+\label{sec:p3-quartics}
+
+The direct test also improves the degree-four construction.
+For this purpose we retain the scalar block with its preparation
+coordinate, because its quadratic evaluation is less expensive
+than the normalized scalar source used for finite-algebra
+compression. We retain the proved comparison order $52$,
+scalar order $32$, and fixed size constant
+$\kappa=3^{2^{28}}$.
+
+Replace the three proxy comparisons and the exact Lucas equation
+by the one field-valued test
+\[
+ F(L_2,L_3,L_4),\qquad
+ F(U,V,W)=V^2-U(U-2)VW+(U-2)^2W^2-1,
+\]
+of order $52$. Keep $L_1-\beta$ of order $16$ and all four
+two-anchor cross comparisons. The direct-polynomial congruence
+lemma applies with $k=52$ just as with $k=64$.
+The precision-$52$ height proof uses the same integer residual
+$\Delta$ and its bound $|\Delta|<5B^4$, so its threshold and
+the chosen anchor are unchanged. The scalar-order-$32$ proof
+is unaffected. Completeness uses the same fixed-point
+neighborhoods: a polynomial in the original logarithm ratios
+remains bounded there, introduces no new denominator, and
+has the required prime-power precision.
+
+The quadratic compiler evaluates the new field test by computing
+\[
+ A=U(U-2),\qquad B=VW,\qquad C=(U-2)W,
+ \qquad F=V^2-AB+C^2-1.
+\]
+Each field multiplication uses its two rational component equations
+as before. The coordinate detectors now have ten tests of order
+one, two of order sixteen, and four of order fifty-two.
+Their symmetric-product coefficient lists are shared across all
+nine coordinate detectors. This removes more arithmetic
+coordinates than merely deleting the three proxies would do.
+All reciprocal-domain lemmas, Boolean scalar choices, and
+quadratic-preserving substitutions from the preceding quartic
+construction are retained.
+
+\begin{theorem}\label{thm:p3-quartic1315}
+Under the arithmetic inputs stated for the shared construction,
+the supplied polynomial $P_{1315}$ defines $\mathbb Z$ in
+$\mathbb Q$, has 1315 total variables and degree exactly four.
+It is the sum of squares of 1272 primitive quadratic residuals
+and has 28,991 nonzero encoded entries in its complete table over
+$\mathbb Z[\kappa]$, with the specified fixed integer
+$\kappa=3^{2^{28}}$. After collecting powers of this constant,
+there are 28,987 distinct monomials in the quantified coordinates.
+
+The alternative $P_{1339}$ has 1339 total variables, degree
+exactly four, 1296 quadratic residuals, and 29,061 expanded
+ordinary integer terms. Its primitive coefficient height is
+less than $2^{1020}$.
+\end{theorem}
+\begin{proof}
+The preceding argument proves the arithmetic source replacement
+at precision $52$. The exact quadratic compilation and the
+domain equivalences were proved in Section~\ref{sec:new-quartic}.
+For the present source the independent checker verifies 1285
+arithmetic gates, eleven row additions, and sixty coordinate
+eliminations. It then independently squares and convolves every
+residual and compares the complete resulting coefficient table.
+The active coordinate count is 1315, the number of primitive
+residuals is 1272, and the number of nonzero table entries is
+28,991. The encoding separates different powers of $\kappa$
+in a coefficient. Collecting these powers merges four pairs of
+entries: the constant coefficient is positive, of the form
+$c_0+1024\kappa^2$, and three further coefficients are
+$1-192\kappa\ne0$. Thus there are 28,987 monomials in the
+actual coordinates, with no cancellation after substituting the
+specified integer. A nonzero degree-four coefficient occurs, so the degree
+is exactly four. Over $\mathbb Q$ a sum of squares vanishes
+exactly when all its residuals vanish, giving the asserted
+input projection.
+
+For the ordinary integer alternative, retain the same twenty-four
+successive squaring coordinates computing $\kappa$ from $3^{16}$.
+The count becomes 1339, and the checker verifies 1309 arithmetic
+gates with the same eleven row additions and sixty eliminations.
+Its 1296 primitive residuals give exactly 29,061 nonzero integer
+terms. Their largest coefficient has bit length at most 1020,
+and their content is one. This proves the degree and height
+claims without leaving any coefficient expansion implicit.
+\end{proof}
+
+The two tables are in
+\nolinkurl{research/phase3/quartic/quartic-direct/} and
+\nolinkurl{research/phase3/quartic/quartic-direct-small-coefficients/}.
+Their producer is \nolinkurl{build_direct_quartic.py}.
+The independently written checker
+\nolinkurl{research/phase2/quartic/verify_shared_quartic.py}
+is reused without modification and does not import this producer.
+These algebraic checks do not certify the external arithmetic
+lemmas. The number-field section separately examines both
+literal quartics and faithful combinations of their residual systems.

@@ -1,0 +1,41 @@
+{
+  "status": "PASS",
+  "scope": "Seven deliberate mutations of actual extra events were rejected by the independent checker; this is not an arithmetic proof.",
+  "checks": [
+    {
+      "mutation": "zero denominator",
+      "status": "REJECTED",
+      "reason": "Event 1468: denominator is not a nonzero rational constant"
+    },
+    {
+      "mutation": "eliminate distinguished input",
+      "status": "REJECTED",
+      "reason": "Event 1468: input elimination is forbidden"
+    },
+    {
+      "mutation": "omit an affected row",
+      "status": "REJECTED",
+      "reason": "Event 1468: affected rows do not list every occurrence"
+    },
+    {
+      "mutation": "omit an affected-row patch",
+      "status": "REJECTED",
+      "reason": "Event 1468: incomplete or extraneous patches"
+    },
+    {
+      "mutation": "alter solved numerator",
+      "status": "REJECTED",
+      "reason": "Event 1468 pivot equation: coefficients are not proportional"
+    },
+    {
+      "mutation": "alter substituted coefficient",
+      "status": "REJECTED",
+      "reason": "Event 1468 row 116: coefficients are not proportional"
+    },
+    {
+      "mutation": "singular constant row operation",
+      "status": "REJECTED",
+      "reason": "Event 1486: row operation is not invertible over Q"
+    }
+  ]
+}

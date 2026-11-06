@@ -1,0 +1,359 @@
+% Fresh phase-three supplement; phase-two artifacts are not modified.
+\section{Combining equations over number fields by division norms}
+\label{sec:division-norm-compiler-phase3}
+
+This section concerns the faithful encoding of polynomial systems.
+It does not assert that extending the arithmetic source to a number
+field defines that field's ring of integers.  The distinction is
+essential: a correct equation-combining operation preserves whatever
+solutions the extended source has, including any arithmetic defects.
+
+\subsection{A rational norm form adapted to a specified number field}
+
+The reduced norm of a central division algebra of degree $d$ is a
+homogeneous form of degree $d$ in $d^2$ coordinates, vanishing only
+at the origin.  We give an explicit cyclic construction and a local
+proof of division, so that the effectivity and the coefficients are
+specified.  Standard background on cyclic algebras is available in
+\cite[Chapter IV]{MilneCFT2020}; the prime-selection step uses
+Chebotarev's theorem, for example \cite[Section 2.4]{KedlayaCFT}.
+
+\begin{theorem}\label{thm:division-norm-conjunction-phase3}
+Let $K$ be any specified number field and let $r\ge1$.
+Put $d=\lceil\sqrt r\rceil$.  There is an effectively specified
+homogeneous polynomial
+\[
+                 N\in\mathbb Z[Z_1,\ldots,Z_{d^2}]
+\]
+of degree $d$ such that, for $z_j\in K$,
+\[
+                  N(z_1,\ldots,z_{d^2})=0
+                  \quad\Longleftrightarrow\quad z_1=\cdots=z_{d^2}=0.
+\]
+Consequently a system of $r$ equations over $K$, of degrees at
+most $D$, can be combined into one equation of degree at most
+$dD$, with no additional variables.  The combining form can have
+rational integer coefficients even though its choice depends on $K$.
+\end{theorem}
+\begin{proof}
+For $r=1$ use the equation itself.  Assume $d\ge2$.  Let $K'$ be
+the normal closure of $K/\mathbb Q$.  Choose a rational prime
+$q\equiv1\pmod d$ unramified in $K'$, and let $L$ be the unique
+degree-$d$ subfield of $\mathbb Q(\zeta_q)$.  Such a prime exists
+by Dirichlet's theorem.  Every nontrivial subfield of $L$ is
+ramified at $q$, whereas $K'$ is unramified there.  Thus
+$L\cap K'=\mathbb Q$.  Both extensions are Galois, so their
+compositum has the product Galois group.
+
+Chebotarev's theorem supplies a rational prime $p\ne q$ which
+splits completely in $K'$ and whose Frobenius generates
+$\operatorname{Gal}(L/\mathbb Q)$.  Hence $p$ is inert in $L$.
+Fix a generator $\sigma$ of this cyclic Galois group and form
+\[
+ A=(L/\mathbb Q,\sigma,p)
+   =\bigoplus_{j=0}^{d-1}L u^j,
+ \qquad u^d=p,\qquad ua=\sigma(a)u.
+\]
+These relations give the usual associative cyclic algebra.
+
+At a place of $K$ above $p$, the completion is $\mathbb Q_p$,
+and the corresponding completion of $L$ is the unramified
+degree-$d$ extension $L_p/\mathbb Q_p$.  On the local cyclic
+algebra define
+\[
+ w\left(\sum_{j=0}^{d-1}a_j u^j\right)
+       =\min_{a_j\ne0}\left(v_{L_p}(a_j)+\frac jd\right).
+\]
+The minimum is attained at exactly one index, since the
+fractional parts $j/d$ are distinct.  Multiplying the unique
+lowest terms shows that $w(ab)=w(a)+w(b)$: the automorphism
+preserves the valuation, and reducing $u^d$ to $p$ preserves
+the weight.  No other product term has this lowest weight.
+The local algebra therefore has no zero divisors and is a
+division algebra, because it is finite dimensional over a field.
+It follows that $A\otimes_{\mathbb Q}K$ is also a division
+algebra: a zero divisor would remain one after extension to
+that completion.  The same argument proves that $A$ is division.
+
+Here is a concrete basis of $L$ consisting of algebraic integers
+for writing its norm form.
+Let $g$ generate $(\mathbb Z/q\mathbb Z)^*$, let
+$H=\langle g^d\rangle$, and put
+\[
+ \eta_i=\sum_{h\in H}\zeta_q^{g^ih},\qquad 0\le i<d.
+\]
+The periods are linearly independent over $\mathbb Q$.
+Indeed a relation among them gives a polynomial in $\zeta_q$
+of degree at most $q-1$ and constant coefficient zero.
+It must be a multiple of $1+T+\cdots+T^{q-1}$, whose constant
+coefficient is one, and therefore must be zero.  Since the
+periods are fixed by $H$, they form a basis of $L$.  Their sum
+is $-1$, so $1,\eta_1,\ldots,\eta_{d-1}$ is also a basis.
+Choose
+$\sigma$ so that $\sigma(\eta_i)=\eta_{i+1}$, with indices
+modulo $d$.
+
+Write $a_j=Z_{j,0}+\sum_{i=1}^{d-1}\eta_i Z_{j,i}$.  Let
+$D(a)=\operatorname{diag}(a,\sigma(a),\ldots,\sigma^{d-1}(a))$
+and define the matrix $U$ by
+\[
+ Ue_j=e_{j-1}\ (1\le j<d),\qquad Ue_0=p e_{d-1}.
+\]
+Then $U^d=pI$ and $UD(a)=D(\sigma(a))U$.  The norm form is
+\begin{equation}\label{eq:explicit-cyclic-norm-phase3}
+ N(Z)=\det\left(\sum_{j=0}^{d-1}D(a_j)U^j\right).
+\end{equation}
+Applying $\sigma$ to this matrix conjugates it by $U$, so
+its determinant has rational coefficients.  The periods are
+algebraic integers and $p$ is an integer, so those rational
+coefficients are integers.  The form is homogeneous of degree
+$d$.  A nonzero coordinate vector over $K$ represents a
+nonzero, hence invertible, element of $A\otimes K$; its matrix
+is invertible and its norm is nonzero.  This proves anisotropy.
+
+The construction is effective.  One can search for $q$, compute
+its cyclotomic periods, and search primes $p$ testing complete
+splitting in $K'$ and the indicated Frobenius class in $L$.
+The cited existence theorems ensure termination.  Finally
+substitute the $r$ residual polynomials for the first $r$
+coordinates of $N$, and zeros for all remaining coordinates.
+Anisotropy proves equivalence, and homogeneity gives the degree
+bound without introducing any quantified coordinate.
+\end{proof}
+
+\begin{remark}[Coefficient bound]
+In every complex embedding, $|\eta_i|\le(q-1)/d$.
+Every entry of the matrix in
+\eqref{eq:explicit-cyclic-norm-phase3} is a linear form whose
+coefficient absolute sum is at most $(q-1)p$.  Expanding the
+determinant and applying the triangle inequality therefore gives
+\[
+                       \|N\|_1\le d!\bigl((q-1)p\bigr)^d.
+\]
+This includes all determinant permutations and all monomials.
+The form is primitive: assigning $Z_{0,0}=1$ and all other
+coordinates zero represents the identity and gives $N=1$.
+If all input residuals have
+coefficient norm at most $M$, their combined polynomial has
+coefficient norm at most $\|N\|_1M^d$.
+\end{remark}
+
+\subsection{The preferred degree-36 form and the two new quadratic systems}
+
+The preferred phase-three systems have respectively 1315 and 1339
+total coordinates, with 1272 and 1296 quadratic residuals.
+Both residual counts are at most $36^2=1296$.  For these systems
+take the completely explicit choices
+\[
+                    d=36,\qquad q=37,\qquad p=2.
+\]
+The element 2 generates $(\mathbb Z/37\mathbb Z)^*$: indeed
+$2^{18}\equiv-1$ and $2^{12}\equiv26\not\equiv1\pmod{37}$,
+which exclude the maximal proper divisors of 36.
+Thus $L=\mathbb Q(\zeta_{37})$ has degree 36 and two is inert.
+The preceding local valuation proof shows that
+\[
+                    A=(L/\mathbb Q,\sigma,2),
+             \qquad \sigma(\zeta_{37})=\zeta_{37}^2,
+\]
+is division.  Formula~\eqref{eq:explicit-cyclic-norm-phase3}
+therefore gives an integer norm form of degree 36 in 1296
+coordinates.  Here the period basis is simply
+$1,\zeta_{37}^{2},\zeta_{37}^{2^2},\ldots,
+\zeta_{37}^{2^{35}}$, with exponents reduced modulo 37.
+
+\begin{lemma}\label{lem:division-coprime-base-change-phase3}
+Let $A$ be a central division algebra of degree $d$ over a
+field $k$.  If $K/k$ is finite and
+$\gcd(d,[K:k])=1$, then $A\otimes_k K$ is division.
+\end{lemma}
+\begin{proof}
+Write $A\otimes K\simeq M_s(B)$, where $B$ is central
+division over $K$ of degree $d/s$.  A simple left module
+has $K$-dimension $s(d/s)^2=d^2/s$.  By restricting scalars
+it is a vector space over the division ring $A$, so its
+$k$-dimension is a multiple of $d^2$.  Hence
+$s\mid[K:k]$.  Since also $s\mid d$, coprimality gives
+$s=1$.
+\end{proof}
+
+This proves that the fixed degree-36 form remains anisotropic
+whenever $\gcd(36,[K:\mathbb Q])=1$.  The assertion must not
+be justified by choosing one completion of coprime local degree:
+that inference is false for composite $d$, whereas the module
+argument applies directly.
+
+The same form also remains anisotropic over $\mathbb Q(i)$.
+Here is a local proof, independent of the coprime-degree lemma.
+At 37 put $\pi=\zeta_{37}-1$.  The residue field of
+$L_{37}$ is $\mathbb F_{37}$ and
+$\sigma(\pi)/\pi\equiv2\pmod\pi$.
+The algebra $\mathcal O_{L_{37}}[u]$, $u^{36}=2$, has residue
+algebra
+\[
+                    \mathbb F_{37}[u]/(u^{36}-2),
+\]
+which is a field.  Indeed a root $\alpha$ satisfies
+$\alpha^{37}=2\alpha$, so its Frobenius orbit has length
+exactly 36 because 2 has multiplicative order 36.
+For $x=\sum a_j u^j$ define $w(x)=\min_j v_\pi(a_j)$.
+After factoring out its lowest power of $\pi$, a nonzero
+element has nonzero reduction in this residue field.
+Commuting $\pi^s$ through powers of $u$ changes reduction
+by the automorphism $u\mapsto2^su$; consequently the lowest
+reductions of a product are still a product of nonzero
+elements.  Thus $w(xy)=w(x)+w(y)$ and the local algebra
+is division.  Finally 37 splits in $\mathbb Q(i)$ because
+$6^2\equiv-1\pmod{37}$, so a completion after this base
+change is still $\mathbb Q_{37}$.  Division at that completion
+proves division over $\mathbb Q(i)$.
+
+Combining the two preferred quadratic systems gives polynomials
+with respectively 1315 and 1339 total coordinates and
+\emph{degree exactly 72}.  The exact residual inventories put
+the input monomial $X_0^2$ with coefficient one in the first
+residual; no other residual contains $X_0$.  The first norm
+coordinate is the coefficient of the algebra identity, so the
+coefficient of $X_0^{72}$ in the resulting polynomial is one.
+In particular the top degree cannot cancel, and each resulting
+integer polynomial is primitive.
+
+The coefficient estimate becomes
+\[
+                      \|N\|_1\le36!\,72^{36}<2^{361}.
+\]
+The exact residual tables have coefficient norm at most
+$2^{511}$.  The 1339-coordinate version, with ordinary
+integer coefficients already materialized in those residuals,
+therefore has coefficient height at most
+\[
+                              2^{18757}.
+\]
+For the 1315-coordinate version substitute the fixed integer
+$\kappa=3^{2^{28}}$ into residuals affine in $\kappa$.
+Using $\log_2\kappa<429496730$ gives coefficient height at
+most
+\[
+                              2^{15461901037}.
+\]
+The artifact names
+\texttt{norm\_repair\_1315\_degree72\_20261106\_v1.json.gz}
+and
+\texttt{norm\_repair\_1339\_degree72\_20261106\_v1.json.gz}
+specify the complete residual lists, cyclotomic basis,
+matrix entries, and determinant.  They are exact finite
+polynomial specifications, not expanded coefficient tables
+of degree 72.  The symbol $\zeta_{37}$ is eliminated by
+reduction modulo its cyclotomic polynomial and extraction
+of the constant coefficient; it is not a quantified variable.
+
+For an arbitrary specified number field the fixed form may
+cease to be anisotropic.  Theorem~\ref{thm:division-norm-conjunction-phase3}
+provides a field-dependent choice of primes $q,p$ with the
+same degree 36 and rational integer coefficients.  Thus
+degree 72 and the coordinate counts persist, while the
+coefficient bound becomes the explicit prime-dependent bound
+in that theorem.
+
+\subsection{The preceding degree-37 form and its comparison bounds}
+
+The choices
+\[
+                         d=37,\qquad q=149,\qquad p=5
+\]
+are explicit.  The degree-37 subfield of $\mathbb Q(\zeta_{149})$
+is unramified at five, and five is inert there: the Galois group
+has prime order 37 and $5^4\equiv29\not\equiv1\pmod{149}$.
+The local valuation argument above proves division.
+
+This same rational norm form remains anisotropic over every
+number field $K$ for which $37\nmid[K:\mathbb Q]$.  To see
+this directly, use
+$\sum_{v\mid5}e_vf_v=[K:\mathbb Q]$ to choose a place with
+$37\nmid e_vf_v$.  The unramified degree-37 extension remains
+a field after this local base change.  Normalizing the valuation
+of $K_v$ gives $v(5)=e_v$, and the weights
+\[
+                       v(a_j)+\frac{e_vj}{37}
+\]
+again have distinct fractional parts.  The same lowest-term
+argument proves that the local cyclic algebra is division.
+For fields with degree divisible by 37, the field-dependent
+prime choices in the theorem still supply degree 37 and rational
+integer coefficients.
+
+For comparison, there are 1322 primitive quadratic residuals in the
+1367-coordinate system and 1346 in the 1391-coordinate system.
+Both numbers are at most $37^2=1369$.  Thus the norm construction
+combines either system into one polynomial of degree exactly 74,
+with the same respective total coordinate counts.  Exactness of
+the degree follows without expansion: the highest homogeneous
+quadratic parts of the residuals are not all zero.  At some
+rational specialization this tuple is nonzero, and anisotropy
+shows that its norm is nonzero.  It is exactly the homogeneous
+degree-74 part of the combined polynomial.
+
+For the explicit $(37,149,5)$ choice,
+\[
+               \|N\|_1\le37!\,740^{37}<2^{496}.
+\]
+The exact residual tables give maximum coefficient norm at most
+$2^{511}$.  Hence the ordinary integer version with 1391 total
+coordinates has coefficient height at most
+\[
+                              2^{19403}.
+\]
+For the 1367-coordinate version the residuals are affine in
+the fixed integer $\kappa=3^{2^{28}}$.  Since
+$\log_2\kappa<(8/5)2^{28}<429496730$, a valid integer
+coefficient-height bound is
+\[
+                              2^{15891398413}.
+\]
+These bounds concern the norm-compiled polynomials.  Their
+degree-74 determinant specifications are separate from the
+frozen degree-four sum-of-squares tables.
+
+\subsection{The finite-algebra compiler over every number field}
+
+All algebraic steps in the guarded finite-algebra theorem work
+over an arbitrary characteristic-zero field: the finite
+separating-parameter bound, simple rational eigenline,
+trace-adjugate identities, and reciprocal guard are unchanged.
+Only the final conjunction by a sum of squares requires an
+ordering.  Over a number field with a real embedding it remains
+valid as written.  Over an arbitrary number field replace each
+branch's sum of squares by the norm form of
+Theorem~\ref{thm:division-norm-conjunction-phase3}.
+
+If $n$ bounds the algebra rank and $c$ bounds the number of
+closed residuals, a branch contains at most $n+c$ residuals:
+one reciprocal residual, at most $n-1$ high-coefficient
+conditions, and at most $c$ reversed traces.  Use one norm form
+of degree
+\[
+                         d=\lceil\sqrt{n+c}\rceil
+\]
+and pad shorter lists with zero.  This introduces no new
+coordinate.  Relative to the recorded sum-of-squares degree
+bound, multiply each branch bound by $d/2$ before multiplying
+over its finite indices.  This operation preserves the rational
+projection over the specified number field of the guarded
+finite source itself.
+
+The exact recorded integer bounds give the following convenient
+rounded estimates.  All counts include the input.
+\[
+\begin{array}{c|c|r|c}
+\text{source}&\text{total coordinates}&d&\text{degree bound over }K\\\hline
+\text{phase-three finite anchor}&41&16385&2^{9566686}\\
+\text{phase-three semilocal}&43&23171&2^{250}\\
+\text{phase-two finite anchor}&43&23171&2^{9566693}\\
+\text{phase-two semilocal}&45&32769&2^{257}
+\end{array}
+\]
+The combining form has integer coefficients chosen using $K$;
+the number of coordinates and the displayed degree bound do not
+depend on $[K:\mathbb Q]$.  These are field-adapted encodings
+of the corresponding source systems.  They do not establish
+that those systems define $\mathcal O_K$.

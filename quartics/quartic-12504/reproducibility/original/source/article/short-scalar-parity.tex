@@ -1,0 +1,93 @@
+\subsection{A finite correction for the scalar-height parity test}
+\label{subsec:finite-parity-correction}
+
+We use the following two properties of the seven-witness predicate
+$\Psi$. First, $\Psi(b)$ excludes negative odd valuations of $b$
+outside $\{2,3,17\}$. Second, $\Psi(b)$ holds whenever $b>0$ has
+square reduced denominator and is a square in each of
+$\mathbb Q_2,\mathbb Q_3,\mathbb Q_{17}$. The second assertion is
+the supplied parity completeness argument with its two multipliers
+fixed to $17$ and $1$: $17b$ is a square at $2$ and has the unit
+nonsquare class at $3$; weak approximation makes
+$V=17b(17b-U^2)$ positive and locally square at $2,3,17$; the
+valuation argument at the other squarefree-support primes verifies
+the mutual local-square conditions. The same simultaneous-twist
+realization theorem then supplies the two points. Primality of $b$
+is not required. The reversible rescaling defining $\Psi$
+preserves this conclusion.
+
+The classes of $2,3,5,7,11,13,17$ form a basis of
+\[
+ \mathbb Q_2^\times/\mathbb Q_2^{\times2}\times
+ \mathbb Q_3^\times/\mathbb Q_3^{\times2}\times
+ \mathbb Q_{17}^\times/\mathbb Q_{17}^{\times2}.
+\]
+Indeed, use valuation parity followed by the unit coordinates
+$[-1],[5]$ at $2$, and valuation parity followed by the nonsquare
+unit coordinate at $3$ and $17$. The seven column vectors, in the
+displayed order of primes, form the matrix
+\[
+ \begin{pmatrix}
+ 1&0&0&0&0&0&0\\
+ 0&1&0&1&1&0&0\\
+ 0&1&1&0&1&1&0\\
+ 0&1&0&0&0&0&0\\
+ 1&0&1&0&1&0&1\\
+ 0&0&0&0&0&0&1\\
+ 0&1&1&1&1&0&0
+ \end{pmatrix},
+\]
+which is invertible over $\mathbb F_2$.
+
+Introduce eight Boolean witnesses
+$e_2,e_3,e_5,e_7,e_{11},e_{13},e_{17},\eta$ by the equations
+$e^2-e=0$, and introduce $A,B$ by
+\begin{align*}
+ A&=(1+e_2)(1+2e_3)(1+12e_{13})(1+16e_{17}),\\
+ B&=(1+4e_5)(1+6e_7)(1+10e_{11})(1-2\eta).
+\end{align*}
+Thus $AB=(-1)^\eta\prod_p p^{e_p}$, where the product runs over
+the seven basis primes. If $W_2=W^2$ is the existing square of
+the scalar-height norm root, replace its parity argument by
+\[
+                         b=ABrW_2
+\]
+and impose $\Psi(b)$. All new residuals have degree at most four.
+The correction uses eight Boolean witnesses and two product
+witnesses; together with $\Psi$, it uses seventeen witnesses
+in place of fifty-seven. The argument witness and $W_2$ were
+already present.
+
+For soundness, every possible $AB$ is nonzero and supported on
+primes at most $17$. Hence, for $q\notin S_*$,
+$v_q(b)=v_q(r)+2v_q(W)$, and the preceding norm-tree argument
+gives exactly the same local orders.
+
+For completeness, $r$ is a nonzero integer. Put
+$\delta=\operatorname{sign}(r)$ and choose a squarefree product
+$\mu$ of the seven basis primes whose local class is that of
+$\delta r$ at $2,3,17$. Since every square class has order at
+most two, $\delta\mu r$ is positive and locally square at these
+three places. Choose the Boolean witnesses so that $AB=\delta\mu$.
+This choice precedes the auxiliary points $J_0,S$.
+
+At each $q\mid r$, choose these points so that every normalized
+leaf $X_i/r^{L_i}$ is $q$-integral. At each $q\mid\mu$ with
+$q\nmid r$, require instead $v_q(X_i)>0$ for every test.
+Both requirements follow by taking $J_0$ sufficiently deep in
+the formal groups at all places over these finitely many primes,
+and then taking $S$ to be a sufficiently divisible multiple,
+still satisfying the anchor. In particular the coefficients of
+$f(J_0)$, $f(S)$, and $z(S)/z(J_0)$ attain the required orders.
+Sufficiently deep formal neighborhoods also apply at inert,
+ramified, and bad-reduction primes.
+
+If $q\mid r$, each norm node reduces to the square of its left
+child modulo $q$. If $q\mid\mu$ and $q\nmid r$, all nonconstant
+leaves vanish modulo $q$. In either case the constant leaf $1$,
+which follows only left branches, shows that $W$ is a $q$-unit.
+Here $|r|>1$, so $W\ne0$. At a prime dividing $\mu r$ the
+valuation of $b=\delta\mu rW^2$ is nonnegative; at any other
+prime it is even. Thus $b$ has square reduced denominator.
+It is positive and locally square at $2,3,17$, so the stated
+completeness property supplies $\Psi(b)$.

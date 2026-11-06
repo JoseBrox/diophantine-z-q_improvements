@@ -1,0 +1,425 @@
+% Includable research supplement. Theorem environments and bibliography are
+% provided by paper.tex. All variable counts include the input unless stated.
+
+\section{Stronger obstructions for small polynomial presentations}
+\label{p2lb:scope}
+
+The unrestricted bounds established in the first report are two existential
+witnesses and total degree four.  The arguments below give stronger bounds
+for important classes of presentations.  They do not prove that every
+definition needs more than two witnesses.  In particular, the general case
+of a sign-changing quartic in three total variables remains unresolved here.
+
+For a number field $K$, write $\mathcal O_K$ for its ring of integers.
+If $V\subseteq\mathbb A^n_K$ is an algebraic set with first coordinate $T$,
+put
+\[
+ \pi(V(K))=\{t\in K:\text{some }(t,y_1,\ldots,y_{n-1})\in V(K)\}.
+\]
+Thus $n$ counts all coordinates, and $n-1$ counts existential witnesses.
+All assertions in this supplement are independent of the proposed
+arithmetic proof in the repository.
+
+\subsection{Curves and rational parametrizations}
+
+We use the following consequences of Siegel's theorem and the topology
+of a number field.  They apply to open subsets, which is important when
+using birational maps.
+
+\begin{lemma}\label{p2lb:curves}
+Let $V$ be an algebraic set over $K$ of dimension at most one, and let
+$f:V\to\mathbb A^1_K$ be a regular function.  If
+$f(V(K))\subseteq\mathcal O_K$, then $f(V(K))$ is finite.
+The same conclusion holds for a rational function restricted to any
+Zariski-open subset on which it is defined.
+\end{lemma}
+\begin{proof}
+There are finitely many irreducible components.  A zero-dimensional
+component contributes finitely many points, and a component on which
+$f$ is constant contributes at most one value.  On an irreducible curve
+which is not geometrically irreducible, every $K$-point lies on the
+intersection of two distinct conjugate geometric components.  There
+are only finitely many such points.
+
+For a geometrically integral curve, normalization and projective
+completion discard or add only finitely many points.  Let $C$ be the
+resulting smooth projective curve and let $f\in K(C)$ be nonconstant.
+If $C$ has positive genus, Siegel's theorem in its rational-function
+form gives only finitely many $P\in C(K)$ for which $f(P)$ is defined
+and integral.  One obtains this form from the usual theorem by removing
+the poles of $f$ and enlarging a finite set of primes so that the
+coordinate functions of that affine curve are integral over
+$\mathcal O_{K,S}[f]$; see \cite[Chapter~8]{lbLang1983}.
+
+If $C$ has genus zero and has a $K$-point, it is $K$-isomorphic to
+$\mathbb P^1$.  A nonconstant rational function on a nonempty open
+subset of $\mathbb P^1(K)$ cannot take only integral values.  Indeed,
+embed $K$ diagonally in
+$K_\infty=\mathbb R^{r_1}\times\mathbb C^{r_2}$.  The image of $K$
+is dense, while that of $\mathcal O_K$ is a discrete lattice.  Continuity
+would force the rational function to be constant on a small connected
+open ball, and hence identically constant.  If $C(K)$ is empty, only
+the previously discarded singular points remain.  These cases prove
+the assertion.
+\end{proof}
+
+\begin{lemma}\label{p2lb:unirational}
+Let $X/K$ be an integral unirational variety, let $U\subseteq X$ be
+nonempty and open, and let $f\in K(X)$ be nonconstant and defined on $U$.
+Then $f(U(K))$ is not contained in $\mathcal O_K$.
+\end{lemma}
+\begin{proof}
+Compose $f$ with a dominant rational map from projective space to $X$.
+After restricting to an affine open set, the composition is a
+nonconstant rational function in finitely many variables.  The density
+and discreteness argument in the preceding proof, now on
+$K_\infty^m$, gives a contradiction if all its values are integral.
+\end{proof}
+
+\begin{lemma}\label{p2lb:ruled}
+Let $C/K$ be a geometrically integral curve, let $m\geq1$, and let
+$X$ be birational over $K$ to $C\times\mathbb P^m$.
+Suppose $U\subseteq X$ is nonempty and open and $U(K)$ is Zariski
+dense.  A nonconstant $f\in K(X)$, defined on $U$, cannot satisfy
+$f(U(K))\subseteq\mathcal O_K$.
+\end{lemma}
+\begin{proof}
+Restrict the birational correspondence to isomorphic nonempty opens
+and replace $C$ by its smooth projective model.  We may work on an
+open subset of $C\times\mathbb A^m$.  If $f$ is nonconstant in the
+affine coordinates over $K(C)$, then outside finitely many points of
+$C$ its restriction to a fiber is nonconstant.  Outside another finite
+set that fiber meets the chosen open subset in a nonempty open subset
+of $\mathbb A^m$.  Density of $U(K)$ supplies a rational base point
+outside these exceptional sets.  The restriction to this fiber violates
+Lemma~\ref{p2lb:unirational}.
+
+Otherwise $f$ belongs to $K(C)$ and is nonconstant there.  For every
+$c\in C(K)$ outside a finite set, the open fiber has a $K$-point,
+so $f(c)$ is integral.  Lemma~\ref{p2lb:curves} gives only finitely
+many such values, hence only finitely many such $c$, because a
+nonconstant map of projective curves has finite fibers.  This
+contradicts the density of $U(K)$ in $C\times\mathbb A^m$.
+\end{proof}
+
+\begin{remark}
+The preceding lemma concerns a variety birational over $K$ to a
+product with projective space.  Geometric ruledness after extending
+scalars is not sufficient for its proof.  In particular, it must not
+be applied without further argument to an arbitrary conic bundle
+over $\mathbb P^1_K$ which has no rational section.
+\end{remark}
+
+\begin{lemma}\label{p2lb:dense-component}
+Let $V/K$ be an algebraic set and $f:V\to\mathbb A^1_K$ a regular
+function.  If $f(V(K))$ is infinite and contained in $\mathcal O_K$,
+the Zariski closure of $V(K)$ has a geometrically integral component
+$X$ of dimension at least two such that $X(K)$ is Zariski dense
+and $f|_X$ is nonconstant.
+\end{lemma}
+\begin{proof}
+The closure has finitely many irreducible components, each with dense
+$K$-points on the open set obtained by deleting the other components.
+If such a component were geometrically reducible, its rational points
+would lie in the proper closed intersections of its conjugate
+geometric components, a contradiction.  Components on which $f$ is
+constant contribute finitely many values, and components of dimension
+at most one contribute finitely many by Lemma~\ref{p2lb:curves}.
+Thus at least one component has the required properties.
+\end{proof}
+
+\subsection{Two quadrics in projective four-space}
+
+The next argument uses only the elementary degree bound
+$\deg X\geq1+\operatorname{codim}(X)$ for a nondegenerate projective
+integral variety, B\'ezout's theorem, and the following theorem of
+Koll\'ar: a geometrically integral cubic hypersurface of dimension at
+least two over a perfect field is unirational if it has a rational
+point and is not a cone \cite[Theorem~2]{lbKollar2002}.
+The elementary degree bound is recalled in
+\cite[Introduction]{p2lbEGHP2006}.  We give the projection argument
+explicitly in order to include reducible and nonreduced intersections.
+
+\begin{proposition}\label{p2lb:two-quadrics-surface}
+Let $Q_1,Q_2\in K[X_0,\ldots,X_4]$ be coprime homogeneous
+quadratics, and let $X$ be a geometrically integral surface component
+of $V(Q_1,Q_2)$.  Suppose $X(K)$ is Zariski dense.
+Then $X$ is either unirational over $K$ or birational over $K$ to
+$C\times\mathbb P^1$ for a geometrically integral curve $C/K$.
+\end{proposition}
+\begin{proof}
+The complete intersection $W=V(Q_1,Q_2)\subseteq\mathbb P^4$
+has degree four.  More precisely, if $m_X$ is its multiplicity along
+$X$, then $m_X\deg X\leq4$.  This follows either from B\'ezout's
+theorem with multiplicities or from the complete-intersection Hilbert
+series $(1-t^2)^2/(1-t)^5$ and additivity of degree.
+
+If $\deg X\leq2$, the elementary degree bound shows that its linear
+span has dimension at most three.  It is therefore a plane or an
+integral quadric surface in its span.  Its linear span is defined over
+$K$, and density supplies a smooth $K$-point in the quadric case.
+Projection from that point makes the quadric rational; a plane is
+rational as well.
+
+Suppose $\deg X\geq3$.  The degree inequality forces $m_X=1$.
+Since the characteristic is zero, a nonempty open subset of $X$ is
+smooth in the complete intersection $W$.  Choose a $K$-point there,
+using density, and change coordinates so that it is
+$p=(1:0:0:0:0)$.  The quadratics have the form
+\[
+ Q_1=X_0L_1+q_1,\qquad Q_2=X_0L_2+q_2,
+\]
+where $L_i$ are linear and $q_i$ are quadratic in $X_1,\ldots,X_4$.
+Smoothness of $W$ at $p$ means that $L_1,L_2$ are independent.
+The cubic
+\[
+ H=L_1q_2-L_2q_1
+\]
+is not identically zero.  Otherwise coprimality of $L_1,L_2$ gives
+$q_1=L_1L_3$ and $q_2=L_2L_3$ for a linear form $L_3$, contradicting
+coprimality of $Q_1,Q_2$.
+
+The surface $X$ cannot be contained in the plane $L_1=L_2=0$,
+because its degree is at least three.  Interchange the two quadratics
+if necessary so that $L_1$ does not vanish identically on $X$.
+Projection from $p$ then has the rational inverse
+\[
+ X_0=-q_1/L_1
+\]
+on the corresponding open set.  Thus $X$ is birational to a
+geometrically integral surface component $Y$ of the cubic
+$V(H)\subseteq\mathbb P^3$.  The rational points of $Y$ are dense.
+
+If $Y$ is a plane or a quadric, it is rational as above.  If it is
+a cubic which is not a cone, Koll\'ar's theorem makes it unirational.
+Finally, a geometrically integral cubic surface which is a cone has
+a single vertex point defined over $K$.  Indeed the vertex directions
+form the kernel of a linear map over $K$ given by the directional
+derivatives of its cubic equation; more than one independent vertex
+direction would leave a binary cubic, which is geometrically reducible.
+The complement of the vertex is birational over $K$ to the product
+of its plane cubic base with $\mathbb P^1$.  This proves the result.
+\end{proof}
+
+\begin{theorem}\label{p2lb:quadratic-system-four}
+Let $q_1,\ldots,q_s\in K[T,Y_1,\ldots,Y_{n-1}]$ have total
+degree at most two, where $n\leq4$.  If the rational projection
+\[
+ S=\{t\in K:\exists\mathbf y\in K^{n-1},\quad
+                   q_1(t,\mathbf y)=\cdots=q_s(t,\mathbf y)=0\}
+\]
+is contained in $\mathcal O_K$, then $S$ is finite.
+\end{theorem}
+\begin{proof}
+Adding unused coordinates reduces the assertion to $n=4$.
+Zero residuals can be removed; if all residuals vanish identically,
+then $S=K$, contrary to the hypothesis.  A nonzero constant residual
+gives the empty set.  Let $V$ be their common zero set.
+
+Suppose $S$ is infinite, and choose $X\subseteq V$ as in
+Lemma~\ref{p2lb:dense-component}.  Any common polynomial factor
+$g$ of the residuals has degree at most two.  The entire hypersurface
+$g=0$ lies in $V$, and its input projection is therefore contained
+in $\mathcal O_K$.  The quadratic obstruction proved in the first
+report says this projection has at most two elements.  Consequently
+$X$ is not contained in $g=0$.  Dividing the residuals by their common
+greatest divisor does not remove $X$ and leaves quadratics with
+greatest common divisor one.
+
+If their $K$-linear span contains a nonzero affine linear polynomial,
+restrict to its affine hyperplane, isomorphic to $\mathbb A^3_K$.
+Not all restricted residuals vanish identically, since that would
+give the original quadratics a common linear factor.  The resulting
+surface $X$ is a hypersurface component of a nonzero quadratic in
+three variables, hence is a plane or a quadric.  Density gives a
+rational parametrization, contradicting Lemma~\ref{p2lb:unirational}.
+
+Otherwise choose two coprime quadratics in the linear span of the
+residuals.  To see that this is possible, first choose a nonzero
+quadratic $q$ and then a linear combination not divisible by any
+irreducible factor of $q$; finitely many proper linear subspaces
+cannot cover a vector space over the infinite field $K$.
+Their affine common zero set has dimension two.  Thus $X$ is a
+surface component.  Their degree-two homogenizations remain coprime,
+and the projective closure of $X$ is a component of their intersection
+in $\mathbb P^4$.
+
+Proposition~\ref{p2lb:two-quadrics-surface} makes this component
+unirational or birational to a product of a curve and $\mathbb P^1$.
+The input is a nonconstant rational function and is integral on
+the rational points of its affine open subset.  This contradicts
+Lemma~\ref{p2lb:unirational} or Lemma~\ref{p2lb:ruled}.
+\end{proof}
+
+\begin{corollary}\label{p2lb:sos-five}
+Suppose
+\[
+ P(T,\mathbf Y)=\sum_{j=1}^s c_jq_j(T,\mathbf Y)^2,
+ \qquad c_j\in\mathbb Q_{>0},\quad\deg q_j\leq2.
+\]
+If the rational existential projection of $P=0$ is $\mathbb Z$,
+then $P$ uses at least five total variables, hence at least four
+existential witnesses.
+The same lower bound holds over a number field for any quartic
+obtained by applying an anisotropic quadratic form to quadratic
+residuals and defining its ring of integers.
+\end{corollary}
+\begin{proof}
+In the rational case, the sum is zero exactly when all $q_j$ vanish.
+For an anisotropic combining form the same equivalence holds by
+definition of anisotropy.  Apply Theorem~\ref{p2lb:quadratic-system-four}.
+\end{proof}
+
+This improves the unrestricted three-total-variable bound for the
+sum-of-squares quartic architecture used by the released polynomial
+and all the expanded quartic variants in the first report.  It does
+not rule out a sign-changing quartic in three or four total variables.
+
+\subsection{Nonnegative polynomials in three variables}
+
+\begin{proposition}\label{p2lb:nonnegative-squarefree}
+Let $P\in\mathbb Q[T,Y,Z]$ be squarefree and nonnegative on
+$\mathbb R^3$.  If its rational input projection is contained in
+$\mathbb Z$, that projection is finite.
+\end{proposition}
+\begin{proof}
+Every real zero of a differentiable nonnegative function is a local
+minimum, so all three partial derivatives of $P$ vanish there.
+The singular locus of a squarefree hypersurface in characteristic
+zero has codimension at least one in that hypersurface.  In this
+case it has dimension at most one.  All rational zeros lie in this
+singular locus.  Apply Lemma~\ref{p2lb:curves} to its input function.
+\end{proof}
+
+\begin{theorem}\label{p2lb:nonnegative-degree-eight}
+Let $P\in\mathbb Q[T,Y,Z]$ be nonnegative on $\mathbb R^3$.
+If its rational input projection is an infinite subset of $\mathbb Z$,
+then $P$ has an irreducible factor of degree at least four and
+multiplicity at least two.  In particular $\deg P\geq8$.
+\end{theorem}
+\begin{proof}
+Choose a component $X$ of the closure of its rational zeros as in
+Lemma~\ref{p2lb:dense-component}.  It has dimension two, so its prime
+ideal is generated by an irreducible factor $g$ of $P$.  Write
+$P=g^m h$ with $g\nmid h$.  Density supplies a rational point on
+$X$ which is smooth on $g=0$ and does not lie on $h=0$.
+If $m=1$, then $\nabla P=h\nabla g$ is nonzero there, contrary
+to nonnegativity of $P$.  Thus $m\geq2$.
+
+The projection of the whole hypersurface $g=0$ is contained in
+the projection of $P=0$, and is infinite because the input is
+nonconstant on $X$ and $X(\mathbb Q)$ is dense.  The unconditional
+degree-three obstruction of the first report gives $\deg g\geq4$.
+Therefore $\deg P\geq m\deg g\geq8$.
+\end{proof}
+
+Nonnegativity only on rational inputs gives the same result, because
+$\mathbb Q^3$ is dense in $\mathbb R^3$ and $P$ is continuous.
+The degree-eight conclusion is restricted to nonnegative polynomials;
+it is not an unconditional degree-eight lower bound for two witnesses.
+
+\subsection{Further necessary conditions}
+
+\begin{proposition}\label{p2lb:linear-coordinate}
+If a polynomial $P(T,Y_1,\ldots,Y_r)\in K[T,\mathbf Y]$ defines
+$\mathcal O_K$ in $K$, its degree in each witness which occurs is
+at least two.  Its degree in $T$ is also at least two.
+\end{proposition}
+\begin{proof}
+Suppose $P=AY_r+B$, where $A\ne0$ is independent of $Y_r$.
+For all but finitely many $t\in K$, the specialization
+$A(t,Y_1,\ldots,Y_{r-1})$ is a nonzero polynomial.  Since $K$ is
+infinite, choose the other witnesses so that it does not vanish and
+then solve uniquely for $Y_r$.  The projection is cofinite in $K$,
+which is incompatible with $\mathcal O_K$.
+
+If $P=AT+B$ with $A\ne0$ independent of $T$, its projection includes
+the values of $-B/A$ on the nonempty open set $A\ne0$.  Integrality
+of all these values forces this rational function to be constant,
+by the density and discreteness argument.  Thus $B=-cA$ for some
+$c\in K$, and $P=A(T-c)$.  If $A$ has a $K$-zero, every input is
+accepted; otherwise only $c$ is accepted.  Neither is $\mathcal O_K$.
+If $P$ is independent of $T$, its projection is empty or all of $K$.
+\end{proof}
+
+\begin{proposition}\label{p2lb:quartic-surface-necessary}
+Suppose a quartic $P\in\mathbb Q[T,Y,Z]$ defines $\mathbb Z$ in
+$\mathbb Q$.  Then $P$ is irreducible and geometrically irreducible,
+its rational points are Zariski dense on its affine surface, and
+$P$ takes both positive and negative values on $\mathbb R^3$.
+The input function is nonconstant on that surface.  Every curve
+birational over $\mathbb Q$ to $\mathbb P^1$ on which the input is defined is vertical
+(the input is constant), and the same holds for every geometrically
+integral genus-one curve on the surface with infinitely many rational
+points.
+\end{proposition}
+\begin{proof}
+If $P$ factors nontrivially, every factor has degree at most three.
+Each factor's rational projection is contained in $\mathbb Z$ and
+is finite by the earlier degree-three obstruction.  Their finite
+union cannot be $\mathbb Z$.  If the irreducible $P$ is geometrically
+reducible, its rational points lie in intersections of distinct
+conjugate components, of dimension at most one; Lemma~\ref{p2lb:curves}
+again gives a finite projection.  The same lemma shows that a proper
+Zariski closure of the rational points would give a finite projection.
+Thus the surface is geometrically integral and its rational points
+are dense.  The input is nonconstant because its image is infinite.
+
+If $P$ had only one sign, apply
+Theorem~\ref{p2lb:nonnegative-degree-eight} to $P$ or $-P$.
+Finally, a nonvertical rational curve with a rational point would
+violate Lemma~\ref{p2lb:unirational}.  On a genus-one curve with
+infinitely many rational points a nonconstant input function would
+take only finitely many integral values at rational points by
+Siegel's theorem, whereas every rational point where the input is
+defined would have to give such a value.  This is impossible.
+\end{proof}
+
+\subsection{Why the unrestricted two-witness case remains difficult}
+
+A smooth quartic surface in $\mathbb P^3$ has trivial canonical
+bundle and is a K3 surface.  It is not covered by the unirational
+cubic theorem.  Zariski density of rational points, even when known,
+does not itself imply density in the real topology or the existence
+of a nonintegral value of a specified rational function.  Likewise,
+potential density after a finite field extension cannot be substituted
+for a statement about rational points over $\mathbb Q$.
+For examples and the distinction between density over the ground field
+and potential density, see \cite{p2lbHarrisTschinkel2000}.
+
+The same limitation appears naturally in the improved bound for
+quadratic systems.  A smooth complete intersection of three quadrics
+in $\mathbb P^5$ is a K3 surface: adjunction gives
+$K_X=\mathcal O_X(2+2+2-6)=\mathcal O_X$, and the
+complete-intersection cohomology gives $H^1(X,\mathcal O_X)=0$.
+Thus five affine coordinates already permit a class of surfaces not
+handled by the two-quadric argument.  This observation is a limit of
+the proof, not an existence claim for a five-variable definition.
+
+\begin{proposition}[Conditional obstruction for general-type surfaces]
+\label{p2lb:lang-surface}
+Assume the weak Bombieri--Lang conjecture for surfaces over $\mathbb Q$:
+the rational points of a smooth projective surface of general type are
+not Zariski dense.  Then no polynomial in three total variables whose
+geometrically integral projective surface has a smooth projective
+model of general type can have an infinite rational input projection
+contained in $\mathbb Z$.
+In particular, under this conjecture a polynomial in three variables
+with smooth projective closure of degree at least five cannot define
+$\mathbb Z$.
+\end{proposition}
+\begin{proof}
+Lemma~\ref{p2lb:curves} forces Zariski density of rational points
+on a surface with such a projection.  Passing to isomorphic dense
+opens of a smooth projective model preserves density, contradicting
+the conjecture.  A smooth degree-$d$ surface in $\mathbb P^3$ has
+canonical bundle $\mathcal O_X(d-4)$, which is ample when $d\geq5$.
+\end{proof}
+
+Mazur's conjecture about finitely many real connected components of
+the closure of rational points would rule out every Diophantine
+definition of $\mathbb Z$ in $\mathbb Q$, in any number of variables.
+It therefore cannot supply a conditional numerical improvement
+compatible with simultaneously assuming the proposed arithmetic
+theorem.  Proposition~\ref{p2lb:lang-surface}, by contrast, is a
+restriction on one class of possible two-witness surfaces.

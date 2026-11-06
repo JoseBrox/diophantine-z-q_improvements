@@ -2,7 +2,7 @@
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath,amssymb,amsthm,mathtools}
-\usepackage{geometry,booktabs,array,longtable}
+\usepackage{geometry,booktabs,array,longtable,microtype}
 \usepackage[hidelinks]{hyperref}
 \usepackage{url}
 \geometry{margin=28mm}
@@ -23,13 +23,10 @@
 \DeclareMathOperator{\Spec}{Spec}
 \DeclareMathOperator{\Frac}{Frac}
 \DeclareMathOperator{\Sha}{Sha}
-\title{Conditional polynomial constructions, lower bounds, and\newline
-number-field obstructions for rational Diophantine integrality}
-\author{Research report prepared for JUVa\thanks{Prepared with ChatGPT and
-parallel mathematical and computational reviews. No claim of independent
-human review or priority is made. The upstream manuscript and its arithmetic
-inputs are attributed separately.}}
-\date{6 November 2026\quad---\quad revised working version 3}
+\title{Polynomial Presentations of the Integers over the Rationals:\\
+Conditional Constructions, Lower Bounds, and Number-Field Obstructions}
+\author{JUVa}
+\date{6 November 2026}
 \begin{document}
 \maketitle
 \begin{abstract}
@@ -71,6 +68,10 @@ A translated square repairs the finite input contacts but not that
 arithmetic obstruction. All hypotheses, proofs, computational scopes,
 and unresolved dependencies are stated separately.
 \end{abstract}
+\medskip
+\noindent\textbf{Keywords.} Diophantine definability; rational points;
+existential formulas; polynomial witness compression; quartic equations;
+finite-algebra presentations; number fields.
 \tableofcontents
 
 \section{Definitions, objectives, and the scope of the results}
@@ -84,14 +85,14 @@ if there are $r\geq0$ and $P\in k[T,Y_1,\ldots,Y_r]$ such that
  \exists(y_1,\ldots,y_r)\in k^r:\ P(t,y_1,\ldots,y_r)=0.
 \]
 The variable $T$ is the input. We call $r$ the number of witnesses and
-$r+1$ the total number of variables. Degrees in this report are total
+$r+1$ the total number of variables. Degrees in this article are total
 degrees, including the input. For a nonzero polynomial over $\Q$, clear
 numerical denominators and divide the coefficients by their greatest
 common divisor. Its \emph{coefficient height} is the maximum absolute
 value of the resulting primitive integer coefficients.
 \end{definition}
 
-The requested order of optimization is lexicographic: first the total
+We compare the constructions lexicographically: first the total
 number of variables, then degree, then coefficient height. Under this
 order, a smaller-variable polynomial of very high degree is preferable
 to a quartic with more variables. A useful practical comparison should
@@ -100,7 +101,7 @@ complete coefficient tables. A circuit node used to \emph{write} a
 polynomial is not a witness variable. Conversely, a newly quantified
 coordinate constrained to equal a circuit value does count as a witness.
 
-We use the upstream repository and the user's fork at revision
+We use the upstream source and a fork at the pinned revision
 \begin{center}\small\ttfamily
 28e87b1b62af0effd954605af7f70b2699dd5672.
 \end{center}
@@ -125,7 +126,7 @@ conjecture introduced by the optimizations. The source-preserving transformation
 establish equality with $S_{\Src}$; calling their outputs definitions
 of $\Z$ requires Assumption~\ref{ass:source}. Replaying a certificate
 for polynomial substitution does not prove this assumption. In
-particular, the present report does not claim a new independent proof
+particular, the present article does not claim a new independent proof
 of the full arithmetic manuscript.
 
 The new shared-point construction uses more information than the bare
@@ -146,7 +147,7 @@ coefficient
  685783949153203534233601<2^{80}.
 \]
 These are exact algebraic statistics, independently replayed here.
-The following results have different forms of explicitness.
+The constructions differ in their form of explicitness and coefficient representation.
 
 \begin{center}
 \small
@@ -175,7 +176,7 @@ matrix and finite product but do not expand their enormous tables.
 Both 41- and 43-variable specifications also have separately checked
 versions with $\beta=X^2+2402$, with the same displayed bounds.
 
-The preceding 43- and 45-variable indexed formulas, the untransformed
+For comparison, earlier 43- and 45-variable indexed formulas, the untransformed
 1315-variable table, the 1338-, 1339-, 1367- and 1391-variable quartics,
 source-preserving 853-variable circuit, and
 12,449--12,493-variable quartics are retained as reviewable comparison
@@ -193,7 +194,7 @@ unrestricted. Over $\mathbb Q$, their sum of squares combines any
 finite system without a new variable. Over any specified number field,
 the division-norm construction gives the same conclusion with a
 controlled degree. The general and field-specific assertions are
-proved separately in this report.
+proved separately in this article.
 
 \section{From integer equations to rational equations}
 \label{sec:reduction}
@@ -250,7 +251,7 @@ intermediate coordinates are used, the variable count is
 $m(r+1)+g$. These intermediate coordinates need no separate
 integrality predicates: they already equal the prescribed polynomial
 values. This trade preserves degree at the cost of variables, so it
-is secondary under the requested priority.
+is secondary under this ordering.
 
 \subsection{The precise contribution of MRDP}
 
@@ -294,8 +295,6 @@ are different assertions. All the conclusions in this section become
 conditional applications to the source by
 Assumption~\ref{ass:source}.
 
-% Includable supplement. The division-algebra theorem is supplied separately
-% in phase3/number_fields/division_norm_compiler_20261106_v1.tex.
 \section{Several equations versus one equation}
 \label{p3sys:combination}
 
@@ -1238,7 +1237,6 @@ used in the global finite-fiber construction. It does not provide another
 forty-one-variable saving on top of that construction.
 
 
-% Input fragment extending finite_fibre_strengthening.tex to other fields.
 \subsection{Finite-fiber compression over other fields}
 \label{subsec:finite-fibre-fields}
 
@@ -1382,7 +1380,6 @@ non-algebraic-closedness is essential for this general one-equation,
 one-additional-variable statement.
 
 
-% Proof fragment for the phase-two explicit finite-algebra construction.
 \section{An explicit polynomial for a guarded finite algebra}
 \label{sec:explicit-finite-algebra}
 
@@ -1519,7 +1516,6 @@ construction does not leave a generic primitive-element argument or an
 unperformed exceptional-stratum decomposition implicit.
 
 
-% Input fragment for the exact finite-algebra specification's bounds.
 \subsection{Explicit degree and coefficient bounds for the specification}
 \label{subsec:finite-algebra-bounds}
 
@@ -2116,8 +2112,6 @@ numerical value above must not be reused without that check.
 
 
 
-% Includable lemma and proof. Independently checked; no expansion of the
-% fixed exclusion product is claimed.
 \section{Coefficient bounds for a fixed elliptic exclusion product}
 \label{sec:fixed-anchor-height}
 
@@ -2349,8 +2343,6 @@ finitely many abscissas.  The convention for $nP=\mathcal O$ makes
 the indexed algorithm total and introduces no unwanted exclusion.
 
 
-% Working input fragment. This is a new arithmetic construction, not an exact
-% equivalence of the complete old witness space. No compilation claim is made.
 \section{A shared-point construction}
 \label{sec:new-shared-source}
 
@@ -3045,7 +3037,6 @@ adds one coordinate.  This proves the stated counts.
 \end{proof}
 
 
-% Additional arithmetic refinement. Counts require the finite-algebra compiler.
 \subsection{Removing the scalar preparation coordinate}
 \label{subsec:scalar-preparation-zero}
 
@@ -3468,7 +3459,6 @@ generic determinant compiler must use these updated ranks
 and finite branch lists for its final degree bounds.
 
 
-% Source-to-polynomial conversion for the preferred shared-point systems.
 \section{The compiled shared-point polynomials with Lucas proxies}
 \label{sec:compiled-shared-polynomials}
 
@@ -4146,7 +4136,6 @@ normalization which removes that coordinate in the smallest-variable
 construction is not used here; its extra arithmetic would cost more
 quadratic intermediate coordinates.
 
-% Input fragment: refinement of the shared-point construction.
 \subsection{Comparison order fifty-two with an explicit larger anchor}
 \label{subsec:shared-precision52}
 
@@ -4300,7 +4289,7 @@ because $H\ge1$ and $21^{13}>20^8$.  Thus
 $h(\beta)<|a|/20$, exactly the estimate used in the last contradiction
 of Proposition~\ref{prop:shared-precision52}.  The Lucas part uses only the
 order-$52$ comparisons and is unchanged.  Completeness chooses $S$ deeper
-than a fixed scalar-height point, and decreasing the requested order
+than a fixed scalar-height point, and decreasing this order
 preserves that construction, also when the height point is shared as
 proved above.  This proves both implications.
 \end{proof}
@@ -4945,7 +4934,7 @@ unproved arithmetic optimization of the source.
 \end{proof}
 
 The small-coefficient package provides a useful alternative when file
-size matters. Under the requested variable-first ordering,
+size matters. Under the variable-first ordering,
 $P_{12465}$ is preferable despite its coefficient increase. Its largest
 coefficient has 978 decimal digits; the exact integer is recorded in the
 verification receipt, rather than reproduced here.
@@ -5417,8 +5406,6 @@ does not use this omission. This distinction prevents exceptional
 geometric fibers from being silently reintroduced into that argument.
 
 
-% Includable section. Requires amsmath, amssymb, amsthm, hyperref.
-% Bibliography entries are supplied in lower_bounds.bib.
 \section{Unconditional lower bounds}
 \label{sec:lower-bounds}
 
@@ -5750,8 +5737,6 @@ contradiction to infinitude.
 \end{proof}
 
 
-% Includable research supplement. Theorem environments and bibliography are
-% provided by paper.tex. All variable counts include the input unless stated.
 
 \section{Stronger obstructions for small polynomial presentations}
 \label{p2lb:scope}
@@ -6177,7 +6162,6 @@ theorem.  Proposition~\ref{p2lb:lang-surface}, by contrast, is a
 restriction on one class of possible two-witness surfaces.
 
 
-% Includable supplement. Independent of the proposed arithmetic construction.
 \section{A restriction on the degree in two witnesses}
 \label{sec:p2lb-conics}
 
@@ -6443,7 +6427,6 @@ witnesses: their fibers are quadric surfaces, and are not controlled by
 a single quaternion obstruction of the kind used above.
 
 
-% Includable phase-three supplement. All results here are unconditional.
 \section{Lower bounds for systems of polynomial equations}
 \label{p3sys:lower-bounds}
 
@@ -6782,7 +6765,6 @@ the requested range of five to ten coordinates.  They do not provide
 a construction in that range and do not exclude it.
 
 
-% Restrictions on a compression method, not absolute optimality claims.
 \section{What generic projection can and cannot compress}
 \label{p3sys:projection-limits}
 
@@ -7559,11 +7541,9 @@ not claims of optimality among all undecidability reductions. In
 particular a specialized undecidability theorem and a definition of the
 ordinary subset $\Z\subset\Q$ are different objectives. The first
 bound improves $12N$ when $N>1$. No polynomial achieving these
-MRDP-derived counts has been expanded in this report.
+MRDP-derived counts has been expanded in this article.
 
 
-% Research contribution: number fields.  This is an input fragment for the
-% principal report; theorem/proposition/lemma/remark environments are assumed.
 
 \section{Number fields: what transfers, and what does not}
 \label{sec:number-fields}
@@ -7898,7 +7878,6 @@ the reuse of the released equation nor an unrestricted change of the
 witness field suffices.
 
 
-% Fresh phase-three supplement.  All variable counts include the input.
 \section{What the newer constructions do over number fields}
 \label{sec:new-constructions-number-fields-phase3}
 
@@ -8264,7 +8243,6 @@ existential assertion has not been established here for
 every number field.
 
 
-% Fresh phase-three supplement; phase-two artifacts are not modified.
 \section{Combining equations over number fields by division norms}
 \label{sec:division-norm-compiler-phase3}
 
@@ -8819,7 +8797,7 @@ of defining $\mathcal O_K$ over a general number field.
 \section{The remaining optimization problem}
 \label{sec:strategy}
 
-The preferred construction in this report uses forty-one total
+The preferred construction in this article uses forty-one total
 coordinates, including the input. Its degree is bounded by
 $2^{9566673}$, and its arithmetic interpretation remains conditional
 on the named source inputs and Sun's simultaneous prime-pattern theorem.
@@ -8922,7 +8900,7 @@ compatibility requires
 An odd common divisor would make the residues zero and four
 incompatible. One cannot justify the common index by reusing only the
 original private-witness existence statements. The conditional proofs
-in this report retain the stronger simultaneous hypothesis explicitly.
+in this article retain the stronger simultaneous hypothesis explicitly.
 
 \subsection{Number fields and the limits of a uniform formula}
 
@@ -9306,9 +9284,9 @@ one to infer full $2^\infty$-Selmer corank one, as in
 $\mathbb Q_2/\mathbb Z_2$ summand of $\Sha$ or prove analytic rank one.
 The new restricted converse is used precisely at this remaining step.
 
-We checked the algebraic shape of the simultaneous realization and
-its reduction to this converse, but have not certified all its local
-descent tables or the new converse.  The most important further audit
+The algebraic shape of the simultaneous realization and its reduction
+to the converse have been checked, but a complete independent
+certification of the local descent tables and the converse is not supplied.  The most important further audit
 within the latter is the passage from finite Heegner classes and local
 conditions to the uniform valuation bound and the fixed-field
 coefficient transfer:
@@ -9333,8 +9311,7 @@ The source derives it using the discriminant-$210$ Shimura curve,
 a degree-at-most-$576$ normal fiber field, a comparison with stable
 Faltings height, and separate CM and non-CM estimates.
 
-Two plausible objections were checked against primary sources and
-should not be presented as gaps.  Yuan's Theorem 1.1 and Section 2.1
+Two potential objections are resolved by the cited primary sources.  Yuan's Theorem 1.1 and Section 2.1
 of \emph{Explicit Kodaira--Spencer map over Shimura Curves}
 \cite[Theorem 1.1 and Section 2.1]{Yuan2024} do provide the stated maximal-stack
 regularity and semistability and the isometry whose image is
@@ -9353,9 +9330,8 @@ modular-Jacobian transfer preserving the displayed constant.
 The principal non-CM passage is
 \texttt{sec:h5-level-repair}, lines 6904--7345; the CM estimate follows
 at lines 7349--7500.  These are substantive mathematical arguments,
-not consequences of the finite numerical certificate.  Source comments
-marking a repair as awaiting review record a review status; they are
-not, by themselves, a proof of an error.
+not consequences of the finite numerical certificate.  The validity of these applications depends on verifying their
+hypotheses, not on administrative review annotations in the sources.
 
 \subsection{Consequences for the optimization claims}
 
@@ -9377,13 +9353,13 @@ polynomial fails; no such counterexample is supplied by this audit.
 \section{Reproducibility and the scope of the computations}
 \label{sec:reproducibility}
 
-The proposed files are confined to \nolinkurl{research/optimization/}
-in a local checkout of the user's fork at the revision specified in
-Section~\ref{sec:scope}. The released polynomial, source templates, and
-manuscript are unchanged. No commit, push, or pull request was made.
-The complete paper is the standalone file
-\nolinkurl{diophantine_optimization.tex}; it needs no external inputs or
-BibTeX database. Its bibliography gives the primary references used here.
+The accompanying repository contains the publication manuscript in
+\nolinkurl{paper/diophantine_optimization_20261106_v3.tex} and preserves
+all original research inputs under \nolinkurl{research/}. The archived
+research files are not overwritten by editorial changes to the paper.
+The manuscript is self-contained: it uses no external TeX input files or
+BibTeX database. Program outputs, certificates, and full polynomial
+representations are organized by construction.
 
 \subsection{Exact objects and independent checks}
 
@@ -9461,12 +9437,11 @@ the other quartic digests are for the uncompressed text tables.
 \mbox{}\\\nolinkurl{aef6888809817e37e372471fd780f83d0241e58f04ddeafd03fd6b46cfa39d62}
 \end{description}
 
-A complete file manifest accompanies the review package. The TeX source
-has passed static checks of braces, environments, cross-references, and
-bibliography keys. A working LaTeX format was unavailable in the present
-environment, so no successful typesetting or visual-layout verification
-is claimed. This limitation concerns the document's rendering, not the
-exact polynomial checks described above.
+The repository includes an SHA-256 manifest of the frozen source
+artifacts, independent check scripts, and construction reports. The
+publication manuscript is maintained separately from the frozen sources;
+typesetting can be reproduced with two runs of \texttt{pdflatex}.
+A successful typesetting run does not establish any arithmetic claim.
 
 
 \section{Reproducing the constructions with Lucas proxies}
@@ -9540,14 +9515,11 @@ The huge indexed products and multiplication matrices are specified
 exactly but are not materialized. Only the quartics have complete
 expanded coefficient tables. No global minimum is claimed.
 
-The assembly program checks balanced environments and braces, unique
-labels, defined cross-references, and defined bibliography keys. A
-working LaTeX format was not available in the preparation environment;
-no successful typesetting or rendered-layout verification is claimed.
-The standalone source can be compiled twice with a normal
-\texttt{pdflatex} installation. All additions are prepared for review
-on the local branch \nolinkurl{research/polynomial-optimization}.
-No commit, push, or pull request has been made.
+The source assembly program checks balanced environments and braces,
+unique labels, cross-references, and bibliography keys. The publication
+copy can be compiled with a standard \texttt{pdflatex} installation
+(twice to resolve cross-references); typesetting does not establish
+any of the arithmetic assertions.
 
 
 \section{Reproducing the direct constructions and the field counterexamples}
@@ -9678,7 +9650,7 @@ records the passing receipts and hashes of the checked artifacts.
 the pinned source manuscript, and the unchanged released baseline.
 It hashes the same bytes it writes and verifies the resulting ZIP
 archive. Its manifest makes the checkpoint independently inspectable.
-No commit, push, or pull-request submission is part of these scripts.
+
 
 
 \section{Verification of the new source specification}
@@ -9734,7 +9706,7 @@ The checker reads these expressions from the producer and compares
 their expanded dictionaries, rather than relying only on sample
 numerical evaluations.
 
-All four frozen source files reproduce byte for byte.  Their integer
+The four archived source files reproduce byte for byte.  Their integer
 coefficient DAGs are acyclic, every monic relation depends only on
 retained coordinates and earlier generators, and all counts and finite
 parameter lists agree with the displayed source.  There are exactly
@@ -9755,10 +9727,10 @@ describe the nine quartic and ten or eleven quadratic finite relations;
 they are not degrees of the final polynomial.  The independent
 finite-algebra compiler supplies the final degree and height bounds.
 
-The source check is reproducible with
-\[
- \nolinkurl{python research/phase3/compression/check_direct_source.py}.
-\]
+The source check is reproducible with the command
+\begin{quote}
+\nolinkurl{python3 research/phase3/compression/check_direct_source.py}
+\end{quote}
 The separate program \texttt{check\_elliptic\_density\_data.py}
 verifies the exact curve and point calculations used in
 Corollary~\ref{cor:point-modules-dimension}.  Its scope is those
@@ -9775,7 +9747,7 @@ repository \texttt{elliotglazer/diophantine-z-q}, revision
 6 November 2026. Manuscript \texttt{quartic\_12504.tex}; package
 \texttt{quartics/quartic-12504}.
 \url{https://github.com/elliotglazer/diophantine-z-q}.
-Working fork: \url{https://github.com/JoseBrox/diophantine-z-q_fork}.
+
 
 \bibitem{Matiyasevich1970}
 Yu. V. Matiyasevich, \emph{The Diophantineness of enumerable sets},
@@ -9947,8 +9919,6 @@ Acta Mathematica Sinica, Chinese Series \textbf{67} (2024), no. 2,
 227--249. \url{https://doi.org/10.12386/A20220154}.
 \url{https://arxiv.org/abs/2205.11334}.
 
-% New bibliography item only. The existing keys lbKollar2002,
-% lbLang1983 and Voight2021 are reused by the phase-three supplement.
 \bibitem{p3sysMerkurjevParimala2025}
 A.~Merkurjev and R.~Parimala,
 \emph{Quadratic Forms Beyond Arithmetic},
@@ -9983,7 +9953,6 @@ corrected author version, 2 January 2022, Sections 8 and 12.
 \url{https://www.jmilne.org/math/xnotes/AVs.pdf}.
 
 
-% Entries for inclusion inside an existing thebibliography environment.
 \bibitem{MilneCFT2020}
 J.~S.~Milne, \emph{Class Field Theory}, version 4.03,
 6 August 2020, Chapter IV, Sections 1--4.

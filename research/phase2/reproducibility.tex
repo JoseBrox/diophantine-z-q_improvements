@@ -1,0 +1,79 @@
+\section{Reproducing the new polynomial constructions}
+\label{sec:phase2-reproducibility}
+
+The preferred new constructions are stored under
+\nolinkurl{research/phase2/}. The complete paper is the standalone file
+\nolinkurl{research/optimization/diophantine_optimization.tex}.
+All variable counts include the distinguished input. The principal
+specifications and their independent verification receipts are:
+\begin{center}
+\small
+\begin{tabular}{r p{82mm}}
+\toprule
+Total variables & Package relative to \texttt{research/phase2/}\\
+\midrule
+43 & \nolinkurl{finite_fibre/polynomial-43-conic/}\\
+45 & \nolinkurl{finite_fibre/polynomial-45-conic-semilocal/}\\
+558 & \nolinkurl{finite_fibre/polynomial-558/}\\
+1367 & \nolinkurl{quartic/quartic-best/}\\
+1391 & \nolinkurl{quartic/quartic-small-coefficients/}\\
+\bottomrule
+\end{tabular}
+\end{center}
+The first three contain a
+\nolinkurl{polynomial-specification.json}; the two quartics contain a
+\nolinkurl{polynomial.json.gz}. Every package includes its construction
+report and a \nolinkurl{verification.json} describing the exact scope
+of its independent check. The complete SHA-256 manifest is generated
+with the review archive. File names and hashes identify mathematical
+objects; they are not additional mathematical hypotheses.
+
+From the repository root, the single command
+\begin{verbatim}
+python3 -E -B research/phase2/verify_phase2.py
+\end{verbatim}
+runs eleven checks and records their outputs in
+\nolinkurl{research/phase2/verification/all-checks.json} and its
+\nolinkurl{logs/} directory. It checks the frozen source DAGs,
+the scalar normalization constants, the conic parametrization and
+duplication identities, the precision inequalities, the fixed-point
+arithmetic, the three preferred finite-algebra specifications, and
+both complete quartic tables. The checkers are separate programs from
+the producers. Exact integer and rational arithmetic is used for the
+new algebraic checks.
+
+The finite-algebra interpreter also executes every determinant,
+resultant, coefficient reversal, and outer finite case on eight small
+examples, including nilpotents, excluded components, collisions,
+rank drops, irrational residue fields, and zero quadratic roots. It
+checks 177 factors and supplies a fully expanded degree-sixteen
+example. This is a check of the construction on the specified examples.
+The general theorem, and not extrapolation from those computations,
+justifies the large instances.
+
+To rebuild the quartics, use the producer with
+\nolinkurl{--share-height --precision 52 --scalar-order 32}.
+The optional \nolinkurl{--small-coefficients} selects the
+1391-variable alternative. The package README files give the complete
+commands for rebuilding each source and finite-algebra specification,
+including all finite-chart and scalar-normalization options.
+The original-source comparison checks remain independently runnable
+using \nolinkurl{research/optimization/verify_all.py}.
+
+These receipts establish the stated finite identities, inventories,
+and bounds. They do not claim to verify the external prime-pattern
+theorem, the source's restricted pole converse, or its full explicit
+height theorem. Those arithmetic dependencies are stated in
+Section~\ref{sec:scope} and in the source-audit appendix.
+The huge indexed products and multiplication matrices are specified
+exactly but are not materialized. Only the quartics have complete
+expanded coefficient tables. No global minimum is claimed.
+
+The assembly program checks balanced environments and braces, unique
+labels, defined cross-references, and defined bibliography keys. A
+working LaTeX format was not available in the preparation environment;
+no successful typesetting or rendered-layout verification is claimed.
+The standalone source can be compiled twice with a normal
+\texttt{pdflatex} installation. All additions are prepared for review
+on the local branch \nolinkurl{research/polynomial-optimization}.
+No commit, push, or pull request has been made.

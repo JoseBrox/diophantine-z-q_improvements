@@ -1,0 +1,218 @@
+\section{Reducing the anchor coefficients and shortening its constant chain}
+\label{sec:p3-affine-anchor-refinement}
+
+The following refinements are exact transformations of the supplied
+quadratic residual systems.  They require no additional arithmetic
+theorem.  The original tables remain available; the transformed
+tables are separate artifacts with certificates referring to their
+frozen parents.
+
+\subsection{An affine change in the three private anchor coordinates}
+
+Put
+\[
+ \kappa=3^{2^{28}},\qquad s=3^{2^{27}},\qquad s^2=\kappa.
+\]
+In the $1315$-coordinate table the anchor residual is
+\[
+ R=-3A^2+16u^2+96v^2-32w^2+32\kappa,
+ \qquad A=X_{52}+X_{53}-X_{54},
+\]
+where $(u,v,w)=(X_{55},X_{56},X_{57})$.  These three coordinates
+occur in no other residual.  The other three displayed coordinates
+are constrained arithmetic values, so they cannot be treated as
+independent anchor witnesses.
+
+Make the rational affine substitution
+\begin{equation}\label{eq:p3-anchor-affine-map}
+ u=s+\frac{U-3V+3W}{4},\qquad
+ v=\frac{s}{2}+\frac V4,\qquad
+ w=\frac{3s}{2}+\frac W4.
+\end{equation}
+Its linear determinant is $1/64$, and its inverse is
+\[
+ U=4u+12v-12w+8s,\qquad V=4v-2s,\qquad W=4w-6s.
+\]
+It is therefore a bijection over every characteristic-zero field,
+fixing the input and every other coordinate.  Direct expansion gives
+\begin{equation}\label{eq:p3-translated-anchor}
+ \widetilde R=-3A^2+U^2-6UV+6UW+15V^2-18VW+7W^2+8sU.
+\end{equation}
+Indeed the constant terms sum to
+$16s^2+24s^2-72s^2+32s^2=0$, and the linear terms sum to $8sU$.
+All coefficients of the new residual are integers, with $s$ regarded
+as the specified fixed integer, not a coordinate.
+
+\begin{proposition}\label{prop:p3-translated-quartic}
+Replacing $R$ by $\widetilde R$ in the frozen $1315$-coordinate
+residual list gives a polynomial $\widetilde P_{1315}$ with exactly
+the same input projection as $P_{1315}$ over every characteristic-zero
+field.  Its degree is exactly four, its primitive integer coefficient
+height is
+\[
+                  H(\widetilde P_{1315})=64\kappa
+                                      <2^{429496736},
+\]
+and its complete table has $29021$ nonzero ordinary coordinate
+monomials.  It has $1272$ quadratic residuals and $1314$ existential
+witnesses.  In particular, under the already stated arithmetic inputs,
+it defines $\mathbb Z$ in $\mathbb Q$.
+\end{proposition}
+\begin{proof}
+The polynomial identity
+\[
+ \widetilde P_{1315}
+       =P_{1315}\circ\text{the substitution in
+                           \eqref{eq:p3-anchor-affine-map}}
+\]
+and the explicit inverse prove equality of input projections.
+This conclusion concerns the literal single polynomial as well as
+the common residual zero set; it does not use positivity of squares.
+No new coordinate or equation is introduced, and every residual
+remains quadratic.
+
+For the height assertion write
+\[
+ B=-3A^2+U^2-6UV+6UW+15V^2-18VW+7W^2.
+\]
+Then $\widetilde R^2=B^2+16sUB+64s^2U^2$.  Since $U,V,W$
+occur nowhere else, the coefficient of the monomial $U^2$ in
+the sum of squares is exactly $64s^2$.  It is the only coefficient
+involving $s^2$.  The coefficients involving $s$ have absolute value
+at most $288s$.  The independently expanded table records that
+every remaining integer coefficient has absolute value less than
+$2^{1020}$, and no monomial receives two different powers of $s$.
+The value $s=3^{2^{27}}$ makes $64s^2$ larger than both other bounds.
+The input coefficient of $X^4$ is exactly one.  Thus the integer
+content is one, the height is exactly $64s^2=64\kappa$, and the
+degree is exactly four.  Finally $3^5<2^8$ gives
+\[
+ \log_2(64\kappa)<6+\frac85\,2^{28}<429496736.
+\]
+The displayed residual list and its exact convolution give the
+stated monomial count.
+\end{proof}
+
+\subsection{Eliminating the last coordinate in the constant chain}
+
+In the ordinary-coefficient $1339$-coordinate table, the coordinate
+$X_{81}$ occurs in exactly two residuals:
+\[
+                   X_{80}^2-X_{81},\qquad R_0+32X_{81},
+\]
+where
+\[
+ R_0=-3(X_{52}+X_{53}-X_{54})^2
+                       +16X_{55}^2+96X_{56}^2-32X_{57}^2.
+\]
+Substitute $X_{81}=X_{80}^2$, delete its defining residual, and
+renumber all subsequent coordinates by subtracting one.  The second
+residual becomes $R_0+32X_{80}^2$ and is still quadratic.
+
+\begin{proposition}\label{prop:p3-small-coefficient-1338}
+The resulting system has $1338$ total coordinates and $1295$
+quadratic residuals.  Its sum of squares $P_{1338}$ has degree exactly
+four, $29059$ nonzero ordinary integer monomials, primitive integer
+content one, and coefficient height less than $2^{1020}$.
+Its rational input projection equals that of $P_{1339}$.
+\end{proposition}
+\begin{proof}
+On a common zero of the parent residuals, the first displayed equation
+uniquely determines $X_{81}=X_{80}^2$.  Deleting this coordinate
+therefore gives a solution of the new system.  Conversely, inserting
+that square in a new solution restores all parent equations.  This
+is a bijection of common residual zero sets over every
+characteristic-zero field and fixes the input.
+
+Over a formally real field, in particular over $\mathbb Q$, a sum
+of squares vanishes precisely when all its residuals vanish.  Hence
+the same equivalence holds for the literal sum-of-squares input
+projections over those fields.  No such converse for the literal
+polynomials over nonreal fields is inferred from this elimination.
+
+The substitution keeps every residual quadratic.  Exact convolution
+of the remaining residuals gives $29059$ nonzero coefficients, all
+of absolute value below $2^{1020}$.  The unchanged coefficient of
+the input monomial $X^4$ is one, proving content one and degree four.
+The complete maximum coefficient is recorded in the construction
+report.  The coordinate and residual counts each decrease by one.
+\end{proof}
+
+\subsection{Inlining the three initial constants}
+
+The first three coordinates of the remaining constant chain are
+uniquely determined as
+\[
+                  X_{58}=3^{32},\qquad X_{59}=3^{64},
+                  \qquad X_{60}=3^{128}.
+\]
+Their three defining residuals are
+\[
+       3^{32}-X_{58},\qquad X_{58}^2-X_{59},
+       \qquad X_{59}^2-X_{60}.
+\]
+They have no other occurrences except in the next equation of
+the chain.  Substitute the three constants and delete these
+coordinates and residuals.  The first remaining chain equation
+becomes $3^{256}-X_{61}=0$ before renumbering, or
+$3^{256}-X_{58}=0$ afterwards.
+
+\begin{theorem}[The preferred ordinary-coefficient quartic]
+\label{thm:p3-small-coefficient-1335}
+The supplied polynomial $P_{1335}$ has $1335$ total coordinates,
+$1334$ existential witnesses, $1292$ quadratic residuals, degree
+exactly four, and $29050$ nonzero ordinary integer monomials.
+Its primitive coefficient height is unchanged from $P_{1338}$ and
+is less than $2^{1020}$.  Under the same arithmetic hypotheses,
+it defines $\mathbb Z$ in $\mathbb Q$.
+\end{theorem}
+\begin{proof}
+Each eliminated coordinate equals the displayed fixed integer
+at every common zero of the parent residuals.  Substitution and
+reinsertion are inverse maps on the corresponding common zero
+sets, over every characteristic-zero field, and fix the input.
+All remaining residuals have degree at most two.  Over $\mathbb Q$
+their sum of squares therefore has the same input projection.
+
+The first remaining chain residual contributes the constant
+$3^{512}$ on squaring, and
+\[
+                             3^{512}<2^{812}<2^{1020}.
+\]
+For an elementary check of the first inequality, $3^{41}<2^{65}$
+and $512\cdot65<812\cdot41$.  The only changed constant
+coefficient is the old one minus $3^{64}$ plus $3^{512}$; it
+has bit length at most $826$.  The new linear coefficient has
+absolute value $2\cdot3^{256}<2^{407}$.  Every other coefficient
+is inherited, up to coordinate renumbering, or removed.  The
+previous coefficient of maximum height occurs in an unaffected
+monomial, so the exact height is unchanged.  These assertions
+are also checked against the complete coefficient table.
+
+Twenty constant-chain coordinates remain, representing
+$3^{2^8},3^{2^9},\ldots,3^{2^{27}}$.  The final square is
+used directly in the anchor.  Thus the ordinary-coefficient
+presentation adds twenty coordinates to the $1315$-coordinate
+literal-constant presentation.  Exact convolution gives $29050$
+nonzero terms.  The unchanged coefficient of the input monomial
+$X^4$ is one, proving primitive content one and degree four.
+\end{proof}
+
+The preferred fresh packages are
+\nolinkurl{research/phase3/quartic/quartic-direct-translated/} and
+\nolinkurl{research/phase3/quartic/quartic-direct-small-coefficients-1335/}.
+The intermediate $1338$-coordinate package is retained separately
+under \nolinkurl{quartic-direct-small-coefficients-1338/}.
+Each contains the full residual list, complete coefficient table,
+parent hash, and exact transformation certificate.  Their producer
+is \nolinkurl{transform_direct_quartics.py}.  It verifies both the
+residual substitutions and the full polynomial identities against
+the frozen parent tables.  The separate program
+\nolinkurl{verify_final_transforms_independent.py} imports no producer
+code and independently checks every transformed residual, every
+expanded coefficient, all coordinate maps, and the stated heights
+and supports.  All three checks pass.  The translated table uses
+the coefficient symbol $S$ for the fixed integer $s$; an entry
+$[\mathbf m,k,c]$ means $cs^k\prod_{i\in\mathbf m}X_i$.
+This symbol contributes no variable and no degree in the quantified
+coordinates.

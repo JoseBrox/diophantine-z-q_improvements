@@ -1,0 +1,125 @@
+\subsection{Fewer finite choices and smaller algebra rank}
+\label{subsec:shared-degree-refinements}
+
+The following two refinements preserve the retained-coordinate counts.
+They improve the subsequent degree bound by removing unnecessary
+finite choices and finite algebra generators.  They apply in
+particular to the forty-three-coordinate construction.
+
+\begin{lemma}[Fixed nonzero height scales]
+\label{lem:fixed-height-scales}
+Write $x(Q)=x_0+x_1\sqrt2$ for any nonidentity root point of the
+shared construction.  One may replace the two piecewise height
+scales attached to these components by
+\[
+                         A_0=x_0^2,
+              \qquad A_1=(1+x_1^2)^2.
+\]
+Both are positive nonzero rational squares.  This removes all
+eight zero-component case parameters and their closed equations,
+without changing the arithmetic soundness and completeness proofs.
+The original point-height bound with constant $7H$ still holds.
+\end{lemma}
+\begin{proof}
+The point $Q$ is the double of a halfpoint $(a,b)$ on
+$y^2=x^3-Dx$, with $D=(3-\sqrt2)^2$ and $b\ne0$.
+The duplication formula gives
+\[
+                   x(Q)=\left(\frac{a^2+D}{2b}\right)^2.
+\]
+At each real embedding the numerator $a^2+D$ is strictly positive
+and the denominator is nonzero.  Thus both real embeddings of
+$x(Q)$ are positive, and their average $x_0$ is positive.
+The assertions about the two scales follow.
+
+Put $T=(H+\log3)|N|^\alpha$, where $\alpha$ is the radical
+exponent used in the applicable height comparison.  The common
+slope detector and each scaled detector give
+\[
+               h(\lambda),h(A_i\lambda)\le T,
+               \qquad h(A_i)\le2T.
+\]
+For the first component $h(A_0)=2h(x_0)$, so $h(x_0)\le T$.
+For a rational number $x_1=a/b$ in lowest terms with $b>0$,
+\[
+ h(1+x_1^2)=\log(a^2+b^2)\ge2h(x_1),
+ \qquad h(A_1)\ge4h(x_1).
+\]
+The displayed equality uses
+$\gcd(a^2+b^2,b^2)=1$.  Therefore $h(x_1)\le T/2$.  The
+standard height inequality for the fixed quadratic basis gives
+\[
+ h(x(Q))\le h(x_0)+h(x_1)+\tfrac32\log2
+ \le\tfrac32(H+\log3)|N|^\alpha+\tfrac32\log2
+ <7H|N|^\alpha,
+\]
+because $H\ge1$ and $|N|\ge1$.  Thus the soundness estimates are
+preserved, with room in the same constant.  Every completeness
+argument uses only that the scales are fixed positive rational
+squares once the root points are chosen; the new choices have
+exactly those properties.  All nine detector constructions and
+their simultaneous prime patterns remain available.
+\end{proof}
+
+\begin{lemma}[Parametrizing the first pole conic]
+\label{lem:pole-conic-parametrization}
+Let $B\in\mathbb Q^*$ and consider
+\[
+                        p^2=B(1-e)(1+3e).
+\]
+Its rational points are covered by two rational formulas with
+one parameter.  For a finite choice $\sigma\in\{0,1\}$ retain
+one rational coordinate $t$, put $D_t=t^2+3B$, require $D_t\ne0$,
+and set
+\[
+ e=\frac{t^2+(4\sigma-1)B}{D_t},
+ \qquad p=-\frac{4Bt(1-\sigma)}{D_t}.
+\]
+Every permitted assignment satisfies the conic equation, and every
+old rational point occurs in one of the two choices.  In particular
+the square root coordinate $p$ can be eliminated exactly.
+\end{lemma}
+\begin{proof}
+For $\sigma=0$,
+\[
+                 1-e=\frac{4B}{D_t},\qquad
+                 1+3e=\frac{4t^2}{D_t},
+\]
+which gives the equation.  For $\sigma=1$ the formulas give
+$e=1,p=0$ directly.  Conversely, if an old point has $e\ne1$,
+put $t=p/(e-1)$.  Substitution of its conic equation gives
+\[
+                       t^2+3B=-\frac{4B}{e-1}\ne0.
+\]
+The formulas with $\sigma=0$ recover both $e$ and $p$.  If
+$e=1$, then $p=0$; the choice $\sigma=1,t=0$ gives this point
+with denominator $3B\ne0$.  The other point with $p=0$,
+namely $e=-1/3$, is already covered by $\sigma=0,t=0$.
+Accordingly no nonzero guard on $p$ or on $t$ is imposed.
+\end{proof}
+
+Apply this lemma separately to the first conic in each of the
+nine coordinate detectors and in the scalar block.  Their
+$B$ values are nonzero by the existing guards.  Each block now
+retains its conic parameter $t$ and its coordinate $s$, and
+keeps only the second square root $q$ as a finite algebra
+generator.  The parameter $t$ here parametrizes a conic; it
+is distinct from the scalar preparation coordinate that was
+removed in the preceding subsection.  The exceptional conic
+choices are fixed finite parameters, not quantified selectors.
+
+The preferred finite-anchor source therefore has $42$ retained
+coordinates and twenty finite generators: nine quartic point
+generators, ten quadratic pole generators, and one quadratic
+Lucas generator.  Its algebra rank is at most
+\[
+                         4^9 2^{11}=2^{29}.
+\]
+The semilocal source has $44$ retained coordinates and one
+additional quadratic anchor generator, hence rank at most
+$2^{30}$.  Finite-algebra compression still gives totals
+$43$ and $45$, respectively.  The ten conic choices replace
+the ten now-absent first-root zero/nonzero strata, whereas
+all eight zero-component choices have disappeared.  The
+generic determinant compiler must use these updated ranks
+and finite branch lists for its final degree bounds.

@@ -1,0 +1,497 @@
+% Research contribution. This file is a section module, not a standalone document.
+% Depends only on amsmath, amssymb, amsthm, hyperref and standard theorem environments.
+\section{Published methods and exact improvements to the algebraic presentation}
+\label{sec:lit-optimization}
+
+Throughout this section a witness variable ranges over $\mathbb Q$ unless
+another field is specified. An equivalence of polynomial presentations means
+an equivalence of their projected rational solution sets in every displayed
+input. Such an equivalence is independent of whether the arithmetic theorem
+that identifies the original projected set with $\mathbb Z$ has been verified.
+The results below should therefore be applied to the repository only after
+matching their hypotheses to its actual residual system.
+
+\subsection{An explicit three-variable semilocal definition}
+
+Write
+\[
+ R=\mathbb Z_{(2)}\cap\mathbb Z_{(3)}
+   =\{t\in\mathbb Q:v_2(t)\ge0,\ v_3(t)\ge0\},
+\]
+with $v_p(0)=+\infty$. The following specialization of classical
+quaternion methods is particularly economical. Daans proves three-quantifier
+existential definability for every finite intersection of valuation rings
+in a global field; he traces the corresponding rational cases back to
+Robinson \cite[Proposition 4.2 and Remark 4.3]{Daans2024}.
+Here all constants and all exceptional cases are made explicit.
+
+\begin{proposition}\label{prop:explicit-semilocal}
+For every $t\in\mathbb Q$,
+\[
+ t\in R\quad\Longleftrightarrow\quad
+ \exists u,v,w\in\mathbb Q:\quad
+ u^2+6v^2-2w^2-3t^2+2=0.
+\]
+\end{proposition}
+\begin{proof}
+Consider the quaternion algebra $B=(2,3)_{\mathbb Q}$ with generators
+$i^2=2$, $j^2=3$, $ij=-ji$. Its ramification set consists exactly of
+$2$ and $3$. Indeed its Hilbert symbol at $3$ equals the Legendre symbol
+$(2/3)=-1$, and at $2$ the formula
+$(2,u)_2=(-1)^{(u^2-1)/8}$ for odd $u$ gives $(2,3)_2=-1$.
+It splits at every other finite place because both parameters are units
+at those odd primes, and it splits at
+infinity because both parameters are positive. In particular $B$ is a
+division algebra over $\mathbb Q$.
+
+We use the standard quadratic embedding criterion for quaternion algebras:
+a quadratic field $L/\mathbb Q$ embeds in $B$ if and only if every ramified
+place of $B$ remains a field in $L$. This is the quadratic case of the
+Albert--Brauer--Hasse--Noether theorem and the central simple algebra
+embedding criterion; equivalently, extending scalars to $L$ kills the
+local invariant $1/2$ precisely when the local extension has degree two.
+See \cite[Chapter 14]{Voight2021}.
+
+Suppose first that $t\ne0$, and put
+\[
+ \delta=1-\frac{2}{3t^2}.
+\]
+This number is nonzero: $t^2=2/3$ has no rational solution.
+At $2$, put $m=v_2(t)$. If $m>0$, then $v_2(\delta)=1-2m$ is odd,
+so $\delta$ is not a square in $\mathbb Q_2$. If $m=0$, then
+$t^2\equiv1\pmod8$ and $\delta\equiv3\pmod8$, again a nonsquare.
+If $m<0$, then $\delta\in1+8\mathbb Z_2$, hence it is a square in
+$\mathbb Q_2$. At $3$, if $m=v_3(t)\ge0$ then
+$v_3(\delta)=-1-2m$ is odd; if $m<0$, then
+$\delta\in1+3\mathbb Z_3$ and Hensel's lemma makes it a square.
+Consequently
+\[
+ \delta\notin\mathbb Q_2^{\times2},\quad
+ \delta\notin\mathbb Q_3^{\times2}
+ \quad\Longleftrightarrow\quad t\in R.
+\]
+The embedding criterion shows that this is equivalent to the existence
+of a pure quaternion $xi+yj+zij$ with square $\delta$, that is,
+\[
+ 2x^2+3y^2-6z^2=\delta.
+\]
+This equivalence also excludes the case in which $\delta$ is a rational
+square: a division quaternion algebra cannot contain a noncentral element
+whose square is a nonzero rational square, since
+$(\alpha-s)(\alpha+s)=0$ would force $\alpha=\pm s$.
+A nonzero pure quaternion has reduced trace zero, so it cannot be such
+a nonzero rational scalar.
+Multiplying the displayed equation by $3t^2$ and setting
+$u=3ty$, $v=tx$, $w=3tz$ gives the equation in the statement.
+These substitutions are invertible for $t\ne0$.
+Finally $t=0$ belongs to $R$ and is represented by $(u,v,w)=(0,0,1)$.
+\end{proof}
+
+\begin{lemma}\label{lem:two-semilocal-inputs}
+Let $F(A,B)=A^2+AB-B^2$. For every $a,b\in\mathbb Q$ and $p=2,3$,
+\[
+ v_p(F(a,b))=2\min\{v_p(a),v_p(b)\}.
+\]
+In particular $(a,b)\in R^2$ if and only if $F(a,b)\in R$.
+\end{lemma}
+\begin{proof}
+The assertion is immediate for $a=b=0$. Otherwise scale $a,b$ by a
+common power of $p$ until both are integral and at least one is a unit.
+The reduction of $A^2+AB-B^2$ has no nontrivial zero over either
+$\mathbb F_2$ or $\mathbb F_3$: over $\mathbb F_2$ one checks the
+three nonzero pairs, and over $\mathbb F_3$ the discriminant $5$
+is a nonsquare. Thus the scaled value is a unit, proving the equality.
+\end{proof}
+
+\begin{corollary}[Five-variable replacement for the anchor]
+\label{cor:five-anchor}
+Fix rational inputs $f_0,f_1,C$ with $C\ne0$. The condition
+$f_0/C,f_1/C\in R$ is equivalent to the existence of five rational
+variables $r,D,u,v,w$ satisfying the three quadratic equations
+\begin{align*}
+ r&=f_0^2+f_0f_1-f_1^2,\\
+ D&=C^2,\\
+ u^2+6v^2-2w^2-3r^2+2D^2&=0.
+\end{align*}
+\end{corollary}
+\begin{proof}
+By Lemma~\ref{lem:two-semilocal-inputs}, the desired condition is
+$r/C^2\in R$, with $r=F(f_0,f_1)$. Apply
+Proposition~\ref{prop:explicit-semilocal} to $t=r/C^2$ and multiply
+its equation by $C^4$. Multiplication of each of its three witnesses
+by $C^2$ is a bijection of $\mathbb Q$, giving the stated equation.
+\end{proof}
+
+The released anchor uses two scaling variables and two copies of a
+seven-witness trace-sum condition, hence sixteen witnesses in this module.
+Corollary~\ref{cor:five-anchor} replaces that module by five witnesses.
+It therefore saves eleven variables before any other change and retains
+quadratic residuals, so their sum of squares remains quartic. This count
+concerns the specified module; an implementation should report the exact
+final global count after removing any unused lifting definitions.
+The three displayed residuals have integer coefficients of absolute value
+at most six. This is an exact replacement, with no change to the arithmetic
+meaning or strength of the anchor.
+
+The same method handles arbitrary finite tuples. For a finite nonempty
+set $S$ of rational primes and a positive integer $m$, choose a monic
+polynomial $g\in\mathbb Z[T]$ of degree $m$ whose reductions are
+irreducible modulo every $p\in S$; finite-field irreducible polynomials
+and the Chinese remainder theorem supply one. If $\alpha$ is a root, let
+\[
+ N_m(X_1,\ldots,X_m)=
+ N_{\mathbb Q(\alpha)/\mathbb Q}
+ (X_1+X_2\alpha+\cdots+X_m\alpha^{m-1}).
+\]
+For $p\in S$ the extension is unramified and inert at $p$, and its
+power basis is an integral basis locally. Therefore
+\[
+ v_p(N_m(\mathbf x))=m\min_i v_p(x_i).
+\]
+This proves, with no new existential variables, that all coordinates of
+$\mathbf x$ belong to $\bigcap_{p\in S}\mathbb Z_{(p)}$ if and only if
+$N_m(\mathbf x)$ does. It is the norm-form version of
+\cite[Proposition 4.8]{Daans2024}. In the present two-prime, two-input
+case the polynomial $T^2-T-1$ gives precisely the form $F$ above.
+
+\subsection{Precision thresholds and a smaller scalar order}
+
+The following elementary argument isolates exactly what the growth
+comparison needs. It does not establish the arithmetic estimates from
+which it starts.
+
+\begin{proposition}\label{prop:precision-thresholds}
+Let $a,B,n,\Delta\in\mathbb Z$, with $B\ge a\ge1$, let
+$\beta\in\mathbb Q$, and let $H\ge1$ be real.
+Write $h(\beta)=\log\max\{|b|,c\}$ when $\beta=b/c$ is in lowest
+terms with $c>0$. If $\beta\ne n$, let $N$ be the absolute value
+of the numerator of $\beta-n$ in lowest terms.
+Suppose an arithmetic certificate supplies the following estimates
+for some $\kappa>48$,
+$\lambda>12$, and $\mu>24$:
+\begin{enumerate}
+\item if $\Delta\ne0$, then
+$B^2-6<7H|\Delta|^{24/\kappa}$ and $|\Delta|<5B^4$;
+\item if $\Delta=0$, then $\log B>a-3$;
+\item if $\beta\ne n$, then
+$B^2<7HN^{24/\lambda}+6$ and $N\le2e^{h(\beta)}B$;
+\item $h(\beta)\le H a^{24/\mu}$.
+\end{enumerate}
+Put
+\[
+ C_\kappa=7\,5^{24/\kappa}+6,\qquad
+ C_\lambda=7\,2^{24/\lambda}+6,\qquad
+ A_\lambda=\frac{\lambda}{2\lambda-24},\qquad
+ B_\lambda=\frac{12}{\lambda-12}.
+\]
+If
+\[
+ a>\max\left\{6,
+ (C_\kappa H)^{\kappa/(2\kappa-96)},
+ 4A_\lambda\log(C_\lambda H),
+ (4B_\lambda H)^{\mu/(\mu-24)}\right\},
+\]
+then $\Delta=0$ and $\beta=n$.
+\end{proposition}
+\begin{proof}
+For $\Delta\ne0$, absorb the constant six using $B,H\ge1$ to obtain
+$B^{2-96/\kappa}<C_\kappa H$, contradicting $B\ge a$.
+Thus $\Delta=0$. If $\beta\ne n$, put $r=24/\lambda<2$.
+The third hypothesis and $B,H\ge1$ imply
+\[
+ B^{2-r}<C_\lambda H e^{r h(\beta)}.
+\]
+Consequently
+\[
+ \log B<A_\lambda\log(C_\lambda H)+B_\lambda h(\beta)<a/2<a-3,
+\]
+contrary to the second hypothesis.
+\end{proof}
+
+The thresholds $48,12,24$ are thresholds of this particular comparison
+of exponents. This proof does not show that the corresponding boundary
+values are impossible by a different argument.
+
+\begin{corollary}\label{cor:scalar32}
+The choices
+\[
+ (\kappa,\lambda,\mu)=(52,13,32),\qquad a>(21H)^{13/2}
+\]
+satisfy the conclusion of Proposition~\ref{prop:precision-thresholds}.
+If $\log_2H<4783227$, the existing type of anchor with twenty-six
+successive squarings, giving $a\ge3^{2^{25}-1}$, is sufficient.
+\end{corollary}
+\begin{proof}
+Here $C_\kappa<21$, $C_\lambda<32$,
+$A_\lambda=13/2$, $B_\lambda=12$, and $24/\mu=3/4$.
+The assumed lower bound for $a$ implies $a>(48H)^4$ because
+$21^{13/2}>48^4$ and $H\ge1$; hence $h(\beta)<a/48$.
+It also implies $a>26\log(32H)$: use $\log(32H)<32H$ and
+$21^{13/2}>832$. Thus the last contradiction reads
+$\log B<(13/2)\log(32H)+12h(\beta)<a/2<a-3$.
+For the numerical anchor,
+\[
+ \log_2\big((21H)^{13/2}\big)
+ <\tfrac{13}{2}(5+4783227)=31091008,
+\]
+whereas
+\[
+ \log_2\big(3^{2^{25}-1}\big)
+ >\tfrac32(2^{25}-1)=50331646.5.
+\]
+\end{proof}
+
+For the source system's scalar batch the order $48$ is used solely to
+obtain $M_5(\beta)^{48}\mid s$, hence
+$h(\beta)\le H\sqrt{|s|}$. Replacing that order by $32$ gives instead
+$h(\beta)\le H|s|^{3/4}$, which Corollary~\ref{cor:scalar32} shows
+is sufficient. Completeness still allows all the required divisibilities:
+the index $s$ is chosen in an arbitrarily divisible nonzero subgroup.
+The batch's recursive power construction uses eight multiplications
+for the required powers $r^2,r^{96}$, and six for $r^2,r^{64}$.
+Thus this change removes two source power definitions. Its exact effect
+on the compiled polynomial must be measured after the full pipeline.
+
+For comparison, orders $49$ and $52$ require the same thirteen terms
+in the logarithm truncation used by the source, but the source's shared
+power recursion is less economical for $(49,13)$: it uses twelve
+multiplications for $r^2,r^{26},r^{98}$ and nine for
+$r^2,r^{26},r^{104}$. A smaller numerical precision does not automatically
+mean fewer variables. Joint addition-chain optimization is the correct
+comparison.
+
+\subsection{Combining square conditions without assuming integrality}
+
+Matiyasevich and Robinson's relation-combining theorem is an essential
+source of small integer Diophantine representations
+\cite{MatiyasevichRobinson1975,Jones1982}. Its integer-domain hypotheses
+must not be silently replaced by rational-domain hypotheses. The
+appropriate rational version is Zhang--Sun
+\cite[Theorem 1.2]{ZhangSun2022}. Their separation parameter is
+$(k+\sum A_i^2)(1+\sum A_i^{-2})$, and their theorem assumes that every
+$A_i$ is nonzero. The following slightly simpler separation bound also
+works and has a direct proof.
+
+\begin{lemma}\label{lem:additive-square-separation}
+Let $k\ge1$. For nonzero $A_1,\ldots,A_k\in\mathbb Q$, put
+\[
+ W=\sum_{i=1}^k(A_i^2+A_i^{-2}),\qquad
+ J(T)=\prod_{\boldsymbol\epsilon\in\{\pm1\}^k}
+ \left(T-\sum_{i=1}^k\epsilon_i W^{i-1}\sqrt{A_i}\right).
+\]
+Then $J\in\mathbb Q[T]$, and $J$ has a rational root if and only if
+all $A_i$ are rational squares. Every complex root of $J$ is nonzero.
+\end{lemma}
+\begin{proof}
+Independently changing the formal sign of each square root fixes the
+product, so its coefficients are rational polynomials in the $A_i$ and
+$W$. Let
+$m=\min_i\sqrt{|A_i|}$, $M=\max_i\sqrt{|A_i|}$, and $\rho=M/m\ge1$.
+The two summands corresponding to maximal and minimal absolute value
+show that $W\ge2\rho^2\ge1+\rho$; the same inequality is immediate
+when both extrema occur at one index. Therefore for every $j$,
+\[
+ \sum_{i<j}M W^{i-1}<\frac{M W^{j-1}}{W-1}
+ \le mW^{j-1}.
+\]
+No nonempty signed subsum of the radicals can vanish, since its last
+term has larger absolute value than the sum of the preceding terms.
+In particular every root is nonzero. If a displayed root is rational,
+every automorphism of the multiquadratic splitting field fixes it.
+Subtracting its conjugate would give a nonempty signed subsum if any
+radical changed sign. Thus every radical is fixed by the full Galois
+group and is rational. The converse is immediate.
+\end{proof}
+
+There is also an explicit one-variable polynomial that enforces the
+nonzero condition itself. Put
+\[
+ S=\prod_{i=1}^k A_i,\qquad D=S^2,\qquad
+ N=D\sum_i A_i^2+\sum_i\prod_{j\ne i}A_j^2
+\]
+and define
+\[
+ K_k(\mathbf A,U)=\prod_{\boldsymbol\epsilon\in\{\pm1\}^k}
+ \left(1-U\sum_{i=1}^k\epsilon_i
+ S^{2k-2i+1}N^{i-1}\sqrt{A_i}\right).
+\]
+Independent sign changes show that this is an integer-coefficient
+polynomial in $\mathbf A,U$. If $S=0$ it is identically $1$.
+If $S\ne0$, the signed sum in each factor is
+$S^{2k-1}\sum_i\epsilon_iW^{i-1}\sqrt{A_i}$, so
+Lemma~\ref{lem:additive-square-separation} proves
+\[
+ \exists U\in\mathbb Q:K_k(\mathbf A,U)=0
+ \quad\Longleftrightarrow\quad
+ A_i\in\mathbb Q^{\times2}\text{ for all }i.
+\]
+This polynomial has degree $2^k$ in $U$; total degree grows
+exponentially with $k$. To allow zero square inputs, take the finite
+product, over $I\subseteq\{1,\ldots,k\}$, of
+\[
+ \sum_{i\notin I}A_i^2+K_{|I|}((A_i)_{i\in I},U)^2,
+\]
+using zero in place of $K_0$ for the empty subset. One shared rational
+$U$ suffices for all branches. This treats zero inputs exactly, but its
+expanded degree is correspondingly large.
+
+Private square roots can be replaced in this way only when no other
+condition needs their particular values or signs. If roots occur elsewhere,
+the complete finite algebraic system must be compressed, as below.
+For example, replacing $y^2=A,\ y=1$ by the bare condition that $A$
+is a square would be invalid.
+
+\subsection{One variable for finite choices and nonzero conditions}
+
+The useful general principle is that the number of finite algebraic
+choices need not equal the number of rational witnesses. Sun's recent
+preprint \cite[Sections 10.3--10.6]{Sun2026Rational86} uses this principle
+for a bounded-variable undecidability construction. The elementary
+algebra below is independently verifiable and does not depend on that
+preprint's height or prime-pattern estimates. Its undecidability result
+is not itself a definition of $\mathbb Z$ inside $\mathbb Q$.
+
+\begin{lemma}\label{lem:finite-separation}
+Let $A$ be a reduced finite-dimensional $\mathbb Q$-algebra of dimension
+$d\ge1$, generated by $N\ge1$ elements $a_1,\ldots,a_N$. Some integer
+\[
+ 1\le b\le1+(N-1)\binom d2
+\]
+makes $z_b=a_1+ba_2+\cdots+b^{N-1}a_N$ have distinct values under all
+$d$ embeddings $A\to\overline{\mathbb Q}$. For such a $b$, the
+characteristic polynomial of multiplication by $z_b$ has a rational root
+if and only if $A$ has a $\mathbb Q$-algebra homomorphism to $\mathbb Q$.
+\end{lemma}
+\begin{proof}
+Two different embeddings differ on a generator, so equality of their
+values on $z_b$ is a nonzero polynomial equation in $b$ of degree at most
+$N-1$. At most $(N-1)\binom d2$ values are bad. For a good value the
+characteristic polynomial has precisely the distinct embedding values
+as its roots. If one value is rational, the absolute Galois group fixes
+that value and hence its unique corresponding embedding; the values
+of all generators are therefore rational. Conversely a rational
+homomorphism supplies a rational root.
+\end{proof}
+
+\begin{lemma}\label{lem:reciprocal-guard}
+Suppose
+\[
+ P_{\mathbf x}(T)=T^d+\sum_{j=1}^d
+ \frac{N_j(\mathbf x)}{B(\mathbf x)}T^{d-j}
+\]
+is monic on $B\ne0$, and let $H(\mathbf x)$ be the product of the
+numerators of all further required inequations. Then
+\[
+ \Psi(\mathbf x,U)=1+\sum_{j=1}^d
+ N_j(\mathbf x)B(\mathbf x)^{2j-1}H(\mathbf x)^jU^j
+\]
+has a rational root in $U$ exactly when $BH\ne0$ and $P_{\mathbf x}$
+has a nonzero rational root.
+\end{lemma}
+\begin{proof}
+If $BH=0$, all nonconstant terms vanish and $\Psi=1$.
+If $BH\ne0$, set $L=B^2H$. For $U\ne0$ the identity
+\[
+ \Psi(\mathbf x,U)=(LU)^dP_{\mathbf x}(1/(LU))
+\]
+proves the assertion, and $\Psi(\mathbf x,0)=1$ excludes $U=0$.
+\end{proof}
+
+Zero roots are covered by taking the two finite alternatives $P(T)$
+and $P(T-1)$: a rational root of one of them is nonzero. Thus nonzero
+conditions need no additional inverse variable once one finite-choice
+variable is already present. Equations depending only on $\mathbf x$
+can be imposed by adding their squares to $\Psi^2$, and finite alternatives
+can be combined by multiplying the resulting polynomials, using the
+same $U$ in every factor.
+
+For completeness, this also handles nonreduced finite algebras and
+additional equations involving their generators. Quotient by the ideal
+of those equations, and discard factors violating an inequation by
+localizing at its value; these are finite-dimensional algebra operations.
+Pass to the reduced quotient. In characteristic zero its nilradical is
+the kernel of the trace pairing $(a,b)\mapsto\operatorname{Tr}(ab)$:
+a product decomposition into Artinian local factors reduces the assertion
+to the nondegeneracy of the trace pairing of a separable field extension.
+Gaussian elimination then computes this quotient. When coefficients depend
+on free parameters, branch on the finitely many pivots being zero or
+nonzero and record all denominators. On every branch apply
+Lemma~\ref{lem:finite-separation}, enforce the nonzero discriminant of
+the selected characteristic polynomial, and apply
+Lemma~\ref{lem:reciprocal-guard}. This is an effective finite construction
+when the original algebra has a fixed finite basis, for example for a
+tower of monic equations. It preserves exceptional specializations.
+
+Dropping the separation condition is unsound: $x^2=y^2=2$ has no
+rational pair, but the characteristic polynomial for $x+y$ is
+$T^2(T^2-8)$ and has the rational root zero. Its repeated roots signal
+precisely the collision. Using $x+2y$ instead gives
+$T^4-20T^2+36$, with no rational root.
+
+\subsection{How MRDP transfers, and what it does not compress}
+
+Let $P(t,\mathbf y)$ be an integer-coefficient definition of $\mathbb Z$
+in $\mathbb Q$ with $n$ witnesses and degree $d$. For an arbitrary
+integer polynomial $f(X_1,\ldots,X_m)$, define
+\[
+ Q_f(\mathbf X,\mathbf Y_1,\ldots,\mathbf Y_m)=
+ f(\mathbf X)^2+\sum_{i=1}^mP(X_i,\mathbf Y_i)^2.
+\]
+Then $f$ has an integer zero if and only if $Q_f$ has a rational zero.
+This uses $m(n+1)$ rational variables and has degree
+$2\max\{\deg f,d\}$. Both directions follow immediately from the
+nonnegativity of rational squares. The transformation is effective.
+
+MRDP yields more than undecidability after this transfer. If
+$S\subseteq\mathbb Q$ is computably enumerable, the integer pairs
+$(a,b)$ with $b>0$, $\gcd(a,b)=1$ and $a/b\in S$ form a computably
+enumerable subset of $\mathbb Z^2$. MRDP supplies an integer polynomial
+$F(a,b,\mathbf z)$ defining those pairs using integer witnesses.
+Apply $P$ to every integer variable in $F$ and add the equation $bq-a=0$.
+The resulting rational existential formula defines $S$.
+Consequently, conditional on $P$, the computably enumerable subsets of
+$\mathbb Q$ are exactly the Diophantine subsets of $\mathbb Q$.
+The reverse implication is effective enumeration of rational witness tuples.
+The same argument uniformly in an index gives a universal rational
+Diophantine polynomial.
+
+This conclusion does not permit us to use the small integer universal
+polynomials directly with rational witnesses. Nor can a merely
+integer-valued Diophantine model of arithmetic be identified with the
+ordinary embedded integers without a separate value relation. Universal
+integer formulas, a Diophantine model, an undecidability reduction, and
+an existential definition of the actual subset $\mathbb Z\subset\mathbb Q$
+are distinct statements.
+
+More generally finite unions allow complete reuse of witness coordinates:
+if $S_j$ has a presentation $\exists\mathbf y_j\,f_j(t,\mathbf y_j)=0$,
+then their union has the presentation
+\[
+ \exists(y_1,\ldots,y_N):
+ \prod_j f_j(t,y_1,\ldots,y_{n_j})=0,
+ \qquad N=\max_j n_j.
+\]
+Conjunctions do not in general allow that reuse. Daans--Dittmann--Fehm
+prove an improved existential-rank intersection theorem over fields finitely
+generated over a perfect subfield, and Daans states the usable form
+\cite[Theorem 2.5]{Daans2024}: ranks $m_1,m_2\ge1$ give intersection
+rank at most $m_1+m_2-1$. For a concrete polynomial, an explicit
+transformation such as the finite-algebra construction above is preferable
+to claiming an unimplemented numerical saving from that abstract theorem.
+
+Finally, rational nonnegativity cannot be replaced by three ordinary
+squares: $7$ is not a sum of three rational squares. Clearing a common
+denominator would give $7q^2=a^2+b^2+c^2$; after removing common powers
+of two, the standard mod-eight obstruction contradicts this equation.
+Lagrange's four-square theorem does give every nonnegative rational as a
+sum of four rational squares, by representing the product of numerator
+and denominator and dividing by the denominator squared. General nonlinear
+three-witness definitions require a separate argument.
+
+To compare coefficient sizes, first clear numerical denominators and
+normalize the polynomial to primitive integer content. Rational invertible
+changes of witness coordinates and nonzero constant rescaling preserve the
+projection, but may change coefficient height. Replacing large constants
+by addition or multiplication chains decreases coefficient size at the cost
+of new variables; under the requested priority of minimizing variables,
+such a trade is secondary to exact variable elimination.

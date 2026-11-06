@@ -1,0 +1,142 @@
+% Input fragment extending finite_fibre_strengthening.tex to other fields.
+\subsection{Finite-fiber compression over other fields}
+\label{subsec:finite-fibre-fields}
+
+The one-variable compression theorem does not require an ordering. The
+place where rational squares were used was the conjunction of finitely
+many equations. Over any field that is not algebraically closed, a
+homogenized irreducible polynomial supplies the needed replacement.
+
+\begin{lemma}\label{lem:anisotropic-binary-conjunction}
+Let $K$ be a field that is not algebraically closed. There is a homogeneous
+polynomial $H(A,B)\in K[A,B]$ of degree $e\ge2$ such that
+\[
+ H(a,b)=0\quad\Longleftrightarrow\quad a=b=0
+ \qquad(a,b\in K).
+\]
+Consequently any finite system of polynomial equations over $K$ can be
+combined into one polynomial equation without introducing variables.
+For $r$ equations of degrees at most $D$, a balanced combination has
+degree at most $e^{\lceil\log_2 r\rceil}D$ when $r\ge1$.
+\end{lemma}
+\begin{proof}
+Choose a monic irreducible polynomial $h(T)\in K[T]$ of degree $e\ge2$,
+and homogenize it:
+\[
+ H(A,B)=B^e h(A/B).
+\]
+This notation denotes the polynomial obtained by homogenization, also
+at $B=0$. If $b\ne0$, then $H(a,b)=0$ would give a root $a/b$ of $h$
+in $K$, contradicting irreducibility. If $b=0$, monicity gives
+$H(a,0)=a^e$, so $a=0$. Conversely $H(0,0)=0$.
+
+To combine residuals $f_1,\ldots,f_r$, pad the list with zero
+polynomials to a power of two, and repeatedly apply $H$ to pairs.
+At each stage a combined residual vanishes exactly when both its
+inputs vanish. After $\lceil\log_2 r\rceil$ stages, the one remaining
+equation is equivalent to the whole system. Each stage multiplies
+the degree bound by at most $e$.
+\end{proof}
+
+\begin{theorem}\label{thm:finite-fibre-arbitrary-field}
+Let $K$ be a field of characteristic zero that is not algebraically
+closed. Let $X\subseteq\mathbb A^{d+m}_K$ be constructible over $K$,
+and suppose every geometric fiber of the coordinate projection
+$\pi:X\to\mathbb A^d_K$ is finite. There is a polynomial
+$P(\mathbf x,U)\in K[\mathbf x,U]$ such that
+\[
+ \mathbf a\in\pi(X(K))
+ \quad\Longleftrightarrow\quad
+ \exists U\in K:\ P(\mathbf a,U)=0
+ \qquad(\mathbf a\in K^d).
+\]
+For a number field $K$, one may take $P\in\mathcal O_K[\mathbf x,U]$,
+and the construction is effective from equations and inequations for
+$X$. More generally it is effective whenever the coefficient field is
+presented with the algebraic operations needed for factorization,
+elimination, and primitive-element computation, and an irreducible
+polynomial of degree at least two is available effectively.
+\end{theorem}
+\begin{proof}
+The algebraic part of Theorem~\ref{thm:finite-fibre-one-variable} works
+over $K$. Indeed, $K$ is infinite and perfect. After passing to reduced
+affine pieces and localizing on each irreducible image closure, the
+generic finite algebra is a product of finite separable field extensions
+of the image's function field. The primitive element theorem gives
+a monic polynomial presentation. Clearing the finitely many
+denominators extends the presentation over a nonempty open subset.
+The complement has smaller image dimension, so induction produces
+finitely many charts, including every exceptional finite fiber.
+
+Thus, on each chart, a point lies in the image precisely when
+\[
+ f_1(\mathbf x)=\cdots=f_r(\mathbf x)=0,
+ \qquad g(\mathbf x)\ne0,
+\]
+and a certain monic polynomial
+\[
+ h(T)=T^n+\sum_{j=1}^n\frac{N_j(\mathbf x)}{B(\mathbf x)}T^{n-j}
+\]
+has a root in $K$. All coefficient denominators are nonzero on the
+chart; enlarge its guard to include them. For $\epsilon\in\{0,1\}$,
+let $h_\epsilon(T)=h(T-\epsilon)$ and write its coefficients with
+the same common denominator $B$. Define
+\[
+ \Psi_\epsilon(\mathbf x,U)
+ =1+\sum_{j=1}^n
+      N_{\epsilon,j}(\mathbf x)
+      B(\mathbf x)^{2j-1}g(\mathbf x)^jU^j.
+\]
+When $Bg=0$ or $U=0$, this expression is $1$. Otherwise, with
+$L=B^2g$, the exact identity
+\[
+ \Psi_\epsilon(\mathbf x,U)
+   =(LU)^n h_\epsilon(1/(LU))
+\]
+shows that it has a zero precisely when $h_\epsilon$ has a nonzero
+root. A root of $h$ gives a nonzero root of at least one of $h(T)$
+and $h(T-1)$; in particular a zero root becomes the root one after
+the translation. Hence these two choices cover all roots.
+
+For each choice of chart and $\epsilon$, apply
+Lemma~\ref{lem:anisotropic-binary-conjunction} to the residuals
+$f_1,\ldots,f_r,\Psi_\epsilon$. This gives one equation in
+$\mathbf x,U$ equivalent over $K$ to their conjunction. Take the
+product of these equations over the finitely many charts and the
+two translations. A finite product vanishes if and only if one
+factor vanishes, which proves the assertion without adding another
+witness. For an empty constructible set take $P=1$.
+
+If $K$ is a number field, clearing a common numerical denominator
+places the finitely many coefficients in $\mathcal O_K$ without
+changing the zero set. All algebraic operations in the construction
+are effective over a number field. The more general effective
+assertion follows under the stated algorithmic hypotheses.
+\end{proof}
+
+For number fields, Lemma~\ref{lem:four-variable-anisotropic} supplies
+a quadratic form in four arguments that vanishes only at the zero
+tuple. A balanced tree of that form combines $r$ residuals of degree
+at most $D$ with degree at most $2^{\lceil\log_4 r\rceil}D$, again
+without adding variables. Thus the same witness bound is available
+even for totally imaginary number fields; the failure of sums of
+squares there is not an obstruction to this compression argument.
+
+\paragraph{Why the field hypothesis cannot simply be omitted.}
+Over an algebraically closed field $K$, take $X$ to be the origin in
+$\mathbb A^2_K$, with the identity projection to $\mathbb A^2_K$.
+All geometric fibers are finite. Its rational image nevertheless
+cannot be written as
+\[
+ \{(a,b)\in K^2:\exists U\in K,\ P(a,b,U)=0\}
+\]
+for a single polynomial $P$. If $P$ has positive degree in $U$,
+then every point in the nonempty open subset where its leading
+$U$-coefficient is nonzero has a lift, since every nonconstant
+polynomial over $K$ has a root. The image therefore cannot be a
+single point. If $P$ is independent of $U$, a nonconstant polynomial
+in two variables has a zero set of dimension at least one whenever
+it has a zero; a constant gives either the empty set or the whole
+plane. Neither possibility gives exactly the origin. Thus
+non-algebraic-closedness is essential for this general one-equation,
+one-additional-variable statement.

@@ -1,0 +1,207 @@
+\section{A new quartic with 1367 variables}
+\label{sec:new-quartic}
+
+The finite-algebra construction minimizes the number of coordinates by
+allowing a very high degree.  For a degree-four presentation, auxiliary
+coordinates serve a different purpose: they keep each arithmetic relation
+quadratic.  We now apply this method to the shared-point arithmetic system,
+using the common height point, the fixed square scales, comparison order
+$52$, scalar order $32$, and the semilocal size condition.  The scalar pole
+in this quartic retains its preparation coordinate.  The separate
+normalization which removes that coordinate in the smallest-variable
+construction is not used here; its extra arithmetic would cost more
+quadratic intermediate coordinates.
+
+\subsection{The exact arithmetic conventions}
+
+Represent a rational intermediate value by an affine linear form in the
+coordinates already introduced.  Addition, subtraction, and multiplication
+by a fixed rational coefficient then require no new coordinate.  A product
+of two nonconstant affine forms $a,b$ is represented by one coordinate $v$
+and the quadratic equation $v-ab=0$.  A rational inverse uses $av-1=0$.
+More generally, an arbitrary quadratic expression $q$ can be assigned to
+one new coordinate with $v-q=0$.  Common expressions are reused.
+
+An element of $K=\mathbb Q(\sqrt2)$ is a pair of rational affine forms.
+Its product with another pair is assigned to two coordinates, using
+\[
+ v_0-a_0b_0-2a_1b_1=0,\qquad
+ v_1-a_0b_1-a_1b_0=0.
+\]
+This costs two coordinates, although an arithmetic algorithm minimizing
+scalar multiplications might instead use three products and free additions.
+The objective here is the number of existential coordinates.  An inverse
+uses two coordinates and
+\[
+ a_0v_0+2a_1v_1=1,\qquad a_0v_1+a_1v_0=0.
+\]
+These equations hold exactly when the represented element is nonzero and
+$(v_0,v_1)$ is its inverse.  They enforce the necessary domain without
+introducing a separate norm and a separate inverse of that norm.
+
+When the domain lemmas above already prove that $b\ne0$, a quotient
+$z=a/b$ uses just the two equations
+\[
+ b_0z_0+2b_1z_1=a_0,\qquad b_0z_1+b_1z_0=a_1.
+\]
+Their determinant is $b_0^2-2b_1^2\ne0$, so their solution is unique.
+This rule is used for doubling slopes, local parameters, logarithm ratios,
+and the scalar local-parameter ratio, with the domain proof supplied in
+the preceding subsection.  The subtraction slope retains an explicit
+inverse of the difference of abscissas.  These domain arguments are part
+of the proof of the quartic presentation; a coefficient-table check alone
+would not justify dropping a denominator condition.
+
+\subsection{Reusing polynomial evaluations}
+
+Two elementary reorganizations save many auxiliary coordinates.  First,
+write a polynomial with rational coefficients in blocks:
+\[
+ G(W)=\sum_{r=0}^s W^{br}
+               \left(\sum_{j=0}^{b-1}c_{br+j}W^j\right).
+\]
+After computing $1,W,\ldots,W^b$, each parenthesized expression is an
+affine linear combination of their two rational components.  Horner
+evaluation in $W^b$ finishes the calculation.  This is the
+Paterson--Stockmeyer principle \cite{PatersonStockmeyer1973}.  Here $b=3$
+for $G_{12}$ and $b=4$ for $G_3$.  The identity is obtained simply by
+grouping the coefficients according to their exponent modulo $b$; no
+approximation of the logarithm is introduced by this evaluation rule.
+
+Second, the eighteen field tests $D_j$ are the same at every coordinate
+detector.  If $\delta=A\lambda-1$, the corresponding factor is
+\[
+ 1+q_mD_j^2,\qquad q_m=R^{1-2m}\delta^{-2m-2},
+ \qquad m\in\{1,16,52\}.
+\]
+For each order $m$, form once the polynomial
+\[
+ E_m(U)=\prod_{j:m_j=m}(1+UD_j^2)\in K[U].
+\]
+Its coefficients are the elementary symmetric polynomials in the listed
+$D_j^2$.  There are respectively ten, two, and six factors.  For each of
+the nine detectors, evaluate $E_1(q_1)E_{16}(q_{16})E_{52}(q_{52})$.
+This is exactly the product defining $W$, with the field coefficients
+reused across all nine detectors.
+
+Finally, for $W=w_0+w_1\sqrt2$,
+\[
+ \operatorname{Tr}(W^{-1})=\frac{2w_0}{w_0^2-2w_1^2},\qquad
+ B=\frac{R(w_0^2-2w_1^2)^2}{4w_0^2}.
+\]
+The inverse of $w_0$ enforces the trace condition.  Since $w_0\ne0$,
+the norm of $W$ is nonzero in the quadratic field.  Together with
+$R\ne0$, this also gives $B\ne0$, so an additional inverse of $B$
+would be redundant.
+
+\subsection{Finite choices at degree four}
+
+The point occurrences use four rational halfpoint coordinates and two
+curve equations.  The three-coordinate quartic chart is more economical
+for finite-algebra elimination, but is not needed in this degree-four
+construction.  The nine point occurrences are the four root points and
+the five shared comparison points; the first comparison point is also
+the scalar-height point.
+
+The fixed square scales proved above remove all zero-component case
+choices.  Only the scalar correction remains.  For each
+$p\in\{2,3,5,7,11,13,17\}$ introduce a Boolean coordinate $\epsilon_p$,
+and introduce one sign coordinate $\epsilon_-$.  Impose
+$\epsilon^2-\epsilon=0$ for all eight coordinates and compute
+\[
+ c=(1-2\epsilon_-)\prod_p\bigl(1+(p-1)\epsilon_p\bigr).
+\]
+Over $\mathbb Q$, this realizes exactly the required 256 signed squarefree
+corrections.  Unlike a finite product of alternative polynomials, this
+keeps the total degree four after quadratic compilation, at the cost of
+eight coordinates.
+
+\subsection{Removing redundant quadratic coordinates}
+
+The compiler next performs two reversible operations.  Replacing a
+residual $q_i$ by $q_i+cq_j$, while retaining $q_j$, does not change the
+common zero set.  If a residual has the form
+\[
+                  av+q=0,\qquad a\in\mathbb Q^\times,
+                  \quad v\notin q,
+\]
+we may substitute $v=-q/a$ in all the other residuals and remove this
+coordinate and equation.  Every zero of the new system reconstructs one
+and only one value of $v$; the converse follows by substitution.  The
+compiler accepts such a substitution only if every resulting residual
+still has degree at most two.  In particular a quadratic replacement is
+permitted only when that coordinate occurs linearly elsewhere.  Its exact
+row operations and substitutions are retained as a replayable certificate.
+
+After these operations, clear the rational denominator of each residual
+and divide its integer coefficients by their common divisor.  Neither
+operation changes its rational zero set.  If the resulting residuals are
+$q_1,\ldots,q_s$, define
+\[
+                         P=\sum_{i=1}^s q_i^2.
+\]
+The rational zero set of $P$ is exactly their common zero set, because
+each summand is nonnegative.  All these equivalences concern rational
+solutions and do not require numerical sampling.
+
+\begin{theorem}[The supplied quartics]\label{thm:quartic-1367}
+Assume the source arithmetic inputs and Sun's simultaneous prime-pattern
+theorem used in the shared-point construction.  The supplied polynomial
+$P_{1367}$ has 1367 total variables, 1366 existential witnesses, and total
+degree four, and defines $\mathbb Z$ in $\mathbb Q$.  It is specified by
+a complete sparse coefficient table over $\mathbb Z[\kappa]$, where
+\[
+                         \kappa=3^{2^{28}}
+\]
+is a fixed integer, not a coordinate.  There is also a fully expanded
+ordinary integer quartic $P_{1391}$ with 1391 total variables and primitive
+coefficient height less than $2^{1020}$, with the same defining property.
+\end{theorem}
+\begin{proof}
+Apply the just-described rules to the shared-point source with the
+precision and size choices specified at the start of this section.
+Each arithmetic coordinate has its prescribed value, except where the
+explicit finite Boolean choices are intended; the paired quotient domain
+lemmas establish the same assertion for the divisions.  The reversible
+quadratic operations preserve the rational input projection.  The source
+arithmetic theorem therefore identifies the final projection with
+$\mathbb Z$.
+
+The exact implementation introduces 1367 coordinates after sixty
+quadratic-preserving eliminations.  Its 1322 primitive residuals expand
+to 29,419 nonzero terms over $\mathbb Z[\kappa]$.  The independent checker
+replays every arithmetic relation, row operation, and elimination and
+independently convolves every pair of residual terms.  This checks the
+entire sparse table, including mixed coefficients.  Its maximum variable
+degree is exactly four.
+
+For the ordinary integer alternative, start with the fixed integer
+$3^{16}$ and use twenty-four successive squarings to compute
+$3^{16\cdot2^{24}}=3^{2^{28}}$.  The associated coordinates are retained
+to avoid expanding this integer into the coefficients.  Their defining
+equations have degree at most two and uniquely determine their values.
+The resulting 1391-coordinate system has 1346 residuals and 29,489
+nonzero expanded integer terms.  The independent expansion check gives
+coefficient bit length at most 1020.  The coefficient content is one.
+These facts prove the degree, height, and count assertions.
+\end{proof}
+
+The supplied data are in
+\nolinkurl{research/phase2/quartic/quartic-best/polynomial.json.gz} and
+\nolinkurl{research/phase2/quartic/quartic-small-coefficients/polynomial.json.gz}.
+An entry $[\mathbf m,k,c]$ means $c\kappa^k\prod_{i\in\mathbf m}X_i$,
+with repetitions in $\mathbf m$ recording powers.  The index zero is the
+input.  In the ordinary integer table every $k$ is zero.  This convention,
+the complete tables, and the exact construction give ordinary finite
+integer polynomials.  No gate or coefficient symbol is silently omitted
+from the variable count.
+
+The program \nolinkurl{build_shared_quartic.py} is a producer; it is not
+trusted by the verification program
+\nolinkurl{verify_shared_quartic.py}, which does not import it.
+The separate mathematical review checks the source formulas and the
+domain lemmas.  Neither computational check is claimed to verify the
+external arithmetic theorems.  No global minimality claim is made for
+1367 variables: the theorem supplies a concrete upper bound for the
+quartic problem, while the unconditional lower bound for this
+sum-of-squares architecture is five total variables.

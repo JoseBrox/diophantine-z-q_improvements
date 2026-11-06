@@ -1,0 +1,375 @@
+\section{Forty-one contacts with fixed coefficients}\label{sec:sp-contacts}
+
+Set
+\[
+ \mathcal D=\{0,1,2401,-343/32\},\qquad
+ R=47027=31\cdot37\cdot41,
+\]
+\[
+ W=25878772920,\qquad c=18484837801,
+ \qquad V_0=32W=828120733440.
+\]
+For $k\le9$ rational targets $a_1,\ldots,a_k$, put
+$A_i=Ra_i+3$. With common variables $u,v$, set $w_i=A_iv-u$.
+The contact list is
+\begin{equation}\label{eq:sp-fixed-contacts}
+ \frac v{V_0},\qquad u-\delta v\ (\delta\in\mathcal D),
+ \qquad -(w_i-\delta v)\
+       (\delta\in\mathcal D,\ 1\le i\le k).
+\end{equation}
+It contains $5+4k$ entries. Every entry is required to be nonzero.
+Its normalizing denominators have prime support in $S_*$. Here
+$M(u:v)=M(u/v)$: at each prime $q$ the five contact-form valuations
+are normalized by subtracting $\min(v_q(u),v_q(v))$. The radical
+records odd normalized valuations outside $S_*$.
+
+\begin{lemma}\label{lem:sp-contacts}
+For every list of at most nine integers $a_i$, there are integers $u,v$
+for which all entries of \eqref{eq:sp-fixed-contacts} are positive
+ordinary primes exceeding any prescribed bound and congruent to $c$
+modulo $W$.
+\end{lemma}
+\begin{proof}
+Use the lattice coset
+\begin{equation}\label{eq:sp-lattice}
+ v=32W(c+Wy),\qquad u=c+Wx,\qquad x,y\in\mathbb Z.
+\end{equation}
+Every divided form in \eqref{eq:sp-fixed-contacts} is integral and
+congruent to $c$ modulo $W$. Indeed $v/32$ is divisible by $W$,
+and $A_i$ is integral. The integer $c$ is $1$ modulo $8$ and
+modulo every odd prime at most $29$ other than $7$, where it is $3$.
+These are the required initial prime and successor conditions.
+
+Duplicate targets may be removed when applying the counting theorem;
+the resulting values also satisfy their repeated occurrences. For distinct
+targets, all forms are pairwise nonproportional over $\mathbb Q$.
+Apart from $v/V_0$, their slopes are
+\[
+ \mathcal S=\mathcal D\cup\bigcup_i(A_i-\mathcal D).
+\]
+The only nonzero integral differences of elements of $\mathcal D$ are
+$\pm1,\pm2400,\pm2401$, none divisible by $31$. Thus distinct
+secondary families cannot meet. The integral sums of two elements of
+$\mathcal D$ are
+\[
+ 0,1,2,2401,2402,4802.
+\]
+Their residues modulo $31$ are $0,1,2,14,15,28$, so none equals
+$A_i\equiv3\pmod{31}$. Hence no secondary slope is a primary slope.
+
+We verify local admissibility, including the successor exclusions.
+Fix a prime $p>29$. The map in \eqref{eq:sp-lattice} is invertible
+modulo $p$. Write $\gamma=V_0^{-1}\in\mathbb F_p$. For
+$p\in\{31,37,41\}$, all $A_i$ are $3$ modulo $p$, so the
+image of $\mathcal S$ has at most eight elements. For $p\ge43$
+it has at most forty elements. Choose distinct
+$b,e\in\mathbb F_p\setminus\mathcal S$. Reverse their order if
+necessary to ensure $e-b\ne-\gamma$, and put
+\[
+ v=(e-b)^{-1},\qquad u=bv.
+\]
+For every $s\in\mathcal S$,
+\[
+ u-sv=v(b-s)\ne0,\qquad u-sv+1=v(e-s)\ne0.
+\]
+Also $\gamma v$ and $\gamma v+1$ are nonzero. The reversal is
+possible because $p$ is odd and $\gamma\ne0$. This proves the
+required simultaneous nonvanishing at every prime above $29$.
+
+There is a nonempty real cone on which all the forms are positive:
+take $v>0$ and $u/v>\max_i|A_i|+2413$. Choose a closed box in
+this cone. The source prime-pattern theorem applies to the fixed affine
+system on this box and the lattice coset. To use the source fiber sieve,
+add an unused third coordinate. A fiber of one contact form is then a
+two-dimensional affine plane. The other zero loci on it are distinct
+lines, outside the fixed determinant primes and the prime value defining
+the fiber. This follows because the original forms are homogeneous
+and pairwise nonproportional in $(u,v)$. The fixed determinant primes
+are included in the initial cutoff. Thus the source uniform fiber
+estimate applies, with constants depending on the fixed targets.
+
+More explicitly, if $m$ is the number of distinct forms and $L$ is
+the initial sieve cutoff, the source lower estimate has the form
+\[
+ \frac{c_1 X^3}{(\log X)^m(\log L)^{c_2}},
+\]
+whereas the patterns failing the ordinary-prime order conditions have
+upper bound
+\[
+ O\!\left(\frac{X^3}{L(\log X)^m}\right)
+       +o\!\left(\frac{X^3}{(\log X)^m}\right).
+\]
+The constants are fixed after the target list and box are fixed.
+The finitely many small-prime choices above preserve positivity of the
+singular product; for large primes its unmodified factors are
+$1+O(p^{-2})$, and the moving successor exclusions give the displayed
+fixed power of $\log L$. Choose $L$ sufficiently large, then $X$
+sufficiently large. A surviving pattern has all the required ordinary
+prime values. The box may be dilated so that those values exceed any
+prescribed bound.
+\end{proof}
+
+\begin{lemma}\label{lem:sp-shared-height}
+Suppose every contact radical belonging to the slopes $u/v,w_i/v$
+in \eqref{eq:sp-fixed-contacts} has its $K$th power dividing a nonzero
+integer $N$. Then
+\[
+ h(a_i)<2H|N|^{24/K}+14.
+\]
+If the targets include a common nonzero denominator $e$ and the two
+coefficients of $e\,x(Q)$ for a point $Q\in G$, then
+\begin{equation}\label{eq:sp-shared-height}
+ h(x(Q))<7H|N|^{24/K}.
+\end{equation}
+\end{lemma}
+\begin{proof}
+Since $A_i=u/v+w_i/v$, the contact-height bound gives
+\[
+ h(a_i)\le2H|N|^{24/K}+2\log2+\log3+\log R
+         <2H|N|^{24/K}+14.
+\]
+Writing $e\,x(Q)=a+b\sqrt2$, one has
+\[
+ h(x(Q))\le h(a)+h(b)+h(e)+h(\sqrt2)+\log2.
+\]
+The additive term after substitution is less than $50$, and the fixed
+constant $H$ is greater than $50$. This proves
+\eqref{eq:sp-shared-height}.
+\end{proof}
+
+\section{One simultaneous comparison at precision sixty-four}
+\label{sec:sp-comparison}
+
+Fix nonzero $Q_i=n_iP_*$ for $1\le i\le4$, rational proxies $b_i$,
+and a common nonzero $J=jP_*$. Put $Q_0=P_*$. At each contact choose
+nonzero points $X_0=hP_*$ and $X_i=m_iP_*$, and set $Y_i=X_i-4Q_i$.
+The unequal-abscissa subtraction charts are imposed. Use the truncated logarithm $L$ from~\eqref{eq:log}.
+Test order one for the eleven field expressions
+\[
+ f(X_i)\ (0\le i\le4),\qquad f(J^\sigma),\qquad
+ f(Y_i^\sigma)\ (0\le i\le4),
+\]
+and order $64$ for the nine expressions
+\[
+ \frac{L(z(X_i))}{L(z(X_0))}-b_i
+       \ (1\le i\le4),\qquad
+ \frac{z(Y_i^\sigma)}{z(J^\sigma)}\ (0\le i\le4).
+\]
+The displayed denominators have inverse witnesses. For a field test
+$a+b\sqrt2$ of order $L$, use the rational tests
+$(\theta^2-2)b$ and $a+\theta b$, both of order $L$, together
+with $\theta^2-2$ at order one. Thus there are $41$ rational
+tests. A fixed binary norm batch, including the constant leaf $1$,
+imposes these tests at every prime outside $S_*$ where the contact
+value has odd valuation.
+
+\begin{lemma}\label{lem:sp-comparison}
+At each such prime $q$, the comparison certificate implies
+$b_i\in\mathbb Z_q$ and $b_i\equiv n_i\pmod{q^{64}}$.
+If $b_i=n_i$, any finite collection of these certificates at ordinary
+primes can be satisfied simultaneously.
+\end{lemma}
+\begin{proof}
+The root test selects a place above $q$. The conjugate parameter ratios
+give
+\[
+ h\equiv4\pmod{q^{64}},\qquad
+ m_i\equiv4n_i\pmod{q^{64}},
+\]
+because $j$ is an integer. In particular $h$ is a $q$-unit.
+The formal logarithm tail begins in degree $65$, and the source formal
+expansion gives $v(\ell(z)-L(z))\ge65v(z)$ at these primes.
+Because $h$ is a unit, $v(z(X_i))\ge v(z(X_0))$. Dividing the
+tail estimate by the parameter of $X_0$ therefore gives
+\[
+ \frac{L(z(X_i))}{L(z(X_0))}
+       \equiv m_i/h\pmod{q^{64}}.
+\]
+Here integrality of the index ratio follows from $h$ being a unit;
+all truncated coefficient denominators are units since $q>76176$. The primary
+tests now prove the assertion.
+
+For completeness, let $h_q,j_q$ be the source ordinary local witnesses
+at each selected place. Choose a positive common multiple $j$ of the
+nonzero $j_q$. The congruences
+\[
+ t_q\equiv1\pmod{|j_q|},\qquad
+ h_qt_q\equiv4\pmod{q^{64+v_q(j)}}
+\]
+are compatible, since the original local witnesses give
+$h_q\equiv4\pmod{q^{v_q(j_q)}}$. Choose a solution with
+$h_qt_q\notin\{0,4,-4\}$. Set
+\[
+ J=jP_*,\qquad X_0=h_qt_qP_*,\qquad X_i=h_qt_qn_iP_*.
+\]
+The first congruence preserves the required formal subgroups; the
+second gives order $64$ relative to $J$. The excluded values ensure
+every subtraction chart is valid, because $n_i\ne0$. Choose consistent
+places at repeated primes and then choose the common $\theta$ by CRT.
+The norm values are units at the corresponding positive prime contacts,
+so the specialized parity completeness supplies the remaining witnesses.
+\end{proof}
+
+\section{Lucas growth and the defining relation}\label{sec:sp-lucas}
+
+\begin{lemma}\label{lem:sp-lucas}
+Suppose $s,t,z\in\mathbb Z$, $|s|=a\ge7$, $z\ne0$, and
+\begin{equation}\label{eq:sp-lucas}
+ t^2-s(s-2)tz+(s-2)^2z^2=1.
+\end{equation}
+Then $|t|>\exp(a-3)$. Conversely, for every such $s$ there are
+positive integers $t,z$ satisfying \eqref{eq:sp-lucas}.
+\end{lemma}
+\begin{proof}
+Put $w=\operatorname{sgn}(s)(s-2)z$. Then
+$t^2-atw+w^2=1$. Let
+$\rho=(a+\sqrt{a^2-4})/2$, and define
+$U_0=0$, $U_1=1$, $U_{k+1}=aU_k-U_{k-1}$.
+Every positive norm-one unit of $\mathbb Z[\rho]$ is a power of
+$\rho$: multiply it by a power of $\rho$ to obtain
+$v\in[1,\rho)$, write $v=A+B\rho$, and observe that
+\[
+ B=\frac{v-v^{-1}}{\rho-\rho^{-1}}\in[0,1)\cap\mathbb Z.
+\]
+Thus $B=0$ and $v=1$. Apply this to either $t-\rho w$ or its
+negative. Since $w\ne0$, the identities
+\[
+ \rho^k=U_k\rho-U_{k-1},\qquad
+ \rho^{-k}=U_{k+1}-U_k\rho
+\]
+give some $k\ge1$ with $|w|=U_k$ and
+$|t|\in\{U_{k-1},U_{k+1}\}$.
+
+For $s>0$, reduction modulo $a-2$ gives $U_k\equiv k$, so
+$k\ge a-2$. For $s<0$, reduction modulo $a+2$ gives
+$U_k\equiv(-1)^{k-1}k$, so $k\ge a+2$.
+Induction gives $U_k\ge(a-1)^{k-1}$, hence
+\[
+ |t|\ge(a-1)^{a-4}>\exp(a-3).
+\]
+For the last inequality use $a-1\ge6>e^{3/2}$ and
+$3(a-4)/2\ge a-3$. Conversely take $t=U_{k+1}$ and
+$z=U_k/(a-2)$ with $k=a-2$ if $s>0$; take
+$z=U_k/(a+2)$ with $k=a+2$ if $s<0$.
+\end{proof}
+
+For the rational input $X$, set $\beta=X^2+2$. Choose nonzero
+$A=nP_*,S=sP_*,T=tP_*,Z=zP_*$. For the anchor, let $\mathcal T(t)$ be the seven-witness formula
+\[
+ u_0^2-2u_1^2-3u_2^2+6u_3^2=1,\qquad
+ (t-2u_0)^2-8v_1^2-12v_2^2+24v_3^2=4.
+\]
+The source identifies it with $\mathbb Z_{(2)}\cap\mathbb Z_{(3)}$.
+Set $C=3^{2^{24}}$, specified by $c_0=3$ and
+$c_{i+1}=c_i^2$ for $0\le i<24$. If
+$f(S)=f_0+f_1\sqrt2$, impose
+\[
+ \mathcal T(f_0/C),\qquad
+ \mathcal T(f_1/C).
+\]
+The source anchor applies to $\lambda^2 f(S)$. Multiplication by
+$\lambda^2$ acts on coefficient pairs by the integral matrix
+$\left(\begin{smallmatrix}17&24\\12&17\end{smallmatrix}\right)$
+of determinant one. Thus the displayed conditions are equivalent to
+the original anchor conditions. The source local
+calculation gives $|s|\ge3^{2^{23}-1}$, and the allowed indices
+contain a nonzero subgroup of $\mathbb Z$. Thus the anchor may be
+combined with any finite formal divisibilities. Its cutoff is
+\begin{equation}\label{eq:sp-cutoff}
+ |s|>(20H)^2,
+\end{equation}
+because
+\[
+ 3(2^{23}-1)=25165821>4(5+4783227)=19132928
+\]
+and $\log_2 3>3/2$.
+
+The separate scalar-height batch uses
+\[
+ r(\beta)=\beta(\beta-1)(\beta-2401)(32\beta+343)(2\beta-1)
+\]
+and the two coefficients of each of $f(J_0),f(S),z(S)/z(J_0)$,
+in orders $1,1,1,1,48,48$. Its parity certificate and prescribed local
+divisibilities give
+\begin{equation}\label{eq:sp-scalar-height}
+ h(\beta)\le H\sqrt{|s|}.
+\end{equation}
+Indeed every odd contact of $\beta$ outside $S_*$ gives an odd
+valuation of $r(\beta)$; at a pole the valuation is multiplied by
+five. The two coefficient tests make both points formal at every place
+above that prime, and the parameter ratio implies $M(\beta)^{48}\mid s$.
+The contact-height input gives \eqref{eq:sp-scalar-height}.
+For integral $X$, $r(\beta)$ is a nonzero integer: $\beta\ge2$,
+and $\beta=2401$ would require $X^2=2399$. The same exclusion holds
+for rational $X$, since $48^2<2399<49^2$. The scalar batch is complete
+by the stated finite local-divisibility property.
+
+Choose a common nonzero denominator $e$ and the two rational coefficients
+of each of $e\,x(A)$, $e\,x(S)$, $e\,x(T)$, and $e\,x(Z)$.
+Apply the shared representation
+\eqref{eq:sp-fixed-contacts} to these nine scalars. At each of its
+forty-one contacts apply Lemma~\ref{lem:sp-comparison} to
+$(A,S,T,Z)$ and proxies $(\beta,\xi,\tau,\zeta)$, and impose
+\begin{equation}\label{eq:sp-proxy-lucas}
+ \tau^2-\xi(\xi-2)\tau\zeta+(\xi-2)^2\zeta^2=1.
+\end{equation}
+All predicates here have the fixed polynomial encodings given elsewhere;
+there are no quantified integers or primes.
+
+\begin{theorem}\label{thm:sp-definition}
+Under the arithmetic inputs in Section~\ref{sec:inputs}, the preceding
+existential relation holds for $X\in\mathbb Q$ if and only if
+$X\in\mathbb Z$.
+\end{theorem}
+\begin{proof}
+Suppose first that the relation holds. Put
+$B=\max(|n|,|s|,|t|,|z|)$ and
+\[
+ \Delta=t^2-s(s-2)tz+(s-2)^2z^2-1.
+\]
+The proxy congruences imply $M^{64}\mid\Delta$ for each coordinate
+contact radical. If $\Delta\ne0$, then $B\ge|s|>7$ and
+\[
+ |\Delta|\le2B^4+6B^3+5B^2+1<5B^4.
+\]
+At an index attaining $B$, \eqref{eq:canonical} and
+Lemma~\ref{lem:sp-shared-height} give
+\[
+ B^2-6<7H|\Delta|^{3/8}<14HB^{3/2}.
+\]
+Consequently $B<(14H+6)^2\le(20H)^2$, contrary to
+\eqref{eq:sp-cutoff}. Thus \eqref{eq:sp-lucas} holds for the
+integer indices, and Lemma~\ref{lem:sp-lucas} gives
+$|t|>\exp(|s|-3)$.
+
+If $\beta\ne n$, let $N=|\operatorname{num}(\beta-n)|$,
+where the numerator is taken in reduced form. Local integrality and
+the comparison congruences give $M^{64}\mid N$ at every coordinate
+slot. Hence
+\[
+ B^2<7HN^{3/8}+6,\qquad
+ N\le e^{h(\beta)}(1+|n|)\le2e^{h(\beta)}B.
+\]
+Since $7\cdot2^{3/8}<10$, it follows that
+\[
+ \log B<\frac8{13}\log(16H)+\frac3{13}h(\beta).
+\]
+Write $a=|s|>(20H)^2$. Then
+$h(\beta)\le H\sqrt a<a/20$ and
+$\log(16H)<16H<a/20$. Thus
+$\log B<11a/260<a-3$, contradicting Lucas growth.
+Therefore $\beta=n\in\mathbb Z$. For rational $X$, integrality
+of $X^2$ implies integrality of $X$, by reducing its denominator.
+
+Conversely let $X\in\mathbb Z$, so $\beta=X^2+2\ge2$, and set
+$A=\beta P_*$. Choose the scalar-height witnesses, then an anchored
+$S=sP_*$ satisfying their finite formal divisibilities. Choose positive
+$t,z$ from Lemma~\ref{lem:sp-lucas} and put $T=tP_*,Z=zP_*$.
+Choose an integer $e\ne0$ clearing all eight abscissa coefficients.
+Lemma~\ref{lem:sp-contacts} supplies the shared ordinary prime pattern.
+Set the proxies equal to $(\beta,s,t,z)$, and use
+Lemma~\ref{lem:sp-comparison} for the local witnesses, choosing the
+common root approximation last. Every remaining variable is an indicated
+coordinate, inverse, or fixed arithmetic intermediate. All equations and
+guards hold. No later choice changes an earlier target or anchor point.
+\end{proof}

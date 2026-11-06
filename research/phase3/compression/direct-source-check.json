@@ -1,0 +1,573 @@
+{
+  "status": "PASS",
+  "scope": "Exact AST change review, independently expanded small polynomial identities, frozen-byte reproducibility, integer DAG well-formedness, triangular monicity, counts, finite parameters and guard references. The arithmetic input projection and final finite-algebra compiler are separately proved and checked.",
+  "source_change": {
+    "unchanged_methods": [
+      "conic_parameter",
+      "finite_monic",
+      "finite_square",
+      "point",
+      "rr",
+      "scalar_norm",
+      "scalar_pole",
+      "zero_pole"
+    ],
+    "other_build_statements_AST_identical": true,
+    "old_builder_sha256": "0a1391bb7c9f0579e981c9dea042456e2d5e1d921fd4095eccefa3e4fb19f2e1",
+    "new_builder_sha256": "176721d53904d63dffec03142db6bacb724b4a84ba3a8308722d41090a03a15b",
+    "change_scope": [
+      "remove retained xi,zeta and finite tau",
+      "replace three proxy comparisons by direct F at order64",
+      "change corresponding counts and descriptive metadata",
+      "make previously preferred refinement options defaults",
+      "optional beta=X^2+C, default C=2"
+    ]
+  },
+  "polynomial_identities": {
+    "direct_F_degree": 4,
+    "direct_F_variables": [
+      "u0",
+      "u1",
+      "v0",
+      "v1",
+      "w0",
+      "w1"
+    ],
+    "direct_F_rational_component": [
+      {
+        "exponents": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "coefficient": "-1"
+      },
+      {
+        "exponents": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          2
+        ],
+        "coefficient": "8"
+      },
+      {
+        "exponents": [
+          0,
+          0,
+          0,
+          0,
+          2,
+          0
+        ],
+        "coefficient": "4"
+      },
+      {
+        "exponents": [
+          0,
+          0,
+          0,
+          2,
+          0,
+          0
+        ],
+        "coefficient": "2"
+      },
+      {
+        "exponents": [
+          0,
+          0,
+          2,
+          0,
+          0,
+          0
+        ],
+        "coefficient": "1"
+      },
+      {
+        "exponents": [
+          0,
+          1,
+          0,
+          0,
+          1,
+          1
+        ],
+        "coefficient": "-16"
+      },
+      {
+        "exponents": [
+          0,
+          1,
+          0,
+          1,
+          1,
+          0
+        ],
+        "coefficient": "4"
+      },
+      {
+        "exponents": [
+          0,
+          1,
+          1,
+          0,
+          0,
+          1
+        ],
+        "coefficient": "4"
+      },
+      {
+        "exponents": [
+          0,
+          2,
+          0,
+          0,
+          0,
+          2
+        ],
+        "coefficient": "4"
+      },
+      {
+        "exponents": [
+          0,
+          2,
+          0,
+          0,
+          2,
+          0
+        ],
+        "coefficient": "2"
+      },
+      {
+        "exponents": [
+          0,
+          2,
+          0,
+          1,
+          0,
+          1
+        ],
+        "coefficient": "-4"
+      },
+      {
+        "exponents": [
+          0,
+          2,
+          1,
+          0,
+          1,
+          0
+        ],
+        "coefficient": "-2"
+      },
+      {
+        "exponents": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          2
+        ],
+        "coefficient": "-8"
+      },
+      {
+        "exponents": [
+          1,
+          0,
+          0,
+          0,
+          2,
+          0
+        ],
+        "coefficient": "-4"
+      },
+      {
+        "exponents": [
+          1,
+          0,
+          0,
+          1,
+          0,
+          1
+        ],
+        "coefficient": "4"
+      },
+      {
+        "exponents": [
+          1,
+          0,
+          1,
+          0,
+          1,
+          0
+        ],
+        "coefficient": "2"
+      },
+      {
+        "exponents": [
+          1,
+          1,
+          0,
+          0,
+          1,
+          1
+        ],
+        "coefficient": "8"
+      },
+      {
+        "exponents": [
+          1,
+          1,
+          0,
+          1,
+          1,
+          0
+        ],
+        "coefficient": "-4"
+      },
+      {
+        "exponents": [
+          1,
+          1,
+          1,
+          0,
+          0,
+          1
+        ],
+        "coefficient": "-4"
+      },
+      {
+        "exponents": [
+          2,
+          0,
+          0,
+          0,
+          0,
+          2
+        ],
+        "coefficient": "2"
+      },
+      {
+        "exponents": [
+          2,
+          0,
+          0,
+          0,
+          2,
+          0
+        ],
+        "coefficient": "1"
+      },
+      {
+        "exponents": [
+          2,
+          0,
+          0,
+          1,
+          0,
+          1
+        ],
+        "coefficient": "-2"
+      },
+      {
+        "exponents": [
+          2,
+          0,
+          1,
+          0,
+          1,
+          0
+        ],
+        "coefficient": "-1"
+      }
+    ],
+    "direct_F_sqrt2_component": [
+      {
+        "exponents": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "coefficient": "8"
+      },
+      {
+        "exponents": [
+          0,
+          0,
+          1,
+          1,
+          0,
+          0
+        ],
+        "coefficient": "2"
+      },
+      {
+        "exponents": [
+          0,
+          1,
+          0,
+          0,
+          0,
+          2
+        ],
+        "coefficient": "-8"
+      },
+      {
+        "exponents": [
+          0,
+          1,
+          0,
+          0,
+          2,
+          0
+        ],
+        "coefficient": "-4"
+      },
+      {
+        "exponents": [
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        "coefficient": "4"
+      },
+      {
+        "exponents": [
+          0,
+          1,
+          1,
+          0,
+          1,
+          0
+        ],
+        "coefficient": "2"
+      },
+      {
+        "exponents": [
+          0,
+          2,
+          0,
+          0,
+          1,
+          1
+        ],
+        "coefficient": "4"
+      },
+      {
+        "exponents": [
+          0,
+          2,
+          0,
+          1,
+          1,
+          0
+        ],
+        "coefficient": "-2"
+      },
+      {
+        "exponents": [
+          0,
+          2,
+          1,
+          0,
+          0,
+          1
+        ],
+        "coefficient": "-2"
+      },
+      {
+        "exponents": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "coefficient": "-8"
+      },
+      {
+        "exponents": [
+          1,
+          0,
+          0,
+          1,
+          1,
+          0
+        ],
+        "coefficient": "2"
+      },
+      {
+        "exponents": [
+          1,
+          0,
+          1,
+          0,
+          0,
+          1
+        ],
+        "coefficient": "2"
+      },
+      {
+        "exponents": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          2
+        ],
+        "coefficient": "4"
+      },
+      {
+        "exponents": [
+          1,
+          1,
+          0,
+          0,
+          2,
+          0
+        ],
+        "coefficient": "2"
+      },
+      {
+        "exponents": [
+          1,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        "coefficient": "-4"
+      },
+      {
+        "exponents": [
+          1,
+          1,
+          1,
+          0,
+          1,
+          0
+        ],
+        "coefficient": "-2"
+      },
+      {
+        "exponents": [
+          2,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "coefficient": "2"
+      },
+      {
+        "exponents": [
+          2,
+          0,
+          0,
+          1,
+          1,
+          0
+        ],
+        "coefficient": "-1"
+      },
+      {
+        "exponents": [
+          2,
+          0,
+          1,
+          0,
+          0,
+          1
+        ],
+        "coefficient": "-1"
+      }
+    ],
+    "detector_weights_checked_orders": [
+      1,
+      16,
+      64
+    ],
+    "detector_weight_identity": "R/(delta^(2*m+2)*R^(2*m))=A^(10*m-5)*delta^(10*m-8)/F^(2*m-1)",
+    "reciprocal_trace_pole_input_identity": "R/(Tr(W^-1))^2=F*(w0^2-2*w1^2)^2/(4*A^5*delta^6*w0^2)",
+    "arithmetic": "Exact independent sparse Laurent polynomials over Q"
+  },
+  "sources": [
+    {
+      "file": "source-41-direct.json.gz",
+      "status": "PASS",
+      "beta_shift": 2,
+      "retained_base": 40,
+      "finite_generators": 19,
+      "finite_rank_power_of_two": 28,
+      "relation_degrees": {
+        "4": 9,
+        "2": 10
+      },
+      "dag_nodes": 16039,
+      "guard_count": 243,
+      "uncompressed_sha256": "540e8f30c51525eefc8cb8a46da4b2bb59da460d214977631f6e9c03488be974"
+    },
+    {
+      "file": "source-43-direct-semilocal.json.gz",
+      "status": "PASS",
+      "beta_shift": 2,
+      "retained_base": 42,
+      "finite_generators": 20,
+      "finite_rank_power_of_two": 29,
+      "relation_degrees": {
+        "4": 9,
+        "2": 11
+      },
+      "dag_nodes": 16085,
+      "guard_count": 244,
+      "uncompressed_sha256": "f30f5113bdb1e09c7b79188a99d1ad9516fe6b79ba3208d9c5171674365baa95"
+    },
+    {
+      "file": "source-41-shift2402.json.gz",
+      "status": "PASS",
+      "beta_shift": 2402,
+      "retained_base": 40,
+      "finite_generators": 19,
+      "finite_rank_power_of_two": 28,
+      "relation_degrees": {
+        "4": 9,
+        "2": 10
+      },
+      "dag_nodes": 16040,
+      "guard_count": 243,
+      "uncompressed_sha256": "18867094aa587a12fb87e1118259a5f24c392b5186e14d01f83ef7526801e953"
+    },
+    {
+      "file": "source-43-semilocal-shift2402.json.gz",
+      "status": "PASS",
+      "beta_shift": 2402,
+      "retained_base": 42,
+      "finite_generators": 20,
+      "finite_rank_power_of_two": 29,
+      "relation_degrees": {
+        "4": 9,
+        "2": 11
+      },
+      "dag_nodes": 16086,
+      "guard_count": 244,
+      "uncompressed_sha256": "13019caa7b4003697ef143ca439878759e327c74d78ab10857c1e64b684a16b6"
+    }
+  ]
+}

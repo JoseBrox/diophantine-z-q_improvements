@@ -1,0 +1,98 @@
+% Includable proof fragment. No changes to the assembled paper.
+\subsection{A redundant denominator guard in every pole block}
+
+\begin{lemma}\label{lem:pole-denominator-redundant}
+Let $F$ be a field of characteristic different from $2$ and $3$,
+and let $c\in F$ satisfy $-c\notin F^2$.
+For $b,t,e,p,q,s\in F$, put
+\[
+ \delta=1+bt^2,\qquad B=cb,\qquad
+ K=B\delta^2-b^2(1-bt^2)^2.
+\]
+If
+\begin{align}
+ p^2&=B(1-e)(1+3e),\label{eq:pole-first-cleared}\\
+ Bq^2\delta^4
+   &=(s^2\delta^2-BeK)(s^2\delta^2+3BeK),
+       \label{eq:pole-second-cleared}
+\end{align}
+then $\delta\ne0$.
+Consequently these two polynomial equations are equivalent to the
+two rational pole equations obtained by setting
+\[
+ U=\frac{b(1-bt^2)}{1+bt^2},\qquad h=e(B-U^2)
+\]
+and requiring
+\[
+ p^2=B(1-e)(1+3e),\qquad
+ Bq^2=(s^2-Bh)(s^2+3Bh).
+\]
+\end{lemma}
+\begin{proof}
+The nonsquare hypothesis implies $c\ne0$.
+If $\delta=0$, then $b,t\ne0$, $bt^2=-1$ and $K=-4b^2$.
+Equation~\eqref{eq:pole-second-cleared} becomes
+\[
+ 0=-48 B^2b^4e^2.
+\]
+All its factors except possibly $e$ are nonzero, so $e=0$.
+Equation~\eqref{eq:pole-first-cleared} now gives
+$p^2=cb=-c/t^2$, hence $(pt)^2=-c$, a contradiction.
+When $\delta\ne0$, the identity $h=eK/\delta^2$ shows that
+\eqref{eq:pole-second-cleared} is precisely the second rational
+equation multiplied by $\delta^4$.  This proves both directions.
+\end{proof}
+
+For the construction over $\mathbb Q$ one has $c=17$; the hypothesis
+holds because $-17$ is not a rational square.  Thus no separate inverse
+is needed for any of these $42$ denominators.
+
+The argument is a statement about rational solutions.  It must not be
+silently interpreted as an equivalence of geometric fibers over an
+algebraic closure, where $-17$ becomes a square.
+
+\paragraph{Compatibility with reduced circuit numerators.}
+It remains to justify deleting the guards from the existing rational
+arithmetic circuit, whose fractions were simplified before their
+numerators were stored.  In a fixed pole block write
+$b=N/Q$ and $\Delta=Q+Nt^2$, so that $\delta=\Delta/Q$.
+The retained common guard ensures $Q\ne0$.
+The exact circuit factor check gives the stored second pole residual
+as $n/(S\Delta^4)$, where $S$ is a nonzero constant times a product
+of retained guard factors.  On the retained open set, the rational
+identity defining the circuit therefore gives
+\[
+ \delta^4\left(Bq^2-(s^2-Bh)(s^2+3Bh)\right)
+       =\frac{n}{S Q^4}.
+\]
+The expression on the left is the polynomial expression
+\eqref{eq:pole-second-cleared}, interpreted with $b=N/Q$.
+Both sides are regular on the retained open set, including
+$\Delta=0$; the equality follows by multiplying denominators and
+using a polynomial identity.  Hence $n=0$ implies the cleared pole
+equation even at a putative zero of the deleted guard.
+The first residual has denominator $Q$, and consequently supplies
+\eqref{eq:pole-first-cleared} there as well.
+Lemma~\ref{lem:pole-denominator-redundant} excludes that zero.
+This proves that cancellation of rational expressions before
+numerator extraction creates no gap in the guard deletion.
+
+\paragraph{Verified independence of the remaining guard.}
+An independent traversal of the frozen $855$-variable circuit finds
+exactly $42$ guarded numerators involving pole variables, one for
+each pole coordinate $t$.  They are the $42$ numerators $\Delta$.
+Deleting them leaves $1639$ recorded guards, with $1560$ distinct
+nonconstant factors.  Their combined variable support consists of
+the input, all $633$ point coordinates, the coordinate denominator,
+and the two contact variables.  In particular, the remaining common
+guard is independent of all three proxy variables, all three anchor
+variables, $\theta$, and every pole variable.
+
+For every second pole residual, its denominator has its own
+$\Delta$ to exponent exactly four and otherwise only retained
+factors.  The other $255$ rational residuals have denominators
+involving only retained factors.  These are exact structural checks;
+the generic clearing and exceptional-fiber identities are also
+verified symbolically by
+\texttt{verify\_pole\_guard\_removal.py}, with receipt
+\texttt{pole-guard-removal-verification.json}.

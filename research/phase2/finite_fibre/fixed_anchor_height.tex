@@ -1,0 +1,231 @@
+% Includable lemma and proof. Independently checked; no expansion of the
+% fixed exclusion product is claimed.
+\section{Coefficient bounds for a fixed elliptic exclusion product}
+\label{sec:fixed-anchor-height}
+
+The finite size condition in the shared-point construction uses fixed
+multiples of a fixed elliptic point.  The number of factors is extremely
+large, but their coefficients admit elementary uniform bounds.  This
+section gives an exact algorithm defining those coefficients and proves
+bounds without computing the full product.
+
+Put $k=\mathbb Q(\sqrt2)$.  Every $x\in k$ has a unique expression
+\[
+ x=\frac{a+b\sqrt2}{c},\qquad
+ a,b,c\in\mathbb Z,\quad c>0,\quad \gcd(a,b,c)=1.
+\]
+We call $(a,b,c)$ its primitive common-denominator triple and set
+\[
+ h_0(x)=\left\lceil\log_2\max(1,|a|,|b|,c)\right\rceil.
+\]
+Thus the triple of zero is $(0,0,1)$ and $h_0(0)=0$.  This elementary
+coefficient height is used only in this section; it is not the canonical
+elliptic height or the absolute logarithmic Weil height.
+
+\begin{lemma}\label{lem:fixed-triple-height}
+For $x,y\in k$ one has
+\[
+ \begin{aligned}
+ h_0(x+y)&\le h_0(x)+h_0(y)+1,\\
+ h_0(xy)&\le h_0(x)+h_0(y)+2,
+ \end{aligned}
+\]
+and, for $x\ne0$,
+\[
+                         h_0(x^{-1})\le2h_0(x)+2.
+\]
+\end{lemma}
+\begin{proof}
+Write the primitive triples of $x,y$ as $(a,b,c)$ and
+$(a',b',c')$.  Before cancellation their sum has triple
+\[
+ (ac'+a'c,\,bc'+b'c,\,cc')
+\]
+and their product has triple
+\[
+ (aa'+2bb',\,ab'+a'b,\,cc').
+\]
+The coordinates are bounded respectively by
+$2^{h_0(x)+h_0(y)+1}$ and $3\cdot2^{h_0(x)+h_0(y)}$.
+Passing to a primitive triple can only decrease their maximum.  For
+the inverse use
+\[
+                  x^{-1}=\frac{ca-cb\sqrt2}{a^2-2b^2}.
+\]
+The denominator is nonzero because $x\ne0$.  Its absolute value is
+at most $3\cdot2^{2h_0(x)}$, and the numerator coefficients are at
+most $2^{2h_0(x)}$.  Changing all signs if necessary and cancelling
+the common divisor proves the last bound.
+\end{proof}
+
+Consider the fixed elliptic curve and point
+\[
+ \begin{gathered}
+ E:\quad y^2=x^3-D_E x,\qquad D_E=11-6\sqrt2,\\
+ P=\left(\frac{57-28\sqrt2}{8},
+          \frac{-660+417\sqrt2}{32}\right).
+ \end{gathered}
+\]
+Direct substitution verifies $P\in E(k)$.  For a finite point
+$R=(x,y)$ put $H_0(R)=\max(h_0(x),h_0(y))$, and set
+$H_0(\mathcal O)=0$ for the identity.  Here $h_0(D_E)=4$,
+$h_0(x(P))=6$, $h_0(y(P))=10$, and $H_0(P)=10$.
+
+\begin{lemma}\label{lem:fixed-point-binary-height}
+For every integer $n\ge1$, the point $nP$ is defined by exact
+arithmetic in $k$ and
+\[
+                         H_0(nP)\le17n^8.
+\]
+Consequently, if $nP\ne\mathcal O$ and
+$x(nP)=(a_n+b_n\sqrt2)/c_n$ is written in its primitive
+common-denominator triple, then
+\[
+               \max(|a_n|,|b_n|,c_n)\le2^{17n^8}.
+\]
+No nontorsion assumption is needed for these inequalities.
+\end{lemma}
+\begin{proof}
+We first establish bounds for doubling and addition of the fixed point.
+Let $R=(x,y)$ be finite and $H=H_0(R)$.  If $y\ne0$, the usual
+doubling formulas are
+\[
+ m=\frac{3x^2-D_E}{2y},\qquad
+ x_2=m^2-2x,\qquad y_2=m(x-x_2)-y.
+\]
+Lemma~\ref{lem:fixed-triple-height}, together with
+$h_0(2)=1$ and $h_0(3)=2$, gives successively
+\[
+ \begin{array}{c|c}
+ \text{quantity}&\text{bound for its coefficient height}\\ \hline
+ 3x^2-D_E&2H+11\\
+ (2y)^{-1}&2H+8\\
+ m&4H+21\\
+ x_2&9H+48\\
+ x-x_2&10H+49\\
+ y_2&15H+73.
+ \end{array}
+\]
+Thus $H_0(2R)\le15H+80$.  When $R=\mathcal O$ or $y=0$,
+the result is the identity, so the same bound holds using its
+specified height zero.
+
+For $R\ne\mathcal O,P,-P$, write $P=(x_P,y_P)$ and use
+\[
+ m=\frac{y-y_P}{x-x_P},\qquad
+ x_+=m^2-x-x_P,\qquad y_+=m(x-x_+)-y.
+\]
+The denominator is nonzero: points of a short Weierstrass curve with
+the same abscissa are opposite.  Using the uniform bounds
+$h_0(x_P),h_0(y_P)\le10$ gives
+\[
+ \begin{array}{c|c}
+ \text{quantity}&\text{bound for its coefficient height}\\ \hline
+ y-y_P,\ x-x_P&H+11\\
+ (x-x_P)^{-1}&2H+24\\
+ m&3H+37\\
+ x_+&7H+88\\
+ x-x_+&8H+89\\
+ y_+&12H+129.
+ \end{array}
+\]
+It follows that $H_0(R+P)\le12H+129$.  The exceptional cases
+obey this bound as well.  If $R=\mathcal O$ the output has height
+10, and if $R=-P$ it has height zero.  If $R=P$, the doubling
+estimate above with $H_0(P)=10$ bounds $H_0(2P)$ by 223,
+which is smaller than $12\cdot10+129$.
+
+To compute $nP$, begin with the leading binary digit of $n$, so the
+initial point is $P$.  Read each subsequent digit from left to right,
+doubling and then, for a digit one, adding $P$.  Every step is a
+well-defined group operation; use the identity and the exceptional
+cases just specified instead of a formula with zero denominator.
+One binary step replaces a height bound $H$ by at most
+\[
+                     12(15H+80)+129=180H+1089.
+\]
+The same upper bound covers a digit zero.  Therefore the next height
+$H'$ satisfies $H'+7\le180(H+7)$.  There are
+$r=\lfloor\log_2 n\rfloor$ digits after the leading digit, and hence
+\[
+ H_0(nP)+7\le17\cdot180^r
+       \le17\cdot(2^r)^8\le17n^8,
+\]
+since $180<2^8$.  This proves the asserted weaker bound
+$H_0(nP)\le17n^8$ and the bound for the primitive triple.
+\end{proof}
+
+\subsection{A bound in a finite algebra}
+
+Let $R=\mathbb Z[X_1,\ldots,X_d]$ and let $A$ be a commutative
+$R$-algebra free of positive finite rank, with a specified basis.  For
+$a\in A$ let $M_a$ be its multiplication matrix.  If
+$\|f\|_1$ denotes the sum of the absolute values of the coefficients
+of a polynomial $f\in R$, define
+\[
+              \|M\|=\max_j\sum_i\|M_{ij}\|_1.
+\]
+This norm satisfies the triangle inequality, is submultiplicative,
+and gives $\|M_c\|=|c|$ for an integer scalar $c$.
+The same arguments apply over rational coefficients with the
+corresponding coefficient norm.
+
+Suppose $N_0,N_1,D_0\in A$ and, for a real number $b\ge0$,
+\[
+        \|M_{N_0}\|,\ \|M_{N_1}\|,\ \|M_{D_0}\|\le2^b.
+\]
+For each $n\ge1$ with $nP\ne\mathcal O$, define
+\[
+ \mathcal E_n=(c_nN_0-a_nD_0)^2
+                       -2(c_nN_1-b_nD_0)^2\in A;
+\]
+when $nP=\mathcal O$, define $\mathcal E_n=1$.  For an integer
+$M\ge1$ put $\mathcal E_{\le M}=\prod_{n=1}^M\mathcal E_n$.
+
+\begin{proposition}\label{prop:fixed-exclusion-norm}
+The multiplication matrices of these factors satisfy
+\[
+ \begin{aligned}
+  \|M_{\mathcal E_n}\|&\le2^{34n^8+2b+4},\\
+  \|M_{\mathcal E_{\le M}}\|&\le2^{(2b+38)M^9}.
+ \end{aligned}
+\]
+The fixed coefficients in the product are specified by the binary
+algorithm of Lemma~\ref{lem:fixed-point-binary-height}; they are not
+additional quantified variables.
+\end{proposition}
+\begin{proof}
+For a finite $nP$, let $h_n=h_0(x(nP))$.  The triangle inequality
+gives
+\[
+ \|M_{c_nN_0-a_nD_0}\|,\ \|M_{c_nN_1-b_nD_0}\|
+       \le2^{h_n+b+1}.
+\]
+Submultiplicativity and the factor's two terms now give
+\[
+ \|M_{\mathcal E_n}\|
+     \le3\cdot2^{2h_n+2b+2}
+     \le2^{34n^8+2b+4}.
+\]
+The identity factor when $nP=\mathcal O$ obeys the same bound.
+Multiplying and using $\sum_{n=1}^M n^8\le M^9$ and $M\le M^9$
+gives
+\[
+ \|M_{\mathcal E_{\le M}}\|
+ \le2^{34\sum_{n=1}^M n^8+(2b+4)M}
+ \le2^{(2b+38)M^9},
+\]
+as claimed.  This reasoning does not require expansion of the product.
+\end{proof}
+
+At a rational specialization for which $D_0\ne0$, the value
+$\mathcal E_n$ for a finite $nP$ is zero precisely when
+\[
+               \frac{N_0+N_1\sqrt2}{D_0}=x(nP).
+\]
+Indeed $u^2-2v^2=0$ with $u,v\in\mathbb Q$ forces $u=v=0$.
+If the left side is the abscissa of a finite point $Q\in E(k)$,
+the equality is equivalent to $Q=\pm nP$.  Thus the product,
+together with the existing denominator guard, excludes exactly these
+finitely many abscissas.  The convention for $nP=\mathcal O$ makes
+the indexed algorithm total and introduces no unwanted exclusion.

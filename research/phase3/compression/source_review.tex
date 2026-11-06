@@ -1,0 +1,83 @@
+\section{Verification of the new source specification}
+\label{sec:direct-source-review}
+
+The computational checks in this section concern the explicitly
+recorded source equations and their translation.  They do not certify
+the external arithmetic hypotheses used to prove the integer input
+projection.  That distinction is essential: an exact compiler can
+correctly translate an arithmetic system whose completeness or soundness
+has not been independently established.
+
+The program \texttt{check\_direct\_source.py} compares the abstract
+syntax trees of the frozen phase-two producer and the phase-three
+producer.  All eight auxiliary methods are identical.  After removing
+the two retained proxies, their finite quadratic root, and their three
+comparison tests, the remaining construction statements are identical
+apart from the direct polynomial test, its corresponding counts and
+metadata, and the optional shift in $\beta$.  The previously preferred
+sharing, scalar normalization, conic parametrization and fixed scale
+options are now the defaults; their mathematical formulas are unchanged.
+
+The new direct test is also checked by a separate sparse polynomial
+implementation over $\mathbb Q$.  Substitute
+\[
+ u=u_0+u_1\sqrt2,\quad v=v_0+v_1\sqrt2,\quad
+ w=w_0+w_1\sqrt2.
+\]
+Evaluation of the producer's actual expression agrees exactly with
+the independently expanded rational and $\sqrt2$ components of
+\[
+                  v^2-u(u-2)vw+(u-2)^2w^2-1.
+\]
+These components have respectively $23$ and $19$ nonzero monomials
+and total degree four.  The complete coefficient dictionaries are
+in \texttt{direct-source-check.json}.
+
+The normalization is verified by exact Laurent-polynomial identities.
+For each precision $m\in\{1,16,64\}$ and
+$R=A^{-5}F\delta^{-6}$, the coefficient multiplying the square of
+the field test is
+\[
+ \frac{R}{\delta^{2m+2}R^{2m}}
+          =A^{10m-5}\delta^{10m-8}F^{1-2m}.
+\]
+For $W=w_0+w_1\sqrt2$, the guarded reciprocal trace is
+$2w_0/(w_0^2-2w_1^2)$, so its pole input is exactly
+\[
+ \frac{R}{(\operatorname{Tr}_{K/\mathbb Q}(W^{-1}))^2}
+       =\frac{F(w_0^2-2w_1^2)^2}{4A^5\delta^6w_0^2}.
+\]
+The checker reads these expressions from the producer and compares
+their expanded dictionaries, rather than relying only on sample
+numerical evaluations.
+
+All four frozen source files reproduce byte for byte.  Their integer
+coefficient DAGs are acyclic, every monic relation depends only on
+retained coordinates and earlier generators, and all counts and finite
+parameter lists agree with the displayed source.  There are exactly
+sixteen comparison tests and no remaining Lucas proxy variable,
+equation or exceptional-root case.  The verified counts are
+\[
+\begin{array}{c|c|c|c|c}
+\text{anchor}&C&\text{retained coordinates}&
+   \text{finite relation degrees}&\text{coefficient DAG nodes}\\\hline
+\text{finite}&2&40&4^9\,2^{10}&16039\\
+\text{semilocal}&2&42&4^9\,2^{11}&16085\\
+\text{finite}&2402&40&4^9\,2^{10}&16040\\
+\text{semilocal}&2402&42&4^9\,2^{11}&16086
+\end{array}
+\]
+Here $C$ means $\beta=X^2+C$.  The products in the fourth column
+describe the nine quartic and ten or eleven quadratic finite relations;
+they are not degrees of the final polynomial.  The independent
+finite-algebra compiler supplies the final degree and height bounds.
+
+The source check is reproducible with
+\[
+ \texttt{python research/phase3/compression/check\_direct\_source.py}.
+\]
+The separate program \texttt{check\_elliptic\_density\_data.py}
+verifies the exact curve and point calculations used in
+Corollary~\ref{cor:point-modules-dimension}.  Its scope is those
+fixed algebraic calculations; the geometric density assertion is
+proved in the text.

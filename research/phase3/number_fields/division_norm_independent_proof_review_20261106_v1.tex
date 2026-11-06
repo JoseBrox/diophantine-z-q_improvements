@@ -1,0 +1,229 @@
+% Independent proof review accompanying the machine-readable audit receipt.
+% The principal construction is in division_norm_compiler_20261106_v1.tex.
+\section{Independent verification of the cyclic-norm specifications}
+\label{sec:independent-norm-audit-phase3}
+
+The independent checker
+\texttt{verify\_division\_norm\_specs\_independent\_20261106\_v1.py}
+imports neither the producer nor an earlier checker.  It compares the
+complete residual lists with pinned source bytes, constructs every
+cyclic-matrix entry by iterating the shift operator, verifies its formal
+Galois conjugacy, and recomputes the degree and coefficient bounds.
+Its receipt is
+\texttt{division-norm-independent-verification\_20261106\_v1.json}.
+The statements below explain the algebra certified by those finite checks.
+The determinants themselves are not expanded, and this audit does not
+replace the arithmetic proof identifying a source's projection.
+
+\subsection{The determinant and its exact degree}
+
+Let $d,q,p$ be one of $(36,37,2)$ and $(37,149,5)$.  Put
+$L=\mathbb Q(\zeta_q)^H$, where $H$ is the subgroup of order
+$(q-1)/d$ of $(\mathbb Z/q\mathbb Z)^*$, and choose the generator
+$\sigma$ determined by the recorded primitive root.  The periods
+$\eta_i=\sum_{h\in H}\zeta_q^{g^ih}$ partition the nonzero
+exponents modulo $q$.  Their linear independence follows because
+a rational relation gives a polynomial of degree at most $q-1$
+with zero constant coefficient divisible by
+$1+T+\cdots+T^{q-1}$, hence the zero polynomial.  Their sum is
+$-1$, so $1,\eta_1,\ldots,\eta_{d-1}$ is also a basis.
+
+In the cyclic algebra $A=(L/\mathbb Q,\sigma,p)$, write
+$a_j=Z_{j,0}+\sum_{i=1}^{d-1}\eta_iZ_{j,i}$ and
+$a=\sum_{j=0}^{d-1}a_ju^j$.  Let
+\[
+ D(a)=\operatorname{diag}(a,\sigma(a),\ldots,\sigma^{d-1}(a)),
+ \qquad Ue_j=e_{j-1}\ (j>0),\quad Ue_0=pe_{d-1}.
+\]
+Then $U^d=pI$ and $UD(a)=D(\sigma(a))U$.  Thus the split
+matrix of $a$ is $M=\sum_jD(a_j)U^j$.
+The checker verifies every entry of this expression and the identity
+\[
+                            \sigma(M)=UMU^{-1}
+\]
+as a formal linear form in all the $Z_{j,i}$.  It follows that
+$\det M$ is fixed by a generator of the Galois group and has
+rational coefficients.  Its coefficients are algebraic integers,
+so they are integers.  Reducing modulo the cyclotomic polynomial
+therefore leaves only its constant coefficient in $\zeta_q$.
+The specified coefficient-extraction operation is the actual reduced
+norm, with no cyclotomic variable existentially quantified.
+
+In each of the four supplied residual tables the input $X_0$ occurs
+only in the term $+X_0^2$ of residual $F_0$.  The first coefficient
+basis element is one, so the substituted matrix is
+\[
+                           X_0^2 I+M_0,
+\]
+where $M_0$ is independent of $X_0$.  Consequently its determinant
+has coefficient one at $X_0^{2d}$.  Every residual has total degree
+at most two, so the determinant has total degree exactly $2d$.
+This also proves that the resulting integer polynomial is primitive.
+
+\subsection{Division at the specified primes}
+
+At $p$, the extension $L_p/\mathbb Q_p$ is unramified of degree
+$d$: the checker computes the order of $pH$ in the quotient group
+and finds $d$.  With $v(p)=1$, the function
+\[
+ w\left(\sum_{j=0}^{d-1}a_ju^j\right)
+       =\min_{a_j\ne0}\left(v(a_j)+\frac jd\right)
+\]
+has a unique smallest term.  The product of the two unique smallest
+terms is strictly smaller than every other product term; replacing
+$u^d$ by $p$ preserves this weight.  Thus $w(ab)=w(a)+w(b)$,
+so the local algebra has no zero divisors.  A finite-dimensional
+algebra over a field with no zero divisors is a division algebra.
+This proves division for both recorded rational cyclic algebras.
+
+For use over $\mathbb Q(i)$, the degree-36 construction also needs
+a division place at 37: its local index at two alone does not
+establish degree-36 division after a quadratic extension.
+
+\begin{lemma}\label{lem:norm36-local37-independent}
+The algebra
+\[
+ \bigl(\mathbb Q_{37}(\zeta_{37})/\mathbb Q_{37},
+          \ \sigma(\zeta_{37})=\zeta_{37}^2,\ 2\bigr)
+\]
+is a division algebra of degree 36.  Hence the specified rational
+degree-36 algebra remains division over $\mathbb Q(i)$.
+\end{lemma}
+\begin{proof}
+Put $\pi=\zeta_{37}-1$.  The polynomial
+$\Phi_{37}(1+T)=((1+T)^{37}-1)/T$ is Eisenstein at 37.
+Thus the extension is totally ramified of degree 36, with
+uniformizer $\pi$ and residue field $\mathbb F_{37}$, and
+\[
+                  \frac{\sigma^j(\pi)}{\pi}\equiv2^j\pmod\pi.
+\]
+The checker verifies that two has multiplicative order 36 modulo
+37.  The polynomial $T^{36}-2$ is irreducible over
+$\mathbb F_{37}$: any root $\alpha$ satisfies
+$\alpha^{37}=2\alpha$, and hence
+$\alpha^{37^m}=2^m\alpha$.  Its Frobenius orbit therefore has
+length exactly 36, which is the degree of the polynomial.
+Thus
+\[
+                 R=\mathbb F_{37}[t]/(t^{36}-2)
+\]
+is a field.
+
+Normalize $v_\pi(\pi)=1$.  For a nonzero element of the cyclic
+algebra define
+\[
+               w\left(\sum_{j=0}^{35}a_ju^j\right)
+                       =\min_jv_\pi(a_j).
+\]
+Let $x=\pi^m\sum b_ju^j$ and $y=\pi^n\sum c_ju^j$, with
+all $b_j,c_j$ integral and at least one unit in each list.
+Their leading residues $B(t),C(t)$ are nonzero elements of $R$.
+Commuting $\pi^n$ past $u^j$ shows that the leading residue of
+$\pi^{-m-n}xy$ is
+\[
+                              B(2^nt)C(t).
+\]
+The substitution $t\mapsto2^nt$ is an automorphism of $R$,
+since $2^{36n}=1$ in the residue field; this remains true for
+negative $n$.  The displayed product is therefore nonzero.
+Thus $w(xy)=m+n$, and the algebra has no zero divisors.  It is
+division by finite dimensionality.
+
+Finally $6^2\equiv-1\pmod{37}$, and the derivative of
+$T^2+1$ at six is nonzero modulo 37.  Hensel's lemma shows
+that 37 splits in $\mathbb Q(i)$ and its completions there
+are $\mathbb Q_{37}$.  The base-changed algebra is division
+at such a completion.  A zero divisor over $\mathbb Q(i)$
+would remain a zero divisor after that scalar extension, so
+none exists.
+\end{proof}
+
+\begin{lemma}\label{lem:coprime-division-persistence-independent}
+Let $D$ be a central division algebra of degree $d$ over a field
+$k$, and let $K/k$ be a finite extension of degree $n$.
+If $\gcd(d,n)=1$, then $D\otimes_kK$ is division.
+\end{lemma}
+\begin{proof}
+Write $D\otimes_kK\simeq M_s(D')$, where $D'$ is central
+division over $K$.  Degree comparison gives $\deg D'=d/s$.
+A simple left module for this matrix algebra has $K$-dimension
+$s(d/s)^2=d^2/s$, and hence $k$-dimension $nd^2/s$.
+Restrict its action to $D$.  A finite-dimensional module over
+the division algebra $D$ is a vector space over $D$, so its
+$k$-dimension is a multiple of $\dim_kD=d^2$.
+Consequently $s\mid n$.  Also $s\mid d$, so coprimality
+forces $s=1$.
+\end{proof}
+
+This module argument is required for a general composite degree.
+Coprimality of $d$ with the global extension degree does not imply
+that one particular completion has degree coprime to $d$.
+For degree 37 the simpler place-by-place argument in the principal
+construction is valid, because 37 is prime.
+
+\subsection{Coefficient bounds and finite-algebra degree bounds}
+
+Each period has complex absolute value at most $(q-1)/d$.
+Every entry of $M$ therefore has coefficient norm at most
+$(q-1)p$, so
+\[
+                   \|\det M\|_1\le d!\bigl((q-1)p\bigr)^d.
+\]
+The exact integer checks give
+\[
+                     36!72^{36}<2^{361},\qquad
+                     37!740^{37}<2^{496}.
+\]
+The maximum coefficient norm of any recorded residual, with the
+fixed integer $\kappa$ treated as a formal coefficient symbol,
+is at most $2^{511}$.  In the two symbolic-constant sources its
+exponent is at most one.  Since $3^5<2^8$,
+\[
+             \log_2\kappa=2^{28}\log_2 3
+                         <\frac85\,2^{28}<429496730.
+\]
+Substitution and submultiplicativity of coefficient norm therefore
+give the independently verified bounds
+\[
+\begin{array}{c|c|c}
+ \text{total coordinates}&\text{exact degree}&H(P)\ \text{at most}\\\hline
+ 1315&72&2^{15461901037}\\
+ 1339&72&2^{18757}\\
+ 1367&74&2^{15891398413}\\
+ 1391&74&2^{19403}
+\end{array}
+\]
+
+For the finite-algebra outputs, the checker independently follows
+the coefficient DAG to verify generator weights, triangular
+dependencies, and companion-operator norm inequalities.  It
+recounts all parameter, quadratic-mask, separating-parameter,
+and degree cases.  If $p$ denotes the number of quartic point
+generators, $q$ the number of quadratic generators, $m=p+q$,
+and $B$ the number of finite parameter branches, this count is
+\[
+ B\sum_{k=0}^q\binom qk\,4^p2^k
+        \left(1+\frac{m(4^p2^k)(4^p2^k+1)}2\right).
+\]
+With rank bound $n$ and $c$ closed residuals, each branch has at
+most $n+c$ equations.  A norm of degree
+$d=\lceil\sqrt{n+c}\rceil$ replaces the sum of squares, and
+multiplies the existing branch-degree bound by $d/2$.
+The checker uses the exact factor count and unrounded branch
+majorant before taking a binary logarithm.  This matters: first
+rounding the old total bound and the multiplier separately can
+lose a bit.  The resulting verified estimates are
+\[
+\begin{array}{c|c|r|c}
+ \text{source}&\text{coordinates}&d&\deg P\ \text{at most}\\\hline
+ \text{new finite anchor}&41&16385&2^{9566686}\\
+ \text{new semilocal}&43&23171&2^{250}\\
+ \text{previous finite anchor}&43&23171&2^{9566693}\\
+ \text{previous semilocal}&45&32769&2^{257}
+\end{array}
+\]
+The receipt retains the exact integer multipliers and the exact
+slack in the last rounding step.  These statements concern
+encoding a specified finite source over a chosen number field.
+They assert neither a full coefficient expansion nor that the
+base-changed source defines that field's ring of integers.

@@ -1,0 +1,83 @@
+\section{Removing a fixed size condition without adding variables}
+\label{sec:finite-anchor}
+
+The following elementary observation is useful when the number of variables
+has priority over both the degree and the size of the coefficients.  It
+replaces a condition on the index of a point in a cyclic group by a finite
+product of polynomials.  The length of that product can be extremely large.
+
+\begin{proposition}[Excluding finitely many indices]\label{prop:finite-anchor}
+Let $K=\mathbb Q(\sqrt2)$, let $E/K$ be an elliptic curve in a Weierstrass
+equation, and let $P\in E(K)$ have infinite order.  Fix an integer $M\geq1$.
+There is an explicitly computable polynomial
+$A_M\in\mathbb Z[X_0,X_1]$ such that, for every nonzero integer $s$,
+\[
+ A_M(x_0([s]P),x_1([s]P))\ne0
+ \quad\Longleftrightarrow\quad |s|>M.
+\]
+Here $x(Q)=x_0(Q)+\sqrt2\,x_1(Q)$.  The polynomial has degree $2M$ and
+requires no additional existential variables.
+\end{proposition}
+\begin{proof}
+For $1\leq n\leq M$, compute integers $a_n,b_n,D_n$ with $D_n>0$ and
+\[
+ x([n]P)=(a_n+b_n\sqrt2)/D_n.
+\]
+Such a representation is obtained by the usual exact group law and clearing
+the two rational denominators.  Define
+\[
+ A_M(X_0,X_1)=\prod_{n=1}^M
+ \bigl((D_nX_0-a_n)^2-2(D_nX_1-b_n)^2\bigr).
+\]
+Each factor is $D_n^2$ times the field norm of
+$X_0+\sqrt2 X_1-x([n]P)$.  Since the norm of an element of a field vanishes
+only at zero, a factor vanishes precisely when the two abscissas agree.
+On a Weierstrass elliptic curve, two points with the same abscissa are
+negatives of each other.  Thus $x([s]P)=x([n]P)$ holds precisely when
+$[s]P=[n]P$ or $[s]P=[-n]P$.  The infinite order of $P$ gives $s=n$ or
+$s=-n$.  The leading homogeneous part of the displayed product is nonzero,
+so its degree is $2M$.
+\end{proof}
+
+An inequality $A_M\ne0$ is a guard, rather than an extra equation with its
+own inverse variable.  In a construction which already has a common
+denominator guard, one inserts $A_M$ into that product.  In the finite
+algebra construction below, one inserts it into the element whose nonzero
+components are selected.  In either case it costs no new coordinate.
+
+\begin{corollary}[Conditional replacement in the repository construction]
+\label{cor:556-anchor}
+Assume the arithmetic soundness argument of the repository, including its
+height estimate with a constant $H<2^{4783227}$, and its completeness with
+arbitrarily large admissible indices $s$.  Replace the packed semilocal
+anchor by the guard $A_M(x(S))\ne0$, where
+\[
+                    M=2^{9566463}.
+\]
+The resulting construction still defines $\mathbb Z$.  Applying the
+finite algebra construction to it uses $556$ total variables, including the
+input.
+\end{corollary}
+\begin{proof}
+The numerical choice satisfies
+\[
+ (20H)^2<400\,2^{9566454}<2^{9566463}=M.
+\]
+Proposition~\ref{prop:finite-anchor} therefore supplies the strict size
+condition $|s|>(20H)^2$ used in the soundness argument.  Completeness is
+preserved by choosing the admissible index larger than this fixed $M$.
+The former packed anchor used three coordinates: two retained coordinates
+and one coordinate finite over them.  Removing them lowers the number of
+retained coordinates from $557$ to $555$.  The finite algebra construction
+adds one coordinate to the retained base, giving $556$ total coordinates.
+\end{proof}
+
+This corollary is an arithmetic modification of the defining system.
+Unlike elimination of finite fibres, it is not asserted to preserve the
+projection of an arbitrary system independently of the source arithmetic
+theorem.  It also does not make the enormous finite product practical to
+expand.  Its integer coefficients are specified exactly by a terminating
+indexed construction.  If the contacts or height theorem are changed, the
+constant $M$ must be chosen again from the new height estimate; the
+numerical value above must not be reused without that check.
+

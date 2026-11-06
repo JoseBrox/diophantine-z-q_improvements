@@ -1,0 +1,104 @@
+\section{What rational pairing and existential rank do, and do not, supply}
+\label{sec:packing-literature}
+
+The finite-algebra method removes algebraic choices over retained
+parameters.  A proposed further compression must justify the decoding
+of the remaining rational parameters.  Set-theoretic countability and
+injectivity of a coding function do not give this justification.
+
+\subsection{Integer pairing is not rational pairing}
+
+The familiar polynomial
+\[
+ C(u,v)=\frac{(u+v)(u+v+1)}2+v
+\]
+pairs nonnegative integers, but has infinitely many rational points
+in every rational fibre.  Indeed, for any $c,s\in\mathbb Q$, set
+\[
+ v=c-\frac{s(s+1)}2,\qquad u=s-v.
+\]
+Then $C(u,v)=c$.  Thus using this pairing on rational witnesses
+introduces spurious decodings.  Restricting its arguments to integers
+would require precisely the integrality predicates whose cost is being
+optimized.
+
+Poonen proves that a suitable non-density consequence of the
+Bombieri--Lang conjecture implies a polynomial injection
+$k^2\to k$ over a number field
+\cite[Theorem 1.1 and Remark 1.2]{P3Poonen2010}.  Even such an
+injection would not supply rational functions recovering the two
+inputs, nor a finite geometric fibre for primitive-element
+compression.  Every nonconstant morphism
+$\mathbb A^2\to\mathbb A^1$ has a one-dimensional generic
+geometric fibre.  The elliptic-surface example of Pasten in
+Section~\ref{sec:geometric-compression-limits} makes the distinction
+between rational injectivity and geometric finiteness unconditional.
+
+\subsection{A recent explicit result has a restricted domain}
+
+Hirvensalo's Theorem 2 gives an explicit polynomial injection on
+\[
+ \Lambda_\Pi=\mathbb Z[1/p:p\in\Pi]\cap[0,1],
+\]
+where $\Pi$ is a fixed finite nonempty set of odd primes
+\cite{P3Hirvensalo2026}.  With
+$M=\operatorname{lcm}_{p\in\Pi}(p-1)$ and $N\ge2$ coprime to
+every $p(p-1)$, its construction is a positive constant multiple of
+\[
+                       (x^M+y^M)^N+y^M.
+\]
+The degree is $MN$; for $\Pi=\{5\}$ one can take $M=4,N=3$,
+giving degree twelve.  The theorem does not assert an injection
+on all rational pairs.  The variable denominators in the present
+elliptic construction are not restricted to such a fixed set of primes,
+and decoding would still need an independent existential definition.
+It therefore gives no unconditional reduction of the present count.
+
+\subsection{Existential rank gives the appropriate distinction}
+
+For a Diophantine set $D\subseteq K^r$, its existential rank is the
+least number of quantified field variables in an existential definition
+of $D$.  The rank can be smaller than the dimension of a particular
+witness variety, since a different definition need only preserve the
+input projection.  Daans--Dittmann--Fehm's essential fibre dimension
+formalizes this distinction, and their characteristic-zero bound is
+\cite[Corollary 4.21]{P3DDF2025}
+\[
+             \operatorname{rk}^{\exists,+}_K(D)
+                    \le\operatorname{efd}_K(D)+1.
+\]
+The explicit finite-algebra construction used here is an effective
+special case of that general principle, with all exceptional algebraic
+fibres handled in the specification.  It does not show that positive
+dimensional arithmetic fibres have finite algebraic decoders.
+
+The same paper's Remark 8.8 excludes a one-witness existential definition
+of the ring of integers of any number field.  It does not provide an
+upper bound of nine witnesses for $\mathbb Z$ in $\mathbb Q$.
+Its MRDP-based bounds are conditional on an existing integrality
+definition and multiply its witness cost; they do not remove that
+cost \cite[Remark 8.23]{P3DDF2025}.
+
+\subsection{What remains necessary for a count of at most ten}
+
+The $41$-coordinate definition has one input, eighteen retained
+coordinates for nine elliptic points, one common slope, twenty
+coordinates for ten pole pairs, and one final algebraic coordinate.
+Replacing the finite algebra by another finite primitive-element
+construction does not change these forty retained coordinates.
+Proposition~\ref{prop:finite-algebra-dimension-obstruction} rules out
+separately encoding the full nine-point family over fewer than eighteen
+parameters.  Proposition~\ref{prop:denominator-monomial-rank} rules out
+one proposed direct aggregation of the local denominator conditions.
+Corollary~\ref{cor:boolean-denominator-tests} further rules out every
+finite Boolean combination of fixed rational pullbacks of
+perfect-denominator predicates as a direct definition of integrality.
+
+Neither statement is a lower bound for every definition of
+$\mathbb Z$.  A substantially smaller construction would need new
+arithmetic relations that reduce the independent point choices, a
+different method of enforcing integrality, or a proved simultaneous
+construction of pole witnesses.  Merely requiring the ten independent
+pole conics to use a common parameter is not justified by the separate
+existence theorems used in completeness.  No argument in this work
+establishes a definition with two through ten total variables.

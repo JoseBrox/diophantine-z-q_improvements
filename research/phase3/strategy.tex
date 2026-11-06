@@ -1,0 +1,128 @@
+\section{The remaining optimization problem}
+\label{sec:strategy}
+
+The preferred construction in this report uses forty-one total
+coordinates, including the input. Its degree is bounded by
+$2^{9566673}$, and its arithmetic interpretation remains conditional
+on the named source inputs and Sun's simultaneous prime-pattern theorem.
+The forty-three-coordinate semilocal alternative has the substantially
+smaller degree bound $2^{236}$. For degree four, the supplied counts
+are 1315 and 1335, the latter with coefficient height less than
+$2^{1020}$. These are constructions and upper bounds; no optimality
+claim follows from the comparisons.
+
+\subsection{What a reduction to ten coordinates would have to accomplish}
+
+The forty retained coordinates of the preferred source consist of the
+input, eighteen components for nine elliptic abscissas, one common
+slope, and twenty parameters in ten pole predicates. The finite-algebra
+compiler adds one final witness. It has already removed the ordinate
+roots, pole-conic roots, and the arithmetic evaluation coordinates.
+The direct Lucas test removes the remaining two retained proxy
+coordinates and their third, algebraic proxy. Replacing this compiler
+by another primitive-element argument would leave the same retained
+base and would not, by itself, decrease the count.
+
+The geometric results above explain why each independent elliptic
+point cannot simply be encoded by one rational parameter and a finite
+algebraic choice. The specific cyclic point group is dense in its
+two-dimensional Weil restriction. The denominator results also exclude
+compressing independent parity conditions by a rank-deficient list of
+monomials, or replacing the entire integrality condition by finitely
+many fixed rational pullbacks of perfect-denominator predicates.
+These are restrictions on particular methods, not general lower bounds
+of eighteen or forty coordinates.
+
+The most promising remaining arithmetic question is whether several
+point choices or pole witnesses can be tied together while preserving
+simultaneous rational solvability. A proposed sharing must prove this
+simultaneous assertion. Separate existence for each pole conic, or
+local solvability at every prime for each one independently, does not
+provide a common rational parameter. Another possibility is an integer
+relation with a different height argument requiring fewer independently
+chosen elliptic labels. The direct-polynomial congruence lemma supplies
+a precise interface for testing such relations, including the condition
+$k>12\deg F$ for its displayed height estimate.
+
+No construction with two through ten total coordinates has been proved
+here. Two total coordinates are impossible, even for arbitrary finite
+systems. The unrestricted cases of three through ten coordinates remain
+unresolved by this work. For quadratic systems the proved restrictions
+are stronger: at least five total coordinates and at least three
+independent quadratic residuals are necessary. A successful quadratic
+system in five through ten coordinates would immediately give a
+quartic in exactly the same coordinates over $\mathbb Q$.
+
+\subsection{Degree and coefficients at a fixed coordinate count}
+
+The fixed elliptic exclusion product dominates the enormous degree of
+the forty-one-coordinate construction. A better explicit height
+constant, or a different size condition costing no new coordinates,
+would be more consequential than a small improvement to its finite
+algebra. The semilocal alternative illustrates this trade explicitly.
+The remaining finite ranks are $2^{28}$ and $2^{29}$; their determinant
+and separating-parameter bounds are conservative, and sparse formulas
+could improve degree and coefficient bounds without saving coordinates.
+
+For quartics, the preferred 1315-coordinate version also uses an
+invertible affine change of its three private anchor witnesses, giving
+exact primitive coefficient height $64\cdot3^{2^{28}}$. Removing the
+last constant-chain square and inlining its first three constants gives
+the 1335-coordinate alternative at height less than $2^{1020}$.
+The direct field-valued Lucas test has reduced both the
+number of tests and the lengths of their shared symmetric-product
+computations. Further useful computation should operate on the actual
+quadratic residual system and preserve an exact reconstruction
+certificate. Changes of residual basis and invertible coordinate
+changes may also reduce coefficient height. All comparisons must use
+primitive integer coefficients after clearing numerical denominators.
+Computing a huge fixed integer with extra squaring coordinates remains
+a distinct trade, which is why both quartic tables are supplied.
+
+\subsection{The arithmetic hypotheses still requiring independent review}
+
+The most consequential review remains the source manuscript's
+restricted $2$-converse, its fixed-field coefficient transfer, and
+the complete five-contact height argument with its explicit constant.
+The shared-point and direct-Lucas constructions additionally use
+Sun's Theorem~4.1. The stated theorem and its order-compatibility
+consequences were checked; the complete analytic proof of its
+prime-pattern estimates has not been independently reproduced here.
+The distinction between the unconditional Artin-symbol theorem of
+Frei--Tinkov\'a and their conditional primitive-root theorem matters
+\cite{FreiTinkova2025}. Sun's further large-prime sieve and its use
+of polynomial-prime transference \cite{TaoZiegler2018} remain external
+inputs, not conclusions of the polynomial checkers.
+
+This extra input has a specific role. A common comparison index must
+satisfy simultaneous congruences at different selected primes. Their
+compatibility requires
+\[
+                    \gcd(d_{p,-},d_{q,+})=4
+                         \qquad\text{for all }p,q.
+\]
+An odd common divisor would make the residues zero and four
+incompatible. One cannot justify the common index by reusing only the
+original private-witness existence statements. The conditional proofs
+in this report retain the stronger simultaneous hypothesis explicitly.
+
+\subsection{Number fields and the limits of a uniform formula}
+
+The explicit $\mathbb Q(i)$ sections and the rejected integral contact
+inputs show that the literal newer polynomials do not extend unchanged
+to rings of integers. Translating the input square removes the finite
+contact obstruction; a field-adapted division norm repairs conjunction
+without adding variables. These are useful repairs, but neither restores
+the fixed cyclic elliptic-group argument. The totally real quartic
+example gives a concrete point outside that group satisfying every
+finite anchor exclusion.
+
+The general constructibility theorem further shows that no one fixed
+finite existential formula can define the rings of integers in all
+number-field extensions. The field-dependent existence question remains
+open here. Under the claimed rational definition, an existential
+definition of the embedded rational field would permit the integral
+basis construction in Theorem~\ref{thm:nf-equivalence}. Undecidability
+or MRDP over the ring of integers does not supply that rational-field
+isolation. The next arithmetic work should address this missing
+assertion or develop a different source adapted to each field.

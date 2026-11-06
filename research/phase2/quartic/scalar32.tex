@@ -1,0 +1,22 @@
+\begin{corollary}[Scalar order thirty-two]
+\label{cor:shared-scalar32}
+Under the hypotheses and the enlarged size condition of
+Proposition~\ref{prop:shared-precision52}, the two order-$48$ scalar-height
+tests can be replaced by order-$32$ tests.  This preserves the integer input
+projection and does not change the point inventory.
+\end{corollary}
+\begin{proof}
+The scalar-height argument with order $m$ gives
+$h(\beta)\le H|a|^{24/m}$.  At $m=32$ it gives
+$h(\beta)\le H|a|^{3/4}$.  The size condition implies
+\[
+ |a|>(21H)^{13/2}>(20H)^4,
+\]
+because $H\ge1$ and $21^{13}>20^8$.  Thus
+$h(\beta)<|a|/20$, exactly the estimate used in the last contradiction
+of Proposition~\ref{prop:shared-precision52}.  The Lucas part uses only the
+order-$52$ comparisons and is unchanged.  Completeness chooses $S$ deeper
+than a fixed scalar-height point, and decreasing the requested order
+preserves that construction, also when the height point is shared as
+proved above.  This proves both implications.
+\end{proof}

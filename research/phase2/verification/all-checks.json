@@ -1,0 +1,167 @@
+{
+  "status": "PASS",
+  "baseline_revision": "28e87b1b62af0effd954605af7f70b2699dd5672",
+  "scope": "Exact source specification, rational-square clearing, finite-case, coefficient-table and numerical-bound checks, plus complete execution of the finite-algebra construction on eight small examples. External arithmetic theorems, the full large indexed matrices/products, and global minimality are not certified by these computations.",
+  "checks": [
+    {
+      "name": "source-structure",
+      "status": "PASS",
+      "command_arguments": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-E",
+        "-B",
+        "research/phase2/new_polynomials/check_source_structure.py"
+      ],
+      "checker_sha256": "5125c533926384e5359d7ae74902e1bcdb8bbb0227883e388164b58de7eb506a",
+      "log": "research/phase2/verification/logs/source-structure.txt",
+      "log_sha256": "161368850de66f1acbb8b909b5f6ce7f34e55061b5a8e2bd4a10bef87809342d",
+      "exit_code": 0
+    },
+    {
+      "name": "scalar-normalization",
+      "status": "PASS",
+      "command_arguments": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-E",
+        "-B",
+        "research/phase2/new_polynomials/verify_scalar_preparation_zero.py"
+      ],
+      "checker_sha256": "d247e16fdf672b6f4960f6d10ca27135f817a055089e3cc2e326eac15f6b0b26",
+      "log": "research/phase2/verification/logs/scalar-normalization.txt",
+      "log_sha256": "c3ea4d8e7b1a3f48ee2e81ac022c2a93adbde58dd33cb24fcbc9a9ecd2af918a",
+      "exit_code": 0
+    },
+    {
+      "name": "conic-and-scale-identities",
+      "status": "PASS",
+      "command_arguments": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-E",
+        "-B",
+        "research/phase2/new_polynomials/check_degree_refinements.py"
+      ],
+      "checker_sha256": "c078cb6750b0b89304fd52b06f19e5b34fb604767986d38e6c18037fc47282f8",
+      "log": "research/phase2/verification/logs/conic-and-scale-identities.txt",
+      "log_sha256": "c089f9abb21e7b49151b0f04c381f99fd840716c908f60a141d14d5befbd6080",
+      "exit_code": 0
+    },
+    {
+      "name": "precision-52",
+      "status": "PASS",
+      "command_arguments": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-E",
+        "-B",
+        "research/phase2/new_polynomials/check_precision52.py"
+      ],
+      "checker_sha256": "126e5f6c97080fbd452b7c7c16ab47d6f410b53ed206a268256144546120a52d",
+      "log": "research/phase2/verification/logs/precision-52.txt",
+      "log_sha256": "97d1e0474f483fa7cccb91a32fc5e3d587fc3083b40953a7b40c48771e47714e",
+      "exit_code": 0
+    },
+    {
+      "name": "finite-algebra-small-execution",
+      "status": "PASS",
+      "command_arguments": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-E",
+        "-B",
+        "research/phase2/finite_fibre/small_algebra_interpreter.py"
+      ],
+      "checker_sha256": "5c5563a760559c3f3e28846da60f4a6c2da1eba4ca27c4a11c7bb9ffe651de7b",
+      "log": "research/phase2/verification/logs/finite-algebra-small-execution.txt",
+      "log_sha256": "ed9d9c5427ac2a033fd39af24b929f68c49eb0d06b9540038d3876c4a824e99e",
+      "exit_code": 0
+    },
+    {
+      "name": "fixed-elliptic-anchor",
+      "status": "PASS",
+      "command_arguments": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-E",
+        "-B",
+        "research/phase2/finite_fibre/check_fixed_anchor_height.py"
+      ],
+      "checker_sha256": "f77e5a6893bf4037896429835a59d67f8386ec83e1126a9202fafb5139b929a8",
+      "log": "research/phase2/verification/logs/fixed-elliptic-anchor.txt",
+      "log_sha256": "faaf1e5f7ab522a9158b4a0b29ba6d997a96321312051933ab17eb6bb415c900",
+      "exit_code": 0
+    },
+    {
+      "name": "polynomial-558",
+      "status": "PASS",
+      "command_arguments": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-E",
+        "-B",
+        "research/phase2/finite_fibre/verify_558_specification.py"
+      ],
+      "checker_sha256": "f7e17a8c5eb7c6e48ddb9f9069bcabf7816dacb4685dad8703ec9c782573f674",
+      "log": "research/phase2/verification/logs/polynomial-558.txt",
+      "log_sha256": "4a82d2ed9ad8d1aae2eb4ef1125edd871bf85ad04d21f6b989f96c50d1dcbd4c",
+      "exit_code": 0
+    },
+    {
+      "name": "polynomial-43",
+      "status": "PASS",
+      "command_arguments": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-E",
+        "-B",
+        "research/phase2/finite_fibre/verify_shared_specification.py",
+        "research/phase2/new_polynomials/source-43-conic.json.gz",
+        "research/phase2/finite_fibre/polynomial-43-conic/polynomial-specification.json"
+      ],
+      "checker_sha256": "0509c5f53e1bd24fb2a5dc0b69ec4e351dcd63ee58559be48bdd418ed2b1c7c1",
+      "log": "research/phase2/verification/logs/polynomial-43.txt",
+      "log_sha256": "d8edf497ebce1aef3baa17af3b5c50cf2f7faf2129c5b1de342e77c908d9f5e8",
+      "exit_code": 0
+    },
+    {
+      "name": "polynomial-45",
+      "status": "PASS",
+      "command_arguments": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-E",
+        "-B",
+        "research/phase2/finite_fibre/verify_shared_specification.py",
+        "research/phase2/new_polynomials/source-45-conic-semilocal.json.gz",
+        "research/phase2/finite_fibre/polynomial-45-conic-semilocal/polynomial-specification.json"
+      ],
+      "checker_sha256": "0509c5f53e1bd24fb2a5dc0b69ec4e351dcd63ee58559be48bdd418ed2b1c7c1",
+      "log": "research/phase2/verification/logs/polynomial-45.txt",
+      "log_sha256": "775faf4969072f3a2bdaa45252a970cbf4e2461b7758e7fd0c522fdee65cc1e1",
+      "exit_code": 0
+    },
+    {
+      "name": "quartic-1367",
+      "status": "PASS",
+      "command_arguments": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-E",
+        "-B",
+        "research/phase2/quartic/verify_shared_quartic.py",
+        "research/phase2/quartic/quartic-best/polynomial.json.gz"
+      ],
+      "checker_sha256": "e9af385eda56708e4341d19ac41bf34922eb57c74b6a05ba28a50353307501da",
+      "log": "research/phase2/verification/logs/quartic-1367.txt",
+      "log_sha256": "b7f2a990b6538a13c04cca1947238e69958d8e790591c8867af791cfbaece575",
+      "exit_code": 0
+    },
+    {
+      "name": "quartic-1391",
+      "status": "PASS",
+      "command_arguments": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-E",
+        "-B",
+        "research/phase2/quartic/verify_shared_quartic.py",
+        "research/phase2/quartic/quartic-small-coefficients/polynomial.json.gz"
+      ],
+      "checker_sha256": "e9af385eda56708e4341d19ac41bf34922eb57c74b6a05ba28a50353307501da",
+      "log": "research/phase2/verification/logs/quartic-1391.txt",
+      "log_sha256": "bdc052d9cd453a53a664307e1019ab81b80671065ab295004b1faa5b33bd829b",
+      "exit_code": 0
+    }
+  ]
+}

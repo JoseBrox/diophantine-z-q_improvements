@@ -1,0 +1,133 @@
+% An input fragment for the research paper; no preamble is required.
+\subsection{Absorbing the denominator guard in the anchor witness}
+\label{subsec:anchor-guard-854}
+
+The explicit construction with $855$ variables has one coordinate whose
+only purpose is to invert a product of denominator guards. Its semilocal
+anchor has three private witnesses. The first can always be chosen
+nonzero, which allows it to absorb the inverse coordinate. This gives an
+explicitly specified polynomial in $854$ variables.
+
+\begin{lemma}\label{lem:nonzero-anchor-witness}
+Let $C,r\in\mathbb Q$, with $C\ne0$. If
+\[
+ u^2+6v^2-2w^2-3r^2+2C^4=0
+\]
+has a rational solution, it has one with $u\ne0$.
+\end{lemma}
+\begin{proof}
+The three witnesses cannot all vanish: that would give
+$(r/C^2)^2=2/3$, which is not a rational square. Suppose $u=0$.
+If $w\ne0$, replace $(u,w)$ by $(4w,3w)$, leaving $v$ unchanged.
+The value of $u^2-2w^2$ is still $-2w^2$, and the new $u$ is nonzero.
+If $w=0$, then $v\ne0$. Replace $(u,v)$ by
+$(-12v/7,-5v/7)$, leaving $w$ unchanged. Since
+\[
+ (-12v/7)^2+6(-5v/7)^2=6v^2,
+\]
+the anchor is again preserved and the new first witness is nonzero.
+\end{proof}
+
+\begin{proposition}\label{prop:private-quadratic-guard}
+Let $\mathbf x$ be a tuple of variables, and let
+$N,G,F_1,\ldots,F_r\in\mathbb Z[\mathbf x]$. Put
+\[
+ \Psi(\mathbf x,U)=1+N(\mathbf x)G(\mathbf x)^2U^2,
+ \qquad
+ Q(\mathbf x,U)=\sum_{i=1}^r F_i(\mathbf x)^2+\Psi(\mathbf x,U)^2.
+\]
+For every $\mathbf a\in\mathbb Q^{\lvert\mathbf x\rvert}$, the following
+conditions are equivalent:
+\begin{enumerate}
+\item $G(\mathbf a)\ne0$, all $F_i(\mathbf a)=0$, and there is a
+      nonzero $t\in\mathbb Q$ with $t^2+N(\mathbf a)=0$;
+\item there is $U\in\mathbb Q$ with $Q(\mathbf a,U)=0$.
+\end{enumerate}
+This equivalence also holds over any formally real field.
+\end{proposition}
+\begin{proof}
+If $GU=0$, then $\Psi=1$, so $Q$ cannot vanish over a formally real
+field. If $GU\ne0$, the exact identity
+\begin{equation}\label{eq:anchor-reciprocal-nonzero}
+ \Psi(\mathbf x,U)=(GU)^2\bigl((1/(GU))^2+N\bigr)
+\end{equation}
+shows that $\Psi=0$ is equivalent to the required quadratic equation
+with $t=1/(GU)\ne0$. Conversely, a nonzero root $t$ gives
+$U=1/(Gt)$. A sum of squares in a formally real field vanishes
+precisely when each summand vanishes, completing the proof.
+\end{proof}
+
+\paragraph{Application to the explicit rational system.}
+The anchor in the $855$-variable construction is
+\[
+ u^2+6v^2-2w^2-3r^2+2C^4=0,
+ \qquad C=3^{2^{24}},\qquad
+ r=f_0^2+f_0f_1-f_1^2.
+\]
+Here $f_0,f_1$ are rational expressions in point coordinates. None of
+$u,v,w$ occurs in any other residual or denominator guard.
+Write its cleared numerator as $Bu^2+N$. In the emitted circuit
+$B=S^2$ is a polynomial square (indeed, a fourth power), and
+$r=R/S$ for a polynomial $R$. The complete cleared identity is
+\[
+ Bu^2+N=B(u^2+6v^2-2w^2+2C^4)-3R^2.
+\]
+Let $G$ be the branch's product of all nonconstant denominator factors,
+including every factor of $B$. On $G\ne0$, the rescaling $t=Su$
+changes the private anchor into $t^2+N=0$. By
+Lemma~\ref{lem:nonzero-anchor-witness}, after modifying only the three
+private anchor witnesses, one may require $u\ne0$, and hence $t\ne0$.
+Let $F_1,\ldots,F_{296}$ be the cleared numerators of all the other
+rational equations. Proposition~\ref{prop:private-quadratic-guard}
+replaces the anchor and the independent inverse equation by
+\[
+ \sum_{i=1}^{296}F_i^2+(1+NG^2U^2)^2=0.
+\]
+Every denominator is nonzero when this equation vanishes. Conversely,
+its root recovers $u=1/(GSU)$, with the same values of $v,w$.
+The equivalence preserves the projection onto all coordinates outside
+$\{u,v,w\}$, and in particular the input coordinate. It need not
+preserve each fiber obtained by fixing both $v$ and $w$: the forward
+construction may change those two private witnesses.
+
+The formal chart parameter $j$ still ranges over $\{0,\ldots,211\}$,
+and the height parameter still ranges over the $256$ signed squarefree
+products of $2,3,5,7,11,13,17$. For each of these $54272$ choices form
+the polynomial $Q$ above, with that branch's own $N,G,F_i$, and take
+the product. A finite product over a field vanishes precisely when
+one factor does, so this is the original finite disjunction.
+The guards of a branch are required only when that branch supplies
+the zero factor. The resulting polynomial has integer coefficients
+and uses $854$ total variables, including the input; thus it has
+$853$ existential witnesses.
+
+\paragraph{Exact certificate and scope.}
+The file \texttt{polynomial-854/polynomial-circuit.json} specifies the
+polynomial by an integer arithmetic circuit and the two finite products.
+Its $95538$ stored nodes include certificate expressions; $94393$ nodes
+are reached from the branch output. Circuit gates are polynomial
+expressions, not additional quantified variables. An independent
+reader, \texttt{verify\_compact\_854.py}, imports neither producer and
+checks the following exact statements: all $296$ untouched residuals
+and $1681$ guards agree with the pinned parent circuit; the complete
+ternary anchor has the displayed form; $B=S^2$; all three anchor
+witnesses are private; every denominator is guarded; the reciprocal
+polynomial is $1+NG^2U^2$; the output is the stated sum of $297$
+squares; and all declared coordinates occur in the output directed
+acyclic graph. Polynomial identities are checked by sparse formal
+polynomial arithmetic, not evaluations at sample points.
+
+The independently verified circuit bounds are
+\[
+ \deg P\le63570781474816,
+ \qquad H(P)\le2^{757866260454400},
+\]
+where $H(P)$ is the largest absolute coefficient of the expanded
+polynomial. These are upper bounds from degree and coefficient
+$\ell^1$-norm propagation; the expanded polynomial has not been
+materialized, and these numbers are not asserted to be its exact
+degree or height. The transformation preserves the input projection
+of the $855$-variable system. Its identification with $\mathbb Z$
+inherits the arithmetic theorem used by that system; the transformation
+audit is not an independent verification of every arithmetic argument
+in the source manuscript.

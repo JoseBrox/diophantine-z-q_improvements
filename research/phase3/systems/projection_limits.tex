@@ -1,0 +1,125 @@
+% Restrictions on a compression method, not absolute optimality claims.
+\section{What generic projection can and cannot compress}
+\label{p3sys:projection-limits}
+
+The finite-fiber method eliminates algebraic choices over a retained
+base.  It cannot automatically replace freely varying base coordinates
+by a single primitive element.  The distinction is geometric, and
+it must not be confused with a lower bound for every possible
+Diophantine definition.
+
+\begin{proposition}\label{p3sys:finite-projection-dimension}
+Let $X$ be an integral $K$-variety of dimension $d$.  If a rational
+map from a nonempty open subset of $X$ to $\mathbb A^b_K$ has
+finite geometric fibers, then $b\ge d$.
+In particular, rational changes of coordinates followed by finite-fiber
+projection cannot reduce the dimension of the retained base below $d$.
+\end{proposition}
+\begin{proof}
+Let $Y$ be the closure of the image.  A generically finite map makes
+the function-field extension $K(X)/K(Y)$ finite.  Their transcendence
+degrees over $K$ are therefore equal.  Thus
+$d=\dim Y\le b$.  Restricting to a nonempty open or making a
+birational change does not change the function field or its
+transcendence degree.
+\end{proof}
+
+\begin{corollary}\label{p3sys:monic-base-barrier}
+Suppose a source is described by a positive-rank finite free algebra
+over $K[X_1,\ldots,X_b]$, followed only by nonzero conditions.
+Every nonempty irreducible component of its geometric open locus
+has dimension $b$.  A compression which preserves such a component
+up to birational equivalence and finite-fiber projection must retain
+at least $b$ base coordinates.
+\end{corollary}
+\begin{proof}
+A finite algebra is integral over its base, and every minimal
+prime of a finite flat algebra over a domain lies over the zero
+prime.  To see the latter assertion, use going down for a flat
+extension: a nonzero contracted prime would admit a strictly
+smaller prime below the proposed minimal prime.  The induced
+finite dominant map from each irreducible component to the
+base preserves dimension.  A nonempty open in that component
+still has dimension $b$.  Apply the preceding proposition.
+\end{proof}
+
+The unstratified 43-coordinate source before the direct Lucas-residual
+refinement has 42 retained base coordinates and a triangular monic
+finite algebra, followed only by guards.  The new direct-residual
+source has 40 retained coordinates and the same property.  Thus a
+generic projection does not, by itself, turn either source into a
+finite-fiber presentation over nine retained coordinates.  Such an
+operation would have positive-dimensional geometric fibers.  A proof
+that those fibers retain the required rational points would be new
+arithmetic information, not a consequence of the primitive-element
+theorem.  The subsequent decomposition into zero and nonzero quadratic
+root cases can introduce closed conditions and smaller components;
+the dimension assertion just made concerns the original unstratified
+source, not each of those later cases separately.
+
+\begin{proposition}\label{p3sys:no-generic-rational-section}
+Let a source variety with regular input $T$ project to
+$\mathbb A^b_K$ with coordinates $(T,Z_2,\ldots,Z_b)$.
+If that projection has a rational section on a nonempty open
+subset of $\mathbb A^b_K$, then the source's input projection
+contains all but finitely many elements of $K$.
+Consequently a source whose rational input projection is
+$\mathcal O_K$ has no such section.
+\end{proposition}
+\begin{proof}
+Shrink the domain of the section to a nonempty principal open
+$G(T,\mathbf Z)\ne0$.  For all but finitely many $t\in K$,
+the specialization $G(t,\mathbf Z)$ is a nonzero polynomial:
+at least one of its nonzero coefficient polynomials in $T$
+has only finitely many roots.  Since $K$ is infinite, one can
+choose $\mathbf Z\in K^{b-1}$ with $G(t,\mathbf Z)\ne0$.
+The section then supplies a rational source point at input $t$.
+The ring $\mathcal O_K$ has infinite complement in $K$, so it
+cannot contain such a cofinite projection.
+\end{proof}
+
+The role of the base in this statement matters.  A rational section
+over an already constrained subvariety is compatible with an
+arithmetic image.  For example, in the presentation
+\[
+                         Y^2=T
+\]
+of rational squares one may add arbitrarily many completely free
+coordinates.  They can later be deleted with no change of rational
+projection, although the deleting map has positive-dimensional fibers.
+Its section is over the square-cover variety, not over the entire
+input affine line.  Thus dimension alone is not a lower bound on the
+number of coordinates in every equivalent presentation.
+
+There is a second reason for caution.  The geometric dimension of
+one equation need not be the dimension of the closure of its rational
+solutions.  The equation
+\[
+                         U^2+V^2=0
+\]
+defines a one-dimensional hypersurface over an algebraic closure,
+but its rational solution set is just $(0,0)$.  Therefore a large
+geometric source can in principle have its rational points confined
+to a much smaller algebraic set.  The dimension restriction must
+be applied to a component actually preserved by the proposed
+compression, not silently to all equivalent rational presentations.
+
+\begin{corollary}\label{p3sys:arithmetic-dimension-floor}
+For every polynomial-system definition of $\mathcal O_K$, the
+Zariski closure of its rational witness points has a horizontal
+component of dimension at least two.  On that component the input
+map has positive-dimensional generic geometric fiber.
+\end{corollary}
+\begin{proof}
+Use Lemma~\ref{p3sys:horizontal-closure}.  Its nonconstant input
+function is dominant onto the affine line, so the generic fiber
+has dimension $\dim X-1\ge1$.
+\end{proof}
+
+This last restriction is intrinsic to the rational-point locus,
+unlike the preceding bound for a particular finite-flat presentation.
+It rules out compressing all witnesses to finitely many algebraic
+choices over the input alone.  It does not rule out a two-dimensional
+arithmetic witness variety, nor a definition with three to ten total
+coordinates.  No such new construction is furnished by these
+projection arguments.

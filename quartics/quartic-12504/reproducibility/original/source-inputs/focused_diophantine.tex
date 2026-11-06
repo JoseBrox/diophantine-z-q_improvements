@@ -1,0 +1,1991 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,microtype,amsmath,amssymb,amsthm,mathtools,mathrsfs}
+\usepackage{enumitem,booktabs,array,needspace,etoolbox}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\usepackage{fancyhdr}
+\pagestyle{fancy}\fancyhf{}
+\fancyhead[L]{\small Focused Diophantine document}
+\fancyhead[R]{\small Research draft}
+\fancyfoot[C]{\thepage}
+\setlength{\headheight}{14pt}
+\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\newcommand{\C}{\mathbb C}
+\newcommand{\N}{\mathbb N}\newcommand{\F}{\mathbb F}
+\newcommand{\Loc}{\operatorname{Loc}}
+\newcommand{\Ctl}{\operatorname{Ctl}}
+\newcommand{\Mult}{\operatorname{Mult}}
+\newcommand{\Int}{\operatorname{Int}}
+\newcommand{\Norm}{\operatorname{N}}
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\Supp}{\operatorname{Supp}}
+\newcommand{\Fin}{\operatorname{Fin}}
+\newcommand{\Formal}{\operatorname{Form}}
+\newcommand{\code}{\operatorname{code}}
+\hypersetup{pdftitle={Focused Diophantine document: an explicit definition of the integers},pdfauthor={Research note prepared for James Freitag}}
+\title{Focused Diophantine document\\\large An explicit definition of the integers in the rationals}
+\author{Research note prepared for James Freitag}
+\date{9 October 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+Using the arithmetic results of the cited OpenAI manuscript, we construct
+an existential definition of the integers in the rationals. A finite
+parity certificate defines multiplication on an elliptic integer model;
+height bounds and a bounded divisibility certificate then exclude
+denominators. Explicit sequence encodings give one specified polynomial
+of degree four with \(17\,030\,326\,787\,289\) rational witnesses. The main text
+gives the construction and proof; the appendices verify its numerical data.
+\end{abstract}
+
+\section{The definition and the arithmetic data}\label{sec:inputs}
+\label{sec:dependency-status}
+\begin{theorem}\label{thm:main}
+Using the cited arithmetic results, the integer polynomial
+\(P_{\rm final}\) specified in Section~\ref{sec:completed-definition}
+has degree four and satisfies
+\[
+ x\in\Z\quad\Longleftrightarrow\quad
+ \exists\mathbf w\in\Q^{17\,030\,326\,787\,289}\quad
+                         P_{\rm final}(x,\mathbf w)=0.
+\]
+\end{theorem}
+
+The construction develops the notes supplied by Gabe Conant
+\cite{Conant,ConantArity}. We first define multiplication on an elliptic
+model, then prove the integrality formula \eqref{eq:integer-formula}
+and compile it into \(P_{\rm final}\). All quantified coordinates
+range over \(\Q\); integer indices, primes and heights occur only
+in the proof and in intermediate specifications that are eliminated.
+The argument and exact computational checks remain a research draft,
+without independent expert review or formal verification of the whole proof.
+
+Fix
+\[
+ F=\Q(\sqrt2),\quad d=75-53\sqrt2,\quad E:y^2=x^3-d^2x,
+ \qquad \sigma(\sqrt2)=-\sqrt2,
+\]
+\[
+ P=\left(\frac{1641}{8}-145\sqrt2,
+          -\frac{15465}{4}+\frac{87483}{32}\sqrt2\right),
+ \qquad G=2E(F).
+\]
+A point code \((\tau,x_0,x_1,y_0,y_1)\) is either the zero
+tuple, representing \(O\), or has \(\tau=1\) and represents
+\((x_0+x_1\sqrt2,y_0+y_1\sqrt2)\). Write \(h\) for absolute
+logarithmic Weil height, normalize \(v_p(p)=1\), and include zero
+in \(\N\). Put
+\[
+ S=S_*:=\{p:p\le76176\},\quad K=48,\quad
+ \mathcal C=\{\infty,0,1,2401,-343/32\},
+\]
+with contact forms \(L_\infty=V\) and
+\[
+ (L_1,L_2,L_3,L_4)=(U,U-V,U-2401V,32U+343V).
+\]
+Let \(H_*,L_*=18H_*+12\) be the explicit integers in
+\eqref{eq:optimized-H}. We need the following four facts.
+
+\begin{enumerate}[label=\textbf{(I\arabic*)},leftmargin=*,itemsep=4pt]
+\item \emph{Elliptic data.} \(G=\Z P\), and
+\begin{equation}\label{eq:canonical}
+                    h(x(nP))\ge n^2-4\qquad(n\ne0).
+\end{equation}
+The rank assertion is \cite[Proposition 2.1]{H10}; Appendix
+\ref{sec:numerical-elliptic} verifies the generator and height bound.
+Set \(z=-x/y\), \(f=1/x\), with \(z(O)=f(O)=0\), and
+let \(\ell_K\) be the truncated formal logarithm in
+\eqref{eq:closed-log}. At a place over \(q\notin S_*\), for
+formal multiples with denominator index \(n'\ne0\),
+\begin{align}
+ v\!\left(\frac{z(nP)}{z(n'P)}\right)&=v_q(n/n'),\label{eq:formal-ratio}\\
+ v\!\left(\frac{\ell_K(z(nP))}{\ell_K(z(n'P))}-\frac n{n'}\right)
+ &\ge K\quad\text{if }v_q(n/n')\ge0.\label{eq:formal-log}
+\end{align}
+These also hold on the conjugate curve \cite[Proposition 2.2 and
+Section 5]{H10}: the formal logarithm preserves valuation, and its
+tail has order at least \(v(z)+K\), since \(q>K+1\).
+
+\item \emph{Parity.} The polynomial predicate \(\Phi\) in
+Appendix~\ref{sec:parity} satisfies
+\(D\subseteq\Phi(\Q)\subseteq D_{S_*}\), where \(D\) consists
+of rationals with square reduced denominator, and \(D_{S_*}\)
+allows odd denominator valuations only in \(S_*\).
+It uses \cite[Proposition 2.8; Lemmas 3.4 and 3.6, with the local
+conditions of Lemma 3.2]{H10}. The latter lemmas give one squarefree
+parameter and points for both twists, as required in
+\cite[Arithmetic Input 2.3]{Conant}.
+
+\item \emph{Contact height.} For \(s=(u:v)\notin\mathcal C\),
+the contact depth at \(b\) is
+\(v_q(L_b(u,v))-\min(v_q(u),v_q(v))\).
+Let \(M_S(s)\) be the product of primes outside \(S\) at which
+some depth is odd. Appendix~\ref{sec:height-certificate} specializes
+\cite[Theorem 2.4]{H10} to give
+\begin{equation}\label{eq:height}
+                      h(s)\le H_*M_S(s)^{24}.
+\end{equation}
+Appendix~\ref{sec:contacts} identifies the contacts from the
+published quotient models \cite{PadurariuSaia}.
+
+\item \emph{Ordinary contact witnesses.} Every integer \(A\)
+admits integers \(u_1,u_2,u_3,v\), with \(v\ne0\) and
+\(u_1+u_2+u_3=Av\), whose thirteen raw contacts
+\begin{equation}\label{eq:thirteen}
+              v,\quad L_b(u_i,v)\quad(1\le i\le3,\ 1\le b\le4)
+\end{equation}
+are \(\varepsilon kr\). Here \(\varepsilon=\pm1\), the
+multiplier \(k\) belongs to the fixed finite catalogue
+\eqref{eq:cyclic-multiplier}, and \(r\) is a positive split prime
+exceeding any prescribed fixed lower bound. At each place over \(r\)
+there are nonzero integers \(h,j\), independent of \(a\in\Z\),
+such that \(hP,haP,jP^\sigma,(h-4)aP^\sigma\) are formal and
+\begin{equation}\label{eq:ordinary-tests}
+ \frac{\ell_K(z(haP))}{\ell_K(z(hP))}-a\in r^K\mathcal O_v,
+ \qquad
+ \frac{z((h-4)aP^\sigma)}{z(jP^\sigma)}\in r^K\mathcal O_v.
+\end{equation}
+The denominators are nonzero. This is
+\cite[Corollaries 2.6 and 6.2, using Lemma 6.1]{H10}, with the
+catalogue specialization proved in Appendix~\ref{sec:contacts}.
+\end{enumerate}
+
+All references to \cite{H10} use its 6 October 2026 version.
+The appendices verify every new numerical specialization; the source
+theorems themselves are used as cited results.
+
+\section{Multiplication on the elliptic model}
+\label{sec:simultaneous}\label{sec:multiplication}
+
+The batching argument is adapted from \cite{ConantArity}. A
+nonidentity point is formal at a good place exactly when \(v(f)>0\).
+
+\subsection{One parity predicate for a list of inequalities}
+
+\begin{lemma}[Simultaneous parity certificate]\label{lem:batch}
+Let \(r\in\Q^\times\), \(X_1,\ldots,X_N\in\Q\), and
+\(L_i\ge1\) be integers. Choose a power of two \(M>N\), and set
+\[
+ W=1+\sum_{i=1}^N r^i\left(\frac{X_i}{r^{L_i}}\right)^M.
+\]
+If \(\Phi(rW^2)\) holds and \(q\notin S_*\) has odd
+\(v_q(r)\), then \(v_q(r)>0\) and \(v_q(X_i)\ge L_i\)
+for every \(i\). Conversely, if \(r\) is a positive prime and
+\(v_r(X_i)\ge L_i\) for all \(i\), then \(rW^2\in D\),
+where \(D\) is the set of rationals with square reduced denominator.
+\end{lemma}
+\begin{proof}
+Write \(R=v_q(r)\). The nonzero summands have pairwise distinct
+valuations modulo \(M\), namely \(0,R,\ldots,NR\), because
+\(R\) is odd. Their minimum is attained once. Consequently
+\[
+ W\ne0,\qquad v_q(W)=\min\bigl(0,\ iR+M(v_q(X_i)-L_iR)\bigr)\le0,
+\]
+where zero summands are omitted. If \(R<0\), the valuation
+\(R+2v_q(W)\) is negative and odd, contradicting the parity
+property of \(\Phi\). Thus \(R>0\); the same property gives
+\(v_q(W)\ge-R/2\). For every nonzero \(X_i\),
+\[
+ v_q(X_i)\ge\left(L_i-\frac{i+1/2}{M}\right)R>L_i-1.
+\]
+The parenthesis is positive, \(R\ge1\), and \(M\ge N+1\).
+Integral valuations give the conclusion; zero inputs satisfy it as
+well. Conversely each nonconstant summand has positive valuation at
+the prime \(r\), so \(W\) is an \(r\)-adic unit. At every
+other prime the valuation of \(rW^2\) is even.
+\end{proof}
+
+For a field expression \(D=A+B\sqrt2\) required to have order
+at least \(j\) at a selected place, use the two rational tests
+\begin{equation}\label{eq:batch-field-tests}
+                   (s^2-2)B,\qquad A+Bs
+                   \quad\text{with orders }j,j.
+\end{equation}
+Also test \(s^2-2\) at order one. For an odd prime selected by
+Lemma~\ref{lem:batch}, this supplies a root \(\theta\in\Q_q\)
+with \(v_q(\theta-s)=v_q(s^2-2)\): both \(s\) and
+\(\theta+s\) are units. Hence
+\(v_q(B(\theta-s))\ge j\), and \(v_q(A+B\theta)\ge j\).
+There is no assumption that \(A\) or \(B\) is integral.
+For completeness choose sufficiently accurate integral approximations
+to the selected roots and combine them by CRT. One rational variable
+\(s\), chosen to be an integer in the completeness proof, works at
+all the finitely many contact primes. At repeated primes choose the
+same place first.
+
+\subsection{The certificate}
+\label{sec:batched-multiplication}
+For nonzero \(Q_i=n_iP\), \(1\le i\le3\), write
+\(x(Q_i)=x_{i0}+x_{i1}\sqrt2\). Choose rational \(a_i\)
+with \(a_1a_2=a_3\), and \(d_0\in\Q^\times\). Represent
+the seven scalars
+\begin{equation}\label{eq:shared-coordinates}
+                   d_0,\quad d_0x_{i0},\quad d_0x_{i1}
+                   \quad(1\le i\le3)
+\end{equation}
+as \(A=(u_1+u_2+u_3)/v\). Use \(u_1,u_2,v\) as witnesses
+and substitute \(u_3=Av-u_1-u_2\). Require all thirteen raw
+contacts \eqref{eq:thirteen} to be nonzero, and in a signed
+multiplier branch write each as \(\varepsilon kr\), where \(k\)
+is from \eqref{eq:cyclic-multiplier}. There are 91 contact occurrences.
+
+Choose one common \(J\in G\setminus\{O\}\) and one common root
+approximation \(s\). At each contact choose private nonzero
+\(H,X_1,X_2,X_3\in G\). Put \(Q_0=P\), \(X_0=H\),
+\(Y_i=X_i-[4]Q_i\), and \(f=1/x\). Require the following
+field inequalities at the place selected by the rational tests:
+\begin{enumerate}[label=(\roman*),leftmargin=*,itemsep=2pt]
+\item order at least one for \(f(H),f(X_1),f(X_2),f(X_3),
+f(J^\sigma),f(Y_0^\sigma),\ldots,f(Y_3^\sigma)\);
+\item order at least 48 for
+\(\ell_{48}(z(X_i))/\ell_{48}(z(H))-a_i\), \(1\le i\le3\);
+\item order at least 48 for
+\(z(Y_i^\sigma)/z(J^\sigma)\), \(0\le i\le3\).
+\end{enumerate}
+These local inequalities are imposed by rational equations, using
+\eqref{eq:batch-field-tests}
+and Lemma~\ref{lem:batch} once per contact, with \(M=64\): there
+are 33 rational tests, nineteen of order one and fourteen of order 48.
+Every denominator is inverted. Denote the resulting existential
+relation by \(\mathcal M_b\).
+
+\begin{proposition}\label{prop:batched-error}
+For nonzero integer indices, true multiplication satisfies
+\(\mathcal M_b\). If \(\mathcal M_b(Q_1,Q_2,Q_3)\) holds but \(n_1n_2\ne n_3\), then
+\(\max_i|n_i|\le L_*=18H_*+12\).
+\end{proposition}
+\begin{proof}
+For soundness write \(H=hP\), \(J=jP\), \(X_i=t_iP\),
+and suppose a represented slope has an odd normalized contact at
+\(q\notin S_*\). Some raw contact then has odd valuation:
+if all raw valuations were even, so would be their minima and
+normalized depths. The multiplier is a unit at \(q\).
+Lemma~\ref{lem:batch} supplies the field inequalities above.
+The alternate comparisons and \eqref{eq:formal-ratio} give
+\[
+ v_q((h-4)/j)\ge48,\qquad v_q((t_i-4n_i)/j)\ge48.
+\]
+Since \(j\) is a nonzero integer, \(h\equiv4\) and
+\(t_i\equiv4n_i\pmod{q^{48}}\). In particular \(h\) is a
+unit. The primary comparisons and \eqref{eq:formal-log} now give
+\(a_i\equiv t_i/h\equiv n_i\pmod{q^{48}}\).
+Thus \(q^{48}\mid\delta:=n_1n_2-n_3\).
+
+If \(\delta\ne0\), put \(B=\max_i|n_i|\ge1\).
+For each represented slope, \(M_S(u:v)^{48}\mid\delta\),
+while \(|\delta|\le2B^2\). The height bound \eqref{eq:height}
+therefore gives \(h(u:v)\le2H_*B\). Each scalar in
+\eqref{eq:shared-coordinates}, being a sum of three slopes, has
+height at most \((6H_*+2)B\). Division by the common \(d_0\)
+and recombination in \(\Q(\sqrt2)\) give
+\[
+ h(x(Q_i))\le3(6H_*+2)B+2.
+\]
+At a maximizing index, \eqref{eq:canonical} yields
+\(B^2-4\le(18H_*+6)B+2\), hence \(B\le18H_*+12\).
+
+For completeness, take \(a_i=n_i\) and an integral \(d_0\)
+clearing all abscissa denominators. Apply \textbf{(I4)} to the seven
+integers in \eqref{eq:shared-coordinates}, choosing a consistent
+place at each distinct contact prime. For an occurrence at \(r\),
+let \(h_r,j_r\) be its local witnesses. Applying the alternate
+test with index 1 gives
+\(h_r\equiv4\pmod{r^{48+v_r(j_r)}}\).
+Choose a positive common multiple \(j\) of all nonzero \(j_r\).
+The congruences
+\[
+ t_r\equiv1\pmod{|j_r|},\qquad
+ h_rt_r\equiv4\pmod{r^{48+v_r(j)}}
+\]
+are compatible: their moduli have gcd \(r^{v_r(j_r)}\), and
+\(4h_r^{-1}\equiv1\) modulo this gcd. The generalized CRT
+gives an infinite progression, so choose a solution with
+\(h_rt_r\notin\{0,4,-4\}\). Set
+\[
+ J=jP,\qquad H=h_rt_rP,\qquad X_i=h_rt_rn_iP.
+\]
+The primary points remain formal. The alternate differences are
+formal because
+\(h_rt_r-4=(h_r-4)+h_r(t_r-1)\), and the second term is a
+multiple of \(j_r\). The strengthened congruence supplies order
+48 against the common \(j\). Choose a sufficiently accurate integral
+\(s\) by CRT; Lemma~\ref{lem:batch} supplies all parity witnesses.
+
+These choices also justify the nonzero charts used in the circuit.
+Equality \(x(X_i)=x([4]Q_i)\) would give
+\(h_rt_rn_i=\pm4n_i\), hence \(h_rt_r=\pm4\), a contradiction;
+this includes \(i=0\). All differences are nonidentity points.
+A nonidentity point of the torsion-free group \(G\) has neither
+zero abscissa nor zero ordinate. Finally
+\(\ell_{48}(z(H))\ne0\), since at its primary formal place its
+valuation equals that of the nonzero parameter. Thus every required
+inverse exists. The same finite CRT argument allows \(J,s\) to be
+shared across all three copies of \(\mathcal M_b\) used below.
+\end{proof}
+
+\subsection{An anchor beyond the finite error}\label{sec:anchor}
+Let \(T_{2,3}(\Q)=\Z_{(2)}\cap\Z_{(3)}\), with the explicit
+seven-witness formula \eqref{eq:T23}. Define the chain
+\[
+ c_0=3,\quad c_{i+1}=c_i^2\ (0\le i<38348),
+ \qquad C=c_{38348}=3^{2^{38348}}.
+\]
+For \(R\in G\setminus\{O\}\), with
+\(x(R)=x_0+x_1\sqrt2\), define \(\operatorname{Anchor}(R)\)
+by this chain and
+\begin{equation}\label{eq:anchor}
+\begin{gathered}
+ x_0f_0+2x_1f_1=1,\qquad x_0f_1+x_1f_0=0,\\
+ Ct_0=f_0,\qquad Ct_1=f_1,\qquad
+ T_{2,3}(t_0)\ \wedge\ T_{2,3}(t_1).
+\end{gathered}
+\end{equation}
+The constant \(C\) is represented by the chain, not by its expansion.
+
+\begin{lemma}\label{lem:anchor-exists}
+Anchor points exist, and every anchor \(R=sP\) satisfies
+\(|s|>L_*\). An anchor with positive index exists.
+\end{lemma}
+\begin{proof}
+The equations give \(v_3(1/x(R))\ge2^{38348}\).
+The local calculation in Appendix~\ref{sec:anchor-certificate}
+gives \(v_3(1/x(sP))=2+2v_3(s)\), hence
+\(\lvert s\rvert\ge3^{2^{38347}-1}>L_*\).
+That appendix also verifies the last inequality and constructs anchors
+by taking multiples deep in the formal groups above 2 and 3.
+Negation preserves their abscissas, so the index can be positive.
+\end{proof}
+
+\begin{proposition}[Exact multiplication using one anchor]
+\label{prop:anchor-multiplication}
+For nonzero \(A=aP,B=bP,C'=cP\), the relation \(ab=c\)
+is equivalent to
+\begin{equation}\label{eq:anchor-multiplication}
+\begin{split}
+ \exists R,U,V\in G\setminus\{O\}:\quad
+ &\operatorname{Anchor}(R)\ \wedge\ \mathcal M_b(R,A,U)\\
+ &\wedge\ \mathcal M_b(R,C',V)\ \wedge\ \mathcal M_b(U,B,V).
+\end{split}
+\end{equation}
+\end{proposition}
+\begin{proof}
+Write \(R=sP\). The first two approximate multiplications are
+exact, since \(|s|>L_*\). Thus \(U=saP\) and \(V=scP\).
+Since \(a\ne0\), also \(|sa|>L_*\), so the last one is
+exact and gives \((sa)b=sc\), or \(ab=c\). Conversely choose
+any anchor and these true products. For arbitrary indices define
+\[
+\begin{split}
+\Mult(A,B,C):\quad&G(A)\wedge G(B)\wedge G(C)\ \wedge\\
+ &\bigl[((A=O\vee B=O)\wedge C=O)\\
+ &\qquad\vee(A,B,C\ne O\wedge\text{\eqref{eq:anchor-multiplication}})\bigr].
+\end{split}
+\]
+This includes exactly the zero products. There is no use of index multiplication in the anchor
+equations themselves.
+\end{proof}
+
+\subsection{Point codes and the multiplication polynomial}\label{sec:full-multiplication}
+
+The completeness proof of Proposition~\ref{prop:batched-error}
+justifies nonzero affine private points and the ordinary subtraction
+chart. Every private nonzero point of \(G\) is generated as \(2T\) from an
+affine curve point \(T\) with \(y(T)\ne0\), using the ordinary
+doubling chart. Conversely every nonzero point of \(2E(F)\) has such
+a preimage. The torsion of \(E(F)\) has exponent two, by
+Appendix~\ref{sec:numerical-elliptic}. Consequently the required inverse abscissas and parameters are
+well-defined on these nonzero points.
+
+For the three external inputs use codes
+\((\tau,x_0,x_1,y_0,y_1)\), with \(\tau\in\{0,1\}\).
+Impose \((1-\tau)x_i=(1-\tau)y_i=0\), and let
+\(\bar A\) be the affine point whose coordinates are
+\(\tau_A(x_A,y_A)+(1-\tau_A)(x_P,y_P)\), and similarly for
+\(\bar B,\bar C\). Attest each barred point as a double. This
+allows precisely the code of \(O\) and the affine nonzero points
+of \(G\). Set \(\epsilon=\tau_A\tau_B\), require \(\tau_C=\epsilon\), and apply the nonzero multiplication circuit to the three affine points
+with coordinates
+\[
+ \epsilon\bar A+(1-\epsilon)P,\quad
+ \epsilon\bar B+(1-\epsilon)P,\quad
+ \epsilon\bar C+(1-\epsilon)P,
+\]
+where these expressions denote coordinate interpolation by a Boolean
+variable. If \(\epsilon=0\), the inner triple is \((P,P,P)\)
+and the output code is \(O\). If \(\epsilon=1\), the inner
+triple is the actual input triple. This handles all zero cases with one nonzero circuit.
+
+
+The field operations are
+\((a,b)(c,e)=(ac+2be,ae+bc)\), conjugation \((a,b)\mapsto(a,-b)\),
+and inversion \((a,b)^{-1}=(a,-b)/(a^2-2b^2)\).
+All divisions use inverse witnesses. For points \(U,V,W\),
+the addition law consists of the identity and opposite-point cases,
+or, when all are affine,
+\[
+ x_W=m^2-x_U-x_V,\qquad y_W=m(x_U-x_W)-y_U,
+\]
+with \(m(x_V-x_U)=y_V-y_U\) if \(x_U\ne x_V\), and
+\(2y_Um=3x_U^2-d^2\) if \(U=V\), \(y_U\ne0\).
+Splitting in the basis \(1,\sqrt2\) gives rational equations.
+Every gate has a quadratic residual; summing their squares preserves
+conjunction over \(\Q\).
+
+The program \texttt{compile\_multiplication.py} supplies every field
+operation, point operation, formal-logarithm evaluation, raw contact,
+multiplier choice, and rational test in the three copies of
+\(\mathcal M_b\).  One \(J\) and one root approximation are shared
+across all 273 contacts. The common-multiple and CRT proof in
+Proposition~\ref{prop:batched-error} applies to this finite collection;
+the primary contact witnesses remain private.
+
+Clear denominators in each quadratic residual and sum their squares.
+The resulting integer polynomial \(P_{\rm mult}\) has degree four,
+15 free coordinates, 511818 rational witnesses and 509019 residuals.
+By Proposition~\ref{prop:anchor-multiplication},
+\[
+ \exists\mathbf w\in\Q^{511818}\quad
+ P_{\rm mult}(\code(A),\code(B),\code(C),\mathbf w)=0
+\]
+holds exactly when there are integers \(a,b,c\) with
+\(A=aP\), \(B=bP\), \(C=cP\) and \(ab=c\).
+Thus invalid point codes are rejected.
+The complete leaf circuit is included in the accompanying files.
+Its input slots are the coordinates of \(A,B,C\), in that order;
+each point is ordered as \((\tau,x_0,x_1,y_0,y_1)\).
+
+\section{The integrality formula}\label{sec:integers}
+The following construction turns multiplication on \(G\) into a
+definition of the literal subset \(\Z\subset\Q\), following
+\cite[Sections 5--7]{Conant}.
+Set
+\[
+ \beta(t)=\frac{t}{(1+t^2)^2},\quad
+ c_n=\Norm_{F/\Q}(z(nP)),\quad b_n=\beta(c_n),\quad
+ R(n)=\prod_{p\in\Supp(b_n)}p\qquad(n\ge1).
+\]
+The support includes primes dividing the reduced numerator or denominator.
+All \(b_n\) are nonzero.
+
+\subsection{A support bound and a bounded divisibility relation}
+\begin{lemma}\label{lem:support-majorant}
+For every positive integer \(n\),
+\[
+                         R(n)<2^{1024n^2}.
+\]
+\end{lemma}
+\begin{proof}
+On the scaled curve \(E_0\) of Appendix~\ref{sec:numerical-elliptic},
+\(h(x(P_0))=\log41\). Lemma~\ref{lem:duplication-height} implies
+\[
+ \mathfrak h(P_0)\le\log41+\tfrac13\log72<\tfrac{11}{2},
+ \qquad
+ h(x(nP_0))<\tfrac{11}{2}n^2+2.
+\]
+The coordinate change has height less than 2. Hence
+\(h(x(nP))<\tfrac{11}{2}n^2+4<10n^2\).
+The element \(d\) is integral, with one positive conjugate below
+1 and the other below 150, so \(h(d)<\tfrac12\log150<3\).
+Writing \((x,y)=nP\), the curve equation and elementary height
+inequalities give
+\[
+ h(y)\le2h(x)+h(d)+\tfrac12\log2<2h(x)+\tfrac72,
+ \qquad h(z(nP))\le h(x)+h(y)<34n^2.
+\]
+Height is invariant under \(\sigma\), so
+\(h(c_n)\le2h(z(nP))<68n^2\). If \(c_n=a/b\) in lowest
+terms, \(b>0\), then
+\[
+ \beta(c_n)=\frac{ab^3}{(a^2+b^2)^2},\qquad
+ h(b_n)\le4h(c_n)+\log4<274n^2.
+\]
+Let \(u/v\) be the reduced expression for \(b_n\), with
+\(v>0\). Since \(u\ne0\),
+\[
+ R(n)\le |u|v\le\exp(2h(b_n))
+       <\exp(548n^2)<3^{548n^2}<2^{1024n^2}.
+\]
+The numerical comparisons follow from the elementary exponential
+bounds recorded in Appendix~\ref{sec:saturation}.
+\end{proof}
+
+For positive \(n,s\), put
+\begin{equation}\label{eq:majorant-bound}
+ B=(s^2+1)4^{12288n^2},\qquad Q=4^B,\qquad T=4Q^2.
+\end{equation}
+For positive integers \(T,\mathcal F,\lambda\), define
+\begin{equation}\label{eq:divisibility-replacement}
+ \mathcal D(T,\mathcal F,\lambda):\quad
+ \forall k\ (1\le k\le T\ \Longrightarrow\
+ k\mid \mathcal F\ \wedge\ [k=1\ \vee\ k\text{ composite}\ \vee\
+                  (k\mid\lambda\ \wedge\ k^2\nmid\lambda)]).
+\end{equation}
+This bounded natural-number specification will be replaced by explicit
+existential equations in Section~\ref{sec:completed-definition}.
+
+\begin{lemma}\label{lem:divisibility-replacement}
+Condition \eqref{eq:divisibility-replacement} is equivalent to
+\[
+ \operatorname{lcm}(1,\ldots,T)\mid \mathcal F,\qquad
+ v_p(\lambda)=1\quad\text{for every prime }p\le T.
+\]
+Such positive \(\mathcal F,\lambda\) exist for every positive \(T\).
+\end{lemma}
+\begin{proof}
+The divisibility conditions on \(\mathcal F\) give the least common multiple.
+At a prime \(k=p\), the first two alternatives are false, leaving
+exactly \(p\mid\lambda\), \(p^2\nmid\lambda\); at 1 or a
+composite \(k\) another alternative applies. Existence follows by
+taking \(\mathcal F=T!\), \(\lambda=\prod_{p\le T}p\).
+\end{proof}
+
+Let \(\Gamma^{\rm div}(n,s,M,N)\) assert \(n,s\ge1\) and
+the existence of positive \(\mathcal F,\lambda\) satisfying
+\eqref{eq:majorant-bound}, \(\mathcal D(T,\mathcal F,\lambda)\),
+\(M=\lambda \mathcal F\), \(N=\lambda M\). Write
+\(\widehat\Gamma^{\rm div}(A,S,U,V)\) for its interpretation
+in \(G\), meaning \((A,S,U,V)=(nP,sP,MP,NP)\).
+Section~\ref{sec:completed-definition} constructs this existential
+interpretation using the multiplication polynomial, addition and four
+squares on indices. Factorials and prime products are used only as
+existence witnesses in the lemma, not as operations in that construction.
+
+\subsection{Definition and proof}
+For nonidentity point codes put
+\[
+ b(A)=\beta(\Norm_{F/\Q}(z(A))),\qquad
+ t(U,V)=\tfrac12\Tr_{F/\Q}(z(V)/z(U)).
+\]
+Using the local formulas of Appendix~\ref{sec:local-rings}, define
+\begin{equation}\label{eq:integer-formula}
+\begin{split}
+ \mathcal Z(x):\quad&x(x-1)(x-2401)=0\quad\vee\\
+ &\Bigl[\bigwedge_{p\in S_*}\Int_p(x)\ \wedge\
+ \exists A,S,U,V\ \bigl(\operatorname{Anchor}(S)\ \wedge\
+ \widehat\Gamma^{\rm div}(A,S,U,V)\\
+ &\qquad\wedge\Phi(x)\ \wedge\
+ \bigwedge_{j=1}^4\bigl(L_j(x,1)\ne0\ \wedge\
+       \Phi(b(A)/L_j(x,1))\bigr)\\
+ &\qquad\wedge\Phi(\beta(t(U,V))x^2)\bigr)\Bigr].
+\end{split}
+\end{equation}
+Rational functions are expanded using equations and inverse witnesses.
+
+\begin{proposition}\label{prop:integers}
+The formula \(\mathcal Z\) defines \(\Z\) in \(\Q\).
+\end{proposition}
+\begin{proof}
+Suppose the main disjunct holds, with \(A=nP\), \(S=sP\).
+An odd contact prime \(q\notin S_*\) cannot be an odd denominator
+prime of \(x\), by \(\Phi(x)\). An even denominator valuation
+gives even depth at infinity and zero finite contact depths, so it
+cannot occur at this \(q\) either. Thus \(x\) is integral at
+\(q\), and some \(L_j(x,1)\) has positive odd valuation.
+The test \(\Phi(b_n/L_j(x,1))\) forces \(q\in\Supp(b_n)\).
+The contact-height bound and Lemma~\ref{lem:support-majorant} imply
+\[
+ h(x)\le H_*R(n)^{24}
+       <H_*2^{24576n^2}
+       <(s^2+1)4^{12288n^2}=B,
+\]
+because the positive anchor index satisfies \(s>L_*>H_*\).
+
+For a prime \(p\le Q\) outside \(S_*\), every reduction group
+above \(p\) has order at most \(4Q^2=T\), by Hasse's bound and
+\([F:\Q]=2\). Its order divides \(\mathcal F\), so \(\mathcal F P\) is formal
+at every such place. Since \(v_p(\lambda)=1\), the parameter of
+\(MP=\lambda\mathcal F P\) has valuation at least two. The integral formal
+multiplication law gives
+\[
+ \frac{z(NP)}{z(MP)}\equiv\lambda\pmod{p^2\mathcal O_v},
+ \qquad v_p(t(U,V))=1.
+\]
+For the second assertion take trace and divide by two. A denominator
+prime \(p\) of \(x\) would lie outside \(S_*\) by the local
+tests, and satisfy \(p\le e^{h(x)}<e^B<4^B=Q\). Then
+\[
+ v_p(\beta(t(U,V))x^2)=1+2v_p(x)<0
+\]
+is odd, contradicting the last parity test. Hence \(x\in\Z\).
+
+Conversely let \(x\in\Z\setminus\{0,1,2401\}\). Choose a
+positive multiple \(nP\) sufficiently close to \(O\) at all
+places above the primes dividing \(\prod_jL_j(x,1)\), so that
+\(v_p(c_n)\ge\max_jv_p(L_j(x,1))>0\) there. Such multiples
+exist: small formal neighborhoods are finite-index subgroups of the
+compact local elliptic groups, and their preimages in \(\Z P\)
+have nonzero intersection. The same bound holds for \(b_n\).
+Elsewhere every negative valuation of \(b_n/L_j(x,1)\) is even,
+since for coprime integers \(a,b\),
+\[
+                 \beta(a/b)=\frac{ab^3}{(a^2+b^2)^2}.
+\]
+Thus all four ratios have square reduced denominator. The same is
+true of \(\beta(t)x^2\) for every rational \(t\).
+Choose a positive anchor index \(s\); this is possible because the
+anchor depends only on the abscissa and is invariant under negation.
+The lemma supplies \(\mathcal F,\lambda\), hence \(U,V\).
+Proposition~\ref{prop:explicit-phi} supplies every parity witness;
+the local tests hold for integers. The exceptional disjunct adds
+precisely the integral contact values \(0,1,2401\).
+\end{proof}
+
+\section{The explicit polynomial}\label{sec:completed-definition}
+We now eliminate the bounded quantifier and specify the resulting
+polynomial by fixed finite blocks with fresh variables.
+
+\subsection{A small elementary matrix for the bounded condition}
+
+Put \(k=i+1\), where \(0\le i<T\). Quantify nonnegative
+\(d,b_0,b_1,b_2,a,b,u,v,r,w\), and impose
+\begin{align}
+ \mathcal F&=kd,& b_0+b_1+b_2&=1,& b_0i&=0,\nonumber\\
+ b_1(a+2)(b+2)&=b_1k,&
+ b_2\lambda&=b_2ku,\label{eq:elementary-divisibility}\\
+ b_2u&=b_2(kv+r+1),&
+ b_2k&=b_2(r+2+w).\nonumber
+\end{align}
+The selectors are automatically zero or one because they are natural
+numbers with sum one. The first branch is \(k=1\); the second
+provides a proper factorization; the last expresses
+\(\lambda=ku\) with nonzero remainder \(r+1\) of \(u\) modulo
+\(k\). Its inequality is exactly \(1\le r+1<k\).
+Thus this is equivalent to the matrix of
+\eqref{eq:divisibility-replacement}. Introducing ordinary arithmetic
+gates gives 31 natural witnesses and 28 equations, each of the form
+\(z=x+y\) or \(z=xy\), allowing fixed constants and repeated
+outputs. The file \texttt{natural/body.json} specifies every equation.
+
+\subsection{The power-of-four component}\label{sec:executed-dprm}
+The constructive DPRM development \cite{DPRMCoq}, in the pinned
+Coq source \cite{DPRMLibrary}, supplies an extracted
+finite list of natural-number equations for \(Q=4^B\). The wrapper
+\texttt{power4\_constraints\_correct} proves
+\begin{equation}\label{eq:power4-checked}
+ Q=4^B\quad\Longleftrightarrow\quad
+ \exists\mathbf w\in\N^{7447}\ \bigwedge_{e=1}^{5780}r_e(Q,B,\mathbf w)=0.
+\end{equation}
+Each residual is a constant, parameter, alias, addition or multiplication
+equation. Coq 8.18 accepted the wrapper without additional assumptions.
+Eliminating aliases and operations with zero or one gives an equivalent
+list of 5346 natural witnesses and 3679 equations. The supplied
+reconstruction map recovers every eliminated witness; a separate replay
+substitutes it into every original equation. Two copies, linked by
+\(D=4^{12288n^2}\), \(B=(s^2+1)D\) and \(Q=4^B\),
+give exactly the required bounds.
+
+\subsection{Eliminating the bounded quantifier by explicit templates}
+
+We use the sequence encoding proved in the pinned Coq development
+\cite{DPRMLibrary}, files \texttt{Matija/cipher.v},
+\texttt{Dio/dio\_cipher.v}, and \texttt{Dio/dio\_bounded.v}.
+For a tuple \(a_0,\ldots,a_{T-1}\) with \(a_i<2^q\) and
+\(q>T+1\), its code is
+\[
+ \operatorname{enc}_{T,q}(a)
+       =\sum_{i<T}a_i\rho^{2^{i+1}},\qquad \rho=2^{4q}.
+\]
+The relevant polynomial relations are \(\operatorname{Code}\),
+asserting that an integer is such a code; \(\operatorname{CodeNat}\),
+encoding \(0,\ldots,T-1\); \(\operatorname{Const}\), encoding a
+constant tuple; and \(\operatorname{CodeMult}\), imposing componentwise
+multiplication on three codes already known to be valid. Componentwise
+addition is ordinary addition of codes. The cited development proves
+these properties, including the absence of carries in the required masks.
+
+Choose \(q=T+2+h\), \(h\in\N\). Encode the index by
+\(\operatorname{CodeNat}\), the two parameters \(\mathcal F,\lambda\)
+and constants \(0,1,2\) by \(\operatorname{Const}\), and each
+of the 31 matrix witnesses by \(\operatorname{Code}\). Replace
+every addition equation by the addition of its codes and every
+multiplication equation by \(\operatorname{CodeMult}\).
+This uses precisely one \(\operatorname{CodeNat}\), five
+\(\operatorname{Const}\), 31 \(\operatorname{Code}\), and
+13 \(\operatorname{CodeMult}\) instances.
+
+For soundness, decode each tuple. The code relations imply every
+matrix equation at each \(i<T\), giving the bounded condition.
+For completeness, choose a witness to the matrix for each of the
+finitely many \(i<T\); then choose \(q\) larger than \(T+1\)
+and all their binary lengths, and encode these tuples. This proves
+the equivalence without retaining a bounded quantifier in the final formula.
+
+Coq 8.18 checks all four template constructions without additional
+assumptions. After alias elimination their sizes are:
+\begin{center}\small
+\begin{tabular}{lrr}\toprule
+Template & Natural witnesses & Elementary equations\\\midrule
+\(\operatorname{Code}\)&138563&95337\\
+\(\operatorname{CodeNat}\)&459906&316434\\
+\(\operatorname{Const}\)&121966&83918\\
+\(\operatorname{CodeMult}\)&221849&152642\\
+Power of four&5346&3679\\\bottomrule
+\end{tabular}
+\end{center}
+Reconstruction and substitution into every original equation verify
+the alias elimination for each template.
+
+\subsection{The full rational-field interpretation}
+
+Every natural variable becomes a five-coordinate elliptic point code.
+Require its index to be a sum of four squares, using four copies of
+\(P_{\rm mult}\) and three elliptic additions. This gives the
+polynomial block \texttt{q\_natural}, with 2048167 rational witnesses.
+Each elementary integer addition or multiplication is replaced by the
+corresponding rational point-code block. Every free natural input is
+restricted at the outer graph block; every local natural witness is
+restricted in the block that introduces it. Thus no unrestricted rational
+variable is silently treated as a natural number.
+
+The addition block validates all three elliptic point codes. Five
+Boolean selectors, with sum one, choose: the first input is \(O\);
+the second input is \(O\); the inputs are opposites; ordinary doubling;
+or ordinary unequal-abscissa addition. All necessary inverse conditions
+are enforced in the selected branch. In an inactive branch its denominator
+is replaced by one, so no extraneous exclusion is imposed. The block has
+281 rational witnesses and 342 quadratic residuals. It expresses the
+usual elliptic group law; when its inputs lie in \(G\), so does its output.
+Together with the already computed multiplication block and Lagrange's
+four-square theorem, this justifies the interpretation of every natural
+constraint. Fixed integer indices such as 12288 are constructed by binary
+elliptic addition; their enormous point coordinates are not expanded.
+
+The root block has the single free rational input \(x\). A Boolean
+selector \(b\) imposes
+\[
+ (1-b)x(x-1)(x-2401)=0,\qquad x'=bx+2(1-b),
+\]
+using quadratic gates. All remaining conditions are the main integrality
+disjunct applied to \(x'\), with
+\(\widehat\Gamma^{\rm div}(A,S,U,V)\) and
+\(\operatorname{Anchor}(S)\). When \(b=0\), the input is an
+integral exceptional contact and \(x'=2\). When \(b=1\), the actual
+input is tested. This avoids duplicating the entire construction for the
+three exceptional values.
+
+All 7499 primes at most 76176 are enumerated, and their fixed local-ring
+formulas from Appendix~\ref{sec:local-rings} are emitted. For the
+\(p\equiv1\pmod8\) cases the largest auxiliary prime required is
+131; all primality and Legendre-symbol conditions are checked exactly.
+The six parity inputs are \(x'\), the four contact ratios, and
+\(\beta(t(U,V))x'^2\). The nonzero parity block suffices here:
+its equation forces \(x'\ne0\), the contact denominators are
+explicitly inverted, and \(b(A)\ne0\). Also \(t(U,V)\ne0\),
+because the graph gives valuation one at every prime outside \(S_*\)
+and below \(Q\). Such a prime exists: \(Q\) exceeds the first
+prime above 76176, by its displayed exponential bound (or Bertrand's
+postulate). Thus the nonzero restriction preserves completeness.
+
+\subsection{An exact finite polynomial specification}
+
+The file \texttt{Z\_definition.polynomial.json} and its listed
+dependencies specify the polynomial as follows. Each block
+\(\mathcal B\) has a fixed list of free input slots, local variables,
+integer-coefficient quadratic residuals \(r_j\), and calls to other
+blocks. Its polynomial is
+\begin{equation}\label{eq:modular-polynomial-semantics}
+ P_{\mathcal B}=\sum_j r_j^2+
+       \sum_{\text{calls }c}\ \sum_{i=0}^{m_c-1}
+                  P_{\mathcal B_c}(\alpha_{c,i};\mathbf w_{c,i}).
+\end{equation}
+Every \(m_c\) is a displayed fixed positive integer, every input
+substitution \(\alpha_{c,i}\) is an explicitly listed variable slot
+or an explicitly listed affine progression of slots, and
+\(\mathbf w_{c,i}\) is a fresh block of witnesses. Calls form an
+acyclic finite dependency graph. Consequently
+\eqref{eq:modular-polynomial-semantics} is an exact specification of a
+single polynomial in finitely many indeterminates. It contains no
+arithmetic predicate, unspecified constant, or unexecuted DPRM conversion.
+The repetitions are fixed finite sums in the polynomial's notation,
+not quantifiers in the defining formula.
+
+The residuals of the multiplication leaf are stored completely in the
+included line-based circuit file; every other leaf is directly listed
+in its block file. All rational coefficients were cleared in each residual.
+All blocks are sums of squares; therefore their sum is zero over \(\Q\)
+if and only if every constituent constraint is zero. Input substitutions
+only rename variables. Degree remains at most four, and a private squaring
+residual shows that it is exactly four.
+
+The exact output counts, including fresh witnesses in every repeated
+block, are
+\begin{center}
+\begin{tabular}{lr}\toprule
+Quantity & Value\\\midrule
+Free rational input &1\\
+Existential rational witnesses &\(17\,030\,326\,787\,289\)\\
+Primitive squared residuals &\(16\,938\,632\,062\,448\)\\
+Degree &4\\
+Copies of the multiplication polynomial &\(33\,256\,658\)\\\bottomrule
+\end{tabular}
+\end{center}
+Denote this particular polynomial by \(P_{\rm final}\).
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+The decoded bounded certificate is equivalent to
+\eqref{eq:divisibility-replacement}. Its interpreted point-code equations
+are equivalent to the natural equations, by the multiplication theorem,
+the addition block and four squares. Proposition~\ref{prop:integers}
+therefore proves the main integrality branch. The selector restores
+precisely the integral exceptional contacts. Finally the sum-of-squares
+identity \eqref{eq:modular-polynomial-semantics} combines exactly those
+equations and gives the stated degree and witness count.
+\end{proof}
+
+\paragraph{Polynomial files and verification scope.}
+The accompanying \texttt{completed\_polynomial.zip} contains
+\texttt{Z\_definition.polynomial.json}, all block and leaf files,
+source code, template proofs and execution records. The dependency
+fingerprint (SHA-256 of the sorted list of block and leaf hashes) is
+\begin{center}\small\ttfamily
+7cff5a2443678289d21a468d7a58e683\\
+227a7314ee31f520157c359aa6493c4f
+\end{center}
+with the two lines concatenated. Coq checks the natural-number
+constructions; extraction, serialization, optimization and the
+rational-field translation have separate exact checks. These do not
+constitute a formal verification of the complete proof.
+
+\appendix
+
+\section{Numerical elliptic data}\label{sec:numerical-elliptic}
+
+\subsection{Torsion and the displayed point}
+
+Counting points on the two reductions at 17, and on a reduction at 23,
+gives the following exact table. The middle column specifies the image
+of \(\sqrt2\) in the residue field.
+\[
+\begin{array}{c|r|r|r}
+p&\sqrt2&d&\#\widetilde E(\F_p)\\\hline
+17&6&12&20\\
+17&11&2&16\\
+23&5&17&24\\
+23&18&18&24
+\end{array}
+\]
+The counts are the elementary sums
+\(p+1+\sum_{x\in\F_p}\chi_p(x^3-d^2x)\), with \(\chi_p(0)=0\).
+The prime-to-17 torsion injects into both groups at 17, so its order
+divides 4. Its 17-primary part injects at 23 and is trivial. The
+four visible points \(O,(0,0),(d,0),(-d,0)\) exhaust the torsion.
+Consequently
+\[
+ E(F)_{\rm tors}=E[2](F)\cong(\Z/2\Z)^2,\qquad m=2.
+\]
+By \cite[Proposition 2.1, proved in Section 5]{H10}, this exact
+curve has rank one. Hence \(2E(F)\) is infinite cyclic.
+
+A particularly simple infinite-order point and its double are
+\begin{align*}
+R&=(-7+5\sqrt2,-280+198\sqrt2),\\
+P=2R
+ &=\left(\frac{1641}{8}-145\sqrt2,
+             -\frac{15465}{4}+\frac{87483}{32}\sqrt2\right).
+\end{align*}
+The coordinates satisfy the curve equation exactly, and \(R\) is
+nontorsion because its second coordinate is nonzero. Under
+\((x,y)\mapsto(v^2x,v^3y)\), where \(v=3+2\sqrt2\), the curve
+becomes
+\[
+ y^2=x^3-(3-\sqrt2)^2x,
+ \qquad R\mapsto(1+\sqrt2,2\sqrt2).
+\]
+Write this model as \(E_0\), put \(d_0=3-\sqrt2\), and put
+\(D_0=d_0^2=11-6\sqrt2\). Denote the images of \(R,P\) by
+\(R_0,P_0\). We verify primitivity and the numerical height bounds below.
+
+\subsection{A numerical duplication-height estimate}
+\label{sec:duplication-height}
+
+Use the absolute logarithmic Weil height \(h\). For \(T\in E_0(F)\)
+define
+\[
+ \mathfrak h(T)=\lim_{j\to\infty}4^{-j}h(x(2^jT)),
+ \qquad h(x(O))=0.
+\]
+This is twice the usual N\'eron--Tate height; in particular
+\(\mathfrak h(nT)=n^2\mathfrak h(T)\), and adding torsion does
+not change it.
+
+\begin{lemma}\label{lem:duplication-height}
+For every \(T\in E_0(F)\),
+\[
+ 4h(x(T))-\log392\le h(x(2T))\le4h(x(T))+\log72.
+\]
+Consequently
+\begin{equation}\label{eq:explicit-height-comparison}
+ h(x(T))-\tfrac13\log392\le\mathfrak h(T)
+       \le h(x(T))+\tfrac13\log72.
+\end{equation}
+\end{lemma}
+\begin{proof}
+The duplication morphism on the projective \(x\)-line is
+\[
+ F_1(X,Z)=(X^2+D_0Z^2)^2,\qquad
+ F_2(X,Z)=4XZ(X^2-D_0Z^2).
+\]
+At each place normalize \(\max(|X|,|Z|)=1\) and compare
+\(\max(|F_1|,|F_2|)\) with 1. Both real values of \(D_0\)
+exceed 1. For real \(t\),
+\((t^2+1)^2\ge4|t(t^2-1)|\), as follows by expanding
+\((t^2-2t-1)^2\) and \((t^2+2t-1)^2\).
+Substitution \(t=X/(\sqrt{D_0}Z)\) therefore gives
+\[
+ 1\le F_1(X,Z)=\max(|F_1(X,Z)|,|F_2(X,Z)|)
+       \le(1+D_0)^2.
+\]
+The case \(Z=0\) is immediate. The sum of the two archimedean
+contributions, each weighted by \(1/2\), is between 0 and
+\(\log((1+D_0)(1+D_0^\sigma))=\log72\).
+
+At a finite prime use integral coordinates with
+\(\min(v(X),v(Z))=0\). Outside 2 and the prime
+\(\mathfrak d=(3-\sqrt2)\) of norm 7, the two homogeneous
+polynomials have no common zero over the residue field. Thus the
+local loss is zero. At \(\mathfrak d\), one has \(v(D_0)=2\).
+If \(X\) is a unit, \(F_1\) is a unit. Otherwise \(Z\) is a
+unit. If \(v(X)>1\), then \(v(X^2+D_0Z^2)=2\); if
+\(v(X)=1\), the same equality follows because \(-1\) is not
+a square in \(\F_7\). Hence \(v(F_1)\le4\), giving a height
+loss at most \(\tfrac42\log7\).
+
+At \(\pi=\sqrt2\), normalize \(v_\pi(\pi)=1\), so
+\(v_\pi(2)=2\). The element \(D_0\) is a unit. If exactly
+one of \(X,Z\) is a unit, \(F_1\) is a unit. If both are
+units, write \(X/(d_0Z)=a+b\pi\), with \(a\in\Z_2^\times\)
+and \(b\in\Z_2\). Expansion shows
+\[
+ v_\pi((a+b\pi)^2+1)=
+ \begin{cases}2,&b\in2\Z_2,\\3,&b\notin2\Z_2.\end{cases}
+\]
+Indeed, the rational term is \(a^2+1+2b^2\), and the other
+term is \(2ab\pi\). Thus \(v_\pi(F_1)\le6\), giving a
+height loss at most \(\tfrac62\log2\).
+The total finite loss is at most
+\(2\log7+3\log2=\log392\), proving the first statement.
+The second follows by telescoping and summing
+\(\sum_{j\ge0}4^{-j-1}=1/3\).
+\end{proof}
+
+\subsection{A finite primitivity certificate}
+\label{sec:saturation}
+
+\begin{proposition}\label{prop:generator}
+The point \(R\) generates \(E(F)\) modulo torsion, and the displayed
+point \(P=2R\) generates \(2E(F)\).
+\end{proposition}
+\begin{proof}
+The free part has rank one. The two-isogeny homomorphism
+\(\alpha:E_0(F)\to F^\times/F^{\times2}\), given by
+\(x\) off \(O,(0,0)\), by 1 at \(O\), and by \(-D_0\)
+at \((0,0)\), kills \(2E_0(F)\); see \cite[Section 5]{H10}.
+All torsion images have equal signs at the two real embeddings,
+whereas \(x(R_0)=1+\sqrt2\) has opposite signs. Thus
+\(R_0\notin2E_0(F)+E_0(F)_{\rm tors}\), so its index in the
+free part is odd.
+
+The upper bound in \eqref{eq:explicit-height-comparison} gives
+\[
+ \mathfrak h(R_0)
+ \le\tfrac12\log(1+\sqrt2)+\tfrac13\log72<2.
+\]
+If \(R_0=rT+\tau\) for a generator \(T\) of the free part
+and a torsion point \(\tau\), with \(|r|>1\), then \(|r|\ge3\).
+It would follow that
+\[
+ \mathfrak h(T)<\tfrac29,\qquad
+ h(x(T))<\tfrac29+\tfrac13\log392<\tfrac{20}9<\tfrac94.
+\]
+We exhaust a finite set containing all possible abscissas of such a
+point \(T\), as follows.
+
+If \(x\in\Q\) and \(h(x)<9/4\), write it in reduced form
+\(u/v\), where \(|u|\le9\) and \(1\le v\le9\), since
+\(e^{9/4}<10\). If \(x\in F\setminus\Q\), its primitive
+minimal polynomial \(aX^2+bX+c\), with \(a>0\), has Mahler
+measure \(M=e^{2h(x)}<e^{9/2}<181/2\). The coefficient bounds
+\(a,|c|\le M\), \(|b|\le2M\) give
+\begin{equation}\label{eq:search-box}
+ 1\le a\le90,\qquad |b|\le180,\qquad |c|\le90.
+\end{equation}
+Such an irreducible polynomial splits in \(F\) precisely when
+\(b^2-4ac=2k^2>0\) for an integer \(k\). There are exactly
+8356 primitive triples in this box with that property.
+
+For both roots of each of these quadratics, and for every rational
+candidate, test whether \(x^3-D_0x\) is a square in \(F\).
+This exact enumeration yields the three torsion abscissas
+\(-3+\sqrt2,0,3-\sqrt2\), and precisely these four others:
+\[
+\begin{array}{c|c}
+x&\text{one value of }y\\\hline
+1+\sqrt2&2\sqrt2\\
+2+4\sqrt2&8+9\sqrt2\\
+5/2-2\sqrt2&3-11\sqrt2/4\\
+23-17\sqrt2&160-114\sqrt2
+\end{array}
+\]
+The accompanying standard-library Python program reproduces the
+entire enumeration. Its square test is exact: for \(z=A+B\sqrt2\)
+with \(B\ne0\), test whether \(A^2-2B^2\) is a rational square
+\(n^2\), and whether either \((A+n)/2\) or \((A-n)/2\) is a
+nonzero rational square \(r^2\). A square root is then
+\(r+(B/(2r))\sqrt2\). If \(B=0\), test whether \(A\) or
+\(A/2\) is a rational square. These tests are necessary and
+sufficient by squaring \(r+t\sqrt2\).
+
+All four nontorsion abscissas have the same doubled abscissa,
+independently of the sign of \(y\):
+\[
+ x(2T)=\frac{57}{8}-\frac72\sqrt2.
+\]
+Its primitive minimal polynomial is \(64X^2-912X+1681\).
+Both roots exceed 1, so \(h(x(2T))=\tfrac12\log1681=\log41\).
+The lower bound in \eqref{eq:explicit-height-comparison} now gives
+\[
+ \mathfrak h(T)\ge
+ \tfrac14\bigl(\log41-\tfrac13\log392\bigr)>\tfrac14,
+\]
+contradicting \(\mathfrak h(T)<2/9\). This proves primitivity.
+
+All elementary exponential inequalities used to select the search
+box can also be checked rationally: the program encloses \(e\)
+between \(\sum_{j=0}^7 1/j!\) and that sum plus
+\(9/(8\cdot8!)\), then compares integer powers. No floating-point
+height estimate is used in the certificate.
+\end{proof}
+
+\begin{corollary}\label{cor:height-constants}
+For the displayed point \(P\) on the original model,
+\[
+                 h(x(nP))\ge n^2-4\qquad(n\ne0).
+\]
+
+\end{corollary}
+\begin{proof}
+The preceding computation applied to \(P_0=2R_0\) gives
+\(\mathfrak h(P_0)\ge\log41-\tfrac13\log392>1\).
+The upper comparison in \eqref{eq:explicit-height-comparison}
+therefore implies
+\(h(x(nP_0))>n^2-\tfrac13\log72>n^2-3/2\).
+The change of coordinates has factor
+\(v^2=(1+\sqrt2)^4\), whose height is
+\(2\log(1+\sqrt2)<2\). Using
+\(h(ab)\le h(a)+h(b)\) gives
+\(h(x(nP))>n^2-7/2\), which implies the asserted weaker bound.
+\end{proof}
+
+\subsection{Equations for the elliptic domain}
+
+The domain \(G=2E(F)\) itself is now explicit. For an affine point
+\(A=(X,Y)\), put \(D=d^2\) and quantify \(u,v,w\in F\):
+\begin{align*}
+ v^2&=u^3-Du,&vw&=1,\\
+ 4v^2X&=(u^2+D)^2,&
+ 8v^3Y&=u^6-5Du^4-5D^2u^2+D^3.
+\end{align*}
+Adjoin the disjunct \(A=O\). These are precisely the doubling
+equations, and splitting each equality in the basis \(1,\sqrt2\)
+gives equations over \(\Q\).
+
+\subsection{The truncated logarithm}
+
+With \(z=-x/y\) and \(w=-1/y\), write \(w=z^3f\). Then
+\(f=1-d^2z^4f^2\), and the solution with constant term 1 is
+\[
+ f=\frac{2}{1+\sqrt{1+4d^2z^4}}.
+\]
+Since \(x=z/w\), differentiation yields
+\[
+ \frac{dx}{2y}
+ =\frac12\left(\frac{zw'}w-1\right)dz
+ =\frac{dz}{\sqrt{1+4d^2z^4}}.
+\]
+The normalized formal logarithm is therefore
+\begin{equation}\label{eq:closed-log}
+ \ell(z)=\sum_{j\ge0}
+       \frac{(-1)^j\binom{2j}{j}}{4j+1}\,d^{2j}z^{4j+1}.
+\end{equation}
+Thus \(\ell_{48}\) is the sum in \eqref{eq:closed-log} for
+\(0\le j\le11\). Multiplication by
+\(3\cdot25\cdot13\cdot17\cdot29\cdot37\cdot41\) clears its
+rational denominators without changing a quotient of two evaluations.
+The conjugate polynomial replaces \(d\) by \(75+53\sqrt2\).
+
+\subsection{The anchor certificate}\label{sec:anchor-certificate}
+
+The prime 3 is inert in \(F\), and
+\(\mathcal O_{F_v}=\Z_3[\sqrt2]\). With \(v(3)=1\),
+\(v(a+b\sqrt2)=\min(v_3(a),v_3(b))\).
+The displayed model of \(E\) has good reduction at 3 because
+\(d\) and its discriminant are units there. Direct exact arithmetic gives
+\[
+ P\bmod3=(2\sqrt2,0),\qquad
+ z(2P)=\frac{-6351748793760-5612900635092\sqrt2}{3287811625151}.
+\]
+The reduction of \(P\) has order two; the denominator in the last
+expression is a 3-unit and both numerator coefficients have valuation
+one. Thus \(v(z(2P))=1\).
+
+\begin{lemma}\label{lem:anchor-index}
+If \(R=nP\ne O\) is in the formal kernel at 3, then \(n\)
+is even and
+\[
+             v(z(R))=1+v_3(n),\qquad v(1/x(R))=2+2v_3(n).
+\]
+\end{lemma}
+\begin{proof}
+The reduction calculation forces \(2\mid n\). The integral
+formal group in parameter \(z=-x/y\) is odd. For a 3-unit
+integer \(u\), \([u]z=uz+O(z^3)\) preserves positive
+valuation. The expansion \([3]z=3z+O(z^3)\) increases valuation
+by exactly one when \(v(z)\ge1\): the remaining terms have
+valuation at least \(3v(z)>v(z)+1\). Apply this to
+\(R=[n/2](2P)\), also allowing negative indices. Finally the
+formal expansion \(1/x=z^2+\text{higher terms}\), with leading
+unit coefficient, doubles the valuation.
+\end{proof}
+
+For the chain and equations \eqref{eq:anchor}, put
+\(m=2^{38347}\). Then \(f_0+f_1\sqrt2=1/x(R)\) and
+\(v(1/x(R))\ge2^{38348}=2m\). Thus \(R=nP\) is formal at
+3, and Lemma~\ref{lem:anchor-index} gives
+\begin{equation}\label{eq:anchor-large}
+                       v_3(n)\ge m-1,\qquad |n|\ge3^{m-1}.
+\end{equation}
+For the cutoff comparison, put \(A=(8D_*)^{288D_*}\). From the
+computed bit lengths, \(D_*<2^{38322}\) and
+\(\log_2(8D_*)<38325\). Since \(A>6^{100}\) and \(A>128\),
+\(H_*<8A(B_*^{\rm exc})^{24}\), and \(L_*<32H_*\). Hence
+\begin{equation}\label{eq:anchor-cutoff}
+ \log_2L_*<8+288\cdot38325\cdot2^{38322}+24\cdot109445
+             <2^{38346}=m/2.
+\end{equation}
+The last comparison is checked as an integer inequality in the code.
+It follows that \(3^{m-1}>L_*\).
+
+Anchor points exist. In each of the finitely many local fields above
+2 and 3, the sets of points sufficiently close to \(O\) contain
+open subgroups of finite index in the compact group \(E(F_v)\).
+Their preimages in \(\Z P\) contain nonzero finite-index
+subgroups. Intersect these subgroups, making the point deep enough
+at 3 to meet the bound \(2m\), and deep enough at 2 that both
+rational coefficients of \(1/x\) are integral. Since \(C\)
+is a 2-unit, both \(t_i\) are integral at 2 and 3. Equation
+\eqref{eq:T23} supplies the remaining witnesses. This proves
+existence without evaluating their enormous coordinates.
+
+\section{Contact forms and multipliers}\label{sec:contacts}
+
+\subsection{Recovering the five contact values}\label{sec:numerical-contact}
+
+Let \(b_m\) be the branch value labeled by
+\(m\in\{30,42,70,105,210\}\) in the discriminant-210 quotient.
+The four published quartic models for
+\(X_{210}/\langle w_m\rangle\), \(m=30,42,70,105\), in
+\cite{PadurariuSaia} give the following invariants:
+\[
+\begin{array}{c|r|c}
+m&j(X_{210}/\langle w_m\rangle)&t_m\ \text{with }j_{\rm Leg}(t_m)=j\\\hline
+30&191342053882402567201/129708022500&1/2401\\
+42&2179252305146449/66177562500&32/375\\
+70&128031684631201/9922500&1/225\\
+105&1169975873419524361/108425318400&5/1029
+\end{array}
+\]
+Here \(j_{\rm Leg}(t)=256(t^2-t+1)^3/(t^2(1-t)^2)\).
+For a quartic \(ax^4+bx^3+cx^2+dx+e\), these values are computed by
+\[
+ I=12ae-3bd+c^2,\quad
+ J=72ace+9bcd-27ad^2-27b^2e-2c^3,\quad
+ j=\frac{6912I^3}{4I^3-J^2}.
+\]
+
+To justify using these invariants, the residual group
+\(\mathcal W/\langle w_m\rangle\cong(\Z/2\Z)^3\) acts
+faithfully on the genus-one quotient. Over \(\overline\Q\), its
+translation subgroup has order 4 and is the full two-torsion group
+of the Jacobian. Quotienting by these translations preserves the
+\(j\)-invariant, since it is the multiplication-by-2 isogeny after
+choosing an origin. The remaining double cover of \(X^*\) branches
+at exactly the four values other than \(b_m\): the inertia at
+\(b_m\) was killed by the first quotient. Thus its \(j\)-invariant
+is the Legendre invariant of those four values.
+
+Normalize \(b_{210}=\infty\), \(b_{105}=0\), and \(b_{70}=1\).
+Set \(\lambda=b_{42}\), \(\mu=b_{30}\). If
+\[
+ \mathcal O(t)=\{t,1-t,1/t,1/(1-t),t/(t-1),(t-1)/t\},
+\]
+the first two rows imply
+\(\lambda\in\mathcal O(1/2401)\) and
+\(\mu\in\mathcal O(32/375)\). The six distinct elements exhaust
+the roots of the corresponding degree-six equation for \(j\).
+Among the 36 pairs, the equations
+\[
+ j_{\rm Leg}(\mu/\lambda)=j_{\rm Leg}(1/225),\qquad
+ j_{\rm Leg}((\mu-1)/(\lambda-1))=j_{\rm Leg}(5/1029)
+\]
+have exactly the solution
+\[
+                    \lambda=2401,\qquad\mu=-343/32.
+\]
+This is a finite exact rational calculation, reproduced in the
+accompanying verification script. It proves the claimed normalization
+relative to the published quotient models. In particular we may fix
+\begin{equation}\label{eq:numerical-forms}
+L_\infty=V,\quad L_0=U,\quad L_1=U-V,\quad
+L_{2401}=U-2401V,\quad L_{-343/32}=32U+343V.
+\end{equation}
+All coefficient and nonzero pairwise-determinant prime divisors are
+in \(\{2,3,5,7\}\). The six determinants between finite forms,
+up to sign, are \(1,2401,343,2400,375,77175\).
+
+\subsection{A catalogue with 143 small generating primes}
+
+Put \(S_0=\{2,3,5,7,11,13,17,19,23,29\}\),
+\(H_0=4\), \(J_0=\prod_{p\in S_0}p=6469693230\), and
+\(W=4J_0=25878772920\). The Chinese remainder theorem gives
+\[
+ (\Z/W\Z)^\times\simeq
+ C_2^3\times C_4\times C_6\times C_{10}\times C_{12}
+                  \times C_{16}\times C_{18}\times C_{22}\times C_{28}.
+\]
+Its order is \(4087480320\) and its exponent is \(55440<2^{16}\).
+Use the following thirteen disjoint pools \(\mathcal P_\nu\).
+\begin{center}\small
+\begin{tabular}{r l}
+\toprule
+\(\nu\)& Primes in \(\mathcal P_\nu\)\\
+\midrule
+1&31, 37, 41, 43, 47, 53, 59, 67, 71, 73, 83\\
+2&89, 97, 101, 103, 107, 109, 113, 127, 131, 137, 139\\
+3&149, 151, 157, 163, 167, 173, 179, 181, 191, 193, 197\\
+4&199, 211, 223, 227, 229, 233, 239, 241, 251, 263, 271\\
+5&277, 281, 283, 293, 307, 311, 313, 317, 331, 337, 347\\
+6&349, 353, 359, 367, 373, 379, 383, 389, 397, 401, 419\\
+7&421, 431, 433, 439, 443, 449, 457, 461, 463, 467, 479\\
+8&487, 491, 499, 503, 509, 521, 523, 541, 547, 557, 563\\
+9&569, 571, 577, 587, 593, 599, 601, 607, 619, 631, 643\\
+10&647, 653, 659, 661, 673, 677, 683, 691, 701, 709, 719\\
+11&727, 733, 739, 743, 751, 757, 761, 769, 773, 797, 811\\
+12&821, 823, 827, 829, 839, 853, 857, 859, 863, 877, 881\\
+13&883, 887, 907, 911, 919, 929, 941, 947, 967, 971, 983\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Each pool generates \((\Z/W\Z)^\times\). Here is a short,
+reproducible certificate instead of enumerating its four billion
+elements. Take coordinates for \((\Z/8\Z)^\times\) in the
+basis \((-1,5)\), and discrete-log coordinates at every odd prime
+of \(S_0\), using its least positive primitive root. For each
+\(\ell\in\{2,3,5,7,11\}\), retain the coordinates whose cyclic
+orders are divisible by \(\ell\) and reduce them modulo \(\ell\).
+In each pool the resulting matrices have ranks
+\[
+               11,\quad3,\quad1,\quad1,\quad1,
+\]
+respectively. These are the full dimensions of the quotients by
+\(\ell\). The ranks and every coordinate are recorded in
+\texttt{generator\_certificate.json}. Gaussian elimination over the
+five finite fields verifies them using exact arithmetic. If a subgroup
+of a finite abelian group surjects onto each of these quotients, it is
+the whole group: a nontrivial quotient would have a quotient of prime
+order, contradicting the corresponding surjectivity.
+
+Write the eleven cyclic orders as \(d_j\). Their least common
+multiple is 55440. For every
+pool \(\nu\) and every cyclic basis vector \(e_j\), solve
+\[
+ \sum_{q\in\mathcal P_\nu}e_{\nu jq}\,\operatorname{coord}(q)
+       =e_j\quad\hbox{in }\prod_j\Z/d_j\Z,
+       \qquad 0\le e_{\nu jq}<55440.
+\]
+The program solves the linear systems modulo \(2,3,5,7,11\), lifts
+through their powers, and combines them by CRT. It checks every one of
+the 143 resulting residue identities exactly modulo \(W\). Define
+\[
+             g_{\nu j}=\prod_{q\in\mathcal P_\nu}q^{e_{\nu jq}}.
+\]
+These are fixed positive integers represented by multiplication gates;
+their expanded values are not used as coefficients.
+
+At a contact of type \(\nu\), use
+\begin{equation}\label{eq:cyclic-multiplier}
+ k=\prod_{p\in S_0}p^{a_p}\prod_{j=1}^{11}g_{\nu j}^{b_j},
+ \qquad 0\le a_p\le3,\qquad
+ 0\le b_j<2^{\lceil\log_2d_j\rceil}.
+\end{equation}
+This requires 20 bits for the ten small-prime exponents and 35 for
+the cyclic exponents, or 55 in total. Each interval for \(b_j\)
+contains \(0,\ldots,d_j-1\), so every required unit residue is
+represented. The extra choices are harmless: all their prime factors
+are in the same prescribed pool. The following proposition proves that these multipliers suffice.
+
+The circuit shares the fixed prime powers and basis products globally.
+For a chosen power \(g\), a Boolean bit \(b\) selects the factor
+\(1+(g-1)b\). A further sign bit implements the signed raw contact.
+The 55 count excludes the sign bit and all gate variables.
+
+\begin{proposition}[Composite multipliers suffice]
+The catalogue \eqref{eq:cyclic-multiplier} supplies the finite multipliers
+in \textbf{(I4)}, using the source counting and reduction-order results. The exceptional
+set can then be taken to be
+\begin{equation}\label{eq:small-S}
+                         S_* =\{p:p\le76176\}.
+\end{equation}
+\end{proposition}
+\begin{proof}
+For each integer \(A\), use coordinates \(T=(u_1,u_2,v)\)
+and substitute \(u_3=Av-u_1-u_2\). The thirteen contact forms
+\(F_\nu(T)\) are primitive and pairwise independent modulo every
+prime greater than 29: their coefficient vectors are \((0,0,1)\)
+and \((\alpha,0,\gamma),(0,\alpha,\gamma),
+(-\alpha,-\alpha,\alpha A+\gamma)\), with the determinants
+computed above. At \(p\in S_0\), the union bound
+\(13p^{-4}<1\) gives a class modulo \(p^4\) on which all
+\(v_p(F_\nu)<4\). Fix a lift modulo \(p^7\).
+Choose a real box avoiding the zero planes, fixing signs
+\(\epsilon_\nu\). Remove the resulting \(S_0\)-parts
+\(k_{0\nu}=\prod p^{v_p(F_\nu)}\).
+
+As in \cite[Section 6.2]{H10}, the desired positive prime residues
+are 1 modulo 8, 3 modulo 7, and 1 modulo the other primes in \(S_0\).
+The chosen lifts determine the signed remaining unit classes. Since each
+pool generates \((\Z/W\Z)^\times\), select its product \(h_\nu\)
+so division by \(k_{0\nu}h_\nu\) gives these residues. The cyclic basis products ensure that the selections lie in
+\eqref{eq:cyclic-multiplier}. It remains to impose congruences at the
+pool primes without losing local admissibility.
+
+Write \(k_\nu=k_{0\nu}h_\nu\) for the selected multiplier.
+If \(q^a\Vert h_\nu\), only this multiplier is divisible by
+\(q\), because the pools are disjoint. On the plane
+\(F_\nu(T)=0\pmod q\), exclude
+\(\epsilon_jF_j(T)=0,-k_j\) for every \(j\ne\nu\).
+Each exclusion removes at most a line, and \(24q<q^2\) since
+\(q>29\). Lift a remaining point to a solution of
+\(F_\nu(T)=0\pmod{q^a}\). Primitivity permits a further lift
+for which
+\[
+       \epsilon_\nu F_\nu(T)/q^a
+                   \not\equiv0,-k_\nu/q^a\pmod q.
+\]
+Thus the divided \(\nu\)-th form is also neither 0 nor \(-1\)
+modulo \(q\). The Chinese remainder theorem combines all choices.
+Use a modulus divisible by \(q^{a+1}\), and powers \(p^7\)
+at primes of \(S_0\). Then its quotient by any \(k_\nu\)
+is divisible by every prime in its support, as required in the
+local-density argument. The finitely many unused pool primes may be
+included among the other fixed excluded primes.
+
+The divided forms are still integral and pairwise nonproportional.
+For any remaining prime \(p>29\), the prime-counting local
+factor satisfies
+\[
+ \beta_p\ge(1-1/p)^{-13}(1-13/p)>0,\qquad
+ \log\beta_p\ge-154/p^2.
+\]
+The logarithmic inequality follows from
+\(\log(1-x)\ge-x-x^2/(2(1-x))\). Hence their product has a
+positive uniform lower bound; later sieve cutoffs can be enlarged without
+changing the fixed catalogue.
+The subsequent counting and sieve steps use only these properties,
+the established residues, and a fixed finite set of multiplier primes;
+they are unchanged. All new multiplier primes are at most 983, hence
+already lie in \(S_*\). The other exclusions are the geometric primes \(2,3,5,7\), the
+elliptic bad and ramified primes \(2,7\), logarithm denominators
+(and primes at most 49), and the parity exceptions at most 76176.
+\end{proof}
+
+\section{The numerical contact-height bound}\label{sec:height-certificate}
+Set
+\[
+ g_3=|\mathrm{GL}_4(\F_3)|=24261120,\qquad
+ D_*=1152!\,g_3^{1152},\qquad
+ B_*^{\rm exc}=\prod_{p\le76176}p,
+\]
+and define
+\begin{equation}\label{eq:optimized-H}
+ H_*=2\bigl((8D_*)^{288D_*}+6^{100}\bigr)(B_*^{\rm exc})^{24}+128,
+ \qquad L_*=18H_*+12.
+\end{equation}
+We prove that \(h(s)\le H_*M_{S_*}(s)^{24}\) for
+\(s\in\mathbf P^1(\Q)\setminus\mathcal C\), by specifying
+the cover, comparing its metrics, and applying the arithmetic height bounds.
+
+\subsection{A specified level and the geometric exceptional primes}
+\label{sec:geometric-primes}
+
+Let \(\mathscr X\) be the maximal-level moduli stack for the
+quaternion algebra of discriminant \(210\), and let \(X\) be its
+coarse curve. Use the maximal order and a polarization element
+\(\mu^2=-210\). Such an element can be put in a maximal order by
+the quaternion embedding criterion; conjugacy of maximal orders gives
+the same Shimura curve. Yuan's integral moduli description
+\cite[Section 2.1]{YuanKS} makes \(\mathscr X\) a proper, regular,
+semistable Deligne--Mumford stack over \(\Z\), smooth outside
+\(210\), carrying a universal principally polarized abelian surface.
+The source identifies \(X\) as a genus-five curve without elliptic
+stabilizers. In particular its generic moduli stabilizers are exactly
+\(\{\pm1\}\): the only possible additional finite-order units
+would involve \(\Q(i)\) or \(\Q(\sqrt{-3})\), excluded by the
+ramified primes 5 and 7 respectively.
+
+Take principal quaternionic level 3, namely
+\[
+ U(3)=\ker\bigl(\widehat{\mathcal O}^{\times}
+                  \longrightarrow(\mathcal O/3\mathcal O)^{\times}\bigr).
+\]
+The corresponding fine scheme \(Y\) is proper over \(\Z[1/3]\)
+and smooth outside \(210\). At 3 the maximal order is local, with
+residue field \(\F_9\); its quotient modulo 3 has 81 elements,
+of which 9 are nonunits. Thus
+\[
+ [\widehat{\mathcal O}^{\times}:U(3)]=72,
+ \qquad \deg(Y\longrightarrow X)\le72,
+ \qquad \deg(Y\longrightarrow\mathbf P^1)\le1152.
+\]
+These deliberately loose degree bounds include all components.
+
+Here is a justification that this particular choice introduces no
+unlisted bad primes. Work over \(R=\Z[1/210]\). The level-change
+group has order 72, invertible in \(R\), and its central subgroup
+\(\{\pm1\}\) acts trivially on the fine moduli scheme. After
+dividing out this kernel, the action on the generic fiber is free.
+It stays free: the fixed locus of a nontrivial tame automorphism of
+a smooth relative curve, when nonempty, is smooth of relative
+dimension zero and therefore lifts a special fixed point to the
+generic fiber. This contradicts generic freeness. Consequently
+\(Y_R\to X_R\) is finite \'etale and \(X_R\) is smooth and proper.
+
+The Atkin--Lehner action on \(X\) extends over \(R\), by uniqueness
+of the smooth stable model of a curve of genus at least two. Its
+order 16 is invertible in \(R\). Stabilizers in any geometric
+fiber are cyclic, since a tame stabilizer acts faithfully on the
+tangent line; as subgroups of \((\Z/2\Z)^4\), they have order at
+most two. Fixed loci lift as above. Distinct fixed loci cannot
+collide, since that would create a noncyclic stabilizer; the fixed
+points of one involution form an \'etale scheme. It follows that
+the quotient is a smooth genus-zero curve over \(R\), with five
+disjoint branch sections and ramification index two along each.
+The rationality and labels of the generic branch values identify
+these sections individually. The three sections labelled
+\(\infty,0,1\) trivialize the quotient as \(\mathbf P^1_R\).
+The other two are the values computed in
+Appendix~\ref{sec:numerical-contact}.
+
+After an unramified extension at a prime outside \(210\), the
+cover is therefore either \'etale or has local equation
+\(w=u^2\) at a branch section, up to a unit. Pullback along a
+rational base point of even contact has no ramification. The
+universal abelian scheme on \(Y_R\) also extends at every resulting
+integral point. This proves that the source fiber-field and
+good-reduction arguments work with the specified choices
+\begin{equation}\label{eq:geometric-data}
+                 e=1152,\qquad S_{\rm geo}=\{2,3,5,7\}.
+\end{equation}
+This assertion uses the integral moduli theorem and the quotient
+identification, not merely the prime divisors of the contact
+determinants.
+
+\subsection{Two integral bicanonical sections}
+\label{sec:bicanonical}
+
+Put \(t=32s\), and write
+\[
+ (a_1,a_2,a_3,a_4)=(0,32,76832,-343),\qquad
+ P_4(t)=\prod_{i=1}^4(t-a_i).
+\]
+The functions below mean their pullbacks to \(X\) or to
+\(\mathscr X\). Define
+\[
+             q_0=\frac{(dt)^2}{P_4(t)},\qquad q_1=tq_0.
+\]
+Both are holomorphic bicanonical sections on the generic fiber
+and have no common zero. At a finite branch value one can use
+\(t-a_i=u^2\): the zero of \((dt)^2\) cancels that of
+\(P_4(t)\). At infinity use \(t=u^{-2}\); then \(q_0\)
+has a zero of order two and \(q_1\) is nonvanishing. Away from
+these points the map is unramified. In particular \(q_1/q_0=t\).
+
+Let \(\omega=\omega_{\mathscr X/\Z}\), with its Petersson metric.
+For each rational prime put
+\[
+ \Delta_p=\max_{i<j}v_p(a_i-a_j),\qquad
+ J=\prod_p p^{\Delta_p}=2^{10}3^2 5^3 7^4=2765952000.
+\]
+
+\begin{lemma}\label{lem:integral-bicanonical}
+The sections \(J^2q_0,J^2q_1\) extend to global sections of
+\(\omega^{\otimes2}\) on \(\mathscr X\).
+\end{lemma}
+\begin{proof}
+Regularity reduces extension to codimension-one points on \'etale
+charts. Horizontal divisors were handled above. At the generic
+point of a vertical component over \(p\), semistability makes
+\(p\) a uniformizer and the relative differential sheaf equals
+\(\omega\). For every rational function \(u\), writing
+\(u=p^kv\) with \(v\) a unit gives \(v(du)\ge v(u)\),
+since \(dp=0\). Consequently, with \(r_i=v(t-a_i)\),
+\(v(dt)\ge\max_i r_i\).
+
+If \(v(t)=k<0\), all four \(r_i=k\), so
+\(v(q_0)\ge-2k\) and \(v(q_1)\ge-k\), both nonnegative.
+Otherwise all \(r_i\ge0\); at most one exceeds \(\Delta_p\).
+Writing \(m=\max r_i\), if \(m\le\Delta_p\), then
+\(2m-\sum r_i\ge-2\Delta_p\). If \(m>\Delta_p\), then
+\(\sum r_i\le m+3\Delta_p\), which gives the same bound.
+Thus \(v(q_0),v(q_1)\ge-2\Delta_p\) in all cases, proving
+integrality after multiplication by \(J^2\).
+\end{proof}
+
+\subsection{An explicit archimedean metric bound}
+\label{sec:metric-bound}
+
+Set \(A_*=76832\) and
+\[
+ C_{\rm met}=16(12A_*+9)^3
+             =12540153541944538512.
+\]
+For \(t\in\C\setminus\{a_1,\ldots,a_4\}\), put
+\(r_i=|t-a_i|\), \(U=1+\sum_i r_i\), and use the conformal
+metric
+\[
+                    \rho^2|dt|^2=\frac{U}{\prod_i r_i}|dt|^2.
+\]
+Its pullback to \(X(\C)\) is smooth and positive, including
+the branch points: in a coordinate \(t-a_i=u^2\) the apparent
+singularity cancels, and at infinity \(t=u^{-2}\) gives the
+coefficient
+\[
+      4\,\frac{|u|^2+\sum_i|1-a_i u^2|}
+                    {\prod_i|1-a_i u^2|}.
+\]
+
+Let \(K_\rho\) denote its Gaussian curvature. Off the branch
+points the Euclidean Laplacian gives
+\[
+ -K_\rho=\frac{\prod_i r_i}{2U}\,\Delta\log U
+ \ \ge\ \frac{\sum_i\prod_{j\ne i}r_j}{2U^3}.
+\]
+Indeed \(\Delta U=\sum_i r_i^{-1}\), \(|\nabla U|^2\le16\),
+and \((\sum r_i)(\sum r_i^{-1})\ge16\).
+For \(|t|\le2A_*+2\), we have \(U\le12A_*+9\).
+The branch values are pairwise at distance at least one, so at
+most one \(r_i\) is less than \(1/2\). One triple product is
+therefore at least \(1/8\), and
+\(-K_\rho\ge C_{\rm met}^{-1}\).
+For \(r=|t|>2A_*+2\), we have \(r/2\le r_i\le3r/2\)
+and \(U\le7r\). Thus \(-K_\rho\ge1/1372\), a stronger bound.
+The bound extends to the branch points by continuity.
+
+The Ahlfors--Schwarz lemma, or the maximum principle applied on
+the compact curve, now yields
+\(\rho^2/C_{\rm met}\le\rho_{\rm hyp}^2\), where the hyperbolic
+metric has curvature \(-1\). Yuan's Petersson convention is
+\(\|d\tau\|_{\rm Pet}=2\operatorname{Im}\tau\) on the upper
+half plane. Consequently
+\begin{equation}\label{eq:bicanonical-sup}
+ \|q_0\|_{\rm Pet}\le\frac{4C_{\rm met}}U\le4C_{\rm met},
+ \qquad
+ \|q_1\|_{\rm Pet}\le\frac{4C_{\rm met}|t|}U\le4C_{\rm met}.
+\end{equation}
+Here \(a_1=0\) ensures \(U\ge1+|t|\). These are norms of
+the bicanonical sections themselves, not their squared norms.
+
+\subsection{Comparison with Faltings height}
+
+\begin{proposition}\label{prop:numerical-geometric-height}
+For a geometric point \(y\) above a rational base point \(s\),
+and the corresponding quaternionic abelian surface \(A_y\),
+\[
+                 h(s)\le2\max\{0,h_{\rm F}(A_y)\}+128.
+\]
+
+\end{proposition}
+\begin{proof}
+Yuan's Theorem 1.1 is the isometry
+\[
+  \omega_{A}^{\otimes2}\simeq210\,\omega^{\otimes2}
+\]
+of hermitian line bundles on the maximal stack. His Hodge metric
+has squared norm \((2\pi)^{-2}|\int\alpha\wedge\bar\alpha|\).
+Its associated height is
+\(h_{\rm F}^{Y}=h_{\rm F}+\log\pi\) in dimension two, where
+\(h_{\rm F}\) has the original Faltings normalization used in
+\cite{vonKaenelKret}; compare their equation (11.28).
+In particular
+\[
+              h_{\bar\omega^{\otimes2}}(y)
+                  =2h_{\rm F}(A_y)+2\log\pi+\log210.
+\]
+The sign of the last term follows because the sublattice
+\(210\omega^{\otimes2}\), with its induced metric, has height
+\(h_{\bar\omega^{\otimes2}}-\log210\).
+To evaluate these heights, extend the point to the proper maximal
+stack after a finite field extension. The universal abelian scheme
+then computes stable Faltings height; normalized heights are unchanged
+by that extension.
+
+The integral sections in Lemma~\ref{lem:integral-bicanonical}
+have no common zero in characteristic zero and ratio \(t\).
+At a finite place their common base ideal can only decrease the
+height of this ratio. At an infinite place
+\eqref{eq:bicanonical-sup} bounds both section norms. The usual
+local expression for the height of a projective ratio therefore gives
+\[
+ h(t)\le h_{\bar\omega^{\otimes2}}(y)
+                         +2\log J+\log(4C_{\rm met}).
+\]
+Since \(s=t/32\), we conclude that
+\[
+ h(s)\le2h_{\rm F}(A_y)
+       +\log210+2\log J+\log(4C_{\rm met})+\log32+2\log\pi.
+\]
+For an exact bound on the additive term, use \(\pi<4\) and
+the integer inequality
+\[
+             210J^2(4C_{\rm met})\,32\cdot16<2^{160}.
+\]
+The first five terms in the Taylor expansion of \(e^3\) sum to
+\(131/8>16\), so \(\log2<3/4\). The additive term is thus
+less than \(120<128\). Replacing \(h_{\rm F}\) by its positive
+part proves the assertion.
+\end{proof}
+
+\subsection{The field of homomorphisms}
+\begin{proposition}\label{prop:smaller-degree}
+For the fiber above \(s\), there is a Galois field \(L/\Q\)
+of degree at most \(D_*\), defining all geometric homomorphisms
+between its conjugate surfaces. It is unramified outside
+\(S_*\) and the odd contact primes of \(s\).
+\end{proposition}
+\begin{proof}
+Put \(e=1152\). The fiber has at most \(e\) geometric points. Its splitting field
+\(K_0\) has degree at most \(e!\), and there are at most \(e\)
+conjugate surfaces \(A_1,\ldots,A_t\), each defined over \(K_0\).
+Adjoin the full 3-torsion of each. The resulting field \(L'\) is
+Galois over \(\Q\), since the surfaces are permuted by Galois,
+and \([L':\Q]\le e!g_3^e\).
+
+All geometric homomorphisms \(A_i\to A_j\) are defined over
+\(L'\). Indeed, if a homomorphism kills \(A_i[3]\), it factors
+through \([3]\), so is three times another homomorphism. Thus
+reduction on 3-torsion embeds
+\(\operatorname{Hom}(A_i,A_j)/3\) into
+\(\operatorname{Hom}(A_i[3],A_j[3])\). The Galois action on
+the integral Hom lattice has finite image. Over \(L'\) it is
+congruent to the identity modulo 3, hence trivial by torsion-freeness
+of the principal congruence kernel at 3. This is the usual torsion
+argument for fields of definition of homomorphisms
+\cite{SilverbergHom}.
+
+At good primes of residue characteristic different from 3, the
+3-torsion extension is unramified. The preceding model calculation makes the fiber field unramified
+outside \(S_*\) and its odd contact primes. Since 3 is exceptional,
+adjoining 3-torsion preserves this support.
+\end{proof}
+
+\subsection{The arithmetic height estimate}
+\begin{proof}[Proof of the height bound \eqref{eq:height}]
+Put \(M=M_{S_*}(s)\), \(B_S=B_*^{\rm exc}\), and \(D_{\rm hom}=D_*\). The splitting field of the fiber, followed by adjoining the full
+3-torsion of its conjugate surfaces, has degree at most
+\(D_{\rm hom}\). Proposition~\ref{prop:smaller-degree} proves that
+this field, denoted by \(L\), is Galois and defines every geometric
+homomorphism between these surfaces. At good primes outside \(S_*\), the torsion extension
+is unramified; the source's odd-contact argument controls the fiber
+splitting field. Thus
+\[
+ \operatorname{rad}(D_L N_{\rm bad})\mid B_S M,
+\]
+where \(D_L\) is the absolute field discriminant and
+\(N_{\rm bad}\) is the product of the norms of the bad-reduction
+primes of the surface over \(L\).
+
+For a non-CM fiber its endomorphism algebra is the rational
+quaternion algebra. Skolem--Noether adjusts each conjugate isogeny
+to commute with this algebra. A quadratic subfield then supplies
+the required \(\mathrm{GL}_2\)-structure with compatible
+\(G_\Q\)-isogenies. All these maps are defined over \(L\),
+so the normality and field-of-definition hypotheses hold.
+Proposition 7.13 of \cite{vonKaenelKret}, in dimension 2, gives
+\[
+ h_{\rm F}(\mathcal A_y)
+       \le(8D_{\rm hom})^{288D_{\rm hom}}(B_SM)^{24}.
+\]
+For a CM fiber we keep the field degree in the isogeny estimate.
+Put \(R=B_SM\) and \(d_L=[L:\Q]\le D_{\rm hom}\).
+The maximal-order CM factors in the proof of
+\cite[Section 7.3.3]{vonKaenelKret}, using Lemmas 7.10 and 7.12
+there, give an \(L\)-isogenous surface \(A'\) with
+\[
+                       h_{\rm F}(A')\le V:=2\cdot6^{96}R^{10}.
+\]
+In more detail, each simple maximal-order factor has height at most
+\(6^{96}\operatorname{rad}(D_L)^{10}\), and at most two factors,
+counted with multiplicity, occur. All can be taken over \(L\)
+because the endomorphisms are defined there.
+The isogeny-height estimate \cite[(7.13)]{vonKaenelKret} then gives
+\[
+ h_{\rm F}(\mathcal A_y)
+ \le V+8\log\bigl(14^{32}d_L\max(V,\log d_L,1)\bigr).
+\]
+Since \(\max(V,\log d_L,1)\le V D_{\rm hom}\),
+\(\log14<3\), \(\log6<2\), and \(\log R\le R^{10}\),
+the right side is at most
+\[
+ (2\cdot6^{96}+2392+16D_{\rm hom})R^{10}
+     \le(6^{100}+16D_{\rm hom})R^{10}.
+\]
+This retains the degree-dependent cost of passing from maximal CM
+orders to the actual surface. Finally
+\((8D_{\rm hom})^{288D_{\rm hom}}\ge16D_{\rm hom}\).
+Thus both cases are bounded by
+\(\bigl((8D_*)^{288D_*}+6^{100}\bigr)(B_SM)^{24}\).
+Proposition~\ref{prop:numerical-geometric-height} and \(M\ge1\)
+give the required inequality \eqref{eq:height}.
+\end{proof}
+
+Exact arithmetic computes
+\[
+ \operatorname{bitlength}(D_*)=38322,\qquad
+ \operatorname{bitlength}(B_*^{\rm exc})=109445,
+ \qquad |S_*|=7499.
+\]
+Both integers, in full hexadecimal form, accompany the code in
+\texttt{compact\_constants.json}. Neither \(H_*\) nor \(L_*\)
+has been numerically expanded. 
+
+\section{Parity and fixed local rings}
+\label{sec:parity}
+\subsection{The parity polynomial}
+
+For this section and the final integer definition, use the simultaneous
+point-realization result supplied by \cite[Lemmas 3.4 and 3.6]{H10},
+restated in \cite[Arithmetic Input 2.3]{Conant}. Explicitly, for positive squarefree \(\beta,\theta\),
+their supports \(B,J\) are disjoint and avoid \(2,3\), with
+\(B\ne\varnothing\); \(\theta\) is a local square at every
+prime of \(B\), and \(\beta\) at every prime of \(J\).
+Both are squares in \(\Q_2\), while \(\theta\) is a square
+in \(\Q_3\) and \(\beta\) has the unit nonsquare class there.
+These results supply a positive squarefree \(n\) making both
+\[
+ E_n:y^2=x(x-n)(x+3n),\qquad E_{n\theta}
+\]
+have rational points with nonzero \(x\)-coordinate in
+\(\beta\Q^{\times2}\). The different notation \(E_l\) denotes
+this auxiliary family, not the fixed curve over \(F\).
+
+Define a completely numerical polynomial
+\[
+                  A_N(T)=\prod_{j=1}^N(T^2-j^2).
+\]
+For the rational input \(b\), take eleven rational witnesses
+\[
+                  \mu,\delta,t,U,V,e,s_1,s_2,y_1,y_2,w.
+\]
+Abbreviate \(b'=\mu b\) and \(X_i=b's_i^2\), and put
+\begin{align*}
+ f_1&=A_{138}(\mu),&f_2&=A_{76176}(\delta),\\
+ f_3&=(1+\delta bt^2)U-b(1-\delta bt^2),\\
+ f_4&=V-b'(b'-U^2),\\
+ f_5&=y_1^2-X_1(X_1-e)(X_1+3e),\\
+ f_6&=y_2^2-X_2(X_2-eV)(X_2+3eV),\\
+ f_7&=(1+\delta bt^2)eV\mu b s_1s_2w-1.
+\end{align*}
+Set
+\begin{equation}\label{eq:numerical-phi}
+ P_\Phi(b,\mathbf z)=b\sum_{i=1}^7f_i^2,
+ \qquad\Phi(b):\ \exists\mathbf z\in\Q^{11}\ P_\Phi(b,\mathbf z)=0.
+\end{equation}
+The abbreviations are polynomial substitutions. Thus this is one
+specified polynomial with integer coefficients, of total degree
+\(304705\). The product expression specifies all its coefficients
+without expanding them. It is an auxiliary parity predicate,
+\emph{not by itself a definition of the integers}.
+
+\begin{proposition}[Numerical normalization]\label{prop:explicit-phi}
+With \(D,S_*\) as in Section~\ref{sec:inputs},
+\[
+                         D\subseteq\Phi(\Q)\subseteq D_{S_*}.
+\]
+\end{proposition}
+
+\begin{proof}
+For soundness, let \(q>76176\), and suppose \(k=v_q(b)<0\) is
+odd. The two integer multipliers \(\mu,\delta\) are \(q\)-units.
+The valuation of \(\delta bt^2\), when \(t\ne0\), is odd and
+nonzero, so \((1-\delta bt^2)/(1+\delta bt^2)\) is a unit.
+Consequently \(v_q(U)=k\) and \(v_q(V)=3k\). Exactly one of
+\(e,eV\) has even valuation. After scaling that curve to a unit
+parameter at \(q\), every nonzero \(x\)-coordinate has even
+valuation: a negative valuation gives \(v_q(y^2)=3v_q(x)\), and
+a positive one gives \(v_q(y^2)=v_q(x)\). This contradicts the
+odd valuation of its required square class \(b'\Q^{\times2}\).
+
+For completeness, first justify the numerical multiplier bounds.
+For each prescribed sign, the numbers
+\[
+ \mu=\pm2^{e_2}3^{e_3}u,\qquad e_2,e_3\in\{0,1\},\quad
+ u\in\{1,5,7,11,13,17,19,23\},
+\]
+represent all 32 pairs of local square classes at \(2\) and \(3\).
+Indeed, the eight values of \(u\) are all the units modulo 24.
+Every \(|\mu|\le138\). Choose one with \(b'=\mu b>0\),
+square class 1 at \(2\), and the unit nonsquare class at \(3\).
+Its prime support, besides \(2,3\), contains at most one prime
+\(p\in\{5,7,11,13,17,19,23\}\).
+
+For this set \(S(\mu)\), representatives of all local square-class
+tuples with a prescribed real sign may be chosen as
+\(\delta=\pm wu\), where \(w\) is a squarefree product of
+primes in \(S(\mu)\), and \(u\) is a positive unit residue
+modulo \(8\prod_{q\in S(\mu),\ q\ne2}q\). For each odd prime
+choose either a square or nonsquare unit residue, and use the Chinese
+remainder theorem; at \(2\), use the four unit residues modulo 8.
+When \(p\) occurs, \(w\le6p\) and \(u<24p\), so
+\[
+                         |\delta|<144p^2\le76176.
+\]
+Without \(p\) the smaller bound 138 suffices. Thus choose an
+allowed \(\delta\) with \(\delta b>0\) and a square in
+\(\Q_q\) for every \(q\in S(\mu)\).
+
+Choose \(t\) by weak approximation, close to a solution of
+\(\delta bt^2=1\) at the real place and at every prime of
+\(S(\mu)\). Then \(U\) is sufficiently small that
+\(V=b'^2(1-U^2/b')\) is positive and is a local square at those
+primes. At every prime of \(\Supp(\delta)\setminus S(\mu)\),
+add the condition \(v_q(\delta bt^2)>0\). Avoid the finitely many
+zero denominators and \(V=0\).
+
+Let \(\beta,\theta\) be the positive squarefree representatives
+of \(b',V\). If \(q\in\Supp(\beta)\setminus S(\mu)\),
+the valuation \(v_q(b)=v_q(b')\) is odd and strictly positive,
+because \(b\in D\). The quotient defining \(U/b\) is a unit,
+either by parity or by the extra smallness condition. Thus
+\(v_q(U^2/b')>0\), and \(V\) is a local square at \(q\).
+This also shows that the two squarefree supports are disjoint.
+
+Conversely, if \(q\in\Supp(\theta)\), then \(q\notin S(\mu)\)
+and \(v_q(b')\) is even. Odd valuation of \(V\) forces
+\(v_q(b')=2v_q(U)\) and \(v_q(b'-U^2)>v_q(b')\).
+Hence \(b'/U^2\in1+q\Z_q\), so \(b'\) is a local square.
+If \(U=0\), the support of \(\theta\) is empty and there is
+nothing to check. The conditions at \(2,3\) and positivity are
+already arranged, and \(\Supp(\beta)\ne\varnothing\) because
+of its nonsquare class at \(3\).
+
+The cited point-realization result now gives points on \(E_n,E_{n\theta}\)
+in square class \(b'\). Write \(V=\theta c^2\); the change
+\((x,y)\mapsto(c^2x,c^3y)\) gives the second point on
+\(E_{nV}\). Take \(e=n\), choose \(s_i,y_i\) from these points,
+and let \(w\) invert the nonzero product in \(f_7\). All seven
+equations vanish. For \(b=0\), \eqref{eq:numerical-phi} holds
+automatically.
+\end{proof}
+
+\subsection{The fixed local rings}\label{sec:local-rings}
+
+For fixed nonzero rational \(a,b\), define
+\[
+ S_{a,b}=\{2z_1:\exists z_2,z_3,z_4\in\Q,
+             \ z_1^2-az_2^2-bz_3^2+abz_4^2=1\},
+ \qquad T_{a,b}=S_{a,b}+S_{a,b}.
+\]
+Koenigsmann's Proposition 10 \cite{Koenigsmann} gives the following
+choices for the set defined by \(\Int_p\):
+\[
+\begin{array}{c|l}
+ p&\Z_{(p)}\\\hline
+ 2&T_{3,3}+T_{2,5}\\
+ p\equiv3\pmod8&T_{-1,-p}+T_{2,-p}\\
+ p\equiv5\pmod8&T_{-2,-p}+T_{2,-p}\\
+ p\equiv7\pmod8&T_{-1,-p}+T_{-2,p}\\
+ p\equiv1\pmod8&T_{-2p,q}+T_{2p,q}
+\end{array}
+\]
+In the last row, choose the least prime \(q\equiv3\pmod8\) with
+Legendre symbol \((p/q)=-1\). Such primes exist, and trial search
+determines this fixed coefficient. Sums mean existentially quantified
+summands. Each row therefore expands directly into polynomial equations.
+These definitions concern only the finitely many fixed primes in \(S\).
+
+For a rational \(t\), let \(T_{2,3}(t)\) be the seven-witness
+predicate
+\begin{equation}\label{eq:T23}
+\begin{split}
+ u_0^2-2u_1^2-3u_2^2+6u_3^2&=1,\\
+ (t-2u_0)^2-8v_1^2-12v_2^2+24v_3^2&=4.
+\end{split}
+\end{equation}
+The quaternion \((2,3)\) ramifies precisely at 2 and 3 and is
+split over \(\mathbb R\). Proposition 6 of \cite{Koenigsmann}
+therefore gives
+\(T_{2,3}(\Q)=\Z_{(2)}\cap\Z_{(3)}\).
+
+
+\begin{thebibliography}{99}\footnotesize\setlength{\itemsep}{2pt}
+\bibitem{H10} OpenAI, \emph{Hilbert's tenth problem over the rational
+numbers}, preprint, version of 6 October 2026 (original version
+24 September 2026).
+\href{https://github.com/openai/math/blob/main/preprints/Hilberts-tenth-problem-over-the-rational-numbers-October-6-2026/main.pdf}{Source manuscript}.
+Propositions 2.1, 2.2 and 2.8; Theorem 2.4; Corollaries 2.6 and 6.2;
+Lemmas 3.4, 3.6 and 6.1. 
+\bibitem{Conant} \emph{Existential definability of the integers from
+elliptic indices and height bounds}, AI-generated manuscript supplied
+by Gabe Conant, 7 October 2026. In particular, Arithmetic Input 2.3,
+Proposition 3.1, and Sections 5--7.
+\bibitem{ConantArity} \emph{Simultaneous local certificates and a
+reduced existential arity}, AI-generated research draft supplied by
+Gabe Conant, 8 October 2026, eight pages. Lemma 2.1 and the shared-coordinate construction are used
+in Section~\ref{sec:simultaneous}.
+\bibitem{Koenigsmann} J. Koenigsmann, \emph{Defining $\Z$ in $\Q$},
+Annals of Mathematics \textbf{183} (2016), 73--93.
+\href{https://doi.org/10.4007/annals.2016.183.1.2}{DOI}.
+\bibitem{PadurariuSaia} O. Padurariu and F. Saia,
+\emph{Shimura curve Atkin--Lehner quotients of genus at most two},
+arXiv:2509.25368, 2025. The four discriminant-210 quartics used here are
+in their accompanying data file
+\href{https://github.com/fsaia/GenusAtMost2/blob/main/non_elliptic_genus_1_equation_determined_final.m}{published model data}.
+Their identification as quotient models is used as a published input.
+\bibitem{vonKaenelKret} R. von K\"anel and A. Kret,
+\emph{Integral points on coarse Hilbert moduli schemes},
+arXiv:2307.06944, 2023, Proposition 7.13, Lemmas 7.10 and 7.12,
+equation (7.13), and the maximal-order estimates in Section 7.3.3.
+\href{https://arxiv.org/abs/2307.06944}{Preprint}.
+\bibitem{YuanKS} X. Yuan,
+\emph{Explicit Kodaira--Spencer map over Shimura Curves},
+arXiv:2205.11334v2, 2024, Theorem 1.1 and Section 2.
+\href{https://arxiv.org/abs/2205.11334}{Preprint}.
+\bibitem{DPRMCoq} D. Larchey-Wendling and Y. Forster,
+\emph{Hilbert's Tenth Problem in Coq (Extended Version)},
+Logical Methods in Computer Science \textbf{18}(1), 2022,
+article 35. \href{https://arxiv.org/abs/2003.04604}{Preprint}.
+\bibitem{SilverbergHom} A. Silverberg,
+\emph{Fields of definition for homomorphisms of abelian varieties},
+Journal of Pure and Applied Algebra \textbf{77} (1992), no. 3,
+253--262. \href{https://www.sciencedirect.com/science/article/pii/0022404992901412}{Publisher record}.
+The torsion-field inclusion is also proved in the form needed here
+in Proposition~\ref{prop:smaller-degree}.
+\bibitem{DPRMLibrary} The Library of Undecidability,
+\href{https://github.com/uds-psl/coq-library-undecidability/tree/8880e198bdc44cba1bd901f1fee701a95fc440ae}{pinned \texttt{coq-8.18} source revision},
+used for the compilation of 8 October 2026.
+The source files under \texttt{theories/H10} used here are
+\texttt{Matija/cipher.v}, \texttt{Dio/dio\_cipher.v},
+\texttt{Dio/dio\_bounded.v}, \texttt{Dio/dio\_expo.v}, and
+\texttt{Dio/dio\_elem.v}. The accompanying package contains the extracted constraints, wrapper
+proofs, reconstruction maps and execution records.
+\end{thebibliography}
+\end{document}

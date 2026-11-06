@@ -1,0 +1,187 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,geometry}
+\usepackage[hidelinks]{hyperref}
+\geometry{margin=1in}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\title{A five-witness quadratic presentation of the semilocal anchor}
+\author{}
+\date{November 6, 2026}
+\begin{document}
+\maketitle
+\noindent
+This note proves a replacement of one private module in the released
+12,504-variable quartic. The polynomial projection equivalence of the
+replacement is exact. The conclusion that the full polynomial defines
+$\mathbb Z$ retains the arithmetic hypotheses and review status of the
+upstream manuscript.
+
+The old module asks, for $i=0,1$, that $Ca_i=f_i$ and that
+\begin{align*}
+ b_{i0}^2-2b_{i1}^2-3b_{i2}^2+6b_{i3}^2&=1,\\
+ (a_i-2b_{i0})^2-8c_{i1}^2-12c_{i2}^2+24c_{i3}^2&=4.
+\end{align*}
+The norm-one trace-sum theorem for the quaternion algebra $(2,3)$,
+which is ramified at $2,3$ and split at infinity, identifies this
+seven-witness predicate in $a_i$ with
+$\mathbb Z_{(2)}\cap\mathbb Z_{(3)}$; see
+\cite[Proposition 6]{Koenigsmann2016}.
+The second equation is the norm-one equation for a quaternion whose
+scalar part is $(a_i-2b_{i0})/2$, so the trace conventions match exactly.
+The common $C$ is nonzero because the retained constant chain starts
+from a nonzero integer and repeatedly squares it.
+\section{An exact replacement for the semilocal anchor}
+
+Write
+\[
+ R=\mathbb Z_{(2)}\cap\mathbb Z_{(3)}
+   =\{t\in\mathbb Q:v_2(t)\ge0,\ v_3(t)\ge0\},
+\]
+with $v_p(0)=+\infty$. The following specialization of classical
+quaternion methods is particularly economical. Daans proves three-quantifier
+existential definability for every finite intersection of valuation rings
+in a global field; he traces the corresponding rational cases back to
+Robinson \cite[Proposition 4.2 and Remark 4.3]{Daans2024}.
+Here all constants and all exceptional cases are made explicit.
+
+\begin{proposition}\label{prop:explicit-semilocal}
+For every $t\in\mathbb Q$,
+\[
+ t\in R\quad\Longleftrightarrow\quad
+ \exists u,v,w\in\mathbb Q:\quad
+ u^2+6v^2-2w^2-3t^2+2=0.
+\]
+\end{proposition}
+\begin{proof}
+Consider the quaternion algebra $B=(2,3)_{\mathbb Q}$ with generators
+$i^2=2$, $j^2=3$, $ij=-ji$. Its ramification set consists exactly of
+$2$ and $3$. Indeed its Hilbert symbol at $3$ equals the Legendre symbol
+$(2/3)=-1$, its Hilbert symbol at $2$ is $-1$, it splits at every other
+finite place because both parameters are units there, and it splits at
+infinity because both parameters are positive. In particular $B$ is a
+division algebra over $\mathbb Q$.
+
+We use the standard quadratic embedding criterion for quaternion algebras:
+a quadratic field $L/\mathbb Q$ embeds in $B$ if and only if every ramified
+place of $B$ remains a field in $L$. This is the quadratic case of the
+Albert--Brauer--Hasse--Noether theorem and the central simple algebra
+embedding criterion; equivalently, extending scalars to $L$ kills the
+local invariant $1/2$ precisely when the local extension has degree two.
+See \cite[Chapter 14]{Voight2021}.
+
+Suppose first that $t\ne0$, and put
+\[
+ \delta=1-\frac{2}{3t^2}.
+\]
+This number is nonzero: $t^2=2/3$ has no rational solution.
+At $2$, put $m=v_2(t)$. If $m>0$, then $v_2(\delta)=1-2m$ is odd,
+so $\delta$ is not a square in $\mathbb Q_2$. If $m=0$, then
+$t^2\equiv1\pmod8$ and $\delta\equiv3\pmod8$, again a nonsquare.
+If $m<0$, then $\delta\in1+8\mathbb Z_2$, hence it is a square in
+$\mathbb Q_2$. At $3$, if $m=v_3(t)\ge0$ then
+$v_3(\delta)=-1-2m$ is odd; if $m<0$, then
+$\delta\in1+3\mathbb Z_3$ and Hensel's lemma makes it a square.
+Consequently
+\[
+ \delta\notin\mathbb Q_2^{\times2},\quad
+ \delta\notin\mathbb Q_3^{\times2}
+ \quad\Longleftrightarrow\quad t\in R.
+\]
+The embedding criterion shows that this is equivalent to the existence
+of a pure quaternion $xi+yj+zij$ with square $\delta$, that is,
+\[
+ 2x^2+3y^2-6z^2=\delta.
+\]
+This equivalence also excludes the case in which $\delta$ is a rational
+square: a division quaternion algebra cannot contain a noncentral element
+whose square is a nonzero rational square, since
+$(\alpha-s)(\alpha+s)=0$ would force $\alpha=\pm s$.
+Multiplying the displayed equation by $3t^2$ and setting
+$u=3ty$, $v=tx$, $w=3tz$ gives the equation in the statement.
+These substitutions are invertible for $t\ne0$.
+Finally $t=0$ belongs to $R$ and is represented by $(u,v,w)=(0,0,1)$.
+\end{proof}
+
+\begin{lemma}\label{lem:two-semilocal-inputs}
+Let $F(A,B)=A^2+AB-B^2$. For every $a,b\in\mathbb Q$ and $p=2,3$,
+\[
+ v_p(F(a,b))=2\min\{v_p(a),v_p(b)\}.
+\]
+In particular $(a,b)\in R^2$ if and only if $F(a,b)\in R$.
+\end{lemma}
+\begin{proof}
+The assertion is immediate for $a=b=0$. Otherwise scale $a,b$ by a
+common power of $p$ until both are integral and at least one is a unit.
+The reduction of $A^2+AB-B^2$ has no nontrivial zero over either
+$\mathbb F_2$ or $\mathbb F_3$: over $\mathbb F_2$ one checks the
+three nonzero pairs, and over $\mathbb F_3$ the discriminant $5$
+is a nonsquare. Thus the scaled value is a unit, proving the equality.
+\end{proof}
+
+\begin{corollary}[Five-variable replacement for the anchor]
+\label{cor:five-anchor}
+Fix rational inputs $f_0,f_1,C$ with $C\ne0$. The condition
+$f_0/C,f_1/C\in R$ is equivalent to the existence of five rational
+variables $r,D,u,v,w$ satisfying the three quadratic equations
+\begin{align*}
+ r&=f_0^2+f_0f_1-f_1^2,\\
+ D&=C^2,\\
+ u^2+6v^2-2w^2-3r^2+2D^2&=0.
+\end{align*}
+\end{corollary}
+\begin{proof}
+By Lemma~\ref{lem:two-semilocal-inputs}, the desired condition is
+$r/C^2\in R$, with $r=F(f_0,f_1)$. Apply
+Proposition~\ref{prop:explicit-semilocal} to $t=r/C^2$ and multiply
+its equation by $C^4$. Multiplication of each of its three witnesses
+by $C^2$ is a bijection of $\mathbb Q$, giving the stated equation.
+\end{proof}
+
+The released anchor uses two scaling variables and two copies of a
+seven-witness trace-sum condition, hence sixteen witnesses in this module.
+Corollary~\ref{cor:five-anchor} replaces that module by five witnesses.
+It therefore saves eleven variables before any other change and retains
+quadratic residuals, so their sum of squares remains quartic. This count
+concerns the specified module; an implementation should report the exact
+final global count after removing any unused lifting definitions.
+The three displayed residuals have integer coefficients of absolute value
+at most six. This is an exact replacement, with no change to the arithmetic
+meaning or strength of the anchor.
+
+The same method handles arbitrary finite tuples. For a finite nonempty
+set $S$ of rational primes and a positive integer $m$, choose a monic
+polynomial $g\in\mathbb Z[T]$ of degree $m$ whose reductions are
+irreducible modulo every $p\in S$; finite-field irreducible polynomials
+and the Chinese remainder theorem supply one. If $\alpha$ is a root, let
+\[
+ N_m(X_1,\ldots,X_m)=
+ N_{\mathbb Q(\alpha)/\mathbb Q}
+ (X_1+X_2\alpha+\cdots+X_m\alpha^{m-1}).
+\]
+For $p\in S$ the extension is unramified and inert at $p$, and its
+power basis is an integral basis locally. Therefore
+\[
+ v_p(N_m(\mathbf x))=m\min_i v_p(x_i).
+\]
+This proves, with no new existential variables, that all coordinates of
+$\mathbf x$ belong to $\bigcap_{p\in S}\mathbb Z_{(p)}$ if and only if
+$N_m(\mathbf x)$ does. It is the norm-form version of
+\cite[Proposition 4.8]{Daans2024}. In the present two-prime, two-input
+case the polynomial $T^2-T-1$ gives precisely the form $F$ above.
+
+
+\begin{thebibliography}{9}
+\bibitem{Daans2024} N. Daans, \emph{Universally defining $\mathbb Z$
+in $\mathbb Q$ with $10$ quantifiers}, Journal of the London
+Mathematical Society \textbf{109} (2024), no. 2, e12864.
+\url{https://doi.org/10.1112/jlms.12864}.
+\bibitem{Koenigsmann2016} J. Koenigsmann, \emph{Defining $\mathbb Z$
+in $\mathbb Q$}, Annals of Mathematics \textbf{183} (2016), 73--93.
+\url{https://doi.org/10.4007/annals.2016.183.1.2}.
+\bibitem{Voight2021} J. Voight, \emph{Quaternion algebras},
+Graduate Texts in Mathematics \textbf{288}, Springer, 2021.
+\url{https://doi.org/10.1007/978-3-030-56694-4}.
+\end{thebibliography}
+\end{document}

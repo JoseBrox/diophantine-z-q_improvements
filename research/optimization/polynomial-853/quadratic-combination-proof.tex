@@ -1,0 +1,200 @@
+% Input fragment; uses the nonzero-anchor lemma from the 854 proof.
+\subsection{Combining the anchor with the Pell equation: 853 variables}
+\label{subsec:explicit-853}
+
+One more coordinate can be removed from the explicit construction. The
+two algebraic choices to be combined are the private quadratic anchor
+and the monic Pell equation for the middle proxy. First, however, one
+must remove denominator guards which depend on that proxy. Their removal
+is justified over $\mathbb Q$ by the equations themselves.
+
+\begin{lemma}\label{lem:pole-denominator-forced}
+Let $b,t,e,p,q,s\in\mathbb Q$, put $B=17b$ and $\delta=1+bt^2$, and set
+\[
+ K=B\delta^2-b^2(1-bt^2)^2.
+\]
+Suppose
+\begin{align*}
+ p^2-B(1-e)(1+3e)&=0,\\
+ Bq^2\delta^4-(s^2\delta^2-BeK)(s^2\delta^2+3BeK)&=0.
+\end{align*}
+Then $\delta\ne0$.
+\end{lemma}
+\begin{proof}
+If $\delta=0$, then $t\ne0$ and $b=-1/t^2$. Substituting this in
+the second equation gives
+\[
+ \frac{48\cdot17^2e^2}{t^{12}}=0,
+\]
+so $e=0$. The first equation, multiplied by $t^2$, now becomes
+$(pt)^2+17=0$, which has no rational solution.
+\end{proof}
+
+For $\delta\ne0$, set
+\[
+ U_{\rm pole}=\frac{b(1-bt^2)}\delta,
+ \qquad h=e(B-U_{\rm pole}^2)=\frac{eK}{\delta^2}.
+\]
+The second equation of the lemma is exactly $\delta^4$ times
+\[
+ Bq^2-(s^2-Bh)(s^2+3Bh)=0.
+\]
+Thus the two cleared conics already imply the excluded denominator is
+nonzero. This applies to all $42$ pole blocks. If $b$ itself is a rational
+expression, its denominator and all other denominator factors are kept
+nonzero; multiplication by those nonzero factors does not affect the
+argument. In the actual circuit, each second conic has its own omitted
+denominator numerator to the fourth power, and no other omitted factor.
+The other $255$ residual denominators use only retained factors.
+
+After deleting these $42$ guards, there are $1639$ guard numerators,
+with $1560$ distinct nonconstant factors. Let $G$ be the product of
+those factors. Exact inspection of the circuit proves that $G$ depends
+only on the input, the $633$ point coordinates, the coordinate
+denominator, and the two contact coordinates. In particular it is
+independent of all proxy and anchor coordinates. The guard deletion is
+an equivalence of rational solution sets. It is not a claim about
+geometric fibers over an algebraic closure, where the last step of
+Lemma~\ref{lem:pole-denominator-forced} would fail.
+
+\begin{lemma}\label{lem:two-quadratics-one-coordinate}
+Let $k$ be a field of characteristic different from two, and let
+$N,\Delta\in k$. Define
+\[
+ h(W)=W^4+2(N-\Delta)W^2+(N+\Delta)^2.
+\]
+For every nonzero $W\in k$, the equation $h(W)=0$ is equivalent to
+the existence of $T,V\in k$ such that
+\[
+ T^2=-N,\qquad V^2=\Delta,\qquad W=T+V.
+\]
+The corresponding coordinates are uniquely given by
+\[
+ T=\frac{W^2-N-\Delta}{2W},\qquad
+ V=\frac{W^2+N+\Delta}{2W}.
+\]
+\end{lemma}
+\begin{proof}
+If $W=T+V$, then $(V-T)W=V^2-T^2=N+\Delta$, which gives the
+displayed reconstruction formulas. Conversely those formulas give
+$T+V=W$. Direct expansion gives both identities
+\[
+ 4W^2(T^2+N)=h(W),\qquad
+ 4W^2(V^2-\Delta)=h(W).
+\]
+Since $2W\ne0$, these establish the equivalence.
+\end{proof}
+
+\paragraph{Application to the anchor and proxy.}
+As in the preceding construction, the cleared anchor is $Bu^2+N=0$
+with $B=S^2$. Its three witnesses are private, and
+Lemma~\ref{lem:nonzero-anchor-witness} allows $u\ne0$. The retained
+guards imply $S\ne0$. Put $T=Su$, so $T^2=-N$ and $T\ne0$.
+
+Write the middle proxy as $\tau$. Its equation is
+\[
+ \tau^2-a\tau+b_0=0,
+ \qquad a=s(s-2)z,
+ \qquad b_0=(s-2)^2z^2-1.
+\]
+Set $\Delta=a^2-4b_0$ and $V=2\tau-a$. Then the proxy equation is
+equivalent to $V^2=\Delta$. The sign of $T$ is free: changing it
+changes only the sign of the private anchor witness. Because $T\ne0$,
+at least one of $T+V$ and $-T+V$ is nonzero. Thus one may use
+$W=T+V\ne0$ after choosing that sign. No additional finite choice
+of a primitive-element coefficient is required.
+
+Put $W=1/(GU)$ and define
+\begin{align*}
+ \Psi&=1+2(N-\Delta)G^2U^2+(N+\Delta)^2G^4U^4,\\
+ P_\tau&=1+2aGU+(N+\Delta)G^2U^2,\\
+ Q_\tau&=4GU.
+\end{align*}
+The coefficients $N,\Delta,G,a$ are independent of the new witness
+$U$. Hence $\Psi=1$ whenever $GU=0$. For $GU\ne0$,
+\[
+ \Psi=(GU)^4 h\bigl(1/(GU)\bigr),\qquad
+ \tau=\frac{P_\tau}{Q_\tau}.
+\]
+The latter formula follows from $\tau=(a+V)/2$ and
+Lemma~\ref{lem:two-quadratics-one-coordinate}. Explicitly,
+\[
+ T=\frac{1-(N+\Delta)G^2U^2}{2GU},\qquad
+ V=\frac{1+(N+\Delta)G^2U^2}{2GU}.
+\]
+The recovered anchor witness is $u=T/S$. It may be zero in this
+reverse construction, which is allowed by the original equations.
+
+\paragraph{Substitution without additional variables.}
+Remove the old anchor and proxy equations, leaving $295$ cleared
+residual numerators $F_i$. For each choose a syntactic degree bound
+$d_i$ for its degree in $\tau$, and define
+\[
+ \widetilde F_i
+  =Q_\tau^{d_i}
+      F_i\bigl(\tau=P_\tau/Q_\tau\bigr).
+\]
+This is a polynomial. It is constructed by an arithmetic circuit,
+with no auxiliary quantified variables. At an addition gate, pad
+the lower denominator power to the maximum of the children's powers;
+at a multiplication gate, add the powers; at a power gate, multiply
+the power. This proves the displayed substitution identity
+inductively, even when the chosen syntactic degree is larger than
+the actual degree after cancellation.
+
+For each fixed branch, form
+\[
+ Q=\sum_{i=1}^{295}\widetilde F_i^2+\Psi^2.
+\]
+Every rational solution of the original system first admits the
+nonzero-anchor normalization, then a choice of sign with $W\ne0$,
+and finally $U=1/(GW)$. The reconstructed proxy is the original
+$\tau$, so every substituted residual vanishes.
+
+Conversely, $Q=0$ forces $\Psi=0$ and all
+$\widetilde F_i=0$. Since $\Psi=1$ at $GU=0$, both $G$ and
+$Q_\tau$ are nonzero. The reconstruction identities recover the
+anchor and proxy equations. The substitution identities then give
+$F_i=0$ for every old residual. The retained guards hold, and
+Lemma~\ref{lem:pole-denominator-forced} recovers the $42$ omitted
+guards. Consequently all old rational equations are valid and the
+old independent inverse witness can also be restored. The input
+projection is therefore unchanged.
+
+Take the product of $Q$ over the same $212\cdot256=54272$ finite
+chart and height choices as before. This is one integer polynomial
+in $853$ variables, including the input, with $852$ existential
+witnesses. The old inverse coordinate and middle proxy coordinate
+have been removed, and the old first anchor coordinate has been
+reused as $U$. The proof permits changes in all three private
+anchor witnesses and does not assert equality of every fiber
+obtained by fixing those witnesses.
+
+\paragraph{Certificate and quantitative bounds.}
+The exact specification is
+\texttt{polynomial-853/polynomial-circuit.json}. It has $95084$
+stored nodes, of which $94946$ are reached from the output, and
+all $853$ declared coordinates occur in that output directed
+acyclic graph. The greatest homogenizing exponent is $1280$.
+The independent reader \texttt{verify\_compact\_853.py} imports
+neither producer. It reruns the separate pole-guard verifier,
+checks the complete anchor and Pell identities, checks both
+quadratic reconstruction identities, and certifies all $295$
+substitutions by exact expression-tree induction. It also checks
+the coordinate map, finite parameter lists, sum of $296$ squares,
+and degree and coefficient-norm bounds. A separate review of the
+producer confirms the signs, substitution invariant, and variable
+renumbering. These transformation checks use exact arithmetic.
+
+The resulting rigorous bounds are
+\[
+ \deg P\le894090701148160,
+ \qquad H(P)\le2^{29154205340326912}.
+\]
+They are upper bounds, not exact expansion statistics. The smaller
+variable count comes at the cost of a worse degree bound than the
+$854$-variable construction. Both specifications are retained.
+The arithmetic identification of the input projection with
+$\mathbb Z$ still inherits the underlying source theorem; the
+transformation certificates do not independently verify every
+arithmetic assertion of that theorem.

@@ -1,0 +1,251 @@
+\section{A fully specified polynomial with 854 variables}
+\label{sec:explicit-circuit}
+
+This section gives a finite formula for an actual polynomial, not just
+an existence argument. Its degree is much higher than four. Arithmetic
+expressions in this section introduce no quantified coordinates unless
+explicitly listed. The accompanying JSON circuit makes every addition,
+multiplication, power, residual numerator, and nonzero condition literal.
+
+\subsection{The finite list of rational equations}
+
+Use the curve and constants of Section~\ref{sec:source-structure}, and
+write $\sigma$ for the automorphism of $K=\Q(\sqrt2)$ sending
+$\sqrt2$ to $-\sqrt2$. For a nonidentity point $Q=(x,y)$ define
+\[
+ f(Q)=1/x,\qquad z(Q)=-x/y.
+\]
+All the denominators occurring here and below are required to be
+nonzero. A field inverse is written using its rational norm, so both
+rational coefficient formulas are specified.
+
+There are six root points $A,S,T,Z,J_0,J$, and five private points
+$Q_{\ell,0},\ldots,Q_{\ell,4}$ for each $1\leq\ell\leq41$.
+Their total number is $211$. For each point use the three rational
+coordinates $(a_0,a_1,C_Q)$ and the common chart parameter
+$j\in\{0,\ldots,211\}$ of
+Proposition~\ref{prop:quadratic-square-root}. Namely put
+$a=a_0+a_1\sqrt2$, write $a^3-Da=A_Q+B_Q\sqrt2$, reconstruct
+$b=b_0+b_1\sqrt2$, impose
+\[
+ C_Q^2 V_Q-(B_Q/2+jV_Q)^2=0,
+ \qquad V_Q=\frac{C_Q^2-A_Q-jB_Q}{j^2-2},
+\]
+and use the double $Q=[2](a,b)$ in every subsequent expression.
+Require $C_Q\ne0$, $N_{K/\Q}(b)\ne0$, and nonzero norms for
+the abscissa and ordinate of the output point. The source-chart
+equivalence and its inverse maps are proved in
+Section~\ref{sec:finite-fibre-application}.
+
+Set $\beta=X^2+2$. Introduce rational proxies $s,\tau,z$ and impose
+\begin{equation}\label{eq:circuit-lucas}
+ \tau^2-s(s-2)\tau z+(s-2)^2z^2-1=0.
+\end{equation}
+Use one rational $\theta$, with $\varepsilon=\theta^2-2$.
+The letter $z$ without an argument in \eqref{eq:circuit-lucas}
+is a proxy; $z(Q)$ is the specified elliptic rational function.
+
+The finite reciprocal logarithms are
+\[
+ \mathcal L_L(Q)=z(Q)G_{L/4-1}(Df(Q)^2),
+ \qquad L\in\{16,64\},
+\]
+where $G_J(W)=1+\sum_{r=1}^J a_rW^r$,
+$a_1=-2/5$, and $a_r=a_{r-1}(4r-5)/(4r+1)$.
+Their nonvanishing on the required rational point charts is proved
+in the finite-fiber application.
+
+We next specify the norm operation used in every contact. Given a
+nonzero rational $r$, an ordered list of tests $t_i$ with positive
+orders $L_i$, and $L_1=1$, form the normalized leaves
+$1,t_1/r,t_2/r^{L_2},\ldots$. First pair $1,t_1/r$ by
+$N_r(a,b)=a^2+rb^2$. Group all remaining tests by increasing order,
+preserving their original order within each group; pair successive
+normalized leaves and carry an unpaired last leaf. At each higher
+level pair successive nodes by $N_r$ and carry any last node until
+one root $W_r$ remains. The input of the pole equations is $b=rW_r^2$.
+This prescription is finite and fixes the order of every operation.
+
+For a rational input $b$, a pole occurrence has five coordinates
+$t,e_p,p,q,h_p$. Define
+\[
+ U=\frac{b(1-bt^2)}{1+bt^2},\qquad B=17b,
+ \qquad H=e_p(B-U^2),
+\]
+and impose
+\begin{equation}\label{eq:circuit-pole}
+ p^2=B(1-e_p)(1+3e_p),\qquad
+ Bq^2=(h_p^2-BH)(h_p^2+3BH).
+\end{equation}
+The denominator $1+bt^2$ cannot vanish on the original pole equations;
+its explicit nonzero condition is retained here.
+
+For the height occurrence take
+\[
+ r_0=\beta(\beta-1)(\beta-2401)(32\beta+343)(2\beta-1)
+\]
+and the six rational coefficients of
+$f(J_0),f(S),z(S)/z(J_0)$, in that order. Their orders are
+$(1,1,1,1,48,48)$. Replace the resulting pole input by $c r_0W_{r_0}^2$,
+where the fixed finite choice is
+\[
+ c\in\mathcal C=\left\{\pm\prod_{p\in I}p:
+ I\subseteq\{2,3,5,7,11,13,17\}\right\}.
+\]
+There are $256$ such integers, covering the source's eight Boolean
+choices exactly.
+
+Introduce a nonzero coordinate $e$, and let $a_1,\ldots,a_9$ be
+$e$ followed by the eight rational coefficients of
+$ex(A),ex(S),ex(T),ex(Z)$. Introduce two contact coordinates $u_c,v_c$.
+With $W_0=25878772920$, the forty-one contacts are
+\[
+ \frac{v_c}{32W_0},\quad u_c,\quad u_c-v_c,\quad
+ u_c-2401v_c,\quad u_c+\frac{343}{32}v_c,
+\]
+and, for each $i=1,\ldots,9$, on putting $A_i=47027a_i+3$,
+\[
+ u_c-A_iv_c,\quad u_c-A_iv_c+v_c,\quad
+ u_c-A_iv_c+2401v_c,\quad
+ u_c-A_iv_c-\frac{343}{32}v_c.
+\]
+Write these contacts as $r_1,\ldots,r_{41}$ in the displayed order.
+
+For contact $\ell$, the five target points are
+$(4P_*,4A,4S,4T,4Z)$. Subtract them respectively from the five
+private points to obtain $Y_{\ell,i}$, using the affine subtraction
+formula and its nonzero abscissa-difference denominator. The ordered
+twenty field tests are the following:
+\begin{enumerate}
+\item $f(Q_{\ell,i})$ for $0\leq i\leq4$;
+\item $f(J)^\sigma$;
+\item $f(Y_{\ell,i})^\sigma$ for $0\leq i\leq4$;
+\item $\mathcal L_{16}(Q_{\ell,1})/\mathcal L_{64}(Q_{\ell,0})-\beta$,
+and the analogous three ratios with numerator precision $64$ and
+proxies $s,\tau,z$;
+\item $z(Y_{\ell,i})^\sigma/z(J)^\sigma$ for $0\leq i\leq4$.
+\end{enumerate}
+Replace each field test $A+B\sqrt2$ by the two rational tests
+$\varepsilon B,A+\theta B$, and prepend $\varepsilon$. The
+resulting forty-one orders are
+\[
+ (\underbrace{1,\ldots,1}_{23},16,16,
+ \underbrace{64,\ldots,64}_{8},16,16,
+ \underbrace{64,\ldots,64}_{6}).
+\]
+Apply the norm prescription at $r_\ell$ and then one copy of
+\eqref{eq:circuit-pole}. This makes $42$ pole occurrences in total.
+
+Finally, write $f(S)=f_0+f_1\sqrt2$, set
+$F=f_0^2+f_0f_1-f_1^2$, and let $C=3^{2^{24}}$ be the fixed
+anchor constant. The three-witness anchor is
+\[
+ u_a^2+6v_a^2-2w_a^2-3F^2+2C^4=0.
+\]
+We next absorb its private coordinate $u_a$ and all denominator
+conditions into one coordinate, without increasing their combined count.
+
+\subsection{Eliminating the denominator witness}
+
+For fixed $(j,c)$, clear the denominators of all rational equations
+other than the anchor, and call their polynomial numerators
+$E_1,\ldots,E_{296}$. There are $211$ point equations, $84$ pole
+equations, and one Lucas equation. During the construction record every
+nonzero numerator required for a division, including rational norms
+for divisions in $K$, and the explicit point and coordinate guards.
+Let $G$ be their product, with repeated factors omitted if desired.
+All the rational functions used are defined whenever $G\ne0$.
+
+Write
+\[
+ 6v_a^2-2w_a^2-3F^2+2C^4=N/B
+\]
+with integer polynomial numerator $N$ and denominator $B$. Choose
+$F=R_0/S_0$ in the rational-expression construction. Then
+\[
+ B=S_0^2,\qquad
+ N=S_0^2(6v_a^2-2w_a^2+2C^4)-3R_0^2.
+\]
+The actual circuit's cleared anchor has exactly this form.
+All denominator factors are included among the recorded conditions.
+The three anchor coordinates occur nowhere in $G$ or the other
+residuals, and $B$ is independent of them.
+
+The anchor always has a solution with $u_a\ne0$ whenever it has any
+solution. Indeed its three witnesses cannot all vanish, since
+$3F^2=2C^4$ is impossible for rational $F/C^2$. If $u_a=0$ and
+$w_a\ne0$, replace $(u_a,w_a)$ by $(4w_a,3w_a)$; this preserves
+$u_a^2-2w_a^2$. If $u_a=w_a=0$ and $v_a\ne0$, replace
+$(u_a,v_a)$ by $(-12v_a/7,-5v_a/7)$; this preserves
+$u_a^2+6v_a^2$. In either case $u_a$ becomes nonzero without
+changing any outside equation.
+
+Rescale $t_a=S_0u_a$, so that the cleared anchor is $t_a^2+N=0$.
+Replace its private coordinate by $U$ and put
+\[
+ \Psi=1+NG^2U^2.
+\]
+Define the branch polynomial
+\begin{equation}\label{eq:854-branch}
+ F_{j,c}=\sum_{i=1}^{296}E_i^2+\Psi^2,
+\end{equation}
+and the required integer polynomial
+\begin{equation}\label{eq:854-polynomial}
+ P_{854}=\prod_{j=0}^{211}\ \prod_{c\in\mathcal C}F_{j,c}.
+\end{equation}
+
+\begin{proposition}\label{prop:854-explicit}
+The polynomial \eqref{eq:854-polynomial} uses 854 total variables
+and has the same rational input projection as $\Src$. A supplied
+integer arithmetic circuit specifies it completely. Its degree is
+at most $63570781474816$, and its coefficient height is at most
+$2^{757866260454400}$.
+\end{proposition}
+\begin{proof}
+If $GU=0$, then $\Psi=1$, so \eqref{eq:854-branch} has no rational
+zero. Otherwise $G\ne0$ also implies $S_0\ne0$, and
+\[
+ \Psi=(GU)^2\bigl((1/(GU))^2+N\bigr).
+\]
+A zero therefore gives an original anchor witness
+$u_a=1/(GS_0U)$. Conversely, use the preceding transformations to
+choose $u_a\ne0$, then put $U=1/(GS_0u_a)$. This preserves the
+existential input projection. It need not preserve a fiber in which
+both of the other private anchor witnesses have been fixed, and no
+such claim is needed. The sum of squares imposes all the outside
+equations and all the divisions used before taking numerators.
+
+The point substitutions and the pole substitutions have the inverse
+maps proved above and below. Among the $212$ fixed chart choices
+there is a valid common choice for any list of $211$ source halfpoints.
+The $256$ fixed corrections cover the eight Boolean source choices.
+A product of branch polynomials permits reuse of the same witness
+coordinates, since only one branch must vanish. In particular, no
+denominator condition from an inactive branch is imposed.
+
+The coordinate count is
+\[
+ 633+210+3+3+1+1+2+1=854:
+\]
+point coordinates, pole coordinates, anchor coordinates $(U,v_a,w_a)$,
+proxies, $\theta$, $e$, two contact coordinates, and the input.
+The final $U$ also enforces the denominators, so no inverse coordinate
+is added. All 854 coordinates occur in the supplied specification.
+
+For the bounds, assign each integer constant its absolute coefficient
+sum, each variable degree one, and each fixed parameter its maximum
+absolute value over its stated finite list. At a sum, degrees take a
+maximum and coefficient sums add; at a product, degrees add and
+coefficient sums multiply; at a power both bounds scale accordingly.
+These exact integer recurrences bound every node. Finally multiply the
+branch bounds over $212\cdot256=54272$ branches. Replaying these
+recurrences on the supplied circuit gives the displayed bounds.
+They are upper bounds, not exact expansion statistics.
+\end{proof}
+
+This explicit circuit and the 558-variable indexed construction
+serve different purposes. The former can be regenerated directly from
+the finite formulas and inspected as a circuit; the latter uses further
+finite-algebra elimination whose indexed output is specified and checked,
+although its rank-sized matrices and full expansion are not materialized.
+Neither is presented as a practical solver for Diophantine equations.

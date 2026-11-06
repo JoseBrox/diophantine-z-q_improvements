@@ -1,0 +1,139 @@
+\section{An explicit reduction to 853 variables}
+\label{sec:explicit-853}
+
+Two further elementary steps combine the private anchor root with the
+Lucas root. Their proof concerns rational solutions. It is not a claim
+about geometric fibers over an algebraic closure.
+
+\subsection{The pole denominators are automatic over the rationals}
+
+\begin{lemma}\label{lem:pole-denominator-automatic}
+After clearing the denominator $\delta=1+bt^2$ from
+\eqref{eq:circuit-pole}, its two equations already imply
+$\delta\ne0$ over $\Q$.
+\end{lemma}
+\begin{proof}
+Put $B_p=17b$ and
+$A=B_p\delta^2-b^2(1-bt^2)^2$. The cleared second equation is
+\[
+ B_pq^2\delta^4
+ =(h_p^2\delta^2-B_pe_pA)(h_p^2\delta^2+3B_pe_pA).
+\]
+If $\delta=0$, then $bt^2=-1$, so $b,t,B_p$ are nonzero and
+$A=-4b^2$. The equation becomes $0=-48B_p^2b^4e_p^2$, whence
+$e_p=0$. The first equation now gives $p^2=17b=-17/t^2$,
+or $(pt)^2=-17$, impossible in $\Q$.
+
+This also applies to the reduced rational numerators used by the
+circuit. In each actual second conic, the denominator contains the
+numerator of $\delta$ to exactly the fourth power, and every other
+factor is among the retained nonzero conditions. The first-conic
+denominator uses only retained factors. Multiplying back yields the
+displayed polynomial identity even when $\delta=0$. These exact
+denominator-factor statements are checked in the independent verification.
+\end{proof}
+
+More generally the same proof works with $B_p=cb$, over a field of
+characteristic different from two and three, whenever $-c$ is a
+nonsquare. It deliberately does not give the corresponding assertion
+over every number field.
+
+Remove precisely the $42$ pole-denominator conditions from the product
+$G$ of the preceding section, and call the remaining product $G_0$.
+Its factors depend only on the input, point coordinates, coordinate
+denominator, and contact coordinates. In particular $G_0$ is independent
+of all three proxies, all pole coordinates, $\theta$, and the private
+anchor coordinates. This follows from the displayed construction and
+was checked on the entire circuit. All other rational denominators
+are covered by $G_0$; the omitted ones are enforced by
+Lemma~\ref{lem:pole-denominator-automatic}.
+
+\subsection{Combining two square roots and the nonzero conditions}
+
+Write the Lucas equation as
+\[
+ \tau^2-a\tau+b_0=0,\quad
+ a=s(s-2)z,\quad b_0=(s-2)^2z^2-1,\quad
+ \Delta=a^2-4b_0.
+\]
+Thus $v=2\tau-a$ satisfies $v^2=\Delta$. The scaled anchor witness
+satisfies $t_a^2=-N$, where $N$ is independent of $\tau$.
+Choose its nonzero representative as in the preceding section.
+Its sign can be selected so that $W=t_a+v\ne0$: the two choices
+$t_a+v$ and $-t_a+v$ cannot both vanish when $t_a\ne0$.
+Consequently no new finite selector is necessary.
+
+The two square-root equations have the exact single relation
+\begin{equation}\label{eq:joint-quartic}
+ h(W)=W^4+2(N-\Delta)W^2+(N+\Delta)^2=0,
+\end{equation}
+with reconstruction
+\[
+ v=\frac{W^2+N+\Delta}{2W},\qquad
+ t_a=\frac{W^2-N-\Delta}{2W},\qquad
+ \tau=\frac{a+v}{2}.
+\]
+Indeed $4W^2(v^2-\Delta)=h(W)=4W^2(t_a^2+N)$.
+Conversely, $W=t_a+v$ and the two square equations imply
+\eqref{eq:joint-quartic} and these reconstruction formulas.
+
+Set $W=1/(G_0U)$ and define
+\[
+ \Psi_*=1+2(N-\Delta)G_0^2U^2+(N+\Delta)^2G_0^4U^4,
+ \qquad
+ \tau=\frac{1+2aG_0U+(N+\Delta)G_0^2U^2}{4G_0U}.
+\]
+The equation $\Psi_*=0$ forces $G_0U\ne0$ and is the reciprocal
+form of \eqref{eq:joint-quartic}. Substitute the displayed rational
+formula for $\tau$ into all the other residuals. Choose a syntactic
+upper bound $k$ for each residual's degree in $\tau$, and multiply
+its substituted expression by $(4G_0U)^k$ to obtain a polynomial
+numerator. At addition gates take the maximum of the children's
+bounds; at multiplication gates add them; at power gates multiply
+by the exponent. This specifies the emitted circuit even if
+cancellation lowers the actual degree. The operation is reversible
+on $G_0U\ne0$.
+Delete the old Lucas residual and the anchor residual; denote the
+remaining $295$ polynomial numerators by $E'_i$. The branch polynomial
+and the full polynomial are
+\[
+ F^*_{j,c}=\sum_{i=1}^{295}(E'_i)^2+\Psi_*^2,
+ \qquad
+ P_{853}=\prod_{j=0}^{211}\prod_{c\in\mathcal C}F^*_{j,c}.
+\]
+
+\begin{proposition}\label{prop:853-explicit}
+The integer polynomial $P_{853}$ has 853 total variables and the
+same rational input projection as $\Src$. The supplied finite
+arithmetic circuit has degree at most $894090701148160$ and
+coefficient height at most $2^{29154205340326912}$.
+\end{proposition}
+\begin{proof}
+The forward construction may change only the three private anchor
+witnesses, making $t_a\ne0$ and then choosing its sign to make
+$W\ne0$. Set $U=1/(G_0W)$; every transformed residual vanishes.
+Conversely, $\Psi_*=0$ gives $G_0U\ne0$. Reconstruct $W,v,t_a$
+and $\tau$ by the formulas above, then $u_a=t_a/S_0$. They satisfy
+the old anchor and Lucas equations. Undoing each homogenization gives
+the other original numerator equations. The retained guards and
+Lemma~\ref{lem:pole-denominator-automatic} make every original rational
+division valid. The source point-chart equivalences then apply as
+before. These operations prove equality of rational input projections.
+
+Two coordinates, $u_a$ and $\tau$, have been replaced by the single
+coordinate $U$. The count is
+\[
+ 633+210+2+2+1+1+2+1+1=853,
+\]
+respectively point coordinates, pole coordinates, two remaining anchor
+coordinates, two remaining proxies, $\theta$, the coordinate denominator,
+two contact coordinates, the input, and $U$. There are still $54272$
+finite branches. Exact circuit bounds are propagated as in
+Proposition~\ref{prop:854-explicit}; the degree and height statements
+are upper bounds. The maximum homogenizing degree in $\tau$ is $1280$.
+\end{proof}
+
+The omission of the pole guards is justified here over $\Q$.
+The 558-variable geometric-fiber argument retains those guards and
+does not use this omission. This distinction prevents exceptional
+geometric fibers from being silently reintroduced into that argument.

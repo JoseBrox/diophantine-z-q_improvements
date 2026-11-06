@@ -1,0 +1,132 @@
+% Independent domain proof for the direct two-coordinate field gates.
+\subsection{Direct field quotients and their domains}
+\label{subsec:direct-field-quotients}
+
+Put $k=\mathbb Q(\sqrt2)$, $d=3-\sqrt2$ and $D=d^2$.
+For $a=a_0+a_1\sqrt2$ and $b=b_0+b_1\sqrt2$, multiplication
+can be represented with two output coordinates and two quadratic equations:
+\[
+ q_0=a_0b_0+2a_1b_1,\qquad q_1=a_0b_1+a_1b_0.
+\]
+Similarly the inverse of $b$ is specified by
+\[
+ b_0q_0+2b_1q_1=1,\qquad b_0q_1+b_1q_0=0.
+\]
+These inverse equations themselves force $b\ne0$.  Because $k$ is
+a field, they have the unique solution $q=b^{-1}$ when $b\ne0$.
+If other equations already imply $b\ne0$, a quotient $q=a/b$ can
+instead be specified directly by
+\[
+ b_0q_0+2b_1q_1=a_0,\qquad
+ b_0q_1+b_1q_0=a_1.
+\]
+This uses only the two quotient coordinates.  A nonzero-domain argument
+is essential here: without it the equations could permit $a=b=0$.
+
+\begin{lemma}\label{lem:doubling-quotient-domain}
+On $E:y^2=x^3-Dx$, the equation
+\[
+                           (2y)m=3x^2-D
+\]
+forces $y\ne0$ at every affine point, and hence defines the usual
+doubling slope.  Every finite point of $2E(k)$ has nonzero abscissa
+and nonzero ordinate.
+\end{lemma}
+\begin{proof}
+If $y=0$, the curve equation gives either $x=0$ or $x^2=D$.
+The numerator $3x^2-D$ is then respectively $-D$ or $2D$,
+both nonzero.  Thus the slope equation cannot be satisfied when
+$y=0$.  This argument uses the curve equation, and does not need
+a separate assertion that $3x^2-D$ never vanishes elsewhere.
+
+Let $Q=2R$ be finite.  The point $R$ is affine with nonzero
+ordinate, and its doubling formula gives
+\[
+                  x(Q)=\left(\frac{x(R)^2+D}{2y(R)}\right)^2.
+\]
+Since $D=d^2$ and $k$ embeds in $\mathbb R$, the numerator is
+nonzero.  Thus $x(Q)$ is a nonzero square in $k$.  A point with
+zero ordinate has abscissa $0,d$, or $-d$.  The last two cannot
+be squares in $k$: their norm to $\mathbb Q$ is $7$, whereas
+the norm of a square in $k$ is a rational square.  Consequently
+$y(Q)\ne0$ as well.
+\end{proof}
+
+The lemma shows that a halfpoint on the curve followed by the direct
+doubling-slope equations defines a finite point of $2E(k)$ with the
+required nonzero coordinates.  Both usual coordinates of the doubled
+point are then given by their standard polynomial expressions in the
+slope, so they lie on $E$.  Repeating this operation is valid by the
+same argument.  If the usual subtraction slope is defined by its
+existing abscissa-inequality guard, the resulting finite difference
+of two points in $2E(k)$ also belongs to $2E(k)$ and has the same
+nonvanishing properties.
+
+Therefore the parameter $z(Q)=-x(Q)/y(Q)$ may be specified by a
+direct two-coordinate quotient for every such point $Q$.  It is
+itself nonzero.  For the reciprocal logarithms used in the source,
+\[
+              \ell_J(Q)=z(Q)G_J\bigl(D/x(Q)^2\bigr),
+\]
+the separately proved global nonvanishing of $G_J$ for $J\ge2$
+makes $\ell_J(Q)\ne0$.  All truncations used here have
+$J\in\{3,12,15\}$.  Ratios with these logarithms as denominators
+may likewise use direct quotient equations.  This last step depends
+on the source's stated nonvanishing lemma, not on numerical evaluation.
+
+The abscissa inequality for the subtraction slope is retained: if two
+points have the same abscissa, an unguarded quotient equation could have
+both sides zero.  None of the preceding arguments removes that guard.
+
+\subsection{Square scales without zero branches}
+\label{subsec:square-scales-without-branches}
+
+For a finite $Q\in2E(k)$ write $x(Q)=x_0+x_1\sqrt2$, with
+$x_0,x_1\in\mathbb Q$.  The preceding lemma gives
+$x(Q)=(u_0+u_1\sqrt2)^2$ for some nonzero element of $k$.
+Consequently
+\[
+                    x_0=u_0^2+2u_1^2>0.
+\]
+The two scales
+\[
+                    A_0=x_0^2,\qquad A_1=(1+x_1^2)^2
+\]
+are therefore nonzero rational squares for every allowed point.  They
+need no finite choice recording whether a coordinate is zero.
+
+For completeness we verify the height estimate needed when using these
+scales.  Let $h$ denote the logarithmic Weil height.  For rational
+$v=a/b$ in lowest terms with $b>0$, the numerator and denominator
+of $1+v^2=(a^2+b^2)/b^2$ are coprime.  Hence
+\[
+         h(1+v^2)=\log(a^2+b^2)\ge2h(v).
+\]
+It follows that $h(A_0)=2h(x_0)$ and $h(A_1)\ge4h(x_1)$.
+
+Suppose that the contact estimates for a nonzero slope $\lambda$ and
+both scaled slopes give, for $H,N\ge1$ and $\alpha\ge0$,
+\[
+ h(\lambda),\ h(A_i\lambda)\le HN^\alpha+\log3
+                                      \qquad(i=0,1).
+\]
+Since $h(A_i)\le h(A_i\lambda)+h(\lambda)$, these imply
+\[
+ h(x_0)\le(H+\log3)N^\alpha,\qquad
+ h(x_1)\le\tfrac12(H+\log3)N^\alpha.
+\]
+The standard height inequalities for sum and product give
+\[
+ \begin{aligned}
+ h\bigl(x_0+x_1\sqrt2\bigr)
+ &\le h(x_0)+h(x_1)+\tfrac32\log2\\
+ &\le\tfrac32(H+\log3)N^\alpha+\tfrac32\log2
+   <7HN^\alpha.
+ \end{aligned}
+\]
+For the last inequality it suffices to use $H,N^\alpha\ge1$ and
+$\log6<2$.  Thus these scales preserve the original height constant
+with room to spare.  All other detector and completeness arguments use
+only that each chosen scale is a fixed nonzero rational square once the
+root points are fixed; that condition has been retained.  For four root
+points this removes all eight zero/nonzero scale choices.

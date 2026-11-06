@@ -1,0 +1,364 @@
+% Fresh phase-three supplement.  All variable counts include the input.
+\section{What the newer constructions do over number fields}
+\label{sec:new-constructions-number-fields-phase3}
+
+Three different questions must be separated.  A fixed polynomial
+over $\mathbb Q$ has an existential projection over every extension
+field.  An equation-combining procedure may preserve the projection
+of a specified source system over that extension.  Neither fact
+identifies the resulting set with the ring of integers of the
+extension.  The following results locate explicit failures of the
+first and third assertions, and give an effective repair of the
+second in Section~\ref{sec:division-norm-compiler-phase3}.
+The counterexamples and algebraic encoding results here do not
+depend on accepting the source manuscript's arithmetic theorem.
+
+\subsection{The four literal quartics accept every input over $\mathbb Q(i)$}
+
+Let $P_N$ denote the recorded sum-of-squares quartic with $N$
+total coordinates, indexed from zero, where $X_0$ is the input.
+Set all witnesses to zero except the following two coordinates:
+\[
+\begin{array}{r|r|r|r}
+N&\text{quadratic residuals}&u\text{ coordinate}&v\text{ coordinate}\\\hline
+1315&1272&72&73\\
+1339&1296&96&97\\
+1367&1322&62&78\\
+1391&1346&86&102
+\end{array}
+\]
+The exact restriction in each case is
+\begin{equation}\label{eq:quartic-two-squares-restriction-phase3}
+                     P_N(T,0,\ldots,u,\ldots,v,\ldots,0)
+                        =C_N+T^4+u^2+v^2.
+\end{equation}
+Here $C_N$ is the constant obtained by the same restriction at
+$T=u=v=0$.  For $N=1315,1367$ it includes the term
+$1024\kappa^2$, with the fixed integer $\kappa=3^{2^{28}}$.
+The full integer constants, coordinate names, and hashes of the
+four complete coefficient tables are recorded in
+\texttt{quartic-base-change-verification\_20261106\_v1.json}.
+Defining $C_N$ by this specialization avoids any ambiguity from
+rounding or decimal transcription.
+
+\begin{proposition}\label{prop:quartic-collapse-Qi-phase3}
+Each of these four literal quartics has existential input
+projection equal to $K$ over every characteristic-zero field
+$K$ containing $i$.  In particular none defines
+$\mathcal O_{\mathbb Q(i)}$ in $\mathbb Q(i)$.
+\end{proposition}
+\begin{proof}
+For any $T\in K$ put $R=C_N+T^4$ and take
+\[
+                         u=\frac{1-R}{2},\qquad
+                         v=i\frac{1+R}{2}.
+\]
+Then $u^2+v^2=-R$, so
+\eqref{eq:quartic-two-squares-restriction-phase3} vanishes.
+Taking $T=1/2$ gives a nonintegral input with witnesses already
+in $\mathbb Q(i)$.  This identity is exact for the fixed integer
+$\kappa$ as well as before its substitution.
+\end{proof}
+
+The independent script
+\texttt{check\_quartic\_base\_change\_20261106\_v1.py}
+obtains the restriction twice: from the expanded sparse polynomial
+and by squaring the independently restricted primitive residuals.
+It compares the two results and substitutes the displayed generic
+witnesses using exact arithmetic in
+$\mathbb Q(i)[T,\kappa]$.  The conclusion is therefore stronger
+than the general observation that sums of squares can cancel in a
+nonreal field.
+
+\subsection{An exact integral input rejected by the unshifted sources}
+
+The unshifted source uses $\beta=X^2+2$ and guards the scalar
+contact expression
+\begin{equation}\label{eq:scalar-contact-polynomial-phase3}
+       r_\beta=\beta(\beta-1)(\beta-2401)
+                         (32\beta+343)(2\beta-1)
+\end{equation}
+away from zero.  Its later nonzero rational-square rescaling does
+not remove these zeros.  The individual factors are present as
+nonvanishing guards in the indexed coefficient specifications.
+Consequently $X=\sqrt{2399}$, $i$, and $\sqrt{-2}$ are rejected
+by the unshifted guarded source, even though each is an algebraic
+integer in the corresponding quadratic field.
+
+For the indexed polynomials the failure is particularly exact.
+Recall the notation of the finite-algebra specification:
+$G$ is its product of guards, $n$ is its algebra rank,
+\[
+ H(V)=\det(I-VM_{G\lambda})=\sum_{k=0}^n a_kV^k,
+ \qquad
+ R_E(V)=\operatorname{Tr}\bigl(M_E\operatorname{adj}
+                       (I-VM_{G\lambda})\bigr).
+\]
+Each branch has an index $1\le d\le n$ and uses
+$g=a_d\operatorname{Res}(H_d,H_d')$, $L=a_d^2g$,
+\[
+ \Psi=1+\sum_{j=1}^d a_{d-j}a_d^{2j-1}g^jU^j,
+ \qquad
+ \widetilde R_E=\sum_{k=0}^{n-1}[V^k]R_E(V)(LU)^{n-1-k}.
+\]
+Its final residuals are $\Psi$, the high coefficients
+$a_{d+1},\ldots,a_n$, and the $\widetilde R_E$.
+
+\begin{proposition}\label{prop:indexed-contact-value-one-phase3}
+For each unshifted indexed polynomial with respectively
+41, 43, 43, and 45 total coordinates from phases three and two,
+the polynomial equals $1$ identically in all remaining
+coordinates after imposing any of
+\[
+                         X^2=2399,\qquad X^2=-1,
+                              \qquad X^2=-2.
+\]
+The assertion holds over every characteristic-zero field.
+\end{proposition}
+\begin{proof}
+The indicated contact factor is zero as a polynomial in the
+retained base coordinates, so $G=0$ in every specialized
+finite algebra, for every value of every finite parameter.
+Thus $M_{G\lambda}=0$, $H=1$, and all $a_k$ with $k\ge1$
+vanish.  Hence $g=L=0$ and $\Psi=1$.
+Moreover $R_E(V)=\operatorname{Tr}(M_E)$ is constant.
+Every branch retains nine quartic point generators, so
+$n\ge4^9>1$.  Therefore its reversed trace is zero:
+the sole possibly nonzero coefficient has the factor
+$(LU)^{n-1}=0$.  Every branch sum of squares is consequently
+$1$, and so is their finite product.  This calculation does
+not use anisotropy of a sum of squares.
+\end{proof}
+
+The contact checker verifies a literal multiplicative path from
+the zero factor to the materialized guard, evaluates that factor
+in $\mathbb Q[X]/(X^2-a)$, and checks the branch-rank assertion.
+Its separate checks of the four quadratic systems follow exact
+input-dependent gate equations until an inverse equation becomes
+$-1=0$.  The recorded reversible row operations transport this
+contradiction to each final quadratic residual system.  Thus a
+faithful norm combination of the unshifted residuals still rejects
+these inputs.  Over $\mathbb Q(\sqrt{2399})$ the literal sum of
+squares is faithful as well, and therefore rejects that integral
+input.  Over $\mathbb Q(i)$ the literal quartic instead accepts
+every input by Proposition~\ref{prop:quartic-collapse-Qi-phase3};
+this is precisely the distinction between a system and its
+sum-of-squares encoding.
+
+These finite contact obstructions admit the field-dependent shift
+repair of Section~\ref{sec:p3-beta-shift}.  The assertion above
+is about the unshifted artifacts and does not apply to the
+separately emitted $\beta=X^2+2402$ artifacts.  Removing a finite
+list of excluded inputs does not restore the elliptic arithmetic
+argument considered next.
+
+\subsection{A totally real quartic obstruction to the finite elliptic anchor}
+
+Put $F=\mathbb Q(\sqrt2)$, $d=3-\sqrt2$ and
+$D=d^2=11-6\sqrt2$.  Let
+\[
+                         E:\ y^2=x^3-Dx,
+\]
+and let $P\in E(F)$ be the fixed point used in the finite
+anchor.  Its particular coordinates are immaterial below;
+only $P\in E(F)$ is used.  The anchor excludes equality with
+the finitely many abscissas $x([n]P)$, $1\le n\le M$, by
+taking the product of their nonzero rational norms.
+
+\begin{proposition}\label{prop:totally-real-anchor-counterexample-phase3}
+There is a totally real quartic number field $K$, with
+$\sqrt2\notin K$, and a point $Q\in2E(K(\sqrt2))$ of
+fixed height such that
+\[
+              x(Q)\in F,\qquad x(Q)\ne x([n]P)
+                       \quad\text{for every }n\in\mathbb Z
+\]
+whenever the abscissa on the right is defined.  The same fixed
+point therefore satisfies every finite anchor exclusion, for
+every positive bound $M$.
+\end{proposition}
+\begin{proof}
+Let $s$ be a root of
+\[
+                         s^4-1696s^2+18432=0
+\]
+and put $K=\mathbb Q(s)$.  Set $F'=\mathbb Q(\sqrt{2737})$,
+where $2737=7\cdot17\cdot23$.  The two values of $s^2$ are
+$848\pm16\sqrt{2737}$, both strictly positive.  They have
+norm $18432=2\cdot96^2$, which is not a rational square.
+Thus neither is a square in $F'$, and $[K:\mathbb Q]=4$.
+All four conjugates of $s$ are real, so $K$ is totally real.
+
+If $K$ contained $\sqrt2$, it would equal $F'(\sqrt2)$.
+Writing $s=a+b\sqrt2$ with $a,b\in F'$ and using
+$s^2\in F'$ gives $ab=0$.  In either case the norm of
+$s^2$ from $F'$ to $\mathbb Q$ would be a rational square:
+it would be $N(a)^2$ or $4N(b)^2$.  This contradicts the
+computed norm.  Hence $\sqrt2\notin K$.
+
+In $K(\sqrt2)$ set
+\[
+                  b=\frac{s}{2}+\frac{48}{s}\sqrt2,
+                          \qquad R=(8,b).
+\]
+The defining equation for $s$ gives
+$b^2=424+48\sqrt2=8^3-8D$, so $R\in E(K(\sqrt2))$.
+It has nonzero ordinate.  The doubling formula gives
+\begin{align*}
+ x(Q)=x([2]R)
+   &=\frac{(8^2+D)^2}{4b^2}
+     =\frac{5697-900\sqrt2}{1696+192\sqrt2}\\
+   &=\frac{312741}{87584}
+                          -\frac{40941}{43792}\sqrt2\in F.
+\end{align*}
+This value is not $0,d$, or $-d$, as is already seen from
+its coefficient of $\sqrt2$.  Thus $y(Q)\ne0$.
+
+On the other hand $b\notin F$.  If it belonged to $F$, the
+norm of its square would be a square in $\mathbb Q$; but
+\[
+           N_{F/\mathbb Q}(b^2)=424^2-2\cdot48^2
+                           =175168=2^6\cdot7\cdot17\cdot23
+\]
+is not a square.  The doubling slope is
+$(3\cdot8^2-D)/(2b)$.  Since $b^2\in F$, the resulting
+ordinate $y(Q)$ is a scalar in $F$ times $b$.  That scalar
+is nonzero because $y(Q)\ne0$, so $y(Q)\notin F$.
+
+Every multiple $[n]P$ has coordinates in $F$.  Equality of
+its abscissa with $x(Q)$ would imply
+$Q=[n]P$ or $Q=-[n]P$, and would put $y(Q)$ in $F$, a
+contradiction.  Hence each defined difference
+$x(Q)-x([n]P)$ is a nonzero element of $F$ and has nonzero
+rational norm.  Every finite product is nonzero.
+\end{proof}
+
+The halfpoint is represented in the literal two-coordinate
+model by $a_0=8$, $a_1=0$, $b_0=s/2$, $b_1=48/s$ in $K$.
+Thus the example applies to the extended point chart itself;
+it is not an artifact of a split quadratic algebra.
+The script \texttt{check\_real\_anchor\_20261106\_v1.py}
+checks all curve and doubling identities by exact arithmetic
+in the degree-eight compositum.
+
+The conclusion disproves the extension of the inference
+``finite exclusion forces a large integer elliptic label.''
+Over the original field that inference depends on a cyclic
+group description.  Enlarging the field introduces points
+outside that fixed cyclic group.  We have not used this
+single point to construct witnesses for every other source
+equation at a nonintegral input; the proposition is a
+counterexample to an essential arithmetic inference, not a
+claim of a complete false positive for the entire source.
+
+\subsection{A domain assertion that does extend to fields with a real place}
+
+One useful component survives more generally.  Let
+\[
+ G_J(W)=1+\sum_{j=1}^J c_jW^j,\qquad
+ c_1=-\frac25,\qquad
+ \frac{c_j}{c_{j-1}}=\frac{4j-5}{4j+1}\quad(j\ge2).
+\]
+All $c_j$ are negative, and induction gives the exact identity
+\[
+                        G_J(1)=-\frac{4J-1}{2}c_J>0.
+\]
+Consequently $G_J(w)\ge G_J(1)>0$ for $0\le w\le1$.
+At a real embedding of the curve above, $D>0$.  For an
+affine double $Q=[2](a,b)$ with the required denominators
+and $y(Q)$ nonzero,
+\[
+                  x(Q)=\left(\frac{a^2+D}{2b}\right)^2>0.
+\]
+The curve equation then implies $x(Q)>\sqrt D$, and hence
+$0<D/x(Q)^2<1$.  Thus
+\[
+             -\frac{x(Q)}{y(Q)}G_J\!\left(\frac D{x(Q)^2}\right)
+                          \ne0.
+\]
+An embedding is injective, so this proves the nonvanishing
+in any number field with a real embedding.  If the formal
+quadratic algebra splits, apply the argument to each component;
+the source denominator guards ensure both are defined.
+
+The analogous assertion is false over unrestricted number
+fields.  Choose an algebraic root $w$ of $G_J$.  It is neither
+zero nor one.  Choose $x=d/\sqrt w$ and a nonzero square root
+$y$ of $x^3-Dx$.  This gives an algebraic point $Q$ where the
+displayed logarithm truncation vanishes.  Adjoin a halfpoint
+of $Q$, which exists over a finite extension because the
+multiplication-by-two morphism is surjective, and, if desired,
+adjoin $i$.  The resulting number field supplies the asserted
+failure even on $2E$.  Therefore a final norm combination
+repairs conjunctions, but does not automatically justify all
+quotient-domain simplifications originally proved over
+$\mathbb Q$.
+
+\subsection{No one fixed existential formula works over every number field}
+
+\begin{theorem}\label{thm:no-uniform-existential-integer-rings-phase3}
+Let $k_0$ be a number field.  Fix an existential formula over
+$k_0$ whose quantifier-free part is a finite union of systems
+of polynomial equations and nonvanishing conditions.
+Suppose its input projection over $k_0$ contains $\mathbb Z$.
+There is a finite extension $K/k_0$ over which its input
+projection contains a rational noninteger.  In particular no
+one such fixed formula defines $\mathcal O_K$ in every finite
+extension $K/k_0$.
+\end{theorem}
+\begin{proof}
+Over an algebraic closure $\overline{k_0}$ the formula's
+witness locus is constructible.  Its image in the affine
+input line is constructible by Chevalley's theorem
+\cite[Tag 00FE]{StacksChevalley}.  A constructible subset of
+an affine line over an algebraically closed field is finite
+or cofinite.  This image contains $\mathbb Z$, so it is
+cofinite.  Choose $q\in\mathbb Q\setminus\mathbb Z$ in it.
+The finitely many algebraic witness coordinates belong to
+some finite extension $K/k_0$.  The formula therefore holds
+at $q$ over $K$.  But a rational algebraic integer is an
+integer: if $q=a/b$ in lowest terms satisfies a monic
+integer polynomial, clearing denominators shows $b\mid a^m$
+and hence $b=1$.  Thus $q\notin\mathcal O_K$.
+\end{proof}
+
+This includes any finite number of simultaneous equations,
+any finite alternatives, and any finite list of denominator
+guards.  Increasing these counts cannot overcome the
+uniformity obstruction.  It does not preclude choosing a
+different formula for each number field.
+
+There is a useful real refinement when the coefficient field
+is $\mathbb Q$, or more generally when $k_0$ has a chosen
+real embedding.  The real input projection is semialgebraic
+by quantifier elimination and contains all positive and
+negative integers.  A semialgebraic subset of the line is
+a finite union of points and intervals; it therefore contains
+both sufficiently distant tails.  Choose a nonintegral
+rational input in one tail.  The transfer principle for real
+closed fields supplies real algebraic witnesses.  They,
+together with $k_0$, generate a number field $K$ with a real
+embedding where that input is accepted.  Quantifier
+elimination and this transfer principle are stated, for
+example, in \cite[Theorem 2.1]{Basu2014} and
+\cite[Corollary 4.5 and Example 4.6]{Plaumann2023}.
+The resulting field need not be totally real; only a real
+embedding is asserted.
+
+\subsection{What remains open after these checks}
+
+None of these counterexamples proves that some
+$\mathcal O_K$ is not Diophantine in $K$.  They prove that
+the literal formulas, fixed cyclic arithmetic argument,
+or fixed field-independent coefficient choice cannot supply
+the desired universal conclusion.  A field-adapted norm form
+faithfully combines an already correct finite system; it
+does not produce the missing arithmetic definition.
+Any extension of the rational construction must additionally
+control the new field-valued point coordinates and arithmetic
+witnesses, or supply an independent existential definition
+of the embedded rational field.  Under the claimed rational
+definition, such rational isolation would allow an integral
+basis construction of $\mathcal O_K$, but that additional
+existential assertion has not been established here for
+every number field.

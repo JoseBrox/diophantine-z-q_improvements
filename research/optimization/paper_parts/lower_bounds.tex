@@ -1,0 +1,331 @@
+% Includable section. Requires amsmath, amssymb, amsthm, hyperref.
+% Bibliography entries are supplied in lower_bounds.bib.
+\section{Unconditional lower bounds}
+\label{sec:lower-bounds}
+
+The lower bounds in this section do not assume the correctness of any proposed
+Diophantine definition.  In fact, they hold over every number field.
+Let $K$ be a number field and let $\mathcal O_K$ be its ring of integers.
+For a polynomial
+\[
+ F(T,Y_1,\ldots,Y_r)\in K[T,Y_1,\ldots,Y_r]
+\]
+write
+\[
+ S_F=\{t\in K:\text{there exist }y_1,\ldots,y_r\in K
+                    \text{ with }F(t,y_1,\ldots,y_r)=0\}.
+\]
+The variable $T$ is the input; the $r$ variables $Y_i$ are the witnesses.
+The degree is the total degree, including $T$.
+
+\begin{theorem}\label{thm:lower-bounds}
+If $S_F=\mathcal O_K$, then
+\[
+                    r\geq 2\qquad\text{and}\qquad\deg F\geq 4.
+\]
+In particular, a Diophantine definition of $\mathbb Z$ in $\mathbb Q$
+by one polynomial needs at least three total variables and has degree at least
+four.  Thus a valid quartic construction has the smallest possible degree,
+regardless of its number of variables.
+\end{theorem}
+
+We prove the two assertions separately.  The variable bound uses the integral
+form of Hilbert irreducibility.  The cubic obstruction uses Koll\'ar's theorem
+on unirational cubic hypersurfaces; the treatment of cones and reducible
+polynomials is included explicitly.
+
+\subsection{One witness and Hilbert irreducibility}
+
+We use the following standard form of Hilbert irreducibility.  Given finitely
+many irreducible polynomials $f_i(T,Y)\in K(T)[Y]$, each of positive degree in
+$Y$, and finitely many forbidden values of $T$, there are infinitely many
+$a\in\mathcal O_K$ outside those values for which all the specializations are
+defined, preserve their $Y$-degrees, and remain irreducible in $K[Y]$.
+See \cite[Chapter~4, Section~4]{lbSchinzel2000}; the integral number-field
+form is also recalled in \cite[Introduction]{lbMuller2001}.
+The restriction to integral specializations is essential here: the
+Hilbertianity of $K$ alone, without that strengthening, is not the assertion
+being applied.
+
+\begin{proposition}\label{prop:one-witness}
+Let $G\in K[T,Y]$.  If $S_G$ contains all but finitely many elements of
+$\mathcal O_K$, then $S_G$ contains all but finitely many elements of $K$.
+\end{proposition}
+\begin{proof}
+The conclusion is immediate if $G=0$.  If $G\neq0$ and has degree zero in
+$Y$, then $S_G$ is finite, contrary to the hypothesis.  Otherwise factor in
+$K(T)[Y]$:
+\[
+                G=c(T)\prod_{i=1}^{s}f_i(T,Y)^{e_i},
+\]
+where $c(T)\neq0$, the $e_i$ are positive integers, and the $f_i$ are monic
+irreducible polynomials of positive $Y$-degree.
+If some $f_i$ is linear, it has a root $u(T)\in K(T)$.  The identity
+$G(T,u(T))=0$ then specializes for all but finitely many $t\in K$,
+proving the conclusion.
+
+If every $f_i$ has $Y$-degree at least two, integral Hilbert irreducibility
+provides infinitely many $a\in\mathcal O_K$ at which $c(a)\neq0$ and all
+$f_i(a,Y)$ remain irreducible of degree at least two.  None has a root in
+$K$, so $G(a,Y)$ has no root in $K$.  This contradicts the hypothesis.
+\end{proof}
+
+Since $K\setminus\mathcal O_K$ is infinite, the proposition rules out one
+witness.  For example, $1/n\notin\mathcal O_K$ for every integer $n\ge2$,
+because a rational algebraic integer is an integer.  With no witness a
+nonzero polynomial in $T$ has only finitely many roots, whereas the zero
+polynomial defines all of $K$.  This proves the variable assertion of
+Theorem~\ref{thm:lower-bounds}.
+
+\subsection{A topological obstruction to rational parametrizations}
+
+Let $r_1$ and $r_2$ denote the numbers of real embeddings and conjugate pairs
+of complex embeddings of $K$.  Put
+\[
+ K_{\infty}=\mathbb R^{r_1}\times\mathbb C^{r_2},
+\]
+viewed as a real vector space.  The diagonal embedding
+$\iota:K\longrightarrow K_{\infty}$ has dense image, while
+$\iota(\mathcal O_K)$ is a discrete lattice.  Indeed, an integral basis of
+$K$ identifies these images with the images of $\mathbb Q^{[K:\mathbb Q]}$
+and $\mathbb Z^{[K:\mathbb Q]}$ under an invertible real linear map.
+
+\begin{lemma}\label{lem:rational-function-integral}
+Let $R\in K(U_1,\ldots,U_m)$ be nonconstant, and let $U$ be a nonempty
+Zariski-open subset of $\mathbb A^m_K$ on which $R$ is defined.
+Then $R(U(K))$ is not contained in $\mathcal O_K$.
+\end{lemma}
+\begin{proof}
+Assume to the contrary that all these values lie in $\mathcal O_K$.
+After shrinking $U$ we may take $U$ to be a principal open subset, defined by
+one nonzero polynomial.  Apply every archimedean embedding of $K$ to its
+coefficients and to those of $R$.  This gives a continuous map, on a nonempty
+Euclidean open subset of $K_{\infty}^{m}$,
+\[
+ R_{\infty}:\prod_{v\mid\infty}K_v^m
+       \longrightarrow\prod_{v\mid\infty}K_v=K_{\infty}.
+\]
+Choose a small connected open ball $B$ in its domain.  The diagonal image of
+$K^m$ is dense in $B$.  By hypothesis its image under $R_{\infty}$ lies in
+the closed discrete set $\iota(\mathcal O_K)$; by continuity the same is true
+on all of $B$.  A continuous map from a connected set to a discrete set is
+constant.  Each archimedean component of $R$ is therefore constant on an
+open set, so its numerator minus that constant times its denominator is the
+zero polynomial.  This forces $R$ to be constant, a contradiction.
+\end{proof}
+
+For $K=\mathbb Q$, this argument is simply the density of $\mathbb Q$ in
+$\mathbb R$ and the discreteness of $\mathbb Z$.  For a general number field
+one must use all archimedean embeddings together; $\mathcal O_K$ need not be
+discrete in one selected embedding.
+
+An integral variety $X/K$ is called \emph{unirational over $K$} if some
+projective space admits a dominant rational map to $X$, defined over $K$.
+
+\begin{corollary}\label{cor:unirational-integral}
+If $X$ is unirational over $K$ and $f\in K(X)$ is nonconstant, then the values
+of $f$ at the $K$-points where it is defined cannot all belong to
+$\mathcal O_K$.
+\end{corollary}
+\begin{proof}
+Compose $f$ with a dominant rational parametrization of $X$, and restrict
+the source to a suitable nonempty open subset of affine space.  Dominance
+makes the resulting rational function nonconstant.  Apply
+Lemma~\ref{lem:rational-function-integral}.
+\end{proof}
+
+\subsection{Quadratic polynomials}
+
+\begin{lemma}\label{lem:quadratic-integral}
+If $\deg F\le2$ and $S_F\subseteq\mathcal O_K$, then $S_F$ has at most two
+elements.
+\end{lemma}
+\begin{proof}
+Suppose that $a,b,c\in K^{r+1}$ are zeros of $F$ with three distinct input
+coordinates.  If these points are collinear, the restriction of $F$ to their
+line has degree at most two and three distinct roots.  Thus the entire
+line is contained in $F=0$.  The input is nonconstant on that line and takes
+all values in $K$, a contradiction.
+
+Otherwise the three points span an affine plane $L$ over $K$.  The input
+coordinate is a nonconstant affine linear function on $L$.  If
+$F|_L=0$, a nonvertical line in $L$ again gives a contradiction.  If
+$F|_L$ factors into affine linear factors over $K$, one of its at most two
+lines contains two of the selected points, hence has nonconstant input;
+this gives the same contradiction.  A nonzero linear polynomial cannot
+vanish at three noncollinear points.
+
+The remaining case is an irreducible quadratic polynomial on $L$.
+It defines an irreducible conic with a smooth $K$-point: a singular conic
+has at most one singular point, so the three distinct points cannot all be
+singular.  Projection from a smooth $K$-point parametrizes the conic by
+rational functions over $K$.  The input is nonconstant on this conic,
+for otherwise an irreducible quadratic curve would be contained in an
+affine line.  Its composition with the parametrization is a nonconstant
+rational function taking only values in $\mathcal O_K$, contrary to
+Lemma~\ref{lem:rational-function-integral}.
+\end{proof}
+
+\subsection{Cubic cones and the sharp degree obstruction}
+
+We use the following published theorem, in its characteristic-zero case.
+\begin{theorem}[Koll\'ar]\label{thm:kollar-input}
+Let $K$ be a perfect field and let $X\subseteq\mathbb P^{n+1}_K$ be a
+geometrically integral cubic hypersurface of dimension $n\ge2$ which is not a cone.
+If $X(K)\neq\varnothing$, then $X$ is unirational over $K$.
+\end{theorem}
+This is the geometrically integral case of Theorem~2 of
+\cite{lbKollar2002}; the theorem there is stated for irreducible cubics.
+We handle geometric reducibility separately below, so no convention about
+\emph{irreducible} is needed.  Its cone exclusion must not be omitted: a cone over a smooth plane cubic need not be unirational.
+
+For a homogeneous cubic $H$ on a finite-dimensional $K$-vector space $E$,
+define its vertex subspace by
+\[
+ W=\{v\in E:D_vH=0\text{ as a polynomial on }E\},
+ \qquad D_vH(x)=\left.\frac{d}{ds}H(x+sv)\right|_{s=0}.
+\]
+The equations defining $W$ are linear over $K$.  In characteristic zero,
+$D_vH=0$ is equivalent to $H(x+sv)=H(x)$ for all $x,s$.
+Choosing a basis of $W$ and extending it to a basis of $E$ therefore makes
+$H$ independent of the coordinates along $W$.
+Consequently $H$ descends to a homogeneous cubic $\overline H$ on $E/W$.
+By maximality of $W$, this quotient cubic has no nonzero vertex direction
+and is not a cone.  These statements remain true after extending scalars:
+the kernel of a matrix over $K$ commutes with field extension.
+
+\begin{proof}[Proof of the degree assertion in Theorem~\ref{thm:lower-bounds}]
+Suppose $S_F=\mathcal O_K$ and $\deg F\le3$.
+The polynomial $F$ is neither zero nor a nonzero constant.
+If $F$ is reducible, each of its irreducible factors has degree at most two.
+In that case, the projection is the union of the
+projections of finitely many linear or quadratic factors.  Every such
+projection is contained in $\mathcal O_K$, hence finite by
+Lemma~\ref{lem:quadratic-integral}.  This cannot give $\mathcal O_K$.
+The same lemma excludes $\deg F\le2$.
+We may therefore suppose that $F$ is irreducible of degree three.
+
+Homogenize $F$ to an irreducible cubic
+\[
+ H(X_0,X_1,\ldots,X_{r+1})
+      =X_0^3 F(X_1/X_0,\ldots,X_{r+1}/X_0).
+\]
+Here $X_1/X_0$ is the input function.
+We first exclude geometric reducibility.  Since the characteristic is zero,
+$H$ has no repeated geometric components.  Irreducibility over $K$ makes
+the Galois group act transitively on them.  Their degrees are equal and
+sum to three; thus if $H$ is geometrically reducible, it is a product of
+three conjugate linear forms.  A $K$-rational zero belongs to every one of
+these hyperplanes, because it is fixed by Galois.  Consequently the entire
+line joining any two $K$-rational zeros lies in all three hyperplanes.
+Taking affine zeros with inputs $0$ and $1$ would produce every input in
+$K$, a contradiction.  We may therefore assume $H$ is geometrically
+integral.
+
+Let $W$ be its vertex subspace.
+For any $v\in W$, any affine rational zero $x$ normalized by $x_0=1$,
+and any $s\in K$ with $1+s v_0\neq0$, the point $x+sv$ is a zero of $H$.
+Its input is
+\[
+                       \frac{x_1+s v_1}{1+s v_0}.
+\]
+If $v_1-x_1v_0\neq0$, this is a nonconstant M\"obius function of $s$;
+its image omits at most one element of $K$.  It cannot be contained in
+$\mathcal O_K$, because $K\setminus\mathcal O_K$ is infinite.
+Hence $v_1=x_1v_0$ at every such point.  Apply this to zeros with input
+$0$ and input $1$, whose existence follows from $S_F=\mathcal O_K$.
+It follows that
+\[
+                         v_0=v_1=0\qquad(v\in W).
+\]
+
+Thus both $X_0$ and $X_1$ descend to independent linear forms on $E/W$.
+Choose coordinates on the quotient beginning with these forms.  The
+irreducible quotient cubic $\overline H$ is not a cone, and its affine
+chart $X_0=1$ has exactly the same input projection as $H$.
+Indeed, every rational point on the quotient lifts through a $K$-linear
+splitting of $E\to E/W$, preserving $X_0$ and $X_1$, and $H$ is constant
+along the fibers.
+
+If the projective quotient hypersurface has dimension at least two,
+Theorem~\ref{thm:kollar-input} makes it unirational, since it has a
+$K$-point with $X_0=1$.  Its input function $X_1/X_0$ is nonconstant,
+as its image contains all of the infinite set $\mathcal O_K$.
+Corollary~\ref{cor:unirational-integral} now gives a nonintegral input,
+a contradiction.
+
+If the quotient has dimension one, its affine chart is defined by a
+polynomial in the input and just one further coordinate.  Its projection
+cannot be $\mathcal O_K$ by Proposition~\ref{prop:one-witness}.
+If the quotient has dimension zero, the affine chart has only finitely
+many points and likewise cannot project onto $\mathcal O_K$.
+These cases exhaust the possibilities, proving $\deg F\ge4$.
+\end{proof}
+
+\begin{remark}[Scope of the optimality statement]
+The conclusion concerns one polynomial equation with all witnesses in the
+field, and total degree in all variables.  It does not prohibit a system
+of quadratic equations: a sum of their squares over $\mathbb Q$ is quartic.
+It also does not determine the smallest possible number of witnesses at
+degree four, or the smallest degree among definitions attaining the
+unknown minimum number of witnesses.  The unconditional numerical
+bounds established here are two witnesses and degree four; no example
+meeting both bounds is asserted.
+\end{remark}
+
+\subsection{A stronger one-witness obstruction}
+
+For completeness there is a useful strengthening which uses Siegel's
+theorem rather than just Hilbert irreducibility.
+In its rational-function form, Siegel's theorem says that if $C/K$ is a
+smooth projective geometrically integral curve of positive genus and
+$f\in K(C)$ is nonconstant, then
+\[
+              \{P\in C(K):f(P)\text{ is defined and belongs to }
+                       \mathcal O_K\}
+\]
+is finite.  One can derive this from the usual theorem on affine integral
+points by taking $C$ minus the poles of $f$: the map to $\mathbb A^1$
+defined by $f$ is finite, and after inverting finitely many primes its
+coordinate functions are integral over $\mathcal O_{K,S}[f]$.
+This reduction is also used in
+\cite[Section~2.1]{lbMuller2001}; see \cite[Chapter~8]{lbLang1983}.
+
+\begin{proposition}\label{prop:one-witness-finite}
+If $G\in K[T,Y]$ satisfies $S_G\subseteq\mathcal O_K$, then $S_G$ is finite.
+Thus no infinite subset of $\mathcal O_K$ is the projection of the
+$K$-zeros of a single polynomial with just one witness.
+\end{proposition}
+\begin{proof}
+Factor $G$ and treat its finitely many irreducible factors separately.
+Factors depending only on $T$ give finite projections.  For another factor,
+let $C$ be its plane curve.  If $C$ is not geometrically irreducible, its
+$K$-points lie in the intersections of distinct geometric components,
+a finite set.  Otherwise pass to its smooth projective normalization
+$\widetilde C$.  Away from the finitely many singular points of $C$,
+rational points lift to $\widetilde C(K)$, and the input defines a
+nonconstant rational function $t$ on $\widetilde C$.
+
+If $\widetilde C$ has positive genus, Siegel's theorem gives only finitely
+many points for which $t$ is integral.  If its genus is zero and it has
+any rational point, then $\widetilde C\simeq\mathbb P^1_K$.
+The input then becomes a nonconstant rational function on
+$\mathbb P^1_K$, and on a nonempty open subset all its values would be
+integral, contradicting Lemma~\ref{lem:rational-function-integral}.
+If it has no rational point, only the finitely many previously excluded
+singular points remain.  Each case gives a finite projection.
+\end{proof}
+
+\begin{corollary}\label{cor:cubic-finite}
+Let $F\in K[T,Y_1,\ldots,Y_r]$ have total degree at most three.
+If $S_F\subseteq\mathcal O_K$, then $S_F$ is finite.
+\end{corollary}
+\begin{proof}
+For an infinite projection the proof of
+Theorem~\ref{thm:lower-bounds} applies unchanged: choose any two distinct
+input values in the geometric-reducibility argument and in the vertex
+elimination.  In the curve case use
+Proposition~\ref{prop:one-witness-finite} instead of
+Proposition~\ref{prop:one-witness}.  The other cases already give a
+contradiction to infinitude.
+\end{proof}

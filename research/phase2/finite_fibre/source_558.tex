@@ -1,0 +1,104 @@
+\subsection{The emitted 558-variable source specification}
+\label{subsec:emitted-558-source}
+
+The coefficient compiler starts with the pinned $855$-variable rational
+system, whose $297$ residuals consist of $211$ point equations, $84$
+pole equations, one anchor equation, and one Lucas equation. Its
+independent source audit is retained as a separate layer. Keep the
+$557$ base coordinates of the finite-fiber presentation: $422$ point
+abscissa coordinates, $126$ pole parameters, two anchor parameters,
+and the seven remaining root parameters including the input.
+
+For every point chart put $Y=2C$, write
+$a^3-Da=A+B\sqrt2$, and set
+\[
+ K=(j^2+2)A+4jB,\qquad J=2jA+(j^2+2)B.
+\]
+The point equation becomes the monic integer polynomial
+\[
+ Y^4-2KY^2+2J^2=0.
+\]
+Its derivative is nonzero on every valid point chart. Indeed $Y\ne0$
+there, and
+\[
+ K^2-2J^2=(j^2-2)^2(A^2-2B^2)\ne0.
+\]
+If the derivative vanished at a nonzero root, then $Y^2=K$ and
+the point equation would contradict this identity. The last norm
+is nonzero because the reconstructed halfpoint ordinate has
+nonzero norm. Thus including all $211$ point derivatives among the
+guards does not discard valid rational solutions.
+
+Complete the Lucas equation by putting
+\[
+ V=2\tau-a,\qquad a=s(s-2)z,\qquad
+ \Delta=a^2-4((s-2)^2z^2-1).
+\]
+Then $V^2-\Delta=0$ and $\tau=(V+a)/2$. In the remaining
+residual numerators and guards, substitute $C_i=Y_i/2$ and this
+expression for $\tau$. At each addition gate clear to the largest
+power of two occurring in its children; at products add the
+exponents, and at power gates multiply them. This gives exact
+integer polynomial numerators, with recorded certificates
+\[
+ \widetilde H=2^k H\bigl(C_i=Y_i/2,\tau=(V+a)/2\bigr).
+\]
+No vanishing denominator is introduced by these numerical factors.
+
+Each of the $85$ other finite witnesses occurs in just its own
+quadratic residual and in no denominator guard. Its cleared equation
+is $Ly^2+M=0$, where $L,M$ depend only on the base coordinates,
+the point roots, and the completed Lucas root. It has the exact
+finite-case replacement
+\[
+ \begin{array}{ll}
+ \epsilon=0:& Z=0,\quad M=0,\\[2pt]
+ \epsilon=1:& Z^2+LM=0,\quad LZ\ne0.
+ \end{array}
+\]
+For the second case recover $y=Z/L$. For the first recover $y=0$.
+Conversely, if $Ly^2+M=0$ and $Ly\ne0$, use the second case with
+$Z=Ly$. Otherwise $M=0$, and the first case is possible. In
+particular a fiber with $L=M=0$ is handled by choosing the private
+witness zero, without changing any other equation. This includes
+the exceptional zero pole input. Apply the same replacement to
+the completed Lucas equation with $L=1$, $M=-\Delta$.
+
+There are consequently $297$ monic generators: $211$ quartics
+and $86$ linear-or-quadratic choices. For each fixed mask, their
+monic triangular algebra has rank
+\[
+ n=4^{211}2^{\operatorname{popcount}(\epsilon)}\le2^{508}.
+\]
+The guard is the original guard product, multiplied by the point
+derivatives and by $LZ$ in every nonzero quadratic case. It makes
+all the diagonal derivatives of the monic presentation nonzero.
+Every guarded geometric point is therefore simple. The only added
+closed conditions are the $86$ equations
+$(1-\epsilon_i)M_i=0$; in a nonzero case the corresponding equation
+is identically zero. This verifies all hypotheses of
+Theorem~\ref{thm:explicit-guarded-finite-algebra}, including all
+zero and repeated-root cases.
+
+Apply that theorem for each of the $212$ fixed point charts, each
+of the $256$ fixed height corrections, and every one of the
+$2^{86}$ masks. Their finite product is the emitted polynomial
+in $558$ external variables. The $297$ formal algebra generators
+are eliminated by the specified matrix determinants. They are not
+extra witnesses. The input projection agrees with the pinned
+rational system; its identification with $\mathbb Z$ retains the
+arithmetic hypothesis of that system.
+
+The artifact contains $101637$ integer coefficient-DAG nodes and
+the complete finite determinant/coefficient/product recipe. The
+independent checker imports no producer. It verifies all $211$
+point identities, every private quadratic extraction, the Lucas
+completion, the power-of-two substitution identities, monicity,
+triangularity, coordinate inventories, and the full table of
+degree and matrix-norm majorants. A separate exact small-instance
+interpreter executes $177$ selector/degree factors across eight
+examples, including nilpotent components, excluded double roots,
+bad separators, nonrational residue fields, and zero coefficients.
+It also produces a fully expanded degree-$16$ example. The enormous
+source multiplication matrices and final branch product are not
+materialized, and no such computation is claimed.

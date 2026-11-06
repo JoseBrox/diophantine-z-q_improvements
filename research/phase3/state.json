@@ -1,0 +1,104 @@
+{
+  "status": "Completed, independently checked final research checkpoint; source arithmetic inputs remain conditional",
+  "pinned_revision": "28e87b1b62af0effd954605af7f70b2699dd5672",
+  "best_total_variable_count": 41,
+  "target_2_to_10": "Not attained; two total coordinates are impossible even for finite systems.",
+  "preferred_polynomials": [
+    {
+      "package": "finite_fibre/polynomial-41",
+      "variables": 41,
+      "degree_bound": "2^9566673",
+      "height_bound": "2^(2^86098382)",
+      "check": "PASS"
+    },
+    {
+      "package": "finite_fibre/polynomial-43-semilocal",
+      "variables": 43,
+      "degree_bound": "2^236",
+      "height_bound": "2^(2^240)",
+      "check": "PASS"
+    },
+    {
+      "package": "quartic/quartic-direct-translated",
+      "variables": 1315,
+      "existential_witnesses": 1314,
+      "degree": 4,
+      "quadratic_residuals": 1272,
+      "ordinary_monomials": 29021,
+      "exact_primitive_height": "64*3^(2^28)",
+      "height_strict_bound": "2^429496736",
+      "check": "PASS"
+    },
+    {
+      "package": "quartic/quartic-direct-small-coefficients-1335",
+      "variables": 1335,
+      "existential_witnesses": 1334,
+      "degree": 4,
+      "quadratic_residuals": 1292,
+      "ordinary_monomials": 29050,
+      "height_strict_bound": "2^1020",
+      "check": "PASS"
+    }
+  ],
+  "arithmetic_scope": "Definitions of Z over Q remain conditional on the stated source arithmetic lemmas and Sun Theorem4.1. Exact algebraic checks do not prove those inputs.",
+  "new_lower_bound": "Two quadratic equations cannot have an infinite input projection contained in O_K, regardless of the total variable count; full proof independently reviewed.",
+  "field_results": "Literal quartics accept all inputs over fields containing i. Scalar-contact guards exclude algebraic integer inputs in explicit quadratic fields. Field-dependent reduced norms repair conjunction, not the arithmetic definition.",
+  "new_shift": "C=2402 in beta=X^2+C preserves Q definition, counts and recorded degree/height bounds; it removes scalar contacts in fields with a real embedding. All four indexed versions checked.",
+  "fresh_paper": "research/phase3/diophantine_optimization_20261106_v3.tex",
+  "commits": false,
+  "pushes_or_pull_requests": false,
+  "paper_sha256": "fc8bc7b8fae727e24f934ddd7de0a7cff8a005e89c3d0cac1ea14e5191b910ca",
+  "proof_status": {
+    "source_and_Sun_arithmetic_inputs": "External hypotheses, not independently established by this work",
+    "new_lower_bounds": "Proved with full arguments and targeted independent review",
+    "direct_source_transformation": "Proved conditional on arithmetic inputs; exact source diff and formula checks pass",
+    "number_field_counterexamples": "Exact unconditional identities and full proofs",
+    "norm_conjunction": "Unconditional field-adapted construction; does not identify its projection with O_K",
+    "global_2_to_10_variable_target": "Not attained; no general exclusion of 3 through 10 total coordinates",
+    "fixed_denominator_tests": "Obstruction proved even for arbitrary finite Boolean combinations, including negations"
+  },
+  "number_field_norm_repairs": [
+    {
+      "total_variables": 1315,
+      "variant": "translated anchor",
+      "degree": 72,
+      "height_strict_bound": "2^7730941609"
+    },
+    {
+      "total_variables": 1335,
+      "variant": "ordinary integer coefficients",
+      "degree": 72,
+      "height_strict_bound": "2^18757"
+    }
+  ],
+  "arbitrary_number_field_indexed_encodings": [
+    {
+      "total_variables": 41,
+      "degree_bound": "2^9566686"
+    },
+    {
+      "total_variables": 43,
+      "degree_bound": "2^250"
+    }
+  ],
+  "next_steps": [
+    "Independently verify the named source arithmetic lemmas and Sun prime-pattern input.",
+    "Prove simultaneous rational solubility permitting pole or elliptic witnesses to share parameters, or replace the height/Lucas architecture.",
+    "Improve the explicit height constant or find a less costly size condition at fixed coordinate count.",
+    "For number fields, replace the fixed cyclic point-group argument or isolate the embedded rational field existentially."
+  ],
+  "verification_index": "research/phase3/verification-index.json",
+  "review_draft": "research/phase3/PR_DRAFT_20261106_v3.md",
+  "tex_rendered": false,
+  "final_quartic_transformations": {
+    "affine_change": "Invertible rational affine change of three private witnesses; preserves literal polynomial projections in every characteristic-zero field. Exact height64*kappa.",
+    "eliminations": "Remove final constant-chain square and inline firstthree constants; common zero sets preserved in every characteristic-zero field. Literal sum-of-squares converse only asserted for formally real fields.",
+    "number_field_checks": "Generic Q(i) sections independently rechecked for all three transformed tables; contact contradictions transported through the system equivalences; norm encodings independently verified."
+  },
+  "checked_artifact_counts": {
+    "indexed_specifications": 4,
+    "complete_quartic_tables": 5,
+    "norm_specifications": 7,
+    "independent_fixed_point_calculations": 2
+  }
+}

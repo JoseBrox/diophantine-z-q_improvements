@@ -1,0 +1,334 @@
+% Research contribution: number fields.  This is an input fragment for the
+% principal report; theorem/proposition/lemma/remark environments are assumed.
+
+\section{Number fields: what transfers, and what does not}
+\label{sec:number-fields}
+
+Let $K$ be a number field, that is, a finite extension of $\mathbb Q$, and let
+$\mathcal O_K$ be its ring of algebraic integers.  Coefficients in $K$ are
+allowed in a Diophantine definition over $K$.  This section distinguishes
+the existence of a definition for each $K$ from the much stronger assertion
+that one fixed equation works after every extension of scalars.
+
+\subsection{An exact counterexample to extending the released polynomial}
+
+Write $P(X_0,\ldots,X_{12503})$ for the released quartic, with the variable
+indices used in its monomial table, and put
+\[
+ C=5937913971887799417367.
+\]
+The following calculation is independent of the arithmetic argument that
+$P$ defines $\mathbb Z$ over $\mathbb Q$.
+
+\begin{proposition}\label{prop:quartic-gaussian}
+Over $\mathbb Q(i)$, the existential projection of the released polynomial
+$P$ onto its input coordinate is all of $\mathbb Q(i)$.  In particular,
+this polynomial does not define $\mathbb Z[i]$ in $\mathbb Q(i)$.
+\end{proposition}
+\begin{proof}
+Set every witness variable other than $X_{2242}=u$ and $X_{2243}=v$ equal
+to zero.  The exact resulting polynomial is
+\begin{equation}\label{eq:gaussian-restriction}
+ P(t,0,\ldots,u,\ldots,v,\ldots,0)=C+4t^2+t^4+u^2+v^2.
+\end{equation}
+For any $t$ in a field containing $\mathbb Q(i)$, put
+\[
+ R=C+4t^2+t^4,\qquad u=\frac{1-R}{2},\qquad
+ v=i\frac{1+R}{2}.
+\]
+Then
+\[
+ R+u^2+v^2
+ =R+\frac{(1-R)^2-(1+R)^2}{4}=0.
+\]
+Thus every $t\in\mathbb Q(i)$ is accepted.  For example, $t=1/2$ is not
+in $\mathbb Z[i]$ and has the witnesses
+\[
+ X_{2242}=-\frac{95006623550204790677873}{32},\qquad
+ X_{2243}=i\frac{95006623550204790677905}{32},
+\]
+with all other witness coordinates zero.
+
+For reproducibility, \texttt{check\_base\_change.py} checks
+\eqref{eq:gaussian-restriction} in two independent ways: by retaining the
+relevant monomials of the expanded table, and by specializing and squaring
+the quadratic residuals.  It also substitutes the displayed generic
+witnesses directly in both representations, using exact arithmetic in
+$\mathbb Q(i)[t]$.  The source table has SHA-256
+\begin{center}\small\ttfamily
+7f5aa3117af82a0b323f0a4e74a18599204f5540408106d3ce99612b5ed830ca.
+\end{center}
+\end{proof}
+
+\begin{remark}
+Proposition~\ref{prop:quartic-gaussian} is a counterexample to direct
+extension of the particular equation.  It is not a counterexample to
+the existence of a different Diophantine definition of
+$\mathbb Z[i]$ in $\mathbb Q(i)$.
+The obstruction is already present in the final sum-of-squares operation:
+$u^2+v^2=0$ no longer forces $u=v=0$ over $\mathbb Q(i)$.
+Even replacing this operation by a suitable norm form would not, by
+itself, establish that the original arithmetic system characterizes
+integrality over a new field.
+\end{remark}
+
+\subsection{A general obstruction to uniform scalar extension}
+
+\begin{proposition}\label{prop:bounded-extension-false-positive}
+Suppose that $P\in\mathbb Q[T,W_1,\ldots,W_m]$ has total degree $D$ and
+defines $\mathbb Z$ in $\mathbb Q$.  There is a finite set
+$E\subset\mathbb Q$ with $|E|\leq D-1$ such that, for every
+$q\in\mathbb Q\setminus(\mathbb Z\cup E)$, there exist a number field
+$K_q$ and $\mathbf w\in K_q^m$ satisfying
+\[
+ 2\leq[K_q:\mathbb Q]\leq D,\qquad P(q,\mathbf w)=0,
+ \qquad q\notin\mathcal O_{K_q}.
+\]
+Consequently no fixed polynomial defining $\mathbb Z$ in $\mathbb Q$
+defines $\mathcal O_K$ in every number field $K$ by scalar extension.
+\end{proposition}
+\begin{proof}
+The polynomial must depend on at least one $W_j$: otherwise its rational
+zero set is finite or all of $\mathbb Q$.  Expand it as
+\[
+ P(T,\mathbf W)=\sum_{\alpha}c_{\alpha}(T)\mathbf W^{\alpha}
+\]
+and select $\alpha\ne0$ with $c_{\alpha}\ne0$.  Let $E$ be the rational
+zero set of $c_{\alpha}$.  Since $\deg c_{\alpha}\leq D-|\alpha|$,
+we have $|E|\leq D-1$.  If $q\notin E$, the polynomial
+$P(q,\mathbf W)$ is nonconstant.
+
+Choose a variable on which this polynomial depends.  Its leading
+coefficient in that variable is a nonzero polynomial in the remaining
+variables.  A nonzero polynomial over an infinite field cannot vanish
+at every rational point; by induction on the number of variables,
+we can therefore specialize all the remaining variables to rational
+numbers so that the resulting polynomial $h(U)\in\mathbb Q[U]$ is
+nonconstant.  Its degree is at most $D$.
+Choose an irreducible factor of $h$, let $\theta$ be a root, and set
+$K_q=\mathbb Q(\theta)$.  The specialized coordinates, with $U=\theta$,
+give the required zero of $P$.  The degree of $K_q$ is at most $D$.
+It cannot be one because $q\notin\mathbb Z$ and $P$ defines
+$\mathbb Z$ over $\mathbb Q$.
+
+Finally, $\mathcal O_{K_q}\cap\mathbb Q=\mathbb Z$: a rational
+algebraic integer has denominator one, by the rational-root theorem
+applied to a monic integral equation.  Hence $q$ is not integral.
+\end{proof}
+
+\begin{remark}
+If one chosen witness has degree at most $d$ in $P$ and genuinely occurs
+after specialization, the same proof gives $[K_q:\mathbb Q]\leq d$.
+For a sum of squares whose residuals are affine linear in that witness,
+a nonconstant quadratic specialization with no rational zero has
+strictly negative discriminant.  Indeed it is a sum of squares of real
+affine linear polynomials, so its discriminant is nonpositive, and
+discriminant zero would give a rational root.  In this case an imaginary
+quadratic extension already supplies a false positive.
+\end{remark}
+
+\subsection{Combining equations over an arbitrary number field}
+
+The use of one polynomial rather than a finite system causes no
+definability obstruction over a number field, although it can affect
+the degree severely.
+
+\begin{lemma}\label{lem:norm-combine}
+Let $K$ be a number field, let $s\geq1$, and let
+$f_1,\ldots,f_s\in K[\mathbf X]$ have degree at most $d$.
+There is a polynomial $F\in K[\mathbf X]$, with no additional variables
+and degree at most $sd$, such that
+\[
+ F(\mathbf x)=0\quad\Longleftrightarrow\quad
+ f_1(\mathbf x)=\cdots=f_s(\mathbf x)=0
+ \qquad(\mathbf x\in K^n).
+\]
+\end{lemma}
+\begin{proof}
+Choose a field extension $L/K$ of degree $s$ and a $K$-basis
+$\beta_1,\ldots,\beta_s$ of $L$.  Such an extension exists: choose a
+discrete valuation of $K$ with a uniformizer $\pi\in K$; the polynomial
+$U^s-\pi$ is Eisenstein.  The norm form
+\[
+ N(Z_1,\ldots,Z_s)=
+ N_{L/K}\!\left(\sum_{j=1}^s\beta_j Z_j\right)
+\]
+is homogeneous of degree $s$ over $K$, and it vanishes on a vector in
+$K^s$ precisely when that vector is zero.  Take
+$F=N(f_1,\ldots,f_s)$.
+\end{proof}
+
+For the degree objective, the preceding elementary norm bound can be
+substantially improved.  The following construction uses only a single
+nonarchimedean place.
+
+\begin{lemma}\label{lem:four-variable-anisotropic}
+Every number field $K$ admits an anisotropic quadratic form in four
+variables with coefficients in $\mathcal O_K$.  Consequently a system
+of $s\geq2$ polynomial equations of degree at most $d$ over $K$ can be
+combined, without additional variables, into one equation of degree at
+most
+\[
+ 2^{\lceil\log_4 s\rceil}d.
+\]
+If $K$ admits a real embedding, degree at most $2d$ suffices for every
+$s$.
+\end{lemma}
+\begin{proof}
+Choose a prime ideal $\mathfrak p$ of $\mathcal O_K$ above an odd
+rational prime, and let $v$ be its normalized discrete valuation.
+Choose $a\in\mathcal O_K$ whose image in
+$\mathcal O_K/\mathfrak p$ is a nonsquare, and choose
+$\pi\in\mathfrak p\setminus\mathfrak p^2$.  For any
+$(x,y)\ne(0,0)$ in $K^2$, reduction modulo $\mathfrak p$ after
+division by $\pi^{\min\{v(x),v(y)\}}$ gives
+\[
+ v(x^2-ay^2)=2\min\{v(x),v(y)\}.
+\]
+Indeed the two leading residues cannot cancel because $a$ is a
+nonsquare in the residue field.  It follows that
+\[
+ q(X_1,X_2,X_3,X_4)
+ =X_1^2-aX_2^2-\pi X_3^2+a\pi X_4^2
+\]
+is anisotropic: equality of its two binary parts would equate an even
+valuation with an odd one, unless both parts vanish, in which case all
+four coordinates are zero.
+
+Place the $s$ residuals at the leaves of a complete tree of branching
+degree four and height $h=\lceil\log_4 s\rceil$, padding the unused
+leaves by zero.  At every internal vertex apply $q$ to its four child
+polynomials.  Anisotropy shows inductively that the resulting polynomial
+vanishes exactly when every original residual vanishes.  Each level
+at most doubles the degree, giving the stated bound.  If $K$ has a
+real embedding, the sum of the squares of all the residuals works
+directly, since a sum of real squares is zero only when every summand
+is zero.
+\end{proof}
+
+\subsection{Precise transfer principles}
+
+\begin{lemma}[Transitivity]\label{lem:diophantine-transitivity-nf}
+Let $A\subset B\subset C$ be rings of characteristic zero whose
+fraction fields are not algebraically closed.  If $A$ is Diophantine in
+$B$ and $B$ is Diophantine in $C$, then $A$ is Diophantine in $C$.
+Here the coefficients used to define $A$ are regarded as constants in $C$.
+\end{lemma}
+\begin{proof}
+Take a defining existential system for $A$ over $B$.  Regard its
+variables as ranging over $C$, and append a defining system for
+membership in $B$ to every variable, including the free variable.
+The resulting finite existential system defines exactly $A$ in $C$.
+It can be combined into one equation by an anisotropic norm form,
+as in Lemma~\ref{lem:norm-combine} for the number-field cases used here.
+For the stated more general rings, the same construction uses the
+homogenization of an irreducible polynomial over their fraction fields
+and clears denominators.
+\end{proof}
+
+\begin{proposition}\label{prop:integral-basis-transfer}
+If $\mathbb Z$ is Diophantine in a number field $K$ of degree $n$, then
+$\mathcal O_K$ is Diophantine in $K$.
+\end{proposition}
+\begin{proof}
+Choose an integral basis $\omega_1,\ldots,\omega_n$ of $\mathcal O_K$.
+Then
+\[
+ x\in\mathcal O_K\quad\Longleftrightarrow\quad
+ \exists z_1,\ldots,z_n\in\mathbb Z:\quad
+ x=\sum_{j=1}^n\omega_jz_j.
+\]
+Replace each condition $z_j\in\mathbb Z$ by its Diophantine
+definition over $K$, and combine the finitely many equations by
+Lemma~\ref{lem:norm-combine}.
+\end{proof}
+
+\begin{proposition}[Quantitative integral-basis construction]
+\label{prop:quantitative-integral-basis}
+Suppose a polynomial $G(T,\mathbf W)$ of degree $d$ defines
+$\mathbb Z$ over $K$, using $m$ witnesses.  If $[K:\mathbb Q]=n$,
+then $\mathcal O_K$ has a definition using at most
+\[
+ n(m+1)-1
+\]
+witnesses.  For $n\geq2$ the total degree can be at most
+$2^{\lceil\log_4 n\rceil}d$, and at most $2d$ when $K$ admits a
+real embedding.  For $n=1$, the original polynomial suffices.
+\end{proposition}
+\begin{proof}
+In the integral-basis construction, eliminate the last coefficient by
+\[
+ z_n=\frac{x-\sum_{j<n}\omega_j z_j}{\omega_n}.
+\]
+Apply $G$ to each of $z_1,\ldots,z_n$, using separate witness tuples.
+The remaining coefficient variables number $n-1$ and the witnesses
+inside the $n$ copies of $G$ number $nm$.  Substitution of the displayed
+linear expression for $z_n$ does not increase degree, and multiplication
+by a nonzero element of $K$ clears any coefficient denominator.  There
+are now $n$ equations of degree at most $d$; apply
+Lemma~\ref{lem:four-variable-anisotropic}.
+\end{proof}
+
+\begin{proposition}\label{prop:descent-integrality}
+Let $L/K$ be an extension of number fields.  If $\mathcal O_L$ is
+Diophantine in $L$, then $\mathcal O_K$ is Diophantine in $K$.
+\end{proposition}
+\begin{proof}
+Choose a $K$-basis $\beta_1=1,\beta_2,\ldots,\beta_e$ of $L$.
+In a defining polynomial for $\mathcal O_L$, replace each quantified
+$L$-variable by $\sum_{j=1}^e\beta_j y_j$, with the $y_j$ quantified
+over $K$.  Expand every coefficient in the same basis and equate the
+$e$ coordinates of the resulting expression to zero.  For a free
+variable $x\in K$, this system is equivalent to $x\in\mathcal O_L$,
+which is equivalent to $x\in\mathcal O_K$.  Combine the equations
+using Lemma~\ref{lem:norm-combine}.
+\end{proof}
+
+\subsection{The remaining arithmetic question}
+
+The theorem of Koymans--Pagano and, independently,
+Alp\"oge--Bhargava--Ho--Shnidman proves that
+\begin{equation}\label{eq:dl-theorem}
+ \mathbb Z\text{ is Diophantine in }\mathcal O_K
+ \quad\text{for every number field }K.
+\end{equation}
+This is Theorem~1.2 of \cite{KoymansPagano2026} and Corollary~1.2 of
+\cite{AlpogeBhargavaHoShnidman2026}.  These statements concern witnesses
+in $\mathcal O_K$; they do not supply unrestricted witnesses in $K$.
+
+\begin{theorem}[Conditional equivalence of the extension questions]
+\label{thm:nf-equivalence}
+Assume that $\mathbb Z$ is Diophantine in $\mathbb Q$.
+For a number field $K$, the following are equivalent:
+\begin{enumerate}
+ \item $\mathcal O_K$ is Diophantine in $K$;
+ \item $\mathbb Z$ is Diophantine in $K$;
+ \item $\mathbb Q$ is Diophantine in $K$.
+\end{enumerate}
+The equivalence of the first two assertions uses the established
+theorem~\eqref{eq:dl-theorem} but does not require the assumption about
+$\mathbb Q$.
+\end{theorem}
+\begin{proof}
+The first assertion implies the second by
+\eqref{eq:dl-theorem} and transitivity.  The second implies the first
+by Proposition~\ref{prop:integral-basis-transfer}.
+For the implication from the second to the third, use
+\[
+ x\in\mathbb Q\quad\Longleftrightarrow\quad
+ \exists a,b\in\mathbb Z\ \exists c\in K:
+ \quad bx=a,\quad bc=1.
+\]
+Finally, if $\mathbb Q$ is Diophantine in $K$, transitivity transports
+the assumed definition of $\mathbb Z$ over $\mathbb Q$ to $K$.
+\end{proof}
+
+These transfer statements do not construct a Diophantine definition of
+$\mathbb Q$ in an arbitrary number field.  The rank-stability theorems
+behind~\eqref{eq:dl-theorem} establish definitions over rings of integers,
+not that missing field-level assertion.  The results proved here give
+no counterexample to the existence of a field-dependent definition of
+$\mathcal O_K$, and do not settle that general question.  They do show
+that an extension argument must contain new arithmetic input: neither
+the reuse of the released equation nor an unrestricted change of the
+witness field suffices.
