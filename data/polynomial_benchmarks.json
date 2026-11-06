@@ -1,0 +1,86 @@
+{
+  "metric_definitions": {
+    "variables": "total number of polynomial coordinates, including input X",
+    "witnesses": "variables minus one",
+    "degree": "total polynomial degree including X; <= denotes upper bound",
+    "height": "largest coefficient absolute value after integer specialization and primitive normalization; bounded rows are upper bounds",
+    "monomials": "distinct monomials in the expanded polynomial; indexed specs not expanded",
+    "size_metric": "DAG nodes for indexed descriptions; distinct monomials for expanded tables",
+    "file_bytes": "size on disk in archive, not mathematical polynomial size"
+  },
+  "rows": [
+    {
+      "id": "indexed-41",
+      "variables": 41,
+      "witnesses": 40,
+      "degree": "<= 2^9566673",
+      "height": "<= 2^(2^86098382)",
+      "monomials": "not expanded",
+      "size_metric": "6018 coefficient DAG nodes",
+      "file_bytes": 384111,
+      "artifact": "research/phase3/finite_fibre/polynomial-41/polynomial-specification.json",
+      "status": "conditional arithmetic; indexed polynomial"
+    },
+    {
+      "id": "indexed-43-semilocal",
+      "variables": 43,
+      "witnesses": 42,
+      "degree": "<= 2^236",
+      "height": "<= 2^(2^240)",
+      "monomials": "not expanded",
+      "size_metric": "6039 coefficient DAG nodes",
+      "file_bytes": 383984,
+      "artifact": "research/phase3/finite_fibre/polynomial-43-semilocal/polynomial-specification.json",
+      "status": "conditional arithmetic; indexed polynomial"
+    },
+    {
+      "id": "source-preserving-558",
+      "variables": 558,
+      "witnesses": 557,
+      "degree": "<= 2^3122",
+      "height": "<= 2^(2^3127)",
+      "monomials": "not expanded",
+      "size_metric": "101637 coefficient DAG nodes",
+      "file_bytes": 2379927,
+      "artifact": "research/phase2/finite_fibre/polynomial-558/polynomial-specification.json",
+      "status": "source projection preserved; source arithmetic needed"
+    },
+    {
+      "id": "quartic-1315-translated",
+      "variables": 1315,
+      "witnesses": 1314,
+      "degree": "4 (exact)",
+      "height": "64*3^(2^28) (exact)",
+      "monomials": 29021,
+      "size_metric": "29021 distinct monomials",
+      "file_bytes": 277288,
+      "artifact": "research/phase3/quartic/quartic-direct-translated/polynomial.json.gz",
+      "status": "conditional arithmetic; complete sparse table over fixed integer S"
+    },
+    {
+      "id": "quartic-1335-integer",
+      "variables": 1335,
+      "witnesses": 1334,
+      "degree": "4 (exact)",
+      "height": "< 2^1020",
+      "monomials": 29050,
+      "size_metric": "29050 distinct monomials",
+      "file_bytes": 286195,
+      "artifact": "research/phase3/quartic/quartic-direct-small-coefficients-1335/polynomial.json.gz",
+      "status": "conditional arithmetic; complete integer coefficient table"
+    },
+    {
+      "id": "original-12504",
+      "variables": 12504,
+      "witnesses": 12503,
+      "degree": "4 (exact)",
+      "height": "685783949153203534233601 (exact)",
+      "monomials": 135721,
+      "size_metric": "135721 distinct monomials",
+      "file_bytes": 801823,
+      "artifact": "quartics/quartic-12504/polynomial.expanded.txt.gz",
+      "status": "released source preserving; source arithmetic needed"
+    }
+  ],
+  "recorded_from": "provided research checkpoint of 2026-11-06"
+}
