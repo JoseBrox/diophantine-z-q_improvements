@@ -58,7 +58,7 @@ These transformations are accompanied by exact algebraic certificates; the numer
 
 The historic artifact directories use their original names because producers, proofs and SHA-256 receipts refer to those paths. The research package contains **414 archived files**, of which **412** are covered by the archived SHA-256 manifest.
 
-**Publication status:** The complete, checked 424-file repository package (original archive plus paper and new navigation/verification files) has been assembled separately. The GitHub connector has successfully published the paper and repository index; the large certificate/program archive is **not yet present in the remote repository**. Do not interpret links to the research archive directories as evidence that those directories have been committed. Use the complete ZIP provided alongside this publication session to import the remaining files. The file tree in that ZIP preserves the original internal paths.
+**Publication status:** The complete, checked 424-file repository package (original archive plus paper and new navigation/verification files) has been assembled separately. The GitHub connector has successfully published the paper and repository index; the large certificate/program archive is **not yet present in the remote repository**. Do not interpret links to the research archive directories as evidence that those directories have been committed. Use the complete ZIP provided alongside this publication session to import the remaining files. See [import instructions](docs/IMPORT_ARCHIVE.md). The file tree in that ZIP preserves the original internal paths.
 
 ## Reproducing the checks
 
@@ -72,7 +72,7 @@ python3 -E -B research/phase3/number_fields/check_contact_exclusions_20261106_v1
 python3 -E -B research/phase3/number_fields/check_quartic_base_change_20261106_v1.py
 ~~~
 
-The new integrity script checks all 412 manifest entries, the standalone manuscript copy, and the six benchmark rows. The original independent checkers and their receipts have different scopes; the old all-in-one verification script also assumes a **pinned upstream checkout** at Git revision \`28e87b1b62af0effd954605af7f70b2699dd5672\` and should not be run indiscriminately against a reorganized repository. No finite certificate establishes the full arithmetic theorem.
+The new integrity script checks all 412 manifest entries, the standalone manuscript copy, and the six benchmark rows. The original independent checkers and their receipts have different scopes; the old all-in-one verification script also assumes a **pinned upstream checkout** at Git revision `28e87b1b62af0effd954605af7f70b2699dd5672` and should not be run indiscriminately against a reorganized repository. No finite certificate establishes the full arithmetic theorem.
 
 ## What is and is not known
 
@@ -81,7 +81,7 @@ The manuscript proves lower bounds excluding a two-variable Diophantine definiti
 ## Provenance
 
 - **Research manuscript:** [Conditional polynomial constructions, lower bounds, and number-field obstructions for rational Diophantine integrality](paper/diophantine_optimization_20261106_v3.tex), working version 3, 6 November 2026.
-- **Pinned base revision:** \`28e87b1b62af0effd954605af7f70b2699dd5672\`.
+- **Pinned base revision:** `28e87b1b62af0effd954605af7f70b2699dd5672`.
 - **Upstream:** [OpenAI, *Hilbert's tenth problem over the rational numbers* (6 October 2026)](https://github.com/openai/math/tree/main/preprints/Hilberts-tenth-problem-over-the-rational-numbers-October-6-2026).
 - **Other mathematical sources:** the LaTeX bibliography documents Sun, Koenigsmann, Daans and the other inputs and comparisons.
 - **Authorship and licensing:** the research manuscript discloses ChatGPT-assisted preparation and computational review. Third-party attribution is preserved in the source archive; no blanket license or referee endorsement is implied.
