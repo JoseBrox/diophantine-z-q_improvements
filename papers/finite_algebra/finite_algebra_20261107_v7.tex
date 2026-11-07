@@ -1,0 +1,261 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=26mm]{geometry}
+\usepackage{array,longtable,booktabs,xcolor,microtype}
+\usepackage[colorlinks=true,linkcolor=blue!45!black,citecolor=blue!45!black,urlcolor=blue!45!black]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Sha}{\operatorname{Sha}}
+\setlength{\emergencystretch}{2em}
+\setcounter{tocdepth}{1}
+\title{Eliminating finite algebraic choices with one coordinate}
+\author{}
+\date{7 November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+We give an explicit polynomial which replaces all finite
+algebraic choices in a triangular monic presentation by one rational
+coordinate. The proof includes degree drops, nonzero guards and
+inactive nonreduced fibers. We extend the construction to every
+number field using explicit anisotropic forms of degree $e$ in
+$e^2$ variables. The results are unconditional algebraic statements;
+they require no arithmetic hypothesis about definability of the integers.
+\end{abstract}
+\section{Finite choices and rational witnesses}
+An existential polynomial construction often contains coordinates
+which, once its other coordinates are fixed, have only finitely many
+possible values. We give an explicit elimination of all such finite
+choices using one further rational coordinate. The construction
+handles nonzero conditions, drops in degree and inactive nonreduced
+fibers. All products and determinants in the formula have explicit
+finite index sets.
+
+The result is algebraic and does not depend on any assertion about
+Diophantine definitions of the integers. Its extension to arbitrary
+number fields uses an anisotropic form to combine its residuals.
+\section{An explicit polynomial for a guarded finite algebra}
+\label{sec:explicit-finite-algebra}
+
+Let $R=\mathbb Z[x_1,\ldots,x_b]$. Consider a triangular monic presentation
+\[
+ A=R[z_1,\ldots,z_m]/(f_1,\ldots,f_m),\qquad
+ f_i\in R[z_1,\ldots,z_i],
+\]
+where $f_i$ is monic of degree $e_i\ge1$ in $z_i$. Its standard
+monomials $\prod_i z_i^{a_i}$, $0\le a_i<e_i$, form an $R$-basis.
+In particular $A$ is free of rank $n=\prod_i e_i$. For $a\in A$,
+write $M_a$ for its multiplication matrix in this ordered monomial basis.
+The matrices $M_a$ commute, and their entries are integer polynomials in
+the base coordinates. They are completely specified by repeated reduction
+using the monic equations; they need not be materialized to specify a
+determinant involving them.
+
+Fix elements $G,E_1,\ldots,E_r\in A$. We assume that in every geometric
+fiber, every point at which $G$ is nonzero has local length one. This
+condition holds, for example, if $G$ contains the product of the diagonal
+derivatives $\partial f_i/\partial z_i$ as a factor. We seek the rational
+base points admitting a rational point of $A$ with
+\[
+ G\ne0,\qquad E_1=\cdots=E_r=0.
+\]
+
+For $0\le\ell\le m n(n+1)/2$, define
+\[
+ \lambda_\ell=1+\sum_{i=1}^m\ell^i z_i,\qquad
+ M=M_{G\lambda_\ell},\qquad
+ H(V)=\det(I-VM)=\sum_{k=0}^n a_kV^k.
+\]
+Here and below $a_k\in R$ depend on the fixed integer $\ell$; always
+$a_0=1$. Also put
+\[
+ R_i(V)=\operatorname{Tr}\bigl(M_{E_i}\operatorname{adj}(I-VM)\bigr).
+\]
+This is a polynomial in $R[V]$ of degree at most $n-1$.
+
+For each $1\le d\le n$, set
+\begin{align*}
+ H_d(V)&=\sum_{k=0}^d a_kV^k,\\
+ g&=a_d\operatorname{Res}_{V}(H_d,H'_d),\qquad L=a_d^2g,\\
+ \Psi(U)&=1+\sum_{j=1}^d a_{d-j}a_d^{2j-1}g^jU^j,\\
+ \widetilde R_i(U)&=(LU)^{n-1}R_i\bigl(1/(LU)\bigr),\\
+ Q_{\ell,d}(\mathbf x,U)&=
+ \Psi(U)^2+\sum_{k=d+1}^n a_k^2+\sum_{i=1}^r\widetilde R_i(U)^2.
+\end{align*}
+The resultant is the Sylvester determinant with the specified degree
+bounds $d$ and $d-1$. The expression for $\widetilde R_i$ denotes
+polynomial coefficient reversal, hence defines a polynomial also at
+$LU=0$. Every displayed expression has integer coefficients.
+
+\begin{theorem}\label{thm:explicit-guarded-finite-algebra}
+The explicitly specified polynomial
+\[
+ P(\mathbf x,U)=
+ \prod_{\ell=0}^{m n(n+1)/2}\ \prod_{d=1}^{n} Q_{\ell,d}(\mathbf x,U)
+\]
+has the following property. For every $\mathbf a\in\mathbb Q^b$,
+there exists $U\in\mathbb Q$ with $P(\mathbf a,U)=0$ if and only if
+there is a rational point of the fiber algebra $A_{\mathbf a}$ satisfying
+$G\ne0$ and all $E_i=0$. The formula uses only one coordinate in addition
+to the $b$ base coordinates; its formal algebra generators are eliminated
+by the determinants and are not quantified coordinates.
+\end{theorem}
+\begin{proof}
+Fix a rational base point. First consider one factor $Q_{\ell,d}$.
+At $a_dg=0$ or $U=0$, its reciprocal residual $\Psi$ equals one.
+Otherwise, with $V=1/(LU)$,
+\[
+ \Psi(U)=(LU)^d\frac{H_d(V)}{a_d}.
+\]
+Thus a rational zero of $Q_{\ell,d}$ implies $a_dgU\ne0$, all
+coefficients $a_k$ with $k>d$ vanish, and $H(V)=H_d(V)=0$.
+The resultant condition makes this a simple root of $H$. Since
+$H(0)=1$, the root $V$ is nonzero.
+
+The rational matrix $I-VM$ has a one-dimensional kernel. Every
+multiplication matrix $M_{z_i}$ preserves it and therefore acts on
+it by a rational scalar $\zeta_i$. Applying the algebra relations
+to this common eigenline shows that $(\zeta_1,\ldots,\zeta_m)$ is
+a rational point of the fiber. Its $G\lambda_\ell$-value is $1/V$,
+so its $G$-value is nonzero.
+
+To verify the closed conditions, write
+$J=\operatorname{Tr}(\operatorname{adj}(I-VM))$. At a root of $H$,
+the adjugate identity gives
+$M\operatorname{adj}(I-VM)=V^{-1}\operatorname{adj}(I-VM)$.
+Differentiating the determinant then yields
+\[
+ J=-V H'(V)\ne0.
+\]
+The columns of the adjugate lie in the common eigenline, so
+\[
+ R_i(V)=E_i(\boldsymbol\zeta)J.
+\]
+Since $LU\ne0$, the equation $\widetilde R_i(U)=0$ is equivalent
+to $R_i(V)=0$, and hence $E_i(\boldsymbol\zeta)=0$. This proves
+the reverse implication without assuming that the rest of the fiber
+algebra is reduced.
+
+Conversely, suppose a suitable rational point exists. Over an
+algebraic closure, multiplication by $G\lambda_\ell$ has the
+value $G(p)\lambda_\ell(p)$ at every geometric point $p$, with
+multiplicity equal to its local length. If $G(p)=0$, its factor
+in $\det(I-VM)$ is one, even if the local algebra is nonreduced.
+If $G(p)\ne0$, its local length is one by hypothesis.
+
+At any such point $p$, the polynomial
+$G(p)(1+\sum_{i=1}^m\ell^i z_i(p))$ is nonzero as a polynomial
+in $\ell$, because its constant coefficient is $G(p)\ne0$.
+For distinct such points $p,q$, their difference is also nonzero:
+if all coefficients vanished, first $G(p)=G(q)\ne0$, and then
+all their coordinates would agree. Each of these polynomials has
+degree at most $m$. With at most $n$ geometric points, there are
+at most $m n(n+1)/2$ bad values of $\ell$ in total, counting zero
+values and collisions. Thus one of the specified integers makes
+all nonzero guarded eigenvalues distinct and nonzero.
+
+For that $\ell$, the polynomial $H$ is squarefree of some degree
+$1\le d\le n$. The given rational point provides a nonzero
+rational root $V$ of $H$. Its closed residuals vanish, so the trace
+identities give $R_i(V)=0$. The leading coefficient and resultant
+are nonzero. Taking $U=1/(LV)$ therefore gives a zero of the
+corresponding factor $Q_{\ell,d}$, and hence of $P$.
+\end{proof}
+
+The degree cases are part of the literal finite formula. They include
+every exceptional drop in degree of $H$. The discriminant condition
+excludes bad separating choices, and the finite bound on $\ell$ proves
+that this exclusion loses no valid rational point. In particular the
+construction does not leave a generic primitive-element argument or an
+unperformed exceptional-stratum decomposition implicit.
+
+
+\section{Extension to arbitrary number fields}
+\begin{definition}
+A homogeneous polynomial $A\in F[X_1,\ldots,X_s]$ is anisotropic
+over $F$ if its only zero in $F^s$ is the zero tuple.
+\end{definition}
+
+\begin{lemma}\label{fa:anisotropic}
+For every number field $F$ and every integer $e\ge1$ there is an
+explicit anisotropic form of degree $e$ in $e^2$ variables over $F$.
+\end{lemma}
+\begin{proof}
+Choose a nonzero prime ideal $\mathfrak p$ of $\mathcal O_F$, an
+element $\pi\in\mathfrak p\setminus\mathfrak p^2$, and a monic
+polynomial $g\in\mathcal O_F[Z]$ of degree $e$ whose reduction is
+irreducible over the residue field. Such a polynomial is obtained
+by lifting the coefficients of any irreducible degree-$e$ polynomial
+over that finite field. Let $N_g(\mathbf X)$ be the determinant of
+multiplication by $\sum_{i=0}^{e-1}X_iZ^i$ on $F[Z]/(g)$.
+
+For a nonzero tuple $\mathbf x\in F^e$, put
+$r=\min_i v_{\mathfrak p}(x_i)$. After dividing its coordinates
+by $\pi^r$, their reductions are not all zero. Multiplication by
+their reduced polynomial is invertible in the residue field
+extension defined by $g$. Its determinant is therefore a unit.
+By homogeneity,
+\[
+                 v_{\mathfrak p}(N_g(\mathbf x))=er.
+\]
+Consequently
+\[
+ A_e(\mathbf X_0,\ldots,\mathbf X_{e-1})
+       =\sum_{j=0}^{e-1}\pi^jN_g(\mathbf X_j)
+\]
+is anisotropic: the nonzero summands have pairwise distinct
+valuations modulo $e$, so the summand of least valuation cannot
+cancel. This is a homogeneous degree-$e$ form in $e^2$ coordinates.
+\end{proof}
+
+\begin{theorem}\label{fa:number-field}
+Replace $\mathbb Z$ by $\mathcal O_F$ and $\mathbb Q$ by a
+number field $F$ in the finite algebra presentation of
+Section~\ref{sec:explicit-finite-algebra}. Retain the same rank $n$,
+guard $G$ and $r$ closed residuals. There is an explicitly specified
+polynomial in the same base coordinates and one additional coordinate
+whose $F$-solutions have exactly the required input projection.
+\end{theorem}
+\begin{proof}
+All multiplication matrices, determinants, resultants, reciprocal
+polynomials and trace residuals in
+Theorem~\ref{thm:explicit-guarded-finite-algebra} are defined over
+$\mathcal O_F$ by the same formulas. For fixed $\ell,d$, replace
+the sum of squares defining $Q_{\ell,d}$ by an anisotropic form
+applied to the list
+\[
+ \Psi(U),\quad a_{d+1},\ldots,a_n,\quad
+ \widetilde R_1(U),\ldots,\widetilde R_r(U).
+\]
+The list has $1+n-d+r\le n+r$ entries. Take
+$e=\lceil\sqrt{n+r}\rceil$, use the form of
+Lemma~\ref{fa:anisotropic}, and pad the list with zeros.
+Its vanishing is equivalent to the vanishing of every listed entry.
+
+The proof of the finite algebra theorem now applies verbatim:
+it uses characteristic zero, the finite bound on bad separating
+integers, and the one-dimensional kernel at a simple rational root.
+The sole use of the ordering of $\mathbb Q$ was to combine the
+listed residuals, and that step has been replaced by anisotropy.
+Multiplication over all the finite choices gives the required
+polynomial. Its coefficients belong to $\mathcal O_F$.
+\end{proof}
+
+For each factor, if the largest degree of the listed residuals is
+$D_{\ell,d}$, its replacement has degree at most
+$\lceil\sqrt{n+r}\rceil D_{\ell,d}$. Over a number field with
+a real embedding, sums of squares give instead the bound
+$2D_{\ell,d}$. Both methods preserve the number of coordinates.
+The combining form depends on $F$; this
+theorem does not assert that the original rational polynomial has
+the same projection after arbitrary base change.
+\end{document}

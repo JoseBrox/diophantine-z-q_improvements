@@ -1,0 +1,217 @@
+\section{Exact three-adic depth of the anchor}
+\label{sec:three-adic-anchor-depth}
+
+The coefficient size of the physical anchor can be reduced by using its
+exact local depth.  The following calculation concerns only the fixed
+point and its integral multiples; it is independent of the prime-pattern
+and global height hypotheses.
+
+Put
+\[
+ K=\mathbb Q(\sqrt2),\qquad D=11-6\sqrt2,\qquad
+ E:y^2=x^3-Dx,
+\]
+and
+\[
+ P=\left(\frac{57}{8}-\frac72\sqrt2,
+          -\frac{165}{8}+\frac{417}{32}\sqrt2\right).
+\]
+The prime three is inert in $K$.  Let $v$ be the valuation on
+$K_3=\mathbb Q_3(\sqrt2)$ normalized by $v(3)=1$.
+As usual, the valuation of zero is $+\infty$.
+
+\begin{proposition}\label{anchor3:exact-depth}
+For every nonzero integer $c$, the point $[c]P$ is finite and has
+nonzero abscissa.  Write
+\[
+             f([c]P)=\frac1{x([c]P)}=a_c+b_c\sqrt2.
+\]
+Then
+\[
+ \min\{v_3(a_c),v_3(b_c)\}=
+ \begin{cases}
+ 0,&c\text{ odd},\\
+ 2+2v_3(c),&c\text{ even}.
+ \end{cases}
+\]
+In the even case the formal parameter $z=-x/y$ satisfies
+\[
+                  v(z([c]P))=1+v_3(c).
+\]
+\end{proposition}
+\begin{proof}
+The displayed equation has good reduction at three: its discriminant is
+$64D^3$, which is a unit.  Direct reduction gives
+\[
+             \overline P=(\sqrt2,0)\in E(\mathbb F_9).
+\]
+This is a nonidentity point of order two, with unit abscissa.  Hence
+every odd multiple of $P$ is finite with unit abscissa.
+
+The ordinate of $P$ has valuation one, since
+\[
+ y(P)=\frac{3(-220+139\sqrt2)}{32}
+\]
+and its parenthesized factor has nonzero residue in $\mathbb F_9$.
+The numerator of the tangent slope is a unit: modulo three,
+$3x(P)^2-D=-D\ne0$.  Thus
+\[
+ \lambda=\frac{3x(P)^2-D}{2y(P)}
+ \quad\hbox{satisfies}\quad v(\lambda)=-1.
+\]
+The duplication formula now gives
+\[
+ \begin{split}
+ v(x([2]P))&=v(\lambda^2-2x(P))=-2,\\
+ v(y([2]P))&=v\bigl(\lambda(x(P)-x([2]P))-y(P)\bigr)=-3.
+ \end{split}
+\]
+There is no cancellation: the summands in the first difference have
+valuations $-2,0$, and those in the second have valuations $-3,1$.
+Consequently $v(z([2]P))=1$.
+
+For completeness, the needed formal-group valuation is elementary here.
+The formal group of the integral Weierstrass equation has integral
+coefficients, and negation sends $z$ to $-z$.  Its multiplication series
+therefore have the form
+\[
+                  [m](Z)=mZ+Z^3g_m(Z^2),
+                  \qquad g_m(T)\in\mathcal O_{K_3}[[T]].
+\]
+If $v(z)\ge1$ and $3\nmid m$, the linear term has strictly smaller
+valuation than every higher term, so $v([m]z)=v(z)$.
+For $m=3$, the linear term has valuation $v(z)+1$, whereas all higher
+terms have valuation at least $3v(z)>v(z)+1$.  Thus
+\[
+                    v([3]z)=v(z)+1.
+\]
+Write $c=2\cdot3^ru$, where $3\nmid u$.  Repeated application to
+$z([2]P)$ yields $v(z([c]P))=1+r$.  In particular, this parameter
+is nonzero, so $[c]P$ is not the identity.  On the formal group,
+$x=z^{-2}$ times an integral power series with constant term one.
+It follows that
+\[
+                    v(f([c]P))=2+2r.
+\]
+
+Finally, $1,\sqrt2$ form an integral basis for the unramified quadratic
+extension $K_3/\mathbb Q_3$, with linearly independent residues over
+$\mathbb F_3$.  For any rational $a,b$, not both zero, this gives the
+exact equality
+\[
+                  v(a+b\sqrt2)=\min\{v_3(a),v_3(b)\}.
+\]
+Applying it to the reciprocal abscissas proves both cases.
+\end{proof}
+
+\begin{corollary}\label{anchor3:integer-cutoff}
+Let $N\ge1$ and $c\ne0$.  Then
+\[
+ \frac{a_c}{3^N},\frac{b_c}{3^N}\in\mathbb Z_3
+ \quad\Longleftrightarrow\quad
+ c\text{ is even and }v_3(c)\ge\left\lceil\frac N2\right\rceil-1.
+\]
+For a prescribed integer $r\ge0$, the smallest positive $N$ forcing
+$v_3(c)\ge r$ is $N=2r+1$.  At this value the anchor implies
+\[
+                             |c|\ge2\cdot3^r.
+\]
+\end{corollary}
+\begin{proof}
+The displayed divisibility condition says that the minimum valuation in
+Proposition~\ref{anchor3:exact-depth} is at least $N$.  Since $N>0$,
+this excludes the odd case.  In the even case it is exactly
+$2+2v_3(c)\ge N$.  The stated rounding follows.  When $r\ge1$,
+the value $N=2r$ still admits $c=2\cdot3^{r-1}$, so $2r+1$ is
+minimal; for $r=0$, it is the smallest positive value by definition.
+The final bound follows from the simultaneous divisibility by two and
+$3^r$.
+\end{proof}
+
+\paragraph{Application to the physical anchor.}
+In the merged-anchor theorem, replace its arbitrary constant $C_*$ by
+$3^N$ and its coefficient $S_0=C_*^2$ by $3^{2N}$.
+The two-adic argument is unchanged because three is a two-adic unit.
+Once the root parity and primary divisibility conditions have been
+extracted, the three-adic argument recovers exactly the two conditions
+in Corollary~\ref{anchor3:integer-cutoff}, with $c=a-1$.
+The existing point domain requires $C_S=S-P\ne O$, so $c\ne0$;
+this condition must be retained.  If one instead extended $f$ by
+$f(O)=0$, the anchor alone would not exclude $c=0$.
+
+Suppose the inherited global argument needs
+\[
+                     |c|>(80H)^{10},\qquad H<2^h.
+\]
+It suffices to choose an integer $r$ satisfying
+\[
+                       2\cdot3^r>(80\cdot2^h)^{10}
+\]
+and to take
+\[
+                   N=2r+1,\qquad C_*=3^{2r+1},
+                   \qquad S_0=3^{4r+2}.
+\]
+These substitutions change only fixed integer coefficients.  They add
+no coordinate or equation and do not change the polynomial degree.
+Completeness is retained by requiring the already freely chosen source
+index $c$ to be divisible by $2\cdot3^r$ in the same fixed local
+congruence conditions.  This is a fixed refinement of the construction,
+not a uniformity assertion with an increasing prime-pattern modulus.
+
+\begin{corollary}\label{anchor3:numerical-constant}
+For $h=2093448$, the smallest integer $r$ satisfying
+$2\cdot3^r>(80\cdot2^h)^{10}$ is
+\[
+                         r=13208226.
+\]
+The corresponding smallest anchor exponent is
+\[
+ N=26416453,\qquad C_*=3^{26416453},\qquad
+ S_0=3^{52832906}.
+\]
+In particular, a coefficient-height formula $64S_0^2$ specializes to
+\[
+                              64\cdot3^{105665812}.
+\]
+The minimality assertion concerns the stated conservative bound
+$H<2^{2093448}$ and this exact anchor criterion.
+\end{corollary}
+\begin{proof}
+The threshold for $r$ is equivalently
+\[
+                     3^r>5^{10}2^{20934519}.
+\]
+The following four strict integer comparisons are verified by exact
+integer exponentiation in the accompanying checker:
+\[
+ \begin{array}{ll}
+ 3^{31867}>2^{50508},&
+ 3^{15288}>5^{10}2^{24207},\\
+ 3^{15601}<2^{24727},&
+ 3^{9779}<5^{10}2^{15477}.
+ \end{array}
+\]
+The integer identities
+\[
+ \begin{split}
+ 13208226&=414\cdot31867+15288,\\
+ 20934519&=414\cdot50508+24207
+ \end{split}
+\]
+give the required lower comparison.  Similarly,
+\[
+ \begin{split}
+ 13208225&=846\cdot15601+9779,\\
+ 20934519&=846\cdot24727+15477
+ \end{split}
+\]
+give $3^{13208225}<5^{10}2^{20934519}$ and hence minimality.
+The remaining values follow from $N=2r+1$ and $S_0=3^{2N}$.
+\end{proof}
+
+The exact checker accompanying this calculation verifies the source
+point, its duplication formulas and valuations, and finite examples of
+both parity cases using rational arithmetic in $\mathbb Q(\sqrt2)$.
+The statement for all indices follows from the formal-group proof,
+not from extrapolating those examples.

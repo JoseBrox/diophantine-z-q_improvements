@@ -1,0 +1,80 @@
+{
+  "schema": "diophantine-results/v1",
+  "date": "2026-11-07",
+  "variable_convention": "total coordinates including the input",
+  "coefficient_height": "largest absolute integer coefficient after fixed constants are substituted",
+  "construction_scope": {
+    "algebraic_specification": "proved",
+    "projection_equals_Z": "conditional on the stated arithmetic premises"
+  },
+  "constructions": [
+    {
+      "id": "quartic456",
+      "total_variables": 456,
+      "degree": 4,
+      "degree_status": "exact",
+      "coefficient_height": "64*3^105665812",
+      "height_status": "exact",
+      "quadratic_residuals": 426,
+      "ordinary_monomials": 27784,
+      "coefficient_parameter_terms": 27791,
+      "integer_content": 1,
+      "fixed_parameter": "S=3^52832906",
+      "polynomial_sha256": "f9c7ddb9bced59fe87de6dadcb911264594c6cf860c24180a9069ddc0876cc17",
+      "arithmetic_inputs": [
+        "elliptic_group_and_index_height",
+        "contact_height",
+        "pole_obstruction_and_realization",
+        "simultaneous_prime_patterns",
+        "weighted_prime_selection"
+      ],
+      "proof": "papers/quartic/quartic_20261107_v7.tex"
+    },
+    {
+      "id": "few_variables29",
+      "total_variables": 29,
+      "degree_bound_power_of_two_exponent": 2093605,
+      "coefficient_height_bound_double_power_of_two_exponent": 6280501,
+      "bounds_status": "proved upper bounds",
+      "specification_sha256": "aac8f38f50c6780bec58bcc7057b43a324270e4f7ad6d439151773f512227072",
+      "proof": "papers/few_variables/few_variables_20261107_v7.tex"
+    },
+    {
+      "id": "few_variables31",
+      "total_variables": 31,
+      "degree_bound_power_of_two_exponent": 180,
+      "coefficient_height_bound_double_power_of_two_exponent": 184,
+      "bounds_status": "proved upper bounds",
+      "specification_sha256": "ed3ee79fa33a7492b4c3990f34aacb1a39810b062378f17ec955905126a8a789",
+      "proof": "papers/few_variables/few_variables_20261107_v7.tex"
+    }
+  ],
+  "unconditional_theorems": [
+    {
+      "id": "degree_and_coordinate_lower_bounds",
+      "minimum_total_degree_single_equation": 4,
+      "minimum_total_coordinates": 3,
+      "scope": "Infinite input projections contained in O_K,S, for every number field K and finite set S; coordinate bound also for systems and open conditions."
+    },
+    {
+      "id": "combine_systems",
+      "degree_bound": "ceil(sqrt(s))*d",
+      "additional_coordinates": 0,
+      "scope": "s equations of degree at most d over a fixed number field"
+    },
+    {
+      "id": "finite_algebra_elimination",
+      "additional_coordinates": 1,
+      "scope": "The guarded finite free algebra presentation stated in the paper, over any fixed number field"
+    },
+    {
+      "id": "field_extension_obstruction",
+      "scope": "No one unchanged existential formula defines rings of integers in every finite extension; a different formula for each field is not excluded."
+    },
+    {
+      "id": "elliptic_point_charts",
+      "minimum_retained_parameters": 2,
+      "scope": "Finite algebraic presentations of an infinite set of points of the specified elliptic curve over Q(sqrt(2)); not a general lower bound for defining Z."
+    }
+  ]
+}

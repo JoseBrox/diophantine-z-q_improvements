@@ -1,0 +1,331 @@
+\section{A scalar normalization without squareclass corrections}
+\label{sec:scalar-correction-free}
+
+Put
+\[
+                         \beta(X)=216X^4+450459
+\]
+and retain the five-contact polynomial
+\[
+ r(T)=T(T-1)(T-2401)(32T+343)(2T-1).
+\]
+Define
+\[
+ r_X=r(\beta(X)),\qquad
+ \delta_X=1+(17r_X)^2,\qquad
+ R_X=\frac{102^2r_X}{\delta_X^2}.
+\]
+The scaling factor is an integer.  In particular, this normalization
+introduces no fixed denominator prime.
+
+\begin{lemma}\label{sn:integral-input}
+For $X\in\mathbb Q$ one has
+\[
+                 \beta(X)\in\mathbb Z
+                 \quad\Longleftrightarrow\quad X\in\mathbb Z.
+\]
+For every real $X$, $\beta(X)\ge450459>2401$, so $r_X>0$
+and $\delta_X>0$.  If $p>76176$ and $v_p(\beta(X))<0$,
+then
+\[
+ v_p(\beta(X))=4v_p(X),\qquad
+ v_p(r_X)=5v_p(\beta(X)),\qquad
+ v_p(R_X)=-3v_p(r_X).
+\]
+In particular, all three valuations are even.
+\end{lemma}
+\begin{proof}
+If $X$ is an integer, so is $\beta(X)$.  Conversely, write
+$X=a/b$ in lowest terms with $b>0$.  Integrality of $\beta(X)$
+gives $b^4\mid216=2^3\cdot3^3$.  Neither prime exponent
+admits a nontrivial fourth power, so $b=1$.
+
+The real inequalities follow from the fourth power and the
+five positive factors of $r(T)$ when $T>2401$.  At a prime
+in the stated range, a negative valuation of $\beta$ forces
+$v_p(X)<0$.  The unique dominant terms in $\beta$ and
+$r(\beta)$ are respectively $216X^4$ and $64\beta^5$.
+This gives the first two valuation formulas.  In this case
+$v_p(r_X)<0$, so the dominant term of $\delta_X$ is
+$17^2r_X^2$, and $v_p(\delta_X)=2v_p(r_X)$.  The final
+formula follows.  The displayed multiple of four is even.
+\end{proof}
+
+\begin{lemma}\label{sn:local-squares}
+If $X\in\mathbb Z$, then $r_X$ is a nonzero square in
+$\mathbb Q_2$, $\mathbb Q_3$, and $\mathbb Q_{17}$.
+More precisely,
+\[
+ v_2(r_X)=2,\quad r_X/4\equiv1\pmod8,
+ \qquad
+ v_3(r_X)=2,\quad r_X/9\equiv1\pmod3,
+\]
+and at seventeen either $v_{17}(r_X)=0$ with square-unit
+residue, or
+\[
+                    v_{17}(r_X)=2,\qquad
+                    r_X/17^2\equiv9\pmod{17}.
+\]
+\end{lemma}
+\begin{proof}
+Since $216$ is divisible by eight and by twenty-seven,
+\[
+                    \beta\equiv3\pmod8,
+                    \qquad\beta\equiv18\pmod{27}.
+\]
+For the two even factors of $r(\beta)$ one has
+\[
+ v_2(\beta-1)=v_2(\beta-2401)=1,
+ \qquad
+ \frac{\beta-1}{2}-\frac{\beta-2401}{2}=1200\equiv0\pmod8.
+\]
+Their odd parts therefore have square product congruent to one
+modulo eight.  The remaining odd factors have product
+$3\cdot7\cdot5\equiv1\pmod8$.  This proves the assertions
+at two.  At three, only the factor $\beta$ is divisible by
+three; it has valuation two.  Reduction after division by nine
+gives
+\[
+ \frac{r(\beta)}9\equiv
+       2\cdot2\cdot2\cdot1\cdot2\equiv1\pmod3.
+\]
+
+At seventeen the fourth powers are exactly $0,1,4,13,16$.
+Since $216\equiv12$ and $450459\equiv10\pmod{17}$, all
+possibilities are given by the table
+\[
+\begin{array}{c|rrrrr}
+ X^4&0&1&4&13&16\\\hline
+ \beta&10&5&7&13&15\\
+ r(\beta)&0&15&2&13&2.
+\end{array}
+\]
+The nonzero residues are squares: $13=8^2$, $15=7^2$, and
+$2=6^2$ modulo seventeen.
+
+In the remaining case $17\mid X$.  The exact identity
+\[
+ 32\cdot450459+343=17^2\cdot49879,
+ \qquad 49879\equiv1\pmod{17},
+\]
+and $v_{17}(X^4)\ge4$ show that the factor
+$32\beta+343=6912X^4+17^2\cdot49879$ has valuation exactly
+two and unit residue one.  The other four factors are units,
+with product
+$10\cdot9\cdot6\cdot2\equiv9\pmod{17}$.
+This proves the last assertion.  The usual local square criteria
+at two and at odd primes now prove all three square statements.
+\end{proof}
+
+\begin{proposition}\label{sn:prepared-constant}
+For every integer $X$, the number $R_X$ is prepared: it is
+positive and less than one, its reduced denominator is a square,
+it is a square in $\mathbb Q_2,\mathbb Q_3,\mathbb Q_{17}$,
+and
+\[
+ v_2(R_X)=4,\qquad v_3(R_X)=4,\qquad
+ v_{17}(R_X)\in\{2,4\}.
+\]
+No squareclass correction is required.
+\end{proposition}
+\begin{proof}
+The contact value $r_X$ is a positive integer.  One has
+$\gcd(r_X,\delta_X)=1$, and the preceding lemma shows that
+$\delta_X$ is a unit at two and three; it is a unit at
+seventeen by its definition.  Thus
+$\gcd(102^2r_X,\delta_X^2)=1$, and the reduced denominator
+is exactly $\delta_X^2$.
+
+The quotient $R_X/r_X=(102/\delta_X)^2$ is a rational square.
+Its local valuations add two at each of $2,3,17$, proving
+both the asserted squareclasses and the exact depths.  Finally,
+since $r_X\ge1$,
+\[
+ 0<R_X=
+ \frac{102^2r_X}{(1+17^2r_X^2)^2}
+ <\frac{102^2}{17^4r_X^3}
+ \le\frac{10404}{83521}<1.
+\]
+\end{proof}
+
+\subsection{The norm tree and its domain}
+
+Fix a positive rational number $\rho$ and six rational tests
+$t_0,\ldots,t_5$, with their assigned positive integer orders.
+Start the scalar norm tree with the distinguished node
+$1+t_0^2/\rho$.  Its other initial nodes are the assigned
+normalized tests or pair norms.  Every later operation is
+\[
+                  N_\rho(u,v)=u^2+\rho v^2
+\]
+or the unchanged carrying of an unpaired node.  This is the
+constant-left tree used by the scalar certificate; denote its
+root by $W_\rho$.
+
+\begin{lemma}\label{sn:positive-root}
+Where its rational expressions are defined, $W_\rho>0$.
+When all six tests tend to zero, $W_\rho$ tends to one.
+For fixed nonzero rational $\rho$, at any finite set of primes
+the tests can be required sufficiently small that
+$W_\rho$ is a unit at every prime in that set.
+\end{lemma}
+\begin{proof}
+The distinguished initial node is positive.  At each norm
+operation its positive descendant contributes a positive
+square, with a positive coefficient if it is the second
+argument.  Its path therefore remains positive up to the
+root.  When all tests vanish, this path starts at one and
+all other nodes vanish, so its root is one.  For fixed
+$\rho$, the tree is a polynomial in the normalized tests
+with fixed rational coefficients.  It is continuous at zero
+over $\mathbb R$ and over every $\mathbb Q_p$.
+Its value at zero is one.  The inverse image of $\mathbb Z_p^*$
+is therefore a neighborhood of zero, proving the final claim.
+\end{proof}
+
+There are two valid implementations.  One may replace the contact
+parameter throughout the tree by $\rho=R_X$ and put
+$b=R_XW_{R_X}^2$.  Alternatively, one may retain the original
+tree with $\rho=r_X$ and normalize only its final pole input:
+\[
+                       b=R_XW_{r_X}^2.
+\]
+The second choice retains the original test denominators.  It
+also has the quadratic scaling equations
+\[
+        \delta_X=1+17^2r_X^2,\qquad
+        \delta_X V=102W_{r_X},\qquad b=r_XV^2,
+\]
+where the last expression can use the existing square-and-product
+gates.  The first two displayed equations are quadratic.
+The change of arithmetic construction is not asserted to be an
+identity on every former auxiliary solution.
+
+For rational inputs, both implementations have $r_X,R_X,\delta_X>0$
+and $W_\rho>0$.  Thus the scalar contact, normalizer, norm-root,
+and pole-input nonvanishing conditions follow on the stated
+rational-expression domain.  A coordinate used solely to certify
+one of these nonzero conditions can be removed after its occurrence
+condition is checked.  This observation does not remove unrelated
+denominator guards in the elliptic-point formulas.
+
+\subsection{Soundness and simultaneous completeness}
+
+\begin{proposition}\label{sn:contact-preservation}
+At every finite scalar contact prime $p>76176$, the replacement
+has the same positive odd contact valuation as the original
+certificate.  Consequently it preserves its norm-tree extraction
+of the assigned contact orders, for either implementation above.
+\end{proposition}
+\begin{proof}
+At such a contact, $\nu=v_p(r_X)>0$ is odd.  The normalizer
+satisfies $\delta_X\equiv1\pmod p$, and $102$ is a unit.
+Hence
+\[
+               v_p(R_X)=v_p(r_X)=\nu,
+ \qquad R_X/r_X\in\mathbb Z_p^{*2}.
+\]
+For either $\rho=r_X$ or $R_X$, the two terms in
+$u^2+\rho v^2$ have valuations of opposite parity when both
+are nonzero.  There is therefore no cancellation: its valuation
+is the minimum of $2v_p(u)$ and $\nu+2v_p(v)$.
+Every step of the existing constant-left extraction uses exactly
+this identity, the assigned powers of the contact parameter in
+the leaves, and the odd-pole exclusion for $b$.  All these
+valuations are unchanged.  Lemma~\ref{sn:integral-input}
+also shows that a contact with infinity has even valuation
+outside the fixed exceptional set, so it creates no omitted
+odd contact.  The inherited height and comparison arguments
+therefore give $\beta\in\mathbb Z$, and
+Lemma~\ref{sn:integral-input} gives $X\in\mathbb Z$.
+\end{proof}
+
+\begin{proposition}\label{sn:simultaneous-completeness}
+Under the same arithmetic inputs as the source construction,
+the scalar block with the input map and normalization above
+can be satisfied at every integer input, together with the
+remaining point, height, comparison, and size conditions.
+The finite squareclass correction parameter can be omitted.
+\end{proposition}
+\begin{proof}
+Fix an integer input.  The numbers $r_X,R_X,\delta_X$ are
+now fixed, before any contact primes are chosen.  Proposition~
+\ref{sn:prepared-constant} supplies the sign, local squareclasses,
+square denominator, and small positive real size formerly obtained
+by a correction.  Include the finite support of the numerator
+and denominator of $R_X$, and that of $\rho$, in the fixed
+local approximation conditions for the common point $H$ and
+the scalar point $S-P$.
+
+The required approximation is the same one used in the source.
+Choose $H$ sufficiently deep at these finite places and in a
+small real neighborhood of the identity, excluding the identity
+itself.  Shrink the real neighborhood so that its formal
+parameter is bounded away from zero.  Choose $S-P$ still deeper
+at every fixed finite place and sufficiently close to the real
+identity.  The reciprocal-abscissa tests at these points then
+tend to zero, and the quotient of their formal parameters
+tends to zero with $H$ in that smaller neighborhood.
+Fixed powers of $\rho$ in the denominators do not affect this
+convergence.
+
+One can impose these conditions with the required congruences
+on the integer indices: the source first chooses the fixed
+modulus and depths, then applies its prime-pattern and common-point
+construction.  Increasing the modulus to include the finite
+support of $\delta_X$ is allowed because this support was fixed
+before that application.  It introduces no new family of
+varying-prime conditions and no stronger prime-pattern theorem.
+The real compact-group argument permits the same shrinking of
+the neighborhoods and arbitrarily large scalar index.  All
+other source index and comparison choices are unchanged.
+
+By Lemma~\ref{sn:positive-root}, these choices make
+$W_\rho$ a unit at every prime in the support of $R_X$ and
+give $|W_\rho-1|<1/2$ at the real place.  Therefore
+\[
+                       0<b=R_XW_\rho^2<9/4<17.
+\]
+The factor $W_\rho^2$ preserves the local squareclasses and,
+at $2,3,17$, preserves the depths of Proposition~
+\ref{sn:prepared-constant}.  The reduced denominator of $b$
+is a square: at a prime in the support of $R_X$, the root is
+a unit, while at every other prime its valuation contribution
+is even.  Thus $b$ is prepared.  The same inherited rational
+pole-realization theorem supplies the final pole witnesses.
+This proves completeness without a correction branch.
+\end{proof}
+
+The input polynomial has degree four and can be evaluated with
+two quadratic gates while preserving the source expression
+$\beta=2Y+3$:
+\[
+                    Z=X^2,\qquad Y=108Z^2+225228.
+\]
+The gain in any compiled polynomial also depends on its exact
+occurrence and denominator inventory; the preceding propositions
+establish the arithmetic substitution independently of that count.
+
+\subsection{Number-field scope}
+
+All displayed algebraic identities remain valid in characteristic
+zero.  Positivity of the contact and norm root also holds in a
+number field with a real embedding, after applying that embedding.
+The local squareclass table, however, concerns rational integer
+inputs and the three specified completions of $\mathbb Q$.
+It does not establish the corresponding preparation assertions
+for every algebraic integer in a larger field.
+
+Even the integrality equivalence of Lemma~\ref{sn:integral-input}
+does not automatically become an equivalence for rings of
+integers.  Let $x_0$ be a real fourth root of $1/108$ and
+$L=\mathbb Q(x_0)$.  Then
+\[
+                       \beta(x_0)=450461\in\mathbb Z.
+\]
+But $x_0$ is not an algebraic integer, since $x_0^4=1/108$.
+Thus this elementary input map
+alone does not transfer a definition to $\mathcal O_L$.
+No assertion that the complete rational defining polynomial
+defines every $\mathcal O_L$ is made or follows from this
+normalization.

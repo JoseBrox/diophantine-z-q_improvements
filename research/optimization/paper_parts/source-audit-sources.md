@@ -1,8 +1,0 @@
-# Primary sources checked for the arithmetic audit
-
-- Repository source: `diophantine-z-q_fork/quartic_12504.tex`, commit `28e87b1b62af0effd954605af7f70b2699dd5672`, SHA-256 `38d458ba4178083766c5ae56a894da595fe27170c1ef07f6b49750fc5edf7c37`.
-- Xinyi Yuan, *Explicit Kodaira--Spencer map over Shimura Curves*, arXiv:2205.11334v2 (30 April 2024), Theorem 1.1, pp. 2--3; Section 2.1, pp. 4--6. https://arxiv.org/pdf/2205.11334 . Publisher record: *Acta Mathematica Sinica, Chinese Series* 67(2) (2024), 227--249, DOI 10.12386/A20220154. https://actamath.cjoe.ac.cn/Jwk_sxxb_cn/CN/10.12386/A20220154 . Directly checked the integral stack statements and the metric isometry statement; did not reprove Yuan's theorem.
-- Lue Pan, *The Fontaine--Mazur conjecture in the residually reducible case*, arXiv:1901.07166v2 (3 September 2021), Theorem 1.0.4, p. 5, together with hypotheses in Conjecture 1.0.1, p. 2. https://arxiv.org/pdf/1901.07166 . Published *Journal of the American Mathematical Society* 35 (2022), 1031--1169, DOI 10.1090/jams/991. The p=5 formulation has no residual-image restriction.
-- Jeffrey Hoffstein and Wenzhi Luo, with appendix by David E. Rohrlich, *Nonvanishing of L-series and the combinatorial sieve*, *Mathematical Research Letters* 4 (1997), 435--444. Primary publisher PDF surfaced in search: https://intlpress.com/api/bgcloud-front/resource/pdf/volume/1806607231397294082-1806607231397294082-ecf504fa497d5ea43300de9a771c613a.pdf . Search/retrieval supports the almost-prime nonvanishing input, but the full local-prescription application was not independently verified in this audit and is not marked certified.
-
-No quotations from these papers were used. The audit remains explicitly partial.

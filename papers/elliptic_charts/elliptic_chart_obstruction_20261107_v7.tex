@@ -1,0 +1,269 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\usepackage{microtype}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\title{An obstruction to one-parameter presentations of an elliptic point}
+\author{}\date{7 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+For $K=\mathbb Q(\sqrt2)$ and
+$E:y^2=x^3-(11-6\sqrt2)x$, every algebraic curve over
+$\mathbb Q$ mapping to $\operatorname{Res}_{K/\mathbb Q}E$
+has finite rational image. Consequently no finite collection of
+one-parameter algebraic presentations with finite fibers can represent
+an infinite subset of $E(K)$. Two rational parameters suffice,
+with one finite quartic choice and finitely many charts. The obstruction
+is unconditional and concerns presentations of the elliptic point
+itself; it is not a lower bound for arbitrary Diophantine definitions
+of the integers.
+\end{abstract}
+
+\section{The elliptic curve and its conjugate}
+
+Put
+\[
+ K=\mathbb Q(\sqrt2),\quad d=3-\sqrt2,\quad D=d^2=11-6\sqrt2,
+ \qquad E:\ y^2=x^3-Dx.
+\]
+Let $\sigma$ be the nontrivial automorphism of $K/\mathbb Q$,
+and write $E^\sigma:y^2=x^3-\sigma(D)x$.
+
+\begin{proposition}\label{prop:nonisogenous}
+The elliptic curves $E$ and $E^\sigma$ are not isogenous over $K$.
+More precisely,
+\[
+                  \operatorname{Hom}_{K(i)}(E,E^\sigma)=0.
+\]
+\end{proposition}
+\begin{proof}
+The field $K(i)$ has a place with residue field $\mathbb F_{17}$
+at which $\sqrt2$ reduces to $6$ and $i$ reduces to $4$.
+At this place both curves have good reduction, and their equations are
+\[
+                 y^2=x^3-9x,\qquad y^2=x^3-13x.
+\]
+The discriminants are nonzero because they are $64\cdot9^3$ and
+$64\cdot13^3$ modulo seventeen. The square residues modulo seventeen
+are $0,1,2,4,8,9,13,15,16$. Enumeration of the seventeen abscissas gives
+\[
+\begin{array}{c|ccc|c}
+D\bmod17 & x^3-Dx=0 & \text{nonzero square} & \text{nonsquare}
+         & \#E_D(\mathbb F_{17})\\\hline
+9&3&8&6&20\\
+13&3&6&8&16.
+\end{array}
+\]
+The last column includes the point at infinity. A nonzero homomorphism
+between elliptic curves is an isogeny. An isogeny at a place of good
+reduction gives an isogeny of the reductions, whose Frobenius
+polynomials, and therefore their numbers of rational points, are equal.
+The unequal counts exclude such a homomorphism over $K(i)$, hence
+also over $K$. The accompanying script reproduces the counts by two
+independent finite enumerations.
+\end{proof}
+
+The conjugate curves are nevertheless quadratic twists of one another.
+Indeed $d\sigma(d)=7$, and
+\[
+          \delta=\frac{\sigma(d)}d=\frac7{d^2}
+\]
+represents the squareclass of seven. Over $K(\sqrt7)$ the map
+$(x,y)\mapsto(\delta x,\delta\sqrt\delta\,y)$ is an isomorphism
+$E\to E^\sigma$. Thus the nonisogeny assertion concerns the stated
+fields; it is not a claim of geometric nonisogeny.
+
+\section{Simplicity of the Weil restriction}
+
+The Weil restriction $A=\operatorname{Res}_{K/\mathbb Q}E$ is the
+abelian surface characterized by
+\[
+                   A(R)=E(R\otimes_{\mathbb Q}K)
+\]
+for every $\mathbb Q$-algebra $R$. In particular $A(\mathbb Q)=E(K)$,
+and $A_K\simeq E\times E^\sigma$.
+
+\begin{proposition}\label{prop:simple}
+The abelian surface $A$ is simple over $\mathbb Q$.
+\end{proposition}
+\begin{proof}
+Suppose $B\subset A$ were a nonzero proper abelian subvariety
+over $\mathbb Q$. It would have dimension one. The two projections
+of $B_K$ into $E\times E^\sigma$ are homomorphisms of elliptic
+curves. If both were nonzero, both would be isogenies, making
+$E$ and $E^\sigma$ isogenous over $K$, contrary to
+Proposition~\ref{prop:nonisogenous}.
+Exactly one projection is therefore nonzero. The other is zero,
+so $B_K$ is one of the two factors. But the nontrivial Galois
+automorphism interchanges those factors. Neither factor descends
+to a $\mathbb Q$-subvariety of $A$, a contradiction.
+\end{proof}
+
+\begin{lemma}\label{lem:infinite-group}
+The group $E(K)$ is infinite. In particular the point
+\[
+ P=\left(\frac{57-28\sqrt2}{8},
+          \frac{-660+417\sqrt2}{32}\right)
+\]
+has infinite order.
+\end{lemma}
+\begin{proof}
+Its coordinates satisfy the curve equation. The prime three is
+unramified in $K$, with residue field $\mathbb F_9$, and the
+curve has good reduction there. Normalize its valuation by $v(3)=1$.
+The displayed point has $v(x(P))=0$ and $v(y(P))=1$, while
+$3x(P)^2-D$ is a unit. The tangent slope therefore has valuation
+$-1$, and the duplication formulas give
+\[
+ v(x(2P))=-2,\qquad v(y(2P))=-3,\qquad v(z(2P))=1,
+ \qquad z=-x/y.
+\]
+The odd integral formal multiplication series
+$[m](Z)=mZ+Z^3g_m(Z^2)$ now shows that multiplication by an integer
+prime to three preserves a positive parameter valuation, while
+multiplication by three raises it by one. The higher terms have
+strictly larger valuation than the linear term. Consequently
+$v(z([2n]P))=1+v_3(n)$ for $n\ne0$, and no nonzero multiple of
+$2P$ is the identity. Therefore $P$ has infinite order.
+\end{proof}
+
+\section{Images of algebraic curves}
+
+\begin{theorem}\label{thm:curve-images}
+Let $F$ be a number field and let $B/F$ be an abelian variety
+which has no elliptic abelian subvariety defined over $F$.
+If $V$ is an algebraic set over $F$ of dimension at most one,
+$U\subseteq V$ is open, and $f:U\to B$ is a morphism, then
+$f(U(F))$ is finite.
+\end{theorem}
+\begin{proof}
+There are finitely many irreducible components. A zero-dimensional
+component contributes finitely many points. If an irreducible curve
+is not geometrically integral, all its $F$-points lie in the finite
+intersections of its distinct conjugate geometric components.
+It therefore suffices to consider a geometrically integral curve.
+
+Take its smooth projective normalization $C$. Outside finitely many
+points the normalization is an isomorphism, so rational points lift.
+The induced rational map $C\dashrightarrow B$ extends to a morphism
+on $C$ because $B$ is proper. If $C$ has genus at least two,
+Faltings's theorem makes $C(F)$ finite \cite{Faltings1983}.
+
+If $C$ has genus zero and has an $F$-point, it is isomorphic to
+$\mathbb P^1_F$. Every morphism from $\mathbb P^1$ to an abelian
+variety is constant \cite[Chapter I, Proposition 3.9]{MilneAV}.
+If $C(F)$ is empty there is nothing to prove.
+
+Finally suppose $C$ has genus one and an $F$-point $c_0$.
+Then $(C,c_0)$ is an elliptic curve. Subtracting $f(c_0)$ from
+$f$ gives a homomorphism of abelian varieties
+\cite[Chapter I, Corollary 1.2]{MilneAV}. If it were nonzero,
+its image would be an elliptic abelian subvariety of $B$ defined
+over $F$, contrary to the hypothesis. Hence $f$ is constant.
+The finitely many points omitted in passing to the normalization
+only add a finite set of image values.
+\end{proof}
+
+\begin{corollary}\label{cor:one-parameter}
+Let $C_1,\ldots,C_r$ be algebraic sets over $\mathbb Q$, each
+finite over a nonempty open subset of $\mathbb A^1_{\mathbb Q}$.
+For any rational maps $f_j:C_j\dashrightarrow A$, the union
+of the images of their rational points, wherever the maps are
+defined, is finite. In particular it cannot contain an infinite
+subset of $E(K)=A(\mathbb Q)$.
+\end{corollary}
+\begin{proof}
+Every $C_j$ has dimension at most one. Apply
+Theorem~\ref{thm:curve-images} and Proposition~\ref{prop:simple},
+then take the finite union.
+\end{proof}
+
+The corollary applies in particular to a retained rational parameter
+$t$ followed by any finite list of triangular monic equations
+\[
+ F_j(t,z_1,\ldots,z_j)=0,
+ \qquad F_j\text{ monic of positive degree in }z_j,
+\]
+with rational functions of the resulting coordinates specifying
+the point of $E(K)$. Nonzero denominator conditions restrict to
+an open subset and do not change the conclusion. Arbitrarily high
+degrees and finitely many alternative charts do not avoid the
+finiteness obstruction.
+
+\section{A sharp two-parameter presentation}
+
+\begin{proposition}\label{prop:two-parameters}
+The set $E(K)$ admits a finite collection of presentations using
+two retained rational parameters and one finite algebraic root
+of degree at most four.
+\end{proposition}
+\begin{proof}
+Retain $a_0,a_1\in\mathbb Q$ and put $a=a_0+a_1\sqrt2$.
+Write $a^3-Da=A_0+A_1\sqrt2$, where
+\[
+ \begin{aligned}
+ A_0&=a_0^3+6a_0a_1^2-11a_0+12a_1,\\
+ A_1&=3a_0^2a_1+2a_1^3-11a_1+6a_0.
+ \end{aligned}
+\]
+Let $Y$ be a rational root of
+\[
+                 Y^4-4A_0Y^2+8A_1^2=0,
+                 \qquad Y\ne0.
+\]
+Then
+\[
+                    (a,\;Y/2+(A_1/Y)\sqrt2)
+\]
+is a point of $E(K)$. Conversely it represents every point whose
+ordinate has nonzero rational component.
+
+Put $T_0=(0,0)$. If $Q=(a,b)$ is not a two-torsion point,
+at least one of $Q,Q+T_0$ has a nonzero rational component in
+its ordinate. To see this, suppose both ordinates were in
+$\sqrt2\mathbb Q^\times$. The addition formula gives
+$b(Q+T_0)/b(Q)=D/a^2\in\mathbb Q$. Thus
+$a/d\in\mathbb Q\cup\sqrt2\mathbb Q$.
+The equation $b^2=d^3(a/d)((a/d)^2-1)\in\mathbb Q^\times$
+would then imply $d^3\in\mathbb Q\cup\sqrt2\mathbb Q$,
+whereas $d^3=45-29\sqrt2$ has both components nonzero.
+This is a contradiction.
+
+Use the displayed quartic chart directly, or translate its output
+by $T_0$. The remaining points are the identity and the three
+nonzero two-torsion points, which are finite fixed alternatives.
+This gives the asserted presentation.
+\end{proof}
+
+The one-parameter obstruction and the two-parameter construction
+give an exact minimum for this point-presentation problem. They
+do not give a lower bound of 29 for a Diophantine definition of
+$\mathbb Z$ over $\mathbb Q$. In particular, the theorem does not
+assume that several elliptic points must be encoded independently
+in every possible defining polynomial.
+
+The finite certificates are reproduced by the standalone script
+\texttt{verify\_elliptic\_chart.py}, using only Python's standard
+library. It checks the two point counts independently, the displayed
+elliptic points and their valuations at three, the twist identities,
+and examples of the quartic chart. The general finiteness and
+sharpness assertions follow from the proofs above.
+
+\begin{thebibliography}{9}
+\bibitem{MilneAV} J. S. Milne, \emph{Abelian Varieties},
+version 2.0, 2008, Chapters I and IV.
+\url{https://www.jmilne.org/math/CourseNotes/AV.pdf}.
+\bibitem{Faltings1983} G. Faltings,
+Endlichkeitss\"atze f\"ur abelsche Variet\"aten \"uber Zahlk\"orpern,
+\emph{Invent. Math.} \textbf{73} (1983), 349--366;
+erratum, \textbf{75} (1984), 381.
+\url{https://doi.org/10.1007/BF01388432}.
+\end{thebibliography}
+\end{document}

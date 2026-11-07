@@ -1,0 +1,149 @@
+{
+  "status": "passed",
+  "sources": [
+    {
+      "profile": "height",
+      "source": "source-29-preferred.json.gz",
+      "source_sha256": "56f7685781adf0ed07cd3b2f6151110354998555dbf63a34fbea6d15edddc6a3",
+      "total_variables": 29,
+      "original_finite_branches": 16,
+      "source_method_changes_checked_exactly": true
+    },
+    {
+      "profile": "small-orders",
+      "source": "source-31-preferred.json.gz",
+      "source_sha256": "d62fb492a67271c8a3da695ea5d28a8af8e63480a5fe551a963a7e4299a37a5c",
+      "total_variables": 31,
+      "original_finite_branches": 16,
+      "source_method_changes_checked_exactly": true
+    }
+  ],
+  "arithmetic_checks": {
+    "integer_input_residues_mod17": [
+      [
+        0,
+        0,
+        10,
+        0
+      ],
+      [
+        1,
+        1,
+        5,
+        15
+      ],
+      [
+        2,
+        16,
+        15,
+        2
+      ],
+      [
+        3,
+        13,
+        13,
+        13
+      ],
+      [
+        4,
+        1,
+        5,
+        15
+      ],
+      [
+        5,
+        13,
+        13,
+        13
+      ],
+      [
+        6,
+        4,
+        7,
+        2
+      ],
+      [
+        7,
+        4,
+        7,
+        2
+      ],
+      [
+        8,
+        16,
+        15,
+        2
+      ],
+      [
+        9,
+        16,
+        15,
+        2
+      ],
+      [
+        10,
+        4,
+        7,
+        2
+      ],
+      [
+        11,
+        4,
+        7,
+        2
+      ],
+      [
+        12,
+        13,
+        13,
+        13
+      ],
+      [
+        13,
+        1,
+        5,
+        15
+      ],
+      [
+        14,
+        13,
+        13,
+        13
+      ],
+      [
+        15,
+        16,
+        15,
+        2
+      ],
+      [
+        16,
+        1,
+        5,
+        15
+      ]
+    ],
+    "local_square_units_checked": true,
+    "normalizer_real_bound_numerator": 10404,
+    "normalizer_real_bound_denominator": 83521,
+    "scalar_correction_fixed_to_one": true
+  },
+  "explicit_height_constant_check": {
+    "status": "passed",
+    "formula": "H19=2^110*210^1800*(product of primes p<=76176)^19+128",
+    "prime_enumeration": "trial division by all earlier primes up to the square root; no sieve or supplied prime list",
+    "prime_count": 7499,
+    "last_prime": 76163,
+    "primorial_bit_length": 109445,
+    "height_constant_bit_length": 2093448,
+    "height_constant_unsigned_big_endian_sha256": "4b4dab2ee796ed844df51b1d221c94bc857f7a65ce146c4c3ac805717c3a29b7",
+    "finite_cutoff_power_of_two_exponent": 2093449,
+    "scalar_test_order": 100485552,
+    "scope": "Exact finite integer calculation only; the contact-height theorem remains an inherited arithmetic hypothesis."
+  },
+  "point_conic_and_direct_polynomial_identities_checked": true,
+  "exact_cutoff_parameter_inequalities": true,
+  "builder_sha256": "a0773f95b0a6d1c82c85e5e7167634a72bf50acf446a9662c958d53bad2b102f",
+  "checker_sha256": "47bc711994158fc2f439b2732636d8976e24095d5a85aa26b5348b78d1c2756b",
+  "scope": "Exact implementation-semantic changes, rational identities, and exact finite arithmetic are checked. The written proof establishes the input integrality equivalence and all local implications; inherited group, height and prime-pattern inputs remain assumptions. The separate generic checker verifies source-to-polynomial conversion and bounds."
+}

@@ -1,0 +1,72 @@
+\section{Norm cancellation for odd multiples of the source point}
+\label{sec:odd-norm-cancellation}
+
+Let $K=\mathbb Q(\sqrt2)$ and retain the source curve
+$E:y^2=x^3-(11-6\sqrt2)x$ and point
+\[
+ P=\left(57/8-7\sqrt2/2,-165/8+417\sqrt2/32\right).
+\]
+The odd-product identity adds heights of abscissas inside $K$.
+Passing from that product to its rational norm need not preserve
+the height. The failure occurs already at an odd source multiple,
+and its additive size is unbounded along odd multiples.
+
+\begin{proposition}\label{cc:odd-norm-cancellation}
+Write $N=\operatorname{Norm}_{K/\mathbb Q}$ and let $h$ be the
+absolute logarithmic Weil height. Then
+\[
+        h(Nx([5]P))=2h(x([5]P))-2\log137.
+\]
+For every integer $r\ge0$ put $n_r=5\cdot137^r$. Then
+\[
+         2h(x([n_r]P))-h(Nx([n_r]P))
+                         \ge2(r+1)\log137.
+\]
+In particular, the defect is unbounded even when every index is odd.
+\end{proposition}
+\begin{proof}
+The prime $137$ splits in $K$, with $\sqrt2\equiv31$ and
+$\sqrt2\equiv-31$ at its two places. The exact certificate
+\texttt{odd-norm-cancellation-verification.json} computes $[5]P$
+by both $P+[4]P$ and $[2]P+[3]P$. It verifies the curve equation
+and, using Hensel roots modulo $137^8$, gives its two abscissa
+valuations as $2$ and $-2$.
+
+For the exact first identity, write $x([5]P)=(a+b\sqrt2)/c$ with
+primitive integers $a,b,c$ and $c>0$. Put
+\[
+ g=\gcd(c^2,a^2-2b^2),\qquad
+ g_0=\gcd(c^2,2ac,a^2-2b^2).
+\]
+The certificate records all three integers and checks $g/g_0=137^2$.
+Both real conjugates of $x([5]P)$ exceed one; the same certificate
+verifies this by the rational inequalities
+$a/c>1$ and $(a/c-1)^2>2(b/c)^2$.
+The primitive minimal polynomial has leading coefficient $c^2/g_0$,
+whereas the reduced denominator of its rational norm is $c^2/g$.
+The archimedean contributions agree after multiplying the degree-two
+height by two. The difference of the two heights is therefore
+$\log(g/g_0)=2\log137$.
+
+For the infinite assertion, put $T_0=(0,0)$ and $Q=[5]P$.
+At the place where $v(x(Q))=-2$, the point $Q$ is formal of
+depth one. At the other place, $Q+T_0$ is formal of depth one,
+because $x(Q+T_0)=-(11-6\sqrt2)/x(Q)$ and the coefficient is a
+unit at $137$. The formal logarithm is an isometry on this
+unramified neighborhood. Multiplication by $137^r$ increases
+the depth by exactly $r$. Since $137^r$ is odd,
+\[
+          [137^r](Q+T_0)=[137^r]Q+T_0.
+\]
+The two valuations of $x([n_r]P)$ are therefore respectively
+$-2(r+1)$ and $2(r+1)$. Their contribution to the rational norm
+valuation cancels, whereas their contribution to twice the
+height over $K$ is $2(r+1)\log137$. At every other place the
+norm-height inequality has nonnegative defect. Summing proves
+the asserted lower bound.
+\end{proof}
+
+This excludes an exact norm-height identity and a uniform additive
+error bound on the odd cyclic coset. It does not exclude an
+effective polynomial comparison between the two heights. No such
+comparison, and no deletion of a detector on this basis, is proved.

@@ -1,0 +1,432 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=25mm]{geometry}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!45!black,citecolor=blue!45!black,urlcolor=blue!45!black]{hyperref}
+\usepackage{microtype}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\A}{\mathbb A}
+\setlength{\emergencystretch}{2em}
+\hypersetup{pdftitle={Polynomial systems and the field of witnesses},pdfsubject={Variable-preserving conjunctions and bounded-degree extension obstructions}}
+\title{Polynomial Systems and the Field of Witnesses}
+\author{}
+\date{7 November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+We combine $s$ polynomial equations over a number field into one
+without introducing any coordinates, with degree at most
+$\lceil\sqrt{s}\rceil$ times the largest original degree. The
+construction uses a homogeneous anisotropic form obtained from
+multiplication determinants at one finite prime. Over a formally
+real field the familiar sum of squares gives degree at most twice
+the largest original degree, independently of $s$. We also prove
+that an existential formula with infinitely many inputs in a
+number field acquires all but finitely many base-field inputs
+after extensions of uniformly bounded degree. For a single
+polynomial this degree bound can be taken to be its smallest
+positive individual degree in a witness coordinate. Consequently
+one unchanged existential formula cannot define the rings of
+integers, or the corresponding rings of $S$-integers, in all finite
+extensions of a number field.
+\end{abstract}
+
+\section{Combining equations without new coordinates}
+
+For a field $K$, let $F_1,\ldots,F_s\in K[X_1,\ldots,X_n]$,
+where $s\ge1$. The common zero set is evaluated on $K^n$.
+We seek a polynomial $P$ in the same coordinates satisfying
+\[
+ P(\mathbf x)=0
+ \quad\Longleftrightarrow\quad
+ F_1(\mathbf x)=\cdots=F_s(\mathbf x)=0
+                    \qquad(\mathbf x\in K^n).
+\]
+The equivalence concerns points over $K$; an extension of the
+field changes the assertion unless its proof also applies there.
+
+\begin{proposition}\label{sys:sum-squares}
+If $K$ is formally real, the zero set of $\sum_{i=1}^s F_i^2$
+in $K^n$ is the common zero set of $F_1,\ldots,F_s$. Its degree is at most
+$2\max_i\deg F_i$.
+\end{proposition}
+\begin{proof}
+Formal reality means that $-1$ is not a sum of squares in $K$.
+If a vanishing sum of squares had a nonzero summand, division
+by that square would express $-1$ as a sum of the other squares,
+a contradiction. Squaring gives the degree bound.
+\end{proof}
+
+Every number field with a real embedding is formally real. Over
+other number fields an anisotropic form combines the equations.
+A homogeneous form $A\in K[Z_1,\ldots,Z_r]$ is
+called \emph{anisotropic over $K$} if its only zero in $K^r$ is
+the zero vector.
+
+\begin{lemma}\label{sys:anisotropic-form}
+Let $K$ be a number field and $e\ge1$ an integer. There is an
+explicit homogeneous anisotropic form
+\[
+       A_e\in\mathcal O_K[Z_{j,i}:0\le j,i<e]
+\]
+of degree $e$ in $e^2$ coordinates.
+\end{lemma}
+\begin{proof}
+Choose a nonzero prime ideal $\mathfrak p$ of $\mathcal O_K$,
+an element $\pi\in\mathfrak p\setminus\mathfrak p^2$, and a
+monic polynomial
+\[
+              g(U)\in\mathcal O_K[U],\qquad \deg g=e,
+\]
+whose reduction modulo $\mathfrak p$ is irreducible. Such a
+polynomial is obtained by lifting the coefficients of an
+irreducible degree-$e$ polynomial over the finite residue field.
+
+In the $e$-dimensional $K$-algebra $B=K[U]/(g)$, use the basis
+$1,u,\ldots,u^{e-1}$, where $u$ is the image of $U$. Define
+\[
+ N_g(Z_0,\ldots,Z_{e-1})
+   =\det\left(m_{\sum_{i=0}^{e-1}Z_i u^i}\right),
+\]
+where $m_b$ denotes multiplication by $b$ in this basis.
+Reduction by the monic relation $g(u)=0$ gives a matrix whose
+entries are linear forms in the $Z_i$ with coefficients in
+$\mathcal O_K$. Thus $N_g$ is a homogeneous integral form of
+degree $e$, with $N_g(1,0,\ldots,0)=1$.
+
+Write $v=v_{\mathfrak p}$. For any nonzero vector
+$\mathbf z\in K^e$, put $a=\min_i v(z_i)$. The entries of
+$\pi^{-a}\mathbf z$ belong to the valuation ring and are not
+all in its maximal ideal. Modulo that ideal, the multiplication
+matrix is multiplication by a nonzero element of the field
+\[
+          (\mathcal O_K/\mathfrak p)[U]/(\overline g).
+\]
+Its determinant is nonzero in the residue field. Homogeneity
+therefore proves the exact valuation identity
+\begin{equation}\label{sys:norm-valuation}
+                    v(N_g(\mathbf z))=e\min_i v(z_i).
+\end{equation}
+In particular, $N_g(\mathbf z)\ne0$ for every nonzero
+$\mathbf z\in K^e$.
+
+Now set
+\begin{equation}\label{sys:weighted-norm-form}
+ A_e((Z_{j,i}))
+    =\sum_{j=0}^{e-1}\pi^j N_g(Z_{j,0},\ldots,Z_{j,e-1}).
+\end{equation}
+At a nonzero input, omit any zero blocks. By
+\eqref{sys:norm-valuation}, the valuations of the remaining
+summands are congruent to their distinct indices $j$ modulo $e$.
+Exactly one summand has least valuation. The sum cannot vanish.
+This proves anisotropy. Homogeneity and the coefficient assertion
+follow directly from \eqref{sys:weighted-norm-form}.
+\end{proof}
+
+\begin{theorem}\label{sys:combine-field}
+Let $K$ be a number field and let $F_1,\ldots,F_s$ be polynomials
+in a fixed set of coordinates, each of degree at most $d$.
+Put $e=\lceil\sqrt{s}\rceil$. Padding the list of equations with
+zeros to length $e^2$, the polynomial
+\[
+                     P=A_e(F_1,\ldots,F_s,0,\ldots,0)
+\]
+has the same $K$-rational zero set as the original system, uses
+the same coordinates, and has degree at most $ed$.
+If the $F_i$ have coefficients in
+$\mathcal O_K$, then so does $P$.
+\end{theorem}
+\begin{proof}
+The form $A_e$ vanishes only at the zero vector over $K$.
+Substituting the $F_i$ therefore gives the stated equivalence.
+Since $A_e$ is homogeneous of degree $e$, each resulting term
+has degree at most $ed$. No coordinate is introduced by the
+substitution.
+\end{proof}
+
+For example, any four equations of degree at most $d$ over a
+number field admit one equivalent equation of degree at most $2d$, and
+any nine admit one of degree at most $3d$. For a formally real
+number field, Proposition~\ref{sys:sum-squares} gives the
+stronger bound $2d$ for arbitrary $s$. For $s=1$ one uses the
+original polynomial.
+
+\subsection*{A concrete quadratic form}
+
+Over $K=\mathbb Q(i)$, take the prime ideal $(3)$, whose residue
+field has nine elements. The element $1+i$ is not a square in
+that field, since $(1+i)^4=-1\ne1$ modulo $3$. Applying the
+construction with $e=2$, $\pi=3$ and $g(U)=U^2-(1+i)$ gives
+\[
+ A_2(Z_1,Z_2,Z_3,Z_4)
+     =Z_1^2-(1+i)Z_2^2+3Z_3^2-3(1+i)Z_4^2.
+\]
+It is anisotropic over $\mathbb Q(i)$ by the valuation proof
+above. It combines four equations into one even though
+a plain sum of squares is unsuitable over that field.
+
+For a cubic form in nine coordinates over the same field, use
+$\mathfrak p=(1+i)$, $\pi=1+i$ and $g(U)=U^3+U+1$.
+The reduction of $g$ has no root in $\mathbb F_2$ and is
+therefore irreducible. The multiplication determinant is
+\begin{align*}
+ N(a,b,c)
+  &=\det\begin{pmatrix}
+       a&-c&-b\\ b&a-c&-b-c\\ c&b&a-c
+       \end{pmatrix}\\
+  &=a^3-2a^2c+ab^2+3abc+ac^2-b^3-bc^2+c^3.
+\end{align*}
+Consequently
+\[
+ N(Z_1,Z_2,Z_3)+(1+i)N(Z_4,Z_5,Z_6)
+                      +2iN(Z_7,Z_8,Z_9)
+\]
+is an explicit anisotropic cubic over $\mathbb Q(i)$. Its
+coefficient list and the determinant identity are recorded in
+the accompanying exact computational data.
+
+\subsection*{Comparison with one norm}
+
+One can also choose an extension $L/K$ of degree $s$ and a
+$K$-basis $b_1,\ldots,b_s$. Then
+\[
+              N_{L/K}\left(\sum_{i=1}^s b_iF_i\right)=0
+\]
+is equivalent to all $F_i=0$, because the norm of a nonzero
+field element is nonzero. This gives degree at most $sd$.
+Theorem~\ref{sys:combine-field} obtains the square-root bound by
+combining several smaller multiplication determinants at
+distinct valuation classes.
+
+\section{Existential formulas after finite extensions}
+
+Fix a number field $k$. An existential formula considered here
+has the form
+\[
+ \Phi(T):\quad \exists Y_1,\ldots,Y_m\quad
+             \theta(T,Y_1,\ldots,Y_m),
+\]
+where $\theta$ is a finite Boolean combination of polynomial
+equations with coefficients in $k$. Equivalently, it is a finite
+disjunction of conjunctions of equations and nonzero conditions.
+For each extension field $L/k$, write
+\[
+                \Phi(L)=\{a\in L:\Phi(a)\text{ holds in }L\}.
+\]
+The same formula and the same coefficients are used for every $L$.
+
+\begin{theorem}\label{sys:bounded-extension}
+If $\Phi(k)$ is infinite, then there exist a positive integer
+$D$ and a nonzero polynomial $h\in k[T]$ such that every
+$a\in k$ with $h(a)\ne0$ belongs to $\Phi(L_a)$ for some finite
+extension $L_a/k$ of degree at most $D$.
+\end{theorem}
+\begin{proof}
+The conditions defining the witness tuples give a constructible
+subset of affine space. By Chevalley's theorem its image in
+the input line is constructible \cite{StacksChevalley}. Since
+the image has infinitely many $k$-points, it contains the
+generic point of the line. Equivalently, at least one of the
+finitely many conjunctions has a nonempty generic fiber over
+$k(T)$.
+
+Choose a closed point in a nonempty affine open of that generic
+fiber. Its residue field $E$ is a finite extension of $k(T)$.
+The coordinates of the point give elements
+$y_1,\ldots,y_m\in E$ satisfying one conjunction, with every
+required nonzero expression nonzero in $E$. Characteristic zero
+gives a primitive element $\alpha$ for $E/k(T)$. Let
+$G(T,Z)\in k(T)[Z]$ be its monic minimal polynomial, of
+degree $D=[E:k(T)]$ in $Z$.
+
+Express each $y_i$, and also the inverse of each required
+nonzero expression, as a polynomial in $\alpha$ of degree
+less than $D$ with coefficients in $k(T)$. Choose a nonzero
+$h\in k[T]$ which clears all denominators in these expressions
+and in $G$. Put $R=k[T,1/h]$ and
+\[
+                              C=R[Z]/(G).
+\]
+Because $G$ is monic, $C$ is free of rank $D$ over $R$ and
+embeds in $E$ under $Z\mapsto\alpha$. The chosen coordinate
+expressions and inverse expressions belong to $C$. All the
+equations, and the identities asserting that the chosen inverses
+are inverses, hold in $C$: they hold in $E$, and $C\hookrightarrow E$
+is injective.
+
+Now let $a\in k$ with $h(a)\ne0$. Specialization gives the
+nonzero $D$-dimensional algebra
+\[
+                             C_a=k[Z]/(G(a,Z)).
+\]
+Choose a maximal ideal of $C_a$. Its residue field $L_a$ is a
+finite extension of $k$ of degree at most $D$. The coordinate
+expressions descend to a witness tuple in $L_a$; all equations
+and inverse identities survive. Hence the same conjunction,
+and therefore $\Phi(a)$, holds in $L_a$.
+\end{proof}
+
+The finite exceptional set in the theorem consists of the
+$k$-roots of the single fixed polynomial $h$. The degree bound
+$D$ is uniform in $a$, although the extension $L_a$ may depend
+on $a$. The proof specifies $D$ as the degree of one generic
+closed point; it does not identify one extension that contains
+witnesses for all inputs.
+
+\begin{corollary}\label{sys:no-uniform-integers}
+No single existential formula over a number field $k$ defines
+$\mathcal O_L$ in every finite extension $L/k$. More precisely,
+if $\Phi(k)$ is infinite, there is a positive integer $D$ such
+that, for all but finitely many $q\in\mathbb Q\setminus\mathbb Z$,
+the formula accepts $q$ in some extension $L_q/k$ of degree at
+most $D$.
+\end{corollary}
+\begin{proof}
+Apply Theorem~\ref{sys:bounded-extension} to the elements
+$q\in\mathbb Q\subset k$. Every rational algebraic integer is
+an integer. Indeed, if $q=a/b$ is in lowest terms and satisfies
+a monic equation of degree $r$ with integer coefficients,
+clearing denominators yields $b\mid a^r$, so $b=1$.
+Consequently each admitted rational noninteger lies outside
+$\mathcal O_{L_q}$.
+\end{proof}
+
+\begin{corollary}\label{sys:no-uniform-s-integers}
+Let $S$ be a fixed finite set of finite primes of $k$, and for
+each finite extension $L/k$ let $S_L$ be the primes of $L$
+above $S$. One unchanged existential formula over $k$ cannot
+define $\mathcal O_{L,S_L}$ in every finite extension $L/k$.
+\end{corollary}
+\begin{proof}
+Such a formula would have infinitely many inputs over $k$,
+since $\mathbb Z\subseteq\mathcal O_{k,S}$. Choose a rational
+prime $p$ lying below no prime in $S$ and such that $h(1/p)\ne0$
+for the polynomial in Theorem~\ref{sys:bounded-extension}.
+There are infinitely many eligible primes and only finitely
+many roots of $h$. The theorem admits $1/p$ over some finite
+extension $L/k$. At every prime of $L$ above $p$ this element
+has negative valuation, and none of those primes belongs to
+$S_L$. Thus $1/p\notin\mathcal O_{L,S_L}$.
+\end{proof}
+
+These corollaries concern a fixed formula whose witness field
+is enlarged. They leave open the separate possibility of a
+different defining formula for each number field.
+
+\section{A sharper extension bound for one polynomial}
+
+\begin{proposition}\label{sys:hypersurface-extension-bound}
+Let $k$ be an infinite field and
+$P\in k[T,Y_1,\ldots,Y_m]$. Suppose that $P$ depends on the
+witness coordinate $Y_j$, and put $\delta=\deg_{Y_j}P\ge1$.
+There is a nonzero $h\in k[T]$ such that for every $a\in k$
+with $h(a)\ne0$, the equation $P(a,\mathbf y)=0$ has a solution
+over an extension of $k$ of degree at most $\delta$.
+\end{proposition}
+\begin{proof}
+Regard $P$ as a polynomial in $Y_j$. Its leading coefficient
+is a nonzero polynomial in $T$ and the remaining witness
+coordinates. Since $k$ is infinite, choose constants for those
+remaining coordinates so that the leading coefficient becomes
+a nonzero polynomial $h(T)$. The specialization is a polynomial
+$Q(T,Z)\in k[T,Z]$ with $\deg_ZQ=\delta$. For $h(a)\ne0$,
+choose any irreducible factor of the degree-$\delta$ polynomial
+$Q(a,Z)$. Adjoining a root gives an extension of degree at
+most $\delta$ and a witness for the original equation.
+\end{proof}
+
+\begin{corollary}\label{sys:single-polynomial-extension}
+Let $k$ be a number field, and suppose a single nonzero polynomial
+$P(T,\mathbf Y)$ has an infinite input projection over $k$.
+Then $P$ depends on at least one witness coordinate. In
+Corollary~\ref{sys:no-uniform-integers}, the bound on the extension
+degree can be taken to be
+\[
+            D=\min_{j:\,\deg_{Y_j}P>0}\deg_{Y_j}P
+               \le \deg P.
+\]
+In particular an unchanged quartic equation cannot define the
+rings of integers over every extension of degree at most four.
+If it has an essential witness of individual degree two, it
+already fails over an extension of degree at most two.
+\end{corollary}
+\begin{proof}
+If $P$ were independent of all witness coordinates, its input
+projection would be the finite zero set of a nonzero polynomial
+in $T$. Choose an essential coordinate of least positive
+individual degree, apply Proposition~\ref{sys:hypersurface-extension-bound},
+and take any rational noninteger outside its finite exceptional
+set. The same argument applies to all such rational nonintegers.
+\end{proof}
+
+When the polynomial already defines an integral subset over
+$k$, the failure in the last sentence cannot occur over $k$
+itself; a witnessing extension of degree at most two must then
+have degree exactly two. This is an obstruction to transferring
+the equation unchanged, rather than a counterexample to
+field-dependent Diophantine definability.
+
+\subsection*{An explicit quadratic extension}
+
+The preceding obstruction can be exhibited directly for the quartic
+$Q_{456}$ specified by the accompanying coefficient and residual
+tables. The coordinates are indexed by $0,\ldots,455$, with input
+$X_0$; the polynomial is the sum of the squares of its $426$
+listed quadratic residuals. Coordinate $79$ is the coordinate
+named \texttt{V0.yProduct.0.quadratic} in the data.
+
+\begin{proposition}\label{sys:explicit-quartic-extension}
+Put $N=16081968676531905$ and
+$L=\mathbb Q(\theta)$, where $\theta^2=-N$.
+Set $X_0=1/2$, $X_{79}=\theta/4$, and all the other
+coordinates equal to zero. Then $Q_{456}=0$ over $L$, while
+$X_0$ is not an algebraic integer. In particular, this same
+quartic does not define $\mathcal O_L$ in $L$.
+\end{proposition}
+\begin{proof}
+Before assigning a value to coordinate $79$, write it as $Y$.
+The substitution $X_0=1/2$, $X_{79}=Y$, with every other
+coordinate zero, sends $371$ residuals to zero, one residual
+to $-Y$, and the remaining $54$ to the constants in the
+following table. Each constant is followed by its multiplicity.
+\[
+\begin{array}{r@{\;}r@{\quad}r@{\;}r@{\quad}r@{\;}r@{\quad}r@{\;}r}
+\text{constant}&\text{number}&\text{constant}&\text{number}&
+\text{constant}&\text{number}&\text{constant}&\text{number}\\
+\hline
+1/4&1&11&9&417&2&225228&1\\
+1&20&28&1&92820&1&1952786&2\\
+3&9&57&1&188955&1&31581660&1\\
+8&3&165&2&&&&
+\end{array}
+\]
+Squaring these constants with their multiplicities gives the
+exact identity
+\[
+ Q_{456}\bigl(\tfrac12\mathbf e_0+Y\mathbf e_{79}\bigr)
+     =Y^2+\frac{16081968676531905}{16},
+\]
+where $\mathbf e_j$ denotes the $j$th coordinate vector.
+The accompanying certificate checks the same identity both
+from the complete quartic coefficient table and from the
+quadratic residual table. The value of $N$ is positive, so
+$Z^2+N$ is irreducible over $\mathbb Q$ and $[L:\mathbb Q]=2$.
+Taking $Y=\theta/4$ makes the displayed expression zero.
+The rational number $1/2$ is not an algebraic integer by the
+denominator argument in Corollary~\ref{sys:no-uniform-integers}.
+\end{proof}
+
+\begin{thebibliography}{9}
+\bibitem{StacksChevalley}
+The Stacks Project Authors, \emph{The Stacks Project},
+Chevalley's theorem, Tag 00FE.
+\url{https://stacks.math.columbia.edu/tag/00FE}.
+\end{thebibliography}
+\end{document}
