@@ -1,14 +1,157 @@
 {
-  "schema": "diophantine-results/v2",
+  "schema": "diophantine-results/v3",
   "date": "2026-11-08",
   "variable_convention": "total coordinates including the input",
   "coefficient_height": "largest absolute integer coefficient after fixed constants are substituted",
   "construction_scope": {
-    "algebraic_specification": "proved",
-    "projection_equals_Z": "proved implication from the stated arithmetic premises",
-    "variable_minimality": "best constructions in this collection; no global minimum claimed"
+    "algebraic_specification": "proved for every explicitly described polynomial or coefficient-family member",
+    "projection_equals_Z": "proved implication from the stated arithmetic premises; the existence families require a sufficiently large fixed parameter",
+    "variable_minimality": "best constructions in this collection; no global variable minimum claimed",
+    "effectiveness": "The 27-variable and 317-variable results have ineffective sufficient coefficient thresholds. The 29-variable and 389-variable polynomials specify all coefficients."
   },
   "constructions": [
+    {
+      "id": "few_variables27_cubic_family",
+      "construction_kind": "existence_in_computable_coefficient_family",
+      "total_variables": 27,
+      "degree_bound_power_of_two_exponent": 158,
+      "exact_degree_majorant": "232075682770882905150152990100588354340946706432",
+      "degree_bound_uniform_in_fixed_parameter": true,
+      "coefficient_height_bound_for_certified_defining_member": null,
+      "fixed_parameter": {
+        "name": "L",
+        "domain": "odd integers L>=3",
+        "quantified": false,
+        "all_sufficiently_large_parameters_define_Z": true,
+        "effective_sufficient_threshold_known": false,
+        "certified_numerical_defining_parameter": null
+      },
+      "retained_coordinates": 26,
+      "finite_algebra_coordinate_count": 1,
+      "finite_algebra_maximum_rank": 2097152,
+      "finite_algebra_generator_degrees": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        2,
+        2,
+        2
+      ],
+      "source_cases": 8,
+      "exact_final_factor_count": "630360244960710623232",
+      "additional_proved_input": "aggregate_trace_height_von_buhren",
+      "arithmetic_inputs": [
+        "elliptic_group_and_index_height",
+        "contact_height",
+        "pole_obstruction_and_realization",
+        "simultaneous_prime_patterns"
+      ],
+      "proof": "papers/few_variables27/few_variables27_cubic_20261108_v9.tex",
+      "computation": "computation/few_variables/trace27_cubic_family",
+      "uniform_degree_certificate": "computation/few_variables/trace27_cubic_family/degree-family-verification.json",
+      "algebraic_reproduction_example": {
+        "L": 137731,
+        "certified_to_define_Z": false,
+        "purpose": "exact algebraic reproduction and coefficient-bound verification only",
+        "source_sha256": "3e298cc674ac1a16cfbbf3f48fff3aee8fb6b777ed0625013241bc621aed5e11",
+        "specification_sha256": "2642988efca1b76d4bb187b09e6afb97a3945b5003d74530929b2cd45634e57b",
+        "coefficient_height_bound_double_power_of_two_exponent": 168,
+        "data": "computation/few_variables/trace27_cubic_family/example_L137731"
+      }
+    },
+    {
+      "id": "quartic317_family",
+      "construction_kind": "existence_in_computable_coefficient_family",
+      "total_variables": 317,
+      "degree": 4,
+      "degree_status": "exact for every member",
+      "fixed_parameter": {
+        "name": "N",
+        "domain": "integers N>=1",
+        "quantified": false,
+        "coefficient": "A_N=80989^(2*N+1)",
+        "all_sufficiently_large_parameters_define_Z": true,
+        "effective_sufficient_threshold_known": false,
+        "certified_numerical_defining_parameter": null
+      },
+      "quadratic_residuals": 291,
+      "ordinary_monomials": 5032,
+      "ordinary_monomial_count_condition": "N>=27464; this is a coefficient noncancellation threshold, not a defining-projection threshold",
+      "coefficient_parameter_terms": 5047,
+      "integer_content": 1,
+      "coefficient_height_upper_bound": "2^1520*80989^(4*N+2)",
+      "coefficient_height_upper_bound_strict": true,
+      "input_label": "51*X^2+2504",
+      "scalar_correction": 9792,
+      "polynomial_sha256": "15027a2510f03944e008938508c8bd9b552e940063eb8005baaf7710ea0702b2",
+      "residuals_sha256": "21ba60789e880826dff7298301ffcda1f33e465ed09a45ecf93170069deb9157",
+      "arithmetic_inputs": [
+        "elliptic_group_and_index_height",
+        "contact_height",
+        "pole_obstruction_and_realization",
+        "simultaneous_prime_patterns",
+        "weighted_prime_selection"
+      ],
+      "additional_proved_input": "aggregate_trace_height_von_buhren",
+      "proof": "papers/quartic_existence/quartic317_family_20261108_v9.tex",
+      "computation": "computation/quartic/family317",
+      "exact_height_data": "computation/quartic/family317/construction-report317.json"
+    },
+    {
+      "id": "few_variables29",
+      "total_variables": 29,
+      "degree_bound_power_of_two_exponent": 174,
+      "coefficient_height_bound_double_power_of_two_exponent": 177,
+      "bounds_status": "proved upper bounds for the specified polynomial",
+      "fixed_prime": 76249,
+      "normalizer_exponent": 137715,
+      "source_sha256": "ca02313846d55b4940b009e9746cc3b0be7c8035991792cf6359983429b99728",
+      "specification_sha256": "05930eebc0834299ec043cef63bd94f7c99e7e012c8015cef60f4bf6480b6a9b",
+      "arithmetic_inputs": [
+        "elliptic_group_and_index_height",
+        "contact_height",
+        "pole_obstruction_and_realization",
+        "simultaneous_prime_patterns"
+      ],
+      "proof": "papers/few_variables/few_variables_20261108_v8.tex",
+      "construction_kind": "explicit_polynomial",
+      "all_fixed_coefficients_specified": true,
+      "role": "best fully explicit few-variable construction"
+    },
+    {
+      "id": "quartic389",
+      "construction_kind": "explicit_polynomial",
+      "role": "best fully explicit quartic construction",
+      "all_fixed_coefficients_specified": true,
+      "total_variables": 389,
+      "degree": 4,
+      "degree_status": "exact",
+      "coefficient_height_upper_bound_power_of_two_exponent": 1791357,
+      "coefficient_height_upper_bound_strict": true,
+      "largest_coefficient_binary_digits": 1791357,
+      "exact_height_data": "computation/quartic/final389/construction-report389.json",
+      "quadratic_residuals": 361,
+      "ordinary_monomials": 6198,
+      "coefficient_parameter_terms": 6219,
+      "integer_content": 1,
+      "fixed_parameter": "A=80989^54929",
+      "polynomial_sha256": "debd9c8c9cba39e5a845ff63920b3c91dcee2b45be00905ecb0c00b6b0c73205",
+      "residuals_sha256": "f7fb5bdf6a3d47275f1d78ed5e275954e2cc1f21fec8204d6a395bfc2f8b5394",
+      "arithmetic_inputs": [
+        "elliptic_group_and_index_height",
+        "contact_height",
+        "pole_obstruction_and_realization",
+        "simultaneous_prime_patterns",
+        "weighted_prime_selection"
+      ],
+      "proof": "papers/quartic/quartic389_20261108_v9.tex"
+    },
     {
       "id": "quartic392",
       "total_variables": 392,
@@ -32,25 +175,10 @@
         "simultaneous_prime_patterns",
         "weighted_prime_selection"
       ],
-      "proof": "papers/quartic/quartic392_20261108_v8.tex"
-    },
-    {
-      "id": "few_variables29",
-      "total_variables": 29,
-      "degree_bound_power_of_two_exponent": 174,
-      "coefficient_height_bound_double_power_of_two_exponent": 177,
-      "bounds_status": "proved upper bounds for the specified polynomial",
-      "fixed_prime": 76249,
-      "normalizer_exponent": 137715,
-      "source_sha256": "ca02313846d55b4940b009e9746cc3b0be7c8035991792cf6359983429b99728",
-      "specification_sha256": "05930eebc0834299ec043cef63bd94f7c99e7e012c8015cef60f4bf6480b6a9b",
-      "arithmetic_inputs": [
-        "elliptic_group_and_index_height",
-        "contact_height",
-        "pole_obstruction_and_realization",
-        "simultaneous_prime_patterns"
-      ],
-      "proof": "papers/few_variables/few_variables_20261108_v8.tex"
+      "proof": "papers/quartic/quartic392_20261108_v8.tex",
+      "construction_kind": "explicit_polynomial",
+      "all_fixed_coefficients_specified": true,
+      "role": "supporting arithmetic baseline; retained for dependency proofs and independent reconstruction"
     }
   ],
   "unconditional_theorems": [
@@ -108,11 +236,69 @@
       "valuation_bound": "v(log_E(z)-L_J(z)) >= v(z)+3*J",
       "scope": "The specified curve at every odd unramified prime, with integral normalized valuation v(z)>=1 and truncation L_J as defined in the paper",
       "proof": "papers/elliptic_logarithms/elliptic_logarithms_20261108_v8.tex"
+    },
+    {
+      "id": "aggregate_trace_height_von_buhren",
+      "statement": "For fixed r and all nonzero integer labels, the sum of canonical heights of the specified elliptic multiples is bounded linearly by the height of the trace of the sum of their abscissas.",
+      "effective_geometric_slope": true,
+      "effective_additive_constant_known": false,
+      "product_version": "The analogous trace-of-product bound holds for odd labels.",
+      "number_field_scope": "The stated conjugate curves must identify with one fixed elliptic curve, and their source points must be pairwise independent over its endomorphism ring modulo torsion.",
+      "primary_reference": "J. Von Buhren, JTNB 29 (2017), 307-320, Theorem 1.1, doi:10.5802/jtnb.981",
+      "proof": "papers/trace_heights/aggregate_trace_height_20261108_v9.tex"
+    },
+    {
+      "id": "single_quartic_quadratic_square_root_chart",
+      "scope": "Every quadratic extension K=F(sqrt(d)) of every number field F; choose a fixed noncube kappa in F.",
+      "finite_root_degree": 4,
+      "quartic_total_degree": 6,
+      "quantified_base_field_variables_for_square_test": 1,
+      "square_test_total_degree_nonzero_input": 10,
+      "square_test_total_degree_including_zero": 10,
+      "nonvanishing_identity": "Re((a+b*sqrt(d))*(u+v*sqrt(d)))=u^3-kappa*v^3, where U=u^2+d*v^2, V=2*u*v, a=U+kappa*V/(2*d), b=-kappa*U/d^2-V/2",
+      "rational_d2_specialization": {
+        "a": "2*U+V",
+        "b": "-U-V",
+        "A": "6*U^3-9*U*V^2-4*V^3",
+        "B": "-4*U^3+6*U*V^2+3*V^3",
+        "quartic": "Y^4-4*A*Y^2+8*B^2",
+        "nonzero_square_test": "1-4*A*T^2+8*B^2*T^4",
+        "nonzero_square_test_monomials": 10,
+        "nonzero_square_test_coefficient_height": 384,
+        "zero_inclusive_square_test_monomials": 12,
+        "zero_inclusive_square_test_coefficient_height": 8,
+        "zero_inclusive_low_height_test": "(2-2*U*T^2+V^2*T^4)*(V^2+(U-2*T^2)^2)",
+        "zero_inclusive_quartic_root_alternative": {
+          "total_degree": 12,
+          "monomials": 15,
+          "coefficient_height": 1056
+        }
+      },
+      "proof": "papers/quadratic_squares/quadratic_square_chart_20261108_v9.tex",
+      "square_test_quantified_variable_degree_including_zero": 8,
+      "zero_inclusive_alternative_with_quantified_degree_four": {
+        "total_degree": 12,
+        "purpose": "preserves degree four in the quantified root"
+      },
+      "product_predicate_general_scope": "Every field F of characteristic different from two and every nonsquare d; choose any nonsquare c, for example c=d. No noncube assumption is needed.",
+      "product_predicate": "(4-4*U*T^2+d*V^2*T^4)*(V^2-c*(U-d*T^2)^2)"
     }
   ],
   "source_pins": {
     "elliptic_coefficients_v9": "14e8f601fe0d9173d4a5f084aedc3e07066a7688",
     "corrected_arithmetic_proof_v11": "650b298a2a18fa956f8859f3ca80e9d7c8cedd82",
     "quartic_source_v13": "5bbd74f6a479776a332cbe036809d5dddae63720"
-  }
+  },
+  "release": "2026.11.08-v9",
+  "auxiliary_arithmetic_theorems": [
+    {
+      "id": "square_abscissa_subgroup_chart",
+      "hypothesis": "For K=Q(sqrt(2)), E:y^2=x^3-(3-sqrt(2))^2*x and P=2*(1+sqrt(2),2*sqrt(2)), assume 2E(K)=ZP.",
+      "statement": "x=h^2, j^2=h^4-(3-sqrt(2))^2, y=h*j describe exactly the nonzero points of ZP; no index parity restriction is needed.",
+      "retained_rational_parameters_per_point": 2,
+      "finite_root_degree": 4,
+      "finite_choice_of_component_charts_required": false,
+      "proof": "papers/square_abscissa/square_abscissa_charts_20261108_v9.tex"
+    }
+  ]
 }

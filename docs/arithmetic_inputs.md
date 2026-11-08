@@ -1,17 +1,17 @@
-# Arithmetic inputs and theorem scope
+# Arithmetic inputs, theorem scope, and effectiveness
 
-The construction theorems identify the rational input projections of two explicit integer polynomials with $\mathbb Z$, under precisely stated arithmetic inputs. The [29-variable paper](../papers/few_variables/few_variables_20261108_v8.pdf) and the [392-variable quartic paper](../papers/quartic/quartic392_20261108_v8.pdf) give the full statements and proofs of these implications.
+The construction papers prove that the indicated rational input projections equal $\mathbb Z$ under their stated arithmetic inputs. Two constructions specify all coefficients: the [29-variable polynomial](../papers/few_variables/few_variables_20261108_v8.pdf) and the [389-variable quartic](../papers/quartic/quartic389_20261108_v9.pdf). Two further results prove the existence of sufficiently large members of computable coefficient families: the [27-variable family](../papers/few_variables27/few_variables27_cubic_20261108_v9.pdf) and the [317-variable quartic family](../papers/quartic_existence/quartic317_family_20261108_v9.pdf).
 
-The [arithmetic-dependency paper](../papers/arithmetic_dependencies/arithmetic_dependencies_20261108_v8.pdf) proves that the four inputs used by the 29-variable construction follow from the pinned source statements and Sun's Theorem 4.1. It checks the required simultaneous congruences, avoidance at every prescribed fixed odd prime, the special case of seven, preservation of the real approximation conditions, and realization with zero preparation parameters.
+The [arithmetic-dependency paper](../papers/arithmetic_dependencies/arithmetic_dependencies_20261108_v8.pdf) derives the precise inputs used by the few-variable construction from the pinned source statements and Sun's Theorem 4.1. It checks simultaneous congruences, avoidance at every prescribed fixed odd prime, the special case of seven, preservation of real approximation conditions, and realization with zero preparation parameters. The [baseline quartic paper](../papers/quartic/quartic392_20261108_v8.pdf) supplies the full comparison and realization argument used by the quartic constructions.
 
-## The four common inputs
+## The four common arithmetic inputs
 
 | Input | Mathematical content used | Scope of the finite checks |
 |:--|:--|:--|
-| Elliptic group and index height | For the specified curve over $K=\mathbb Q(\sqrt2)$ and point $P$, the equality $2E(K)=\mathbb ZP$ and the lower bound $h(x([n]P))\ge n^2-6$ for $n\ne0$. | Exact point identities, finite-field counts and local constants are checked. The complete group assertion and the global lower bound are cited arithmetic results. |
-| Contact height | The five-contact radical $M_5(t)$ satisfies $h(t)\le H_{19}M_5(t)^{19}$, with the specified explicit constant $H_{19}$. | Independent prime enumerations and integer computations give $H_{19}<2^{2093448}$. These computations evaluate the constant appearing in the cited inequality. |
-| Pole obstruction and realization | The specified pole equations exclude negative odd valuations outside the exceptional primes and admit rational solutions under the stated positivity, squareclass and local-depth conditions. | Coordinate identities and their domains are checked. The obstruction and realization theorems are stated separately; the dependency paper verifies the exact zero-preparation statement being used. |
-| Simultaneous prime patterns | Prescribed prime values, Gaussian congruences, fixed avoidance, conjugate reduction orders and compatible real approximation can be achieved together. | The dependency paper derives the required quantified form from Sun's Theorem 4.1 and the source reduction-order lemma. Finite checks verify the congruence and order calculations. |
+| Elliptic group and index height | For the specified curve over $K=\mathbb Q(\sqrt2)$ and point $P$, the equality $2E(K)=\mathbb ZP$ and the lower bound $h(x([n]P))\ge n^2-6$ for $n\ne0$. | Exact point identities, finite-field counts, and local constants are checked. The full group statement and the stated global lower bound are inherited arithmetic inputs. |
+| Contact height | The five-contact radical $M_5(t)$ satisfies $h(t)\le H_{19}M_5(t)^{19}$, with the specified constant $H_{19}$. | Independent prime enumeration and integer computations give $H_{19}<2^{2093448}$. They evaluate the constant in the cited inequality. |
+| Pole obstruction and realization | The specified pole equations exclude negative odd valuations outside the exceptional primes and admit rational solutions under the stated positivity, squareclass, and local-depth conditions. | Coordinate identities and their domains are checked. The dependency paper establishes the exact zero-preparation implication from the source realization theorem. |
+| Simultaneous prime patterns | Prescribed prime values, Gaussian congruences, fixed avoidance, conjugate reduction orders, and compatible real approximation can be achieved together. | The dependency paper derives the required quantified form from Sun's Theorem 4.1 and the source reduction-order lemma. Finite checks verify congruence and order calculations. |
 
 Here
 
@@ -19,28 +19,63 @@ $$
 H_{19}=2^{110}210^{1800}\left(\prod_{p\le76176}p\right)^{19}+128.
 $$
 
-The extra fixed prime used in each scalar normalization belongs to a finite set chosen before the prime-pattern theorem is applied. Its inclusion is covered by the stated fixed-avoidance condition.
+The fixed prime in each scalar normalization belongs to a finite set chosen before the prime-pattern theorem is applied. It is therefore covered by the established fixed-avoidance condition. Increasing a fixed coefficient changes finite divisibility requirements, which are likewise set before the later prime choices.
 
-## Quantitative input for the quartic
+## Additional quantitative input for the quartics
 
-The 392-variable quartic also uses the quantitative form of the prime-pattern input retained by its comparison construction. For fixed distinct coefficients $c_j$, the admissible patterns $p_j=u+c_jw^2$ in
+Both the explicit 389-variable quartic and the 317-variable quartic family retain the quantitative prime-pattern premise of the baseline comparison construction. For fixed distinct coefficients $c_j$, the admissible patterns $p_j=u+c_jw^2$ in
 
 $$
 N/2\le u\le N,\qquad 1\le w\le\tau(N)\sqrt N
 $$
 
-have total weight at least $c_0N^{3/2}\tau(N)$, with individual weights $O((\log N)^k)$. The function $\tau(N)$ may decrease arbitrarily slowly after the fixed congruences and avoidance conditions have been imposed. The quartic paper states this premise and explains the separation step that uses it. The 29-variable theorem does not require this quantitative strengthening.
+have total weight at least $c_0N^{3/2}\tau(N)$, with individual weights $O((\log N)^k)$. The function $\tau(N)$ may decrease arbitrarily slowly after the fixed congruences and avoidance conditions have been imposed. The quartic papers state this premise and the separation step that uses it. The 29-variable and 27-variable theorems do not require this quantitative strengthening.
 
-## Results proved within this project
+## The aggregate height theorem and its ineffective constant
 
-The papers prove the odd-product height identity, the rational point charts, the input normalizations, the elementary Lucas growth estimate, the forced-prime index bounds and their simultaneous realization, and the guarded finite-algebra elimination theorem. The weighted companion-norm argument proves the coefficient bound for the same 29-variable polynomial without altering its expression. Every use of a cited arithmetic input is identified in the construction proofs.
+The [aggregate trace-height paper](../papers/trace_heights/aggregate_trace_height_20261108_v9.pdf) proves, for the specified point $P$ and any fixed number of nonzero integer labels, a comparison of the form
 
-The degree and coordinate lower bounds, equation-combination theorem, number-field transfer statements, elliptic-chart obstruction, quadratic upper height estimate and uniform logarithm truncation estimates have the hypotheses stated in their own papers. They do not depend on the four global construction inputs above.
+$$
+\sum_i\widehat h_E([n_i]P)
+ \le M\,h\!\left(\operatorname{Tr}_{K/\mathbb Q}
+                         \sum_i x([n_i]P)\right)+M_0.
+$$
 
-## Exact sources
+Its geometric argument excludes every positive-dimensional abelian translate through a source tuple from a constant trace fiber. The proof includes translates defined over the algebraic closure, establishes the required endomorphism independence of the conjugate points, and applies [Von Buhren, Theorem 1.1](https://www.numdam.org/item/10.5802/jtnb.981.pdf) to a fixed graph and finite-rank subgroup. This comparison is unconditional for the displayed points; it does not assume their full Mordell–Weil group has been computed.
 
-The 29-variable coefficient construction uses the Version 9 source at commit `14e8f601fe0d9173d4a5f084aedc3e07066a7688`. Its arithmetic interpretation incorporates the Version 11 Kato index-set and retained-class correction at commit `650b298a2a18fa956f8859f3ca80e9d7c8cedd82`. The prime-pattern reference is Sun, arXiv:2610.20691v2, Theorem 4.1. The [dependency paper](../papers/arithmetic_dependencies/arithmetic_dependencies_20261108_v8.pdf) provides the exact statement identifiers and bibliographic references.
+The slope $M$ can be chosen effectively from the fixed geometry. The additive constant $M_0$ exists by the published theorem but is not determined effectively here. Consequently:
 
-The quartic source is Version 13 at commit `5bbd74f6a479776a332cbe036809d5dddae63720`. Its source paths, normalization conventions and hashes are recorded in [the quartic provenance file](../computation/quartic/PROVENANCE.json).
+- In the 27-variable family $F_L$, every sufficiently large fixed odd $L$ defines $\mathbb Z$, under the four common arithmetic inputs. The uniform degree bound is $2^{158}$.
+- In the quartic family $P_N$, every sufficiently large fixed $N$ gives the required projection, under the same inputs and the weighted prime-pattern premise. Every member has 317 total variables and exact degree four.
+- No certified numerical sufficient parameter is supplied for either family. In particular, the packaged 27-variable example at $L=137731$ certifies algebraic specifications and bounds, not the assertion that this specific member defines $\mathbb Z$.
+- The parameters are fixed coefficients. The ineffectivity adds no quantified coordinate and does not change the degree bounds.
 
-The coefficient data, degree counts, algebraic identities and finite numerical certificates are unconditional assertions about the supplied expressions. The conclusion that their rational projections equal $\mathbb Z$ has the arithmetic hypotheses stated above. A passing computational receipt certifies its listed finite assertions; it does not independently prove those global hypotheses.
+This is a proved existence statement with an ineffective coefficient threshold, rather than a new unproved height hypothesis. The explicit 29-variable and 389-variable theorems retain their fully specified coefficients independently of these two families.
+
+## Direct point charts and the input map
+
+The [square-abscissa paper](../papers/square_abscissa/square_abscissa_charts_20261108_v9.pdf) gives a complete elementary descent proof that
+
+$$
+x=h^2,\qquad j^2=h^4-(3-\sqrt2)^2,\qquad y=hj
+$$
+
+describes exactly the nonzero integer multiples of $P$, assuming $2E(K)=\mathbb ZP$. This removes parity requirements from the point coordinates. The sum-trace height theorem works for arbitrary nonzero integer labels.
+
+The [quadratic square-root paper](../papers/quadratic_squares/quadratic_square_chart_20261108_v9.pdf) then supplies a single finite quartic chart for $j$. Its completeness follows from an elementary noncube argument and holds, with suitable fixed coefficients, over every quadratic extension of every number field. It has no dependence on an auxiliary elliptic rank calculation or on the four arithmetic inputs.
+
+The quartic family's input map is $\beta=51X^2+2504$. If $X=u/v$ in lowest terms and $\beta$ is integral, then $v^2\mid51$; squarefreeness of 51 forces $v=1$. The changed scalar correction $9792=2^6\cdot3^2\cdot17$ has its required local squareclasses checked in the quartic proof and exact certificate.
+
+## Other results proved within this project
+
+The papers prove the odd-product height identity, rational point-chart identities, input normalizations, elementary Lucas growth estimate, forced-prime index bounds, their simultaneous realization under the stated prime-pattern input, and guarded finite-algebra elimination. Weighted companion norms prove the coefficient bound for the specified 29-variable polynomial. Every use of an inherited arithmetic input is identified in the construction proofs.
+
+The degree and coordinate lower bounds, equation-combination theorem, finite-algebra theorem, field-extension obstruction, elliptic presentation obstruction, quadratic upper-height estimate, uniform logarithm truncation estimates, and quadratic square-root chart do not depend on the four global construction inputs. Each has the scope stated in its own paper. The number-field trace-height corollary requires the explicit independence hypotheses given there and does not itself define any ring of integers.
+
+## Exact source provenance
+
+The explicit 29-variable coefficient construction uses the Version 9 source at commit `14e8f601fe0d9173d4a5f084aedc3e07066a7688`. Its arithmetic interpretation incorporates the Version 11 Kato index-set and retained-class correction at commit `650b298a2a18fa956f8859f3ca80e9d7c8cedd82`. The prime-pattern reference is Sun, arXiv:2610.20691v2, Theorem 4.1. The dependency paper provides exact statement identifiers and bibliography.
+
+The baseline quartic source is Version 13 at commit `5bbd74f6a479776a332cbe036809d5dddae63720`. Source paths, normalization conventions, and hashes appear in [the quartic provenance file](../computation/quartic/PROVENANCE.json). Each additional construction records its own exact source, specification, and verification hashes.
+
+The coefficient data, degree counts, algebraic identities, and finite numerical certificates are unconditional assertions about the supplied expressions. Their rational projections equal $\mathbb Z$ under the construction theorems' explicit arithmetic hypotheses. A passing computational receipt certifies its listed finite assertions; it does not replace those hypotheses or determine an ineffective threshold.

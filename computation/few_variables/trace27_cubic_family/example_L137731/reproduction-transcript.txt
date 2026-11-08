@@ -1,0 +1,181 @@
+$ build_forced_prime_source.py --anchor-exponent 137731 --output /workspace/scratch/1eb5e1fd249a/diophantine_research_20261108_v9/few_variables/trace27_cubic_family/example_L137731/source.json.gz
+WARNING: exact family member only; no effective sufficient anchor threshold is known, and this L is not certified to define Z.
+{
+  "anchor_kind": "forced_prime",
+  "share_scalar_height_point": true,
+  "retained_base_count": 26,
+  "total_polynomial_variables_after_finite_algebra": 27,
+  "finite_generator_count": 12,
+  "monic_degree_product": {
+    "base": 2,
+    "exponent": 21
+  },
+  "counts": {
+    "retained.input": 1,
+    "retained.point": 18,
+    "retained.slope": 1,
+    "retained.pole": 4,
+    "retained.scalar_pole": 2,
+    "finite.point": 9,
+    "finite.pole": 2,
+    "finite.scalar_pole": 1
+  }
+}
+{"coefficient_nodes": 7369, "uncompressed_bytes": 199090, "uncompressed_sha256": "3e298cc674ac1a16cfbbf3f48fff3aee8fb6b777ed0625013241bc621aed5e11"}
+
+$ check_forced_prime_source.py /workspace/scratch/1eb5e1fd249a/diophantine_research_20261108_v9/few_variables/trace27_cubic_family/example_L137731/source.json.gz
+{
+  "prime": 76249,
+  "prime_trial_division_bound": 276,
+  "nonquartic_residues": [
+    32862,
+    32509,
+    24048,
+    904,
+    70810
+  ],
+  "fourth_power_tests": [
+    76248,
+    76248,
+    76248,
+    76248,
+    40177
+  ],
+  "normalization_exponent": 137731,
+  "minimum_contact_valuation": 137731,
+  "minimum_scalar_index_valuation": 2616890,
+  "linear_normalizer_residues_checked": 76249,
+  "raw_contact_image_size": 16859,
+  "linear_normalizer_has_no_root": true,
+  "scalar_contact_identity_checked_exactly": true,
+  "external_variables": 27,
+  "finite_rank_exponent": 21,
+  "finite_source_branches": 8,
+  "selected_anchor_sufficient": false,
+  "direct_square_abscissa_charts_checked": 9,
+  "direct_point_identities_checked_over": "Z[h0,h1,Y]",
+  "adaptive_multiplier": "(2*A+B)-(A+B)*sqrt(2), where j^2=A+B*sqrt(2)",
+  "point_chart_extra_finite_cases": 1,
+  "point_chart_extra_retained_variables": 0,
+  "nonvanishing_proof": "The rational component equals 2*(u^3-2*v^3);2 is not a rational cube.",
+  "status": "passed",
+  "source_sha256": "3e298cc674ac1a16cfbbf3f48fff3aee8fb6b777ed0625013241bc621aed5e11",
+  "builder_sha256": "ce6090f6e22d91a709ca0ee2c6211e3d814b0fa5ca571e6932bf283378388103",
+  "checker_sha256": "c0fbae32fb4f8e1d250fd34013fcb26985e1c0a89584b52dbbc2b9dfc5be5646",
+  "unchanged_source_methods_checked": 8,
+  "comparison_source_unchanged_outside_height_block": true,
+  "trace_and_scale_identities_checked": true,
+  "family_parameter": {
+    "name": "L",
+    "value": 137731,
+    "quantified": false,
+    "constraint": "odd integer L>=3",
+    "sufficient_threshold_exists": true,
+    "effective_threshold_known": false,
+    "selected_member_certified_to_define_Z": false
+  },
+  "scope": "Exact expression-family inventory, direct point chart identities, reviewed direct scalar shift, inherited source preservation, trace scale and scalar contact identities, and finite arithmetic checks. This does not certify the selected exponent sufficient; the sufficient threshold is ineffective."
+}
+
+$ compile_source.py /workspace/scratch/1eb5e1fd249a/diophantine_research_20261108_v9/few_variables/trace27_cubic_family/example_L137731/source.json.gz --output /workspace/scratch/1eb5e1fd249a/diophantine_research_20261108_v9/few_variables/trace27_cubic_family/example_L137731
+{
+  "total_variables": 27,
+  "existential_witnesses": 26,
+  "formal_algebra_generators_not_external_variables": 12,
+  "coefficient_dag_nodes": 3032,
+  "maximum_rank_power_of_two_exponent": 21,
+  "degree_bound_power_of_two_exponent": 158,
+  "coefficient_height_bound_double_power_of_two_exponent": 168,
+  "indexed_elliptic_anchor": false,
+  "specification_sha256": "2642988efca1b76d4bb187b09e6afb97a3945b5003d74530929b2cd45634e57b",
+  "specification_bytes": 81064,
+  "source_json_sha256": "3e298cc674ac1a16cfbbf3f48fff3aee8fb6b777ed0625013241bc621aed5e11",
+  "producer_sha256": "e07e45836b0e9471680c206d4362bb8514f498c4ce367e008e8a71251b92c1dd",
+  "verification_status": "Producer assertions passed; independent results are recorded separately in verification.json.",
+  "family_parameter": {
+    "name": "L",
+    "value": 137731,
+    "quantified": false,
+    "constraint": "odd integer L>=3",
+    "sufficient_threshold_exists": true,
+    "effective_threshold_known": false,
+    "selected_member_certified_to_define_Z": false
+  },
+  "arithmetic_status": "A fixed coefficient-family member. Its coefficient conversion and bounds are exact, but this anchor exponent is not certified to exceed the ineffective sufficient threshold.",
+  "representation": "Complete determinant/coefficient/finite-product polynomial specification with a materialized integer coefficient DAG. No finite elliptic exclusion is used in the fixed-prime construction. Rank-sized matrices, finite products, and monomial expansion are specified exactly rather than expanded."
+}
+
+$ verify_specification.py /workspace/scratch/1eb5e1fd249a/diophantine_research_20261108_v9/few_variables/trace27_cubic_family/example_L137731/source.json.gz /workspace/scratch/1eb5e1fd249a/diophantine_research_20261108_v9/few_variables/trace27_cubic_family/example_L137731/polynomial-specification.json
+{
+  "status": "passed",
+  "external_variables": 27,
+  "existential_witnesses": 26,
+  "formal_algebra_generators_not_external_variables": 12,
+  "coefficient_dag_nodes": 3032,
+  "source_point_quartics_checked": 9,
+  "quadratic_zero_nonzero_bits": 3,
+  "source_closed_conditions": 0,
+  "source_guard_atomic_factors_checked": 101,
+  "affine_source_substitutions_checked_exactly": true,
+  "all_repeated_quadratic_root_cases_included": true,
+  "source_point_derivative_guards_present": true,
+  "source_rational_square_clearings_checked": 3,
+  "all_external_base_coordinates_occur": true,
+  "indexed_elliptic_guard_canonical_clearing_checked": false,
+  "degree_and_coefficient_majorants_checked": true,
+  "maximum_rank_power_of_two_exponent": 21,
+  "degree_bound_power_of_two_exponent": 158,
+  "coefficient_height_bound_double_power_of_two_exponent": 168,
+  "direct_square_abscissa_quartics_checked": 9,
+  "scope": "Exact coefficient conversion, guard coverage, finite-case grammar, and degree/coefficient bounds. The finite-algebra theorem justifies the determinant, trace, resultant and finite-product operations. The supplied source arithmetic proof uses its four cited inputs; this computation does not verify those deep theorems.",
+  "family_parameter": {
+    "name": "L",
+    "value": 137731,
+    "quantified": false,
+    "constraint": "odd integer L>=3",
+    "sufficient_threshold_exists": true,
+    "effective_threshold_known": false,
+    "selected_member_certified_to_define_Z": false
+  },
+  "arithmetic_status": "Exact algebraic verification only. No effective sufficient anchor threshold is known, so this selected family member is not certified to define Z.",
+  "source_json_sha256": "3e298cc674ac1a16cfbbf3f48fff3aee8fb6b777ed0625013241bc621aed5e11",
+  "specification_sha256": "2642988efca1b76d4bb187b09e6afb97a3945b5003d74530929b2cd45634e57b",
+  "checker_sha256": "0d6d7753b06386784d7d02ae48b6f8ebd5dcf489c9100de7d72936055336cbf8"
+}
+
+$ verify_family_degree.py --output /workspace/scratch/1eb5e1fd249a/diophantine_research_20261108_v9/few_variables/trace27_cubic_family/example_L137731/degree-family-verification.json
+{
+  "status": "passed",
+  "total_variables": 27,
+  "coefficient_symbols": [
+    "coefficient.ell_L",
+    "coefficient.ell_half"
+  ],
+  "coefficient_symbols_are_quantified": false,
+  "coefficient_symbols_have_degree_zero": true,
+  "no_coefficient_value_substituted_in_degree_calculation": true,
+  "generator_weights": [
+    6,
+    6,
+    6,
+    6,
+    6,
+    6,
+    6,
+    6,
+    6,
+    1568138,
+    1935231,
+    116318
+  ],
+  "maximum_rank": 2097152,
+  "source_chart_cases": 8,
+  "exact_number_of_final_factors": 630360244960710623232,
+  "degree_bound": 232075682770882905150152990100588354340946706432,
+  "degree_bound_power_of_two_exponent": 158,
+  "valid_for": "Every integer specialization of both coefficient symbols, hence every fixed odd L>=3.",
+  "coefficient_height_bound_for_eventually_valid_member": null,
+  "scope": "Uniform degree bound only. Existence of a sufficiently large valid L is mathematical and ineffective.",
+  "checker_sha256": "12ef9d3466ac417cc4a8f7d575687f6222cc0350dc2bd9a407d6096f6a94110d",
+  "formal_coefficient_dag_sha256": "3b2b15656cf3893f1216b79e30b9846d2bbc38e5d48c505e67fab4adef9111bc"
+}

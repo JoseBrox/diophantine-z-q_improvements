@@ -1,0 +1,45 @@
+{
+  "status": "PASS",
+  "arithmetic": "exact sparse Laurent polynomial arithmetic over Q",
+  "general_assumptions": "char(F)=0; d nonsquare; kappa noncube; (U,V) nonzero",
+  "identities_checked": [
+    "general transformed rational and irrational components",
+    "general multiplier norm and determinant",
+    "general expanded transformed-square cubics",
+    "quartic reconstruction after clearing the root denominator",
+    "derivative equals 8*Y*Norm(z_prime)",
+    "independently expanded Q(sqrt(2)) formulas"
+  ],
+  "rational_specialization": {
+    "d": 2,
+    "kappa": 2,
+    "a": "2*U+V",
+    "b": "-U-V",
+    "A": "6*U^3-9*U*V^2-4*V^3",
+    "B": "-4*U^3+6*U*V^2+3*V^3",
+    "quartic": {
+      "degree_in_Y": 4,
+      "total_degree": 6,
+      "monomials": 10,
+      "coefficient_height": 384
+    },
+    "nonzero_square_test": {
+      "total_degree": 10,
+      "monomials": 10,
+      "coefficient_height": 384
+    },
+    "zero_inclusive_square_test": {
+      "total_degree": 12,
+      "monomials": 15,
+      "coefficient_height": 1056
+    },
+    "zero_inclusive_low_height_product": {
+      "total_degree": 10,
+      "degree_in_quantified_variable": 8,
+      "monomials": 12,
+      "coefficient_height": 8
+    }
+  },
+  "proof_boundary": "Nonvanishing uses the proved nonsquare/noncube argument; no finite search is substituted for it.",
+  "checker_sha256": "1e83ab178ed60caccd2e080392a62688544362e6a652370b1985586adf37a39b"
+}

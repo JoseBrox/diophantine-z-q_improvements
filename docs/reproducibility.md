@@ -12,17 +12,23 @@ From the repository root, run:
 python3 scripts/verify.py
 ```
 
-The verifier checks the published file manifest, copies the computational inputs to a temporary directory, restores the compressed tables with hash checks, and runs the full computation there. Published inputs remain unchanged. Each failed equality, hash or bound stops the verification and identifies its stage.
+The verifier checks the published file manifest, copies the computational inputs to a temporary directory, restores the compressed tables with hash checks, and runs the full computation there. Published inputs remain unchanged. Each failed equality, hash or bound stops the verification and identifies its stage. An optional receipt can be saved outside the distributed tree:
 
-The quartic stage reconstructs the pinned source coefficient table, rebuilds the 392-coordinate quadratic system and complete quartic, and independently checks every equation and coefficient. It also verifies the finite prime, congruence, index-size and coefficient-height certificates.
+```sh
+python3 scripts/verify.py --receipt /path/to/verification.json
+```
 
-The 29-variable stage regenerates its rational source and finite-algebra specification, checks the exact scalar contact and the retained source semantics, recomputes the contact-height constant, and independently verifies all monic relations, guards, finite cases, degree bounds and coefficient bounds. The equality certificate checks that the weighted-norm refinement leaves the polynomial itself unchanged.
+The quartic stage reconstructs the pinned coefficient source and its 392-coordinate quadratic system. It then constructs the **389-variable explicit quartic** and the **317-variable quartic family**, including the 329-coordinate algebraic stage used in the derivation. Independent polynomial-dictionary checks compare every residual and every expanded coefficient. The three detector normalizations are checked after their affine changes of coordinates. The finite prime, congruence, index-size and coefficient-height certificates are also verified.
 
-Supporting stages reproduce the elliptic-chart finite-field calculations, the quadratic elliptic-height constants, the anisotropic-form coefficient and residue-field calculations, and the imaginary-quadratic specialization of the 392-variable quartic. The uniform arguments supporting these finite calculations are proved in the corresponding papers.
+The **29-variable explicit construction** is regenerated from its rational source. The checks cover its exact scalar contact, retained source semantics, contact-height constant, monic relations, guards, finite cases, degree bound and coefficient bound. Its weighted-norm certificate verifies the bound annotations without changing the polynomial.
+
+The **27-variable family** is regenerated with the sample coefficient exponent `137731`. Its checks independently verify the nine cubic square-root charts, the scalar normalization and all 76,249 residue classes, the finite-algebra specification, and a degree bound uniform in the fixed coefficient exponent. The sample is supplied to make the algebraic computation reproducible. **No published certificate asserts that this particular exponent is sufficiently large to define the integers.** The theorem proves that all sufficiently large odd exponents work; its sufficient threshold is ineffective.
+
+Supporting stages verify the general quadratic-extension square chart, the scalar normalization identity, elliptic-chart calculations, elliptic-height constants, anisotropic forms, and the stated quadratic-field specialization of the 392-variable arithmetic source. The corresponding papers prove the uniform arguments behind these finite calculations.
 
 ## Running individual checks
 
-Restore the four compressed quartic JSON files before running the individual quartic scripts:
+Restore the four compressed source tables before running the individual quartic scripts:
 
 ```sh
 python3 scripts/restore_data.py
@@ -30,25 +36,36 @@ python3 scripts/restore_data.py
 
 Restoration verifies the exact uncompressed byte length and SHA-256 hash before writing each file. The restored JSON files are ignored by Git. The top-level verifier performs this step automatically in its temporary copy.
 
-The following commands are run from the repository root:
+Run the following commands in order from the repository root to reproduce the quartic constructions:
 
 ```sh
 python3 computation/quartic/build_quartic392.py
 python3 computation/quartic/verify_quartic392.py
-python3 computation/quartic/check_field_specialization392.py
-python3 computation/few_variables/forced_prime29/reproduce.py
-python3 computation/few_variables/verify_elliptic_chart.py
-python3 computation/few_variables/verify_quadratic_height.py
-python3 computation/field_extensions/verify_anisotropic_examples.py
+python3 computation/quartic/build_quartic389.py
+python3 computation/quartic/check_quartic389.py
+python3 computation/quartic/verify_detector_normalizations.py
+python3 computation/quartic/build_quartic329.py
+python3 computation/quartic/check_quartic329.py
+python3 computation/quartic/build_quartic317.py
+python3 computation/quartic/check_quartic317.py
 ```
 
-The individual producers and checkers write their generated data or verification receipts to their own directories. Use the top-level verifier when all published files should remain byte-identical.
+The few-variable constructions and the two new identity certificates can be checked independently:
 
-## Reading the verification results
+```sh
+python3 computation/few_variables/forced_prime29/reproduce.py
+python3 computation/few_variables/trace27_cubic_family/reproduce.py --anchor-exponent 137731
+python3 computation/quadratic_squares/check_quadratic_square_chart.py
+python3 computation/scalar_normalization/check_scalar_normalization.py
+```
 
-A passing receipt verifies the finite assertions listed in that receipt. The coefficient tables and expression graphs are exact polynomial specifications. The 29-variable degree and coefficient bounds are verified from its finite-algebra expression without expanding the final polynomial, using the norm and degree inequalities proved in the paper.
+Individual producers and checkers write their generated data or verification receipts to their own directories. Use the top-level verifier when all published files should remain byte-identical. The [quartic data description](../computation/quartic/README.md) and [few-variable data description](../computation/few_variables/README.md) identify the exact outputs.
 
-The global arithmetic inputs needed to identify the rational projections with $\mathbb Z$ are stated in [Arithmetic inputs](arithmetic_inputs.md). The finite checkers do not independently establish those global theorems.
+## Scope of a passing check
+
+A passing receipt verifies the finite assertions listed in that receipt. The coefficient tables and expression graphs are exact polynomial specifications. The few-variable degree and coefficient bounds are checked without expanding the enormous final polynomials, using the finite-algebra inequalities proved in the accompanying paper.
+
+The global arithmetic inputs needed to identify the rational projections with the integers are stated in [Arithmetic inputs](arithmetic_inputs.md). The finite checkers do not independently establish those global inputs. Likewise, the 27-variable and 317-variable existence theorems use a published height theorem with an ineffective additive constant. Algebraic verification of their families does not certify a numerical sufficient coefficient parameter.
 
 ## Rebuilding the papers
 
@@ -56,13 +73,20 @@ The global arithmetic inputs needed to identify the rational projections with $\
 python3 scripts/build_papers.py
 ```
 
-The build runs LaTeX twice per paper and rejects missing references and overfull boxes. Inspect rendered pages after substantive changes. The published collection consists of nine topic papers:
+The build runs LaTeX three times per paper and rejects missing references, multiply defined references, unresolved rerun requests and overfull boxes. Inspect rendered pages after substantive changes. The collection has sixteen separately readable papers:
 
 | Topic | Paper |
 |:--|:--|
 | Degree and coordinate lower bounds | [Lower bounds](../papers/lower_bounds/lower_bounds_20261108_v8.pdf) |
-| The polynomial with 29 variables | [Few variables](../papers/few_variables/few_variables_20261108_v8.pdf) |
-| The quartic with 392 variables | [Quartic construction](../papers/quartic/quartic392_20261108_v8.pdf) |
+| Twenty-seven variables: existence and uniform degree | [27-variable family](../papers/few_variables27/few_variables27_cubic_20261108_v9.pdf) |
+| Twenty-nine variables: fully specified coefficients | [29-variable polynomial](../papers/few_variables/few_variables_20261108_v8.pdf) |
+| Quartic with 317 variables: existence | [317-variable family](../papers/quartic_existence/quartic317_family_20261108_v9.pdf) |
+| Quartic with 389 variables: fully specified coefficients | [389-variable quartic](../papers/quartic/quartic389_20261108_v9.pdf) |
+| Quadratic arithmetic source for the quartics | [392-variable source and proof](../papers/quartic/quartic392_20261108_v8.pdf) |
+| Uniform aggregate trace heights | [Trace heights](../papers/trace_heights/aggregate_trace_height_20261108_v9.pdf) |
+| A square-root chart over quadratic extensions | [Quadratic squares](../papers/quadratic_squares/quadratic_square_chart_20261108_v9.pdf) |
+| Direct charts for the elliptic subgroup | [Square abscissas](../papers/square_abscissa/square_abscissa_charts_20261108_v9.pdf) |
+| Scalar contact normalization | [Scalar normalization](../papers/scalar_normalization/scalar_normalization_20261108_v9.pdf) |
 | Elimination of guarded finite algebraic choices | [Finite algebra](../papers/finite_algebra/finite_algebra_20261107_v7.pdf) |
 | Systems of equations and number fields | [Systems and field extensions](../papers/systems_and_fields/systems_and_field_extensions_20261108_v8.pdf) |
 | Limits of one-parameter elliptic charts | [Elliptic charts](../papers/elliptic_charts/elliptic_chart_obstruction_20261107_v7.pdf) |
@@ -80,4 +104,4 @@ Each PDF has an editable TeX source beside it. Regenerated PDF bytes may vary wi
 python3 scripts/update_manifest.py
 ```
 
-The 29-variable package also has its own portable `manifest.json`, and the compressed quartic tables have a separate uncompressed-byte inventory. These serve distinct purposes: integrity of the published tree, portability of the finite-algebra module, and exact restoration of the compressed data.
+The explicit 29-variable module has its own portable `manifest.json`, and the compressed quartic source tables have a separate uncompressed-byte inventory. These serve distinct purposes: integrity of the published tree, portability of that finite-algebra module, and exact restoration of the compressed source data.

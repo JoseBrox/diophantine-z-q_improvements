@@ -1,77 +1,332 @@
 {
+  "format": "quartic-provenance-v2",
+  "pathConvention": "All local paths are relative to this computation/quartic directory.",
+  "scope": "Exact polynomial specifications and conditional integer-projection theorems. Finite verification establishes the algebraic tables and stated numerical certificates, not the retained global arithmetic premises. The sufficient coefficient threshold for the 317-variable family is ineffective.",
   "sourceRepository": "https://github.com/elliotglazer/diophantine-z-q",
   "sourceCommit": "5bbd74f6a479776a332cbe036809d5dddae63720",
   "sourceFiles": [
     {
-      "local": "upstream/candidate394-ir.json",
+      "local": "upstream/candidate394-ir.json.gz",
       "remote": "quartics/quartic-394-411/candidate394-ir.json",
-      "normalization": "none"
+      "normalization": "The uncompressed source bytes are preserved."
     },
     {
-      "local": "upstream/polynomial394.json",
+      "local": "upstream/polynomial394.json.gz",
       "remote": "quartics/quartic-394-symbolic-coefficients.json",
-      "normalization": "CRLF to LF; polynomial data unchanged"
+      "normalization": "CRLF converted to LF; polynomial data unchanged."
     }
   ],
-  "mathematicalSources": [
-    "docs/manuscript-revisions/version13/addition.tex",
-    "quartics/quartic-394-411/reviews/mathematical-review.md"
+  "directBaseline": {
+    "repository": "https://github.com/JoseBrox/diophantine-z-q_improvements",
+    "commit": "de7aa60dd1794d7ea62a8a83cdc4bfd22380c74f",
+    "role": "Pinned replication dependency for the specified 389-variable polynomial.",
+    "quadraticSystem": "baseline392/quadratic-system392.json.gz",
+    "polynomial": "baseline392/polynomial392.json.gz",
+    "uncompressedSystemSHA256": "b66609c16f649481ea8edb14785af2fb6f9da151f76d75dfa203f9db189e93a0",
+    "uncompressedPolynomialSHA256": "65f978c8b6418395535816a485093213631623766024555c69ef5db6c185450d"
+  },
+  "mathematicalSources": {
+    "upstream": [
+      "docs/manuscript-revisions/version13/addition.tex",
+      "quartics/quartic-394-411/reviews/mathematical-review.md"
+    ],
+    "localProofs": [
+      "specified389",
+      "family317",
+      "aggregateTraceHeight",
+      "baseline392"
+    ]
+  },
+  "finalConstructions": {
+    "specified389": {
+      "role": "Fully specified integer polynomial; its rational input projection is Z under the stated arithmetic premises.",
+      "totalVariables": 389,
+      "inputCoordinate": 1,
+      "degree": 4,
+      "content": 1,
+      "quadraticResiduals": 361,
+      "parameter": {
+        "name": "A",
+        "base": 80989,
+        "exponent": 54929,
+        "coordinate": false
+      },
+      "symbolicTerms": 6219,
+      "ordinaryMonomials": 6198,
+      "coefficientHeightBound": "H<2^1791357",
+      "largestCoefficientBinaryDigits": 1791357,
+      "quadraticSystem": "final389/quadratic-system389.json",
+      "polynomial": "final389/polynomial389.json",
+      "constructionReport": "final389/construction-report389.json",
+      "independentVerification": "final389/independent-verification389.json",
+      "detectorNormalizationVerification": "final389/detector-normalization-verification.json"
+    },
+    "family317": {
+      "role": "Exact coefficient family with a proved defining-polynomial existence theorem.",
+      "projectionStatement": "There exists an integer N0>=27464 such that every integer N>=N0 gives input projection Z, under the stated arithmetic premises.",
+      "totalVariables": 317,
+      "inputCoordinate": 1,
+      "degree": 4,
+      "content": 1,
+      "quadraticResiduals": 291,
+      "parameter": {
+        "name": "A",
+        "base": 80989,
+        "exponent": "2*N+1",
+        "coordinate": false,
+        "familyDomain": "Integers N>=1"
+      },
+      "symbolicTerms": 5047,
+      "ordinaryMonomials": {
+        "count": 5032,
+        "validFor": "N>=27464",
+        "scope": "Algebraic support bound only; not a sufficient threshold for the defining theorem."
+      },
+      "coefficientHeightBound": "H(P_N)<2^1520*80989^(4*N+2)",
+      "knownNumericalSufficientN": null,
+      "ineffectivity": "The aggregate-trace height theorem has an ineffective additive constant.",
+      "quadraticSystem": "family317/quadratic-family317.json",
+      "polynomial": "family317/polynomial-family317.json",
+      "constructionReport": "family317/construction-report317.json",
+      "independentVerification": "family317/independent-verification317.json"
+    }
+  },
+  "constructionChain": [
+    {
+      "from": "Pinned upstream 394-variable source",
+      "to": "baseline392",
+      "producer": "build_quartic392.py",
+      "checker": "verify_quartic392.py",
+      "role": "Reproduces the fixed direct baseline."
+    },
+    {
+      "from": "baseline392",
+      "to": "specified389",
+      "producer": "build_quartic389.py",
+      "checker": "check_quartic389.py",
+      "change": "Delete three private trace inverse coordinates and their sole-use equations."
+    },
+    {
+      "from": "specified389",
+      "to": "family329",
+      "producer": "build_quartic329.py",
+      "checker": "check_quartic329.py",
+      "role": "Internal algebraic replication stage.",
+      "change": "Replace the product scales by two aggregate-trace scales and retain the fixed coefficient as A=80989^(2*N+1)."
+    },
+    {
+      "from": "family329",
+      "to": "family317",
+      "producer": "build_quartic317.py",
+      "checker": "check_quartic317.py",
+      "change": "Remove twelve private odd-index coordinates; apply the invertible affine input substitution giving beta=51*X^2+2504; replace scalar shift 4896 by 9792."
+    }
   ],
+  "reproduction": {
+    "python": "3.10 or newer; standard library only.",
+    "completeRepositoryCommand": "python3 scripts/verify.py (from the repository root)",
+    "quarticCommandsFromThisDirectory": [
+      "python3 build_quartic389.py",
+      "python3 check_quartic389.py",
+      "python3 verify_detector_normalizations.py",
+      "python3 build_quartic329.py",
+      "python3 check_quartic329.py",
+      "python3 build_quartic317.py",
+      "python3 check_quartic317.py"
+    ],
+    "baselineArchiveHandling": "The new builders read and hash-check baseline392/*.json.gz directly. scripts/restore_data.py restores the separate upstream/final392 reproduction archives."
+  },
+  "baselineFieldSpecialization": {
+    "checker": "check_field_specialization392.py",
+    "certificate": "final392/field-specialization392.json",
+    "scope": "This exact number-field specialization concerns the 392-variable baseline polynomial."
+  },
+  "proofs": {
+    "specified389": {
+      "tex": "../../papers/quartic/quartic389_20261108_v9.tex",
+      "pdf": "../../papers/quartic/quartic389_20261108_v9.pdf",
+      "tex_sha256": "2baab25ac1e7c0b252b77610d936e63ef65c1985a10e9ff446c802264c28a543",
+      "pdf_sha256": "e3d628e0696139738812ea75e7dc1e1b10f4a67cdc5b3bf7a85a95e9278953df"
+    },
+    "family317": {
+      "tex": "../../papers/quartic_existence/quartic317_family_20261108_v9.tex",
+      "pdf": "../../papers/quartic_existence/quartic317_family_20261108_v9.pdf",
+      "tex_sha256": "15ec0987607df84e1cd9248aff8e876c5dcf4bc1f02f6b6730f00de01a9edf13",
+      "pdf_sha256": "cd4272ad75e12d7580ecd9a113b85965be1e6eb5d0ba2e41e52165a1928bd7e6"
+    },
+    "aggregateTraceHeight": {
+      "tex": "../../papers/trace_heights/aggregate_trace_height_20261108_v9.tex",
+      "pdf": "../../papers/trace_heights/aggregate_trace_height_20261108_v9.pdf",
+      "tex_sha256": "cbd05218fffb8017fef70bf54df5f2f7d0f6f5777e5ea5ffd19ebd0d937bf696",
+      "pdf_sha256": "85cdbb1313d37b89a4d0801581783846d5550bd100e618d9cce2062c34ddfb30"
+    },
+    "baseline392": {
+      "tex": "../../papers/quartic/quartic392_20261108_v8.tex",
+      "pdf": "../../papers/quartic/quartic392_20261108_v8.pdf",
+      "tex_sha256": "b2b40a549ab7a9e26e5a8a8f839d1e883282b06b02cf3c3a7b551f1075303aa2",
+      "pdf_sha256": "6d498062c98a1e5484681803b12dc400a452a23d8baae002e056758d79ebbe90"
+    }
+  },
+  "documentation": {
+    "dataFormat": "../../docs/data_format.md",
+    "dataFormatSHA256": "ca27b94d45d28c31da0f462e2c72c8f799a8ed6dab4886fe61a45a5504035401"
+  },
   "files": {
+    "README.md": {
+      "sha256": "72fe451a573caac889bec55d122e1cefd9cc7a530626678b9c41457b7ad6e51d",
+      "bytes": 8823
+    },
+    "baseline392/polynomial392.json.gz": {
+      "sha256": "d61e8d654541ed5aa1b942a781d72fd320cb7122821ac0b902e07724f40fe053",
+      "bytes": 57559,
+      "uncompressed": {
+        "sha256": "65f978c8b6418395535816a485093213631623766024555c69ef5db6c185450d",
+        "bytes": 949546
+      }
+    },
+    "baseline392/quadratic-system392.json.gz": {
+      "sha256": "4e90eb91c8504dcba04a70a4097a411612ca24605b839d25b5e27cc29c0656cd",
+      "bytes": 18081,
+      "uncompressed": {
+        "sha256": "b66609c16f649481ea8edb14785af2fb6f9da151f76d75dfa203f9db189e93a0",
+        "bytes": 374548
+      }
+    },
+    "build_quartic317.py": {
+      "sha256": "77d51d2782828296e98fe6f076269022afc0135077322500eaf5d0d66e233240",
+      "bytes": 4933
+    },
+    "build_quartic329.py": {
+      "sha256": "e063d9bfaccac654a5d4d018d8cdb5e7b4a40730ec7849df356be4e08a4eda3b",
+      "bytes": 4846
+    },
+    "build_quartic389.py": {
+      "sha256": "77c31e4531ebfdbe7410f24440c99c46633550452d0d3428346e1eeaac32983b",
+      "bytes": 4394
+    },
     "build_quartic392.py": {
       "sha256": "69f523d2bdd69a990b8571a06cd5846473ebbcd7b6bc3dc047458e8043bffc60",
       "bytes": 6773
-    },
-    "verify_quartic392.py": {
-      "sha256": "092ac1d69bec2f3d59d60584fbc831232377eb48967afba975ac8ef8e02cda59",
-      "bytes": 12706
-    },
-    "README.md": {
-      "sha256": "b65d08dee4e549c3dcde7886108481780d502a8b2418c6684ea6b42697e03efd",
-      "bytes": 5636
-    },
-    "upstream/candidate394-ir.json": {
-      "sha256": "7eb02f9913b55d60a790a287616f1bb80d9f93523e9f11e12481c9ab955746a5",
-      "bytes": 453081,
-      "distributed_as": "upstream/candidate394-ir.json.gz"
-    },
-    "upstream/polynomial394.json": {
-      "sha256": "eb557a8c51bec3e6199261508834c0751a9534f75201d223355f3b49503524ed",
-      "bytes": 910685,
-      "distributed_as": "upstream/polynomial394.json.gz"
-    },
-    "final392/quadratic-system392.json": {
-      "sha256": "b66609c16f649481ea8edb14785af2fb6f9da151f76d75dfa203f9db189e93a0",
-      "bytes": 374548,
-      "distributed_as": "final392/quadratic-system392.json.gz"
-    },
-    "final392/polynomial392.json": {
-      "sha256": "65f978c8b6418395535816a485093213631623766024555c69ef5db6c185450d",
-      "bytes": 949546,
-      "distributed_as": "final392/polynomial392.json.gz"
-    },
-    "final392/construction-report392.json": {
-      "sha256": "f5100bd9758f93c0ce65d8ddbb1f893bf21432c448e00fc378ec6ff67f3adc43",
-      "bytes": 1435
-    },
-    "final392/independent-verification392.json": {
-      "sha256": "aa0beabd81ef532a490ca4605758796a0a54bcce2a72f7bfcdc5375d7ab2b0e3",
-      "bytes": 2482
     },
     "check_field_specialization392.py": {
       "sha256": "2d3732be6764f0e392528a7b59705ccf3f12a409f25962412d69bf169be2b20c",
       "bytes": 2323
     },
+    "check_quartic317.py": {
+      "sha256": "9e829abc42ec807b51c5b25cf68b208e00f840a55d31c850d14384a87e814f41",
+      "bytes": 6612
+    },
+    "check_quartic329.py": {
+      "sha256": "e369421689618d8e9813d6291df4d45150dd3ceee8bc8100d896568f56eb75aa",
+      "bytes": 5986
+    },
+    "check_quartic389.py": {
+      "sha256": "130d298ee97a05112d582651ee6cb573ee6c35a466803363699e2eed132c16b4",
+      "bytes": 6101
+    },
+    "family317/construction-report317.json": {
+      "sha256": "4a909cf16acf0a42a8ab5add91b139ce55bf613af2ca0581b9fa084823863518",
+      "bytes": 925
+    },
+    "family317/independent-verification317.json": {
+      "sha256": "a97686953bf6597f2326280712b6209f5fccc4ae83b342f2488fb70ecb49c6a7",
+      "bytes": 6043
+    },
+    "family317/polynomial-family317.json": {
+      "sha256": "15027a2510f03944e008938508c8bd9b552e940063eb8005baaf7710ea0702b2",
+      "bytes": 768181
+    },
+    "family317/quadratic-family317.json": {
+      "sha256": "21ba60789e880826dff7298301ffcda1f33e465ed09a45ecf93170069deb9157",
+      "bytes": 304806
+    },
+    "family329/construction-report329.json": {
+      "sha256": "c95abdf3dea062412f77ddce225a034ccf75dfc2a5af5402db4fb469863a718b",
+      "bytes": 8630
+    },
+    "family329/independent-verification329.json": {
+      "sha256": "7e316179c09f75a8f0506db1c4f33445858075785e393d5160ed96e42f756bf9",
+      "bytes": 701
+    },
+    "family329/polynomial-family329.json": {
+      "sha256": "d5868a5880cc3116eff0a2dc22abd60eac9738f8f28aa2ee4bbf45b63d8eb858",
+      "bytes": 808036
+    },
+    "family329/quadratic-family329.json": {
+      "sha256": "9a9ece7045ebc14f1101aaf85bb7566434d4c411c9820669015242ba5df4170b",
+      "bytes": 320197
+    },
+    "final389/construction-report389.json": {
+      "sha256": "7a0aa68d4d1ea51c4e9e6906f2591939940c60a08f033a4f4e85d92e18ded935",
+      "bytes": 1205
+    },
+    "final389/detector-normalization-verification.json": {
+      "sha256": "7e6449271cf8d0e81c4d16084753a726c80995ee98263ae27fc20354cd940e8d",
+      "bytes": 1310
+    },
+    "final389/independent-verification389.json": {
+      "sha256": "5367a122855711ed99509291183f014f4d27eac5e7c1fb1e4fab7b168951f936",
+      "bytes": 782
+    },
+    "final389/polynomial389.json": {
+      "sha256": "debd9c8c9cba39e5a845ff63920b3c91dcee2b45be00905ecb0c00b6b0c73205",
+      "bytes": 948418
+    },
+    "final389/quadratic-system389.json": {
+      "sha256": "f7fb5bdf6a3d47275f1d78ed5e275954e2cc1f21fec8204d6a395bfc2f8b5394",
+      "bytes": 373173
+    },
+    "final392/construction-report392.json": {
+      "sha256": "f5100bd9758f93c0ce65d8ddbb1f893bf21432c448e00fc378ec6ff67f3adc43",
+      "bytes": 1435
+    },
     "final392/field-specialization392.json": {
       "sha256": "644de96c4ad82a6aeafb425674e215f4aad5d1419ac35cb914a6e1aec722697c",
       "bytes": 1323
+    },
+    "final392/independent-verification392.json": {
+      "sha256": "aa0beabd81ef532a490ca4605758796a0a54bcce2a72f7bfcdc5375d7ab2b0e3",
+      "bytes": 2482
+    },
+    "final392/polynomial392.json.gz": {
+      "sha256": "d61e8d654541ed5aa1b942a781d72fd320cb7122821ac0b902e07724f40fe053",
+      "bytes": 57559,
+      "uncompressed": {
+        "sha256": "65f978c8b6418395535816a485093213631623766024555c69ef5db6c185450d",
+        "bytes": 949546
+      }
+    },
+    "final392/quadratic-system392.json.gz": {
+      "sha256": "4e90eb91c8504dcba04a70a4097a411612ca24605b839d25b5e27cc29c0656cd",
+      "bytes": 18081,
+      "uncompressed": {
+        "sha256": "b66609c16f649481ea8edb14785af2fb6f9da151f76d75dfa203f9db189e93a0",
+        "bytes": 374548
+      }
+    },
+    "upstream/candidate394-ir.json.gz": {
+      "sha256": "0214ff877d29775c3226cf0d1ba07942994bddc540e057afca802904a7e1d099",
+      "bytes": 18668,
+      "uncompressed": {
+        "sha256": "7eb02f9913b55d60a790a287616f1bb80d9f93523e9f11e12481c9ab955746a5",
+        "bytes": 453081
+      }
+    },
+    "upstream/polynomial394.json.gz": {
+      "sha256": "c0bdf5d8718b042393018d70d9785a127b1c8388223ca756d90e5ede38a05c05",
+      "bytes": 59794,
+      "uncompressed": {
+        "sha256": "eb557a8c51bec3e6199261508834c0751a9534f75201d223355f3b49503524ed",
+        "bytes": 910685
+      }
+    },
+    "verify_detector_normalizations.py": {
+      "sha256": "8b109c9bc5b6bfeef00b7162dd713d9cd52b39d0ebef7df4721a24e0943635d8",
+      "bytes": 5471
+    },
+    "verify_quartic392.py": {
+      "sha256": "092ac1d69bec2f3d59d60584fbc831232377eb48967afba975ac8ef8e02cda59",
+      "bytes": 12706
     }
-  },
-  "scope": "Completed exact construction and conditional projection theorem; the accompanying paper explicitly states the inherited arithmetic premises. No finite audit certifies those premises.",
-  "proof": {
-    "tex": "../../papers/quartic/quartic392_20261108_v8.tex",
-    "pdf": "../../papers/quartic/quartic392_20261108_v8.pdf",
-    "tex_sha256": "b2b40a549ab7a9e26e5a8a8f839d1e883282b06b02cf3c3a7b551f1075303aa2",
-    "pdf_sha256": "6d498062c98a1e5484681803b12dc400a452a23d8baae002e056758d79ebbe90"
   }
 }

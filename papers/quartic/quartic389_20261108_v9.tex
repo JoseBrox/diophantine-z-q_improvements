@@ -1,0 +1,364 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,booktabs,microtype,xcolor}
+\usepackage[margin=26mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue!45!black,citecolor=blue!45!black,urlcolor=blue!45!black]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}\newtheorem{remark}[theorem]{Remark}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\DeclareMathOperator{\Tr}{Tr}\DeclareMathOperator{\N}{N}
+\setlength{\emergencystretch}{2em}
+\title{A quartic in 389 variables from local nonvanishing}
+\author{}\date{8 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+We specify an integer quartic in 389 total variables, with 6198 nonzero
+monomials, by 361 quadratic equations and a complete coefficient table.
+Its rational input projection is the integers under the same arithmetic
+premises as the specified 392-variable construction. Three rational
+inverse witnesses can be omitted: at every prime where a local
+divisibility conclusion is required, the remaining equations already
+force their denominators to be nonzero. The additional fibers have
+empty contact radicals, for which the required divisibility statement
+is vacuous. The argument explicitly covers the degenerate value at
+which the detector's rational formula has a zero denominator.
+The polynomial has content one and coefficient height less than
+$2^{1791357}$. The largest coefficient is exactly three smaller than
+that of the starting polynomial.
+\end{abstract}
+
+\section{The specified polynomial and its arithmetic scope}
+For $F\in\Z[X,Y_1,\ldots,Y_m]$, its rational input projection is
+\[
+ \{x\in\Q:\exists\boldsymbol y\in\Q^m,\ F(x,\boldsymbol y)=0\}.
+\]
+Every variable count includes $X$. Degree means total degree, and
+coefficient height means the largest absolute integer coefficient after
+the fixed constants have been substituted.
+
+\begin{theorem}\label{thm:main}
+The files \nolinkurl{quadratic-system389.json} and
+\nolinkurl{polynomial389.json} specify 361 integer quadratic polynomials
+$Q_i$ in 389 coordinates and their sum of squares
+$P_{389}=\sum_iQ_i^2$. Its degree is exactly four, its integer content
+is one, and it has 6198 nonzero coordinate monomials. Its largest
+coefficient has 1791357 binary digits.
+
+Under the arithmetic premises of the 392-variable construction
+\cite{Construction392}, its rational input projection is exactly $\Z$.
+No additional prime-pattern or arithmetic existence assertion is used.
+\end{theorem}
+
+The retained arithmetic premises are the specified elliptic-group and
+index-height assertions, the contact-height theorem, the pole obstruction
+and simultaneous pole realization, and Sun's simultaneous prime-pattern
+theorem with the quantitative weighted selection premise used in the
+quartic construction. These hypotheses are stated precisely in
+\cite[Section~2]{Construction392}. The present theorem proves a new
+implication from those premises. The coefficient checks do not establish
+the deep arithmetic inputs.
+
+The constant in the coefficient table is
+\[
+                         A=80989^{54929}.
+\]
+It is an integer coefficient, not an additional coordinate. The starting
+polynomial is fixed by commit
+\begin{center}\small
+\nolinkurl{de7aa60dd1794d7ea62a8a83cdc4bfd22380c74f}
+\end{center}
+of the repository in \cite{Construction392}. Its full quadratic system
+and coefficient table are included as exact compressed source files.
+
+\section{The detector equations}
+Put $K=\Q(\rho)$, where $\rho^2=2$, and let $\sigma$ denote its
+nontrivial automorphism. For $W=w_0+w_1\rho$ one has
+\[
+                       \N(W)=w_0^2-2w_1^2.
+\]
+In particular, $\N(W)=0$ if and only if $W=0$.
+
+For the three retained height detectors write
+\[
+ a\in\{1,C_0^2,(1+C_1^2)^2\},\qquad t=a\lambda,
+ \qquad\delta=t-1,
+\]
+where $C_0+C_1\rho$ is the product of the four root abscissae.
+The retained root charts and their real embeddings give $C_0>0$;
+all three values of $a$ are therefore nonzero rational squares.
+The stored coordinates use affine substitutions. To remove any
+ambiguity, if $u$ and $v$ are the coordinates named
+\nolinkurl{heightProduct.Z.0} and \nolinkurl{heightProduct.Z.1}, then
+\[
+ C_0=2u,\qquad C_1=4v.
+\]
+The stored quantities named \nolinkurl{scale0},
+\nolinkurl{x1Square}, and \nolinkurl{scale1} are $u^2,v^2,v^4$.
+Their consumers, rather than these names alone, recover the actual
+scales. Specifically, the stored coordinates $t_1^*,t_2^*$ satisfy
+\[
+ t_1^*=\lambda u^2,\qquad
+ t_2^*=\lambda v^2+8\lambda v^4,
+\]
+and the actual inputs are
+\[
+ t_0=\lambda,\qquad t_1=4t_1^*=C_0^2\lambda,
+ \qquad t_2=\lambda+32t_2^*=(1+C_1^2)^2\lambda.
+\]
+These identities follow by direct substitution into the retained
+quadratic rows. The independent normalization checker verifies them
+as polynomial identities, together with the weight and pole-input
+identities below.
+Set
+\[
+ \Theta=\left\{0,-\tfrac12,-1,\tfrac1{2399},-\tfrac{32}{407}\right\},
+ \qquad F(t)=\prod_{\theta\in\Theta}(t-\theta).
+\]
+Let $M(t)$ be the product of the primes $p>76176$ for which
+$v_p(t-\theta)$ is positive and odd for at least one
+$\theta\in\Theta$.
+
+With these actual coordinates, the retained quadratic gates imply
+the polynomial identity
+\begin{equation}\label{eq:e}
+                            F(t)e=(a\delta)^5.
+\end{equation}
+Whenever $\delta F(t)\ne0$, put
+\[
+ R=\frac{F(t)}{a^5\delta^6},\qquad
+ q_m=\frac{R^{1-2m}}{\delta^{2m+2}},
+ \qquad
+ W=\prod_j(1+q_{m_j}D_j^2)=w_0+w_1\rho.
+\]
+Here the $D_j\in K$ are the retained field-valued point, comparison,
+input, and Lucas tests. Their assigned orders are $m_j\in\{1,10,40\}$.
+The grouped products and power gates of the starting system compute
+exactly this product. Their definitions are polynomial identities;
+no deleted inverse witness is used by these gates.
+
+The final detector rows, apart from its pole certificate, are
+\begin{equation}\label{eq:trace-clearing}
+ w_0^2-2w_0T-2w_1^2=0,
+ \qquad e\delta b=T^2.
+\end{equation}
+The starting system additionally imposed $w_0I=1$ with a private
+rational inverse witness $I$. We delete this last row and this
+coordinate in each detector. The five normalized pole rows are
+retained. Whenever $b\ne0$, they imply the same obstruction as the
+original pole equations: $v_p(b)$ cannot be negative and odd for
+$p\notin\{2,3,17\}$.
+
+\section{Local nonvanishing without inverse witnesses}
+
+\begin{lemma}\label{lem:contacts}
+For every rational solution of the modified system, $F(t)\ne0$.
+If $p\mid M(t)$, then $\delta\ne0$, $v_p(\delta)=0$, and
+$v_p(R)$ is odd. If $\delta=0$, then $M(t)=1$.
+\end{lemma}
+\begin{proof}
+If $F(t)=0$, then $t\in\Theta$, and hence $\delta\ne0$ because
+$1\notin\Theta$. This contradicts \eqref{eq:e}, since $a\ne0$.
+
+For $p>76176$, every nonzero difference of two elements of
+$\Theta\cup\{1\}$ is a $p$-adic unit. This follows by direct
+factorization of their rational numerators and denominators. Thus a
+prime in $M(t)$ divides exactly one factor of $F(t)$ to positive odd
+order, while $\delta$ is a unit. Since $a$ is a rational square,
+\[
+                    v_p(R)=v_p(F(t))-5v_p(a)
+\]
+is odd. Its sign has not yet been assumed.
+
+Finally $\delta=0$ gives $t=1$. The five differences $1-\theta$ have
+no numerator or denominator prime greater than 76176. Consequently
+$M(1)=1$.
+\end{proof}
+
+\begin{lemma}\label{lem:local-nonzero}
+If $M(t)>1$, then $W,w_0,T,b$ are nonzero and the retained detector
+equations have their intended rational interpretation. In particular,
+\[
+              T=\frac1{\Tr(W^{-1})},\qquad
+              b=\frac{R}{\Tr(W^{-1})^2}.
+\]
+\end{lemma}
+\begin{proof}
+Choose $p\mid M(t)$ and put $\nu=v_p(R)$, an odd integer by
+Lemma~\ref{lem:contacts}. The prime $p$ is unramified in $K$. At every
+place $v$ above $p$, normalized by $v(p)=1$, its value group on $K^\times$
+is $\Z$. Since $\delta$ is a unit,
+\[
+             v(q_mD^2)=(1-2m)\nu+2v(D)
+\]
+is odd whenever $D\ne0$. It cannot be the valuation of $-1$.
+Therefore every factor $1+q_mD^2$ is nonzero, also when $D=0$,
+and hence $W\ne0$.
+
+If $w_0=0$, the first equation of \eqref{eq:trace-clearing} gives
+$w_1=0$, contrary to $W\ne0$. Thus $w_0\ne0$. Its norm is nonzero,
+and the same equation gives
+\[
+ T=\frac{\N(W)}{2w_0}
+   =\frac1{\Tr(W^{-1})}\ne0.
+\]
+Moreover \eqref{eq:e} gives $e\delta=1/R\ne0$. The second equation
+of \eqref{eq:trace-clearing} now yields $b=RT^2\ne0$.
+All divisions are justified by the remaining equations and the chosen
+contact prime; none uses the deleted inverse row.
+\end{proof}
+
+\begin{proposition}\label{prop:local-tests}
+For every $p\mid M(t)$ there is a place $v$ above $p$ at which
+\[
+                         v(D_j)\ge m_j\quad\text{for every }j.
+\]
+The asserted divisibility consequences of the starting detector remain
+valid when $M(t)=1$.
+\end{proposition}
+\begin{proof}
+By Lemma~\ref{lem:local-nonzero} the pole input and the norm-trace
+formula are defined and nonzero. For each $v\mid p$, parity gives
+\[
+ v(1+q_{m_j}D_j^2)
+ =\min\{0,\nu+2(v(D_j)-m_j\nu)\}\le0.
+\]
+Put $\ell=\max_{v\mid p}v(W)\le0$. The trace inequality implies
+\[
+ v_p(\Tr(W^{-1}))\ge-\ell,
+ \qquad v_p(T)\le\ell.
+\]
+The valuation of $b=RT^2$ is odd. The pole obstruction therefore
+implies
+\[
+                      0<v_p(b)\le\nu+2\ell.
+\]
+In particular $\nu>0$ and $\ell>-\nu/2$. At a place attaining
+$\ell$, every factor valuation is at least $\ell$, because all the
+factor valuations are nonpositive and their sum is $\ell$.
+Consequently
+\[
+              v(D_j)>(m_j-3/4)\nu\ge m_j-3/4.
+\]
+The value group is integral, so $v(D_j)\ge m_j$.
+
+If $M(t)=1$, every conclusion of the form $M(t)^k\mid N$ is
+automatic. No application of a rational pole formula is needed for
+that detector in this case. This includes $t=1$, for which $h(t)=0$.
+\end{proof}
+
+\begin{remark}
+The argument is local in its use of nonvanishing but proves a global
+integer-projection statement. It does not assert that every new rational
+witness tuple lifts to one of the old tuples: a detector with empty
+contact radical can have $W=0$. Such a tuple is handled by the vacuous
+divisibility conclusion, not by an undefined reciprocal.
+\end{remark}
+
+\section{Soundness and completeness}
+
+\begin{proof}[Proof of the projection assertion in Theorem~\ref{thm:main}]
+All retained point charts, scalar equations, the forced-prime
+normalizer, and the scalar nonzero guard are unchanged. The three
+deleted coordinates occur only in their respective inverse rows.
+The arithmetic point interpretations and the fixed-prime index estimate
+therefore remain valid before any use of a height detector.
+
+Proposition~\ref{prop:local-tests} gives exactly the local test orders
+required at every prime in each of the three contact radicals. The
+formal logarithm comparison, integer-label congruences and the two
+height contradictions in \cite[Sections~2 and~5]{Construction392}
+use these conclusions. They do not require a detector denominator at
+primes outside its contact radical. They are consequently unchanged.
+The contact-height bound itself is a statement about the rational
+number $t$; it applies also when its contact radical is one. By
+Lemma~\ref{lem:contacts}, none of its excluded contact values occurs.
+
+In particular the unchanged argument proves that the Lucas residual
+is zero and then that the input label
+\[
+                         \beta=51(2X+1)^2+2504
+\]
+equals its odd integer elliptic index. If $2X+1=u/v$ is in lowest
+terms with $v>0$, this forces $v^2\mid51$, so $v=1$; oddness of
+$\beta$ then makes $u$ odd. Hence $X\in\Z$.
+
+Conversely every integer input has a solution of the 392-variable
+system under the same arithmetic premises. Forgetting the three
+private inverse coordinates gives a solution of the new system.
+There are no new constraints and no new simultaneous-choice problem.
+Finally a sum of rational squares is zero exactly when every square
+is zero, proving the assertion for $P_{389}$.
+\end{proof}
+
+\section{Exact data and independent verification}
+The source coordinate numbers and residual numbers are inherited from
+the upstream arithmetic circuit. Their deletion is the complete change:
+\begin{center}
+\begin{tabular}{ccc}
+\toprule Source coordinate & Coordinate in the 392 system & Source row\\
+\midrule382&221&334\\430&250&384\\478&279&434\\\bottomrule
+\end{tabular}
+\end{center}
+Each deleted row is $1-w_0I=0$. Every other primitive integer residual
+is retained verbatim, apart from renumbering its coordinates in increasing
+order. Thus the counts are $392-3=389$ coordinates and $364-3=361$
+quadratic residuals.
+
+The producer \nolinkurl{build_quartic389.py} performs this deletion
+and expands the complete sum of squares. The separate program
+\nolinkurl{check_quartic389.py} imports no producer. It reconstructs
+the original 392-variable polynomial, checks the sole-use inverse
+coordinates and every retained row, and compares the entire new
+coefficient table in two ways: direct squaring and subtraction of
+the three deleted guard squares.
+
+The additional program \nolinkurl{verify_detector_normalizations.py}
+independently substitutes the complete affine coordinate dictionary
+into the relevant residuals, using exact rational arithmetic. The
+three weight rows become $F(t)e-(a\delta)^5$ multiplied, respectively,
+by $1952786$, $976393/8$, and $1952786$. The retained rows also give
+$\delta^3q_1=e$ and $e\delta b=T^2$. The toric power equations give
+$q_{10}=e^{19}/\delta^3$ and $q_{40}=e^{79}/\delta^3$ on their
+nonzero domain. Thus the affine substitutions do not change the
+semantic scales, weights, or pole inputs.
+
+There are 6219 terms when powers of the fixed integer $A$ are listed
+separately, and 6198 ordinary nonzero coordinate monomials after equal
+coordinate monomials are collected. Exactly six nonconstant monomials
+disappear. The constant coefficient decreases by three. Its unchanged
+leading term is
+\[
+                    11082847123849826043664\cdot A^2.
+\]
+Exact integer comparison proves that the constant coefficient is
+still the largest coefficient in absolute value and still has 1791357
+binary digits. A retained coefficient equal to one gives content one;
+a retained nonzero quartic monomial gives degree exactly four.
+
+Run the following commands in the construction directory:
+\begin{verbatim}
+python3 build_quartic389.py
+python3 check_quartic389.py
+python3 verify_detector_normalizations.py
+\end{verbatim}
+The accompanying hashes bind the complete polynomial and quadratic
+system. The finite computation checks the algebra and the asserted
+numerical invariants. The local argument and its arithmetic inputs
+are stated separately above.
+
+\begin{thebibliography}{9}
+\bibitem{Construction392}
+J.~Brox and contributors, \emph{A forced prime condition and an explicit
+quartic in 392 variables}, 8 November 2026, source and computational data
+at commit \nolinkurl{de7aa60dd1794d7ea62a8a83cdc4bfd22380c74f},
+\url{https://github.com/JoseBrox/diophantine-z-q_improvements}.
+\bibitem{GlazerV13}
+E.~Glazer and contributors, \emph{An explicit quartic defining the
+integers in the rationals}, Version 13, commit
+\nolinkurl{5bbd74f6a479776a332cbe036809d5dddae63720},
+\url{https://github.com/elliotglazer/diophantine-z-q}.
+\end{thebibliography}
+\end{document}

@@ -1,0 +1,300 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,microtype}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newcommand{\Q}{\mathbb Q}
+\DeclareMathOperator{\N}{N}
+\title{A single quartic chart for square roots in a quadratic extension}
+\author{}\date{8 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+Let $F$ be a number field and let $K/F$ be quadratic. We construct
+a monic quartic with coefficients polynomial in the two components
+of an element of $K$, whose nonzero roots in $F$ recover all its
+square roots. A cubic change of coordinates ensures that the
+chosen rational component never vanishes. The proof uses only
+an element of $F$ that is not a cube. It requires neither a choice
+among several component charts nor information about rational
+points on an auxiliary curve. We obtain a polynomial of total
+degree ten, with one quantified variable over $F$, testing whether
+a nonzero element of $K$ is a square. Including zero gives two
+alternatives: total degree twelve with degree four in the quantified
+variable, or total degree ten with degree eight in that variable.
+The chart used over $\Q(\sqrt2)$ has integer coefficients given
+explicitly; the latter square test has coefficient height eight.
+\end{abstract}
+
+\section{A cubic with no nonzero zero}
+
+Let $F$ be a field of characteristic zero, let
+$d\in F^\times\setminus F^{\times2}$, and put
+$K=F(\rho)$ with $\rho^2=d$. Choose
+$\kappa\in F^\times\setminus F^{\times3}$.
+For an element $u+v\rho$ of $K$ its \emph{rational component}
+means $u\in F$, irrespective of whether $F=\Q$.
+
+\begin{lemma}\label{lem:cubic}
+For $z=u+v\rho\ne0$, write
+\[
+ z^2=U+V\rho,\qquad U=u^2+dv^2,\quad V=2uv.
+\]
+Define
+\begin{equation}\label{eq:multiplier}
+ a=U+\frac{\kappa}{2d}V,\qquad
+ b=-\frac{\kappa}{d^2}U-\frac12V,\qquad m=a+b\rho.
+\end{equation}
+Then
+\begin{equation}\label{eq:cubic}
+ mz=(u^3-\kappa v^3)
+       +\left(dv^3-\frac{\kappa}{d^2}u^3\right)\rho.
+\end{equation}
+In particular the rational component of $mz$ is nonzero.
+Moreover $m\ne0$ for every $(U,V)\in F^2\setminus\{(0,0)\}$,
+whether or not $U+V\rho$ is a square.
+\end{lemma}
+\begin{proof}
+The rational component of $mz$ is $au+dbv$. Substitution of
+$U=u^2+dv^2$ and $V=2uv$ gives $u^3-\kappa v^3$.
+The same substitution in $av+bu$ gives the other component
+in \eqref{eq:cubic}. If $u^3=\kappa v^3$, either $v\ne0$
+and $\kappa=(u/v)^3$, or $v=u=0$. Both are excluded.
+
+The determinant of the linear map $(U,V)\mapsto(a,b)$ is
+\[
+ \frac{\kappa^2-d^3}{2d^3}.
+\]
+It is nonzero, since $\kappa^2=d^3$ would make
+$d=(\kappa/d)^2$ a square. As $1,\rho$ are linearly independent
+over $F$, the multiplier can vanish only when $a=b=0$, and
+therefore only when $U=V=0$.
+\end{proof}
+
+Every number field admits the required choice of $\kappa$.
+Indeed, in its ring of integers choose a nonzero prime ideal
+$\mathfrak p$ and an element
+$\kappa\in\mathfrak p\setminus\mathfrak p^2$.
+Then $v_{\mathfrak p}(\kappa)=1$, whereas the valuation of a cube
+is divisible by three. Thus Lemma~\ref{lem:cubic} applies to
+every quadratic extension of every number field, with the
+coefficient $\kappa$ chosen for that base field.
+
+One may also check the multiplier through its norm:
+\begin{equation}\label{eq:norm}
+ a^2-db^2=\frac{d^3-\kappa^2}{4d^3}
+                              (4U^2-dV^2).
+\end{equation}
+Both factors on the right are nonzero for $(U,V)\ne(0,0)$.
+
+\section{The quartic and its inverse}
+
+Regard $a,b$ in \eqref{eq:multiplier} as linear polynomials in
+$U,V$. Define cubic polynomials over $F$ by
+\begin{equation}\label{eq:AB}
+ A=(a^2+db^2)U+2dabV,\qquad
+ B=(a^2+db^2)V+2abU.
+\end{equation}
+They satisfy the exact identity
+\begin{equation}\label{eq:square}
+                  m^2(U+V\rho)=A+B\rho.
+\end{equation}
+Put
+\begin{equation}\label{eq:quartic}
+ J(U,V,Y)=Y^4-4A(U,V)Y^2+4dB(U,V)^2.
+\end{equation}
+This polynomial is monic of degree four in $Y$ and has total
+degree at most six.
+
+\begin{theorem}\label{thm:chart}
+Let $(U,V)\in F^2\setminus\{(0,0)\}$. Then $U+V\rho$ is
+a square in $K$ if and only if there exists $Y\in F^\times$
+with $J(U,V,Y)=0$. Every such root recovers a square root by
+\begin{equation}\label{eq:inverse}
+ z=\frac{a-b\rho}{a^2-db^2}
+                  \left(\frac Y2+\frac BY\rho\right).
+\end{equation}
+Conversely, every square root $z$ of $U+V\rho$ is recovered by
+setting $Y$ equal to twice the rational component of $mz$.
+Every permitted root $Y$ is simple.
+\end{theorem}
+\begin{proof}
+If $z^2=U+V\rho$, put $z'=mz=u'+v'\rho$.
+Lemma~\ref{lem:cubic} gives $u'\ne0$. By
+\eqref{eq:square},
+\[
+       (u')^2+d(v')^2=A,\qquad 2u'v'=B.
+\]
+Thus $Y=2u'$ is nonzero, $v'=B/Y$, and
+$Y^4-4AY^2+4dB^2=0$. The inverse formula follows by
+dividing $z'$ by $m$.
+
+Conversely, a nonzero root $Y$ of $J$ satisfies
+\[
+ \left(\frac Y2+\frac BY\rho\right)^2=A+B\rho,
+\]
+because the rational component of the square is
+$Y^2/4+dB^2/Y^2=A$. The multiplier is nonzero by
+Lemma~\ref{lem:cubic}, so \eqref{eq:square} and
+\eqref{eq:inverse} give $z^2=U+V\rho$.
+
+At such a root, write $z'=Y/2+(B/Y)\rho=u'+v'\rho$.
+Then
+\[
+ \frac{\partial J}{\partial Y}
+    =4Y^3-8AY
+    =8Y\bigl((u')^2-d(v')^2\bigr)
+    =8Y\N_{K/F}(z')\ne0.
+\]
+The last inequality follows because $z'=mz$ is a nonzero
+element of a field.
+\end{proof}
+
+\begin{corollary}\label{cor:test}
+For $(U,V)\ne(0,0)$, the element $U+V\rho$ is a square in $K$
+if and only if
+\begin{equation}\label{eq:reciprocal}
+       1-4A(U,V)T^2+4dB(U,V)^2T^4=0
+\end{equation}
+has a solution $T\in F$. This is a polynomial of total degree
+at most ten in $(U,V,T)$. Without excluding zero, the equivalent
+test with one quantified variable is
+\begin{equation}\label{eq:zero}
+ (U^2-dV^2)\bigl(1-4A(U,V)T^2
+                         +4dB(U,V)^2T^4\bigr)=0,
+\end{equation}
+of total degree at most twelve.
+\end{corollary}
+\begin{proof}
+Equation~\eqref{eq:reciprocal} excludes $T=0$, so it is
+equivalent to \eqref{eq:quartic} under $Y=1/T$.
+Since $d$ is not a square, $U^2-dV^2=0$ holds precisely when
+$U=V=0$. This proves \eqref{eq:zero}, including the zero
+square.
+\end{proof}
+
+\section{A degree-ten test including zero}
+
+If the objective is square membership rather than a finite quartic
+chart with rational reconstruction on one open set, a second
+formula has lower total degree and smaller coefficients. It does
+not require a noncube in the base field.
+
+\begin{proposition}\label{prop:low-height-test}
+Let $F$ be any field of characteristic different from two, let
+$d\in F^\times$ be nonsquare, and let
+$c\in F^\times$ be any nonsquare, for example $c=d$.
+An element $U+V\sqrt d$ of $F(\sqrt d)$ is a square, including
+zero, if and only if there exists $T\in F$ such that
+\begin{equation}\label{eq:low-height-test}
+ (4-4UT^2+dV^2T^4)\bigl(V^2-c(U-dT^2)^2\bigr)=0.
+\end{equation}
+The polynomial has total degree ten and degree eight in $T$.
+\end{proposition}
+\begin{proof}
+A root of the first factor has $T\ne0$ and gives
+\[
+ \left(\frac1T+\frac{VT}{2}\sqrt d\right)^2=U+V\sqrt d.
+\]
+Conversely, a square root $u+v\sqrt d$ with $u\ne0$ gives
+such a root by taking $T=1/u$.
+
+Since $c$ is nonsquare, the second factor vanishes exactly
+when $V=0$ and $U=dT^2$. These are precisely the elements
+with a square root of the form $T\sqrt d$, including zero.
+Thus the two factors cover all square roots, and each factor
+implies square membership. Their product expresses this
+alternative using the same quantified variable.
+\end{proof}
+
+For $F=\Q$ and $d=2$, choose $c=-1$ and divide the first
+factor by two. The test becomes
+\begin{equation}\label{eq:height-eight}
+        (2-2UT^2+V^2T^4)\bigl(V^2+(U-2T^2)^2\bigr)=0.
+\end{equation}
+It has twelve monomials and coefficient height eight.
+In contrast, the quartic in Theorem~\ref{thm:chart} has
+degree four in its finite root and a single rational recovery
+formula. These are different useful bounds: the lower-height
+test \eqref{eq:height-eight} has degree eight in $T$ and uses
+two recovery formulas according to the vanishing factor.
+
+\section{Integer coefficients over $\Q(\sqrt2)$}
+
+Take $F=\Q$, $d=2$, and $\kappa=2$. Multiplying the multiplier
+in \eqref{eq:multiplier} by two gives the simpler integral formulas
+\begin{align*}
+ a&=2U+V, &b&=-(U+V),\\
+ A&=6U^3-9UV^2-4V^3,
+ &B&=-4U^3+6UV^2+3V^3.
+\end{align*}
+Thus the explicit monic quartic is
+\begin{equation}\label{eq:explicit}
+ Y^4-4(6U^3-9UV^2-4V^3)Y^2
+                   +8(-4U^3+6UV^2+3V^3)^2=0.
+\end{equation}
+The nonzero-root condition and inverse formula in
+Theorem~\ref{thm:chart} apply with these scaled $a,b,A,B$.
+Their elementary identities are
+\begin{align*}
+ (a+b\sqrt2)(u+v\sqrt2)
+      &=2(u^3-2v^3)+(4v^3-u^3)\sqrt2,\\
+ a^2-2b^2&=2U^2-V^2,\\
+ (a+b\sqrt2)^2(U+V\sqrt2)&=A+B\sqrt2.
+\end{align*}
+The rational component is nonzero because $2$ is not a rational
+cube. For example, a rational cube has $2$-adic valuation
+divisible by three, whereas $v_2(2)=1$.
+
+The corresponding one-variable square test, including zero, is
+\[
+ (U^2-2V^2)\left(1-4(6U^3-9UV^2-4V^3)T^2
+                    +8(-4U^3+6UV^2+3V^3)^2T^4\right)=0.
+\]
+All its coefficients are integers.
+The monic quartic \eqref{eq:explicit} and the reciprocal test
+for nonzero squares each have ten monomials and coefficient
+height $384$. The displayed zero-inclusive test has fifteen
+monomials and coefficient height $1056$.
+
+\section{Application to direct elliptic charts}
+
+Put $D=11-6\sqrt2$ and let $E:y^2=x^3-Dx$. Its finite points
+with nonzero square abscissa are represented by
+\[
+                x=h^2,\qquad j^2=h^4-D,\qquad y=hj.
+\]
+Writing $h=h_0+h_1\sqrt2$ gives
+\[
+ U=h_0^4+12h_0^2h_1^2+4h_1^4-11,\qquad
+ V=4h_0h_1(h_0^2+2h_1^2)+6.
+\]
+The quantity $h^4-D$ is nonzero: otherwise $h^2=\pm(3-\sqrt2)$;
+the negative sign is excluded by the real embeddings, and the
+positive sign by the nonsquare norm $7$.
+Substitution in \eqref{eq:explicit} therefore represents every
+point in this chart by two rational base coordinates $h_0,h_1$
+and one finite quartic root. The coefficient degrees in the base
+coordinates are at most twenty-four. Both the nonzero-root
+condition and its simple-root property are explicit.
+
+The subgroup assertion that these are exactly the nonzero
+integer multiples of a specified point is a separate arithmetic
+statement. It follows from the stated group hypothesis and the
+descent calculation in the companion note
+\emph{Square abscissas and direct charts for the elliptic subgroup}.
+The present square-root chart and its number-field extension are
+unconditional.
+
+\paragraph{Exact verification.}
+The accompanying program \texttt{check\_quadratic\_square\_chart.py}
+verifies the displayed identities, degrees, monomial counts, and
+coefficient heights by exact polynomial arithmetic over $\Q$,
+clearing the fixed denominators in $d$ and $\kappa$.
+The nonsquare and noncube hypotheses establish nonvanishing in
+the proofs above.
+
+\end{document}

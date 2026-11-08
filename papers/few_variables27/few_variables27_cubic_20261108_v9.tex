@@ -1,0 +1,550 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,booktabs,microtype}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\DeclareMathOperator{\Tr}{Tr}
+\setlength{\emergencystretch}{2em}
+\title{A defining polynomial in twenty-seven variables:\\
+an existence theorem with a uniform degree bound}
+\author{}\date{8 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+Under the four arithmetic inputs of the specified elliptic source,
+we prove that the integers are the rational input projection of an
+integer polynomial in twenty-seven total variables and of degree
+at most $2^{158}$. We give a computable family $F_L$ of such
+polynomial specifications, indexed by a fixed odd integer coefficient
+parameter $L$. Every sufficiently large $L$ has the required input
+projection. The proof uses von Buhren's uniform Mordell--Lang
+height theorem; its ineffective additive constant prevents us from
+certifying a numerical sufficient value of $L$. Thus the variable
+and degree bounds are proved, while no particular member is asserted
+here to be a fully explicit defining polynomial. Exact source,
+finite-algebra, and degree certificates accompany the family.
+\end{abstract}
+
+\section{Statement and arithmetic inputs}
+
+All variable counts include the distinguished input. A polynomial
+$F\in\Z[X,Y_1,\ldots,Y_m]$ defines $\Z$ over $\Q$ if
+\[
+ x\in\Z\quad\Longleftrightarrow\quad
+ \exists\mathbf y\in\Q^m\quad F(x,\mathbf y)=0
+ \qquad(x\in\Q).
+\]
+The integer $L$ below is fixed when a polynomial is constructed;
+it is neither its input nor an existential variable.
+
+\begin{theorem}\label{thm:main}
+Assume the elliptic group and height assertion, the exponent
+nineteen contact-height bound, the zero-preparation pole
+completeness assertion, and the simultaneous prime-pattern input
+specified in Section~\ref{sec:inputs}. There is a computable
+family
+\[
+ F_L\in\Z[X,Y_1,\ldots,Y_{26}],\qquad
+ L\ge3\text{ odd},
+\]
+of finite polynomial specifications with the following properties.
+\begin{enumerate}
+\item Every member has degree at most $2^{158}$.
+\item There is a fixed real number $L_0$ such that every odd
+      $L\ge L_0$ defines $\Z$ over $\Q$.
+\item The proof does not determine an effective sufficient
+      value of $L_0$, and does not give an effective
+      coefficient-height bound for a member known to define $\Z$.
+\end{enumerate}
+\end{theorem}
+
+The finite specification uses integer coefficient arithmetic,
+determinants, resultants, traces of finite matrices, and finite
+products, all with explicit finite index ranges. It uniquely
+specifies an ordinary polynomial, without treating the matrix
+coordinates or algebra generators as quantified variables.
+
+\subsection{The four inherited inputs}\label{sec:inputs}
+
+Set
+\[
+ K=\Q(\sqrt2),\quad d=3-\sqrt2,\quad D=d^2=11-6\sqrt2,
+ \quad E:y^2=x^3-Dx,
+\]
+\[
+ P=\left(\frac{57}{8}-\frac72\sqrt2,
+          -\frac{165}{8}+\frac{417}{32}\sqrt2\right).
+\]
+The construction uses the following assertions, with exactly the
+scope established in the arithmetic dependency paper~\cite{Dependencies}.
+\begin{enumerate}
+\item $2E(K)=\Z P$, and $h(x([n]P))\ge n^2-6$ for every
+      nonzero integer $n$.
+\item For the five normalized contacts with
+      $\infty,0,1,2401,-343/32$, the odd contact radical
+      $M_5(q)$ outside primes at most $76176$ satisfies
+      $h(q)\le H M_5(q)^{19}$ when $q$ is not a contact value,
+      where
+\[
+ H=2^{110}210^{1800}\left(\prod_{p\le76176}p\right)^{19}+128.
+\]
+\item With $B=17b$, the pole system with preparation parameter
+      zero is
+\[
+ p^2=B(1-e)(1+3e),\qquad
+ Bq^2=(s^2-Be(B-b^2))(s^2+3Be(B-b^2)).
+\]
+      Its solvability excludes negative odd $v_\ell(b)$ for
+      $\ell\notin\{2,3,17\}$. It is soluble whenever
+      $0<b<17$, its reduced denominator is square, it is a
+      square in $\Q_2,\Q_3,\Q_{17}$, and its valuations there
+      are at least $3,1,2$, respectively.
+\item The simultaneous prime-pattern input permits the source's
+      prescribed prime values, specified Gaussian generators, and reduction-order
+      conditions, arbitrary fixed divisibility, and arbitrary
+      fixed odd avoidance. It applies to the finite collection
+      of comparison scales after the root points have been fixed.
+\end{enumerate}
+The prime-pattern input includes the stated application of Sun's
+theorem. No new conjecture is introduced by the height theorem
+used below: von Buhren's result~\cite{VonBuhren} is a published
+theorem. Its effect here is ineffectivity of one fixed coefficient.
+
+\section{The sum of four traces controls the four labels}
+
+For nonzero integers $n_1,\ldots,n_4$ put
+\[
+ T(\mathbf n)=\Tr_{K/\Q}\left(\sum_{i=1}^4x([n_i]P)\right).
+\]
+The aggregate trace-height theorem~\cite{Aggregate} proves that
+there are fixed constants $C>0$ and $J_0\ge0$ such that
+\begin{equation}\label{eq:aggregate}
+       \max_i|n_i|^2\le C h(T(\mathbf n))+J_0.
+\end{equation}
+The multiplicative constant comes from fixed geometric data;
+the additive constant is ineffective.
+
+For clarity, the essential hypotheses of this application are as
+follows. After rescaling the two conjugate curves to
+$E_0:y^2=x^3-x$, their source points are independent over
+$\Z[i]$. The sum of their abscissas has no constant restriction
+to an abelian translate through a tuple of nonzero multiples.
+Within one block, coincident poles have tangent multipliers in
+the rational ratios of their integer labels, so the leading
+coefficient is a nonzero sum of positive rational squares.
+Poles in different blocks cannot coincide by independence.
+The closed graph of the trace function therefore avoids the
+exceptional abelian translates at every source tuple. Applying
+von Buhren's theorem to this fixed graph and its fixed finite-rank
+subgroup gives~\eqref{eq:aggregate}, including a uniform additive
+constant. The companion paper~\cite{Aggregate} supplies the full
+proof over the algebraic closure, so translates defined only over
+an extension field are included.
+
+\section{The exact rational source}
+
+We use the point charts, local tests, and denominator guards of
+the established source~\cite{Baseline}. We describe their data
+and the changes defining the present family.
+
+There are nine points over $K$, named
+\[
+ A,S,T_1,Z,H_0,U_A,U_S,U_T,U_Z.
+\]
+For each point retain two rational coordinates $h_0,h_1$ and set
+\begin{equation}\label{eq:directpoint}
+ h=h_0+h_1\sqrt2,\qquad x=h^2,\qquad
+ j^2=h^4-D,\qquad y=hj.
+\end{equation}
+This chart describes precisely the nonzero points of $\Z P$.
+Indeed, let $R_0=(1+\sqrt2,2\sqrt2)$, so $2R_0=P$.
+The group input implies that every $Q\in E(K)$ is $mR_0+T$
+with $T\in E[2](K)$. For the standard two-isogeny descent map,
+$\delta(R_0)=1+\sqrt2$ has opposite signs at the real embeddings,
+whereas the torsion classes are $1,-D,d,-d$, with equal signs.
+A square abscissa therefore forces $m$ even. Of these torsion
+classes only $1$ is square: $-D,-d$ are negative and
+$N_{K/\Q}(d)=7$ is not a rational square. Thus $Q\in\Z P$.
+Conversely, $\delta(2R)=1$ gives a square abscissa for every
+nonzero multiple of $P$. Neither $h=0$ nor $j=0$ is possible
+in~\eqref{eq:directpoint}. A direct proof of the descent map
+and all these assertions is given in~\cite{SquareCharts}.
+
+The finite root $j$ is represented by one monic quartic,
+without a finite choice of charts. Write
+\[
+ h^4-D=A+B\sqrt2,
+ \quad A=h_0^4+12h_0^2h_1^2+4h_1^4-11,
+ \quad B=4h_0h_1(h_0^2+2h_1^2)+6.
+\]
+Set
+\[
+ c=2A+B,\qquad d_1=-A-B,\qquad j'=(c+d_1\sqrt2)j.
+\]
+Writing $(c+d_1\sqrt2)^2(A+B\sqrt2)=A'+B'\sqrt2$ gives
+\[
+ A'=6A^3-9AB^2-4B^3,\qquad
+ B'=-4A^3+6AB^2+3B^3.
+\]
+For $j=u+v\sqrt2$, direct expansion gives
+\[
+ j'=2(u^3-2v^3)+(4v^3-u^3)\sqrt2.
+\]
+Its rational component is nonzero, since $2$ is not a rational
+cube and $j\ne0$. The multiplier has norm $2A^2-B^2$,
+which is nonzero for rational $(A,B)\ne(0,0)$ because $2$
+is not a rational square. Thus the reconstruction uses only
+these two elementary rational obstructions. The general quadratic
+extension version is proved in~\cite{QuadraticCharts}.
+We may therefore use the single chart
+\begin{equation}\label{eq:pointquartic}
+ Y^4-4A'Y^2+8(B')^2=0,\quad Y\ne0,\qquad
+ j'=Y/2+(B'/Y)\sqrt2,\qquad
+ j=\frac{j'}{c+d_1\sqrt2}.
+\end{equation}
+The source retains the nonzero quartic derivative, the norm of
+$j'$, and every denominator of the affine point operations.
+The root is simple: a vanishing derivative at a nonzero rational
+root would force the two rational components of $j'$ to have
+squares in the ratio $2$, and hence both to vanish.
+
+The four root labels $(n,a,t,b)$ are nonzero integers; no parity
+condition is needed for soundness. The simultaneous completeness
+construction retains its original odd labels. The scalar shift
+is now computed directly as $S-P$, in the affine difference
+chart. Its excluded equal-abscissa cases are $S=\pm P$, both
+avoided by that construction.
+
+Put $Q_0=P$, $(Q_1,Q_2,Q_3,Q_4)=(A,S,T_1,Z)$,
+$U_0=H_0$, and $V_i=U_i-Q_i$. Write $z=-x/y$ and $f=1/x$.
+The truncated formal logarithms are
+\[
+ \ell_r(Q)=z(Q)\sum_{j=0}^{r/4-1}c_j(Df(Q)^2)^j,
+ \quad c_0=1,\quad c_1=-2/5,\quad
+ c_j=c_{j-1}\frac{4j-5}{4j+1}.
+\]
+Use precisions $(12,40,40,40)$, ratio orders $(10,39,39,39)$,
+and scalar order $20$. With
+$\beta=216X^4+450459$, the sixteen tests are the ten
+formal-group tests $f(U_i),\sigma f(V_i)$, the four differences
+between the paired logarithmic ratios, the direct target test
+for $\beta$, and the direct Lucas polynomial
+\[
+ v^2-u(u-2)vw+(u-2)^2w^2-1
+\]
+in the three corresponding ratios. Their assigned orders are
+$1$ for each of the first ten tests and
+$10,39,39,39,10,39$ for the remaining six. These tests and
+their construction are unchanged.
+
+\subsection{Two comparison scales}
+
+We use precisely the two positive rational
+square scales
+\begin{equation}\label{eq:scales}
+ A_0=1,\qquad
+ A_1=\left(\Tr_{K/\Q}\sum_{i=1}^4x(Q_i)\right)^2.
+\end{equation}
+They are nonzero: the root points are nonzero doubles and
+their abscissas are positive in both real embeddings.
+For the retained slope $\lambda$, each scale is inserted into
+the same normalized comparison detector of~\cite{Baseline}:
+\[
+ \begin{gathered}
+ t_r=A_r\lambda,\quad \delta_r=t_r-1,\quad
+ F_r=\prod_{\theta\in\Theta}(t_r-\theta),\quad
+ R_r=\frac{F_r}{A_r^5\delta_r^6},\\
+ \Theta=\{0,-1/2,-1,1/2399,-32/407\}.
+ \end{gathered}
+\]
+\[
+ W_r=\prod_{j=1}^{16}\left(
+ 1+R_r\left(\frac{D_j}{\delta_r^{m_j+1}R_r^{m_j}}\right)^2\right),
+ \qquad b_r=\frac{R_r}{\Tr(W_r^{-1})^2}.
+\]
+All displayed denominators and the inherited guards are retained.
+Each $b_r$ receives a pole certificate.
+
+Each first pole conic is covered by two charts, with finite bit
+$\varepsilon\in\{0,1\}$ and retained parameters $\tau,s$:
+\[
+ e=\frac{\tau^2+(4\varepsilon-1)B}{\tau^2+3B},\qquad
+ p=\frac{-4B\tau(1-\varepsilon)}{\tau^2+3B},\qquad
+ \tau^2+3B\ne0.
+\]
+For $e\ne1$ choose $\tau=p/(e-1)$, $\varepsilon=0$;
+the exceptional point $e=1,p=0$ uses $\varepsilon=1$, $\tau=0$.
+The remaining $q$ is a finite quadratic root. Zero roots are
+included by the finite-algebra zero/nonzero case split.
+
+\subsection{A linear scalar normalization}
+
+The fixed scalar normalization is
+\begin{equation}\label{eq:normalizer}
+ \begin{gathered}
+ \ell=76249,\quad
+ r=\beta(\beta-1)(\beta-2401)(32\beta+343)(2\beta-1),\\
+ R_L=\frac{102^2\ell^L r}{(1+C_Lr)^2},\quad
+ C_L=17(\ell^{(L+1)/2}+1).
+ \end{gathered}
+\end{equation}
+Here $L\ge3$ is odd. The scalar norm tree and its six rational
+component tests are unchanged: they concern
+$f(H_0),f(S-P),z(S-P)/z(H_0)$ with orders
+$1,1,1,1,20,20$. Its output $W$ supplies the scalar pole
+input $R_LW^2$.
+
+The finite residue certificate verifies that the five contact
+values are not attained by $216x^4+450459$ modulo $\ell$,
+and that $1+17r$ never vanishes there. Consequently, for every
+rational input,
+\begin{equation}\label{eq:valuation}
+ v_\ell(R_L)=
+ \begin{cases}
+ L,&v_\ell(X)\ge0,\\
+ L-20v_\ell(X),&v_\ell(X)<0.
+ \end{cases}
+\end{equation}
+These valuations are positive and odd. At a consumed contact
+prime different from $\ell$, the denominator is a unit and the
+contact valuation is unchanged. For integral $X$, the reduced
+denominator of $R_L$ is square, it has the required local
+squareclasses and depths at $2,3,17$, and
+\[
+ 0<R_L<\frac{36}{\ell r}<1.
+\]
+The scalar norm argument therefore gives
+\begin{equation}\label{eq:depth}
+ v_\ell(a-1)\ge19L+1.
+\end{equation}
+The normalization calculation in~\cite{Aggregate}, together with
+the finite-field avoidance certificate~\cite{Normalizer}, proves
+these statements and the preparation-zero realization. The supplied
+checker independently verifies every residue modulo $76249$
+and the normalization identity as an exact polynomial identity.
+
+\section{Soundness}
+
+The affine guard for $S-P$ excludes $a=1$. Let $c=|a-1|>0$ and
+$B=\max(|n|,|a|,|t|,|b|)$. Equation~\eqref{eq:depth} and $L\ge3$
+give $c\ge\ell^{19L+1}$ and therefore $B\ge c-1>4$.
+In particular, the elementary residual bound $|\Delta|\le5B^4$
+used below is valid. If the two contact radicals at the
+scales~\eqref{eq:scales} have their $k$th powers dividing
+$N\ne0$, the contact-height theorem gives
+\[
+ h(\lambda),\ h(A_1\lambda)
+       \le(H+\log3)|N|^{19/k}.
+\]
+Since $h(A_1)=2h(\Tr\sum_i x(Q_i))$, the height inequality
+for a quotient and~\eqref{eq:aggregate} give constants
+$K\ge1$, $J\ge0$, independent of $X,L$, such that
+\begin{equation}\label{eq:commonheight}
+                 B^2\le K|N|^{19/k}+J.
+\end{equation}
+The local formal-logarithm arguments of the source are
+unchanged; hence, with
+$\Delta=t^2-a(a-2)tb+(a-2)^2b^2-1$, they imply
+\begin{align}
+ h(\beta)&\le Hc^{19/20},\label{eq:betaheight}\\
+ \Delta\ne0&\Longrightarrow
+ B^2\le K(5B^4)^{19/39}+J,\label{eq:delta}\\
+ \beta\ne n&\Longrightarrow
+ B^2\le K(2e^{h(\beta)}B)^{19/10}+J.\label{eq:beta}
+\end{align}
+
+Choose a fixed threshold $T$ greater than each of
+\begin{equation}\label{eq:threshold}
+ \begin{gathered}
+ 16,\qquad 2\sqrt{2J}+2,\qquad
+ 2(2K5^{19/39})^{39/2}+2,\\
+ (128H)^{20},\qquad
+ 8\bigl(10\log(2K)+19\log2\bigr).
+ \end{gathered}
+\end{equation}
+For $c>T$, one has $B\ge c-1>c/2$ and $B^2>2J$.
+If $\Delta\ne0$, equation~\eqref{eq:delta} gives
+$B^{2/39}\le2K5^{19/39}$, contrary to~\eqref{eq:threshold}.
+Thus $\Delta=0$. The elementary Lucas growth lemma proved
+in~\cite{Baseline} then gives $\log B>c-4$.
+If $\beta\ne n$, equation~\eqref{eq:beta} gives
+\[
+ \log B\le10\log(2K)+19\log2+19h(\beta)
+       <\frac c8+\frac{19c}{128}<c-4,
+\]
+using~\eqref{eq:betaheight} and the threshold. This contradiction
+proves $\beta=n\in\Z$. Finally the elementary input-map
+lemma of~\cite{Baseline} says that
+$216X^4+450459\in\Z$ for rational $X$ if and only if
+$X\in\Z$.
+
+By~\eqref{eq:depth}, every source solution has
+$c\ge\ell^{19L+1}$. Therefore every odd $L$ with
+$\ell^{19L+1}>T$ satisfies the soundness conclusion. The
+constant $T$ is fixed but ineffective because $J$ is ineffective.
+
+\section{Completeness}
+
+Fix an integer input $X$ and a fixed odd $L$. All numerator
+and denominator primes of~\eqref{eq:normalizer} form a finite
+set. The source realization first chooses the odd root labels
+with the scalar label $a-1$ sufficiently divisible and deep at
+these primes, and with the corresponding points in the required
+real neighborhoods. The explicit Lucas construction then gives
+odd nonzero $t,b$ with $\Delta=0$ and arbitrarily large
+growth. The input label is chosen to be $n=\beta$.
+
+At this stage the two scales in~\eqref{eq:scales} are fixed
+positive rational squares. Apply the same simultaneous
+prime-pattern theorem to these two scales. It chooses the slope
+and contact primes with the prescribed conjugate reduction
+orders while avoiding the previously fixed odd modulus. The
+subsequent Chinese remainder choice of the auxiliary index $h$
+and the points $U_i=[hn_i]P$ supplies the sixteen local tests
+to their assigned precisions and preserves the fixed scalar
+requirements and real neighborhoods. This is precisely the
+simultaneous construction of~\cite{Dependencies,Baseline}; its
+prime-pattern input accepts any fixed finite collection of the
+positive square scales and any fixed finite avoidance modulus.
+
+Each of the two comparison inputs is thereby prepared for the
+zero-preparation pole theorem. The scalar input is prepared as
+well: $R_L$ has square reduced denominator and the required
+local squareclasses, the six normalized scalar tests can be made
+arbitrarily small at the fixed finite places, and the scalar
+norm output can be made arbitrarily close to $1$ in the real
+absolute value. Thus $0<R_LW^2<17$, with the requisite
+denominator and local conditions. The three pole certificates
+exist by the inherited completeness input. The direct point chart~\eqref{eq:pointquartic} covers all nine
+chosen points; its multiplier needs no further choice. The two conic charts
+cover every pole certificate, and the zero/nonzero quadratic split
+includes vanishing second roots. All inherited guards are
+maintained by the same simultaneous realization.
+
+This proves completeness for every fixed odd $L\ge3$.
+Together with the preceding section it proves the arithmetic
+assertion for every sufficiently large such $L$.
+
+\section{Elimination of finite roots and the uniform degree}
+
+The retained coordinates and finite roots are as follows.
+\begin{center}
+\begin{tabular}{lr}
+\toprule
+Retained rational coordinates & Count\\
+\midrule
+Input & 1\\
+Nine square-root-abscissa pairs & 18\\
+Comparison slope & 1\\
+Two comparison-pole parameter pairs & 4\\
+Scalar-pole parameter pair & 2\\
+\midrule
+Total before finite-algebra elimination & 26\\
+\bottomrule
+\end{tabular}
+\end{center}
+There are nine quartic point roots, three quadratic pole roots,
+and three finite conic-chart bits. The maximum finite-algebra
+rank is $4^9 2^3=2^{21}$; the chart choices have $2^3=8$
+branches. The guarded finite-algebra theorem of~\cite{Baseline}
+replaces all twelve roots by one rational coordinate, including
+all zero-root branches and every nonzero denominator condition.
+This gives twenty-seven total polynomial variables.
+
+The compiler specifies the polynomial by multiplication matrices
+in each finite algebra. It forms
+$H(V)=\det(I-VM_{G\lambda})$, the adjugate traces for the
+closed residuals, the leading coefficient and derivative
+resultant of each degree case, and the reciprocal polynomial
+excluding zero guards. A sum of squares imposes each branch's
+equalities over $\Q$, and a finite product takes the union of
+all chart, quadratic-support, separating-element, and degree
+cases. The exact finite index ranges and integer coefficient
+DAG are supplied with the computation.
+
+The independently checked degree majorant is
+\[
+ D_*=232075682770882905150152990100588354340946706432
+       <2^{158}.
+\]
+It is uniform in $L$. The uniform-degree checker replaces
+$\ell^L$ and $\ell^{(L+1)/2}$ by independent coefficient
+symbols, each of degree zero in the twenty-seven displayed
+coordinates. It makes no substitution for these symbols during
+the degree calculation. Integer specialization cannot increase
+the degree. The monic generator weights are
+\[
+ 6,6,6,6,6,6,6,6,6,1568138,1935231,116318.
+\]
+The maximum basis weight is $3619849$, the guarded
+multiplication-operator entry degree is $9979089$, and
+the exact number of factors is $630360244960710623232$.
+The independent recurrence for the determinant, adjugate,
+resultant, reciprocal, and final product gives $D_*$.
+It checks degrees only; no coefficient-norm bound for the
+unspecified sufficiently large $L$ is inferred.
+
+\section{Reproduction and the status of a numerical example}
+
+The directory \texttt{trace27\_cubic\_family} contains the source
+builder, finite-algebra compiler, independent source and
+polynomial verifiers, and a separate uniform-degree verifier.
+The command
+\begin{verbatim}
+python3 reproduce.py --anchor-exponent 137731
+\end{verbatim}
+reconstructs and checks a concrete family member. The exponent
+is a coefficient choice; changing it never adds a quantified
+variable. The packaged numerical member has a $7369$-node
+source DAG and a $3032$-node compiled integer coefficient DAG.
+The independent point checker expands every direct-chart coordinate
+identity over $\Z[h_0,h_1,Y]$. The polynomial verifier checks
+the nine quartics again, three
+rational-square clearings, all quadratic support cases, and
+$101$ atomic nonzero guard factors. The linear normalizer is
+checked at every one of the $76249$ residue classes.
+
+For that numerical member the coefficient arithmetic and the
+bound $2^{2^{168}}$ are verified. This is a bound for the
+specified algebraic example. It is not a coefficient-height
+bound for a polynomial proved here to define $\Z$: no argument
+in this paper certifies that $L=137731$ exceeds the ineffective
+threshold. The proved optimization is the twenty-seven-variable
+existence theorem with its uniform degree bound.
+
+\begin{thebibliography}{9}
+\bibitem{Aggregate}
+\emph{Aggregate trace heights of elliptic multiples},
+companion paper, 8 November 2026.
+\bibitem{Baseline}
+\emph{An explicit polynomial in 29 variables over the rationals},
+the established 29-variable source and guarded finite-algebra
+construction, version of 8 November 2026,
+\nolinkurl{few_variables_20261108_v8.tex}.
+\url{https://github.com/JoseBrox/diophantine-z-q_improvements}.
+\bibitem{Dependencies}
+\emph{Arithmetic dependencies of the construction with 29 variables},
+version of 8 November 2026,
+\nolinkurl{arithmetic_dependencies_20261108_v8.tex}.
+\url{https://github.com/JoseBrox/diophantine-z-q_improvements}.
+\bibitem{Normalizer}
+\emph{Scalar contact normalization by finite-field avoidance},
+companion scalar-normalization paper, 8 November 2026.
+\bibitem{SquareCharts}
+\emph{Square abscissas and direct charts for the elliptic subgroup},
+companion paper, 8 November 2026.
+\bibitem{QuadraticCharts}
+\emph{A single quartic chart for square roots in a quadratic extension},
+companion paper, 8 November 2026,
+\nolinkurl{quadratic_square_chart_20261108_v9.tex}.
+\bibitem{VonBuhren}
+J.~von Buhren,
+\emph{Borne de hauteur semi-effective pour le probl\`eme de
+Mordell--Lang dans une vari\'et\'e ab\'elienne},
+J.~Th\'eor. Nombres Bordeaux \textbf{29} (2017), no.~1,
+307--320, Theorem~1.1.
+\url{https://www.numdam.org/item/10.5802/jtnb.981.pdf}.
+\end{thebibliography}
+\end{document}

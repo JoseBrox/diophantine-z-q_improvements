@@ -1,0 +1,285 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\title{Scalar contact normalization by finite-field avoidance}
+\author{}\date{8 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+We construct a scalar contact of numerator degree twenty and
+denominator degree forty that preserves the exact arithmetic
+conditions of the specified rational source. A residue avoidance
+condition ensures a uniform odd valuation at a fixed prime.
+The required prime exponent is $137731$ in the numerator. The
+construction uses the existing coordinates and finite algebra
+generators. A general normalization lemma explains the method,
+and exact finite computations certify all fixed residue claims.
+\end{abstract}
+
+\section{A general normalization lemma}
+
+\begin{lemma}\label{lem:general}
+Let $f\in\Z[X]$ have even degree $d>0$, and let $p$ be an odd
+prime not dividing its leading coefficient. Suppose $f$ has no
+zero modulo $p$, and that $f(x)\ge m>0$ for every real $x$.
+Choose $a\in\mathbb F_p^\times$ such that
+$-a^{-1}\notin f(\mathbb F_p)$. Let $C$ be a positive integer
+congruent to $a$ modulo $p$, let $L$ be a positive odd integer,
+and let $c\in\Z$ be nonzero and prime to $p$. Assume
+$C^2m>c^2p^L$. Then
+\[
+ R_f(X)=\frac{c^2p^L f(X)}{(1+C f(X))^2}
+\]
+has the following properties for every rational $X$:
+\[
+ 0<R_f(X)<1,\qquad
+ v_p(R_f(X))=
+ \begin{cases}
+ L,&v_p(X)\ge0,\\
+ L-dv_p(X),&v_p(X)<0.
+ \end{cases}
+\]
+In particular its $p$-valuation is odd and at least $L$.
+Its numerator and denominator, in lowest terms over $\Q[X]$,
+have degrees $d$ and $2d$.
+\end{lemma}
+\begin{proof}
+The real denominator is larger than $C^2f(X)^2$, so
+\[
+ 0<R_f<\frac{c^2p^L}{C^2f(X)}
+       \le\frac{c^2p^L}{C^2m}<1.
+\]
+For a $p$-integral input, both $f(X)$ and $1+Cf(X)$ are
+$p$-adic units by their residue assumptions. For an input of
+valuation $n<0$, the leading term of $f(X)$ uniquely dominates
+the other terms, giving $v_p(f(X))=dn$. Since $C$ is a unit,
+$v_p(1+Cf(X))=dn$. The two formulas follow, and their parity
+follows from the even degree. Finally
+$\gcd(f,1+Cf)=1$ in $\Q[X]$.
+\end{proof}
+
+The missing residue $-a^{-1}$ is often available without any
+arithmetic conjecture. For example, if $f(X)=g(X^e)$ modulo
+$p$ and $\gcd(e,p-1)=q>1$, then
+$|f(\mathbb F_p)|\le1+(p-1)/q$. If this upper bound is smaller
+than $p-1$ and $f$ has no zero, there is a missing nonzero
+residue. The coefficient $C$ can then be made arbitrarily
+large in the required residue class; additional divisibility
+conditions coprime to $p$ can be imposed by the Chinese
+remainder theorem. Thus real normalization and fixed-prime
+avoidance can be chosen independently.
+
+\section{The explicit scalar contact}
+
+Define
+\[
+ \beta(X)=216X^4+450459,
+ \qquad r(X)=\beta(\beta-1)(\beta-2401)(32\beta+343)(2\beta-1).
+\]
+Put
+\begin{equation}\label{eq:constants}
+ \ell=76249,\quad L=137731,\quad
+ C=17\bigl(676\ell^{68862}+1\bigr),\quad
+ R(X)=\frac{102^2\ell^L r(X)}{(1+C r(X))^2}.
+\end{equation}
+
+\begin{lemma}\label{lem:residues}
+The integer $\ell$ is prime. Both $r(X)$ and $1+17r(X)$ have
+no zero in $\mathbb F_\ell$.
+\end{lemma}
+\begin{proof}
+Trial division through $\lfloor\sqrt\ell\rfloor=276$ proves
+primality. For a zero of $r$, one of the five values of $\beta$
+would be $0,1,2401,-343/32,1/2$. The corresponding values of
+$X^4=(\beta-450459)/216$ modulo $\ell$ are
+\[
+ 32862,\quad32509,\quad24048,\quad904,\quad70810.
+\]
+Their powers with exponent $(\ell-1)/4$ are respectively
+$76248,76248,76248,76248,40177$. None is zero or one, so none
+is a fourth power.
+
+For the second assertion the exact certificate supplied with
+this paper checks
+\[
+ \gcd\bigl(1+17r(X),\ X^{76249}-X\bigr)=1
+       \quad\hbox{in }\mathbb F_{76249}[X].
+\]
+It records the coefficients of the degree-twenty first
+polynomial, the remainder of $X^{76249}-X$ modulo it, and a
+B\'ezout identity with constant term one. Modular repeated
+squaring verifies the remainder, and multiplication verifies
+the B\'ezout identity. Since $X^{76249}-X$ is the product of
+the distinct linear polynomials over this field, this proves
+the assertion. An independent complete residue enumeration
+gives the same result: $X^4$ has $19063$ values, and $r(X)$
+has $16859$ values, none equal to $-17^{-1}$.
+\end{proof}
+
+\begin{lemma}\label{lem:small-primes}
+For every integer $X$, $r(X)$ is a square in each of
+$\Q_2,\Q_3,\Q_{17}$, with
+\[
+ v_2(r)=v_3(r)=2,\qquad v_{17}(r)\in\{0,2\}.
+\]
+\end{lemma}
+\begin{proof}
+One has $\beta\equiv3\pmod8$ and $\beta\equiv18\pmod{27}$.
+The two even factors $\beta-1,\beta-2401$ have valuation one,
+and their odd parts differ by $1200\equiv0\pmod8$. Their
+odd-part product is therefore one modulo eight. The three
+other factors have product $3\cdot7\cdot5\equiv1\pmod8$.
+Thus $v_2(r)=2$ and $r/4\equiv1\pmod8$.
+At three only $\beta$ is divisible by three, with valuation
+two, and
+\[
+ r/9\equiv2\cdot2\cdot2\cdot1\cdot2\equiv1\pmod3.
+\]
+At seventeen the five possible fourth powers and their images
+are
+\[
+ \begin{array}{c|rrrrr}
+ X^4&0&1&4&13&16\\\hline
+ \beta&10&5&7&13&15\\
+ r(X)&0&15&2&13&2.
+ \end{array}
+\]
+The nonzero entries in the last row are squares. In the first
+column $17\mid X$ and
+\[
+ 32\beta+343=6912X^4+17^2\cdot49879,
+ \qquad49879\equiv1\pmod{17}.
+\]
+This factor has valuation two, and the other four factors have
+unit product $10\cdot9\cdot6\cdot2\equiv9\pmod{17}$.
+The usual local square criteria now give the claim.
+\end{proof}
+
+\begin{theorem}\label{thm:explicit}
+The rational function in~\eqref{eq:constants} has the following
+properties.
+\begin{enumerate}
+\item Its numerator and denominator in lowest polynomial terms
+have degrees twenty and forty, respectively.
+\item For all $X\in\Q$, $0<R(X)<1$ and
+\[
+ v_\ell(R(X))=
+ \begin{cases}
+ 137731,&v_\ell(X)\ge0,\\
+ 137731-20v_\ell(X),&v_\ell(X)<0.
+ \end{cases}
+\]
+\item If $p>76176$, $p\ne\ell$, and $v_p(r(X))>0$, then
+$v_p(R(X))=v_p(r(X))$.
+\item If $X\in\Z$, the reduced denominator of $R(X)$ is a
+square, and $R(X)$ is a square in $\Q_2,\Q_3,\Q_{17}$, with
+\[
+ v_2(R)=v_3(R)=4,\qquad v_{17}(R)\in\{2,4\}.
+\]
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+Since $\beta\ge450459$ on $\mathbb R$, all five factors of
+$r$ are positive and increasing as functions of $\beta$.
+Consequently
+\[
+ r(X)\ge r(0)=1180712527837405404989927078052.
+\]
+The exact integer inequality
+\[
+ 36\ell^7<676^2r(0)
+\]
+implies
+$C^2r(0)>17^2\cdot676^2\ell^{137724}r(0)
+>102^2\ell^{137731}$.
+Now apply Lemma~\ref{lem:general} with $f=r$, $d=20$,
+$a=17$, and $c=102$, using Lemma~\ref{lem:residues}.
+This gives parts~(1) and~(2).
+
+For part~(3), $C$ is an integer, so $v_p(Cr)>0$ and the
+denominator is a unit. The multiplier $102^2\ell^L$ is a
+$p$-adic unit for all primes in the stated range.
+
+For integer input let $D_0=1+Cr(X)$. It is coprime to $r(X)$.
+It is a unit at two and three because $r$ is divisible by four
+and nine, a unit at seventeen because $17\mid C$, and a unit
+at $\ell$ by Lemma~\ref{lem:residues}. The only prime factors
+of $102^2\ell^L$ are these four primes. Therefore the displayed
+numerator is coprime to $D_0$, so the reduced denominator is
+exactly $D_0^2$. Finally
+$\ell\equiv1\pmod8$, $\ell\equiv1\pmod3$, and
+$\ell\equiv4\pmod{17}$, making $\ell$ a square in the three
+completions. Lemma~\ref{lem:small-primes} and the square
+multiplier $102^2$ give the stated squareclasses and depths.
+\end{proof}
+
+\section{Integration into the rational source}
+
+The scalar extraction argument of the 29-coordinate source
+requires a positive rational contact below one, an odd
+$\ell$-valuation at least $137731$, preservation of consumed
+positive contact valuations away from $\ell$, and, for integer
+inputs, a square denominator and the preparation conditions at
+two, three and seventeen. Theorem~\ref{thm:explicit} supplies
+these same hypotheses. The finite support can change; the
+completeness theorem permits preparation at any fixed finite
+support after fixing the input. Consequently the replacement
+preserves the source's soundness and completeness under exactly
+its existing arithmetic premises. No coordinate or finite
+algebra generator is added.
+
+The final polynomial's degree and coefficient bounds must be
+obtained from its revised expression graph. The degree-forty
+denominator and the smaller fixed prime exponent are exact
+improvements to the scalar source; they do not alone certify
+a numerical global bound for the eliminated polynomial.
+
+\clearpage
+\section{A compact residue certificate and reproduction}
+
+The root-avoidance calculation also has a small certificate in
+the variable $U=X^4$. Define four polynomials over
+$\mathbb F_{76249}$ by their coefficient vectors, in ascending
+order of powers of $U$:
+\[
+\begin{array}{c|l}
+ F_0&(2124,22608,14921,12900,56669,30599)\\
+ G_0&(69700,50246,7543,69483,32972)\\
+ A_0&(32273,39191,5614,60392,71693)\\
+ B_0&(21082,70119,44908,68100,13136).
+\end{array}
+\]
+Expansion gives $1+17r(X)=F_0(X^4)$. Repeated squaring and
+polynomial multiplication give the exact identities
+\[
+ U^{19062}-1\equiv G_0(U)\pmod{F_0(U)},\qquad
+ A_0F_0+UB_0G_0=1.
+\]
+If $F_0(x^4)=0$ for $x\in\mathbb F_{76249}$, then $x\ne0$
+since $F_0(0)=2124$. The element $u=x^4$ satisfies
+$u^{19062}=1$, so the first identity gives $G_0(u)=0$.
+The second identity then gives $0=1$. This supplies the
+root-avoidance argument with only degree-five arithmetic and
+one modular exponentiation. The direct residue enumeration
+is a separate independent verification.
+
+The checker is
+\begin{center}
+\texttt{python check\_scalar\_normalization.py}
+\end{center}
+It uses integer arithmetic and polynomial arithmetic over the
+prime field, with no floating-point tests. Its output file is
+\begin{center}
+\texttt{scalar-normalization-certificate.json}.
+\end{center}
+This includes the complete modular B\'ezout certificate. The direct enumeration
+is independent of the modular polynomial Euclidean algorithm.
+The valuation formulas for all rational inputs are proved in
+Lemma~\ref{lem:general}; no bounded scan is substituted for
+that argument.
+\end{document}

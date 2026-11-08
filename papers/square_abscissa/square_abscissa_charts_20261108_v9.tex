@@ -1,0 +1,173 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\title{Square abscissas and direct charts for the elliptic subgroup}
+\author{}\date{8 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+Under the stated elliptic group hypothesis, two square equations
+describe exactly the nonzero points of the cyclic subgroup used
+in the arithmetic construction. No parity condition on the index
+is necessary. A cubic change of coordinates gives one rational
+quartic presentation that covers every point, with no choice among
+component charts.
+\end{abstract}
+
+\section{The subgroup described by a square abscissa}
+
+Put
+\[
+ K=\Q(\sqrt2),\qquad d=3-\sqrt2,\qquad D=d^2=11-6\sqrt2,
+ \qquad E:y^2=x^3-Dx.
+\]
+Let $O$ denote the identity of $E$, and set
+\[
+ R_0=(1+\sqrt2,2\sqrt2),\qquad P=2R_0.
+\]
+The arithmetic hypothesis in this note is
+\begin{equation}\label{eq:group}
+                 2E(K)=\Z P.
+\end{equation}
+We also assume, as in the source construction, that $P$ has infinite
+order. Thus every $Q\in E(K)$ has a presentation
+$Q=mR_0+T$ with $m\in\Z$ and $T\in E[2](K)$.
+
+\begin{lemma}\label{lem:descent}
+The map
+\[
+ \delta:E(K)\longrightarrow K^\times/K^{\times2},\qquad
+ \delta(O)=1,\quad \delta((0,0))=-D,\quad
+ \delta(Q)=x(Q)\quad(x(Q)\ne0),
+\]
+is a group homomorphism.
+\end{lemma}
+\begin{proof}
+Consider a nonvertical line $y=\lambda x+\mu$. Its intersections
+with $E$, counted with multiplicity, have abscissas given by
+\[
+ x^3-\lambda^2x^2-(D+2\lambda\mu)x-\mu^2=0.
+\]
+When $\mu\ne0$, the product of the three abscissas is $\mu^2$.
+When $\mu=0$, one intersection is $(0,0)$ and the product of the
+other two abscissas is $-D$. In either case the product of the
+three $\delta$-classes is trivial. Vertical lines meet $Q$,
+$-Q$, and $O$, whose classes also have trivial product. These
+identities, including tangent lines through their intersection
+multiplicities, give the assertion by the chord and tangent law.
+\end{proof}
+
+\begin{theorem}\label{thm:chart}
+Assume \eqref{eq:group}. The points arising from
+\begin{equation}\label{eq:chart}
+             x=h^2,\qquad j^2=h^4-D,\qquad y=hj,
+             \qquad h,j\in K,
+\end{equation}
+are exactly $E(K)\cap(\Z P\setminus\{O\})$.
+Every such point has $h\ne0$ and $j\ne0$.
+\end{theorem}
+\begin{proof}
+Both real embeddings of $d$ and $D$ are positive. Consequently
+$h=0$ would imply $j^2=-D$, which is impossible. If $j=0$,
+then $h^2=d$ or $h^2=-d$. The second alternative is excluded
+by signs. The first is excluded by $N_{K/\Q}(d)=7$, since the
+norm of a square in $K$ is a rational square. Thus the point
+$Q=(h^2,hj)$ is affine and is not a point of order two.
+
+Write $Q=mR_0+T$ as above. The four two-torsion points and their
+classes are
+\[
+\begin{array}{c|cccc}
+T&O&(0,0)&(d,0)&(-d,0)\\ \hline
+\delta(T)&1&-D&d&-d.
+\end{array}
+\]
+Every representative in the second row has the same sign at the
+two real embeddings. In contrast,
+$\delta(R_0)=1+\sqrt2$ has opposite signs at those embeddings.
+Since $\delta(Q)$ is a square class, the homomorphism property
+forces $m$ to be even. Write $m=2k$. Then
+$Q=kP+T$, and $\delta(P)=\delta(2R_0)=1$ implies
+$\delta(Q)=\delta(T)$. Of the four listed classes only $1$ is
+a square: $-D$ and $-d$ are negative, while $d$ has nonsquare
+norm. Hence $T=O$ and $Q=kP$, where $k\ne0$ because $Q$ is
+affine.
+
+Conversely, if $Q=kP$ with $k\ne0$, then $Q=2(kR_0)$ and
+$\delta(Q)=1$. The point is nontorsion, so $x(Q)\ne0$. Choose
+$h\in K^\times$ with $h^2=x(Q)$ and put $j=y(Q)/h$.
+The equation of $E$ gives $j^2=h^4-D$, as required.
+\end{proof}
+
+\section{A rational quartic presentation}
+
+Write $h=h_0+h_1\sqrt2$ and
+\[
+ U=h_0^4+12h_0^2h_1^2+4h_1^4-11,
+ \qquad V=4h_0h_1(h_0^2+2h_1^2)+6.
+\]
+Thus $h^4-D=U+V\sqrt2$. Define
+\begin{align*}
+ a&=2U+V, & b&=-(U+V),\\
+ A&=6U^3-9UV^2-4V^3,
+ &B&=-4U^3+6UV^2+3V^3.
+\end{align*}
+Then the square-root equation for $j$ is equivalent to
+\begin{equation}\label{eq:quartic}
+              Y^4-4AY^2+8B^2=0,\qquad Y\ne0.
+\end{equation}
+Every such rational root recovers $j$ by
+\begin{equation}\label{eq:recovery}
+ j=\frac{a-b\sqrt2}{2U^2-V^2}
+                   \left(\frac Y2+\frac BY\sqrt2\right).
+\end{equation}
+
+\begin{corollary}\label{cor:single-chart}
+Under \eqref{eq:group}, the formulas above represent all nonzero
+points of $\Z P$ by two rational base coordinates $h_0,h_1$
+and one finite quartic root $Y$. Every permitted rational root
+is simple. No finite choice of chart is required.
+\end{corollary}
+\begin{proof}
+Theorem~\ref{thm:chart} reduces the assertion to the square-root
+presentation. If $j=u+v\sqrt2\ne0$, then
+$U=u^2+2v^2$ and $V=2uv$, and direct expansion gives
+\[
+ (a+b\sqrt2)j
+       =2(u^3-2v^3)+(4v^3-u^3)\sqrt2.
+\]
+The rational component is nonzero because $2$ is not a rational
+cube. The multiplier has norm $2U^2-V^2\ne0$, since $(U,V)\ne(0,0)$
+and $2$ is not a rational square. Its square times $j^2$ is
+$A+B\sqrt2$. If $Y$ is twice the rational component of
+$(a+b\sqrt2)j$, these identities give \eqref{eq:quartic} and
+\eqref{eq:recovery}.
+
+Conversely, a nonzero root $Y$ gives
+\[
+ \left(\frac Y2+\frac BY\sqrt2\right)^2=A+B\sqrt2
+                     =(a+b\sqrt2)^2(U+V\sqrt2),
+\]
+so \eqref{eq:recovery} gives the required square root $j$.
+At such a root the derivative of the quartic is
+\[
+ 4Y^3-8AY=8Y\,N_{K/\Q}\left(\frac Y2+\frac BY\sqrt2\right)\ne0.
+\]
+This proves the simple-root assertion as well.
+\end{proof}
+
+The condition $Y\ne0$ must be retained when this presentation
+is used: the quartic equation alone does not justify the displayed
+rational recovery formula at $Y=0$. In a finite-algebra
+construction it is imposed by the localization step, with its
+unit condition checked separately. The general version of this
+square-root chart, valid for every quadratic extension of a number
+field, is proved in the companion paper \emph{A single quartic
+chart for square roots in a quadratic extension}.
+
+\end{document}

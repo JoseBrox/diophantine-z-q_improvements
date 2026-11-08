@@ -1,0 +1,700 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\newcommand{\A}{\mathbb A}\newcommand{\Pj}{\mathbb P}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\divisor}{div}
+\title{Aggregate trace heights of elliptic multiples}
+\author{}\date{8 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+We prove a linear height comparison for the sum of the traces of
+abscissas of nonzero multiples of the fixed elliptic point, and a
+second comparison for the trace of their product when the labels
+are odd. The main
+geometric argument excludes all positive-dimensional abelian
+translates through the specified points in a trace fiber, including
+translates defined only over an algebraic extension. A theorem of
+Von Buhren then supplies a linear comparison with an effective
+geometric slope and an ineffective additive constant. Under the
+arithmetic premises of the specified rational source, this proves
+the existence of a defining polynomial with twenty-seven total
+variables. The fixed coefficient needed to dominate the additive
+constant is not determined. The result is therefore an existence
+theorem, distinct from an explicit polynomial specification.
+\end{abstract}
+
+\section{Functions with one torsion zero and one pole}
+
+Throughout the geometric argument the base field is algebraically
+closed of characteristic zero. Let $E$ be an elliptic curve, let
+$O$ be its identity, and write $\mathcal R=\End(E)$. This ring is
+commutative and has no zero divisors. Let $T\in E$ have finite
+order $N>1$. Suppose $f\in k(E)$ satisfies
+\[
+ \divisor(f)=m[T]-m[O]\qquad(m>0).
+\]
+Thus $f$ has its only zero at $T$ and its only pole at $O$.
+Such a function exists when $m=N$, because $N(T-O)$ is a
+principal divisor on an elliptic curve.
+
+\begin{lemma}\label{lem:no-internal-cancellation}
+Let $P\in E$ have infinite order. Let $n_1,\ldots,n_r$ be
+nonzero integers prime to $N$, and let
+$\alpha_1,\ldots,\alpha_r\in\mathcal R$. At every point $U$
+of $E$, a pole of one function
+$f([n_i]P+\alpha_iU)$ cannot coincide with a zero of another.
+Consequently, if some $\alpha_i\ne0$, the product of these
+functions has a pole and is nonconstant.
+\end{lemma}
+\begin{proof}
+Suppose
+\[
+ [n_i]P+\alpha_iU=O,\qquad
+ [n_j]P+\alpha_jU=T.
+\]
+The first equation requires $\alpha_i\ne0$; a constant factor
+cannot be a zero or a pole because its argument is nontorsion.
+Applying the two endomorphisms and subtracting gives
+\[
+ (n_i\alpha_j-n_j\alpha_i)P=-\alpha_iT.
+\]
+The right side is torsion. A nonzero endomorphism is an isogeny
+and cannot take a nontorsion point to a torsion point. Hence
+$n_i\alpha_j=n_j\alpha_i$.
+
+Put $g=\gcd(|n_i|,|n_j|)$, $u=n_i/g$, and $v=n_j/g$.
+There are integers $a,b$ with $au+bv=1$. Set
+$\gamma=a\alpha_i+b\alpha_j$; the preceding equality gives
+$\alpha_i=u\gamma$ and $\alpha_j=v\gamma$. Therefore
+$R=[g]P+\gamma U$ satisfies $[u]R=O$ and $[v]R=T$.
+The order of $R$ divides $|u|$, which is prime to $N$, whereas
+$T$ has order $N>1$. This is impossible. Finally, every nonzero
+$\alpha_i$ is surjective, so the corresponding factor has a
+pole, and the absence of a zero at that point keeps it a pole
+of the product.
+\end{proof}
+
+Two nontorsion points $P_1,P_2$ will be called independent over
+$\mathcal R$ modulo torsion if
+$\alpha P_1+\beta P_2$ torsion implies $\alpha=\beta=0$.
+
+\begin{lemma}\label{lem:cross-cancellation}
+Suppose $P_1,P_2$ are independent over $\mathcal R$ modulo
+torsion. If $n,m$ are nonzero integers and $\alpha,\beta$ are
+nonzero endomorphisms, the functions
+$f([n]P_1+\alpha U)$ and $f([m]P_2+\beta U)$ have no common
+pole.
+\end{lemma}
+\begin{proof}
+A common pole would give $\alpha U=-[n]P_1$ and
+$\beta U=-[m]P_2$. Commutativity then gives
+$n\beta P_1-m\alpha P_2=O$, contradicting independence.
+\end{proof}
+
+\section{Excluding abelian translates in an aggregate fiber}
+
+Fix nonzero scalars $c_1,c_2$ and an integer $r\ge1$. On
+$E^{2r}$ consider the rational function
+\[
+ F(Q_1,\ldots,Q_r,Q'_1,\ldots,Q'_r)
+ =c_1\prod_{i=1}^r f(Q_i)+c_2\prod_{i=1}^r f(Q'_i).
+\]
+
+\begin{theorem}\label{thm:no-translate}
+Let $P_1,P_2$ be independent over $\mathcal R$ modulo torsion.
+Suppose every $n_i,m_i$ is nonzero and prime to $N$. Put
+\[
+ q=([n_1]P_1,\ldots,[n_r]P_1,
+       [m_1]P_2,\ldots,[m_r]P_2).
+\]
+No positive-dimensional abelian translate through $q$ is
+contained in a level set of $F$.
+\end{theorem}
+\begin{proof}
+Suppose $q+B$ is such a translate, with $B$ a nonzero abelian
+subvariety of $E^{2r}$. There is a nonzero homomorphism
+$\phi:E\to B$. For example, a nonzero coordinate projection
+$B\to E$ is surjective; dualizing and composing with an inverse
+to a polarization up to multiplication produces such a map.
+Write its coordinates as
+$(\alpha_1,\ldots,\alpha_r,\beta_1,\ldots,\beta_r)$,
+not all zero. The restriction of $F$ to $q+\phi(E)$ is
+\[
+ c_1\prod_i f([n_i]P_1+\alpha_iU)
+ +c_2\prod_i f([m_i]P_2+\beta_iU).
+\]
+Within either product a pole survives by
+Lemma~\ref{lem:no-internal-cancellation}. A pole of one product
+is not a pole of the other by
+Lemma~\ref{lem:cross-cancellation}. Since at least one
+endomorphism is nonzero, at least one product has a pole, and
+it remains a pole of the sum. This contradicts constancy.
+\end{proof}
+
+The same proof permits any finite number of blocks based on
+points that are pairwise independent over $\mathcal R$ modulo
+torsion. The integers in each block need only be prime to the
+order of the unique torsion zero of its chosen function.
+
+\section{Sums of abscissas without a parity restriction}
+
+Give $E$ a Weierstrass equation and write $x$ for its abscissa.
+This function has its only pole at $O$, of order two. Let
+$w_1,\ldots,w_r,w'_1,\ldots,w'_r$ be positive rational numbers
+and let $c_1,c_2$ be nonzero algebraic numbers. Define
+\[
+ F_+(Q_1,\ldots,Q_r,Q'_1,\ldots,Q'_r)
+   =c_1\sum_i w_i x(Q_i)+c_2\sum_i w'_i x(Q'_i).
+\]
+
+\begin{lemma}\label{lem:sum-poles}
+Let $P\in E$ have infinite order, let all integers $n_i$ be
+nonzero, and let $\alpha_i\in\mathcal R$. If some
+$\alpha_i\ne0$, the function
+\[
+ \sum_i w_i x([n_i]P+\alpha_iU)
+\]
+has a pole and is nonconstant.
+\end{lemma}
+\begin{proof}
+Choose a pole $U_0$ of a nonconstant summand, say the $i$th.
+If another summand, the $j$th, has a pole there, then
+$[n_i]P+\alpha_iU_0=[n_j]P+\alpha_jU_0=O$.
+Applying the endomorphisms and subtracting gives
+$(n_i\alpha_j-n_j\alpha_i)P=O$ and hence
+$n_i\alpha_j=n_j\alpha_i$.
+
+Let $z$ be a uniformizer at $O$ with
+$x=z^{-2}+O(z^{-1})$, and use $z(U-U_0)$ locally at $U_0$.
+Let $\lambda_j$ be the nonzero tangent multiplier of
+$\alpha_j$ at $O$. The leading coefficient of the $j$th
+summand at this pole is $w_j\lambda_j^{-2}$, and the
+endomorphism identity gives
+$\lambda_j=(n_j/n_i)\lambda_i$. Consequently the coefficient
+of $z^{-2}$ in the full sum is
+\[
+ \lambda_i^{-2}
+       \sum_{j:\,[n_j]P+\alpha_jU_0=O}
+                    w_j(n_i/n_j)^2.
+\]
+The sum is a nonzero positive rational number. The pole
+therefore cannot cancel.
+\end{proof}
+
+\begin{theorem}\label{thm:sum-no-translate}
+Suppose $P_1,P_2$ are independent over $\mathcal R$ modulo
+torsion, and all $n_i,m_i$ are nonzero. No
+positive-dimensional abelian translate through
+\[
+ q=([n_i]P_1)_{i=1}^r\times([m_i]P_2)_{i=1}^r
+\]
+is contained in a level set of $F_+$.
+\end{theorem}
+\begin{proof}
+Restrict to an elliptic subgroup direction exactly as in
+Theorem~\ref{thm:no-translate}. Every nonconstant block sum
+has a pole by Lemma~\ref{lem:sum-poles}. A pole in one block
+cannot occur in the other block, because the same argument
+as Lemma~\ref{lem:cross-cancellation} would give a nontrivial
+endomorphism relation between $P_1$ and $P_2$. At least one
+block is nonconstant, so their weighted sum is nonconstant.
+\end{proof}
+
+This result uses no torsion zero of $x$ and imposes no parity
+condition. Its positivity assumption concerns the fixed
+rational weights within each block, not the values of the
+abscissas.
+
+\begin{theorem}[Several blocks]\label{thm:many-blocks}
+Let $P_1,\ldots,P_s$ be nontorsion points on $E$ such that
+each pair is independent over $\mathcal R$ modulo torsion.
+Fix positive integers $r_j$, positive rational weights
+$w_{ji}$, and nonzero algebraic scalars $c_j$. On
+$E^{\sum_jr_j}$ put
+\[
+ F_{\mathrm{sum}}((Q_{ji}))
+      =\sum_{j=1}^s c_j\sum_{i=1}^{r_j}w_{ji}x(Q_{ji}).
+\]
+For any tuple $q=([n_{ji}]P_j)$ with all $n_{ji}\ne0$, no
+positive-dimensional abelian translate through $q$ is
+contained in a fiber of $F_{\mathrm{sum}}$.
+
+There is a product version. For each $j$ suppose
+$\divisor(f_j)=m_j[T_j]-m_j[O]$, where $T_j$ has order
+$N_j>1$. Replace $F_{\mathrm{sum}}$ by
+\[
+ F_{\mathrm{product}}((Q_{ji}))
+      =\sum_{j=1}^s c_j\prod_{i=1}^{r_j}f_j(Q_{ji}).
+\]
+The same conclusion holds if every $n_{ji}$ is prime to $N_j$.
+\end{theorem}
+\begin{proof}
+Restrict to a nonzero homomorphism $E\to B$ in any proposed
+positive-dimensional subgroup $B$. Some block has a
+nonconstant coordinate. Within that block a pole survives
+by Lemma~\ref{lem:sum-poles}, or by
+Lemma~\ref{lem:no-internal-cancellation} in the product case.
+A pole cannot occur in two distinct blocks: their two pole
+equations would contradict the pairwise independence of
+their base points. The pole therefore survives in the full
+sum, contradicting constancy.
+\end{proof}
+
+The scalars $c_j$ need not be real or positive. Pairwise
+independence suffices; no independence assumption on the
+entire collection is required.
+
+\section{A linear height comparison}
+
+We use the following consequence of Von Buhren's family height
+theorem \cite[Theorem~1.1]{VonBuhren}. Let $A$ be an abelian
+variety, $S$ a projective variety, and $V\subseteq A\times S$
+an integral closed subvariety. For a fixed subgroup
+$\Gamma\subseteq A(\overline\Q)$ of finite rank, there are
+constants $\mu,\nu\ge0$ such that
+\begin{equation}\label{eq:VB}
+ \widehat h_A(a)\le\mu h_S(s)+\nu
+\end{equation}
+whenever $a\in\Gamma$ lies in the fiber $V_s$ and does not lie
+on a positive-dimensional abelian translate contained in that
+fiber. The slope $\mu$ can be computed from projective
+geometric data. The theorem does not provide an effective
+value for $\nu$.
+
+\begin{corollary}\label{cor:height}
+Assume the data of Theorem~\ref{thm:no-translate} are algebraic
+numbers. There are constants $M>0$ and $M_0\ge0$, independent
+of all the integers $n_i,m_i$, such that
+\[
+ \sum_{i=1}^r\bigl(\widehat h_E([n_i]P_1)
+                 +\widehat h_E([m_i]P_2)\bigr)
+ \le M h(F(q))+M_0
+\]
+for every tuple in that theorem. Here $h$ is the absolute
+logarithmic height on $\Pj^1$. One may choose an effective
+geometric slope $M$ after fixing compatible height
+normalizations. No effective $M_0$ is asserted.
+The same conclusion holds with $F_+$ and the hypotheses of
+Theorem~\ref{thm:sum-no-translate}, allowing all nonzero labels.
+\end{corollary}
+\begin{proof}
+Let $A=E^{2r}$ and take for $V\subseteq A\times\Pj^1$ the
+closure of the graph of $F$. This is integral and projective.
+Let $\Gamma$ be the subgroup generated by $P_1$ in each of
+the first $r$ coordinates and by $P_2$ in each of the last
+$r$ coordinates. It is finitely generated.
+
+Every indicated $q$ is in the domain of $F$, since no
+$[n_i]P_1$ or $[m_i]P_2$ is the identity. If an abelian
+translate through $q$ were contained in the projective fiber
+$V_{F(q)}$, it would meet the domain of $F$ at $q$. Its dense
+open intersection with that domain would make $F$ constant
+on the translate. Theorem~\ref{thm:no-translate} rules this
+out. This argument also handles possible boundary components
+introduced by closing the graph; none through $q$ changes
+the conclusion.
+
+Apply~\eqref{eq:VB}, using a symmetric ample product line
+bundle on $A$. Its canonical height is a fixed positive
+multiple of the sum of the coordinate canonical heights.
+Rescaling gives the stated inequality. For $F_+$ the same
+proof uses Theorem~\ref{thm:sum-no-translate} to exclude the
+exceptional translates.
+\end{proof}
+
+For either function of Theorem~\ref{thm:many-blocks} the same
+argument gives a uniform inequality
+\[
+ \sum_{j,i}\widehat h_E([n_{ji}]P_j)
+       \le M h(F(q))+M_0.
+\]
+The subgroup is generated by the finitely many base points
+placed in their respective coordinates. The constants are
+fixed before any of the integer labels are chosen.
+
+\section{The quadratic-field elliptic curve}
+
+Let
+\[
+ K=\Q(\sqrt2),\quad d=3-\sqrt2,\quad d'=3+\sqrt2,
+ \quad E:\ y^2=x^3-d^2x,
+\]
+and let $\sigma$ be the nonidentity automorphism of $K/\Q$.
+The point used in the rational source is
+\[
+ R_0=(1+\sqrt2,2\sqrt2),\qquad
+ P=2R_0=\left(\frac{57}{8}-\frac72\sqrt2,
+             -\frac{165}{8}+\frac{417}{32}\sqrt2\right).
+\]
+For this section its infinite order is the only group
+property needed; no assertion about the full Mordell--Weil
+group is required.
+
+\begin{lemma}
+The displayed point $P$ has infinite order.
+\end{lemma}
+\begin{proof}
+Substitution verifies $R_0\in E(K)$, and the usual tangent
+formula gives the displayed double. At the prime
+$\mathfrak p=(\sqrt2)$ normalize $v_{\mathfrak p}(\sqrt2)=1$,
+so $v_{\mathfrak p}(2)=2$. The displayed coordinates give
+\[
+ v_{\mathfrak p}(x(P))=-6,\qquad
+ v_{\mathfrak p}(y(P))=-9,\qquad
+ v_{\mathfrak p}(-x(P)/y(P))=3.
+\]
+The parameter $z=-x/y$ places $P$ in the formal group of
+this integral Weierstrass equation. Its multiplication series
+have integral coefficients and linear term $[m](z)=mz+O(z^2)$.
+For odd $m$ and $v(z)\ge3$, the linear term uniquely has
+least valuation, so $v([m]z)=v(z)$. For multiplication by
+two, the linear term has valuation $v(z)+2<2v(z)$,
+and therefore $v([2]z)=v(z)+2$. No successive multiplication
+by an odd integer and by a power of two can give zero.
+Every nonzero integer has this form, proving the claim.
+\end{proof}
+
+\begin{lemma}\label{lem:independent}
+Over a field containing $\sqrt d$ and $\sqrt{d'}$, identify
+$E$ and $E^\sigma$ with $E_0:Y^2=X^3-X$ by
+\[
+ (X,Y)=\left(\frac{x}{d},\frac{y}{d\sqrt d}\right),
+ \qquad
+ (X',Y')=\left(\frac{x'}{d'},\frac{y'}{d'\sqrt{d'}}\right).
+\]
+The images $P_1,P_2$ of $P,P^\sigma$ are independent over
+$\End(E_0)=\Z[i]$ modulo torsion.
+\end{lemma}
+\begin{proof}
+The squareclasses of $d,d'$ are independent in $K(i)$.
+Indeed, a positive element of the real field $K$ that is a
+square in $K(i)$ is already a square in $K$: writing a square
+root as $a+ib$ gives $ab=0$, and the purely imaginary case
+would be negative at a real embedding. Neither $d$ nor $d'$
+is a square in $K$, since its norm to $\Q$ is $7$. Their
+product $7$ is not a square in $K$: expanding
+$(a+b\sqrt2)^2=7$ for rational $a,b$ gives $ab=0$ and then
+requires either $7$ or $7/2$ to be a rational square.
+
+It follows that $K(i,\sqrt d,\sqrt{d'})/K(i)$ has an
+automorphism fixing $\sqrt d$ and negating $\sqrt{d'}$.
+It fixes $P_1$, negates $P_2$, and fixes every endomorphism
+in $\Z[i]$. If $\alpha P_1+\beta P_2$ were torsion, applying
+the automorphism and subtracting would make $2\beta P_2$
+torsion. Infinite order forces $\beta=0$, and then
+$\alpha=0$.
+\end{proof}
+
+\begin{theorem}\label{thm:aggregate}
+For any fixed $r\ge1$, there are constants $M_+>0$ and
+$M_{+,0}\ge0$ such that, for all nonzero integers
+$n_1,\ldots,n_r$,
+\begin{equation}\label{eq:sum-height}
+ \sum_{i=1}^r\widehat h_E([n_i]P)
+ \le M_+ h\!\left(\frac12\Tr_{K/\Q}
+                 \sum_{i=1}^r x([n_i]P)\right)+M_{+,0}.
+\end{equation}
+There are also constants $M_\times>0$, $M_{\times,0}\ge0$
+such that, when all the labels are odd,
+\begin{equation}\label{eq:aggregate-height}
+ \sum_{i=1}^r\widehat h_E([n_i]P)
+ \le M_\times h\!\left(\frac12\Tr_{K/\Q}
+                 \prod_{i=1}^r x([n_i]P)\right)+M_{\times,0}.
+\end{equation}
+Both slopes can be chosen effectively from the fixed geometry;
+the additive constants are not determined effectively here.
+\end{theorem}
+\begin{proof}
+On $E_0$, the coordinate $X$ has divisor
+$2[(0,0)]-2[O]$. Its zero is a nonzero point of order two,
+so the index condition in Theorem~\ref{thm:no-translate} is
+exactly oddness. Under the isomorphisms of
+Lemma~\ref{lem:independent}, the rational function in the
+height on the right of~\eqref{eq:aggregate-height} is
+\[
+ F=\frac{d^r}{2}\prod_{i=1}^r X_i
+       +\frac{(d')^r}{2}\prod_{i=1}^r X'_i.
+\]
+For the sum, the corresponding function is
+$F_+=(d/2)\sum_iX_i+(d'/2)\sum_iX'_i$ and
+Theorem~\ref{thm:sum-no-translate} applies without parity
+restrictions. Apply Corollary~\ref{cor:height} to both
+functions with $m_i=n_i$.
+Canonical heights are unchanged by these pointed
+isomorphisms, and conjugation preserves absolute canonical
+height. The coordinate height sum there is twice the sum
+in~\eqref{eq:aggregate-height}; divide by two.
+\end{proof}
+
+Notice that the inequality is linear. Finiteness of each
+individual fiber alone would not give this conclusion. The
+additive constant is the remaining effectiveness issue; it is
+not an additional mathematical conjecture.
+
+\section{A trace-height consequence over number fields}
+
+\begin{corollary}\label{cor:number-fields}
+Let $K/F$ be a finite extension of number fields, let $E/K$
+be an elliptic curve, and let $P\in E(K)$ have infinite order.
+For every embedding $\sigma:K\hookrightarrow\overline F$
+over $F$, suppose there is a pointed isomorphism
+$\phi_\sigma:E^\sigma\to E_0$ to a fixed elliptic curve over
+$\overline F$. Assume that the points
+$P_\sigma=\phi_\sigma(P^\sigma)$ are pairwise independent
+over $\End(E_0)$ modulo torsion.
+
+For every fixed positive integer $r$ there are constants
+$M>0$, $M_0\ge0$ such that, for all nonzero integer labels,
+\[
+ \sum_{i=1}^r\widehat h_E([n_i]P)
+ \le M h\!\left(\Tr_{K/F}
+                    \sum_{i=1}^r x([n_i]P)\right)+M_0.
+\]
+The slope can be chosen effectively from the fixed geometric
+data; the additive constant has the same ineffective status
+as in Corollary~\ref{cor:height}.
+\end{corollary}
+\begin{proof}
+Under a pointed isomorphism of Weierstrass models the
+abscissa transforms as
+$x^\sigma=a_\sigma x_0+b_\sigma$, with $a_\sigma\ne0$.
+The function in the height is therefore
+\[
+ \sum_\sigma a_\sigma\sum_i x_0([n_i]P_\sigma)
+                  +r\sum_\sigma b_\sigma.
+\]
+Theorem~\ref{thm:many-blocks} excludes constant translates
+through the indicated points for the nonconstant part.
+Adding the fixed scalar does not change that conclusion.
+The graph-family argument gives a linear bound for the sum
+of the canonical heights in all the embedding blocks.
+Absolute canonical height is unchanged by conjugation and
+pointed isomorphism, so this sum is $[K:F]$ times the left
+side of the displayed inequality. Divide by $[K:F]$.
+\end{proof}
+
+This corollary is a height comparison under explicit
+independence hypotheses. It does not assert a Diophantine
+definition of the ring of integers of $K$.
+
+\section{A conditional existence result with twenty-seven variables}
+
+We specify precisely how the height theorem applies to the
+explicit rational source in~\cite{Baseline29}. We retain its group, contact-height,
+pole, and simultaneous prime-pattern premises. Its contact
+exponent is $\eta=19$, its comparison orders are $39$ and
+$10$, and its scalar order is $20$. These premises and the
+same finite-support completeness argument are the only
+arithmetic inputs in the following consequence.
+
+Write the four root labels as $(n,a,t,b)$, all nonzero integers, and put
+\[
+ B=\max(|n|,|a|,|t|,|b|),\quad c=|a-1|,
+ \quad\Delta=t^2-a(a-2)tb+(a-2)^2b^2-1,
+\]
+and use the positive rational number
+\[
+ F=\Tr_{K/\Q}
+       \bigl(x([n]P)+x([a]P)+x([t]P)+x([b]P)\bigr).
+\]
+Positivity follows because the source points are nonzero
+ doubles and their abscissas are positive at both real
+embeddings. In particular $F\ne0$. The sum uses only additions
+after the four abscissas have been computed. Replacing the
+half trace in Theorem~\ref{thm:aggregate} by the full trace
+changes the height by at most $\log 2$, absorbed into its
+additive constant. The product theorem gives an independent
+height comparison when all labels are odd; the construction
+here uses the sum.
+
+Use only the two comparison scales $1$ and $F^2$. The
+source's contact-height inequality for these scales gives
+\begin{equation}\label{eq:two-scales}
+ h(F)\le(H+\log3)|N|^{19/k}
+\end{equation}
+whenever their local certificates give the required
+$k$-fold contact divisibility for the nonzero integer $N$.
+Indeed, the unscaled and scaled arguments bound the heights
+of $\lambda$ and $F^2\lambda$ by the same right side, so
+$2h(F)=h(F^2)\le h(\lambda)+h(F^2\lambda)$.
+Theorem~\ref{thm:aggregate}, with $r=4$, then implies
+\begin{equation}\label{eq:B-height}
+ B^2\le M_1 h(F)+M_2
+\end{equation}
+for fixed $M_1>0$, $M_2\ge1$. This follows directly from
+$\widehat h_E([j]P)=j^2\widehat h_E(P)$ and
+$\widehat h_E(P)>0$.
+
+\begin{theorem}\label{thm:27}
+Under the stated arithmetic premises, there exists a polynomial
+over $\Z$ in twenty-seven total variables, including its input
+variable, of total degree at most $2^{158}$, whose rational
+zero set projects exactly to $\Z$.
+The proof does not determine all of its coefficients.
+\end{theorem}
+\begin{proof}
+For any positive odd integer $L$, the scalar normalizer can be
+chosen as
+\[
+ R_L(X)=\frac{102^2\ell^L r(X)}{(1+C_Lr(X))^2},
+ \qquad \ell=76249,\qquad
+ C_L=17\bigl(\ell^{(L+1)/2}+1\bigr),
+\]
+with $\beta=216X^4+450459$ and
+$r=\beta(\beta-1)(\beta-2401)(32\beta+343)(2\beta-1)$.
+The finite-field certificate in~\cite{ScalarNormalization}
+proves that $r$ and $1+17r$ have no
+zero modulo $\ell$. Thus
+\[
+ v_\ell(R_L)=L\quad(v_\ell X\ge0),\qquad
+ v_\ell(R_L)=L-20v_\ell X\quad(v_\ell X<0).
+\]
+Also $0<R_L<1$, since
+$C_L^2r(0)>17^2\ell^{L+1}r(0)>102^2\ell^L$.
+All other scalar local conditions and square-denominator
+conditions are unchanged. The fixed-prime extraction argument
+therefore gives
+\[
+ v_\ell(a-1)\ge19L+1,
+ \qquad c\ge\ell^{19L+1}.
+\]
+
+If $\Delta\ne0$, local comparison and~\eqref{eq:two-scales}
+with $k=39$ give, using $|\Delta|<5B^4$,
+\[
+ B^2\le M_1(H+\log3)(5B^4)^{19/39}+M_2.
+\]
+The exponent $76/39$ is strictly smaller than two. Hence this
+inequality fails for all sufficiently large $B$. Since
+$B\ge|a|\ge c-1$, choosing the fixed odd $L$ sufficiently
+large excludes $\Delta\ne0$ for every solution.
+
+Now $\Delta=0$, and the elementary integer Lucas growth
+argument gives $\log B>c-4$ once $|a|>7$.
+If $\beta\ne n$, write $N$ for the absolute numerator of
+$\beta-n$ in lowest terms. The source gives
+$N\le2e^{h(\beta)}B$ and contact divisibility of order ten.
+Equations~\eqref{eq:two-scales} and~\eqref{eq:B-height} give
+\[
+ B^2\le M_1(H+\log3)
+               (2e^{h(\beta)}B)^{19/10}+M_2.
+\]
+For $B^2>2M_2$, taking logarithms yields
+$\log B\le19h(\beta)+M_3$ for a fixed constant $M_3$.
+The scalar estimate remains $h(\beta)\le Hc^{19/20}$.
+It follows that
+\[
+ c-4<19Hc^{19/20}+M_3,
+\]
+which fails for all sufficiently large $c$. Increase the
+same fixed odd $L$ if necessary. We conclude $\beta=n\in\Z$,
+and the source input map then gives $X\in\Z$.
+
+Conversely, for each integer $X$ the unchanged completeness
+argument prepares the finite support of $R_L(X)$ and applies
+the simultaneous prime-pattern premise to the two remaining
+scales. Removing a comparison scale removes requirements;
+the source's finite-avoidance argument still applies. It
+therefore supplies all rational witnesses.
+
+The retained coordinates are the input, eighteen coordinates
+for nine elliptic point charts, one slope, four parameters for
+the two comparison poles, and two parameters for the scalar
+pole: $1+18+1+4+2=26$. The finite-algebra elimination
+theorem of~\cite{FiniteAlgebra} adds one coordinate, giving twenty-seven. Its rational
+projection is unchanged by that elimination. Clearing the
+fixed rational coefficients gives a polynomial over $\Z$.
+
+All constants used to choose $L$ exist by the proved height
+theorem. Their existence proves the polynomial's existence.
+The ineffective additive constant $M_2$ prevents this proof
+from specifying a certified numerical value of $L$.
+
+The direct point charts and the single cubic change of basis
+for their square roots are proved in~\cite{SquareCharts,QuadraticCharts}.
+The resulting finite-algebra specification
+\cite{FamilyCertificate} has nine quartic point generators
+and three quadratic pole generators. Its maximum rank is
+$4^9\cdot2^3=2^{21}$, with eight source cases. Exact degree
+arithmetic gives the majorant
+\[
+ 232075682770882905150152990100588354340946706432
+                 <2^{158}.
+\]
+The exponent $L$ enters only integer coefficients. Every
+degree computation and the same majorant are therefore
+uniform in the fixed odd $L\ge3$, including every
+sufficiently large member used above. This proves the degree
+assertion without an effective value of $L$.
+\end{proof}
+
+The formal logarithm orders remain $39$, $10$, and $20$;
+only a fixed scalar coefficient is enlarged. Thus the
+ineffectiveness does not conceal an extra coordinate or a
+degree that grows with $L$: $L$ occurs solely in coefficients.
+The explicit twenty-nine-variable construction
+remains a different deliverable, with all constants given.
+
+\begingroup\small
+\begin{thebibliography}{9}
+\setlength{\itemsep}{2pt}
+\setlength{\parskip}{0pt}
+\bibitem{VonBuhren}
+J.~Von Buhren, \emph{Borne de hauteur semi-effective pour le
+probl\`eme de Mordell--Lang dans une vari\'et\'e ab\'elienne},
+Journal de Th\'eorie des Nombres de Bordeaux
+\textbf{29} (2017), no.~1, 307--320.
+\href{https://doi.org/10.5802/jtnb.981}{doi:10.5802/jtnb.981}.
+\href{https://www.numdam.org/item/10.5802/jtnb.981.pdf}{Full text}.
+
+\bibitem{Baseline29}
+\emph{An explicit polynomial in 29 variables over the rationals},
+project manuscript, 8 November 2026.
+\href{https://github.com/JoseBrox/diophantine-z-q_improvements}{Project repository};
+source file \path{few_variables_20261108_v8.tex}.
+
+\bibitem{FiniteAlgebra}
+\emph{Eliminating finite algebraic choices with one coordinate},
+project manuscript, 7 November 2026.
+\href{https://github.com/JoseBrox/diophantine-z-q_improvements}{Project repository};
+source file \path{finite_algebra_20261107_v7.tex}.
+
+\bibitem{ScalarNormalization}
+\emph{Scalar contact normalization by finite-field avoidance},
+companion manuscript, 8 November 2026.
+Source file \path{scalar_normalization_20261108_v9.tex};
+exact certificates and independent checker accompany the manuscript.
+
+\bibitem{FamilyCertificate}
+\emph{A defining polynomial in twenty-seven variables:
+an existence theorem with a uniform degree bound},
+polynomial specification with independent verification,
+8 November 2026; source file
+\path{few_variables27_cubic_20261108_v9.tex}.
+The reproducibility archive contains the polynomial
+specification, construction report, source verification and
+independent verification for the displayed example coefficient
+$L=137731$. The example is used to verify the uniform degree
+calculation; it is not asserted to exceed the ineffective
+sufficient threshold.
+\bibitem{SquareCharts}
+\emph{Square abscissas and direct charts for the elliptic subgroup},
+companion manuscript, 8 November 2026.
+Source file \path{square_abscissa_charts_20261108_v9.tex}.
+
+\bibitem{QuadraticCharts}
+\emph{A single quartic chart for square roots in a quadratic extension},
+companion manuscript, 8 November 2026.
+Source file \path{quadratic_square_chart_20261108_v9.tex}.
+\end{thebibliography}
+\endgroup
+\end{document}

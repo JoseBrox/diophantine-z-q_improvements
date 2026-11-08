@@ -1,0 +1,460 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,booktabs,microtype,xcolor}
+\usepackage[margin=26mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue!45!black,citecolor=blue!45!black,urlcolor=blue!45!black]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{remark}\newtheorem{remark}[theorem]{Remark}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\DeclareMathOperator{\Tr}{Tr}
+\setlength{\emergencystretch}{2em}
+\title{A family of quartics in 317 variables from aggregate trace heights}
+\author{}\date{8 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+We specify a family of integer quartics in 317 total variables by
+291 quadratic equations and a complete coefficient table polynomial
+in one fixed integer parameter. Under the arithmetic premises of
+the specified source construction, every sufficiently large member
+defines the integers in the rationals. The new ingredient is a
+linear height comparison for the sum of four rational traces of
+elliptic abscissas. It reduces three height-detector blocks to two
+and replaces a field product by a rational sum. The absence of a parity restriction also removes all four odd-index certificates. An input relabeling retains exact integer extraction. The sufficient
+parameter threshold is ineffective because the height comparison
+has an ineffective additive constant. Thus this is an existence
+theorem with an exact family specification; it does not determine
+the coefficients of a particular defining member. The fully
+specified 389-variable quartic remains a separate result.
+\end{abstract}
+
+\section{Statement and exact family}
+Every variable count includes the input $X$. Put $\ell=80989$ and
+\[
+                         A_N=\ell^{2N+1}\qquad(N\ge1).
+\]
+The files \nolinkurl{quadratic-family317.json} and
+\nolinkurl{polynomial-family317.json} specify 291 integer quadratic
+polynomials $Q_{N,j}$ in 317 coordinates and
+\[
+                         P_N=\sum_{j=1}^{291}Q_{N,j}^2.
+\]
+The table uses powers of $A_N$ as a compact notation for integer
+coefficients. Neither $A_N$ nor $N$ is a variable of $P_N$.
+
+\begin{theorem}\label{thm:main}
+Assume the arithmetic input contract of the specified quartic source
+\cite[Section 2]{Quartic392}, including its quantitative weighted
+prime-selection premise. There is an integer $N_0\ge27464$ such that,
+for every integer $N\ge N_0$,
+\[
+ x\in\Z\quad\Longleftrightarrow\quad
+ \exists\boldsymbol y\in\Q^{316},\ P_N(x,\boldsymbol y)=0.
+\]
+For every $N\ge1$, the polynomial has total degree exactly four,
+integer content one, and coefficient height
+\[
+                         H(P_N)<2^{1520}\,80989^{4N+2}.
+\]
+For $N\ge27464$ it has exactly 5032 nonzero coordinate monomials.
+The proof does not determine a numerical value of $N_0$.
+\end{theorem}
+
+The height comparison used below is a proved consequence of
+Von Buhren's theorem, not a new arithmetic conjecture. Its
+ineffectiveness prevents us from selecting an explicit defining
+member from the family. Finite coefficient verification establishes
+the specified polynomial identities; it cannot resolve this
+effectiveness issue or prove the retained arithmetic premises.
+
+\section{The aggregate trace}
+We use the same curve and point as the source:
+\[
+ K=\Q(\rho),\quad \rho^2=2,\quad d=3-\rho,\qquad
+ E:y^2=x^3-d^2x,
+\]
+\[
+ P=2(1+\rho,2\rho)
+   =\left(\frac{57-28\rho}{8},\frac{-660+417\rho}{32}\right).
+\]
+The retained root charts give four points
+\[
+ Q_1=[n]P,\quad Q_2=[a]P,\quad Q_3=[t]P,\quad Q_4=[b]P
+\]
+with nonzero integer labels, as proved below. Define the rational number
+\[
+ F=\frac12\Tr_{K/\Q}\bigl(x(Q_1)+x(Q_2)+x(Q_3)+x(Q_4)\bigr),
+ \qquad B=\max(|n|,|a|,|t|,|b|).
+\]
+We write $h$ for absolute logarithmic Weil height and $\widehat h_E$
+for canonical height on $E$.
+
+\begin{lemma}\label{lem:square-chart}
+Assume $2E(K)=\Z P$ and $P=2R_0$, where
+$R_0=(1+\rho,2\rho)$. Every solution in $K$ of
+\[
+ x=h^2,\qquad j^2=x^2-d^2
+\]
+gives a point $Q=(x,hj)=[m]P$ for a nonzero integer $m$.
+No parity condition on $m$ is imposed.
+\end{lemma}
+\begin{proof}
+If $h=0$, then $j^2=-d^2$, impossible in the real field $K$.
+Thus $x\ne0$, and the equations imply that $Q$ lies on $E$.
+The standard squareclass homomorphism for this two-isogeny is
+\[
+ \delta_x:E(K)\longrightarrow K^\times/K^{\times2},\qquad
+ \delta_x(Q)=[x(Q)]
+\]
+away from $O$ and $T_0=(0,0)$, with
+$\delta_x(O)=1$ and $\delta_x(T_0)=[-d^2]$.
+For completeness, its homomorphism identity follows from the
+chord-and-tangent rule: the product of the three intersection
+abscissas of a nonvertical line with the curve is the square of
+its ordinate intercept. The special value at $T_0$ agrees with
+$x(Q+T_0)=-d^2/x(Q)$; the vertical and tangent cases give the
+same identity.
+
+The group premise gives $2Q=mP=2mR_0$, and hence
+$Q=mR_0+T$ for some $T\in E[2](K)$. The four torsion points
+are $O,T_0,(d,0),(-d,0)$, with squareclasses
+$1,-d^2,d,-d$. They all have uniform real signs at the two
+embeddings. In contrast, $\delta_x(R_0)=[1+\rho]$ has mixed
+real signs. Since $x(Q)$ is a nonzero square, $m$ must be even.
+Then $\delta_x(T)$ must be a square. The negative values
+$-d^2,-d$ are not squares, and $d$ is not a square because its
+norm to $\Q$ is $7$. Therefore $T=O$ and $Q=[m/2]P$.
+The index is nonzero because the point supplied by the chart is
+finite. This also proves it is nontorsion.
+\end{proof}
+
+\begin{lemma}\label{lem:aggregate}
+There are fixed constants $M_1>0$ and $M_2\ge1$ such that
+\[
+                         B^2\le M_1h(F)+M_2.
+\]
+Also $F>12$, so $1$ and $F^2$ are distinct positive rational squares.
+No effective value of $M_2$ is claimed here.
+\end{lemma}
+\begin{proof}
+The aggregate-trace height theorem \cite{Aggregate}
+gives
+\[
+ \sum_{i=1}^4\widehat h_E(Q_i)\le M h(F)+M_0
+\]
+for fixed constants. The point $P$ has positive canonical height and
+$\widehat h_E([j]P)=j^2\widehat h_E(P)$; rescaling proves the first
+claim. The theorem applies to all nonzero integer labels and requires no parity condition. Its proof excludes every
+positive-dimensional abelian translate through the indicated points
+in a fiber of the aggregate map. Von Buhren's family height theorem
+then supplies the linear inequality, with an ineffective additive
+constant.
+
+Each $Q_i$ is a nonzero double. Its abscissa is a positive square
+at both real embeddings; the curve equation gives $x(Q_i)>d$ at
+each embedding. Since $d$ and its conjugate sum to $6$, the rational
+trace of each abscissa is greater than $3$. Summing gives $F>12$.
+\end{proof}
+
+\section{Two height detectors}
+Use only the scales $1,F^2$. Every retained local detector has the
+same point tests, formal logarithm approximations, and test orders
+as the 389-variable construction \cite{Quartic389}. Its three
+classes of test orders are $1,10,40$. In particular, its
+nonvanishing is automatic at every consumed contact prime by the
+local argument of that construction; no trace inverse witness is
+reintroduced.
+
+Let $H$ denote the retained contact-height constant and let
+$M_0,M_1^*$ be the two contact radicals. We distinguish the radical
+notation $M_1^*$ from the constant $M_1$ in
+Lemma~\ref{lem:aggregate}. The following implication is the only
+height consequence required of the detectors.
+
+\begin{lemma}\label{lem:two-scales}
+If $J\ne0$ is an integer and both $M_0^k$ and $(M_1^*)^k$
+divide $J$, then
+\[
+ h(F)\le(H+\log3)|J|^{19/k},\qquad
+ B^2\le C|J|^{19/k}+M_2,
+ \quad C=M_1(H+\log3).
+\]
+\end{lemma}
+\begin{proof}
+The retained contact-height theorem bounds both $h(\lambda)$ and
+$h(F^2\lambda)$ by $(H+\log3)|J|^{19/k}$. The factor $\log3$
+accounts for the fractional linear change in the contact argument.
+Since the detector domain excludes $\lambda=0$,
+\[
+ 2h(F)=h(F^2)\le h(F^2\lambda)+h(\lambda).
+\]
+This proves the first inequality. Apply
+Lemma~\ref{lem:aggregate} for the second.
+\end{proof}
+
+\section{Soundness for every sufficiently large parameter}
+Put
+\[
+ \beta=51X^2+2504,\qquad c=|a-1|,
+ \qquad
+ \Delta=t^2-a(a-2)tb+(a-2)^2b^2-1.
+\]
+The scalar block uses
+\[
+ r=\beta(\beta-1)(\beta-2401)(32\beta+343)(2\beta-1),
+ \qquad R=\frac{A_Nr}{1+\ell^2r},\qquad c_R=R+9792.
+\]
+All factors of $r$ are positive for rational $X$. The constant
+$9792$ replaces the old shift $4896$; its prime factors are still
+only $2,3,17$. The five excluded squareclasses at $\ell$ are
+unchanged, because the old affine input $2X_{\rm old}+1$ is now
+$X$. Thus the same Euler tests give
+\[
+ v_\ell(R)\in\{2N+1,2N-1\}.
+\]
+At every prime in $M_5(\beta)$, $R$ still has positive odd valuation
+and $c_R$ is a unit. Consequently the local scalar argument,
+including the exceptional-point exclusions, is unchanged.
+Its integral group identity is
+$[m](2G)=[4(a-1)]H$ and requires only $a-1\ne0$ integral,
+not even. It gives, for every $N\ge1$,
+\begin{equation}\label{eq:scalar}
+ c\ge\ell^{L_N},\qquad
+ L_N=\left\lfloor\frac{187(2N-1)}8\right\rfloor+1,
+ \qquad h(\beta)\le Hc^{19/24}.
+\end{equation}
+These conclusions are proved before the final height comparisons;
+they do not depend on the number of height detectors. In particular
+$c$ tends uniformly to infinity with $N$, and $B\ge|a|\ge c-1$.
+All exceptional elliptic-point exclusions and ratio-domain checks
+from the scalar argument remain in force.
+
+\begin{lemma}\label{lem:lucas-residual}
+For every sufficiently large $N$, every rational solution of the
+quadratic system satisfies $\Delta=0$.
+\end{lemma}
+\begin{proof}
+If $\Delta\ne0$, the retained local comparisons make the fortieth
+powers of both contact radicals divide $\Delta$. For $B\ge1$,
+the displayed expression gives
+\[
+ |\Delta|\le2B^4+6B^3+5B^2+1\le14B^4.
+\]
+Lemma~\ref{lem:two-scales} would therefore imply
+\[
+ B^2\le C\,14^{19/40}B^{19/10}+M_2.
+\]
+Dividing by $B^2$ shows this is impossible once $B$ exceeds a
+fixed threshold, since $19/10<2$. Equation~\eqref{eq:scalar}
+ensures that threshold for every sufficiently large $N$.
+\end{proof}
+
+\begin{lemma}\label{lem:input}
+For every sufficiently large $N$, every rational solution satisfies
+$n=\beta$ and $X\in\Z$.
+\end{lemma}
+\begin{proof}
+The elementary Lucas growth lemma in \cite[Section 5]{Quartic392}
+states that $\Delta=0$, $b\ne0$, and $|a|>7$ imply
+\[
+                         \log B\ge\log|t|>|a|-3.
+\]
+Suppose $n-\beta\ne0$ and let $J$ be its nonzero reduced numerator.
+The order-ten tests make both tenth powers of the contact radicals
+divide $J$. Also $|J|\le2B\exp h(\beta)$. By
+Lemma~\ref{lem:two-scales},
+\[
+ B^2\le C\,2^{19/10}B^{19/10}
+                     \exp\!\left(\frac{19}{10}h(\beta)\right)+M_2.
+\]
+For $B^2\ge2M_2$ it follows that
+\[
+ \log B\le10\log(2C)+19\log2+19h(\beta)
+ \le10\log(2C)+19\log2+19Hc^{19/24}.
+\]
+The last expression is $o(c)$ as $c\to\infty$, whereas
+$|a|-3\ge c-4$. This contradicts the Lucas lower bound once
+$c$ exceeds a fixed threshold. Equation~\eqref{eq:scalar}
+provides that threshold for every sufficiently large $N$.
+
+Thus $\beta=n$ is an integer. If $X=u/v$ in lowest terms
+with $v>0$, then $v^2\mid51$. Since $51$ is squarefree, $v=1$,
+so $X\in\Z$. No parity restriction on $n$ is used.
+\end{proof}
+
+The finitely many thresholds in these arguments depend on the
+fixed constants $C,M_2,H$. Since $L_N$ increases with $N$, there
+is one $N_0$ such that all conclusions hold for every $N\ge N_0$.
+Increase it to be at least $27464$ if necessary. This proves the
+soundness implication with the quantifiers asserted in
+Theorem~\ref{thm:main}. The dependence on $M_2$ is precisely the
+ineffective part.
+
+\section{Completeness}
+Fix $N\ge1$ and an integer input $X$. The unchanged scalar
+normalizer and point construction admit the same prescribed finite
+local depths and real approximation conditions as the source.
+Increasing $N$ changes a fixed coefficient and finite depth
+requirements; it does not add a rational variable or an
+arithmetic existence premise. The source proof permits these
+requirements to be fixed before the later contact primes are
+chosen.
+
+Here are the required small-prime conditions for the modified
+label and shift. Directly from $\beta=51X^2+2504$ one obtains
+\[
+ v_2(r)=\begin{cases}3,&4\mid X,\\2,&4\nmid X,\end{cases}
+ \qquad v_3(r)=1,\qquad r\equiv15\pmod{17}.
+\]
+For the first assertion, odd $X$ gives $\beta\equiv3\pmod8$,
+with two valuation-one factors in $r$. If $X$ is even, the only
+even factor is $\beta=4(51(X/2)^2+626)$, of valuation two or
+three as displayed. At three the only divisible factor is
+$2\beta-1=3(34X^2+1669)$, whose quotient is nonzero modulo
+three. At seventeen, $\beta\equiv5$ and direct substitution
+gives the stated residue.
+
+The denominator $1+\ell^2r$ is a unit at two and three and is
+$16$ modulo seventeen; $A_N$ is a unit at all three primes.
+Since $9792=2^6\cdot3^2\cdot17$, this gives
+\[
+ v_2(9792/R)\ge3,\quad v_3(9792/R)=1,
+ \quad v_{17}(9792/R)=1.
+\]
+Hence $c_R/R=1+9792/R$ is a square in each of
+$\Q_2,\Q_3,\Q_{17}$. The scalar pole input $c_RRW^2$ is
+therefore locally square, and the same simultaneous depth and
+real approximation argument makes it lie in $(0,17)$ with a
+square reduced denominator and all required local depths.
+
+The input root index $n=\beta$ may now be even. The comparison
+construction permits every nonzero integer label: its points
+are $U_i=[hn_i]P$ and $V_i=[(h-1)n_i]P$, and the simultaneous
+congruences for $h$ are independent of the $n_i$. The scalar
+and Lucas choices for the other labels can retain their former
+parities. Every such root has the square-abscissa chart of
+Lemma~\ref{lem:square-chart}; the four additional odd-index
+charts are no longer required.
+
+After the four root points have been chosen, $F$ is a fixed
+positive rational number. The two scales $1,F^2$ are distinct
+positive rational squares by Lemma~\ref{lem:aggregate}.
+The retained simultaneous prime-pattern and pole realization
+argument applies to this fixed finite list. Coincident zero contact
+offsets are the common pattern already present in the original
+construction. The nonzero contact offsets from the two scales do
+not collide: the ratio of any two nonzero elements of
+\[
+ \left\{-\tfrac12,-1,\tfrac1{2399},-\tfrac{32}{407}\right\}
+\]
+with the same sign has absolute value at most $407/32<144<F^2$.
+All required avoidance congruences are incorporated in the same
+finite-support selection. The quantitative separation argument
+retains its stated weighted premise.
+
+The resulting witnesses satisfy all retained comparisons, the two
+detectors, and their normalized poles. Their quadratic gate values
+are obtained by the same rational formulas; the local inverse
+guards are omitted as in \cite{Quartic389}. The new scale coordinate
+is $F^2/4$. This supplies a rational solution for every integer
+input. Finally, a sum of rational squares vanishes exactly when
+all its summands vanish. Together with the soundness argument,
+this proves the projection assertion in Theorem~\ref{thm:main}.
+
+\section{Exact coordinate accounting and verification}
+Start with the specified 389-variable system, whose full source
+hash is recorded in the generator. Delete the second component
+height detector, including its pole certificate and its private
+evaluation coordinates. This removes 52 coordinates and 50
+quadratic rows. Of the nine field-product and scale coordinates,
+retain only the coordinate formerly called
+\nolinkurl{heightProduct.scale0.quadratic}; the other eight and
+their defining rows are deleted. Rename the retained coordinate
+$s_F$ and replace its one row by
+\[
+ (x_{A,0}^*+x_{S,0}^*+2x_{T,0}^*+x_{Z,0}^*)^2=4s_F.
+\]
+The starred symbols are literal stored coordinates. Their
+combination on the left before squaring is exactly $F$; in
+particular the factor two on the third coordinate is required
+by its existing normalization. The retained first component
+detector uses the actual input $4\lambda s_F=F^2\lambda$.
+Every one of its downstream rows is unchanged. The full affine
+detector normalization is independently verified in
+\cite{Quartic389}.
+
+Delete the three private odd-index coordinates and their three
+rows for each of the four roots. There are no other occurrences
+of these twelve coordinates. The retained square-abscissa charts
+are sufficient by Lemma~\ref{lem:square-chart}.
+
+Finally substitute into every retained row
+\[
+ X_{\rm old}=\frac{X-1}{2},\qquad
+ Y_{\rm old}=\frac{Y-2X+1}{4},
+\]
+where $Y_{\rm old}$ was the stored square of the old input.
+The old square row becomes $Y=X^2$, and
+\[
+ 51(2X_{\rm old}+1)^2+2504=51X^2+2504.
+\]
+The transformation is affine and invertible on the full coordinate
+space: $X=2X_{\rm old}+1$ and
+$Y=4Y_{\rm old}+4X_{\rm old}+1$. Thus it preserves quadratic
+degree. Replace the scalar shift $4896$ by $9792$ in its one
+defining row. Clear each row's rational denominators and divide
+its integer coefficient content; neither operation changes its
+rational zero set.
+
+The counts are therefore
+\[
+ 389-52-8-12=317,\qquad361-50-8-12=291.
+\]
+The independent checker applies the inverse affine map to every
+new row and recovers the corresponding old row, including the
+changed scalar constant, up to a specified nonzero rational
+multiple. It separately checks sole uses of every deleted
+coordinate and the complete sum-of-squares coefficient table.
+A parameter-independent coefficient one certifies content one
+and degree exactly four. The small-prime congruences and the
+five Euler tests at $80989$ are also recomputed independently.
+
+There are 5047 terms when powers of $A_N$ are listed separately,
+and 5032 coordinate monomials after collection. Every coefficient
+is an integer polynomial in $A_N$ of degree at most two. The
+largest sum of absolute coefficient-polynomial entries is less than
+$2^{1520}$, giving the height bound in the theorem. For
+$A_N>2^{1521}$, every nonconstant coefficient polynomial has its
+leading term larger than the sum of the lower terms. Thus none
+vanishes there; $N\ge27464$ more than suffices.
+
+The complete reproduction sequence, in the construction directory, is
+\begin{verbatim}
+python3 build_quartic389.py
+python3 check_quartic389.py
+python3 verify_detector_normalizations.py
+python3 build_quartic329.py
+python3 check_quartic329.py
+python3 build_quartic317.py
+python3 check_quartic317.py
+\end{verbatim}
+The intermediate family is only a specified algebraic stage in
+the construction. The exact final family and verification reports
+distinguish the algebraic specification from the ineffective
+existence threshold.
+
+\begin{thebibliography}{9}
+\bibitem{Quartic392} J.~Brox and contributors,
+\emph{A forced prime condition and an explicit quartic in 392 variables},
+8 November 2026, commit
+\nolinkurl{de7aa60dd1794d7ea62a8a83cdc4bfd22380c74f},
+\url{https://github.com/JoseBrox/diophantine-z-q_improvements}.
+\bibitem{Quartic389} J.~Brox and contributors,
+\emph{A quartic in 389 variables from local nonvanishing},
+8 November 2026, accompanying proof and exact coefficient data.
+\bibitem{Aggregate} J.~Brox and contributors,
+\emph{Aggregate trace heights of elliptic multiples},
+8 November 2026, accompanying proof.
+\end{thebibliography}
+\end{document}

@@ -1,42 +1,42 @@
-# The polynomial in 29 variables
+# Polynomials with few variables
 
-The [few-variable paper](../../papers/few_variables/few_variables_20261108_v8.pdf) gives the construction and proof of an integer polynomial in **29 total variables**, including the input, with
+All counts include the input variable. Two constructions are supplied, with different coefficient status:
 
-$$
-\deg F\le2^{174},\qquad
-\max|\operatorname{coeff}(F)|\le2^{2^{177}}.
-$$
+| Construction | Total variables | Degree bound | Coefficients |
+|:--|--:|:--|:--|
+| [27-variable family](../../papers/few_variables27/few_variables27_cubic_20261108_v9.pdf) | 27 | $2^{158}$ | A computable family; every sufficiently large fixed odd coefficient exponent works. The sufficient threshold is ineffective. |
+| [29-variable polynomial](../../papers/few_variables/few_variables_20261108_v8.pdf) | 29 | $2^{174}$ | Fully specified, with coefficient height at most $2^{2^{177}}$. |
 
-Its rational input projection is $\mathbb Z$ under the four arithmetic inputs identified in the [dependency paper](../../papers/arithmetic_dependencies/arithmetic_dependencies_20261108_v8.pdf). A fixed-prime scalar contact supplies the required elliptic-index bound.
+Their rational input projections are the integers under the four arithmetic inputs identified in the [dependency paper](../../papers/arithmetic_dependencies/arithmetic_dependencies_20261108_v8.pdf). The 27-variable proof additionally uses von Buhren's published uniform height theorem. Its ineffective additive constant prevents the present proof from specifying a numerical exponent known to suffice; it is not an additional conjecture.
 
-## Exact construction and verification
+## The 27-variable family
 
-The self-contained package is [forced_prime29](forced_prime29/README.md). From the repository root, run:
+The complete module is [trace27_cubic_family](trace27_cubic_family/README.md). From the repository root, run:
+
+```sh
+python3 computation/few_variables/trace27_cubic_family/reproduce.py --anchor-exponent 137731
+```
+
+The command regenerates the sample rational source and finite-algebra specification, checks the nine point charts and scalar normalization independently, and verifies a degree bound uniform in the fixed coefficient parameter. The sample exponent is an algebraic reproducibility example, **not a certified sufficient exponent** for defining the integers.
+
+The construction uses the square of the sum of four abscissa traces as its second comparison scale. A uniform height theorem makes these two scales sufficient. Nine direct elliptic charts use a cubic change of basis to represent each remaining square root by one monic quartic, with a proof that the selected component never vanishes. The finite algebra has nine quartic and three quadratic generators, maximum rank $2^{21}$, and eight finite source cases.
+
+## The explicit 29-variable polynomial
+
+The self-contained module is [forced_prime29](forced_prime29/README.md). Run:
 
 ```sh
 python3 computation/few_variables/forced_prime29/reproduce.py
 ```
 
-Python 3.10 or newer with its standard library is sufficient. The command regenerates the guarded rational source and the one-polynomial specification. Independent checks verify the contact identity, unchanged source operations, finite numerical inequalities, monic relations, nonzero guards, quadratic zero/nonzero cases, degree majorant and coefficient majorant.
+Independent checks verify the fixed-prime contact identity, retained source operations, finite numerical inequalities, monic relations, nonzero guards, quadratic zero/nonzero cases, degree majorant and coefficient majorant. The weighted companion-norm certificate concerns the bound annotations and leaves the polynomial unchanged.
 
-The specification uses an integer coefficient graph and explicitly bounded determinant, trace, resultant and finite-product operations. It defines one polynomial exactly. Its full monomial expansion is not stored. The coefficient-bound equality certificate verifies that weighted companion norms sharpen only the bound annotations, preserving the polynomial and its exact degree majorant.
+Its [portable manifest](forced_prime29/manifest.json) records the dependencies and hashes. No earlier source directory or network access is required.
 
-The package's [23-file manifest](forced_prime29/manifest.json) records its portable dependency set and hashes. Its reproduction requires no earlier source directory or network access. The top-level `python3 scripts/verify.py` runs these checks in an isolated copy and preserves all published files.
+## Exact specifications and supporting results
 
-## Supporting elliptic calculations
+Both modules use integer coefficient graphs and explicitly bounded determinant, trace, resultant and finite-product operations. These specify ordinary polynomials exactly; a full monomial expansion is unnecessary. The [finite-algebra paper](../../papers/finite_algebra/finite_algebra_20261107_v7.pdf) proves the one-coordinate elimination theorem.
 
-Two independent checkers accompany the separate topic papers:
+The supporting mathematical papers include [aggregate trace heights](../../papers/trace_heights/aggregate_trace_height_20261108_v9.pdf), [square-root charts over quadratic extensions](../../papers/quadratic_squares/quadratic_square_chart_20261108_v9.pdf), [square abscissas](../../papers/square_abscissa/square_abscissa_charts_20261108_v9.pdf), and [scalar normalization](../../papers/scalar_normalization/scalar_normalization_20261108_v9.pdf). Their unconditional statements and arithmetic hypotheses are distinguished in the papers.
 
-| Checker | Mathematical result |
-|:--|:--|
-| `verify_elliptic_chart.py` | The exact point and finite-field identities used in the [elliptic-chart obstruction](../../papers/elliptic_charts/elliptic_chart_obstruction_20261107_v7.pdf). |
-| `verify_quadratic_height.py` | The exact recurrence and numerical constants in the [quadratic elliptic-height estimate](../../papers/elliptic_heights/elliptic_heights_20261108_v8.pdf). |
-
-Run them from the repository root:
-
-```sh
-python3 computation/few_variables/verify_elliptic_chart.py
-python3 computation/few_variables/verify_quadratic_height.py
-```
-
-The [finite-algebra paper](../../papers/finite_algebra/finite_algebra_20261107_v7.pdf) proves the general one-coordinate elimination theorem. The [arithmetic-input page](../../docs/arithmetic_inputs.md) explains the precise distinction between the finite computational certificates and the global hypotheses of the Diophantine construction.
+The separate `verify_elliptic_chart.py` and `verify_quadratic_height.py` programs check the exact identities and constants supporting the elliptic-chart and height papers. All programs use Python 3.10 or newer and its standard library. The top-level `python3 scripts/verify.py` runs the complete collection in an isolated copy, preserving published files. See [Arithmetic inputs](../../docs/arithmetic_inputs.md) for the distinction between these finite certificates and the global arithmetic assumptions.

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the nine standalone papers with a standard pdflatex installation."""
+"""Build the standalone papers with a standard pdflatex installation."""
 from pathlib import Path
 import os
 import re
@@ -15,7 +15,7 @@ def main():
     if not engine:
         raise SystemExit('pdflatex is required; see docs/reproducibility.md')
     sources = sorted((ROOT/'papers').glob('*/*.tex'))
-    assert len(sources) == 9
+    assert sources, 'No paper sources were found'
     environment = dict(os.environ)
     environment.setdefault('SOURCE_DATE_EPOCH','1794096000')
     environment.setdefault('FORCE_SOURCE_DATE','1')
