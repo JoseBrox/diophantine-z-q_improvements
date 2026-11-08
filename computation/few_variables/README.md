@@ -1,11 +1,14 @@
 # Polynomials with few variables
 
-All counts include the input variable. Two constructions are supplied, with different coefficient status:
+The explicit construction with the strongest bounds is [effective29](effective29/README.md): 29 total variables, degree less than $2^{166}$, and coefficient height at most $2^{2^{175}}$. Its fixed exponent $137731$ meets the proved effective threshold. The 27-variable family remains the smallest existence result; its sufficient defining coefficient threshold is ineffective. The source packages below remain available for the underlying arithmetic and finite-algebra proofs.
+
+All counts include the input variable. Two principal constructions and their supporting arithmetic source are supplied:
 
 | Construction | Total variables | Degree bound | Coefficients |
 |:--|--:|:--|:--|
 | [27-variable family](../../papers/few_variables27/few_variables27_cubic_20261108_v9.pdf) | 27 | $2^{158}$ | A computable family; every sufficiently large fixed odd coefficient exponent works. The sufficient threshold is ineffective. |
-| [29-variable polynomial](../../papers/few_variables/few_variables_20261108_v8.pdf) | 29 | $2^{174}$ | Fully specified, with coefficient height at most $2^{2^{177}}$. |
+| [29-variable polynomial](../../papers/few_variables/explicit29_effective_20261108_v10.pdf) | 29 | $<2^{166}$ | Fully specified, with coefficient height at most $2^{2^{175}}$. |
+| [29-variable source](../../papers/few_variables/few_variables_20261108_v8.pdf) | 29 | $2^{174}$ | Fully specified, with coefficient height at most $2^{2^{177}}$. |
 
 Their rational input projections are the integers under the four arithmetic inputs identified in the [dependency paper](../../papers/arithmetic_dependencies/arithmetic_dependencies_20261108_v8.pdf). The 27-variable proof additionally uses von Buhren's published uniform height theorem. Its ineffective additive constant prevents the present proof from specifying a numerical exponent known to suffice; it is not an additional conjecture.
 
@@ -23,6 +26,10 @@ The construction uses the square of the sum of four abscissa traces as its secon
 
 ## The explicit 29-variable polynomial
 
+The complete module is [effective29](effective29/README.md). Run `python3 computation/few_variables/effective29/reproduce.py` from the repository root. It reconstructs the certified fixed-exponent source and exact polynomial specification, verifies the effective three-scale construction and automatic point-chart conditions, and checks the degree and coefficient bounds independently. The source and specification are compared byte for byte with the distributed certificate.
+
+## The supporting 29-variable source
+
 The self-contained module is [forced_prime29](forced_prime29/README.md). Run:
 
 ```sh
@@ -35,7 +42,7 @@ Its [portable manifest](forced_prime29/manifest.json) records the dependencies a
 
 ## Exact specifications and supporting results
 
-Both modules use integer coefficient graphs and explicitly bounded determinant, trace, resultant and finite-product operations. These specify ordinary polynomials exactly; a full monomial expansion is unnecessary. The [finite-algebra paper](../../papers/finite_algebra/finite_algebra_20261107_v7.pdf) proves the one-coordinate elimination theorem.
+All three modules use integer coefficient graphs and explicitly bounded determinant, trace, resultant and finite-product operations. These specify ordinary polynomials exactly; a full monomial expansion is unnecessary. The [finite-algebra paper](../../papers/finite_algebra/finite_algebra_20261107_v7.pdf) proves the one-coordinate elimination theorem.
 
 The supporting mathematical papers include [aggregate trace heights](../../papers/trace_heights/aggregate_trace_height_20261108_v9.pdf), [square-root charts over quadratic extensions](../../papers/quadratic_squares/quadratic_square_chart_20261108_v9.pdf), [square abscissas](../../papers/square_abscissa/square_abscissa_charts_20261108_v9.pdf), and [scalar normalization](../../papers/scalar_normalization/scalar_normalization_20261108_v9.pdf). Their unconditional statements and arithmetic hypotheses are distinguished in the papers.
 

@@ -67,7 +67,7 @@ def main():
             assert (quartic/'final392'/name).read_bytes()==raw,name
         stages.append(run('Independent full 394/392 coefficient and source checks',quartic/'verify_quartic392.py'))
         stages.append(run('Quadratic-extension specialization, two exact evaluations',quartic/'check_field_specialization392.py'))
-        for count, folder, prefix in [(389,'final389',''),(329,'family329','family'),(317,'family317','family')]:
+        for count, folder, prefix in [(389,'final389',''),(370,'family370','family'),(329,'family329','family'),(317,'family317','family')]:
             names = ([f'quadratic-system{count}.json',f'polynomial{count}.json',f'construction-report{count}.json']
                      if not prefix else
                      [f'quadratic-family{count}.json',f'polynomial-family{count}.json',f'construction-report{count}.json'])
@@ -88,6 +88,14 @@ def main():
         stages.append(run('29-variable source, finite algebra, and weighted coefficient bounds',module/'reproduce.py'))
         assert (module/'source.json.gz').read_bytes()==old_source
         assert (module/'polynomial-specification.json').read_bytes()==old_spec
+        stages.append(run('Explicit 29-variable effective-height source and bounds',
+            few/'effective29/reproduce.py'))
+        stages.append(run('Complete optimal quadratic-field square predicates',
+            work/'computation/square_predicates/check_square_predicates.py'))
+        stages.append(run('Independent height-seven square-test coefficient certificate',
+            work/'computation/square_predicates/check_height7_linear_multiplier.py'))
+        stages.append(run('Effective elliptic abscissa-sum identities and constants',
+            work/'computation/effective_sums/check_effective_elliptic_sums.py'))
         stages.append(run('27-variable cubic-chart family and uniform degree bound',
             few/'trace27_cubic_family/reproduce.py','--anchor-exponent','137731'))
         stages.append(run('Quadratic extension square chart: exact cubic identities',

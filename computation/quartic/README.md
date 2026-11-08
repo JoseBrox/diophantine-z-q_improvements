@@ -1,15 +1,18 @@
 # Quartics defining the integers over the rationals
 
-This package contains a fully specified **389-variable quartic** and an exact **317-variable quartic family**. Every count includes the input coordinate. Their integer-projection theorems retain the arithmetic premises stated in the accompanying papers, including the quantitative weighted prime-selection premise. The equations, coefficient tables and finite verification results are exact algebraic data.
+The fully specified 370-variable construction is documented in [README370.md](README370.md), with [its proof](../../papers/quartic/quartic370_20261108_v10.pdf). It uses 342 quadratic rows and has 5,837 ordinary monomials. The smallest quartic family in the collection remains the 317-variable family, whose sufficient defining parameter is ineffective. The supporting source constructions below are retained for their arithmetic proofs and exact reconstruction.
+
+This package contains a fully specified **370-variable quartic**, an exact **317-variable quartic family**, and their supporting source constructions. Every count includes the input coordinate. Their integer-projection theorems retain the arithmetic premises stated in the accompanying papers, including the quantitative weighted prime-selection premise. The equations, coefficient tables and finite verification results are exact algebraic data.
 
 | Construction | Total variables | Degree | Quadratic equations | Nonzero coordinate monomials | Coefficient statement |
 |:--|--:|--:|--:|--:|:--|
-| Fully specified polynomial | 389 | 4 | 361 | 6,198 | All coefficients fixed; height below $2^{1791357}$ |
+| Fully specified polynomial | 370 | 4 | 342 | 5,837 | All coefficients fixed; height below $2^{1791357}$ |
+| Supporting source polynomial | 389 | 4 | 361 | 6,198 | All coefficients fixed; height below $2^{1791357}$ |
 | Aggregate trace family $P_N$ | 317 | 4 | 291 | 5,032 for $N\ge27464$ | Height below $2^{1520}80989^{4N+2}$ |
 
-Both polynomials have integer content one. For the family, degree four and content one hold for every integer $N\ge1$.
+All listed polynomials have integer content one. For the family, degree four and content one hold for every integer $N\ge1$.
 
-## The fully specified quartic
+## The supporting 389-variable source
 
 The [389-variable paper](../../papers/quartic/quartic389_20261108_v9.pdf), with [editable TeX source](../../papers/quartic/quartic389_20261108_v9.tex), proves that the polynomial's rational input projection is $\mathbb Z$ under the retained arithmetic inputs.
 
@@ -54,6 +57,8 @@ There are 5,047 terms over $\mathbb Z[A_N]$ and 5,032 ordinary monomials for $N\
 
 | File or directory | Role |
 |:--|:--|
+| `build_quartic370.py`, `check_quartic370.py` | Construct and independently verify the fully specified quartic and its effective family. |
+| `family370/`, `baseline389/` | Complete current tables and their exact compressed source. |
 | `build_quartic389.py` | Constructs the fully specified quartic from the pinned baseline. |
 | `check_quartic389.py` | Independently checks every retained equation and every coefficient in two ways. |
 | `verify_detector_normalizations.py` | Checks the complete affine detector identities over the rationals. |
@@ -66,7 +71,7 @@ There are 5,047 terms over $\mathbb Z[A_N]$ and 5,032 ordinary monomials for $N\
 | `check_field_specialization392.py` | Verifies the baseline's separate number-field specialization certificate. |
 | `PROVENANCE.json` | Dependency chain, exact source locations, formats, hashes and proof references. |
 
-The 392-variable baseline and the 329-variable stage are replication dependencies. The final results presented here are the specified 389-variable polynomial and the 317-variable existence family.
+The 392-variable baseline and the 329-variable stage are replication dependencies. The principal results are the specified 370-variable polynomial and the 317-variable existence family. The 389-variable source supplies a direct reproducible arithmetic baseline.
 
 Coordinates have consecutive IDs starting at 1, with coordinate 1 as the input. Source IDs identify the retained equations and coordinates across transformations. Coefficients are decimal strings, and powers of the fixed integer parameter are stored separately. [Polynomial data formats](../../docs/data_format.md) gives the complete conventions.
 
@@ -83,6 +88,8 @@ For the quartic constructions alone, run from this directory:
 ```sh
 python3 build_quartic389.py
 python3 check_quartic389.py
+python3 build_quartic370.py
+python3 check_quartic370.py
 python3 verify_detector_normalizations.py
 python3 build_quartic329.py
 python3 check_quartic329.py

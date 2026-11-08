@@ -6,14 +6,17 @@ The quartic package distributes complete quadratic systems and the full coeffici
 
 | Final construction | Quadratic residuals | Total variables | Terms with parameter powers separate | Ordinary coordinate monomials |
 |:--|--:|--:|--:|--:|
-| Specified quartic `final389/` | 361 | 389 | 6,219 | 6,198 |
+| Specified quartic family `family370/` | 342 | 370 | 5,852 | 5,837 for $N\ge27464$ |
+| Supporting quartic `final389/` | 361 | 389 | 6,219 | 6,198 |
 | Quartic family `family317/` | 291 | 317 | 5,047 | 5,032 for $N\ge27464$ |
 
-Both have degree exactly four and integer content one. For the family, those two assertions hold for every integer $N\ge1$. Its defining-polynomial theorem applies to every $N\ge N_0$ for an ineffective threshold $N_0$. The support bound $N\ge27464$ does not determine that threshold.
+All three have degree exactly four and integer content one. For `family370`, every $N\ge27464$ has rational input projection $\mathbb Z$ under its stated arithmetic premises, and $N=27464$ specifies the explicit member. For `family317`, those two assertions hold for every integer $N\ge1$. Its defining-polynomial theorem applies to every $N\ge N_0$ for an ineffective threshold $N_0$. The support bound $N\ge27464$ does not determine that threshold.
 
 The defining expressions are
 
 $$
+P_{370,N}=\sum_{j=1}^{342}q_{N,j}^2,
+\qquad
 P_{389}=\sum_{j=1}^{361}q_j^2,
 \qquad
 P_N=\sum_{j=1}^{291}q_{N,j}^2,
@@ -29,6 +32,8 @@ Paths in this table are relative to `computation/quartic/`.
 |:--|:--|
 | `final389/quadratic-system389.json` | `integer-quadratic-system-v1` |
 | `final389/polynomial389.json` | `integer-quartic-consecutive-coordinates-v3` |
+| `family370/quadratic-family370.json` | `integer-quadratic-family-v3` |
+| `family370/polynomial-family370.json` | `integer-quartic-family-v3` |
 | `family317/quadratic-family317.json` | `integer-quadratic-family-v2` |
 | `family317/polynomial-family317.json` | `integer-quartic-family-v2` |
 
@@ -104,7 +109,25 @@ The `upstream/` and `final392/` files additionally reproduce that baseline from 
 
 From the repository root, `python3 scripts/verify.py` verifies the manifest, restores the compressed dependencies, and reconstructs all stages in a temporary copy. The [quartic README](../computation/quartic/README.md) gives the individual reproduction commands and their required order.
 
-## The fully specified polynomial in 29 variables
+## The explicit 370-variable quartic
+
+The two files in `family370/` use $A_N=80989^{2N+1}$ as a coefficient. The numerical defining threshold is $N\ge27464$, and the explicit member is obtained with $A=80989^{54929}$. Its polynomial is the sum of squares of all 342 listed quadratic rows. It has 5,837 ordinary monomials and its largest coefficient has 1,791,357 binary digits.
+
+The source `baseline389/quadratic-system389.json.gz` preserves the exact published 389-variable system. The constructor removes the product and odd-index coordinates, uses two scale-squaring coordinates, and gives the two nonconstant detectors the same normalization. The independent checker verifies all copied detector rows and every private-coordinate use, as well as all expanded coefficients. See [the computation guide](../computation/quartic/README370.md).
+
+## The explicit 29-variable polynomial with effective sum heights
+
+The package `computation/few_variables/effective29/` specifies an ordinary integer polynomial in 29 total variables with
+
+$$
+\deg F<2^{166},\qquad H(F)\le2^{2^{175}}.
+$$
+
+Every coefficient is fixed. The exponent $L=137731$ is certified to satisfy the defining theorem under its four arithmetic inputs. The complete source and polynomial specification are in `certificate/`, together with independent source and bound certificates. The source retains 28 rational coordinates. Nine quartic roots and four quadratic roots are replaced by one rational coordinate using the exact finite-algebra specification. The scalar coordinate is counted.
+
+The coefficient representation follows the same finite determinant, trace, resultant and product conventions as the source construction described below. The exact degree majorant is 51807110488583875822172531230546510464175948431360; the base-two coefficient-logarithm majorant is 46755536870962067049784996273902947989402021600952320. These are upper bounds, not exact expanded degrees or heights.
+
+## Supporting 29-variable source construction
 
 [The finite-algebra package](../computation/few_variables/forced_prime29/README.md) specifies one polynomial in 29 total variables, including the input, with bounds
 
@@ -141,3 +164,9 @@ The separate `degree-family-verification.json` treats both powers of the fixed p
 The height-constant data give the complete prime list through 76,176 and the unsigned big-endian binary encoding of $H_{19}$. Independent enumeration and exact integer arithmetic verify these objects. The decisive prime, valuation and coefficient comparisons use exact arithmetic.
 
 Source-graph proof identifiers refer to statements in the accompanying papers. They are provenance annotations; running a checker does not require opening a TeX file. The [arithmetic-input page](arithmetic_inputs.md) distinguishes finite algebraic certificates from global arithmetic premises, and the individual family papers identify the ineffective constants separately.
+
+## Complete quadratic-field square tests
+
+The file `computation/square_predicates/square-predicate-polynomials.json` lists every coefficient of the degree-six square predicate, the degree-ten alternative, and the quartic with two auxiliary variables. The variable order is stated for each table; exponent vectors have that exact order. Coefficients are integer strings. The sextic has ten monomials, content one, and coefficient height seven. Its two inputs and one auxiliary coordinate all range over $\mathbb Q$; the element being tested lies in $\mathbb Q(\sqrt2)$.
+
+Two independent scripts verify the sextic expansion. Further exact checks verify the discriminant, the general number-field multiplier identity, the finite group used in the degree lower bound, and the finite cases in the integral-multiplier coefficient lower bound. The proofs of uniform optimality are in the paper; the finite checks do not replace Hilbert irreducibility.

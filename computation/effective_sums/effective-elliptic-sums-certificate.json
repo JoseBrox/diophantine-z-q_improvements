@@ -1,0 +1,79 @@
+{
+  "status": "PASS",
+  "arithmetic": "exact rational arithmetic; Python standard library",
+  "source_sha256": "c83174b9fb6e89e66e86bece1ab018be94b6c3b9494e0405d8e659b7609ab186",
+  "curve": {
+    "field": "Q(sqrt(2))",
+    "D": [
+      "11",
+      "-6"
+    ],
+    "P": [
+      [
+        "57/8",
+        "-7/2"
+      ],
+      [
+        "-165/8",
+        "417/32"
+      ]
+    ]
+  },
+  "point_and_doubling_identities": "PASS",
+  "sqrt2_valuations_of_x_y_t": [
+    -6,
+    -9,
+    3
+  ],
+  "formal_identity_check": {
+    "variable": "s=D*t^4",
+    "verified_modulus": "s^13",
+    "identities": [
+      "F^2-F-s=0",
+      "1-2sF'/F=(1+4s)^(-1/2)"
+    ],
+    "scope": "Finite exact checks support the symbolic derivation; the infinite identities and all-place bounds are proved in the paper.",
+    "log_coefficients": [
+      "1",
+      "-2/5",
+      "2/3",
+      "-20/13",
+      "70/17",
+      "-12",
+      "924/25",
+      "-3432/29",
+      "390",
+      "-48620/37",
+      "184756/41",
+      "-235144/15",
+      "386308/7"
+    ]
+  },
+  "four_term_individual_height_loss": {
+    "log_B_coefficient": 24,
+    "log_constant_argument": 864
+  },
+  "four_term_joint_height_loss": {
+    "log_B_coefficient": 42,
+    "log_constant_argument": 20736
+  },
+  "numerical_corollary": {
+    "retained_premise": "h(x([n]P)) >= n^2 - 6 for every nonzero integer n",
+    "bound": "B^2 <= 2*h(Z)+80 <= 2*h(S0)+2*h(S1)+83",
+    "parity_restriction": false
+  },
+  "exponential_lower_bound_certificates": [
+    {
+      "x": "13/4",
+      "terms_through": 12,
+      "partial_sum": "41450341784822573/1607262661509120",
+      "strictly_exceeds": 24
+    },
+    {
+      "x": "7",
+      "terms_through": 12,
+      "partial_sum": "14603038643/13685760",
+      "strictly_exceeds": 864
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 {
-  "schema": "diophantine-results/v3",
+  "schema": "diophantine-results/v4",
   "date": "2026-11-08",
   "variable_convention": "total coordinates including the input",
   "coefficient_height": "largest absolute integer coefficient after fixed constants are substituted",
@@ -7,7 +7,7 @@
     "algebraic_specification": "proved for every explicitly described polynomial or coefficient-family member",
     "projection_equals_Z": "proved implication from the stated arithmetic premises; the existence families require a sufficiently large fixed parameter",
     "variable_minimality": "best constructions in this collection; no global variable minimum claimed",
-    "effectiveness": "The 27-variable and 317-variable results have ineffective sufficient coefficient thresholds. The 29-variable and 389-variable polynomials specify all coefficients."
+    "effectiveness": "The 27-variable and 317-variable results have ineffective sufficient coefficient thresholds. The explicit 29-variable and 370-variable constructions specify every coefficient and certify numerical sufficient parameters."
   },
   "constructions": [
     {
@@ -104,7 +104,65 @@
       "exact_height_data": "computation/quartic/family317/construction-report317.json"
     },
     {
-      "id": "few_variables29",
+      "id": "few_variables29_effective",
+      "construction_kind": "explicit_polynomial",
+      "role": "Best fully specified few-variable construction in this collection",
+      "total_variables": 29,
+      "retained_coordinates": 28,
+      "finite_algebra_coordinate_count": 1,
+      "degree_bound_power_of_two_exponent": 166,
+      "degree_bound_strict": true,
+      "exact_degree_majorant": "51807110488583875822172531230546510464175948431360",
+      "coefficient_height_bound_double_power_of_two_exponent": 175,
+      "exact_binary_log_coefficient_majorant": "46755536870962067049784996273902947989402021600952320",
+      "all_fixed_coefficients_specified": true,
+      "fixed_prime": 76249,
+      "normalizer_exponent": 137731,
+      "certified_sufficient_exponent": true,
+      "source_sha256": "25dfdf0e6b833b47ee57c4a0f490138104a49bb3a3d3656cba765a7a6eb3d549",
+      "specification_sha256": "b59e61c0145255b43cdc61b36ef122d5036bff012beb194e09fb66fef6eb2436",
+      "arithmetic_inputs": [
+        "elliptic_group_and_index_height",
+        "contact_height",
+        "pole_obstruction_and_realization",
+        "simultaneous_prime_patterns"
+      ],
+      "additional_proved_input": "effective_elliptic_abscissa_sum_height",
+      "proof": "papers/few_variables/explicit29_effective_20261108_v10.tex",
+      "computation": "computation/few_variables/effective29"
+    },
+    {
+      "id": "quartic370",
+      "construction_kind": "explicit_polynomial_and_effective_family",
+      "role": "Best fully specified quartic in this collection",
+      "total_variables": 370,
+      "degree": 4,
+      "degree_status": "exact",
+      "quadratic_residuals": 342,
+      "ordinary_monomials": 5837,
+      "coefficient_parameter_terms": 5852,
+      "integer_content": 1,
+      "all_fixed_coefficients_specified": true,
+      "explicit_parameter": "A=80989^54929",
+      "family_parameter": "A_N=80989^(2*N+1)",
+      "certified_sufficient_N": 27464,
+      "largest_coefficient_binary_digits": 1791357,
+      "coefficient_height_upper_bound": "2^1520*80989^(4*N+2)",
+      "polynomial_sha256": "3fb38773001a66e078ac461228ac50b8d561cc4cf807719c675d66f1e4551967",
+      "residuals_sha256": "d4b9505504345de00c5b4493f32fa1a725405fa631e1226e178280831c078624",
+      "arithmetic_inputs": [
+        "elliptic_group_and_index_height",
+        "contact_height",
+        "pole_obstruction_and_realization",
+        "simultaneous_prime_patterns",
+        "weighted_prime_selection"
+      ],
+      "additional_proved_input": "effective_elliptic_abscissa_sum_height",
+      "proof": "papers/quartic/quartic370_20261108_v10.tex",
+      "computation": "computation/quartic/family370"
+    },
+    {
+      "id": "few_variables29_source",
       "total_variables": 29,
       "degree_bound_power_of_two_exponent": 174,
       "coefficient_height_bound_double_power_of_two_exponent": 177,
@@ -122,12 +180,12 @@
       "proof": "papers/few_variables/few_variables_20261108_v8.tex",
       "construction_kind": "explicit_polynomial",
       "all_fixed_coefficients_specified": true,
-      "role": "best fully explicit few-variable construction"
+      "role": "Supporting arithmetic and finite-algebra source; retained for proofs and reconstruction."
     },
     {
       "id": "quartic389",
       "construction_kind": "explicit_polynomial",
-      "role": "best fully explicit quartic construction",
+      "role": "Supporting exact arithmetic circuit for the explicit 370-variable construction.",
       "all_fixed_coefficients_specified": true,
       "total_variables": 389,
       "degree": 4,
@@ -282,6 +340,36 @@
       },
       "product_predicate_general_scope": "Every field F of characteristic different from two and every nonsquare d; choose any nonsquare c, for example c=d. No noncube assumption is needed.",
       "product_predicate": "(4-4*U*T^2+d*V^2*T^4)*(V^2-c*(U-d*T^2)^2)"
+    },
+    {
+      "id": "optimal_quadratic_square_predicates",
+      "scope": "All square inputs in every quadratic extension K/F of number fields; two F-input components and one F-auxiliary variable.",
+      "minimum_total_degree": 6,
+      "minimum_auxiliary_degree": 4,
+      "allows_finite_systems_and_alternatives_of_equalities": true,
+      "nonzero_guards_in_lower_bound": false,
+      "rational_d2_example": {
+        "A": "3*U^3-2*U^2*V-3*U*V^2",
+        "B": "-2*U^3+U^2*V+2*U*V^2+V^3",
+        "polynomial": "2*T^4-2*A*T^2+B^2",
+        "total_degree": 6,
+        "auxiliary_degree": 4,
+        "monomials": 10,
+        "coefficient_height": 7,
+        "content": 1
+      },
+      "height_optimality_scope": "Primitive normalization of integral linear multipliers (aU+bV)+(cU+eV)*sqrt(2), with a,b,c,e integers.",
+      "proof": "papers/square_predicates/quadratic_square_predicates_20261108_v10.tex"
+    },
+    {
+      "id": "effective_elliptic_abscissa_sum_height",
+      "four_point_inequality": "h(sum_i x([n_i]P)) >= max_i h(x([n_i]P))-24*log(B)-log(864)",
+      "scope": "Integral E_D:y^2=x^3-D*x over Q(sqrt(2)), P of infinite order, all nonzero integer n_i, with abscissas positive in both embeddings.",
+      "effective_constants": true,
+      "all_finite_places_included": true,
+      "number_field_extension": "Totally real fields unramified at every odd rational prime, under the same integral and positivity hypotheses.",
+      "conditional_index_consequence": "Under h(x([n]P)) >= n^2-6, B^2 <= 2*h(S0)+2*h(S0+S1)+82.",
+      "proof": "papers/effective_sums/effective_elliptic_sums_20261108_v10.tex"
     }
   ],
   "source_pins": {
@@ -289,7 +377,7 @@
     "corrected_arithmetic_proof_v11": "650b298a2a18fa956f8859f3ca80e9d7c8cedd82",
     "quartic_source_v13": "5bbd74f6a479776a332cbe036809d5dddae63720"
   },
-  "release": "2026.11.08-v9",
+  "release": "2026.11.08-v10",
   "auxiliary_arithmetic_theorems": [
     {
       "id": "square_abscissa_subgroup_chart",

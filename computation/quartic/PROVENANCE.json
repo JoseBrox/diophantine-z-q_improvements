@@ -34,12 +34,14 @@
       "specified389",
       "family317",
       "aggregateTraceHeight",
-      "baseline392"
+      "baseline392",
+      "specified370",
+      "effectiveAbscissaSums"
     ]
   },
   "finalConstructions": {
     "specified389": {
-      "role": "Fully specified integer polynomial; its rational input projection is Z under the stated arithmetic premises.",
+      "role": "Supporting exact source and proof for the 370-variable construction.",
       "totalVariables": 389,
       "inputCoordinate": 1,
       "degree": 4,
@@ -89,6 +91,33 @@
       "polynomial": "family317/polynomial-family317.json",
       "constructionReport": "family317/construction-report317.json",
       "independentVerification": "family317/independent-verification317.json"
+    },
+    "specified370": {
+      "role": "Fully specified integer quartic and effective family, under stated arithmetic premises.",
+      "totalVariables": 370,
+      "inputCoordinate": 1,
+      "degree": 4,
+      "content": 1,
+      "quadraticResiduals": 342,
+      "symbolicTerms": 5852,
+      "ordinaryMonomials": 5837,
+      "parameter": {
+        "name": "A_N",
+        "base": 80989,
+        "exponent": "2*N+1",
+        "coordinate": false,
+        "certifiedSufficientN": 27464
+      },
+      "explicitMember": {
+        "N": 27464,
+        "exponent": 54929,
+        "largestCoefficientBinaryDigits": 1791357
+      },
+      "coefficientHeightBound": "H(P_N)<2^1520*80989^(4*N+2)",
+      "quadraticSystem": "family370/quadratic-family370.json",
+      "polynomial": "family370/polynomial-family370.json",
+      "constructionReport": "family370/construction-report370.json",
+      "independentVerification": "family370/independent-verification370.json"
     }
   },
   "constructionChain": [
@@ -120,6 +149,13 @@
       "producer": "build_quartic317.py",
       "checker": "check_quartic317.py",
       "change": "Remove twelve private odd-index coordinates; apply the invertible affine input substitution giving beta=51*X^2+2504; replace scalar shift 4896 by 9792."
+    },
+    {
+      "from": "specified389",
+      "to": "specified370",
+      "producer": "build_quartic370.py",
+      "checker": "check_quartic370.py",
+      "change": "Use three effective sum-height scales; remove six product coordinates and twelve private odd-index coordinates; copy the second detector into the third and remove its obsolete scale square; apply the certified affine input substitution."
     }
   ],
   "reproduction": {
@@ -132,7 +168,9 @@
       "python3 build_quartic329.py",
       "python3 check_quartic329.py",
       "python3 build_quartic317.py",
-      "python3 check_quartic317.py"
+      "python3 check_quartic317.py",
+      "python3 build_quartic370.py",
+      "python3 check_quartic370.py"
     ],
     "baselineArchiveHandling": "The new builders read and hash-check baseline392/*.json.gz directly. scripts/restore_data.py restores the separate upstream/final392 reproduction archives."
   },
@@ -165,16 +203,28 @@
       "pdf": "../../papers/quartic/quartic392_20261108_v8.pdf",
       "tex_sha256": "b2b40a549ab7a9e26e5a8a8f839d1e883282b06b02cf3c3a7b551f1075303aa2",
       "pdf_sha256": "6d498062c98a1e5484681803b12dc400a452a23d8baae002e056758d79ebbe90"
+    },
+    "specified370": {
+      "tex": "../../papers/quartic/quartic370_20261108_v10.tex",
+      "tex_sha256": "1a89981a616e2037e60587444b7a9e9101505da23db137c056afc2c71cc2947b",
+      "pdf": "../../papers/quartic/quartic370_20261108_v10.pdf",
+      "pdf_sha256": "a9e39c6a17da0ee5d1160d033feff549eb217d8e98722d9d06bfd69c3453b5e9"
+    },
+    "effectiveAbscissaSums": {
+      "tex": "../../papers/effective_sums/effective_elliptic_sums_20261108_v10.tex",
+      "tex_sha256": "596e738908e35ac3fba36cb72b687325fc18e4bb33c4d038b8529548d03da92f",
+      "pdf": "../../papers/effective_sums/effective_elliptic_sums_20261108_v10.pdf",
+      "pdf_sha256": "d34a53cff9f94e6bc626b25b7d1860eba6800d988b14514920d6f780d46486d4"
     }
   },
   "documentation": {
     "dataFormat": "../../docs/data_format.md",
-    "dataFormatSHA256": "ca27b94d45d28c31da0f462e2c72c8f799a8ed6dab4886fe61a45a5504035401"
+    "dataFormatSHA256": "1bb23f80aaa8f371fd99a653c192027c342b5410bd5b6860cf46e208e254e9ad"
   },
   "files": {
     "README.md": {
-      "sha256": "72fe451a573caac889bec55d122e1cefd9cc7a530626678b9c41457b7ad6e51d",
-      "bytes": 8823
+      "sha256": "bc237e08f9f9f3c1fa4c40b17d9ccd3c1ab0cae178c6581cdcc71df8ce4e59b6",
+      "bytes": 9804
     },
     "baseline392/polynomial392.json.gz": {
       "sha256": "d61e8d654541ed5aa1b942a781d72fd320cb7122821ac0b902e07724f40fe053",
@@ -327,6 +377,55 @@
     "verify_quartic392.py": {
       "sha256": "092ac1d69bec2f3d59d60584fbc831232377eb48967afba975ac8ef8e02cda59",
       "bytes": 12706
+    },
+    "README370.md": {
+      "sha256": "fe259fb8956438268502de8a9540e1cfb8f260185a981f20ce546c1b99981b8f",
+      "bytes": 3578
+    },
+    "baseline389/quadratic-system389.json.gz": {
+      "sha256": "2faf60cdf1cbb49c4f1c9f22232f616450f53aa191a6a361b8afd3701d6d8047",
+      "bytes": 18094,
+      "uncompressed": {
+        "sha256": "f7fb5bdf6a3d47275f1d78ed5e275954e2cc1f21fec8204d6a395bfc2f8b5394",
+        "bytes": 373173
+      }
+    },
+    "build_quartic370.py": {
+      "sha256": "30a3751ed51977a0840855ba0de9523480ad0d30ee8c4c283aeb90dd32d78d70",
+      "bytes": 9049
+    },
+    "check_quartic370.py": {
+      "sha256": "f113b0471f9102a424f659824bad642927437ef90a3bfbea67ab40ebefbee9d6",
+      "bytes": 14984
+    },
+    "family370/construction-report370.json": {
+      "sha256": "b75a03e1b1559cf5fda9d6c6131a8101aa9f6f1b850e1ec3dfd3978cdb62df47",
+      "bytes": 4727
+    },
+    "family370/independent-verification370.json": {
+      "sha256": "4207530b3632bd016e495530d9d0a25f1e35f39e64d1082ba154912cc84c0c27",
+      "bytes": 7416
+    },
+    "family370/polynomial-family370.json": {
+      "sha256": "3fb38773001a66e078ac461228ac50b8d561cc4cf807719c675d66f1e4551967",
+      "bytes": 887240
+    },
+    "family370/quadratic-family370.json": {
+      "sha256": "d4b9505504345de00c5b4493f32fa1a725405fa631e1226e178280831c078624",
+      "bytes": 348350
+    },
+    "fresh-reproduction370.json": {
+      "sha256": "cf4b51653572bb4ea13cdcb9c540e991596101feabf5a57907735dea7ed1c627",
+      "bytes": 854
     }
-  }
+  },
+  "additionalBaselines": [
+    {
+      "repository": "https://github.com/JoseBrox/diophantine-z-q_improvements",
+      "commit": "61b82ccacfbefdff3d6e7cf986d6e6279afa1372",
+      "role": "Published 389-variable source for the direct 370-variable construction",
+      "quadraticSystem": "baseline389/quadratic-system389.json.gz",
+      "uncompressedSystemSHA256": "f7fb5bdf6a3d47275f1d78ed5e275954e2cc1f21fec8204d6a395bfc2f8b5394"
+    }
+  ]
 }

@@ -18,13 +18,13 @@ The verifier checks the published file manifest, copies the computational inputs
 python3 scripts/verify.py --receipt /path/to/verification.json
 ```
 
-The quartic stage reconstructs the pinned coefficient source and its 392-coordinate quadratic system. It then constructs the **389-variable explicit quartic** and the **317-variable quartic family**, including the 329-coordinate algebraic stage used in the derivation. Independent polynomial-dictionary checks compare every residual and every expanded coefficient. The three detector normalizations are checked after their affine changes of coordinates. The finite prime, congruence, index-size and coefficient-height certificates are also verified.
+The quartic stage reconstructs the pinned coefficient source and its 392-coordinate quadratic system. It then constructs the **370-variable explicit quartic** and the **317-variable quartic family**, including the 329-coordinate algebraic stage used in the derivation. Independent polynomial-dictionary checks compare every residual and every expanded coefficient. The three detector normalizations are checked after their affine changes of coordinates. The finite prime, congruence, index-size and coefficient-height certificates are also verified.
 
-The **29-variable explicit construction** is regenerated from its rational source. The checks cover its exact scalar contact, retained source semantics, contact-height constant, monic relations, guards, finite cases, degree bound and coefficient bound. Its weighted-norm certificate verifies the bound annotations without changing the polynomial.
+The **29-variable explicit construction with effective sum heights** is regenerated from its rational source. The checks cover its exact scalar contact, retained source semantics, contact-height constant, monic relations, guards, finite cases, degree bound and coefficient bound. Its weighted-norm certificate verifies the bound annotations without changing the polynomial.
 
 The **27-variable family** is regenerated with the sample coefficient exponent `137731`. Its checks independently verify the nine cubic square-root charts, the scalar normalization and all 76,249 residue classes, the finite-algebra specification, and a degree bound uniform in the fixed coefficient exponent. The sample is supplied to make the algebraic computation reproducible. **No published certificate asserts that this particular exponent is sufficiently large to define the integers.** The theorem proves that all sufficiently large odd exponents work; its sufficient threshold is ineffective.
 
-Supporting stages verify the general quadratic-extension square chart, the scalar normalization identity, elliptic-chart calculations, elliptic-height constants, anisotropic forms, and the stated quadratic-field specialization of the 392-variable arithmetic source. The corresponding papers prove the uniform arguments behind these finite calculations.
+Supporting stages verify the complete degree-six, degree-ten and quartic square tests, the exact discriminant, the finite group calculation, the height-seven coefficient reduction, the effective elliptic sum-height identities, the general quadratic-extension square chart, the scalar normalization identity, elliptic-chart calculations, elliptic-height constants, anisotropic forms, and the stated quadratic-field specialization of the 392-variable arithmetic source. The corresponding papers prove the uniform arguments behind these finite calculations.
 
 ## Running individual checks
 
@@ -43,6 +43,8 @@ python3 computation/quartic/build_quartic392.py
 python3 computation/quartic/verify_quartic392.py
 python3 computation/quartic/build_quartic389.py
 python3 computation/quartic/check_quartic389.py
+python3 computation/quartic/build_quartic370.py
+python3 computation/quartic/check_quartic370.py
 python3 computation/quartic/verify_detector_normalizations.py
 python3 computation/quartic/build_quartic329.py
 python3 computation/quartic/check_quartic329.py
@@ -50,13 +52,17 @@ python3 computation/quartic/build_quartic317.py
 python3 computation/quartic/check_quartic317.py
 ```
 
-The few-variable constructions and the two new identity certificates can be checked independently:
+The few-variable constructions and supporting identity certificates can be checked independently:
 
 ```sh
+python3 computation/few_variables/effective29/reproduce.py
 python3 computation/few_variables/forced_prime29/reproduce.py
 python3 computation/few_variables/trace27_cubic_family/reproduce.py --anchor-exponent 137731
 python3 computation/quadratic_squares/check_quadratic_square_chart.py
 python3 computation/scalar_normalization/check_scalar_normalization.py
+python3 computation/square_predicates/check_square_predicates.py
+python3 computation/square_predicates/check_height7_linear_multiplier.py
+python3 computation/effective_sums/check_effective_elliptic_sums.py
 ```
 
 Individual producers and checkers write their generated data or verification receipts to their own directories. Use the top-level verifier when all published files should remain byte-identical. The [quartic data description](../computation/quartic/README.md) and [few-variable data description](../computation/few_variables/README.md) identify the exact outputs.
@@ -73,17 +79,21 @@ The global arithmetic inputs needed to identify the rational projections with th
 python3 scripts/build_papers.py
 ```
 
-The build runs LaTeX three times per paper and rejects missing references, multiply defined references, unresolved rerun requests and overfull boxes. Inspect rendered pages after substantive changes. The collection has sixteen separately readable papers:
+The build runs LaTeX three times per paper and rejects missing references, multiply defined references, unresolved rerun requests and overfull boxes. Inspect rendered pages after substantive changes. The collection has twenty separately readable papers:
 
 | Topic | Paper |
 |:--|:--|
 | Degree and coordinate lower bounds | [Lower bounds](../papers/lower_bounds/lower_bounds_20261108_v8.pdf) |
 | Twenty-seven variables: existence and uniform degree | [27-variable family](../papers/few_variables27/few_variables27_cubic_20261108_v9.pdf) |
-| Twenty-nine variables: fully specified coefficients | [29-variable polynomial](../papers/few_variables/few_variables_20261108_v8.pdf) |
+| Twenty-nine variables: fully specified coefficients and effective sum heights | [29-variable polynomial](../papers/few_variables/explicit29_effective_20261108_v10.pdf) |
+| Twenty-nine-variable arithmetic source and finite-algebra proof | [Source and proof](../papers/few_variables/few_variables_20261108_v8.pdf) |
 | Quartic with 317 variables: existence | [317-variable family](../papers/quartic_existence/quartic317_family_20261108_v9.pdf) |
-| Quartic with 389 variables: fully specified coefficients | [389-variable quartic](../papers/quartic/quartic389_20261108_v9.pdf) |
+| Quartic with 370 variables: fully specified coefficients | [370-variable quartic](../papers/quartic/quartic370_20261108_v10.pdf) |
+| Quartic arithmetic source with 389 variables | [389-variable quartic](../papers/quartic/quartic389_20261108_v9.pdf) |
 | Quadratic arithmetic source for the quartics | [392-variable source and proof](../papers/quartic/quartic392_20261108_v8.pdf) |
 | Uniform aggregate trace heights | [Trace heights](../papers/trace_heights/aggregate_trace_height_20261108_v9.pdf) |
+| Optimal square predicates over quadratic extensions | [Degree-six square tests](../papers/square_predicates/quadratic_square_predicates_20261108_v10.pdf) |
+| Effective heights of abscissa sums | [Effective sum heights](../papers/effective_sums/effective_elliptic_sums_20261108_v10.pdf) |
 | A square-root chart over quadratic extensions | [Quadratic squares](../papers/quadratic_squares/quadratic_square_chart_20261108_v9.pdf) |
 | Direct charts for the elliptic subgroup | [Square abscissas](../papers/square_abscissa/square_abscissa_charts_20261108_v9.pdf) |
 | Scalar contact normalization | [Scalar normalization](../papers/scalar_normalization/scalar_normalization_20261108_v9.pdf) |

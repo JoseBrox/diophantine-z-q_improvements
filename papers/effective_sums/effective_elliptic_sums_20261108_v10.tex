@@ -1,0 +1,450 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\newcommand{\ord}{\operatorname{ord}}
+\title{Effective heights of sums of elliptic abscissas}
+\author{}\date{8 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+For an elliptic curve $y^2=x^3-Dx$ over $\Q(\sqrt2)$ with
+integral $D$, we bound the height lost when adding the
+abscissas of finitely many integer multiples of a fixed point.
+If the abscissas are positive at both real embeddings, the
+loss is at most an explicit constant times the logarithm of
+the largest index. The proof uses formal logarithms only as
+identities: it requires no lower bound for a transcendental
+linear form. Relative to any individual abscissa, for four
+multiples the loss is at most $24\log B+\log864$.
+Applied to the fixed elliptic source,
+this gives a numerical bound in terms of the two rational
+components of the sum, valid for all nonzero integer indices.
+\end{abstract}
+
+\section{Heights and the main statement}
+
+Put $K=\Q(\sqrt2)$. At a finite place $v$ above a rational
+prime $p$, let $\ord_v$ have value group $\Z$, let $f_v$ be
+the residue degree, and put
+$\lambda_v=f_v\log p/2$. Thus $\ord_v(p)=e_v$ and
+$\sum_{v\mid p}e_vf_v=2$. For $a_1,\ldots,a_r\in K$ define
+\begin{align*}
+ h(1,a_1,\ldots,a_r)
+ &=\sum_{v\nmid\infty}\lambda_v
+          \max(0,-\ord_v(a_1),\ldots,-\ord_v(a_r))
+ \\&\quad+\frac12\sum_{\sigma:K\hookrightarrow\mathbb R}
+          \log\max(1,|\sigma(a_1)|,\ldots,|\sigma(a_r)|).
+\end{align*}
+For one entry this is the absolute logarithmic Weil height
+$h(a)=h(1,a)$.
+
+Let $D\in\Z[\sqrt2]\setminus\{0\}$ and
+\[
+ E_D:\quad y^2=x^3-Dx.
+\]
+Let $P\in E_D(K)$ have infinite order. For nonzero integers
+$n_1,\ldots,n_r$ set
+\[
+ x_i=x([n_i]P),\qquad Z=\sum_{i=1}^r x_i,
+ \qquad B=\max_i|n_i|\ge1.
+\]
+The points $[n_i]P$ are neither the origin nor a point of
+order two, so every $x_i$ is defined and nonzero.
+
+\begin{theorem}\label{thm:main}
+Assume $\sigma(x_i)>0$ at both real embeddings of $K$.
+Put
+\[
+ A_r=(r-1)2^{r-1},\qquad
+ B_r=\sum_{k=1}^r\binom{r-1}{k-1}\log k.
+\]
+Then
+\begin{equation}\label{eq:individual-height}
+ h(Z)\ge\max_i h(x_i)-A_r\log B-B_r.
+\end{equation}
+In particular, for $r=4$,
+\begin{equation}\label{eq:four}
+ h(Z)\ge \max_i h(x_i)-24\log B-\log864.
+\end{equation}
+There is also a comparison with the joint coordinate height.
+Put
+\[
+ C_r=2r+2\sum_{k=1}^r\binom rk(k-1)
+     =(r-2)2^r+2r+2,
+ \qquad
+ D_r=\sum_{k=1}^r\binom rk\log k.
+\]
+\begin{equation}\label{eq:height}
+ h(1,x_1,\ldots,x_r)-C_r\log B-D_r
+ \ \le\ h(Z)\ \le\ h(1,x_1,\ldots,x_r)+\log r.
+\end{equation}
+All constants in these bounds are independent of $D$, $P$,
+and the indices, subject to the stated hypotheses.
+\end{theorem}
+
+The positivity hypothesis is automatic when $P\in2E_D(K)$.
+Indeed the duplication formula is
+\begin{equation}\label{eq:duplicate}
+ x(2Q)=\left(\frac{x(Q)^2+D}{2y(Q)}\right)^2.
+\end{equation}
+For a point $Q$ of infinite order the displayed denominator
+and numerator are nonzero: otherwise $2Q$ would be the origin
+or $(0,0)$. Hence its image under each real embedding is a
+strictly positive square.
+
+\section{An integral local principal part}
+
+We give the local calculation at every finite place, including
+places of bad reduction. Put $t=-x/y$, the parameter at the
+origin. The integral Weierstrass equation defines its usual
+formal group over each valuation ring. Its points with
+$t$ in the maximal ideal form an open subgroup $E_1(K_v)$;
+no good-reduction hypothesis is needed at the smooth origin.
+For a finite nonzero point, membership in $E_1(K_v)$ is
+equivalent to $\ord_v(x)<0$. In that case
+\begin{equation}\label{eq:valuations}
+ \ord_v(x)=-2\ord_v(t),\qquad
+ \ord_v(y)=-3\ord_v(t).
+\end{equation}
+For example, these equalities follow directly by comparing
+the terms of $y^2=x^3-Dx$ when $\ord_v(x)<0$.
+
+\begin{lemma}\label{lem:local}
+Let $v$ be any finite place of $K$. The formal logarithm
+$\ell_v$ on $E_1(K_v)$ satisfies, for $a=\ord_v(t)>0$,
+\[
+ \ord_v(\ell_v(t))=a,
+ \qquad x(t)-\ell_v(t)^{-2}\in\mathcal O_v.
+\]
+It is injective on $E_1(K_v)$.
+\end{lemma}
+\begin{proof}
+The equation in the parameter $t$ gives
+\begin{equation}\label{eq:x-series}
+ x(t)=\frac{1+\sqrt{1+4Dt^4}}{2t^2}
+ =t^{-2}+Dt^2-D^2t^6+2D^3t^{10}-\cdots.
+\end{equation}
+The coefficients after $t^{-2}$ are signed Catalan numbers
+times powers of $D$, and are integral. Thus
+$x(t)-t^{-2}\in\mathcal O_v$.
+
+The invariant differential and its integral are
+\begin{align}
+ \frac{dx}{2y}&=(1+4Dt^4)^{-1/2}\,dt,\label{eq:differential}\\
+ \ell_v(t)&=\sum_{k\ge0}
+  \frac{(-1)^k\binom{2k}{k}D^k}{4k+1}\,t^{4k+1}.
+                                                        \label{eq:log}
+\end{align}
+If $v\mid2$, every denominator $4k+1$ is a unit; the terms
+with $k\ge1$ have valuation at least $5a$.
+If $v\nmid2$, the extension $K/\Q$ is unramified at $v$.
+For $k\ge1$ and odd $p$ one has
+\[
+ v_p(4k+1)\le4k-2,
+\]
+because $3^{4k-2}\ge4k+1$ (by induction, starting with
+$9\ge5$). The $k$-th term of~\eqref{eq:log} consequently
+has valuation at least
+\[
+ (4k+1)a-v_p(4k+1)\ge3a.
+\]
+Moreover $v_p(4k+1)\le\log_p(4k+1)=o(k)$, so the valuations
+of the terms tend to infinity. At places above two this
+also follows immediately from integrality of the coefficients.
+Hence at every finite place
+$\ord_v(\ell_v(t)-t)\ge3a$, and in particular
+$\ord_v(\ell_v(t))=a$. Writing $\ell_v(t)=t(1+\eta)$
+with $\ord_v(\eta)\ge2a$ gives
+\[
+ \ell_v(t)^{-2}-t^{-2}
+ =t^{-2}\frac{-2\eta-\eta^2}{(1+\eta)^2}\in\mathcal O_v.
+\]
+Together with~\eqref{eq:x-series}, this proves the claimed
+principal part. The integral of the invariant differential
+is a formal-group homomorphism. The valuation equality
+shows that its only zero in $E_1(K_v)$ is the origin, which
+proves injectivity.
+\end{proof}
+
+Since $E_D(K_v)$ is compact and $E_1(K_v)$ is an open subgroup,
+their quotient is finite. Choose $m>0$ with $[m]P\in E_1(K_v)$
+and define
+\[
+ L_v=\frac{\ell_v([m]P)}m.
+\]
+The formal-group homomorphism shows this is independent of
+the choice of $m$. It is nonzero, since $P$ has infinite order
+and Lemma~\ref{lem:local} is injective. Whenever
+$[n]P\in E_1(K_v)$,
+\begin{equation}\label{eq:rank-one}
+ \ell_v([n]P)=nL_v,
+ \qquad x([n]P)=\frac1{n^2L_v^2}+\varepsilon_n,
+ \quad \varepsilon_n\in\mathcal O_v.
+\end{equation}
+This identity is the only use of a local logarithm in the
+height argument.
+
+\section{Summing the local losses}
+
+For each nonempty subset $I\subseteq\{1,\ldots,r\}$ put
+\[
+ T_I=\sum_{i\in I}\frac1{n_i^2}\in\Q_{>0}.
+\]
+Write $T_I=A_I/B_I$ in lowest terms, with positive integers
+$A_I,B_I$.
+
+\begin{lemma}\label{lem:fixed-target}
+Fix an index $i$. At every finite place where $[n_i]P$ is
+formal, let $J$ be the set of all formal indices and put
+\[
+ C_J=\sum_{j\in J}\prod_{k\in J\setminus\{j\}}n_k^2
+       \in\Z_{>0}.
+\]
+The loss of the local height of $x_i$ upon passing to $Z$ is
+at most $\ord_v(C_J)$.
+\end{lemma}
+\begin{proof}
+Write $M_i=-\ord_v(x_i)>0$. The principal-part identity is
+\[
+ Z=(n_iL_v)^{-2}A_{J,i}+\varepsilon,
+ \qquad
+ A_{J,i}=n_i^2T_J
+       =\frac{C_J}{\prod_{j\in J\setminus\{i\}}n_j^2},
+ \qquad\varepsilon\in\mathcal O_v.
+\]
+If $\ord_v(A_{J,i})<M_i$, the local height of $Z$ is
+$M_i-\ord_v(A_{J,i})$; otherwise it is zero. The loss is
+therefore at most $\max(0,\ord_v(A_{J,i}))$.
+All the indices are integers, so
+$\ord_v(A_{J,i})\le\ord_v(C_J)$; the latter is nonnegative.
+\end{proof}
+
+\begin{lemma}\label{lem:loss}
+At a finite place $v$, let
+\[
+ M_v=\max(0,-\ord_v(x_1),\ldots,-\ord_v(x_r)),\quad
+ m_v=\max(0,-\ord_v(Z)).
+\]
+If $M_v>0$, let $I_v$ be the nonempty set of indices whose
+points belong to $E_1(K_v)$, and choose $j\in I_v$ with
+$\ord_v(n_j)=\max_{i\in I_v}\ord_v(n_i)$. Then
+\[
+ 0\le M_v-m_v\le
+ \ord_v(n_j^2T_{I_v})
+ \le2\max_i\ord_v(n_i)+\max(0,\ord_v(T_{I_v})).
+\]
+\end{lemma}
+\begin{proof}
+The remaining abscissas are integral at $v$. By
+\eqref{eq:rank-one},
+\[
+ Z=\frac{T_{I_v}}{L_v^2}+\varepsilon,
+ \qquad\varepsilon\in\mathcal O_v,
+ \qquad M_v=2\ord_v(n_jL_v)>0.
+\]
+The number
+$c=n_j^2T_{I_v}=\sum_{i\in I_v}(n_j/n_i)^2$
+is nonzero and integral at $v$. If $\ord_v(c)<M_v$, the
+principal part has negative valuation and
+$m_v=M_v-\ord_v(c)$. Otherwise the principal part and $Z$
+are integral, and $m_v=0$. Thus the loss is
+$\min(M_v,\ord_v(c))$, proving the inequalities.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+Fix an index $i$. Where $[n_i]P$ is not formal, its finite
+local height is zero and there is no positive loss. At every
+other place Lemma~\ref{lem:fixed-target} applies. As $J$
+ranges over the subsets containing $i$, the sum of its
+contributions is at most
+\[
+ \sum_{J\ni i}\sum_{v\nmid\infty}
+                  \lambda_v\ord_v(C_J)
+ =\sum_{J\ni i}\log C_J.
+\]
+For $|J|=k$ one has $C_J\le kB^{2(k-1)}$, and there are
+$\binom{r-1}{k-1}$ such subsets. Consequently this total
+is at most
+\[
+ 2\sum_{k=1}^r\binom{r-1}{k-1}(k-1)\log B+B_r
+ =(r-1)2^{r-1}\log B+B_r.
+\]
+At a real embedding the positive sum is at least its
+$i$-th summand, so there is no archimedean loss.
+This proves~\eqref{eq:individual-height} for every $i$.
+The values $A_4=24$ and
+$B_4=3\log2+3\log3+\log4=\log864$ give~\eqref{eq:four}.
+
+The ultrametric inequality shows $m_v\le M_v$. At places
+with $M_v=0$ there is no loss. Sum Lemma~\ref{lem:loss},
+using its last inequality, to obtain
+\begin{align*}
+ \sum_{v\nmid\infty}\lambda_v(M_v-m_v)
+ &\le2\sum_{i=1}^r\log|n_i|
+    +\sum_{\varnothing\ne I\subseteq\{1,\ldots,r\}}
+       \log A_I.                                      \tag{*}
+\end{align*}
+Here, for any positive rational $a=A/B$ in lowest terms,
+\[
+ \sum_{v\nmid\infty}\lambda_v\max(0,\ord_v(a))=
+ \sum_p\log p\,\max(0,v_p(a))=\log A.
+\]
+Also $\max_i\ord_v(n_i)\le\sum_i\ord_v(n_i)$ because
+all the $n_i$ are integers. This proves~$(*)$, even though
+the subset $I_v$ varies with the place: each of the finitely
+many subsets contributes at most its full positive-valuation
+sum.
+
+If $|I|=k$, a common denominator for $T_I$ gives
+\[
+ A_I\le\sum_{i\in I}\prod_{j\in I\setminus\{i\}}n_j^2
+       \le kB^{2(k-1)}.
+\]
+Together with $\log|n_i|\le\log B$, this bounds~$(*)$
+by $C_r\log B+D_r$. At each real embedding all $x_i$ are
+positive, so
+\[
+ \max(1,\sigma(x_1),\ldots,\sigma(x_r))
+ \le\max(1,\sigma(Z))
+ \le r\max(1,\sigma(x_1),\ldots,\sigma(x_r)).
+\]
+Combining the finite and infinite places proves
+\eqref{eq:height}. Its four-coordinate constants are
+$C_4=42$ and $D_4=\log20736$.
+\end{proof}
+
+\section{The fixed arithmetic source}
+
+Take
+\[
+ D=11-6\sqrt2=(3-\sqrt2)^2,
+ \qquad R_0=(1+\sqrt2,2\sqrt2),
+\]
+\[
+ P=2R_0=
+ \left(\frac{57}8-\frac72\sqrt2,
+       -\frac{165}8+\frac{417}{32}\sqrt2\right).
+\]
+The equation and the doubling identity are checked directly.
+At the place $\pi=\sqrt2$ one has
+$\ord_\pi(x(P))=-6$ and $\ord_\pi(y(P))=-9$; hence
+$\ord_\pi(t(P))=3$.
+Lemma~\ref{lem:local} proves that $\ell_\pi(P)\ne0$, so
+$P$ has infinite order. Formula~\eqref{eq:duplicate} proves
+the positivity needed in Theorem~\ref{thm:main} for every
+nonzero integer index.
+
+The arithmetic source uses the index-height assertion
+\begin{equation}\label{eq:source-height}
+                 h(x([n]P))\ge n^2-6\qquad(n\in\Z\setminus\{0\}).
+\end{equation}
+We state the following application explicitly under that
+retained assertion; its precise source identifier is
+\nolinkurl{eq:o8-indexheight}, as documented in~\cite{Arithmetic}.
+The sum-height theorem above is independent of this assertion.
+
+\begin{corollary}\label{cor:numerical}
+Assume~\eqref{eq:source-height}. For nonzero integers
+$n_1,n_2,n_3,n_4$, put
+\[
+ Z=\sum_{i=1}^4x([n_i]P)=S_0+S_1\sqrt2,
+ \qquad S_0,S_1\in\Q,
+ \qquad B=\max_i|n_i|.
+\]
+Then
+\begin{equation}\label{eq:bounds}
+ B^2\le2h(Z)+80
+       \le2h(S_0)+2h(S_1)+83.
+\end{equation}
+No restriction on the parity of the indices is imposed.
+\end{corollary}
+\begin{proof}
+Theorem~\ref{thm:main} gives
+\[
+ h(Z)\ge B^2-24\log B-6-\log864.
+\]
+For $B>0$, the inequality $\log t\le t-1$ with
+$t=B^2/24$ gives
+\[
+ 24\log B-\frac{B^2}2
+ \le12\log24-12<27.
+\]
+Since $\log864<7$, the total subtracted constant is
+less than $40$. Thus $h(Z)\ge B^2/2-40$.
+Finally the elementary height inequalities for addition and
+multiplication give
+\[
+ h(S_0+S_1\sqrt2)
+ \le h(S_0)+h(S_1)+\tfrac32\log2.
+\]
+Because $3\log2<3$, the second inequality follows after
+increasing the additive constant from $80$ to $83$.
+The statements $\log24<13/4$ and $\log864<7$ can, if
+desired, be verified by finite positive Taylor sums for the
+exponential; exact certificates are supplied with this paper.
+\end{proof}
+
+The two rational components $S_0,S_1$ are linear combinations
+of the existing abscissa components. Thus this aggregate
+requires no multiplication coordinates. Inequality~\eqref{eq:bounds}
+is the height input for a construction retaining the three
+scales $1$, $S_0^2$, and $(1+S_1^2)^2$.
+It does not assert an effective bound in terms of $h(S_0)$
+alone; taking the field trace can introduce additional
+cancellation between conjugate blocks.
+
+\section{A number-field extension}
+
+\begin{corollary}
+Let $F$ be a totally real number field unramified at every
+odd rational prime. Let $D\in\mathcal O_F\setminus\{0\}$
+and let $P\in2E_D(F)$ have infinite order. Then both
+inequalities~\eqref{eq:individual-height} and~\eqref{eq:height}
+hold for the absolute heights over $F$, with the same
+constants $A_r,B_r,C_r,D_r$.
+\end{corollary}
+\begin{proof}
+At every odd place the valuation estimate in
+Lemma~\ref{lem:local} uses only that the ramification index
+is one. At places above two, all coefficients of the formal
+logarithm are integral, regardless of the ramification
+index. The lemma therefore holds over $F$ at every finite
+place. In the product-formula calculation replace
+$f_v\log p/2$ by $f_v\log p/[F:\Q]$; the contribution of
+a rational positive integer remains its usual logarithm.
+At real embeddings positivity follows from doubling as
+before. The two proofs are otherwise unchanged.
+\end{proof}
+
+\section{Verification data}
+
+The companion program
+\nolinkurl{check_effective_elliptic_sums.py} uses exact rational
+arithmetic. It verifies the curve and doubling identities,
+the stated valuation of $P$, the first twelve coefficients
+of the formal identities, the combinatorial constants, and
+finite rational certificates for the two exponential
+inequalities used above. The local estimates and the
+summation over all places are proved in the text, rather
+than inferred from a finite computation.
+
+\begin{thebibliography}{9}
+\bibitem{Silverman}
+J.~H.~Silverman, \emph{The Arithmetic of Elliptic Curves},
+second edition, Graduate Texts in Mathematics 106,
+Springer, 2009. Chapters~IV and~VII supply the standard
+formal-group and local-group terminology used here.
+\url{https://doi.org/10.1007/978-0-387-09494-6}.
+\bibitem{Arithmetic}
+\emph{Arithmetic dependencies of the optimized rational
+constructions}, 8 November 2026, Section~2,
+\nolinkurl{arithmetic_dependencies_20261108_v8.tex},
+project replication archive.
+\end{thebibliography}
+\end{document}

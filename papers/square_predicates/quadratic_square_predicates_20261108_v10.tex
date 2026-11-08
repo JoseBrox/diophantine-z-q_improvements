@@ -1,0 +1,739 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,booktabs,microtype}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\newcommand{\A}{\mathbb A}
+\DeclareMathOperator{\Norm}{N}
+\DeclareMathOperator{\Frac}{Frac}
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\disc}{disc}
+\setlength{\emergencystretch}{2em}
+\title{Optimal polynomial square tests in quadratic number fields}
+\author{}\date{8 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+For every quadratic extension $K/F$ of number fields, square membership
+in $K$, with two input components in $F$, is expressible by one polynomial
+of total degree six and one auxiliary $F$-variable. Zero is included and
+no nonzero condition is needed. We prove that total degree six and degree
+four in the auxiliary variable are both minimal for this form of
+definition. The lower bound uses Hilbert irreducibility, the intermediate
+fields of the generic squaring map, and a valuation formula for leading
+coefficients. Over $\Q(\sqrt2)$ we give an integer polynomial with ten
+monomials and coefficient height $7$. A degree-ten alternative has
+coefficient height $8$; allowing two auxiliary variables gives a quartic
+of height $8$, or two quadratic equations. All results in this paper are
+unconditional. They concern square membership, rather than integrality.
+\end{abstract}
+
+\section{Inputs, quantified variables, and the main results}
+
+Fix a number field $F$, an element $d\in F^\times\setminus F^{\times2}$,
+and $K=F(\rho)$, where $\rho^2=d$. The two input coordinates $U,V$
+describe the element $U+V\rho$ of $K$. Write
+\[
+ \mathcal S_d(F)=\{(U,V)\in F^2:U+V\rho\text{ is a square in }K\}.
+\]
+Throughout, zero is a square. The scalar $d$ is fixed, not a variable.
+
+\begin{definition}
+A polynomial square test with one auxiliary variable is a nonzero
+$P\in F[U,V,T]$ such that, for every $(U,V)\in F^2$,
+\begin{equation}\label{eq:predicate}
+ (U,V)\in\mathcal S_d(F)
+ \quad\Longleftrightarrow\quad
+ \exists T\in F\quad P(U,V,T)=0.
+\end{equation}
+\end{definition}
+
+Thus the polynomial has three total coordinates: two inputs and one
+quantified variable. All three coordinates range over the base field
+$F$. This differs from a polynomial with one input and two auxiliary
+variables defining $\Z$ over $\Q$.
+
+\begin{theorem}\label{thm:main}
+For every quadratic extension of number fields as above, there is a
+square test of total degree six, of degree four in $T$, and with a
+nonzero constant leading coefficient in $T$. Every square test
+\eqref{eq:predicate}, whether or not its leading coefficient is constant,
+satisfies
+\[
+                         \deg P\ge6,\qquad \deg_TP\ge4.
+\]
+No polynomial equation without auxiliary variables defines
+$\mathcal S_d(F)$.
+\end{theorem}
+
+The construction is proved in Sections~\ref{sec:explicit} and
+\ref{sec:general}; the lower bounds are proved in
+Section~\ref{sec:optimality}. Over $\Q(\sqrt2)$ the following alternatives
+make the degree and variable tradeoff explicit:
+\begin{center}
+\begin{tabular}{lrrrr}
+\toprule
+Presentation & Auxiliary variables & Total degree & Monomials & Height\\
+\midrule
+One sextic equation & 1 & 6 & 10 & 7\\
+One degree-ten equation & 1 & 10 & 12 & 8\\
+One quartic equation & 2 & 4 & 8 & 8\\
+Two quadratic equations & 2 & 2 & --- & 2\\
+\bottomrule
+\end{tabular}
+\end{center}
+For a system, the displayed degree and coefficient height are the
+maxima over its equations. Coefficient height means the largest absolute
+integer coefficient. These are square tests; none of the displayed
+equations is asserted to define a ring of integers.
+
+\section{An explicit sextic over the rationals}\label{sec:explicit}
+
+Put
+\begin{equation}\label{eq:AB}
+ A=3U^3-2U^2V-3UV^2,\qquad
+ B=-2U^3+U^2V+2UV^2+V^3,
+\end{equation}
+and define
+\begin{equation}\label{eq:G}
+ \boxed{G(U,V,T)=2T^4-2A(U,V)T^2+B(U,V)^2.}
+\end{equation}
+
+\begin{lemma}\label{lem:B}
+For rational $U,V$, one has $B(U,V)=0$ if and only if $U=V=0$.
+\end{lemma}
+\begin{proof}
+Scale a hypothetical nonzero rational zero to relatively prime
+integers $U,V$ and reduce modulo $3$. The values of $B(t,1)$
+at $t=0,1,2$ are $1,2,2$, respectively, and $B(1,0)=1$
+modulo $3$. Thus $B$ has no zero in $\mathbf P^1(\mathbf F_3)$,
+a contradiction.
+\end{proof}
+
+\begin{theorem}\label{thm:explicit}
+For every $U,V\in\Q$,
+\[
+ U+V\sqrt2\text{ is a square in }\Q(\sqrt2)
+ \quad\Longleftrightarrow\quad
+ \exists T\in\Q\quad G(U,V,T)=0.
+\]
+The polynomial has total degree six, degree four in $T$, ten monomials,
+integer content one, and coefficient height $7$.
+\end{theorem}
+\begin{proof}
+Define the multiplier
+\[
+             m=(U+V)-U\sqrt2.
+\]
+Direct multiplication gives
+\begin{align}
+ \Norm_{K/\Q}(m)&=-U^2+2UV+V^2,\label{eq:multnorm}\\
+ m^2(U+V\sqrt2)&=A+B\sqrt2.\label{eq:multsquare}
+\end{align}
+If $U+V\sqrt2=(u+v\sqrt2)^2$, then
+\begin{equation}\label{eq:cubic}
+ m(u+v\sqrt2)=(u^3+2uv^2-4v^3)+(-u^3+u^2v+2v^3)\sqrt2.
+\end{equation}
+For a nonzero input, Lemma~\ref{lem:B} gives $B\ne0$.
+The product of the two components on the right of~\eqref{eq:cubic}
+is $B/2$, so neither component is zero. Taking
+$T=u^3+2uv^2-4v^3$ and comparing the square's components gives
+\[
+               A=T^2+\frac{B^2}{2T^2},
+\]
+which is exactly $G=0$. The zero square is represented by $U=V=T=0$.
+
+Conversely, suppose $G(U,V,T)=0$. If $T=0$, Lemma~\ref{lem:B}
+gives $U=V=0$. Otherwise
+\[
+ \left(T+\frac{B}{2T}\sqrt2\right)^2=A+B\sqrt2.
+\]
+For $(U,V)\ne(0,0)$ the norm in~\eqref{eq:multnorm} is nonzero:
+$(U+V)^2=2U^2$ would force $U=V=0$.
+Division by $m$ therefore gives
+the explicit square root
+\begin{equation}\label{eq:recover}
+ z=\frac{(U+V)+U\sqrt2}{-U^2+2UV+V^2}
+                         \left(T+\frac{B}{2T}\sqrt2\right).
+\end{equation}
+There is no missing exceptional input: $T=0$ was handled separately,
+and every nonzero input has a nonzero multiplier.
+
+The full expansion is
+\begin{align*}
+ G={}&4U^6-4U^5V-7U^4V^2+6U^2V^4+4UV^5+V^6\\
+    &-6U^3T^2+4U^2VT^2+6UV^2T^2+2T^4.
+\end{align*}
+It proves the stated degree, monomial count, content, and height.
+\end{proof}
+
+The polynomial is quartic in its auxiliary variable, but it is
+\emph{sextic in total degree}. For example, $U^6$ has degree six.
+No matrix entry, component, or multiplier in the displayed formula
+is an additional quantified coordinate; they are explicit polynomials
+in the two given inputs.
+
+\begin{proposition}\label{prop:separable}
+For each nonzero rational input $(U,V)$, every algebraic root of
+$G(U,V,T)$ is nonzero and simple. Its discriminant in $T$ is
+\begin{equation}\label{eq:disc}
+ \disc_TG=512B^2(-U^2+2UV+V^2)^4(U^2-2V^2)^2.
+\end{equation}
+\end{proposition}
+\begin{proof}
+Taking norms in~\eqref{eq:multsquare} gives
+\[
+        A^2-2B^2=(-U^2+2UV+V^2)^2(U^2-2V^2).
+\]
+The discriminant of $aT^4+bT^2+c$ is
+$16ac(b^2-4ac)^2$, obtained from its derivative and resultant.
+Applying this identity gives~\eqref{eq:disc}. Each factor is nonzero:
+use Lemma~\ref{lem:B} and the nonsquareness of $2$. The constant
+term $B^2$ is also nonzero.
+\end{proof}
+
+\subsection{Coefficient height within the integral multiplier family}
+
+The following coefficient lower bound has a narrower scope than
+the degree lower bound in Theorem~\ref{thm:main}.
+
+\begin{proposition}\label{prop:height7}
+Let $a,b,c,e$ be integers and put
+\[
+ p=aU+bV,\qquad q=cU+eV,\qquad
+ A_m=(p^2+2q^2)U+4pqV,\quad
+ B_m=(p^2+2q^2)V+2pqU.
+\]
+Divide $2T^4-2A_mT^2+B_m^2$ by its positive integer content.
+If the resulting polynomial is a complete square test, its
+coefficient height is at least seven. Equality is attained by
+\eqref{eq:G}.
+\end{proposition}
+\begin{proof}
+The four coefficients of $B_m$, in descending $U$-degree, are
+\[
+ 2ac,\quad a^2+2c^2+2ae+2bc,\quad
+ 2ab+4ce+2be,\quad b^2+2e^2.
+\]
+Soundness requires $ac\ne0$: otherwise every $(U,0,0)$ would
+be a zero, although some rational $U$ are not squares in $K$.
+It also requires $(b,e)\ne(0,0)$, since otherwise every
+$(0,V,0)$ would be a zero. For $V\ne0$, the norm of $V\sqrt2$
+is negative, so that element cannot be a square in $K$.
+
+The content divides two, the coefficient of $T^4$. Modulo two,
+$B_m\equiv a^2U^2V+b^2V^3$; hence the content is two exactly
+when $a,b$ are both even. In that case the primitive $U^6$
+coefficient is $2a^2c^2\ge8$.
+
+Suppose instead that the content is one and the height is at
+most six. The $U^3T^2$ coefficient $-2(a^2+2c^2)$ forces
+$a,c\in\{1,-1\}$. The $V^6$ coefficient $(b^2+2e^2)^2$
+then forces
+\[
+ (b,e)\in\{(1,0),(-1,0),(0,1),(0,-1)\}.
+\]
+Write $B_j=[U^{3-j}V^j]B_m$. Then $B_0=2ac$ and
+$B_1=3+2ae+2bc\in\{1,5\}$. The $U^5V$ coefficient is
+$2B_0B_1$, so the proposed height bound requires $B_1=1$.
+If $e=0$, this implies $bc=-1$ and $B_2=-2ac$; the
+$U^4V^2$ coefficient is therefore $1-8=-7$.
+If $b=0$, one has $ae=-1$ and $B_2=-4ac$, giving $1-16=-15$.
+Both conclusions contradict height at most six.
+Theorem~\ref{thm:explicit} proves attainment.
+\end{proof}
+
+This proposition does not assert coefficient optimality among
+all square tests or after arbitrary rational changes of the
+auxiliary coordinate.
+
+\section{A degree-ten alternative}\label{sec:ten}
+
+The alternative polynomial
+\begin{equation}\label{eq:P10}
+ P_{10}(U,V,T)
+   =(2-2UT^2+V^2T^4)\bigl(V^2+(U-2T^2)^2\bigr)
+\end{equation}
+has total degree ten, degree eight in $T$, twelve monomials, and
+coefficient height eight. It too is a complete square test, including zero.
+
+To prove this, suppose first that its first factor vanishes. Then $T\ne0$
+and
+\[
+       \left(\frac1T+\frac{VT}{2}\sqrt2\right)^2=U+V\sqrt2.
+\]
+Conversely a square root $u+v\sqrt2$ with $u\ne0$ gives this factor
+zero with $T=1/u$. The second factor vanishes precisely when
+$V=0$ and $U=2T^2$, because a sum of rational squares vanishes only
+when both squares vanish. These are exactly the inputs with a square
+root $T\sqrt2$, including zero. A product is zero if and only if one
+factor is zero, so the two cases use the same one quantified variable.
+
+The highest-degree monomial is $4V^2T^8$, of total degree ten.
+The value eight is the largest coefficient after complete expansion;
+it is not an estimate for the coefficients in any integrality construction.
+
+Over a field $F$ of characteristic different from two, the same
+argument gives
+\begin{equation}\label{eq:general10}
+ (4-4UT^2+dV^2T^4)\bigl(V^2-c(U-dT^2)^2\bigr)=0
+\end{equation}
+whenever $d$ and $c$ are nonzero nonsquares in $F$. One may take $c=d$.
+The second factor then forces $V=0$ and $U=dT^2$.
+
+\section{A sextic over every quadratic number field}\label{sec:general}
+
+Choose $\kappa\in F^\times$ that is not a cube. Such an element exists
+in every number field: choose a nonzero prime ideal $\mathfrak p$ and
+$\kappa\in\mathfrak p\setminus\mathfrak p^2$.
+Define
+\begin{align}
+ a&=U+\frac{\kappa}{2d}V,
+ &b&=-\frac{\kappa}{d^2}U-\frac12V,\label{eq:generalab}\\
+ A_d&=(a^2+db^2)U+2dabV,
+ &B_d&=(a^2+db^2)V+2abU.\label{eq:generalAB}
+\end{align}
+The parameters $d,\kappa$ are fixed coefficients. Thus $a,b$ are linear
+and $A_d,B_d$ are homogeneous cubics in the two input variables.
+
+\begin{lemma}\label{lem:generalB}
+The cubic $B_d$ vanishes at a pair in $F^2$ only at $(0,0)$.
+\end{lemma}
+\begin{proof}
+Expansion gives
+\[
+ 4d^2B_d=-8\kappa U^3+6\kappa dUV^2+(\kappa^2+d^3)V^3.
+\]
+If $V=0$, its vanishing implies $U=0$. Otherwise, put $t=2U/V$.
+A zero would give an $F$-root of
+\begin{equation}\label{eq:irreduciblecubic}
+             X^3-3dX-\kappa-\frac{d^3}{\kappa}.
+\end{equation}
+Let $r^3=\kappa$. The polynomial $X^3-\kappa$ is irreducible over $F$,
+so $[F(r):F]=3$. The element $s=r+d/r$ is a root
+of~\eqref{eq:irreduciblecubic}. Moreover, $r$ satisfies
+$X^2-sX+d=0$ over $F(s)$. Therefore $[F(r):F(s)]$ divides three
+and is at most two, so it is one. Thus $s$ has degree three over $F$,
+and~\eqref{eq:irreduciblecubic} is irreducible. It has no $F$-root.
+\end{proof}
+
+\begin{theorem}\label{thm:general}
+For every $U,V\in F$,
+\begin{equation}\label{eq:general6}
+ (U,V)\in\mathcal S_d(F)
+ \quad\Longleftrightarrow\quad
+ \exists Y\in F\quad
+ Y^4-4A_d(U,V)Y^2+4dB_d(U,V)^2=0.
+\end{equation}
+This is one polynomial of exact total degree six and degree four in $Y$.
+For each nonzero input, all its algebraic roots are nonzero and simple.
+\end{theorem}
+\begin{proof}
+Let $m=a+b\rho$. The identities
+\begin{align*}
+ m^2(U+V\rho)&=A_d+B_d\rho,\\
+ a^2-db^2&=\frac{d^3-\kappa^2}{4d^3}(4U^2-dV^2)
+\end{align*}
+follow by multiplication. Both factors in the norm are nonzero for
+nonzero $(U,V)$: $\kappa^2=d^3$ would make $d=(\kappa/d)^2$ a
+square, and $4U^2=dV^2$ would likewise contradict the choice of $d$.
+
+For a square root $z=u+v\rho$, substitution gives
+\[
+ mz=(u^3-\kappa v^3)
+           +\left(dv^3-\frac{\kappa}{d^2}u^3\right)\rho.
+\]
+The first component is nonzero when $z\ne0$. Set $Y$ equal to twice
+that component to obtain the equation in~\eqref{eq:general6}.
+Zero is represented by $U=V=Y=0$.
+
+Conversely, a root $Y=0$ forces $B_d=0$ and hence $U=V=0$ by
+Lemma~\ref{lem:generalB}. For a nonzero input, $Y\ne0$, and the
+displayed equation gives
+\[
+       \left(\frac Y2+\frac{B_d}{Y}\rho\right)^2=A_d+B_d\rho.
+\]
+Dividing the element in parentheses by $m$ recovers a square root.
+At a permitted root the derivative is $8Y$ times the norm of that
+parenthesized element. Its squared norm is
+$(a^2-db^2)^2(U^2-dV^2)\ne0$, so the derivative is nonzero.
+Finally $B_d$ is a nonzero cubic, so $4dB_d^2$ has exact degree six;
+the other terms have smaller total degree and cannot cancel it.
+\end{proof}
+
+\section{Why degree six is necessary}\label{sec:optimality}
+
+We give the lower bound for an arbitrary polynomial square test,
+without a monicity or irreducibility assumption on that polynomial.
+The only external theorem used in this section is Hilbert irreducibility:
+over a number field, finitely many irreducible polynomials over a
+rational function field can be specialized simultaneously so as to
+remain irreducible, away from a prescribed proper closed subset
+\cite[Proposition~3.3.5 and Theorem~3.4.1]{Serre}.
+
+\subsection{The generic squaring map and its intermediate fields}
+
+Let $u,v$ now be algebraically independent over $F$ and put
+\[
+ U=u^2+dv^2,\quad V=2uv,\quad w=u^2-dv^2,
+ \quad K_0=F(U,V),\quad L=F(u,v),\quad M=K_0(w).
+\]
+These function fields are distinct from the fixed quadratic number field
+$K=F(\rho)$.
+
+\begin{lemma}\label{lem:fields}
+The extension $L/K_0$ has degree four. Its unique proper intermediate
+field is $M$, with $[M:K_0]=2$. The integral closure of $F[U,V]$ in $L$
+is $F[u,v]$.
+\end{lemma}
+\begin{proof}
+Over $F(\rho)$ set $x=u+\rho v$ and $y=u-\rho v$. Then
+$U+\rho V=x^2$ and $U-\rho V=y^2$. The independent sign changes
+of $x,y$ give a degree-four extension over $F(\rho)(U,V)$.
+The field $N=F(\rho,u,v)$ is a degree-eight normal extension of $K_0$:
+besides the sign changes, it has the automorphism interchanging $x,y$
+and sending $\rho$ to $-\rho$. Its group is the dihedral group of order
+eight. The subgroup fixing $L$ consists of the identity and this
+interchange. Its only proper overgroup other than itself has order four,
+generated by the interchange and the simultaneous sign change.
+Its fixed field is $M$, since $w=xy$ is fixed and
+$w^2=U^2-dV^2$. This proves the intermediate-field assertions.
+
+Both $u$ and $v$ are integral over $F[U,V]$, as seen from
+\[
+ u^4-Uu^2+dV^2/4=0,\qquad
+ v^4-(U/d)v^2+V^2/(4d)=0.
+\]
+Thus $F[u,v]$ is finite over $F[U,V]$. It is integrally closed, being
+a polynomial ring, and has fraction field $L$. Any element of $L$
+integral over $F[U,V]$ is also integral over $F[u,v]$, hence lies in
+$F[u,v]$. This proves the normalization assertion.
+\end{proof}
+
+Choose once and for all
+\begin{equation}\label{eq:badc}
+                    c\in F^\times\setminus(F^{\times2}\cup dF^{\times2}).
+\end{equation}
+Such a choice is possible by taking an element of valuation one at a
+prime ideal where $d$ has valuation zero. Expanding
+$(a+b\rho)^2\in F$ shows that $c$ is a square in $K$ if and only if
+$c$ or $c/d$ is a square in $F$. Thus our $c$ is not a square in $K$.
+
+\begin{lemma}\label{lem:bad-dense}
+The surface $w^2=U^2-dV^2$ has a Zariski-dense set of $F$-points
+whose input $U+V\rho$ is not a square in $K$.
+\end{lemma}
+\begin{proof}
+Use the rational parametrization
+\[
+ a=U+w,\quad V=b,\quad
+ U=\frac12\left(a+\frac{db^2}{a}\right),\quad
+ w=\frac12\left(a-\frac{db^2}{a}\right),\qquad a\ne0.
+\]
+Put $a=2cs^2$, where $s\in F^\times$, and let $b\in F$ vary.
+If the resulting input were $(p+q\rho)^2$, then
+$p^2-dq^2$ would equal $w$ or $-w$. The first possibility gives
+$p^2=a/2=cs^2$, impossible. In the second,
+$dq^2=a/2=cs^2$, also impossible. The same argument includes $b=0$.
+The map $(s,b)\mapsto(a,b)=(2cs^2,b)$ is dominant, and $F^2$ is
+Zariski dense. Its images are consequently dense on the surface.
+\end{proof}
+
+\begin{lemma}\label{lem:primitive}
+If $P$ is a polynomial square test, the polynomial
+$P(u^2+dv^2,2uv,T)$ has a root $r\in L$. Every such root generates
+$L$ over $K_0$.
+\end{lemma}
+\begin{proof}
+If its irreducible factors over $F(u,v)$ all had degree at least two
+in $T$, simultaneous Hilbert irreducibility would give a specialization
+$(u,v)\in F^2$ where none had an $F$-root and all required coefficient
+denominators were nonzero. The input is a square, contradicting
+the completeness of the test. A factor of degree one therefore exists.
+
+Suppose a root $r$ did not generate $L$. By Lemma~\ref{lem:fields},
+it would lie in $M$ (which includes the possibility $r\in K_0$).
+Regard it as a rational function on the surface in
+Lemma~\ref{lem:bad-dense}. Away from its poles, the identity
+$P(U,V,r)=0$ specializes to an $F$-root of $P$. The dense set of
+nonsquare inputs in that lemma meets this open subset. This contradicts
+the soundness of the square test.
+\end{proof}
+
+In particular the minimal polynomial of $r$ over $K_0$ has degree four,
+so $\deg_TP\ge4$. Choose its primitive polynomial representative
+\[
+ f(U,V,T)=a(U,V)T^4+\cdots\in F[U,V,T].
+\]
+Here ``primitive'' means that its coefficients as a polynomial in $T$
+have no nonconstant common factor in $F[U,V]$. Gauss's lemma implies
+$f\mid P$ in $F[U,V,T]$, and therefore $\deg f\le\deg P$.
+
+\subsection{Poles and leading coefficients}
+
+For an irreducible divisor $D$ of the affine input plane, write $v_D$
+for the integer-normalized valuation on $K_0$. Its extensions $w_i$
+to $L$ are also normalized to have value group $\Z$; their residue
+degrees are denoted by $f_i$.
+
+\begin{lemma}\label{lem:gauss}
+With the preceding notation,
+\begin{equation}\label{eq:leadingval}
+                    v_D(a)=\sum_i f_i\max(0,-w_i(r)).
+\end{equation}
+\end{lemma}
+\begin{proof}
+For a polynomial over a valued field, the least valuation of its
+coefficients is additive under multiplication. To see this, divide
+each factor by one of its coefficients of least valuation and reduce
+modulo the maximal ideal; the two nonzero reduced polynomials have
+a nonzero product. Apply this fact over a normal closure to the
+monic minimal polynomial
+$f/a=\prod_{\sigma}(T-\sigma r)$. Its least coefficient valuation is
+$\sum_\sigma\min(0,v_D(\sigma r))$.
+
+At a place with ramification index $e_i$ and residue degree $f_i$,
+there are $e_if_i$ conjugates, and their extended valuation is
+$w_i(r)/e_i$. The sum is therefore
+$\sum_i f_i\min(0,w_i(r))$. Since $f$ is primitive, its coefficients
+have least $v_D$-valuation zero. Multiplying by $a$ gives
+\eqref{eq:leadingval}.
+\end{proof}
+
+\begin{lemma}\label{lem:line}
+If $D$ is an affine $F$-line in the input plane, every place of $L$
+above $D$ has residue degree at least two.
+\end{lemma}
+\begin{proof}
+The map associated with the finite extension
+$F[U,V]\subset F[u,v]$ is the squaring map. A residue-degree-one
+point above the generic point of $D$ would give $u(t),v(t)\in F(t)$
+such that
+\[
+ u(t)^2+dv(t)^2=U(t),\qquad 2u(t)v(t)=V(t),
+\]
+where $U(t),V(t)$ are affine linear and not both constant.
+In $K(t)$ this would imply
+\[
+                  (u(t)+\rho v(t))^2=U(t)+\rho V(t).
+\]
+The right side is a nonconstant linear polynomial: its leading
+coefficient cannot vanish because $1,\rho$ are linearly independent
+over $F$. It has a simple zero and hence cannot be a rational-function
+square. This contradiction proves the assertion.
+\end{proof}
+
+\begin{lemma}\label{lem:polynomial-r}
+If $\deg f\le5$, then $a$ is constant and $r\in F[u,v]$ has degree
+at most two in $u,v$.
+\end{lemma}
+\begin{proof}
+Since $\deg_Tf=4$, its leading coefficient $a$ has degree at most one.
+If it were nonconstant, its zero divisor would be an affine line $D$
+with $v_D(a)=1$. By~\eqref{eq:leadingval}, some $w_i(r)$ would be
+negative. Lemma~\ref{lem:line} would then make the right side of
+\eqref{eq:leadingval} at least two, a contradiction. Thus $a$ is
+constant. After dividing by it, $f$ is monic, so $r$ is integral over
+$F[U,V]$ and belongs to $F[u,v]$ by Lemma~\ref{lem:fields}.
+
+Let $m=\deg_{u,v}r$. The four conjugates of $r$ in the normal
+closure are obtained by invertible linear changes of $u,v$ over
+$K$, so each has degree $m$. Their product has degree $4m$ in $u,v$.
+This product is the norm of $r$, the constant coefficient of its monic
+degree-four minimal polynomial. Because $U,V$ are algebraically
+independent homogeneous quadratics, a polynomial of degree $e$ in
+$U,V$ has degree $2e$ after their substitution. Hence
+\[
+                     \deg_{U,V}\Norm_{L/K_0}(r)=2m.
+\]
+The constant coefficient has degree at most five, giving $m\le2$.
+\end{proof}
+
+\subsection{The final obstruction}
+
+\begin{theorem}\label{thm:lower}
+Every polynomial square test with one auxiliary variable has total
+degree at least six.
+\end{theorem}
+\begin{proof}
+Suppose $\deg P\le5$, and choose $r$ and $f$ as above. By
+Lemma~\ref{lem:polynomial-r}, write
+\[
+                  r=q_2(u,v)+a_1u+b_1v+q_0,
+\]
+where $q_2$ is homogeneous quadratic and $q_0\in F$.
+The quadratic and constant terms are fixed by $(u,v)\mapsto(-u,-v)$,
+so belong to $M$. Since $r$ generates $L$, we have
+$(a_1,b_1)\ne(0,0)$.
+
+Use the nonsquare $c$ from~\eqref{eq:badc} and specialize over an
+algebraic closure to
+\[
+                       u=b_1\sqrt c,\qquad v=-a_1\sqrt c.
+\]
+Then $U,V\in F$, the linear part of $r$ vanishes, and its quadratic
+part has value in $F$. Thus the specialized value $t_0$ of $r$ lies
+in $F$. The polynomial identity $f(u^2+dv^2,2uv,r(u,v))=0$ implies
+$f(U,V,t_0)=0$, and divisibility $f\mid P$ gives $P(U,V,t_0)=0$.
+However,
+\[
+                   U+V\rho=c(b_1-a_1\rho)^2
+\]
+is not a square in $K$. The factor $b_1-a_1\rho$ is nonzero, and
+$c$ was chosen nonsquare in $K$. This contradicts soundness.
+\end{proof}
+
+\begin{proposition}\label{prop:no-aux}
+The set $\mathcal S_d(F)$ cannot be defined by polynomial equations
+without auxiliary variables, even by a finite union of such systems.
+\end{proposition}
+\begin{proof}
+The squaring map is dominant: after extending scalars to $K$, it is
+the map $(x,y)\mapsto(x^2,y^2)$ in the coordinates used in
+Lemma~\ref{lem:fields}. Since $F^2$ is Zariski dense, so is the image
+$\mathcal S_d(F)$. It is a proper subset of $F^2$, by the nonsquare
+choice~\eqref{eq:badc}. A finite union of sets defined by polynomial
+equalities is the set of $F$-points of a Zariski-closed set. A closed
+set containing a dense subset is the whole plane, which is impossible.
+\end{proof}
+
+These results prove all assertions of Theorem~\ref{thm:main}.
+
+\section{Several equations and two auxiliary variables}
+
+\begin{corollary}\label{cor:systems}
+Suppose finitely many polynomial equalities, with two input variables
+and just one common auxiliary $F$-variable, define $\mathcal S_d(F)$.
+Then at least one nonzero equation has total degree at least six.
+The conclusion also holds for a finite disjunction of such systems.
+\end{corollary}
+\begin{proof}
+For a system, form the greatest common divisor of its nonzero
+polynomials in $K_0[T]$. If that divisor were one, a Bezout identity
+would exclude all common roots outside a proper closed subset of the
+input plane, contrary to square-input completeness. After pulling
+back by the squaring map and avoiding coefficient denominators, common
+roots are roots of this gcd. Hilbert irreducibility therefore supplies
+a root $r\in L$, as in Lemma~\ref{lem:primitive}. Its primitive minimal
+polynomial divides every nonzero equation of the system. All $F$-roots
+of that factor consequently satisfy the system, so the soundness and
+degree arguments of Section~\ref{sec:optimality} apply unchanged.
+
+For a finite disjunction, apply the same argument to the gcd of each
+branch. Branches with gcd one can occur only on a proper closed set.
+If every remaining pullback factor had degree at least two, one
+simultaneous Hilbert specialization would avoid rational roots of all
+branches. Thus one branch has a root in $L$; its minimal polynomial
+divides all equations in that branch, and the same contradiction applies.
+\end{proof}
+
+The assertion concerns polynomial \emph{equalities}. Nonzero conditions
+change the situation: the quartic $4T^4-4UT^2+dV^2=0$, together
+with $T\ne0$, covers the squares with a square root whose first
+component is nonzero. The missing case is a second branch
+$V=0$, $U=dT^2$. Replacing a nonzero condition by an equality
+usually requires an additional variable, which must be counted.
+
+With two auxiliary variables there is a simpler complete presentation:
+\begin{equation}\label{eq:twoquad}
+                   U=u^2+dv^2,\qquad V=2uv.
+\end{equation}
+Over $\Q$, these two equations combine without further variables into
+\begin{equation}\label{eq:quartic}
+             (U-u^2-2v^2)^2+(V-2uv)^2=0.
+\end{equation}
+This is a quartic in four total coordinates, with coefficient height
+eight and eight monomials. Over a general number field $F$, choose
+a nonsquare $c_0$ and combine the residuals $R_1,R_2$ as
+$R_1^2-c_0R_2^2=0$; this is again a quartic with the same four
+coordinates. Thus allowing more variables can lower the degree,
+while merely adding equations does not lower the sharp bound with
+one auxiliary variable.
+
+\section{Relation to the elliptic and integrality constructions}
+
+For $D=(3-\sqrt2)^2$, direct elliptic charts use
+\[
+       x=h^2,\qquad j^2=h^4-D,\qquad y=hj,
+       \qquad h=h_0+h_1\sqrt2.
+\]
+The two input components of the square-root equation are
+\[
+ U=h_0^4+12h_0^2h_1^2+4h_1^4-11,\qquad
+ V=4h_0h_1(h_0^2+2h_1^2)+6.
+\]
+They cannot both vanish. Otherwise $h^2=\pm(3-\sqrt2)$;
+the negative sign is excluded by a real embedding and the positive
+sign by the nonsquare norm $7$. Proposition~\ref{prop:separable}
+and the general construction in Theorem~\ref{thm:general}
+therefore give nonzero, simple finite roots at every rational
+specialization of $h_0,h_1$. This justifies treating the corresponding
+root, multiplier-norm, and derivative conditions as automatic when
+their only purpose is to guard this chart.
+
+The lower bound in Theorem~\ref{thm:main} concerns \emph{all} input
+pairs $(U,V)\in F^2$. It does not automatically give the same bound
+for a restricted family of radicands, or for an entire integrality
+construction in which different algebraic conditions interact.
+
+In particular, the equations in this paper test square membership,
+not membership in $\Z$ or in a ring of integers. For example, $1/4$
+is a square in $\Q(\sqrt2)$ but is not an algebraic integer, whereas
+$3$ is an algebraic integer and is not a square in that field. The
+last assertion follows by expanding $(u+v\sqrt2)^2=3$: either
+$v=0$ and $u^2=3$, or $u=0$ and $v^2=3/2$, both impossible over $\Q$.
+
+The ring of integers of $\Q(\sqrt2)$ is $\Z[\sqrt2]$. For completeness,
+if $a+b\sqrt2$ is integral, then $2a=m\in\Z$ and
+$a^2-2b^2=n\in\Z$. From $8b^2=m^2-4n$ a reduced denominator
+of $b$ has square dividing $8$, so $b=k/2$ for an integer $k$.
+Then $m^2-2k^2\equiv0\pmod4$ forces both $m$ and $k$ even.
+Thus $a,b\in\Z$; the converse is immediate. Defining this ring
+existentially inside its fraction field is a different problem.
+
+All auxiliary-variable lower bounds here use quantification over $F$.
+With an auxiliary variable $z$ ranging over $K$, square membership
+already has the simple equation $z^2=U+V\rho$ over $K$.
+Our formulas express the same condition using only one $F$-coordinate,
+instead of the two $F$-components of $z$. They do not assert a
+one-coordinate transfer of arbitrary existential formulas, or an
+integrality definition over $K$.
+
+\section{Exact computational data}
+
+The accompanying standard-library Python program
+\texttt{check\_square\_predicates.py} reproduces the complete
+coefficient tables for~\eqref{eq:G}, \eqref{eq:P10}, and
+\eqref{eq:quartic}. It independently checks their expanded formulas,
+degrees, integer content, and coefficient heights. It checks the
+general multiplier and norm identities by exact rational polynomial
+arithmetic, and computes the seven-by-seven Sylvester determinant
+for~\eqref{eq:disc}, rather than relying only on a quoted discriminant
+formula. A finite permutation-group enumeration verifies the
+overgroup calculation used in Lemma~\ref{lem:fields}.
+
+The generated files are
+\begin{quote}\small
+\nolinkurl{square-predicate-polynomials.json}\\
+\nolinkurl{square-predicate-verification.json}.
+\end{quote}
+Their calculations are
+finite exact certificates for the listed algebraic assertions.
+Hilbert irreducibility and the uniform degree lower bound are used
+and proved, respectively, in the text; numerical examples are not
+substituted for either argument.
+
+\begin{thebibliography}{9}
+\bibitem{Serre}
+J.-P.~Serre, \emph{Topics in Galois Theory}, second edition,
+Research Notes in Mathematics, vol.~1, A K Peters, Wellesley, MA,
+2007. Notes by H.~Darmon. Proposition~3.3.5 and Theorem~3.4.1,
+pp.~24--25.
+\url{https://indico.math.cnrs.fr/event/11410/attachments/4760/7351/SerreTopicsGaloisTheory.pdf}.
+\end{thebibliography}
+\end{document}
