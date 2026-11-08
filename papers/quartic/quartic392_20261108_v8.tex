@@ -1,0 +1,728 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,booktabs,longtable,microtype,xcolor}
+\usepackage[margin=25mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue!45!black,citecolor=blue!45!black,urlcolor=blue!45!black]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}\newtheorem{remark}[theorem]{Remark}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\newcommand{\HH}{\mathcal H}\newcommand{\ord}{\operatorname{ord}}
+\DeclareMathOperator{\Norm}{Norm}
+\setlength{\emergencystretch}{2em}
+\title{A forced prime condition and an explicit quartic in 392 variables}
+\author{}\date{8 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+We specify an integer quartic in 392 total variables by a complete coefficient
+file and a quadratic system of 364 equations. Its rational input projection
+is the integers under the arithmetic input contract stated below. The new
+argument replaces a three-variable size condition by a single positive
+rational parameter with a uniformly large odd valuation at a fixed prime.
+The scalar local test then provides both the required lower bound on an
+integer index and an independent exclusion of the exceptional auxiliary
+elliptic points. Soundness and completeness are proved separately.
+The polynomial has 6204 nonzero ordinary monomials, content one, and
+coefficient height less than $2^{1791357}$. Exact construction data and a
+separate verification program accompany the proof.
+\end{abstract}
+\tableofcontents
+
+\section{Statement and scope}
+For $P\in\Z[X,Y_1,\ldots,Y_m]$, its rational input projection means
+\[
+ \{x\in\Q:\text{there exist }y_1,\ldots,y_m\in\Q
+                  \text{ with }P(x,y_1,\ldots,y_m)=0\}.
+\]
+A total variable count includes the input $X$. Coefficient height means the
+largest absolute value of a coefficient after all fixed integers have been
+substituted and equal coordinate monomials have been collected.
+
+\begin{theorem}\label{thm:main}
+The files \nolinkurl{quadratic-system392.json} and
+\nolinkurl{polynomial392.json} specify 364 integer quadratic polynomials
+$Q_j$ in 392 variables, and the polynomial $P=\sum_jQ_j^2$.
+The degree of $P$ is four, its content is one, and it has 6204 nonzero
+coordinate monomials. Its largest coefficient has 1791357 binary digits.
+Under the arithmetic input contract in Section~\ref{sec:inputs}, its
+rational input projection is $\Z$.
+\end{theorem}
+The coefficient assertions are exact finite algebraic statements. The
+projection assertion is a conditional theorem: the computational programs
+do not establish the arithmetic hypotheses. The changes made here do not
+assert a bijection with all witness assignments of the starting system.
+They prove a sound integer extraction and construct witnesses for every
+integer input.
+
+\section{Arithmetic inputs and the retained system}\label{sec:inputs}
+Put
+\[
+ K=\Q(\rho),\quad \rho^2=2,\quad d_0=3-\rho,\quad D=d_0^2,
+ \qquad E:y^2=x^3-Dx.
+\]
+The fixed points are
+\[
+ R_0=(1+\rho,2\rho),\qquad
+ P=2R_0=\left(\frac{57-28\rho}{8},\frac{-660+417\rho}{32}\right).
+\]
+For a point in its domain, write $f=1/x$ and $z=-x/y$, extended by
+$f(O)=z(O)=0$ near the identity. Heights are absolute logarithmic Weil
+heights. At an unramified place above $p$, the valuation is normalized by
+$v(p)=1$.
+
+The arithmetic input contract consists of the following assertions,
+with the original sources and applications identified in
+\cite[Sections \nolinkurl{subsec:v12-inputs} and
+\nolinkurl{sec:v13}]{GlazerV13}.
+\begin{enumerate}
+\item The equality $2E(K)=\Z P$ holds, and
+$h(x([n]P))\ge n^2-6$ for every nonzero integer $n$.
+\item For $t=u/v$ in lowest terms, $v>0$, outside
+$\{0,1,2401,-343/32\}$, let $M_5(t)$ be the product of primes
+$p>76176$ for which a positive odd valuation occurs in at least one of
+\[
+ v,\quad u,\quad u-v,\quad u-2401v,\quad32u+343v.
+\]
+The contact-height inequality is
+\[
+ h(t)\le\HH M_5(t)^{19},\qquad
+ \HH=2^{110}210^{1800}\left(\prod_{p\le76176}p\right)^{19}+128.
+\]
+The exact numerical bound used here is $\HH<2^{2093448}$.
+\item The pole equations in the source, with input $b$ and $B=17b$,
+\[
+ U=b\frac{1-bt^2}{1+bt^2},\quad h_0=e(B-U^2),\quad
+ p^2=B(1-e)(1+3e),\quad
+ Bq^2=(s^2-Bh_0)(s^2+3Bh_0),
+\]
+exclude negative odd $v_\ell(b)$ when $\ell\notin\{2,3,17\}$.
+They admit the specialization $t=0$ if $0<b<17$, the reduced denominator
+of $b$ is a square, $b$ is a square in each of $\Q_2,\Q_3,\Q_{17}$,
+and its valuations there are at least $3,1,2$, respectively. We use
+the exact normalized seven-coordinate form of these equations in the
+specified starting system.
+\item The source simultaneous prime-pattern and conjugate reduction-order
+conditions can be realized with arbitrary fixed odd avoidance modulus.
+In the notation of that source, selected primes are $1$ modulo
+$8\cdot3\cdot17$, the orders satisfy
+$v_2(d_-)=6$, $v_2(d_+)=2$ and
+$\gcd(d_-(p),d_+(p'))=4$. The required fixed congruences and real
+approximation conditions are simultaneous.
+\end{enumerate}
+As in the quartic source, we retain the following quantitative form of the
+last input for the separation step. For the fixed distinct coefficients
+$c_j$, the admissible patterns $p_j=u+c_jw^2$ with
+$N/2\le u\le N$ and $1\le w\le\tau(N)\sqrt N$ have total weight at least
+$c_0N^{3/2}\tau(N)$, individual weights are
+$O((\log N)^k)$, and $\tau(N)$ may decrease arbitrarily slowly after
+all fixed congruences and avoidance conditions are imposed. This is an
+arithmetic premise; finite coefficient checks do not prove it. The precise
+source locations are Proposition \nolinkurl{prop:v5-artin-patterns}, the
+final diagonal argument in \nolinkurl{subsec:v5-diagonal}, and the
+separation application in the retained Version 9 portion of
+\cite{GlazerV13}.
+
+\subsection{The unchanged comparison interface}
+The starting quadratic system is the 394-variable system of
+\cite{GlazerV13}, at the commit specified in Section~\ref{sec:data}.
+We retain all its point charts, comparison equations, three height tests,
+and their normalized poles. The following are the properties of that
+unchanged part used here. Their proofs and precise local applications
+are given in the Version 13 sections on reciprocal charts, the enlarged
+$H$ domain, scaled charts, and the two final height contradictions.
+
+The four root points are
+\[
+ Q_1=[n]P,\quad S=Q_2=[a]P,\quad Q_3=[t]P,\quad Q_4=[b]P,
+ \qquad n,a,t,b\text{ nonzero odd integers}.
+\]
+The guarded reciprocal subtraction chart gives
+\[
+ G=S-P=[s]P,\qquad s=a-1\ne0.
+\]
+The auxiliary finite point is $H=[m]R_0+T$ with $m\in\Z$ and
+$T\in E[2]$. Its retained chart is
+\[
+ x(H)f(H)=1,\qquad H=(x,xS_H),\qquad S_H^2=x-Df(H).
+\]
+It follows immediately, before assigning meaning to any ratio slot, that
+$f(H)\ne0$ and $q=\Norm_{K/\Q}(f(H))\ne0$.
+
+After excluding
+\begin{equation}\label{eq:exceptional}
+ E[2]\ \cup\ (P+E[2])\ \cup\ (-P+E[2]),
+\end{equation}
+the retained ratio equations identify their scalar slots with
+\[
+                  \frac{z(G)}{z(H)}=z_0+z_1\rho.
+\]
+The proof also identifies the primary and alternate comparison slots,
+including the identity branches of their numerators. It uses the integral
+group identities
+\[
+ [m]U_i=[2u_i]H,\qquad
+ [m-2]V_i=[2(u_i-n_i)](H-P),
+\]
+so that $h=m/2$ is only a rational index; no fractional group multiple is
+asserted. The resulting order-forty tests make the three contact radicals
+divide
+\begin{equation}\label{eq:F}
+ F=t^2-a(a-2)tb+(a-2)^2b^2-1
+\end{equation}
+to order forty. The order-ten tests make them divide the nonzero reduced
+numerator of $n-\beta$ to order ten, if that difference is nonzero.
+The common height consequence is
+\begin{equation}\label{eq:height}
+ B_*^2-6<7\HH |N|^{19/k},\qquad
+ B_* =\max(|n|,|a|,|t|,|b|),
+\end{equation}
+whenever their $k$th powers divide $N\ne0$. The three scales remain
+$1,C_0^2,(1+C_1^2)^2$ for
+$\prod_i x(Q_i)=C_0+C_1\rho$.
+None of these equations, scales, or comparison orders is changed below.
+
+For completeness the source construction permits any fixed finite list
+of formal-depth conditions on $H$ and $G$, imposed before the later
+contact primes are chosen. Let $\sigma$ be conjugation on $K$, and put
+\[
+ G_{\mathrm{real}}
+ =\overline{\{([n]P,([n]P)^\sigma):n\in\Z\}}
+ \subset E(\mathbb R)\times E^\sigma(\mathbb R).
+\]
+Write $G_{\mathrm{real}}^0$ for its identity component and
+$m_0=|G_{\mathrm{real}}/G_{\mathrm{real}}^0|$.
+A progression with residue and modulus divisible by $m_0$ has dense
+positive tail in $G_{\mathrm{real}}^0$.
+Thus the prescribed finite conditions and small real values
+of $f(H)$ and $z(G)/z(H)$ can hold at the same global points. The fixed
+modulus can include any further finite odd support. This simultaneous
+version, rather than separate choices at different places, is used in
+Section~\ref{sec:complete}.
+
+\section{A positive parameter with a forced odd valuation}
+Define
+\begin{align}
+ \beta(X)&=51(2X+1)^2+2504,\label{eq:beta}\\
+ r(X)&=\beta(\beta-1)(\beta-2401)(32\beta+343)(2\beta-1).\label{eq:r}
+\end{align}
+For every rational $X$, all five factors are positive. In particular
+$r(X)>0$ without any integrality assumption.
+
+\begin{lemma}\label{lem:prime}
+The integer $\ell=80989$ is prime, is greater than $76176$, and is
+$1$ modulo $17$. For every $X\in\Q$,
+\[
+ v_\ell(r(X))=
+ \begin{cases}0,&v_\ell(X)\ge0,\\10v_\ell(X),&v_\ell(X)<0.
+ \end{cases}
+\]
+\end{lemma}
+\begin{proof}
+Trial division through $\lfloor\sqrt{80989}\rfloor=284$ certifies
+primality. For each of the five contact roots $\theta$, Euler's criterion gives
+\[
+ \left(\frac{(\theta-2504)/51}{\ell}\right)=-1.
+\]
+The exact residues and modular powers are listed in the verification
+file and independently recomputed by the checker. Hence, if $X$ is
+$\ell$-integral, $\beta(X)$ misses all five roots of the product
+modulo $\ell$, and $r$ is a unit. If $v_\ell(X)<0$, the leading term
+of $\beta$ gives $v_\ell(\beta)=2v_\ell(X)$. Every contact factor
+then has that valuation, proving the second assertion.
+\end{proof}
+
+\begin{lemma}\label{lem:normalizer}
+Let $N\ge1$ be an integer and put
+\[
+ A=\ell^{2N+1},\qquad
+ R=\frac{A r}{1+\ell^2 r},\qquad c=R+4896.
+\]
+For every rational $X$, $R,c>0$ and
+\begin{equation}\label{eq:forcednu}
+ v_\ell(R)\in\{2N+1,2N-1\}.
+\end{equation}
+Every prime occurring in $M_5(\beta)$ is different from $\ell$ and
+has positive odd valuation on $R$; at such a prime $c$ is a unit.
+For an integer $X$,
+\begin{equation}\label{eq:smalllocal}
+ v_2(R)=2,\quad v_3(R)=1,\quad v_{17}(R)=0,
+ \qquad c/R\in\Q_p^{\times2}\quad(p=2,3,17).
+\end{equation}
+\end{lemma}
+\begin{proof}
+The denominator $1+\ell^2r$ is positive. If $v_\ell(r)=0$, it is a
+unit. Otherwise $v_\ell(r)\le-10$, so its valuation is
+$2+v_\ell(r)$. These two cases give \eqref{eq:forcednu}.
+
+The reduced denominator of $\beta$ has even valuation at every prime
+larger than $76176$. Therefore its contact radical only consumes positive
+odd valuations at the four finite roots defining $M_5$. Distinct roots
+of the five factors in \eqref{eq:r} cannot coincide modulo a prime
+larger than $76176$: the relevant nonzero differences have no such
+prime divisor. At a consumed prime, consequently, $v_p(r)>0$ is odd.
+Lemma~\ref{lem:prime} excludes $p=\ell$. Both $A$ and
+$1+\ell^2r$ are then units, so $v_p(R)=v_p(r)$ and $c$ is a unit,
+since every prime factor of $4896$ is $2$, $3$, or $17$.
+
+For integral $X$, the odd integer $\tau=2X+1$ gives
+$v_2(r)=2$, $v_3(r)=1$ and $r\equiv15\pmod{17}$. These follow directly
+by reducing the five displayed factors modulo $8,9,17$, respectively.
+The new denominator is a unit at $2,3$, and is $16$ modulo $17$.
+The numerator multiplier is a unit at all three primes. Thus the
+valuations of $R$ are as stated. Finally
+\[
+ v_2(4896/R)=3,\qquad v_3(4896/R)=1,\qquad
+ v_{17}(4896/R)=1.
+\]
+The unit $1+4896/R$ is therefore a local square: it is $1$ modulo $8$
+at two and $1$ modulo the maximal ideal at the two odd primes.
+\end{proof}
+
+\section{Local extraction before interpreting the ratio slots}
+The retained scalar norm equations, with their parameter changed from
+$r$ to $R$, are
+\begin{equation}\label{eq:normtree}
+ B_s=\frac{z_0^2+Rz_1^2}{R^{32}},\qquad
+ W=\frac{B_s^2+Rq^2}{R^{32}},\qquad
+ \mathfrak b=(R+4896)RW^2.
+\end{equation}
+Initially $z_0,z_1$ in this display mean the stored rational slots. Their
+ratio interpretation is not used in the next lemma. Since $q\ne0$ and
+$R>0$, we have $W>0$ and $\mathfrak b>0$. Hence the normalized pole
+has a nonzero input before any logarithm denominator is interpreted.
+
+\begin{lemma}\label{lem:depth}
+Suppose $p>76176$, $\nu=v_p(R)>0$ is odd, and the pole equations
+for \eqref{eq:normtree} hold. Then
+\[
+ v_p(B_s)>\frac{63\nu}{4},\quad
+ v_p(q)>\frac{61\nu}{4},\quad
+ v_p(z_0)>\frac{191\nu}{8},\quad
+ v_p(z_1)>\frac{187\nu}{8}.
+\]
+\end{lemma}
+\begin{proof}
+The correction $R+4896$ is a unit. The valuation of $\mathfrak b$ is
+$\nu+2v_p(W)$, an odd integer. The pole obstruction excludes negative
+values, so $v_p(W)>-\nu/2$. The summands in each of the two norm
+numerators have valuations of opposite parity. They cannot cancel;
+a zero summand is assigned valuation $+\infty$. The second equation
+in \eqref{eq:normtree} therefore gives
+\[
+ 2v_p(B_s)>\frac{63\nu}{2},\qquad
+ \nu+2v_p(q)>\frac{63\nu}{2}.
+\]
+Apply the same argument to the first numerator to obtain
+$2v_p(z_0)>191\nu/4$ and
+$\nu+2v_p(z_1)>191\nu/4$. These are the asserted bounds.
+\end{proof}
+
+\begin{lemma}\label{lem:exclude}
+The equations with the forced parameter exclude every exceptional
+point in \eqref{eq:exceptional}, before the ratio slots need to be
+interpreted.
+\end{lemma}
+\begin{proof}
+The points $O$ and $(0,0)$ are already excluded by $xf(H)=1$.
+For every remaining exceptional point, its abscissa is among
+\[
+ \pm d_0,\quad c_P,\quad -D/c_P,\quad
+ d_0\frac{c_P+d_0}{c_P-d_0},\quad
+ -d_0\frac{c_P-d_0}{c_P+d_0},
+ \qquad c_P=\frac{57-28\rho}{8}.
+\]
+These are the usual translations by the three two-torsion points.
+The factors and their inverses are integral outside
+$\{2,3,7,17,41\}$, because
+\[
+ \Norm(d_0)=7,\quad \Norm(c_P)=\frac{41^2}{64},\quad
+ \Norm(c_P-d_0)=\frac{17^2}{64},\quad
+ \Norm(c_P+d_0)=\frac{63^2}{64}.
+\]
+Thus $f(H)$ is a unit at every place above $\ell$, and $q$ is an
+$\ell$-unit. This contradicts Lemma~\ref{lem:depth} and
+\eqref{eq:forcednu}. No meaning of $z_0,z_1$ was used.
+\end{proof}
+
+\begin{proposition}\label{prop:index}
+Every solution has a nonzero even integer $s=a-1$ satisfying
+\[
+ v_\ell(s)\ge
+ L_N:=\left\lfloor\frac{187(2N-1)}8\right\rfloor+1.
+\]
+Moreover $M_5(\beta)^{24}$ divides $s$.
+\end{proposition}
+\begin{proof}
+The retained reciprocal guard gives $G=[s]P$ with $s\ne0$ even.
+Lemma~\ref{lem:exclude} now permits the ratio interpretation
+$z_0+z_1\rho=z(G)/z(H)$. At $\ell$, positive valuation of $q$
+supplies a place at which $v(f(H))>0$, so $H$ is formal there.
+The rational coefficient depths from Lemma~\ref{lem:depth} give
+\[
+ v(z(G))\ge v(z(H))+L_N.
+\]
+If $e=v(x(G))$, the identity
+$z(G)^2=x(G)/(x(G)^2-D)$ shows that $e\ne0$.
+The duplication formula
+\[
+ x(2G)=\frac{(x(G)^2+D)^2}{4x(G)(x(G)^2-D)}
+\]
+gives $v(x(2G))=-2v(z(G))$ for both signs of $e$. Hence $2G$ is
+formal and $v(z(2G))=v(z(G))$. Apply the formal logarithm, an isometry
+at this positive depth, to the integral group identity
+\[
+                       [m](2G)=[4s]H.
+\]
+The excluded set implies $m\ne0$. Since $m/2$ is $\ell$-integral,
+we obtain
+$v_\ell(s/(m/2))\ge L_N$ and consequently $v_\ell(s)\ge L_N$.
+
+For a prime in $M_5(\beta)$ the same proof applies, by
+Lemma~\ref{lem:normalizer}. Here $\nu\ge1$ is odd, so both coefficient
+depths are at least $24$. The formal comparison gives $v_p(s)\ge24$
+at each such prime, which proves the divisibility assertion.
+\end{proof}
+
+\section{The numerical choice and integer extraction}
+We now fix
+\[
+              N=27464,\qquad A=80989^{54929}.
+\]
+Then $2N-1=54927$ and $L_N=1283919$. The entirely integral
+certificates
+\[
+ 80989^{4096}>2^{66787},\qquad
+ 66787\cdot1283919-4096\cdot20934550=1181453>0
+\]
+show that every nonzero index in Proposition~\ref{prop:index} satisfies
+\begin{equation}\label{eq:large}
+ |s|\ge80989^{1283919}>2^{20934550}>(80\HH)^{10}.
+\end{equation}
+Since $|a|=|s+1|\ge |s|-1$, this implies
+\begin{equation}\label{eq:alarge}
+ |a|>(40\HH)^{10},\qquad
+ \log(48\HH)<|a|/40.
+\end{equation}
+The scalar contact-height inequality and the divisibility just proved give
+\begin{equation}\label{eq:betasmall}
+ h(\beta)\le\HH |s|^{19/24}<|s|/80\le |a|/40.
+\end{equation}
+The middle inequality follows from
+$|s|^{5/24}>(80\HH)^{50/24}>80\HH$.
+
+For clarity, the elementary growth fact needed for the integer extraction
+is proved here, rather than included among the arithmetic inputs.
+
+\begin{lemma}\label{lem:lucas}
+If integers $a,t,b$ satisfy $|a|>7$, $b\ne0$, and
+$t^2-a(a-2)tb+(a-2)^2b^2=1$, then $\log|t|>|a|-3$.
+\end{lemma}
+\begin{proof}
+Set $A_0=|a|$ and $c=\operatorname{sgn}(a)(a-2)b$. Then
+$t^2-A_0tc+c^2=1$. The nonzero integers $t,c$ have the same sign,
+and $T=|t|$, $C=|c|$ are positive solutions. Define
+$U_0=0$, $U_1=1$, $U_{j+1}=A_0U_j-U_{j-1}$.
+All positive solutions are unordered adjacent terms of this sequence:
+for $M\ge m>0$, the replacement
+\[
+ (M,m)\longmapsto(m,A_0m-M),\qquad
+ A_0m-M=(m^2-1)/M\in[0,m),
+\]
+preserves the equation and descends to $(1,0)$.
+Thus $C=U_j$ and $T\ge U_{j-1}$ for some $j\ge1$.
+If $d=|a-2|$, reduction of the recurrence modulo $d$ gives
+$U_j\equiv j$ or $(-1)^{j-1}j$, according to the sign of $a$.
+Since $d\mid C$, we have $j\ge d\ge A_0-2$.
+The recurrence gives $U_r>(A_0-1)^{r-1}$ for $r\ge2$. Hence
+\[
+ \log T>(j-2)\log(A_0-1)
+       \ge(A_0-4)\log7>A_0-3\qquad(A_0\ge8).
+\]
+The final inequality holds at $8$ and its difference increases.
+\end{proof}
+
+\begin{proposition}[Soundness]\label{prop:sound}
+Every rational solution of the new quadratic system has integer input.
+\end{proposition}
+\begin{proof}
+All the unchanged comparison slots have their required meaning by
+Lemma~\ref{lem:exclude}. If the integer $F$ in \eqref{eq:F} were
+nonzero, its order-forty divisibility and \eqref{eq:height} would give
+\[
+ B_*^2-6<7\HH(5B_*^4)^{19/40}.
+\]
+As $B_*>4$, this implies $B_*^{1/10}<40\HH$, contrary to
+$B_*\ge|a|$ and \eqref{eq:alarge}. Thus $F=0$, and
+Lemma~\ref{lem:lucas} yields $\log B_*>|a|-3$.
+
+If $n-\beta\ne0$, let $N_0$ be its nonzero reduced numerator.
+The source comparison gives order-ten divisibility and
+$|N_0|\le2e^{h(\beta)}B_*$. Its height consequence is
+\[
+ \log B_*<10\log(48\HH)+19h(\beta)<29|a|/40<|a|-3,
+\]
+where \eqref{eq:alarge}, \eqref{eq:betasmall}, and the enormous lower
+bound on $|a|$ justify the last two inequalities. This is impossible.
+Hence $n=\beta$.
+
+Finally, write $2X+1=u/v$ in lowest terms with $v>0$. Integrality of
+$51u^2/v^2+2504$ implies $v^2\mid51$, so $v=1$ because $51$ is
+squarefree. Since $n=\beta$ is odd, $u$ is odd. Therefore
+$X=(u-1)/2\in\Z$.
+\end{proof}
+
+\section{Simultaneous completeness}\label{sec:complete}
+Fix an integer input $X$. The numbers $R,c$ are now fixed positive
+rationals satisfying \eqref{eq:smalllocal}. Let $S$ contain
+$2,3,17$ and every prime with nonzero valuation on $cR$ or $R$.
+This is a finite set, fixed before the later prime patterns are chosen.
+
+\begin{lemma}\label{lem:prepare}
+The same global auxiliary points can be chosen to make
+\[
+        0<\mathfrak b<17,
+\]
+while $\mathfrak b$ has square reduced denominator, is a local square
+at $2,3,17$, and has valuations there at least $3,1,2$.
+These requirements are compatible with every retained comparison and
+prime-selection condition.
+\end{lemma}
+\begin{proof}
+At a fixed finite place all coefficients in \eqref{eq:normtree} are
+fixed. If the two rational coefficients of $f(H)$ and those of
+$z(G)/z(H)$ tend to zero, then $q,B_s,W$ tend to zero. In valuation
+terms, if both pairs have depth at least $t$ and $\alpha=v_p(R)$,
+then
+\[
+ v_p(q)\ge2t,\qquad
+ v_p(B_s)\ge2t+\min(0,\alpha)-32\alpha,
+\]
+and
+\[
+ v_p(W)\ge
+ \min\{2v_p(B_s),\alpha+2v_p(q)\}-32\alpha.
+\]
+These lower bounds tend to infinity with $t$. Choose sufficiently
+large depths at every prime in $S$ that $\mathfrak b$ is integral
+there and has the three required special lower bounds. Away from
+$S$ its valuation is $2v_p(W)$, which is even. Thus the reduced
+denominator of $\mathfrak b$ is a square. Its local squareclasses
+at $2,3,17$ equal those of $cR$, which are squares by
+\eqref{eq:smalllocal}.
+
+These local conditions must be achieved together with the real
+condition. In the paired real orbit closure, first choose a positive
+index $h_0$ divisible by $64m_0$, in a sufficiently divisible
+progression, so that
+$H_0=[h_0]P$ has all selected formal depths and is close to both real
+identities. Then $q(H_0)$ is arbitrarily small. Fix this point.
+Next choose a positive index $s$ divisible by $6$ in a sufficiently
+divisible progression, arbitrarily large and with $G=[s]P$ close to both real
+identities. As $z(H_0)$ is nonzero, the two embeddings of
+$z(G)/z(H_0)$, and therefore its two rational coefficients, are
+arbitrarily small. The displayed norm tree is continuous and tends
+to zero at these values. Choose the points so that
+$0<\mathfrak b(H_0,G)<17/4$ and all finite conditions hold.
+Strict positivity follows from $q(H_0)\ne0$.
+
+Keep $G$ fixed. Real continuity supplies a neighborhood of $H_0$
+with $0<\mathfrak b<17$, and finite continuity supplies a fixed
+congruence $h\equiv h_0\pmod L$ preserving all selected depths.
+Choose $64m_0\mid L$. The remaining root labels and comparison
+scales are fixed before the new contact primes. A smaller nonempty
+real open set with compact closure avoids all comparison poles;
+their bounds on that closure are consequently fixed as well.
+
+The retained prime-selection and separation argument allows this
+additional fixed modulus. Put
+\[
+ \Pi=\prod_p p,\qquad
+ M_\pm=\operatorname{lcm}_p(d_\pm(p)/4),
+\]
+where the products and least common multiples run over the selected
+primes. The order and avoidance conditions give
+$\gcd(M_-,M_+)=1$, $\gcd(M_-,L)=16$, and
+$\gcd(M_+,L)=1$. The separation step gives
+$\gcd(\Pi,M_+)=1$, and the selected primes avoid $L$.
+Since $64\mid h_0$, the following congruences are compatible:
+\[
+ h\equiv0\pmod{\Pi^{19}M_-},\qquad
+ h\equiv1\pmod{M_+},\qquad h\equiv h_0\pmod L.
+\]
+The resulting progression has residue and modulus divisible by $m_0$,
+so its positive tail meets the selected real open set. A single such
+final $H$ satisfies the finite depths, the real bound, all comparison
+domains, and the contact requirements. This proves simultaneity.
+\end{proof}
+
+\begin{proposition}[Completeness]\label{prop:complete}
+Every integer input admits a rational solution of the new system.
+\end{proposition}
+\begin{proof}
+Use the unchanged source construction of the roots, charts, and
+comparison points with the finite conditions of Lemma~\ref{lem:prepare}.
+The pole-realization premise supplies fresh scalar pole witnesses
+with preparation specialized to zero. Its exact normalized chart
+permits zero private witnesses and divides only by the nonzero
+semantic pole input. Thus all five normalized pole equations hold.
+The guard on the reciprocal scalar point is also available. Indeed,
+write $s=2\cdot3^ku$ with $3\nmid u$. Direct duplication of the
+specified point $P$ gives
+\[
+                z(2P)/3\equiv2+\rho\pmod3.
+\]
+The integral odd formal multiplication series has linear term $nz$
+and terms of degree at least three thereafter. At positive depth,
+iteration of multiplication by $3$ and then by $u$ therefore gives
+\[
+ z([s]P)/3^{k+1}\equiv u(2+\rho)\pmod3.
+\]
+Using $f=z^2(1-Df^2)$ and $(2+\rho)^2\equiv\rho\pmod3$,
+we find that the $\rho$-coefficient of $f([s]P)$ has valuation exactly
+$2+2k$. If $f([s]P)=g^2$, this coefficient is $2g_0g_1$.
+It is nonzero, so $g_0^{-1}$ exists. This argument also covers negative
+$u$ and needs no deleted anchor condition.
+
+Assign the new coordinate its uniquely determined value
+$R=Ar/(1+\ell^2r)$, and compute its five successive squares.
+The scalar equations hold by definition. The deleted three private
+anchor witnesses have no other occurrences. All remaining retained
+witnesses are supplied by the same simultaneous construction.
+\end{proof}
+Because rational squares are nonnegative, $\sum_j Q_j^2=0$ over
+$\Q$ is equivalent to all the equations $Q_j=0$. Propositions
+\ref{prop:sound} and \ref{prop:complete} therefore prove the
+projection part of Theorem~\ref{thm:main}.
+
+\clearpage
+\section{Exact quadratic implementation}\label{sec:data}
+The starting file is the original-byte
+\nolinkurl{candidate394-ir.json} at upstream commit
+\begin{center}\small
+\nolinkurl{5bbd74f6a479776a332cbe036809d5dddae63720}.
+\end{center}
+Its SHA-256 digest is
+\begin{center}\small
+\nolinkurl{7eb02f9913b55d60a790a287616f1bb80d9f93523e9f11e12481c9ab955746a5}.
+\end{center}
+The complete starting coefficient table is separately supplied and is
+independently reconstructed from this system before the new computation.
+
+We use the source coordinate numbers $v_i$ only to make the exact
+changes unambiguous; the final files renumber the coordinates from
+$1$ through $392$, with the input at coordinate $1$. The raw contact
+in the retained source gates is the affine expression
+\begin{align*}
+ r={}&-105275102108-8412883296v_0-8412883296v_{248}\\
+     &-21050600v_{487}-7629700v_{488}-45771136v_{489}.
+\end{align*}
+The source equations numbered $200,453,454,455$ imply that this
+expression equals \eqref{eq:r}. The independent checker proves the
+identity as an exact univariate polynomial of degree ten.
+
+Delete the source coordinates $55,56,57$ and their sole equation,
+numbered $504$. Add one coordinate $v_{702}=R$ and the quadratic equation
+\begin{equation}\label{eq:newgate}
+                 R+\ell^2rR-Ar=0.
+\end{equation}
+It is quadratic because the displayed source expression for $r$ is
+affine in retained coordinates. The denominator is always positive,
+so \eqref{eq:newgate} has the unique intended rational solution.
+Replace exactly the following four source rows:
+\begin{center}
+\begin{tabular}{cl}
+\toprule Source row & New equation \\\midrule
+$560$ & $v_{600}-R^2=0$,\\
+$566$ & $v_{604}v_{540}-v_{508}^2-Rv_{539}=0$,\\
+$512$ & $v_{604}v_{542}-v_{540}^2-Rv_{541}=0$,\\
+$492$ & $(v_{600}+4896R)v_{525}+82479248v_{526}=0$.\\
+\bottomrule
+\end{tabular}
+\end{center}
+The retained power rows give
+$v_{600}=R^2$, $v_{601}=R^4$, $v_{602}=R^8$,
+$v_{603}=R^{16}$ and $v_{604}=R^{32}$.
+The retained row $565$ gives $v_{539}=v_{509}^2$, and row $511$
+gives $v_{541}=q^2$ through the exact identity
+\[
+ q^2=(f_0^2+2f_1^2)^2-8(f_0f_1)^2.
+\]
+If $J$ is the positive integer coefficient in row $491$,
+$Jv_{525}-v_{542}^2=0$, then the actual semantic pole input is
+$-82479248Jv_{526}=(R+4896)RW^2$.
+This sign and fixed scale are checked from the literal rows.
+
+The guard $v_{543}v_{549}=1$ is retained. In particular, the
+nonzero scalar index has not been replaced by an implicit assumption.
+Every other coordinate and residual is unchanged. The final count is
+\[
+               394-3+1=392,\qquad364-1+1=364.
+\]
+For each rational-coefficient row, clear denominators and divide by
+the gcd of its integer coefficients. Square these primitive rows and
+add. The resulting polynomial is the supplied $P$. Its symbolic
+coefficient table uses $A=80989^{54929}$ as a fixed integer, never as
+an extra variable.
+
+\section{Independent computational verification}
+The producer \nolinkurl{build_quartic392.py} constructs the complete
+system and polynomial. The separate program
+\nolinkurl{verify_quartic392.py} imports no producer or earlier checker.
+It reconstructs the upstream 394-variable sum of squares and matches
+its public coefficient table. It then checks the full changed system,
+including every unchanged row, all coordinate incidences, the affine
+raw contact, the normalization and inverse guard. Finally it expands
+all 364 squares and compares every coefficient.
+
+The new table has 6225 terms when powers of the fixed parameter are
+listed separately. After those powers are substituted and equal
+coordinate monomials are collected, it has 6204 nonzero monomials.
+These two counts are intentionally distinct. A parameter-independent
+coefficient equal to one certifies content one; a nonzero quartic
+monomial certifies the exact degree.
+
+The maximum coefficient is the constant coefficient. If $C_{\mathrm{const}}$ is the
+sum of the squared constant terms of the 359 unchanged primitive
+residuals, then it is exactly
+\[
+       11082847123849826043664\cdot80989^{109858}+C_{\mathrm{const}},
+       \qquad 0<C_{\mathrm{const}}<2^{1514}.
+\]
+The full integer $C_{\mathrm{const}}$ is included in
+\nolinkurl{construction-report392.json}; its definition here also
+specifies it without abbreviating decimal digits. The independent
+checker compares all specialized coefficients as exact integers and
+proves that the maximum has 1791357 binary digits.
+
+The same program checks trial division for $80989$, all five Euler
+criterion calculations, the local input residues, and the integral
+height margin. Its receipt is
+\nolinkurl{independent-verification392.json}.
+Run from the construction directory:
+\begin{verbatim}
+python build_quartic392.py
+python verify_quartic392.py
+\end{verbatim}
+These checks establish the finite algebra and numerical certificates.
+The arithmetic hypotheses and the simultaneous construction remain
+the mathematical inputs and arguments stated in this paper.
+
+\begin{thebibliography}{9}
+\bibitem{GlazerV13}
+E.~Glazer, \emph{An explicit quartic defining the integers in the
+rationals}, Version 13, repository manuscript and coefficient data,
+commit \nolinkurl{5bbd74f6a479776a332cbe036809d5dddae63720},
+\url{https://github.com/elliotglazer/diophantine-z-q}.
+The Version 13 addition and the separate mathematical composition
+reviews identify the enlarged auxiliary-point domain, scalar norm
+calculation, pole normalization, and simultaneous completeness
+argument used here.
+\bibitem{Silverman}
+J.~H.~Silverman, \emph{The Arithmetic of Elliptic Curves}, second
+edition, Graduate Texts in Mathematics 106, Springer, 2009,
+Chapter IV, especially Theorem 6.4.
+\end{thebibliography}
+\end{document}

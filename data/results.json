@@ -1,26 +1,30 @@
 {
-  "schema": "diophantine-results/v1",
-  "date": "2026-11-07",
+  "schema": "diophantine-results/v2",
+  "date": "2026-11-08",
   "variable_convention": "total coordinates including the input",
   "coefficient_height": "largest absolute integer coefficient after fixed constants are substituted",
   "construction_scope": {
     "algebraic_specification": "proved",
-    "projection_equals_Z": "conditional on the stated arithmetic premises"
+    "projection_equals_Z": "proved implication from the stated arithmetic premises",
+    "variable_minimality": "best constructions in this collection; no global minimum claimed"
   },
   "constructions": [
     {
-      "id": "quartic456",
-      "total_variables": 456,
+      "id": "quartic392",
+      "total_variables": 392,
       "degree": 4,
       "degree_status": "exact",
-      "coefficient_height": "64*3^105665812",
-      "height_status": "exact",
-      "quadratic_residuals": 426,
-      "ordinary_monomials": 27784,
-      "coefficient_parameter_terms": 27791,
+      "coefficient_height_upper_bound_power_of_two_exponent": 1791357,
+      "coefficient_height_upper_bound_strict": true,
+      "largest_coefficient_binary_digits": 1791357,
+      "exact_height_data": "computation/quartic/final392/construction-report392.json",
+      "quadratic_residuals": 364,
+      "ordinary_monomials": 6204,
+      "coefficient_parameter_terms": 6225,
       "integer_content": 1,
-      "fixed_parameter": "S=3^52832906",
-      "polynomial_sha256": "f9c7ddb9bced59fe87de6dadcb911264594c6cf860c24180a9069ddc0876cc17",
+      "fixed_parameter": "A=80989^54929",
+      "polynomial_sha256": "65f978c8b6418395535816a485093213631623766024555c69ef5db6c185450d",
+      "residuals_sha256": "b66609c16f649481ea8edb14785af2fb6f9da151f76d75dfa203f9db189e93a0",
       "arithmetic_inputs": [
         "elliptic_group_and_index_height",
         "contact_height",
@@ -28,25 +32,25 @@
         "simultaneous_prime_patterns",
         "weighted_prime_selection"
       ],
-      "proof": "papers/quartic/quartic_20261107_v7.tex"
+      "proof": "papers/quartic/quartic392_20261108_v8.tex"
     },
     {
       "id": "few_variables29",
       "total_variables": 29,
-      "degree_bound_power_of_two_exponent": 2093605,
-      "coefficient_height_bound_double_power_of_two_exponent": 6280501,
-      "bounds_status": "proved upper bounds",
-      "specification_sha256": "aac8f38f50c6780bec58bcc7057b43a324270e4f7ad6d439151773f512227072",
-      "proof": "papers/few_variables/few_variables_20261107_v7.tex"
-    },
-    {
-      "id": "few_variables31",
-      "total_variables": 31,
-      "degree_bound_power_of_two_exponent": 180,
-      "coefficient_height_bound_double_power_of_two_exponent": 184,
-      "bounds_status": "proved upper bounds",
-      "specification_sha256": "ed3ee79fa33a7492b4c3990f34aacb1a39810b062378f17ec955905126a8a789",
-      "proof": "papers/few_variables/few_variables_20261107_v7.tex"
+      "degree_bound_power_of_two_exponent": 174,
+      "coefficient_height_bound_double_power_of_two_exponent": 177,
+      "bounds_status": "proved upper bounds for the specified polynomial",
+      "fixed_prime": 76249,
+      "normalizer_exponent": 137715,
+      "source_sha256": "ca02313846d55b4940b009e9746cc3b0be7c8035991792cf6359983429b99728",
+      "specification_sha256": "05930eebc0834299ec043cef63bd94f7c99e7e012c8015cef60f4bf6480b6a9b",
+      "arithmetic_inputs": [
+        "elliptic_group_and_index_height",
+        "contact_height",
+        "pole_obstruction_and_realization",
+        "simultaneous_prime_patterns"
+      ],
+      "proof": "papers/few_variables/few_variables_20261108_v8.tex"
     }
   ],
   "unconditional_theorems": [
@@ -54,27 +58,61 @@
       "id": "degree_and_coordinate_lower_bounds",
       "minimum_total_degree_single_equation": 4,
       "minimum_total_coordinates": 3,
-      "scope": "Infinite input projections contained in O_K,S, for every number field K and finite set S; coordinate bound also for systems and open conditions."
+      "minimum_total_coordinates_quadratic_or_cubic_systems": 4,
+      "individual_degree_lower_bound": 2,
+      "scope": "Infinite input projections contained in O_K,S, for every number field K and finite S. The coordinate bounds also allow open conditions and finite alternatives. Individual-degree bounds concern essential coordinates of a single defining polynomial.",
+      "three_coordinate_system_theorem": "The equations must have a common irreducible factor of total degree at least four.",
+      "proof": "papers/lower_bounds/lower_bounds_20261108_v8.tex"
     },
     {
       "id": "combine_systems",
       "degree_bound": "ceil(sqrt(s))*d",
       "additional_coordinates": 0,
-      "scope": "s equations of degree at most d over a fixed number field"
+      "scope": "s equations of degree at most d over a fixed number field",
+      "proof": "papers/systems_and_fields/systems_and_field_extensions_20261108_v8.tex"
     },
     {
       "id": "finite_algebra_elimination",
       "additional_coordinates": 1,
-      "scope": "The guarded finite free algebra presentation stated in the paper, over any fixed number field"
+      "scope": "The guarded finite free algebra presentation stated in the paper, over any fixed number field",
+      "proof": "papers/finite_algebra/finite_algebra_20261107_v7.tex"
     },
     {
       "id": "field_extension_obstruction",
-      "scope": "No one unchanged existential formula defines rings of integers in every finite extension; a different formula for each field is not excluded."
+      "scope": "No one unchanged existential formula defines rings of integers in every finite extension; a different formula for each field is not excluded.",
+      "explicit_quartic_counterexample": {
+        "input": "1/2",
+        "nonzero_witness_coordinate": 293,
+        "specialization": "P392((1/2)e1+Y e293)=Y^2+D/16",
+        "field": "Q(sqrt(-D))",
+        "D": "16*P392((1/2)e1)>0",
+        "data": "computation/quartic/final392/field-specialization392.json"
+      },
+      "proof": "papers/systems_and_fields/systems_and_field_extensions_20261108_v8.tex"
     },
     {
       "id": "elliptic_point_charts",
       "minimum_retained_parameters": 2,
-      "scope": "Finite algebraic presentations of an infinite set of points of the specified elliptic curve over Q(sqrt(2)); not a general lower bound for defining Z."
+      "scope": "Finite algebraic presentations of an infinite set of points of the specified elliptic curve over Q(sqrt(2)); not a general lower bound for defining Z.",
+      "proof": "papers/elliptic_charts/elliptic_chart_obstruction_20261107_v7.tex"
+    },
+    {
+      "id": "quadratic_elliptic_height",
+      "x_coordinate_height_bound": "h(x(nP)) <= n^2*log(23534)-log(574)",
+      "primitive_coefficient_log_height_bound": "30*n^2",
+      "scope": "The explicitly specified point on the elliptic curve over Q(sqrt(2))",
+      "proof": "papers/elliptic_heights/elliptic_heights_20261108_v8.tex"
+    },
+    {
+      "id": "uniform_elliptic_logarithm_truncation",
+      "valuation_bound": "v(log_E(z)-L_J(z)) >= v(z)+3*J",
+      "scope": "The specified curve at every odd unramified prime, with integral normalized valuation v(z)>=1 and truncation L_J as defined in the paper",
+      "proof": "papers/elliptic_logarithms/elliptic_logarithms_20261108_v8.tex"
     }
-  ]
+  ],
+  "source_pins": {
+    "elliptic_coefficients_v9": "14e8f601fe0d9173d4a5f084aedc3e07066a7688",
+    "corrected_arithmetic_proof_v11": "650b298a2a18fa956f8859f3ca80e9d7c8cedd82",
+    "quartic_source_v13": "5bbd74f6a479776a332cbe036809d5dddae63720"
+  }
 }

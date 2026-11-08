@@ -1,23 +1,34 @@
-# Exact field-extension and anisotropic-form checks
+# Field extensions and anisotropic forms
 
-The full proofs are in the [systems and field-extensions paper](../../papers/systems_and_fields/systems_and_field_extensions_20261107_v7.pdf).
+The [systems and field-extensions paper](../../papers/systems_and_fields/systems_and_field_extensions_20261108_v8.pdf) proves the equation-combination and field-transfer statements, with their precise field hypotheses. This directory contains the exact anisotropic-form computations; the complete quartic specialization is supplied with the quartic data.
 
-`verify_anisotropic_examples.py` independently expands the displayed cubic norm determinant and checks the quadratic and cubic coefficient tables. It completely enumerates the relevant residue-field vectors. The valuation argument in the paper proves anisotropy over the number field.
+## Anisotropic forms
 
-`check_field_extension.py` specializes both the complete quartic coefficient table and all 426 quadratic residuals. These independent evaluations prove
+`verify_anisotropic_examples.py` independently expands the displayed cubic norm determinant and verifies the quadratic and cubic coefficient tables. It enumerates the relevant residue-field vectors completely. The valuation argument in the paper proves the resulting anisotropy over the number field.
 
-$$
-Q_{456}(\tfrac12\mathbf e_0+Y\mathbf e_{79})
-=Y^2+16081968676531905/16.
-$$
+From the repository root:
 
-The resulting quadratic field admits a rational-polynomial zero with input $1/2$, which is not an algebraic integer. The result concerns this unchanged equation over the stated extension. It does not rule out a field-dependent definition of the ring of integers.
-
-Run the checks from the repository root:
-
-```bash
+```sh
 python3 computation/field_extensions/verify_anisotropic_examples.py
-python3 computation/field_extensions/check_field_extension.py computation/quartic/polynomial-456
 ```
 
-The second command reads either the raw JSON tables or their distributed gzip encodings. Both scripts use only the Python standard library.
+The script uses only the Python standard library and writes `anisotropic-forms-verification.json`.
+
+## An explicit failure of unchanged field transfer
+
+For the published 392-variable quartic, set the input coordinate to $1/2$, coordinate 293 to $Y$, and every other coordinate to zero. Exact substitution gives
+
+$$
+Q_{392}=Y^2+D/16,
+$$
+
+where the positive integer $D$ is specified as a polynomial in the fixed integer $A=80989^{54929}$ in [the specialization certificate](../quartic/final392/field-specialization392.json). Over $\mathbb Q(\sqrt{-D})$, taking $Y=\sqrt{-D}/4$ gives a zero with input $1/2$. Since a rational algebraic integer is an integer, that input does not belong to the ring of integers of the field.
+
+The checker obtains the identity in two ways: directly from every term of the quartic coefficient table, and independently by specializing all 364 quadratic equations and summing their squares. Run from the repository root:
+
+```sh
+python3 scripts/restore_data.py
+python3 computation/quartic/check_field_specialization392.py
+```
+
+This proves that this particular polynomial does not define the ring of integers after unchanged transfer to every number field. The separate question of a field-dependent Diophantine definition is addressed with its stated hypotheses in the paper.

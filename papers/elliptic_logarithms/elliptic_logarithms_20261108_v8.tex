@@ -1,0 +1,261 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,microtype}
+\usepackage[margin=25mm]{geometry}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!45!black,citecolor=blue!45!black,urlcolor=blue!45!black]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}\newtheorem{definition}[theorem]{Definition}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\setlength{\emergencystretch}{2em}
+\hypersetup{pdftitle={Uniform rational approximations to an elliptic logarithm}}
+\title{Uniform Rational Approximations\\to an Elliptic Logarithm}
+\author{}\date{8 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+For the elliptic curve $y^2=x^3-Dx$, we give an explicit rational
+polynomial approximation to the formal logarithm, with a local error
+bound uniform in the truncation length. The estimate applies at every
+odd unramified prime and does not require the prime to exceed the
+truncation order. The same polynomials are positive on the real
+interval $[0,1]$, which proves nonvanishing of the associated
+logarithms at every nonzero double on the specified curve over
+$\mathbb Q(\sqrt2)$. Integer coefficient formulas and norm bounds
+provide exact finite specifications for arbitrarily long truncations.
+All statements in this paper are unconditional.
+\end{abstract}
+\section{Uniform logarithm truncations of arbitrary order}
+\label{sec:uniform-logarithm}
+
+Let $E:y^2=x^3-Dx$ over a field of characteristic zero, with $D\ne0$.
+Write $f=1/x$ and $z=-x/y$ near the identity. The equation gives
+\[
+                         f=z^2(1-Df^2).
+\]
+Define rational numbers
+\[
+ c_0=1,\qquad c_1=-\frac25,\qquad
+ c_j=c_{j-1}\frac{4j-5}{4j+1}\quad(j\ge2),
+\]
+and put
+\[
+ Q_J(T)=\sum_{j=0}^{J-1}c_jT^j,
+ \qquad L_J(Q)=z(Q)Q_J(Df(Q)^2)\quad(J\ge1).
+\]
+
+\begin{lemma}\label{lem:logarithm-series}
+The formal series
+\[
+                  L(Q)=z(Q)\sum_{j\ge0}c_j(Df(Q)^2)^j
+\]
+is the normalized formal logarithm of the displayed equation.
+For every odd prime $p$ and $j\ge1$,
+\[
+                  v_p(c_j)\ge-\lfloor\log_p(4j+1)\rfloor.
+\]
+\end{lemma}
+\begin{proof}
+The invariant differential is
+$\omega=dx/(2y)=z\,df/(2f)$. Put $T=Df^2$ and $S(T)=\sum c_jT^j$.
+From $z^2=f/(1-T)$, differentiation shows that $d(zS(T))=\omega$
+is equivalent to
+\[
+                 4T(1-T)S'(T)+(1+T)S(T)=1-T.
+\]
+The constant coefficient is $c_0=1$, the linear coefficient is
+$5c_1=-2$, and every subsequent coefficient is precisely the stated
+recurrence. The resulting series is $z+O(z^5)$ and hence is the
+normalized formal logarithm.
+
+For $j\ge1$ its coefficient is exactly
+\[
+                 c_j=2\prod_{i=1}^j\frac{4i-5}{4i+1}.
+\]
+For an odd prime power $p^r$, each of the two arithmetic progressions
+in this quotient has length $j$ and invertible step four. The counts
+of terms divisible by $p^r$ therefore differ by at most one.
+No term has absolute value exceeding $4j+1$. Summing the possible
+loss of one valuation over the prime powers at most $4j+1$ proves
+the claimed lower bound.
+\end{proof}
+
+\begin{theorem}\label{thm:uniform-logarithm-tail}
+Let $F/\Q_p$ be unramified, where $p$ is odd, normalize $v(p)=1$,
+and suppose $D$ is integral. For any nonzero point $Q$ in the formal
+group, so that $v(z(Q))\ge1$, and every integer $J\ge1$,
+\[
+ \begin{aligned}
+ v(L_J(Q))&=v(z(Q)),\\
+ v(L(Q)-L_J(Q))&\ge v(z(Q))+3J.
+ \end{aligned}
+\]
+In particular, the conclusion is uniform in $J$ and does not require
+$p>J$ or $p>4J$.
+\end{theorem}
+\begin{proof}
+The relation between $f$ and $z$ gives $v(f(Q))=2v(z(Q))$.
+For every $j\ge1$ and odd $p$ one has
+\[
+                 \lfloor\log_p(4j+1)\rfloor\le j.
+\]
+Indeed $3^{j+1}>4j+1$ for $j\ge1$, by induction. Consequently
+Lemma~\ref{lem:logarithm-series} gives
+\[
+ \begin{split}
+ v\bigl(z(Q)c_j(Df(Q)^2)^j\bigr)
+ &\ge v(z(Q))+4jv(z(Q))-\lfloor\log_p(4j+1)\rfloor\\
+ &\ge v(z(Q))+3j.
+ \end{split}
+\]
+All nonconstant terms are strictly smaller in absolute value than
+the leading term $z(Q)$, proving the first equality. The same estimates
+show that the infinite series converges, and that its tail beginning
+at $j=J$ has the stated valuation.
+\end{proof}
+
+\begin{corollary}\label{cor:uniform-logarithm-ratio}
+In the setting of Theorem~\ref{thm:uniform-logarithm-tail}, suppose
+$Q=[n]P$ and $R=[m]P$ are nonzero formal points, where $m,n$ are
+nonzero integers. For truncation lengths $J_1,J_2\ge1$, put
+$k=3\min(J_1,J_2)$. Then
+\[
+ v\left(\frac{L_{J_1}(Q)}{L_{J_2}(R)}-\frac nm\right)
+                  \ge v(n/m)+k.
+\]
+If $n/m$ is integral, the right side is at least $k$.
+\end{corollary}
+\begin{proof}
+Formal additivity applied to $[m]Q=[n]R$ gives $L(Q)/L(R)=n/m$.
+The leading-term estimate in the theorem makes both logarithms
+nonzero. Write $L_{J_1}(Q)=L(Q)(1+\varepsilon_Q)$ and
+$L_{J_2}(R)=L(R)(1+\varepsilon_R)$; their two errors have valuations
+at least $k$. Subtracting the exact ratio proves the assertion.
+\end{proof}
+
+For the field $\Q(\sqrt2)$, every odd completion is unramified and
+$D=11-6\sqrt2$ is integral. Thus these statements apply at every
+contact prime $p>76176$, independently of the chosen truncation
+length. If $M$ is a power of two with $M\ge2$, the choice $J=M/2$
+has relative precision at least $3M/2$, which is stronger than
+precision $M$. Arbitrarily long truncations therefore leave the fixed
+contact-height constant and its exceptional-prime set unchanged.
+
+\subsection{Nonvanishing at the real embeddings}
+
+\begin{lemma}\label{lem:positive-logarithm-polynomial}
+For every integer $J\ge1$, one has $Q_J(T)>0$ for $0\le T\le1$.
+\end{lemma}
+\begin{proof}
+All $c_j$ for $j\ge1$ are negative. For $r\ge1$, the recurrence
+telescopes to
+\[
+                    \sum_{j=0}^{r}c_j=-\frac{4r-1}{2}c_r>0.
+\]
+The identity holds at $r=1$ and its successive differences are $c_r$.
+Because $0\le T^j\le1$ and $c_j<0$, it follows that
+$Q_J(T)\ge Q_J(1)>0$; $J=1$ is immediate.
+\end{proof}
+
+\begin{corollary}\label{cor:nonzero-logarithm-denominator}
+For $K=\Q(\sqrt2)$ and $D=(3-\sqrt2)^2$, let $Q\in2E(K)$
+be nonzero. Then $L_J(Q)\ne0$ for every $J\ge1$.
+\end{corollary}
+\begin{proof}
+The duplication identity
+\[
+                x(2R)=\left(\frac{x(R)^2+D}{2y(R)}\right)^2
+\]
+shows that the abscissa of a nonzero double is positive at both real
+embeddings. Its ordinate cannot be zero: the two nonzero
+ordinate-zero abscissas are $\pm(3-\sqrt2)$, neither a square in $K$
+since their norm is seven, while abscissa zero is excluded by the
+duplication formula. At either embedding the curve equation now
+implies $x(Q)>\sqrt D$. Thus $0<Df(Q)^2<1$ and $z(Q)\ne0$.
+Lemma~\ref{lem:positive-logarithm-polynomial} proves the assertion.
+\end{proof}
+
+Consequently any rational system whose logarithm denominators are
+evaluated at nonzero doubles may use these truncations at arbitrary
+finite length. Increasing the length introduces no new
+nonvanishing condition at those points.
+
+\subsection{A finite integer coefficient specification}
+
+For a polynomial $G$, write $\|G\|_1$ for the sum of the absolute
+values of its coefficients. In a finite free algebra over $\mathbb Q$
+or an integer polynomial ring, choose a basis and let $M_A$ be the
+matrix of multiplication by $A$. Use the maximum column sum of the
+coefficient $\ell^1$ norms as its matrix norm. This norm is
+submultiplicative, has $\|I\|=1$, and satisfies $\|cI\|=|c|$ for
+rational scalars.
+
+Compatible weights mean nonnegative weights on base variables and
+positive weights on the algebra generators for which multiplication
+and reduction by the monic defining relations do not increase the
+sum of the input weights. The weighted degree of the zero element is
+$-\infty$; all other weighted degrees are nonnegative.
+
+Define
+\[
+ D_J=\prod_{i=1}^{J-1}(4i+1),\qquad
+ G_J(T)=D_J Q_J(T)\in\Z[T].
+\]
+Empty products are one. Its coefficients are explicitly
+\[
+ [T^0]G_J=D_J,\qquad
+ [T^j]G_J=
+ 2\left(\prod_{i=1}^{j}(4i-5)\right)
+  \left(\prod_{i=j+1}^{J-1}(4i+1)\right)
+ \quad(1\le j<J).
+\]
+This finite product-and-sum definition specifies the ordinary integer
+polynomial without requiring a list of all its coefficients.
+
+\begin{proposition}\label{prop:indexed-logarithm-coefficients}
+For $J\ge2$, the degree of $G_J$ is $J-1$ and
+\[
+ D_J\le(4J)^{J-1},\qquad
+              \|G_J\|_1\le2J(4J)^{J-1}.
+\]
+If $J=2^{b-1}$, with $b\ge2$, these imply
+\[
+                    D_J<2^{(b+1)J},\qquad
+                    \|G_J\|_1<2^{(b+1)J}.
+\]
+If $A$ is an element of a finite free algebra with
+$\|M_A\|\le2^B$, $B\ge0$, then
+\[
+                  \|M_{G_J(A)}\|
+                  \le\|G_J\|_1\,2^{(J-1)B}.
+\]
+If the algebra has the multiplicative weighted filtration associated
+with compatible positive generator weights, then
+$\operatorname{wdeg}(G_J(A))\le(J-1)\max(0,\operatorname{wdeg}(A))$.
+\end{proposition}
+\begin{proof}
+Every nonconstant coefficient is a product of $J-1$ integers of
+absolute value at most $4J$, times two. The same bound without two
+holds for the constant coefficient. Summing the coefficient bounds
+gives the displayed estimate. Its binary exponent when
+$J=2^{b-1}$ is
+\[
+       1+(b-1)+(J-1)(b+1)=(b+1)J-1.
+\]
+The operator estimate follows from the triangle inequality and
+submultiplicativity, and the weight estimate follows term by term.
+\end{proof}
+
+For a rational argument $A/B$, its homogeneous numerator is the
+explicit polynomial
+\[
+ G_J^{\rm hom}(A,B)=\sum_{j=0}^{J-1}[T^j]G_J\,A^jB^{J-1-j}.
+\]
+Thus $Q_J(A/B)=G_J^{\rm hom}(A,B)/(D_JB^{J-1})$ on $B\ne0$.
+This form is convenient for a finite algebra over an integer polynomial
+ring. Its degree and operator-norm estimates follow from the same
+proof with the larger of the two argument bounds.
+
+\end{document}

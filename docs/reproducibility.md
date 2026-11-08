@@ -2,59 +2,82 @@
 
 ## Requirements
 
-- Python 3.10 or newer. The final-construction and exact-arithmetic checkers use only the standard library.
-- Node.js 18 or newer for the full baseline source-circuit replay.
-- A TeX installation with `pdflatex`, AMS packages, `lmodern`, `mathtools`, `geometry`, `booktabs`, `longtable`, `microtype`, and `hyperref` to rebuild the papers.
+All computational verification uses **Python 3.10 or newer and its standard library**. The supplied data permit offline execution. A TeX installation is needed only to rebuild the papers; the document build uses `pdflatex`, AMS packages, `lmodern`, `mathtools`, `geometry`, `booktabs`, `longtable`, `microtype`, `xcolor` and `hyperref`.
 
-No network connection, package installation, account, computer algebra system, or secret is required to run the supplied verification.
+## Complete verification
 
-## One command
+From the repository root, run:
 
-From the repository root:
-
-```bash
+```sh
 python3 scripts/verify.py
-python3 scripts/verify.py --full
 ```
 
-The first command verifies the published manifest and runs the checks below in a temporary copy. It leaves all tracked data unchanged. The second also replays the baseline circuit's identification with the arithmetic source system. Each stage fails immediately if its required equality, hash, or bound fails.
+The verifier checks the published file manifest, copies the computational inputs to a temporary directory, restores the compressed tables with hash checks, and runs the full computation there. Published inputs remain unchanged. Each failed equality, hash or bound stops the verification and identifies its stage.
 
-The final quartic stage rebuilds the complete 456-coordinate residual system and expanded coefficient table, compares them byte for byte with the published data, and independently checks all substitutions and coefficients. The few-variable stage rebuilds both source systems and both finite-algebra specifications, then independently verifies their semantic expressions, guards, branch counts, degree bounds, and coefficient bounds.
+The quartic stage reconstructs the pinned source coefficient table, rebuilds the 392-coordinate quadratic system and complete quartic, and independently checks every equation and coefficient. It also verifies the finite prime, congruence, index-size and coefficient-height certificates.
 
-The supporting stages independently enumerate the height-constant primes, check the complete local residue tables, verify the exact formal-depth constants, reproduce the two reductions modulo 17, expand the stated anisotropic forms, and specialize the entire quartic and all residuals for the quadratic-extension counterexample. Where a script also checks individual point examples, these are identified as finite examples; the uniform statements are proved in the papers.
+The 29-variable stage regenerates its rational source and finite-algebra specification, checks the exact scalar contact and the retained source semantics, recomputes the contact-height constant, and independently verifies all monic relations, guards, finite cases, degree bounds and coefficient bounds. The equality certificate checks that the weighted-norm refinement leaves the polynomial itself unchanged.
 
-## Individual checks
+Supporting stages reproduce the elliptic-chart finite-field calculations, the quadratic elliptic-height constants, the anisotropic-form coefficient and residue-field calculations, and the imaginary-quadratic specialization of the 392-variable quartic. The uniform arguments supporting these finite calculations are proved in the corresponding papers.
 
-To materialize the three compressed quartic tables at their original paths, run:
+## Running individual checks
 
-```bash
+Restore the four compressed quartic JSON files before running the individual quartic scripts:
+
+```sh
 python3 scripts/restore_data.py
 ```
 
-The restored files are ignored by Git. Their original byte lengths and SHA-256 hashes are checked before they are written. Individual commands include:
+Restoration verifies the exact uncompressed byte length and SHA-256 hash before writing each file. The restored JSON files are ignored by Git. The top-level verifier performs this step automatically in its temporary copy.
 
-```bash
-python3 computation/quartic/verify_quartic456.py
-python3 computation/few_variables/construction29/reproduce_preferred.py
+The following commands are run from the repository root:
+
+```sh
+python3 computation/quartic/build_quartic392.py
+python3 computation/quartic/verify_quartic392.py
+python3 computation/quartic/check_field_specialization392.py
+python3 computation/few_variables/forced_prime29/reproduce.py
 python3 computation/few_variables/verify_elliptic_chart.py
+python3 computation/few_variables/verify_quadratic_height.py
 python3 computation/field_extensions/verify_anisotropic_examples.py
-python3 computation/field_extensions/check_field_extension.py computation/quartic/polynomial-456
 ```
 
-Individual checkers may refresh their own local receipts. Use the top-level command when the published tree must remain byte-identical.
+The individual producers and checkers write their generated data or verification receipts to their own directories. Use the top-level verifier when all published files should remain byte-identical.
 
-## Mathematical interpretation
+## Reading the verification results
 
-A passing calculation verifies exactly the finite claims described by its receipt. The global arithmetic premises required to identify the polynomial projections with $\mathbb Z$ are stated separately in [Arithmetic inputs](arithmetic_inputs.md). Neither a file hash, a full coefficient expansion, nor successful TeX compilation proves those premises.
+A passing receipt verifies the finite assertions listed in that receipt. The coefficient tables and expression graphs are exact polynomial specifications. The 29-variable degree and coefficient bounds are verified from its finite-algebra expression without expanding the final polynomial, using the norm and degree inequalities proved in the paper.
 
-The degree and height bounds for the indexed constructions are checked without expanding the final polynomial. This is sufficient because the exact finite-algebra expression is specified and the paper proves the norm and degree inequalities used by the checker.
+The global arithmetic inputs needed to identify the rational projections with $\mathbb Z$ are stated in [Arithmetic inputs](arithmetic_inputs.md). The finite checkers do not independently establish those global theorems.
 
-## Papers and manifest
+## Rebuilding the papers
 
-```bash
+```sh
 python3 scripts/build_papers.py
 ```
 
-The build runs LaTeX twice per paper and rejects missing references and overfull boxes. Inspect the rendered pages after substantive changes. PDF bytes can depend on the TeX distribution and its timestamp settings; regenerated PDFs need not have the same byte hash as the published PDF.
+The build runs LaTeX twice per paper and rejects missing references and overfull boxes. Inspect rendered pages after substantive changes. The published collection consists of nine topic papers:
 
-`MANIFEST.json` hashes the distributed files, excluding the manifest itself and generated verification/build files. Any intentional change to a published object requires refreshing this manifest with `python3 scripts/update_manifest.py` after verification and review.
+| Topic | Paper |
+|:--|:--|
+| Degree and coordinate lower bounds | [Lower bounds](../papers/lower_bounds/lower_bounds_20261108_v8.pdf) |
+| The polynomial with 29 variables | [Few variables](../papers/few_variables/few_variables_20261108_v8.pdf) |
+| The quartic with 392 variables | [Quartic construction](../papers/quartic/quartic392_20261108_v8.pdf) |
+| Elimination of guarded finite algebraic choices | [Finite algebra](../papers/finite_algebra/finite_algebra_20261107_v7.pdf) |
+| Systems of equations and number fields | [Systems and field extensions](../papers/systems_and_fields/systems_and_field_extensions_20261108_v8.pdf) |
+| Limits of one-parameter elliptic charts | [Elliptic charts](../papers/elliptic_charts/elliptic_chart_obstruction_20261107_v7.pdf) |
+| Quadratic upper bounds for elliptic heights | [Elliptic heights](../papers/elliptic_heights/elliptic_heights_20261108_v8.pdf) |
+| Uniform formal logarithm truncations | [Elliptic logarithms](../papers/elliptic_logarithms/elliptic_logarithms_20261108_v8.pdf) |
+| Precise arithmetic dependencies | [Arithmetic dependencies](../papers/arithmetic_dependencies/arithmetic_dependencies_20261108_v8.pdf) |
+
+Each PDF has an editable TeX source beside it. Regenerated PDF bytes may vary with the TeX distribution and timestamp settings even when the mathematical text is unchanged.
+
+## File integrity
+
+`MANIFEST.json` records the distributed file lengths and SHA-256 hashes. It excludes the manifest itself and generated verification/build files. After an intentional change has been verified and reviewed, refresh it with:
+
+```sh
+python3 scripts/update_manifest.py
+```
+
+The 29-variable package also has its own portable `manifest.json`, and the compressed quartic tables have a separate uncompressed-byte inventory. These serve distinct purposes: integrity of the published tree, portability of the finite-algebra module, and exact restoration of the compressed data.

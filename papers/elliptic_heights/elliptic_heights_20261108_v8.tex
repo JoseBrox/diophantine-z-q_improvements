@@ -1,0 +1,229 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,microtype}
+\usepackage[margin=25mm]{geometry}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!45!black,citecolor=blue!45!black,urlcolor=blue!45!black]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\setlength{\emergencystretch}{2em}
+\title{Explicit Quadratic Height Bounds\\for Elliptic Multiples}
+\author{}\date{8 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+For a specified point on an elliptic curve over $\mathbb Q(\sqrt2)$,
+we prove an explicit upper height bound quadratic in its integer index.
+The proof uses exact duplication and differential-addition identities,
+an elementary induction, and a comparison between absolute height and
+primitive coefficient height. We also bound the coefficients of finite
+products excluding these elliptic abscissas. The results are
+unconditional and require no determination of the full Mordell--Weil group.
+\end{abstract}
+\section{Quadratic height bounds for the fixed elliptic multiples}
+\label{sec:quadratic-fixed-height}
+
+Put $K=\mathbb Q(\sqrt2)$ and
+\[
+ D=11-6\sqrt2,\qquad E:\ y^2=x^3-Dx,\qquad
+ P=\left(\frac{57-28\sqrt2}{8},
+          \frac{-660+417\sqrt2}{32}\right).
+\]
+The height $h$ below is the absolute logarithmic Weil height. If
+$x=(a+b\sqrt2)/c$ with $a,b,c\in\mathbb Z$, $c>0$, and
+$\gcd(a,b,c)=1$, put
+\[
+ h_0(x)=\left\lceil\log_2\max(1,|a|,|b|,c)\right\rceil.
+\]
+
+\begin{lemma}\label{lem:fixed-height-nontorsion}
+The point $P$ belongs to $E(K)$ and has infinite order.
+\end{lemma}
+\begin{proof}
+Substitution verifies the curve equation. At the unique place above two,
+normalize $v$ by $v(2)=1$. The displayed coordinates have valuations
+$v(x(P))=-3$ and $v(y(P))=-9/2$, so the formal parameter
+$z=-x/y$ has $v(z(P))=3/2$. The integral formal group of this
+Weierstrass equation is odd: for every integer $m$,
+$[m](Z)=mZ+Z^3g_m(Z^2)$ with integral coefficients.
+At a parameter of valuation at least $3/2$, multiplication by an odd
+integer preserves its valuation, and multiplication by two raises it
+by one. In each case the leading term has strictly smaller valuation
+than the remaining terms. Thus
+\[
+                   v(z([n]P))=3/2+v_2(n)
+                   \qquad(n\ne0).
+\]
+It is finite, and hence $[n]P\ne\mathcal O$ for every nonzero $n$.
+In particular all its abscissas are finite and nonzero.
+\end{proof}
+
+\begin{lemma}\label{lem:fixed-height-recurrences}
+For $n\ge1$, write $h_n=h(x([n]P))$. Then
+\[
+ \begin{aligned}
+ h_{2n}&\le4h_n+\log392,\\
+ h_{2n+1}&\le2h_n+2h_{n+1}+\log8036.
+ \end{aligned}
+\]
+The second formula is used for $n\ge1$.
+\end{lemma}
+\begin{proof}
+The duplication and differential-addition identities are
+\[
+ x(2Q)=\frac{(x(Q)^2+D)^2}{4x(Q)(x(Q)^2-D)},
+ \qquad
+ x(Q+R)x(Q-R)=
+       \left(\frac{x(Q)x(R)+D}{x(Q)-x(R)}\right)^2.
+\]
+For the second identity, the usual addition formulas reduce it to
+\[
+ (u+v)^2(uv-D)^2-4uv(u^2-D)(v^2-D)
+                    =(u-v)^2(uv+D)^2,
+\]
+which is a polynomial identity. Taking $Q=[n]P$ and
+$R=[n+1]P$ makes $x(Q-R)=x(P)$. Its denominator is nonzero:
+an equality $x([n]P)=x([n+1]P)$ would contradict the infinite
+order of $P$.
+
+For each place, bound a homogeneous polynomial by the largest
+coordinate norm to its degree. At a finite place the coefficient
+bound is the maximum coefficient norm; at an infinite place use
+the sum of the coefficient norms. Applied to duplication, whose
+homogeneous numerator and denominator have degree four, this gives
+\[
+             h(x(2Q))\le4h(x(Q))+2h(D)+\log8.
+\]
+Applied to differential addition, with bidegree $(2,2)$ in the two
+abscissas and denominator $x(P)(x(Q)-x(R))^2$, it gives
+\[
+ h(x(Q+R))\le2h(x(Q))+2h(x(R))+2h(D)+h(x(P))+\log4.
+\]
+For example, the archimedean coefficient sums for the second
+formula are bounded by
+$4\max(1,|D|)^2\max(1,|x(P)|)$, and the corresponding finite-place
+bound has no factor four. These local estimates sum to the stated
+absolute-height estimates.
+
+Both real conjugates of $D$ exceed one, and $N_{K/\mathbb Q}(D)=49$,
+so $h(D)=\log7$. Both real conjugates of $x(P)$ exceed one, its
+norm is $41^2/8^2$, and its denominator ideal has norm $8^2$.
+Consequently $h(x(P))=\log41$. Substitution gives
+$2h(D)+\log8=\log392$ and
+$2h(D)+h(x(P))+\log4=\log8036$.
+\end{proof}
+
+\begin{theorem}\label{thm:fixed-height-quadratic}
+For every integer $n\ge1$,
+\[
+ h(x([n]P))\le n^2\log23534-\log574,
+ \qquad h_0(x([n]P))\le30n^2.
+\]
+These inequalities are unconditional for the displayed curve and point.
+\end{theorem}
+\begin{proof}
+Write $A=\log23534$ and $B=\log574$. The integer identities
+\[
+ 23534=41\cdot574,\qquad
+ 574^3=23534\cdot8036,\qquad574^3\ge392
+\]
+give $h_1=A-B$, $3B=A+\log8036$, and $3B\ge\log392$.
+Induction using Lemma~\ref{lem:fixed-height-recurrences} proves
+$h_n\le An^2-B$. For an even index,
+\[
+ h_{2n}\le4(An^2-B)+\log392\le A(2n)^2-B.
+\]
+For an odd index at least three,
+\[
+ \begin{split}
+ h_{2n+1}&\le2(An^2-B)+2(A(n+1)^2-B)+\log8036\\
+ &=A(2n+1)^2+A-4B+\log8036
+  =A(2n+1)^2-B.
+ \end{split}
+\]
+
+We next compare coefficient height with absolute height. Write
+$x=(a+b\sqrt2)/c$ in the primitive form above, and let
+$\mathfrak d=\{u\in\mathcal O_K:ux\in\mathcal O_K\}$ be its
+denominator ideal. Since $\mathcal O_K=\mathbb Z[\sqrt2]$, the
+integer $c$ is the least positive rational integer with
+$cx\in\mathcal O_K$. At a prime above a rational prime $p$, use the integer-valued ideal
+valuation $\operatorname{ord}_{\mathfrak p}$, so that
+$\operatorname{ord}_{\mathfrak p}(p)=e_{\mathfrak p}$, and put
+$d_{\mathfrak p}=\max(0,-\operatorname{ord}_{\mathfrak p}(x))$.
+The $p$-adic exponent of $N\mathfrak d$ is
+$\sum_{\mathfrak p\mid p}f_{\mathfrak p}d_{\mathfrak p}$.
+Multiplying by a ramification index $e_{\mathfrak p}$ makes this
+at least $d_{\mathfrak p}$. Therefore
+$(N\mathfrak d)x$ is integral and $c\mid N\mathfrak d$.
+If $h_{\mathrm{fin}}(x)$ denotes the finite-place part of $h(x)$,
+then $N\mathfrak d=\exp(2h_{\mathrm{fin}}(x))$.
+
+Writing $x'$ for the real conjugate, one has
+\[
+ |a|=c\left|\frac{x+x'}2\right|\le c\max(|x|,|x'|),\qquad
+ |b|=c\left|\frac{x-x'}{2\sqrt2}\right|
+                         \le c\max(|x|,|x'|).
+\]
+The product $\max(1,|x|)\max(1,|x'|)$ equals
+$\exp(2h_{\infty}(x))$. It follows that
+\[
+                  \max(1,|a|,|b|,c)\le\exp(2h(x)).
+\]
+Finally $23534<2^{15}$, so the first height bound gives
+$\exp(2h_n)<2^{30n^2}$ and hence $h_0(x([n]P))\le30n^2$.
+\end{proof}
+
+\subsection{The indexed exclusion polynomial}
+
+Let $\mathcal A$ be a finite free algebra over an integer polynomial
+ring, with a fixed basis. For a multiplication matrix use the maximum
+column sum of the coefficient $\ell^1$-norms. This norm is
+submultiplicative. Suppose $b\ge0$ and the multiplication matrices of
+$N_0,N_1,D_0\in\mathcal A$ have norm at most $2^b$.
+Write $x([n]P)=(a_n+b_n\sqrt2)/c_n$ in primitive form and set
+\[
+ \mathcal E_n=(c_nN_0-a_nD_0)^2-2(c_nN_1-b_nD_0)^2,
+ \qquad \mathcal E_{\le M}=\prod_{n=1}^M\mathcal E_n.
+\]
+Each fixed triple is computed by exact elliptic arithmetic. The product
+is finite and is a literal polynomial specification, independently of
+whether its coefficients are expanded.
+
+\begin{proposition}\label{prop:fixed-height-cubic-product}
+For every integer $M\ge1$,
+\[
+ \|M_{\mathcal E_{\le M}}\|
+       \le 2^{20M^3+30M^2+(2b+14)M}
+       \le 2^{(2b+64)M^3}.
+\]
+If $b\le1048$ and $M\ge64$, the first exponent is at most $21M^3$.
+\end{proposition}
+\begin{proof}
+Theorem~\ref{thm:fixed-height-quadratic} and the triangle inequality give
+\[
+ \|M_{c_nN_0-a_nD_0}\|,\ \|M_{c_nN_1-b_nD_0}\|
+       \le2^{30n^2+b+1}.
+\]
+Squaring and summing the two terms of $\mathcal E_n$ therefore
+gives $\|M_{\mathcal E_n}\|\le2^{60n^2+2b+4}$.
+Sum these logarithmic bounds and use
+$\sum_{n=1}^M n^2=M(M+1)(2M+1)/6$.
+The second bound follows from $M,M^2\le M^3$.
+For the last assertion, $2b+14\le2110$, and
+\[
+                   30\cdot64+2110=4030<64^2.
+\]
+The function $M^2-30M$ is increasing for integers $M\ge64$.
+Thus $30M^2+(2b+14)M\le M^3$, proving the result.
+\end{proof}
+
+Under an algebra homomorphism $\mathcal A\to\mathbb Q$ with
+the image of $D_0$ nonzero, the factor
+$\mathcal E_n$ vanishes exactly when
+$(N_0+N_1\sqrt2)/D_0=x([n]P)$. Indeed a rational pair satisfies
+$u^2-2v^2=0$ only when both entries vanish. The displayed product therefore gives an exact polynomial exclusion
+of these finitely many abscissas, with the proved coefficient bound.
+
+
+\end{document}

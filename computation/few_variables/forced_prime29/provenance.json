@@ -1,0 +1,28 @@
+{
+  "baseline_directory": "construction29 from the completed 2026-11-07 release",
+  "baseline_builder_sha256": "a0773f95b0a6d1c82c85e5e7167634a72bf50acf446a9662c958d53bad2b102f",
+  "unchanged_helpers": {
+    "field_circuit.py": "135bd7776b0f22c92dc216a891f1e8ab6b709b32dd85f04bc91f8a5d75008a8e",
+    "finite_algebra_core.py": "e5aea8e6226d8d27300c3c56c7043f4911a5cfaba0ca9ed44cf2457cf0b4de77",
+    "finite_algebra_check_core.py": "42f8a0650893f298e29f22782ab070d4077965386fb9b886e3872b6f19105830"
+  },
+  "changes": [
+    "Use small formal orders 12,40 and assigned orders 10,39, scalar order20, height exponent19.",
+    "Replace scalar contact by 102^2*ell^(2*k+1)*r/[1+(17*ell^k*r)^2]^2 with ell76249,k137715.",
+    "Remove the finite exclusion and the semilocal anchor; retain 28 base coordinates and13 finite generators.",
+    "Update provenance and proof-location metadata.",
+    "Refine coefficient bounds by weighted companion column norms, preserving the entire mathematical polynomial specification."
+  ],
+  "helpers_with_presentation_changes": {},
+  "scope": "Provenance of completed arithmetic and exact compiler routines; no unfinished candidate is included.",
+  "helpers_with_proved_norm_refinement": {
+    "compile_source.py": {
+      "sha256": "371b4c1e8fce09588818bb1780d78ad9d0db15b59a56e5af4bb4fe1cc5804381",
+      "change": "Weighted companion-matrix norms refine coefficient majorants only; exact coefficient expressions and the polynomial recipe are unchanged. Proof: Lemma lem:weighted-companion-norm."
+    },
+    "verify_specification.py": {
+      "sha256": "22e268054e0dbfc5e6f1093f2212e8065ef0a2d2b5b7dd1b05e22170315c7695",
+      "change": "Weighted companion-matrix norms refine coefficient majorants only; exact coefficient expressions and the polynomial recipe are unchanged. Proof: Lemma lem:weighted-companion-norm."
+    }
+  }
+}

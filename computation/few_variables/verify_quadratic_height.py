@@ -2,7 +2,7 @@
 """Exact checks for the quadratic elliptic-height bound and curve obstruction.
 
 Uses only Python's standard library. Finite calculations certify identities,
-constants, point counts, and all recorded downstream bound envelopes. The
+constants, point counts, and the explicit induction constants. The
 uniform height and curve-image assertions are proved in the accompanying TeX.
 """
 from collections import Counter
@@ -199,58 +199,6 @@ def exact_points():
 def ceil_log2(n): return (n-1).bit_length() if n > 0 else 0
 
 
-def bound_certificate():
-    spec_path = HERE/'construction29/polynomial-29-preferred/polynomial-specification.json'
-    spec = json.loads(spec_path.read_text())
-    math_data = {k: v for k, v in spec.items() if k != 'bounds'}
-    math_digest = sha256(json.dumps(math_data, sort_keys=True, separators=(',', ':')).encode()).hexdigest()
-    assert math_digest == '24cacbb45176225d8e8278edeaf170cada85b0397134c69867ad8641a26f2823'
-    bd = spec['bounds']
-    assert len(bd['indexed_guard_bounds']) == 1
-    anchor = bd['indexed_guard_bounds'][0]
-    E = spec['indexed_guard_polynomials'][0]['index_last']['exponent']
-    b = anchor['coordinate_operator_log2_norm_bound']
-    assert (E, b) == (2093449, 1048)
-    assert E >= 6 and 30*64+(2*b+14) < 64**2
-    assert 20*64**3+30*64**2+(2*b+14)*64 < 21*64**3
-    assert 21 < 2**5
-    assert anchor['operator_log2_norm_bound_power_of_two_exponent'] == 3*E+5
-    # Recompute each final envelope without importing either producer/checker.
-    w, l = bd['generator_weights'], bd['generator_operator_log2_norm_bounds']
-    r = bd['maximum_rank_power_of_two_exponent']
-    n = 1 << r
-    g = max(ceil_log2(bd['materialized_guard_weight']),
-            anchor['weight_bound_power_of_two_exponent'])+1
-    gb = max(ceil_log2(bd['materialized_guard_operator_log2_norm_bound']), 3*E+5)+1
-    a = max(g, ceil_log2(max(w)+bd['maximum_basis_weight']))+1
-    bb = max(gb, ceil_log2(bd['selector_operator_log2_norm_bound']))+1
-    AH, BH = r+a, r+bb+1
-    AR = max(r+a, ceil_log2(bd['closed_residual_maximum_weight']+bd['maximum_basis_weight']))+1
-    BR = max(ceil_log2(r+bd['closed_residual_maximum_operator_log2_norm_bound']), r+bb+1)+1
-    AL = r+2+AH
-    BL = max(r+2+BH, r+1+ceil_log2(r))+1
-    pd, pb = r+AL+1, max(r+BL, ceil_log2(r+1))+1
-    rd, rb = max(AR, r+AL+1)+1, max(BR, r+BL)+1
-    branch_d = 1+max(AH, pd, rd)
-    branch_b = max(1+max(BH, pb, rb), ceil_log2(ceil_log2(n+bd['closed_residual_count']+1)))+1
-    factors = bd['exact_number_of_final_factors']
-    new_degree = branch_d+ceil_log2(factors)
-    new_height = branch_b+ceil_log2(factors)
-    assert (new_degree, new_height) == (2093605, 6280501)
-    assert bd['degree_bound_power_of_two_exponent'] == new_degree
-    assert bd['coefficient_height_bound_double_power_of_two_exponent'] == new_height
-    other = json.loads((HERE/'construction29/polynomial-31-preferred/polynomial-specification.json').read_text())
-    assert other['bounds']['degree_bound_power_of_two_exponent'] == 180
-    assert other['bounds']['coefficient_height_bound_double_power_of_two_exponent'] == 184
-    return {'cutoff_exponent': E, 'coordinate_log2_norm_bound': b,
-            'exclusion_log2_norm_upper_bound': '21*M^3',
-            'exclusion_log2_norm_binary_exponent': 3*E+5,
-            'degree_bound_power_of_two_exponent': new_degree,
-            'coefficient_height_bound_double_power_of_two_exponent': new_height,
-            'polynomial_data_sha256_excluding_only_bounds': math_digest,
-            'specification_sha256': sha256(spec_path.read_bytes()).hexdigest()}
-
-
 def main():
     polynomial_identity_checks()
     assert 23534 == 41*574
@@ -264,13 +212,12 @@ def main():
               'exact_point_checks': exact_points(),
               'non_torsion_valuation_certificate_at_three': {'xP': 0, 'yP': 1, 'tangent_numerator': 0, 'x2P': -2, 'y2P': -3, 'formal_parameter_2P': 1},
               'independent_nonisogeny_point_counts': finite_field_checks(),
-              'bound_certificate': bound_certificate(),
               'checker_sha256': sha256(Path(__file__).read_bytes()).hexdigest(),
-              'scope': 'Exact identities, finite point calculations, two finite-field counts, induction constants, and all numerical coefficient envelopes. The general height bound and finite rational-image theorem are supplied as mathematical proofs, not inferred from samples.'}
+              'scope': 'Exact identities, finite point calculations, two finite-field counts, and the height-induction constants. The general height bound and finite rational-image theorem are supplied as mathematical proofs, not inferred from samples.'}
     (HERE/'quadratic-height-verification.json').write_text(json.dumps(report, indent=2)+'\n')
     print(json.dumps({'status': 'PASS', 'fixed_multiples_checked': len(report['exact_point_checks']),
                       'nonisogeny_counts': [r['point_count'] for r in report['independent_nonisogeny_point_counts']],
-                      'bound_certificate': report['bound_certificate']}, indent=2))
+                      'coefficient_height_bound': 'h0(x(nP))<=30*n^2'}, indent=2))
 
 
 if __name__ == '__main__': main()
