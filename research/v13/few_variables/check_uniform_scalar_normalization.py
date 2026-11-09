@@ -121,11 +121,13 @@ J_product = 1
 for factor in factors:
     a, b = int(factor[4]), int(factor[0])
     k = Ah * b**2 - Bh * b * a + Ch * a**2
-    result = (Dh**2 * a**5 + b * k**2)**2
-    assert result == resultant(list(map(int, factor)), H)
+    result = Dh**2 * a**5 + b * k**2
+    assert result == resultant([b, 0, a], H[::2])
+    assert result**2 == resultant(list(map(int, factor)), H)
     J_product *= result
-J = resultant(list(map(int, rho)), H)
-assert J == J_product and J > 0 and isqrt(J)**2 == J
+J = resultant(list(map(int, rho[::2])), H[::2])
+J_full = resultant(list(map(int, rho)), H)
+assert J == J_product and J > 0 and J_full == J**2
 
 # The two fixed avoidance-prime assertions and the fixed delta congruence.
 for p in [ell, q]:
@@ -164,7 +166,7 @@ lower = Fraction(a0, Dnorm**2)
 upper = Fraction(A0, mu**2)
 R_min = lower / (q*q*upper)
 assert 0 < R_min < 1 and upper > 1
-cstar = 102**6 * J**4
+cstar = 102**6 * J**2
 
 def normalization_exponent(L):
     assert L >= 3 and L % 2 == 1
@@ -197,7 +199,8 @@ certificate = {
     "remainder_coefficients": {str(i): str(c) for i, c in enumerate(F) if c},
     "N": str(N), "T": T, "H_denominator": d,
     "resultant_J": str(J), "resultant_J_bits": J.bit_length(),
-    "resultant_checked_by": ["Sylvester determinant with Bareiss elimination", "five quartic-factor formulas"],
+    "resultant_in_X": str(J_full), "resultant_in_X_bits": J_full.bit_length(),
+    "resultant_checked_by": ["Sylvester determinant with Bareiss elimination", "five quadratic-factor formulas", "squared resultant after X² substitution"],
     "rho_avoidance_residues_checked": {str(ell): ell, str(q): q},
     "delta_avoidance_residues_checked": ell,
     "local_square_conditions": {"2": "v=2, unit=1 modulo8", "3": "v=2, unit=1 modulo3", "17": "v in {0,2}, unit square modulo17"},
