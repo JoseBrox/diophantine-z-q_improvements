@@ -1,0 +1,341 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,microtype}
+\usepackage[margin=26mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\hF}{h_{\mathrm F}}
+\newcommand{\rad}{\operatorname{rad}}
+\newcommand{\ord}{\operatorname{ord}}
+\newcommand{\Jac}{\operatorname{Jac}}
+\setlength{\emergencystretch}{2em}
+\title{An Explicit Five-Contact Height Bound of Exponent Eighteen}
+\author{}
+\date{9 November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+We derive an explicit bound $h(a)\le H_{18}M_5(a)^{18}$ for the
+logarithmic height of a rational parameter in terms of its odd
+five-contact radical. The arithmetic input is the modular realization
+used in the Diophantine construction. Retaining the Euler totient in
+the order of its scalar character gives a cubic bound for the degree
+of the relevant modular curve. A general Belyi-curve height estimate
+and an explicit isogeny bound then give exponent eighteen, with
+$H_{18}<2^{1984521}$. No additional $abc$ or Szpiro hypothesis is used.
+We also give the corresponding exponent $18/r$ for $r$ disjoint
+sets of contacts. All variables, exceptional primes, and numerical
+constants are specified.
+\end{abstract}
+
+\section{Heights and the arithmetic input}
+
+For $a=u/v\in\Q$ in lowest terms, with $v>0$, its absolute
+logarithmic Weil height is
+\[
+ h(a)=\log\max(|u|,v).
+\]
+For an abelian variety $A$ over a number field, $\hF(A)$ denotes
+its stable Faltings height in the original Faltings normalization.
+Put
+\[
+ S_*=\{p\text{ prime}:p\le76176\},\qquad
+ B_*=\prod_{p\in S_*}p,\qquad
+ \mathcal D=\{0,1,2401,-343/32\},\qquad C=210^{300}.
+\]
+For $a=u/v\in\Q\setminus\mathcal D$, let $M_5(a)$ be the
+product of the primes $p\notin S_*$ for which at least one of
+\begin{equation}\label{eq:contacts}
+ v_p(v),\quad v_p(u),\quad v_p(u-v),\quad
+ v_p(u-2401v),\quad v_p(32u+343v)
+\end{equation}
+is positive and odd. The valuation satisfies $v_p(p)=1$.
+The first form is the contact at infinity. Each prime occurs only
+once, so $M_5(a)$ is a positive squarefree integer.
+
+We use the following precise part of the arithmetic construction in
+\cite[proof of \texttt{o8-height}, equations
+\textup{(LR2)--(LR5)}, and proof of
+\texttt{quartic-height19}]{Glazer}.
+Stating this input explicitly separates the height calculation from
+the geometric and modular realization on which it depends.
+
+\begin{definition}[Modular realization input]\label{def:input}
+For each $a\in\Q\setminus\mathcal D$, set $R=B_*M_5(a)$.
+There is an abelian surface $A$ such that
+\begin{equation}\label{eq:geometric}
+ h(a)\le2\max(0,\hF(A))+128.
+\end{equation}
+Either $\hF(A)<854R$, or the following data exist:
+\begin{enumerate}
+\item A number field $L$ with $[L:\Q]\le576$, and a scalar
+character of order $m$ satisfying
+\[
+ m\le2\prod_{\substack{p\mid R\\p\text{ odd}}}(p-1).
+\]
+\item A normal field $K/\Q$ of degree
+$d'\le2m[L:\Q]$ and a primitive weight-two newform of level $N$,
+with nebentypus $\varepsilon$, such that
+\[
+ N\le CR^2,\qquad \rad(N)\mid R,
+ \qquad\varepsilon^2|_{G_K}=1.
+\]
+\item For $H=\ker\varepsilon\subset(\Z/N\Z)^\times$, the
+abelian surface $A_K$ is an isogeny factor over $K$ of
+$J_H=\Jac(X_1(N)/H)_K$.
+\end{enumerate}
+\end{definition}
+
+The first alternative is supplied by the complex multiplication
+case. In the second alternative, the square of the nebentypus is
+trivial over $K$ by the determinant identity for the compatible
+representations. The newform quotient factors through $J_H$ because
+every element of $H$ fixes all conjugates of its differentials.
+This is an assertion about the order of a character; it does not
+assert a bounded degree for the newform's coefficient field.
+
+\begin{theorem}\label{thm:contact-height}
+Assume the modular realization input. Define
+\[
+ H_{18}=2^{110}210^{1800}B_*^{18}+128.
+\]
+Then
+\[
+ h(a)\le H_{18}M_5(a)^{18}
+ \quad\text{for every }a\in\Q\setminus\mathcal D,
+ \qquad H_{18}<2^{1984521}.
+\]
+\end{theorem}
+
+\section{The degree of the modular curve}
+
+\begin{lemma}\label{lem:degree}
+In the non-CM alternative of Definition~\ref{def:input},
+\[
+ d'\le2304\varphi(R),\qquad
+ t:=\ord(\varepsilon)\le4608\varphi(R),
+\]
+and
+\begin{equation}\label{eq:degree}
+ d_H:=\deg(X_H\longrightarrow X(1))
+ =Nt\prod_{p\mid N}(1+p^{-1})
+ <4608CR^3.
+\end{equation}
+The genus $g$ of $X_H$ satisfies $2\le g\le d_H$.
+\end{lemma}
+\begin{proof}
+The integer $R$ is squarefree and even. Thus
+\[
+ m\le2\prod_{\substack{p\mid R\\p\text{ odd}}}(p-1)
+      =2\varphi(R),
+ \qquad
+ d'\le1152m\le2304\varphi(R).
+\]
+Since $\varepsilon^2$ is trivial on $G_K$, the order of its image
+divides $d'$. Therefore $t\le2d'\le4608\varphi(R)$.
+
+The congruence subgroup defining $X_H$ is
+\[
+ \Gamma_H=\left\{
+ \begin{pmatrix}a&b\\c&d\end{pmatrix}\in\Gamma_0(N):
+ d\bmod N\in H\right\}.
+\]
+A weight-two nebentypus is even, so $-I\in\Gamma_H$. Consequently
+the degree of the coarse map to $X(1)$ equals its
+$\operatorname{SL}_2(\Z)$ index, with no extra factor of two.
+The standard index formula gives the equality in \eqref{eq:degree};
+see \cite[Section~4, equations~(4.1)--(4.2)]{vonKaenel}.
+
+Since $\rad(N)\mid R$, the exact totient identity gives
+\[
+ \begin{split}
+ d_H
+ &\le4608CR^2\varphi(R)\prod_{p\mid R}(1+p^{-1})\\
+ &=4608CR^3\prod_{p\mid R}(1-p^{-2})
+ <4608CR^3.
+ \end{split}
+\]
+The map is branched only over the cusp and the two elliptic
+points. It is therefore a Belyi map after moving those three
+points to $0,1,\infty$. The usual genus formula yields
+$g\le1+d_H/12\le d_H$. Finally $A$ is a surface isogeny
+factor of $J_H$, so $g\ge2$.
+\end{proof}
+
+\section{Faltings height and the isogeny comparison}
+
+Set
+\[
+ T=2^{14}CR^3.
+\]
+Lemma~\ref{lem:degree} gives $g<T$ and $d_H<T$, and $T\ge16$.
+Javanpeykar's Belyi-curve estimate
+\cite[Theorem~1.1.1 and Section~2.3]{Javanpeykar} implies
+\begin{equation}\label{eq:jacobian}
+ \hF(J_H)\le13000000\,d_H^5g<2^{24}T^6.
+\end{equation}
+This estimate applies to every Belyi curve. It requires neither
+squarefree level nor trivial nebentypus.
+
+\begin{lemma}\label{lem:isogeny}
+The abelian surface in Definition~\ref{def:input} satisfies
+\[
+ \hF(A)<2^{25}T^6=2^{109}210^{1800}R^{18}.
+\]
+\end{lemma}
+\begin{proof}
+In the non-CM case, Poincar\'e reducibility gives an abelian variety
+$Z/K$ such that $J_H$ is $K$-isogenous to $A\times Z$.
+Apply the isogeny theorem of Gaudron--R\'emond
+\cite[Theorem~1.9(1), pp.~7--8]{GaudronRemond} with source $J_H$
+and target $A\times Z$. Half-logarithmic isogeny-height variation
+and additivity of Faltings height give
+\[
+ \hF(A)+\hF(Z)\le\hF(J_H)+V,
+\]
+where
+\[
+ V=2g^2\left(8g^2\log(7g)+\log d'
+       +\log\max(1,\log d',\hF(J_H))\right).
+\]
+The Bost lower bound, in the same normalization, gives
+$\hF(Z)>-3g/2$; see \cite[equation~(2.2)]{vonKaenel}.
+Write $u=\log T$. The inequalities $2304<e^8$, $7<e^2$,
+and $2^{24}<e^{17}$ imply
+\[
+ \log d'<8+u,\qquad \log(7g)<2+u,
+\]
+and, using \eqref{eq:jacobian},
+\[
+ \log\max(1,\log d',\hF(J_H))<17+6u.
+\]
+Hence
+\begin{equation}\label{eq:V}
+ V\le16T^4(2+u)+2T^2(25+7u)<T^6.
+\end{equation}
+For completeness, $\log T\le T/4$ for $T\ge16$. Divide the
+first bound in \eqref{eq:V} by $T^6$ to obtain
+\[
+ \frac{V}{T^6}
+ \le\frac4T+\frac{32}{T^2}+\frac{7}{2T^3}+\frac{50}{T^4}
+ \le\frac4{16}+\frac{32}{16^2}
+           +\frac7{2\cdot16^3}+\frac{50}{16^4}<1.
+\]
+It follows that
+\[
+ \hF(A)<(2^{24}+1)T^6+\tfrac32T<2^{25}T^6.
+\]
+The CM estimate $\hF(A)<854R$ is also smaller than this bound.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:contact-height}]
+Combine \eqref{eq:geometric} with Lemma~\ref{lem:isogeny} and
+use $R=B_*M_5(a)$ and $M_5(a)\ge1$. This gives
+\[
+ h(a)\le
+ \left(2^{110}210^{1800}B_*^{18}+128\right)M_5(a)^{18}.
+\]
+The exact integer computation described below verifies
+$B_*<2^{109445}$. Since $210<2^8$ and
+$2^{110}210^{1800}B_*^{18}>128$,
+\[
+ H_{18}
+ <2^{111}210^{1800}B_*^{18}
+ <2^{111+1800\cdot8+18\cdot109445}
+ =2^{1984521}.
+\]
+\end{proof}
+
+\section{Disjoint sets of contacts}
+
+\begin{corollary}\label{cor:amplification}
+Fix a positive integer $r$. For
+\[
+ \Theta_r=\bigcup_{j=0}^{r-1}
+ \left(3j+\left\{0,-\frac12,-1,
+                       \frac1{2399},-\frac{32}{407}\right\}\right)
+\]
+there is a fixed finite exceptional set of primes $\Sigma_r$
+and a constant $C_r>0$ such that
+\[
+ h(t)\le C_r M_r(t)^{18/r}
+ \qquad(t\in\Q\setminus\Theta_r).
+\]
+Here $M_r(t)$ is the product of primes outside $\Sigma_r$ at
+which $t-\theta$ has positive odd valuation for some
+$\theta\in\Theta_r$.
+\end{corollary}
+\begin{proof}
+Apply Theorem~\ref{thm:contact-height} to
+$\phi_j(t)=2+1/(t-3j)$ for $0\le j<r$.
+Each matrix has determinant $-1$, and therefore
+$h(t)\le h(\phi_j(t))+O_r(1)$.
+Remove the primes in $S_*$, those dividing the coefficients
+needed to clear contact denominators, and those dividing
+pairwise determinants of the $5r$ primitive contact forms.
+Outside this fixed finite set, different contact forms cannot
+vanish at the same residue point. The radicals for different
+blocks thus have disjoint prime support. Primes removed from
+an individual radical contribute at most a fixed factor.
+Multiplication of the $r$ resulting inequalities gives the claim.
+Explicit contact forms and their determinants are recorded in
+\cite[Sections~1--2]{Amplification}.
+\end{proof}
+
+\section{Exact numerical verification}
+
+The script
+\begin{center}\small
+\nolinkurl{computation/contact_heights/check_contact_height18.py}
+\end{center}
+reconstructs the prime product $B_*$, the integer $H_{18}$,
+and their binary lengths. It also verifies the rational bound
+in \eqref{eq:V}, the numerical exponent identity, and the three
+exponential inequalities used in the isogeny estimate by rational
+partial sums of the exponential series. Its certificate is
+\nolinkurl{contact-height18-certificate.json} in the same directory.
+The symbolic totient identity and the arithmetic implications
+are proved above; they are not inferred from a bounded search.
+
+\begin{thebibliography}{9}
+\bibitem{Javanpeykar}
+A.~Javanpeykar, with an appendix by P.~Bruin,
+\emph{Polynomial bounds for Arakelov invariants of Belyi curves},
+Algebra \& Number Theory \textbf{8} (2014), 89--140,
+\url{https://doi.org/10.2140/ant.2014.8.89}.
+
+\bibitem{GaudronRemond}
+\'E.~Gaudron and G.~R\'emond,
+\emph{Nouveaux th\'eor\`emes d'isog\'enie},
+M\'emoires de la Soci\'et\'e Math\'ematique de France
+\textbf{176} (2023), Theorem~1.9(1),
+\url{https://doi.org/10.24033/msmf.484}.
+
+\bibitem{vonKaenel}
+R.~von K\"anel, \emph{The effective Shafarevich conjecture for abelian
+varieties of $\mathrm{GL}_2$-type}, Forum of Mathematics, Sigma
+\textbf{9} (2021), e39,
+\url{https://doi.org/10.1017/fms.2021.29}.
+
+\bibitem{Glazer}
+E.~Glazer and contributors,
+\emph{Diophantine definition of the integers in the rationals},
+\texttt{manuscripts/quartic\_v9.tex}, commit
+\texttt{14e8f601fe0d9173d4a5f084aedc3e07066a7688},
+\url{https://github.com/elliotglazer/diophantine-z-q}.
+
+\bibitem{Amplification}
+J.~Brox and contributors,
+\emph{Height bounds from disjoint sets of rational contacts},
+\texttt{contact\_height\_amplification\_20261109\_v13.tex},
+\url{https://github.com/JoseBrox/diophantine-z-q_improvements}.
+\end{thebibliography}
+\end{document}

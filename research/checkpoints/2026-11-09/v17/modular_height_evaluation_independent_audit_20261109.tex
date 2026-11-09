@@ -1,0 +1,193 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=28mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\newcommand{\OK}{\mathcal O_K}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\hF}{h_{\mathrm F}}
+\title{Independent verification of the differential-evaluation height bound}
+\author{}\date{9 November 2026}
+\begin{document}\maketitle
+
+The evaluation argument in
+\nolinkurl{modular_height_evaluation_candidate.tex} was checked
+independently. Its evaluation-lattice bound, finite-discriminant
+estimate, and application to the modular cover are valid under the
+stated hypotheses. The final contact-height conclusion additionally
+uses the displayed inherited modular realization; the existence and
+numerical bounds of that realization are not reproved in this audit.
+
+\section{The integral evaluation map}
+Write $A=\OK[t]$ and let $B$ be its normalization in the curve's
+function field. A normal surface is Cohen--Macaulay, and the base
+surface is regular. Thus the finite normalization is flat and its
+affine algebra $B$ is finite projective over $A$. This is also
+explicitly stated in Javanpeykar, Section~4.2.
+
+Let $\mathcal X$ be a regular semistable model and
+$E=H^0(\mathcal X,\omega_{\mathcal X/\OK})$. A common regular
+model dominates $\mathcal X$ and the normalization $\mathcal Y$.
+Blowing up closed points does not change the module of global
+relative canonical sections. At every codimension-one point of
+$\mathcal Y$, the common model is an isomorphism locally at the
+generic point of the corresponding divisor. Hence its canonical
+sections are sections of $\omega_{\mathcal Y/\OK}$ in codimension
+one. The latter module is reflexive, since $\mathcal Y$ is a
+normal Cohen--Macaulay surface, so these sections extend globally.
+Invertibility of this dualizing sheaf is unnecessary.
+
+Finite duality on the affine chart gives
+\[
+ \omega_{B/\OK}=\operatorname{Hom}_A(B,A)\,dt.
+\]
+Because $B$ is projective, reduction modulo $t-2$ commutes with
+this dual. With $C=B/(t-2)B$, evaluation therefore maps
+\[
+ E\longrightarrow\operatorname{Hom}_{\OK}(C,\OK).
+\]
+On the generic split fibre the trace functional attached to a tuple
+$(f_1,\ldots,f_d)$ is $(b_i)\mapsto\sum_i f_ib_i$. Consequently
+the tuple attached to $\omega$ is precisely
+$(\omega/dt)(P_i)$; there is no missing different factor in these
+coordinates. The different is already encoded by the trace-dual
+lattice.
+
+\section{The lattice index and the sign of the degree inequality}
+Put $O=\OK^d$. Since the fibre is generically reduced and split,
+$C$ is a full order contained in $O$. At a finite prime, choose
+an $\OK_{\mathfrak p}$-basis of $O$ and a matrix $M$ whose columns
+form a basis of $C$. The trace form on $O$ is the identity, so
+\[
+ v_{\mathfrak p}(\operatorname{disc}C)
+ =v_{\mathfrak p}(\det(M^{\mathsf T}M))
+ =2\operatorname{length}(O/C).
+\]
+The trace dual has basis $M^{-\mathsf T}$, whence
+\[
+ O\subset C^\vee,\qquad
+ \operatorname{length}(C^\vee/O)=\operatorname{length}(O/C).
+\]
+For any coordinate projection onto $g$ positions,
+$C^\vee/O$ surjects onto $F/\OK^g$, where $F$ is the projected
+lattice. With the ordinary Euclidean metrics on these coordinate
+spaces,
+\[
+ \widehat{\deg}F=\log\#(F/\OK^g)
+ \le\tfrac12\log\mathrm N\operatorname{disc}C.
+\]
+Here the degree of the trivial lattice with its standard metric is
+zero. No number-field discriminant term occurs in this convention.
+
+If $\phi:L\to M$ is an integral nonzero map of metrized lines,
+the product formula gives
+\[
+ \widehat{\deg}L\le\widehat{\deg}M+
+ \sum_{\sigma:K\hookrightarrow\mathbb C}\log\|\phi\|_\sigma.
+\]
+This verifies the direction of the degree inequality used in the
+candidate argument.
+
+\section{The archimedean estimate}
+Above the disc $|t-2|<1/2$, the $d$ inverse branches are disjoint
+and holomorphic. For $\omega=f_i(t)\,dt$ on the $i$th branch,
+the mean-value inequality gives
+\[
+ |f_i(2)|^2\le\frac4\pi\int_{|t-2|<1/2}|f_i(t)|^2\,dx\,dy.
+\]
+The selected branch domains are disjoint in $X(\mathbb C)$.
+Summing the inequalities over any selected coordinate set $I$ gives
+the stronger operator estimate
+\[
+ \sum_{i\in I}|f_i(2)|^2\le\frac4\pi\|\omega\|_{L^2}^2.
+\]
+Thus every singular value of the projected evaluation map is at
+most $2/\sqrt\pi$. Its determinant norm is at most
+$(2/\sqrt\pi)^g$, as asserted. The choice of the coordinate set
+over $K$ remains permissible at every embedding; the sheets may be
+permuted, which does not change this estimate.
+
+Riemann--Hurwitz gives $2g-2\le d-3$, so a differential vanishing
+on the full unramified fibre is zero. Some $g$-coordinate projection
+is therefore injective. Combining the preceding facts yields
+\[
+ \hF(\operatorname{Jac}X)\le
+ \frac{\log\mathrm N\operatorname{disc}C}{2[K:\Q]}
+ +g\log\frac2{\sqrt\pi}.
+\]
+Javanpeykar, Sections~2.1 and~2.3, explicitly identify the stated
+$L^2$ determinant metric with the stable Jacobian Faltings height.
+
+\section{Finite discriminant and base extension}
+The trace determinant is a section of an invertible sheaf on the
+regular base surface. Its divisor has no additional codimension-two
+part. Hence its pullback to $t=2$ is computed by the intersections
+with its horizontal and vertical divisors.
+
+The horizontal coefficients are at most $d$ by characteristic-zero
+tame ramification. Only the section $t=0$ meets $t=2$, with total
+normalized intersection $\log2$. At a vertical divisor over
+$\mathfrak p\mid p$, Proposition~4.1.3 of Javanpeykar states
+\[
+ r_j\le e_j-1+e_je_{\mathfrak p}
+             \left\lfloor\frac{\log d}{\log p}\right\rfloor.
+\]
+The proposition explicitly permits imperfect residue fields; thus
+it applies to the Gauss valuations with residue field
+$k(\mathfrak p)(t)$. Summing with weights $f_j$ and using
+$\sum_j e_jf_j=d$ gives exactly the candidate bound.
+
+Finite etaleness outside the specified bad primes and branch
+sections persists after base extension and normalization: the
+base-changed etale algebra over a normal base is already normal.
+Ramification of the enlarged number field causes no omitted term,
+because $\sum_{\mathfrak p\mid p}e_{\mathfrak p}f_{\mathfrak p}
+=[K:\Q]$ is used before normalizing the vertical contribution.
+
+\section{The modular and isogeny steps}
+For the displayed curve $E_t$, direct substitution gives
+$\Delta=1728t^2/(t-1)^3$ and $j=1728t$. Exact-order-$N$ torsion
+is finite etale away from $6N$ and the three branch sections.
+The action of $H$ is free, and its quotient remains finite etale,
+even at primes dividing $|H|$: this is a free action on a finite
+etale scheme. Since $-1\in H$, the ambiguity from the generic
+automorphism group $\{\pm1\}$ has been removed. This is the
+claimed integral modular cover.
+
+For the final height comparison let $L$ be the field, of the
+bounded degree supplied by the inherited realization, over which
+an actual surface $B\subset J=\operatorname{Jac}X_H$ is isogenous
+to the desired surface $A$. R\'emond's Corollary~1.2, also valid
+for stable heights, gives
+\[
+ \hF(B)\le\hF(J)+\kappa(\dim J-2).
+\]
+Gaudron--R\'emond's Theorem~1.9(1), applied with reference variety
+$B$ of dimension two over $L$, bounds an isogeny $B\to A$ by a
+fixed power of
+\[
+ [L:\Q]\max(1,\log[L:\Q],\hF(B)).
+\]
+The Faltings height change is at most half the logarithm of its
+degree. This adds only
+$O(\log[L:\Q]+\log\max(1,\hF(B)))$ to $\hF(B)$.
+One must use this bounded field $L$, rather than unnecessarily
+applying the isogeny theorem over the possibly much larger field
+that splits the fibre and makes the curve semistable. Stable
+heights allow the two extensions to be used independently.
+
+\section*{Primary references checked}
+\begin{itemize}
+\item A.~Javanpeykar, with an appendix by P.~Bruin,
+\emph{Polynomial bounds for Arakelov invariants of Belyi curves},
+Algebra Number Theory 8 (2014), 89--140.
+Sections~2.1, 2.3, 4.2 and Proposition~4.1.3.
+\url{https://arxiv.org/pdf/1403.6404}.
+\item G.~R\'emond, \emph{Propri\'et\'es de la hauteur de Faltings},
+Ann. Sc. Norm. Super. Pisa Cl. Sci. 23 (2022), 1589--1596.
+Corollary~1.2 and the explicit stable-height extension on page~2.
+\url{https://www-fourier.univ-grenoble-alpes.fr/~remond/2476.pdf}.
+\item E.~Gaudron and G.~R\'emond,
+\emph{Nouveaux th\'eor\`emes d'isog\'enie},
+M\'em. Soc. Math. France 176 (2023), Theorem~1.9(1).
+\url{https://lmbp.uca.fr/~gaudron/art20.pdf}.
+\end{itemize}
+\end{document}
