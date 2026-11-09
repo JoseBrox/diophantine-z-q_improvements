@@ -1,0 +1,68 @@
+\section{A fixed parameter in the conic chart}
+
+For a nonzero rational pole input $b$, write $B=17b$ and
+\[
+ e=\frac{\tau^2-B}{\tau^2+3B},\qquad
+ p=\frac{-4B\tau}{\tau^2+3B}.
+\]
+Fixing $\tau$ is different from fixing $e$, since $e$ still varies with $b$.
+The following exact example rules out the choice $\tau=1$, as well as
+$\tau=-1$, as a complete specialization on all prepared pole inputs.
+
+\begin{proposition}
+The rational number
+\[
+ b=\left(\frac{204}{61}\right)^2=\frac{41616}{3721}
+\]
+has square reduced denominator, satisfies $0<b<17$, is a square in
+$\mathbf Q_2,\mathbf Q_3,\mathbf Q_{17}$, and has respective valuations
+$4,2,2$. For $\tau=1$ or $\tau=-1$, the equation
+\[
+ Bq^2=(s^2-Be(B-b^2))(s^2+3Be(B-b^2))
+\]
+has no solution $(s,q)\in\mathbf Q^2$.
+\end{proposition}
+\begin{proof}
+The preparation assertions follow directly from $b=(204/61)^2$.
+For either choice of $\tau$,
+\[
+ e=-\frac{703751}{2126137}.
+\]
+Put $M=Be(B-b^2)$ and $N=BM$. Direct rational arithmetic gives
+\[
+ N=nk^2,\qquad
+ n=-32380801574194567,\qquad
+ k=\frac{144324288}{29438154846217}.
+\]
+A hypothetical solution with $s\ne0$ would give the point
+\[
+ x=\frac{B}{k^2}s^2,\qquad y=\frac{B^2}{k^3}sq
+\]
+on
+\[
+ E_n:\quad y^2=x(x-n)(x+3n).
+\]
+Its nonzero abscissa would belong to the squareclass $17$.
+
+Exact two-descent gives $\operatorname{rank}E_n(\mathbf Q)=0$.
+The accompanying reproducible PARI calculation returns
+\texttt{ellrank} equal to \texttt{[0,0,0,[]]}; it uses no analytic-rank
+or Birch--Swinnerton-Dyer hypothesis. Independent counts at the good
+primes $5,7,11,23,29,31$ are respectively
+\[
+                         4,8,8,32,24,24.
+\]
+Their greatest common divisor is four. Together with the visible full
+two-torsion this proves
+\[
+ E_n(\mathbf Q)=\{O,(0,0),(n,0),(-3n,0)\}.
+\]
+Neither nonzero torsion abscissa has squareclass $17$: $n$ is negative,
+and $-3n/17$ is not a rational square. This excludes $s\ne0$.
+If $s=0$, the original equation becomes $Bq^2=-3M^2<0$, which is
+impossible over $\mathbf R$. This proves the assertion.
+\end{proof}
+
+This proposition concerns all prepared inputs. It does not decide
+whether a fixed conic parameter can be made complete on a more
+restricted family chosen simultaneously with the comparison primes.
