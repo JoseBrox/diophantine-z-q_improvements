@@ -1,0 +1,407 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,booktabs,microtype}
+\usepackage[margin=26mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\newcommand{\vp}{v_p}\newcommand{\rad}{\operatorname{rad}}
+\setlength{\emergencystretch}{2em}
+\title{Height Bounds from Disjoint Sets of Rational Contacts}
+\author{}\date{9 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+A height bound with exponent $19$ for an odd contact radical at five
+rational points implies a bound with exponent $19/r$ for the combined
+radical at $5r$ explicitly specified points, for every positive integer
+$r$. The proof uses integral linear fractional transformations with
+determinant $-1$ and a fixed exceptional set of primes. We give all
+linear forms and constants, a compatible rational normalization, and
+the resulting inequalities for local congruence arguments. The number
+of contacts and the degree of their product increase with $r$; the
+height improvement alone does not assert a reduction in the number of
+coordinates of a defining polynomial.
+\end{abstract}
+
+\section{The height hypothesis and the conclusion}
+
+For $t=m/n\in\Q$ in lowest terms with $n>0$, put
+$h(t)=\log\max(|m|,n)$. Valuations are normalized by $v_p(p)=1$.
+Let $S_0$ be the set of primes at most $76176$, and put
+\[
+ H=2^{110}210^{1800}\left(\prod_{p\in S_0}p\right)^{19}+128.
+\]
+The arithmetic premise used in this paper is the following five-contact
+height bound from \cite[Theorem \texttt{quartic-height19}]{Glazer}:
+for $s=u/v\in\Q\setminus\{0,1,2401,-343/32\}$ in lowest terms,
+\begin{equation}\label{eq:base}
+ h(s)\le H M_5(s)^{19},
+\end{equation}
+where $M_5(s)$ is the product of primes outside $S_0$ for which at
+least one of
+\[
+ v_p(v),\quad v_p(u),\quad v_p(u-v),\quad
+ v_p(u-2401v),\quad v_p(32u+343v)
+\]
+is positive and odd. The contact at infinity is represented by $v$.
+All height conclusions below are implications of \eqref{eq:base}.
+No stronger height premise is assumed.
+
+For $r\ge1$, define
+\[
+ \Theta=\left\{0,-\frac12,-1,\frac1{2399},-\frac{32}{407}\right\},
+ \qquad \Theta_r=\bigcup_{j=0}^{r-1}(3j+\Theta).
+\]
+Introduce the following $5r$ primitive integral linear forms:
+\begin{align*}
+ L_{j,0}(m,n)&=m-3jn,\\
+ L_{j,1}(m,n)&=2m+(1-6j)n,\\
+ L_{j,2}(m,n)&=m+(1-3j)n,\\
+ L_{j,3}(m,n)&=2399m-(7197j+1)n,\\
+ L_{j,4}(m,n)&=407m+(32-1221j)n.
+\end{align*}
+Their zeros $m/n$ are exactly $\Theta_r$.
+Write these forms as $L_i=a_i m+b_i n$, using a single index when
+the pair $(j,k)$ is immaterial.
+
+\begin{definition}\label{def:exceptional}
+The finite set $\Sigma_r$ consists of $S_0$ and all prime divisors of
+the nonzero integers
+\[
+ a_i,\qquad a_i b_{i'}-a_{i'}b_i\ (i\ne i'),\qquad a_i+b_i.
+\]
+Put
+\[
+ E_r=\prod_{p\in\Sigma_r\setminus S_0}p,\qquad
+ C_r=\log\max(3,9r-10),\qquad H_r=C_r+HE_r^{19}.
+\]
+For $t\in\Q\setminus\Theta_r$, let $M_r(t)$ be the product of
+primes $p\notin\Sigma_r$ for which
+$v_p(t-\theta)$ is positive and odd for some $\theta\in\Theta_r$.
+\end{definition}
+
+Every integer used to define $\Sigma_r$ is nonzero.
+Indeed, the five elements of $\Theta$ are distinct and lie in
+$[-1,1/2399]$, so their translates by $3j$ are disjoint.
+Also $1\notin\Theta_r$: for $j=0$ this is immediate, and for $j\ge1$
+the least element is $3j-1\ge2$. Every $a_i$ is positive.
+In particular, all quantities in Definition~\ref{def:exceptional}
+are explicitly computable from $r$.
+
+\begin{theorem}\label{thm:amplification}
+Assume \eqref{eq:base}. For every positive integer $r$ and every
+$t\in\Q\setminus\Theta_r$,
+\begin{equation}\label{eq:amplified}
+ h(t)\le C_r+HE_r^{19}M_r(t)^{19/r}
+       \le H_r M_r(t)^{19/r}.
+\end{equation}
+Moreover, $M_r(1)=1$.
+\end{theorem}
+
+\section{Disjoint radicals and the proof}
+
+\begin{lemma}\label{lem:disjoint}
+Let $t=m/n$ be in lowest terms. At a prime $p\notin\Sigma_r$,
+at most one of the integers $L_i(m,n)$ is divisible by $p$.
+If $p\mid n$, none of them is divisible by $p$.
+Consequently $M_r(t)$ is the product of the pairwise coprime
+radicals $M_{r,j}(t)$ obtained by using only the five forms with
+first index $j$.
+\end{lemma}
+\begin{proof}
+If $p\mid n$, then $m$ and each $a_i$ are units modulo $p$.
+Thus $L_i(m,n)$ is a unit. If $p\nmid n$ and two forms vanish
+modulo $p$, their determinant vanishes modulo $p$, contrary to
+the definition of $\Sigma_r$. Since $a_i$ and $n$ are units in
+the latter case,
+\[
+ v_p\!\left(t+\frac{b_i}{a_i}\right)=v_p(L_i(m,n)).
+\]
+The assertions about the radicals follow.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:amplification}]
+For $0\le j<r$, put
+\[
+ \phi_j(t)=2+\frac1{t-3j}
+          =\frac{2m+(1-6j)n}{m-3jn}.
+\]
+The numerator and denominator are relatively prime: the matrix
+\[
+ A_j=\begin{pmatrix}2&1-6j\\1&-3j\end{pmatrix}
+ \quad\hbox{has determinant }-1.
+\]
+Its inverse is
+\[
+ A_j^{-1}=\begin{pmatrix}3j&1-6j\\1&-2\end{pmatrix}.
+\]
+The operator norm for the maximum norm is
+$\max(3,9j-1)$ for $j\ge0$, interpreting the formula at $j=0$
+as $3$. Hence
+\begin{equation}\label{eq:height-change}
+ h(t)\le h(\phi_j(t))+C_r.
+\end{equation}
+The five projective contact forms for $\phi_j(t)$ are exactly
+$L_{j,0},\ldots,L_{j,4}$, up to signs. In particular, the hypothesis
+$t\notin\Theta_r$ excludes every forbidden value and pole of
+$\phi_j$. Primes removed by enlarging $S_0$ to $\Sigma_r$ occur
+at most once in the radical, regardless of their valuations.
+Therefore
+\[
+ M_5(\phi_j(t))\le E_r M_{r,j}(t).
+\]
+If $h(t)\le C_r$, the result is immediate. Otherwise
+\eqref{eq:base} and \eqref{eq:height-change} give, for every $j$,
+\[
+ 0<h(t)-C_r\le HE_r^{19}M_{r,j}(t)^{19}.
+\]
+Multiplying these $r$ inequalities and applying
+Lemma~\ref{lem:disjoint} proves the first inequality in
+\eqref{eq:amplified}. The second follows from $M_r(t)\ge1$.
+Finally, every prime dividing a contact value $L_i(1,1)$ belongs
+to $\Sigma_r$, so $M_r(1)=1$.
+\end{proof}
+
+\begin{remark}
+This argument uses the product of disjoint odd-valuation radicals.
+It does not replace an odd-valuation radical by an ordinary radical.
+At the removed primes, an arbitrary positive valuation contributes
+at most one prime factor to the comparison with $M_5$.
+\end{remark}
+
+\section{A compatible rational normalization}
+
+The following identities describe how the larger contact set can
+enter a local valuation construction. They are algebraic identities;
+they do not assert that an arbitrary circuit using them has the
+projection property of a defining polynomial.
+
+Let $d=5r$ and set $\epsilon=1$ for odd $r$, $\epsilon=2$ for even
+$r$. Thus $d+\epsilon$ is even and $1\le\epsilon\le2$.
+Put
+\[
+ F_r(t)=\prod_{\theta\in\Theta_r}(t-\theta).
+\]
+Fix a positive rational square $a$, take $t=a\lambda$, and write
+$\delta=t-1$. When $\delta F_r(t)\ne0$, define
+\begin{equation}\label{eq:normalization}
+ R=\frac{F_r(t)}{a^d\delta^{d+\epsilon}},\qquad
+ e=\frac{(a\delta)^d}{F_r(t)},\qquad
+ q=\frac1{R\delta^4}.
+\end{equation}
+The corresponding cleared identities are
+\begin{equation}\label{eq:cleared}
+ F_r(t)e=(a\delta)^d,\qquad q\delta^{4-\epsilon}=e,
+ \qquad e\delta^\epsilon=R^{-1}.
+\end{equation}
+
+\begin{proposition}\label{prop:normalization}
+The following assertions hold.
+\begin{enumerate}
+\item Every solution of the first identity in \eqref{eq:cleared}
+has $F_r(t)\ne0$. If $q=0$ in the first two identities, then
+$\delta=0$ and $M_r(t)=1$.
+\item If $p\mid M_r(t)$, then $\delta$ is a $p$-adic unit and
+$v_p(R)$ is odd. In particular, $v_p(q)=-v_p(R)$.
+\item For $\lambda\to+\infty$,
+\[
+ R\sim a^{-(d+\epsilon)}\lambda^{-\epsilon}>0,
+ \qquad q\sim a^{d+\epsilon-4}\lambda^{\epsilon-4}\longrightarrow0.
+\]
+\item At a fixed prime where $v_p(t)<0$ and is smaller than every
+valuation of a nonzero contact, one has
+\[
+ v_p(q)=d\,v_p(a)-(4-\epsilon)v_p(t).
+\]
+For fixed $a$, this tends to $+\infty$ as $v_p(\lambda)$ tends
+to $-\infty$.
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+If $F_r(t)=0$, then $t\in\Theta_r$, whence $\delta\ne0$ and
+$(a\delta)^d\ne0$, a contradiction. If $q=0$, the second identity
+gives $e=0$, and the first gives $\delta=0$; Theorem~\ref{thm:amplification}
+gives $M_r(t)=1$.
+
+At a consumed prime, exactly one contact difference has positive odd
+valuation, all other contact differences are units, and $t-1$ is a
+unit. These facts follow from the determinant and $L_i(1,1)$
+conditions in $\Sigma_r$. Since $v_p(a)$ is even, the valuation
+$v_p(F_r(t))-d\,v_p(a)$ is odd. This proves the second assertion.
+The third follows by comparing the leading terms in
+\eqref{eq:normalization}. For the fourth, every contact difference
+and $\delta$ has valuation $v_p(t)$. Thus $v_p(e)=d\,v_p(a)$,
+and the second identity in \eqref{eq:cleared} proves the formula.
+\end{proof}
+
+\begin{proposition}\label{prop:prime-pattern}
+Suppose $\lambda=u/v$ with $v$ a positive integral square and
+$u\in\Z$, and suppose the $d$ numbers
+\[
+ p_\theta=u-\frac{\theta}{a}v\qquad(\theta\in\Theta_r)
+\]
+are positive primes. Assume they avoid $\Sigma_r$ and every prime
+dividing the numerator or denominator of $a$. If they are distinct,
+then $R$ is positive for $\lambda$ sufficiently large and its
+reduced denominator is a square. Its primes of odd valuation
+are exactly the $p_\theta$, with valuation one. If in addition each
+$p_\theta$ is a square in $\Q_2$, $\Q_3$, and $\Q_{17}$, then
+so is $R$.
+\end{proposition}
+\begin{proof}
+Direct substitution gives
+\[
+ R=\frac{\prod_{\theta\in\Theta_r}p_\theta}
+          {v^d\delta^{d+\epsilon}}.
+\]
+The denominator is a rational square. We check that it is a unit at
+each $p_\theta$. Such a prime cannot divide $v$: otherwise it also
+divides $u$ and hence all the distinct primes $p_{\theta'}$, since
+all contact and scale denominators are units there. Thus $a\lambda$
+reduces to $\theta$ at this prime, and $\delta$ reduces to
+$\theta-1\ne0$. Its denominator is therefore a unit, and the
+valuation of $R$ is one. At every other prime the valuation is even.
+This proves the assertion about the reduced denominator and the odd
+valuations. Positivity follows from $d+\epsilon$ even and the
+positive numerator. The final assertion follows because a product
+of local squares divided by a nonzero square is a square.
+\end{proof}
+
+The prime-pattern hypothesis in Proposition~\ref{prop:prime-pattern}
+is the same finite-pattern requirement used in the arithmetic
+construction: the contacts and scales are fixed first, rational
+coefficients are cleared by a fixed square denominator, and a
+finite set of primes is avoided \cite{Sun,Arithmetic}.
+Increasing $r$ changes this finite list and the associated constants.
+An explicit numerical cutoff must consequently be recalculated.
+
+\section{The divisibility exponents required by height arguments}
+
+\begin{lemma}\label{lem:two-scales}
+Let $\alpha>0$, $H_*>0$, and suppose a radical $M$ satisfies
+$h(s)\le H_*M(s)^\alpha$ at two nonzero rational values
+$s=\lambda$ and $s=T^2\lambda$, where $T\ne0$.
+If $N\ne0$ is an integer and
+\[
+ M(\lambda)^k\mid N,\qquad M(T^2\lambda)^k\mid N,
+\]
+then
+\[
+ h(T)\le H_*|N|^{\alpha/k}.
+\]
+The two radicals need not be relatively prime.
+\end{lemma}
+\begin{proof}
+The elementary height inequalities give
+\[
+ 2h(T)=h(T^2)\le h(T^2\lambda)+h(\lambda).
+\]
+Each radical is at most $|N|^{1/k}$, proving the result.
+\end{proof}
+
+\begin{corollary}\label{cor:residual}
+Assume \eqref{eq:base}. Suppose $B\ge1$, $A>0$, $J\ge0$,
+$T,\lambda\in\Q^\times$, and
+\[
+ B^2\le A h(T)+J.
+\]
+Assume both $\lambda$ and $T^2\lambda$ avoid $\Theta_r$.
+Let an integer residual $\Delta$ satisfy
+\[
+ |\Delta|\le5B^4,\qquad
+ M_r(\lambda)^k\mid\Delta,\qquad
+ M_r(T^2\lambda)^k\mid\Delta.
+\]
+If $rk>38$, then all solutions with $B$ sufficiently large in terms
+of $r,k,A,J,H_r$ satisfy $\Delta=0$.
+\end{corollary}
+\begin{proof}
+If $\Delta\ne0$, Theorem~\ref{thm:amplification} and
+Lemma~\ref{lem:two-scales} imply
+\[
+ B^2\le AH_r 5^{19/(rk)}B^{76/(rk)}+J.
+\]
+Since $76/(rk)<2$, this bounds $B$ above by a constant depending
+only on the displayed data.
+\end{proof}
+
+\begin{corollary}\label{cor:input}
+Under the same hypotheses, suppose an integer $N\ne0$ instead
+satisfies
+\[
+ |N|\le2\exp(h(\beta))B,\qquad
+ M_r(\lambda)^\mu\mid N,\qquad
+ M_r(T^2\lambda)^\mu\mid N.
+\]
+If $2r\mu>19$, then
+\[
+ \log B\le \frac{19}{2r\mu-19}\,h(\beta)+C,
+\]
+where $C$ depends only on $r,\mu,A,J,H_r$.
+\end{corollary}
+\begin{proof}
+Put $\gamma=19/(r\mu)<2$. The preceding argument gives
+\[
+ B^2\le AH_r2^\gamma\exp(\gamma h(\beta))B^\gamma+J.
+\]
+If $B^2\le2J$, the assertion follows by increasing $C$.
+Otherwise absorb $J$ into $B^2/2$, take logarithms, and divide by
+$2-\gamma$. The coefficient of $h(\beta)$ becomes
+$\gamma/(2-\gamma)=19/(2r\mu-19)$.
+\end{proof}
+
+The least positive integers meeting these two strict inequalities are
+\[
+ k_r=\left\lfloor\frac{38}{r}\right\rfloor+1,
+ \qquad \mu_r=\left\lfloor\frac{19}{2r}\right\rfloor+1.
+\]
+Some useful values are:
+\begin{center}
+\begin{tabular}{rrrrrrrrrrrr}\toprule
+$r$&1&2&3&4&5&6&7&10&13&20&39\\\midrule
+$5r$&5&10&15&20&25&30&35&50&65&100&195\\
+$k_r$&39&20&13&10&8&7&6&4&3&2&1\\
+$\mu_r$&10&5&4&3&2&2&2&1&1&1&1\\\bottomrule
+\end{tabular}
+\end{center}
+These are requirements on divisibility of integer residuals. A formal
+approximation formula must separately be proved accurate enough to
+produce those divisibilities. Lower exponents can shorten such a
+formula, but the enlarged product $F_r$ requires additional arithmetic
+operations. Neither this table nor Theorem~\ref{thm:amplification}
+is a coordinate count for a polynomial definition of the integers.
+
+\section{Exact finite verification}
+
+The accompanying standard-library program
+\nolinkurl{check_contact_height_amplification.py} reconstructs the
+linear forms for the values of $r$ in the table, verifies their
+primitivity and pairwise distinct zeros, and factors every integer
+defining $\Sigma_r$. It records the exceptional primes larger than
+$76176$, the exact product $E_r$, and the height-transformation norm.
+It also checks the integer threshold inequalities and the normalized
+valuation identities. This calculation verifies the finite algebra;
+the arithmetic premise \eqref{eq:base} remains explicit.
+
+\begin{thebibliography}{9}
+\bibitem{Glazer} E. Glazer and contributors,
+\emph{Diophantine definition of the integers in the rationals},
+\texttt{manuscripts/quartic\_v9.tex}, commit
+\texttt{14e8f601fe0d9173d4a5f084aedc3e07066a7688},
+\url{https://github.com/elliotglazer/diophantine-z-q}.
+\bibitem{Sun} Z.-W. Sun,
+\emph{86 unknowns for Hilbert's tenth problem over the rationals},
+arXiv:2610.20691v2, Theorem 4.1,
+\url{https://arxiv.org/abs/2610.20691v2}.
+\bibitem{Arithmetic} J. Brox and contributors,
+\emph{Arithmetic dependencies and the corrected source argument},
+\texttt{arithmetic\_dependencies\_20261108\_v8.tex},
+Sections 2--3,
+\url{https://github.com/JoseBrox/diophantine-z-q_improvements}.
+\end{thebibliography}
+\end{document}

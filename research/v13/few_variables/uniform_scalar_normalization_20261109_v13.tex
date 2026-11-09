@@ -1,0 +1,448 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=28mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,booktabs,hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}\newtheorem{remark}[theorem]{Remark}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\newcommand{\R}{\mathbb R}\newcommand{\vpp}{v_p}
+\title{A uniformly bounded real normalization for the scalar elliptic detector}
+\author{}\date{}
+\begin{document}\maketitle
+\begin{abstract}
+We give a scalar detector whose real preparation is uniform in the
+elliptic point carrying the large index.  The construction replaces an
+unbounded formal parameter by a bounded rational function and uses a
+positive rational normalization bounded away from zero.  Its local
+valuation implications are unchanged outside an explicitly defined
+finite set of primes.  This removes a real approximation requirement
+from the scalar certificate.  It does not assert a reduction in the
+number of variables: prescribed indices must still satisfy the
+independent reduction-order conditions at the finite contact primes.
+\end{abstract}
+
+\section{The elliptic curve and a bounded parameter}
+
+Put $K=\Q(\sqrt2)$, $D=(3-\sqrt2)^2$, and
+\[
+ E:\quad y^2=x^3-Dx.
+\]
+Write $\sigma$ for the nontrivial automorphism of $K/\Q$.
+An embedding of $K$ into $\R$ will be denoted by $\iota$.
+The identity component of $E_\iota(\R)$ consists of the point at
+infinity and the affine points with $x\ge\sqrt{\iota(D)}$.
+In particular, every nonzero double has such an abscissa.
+For an affine non-torsion point define
+\[
+ f(Q)=\frac1{x(Q)},\qquad z(Q)=-\frac{x(Q)}{y(Q)},\qquad
+ w(Q)=\frac{y(Q)}{x(Q)^2+D}.
+\]
+
+\begin{lemma}\label{lem:bounded}
+At either real embedding and every nonzero double $Q$,
+\[
+ 0<\iota(f(Q))\le\frac1{\sqrt{\iota(D)}}<1,
+ \qquad |\iota(w(Q))|<1.
+\]
+The denominator $x(Q)^2+D$ never vanishes at a $K$-point.
+Moreover,
+\begin{equation}\label{eq:parameter-unit}
+ \frac{w(Q)}{z(Q)}
+ =-\frac{1-Df(Q)^2}{1+Df(Q)^2}.
+\end{equation}
+At a good nonarchimedean place where $Q$ lies in the formal group,
+the right side is a unit and is congruent to $-1$ in the residue field.
+\end{lemma}
+\begin{proof}
+The assertion about $f$ follows from the description of the real
+identity component and $3-\sqrt2>1$.  For $x>\sqrt D$, evaluated
+at either embedding,
+\[
+ w^2=\frac{x(x^2-D)}{(x^2+D)^2}<\frac1x
+ \le\frac1{\sqrt D}<1.
+\]
+The same bound holds at the endpoint, where $w=0$.
+Total positivity of $D$ proves nonvanishing of $x^2+D$.
+Using $y^2=x(x^2-D)$ gives~\eqref{eq:parameter-unit}.
+At a good formal point, $v(f)>0$ and $D$ is integral, so the
+numerator and denominator on the right are units.
+\end{proof}
+
+\begin{corollary}\label{cor:ratio}
+Suppose $P$ is a fixed non-torsion point and both $[c]P$ and
+$[h]P$ are in the formal group at a good place, with $c,h$ nonzero
+integers.  Then
+\[
+ v\!\left(\frac{w([c]P)}{w([h]P)}\right)
+ =v\!\left(\frac{z([c]P)}{z([h]P)}\right)=v(c/h).
+\]
+\end{corollary}
+\begin{proof}
+The first equality follows from Lemma~\ref{lem:bounded}.
+For the second, the formal logarithm divided by $z$ is a unit
+on the sufficiently deep formal neighborhood used in the scalar
+detector, and the formal logarithm is additive.  At the large
+contact primes used here this is the usual first formal neighborhood.
+Equivalently, the two logarithms are nonzero integer multiples
+of the logarithm of a common nonzero formal multiple of $P$.
+\end{proof}
+
+\section{A positive normalization bounded away from zero}
+
+Define the integer polynomials
+\[
+ \begin{split}
+  \beta(X)&=216X^4+450459,\\
+  \rho(X)&=\beta(X)(\beta(X)-1)(\beta(X)-2401)\\
+   &\hspace{21mm}\cdot(32\beta(X)+343)(2\beta(X)-1).
+ \end{split}
+\]
+Put
+\[
+ \ell=76249,\quad q=1021,\quad a_0=8\cdot108^5,\quad
+ A_0=66\cdot450459^5.
+\]
+The letters $\ell$ and $q$ denote two fixed primes.  Both are
+avoidance primes for $\rho$: the accompanying exact certificate
+checks $\rho(x)\ne0$ at every residue class modulo either prime.
+
+\subsection{A fixed polynomial denominator}
+
+Define
+\begin{equation}\label{eq:h0}
+ h_0(X)=2239488X^{10}+11663498286X^6
+              +\frac{9330368884708461}{512}X^2.
+\end{equation}
+Direct expansion gives
+\begin{equation}\label{eq:F}
+ \begin{split}
+ F(X):=\rho(X)-6h_0(X)^2
+  ={}&\frac{10882407499318210844052639}{64}X^8\\
+    &+\frac{110270372953940856744489540803781}{131072}X^4\\
+    &+1180712527837405404989927078052.
+ \end{split}
+\end{equation}
+Let $N$ be the sum of these three positive coefficients.  Let $T$
+be the smallest integer with
+\[
+ T\ge\max(\lceil N\rceil+1,2239488),\qquad T\equiv2\pmod\ell.
+\]
+Explicitly,
+\[
+                 T=1181553994055396276117553880104.
+\]
+Set
+\begin{equation}\label{eq:fixed-denominator}
+ \begin{gathered}
+ h=h_0+T,\qquad H=512h\in\Z[X],\qquad
+ \delta=\rho-6h^2\in\Z[1/2][X],\
+ J=\operatorname{Res}_X(\rho,H),\qquad
+ D_0=\left\lceil\sum_i|[X^i]\delta|\right\rceil,\qquad
+ \mu=\frac{3\cdot2239488}{8}.
+ \end{gathered}
+\end{equation}
+These quantities are fixed; none depends on the later exponent $L$.
+
+\begin{lemma}\label{lem:denominator}
+The integer $J$ is nonzero.  For every real $X$,
+\[
+ \delta(X)<0,\qquad
+ \mu(1+X^2)^5<|\delta(X)|\le D_0(1+X^2)^5,
+\]
+and
+\begin{equation}\label{eq:rho-ratio}
+ \frac{a_0}{D_0^2}
+ <\frac{\rho(X)}{\delta(X)^2}<\frac{A_0}{\mu^2}.
+\end{equation}
+The reduction of $\delta$ has no root modulo $\ell$ and its
+degree-ten leading coefficient is an $\ell$-unit.
+\end{lemma}
+\begin{proof}
+Put $\psi=1+X^2$.  As $X^4+1\ge\psi^2/2$,
+\[
+ 108\psi^2\le\beta(X)\le450459\psi^2,
+ \qquad a_0\psi^{10}<\rho(X)<A_0\psi^{10}.
+\]
+All coefficients of $h_0$ and $F$ are nonnegative, and
+$F(X)\le N\psi^4$.  Hence
+\[
+ 0<\sqrt{\rho(X)/6}-h_0(X)
+ =\frac{F(X)}{6(\sqrt{\rho(X)/6}+h_0(X))}
+ \le\frac{N}{\sqrt{6a_0}\,\psi}<N.
+\]
+It follows that $h-\sqrt{\rho/6}>T-N\ge1$.  Thus
+\[
+ |\delta|=6(h-\sqrt{\rho/6})(h+\sqrt{\rho/6})>6h.
+\]
+The inequalities $T\ge2239488$ and
+$(1+X^2)^5\le16(1+X^{10})$ imply $6h\ge\mu\psi^5$.
+The coefficient norm of the degree-ten polynomial $\delta$ gives
+the upper bound for $|\delta|$.  These facts prove~\eqref{eq:rho-ratio}.
+
+If $\rho(\alpha)=0$, then $\alpha^4$ is a negative rational
+number, so $\alpha^2$ is purely imaginary.  Formula~\eqref{eq:h0}
+shows that $h_0(\alpha)$ is purely imaginary.  Since $T>0$,
+$H(\alpha)\ne0$.  Therefore $J\ne0$.
+Finally the two assertions modulo $\ell$ are checked on all
+$76249$ residue classes in the supplied certificate, using
+$T\equiv2\pmod\ell$.  The leading coefficient is
+$-12\cdot2239488\,T$, which is an $\ell$-unit.
+\end{proof}
+
+\begin{lemma}\label{lem:odd-valuations}
+For every integer $X$ and every prime $p\ne2,3$, if
+$v_p(\rho(X))$ is odd, then
+\[
+                    v_p(\delta(X))\le2v_p(J).
+\]
+Consequently $J^4\rho(X)/\delta(X)^2$ has no negative odd
+valuation at any prime $p\ne2,3$.
+\end{lemma}
+\begin{proof}
+The polynomials $\rho,H$ are integral.  The resultant identity
+implies
+\[
+ \min\{v_p(\rho(X)),v_p(H(X))\}\le v_p(J).
+\]
+For $p\ne2,3$ the denominator $512$ and the coefficient $6$ are
+units.  If $u=v_p(\rho(X))$ is odd and $v=v_p(h(X))$, the two
+terms in $\delta=\rho-6h^2$ have different valuation parity.
+Thus $v_p(\delta)=\min(u,2v)$.
+If $u\le v_p(J)$ the desired bound is immediate.  Otherwise
+$v\le v_p(J)$, which gives the same bound.  It follows that
+\[
+ v_p(J^4\rho/\delta^2)\ge4v_p(J)+u-4v_p(J)=u>0.
+\]
+If $u$ is even, the valuation of the displayed rational number
+is even, which proves the last assertion.
+\end{proof}
+
+\subsection{The normalization and its local properties}
+
+Write
+\[
+ U_0=\frac{A_0}{\mu^2},\qquad
+ c_*=102^6J^4,\qquad
+ R_{\min}=\frac{a_0}{D_0^2q^2U_0}.
+\]
+For each odd $L\ge3$, let $k(L)$ be the smallest nonnegative
+integer satisfying
+\[
+                  q^{2k(L)}>c_*\ell^L U_0,
+\]
+and put
+\begin{equation}\label{eq:normalizer}
+ R_L(X)=\frac{c_*\ell^L\rho(X)}{q^{2k(L)}\delta(X)^2}.
+\end{equation}
+
+\begin{proposition}\label{prop:normalizer}
+For every real $X$ and every odd $L\ge3$,
+\[
+                    0<R_{\min}<R_L(X)<1.
+\]
+The constant $R_{\min}$ is independent of $L$.  For every rational $X$,
+\begin{equation}\label{eq:ell-depth}
+                   v_\ell(R_L(X))=L+4v_\ell(J).
+\end{equation}
+For every integer $X$, the reduced denominator of $R_L(X)$ is a
+square, $R_L(X)$ is a square in each of $\Q_2,\Q_3,\Q_{17}$, and
+\[
+ v_2(R_L)\ge4,\qquad v_3(R_L)\ge4,\qquad v_{17}(R_L)\ge4.
+\]
+If $p\nmid 2\cdot3\cdot17\cdot q\ell J$ is a positive contact
+prime of $\rho(X)$, then $v_p(R_L(X))=v_p(\rho(X))$.
+\end{proposition}
+\begin{proof}
+Since $U_0>1$ and $c_*\ell^L>1$, one has $k(L)\ge1$.
+Its minimality gives
+\[
+ \frac1{q^2U_0}\le\frac{c_*\ell^L}{q^{2k(L)}}<\frac1{U_0}.
+\]
+Combine this with~\eqref{eq:rho-ratio} for the real assertions.
+At an $\ell$-integral rational $X$, both $\rho(X)$ and $\delta(X)$
+are units.  If $v_\ell(X)<0$, their unit leading coefficients give
+$v_\ell(\rho(X))=20v_\ell(X)$ and
+$v_\ell(\delta(X))=10v_\ell(X)$.  Both cases yield
+\eqref{eq:ell-depth}.
+
+For integral $X$, direct residue calculations give
+\[
+ \rho(X)\in\Q_2^{\times2}\cap\Q_3^{\times2}\cap\Q_{17}^{\times2},
+ \quad v_2(\rho)=v_3(\rho)=2,\quad v_{17}(\rho)\in\{0,2\}.
+\]
+At $2$ and $3$ the valuation of $6h(X)^2$ is odd, whereas the
+valuation of $\rho(X)$ is even.  Thus $v_p(\delta)\le v_p(\rho)=2$.
+At $17$, the number $6$ is a nonsquare unit; since $\rho(X)$ is a
+nonzero local square, cancellation is again impossible in
+$\rho-6h^2$, and $v_{17}(\delta)\le v_{17}(\rho)\le2$.
+The factor $102^6$ therefore supplies the stated local depths.
+The number $\ell$ is a local square at $2,3,17$, and all remaining
+factors in~\eqref{eq:normalizer} are rational squares, so the local
+squareclasses are as claimed.
+
+At $p\ne2,3,q,\ell$ apply Lemma~\ref{lem:odd-valuations}; the
+additional factors are squares and do not lower the valuation.
+At $q$, $\rho(X)$ is a unit by the avoidance certificate, so
+$v_q(R_L)$ is even.  At $\ell$ it is positive by~\eqref{eq:ell-depth}.
+At $2,3$ it is even and positive, as already proved.  Thus no
+negative odd valuation occurs, proving the square-denominator
+assertion.  Finally, at a positive contact prime outside the
+displayed fixed set, the resultant identity makes $H(X)$ a unit.
+The relation $\delta=\rho-6h^2$ then makes $\delta(X)$ a unit,
+which proves the last assertion.
+\end{proof}
+
+\section{Uniform real preparation of the norm tree}
+
+Let $\mathcal U$ be a fixed neighborhood in the compact real closure
+of the relevant multiples of $P$, chosen so that
+\begin{equation}\label{eq:H-open}
+ |w(H)|\ge\eta,\qquad |\sigma w(H)|\ge\eta
+ \quad(H\in\mathcal U)
+\end{equation}
+for some fixed $0<\eta\le1$.
+Such a neighborhood exists around any non-torsion multiple in the
+identity component of that closure.  It is compatible with arbitrary
+fixed congruence conditions that select a finite-index subgroup:
+the closure of every such subgroup contains the identity component
+of the original compact closure.
+
+Let $C_S=S-P$ be any nonzero double and $H\in\mathcal U$ a nonzero
+double.  Write the rational components, in the basis $1,\sqrt2$, of
+\[
+             f(H),\qquad f(C_S),\qquad w(C_S)/w(H)
+\]
+as $g_0,\ldots,g_5$.  Set $m_0=\cdots=m_3=1$ and
+$m_4=m_5=20$.  Fix an integer $K$ such that
+\begin{equation}\label{eq:K}
+ \ell\nmid K,\qquad
+ K\ge\frac{4}{\eta\min(R_{\min},R_{\min}^{20})}.
+\end{equation}
+For $R=R_L(X)$ define
+\[
+ u_i=\frac{g_i}{K R^{m_i}},\qquad N_R(u,v)=u^2+Rv^2,
+\]
+and the same norm tree as in the scalar detector:
+\[
+ \begin{gathered}
+ w_0=N_R(1,u_0),\quad w_1=N_R(u_1,u_2),\quad
+ w_2=u_3,\quad w_3=N_R(u_4,u_5),\
+ W=N_R\bigl(N_R(w_0,w_1),N_R(w_2,w_3)\bigr).
+ \end{gathered}
+\]
+The constants $K$ and $R_{\min}$ are independent of $L$.
+
+\begin{theorem}\label{thm:uniform}
+For every real $X$ and every pair $C_S,H$ satisfying the preceding
+conditions,
+\[
+ 1\le W\le\frac{86249}{65536}<\frac32,
+ \qquad 0<R_L(X)W^2<\frac94<17.
+\]
+These conclusions impose no real approximation condition on $C_S$.
+At every contact prime outside the fixed set of prime divisors of
+$2\cdot3\cdot7\cdot17\cdot q\ell KJ$, the local valuation implications
+of the scalar detector are unchanged by replacing $z$ with $w$
+and dividing its six component tests by $K$.
+At the fixed prime $\ell$, the detector gives the index depth
+\[
+                  v_\ell(c)\ge19L+1,
+       \qquad C_S=[c]P.
+\]
+\end{theorem}
+\begin{proof}
+Lemma~\ref{lem:bounded} and~\eqref{eq:H-open} bound the absolute
+value of each $g_i$ by $1/\eta$: for a number $u+v\sqrt2$,
+its rational components are half the sum and $1/(2\sqrt2)$
+times the difference of its two real conjugates.
+The choice of $K$ therefore gives $|u_i|\le1/4$.
+Since $0<R<1$,
+\[
+ \begin{split}
+ 1\le w_0\le17/16,\quad |w_1|\le1/8,\quad
+ |w_2|\le1/4,\quad |w_3|\le1/8,\\
+ 1\le N_R(w_0,w_1)\le293/256,\qquad
+ 0\le N_R(w_2,w_3)\le20/256.
+ \end{split}
+\]
+Squaring these last bounds proves the asserted bound for $W$.
+
+At a good consumed contact prime, $K$ and $\delta(X)$ are units;
+the latter assertion follows from the resultant identity whenever
+the input is integral at that prime.  Thus the contact valuation
+of $R$ agrees with the prescribed contact valuation of $\rho$.  At such a contact prime, the positive contact of $\beta(X)$
+also implies that $X$ is integral, since $p\nmid216$.
+The order-one component tests put
+$H,C_S$ in the formal groups exactly as before.  Lemma~\ref{lem:bounded}
+and Corollary~\ref{cor:ratio} then show that the two order-twenty
+tests have precisely the required ratio valuation.
+
+More explicitly, if $\nu=v_\ell(R)>0$ is odd, a node
+$u^2+Rv^2$ has valuation equal to the smaller term valuation,
+because the two terms have different parity.  The pole obstruction
+for $RW^2$ gives $v_\ell(W)>-\nu/2$.  Following every path through
+the norm tree shows that each normalized leaf has valuation
+greater than $-\nu$.  Since $\ell\nmid K$, both components of
+$w(C_S)/w(H)$ have valuation greater than $19\nu$.  The exact
+formal ratio consequently gives $v_\ell(c/h)\ge19\nu+1$.
+Since $h\in\Z$, Proposition~\ref{prop:normalizer} yields the
+claimed bound.
+\end{proof}
+
+\begin{remark}[Finite exceptions and the contact-height constant]
+Suppose the contact-height theorem is written as
+$h(\beta)\le H M(\beta)^{19}$, where $M(\beta)$ is the squarefree
+product of the consumed contact primes.  Removing a fixed finite
+set $F$ changes the bound only to
+\[
+ h(\beta)\le H\left(\prod_{p\in F}p\right)^{19}
+                       M_F(\beta)^{19}.
+\]
+Thus the finite exceptional primes of this normalization change a
+fixed constant and the resulting sufficient index threshold.
+They do not require an additional variable or an additional
+arithmetic existence theorem.  No claim that the displayed constant
+or coefficients are small is intended.
+\end{remark}
+
+\section{The remaining finite-place condition}
+
+The real estimate does not replace the finite-place choice of the
+index $c$.  If $P$ has good reduction at a place $\mathfrak p$ and
+its reduction has order $d_{\mathfrak p}$, then
+\[
+          [c]P\text{ belongs to the formal group at }\mathfrak p
+          \quad\Longleftrightarrow\quad d_{\mathfrak p}\mid c.
+\]
+The integer $d_{\mathfrak p}$ can have prime factors different
+from the residue characteristic.  Consequently $p^e\mid c$ does
+not by itself imply formal-group membership.  In particular,
+a proposed prescribed index
+\[
+                       c=M\rho(X)^e
+\]
+must still be shown to be divisible by the reduction order at
+every variable contact prime.  The uniform real normalization
+proved here leaves this arithmetic requirement explicit.
+
+\section*{Verification}
+
+The accompanying standard-library Python program
+\texttt{check\_uniform\_scalar\_normalization.py} verifies the finite
+residue assertions, the exact norm-tree bound, and the constant
+inequalities.  The resultant is evaluated independently by a Sylvester determinant
+and a product of five quartic-factor formulas.  The displayed proofs,
+rather than finite sampling,
+establish the assertions for all real or rational inputs.
+
+\begin{thebibliography}{9}
+\bibitem{Source}
+\emph{A non-torsion construction in twenty-seven variables},
+project paper, version 12, 9 November 2026.
+\bibitem{Explicit}
+\emph{An explicit non-torsion construction in twenty-nine variables},
+project paper, version 12, 9 November 2026.
+\end{thebibliography}
+\end{document}
