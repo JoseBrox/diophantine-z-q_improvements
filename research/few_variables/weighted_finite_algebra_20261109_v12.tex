@@ -1,0 +1,416 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,booktabs,microtype}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\DeclareMathOperator{\Res}{Res}
+\DeclareMathOperator{\Spec}{Spec}
+\setlength{\emergencystretch}{2em}
+\title{Weighted bounds for eliminating finite algebraic choices}
+\author{}\date{9 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+We give a one-coordinate polynomial presentation of the rational points
+of a guarded finite free algebra with reduced active fibers.
+A direct scaling of its characteristic polynomials excludes singular
+choices of separating element and all drops in degree.
+Weighted principal minors yield explicit degree and coefficient bounds.
+Applied to the specified elliptic constructions, the method gives a
+family in twenty-seven total variables of degree less than $2^{151}$,
+and a fully specified polynomial in twenty-nine total variables of
+degree less than $2^{157}$ and coefficient height at most
+$2^{2^{168}}$. Their assertions about defining the integers retain
+exactly the arithmetic hypotheses of their sources; the algebraic
+elimination theorem is unconditional.
+\end{abstract}
+
+\section{The guarded finite algebra}
+
+Let $R=\Z[x_1,\ldots,x_b]$, and let
+\[
+ A=R[z_1,\ldots,z_m]/(f_1,\ldots,f_m)
+\]
+be a triangular monic presentation. Thus $f_i$ involves only
+$z_1,\ldots,z_i$ and is monic of degree $e_i$ in $z_i$.
+The standard monomials
+\[
+ z_1^{a_1}\cdots z_m^{a_m},\qquad 0\le a_i<e_i,
+\]
+are an $R$-basis of $A$. Write $n=\prod_i e_i$ for its rank
+and $M_a$ for multiplication by $a\in A$ in this basis.
+Fix a guard $G\in A$. At every rational base point we assume that
+each geometric point of the fiber with $G\ne0$ has local length one.
+No assumption is made about points where $G=0$; those local algebras
+may be nonreduced. The predicate to be presented is
+\begin{equation}\label{eq:predicate}
+ \text{there is an $R$-algebra specialization $A\longrightarrow\Q$
+ over the given base point with $G\ne0$.}
+\end{equation}
+There are no additional closed residual equations in this statement.
+The two applications below have precisely this form: every equation
+has already been included among the monic relations, and the remaining
+conditions are nonzero guards.
+
+For $0\le\ell\le m n(n+1)/2$, put
+\[
+ \lambda_\ell=1+\sum_{i=1}^m\ell^i z_i,
+ \qquad H_\ell(V)=\det(I-VM_{G\lambda_\ell})
+                   =\sum_{k=0}^n a_kV^k.
+\]
+The coefficients $a_k\in R$ depend on $\ell$, and $a_0=1$.
+For $1\le d\le n$, define
+\[
+ H_{\ell,d}(V)=\sum_{k=0}^d a_kV^k,
+ \qquad g_{\ell,d}=\Res_V(H_{\ell,d},H'_{\ell,d}).
+\]
+The resultant is the Sylvester determinant with prescribed degrees
+$d,d-1$, including after specialization. Define
+\begin{equation}\label{eq:factor}
+ Q_{\ell,d}(\mathbf x,U)=
+ \begin{cases}
+ H_{\ell,d}(g_{\ell,d}U)^2+\displaystyle\sum_{k=d+1}^n a_k^2,
+       & d<n,\\[2mm]
+ H_{\ell,n}(g_{\ell,n}U),&d=n,
+ \end{cases}
+\end{equation}
+and set
+\begin{equation}\label{eq:product}
+ P(\mathbf x,U)=
+ \prod_{\ell=0}^{m n(n+1)/2}\ \prod_{d=1}^n Q_{\ell,d}(\mathbf x,U).
+\end{equation}
+All these expressions are integer polynomials. Their indices, matrices
+and algebra generators are part of a finite coefficient specification,
+not additional existential coordinates.
+
+\begin{theorem}\label{thm:elimination}
+For every rational base point $\mathbf x$, there is a rational $U$
+with $P(\mathbf x,U)=0$ if and only if \eqref{eq:predicate} holds.
+In particular, the construction adds exactly one rational coordinate.
+\end{theorem}
+\begin{proof}
+The universal identity
+\[
+ \Res(f,f')=(-1)^{d(d-1)/2}a_d\operatorname{Disc}(f)
+\]
+shows that $g_{\ell,d}\ne0$ forces $a_d\ne0$ and makes
+$H_{\ell,d}$ squarefree of degree $d$. This also holds for
+$d=1$, when the discriminant is one.
+
+Suppose $Q_{\ell,d}(\mathbf x,U)=0$. If $g_{\ell,d}=0$ or
+$U=0$, then $H_{\ell,d}(g_{\ell,d}U)=1$, a contradiction.
+For $d<n$, a sum of rational squares vanishes only when all its
+terms vanish. Thus $a_{d+1}=\cdots=a_n=0$ and
+$H_\ell=H_{\ell,d}$. The same equality is automatic for $d=n$.
+Consequently $V=g_{\ell,d}U$ is a nonzero simple rational root
+of $H_\ell$. With $M=M_{G\lambda_\ell}$, the rational matrix
+$I-VM$ has a one-dimensional kernel. Every multiplication matrix
+$M_{z_i}$ preserves this kernel and acts there by a rational scalar
+$\zeta_i$. The algebra relations imply $f_i(\boldsymbol\zeta)=0$.
+The eigenvalue of $M$ there is $1/V\ne0$, so
+$G(\boldsymbol\zeta)\ne0$. This proves soundness, including
+fibers with inactive nilpotents and complex residue fields.
+
+Conversely, suppose a guarded rational point exists. At each geometric
+point $p$ with $G(p)\ne0$, the polynomial in $\ell$
+\[
+ G(p)\left(1+\sum_i\ell^iz_i(p)\right)
+\]
+is nonzero and has degree at most $m$. For distinct such points
+$p,q$, the difference of the corresponding polynomials is nonzero:
+otherwise their constant coefficients give $G(p)=G(q)\ne0$,
+and their other coefficients give $z_i(p)=z_i(q)$ for every $i$.
+There are at most $n$ points. Counting zero values and pairwise
+collisions, at most $m n(n+1)/2$ values of $\ell$ are excluded.
+Hence one of the indicated integers makes all active eigenvalues
+nonzero and distinct.
+
+At an inactive local algebra multiplication by $G\lambda_\ell$
+has only the eigenvalue zero, so its contribution to
+$\det(I-VM)$ is one, even if the algebra is nonreduced.
+All active local algebras have length one. Therefore, for the selected
+$\ell$, $H_\ell$ is squarefree of some degree $1\le d\le n$.
+The given rational point supplies a nonzero rational root $V$.
+Its resultant $g_{\ell,d}$ is nonzero. The rational choice
+$U=V/g_{\ell,d}$ annihilates the corresponding factor
+in \eqref{eq:factor} and hence the product.
+\end{proof}
+
+The proof permits degree drops and does not require the algebra
+or its inactive fibers to be totally real. It does not replace a
+branchwise nonzero guard by the stronger requirement that its norm
+be nonzero on every geometric branch.
+
+\section{Weighted principal minors}
+
+Give each base coordinate weight one and each $z_i$ a nonnegative
+integer weight $w_i$. Assume that every nonleading monomial in
+$f_i$ has weight at most $e_iw_i$. Monic reduction then never
+increases weight. Suppose $G\lambda_\ell$ has weight at most
+$w$, uniformly in $\ell$.
+
+\begin{lemma}\label{lem:minors}
+For the characteristic coefficients above, $\deg a_k\le kw$.
+\end{lemma}
+\begin{proof}
+Let $b_j$ be the weight of the $j$th standard basis monomial.
+The $(i,j)$ entry of $M_{G\lambda_\ell}$ has degree at most
+$w+b_j-b_i$; a negative bound means that the entry is zero.
+For a principal minor indexed by a set $I$ of size $k$, every
+nonzero determinant term has degree at most
+\[
+ \sum_{j\in I}(w+b_j-b_{\sigma(j)})=kw.
+\]
+The basis weights cancel. Since $a_k$, up to sign, is the sum
+of all principal minors of size $k$, the result follows.
+\end{proof}
+
+The resultant $\Res(H_d,H'_d)$ is weighted homogeneous of
+weight $d^2$ when $a_k$ has weight $k$. Indeed, replacing $a_k$
+by $s^ka_k$ replaces $H_d(V)$ by $H_d(sV)$, and the resultant
+by $s^{d^2}\Res(H_d,H'_d)$. Hence
+\[
+ \deg g_{\ell,d}\le d^2w,
+ \qquad
+ \deg H_{\ell,d}(g_{\ell,d}U)
+       \le (d^3+d)w+d.
+\]
+The degree cases can be summed separately. Write
+\[
+ S=1+\frac{m n(n+1)}2,
+ \qquad
+ C(n)=2\sum_{d=1}^{n-1}\max(d^3+d,n)+(n^3+n).
+\]
+
+\begin{theorem}\label{thm:degree}
+The polynomial \eqref{eq:product} satisfies
+\begin{equation}\label{eq:degreebound}
+                 \deg P\le S\bigl(wC(n)+n^2\bigr).
+\end{equation}
+\end{theorem}
+\begin{proof}
+For $d<n$, the degree of its factor is at most
+\[
+ 2\max\bigl((d^3+d)w+d,nw\bigr)
+       \le2w\max(d^3+d,n)+2d.
+\]
+For $d=n$ the unsquared factor has degree at most
+$(n^3+n)w+n$. The sum of the additive terms is
+$2\sum_{d=1}^{n-1}d+n=n^2$. There are $S$ separating choices.
+\end{proof}
+If $t$ is the largest integer with $t^3+t<n$, then an explicit
+closed formula for the finite sum is
+\begin{equation}\label{eq:Cclosed}
+ C(n)=\frac{n^4+3n^2}{2}+2tn
+       -\frac{t^2(t+1)^2}{2}-t(t+1).
+\end{equation}
+
+\section{Coefficient norms}
+
+For an integer polynomial $F$, write $\lVert F\rVert_1$ for
+the sum of the absolute values of its coefficients. Its coefficient
+height is at most $\lVert F\rVert_1$. Choose positive real weights
+for the standard basis and use the resulting weighted column norm
+on multiplication matrices, applying $\lVert\cdot\rVert_1$ to
+each polynomial entry. Suppose
+\[
+                  \lVert M_{G\lambda_\ell}\rVert\le2^\beta
+\]
+uniformly in $\ell$. Principal minors are invariant under the
+diagonal similarity defining this norm. Expanding a minor and using
+column sums therefore gives
+\[
+ \lVert a_k\rVert_1\le {n\choose k}2^{k\beta}
+                         \le2^{k(\beta+\log_2 n)}.
+\]
+In this section suppose $n=2^r$, and put $b=\beta+r$.
+
+\begin{lemma}\label{lem:resnorm}
+For $1\le d\le n$,
+\[
+ \log_2\lVert g_{\ell,d}\rVert_1
+      \le d^2b+3d(r+1),
+\]
+where the inequality is automatic if the resultant is zero.
+\end{lemma}
+\begin{proof}
+Every nonzero term in the Sylvester determinant has coefficient
+index weight $d^2$, so the characteristic-coefficient contribution
+is at most $2^{d^2b}$. There are $d$ derivative rows, contributing
+at most $d^d$, and at most $(2d-1)!$ determinant terms. Their
+product is at most $(2d)^{3d}$, and $\log_2(2d)\le r+1$.
+\end{proof}
+
+It follows that
+\[
+ \log_2\lVert H_{\ell,d}(g_{\ell,d}U)\rVert_1
+       \le(d^3+d)b+3d^2(r+1)+\lceil\log_2(d+1)\rceil.
+\]
+For $d<n$, bounding the sum in \eqref{eq:factor} by the number
+of its summands gives
+\[
+ \log_2\lVert Q_{\ell,d}\rVert_1
+ \le2b\max(d^3+d,n)+(6d^2+3)(r+1).
+\]
+For $d=n$ the unsquared factor instead satisfies
+\[
+ \log_2\lVert Q_{\ell,n}\rVert_1
+ \le(n^3+n)b+(3n^2+1)(r+1).
+\]
+Submultiplicativity of the coefficient norm proves the following bound.
+
+\begin{theorem}\label{thm:norm}
+Under the preceding hypotheses,
+\begin{equation}\label{eq:normbound}
+ \log_2\lVert P\rVert_1
+ \le S\left((\beta+r)C(n)+(r+1)(2n^3+4n-2)\right).
+\end{equation}
+\end{theorem}
+\begin{proof}
+Sum the preceding inequalities over $d$ and use
+\[
+ 6\sum_{d=1}^{n-1}d^2+3(n-1)+3n^2+1=2n^3+4n-2.
+\]
+Then sum over the $S$ values of $\ell$.
+\end{proof}
+
+\section{The defining-polynomial applications}
+
+The arithmetic constructions in \cite{Source27,Source29} provide
+triangular monic algebras with no closed residual equations. The
+source data specify every coefficient and every nonzero guard.
+They retain respectively $26$ and $28$ base coordinates, including
+the distinguished input. Nine monic quartic relations describe the
+point coordinates. There are respectively three and four additional
+quadratic relations for pole witnesses. The point derivatives are
+nonzero at every geometric point over a rational base point; the
+quadratic roots themselves are guarded nonzero. Thus the active
+local-length hypothesis of Theorem~\ref{thm:elimination} holds.
+
+The following values are obtained by integer recurrences directly
+from the monic relation coefficients and the guard.
+\begin{center}
+\begin{tabular}{lrr}
+\toprule
+Quantity & Twenty-seven variables & Twenty-nine variables\\
+\midrule
+$m$ & $12$ & $13$\\
+$n$ & $2^{21}$ & $2^{22}$\\
+$w$ & $6\,358\,790$ & $8\,724\,856$\\
+$\beta$ at $L=137731$ & $12\,880\,956\,901$ & $12\,887\,537\,402$\\
+$t$ in \eqref{eq:Cclosed} & $127$ & $161$\\
+\bottomrule
+\end{tabular}
+\end{center}
+For completeness, the generator weights for the first algebra are
+\[
+ \underbrace{6,\ldots,6}_{9\text{ entries}},
+ 1568138,\ 1935231,\ 116318,
+\]
+and the second has one additional weight $1935231$.
+The guard weights are $4423559$ and $6789625$, respectively;
+adding the largest generator weight gives $w$.
+The coefficient norm bounds use the weighted companion-column
+recurrences of the specified monic algebras. In each relation,
+choose a logarithmic generator bound at least
+\[
+ \max_{k<e_i}\left\lceil
+ \frac{\log_2\lVert c_{ik}\rVert}{e_i-k}\right\rceil
+       +\left\lceil\log_2\#\{k:c_{ik}\ne0\}\right\rceil,
+\]
+where $f_i=z_i^{e_i}+\sum_{k<e_i}c_{ik}z_i^k$ and the
+previously chosen generator weights are used in the coefficient
+norm. This bounds multiplication by $z_i$. Applying addition and
+multiplication inequalities to the guard and separating element
+gives the displayed $\beta$ uniformly over its finite selector range.
+
+\begin{corollary}\label{cor:27}
+Under the arithmetic hypotheses of \cite{Source27}, there is a
+computable family in $27$ total variables such that every sufficiently
+large odd fixed coefficient exponent defines $\Z$ over $\Q$ and
+\[
+ \deg F\le
+ 1622838857795564438964780120527413199713157888<2^{151}.
+\]
+The sufficient coefficient threshold remains ineffective.
+\end{corollary}
+\begin{proof}
+Apply Theorem~\ref{thm:elimination} to the $26$-coordinate guarded
+source. Its rational base projection is preserved exactly.
+The source arithmetic theorem therefore applies with the same
+hypotheses and coefficient threshold. The source weights are uniform
+in the odd exponent because that exponent occurs only in fixed
+coefficients. Substitution into \eqref{eq:degreebound} gives the bound.
+\end{proof}
+
+\begin{corollary}\label{cor:29}
+Under the arithmetic hypotheses of \cite{Source29}, the same
+construction applied to its specified source with fixed exponent
+$L=137731$ gives an integer polynomial in $29$ total variables
+which defines $\Z$ over $\Q$, with
+\[
+ \deg F\le
+ 154383598645603405051555717167316362269845989152<2^{157},
+\]
+and coefficient height at most $2^{C_*}$, where
+\[
+ C_*=228040944767112830511621792043639838233373391751570<2^{168}.
+\]
+\end{corollary}
+\begin{proof}
+Theorem~\ref{thm:elimination} preserves the rational base projection
+of the $28$-coordinate source. Its fixed parameter is the certified
+sufficient one from the effective arithmetic theorem. Substitute
+the second column of data into \eqref{eq:degreebound} and
+\eqref{eq:normbound}.
+\end{proof}
+
+Both degree assertions are upper bounds for completely specified
+polynomials, not claims that the expanded polynomials attain those
+degrees. The first corollary does not certify $137731$ as a sufficient
+parameter. The construction at that exponent is an algebraically
+specified example in the family; its computable coefficient bound
+cannot supply an effective bound for a member known to define
+$\Z$. Neither corollary removes an arithmetic premise or proves
+a smaller number of variables.
+
+\section{Reproducible certificates}
+
+The accompanying program \texttt{build\_weighted\_specification.py}
+reads a verified source specification, checks the absence of closed
+residuals and indexed guards, reconstructs every generator bound,
+and writes \eqref{eq:product} as a complete indexed polynomial
+specification. The files for the $27$- and $29$-variable constructions
+include integer degree and coefficient certificates and SHA-256
+identifiers for both their input and output specifications.
+
+The independent program \texttt{check\_weighted\_specification.py}
+evaluates the defining sum $C(n)$ literally and checks the integer
+bounds. It also verifies small exact finite algebras with irrational
+real roots, complex residue factors, zero guards, inactive nilpotents,
+selector collisions, and degree drops. In every successful branch
+it recovers the rational character from the one-dimensional kernel.
+These tests exercise the exceptional cases in the proof; they do
+not replace that proof or verify the global arithmetic hypotheses.
+
+\begin{thebibliography}{9}
+\bibitem{Source27}
+\emph{A defining polynomial in twenty-seven variables:
+an existence theorem with a uniform degree bound},
+companion paper; its exact guarded source is supplied in
+\texttt{computation/few\_variables/trace27\_nontorsion}.
+\bibitem{Source29}
+\emph{An explicit defining polynomial in twenty-nine variables
+with effective elliptic sum heights},
+companion paper; its exact guarded source is supplied in
+\texttt{computation/few\_variables/effective29\_nontorsion}.
+\bibitem{FiniteAlgebra}
+\emph{Eliminating finite algebraic choices with one coordinate},
+companion paper on general guarded finite algebras, including
+closed residual equations and arbitrary number fields.
+\end{thebibliography}
+\end{document}
