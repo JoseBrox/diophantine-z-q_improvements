@@ -16,8 +16,8 @@ with effective elliptic sum heights}
 Under the four arithmetic inputs of the specified elliptic construction,
 we give an explicitly specified integer polynomial in twenty-nine total
 variables whose rational input projection is exactly the integers.
-Its total degree is less than $2^{157}$ and its coefficient height is
-at most $2^{2^{168}}$. The construction uses direct square-abscissa
+Its total degree is less than $2^{89}$ and its coefficient height is
+at most $2^{2^{99}}$. The construction uses direct square-abscissa
 charts, a degree-six square predicate, and an effective height bound
 for the sum of four elliptic abscissas. A single fixed coefficient
 exponent, $137731$, is proved sufficient. There is no ineffective
@@ -49,8 +49,8 @@ The specification accompanying this paper determines a polynomial
 \]
 that defines $\Z$ over $\Q$ and satisfies
 \[
-             \deg F<2^{157},\qquad
-             \max|\operatorname{coeff}(F)|\le2^{2^{168}}.
+             \deg F<2^{89},\qquad
+             \max|\operatorname{coeff}(F)|\le2^{2^{99}}.
 \]
 Every coefficient choice, finite index range, and arithmetic operation
 in the specification is explicit. In particular, the fixed odd exponent
@@ -575,97 +575,108 @@ quadratic pole root is already guarded nonzero in the source.
 Thus zero-root strata are inconsistent and are discarded.
 The finite-algebra rank is $4^9 2^4=2^{22}$.
 The point quartics are separable at every rational retained base.
-The direct-scaled finite-algebra theorem of~\cite{Weighted} replaces
-all thirteen finite roots by one rational coordinate. There are
-precisely twenty-nine total polynomial coordinates.
+The theorem of~\cite{Active} replaces all thirteen finite roots
+by one rational coordinate while retaining every nonautomatic guard.
+There are precisely 29 total polynomial variables.
 
-Let $n_0$ be the rank of the finite algebra and let $m$ be its
-number of monic generators $z_1,\ldots,z_m$. Let $G$ be the product
-of the remaining nonzero guards. For each integer
+Write $B_0$ for the algebra of the nine point roots and $A_0$
+for the algebra after the quadratic pole roots have been adjoined.
+These algebra symbols are unrelated to the earlier point-chart
+coefficients. Put $b_0=4^9=2^{18}$ and $n_0=\dim A_0$.
+If the pole roots are $q_1,\ldots,q_s$, their relations are
+$q_j^2=c_j$ with $c_j\in B_0$. Exact coefficient-dependency
+inspection shows that the source guard is
+$G=gq_1\cdots q_s$ with $g\in B_0$. There are no closed
+residual equations. Define $T=g^2\prod_jc_j$ and
 \[
- 0\le s\le m n_0(n_0+1)/2,\qquad
- \lambda_s=1+\sum_{i=1}^{m}s^i z_i,
+ \det_{B_0}(I-vM_T)=\sum_{j=0}^{b_0}a_jv^j,\qquad a_0=1.
 \]
-form the multiplication matrix and its characteristic polynomial
+Let $\theta_1,\ldots,\theta_m$ be the point and pole generators
+in order, and let $\delta_i$ be the discriminant of the $i$th
+point quartic. They are scalar polynomials, nonzero at every
+rational base point by the point-chart proof above. Put
 \[
- H(V)=\det(I-VM_{G\lambda_s})=\sum_{k=0}^{n_0}a_kV^k.
+ R=n_0\left(1+\sum_{i=1}^m\sum_{u,v=1}^{n_0}
+          (M_{\theta_i}^{A_0})_{uv}^2
+        +\sum_{u,v=1}^{b_0}(M_g^{B_0})_{uv}^2\right).
 \]
-There are no closed residual equations in this source. For every
-$1\le d\le n_0$, define
+For each $1\le r\le b_0$, set
+\begin{align*}
+ c&=a_r,& h_r(Z)&=\sum_{j=0}^r a_jZ^{r-j},& E_r&=c-h_r(T),\\
+ D_r&=c^2\prod_{i=1}^9\delta_i^2,&
+ S_r&=r(s+1)+108,\\
+ K_r&=(2R)^{S_r}(1+c^2)\prod_{i=1}^9(1+\delta_i^2),&
+ C_r&=D_r+4RK_r,\\
+ \beta_r&=D_rE_r\left(C_r^m+
+                  \sum_{i=1}^mD_r^iC_r^{m-i}\theta_i\right),&
+ H_r(U)&=\det_{A_0}(I-UM_{\beta_r}).
+\end{align*}
+The required polynomial is the following finite integer product:
 \[
- H_d(V)=\sum_{k=0}^d a_kV^k,\qquad
- g_d=\operatorname{Res}_V(H_d,H_d'),
+ F=H_{b_0}(U)\prod_{r=1}^{b_0-1}
+             \left(H_r(U)^2+\sum_{j=r+1}^{b_0}a_j^2\right).
 \]
-using Sylvester degrees $d,d-1$. The factor for this case is
-\[
- Q_{s,d}(U)=
- \begin{cases}
- H_d(g_dU)^2+\displaystyle\sum_{k=d+1}^{n_0}a_k^2,&d<n_0,\\[1mm]
- H_{n_0}(g_{n_0}U),&d=n_0.
- \end{cases}
-\]
-The defining polynomial is the product of these factors over all
-specified $s,d$. Every operation is integer coefficient arithmetic
-with explicit finite index ranges.
+Every operation has an explicit finite range. There is exactly
+one extra rational coordinate, namely $U$.
 
-The direct-scaled finite-algebra theorem of~\cite{Weighted} proves
-that this product has exactly the rational base projection of the
-guarded source. Indeed, $H_d(0)=1$ excludes $g_d=0$ at every zero
-of a factor, and the resultant then makes the full characteristic
-polynomial squarefree of degree $d$. Its rational root gives a
-one-dimensional rational eigenspace for all commuting multiplication
-matrices, hence a guarded rational point. Conversely one of the
-specified separating elements makes all active eigenvalues distinct
-and nonzero. Inactive nonreduced fibers, complex residue factors,
-and drops in degree are included in that proof.
+The separating-element theorem of~\cite{Active} proves that
+this polynomial has precisely the guarded source projection.
+Here is the reason for its treatment of every specialization.
+The actual degree of $\det_{B_0}(I-vM_T)$ counts the point-algebra
+characters with $T\ne0$. At that degree, $E_r/c$ is the
+idempotent of those factors. Moreover
+\[
+ |c|=\prod_{\chi:\,T(\chi)\ne0}
+                     |g(\chi)|^2\prod_j|c_j(\chi)|.
+\]
+Since all generator and $g$-values have absolute value at most
+$R$, isolating a factor bounds each required quadratic root
+separation from below. The scalar discriminants similarly bound
+the point-root separations. Thus $D_r/K_r$ is a valid positive
+separation bound, and the powers of $C_r/D_r$ distinguish the
+characters where the guard is nonzero. Multiplication by $E_r$
+annihilates the other factors, including their nilpotents.
+A rational root of $H_r$ therefore gives a one-dimensional
+rational simultaneous eigenspace of all multiplication matrices,
+which reconstructs a guarded rational character. Conversely
+any such character gives a rational root. If $c=0$, then
+$H_r=1$; the squared tail coefficients exclude every other
+incorrect degree case. This also covers complex residue factors
+and an empty guarded part. The full proof and coefficient
+estimates are in~\cite{Active}.
 
-For the quantitative bounds, give each retained variable weight one
-and each monic generator its certified weight. If the multiplication
-element $G\lambda_s$ has weight at most $w$, then
-$\deg a_k\le kw$: the basis-weight differences cancel in every
-principal minor. The resultant has coefficient index weight $d^2$.
-Consequently, with
-\[
- S=1+\frac{m n_0(n_0+1)}2,\qquad
- C(n_0)=2\sum_{d=1}^{n_0-1}\max(d^3+d,n_0)+(n_0^3+n_0),
-\]
-we have
-\[
-                      \deg F\le S\bigl(wC(n_0)+n_0^2\bigr).
-\]
-The complete degree and coefficient-norm proofs are supplied
-in~\cite{Weighted}.
+For clarity, if the certified weight and logarithmic operator
+norm of $\beta_r$ are at most $W_1r+W_0$ and $L_1r+L_0$,
+respectively, the principal-minor estimates give
+\begin{align*}
+ \deg F&\le n_0\bigl(W_1b_0^2+(W_0+1)(2b_0-1)\bigr),\\
+ \log_2\|F\|_1&\le n_0\bigl(L_1b_0^2+
+                   (L_0+\lceil\log_2n_0\rceil+1)(2b_0-1)\bigr)\\
+ &\hspace{12mm}+(b_0-1)\lceil\log_2(b_0+1)\rceil.
+\end{align*}
+The proof sums every degree case and uses
+$2\sum_{r=1}^{b_0-1}r+b_0=b_0^2$.
 
-Here $m=13$, $n_0=2^{22}$, and the generator weights are
+Here $m=13$, $s=4$, and $n_0=2^{22}$. The point-generator
+weights are all 6; the remaining weights are
+$1568138,1935231,1935231,116318$. The complete guard and
+its point factor have weights $6789625$ and $1234707$.
+The exact linear majorants are
 \[
- \underbrace{6,\ldots,6}_{9\text{ entries}},
- 1568138,\ 1935231,\ 1935231,\ 116318.
+ W_1=1367538680,\quad W_0=21229494749,
+ \qquad L_1=1937703183919,\quad L_0=33390373627586.
 \]
-The guard weight is $6789625$, and hence $w=8724856$.
-Weighted companion-column norms give the uniform logarithmic
-operator bound $\beta=12887537402$. There are
-$479615460265661825024$ factors.
-The integer degree majorant is
+They give
 \[
- D_* =154383598645603405051555717167316362269845989152
-       <2^{157}.
+ \deg F\le394212872202031272474705920<2^{89},
 \]
-The coefficient-norm theorem of~\cite{Weighted}, with $r=22$, gives
 \[
- \log_2\lVert F\rVert_1
- \le S\bigl((\beta+r)C(n_0)+(r+1)(2n_0^3+4n_0-2)\bigr)
- =C_*,
+ \log_2\|F\|_1\le558578343639412157650224021485<2^{99}.
 \]
-where
-\[
- C_* =228040944767112830511621792043639838233373391751570
-       <2^{168}.
-\]
-The coefficient height is at most the sum of absolute coefficients
-$\lVert F\rVert_1$. These are upper bounds; no assertion that the
-expanded polynomial attains either bound is needed. All finite sums
-and integer comparisons are independently checked. This proves the
-bounds in Theorem~\ref{thm:main}.
+Since coefficient height is at most $\|F\|_1$, these prove
+the stated bounds. They are upper bounds on the specified
+polynomial, not claims about its exact expanded degree or height.
+All finite sums and integer inequalities are independently checked.
 
 \section{Reproduction and computational scope}
 
@@ -684,18 +695,21 @@ normalizer is checked at all $76249$ residue classes, and its cutoff
 inequalities are checked by exact integer comparisons.
 
 \begin{samepage}
-The directory \texttt{weighted\_elimination} contains the compiler and
+The directory \texttt{active\_elimination} contains the compiler and
 independent checker:
 \begin{verbatim}
-build_weighted_specification.py
-check_weighted_specification.py
+build_active_specification.py
+check_active_specification.py
+check_active_degenerations.py
 \end{verbatim}
 \end{samepage}
-The final specification is in \texttt{weighted29}. The compiler uses the verified source
+The final specification is in \texttt{active29}. The compiler uses the verified source
 coefficient graph and writes precisely the polynomial defined above.
-The checker evaluates the degree and coefficient-bound sums literally,
-and checks small exact finite algebras with complex residue factors,
-inactive nilpotents, zero guards, selector collisions, and degree drops.
+The checker independently verifies the source dependencies and guard,
+certifies the companion-column inequalities, and sums every degree case
+literally. A separate checker uses determinant expansions, Newton traces,
+and exact polynomial gcds on small finite algebras with complex residue
+factors, inactive nilpotents, empty guarded parts, and degree drops.
 All programs require only the Python standard library.
 
 These computations verify the specified algebra and numerical bounds.
@@ -705,10 +719,10 @@ coefficient reconstruction does not prove those global arithmetic
 premises.
 
 \begin{thebibliography}{99}
-\bibitem{Weighted}
-\emph{Weighted bounds for eliminating finite algebraic choices},
+\bibitem{Active}
+\emph{Separating the Nonzero Part of a Finite Algebra},
 companion paper, 9 November 2026,
-\nolinkurl{weighted_finite_algebra_20261109_v12.tex}.
+\nolinkurl{active_finite_algebra_20261109_v15.tex}.
 
 \bibitem{Effective}
 \emph{Effective heights of sums of elliptic abscissas},

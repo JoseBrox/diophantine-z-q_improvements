@@ -122,11 +122,22 @@ def main():
         amplified_originals = {name:(amplified/name).read_bytes() for name in (
             'quadratic-family279.json','polynomial-family279.json',
             'construction-report279.json','independent-verification279.json')}
-        stages.append(run('279-variable exact contact-amplified construction',quartic/'build_quartic279.py'))
-        stages.append(run('279-variable independent rows, complete coefficients, and normalization',
+        stages.append(run('279-variable exact coefficient source reconstruction',quartic/'build_quartic279.py'))
+        stages.append(run('279-variable independent source rows and complete coefficients',
             quartic/'check_quartic279.py'))
         for name,raw in amplified_originals.items():
             assert (amplified/name).read_bytes()==raw,name
+        for count in (273,267):
+            folder=quartic/f'family{count}'
+            fixed_new={name:(folder/name).read_bytes() for name in (
+                f'quadratic-family{count}.json',f'polynomial-family{count}.json',
+                f'construction-report{count}.json',f'independent-verification{count}.json')}
+            stages.append(run(f'{count}-variable exact contact evaluation construction',
+                quartic/f'build_quartic{count}.py'))
+            stages.append(run(f'{count}-variable independent rows, full coefficients, and height',
+                quartic/f'check_quartic{count}.py'))
+            for name,raw in fixed_new.items():
+                assert (folder/name).read_bytes()==raw,name
         coordinate_budget=(quartic/'coordinate-budget279.json').read_bytes()
         stages.append(run('Disjoint coordinate accounting for the279-variable family',quartic/'check_coordinate_budget.py'))
         assert (quartic/'coordinate-budget279.json').read_bytes()==coordinate_budget
@@ -166,6 +177,49 @@ def main():
             weighted/'check_weighted_specification.py',weighted/'weighted27',weighted/'weighted29',
             '--output',weighted/'verification.json'))
         assert (weighted/'verification.json').read_bytes()==weighted_verification
+        active=few/'active_elimination'
+        for count,source in (
+                (27,few/'trace27_nontorsion/example_L137731/polynomial-specification.json'),
+                (29,few/'effective29_nontorsion/certificate/polynomial-specification.json')):
+            destination=active/f'active{count}'
+            fixed_active={name:(destination/name).read_bytes() for name in
+                ('polynomial-specification.json','construction-certificate.json')}
+            stages.append(run(f'{count}-variable exact separation on the nonzero guard locus',
+                active/'build_active_specification.py',source,destination))
+            for name,raw in fixed_active.items():
+                assert (destination/name).read_bytes()==raw,str(destination/name)
+        active_check=(active/'independent-verification.json').read_bytes()
+        stages.append(run('Independent nonzero-guard separation degree and norm bounds',
+            active/'check_active_specification.py',active/'active27',active/'active29',
+            '--output',active/'independent-verification.json'))
+        assert (active/'independent-verification.json').read_bytes()==active_check
+        degenerations=(active/'degeneration-certificate.json').read_bytes()
+        stages.append(run('Seven exact finite-algebra degeneration and determinant comparisons',
+            active/'check_active_degenerations.py','--output',active/'degeneration-certificate.json'))
+        assert (active/'degeneration-certificate.json').read_bytes()==degenerations
+        conditional=few/'conditional13'
+        conditional_files=[
+            conditional/'certificate/source.json.gz',
+            conditional/'certificate/source-polynomial-specification.json',
+            conditional/'certificate/source-construction-certificate.json',
+            conditional/'active13/polynomial-specification.json',
+            conditional/'active13/construction-certificate.json',
+            conditional/'independent-source-verification.json',
+            conditional/'independent-bound-verification.json']
+        conditional_originals={p:p.read_bytes() for p in conditional_files}
+        stages.append(run('Additional-abc 13-variable exact guarded source construction',
+            conditional/'build_conditional_source.py','--shift','3','--output',conditional/'certificate'))
+        stages.append(run('Independent 13-variable source conversion, charts, and every guard',
+            conditional/'check_conditional_source.py',conditional/'certificate',
+            '--output',conditional/'independent-source-verification.json'))
+        stages.append(run('13-variable exact finite-algebra specification',
+            active/'build_active_specification.py',
+            conditional/'certificate/source-polynomial-specification.json',conditional/'active13'))
+        stages.append(run('Independent 13-variable uniform degree and fixture coefficient bounds',
+            active/'check_active_specification.py',conditional/'active13',
+            '--output',conditional/'independent-bound-verification.json'))
+        for p,raw in conditional_originals.items():
+            assert p.read_bytes()==raw,str(p)
         stages.append(run('Quadratic extension square chart: exact cubic identities',
             work/'computation/quadratic_squares/check_quadratic_square_chart.py'))
         stages.append(run('Scalar normalization: Bezout certificate and exhaustive residue check',
@@ -192,6 +246,10 @@ def main():
         stages.append(run('Number-field norm-image reduction and elliptic valuation obstruction',
             number_fields/'check_norm_image_reduction.py'))
         assert (number_fields/'norm-image-reduction-verification.json').read_bytes()==norm_verification
+        exceptional=(number_fields/'exceptional-correspondence-certificate.json').read_bytes()
+        stages.append(run('Exact exceptional surface, inverse maps, and four output lines',
+            number_fields/'check_exceptional_correspondence.py'))
+        assert (number_fields/'exceptional-correspondence-certificate.json').read_bytes()==exceptional
         rationality_filter=(number_fields/'rationality-filter-certificate.json').read_bytes()
         stages.append(run('Exact slope and ordinate polynomials and labelled bounded searches',
             number_fields/'check_rationality_filters.py'))
@@ -227,6 +285,21 @@ def main():
             for a,b in zip(original['curves'],recomputed['curves']):
                 for key in ('B','rank_lower','rank_upper','torsion_order','independent_finite_field_orders'):
                     assert a[key]==b[key],(a['B'],key)
+            poles=work/'computation/pole_parameters'
+            original_poles=json.loads((poles/'fixed-e-obstruction-certificate.json').read_text())
+            stages.append(run('Prepared fixed-pole counterexamples, exact ranks, and squareclass descent',
+                poles/'check_fixed_e_obstruction.py'))
+            recomputed_poles=json.loads((poles/'fixed-e-obstruction-certificate.json').read_text())
+            for key in ('prepared_inputs','maps','known_infinite_order_point_on_E9809',
+                        'complete_x_squareclass_image_on_E9809','required_squareclass_absent',
+                        'everywhere_local_witnesses','good_reduction_outside'):
+                assert original_poles[key]==recomputed_poles[key],key
+            for a,b in zip(original_poles['elliptic_curves'],recomputed_poles['elliptic_curves']):
+                for key in ('parameter','coefficients','rank_lower','rank_upper',
+                            'good_prime_counts','torsion_order_upper_bound',
+                            'nonidentity_two_torsion','two_selmer_rank',
+                            'pairing_rank_independently_checked_over_F2'):
+                    assert a[key]==b[key],(a['parameter'],key)
     report={'status':'PASS','manifest_files_checked':len(manifest['files']),
         'compressed_tables_restored':restored,'pari_rank_checks_run':args.with_pari,'stages':stages,
         'scope':'Exact source identities, full quartic coefficients, finite-algebra specification, local constants and quantitative bounds. The global arithmetic projection premises are stated separately in the papers.'}

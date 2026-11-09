@@ -1,4 +1,6 @@
-# Weighted finite-algebra elimination
+# Source dependency: weighted finite-algebra elimination
+
+This module is retained for exact reproduction of a general elimination theorem. The leading 27- and 29-variable specifications are in [active_elimination](../active_elimination/README.md).
 
 This directory specifies two polynomials with the same rational input projections as the verified guarded sources. All variable counts include the input.
 

@@ -2,20 +2,20 @@
 
 ## Quartic coefficient tables
 
-The leading tables are in `computation/quartic/family279` and `family322`.
+The leading tables are in `computation/quartic/family267` and `family322`.
 
 | Family | Total variables | Quadratic equations | Terms with parameter powers separate | Ordinary monomials |
 |:--|--:|--:|--:|--:|
-| 279 | 279 | 253 | 3693 | 3692 |
+| 267 | 267 | 241 | 3423 | 3422 |
 | 322 | 322 | 294 | 4993 | 4992 |
 
-Each family has exact degree four and integer content one. The support counts hold for every positive coefficient parameter, hence for every integer $N\ge1$. The 322-variable member at $N=27464$ has a certified defining theorem under the stated arithmetic inputs. The 279-variable family requires a sufficiently large $N$ with ineffective threshold; its support and height computations do not certify a defining member.
+Each family has exact degree four and integer content one. The support counts hold for every positive coefficient parameter, hence for every integer $N\ge1$. The 322-variable member at $N=27464$ has a certified defining theorem under the stated arithmetic inputs. The 267-variable family requires a sufficiently large $N$ with ineffective threshold; its support and height computations do not certify a defining member.
 
 The fixed coefficient is $A_N=80989^{2N+1}$. In each family,
 
 $$P_N=\sum_j Q_{N,j}^2,$$
 
-where the complete quadratic-system file lists all residuals $Q_{N,j}$. The parameter is not an extra variable. The 322-variable tables use `integer-quadratic-family-v6` and `integer-quartic-family-v6`; the 279-variable tables use the corresponding `v7` labels. They share these fields:
+where the complete quadratic-system file lists all residuals $Q_{N,j}$. The parameter is not an extra variable. The 322-variable tables use `integer-quadratic-family-v6` and `integer-quartic-family-v6`; the 267-variable tables use the corresponding `v10` labels. They share these fields:
 
 | Field | Meaning |
 |:--|:--|
@@ -41,41 +41,50 @@ At $N=27464$, this number has exactly 1,791,283 binary digits. The reports retai
 
 ## Exact source dependencies
 
-The even-valuation builder reads and hash-checks family342 to produce family322. Its checker reconstructs the reduced powers and all four local factors. The contact-amplified builder reads family297 directly to produce family279; its separate checker reconstructs the degree-twenty contact polynomial from exact evaluations, every changed quadratic row, all five local factors, and the full quartic. The producers and checkers share no polynomial arithmetic implementation with each other. The shared-weight builder reads the family301 and family351 quadratic systems and verifies their SHA-256 digests. Those systems are reconstructed from family317 and family370, respectively. The source chain is complete in the supplied constructors. The 392-coordinate baseline and original source tables are distributed as deterministic gzip archives; their uncompressed lengths and hashes are recorded in `data/compressed_sources.json`. The restoration script rejects conflicting existing files.
+The even-valuation builder reads and hash-checks family342 to produce family322. The leading existence family follows the exact dependency chain family297 to family279 to family273 to family267. The checkers separately reconstruct the contact polynomial, the shared and separate degree-twenty evaluations, every changed quadratic row, all five local factors, and the full quartic. The producers and checkers share no polynomial arithmetic implementation. The source chain continues through the shared-weight and mixed-order families to the pinned baseline. Original large source tables are distributed as deterministic gzip archives; their uncompressed lengths and hashes are recorded in the compressed-source metadata. The restoration script rejects conflicting existing files.
 
 `PROVENANCE.json` in `computation/quartic` binds precise source commits, distributed computational files, and mathematical proofs. Every final quartic coefficient is stored; reconstruction requires no search or unpublished intermediate polynomial.
 
 ## Few-variable specifications
 
-The leading specifications are in `computation/few_variables/weighted_elimination/weighted27` and `weighted29`. Their source algebras are supplied by `trace27_nontorsion` and `effective29_nontorsion`, respectively. The 27-variable family has 26 retained coordinates and one additional rational coordinate; the explicit 29-variable construction has 28 retained coordinates and one additional rational coordinate.
+The leading specifications under the inherited arithmetic premises are in computation/few_variables/active_elimination/active27 and active29. Their source algebras are supplied by trace27_nontorsion and effective29_nontorsion. They have 26 and 28 retained coordinates, respectively, and one additional rational coordinate.
 
-Nine monic quartic point generators and three or four monic quadratic pole generators give ranks $2^{21}$ and $2^{22}$. Every pole generator is guarded nonzero. There is one conic chart and one retained quadratic stratum. Matrix entries, algebra generators, selector indices, and finite degree cases are formal polynomial operations, not quantified coordinates.
+Nine independent monic quartic point generators define a finite algebra B of rank b=2^18. Adding three or four monic quadratic pole generators gives A of rank 2^21 or 2^22. The guard has the form G=g times the product of the pole generators, with g in B; hence T=G^2 belongs to B.
 
-For a guarded multiplication element $u$, the compiler forms $\det(I-VM_u)=\sum a_kV^k$. In degree case $d$, put $H_d(V)=\sum_{k=0}^d a_kV^k$ and $g_d=\operatorname{Res}(H_d,H_d')$, using the fixed Sylvester degrees $d,d-1$. For $d<n$, use the factor
+Write
 
-$$H_d(g_dU)^2+\sum_{k>d}a_k^2.$$
+$$
+\det(I-vM_T)=\sum_{j=0}^{b}a_jv^j,\qquad a_0=1.
+$$
 
-For $d=n$, use the unsquared factor $H_n(g_nU)$. The finite product over the explicitly specified selector range and all degree cases is an ordinary integer polynomial. The constant coefficient $a_0=1$ rejects zero resultants and zero $U$ automatically. The theorem proves that a rational zero yields a rational algebra character with nonzero guard; the converse uses a separating selector. The leading algebras have no additional closed residuals.
+For each r=1,...,b, the specification uses a_r and the corresponding characteristic-polynomial relation to construct a multiple of the idempotent selecting precisely the branches on which the guard is nonzero. Point discriminants, a sum of squared matrix entries, and the product a_r supply an explicit separation scale. One polynomial element beta_r separates the surviving characters. All divisions used in the proof are cleared in its polynomial definition.
 
-Weighted principal minors give $\deg a_k\le kw$. With $S=1+mn(n+1)/2$ and
+Put H_r(U)=det(I-U M_beta_r). The final polynomial is
 
-$$C(n)=2\sum_{d=1}^{n-1}\max(d^3+d,n)+(n^3+n),$$
+$$
+H_b(U)\prod_{r=1}^{b-1}
+ \left(H_r(U)^2+\sum_{j>r}a_j^2\right).
+$$
 
-the total degree is at most $S(wC(n)+n^2)$. The complete norm calculation is recorded in each construction certificate and independently recomputed.
+It has exactly b=262144 factors. Wrong degree cases are rejected, and a rational zero in the correct case gives a one-dimensional rational eigenspace; the commuting source multiplication matrices recover a rational source character. The construction covers disappearing branches and inactive nilpotents. The full proof and exact formula for beta_r are in the finite-algebra paper. No rank-sized matrix or monomial expansion of these enormous polynomials is materialized.
 
 | Quantity | 27-variable family | Explicit 29-variable polynomial |
 |:--|:--|:--|
-| Degree upper bound | less than $2^{151}$ | less than $2^{157}$ |
-| Exact degree majorant | 1622838857795564438964780120527413199713157888 | 154383598645603405051555717167316362269845989152 |
-| Number of finite-product factors | 55340258609409818624 | 479615460265661825024 |
-| Fixed coefficient exponent | sufficiently large odd $L$; threshold ineffective | 137731, certified |
-| Coefficient-height bound for a certified defining member | no effective bound supplied | at most $2^{2^{168}}$ |
+| Degree upper bound | less than 2^87 | less than 2^89 |
+| Exact degree majorant | 111295944630211471361441792 | 394212872202031272474705920 |
+| Number of finite-product factors | 262144 | 262144 |
+| Fixed coefficient exponent | sufficiently large odd L; threshold ineffective | 137731, certified |
+| Coefficient-height bound for a certified defining member | no effective bound supplied | at most 2^(2^99) |
 
-These are upper bounds, not exact degrees or heights of the unexpanded polynomials. The explicit construction has
+These are upper bounds, not exact degrees or heights. For the explicit construction,
 
-$$\log_2\|F\|_1\le228040944767112830511621792043639838233373391751570.$$
+$$
+\log_2\|F\|_1\le558578343639412157650224021485.
+$$
 
-The numerical 27-variable fixture has $H(F)\le2^{2^{162}}$ at $L=137731$; this specific member is not certified to define the integers. SHA-256 digests bind input specifications and output specifications. The independent checker compares exact recurrences and nine small finite-algebra examples, including degree drops, repeated eigenvalues, complex factors, inactive nilpotents, and a zero guard.
+The 27-variable numerical fixture has log2 norm at most 217401420128398649581869203437, less than 2^98, at L=137731. This specific member is not certified to define the integers. The degree bound is uniform in L.
+
+SHA-256 digests bind source and output specifications. The independent checker imports no producer code and verifies every source coefficient dependency, the guard's pole exponents, weighted companion norms, and the sum of bounds for all factors. Seven exact degeneration examples compare determinants computed by permutation expansion and Newton traces, and check the relevant characteristic-polynomial gcds.
 
 ## Structural certificates and verification boundary
 

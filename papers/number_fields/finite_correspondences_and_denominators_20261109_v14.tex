@@ -1,0 +1,661 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,booktabs,microtype}
+\usepackage[margin=26mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\newcommand{\A}{\mathbb A}\newcommand{\PP}{\mathbb P}
+\newcommand{\Gm}{\mathbb G_m}\newcommand{\Ok}{\mathcal O_k}
+\DeclareMathOperator{\Dom}{Dom}
+\setlength{\emergencystretch}{2em}
+\title{Finite Correspondences over Abelian Varieties\newline and Bounded Denominators}
+\author{}\date{9 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+Let a variety over a number field map quasi-finitely to an abelian
+variety. We prove that the values of any rational function on its
+rational points meet each finitely generated multiplicative subgroup
+in a finite set. The same conclusion holds whenever the function
+takes only finitely many values on each geometric fiber of a morphism
+to an abelian variety. This consequence of semiabelian Mordell--Lang
+extends the rational-map obstruction to finite algebraic
+correspondences. It implies omission of almost every term of every
+fixed affine geometric progression, and weak approximation for the
+complement. For generically finite morphisms, sufficiently late
+represented terms must come from the exceptional locus. An explicit
+smooth surface shows why this exception is necessary. We also exclude
+bounded-denominator sets containing all integers when the witness
+fibers are soluble unirational varieties, or form a smooth projective
+family of genus-one curves over an abelian base. The latter argument
+uses a divisor-class map to the relative Jacobian, Siegel's theorem, and
+Merel's uniform torsion theorem. These conclusions identify restrictions
+on constructions of Diophantine sets; they do not prove undefinability
+of a ring of integers in its field of fractions.
+\end{abstract}
+
+\section{Definitions and the main statement}
+
+Throughout, $k$ is a number field and $\overline k$ is an algebraic
+closure. Varieties are reduced separated schemes of finite type.
+A rational function is evaluated on a specified open domain on which
+it is a morphism to $\A^1$. Restricting that domain is permitted.
+For a morphism $\pi:V\to A$ and $a\in A(\overline k)$, write
+$V_a$ for its geometric fiber. A morphism is \emph{quasi-finite}
+if it is of finite type and all its geometric fibers are finite.
+
+\begin{definition}
+A subset $T\subset k$ has \emph{uniformly bounded denominators}
+if there is a positive integer $M$ such that $MT\subseteq\Ok$.
+It has the \emph{weak-approximation property} if its diagonal image
+is dense in $\prod_{v\in S}k_v$ for every finite set $S$ of places
+of $k$.
+\end{definition}
+
+\begin{theorem}\label{thm:main}
+Let $A/k$ be an abelian variety, let $\pi:V\to A$ be a morphism,
+and let $h:U\to\A^1_k$ be the restriction of a rational function
+to an open subset $U\subseteq V$. Suppose that
+\begin{equation}\label{eq:finite-values}
+       h\bigl(U(\overline k)\cap V_a(\overline k)\bigr)
+       \quad\hbox{is finite for every }a\in A(\overline k).
+\end{equation}
+Then, for every finitely generated subgroup $\Lambda\subset k^*$,
+the set
+\[
+                         h(U(k))\cap\Lambda
+\]
+is finite. In particular, the conclusion holds if $\pi$ is
+quasi-finite.
+\end{theorem}
+
+The condition is about geometric fibers. Finiteness of the sets
+$U(k)\cap V_a(k)$ alone is not the stated hypothesis. Finite covers
+of arbitrary degree satisfy the hypothesis; no rational section or
+point-stability assertion is required.
+
+For rational maps on abelian varieties, Corvaja--Zannier prove that
+finite unions of their rational value sets omit infinitely many
+integers and have a complement satisfying weak approximation
+\cite[Theorems 1.1 and 1.10]{CZ}. Theorem~\ref{thm:main} permits
+outputs that are algebraic over the abelian coordinates, provided
+their geometric choices remain finite at every relevant point.
+
+\section{The constructible-image argument}
+
+We first record the arithmetic theorem in the form needed here.
+A semiabelian variety is an extension of an abelian variety by a
+torus.
+
+\begin{theorem}[Semiabelian Mordell--Lang]\label{thm:ML}
+Let $G$ be a semiabelian variety over a number field and let
+$\Gamma\subset G(\overline k)$ be finitely generated. The Zariski
+closure of any subset of $\Gamma$ is a finite union of translates
+of connected algebraic subgroups of $G$.
+\end{theorem}
+
+This is a standard closure form of the semiabelian theorem
+\cite{VojtaI,VojtaSurvey}. Indeed, if $Z$ is the closure of the
+given subset, the usual statement applies to $Z\cap\Gamma$;
+that intersection is dense in $Z$. Taking closures of its finitely
+many subgroup cosets gives the assertion. One may equivalently use
+the integral-point form in \cite[Theorem 2.2]{VojtaSurvey}, after
+choosing one ring of $S$-integers containing the finitely many group
+generators and their inverses in a group model. Splitting a
+disconnected subgroup into its finitely many connected components
+gives the stated form. All subsequent subgroup arguments may be
+made over $\overline k$.
+
+\begin{lemma}\label{lem:subgroups}
+Every connected algebraic subgroup of $A\times\Gm$, where $A$
+is an abelian variety over an algebraically closed field of
+characteristic zero, is of one of the forms
+\[
+                         B\times\{1\},\qquad B\times\Gm,
+\]
+where $B$ is an abelian subvariety of $A$.
+\end{lemma}
+\begin{proof}
+Let $H$ be such a subgroup, and let $B$ be its image in $A$.
+The image of a homomorphism of algebraic groups is closed, so $B$
+is an abelian subvariety. The kernel of $H\to B$ is a subgroup
+of $\Gm$, hence is either finite or all of $\Gm$.
+
+In the latter case each nonempty fiber contains every multiplicative
+coordinate, giving $H=B\times\Gm$. In the former case the
+surjective homomorphism with finite kernel is finite. Thus $H$ is
+proper because $B$ is proper. Every morphism from the connected
+proper variety $H$ to $\Gm$ is constant. Its value at the identity
+is $1$, so $H=B\times\{1\}$.
+\end{proof}
+
+\begin{lemma}\label{lem:constructible}
+Let $W\subset A\times\Gm$ be constructible, with finite geometric
+fibers under the first projection. If $\Lambda\subset k^*$ is
+finitely generated and
+\[
+                  \Sigma\subset W(k)\cap(A(k)\times\Lambda),
+\]
+then the second coordinates of the points of $\Sigma$ form a finite
+set.
+\end{lemma}
+\begin{proof}
+The Mordell--Weil theorem makes $A(k)\times\Lambda$ finitely
+generated. Apply Theorem~\ref{thm:ML} to the closure
+$Z=\overline\Sigma$. It is essential here to close this actual
+arithmetic subset, rather than all of $W$.
+
+After splitting components, every irreducible component of $Z$
+is a translate of one of the groups in Lemma~\ref{lem:subgroups}.
+Suppose that one component is $(a+B)\times\Gm$. The subset
+$\Sigma$ is dense in this component after the other irreducible
+components have been removed. Hence its constructible intersection
+with $W$ is dense and contains a nonempty open subset of
+$(a+B)\times\Gm$. Choose a geometric point in that open subset.
+Its intersection with the vertical fiber through the point is a
+nonempty open subset of $\Gm$, and is therefore infinite. This
+contradicts the finite-fiber hypothesis on $W$.
+
+Every component of $Z$ consequently has a constant second
+coordinate. There are finitely many components, proving the
+assertion. Translates by torsion points and disconnected groups
+introduce only finitely many such components and cause no exception.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+Restrict $U$ to $h^{-1}(\Gm)$ and take its image $W$ under
+$(\pi,h)$. Chevalley's theorem makes $W$ constructible
+\cite[Tag 054K]{Stacks}. Hypothesis~\eqref{eq:finite-values}
+says exactly that its geometric fibers over $A$ are finite.
+Apply Lemma~\ref{lem:constructible} to the image points coming
+from $U(k)$ with $h$-value in $\Lambda$. The lemma allows such
+a subset; it does not assume that every rational point of the
+constructible image has a rational lift to $U$.
+\end{proof}
+
+\section{Arithmetic progressions and weak approximation}
+
+\begin{corollary}\label{cor:affine-units}
+Let $T$ be a finite union of value sets satisfying
+Theorem~\ref{thm:main}, together with a finite subset of $k$.
+For every $a,b\in k$ with $b\ne0$, and every finitely generated
+$\Lambda\subset k^*$,
+\[
+                           T\cap(a+b\Lambda)
+\]
+is finite. In particular, for every integer $q\ge2$, all but
+finitely many terms $a+bq^n$, $n\ge0$, are outside $T$.
+\end{corollary}
+\begin{proof}
+Replace each output $h$ by $(h-a)/b$. This affine change preserves
+finiteness of its values on each geometric fiber, so
+Theorem~\ref{thm:main} applies. A finite union and a finite added
+set preserve finiteness. Take $\Lambda$ generated by $q$ for the
+last assertion.
+\end{proof}
+
+\begin{corollary}\label{cor:weak}
+The complement $k\setminus T$ in Corollary~\ref{cor:affine-units}
+satisfies weak approximation.
+\end{corollary}
+\begin{proof}
+Fix neighborhoods at finitely many places. Weak approximation in
+$k$ supplies a point $a\in k$ inside all of them. Choose a nonzero
+$b\in k$ sufficiently divisible at the prescribed finite places,
+so that adding any element of the same absolute values as $b$ at
+those places keeps the point in the neighborhoods. Choose a rational
+prime $q$ below none of these finite places.
+
+The values $a+bq^{-n}$ are distinct. At each prescribed finite
+place, $q$ is a unit, so the chosen divisibility of $b$ works for
+every $n$. At every archimedean place, $bq^{-n}$ tends to zero.
+Thus all sufficiently late terms lie in the prescribed product of
+neighborhoods. Only finitely many belong to $T$, by
+Corollary~\ref{cor:affine-units} applied to the group generated
+by $q$. The remaining terms prove the assertion.
+\end{proof}
+
+For $a,b\in\Z$, $b\ne0$, the omitted values $a+b2^n$ lie in
+the integer arithmetic progression $a+b\Z$. Thus none of these
+constructions contains any complete integer arithmetic progression.
+In particular it cannot supply a set $S$ with
+\begin{equation}\label{eq:sandwich}
+                         \Z\subseteq S,\qquad MS\subseteq\Ok
+\end{equation}
+for a fixed positive integer $M$. This obstruction concerns the
+first inclusion already; it needs no denominator hypothesis.
+The proof supplies no effective bound on the omitted exponents.
+
+\section{Algebraic outputs and exceptional loci}
+
+\begin{proposition}\label{prop:algebraic-output}
+Let $Y$ be a locally closed subvariety of an abelian variety $A/k$,
+let $c_0,\ldots,c_d$ be regular functions on $Y$, and put
+\[
+              C=\{a\in Y:c_0(a)=\cdots=c_d(a)=0\}.
+\]
+Suppose $\pi:V\to Y$ and a regular output $h:U\to\A^1$ satisfy
+\[
+                  \sum_{j=0}^{d}c_j(\pi(v))h(v)^j=0
+                  \qquad(v\in U).
+\]
+For each fixed $a,b\in k$, $b\ne0$, and finitely generated
+$\Lambda\subset k^*$, only finitely many values in $a+b\Lambda$
+have a witness with $\pi(v)\notin C$. Every other represented
+value in that set has all its witnesses above $C$.
+If the relation is monic in $h$, its full value set misses all
+but finitely many terms of every affine geometric progression.
+\end{proposition}
+\begin{proof}
+Above $Y\setminus C$ the polynomial in the output is nonzero,
+so it has finitely many geometric roots. This gives
+\eqref{eq:finite-values} for the composite map to $A$, regardless
+of how many further witnesses lie above each point. Apply
+Corollary~\ref{cor:affine-units}. A value outside that finite
+set cannot have any witness above $Y\setminus C$. In the monic
+case $C$ is empty.
+\end{proof}
+
+Thus adding unrestricted auxiliary variables cannot repair a monic
+algebraic output relation over abelian coordinates. For a relation
+with varying leading coefficient, the common-zero locus of all
+coefficients must be checked: there the relation imposes no
+condition on the output.
+
+\begin{proposition}\label{prop:exceptional}
+Let $V$ be integral and let $\pi:V\to A$ be generically finite
+onto its image. Let $V_{\mathrm{qf}}$ be its quasi-finite locus and
+$E=V\setminus V_{\mathrm{qf}}$. Then $V_{\mathrm{qf}}$ is a dense
+open subset. For a rational output $h$, all but finitely many
+represented values in any fixed set $a+b\Lambda$ have all their
+witnesses in $E$.
+\end{proposition}
+\begin{proof}
+The quasi-finite locus is open, and it contains the generic point
+when the extension of function fields is finite
+\cite[Tag 02FW]{Stacks}. Restricting $h$ to its intersection with
+that locus gives a value set satisfying Theorem~\ref{thm:main}.
+Apply Corollary~\ref{cor:affine-units}.
+\end{proof}
+
+One can further stratify $E$ into finitely many locally closed
+subvarieties and repeat the argument on each stratum whose map to
+$A$ is quasi-finite. Such strata account for only finitely many
+values in a fixed affine multiplicative group. Remaining infinitely
+many represented terms must occur on strata with positive-dimensional
+geometric fibers. This is a restriction on the complete witness
+domain, not merely on its generic function field.
+
+\subsection{A smooth birational example with every field value}
+
+\begin{proposition}\label{prop:sharp}
+Over any characteristic-zero field $k$, put $E:y^2=x^3+9$ and
+let $V\subset\A^4_k$, with coordinates $(t,s,y,z)$, be given by
+\begin{equation}\label{eq:surface}
+                   y^2=t^3s^3+9,\qquad z^2=s^3+9.
+\end{equation}
+The surface $V$ is smooth and geometrically irreducible. The map
+\[
+       \pi:V\longrightarrow E\times E,\qquad
+       (t,s,y,z)\longmapsto((ts,y),(s,z))
+\]
+is birational onto the product of the affine elliptic charts.
+Its non-quasi-finite locus is exactly $s=0$, and the regular output
+$h=t$ satisfies $h(V(k))=k$.
+\end{proposition}
+\begin{proof}
+On $s\ne0$, the map is an isomorphism onto the open subset where
+the second abscissa is nonzero. Its inverse is
+\[
+             ((x_1,y),(x_2,z))\longmapsto(x_1/x_2,x_2,y,z).
+\]
+That open subset is smooth and geometrically irreducible. When
+$s=0$, equations~\eqref{eq:surface} give $y,z\in\{3,-3\}$,
+with $t$ arbitrary. The partial derivatives with respect to $y,z$
+form a diagonal submatrix with nonzero entries $2y,2z$, so the
+surface is smooth there as well.
+
+Every irreducible component of the two-equation locus in $\A^4$
+has dimension at least two. Its part with $s=0$ has dimension one,
+so every component meets $s\ne0$. The irreducibility of that open
+subset therefore proves geometric irreducibility of $V$.
+
+A fiber with $x_2\ne0$ is a singleton. If $x_2=0$ and $x_1\ne0$
+it is empty. Above each of the four pairs with $x_1=x_2=0$ the
+fiber is an affine line with coordinate $t$. These are exactly the
+non-quasi-finite fibers. In particular $(t,0,3,3)\in V(k)$ for
+every $t\in k$, proving surjectivity.
+\end{proof}
+
+The equation $x_1-tx_2=0$ is generically a degree-one equation for
+$t$, but both coefficients vanish at the four exceptional pairs.
+The surface is the affine ratio chart of the blow-up at these
+base points. Its exceptional lines explain the failure of an
+unguarded ratio formula. They introduce arbitrary field values
+even if the elliptic points themselves are restricted to a smaller
+field. They also have unbounded denominators at every finite place.
+
+\section{Unirational fibers and bounded denominators}
+
+\begin{lemma}\label{lem:rational-unbounded}
+Let $f\in k(T)$ be nonconstant. At infinitely many finite places
+of $k$, the valuations of $f(t)$ for $t\in k$ in any fixed
+nonempty Zariski-open domain are unbounded below.
+Consequently a nonconstant rational function on a $k$-unirational
+variety cannot have uniformly bounded denominators on its rational
+points in its domain.
+\end{lemma}
+\begin{proof}
+Write $f=F/G$ with coprime polynomials. If $G$ is constant, then
+outside finitely many coefficient exceptions the leading term
+dominates when $v(t)$ is sufficiently negative, and $v(f(t))$
+tends to $-\infty$.
+
+Otherwise choose an irreducible factor $H$ of $G$. After clearing
+denominators, its norm to $\Q$ is a nonconstant integer polynomial.
+Such a polynomial has prime divisors of its values at infinitely
+many rational primes. For completeness, if these primes formed
+a finite set $P$, choose an integer $a$ where the polynomial
+$Q$ is nonzero and put $D=Q(a)\prod_{p\in P}p$. Then
+$Q(a+DT)/Q(a)$ is a nonconstant integer polynomial congruent to
+$1$ modulo every prime in $P$. A value of absolute value greater
+than one gives a prime divisor outside $P$, a contradiction.
+
+Exclude the finitely many places coming from coefficient
+denominators, leading coefficients, and the nonzero resultants
+of $H$ with $H'$ and with $F$. Infinitely many remaining prime
+divisors of the norm give a place $v$ where $H$ has a simple
+residue root. Hensel's lemma gives a root $\alpha\in k_v$ of
+$H$, while $F(\alpha)\ne0$. Thus $f$ has a pole at $\alpha$.
+Density of $k$ in $k_v$ supplies arguments approaching that pole,
+with values of arbitrarily negative valuation. A fixed finite
+set of excluded arguments does not alter the conclusion.
+
+For the final assertion, compose a dominant rational
+parametrization by projective space with the given function.
+The result is nonconstant. Restricting to a suitable $k$-line
+gives a nonconstant one-variable rational function, defined away
+from finitely many points. Apply the first part.
+\end{proof}
+
+\begin{lemma}\label{lem:finite-locus}
+If $W\subset A\times\A^1$ is constructible, then the set
+\[
+             B_0=\{a\in A:W_a\text{ is finite geometrically}\}
+\]
+is constructible. Moreover $W\cap(B_0\times\A^1)$ is a
+constructible set with finite geometric fibers over $A$.
+\end{lemma}
+\begin{proof}
+Decompose $W$ into finitely many locally closed subvarieties.
+The dimension of the fibers of each projection has constructible
+level sets \cite[Tag 05F9]{Stacks}. A constructible subset of a
+geometric affine line is finite exactly when its dimension is at
+most zero, including the empty case. Taking finite unions gives
+the assertion.
+\end{proof}
+
+\begin{theorem}\label{thm:unirational}
+Let $\pi:V\to A$ be a morphism to an abelian variety and let
+$h:U\to\A^1$ be a rational output on an open subset. Suppose
+that every fiber above $a\in A(k)$ meeting $U(k)$ is geometrically
+integral and $k$-unirational. If $T=h(U(k))$ has uniformly bounded
+denominators, then $T$ has finite intersection with every affine
+set $a+b\Lambda$ as in Corollary~\ref{cor:affine-units}.
+In particular it cannot contain $\Z$.
+\end{theorem}
+\begin{proof}
+Let $W$ be the constructible image of $(\pi,h)$. For a fiber
+contributing a rational witness, the restriction of $h$ is a
+rational function on a geometrically integral unirational variety.
+If it were nonconstant, Lemma~\ref{lem:rational-unbounded} would
+contradict the bound on the denominators of $T$. Thus its entire
+geometric image on the domain is a single value.
+
+Every actual rational image point therefore lies in
+$W\cap(B_0\times\A^1)$, where $B_0$ is as in
+Lemma~\ref{lem:finite-locus}. This is constructible with finite
+geometric fibers. Apply Lemma~\ref{lem:constructible}, first to
+$h$ and then to each affine transform $(h-a)/b$.
+\end{proof}
+
+Smooth conics and positive-dimensional smooth quadrics with a
+$k$-point are $k$-rational, by projection from that point.
+Theorem~\ref{thm:unirational} therefore applies to families of
+such fibers over an abelian base. It also applies to unrestricted
+affine fibers. All equations imposed on auxiliary witnesses must
+be included in $V$ before the hypothesis is checked.
+
+Finitely many local preparation conditions do not by themselves
+remove the denominator problem in Lemma~\ref{lem:rational-unbounded}.
+Its proof supplies infinitely many places of unboundedness. Choose
+one outside the fixed places, and use weak approximation to approach
+its pole while retaining the prescribed nonempty open conditions
+elsewhere. A global denominator bound requires a further arithmetic
+restriction.
+
+\section{Genus-one families over an abelian base}
+
+We use two established arithmetic facts. Siegel's theorem implies
+that for a smooth projective curve $C/k$ of positive genus and a
+nonconstant rational function $f$ on $C$, only finitely many points
+in the domain have $f$-values in a fixed ring of $S$-integers
+\cite[Section 1]{VojtaSurvey}. To see this formulation, use the
+finite map $C\to\PP^1$ defined by $f$. After enlarging $S$, its
+inverse image of $\A^1$ has a model finite over $\A^1_{\Ok[S^{-1}]}$;
+a point with integral $f$-value is integral in that model by
+properness of the finite map. Siegel's theorem applies to this
+affine positive-genus curve.
+
+Merel's uniform torsion theorem supplies an integer $N=N(k)>0$
+that annihilates the rational torsion subgroup of every elliptic
+curve over $k$ \cite[Introductory Corollary]{Merel}. One can take
+a common multiple of all positive integers below the uniform
+bound for the order of a torsion point.
+
+We first describe how a relative divisor replaces the choice of an
+origin. For a smooth projective family of geometrically connected
+curves, the identity component of the relative Picard scheme is its
+relative Jacobian; for genus one it is an elliptic scheme
+\cite[Section 9.4, Theorem 1]{BLR}.
+
+\begin{lemma}\label{lem:divisor-map}
+Let $\mathcal C\to B$ be a smooth projective family of geometrically
+connected genus-one curves, and let $\mathcal L$ be a line bundle
+of constant positive degree $d$ on its geometric fibers. Write
+$\mathcal J=\operatorname{Pic}^0_{\mathcal C/B}$ for its relative
+Jacobian. The formula
+\[
+ \alpha_{\mathcal L}:\mathcal C\longrightarrow\mathcal J,
+ \qquad P\longmapsto
+ [\mathcal O_{\mathcal C_b}(dP)\otimes\mathcal L_b^{-1}]
+\]
+defines a finite morphism whose degree on every geometric fiber is
+$d^2$.
+\end{lemma}
+\begin{proof}
+On $\mathcal C\times_B\mathcal C$, the diagonal is a relative
+effective Cartier divisor. The line bundle
+$\mathcal O(d\Delta)\otimes\operatorname{pr}_2^*\mathcal L^{-1}$
+has degree zero on the fibers over the first factor. It therefore
+defines the displayed morphism to the relative Picard scheme.
+
+On a geometric fiber choose any origin $O$. Identifying that curve
+with its Jacobian, the morphism becomes
+\[
+             P\longmapsto[d](P-O)
+               -[\mathcal L_b\otimes\mathcal O(-dO)].
+\]
+This is a translate of multiplication by $d$, so it is finite
+of degree $d^2$; this divisor-class construction is also described
+in \cite[Section 1]{AKMMMP}. The relative morphism is proper,
+since $\mathcal C$ is proper over $B$ and $\mathcal J$ is separated
+over $B$. Its geometric fibers are finite, so it is finite.
+\end{proof}
+
+\begin{theorem}\label{thm:elliptic-family}
+Let $B$ be a locally closed subvariety of an abelian variety $A/k$,
+and let $\mathcal C\to B$ be a smooth proper family of geometrically
+connected genus-one curves, equipped with a relatively ample line
+bundle. Let $h:U\to\A^1$ be a rational function on its total space,
+on an open domain $U$. If $T=h(U(k))$ has uniformly bounded
+denominators, then $T$ has finite intersection with every set
+$a+b\Lambda$ of Corollary~\ref{cor:affine-units}. Hence $T$
+cannot contain $\Z$. No section of $\mathcal C\to B$ is required.
+\end{theorem}
+\begin{proof}
+The relatively ample bundle makes the proper morphism projective.
+Let $W$ be the constructible image of $U$ in $A\times\A^1$.
+Separate its finite-fiber locus using
+Lemma~\ref{lem:finite-locus}. Outputs above that locus satisfy
+Lemma~\ref{lem:constructible}. This includes empty domains on a
+fiber. On a nonempty domain in a geometric genus-one fiber, the
+image is finite exactly when the induced function is constant.
+
+Consider a remaining fiber over $b\in B(k)$ that contributes a
+rational witness. The function induced by $h$ on $\mathcal C_b$
+is nonconstant, and its domain omits only finitely many geometric
+points. The fixed denominator bound and Siegel's theorem make
+$U(k)\cap\mathcal C_b(k)$ finite. This fiber has a rational point,
+so choosing one identifies its rational points with those of its
+Jacobian $\mathcal J_b$. If $\mathcal J_b(k)$ had positive rank,
+the cofinite open part would have infinitely many rational points,
+a contradiction. Thus $\mathcal J_b(k)$ consists entirely of
+torsion points.
+
+Let $\mathcal L$ be the given relatively ample bundle. Its degree
+is a positive locally constant integer; splitting the finitely
+many connected components of $B$, assume it equals $d$.
+Choose $N=N(k)$ as above and use Lemma~\ref{lem:divisor-map}.
+For every rational witness $P$ over a nonconstant contributing fiber,
+$\alpha_{\mathcal L}(P)$ belongs to $\mathcal J_b(k)$ and hence
+to $\mathcal J_b[N]$. All such witnesses therefore lie in
+\[
+                 \mathcal F=
+                 \alpha_{\mathcal L}^{-1}(\mathcal J[N]).
+\]
+Both $\alpha_{\mathcal L}$ and $\mathcal J[N]\to B$ are finite,
+so $\mathcal F\to B$ is finite. Its composite map to $A$ is
+quasi-finite. Apply Theorem~\ref{thm:main} to $h$ on the reduced
+scheme underlying $\mathcal F\cap U$. Together with the
+finite-output part, this covers all actual rational witnesses.
+Apply the same argument to $(h-a)/b$ for the affine assertion;
+its denominators remain uniformly bounded after multiplication
+by a fixed integer.
+\end{proof}
+
+For an elliptic scheme with zero section $O$, take
+$\mathcal L=\mathcal O(O)$ and $d=1$; then
+$\alpha_{\mathcal L}$ is the identity after the usual identification
+with its Jacobian. For a genus-one torsor the divisor-class map
+avoids making a varying arithmetic choice of an origin. The finite
+subscheme $\mathcal F$ replaces the torsion subscheme of an elliptic
+scheme.
+
+The theorem also applies to any open part of such a smooth projective
+family, and to finitely many such families on locally closed strata
+of the base. Extra witness equations must be included in the source
+before applying it. It does not assert that every family with
+finitely many rational points on each fiber has a finite geometric
+subscheme containing them. In particular the argument does not
+extend to higher-genus families merely by applying Faltings's theorem:
+their Jacobians may have positive rank even when the curves have
+only finitely many rational points.
+
+\section{Consequences for defining rings of integers}
+
+Recall that a subset of $k^m$ is \emph{Diophantine over $k$} if it is
+the image under a coordinate projection of the common zero set in
+$k^{m+n}$ of finitely many polynomials with coefficients in $k$,
+for some $n\ge0$.
+
+For a number field $k$, a Diophantine set satisfying
+\eqref{eq:sandwich} would suffice to define $\Ok$ in $k$.
+Indeed
+\[
+                   S'=\bigcup_{j=0}^{M-1}(j+MS)
+\]
+satisfies $\Z\subseteq S'\subseteq\Ok$. For an integral basis
+$\omega_1,\ldots,\omega_d$ one then has
+\[
+                     \Ok=\omega_1S'+\cdots+\omega_dS'.
+\]
+Both finite unions and these sums preserve Diophantine definability.
+
+The preceding theorems exclude this strategy when all output values
+come from the finite correspondences of Theorem~\ref{thm:main}.
+Under the denominator hypothesis they also exclude the unirational
+and genus-one families specified above. These obstructions hold over
+every number field, independently of its real or complex embeddings.
+For a generically finite description, the exceptional loci must be
+included in the analysis: they can contain every represented input,
+as Proposition~\ref{prop:sharp} demonstrates.
+
+No assertion here concerns arbitrary existential varieties. In
+particular, the results do not produce a number field whose ring of
+integers is proved not to be Diophantine in the field. They identify
+where a construction must introduce additional arithmetic: through
+output-varying positive-dimensional fibers that survive the stated
+denominator obstructions, or through a different source of witnesses.
+
+\section{Exact algebraic verification}
+
+The standard-library program
+\nolinkurl{check_exceptional_correspondence.py} records the exact
+identities in Proposition~\ref{prop:sharp}: the two curve equations,
+the inverse on $s\ne0$, all four exceptional lines, and the
+nonzero boundary Jacobian minors. It also records the symbolic
+family $(t,0,3,3)$, whose output is unrestricted. These finite
+checks verify the displayed example. The general finiteness and
+denominator theorems are established by the proofs and the cited
+arithmetic inputs, not by numerical sampling.
+
+\begin{thebibliography}{99}
+\bibitem{VojtaI}
+P. Vojta, Integral points on subvarieties of semiabelian varieties, I,
+\emph{Invent. Math.} \textbf{126} (1996), 133--181,
+\url{https://doi.org/10.1007/s002220050092}.
+
+\bibitem{VojtaSurvey}
+P. Vojta, Nevanlinna theory and Diophantine approximation,
+in \emph{Several Complex Variables}, MSRI Publications \textbf{37},
+Cambridge University Press, 1999, 535--564; Theorem 2.2,
+\url{https://library.slmath.org/books/Book37/files/vojta.pdf}.
+
+\bibitem{CZ}
+P. Corvaja and U. Zannier, with an appendix by D. Masser,
+\emph{Rational and integral values of rational functions at rational
+points}, arXiv:2608.28255v1, 28 August 2026,
+\url{https://arxiv.org/abs/2608.28255v1}.
+
+\bibitem{Merel}
+L. Merel, Bornes pour la torsion des courbes elliptiques sur les
+corps de nombres, \emph{Invent. Math.} \textbf{124} (1996), 437--449,
+\url{https://perso.imj-prg.fr/wp-content/uploads/merel-pub/torsion.pdf}.
+
+\bibitem{BLR}
+S. Bosch, W. L\"utkebohmert, and M. Raynaud,
+\emph{N\'eron Models}, Ergebnisse der Mathematik und ihrer Grenzgebiete,
+3. Folge, vol. 21, Springer, 1990, Chapter 9,
+\url{https://doi.org/10.1007/978-3-642-51438-8}.
+
+\bibitem{AKMMMP}
+S. Y. An, S. Y. Kim, D. C. Marshall, S. H. Marshall,
+W. G. McCallum, and A. R. Perlis,
+Jacobians of genus one curves,
+\emph{J. Number Theory} \textbf{90} (2001), 304--315,
+\url{https://archive.math.arizona.edu/wmc/Research/JacobianFinal.pdf}.
+
+\bibitem{Stacks}
+The Stacks Project Authors, \emph{The Stacks Project},
+Tags 054K (Chevalley's theorem), 02FW (dimensions of fibers),
+and 05F9 (constructible fiber-dimension loci),
+\url{https://stacks.math.columbia.edu}.
+\end{thebibliography}
+\end{document}

@@ -36,3 +36,14 @@ for n=1,...,64, plus exact rational and quadratic examples. It also enumerates t
 - Stacks Project, Chevalley's theorem, Tag 00FE. <https://stacks.math.columbia.edu/tag/00FE>
 
 - G. Cornelissen, A. Shlapentokh, *Defining the integers in large rings of a number field using one universal quantifier*, J. Math. Sci. 158 (2009), 713–726, Theorem 4 and Remark 6.3. <https://arxiv.org/abs/0708.3075v2>
+
+
+## Correspondences and bounded denominators
+
+The paper finite_correspondences_and_denominators_20261109_v14.tex extends the abelian-image obstruction to morphisms whose geometric fibers have finitely many output values, including quasi-finite covers. Semiabelian Mordell–Lang shows that the rational outputs meet any finitely generated multiplicative subgroup in a finite set.
+
+For bounded-denominator outputs, further obstructions cover soluble unirational fibers and smooth proper genus-one families with an ample line bundle. The latter uses Siegel and uniform torsion, with a finite map to the relative Jacobian and no assumed section. Higher-genus families and arbitrary exceptional fibers are outside the result.
+
+Run python3 computation/number_fields/check_exceptional_correspondence.py from the repository root. The exact rational checker verifies a smooth surface birational to a product of elliptic curves whose four exceptional affine lines represent every rational input. This example explains why generic finiteness alone is insufficient. The general arithmetic theorems are proved in the paper, not by the finite check.
+
+Additional primary references are P. Vojta's survey on integral points and semiabelian Mordell–Lang, L. Merel's uniform torsion theorem, and the Jacobian construction of S. Y. An and coauthors with its published corrigendum. Complete references and exact theorem uses are in the paper.

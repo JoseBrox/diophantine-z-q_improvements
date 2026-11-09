@@ -12,13 +12,13 @@ python3 scripts/verify.py --full
 
 The verifier checks the publication manifest and quartic provenance, copies the inputs to a temporary directory, restores compressed data with hash checks, and runs every supplied reconstruction. It leaves published inputs unchanged. A failed equality, hash, or bound stops the verification. A receipt can be saved outside the publication tree with the optional argument --receipt /path/to/verification.json.
 
-The standard-library stages reconstruct every source dependency and the leading **279- and 322-variable quartics**. The parity construction and independent checker verify every retained row, every reduced power, all local factors, and the complete sum of squares. The shared-weight builder reads the exact 301- and 351-coordinate systems. Its independent checker verifies retained and changed rows, the invertible scalar normalization, every expanded coefficient, degree, content, support, and exact height. Both the data and independent certificates are compared byte for byte with the distributed files.
+The standard-library stages reconstruct every source dependency and the leading **267- and 322-variable quartics**. The parity construction and independent checker verify every retained row, every reduced power, all local factors, and the complete sum of squares. The shared-weight builder reads the exact 301- and 351-coordinate systems. Its independent checker verifies retained and changed rows, the invertible scalar normalization, every expanded coefficient, degree, content, support, and exact height. Both the data and independent certificates are compared byte for byte with the distributed files.
 
-The **27- and 29-variable weighted specifications** are rebuilt from the complete guarded source algebras. The independent checker recomputes weights, literal finite sums, degree and norm recurrences, finite selector ranges, and small-algebra examples. The 29-variable fixed exponent 137731 is certified by the effective arithmetic estimate. The 27-variable example at the same exponent is an algebraic fixture; no numerical defining threshold is certified for it. Its degree bound is uniform because the coefficient parameter has degree zero.
+The **27- and 29-variable specifications** are rebuilt from the complete guarded source algebras. The independent checker recomputes the nonzero-guard separation, weighted matrix norms, all factor bounds, and exact degeneration examples. The general weighted-elimination module is also reconstructed as a source dependency. The 29-variable fixed exponent 137731 is certified by the effective arithmetic estimate. The 27-variable example at the same exponent is an algebraic fixture; no numerical defining threshold is certified for it. Its degree bound is uniform because the coefficient parameter has degree zero.
 
 The additional structural stages check the number-field finite-difference identities and elliptic examples, and the restricted quadratic-input obstruction. They are finite checks supporting full proofs, not proofs of general projection assertions by enumeration.
 
-The release [verification receipt](../data/verification-v13.json) records all 45 stages including PARI; the standard-library route has 44 stages. These counts include the exact coordinate-budget check and the separately labelled bounded rationality-filter search.
+The release [verification receipt](../data/verification-v15.json) records all 59 passing stages, including the two optional PARI stages. The standard-library route runs 57 stages. It distinguishes exact identities from separately labelled bounded searches.
 
 ## Individual quartic commands
 
@@ -45,6 +45,10 @@ python3 computation/quartic/build_quartic_even.py
 python3 computation/quartic/check_quartic_even.py
 python3 computation/quartic/build_quartic279.py
 python3 computation/quartic/check_quartic279.py
+python3 computation/quartic/build_quartic273.py
+python3 computation/quartic/check_quartic273.py
+python3 computation/quartic/build_quartic267.py
+python3 computation/quartic/check_quartic267.py
 python3 computation/quartic/check_coordinate_budget.py
 ~~~
 
@@ -73,6 +77,17 @@ After reproducing the two source algebras above, run:
 python3 computation/few_variables/weighted_elimination/build_weighted_specification.py computation/few_variables/trace27_nontorsion/example_L137731/polynomial-specification.json computation/few_variables/weighted_elimination/weighted27
 python3 computation/few_variables/weighted_elimination/build_weighted_specification.py computation/few_variables/effective29_nontorsion/certificate/polynomial-specification.json computation/few_variables/weighted_elimination/weighted29
 python3 computation/few_variables/weighted_elimination/check_weighted_specification.py computation/few_variables/weighted_elimination/weighted27 computation/few_variables/weighted_elimination/weighted29 --output computation/few_variables/weighted_elimination/verification.json
+~~~
+
+### Separation on the nonzero guard locus
+
+The leading few-variable specifications are rebuilt with the following commands. Each builder reads the guarded source specification; the independent checker imports no builder implementation.
+
+~~~sh
+python3 computation/few_variables/active_elimination/build_active_specification.py computation/few_variables/trace27_nontorsion/example_L137731/polynomial-specification.json computation/few_variables/active_elimination/active27
+python3 computation/few_variables/active_elimination/build_active_specification.py computation/few_variables/effective29_nontorsion/certificate/polynomial-specification.json computation/few_variables/active_elimination/active29
+python3 computation/few_variables/active_elimination/check_active_specification.py computation/few_variables/active_elimination/active27 computation/few_variables/active_elimination/active29 --output computation/few_variables/active_elimination/independent-verification.json
+python3 computation/few_variables/active_elimination/check_active_degenerations.py --output computation/few_variables/active_elimination/degeneration-certificate.json
 ~~~
 
 ### Number fields and input normalization
@@ -106,13 +121,13 @@ python3 scripts/verify.py --full --with-pari
 
 The standard-library rationality-filter checker expands the degree-eleven slope and degree-nine ordinate polynomials and repeats the explicitly bounded point search. The infinite-omission theorem uses the cited Corvaja–Zannier theorem and the proved rational-map containment, not this search.
 
-The optional PARI stage recomputes matching lower and upper rank bounds for the explicit curves and all eight quadratic twists, exact torsion orders, the polynomial expansion, and finite local identities. It uses unconditional 2-descent bounds, without analytic rank or BSD. Without `--with-pari`, the full verifier checks integrity of the stored rank certificate but does not rerun its descent calculations. The receipt states whether this stage was run.
+The optional PARI stages also check the prepared fixed-pole counterexamples, with matching exact rank bounds and squareclass descent. The elliptic-ratio stage recomputes matching lower and upper rank bounds for the explicit curves and all eight quadratic twists, exact torsion orders, the polynomial expansion, and finite local identities. It uses unconditional 2-descent bounds, without analytic rank or BSD. Without `--with-pari`, the full verifier checks integrity of the stored rank certificate but does not rerun its descent calculations. The receipt states whether this stage was run.
 
 ## What the verification establishes
 
 A passing receipt establishes the finite assertions stated in that receipt. Complete quartic coefficient tables and the finite-algebra expression graphs are exact polynomial specifications. The enormous few-variable polynomials are specified and bounded without expanding all their terms: the determinant, resultant, trace, and finite-product inequalities are proved in their papers and independently checked by the programs.
 
-Coefficient verification does not prove the global arithmetic inputs in [Arithmetic inputs](arithmetic_inputs.md). It also does not produce a numerical sufficient parameter for an ineffective existence theorem. The 27-variable and 279-variable results retain this explicit limitation.
+Coefficient verification does not prove the global arithmetic inputs in [Arithmetic inputs](arithmetic_inputs.md). It also does not produce a numerical sufficient parameter for an ineffective existence theorem. The 27-variable and 267-variable results retain this explicit limitation.
 
 The nonzero pole-witness strengthening uses the retained restricted-converse and descent hypotheses and the source simultaneous-realization construction. Its mathematical proof is in both leading few-variable papers. It is not a conclusion of enumerating finite cases.
 
@@ -135,3 +150,19 @@ After a reviewed change, refresh the publication manifest with:
 ~~~sh
 python3 scripts/update_manifest.py
 ~~~
+
+## Exceptional correspondences and pole parameters
+
+~~~sh
+python3 computation/number_fields/check_exceptional_correspondence.py
+python3 computation/pole_parameters/check_fixed_e_obstruction.py
+~~~
+
+The first checker uses only exact rational arithmetic. It verifies the smooth exceptional surface, its birational formulas, and the exceptional lines. The second requires cypari2 and verifies the prepared inputs, their elliptic images, exact ranks, torsion, and the squareclass obstruction. PARI's rank bounds are unconditional; BSD is not used. The full verifier runs these checks in its temporary copy.
+
+
+## Separate family under additional abc
+
+The full verifier also rebuilds the [conditional13 source](../computation/few_variables/conditional13/README.md), audits all three point quartics, both pole clearings and every atomic guard, then reconstructs its final 64-factor finite-algebra specification and independently checks the bounds. That module's README gives all four standalone commands.
+
+These stages check the exact coefficient family and the degree bound uniform in its fixed shift. They neither verify abc nor certify that the supplied shift3 exceeds the ineffective defining threshold.
