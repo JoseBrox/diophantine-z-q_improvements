@@ -43,7 +43,12 @@ def build(source_root=HERE, output_root=HERE):
         p = {(t['parameterPower'], tuple(sorted(source_ids[i] for i in t['monomial']))):
              Q(t['coefficient']) for t in r['terms']}
         assert all(a == 0 for a, m in p)
-        emit(r['name'], p, sid)
+        if sid == 200:
+            p = add(v(248), scale(v(232), -1), scale(mul(v(0), v(0)), 2), PARAMETER)
+            emit('inputComparison.real.definition', p, sid)
+            coordinates[248]['name'] = 'inputComparison.real'
+        else:
+            emit(r['name'], p, sid)
 
     next_id = 30000
 
@@ -78,9 +83,9 @@ def build(source_root=HERE, output_root=HERE):
     for j in range(2):
         emit('alternateRatio.cleared.'+str(j), add(left[j], scale(right[j], -1)))
 
-    beta = add(scale(v(248), 2), PARAMETER)
+    beta = add(v(232), scale(v(248), -1))
     L = (v(232), v(233))
-    I = (add(L[0], scale(beta, -1)), L[1])
+    I = (v(248), L[1])
     I2 = field_gate('inputComparison.square', fm(I, I))
     C2 = (v(305), scale(v(306), 2))
     H2 = (v(311), scale(v(312), 2))
@@ -156,7 +161,7 @@ def build(source_root=HERE, output_root=HERE):
     assert gcd(*expanded.values()) == 1
     assert max(len(m) for a, m in expanded) == 4
     assert {i for a, m in expanded for i in m} == set(range(1, 98))
-    assert ordinary[()] == {0: 169997, 4: 2}
+    assert ordinary[()] == {0: 169997, 2: 1}
     constant_maximum = max(abs(p[0]) for p in ordinary.values() if set(p) == {0})
     assert constant_maximum == 11600064
     fixed_parameter = {'symbol': 'B', 'domain': 'Odd integers B>=3',
@@ -177,12 +182,12 @@ def build(source_root=HERE, output_root=HERE):
               'ordinaryMonomialPositions': len(ordinary), 'sourceSha256': PIN,
               'retainedSourceRows': list(RETAINED_ROWS),
               'contacts': [-3, -2, -1, 0, 2, 3, 4, 5],
-              'heightScale': 'beta^4+(Tr x(A))^4', 'beta': '2*X^2+B',
+              'heightScale': 'beta^4+(Tr x(A))^4', 'beta': '2*X^2+B=L.real-inputComparison.real',
               'abcContactHeightCoefficient': '1/3', 'abcPairHeightCoefficient': '4/3',
               'combinedNumeratorCoefficient': '8/9',
-              'coefficientHeightForEveryIntegerBAtLeast3': 'max(11600064,2*B^4+169997)',
-              'coefficientHeightForEveryOddBAtLeast49': '2*B^4+169997',
-              'coefficientHeightThresholdOddB': 49,
+              'coefficientHeightForEveryIntegerBAtLeast3': 'max(11600064,B^2+169997)',
+              'coefficientHeightForEveryOddBAtLeast3381': 'B^2+169997',
+              'coefficientHeightThresholdOddB': 3381,
               'contentForEveryIntegerShift': 1,
               'ordinaryMonomialsForEveryPositiveShift': len(ordinary),
               'detectors': detector_specs,
