@@ -1,0 +1,358 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,booktabs,microtype}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\newcommand{\A}{\mathbb A}\newcommand{\PP}{\mathbb P}
+\DeclareMathOperator{\rad}{rad}
+\DeclareMathOperator{\sfpart}{sf}
+\setlength{\emergencystretch}{2em}
+\title{Additional arithmetic hypotheses\\and polynomial definitions of the integers}
+\author{}\date{9 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+We distinguish height inequalities that shorten a polynomial definition
+from prime-existence statements and from conjectures about rational
+points. A weak $abc$ inequality with exponent $121/100$ suffices for
+the thirteen-coordinate construction; consequently the ordinary
+discriminant--conductor form of Szpiro's conjecture suffices.
+The truncated Vojta conjecture supplies the stronger ordinary $abc$
+inequality. We prove precise limitations of two other proposed
+reductions: distinct prime assignments do not control the squarefree
+part of a product, and a polynomial injection does not by itself
+give a finite algebraic encoding of several free coordinates.
+Finally, a topological argument explains the incompatibility between
+Mazur's connected-component conjecture and an existential definition
+of the integers. No reduction in the number of coordinates from the
+Riemann hypothesis or Grimm's conjecture is asserted.
+\end{abstract}
+
+\section{Definitions and the required height estimates}
+
+All coordinate counts include the input. A polynomial
+$F\in\Z[X,Y_1,\ldots,Y_m]$ defines $\Z$ in $\Q$ if
+\[
+ x\in\Z\quad\Longleftrightarrow\quad
+ \exists\mathbf y\in\Q^m\quad F(x,\mathbf y)=0.
+\]
+For a nonzero integer $n$, put
+\[
+ \rad(n)=\prod_{p\mid n}p,\qquad
+ \sfpart(n)=\prod_{\substack{p\mid n\\v_p(n)\ {\rm odd}}}p.
+\]
+For $t=u/v$ in lowest terms with $v>0$, let
+$h(t)=\log\max(|u|,v)$. If $(w,u,v)$ is a primitive common
+integer representative of $(1,a,b)$ with $w>0$, define
+$h(1:a:b)=\log\max(w,|u|,|v|)$.
+
+\begin{definition}
+For $\kappa>1$, the weak $abc$ inequality with exponent $\kappa$
+is the assertion that a constant $C_\kappa>0$ exists such that
+\[
+ \max(|a|,|b|,|c|)
+ \le C_\kappa\rad(abc)^\kappa
+\]
+for every primitive nonzero integer triple $a+b=c$.
+\end{definition}
+
+The ordinary rational $abc$ conjecture asserts this for every
+$\kappa>1$. The following result uses only one exponent.
+
+\begin{theorem}\label{thm:weak}
+Assume the weak $abc$ inequality with exponent $121/100$ and the
+elliptic group, pole obstruction and realization, and simultaneous
+prime-pattern inputs specified in~\cite{Thirteen}.
+There is a computable coefficient family in thirteen total
+coordinates whose sufficiently large fixed odd input shifts define
+$\Z$ in $\Q$. A sufficient numerical shift is not determined.
+The same conclusion follows under the ordinary Szpiro conjecture
+and the stated inherited inputs.
+\end{theorem}
+\begin{proof}
+We describe the numerical inequalities that make the extra
+hypothesis sufficient; the complete rational source and polynomial
+conversion are given in~\cite{Thirteen}. The rational map
+\[
+ f(t)=\frac{t(t+2)^3}{(2t+1)^3},
+ \qquad
+ f(t)-1=\frac{(t-1)^3(t+1)}{(2t+1)^3}
+\]
+has degree four. Its inverse images of $0,1,\infty$ are the
+six rational points $0,-2,-1/2,1,-1,\infty$.
+Applying the weak inequality to its numerator, denominator, and
+their difference gives
+\[
+ \log M(t)\ge(8/\kappa-6)h(t)-O(1),
+\]
+where $M$ is the product of primes having odd contact valuation,
+outside a fixed exceptional set. To see the coefficient, the
+radical of the associated degree-six binary form is at least a
+constant times $\exp(4h(t)/\kappa)$, whereas
+$\rad(n)^2\le |n|\sfpart(n)$ and the form has size
+$O(\exp(6h(t)))$. The fixed change $t=2+1/\lambda$ makes all
+six contacts finite.
+
+The same weak inequality, applied to coprime eighth powers, gives
+\[
+ h(1:\beta:T)\le\frac{121}{437}h(\beta^8+T^8)+O(1).
+ \tag{1}
+\]
+The common-denominator calculation proving (1) is included
+in~\cite{Thirteen}; its general coefficient is
+$(d/\kappa-3)^{-1}$ for even $d>3\kappa$.
+For the two arguments $\lambda$ and $(\beta^8+T^8)\lambda$,
+the contact bound and the local congruences therefore give
+\[
+ h(1:\beta:T)\le
+ \frac{14641}{16169}\log N+O(1)
+ \tag{2}
+\]
+whenever $N=|\operatorname{num}(\beta-n)|\ne0$.
+Here $\beta=2X^2+B$, the elliptic index $n$ is an integer,
+and the one-point height theorem gives $n^2\le A h(T)+J$
+with fixed constants. Since
+$\log N\le h(\beta)+\log(1+|n|)$, (2) bounds both $n$ and
+$h(\beta)$ independently of the fixed odd shift $B$.
+Choosing $B$ larger than the exponential of the bound for
+$h(\beta)$ forces $\beta=n$.
+The elementary denominator calculation for $2X^2+B$ then gives
+$X\in\Z$. Completeness and the thirteen-coordinate count follow
+from the explicit source in~\cite{Thirteen}.
+
+The semistable case of the ordinary Szpiro conjecture is the assertion
+$|\Delta_E|\le C_\epsilon N_E^{6+\epsilon}$
+for semistable elliptic curves over $\Q$, with minimal
+discriminant $\Delta_E$ and conductor $N_E$.
+Its implication of the weak $abc$ inequality with every exponent
+$6/5+\eta$ is established in~\cite[\S I.3]{Oesterle}.
+Take $\eta=1/100$.
+\end{proof}
+
+This implication uses the discriminant--conductor conjecture itself.
+It does not identify that conjecture with the stronger modified
+Szpiro statement about $\max(|c_4|^3,|c_6|^2)$.
+The modified statement is equivalent to ordinary $abc$;
+see~\cite[\S I.3]{Oesterle}. The thirteen-coordinate conclusion
+does not remove the pole or elliptic realization hypotheses.
+
+\section{The truncated Vojta conjecture}
+
+Let $X$ be smooth and projective over $\Q$, let $D$ be a
+reduced divisor with normal crossings, and let $A$ be ample.
+The rational-point case of the truncated Vojta conjecture
+asserts, outside a proper closed exceptional subset, that
+\[
+ N^{(1)}(D,P)\ge h_{K_X+D}(P)-\epsilon h_A(P)-O(1).
+ \tag{3}
+\]
+The counting function records a prime once when the reduction of
+$P$ meets $D$. This is the specialization of the conjecture
+in~\cite[Conjecture 2.3]{Vojta}.
+
+\begin{proposition}
+The case of (3) for
+$X=\PP^1$, $D=[0]+[1]+[\infty]$, and $A=[\infty]$
+implies the ordinary rational $abc$ conjecture.
+\end{proposition}
+\begin{proof}
+Write $P=a/c$ with $a+b=c$ primitive and nonzero.
+At finite primes the truncated counting function is
+$\log\rad(abc)$. The divisor $K_X+D$ has degree one, so
+its height is $h(P)+O(1)$. Thus (3) gives
+\[
+ (1-\epsilon)h(P)\le\log\rad(abc)+O(1).
+\]
+The difference between $h(P)$ and
+$\log\max(|a|,|b|,|c|)$ is bounded by $\log 2$.
+A proper closed subset of $\PP^1$ is finite, so its remaining
+rational points can be absorbed into the constant.
+Taking $\epsilon=\eta/(1+\eta)$ gives exponent $1+\eta$.
+\end{proof}
+
+Consequently this Vojta hypothesis supplies every additional
+$abc$ input of the thirteen-coordinate and conditional quartic
+constructions. A lower coordinate count does not follow merely
+from replacing $abc$ by this stronger conjecture.
+
+\section{Prime assignments and odd valuations}
+
+Grimm's conjecture asserts that a finite block of consecutive
+composite positive integers admits distinct prime divisors,
+one for each member. Its formulation and its relation to prime
+gaps are discussed in~\cite{ErdosPomerance}.
+The next elementary example isolates a difficulty in using
+such assignments as a height estimate.
+
+\begin{proposition}\label{prop:pell}
+There are arbitrarily large positive integers $n$ such that
+$n$ and $n+1$ are both composite and
+\[
+                    \sfpart(n(n+1))=2.
+\]
+Each such pair admits distinct prime divisors.
+\end{proposition}
+\begin{proof}
+Define positive integers $a_k,b_k$ by
+\[
+ (17+6\sqrt8)^k=a_k+b_k\sqrt8,\qquad k\ge1.
+\]
+Their norm identity is $a_k^2-8b_k^2=1$, and $a_k$ is odd.
+For $n_k=(a_k-1)/2$ this gives
+$n_k(n_k+1)=2b_k^2$.
+Multiplication by $17+6\sqrt8$ acts by the integral matrix
+\[
+ \begin{pmatrix}17&48\\6&17\end{pmatrix},
+\]
+whose determinant is one. Its image in
+$\mathrm{GL}_2(\Z/144\Z)$ has some finite order $L$.
+For $k\equiv1\pmod L$ we therefore have
+$a_k\equiv17\pmod{144}$, whence $n_k\equiv8\pmod{72}$.
+In particular $8\mid n_k$ and $9\mid n_k+1$; both are
+composite. These $n_k$ tend to infinity. Their consecutive
+members are coprime, so any prime divisor of one differs
+from every prime divisor of the other.
+\end{proof}
+
+Proposition~\ref{prop:pell} concerns the information supplied
+by a prime assignment. It is not an independence theorem
+between conjectures. In particular, it shows why assigning
+different primes to factors cannot be substituted for a
+lower bound on primes occurring to odd order.
+
+The Riemann hypothesis concerns the zeros of the Riemann zeta
+function; its generalized form concerns zeros of the appropriate
+$L$-functions. Their usual prime-counting consequences concern
+the distribution of primes, as illustrated by
+Schoenfeld's conditional estimates~\cite{Schoenfeld}.
+Such a counting estimate does not supply the uniform height
+inequalities (1)--(2). No implication from either hypothesis
+to those inequalities, or to a smaller defining polynomial,
+is used here. Similarly, Schinzel-type prime-value hypotheses
+could alter a completeness argument only after the relevant
+simultaneous polynomial values and admissibility conditions
+have been specified. They do not by themselves replace the
+soundness argument.
+
+\section{Polynomial injections and finite algebraic encodings}
+
+The Bombieri--Lang conjecture predicts that the rational points
+of a projective variety of general type are not Zariski dense.
+For surfaces, Poonen proves that this conjecture implies the
+existence of a polynomial inducing an injection
+$\Q^2\to\Q$~\cite[Theorem 1.1]{Poonen}.
+His Remark 1.7 records a different sufficient hypothesis:
+the four-term generalized $abc$ conjecture.
+It is essential to distinguish that conjecture from ordinary,
+three-term $abc$.
+
+\begin{proposition}\label{prop:dimension}
+Let $k$ be a characteristic-zero field and let $U$ be a nonempty
+open subset of $\A^r_k$, with $r>1$.
+No rational function $j:U\dashrightarrow\A^1_k$ is generically
+finite onto its image.
+\end{proposition}
+\begin{proof}
+If $j$ is constant, its only fiber has dimension $r$.
+Otherwise $k(j)$ has transcendence degree one over $k$, whereas
+$k(U)=k(t_1,\ldots,t_r)$ has transcendence degree $r$.
+Thus
+$\operatorname{trdeg}_{k(j)}k(U)=r-1>0$,
+which is incompatible with a finite function-field extension.
+\end{proof}
+
+A polynomial may nevertheless be injective on $k$-rational
+points, since geometric and rational fibers are different.
+If $j$ is injective on $\Q^r$ and a relation is
+$F(x,\mathbf y)=0$, encoding its rational witnesses by
+$z=j(\mathbf y)$ gives the exact reformulation
+\[
+ \exists\mathbf y\in\Q^r:
+   F(x,\mathbf y)=0,\quad z=j(\mathbf y).
+ \tag{4}
+\]
+Injectivity proves uniqueness of a rational inverse when one
+exists; it does not supply its existence or remove the
+quantifiers in (4).
+Proposition~\ref{prop:dimension} also excludes replacing that
+inverse on an open set by a finite algebraic extension, the
+setting required by the one-coordinate separation theorem.
+This is a limitation of that proposed encoding. It does not
+rule out a different use of polynomial injections in a
+Diophantine construction.
+
+\section{A conjecture incompatible with the projection}
+
+Mazur's connected-component conjecture asserts that for every
+variety $V/\Q$, the closure of $V(\Q)$ in $V(\mathbb R)$ has
+finitely many connected components. The implication below is
+classical; see~\cite[\S\S 2--3]{CornelissenZahidi}.
+
+\begin{proposition}
+If Mazur's connected-component conjecture holds, $\Z$ is
+not Diophantine in $\Q$.
+\end{proposition}
+\begin{proof}
+Suppose a polynomial $F(x,\mathbf y)$ defines $\Z$, and let
+$V$ be its affine zero set. Let $C$ be the real topological
+closure of $V(\Q)$ in $V(\mathbb R)$. The coordinate projection
+$\pi:V(\mathbb R)\to\mathbb R$ is continuous. Since
+$\pi(V(\Q))=\Z$ and $\Z$ is closed,
+$\pi(C)\subseteq\Z$. Conversely every integer occurs at a
+rational point, so $\pi(C)=\Z$.
+Every connected component of $C$ has a connected image in
+the discrete set $\Z$, hence a one-point image.
+Finitely many components would give a finite image, a
+contradiction. If the conjecture is formulated only for
+irreducible varieties, apply it to the finitely many
+irreducible components of $V$.
+\end{proof}
+
+Thus this topological conjecture cannot be adjoined to
+arithmetic premises already implying an existential definition
+of $\Z$ as a consistent method of reducing the number of witnesses.
+It is distinct from the Bombieri--Lang statement used above.
+
+\begin{thebibliography}{99}
+\bibitem{Thirteen}
+\emph{Thirteen variables from a weak $abc$ inequality},
+companion paper and exact construction,
+\url{../conditional_few_variables/conditional13_20261109_v16.pdf}.
+\bibitem{Oesterle}
+J.~Oesterl\'e,
+Nouvelles approches du \emph{th\'eor\`eme} de Fermat,
+S\'eminaire Bourbaki, Exp.~694,
+\emph{Ast\'erisque} \textbf{161--162} (1988), 165--186.
+\url{https://www.numdam.org/article/SB_1987-1988__30__165_0.pdf}.
+\bibitem{Vojta}
+P.~Vojta, A more general $abc$ conjecture,
+\emph{Int. Math. Res. Notices} (1998), no.~21, 1103--1116.
+\url{https://arxiv.org/abs/math/9806171}.
+\bibitem{ErdosPomerance}
+P.~Erd\H{o}s and C.~Pomerance,
+An analogue of Grimm's problem of finding distinct prime
+factors of consecutive integers,
+\emph{Utilitas Math.} \textbf{24} (1983), 45--65.
+\url{https://math.dartmouth.edu/~carlp/PDF/38.pdf}.
+\bibitem{Schoenfeld}
+L.~Schoenfeld, Sharper bounds for the Chebyshev functions
+$\theta(x)$ and $\psi(x)$. II,
+\emph{Math. Comp.} \textbf{30} (1976), 337--360.
+\url{https://doi.org/10.1090/S0025-5718-1976-0457374-X}.
+\bibitem{Poonen}
+B.~Poonen, Multivariable polynomial injections on rational numbers,
+\emph{Acta Arith.} \textbf{145} (2010), 123--127.
+\url{https://math.mit.edu/~poonen/papers/QQ.pdf}.
+\bibitem{CornelissenZahidi}
+G.~Cornelissen and K.~Zahidi,
+Topology of Diophantine sets: remarks on Mazur's conjectures,
+in \emph{Hilbert's Tenth Problem: Relations with Arithmetic
+and Algebraic Geometry}, Contemp. Math.~270, 2000, 253--260.
+\url{https://arxiv.org/abs/math/0006140}.
+\end{thebibliography}
+\end{document}

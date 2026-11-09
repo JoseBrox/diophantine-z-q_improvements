@@ -8,22 +8,22 @@
 \newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}\newcommand{\HH}{\mathcal H}
 \DeclareMathOperator{\Tr}{Tr}\DeclareMathOperator{\Nm}{Nm}
 \setlength{\emergencystretch}{2em}
-\title{A family of defining quartics in 267 variables}
+\title{A family of defining quartics in 263 variables}
 \author{}\date{9 November 2026}
 \begin{document}\maketitle
 \begin{abstract}
 Under the stated arithmetic premises of the elliptic source, we specify
-an integer quartic family in 267 total variables whose sufficiently
+an integer quartic family in 263 total variables whose sufficiently
 large members define the integers in the rationals. Four disjoint
-translates of the contact set give a height exponent $19/4$. This permits
+affine images of the contact set give a height exponent $19/4$. This permits
 quadratic Taylor approximations to the formal logarithm, with comparison
 orders twelve and three. Residue classes modulo eight permit sixteen local tests to be represented
-by five factors. A simultaneous quadratic evaluation of two degree-twenty
-polynomials uses six auxiliary coordinates at each scale. A normalization
-independent of the scale uses the positive aggregate trace directly,
-without computing its square or a scaled twentieth power. The complete
+by five factors. A contact set symmetric about one makes its degree-twenty product
+a degree-ten polynomial in the squared displacement. Five quadratic
+coordinates evaluate that product and its normalization. The normalization
+is independent of the scale and uses the positive aggregate trace directly. The complete
 quadratic and expanded coefficient tables are independently verified.
-The family has 3422 monomials for every positive parameter, and exact
+The family has 3312 monomials for every positive parameter, and exact
 coefficient height $80989^{4N+2}+1$ for $N\ge23$. The sufficient defining
 parameter remains ineffective because the aggregate-trace height theorem
 has an ineffective additive constant.
@@ -32,11 +32,11 @@ has an ineffective additive constant.
 \section{The family and its arithmetic scope}
 All variable counts include the distinguished input $X$. For a fixed
 integer $N\ge1$ let $A_N=80989^{2N+1}$. The complete tables
-\nolinkurl{quadratic-family267.json} and
-\nolinkurl{polynomial-family267.json} specify 241 primitive integer
+\nolinkurl{quadratic-family263.json} and
+\nolinkurl{polynomial-family263.json} specify 237 primitive integer
 quadratic polynomials and their sum of squares
 \[
- P_N(X,Y_1,\ldots,Y_{266})=\sum_{j=1}^{241}Q_{N,j}^2.
+ P_N(X,Y_1,\ldots,Y_{262})=\sum_{j=1}^{237}Q_{N,j}^2.
 \]
 The parameter $A_N$ is a coefficient, not a variable.
 
@@ -45,11 +45,11 @@ Assume the arithmetic premises stated below. There is a fixed integer
 $N_0\ge27464$ such that every $N\ge N_0$ satisfies
 \[
  x\in\Z\quad\Longleftrightarrow\quad
- \exists\mathbf y\in\Q^{266}\ P_N(x,\mathbf y)=0
+ \exists\mathbf y\in\Q^{262}\ P_N(x,\mathbf y)=0
  \qquad(x\in\Q).
 \]
 For every $N\ge1$ the polynomial $P_N$ has degree exactly four,
-content one, and 3422 nonzero coordinate monomials. For $N\ge23$,
+content one, and 3312 nonzero coordinate monomials. For $N\ge23$,
 \[
                        H(P_N)=80989^{4N+2}+1.
 \]
@@ -96,31 +96,41 @@ does not prove the retained arithmetic premises.
 Put
 \[
  \Theta=\{0,-1/2,-1,1/2399,-32/407\},\qquad
- \Theta_4=\bigcup_{j=0}^3(\Theta+3j),\qquad
- F_4(t)=\prod_{\theta\in\Theta_4}(t-\theta).
+ \Theta_4=\Theta\cup(2-\Theta)\cup(\Theta+5)\cup(-3-\Theta),
 \]
-Let $\Sigma$ consist of the primes at most $76176$ and the two primes
-$123121,161303$. Outside this set, all contact differences and all
-numbers $1-\theta$ are units. The contact radical $M_4(t)$ is the
-product of primes $p\notin\Sigma$ for which
-$v_p(t-\theta)$ is positive and odd for some $\theta\in\Theta_4$.
-The exact contact certificate in \cite{Contacts} verifies this
-exceptional set, including the normalizing value $t=1$.
+\[
+                         F_4(t)=\prod_{\theta\in\Theta_4}(t-\theta).
+\]
+The twenty contacts are distinct, omit one, and are symmetric about one.
+Let $\Sigma$ consist of the primes at most $76176$ and the three primes
+$247957,368323,2029147$. Outside this set, all contact differences and
+all numbers $1-\theta$ are units. Define $M_4(t)$ as the product of primes
+$p\notin\Sigma$ for which $v_p(t-\theta)$ is positive and odd for some
+$\theta\in\Theta_4$. Exact factorizations in the independent certificate
+verify the exceptional set. They also show $M_4(1)=1$.
 
-Let $E_4=123121\cdot161303=19859786663$. The contact amplification
- theorem gives
+Put $E_4=247957\cdot368323\cdot2029147$. Then
 \begin{equation}\label{eq:contactheight}
- h(t)\le\log26+HE_4^{19}M_4(t)^{19/4}
+ h(t)\le\log14+HE_4^{19}M_4(t)^{19/4}
        \le H_4M_4(t)^{19/4},\qquad
- H_4=\log26+HE_4^{19},
+ H_4=\log14+HE_4^{19},
 \end{equation}
-for $t\notin\Theta_4$, and $M_4(1)=1$.
-For clarity, its proof applies the five-contact estimate to the four
-maps $2+1/(t-3j)$, each with determinant $-1$. Their contact preimages
-are disjoint outside $\Sigma$. Each map changes logarithmic height
-by at most $\log26$. Multiplication of the four resulting inequalities
-and disjointness of the radicals gives \eqref{eq:contactheight}.
-The full treatment of fixed exceptional primes is in \cite{Contacts}.
+for $t\notin\Theta_4$. Here is a direct proof from the retained
+five-contact inequality. Apply it to the four maps
+\[
+ 2+\frac1t,\qquad 2+\frac1{2-t},\qquad
+ 2+\frac1{t-5},\qquad2+\frac1{-3-t}.
+\]
+Their integer matrices have determinant $\pm1$. The maximum absolute
+row sums of inverse projective matrices are respectively $3,7,14,8$,
+so each inverse changes logarithmic height by at most $\log14$.
+Let $M_j$ be the contact radical for the corresponding five-element
+block, omitting $\Sigma$. Its original radical is at most $E_4M_j$.
+Thus $h(t)-\log14\le HE_4^{19}M_j^{19}$ for each of the four blocks.
+If the left side is positive, multiplication gives the first inequality
+in~\eqref{eq:contactheight}, since the block radicals are pairwise
+coprime and their product is $M_4(t)$. If it is nonpositive, the
+inequality is immediate. This accounts for every fixed exceptional prime.
 
 The retained root points are
 \[
@@ -140,22 +150,21 @@ Use the two positive rational scales $a_*=1,T$. No square condition
 on a scale is needed. Replacing the half-trace in the aggregate
 height theorem by its half changes its logarithmic height by at
 most $\log2$; this is absorbed into $M_2$.
-For each scale define, on its nonzero domain,
+For each scale put $t_*=a_*\lambda$ and $\delta=t_*-1$.
+On the nonzero domain the detector is
 \begin{equation}\label{eq:detector}
- t_*=a_*\lambda,\quad \delta=t_*-1,\quad
- R=\frac{F_4(t_*)}{\delta^{22}},\quad
- e=\frac{\delta^{20}}{F_4(t_*)},\quad
- q=\frac1{R\delta^4}.
+ R=\frac{F_4(t_*)}{\delta^{22}},\qquad
+ q=\frac{\delta^{18}}{F_4(t_*)}=\frac1{R\delta^4}.
 \end{equation}
-The actual quadratic system clears these expressions by
+The contact circuit stores $r=\delta^2$ and its powers $r^2,r^4,r^5$.
+The actual quadratic normalization equations are
 \begin{equation}\label{eq:clearing}
-             F_4(t_*)e=\delta^{20},\qquad q\delta^2=e.
+                         F_4(t_*)q=r^4r^5,\qquad k=qr^2.
 \end{equation}
-In particular $e\delta^2=R^{-1}$ when $\delta\ne0$.
-No contact value can occur, since $F_4(t_*)=0$ would contradict the
-first equation. If $q=0$, then $e=0$, and that equation forces
-$\delta=0$. At $\delta=0$ the contact radical is one; no reciprocal
-is used on this stratum.
+Thus $k=R^{-1}$ when $\delta\ne0$. No contact value can occur:
+$F_4(t_*)=0$ would force $r=0$ and $t_*=1$, contradicting $F_4(1)\ne0$.
+If $q=0$, the same equation forces $\delta=0$. At $\delta=0$ the
+contact radical is one; no reciprocal is used on this stratum.
 
 If both radicals divide a nonzero integer $J$ to order $k$, then
 $h(T)\le h(\lambda)+h(T\lambda)$ and
@@ -225,7 +234,7 @@ sufficiently large parameter. The explicit torsion translations and
 norm values supporting the unit assertion are those recorded in
 \cite[Section 3]{Even}. This exclusion uses no comparison quotient.
 
-Consequently $m\ne0,2$, and $H,V_0$ are nontorsion. Their required
+Consequently $m\notin\{-2,0,2\}$, and $H,V_0$ are nontorsion. Their required
 nonzero abscissas and ordinates, and all subtraction denominators,
 follow from the retained chart identities. In particular
 $z(H),z(V_0)\ne0$. Lemma~\ref{lem:g2} gives $\ell_0\ne0$ globally.
@@ -241,7 +250,11 @@ of $K$ are unramified and normalized by $v(p)=1$.
 For a point on $E$, every finite value of $v(f)$ is even: if
 $v(x)<0$ then $2v(y)=3v(x)$, while if $v(x)>0$ then
 $2v(y)=v(x)$; the remaining case is valuation zero.
-This also holds for conjugated reciprocal abscissas.
+This also holds for conjugated reciprocal abscissas. Before excluding
+the exceptional $H$ classes, the stored value for $f(H-P)$ still has even
+valuation: its literal equation is $f(H)F_0=g^2$, and $f(H)$ has even
+valuation. Thus the parity argument and the preceding exclusion do not
+assume the validity of a division in the fixed subtraction chart.
 
 Use
 \begin{align*}
@@ -294,7 +307,7 @@ one place above that prime.
 \begin{proof}
 Write $W=w_0+w_1\rho$. The literal cleared trace equations are
 \[
- w_0^2-2w_0\tau-2w_1^2=0,\qquad e\delta^2\mathfrak b=\tau^2.
+ w_0^2-2w_0\tau-2w_1^2=0,\qquad k\mathfrak b=\tau^2,\qquad k=R^{-1}.
 \]
 By Lemma~\ref{lem:residues}, $W\ne0$. The first equation therefore
 gives $w_0\ne0$ and $\tau=1/\Tr(W^{-1})\ne0$; indeed $w_0=0$
@@ -338,7 +351,7 @@ At a nonidentity formal point of depth $r=v(z)\ge1$, write
 The formal series satisfies
 \[
  G(w)=1-\frac25w-\frac2{15}w^2+O(w^3),\qquad
- g_j=\frac{4j-5}{4j+1}g_{j-1}.
+ g_j=\frac{4j-5}{4j+1}g_{j-1}\quad(j\ge2).
 \]
 The coefficient bound and full-tail proof in \cite[Lemma 3.1]{Even}
 give $\mathcal A\equiv1\pmod{p^{4r}}$,
@@ -444,7 +457,7 @@ bound low enough that $t_*=a_*\lambda$ has valuation below zero and
 all nonzero contacts. Then $v_p(\delta)=v_p(t_*)$, and the exact
 valuation formulas are
 \[
- v_p(F_4(t_*))=20v_p(t_*),\qquad v_p(e)=0,\qquad
+ v_p(F_4(t_*))=20v_p(t_*),\qquad
  v_p(q)=v_p(R)=-2v_p(t_*).
 \]
 The last two valuations become uniformly arbitrarily large. Thus
@@ -531,44 +544,37 @@ as already proved. No value of the unconstrained reciprocal weight
 on that stratum affects the soundness argument.
 
 \begin{lemma}\label{lem:contactcircuit}
-The two values $F_4(t_*)$ and $(t_*-1)^{20}$ can be evaluated with
-six additional coordinates and six quadratic equations, over $\Q$,
-for every rational input $t_*$. Each equation uniquely determines its
-new coordinate from the preceding ones.
+The values $F_4(t_*)$, $(t_*-1)^{18}$ and $(t_*-1)^4$ are quadratic
+expressions in five additional coordinates, each determined by one
+successive quadratic equation over $\Q$.
 \end{lemma}
 \begin{proof}
-For this proof write $t=t_*$. Put $V(t)=(t-1)^{10}$. Divide the fixed
-monic polynomial $F_4$ by $V$:
+Put $r=(t_*-1)^2$. Symmetry of the contacts gives
 \[
- F_4=VS+R,\qquad \deg R\le9.
+ F_4(t_*)=P_{10}(r),\qquad
+ P_{10}(r)=\prod_{\theta\in\Theta}
+          \bigl(r-(\theta-1)^2\bigr)\bigl(r-(\theta+4)^2\bigr).
 \]
-Both $S$ and $V$ are monic of degree ten. The coefficient of $t^9$
-in $S-V$ is
+The ten squared roots are distinct. Four successive equations compute
 \[
- a_0=20-\sum_{\theta\in\Theta_4}\theta
-     =-64-\frac4{2399}+\frac{128}{407}
-     =-\frac{62183708}{976393}\ne0.
+                  r=(t_*-1)^2,\quad r_2=r^2,\quad
+                  r_4=r_2^2,\quad r_5=rr_4.
 \]
-Consequently $U=(S-V)/a_0$ is monic of degree nine, and
-$L=V-tU$ has degree at most nine. The identities are
+Every integer from zero through ten is a sum of two elements of
+$\{0,1,2,4,5\}$. Therefore $P_{10}(r)$ is a quadratic expression
+in $1,r,r_2,r_4,r_5$, and a fifth equation computes it.
+The other required values are already quadratic expressions:
 \[
-              V=tU+L,\qquad F_4=V^2+a_0UV+R.
+                    (t_*-1)^{18}=r_4r_5,\qquad
+                    (t_*-1)^4=r_2.
 \]
-Every integer from zero through nine is a sum of two elements of
-$\{0,1,2,3,6\}$. After three equations have computed
-$t^2,t^3,t^6$, every polynomial of degree at most nine is therefore
-a quadratic expression in $1,t,t^2,t^3,t^6$. A fourth equation
-computes $U$, a fifth computes $V=tU+L$, and a sixth computes
-$F_4=V^2+a_0UV+R$. The other required value is $V^2=(t-1)^{20}$.
-All divisions used in the construction are by fixed nonzero rational
-coefficients. The equations successively determine the advertised
-values at every input, including $t=1$ and all contact values.
+All coefficients are fixed rational numbers. These equations determine
+the claimed values at every input, including the contact values and one.
 \end{proof}
 
-At both scales the first equation of \eqref{eq:clearing} is simply
-$F_4(t_*)e=V(t_*)^2$. No powers of $a_*\delta$ are introduced.
-The trace-clearing coordinate represents $e\delta^2$.
-The second scale is an affine rational expression in the retained
+The normalization is consequently $F_4(t_*)q=r_4r_5$, followed by
+$k=qr_2$. The trace-clearing coordinate is $k=R^{-1}$ on the nonzero
+domain. The second scale is an affine rational expression in the retained
 root-abscissa coordinates, so its product with $\lambda$ is quadratic
 without a separate scale coordinate.
 
@@ -586,30 +592,28 @@ products, using sixteen coordinates; the final product uses the
 retained $W$ coordinates. The exact count is
 \[
 \begin{array}{lr}\toprule
-\text{point, scalar, contact, logarithm, and weight coordinates}&229\\
+\text{point, scalar, contact, logarithm, and weight coordinates}&225\\
 \text{three shared fourth powers}&6\\
 \text{five factors and intermediate products for two detectors}&32\\\midrule
-\text{total coordinates, including the input}&267\\\midrule
-\text{point, scalar, contact, logarithm, and weight quadratic rows}&199\\
+\text{total coordinates, including the input}&263\\\midrule
+\text{point, scalar, contact, logarithm, and weight quadratic rows}&195\\
 \text{shared fourth-power rows}&6\\
 \text{factor and product rows}&36\\\midrule
-\text{total quadratic rows}&241\\\bottomrule
+\text{total quadratic rows}&237\\\bottomrule
 \end{array}
 \]
 
 The complete tables fix every coordinate, equation, coefficient, and
 normalization; the input is coordinate one. The producer clears
 denominators and primitive-normalizes each row before squaring.
-An independent checker imports no producer. It reconstructs the
-contact polynomial by finite differences of twenty-one exact
-evaluations and verifies all twenty roots. It reconstructs
-Lemma~\ref{lem:contactcircuit} by descending coefficient equations,
-checks both polynomial identities, reconstructs every modified
-quadratic row, and compares every retained row with its pinned coefficient
-source. A separate normalization check reconstructs both contact-clearing
-equations, both weight equations, the two trace identities, and the
-linear trace scale directly from the displayed definitions. The
-projection proof uses these literal equations and the preceding
+An independent checker imports no producer. It recovers $P_{10}$ by
+Newton finite differences at eleven exact arguments, checks all ten roots,
+and independently verifies $P_{10}((t-1)^2)=F_4(t)$ as a degree-twenty
+polynomial identity. It reconstructs every modified quadratic equation,
+compares the other equations with their pinned coefficient source, and
+checks the full contact exceptional set and all four height matrices.
+Both normalizations and the linear trace scale are verified directly.
+The projection proof uses these literal equations and the preceding
 arithmetic argument.
 It expands the entire sum of squares independently by unordered
 pairs of terms. The supplementary local certificate exhausts all
@@ -619,8 +623,8 @@ noncancellation assertion for all integer valuations, together with
 the exact extraction bounds and sufficient completeness depths.
 The infinite arithmetic arguments are the proofs above.
 
-The expanded quartic has 3423 terms before powers of $A_N$ belonging
-to the same coordinate monomial are collected, and 3422 monomials
+The expanded quartic has 3313 terms before powers of $A_N$ belonging
+to the same coordinate monomial are collected, and 3312 monomials
 after collection. Its unique coefficient involving $A_N^2$ is
 $A_N^2+1$, at the square of the actual scalar contact-product coordinate.
 Every other coefficient is a nonzero constant or a nonzero constant

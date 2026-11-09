@@ -2,20 +2,21 @@
 
 ## Quartic coefficient tables
 
-The leading tables are in `computation/quartic/family267` and `family322`.
+The leading tables are in `computation/quartic/family263`, `family322`, and the additional-abc `family_abc98`.
 
 | Family | Total variables | Quadratic equations | Terms with parameter powers separate | Ordinary monomials |
 |:--|--:|--:|--:|--:|
-| 267 | 267 | 241 | 3423 | 3422 |
+| 263 | 263 | 237 | 3313 | 3312 |
 | 322 | 322 | 294 | 4993 | 4992 |
+| 98, **additional abc** | 98 | 86 | 885 | 882 |
 
-Each family has exact degree four and integer content one. The support counts hold for every positive coefficient parameter, hence for every integer $N\ge1$. The 322-variable member at $N=27464$ has a certified defining theorem under the stated arithmetic inputs. The 267-variable family requires a sufficiently large $N$ with ineffective threshold; its support and height computations do not certify a defining member.
+Each family has exact degree four and integer content one. The support counts hold for every positive coefficient parameter. The inherited-premise families use integers $N\ge1$; the additional-abc family uses odd shifts $B\ge3$. The 322-variable member at $N=27464$ has a certified defining theorem under the stated arithmetic inputs. The 263-variable family requires a sufficiently large $N$ with ineffective threshold; its support and height computations do not certify a defining member.
 
-The fixed coefficient is $A_N=80989^{2N+1}$. In each family,
+For these two inherited-premise families the fixed coefficient is $A_N=80989^{2N+1}$. In each family,
 
 $$P_N=\sum_j Q_{N,j}^2,$$
 
-where the complete quadratic-system file lists all residuals $Q_{N,j}$. The parameter is not an extra variable. The 322-variable tables use `integer-quadratic-family-v6` and `integer-quartic-family-v6`; the 267-variable tables use the corresponding `v10` labels. They share these fields:
+where the complete quadratic-system file lists all residuals $Q_{N,j}$. The parameter is not an extra variable. The 322-variable tables use `integer-quadratic-family-v6` and `integer-quartic-family-v6`; the 263-variable tables use the corresponding `v11` labels. They share these fields:
 
 | Field | Meaning |
 |:--|:--|
@@ -41,7 +42,7 @@ At $N=27464$, this number has exactly 1,791,283 binary digits. The reports retai
 
 ## Exact source dependencies
 
-The even-valuation builder reads and hash-checks family342 to produce family322. The leading existence family follows the exact dependency chain family297 to family279 to family273 to family267. The checkers separately reconstruct the contact polynomial, the shared and separate degree-twenty evaluations, every changed quadratic row, all five local factors, and the full quartic. The producers and checkers share no polynomial arithmetic implementation. The source chain continues through the shared-weight and mixed-order families to the pinned baseline. Original large source tables are distributed as deterministic gzip archives; their uncompressed lengths and hashes are recorded in the compressed-source metadata. The restoration script rejects conflicting existing files.
+The even-valuation builder reads and hash-checks family342 to produce family322. The leading existence family follows the exact dependency chain family297 to family279 to family273 to family267 to family263. The checkers separately reconstruct the contact polynomial, the shared and separate degree-twenty evaluations, every changed quadratic row, all five local factors, and the full quartic. The producers and checkers share no polynomial arithmetic implementation. The source chain continues through the shared-weight and mixed-order families to the pinned baseline. Original large source tables are distributed as deterministic gzip archives; their uncompressed lengths and hashes are recorded in the compressed-source metadata. The restoration script rejects conflicting existing files.
 
 `PROVENANCE.json` in `computation/quartic` binds precise source commits, distributed computational files, and mathematical proofs. Every final quartic coefficient is stored; reconstruction requires no search or unpublished intermediate polynomial.
 
@@ -91,3 +92,21 @@ SHA-256 digests bind source and output specifications. The independent checker i
 The number-field certificate checks the finite-difference identity for degrees 1 through 64, exact quadratic norm examples, and elliptic point computations by two independent finite-field counting methods. The input-normalization certificate checks all specified residue classes and lists witnesses for all 128 final cases. The uniform mathematical results are proved in their papers; finite cases do not substitute for the proofs.
 
 Exact coefficient data and passing checks establish the algebraic specifications and the stated finite assertions. Projection theorems additionally use the arithmetic hypotheses identified in the papers. See the [reproducibility guide](reproducibility.md) for commands and the [arithmetic guide](arithmetic_inputs.md) for scope.
+
+## Additional-hypothesis specifications
+
+The weak-abc 13-variable family is stored in `computation/few_variables/weak_abc13`. Three monic quartic point generators and two monic quadratic pole generators give a finite algebra of rank 256 over 12 retained coordinates. The point algebra has rank 64, so the final polynomial has 64 factors and one additional rational coordinate. Its degree is at most 12339485119488, less than $2^{44}$, uniformly in the fixed odd shift $B$. The supplied $B=3$ fixture has binary logarithmic coefficient-norm bound 29454018907833, less than $2^{45}$; it is not certified to exceed the ineffective defining threshold. All assumptions and guard conventions are recorded in the module's source specification.
+
+The 98-variable additional-abc quartic tables use a fixed odd input shift $B$ instead of $A_N$. Its 86 primitive quadratic rows give 885 parameter-separated terms and exactly 882 ordinary monomials. Its coefficient height for $B\ge3$ is $\max(11600064,2B^4+169997)$. The `parameterPower` field is a power of $B$ and still contributes zero to polynomial degree. Every quadratic row and every quartic coefficient is stored. The sufficient defining shift is ineffective; support and height formulas for numerical fixtures are algebraic assertions only.
+
+## Exact counts and support upper bounds
+
+An ordinary monomial is a product of the polynomial coordinates after all fixed coefficient parameters have been substituted. Distinct powers of a fixed parameter attached to the same coordinate monomial count only once. Complete quartic expansions certify their exact ordinary support counts.
+
+The 27-, 29-, and 13-variable determinant polynomials have not been expanded. Their exact support counts are explicitly unknown. Let $n$ be the total number of coordinates, $D$ the certified total-degree majorant, $b$ the rank of the point algebra, and $d$ the rank of the full algebra. Each determinant $H_r(U)$ has degree at most $d$ in $U$, globally including incorrect degree strata. The final product therefore has degree at most $E=(2b-1)d$ in that coordinate. The number of possible coordinate monomials is at most
+
+$$
+\binom{D+n}{n}-\binom{D-E+n-1}{n},
+$$
+
+with the second term omitted when $E\ge D$. The independent `check_monomial_bounds.py` certificate computes these integer bounds exactly and verifies strict upper bounds $2^{2202}$, $2^{2417}$, and $2^{509}$, respectively. These are uniform support bounds, not exact monomial counts or assertions that all those monomials occur.

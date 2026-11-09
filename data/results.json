@@ -1,5 +1,5 @@
 {
-  "schema": "diophantine-results/v7",
+  "schema": "diophantine-results/v8",
   "date": "2026-11-09",
   "variable_convention": "total coordinates including the input",
   "coefficient_height": "largest absolute integer coefficient after fixed constants are substituted",
@@ -7,7 +7,7 @@
     "algebraic_specification": "proved for every explicitly described polynomial or coefficient-family member",
     "projection_equals_Z": "proved implication from the stated arithmetic premises; the existence families require a sufficiently large fixed parameter",
     "variable_minimality": "best constructions in this collection; no global variable minimum claimed",
-    "effectiveness": "The 27-variable and 267-variable results have ineffective sufficient coefficient thresholds. The explicit 29-variable and 322-variable constructions specify every coefficient and certify numerical sufficient parameters.",
+    "effectiveness": "The 27-variable and 263-variable families have ineffective sufficient coefficient thresholds. The additional-hypothesis 13-variable and quartic families also have ineffective sufficient input shifts. The explicit 29-variable and 322-variable constructions certify numerical sufficient parameters.",
     "prime_selection": "The quantitative weighted selection used by the quartics follows from the cited Sun v2 Propositions 5.1 and 6.2 and Section 6.1, with the separation argument recorded in the prime-selection paper. It is not an additional independent conjecture; dependence on the cited arithmetic estimates remains explicit."
   },
   "constructions": [
@@ -78,12 +78,18 @@
       "specification_sha256": "5b1579aead04974117467d13d0bc860e8ad13fe263d48ad49aa72177e4d0eb37",
       "source_degree_certificate": "computation/few_variables/trace27_nontorsion/degree-family-verification.json",
       "uniform_degree_certificate": "computation/few_variables/active_elimination/active27/construction-certificate.json",
-      "finite_point_algebra_rank": 262144
+      "finite_point_algebra_rank": 262144,
+      "ordinary_monomials": null,
+      "ordinary_monomial_count_status": "Not computed: the determinant polynomial has not been expanded.",
+      "ordinary_monomial_upper_bound": "440598292197894456939473648808993608626267916493858557115991664061790017027032506657851738313464775085897649243944560733212322654998262950787179773094871109910053032222898397668528101895854229289970066283939757558472815039973351938002967821841350814610321984957930355228230261633038381106942053855709751773747259475994978961121107427325487340315621981936489287604887650952598360709956338829625565099894327316244567774605858697892865745208346559550627412169979688998705701315312119330410014437339309810825433898399760284364468169776435514979993780192314332096071991717733679974383509648451267275740383981133330267244156492103728090902555743602160336383650482356225",
+      "ordinary_monomial_upper_bound_power_of_two_exponent": 2202,
+      "ordinary_monomial_upper_bound_strict": true,
+      "monomial_bound_certificate": "computation/few_variables/monomial-bound-certificate.json"
     },
     {
-      "id": "quartic267_family",
+      "id": "quartic263_family",
       "construction_kind": "existence_in_computable_coefficient_family",
-      "total_variables": 267,
+      "total_variables": 263,
       "degree": 4,
       "degree_status": "exact for every member",
       "fixed_parameter": {
@@ -95,17 +101,17 @@
         "effective_sufficient_threshold_known": false,
         "certified_numerical_defining_parameter": null
       },
-      "quadratic_residuals": 241,
-      "ordinary_monomials": 3422,
+      "quadratic_residuals": 237,
+      "ordinary_monomials": 3312,
       "ordinary_monomial_count_condition": "Every positive coefficient parameter A; hence every N>=1. This is an algebraic support statement, not a sufficient defining threshold.",
-      "coefficient_parameter_terms": 3423,
+      "coefficient_parameter_terms": 3313,
       "integer_content": 1,
       "coefficient_height_upper_bound": "2^1520*80989^(4*N+2)",
       "coefficient_height_upper_bound_strict": true,
       "input_label": "51*X^2+2504",
       "scalar_correction": 9792,
-      "polynomial_sha256": "bc1f00a45bc05c72fba4fd1f117d2e7a6ec409d1c50cb9c1326794bf2ffbdf6b",
-      "residuals_sha256": "54c242476e796404131eb09099bd2c134adf2358e1129a112cd2b47f996ab6c7",
+      "polynomial_sha256": "4ac70724c340aa26440c0cdee1cae1445455bdf5fe702efa623037ec1a252f20",
+      "residuals_sha256": "26876d3f9fa9a42478c4465edf36f9e8647df44ee2cc744df551300465fe58e3",
       "arithmetic_inputs": [
         "elliptic_group_and_index_height",
         "contact_height",
@@ -114,10 +120,10 @@
         "weighted_prime_selection"
       ],
       "additional_proved_input": "aggregate_trace_height_von_buhren",
-      "proof": "papers/quartic_existence/quartic267_20261109_v15.tex",
-      "computation": "computation/quartic/family267",
-      "exact_height_data": "computation/quartic/family267/independent-verification267.json",
-      "local_test_proof": "papers/quartic_existence/quartic267_20261109_v15.tex",
+      "proof": "papers/quartic_existence/quartic263_20261109_v16.tex",
+      "computation": "computation/quartic/family263",
+      "exact_height_data": "computation/quartic/family263/independent-verification263.json",
+      "local_test_proof": "papers/quartic_existence/quartic263_20261109_v16.tex",
       "role": "Leading quartic existence family; sufficient threshold ineffective",
       "exact_coefficient_height": "80989^(4*N+2)+1",
       "exact_coefficient_height_condition": "N>=23; this is an algebraic coefficient threshold, not a sufficient defining threshold.",
@@ -133,16 +139,18 @@
       "contact_points": 20,
       "contact_height_exponent": "19/4",
       "additional_exceptional_primes": [
-        123121,
-        161303
+        247957,
+        368323,
+        2029147
       ],
-      "contact_height_proof": "papers/contact_heights/contact_height_amplification_20261109_v13.tex",
+      "contact_height_proof": "papers/quartic_existence/quartic263_20261109_v16.tex",
       "contact_evaluation_coordinates": {
-        "base_scale_joint_two_outputs": 6,
-        "other_scale_joint_two_outputs": 6
+        "base_scale_joint_outputs": 5,
+        "other_scale_joint_outputs": 5
       },
-      "detector_normalization": "R=F20(t)/(t-1)^22; F20(t)e=(t-1)^20; q(t-1)^2=e",
-      "scales": "1 and T, where T is one quarter of the trace of the sum of four root abscissas"
+      "detector_normalization": "F20(t)*q=r^4*r^5; inverseR=q*r^2; r=(t-1)^2",
+      "scales": "1 and T, where T is one quarter of the trace of the sum of four root abscissas",
+      "contact_symmetry": "Theta, 2-Theta, Theta+5, -3-Theta; symmetric about one"
     },
     {
       "id": "few_variables29_nontorsion",
@@ -178,7 +186,13 @@
       "elimination_method": "isolate the nonzero guard branches and separate them using the guard product",
       "source_specification_sha256": "daceb26d141bb265e33461957756445c565df9f1a7e5447c9258a466df976901",
       "exact_final_factor_count": "262144",
-      "finite_point_algebra_rank": 262144
+      "finite_point_algebra_rank": 262144,
+      "ordinary_monomials": null,
+      "ordinary_monomial_count_status": "Not computed: the determinant polynomial has not been expanded.",
+      "ordinary_monomial_upper_bound": "34558159441018373924237824632831180504222877376504661231090051869293444992581516980274062836917692733313148509937115553828181940874934385165362270734951217343831142272127537340610109845220753239781419837119995110728248532423962915540312612334909570359911005012918672236867995357933633015699760908219266019984970868760739887853889603636478565576354554386771975051495362076483012556247500533072389869449250321387716591941739659913081534640466574624462934646701322945923467873051489192024074354774564764941334548203388141210502928327182383428569959741679347688863167388729903334483255286079251833053379453269924083318683060870102595303533929308002550908068467092751856793677875779180189963177933193968464816070883562902489345294337",
+      "ordinary_monomial_upper_bound_power_of_two_exponent": 2417,
+      "ordinary_monomial_upper_bound_strict": true,
+      "monomial_bound_certificate": "computation/few_variables/monomial-bound-certificate.json"
     },
     {
       "id": "quartic322",
@@ -954,8 +968,24 @@
         ]
       ],
       "conditional_on_BSD": false,
-      "proof": "papers/pole_parameters/fixed_pole_parameters_20261109_v14.tex",
-      "verification": "computation/pole_parameters/fixed-e-obstruction-certificate.json"
+      "proof": "papers/pole_parameters/fixed_pole_parameters_20261109_v16.tex",
+      "verification": "computation/pole_parameters/fixed-e-obstruction-certificate.json",
+      "additional_retained_chart_obstructions": {
+        "tau=+/-1": "b=(204/61)^2",
+        "tau=+/-17": "b=(204/101)^2"
+      },
+      "retained_chart_verifications": [
+        "computation/pole_parameters/fixed-tau-one-obstruction.json",
+        "computation/pole_parameters/fixed-tau17-obstruction.json"
+      ],
+      "scope_limit": "These counterexamples range over prepared inputs. They do not exclude a fixed retained parameter on a specially selected prime-pattern subfamily."
+    },
+    {
+      "id": "combining_pole_certificates_obstructions",
+      "statement": "Two explicit prepared inputs cannot share an actual pole parameter; symmetric contact products can have odd radical one at unbounded scale height.",
+      "proof": "papers/pole_parameters/combining_pole_certificates_20261109_v16.tex",
+      "verification": "computation/pole_parameters/pole-merger-obstructions.json",
+      "scope_limit": "Obstructions to specified simplifications, not general coordinate lower bounds."
     }
   ],
   "source_pins": {
@@ -963,7 +993,7 @@
     "corrected_arithmetic_proof_v11": "650b298a2a18fa956f8859f3ca80e9d7c8cedd82",
     "quartic_source_v13": "5bbd74f6a479776a332cbe036809d5dddae63720"
   },
-  "release": "2026.11.09-v15",
+  "release": "2026.11.09-v16",
   "auxiliary_arithmetic_theorems": [
     {
       "id": "square_abscissa_subgroup_chart",
@@ -1005,20 +1035,26 @@
       "statement": "The source pole witnesses are Zariski dense in the indicated parameter space and avoid any finite collection of proper polynomial zero sets.",
       "scope_limit": "Does not prove simultaneous rational solubility with a common retained pole parameter.",
       "proof": "papers/pole_parameters/pole_witness_density_20261109_v14.tex"
+    },
+    {
+      "id": "arithmetic_hypotheses_and_coordinate_bounds",
+      "statement": "Ordinary Szpiro supplies the weak abc exponent used by the thirteen-coordinate construction. Truncated Vojta implies ordinary abc. Pell examples show why consecutive-integer prime assignments alone do not control the odd radical.",
+      "proof": "papers/arithmetic_hypotheses/arithmetic_hypotheses_20261109_v16.tex",
+      "other_conjectures": "No coordinate reduction is derived from RH, GRH, or Grimm alone. No formal nonimplication is claimed."
     }
   ],
   "additional_hypothesis_constructions": [
     {
-      "id": "conditional13_abc_family",
+      "id": "conditional13_weak_abc_family",
       "construction_kind": "existence_in_computable_coefficient_family",
-      "additional_conjecture": "rational abc",
+      "additional_conjecture": "One weak rational abc inequality c<=K*rad(abc)^(121/100)",
       "arithmetic_inputs": [
         "elliptic_group_and_index_height",
         "pole_obstruction_and_nonzero_realization_with_restricted_converse_and_descent",
         "simultaneous_prime_patterns"
       ],
       "proved_additional_input": "one-point aggregate trace-height theorem",
-      "replaces_inherited_input": "The exponent-19 contact bound is replaced by the logarithmic consequence of abc.",
+      "replaces_inherited_input": "The exponent-19 contact estimate is replaced by the six-contact inequality obtained from a degree-four rational Belyi map.",
       "total_variables": 13,
       "retained_coordinates": 12,
       "point_roles": 3,
@@ -1028,7 +1064,7 @@
       "exact_final_factor_count": 64,
       "degree_bound_power_of_two_exponent": 44,
       "degree_bound_strict": true,
-      "exact_degree_majorant": "13155996618240",
+      "exact_degree_majorant": "12339485119488",
       "degree_bound_uniform_in_fixed_parameter": true,
       "fixed_parameter": {
         "name": "B",
@@ -1043,10 +1079,10 @@
       "algebraic_reproduction_example": {
         "B": 3,
         "certified_to_define_Z": false,
-        "exact_binary_log_coefficient_majorant": "31315024824505",
+        "exact_binary_log_coefficient_majorant": "29454018907833",
         "coefficient_height_bound_double_power_of_two_exponent": 45
       },
-      "height_scales": "1,(beta^6+(Tr x(A))^6)^2",
+      "height_scales": "1,beta^8+(Tr x(A))^8",
       "comparison_orders": [
         1,
         1,
@@ -1055,13 +1091,92 @@
         1,
         1
       ],
-      "key_height_coefficient": "8/9",
-      "proof": "papers/conditional_few_variables/conditional13_20261109_v15.tex",
-      "computation": "computation/few_variables/conditional13",
-      "construction_certificate": "computation/few_variables/conditional13/active13/construction-certificate.json",
-      "source_specification_sha256": "34342a562d89dbb7cf08b36c34d9e0b3c5ff590f9ed8c127cc36310cf591924c",
-      "specification_sha256": "819e117a59e7fcd0314d32a89ffb91bc1d1a714084135a314d7a04754f57c481",
-      "scope_limit": "Does not improve the coordinate record under the inherited assumptions alone. Neither target below ten coordinates or below one hundred for quartics is attained."
+      "key_height_coefficient": "14641/16169",
+      "proof": "papers/conditional_few_variables/conditional13_20261109_v16.tex",
+      "computation": "computation/few_variables/weak_abc13",
+      "construction_certificate": "computation/few_variables/weak_abc13/active13/construction-certificate.json",
+      "source_specification_sha256": "801ab0f5946e5082be0ac369baa00b4d36ab0899651154e5c11408472a69847d",
+      "specification_sha256": "2459dd65959ca2292fc3e4e6243b8fa74e345a9dee6418f12ae2305e1d3dd75b",
+      "scope_limit": "Thirteen total coordinates under an additional arithmetic hypothesis; no construction below ten is established.",
+      "sufficient_standard_conjectures": [
+        "ordinary rational abc",
+        "ordinary Szpiro (semistable elliptic curves suffice)"
+      ],
+      "general_height_theorem": "Any one weak abc exponent 1<kappa<4/3 gives thirteen coordinates with a suitable even fixed power; the distributed degree certificate uses kappa=121/100 and power eight.",
+      "ordinary_monomials": null,
+      "ordinary_monomial_count_status": "Not computed: the determinant polynomial has not been expanded.",
+      "ordinary_monomial_upper_bound": "845832826960671682168043983625076750997462838564767197514171003813894326474088328739147468200276132263575272414298616664143729218901479440051591494071169",
+      "ordinary_monomial_upper_bound_power_of_two_exponent": 509,
+      "ordinary_monomial_upper_bound_strict": true,
+      "monomial_bound_certificate": "computation/few_variables/monomial-bound-certificate.json"
+    },
+    {
+      "id": "quartic98_abc_family",
+      "construction_kind": "existence_in_computable_coefficient_family",
+      "role": "Leading quartic with additional rational abc",
+      "additional_conjecture": "ordinary rational abc",
+      "arithmetic_inputs": [
+        "elliptic_group_and_index_height",
+        "pole_obstruction_and_nonzero_realization_with_restricted_converse_and_descent",
+        "simultaneous_prime_patterns"
+      ],
+      "proved_additional_input": "one-point aggregate trace-height theorem",
+      "replaces_inherited_input": "Ordinary abc replaces the exponent-nineteen contact estimate and the scalar/Lucas growth mechanism.",
+      "total_variables": 98,
+      "quadratic_residuals": 86,
+      "degree": 4,
+      "degree_status": "exact",
+      "integer_content": 1,
+      "ordinary_monomials": 882,
+      "ordinary_monomial_count_condition": "Every positive integer B; defining members require a sufficiently large odd B.",
+      "coefficient_parameter_terms": 885,
+      "fixed_parameter": {
+        "name": "B",
+        "domain": "odd integers B>=3",
+        "quantified": false,
+        "input_map": "beta=2*X^2+B",
+        "all_sufficiently_large_parameters_define_Z": true,
+        "effective_sufficient_threshold_known": false,
+        "certified_numerical_defining_parameter": null
+      },
+      "exact_coefficient_height": "max(11600064,2*B^4+169997)",
+      "exact_coefficient_height_condition": "Every integer B>=3",
+      "eventual_coefficient_height": "2*B^4+169997",
+      "eventual_coefficient_height_condition": "Every odd B>=49; coefficient threshold only, not a defining threshold.",
+      "height_scales": "1,beta^6+(Tr x(A))^6",
+      "contacts": [
+        -2,
+        -1,
+        0,
+        2,
+        3,
+        4
+      ],
+      "contact_height_coefficient": "2/3",
+      "pair_height_coefficient": "2/5",
+      "key_height_coefficient": "8/15",
+      "point_roles": 3,
+      "pole_certificates": 2,
+      "comparison_orders": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "proof": "papers/quartic_existence/quartic_abc98_20261109_v16.tex",
+      "computation": "computation/quartic/family_abc98",
+      "exact_height_data": "computation/quartic/family_abc98/independent-verification-abc98.json",
+      "polynomial_sha256": "8d4c69fef8b61961ab537b6071ee20ae600568cedfa204583797ff1e2e9c566b",
+      "residuals_sha256": "006eff7658ab3625c385d1ce684f4eca90c4bd46a1df5dfa34d990d08eeb7929",
+      "algebraic_reproduction_example": {
+        "B": 3,
+        "ordinary_monomials": 882,
+        "coefficient_height": 11600064,
+        "certified_to_define_Z": false
+      },
+      "scope_limit": "The additional abc hypothesis is essential to the stated proof; this is not an improvement under the inherited premises alone."
     }
   ]
 }

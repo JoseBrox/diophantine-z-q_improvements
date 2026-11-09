@@ -1,7 +1,7 @@
 {
-  "format": "quartic-provenance-v3",
+  "format": "quartic-provenance-v4",
   "pathConvention": "All local paths are relative to this computation/quartic directory.",
-  "scope": "Exact polynomial specifications and conditional integer-projection theorems. Finite verification establishes the algebraic tables and stated numerical certificates, not the retained global arithmetic inputs. The leading 279-variable family has an ineffective sufficient coefficient threshold; the leading 322-variable quartic has a certified fixed parameter.",
+  "scope": "Complete quartic coefficient specifications with separately stated arithmetic projection hypotheses. The leading inherited-premise family has 263 total coordinates and an ineffective sufficient coefficient threshold. The fully specified inherited-premise quartic has 322 coordinates. Additional-abc quartics are labelled separately; no numerical sufficient shift is asserted.",
   "sourceRepository": "https://github.com/elliotglazer/diophantine-z-q",
   "sourceCommit": "5bbd74f6a479776a332cbe036809d5dddae63720",
   "sourceFiles": [
@@ -329,7 +329,7 @@
         "comparison": 12,
         "input": 3
       },
-      "projectionStatus": "The literal nonbase numerator differs from the former proof. The current family267 has a separately proved normalization."
+      "projectionStatus": "Exact coefficient dependency only. The current family263 has a separately proved literal normalization."
     },
     "family273": {
       "role": "Exact coefficient source only; no integer-projection theorem is asserted.",
@@ -367,11 +367,11 @@
         "comparison": 12,
         "input": 3
       },
-      "projectionStatus": "The literal nonbase numerator differs from the former proof. The current family267 has a separately proved normalization."
+      "projectionStatus": "Exact coefficient dependency only. The current family263 has a separately proved literal normalization."
     },
     "family267": {
-      "role": "Leading quartic existence family; sufficient defining threshold ineffective.",
-      "projectionStatement": "There exists N0>=27464 such that every N>=N0 has input projection Z, under the stated arithmetic inputs.",
+      "role": "Exact coefficient dependency for the current constructions; not a leading result.",
+      "projectionStatement": null,
       "totalVariables": 267,
       "inputCoordinate": 1,
       "degree": 4,
@@ -429,6 +429,123 @@
         },
         "realAsymptotic": "R~q~t^(-2); pole input~1/(4*t^2)"
       }
+    },
+    "family263": {
+      "role": "Leading quartic existence family; sufficient defining threshold ineffective.",
+      "projectionStatement": "There exists N0>=27464 such that every N>=N0 has input projection Z, under the stated arithmetic inputs.",
+      "totalVariables": 263,
+      "inputCoordinate": 1,
+      "degree": 4,
+      "content": 1,
+      "quadraticResiduals": 237,
+      "parameter": {
+        "name": "A_N",
+        "base": 80989,
+        "exponent": "2*N+1",
+        "coordinate": false,
+        "familyDomain": "Integers N>=1"
+      },
+      "symbolicTerms": 3313,
+      "ordinaryMonomials": {
+        "count": 3312,
+        "validFor": "Every positive A; hence every N>=1",
+        "scope": "Support only; not a sufficient defining threshold."
+      },
+      "exactCoefficientHeight": {
+        "expression": "80989^(4*N+2)+1",
+        "validFor": "Every N>=23",
+        "scope": "Algebraic height only; the defining thresholds are separate."
+      },
+      "quadraticSystem": "family263/quadratic-family263.json",
+      "polynomial": "family263/polynomial-family263.json",
+      "constructionReport": "family263/construction-report263.json",
+      "independentVerification": "family263/independent-verification263.json",
+      "knownNumericalSufficientN": null,
+      "ineffectivity": "The aggregate-trace height constant and the new amplified global comparison give an ineffective sufficient threshold.",
+      "contactBlocks": 4,
+      "localOrders": {
+        "referenceReciprocalAbscissa": 6,
+        "comparison": 12,
+        "input": 3
+      },
+      "detectorNormalization": {
+        "contactDegree": 20,
+        "R": "F20(t)/(t-1)^22",
+        "q": "(t-1)^18/F20(t)",
+        "clearingEquations": [
+          "r=(t-1)^2",
+          "F20*q=r^4*r^5",
+          "inverseR=q*r^2"
+        ],
+        "scales": [
+          "1",
+          "T"
+        ],
+        "T": "one quarter of the trace of the sum of four root abscissas",
+        "fixedPlaceFormulas": {
+          "v(q)": "-2*v(t)",
+          "v(R)": "-2*v(t)"
+        },
+        "realAsymptotic": "R~q~t^(-2); pole input~1/(4*t^2)",
+        "degenerateStratum": "t=1 has contact radical one and is handled without division."
+      },
+      "additionalExceptionalPrimes": [
+        247957,
+        368323,
+        2029147
+      ],
+      "contactSymmetry": "Theta, 2-Theta, Theta+5, -3-Theta",
+      "contactCoordinatesPerDetector": 5
+    },
+    "familyABC98": {
+      "role": "Leading additional-abc quartic; sufficient input shift ineffective.",
+      "projectionStatement": "Under ordinary rational abc and the stated elliptic, pole, and prime-pattern premises, every sufficiently large odd B has rational input projection Z.",
+      "additionalConjecture": "ordinary rational abc",
+      "totalVariables": 98,
+      "inputCoordinate": 1,
+      "degree": 4,
+      "content": 1,
+      "quadraticResiduals": 86,
+      "parameter": {
+        "name": "B",
+        "coordinate": false,
+        "familyDomain": "Odd integers B>=3",
+        "effectiveSufficientThreshold": null
+      },
+      "symbolicTerms": 885,
+      "ordinaryMonomials": {
+        "count": 882,
+        "validFor": "Every positive integer B",
+        "scope": "Support only; no numerical defining shift certified."
+      },
+      "exactCoefficientHeight": {
+        "expression": "max(11600064,2*B^4+169997)",
+        "validFor": "Every integer B>=3"
+      },
+      "quadraticSystem": "family_abc98/quadratic-family-abc98.json",
+      "polynomial": "family_abc98/polynomial-family-abc98.json",
+      "constructionReport": "family_abc98/construction-report-abc98.json",
+      "independentVerification": "family_abc98/independent-verification-abc98.json",
+      "subtractionIdentityCertificate": "family_abc98/z-difference-identity.json",
+      "contacts": [
+        -2,
+        -1,
+        0,
+        2,
+        3,
+        4
+      ],
+      "normalization": [
+        "r=(t-1)^2",
+        "u=q*r",
+        "k=u*r",
+        "k*r-14*k+49*u-36*q=r^2",
+        "k*b=tau^2"
+      ],
+      "heightScale": "beta^6+(Tr x(A))^6",
+      "combinedHeightCoefficient": "8/15",
+      "knownNumericalSufficientB": null,
+      "ineffectivity": "Both abc height constants and the aggregate trace-height additive constant are ineffective."
     }
   },
   "constructionChain": [
@@ -501,7 +618,8 @@
       "to": "family279",
       "producer": "build_quartic279.py",
       "checker": "check_quartic279.py",
-      "change": "Four disjoint contact blocks give height exponent19/4; even valuations and shorter logarithms permit local orders12/3, reference depth3, and five factors. Both normalization equations are changed."
+      "change": "Four disjoint contact blocks give height exponent19/4; even valuations and shorter logarithms permit local orders12/3, reference depth3, and five factors. Both normalization equations are changed.",
+      "role": "Coefficient dependency only; no integer-projection claim for this literal intermediate table."
     },
     {
       "from": "specified342",
@@ -515,7 +633,7 @@
       "to": "family273",
       "producer": "build_quartic273.py",
       "checker": "check_quartic273.py",
-      "change": "Share degree-twenty contact evaluations and remove unnecessary quadratic coordinates while retaining the complete local proof."
+      "change": "Share degree-twenty contact evaluations and remove redundant quadratic coordinates. This is a coefficient dependency; the current projection proof uses the later normalized circuit."
     },
     {
       "from": "family273",
@@ -523,10 +641,25 @@
       "producer": "build_quartic267.py",
       "checker": "check_quartic267.py",
       "change": "Directly impose F20(t)e=(t-1)^20 at both detectors; remove scaled numerator powers and use the positive quarter-trace itself. The projection is proved from these literal equations."
+    },
+    {
+      "from": "family267",
+      "to": "family263",
+      "producer": "build_quartic263.py",
+      "checker": "check_quartic263.py",
+      "change": "Use twenty contacts symmetric about one and direct F20*q=r^9 normalization; remove two coordinates per detector with a complete projection proof."
+    },
+    {
+      "from": "family267",
+      "to": "familyABC98",
+      "producer": "build_quartic_abc98.py",
+      "checker": "check_quartic_abc98.py",
+      "change": "Retain three point roles, six order-one local tests, six symmetric contacts with joint inverse normalization, and a sixth-power height scale under ordinary abc. The compressed fixed subtraction is checked separately.",
+      "projectionEquivalenceToSourceClaimed": false
     }
   ],
   "reproduction": {
-    "python": "3.10 or newer; standard library only.",
+    "python": "Python 3.10 or newer; coefficient reconstructions use the standard library. Optional exact function-field checks additionally require cypari2.",
     "completeRepositoryCommand": "python3 scripts/verify.py (from the repository root)",
     "quarticCommandsFromThisDirectory": [
       "python3 build_quartic389.py",
@@ -549,9 +682,16 @@
       "python3 build_quartic273.py",
       "python3 check_quartic273.py",
       "python3 build_quartic267.py",
-      "python3 check_quartic267.py"
+      "python3 check_quartic267.py",
+      "python3 build_quartic263.py",
+      "python3 check_quartic263.py",
+      "python3 build_quartic_abc98.py",
+      "python3 check_quartic_abc98.py"
     ],
-    "baselineArchiveHandling": "The new builders read and hash-check baseline392/*.json.gz directly. scripts/restore_data.py restores the separate upstream/final392 reproduction archives."
+    "baselineArchiveHandling": "The new builders read and hash-check baseline392/*.json.gz directly. scripts/restore_data.py restores the separate upstream/final392 reproduction archives.",
+    "optionalPARICommands": [
+      "python3 check_z_difference_identity.py"
+    ]
   },
   "baselineFieldSpecialization": {
     "checker": "check_field_specialization392.py",
@@ -649,21 +789,27 @@
       "tex_sha256": "74617835d353919399b2db66123e4cb0b40bf5cf58a998fa257408ceb417cc6e",
       "pdf_sha256": "79d394a88d5a697ff6440938753f49c8bdf2c4c04ccb7ff2c987c086b564d632"
     },
-    "family267": {
-      "tex": "../../papers/quartic_existence/quartic267_20261109_v15.tex",
-      "tex_sha256": "c60fa02e2c65966297e3ae57313a4ff3930793dfd66e6020c5076014a233dde0",
-      "pdf": "../../papers/quartic_existence/quartic267_20261109_v15.pdf",
-      "pdf_sha256": "7a25707d4c293aeee9ef29384fbaba842a0630ec37127ac5448f3e1a7f85bb83"
+    "family263": {
+      "tex": "../../papers/quartic_existence/quartic263_20261109_v16.tex",
+      "tex_sha256": "0e64ba1e434dc9d7dcba6bf2bf8aeaed03073d2dca5ff0e1cc3b4636d0983b9d",
+      "pdf": "../../papers/quartic_existence/quartic263_20261109_v16.pdf",
+      "pdf_sha256": "4e070ea69f6afb50c51eac2b856b6da910d5e35322de5e66ea48142e65a007a6"
+    },
+    "familyABC98": {
+      "tex": "../../papers/quartic_existence/quartic_abc98_20261109_v16.tex",
+      "tex_sha256": "7f5133c63cfcc7f3bdba626a70a815f258d4fad2994b87841aab5af0e39465b0",
+      "pdf": "../../papers/quartic_existence/quartic_abc98_20261109_v16.pdf",
+      "pdf_sha256": "0051374a1ee7889a6c3596503a5a4020ab4437c949b321956b2275a1c3eacaf4"
     }
   },
   "documentation": {
     "dataFormat": "../../docs/data_format.md",
-    "dataFormatSHA256": "4ecd61854c61ba1922417113c6dc25f7604e29096fb40bc5f089e9d638dff494"
+    "dataFormatSHA256": "91b2b5167102e769fa02ea7926e31564278d58b198106a9f61a180ed72c3cd28"
   },
   "files": {
     "README.md": {
-      "bytes": 4552,
-      "sha256": "ee913257de6fcb4660c6f3fdda51c0ca5e112c819ae800c85e8b7af53d016b32"
+      "bytes": 5016,
+      "sha256": "13b5fceba5872def80c5c7cc01d2e30b28a96f72d2ca61954018db029edd54ec"
     },
     "README370.md": {
       "bytes": 3578,
@@ -1020,6 +1166,62 @@
     "verify_quartic392.py": {
       "bytes": 12706,
       "sha256": "092ac1d69bec2f3d59d60584fbc831232377eb48967afba975ac8ef8e02cda59"
+    },
+    "build_quartic263.py": {
+      "bytes": 8337,
+      "sha256": "0a200706ae18fc62a504f4a9792fe75666946da39cc3ef01904adb07acc7a9b5"
+    },
+    "check_quartic263.py": {
+      "bytes": 12487,
+      "sha256": "9094b7cbb118dd4f05893b553f65a564b649f14fe73667a4813d2df362fda874"
+    },
+    "family263/quadratic-family263.json": {
+      "bytes": 233730,
+      "sha256": "26876d3f9fa9a42478c4465edf36f9e8647df44ee2cc744df551300465fe58e3"
+    },
+    "family263/independent-verification263.json": {
+      "bytes": 4919,
+      "sha256": "0dfa831286369820f5e49c712c683919073fe8cd1ffb0f88454cdbe16be6cf1b"
+    },
+    "family263/construction-report263.json": {
+      "bytes": 3507,
+      "sha256": "29715167b7ed65e260fcbb4c45a3f4222518ee60b4b1687da5779e46aeb5cdb7"
+    },
+    "family263/polynomial-family263.json": {
+      "bytes": 506268,
+      "sha256": "4ac70724c340aa26440c0cdee1cae1445455bdf5fe702efa623037ec1a252f20"
+    },
+    "build_quartic_abc98.py": {
+      "bytes": 11152,
+      "sha256": "58bdfc879abcbf5a1ed6841d6da58203e675fd30a5e2e9efd049c68f954ad963"
+    },
+    "check_quartic_abc98.py": {
+      "bytes": 13486,
+      "sha256": "334f811bfd44dcf1f7b92dec2a2260139350e6a7d4d391224f18196733593c5c"
+    },
+    "check_z_difference_identity.py": {
+      "bytes": 2809,
+      "sha256": "e60453a7e22e7008c25dde32618d45c9cc38b2f5eaa5cba7a2e3b9d2844acd87"
+    },
+    "family_abc98/z-difference-identity.json": {
+      "bytes": 1530,
+      "sha256": "5e912d8a2792f61f27a46a47803ba6e051d68da6b150a663f7139813a601f0db"
+    },
+    "family_abc98/quadratic-family-abc98.json": {
+      "bytes": 75756,
+      "sha256": "006eff7658ab3625c385d1ce684f4eca90c4bd46a1df5dfa34d990d08eeb7929"
+    },
+    "family_abc98/construction-report-abc98.json": {
+      "bytes": 2378,
+      "sha256": "a75a082fbf38985243ac820c247d3741cf73c02bded50af84aa0f73dac2ff2c6"
+    },
+    "family_abc98/independent-verification-abc98.json": {
+      "bytes": 1948,
+      "sha256": "3ba92287ec6bf8be564b40aaf5c0bc376540ef97e3a1bc50ab4263d0e91a73f8"
+    },
+    "family_abc98/polynomial-family-abc98.json": {
+      "bytes": 130847,
+      "sha256": "8d4c69fef8b61961ab537b6071ee20ae600568cedfa204583797ff1e2e9c566b"
     }
   },
   "additionalBaselines": [

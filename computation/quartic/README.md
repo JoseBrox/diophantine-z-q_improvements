@@ -1,13 +1,14 @@
 # Current quartic coefficient families
 
-All counts include the input. The rational projections equal the integers under the arithmetic premises stated in the corresponding papers.
+All counts include the input. The input projection equals the integers under the arithmetic assumptions stated in the corresponding paper.
 
-| Family | Variables | Quadratic equations | Ordinary monomials | Terms with parameter powers separate | Defining parameter |
-|:--|--:|--:|--:|--:|:--|
-| family267 | 267 | 241 | 3422 | 3423 | Every sufficiently large $N$; threshold ineffective |
-| family322 | 322 | 294 | 4992 | 4993 | Every $N\ge27464$ |
+| Family | Additional hypothesis | Variables | Quadratic equations | Ordinary monomials | Terms with parameter powers separate | Defining parameter |
+|:--|:--|--:|--:|--:|--:|:--|
+| family263 | None beyond the inherited premises | 263 | 237 | 3312 | 3313 | Every sufficiently large $N$; threshold ineffective |
+| family322 | None beyond the inherited premises | 322 | 294 | 4992 | 4993 | Every $N\ge27464$ |
+| family_abc98 | **Ordinary rational abc** | 98 | 86 | 882 | 885 | Every sufficiently large odd $B$; threshold ineffective |
 
-The fixed coefficient is $A_N=80989^{2N+1}$. Both families have exact degree four, integer content one, and support independent of positive $A_N$. Their coefficient height is $A_N^2+1$ for $N\ge23$. This is an algebraic coefficient threshold, not a sufficient defining threshold.
+Each family has exact degree four and integer content one. The ordinary support counts hold for every positive integer coefficient parameter. In family263 and family322 the fixed coefficient is $A_N=80989^{2N+1}$ and the coefficient height is $A_N^2+1$ for $N\ge23$. In family_abc98 the fixed coefficient is the odd input shift $B$ and the coefficient height for $B\ge3$ is $\max(11600064,2B^4+169997)$. These coefficient thresholds do not certify the ineffective defining thresholds.
 
 From the repository root:
 
@@ -20,28 +21,44 @@ python3 computation/quartic/build_quartic273.py
 python3 computation/quartic/check_quartic273.py
 python3 computation/quartic/build_quartic267.py
 python3 computation/quartic/check_quartic267.py
+python3 computation/quartic/build_quartic263.py
+python3 computation/quartic/check_quartic263.py
+python3 computation/quartic/build_quartic_abc98.py
+python3 computation/quartic/check_quartic_abc98.py
 ~~~
 
-The first pair constructs and checks family322 from the pinned family342 table. The next pair constructs and checks the retained family279 source directly from family297. The following pairs reconstruct family273 and the current family267 from their pinned predecessors. The intermediate families are computational dependencies. The 279 scripts import only the polynomial utilities of their respective producer or independent checker. No checker imports producer code. Each script accepts explicit source and output roots.
+The intermediate families are exact reconstruction dependencies. Each current family directory contains the complete quadratic table, expanded quartic, construction report, and independent verification certificate. No coefficient checker imports a producer. The checkers reconstruct every changed row, compare retained rows with their pinned source, verify coordinate incidence, and expand every coefficient of the sum of squares independently. Their finite algebraic checks support the mathematical projection proofs; they do not establish the inherited arithmetic premises or abc.
 
-Each family directory contains the full quadratic table, expanded quartic, construction report, and independent verification certificate. Checkers reconstruct every changed row, compare every retained row, verify coordinate incidence, and independently expand the sum of squares. The mathematical proofs establish the unrestricted local valuation implications and global projections; finite checks have their recorded scope.
+The source chain is in [PROVENANCE.json](PROVENANCE.json). The current papers prove the [263-variable theorem](../../papers/quartic_existence/quartic263_20261109_v16.pdf), the [322-variable theorem](../../papers/quartic/quartic322_20261109_v13.pdf), and the [98-variable theorem under abc](../../papers/quartic_existence/quartic_abc98_20261109_v16.pdf).
 
-The complete source chain is in PROVENANCE.json. The current proofs are [the 267-variable theorem](../../papers/quartic_existence/quartic267_20261109_v15.pdf) and [the 322-variable theorem](../../papers/quartic/quartic322_20261109_v13.pdf).
+## Symmetric twenty-contact normalization
 
-## Arithmetic scope
+For each of the scales $a=1,T$, where $T$ is one quarter of the trace of the sum of four root abscissas, put $t=a\lambda$ and $r=(t-1)^2$. The twenty contacts are symmetric about one, so their product is $F_{20}(t)=P_{10}(r)$. Five successive quadratic outputs compute $r,r^2,r^4,r^5,P_{10}(r)$. Every exponent from zero through ten is a sum of two elements of $\{0,1,2,4,5\}$.
 
-The projection theorems retain the stated elliptic group and index-height assertions, contact-height theorem, pole obstruction and realization, and simultaneous prime-pattern results. Quantitative separation follows from the cited estimates in the prime-selection paper. The 267-variable construction uses the proved four-block contact-height amplification and aggregate trace height with an ineffective additive constant. The 322-variable construction uses the effective two-component sum-height estimate. Finite coefficient checks do not establish those arithmetic premises or determine an ineffective threshold.
-
-## The contact normalization
-
-For both positive rational scales $a=1,T$, the construction uses $t=a\lambda$, $\delta=t-1$ and
+The literal normalization is
 
 $$
-R=\frac{F_{20}(t)}{\delta^{22}},\qquad e=\frac{\delta^{20}}{F_{20}(t)},\qquad q=\frac{\delta^{18}}{F_{20}(t)}.
+F_{20}(t)q=r^4r^5,\qquad k=qr^2,\qquad kb=\tau^2.
 $$
 
-Here $T$ is one quarter of the trace of the sum of the four root abscissas. Each detector evaluates $F_{20}(t)$ and $(t-1)^{20}$ together in six coordinates. The scale enters only through $t$, and its square and scaled numerator powers are unnecessary. The literal clearing equations are $F_{20}(t)e=(t-1)^{20}$, $q\delta^2=e$, and $e\delta^2b=\tau^2$.
+On the nonzero domain, $q=(t-1)^{18}/F_{20}(t)$ and $k=1/R$, where $R=F_{20}(t)/(t-1)^{22}$. The possible stratum $t=1$ has contact radical one and is treated without division. The proof verifies all fixed-place and real preparation conditions for these literal equations. It uses the inherited contact estimate and aggregate trace height, with no additional conjecture.
 
-At a prepared finite prime, $v(e)=0$ and $v(q)=v(R)=-2v(t)$. The identity $R=\delta^{-2}\prod_\theta(1+(1-\theta)/\delta)$ supplies the needed local squareclasses when $t$ has sufficiently negative valuation. The prime-pattern theorem permits the fixed rational scales after denominator clearing. These statements are proved in the current paper.
+## Six-contact normalization under abc
 
-The 267-coordinate checker reconstructs both normalization blocks and the linear trace scale directly, then checks every changed and retained row, all coordinate incidences, the complete sum of squares, and the coefficient support and height. The family279 and family273 tables are retained only as pinned coefficient dependencies. Their previous scaled numerator was not the polynomial used in their projection argument; no integer-projection theorem is asserted for those coefficient sources. The family267 proof establishes the projection using its corrected literal equations.
+The additional-abc family uses the contacts $\{-2,-1,0,2,3,4\}$ and two scales $1,a$, where $a=\beta^6+T^6$, $\beta=2X^2+B$, and $T$ is a single elliptic trace. With $r=(t-1)^2$, the quadratic equations
+
+$$
+u=qr,\qquad k=ur,\qquad kr-14k+49u-36q=r^2
+$$
+
+give $qF_6(t)=r^2$ and $k=(t-1)^8/F_6(t)=1/R$. The contact product need not be retained as a separate coordinate. The sixth-power scale is computed from
+
+$$
+S=\beta^2+T^2,\quad p=\beta T,\quad V=S^2-3p^2,\quad a=SV.
+$$
+
+The abc contact and projective-height estimates have respective coefficients $2/3$ and $2/5$, giving the strict absorption coefficient $8/15$. Three elliptic point roles and six local tests of order one suffice. The sufficient input shift remains ineffective.
+
+The compressed formula for the shared point difference is checked against the elliptic addition law by `check_z_difference_identity.py`, using exact PARI function-field arithmetic through `cypari2`. The full paper excludes all exceptional point classes before interpreting its quotients. The general coefficient reconstruction itself uses only the Python standard library.
+
+The family279 and family273 files are coefficient dependencies only: no integer-projection theorem is asserted for their literal tables. The current projection theorems are proved from the displayed current normalizations.

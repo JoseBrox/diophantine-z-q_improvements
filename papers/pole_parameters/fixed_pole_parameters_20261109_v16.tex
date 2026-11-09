@@ -10,7 +10,7 @@
 \theoremstyle{definition}\newtheorem{definition}[theorem]{Definition}
 \newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
 \newcommand{\F}{\mathbb F}
-\title{No constant pole parameter is complete}
+\title{Obstructions to fixed parameters in pole certificates}
 \author{}\date{}
 \begin{document}\maketitle
 \begin{abstract}
@@ -24,6 +24,15 @@ Cassels-pairing computations certify the two elliptic rank bounds used
 in the proof.  An elementary squareclass argument excludes every other
 constant value of $e$.  The obstruction includes zero values of the
 second square root, so removing a nonzero guard does not repair it.
+We also treat the distinct strategy of fixing a rational parameter
+in the first conic's parametrization. The values $\tau=\pm1$
+fail at the prepared input $b=(204/61)^2$, as certified
+by a third exact rank-zero calculation. The values $\tau=\pm17$,
+which cancel one factor of the second twist, fail at
+$b=(204/101)^2$ by an exact rank-one and squareclass calculation.
+These results concern
+completeness on all prepared inputs; they do not exclude special
+families selected together with the comparison primes.
 \end{abstract}
 
 \section{Prepared inputs and the pole equations}
@@ -292,6 +301,132 @@ nonconstant function of $b$, a different relation between the pole
 parameters, or a different pole predicate.  Those proposals require
 their own completeness arguments.
 
+\section{A fixed parameter in the conic chart}
+
+For a nonzero rational pole input $b$, write $B=17b$ and
+\[
+ e=\frac{\tau^2-B}{\tau^2+3B},\qquad
+ p=\frac{-4B\tau}{\tau^2+3B}.
+\]
+Fixing $\tau$ is different from fixing $e$, since $e$ still varies with $b$.
+The following exact example rules out the choice $\tau=1$, as well as
+$\tau=-1$, as a complete specialization on all prepared pole inputs.
+
+\begin{proposition}
+The rational number
+\[
+ b=\left(\frac{204}{61}\right)^2=\frac{41616}{3721}
+\]
+has square reduced denominator, satisfies $0<b<17$, is a square in
+$\mathbf Q_2,\mathbf Q_3,\mathbf Q_{17}$, and has respective valuations
+$4,2,2$. For $\tau=1$ or $\tau=-1$, the equation
+\[
+ Bq^2=(s^2-Be(B-b^2))(s^2+3Be(B-b^2))
+\]
+has no solution $(s,q)\in\mathbf Q^2$.
+\end{proposition}
+\begin{proof}
+The preparation assertions follow directly from $b=(204/61)^2$.
+For either choice of $\tau$,
+\[
+ e=-\frac{703751}{2126137}.
+\]
+Put $M=Be(B-b^2)$ and $N=BM$. Direct rational arithmetic gives
+\[
+ N=nk^2,\qquad
+ n=-32380801574194567,\qquad
+ k=\frac{144324288}{29438154846217}.
+\]
+A hypothetical solution with $s\ne0$ would give the point
+\[
+ x=\frac{B}{k^2}s^2,\qquad y=\frac{B^2}{k^3}sq
+\]
+on
+\[
+ E_n:\quad y^2=x(x-n)(x+3n).
+\]
+Its nonzero abscissa would belong to the squareclass $17$.
+
+Exact two-descent gives $\operatorname{rank}E_n(\mathbf Q)=0$.
+Its saved diagnostic has two-Selmer rank two, equal to the dimension
+of the full rational two-torsion. Thus no Cassels-pairing refinement
+is required for this rank-zero certificate.
+The accompanying reproducible PARI calculation returns
+\texttt{ellrank} equal to \texttt{[0,0,0,[]]}; it uses no analytic-rank
+or Birch--Swinnerton-Dyer hypothesis. Independent counts at the good
+primes $5,7,11,23,29,31$ are respectively
+\[
+                         4,8,8,32,24,24.
+\]
+Their greatest common divisor is four. Together with the visible full
+two-torsion this proves
+\[
+ E_n(\mathbf Q)=\{O,(0,0),(n,0),(-3n,0)\}.
+\]
+Neither nonzero torsion abscissa has squareclass $17$: $n$ is negative,
+and $-3n/17$ is not a rational square. This excludes $s\ne0$.
+If $s=0$, the original equation becomes $Bq^2=-3M^2<0$, which is
+impossible over $\mathbf R$. This proves the assertion.
+\end{proof}
+
+\subsection{A parameter which cancels one twist factor}
+
+For $\tau=17$ or $\tau=-17$ the first conic gives
+\[
+ e=\frac{17-b}{17+3b}.
+\]
+The elliptic parameter governing the second equation is
+\[
+ N=B^2e(B-b^2)
+   =b(17+3b)\left(\frac{17b(17-b)}{17+3b}\right)^2.
+\]
+Thus its squareclass no longer contains the factor $17-b$.
+This simplification does not ensure completeness.
+
+\begin{proposition}
+For $b=(204/101)^2$, neither choice $\tau=17,-17$ admits a
+rational solution of the second pole equation. The input is prepared.
+\end{proposition}
+\begin{proof}
+The preparation follows exactly as above: its valuations at
+$2,3,17$ are $4,2,2$, and it is a positive rational square less
+than $17$. Direct calculation gives
+\[
+ e=\frac{7753}{17545},\qquad
+ N=2465k^2,\qquad
+ k=\frac{1118946204864}{165976339595}.
+\]
+The same map
+$x=(B/k^2)s^2$, $y=(B^2/k^3)sq$ sends a solution with
+$s\ne0$ to a point of $E_{2465}(\Q)$ with abscissa in
+squareclass $17$.
+
+Exact two-descent gives two-Selmer rank three and hence rational
+rank at most one. The good-prime counts at $7,11,13,19,23,31$
+are $8,8,12,16,32,24$, respectively, so the rational torsion has
+order four. The point
+\[
+                  (77571,22248954)\in E_{2465}(\Q)
+\]
+has nonzero ordinate and therefore infinite order. This proves
+rank one independently of any choice of a Mordell--Weil basis.
+Its abscissa has squareclass $51$, since $77571=51\cdot39^2$.
+Together with the torsion squareclasses $-3$ and $2465$, it gives
+the eight classes
+\[
+ \{1,-3,2465,-7395,51,-17,435,-145\}.
+\]
+These are distinct, as is verified by their prime factorizations.
+Lemma~\ref{lem:x-class} bounds the entire image by eight classes,
+so this list is exhaustive without a saturation computation.
+The required class $17$ is absent. Finally $s=0$ would again
+give $Bq^2=-3M^2<0$. This proves the assertion.
+\end{proof}
+
+These propositions concern all prepared inputs. They do not decide
+whether a fixed conic parameter can be made complete on a more
+restricted family chosen simultaneously with the comparison primes.
+
 \section*{Reproducible verification}
 
 Run \nolinkurl{check_fixed_e_obstruction.py} to reproduce
@@ -301,6 +436,28 @@ The script independently checks preparation, substitutions, torsion,
 squareclasses, local witnesses, and pairing-matrix ranks using exact
 integer and rational arithmetic. The two algebraic rank calculations
 use PARI; no bounded search is used as a nonexistence certificate.
+
+Run \nolinkurl{check_fixed_tau_obstruction.py} to reproduce
+\nolinkurl{fixed-tau-one-obstruction.json} and
+\nolinkurl{fixed-tau-one-pari-descent.txt}. It verifies the conic
+parameter, the rational map to the rank-zero elliptic curve, the
+complete torsion obstruction, and all preparation conditions. Its
+saved two-Selmer rank independently supplies the stated upper bound.
+
+The command
+\begin{center}\small
+\nolinkurl{check_fixed_tau17_obstruction.py}
+\end{center}
+reproduces the two files
+\begin{center}\small
+\nolinkurl{fixed-tau17-obstruction.json}\\
+\nolinkurl{fixed-tau17-pari-descent.txt}.
+\end{center}
+It checks the factor
+cancellation, the rational scaling, the explicit nontorsion point,
+and all eight squareclasses. Their exhaustive nature follows from
+the proved rank bound, not from assuming that the displayed point
+generates the free part.
 
 \begin{thebibliography}{9}\small
 \bibitem{Dependencies}

@@ -33,7 +33,7 @@ def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--full',action='store_true',help='run all supplied checks (also the default)')
     parser.add_argument('--receipt',type=Path)
-    parser.add_argument('--with-pari',action='store_true',help='also reproduce the unconditional elliptic rank certificate; requires cypari2')
+    parser.add_argument('--with-pari',action='store_true',help='also reproduce exact elliptic ranks, descents, and function-field identities; requires cypari2')
     args=parser.parse_args()
     assert sys.version_info>=(3,10)
     manifest=json.loads((ROOT/'MANIFEST.json').read_text())
@@ -127,7 +127,7 @@ def main():
             quartic/'check_quartic279.py'))
         for name,raw in amplified_originals.items():
             assert (amplified/name).read_bytes()==raw,name
-        for count in (273,267):
+        for count in (273,267,263):
             folder=quartic/f'family{count}'
             fixed_new={name:(folder/name).read_bytes() for name in (
                 f'quadratic-family{count}.json',f'polynomial-family{count}.json',
@@ -138,6 +138,16 @@ def main():
                 quartic/f'check_quartic{count}.py'))
             for name,raw in fixed_new.items():
                 assert (folder/name).read_bytes()==raw,name
+        abc98=quartic/'family_abc98'
+        abc98_originals={name:(abc98/name).read_bytes() for name in (
+            'quadratic-family-abc98.json','polynomial-family-abc98.json',
+            'construction-report-abc98.json','independent-verification-abc98.json')}
+        stages.append(run('Additional-abc 98-variable quadratic construction',
+            quartic/'build_quartic_abc98.py'))
+        stages.append(run('Independent 98-variable rows, full coefficients, and height',
+            quartic/'check_quartic_abc98.py'))
+        for name,raw in abc98_originals.items():
+            assert (abc98/name).read_bytes()==raw,name
         coordinate_budget=(quartic/'coordinate-budget279.json').read_bytes()
         stages.append(run('Disjoint coordinate accounting for the279-variable family',quartic/'check_coordinate_budget.py'))
         assert (quartic/'coordinate-budget279.json').read_bytes()==coordinate_budget
@@ -220,6 +230,33 @@ def main():
             '--output',conditional/'independent-bound-verification.json'))
         for p,raw in conditional_originals.items():
             assert p.read_bytes()==raw,str(p)
+        weak=few/'weak_abc13'
+        weak_files=[
+            weak/'certificate/source.json.gz',
+            weak/'certificate/source-polynomial-specification.json',
+            weak/'certificate/source-construction-certificate.json',
+            weak/'active13/polynomial-specification.json',
+            weak/'active13/construction-certificate.json',
+            weak/'independent-source-verification.json',
+            weak/'independent-bound-verification.json']
+        weak_originals={p:p.read_bytes() for p in weak_files}
+        stages.append(run('Weak-abc 13-variable exact guarded source construction',
+            weak/'build_weak_abc_source.py','--shift','3','--output',weak/'certificate'))
+        stages.append(run('Independent weak-abc source conversion and atomic guards',
+            weak/'check_weak_abc_source.py',weak/'certificate',
+            '--output',weak/'independent-source-verification.json'))
+        stages.append(run('Weak-abc 13-variable finite-algebra specification',
+            active/'build_active_specification.py',
+            weak/'certificate/source-polynomial-specification.json',weak/'active13'))
+        stages.append(run('Independent weak-abc uniform degree and fixture height bounds',
+            weak/'check_weak_abc_bounds.py',weak/'active13',
+            '--output',weak/'independent-bound-verification.json'))
+        for p,raw in weak_originals.items():
+            assert p.read_bytes()==raw,str(p)
+        support=(few/'monomial-bound-certificate.json').read_bytes()
+        stages.append(run('Uniform monomial upper bounds for the 27-, 29-, and 13-variable specifications',
+            few/'check_monomial_bounds.py'))
+        assert (few/'monomial-bound-certificate.json').read_bytes()==support
         stages.append(run('Quadratic extension square chart: exact cubic identities',
             work/'computation/quadratic_squares/check_quadratic_square_chart.py'))
         stages.append(run('Scalar normalization: Bezout certificate and exhaustive residue check',
@@ -273,6 +310,11 @@ def main():
         stages.append(run('Independent large-prime point orders above the exceptional cutoff',
             constraints/'check_large_split_orders.py'))
         assert (constraints/'large-split-order-certificate.json').read_bytes()==large_parity
+        poles=work/'computation/pole_parameters'
+        merger=(poles/'pole-merger-obstructions.json').read_bytes()
+        stages.append(run('Exact common-parameter and product-contact obstructions',
+            poles/'check_pole_merger_obstructions.py','--output',poles/'pole-merger-obstructions.json'))
+        assert (poles/'pole-merger-obstructions.json').read_bytes()==merger
         if args.with_pari:
             original=json.loads((number_fields/'elliptic-ratio-certificate.json').read_text())
             stages.append(run('Unconditional elliptic ranks, exact quadratic-field stability, and local-global obstruction',
@@ -285,7 +327,6 @@ def main():
             for a,b in zip(original['curves'],recomputed['curves']):
                 for key in ('B','rank_lower','rank_upper','torsion_order','independent_finite_field_orders'):
                     assert a[key]==b[key],(a['B'],key)
-            poles=work/'computation/pole_parameters'
             original_poles=json.loads((poles/'fixed-e-obstruction-certificate.json').read_text())
             stages.append(run('Prepared fixed-pole counterexamples, exact ranks, and squareclass descent',
                 poles/'check_fixed_e_obstruction.py'))
@@ -300,6 +341,29 @@ def main():
                             'nonidentity_two_torsion','two_selmer_rank',
                             'pairing_rank_independently_checked_over_F2'):
                     assert a[key]==b[key],(a['parameter'],key)
+            for label,script,report_name in (
+                ('Fixed retained pole parameter plus or minus one: exact descent',
+                 'check_fixed_tau_obstruction.py','fixed-tau-one-obstruction.json'),
+                ('Fixed retained pole parameter plus or minus seventeen: exact descent',
+                 'check_fixed_tau17_obstruction.py','fixed-tau17-obstruction.json')):
+                original=json.loads((poles/report_name).read_text())
+                stages.append(run(label,poles/script))
+                recomputed=json.loads((poles/report_name).read_text())
+                # The rank conclusions and squareclass certificates are canonical.
+                # PARI may print different generators or version information.
+                for key in original:
+                    if key not in ('pari_version','ellrank'):
+                        assert original[key]==recomputed[key],(report_name,key)
+            original=json.loads((abc98/'z-difference-identity.json').read_text())
+            stages.append(run('Compressed elliptic subtraction: nine exact function-field identities',
+                quartic/'check_z_difference_identity.py'))
+            recomputed=json.loads((abc98/'z-difference-identity.json').read_text())
+            # The script checks every identity equals zero before writing a report.
+            # Textual residue-class formatting is not part of the mathematical data.
+            for key in original:
+                if key not in ('pari_version','checks'):
+                    assert original[key]==recomputed[key],key
+            assert set(original['checks'])==set(recomputed['checks'])
     report={'status':'PASS','manifest_files_checked':len(manifest['files']),
         'compressed_tables_restored':restored,'pari_rank_checks_run':args.with_pari,'stages':stages,
         'scope':'Exact source identities, full quartic coefficients, finite-algebra specification, local constants and quantitative bounds. The global arithmetic projection premises are stated separately in the papers.'}
