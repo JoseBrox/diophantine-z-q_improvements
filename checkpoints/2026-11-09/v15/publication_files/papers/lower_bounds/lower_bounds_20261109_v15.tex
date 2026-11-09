@@ -1,0 +1,942 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=25mm]{geometry}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!45!black,citecolor=blue!45!black,urlcolor=blue!45!black]{hyperref}
+\usepackage{microtype}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\OKS}{\mathcal O_{K,S}}
+\newcommand{\A}{\mathbb A}
+\newcommand{\PP}{\mathbb P}
+\setlength{\emergencystretch}{2em}
+\hypersetup{pdftitle={Degree and variable lower bounds for Diophantine definitions},pdfsubject={Unconditional obstructions over number fields and rings of S-integers}}
+\title{Degree and Variable Lower Bounds\\for Diophantine Definitions}
+\author{}
+\date{9 November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+Let $K$ be a number field and let $S$ be a finite set of its finite
+primes. A single polynomial whose $K$-rational input projection is
+an infinite subset of the ring of $S$-integers must have total
+degree at least four and at least three total coordinates. The
+coordinate bound also holds for finite systems of arbitrary degree,
+even with nonzero conditions and finite alternatives. Systems of
+quadratic equations require at least five total coordinates; systems
+of equations of degree at most three require at least four. More
+precisely, a system in three coordinates with an
+infinite integral projection must have a common irreducible factor
+of degree at least four. For a single polynomial, the input and every essential witness coordinate must
+each have individual degree at least two. The proof combines an
+elementary argument about prime divisors of polynomial values,
+Siegel's theorem for integral points on curves, and Koll\'ar's
+unirationality theorem for cubic hypersurfaces. Projection from a
+smooth point reduces a surface intersection of two quadrics to a
+cubic surface, including the necessary reducible and nonreduced
+cases. Every nonnegative quartic requires at least five coordinates,
+and a nonnegative polynomial in three coordinates requires
+degree at least eight. These are necessary coordinate bounds;
+attainment of the unrestricted three-coordinate bound is not established.
+\end{abstract}
+
+\section{Definitions and statements}
+
+For a nonzero prime ideal $\mathfrak p$ of the ring of integers
+$\mathcal O_K$, write $v_{\mathfrak p}$ for its additive valuation,
+normalized to have value group $\mathbb Z$, and put
+$v_{\mathfrak p}(0)=+\infty$. For a finite set $S$ of nonzero
+prime ideals, define
+\[
+ \OKS=\{a\in K: v_{\mathfrak p}(a)\ge0
+                       \text{ for every }\mathfrak p\notin S\}.
+\]
+In particular, $\mathcal O_{K,\varnothing}=\mathcal O_K$.
+
+\begin{definition}
+A single-polynomial presentation over $K$ is an equation
+\[
+                P(T,Y_1,\ldots,Y_m)=0,
+       \qquad P\in K[T,Y_1,\ldots,Y_m].
+\]
+Its \emph{input projection} is the set
+\[
+ A_P=\{t\in K:\exists \mathbf y\in K^m, P(t,\mathbf y)=0\}.
+\]
+The distinguished input $T$ is counted among the coordinates; thus
+there are $m+1$ total coordinates and $m$ existential witnesses.
+Degree means total degree, including $T$. A witness coordinate is
+\emph{essential} if the polynomial depends on it.
+\end{definition}
+
+A finite system uses the same coordinates for all its equations.
+We also consider finite unions of presentations consisting of equations
+and nonzero conditions. Geometrically, each such presentation is a
+Zariski open subset of a common zero set. All coordinates are evaluated
+in $K$, and no ordering conditions or universal quantifiers are allowed.
+
+\begin{samepage}
+\begin{theorem}\label{lb:main}
+Let $K$ be a number field and $S$ a finite set of finite primes.
+\begin{enumerate}
+\item If a single-polynomial presentation has an infinite input
+projection contained in $\OKS$, then it has at least three total
+coordinates and total degree at least four.
+\item The same lower bound of three total coordinates holds for
+finite systems of arbitrary degree, with nonzero conditions and finite
+alternatives permitted.
+\item In the single-polynomial case, the individual degree in $T$
+and in each essential witness coordinate is at least two.
+\item A finite system whose equations have degree at most three
+and whose input projection is infinite and contained in $\OKS$
+requires at least four total coordinates, even with nonzero
+conditions and finite alternatives.
+\item A finite system of quadratic equations with an infinite
+input projection contained in $\OKS$ requires at least five total
+coordinates. Nonzero conditions and finite alternatives are permitted.
+\end{enumerate}
+\end{theorem}
+\end{samepage}
+
+For $K=\mathbb Q$ and $S=\varnothing$, this applies in particular
+to every polynomial definition of $\mathbb Z$ over $\mathbb Q$.
+The degree restriction in part~(1) concerns one polynomial. A system
+of quadratic equations is a different presentation, and is not
+excluded by that restriction. In particular, part~(5) applies to
+quartics written as positive sums of squares of quadratic equations.
+Section~\ref{lb:positivity-section} extends the five-coordinate bound
+to every nonnegative quartic over a field with a real embedding.
+The bound is not asserted here for every quartic.
+
+Two established geometric results enter the proof. Siegel's theorem
+gives finiteness of integral points on affine curves of positive
+genus, including $S$-integral points over a number field
+\cite[Chapter~8]{Lang}. Koll\'ar's theorem gives unirationality of a
+noncone cubic hypersurface of dimension at least two over a perfect
+field as soon as it has a rational point \cite[Theorem~2]{Kollar}.
+All number fields are perfect. The other ingredients are proved below.
+
+\section{Rational functions and primes outside a finite set}
+
+\begin{lemma}\label{lb:prime-divisors}
+Let $g\in\mathcal O_K[Z]$ be nonconstant. For every finite set
+$\Sigma$ of nonzero prime ideals of $\mathcal O_K$, there exist
+$a\in\mathcal O_K$ and $\mathfrak p\notin\Sigma$ such that
+\[
+                  g(a)\ne0,
+          \qquad v_{\mathfrak p}(g(a))>0.
+\]
+\end{lemma}
+\begin{proof}
+After replacing $g(Z)$ by $g(Z+c)$ for a suitable $c\in\mathcal O_K$,
+we may suppose that $b=g(0)\ne0$. Choose a nonzero rational integer
+$M$ belonging to every ideal in $\Sigma$; take $M=1$ if $\Sigma$ is
+empty. Write $g(Z)=b+c_1Z+\cdots+c_dZ^d$, where $d\ge1$ and $c_d\ne0$.
+Then
+\[
+ h(N)=\frac{g(bMN)}b
+      =1+c_1MN+c_2bM^2N^2+\cdots+c_db^{d-1}M^dN^d
+      \in\mathcal O_K[N].
+\]
+For every rational integer $n$ and every $\mathfrak q\in\Sigma$,
+we have $h(n)\equiv1\pmod{\mathfrak q}$. The norm polynomial
+\[
+                    \prod_{\sigma:K\hookrightarrow\mathbb C}h^\sigma(N)
+\]
+lies in $\mathbb Z[N]$ and has degree $d[K:\mathbb Q]$: its
+leading coefficient is the nonzero norm of $c_db^{d-1}M^d$.
+Its absolute value is therefore greater than one for all sufficiently
+large positive integers $n$. Such an $h(n)$ is nonzero and is not a
+unit of $\mathcal O_K$. A prime ideal dividing it lies outside
+$\Sigma$ and also divides the nonzero value $g(bMn)=b h(n)$.
+Undoing the initial translation gives the required $a$.
+\end{proof}
+
+\begin{lemma}\label{lb:rational-function}
+Let $r\in K(Z)$ be nonconstant, and let $E\subset K$ be finite.
+There is an $a\in K\setminus E$ at which $r$ is defined and
+$r(a)\notin\OKS$.
+\end{lemma}
+\begin{proof}
+First suppose that $r$ is a polynomial. Choose a prime ideal
+$\mathfrak p\notin S$ at which all its coefficients are integral
+and its leading coefficient is a unit. Only finitely many primes
+are excluded by these conditions. Choose $0\ne\pi\in\mathfrak p$.
+For $a=\pi^{-n}$ and sufficiently large $n$, the leading term of
+$r(a)$ has strictly smaller $\mathfrak p$-adic valuation than all
+other terms. Its valuation is negative, so
+$v_{\mathfrak p}(r(a))<0$. The numbers $\pi^{-n}$ are distinct,
+and hence all but finitely many avoid $E$.
+
+Otherwise write $r=f/g$ with relatively prime polynomials
+$f,g\in\mathcal O_K[Z]$ and with $g$ nonconstant. The polynomial
+Euclidean algorithm over $K$ and clearing denominators give
+$A,B\in\mathcal O_K[Z]$ and $0\ne c\in\mathcal O_K$ satisfying
+\[
+                              Af+Bg=c.
+\]
+Enlarge $S$ to a finite set $\Sigma$ containing the prime ideals
+dividing $c$ or any nonzero value $g(e)$ with
+$e\in E\cap\mathcal O_K$.
+By Lemma~\ref{lb:prime-divisors}, there are $a\in\mathcal O_K$ and
+$\mathfrak p\notin\Sigma$ with $g(a)\ne0$ and
+$v_{\mathfrak p}(g(a))>0$. The displayed identity implies
+$v_{\mathfrak p}(f(a))=0$. Thus $r(a)$ has negative valuation at
+$\mathfrak p\notin S$. Moreover $a\notin E$: if $a=e$ were in
+$E\cap\mathcal O_K$, the prime divisor $\mathfrak p$ of its
+nonzero value $g(e)$ would have been included in $\Sigma$.
+\end{proof}
+
+An integral $K$-variety is called \emph{$K$-unirational} if it is
+dominated by an affine space through a rational map defined over $K$.
+
+\begin{proposition}\label{lb:unirational}
+Let $X$ be a $K$-unirational integral variety, let $U\subseteq X$
+be nonempty and open, and let $f:U\to\A^1_K$ be regular. If
+\[
+                              f(U(K))\subseteq\OKS,
+\]
+then $f$ is constant.
+\end{proposition}
+\begin{proof}
+Pull back $f$ through a dominant rational parametrization. If $f$
+is nonconstant, the result is a nonconstant rational function on
+affine space. Shrink its permitted domain to a nonempty principal
+open subset. In characteristic zero, one of its partial derivatives
+is nonzero. Since $K$ is infinite, we can fix the other coordinates
+in $K$ so that this derivative remains nonzero and none of the
+polynomials defining the permitted open set vanishes identically
+on the resulting line. The restriction is a nonconstant rational
+function $r\in K(Z)$, and the parametrization is permitted at every
+$K$-point of the line except a finite set. Lemma~\ref{lb:rational-function}
+then supplies a value outside $\OKS$, a contradiction.
+\end{proof}
+
+\section{Integral-valued functions on curves}
+
+\begin{lemma}\label{lb:positive-genus}
+Let $C$ be a smooth projective geometrically integral curve over
+$K$ of positive genus, and let $f\in K(C)$ be nonconstant. There
+are only finitely many $P\in C(K)$ at which $f$ is defined and
+$f(P)\in\OKS$.
+\end{lemma}
+\begin{proof}
+The function $f$ defines a finite morphism $C\to\PP^1_K$.
+Removing its poles gives an affine curve
+$D=f^{-1}(\A^1_K)$ finite over $\A^1_K$. Choose generators
+$z_1,\ldots,z_r$ of its coordinate ring over $K[f]$. Each $z_i$
+satisfies a monic equation over $K[f]$.
+
+There is a finite set $S'$ of finite primes, containing $S$, such
+that all coefficients in these finitely many equations belong to
+$\mathcal O_{K,S'}[f]$. If $P\in D(K)$ and $f(P)\in\OKS$,
+then each $z_i(P)\in K$ is integral over $\mathcal O_{K,S'}$.
+That ring is integrally closed, so all $z_i(P)$ belong to it.
+Consequently these points are $S'$-integral in a fixed affine
+embedding of $D$. Siegel's theorem gives their finiteness
+\cite[Chapter~8]{Lang}. Its positive-genus hypothesis holds for
+$D$, and at least one pole was removed because $f$ is nonconstant.
+\end{proof}
+
+\begin{proposition}\label{lb:curves}
+Let $X$ be an algebraic set over $K$ of dimension at most one,
+let $U\subseteq X$ be open, and let $f:U\to\A^1_K$ be regular.
+If $f(U(K))\subseteq\OKS$, then $f(U(K))$ is finite.
+\end{proposition}
+\begin{proof}
+Pass to the finitely many irreducible components, omitting components
+disjoint from $U$. Zero-dimensional components contribute finitely
+many points. If an irreducible curve is not geometrically integral,
+every $K$-point lies in the intersection of distinct conjugate
+geometric components. These intersections form a finite set, so this
+case also contributes only finitely many points.
+
+For a geometrically integral curve, take its smooth projective
+normalization $C$. Away from finitely many points the normalization
+is an isomorphism, and $f$ pulls back to a rational function on $C$.
+A constant function has finite image. If the genus is positive,
+Lemma~\ref{lb:positive-genus} applies. If the genus is zero and
+$C(K)$ is empty, only the finitely many points omitted in passing
+to the normalization can contribute. If the genus is zero and
+$C(K)$ is nonempty, then $C\simeq\PP^1_K$; Proposition~\ref{lb:unirational}
+excludes a nonconstant function with the asserted integral-value
+property on the permitted open subset. This proves the result.
+\end{proof}
+
+\section{Hypersurfaces of degree at most three}
+
+\begin{theorem}\label{lb:cubic}
+Let $X\subseteq\PP^N_K$ be the zero set of a nonzero homogeneous
+polynomial of degree at most three. For every open $U\subseteq X$
+and regular function $f:U\to\A^1_K$, the containment
+$f(U(K))\subseteq\OKS$ implies that $f(U(K))$ is finite.
+The same conclusion holds for $X=\PP^N_K$.
+\end{theorem}
+\begin{proof}
+Projective space is unirational, so that case follows from
+Proposition~\ref{lb:unirational}. Factor the equation of a hypersurface
+over $K$ and treat each irreducible factor separately. Multiplicities
+do not change the rational point set.
+
+\emph{Geometrically reducible components.}
+An irreducible polynomial of degree two or three over a perfect
+field, if not geometrically irreducible, splits geometrically into
+conjugate linear factors. Indeed the geometric factors have a common
+degree and form one Galois orbit; that degree divides the prime
+number two or three. Every $K$-point belongs to all the conjugate
+hyperplanes. Their common intersection is a $K$-linear subspace,
+and Proposition~\ref{lb:unirational} applies to the restriction of $f$.
+Linear components are treated by the same proposition.
+
+\emph{Geometrically integral quadrics.}
+A quadric with a smooth $K$-point is rational by projection from
+that point. If it has no smooth $K$-point, all its $K$-points lie
+in its singular locus, which is a linear subspace. Both cases
+give the required finite image.
+
+\emph{Cubics that are not cones.}
+Curves and zero-dimensional cases are covered by
+Proposition~\ref{lb:curves}. A geometrically integral cubic of
+dimension at least two that is not a cone is $K$-unirational if
+it has a $K$-point, by Koll\'ar's theorem \cite[Theorem~2]{Kollar}.
+This theorem applies to singular cubics as well as smooth ones.
+If there is no $K$-point the image is empty; otherwise use
+Proposition~\ref{lb:unirational}.
+
+\emph{The structure of a cubic cone.}
+Write its cubic equation as $F$ on a $K$-vector space $V$ and put
+\[
+ W=\{w\in V:\partial_wF=0\text{ as a polynomial}\}.
+\]
+This is the kernel of a $K$-linear map. In characteristic zero,
+$F$ is constant along the directions in $W$, so it descends to
+a cubic form on $V/W$. The projective space $\PP(W)$ is the
+maximal vertex. Choose a $K$-linear complement to $W$. It gives
+a geometrically integral cubic base $B$ which is not a cone.
+Indeed, a vertex direction of the base would lift to an additional
+direction in the kernel defining $W$. That kernel commutes with
+extension of the ground field, so the same assertion holds geometrically.
+Its dimension is at least one, since a zero-dimensional cubic
+hypersurface is not geometrically integral.
+
+Outside $\PP(W)$, projection from the vertex gives a morphism
+to $B$. Each fiber over a $K$-point of $B$ is an affine space of
+dimension $\dim W$. On an open subset of $B$ this bundle is
+trivial, so the cone is birational to $B\times\A^{\dim W}$.
+These statements follow directly by writing a point of $V$ as
+the sum of a vector in $W$ and a vector in the chosen complement.
+
+If $B(K)$ is empty, all rational points of the cone lie in the
+vertex. If $B(K)$ is finite, apply Proposition~\ref{lb:unirational}
+on the permitted open part of each affine-space fiber, and also
+on the vertex. This gives a finite union of finite images.
+If $\dim B\ge2$ and $B(K)$ is nonempty, Koll\'ar's theorem
+makes $B$, and then the cone, unirational.
+
+\emph{A cone over a curve with infinitely many rational points.}
+The remaining case has $\dim B=1$ and $B(K)$ infinite. Let $C$
+be the smooth projective normalization of $B$. Discarding finitely
+many base points, write the function $f$ on an open subset of
+$C\times\A^{\dim W}$. If this rational function depends
+nontrivially on the affine-space coordinates, some partial
+derivative in those coordinates is nonzero. Expressing it as a
+quotient of polynomials with coefficients in $K(C)$ shows that,
+outside finitely many base points, the specialized function is
+nonconstant and its permitted fiber is nonempty. Choose a
+$K$-point of $C$ outside those exceptions. Its fiber is a
+nonempty open subset of affine space, contradicting
+Proposition~\ref{lb:unirational}. Therefore $f$ belongs to $K(C)$.
+
+For every $K$-point of $C$ outside a finite set, the permitted
+fiber is a nonempty open subset of affine space and has a $K$-point.
+Thus the descended function is defined and $S$-integral at all
+these base points. Proposition~\ref{lb:curves} implies that its
+image there is finite. Since a nonconstant rational function on
+a curve has finite fibers and $C(K)$ is infinite, the function
+must be constant. It is then constant as an element of the
+cone's function field, and hence wherever it is regular on that
+irreducible cone. This includes the points omitted from the
+chosen birational chart.
+\end{proof}
+
+\section{Consequences for polynomial presentations}
+
+\begin{proof}[Proof of Theorem~\ref{lb:main}(1) and (2)]
+First consider at most two total coordinates. For one system of
+equations, its zero set is either all of the ambient affine space
+or has dimension at most one. In the first case, the permitted
+nonempty open subset is unirational, and its input function cannot
+have an infinite $S$-integral image by Proposition~\ref{lb:unirational}.
+In the second case, Proposition~\ref{lb:curves} gives a finite
+input image. Empty permitted sets contribute nothing. Taking
+finitely many alternatives preserves finiteness. This proves the
+coordinate bound for systems and for single equations.
+
+For a single nonconstant polynomial of total degree at most three,
+homogenize it and regard the distinguished input as a regular
+function on the usual affine chart of its projective zero set.
+Theorem~\ref{lb:cubic} gives a finite input image, independently
+of the number of coordinates. A nonzero constant polynomial has
+empty projection. The zero polynomial has projection $K$, which
+is not contained in $\OKS$ because $S$ is finite. These observations
+prove the degree bound.
+\end{proof}
+
+\begin{proposition}\label{lb:individual-degrees}
+Suppose that $P\in K[T,Y_1,\ldots,Y_m]$ has an infinite input
+projection contained in $\OKS$. Then
+\[
+                \deg_T P\ge2,
+    \qquad \deg_{Y_j}P\ge2
+          \quad\text{for every essential witness }Y_j.
+\]
+\end{proposition}
+\begin{proof}
+Suppose first that $P$ is linear in an essential witness $Y_j$.
+Write
+\[
+             P=A(T,\mathbf Y')Y_j+B(T,\mathbf Y'),\qquad A\ne0.
+\]
+Choose constants $\mathbf c\in K^{m-1}$ so that
+$A(T,\mathbf c)$ is a nonzero polynomial. Such a choice exists
+because $K$ is infinite. For every $t$ outside its finite root
+set, setting $Y_j=-B(t,\mathbf c)/A(t,\mathbf c)$ gives a
+rational witness. The projection is therefore cofinite in $K$.
+It cannot be contained in $\OKS$, whose complement is infinite:
+for a prime $\mathfrak p\notin S$ and $0\ne\pi\in\mathfrak p$,
+all the distinct elements $\pi^{-n}$ lie outside $\OKS$.
+
+Suppose next that $\deg_TP\le1$, and write
+$P=A(\mathbf Y)T+B(\mathbf Y)$. If $A=0$, the input projection
+is either empty or all of $K$. Otherwise on the nonempty open
+set $A\ne0$ the rational function $-B/A$ takes only values in
+$\OKS$. Proposition~\ref{lb:unirational} makes it constant.
+At any rational point with $A=B=0$, every input would be admitted,
+which is impossible. Thus the projection has at most one element,
+again a contradiction. This proves Theorem~\ref{lb:main}(3).
+\end{proof}
+
+\begin{corollary}\label{lb:linear-systems}
+No finite system of linear equations, even with nonzero conditions
+and finite alternatives, has an infinite input projection contained
+in $\OKS$.
+\end{corollary}
+\begin{proof}
+Each nonempty common zero set of linear equations is an affine
+space over $K$. Apply Proposition~\ref{lb:unirational} to its
+permitted open subset and take the finite union of the resulting
+finite images.
+\end{proof}
+
+\begin{proposition}\label{lb:three-coordinate-systems}
+Let $F_1,\ldots,F_s\in K[T,Y_1,Y_2]$, and let $U$ be a
+Zariski open subset of their common zero set. Suppose that
+$T(U(K))$ is infinite and contained in $\OKS$. Then some
+irreducible polynomial of degree at least four divides every
+$F_i$. In particular every nonzero $F_i$ has degree at least four.
+The nonzero conditions defining $U$ may have arbitrary degrees.
+\end{proposition}
+\begin{proof}
+The case in which all $F_i$ vanish identically is impossible:
+then $U$ is a nonempty open subset of affine three-space, and
+Proposition~\ref{lb:unirational} would make its input function
+constant. Discard any identically zero equations and put
+$g=\gcd(F_1,\ldots,F_s)$, computed in the unique factorization
+domain $K[T,Y_1,Y_2]$. Write $F_i=gh_i$. Then
+\[
+ V(F_1,\ldots,F_s)=V(g)\cup V(h_1,\ldots,h_s).
+\]
+The second zero set has dimension at most one. Indeed, an
+irreducible component of dimension two would correspond to a
+height-one prime of the polynomial ring. Such a prime is
+generated by one irreducible polynomial, which would divide
+all the $h_i$, contrary to $\gcd(h_1,\ldots,h_s)=1$.
+A component of dimension three would make all the $h_i$ zero,
+which is also impossible.
+
+By Proposition~\ref{lb:curves}, the permitted open subset of
+$V(h_1,\ldots,h_s)$ has finite input image. Factor $g$ into
+irreducibles. There are finitely many resulting hypersurfaces,
+so at least one factor $g_0$ satisfies
+\[
+                   T\bigl((U\cap V(g_0))(K)\bigr)
+                       \quad\text{is infinite}.
+\]
+Every such input lies in $\OKS$. If $\deg g_0\le3$,
+homogenizing $g_0$ and applying Theorem~\ref{lb:cubic} to
+this permitted affine open subset gives a finite image,
+a contradiction. Therefore $\deg g_0\ge4$. Since $g_0$
+divides $g$, it divides every defining equation.
+\end{proof}
+
+\begin{corollary}\label{lb:low-degree-systems}
+A finite system of equations of total degree at most three
+with an infinite input projection contained in $\OKS$ uses
+at least four total coordinates. The same conclusion holds
+with arbitrary nonzero conditions and finitely many alternatives.
+For quadratic systems, Section~\ref{lb:quadratic-section} gives the stronger bound of
+five total coordinates.
+\end{corollary}
+\begin{proof}
+If there are fewer than three coordinates, adjoining unused
+coordinates gives a presentation in three coordinates with
+the same input projection and the same equation degrees.
+Proposition~\ref{lb:three-coordinate-systems} excludes an
+infinite image for each alternative. A finite union of finite
+images is finite. This proves Theorem~\ref{lb:main}(4).
+\end{proof}
+
+\section{Quadratic systems in four coordinates}\label{lb:quadratic-section}
+
+The extra coordinate obstruction for quadratic systems follows from
+an explicit projection. The multiplicity issue matters: the common
+zero set of two quadrics need not be reduced.
+
+\begin{lemma}\label{lb:small-degree-surface}
+Let $Y\subseteq\PP^4_K$ be a geometrically integral projective
+surface of degree at most three. For every open $V\subseteq Y$ and regular
+function $f:V\to\A^1_K$, if $f(V(K))\subseteq\OKS$, then
+$f(V(K))$ is finite.
+\end{lemma}
+\begin{proof}
+The elementary degree inequality
+\[
+ \deg Y\ge 1+\operatorname{codim}(Y,\langle Y\rangle)
+\]
+for a projective integral variety is recalled in
+\cite[Introduction, inequality $(*)$]{EGHP}. The linear span
+$\langle Y\rangle$ is defined over $K$. If the span has dimension
+at most three, $Y$ is a plane or a hypersurface of degree at most
+three in that span, so Theorem~\ref{lb:cubic} applies.
+
+The remaining case has $\deg Y=3$ and $\langle Y\rangle=\PP^4$.
+If $V(K)$ is not dense, its closure has dimension at most one,
+and Proposition~\ref{lb:curves} applies. Otherwise choose a smooth
+point $P\in V(K)$. Projection from $P$ has a surface as its image:
+if the image had dimension one, $Y$ would be a cone with vertex
+$P$; every generating line would then lie in the projective
+tangent plane at the smooth point $P$, contradicting the span.
+Write $Y'\subseteq\PP^3$ for the image surface, and $e$ for the
+generic degree of the projection. The image is nondegenerate,
+because a hyperplane containing it would pull back to a
+hyperplane containing $Y$. Intersecting with a general line in
+$\PP^3$, whose inverse image is a plane through $P$, gives
+\[
+                         3=1+e\deg Y'.
+\]
+Here the contribution at $P$ is one because $P$ is smooth and
+the plane is general. This is the point-projection degree
+formula \cite[Theorem~5.11]{Mumford}, with multiplicity one.
+A nondegenerate surface in $\PP^3$ has
+degree at least two; thus $e=1$ and $Y'$ is a quadric.
+On isomorphic nonempty open subsets the rational function $f$
+therefore corresponds to a regular function on an open subset
+of that quadric. Theorem~\ref{lb:cubic} gives finite image there.
+The omitted subset of $Y$ has dimension at most one, and
+Proposition~\ref{lb:curves} handles its image.
+\end{proof}
+
+\begin{proposition}\label{lb:two-quadrics}
+Let $Q_1,Q_2\in K[X_0,\ldots,X_4]$ be relatively prime
+homogeneous quadratic forms. Let $Y$ be an irreducible surface
+component of their projective common zero set, endowed with its
+reduced structure. If $V\subseteq Y$ is open and $f:V\to\A^1_K$
+is regular with $f(V(K))\subseteq\OKS$, then $f(V(K))$ is finite.
+\end{proposition}
+\begin{proof}
+If $Y$ is not geometrically integral, all its $K$-points lie in
+the intersections of distinct conjugate geometric components.
+Their union descends to a proper closed subset of $Y$ of dimension
+at most one. Proposition~\ref{lb:curves} proves the assertion in
+this case. Hence assume that $Y$ is geometrically integral.
+
+If $V(K)$ is not Zariski dense in $Y$, its Zariski closure is
+again of dimension at most one, and the same proposition applies.
+Suppose therefore that $V(K)$ is dense. B\'ezout's theorem for the
+complete intersection $Z=V(Q_1,Q_2)\subset\PP^4_K$ gives
+\[
+                    \sum_i m_i\deg Y_i=4,
+\]
+where $Y_i$ are the geometric surface components and $m_i$ their
+multiplicities at their generic points. If the multiplicity of
+$Y$ is at least two, then $\deg Y\le2$, and
+Lemma~\ref{lb:small-degree-surface} applies.
+
+It remains to treat multiplicity one. The complete intersection
+$Z$ is then reduced at the generic point of $Y$. Over the perfect
+field $K$, there is a nonempty open subset of $Y$ on which $Z$
+is smooth of dimension two and no other component occurs. Density
+supplies a point $P\in V(K)$ in that open subset. After a
+$K$-linear projective change of coordinates, put
+$P=(1:0:0:0:0)$. Because $Q_i(P)=0$, write
+\[
+ Q_1=X_0L_1(\mathbf X)+q_1(\mathbf X),\qquad
+ Q_2=X_0L_2(\mathbf X)+q_2(\mathbf X),
+ \qquad \mathbf X=(X_1,\ldots,X_4),
+\]
+where the $L_i$ are linear and the $q_i$ quadratic. Smoothness
+of $Z$ at $P$ says that $L_1,L_2$ are linearly independent.
+
+If both $L_i$ vanish identically on $Y$, then $Y$ is the plane
+$V(L_1,L_2)$, and Lemma~\ref{lb:small-degree-surface} applies.
+Otherwise, after interchanging the two equations, assume that
+$L_1$ does not vanish identically on $Y$. Projection from $P$
+then has the rational inverse
+\[
+ [X_1:\cdots:X_4]\longmapsto
+ [-q_1(\mathbf X):L_1(\mathbf X)X_1:\cdots:
+                               L_1(\mathbf X)X_4]
+\]
+on the open set $L_1\ne0$. The image lies in the cubic
+\[
+              H=L_1q_2-L_2q_1=0\quad\text{in }\PP^3_K.
+\]
+This polynomial is nonzero. Indeed, if $H=0$, relative
+primality of the independent linear forms would give
+$q_1=L_1M$ and $q_2=L_2M$ for one linear form $M$.
+Both quadrics would then be divisible by $X_0+M$, contrary
+to their relative primality.
+
+The image closure of $Y$ is thus a surface component $Y'$ of
+the cubic $V(H)$. It is defined by an irreducible factor of
+$H$, of degree at most three. The displayed inverse gives an
+isomorphism between nonempty open subsets of $Y$ and $Y'$.
+Shrink the first open subset so that it lies in $V$. On the
+corresponding open subset of $Y'$, the function $f$ is a
+\emph{rational} function, regular after this shrinking, and
+all its $K$-rational values lie in $\OKS$.
+Theorem~\ref{lb:cubic} makes its image finite. The omitted
+closed subset of the surface $Y$ has dimension at most one;
+Proposition~\ref{lb:curves} makes the remaining image finite.
+\end{proof}
+
+\begin{theorem}\label{lb:quadratic-five}
+Let $F_1,\ldots,F_s\in K[T,Y_1,Y_2,Y_3]$ have total degree
+at most two, and let $U$ be open in their common zero set.
+If $T(U(K))\subseteq\OKS$, then $T(U(K))$ is finite.
+Consequently every finite quadratic system with infinite
+$S$-integral input projection needs at least five total coordinates.
+The assertion is unchanged by nonzero conditions or finitely many
+alternatives.
+\end{theorem}
+\begin{proof}
+Identically zero equations may be discarded. If all equations
+are zero, use Proposition~\ref{lb:unirational}; a nonzero constant
+equation gives the empty set. A nonconstant linear equation
+allows a $K$-affine parametrization of its hyperplane by three
+coordinates. If the input is constant on that hyperplane, the
+claim is immediate. Otherwise choose the parametrization with
+the input itself as one of those coordinates. The remaining
+equations still have degree at most two, so
+Corollary~\ref{lb:low-degree-systems} applies. We may therefore
+assume that all remaining equations have degree exactly two.
+
+If $g=\gcd(F_1,\ldots,F_s)$ is nonconstant, write $F_i=gh_i$.
+Their common zero set is
+\[
+       V(g)\ \cup\ V(h_1,\ldots,h_s).
+\]
+The first part has finite permitted input image by
+Theorem~\ref{lb:cubic}. The $h_i$ have degree at most one,
+so the second part has finite input image by
+Corollary~\ref{lb:linear-systems}.
+
+Suppose now that the gcd is one. Choose one nonzero equation
+$F$. A $K$-linear combination $G$ of the equations can be
+chosen relatively prime to $F$: for each of the finitely many
+irreducible factors of $F$, divisibility of the combination
+by that factor is a proper linear condition on its coefficients.
+A finite union of proper linear subspaces cannot cover the
+coefficient space over the infinite field $K$. The case
+$\deg G\le1$ is already settled, so take $\deg G=2$.
+
+The homogenizations $Q_1,Q_2$ of $F,G$ in $\PP^4_K$ remain
+relatively prime. A common factor other than the homogenizing
+coordinate would dehomogenize to a common factor of $F,G$;
+neither homogenization is divisible by that coordinate.
+Their intersection is therefore a complete intersection of
+pure dimension two. Every surface component of the projective
+closure of $V(F_1,\ldots,F_s)$ is a component of this
+intersection. Proposition~\ref{lb:two-quadrics} makes its
+permitted input image finite. Components of dimension at most
+one are covered by Proposition~\ref{lb:curves}. There are
+only finitely many components, proving the assertion.
+
+Adjoining unused coordinates treats systems in fewer than four
+coordinates, and a finite union of finite images is finite.
+This proves Theorem~\ref{lb:main}(5).
+\end{proof}
+
+\begin{corollary}\label{lb:quartic-sos}
+Let $K$ have a real embedding $\sigma$, let $c_1,\ldots,c_s\in K$
+satisfy $\sigma(c_i)>0$, and let $F_i\in K[T,\mathbf Y]$ have
+degree at most two. If
+\[
+                  P=\sum_{i=1}^s c_iF_i^2
+\]
+has infinite input projection contained in $\OKS$, then $P$
+uses at least five total coordinates.
+\end{corollary}
+\begin{proof}
+For a $K$-rational tuple, $P=0$ holds if and only if every
+$F_i=0$, as follows by applying $\sigma$. Apply
+Theorem~\ref{lb:quadratic-five}.
+\end{proof}
+
+\section{Three-coordinate presentations and nonnegative polynomials}\label{lb:positivity-section}
+
+\begin{proposition}\label{lb:three-surface}
+Suppose that $P\in K[T,Y_1,Y_2]$ has infinite input projection
+contained in $\OKS$. Then $P$ has an absolutely irreducible factor
+$G$ of degree at least four such that $V(G)(K)$ is Zariski dense
+and its input projection is infinite. Every proper closed subset
+of $V(G)$ has finite input projection on its $K$-points.
+In particular, if $\deg P=4$, then $P$ is absolutely irreducible
+up to a nonzero constant factor and its smooth $K$-points have
+infinite input projection.
+\end{proposition}
+\begin{proof}
+Factor $P$ over $K$. Some irreducible factor $G$ has infinite
+input projection, since a finite union of finite sets is finite.
+If $G$ is not absolutely irreducible, its rational points lie
+in the intersections of conjugate geometric components, a
+closed subset of dimension at most one. Proposition~\ref{lb:curves}
+would give a finite image. Hence $G$ is absolutely irreducible.
+The same proposition shows that no proper closed subset of its
+surface can contain all rational points contributing infinitely
+many inputs. Thus the rational points are dense. The degree
+bound follows from Theorem~\ref{lb:cubic}. If $\deg P=4$,
+the factor $G$ already has the full degree and occurs once.
+Its singular locus is a proper closed subset of dimension at
+most one, hence contributes only finitely many inputs.
+\end{proof}
+
+\begin{theorem}\label{lb:nonnegative-eight}
+Let $K$ have a real embedding $\sigma$. Suppose that
+$P\in K[T,Y_1,Y_2]$ satisfies
+\[
+             P^\sigma(t,y_1,y_2)\ge0
+                  \quad\text{for all }(t,y_1,y_2)\in\mathbb R^3.
+\]
+If its $K$-rational input projection is infinite and contained
+in $\OKS$, then $P$ has a repeated absolutely irreducible factor
+of degree at least four. Consequently $\deg P\ge8$.
+\end{theorem}
+\begin{proof}
+Choose the factor $G$ of Proposition~\ref{lb:three-surface}.
+Every real zero of a nonnegative differentiable function is a
+local minimum, so all first partial derivatives of $P^\sigma$
+vanish at every point of $V(G)(K)$ after applying $\sigma$.
+The embedding is injective. Therefore all first partial
+derivatives of $P$ vanish on the Zariski-dense set $V(G)(K)$,
+and $G$ divides each of them.
+
+Write $P=G^eH$ with $G\nmid H$. If $e=1$, reduction of
+$\partial P/\partial X_j$ modulo $G$ gives
+\[
+               H\frac{\partial G}{\partial X_j}=0
+                    \quad\text{in }K[T,Y_1,Y_2]/(G)
+\]
+for each coordinate $X_j$. This quotient is an integral domain
+and $H$ is nonzero in it, so $G$ divides every partial derivative
+of itself. Their degrees are smaller than $\deg G$, forcing
+every derivative to be zero. In characteristic zero this would
+make $G$ constant, a contradiction. Thus $e\ge2$, and
+$\deg P\ge2\deg G\ge8$.
+\end{proof}
+
+\begin{corollary}\label{lb:quartic-sign}
+A three-coordinate quartic defining an infinite subset of
+$\OKS$ must take both positive and negative values at every
+real embedding of $K$. In particular, a quartic over $\mathbb Q$
+whose rational input projection is $\mathbb Z$ cannot be
+nonnegative on $\mathbb R^3$.
+\end{corollary}
+\begin{proof}
+Otherwise the real polynomial has a constant sign, and either
+$P$ or $-P$ contradicts Theorem~\ref{lb:nonnegative-eight}.
+\end{proof}
+
+\begin{lemma}\label{lb:quartic-singular-surface}
+Let $X\subset\PP^4_K$ be a geometrically integral quartic
+hypersurface. Every geometric surface component of its singular
+locus has degree at most three.
+\end{lemma}
+\begin{proof}
+Work over an algebraic closure of $K$, and let $Y$ be such a
+component. By Bertini's irreducibility theorem, applied twice,
+a general plane $\Lambda\simeq\PP^2$ cuts $X$ in an integral
+plane quartic $C$; see \cite[Lemma~37.32.3]{StacksBertini}.
+The same general plane meets the reduced surface $Y$
+transversely at $\deg Y$ distinct points. At each such point
+all partial derivatives of the quartic equation of $X$ vanish,
+so the restricted plane equation is singular there.
+
+The arithmetic genus of a plane quartic is
+$(4-1)(4-2)/2=3$. If $\widetilde C$ is its normalization, the
+normalization exact sequence gives
+\[
+ 3=g(\widetilde C)+\sum_{P\in\operatorname{Sing}(C)}\delta_P,
+ \qquad
+ \delta_P=\dim_{\overline K}
+              (\widetilde{\mathcal O}_{C,P}/\mathcal O_{C,P}).
+\]
+Every singular point of an integral plane curve has
+$\delta_P\ge1$, and the geometric genus is nonnegative.
+Thus $C$ has at most three singular points, and $\deg Y\le3$.
+\end{proof}
+
+\begin{theorem}\label{lb:nonnegative-quartic-five}
+Let $K$ have a real embedding $\sigma$ and let
+$P\in K[T,Y_1,Y_2,Y_3]$ have degree at most four. Suppose that
+$P^\sigma$ is nonnegative on $\mathbb R^4$. If the rational
+input projection of $P$ is contained in $\OKS$, it is finite.
+Consequently a nonnegative quartic with infinite $S$-integral
+input projection needs at least five total coordinates.
+\end{theorem}
+\begin{proof}
+The zero polynomial is excluded by the assumed projection
+containment, while a nonzero constant has empty projection.
+If all irreducible factors of $P$ over $K$ have degree at most
+three, each factor has its rational zero set contained in that
+of $P$, so Theorem~\ref{lb:cubic} gives finite input image for
+each. It therefore suffices to consider an irreducible quartic.
+
+Suppose first that the quartic is not absolutely irreducible.
+In characteristic zero its geometric factors are distinct,
+have equal degrees, and form one Galois orbit. Thus it is a
+nonzero constant times either the norm of a quadratic polynomial
+over a quadratic extension or the norm of a linear polynomial
+over a degree-four extension. To see the precise field of
+definition, normalize one nonzero coefficient of a geometric
+factor to one; its stabilizer then fixes all its coefficients,
+and its orbit has respectively two or four elements. On a
+$K$-rational tuple the norm vanishes exactly when that polynomial
+vanishes. Expanding in a $K$-basis of the extension gives
+respectively two quadratic equations or four linear equations
+over $K$. Their input image is finite by
+Theorem~\ref{lb:quadratic-five} or
+Corollary~\ref{lb:linear-systems}.
+
+Finally suppose that $P$ is absolutely irreducible, and let
+$X\subset\PP^4_K$ be the quartic obtained by homogenization.
+Every rational affine zero of $P$ is a real minimum after
+applying $\sigma$. All its first derivatives vanish. Euler's
+identity for the homogenized polynomial shows that its derivative
+in the homogenizing coordinate also vanishes. Therefore all
+rational affine zeros belong to $\operatorname{Sing}(X)$.
+
+This singular locus has dimension at most two. Components of
+dimension at most one contribute finite input image by
+Proposition~\ref{lb:curves}. If a surface component is not
+geometrically integral, its rational points lie in a closed
+subset of dimension at most one, with the same conclusion.
+Every geometrically integral surface component has degree at
+most three by Lemma~\ref{lb:quartic-singular-surface}; its
+input image on the affine chart is finite by
+Lemma~\ref{lb:small-degree-surface}. Taking the finite union
+over components proves the theorem.
+\end{proof}
+
+\section{Scope of the coordinate bounds}
+
+\begin{corollary}\label{lb:degree-sharpness}
+Let $A\subseteq\OKS$ be infinite. If $A$ has a single-polynomial
+presentation of degree four over $K$, then four is the least
+possible degree of any such presentation, regardless of how many
+witness coordinates are allowed. If $A$ has a presentation by a
+system of quadratic equations, then two is the least possible
+maximum degree of the equations in a system.
+\end{corollary}
+\begin{proof}
+The first assertion follows from Theorem~\ref{lb:main}; the second
+follows from Corollary~\ref{lb:linear-systems}.
+\end{proof}
+
+The bounds for systems can be displayed as follows; the degree
+in the table is the largest degree among the equations.
+\[
+\begin{array}{c|c}
+\text{maximum equation degree}&\text{necessary total coordinates}\\
+\hline
+1&\text{no finite number suffices}\\
+2&\text{at least }5\\
+3&\text{at least }4\\
+4\text{ or greater}&\text{at least }3
+\end{array}
+\]
+The nonzero conditions may have arbitrary degrees. For a single
+equation, degrees at most three are impossible regardless of the
+number of coordinates. All nonnegative quartics, including
+positive sums of squares of quadratics, need at least five
+coordinates, while arbitrary quartics have
+only the unconditional three-coordinate lower bound proved here.
+Nonnegative polynomials in three coordinates need degree at
+least eight.
+
+Let $\nu$ be the least total number of coordinates in a
+single-polynomial definition of $\mathbb Z$ over $\mathbb Q$,
+if such a definition exists, and put $\nu=+\infty$ otherwise.
+The unconditional conclusion is
+\[
+                              \nu\ge3.
+\]
+An upper bound obtained from a construction is subject to that
+construction's stated arithmetic hypotheses. The proofs above
+do not establish $\nu=3$, do not exclude $\nu=3$, and do not
+provide an attained minimum for quartics or quadratic systems.
+In particular, the sharp lower bound on \emph{degree} supplied
+by a valid quartic construction does not make its number of
+coordinates optimal.
+
+The distinction between the number of quantified coordinates
+and the dimension of the witness fibers is also essential.
+For terminology and general results concerning existential rank
+and essential fiber dimension, see \cite{DDF}. In the convention
+of the present paper, the total coordinate count is one more
+than the number of existentially quantified coordinates.
+
+\begin{thebibliography}{9}
+\bibitem{Kollar}
+J.~Koll\'ar, Unirationality of cubic hypersurfaces,
+\emph{Journal of the Institute of Mathematics of Jussieu}
+\textbf{1} (2002), 467--476, Theorem~2.
+\url{https://arxiv.org/abs/math/0005146}.
+
+\bibitem{Lang}
+S.~Lang, \emph{Fundamentals of Diophantine Geometry},
+Springer, 1983, Chapter~8, ``Siegel's Theorem and Integral Points'',
+188--224.
+\url{https://doi.org/10.1007/978-1-4757-1810-2_8}.
+
+\bibitem{EGHP}
+D.~Eisenbud, M.~Green, K.~Hulek, and S.~Popescu,
+Small schemes and varieties of minimal degree,
+\emph{American Journal of Mathematics} \textbf{128} (2006),
+1363--1389; Introduction, inequality $(*)$.
+\url{https://arxiv.org/abs/math/0404517}.
+
+\bibitem{DDF}
+N.~Daans, P.~Dittmann, and A.~Fehm,
+Existential rank and essential dimension of diophantine sets,
+arXiv:2102.06941v5, 2025.
+\url{https://arxiv.org/abs/2102.06941}.
+
+\bibitem{Mumford}
+D.~Mumford, \emph{Algebraic Geometry I: Complex Projective Varieties},
+Grundlehren der mathematischen Wissenschaften, vol.~221,
+Springer, 1976, Theorem~5.11; corrected reprint, 1995.
+\url{https://link.springer.com/book/9783540586579}.
+
+\bibitem{StacksBertini}
+The Stacks Project Authors, \emph{The Stacks Project},
+Section~37.32, ``Bertini theorems'', Lemma~37.32.3.
+\url{https://stacks.math.columbia.edu/tag/0G4C}.
+\end{thebibliography}
+\end{document}

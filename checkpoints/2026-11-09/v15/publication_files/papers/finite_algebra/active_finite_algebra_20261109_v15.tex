@@ -1,0 +1,515 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,booktabs,microtype}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\DeclareMathOperator{\Res}{Res}\DeclareMathOperator{\Disc}{Disc}
+\setlength{\emergencystretch}{2em}
+\title{Separating the Nonzero Part of a Finite Algebra}
+\author{}\date{9 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+We give an explicit polynomial, using one additional rational coordinate,
+for a guarded rational point of a finite algebra obtained by adjoining
+quadratic roots to an algebra with separable fibers. A characteristic
+polynomial identifies the factors on which the guard is nonzero.
+The product of its nonzero eigenvalues then bounds every required
+quadratic root separation; only the scalar discriminants of the initial
+separable polynomials are needed. The construction covers degree drops,
+nonreal points, and nonreduced fibers where the guard vanishes.
+Applied to the specified arithmetic sources, it gives a family in
+27 total variables of degree less than $2^{87}$ and a fully specified
+polynomial in 29 total variables of degree less than $2^{89}$ and
+coefficient height at most $2^{2^{99}}$.
+The elimination theorem is unconditional. Assertions about defining the
+integers retain the arithmetic premises and the effective or ineffective
+thresholds of the respective sources.
+\end{abstract}
+
+\section{The algebra and its guarded rational points}
+
+Let $R_0=\Z[x_1,\ldots,x_a]$ and consider the finite free algebras
+\[
+ B=R_0[z_1,\ldots,z_p]/(f_1(z_1),\ldots,f_p(z_p)),\qquad
+ A=B[q_1,\ldots,q_s]/(q_j^2-c_j)_{j=1}^s.
+\]
+Here $p,s\ge1$, the polynomials $f_i\in R_0[Z]$ are monic
+of degrees $d_i\ge2$, and $c_j\in B$. Assume that every $f_i$
+is separable at every rational specialization of the base coordinates.
+Write $m=p+s$ and $\theta_1,\ldots,\theta_m$ for the generators
+in this order, with $d_{p+j}=2$. Put
+\[
+ b=\prod_{i=1}^p d_i,\qquad n=b2^s.
+\]
+The monomials with each exponent below its defining degree are
+bases of $B$ and $A$. For an element $u$, let $M_u$ denote its
+multiplication matrix in the indicated basis.
+
+Fix $g\in B$ and put
+\[
+ G=gq_1\cdots q_s,\qquad T=g^2c_1\cdots c_s\in B.
+\]
+Thus $G^2=T$ in $A$. We encode, at a rational base point,
+\begin{equation}\label{eq:predicate}
+ \text{there is a homomorphism } A\longrightarrow\Q
+ \text{ over that base point with }G\ne0.
+\end{equation}
+There are no further residual equations. Every algebra generator
+will be eliminated; precisely one new rational coordinate $U$ is used.
+At a rational base point $B$ is an \'etale $\Q$-algebra. On
+its factors where $T\ne0$, all $c_j$ and $g$ are nonzero,
+so the corresponding part of $A$ is also \'etale. The remaining
+part of $A$ may be nonreduced.
+
+\section{An explicit integer polynomial}
+
+Define scalar integer polynomials
+\[
+ \det_B(I-vM_T)=\sum_{j=0}^b a_jv^j,\quad a_0=1,
+ \qquad \delta_i=\Disc(f_i)\quad(1\le i\le p).
+\]
+Use the convention
+$\Disc(f)=(-1)^{d(d-1)/2}\Res(f,f')$ for a monic polynomial
+of degree $d$. Define
+\begin{equation}\label{eq:rootbound}
+ R=n\left(1+\sum_{i=1}^m\sum_{u,v=1}^n
+                 (M_{\theta_i}^{A})_{uv}^2
+            +\sum_{u,v=1}^b(M_g^{B})_{uv}^2\right),
+ \qquad \sigma=\sum_{i=1}^p d_i(d_i-1).
+\end{equation}
+The superscripts specify the algebra in which multiplication is taken.
+
+For each integer $1\le r\le b$, use only the following polynomial
+operations:
+\begin{align*}
+ c&=a_r,& h_r(Z)&=\sum_{j=0}^r a_jZ^{r-j},& E&=c-h_r(T)\in B,\\
+ D&=c^2\prod_{i=1}^p\delta_i^2,& S_r&=r(s+1)+\sigma,\\
+ K&=(2R)^{S_r}(1+c^2)\prod_{i=1}^p(1+\delta_i^2),& C&=D+4RK.
+\end{align*}
+These symbols depend on $r$. Set
+\begin{equation}\label{eq:beta}
+ \beta_r=DE\left(C^m+\sum_{i=1}^mD^iC^{m-i}\theta_i\right)\in A,
+ \qquad H_r(\mathbf x,U)=\det_A(I-UM_{\beta_r}).
+\end{equation}
+Finally define
+\begin{equation}\label{eq:product}
+ Q_r=\begin{cases}
+ H_r^2+\displaystyle\sum_{j=r+1}^b a_j^2,&r<b,\\
+ H_b,&r=b,
+ \end{cases}
+ \qquad P(\mathbf x,U)=\prod_{r=1}^b Q_r.
+\end{equation}
+All finite index ranges and integer coefficient operations are explicit.
+No division occurs; the expressions remain polynomials where $c=0$.
+
+\begin{theorem}\label{thm:main}
+For every rational base point $\mathbf x$, predicate
+\eqref{eq:predicate} holds if and only if there is a rational
+$U$ satisfying $P(\mathbf x,U)=0$.
+\end{theorem}
+
+\section{Proof of the projection theorem}
+
+Fix a rational base point throughout this section. A geometric
+character means an algebra homomorphism to $\overline\Q$ over $\Q$.
+Let $r_0$ be the number of characters $\chi$ of $B$ with
+$T(\chi)\ne0$, counted individually.
+
+\begin{lemma}\label{lem:idempotent}
+The degree of $\det_B(I-vM_T)$ is $r_0$.
+For $r=r_0>0$, one has $c\ne0$, and $E/c$ equals one
+on the factors with $T\ne0$ and zero on all remaining factors.
+\end{lemma}
+\begin{proof}
+Since $B$ is \'etale, the determinant is
+$\prod_\chi(1-vT(\chi))$. For $r=r_0$, the polynomial $h_r$
+is the product of $Z-T(\chi)$ over those characters with
+$T(\chi)\ne0$, including repetitions of their values.
+It vanishes at every such value and has constant term $c$.
+Thus $E=c-h_r(T)$ has the stated values.
+\end{proof}
+
+For the correct case $r=r_0>0$, all scalar $\delta_i$ are
+nonzero by hypothesis, so $D>0$, $K>0$, and
+\[
+ \varepsilon=D/K
+ =\frac{c^2}{1+c^2}\prod_{i=1}^p\frac{\delta_i^2}{1+\delta_i^2}
+                      (2R)^{-S_r}\in(0,1].
+\]
+
+\begin{lemma}\label{lem:separate}
+In the correct case, two characters of $A$ with $G\ne0$
+which first differ at $\theta_i$ differ there in complex absolute
+value by at least $\varepsilon$. The element
+\[
+ \alpha=L^m+\sum_{i=1}^mL^{m-i}\theta_i,
+                 \qquad L=C/D=1+4R/\varepsilon,
+\]
+has distinct nonzero values on all these characters.
+\end{lemma}
+\begin{proof}
+Every value of every $\theta_i$, and every value of $g$, has
+absolute value at most $R$. Indeed these values are eigenvalues
+of the respective multiplication matrices. The spectral radius
+of a $k$-by-$k$ matrix is at most $k$ times the maximum absolute
+entry; $k\le n$ and $|t|\le1+t^2$ prove the assertion from
+\eqref{eq:rootbound}. In particular $R\ge1$.
+
+First suppose $i\le p$, and let $\Delta$ be the difference
+in the $i$th generator. The discriminant $\delta_i$ is the
+product of the squared pairwise root differences of $f_i$.
+Every root has absolute value at most $R$. With
+$k_i=d_i(d_i-1)$, this gives
+\[
+ |\Delta|\ge\frac{\sqrt{|\delta_i|}}{(2R)^{(k_i-2)/2}}.
+\]
+For every real $z>0$ one has $\min(1,z^2)\le\sqrt z$.
+Consequently
+\[
+ \frac{\delta_i^2}{1+\delta_i^2}(2R)^{-k_i}
+ \le\frac{\sqrt{|\delta_i|}}{(2R)^{(k_i-2)/2}}.
+\]
+The other factors in $\varepsilon$ are at most one, and
+$S_r\ge k_i$. Hence $\varepsilon\le|\Delta|$.
+
+Next suppose $i=p+j$. Since the earlier point generators agree,
+the two characters lie above the same character $\chi$ of $B$,
+and their values are the two roots of $Z^2-c_j(\chi)$.
+Now
+\[
+ |c|=\prod_{\psi:\,T(\psi)\ne0}
+                  |g(\psi)|^2\prod_{k=1}^s|c_k(\psi)|.
+\]
+There are $r(s+1)$ factors in this product; every factor is
+at most $R^2$. Isolating the particular nonzero factor
+$|c_j(\chi)|$ yields
+\[
+ |c_j(\chi)|\ge |c|R^{-2r(s+1)+2},\qquad
+ |\Delta|=2\sqrt{|c_j(\chi)|}
+              \ge2\sqrt{|c|}R^{1-r(s+1)}.
+\]
+On the other hand,
+\[
+ \varepsilon\le\frac{c^2}{1+c^2}(2R)^{-r(s+1)}
+       \le\sqrt{|c|}(2R)^{-r(s+1)}\le|\Delta|.
+\]
+This proves the separation estimate, also for complex roots.
+It uses the product of the nonzero values of $T$, without
+requiring those values to be pairwise distinct.
+
+For two characters first differing at $\theta_i$, the leading
+term in their $\alpha$-difference has absolute value at least
+$\varepsilon L^{m-i}$. The remaining terms have total absolute
+value less than
+\[
+ \frac{2R}{L-1}L^{m-i}=\frac\varepsilon2L^{m-i}.
+\]
+The values of $\alpha$ are therefore distinct. Also, the sum
+after $L^m$ has absolute value less than
+$RL^m/(L-1)\le L^m/4$, so none of its values is zero.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+If $c=0$ in a case, then $D=0$, $\beta_r=0$, and $H_r=1$.
+For $r<b$, a rational zero of $Q_r$ therefore forces $c\ne0$
+and $a_j=0$ for every $j>r$; it also forces $H_r=0$ by the
+sum-of-squares identity. For $r=b$, a zero of $H_b$ similarly
+forces $c=a_b\ne0$. Thus any zero uses precisely the correct
+positive degree case.
+
+By Lemma~\ref{lem:idempotent}, multiplication by $E$ vanishes
+identically on the part of $A$ above $T=0$, including its
+nilpotents. On the other part one has
+\[
+                         \beta_r=cD^{m+1}\alpha.
+\]
+This part is \'etale. Lemma~\ref{lem:separate} implies that its
+$\beta_r$-values are distinct and nonzero. Hence $H_r$ is the
+product of the distinct factors $1-U\beta_r(\chi)$ over the
+characters with $G\ne0$. A rational zero gives a one-dimensional
+rational kernel of $I-UM_{\beta_r}$. All native multiplication
+matrices commute with $M_{\beta_r}$ and preserve this line.
+Their actions on it are rational scalars satisfying the algebra
+relations. They yield a rational character. Its $\beta_r$-value
+is nonzero, so it has $G\ne0$. This proves soundness.
+
+Conversely a guarded rational character implies $r_0>0$.
+In the correct case its $\beta_r$-value is nonzero and rational.
+Its reciprocal annihilates $H_r$, and all tail coefficients
+$a_j$, $j>r$, vanish. It therefore annihilates $Q_r$ and $P$.
+If $r_0=0$, every $c=a_r$ is zero and every $H_r$ is one,
+so no factor has a zero. This includes the empty guarded part.
+\end{proof}
+
+\section{Degree and coefficient estimates}
+
+Give each base coordinate weight one, and give the native generators
+weights $w_i\ge1$ for which monic reduction does not increase
+weight. For coefficient norms use the weighted column norm,
+with basis scaling $2^{\sum e_i\gamma_i}$ on the monomial
+$\prod\theta_i^{e_i}$. Scalar polynomials have the coefficient
+$\ell^1$ norm. Suppose the following bounds are supplied:
+\[
+ \|M_{\theta_i}\|\le2^{\gamma_i},\quad
+ \operatorname{wt}(G)\le w_G,\quad \|M_G\|\le2^\eta,
+ \quad \operatorname{wt}(g)\le w_g,\quad\|M_g^B\|\le2^{\eta_g}.
+\]
+The $\gamma_i,\eta,\eta_g$ are nonnegative integers. The
+companion-column recurrence in~\cite{Weighted} supplies these
+bounds from the integer coefficient circuit. The $B$-basis uses
+the restrictions of the same weights. Since $G^2=T\in B$, its
+weight and logarithmic operator norm are bounded by
+$t=2w_G$ and $\mu=2\eta$. For the norm assertion, $B$ is an
+invariant subspace of multiplication by $G^2$.
+
+For positive integers $u$, write $\ell(u)=\lceil\log_2u\rceil$.
+Set
+\begin{align*}
+ w_*&=\max\left\{\sum_{i=1}^m(d_i-1)w_i+\max_iw_i,
+                   \sum_{i=1}^p(d_i-1)w_i+w_g\right\},\\
+ \gamma_*&=\max\left\{\sum_{i=1}^m(d_i-1)\gamma_i+\max_i\gamma_i,
+                   \sum_{i=1}^p(d_i-1)\gamma_i+\eta_g\right\},\\
+ R_d&=2w_*,\qquad
+ R_l=\ell(n)+\ell(1+mn^2+b^2)+2\gamma_*,\qquad a_l=\mu+\ell(b),\\
+ u_i&=d_i(d_i-1)w_i,\qquad
+ v_i=d_i(d_i-1)\gamma_i+
+                    \ell\bigl((2d_i-1)!d_i^{d_i}\bigr)\quad(i\le p),\\
+ u&=\sum_{i=1}^p u_i,\qquad v=\sum_{i=1}^p v_i.
+\end{align*}
+Define four integer majorants
+\begin{align*}
+ W_1&=(3+2m)t+m(s+1)R_d,\\
+ W_0&=2(m+1)u+m(\sigma+1)R_d+\max_iw_i,\\
+ L_1&=(3+2m)a_l+m(s+1)(1+R_l),\\
+ L_0&=2(m+1)v+\ell(b)+\ell(m+1)\\
+    &\hspace{8mm}+m\bigl(\sigma(1+R_l)+p+4+R_l\bigr)+\max_i\gamma_i.
+\end{align*}
+The letters $L_0,L_1$ here denote coefficient bounds and are
+unrelated to the fixed coefficient exponent in the applications.
+
+\begin{theorem}\label{thm:bounds}
+The polynomial in~\eqref{eq:product} satisfies
+\begin{align}
+ \deg P&\le n\bigl(W_1b^2+(W_0+1)(2b-1)\bigr),\label{eq:degree}\\
+ \log_2\|P\|_1&\le
+ n\bigl(L_1b^2+(L_0+\ell(n)+1)(2b-1)\bigr)
+                  +(b-1)\ell(b+1).\label{eq:height}
+\end{align}
+Its coefficient height is at most $\|P\|_1$.
+\end{theorem}
+\begin{proof}
+An entry in the multiplication matrix of an element of weight $w$
+has degree at most $w+$ column basis weight $-$ row basis weight.
+The analogous logarithmic coefficient-norm estimate uses the
+$\gamma$ weights. This proves the bounds $R_d,R_l$ for
+\eqref{eq:rootbound}.
+
+In every principal minor the row and column weights cancel.
+If multiplication by an element of an algebra of rank $h$ has
+weight at most $w$ and operator norm at most $2^\lambda$, then
+the $j$th characteristic coefficient has degree at most $jw$
+and norm at most
+$\binom hj2^{j\lambda}\le2^{j(\lambda+\ell(h))}$.
+For the norm estimate, apply the diagonal similarity specifying
+the weighted column norm; the column-norm determinant estimate
+bounds each principal minor. In particular
+\[
+ \deg a_j\le jt,\qquad\log_2\|a_j\|_1\le ja_l.
+\]
+The constant term cancels in $E=c-h_r(T)$, leaving exactly
+$r$ terms, each of weight at most $rt$ and operator norm
+at most $2^{ra_l}$. Thus
+\[
+ \operatorname{wt}(E)\le rt,\qquad
+ \log_2\|M_E\|\le ra_l+\ell(b).
+\]
+The discriminant is weighted homogeneous of weight $d_i(d_i-1)$
+in its roots. Its Sylvester determinant has at most $(2d_i-1)!$
+terms, each with at most $d_i$ derivative coefficients, bounded
+in addition by $d_i$. For a scalar native polynomial, the weighted
+last column of its companion matrix gives
+$\|[Z^j]f_i\|_1\le2^{(d_i-j)\gamma_i}$ and
+$\deg[Z^j]f_i\le(d_i-j)w_i$ for $j<d_i$.
+The Sylvester expansion with these coefficient bounds gives degree
+at most $u_i$ and logarithmic norm at most $v_i$.
+
+Products and sums now yield
+\begin{align*}
+ \deg D&\le2rt+2u,&\log_2\|D\|_1&\le2ra_l+2v,\\
+ \deg K&\le S_rR_d+2rt+2u,&
+ \log_2\|K\|_1&\le S_r(1+R_l)+2ra_l+2v+p+1,\\
+ \deg C&\le(S_r+1)R_d+2rt+2u,&
+ \log_2\|C\|_1&\le S_r(1+R_l)+2ra_l+2v+p+4+R_l.
+\end{align*}
+These bounds for $C$ dominate the corresponding bounds for $D$.
+Applying them to~\eqref{eq:beta} gives
+\[
+ \operatorname{wt}(\beta_r)\le W_1r+W_0,\qquad
+ \log_2\|M_{\beta_r}\|\le L_1r+L_0.
+\]
+The principal-minor estimate applied to $H_r$ gives
+\[
+ \deg H_r\le n(W_1r+W_0+1),\qquad
+ \log_2\|H_r\|_1\le n(L_1r+L_0+\ell(n)+1).
+\]
+Both estimates dominate those for all tail coefficients $a_j$
+in $Q_r$: one may directly compare with $bt$ and $ba_l$,
+using $n\ge b$, $r\ge1$, and the displayed positive majorants.
+For $r<b$, square and sum at most $b+1$ terms; for $r=b$,
+keep the bound for $H_b$ without squaring. Sum the bounds over
+the factors and use
+\[
+ 2\sum_{r=1}^{b-1}r+b=b^2,\qquad
+ 2\sum_{r=1}^{b-1}1+1=2b-1.
+\]
+This proves~\eqref{eq:degree} and~\eqref{eq:height}.
+\end{proof}
+
+\section{The arithmetic sources}
+
+The sources in~\cite{Source27,Source29} retain respectively
+26 and 28 rational base coordinates, including the distinguished
+input. Each has nine independent scalar monic quartics for the
+point charts, followed by three or four monic quadratic relations.
+Every quadratic radicand belongs to the point algebra $B$.
+Each pole generator occurs with exponent exactly one in the complete
+guard, whose remaining factor $g$ belongs to $B$. There are no
+residual equations or additional indexed guards. These assertions
+are checked on every coefficient dependency in the supplied circuits.
+
+For completeness, the separability of the point charts holds at
+\emph{every} rational base point. For rational $h_0,h_1$, put
+\[
+ A_0=h_0^4+12h_0^2h_1^2+4h_1^4-11,\quad
+ B_0=4h_0h_1(h_0^2+2h_1^2)+6,
+\]
+\[
+ U_0=6A_0^3-9A_0B_0^2-4B_0^3,\quad
+ V_0=-4A_0^3+6A_0B_0^2+3B_0^3.
+\]
+The point polynomial is
+$f(Z)=Z^4-4U_0Z^2+8V_0^2$, with discriminant
+\[
+ 2^{15}V_0^2(2A_0^2-B_0^2)^4(A_0^2-2B_0^2)^2.
+\]
+The pair $(A_0,B_0)$ cannot vanish: otherwise
+$(h_0+h_1\sqrt2)^4=(3-\sqrt2)^2$, whose norm would make
+49 a rational fourth power. Neither quadratic norm factor
+can vanish at a nonzero rational pair. Finally $V_0=0$ would
+produce a rational root of $4X^3-6X-3$, which is Eisenstein
+at 3. Thus all hypotheses of Theorem~\ref{thm:main} hold on
+every rational base point; no branchwise guard is replaced by
+the stronger assertion that its algebra norm is nonzero.
+
+\begin{center}
+\begin{tabular}{lrr}
+\toprule
+Quantity & 27 variables & 29 variables\\
+\midrule
+$m$ & 12 & 13\\
+$b$ & $2^{18}$ & $2^{18}$\\
+$n$ & $2^{21}$ & $2^{22}$\\
+$w_G$ & $4\,423\,559$ & $6\,789\,625$\\
+$w_g$ & $803\,872$ & $1\,234\,707$\\
+$\eta$ at exponent $137731$ & $6\,998\,669\,574$ & $7\,005\,250\,004$\\
+$\eta_g$ at exponent $137731$ & $1\,106\,350\,691$ & $1\,107\,547\,330$\\
+Number of factors & $262\,144$ & $262\,144$\\
+\bottomrule
+\end{tabular}
+\end{center}
+The nine point generator weights are 6 and their logarithmic
+operator bounds are 14. The remaining weights are
+$1568138,1935231,116318$ for 27 variables, and
+$1568138,1935231,1935231,116318$ for 29 variables.
+Every logarithmic generator bound and integer recurrence is
+recorded in the accompanying coefficient specifications.
+
+\begin{corollary}\label{cor:27}
+Under the arithmetic premises of the 27-variable source,
+the construction gives a computable family in 27 total variables
+such that every sufficiently large odd fixed coefficient exponent
+defines $\Z$ over $\Q$, and
+\[
+ \deg P\le111295944630211471361441792<2^{87}.
+\]
+The sufficient coefficient threshold is ineffective.
+\end{corollary}
+\begin{proof}
+Theorem~\ref{thm:main} preserves the source projection exactly.
+The native degree weights are independent of the fixed coefficient
+exponent. Substitute them into~\eqref{eq:degree} and apply the
+source arithmetic theorem, with its unchanged threshold.
+\end{proof}
+
+\begin{corollary}\label{cor:29}
+Under the arithmetic premises of the explicit 29-variable source,
+the construction at fixed exponent $137731$ defines $\Z$ over
+$\Q$ and satisfies
+\[
+ \deg P\le394212872202031272474705920<2^{89},
+\]
+\[
+ \log_2 H(P)\le558578343639412157650224021485<2^{99}.
+\]
+\end{corollary}
+\begin{proof}
+Apply Theorem~\ref{thm:main} to the effective source and substitute
+its integer data into~\eqref{eq:degree} and~\eqref{eq:height}.
+No arithmetic parameter is enlarged.
+\end{proof}
+
+At the same numerical exponent the 27-variable member satisfies
+$\log_2 H(P)\le217401420128398649581869203437<2^{98}$.
+That exponent is an algebraic reproduction fixture for this family;
+it is not certified to exceed the ineffective defining threshold.
+Finite algebraic verification does not establish a source arithmetic
+premise or make that threshold effective.
+
+\section{Exact specification and verification}
+
+The program \nolinkurl{build_active_specification.py} reads the
+pinned integer coefficient circuits, verifies the guard and dependency
+assertions, recomputes the weighted companion bounds, and writes
+the formulas~\eqref{eq:rootbound}--\eqref{eq:product} with their
+explicit finite ranges. The separate checker reconstructs the
+coefficient dependencies and integer majorants without importing
+the builder. It sums the degree and coefficient estimates over
+all $262144$ cases literally, and checks the source and output
+hashes and the precise effective or ineffective interpretation.
+
+The independent program \nolinkurl{check_active_degenerations.py}
+checks small exact algebras with repeated nonzero $T$-values,
+inactive nilpotents, nonreal roots, no rational characters, and
+an empty guarded part. It computes each characteristic polynomial
+both by determinant expansion and by Newton traces, checks the
+idempotent identity, and verifies squarefreeness by an exact
+polynomial gcd. These examples test degeneracies; the proof of the
+general projection theorem is given above.
+
+The rank-sized matrices and full monomial list are not materialized.
+An expression with determinants, coefficient extraction, finite
+integer sums and products specifies every coefficient, without
+introducing any existential coordinate for an internal index or
+matrix entry. All verification programs use the Python standard library.
+
+\begin{thebibliography}{9}
+\bibitem{Source27}
+\emph{A defining polynomial in twenty-seven variables:
+an existence theorem with a uniform degree bound},
+companion paper and guarded source in the accompanying repository,
+\nolinkurl{papers/few_variables27}.
+\bibitem{Source29}
+\emph{An explicit twenty-nine-variable polynomial definition of the integers},
+companion paper and guarded source in the accompanying repository,
+\nolinkurl{papers/few_variables}.
+\bibitem{Weighted}
+\emph{Weighted bounds for eliminating finite algebraic choices},
+the companion-column and principal-minor bounds,
+companion paper in \nolinkurl{papers/finite_algebra}.
+\end{thebibliography}
+\end{document}
