@@ -1,0 +1,7 @@
+# Lower bounds: independent proof audit
+
+The new five-coordinate obstruction for quadratic systems has been reviewed separately from its derivation. Two coprime quadrics in P4 have degree four with multiplicities. A component of multiplicity at least two has degree at most two and is a plane or quadric in its span. On a multiplicity-one component with dense rational points, choose a smooth rational complete-intersection point. Projection from that point is birational onto a surface component of the cubic L1*q2-L2*q1=0; omitted loci have dimension at most one. The established cubic and curve integral-image obstructions apply to the rational output, so all such images are finite. Nonabsolute components and nondense rational loci reduce to curves. Arbitrary finite quadratic systems reduce to this case or to linear/common-factor cases.
+
+Separately, every nonnegative polynomial in three coordinates with infinite S-integral projection has a repeated absolutely irreducible factor of degree at least four, hence degree at least eight. An arbitrary hypothetical three-coordinate quartic must be absolutely irreducible, have dense smooth rational points, and change sign at a real embedding. These statements do not exclude arbitrary three-coordinate quartics.
+
+Primary references rechecked: Kollár arXiv:math/0005146 Theorem2; Eisenbud–Green–Hulek–Popescu arXiv:math/0404517 Introduction (*). General universal lower bound is three total coordinates and is not established to be attained. No numerical experiment substitutes for these proofs.
