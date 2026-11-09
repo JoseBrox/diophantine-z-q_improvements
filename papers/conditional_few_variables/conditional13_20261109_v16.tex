@@ -1,0 +1,727 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,booktabs,microtype}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\DeclareMathOperator{\Tr}{Tr}\DeclareMathOperator{\rad}{rad}
+\setlength{\emergencystretch}{2em}
+\title{Thirteen Variables from a Weak $abc$ Inequality}
+\author{}\date{9 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+Assume the weak rational $abc$ inequality with exponent $121/100$,
+together with the specified elliptic group, pole-realization and
+simultaneous prime-pattern inputs. We construct a family of integer
+polynomials in thirteen total variables. Every sufficiently large
+fixed odd input shift gives rational input projection exactly $\Z$.
+Each member has total degree less than $2^{44}$. A degree-four
+rational map gives a logarithmic bound for an odd contact radical
+from the weak inequality. An eighth-power height comparison then
+bounds the rational input and one elliptic index together. Only
+three elliptic points and two pole certificates occur, with six
+local tests of order one. The coefficient threshold is ineffective.
+Both the rational $abc$ conjecture and the ordinary Szpiro
+conjecture imply the weak inequality used here.
+\end{abstract}
+
+\section{Statement and hypotheses}
+
+All variable counts include the input. For a rational number $a/b$
+in lowest terms with $b>0$, write
+$h(a/b)=\log\max(|a|,b)$. For a nonzero integer, its radical
+is the product of its distinct prime divisors, with positive sign.
+Put $\kappa=121/100$. The additional height hypothesis used in this
+paper is the following single inequality: there is a constant
+$K_\kappa\ge1$ such that
+\begin{equation}\label{eq:weak-abc}
+ c\le K_\kappa\operatorname{rad}(abc)^{\kappa}
+ \quad(a+b=c,\ a,b,c\text{ positive and pairwise coprime}).
+\end{equation}
+The same inequality, with the largest absolute value on the left,
+applies to a coprime nonzero signed triple of sum zero, by moving
+its negative terms to the other side.
+
+Set
+\[
+ K=\Q(\sqrt2),\quad D=(3-\sqrt2)^2,\quad
+ E:y^2=x^3-Dx,
+\]
+\[
+ P=\left(\frac{57}{8}-\frac72\sqrt2,
+                 -\frac{165}{8}+\frac{417}{32}\sqrt2\right).
+\]
+In addition to \eqref{eq:weak-abc}, retain the following arithmetic inputs with
+exactly their stated scope in~\cite{Dependencies,Source27}.
+\begin{enumerate}
+\item $2E(K)=\Z P$, with the indicated non-torsion generator
+and the source index-height bound. The direct point chart below
+therefore describes the nonzero multiples of $P$.
+\item The pole system, for $b\ne0$ and $B_0=17b$,
+\[
+ p^2=B_0(1-e)(1+3e),\qquad
+ B_0q^2=(s^2-B_0e(B_0-b^2))(s^2+3B_0e(B_0-b^2)),
+\]
+excludes negative odd valuations of $b$ outside $\{2,3,17\}$.
+For a prepared input
+\begin{equation}\label{eq:prepared}
+ \begin{gathered}
+ 0<b<17,\quad b\text{ has square reduced denominator},\quad
+ b\in\Q_2^{\times2}\cap\Q_3^{\times2}\cap\Q_{17}^{\times2},\\
+ v_2(b)\ge3,\quad v_3(b)\ge1,\quad v_{17}(b)\ge2,
+ \end{gathered}
+\end{equation}
+the retained restricted-converse and descent hypotheses supply a
+witness with $pqs\ne0$. The nonzero-witness consequence and its
+single conic chart are proved in~\cite[Lemma~2]{Source27}.
+\item The simultaneous prime-pattern input supplies the specified
+prime contact numerators, Gaussian congruences, conjugate reduction
+orders, fixed divisibility and avoidance, and compatible real
+approximation for a fixed finite list of rational contact coefficients.
+Its precise quantified version and the rational-contact and fixed-avoidance
+consequences of Sun's theorem are given in~\cite{Dependencies}.
+The even number of contacts below permits arbitrary positive rational
+scales: Section~\ref{sec:complete} checks the square factors directly.
+The order of choices is respected there.
+\end{enumerate}
+The exponent-nineteen contact-height input of the earlier source is
+not needed here. It is replaced by Lemma~\ref{lem:contact}, which
+uses \eqref{eq:weak-abc}.
+
+The proved one-point case of the aggregate trace-height theorem
+\cite{Trace} gives constants $A>0$, $J\ge0$, depending only on
+$E,P$, such that
+\begin{equation}\label{eq:traceheight}
+ n^2\le A h(T(n))+J,\qquad
+ T(n)=\Tr_{K/\Q}x([n]P)\quad(n\in\Z\setminus\{0\}).
+\end{equation}
+This applies von Buhren's theorem after checking the absence of
+constant abelian translates for the fixed trace function. Its additive
+constant is ineffective. It is a proved height theorem, not an
+additional conjecture. For a nonzero multiple of $P$, the abscissa
+is a positive square in both real embeddings; the curve equation
+then gives $x>3\mp\sqrt2$ in the respective embeddings, hence
+$T(n)>6$.
+
+\begin{theorem}\label{thm:main}
+Under the assumptions above, there is a computable family
+\[
+ F_B\in\Z[X,Y_1,\ldots,Y_{12}],\qquad B\ge3\text{ odd},
+\]
+with the following properties.
+\begin{enumerate}
+\item Every member is given by a complete finite integer coefficient
+specification and satisfies
+\[
+             \deg F_B\le12339485119488<2^{44}.
+\]
+\item There exists a constant $B_*$ such that every odd $B\ge B_*$
+has rational input projection exactly $\Z$.
+\item No numerical sufficient value of $B_*$ is determined.
+The supplied member $B=3$ is a coefficient-verification fixture,
+not a polynomial certified to define $\Z$.
+\end{enumerate}
+The integer $B$ is a fixed coefficient parameter and is never a
+quantified coordinate.
+\end{theorem}
+
+\begin{corollary}\label{cor:conjectures}
+Retain the three source arithmetic inputs above. Either of the following
+conjectures implies the conclusion of Theorem~\ref{thm:main}:
+\begin{enumerate}
+\item the ordinary rational $abc$ conjecture;
+\item the ordinary Szpiro conjecture: for every $\epsilon>0$ there
+is a constant $C_\epsilon$ such that
+$|\Delta_E|\le C_\epsilon N_E^{6+\epsilon}$ for elliptic curves
+$E/\Q$, where $\Delta_E$ is the minimal discriminant and $N_E$
+the conductor.
+\end{enumerate}
+The semistable case of the second conjecture already suffices.
+\end{corollary}
+\begin{proof}
+Rational $abc$ gives \eqref{eq:weak-abc} by taking
+$1+\epsilon=121/100$. Oesterl\'e proves that the ordinary
+Szpiro discriminant--conductor inequality implies the weak
+$abc$ inequality with exponent $6/5+\epsilon$ for every
+$\epsilon>0$ \cite[Section~I.3, p.~169]{Oesterle}.
+Take $\epsilon=1/100$. The stated implication uses the
+ordinary discriminant--conductor conjecture, not a separate
+inequality involving both elliptic invariants $c_4$ and $c_6$.
+\end{proof}
+
+
+\section{Two consequences of the weak inequality}
+
+Put
+\[
+ \Theta=\left\{0,-\frac12,-\frac14,-\frac25,-1,-\frac13\right\},
+ \qquad S_0=\{p:p\le76176\}.
+\]
+For $t\in\Q\setminus\Theta$, let $M_0(t)$ be the product of
+primes outside $S_0$ for which $v_p(t-\theta)$ is positive
+and odd for some $\theta\in\Theta$.
+
+\begin{lemma}\label{lem:contact}
+Assume \eqref{eq:weak-abc}. There is a constant $C_0\ge0$ such that
+\[
+                    h(t)\le\frac{121}{74}\log M_0(t)+C_0
+                  \qquad(t\in\Q\setminus\Theta).
+\]
+\end{lemma}
+\begin{proof}
+Consider the degree-four rational function
+\[
+ \varphi(z)=\frac{z(z+2)^3}{(2z+1)^3},\qquad
+ \varphi(z)-1=\frac{(z-1)^3(z+1)}{(2z+1)^3}.
+\]
+Its complete inverse image of $\{0,1,\infty\}$ is
+$\{0,-2,-1/2,1,-1,\infty\}$. For a primitive integer pair
+$(x,y)$ away from these six points, put
+\[
+ A=x(x+2y)^3,\quad C=y(2x+y)^3,\quad
+ A-C=(x-y)^3(x+y),
+\]
+\[
+                G(x,y)=xy(x+2y)(2x+y)(x-y)(x+y).
+\]
+The polynomial identity for $A-C$ follows by expansion.
+A prime dividing both $A$ and $C$ must divide both $x+2y$
+and $2x+y$, so it is $3$. At that prime $x,y$ are units
+and the smaller of those two valuations is one, because
+$2(x+2y)-(2x+y)=3y$. Hence $\gcd(A,C)$ is either $1$ or $27$.
+After division by this gcd, the three integers $A,C,A-C$
+are pairwise coprime, and their radical is supported on $G$.
+
+Write $H=\max(|x|,|y|)$. One has
+$\max(|x+2y|,|2x+y|)\ge H$. If the corresponding prefactor
+$|x|$ or $|y|$ is at least $H/4$, this gives
+$\max(|A|,|C|)\ge H^4/4$. Otherwise the other prefactor
+is $H$ and its linear factor is at least $H/2$, giving
+$\max(|A|,|C|)\ge H^4/8$. Consequently
+\[
+                    h(\varphi(x/y))\ge4\log H-\log216.
+\]
+The weak inequality therefore implies
+\[
+ \log\operatorname{rad}(G(x,y))
+       \ge\frac4\kappa\log H-\frac{\log216+\log K_\kappa}{\kappa}.
+\]
+
+For a nonzero integer $N$, let $\operatorname{sf}(N)$ be the
+product of primes of odd valuation in $N$. Prime by prime,
+$\operatorname{rad}(N)^2\le |N|\operatorname{sf}(N)$.
+Also $|G(x,y)|\le36H^6$. Outside the fixed set $S_0$, two
+of its six primitive linear factors cannot vanish together.
+Thus its squarefree part outside $S_0$ is precisely the odd
+contact radical for the six displayed points. The contribution
+from $S_0$ is bounded by the fixed product of its primes.
+Combining these estimates gives
+\[
+ \log M(z)\ge\left(\frac8\kappa-6\right)h(z)-C
+             =\frac{74}{121}h(z)-C.
+\]
+Finally $z=2+1/t$ sends the six contacts in $\Theta$ to the
+six points above. Its integral matrix has determinant $-1$;
+its inverse is integral too, and both matrices have maximum
+row sum three. Hence it changes logarithmic height by at most
+$\log3$. Substitution of a primitive numerator-denominator pair
+shows that the odd contact radicals agree outside $S_0$.
+This proves the lemma after adjusting the fixed constant.
+\end{proof}
+
+For a rational pair $(u,v)$, define its projective height by
+\[
+ h_2(u,v)=h(1:u:v)=\log\max(D_0,|A'|,|B'|),
+\]
+where $D_0>0$, $u=A'/D_0$, $v=B'/D_0$ and
+$\gcd(D_0,A',B')=1$. Both individual heights are at most $h_2$.
+
+\begin{lemma}\label{lem:eighth}
+Assume \eqref{eq:weak-abc}. There is a constant $C_1\ge0$ such that
+\[
+              h_2(u,v)\le\frac{121}{437}h(u^8+v^8)+C_1
+                   \qquad(u,v\in\Q).
+\]
+One may take
+$C_1=\frac{279}{1748}\log2+\frac{100}{437}\log K_\kappa$.
+\end{lemma}
+\begin{proof}
+If one coordinate is zero, $h_2(u,v)=h(u^8+v^8)/8$, and
+if both are zero all heights vanish. Otherwise use the primitive
+representation above. Write $g=\gcd(|A'|,|B'|)$,
+$A_0=A'/g$, $B_0=B'/g$. Then
+$\gcd(A_0,B_0)=\gcd(g,D_0)=1$.
+Put $H=\max(|A_0|,|B_0|)$ and $N=A_0^8+B_0^8$;
+thus $H^8\le N\le2H^8$.
+
+Let $k=\gcd(N,D_0^8)$, $m_0=N/k$, and $n=D_0^8/k$.
+The fraction $u^8+v^8=m/n$ is reduced, where $m=g^8m_0$.
+Put $M=\max(m,n)$, so the output height is $\log M$.
+Every prime dividing $N$ either divides $D_0$ or survives
+in $m_0$, giving $\operatorname{rad}(N)\le D_0m_0$.
+Apply \eqref{eq:weak-abc} to the pairwise coprime positive
+triple $A_0^8,B_0^8,N$:
+\[
+                H^{8/\kappa-2}\le K_\kappa^{1/\kappa}D_0m_0.
+\]
+Since $D_0^8=nN/m_0\le2nH^8/m_0$, it follows that
+\[
+ H^{437/121}\le2^{1/8}K_\kappa^{100/121}m_0^{7/8}n^{1/8}.
+\]
+Moreover $g=(m/m_0)^{1/8}$ gives
+\[
+               \max(gH,D_0)\le2^{1/8}H(M/m_0)^{1/8}.
+\]
+Taking logarithms and combining the last two inequalities yields
+\begin{align*}
+ h_2(u,v)
+ &\le C_1+\frac{205}{1748}\log m_0
+                 +\frac{121}{3496}\log n+\frac18\log M\\
+ &\le C_1+\frac{121}{437}\log M.
+\end{align*}
+Here $m_0,n\le M$, all coefficients are nonnegative, and
+$205/1748+121/3496+1/8=121/437$. This accounts for the
+common numerator factor and every denominator cancellation.
+\end{proof}
+
+\section{The complete rational source}
+
+Fix an odd integer $B\ge3$ and set
+\begin{equation}\label{eq:input}
+                            \beta=2X^2+B.
+\end{equation}
+For rational $X=u/v$ in lowest terms, integrality of $\beta$
+implies $v^2\mid2$, hence $v=1$. Thus $\beta\in\Z$ if and
+only if $X\in\Z$. For integer input $\beta$ is odd, and
+$\beta\ge B$ for every rational input.
+
+Retain three pairs of rational coordinates, one for each of the
+points $A,H,U$. For any such pair $(h_0,h_1)$ put
+\[
+ h=h_0+h_1\sqrt2,\quad x=h^2,\quad j^2=h^4-D,\quad y=hj.
+\]
+The direct point-chart theorem of~\cite{Source27} proves that
+these are exactly the nonzero multiples of $P$. Each finite
+choice $j$ is encoded by one scalar monic quartic as follows.
+Write $h^4-D=a+b\sqrt2$, put
+$c=2a+b$, $d=-a-b$, and write
+$(c+d\sqrt2)^2(a+b\sqrt2)=a'+b'\sqrt2$.
+Then
+\[
+ Y^4-4a'Y^2+8(b')^2=0,\quad
+ j=\frac{Y/2+(b'/Y)\sqrt2}{c+d\sqrt2}.
+\]
+Its discriminant is
+$2^{15}(b')^2(2a^2-b^2)^4(a^2-2b^2)^2$, nonzero at every
+rational pair $(h_0,h_1)$. Indeed $h^4-D\ne0$ by its norm,
+the two quadratic norm factors are anisotropic over $\Q$, and
+$b'=-4a^3+6ab^2+3b^3$ is anisotropic by Eisenstein at 3.
+The square-root chart is complete because its transformed rational
+component is $2(u^3-2v^3)$ for $j=u+v\sqrt2$, which is nonzero
+for $j\ne0$. These are algebraic facts independent of the height hypothesis.
+
+Compute $V_0=H-P$ and $V_1=U-A$ by the usual affine addition
+formulas. Put $f=1/x$, $z=-x/y$, let $\sigma$ be conjugation
+of $K/\Q$, and define
+\[
+ L=\frac{z(U)}{z(H)},\qquad
+ L'=\sigma\!\left(\frac{z(V_1)}{z(V_0)}\right).
+\]
+Use precisely the six field-valued tests
+\begin{equation}\label{eq:tests}
+ D_1=f(H),\ D_2=f(U),\ D_3=\sigma f(V_0),\
+ D_4=\sigma f(V_1),\ D_5=L-L',\ D_6=L-\beta.
+\end{equation}
+Every test is assigned order one. No scalar-height pole or Lucas
+relation is present.
+
+Let $T=\Tr x(A)$, and use the two positive rational scales
+\[
+                         a_0=1,\qquad a_1=\beta^8+T^8.
+\]
+Retain one rational slope $\lambda$. For $r=0,1$, set
+\begin{align}
+ t_r&=a_r\lambda,&\delta_r&=t_r-1,&
+ F_r&=\prod_{\theta\in\Theta}(t_r-\theta),&
+ R_r&=\frac{F_r}{\delta_r^8},\label{eq:detector}\\
+ W_r&=\prod_{j=1}^6\left(1+
+             \frac{D_j^2}{\delta_r^4R_r}\right),&
+ b_r&=\frac{R_r}{\Tr(W_r^{-1})^2}.\label{eq:W}
+\end{align}
+All displayed divisions, affine-chart denominators, $F_r$,
+$\delta_r$, $\operatorname{Norm}(W_r)$, and $\Tr(W_r^{-1})$
+are guarded nonzero. These conditions are part of the source.
+
+For each $b=b_r$, retain independent rational parameters $\tau_r,s_r$.
+Put $B_0=17b$ and
+\[
+ e=\frac{\tau_r^2-B_0}{\tau_r^2+3B_0},\qquad
+ q^2=\frac{(s_r^2-B_0e(B_0-b^2))
+                  (s_r^2+3B_0e(B_0-b^2))}{B_0}.
+\]
+Guard the denominator and require $q\ne0$. This reconstructs
+the first pole ordinate as
+$p=-4B_0\tau_r/(\tau_r^2+3B_0)$.
+Each rational-square equation $q^2=N_0/D_0$ is made monic
+by $Z=D_0q$, giving $Z^2=N_0D_0$ with $Z\ne0$ and $D_0\ne0$.
+No new unrestricted rational parameter is used for these roots.
+
+\section{The local implication}
+
+\begin{lemma}\label{lem:local}
+For any rational solution of the guarded source, write
+$A=[n]P$, $H=[h]P$, $U=[u]P$.
+If $\beta\ne n$ and $N$ is the positive absolute numerator
+of $\beta-n$ in lowest terms, then
+\[
+                         M_0(t_r)\mid N\qquad(r=0,1).
+\]
+\end{lemma}
+\begin{proof}
+Fix a prime $p\mid M_0(t_r)$ and abbreviate $R=R_r$, $W=W_r$.
+Outside $S_0$ only one contact factor has positive valuation,
+$\delta_r$ is a unit, and $v_p(R)$ is odd because its denominator is an eighth power. For each place $\mathfrak p$ above $p$, the two terms
+of a factor of $W$ have valuations of different parity. Hence
+\[
+ v_{\mathfrak p}(W)=\sum_j
+       \min\{0,2v_{\mathfrak p}(D_j)-v_p(R)\}\le0.
+\]
+Put $w=\max_{\mathfrak p\mid p}v_{\mathfrak p}(W)\le0$.
+Then $v_p\Tr(W^{-1})\ge-w$.
+The valuation of $b=R/\Tr(W^{-1})^2$ is odd, so the pole
+obstruction gives
+\[
+                   0<v_p(b)\le v_p(R)+2w.
+\]
+Thus $\nu=v_p(R)>0$ and $w>-\nu/2$. At a place attaining
+$w$, each summand in the valuation of $W$ is at least $w$.
+It follows that $v_{\mathfrak p}(D_j)>\nu/4>0$, so all
+six tests have valuation at least one at that place.
+
+The first four tests put $H,U$ into the formal group at
+$\mathfrak p$ and $V_0,V_1$ into it at the conjugate place.
+At these good unramified places the formal logarithm satisfies
+\[
+                         \log_E(Q)=z(Q)(1+O(p^4)).
+\]
+Indeed its first omitted term is a fixed multiple of $Df(Q)^2$;
+$v_p(f(Q))\ge2$ in the formal group. The remaining coefficient
+estimates, uniformly for $p>76176$, are those proved in the
+formal-logarithm paper~\cite{Logs}. The exact logarithmic ratios
+are $u/h$ and $(u-n)/(h-1)$, respectively.
+
+The affine guards imply $h\ne0,1$. At least one of $h,h-1$
+is a $p$-adic unit, so the corresponding exact ratio is integral.
+Relative precision four makes its truncated ratio integral.
+The test $L-L'\equiv0\pmod p$ makes the other truncated ratio
+integral as well; the same relative precision then makes the
+other exact ratio integral. Relative errors are now absolute
+errors of valuation at least four. Consequently
+\[
+ L\equiv u/h,\qquad L'\equiv(u-n)/(h-1),\qquad
+ L\equiv L'\pmod p.
+\]
+Multiplying by the integral numbers $h,h-1$ and subtracting yields
+$L\equiv n\pmod p$. The target test gives $L\equiv\beta\pmod p$.
+In particular $\beta$ is $p$-integral, and $p$ divides the
+reduced numerator of $\beta-n$. This holds at every consumed
+prime and proves the divisibility. The same argument includes
+inert primes; if their formal-group requirements are incompatible,
+no source solution occurs at that prime.
+\end{proof}
+
+\section{Soundness and the uniform input shift}
+
+Suppose a rational source solution has $\beta\ne n$. By
+Lemmas~\ref{lem:local} and~\ref{lem:contact},
+\[
+ h(\lambda),h(a_1\lambda)\le\frac{121}{74}\log N+C_0.
+\]
+The quotient-height inequality gives
+\[
+ h(a_1)\le\frac{121}{37}\log N+2C_0.
+\]
+Apply Lemma~\ref{lem:eighth} to $\beta,T(n)$, and put
+\[
+ \eta=h_2(\beta,T(n)),\qquad
+ q=\frac{14641}{16169}<1,\qquad
+ C=\frac{242}{437}C_0+C_1.
+\]
+Then
+\begin{equation}\label{eq:combined}
+                         \eta\le q\log N+C.
+\end{equation}
+All these constants depend only on the fixed contact map,
+the fixed power eight, and the weak-$abc$ constant. They are
+independent of the shift $B$, the input, and every witness.
+
+Writing $\beta=a/b$ in lowest terms gives
+$N=|a-nb|\le e^{h(\beta)}(1+|n|)$, and $h(\beta)\le\eta$.
+Consequently
+\[
+ \eta\le c\log(1+|n|)+C',\qquad
+ c=\frac{q}{1-q},\quad C'=\frac{C}{1-q}.
+\]
+Since $h(T(n))\le\eta$, the trace-height inequality implies
+\[
+ |n|^2\le Ac\log(1+|n|)+AC'+J
+           \le Ac|n|+AC'+J.
+\]
+Choose an integer $M>Ac+\sqrt{AC'+J}$. Then $|n|<M$, so
+\[
+                    h(\beta)\le\eta
+                       \le c\log(1+M)+C'=:H_*.
+\]
+Choose $B_*>e^{H_*}$. For every fixed odd $B\ge B_*$,
+\eqref{eq:input} gives $h(\beta)\ge\log\beta\ge\log B>H_*$,
+a contradiction. Thus $\beta=n\in\Z$, and the elementary
+input-map argument yields $X\in\Z$.
+This proves soundness uniformly for every sufficiently large shift.
+It does not determine that shift effectively.
+
+\section{Completeness}\label{sec:complete}
+
+Fix an integer input $X$ and an odd coefficient $B\ge3$.
+Then $n=\beta$ is an odd integer at least three. Fix
+$A=[n]P$ and its two positive scales before choosing
+any prime. They are distinct because $a_1>1$.
+Temporarily put $H=[h]P$ and $U=[hn]P$.
+
+Choose a nonexceptional $h_*\in64\Z$, and work in the real
+orbit closure of $64\Z P$. Choose a compact real neighborhood
+for $H$ around $[h_*]P$ on which the point coordinates, both difference charts,
+and the six tests are defined and bounded. Such a neighborhood
+exists: the rational functions restricted to the multiplication
+curve $H\mapsto(H,[n]H)$ are not identically singular.
+The difference charts exclude $h=\pm1$, while every nonzero
+multiple of the non-torsion $P$ has nonzero abscissa and ordinate.
+Pass to a smaller compact neighborhood to avoid all remaining
+zero denominators. Enlarge $L$ with $64\mid L$ and the real
+component-group condition so that the progression
+$h\equiv h_*\pmod L$
+preserves fixed lower valuation bounds for these tests at
+$2,3,17$. These are precisely the local-continuity and real-orbit
+steps of the source realization, with fewer point roles and no
+scalar constraint.
+
+Choose a fixed $D_0$ with $D_0^2\theta/a_r\in\Z$ for all
+contacts and both scales, set $v=D_0^2w^2$, and seek
+$\lambda=u/v$. Apply the retained prime-pattern theorem to
+the distinct forms $u-(\theta/a_r)v$, after repetitions have
+been removed. All bad primes and previously fixed moduli are
+excluded before this application. The theorem permits arbitrarily
+large divisibility of $w$, a sufficiently large prescribed lower
+bound on $u/w^2$, and the conjugate reduction-order conditions.
+
+As in~\cite{Dependencies,Baseline}, the annihilating order moduli
+$U_0,V_0$ for the two conjugate families satisfy
+\[
+ \gcd(U_0,V_0)=1,\qquad \gcd(U_0,L)=16,\qquad\gcd(V_0,L)=1.
+\]
+Thus the congruences
+$h\equiv0\pmod{U_0}$, $h\equiv1\pmod{V_0}$,
+$h\equiv h_*\pmod L$ are compatible, since $16\mid h_*$.
+Choose $h$ in that
+progression while retaining the real neighborhood and avoiding
+the finitely many excluded multiples. At one place above each
+contact prime, $H,U$ are formal; at the conjugate place,
+$H-P,U-A$ are formal. Both exact logarithmic ratios are $n$.
+The constant approximation has precision four, so all six tests
+have their assigned order one, including the target $n=\beta$.
+
+The inherited detector preparation now applies without alteration.
+For clarity, its main ingredients are the following. The identity
+\[
+ R_r=\frac{a_r^6\prod_{\theta\in\Theta}(u-(\theta/a_r)v)}
+                  {v^6(a_r\lambda-1)^8}
+\]
+has a rational-square prefactor. In particular, the possibly nonsquare
+scale contributes the square $a_r^6$.
+At each chosen contact prime $v_p(R_r)=1$; the successful
+conjugate place gives all inverse norm-factor residues equal to
+one, and the trace of $W_r^{-1}$ is a unit with residue one or two.
+The resulting $b_r$ has square reduced denominator, and the
+prescribed congruences give its local squareclasses at $2,3,17$.
+The fixed lower bounds on the tests and sufficient divisibility
+of $w$ give the depths in~\eqref{eq:prepared}.
+On the compact real set, uniformly,
+\[
+ R_r\sim a_r^{-2}\lambda^{-2},\qquad
+ W_r=1+O(\lambda^{-2}),\qquad
+ b_r\sim(4a_r^2\lambda^2)^{-1}.
+\]
+Thus $0<b_r<17$ for the sufficiently large lower bound on
+$\lambda$ fixed before prime selection. All detector guards
+are nonzero. These calculations are the source comparison-pole
+preparation proof~\cite{Baseline}; they depend on the finite
+list of tests and their orders, not on a Lucas or scalar test.
+
+Each prepared input has an independent pole certificate with
+$pqs\ne0$ by the retained pole-realization hypotheses.
+Since $p\ne0$ excludes $e=1$, the substitution
+$\tau=p/(e-1)$ gives the single chart used above and its
+nonzero denominator. Thus both nonzero quadratic-root conditions
+are realized. The direct point charts cover $A,H,U$.
+Every rational input $X\in\Z$ therefore has all required
+witnesses, for every fixed odd $B\ge3$.
+
+\section{The polynomial, its bounds, and verification}
+
+The retained coordinates are exactly
+\begin{center}
+\begin{tabular}{lr}
+\toprule
+Coordinates & Number\\
+\midrule
+Input $X$ & 1\\
+Three point pairs for $A,H,U$ & 6\\
+Comparison slope $\lambda$ & 1\\
+Two independent pole pairs $(\tau_r,s_r)$ & 4\\
+\midrule
+Retained before finite-root elimination & 12\\
+\bottomrule
+\end{tabular}
+\end{center}
+There are three monic point quartics and two monic pole quadratics.
+The point algebra has rank $4^3=64$, and the full algebra has
+rank $4^3 2^2=256$. Its complete guard is $gq_1q_2$ with
+$g$ in the point algebra, and each quadratic radicand also belongs
+to that algebra. There are no further residual equations.
+The separating-element theorem~\cite{Active} therefore replaces
+all five roots and all nonzero guards by one rational coordinate,
+without changing the input projection. This gives thirteen total
+coordinates. Its determinant formulas and its 64-factor product,
+applied to the supplied integer coefficient circuit, define $F_B$
+completely.
+
+The native generator weights are
+\[
+                         6,6,6,51131,69765.
+\]
+The full guard and its point factor have weights $148317$ and
+$27421$. In the notation of~\cite[Theorem~4.1]{Active},
+the multiplication-element weight is at most $W_1r+W_0$, where
+\[
+                    W_1=9577692,\qquad W_0=70636907.
+\]
+Thus
+\[
+ \deg F_B\le256\bigl(9577692\cdot64^2
+                         +(70636907+1)\cdot127\bigr)
+             =12339485119488<2^{44}.
+\]
+The input shift is a named coefficient parameter of weight zero
+in the coefficient graph. No operation or branch depends on its
+numerical value. Consequently these weight inequalities, and hence
+the degree bound, hold symbolically for every fixed $B$.
+
+The directory \nolinkurl{computation/few_variables/weak_abc13}
+contains the rational-source builder, its integer coefficient
+specification, and independent source and bound certificates.
+The source has 1758 rational-circuit nodes and its integer
+coefficient graph has 754 nodes. The independent conversion auditor
+checks every affine substitution, the three point quartics and
+their automatic nonzero factors, both pole-square clearings,
+and all 48 atomic guard factors by exact expression identities.
+The separate finite-algebra checker verifies coefficient dependencies,
+companion-column inequalities and all 64 degree cases without
+importing the builder.
+
+For the algebraic fixture $B=3$ it certifies
+\[
+ \log_2 H(F_3)\le29454018907833<2^{45}.
+\]
+This is not a height bound for a member certified to define $\Z$.
+The proof provides an ineffective sufficient shift, whereas the
+coefficient algorithms construct and bound each specified member.
+The exact finite checks establish their recorded algebraic assertions;
+they do not verify \eqref{eq:weak-abc} or the inherited arithmetic premises.
+
+\section{Other weak exponents}
+
+\begin{corollary}\label{cor:general-exponent}
+Retain the three arithmetic inputs of Section~1. Suppose that the
+weak rational $abc$ inequality holds for one fixed exponent
+$1<\kappa<4/3$. Choose an even integer $d\ge4$ such that
+\[
+ \left(\frac8\kappa-6\right)
+       \left(\frac d\kappa-3\right)>2.
+\]
+Replacing the second scale by $a_1=\beta^d+T^d$ gives a
+computable family of polynomials in thirteen total variables whose
+sufficiently large fixed odd shifts define $\Z$ in $\Q$.
+Such a choice of $d$ exists for every stated $\kappa$.
+\end{corollary}
+\begin{proof}
+The contact calculation in Lemma~\ref{lem:contact} gives
+\[
+ h(t)\le\gamma^{-1}\log M_0(t)+O(1),
+ \qquad \gamma=8/\kappa-6>0.
+\]
+Put $\alpha=d/\kappa-3$. Repeating the primitive
+numerator--denominator calculation in Lemma~\ref{lem:eighth},
+with $d$ in place of eight, gives
+\[
+ h_2(u,v)\le\alpha^{-1}h(u^d+v^d)+O(1).
+\]
+Indeed, the three coefficients of $\log m_0,\log n,\log M$
+in that calculation become
+$(d-1-\alpha)/(d\alpha)$, $1/(d\alpha)$ and $1/d$.
+They are nonnegative and sum to $1/\alpha$.
+The two local radical divisibilities therefore imply
+\[
+ h_2(\beta,T(n))\le\frac{2}{\gamma\alpha}\log N+O(1).
+\]
+The coefficient is less than one by the displayed choice of $d$.
+The proof of soundness consequently gives a bound independent of
+the fixed shift, and a sufficiently large odd shift excludes
+$\beta\ne n$.
+
+Evenness of $d$ makes $a_1$ positive and greater than one.
+The six contacts, the square prefactor $a_1^6$, all local tests,
+and the completeness argument are unchanged. There are still
+twelve retained coordinates, three monic point quartics and two
+monic pole quadratics. The same finite-algebra theorem therefore
+produces a thirteenth coordinate and an exact finite coefficient
+algorithm for each chosen $d$.
+\end{proof}
+
+The numerical degree and coefficient bounds in the preceding section
+are certified for the supplied specialization $\kappa=121/100$, $d=8$.
+No numerical degree bound for other values of $d$ is asserted here.
+
+\begin{thebibliography}{9}
+\bibitem{Oesterle}
+J.~Oesterl\'e, Nouvelles approches du ``th\'eor\`eme'' de Fermat,
+\emph{Ast\'erisque} \textbf{161--162} (1988), S\'eminaire
+Bourbaki, expos\'e no.~694, 165--186; Section~I.3, p.~169.
+\url{https://www.numdam.org/article/SB_1987-1988__30__165_0.pdf}.
+\bibitem{Source27}
+\emph{A defining polynomial in twenty-seven variables:
+an existence theorem with a uniform degree bound},
+companion paper, \nolinkurl{papers/few_variables27}, 9 November 2026.
+\bibitem{Dependencies}
+\emph{Arithmetic dependencies of the construction with 29 variables},
+companion paper, \nolinkurl{papers/arithmetic_dependencies}.
+It pins the source statements and Sun's prime-pattern theorem.
+\bibitem{Baseline}
+\emph{An explicit polynomial in 29 variables over the rationals},
+companion paper, \nolinkurl{few_variables_20261108_v8.tex},
+local implications and simultaneous-completeness sections.
+\bibitem{Trace}
+\emph{Aggregate trace heights of elliptic multiples}, companion
+paper, \nolinkurl{papers/trace_heights}, applying J.~von Buhren,
+\emph{J. Th\'eor. Nombres Bordeaux} \textbf{29} (2017), 307--320,
+Theorem~1.1, \url{https://www.numdam.org/item/10.5802/jtnb.981.pdf}.
+\bibitem{Logs}
+\emph{Uniform formal-logarithm estimates}, companion paper,
+\nolinkurl{papers/elliptic_logarithms}.
+\bibitem{Active}
+\emph{Separating the Nonzero Part of a Finite Algebra},
+companion paper, \nolinkurl{active_finite_algebra_20261109_v15.tex}.
+\end{thebibliography}
+\end{document}
