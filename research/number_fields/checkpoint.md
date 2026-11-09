@@ -31,3 +31,13 @@ Consequently a genuine counterexample K forces every finite extension L/K to be 
 ## Forthcoming strengthening of the fixed-formula obstruction
 
 A finite list of existential formulas over k, each with infinite k-input projection, all admit a common noninteger q in one finite Galois extension. Apply the bundle bounded-extension theorem separately, avoid the union of the finite exceptional sets, then take the compositum and normal closure. If the generic witness degrees are D_i, extension degree is at most product(D_i!). One can further adjoin i, at most doubling that bound. Therefore even a fixed finite menu of formulas cannot define rings of integers across all finite extensions. This does not obstruct a separately chosen new formula for each field.
+
+## Theorem D: relative norm image criterion, all characteristic-zero finite extensions
+
+For L/K finite of degree n in characteristic zero, the following are equivalent: K Diophantine in L; N_{L/K}(L) Diophantine as a subset of L; norm graph Diophantine in L; trace graph Diophantine in L.
+
+Key identity: sum_{j=0}^{n-1} (-1)^(n-1-j) binom(n-1,j)(T+j)^n = n! T+n!(n-1)/2. The norm image is contained in K and contains all nth powers of K. The signed binomial sum of n independent norm-image elements therefore equals K exactly. If the norm-image definition has M total coordinates, its linear image needs nM total coordinates, n residuals and unchanged degree, by eliminating the last summand. The trace graph projects onto K. Conversely a definition of K lets us restrict every coefficient in a fixed K-basis of L and use the multiplication determinant and trace polynomials.
+
+For quadratic L/K, the conjugation graph is equivalent too. Both norm and trace graphs for any proper L/K are Zariski dense in A^2_L (restrict to a+b theta and use the Jacobian Tr(theta)-n theta !=0). Thus they cannot be defined without quantifiers by polynomial equalities and inequalities in their two coordinates. This identifies the flaw in writing a formal trace or norm as an ordinary one-variable polynomial over L.
+
+Full standalone paper now exists at work/number_fields/number_field_definability_20261109_v12.tex. Initial PDF build found pdflatex installed but its pdflatex.fmt missing; no successful PDF claimed yet.
