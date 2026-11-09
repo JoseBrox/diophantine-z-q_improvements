@@ -1,0 +1,816 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,microtype}
+\usepackage[margin=26mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\C}{\mathbb C}
+\newcommand{\hF}{h_{\mathrm F}}
+\newcommand{\OK}{\mathcal O_K}
+\newcommand{\rad}{\operatorname{rad}}
+\newcommand{\Jac}{\operatorname{Jac}}
+\newcommand{\Ardeg}{\widehat{\deg}}
+\setlength{\emergencystretch}{2em}
+\title{Evaluation of Differentials and Heights of Modular Jacobians}
+\author{}
+\date{9 November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+We bound the stable Faltings height of a Jacobian by the discriminant
+of one unramified fibre of a Belyi map. The proof evaluates integral
+regular differentials in a trace-dual lattice and estimates the
+complex evaluation maps by the mean-value inequality. For a modular
+curve of degree $d$ over the $j$-line and level $N$, the different of
+the elliptic torsion scheme gives an explicit bound of order
+$d\log(2N)$, uniformly in the subgroup defining the curve.
+Applied to the modular realization
+underlying the five-contact Diophantine construction, it yields
+\[
+ h(a)<2^{330770}M_5(a)^3(1+\log M_5(a))
+       <2^{330789}M_5(a)^{7/2}.
+\]
+The height $h$ is logarithmic. The geometric and modular realization
+is stated as the arithmetic input; no additional $abc$ or Szpiro
+hypothesis is imposed. All bounds use the original stable Faltings
+metric, and the numerical constants admit exact verification.
+\end{abstract}
+
+\section{Conventions and the evaluation estimate}
+
+If $K$ is a number field, $\OK$ denotes its ring of integers.
+For a nonzero ideal $\mathfrak a\subset\OK$, write
+$\mathrm N\mathfrak a=\#(\OK/\mathfrak a)$.
+If $E$ is a projective $\OK$-module with Hermitian metrics at
+its complex embeddings, $\Ardeg(E)$ means the arithmetic degree
+of its determinant. In rank one, for a nonzero integral section $s$,
+\[
+ \Ardeg(E)=\log\#(E/\OK s)
+                  -\sum_{\sigma:K\hookrightarrow\C}\log\|s\|_\sigma.
+\]
+The definition is independent of the choice of $s$ by the product
+formula. Both embeddings in a complex conjugate pair are included.
+
+Throughout, $\hF$ is the original stable Faltings height.
+For a curve $X/K$ with semistable reduction, its Jacobian height is
+\begin{equation}\label{eq:height-convention}
+ \hF(\Jac X)=\frac{\Ardeg H^0(\mathcal X,
+                                  \omega_{\mathcal X/\OK})}{[K:\Q]},
+\end{equation}
+where $\mathcal X$ is a minimal regular semistable model. The metric
+on differentials at a complex embedding is
+\[
+ \langle\omega,\eta\rangle
+       =\frac i2\int_{X(\C)}\omega\wedge\overline\eta.
+\]
+This is the determinant metric corresponding to the original Faltings
+normalization; see \cite[Sections~2.1 and~2.3]{Javanpeykar} and
+\cite[Section~2.1]{vonKaenel}. Passing to a finite extension on which
+the curve is semistable does not change the stable height.
+
+A \emph{Belyi map} is a finite morphism from a smooth projective
+geometrically connected curve to $\mathbb P^1$, unramified outside
+$0,1,\infty$. Let
+\[
+ \pi:X\longrightarrow\mathbb P^1
+\]
+be such a map, of degree $d$, where $X$ has genus $g\ge1$.
+Write $t$ for the coordinate on the target.
+Choose a number field $K$ over which $X$ and $\pi$ are defined,
+$X$ is semistable, and every point of $\pi^{-1}(2)$ is rational.
+Let $\mathcal Y$ be the normalization of $\mathbb P^1_{\OK}$ in
+$K(X)$. It is finite and flat over $\mathbb P^1_{\OK}$.
+On the affine $t$-chart write its algebra as $B$, a finite projective
+$\OK[t]$-algebra of rank $d$, and put
+\begin{equation}\label{eq:order}
+ C=B/(t-2)B\subset K^d,
+ \qquad O=\OK^d.
+\end{equation}
+The inclusion in $K^d$ uses the $d$ distinct points of the split
+fibre. Every element of $C$ is integral over $\OK$, so $C\subset O$.
+Let $\mathfrak D(C)$ be the discriminant ideal of its trace pairing.
+
+\begin{theorem}\label{thm:evaluation}
+With this notation,
+\begin{equation}\label{eq:evaluation-bound}
+ \hF(\Jac X)
+ \le\frac{\log\mathrm N\mathfrak D(C)}{2[K:\Q]}
+       +g\log\frac2{\sqrt\pi}.
+\end{equation}
+\end{theorem}
+
+The auxiliary field $K$ is used to split a finite fibre and to
+compute a stable height. Its degree will cancel from the estimates.
+No upper bound for $[K:\Q]$ is assumed in this theorem.
+
+\section{Trace-dual lattices and regular differentials}
+
+\begin{lemma}\label{lem:trace-lattice}
+Let $C\subset O=\OK^d$ be an order with $C\otimes K=K^d$, and
+let
+\[
+ C^\vee=\{x\in K^d:\operatorname{Tr}_{K^d/K}(xC)\subset\OK\}.
+\]
+For any set $I$ of $g$ coordinate positions, set
+$F=\operatorname{pr}_I(C^\vee)\subset K^g$.
+Then $F$ is a projective $\OK$-module containing $\OK^g$.
+With the standard Euclidean metric on $K^g$ at every embedding,
+\[
+ \Ardeg(F)\le\tfrac12\log\mathrm N\mathfrak D(C).
+\]
+\end{lemma}
+\begin{proof}
+Work locally at a finite prime $\mathfrak p$. The trace pairing
+on $K^d$ is the ordinary dot product, and $O$ is self-dual.
+Thus $O\subset C^\vee$, and dualizing the inclusion $C\subset O$
+shows
+\[
+ \operatorname{length}(C^\vee/O)
+ =\operatorname{length}(O/C)
+ =\tfrac12v_{\mathfrak p}(\mathfrak D(C)).
+\]
+For example, if a basis matrix for $C$ relative to $O$ is $U$,
+then the trace Gram matrix is $U^{\mathsf T}U$, which proves the
+last equality. These equalities are valid locally even when
+$C$ is not globally free.
+
+Projection gives a surjection
+$C^\vee/O\twoheadrightarrow F/\OK^g$. The latter quotient
+therefore has no larger length at any prime.
+A finite torsion-free module over the Dedekind ring $\OK$ is
+projective. Finally, the standard basis of $\OK^g$ has determinant
+norm one, so
+\[
+ \Ardeg(F)=\log\#(F/\OK^g)
+ \le\tfrac12\log\mathrm N\mathfrak D(C).
+\]
+\end{proof}
+
+\begin{lemma}\label{lem:integral-evaluation}
+Let $\mathcal X$ be a minimal regular semistable model of $X$.
+The evaluations of a differential in
+$E=H^0(\mathcal X,\omega_{\mathcal X/\OK})$ at the points of
+$\pi^{-1}(2)$, expressed in the coordinate $t$, lie in $C^\vee$.
+Equivalently, there is an integral map
+\[
+ E\longrightarrow C^\vee,
+ \qquad \omega\longmapsto
+       \left(\frac{\omega}{dt}(P)\right)_{P\in\pi^{-1}(2)}.
+\]
+\end{lemma}
+\begin{proof}
+First, normalization is finite because the base is excellent.
+A normal surface is Cohen--Macaulay, and a finite morphism from
+such a surface to a regular surface is flat by miracle flatness;
+see \cite[Tag~00R4]{Stacks}. Consequently $B$ is finite projective
+over $\OK[t]$.
+
+Take a common regular model $\mathcal Z$ dominating
+$\mathcal X$ and $\mathcal Y$. Pullback under a blowup of regular
+arithmetic surfaces takes regular relative differentials to regular
+relative differentials. One can also read this directly from the
+canonical-sheaf formula for a blowup; see
+\cite[Lemma~2.3.1]{Javanpeykar}.
+Hence a differential in $E$ is regular on $\mathcal Z$.
+The birational morphism $\mathcal Z\to\mathcal Y$ is an
+isomorphism at every codimension-one point of the normal surface
+$\mathcal Y$.
+
+The dualizing module of a Cohen--Macaulay normal surface is
+reflexive: it is torsion-free and satisfies Serre's condition
+$(S_2)$. Thus sections defined at all codimension-one points extend
+across the codimension-two complement; see
+\cite[Tags~0AWQ and~0AVT, Lemmas~31.13.12--31.13.14]{Stacks}.
+The differential therefore defines a section of the relative
+dualizing sheaf of $\mathcal Y$.
+
+Finite duality identifies this sheaf on the affine chart with
+\[
+ \operatorname{Hom}_{\OK[t]}(B,\OK[t])\,dt;
+\]
+see \cite[Tags~0BUL and~0C0I]{Stacks}.
+This statement uses the dualizing \emph{module}; it does not require
+that the normal surface have an invertible dualizing sheaf.
+Because $B$ is finite projective, specializing the dual at $t=2$
+gives $\operatorname{Hom}_{\OK}(C,\OK)\,dt$.
+On the generic fibre the identification sends a differential
+$f\,dt$ to the functional $b\mapsto\operatorname{Tr}(fb)$.
+After splitting the fibre, its coordinates are exactly the values
+$f(P)=\omega/dt(P)$. This proves the assertion.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:evaluation}]
+Riemann--Hurwitz gives
+\[
+ 2g-2=-2d+\deg\operatorname{Ram}(\pi)\le d-3,
+\]
+since each of the three branch fibres contributes at most $d-1$.
+In particular $d>2g-2$. A nonzero holomorphic differential cannot
+vanish at all $d$ distinct points of $\pi^{-1}(2)$. Therefore the
+evaluation map has rank $g$. Choose $g$ coordinate positions $I$
+for which projection remains injective. By
+Lemmas~\ref{lem:trace-lattice} and~\ref{lem:integral-evaluation},
+we obtain an integral, generically invertible map
+\[
+ \phi:E\longrightarrow F=\operatorname{pr}_I(C^\vee),
+ \qquad\Ardeg(F)\le\tfrac12\log\mathrm N\mathfrak D(C).
+\]
+
+Fix a complex embedding of $K$. The disc
+$D=\{t:|t-2|<1/2\}$ is simply connected and avoids the branch
+locus. Its inverse image is a disjoint union of $d$ analytic
+sheets, each mapped isomorphically to $D$. On one such sheet write
+$\omega=f(t)\,dt$. The mean-value inequality implies
+\[
+ |f(2)|^2\le\frac4\pi\int_D|f(t)|^2\,dx\,dy
+       \le\frac4\pi\|\omega\|_{L^2}^2.
+\]
+Hence the norm of each evaluation functional is at most
+$2/\sqrt\pi$. In an orthonormal basis of $E\otimes_\sigma\C$,
+each row of the evaluation matrix has this same bound on its
+Euclidean norm. Hadamard's determinant inequality gives
+\[
+ \|\det\phi\|_\sigma\le(2/\sqrt\pi)^g.
+\]
+The determinant is nonzero and integral. Taking its arithmetic
+degree yields
+\[
+ \Ardeg(E)\le\Ardeg(F)
+       +\sum_\sigma\log\|\det\phi\|_\sigma
+ \le\tfrac12\log\mathrm N\mathfrak D(C)
+       +[K:\Q]g\log(2/\sqrt\pi).
+\]
+Now apply \eqref{eq:height-convention}.
+\end{proof}
+
+\section{The discriminant of the fibre}
+
+Let $S$ be a finite set of rational primes, and put
+\[
+ R_S=\prod_{p\in S}p,\qquad \omega(S)=\#S.
+\]
+Assume that the normalization defining the Belyi cover is finite
+\'etale over
+\begin{equation}\label{eq:good-open}
+ \operatorname{Spec}\mathcal O_{K_0}
+       [S^{-1},t,t^{-1},(t-1)^{-1}],
+\end{equation}
+where $K_0$ is a field of definition.
+This property persists after any finite field extension:
+finite \'etale base change is finite \'etale, and a finite \'etale
+algebra over a normal base is normal. Thus it agrees with the
+normalization of the new generic cover on this open set.
+In particular the auxiliary splitting field in Section~1 introduces
+no new vertical branch primes outside $S$.
+
+\begin{lemma}\label{lem:discriminant}
+Under \eqref{eq:good-open}, the order $C$ in \eqref{eq:order}
+satisfies
+\[
+ \frac{\log\mathrm N\mathfrak D(C)}{[K:\Q]}
+ \le d\left(\log2+\log R_S+\omega(S)\log d\right).
+\]
+\end{lemma}
+\begin{proof}
+The determinant of the trace pairing of $B/\OK[t]$ defines an
+effective discriminant divisor on the base. Formation of the trace
+pairing commutes with specialization. Its intersection with the
+section $t=2$ is therefore $\log\mathrm N\mathfrak D(C)$.
+The coefficient of this divisor at a codimension-one point is
+$\sum_j f_jr_j$, where $e_j,f_j,r_j$ are the ramification index,
+residue degree, and different exponent of the corresponding
+extensions of discrete valuation rings. They satisfy
+$\sum_j e_jf_j=d$. These are the usual local
+trace-discriminant and different identities; see
+\cite[Chapter~III, Sections~3 and~6]{Serre} and
+\cite[Section~4.2]{Javanpeykar}.
+
+At a horizontal branch divisor the residue characteristic is zero.
+The different exponent is $r_j=e_j-1$, so the discriminant
+coefficient is at most $d$. The section $t=2$ meets $t=0$
+with normalized intersection $\log2$, and meets neither $t=1$
+nor $t=\infty$. Thus the horizontal contribution is at most
+$d\log2$.
+
+Let $\mathfrak p\mid p$ be a prime of $K$, and write
+$e_{\mathfrak p}=v_{\mathfrak p}(p)$.
+Lenstra's different bound, in the form
+\cite[Proposition~4.1.3]{Javanpeykar}, gives
+\[
+ r_j\le e_j-1+e_j e_{\mathfrak p}
+                \left\lfloor\frac{\log d}{\log p}\right\rfloor.
+\]
+This bound also applies to the possibly imperfect residue field
+at the generic point of a vertical fibre.
+Its discriminant coefficient is consequently at most
+\[
+ d\left(1+e_{\mathfrak p}
+                \left\lfloor\frac{\log d}{\log p}\right\rfloor\right).
+\]
+Only $p\in S$ can contribute. The intersection of the vertical
+fibre over $\mathfrak p$ with the section has value
+$f_{\mathfrak p}\log p$. Using
+\[
+ \sum_{\mathfrak p\mid p}e_{\mathfrak p}f_{\mathfrak p}=[K:\Q],
+ \qquad \sum_{\mathfrak p\mid p}f_{\mathfrak p}\le[K:\Q],
+\]
+and
+$\lfloor\log d/\log p\rfloor\log p\le\log d$
+proves the estimate.
+\end{proof}
+
+\begin{theorem}\label{thm:coverheight}
+For a Belyi cover satisfying \eqref{eq:good-open},
+\begin{equation}\label{eq:coverheight}
+ \hF(\Jac X)
+ \le\frac d2\left(\log2+\log R_S+\omega(S)\log d\right)
+       +g\log\frac2{\sqrt\pi}.
+\end{equation}
+\end{theorem}
+\begin{proof}
+Combine Theorem~\ref{thm:evaluation} and
+Lemma~\ref{lem:discriminant}.
+\end{proof}
+
+\section{The integral modular cover}
+
+Let $N$ be a positive integer and let
+$H\subset(\Z/N\Z)^\times$ contain $-1$. Write
+\[
+ X_H=X_1(N)/H,\qquad t_H=[(\Z/N\Z)^\times:H],
+ \qquad J_H=\Jac X_H.
+\]
+The action is the diamond action. Assume that $X_H$ has positive
+genus, and use the rational map $t=j/1728$ to the projective line.
+
+\begin{lemma}\label{lem:modular-model}
+The map $X_H\to\mathbb P^1_t$ has degree
+\[
+ d_H=Nt_H\prod_{p\mid N}(1+p^{-1}).
+\]
+It is unramified outside $0,1,\infty$ and admits a finite \'etale
+model over
+\[
+ U=\operatorname{Spec}\Z[1/(6N),t,t^{-1},(t-1)^{-1}].
+\]
+\end{lemma}
+\begin{proof}
+Over $U$ consider
+\begin{equation}\label{eq:universal-curve}
+ E_t:\quad y^2=x^3-\frac{3t}{t-1}x-\frac{2t}{t-1}.
+\end{equation}
+Its discriminant and $j$-invariant are
+\[
+ \Delta(E_t)=\frac{1728t^2}{(t-1)^3},\qquad j(E_t)=1728t.
+\]
+Thus it is an elliptic curve over $U$. Since $N$ is invertible,
+its scheme of points of exact order $N$ is finite \'etale.
+The constant group $H$ acts freely on this scheme: if $aP=P$
+and $P$ has exact order $N$, then $a=1$ in $(\Z/N\Z)^\times$.
+The quotient is finite \'etale. This follows also from the
+classification of finite \'etale covers by locally constant finite
+sets; freeness is enough, even when a residue characteristic divides
+$|H|$.
+
+To identify its generic fibre, fix an elliptic curve with
+$j$-invariant different from $0$ and $1728$ over an algebraic
+closure. Its automorphism group is $\{1,-1\}$. The geometric
+fibre of $X_1(N)$ is the set of primitive torsion points modulo
+this automorphism group. Since $-1\in H$, the fibre of $X_H$
+is precisely the set of primitive torsion points modulo $H$.
+Different isomorphisms to \eqref{eq:universal-curve} differ by
+$\pm1$ and hence give the same $H$-orbit. In particular quadratic
+twisting introduces no extra double cover. This identifies the
+finite \'etale model with the normalization of $X_H$ over $U$.
+
+There are $N^2\prod_{p\mid N}(1-p^{-2})$ primitive points.
+Division by $|H|=\varphi(N)/t_H$ gives the asserted degree.
+Equivalently, the congruence subgroup contains $-I$, so its
+$\operatorname{SL}_2(\Z)$ index is already the degree of the
+coarse map to $X(1)$; see \cite[Section~4]{vonKaenel}.
+The only possible branch points of that map are the two elliptic
+points and the cusp, which become $0,1,\infty$ in the $t$ coordinate.
+\end{proof}
+
+\begin{lemma}\label{lem:torsion-different}
+Let $V$ be an excellent discrete valuation ring of characteristic zero,
+let $E/V$ be an elliptic scheme, and let $n$ be a positive integer.
+Write $E[n]=\operatorname{Spec} A$, and let $\widetilde A$ be its
+normalization in its generic finite \'etale algebra. Under the generic
+trace pairing, the complementary modules satisfy
+\[
+ A^\vee=n^{-1}A,\qquad
+ \widetilde A^\vee\subseteq n^{-1}\widetilde A.
+\]
+The different of every field component of $\widetilde A/V$ therefore
+contains $n$. The same assertion holds for every intermediate field
+of such a component.
+\end{lemma}
+\begin{proof}
+Multiplication $[n]:E\to E$ is finite flat and a local complete
+intersection morphism. Its derivative in invariant differential bases
+is multiplication by $n$. Consequently its relative differential
+module has zeroth Fitting ideal $(n)$. For a finite flat local complete
+intersection, this K\"ahler different is the different; see
+\cite[Tag~0BWB, Lemmas~49.12.3 and~49.12.6]{Stacks}.
+
+Base change along the zero section gives $E[n]/V$. The relative
+differential module and its zeroth Fitting ideal commute with base
+change, while the morphism remains finite flat and a local complete
+intersection. Its different is therefore $(n)$. Its relative
+dualizing module is invertible. Under the trace pairing this is the
+complementary fractional ideal $A^\vee$, whose inverse is the different;
+see \cite[Tag~0BW0, Lemmas~49.8.2--49.8.3, and Tag~0BWB,
+Lemma~49.12.4]{Stacks}. Thus $A^\vee=n^{-1}A$ as fractional ideals,
+not merely as abstract modules.
+
+Normalization is finite, and inclusion reverses trace duals:
+\[
+ \widetilde A^\vee\subseteq A^\vee=n^{-1}A
+                              \subseteq n^{-1}\widetilde A.
+\]
+Hence $n\widetilde A^\vee\subseteq\widetilde A$, which says exactly
+that the different contains $n$. Finally, for normal discrete
+valuation rings $V\subseteq W\subseteq U$, the different formula
+\[
+ \mathfrak D_{U/V}=\mathfrak D_{U/W}\mathfrak D_{W/V}U
+\]
+shows that $v_U(\mathfrak D_{U/V})\le v_U(n)$ implies
+$v_W(\mathfrak D_{W/V})\le v_W(n)$, because the different exponent
+of $U/W$ is nonnegative. Apply this in each field component and
+at each place. These finite-duality and different arguments do not
+require a perfect residue field.
+\end{proof}
+
+\begin{corollary}\label{cor:modularheight}
+Let $g_H$ be the genus of $X_H$. Then
+\begin{equation}\label{eq:modularheight}
+ \hF(J_H)\le
+ \frac{d_H}{2}\left(\log12+\log N+2\log d_H\right)
+                  +g_H\log\frac2{\sqrt\pi}.
+\end{equation}
+\end{corollary}
+\begin{proof}
+Use the auxiliary field $K$ from Theorem~\ref{thm:evaluation}.
+At a prime $\mathfrak p$ of $K$ over $p>3$, localize the $t$-line
+at the generic point of the special fibre. The family
+\eqref{eq:universal-curve} is an elliptic scheme over this discrete
+valuation ring: its discriminant $1728t^2/(t-1)^3$ is a unit there.
+By Lemma~\ref{lem:modular-model}, the generic cover for $X_H$ is
+the primitive $N$-torsion cover modulo $H$. Each of its field
+components is an intermediate field of a field generated by a single
+$N$-torsion point. Lemma~\ref{lem:torsion-different} therefore bounds
+every different exponent above $\mathfrak p$ by the valuation of $N$.
+The coefficient of the vertical discriminant divisor is at most
+\[
+                    d_H v_{\mathfrak p}(N).
+\]
+After summing over these primes and dividing by $[K:\Q]$, the
+contribution is at most $d_H\log N$.
+
+At $p=2,3$, the estimate in Lemma~\ref{lem:discriminant} gives at
+most $d_H(\log6+2\log d_H)$. The horizontal intersection at
+$t=2$ contributes at most $d_H\log2$. Thus the normalized
+logarithmic discriminant of the fibre order is at most
+\[
+                 d_H(\log12+\log N+2\log d_H).
+\]
+Apply Theorem~\ref{thm:evaluation}. In particular no degree of a
+full torsion splitting field enters this estimate.
+\end{proof}
+
+\section{An abelian surface occurring as an isogeny factor}
+
+\begin{lemma}\label{lem:surface}
+Let $J$ be an abelian variety of dimension $g\ge2$ over a number
+field $L'$, and let $A$ be an abelian surface which is an isogeny
+factor of $J$ over $L'$. Put $d'=[L':\Q]$ and
+\[
+ H_J=\max(1,\hF(J)+3g/2).
+\]
+Then
+\begin{equation}\label{eq:surface}
+ \hF(A)\le H_J+
+ 8\left(32\log14+\log d'+
+                \log\max(1,\log d',H_J)\right).
+\end{equation}
+\end{lemma}
+\begin{proof}
+Choose an $L'$-homomorphism $A\to J$ with finite kernel, and
+let $A_0\subset J$ be its image. It is an abelian surface over
+$L'$ and is $L'$-isogenous to $A$.
+The stable version of R\'emond's subvariety inequality
+\cite[Corollary~1.2 and the paragraph following Corollary~1.3]{Remond}
+gives
+\[
+ \hF(A_0)+\hF(J/A_0)\le\hF(J).
+\]
+Bost's lower bound in the original normalization is
+$\hF(B)\ge-\log(\pi\sqrt2)\dim B>-3\dim B/2$.
+Thus $\hF(A_0)\le H_J$.
+
+Apply \cite[Theorem~1.9(1)]{GaudronRemond} with source $A_0$
+and target $A$, both over $L'$. In dimension two it supplies an
+isogeny of degree at most
+\[
+ \left(14^{32}d'\max(1,\log d',\hF(A_0))\right)^{16}.
+\]
+Stable Faltings height increases under an isogeny of degree $D$
+by at most $\frac12\log D$; see also
+\cite[Proposition~2.1]{Remond}. Replacing $\hF(A_0)$ by $H_J$
+proves \eqref{eq:surface}.
+\end{proof}
+
+The field $L'$ in this lemma is the field on which the surface
+factor is realized. It need not split a fibre of a modular curve,
+and it need not be the auxiliary field $K$ of
+Theorem~\ref{thm:evaluation}. The evaluation estimate is a stable
+height bound valid after arbitrary extension; the degree entering
+\eqref{eq:surface} is only $[L':\Q]$.
+
+\section{The five-contact height estimate}
+
+For $a=u/v\in\Q$ in lowest terms, with $v>0$, put
+$h(a)=\log\max(|u|,v)$. Define
+\[
+ S_*=\{p\text{ prime}:p\le76176\},\quad
+ B_*=\prod_{p\in S_*}p,\quad
+ \mathcal D=\{0,1,2401,-343/32\}.
+\]
+For $a\notin\mathcal D$, let $M_5(a)$ be the product of the
+primes $p\notin S_*$ for which at least one of
+\[
+ v_p(v),\quad v_p(u),\quad v_p(u-v),\quad
+ v_p(u-2401v),\quad v_p(32u+343v)
+\]
+is positive and odd. Every prime occurs only once.
+The first valuation is the contact at infinity.
+
+We use the following arithmetic input from
+\cite[proof of \texttt{o8-height}, equations
+\textup{(LR2)--(LR5)}, and proof of
+\texttt{quartic-height19}]{Glazer}.
+
+\begin{definition}[Modular realization input]\label{def:input}
+For each $a\in\Q\setminus\mathcal D$, put $R=B_*M_5(a)$.
+There is an abelian surface $A$ such that
+\begin{equation}\label{eq:geometric}
+ h(a)\le2\max(0,\hF(A))+128.
+\end{equation}
+Either $\hF(A)<854R$, or there are a normal number field $L'/\Q$
+and an even nebentypus $\varepsilon$ of a primitive weight-two
+newform, of level $N$, such that
+\begin{equation}\label{eq:input}
+ \begin{gathered}
+ [L':\Q]\le2304\varphi(R),\qquad
+ N\le210^{300}R^2,\qquad \rad(N)\mid R,\\
+ \varepsilon^2|_{G_{L'}}=1,
+ \qquad
+ A_{L'}\text{ is an isogeny factor of }
+       \Jac(X_1(N)/\ker\varepsilon)_{L'}.
+ \end{gathered}
+\end{equation}
+\end{definition}
+
+Here $R$ is squarefree and divisible by $6$.
+The degree bound in \eqref{eq:input} retains the totient from the
+scalar character: its order satisfies
+$m\le2\prod_{p\mid R,\ p\text{ odd}}(p-1)=2\varphi(R)$,
+and the construction gives $[L':\Q]\le1152m$.
+The square of the nebentypus is trivial over $L'$ by the determinant
+identity for the compatible representations. The newform quotient
+factors through the diamond quotient because every element of
+$\ker\varepsilon$ fixes all conjugates of its differentials.
+No bound on the degree of the newform's coefficient field is assumed.
+
+\begin{theorem}\label{thm:contactheight}
+Assume the modular realization input. Put
+\[
+ D_0=4608\cdot210^{300},\qquad
+ C_3=19D_0B_*^3\log B_*.
+\]
+Then $C_3<2^{330770}$ and
+\begin{equation}\label{eq:contact3}
+ h(a)\le C_3 M_5(a)^3(1+\log M_5(a))
+ \quad(a\in\Q\setminus\mathcal D).
+\end{equation}
+In particular,
+\begin{equation}\label{eq:contact-seven-halves}
+ h(a)<2^{330789}M_5(a)^{7/2}.
+\end{equation}
+For every fixed $\alpha>3$ there is an effective constant
+$C_\alpha$ such that $h(a)\le C_\alpha M_5(a)^\alpha$.
+\end{theorem}
+\begin{proof}
+Set $M=M_5(a)$ and $R=B_*M$. In the non-CM alternative, let
+$H=\ker\varepsilon$ and $t_H=\operatorname{ord}\varepsilon$.
+Since $\varepsilon^2$ is trivial on $G_{L'}$, its image order
+divides $[L':\Q]$. Hence
+\[
+ t_H\le2[L':\Q]\le4608\varphi(R).
+\]
+The exact index identity in Lemma~\ref{lem:modular-model} gives
+\begin{equation}\label{eq:cubic-degree}
+ \begin{split}
+ d_H
+ &\le4608\cdot210^{300}R^2\varphi(R)
+                    \prod_{p\mid R}(1+p^{-1})\\
+ &=D_0R^3\prod_{p\mid R}(1-p^{-2})<D_0R^3.
+ \end{split}
+\end{equation}
+Also $2\le g_H\le d_H$, because the Jacobian contains a surface
+factor and the cover is a Belyi map.
+
+Write $\ell=\log R$. The exact prime-product computation in
+Section~\ref{sec:verification} gives
+\[
+ D_0^2<B_*,\qquad144<B_*,\qquad \ell\ge1.
+\]
+Consequently
+\[
+ \log N\le\tfrac52\ell,\qquad
+ \log d_H\le\tfrac72\ell,\qquad
+ \log12\le\tfrac12\ell.
+\]
+Using $\log(2/\sqrt\pi)<1$ in
+Corollary~\ref{cor:modularheight}, we obtain
+\begin{equation}\label{eq:jacobian-numeric}
+ \hF(J_H)\le5d_H\ell+d_H\le6d_H\ell.
+\end{equation}
+Thus the number $H_J$ in Lemma~\ref{lem:surface} is at most
+\[
+ H_*=8D_0R^3\ell.
+\]
+Let $d'=[L':\Q]$. Since $d'\le2304R$, $2304<e^8$,
+$\ell\ge1$, and $\log D_0\le\ell$,
+\[
+ \log d'<9\ell,\qquad
+ \log H_*\le9\ell.
+\]
+Moreover $H_*>\max(1,\log d')$.
+Lemma~\ref{lem:surface}, with $\log14<3$, now gives
+\[
+ \begin{split}
+ \hF(A)
+ &\le H_*+8(96+18\ell)\\
+ &\le H_*+912\ell
+ \le9D_0R^3\ell.
+ \end{split}
+\]
+The CM bound $854R$ is smaller than the same expression.
+Combining with \eqref{eq:geometric}, and using
+$D_0R^3\ell>128$, gives
+\[
+ h(a)\le19D_0R^3\ell.
+\]
+Finally $\log R=\log B_*+\log M\le
+(\log B_*)(1+\log M)$, since $\log B_*>1$ and $M\ge1$.
+This proves \eqref{eq:contact3}.
+
+The explicit numerical bound uses
+\[
+ 19<2^5,\qquad D_0<2^{2413},\qquad
+ B_*<2^{109445},\qquad \log B_*<2^{17}.
+\]
+Consequently
+\[
+ C_3<2^{5+2413+3\cdot109445+17}=2^{330770}.
+\]
+For $u\ge0$, the maximum of $(1+u)e^{-u/2}$ occurs at
+$u=1$ and is less than two. Taking $u=\log M$ gives a
+constant smaller than $2^{330771}$, and in particular proves
+the convenient bound~\eqref{eq:contact-seven-halves}.
+More generally, for each $\eta>0$,
+$(1+u)e^{-\eta u}$ is bounded on $[0,\infty)$ by an explicitly
+computable number. Apply this with $\eta=\alpha-3$.
+\end{proof}
+
+\section{Disjoint sets of contacts}
+
+\begin{corollary}\label{cor:amplification}
+Fix $r\ge1$ and put
+\[
+ \Theta_r=\bigcup_{j=0}^{r-1}
+ \left(3j+\left\{0,-\tfrac12,-1,
+                     \tfrac1{2399},-\tfrac{32}{407}\right\}\right).
+\]
+There is an explicitly determined finite exceptional set $\Sigma_r$
+such that, if $M_r(t)$ is the product of primes outside $\Sigma_r$
+at which some $t-\theta$, $\theta\in\Theta_r$, has positive odd
+valuation, then
+\[
+ h(t)\ll_r M_r(t)^{3/r}(1+\log M_r(t))
+       \ll_r M_r(t)^{7/(2r)}
+       \qquad(t\in\Q\setminus\Theta_r).
+\]
+All implied constants are effective under the stated modular
+realization input.
+\end{corollary}
+\begin{proof}
+Apply Theorem~\ref{thm:contactheight} to
+$\phi_j(t)=2+1/(t-3j)$ for $0\le j<r$.
+Their matrices have determinant $-1$, so
+$h(t)\le h(\phi_j(t))+O_r(1)$.
+In addition to $S_*$, exclude the primes dividing contact
+coefficients and the nonzero determinants of pairs of primitive
+contact forms. The $5r$ rational contacts are distinct.
+Outside the resulting fixed set, different contact forms cannot
+vanish at the same residue point. Thus the radicals $M_j(t)$
+for the different blocks have disjoint prime support, and
+$\prod_jM_j(t)=M_r(t)$. Removing the exceptional primes from
+a block changes its height inequality by at most an effective
+fixed factor.
+
+Multiplying the $r$ inequalities gives
+\[
+ h(t)^r\ll_r M_r(t)^3
+                  \prod_{j=0}^{r-1}(1+\log M_j(t)).
+\]
+Each logarithmic factor is at most $1+\log M_r(t)$.
+Taking $r$th roots proves the first bound. Applying
+\eqref{eq:contact-seven-halves} in each block proves the second.
+The primitive contact forms, their pairwise determinants, and the
+fixed exceptions can be constructed directly as in
+\cite[Sections~1--2]{Amplification}.
+\end{proof}
+
+Four translated sets of five contacts therefore give height exponent
+$7/8$ with twenty distinct finite contacts. This statement concerns
+logarithmic height; replacing it by an estimate for multiplicative
+height would be a different assertion.
+
+\section{Exact verification}\label{sec:verification}
+
+The script
+\begin{center}\small
+\nolinkurl{computation/contact_heights/check_evaluation_height.py}
+\end{center}
+verifies the rational formulas for the discriminant and $j$-invariant
+in \eqref{eq:universal-curve}, reconstructs $B_*$ by a sieve with
+independent trial division, and checks the integer comparisons
+$D_0^2<B_*$, $144<B_*$, $D_0<2^{2413}$, and $B_*<2^{109445}$.
+It also checks the exponent arithmetic and the exponential
+inequalities used above by rational partial sums.
+Its output is
+\nolinkurl{evaluation-height-certificate.json} in the same directory.
+The finite-algebra and geometric assertions are proved in the text;
+they are not inferred from numerical experiments.
+
+\begin{thebibliography}{9}
+\bibitem{Stacks}
+The Stacks Project Authors, \emph{The Stacks Project},
+Tags~00R4, 0AWQ, 0AVT, 0BUL, 0C0I, 0BW0, and 0BWB,
+\url{https://stacks.math.columbia.edu}.
+
+\bibitem{Javanpeykar}
+A.~Javanpeykar, with an appendix by P.~Bruin,
+\emph{Polynomial bounds for Arakelov invariants of Belyi curves},
+Algebra \& Number Theory \textbf{8} (2014), 89--140,
+\url{https://doi.org/10.2140/ant.2014.8.89}.
+
+\bibitem{Serre}
+J.-P.~Serre, \emph{Local Fields}, Graduate Texts in Mathematics
+\textbf{67}, Springer, 1979, Chapter~III,
+\url{https://doi.org/10.1007/978-1-4757-5673-9}.
+
+\bibitem{vonKaenel}
+R.~von K\"anel, \emph{The effective Shafarevich conjecture for abelian
+varieties of $\mathrm{GL}_2$-type}, Forum of Mathematics, Sigma
+\textbf{9} (2021), e39,
+\url{https://doi.org/10.1017/fms.2021.29}.
+
+\bibitem{Remond}
+G.~R\'emond, \emph{Propri\'et\'es de la hauteur de Faltings},
+Annali della Scuola Normale Superiore di Pisa, Classe di Scienze
+\textbf{23} (2022), 1589--1596,
+\url{https://doi.org/10.2422/2036-2145.202010_062}.
+
+\bibitem{GaudronRemond}
+\'E.~Gaudron and G.~R\'emond,
+\emph{Nouveaux th\'eor\`emes d'isog\'enie},
+M\'emoires de la Soci\'et\'e Math\'ematique de France
+\textbf{176} (2023), Theorem~1.9(1),
+\url{https://doi.org/10.24033/msmf.484}.
+
+\bibitem{Glazer}
+E.~Glazer and contributors,
+\emph{Diophantine definition of the integers in the rationals},
+\texttt{manuscripts/quartic\_v9.tex}, commit
+\texttt{14e8f601fe0d9173d4a5f084aedc3e07066a7688},
+\url{https://github.com/elliotglazer/diophantine-z-q}.
+
+\bibitem{Amplification}
+J.~Brox and contributors,
+\emph{Height bounds from disjoint sets of rational contacts},
+\texttt{contact\_height\_amplification\_20261109\_v13.tex},
+\url{https://github.com/JoseBrox/diophantine-z-q_improvements}.
+\end{thebibliography}
+\end{document}

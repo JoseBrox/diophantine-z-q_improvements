@@ -1,0 +1,127 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\newtheorem{lemma}{Lemma}\newtheorem{proposition}{Proposition}
+\begin{document}
+\title{The different of the torsion cover and a logarithmic refinement}
+\author{}\date{9 November 2026}\maketitle
+
+\begin{lemma}
+Let $V$ be an excellent discrete valuation ring of characteristic zero,
+and let $E/V$ be an elliptic scheme. For a positive integer $n$ write
+$E[n]=\operatorname{Spec} A$ and let $\widetilde A$ be its normalization.
+Then the trace complementary modules satisfy
+\[
+ A^\vee=n^{-1}A,\qquad
+ \widetilde A^\vee\subseteq n^{-1}\widetilde A.
+\]
+Consequently the different of every field component of
+$\widetilde A/V$ contains $n$. The same containment holds for every
+intermediate field of any such component.
+\end{lemma}
+\begin{proof}
+The multiplication morphism $[n]:E\to E$ is finite flat and is a
+local complete intersection. On invariant differentials its derivative
+is multiplication by $n$. The different equals the K\"ahler different
+for finite flat local complete intersections; the smooth-source formula
+therefore makes the different of $[n]$ the ideal $(n)$.
+These facts are Stacks Project, Tag 0BWB, Lemmas 49.12.3 and 49.12.6.
+Base change along the zero section gives $E[n]/V$. Both the module of
+relative differentials and its zeroth Fitting ideal commute with this
+base change, so its different is also $(n)$. Its relative dualizing
+module is invertible. Under the generic trace pairing this is the
+complementary module $A^\vee$; the different is its inverse, whence
+$A^\vee=n^{-1}A$. This is also immediate locally from the Jacobian
+description of the trace element in Tag 0BWB, Lemma 49.12.4, and the
+trace identification in Tag 0BW0, Lemmas 49.8.2--3.
+
+Since $A\subseteq\widetilde A$, trace duality reverses the inclusion:
+\[
+ \widetilde A^\vee\subseteq A^\vee=n^{-1}A
+                         \subseteq n^{-1}\widetilde A.
+\]
+Thus $n\widetilde A^\vee\subseteq\widetilde A$, exactly the stated
+different containment. For a tower of normal discrete valuation rings
+$V\subseteq W\subseteq U$, the different tower formula gives
+$\mathfrak D_{U/V}=\mathfrak D_{U/W}\mathfrak D_{W/V}U$.
+The nonnegative valuation of the first factor shows that the upper
+bound $v_U(\mathfrak D_{U/V})\le v_U(n)$ descends to
+$v_W(\mathfrak D_{W/V})\le v_W(n)$. This proves the last assertion.
+All trace arguments apply to each component after localization; no
+perfectness of the residue field is needed.
+\end{proof}
+
+\begin{proposition}
+Let $X_H=X_1(N)/H$ with $-1\in H$, let $d$ be the degree of its
+$t=j/1728$ map, and let $g$ be its genus. With the stable Faltings
+height and the determinant $L^2$ metric used in the evaluation theorem,
+\[
+ h_F(\operatorname{Jac}X_H)
+ \le\frac d2\bigl(\log12+\log N+2\log d\bigr)
+            +g\log(2/\sqrt\pi).
+\]
+\end{proposition}
+\begin{proof}
+Use the same auxiliary splitting and semistability field $K$ as in
+the evaluation theorem. At a prime $\mathfrak p$ of $K$ over $p>3$,
+localize the $t$-line at the generic point of the special fiber.
+The family
+\[
+ E_t:y^2=x^3-\frac{3t}{t-1}x-\frac{2t}{t-1}
+\]
+is an elliptic scheme over this discrete valuation ring, because its
+discriminant is $1728t^2/(t-1)^3$, a unit there. The generic primitive
+$N$-torsion cover modulo $H$ is exactly the function field cover of
+$X_H$, as proved in the integral-model lemma of the evaluation paper.
+It is a quotient of a union of field components of $E_t[N]$.
+The preceding lemma bounds the different at every place above
+$\mathfrak p$ by its valuation of $N$. Thus the vertical discriminant
+coefficient is at most
+\[
+            d\,v_{\mathfrak p}(N).
+\]
+Summing and dividing by $[K:\mathbb Q]$ gives at most $d\log N$
+from all $p>3$. At $p=2,3$ the generic Lenstra bound used in the
+evaluation theorem contributes at most
+$d(\log6+2\log d)$. The horizontal branch contribution to the
+fiber at $t=2$ is at most $d\log2$. Hence that fiber order has
+normalized logarithmic discriminant at most
+$d(\log12+\log N+2\log d)$. The proved differential-evaluation
+inequality now yields the result.
+\end{proof}
+
+\paragraph{Consequence for the retained modular realization.}
+Retain $R=B_*M$, $D_0=4608\cdot210^{300}$ and
+$B_*=\prod_{p\le76176}p$. The source bounds are
+$N\le210^{300}R^2$, $d<D_0R^3$, and $g\le d$.
+The exact integer inequalities $D_0^2<B_*$ and $144<B_*$ imply,
+with $\ell=\log R$,
+\[
+ \log N\le\tfrac52\ell,\qquad
+ \log d\le\tfrac72\ell,\qquad
+ \log12\le\tfrac12\ell.
+\]
+Thus $h_F(J_H)\le6d\ell$. The identical fixed-dimensional isogeny
+calculation, with $8D_0R^3\ell$ in place of
+$8D_0R^3\ell^2$, gives $h_F(A)\le9D_0R^3\ell$ and
+\[
+ h(a)\le19D_0R^3\ell
+       \le C M^3(1+\log M),\qquad
+ C=19D_0B_*^3\log B_*<2^{330770}.
+\]
+The final bit bound uses $19<2^5$, $D_0<2^{2413}$,
+$B_*<2^{109445}$, and $\log B_*<2^{17}$.
+
+\paragraph{Potential scalar use.}
+A fourth-power scalar norm has strict coefficient orders
+$v(Z_0)>23\nu/8$ and $v(Z_1)>19\nu/8$. Hence
+$M^3\ell_0^{L_N}\mid c$ with $\ell_0=80989$,
+$L_N=\lfloor19(2N-1)/8\rfloor+1$, and $\ell_0\nmid M$.
+The new estimate then yields
+\[
+ h(\beta)\le C\ell_0^{-L_N}c(1+\tfrac13\log c).
+\]
+The sharper Lucas growth estimate of order $c\log c$ would absorb
+this term for every sufficiently large fixed $N$, allowing the
+$R^8$ coordinate to be deleted. This last application is under
+separate audit.
+\end{document}

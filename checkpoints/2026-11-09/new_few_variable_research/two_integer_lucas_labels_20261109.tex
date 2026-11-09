@@ -1,0 +1,193 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=28mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\hgt}{\operatorname{h}}
+\title{Exponential growth from two integer labels}
+\author{}
+\date{9 November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+An indefinite norm equation produces exponential growth using two
+integer labels and one rational root of a monic polynomial. We give an
+elementary descent proof and a precise limitation on applying the
+construction to rational approximations of the integer labels. No
+reduction in the number of variables of a defining polynomial is
+asserted.
+\end{abstract}
+
+For an integer $a\ge3$, define
+\[
+ U_0(a)=0,\qquad U_1(a)=1,\qquad
+ U_{j+1}(a)=aU_j(a)-U_{j-1}(a)\quad(j\ge1).
+\]
+
+\begin{lemma}\label{lem:descent}
+If $v,w\in\Z$ satisfy
+\[
+                       w^2-avw+v^2=1,
+\]
+then $|v|=U_j(a)$ for some $j\ge0$.
+For $j\ge1$ one has
+\[
+ U_j(a)\equiv j\pmod{a-2},\qquad
+ U_j(a)\ge(a-1)^{j-1}.
+\]
+\end{lemma}
+\begin{proof}
+The congruence follows by induction because $a\equiv2\pmod{a-2}$.
+The sequence is strictly increasing from $U_1$ onwards, and
+$U_{j+1}=(a-1)U_j+(U_j-U_{j-1})\ge(a-1)U_j$ for $j\ge1$.
+This proves the lower bound.
+
+If $vw<0$, the left-hand side of the norm equation is larger than
+one. If $vw=0$, the other coordinate is $\pm1$. Otherwise the two
+coordinates have the same sign, and we can change both signs to
+make them positive. The equation is invariant under interchange
+of the coordinates and under
+\[
+                         (v,w)\longmapsto(v,av-w).
+\]
+Order the coordinates as $1\le v\le w$. If $v>1$, then
+\[
+                  0<av-w=\frac{v^2-1}{w}<v.
+\]
+Thus interchange followed by this operation decreases the maximum
+coordinate. It terminates with $v=1$, where $w(w-a)=0$.
+Reversing these operations gives the consecutive pairs
+$(U_j(a),U_{j+1}(a))$. Every coordinate of the original pair is
+therefore one of the $U_j(a)$.
+\end{proof}
+
+\begin{theorem}\label{thm:growth}
+Let $a,u\in\Z$, with $a\ge7$ and $u\ne0$, and put
+$v=(a-2)u+1$. If a rational number $w$ satisfies
+\begin{equation}\label{eq:monic}
+                      w^2-avw+v^2-1=0,
+\end{equation}
+then $w\in\Z$, and
+\[
+          |v|\ge(a-1)^{a-4},\qquad
+          |u|\ge\frac{(a-1)^{a-4}-1}{a-2}.
+\]
+Conversely, for every integer $a\ge7$ there exist integers $u\ne0$
+and $w$ satisfying \eqref{eq:monic}.
+\end{theorem}
+\begin{proof}
+The polynomial in \eqref{eq:monic} is monic with integer
+coefficients, so its rational root is integral. The conditions
+$a\ge7$ and $u\ne0$ exclude $v=0,1,-1$: the first and third would
+require $a-2$ to divide $1$ or $2$, and the second requires $u=0$.
+By Lemma~\ref{lem:descent}, $|v|=U_j(a)$ for an integer $j\ge2$.
+Since $v\equiv1\pmod{a-2}$, one has
+$j\equiv1$ or $-1\pmod{a-2}$. Hence $j\ge a-3$ and
+$|v|\ge(a-1)^{a-4}$. The bound for $u$ follows from
+$|v|\le(a-2)|u|+1$.
+
+For existence, take
+\[
+ v=U_{a-1}(a),\qquad w=U_a(a),\qquad
+ u=\frac{U_{a-1}(a)-1}{a-2}.
+\]
+The congruence in Lemma~\ref{lem:descent} makes $u$ an integer,
+and $u>0$. The recurrence preserves
+$U_{j+1}^2-aU_jU_{j+1}+U_j^2=1$, as follows by induction from
+$(U_0,U_1)=(0,1)$.
+\end{proof}
+
+The theorem reduces the number of integer labels needed for this
+growth mechanism from three to two. The root $w$ is a rational
+variable rather than an additional integer label. This distinction
+is useful only when the coefficients in \eqref{eq:monic} are the
+actual integers $a,u$. In a construction using rational
+approximations of those labels, integrality of $w$ is not available
+until exact equality of the coefficients has been proved.
+
+\begin{proposition}\label{prop:approximation}
+Fix $a\ge7$ and any nonzero integral solution $(v_0,w_0)$ of the
+norm equation with $v_0\equiv1\pmod{a-2}$, and put
+$u_0=(v_0-1)/(a-2)$. Outside a finite set of primes $p$, the
+following assertion holds for every positive integer $k$.
+There are rational solutions $(u',w')$ with
+\[
+ v'=(a-2)u'+1,\qquad (w')^2-av'w'+(v')^2=1,
+ \qquad u'\equiv u_0,\quad w'\equiv w_0\pmod{p^k},
+\]
+for which the logarithmic rational height $\hgt(w')$ is unbounded.
+\end{proposition}
+\begin{proof}
+Use the rational parametrization through $(v,w)=(0,1)$:
+\[
+ v(s)=\frac{a-2s}{s^2-as+1},\qquad
+ w(s)=\frac{1-s^2}{s^2-as+1}.
+\]
+It follows by substituting the line $w=1+sv$ into the norm
+equation. Since $v_0\ne0$, the parameter
+$s_0=(w_0-1)/v_0$ is rational. Its denominator
+$s_0^2-as_0+1$ is nonzero: otherwise $s_0=a/2$ would also be
+necessary, contrary to $a^2\ne4$.
+Exclude primes dividing the denominators of $s_0$,
+$s_0^2-as_0+1$, their numerators when necessary for the latter
+to be a unit, or $a-2$. Both rational functions and
+$u(s)=(v(s)-1)/(a-2)$ are then regular on a $p$-adic
+neighborhood of $s_0$ and preserve congruences modulo $p^k$.
+
+Take $s=s_0+p^k/m$ with positive integers $m$ prime to $p$.
+These give infinitely many distinct rational parameters with the
+required congruences. At most two parameters are poles. The
+rational function $w(s)$ is nonconstant, and every value has at
+most two inverse images. Its values on this sequence therefore
+form an infinite set. Rational numbers of bounded logarithmic
+height form a finite set, so their heights are unbounded.
+\end{proof}
+
+\section*{The remaining arithmetic requirement}
+In the existing comparison construction, exact integral point
+indices are recovered from rational formal-parameter ratios by
+divisibility of an integer residual, whose ordinary absolute value
+has a polynomial bound in those indices. Replacing a Lucas label
+by the monic root in Theorem~\ref{thm:growth} removes this bound
+unless the height or denominator of the rational root is separately
+controlled. Proposition~\ref{prop:approximation} shows that any
+fixed amount of local agreement alone cannot provide such control.
+It does not rule out a stronger argument using the global geometry
+of the retained elliptic points. A successful application needs an
+additional global bound, or another means of proving the exact
+integral norm equation before invoking monicity.
+
+This issue persists when the contact-height estimate is strengthened
+from one fixed positive power to another. To make the limitation
+precise, suppose the available bounds have the shape
+\[
+ h(t)\le C M(t)^\alpha,\qquad
+ B^2\le C'|J|^{\alpha/k}+C'',\qquad
+ |J|\le2B\exp h(\beta),
+\]
+where $\alpha>0$ and $k>\alpha/2$ are fixed. For sufficiently large
+$B$, taking logarithms yields only
+\[
+ \left(2-\frac\alpha k\right)\log B
+ \le O(1)+\frac\alpha k h(\beta).
+\]
+The scalar conclusion $h(\beta)\le C_0c^\epsilon$, with any fixed
+$\epsilon>0$, and the elementary inequality $B\ge c-1$ are
+compatible with this bound for arbitrarily large $c$. Decreasing
+$\alpha$ or increasing a fixed precision does not, by itself,
+replace the exponential-growth step.
+
+Likewise, adjoining scalar scales that merely bound the rational
+root height by $h(w)\le C_1M^\alpha$ does not close the residual
+argument. If the residual numerator is bounded by
+$B^r\exp(s h(w))$ for fixed $r,s>0$, divisibility gives
+$k\log M\le r\log B+s h(w)$, which is consistent with
+$h(w)$ growing as a positive power of $M$. These observations do
+not exclude other uses of a stronger contact estimate. They identify
+the missing conclusion in this particular replacement: a bound such
+as $h(w)=O(\log B)$, or exact integrality established before comparing
+the residual with its local divisors.
+\end{document}
