@@ -1,0 +1,662 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,booktabs,microtype,xcolor}
+\usepackage[margin=26mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue!45!black,citecolor=blue!45!black,urlcolor=blue!45!black]{hyperref}
+\newtheorem{theorem}{Theorem}[section]\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}\newcommand{\HH}{\mathcal H}
+\DeclareMathOperator{\Tr}{Tr}\DeclareMathOperator{\Nm}{Nm}
+\setlength{\emergencystretch}{2em}
+\title{A family of defining quartics in 267 variables}
+\author{}\date{9 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+Under the stated arithmetic premises of the elliptic source, we specify
+an integer quartic family in 267 total variables whose sufficiently
+large members define the integers in the rationals. Four disjoint
+translates of the contact set give a height exponent $19/4$. This permits
+quadratic Taylor approximations to the formal logarithm, with comparison
+orders twelve and three. Residue classes modulo eight permit sixteen local tests to be represented
+by five factors. A simultaneous quadratic evaluation of two degree-twenty
+polynomials uses six auxiliary coordinates at each scale. A normalization
+independent of the scale uses the positive aggregate trace directly,
+without computing its square or a scaled twentieth power. The complete
+quadratic and expanded coefficient tables are independently verified.
+The family has 3422 monomials for every positive parameter, and exact
+coefficient height $80989^{4N+2}+1$ for $N\ge23$. The sufficient defining
+parameter remains ineffective because the aggregate-trace height theorem
+has an ineffective additive constant.
+\end{abstract}
+
+\section{The family and its arithmetic scope}
+All variable counts include the distinguished input $X$. For a fixed
+integer $N\ge1$ let $A_N=80989^{2N+1}$. The complete tables
+\nolinkurl{quadratic-family267.json} and
+\nolinkurl{polynomial-family267.json} specify 241 primitive integer
+quadratic polynomials and their sum of squares
+\[
+ P_N(X,Y_1,\ldots,Y_{266})=\sum_{j=1}^{241}Q_{N,j}^2.
+\]
+The parameter $A_N$ is a coefficient, not a variable.
+
+\begin{theorem}\label{thm:main}
+Assume the arithmetic premises stated below. There is a fixed integer
+$N_0\ge27464$ such that every $N\ge N_0$ satisfies
+\[
+ x\in\Z\quad\Longleftrightarrow\quad
+ \exists\mathbf y\in\Q^{266}\ P_N(x,\mathbf y)=0
+ \qquad(x\in\Q).
+\]
+For every $N\ge1$ the polynomial $P_N$ has degree exactly four,
+content one, and 3422 nonzero coordinate monomials. For $N\ge23$,
+\[
+                       H(P_N)=80989^{4N+2}+1.
+\]
+The construction specifies every member exactly. The proof does not
+determine a sufficient numerical value of $N_0$.
+\end{theorem}
+
+Set
+\[
+ K=\Q(\rho),\quad \rho^2=2,\quad D=(3-\rho)^2=11-6\rho,
+ \qquad E:y^2=x^3-Dx,
+\]
+\[
+ P=2(1+\rho,2\rho)
+ =\left(\frac{57-28\rho}{8},\frac{-660+417\rho}{32}\right).
+\]
+We retain the following arithmetic premises, with the precise domains
+and hypotheses recorded in \cite{Dependencies,Source,Weights}:
+\begin{enumerate}
+\item $2E(K)=\Z P$ and $h(x([n]P))\ge n^2-6$ for every nonzero
+integer $n$, together with the specified point charts and group domains.
+\item The five-contact height estimate with exponent nineteen,
+exceptional cutoff $76176$, and the fixed constant
+\[
+ H=2^{110}210^{1800}\left(\prod_{p\le76176}p\right)^{19}+128.
+\]
+\item The pole obstruction outside $2,3,17$, and its simultaneous
+realization for positive inputs less than $17$ with square reduced
+denominator and the stated local squareclasses and valuation bounds
+at those three primes. Its normalized quadratic equations are retained.
+\item The simultaneous prime-pattern, conjugate reduction-order,
+finite congruence, and real approximation assertions used by the source.
+The weighted selection and fixed denominator dilation are justified
+from the cited analytic estimates in \cite{Selection}.
+\end{enumerate}
+The aggregate trace-height theorem used below is the proved consequence
+of the family height theorem described in \cite{Aggregate}; its additive
+constant is ineffective. The contact amplification in \cite{Contacts}
+is an elementary consequence of the retained five-contact estimate,
+not an additional arithmetic assumption. Exact coefficient verification
+does not prove the retained arithmetic premises.
+
+\section{Four contact blocks and the two scales}
+Put
+\[
+ \Theta=\{0,-1/2,-1,1/2399,-32/407\},\qquad
+ \Theta_4=\bigcup_{j=0}^3(\Theta+3j),\qquad
+ F_4(t)=\prod_{\theta\in\Theta_4}(t-\theta).
+\]
+Let $\Sigma$ consist of the primes at most $76176$ and the two primes
+$123121,161303$. Outside this set, all contact differences and all
+numbers $1-\theta$ are units. The contact radical $M_4(t)$ is the
+product of primes $p\notin\Sigma$ for which
+$v_p(t-\theta)$ is positive and odd for some $\theta\in\Theta_4$.
+The exact contact certificate in \cite{Contacts} verifies this
+exceptional set, including the normalizing value $t=1$.
+
+Let $E_4=123121\cdot161303=19859786663$. The contact amplification
+ theorem gives
+\begin{equation}\label{eq:contactheight}
+ h(t)\le\log26+HE_4^{19}M_4(t)^{19/4}
+       \le H_4M_4(t)^{19/4},\qquad
+ H_4=\log26+HE_4^{19},
+\end{equation}
+for $t\notin\Theta_4$, and $M_4(1)=1$.
+For clarity, its proof applies the five-contact estimate to the four
+maps $2+1/(t-3j)$, each with determinant $-1$. Their contact preimages
+are disjoint outside $\Sigma$. Each map changes logarithmic height
+by at most $\log26$. Multiplication of the four resulting inequalities
+and disjointness of the radicals gives \eqref{eq:contactheight}.
+The full treatment of fixed exceptional primes is in \cite{Contacts}.
+
+The retained root points are
+\[
+ Q_1=[n]P,\quad Q_2=[a]P,\quad Q_3=[t]P,\quad Q_4=[b]P,
+ \qquad B=\max(|n|,|a|,|t|,|b|),
+\]
+with nonzero integer labels. Set
+\[
+ T=\frac14\Tr_{K/\Q}\left(\sum_{i=1}^4x(Q_i)\right).
+\]
+It is positive, and the aggregate trace theorem gives fixed constants
+$M_1>0$, $M_2\ge1$ such that
+\begin{equation}\label{eq:aggregate}
+                         B^2\le M_1h(T)+M_2.
+\end{equation}
+Use the two positive rational scales $a_*=1,T$. No square condition
+on a scale is needed. Replacing the half-trace in the aggregate
+height theorem by its half changes its logarithmic height by at
+most $\log2$; this is absorbed into $M_2$.
+For each scale define, on its nonzero domain,
+\begin{equation}\label{eq:detector}
+ t_*=a_*\lambda,\quad \delta=t_*-1,\quad
+ R=\frac{F_4(t_*)}{\delta^{22}},\quad
+ e=\frac{\delta^{20}}{F_4(t_*)},\quad
+ q=\frac1{R\delta^4}.
+\end{equation}
+The actual quadratic system clears these expressions by
+\begin{equation}\label{eq:clearing}
+             F_4(t_*)e=\delta^{20},\qquad q\delta^2=e.
+\end{equation}
+In particular $e\delta^2=R^{-1}$ when $\delta\ne0$.
+No contact value can occur, since $F_4(t_*)=0$ would contradict the
+first equation. If $q=0$, then $e=0$, and that equation forces
+$\delta=0$. At $\delta=0$ the contact radical is one; no reciprocal
+is used on this stratum.
+
+If both radicals divide a nonzero integer $J$ to order $k$, then
+$h(T)\le h(\lambda)+h(T\lambda)$ and
+\eqref{eq:contactheight}--\eqref{eq:aggregate} imply
+\begin{equation}\label{eq:heighttransfer}
+ B^2\le C|J|^{19/(4k)}+M_2,\qquad C=2M_1H_4.
+\end{equation}
+The two radicals need not be coprime for this implication.
+
+\section{Local tests and the approximation denominators}
+Let $\sigma$ be conjugation, $f=1/x$, and $z=-x/y$, extended by zero
+at the identity where these functions are regular. The retained
+point relations are
+\[
+ U_0=H,\quad V_0=H-P,\quad U_i=[u_i]P,\quad V_i=U_i-Q_i.
+\]
+The charts permit $U_i=O$ or $V_i=O$ for $i>0$.
+Put
+\[
+ G_2(w)=1-\frac25w-\frac2{15}w^2,
+ \quad \ell_0=z(V_0)G_2(Df(V_0)^2),\quad
+ L_i=\frac{z(U_i)}{z(H)},
+\]
+\[
+ L_1'=\sigma\!\left(\frac{z(V_1)}{\ell_0}\right),\qquad
+ L_i'=\sigma\!\left(\frac{z(V_i)G_2(Df(V_i)^2)}{\ell_0}\right)\quad(i>1).
+\]
+These quotients are interpreted only after the denominator exclusions
+below. Write
+\[
+ D_H=f(H),\quad A_i=f(U_i),\quad B_i=\sigma f(V_i),\quad
+ C_i=L_i-L_i',\quad I=L_1-\beta,\quad \beta=51X^2+2504,
+\]
+\[
+ G=L_3^2-L_2(L_2-2)L_3L_4+(L_2-2)^2L_4^2-1.
+\]
+The required orders are six for $D_H$, twelve for $C_2,C_3,C_4,G$,
+three for $C_1$, six for $I$, and one for the nine $A_i,B_i$.
+The final input comparison uses order three, the minimum of the two
+orders controlling $L_1-n$ and $L_1-\beta$.
+
+\begin{lemma}\label{lem:g2}
+The polynomial $G_2$ has no zero in $K$.
+\end{lemma}
+\begin{proof}
+Its roots are $(-3\pm\sqrt{39})/2$, and $39$ is neither a rational
+square nor twice a rational square. Explicitly, if
+$(u+v\sqrt2)^2=39$ with $u,v\in\Q$, then $uv=0$; the two cases
+would require $u^2=39$ or $v^2=39/2$, both impossible.
+The independent finite certificate also verifies that the integer
+numerator $15-6w-2w^2$ has no root modulo 17, a prime that splits in
+$K$. Its leading coefficient is a unit there, so a hypothetical local
+root would be integral and give a forbidden residue root.
+\end{proof}
+
+The finite $H$ chart is $xf=1$, $S^2=x-Df$, $H=(x,xS)$.
+The source group calculation writes $H=[m]R_0+T_0$ with $P=2R_0$,
+$m\in\Z$, and $T_0\in E[2](K)$. Put $h=m/2$ for its rational
+free index. The exceptional classes $E[2](K),\pm P+E[2](K)$ are
+excluded before any logarithmic ratio is interpreted. Indeed their
+finite allowed reciprocal abscissas are units outside the fixed small
+primes, whereas extraction below would require positive valuation
+at any contact. All radicals would then be one, forcing
+$B^2\le C+M_2$ by \eqref{eq:heighttransfer}. The retained scalar
+lower bound in Section~\ref{sec:soundness} contradicts this for every
+sufficiently large parameter. The explicit torsion translations and
+norm values supporting the unit assertion are those recorded in
+\cite[Section 3]{Even}. This exclusion uses no comparison quotient.
+
+Consequently $m\ne0,2$, and $H,V_0$ are nontorsion. Their required
+nonzero abscissas and ordinates, and all subtraction denominators,
+follow from the retained chart identities. In particular
+$z(H),z(V_0)\ne0$. Lemma~\ref{lem:g2} gives $\ell_0\ne0$ globally.
+The analytic formal logarithms have a separate nonvanishing proof
+from the formal logarithm isometry when the points are formal.
+
+\section{Five factors and extraction at one place}
+At a contact prime $p\notin\Sigma$, $\delta$ is a unit and
+$\nu=v_p(R)=v_p(F_4(t_*))$ is positive and odd. This follows
+from the unique contact factor with positive odd valuation and
+does not require any condition on the valuation of the scale. All valuations
+of $K$ are unramified and normalized by $v(p)=1$.
+For a point on $E$, every finite value of $v(f)$ is even: if
+$v(x)<0$ then $2v(y)=3v(x)$, while if $v(x)>0$ then
+$2v(y)=v(x)$; the remaining case is valuation zero.
+This also holds for conjugated reciprocal abscissas.
+
+Use
+\begin{align*}
+ T_1&=1+q^{23}C_2^2+q^{10}D_H^2+q^4B_1^4,\\
+ T_2&=1+q^{23}G^2+q^2A_3^2+q^4B_0^4,\\
+ T_3&=1+q^{23}I^4+qA_2^2+q^2A_4^2+q^4B_3^4,\\
+ T_4&=1+q^{23}C_3^2+q^{10}C_1^4+q^4B_4^4,\\
+ T_5&=1+q^{23}C_4^2+q^2A_1^2+q^4B_2^4,
+ \qquad W=T_1T_2T_3T_4T_5.
+\end{align*}
+
+\begin{lemma}\label{lem:residues}
+At a contact prime, every factor is nonzero and has valuation at most
+zero. A factor of valuation zero is congruent to one in the residue field.
+\end{lemma}
+\begin{proof}
+First suppose every displayed test in a factor is nonzero. In each
+factor other than $T_3$, the three nonconstant valuations belong,
+respectively, to the odd integers, to $2+4\Z$, and to $4+8\Z$.
+For example $T_1$ has valuations
+\[
+ 2v(C_2)-23\nu,\qquad 2v(D_H)-10\nu,\qquad4v(B_1)-4\nu.
+\]
+The second has exact factor two because $v(D_H)$ is even and $\nu$ is
+odd. The third has exact factor four because $v(B_1)$ is even.
+The term $q^{10}C_1^4$ in $T_4$ has valuation
+$2(2v(C_1)-5\nu)$, again twice an odd integer.
+
+In $T_3$ the four nonconstant valuations are
+\[
+ 4v(I)-23\nu,\quad 2v(A_2)-\nu,\quad
+ 2v(A_4)-2\nu,\quad4v(B_3)-4\nu.
+\]
+The first three have residues $\nu,-\nu,2$ modulo four. These are
+pairwise distinct and nonzero because $\nu$ is odd and the $A_i$
+have even valuations. The fourth has residue four modulo eight;
+it therefore differs from each of the first three and from zero.
+Thus, in every factor, all finite term valuations, including zero
+for the constant term, are distinct. Zero tests simply remove terms
+from this argument. The minimum is attained exactly once. This proves
+nonvanishing and the asserted bound. If the minimum is zero, every
+nonconstant term has positive valuation, so the residue is one.
+\end{proof}
+
+\begin{proposition}\label{prop:extract}
+At each contact prime, the retained pole system and the cleared trace
+equations imply $\nu>0$ and give all sixteen required test orders at
+one place above that prime.
+\end{proposition}
+\begin{proof}
+Write $W=w_0+w_1\rho$. The literal cleared trace equations are
+\[
+ w_0^2-2w_0\tau-2w_1^2=0,\qquad e\delta^2\mathfrak b=\tau^2.
+\]
+By Lemma~\ref{lem:residues}, $W\ne0$. The first equation therefore
+gives $w_0\ne0$ and $\tau=1/\Tr(W^{-1})\ne0$; indeed $w_0=0$
+would give $w_1=0$. Hence
+$\mathfrak b=R/\Tr(W^{-1})^2$. If
+$\ell=\max_{v\mid p}v(W)\le0$, the trace inequality gives
+$v_p(\mathfrak b)\le\nu+2\ell$.
+This valuation is odd; the retained pole obstruction forces it positive.
+Consequently $\nu>0$ and $\ell>-\nu/2$.
+At a place attaining $\ell$, the factor valuations are nonpositive
+and add to $\ell$. Each factor valuation is therefore at least $\ell$,
+and each of its term valuations is strictly greater than $-\nu/2$.
+
+The resulting lower bounds, before integer rounding, are
+\[
+\begin{array}{c|c|c}
+\text{test}&\text{strict lower bound}&\text{integer order}\\\hline
+C_2,C_3,C_4,G&45\nu/4&12\\
+I&45\nu/8&6\\
+C_1&19\nu/8&3\\
+D_H&19\nu/4&6\\
+A_2&\nu/4&1\\
+A_1,A_3,A_4&3\nu/4&1\\
+B_0,B_1,B_2,B_3,B_4&7\nu/8&1
+\end{array}
+\]
+Here $\nu$ is a positive odd integer. The order six for $D_H$ uses
+its even valuation. In fact each of the nine reciprocal-abscissa
+tests has order at least two; order one suffices for its subsequent
+formal-group use. Zero tests satisfy all the stated inequalities.
+\end{proof}
+
+\subsection{Integrality precedes the depth estimate}
+The extracted positive $f$ valuations put $H,U_i$ on the primary
+formal branch and $V_0,V_i$ on the conjugate formal branch.
+At a nonidentity formal point of depth $r=v(z)\ge1$, write
+\[
+ \log_E(Q)=z(Q)\mathcal A(Q),\qquad
+ \mathcal A(Q)=G(Df(Q)^2),\qquad \mathcal A(O)=1.
+\]
+The formal series satisfies
+\[
+ G(w)=1-\frac25w-\frac2{15}w^2+O(w^3),\qquad
+ g_j=\frac{4j-5}{4j+1}g_{j-1}.
+\]
+The coefficient bound and full-tail proof in \cite[Lemma 3.1]{Even}
+give $\mathcal A\equiv1\pmod{p^{4r}}$,
+$G_2/\mathcal A\equiv1\pmod{p^{12r}}$, and
+$1/\mathcal A\equiv1\pmod{p^{4r}}$.
+These analytic units equal one at $O$, so zero numerator points
+require no quotient $\log_E(O)/z(O)$.
+
+The integral group identities
+\[
+ [m]U_i=[2u_i]H,\qquad
+ [m-2]V_i=[2(u_i-n_i)]V_0
+\]
+kill the torsion component of $H$ and yield full logarithm ratios
+$r_i=u_i/h$ and $r_i'=(u_i-n_i)/(h-1)$.
+At the odd prime, $h,h-1$ are integral and at least one is a unit.
+Hence at least one full ratio is integral. Multiplication by the
+analytic units preserves the corresponding approximate valuation.
+The positive-order cross test transfers integrality to the other
+approximate ratio and thus to both full ratios.
+
+Only now use $L_i=z(U_i)/z(H)$ integral. The $H$ test gives
+$v(z(H))\ge3$, so every nonzero $U_i$ has depth at least three.
+The primary errors have order at least twelve. The alternate errors
+have order at least four for $i=1$ and twelve for $i>1$.
+The integral full ratios convert these relative bounds into absolute
+congruences. Multiplication by $h,h-1$ and subtraction then give
+\[
+ L_1\equiv n\pmod{p^3},\qquad
+ L_i\equiv n_i\pmod{p^{12}}\quad(i>1).
+\]
+This argument includes zero $U_i$ or $V_i$, half-integral $h$, and
+inert primes. At the inert primes conjugation preserves the valuation.
+
+\section{Global soundness for sufficiently large parameters}\label{sec:soundness}
+The retained scalar circuit gives, for $c=|a-1|$,
+\begin{equation}\label{eq:scalar}
+ c\ge80989^{L_N},\qquad
+ L_N=\left\lfloor\frac{187(2N-1)}8\right\rfloor+1,
+ \qquad h(\beta)\le\HH c^{19/24}.
+\end{equation}
+These statements, including their integral group identities and
+exceptional-point exclusions, are the scalar conclusions of
+\cite{Source}; no comparison logarithm is used to establish them.
+Their circuit is retained, including the actual positive contact
+product $r$ and the normalizer
+\[
+ r=\beta(\beta-1)(\beta-2401)(32\beta+343)(2\beta-1),
+ \qquad R_s=\frac{A_Nr}{1+80989^2r}.
+\]
+
+Let
+$\Delta=t^2-a(a-2)tb+(a-2)^2b^2-1$.
+The local comparison shows that each twelfth power of a comparison
+radical divides $\Delta$. If $\Delta\ne0$, then
+$|\Delta|\le14B^4$, and \eqref{eq:heighttransfer} gives
+\[
+                  B^2\le C14^{19/48}B^{19/12}+M_2.
+\]
+Since $19/12<2$, this bounds $B$ by a fixed constant. Equation
+\eqref{eq:scalar} gives $B\ge c-1\to\infty$ uniformly as
+$N\to\infty$, a contradiction. Thus $\Delta=0$ eventually.
+The retained integral Lucas descent then gives
+\[
+                         \log B>|a|-3\ge c-4.
+\]
+
+If $n-\beta\ne0$, let $J$ be its nonzero reduced numerator.
+The local input comparisons make both cubed radicals divide $J$,
+while $|J|\le2B\exp(h(\beta))$. For $B^2\ge2M_2$,
+\eqref{eq:heighttransfer} gives
+\[
+ \log B\le\frac{12}{5}\log(2C)+\frac{19}{5}\log2
+                +\frac{19}{5}h(\beta)
+ \le C'+\frac{19}{5}\HH c^{19/24}.
+\]
+The right side is $o(c)$, contradicting the preceding lower bound.
+Hence $n=\beta\in\Z$. If $X=u/v$ is reduced with $v>0$, then
+$v^2\mid51$, and squarefreeness of $51$ gives $v=1$.
+All bounds depend only on fixed constants. Since $L_N$ is increasing,
+a single $N_0$ works for every larger $N$. Its dependence on the
+aggregate additive constant is ineffective.
+
+\section{Simultaneous completeness}
+Fix an integer input and the coefficient parameter. Retain the scalar
+and Lucas construction of the source, and choose the integer labels,
+root points, two scales, and compact real and finite-place neighborhoods
+before selecting primes. The neighborhoods avoid every retained
+rational denominator; Lemma~\ref{lem:g2} ensures that the new
+denominator introduces none. Every local test then has a fixed lower
+valuation bound at each prime in the finite preparation set.
+
+Choose a fixed positive integer $D_0$ clearing all contact coefficients
+$D_0^2\theta/a_*$ and sufficiently divisible at the prepared primes,
+including $\Sigma$, and the prime divisors of the scales. In the prime
+pattern write
+\[
+                         \lambda=\frac{u}{D_0^2w^2}.
+\]
+The zero contact makes $u$ one of the selected primes, outside that
+finite set. Thus $v_p(\lambda)\le-2v_p(D_0)$ there. Make this upper
+bound low enough that $t_*=a_*\lambda$ has valuation below zero and
+all nonzero contacts. Then $v_p(\delta)=v_p(t_*)$, and the exact
+valuation formulas are
+\[
+ v_p(F_4(t_*))=20v_p(t_*),\qquad v_p(e)=0,\qquad
+ v_p(q)=v_p(R)=-2v_p(t_*).
+\]
+The last two valuations become uniformly arbitrarily large. Thus
+all weighted test terms are small at every prepared place, and
+$\Tr(W^{-1})$ is arbitrarily close to two.
+
+The local squareclasses follow directly from
+\begin{equation}\label{eq:preparedsquare}
+ R=\delta^{-2}\prod_{\theta\in\Theta_4}
+                 \left(1+\frac{1-\theta}{\delta}\right).
+\end{equation}
+The factors in the product are arbitrarily close to one. Requiring
+congruence to one modulo eight at $2$, and modulo $p$ at an odd
+prepared prime $p$, makes their product a local square. The prefactor
+$\delta^{-2}$ is a square, as is the reciprocal trace factor in the
+pole input. Taking $-v_p(t_*)$ sufficiently large also gives the
+required pole valuations at $2,3,17$, including the subtraction
+of $2v_p(2)$ in the trace denominator.
+
+This preparation is valid for any fixed nonzero rational scales.
+The prime-pattern input in \cite{Selection,Dependencies} applies to
+arbitrary fixed distinct integer coefficients. After clearing
+$D_0^2\theta/a_*$ and removing repeated coefficients, it applies
+here without a square restriction on $a_*$. All denominator
+conditions are fixed before prime selection.
+
+Select the enlarged finite set of contact primes with the inherited
+opposite-order separation. The common-index construction takes $H=[h]P$,
+$U_i=[hn_i]P$, and $V_i=[(h-1)n_i]P$. Its congruences retain primary
+depth twenty for $H$ and every nonzero $U_i$. Thus the full primary
+logarithm ratio is exactly $n_i$, and its parameter-ratio approximation
+has error of order eighty. In particular, since $n_1=\beta$ in the
+completeness construction, $I=L_1-\beta$ has order eighty; the stronger
+requirement six on this test imposes no new arithmetic condition. At the opposite places the points are formal. The new
+Taylor approximations give comparison precision twelve, and the
+constant approximation at $V_1$ gives precision four. The reciprocal-abscissa tests have valuation at least two. At the
+chosen primary place, where $v_p(R)=1$, it therefore suffices to use
+orders $6,12,4,12$ respectively for $D_H$, the high comparisons,
+$C_1$, and $I$: every nonconstant term in all five factors has
+positive valuation. All these orders follow from the preceding
+construction. There $W\equiv1$. At the opposite
+place, the valuation-class argument gives either positive valuation
+for $W^{-1}$ or residue one. Its trace is consequently a unit with
+residue one or two, including the inert case. Hence the pole input
+has valuation one at every selected contact prime.
+
+The exact prime-pattern identity is
+\[
+ R=\frac{\displaystyle a_*^{20}\prod_{\theta\in\Theta_4}
+          (u-(\theta/a_*)D_0^2w^2)}
+        {(D_0^2w^2)^{20}\delta^{22}}.
+\]
+Every factor outside the selected prime numerators is a rational
+square, including $a_*^{20}$ even when $a_*$ is not itself a square.
+Thus at every prime outside those numerators the valuation is even. Division by the squared trace
+preserves this parity. This argument includes primes dividing $\delta$;
+no unit assertion about $\delta$ is made away from contacts.
+Equation~\eqref{eq:preparedsquare} and the preparatory divisibility
+give the required local squareclasses and valuation bounds at $2,3,17$.
+
+On the fixed compact real neighborhoods,
+\[
+ R\sim a_*^{-2}\lambda^{-2},\qquad
+ q\sim a_*^{-2}\lambda^{-2},\qquad
+ W\longrightarrow1,\qquad\Tr(W^{-1})\longrightarrow2.
+\]
+All test powers in the factors are even, so the pole input tends to
+zero through positive values. It eventually lies in $(0,17)$.
+The simultaneous selection supplies the required real size after all
+fixed data have been chosen. The pole-realization input supplies its
+witnesses, and the exact power identities fill the quadratic circuit.
+This proves completeness with no additional condition on $N$.
+
+\section{Exact quadratic specification}
+The weights are specified by six scalar quadratic equations:
+\[
+ q_2=q^2,\quad q_4=q_2^2,\quad c q_4=q,\quad
+ q_5=qq_4,\quad q_{10}=q_5^2,\quad c q_{23}=q_{10}^2.
+\]
+At every contact $q\ne0$, so $c=q^{-3}$ and each $q_j$ is exactly
+$q^j$. The equations make no division by a variable. If $q=0$, the
+clearing equations force $\delta=0$ and the contact radical is one,
+as already proved. No value of the unconstrained reciprocal weight
+on that stratum affects the soundness argument.
+
+\begin{lemma}\label{lem:contactcircuit}
+The two values $F_4(t_*)$ and $(t_*-1)^{20}$ can be evaluated with
+six additional coordinates and six quadratic equations, over $\Q$,
+for every rational input $t_*$. Each equation uniquely determines its
+new coordinate from the preceding ones.
+\end{lemma}
+\begin{proof}
+For this proof write $t=t_*$. Put $V(t)=(t-1)^{10}$. Divide the fixed
+monic polynomial $F_4$ by $V$:
+\[
+ F_4=VS+R,\qquad \deg R\le9.
+\]
+Both $S$ and $V$ are monic of degree ten. The coefficient of $t^9$
+in $S-V$ is
+\[
+ a_0=20-\sum_{\theta\in\Theta_4}\theta
+     =-64-\frac4{2399}+\frac{128}{407}
+     =-\frac{62183708}{976393}\ne0.
+\]
+Consequently $U=(S-V)/a_0$ is monic of degree nine, and
+$L=V-tU$ has degree at most nine. The identities are
+\[
+              V=tU+L,\qquad F_4=V^2+a_0UV+R.
+\]
+Every integer from zero through nine is a sum of two elements of
+$\{0,1,2,3,6\}$. After three equations have computed
+$t^2,t^3,t^6$, every polynomial of degree at most nine is therefore
+a quadratic expression in $1,t,t^2,t^3,t^6$. A fourth equation
+computes $U$, a fifth computes $V=tU+L$, and a sixth computes
+$F_4=V^2+a_0UV+R$. The other required value is $V^2=(t-1)^{20}$.
+All divisions used in the construction are by fixed nonzero rational
+coefficients. The equations successively determine the advertised
+values at every input, including $t=1$ and all contact values.
+\end{proof}
+
+At both scales the first equation of \eqref{eq:clearing} is simply
+$F_4(t_*)e=V(t_*)^2$. No powers of $a_*\delta$ are introduced.
+The trace-clearing coordinate represents $e\delta^2$.
+The second scale is an affine rational expression in the retained
+root-abscissa coordinates, so its product with $\lambda$ is quadratic
+without a separate scale coordinate.
+
+The high-point approximants $G_2$ are affine expressions in the
+retained $f^2$ and $w^2$ coordinates. They introduce no additional
+field value. At $V_1$ the numerator is simply $z(V_1)$.
+The shared field powers requiring additional coordinates are
+\[
+                              C_1^4,\quad I^4,\quad B_1^4,
+\]
+each with two rational coordinates. The fourth powers of
+$B_0,B_2,B_3,B_4$ are affine expressions in the Taylor circuits.
+Each detector has five field factors and three private intermediate
+products, using sixteen coordinates; the final product uses the
+retained $W$ coordinates. The exact count is
+\[
+\begin{array}{lr}\toprule
+\text{point, scalar, contact, logarithm, and weight coordinates}&229\\
+\text{three shared fourth powers}&6\\
+\text{five factors and intermediate products for two detectors}&32\\\midrule
+\text{total coordinates, including the input}&267\\\midrule
+\text{point, scalar, contact, logarithm, and weight quadratic rows}&199\\
+\text{shared fourth-power rows}&6\\
+\text{factor and product rows}&36\\\midrule
+\text{total quadratic rows}&241\\\bottomrule
+\end{array}
+\]
+
+The complete tables fix every coordinate, equation, coefficient, and
+normalization; the input is coordinate one. The producer clears
+denominators and primitive-normalizes each row before squaring.
+An independent checker imports no producer. It reconstructs the
+contact polynomial by finite differences of twenty-one exact
+evaluations and verifies all twenty roots. It reconstructs
+Lemma~\ref{lem:contactcircuit} by descending coefficient equations,
+checks both polynomial identities, reconstructs every modified
+quadratic row, and compares every retained row with its pinned coefficient
+source. A separate normalization check reconstructs both contact-clearing
+equations, both weight equations, the two trace identities, and the
+linear trace scale directly from the displayed definitions. The
+projection proof uses these literal equations and the preceding
+arithmetic argument.
+It expands the entire sum of squares independently by unordered
+pairs of terms. The supplementary local certificate exhausts all
+odd residues of $\nu$ modulo eight and all possible valuation residues
+of every test. These complete residue classes verify the
+noncancellation assertion for all integer valuations, together with
+the exact extraction bounds and sufficient completeness depths.
+The infinite arithmetic arguments are the proofs above.
+
+The expanded quartic has 3423 terms before powers of $A_N$ belonging
+to the same coordinate monomial are collected, and 3422 monomials
+after collection. Its unique coefficient involving $A_N^2$ is
+$A_N^2+1$, at the square of the actual scalar contact-product coordinate.
+Every other coefficient is a nonzero constant or a nonzero constant
+multiple of $A_N$. Consequently no support cancellation occurs for
+positive $A_N$. The largest constant coefficient $C_0$ has 1520 bits,
+the largest linear multiplier is $13118436242$, and exact comparison
+gives
+\[
+ C_0>13118436242^2,\qquad
+ 80989^{90}+1<C_0<80989^{94}+1.
+\]
+Thus $H(P_N)=\max(C_0,A_N^2+1)$ for every $N\ge1$ and the asserted
+exact height holds for $N\ge23$. This is a coefficient statement;
+it does not make the defining threshold effective.
+
+\begin{thebibliography}{99}
+\bibitem{Dependencies} Project repository,
+\emph{Arithmetic dependencies of the defining-polynomial constructions},
+\nolinkurl{arithmetic_dependencies_20261108_v8.tex}.
+\bibitem{Source} Project repository,
+\emph{A family of quartics in 297 variables},
+\nolinkurl{quartic297_20261109_v12.tex}, especially Sections 2--6.
+\bibitem{Weights} Project repository,
+\emph{Common local weights and quartics in 297 and 342 variables},
+\nolinkurl{shared_local_weights_20261109_v12.tex}.
+\bibitem{Even} Project repository,
+\emph{An explicit quartic in 322 variables},
+\nolinkurl{quartic322_20261109_v13.tex}.
+\bibitem{Contacts} Project repository,
+\emph{Height Bounds from Disjoint Sets of Rational Contacts},
+\nolinkurl{contact_height_amplification_20261109_v13.tex}.
+\bibitem{Aggregate} Project repository,
+\emph{The height of an aggregate elliptic trace},
+\nolinkurl{aggregate_trace_height_20261108_v9.tex}.
+\bibitem{Selection} Project repository,
+\emph{Prime selection with fixed congruences and separated reduction orders},
+\nolinkurl{prime_selection_20261109_v12.tex}.
+\end{thebibliography}
+\end{document}
