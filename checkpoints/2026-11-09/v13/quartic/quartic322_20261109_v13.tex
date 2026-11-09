@@ -1,0 +1,528 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,booktabs,microtype,xcolor}
+\usepackage[margin=26mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue!45!black,citecolor=blue!45!black,urlcolor=blue!45!black]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{remark}\newtheorem{remark}[theorem]{Remark}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}\newcommand{\HH}{\mathcal H}
+\DeclareMathOperator{\Tr}{Tr}\DeclareMathOperator{\Nm}{Nm}
+\setlength{\emergencystretch}{2em}
+\title{An explicit quartic in 322 variables}
+\author{}\date{9 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+We specify an integer quartic in 322 total variables whose rational input
+projection is the integers under the stated arithmetic premises of the
+elliptic construction. The local construction uses four factors for
+sixteen tests. Reciprocal abscissas have even valuations at every good
+unramified place, allowing smaller powers in those factors. The auxiliary
+point needs formal depth ten, which still gives comparison precision
+forty. The complete quadratic system, expanded quartic, and independent
+exact verification certificates accompany the paper. The displayed
+member has 4992 monomials and coefficient height $80989^{109858}+1$.
+\end{abstract}
+
+\section{Families and arithmetic premises}
+All variable counts include the distinguished input $X$. For a fixed
+integer $N\ge1$ set $A_N=80989^{2N+1}$. The coefficient tables define 294 primitive integer quadratic
+polynomials and their sum of squares
+\[
+                     P_N=\sum_{j=1}^{294}Q_{N,j}^2
+\]
+in 322 coordinates. The parameters $N,A_N$ are fixed coefficients,
+not variables.
+
+\begin{theorem}\label{thm:families}
+Assume the arithmetic premises specified below. For every $N\ge27464$
+and every $x\in\Q$,
+\[
+ x\in\Z\quad\Longleftrightarrow\quad
+ \exists\mathbf y\in\Q^{321}\ P_N(x,\mathbf y)=0.
+\]
+Thus $A_{27464}=80989^{54929}$ specifies a defining quartic.
+Every $P_N$ with $N\ge1$ has degree exactly four, content one, and
+4992 nonzero coordinate monomials. For every $N\ge23$,
+\[
+                         H(P_N)=80989^{4N+2}+1.
+\]
+The explicit member has coefficient height $80989^{109858}+1$,
+whose binary length is 1791283.
+\end{theorem}
+
+The following arithmetic inputs have precisely the scope stated in
+\cite{Dependencies,Shared,Explicit}. Set
+\[
+ K=\Q(\rho),\quad \rho^2=2,\quad D=11-6\rho=(3-\rho)^2,
+ \qquad E:y^2=x^3-Dx,
+\]
+\[
+ P=2(1+\rho,2\rho)
+  =\left(\frac{57-28\rho}{8},\frac{-660+417\rho}{32}\right).
+\]
+We retain the group assertion $2E(K)=\Z P$ and
+$h(x([n]P))\ge n^2-6$ for nonzero integer $n$; the five-contact
+height bound with exponent nineteen and its stated exceptional primes;
+the pole obstruction outside $2,3,17$ and its simultaneous realization
+for inputs with square reduced denominator, the specified local
+conditions at those three primes, and real value in $(0,17)$; and the
+simultaneous prime-pattern and conjugate reduction-order assertions,
+including finite congruence preparation and real approximation.
+The quantitative selection and fixed denominator dilation used in the
+construction follow from the analytic estimates as detailed in
+\cite{Selection}. These finite coefficient calculations do not prove
+those arithmetic inputs.
+
+We use the effective sum-height theorem of \cite{Sums}, a proved
+height consequence with explicit constants. No contact-height amplification or new
+prime-distribution premise is used in this paper.
+
+The retained equations outside the local factors, including the scalar
+normalizer, are exactly the equations specified in
+\cite{Shared,Explicit}. Their source hashes and a comparison
+of every retained row are included in the independent certificates.
+The following sections prove every changed local implication, including
+its domains and its effect on completeness.
+
+\section{Even valuations and four local factors}
+Let $v$ be a place of $K$ above an unramified prime $p>76176$,
+normalized by $v(p)=1$. In particular $v(D)=0$. Write $f(Q)=1/x(Q)$
+when defined, and put $f(O)=0$, with $v(0)=+\infty$.
+
+\begin{lemma}\label{lem:even}
+If $Q\in E(K_v)$ and $x(Q)\ne0$, then every finite value of
+$v(f(Q))$ is even.
+\end{lemma}
+\begin{proof}
+Put $a=v(x(Q))$. If $a<0$, then $v(x^3)<v(Dx)$, so
+$2v(y)=3a$ and $a$ is even. If $a>0$, then
+$v(Dx)<v(x^3)$, so $2v(y)=a$ and again $a$ is even.
+For $a=0$ the assertion is immediate. If $y=0$, the nonzero abscissas
+are $\pm(3-\rho)$, both units, so this case is included.
+\end{proof}
+
+The root points have nonzero integer indices
+\[
+ Q_1=[n]P,\quad Q_2=[a]P,\quad Q_3=[t]P,\quad Q_4=[b]P.
+\]
+The auxiliary points and their exact group differences are
+\[
+ U_0=H,\quad V_0=H-P,\quad U_i=[u_i]P,\quad
+ V_i=U_i-Q_i\quad(1\le i\le4).
+\]
+For $i>0$ the charts allow either $U_i$ or $V_i$ to equal $O$.
+The denominator points $H,V_0$ are excluded from the exceptional
+classes in Section~\ref{sec:formal} before their ratios are used.
+Let $\sigma$ be conjugation and define the tests
+\[
+ A_i=f(U_i),\qquad B_i=\sigma f(V_i),\qquad D_H=f(H),
+\]
+\[
+ C_i=L_i-L_i',\qquad I=L_1-\beta,\qquad \beta=51X^2+2504,
+\]
+\[
+ G=L_3^2-L_2(L_2-2)L_3L_4+(L_2-2)^2L_4^2-1.
+\]
+The intended orders are one for the nine $A_i,B_i$, twenty for
+$D_H$, ten for $C_1,I$, and forty for $C_2,C_3,C_4,G$.
+
+For each nonzero square scale $a_*$ the detector retains
+\[
+ t_*=a_*\lambda,\quad \delta=t_*-1,\quad
+ F(t_*)=\prod_{\theta\in\Theta}(t_*-\theta),\qquad
+ \Theta=\{0,-1/2,-1,1/2399,-32/407\},
+\]
+\begin{equation}\label{eq:clearedweights}
+ F(t_*)e=(a_*\delta)^5,\qquad \delta^3q=e.
+\end{equation}
+On $\delta\ne0$ these give
+\[
+ R=\frac{F(t_*)}{a_*^5\delta^6},\qquad q=\frac1{R\delta^4}.
+\]
+At a contact prime $p$, $\delta$ is a unit and $\nu=v_p(R)$ is odd,
+so $v(q)=-\nu$ at every place above $p$.
+
+Use the four factors
+\begin{align}
+ T_1&=1+q^{79}C_2^2+q^{38}D_H^2+q^4A_1^4+q^8B_0^8,
+       \label{eq:factor1}\\
+ T_2&=1+q^{79}C_3^2+q^{38}C_1^4+q^4A_2^4+q^8B_2^8,
+       \label{eq:factor2}\\
+ T_3&=1+q^{79}C_4^2+q^{38}I^4+q^4A_3^4+q^8B_3^8,
+       \label{eq:factor3}\\
+ T_4&=1+q^{79}G^2+q^2A_4^2+q^4B_1^4+q^8B_4^8,
+       \label{eq:factor4}
+\end{align}
+and let $W=T_1T_2T_3T_4$.
+
+\begin{lemma}\label{lem:classes}
+At a contact place, the four finite nonconstant valuations in each
+$T_j$ have exact powers of two divisors $1,2,4,8$, respectively.
+Consequently $T_j\ne0$, $v(T_j)\le0$, and $v(T_j)=0$ implies
+$T_j\equiv1$ in the residue field.
+\end{lemma}
+\begin{proof}
+In the first column of \eqref{eq:factor1}--\eqref{eq:factor4} the
+valuation is $2v(C)-79\nu$, which is odd. In the second column it is
+one of
+\[
+ 2\bigl(v(D_H)-19\nu\bigr),\qquad
+ 2\bigl(2v(C)-19\nu\bigr),\qquad
+ 2\bigl(v(A_4)-\nu\bigr).
+\]
+The parenthesis is odd, by Lemma~\ref{lem:even} when needed.
+The third and fourth column valuations are
+$4(v(f)-\nu)$ and $8(v(f)-\nu)$, with even $v(f)$.
+They therefore have the asserted exact divisors. The constant term
+has valuation zero, distinct from every nonconstant valuation.
+Thus the minimum is attained exactly once, proving all assertions.
+A zero test removes its term and does not affect the argument.
+\end{proof}
+
+\begin{proposition}\label{prop:extraction}
+At a contact prime, suppose the retained cleared trace equations and
+pole system hold. Then $\nu>0$, and there is one place above that
+prime at which all sixteen tests have their intended orders.
+\end{proposition}
+\begin{proof}
+Write $W=w_0+w_1\rho$. The literal trace equations are
+\begin{equation}\label{eq:trace}
+ w_0^2-2w_0T_0-2w_1^2=0,\qquad
+ e\delta\mathfrak b=T_0^2,\qquad e\delta=R^{-1}.
+\end{equation}
+Lemma~\ref{lem:classes} shows that $W\ne0$. If $w_0=0$, the first
+row would imply $w_1=0$, a contradiction. Hence
+\[
+ T_0=\frac{\Nm(W)}{2w_0}=\frac1{\Tr(W^{-1})}\ne0,
+ \qquad \mathfrak b=\frac{R}{\Tr(W^{-1})^2}\ne0.
+\]
+Put $\ell=\max_{v\mid p}v(W)\le0$. The trace inequality gives
+$v_p(\Tr(W^{-1}))\ge-\ell$ and therefore
+\[
+                v_p(\mathfrak b)\le\nu+2\ell.
+\]
+This valuation is odd. The pole obstruction forces
+$0<v_p(\mathfrak b)\le\nu+2\ell$, whence $\nu>0$ and
+$\ell>-\nu/2$. At a place attaining $\ell$, each factor has
+valuation at least $\ell$, because all four factor valuations are
+nonpositive and sum to $\ell$. Each nonzero term in that factor
+therefore has valuation strictly greater than $-\nu/2$.
+
+For the first column this gives
+$v(C)>(79/2-1/4)\nu\ge39.25$, hence $v(C)\ge40$.
+The second-column $C_1,I$ terms give
+$v(C)>(38/4-1/8)\nu\ge9.375$, hence order ten.
+For $D_H$ the inequality is
+\[
+             v(D_H)>(19-1/4)\nu\ge18.75.
+\]
+Its valuation is even, so it is at least twenty.
+The $A_4$ inequality gives $v(A_4)>3\nu/4\ge3/4$;
+those for the third and fourth columns give respectively
+$v(f)>7\nu/8$ and $v(f)>15\nu/16$.
+Their even integer valuations are therefore at least two, proving
+all order-one requirements. Zero tests satisfy every required order.
+\end{proof}
+
+\paragraph{Degenerate detector parameters.}
+The cleared identities \eqref{eq:clearedweights} have exactly the domain
+properties proved in \cite[Lemma 2.1]{Shared}. Since $a_*\ne0$ and
+$1\notin\Theta$, $F(t_*)=0$ is impossible. If $q=0$, then $e=0$
+and $\delta=0$. At $t_*=1$ the contact radical is one, because all
+prime divisors of the numbers $1-\theta$ lie below the fixed cutoff.
+Thus no contact argument uses a reciprocal on its zero stratum.
+
+\section{Formal comparisons at depth ten}\label{sec:formal}
+This section proves the depth implication without presupposing
+integrality of the ratios. It also deals with the enlarged $H$ domain
+and identity numerators.
+
+The retained chart for $H$ is
+\[
+ xf=1,\qquad S^2=x-Df,\qquad H=(x,xS).
+\]
+The group calculation in the elliptic source writes
+$H=[m]R_0+T$, where $P=2R_0$, $m\in\Z$, and $T\in E[2](K)$.
+Put $h=m/2$ for its rational free index; this notation does not
+assert a half-integer multiplication on the curve.
+
+\subsection{Denominator exclusions}
+Every point of $E[2](K)$ or $\pm P+E[2](K)$ which is permitted by
+the finite chart has reciprocal abscissa a unit at all primes above
+$p>76176$. This follows from the explicit translation identities
+and norm values
+\[
+ \Nm(x(P))=41^2/64,\quad
+ \Nm(x(P)-(3-\rho))=17^2/64,\quad
+ \Nm(x(P)+(3-\rho))=63^2/64
+\]
+given in the source. If $H$ were such a point,
+Proposition~\ref{prop:extraction} would contradict any contact prime.
+All comparison radicals would therefore be one. The retained height
+inequality for the root labels, together with the scalar lower bound
+at the stated coefficient threshold, excludes this possibility exactly
+as in \cite{Explicit}. This argument uses no quotient of
+logarithms. Consequently $m\notin\{0,2\}$, and $H$ and $V_0=H-P$
+are nontorsion.
+
+The denominator logarithm has the same global nonvanishing
+certificate as in the source. In particular its rational approximant
+has numerator with no root modulo the split prime 71 and denominator
+with no root modulo the split prime 7. Their leading coefficients are
+units at those primes. A root in $K$ would give an integral local root
+and a forbidden residue root. Thus the rational approximant never vanishes on $K$. The retained
+chart gives $z(V_0)\ne0$, since $V_0$ is nontorsion and neither its
+abscissa nor its ordinate is zero. Their product, the algebraic
+approximate logarithm used as the denominator, is therefore nonzero.
+The analytic formal logarithm is treated separately below by the
+formal logarithm isometry. All unchanged chart denominators are
+justified by the retained source equations.
+
+\subsection{Formal logarithm errors}
+Write $z=-x/y$. At a nonidentity formal point of depth
+$r=v(z)\ge1$, one has $v(f)=2r$ and
+\[
+ \log_E(Q)=z(Q)\mathcal A(Q),\qquad
+ \mathcal A(Q)=G(Df(Q)^2),\qquad
+ G(w)=\sum_{j\ge0}g_jw^j,
+\]
+where
+\[
+ g_0=1,\quad g_1=-2/5,\quad
+ g_j=\frac{4j-5}{4j+1}g_{j-1}\quad(j\ge2).
+\]
+This is the formal logarithm expansion established in the elliptic
+source; it also follows by integrating the invariant differential.
+Set $\mathcal A(O)=1$.
+
+\begin{lemma}\label{lem:logerror}
+At every place in question,
+$\mathcal A(Q)\in1+p^{4r}\mathcal O$ for a nonidentity formal point
+of depth $r$. The relative errors of the retained quadratic Taylor
+polynomial $G_2$ and rational approximant $\mathcal R$ are at least
+$12r$ and $40r$, respectively. At $O$ the errors are zero.
+\end{lemma}
+\begin{proof}
+The recursion gives $v(g_j)\ge-(4j+1)/(p-1)$, since each denominator
+divides a product of factors of $(4j+1)!$. When $4j+1<p$, it is
+integral. Since $v(Df^2)=4r$, the nonconstant terms have valuation
+at least $4r$: this is immediate in the integral range, and for the
+remaining $j\ge19044$ follows from
+$4rj-(4j+1)/(p-1)\ge4r$.
+The same argument starting at $j=3$ or $j=10$ gives the Taylor tail
+bounds $12r$ or $40r$.
+For the retained rational approximant, the exact identity
+\[
+ Q(w)G_9(w)-N(w)
+ =\frac{2970726}{254443709}w^{10}
+ -\frac{41697666}{6361092725}w^{11}
+\]
+is part of its coefficient certificate. All denominators in the
+approximant are supported at primes at most 37, and $Q(0)=1$;
+therefore $\mathcal R-G_9$ has valuation at least $40r$.
+Division by the unit $\mathcal A(Q)$ preserves these bounds.
+At $O$ the analytic unit quotients are defined by their constant
+value one, so no expression $\log_E(O)/z(O)$ is used.
+\end{proof}
+
+\subsection{Integrality before precision}
+Fix the place supplied by Proposition~\ref{prop:extraction}. The
+positive $f$ valuations put $H,U_i$ on the primary formal branch,
+and $V_0,V_i$ on the conjugate formal branch. In particular
+$v(z(H))\ge10$. The group identities
+\[
+ [m]U_i=[2u_i]H,\qquad
+ [m-2]V_i=[2(u_i-n_i)]V_0
+\]
+kill the two-torsion component of $H$. Applying the formal logarithm
+at the respective places gives the full ratios
+\[
+               r_i=u_i/h,\qquad r_i'=(u_i-n_i)/(h-1).
+\]
+The denominators are nonzero by the preceding exclusions, and the
+formal logarithms of $H,V_0$ are nonzero by the formal logarithm
+isometry at these places \cite[Theorem IV.6.4]{Silverman}.
+
+The primary approximate ratio is exactly
+\[
+ L_i=r_i\frac{\mathcal A(H)}{\mathcal A(U_i)}.
+\]
+The alternate ratio is $r_i'$ times a conjugated quotient of units
+$G_2/\mathcal A$ or $\mathcal R/\mathcal A$, with the denominator
+using $\mathcal R$ at $V_0$. This remains true when a numerator point
+is $O$, since both the approximate ratio and its rational index ratio
+then equal zero.
+
+At the odd prime $p$, $h,h-1\in\Z_{(p)}$ differ by one, so at least
+one is a unit. The corresponding full ratio is integral because the
+integer labels are integral. Multiplication by the indicated analytic
+units preserves its valuation. The positive-order test $C_i=L_i-L_i'$
+then transfers integrality to the other approximate ratio and hence
+to both full ratios. This step uses only the initially known formal
+branches and the unit assertion in Lemma~\ref{lem:logerror}; it does
+not use the deeper precision conclusion.
+
+Now $L_i=z(U_i)/z(H)$ is integral. If $U_i\ne O$, it follows that
+$v(z(U_i))\ge v(z(H))\ge10$. The primary relative error is therefore
+at least forty. If $U_i=O$, its error is exactly zero. The alternate
+relative error is at least twelve for $i=1$ and forty for $i>1$.
+The full ratios are integral, so these relative errors give absolute
+congruences. Together with the cross tests, they yield
+\[
+ L_i\equiv r_i\equiv r_i'\pmod{p^{k_i}},
+ \qquad k_1=10,\quad k_i=40\ (i>1).
+\]
+Multiplying by the integral numbers $h$ and $h-1$ and subtracting
+shows
+\begin{equation}\label{eq:indices}
+           L_1\equiv n\pmod{p^{10}},\qquad
+           L_i\equiv n_i\pmod{p^{40}}\quad(i>1).
+\end{equation}
+At an inert prime conjugation preserves the local valuation, and
+the identical argument applies. This proves the required local
+comparison without an assumption that either numerator is nonzero
+or that $h$ is an integer.
+
+\section{Global soundness and completeness}
+Equation~\eqref{eq:indices}, the order-ten input test, and the
+order-forty Lucas test give precisely the divisibility statements
+used by the retained global height proof. The Lucas polynomial has
+integer coefficients and all three relevant approximate ratios are
+integral at the extracted place, so substitution of the integer
+indices changes its value by a multiple of $p^{40}$. The input test
+similarly gives the original order-ten divisibility for the numerator
+of $n-\beta$. Thus the same height contradictions force the Lucas
+identity and then $n=\beta$. Since $51$ is squarefree,
+$51x^2+2504\in\Z$ implies $x\in\Z$: a reduced denominator $v$ would
+satisfy $v^2\mid51$. The scalar lower bound and every numerical
+threshold in the explicit construction are unchanged. This proves soundness at the scope stated in
+Theorem~\ref{thm:families}.
+
+For completeness retain the source's choice of integer root labels,
+scalar point, scales, fixed local preparation, contact primes, and
+common auxiliary group index. At each selected primary place its
+construction gives depth at least twenty for $H$, formal depth at
+least one for each other relevant point, cross precision at least
+forty for $C_2,C_3,C_4$, input cross precision at least twelve,
+and exact target and Lucas relations to the needed precision.
+Consequently every nonconstant term in
+\eqref{eq:factor1}--\eqref{eq:factor4} has positive valuation when
+$\nu=1$. For example the lower bounds for the first factor are
+$1,42,4,8$. Hence $W\equiv1$ at the designated place. At the opposite
+place each factor has valuation at most zero and is one modulo the
+prime if its valuation is zero. Thus the trace of $W^{-1}$ reduces
+to 1 or 2 and is a unit, as required for the retained pole input.
+
+At the fixed exceptional primes, take neighborhoods of the already
+prepared points on which all test valuations are bounded below.
+For $\lambda=u/(D_0^2w^2)$, choose the fixed integer $D_0$ sufficiently
+divisible before choosing the primes. Since the zero contact makes
+$u$ a selected prime outside the fixed exceptional set, the argument
+of \cite[Section 3]{Shared} gives
+\[
+        v(q)=2v(a_*)-3v(\lambda)
+                \ge2v(a_*)+6v(D_0).
+\]
+All exponents of $q$ in the new factors are positive, so the new
+terms are arbitrarily small simultaneously on those neighborhoods.
+This preserves the local squareclasses and lower valuation bounds
+at $2,3,17$ and the scalar conditions.
+
+At both real embeddings, $q$ tends to zero through positive values
+and the test values remain bounded on the selected real neighborhoods.
+Every test power in the four factors is even. Thus $W\to1$ through
+positive values and the pole input has the same positive decay as in
+the retained construction. Outside the selected primes the detector
+has even valuation; the squared trace denominator therefore preserves
+the square reduced-denominator condition. The pole realization gives
+all remaining witnesses. This proves completeness without strengthening
+the simultaneous prime-pattern input.
+
+\section{Quadratic specification and exact verification}
+The scalar weight circuit is
+\[
+ q_2=q^2,\quad q_4=q_2^2,\quad c q_4=q,\quad q_8=q_4^2,
+ \quad c q_{19}=q_8^2,\quad q_{38}=q_{19}^2,
+ \quad c q_{79}=q_{38}^2.
+\]
+At a contact these force the displayed powers, and their degenerate
+stratum is already covered by \eqref{eq:clearedweights}.
+The required squared tests are retained coordinates or affine
+combinations of them. The fourth powers of $B_1$ and the eighth
+powers of $B_0,B_2,B_3,B_4$ are already present in the logarithm
+circuits. Exactly five additional field values are needed:
+\[
+                  C_1^4,\ I^4,\ A_1^4,\ A_2^4,\ A_3^4.
+\]
+Each is computed by two rational quadratic equations from its existing
+square, using $(u+v\rho)^2=u^2+2v^2+2uv\rho$.
+
+For each detector the four factors cost eight rational coordinates.
+Two intermediate field products cost four more; the final field
+product uses the retained coordinates of $W$. Thus each detector
+costs twelve new coordinates and fourteen quadratic equations.
+The complete count is
+\[
+\begin{array}{lr}\toprule
+\text{retained coordinates, including input}&276\\
+\text{five shared field powers}&10\\
+\text{four factors and intermediate products for three detectors}&36\\\midrule
+\text{total coordinates}&322\\\midrule
+\text{retained quadratic rows}&242\\
+\text{shared power rows}&10\\
+\text{factor and product rows}&42\\\midrule
+\text{total quadratic rows}&294\\\bottomrule
+\end{array}
+\]
+
+The exact scripts use rational arithmetic, clear each row's
+coefficient denominators, and divide by its integer content. Since a
+sum of rational squares vanishes precisely when each term vanishes,
+the resulting quartic has the required input projection.
+The independent checker imports no code from the producer. It
+reconstructs every new row, checks every retained row against the
+pinned source, derives the free fourth and eighth powers by arithmetic
+in $\Q(\sqrt2)$, and expands the entire sum of squares by unordered
+pairs. It also verifies coordinate occurrence, degree, content,
+coefficient support, the height comparison, and 70912 supplementary
+finite valuation cases. The finite cases supplement, and do not replace,
+the valuation proofs above.
+
+The unique coefficient involving $A_N^2$ is the coefficient of the
+actual scalar contact product squared, equal to $A_N^2+1$.
+Every other coefficient is a nonzero constant or a nonzero constant
+multiple of $A_N$. This proves support independence for positive
+$A_N$. The maximum constant coefficient $C$ has 1520 binary digits,
+and the maximum linear multiplier is
+$L=2\cdot80989^2=13118436242$. Exact integer comparison gives
+\[
+ C>L^2,\qquad 80989^{90}+1<C<80989^{94}+1,\qquad 80989^{47}>L.
+\]
+Therefore $H(P_N)=\max(C,A_N^2+1)$ for every positive integer $N$,
+and $H(P_N)=A_N^2+1$ exactly when $N\ge23$.
+This algebraic height threshold does not alter the defining threshold
+$N\ge27464$ in the explicit theorem.
+
+\begin{thebibliography}{99}
+\bibitem{Dependencies} Project repository,
+\emph{Arithmetic dependencies of the defining-polynomial constructions},
+\nolinkurl{arithmetic_dependencies_20261108_v8.tex}.
+\bibitem{Shared} Project repository,
+\emph{Shared local weights and defining quartics},
+\nolinkurl{shared_local_weights_20261109_v12.tex}.
+\bibitem{Explicit} Project repository,
+\emph{An explicit quartic in 342 variables},
+\nolinkurl{quartic342_20261109_v12.tex}.
+\bibitem{Sums} Project repository,
+\emph{Effective heights of sums of elliptic abscissas},
+\nolinkurl{effective_elliptic_sums_20261108_v10.tex}.
+\bibitem{Selection} Project repository,
+\emph{Prime selection with fixed congruences and separated reduction orders},
+\nolinkurl{prime_selection_20261109_v12.tex}.
+\bibitem{Silverman} J. H. Silverman,
+\emph{The Arithmetic of Elliptic Curves}, second edition,
+Graduate Texts in Mathematics 106, Springer, 2009.
+\end{thebibliography}
+\end{document}
