@@ -1,0 +1,63 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\newtheorem{theorem}{Theorem}
+\begin{document}
+\section*{Finite sets of coefficients in a quartic pole equation}
+\begin{theorem}
+Let $C$ be a finite nonempty subset of $\mathbb Q^\times$.
+There are arbitrarily small prepared positive rational numbers $b$
+such that, for every $\kappa\in C$, the smooth projective curve
+\[
+                  Y^2=1+\kappa b(1+bv^2)^2
+\]
+has no rational point. Here prepared means square reduced denominator,
+$0<b<17$, local squareclasses at $2,3,17$, and valuations at least
+$3,1,2$ at these three primes, respectively.
+\end{theorem}
+\begin{proof}
+Write each $\kappa=a_\kappa/d_\kappa$ in reduced form with
+$d_\kappa>0$, and set
+\[
+             M=408\prod_{\kappa\in C}|a_\kappa d_\kappa|.
+\]
+There is a prime $p\equiv1\pmod M$. Indeed, any prime divisor
+$p$ of $\Phi_M(M)>1$ is coprime to $M$, because
+$\Phi_M(0)=1$. In characteristic $p$, the polynomial $x^M-1$
+is separable. Its cyclotomic factors are therefore pairwise coprime,
+and the residue of $M$, being a root of $\Phi_M$, has exact
+multiplicative order $M$. Hence $M\mid p-1$.
+
+In particular $p\equiv1\pmod8$ and $p\equiv1\pmod r$ for
+every odd prime divisor $r$ of a numerator or denominator of a
+member of $C$. Quadratic reciprocity shows that $-1$, $2$, and
+every such $r$ are squares modulo $p$. Each $\kappa\in C$ is
+therefore a $p$-adic unit with square residue.
+
+Choose a nonzero nonsquare $d$ modulo $p$. The Chinese remainder
+theorem gives a positive integer $c$ satisfying
+$c\equiv1\pmod{408}$ and $c\equiv d\pmod p$.
+For sufficiently large integers $m$, put
+\[
+                         b_m=c(204/p^m)^2.
+\]
+Then $0<b_m<17$, its reduced denominator is $p^{2m}$, and
+its valuations at $2,3,17$ are $4,2,2$. Since $c$ is congruent
+to one modulo $8,3,17$, it is a square in each of the three
+corresponding completions. Thus $b_m$ is prepared.
+
+At $p$, the valuation of $b_m$ is $-2m$ and its leading unit
+$c\cdot204^2$ is a nonsquare. For any $v\in\mathbb Q_p$,
+$1+b_mv^2$ has valuation at most zero. The only potential
+cancellation is when $v_p(v)=m$, but its second summand then
+has nonsquare residue whereas $-1$ is square. Consequently
+$\kappa b_m(1+b_mv^2)^2$ has negative even valuation and
+nonsquare leading unit. Adding one preserves these properties,
+so the right side cannot be a square. The two points at infinity
+would require a square root of $\kappa b_m^3$, also absent
+over $\mathbb Q_p$. This holds for every $\kappa\in C$.
+The sequence $b_m$ tends to zero.
+\end{proof}
+This conclusion concerns all prepared inputs. It does not imply
+failure on the smaller family supplied by a simultaneous selection
+of comparison primes.
+\end{document}
