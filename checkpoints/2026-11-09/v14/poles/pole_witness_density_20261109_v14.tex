@@ -1,0 +1,249 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,hyperref}
+\usepackage[margin=27mm]{geometry}
+\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\newcommand{\A}{\mathbb A}
+\DeclareMathOperator{\Norm}{Norm}
+\title{Zariski density of the prepared pole witnesses}
+\author{}\date{}
+\begin{document}\maketitle
+\begin{abstract}
+The simultaneous elliptic realization underlying the pole certificate
+gives more than one rational witness.  Its witnesses are Zariski dense
+in the two retained pole parameters.  Consequently finitely many
+additional nonzero polynomial conditions in those parameters may be
+imposed without strengthening the inherited arithmetic input.  We
+prove this by independently varying odd multiples of the two realized
+non-torsion points.  A finite-algebra corollary permits simultaneous
+nonvanishing of all conjugate second-root radicands whenever the pole
+input is already a unit in that algebra.  The result does not assert
+that the other source guards are simultaneously units.
+\end{abstract}
+
+\section{The realization input}
+
+Fix a prepared rational number $b$ in the sense of~\cite{Dependencies},
+and write
+\[
+ B=17b,\qquad V=B(B-b^2)>0,\qquad V=\theta c^2,
+\]
+where $\theta$ is the positive squarefree representative and
+$c\in\Q^\times$.  For $a\ne0$, put
+\[
+                      E_a:\quad y^2=x(x-a)(x+3a).
+\]
+The inherited simultaneous-realization input supplies a positive
+rational number $n$ and points
+\begin{equation}\label{eq:realization}
+ Q_1\in E_n(\Q),\qquad Q_2\in E_{n\theta}(\Q),\qquad
+ x(Q_1),x(Q_2)\in B\Q^{\times2},
+\end{equation}
+outside the two-torsion.  Its construction includes a fresh prime
+of odd valuation in $n$ outside the support of $\theta$; thus neither
+$n$ nor $n\theta$ is a rational square.  These are the same
+realized twists used in the source pole-chart lemma~\cite{Source}.
+
+\begin{lemma}\label{lem:torsion}
+If $a\in\Q^\times$ is not a square, then
+$E_a(\Q)_{\rm tors}=E_a[2](\Q)$.
+\end{lemma}
+\begin{proof}
+There is full rational two-torsion.  Mazur's torsion theorem
+\cite{Mazur} therefore leaves the groups
+$\Z/2\Z\times\Z/(2m)\Z$, with $1\le m\le4$.
+It suffices to exclude points of orders three and four.
+
+The three-division polynomial is
+\[
+                3x^4+8ax^3-18a^2x^2-9a^4.
+\]
+A rational root would give a rational zero of
+$3z^4+8z^3-18z^2-9$ on putting $z=x/a$.
+This polynomial has no root modulo $5$: its five values are
+$1,4,1,3,3$.  A rational zero cannot have negative $5$-adic
+valuation, since the leading coefficient is a $5$-adic unit.
+Thus no rational zero exists.
+
+If a rational two-torsion point with abscissa $e_i$ is a double,
+its differences $e_i-e_j$ and $e_i-e_k$ from the other two roots
+must be rational squares.  This necessary condition follows
+directly from the doubling formula for a cubic with three
+rational roots.  At $e_i=0$, the differences $-a,3a$ have
+opposite signs.  At $e_i=-3a$, their ratio is $3/4$, not a
+rational square.  At $e_i=a$, they are $a,4a$, which cannot
+both be squares under the hypothesis.  Hence no point of order
+four exists, and the stated torsion group follows.
+\end{proof}
+
+In particular, both points in~\eqref{eq:realization} have infinite
+order.  For the density theorem it is enough to assume directly
+the existence of the two infinite-order points in that display.
+This formulation makes the exact arithmetic dependency explicit.
+
+\section{Two independent infinite sets of witnesses}
+
+The squareclass map
+\[
+ \alpha_a:E_a(\Q)\longrightarrow\Q^\times/\Q^{\times2},
+ \quad O\longmapsto1,\quad (0,0)\longmapsto-3a^2,
+ \quad (x,y)\longmapsto x\quad(x\ne0)
+\]
+is a homomorphism.  This follows from the chord-and-tangent law:
+the product of the three abscissas cut out by a line with nonzero
+intercept is a square.  The lines through $(0,0)$ give its
+displayed exceptional value; see also~\cite[Lemma~2.2]{Fixed}.
+Thus every odd multiple of $Q_i$ has the same nonzero abscissa
+squareclass $B$.  The abscissas of the positive odd multiples
+form an infinite set, since an abscissa determines at most two
+points and $Q_i$ has infinite order.
+
+Choose arbitrary positive odd multiples and write
+\[
+ Q_1'=(Bu^2,y_1)\in E_n(\Q),\qquad
+ Q_2'=(Bv^2,y_2)\in E_{n\theta}(\Q),
+ \qquad u,v\in\Q^\times.
+\]
+Define
+\begin{equation}\label{eq:witness}
+ \begin{gathered}
+ e=\frac{n}{Bu^2},\qquad
+ p=\frac{y_1}{Bu^3},\qquad s=\frac{cv}{u},\qquad
+ q=\frac{c^2y_2}{B^2u^2v}.
+ \end{gathered}
+\end{equation}
+Rescaling the first curve by $u^{-1}$ and the second by $c/u$
+gives the identities
+\[
+                 p^2=B(1-e)(1+3e),\qquad
+                 Bq^2=(s^2-eV)(s^2+3eV).
+\]
+None of $p,q,s$ vanishes, because neither multiple is torsion.
+Since $n,B>0$ and the positive abscissa of a non-torsion point
+on $E_n$ is greater than $n$, one has $0<e<1$.
+Consequently the single rational chart is available:
+\begin{equation}\label{eq:chart}
+ \tau=\frac{p}{e-1},\qquad
+ e=\frac{\tau^2-B}{\tau^2+3B},\qquad
+ p=-\frac{4B\tau}{\tau^2+3B}.
+\end{equation}
+
+\begin{theorem}\label{thm:density}
+Assume the realization input~\eqref{eq:realization}.  The set of
+pairs $(\tau,s)\in\Q^2$ obtained from rational pole witnesses
+with $pqs\ne0$ is Zariski dense in $\A^2$.
+In particular, if $F_1,\ldots,F_r\in\overline\Q[T,S]$ are
+nonzero polynomials, there is a witness in the single chart
+\eqref{eq:chart} with
+\[
+                  F_j(\tau,s)\ne0\qquad(1\le j\le r).
+\]
+\end{theorem}
+\begin{proof}
+Varying the positive odd multiple $Q_1'$ gives infinitely many
+values of $u^2$, and therefore infinitely many values of
+$e=n/(Bu^2)$.  Formula~\eqref{eq:chart} shows that the corresponding
+$\tau$ values also form an infinite set.
+
+Fix one such choice of $Q_1'$ and hence one value of $\tau$.
+Independently varying the positive odd multiple $Q_2'$ gives
+infinitely many values of $v^2$, and hence infinitely many
+values of $s=cv/u$.
+
+Suppose a polynomial $F(T,S)$ vanishes on every pair so obtained.
+For each of the infinitely many fixed values $\tau$, the polynomial
+$F(\tau,S)$ has infinitely many zeros and is therefore zero.
+Its coefficient polynomials in $T$ vanish at infinitely many
+values, so each is zero.  Thus $F=0$, proving density.  Applying
+this argument to the nonzero product $F_1\cdots F_r$ proves the
+last assertion, equally over any algebraic extension of $\Q$.
+\end{proof}
+
+\begin{corollary}\label{cor:several}
+For any finite list of independently prepared pole inputs, the
+product of their rational witness sets is Zariski dense in the
+product of their parameter planes.  Any finite collection of
+nonzero polynomial conditions involving all those parameters
+can therefore be avoided simultaneously.
+\end{corollary}
+\begin{proof}
+Products of Zariski-dense subsets are Zariski dense, by applying
+the one-factor coefficient argument successively.
+\end{proof}
+
+\section{Nonvanishing in a finite algebra}
+
+Let $A$ be a finite-dimensional commutative $\Q$-algebra of dimension
+$d>0$.  Reducedness is not assumed.  Suppose $\mathcal B$ is a
+unit of $A$, and let $\mathcal V\in A$.  For indeterminates $T,S$,
+put
+\[
+ \mathcal D(T)=T^2+3\mathcal B,\qquad
+ \mathcal e(T)=\frac{T^2-\mathcal B}{T^2+3\mathcal B}
+\]
+in the localization where $\mathcal D$ is a unit, and define
+\[
+ \mathcal R(T,S)=
+ \frac{(S^2-\mathcal e(T)\mathcal V)
+            (S^2+3\mathcal e(T)\mathcal V)}{\mathcal B}.
+\]
+The algebra norm is the determinant of multiplication on $A$.
+
+\begin{proposition}\label{prop:radicands}
+The polynomial $\Norm_A(\mathcal D(T))$ is monic of degree $2d$.
+For every rational $t$ where this norm is nonzero,
+\[
+               \Norm_A(\mathcal R(t,S))\in\Q[S]
+\]
+has degree $4d$ and nonzero leading coefficient
+$\Norm_A(\mathcal B^{-1})$.
+\end{proposition}
+\begin{proof}
+The multiplication matrix of $\mathcal D(T)$ is
+$T^2I+3M_{\mathcal B}$, giving the first assertion.
+At an admissible $t$, the radicand $\mathcal R(t,S)$ has degree
+four in $S$ and leading coefficient $\mathcal B^{-1}$.
+Its multiplication matrix therefore has leading coefficient
+$M_{\mathcal B^{-1}}$, whose determinant is nonzero.
+The determinant has degree $4d$ with the asserted leading term.
+\end{proof}
+
+Suppose a rational character $A\to\Q$ sends $\mathcal B$ to
+the actual $B$ of a prepared pole input, and sends $\mathcal V$
+to its actual $V$.  Theorem~\ref{thm:density} and
+Proposition~\ref{prop:radicands} then allow an actual rational
+pole witness with both displayed norms nonzero.  Hence its chart
+denominator and its second-root radicand are units simultaneously
+at every geometric character of $A$.  This remains true for several
+poles by Corollary~\ref{cor:several}.
+
+The hypothesis that $\mathcal B$ is already a unit is essential to
+this application.  The density theorem proves avoidance of nonzero
+specialized polynomial conditions; it cannot remove a condition
+that vanishes identically after the other source coordinates have
+been fixed.  In particular, it does not establish simultaneous
+nonvanishing of all point-chart discriminants or all source
+denominators.  Those require a separate argument.
+
+\begin{thebibliography}{9}
+\bibitem{Dependencies}
+\emph{Arithmetic dependencies of the construction with 29 variables},
+project paper, version 8, 8 November 2026.
+\bibitem{Source}
+\emph{A defining polynomial in twenty-seven variables:
+an existence theorem with a uniform degree bound},
+project paper, version 12, 9 November 2026, pole-chart lemma.
+\bibitem{Fixed}
+\emph{No constant pole parameter is complete},
+project paper, version 14, 9 November 2026.
+\bibitem{Mazur}
+B.~Mazur, \emph{Modular curves and the Eisenstein ideal},
+Publications Math\'ematiques de l'IH\'ES \textbf{47} (1977), 33--186,
+\url{https://doi.org/10.1007/BF02684339}.
+\end{thebibliography}
+\end{document}

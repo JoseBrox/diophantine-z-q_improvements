@@ -1,7 +1,8 @@
 # Number fields: finite correspondences and exceptional fibers
 
-Date: 9 November 2026. All statements below are unconditional consequences
-of the semiabelian Mordell--Lang theorem. No point-stability hypothesis,
+Date: 9 November 2026. The finiteness theorem follows unconditionally
+from semiabelian Mordell--Lang; the genus-one extension also uses
+Siegel and Merel. No point-stability hypothesis,
 Diophantine definition of Z in Q, or Vojta conjecture is used.
 
 ## Main theorem: finite values on geometric fibers
@@ -128,3 +129,117 @@ geometrically finite correspondences by adding the constructible
 image argument. They are applications of established arithmetic
 theorems, not claims of a new proof of Mordell--Lang or of a
 counterexample to general Diophantine definability of O_k in k.
+
+## Bounded outputs from unirational fibers
+
+A nonconstant rational function f∈k(T) has values with arbitrarily
+negative valuation at infinitely many finite places. For a polynomial,
+use arguments of very negative valuation outside the coefficient
+exceptions. Otherwise choose an irreducible denominator factor H.
+Schur's elementary prime-divisor argument applied to a cleared norm
+polynomial N_{k/Q}(H(T)) supplies infinitely many primes having a simple
+local root of H, after excluding discriminant/resultant primes. Hensel
+lifts that root, the coprime numerator is nonzero there, and weak
+approximation gives k-arguments arbitrarily close to the pole. Removing
+finitely many arguments changes nothing.
+
+Consequently a nonconstant rational function on a k-unirational variety
+cannot have uniformly bounded denominators on all its rational points
+in the domain: compose a dominant rational parametrization with a
+suitable k-line and use the preceding lemma.
+
+Suppose pi:V→A has geometrically integral fibers, and each fiber with
+a k-point in the domain of h is k-unirational. If h(V(k)) has bounded
+denominators, h must be constant on every such soluble fiber. Let W
+be its constructible graph image in A×A1. The locus of a for which
+W_a is finite is constructible, by constructibility of fiber dimensions
+(Stacks, tag05F9, applied to a finite locally closed decomposition of W).
+All actual output points lie over this locus. Its graph image has finite
+geometric fibers, so the main theorem applies. Such a bounded-output
+construction still misses almost every power of2 and cannot contain Z.
+
+This applies in particular to smooth conic or positive-dimensional
+quadric families over an abelian base: a soluble fiber is k-rational.
+Additional equations must be included in V before assessing this
+hypothesis; the statement does not silently replace their existential
+projection by all points of a parametrizing ambient space.
+
+## Genus-one families, without a section
+
+Let B be a finite-type locally closed subvariety of an abelian variety
+A/k. Let C→B be a smooth proper family of geometrically connected
+genus-one curves equipped with a relatively ample line bundle L.
+Let h be a rational output on an open domain U. If every value in
+h(U(k)) has uniformly bounded denominators, then the output set meets
+every a+bΛ (b≠0, Λ⊂k* finitely generated) in finitely many values.
+It therefore cannot contain all integers. A zero section is NOT required.
+
+Complete proof: the constructible image W⊂A×A1 has a constructible
+finite-image fiber locus B0, by fiber-dimension constructibility
+(Stacks tag05F9 on a finite locally closed decomposition). Actual
+outputs above B0 are handled by the main theorem. On every other
+fiber contributing a rational witness, the output is nonconstant on
+a nonempty open subset of a projective genus-one curve. Siegel gives
+only finitely many rational points with the required denominator
+bound. Since the fiber is soluble, its rational points are a torsor
+under its Jacobian's k-points, so that Jacobian must have rank zero.
+Merel gives one integer N=N(k) annihilating all its rational points.
+
+The positive degree d=deg(L_b) is locally constant; split finitely
+many connected components so it is constant. The relative Jacobian
+J=Pic^0(C/B) is an elliptic scheme. The intrinsic divisor-class map
+
+    α_L: C → J,  P ↦ [O(dP)⊗L_b^(-1)]
+
+is induced by O(dΔ)⊗pr2*L^(-1) on C×_B C. Over a geometric fiber,
+choosing any origin identifies it with a translate of [d], so its
+degree is d². It is proper and quasi-finite, hence finite. For every
+rational witness on a nonconstant contributing fiber, α_L(P) lies in
+J_b(k), which is torsion annihilated by N. Therefore all those witnesses
+lie in the fixed finite cover F=α_L^(-1)(J[N])→B. Its composite to A
+is quasi-finite, so the main theorem handles their outputs as well.
+Affine transforms of h preserve the bounded-denominator hypothesis.
+
+The chosen rational origin in a soluble fiber is used ONLY to infer
+rank zero. It is not used to construct F. The intrinsic degree-d
+map is why genus-one torsors are covered too. Taking L=O(O), d=1,
+recovers the simpler elliptic-scheme proof. Finite stratifications
+of the base preserve the result. Higher-genus curves remain outside
+this argument because finite rational point sets do not force their
+Jacobians to have rank zero.
+
+Primary sources:
+- L. Merel, *Bornes pour la torsion des courbes elliptiques sur les
+  corps de nombres*, Invent. Math.124 (1996),437--449, introductory
+  Corollary; author PDF:
+  https://perso.imj-prg.fr/wp-content/uploads/merel-pub/torsion.pdf.
+- S. Bosch, W. Lütkebohmert, M. Raynaud, *Néron Models*, Springer1990,
+  Chapter9 (relative Jacobians), especially §9.4 Theorem1 for the
+  smooth separated Picard identity component in the semistable case;
+  smooth connected fibers make this an abelian scheme.
+  https://doi.org/10.1007/978-3-642-51438-8_10.
+  Primary chapter text indexed at
+  https://math.arizona.edu/~cais/scans/BLR-Neron_Models/neron4.pdf
+  (full web fetch exceeded size limit; indexed theorem text checked).
+- S. Y. An et al., *Jacobians of genus one curves*, J. Number Theory90
+  (2001),304--315, §1 explicitly gives Q↦[dQ−D] of degree d²:
+  https://archive.math.arizona.edu/wmc/Research/JacobianFinal.pdf.
+  Author's corrigendum permits any positive degree, not just minimal:
+  https://www.math.lsu.edu/~aperlis/publications/jacobians/.
+
+## Stable deliverables and exact verification
+
+- finite_correspondences_and_denominators_20261109_v14.tex:
+  polished complete paper; source statements and all new consequences
+  have full proofs. PDF is compiled from this source.
+- check_exceptional_correspondence.py: standard-library exact sparse
+  Laurent-polynomial checker of the sharp exceptional surface.
+- exceptional-correspondence-certificate.json: PASS, including both
+  inverse identities, all four complete exceptional lines, and boundary
+  Jacobian minors ±36.
+
+No general counterexample to Diophantine definability of O_k in k is
+claimed. The obstruction now covers finite correspondences, soluble
+unirational fibers with bounded outputs, and smooth projective genus-one
+families with bounded outputs. Positive-dimensional higher-genus or other
+non-unirational fibers remain genuine possibilities.
