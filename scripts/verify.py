@@ -87,6 +87,22 @@ def main():
         for p,raw in packed_originals.items():
             assert p.read_bytes()==raw,str(p)
         stages.append(run('301/351-variable independent complete coefficient and valuation checks',quartic/'check_quartic_mixed.py'))
+        shared_weight_originals = {}
+        shared_weight_checks = {}
+        for count in (297,342):
+            for name in (f'quadratic-family{count}.json',f'polynomial-family{count}.json',f'construction-report{count}.json'):
+                p=quartic/f'family{count}'/name
+                shared_weight_originals[p]=p.read_bytes()
+            p=quartic/f'family{count}'/f'independent-verification{count}.json'
+            shared_weight_checks[p]=p.read_bytes()
+        stages.append(run('297/342-variable exact shared-weight constructions and affine normalization',
+            quartic/'build_quartic_shared_weights.py'))
+        for p,raw in shared_weight_originals.items():
+            assert p.read_bytes()==raw,str(p)
+        stages.append(run('297/342-variable independent complete coefficient and exact-height checks',
+            quartic/'check_quartic_shared_weights.py'))
+        for p,raw in shared_weight_checks.items():
+            assert p.read_bytes()==raw,str(p)
         few=work/'computation/few_variables'
         module=few/'forced_prime29'
         module_manifest=json.loads((module/'manifest.json').read_text())
@@ -107,10 +123,32 @@ def main():
             work/'computation/effective_sums/check_effective_elliptic_sums.py'))
         stages.append(run('27-variable cubic-chart family and uniform degree bound',
             few/'trace27_nontorsion/reproduce.py','--anchor-exponent','137731'))
+        weighted=few/'weighted_elimination'
+        for count,source in (
+                (27,few/'trace27_nontorsion/example_L137731/polynomial-specification.json'),
+                (29,few/'effective29_nontorsion/certificate/polynomial-specification.json')):
+            destination=weighted/f'weighted{count}'
+            fixed_weighted={name:(destination/name).read_bytes() for name in
+                ('polynomial-specification.json','construction-certificate.json')}
+            stages.append(run(f'{count}-variable weighted finite-algebra specification reconstruction',
+                weighted/'build_weighted_specification.py',source,destination))
+            for name,raw in fixed_weighted.items():
+                assert (destination/name).read_bytes()==raw,str(destination/name)
+        weighted_verification=(weighted/'verification.json').read_bytes()
+        stages.append(run('Independent weighted degree bounds and guarded finite-algebra examples',
+            weighted/'check_weighted_specification.py',weighted/'weighted27',weighted/'weighted29',
+            '--output',weighted/'verification.json'))
+        assert (weighted/'verification.json').read_bytes()==weighted_verification
         stages.append(run('Quadratic extension square chart: exact cubic identities',
             work/'computation/quadratic_squares/check_quadratic_square_chart.py'))
         stages.append(run('Scalar normalization: Bezout certificate and exhaustive residue check',
             work/'computation/scalar_normalization/check_scalar_normalization.py'))
+        input_normalization=work/'computation/input_normalization'
+        input_certificate=(input_normalization/'quadratic-input-obstruction-certificate.json').read_bytes()
+        stages.append(run('Restricted quadratic input-map obstruction',
+            input_normalization/'check_quadratic_input_obstruction.py','--output',
+            input_normalization/'quadratic-input-obstruction-certificate.json'))
+        assert (input_normalization/'quadratic-input-obstruction-certificate.json').read_bytes()==input_certificate
         stages.append(run('Independent fixed-prime numerical certificates',
             work/'computation/arithmetic/check_forced_prime_20261108_v8.py'))
         stages.append(run('Elliptic chart arithmetic',few/'verify_elliptic_chart.py'))
@@ -122,6 +160,11 @@ def main():
             assert (constants/'data'/name).read_bytes()==raw
         stages.append(run('Anisotropic forms and residue fields',
             work/'computation/field_extensions/verify_anisotropic_examples.py'))
+        number_fields=work/'computation/number_fields'
+        norm_verification=(number_fields/'norm-image-reduction-verification.json').read_bytes()
+        stages.append(run('Number-field norm-image reduction and elliptic valuation obstruction',
+            number_fields/'check_norm_image_reduction.py'))
+        assert (number_fields/'norm-image-reduction-verification.json').read_bytes()==norm_verification
     report={'status':'PASS','manifest_files_checked':len(manifest['files']),
         'compressed_tables_restored':restored,'stages':stages,
         'scope':'Exact source identities, full quartic coefficients, finite-algebra specification, local constants and quantitative bounds. The global arithmetic projection premises are stated separately in the papers.'}

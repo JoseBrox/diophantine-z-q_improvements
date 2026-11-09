@@ -1,0 +1,642 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,booktabs,microtype,xcolor}
+\usepackage[margin=26mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue!45!black,citecolor=blue!45!black,urlcolor=blue!45!black]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}\newtheorem{remark}[theorem]{Remark}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}\newcommand{\HH}{\mathcal H}
+\DeclareMathOperator{\Tr}{Tr}\DeclareMathOperator{\Nm}{N}
+\setlength{\emergencystretch}{2em}
+\title{Common local weights and quartics in 297 and 342 variables}
+\author{}\date{9 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+We specify two families of integer quartics by complete quadratic systems
+and coefficient tables. The first has 297 total variables and 271 quadratic
+rows; the second has 342 total variables and 314 quadratic rows. Their
+local conditions of orders $1$, $10$ and $40$ use powers of one rational
+weight. A seven-equation quadratic presentation of these powers replaces
+separate rational weight computations. We prove the local extraction
+statement, including the nonvanishing needed for cleared trace equations,
+and simultaneous completeness at every finite place and at the real places.
+Under the stated arithmetic premises, all sufficiently large members of
+the 297-variable family define the integers in the rationals, and every
+member of the 342-variable family with parameter $N\ge27464$ does so.
+The latter gives an explicitly specified quartic with 4938 nonzero monomials
+and coefficient height less than $2^{1791283}$.
+\end{abstract}
+
+\section{Statements and arithmetic scope}
+All variable counts include the input coordinate $X$. Degree is total
+degree. If $P$ has integer coefficients, $H(P)$ denotes their largest
+absolute value. For $N\ge1$ put $A_N=80989^{2N+1}$. The fixed number
+$A_N$ is a coefficient parameter, not a polynomial variable.
+
+The coefficient tables \nolinkurl{quadratic-family297.json} and
+\nolinkurl{quadratic-family342.json} specify primitive integer quadratic
+rows $Q_{N,j}$ in respectively 297 and 342 coordinates. Define
+\[
+ P_N^{(297)}=\sum_{j=1}^{271}Q_{N,j}^2,
+ \qquad P_N^{(342)}=\sum_{j=1}^{314}Q_{N,j}^2.
+\]
+The complete expanded coefficients are recorded in the files
+\begin{center}
+\nolinkurl{polynomial-family297.json}\\
+\nolinkurl{polynomial-family342.json}.
+\end{center}
+
+\begin{theorem}\label{thm:main}
+Under the arithmetic premises specified below, the following hold.
+\begin{enumerate}
+\item There exists $N_0\ge27464$ such that, for every $N\ge N_0$,
+\[
+ x\in\Z\quad\Longleftrightarrow\quad
+ \exists\boldsymbol y\in\Q^{296},\ P_N^{(297)}(x,\boldsymbol y)=0.
+\]
+The proof does not determine a numerical sufficient value of $N_0$.
+\item For every $N\ge27464$,
+\[
+ x\in\Z\quad\Longleftrightarrow\quad
+ \exists\boldsymbol y\in\Q^{341},\ P_N^{(342)}(x,\boldsymbol y)=0.
+\]
+In particular $A_{27464}=80989^{54929}$ specifies a single such polynomial.
+\item Both families have degree exactly four and content one, with
+\[
+ H(P_N)<2^{1520}80989^{4N+2}\qquad(N\ge1).
+\]
+For every $N\ge1$ the numbers of nonzero coordinate monomials are 4268
+and 4938, respectively. The largest coefficient of $P_{27464}^{(342)}$
+has exactly 1791283 binary digits and is the coefficient of $r^2$.
+More precisely, both families have exact coefficient height
+$80989^{4N+2}+1$ for $N\ge23$.
+\end{enumerate}
+\end{theorem}
+
+Here are the retained arithmetic premises, stated in full in
+\cite[Section~2]{Source}. Let
+\[
+ K=\Q(\rho),\quad \rho^2=2,\quad d=3-\rho,\quad
+ E:y^2=x^3-d^2x,\quad
+ P=\left(\frac{57-28\rho}{8},\frac{-660+417\rho}{32}\right).
+\]
+We assume the specified group and height assertions
+$2E(K)=\Z P$ and $h(x([n]P))\ge n^2-6$ for $n\ne0$;
+the five-contact height inequality with
+\[
+ \HH=2^{110}210^{1800}\left(\prod_{p\le76176}p\right)^{19}+128
+ <2^{2093448};
+\]
+the obstruction to negative odd valuations supplied by the normalized
+pole equations outside $2,3,17$, together with their stated realization
+for a positive input less than $17$ with square reduced denominator and
+the required local squareclasses and valuations at $2,3,17$; and the
+simultaneous prime-pattern and conjugate reduction-order assertions with
+fixed finite congruences, real approximation, arbitrary fixed avoidance,
+and the weighted separation property used by the source construction.
+The selected contact primes are $1$ modulo $8\cdot3\cdot17$.
+The weighted separation and fixed denominator dilation are justified
+from the stated analytic estimates in \cite{Selection}. The present argument
+uses no stronger prime-selection or pole-realization statement. In particular, every additional integer introduced in the
+finite preparation is fixed before the contact primes are selected.
+
+For precision, the five-contact radical of $t=u/v$ in lowest terms,
+$v>0$, is the product of primes $p>76176$ having positive odd valuation
+on one of $v,u,u-v,u-2401v,32u+343v$. Outside the four exceptional
+finite contact values, the assumed inequality is
+$h(t)\le\HH M_5(t)^{19}$. The normalized contact change below adds only
+$\log3$ to the relevant height bound. The aggregate trace-height theorem
+and effective elliptic sum-height theorem used in the two respective
+families are proved in \cite{Aggregate,Sums}; their different effectiveness
+properties account for the distinction in Theorem~\ref{thm:main}.
+Finite coefficient verification alone proves none of the retained global
+arithmetic premises.
+
+\section{One weight for all required local orders}
+Write $\sigma$ for conjugation on $K/\Q$. At an odd rational prime,
+the valuations of $K$ are unramified and normalized by $v(p)=1$.
+Let $a\in\Q^{\times2}$, let $t=a\lambda$, and put
+\[
+ \Theta=\{0,-1/2,-1,1/2399,-32/407\},\qquad
+ F(t)=\prod_{\theta\in\Theta}(t-\theta),\qquad \delta=t-1.
+\]
+The retained quadratic system implies
+\begin{equation}\label{eq:retained}
+ F(t)e=(a\delta)^5,\qquad \delta^3q=e.
+\end{equation}
+These are identities among the represented quantities; the actual table
+expresses their products by quadratic rows. On the domain $\delta\ne0$,
+\begin{equation}\label{eq:weights}
+ R=\frac{F(t)}{a^5\delta^6},\qquad
+ q=\frac1{R\delta^4},\qquad q_m=q^{2m-1}\quad(m\ge1).
+\end{equation}
+The contact radical $M(t)$ is the product of primes $p>76176$ for which
+$v_p(t-\theta)$ is positive and odd for some $\theta\in\Theta$.
+
+\begin{lemma}\label{lem:domain}
+Every solution of \eqref{eq:retained} has $F(t)\ne0$. If $p\mid M(t)$,
+then $\delta\ne0$, $v_p(\delta)=0$, and $v_p(R)$ is odd. In particular
+$q\ne0$. If $\delta=0$, then $M(t)=1$; if $q=0$, then $\delta=0$.
+\end{lemma}
+\begin{proof}
+Every root of $F$ differs from $1$, so $F(t)=0$ would contradict the
+first equation, since $a\ne0$. For $p>76176$, each nonzero difference
+between distinct elements of $\Theta\cup\{1\}$ is a $p$-adic unit.
+A contact prime thus divides just one factor of $F(t)$ to positive odd
+order and makes $\delta$ a unit. Since $a$ is a rational square,
+$v_p(F(t))-5v_p(a)$ is odd. All prime divisors of the reduced numerators
+and denominators of $1-\theta$ are at most $76176$, proving $M(1)=1$.
+Finally $q=0$ gives $e=0$, and the first equation forces $\delta=0$.
+\end{proof}
+
+\begin{lemma}\label{lem:min}
+Let $v$ be an integer-valued discrete valuation, with $v(0)=+\infty$,
+and suppose $v(q)$ is odd. For arbitrary positive integers $m_j$ and
+field elements $D_j$, the nonzero summands of
+\[
+ T=1+\sum_{j=0}^{s-1}q^{(2m_j-1)2^j}D_j^{2^{j+1}}
+\]
+have distinct valuations. Hence $T\ne0$ and
+\[
+ v(T)=\min\bigl(0,2^j((2m_j-1)v(q)+2v(D_j)):0\le j<s\bigr)\le0.
+\]
+If $v(T)=0$, then $T$ is congruent to $1$ in the residue field.
+\end{lemma}
+\begin{proof}
+Each finite nonconstant valuation is $2^j$ times an odd integer. Its
+exact power of two divisor is therefore $2^j$, so it differs from zero
+and from every valuation with a different index. The smallest valuation
+is attained once. The ultrametric inequality is then an equality. If
+that smallest value is zero, all the nonconstant terms have positive
+valuation. A zero $D_j$ simply removes its term.
+\end{proof}
+
+\begin{proposition}\label{prop:extract}
+Suppose $p>2$, $\nu=v_p(R)$ is odd, and $v_p(\delta)=0$.
+Let $W=w_0+w_1\rho$ be a product of factors from Lemma~\ref{lem:min},
+using $q$ from \eqref{eq:weights}. Suppose the rational quantities
+$w_0,w_1,T_0,e,b$ satisfy
+\begin{equation}\label{eq:trace}
+ w_0^2-2w_0T_0-2w_1^2=0,\qquad e\delta b=T_0^2,
+ \qquad e\delta=R^{-1}.
+\end{equation}
+Suppose that $b\ne0$ cannot have negative odd $p$-adic valuation.
+Then $\nu>0$, and at one place $v\mid p$ every test in every factor
+satisfies $v(D_j)\ge m_j$.
+\end{proposition}
+\begin{proof}
+At every place above $p$, $v(q)=-\nu$ is odd. Every factor is nonzero
+and has nonpositive valuation by Lemma~\ref{lem:min}. In particular
+$W\ne0$. If $w_0=0$, the first cleared equation forces $w_1=0$,
+a contradiction. It follows from that equation that
+\[
+ T_0=\frac{\Nm(W)}{2w_0}=\frac1{\Tr(W^{-1})}\ne0,
+ \qquad b=\frac{R}{\Tr(W^{-1})^2}\ne0.
+\]
+Thus no inverse of $w_0$ or unproved nonvanishing assumption has been used.
+Put $\ell=\max_{v\mid p}v(W)\le0$. The trace inequality gives
+\[
+ v_p(\Tr(W^{-1}))\ge-\ell,
+ \qquad v_p(b)\le\nu+2\ell.
+\]
+The valuation of $b$ is odd. The obstruction therefore implies
+$0<v_p(b)\le\nu+2\ell$, so $\nu>0$ and $\ell>-\nu/2$.
+Choose a place attaining $\ell$. Each factor has valuation at least
+$\ell$, because all factor valuations are nonpositive and sum to $\ell$.
+Consequently every nonzero test term satisfies
+\[
+ 2^j\bigl((1-2m_j)\nu+2v(D_j)\bigr)>-\nu/2.
+\]
+Thus
+\[
+ v(D_j)>\left(m_j-\frac12-\frac1{2^{j+2}}\right)\nu
+ \ge m_j-\frac34.
+\]
+The last inequality uses $m_j\ge1$ and the positive odd integer $\nu\ge1$.
+Integrality gives $v(D_j)\ge m_j$. The assertion is automatic if $D_j=0$.
+\end{proof}
+
+\section{Simultaneous completeness}
+We now verify all places, including primes dividing new denominators.
+This step is needed because equality of contact valuations alone would
+not prove completeness.
+
+Fix an integer input, the scalar parameter, the four integer root labels,
+and the positive rational square scales $a_1,\ldots,a_r$. The retained
+point preparation gives nonempty real and finite-place neighborhoods
+on which all the rational test functions are defined. Choose smaller
+neighborhoods with compact closure; at each of finitely many prepared
+places their valuations have a fixed lower bound. Fix these neighborhoods
+and the scalar preparation before choosing contact primes.
+
+\begin{lemma}\label{lem:finite}
+Let $S$ be a fixed finite set of rational primes containing the prepared
+places and all required fixed denominators. There is a positive integer
+$D$, fixed before prime selection, such that the following holds uniformly
+for integers $u,w$ with $w\ne0$ and $u$ a prime outside $S$:
+\[
+ \lambda=\frac{u}{D^2w^2},\qquad t_i=a_i\lambda.
+\]
+For every $p\in S$, all the nonconstant terms of every modified factor
+can be made arbitrarily small $p$-adically by the choice of $D$.
+We may simultaneously require $D^2\theta/a_i\in\Z$ for every $i,\theta$.
+\end{lemma}
+\begin{proof}
+First clear the finitely many indicated denominators. Increasing $v_p(D)$
+then gives
+\[
+ v_p(\lambda)=-2v_p(D)-2v_p(w)\le-2v_p(D).
+\]
+Choose it so that, for each $i$,
+\[
+ v_p(t_i)<\min\bigl(0,\ v_p(\theta):\theta\in\Theta\setminus\{0\}\bigr).
+\]
+The ultrametric inequality gives
+\[
+ v_p(\delta_i)=v_p(t_i),\qquad v_p(F(t_i))=5v_p(t_i),
+ \qquad v_p(e_i)=5v_p(a_i).
+\]
+Therefore
+\begin{equation}\label{eq:smallq}
+ v_p(q_i)=5v_p(a_i)-3v_p(t_i)
+          =2v_p(a_i)-3v_p(\lambda)
+          \ge2v_p(a_i)+6v_p(D).
+\end{equation}
+This lower bound tends to infinity with $v_p(D)$, uniformly in $u,w$.
+For a test assigned order $m$ in position $j$, the valuation of its term
+is
+\[
+ 2^j\bigl((2m-1)v_p(q_i)+2v(D_j)\bigr).
+\]
+The tests have fixed valuation lower bounds in the chosen neighborhoods,
+so every such expression tends to infinity uniformly. The same argument
+at a place of $K$ above $p$ uses its normalized extension valuation;
+ramification at two changes no inequality. There are finitely many
+scales, places and tests, so one fixed integer $D$ works for all of them.
+\end{proof}
+
+The additional divisors of $D$ enter only the fixed avoidance modulus.
+The coefficient list in the prime pattern is fixed after this choice:
+\[
+ u-\frac{\theta}{a_i}D^2w^2.
+\]
+Repeated coefficients are identified. The coefficient $0$, contributed
+by $\theta=0$, makes $u$ itself one of the selected primes. The
+simultaneous selection premise supplies these primes with avoidance of
+the fixed data, the stated conjugate orders, and the fixed congruences.
+Thus the hypothesis that $u$ is prime outside $S$ is part of the same
+prime pattern, not a further independent restriction. A fixed enlargement
+of $D$ changes neither the exponent in the weighted count nor the
+permitted slowly decreasing separation parameter.
+
+\begin{proposition}\label{prop:complete}
+The retained scalar and prime preparation supplies simultaneous witnesses
+for all the modified detectors. No additional lower bound on the scalar
+parameter $N$ is needed for completeness.
+\end{proposition}
+\begin{proof}
+Apply Lemma~\ref{lem:finite} after the fixed point neighborhoods and
+scales have been chosen. At each detector, writing $v_*=D^2w^2$, the
+exact factorization is
+\begin{equation}\label{eq:Rproduct}
+ R_i=\frac{\displaystyle\prod_{\theta\in\Theta}
+                 (u-(\theta/a_i)v_*)}{v_*^5\delta_i^6}.
+\end{equation}
+Its denominator is a rational square. The selected primes avoid its
+support and the fixed contact differences. Hence $v_p(R_i)=1$ at
+its five selected contacts, and $v_p(R_i)$ is even elsewhere.
+
+At a selected contact prime the designated primary place satisfies
+$v(D_j)\ge m_j$ by the unchanged point and logarithm preparation.
+Since $v(q_i)=-1$, every new term has positive valuation there.
+Thus each factor is $1$ modulo the primary prime. At the opposite split
+place Lemma~\ref{lem:min} says that every factor either has negative
+valuation or is $1$ modulo the prime. Consequently the contributions
+to $\Tr(W_i^{-1})$ are $1$ and either $0$ or $1$. The trace is a unit,
+congruent to $1$ or $2$ modulo $p>76176$. The pole input
+\[
+ b_i=R_i\Tr(W_i^{-1})^{-2}
+\]
+has valuation one at each selected contact.
+
+Outside those contacts, \eqref{eq:Rproduct} gives even valuation of
+$R_i$; hence the valuation of $b_i$ is even, whether positive or negative.
+In particular its reduced denominator is a square. This argument covers
+all remaining primes, including divisors of the numerator or denominator
+of $\delta_i$; no unit assertion about $\delta_i$ at such primes is needed.
+
+At the finite prepared places, Lemma~\ref{lem:finite} makes every factor
+arbitrarily close to $1$, and hence makes $\Tr(W_i^{-1})$ arbitrarily close
+to $2$. Moreover the same calculation gives
+\[
+ v_p(R_i)=-v_p(t_i)-5v_p(a_i)
+          =-v_p(\lambda)-6v_p(a_i),
+\]
+which can be made uniformly large by $D$. Thus $v_2(b_i)\ge3$,
+$v_3(b_i)\ge1$ and $v_{17}(b_i)\ge2$ follow after a fixed choice of
+$D$. At two choose the closeness of the trace to $2$ so that its valuation
+is exactly one; at three and seventeen it is a unit. The local squareclasses
+of $b_i$ equal those of $R_i$. Formula~\eqref{eq:Rproduct}, with the selected
+primes congruent to $1$ modulo $8\cdot3\cdot17$, shows that these are
+squares in $\Q_2,\Q_3,\Q_{17}$.
+
+At both real embeddings, uniformly on the fixed compact point
+neighborhoods, as $\lambda\to+\infty$,
+\[
+ R_i=\frac{1+O(\lambda^{-1})}{a_i^6\lambda}>0,\qquad
+ q_i=a_i^2\lambda^{-3}(1+O(\lambda^{-1})).
+\]
+Thus each factor is positive for large $\lambda$ and tends to $1$.
+A term of order $m$ in position $j$ decays as
+$O(\lambda^{-3(2m-1)2^j})$. Hence
+$\Tr(W_i^{-1})\to2$ and $b_i\to0^+$, so $0<b_i<17$.
+The selection premise supplies arbitrarily large $\lambda$ after $D$
+and all fixed congruences have been chosen. The pole-realization premise
+therefore supplies fresh simultaneous witnesses. Equal scales may reuse
+identical choices. All rational circuit quantities are defined on these
+witnesses, which proves the proposition.
+\end{proof}
+
+\section{The quadratic presentation and exact counts}
+The powers needed by the local factors have the presentation
+\begin{equation}\label{eq:chain}
+ \begin{gathered}
+ q_2=q^2,\quad q_4=q_2^2,\quad cq_4=q,\quad q_8=q_4^2,\\
+ cq_{19}=q_8^2,\quad q_{38}=q_{19}^2,\quad cq_{79}=q_{38}^2.
+ \end{gathered}
+\end{equation}
+Every row has degree at most two. On $q\ne0$, the rows successively
+force
+\[
+ q_2=q^2,\quad q_4=q^4,\quad c=q^{-3},\quad q_8=q^8,
+ \quad q_{19}=q^{19},\quad q_{38}=q^{38},\quad q_{79}=q^{79}.
+\]
+There are no choices of roots or signs in this conclusion. At a consumed
+contact prime $q\ne0$ by Lemma~\ref{lem:domain}. When $q=0$, that lemma
+shows that the contact radical is empty; no division by $q$ is used in
+soundness in this case. Completeness uses $\delta\ne0$ and fills all
+seven rows by their displayed rational values.
+
+For the point and logarithm notation of the source, put
+\[
+ A_i=f(U_i)\ (1\le i\le4),\quad B_i=\sigma f(V_i)\ (0\le i\le4),
+ \quad C_i=L_i-L_i',\quad I=L_1-\beta,\quad D_H=f(H),
+\]
+\[
+ G=L_3^2-L_2(L_2-2)L_3L_4+(L_2-2)^2L_4^2-1,
+ \qquad \beta=51X^2+2504.
+\]
+Here $f=1/x$ extends by zero at the identity, $U_0=H$, $V_0=H-P$,
+and the retained exact addition rows give $Q_i=U_i-V_i$. The alternate
+ratios $L_i'$ already include conjugation. The nine tests $A_i,B_i$ have
+order one; $C_1,I$ have order ten; and $D_H,C_2,C_3,C_4,G$ have order forty.
+For an ordered list, its factor is
+\[
+ \mathcal T(D_0,\ldots,D_{s-1})
+ =1+\sum_{j=0}^{s-1}q^{(2m(D_j)-1)2^j}D_j^{2^{j+1}}.
+\]
+The two-detector system uses
+\[
+ \begin{gathered}
+ (D_H,C_1,B_0),\quad(C_2,I,B_2),\quad(C_3,A_2,B_3),\\
+ (C_4,A_3,B_4),\quad(G,A_4),\quad(A_1,B_1),
+ \end{gathered}
+\]
+and the three-detector system uses
+\[
+ \begin{gathered}
+ (D_H,C_1,B_1,B_0),\quad(C_2,I,B_2),\quad(C_3,A_2,B_3),\\
+ (C_4,A_3,B_4),\quad(G,A_4,A_1).
+ \end{gathered}
+\]
+Each of the sixteen tests occurs exactly once. Their field powers and
+all the factor and product rows are exactly those specified and verified
+in \cite{Packing}. They remain quadratic; only the scalar weights change.
+
+In the two-detector system the shared field powers use ten rational
+coordinates, while the three-detector system uses eighteen. Each field
+square is represented by
+\[
+ (u+v\rho)^2=(u^2+2v^2)+(2uv)\rho,
+\]
+so it takes two quadratic output rows. The needed fourth and eighth
+powers of the $B_i$ are linear combinations of existing formal-logarithm
+coordinates, as proved coefficient by coefficient in \cite{Packing}.
+
+The exact table transformation removes the source coordinates
+$353,354,356$ and their translates by $48$ for each detector. The
+coordinate with source identifier $355$ now denotes $c$. The source
+coordinates $359,369,360$ denote $q_{19},q_{38},q_{79}$ respectively.
+The existing coordinates $352,361,362$ denote $q,q_2,q_4$. A coordinate
+$q_8$ is already present in each of the three detectors. In the
+two-detector system it is added with source identifier $850+i$,
+$i=0,1$. All other rows and coordinates are retained literally.
+Consequently the systems have the following sizes:
+\begin{center}
+\begin{tabular}{lrrr}
+\toprule
+Height scales&Total coordinates&Quadratic rows&Nonzero monomials\\\midrule
+$1,S_0^2$&297&271&4268\\
+$1,S_0^2,(S_0+S_1)^2$&342&314&4938\\\bottomrule
+\end{tabular}
+\end{center}
+Here $S=\sum_{i=1}^4x(Q_i)=S_0+S_1\rho$. The monomial counts hold for
+every $N\ge1$; they are statements about coefficients after substituting
+$A_N$, not additional variables.
+
+
+\subsection{Primitive normalization of the scalar contact product}
+Let $z_j$ denote a coordinate by its source identifier. The actual
+contact product is the affine expression
+\[
+ \begin{aligned}
+ r={}&-103171881284-2103220824z_{248}-21050600z_{487}\\
+     &-7629700z_{488}-45771136z_{489}.
+ \end{aligned}
+\]
+We use $r$ itself as the coordinate in place of $z_{489}$. This is an
+invertible rational affine change: its coefficient of $z_{489}$ is
+nonzero, and every other coordinate, including the input, is fixed.
+The source coordinate occurs only in its own defining row and the
+scalar normalizer row. After substitution and primitive normalization,
+the latter is exactly
+\[
+                  R_s+80989^2rR_s-A_Nr=0.
+\]
+Every equation remains quadratic. Reverse substitution reproduces both
+source rows exactly up to a nonzero rational scalar, so their rational
+solution sets correspond bijectively. Taking sums of squares preserves
+the required conjunction over $\Q$.
+
+In the resulting quartic the coefficient of $r^2$ is $A_N^2+1$.
+Every other coefficient is either a nonzero constant or a nonzero constant
+multiple of $A_N$. Thus no coefficient vanishes for a positive parameter,
+and the support counts hold for every $N\ge1$.
+Let $C_0$ be the largest absolute constant coefficient. Its exact integer
+value is recorded in the certificate and has 1520 binary digits. The
+largest absolute coefficient multiplying $A_N$ is
+\[
+                       L_0=2\cdot80989^2=13118436242.
+\]
+The complete integer comparison verifies
+\[
+ 80989^{94}+1>C_0,\qquad80989^{47}>L_0,
+ \qquad80989^{90}+1<C_0.
+\]
+Consequently, for both families,
+\[
+                        H(P_N)=80989^{4N+2}+1
+                        \qquad(N\ge23).
+\]
+Indeed this coefficient exceeds both $C_0$ and $L_0A_N$ at $N=23$,
+and continues to do so as $N$ increases. Since $C_0>L_0^2$, the exact
+height for any positive parameter is $\max(C_0,A_N^2+1)$.
+This is an algebraic height threshold; the sufficient parameter in the
+342-variable defining theorem remains $27464$, and the corresponding
+threshold for the 297-variable family remains ineffective.
+
+\section{Projection proofs}
+The point, scalar, formal-logarithm and height arguments now apply with
+exactly their original local orders. We give the numerical deductions
+explicitly. Write the nonzero integer root labels as $n,a,t,b$, and put
+$B=\max(|n|,|a|,|t|,|b|)$ and $c=|a-1|$. The retained scalar construction
+and its exceptional-point exclusions imply
+\[
+ c\ge80989^{L_N},\qquad L_N=\left\lfloor\frac{187(2N-1)}8\right\rfloor+1,
+ \qquad h(\beta)\le\HH c^{19/24}.
+\]
+Its equations are unchanged. The common-place conclusion of
+Proposition~\ref{prop:extract} supplies the orders required by the
+formal-logarithm argument. Thus the fortieth powers of every contact
+radical divide
+\[
+ \Delta=t^2-a(a-2)tb+(a-2)^2b^2-1.
+\]
+If $n-\beta\ne0$, the tenth powers divide its nonzero reduced numerator
+$J$, which satisfies $|J|\le2B\exp(h(\beta))$. These are the precise
+arithmetic comparison conclusions used below; no new interpretation of
+an unguarded point or ratio is introduced.
+
+For three scales, the proved effective height theorem gives
+\[
+ B^2\le2h(S_0)+2h(S_0+S_1)+82.
+\]
+If the $k$th powers of all three radicals divide a nonzero integer $J$,
+the contact-height theorem bounds the heights of $\lambda,S_0^2\lambda$
+and $(S_0+S_1)^2\lambda$ by
+$T=(\HH+\log3)|J|^{19/k}$. Since $\lambda\ne0$, both $h(S_0)$ and
+$h(S_0+S_1)$ are at most $T$. As $\HH>92$, we obtain
+\begin{equation}\label{eq:effective}
+ B^2\le4T+82\le5\HH|J|^{19/k}.
+\end{equation}
+For $N\ge27464$, the independently verified fixed-prime estimates give
+\[
+ |a|>(40\HH)^{10},\qquad \log(48\HH)<|a|/40,
+ \qquad h(\beta)<|a|/40.
+\]
+If $\Delta\ne0$, then $|\Delta|\le14B^4$. Equation~\eqref{eq:effective}
+with $k=40$ yields
+$B^2<20\HH B^{19/10}$, contradicting $B\ge|a|$. Therefore $\Delta=0$.
+The elementary integral Lucas descent gives $\log B>|a|-3$.
+If $n-\beta\ne0$, equation~\eqref{eq:effective} with $k=10$ implies
+\[
+ \log B<10\log(20\HH)+19h(\beta)<29|a|/40,
+\]
+a contradiction. Thus $n=\beta\in\Z$.
+
+For two scales, the aggregate trace-height theorem supplies constants
+$M_1>0,M_2\ge1$ with
+\[
+ B^2\le M_1h(S_0)+M_2.
+\]
+The additive constant is not effective in that proof. The same
+height calculation for $\lambda,S_0^2\lambda$ gives
+\begin{equation}\label{eq:ineffective}
+ B^2\le C|J|^{19/k}+M_2,\qquad C=M_1(\HH+\log3).
+\end{equation}
+If $\Delta\ne0$, this implies
+$B^2\le C14^{19/40}B^{19/10}+M_2$, impossible for sufficiently large $B$.
+The scalar lower bound ensures $B\ge c-1\to\infty$ as $N\to\infty$.
+Hence $\Delta=0$ for all sufficiently large $N$. For $B^2\ge2M_2$,
+if $n-\beta\ne0$, \eqref{eq:ineffective} gives
+\[
+ \log B\le10\log(2C)+19\log2+19h(\beta)
+ \le10\log(2C)+19\log2+19\HH c^{19/24}=o(c),
+\]
+contrary to the Lucas lower bound $\log B>c-4$. Therefore $n=\beta$
+also in the two-scale system for every sufficiently large $N$.
+
+In either case, writing $X=u/v$ in lowest terms, $v>0$, the integrality
+of $51X^2+2504$ implies $v^2\mid51$. Since $51$ is squarefree, $v=1$.
+This proves soundness. Proposition~\ref{prop:complete} and the retained
+root and scalar preparation prove completeness for every integer input.
+Over $\Q$ a sum of squares vanishes exactly when every quadratic row
+vanishes. These observations prove the projection assertions in
+Theorem~\ref{thm:main}.
+
+\section{Coefficient verification and reproduction}
+The producer \nolinkurl{build_quartic_shared_weights.py} reads the
+pinned complete source tables, performs the displayed row changes, and
+expands every square by exact integer arithmetic. The independent checker
+\nolinkurl{check_quartic_shared_weights.py} does not import the producer.
+It reconstructs every changed row from \eqref{eq:chain}, compares every
+retained row, and expands the entire squared sum using unordered pairs
+of monomials. It also checks all coordinate incidences, the input
+coordinate, degree four and content one. No coefficient is sampled.
+
+Before fixed-parameter powers are collected, the quartic tables contain
+4269 and 4939 terms. Only the coefficient $A^2+1$ of $r^2$ mixes
+parameter degrees; every other coefficient is a nonzero constant or a
+nonzero multiple of $A$. Thus their supports are constant for $A>0$.
+The coefficient classification and exact integer comparisons in the
+preceding normalization proof give the height formula for $N\ge23$.
+Direct evaluation at $A=80989^{54929}$ gives 1791283 binary digits for
+the largest coefficient. The checks also retain the elementary uniform
+bound $H(P_N)<2^{1520}A_N^2$ for all $N\ge1$.
+
+The finite verification includes exact rational substitutions in the
+new weight chain and 61824 bounded valuation checks. These supplement
+Proposition~\ref{prop:extract}, whose proof covers every odd valuation;
+they are not a substitute for that proposition or the arithmetic premises.
+The two reproduction programs use only the Python standard library.
+
+\begin{thebibliography}{9}
+\bibitem{Selection}
+\emph{Separation and denominator conditions in quadratic prime patterns},
+9 November 2026.
+Source: \nolinkurl{prime_selection_20261109_v12.tex}.
+
+\bibitem{Packing}
+\emph{Simultaneous valuation conditions and explicit quartics},
+9 November 2026. Complete field-power identities, point and logarithm
+normalizations, and independent coefficient verification.
+Source: \nolinkurl{mixed_valuation_tests_20261109_v11.tex}.
+\bibitem{Source}
+\emph{A forced prime condition and an explicit quartic in 392 variables},
+8 November 2026. Arithmetic input contract, fixed-prime certificate,
+scalar exclusions, and Lucas descent.
+Source: \nolinkurl{quartic392_20261108_v8.tex}.
+\bibitem{Aggregate}
+\emph{Aggregate trace heights of elliptic multiples}, 8 November 2026.
+Source: \nolinkurl{aggregate_trace_height_20261108_v9.tex}.
+\bibitem{Sums}
+\emph{Effective heights of elliptic abscissa sums}, 8 November 2026.
+Source: \nolinkurl{effective_elliptic_sums_20261108_v10.tex}.
+\bibitem{ExplicitSource}
+\emph{An explicit quartic in 351 variables}, 9 November 2026.
+Complete quadratic source table with SHA-256
+\nolinkurl{452d063b6d7da598471aa1ec0302b9e37611a44168610592931ec56aac241966}.
+\bibitem{ExistenceSource}
+\emph{A family of quartics in 301 variables}, 9 November 2026.
+Complete quadratic source table with SHA-256
+\nolinkurl{9917be941135778816ce25ecb0cbc872b4ed7c9f3691d79355e5e8352667a4fe}.
+\bibitem{Glazer}
+E.~Glazer, \emph{An explicit quartic defining the integers in the rationals},
+Version~13, manuscript and coefficient data, commit
+\nolinkurl{5bbd74f6a479776a332cbe036809d5dddae63720},
+\url{https://github.com/elliotglazer/diophantine-z-q}.
+\end{thebibliography}
+\end{document}

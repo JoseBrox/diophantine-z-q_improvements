@@ -1,5 +1,5 @@
 {
-  "schema": "diophantine-results/v5",
+  "schema": "diophantine-results/v6",
   "date": "2026-11-09",
   "variable_convention": "total coordinates including the input",
   "coefficient_height": "largest absolute integer coefficient after fixed constants are substituted",
@@ -7,15 +7,16 @@
     "algebraic_specification": "proved for every explicitly described polynomial or coefficient-family member",
     "projection_equals_Z": "proved implication from the stated arithmetic premises; the existence families require a sufficiently large fixed parameter",
     "variable_minimality": "best constructions in this collection; no global variable minimum claimed",
-    "effectiveness": "The 27-variable and 301-variable results have ineffective sufficient coefficient thresholds. The explicit 29-variable and 351-variable constructions specify every coefficient and certify numerical sufficient parameters."
+    "effectiveness": "The 27-variable and 297-variable results have ineffective sufficient coefficient thresholds. The explicit 29-variable and 342-variable constructions specify every coefficient and certify numerical sufficient parameters.",
+    "prime_selection": "The quantitative weighted selection used by the quartics follows from the cited Sun v2 Propositions 5.1 and 6.2 and Section 6.1, with the separation argument recorded in the prime-selection paper. It is not an additional independent conjecture; dependence on the cited arithmetic estimates remains explicit."
   },
   "constructions": [
     {
       "id": "few_variables27_nontorsion_family",
       "construction_kind": "existence_in_computable_coefficient_family",
       "total_variables": 27,
-      "degree_bound_power_of_two_exponent": 154,
-      "exact_degree_majorant": "20373348814943897785292785017798269643599642624",
+      "degree_bound_power_of_two_exponent": 151,
+      "exact_degree_majorant": "1622838857795564438964780120527413199713157888",
       "degree_bound_uniform_in_fixed_parameter": true,
       "coefficient_height_bound_for_certified_defining_member": null,
       "fixed_parameter": {
@@ -52,20 +53,149 @@
         "pole_obstruction_and_realization",
         "simultaneous_prime_patterns"
       ],
-      "proof": "papers/few_variables27/few_variables27_nontorsion_20261109_v11.tex",
-      "computation": "computation/few_variables/trace27_nontorsion",
-      "uniform_degree_certificate": "computation/few_variables/trace27_nontorsion/degree-family-verification.json",
+      "proof": "papers/few_variables27/few_variables27_nontorsion_20261109_v12.tex",
+      "computation": "computation/few_variables/weighted_elimination/weighted27",
       "algebraic_reproduction_example": {
         "L": 137731,
         "certified_to_define_Z": false,
         "purpose": "exact algebraic reproduction and coefficient-bound verification only",
         "source_sha256": "9a1acec4ddd1c9832a2ff564f6c920a8e20a816334e3cf219fe5c68bedb6200d",
-        "specification_sha256": "62ddd437a8f95f7349a51b6655a642fde9467786724a4c2177b44a6f5f498887",
-        "coefficient_height_bound_double_power_of_two_exponent": 165,
-        "data": "computation/few_variables/trace27_nontorsion/example_L137731"
+        "specification_sha256": "e78f44459f32c630110a37a55462b6515f78162cfa8d7bff469118ea2b2df643",
+        "coefficient_height_bound_double_power_of_two_exponent": 162,
+        "data": "computation/few_variables/weighted_elimination/weighted27",
+        "source_data": "computation/few_variables/trace27_nontorsion/example_L137731",
+        "source_specification_sha256": "62ddd437a8f95f7349a51b6655a642fde9467786724a4c2177b44a6f5f498887",
+        "exact_binary_log_coefficient_majorant": "3287373449762048678524372378187233080614463290580"
       },
       "degree_bound_strict": true,
-      "pole_witness_scope": "Uses the inherited restricted-converse/descent hypotheses and the simultaneous-realization construction, which supplies nonzero ordinates; this strengthening is not inferred from bare solvability alone."
+      "pole_witness_scope": "Uses the inherited restricted-converse/descent hypotheses and the simultaneous-realization construction, which supplies nonzero ordinates; this strengthening is not inferred from bare solvability alone.",
+      "role": "Leading few-variable existence family",
+      "source_computation": "computation/few_variables/trace27_nontorsion",
+      "construction_certificate": "computation/few_variables/weighted_elimination/weighted27/construction-certificate.json",
+      "elimination_theorem": "papers/finite_algebra/weighted_finite_algebra_20261109_v12.tex",
+      "elimination_method": "direct scaled characteristic polynomials, derivative resultants, and weighted principal minors",
+      "source_specification_sha256": "62ddd437a8f95f7349a51b6655a642fde9467786724a4c2177b44a6f5f498887",
+      "specification_sha256": "e78f44459f32c630110a37a55462b6515f78162cfa8d7bff469118ea2b2df643",
+      "source_degree_certificate": "computation/few_variables/trace27_nontorsion/degree-family-verification.json",
+      "uniform_degree_certificate": "computation/few_variables/weighted_elimination/weighted27/construction-certificate.json"
+    },
+    {
+      "id": "quartic297_family",
+      "construction_kind": "existence_in_computable_coefficient_family",
+      "total_variables": 297,
+      "degree": 4,
+      "degree_status": "exact for every member",
+      "fixed_parameter": {
+        "name": "N",
+        "domain": "integers N>=1",
+        "quantified": false,
+        "coefficient": "A_N=80989^(2*N+1)",
+        "all_sufficiently_large_parameters_define_Z": true,
+        "effective_sufficient_threshold_known": false,
+        "certified_numerical_defining_parameter": null
+      },
+      "quadratic_residuals": 271,
+      "ordinary_monomials": 4268,
+      "ordinary_monomial_count_condition": "Every positive coefficient parameter A; hence every N>=1. This is an algebraic support statement, not a sufficient defining threshold.",
+      "coefficient_parameter_terms": 4269,
+      "integer_content": 1,
+      "coefficient_height_upper_bound": "2^1520*80989^(4*N+2)",
+      "coefficient_height_upper_bound_strict": true,
+      "input_label": "51*X^2+2504",
+      "scalar_correction": 9792,
+      "polynomial_sha256": "9611a929a8795df215ca34bbaa19ca39a98745b86da07a864bfc2020ecf23ec0",
+      "residuals_sha256": "144f99f6f76cadf5fae3796f7a0a6c3f740659d89fe062237b278989bcef5ce8",
+      "arithmetic_inputs": [
+        "elliptic_group_and_index_height",
+        "contact_height",
+        "pole_obstruction_and_realization",
+        "simultaneous_prime_patterns",
+        "weighted_prime_selection"
+      ],
+      "additional_proved_input": "aggregate_trace_height_von_buhren",
+      "proof": "papers/quartic_existence/quartic297_20261109_v12.tex",
+      "computation": "computation/quartic/family297",
+      "exact_height_data": "computation/quartic/family297/independent-verification297.json",
+      "local_test_proof": "papers/local_tests/shared_local_weights_20261109_v12.tex",
+      "role": "Leading quartic existence family; sufficient threshold ineffective",
+      "exact_coefficient_height": "80989^(4*N+2)+1",
+      "exact_coefficient_height_condition": "N>=23; this is an algebraic coefficient threshold, not a sufficient defining threshold.",
+      "height_formula_every_positive_parameter": "max(C,A^2+1), with C specified in the independent certificate",
+      "prime_selection_proof": "papers/prime_selection/prime_selection_20261109_v12.tex"
+    },
+    {
+      "id": "few_variables29_nontorsion",
+      "construction_kind": "explicit_polynomial",
+      "role": "Leading fully specified few-variable polynomial",
+      "total_variables": 29,
+      "retained_coordinates": 28,
+      "finite_algebra_coordinate_count": 1,
+      "degree_bound_power_of_two_exponent": 157,
+      "degree_bound_strict": true,
+      "exact_degree_majorant": "154383598645603405051555717167316362269845989152",
+      "coefficient_height_bound_double_power_of_two_exponent": 168,
+      "exact_binary_log_coefficient_majorant": "228040944767112830511621792043639838233373391751570",
+      "all_fixed_coefficients_specified": true,
+      "fixed_prime": 76249,
+      "normalizer_exponent": 137731,
+      "certified_sufficient_exponent": true,
+      "source_sha256": "f9e3cedc354b8fc55cb53d31a84495af53c60f8d7cc3678c63a29e27b717a2a3",
+      "specification_sha256": "9ede1327db871d30c6bcc2dc1bbbcea2571187a325c41209e2b82534293b9c26",
+      "arithmetic_inputs": [
+        "elliptic_group_and_index_height",
+        "contact_height",
+        "pole_obstruction_and_realization",
+        "simultaneous_prime_patterns"
+      ],
+      "additional_proved_input": "effective_elliptic_abscissa_sum_height",
+      "proof": "papers/few_variables/explicit29_nontorsion_20261109_v12.tex",
+      "computation": "computation/few_variables/weighted_elimination/weighted29",
+      "pole_witness_scope": "Uses the inherited restricted-converse/descent hypotheses and the simultaneous-realization construction, which supplies nonzero ordinates; this strengthening is not inferred from bare solvability alone.",
+      "source_computation": "computation/few_variables/effective29_nontorsion",
+      "construction_certificate": "computation/few_variables/weighted_elimination/weighted29/construction-certificate.json",
+      "elimination_theorem": "papers/finite_algebra/weighted_finite_algebra_20261109_v12.tex",
+      "elimination_method": "direct scaled characteristic polynomials, derivative resultants, and weighted principal minors",
+      "source_specification_sha256": "daceb26d141bb265e33461957756445c565df9f1a7e5447c9258a466df976901"
+    },
+    {
+      "id": "quartic342",
+      "construction_kind": "explicit_polynomial_and_effective_family",
+      "role": "Leading fully specified quartic",
+      "total_variables": 342,
+      "degree": 4,
+      "degree_status": "exact",
+      "quadratic_residuals": 314,
+      "ordinary_monomials": 4938,
+      "coefficient_parameter_terms": 4939,
+      "integer_content": 1,
+      "all_fixed_coefficients_specified": true,
+      "explicit_parameter": "A=80989^54929",
+      "family_parameter": "A_N=80989^(2*N+1)",
+      "certified_sufficient_N": 27464,
+      "largest_coefficient_binary_digits": 1791283,
+      "coefficient_height_upper_bound": "2^1520*80989^(4*N+2)",
+      "polynomial_sha256": "4faadf8c7d7af369495a98d39afbe24b9e77d6625781d7fdd25d0a29ef6d0a74",
+      "residuals_sha256": "309d97f891bb9144a3a314b361f62ed1ed4d3064938b7d15121e763f7b99b12f",
+      "arithmetic_inputs": [
+        "elliptic_group_and_index_height",
+        "contact_height",
+        "pole_obstruction_and_realization",
+        "simultaneous_prime_patterns",
+        "weighted_prime_selection"
+      ],
+      "additional_proved_input": "effective_elliptic_abscissa_sum_height",
+      "proof": "papers/quartic/quartic342_20261109_v12.tex",
+      "computation": "computation/quartic/family342",
+      "local_test_proof": "papers/local_tests/shared_local_weights_20261109_v12.tex",
+      "ordinary_monomial_count_condition": "Every positive coefficient parameter A; hence every N>=1. This is an algebraic support statement, not a sufficient defining threshold.",
+      "exact_coefficient_height": "80989^(4*N+2)+1",
+      "exact_coefficient_height_condition": "N>=23; this is an algebraic coefficient threshold, not a sufficient defining threshold.",
+      "height_formula_every_positive_parameter": "max(C,A^2+1), with C specified in the independent certificate",
+      "prime_selection_proof": "papers/prime_selection/prime_selection_20261109_v12.tex",
+      "exact_height_data": "computation/quartic/family342/independent-verification342.json",
+      "coefficient_height_upper_bound_strict": true,
+      "explicit_coefficient_height": "80989^109858+1",
+      "explicit_coefficient_height_upper_bound_power_of_two_exponent": 1791283
     },
     {
       "id": "quartic301_family",
@@ -104,41 +234,13 @@
       "proof": "papers/quartic_existence/quartic301_20261109_v11.tex",
       "computation": "computation/quartic/family301",
       "exact_height_data": "computation/quartic/family301/construction-report301.json",
-      "local_test_proof": "papers/local_tests/mixed_valuation_tests_20261109_v11.tex"
-    },
-    {
-      "id": "few_variables29_nontorsion",
-      "construction_kind": "explicit_polynomial",
-      "role": "Best fully specified few-variable construction in this collection",
-      "total_variables": 29,
-      "retained_coordinates": 28,
-      "finite_algebra_coordinate_count": 1,
-      "degree_bound_power_of_two_exponent": 161,
-      "degree_bound_strict": true,
-      "exact_degree_majorant": "2021432499262561030580590567538985948904131919872",
-      "coefficient_height_bound_double_power_of_two_exponent": 171,
-      "exact_binary_log_coefficient_majorant": "1824327990117465218468581252398965551307997696753664",
-      "all_fixed_coefficients_specified": true,
-      "fixed_prime": 76249,
-      "normalizer_exponent": 137731,
-      "certified_sufficient_exponent": true,
-      "source_sha256": "f9e3cedc354b8fc55cb53d31a84495af53c60f8d7cc3678c63a29e27b717a2a3",
-      "specification_sha256": "daceb26d141bb265e33461957756445c565df9f1a7e5447c9258a466df976901",
-      "arithmetic_inputs": [
-        "elliptic_group_and_index_height",
-        "contact_height",
-        "pole_obstruction_and_realization",
-        "simultaneous_prime_patterns"
-      ],
-      "additional_proved_input": "effective_elliptic_abscissa_sum_height",
-      "proof": "papers/few_variables/explicit29_nontorsion_20261109_v11.tex",
-      "computation": "computation/few_variables/effective29_nontorsion",
-      "pole_witness_scope": "Uses the inherited restricted-converse/descent hypotheses and the simultaneous-realization construction, which supplies nonzero ordinates; this strengthening is not inferred from bare solvability alone."
+      "local_test_proof": "papers/local_tests/mixed_valuation_tests_20261109_v11.tex",
+      "role": "Exact source and supporting proof for the 297-variable construction."
     },
     {
       "id": "quartic351",
       "construction_kind": "explicit_polynomial_and_effective_family",
-      "role": "Best fully specified quartic in this collection",
+      "role": "Exact source and supporting proof for the 342-variable construction.",
       "total_variables": 351,
       "degree": 4,
       "degree_status": "exact",
@@ -461,6 +563,71 @@
       "scope_limit": "Coprimality is an additional hypothesis and is not assumed before the Lucas equation is proved.",
       "proof": "papers/coprime_sums/coprime_elliptic_sums_20261109_v11.tex",
       "fixed_abscissa_correction": "For an even number of pairwise coprime indices, adding the fixed x(P) makes the loss zero; no additional coordinate is required."
+    },
+    {
+      "id": "weighted_finite_algebra_elimination",
+      "scope": "Finite triangular monic algebras over rational retained coordinates, with one guard, no other closed residuals, and geometrically reduced active fibers as stated in the theorem.",
+      "additional_coordinates": 1,
+      "degree_bound": "S*(w*C(n)+n^2)",
+      "definitions": {
+        "S": "1+m*n*(n+1)/2",
+        "C(n)": "2*sum_{d=1}^{n-1}max(d^3+d,n)+(n^3+n)"
+      },
+      "coefficient_norm_bound": "log2 ||F||_1 <= S*((beta+r)*C(n)+(r+1)*(2*n^3+4*n-2)) for n=2^r and the specified weighted operator norm bound 2^beta",
+      "preserves_rational_base_projection": true,
+      "proof": "papers/finite_algebra/weighted_finite_algebra_20261109_v12.tex",
+      "verification": "computation/few_variables/weighted_elimination/verification.json"
+    },
+    {
+      "id": "rings_of_integers_and_subfields",
+      "statement": "For every number field K, O_K is Diophantine in K if and only if Z is Diophantine in K.",
+      "published_input": "Alpoge-Bhargava-Ho-Shnidman, Inventiones Mathematicae 243 (2026), Corollary 1.2: Z is Diophantine in O_K.",
+      "conditional_addition": "Assuming Z is Diophantine in Q, these assertions are equivalent to Q being Diophantine in K.",
+      "coordinate_bound": "A definition of Z in K with N total coordinates yields O_K with [K:Q]*N total coordinates.",
+      "proof": "papers/number_fields/number_field_definability_20261109_v12.tex"
+    },
+    {
+      "id": "norm_image_characterization",
+      "scope": "Every finite extension L/K of characteristic-zero fields, with all witnesses in the ambient field L.",
+      "equivalent_sets": "K; relative norm image N_{L/K}(L); relative norm graph; relative trace graph are Diophantine in L simultaneously.",
+      "finite_difference_identity": "sum_{j=0}^{n-1}(-1)^(n-1-j)*binomial(n-1,j)*(T+j)^n=n!*T+n!*(n-1)/2",
+      "coordinate_bound": "M total coordinates for norm-image membership yield n*M total coordinates and n equations for K, where n=[L:K].",
+      "proper_extension_obstruction": "Norm and trace graphs are Zariski dense in the affine plane over L, so have no quantifier-free definitions.",
+      "proof": "papers/number_fields/number_field_definability_20261109_v12.tex",
+      "verification": "computation/number_fields/norm-image-reduction-verification.json"
+    },
+    {
+      "id": "number_field_descent_and_finite_formula_obstruction",
+      "descent": "An N-coordinate definition of O_L in L descends along a degree-d extension L/K to a definition of O_K in K with 1+d*(N-1) total coordinates, d equations, and unchanged degree bound.",
+      "counterexample_consequence": "An actual counterexample persists in every finite extension and yields a totally imaginary Galois counterexample.",
+      "finite_collection_obstruction": "Any fixed finite collection of existential formulas with infinite input projections over a number field simultaneously accepts some rational noninteger in a finite Galois extension of bounded degree.",
+      "scope_limit": "No actual counterexample to a separately chosen defining polynomial for each field is established.",
+      "proof": "papers/number_fields/number_field_definability_20261109_v12.tex"
+    },
+    {
+      "id": "abscissa_multiplicative_obstruction",
+      "general_statement": "For y^2=x^3+A*x+B over Q, if A,B are p-integral and B is a nonzero nonsquare modulo an odd prime p, every rational abscissa has even p-adic valuation.",
+      "example": "E:y^2=x^3-2 has the infinite-order point (3,5), but 5 is not in the multiplicative subgroup generated by its rational abscissas.",
+      "exact_point_counts": {
+        "5": 6,
+        "7": 7
+      },
+      "scope_limit": "This does not obstruct sums, more elaborate definitions, or definability of a ring of integers in its field.",
+      "proof": "papers/number_fields/number_field_definability_20261109_v12.tex"
+    },
+    {
+      "id": "quadratic_input_map_obstruction",
+      "contact_polynomial": "r(T)=T*(T-1)*(T-2401)*(32*T+343)*(2*T-1)",
+      "statement": "No q in Z[X] of degree at most two simultaneously reflects rational integrality, is odd at every integer, and has r(q(x)) square in Q_2 at every integer.",
+      "quadratic_classification": "A*X^2+B*X+C with A nonzero reflects integrality if and only if |A| is squarefree and A divides B.",
+      "positive_map_minimum_degree": 4,
+      "positive_examples": [
+        "8*X^4+3",
+        "8*X^4+2403"
+      ],
+      "scope_limit": "Only this odd-valued, uncorrected contact-square normalization; not corrected or parity-free routes and not a lower bound for arbitrary defining polynomials.",
+      "proof": "papers/input_normalization/quadratic_input_obstruction_20261109_v12.tex",
+      "verification": "computation/input_normalization/quadratic-input-obstruction-certificate.json"
     }
   ],
   "source_pins": {
@@ -468,7 +635,7 @@
     "corrected_arithmetic_proof_v11": "650b298a2a18fa956f8859f3ca80e9d7c8cedd82",
     "quartic_source_v13": "5bbd74f6a479776a332cbe036809d5dddae63720"
   },
-  "release": "2026.11.09-v11",
+  "release": "2026.11.09-v12",
   "auxiliary_arithmetic_theorems": [
     {
       "id": "square_abscissa_subgroup_chart",
@@ -478,6 +645,14 @@
       "finite_root_degree": 4,
       "finite_choice_of_component_charts_required": false,
       "proof": "papers/square_abscissa/square_abscissa_charts_20261108_v9.tex"
+    },
+    {
+      "id": "quantitative_prime_selection_consequence",
+      "hypothesis": "The cited Sun v2 prime-pattern and weighted reduction-order estimates, with fixed congruence and avoidance data.",
+      "statement": "A fixed cutoff followed by a sufficiently slow diagonal tau allows removal of w<X^alpha for 1/4<alpha<1/2, leaving admissible patterns with gaps larger than Hasse-sized errors.",
+      "novelty_scope": "An explicit dependency derivation recording the separation argument already used upstream, not a new independent prime theorem.",
+      "primary_reference": "Sun, arXiv:2610.20691v2, Propositions 5.1 and 6.2 and Section 6.1.",
+      "proof": "papers/prime_selection/prime_selection_20261109_v12.tex"
     }
   ]
 }

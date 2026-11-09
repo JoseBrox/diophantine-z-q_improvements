@@ -1,0 +1,728 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,microtype,booktabs,xcolor}
+\usepackage[margin=26mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue!45!black,citecolor=blue!45!black,urlcolor=blue!45!black]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\OK}{\mathcal O_K}
+\newcommand{\OL}{\mathcal O_L}
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\Nm}{\operatorname{N}}
+\newcommand{\A}{\mathbb A}
+\setlength{\emergencystretch}{2em}
+\title{Existential Definitions of Rings of Integers and Subfields}
+\author{}
+\date{9 November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+For a number field $K$, the established Diophantine definability of
+$\Z$ in $\mathcal O_K$ makes the definability of $\mathcal O_K$ in
+$K$ equivalent to that of $\Z$ in $K$. Assuming an existential
+definition of $\Z$ in $\Q$, these properties are also equivalent to
+existential definability of the rational subfield in $K$.
+We give explicit bounds on coordinates and degree for these
+reductions and for descent through a finite field extension.
+For every finite extension $L/K$ of characteristic-zero fields,
+existential definability of $K$ in $L$ is equivalent to definability
+of the relative norm image, the norm graph, or the trace graph.
+The norm-image implication follows from an exact finite-difference
+identity. In contrast, the norm and trace graphs of a proper
+extension are Zariski dense and have no quantifier-free definitions.
+Finally, a fixed finite collection of existential formulas cannot
+define rings of integers throughout all finite extensions of a
+number field. These results distinguish reductions and obstructions
+to transferring a formula from a counterexample to the existence of
+a separately chosen formula over each number field.
+\end{abstract}
+
+\section{Definitions and arithmetic scope}
+
+A subset $S\subseteq F^r$ of a field $F$ is \emph{Diophantine in $F$}
+if it is the projection onto the first $r$ coordinates of the common
+zero set of finitely many polynomials with coefficients in $F$.
+Thus there are polynomials $f_1,\ldots,f_s$ such that
+\[
+ \mathbf x\in S\quad\Longleftrightarrow\quad
+ \exists\mathbf y\in F^m:\quad
+ f_1(\mathbf x,\mathbf y)=\cdots=f_s(\mathbf x,\mathbf y)=0.
+\]
+Over a field, a nonzero condition $g\ne0$ can be expressed by
+$gz=1$. Finite conjunctions, finite unions, and existential
+projections of Diophantine conditions are again Diophantine.
+For a number field, a finite system can be replaced by one equation;
+Lemma~\ref{lem:combine} gives a quantitative version. Coefficients
+from the specified ambient field are allowed throughout.
+
+The \emph{total number of coordinates} includes all distinguished
+input coordinates as well as all quantified coordinates. Degree is
+total polynomial degree. A formula with a single input and $N$
+total coordinates has $N-1$ witnesses.
+
+For a number field $K$, write $\OK$ for its ring of algebraic
+integers. We use the established theorem
+\begin{equation}\label{eq:DL}
+            \Z\text{ is Diophantine in }\OK
+            \quad\text{for every number field }K.
+\end{equation}
+The theorem is stated in \cite[Corollary 1.2]{ABHS}; the
+rank-stability method and the reduction to all number fields are
+explained in \cite[Sections 1.2 and 5]{Poonen}.
+All quantified variables in \eqref{eq:DL} range over $\OK$.
+This distinction is essential: \eqref{eq:DL} is not itself a
+definition of $\OK$ in $K$.
+
+Where needed, we state separately the hypothesis
+\begin{equation}\label{eq:ZQ}
+                    \Z\text{ is Diophantine in }\Q.
+                    \tag{H}
+\end{equation}
+The elementary implications below do not supply a proof of
+\eqref{eq:ZQ}, and their validity does not depend on a particular
+proposed polynomial for that hypothesis.
+
+\section{Combining equations and taking linear images}
+
+\begin{lemma}\label{lem:combine}
+Over a number field $F$, a system of $s\ge1$ polynomial equations of
+degree at most $D$ can be replaced, in the same coordinates, by one
+equation of degree at most $\lceil\sqrt{s}\rceil D$.
+If $F$ has a real embedding and $s>1$, the bound $2D$ also holds.
+For $s=1$, the original equation suffices.
+\end{lemma}
+\begin{proof}
+Put $e=\lceil\sqrt{s}\rceil$. Choose a finite prime $\mathfrak p$
+of $F$, an element $\pi$ of valuation one there, and a monic
+polynomial $g$ of degree $e$ with integral coefficients and
+irreducible reduction over the residue field. Let
+\[
+ N_g(Z_0,\ldots,Z_{e-1})
+  =\det\bigl(m_{Z_0+Z_1u+\cdots+Z_{e-1}u^{e-1}}\bigr)
+\]
+be the multiplication determinant in $F[u]=F[U]/(g)$.
+For any nonzero block $\mathbf z\in F^e$, reduction after scaling
+by its least coordinate valuation gives
+\[
+        v_{\mathfrak p}(N_g(\mathbf z))
+                      =e\min_i v_{\mathfrak p}(z_i).
+\]
+Indeed, the reduced multiplication matrix multiplies by a nonzero
+element of the residue extension field, so its determinant is a
+unit. Therefore the degree-$e$ form
+\[
+       A_e(\mathbf z_0,\ldots,\mathbf z_{e-1})
+                    =\sum_{j=0}^{e-1}\pi^jN_g(\mathbf z_j)
+\]
+vanishes only when all $e^2$ entries are zero: its nonzero summands
+have distinct valuation classes modulo $e$, so a unique term has
+least valuation. Pad the original residuals to length $e^2$ and
+substitute them into $A_e$.
+
+If $F$ has a real embedding, a sum of squares vanishes in $F$
+only when each summand vanishes. The sum of the squares of the
+residuals gives the second bound.
+\end{proof}
+
+The following elementary observation avoids an unnecessary
+coordinate in several constructions.
+
+\begin{lemma}\label{lem:linear-image}
+For $1\le i\le n$, let $S_i\subseteq F$ be defined by a polynomial
+$F_i(T,\mathbf Y_i)$ with $N_i$ total coordinates and degree at most
+$D$. Fix $b_1,\ldots,b_n\in F$, with $b_n\ne0$. The set
+\[
+              b_1S_1+\cdots+b_nS_n
+\]
+has a definition with $\sum_iN_i$ total coordinates, $n$ equations,
+and degree at most $D$.
+\end{lemma}
+\begin{proof}
+For the distinguished input $x$, retain $z_1,\ldots,z_{n-1}$ and
+put
+\[
+               z_n=\frac{x-\sum_{i<n}b_i z_i}{b_n}.
+\]
+Impose $F_i(z_i,\mathbf Y_i)=0$ for every $i$, using disjoint
+witness blocks. There are
+\[
+          1+(n-1)+\sum_i(N_i-1)=\sum_iN_i
+\]
+coordinates. Substitution of a linear expression does not increase
+total degree. The equivalence with membership in the displayed
+linear image is immediate in both directions.
+\end{proof}
+
+\section{Rational integers, algebraic integers, and rational inputs}
+
+\begin{theorem}\label{thm:equivalence}
+For every number field $K$, the following assertions are equivalent:
+\begin{enumerate}
+\item $\OK$ is Diophantine in $K$;
+\item $\Z$ is Diophantine in $K$.
+\end{enumerate}
+Under hypothesis~\eqref{eq:ZQ}, they are also equivalent to:
+\begin{enumerate}\setcounter{enumi}{2}
+\item the subfield $\Q$ is Diophantine in $K$.
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+Assume (1). Take a definition supplied by \eqref{eq:DL} and replace
+the requirement that each input or witness lie in $\OK$ by its
+assumed existential definition in $K$. All quantifiers remain
+existential. Restriction of every original variable to its original
+ring makes the new formula define exactly $\Z$.
+
+Assume (2). Choose an integral basis
+$\omega_1,\ldots,\omega_n$ of $\OK$ over $\Z$. Then
+\[
+ x\in\OK\quad\Longleftrightarrow\quad
+ \exists z_1,\ldots,z_n\in\Z:\quad
+                    x=\sum_{i=1}^n\omega_i z_i.
+\]
+Replacing the integer membership conditions by their definitions
+inside $K$ proves (1).
+
+Still under (2), rationality is expressed by
+\[
+ q\in\Q\quad\Longleftrightarrow\quad
+ \exists a,b\in\Z\ \exists c\in K:
+                         qb=a,\qquad bc=1.
+\]
+Thus (2) implies (3), without using \eqref{eq:ZQ}.
+
+Finally assume (3) and \eqref{eq:ZQ}. In the defining formula over
+$\Q$, restrict its input and every witness to the Diophantine
+subfield $\Q\subseteq K$. The resulting existential formula over
+$K$ is equivalent to the original one over $\Q$ and defines $\Z$.
+\end{proof}
+
+\begin{proposition}\label{prop:integral-count}
+Let $n=[K:\Q]$. If $\Z$ has a definition in $K$ with $N$ total
+coordinates and degree $D$, then $\OK$ has a definition with
+$nN$ total coordinates and $n$ equations of degree at most $D$.
+It has a single-equation definition in those coordinates of degree
+at most $\lceil\sqrt n\rceil D$, or at most $2D$ if $K$ has a
+real embedding and $n>1$.
+\end{proposition}
+\begin{proof}
+Apply Lemma~\ref{lem:linear-image} to the integral-basis identity
+in the proof of Theorem~\ref{thm:equivalence}, then apply
+Lemma~\ref{lem:combine}.
+\end{proof}
+
+\begin{proposition}\label{prop:composition-count}
+Suppose that a polynomial of degree $D$ and $N$ total coordinates
+defines $\Z$ in $\Q$, and a polynomial of degree $E$ and $R$ total
+coordinates defines $\Q$ in a number field $K$.
+Then $\Z$ has a definition inside $K$ with $NR$ total coordinates,
+$N+1$ equations, and degree at most $\max(D,E)$.
+The ring $\OK$ has a definition with $nNR$ total coordinates,
+$n(N+1)$ equations, and the same degree bound, where $n=[K:\Q]$.
+\end{proposition}
+\begin{proof}
+Write the first polynomial as $P(T_0,\ldots,T_{N-1})$ and the
+second as $Q(T,\mathbf V)$, with $R-1$ witnesses in $\mathbf V$.
+Impose
+\[
+ P(T_0,\ldots,T_{N-1})=0,\qquad
+ Q(T_i,\mathbf V_i)=0\quad(0\le i<N).
+\]
+The $N$ original coordinates and the $N(R-1)$ new ones total $NR$.
+The argument in Theorem~\ref{thm:equivalence} proves correctness.
+For $\OK$, use $n$ copies of this system in the integral-basis
+construction and eliminate the last integer coordinate as in
+Lemma~\ref{lem:linear-image}. This yields the stated count without
+first aggregating either system.
+\end{proof}
+
+\begin{remark}
+In the first part of Proposition~\ref{prop:composition-count},
+restricting only the witnesses is insufficient in general: a
+polynomial with rational coefficients and rational values for the
+witnesses can still have nonrational algebraic roots in its input.
+In particular, the polynomial defining $\Z$ over $\Q$ cannot simply
+be evaluated with unrestricted $K$-valued witnesses.
+\end{remark}
+
+\section{Relative norms and traces characterize the missing subfield}
+
+Throughout this section, $L/K$ is a finite extension of
+characteristic-zero fields of degree $n$. The norm and trace are
+the usual determinant and trace of multiplication on the
+$n$-dimensional $K$-vector space $L$. Define the following subsets
+of powers of the \emph{ambient field $L$}:
+\[
+\begin{split}
+ T_{L/K}&=\{\Nm_{L/K}(a):a\in L\}\subseteq K\subseteq L,\\
+ G_N&=\{(a,b)\in L^2:b=\Nm_{L/K}(a)\},\\
+ G_T&=\{(a,b)\in L^2:b=\Tr_{L/K}(a)\}.
+\end{split}
+\]
+In particular, definability here does not silently require the
+coordinates of $a$ in a $K$-basis to belong to $K$.
+
+\begin{lemma}\label{lem:finite-difference}
+For every integer $n\ge1$, one has the polynomial identity
+\begin{equation}\label{eq:difference}
+ \sum_{j=0}^{n-1}(-1)^{n-1-j}\binom{n-1}{j}(T+j)^n
+                    =n!T+\frac{n!(n-1)}2.
+\end{equation}
+If $S\subseteq K$ contains every $n$th power of an element of $K$,
+then
+\begin{equation}\label{eq:linear-image}
+       K=\sum_{j=0}^{n-1}
+                   (-1)^{n-1-j}\binom{n-1}{j}S.
+\end{equation}
+\end{lemma}
+\begin{proof}
+The left side of \eqref{eq:difference} is the $(n-1)$st forward
+difference of $T^n$. It is linear with coefficient $n!$.
+Its constant term equals $(n-1)!S(n,n-1)$, where $S(n,n-1)$
+counts partitions of an $n$-element set into $n-1$ nonempty parts.
+Exactly one pair is joined, so $S(n,n-1)=\binom n2$, giving the
+stated constant. This also follows directly by inclusion and
+exclusion applied to surjections from an $n$-element set to an
+$(n-1)$-element set. For $n=1$, the identity is $T=T$.
+
+Every element on the right of \eqref{eq:linear-image} belongs to
+$K$. Conversely, given $q\in K$, choose
+$T=q/n!-(n-1)/2\in K$ in \eqref{eq:difference}. Each $(T+j)^n$
+belongs to $S$, and their indicated linear combination is $q$.
+\end{proof}
+
+\begin{theorem}\label{thm:norm-trace}
+The following assertions are equivalent:
+\begin{enumerate}
+\item $K$ is Diophantine in $L$;
+\item the norm image $T_{L/K}$ is Diophantine in $L$;
+\item the norm graph $G_N$ is Diophantine in $L$;
+\item the trace graph $G_T$ is Diophantine in $L$.
+\end{enumerate}
+If $T_{L/K}$ is defined by a polynomial with $M$ total coordinates
+and degree $D$, then $K$ has a definition with $nM$ total
+coordinates and $n$ equations of degree at most $D$.
+\end{theorem}
+\begin{proof}
+Assume (1), and choose a $K$-basis $b_1,\ldots,b_n$ of $L$.
+For $a\in L$, write $a=\sum_i a_i b_i$ with all $a_i\in K$.
+The entries of its multiplication matrix are fixed $K$-linear
+forms in the $a_i$. Its determinant and trace are therefore
+polynomials over $K$ in these coordinates. Restricting each
+$a_i$ to the given Diophantine subfield $K$ makes the graph of
+each map Diophantine in $L$. Projection of the norm graph proves
+(2) as well as (3) and (4).
+
+Assertion (3) implies (2) by projection. If (2) holds, then
+$T_{L/K}\subseteq K$ and
+$\Nm_{L/K}(q)=q^n$ for every $q\in K$.
+Lemma~\ref{lem:finite-difference} expresses all of $K$ as a fixed
+linear image of $n$ copies of $T_{L/K}$, proving (1).
+Lemma~\ref{lem:linear-image} proves the quantitative assertion,
+since the last coefficient in \eqref{eq:linear-image} is one.
+
+Finally the trace is onto $K$: for $q\in K$,
+$\Tr_{L/K}(q/n)=q$. Projection of $G_T$ therefore proves that
+(4) implies (1).
+\end{proof}
+
+\begin{corollary}\label{cor:quadratic}
+If $L/K$ is quadratic, existential definability in $L$ of any of
+the four sets in Theorem~\ref{thm:norm-trace} is also equivalent
+to existential definability of the graph of the nontrivial
+$K$-automorphism $\sigma$ of $L$.
+Moreover,
+\[
+ x\in K\quad\Longleftrightarrow\quad\sigma(x)=x
+ \quad\Longleftrightarrow\quad\Tr_{L/K}(x)=2x
+ \quad\Longleftrightarrow\quad\Nm_{L/K}(x)=x^2.
+\]
+\end{corollary}
+\begin{proof}
+A definition of the automorphism graph defines its fixed field.
+Conversely, if $K$ is Diophantine in $L$, write
+$x=a+b\theta$ with $a,b\in K$ and use
+$\sigma(x)=a+b\sigma(\theta)$.
+The trace equivalence follows from
+$\Tr(x)=x+\sigma(x)$.
+For the norm, $\Nm(x)=x\sigma(x)=x^2$ implies either $x=0$ or
+$\sigma(x)=x$; zero already belongs to $K$.
+\end{proof}
+
+For example, when $n=2$, the norm-image identity is simply
+\[
+                         K=T_{L/K}-T_{L/K}.
+\]
+Indeed, for $q\in K$, the identity
+$((q+1)/2)^2-((q-1)/2)^2=q$ exhibits the difference of two norms
+of elements of $K$ itself.
+
+\subsection{Why an ordinary norm form does not solve this problem}
+
+A norm form with \emph{$K$-valued coordinates} is an ordinary
+polynomial over $K$. The map on a \emph{single $L$-valued input}
+addressed in Theorem~\ref{thm:norm-trace} is a different object.
+The distinction has the following exact algebraic manifestation.
+
+\begin{proposition}\label{prop:dense}
+If $L/K$ is proper, the graphs $G_N$ and $G_T$ are Zariski dense
+in $\A^2_L$. Neither has a quantifier-free definition in the
+language of rings with coefficients in $L$. In particular neither
+is the graph of a polynomial function in one variable over $L$.
+\end{proposition}
+\begin{proof}
+Choose $\theta\in L\setminus K$. The set $K^2$ is Zariski dense
+in $\A^2_L$, because a polynomial vanishing on $K^2$ is zero by
+applying the one-variable root bound successively.
+
+Consider first the trace graph. Its points include the images of
+$K^2$ under the $L$-linear map
+\[
+    (a,b)\longmapsto
+        \bigl(a+b\theta,\;na+b\Tr_{L/K}(\theta)\bigr).
+\]
+Its determinant is $\Tr_{L/K}(\theta)-n\theta\ne0$:
+otherwise $\theta\in K$. Hence this map is an automorphism of
+$\A^2_L$, proving density of $G_T$.
+
+For the norm, restrict the polynomial norm form to the two
+coordinates $a,b$ corresponding to $a+b\theta$ and consider
+\[
+        (a,b)\longmapsto
+          \bigl(a+b\theta,\;\Nm_{L/K}(a+b\theta)\bigr).
+\]
+At $(1,0)$ its Jacobian determinant is again
+$\Tr_{L/K}(\theta)-n\theta\ne0$, since the linear term in
+$\Nm(1+b\theta)$ is $b\Tr(\theta)$. The map is dominant.
+Its values on $K^2$ belong to $G_N$, so $G_N$ is dense as well.
+
+A quantifier-free formula defines a constructible set. A dense
+constructible subset of $\A^2_L$ contains a nonempty Zariski
+open subset. Since $L$ is infinite, such an open subset has
+infinitely many points in at least one vertical line; for instance,
+choose a first coordinate at which a nonzero defining polynomial
+of a principal open subset remains nonzero. A graph of a function
+has exactly one point in each vertical line. This contradiction
+rules out a quantifier-free definition. A polynomial graph is a
+proper closed subset and is excluded in particular.
+\end{proof}
+
+\section{Descent and the structure of a possible counterexample}
+
+\begin{theorem}\label{thm:descent}
+Let $L/K$ be a finite extension of number fields of degree $d$.
+If $\OL$ has a definition in $L$ by a polynomial with $N$ total
+coordinates and degree $D$, then $\OK$ has a definition in $K$
+with $1+d(N-1)$ total coordinates, $d$ equations, and degree at
+most $D$. A single equation in those coordinates can be chosen
+of degree at most $\lceil\sqrt d\rceil D$; if $K$ has a real
+embedding and $d>1$, the bound $2D$ also applies.
+\end{theorem}
+\begin{proof}
+Fix a $K$-basis $b_1,\ldots,b_d$ of $L$ and write the defining
+polynomial as $P(T,Y_1,\ldots,Y_{N-1})$.
+Keep the input $x\in K$ and substitute
+\[
+                     Y_j=\sum_{i=1}^d b_i y_{ji},
+                     \qquad y_{ji}\in K.
+\]
+Expanding in the basis gives a unique expression
+\[
+ P\left(x,\sum_i b_i y_{1i},\ldots,\sum_i b_i y_{N-1,i}\right)
+                 =\sum_{i=1}^d b_i P_i(x,(y_{ji})),
+\]
+where every $P_i$ belongs to $K[x,(y_{ji})]$ and has degree at
+most $D$. Vanishing is equivalent to all $P_i=0$ by linear
+independence. The substitutions range over all original witnesses
+in $L$, so the input projection is $\OL\cap K=\OK$.
+The coordinate count and aggregation bounds follow immediately.
+\end{proof}
+
+\begin{corollary}\label{cor:counterexample}
+If some number field $K$ has a ring of integers that is not
+Diophantine in $K$, then every finite extension of $K$ has the
+same property. In particular, there exists a totally imaginary
+number field, Galois over $\Q$, with that property.
+\end{corollary}
+\begin{proof}
+The first assertion is the contrapositive of
+Theorem~\ref{thm:descent}. Take a normal closure of $K/\Q$
+and adjoin $i$. The resulting field is finite and Galois over
+$\Q$, contains $K$, and has no real embedding.
+\end{proof}
+
+This is a reduction of a possible counterexample, not the
+construction of one. In particular, a polynomial that fails after
+base extension does not establish the hypothesis of
+Corollary~\ref{cor:counterexample}.
+
+\section{A finite collection of unchanged formulas is insufficient}
+
+An existential formula in this section may use finite Boolean
+combinations of polynomial equalities, so nonzero conditions and
+finite alternatives are allowed. Coefficients are fixed in a
+number field $k$. Its interpretation in an extension $L/k$ uses
+the same formula and the same coefficients, with witnesses in $L$.
+
+\begin{lemma}\label{lem:generic}
+Let $\Phi(T)$ be such a formula and suppose $\Phi(k)$ is infinite.
+There are an integer $d\ge1$ and a nonzero $h\in k[T]$ such that,
+for every $a\in k$ with $h(a)\ne0$, the formula $\Phi(a)$ holds
+in some extension $E_a/k$ of degree at most $d$.
+\end{lemma}
+\begin{proof}
+The constructible set of witness tuples has a constructible image
+in the input line by Chevalley's theorem \cite{Stacks}.
+An infinite image is dense in that line, so one conjunction in
+the formula has nonempty generic fiber over $k(T)$.
+Choose a closed point of this generic fiber, with residue field
+$E$ finite over $k(T)$. Write $E=k(T)[\alpha]$, with monic
+minimal polynomial $G(T,Z)$ of degree $d$ in $Z$.
+Express the witness coordinates and the inverses of all required
+nonzero expressions as polynomials in $\alpha$ with coefficients
+in $k(T)$.
+
+After inverting a nonzero $h\in k[T]$, all these expressions and
+the coefficients of $G$ belong to $R=k[T,1/h]$. The algebra
+$C=R[Z]/(G)$ is free of rank $d$ and embeds in $E$.
+All equations and inverse identities therefore hold in $C$.
+For $h(a)\ne0$, specialize to $C_a=k[Z]/(G(a,Z))$ and pass to
+any residue field at a maximal ideal. Its degree over $k$ is
+at most $d$, and all equations and nonzero conditions survive.
+\end{proof}
+
+\begin{theorem}\label{thm:finite-menu}
+Let $\Phi_1,\ldots,\Phi_r$ be a finite nonempty list of
+existential formulas over a number field $k$. Suppose
+$\Phi_i(k)$ is infinite for every $i$.
+There exists $B\ge1$ such that, for all but finitely many
+$q\in\Q\setminus\Z$, there is a finite Galois extension
+$L_q/k$ of degree at most $B$ in which every $\Phi_i(q)$ holds.
+Thus none of the formulas defines $\mathcal O_{L_q}$ in $L_q$.
+One may further require $L_q$ to have no real embedding, at the
+cost of at most doubling $B$.
+\end{theorem}
+\begin{proof}
+Apply Lemma~\ref{lem:generic} to each formula, obtaining $d_i$
+and $h_i$. Exclude the finite union of the rational zero sets
+of the $h_i$. For every remaining rational noninteger $q$,
+choose the witnessing fields $E_{i,q}$.
+The normal closure of $E_{i,q}/k$ has degree at most $d_i!$,
+by its permutation action on the conjugates of a primitive
+element. Take $L_q$ to be the compositum of these normal closures.
+Then $L_q/k$ is Galois of degree at most
+\[
+                              B=\prod_{i=1}^r d_i!.
+\]
+Each witness tuple remains a witness in $L_q$: polynomial
+equalities and nonzero conditions are preserved by field
+extensions. A rational algebraic integer is an integer, so
+$q\notin\mathcal O_{L_q}$. Adjoining $i$ gives the last assertion.
+\end{proof}
+
+\begin{corollary}
+A fixed finite collection of formulas over $k$, each correct for
+$\mathcal O_k$ in $k$, cannot supply a definition of the ring of
+integers in every finite extension by choosing one formula from
+that collection for each extension.
+\end{corollary}
+\begin{proof}
+Each formula has infinitely many inputs over $k$. The extension
+in Theorem~\ref{thm:finite-menu} makes every formula in the
+collection incorrect simultaneously.
+\end{proof}
+
+For a single nonzero polynomial $P(T,\mathbf Y)$ that depends on
+a witness coordinate $Y_j$, the integer $d$ in
+Lemma~\ref{lem:generic} may be chosen as $\deg_{Y_j}P$.
+Indeed, specialize all other witnesses to constants in $k$
+so that the leading coefficient in $Y_j$ remains a nonzero
+polynomial of $T$. Outside its finite zero set, adjoining a
+root gives the asserted extension. Consequently the factorial
+bound in Theorem~\ref{thm:finite-menu} can use the smallest
+positive individual witness degree of each polynomial.
+
+\section{What rank stability supplies inside a field}
+
+A positive-rank elliptic curve whose rank does not grow in an
+extension supplies a useful Diophantine subset of the smaller
+field. It is necessary to distinguish this conclusion from
+existential definability of the entire smaller field.
+
+\begin{proposition}\label{prop:stable-set}
+Let $K$ be a number field and let $E/\Q$ be an elliptic curve
+such that
+\[
+                0<\operatorname{rank}E(\Q)
+                         =\operatorname{rank}E(K).
+\]
+There is an integer $r\ge1$ for which the set
+\[
+ T=\{x(P):P\in rE(K),\ P\ne O\}
+\]
+is an infinite Diophantine subset of $K$ contained in $\Q$.
+\end{proposition}
+\begin{proof}
+The Mordell--Weil groups are finitely generated and have the same
+rank, so $E(K)/E(\Q)$ is finite. Choose $r$ annihilating this
+quotient. Then $rE(K)\subseteq E(\Q)$, and $rE(K)$ is infinite.
+The graph of multiplication by the fixed integer $r$ is
+algebraic. On a finite collection of affine charts it is given
+by polynomial equations and nonzero conditions. Projecting its
+nonidentity image onto the abscissa coordinate gives a
+Diophantine set over $K$. The abscissa map has finite fibers,
+so this set is infinite; all its elements are rational because
+its points lie in $E(\Q)$.
+\end{proof}
+
+The known arithmetic transfer theorem under the same rank
+hypothesis defines the smaller \emph{ring of integers} inside
+the larger ring of integers; the more general abelian-variety
+version is \cite[Theorem 4.2]{Poonen}. For fields themselves,
+\cite[Theorem 4]{CornelissenShlapentokh} gives a definition of
+the smaller subfield using one universal quantifier. Remark~6.3 of~\cite{CornelissenShlapentokh} expressly distinguishes
+that conclusion from an existential definition in the whole
+field. Those results therefore do not remove the rational-input
+restriction in Proposition~\ref{prop:composition-count}.
+
+In general, taking multiplicative combinations of the abscissas
+in Proposition~\ref{prop:stable-set} does not yield every rational
+number. The following obstruction gives an explicit example.
+
+\begin{lemma}\label{lem:abscissa-parity}
+Let
+\[
+                       E:y^2=x^3+Ax+B
+\]
+be a nonsingular elliptic curve over $\Q$. Suppose that $p$ is
+an odd prime, $A$ and $B$ are $p$-integral, and the reduction
+of $B$ is a nonsquare in $\mathbb F_p^\times$.
+Every affine rational point of $E$ has nonzero abscissa $x$
+and even valuation $v_p(x)$. The multiplicative subgroup of
+$\Q^\times$ generated by all these abscissas consists entirely
+of numbers of even $p$-adic valuation.
+\end{lemma}
+\begin{proof}
+If $x=0$, then $y^2=B$, contrary to the nonsquare residue of
+$B$. If $v_p(x)>0$, the equation has a unit right-hand side
+congruent to $B$ modulo $p$, giving the same contradiction.
+If $v_p(x)<0$, then
+\[
+        3v_p(x)<v_p(Ax),\qquad 3v_p(x)<v_p(B).
+\]
+The term $x^3$ has the unique least valuation on the right,
+so $2v_p(y)=3v_p(x)$. This forces $v_p(x)$ to be even.
+The remaining case has valuation zero. Valuations add under
+multiplication and change sign under inversion, proving the
+last assertion.
+\end{proof}
+
+\begin{proposition}\label{prop:abscissa-example}
+The curve $E:y^2=x^3-2$ has a rational point of infinite order,
+but $5$ is not a ratio of two rational abscissas of $E$, or
+any finite product of integral powers of its rational abscissas.
+\end{proposition}
+\begin{proof}
+The point $(3,5)$ lies on $E$. The curve has good reduction at
+$5$ and $7$, since its discriminant is $-1728$. Direct counting
+gives
+\[
+                       \#E(\mathbb F_5)=6,
+                       \#E(\mathbb F_7)=7.
+\]
+For completeness, modulo $5$ the numbers of ordinates above
+$x=0,1,2,3,4$ are $0,2,2,1,0$. Modulo $7$ the corresponding
+numbers are $0,0,0,2,0,2,2$. Add the identity in each case.
+
+Prime-to-$p$ rational torsion injects under good reduction at
+$p$. One way to see the needed injectivity is to use the formal
+parameter $z=-x/y$ in the reduction kernel: if $p\nmid m$,
+then $[m]z=mz+O(z^2)$ has the same finite valuation as $z$ and
+cannot vanish. Thus a prime divisor $\ell\ne5,7$ of a rational
+torsion order would divide both $6$ and $7$, which is impossible.
+The $5$-primary torsion is excluded by reduction at $7$, and
+the $7$-primary torsion by reduction at $5$. Hence $E(\Q)$
+has trivial torsion, and $(3,5)\ne O$ has infinite order.
+
+At $p=5$, the constant coefficient is $B=-2\equiv3$, a
+nonsquare. Lemma~\ref{lem:abscissa-parity} shows that every
+multiplicative combination in the statement has even
+$5$-adic valuation, whereas $v_5(5)=1$.
+\end{proof}
+
+The obstruction in Proposition~\ref{prop:abscissa-example}
+concerns multiplicative combinations. It does not apply to
+sums of such values and does not disprove a more elaborate
+existential definition. In particular, it supplies neither a
+counterexample to Theorem~\ref{thm:equivalence}'s equivalent
+properties nor a positive result for a new number field.
+
+\section{Consequences for constructions over number fields}
+
+The distinction between two questions is exact. Theorems
+\ref{thm:descent} and \ref{thm:equivalence} concern the existence
+of a formula chosen for a specified field. Theorem
+\ref{thm:finite-menu} concerns reusing a fixed finite collection
+of formulas throughout extensions. The second question has a
+negative answer even if the first has a positive answer for
+every number field.
+
+Under \eqref{eq:ZQ}, a proof that $\OK$ is Diophantine in $K$
+can therefore proceed by constructing any one of the following:
+a definition of the rational subfield; a definition of the
+absolute norm image as a subset of $K$; or a definition of the
+absolute trace graph with witnesses in $K$.
+Theorem~\ref{thm:norm-trace} shows that these are equivalent
+arithmetic tasks, rather than independent shortcuts obtained
+by writing a formal norm or trace symbol.
+Alternatively, a direct definition of any subset $S\subseteq\OK$
+containing $\Z$ is sufficient: the integral-basis construction
+gives
+\[
+                    \OK=\sum_{i=1}^n\omega_i S,
+\]
+because the right side is contained in $\OK$ and contains its
+full integral-basis expansion. This last sufficient condition
+does not assume \eqref{eq:ZQ}.
+
+No theorem above gives an example of a number field whose ring
+of integers is not Diophantine in its fraction field, or a proof
+that all number fields have the property. The remaining step is
+an arithmetic definition inside the field itself, with all
+witnesses in the field and with soundness against nonintegral
+inputs.
+
+\begin{thebibliography}{9}
+\bibitem{ABHS}
+L.~Alp\"oge, M.~Bhargava, W.~Ho and A.~Shnidman,
+\emph{Rank stability in quadratic extensions and Hilbert's tenth
+problem for the ring of integers of a number field},
+Invent. Math. \textbf{243} (2026), 1129--1139.
+\url{https://doi.org/10.1007/s00222-025-01392-3}.
+
+\bibitem{Poonen}
+B.~Poonen, \emph{Rank stability makes rings of integers diophantine},
+3 July 2026.
+\url{https://math.mit.edu/~poonen/papers/h10_over_OK.pdf}.
+
+\bibitem{CornelissenShlapentokh}
+G.~Cornelissen and A.~Shlapentokh,
+\emph{Defining the integers in large rings of a number field using
+one universal quantifier},
+J. Math. Sci. (N.Y.) \textbf{158} (2009), 713--726.
+\url{https://doi.org/10.1007/s10958-009-9404-4};
+preprint \url{https://arxiv.org/abs/0708.3075v2}.
+
+\bibitem{Stacks}
+The Stacks Project Authors, \emph{The Stacks Project},
+Chevalley's theorem, Tag 00FE.
+\url{https://stacks.math.columbia.edu/tag/00FE}.
+\end{thebibliography}
+\end{document}

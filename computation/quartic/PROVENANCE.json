@@ -1,7 +1,7 @@
 {
-  "format": "quartic-provenance-v2",
+  "format": "quartic-provenance-v3",
   "pathConvention": "All local paths are relative to this computation/quartic directory.",
-  "scope": "Exact polynomial specifications and conditional integer-projection theorems. Finite verification establishes the algebraic tables and stated numerical certificates, not the retained global arithmetic premises. The sufficient coefficient threshold for the 317-variable family is ineffective.",
+  "scope": "Exact polynomial specifications and conditional integer-projection theorems. Finite verification establishes the algebraic tables and stated numerical certificates, not the retained global arithmetic inputs. The leading 297-variable family has an ineffective sufficient coefficient threshold; the leading 342-variable quartic has a certified fixed parameter.",
   "sourceRepository": "https://github.com/elliotglazer/diophantine-z-q",
   "sourceCommit": "5bbd74f6a479776a332cbe036809d5dddae63720",
   "sourceFiles": [
@@ -39,7 +39,11 @@
       "effectiveAbscissaSums",
       "family301",
       "specified351",
-      "simultaneousValuations"
+      "simultaneousValuations",
+      "family297",
+      "specified342",
+      "sharedLocalWeights",
+      "primeSelection"
     ]
   },
   "finalConstructions": {
@@ -123,7 +127,7 @@
       "independentVerification": "family370/independent-verification370.json"
     },
     "family301": {
-      "role": "Best quartic existence family in this collection; sufficient threshold ineffective.",
+      "role": "Pinned exact source and supporting proof for the 297-variable family.",
       "projectionStatement": "There exists an integer N0>=27464 such that every integer N>=N0 gives input projection Z, under the stated arithmetic premises.",
       "totalVariables": 301,
       "inputCoordinate": 1,
@@ -152,7 +156,7 @@
       "independentVerification": "family301/independent-verification301.json"
     },
     "specified351": {
-      "role": "Best fully specified quartic in this collection, under stated arithmetic premises.",
+      "role": "Pinned exact source and supporting proof for the 342-variable family.",
       "totalVariables": 351,
       "inputCoordinate": 1,
       "degree": 4,
@@ -177,6 +181,77 @@
       "polynomial": "family351/polynomial-family351.json",
       "constructionReport": "family351/construction-report351.json",
       "independentVerification": "family351/independent-verification351.json"
+    },
+    "family297": {
+      "role": "Leading quartic existence family; sufficient defining threshold ineffective.",
+      "projectionStatement": "There exists N0>=27464 such that every N>=N0 has input projection Z, under the stated arithmetic inputs.",
+      "totalVariables": 297,
+      "inputCoordinate": 1,
+      "degree": 4,
+      "content": 1,
+      "quadraticResiduals": 271,
+      "parameter": {
+        "name": "A_N",
+        "base": 80989,
+        "exponent": "2*N+1",
+        "coordinate": false,
+        "familyDomain": "Integers N>=1"
+      },
+      "symbolicTerms": 4269,
+      "ordinaryMonomials": {
+        "count": 4268,
+        "validFor": "Every positive A; hence every N>=1",
+        "scope": "Algebraic support only; not a sufficient defining threshold."
+      },
+      "exactCoefficientHeight": {
+        "expression": "80989^(4*N+2)+1",
+        "validFor": "Every N>=23",
+        "scope": "Algebraic height only; the defining thresholds are separate."
+      },
+      "quadraticSystem": "family297/quadratic-family297.json",
+      "polynomial": "family297/polynomial-family297.json",
+      "constructionReport": "family297/construction-report297.json",
+      "independentVerification": "family297/independent-verification297.json",
+      "knownNumericalSufficientN": null,
+      "ineffectivity": "The aggregate-trace height theorem has an ineffective additive constant."
+    },
+    "specified342": {
+      "role": "Leading fully specified quartic under stated arithmetic inputs.",
+      "projectionStatement": "Every integer N>=27464 has input projection Z, under the stated arithmetic inputs.",
+      "totalVariables": 342,
+      "inputCoordinate": 1,
+      "degree": 4,
+      "content": 1,
+      "quadraticResiduals": 314,
+      "parameter": {
+        "name": "A_N",
+        "base": 80989,
+        "exponent": "2*N+1",
+        "coordinate": false,
+        "familyDomain": "Integers N>=1",
+        "certifiedSufficientN": 27464
+      },
+      "symbolicTerms": 4939,
+      "ordinaryMonomials": {
+        "count": 4938,
+        "validFor": "Every positive A; hence every N>=1",
+        "scope": "Algebraic support only; not a sufficient defining threshold."
+      },
+      "exactCoefficientHeight": {
+        "expression": "80989^(4*N+2)+1",
+        "validFor": "Every N>=23",
+        "scope": "Algebraic height only; the defining thresholds are separate."
+      },
+      "quadraticSystem": "family342/quadratic-family342.json",
+      "polynomial": "family342/polynomial-family342.json",
+      "constructionReport": "family342/construction-report342.json",
+      "independentVerification": "family342/independent-verification342.json",
+      "explicitMember": {
+        "N": 27464,
+        "exponent": 54929,
+        "exactCoefficientHeight": "80989^109858+1",
+        "largestCoefficientBinaryDigits": 1791283
+      }
     }
   },
   "constructionChain": [
@@ -229,6 +304,20 @@
       "producer": "build_quartic_mixed.py",
       "checker": "check_quartic_mixed.py",
       "change": "Combine local tests of orders 1, 10, 40 using distinct valuation classes; reuse existing powers; remove unused symmetric products and q40 powers."
+    },
+    {
+      "from": "family301",
+      "to": "family297",
+      "producer": "build_quartic_shared_weights.py",
+      "checker": "check_quartic_shared_weights.py",
+      "change": "Use powers q,q^19,q^79 with a shared reciprocal cube; replace scalar coordinate by the actual contact product using an invertible rational affine change and primitive residual normalization."
+    },
+    {
+      "from": "specified351",
+      "to": "specified342",
+      "producer": "build_quartic_shared_weights.py",
+      "checker": "check_quartic_shared_weights.py",
+      "change": "Use powers q,q^19,q^79 with a shared reciprocal cube; replace scalar coordinate by the actual contact product using an invertible rational affine change and primitive residual normalization."
     }
   ],
   "reproduction": {
@@ -245,7 +334,9 @@
       "python3 build_quartic370.py",
       "python3 check_quartic370.py",
       "python3 build_quartic_mixed.py",
-      "python3 check_quartic_mixed.py"
+      "python3 check_quartic_mixed.py",
+      "python3 build_quartic_shared_weights.py",
+      "python3 check_quartic_shared_weights.py"
     ],
     "baselineArchiveHandling": "The new builders read and hash-check baseline392/*.json.gz directly. scripts/restore_data.py restores the separate upstream/final392 reproduction archives."
   },
@@ -270,8 +361,8 @@
     "aggregateTraceHeight": {
       "tex": "../../papers/trace_heights/aggregate_trace_height_20261108_v9.tex",
       "pdf": "../../papers/trace_heights/aggregate_trace_height_20261108_v9.pdf",
-      "tex_sha256": "2df0e1820887065b661224698a895e9074368c05288c68a852dddeef065da6e5",
-      "pdf_sha256": "58ce0888dd0d84d69be69554d6e70156a64e5ef9a75653a5f8006ffbd953290b"
+      "tex_sha256": "429b0787090a48c78fb37754a760fb4b4846a25b3b6970332a73912f5d59471a",
+      "pdf_sha256": "b17206932e938fdfcdaee51a255f005c38b9576c4f8a9c916f0bf6a6719dc6ab"
     },
     "baseline392": {
       "tex": "../../papers/quartic/quartic392_20261108_v8.tex",
@@ -308,16 +399,40 @@
       "pdf": "../../papers/local_tests/mixed_valuation_tests_20261109_v11.pdf",
       "tex_sha256": "f134e23147175ef96a84d8d33ec155029c9c20831ccf0c2a01b19a5cf3c8b8d8",
       "pdf_sha256": "d512e98f2943e287f59c59ed473178c9b50a9263ab2ce8358e2a65b2060b7c19"
+    },
+    "family297": {
+      "tex": "../../papers/quartic_existence/quartic297_20261109_v12.tex",
+      "tex_sha256": "fdd8d6d92a692144e7de0a654f5a996ab40dc9ab09c9b9f55bd66ac445b8ac55",
+      "pdf": "../../papers/quartic_existence/quartic297_20261109_v12.pdf",
+      "pdf_sha256": "bd474a98a0803579dc47dec85a91341aa6c1bdabc4c05b5e6e4e1ea333a55fe0"
+    },
+    "specified342": {
+      "tex": "../../papers/quartic/quartic342_20261109_v12.tex",
+      "tex_sha256": "9d7b9b39e9d0a268ed4dab230f7b016ccee3ce38b83024ebcbab0fb3a40b0505",
+      "pdf": "../../papers/quartic/quartic342_20261109_v12.pdf",
+      "pdf_sha256": "af4a988594aaa49ba031132be0bc092c13dc5d2bb90e204eeec2e086f945aa82"
+    },
+    "sharedLocalWeights": {
+      "tex": "../../papers/local_tests/shared_local_weights_20261109_v12.tex",
+      "tex_sha256": "79fc4da1c14a7c7fe08a155107ec6bdf8169451e0aa58588bfb6c835c594db42",
+      "pdf": "../../papers/local_tests/shared_local_weights_20261109_v12.pdf",
+      "pdf_sha256": "94467b8ed12f3e461b7b2b6fdef083822b841ce534405ee37e6929978315b3fd"
+    },
+    "primeSelection": {
+      "tex": "../../papers/prime_selection/prime_selection_20261109_v12.tex",
+      "tex_sha256": "86c8cb4df7f4e1b5c670755a2b3cf5a67ab1f630cdd7de327a3972a3319d2eff",
+      "pdf": "../../papers/prime_selection/prime_selection_20261109_v12.pdf",
+      "pdf_sha256": "2efb4e66efc6e359840c59a991e4d337e7db1d92cb9989a7f12046fb99875849"
     }
   },
   "documentation": {
     "dataFormat": "../../docs/data_format.md",
-    "dataFormatSHA256": "4eccfb162672604c00cab084f2570b14e440ee7d86be73bd9d915c634cc59481"
+    "dataFormatSHA256": "65bec2ec899c7189d1ff12e1636a1ecb7827ec37aed62ffccbdfa2609e6d30e1"
   },
   "files": {
     "README.md": {
-      "sha256": "e1dd2f70c2800e2f81f5039809255a25a55d9ec0bbc42f577df72858e03a24a2",
-      "bytes": 4179
+      "sha256": "f9a3e02532d44a831260db2c2e72a808b04514d2fe536f5597bfc924225d93b1",
+      "bytes": 3555
     },
     "README370.md": {
       "sha256": "fe259fb8956438268502de8a9540e1cfb8f260185a981f20ce546c1b99981b8f",
@@ -558,6 +673,46 @@
     "verify_quartic392.py": {
       "sha256": "092ac1d69bec2f3d59d60584fbc831232377eb48967afba975ac8ef8e02cda59",
       "bytes": 12706
+    },
+    "family297/quadratic-family297.json": {
+      "sha256": "144f99f6f76cadf5fae3796f7a0a6c3f740659d89fe062237b278989bcef5ce8",
+      "bytes": 274396
+    },
+    "family297/polynomial-family297.json": {
+      "sha256": "9611a929a8795df215ca34bbaa19ca39a98745b86da07a864bfc2020ecf23ec0",
+      "bytes": 656687
+    },
+    "family297/construction-report297.json": {
+      "sha256": "ef46c24f97b7b6773607d7182db0525b862da6c424884830f7c98f9b56f1f6c7",
+      "bytes": 2334
+    },
+    "family297/independent-verification297.json": {
+      "sha256": "a2214780f04f4cf4df69fe7c74fb6319a39f6a813334d380dec4a8fa6f272ce0",
+      "bytes": 2008
+    },
+    "family342/quadratic-family342.json": {
+      "sha256": "309d97f891bb9144a3a314b361f62ed1ed4d3064938b7d15121e763f7b99b12f",
+      "bytes": 311033
+    },
+    "family342/polynomial-family342.json": {
+      "sha256": "4faadf8c7d7af369495a98d39afbe24b9e77d6625781d7fdd25d0a29ef6d0a74",
+      "bytes": 756429
+    },
+    "family342/construction-report342.json": {
+      "sha256": "21e6904f582dfdad713e5064bc1d77d5b9037aead8e26766d9de12b75f306518",
+      "bytes": 2411
+    },
+    "family342/independent-verification342.json": {
+      "sha256": "50a0a7155c0d0c44f7a8a42964475ea80065ee84b4340b9ce852230feef9766e",
+      "bytes": 2259
+    },
+    "build_quartic_shared_weights.py": {
+      "sha256": "da062b03879849a5b2a1bfc6d8d15bbe47e773492b15cd944cabfdf5af9d87a5",
+      "bytes": 7716
+    },
+    "check_quartic_shared_weights.py": {
+      "sha256": "c6ef3872b93d1b7cd4d070c57f062d37d260be2870069c4e197f4da2c9a4bdec",
+      "bytes": 8480
     }
   },
   "additionalBaselines": [
@@ -572,6 +727,16 @@
       "repository": "https://github.com/JoseBrox/diophantine-z-q_improvements",
       "commit": "e9ee328a77f079b4869ea0cb61f60c686edba0ed",
       "role": "Pinned 317/370-coordinate source systems for the 301/351-variable constructions."
+    },
+    {
+      "repository": "https://github.com/JoseBrox/diophantine-z-q_improvements",
+      "commit": "29199c229008aa150373c1bacb9dea508802a43e",
+      "role": "Pinned 301/351-coordinate source systems for the 297/342-variable constructions."
     }
-  ]
+  ],
+  "primeSelectionDependency": {
+    "proof": "../../papers/prime_selection/prime_selection_20261109_v12.tex",
+    "source": "Sun, arXiv:2610.20691v2, Propositions 5.1 and 6.2 and Section 6.1",
+    "scope": "Quantitative weighted selection is derived from the cited estimates; it is not an additional independent conjecture."
+  }
 }

@@ -1,6 +1,6 @@
 # Arithmetic inputs, theorem scope, and effectiveness
 
-The construction papers prove that the indicated rational input projections equal $\mathbb Z$ under their stated arithmetic inputs. Two constructions specify all coefficients: the [29-variable polynomial](../papers/few_variables/explicit29_nontorsion_20261109_v11.pdf) and the [351-variable quartic](../papers/quartic/quartic351_20261109_v11.pdf). Two further results prove the existence of sufficiently large members of computable coefficient families: the [27-variable family](../papers/few_variables27/few_variables27_nontorsion_20261109_v11.pdf) and the [301-variable quartic family](../papers/quartic_existence/quartic301_20261109_v11.pdf).
+The construction papers prove that the indicated rational input projections equal $\mathbb Z$ under their stated arithmetic inputs. Two constructions specify all coefficients: the [29-variable polynomial](../papers/few_variables/explicit29_nontorsion_20261109_v12.pdf) and the [342-variable quartic](../papers/quartic/quartic342_20261109_v12.pdf). Two further results prove the existence of sufficiently large members of computable coefficient families: the [27-variable family](../papers/few_variables27/few_variables27_nontorsion_20261109_v12.pdf) and the [297-variable quartic family](../papers/quartic_existence/quartic297_20261109_v12.pdf).
 
 The [arithmetic-dependency paper](../papers/arithmetic_dependencies/arithmetic_dependencies_20261108_v8.pdf) derives the precise inputs used by the few-variable construction from the pinned source statements and Sun's Theorem 4.1. It checks simultaneous congruences, avoidance at every prescribed fixed odd prime, the special case of seven, preservation of real approximation conditions, and realization with zero preparation parameters. The [baseline quartic paper](../papers/quartic/quartic392_20261108_v8.pdf) supplies the full comparison and realization argument used by the quartic constructions.
 
@@ -21,15 +21,19 @@ $$
 
 The fixed prime in each scalar normalization belongs to a finite set chosen before the prime-pattern theorem is applied. It is therefore covered by the established fixed-avoidance condition. Increasing a fixed coefficient changes finite divisibility requirements, which are likewise set before the later prime choices.
 
-## Additional quantitative input for the quartics
+## Quantitative prime selection for the quartics
 
-Both the explicit 351-variable quartic and the 301-variable quartic family retain the quantitative prime-pattern premise of the baseline comparison construction. For fixed distinct coefficients $c_j$, the admissible patterns $p_j=u+c_jw^2$ in
+The [prime-selection paper](../papers/prime_selection/prime_selection_20261109_v12.pdf) derives the quantitative separation needed by the quartics from [Sun, arXiv:2610.20691v2](https://arxiv.org/abs/2610.20691v2), Propositions 5.1 and 6.2 and Section 6.1. It records the order of choices and the separation argument already used in the upstream construction. This is a consequence of those cited estimates, not an additional independent conjecture.
+
+For fixed distinct coefficients $c_j$, the admissible patterns $p_j=u+c_jw^2$ lie in
 
 $$
-N/2\le u\le N,\qquad 1\le w\le\tau(N)\sqrt N
+X/2\le u\le X,\qquad 1\le w\le\tau(X)\sqrt X.
 $$
 
-have total weight at least $c_0N^{3/2}\tau(N)$, with individual weights $O((\log N)^k)$. The function $\tau(N)$ may decrease arbitrarily slowly after the fixed congruences and avoidance conditions have been imposed. The quartic papers state this premise and the separation step that uses it. The 29-variable and 27-variable theorems do not require this quantitative strengthening.
+First fix the prime cutoff and the finite congruence and avoidance conditions. The cited estimates leave a positive proportion of total weight of size $X^{3/2}\tau(X)$ after the reduction-order obstructions are removed. Each individual weight is $O((\log X)^k)$. For any fixed $1/4<\alpha<1/2$, the strip $w<X^\alpha$ has weight $O(X^{1+\alpha}(\log X)^k)$, which is negligible after the permitted slow diagonal choice of $\tau$. The surviving patterns have pairwise gaps much larger than $\sqrt X$, which separates their prime values from the Hasse-sized reduction-order errors. The paper also proves the square-denominator preparation used in simultaneous completeness.
+
+The projection theorems still depend on the cited prime-pattern and arithmetic results. Finite coefficient checks do not independently prove them. The few-variable theorems do not need the quantitative separation step.
 
 ## The aggregate height theorem and its ineffective constant
 
@@ -45,12 +49,12 @@ Its geometric argument excludes every positive-dimensional abelian translate thr
 
 The slope $M$ can be chosen effectively from the fixed geometry. The additive constant $M_0$ exists by the published theorem but is not determined effectively here. Consequently:
 
-- In the 27-variable family $F_L$, every sufficiently large fixed odd $L$ defines $\mathbb Z$, under the four common arithmetic inputs. The uniform degree bound is $2^{154}$.
-- In the quartic family $P_N$, every sufficiently large fixed $N$ gives the required projection, under the same inputs and the weighted prime-pattern premise. Every member has 301 total variables and exact degree four.
+- In the 27-variable family $F_L$, every sufficiently large fixed odd $L$ defines $\mathbb Z$, under the four common arithmetic inputs. The uniform degree bound is $2^{151}$.
+- In the quartic family $P_N$, every sufficiently large fixed $N$ gives the required projection, under the same inputs and the weighted prime-pattern premise. Every member has 297 total variables and exact degree four.
 - No certified numerical sufficient parameter is supplied for either family. In particular, the packaged 27-variable example at $L=137731$ certifies algebraic specifications and bounds, not the assertion that this specific member defines $\mathbb Z$.
 - The parameters are fixed coefficients. The ineffectivity adds no quantified coordinate and does not change the degree bounds.
 
-This is a proved existence statement with an ineffective coefficient threshold, rather than a new unproved height hypothesis. The explicit 29-variable and 351-variable theorems retain their fully specified coefficients independently of these two families.
+This is a proved existence statement with an ineffective coefficient threshold, rather than a new unproved height hypothesis. The explicit 29-variable and 342-variable theorems retain their fully specified coefficients independently of these two families.
 
 ## Direct point charts and the input map
 
@@ -95,7 +99,7 @@ $$
 B^2\le2h(S_0)+2h(S_0+S_1)+82.
 $$
 
-The three scales $1,S_0^2,(S_0+S_1)^2$ therefore suffice for the explicit 29-variable and 351-variable constructions. Their thresholds are numerical: $L=137731$ and $N=27464$, respectively. No new arithmetic premise is introduced. This effective estimate controls two rational linear forms; it does not make the sufficient thresholds of the separate 27-variable and 301-variable trace families effective.
+The three scales $1,S_0^2,(S_0+S_1)^2$ therefore suffice for the explicit 29-variable and 342-variable constructions. Their thresholds are numerical: $L=137731$ and $N=27464$, respectively. No new arithmetic premise is introduced. This effective estimate controls two rational linear forms; it does not make the sufficient thresholds of the separate 27-variable and 297-variable trace families effective.
 
 The [square-predicate paper](../papers/square_predicates/quadratic_square_predicates_20261108_v10.pdf) proves its construction and lower bounds unconditionally for every quadratic extension of number fields. Its one auxiliary variable ranges over the base field, and its predicate concerns squares rather than algebraic integers.
 
@@ -103,4 +107,11 @@ The [square-predicate paper](../papers/square_predicates/quadratic_square_predic
 
 The leading 27- and 29-variable constructions use the restricted-converse and descent hypotheses underlying the retained simultaneous-realization argument. That construction supplies points outside two-torsion, hence nonzero ordinates. The resulting nonzero pole witnesses permit the single conic chart and removal of zero quadratic strata. Bare pole solvability alone would not imply this strengthening; the full argument and exact inherited scope are given in both replacement papers.
 
-The 301- and 351-variable quartics retain the local orders and arithmetic hypotheses of their 317- and 370-coordinate source systems. Their new factor grouping is justified by the uniform valuation proof and simultaneous-completeness argument; it introduces no stronger prime-pattern hypothesis. The weighted quantitative selection premise remains explicit.
+The 297- and 342-variable quartics retain the local orders and arithmetic hypotheses of their 317- and 370-coordinate source systems. The shared powers and primitive scalar normalization are justified by the uniform valuation proof and simultaneous-completeness argument. The quantitative selection is the cited consequence described above; no stronger prime-pattern hypothesis is introduced by the shared weights.
+
+
+## Number-field reductions
+
+The number-field paper uses the published result of Alpöge–Bhargava–Ho–Shnidman, Corollary 1.2: $\mathbb Z$ is Diophantine in the ring of integers of every number field. It does not replace integral witnesses in that theorem by unrestricted field witnesses. Equivalence with defining the rational subfield additionally assumes a definition of $\mathbb Z$ in $\mathbb Q$; the other elementary reduction and descent statements do not require that assumption. Norms and traces with base-field coordinates are distinguished from their graphs on one unrestricted extension-field input.
+
+The abscissa-valuation example and the restricted quadratic-input obstruction are unconditional elementary theorems. They rule out the explicitly stated constructions only and do not supply a counterexample to existential definability of an entire ring of integers in its field of fractions.

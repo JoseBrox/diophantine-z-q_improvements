@@ -2,67 +2,83 @@
 
 ## Quartic coefficient tables
 
-The leading tables are in computation/quartic/family301 and family351.
+The leading tables are in `computation/quartic/family297` and `family342`.
 
 | Family | Total variables | Quadratic equations | Terms with parameter powers separate | Ordinary monomials |
 |:--|--:|--:|--:|--:|
-| 301 | 301 | 275 | 4320 | 4305 |
-| 351 | 351 | 323 | 5005 | 4990 |
+| 297 | 297 | 271 | 4269 | 4268 |
+| 342 | 342 | 314 | 4939 | 4938 |
 
-The ordinary monomial counts hold for every integer N at least 27464. Each family has exact degree four and integer content one. The 351-variable member at N=27464 has a certified defining theorem under the stated arithmetic inputs. The 301-variable family requires a sufficiently large N with ineffective threshold; its support count does not certify a defining member.
+Each family has exact degree four and integer content one. The support counts hold for every positive coefficient parameter, hence for every integer $N\ge1$. The 342-variable member at $N=27464$ has a certified defining theorem under the stated arithmetic inputs. The 297-variable family requires a sufficiently large $N$ with ineffective threshold; its support and height computations do not certify a defining member.
 
-The fixed coefficient is A_N=80989^(2N+1). In each family,
+The fixed coefficient is $A_N=80989^{2N+1}$. In each family,
 
 $$P_N=\sum_j Q_{N,j}^2,$$
 
-where the complete quadratic-system file lists all Q rows. The parameter is not an extra variable.
-
-The integer-quadratic-family-v4 and integer-quartic-family-v4 formats have these fields:
+where the complete quadratic-system file lists all residuals $Q_{N,j}$. The parameter is not an extra variable. The `integer-quadratic-family-v5` and `integer-quartic-family-v5` formats have these fields:
 
 | Field | Meaning |
 |:--|:--|
-| variables | Total coordinate count, including input |
-| inputCoordinate | The distinguished rational input; value 1 |
-| coordinates | Consecutive coordinate identifiers, names, and stable source identifiers |
-| fixedParameter | The fixed integer coefficient and its expression in N |
-| residuals | Complete primitive integer quadratic equations |
-| terms | Complete coefficient terms of an equation or expanded polynomial |
-| parameterPower | Nonnegative power of A_N in a coefficient term |
-| monomial | Sorted coordinate identifiers, repeated according to exponent |
-| coefficient | Signed integer, written as a decimal string |
+| `variables` | Total coordinate count, including input |
+| `inputCoordinate` | The distinguished rational input; value 1 |
+| `coordinates` | Consecutive coordinate identifiers, names, and stable source identifiers |
+| `fixedParameter` | The fixed integer coefficient and its expression in $N$ |
+| `residuals` | Complete primitive integer quadratic equations |
+| `terms` | Complete coefficient terms of an equation or expanded polynomial |
+| `parameterPower` | Nonnegative power of $A_N$ in a coefficient term |
+| `monomial` | Sorted coordinate identifiers, repeated according to exponent |
+| `coefficient` | Signed integer, written as a decimal string |
 
-A term with parameterPower equal to 1, monomial [2,2,5], and coefficient "-7" means -7*A_N*X_2^2*X_5. An empty monomial is a constant term. Grouping all terms with the same coordinate monomial gives its ordinary integer coefficient after A_N is fixed. Powers of A_N contribute zero to total degree.
+A term with `parameterPower` equal to 1, `monomial` equal to `[2,2,5]`, and `coefficient` equal to `"-7"` means $-7A_NX_2^2X_5$. An empty monomial is a constant term. Grouping terms with the same coordinate monomial gives its ordinary integer coefficient after $A_N$ is fixed. Powers of $A_N$ contribute zero to total degree.
 
-Stable source identifiers refer to the pinned source circuit; they are not the consecutive coordinate identifiers of the new polynomial. They permit every retained and changed row to be audited. The constructor records all deleted and new source coordinates and the complete grouping of the sixteen tests.
+Stable source identifiers refer to the pinned source circuit, not the consecutive coordinate identifiers of the final polynomial. The constructor records deleted and new source coordinates, changed weight rows, and the affine scalar normalization. Coordinate 489 in source notation is replaced by the actual scalar contact product $r$. The change is invertible over the rational witnesses, has nonzero affine determinant $-45771136$, and preserves the input.
 
-The independent checker expands each sum of squares separately and compares every coefficient. For each ordinary coefficient c_0+c_1*A_N+c_2*A_N^2, its absolute value is bounded by (|c_0|+|c_1|+|c_2|)*A_N^2. The largest such sum has 1520 binary digits. The same coefficient-sum bound proves that no ordinary coefficient vanishes for N at least 27464. The explicit 351-variable polynomial has a largest coefficient with 1,791,357 binary digits.
+The independent checker expands each sum of squares separately, compares every coefficient, and verifies the affine change by reverse substitution. The coefficient of $r^2$ is $A_N^2+1$. Every other coefficient is constant or a pure multiple of $A_N$, which proves noncancellation for positive $A_N$. Exact comparisons with the largest constant and linear coefficients prove
+
+$$H(P_N)=80989^{4N+2}+1\qquad(N\ge23).$$
+
+At $N=27464$, this number has exactly 1,791,283 binary digits. The reports retain the coarser uniform bound $H(P_N)<2^{1520}A_N^2$ as well.
 
 ## Exact source dependencies
 
-The new builders read the family317 and family370 quadratic systems directly and verify their SHA-256 digests. Those systems are reconstructed by the supplied earlier source constructors. The 392-coordinate baseline and the original source tables are distributed as deterministic gzip archives; their uncompressed lengths and hashes are recorded in data/compressed_sources.json. The restoration script rejects conflicting existing files.
+The shared-weight builder reads the family301 and family351 quadratic systems and verifies their SHA-256 digests. Those systems are reconstructed from family317 and family370, respectively. The source chain is complete in the supplied constructors. The 392-coordinate baseline and original source tables are distributed as deterministic gzip archives; their uncompressed lengths and hashes are recorded in `data/compressed_sources.json`. The restoration script rejects conflicting existing files.
 
-PROVENANCE.json in computation/quartic binds the precise source commits, all distributed computational files, and the corresponding mathematical proofs. Every expanded new coefficient is stored; no search or unpublished intermediate polynomial is required for reconstruction.
+`PROVENANCE.json` in `computation/quartic` binds precise source commits, distributed computational files, and mathematical proofs. Every final quartic coefficient is stored; reconstruction requires no search or unpublished intermediate polynomial.
 
 ## Few-variable specifications
 
-The leading standalone modules are computation/few_variables/trace27_nontorsion and effective29_nontorsion. Their exact integer polynomials are described by coefficient graphs and finite-algebra operations. The 27-variable family has 26 retained coordinates and one additional rational coordinate. The explicit 29-variable construction has 28 retained coordinates and one additional rational coordinate.
+The leading specifications are in `computation/few_variables/weighted_elimination/weighted27` and `weighted29`. Their source algebras are supplied by `trace27_nontorsion` and `effective29_nontorsion`, respectively. The 27-variable family has 26 retained coordinates and one additional rational coordinate; the explicit 29-variable construction has 28 retained coordinates and one additional rational coordinate.
 
-Nine monic quartic point generators and three or four monic quadratic pole generators give finite-algebra ranks 2^21 and 2^22. Every pole generator is guarded nonzero. There is one conic-chart choice and one retained quadratic stratum. The finite selector range and coefficient-degree cases are explicitly bounded and are compiled into finite products. They are formal indices, not quantified variables.
+Nine monic quartic point generators and three or four monic quadratic pole generators give ranks $2^{21}$ and $2^{22}$. Every pole generator is guarded nonzero. There is one conic chart and one retained quadratic stratum. Matrix entries, algebra generators, selector indices, and finite degree cases are formal polynomial operations, not quantified coordinates.
 
-The expression grammar consists of integer constants, coordinate variables, arithmetic operations, finite products, multiplication matrices, determinants, characteristic polynomials, traces, resultants, and reciprocal polynomials. The companion finite-algebra theorem proves that these expressions form an ordinary integer polynomial with the required projection. The independent verifier checks all coefficient conversions, guards, finite cases, and bound recurrences without expanding that enormous polynomial.
+For a guarded multiplication element $u$, the compiler forms $\det(I-VM_u)=\sum a_kV^k$. In degree case $d$, put $H_d(V)=\sum_{k=0}^d a_kV^k$ and $g_d=\operatorname{Res}(H_d,H_d')$, using the fixed Sylvester degrees $d,d-1$. For $d<n$, use the factor
+
+$$H_d(g_dU)^2+\sum_{k>d}a_k^2.$$
+
+For $d=n$, use the unsquared factor $H_n(g_nU)$. The finite product over the explicitly specified selector range and all degree cases is an ordinary integer polynomial. The constant coefficient $a_0=1$ rejects zero resultants and zero $U$ automatically. The theorem proves that a rational zero yields a rational algebra character with nonzero guard; the converse uses a separating selector. The leading algebras have no additional closed residuals.
+
+Weighted principal minors give $\deg a_k\le kw$. With $S=1+mn(n+1)/2$ and
+
+$$C(n)=2\sum_{d=1}^{n-1}\max(d^3+d,n)+(n^3+n),$$
+
+the total degree is at most $S(wC(n)+n^2)$. The complete norm calculation is recorded in each construction certificate and independently recomputed.
 
 | Quantity | 27-variable family | Explicit 29-variable polynomial |
 |:--|:--|:--|
-| Degree upper bound | less than 2^154 | less than 2^161 |
-| Exact degree majorant | 20373348814943897785292785017798269643599642624 | 2021432499262561030580590567538985948904131919872 |
+| Degree upper bound | less than $2^{151}$ | less than $2^{157}$ |
+| Exact degree majorant | 1622838857795564438964780120527413199713157888 | 154383598645603405051555717167316362269845989152 |
 | Number of finite-product factors | 55340258609409818624 | 479615460265661825024 |
-| Fixed coefficient exponent | sufficiently large odd L; threshold ineffective | 137731, certified |
-| Coefficient-height bound | no effective bound for a certified defining member | at most 2^(2^171) |
+| Fixed coefficient exponent | sufficiently large odd $L$; threshold ineffective | 137731, certified |
+| Coefficient-height bound for a certified defining member | no effective bound supplied | at most $2^{2^{168}}$ |
 
-These are proved upper bounds, not asserted exact degrees or heights of the fully expanded polynomials. For the explicit29 specification, the exact upper bound for log_2 of the coefficient height is 1824327990117465218468581252398965551307997696753664. The 27-variable example at L=137731 has height at most 2^(2^165), but it is only an algebraic reproducibility fixture and is not certified to define the integers.
+These are upper bounds, not exact degrees or heights of the unexpanded polynomials. The explicit construction has
 
-The source and specification each have a SHA-256 digest in their verification report. The default module reproduction command rebuilds both and compares their bytes to the distributed certificate. Proof scope and effectiveness are also machine-readable in data/results.json.
+$$\log_2\|F\|_1\le228040944767112830511621792043639838233373391751570.$$
 
-## Verification boundary
+The numerical 27-variable fixture has $H(F)\le2^{2^{162}}$ at $L=137731$; this specific member is not certified to define the integers. SHA-256 digests bind input specifications and output specifications. The independent checker compares exact recurrences and nine small finite-algebra examples, including degree drops, repeated eigenvalues, complex factors, inactive nilpotents, and a zero guard.
 
-Exact coefficient data and passing finite checks establish the algebraic specifications and the stated finite assertions. The projection theorems additionally use the arithmetic hypotheses identified in the papers. The complete commands, expected behavior, and source-preservation conventions are given in the [reproducibility guide](reproducibility.md).
+## Structural certificates and verification boundary
+
+The number-field certificate checks the finite-difference identity for degrees 1 through 64, exact quadratic norm examples, and elliptic point computations by two independent finite-field counting methods. The input-normalization certificate checks all specified residue classes and lists witnesses for all 128 final cases. The uniform mathematical results are proved in their papers; finite cases do not substitute for the proofs.
+
+Exact coefficient data and passing checks establish the algebraic specifications and the stated finite assertions. Projection theorems additionally use the arithmetic hypotheses identified in the papers. See the [reproducibility guide](reproducibility.md) for commands and the [arithmetic guide](arithmetic_inputs.md) for scope.

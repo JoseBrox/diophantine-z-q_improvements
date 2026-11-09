@@ -1,0 +1,235 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,microtype,xcolor}
+\usepackage[margin=26mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue!45!black,citecolor=blue!45!black,urlcolor=blue!45!black]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}\newtheorem{remark}[theorem]{Remark}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\setlength{\emergencystretch}{2em}
+\title{Separation and denominator conditions in quadratic prime patterns}
+\author{}\date{9 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+We derive a separation property for quadratic prime patterns from the
+weighted estimates in Sun's simultaneous-avoidance argument. The selected
+primes can avoid every selected opposite elliptic reduction order while
+retaining fixed congruences and arbitrarily large prescribed denominator
+divisibility. We also give a denominator normalization that permits all
+local weights of order $m$ to be replaced by powers of one weight. These
+consequences use the cited analytic estimates and elementary valuation
+arguments; they do not require a further prime-distribution hypothesis.
+\end{abstract}
+
+\section{The precise analytic input}
+Fix distinct integers $c_1,\ldots,c_k$, with $k\ge2$, and put
+\[
+ p_j=u+c_jw^2.
+\]
+The fixed congruences, Gaussian ray conditions and reduction-order
+avoidance conditions in \cite[Theorem 4.1]{Sun} are imposed throughout.
+A fixed dilation of $w$ can be absorbed into the integers $c_j$.
+All such data are chosen before the parameter $X$ tends to infinity.
+
+We use the following quantitative content of
+\cite[Propositions 5.1 and 6.2, Section 6.1]{Sun}. There are constants
+$c,C>0$ and a sufficiently slowly decreasing function $\tau(X)>0$,
+with $\tau(X)\to0$, such that, for
+\[
+ T=\lfloor\tau(X)\sqrt X\rfloor,
+\]
+the admissible pairs in $X/2\le u\le X$, $1\le w\le T$ carry
+nonnegative weights $\omega_X(u,w)$ satisfying
+\begin{equation}\label{eq:count}
+ \sum_{u,w}\omega_X(u,w)\ge cXT,
+ \qquad 0\le\omega_X(u,w)\le C(\log X)^k.
+\end{equation}
+The weights vanish outside admissible pairs. The lower bound is after
+the removal of all self-order and cross-order obstructions, not merely
+after a finite list of congruences.
+
+For clarity, the order of limits in the cited argument is essential.
+Its finite cutoff, denoted by $L$ there, is fixed first. The surviving
+weight is at least
+\[
+ \frac{c_1XT}{8(\log L)^{4k}}
+\]
+for a positive constant $c_1$ and all sufficiently large $X$.
+This gives the first inequality in \eqref{eq:count} with a fixed
+positive constant. Each surviving weight is a product of $k$ prime
+logarithms, up to fixed normalizations, giving the second inequality.
+The diagonal construction of $\tau$ allows additional lower thresholds
+which hold eventually for every fixed positive value of $\tau$.
+
+All assertions below that select prime patterns depend on these cited
+estimates. The elementary statements about weights, integers and
+valuations are proved here.
+
+\section{Removing a thin strip}
+\begin{lemma}\label{lem:strip}
+Assume \eqref{eq:count}. Let $0<\alpha<1/2$ be fixed.
+The function $\tau$ may be chosen sufficiently slowly that admissible
+pairs with $w\ge X^\alpha$ still have total weight at least $cXT/2$
+for every sufficiently large $X$.
+\end{lemma}
+\begin{proof}
+The strip $w<X^\alpha$ contains at most $X^{1+\alpha}+X$
+integer pairs. Its weight is at most
+\[
+ C(X^{1+\alpha}+X)(\log X)^k.
+\]
+Choose the diagonal thresholds so that
+\[
+ \frac{\tau(X)X^{1/2-\alpha}}{(\log X)^k}\longrightarrow\infty.
+\]
+This is compatible with every prior threshold: for a fixed positive
+value $\tau_j$, the displayed quotient tends to infinity, so the start
+of the $j$th diagonal interval can be increased to meet this additional
+condition. Also require $\tau(X)\sqrt X\ge2$, so
+$T\ge\tau(X)\sqrt X/2$. The strip weight divided by $XT$ tends
+to zero. Subtracting it from \eqref{eq:count} proves the assertion.
+\end{proof}
+
+\begin{theorem}\label{thm:separation}
+For each selected prime $p_j$, let $d_j$ be a positive integer such that
+\[
+ d_j=p_j+O(\sqrt{p_j}),\qquad 4\mid d_j,
+\]
+where the implied constant is uniform in $j$ and the pattern.
+Under the cited analytic input, the pattern can be chosen so that
+\[
+                       p_i\nmid d_j\qquad(1\le i,j\le k).
+\]
+The fixed congruence and avoidance conditions remain satisfied, all
+selected primes tend to infinity, and $u/w^2$ tends to infinity.
+\end{theorem}
+\begin{proof}
+Apply Lemma~\ref{lem:strip} with $1/4<\alpha<1/2$.
+Since $w^2\le T^2=o(X)$, every $p_j/u$ tends to one, uniformly
+over the selected patterns. The same is true of $d_j/u$.
+Consequently $1/2<d_j/p_i<2$ for sufficiently large $X$.
+Divisibility would therefore imply $d_j=p_i$.
+
+For $i\ne j$, let $c_*:=\min_{i\ne j}|c_i-c_j|>0$. Then
+\[
+ |p_i-p_j|\ge c_*w^2\ge c_*X^{2\alpha},
+\]
+whereas $|d_j-p_j|=O(\sqrt X)$. Because $2\alpha>1/2$,
+equality is impossible for sufficiently large $X$.
+For $i=j$, the divisibility $4\mid d_i$ excludes $d_i=p_i$,
+since $p_i$ is an odd prime. The other conditions follow from the
+support of the weights and from $u\ge X/2$, $w^2=o(X)$.
+\end{proof}
+
+For the elliptic curves used in the defining-polynomial constructions,
+Hasse's bound supplies the displayed estimate for $d_j$, and the fixed
+Gaussian congruences make the opposite order divisible by four.
+Thus Theorem~\ref{thm:separation} gives precisely the separation used
+to impose additional formal depth on the primary points.
+The application of this observation to those constructions is already
+present in \cite[Version 9 separation subsection]{Upstream}; the
+argument above states its quantitative source and permitted limits.
+
+\section{Simultaneous denominator preparation}
+Let $S$ be a finite set of rational primes, and let
+$a_1,\ldots,a_s\in\Q^\times$ be fixed.
+
+\begin{lemma}\label{lem:denominator}
+There is a positive integer $D$ such that, whenever $u$ is a prime
+outside $S$ and $w$ is a positive integer, the numbers
+\[
+ \lambda=\frac{u}{D^2w^2},\qquad t_i=a_i\lambda,
+ \qquad\delta_i=t_i-1
+\]
+satisfy $v_p(\delta_i)=v_p(t_i)<0$ for every $p\in S$ and every $i$.
+The integer $D$ can also satisfy any prescribed finite set of
+divisibility conditions.
+\end{lemma}
+\begin{proof}
+Choose $D$ with $2v_p(D)>\max_i v_p(a_i)$ for every $p\in S$,
+and enlarge it to satisfy the other fixed divisibilities. Since
+$v_p(u)=0$ and $v_p(w)\ge0$,
+\[
+ v_p(t_i)=v_p(a_i)-2v_p(D)-2v_p(w)<0.
+\]
+The two terms of $t_i-1$ have distinct valuations, so its valuation
+equals $v_p(t_i)$. All requirements concern a finite set of primes.
+\end{proof}
+
+This choice can be made after fixing the scales and the finite
+preparation set, but before selecting primes. Multiplying the
+denominator dilation only changes fixed quadratic coefficients of the
+contact forms. The coefficient of the zero contact is zero, so $u$
+itself is one of the selected primes; the lower cutoff keeps it outside
+$S$. This is within the fixed-dilation scope of the cited theorem.
+
+\section{Powers of one local weight}
+For nonzero rational $R,\delta$, define
+\[
+ q_m=R^{1-2m}\delta^{-2m-2},\qquad
+ q=q_1=R^{-1}\delta^{-4},\qquad m\ge1.
+\]
+\begin{proposition}\label{prop:powers}
+The alternative weights $q'_m=q^{2m-1}$ satisfy
+\[
+                 q'_m=q_m\delta^{-6(m-1)}.
+\]
+At every valuation where $\delta$ is a unit, $q'_m$ and $q_m$ have
+the same valuation. At every valuation where $v(\delta)\le0$,
+$v(q'_m)\ge v(q_m)$. In particular, a lower bound for
+$v(q_mD^2)$ remains true with $q'_m$ in place of $q_m$.
+\end{proposition}
+\begin{proof}
+The exponent of $R$ in $q^{2m-1}$ is $1-2m$ and its exponent of
+$\delta$ is $4-8m$. Subtracting the exponent $-2m-2$ in $q_m$
+gives $-6(m-1)$. Taking valuations proves the assertions.
+\end{proof}
+
+\begin{corollary}\label{cor:preservation}
+Consider factors
+\[
+ 1+\sum_{j=0}^{r-1}q_{m_j}^{2^j}D_j^{2^{j+1}}
+\]
+in a local test. At contact places where $v(R)$ is odd and $\delta$
+is a unit, replacing $q_{m_j}$ by $q^{2m_j-1}$ preserves every
+valuation and the distinct-valuation argument for its summands.
+At the finite places prepared by Lemma~\ref{lem:denominator}, any
+prescribed positive lower bounds on the summand valuations are
+preserved. If, as $\lambda\to+\infty$, one has
+$R\asymp\lambda^{-1}$, $\delta\asymp\lambda$, and all $D_j$
+bounded at the real embeddings, the modified factors tend to one.
+\end{corollary}
+\begin{proof}
+The finite-place conclusions follow term by term from
+Proposition~\ref{prop:powers}. At a contact place, the valuation of
+the $j$th nonconstant summand is $2^j$ times an odd integer; these
+valuations and zero are pairwise distinct. At infinity,
+$q=O(\lambda^{-3})$, hence
+$q^{2m_j-1}=O(\lambda^{-3(2m_j-1)})$. Each nonconstant summand
+therefore tends to zero.
+\end{proof}
+
+The corollary is a statement about the specified local tests and their
+simultaneous preparation. A complete defining-polynomial construction
+must still prove the pole realization and index-height steps, specify
+its equations, and check their possible zero strata. Those separate
+arithmetic requirements are unaffected by this normalization.
+
+\begin{thebibliography}{9}
+\bibitem{Sun} Z.-W. Sun, \emph{86 unknowns for Hilbert's tenth problem
+over the rationals}, arXiv:2610.20691v2 (2026), Theorem 4.1,
+Propositions 5.1 and 6.2, Sections 6.1--8.3.
+\url{https://arxiv.org/html/2610.20691v2}.
+\bibitem{Upstream} \emph{$\Z$ is Diophantine in $\Q$}, Version 13,
+7 November 2026, retained Version 9 subsection on separation and
+asymmetric formal depth. Commit
+\texttt{5bbd74f6a479776a332cbe036809d5dddae63720}.
+\url{https://github.com/elliotglazer/diophantine-z-q}.
+\bibitem{Silverman} J. H. Silverman, \emph{The Arithmetic of Elliptic
+Curves}, second edition, Graduate Texts in Mathematics 106,
+Springer, 2009, Chapter V, Theorem 1.1.
+\end{thebibliography}
+\end{document}
