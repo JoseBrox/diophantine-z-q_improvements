@@ -1,0 +1,247 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,microtype}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\Z}{\mathbb Z}
+\setlength{\emergencystretch}{2em}
+\title{Constraints on Combining Pole Certificates}
+\author{}\date{9 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+Two elementary obstructions distinguish a joint pole certificate from
+two independent certificates. First, a common nondegenerate conic
+parameter forces the two inputs to have the same rational squareclass.
+Two explicit prepared inputs admit no joint certificate with a common
+parameter, including the degenerate values. Second, reflection-symmetric
+contact sets admit an unbounded family on which the product of two
+scaled contact functions is a square. We also identify the prime
+divisors responsible for overlap between two scaled contact sets.
+These statements concern the specified combinations; they are not
+lower bounds for arbitrary Diophantine definitions.
+\end{abstract}
+
+\section{A common parameter in the pole conics}
+
+Call a rational number $b$ \emph{prepared} if its reduced denominator
+is a square and
+\[
+ \begin{gathered}
+ 0<b<17,\qquad
+ b\in\Q_2^{\times2}\cap\Q_3^{\times2}\cap\Q_{17}^{\times2},\\
+ v_2(b)\ge3,\qquad v_3(b)\ge1,\qquad v_{17}(b)\ge2.
+ \end{gathered}
+\]
+For $B=17b$ and $V=B(B-b^2)$, the pole equations are
+\begin{equation}\label{eq:pole}
+ p^2=B(1-e)(1+3e),\qquad
+ Bq^2=(s^2-eV)(s^2+3eV).
+\end{equation}
+All witnesses in this section are rational; zero witnesses are allowed.
+The independent realization of these equations on prepared inputs is
+the arithmetic input stated in~\cite{Dependencies}.
+
+\begin{lemma}\label{lem:squareclass}
+Let $b_0,b_1\in\Q^\times$. If both pole systems have a solution
+with the same parameter $e\notin\{1,-1/3\}$, then $b_0/b_1$ is
+a rational square.
+\end{lemma}
+\begin{proof}
+Put $B_i=17b_i$. The first equations give
+$p_i^2=B_i(1-e)(1+3e)\ne0$. Their quotient is
+$b_0/b_1=(p_0/p_1)^2$.
+\end{proof}
+
+\begin{theorem}\label{thm:shared-e}
+The prepared numbers
+\[
+ b_0=\left(\frac{204}{55}\right)^2,\qquad
+ b_1=409\left(\frac{204}{1001}\right)^2
+\]
+have no pair of pole certificates with a common value of $e$.
+\end{theorem}
+\begin{proof}
+Both reduced denominators are squares and both numbers lie in $(0,17)$.
+Their valuations at $2,3,17$ are respectively $4,2,2$.
+The additional factor $409$ is $1$ modulo $8$, $3$, and $17$,
+so it is a square in all three local fields. Thus both numbers
+are prepared. But
+\[
+                  \frac{b_1}{b_0}
+                   =409\left(\frac{55}{1001}\right)^2
+\]
+is not a rational square. Lemma~\ref{lem:squareclass} therefore
+forces $e=1$ or $e=-1/3$ in any proposed joint certificate.
+For $b_0$, neither value permits the second pole equation:
+this is the exact rank-certified obstruction proved in
+\cite[Theorem~1.2 and Sections~2--3]{Fixed}.
+That obstruction permits zero values of $q$ and hence applies
+to the present convention. Both remaining values of $e$ are excluded.
+\end{proof}
+
+This theorem does not identify the parameters of the rational conic
+charts. Indeed
+\[
+ e_i=\frac{\tau^2-B_i}{\tau^2+3B_i}
+\]
+usually gives different $e_i$ for the same $\tau$.
+Thus a joint realization with a common chart parameter $\tau$
+is a separate arithmetic question. Zariski density of the two
+independent witness sets, proved in~\cite{Density}, does not
+assert that their product meets the subvariety on which two
+parameters are equal.
+
+\section{A square product from symmetric contacts}
+
+For $r\in\Q^\times$, let
+\[
+ \operatorname{Odd}(r)=\prod_{p:\,v_p(r)\ {\rm odd}}p.
+\]
+The product includes both positive and negative odd valuations;
+it is finite. A nonzero rational square has $\operatorname{Odd}=1$.
+
+Consider the eight contacts
+\[
+ \Theta=\{-3,-2,-1,0,2,3,4,5\}
+        =\{1\pm1,1\pm2,1\pm3,1\pm4\}.
+\]
+Define
+\[
+ F(t)=\prod_{j=1}^4\bigl((t-1)^2-j^2\bigr),\qquad
+ R(t)=\frac{F(t)}{(t-1)^{10}}.
+\]
+Both functions are invariant under $t\mapsto2-t$.
+
+\begin{theorem}\label{thm:symmetric}
+For every rational $a>1$, put
+\[
+             \lambda=\frac2{a+1},\qquad
+             t_0=\lambda,\qquad t_1=a\lambda.
+\]
+Both $R(t_i)$ are defined, nonzero, and positive, and
+\[
+              R(t_0)=R(t_1),\qquad
+              \operatorname{Odd}\bigl(R(t_0)R(t_1)\bigr)=1.
+\]
+Consequently no constants $C,C_0$ can make
+\[
+       h(a)\le C\log\operatorname{Odd}
+                    \bigl(R(\lambda)R(a\lambda)\bigr)+C_0
+\]
+hold for all admissible positive rational $a,\lambda$.
+The conclusion remains true if $a$ is restricted to
+$a=\beta^4+T^4$ for any one fixed rational $T$ with $|T|>1$
+and arbitrary rational $\beta$.
+\end{theorem}
+\begin{proof}
+The identity $t_0+t_1=2$ gives $R(t_0)=R(t_1)$.
+Since $0<t_0<1<t_1<2$, neither argument is a contact or
+the pole $1$. At either argument $(t_i-1)^2<1$.
+All four factors of $F(t_i)$ are therefore negative,
+so their product is positive; the denominator is positive.
+The product of the two equal values is a nonzero rational square.
+
+Letting $a$ range through positive integers tending to infinity
+contradicts the proposed height inequality. For the stated
+restriction, fix $T$ and let $\beta$ range through positive
+integers. Then $a>1$ and $h(a)\ge\log a$ tends to infinity,
+whereas the odd radical remains one.
+\end{proof}
+
+More generally, if a rational contact function satisfies
+$R(2c-t)=R(t)$ with $c\ne0$, the substitution
+$\lambda=2c/(a+1)$ makes the two values equal wherever both
+are defined. An unbounded admissible set of $a$ then gives
+the same obstruction.
+
+Theorem~\ref{thm:symmetric} concerns the product
+$R(\lambda)R(a\lambda)$. Multiplication or division by a
+nonzero rational square does not alter its conclusion.
+Thus the odd-valuation argument supplies no information on this
+family if that product is used as the squareclass of one pole
+input. The theorem does not assert that all the other equations
+of a proposed definition are soluble on that family. It also
+does not apply to the two independent pole certificates.
+
+\section{Where common contact primes occur}
+
+Let $\Theta\subset\Q$ be finite. Choose a finite set $S$ of primes
+containing the prime divisors of the nonzero contact numerators,
+their denominators, and the nonzero differences of two contacts.
+For $t\in\Q\setminus\Theta$, let $M_\Theta(t)$ be the product
+of primes $p\notin S$ such that $v_p(t-\theta)>0$ is odd
+for some $\theta\in\Theta$.
+
+\begin{proposition}\label{prop:collisions}
+Let $a,\lambda\in\Q^\times$, let $p\notin S$, and suppose that
+$v_p(a)=0$. If $p$ belongs to both $M_\Theta(\lambda)$ and
+$M_\Theta(a\lambda)$, then precisely one of the following occurs:
+\begin{enumerate}
+\item both contacts are zero, and $0\in\Theta$;
+\item the contacts are nonzero $\theta,\eta\in\Theta$, and
+      $v_p(a\theta-\eta)>0$.
+\end{enumerate}
+In the first case the two contact valuations are equal.
+\end{proposition}
+\begin{proof}
+At each of the two arguments there is exactly one contact modulo
+$p$, by the choice of $S$. Write them as $\theta,\eta$.
+Then $\lambda\equiv\theta$ and $a\lambda\equiv\eta\pmod p$.
+If $\theta=0$, the unit condition on $a$ forces $\eta=0$;
+the converse follows in the same way. Their valuations agree
+because $a$ is a unit. Otherwise both contacts are units, and
+subtracting gives $a\theta-\eta\equiv0\pmod p$.
+\end{proof}
+
+In particular, a zero contact shared by the two scales disappears
+from the odd radical of the product whenever $a$ is a square:
+the corresponding factors multiply to $a\lambda^2$.
+The other possible overlaps are governed by the fixed ratio set
+\[
+ {\cal R}=\{\eta/\theta:\theta,\eta\in\Theta\setminus\{0\}\}.
+\]
+If $a\notin{\cal R}$ and $a=A/B$ is reduced, every prime in
+the second case divides the numerator of $a-r$ for some
+$r\in{\cal R}$. Consequently their product $C(a)$ satisfies
+\[
+                  \log C(a)\le |{\cal R}|h(a)+C_\Theta.
+\]
+Indeed, write $r=u_r/v_r$ in lowest terms. Each relevant prime
+divides $v_rA-u_rB$, whose absolute value is at most
+$(|v_r|+|u_r|)\exp(h(a))$, and multiply these bounds.
+This estimate explains the additional height term in a direct
+overlap argument. It does not bound that term by a constant
+independent of $a$, nor does it exclude a sharper argument
+using further arithmetic information.
+
+\section*{Exact verification}
+
+The accompanying program
+\nolinkurl{computation/pole_parameters/check_pole_merger_obstructions.py}
+checks the prepared rational inputs, their nonsquare ratio,
+the reflection identity coefficient by coefficient, and the
+scaled rational-function identity. Its certificate records the
+precise scope of these checks. The elliptic rank certificate
+used in Theorem~\ref{thm:shared-e} remains the independently
+reproducible certificate accompanying~\cite{Fixed}.
+
+\begin{thebibliography}{9}
+\bibitem{Dependencies}
+\emph{Arithmetic dependencies of the construction with 29 variables},
+companion paper, 8 November 2026,
+\nolinkurl{papers/arithmetic_dependencies}.
+\bibitem{Fixed}
+\emph{No constant pole parameter is complete},
+companion paper, 9 November 2026,
+\nolinkurl{fixed_pole_parameters_20261109_v14.tex}.
+\bibitem{Density}
+\emph{Zariski density of the prepared pole witnesses},
+companion paper, 9 November 2026,
+\nolinkurl{pole_witness_density_20261109_v14.tex}.
+\end{thebibliography}
+\end{document}

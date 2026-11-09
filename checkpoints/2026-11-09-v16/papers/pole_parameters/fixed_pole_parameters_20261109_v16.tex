@@ -1,0 +1,465 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,booktabs,hyperref}
+\usepackage[margin=27mm]{geometry}
+\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}\newtheorem{definition}[theorem]{Definition}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\newcommand{\F}{\mathbb F}
+\title{Obstructions to fixed parameters in pole certificates}
+\author{}\date{}
+\begin{document}\maketitle
+\begin{abstract}
+We consider the two-equation pole certificate used in the rational-source
+construction of the integers.  No fixed rational value of its parameter
+$e$ is complete on the prescribed set of prepared inputs.  For either
+degenerate value $e=1,-1/3$, the same prepared input
+$b=(204/55)^2$ gives a genus-one quartic with points over every completion
+of $\Q$ and no rational point.  Exact unconditional two-descent and
+Cassels-pairing computations certify the two elliptic rank bounds used
+in the proof.  An elementary squareclass argument excludes every other
+constant value of $e$.  The obstruction includes zero values of the
+second square root, so removing a nonzero guard does not repair it.
+We also treat the distinct strategy of fixing a rational parameter
+in the first conic's parametrization. The values $\tau=\pm1$
+fail at the prepared input $b=(204/61)^2$, as certified
+by a third exact rank-zero calculation. The values $\tau=\pm17$,
+which cancel one factor of the second twist, fail at
+$b=(204/101)^2$ by an exact rank-one and squareclass calculation.
+These results concern
+completeness on all prepared inputs; they do not exclude special
+families selected together with the comparison primes.
+\end{abstract}
+
+\section{Prepared inputs and the pole equations}
+
+\begin{definition}
+A rational number $b$ is \emph{prepared} if its reduced denominator is
+a square and
+\[
+ \begin{gathered}
+ 0<b<17,\qquad b\in\Q_2^{\times2}\cap\Q_3^{\times2}
+                      \cap\Q_{17}^{\times2},\\
+ v_2(b)\ge3,\qquad v_3(b)\ge1,\qquad v_{17}(b)\ge2.
+ \end{gathered}
+\]
+For such $b$, put $B=17b$ and $V=B(B-b^2)$.  The pole equations are
+\begin{equation}\label{eq:pole}
+ p^2=B(1-e)(1+3e),\qquad
+ Bq^2=(s^2-eV)(s^2+3eV).
+\end{equation}
+All four witnesses are rational; zero values are allowed.
+\end{definition}
+
+These are exactly the preparation hypotheses and the zero-preparation
+equations stated in~\cite[Section~3]{Dependencies}.  Its realization
+theorem permits $e$ to vary.  Our question is whether a fixed value
+can replace that choice.
+
+\begin{theorem}\label{thm:fixed-e}
+For every $e_0\in\Q$, there is a prepared $b$ for which
+\eqref{eq:pole} has no rational solution with $e=e_0$.
+For $e_0=1$ and $e_0=-1/3$, one can take
+\[
+                          b_0=\frac{41616}{3025}=\left(\frac{204}{55}\right)^2.
+\]
+For either of these two values, the second equation has no rational
+solution even though its smooth projective quartic has points over
+every completion of $\Q$.
+\end{theorem}
+
+The rank bounds in the proof are exact computations.  They use the
+unconditional algebraic rank bounds of PARI/GP, not an analytic-rank
+calculation or the Birch--Swinnerton-Dyer conjecture.  The complete
+verifier and its exact intermediate data accompany this note.
+
+\section{Two elliptic rank certificates}
+
+For $n\in\Q^\times$, write
+\[
+                 E_n:\quad y^2=x(x-n)(x+3n).
+\]
+These curves have the three rational nonidentity two-torsion points
+$(0,0),(n,0),(-3n,0)$.
+
+\begin{proposition}[Exact computation]\label{prop:ranks}
+The groups $E_{-29427}(\Q)$ and $E_{9809}(\Q)$ have ranks zero
+and one, respectively.  Both have torsion subgroup
+$(\Z/2\Z)^2$.  The point
+\[
+                      P_*=(-20449,2356926)\in E_{9809}(\Q)
+\]
+has infinite order.
+\end{proposition}
+\begin{proof}
+The verifier initializes the two curves with coefficient vectors
+$[0,2n,0,-3n^2,0]$.  PARI/GP version $2.17.2$ returns
+\[
+ \begin{array}{c|c}
+ n&\texttt{ellrank}\text{ output}\\\hline
+ -29427&[0,0,2,[]]\\
+ 9809&[1,1,2,[[-20449,2356926]]].
+ \end{array}
+\]
+Here the first two entries are unconditional lower and upper bounds
+for the rational rank.  The algorithm computes the two-Selmer rank,
+the rational two-torsion rank, and the rank of the relevant Cassels
+pairing; the upper bound is the first rank minus the other two
+\cite{PARI}.  The saved exact diagnostics give two-Selmer ranks $4,5$
+and pairing matrices
+\[
+ C_-=
+ \begin{pmatrix}
+ 0&1&0&1\\1&0&1&0\\0&1&0&1\\1&0&1&0
+ \end{pmatrix},\qquad
+ C_+=
+ \begin{pmatrix}
+ 0&0&0&0&0\\
+ 0&0&1&0&1\\
+ 0&1&0&1&1\\
+ 0&0&1&0&1\\
+ 0&1&1&1&0
+ \end{pmatrix}.
+\]
+Independent row reduction over $\F_2$ verifies that each has rank
+two.  Since the rational two-torsion has rank two, the certified
+upper bounds are $4-2-2=0$ and $5-2-2=1$.
+
+For an independent torsion check, direct finite-field counting gives
+\[
+ \begin{array}{c|rrrr}
+ n&\#E_n(\F_5)&\#E_n(\F_7)&\#E_n(\F_{11})&\#E_n(\F_{13})\\\hline
+ -29427&4&8&8&12\\
+ 9809&8&8&16&12.
+ \end{array}
+\]
+All these primes are good.  The injection on prime-to-$p$ torsion
+under good reduction, using the different primes in the table,
+bounds the rational torsion order by four in each case.  The known
+two-torsion attains this bound.  Direct substitution verifies $P_*$,
+and its nonzero ordinate shows that it is not torsion.  This also
+independently supplies the lower rank bound one for $E_{9809}$.
+\end{proof}
+
+\begin{lemma}\label{lem:x-class}
+For a nonsingular curve $y^2=x(x^2+ax+c)$ with $c\ne0$, the map
+\[
+ \alpha:E(\Q)\longrightarrow\Q^\times/\Q^{\times2},\qquad
+ \alpha(O)=1,\quad\alpha((0,0))=c,\quad
+ \alpha((x,y))=x\quad(x\ne0)
+\]
+is a group homomorphism.  It kills $2E(\Q)$.  In particular, if
+$E$ has rank $r$ and full rational two-torsion, its image has size
+at most $2^{r+2}$.
+\end{lemma}
+\begin{proof}
+Intersect a nonvertical line $y=ux+v$ with the curve.  The product
+of its three intersection abscissas, counted with multiplicity,
+is $v^2$.  Since reflection in the $x$-axis does not change an
+abscissa, this proves the homomorphism identity when $v\ne0$.
+If $v=0$, the two nonzero intersection abscissas have product $c$,
+which gives the identity when the third point is $(0,0)$.
+Addition by $(0,0)$ sends a nonzero abscissa $x$ to $c/x$;
+vertical lines and two-torsion doubling give the remaining cases.
+The target has exponent two, so $2E(\Q)$ is killed.  Finally the
+Mordell--Weil decomposition gives
+$|E(\Q)/2E(\Q)|=2^r|E(\Q)[2]|=2^{r+2}$.
+\end{proof}
+
+\begin{corollary}\label{cor:class17}
+Neither $E_{-29427}(\Q)$ nor $E_{9809}(\Q)$ has a nonzero
+abscissa in the rational squareclass of $17$.
+\end{corollary}
+\begin{proof}
+The first curve has only its four torsion points.  Its nonzero
+abscissas are $-29427$ and $88281=9\cdot17\cdot577$; neither has
+squareclass $17$.
+
+On $E_{9809}$, the two-torsion points give squareclasses $-3$ and
+$9809$, while $P_*$ gives $-1$, because $20449=143^2$.
+These three classes are independent: $9809=17\cdot577$ and the
+prime $577$ distinguishes the third generator from the first two.
+They therefore supply eight classes.  By Lemma~\ref{lem:x-class}
+and rank one, these exhaust the image:
+\[
+          \alpha(E_{9809}(\Q))
+          =\{\pm1,\ \pm3,\ \pm9809,\ \pm29427\}.
+\]
+The class $17$ is absent.
+\end{proof}
+
+\section{The two degenerate specializations}
+
+Put $M=55$, $t=204/M$, and $d=M^2-2448=577$.  Then
+\[
+ b_0=t^2,\qquad B=17t^2,\qquad
+ 17-t^2=\frac{17d}{M^2},\qquad V=\frac{289t^4d}{M^2}.
+\]
+For $e=1$, the invertible rational substitutions
+\[
+             s=\frac{17t^2}{M}u,\qquad
+             q=\frac{17t^3}{M^2}v
+\]
+turn the second pole equation into
+\begin{equation}\label{eq:Cplus}
+                  C_+:\quad v^2=17(u^2-d)(u^2+3d).
+\end{equation}
+For $e=-1/3$, the substitutions
+\[
+             s=\frac{17t^2}{3M}u,\qquad
+             q=\frac{17t^3}{9M^2}v
+\]
+give
+\begin{equation}\label{eq:Cminus}
+                  C_-:\quad v^2=17(u^2+3d)(u^2-9d).
+\end{equation}
+The verifier checks these identities coefficient by coefficient.
+
+In either equation $u=0$ makes the right side negative.  Every
+rational affine point would therefore have $u\ne0$.  The map
+\[
+                         (x,y)=(17u^2,17uv)
+\]
+sends $C_+$ to $E_{17d}=E_{9809}$ and $C_-$ to
+$E_{-51d}=E_{-29427}$.  Its nonzero abscissa has squareclass $17$,
+contradicting Corollary~\ref{cor:class17}.  This proves that both
+quartics have no rational affine point.  Their points at infinity
+would require $17$ to be a rational square, so their smooth
+projective completions have no rational point either.
+
+\begin{proposition}\label{prop:local}
+Both $C_+$ and $C_-$ have points over every completion of $\Q$.
+\end{proposition}
+\begin{proof}
+Let $g_\pm(u)$ denote the corresponding right side.  The following
+table gives rational values of $u$ for which $g_\pm(u)$ is a
+nonzero square in the indicated local field.  Each entry records
+$u$, the valuation, and the residue of the unit after removing
+that valuation.  The unit is taken modulo $8$ at $2$ and modulo
+$p$ at an odd prime.
+\[
+\begin{array}{c|c|c}
+ p&C_+:(u,v_p(g_+),\text{unit})&C_-:(u,v_p(g_-),\text{unit})\\\hline
+ 2&(23,6,1)&(21,6,1)\\
+ 3&(1,2,1)&(12,4,1)\\
+ 17&(4,2,13)&(22,2,9)\\
+ 577&(1,0,17)&(1,0,17).
+\end{array}
+\]
+The units $13,9$ are squares modulo $17$, and $17$ is a square
+modulo $577$.  The standard local square criterion proves these
+four local assertions.  At the real place, $u=100$ makes both
+right sides positive.
+
+The quartic discriminants are
+\[
+ \operatorname{disc}(g_+)=-2^{12}3\,17^6d^6,
+ \qquad
+ \operatorname{disc}(g_-)=-2^{12}3^7\,17^6d^6.
+\]
+Thus the smooth projective genus-one curves have good reduction
+outside $2,3,17,577$.  At any other prime, the Hasse bound gives
+a point on the reduction, and smooth lifting gives a local point.
+This proves the proposition.
+\end{proof}
+
+\section{Exclusion of all other constant values}
+
+The number $b_0=(204/55)^2$ is prepared: its reduced denominator
+is square, it lies in $(0,17)$, and its valuations at $2,3,17$
+are $4,2,2$.  Being a rational square, it satisfies all three
+local square conditions.
+
+A second prepared number is
+\[
+ b_1=409\left(\frac{204}{1001}\right)^2
+       =\frac{17020944}{1002001}.
+\]
+It is less than $17$ because $17020944<17034017$.
+Its denominator is square and its valuations at $2,3,17$ are
+again $4,2,2$.  The number $409$ is $1$ modulo $8,3,17$,
+so it is a square in all three local fields.
+
+Suppose $e_0\ne1,-1/3$ made the first pole equation soluble
+for both inputs.  Its factor $(1-e_0)(1+3e_0)$ is nonzero;
+division of the two equations would make $b_1/b_0$ a rational
+square.  But
+\[
+                     \frac{b_1}{b_0}=409\left(\frac{55}{1001}\right)^2
+\]
+is not a square.  Thus at least one of the two prepared inputs
+already fails the first equation.  The two excluded degenerate
+values fail at $b_0$ by Section~3.  This completes the proof of
+Theorem~\ref{thm:fixed-e}.
+
+The theorem concerns a constant $e$.  It does not exclude a
+nonconstant function of $b$, a different relation between the pole
+parameters, or a different pole predicate.  Those proposals require
+their own completeness arguments.
+
+\section{A fixed parameter in the conic chart}
+
+For a nonzero rational pole input $b$, write $B=17b$ and
+\[
+ e=\frac{\tau^2-B}{\tau^2+3B},\qquad
+ p=\frac{-4B\tau}{\tau^2+3B}.
+\]
+Fixing $\tau$ is different from fixing $e$, since $e$ still varies with $b$.
+The following exact example rules out the choice $\tau=1$, as well as
+$\tau=-1$, as a complete specialization on all prepared pole inputs.
+
+\begin{proposition}
+The rational number
+\[
+ b=\left(\frac{204}{61}\right)^2=\frac{41616}{3721}
+\]
+has square reduced denominator, satisfies $0<b<17$, is a square in
+$\mathbf Q_2,\mathbf Q_3,\mathbf Q_{17}$, and has respective valuations
+$4,2,2$. For $\tau=1$ or $\tau=-1$, the equation
+\[
+ Bq^2=(s^2-Be(B-b^2))(s^2+3Be(B-b^2))
+\]
+has no solution $(s,q)\in\mathbf Q^2$.
+\end{proposition}
+\begin{proof}
+The preparation assertions follow directly from $b=(204/61)^2$.
+For either choice of $\tau$,
+\[
+ e=-\frac{703751}{2126137}.
+\]
+Put $M=Be(B-b^2)$ and $N=BM$. Direct rational arithmetic gives
+\[
+ N=nk^2,\qquad
+ n=-32380801574194567,\qquad
+ k=\frac{144324288}{29438154846217}.
+\]
+A hypothetical solution with $s\ne0$ would give the point
+\[
+ x=\frac{B}{k^2}s^2,\qquad y=\frac{B^2}{k^3}sq
+\]
+on
+\[
+ E_n:\quad y^2=x(x-n)(x+3n).
+\]
+Its nonzero abscissa would belong to the squareclass $17$.
+
+Exact two-descent gives $\operatorname{rank}E_n(\mathbf Q)=0$.
+Its saved diagnostic has two-Selmer rank two, equal to the dimension
+of the full rational two-torsion. Thus no Cassels-pairing refinement
+is required for this rank-zero certificate.
+The accompanying reproducible PARI calculation returns
+\texttt{ellrank} equal to \texttt{[0,0,0,[]]}; it uses no analytic-rank
+or Birch--Swinnerton-Dyer hypothesis. Independent counts at the good
+primes $5,7,11,23,29,31$ are respectively
+\[
+                         4,8,8,32,24,24.
+\]
+Their greatest common divisor is four. Together with the visible full
+two-torsion this proves
+\[
+ E_n(\mathbf Q)=\{O,(0,0),(n,0),(-3n,0)\}.
+\]
+Neither nonzero torsion abscissa has squareclass $17$: $n$ is negative,
+and $-3n/17$ is not a rational square. This excludes $s\ne0$.
+If $s=0$, the original equation becomes $Bq^2=-3M^2<0$, which is
+impossible over $\mathbf R$. This proves the assertion.
+\end{proof}
+
+\subsection{A parameter which cancels one twist factor}
+
+For $\tau=17$ or $\tau=-17$ the first conic gives
+\[
+ e=\frac{17-b}{17+3b}.
+\]
+The elliptic parameter governing the second equation is
+\[
+ N=B^2e(B-b^2)
+   =b(17+3b)\left(\frac{17b(17-b)}{17+3b}\right)^2.
+\]
+Thus its squareclass no longer contains the factor $17-b$.
+This simplification does not ensure completeness.
+
+\begin{proposition}
+For $b=(204/101)^2$, neither choice $\tau=17,-17$ admits a
+rational solution of the second pole equation. The input is prepared.
+\end{proposition}
+\begin{proof}
+The preparation follows exactly as above: its valuations at
+$2,3,17$ are $4,2,2$, and it is a positive rational square less
+than $17$. Direct calculation gives
+\[
+ e=\frac{7753}{17545},\qquad
+ N=2465k^2,\qquad
+ k=\frac{1118946204864}{165976339595}.
+\]
+The same map
+$x=(B/k^2)s^2$, $y=(B^2/k^3)sq$ sends a solution with
+$s\ne0$ to a point of $E_{2465}(\Q)$ with abscissa in
+squareclass $17$.
+
+Exact two-descent gives two-Selmer rank three and hence rational
+rank at most one. The good-prime counts at $7,11,13,19,23,31$
+are $8,8,12,16,32,24$, respectively, so the rational torsion has
+order four. The point
+\[
+                  (77571,22248954)\in E_{2465}(\Q)
+\]
+has nonzero ordinate and therefore infinite order. This proves
+rank one independently of any choice of a Mordell--Weil basis.
+Its abscissa has squareclass $51$, since $77571=51\cdot39^2$.
+Together with the torsion squareclasses $-3$ and $2465$, it gives
+the eight classes
+\[
+ \{1,-3,2465,-7395,51,-17,435,-145\}.
+\]
+These are distinct, as is verified by their prime factorizations.
+Lemma~\ref{lem:x-class} bounds the entire image by eight classes,
+so this list is exhaustive without a saturation computation.
+The required class $17$ is absent. Finally $s=0$ would again
+give $Bq^2=-3M^2<0$. This proves the assertion.
+\end{proof}
+
+These propositions concern all prepared inputs. They do not decide
+whether a fixed conic parameter can be made complete on a more
+restricted family chosen simultaneously with the comparison primes.
+
+\section*{Reproducible verification}
+
+Run \nolinkurl{check_fixed_e_obstruction.py} to reproduce
+\nolinkurl{fixed-e-obstruction-certificate.json} and the descent
+transcript \nolinkurl{fixed-e-pari-descent.txt}.
+The script independently checks preparation, substitutions, torsion,
+squareclasses, local witnesses, and pairing-matrix ranks using exact
+integer and rational arithmetic. The two algebraic rank calculations
+use PARI; no bounded search is used as a nonexistence certificate.
+
+Run \nolinkurl{check_fixed_tau_obstruction.py} to reproduce
+\nolinkurl{fixed-tau-one-obstruction.json} and
+\nolinkurl{fixed-tau-one-pari-descent.txt}. It verifies the conic
+parameter, the rational map to the rank-zero elliptic curve, the
+complete torsion obstruction, and all preparation conditions. Its
+saved two-Selmer rank independently supplies the stated upper bound.
+
+The command \nolinkurl{check_fixed_tau17_obstruction.py} similarly
+reproduces \nolinkurl{fixed-tau17-obstruction.json} and
+\nolinkurl{fixed-tau17-pari-descent.txt}. It checks the factor
+cancellation, the rational scaling, the explicit nontorsion point,
+and all eight squareclasses. Their exhaustive nature follows from
+the proved rank bound, not from assuming that the displayed point
+generates the free part.
+
+\begin{thebibliography}{9}\small
+\bibitem{Dependencies}
+\emph{Arithmetic dependencies of the construction with 29 variables},
+project paper, version 8, 8 November 2026.
+\bibitem{PARI}
+The PARI Group, \emph{PARI/GP: Elliptic curves}, documentation of
+\texttt{ellrank}, including its unconditional two-descent and
+Cassels-pairing bounds,
+\url{https://pari.math.u-bordeaux.fr/dochtml/html/Elliptic_curves.html\#ellrank}.
+\end{thebibliography}
+\end{document}
