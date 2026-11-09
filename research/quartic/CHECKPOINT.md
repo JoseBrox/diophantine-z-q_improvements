@@ -30,3 +30,22 @@ This is a conditional projection improvement, inheriting exactly the previous ar
 A scan finds no purely linear residual and no coordinate occurring only linearly in the 301/351 quadratic systems, so straightforward elimination of a quadratic output used only linearly cannot remove a variable.
 
 A fixed anisotropic binary norm would pair tests efficiently at chosen inert primes, but soundness must cover arbitrary contact primes. Such a norm splits at infinitely many of them. Without a new uniform contact restriction this is not a valid replacement.
+
+## Stronger toric simplification — supersedes 348 candidate
+
+A quadratic division identity reduces the weight circuit further. Put c=q^(-3), imposed by
+
+  c*q4=q,  q4=q2^2, q2=q^2.
+
+Then retain/add q8=q4^2 and impose
+
+  c*q19=q8^2, q38=q19^2, c*q79=q38^2.
+
+At every consumed contact prime q is nonzero, so c is nonzero and these equations force precisely q19=q^19 and q79=q^79. Completeness chooses these values on the nonzero domain. This replaces four old toric coordinates a,b,c,d by one c; in the two-detector circuit q8 must also be added.
+
+Therefore the expected totals are:
+
+* 301 -> 297, 275 -> 271 quadratic rows (two detectors; save two per detector).
+* 351 -> 342, 323 -> 314 quadratic rows (three detectors; save three per detector).
+
+The 348 construction and coefficients exist locally as an intermediate check, but 297/342 should be the delivered results once fully verified.
