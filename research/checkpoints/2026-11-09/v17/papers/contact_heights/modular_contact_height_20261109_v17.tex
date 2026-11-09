@@ -1,0 +1,466 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,microtype}
+\usepackage[margin=26mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\C}{\mathbb C}
+\newcommand{\hF}{h_{\mathrm F}}
+\newcommand{\hFal}{h_{\mathrm{Fal}}}
+\newcommand{\deltaFal}{\delta_{\mathrm{Fal}}}
+\newcommand{\gr}{\operatorname{gr}^{\mathrm{can}}}
+\newcommand{\Jac}{\operatorname{Jac}}
+\newcommand{\vol}{\operatorname{vol}}
+\setlength{\emergencystretch}{2em}
+\title{Height Bounds for Modular Jacobians and Odd Contact Radicals}
+\author{}
+\date{9 November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+We prove an absolute bound $\hF(J_1(N))\ll N^6$ for the stable
+Faltings height of the Jacobian of the modular curve $X_1(N)$.
+The proof retains the genus dependence in estimates for canonical
+Green functions, uses a smooth integral cusp to bound the
+self-intersection of the relative dualizing sheaf, and applies an
+Arakelov height inequality. A separate comparison bounds the height
+of an abelian surface occurring as an isogeny factor by the height of
+this Jacobian, with only a logarithmic dependence on the degree of
+its field of definition. Applied to the five-contact modular
+realization used in the Diophantine construction, this gives
+$h(a)\ll M_5(a)^{12}$. All constants are independent of the rational
+parameter. The modular realization is stated explicitly as the
+arithmetic input; no additional $abc$ or Szpiro hypothesis is used.
+\end{abstract}
+
+\section{Heights and the five-contact statement}
+
+For a rational number $a=u/v$ in lowest terms, with $v>0$, set
+\[
+ h(a)=\log\max(|u|,v).
+\]
+Thus $h$ is logarithmic height. For an abelian variety $A$ over a
+number field, $\hF(A)$ denotes its stable Faltings height with the
+original Faltings metric. Stability means that a finite extension
+over which $A$ has semistable reduction does not change the value.
+
+Put
+\[
+ S_* =\{p\text{ prime}:p\le76176\},\qquad
+ B_* =\prod_{p\in S_*}p,\qquad
+ \mathcal D=\{0,1,2401,-343/32\}.
+\]
+For $a=u/v\in\Q\setminus\mathcal D$ in lowest terms, define
+$M_5(a)$ to be the product of the primes $p\notin S_*$ for which
+at least one of
+\begin{equation}\label{eq:contact-forms}
+ v_p(v),\quad v_p(u),\quad v_p(u-v),\quad
+ v_p(u-2401v),\quad v_p(32u+343v)
+\end{equation}
+is positive and odd. Here $v_p(p)=1$. The first form represents
+the contact at infinity. A prime appears in $M_5(a)$ only once.
+In particular $M_5(a)$ is a positive squarefree integer.
+
+The following is the precise part of the five-contact construction
+used below. It is supplied by the geometric and modular argument in
+\cite[proof of Theorem \texttt{o8-height}, equations
+\textup{(LR3)--(LR5)}, and proof of Theorem
+\texttt{quartic-height19}]{Glazer}.
+
+\begin{definition}[Modular realization input]\label{def:input}
+For each $a\in\Q\setminus\mathcal D$, write
+$R=B_*M_5(a)$. There is an abelian surface $A$ over a number field
+such that
+\begin{equation}\label{eq:geometric-comparison}
+ h(a)\le2\max(0,\hF(A))+128.
+\end{equation}
+Moreover, one of the following holds:
+\begin{enumerate}
+\item $\hF(A)<854R$;
+\item there are a number field $K$ of degree $d=[K:\Q]\le2304R$
+and an integer $N\le210^{300}R^2$ such that $A_K$ is an
+isogeny factor over $K$ of $J_1(N)_K$.
+\end{enumerate}
+\end{definition}
+
+In the cited construction, the first alternative is the case of
+complex multiplication. In the other case the surface is an
+isogeny factor of the Jacobian of
+$X_1(N)/\ker(\varepsilon)$, where $\varepsilon$ is a nebentypus
+character. Pullback of divisors from this quotient to $X_1(N)$
+then gives the second alternative in Definition~\ref{def:input}.
+No bound on the degree of the newform's coefficient field is part of
+this input.
+
+\begin{theorem}\label{thm:contact-height}
+Assume the modular realization input of Definition~\ref{def:input}.
+There is an absolute constant $C_{12}>0$ such that
+\[
+ h(a)\le C_{12}M_5(a)^{12}
+ \qquad(a\in\Q\setminus\mathcal D).
+\]
+\end{theorem}
+
+The proof will use a bound for modular Jacobians which is independent
+of this arithmetic input.
+
+\begin{theorem}\label{thm:jacobian}
+There is an absolute constant $C_J>0$ such that
+\[
+ \hF(J_1(N))\le C_JN^6
+\]
+whenever the modular curve $X_1(N)$ has genus at least two.
+No squarefreeness condition is imposed on $N$.
+\end{theorem}
+
+\section{The genus dependence in the Green function estimate}
+
+Let $X=X_1(N)(\C)$ and $g=g(X)\ge2$.
+Then $N\ge5$; the group $\Gamma_1(N)$ contains neither $-I$
+nor elliptic elements. Its quotient therefore has the usual
+Riemann surface measure, without a central stabilizer factor.
+The canonical probability measure of $X$ is
+\[
+ \mu_{\mathrm{can}}=
+ \frac{i}{2g}\sum_{j=1}^g\omega_j\wedge\overline{\omega_j},
+\]
+where the holomorphic differentials $\omega_j$ are orthonormal
+for the inner product $(i/2)\int_X\omega\wedge\overline\omega$.
+Write $F_\Gamma$ for the nonnegative density satisfying
+\[
+ \mu_{\mathrm{can}}=\frac{F_\Gamma}{g}\,\mu_{\mathrm{hyp}}
+ \quad\hbox{on }\Gamma_1(N)\backslash\mathfrak H.
+\]
+The canonical Green function $\gr_X(z,w)$ is normalized to have
+mean zero against $\mu_{\mathrm{can}}$ and local singularity
+$(2\pi)^{-1}\log|z-w|$.
+
+Fix
+\[
+ \epsilon=(2+\sqrt3)^{-3/2}.
+\]
+Let $Y_0$ be the complement of the standard cusp disc with
+parameter $\epsilon$ in $\operatorname{SL}_2(\Z)\backslash
+\mathfrak H$, and let $Y$ be its inverse image in
+$\Gamma_1(N)\backslash\mathfrak H$. The radius of the standard
+disc at a cusp of width $m$ is $\exp(-2\pi/(m\epsilon))$ in the
+local cusp parameter.
+
+\begin{lemma}\label{lem:green}
+There are absolute constants $c_1,c_2>0$ such that
+\[
+ \sup_YF_\Gamma\le c_1,\qquad
+ \sup_{Y\times Y}\gr_X
+ \le c_2\left(1+\frac{N}{\sqrt g}\right).
+\]
+\end{lemma}
+\begin{proof}
+Section~8.2 of \cite{BruinGreen} gives
+\[
+ \sup_YF_\Gamma\le25.7,\qquad
+ \sup_XF_\Gamma\le\max(25.7,0.0126N^2).
+\]
+The invariant in equation~(7.1) of that paper is
+\[
+ \zeta_\Gamma=
+ \frac1g\int_XF_\Gamma\,\mu_{\mathrm{can}}
+ -\frac1{\vol(\Gamma_1(N)\backslash\mathfrak H)}.
+\]
+Since $\mu_{\mathrm{can}}$ has mass one,
+\begin{equation}\label{eq:zeta-genus}
+ \zeta_\Gamma\le\frac{\sup_XF_\Gamma}{g}.
+\end{equation}
+Theorem~7.1(a) of \cite{BruinGreen}, with the uniform congruence
+spectral gap and the constants of its Section~8.2, bounds the
+Green function on $Y\times Y$ above by
+\[
+ 15800+2S,\qquad
+ S=\sqrt{\left(\frac1{4\eta^2}+4\right)137\zeta_\Gamma},
+\]
+where $\eta>0$ is an absolute spectral lower bound.
+The local kernels added to the Green function in that theorem are
+nonnegative: they have the form $L(u)-L(2)$ for $1<u\le2$,
+where $L(u)=(4\pi)^{-1}\log((u+1)/(u-1))$ is decreasing.
+They can therefore be omitted from the upper bound.
+
+Retaining the factor $1/g$ in \eqref{eq:zeta-genus} gives
+$S\ll(1+N)/\sqrt g$. Since $g\ge2$, this proves the lemma.
+The constants do not depend on the level or on the number of cusps.
+\end{proof}
+
+\section{A smooth integral cusp and the Jacobian height}
+
+For a smooth projective curve $X$ over $\Q$, let $e(X)$ denote
+the stable arithmetic self-intersection of the relative dualizing
+sheaf, equipped with its Arakelov metric. Explicitly, after passing
+to a number field $K$ with a minimal regular semistable model
+$\mathcal X/\mathcal O_K$, put
+\[
+ e(X)=\frac{(\overline\omega_{\mathcal X/\mathcal O_K},
+                    \overline\omega_{\mathcal X/\mathcal O_K})}
+                   {[K:\Q]}.
+\]
+Also let $\deltaFal(X)$ be the average of Faltings's delta invariant
+over the complex embeddings of $K$. These quantities are independent
+of the semistable field of definition.
+
+\begin{lemma}\label{lem:self-intersection}
+For $X=X_1(N)$ of genus $g\ge2$,
+\[
+ e(X)\ll g^2+gN^2+g^{3/2}N,
+\]
+with an absolute implied constant.
+\end{lemma}
+\begin{proof}
+The Tate curve $\operatorname{Tate}(q^N)$ with its point $q$ of
+order $N$ defines an integral cusp $O$ on the coarse modular model
+of $X_1(N)$. This cusp is smooth over $\Z$, its width is $N$,
+and its cotangent line is freely generated over $\Z$ by $dq$.
+These assertions, including their validity when $N$ is not
+squarefree, are established in \cite[Chapter~III, Section~5.1,
+pp.~96--97]{BruinThesis}.
+
+Let $h_\omega(O)$ be the arithmetic degree of this metrized
+cotangent line. With the same normalization of the Green function
+as above, the local expression is
+\[
+ h_\omega(O)=\lim_{z\to O}
+ \left(2\pi\gr_X(z,O)-\log|q(z)|\right).
+\]
+The cusp-disc calculation in the same section of
+\cite{BruinThesis} gives
+\begin{equation}\label{eq:cusp-height}
+ h_\omega(O)\le
+ \frac{2\pi}{N\epsilon}
+ +\frac{\sup_YF_\Gamma}{g}\frac{N^2\epsilon^2}{4\pi}
+ +2\pi\sup_{Y\times Y}\gr_X.
+\end{equation}
+Lemma~\ref{lem:green} therefore implies
+\[
+ h_\omega(O)\ll1+\frac{N^2}{g}+\frac{N}{\sqrt g}.
+\]
+
+After semistable base change, the arithmetic Hodge index theorem
+gives
+\[
+ e(X)\le4g(g-1)h_\omega(O).
+\]
+This is the last displayed inequality of
+\cite[Chapter~III, Section~5.1, p.~97]{BruinThesis}.
+It also follows from \cite[Theorem~2.4.1]{Javanpeykar}:
+the stable minimal-model point height is at most the height
+computed at the smooth integral cusp. Resolving and then
+contracting a regular model does not increase that point height;
+see \cite[Lemma~2.3.1]{Javanpeykar}.
+Multiplying the preceding height estimate by $4g(g-1)$ proves
+the assertion.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:jacobian}]
+Theorem~5.6 and Remark~5.8 of \cite{JorgensonKramer} give
+\begin{equation}\label{eq:delta}
+ \deltaFal(X_1(N))\ll g
+\end{equation}
+with an absolute implied constant. The result holds for all
+levels of genus at least two, after enlarging the constant to
+include finitely many small levels. The squarefree-level
+hypothesis in Section~6.1 of that paper belongs to a subsequent
+arithmetic asymptotic and is not used in \eqref{eq:delta}.
+
+Proposition~2.4.8 of \cite{Javanpeykar} states
+\[
+ \hFal(X)\le
+ \frac{(2g-1)(g+1)}{4(g-1)}e(X)
+ +\frac14\deltaFal(X)+20g^3.
+\]
+Here $\hFal(X)$ is the stable Faltings height of the Jacobian,
+as explained in Section~2.3 of that paper. A change of the
+constant convention for the metric adds only an absolute
+multiple of $g$, which has no effect on the estimate below.
+For $g\ge2$ the coefficient of $e(X)$ is at most $2g$.
+By Lemma~\ref{lem:self-intersection} and \eqref{eq:delta},
+\begin{equation}\label{eq:jacobian-genus}
+ \hF(J_1(N))\ll
+ g^3+g^2N^2+g^{5/2}N.
+\end{equation}
+The index formula for $\Gamma_1(N)$ and the usual genus formula
+give $g\le N^2$. Each of the three terms on the right of
+\eqref{eq:jacobian-genus} is consequently at most $N^6$.
+\end{proof}
+
+\section{Comparison with an abelian surface}
+
+The next lemma keeps the dimension of the isogeny comparison
+equal to two.
+
+\begin{lemma}\label{lem:surface}
+Let $J$ be an abelian variety of dimension $g\ge2$ over a number
+field $K$, and let $A$ be an abelian surface which is an isogeny
+factor of $J$ over $K$. Put $d=[K:\Q]$ and
+\[
+ H=\max\left(1,\hF(J)+\frac32g\right).
+\]
+Then
+\[
+ \hF(A)\le H+
+ 8\left(32\log14+\log d+
+ \log\max(1,\log d,H)\right).
+\]
+\end{lemma}
+\begin{proof}
+Choose a homomorphism $A\to J$ over $K$ with finite kernel and
+let $A_0\subset J$ be its image. Thus $A_0$ is an abelian surface
+over $K$ and is isogenous over $K$ to $A$.
+R\'emond's inequality \cite[Corollary~1.2]{Remond} gives
+\[
+ \hF(A_0)+\hF(J/A_0)\le\hF(J).
+\]
+Although that corollary is initially stated for relative heights,
+it also holds for stable heights, by making a common semistable
+base change; this is explicitly observed after the corollaries
+in \cite{Remond}. Bost's lower bound, in the original
+normalization, is
+\[
+ \hF(B)\ge-\log(\pi\sqrt2)\dim B>-\frac32\dim B.
+\]
+It follows that $\hF(A_0)\le H$.
+
+Apply \cite[Theorem~1.9(1)]{GaudronRemond} with source $A_0$
+and target $A$. The theorem provides an isogeny of degree at
+most
+\[
+ \left(14^{32}d\max(1,\log d,\hF(A_0))\right)^{16}.
+\]
+The increase of stable Faltings height under an isogeny of
+degree $D$ is at most $\tfrac12\log D$; see also
+\cite[Proposition~2.1]{Remond}. Replacing $\hF(A_0)$ by $H$
+in this upper bound proves the result.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:contact-height}]
+Fix $a\in\Q\setminus\mathcal D$ and put $R=B_*M_5(a)$.
+In the first alternative of Definition~\ref{def:input}, the
+comparison \eqref{eq:geometric-comparison} immediately gives
+$h(a)\ll R$, which is stronger than required.
+
+In the second alternative, take $K$ and $N$ from that definition.
+Since $A$ is a surface occurring as an isogeny factor, the
+Jacobian $J_1(N)$ has genus at least two. Its height and
+dimension are bounded by $C_JN^6$ and $N^2$, respectively.
+Lemma~\ref{lem:surface} therefore yields
+\[
+ \hF(A)\ll N^6+1+\log d+\log(1+\log d).
+\]
+The bounds $d\le2304R$ and $N\le210^{300}R^2$ imply
+$\hF(A)\ll R^{12}$. Substitution into
+\eqref{eq:geometric-comparison} gives $h(a)\ll R^{12}$.
+Finally, $B_*$ is fixed and $M_5(a)\ge1$, so the factor
+$B_*^{12}$ and the additive constant can be absorbed into a
+single absolute constant $C_{12}$.
+\end{proof}
+
+\section{Disjoint contact sets and numerical constants}
+
+\begin{corollary}\label{cor:amplification}
+Fix a positive integer $r$. For
+\[
+ \Theta_r=\bigcup_{j=0}^{r-1}
+ \left(3j+\left\{0,-\frac12,-1,
+                       \frac1{2399},-\frac{32}{407}\right\}\right)
+\]
+there is a fixed finite exceptional set of primes $\Sigma_r$
+and a constant $C_r>0$ such that
+\[
+ h(t)\le C_r M_r(t)^{12/r}
+ \qquad(t\in\Q\setminus\Theta_r).
+\]
+Here $M_r(t)$ is the product of primes outside $\Sigma_r$
+at which some $t-\theta$, $\theta\in\Theta_r$, has positive
+odd valuation.
+\end{corollary}
+\begin{proof}
+Apply Theorem~\ref{thm:contact-height} to
+$\phi_j(t)=2+1/(t-3j)$ for $0\le j<r$.
+The matrix of $\phi_j$ has determinant $-1$, so
+$h(t)\le h(\phi_j(t))+O_r(1)$.
+Remove all primes dividing coefficients or pairwise determinants
+of the $5r$ primitive contact forms, as well as those in $S_*$.
+Outside this fixed exceptional set, the radicals from different
+blocks have disjoint prime support. Multiplying the $r$ height
+inequalities then gives exponent $12/r$. All forms and the
+exceptional set are given explicitly in
+\cite[Sections~1--2]{Amplification}; its proof applies with
+exponent $12$ throughout.
+\end{proof}
+
+The constants in Theorems~\ref{thm:contact-height} and
+\ref{thm:jacobian} are absolute existence constants. In particular,
+the constant in \eqref{eq:delta} has not been evaluated numerically
+here. These theorems therefore give no new certified numerical
+coefficient height by themselves. They do give uniform exponents
+for arguments in which a sufficiently large fixed integer is
+already allowed. Any explicit numerical specialization must
+add a certified value of the required analytic constants.
+
+\begin{thebibliography}{9}
+\bibitem{BruinThesis}
+P.~Bruin, \emph{Modular curves, Arakelov theory, algorithmic
+applications}, Ph.D. thesis, Universiteit Leiden, 2010,
+Chapter~III, Section~5.1, pp.~96--97,
+\url{https://math.leidenuniv.nl/scripties/proefschrift-peterbruin.pdf}.
+
+\bibitem{BruinGreen}
+P.~Bruin, \emph{Explicit bounds on automorphic and canonical
+Green functions of Fuchsian groups}, Mathematika \textbf{60}
+(2014), 257--306. Author version dated 4 February 2013,
+equation~(7.1), Theorem~7.1(a), and Section~8.2,
+\url{https://pub.math.leidenuniv.nl/~bruinpj/green.pdf}.
+
+\bibitem{Javanpeykar}
+A.~Javanpeykar, with an appendix by P.~Bruin,
+\emph{Polynomial bounds for Arakelov invariants of Belyi curves},
+Algebra \& Number Theory \textbf{8} (2014), 89--140,
+\url{https://doi.org/10.2140/ant.2014.8.89}.
+
+\bibitem{JorgensonKramer}
+J.~Jorgenson and J.~Kramer,
+\emph{Bounds on Faltings's delta function through covers},
+Annals of Mathematics \textbf{170} (2009), 1--43,
+Theorem~5.6 and Remark~5.8,
+\url{https://doi.org/10.4007/annals.2009.170.1}.
+
+\bibitem{Remond}
+G.~R\'emond, \emph{Propri\'et\'es de la hauteur de Faltings},
+Annali della Scuola Normale Superiore di Pisa, Classe di Scienze
+\textbf{23} (2022), 1589--1596,
+\url{https://doi.org/10.2422/2036-2145.202010_062}.
+
+\bibitem{GaudronRemond}
+\'E.~Gaudron and G.~R\'emond,
+\emph{Nouveaux th\'eor\`emes d'isog\'enie},
+M\'emoires de la Soci\'et\'e Math\'ematique de France
+\textbf{176} (2023), Theorem~1.9(1),
+\url{https://doi.org/10.24033/msmf.484}.
+
+\bibitem{Glazer}
+E.~Glazer and contributors,
+\emph{Diophantine definition of the integers in the rationals},
+\texttt{manuscripts/quartic\_v9.tex}, commit
+\texttt{14e8f601fe0d9173d4a5f084aedc3e07066a7688},
+\url{https://github.com/elliotglazer/diophantine-z-q}.
+
+\bibitem{Amplification}
+J.~Brox and contributors,
+\emph{Height bounds from disjoint sets of rational contacts},
+\texttt{contact\_height\_amplification\_20261109\_v13.tex},
+\url{https://github.com/JoseBrox/diophantine-z-q_improvements}.
+\end{thebibliography}
+\end{document}
