@@ -12,13 +12,13 @@ python3 scripts/verify.py --full
 
 The verifier checks the publication manifest and quartic provenance, copies the inputs to a temporary directory, restores compressed data with hash checks, and runs every supplied reconstruction. It leaves published inputs unchanged. A failed equality, hash, or bound stops the verification. A receipt can be saved outside the publication tree with the optional argument --receipt /path/to/verification.json.
 
-The standard-library stages reconstruct every source dependency and the leading **263- and 322-variable quartics**, and the separately labelled additional-abc quartic. The parity construction and independent checker verify every retained row, every reduced power, all local factors, and the complete sum of squares. The shared-weight builder reads the exact 301- and 351-coordinate systems. Its independent checker verifies retained and changed rows, the invertible scalar normalization, every expanded coefficient, degree, content, support, and exact height. Both the data and independent certificates are compared byte for byte with the distributed files.
+The standard-library stages reconstruct every source dependency and the leading **248- and 322-variable quartics**, and the separately labelled additional-abc quartic. The parity construction and independent checker verify every retained row, every reduced power, all local factors, and the complete sum of squares. The shared-weight builder reads the exact 301- and 351-coordinate systems. Its independent checker verifies retained and changed rows, the invertible scalar normalization, every expanded coefficient, degree, content, support, and exact height. Both the data and independent certificates are compared byte for byte with the distributed files.
 
 The **27- and 29-variable specifications** are rebuilt from the complete guarded source algebras. The independent checker recomputes the nonzero-guard separation, weighted matrix norms, all factor bounds, and exact degeneration examples. The general weighted-elimination module is also reconstructed as a source dependency. The 29-variable fixed exponent 137731 is certified by the effective arithmetic estimate. The 27-variable example at the same exponent is an algebraic fixture; no numerical defining threshold is certified for it. Its degree bound is uniform because the coefficient parameter has degree zero.
 
 The additional structural stages check the number-field finite-difference identities and elliptic examples, and the restricted quadratic-input obstruction. They are finite checks supporting full proofs, not proofs of general projection assertions by enumeration.
 
-The release [verification receipt](../data/verification-v16.json) records the completed standard-library and optional PARI stages. It distinguishes exact identities from separately labelled bounded searches.
+The release [verification receipt](../data/verification-v17.json) records the completed standard-library and optional PARI stages. It distinguishes exact identities from separately labelled bounded searches.
 
 ## Individual quartic commands
 
@@ -51,8 +51,14 @@ python3 computation/quartic/build_quartic267.py
 python3 computation/quartic/check_quartic267.py
 python3 computation/quartic/build_quartic263.py
 python3 computation/quartic/check_quartic263.py
-python3 computation/quartic/build_quartic_abc98.py
-python3 computation/quartic/check_quartic_abc98.py
+python3 computation/quartic/build_quartic259_v17.py
+python3 computation/quartic/check_quartic259_v17.py
+python3 computation/quartic/build_quartic249_v17.py
+python3 computation/quartic/check_quartic249_v17.py
+python3 computation/quartic/build_quartic248_v17.py
+python3 computation/quartic/check_quartic248_v17.py
+python3 computation/quartic/build_quartic_abc97_v17.py
+python3 computation/quartic/check_quartic_abc97_v17.py
 python3 computation/quartic/check_coordinate_budget.py
 ~~~
 
@@ -131,7 +137,7 @@ The optional PARI stages also check the prepared fixed-pole counterexamples, wit
 
 A passing receipt establishes the finite assertions stated in that receipt. Complete quartic coefficient tables and the finite-algebra expression graphs are exact polynomial specifications. The enormous few-variable polynomials are specified and bounded without expanding all their terms: the determinant, resultant, trace, and finite-product inequalities are proved in their papers and independently checked by the programs.
 
-Coefficient verification does not prove the global arithmetic inputs in [Arithmetic inputs](arithmetic_inputs.md). It also does not produce a numerical sufficient parameter for an ineffective existence theorem. The 27-variable and 263-variable results retain this explicit limitation.
+Coefficient verification does not prove the global arithmetic inputs in [Arithmetic inputs](arithmetic_inputs.md). It also does not produce a numerical sufficient parameter for an ineffective existence theorem. The 27-variable and 248-variable results retain this explicit limitation.
 
 The nonzero pole-witness strengthening uses the retained restricted-converse and descent hypotheses and the source simultaneous-realization construction. Its mathematical proof is in both leading few-variable papers. It is not a conclusion of enumerating finite cases.
 
@@ -187,3 +193,14 @@ The common-parameter and product-contact obstructions use only the standard libr
 python3 computation/pole_parameters/check_pole_merger_obstructions.py --output computation/pole_parameters/pole-merger-obstructions.json
 python3 computation/few_variables/check_monomial_bounds.py
 ~~~
+
+## Restricted abc and dense pole obstructions
+
+~~~sh
+python3 computation/restricted_abc/check_frey_denominator.py
+python3 computation/pole_parameters/check_small_fixed_tau17_obstruction.py
+python3 computation/pole_parameters/check_quartic_pole_obstruction.py
+python3 computation/contact_heights/check_evaluation_height.py
+~~~
+
+These exact checks certify finite constants and algebraic identities used by the corresponding proofs. The height and density theorems are established mathematically in the papers.

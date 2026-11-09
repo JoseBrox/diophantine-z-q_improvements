@@ -1,11 +1,11 @@
 {
   "status": "Exact polynomial specification; arithmetic projection requires rational abc and the separately stated source inputs.",
-  "variables": 98,
-  "quadraticResiduals": 86,
+  "variables": 97,
+  "quadraticResiduals": 85,
   "degree": 4,
   "symbolicContent": 1,
-  "symbolicTerms": 885,
-  "ordinaryMonomialPositions": 882,
+  "symbolicTerms": 880,
+  "ordinaryMonomialPositions": 879,
   "sourceSha256": "54c242476e796404131eb09099bd2c134adf2358e1129a112cd2b47f996ab6c7",
   "retainedSourceRows": [
     0,
@@ -45,30 +45,32 @@
     707
   ],
   "contacts": [
+    -3,
     -2,
     -1,
     0,
     2,
     3,
-    4
+    4,
+    5
   ],
-  "heightScale": "beta^6+(Tr x(A))^6",
-  "beta": "2*X^2+B",
-  "abcContactHeightCoefficient": "2/3",
-  "abcPairHeightCoefficient": "2/5",
-  "combinedNumeratorCoefficient": "8/15",
-  "coefficientHeightForEveryIntegerBAtLeast3": "max(11600064,2*B^4+169997)",
-  "coefficientHeightForEveryOddBAtLeast49": "2*B^4+169997",
-  "coefficientHeightThresholdOddB": 49,
+  "heightScale": "beta^4+(Tr x(A))^4",
+  "beta": "2*X^2+B=L.real-inputComparison.real",
+  "abcContactHeightCoefficient": "1/3",
+  "abcPairHeightCoefficient": "4/3",
+  "combinedNumeratorCoefficient": "8/9",
+  "coefficientHeightForEveryIntegerBAtLeast3": "max(11600064,B^2+169997)",
+  "coefficientHeightForEveryOddBAtLeast3381": "B^2+169997",
+  "coefficientHeightThresholdOddB": 3381,
   "contentForEveryIntegerShift": 1,
-  "ordinaryMonomialsForEveryPositiveShift": 882,
+  "ordinaryMonomialsForEveryPositiveShift": 879,
   "detectors": [
     {
       "detector": 0,
       "argument": "lambda",
-      "contactDegree": 6,
-      "R": "F6(t)/(t-1)^8",
-      "q": "(t-1)^4/F6(t)",
+      "contactDegree": 8,
+      "R": "F8(t)/(t-1)^10",
+      "q": "(t-1)^6/F8(t)",
       "inverseR": "q*(t-1)^4",
       "tests": [
         [
@@ -86,9 +88,9 @@
     {
       "detector": 1,
       "argument": "a*lambda",
-      "contactDegree": 6,
-      "R": "F6(t)/(t-1)^8",
-      "q": "(t-1)^4/F6(t)",
+      "contactDegree": 8,
+      "R": "F8(t)/(t-1)^10",
+      "q": "(t-1)^6/F8(t)",
       "inverseR": "q*(t-1)^4",
       "tests": [
         [
@@ -108,13 +110,13 @@
     "r=(t-1)^2",
     "u=q*r",
     "k=u*r",
-    "k*r-14*k+49*u-36*q=r^2",
+    "k^2-30*k*u+273*u^2-820*u*q+576*q^2=k*r",
     "k*b=tau^2"
   ],
   "finiteChecksScope": "Exact coefficient reconstruction and polynomial identities, not a numerical verification of abc or an effective sufficient shift.",
   "fixture": {
     "B": 3,
-    "ordinaryMonomials": 882,
+    "ordinaryMonomials": 879,
     "coefficientHeight": "11600064",
     "definesIntegersCertified": false
   }

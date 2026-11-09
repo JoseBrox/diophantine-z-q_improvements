@@ -1,7 +1,7 @@
 {
   "format": "quartic-provenance-v4",
   "pathConvention": "All local paths are relative to this computation/quartic directory.",
-  "scope": "Complete quartic coefficient specifications with separately stated arithmetic projection hypotheses. The leading inherited-premise family has 263 total coordinates and an ineffective sufficient coefficient threshold. The fully specified inherited-premise quartic has 322 coordinates. Additional-abc quartics are labelled separately; no numerical sufficient shift is asserted.",
+  "scope": "Complete quartic coefficient specifications with separately stated arithmetic projection hypotheses. The leading inherited-premise family has 248 total coordinates and an ineffective sufficient coefficient threshold. The fully specified inherited-premise quartic has 322 coordinates. Additional-abc quartics are labelled separately; no numerical sufficient shift is asserted.",
   "sourceRepository": "https://github.com/elliotglazer/diophantine-z-q",
   "sourceCommit": "5bbd74f6a479776a332cbe036809d5dddae63720",
   "sourceFiles": [
@@ -431,7 +431,7 @@
       }
     },
     "family263": {
-      "role": "Leading quartic existence family; sufficient defining threshold ineffective.",
+      "role": "Exact coefficient dependency for the current259-variable construction; not a current leading theorem.",
       "projectionStatement": "There exists N0>=27464 such that every N>=N0 has input projection Z, under the stated arithmetic inputs.",
       "totalVariables": 263,
       "inputCoordinate": 1,
@@ -497,55 +497,288 @@
       "contactSymmetry": "Theta, 2-Theta, Theta+5, -3-Theta",
       "contactCoordinatesPerDetector": 5
     },
-    "familyABC98": {
-      "role": "Leading additional-abc quartic; sufficient input shift ineffective.",
-      "projectionStatement": "Under ordinary rational abc and the stated elliptic, pole, and prime-pattern premises, every sufficiently large odd B has rational input projection Z.",
-      "additionalConjecture": "ordinary rational abc",
-      "totalVariables": 98,
+    "family259_v17": {
+      "role": "Exact coefficient dependency for the current249-variable theorem.",
+      "projectionStatement": "There exists N0>=27464 such that every N>=N0 has input projection Z, under the stated arithmetic inputs.",
+      "totalVariables": 259,
       "inputCoordinate": 1,
       "degree": 4,
       "content": 1,
-      "quadraticResiduals": 86,
+      "quadraticResiduals": 233,
+      "parameter": {
+        "name": "A_N",
+        "base": 80989,
+        "exponent": "2*N+1",
+        "coordinate": false,
+        "familyDomain": "Integers N>=1"
+      },
+      "symbolicTerms": 3309,
+      "ordinaryMonomials": {
+        "count": 3308,
+        "validFor": "Every positive A; hence every N>=1",
+        "scope": "Support only; not a sufficient defining threshold."
+      },
+      "exactCoefficientHeight": {
+        "expression": "80989^(4*N+2)+1",
+        "validFor": "Every N>=23",
+        "scope": "Algebraic height only; the defining thresholds are separate."
+      },
+      "quadraticSystem": "family259_v17/quadratic-family259-v17.json",
+      "polynomial": "family259_v17/polynomial-family259-v17.json",
+      "constructionReport": "family259_v17/construction-report259-v17.json",
+      "independentVerification": "family259_v17/independent-verification259-v17.json",
+      "knownNumericalSufficientN": null,
+      "ineffectivity": "The aggregate-trace height constant and the new amplified global comparison give an ineffective sufficient threshold.",
+      "contactBlocks": 4,
+      "localOrders": {
+        "referenceReciprocalAbscissa": 6,
+        "comparison": 10,
+        "input": 3,
+        "inputExtracted": 5
+      },
+      "detectorNormalization": {
+        "contactDegree": 20,
+        "R": "F20(t)/(t-1)^20",
+        "q": "(t-1)^20/F20(t)-1",
+        "inverseR": "1+q",
+        "clearingEquations": [
+          "r=(t-1)^2",
+          "F20*(1+q)=(r^5)^2",
+          "(1+q)*b=(408/409)^2*tau^2"
+        ],
+        "scales": [
+          "1",
+          "T"
+        ],
+        "T": "one quarter of the trace of the sum of four root abscissas",
+        "preparedPoleValuationsAt2_3_17": [
+          4,
+          2,
+          2
+        ],
+        "realPoleLimit": "41616/167281",
+        "exceptionalStrata": "q=0 and t=1 have contact radical one and are treated without division."
+      },
+      "additionalExceptionalPrimes": [
+        247957,
+        368323,
+        2029147
+      ],
+      "contactSymmetry": "Theta, 2-Theta, Theta+5, -3-Theta",
+      "contactCoordinatesPerDetector": 5,
+      "weightPowers": [
+        2,
+        4,
+        5,
+        10,
+        19
+      ]
+    },
+    "familyABC97_v17": {
+      "role": "Leading additional-abc quartic; sufficient input shift ineffective.",
+      "projectionStatement": "Under ordinary rational abc and the stated elliptic, pole, and prime-pattern premises, every sufficiently large odd B has rational input projection Z.",
+      "additionalConjecture": "ordinary rational abc",
+      "totalVariables": 97,
+      "inputCoordinate": 1,
+      "degree": 4,
+      "content": 1,
+      "quadraticResiduals": 85,
       "parameter": {
         "name": "B",
         "coordinate": false,
         "familyDomain": "Odd integers B>=3",
         "effectiveSufficientThreshold": null
       },
-      "symbolicTerms": 885,
+      "symbolicTerms": 880,
       "ordinaryMonomials": {
-        "count": 882,
+        "count": 879,
         "validFor": "Every positive integer B",
         "scope": "Support only; no numerical defining shift certified."
       },
       "exactCoefficientHeight": {
-        "expression": "max(11600064,2*B^4+169997)",
+        "expression": "max(11600064,B^2+169997)",
         "validFor": "Every integer B>=3"
       },
-      "quadraticSystem": "family_abc98/quadratic-family-abc98.json",
-      "polynomial": "family_abc98/polynomial-family-abc98.json",
-      "constructionReport": "family_abc98/construction-report-abc98.json",
-      "independentVerification": "family_abc98/independent-verification-abc98.json",
-      "subtractionIdentityCertificate": "family_abc98/z-difference-identity.json",
+      "quadraticSystem": "family_abc97_v17/quadratic-family-abc97-v17.json",
+      "polynomial": "family_abc97_v17/polynomial-family-abc97-v17.json",
+      "constructionReport": "family_abc97_v17/construction-report-abc97-v17.json",
+      "independentVerification": "family_abc97_v17/independent-verification-abc97-v17.json",
+      "subtractionIdentityCertificate": "family_abc97_v17/z-difference-identity.json",
       "contacts": [
+        -3,
         -2,
         -1,
         0,
         2,
         3,
-        4
+        4,
+        5
       ],
       "normalization": [
         "r=(t-1)^2",
         "u=q*r",
         "k=u*r",
-        "k*r-14*k+49*u-36*q=r^2",
+        "k^2-30*k*u+273*u^2-820*u*q+576*q^2=k*r",
         "k*b=tau^2"
       ],
-      "heightScale": "beta^6+(Tr x(A))^6",
-      "combinedHeightCoefficient": "8/15",
+      "heightScale": "beta^4+(Tr x(A))^4",
+      "combinedHeightCoefficient": "8/9",
       "knownNumericalSufficientB": null,
-      "ineffectivity": "Both abc height constants and the aggregate trace-height additive constant are ineffective."
+      "ineffectivity": "Both abc height constants and the aggregate trace-height additive constant are ineffective.",
+      "affineInputCoordinate": "I0=L0-2*X^2-B; beta=L0-I0; only the defining row contains B."
+    },
+    "family249_v17": {
+      "role": "Exact coefficient dependency for the current248-variable theorem.",
+      "projectionStatement": "There exists N0>=27464 such that every N>=N0 has input projection Z, under the stated arithmetic inputs.",
+      "totalVariables": 249,
+      "inputCoordinate": 1,
+      "degree": 4,
+      "content": 1,
+      "quadraticResiduals": 223,
+      "parameter": {
+        "name": "A_N",
+        "base": 80989,
+        "exponent": "2*N+1",
+        "coordinate": false,
+        "familyDomain": "Integers N>=1"
+      },
+      "symbolicTerms": 3193,
+      "ordinaryMonomials": {
+        "count": 3192,
+        "validFor": "Every positive A; hence every N>=1",
+        "scope": "Support only; not a sufficient defining threshold."
+      },
+      "exactCoefficientHeight": {
+        "expression": "80989^(4*N+2)+1",
+        "validFor": "Every N>=23",
+        "scope": "Algebraic height only; the defining thresholds are separate."
+      },
+      "quadraticSystem": "family249_v17/quadratic-family249-v17.json",
+      "polynomial": "family249_v17/polynomial-family249-v17.json",
+      "constructionReport": "family249_v17/construction-report249-v17.json",
+      "independentVerification": "family249_v17/independent-verification249-v17.json",
+      "knownNumericalSufficientN": null,
+      "ineffectivity": "The aggregate-trace height constant and the new amplified global comparison give an ineffective sufficient threshold.",
+      "contactBlocks": 2,
+      "localOrders": {
+        "referenceReciprocalAbscissa": 2,
+        "comparison": 4,
+        "input": 1,
+        "inputExtracted": 2
+      },
+      "detectorNormalization": {
+        "contactDegree": 10,
+        "R": "F10(t)/(t-1)^10",
+        "q": "(t-1)^10/F10(t)-1",
+        "inverseR": "1+q",
+        "clearingEquations": [
+          "r=(t-1)^2",
+          "F10*(1+q)=r^2*r^3",
+          "(1+q)*b=(408/409)^2*tau^2"
+        ],
+        "scales": [
+          "1",
+          "T"
+        ],
+        "T": "one quarter of the trace of the sum of four root abscissas",
+        "preparedPoleValuationsAt2_3_17": [
+          4,
+          2,
+          2
+        ],
+        "realPoleLimit": "41616/167281",
+        "exceptionalStrata": "q=0 and t=1 have contact radical one and are treated without division."
+      },
+      "additionalExceptionalPrimes": [
+        2029147
+      ],
+      "contactSymmetry": "Theta and2-Theta",
+      "contactCoordinatesPerDetector": 4,
+      "weightPowers": [
+        2,
+        4,
+        7
+      ],
+      "scalarNormalizationPower": 8,
+      "baseHeightInput": "The proved7/2 estimate from the source modular realization."
+    },
+    "family248_v17": {
+      "role": "Leading quartic existence family; sufficient defining threshold ineffective.",
+      "projectionStatement": "There exists N0>=53 such that every N>=N0 has input projection Z, under the stated arithmetic inputs.",
+      "totalVariables": 248,
+      "inputCoordinate": 1,
+      "degree": 4,
+      "content": 1,
+      "quadraticResiduals": 222,
+      "parameter": {
+        "name": "A_N",
+        "base": 149,
+        "exponent": "2*N+1",
+        "coordinate": false,
+        "familyDomain": "Integers N>=1"
+      },
+      "symbolicTerms": 3190,
+      "ordinaryMonomials": {
+        "count": 3189,
+        "validFor": "Every positive A; hence every N>=1",
+        "scope": "Support only; not a sufficient defining threshold."
+      },
+      "exactCoefficientHeight": {
+        "expression": "149^(4*N+2)+1",
+        "validFor": "Every N>=53",
+        "scope": "Algebraic height only; the defining thresholds are separate."
+      },
+      "quadraticSystem": "family248_v17/quadratic-family248-v17.json",
+      "polynomial": "family248_v17/polynomial-family248-v17.json",
+      "constructionReport": "family248_v17/construction-report248-v17.json",
+      "independentVerification": "family248_v17/independent-verification248-v17.json",
+      "knownNumericalSufficientN": null,
+      "ineffectivity": "The aggregate-trace height constant and the new amplified global comparison give an ineffective sufficient threshold.",
+      "contactBlocks": 2,
+      "localOrders": {
+        "referenceReciprocalAbscissa": 2,
+        "comparison": 4,
+        "input": 1,
+        "inputExtracted": 2
+      },
+      "detectorNormalization": {
+        "contactDegree": 10,
+        "R": "F10(t)/(t-1)^10",
+        "q": "(t-1)^10/F10(t)-1",
+        "inverseR": "1+q",
+        "clearingEquations": [
+          "r=(t-1)^2",
+          "F10*(1+q)=r^2*r^3",
+          "(1+q)*b=(408/409)^2*tau^2"
+        ],
+        "scales": [
+          "1",
+          "T"
+        ],
+        "T": "one quarter of the trace of the sum of four root abscissas",
+        "preparedPoleValuationsAt2_3_17": [
+          4,
+          2,
+          2
+        ],
+        "realPoleLimit": "41616/167281",
+        "exceptionalStrata": "q=0 and t=1 have contact radical one and are treated without division."
+      },
+      "additionalExceptionalPrimes": [
+        2029147
+      ],
+      "contactSymmetry": "Theta and2-Theta",
+      "contactCoordinatesPerDetector": 4,
+      "weightPowers": [
+        2,
+        4,
+        7
+      ],
+      "scalarNormalizationPower": 4,
+      "baseHeightInput": "The proved cubic logarithmic estimate and its7/2 consequence from the source modular realization.",
+      "scalarContactIndexOrder": 3,
+      "scalarForcedIndexDepth": "floor(19*(2*N-1)/8)+1",
+      "scalarSeparateDivisibility": "149^L_N*M5(beta)^3 divides |a-1|"
     }
   },
   "constructionChain": [
@@ -650,12 +883,33 @@
       "change": "Use twenty contacts symmetric about one and direct F20*q=r^9 normalization; remove two coordinates per detector with a complete projection proof."
     },
     {
+      "from": "family263",
+      "to": "family259_v17",
+      "producer": "build_quartic259_v17.py",
+      "checker": "check_quartic259_v17.py",
+      "change": "Balanced contact normalization makes inverseR affine; nineteenth-power weights give comparison order ten. The independent checker reconstructs directly from family267."
+    },
+    {
       "from": "family267",
-      "to": "familyABC98",
-      "producer": "build_quartic_abc98.py",
-      "checker": "check_quartic_abc98.py",
-      "change": "Retain three point roles, six order-one local tests, six symmetric contacts with joint inverse normalization, and a sixth-power height scale under ordinary abc. The compressed fixed subtraction is checked separately.",
+      "to": "familyABC97_v17",
+      "producer": "build_quartic_abc97_v17.py",
+      "checker": "check_quartic_abc97_v17.py",
+      "change": "Eight symmetric contacts and fourth-power height scale under ordinary abc; joint quadratic inverse evaluation and affine input-comparison coordinate.",
       "projectionEquivalenceToSourceClaimed": false
+    },
+    {
+      "from": "family259_v17",
+      "to": "family249_v17",
+      "producer": "build_quartic249_v17.py",
+      "checker": "check_quartic249_v17.py",
+      "change": "Ten reflected contacts, seventh-power local weights, plain formal parameters, and scalar eighth-power denominator under the proved modular height bound."
+    },
+    {
+      "from": "family249_v17",
+      "to": "family248_v17",
+      "producer": "build_quartic248_v17.py",
+      "checker": "check_quartic248_v17.py",
+      "change": "Fourth-power scalar denominator from the cubic logarithmic height bound and sharpened Lucas estimate; independently verified forced prime149. The checker reconstructs directly from family259."
     }
   ],
   "reproduction": {
@@ -685,8 +939,14 @@
       "python3 check_quartic267.py",
       "python3 build_quartic263.py",
       "python3 check_quartic263.py",
-      "python3 build_quartic_abc98.py",
-      "python3 check_quartic_abc98.py"
+      "python3 build_quartic259_v17.py",
+      "python3 check_quartic259_v17.py",
+      "python3 build_quartic_abc97_v17.py",
+      "python3 check_quartic_abc97_v17.py",
+      "python3 build_quartic249_v17.py",
+      "python3 check_quartic249_v17.py",
+      "python3 build_quartic248_v17.py",
+      "python3 check_quartic248_v17.py"
     ],
     "baselineArchiveHandling": "The new builders read and hash-check baseline392/*.json.gz directly. scripts/restore_data.py restores the separate upstream/final392 reproduction archives.",
     "optionalPARICommands": [
@@ -789,27 +1049,33 @@
       "tex_sha256": "74617835d353919399b2db66123e4cb0b40bf5cf58a998fa257408ceb417cc6e",
       "pdf_sha256": "79d394a88d5a697ff6440938753f49c8bdf2c4c04ccb7ff2c987c086b564d632"
     },
-    "family263": {
-      "tex": "../../papers/quartic_existence/quartic263_20261109_v16.tex",
-      "tex_sha256": "0e64ba1e434dc9d7dcba6bf2bf8aeaed03073d2dca5ff0e1cc3b4636d0983b9d",
-      "pdf": "../../papers/quartic_existence/quartic263_20261109_v16.pdf",
-      "pdf_sha256": "4e070ea69f6afb50c51eac2b856b6da910d5e35322de5e66ea48142e65a007a6"
+    "familyABC97_v17": {
+      "tex": "../../papers/quartic_existence/quartic_abc97_20261109_v17.tex",
+      "pdf": "../../papers/quartic_existence/quartic_abc97_20261109_v17.pdf",
+      "tex_sha256": "854d9ff10066c32133a42062e405cda2cba40f034e19d9b1aaa63fe1308974be",
+      "pdf_sha256": "a5bf77a24bdce98213aa8fc34d18150b1d6366a176381f588c8e1097616531d1"
     },
-    "familyABC98": {
-      "tex": "../../papers/quartic_existence/quartic_abc98_20261109_v16.tex",
-      "tex_sha256": "7f5133c63cfcc7f3bdba626a70a815f258d4fad2994b87841aab5af0e39465b0",
-      "pdf": "../../papers/quartic_existence/quartic_abc98_20261109_v16.pdf",
-      "pdf_sha256": "0051374a1ee7889a6c3596503a5a4020ab4437c949b321956b2275a1c3eacaf4"
+    "differentialEvaluation": {
+      "tex": "../../papers/contact_heights/evaluation_of_differentials_20261109_v17.tex",
+      "pdf": "../../papers/contact_heights/evaluation_of_differentials_20261109_v17.pdf",
+      "tex_sha256": "2ba5dd497276073d92db95f0119bede82d182997c66375e5be294157de6d9f7c",
+      "pdf_sha256": "3525339b89a679ae0ca00b30cda590d62e1018a33471ca45fd2414a87b5320f9"
+    },
+    "family248_v17": {
+      "tex": "../../papers/quartic_existence/quartic248_20261109_v17.tex",
+      "pdf": "../../papers/quartic_existence/quartic248_20261109_v17.pdf",
+      "tex_sha256": "fd17f65e9bab3536e7b737f8346b886d2a1ca520d4c4398fc59576cc42b5d4da",
+      "pdf_sha256": "6cb0caa9d03f6750fed1f069f04f509383706233a6d6fbf867810bf151519a49"
     }
   },
   "documentation": {
     "dataFormat": "../../docs/data_format.md",
-    "dataFormatSHA256": "91b2b5167102e769fa02ea7926e31564278d58b198106a9f61a180ed72c3cd28"
+    "dataFormatSHA256": "d7a1f1276a8b5d4bf1af2b8884189fb43e9de3785b7c94f16795ee9e6bccc348"
   },
   "files": {
     "README.md": {
-      "bytes": 5016,
-      "sha256": "13b5fceba5872def80c5c7cc01d2e30b28a96f72d2ca61954018db029edd54ec"
+      "bytes": 6088,
+      "sha256": "4577e4ec3e82420f86fb748157cda8e656ac8878e17dcc79f5cb9f10ac7ff99c"
     },
     "README370.md": {
       "bytes": 3578,
@@ -1191,37 +1457,109 @@
       "bytes": 506268,
       "sha256": "4ac70724c340aa26440c0cdee1cae1445455bdf5fe702efa623037ec1a252f20"
     },
-    "build_quartic_abc98.py": {
-      "bytes": 11152,
-      "sha256": "58bdfc879abcbf5a1ed6841d6da58203e675fd30a5e2e9efd049c68f954ad963"
-    },
-    "check_quartic_abc98.py": {
-      "bytes": 13486,
-      "sha256": "334f811bfd44dcf1f7b92dec2a2260139350e6a7d4d391224f18196733593c5c"
-    },
     "check_z_difference_identity.py": {
-      "bytes": 2809,
-      "sha256": "e60453a7e22e7008c25dde32618d45c9cc38b2f5eaa5cba7a2e3b9d2844acd87"
+      "bytes": 2813,
+      "sha256": "8d4c2abadce33557fb1f166454d934638213e57a48211b6cb8e0ea3d0ad8c892"
     },
-    "family_abc98/z-difference-identity.json": {
+    "build_quartic259_v17.py": {
+      "bytes": 6844,
+      "sha256": "afe75d7627e5067c079cd9297715babaef8c4eb54d230a139a5e88139e92aba7"
+    },
+    "check_quartic259_v17.py": {
+      "bytes": 17558,
+      "sha256": "9fa7e505634890e611069f99e926053ebd377fb6f1f2820a82ede003019f260c"
+    },
+    "build_quartic_abc97_v17.py": {
+      "bytes": 11417,
+      "sha256": "e1b92e0eb961fe87529eea9d65875364701480b1be44c2870bfee73c1296c3c3"
+    },
+    "check_quartic_abc97_v17.py": {
+      "bytes": 14822,
+      "sha256": "bfa45dc6ce0fba323b567e76b93f67807be20f2279cd5e3d9dd41d52d9b8771b"
+    },
+    "family259_v17/polynomial-family259-v17.json": {
+      "bytes": 505354,
+      "sha256": "9eaa70d876ba5932ceabb8a6d5f43bb8e9ed9fbac6500eb4e9b19cfd77df3099"
+    },
+    "family259_v17/quadratic-family259-v17.json": {
+      "bytes": 236121,
+      "sha256": "bf123dd6decac657ca8c0c567fb7f58d7289860567e387b70f86c03ae2c1be9d"
+    },
+    "family259_v17/construction-report259-v17.json": {
+      "bytes": 2351,
+      "sha256": "584313f60b2b8efdaa4b6c0f58b7adb583d5a32a6323e3dd2c0cade2c3e8e0c2"
+    },
+    "family259_v17/independent-verification259-v17.json": {
+      "bytes": 8434,
+      "sha256": "75b7d8fa764915b6514582df75644526b1b3886379933dda7276374381ae07da"
+    },
+    "family_abc97_v17/independent-verification-abc97-v17.json": {
+      "bytes": 2313,
+      "sha256": "5e8281ec93601ad14ca7d4b5aeb04740f0ad090fc199d6b63cf311eff8746ae7"
+    },
+    "family_abc97_v17/polynomial-family-abc97-v17.json": {
+      "bytes": 130733,
+      "sha256": "289f29ac12392737a58b9297112e2bf605ddbc2afa9f7197ff4313abf285a60c"
+    },
+    "family_abc97_v17/z-difference-identity.json": {
       "bytes": 1530,
       "sha256": "5e912d8a2792f61f27a46a47803ba6e051d68da6b150a663f7139813a601f0db"
     },
-    "family_abc98/quadratic-family-abc98.json": {
-      "bytes": 75756,
-      "sha256": "006eff7658ab3625c385d1ce684f4eca90c4bd46a1df5dfa34d990d08eeb7929"
+    "family_abc97_v17/quadratic-family-abc97-v17.json": {
+      "bytes": 75005,
+      "sha256": "e50b41cb15194418771262045afa97fc86ad5c47f376591b732106b690a5491b"
     },
-    "family_abc98/construction-report-abc98.json": {
-      "bytes": 2378,
-      "sha256": "a75a082fbf38985243ac820c247d3741cf73c02bded50af84aa0f73dac2ff2c6"
+    "family_abc97_v17/construction-report-abc97-v17.json": {
+      "bytes": 2438,
+      "sha256": "89e19b9f45beb2c086b58d3156912246fa5b46ebb935a2433f8d5f2654e5bf80"
     },
-    "family_abc98/independent-verification-abc98.json": {
-      "bytes": 1948,
-      "sha256": "3ba92287ec6bf8be564b40aaf5c0bc376540ef97e3a1bc50ab4263d0e91a73f8"
+    "build_quartic249_v17.py": {
+      "bytes": 8768,
+      "sha256": "05bfdf176630bdff2190f7a24969d63f7b198c774344a87131abe1ae41d31495"
     },
-    "family_abc98/polynomial-family-abc98.json": {
-      "bytes": 130847,
-      "sha256": "8d4c69fef8b61961ab537b6071ee20ae600568cedfa204583797ff1e2e9c566b"
+    "check_quartic249_v17.py": {
+      "bytes": 18252,
+      "sha256": "a116e86d9b7212a1c6be282c9e2a4783ac79d8e196f9076b9ef214ab2a1f0485"
+    },
+    "family249_v17/quadratic-family249-v17.json": {
+      "bytes": 232168,
+      "sha256": "5bf51acf7575c5ed41d364c8716fd3db7644f2ed8711657a5f28d00ac49302c0"
+    },
+    "family249_v17/polynomial-family249-v17.json": {
+      "bytes": 481721,
+      "sha256": "54f3269832ca3dcf509d1e88d24ff9db7c5eeec49b5278e0f59449bb286115e1"
+    },
+    "family249_v17/construction-report249-v17.json": {
+      "bytes": 3168,
+      "sha256": "d11970f47f0b242dc11fb4adb4b9cb785534acddb94897c1fe4f070102fecb86"
+    },
+    "family249_v17/independent-verification249-v17.json": {
+      "bytes": 7740,
+      "sha256": "435ca8cd9c2c68c1478387a638feb46a6c3271fef3641773cb0d8e5e9ba9946f"
+    },
+    "build_quartic248_v17.py": {
+      "bytes": 6064,
+      "sha256": "36ac23d5a211257e6d4b73c0f76fa4724800771e707c3c654b376b9457786a7b"
+    },
+    "check_quartic248_v17.py": {
+      "bytes": 20690,
+      "sha256": "29b37b70a9699fcb60f95668e567eab91a1796cbf843cca0aa14139938749b50"
+    },
+    "family248_v17/independent-verification248-v17.json": {
+      "bytes": 9114,
+      "sha256": "6547d910580e2edb76e569d625bfa8a42aa04fce7518c333ba2de41add8751c0"
+    },
+    "family248_v17/construction-report248-v17.json": {
+      "bytes": 2284,
+      "sha256": "23b46aaaf59087cf8d3cc1a9b3ff59ab5f39a80112fe2c4c9b1b722d15cc4adb"
+    },
+    "family248_v17/polynomial-family248-v17.json": {
+      "bytes": 481191,
+      "sha256": "09984364b3f97e2f5c89dfe83258eab039f160acc4653ba81989ec5c6699e368"
+    },
+    "family248_v17/quadratic-family248-v17.json": {
+      "bytes": 231645,
+      "sha256": "b1bf58c470365a7b330af4a33a17a1f7e9aa10c997853c9078a9b8593f43a7ff"
     }
   },
   "additionalBaselines": [

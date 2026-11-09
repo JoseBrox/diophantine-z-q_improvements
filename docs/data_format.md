@@ -2,21 +2,21 @@
 
 ## Quartic coefficient tables
 
-The leading tables are in `computation/quartic/family263`, `family322`, and the additional-abc `family_abc98`.
+The leading tables are in `computation/quartic/family248_v17`, `family322`, and the additional-abc `family_abc97_v17`.
 
 | Family | Total variables | Quadratic equations | Terms with parameter powers separate | Ordinary monomials |
 |:--|--:|--:|--:|--:|
-| 263 | 263 | 237 | 3313 | 3312 |
+| 248 | 248 | 222 | 3190 | 3189 |
 | 322 | 322 | 294 | 4993 | 4992 |
-| 98, **additional abc** | 98 | 86 | 885 | 882 |
+| 97, **additional abc** | 97 | 85 | 880 | 879 |
 
-Each family has exact degree four and integer content one. The support counts hold for every positive coefficient parameter. The inherited-premise families use integers $N\ge1$; the additional-abc family uses odd shifts $B\ge3$. The 322-variable member at $N=27464$ has a certified defining theorem under the stated arithmetic inputs. The 263-variable family requires a sufficiently large $N$ with ineffective threshold; its support and height computations do not certify a defining member.
+Each family has exact degree four and integer content one. The support counts hold for every positive coefficient parameter. The inherited-premise families use integers $N\ge1$; the additional-abc family uses odd shifts $B\ge3$. The 322-variable member at $N=27464$ has a certified defining theorem under the stated arithmetic inputs. The 248-variable family requires a sufficiently large $N$ with ineffective threshold; its support and height computations do not certify a defining member.
 
-For these two inherited-premise families the fixed coefficient is $A_N=80989^{2N+1}$. In each family,
+The fixed coefficient is $A_N=149^{2N+1}$ in the 248-variable family and $A_N=80989^{2N+1}$ in the 322-variable family. In each family,
 
 $$P_N=\sum_j Q_{N,j}^2,$$
 
-where the complete quadratic-system file lists all residuals $Q_{N,j}$. The parameter is not an extra variable. The 322-variable tables use `integer-quadratic-family-v6` and `integer-quartic-family-v6`; the 263-variable tables use the corresponding `v11` labels. They share these fields:
+where the complete quadratic-system file lists all residuals $Q_{N,j}$. The parameter is not an extra variable. The 322-variable tables use `integer-quadratic-family-v6` and `integer-quartic-family-v6`; the 248-variable tables use the corresponding `v13` labels. They share these fields:
 
 | Field | Meaning |
 |:--|:--|
@@ -36,13 +36,15 @@ Stable source identifiers refer to the pinned source circuit, not the consecutiv
 
 The independent checker expands each sum of squares separately, compares every coefficient, and verifies the affine change by reverse substitution. The coefficient of $r^2$ is $A_N^2+1$. Every other coefficient is constant or a pure multiple of $A_N$, which proves noncancellation for positive $A_N$. Exact comparisons with the largest constant and linear coefficients prove
 
-$$H(P_N)=80989^{4N+2}+1\qquad(N\ge23).$$
+$$H(P_N)=149^{4N+2}+1\qquad(N\ge53)$$
 
-At $N=27464$, this number has exactly 1,791,283 binary digits. The reports retain the coarser uniform bound $H(P_N)<2^{1520}A_N^2$ as well.
+for the 248-variable family, and $H(P_N)=80989^{4N+2}+1$ for $N\ge23$ in the 322-variable family.
+
+For the 322-variable family at $N=27464$, this number has exactly 1,791,283 binary digits. The reports retain the coarser uniform bound $H(P_N)<2^{1520}A_N^2$ as well.
 
 ## Exact source dependencies
 
-The even-valuation builder reads and hash-checks family342 to produce family322. The leading existence family follows the exact dependency chain family297 to family279 to family273 to family267 to family263. The checkers separately reconstruct the contact polynomial, the shared and separate degree-twenty evaluations, every changed quadratic row, all five local factors, and the full quartic. The producers and checkers share no polynomial arithmetic implementation. The source chain continues through the shared-weight and mixed-order families to the pinned baseline. Original large source tables are distributed as deterministic gzip archives; their uncompressed lengths and hashes are recorded in the compressed-source metadata. The restoration script rejects conflicting existing files.
+The even-valuation builder reads and hash-checks family342 to produce family322. The leading existence family follows the exact dependency chain family297 to family279 to family273 to family267 to family263 to family259_v17 to family249_v17 to family248_v17. The 259 checker independently reconstructs from family267; the 249 checker independently reconstructs the ten-contact polynomial and all subsequent changes from the pinned 259 source. The 248 checker also reconstructs independently from family259, including the shorter scalar chain and the forced prime149. The checkers separately reconstruct the contact polynomial, the degree-ten evaluation and its degree-twenty source dependencies, every changed quadratic row, all five local factors, and the full quartic. The producers and checkers share no polynomial arithmetic implementation. The source chain continues through the shared-weight and mixed-order families to the pinned baseline. Original large source tables are distributed as deterministic gzip archives; their uncompressed lengths and hashes are recorded in the compressed-source metadata. The restoration script rejects conflicting existing files.
 
 `PROVENANCE.json` in `computation/quartic` binds precise source commits, distributed computational files, and mathematical proofs. Every final quartic coefficient is stored; reconstruction requires no search or unpublished intermediate polynomial.
 
@@ -97,7 +99,7 @@ Exact coefficient data and passing checks establish the algebraic specifications
 
 The weak-abc 13-variable family is stored in `computation/few_variables/weak_abc13`. Three monic quartic point generators and two monic quadratic pole generators give a finite algebra of rank 256 over 12 retained coordinates. The point algebra has rank 64, so the final polynomial has 64 factors and one additional rational coordinate. Its degree is at most 12339485119488, less than $2^{44}$, uniformly in the fixed odd shift $B$. The supplied $B=3$ fixture has binary logarithmic coefficient-norm bound 29454018907833, less than $2^{45}$; it is not certified to exceed the ineffective defining threshold. All assumptions and guard conventions are recorded in the module's source specification.
 
-The 98-variable additional-abc quartic tables use a fixed odd input shift $B$ instead of $A_N$. Its 86 primitive quadratic rows give 885 parameter-separated terms and exactly 882 ordinary monomials. Its coefficient height for $B\ge3$ is $\max(11600064,2B^4+169997)$. The `parameterPower` field is a power of $B$ and still contributes zero to polynomial degree. Every quadratic row and every quartic coefficient is stored. The sufficient defining shift is ineffective; support and height formulas for numerical fixtures are algebraic assertions only.
+The 97-variable additional-abc quartic tables use a fixed odd input shift $B$ instead of $A_N$. Their 85 primitive quadratic rows give 880 parameter-separated terms and exactly 879 ordinary monomials. The coefficient height for $B\ge3$ is $\max(11600064,B^2+169997)$. The `parameterPower` field is a power of $B$ and contributes zero to polynomial degree. The affine input-coordinate change puts $B$ in only one quadratic row, while $\beta=L_0-I_0$ appears elsewhere. Every row and every quartic coefficient is stored. The sufficient defining shift is ineffective; support and height formulas for numerical fixtures are algebraic assertions only.
 
 ## Exact counts and support upper bounds
 

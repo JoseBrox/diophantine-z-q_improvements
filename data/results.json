@@ -87,70 +87,80 @@
       "monomial_bound_certificate": "computation/few_variables/monomial-bound-certificate.json"
     },
     {
-      "id": "quartic263_family",
+      "id": "quartic248_family",
       "construction_kind": "existence_in_computable_coefficient_family",
-      "total_variables": 263,
+      "total_variables": 248,
       "degree": 4,
       "degree_status": "exact for every member",
       "fixed_parameter": {
         "name": "N",
         "domain": "integers N>=1",
         "quantified": false,
-        "coefficient": "A_N=80989^(2*N+1)",
+        "coefficient": "A_N=149^(2*N+1)",
         "all_sufficiently_large_parameters_define_Z": true,
         "effective_sufficient_threshold_known": false,
         "certified_numerical_defining_parameter": null
       },
-      "quadratic_residuals": 237,
-      "ordinary_monomials": 3312,
+      "quadratic_residuals": 222,
+      "ordinary_monomials": 3189,
       "ordinary_monomial_count_condition": "Every positive coefficient parameter A; hence every N>=1. This is an algebraic support statement, not a sufficient defining threshold.",
-      "coefficient_parameter_terms": 3313,
+      "coefficient_parameter_terms": 3190,
       "integer_content": 1,
-      "coefficient_height_upper_bound": "2^1520*80989^(4*N+2)",
+      "coefficient_height_upper_bound": "2^1520*149^(4*N+2)",
       "coefficient_height_upper_bound_strict": true,
       "input_label": "51*X^2+2504",
       "scalar_correction": 9792,
-      "polynomial_sha256": "4ac70724c340aa26440c0cdee1cae1445455bdf5fe702efa623037ec1a252f20",
-      "residuals_sha256": "26876d3f9fa9a42478c4465edf36f9e8647df44ee2cc744df551300465fe58e3",
+      "polynomial_sha256": "09984364b3f97e2f5c89dfe83258eab039f160acc4653ba81989ec5c6699e368",
+      "residuals_sha256": "b1bf58c470365a7b330af4a33a17a1f7e9aa10c997853c9078a9b8593f43a7ff",
       "arithmetic_inputs": [
         "elliptic_group_and_index_height",
-        "contact_height",
+        "source_modular_realization",
         "pole_obstruction_and_realization",
         "simultaneous_prime_patterns",
         "weighted_prime_selection"
       ],
       "additional_proved_input": "aggregate_trace_height_von_buhren",
-      "proof": "papers/quartic_existence/quartic263_20261109_v16.tex",
-      "computation": "computation/quartic/family263",
-      "exact_height_data": "computation/quartic/family263/independent-verification263.json",
-      "local_test_proof": "papers/quartic_existence/quartic263_20261109_v16.tex",
+      "proof": "papers/quartic_existence/quartic248_20261109_v17.tex",
+      "computation": "computation/quartic/family248_v17",
+      "exact_height_data": "computation/quartic/family248_v17/independent-verification248-v17.json",
+      "local_test_proof": "papers/quartic_existence/quartic248_20261109_v17.tex",
       "role": "Leading quartic existence family; sufficient threshold ineffective",
-      "exact_coefficient_height": "80989^(4*N+2)+1",
-      "exact_coefficient_height_condition": "N>=23; this is an algebraic coefficient threshold, not a sufficient defining threshold.",
+      "exact_coefficient_height": "149^(4*N+2)+1",
+      "exact_coefficient_height_condition": "N>=53; this is an algebraic coefficient threshold, not a sufficient defining threshold.",
       "height_formula_every_positive_parameter": "max(C,A^2+1), with C specified in the independent certificate",
       "prime_selection_proof": "papers/prime_selection/prime_selection_20261109_v12.tex",
-      "local_reference_reciprocal_abscissa_order": 6,
+      "local_reference_reciprocal_abscissa_order": 2,
       "local_comparison_orders": [
-        3,
-        12
+        1,
+        4
       ],
       "local_factors_per_detector": 5,
-      "contact_blocks": 4,
-      "contact_points": 20,
-      "contact_height_exponent": "19/4",
+      "contact_blocks": 2,
+      "contact_points": 10,
+      "contact_height_exponent": "7/4",
       "additional_exceptional_primes": [
-        247957,
-        368323,
         2029147
       ],
-      "contact_height_proof": "papers/quartic_existence/quartic263_20261109_v16.tex",
+      "contact_height_proof": "papers/contact_heights/evaluation_of_differentials_20261109_v17.tex",
       "contact_evaluation_coordinates": {
-        "base_scale_joint_outputs": 5,
-        "other_scale_joint_outputs": 5
+        "base_scale_joint_outputs": 4,
+        "other_scale_joint_outputs": 4
       },
-      "detector_normalization": "F20(t)*q=r^4*r^5; inverseR=q*r^2; r=(t-1)^2",
+      "detector_normalization": "F10(t)*(1+q)=r^2*r^3; inverseR=1+q; r=(t-1)^2; (1+q)*b=(408/409)^2*tau^2",
       "scales": "1 and T, where T is one quarter of the trace of the sum of four root abscissas",
-      "contact_symmetry": "Theta, 2-Theta, Theta+5, -3-Theta; symmetric about one"
+      "contact_symmetry": "Theta and2-Theta, symmetric about one",
+      "local_input_extracted_order": 2,
+      "pole_preparation_square": "(408/409)^2",
+      "pole_preparation_limit": "41616/167281",
+      "exceptional_strata": "q=0 and t=1 have contact radical one; no reciprocal interpretation is used on them.",
+      "formal_approximation": "Plain parameter z=-x/y; relative error order4",
+      "scalar_normalization_power": 4,
+      "scalar_contact_index_order": 3,
+      "scalar_forced_index_depth": "floor(19*(2*N-1)/8)+1",
+      "forced_prime": 149,
+      "scalar_separate_divisibility": "149^L_N*M5(beta)^3 divides c=|a-1|",
+      "scalar_height_bound": "h(beta)<=2^330770*149^(-L_N)*c*(1+log(c)/3)",
+      "lucas_lower_bound": "log(B)>=(c-5)*log(c-2) for c>=8"
     },
     {
       "id": "few_variables29_nontorsion",
@@ -968,7 +978,7 @@
         ]
       ],
       "conditional_on_BSD": false,
-      "proof": "papers/pole_parameters/fixed_pole_parameters_20261109_v16.tex",
+      "proof": "papers/pole_parameters/fixed_pole_parameters_20261109_v17.tex",
       "verification": "computation/pole_parameters/fixed-e-obstruction-certificate.json",
       "additional_retained_chart_obstructions": {
         "tau=+/-1": "b=(204/61)^2",
@@ -976,9 +986,11 @@
       },
       "retained_chart_verifications": [
         "computation/pole_parameters/fixed-tau-one-obstruction.json",
-        "computation/pole_parameters/fixed-tau17-obstruction.json"
+        "computation/pole_parameters/fixed-tau17-obstruction.json",
+        "computation/pole_parameters/small-fixed-tau17-obstruction.json"
       ],
-      "scope_limit": "These counterexamples range over prepared inputs. They do not exclude a fixed retained parameter on a specially selected prime-pattern subfamily."
+      "scope_limit": "These counterexamples range over prepared inputs. They do not exclude a fixed retained parameter on a specially selected prime-pattern subfamily.",
+      "dense_prepared_counterexamples": "For tau=+/-17, counterexamples are dense in every real subinterval of (0,17), with valuations4,2,2 at2,3,17."
     },
     {
       "id": "combining_pole_certificates_obstructions",
@@ -986,6 +998,23 @@
       "proof": "papers/pole_parameters/combining_pole_certificates_20261109_v16.tex",
       "verification": "computation/pole_parameters/pole-merger-obstructions.json",
       "scope_limit": "Obstructions to specified simplifications, not general coordinate lower bounds."
+    },
+    {
+      "id": "restricted_abc_applicability_obstructions",
+      "statement": "The natural even-power Frey family has exponential growth of the reduced j denominator in logarithmic height. Infinitely many required integer witnesses fail the fixed asymmetric-size hypotheses.",
+      "frey_denominator_lower_bound": "max(|A|,|B|)^(4*d)/256 for coprime nonzero A,B and positive even d",
+      "frey_j_height_upper_bound": "6*d*log(max(|A|,|B|))+log(6912)",
+      "proof": "papers/restricted_abc/restricted_abc_inputs_20261109_v17.tex",
+      "verification": "computation/restricted_abc/frey-denominator-certificate.json",
+      "scope_limit": "Applicability obstruction for the specified families; neither disproves abc nor excludes other families."
+    },
+    {
+      "id": "jacobian_height_by_differential_evaluation",
+      "statement": "For a Belyi map of degree d from a curve of genus g, hF(J)<=logNormDisc(C)/(2[K:Q])+g*log(2/sqrt(pi)), where C is the split order at the fibre t=2.",
+      "finite_bad_prime_version": "hF(J)<=d/2*(log2+lograd(S)+omega(S)*logd)+g*log(2/sqrt(pi)) when the normalization is finite etale away from S and0,1,infinity.",
+      "modular_version": "For X_H=X1(N)/H with -1 inH, S is the set of primes dividing6N and d=N*[(Z/NZ)^*:H]*product(p|N)(1+1/p).",
+      "proof": "papers/contact_heights/evaluation_of_differentials_20261109_v17.tex",
+      "verification": "computation/contact_heights/evaluation-height-certificate.json"
     }
   ],
   "source_pins": {
@@ -993,7 +1022,7 @@
     "corrected_arithmetic_proof_v11": "650b298a2a18fa956f8859f3ca80e9d7c8cedd82",
     "quartic_source_v13": "5bbd74f6a479776a332cbe036809d5dddae63720"
   },
-  "release": "2026.11.09-v16",
+  "release": "2026.11.09-v17",
   "auxiliary_arithmetic_theorems": [
     {
       "id": "square_abscissa_subgroup_chart",
@@ -1041,6 +1070,27 @@
       "statement": "Ordinary Szpiro supplies the weak abc exponent used by the thirteen-coordinate construction. Truncated Vojta implies ordinary abc. Pell examples show why consecutive-integer prime assignments alone do not control the odd radical.",
       "proof": "papers/arithmetic_hypotheses/arithmetic_hypotheses_20261109_v16.tex",
       "other_conjectures": "No coordinate reduction is derived from RH, GRH, or Grimm alone. No formal nonimplication is claimed."
+    },
+    {
+      "id": "differential_evaluation_contact_height",
+      "premise": "The modular realization in the inherited arithmetic construction, stated completely in the paper.",
+      "additional_conjecture": null,
+      "statement": "h(a)<=C3*M5(a)^3*(1+log(M5(a)))<2^330789*M5(a)^(7/2).",
+      "constant": "C3=19*(4608*210^300)*B_*^3*log(B_*)<2^330770; B_*=product of primes<=76176",
+      "modular_degree_bound": "d_H<4608*210^300*(B_*M5(a))^3",
+      "amplified_height_exponent": "7/(2*r) for r disjoint contact blocks",
+      "proof": "papers/contact_heights/evaluation_of_differentials_20261109_v17.tex",
+      "verification": "computation/contact_heights/evaluation-height-certificate.json",
+      "torsion_different_bound": "The trace dual of the finite flat lci torsion order E[N] is N^(-1) times that order. Normalization and the tower formula give the modular vertical discriminant bound."
+    },
+    {
+      "id": "quartic_pole_equation_local_obstruction",
+      "additional_conjecture": null,
+      "statement": "The odd-valuation implication holds for y^2=T^2+kappa*R*(1+R*s^2)^2. For every m>=1, the prepared b_m=409*(204/1013^m)^2 gives no Q_1013-point on Y^2=1+b_m*(1+b_m*v^2)^2, including on its smooth projective model.",
+      "scope_limit": "This disproves completeness on all prepared inputs even for a finite disjunction of fixed nonzero kappa values; the restricted comparison-prime family remains unresolved. No variable-count improvement follows.",
+      "proof": "papers/pole_parameters/quartic_pole_obstruction_20261109_v17.tex",
+      "verification": "computation/pole_parameters/quartic-pole-obstruction.json",
+      "general_obstruction": "For every finite fixed set C of nonzero rational kappa, infinitely many prepared b tending to zero make all the corresponding smooth quartic curves locally insoluble at one prime."
     }
   ],
   "additional_hypothesis_constructions": [
@@ -1111,7 +1161,7 @@
       "monomial_bound_certificate": "computation/few_variables/monomial-bound-certificate.json"
     },
     {
-      "id": "quartic98_abc_family",
+      "id": "quartic97_abc_family",
       "construction_kind": "existence_in_computable_coefficient_family",
       "role": "Leading quartic with additional rational abc",
       "additional_conjecture": "ordinary rational abc",
@@ -1122,14 +1172,14 @@
       ],
       "proved_additional_input": "one-point aggregate trace-height theorem",
       "replaces_inherited_input": "Ordinary abc replaces the exponent-nineteen contact estimate and the scalar/Lucas growth mechanism.",
-      "total_variables": 98,
-      "quadratic_residuals": 86,
+      "total_variables": 97,
+      "quadratic_residuals": 85,
       "degree": 4,
       "degree_status": "exact",
       "integer_content": 1,
-      "ordinary_monomials": 882,
+      "ordinary_monomials": 879,
       "ordinary_monomial_count_condition": "Every positive integer B; defining members require a sufficiently large odd B.",
-      "coefficient_parameter_terms": 885,
+      "coefficient_parameter_terms": 880,
       "fixed_parameter": {
         "name": "B",
         "domain": "odd integers B>=3",
@@ -1139,22 +1189,24 @@
         "effective_sufficient_threshold_known": false,
         "certified_numerical_defining_parameter": null
       },
-      "exact_coefficient_height": "max(11600064,2*B^4+169997)",
+      "exact_coefficient_height": "max(11600064,B^2+169997)",
       "exact_coefficient_height_condition": "Every integer B>=3",
-      "eventual_coefficient_height": "2*B^4+169997",
-      "eventual_coefficient_height_condition": "Every odd B>=49; coefficient threshold only, not a defining threshold.",
-      "height_scales": "1,beta^6+(Tr x(A))^6",
+      "eventual_coefficient_height": "B^2+169997",
+      "eventual_coefficient_height_condition": "Every odd B>=3381; coefficient threshold only, not a defining threshold.",
+      "height_scales": "1,beta^4+(Tr x(A))^4",
       "contacts": [
+        -3,
         -2,
         -1,
         0,
         2,
         3,
-        4
+        4,
+        5
       ],
-      "contact_height_coefficient": "2/3",
-      "pair_height_coefficient": "2/5",
-      "key_height_coefficient": "8/15",
+      "contact_height_coefficient": "1/3",
+      "pair_height_coefficient": "4/3",
+      "key_height_coefficient": "8/9",
       "point_roles": 3,
       "pole_certificates": 2,
       "comparison_orders": [
@@ -1165,18 +1217,19 @@
         1,
         1
       ],
-      "proof": "papers/quartic_existence/quartic_abc98_20261109_v16.tex",
-      "computation": "computation/quartic/family_abc98",
-      "exact_height_data": "computation/quartic/family_abc98/independent-verification-abc98.json",
-      "polynomial_sha256": "8d4c69fef8b61961ab537b6071ee20ae600568cedfa204583797ff1e2e9c566b",
-      "residuals_sha256": "006eff7658ab3625c385d1ce684f4eca90c4bd46a1df5dfa34d990d08eeb7929",
+      "proof": "papers/quartic_existence/quartic_abc97_20261109_v17.tex",
+      "computation": "computation/quartic/family_abc97_v17",
+      "exact_height_data": "computation/quartic/family_abc97_v17/independent-verification-abc97-v17.json",
+      "polynomial_sha256": "289f29ac12392737a58b9297112e2bf605ddbc2afa9f7197ff4313abf285a60c",
+      "residuals_sha256": "e50b41cb15194418771262045afa97fc86ad5c47f376591b732106b690a5491b",
       "algebraic_reproduction_example": {
         "B": 3,
-        "ordinary_monomials": 882,
+        "ordinary_monomials": 879,
         "coefficient_height": 11600064,
         "certified_to_define_Z": false
       },
-      "scope_limit": "The additional abc hypothesis is essential to the stated proof; this is not an improvement under the inherited premises alone."
+      "scope_limit": "The additional abc hypothesis is essential to the stated proof; this is not an improvement under the inherited premises alone.",
+      "input_affine_change": "I0=L0-2*X^2-B, hence beta=L0-I0; B occurs only in the row I0-L0+2*X^2+B=0."
     }
   ]
 }

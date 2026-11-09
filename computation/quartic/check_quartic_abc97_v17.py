@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Independent reconstruction of the abc-conditional 98-variable quartic.
+"""Independent reconstruction of the abc-conditional 97-variable quartic.
 
 No producer is imported.  The checker reconstructs every changed equation,
 the eliminated fixed-subtraction formula, the complete sum of squares, its
@@ -27,12 +27,12 @@ def verify(source_root=HERE, output_root=HERE):
     old = json.loads(raw)
     old_ids = {c['id']: c['sourceId'] for c in old['coordinates']}
     old_rows = {r['sourceId']: r for r in old['residuals']}
-    folder = output_root/'family_abc98'
-    system_path = folder/'quadratic-family-abc98.json'
-    poly_path = folder/'polynomial-family-abc98.json'
+    folder = output_root/'family_abc97_v17'
+    system_path = folder/'quadratic-family-abc97-v17.json'
+    poly_path = folder/'polynomial-family-abc97-v17.json'
     system = json.loads(system_path.read_text())
     polynomial = json.loads(poly_path.read_text())
-    report = json.loads((folder/'construction-report-abc98.json').read_text())
+    report = json.loads((folder/'construction-report-abc97-v17.json').read_text())
     ids = {c['id']: c['sourceId'] for c in system['coordinates']}
     named = {c['name']: c['sourceId'] for c in system['coordinates']}
     actual = {r['name']: decode(r, ids) for r in system['residuals']}
@@ -43,7 +43,12 @@ def verify(source_root=HERE, output_root=HERE):
                 257, 258, 263, 264, 661, 662, 700, 701, 702, 703, 704, 705, 706, 707)
     for sid in retained:
         row = old_rows[sid]
-        expected[row['name']] = decode(row, old_ids)
+        if sid == 200:
+            expected['inputComparison.real.definition'] = normalize(linear(
+                (variable(248), 1), (variable(232), -1),
+                (product(variable(0), variable(0)), 2), (variable(-1), 1)))
+        else:
+            expected[row['name']] = decode(row, old_ids)
     assert system['source']['retainedSourceRows'] == list(retained)
 
     def V(name):
@@ -87,8 +92,13 @@ def verify(source_root=HERE, output_root=HERE):
     for j in range(2):
         record('alternateRatio.cleared.'+str(j), S((1, left[j]), (-1, right[j])))
 
-    beta = S((2, variable(248)), (1, variable(-1)))
-    input_difference = (S((1, variable(232)), (-1, beta)), variable(233))
+    beta = S((1, variable(232)), (-1, variable(248)))
+    input_difference = (variable(248), variable(233))
+    # The replaced coordinate is I0=L0-2X^2-B.  This affine change
+    # of the old square witness is invertible on the old input row.
+    assert S((1, beta), (-1, variable(232)), (1, variable(248))) == {}
+    assert system['coordinates'][next(i for i, c in enumerate(system['coordinates'])
+                                     if c['sourceId'] == 248)]['name'] == 'inputComparison.real'
     field_equality('inputComparison.square', field_product(input_difference, input_difference))
     C2 = variable(305), S((2, variable(306)))
     H2 = variable(311), S((2, variable(312)))
@@ -101,35 +111,45 @@ def verify(source_root=HERE, output_root=HERE):
     equality('height.sumSquares', S((1, product(beta, beta)), (1, product(trace, trace))))
     equality('height.pairProduct', product(beta, trace))
     ss, pp = V('height.sumSquares'), V('height.pairProduct')
-    equality('height.quarticFactor', S((1, product(ss, ss)), (-3, product(pp, pp))))
-    equality('height.comparisonScale', product(ss, V('height.quarticFactor')))
-    # Check the sixth-power identity independently in two symbolic inputs.
+    equality('height.comparisonScale', S((1, product(ss, ss)), (-2, product(pp, pp))))
+    # Check the fourth-power identity independently in two symbolic inputs.
     aa, bb = variable(-10), variable(-11)
     a2, b2 = product(aa, aa), product(bb, bb)
     ss0, pp0 = S((1, a2), (1, b2)), product(aa, bb)
-    factor0 = S((1, product(ss0, ss0)), (-3, product(pp0, pp0)))
-    assert product(ss0, factor0) == S((1, product(product(a2, a2), a2)),
-                                     (1, product(product(b2, b2), b2)))
+    assert S((1, product(ss0, ss0)), (-2, product(pp0, pp0))) == \
+           S((1, product(a2, a2)), (1, product(b2, b2)))
 
     contact_coefficients = [Q(1)]
-    for j in range(1, 4):
+    for j in range(1, 5):
         contact_coefficients = univariate_product(contact_coefficients, [-j*j, 1])
-    assert contact_coefficients == [-36, 49, -14, 1]
-    # Independently expand the six linear contacts in t and substitute
-    # r=(t-1)^2 into the cubic to certify the identity and all roots.
-    contacts = [-2, -1, 0, 2, 3, 4]
+    assert contact_coefficients == [576, -820, 273, -30, 1]
+    # Independently expand the eight linear contacts in t and substitute
+    # r=(t-1)^2 into the quartic to certify the identity and all roots.
+    contacts = [-3, -2, -1, 0, 2, 3, 4, 5]
     direct = [Q(1)]
     for theta in contacts:
         direct = univariate_product(direct, [-theta, 1])
     delta_squared = [Q(1), Q(-2), Q(1)]
     rpower = [Q(1)]
-    substituted = [Q(0)]*7
+    substituted = [Q(0)]*9
     for coefficient in contact_coefficients:
         for index, value in enumerate(rpower):
             substituted[index] += coefficient*value
         rpower = univariate_product(rpower, delta_squared)
     assert direct == substituted
-    assert sum(direct) == -36
+    assert sum(direct) == 576
+    # Verify the homogeneous normalization before dividing by q:
+    # with c=q*r and k=q*r^2, its left side is q^2*P4(r)-q*r^3.
+    rr, qq = variable(-20), variable(-21)
+    cc, kk = product(qq, rr), product(qq, product(rr, rr))
+    homogeneous = S((1, product(kk, kk)), (-30, product(kk, cc)),
+                    (273, product(cc, cc)), (-820, product(cc, qq)),
+                    (576, product(qq, qq)), (-1, product(kk, rr)))
+    rr2 = product(rr, rr)
+    p4 = S((1, product(rr2, rr2)), (-30, product(rr2, rr)),
+           (273, rr2), (-820, rr), (576, ONE))
+    assert homogeneous == S((1, product(product(qq, qq), p4)),
+                             (-1, product(qq, product(rr2, rr))))
     normalizations = []
     for d in range(2):
         prefix = 'detector'+str(d)
@@ -142,8 +162,9 @@ def verify(source_root=HERE, output_root=HERE):
         equality(prefix+'.deltaSquared', product(delta, delta))
         equality(prefix+'.firstContactProduct', product(q, r))
         equality(prefix+'.inverseContact', product(u, r))
-        record(prefix+'.weight.definition', S((1, product(k, r)), (-14, k),
-                                               (49, u), (-36, q), (-1, product(r, r))))
+        record(prefix+'.weight.definition', S((1, product(k, k)), (-30, product(k, u)),
+               (273, product(u, u)), (-820, product(u, q)), (576, product(q, q)),
+               (-1, product(k, r))))
         equality(prefix+'.weightSquared', product(q, q))
         q2 = V(prefix+'.weightSquared')
         equality(prefix+'.weightFourthPower', product(q2, q2))
@@ -168,15 +189,16 @@ def verify(source_root=HERE, output_root=HERE):
         equality(prefix+'.pole.qSquared', product(w, w))
         record(prefix+'.pole.secondConic', S((1, product(u, u)), (34, product(u, v0)),
                (-17, product(b, V(prefix+'.pole.qSquared'))), (-867, product(v0, v0))))
-        normalizations.append({'detector': d, 'derivedQ': '(t-1)^4/F6(t)',
-                               'derivedInverseR': '(t-1)^8/F6(t)',
-                               'contactNonzero': 'F6=0 would force t=1, but F6(1)=-36',
-                               'deltaNonzero': 't=1 forces q=0,W=1,tau=1/2,k=0, contradicting k*b=tau^2'})
+        normalizations.append({'detector': d, 'derivedQ': '(t-1)^6/F8(t)',
+                               'derivedInverseR': '(t-1)^10/F8(t)',
+                               'qNonzero': 'q=0 forces c=k=0,W=1,tau=1/2, contradicting k*b=tau^2',
+                               'contactNonzero': 'After q is excluded, F8=0 forces t=1, but F8(1)=576',
+                               'deltaNonzero': 't=1 forces 576*q^2=0, contradicting q nonzero'})
 
     assert expected == actual
-    assert len(actual) == 86 and len(ids) == 98
-    assert system['variables'] == polynomial['variables'] == 98
-    assert sorted(ids) == list(range(1, 99)) and ids[1] == 0
+    assert len(actual) == 85 and len(ids) == 97
+    assert system['variables'] == polynomial['variables'] == 97
+    assert sorted(ids) == list(range(1, 98)) and ids[1] == 0
     assert system['coordinates'] == polynomial['coordinates']
     assert {i for p in actual.values() for m in p for i in m if i != -1} == set(ids.values())
     expanded = defaultdict(int)
@@ -190,50 +212,51 @@ def verify(source_root=HERE, output_root=HERE):
     ordinary = defaultdict(dict)
     for m, c in expanded.items():
         ordinary[tuple(i for i in m if i != -1)][m.count(-1)] = c
-    assert len(expanded) == 885 and len(ordinary) == 882
-    assert ordinary[(0, 0, 0, 0)] == {0: 1}
-    assert ordinary[()] == {0: 169997, 4: 2}
-    assert ordinary[(82, 82)] == {0: -19, 2: 12}
-    assert ordinary[(248, 248)] == {0: 1, 2: 48}
-    assert all(len(p) == 1 for m, p in ordinary.items()
-               if m not in ((), (82, 82), (248, 248)))
-    # The only mixed-sign coefficient is 12*B^2-19.  It cannot vanish
-    # at an integer B since its reduction modulo 3 is nonzero.
-    assert 19 % 3 != 0
+    assert len(expanded) == 880 and len(ordinary) == 879
+    assert ordinary[(0, 0, 0, 0)] == {0: 4}
+    assert ordinary[(1, 1, 1, 1)] == {0: 1}
+    assert ordinary[()] == {0: 169997, 2: 1}
+    assert ordinary[(0, 0)] == {1: 4}
+    assert ordinary[(232,)] == {1: -2}
+    assert ordinary[(248,)] == {1: 2}
+    assert all(set(p) == {0} for m, p in ordinary.items()
+               if m not in ((), (0, 0), (232,), (248,)))
     coefficient_maximum = max(abs(p[0]) for p in ordinary.values() if set(p) == {0})
     assert coefficient_maximum == 11600064
-    parameter_maxima = {a: max(abs(p.get(a, 0)) for p in ordinary.values()) for a in (1, 2, 3)}
-    assert parameter_maxima == {1: 64, 2: 48, 3: 16}
-    # For B>=8 the leading term 2B^4 dominates these three profiles;
-    # the remaining finite interval is checked exactly.
-    for B in range(3, 9):
-        assert 2*B**4+169997 >= max(64*B, 48*B*B+1, 16*B**3, abs(12*B*B-19))
-    assert 2*47**4+169997 < coefficient_maximum < 2*49**4+169997
+    # Since 4B<=B^2+4, the constant profile dominates every linear
+    # profile for B>=1. The displayed fourth-power coefficient gives
+    # content one after every integral specialization of B.
+    assert 169997 > 4
+    assert 3379**2+169997 < coefficient_maximum < 3381**2+169997
     assert all(sum(c*3**a for a, c in p.items()) != 0 for p in ordinary.values())
+    single_power_maxima = {1: 4}
     assert gcd(*expanded.values()) == 1
 
-    result = {'status': 'PASS', 'variables': 98, 'quadraticResiduals': 86, 'degree': 4,
+    result = {'status': 'PASS', 'variables': 97, 'quadraticResiduals': 85, 'degree': 4,
               'contentForEveryIntegerShift': 1,
-              'ordinaryMonomialsForEveryPositiveShift': 882, 'symbolicTerms': 885,
+              'ordinaryMonomialsForEveryPositiveShift': 879, 'symbolicTerms': 880,
               'allRowsIndependentlyReconstructed': True,
               'completeUnorderedPairExpansion': True, 'allCoordinatesUsed': True,
               'sourceQuadraticTableSha256': PIN,
               'fixedSubtractionReconstruction': 'Plain z(H-P) recovered from pinned rows140,141, then both numerator and denominator multiplied by the unit3+2sqrt(2).',
               'normalizationRowsIndependentlyChecked': normalizations,
-              'sixthPowerScaleIndependentlyExpanded': True,
-              'sixContactProductIndependentlyExpanded': True,
+              'fourthPowerScaleIndependentlyExpanded': True,
+              'eightContactProductIndependentlyExpanded': True,
+              'homogeneousNormalizationIndependentlyExpanded': True,
               'contactPolynomialInR': [int(c) for c in contact_coefficients],
               'contacts': contacts,
-              'coefficientHeightForEveryIntegerBAtLeast3': 'max(11600064,2*B^4+169997)',
-              'coefficientHeightForEveryOddBAtLeast49': '2*B^4+169997',
+              'coefficientHeightForEveryIntegerBAtLeast3': 'max(11600064,B^2+169997)',
+              'coefficientHeightForEveryOddBAtLeast3381': 'B^2+169997',
+              'inputAffineCoordinateChangeIndependentlyReconstructed': True,
+              'singlePowerCoefficientMaxima': single_power_maxima,
               'noSupportCancellationForPositiveShift': True,
               'quadraticTableSha256': sha256(system_path.read_bytes()).hexdigest(),
               'polynomialTableSha256': sha256(poly_path.read_bytes()).hexdigest(),
               'arithmeticScope': 'Finite algebra only; the integer projection additionally assumes rational abc and the specified elliptic-group, pole and simultaneous prime-pattern inputs. The sufficient odd shift is ineffective.'}
-    assert report['variables'] == 98 and report['quadraticResiduals'] == 86
-    assert report['symbolicTerms'] == 885 and report['ordinaryMonomialPositions'] == 882
-    assert report['combinedNumeratorCoefficient'] == '8/15'
-    (folder/'independent-verification-abc98.json').write_text(json.dumps(result, indent=2)+'\n')
+    assert report['variables'] == 97 and report['quadraticResiduals'] == 85
+    assert report['symbolicTerms'] == 880 and report['ordinaryMonomialPositions'] == 879
+    assert report['combinedNumeratorCoefficient'] == '8/9'
+    (folder/'independent-verification-abc97-v17.json').write_text(json.dumps(result, indent=2)+'\n')
     print(json.dumps({k: result[k] for k in ('status', 'variables', 'quadraticResiduals',
                 'ordinaryMonomialsForEveryPositiveShift', 'quadraticTableSha256', 'polynomialTableSha256')}))
 

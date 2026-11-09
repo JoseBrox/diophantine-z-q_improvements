@@ -30,6 +30,8 @@ fail at the prepared input $b=(204/61)^2$, as certified
 by a third exact rank-zero calculation. The values $\tau=\pm17$,
 which cancel one factor of the second twist, fail at
 $b=(204/101)^2$ by an exact rank-one and squareclass calculation.
+A rational conic through this input supplies prepared counterexamples
+dense in the real interval $(0,17)$ for $\tau=\pm17$.
 These results concern
 completeness on all prepared inputs; they do not exclude special
 families selected together with the comparison primes.
@@ -383,7 +385,7 @@ The elliptic parameter governing the second equation is
 Thus its squareclass no longer contains the factor $17-b$.
 This simplification does not ensure completeness.
 
-\begin{proposition}
+\begin{proposition}\label{prop:tau17}
 For $b=(204/101)^2$, neither choice $\tau=17,-17$ admits a
 rational solution of the second pole equation. The input is prepared.
 \end{proposition}
@@ -423,6 +425,77 @@ The required class $17$ is absent. Finally $s=0$ would again
 give $Bq^2=-3M^2<0$. This proves the assertion.
 \end{proof}
 
+\subsection{Prepared counterexamples in every real interval}
+
+\begin{theorem}\label{thm:small-tau17}
+The prepared rational numbers for which neither choice
+$\tau=17,-17$ admits a rational solution of the second pole equation
+are dense in the real interval $(0,17)$. In particular, for every
+$\epsilon>0$ there are infinitely many such numbers in $(0,\epsilon)$.
+They can all be chosen to be rational squares with valuations
+$v_2(b)=4$, $v_3(b)=2$, and $v_{17}(b)=2$.
+\end{theorem}
+\begin{proof}
+Consider the nonsingular rational conic
+\begin{equation}\label{eq:small-conic}
+                 17+3u^2=2465v^2.
+\end{equation}
+It contains the point
+\[
+                    (u_0,v_0)=(204/101,11/101).
+\]
+For a rational solution with $0<u^2<17$, put $b=u^2$ and
+$e=(17-b)/(17+3b)$. The parameter of the second elliptic curve is
+\[
+ N=B^2e(B-b^2)
+   =\frac{289u^6(17-u^2)^2}{2465v^2}
+   =2465\left(\frac{17u^3(17-u^2)}{2465v}\right)^2.
+\]
+Here $u,v,17-u^2$ are nonzero. The rational map used in
+Proposition~\ref{prop:tau17} would therefore send a pole solution
+with $s\ne0$ to a point of $E_{2465}(\Q)$ with nonzero abscissa
+in squareclass $B=17u^2$, namely class $17$. The exhaustive
+squareclass calculation in that proposition excludes this class.
+The case $s=0$ gives $Bq^2=-3M^2<0$, as before. Thus every such
+point on the conic supplies an obstruction.
+
+It remains to impose preparation and an arbitrary open real interval
+simultaneously. A parametrization obtained by drawing the line of
+slope $t$ through $(u_0,v_0)$ is
+\begin{equation}\label{eq:small-param}
+ \begin{split}
+ u(t)&=\frac{-u_0(3+2465t^2)+4930v_0t}{3-2465t^2},\\
+ v(t)&=\frac{v_0(3+2465t^2)-6u_0t}{3-2465t^2}.
+ \end{split}
+\end{equation}
+At the rational tangent parameter
+$t_0=3u_0/(2465v_0)$ it gives $(u_0,v_0)$; its denominator
+is nonzero there. Consequently, for each of $p=2,3,17$, there
+is an open $p$-adic neighborhood of $t_0$ on which
+\[
+                v_2(u)=2,\qquad v_3(u)=1,\qquad v_{17}(u)=1
+\]
+holds at the respective place.
+
+Fix any nonempty open interval $I\subset(0,17)$ and a point $b_*\in I$.
+The conic contains the real point
+$(\sqrt{b_*},\sqrt{(17+3b_*)/2465})$.
+It is a finite point of the parametrization: the vertical line through
+$(u_0,v_0)$ meets the positive branch only at the base point, which
+is represented by $t_0$. Choose a sufficiently small open real
+interval in parameter space on which $u(t)^2\in I$ and all
+denominators are nonzero. Weak approximation for $\Q$ gives infinitely many rational
+parameters in this interval and in the three prescribed $p$-adic
+neighborhoods. The nonconstant rational function $u(t)^2$ has finite
+fibers, so their values $b=u(t)^2$ form an infinite set.
+
+Each $b$ is a nonzero rational square, hence has square reduced
+denominator and is a square in all three local fields. Its
+valuations are exactly $4,2,2$, and its real value belongs to
+the interval $I\subset(0,17)$. It is therefore prepared. The obstruction
+proved in the first paragraph applies to every one of these inputs.
+\end{proof}
+
 These propositions concern all prepared inputs. They do not decide
 whether a fixed conic parameter can be made complete on a more
 restricted family chosen simultaneously with the comparison primes.
@@ -458,6 +531,17 @@ cancellation, the rational scaling, the explicit nontorsion point,
 and all eight squareclasses. Their exhaustive nature follows from
 the proved rank bound, not from assuming that the displayed point
 generates the free part.
+
+The command
+\begin{center}\small
+\nolinkurl{check_small_fixed_tau17_obstruction.py}
+\end{center}
+reproduces \nolinkurl{small-fixed-tau17-obstruction.json}.
+It verifies the conic
+parametrization and twist identity, the same exact rank and squareclass
+obstruction, and an explicit prepared rational square $0<b<10^{-80}$.
+The infinitely many counterexamples in
+Theorem~\ref{thm:small-tau17} follow from its weak-approximation proof.
 
 \begin{thebibliography}{9}\small
 \bibitem{Dependencies}

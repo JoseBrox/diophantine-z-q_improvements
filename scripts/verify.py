@@ -138,16 +138,23 @@ def main():
                 quartic/f'check_quartic{count}.py'))
             for name,raw in fixed_new.items():
                 assert (folder/name).read_bytes()==raw,name
-        abc98=quartic/'family_abc98'
-        abc98_originals={name:(abc98/name).read_bytes() for name in (
-            'quadratic-family-abc98.json','polynomial-family-abc98.json',
-            'construction-report-abc98.json','independent-verification-abc98.json')}
-        stages.append(run('Additional-abc 98-variable quadratic construction',
-            quartic/'build_quartic_abc98.py'))
-        stages.append(run('Independent 98-variable rows, full coefficients, and height',
-            quartic/'check_quartic_abc98.py'))
-        for name,raw in abc98_originals.items():
-            assert (abc98/name).read_bytes()==raw,name
+        for count,folder_name,suffix,script_suffix in (
+                (259,'family259_v17','259-v17','259_v17'),
+                (249,'family249_v17','249-v17','249_v17'),
+                (248,'family248_v17','248-v17','248_v17'),
+                (97,'family_abc97_v17','-abc97-v17','_abc97_v17')):
+            folder=quartic/folder_name
+            fixed_current={name:(folder/name).read_bytes() for name in (
+                f'quadratic-family{suffix}.json',f'polynomial-family{suffix}.json',
+                f'construction-report{suffix}.json',f'independent-verification{suffix}.json')}
+            label='Inherited-premise' if count!=97 else 'Additional-abc'
+            stages.append(run(f'{label} {count}-variable exact quadratic construction',
+                quartic/f'build_quartic{script_suffix}.py'))
+            stages.append(run(f'Independent {count}-variable rows, full coefficients, and local orders',
+                quartic/f'check_quartic{script_suffix}.py'))
+            for name,raw in fixed_current.items():
+                assert (folder/name).read_bytes()==raw,name
+        abc97=quartic/'family_abc97_v17'
         coordinate_budget=(quartic/'coordinate-budget279.json').read_bytes()
         stages.append(run('Disjoint coordinate accounting for the279-variable family',quartic/'check_coordinate_budget.py'))
         assert (quartic/'coordinate-budget279.json').read_bytes()==coordinate_budget
@@ -296,6 +303,10 @@ def main():
         stages.append(run('Disjoint contact sets, exceptional primes, and exact exponent inequalities',
             contacts/'check_contact_height_amplification.py','--output',contacts/'contact-height-certificate.json'))
         assert (contacts/'contact-height-certificate.json').read_bytes()==contact_certificate
+        evaluation_height=(contacts/'evaluation-height-certificate.json').read_bytes()
+        stages.append(run('Differential-evaluation height: exact modular identity and explicit constants',
+            contacts/'check_evaluation_height.py'))
+        assert (contacts/'evaluation-height-certificate.json').read_bytes()==evaluation_height
         scalar=work/'computation/scalar_normalization'
         scalar_certificate=(scalar/'uniform-scalar-normalization-certificate.json').read_bytes()
         stages.append(run('Uniform scalar normalization, two exact resultants, and exhaustive local residues',
@@ -315,6 +326,19 @@ def main():
         stages.append(run('Exact common-parameter and product-contact obstructions',
             poles/'check_pole_merger_obstructions.py','--output',poles/'pole-merger-obstructions.json'))
         assert (poles/'pole-merger-obstructions.json').read_bytes()==merger
+        small_tau=(poles/'small-fixed-tau17-obstruction.json').read_bytes()
+        stages.append(run('Dense prepared fixed-tau17 obstruction: exact small witness',
+            poles/'check_small_fixed_tau17_obstruction.py'))
+        assert (poles/'small-fixed-tau17-obstruction.json').read_bytes()==small_tau
+        quartic_pole=(poles/'quartic-pole-obstruction.json').read_bytes()
+        stages.append(run('Quartic pole equation: prepared locally insoluble family and exact residue certificate',
+            poles/'check_quartic_pole_obstruction.py'))
+        assert (poles/'quartic-pole-obstruction.json').read_bytes()==quartic_pole
+        restricted=work/'computation/restricted_abc'
+        frey=(restricted/'frey-denominator-certificate.json').read_bytes()
+        stages.append(run('Frey j denominator: exact cancellation and height inequalities',
+            restricted/'check_frey_denominator.py'))
+        assert (restricted/'frey-denominator-certificate.json').read_bytes()==frey
         if args.with_pari:
             original=json.loads((number_fields/'elliptic-ratio-certificate.json').read_text())
             stages.append(run('Unconditional elliptic ranks, exact quadratic-field stability, and local-global obstruction',
@@ -354,10 +378,10 @@ def main():
                 for key in original:
                     if key not in ('pari_version','ellrank'):
                         assert original[key]==recomputed[key],(report_name,key)
-            original=json.loads((abc98/'z-difference-identity.json').read_text())
+            original=json.loads((abc97/'z-difference-identity.json').read_text())
             stages.append(run('Compressed elliptic subtraction: nine exact function-field identities',
                 quartic/'check_z_difference_identity.py'))
-            recomputed=json.loads((abc98/'z-difference-identity.json').read_text())
+            recomputed=json.loads((abc97/'z-difference-identity.json').read_text())
             # The script checks every identity equals zero before writing a report.
             # Textual residue-class formatting is not part of the mathematical data.
             for key in original:

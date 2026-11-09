@@ -10,19 +10,19 @@
 \DeclareMathOperator{\Tr}{Tr}\DeclareMathOperator{\Nm}{N}
 \DeclareMathOperator{\rad}{rad}
 \setlength{\emergencystretch}{2em}
-\title{A Quartic in Ninety-Eight Variables under the Rational $abc$ Conjecture}
+\title{A Quartic in Ninety-Seven Variables under the Rational $abc$ Conjecture}
 \author{}\date{9 November 2026}
 \begin{document}\maketitle
 \begin{abstract}
 Assuming the rational $abc$ conjecture and the specified elliptic-group,
 pole-realization and simultaneous prime-pattern inputs, we construct a
-family of integer quartics in ninety-eight total variables. Every
+family of integer quartics in ninety-seven total variables. Every
 sufficiently large fixed odd input shift gives rational input projection
-exactly $\Z$. The quartic is a sum of eighty-six primitive quadratic
-squares and has exactly $882$ monomials. Its coefficient height, for a
-shift $B\ge3$, is $\max(11600064,2B^4+169997)$. Six rational contacts
+exactly $\Z$. The quartic is a sum of eighty-five primitive quadratic
+squares and has exactly $879$ monomials. Its coefficient height, for a
+shift $B\ge3$, is $\max(11600064,B^2+169997)$. Eight rational contacts
 symmetric about one permit a short quadratic evaluation and normalization.
-A height estimate for a sum of sixth powers bounds the input together
+A height estimate for a sum of fourth powers bounds the input together
 with one elliptic index. All six local tests have order one; only plain
 elliptic formal parameters are used. The sufficient shift is ineffective.
 \end{abstract}
@@ -38,17 +38,17 @@ All variable counts include the distinguished input.
 \begin{theorem}\label{thm:main}
 Under the assumptions below, there is a computable family
 \[
- P_B\in\Z[X,Y_1,\ldots,Y_{97}],\qquad B\ge3\text{ odd},
+ P_B\in\Z[X,Y_1,\ldots,Y_{96}],\qquad B\ge3\text{ odd},
 \]
 such that every member has degree exactly four, content one, exactly
-$882$ monomials, and coefficient height
+$879$ monomials, and coefficient height
 \[
- H(P_B)=\max(11600064,2B^4+169997).
+ H(P_B)=\max(11600064,B^2+169997).
 \]
 There is a constant $B_*$ such that, for every odd $B\ge B_*$,
 \[
  x\in\Z\quad\Longleftrightarrow\quad
- \exists\boldsymbol y\in\Q^{97},\quad P_B(x,\boldsymbol y)=0.
+ \exists\boldsymbol y\in\Q^{96},\quad P_B(x,\boldsymbol y)=0.
 \]
 The integer $B$ is a fixed coefficient parameter. No numerical sufficient
 value of $B_*$ is determined. In particular, the coefficient fixture
@@ -117,38 +117,38 @@ at both real embeddings and exceeds $d$ there, so $T(n)>6$.
 
 Set
 \[
- \Theta_6=\{1\pm1,1\pm2,1\pm3\}
-          =\{-2,-1,0,2,3,4\}.
+ \Theta_8=\{1\pm1,1\pm2,1\pm3,1\pm4\}
+          =\{-3,-2,-1,0,2,3,4,5\}.
 \]
-For $t\notin\Theta_6$, let $M(t)$ be the product of primes $p>76176$
-for which $v_p(t-\theta)>0$ is odd for some $\theta\in\Theta_6$.
+For $t\notin\Theta_8$, let $M(t)$ be the product of primes $p>76176$
+for which $v_p(t-\theta)>0$ is odd for some $\theta\in\Theta_8$.
 
 \begin{lemma}\label{lem:contact}
 Assume rational $abc$. There is a fixed $C_0\ge0$ such that
 \[
-                         h(t)\le\frac23\log M(t)+C_0.
+                         h(t)\le\frac13\log M(t)+C_0.
 \]
 \end{lemma}
 \begin{proof}
 For a primitive pair $(u,v)$, $v>0$, use the squarefree binary form
-$G(u,v)=\prod_{\theta\in\Theta_6}(u-\theta v)$ of degree six.
+$G(u,v)=\prod_{\theta\in\Theta_8}(u-\theta v)$ of degree eight.
 Granville's consequence of $abc$~\cite[Proposition~1]{Granville},
-with $\epsilon=1/4$, gives
+with $\epsilon=1/2$, gives
 \[
- \log\rad(G(u,v))\ge\frac{15}{4}\log\max(|u|,v)-C.
+ \log\rad(G(u,v))\ge\frac{11}{2}\log\max(|u|,v)-C.
 \]
 For a nonzero integer $m$, let $\operatorname{sf}(m)$ be the product
 of primes having odd valuation in $m$. Prime by prime,
 $\rad(m)^2\le |m|\operatorname{sf}(m)$.
-Also $|G(u,v)|\le C'\max(|u|,v)^6$.
+Also $|G(u,v)|\le C'\max(|u|,v)^8$.
 Outside the fixed cutoff, no prime divides two distinct factors of
 $G$, and a prime dividing $v$ divides none of them. Its squarefree
 part outside the cutoff is therefore precisely $M(u/v)$.
 The omitted squarefree factors are bounded by a fixed product of primes.
 Consequently
 \[
- \log M(u/v)\ge\left(2\cdot\frac{15}{4}-6\right)h(u/v)-C''
-                 =\frac32h(u/v)-C'',
+ \log M(u/v)\ge\left(2\cdot\frac{11}{2}-8\right)h(u/v)-C''
+                 =3h(u/v)-C'',
 \]
 as required.
 \end{proof}
@@ -156,37 +156,37 @@ as required.
 \begin{lemma}\label{lem:pair}
 Assume rational $abc$. There is a fixed $C_1\ge0$ such that
 \[
-                    h(1:u:v)\le\frac25h(u^6+v^6)+C_1
+                    h(1:u:v)\le\frac43h(u^4+v^4)+C_1
                     \qquad(u,v\in\Q).
 \]
-One may take $C_1=\frac7{30}\log2+\frac{11}{30}\log K_{1/11}$.
+One may take $C_1=\frac7{12}\log2+\frac54\log K_{1/15}$.
 \end{lemma}
 \begin{proof}
-The zero-coordinate cases follow from $h(w^6)=6h(w)$.
+The zero-coordinate cases follow from $h(w^4)=4h(w)$.
 Otherwise write $u=gA/D_0$, $v=gB/D_0$, where
 $\gcd(A,B)=\gcd(g,D_0)=1$, $g,D_0>0$. Put
-$H=\max(|A|,|B|)$ and $N=A^6+B^6$, so $H^6\le N\le2H^6$.
-Let $k=\gcd(N,D_0^6)$, $m_0=N/k$, $n_0=D_0^6/k$.
-Then $u^6+v^6=g^6m_0/n_0$ is reduced. Write
-$M=\max(g^6m_0,n_0)$.
+$H=\max(|A|,|B|)$ and $N=A^4+B^4$, so $H^4\le N\le2H^4$.
+Let $k=\gcd(N,D_0^4)$, $m_0=N/k$, $n_0=D_0^4/k$.
+Then $u^4+v^4=g^4m_0/n_0$ is reduced. Write
+$M=\max(g^4m_0,n_0)$.
 
 Every prime dividing $N$ either divides $D_0$ or survives in $m_0$,
-so $\rad(N)\le D_0m_0$. Apply $abc$ with $\epsilon=1/11$ to
-$A^6+B^6=N$. The three positive terms are pairwise coprime, and
+so $\rad(N)\le D_0m_0$. Apply $abc$ with $\epsilon=1/15$ to
+$A^4+B^4=N$. The three positive terms are pairwise coprime, and
 \[
- H^{7/2}\le K_{1/11}^{11/12}D_0m_0.
+ H^{7/4}\le K_{1/15}^{15/16}D_0m_0.
 \]
-Using $D_0^6=n_0N/m_0\le2n_0H^6/m_0$ gives
+Using $D_0^4=n_0N/m_0\le2n_0H^4/m_0$ gives
 \[
- H^{5/2}\le2^{1/6}K_{1/11}^{11/12}m_0^{5/6}n_0^{1/6}.
+ H^{3/4}\le2^{1/4}K_{1/15}^{15/16}m_0^{3/4}n_0^{1/4}.
 \]
-Moreover $\max(gH,D_0)\le2^{1/6}H(M/m_0)^{1/6}$.
+Moreover $\max(gH,D_0)\le2^{1/4}H(M/m_0)^{1/4}$.
 Taking logarithms and combining yields
 \[
  \begin{split}
  h(1:u:v)&=\log\max(gH,D_0)\\
- &\le C_1+\frac16\log m_0+\frac1{15}\log n_0+\frac16\log M
- \le C_1+\frac25\log M.
+ &\le C_1+\frac34\log m_0+\frac13\log n_0+\frac14\log M
+ \le C_1+\frac43\log M.
  \end{split}
 \]
 This includes common numerator factors and all denominator cancellation.
@@ -329,32 +329,46 @@ these identities is included with the coefficient certificate.
 Set
 \[
  C=L-L',\qquad I=L-\beta,\qquad T=\Tr a,
- \qquad a_0=1,\quad a_1=\beta^6+T^6.
+ \qquad a_0=1,\quad a_1=\beta^4+T^4.
 \]
 The six field tests are $C,I,f(H),f(U),\sigma f(H-P),\sigma f(V_1)$.
+Write $L=L_0^{\mathrm{prim}}+\rho L_1^{\mathrm{prim}}$, with rational components.
+In the quadratic source retain the rational component $I_0$ of $I$, with
+\[
+                  I_0-L_0^{\mathrm{prim}}+2X^2+B=0.
+\]
+Thus $\beta=L_0^{\mathrm{prim}}-I_0$ is affine in the retained
+coordinates, and $I=I_0+\rho L_1^{\mathrm{prim}}$.
+The fixed shift $B$ occurs only in this one equation.
 Retain the four reciprocal squares, $C^2,I^2$, and the fourth powers
 $f(U)^4,\sigma f(V_1)^4$ as quadratic outputs. The two fields in
 \eqref{eq:recipsquares} supply two reciprocal squares directly.
-Four scalar outputs compute the comparison scale without taking any
+Three scalar outputs compute the comparison scale without taking any
 root or making any division:
 \[
  s_h=\beta^2+T^2,\quad p_h=\beta T,\quad
- v_h=s_h^2-3p_h^2,\quad a_1=s_hv_h=\beta^6+T^6.
+ a_1=s_h^2-2p_h^2=\beta^4+T^4.
 \]
 
 Retain a rational $\lambda$. For $a\in\{a_0,a_1\}$ put $t=a\lambda$,
 $\delta=t-1$, and use scalar coordinates $r,q,c,k$ satisfying
 \begin{equation}\label{eq:contactcircuit}
- r=\delta^2,\qquad c=qr,\qquad k=cr,\qquad
- kr-14k+49c-36q=r^2.
+ \begin{gathered}
+ r=\delta^2,\qquad c=qr,\qquad k=cr,\\
+ k^2-30kc+273c^2-820cq+576q^2=kr.
+ \end{gathered}
 \end{equation}
 Define, without storing another coordinate,
 \[
- F=(r-1)(r-4)(r-9)=r^3-14r^2+49r-36
-   =\prod_{\theta\in\Theta_6}(t-\theta).
+ \begin{split}
+ F&=(r-1)(r-4)(r-9)(r-16)\\
+  &=r^4-30r^3+273r^2-820r+576
+    =\prod_{\theta\in\Theta_8}(t-\theta).
+ \end{split}
 \]
-The displayed quadratic equations imply exactly $Fq=r^2$ and $k=qr^2$.
-They compute the needed normalization without a coordinate for $F$.
+The displayed equations imply $q^2F=qr^3$ and $k=qr^2$.
+The trace and pole equations will exclude $q=0$, so this clearing
+recovers $qF=r^3$ without a coordinate for $F$.
 Store $q^2,q^4$ and the two field factors
 \begin{equation}\label{eq:packed}
  \begin{split}
@@ -390,18 +404,20 @@ This explains both the pole obstruction and its use in completeness.
 Every rational solution of the quadratic source has $\delta Fqk\ne0$
 in both detectors. Consequently
 \[
- q=\frac{\delta^4}{F},\qquad
- k=\frac{\delta^8}F=\frac1R,
- \qquad R=\frac F{\delta^8}.
+ q=\frac{\delta^6}{F},\qquad
+ k=\frac{\delta^{10}}F=\frac1R,
+ \qquad R=\frac F{\delta^{10}}.
 \]
 \end{lemma}
 \begin{proof}
-If $F=0$, then $r^2=\delta^4=0$, whereas at $t=1$ the contact
-product equals $-36\ne0$.
-If $\delta=0$, the equations give $q=0$, $T_1=T_2=W=1$,
-$\tau=1/2$, and $k=0$, contradicting $kb=\tau^2$.
-The remaining assertions follow directly. In particular $\lambda\ne0$
-because zero is a contact.
+If $q=0$, then $c=k=0$, both factors in~\eqref{eq:packed} equal one,
+and $W=1$. Equation~\eqref{eq:trace} then gives $\tau=1/2$,
+contradicting $kb=\tau^2$. Hence $q\ne0$ and the multiplied contact
+equation gives $qF=r^3$.
+If $r=0$, then $F=576\ne0$ and the latter identity gives $q=0$,
+again impossible. Thus $r=\delta^2\ne0$. Finally $F=0$ would imply
+$r=0$. The asserted formulas and the nonvanishing of $k=qr^2$ follow.
+In particular $\lambda\ne0$ because zero is a contact.
 \end{proof}
 
 \section{Local extraction and denominator exclusions}
@@ -469,7 +485,7 @@ above $p>76176$. The torsion translation formulas, together with
 give this directly. If $H$ belonged to the set, Proposition~\ref{prop:local}
 would force both contact radicals to equal one. Lemmas~\ref{lem:contact}
 and~\ref{lem:pair}, and $h(a_1)\le h(a_1\lambda)+h(\lambda)$, would
-then give $h(1:\beta:T)\le\frac45C_0+C_1$. Since $\beta\ge B$, this is
+then give $h(1:\beta:T)\le\frac83C_0+C_1$. Since $\beta\ge B$, this is
 impossible for every sufficiently large fixed $B$.
 
 Consequently $h_*\notin\{-1,0,1\}$ and all required subtraction
@@ -514,21 +530,21 @@ numerator of $\beta-n$. Both $M(\lambda)$ and $M(a_1\lambda)$ divide
 $N_\beta$. Lemma~\ref{lem:contact} gives
 \[
  h(a_1)\le h(\lambda)+h(a_1\lambda)
-               \le\frac43\log N_\beta+2C_0.
+               \le\frac23\log N_\beta+2C_0.
 \]
 Put $H_2=h(1:\beta:T)$. Lemma~\ref{lem:pair} implies
 \[
- H_2\le\frac8{15}\log N_\beta+C_2,\qquad C_2=\frac45C_0+C_1.
+ H_2\le\frac89\log N_\beta+C_2,\qquad C_2=\frac83C_0+C_1.
 \]
 For a reduced fraction $\beta=a/b$,
 $|a-nb|\le(1+|n|)\max(|a|,b)$. Since $h(\beta)\le H_2$,
 \[
  \log N_\beta\le H_2+\log(1+|n|),\qquad
- H_2\le\frac87\log(1+|n|)+\frac{15}{7}C_2.
+ H_2\le8\log(1+|n|)+9C_2.
 \]
 The trace-height bound~\eqref{eq:traceheight} now yields
 \[
- n^2\le\frac{8A}{7}\log(1+|n|)+\frac{15A}{7}C_2+J.
+ n^2\le8A\log(1+|n|)+9AC_2+J.
 \]
 Its right side grows logarithmically, so $|n|$ and then $H_2$ are
 uniformly bounded. Every constant here is independent of $B$.
@@ -576,8 +592,8 @@ a unit. The pole input has valuation one at every selected contact prime.
 
 For arbitrary positive rational $a$ the exact identity
 \begin{equation}\label{eq:primeproduct}
- R=\frac{a^6\prod_{\theta\in\Theta_6}(u-(\theta/a)L_1)}
-             {L_1^6(a\lambda-1)^8}
+ R=\frac{a^8\prod_{\theta\in\Theta_8}(u-(\theta/a)L_1)}
+             {L_1^8(a\lambda-1)^{10}}
 \end{equation}
 has only square factors apart from the selected prime numerators.
 In particular no square condition on $a$ is needed. At every other
@@ -588,7 +604,7 @@ At a preparation prime, increasing the fixed denominator divisibility
 makes $v_p(t)\ll0$. Then
 \[
  v_p(q)=v_p(R)=-2v_p(t),\qquad
- R=\delta^{-2}\prod_{\theta\in\Theta_6}
+ R=\delta^{-2}\prod_{\theta\in\Theta_8}
                    \left(1+\frac{1-\theta}{\delta}\right).
 \]
 The product is arbitrarily close to one and is a local square at
@@ -623,7 +639,7 @@ The coordinate count is
 \begin{tabular}{lr}
 \toprule
 Coordinates & Number\\\midrule
-Input, its square, and the common slope &3\\
+Input, its rational comparison component, and the common slope &3\\
 Root chart for $A$ &6\\
 Chart for $H$ &6\\
 Fixed subtraction quantities $g,F_0$ &4\\
@@ -631,35 +647,33 @@ Pair chart for $U,V_1$ &10\\
 $z(V_1)$ and the two ratios &6\\
 Four reciprocal squares and two comparison squares &12\\
 Two fourth powers &4\\
-Four scalar comparison-scale outputs &4\\
+Three scalar comparison-scale outputs &3\\
 Two detector blocks, including their pole coordinates &42\\
 The second argument $a_1\lambda$ &1\\\midrule
-Total &98\\\bottomrule
+Total &97\\\bottomrule
 \end{tabular}
 \end{center}
 Each detector uses two contact outputs $r,c$, three weight coordinates,
 four factor components, two product components, the three scalars
 $\tau,k,b$, and seven pole coordinates: twenty-one in all.
-There are $86$ primitive quadratic equations, so over $\Q$ their
+There are $85$ primitive quadratic equations, so over $\Q$ their
 sum of squares vanishes exactly when they all vanish.
 
 The complete specification is in
-\nolinkurl{computation/quartic/family_abc98}. The builder and independent
-checker reconstruct all $86$ rows and every coefficient of the full
-quartic. There are $885$ terms when powers of $B$ are stored separately,
-and $882$ ordinary monomials for every positive integer $B$.
-The coefficient of $X^4$ is one, proving degree four and content one.
-Only three ordinary coefficients contain more than one power of $B$:
-the constant coefficient $2B^4+169997$, the coefficient
-$48B^2+1$ of the square of the input-square coordinate, and $12B^2-19$
-at the square of the rational component of the root abscissa.
-All remaining nonconstant coefficient profiles are single powers of $B$;
-their maximal multipliers at powers one, two and three are respectively
-$64,48,16$. The largest parameter-free coefficient has absolute value
-$11600064$. It follows directly that
+\nolinkurl{computation/quartic/family_abc97_v17}. The builder and independent
+checker reconstruct all $85$ rows and every coefficient of the full
+quartic. There are $880$ terms when powers of $B$ are stored separately,
+and $879$ ordinary monomials for every positive integer $B$.
+The fourth power of the rational component of the root coordinate $h$
+has coefficient one, proving degree four and content one.
+Only the constant coefficient contains two powers of $B$; it is
+$B^2+169997$. The remaining three coefficients involving the parameter
+are $4B,-2B,2B$, at the monomials $X^2$, $L_0^{\mathrm{prim}}$,
+and $I_0$, respectively. Every other coefficient is independent of $B$,
+and the largest absolute value among them is $11600064$. Therefore
 \[
- H(P_B)=\max(11600064,2B^4+169997)
-       =2B^4+169997\quad\text{for odd }B\ge49.
+ H(P_B)=\max(11600064,B^2+169997)
+       =B^2+169997\quad\text{for odd }B\ge3381.
 \]
 No coefficient cancellation changes the stated support for positive integer $B$.
 

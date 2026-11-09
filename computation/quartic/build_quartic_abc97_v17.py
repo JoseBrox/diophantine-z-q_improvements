@@ -43,7 +43,12 @@ def build(source_root=HERE, output_root=HERE):
         p = {(t['parameterPower'], tuple(sorted(source_ids[i] for i in t['monomial']))):
              Q(t['coefficient']) for t in r['terms']}
         assert all(a == 0 for a, m in p)
-        emit(r['name'], p, sid)
+        if sid == 200:
+            p = add(v(248), scale(v(232), -1), scale(mul(v(0), v(0)), 2), PARAMETER)
+            emit('inputComparison.real.definition', p, sid)
+            coordinates[248]['name'] = 'inputComparison.real'
+        else:
+            emit(r['name'], p, sid)
 
     next_id = 30000
 
@@ -78,9 +83,9 @@ def build(source_root=HERE, output_root=HERE):
     for j in range(2):
         emit('alternateRatio.cleared.'+str(j), add(left[j], scale(right[j], -1)))
 
-    beta = add(scale(v(248), 2), PARAMETER)
+    beta = add(v(232), scale(v(248), -1))
     L = (v(232), v(233))
-    I = (add(L[0], scale(beta, -1)), L[1])
+    I = (v(248), L[1])
     I2 = field_gate('inputComparison.square', fm(I, I))
     C2 = (v(305), scale(v(306), 2))
     H2 = (v(311), scale(v(312), 2))
@@ -91,9 +96,8 @@ def build(source_root=HERE, output_root=HERE):
     B14 = field_gate('alternateNumerator.fourthPower', fm(B12, B12))
     sum_squares = gate('height.sumSquares', add(mul(beta, beta), scale(mul(v(82), v(82)), 4)))
     pair_product = gate('height.pairProduct', scale(mul(beta, v(82)), 2))
-    quartic_factor = gate('height.quarticFactor', add(mul(sum_squares, sum_squares),
-                                                    scale(mul(pair_product, pair_product), -3)))
-    comparison_scale = gate('height.comparisonScale', mul(sum_squares, quartic_factor))
+    comparison_scale = gate('height.comparisonScale', add(mul(sum_squares, sum_squares),
+                                                        scale(mul(pair_product, pair_product), -2)))
 
     detector_specs = []
     for d in range(2):
@@ -104,8 +108,9 @@ def build(source_root=HERE, output_root=HERE):
         q = coordinate(prefix+'.weight')
         u_contact = gate(prefix+'.firstContactProduct', mul(q, r))
         k = gate(prefix+'.inverseContact', mul(u_contact, r))
-        emit(prefix+'.weight.definition', add(mul(k, r), scale(k, -14), scale(u_contact, 49),
-                                               scale(q, -36), scale(mul(r, r), -1)))
+        emit(prefix+'.weight.definition', add(mul(k, k), scale(mul(k, u_contact), -30),
+             scale(mul(u_contact, u_contact), 273), scale(mul(u_contact, q), -820),
+             scale(mul(q, q), 576), scale(mul(k, r), -1)))
         q2 = gate(prefix+'.weightSquared', mul(q, q))
         q4 = gate(prefix+'.weightFourthPower', mul(q2, q2))
         factors = []
@@ -133,7 +138,7 @@ def build(source_root=HERE, output_root=HERE):
         emit(prefix+'.pole.secondConic', add(mul(u, u), scale(mul(u, v0), 34),
              scale(mul(b, w2), -17), scale(mul(v0, v0), -867)))
         detector_specs.append({'detector': d, 'argument': 'lambda' if d == 0 else 'a*lambda',
-            'contactDegree': 6, 'R': 'F6(t)/(t-1)^8', 'q': '(t-1)^4/F6(t)',
+            'contactDegree': 8, 'R': 'F8(t)/(t-1)^10', 'q': '(t-1)^6/F8(t)',
             'inverseR': 'q*(t-1)^4', 'tests': [['C^2', 'f(H)^2', 'f(U)^4'],
                                                    ['I^2', 'sigma(f(H-P))^2', 'sigma(f(U-A))^4']]})
 
@@ -152,11 +157,11 @@ def build(source_root=HERE, output_root=HERE):
     ordinary = defaultdict(dict)
     for (a, m), c in expanded.items():
         ordinary[m][a] = c
-    assert len(coords) == 98, len(coords)
+    assert len(coords) == 97, len(coords)
     assert gcd(*expanded.values()) == 1
     assert max(len(m) for a, m in expanded) == 4
-    assert {i for a, m in expanded for i in m} == set(range(1, 99))
-    assert ordinary[()] == {0: 169997, 4: 2}
+    assert {i for a, m in expanded for i in m} == set(range(1, 98))
+    assert ordinary[()] == {0: 169997, 2: 1}
     constant_maximum = max(abs(p[0]) for p in ordinary.values() if set(p) == {0})
     assert constant_maximum == 11600064
     fixed_parameter = {'symbol': 'B', 'domain': 'Odd integers B>=3',
@@ -176,26 +181,26 @@ def build(source_root=HERE, output_root=HERE):
               'symbolicContent': 1, 'symbolicTerms': len(expanded),
               'ordinaryMonomialPositions': len(ordinary), 'sourceSha256': PIN,
               'retainedSourceRows': list(RETAINED_ROWS),
-              'contacts': [-2, -1, 0, 2, 3, 4],
-              'heightScale': 'beta^6+(Tr x(A))^6', 'beta': '2*X^2+B',
-              'abcContactHeightCoefficient': '2/3', 'abcPairHeightCoefficient': '2/5',
-              'combinedNumeratorCoefficient': '8/15',
-              'coefficientHeightForEveryIntegerBAtLeast3': 'max(11600064,2*B^4+169997)',
-              'coefficientHeightForEveryOddBAtLeast49': '2*B^4+169997',
-              'coefficientHeightThresholdOddB': 49,
+              'contacts': [-3, -2, -1, 0, 2, 3, 4, 5],
+              'heightScale': 'beta^4+(Tr x(A))^4', 'beta': '2*X^2+B=L.real-inputComparison.real',
+              'abcContactHeightCoefficient': '1/3', 'abcPairHeightCoefficient': '4/3',
+              'combinedNumeratorCoefficient': '8/9',
+              'coefficientHeightForEveryIntegerBAtLeast3': 'max(11600064,B^2+169997)',
+              'coefficientHeightForEveryOddBAtLeast3381': 'B^2+169997',
+              'coefficientHeightThresholdOddB': 3381,
               'contentForEveryIntegerShift': 1,
               'ordinaryMonomialsForEveryPositiveShift': len(ordinary),
               'detectors': detector_specs,
               'normalization': ['r=(t-1)^2', 'u=q*r', 'k=u*r',
-                                'k*r-14*k+49*u-36*q=r^2', 'k*b=tau^2'],
+                                'k^2-30*k*u+273*u^2-820*u*q+576*q^2=k*r', 'k*b=tau^2'],
               'finiteChecksScope': 'Exact coefficient reconstruction and polynomial identities, not a numerical verification of abc or an effective sufficient shift.',
               'fixture': {'B': 3, 'ordinaryMonomials': len(fixture),
                           'coefficientHeight': str(max(abs(c) for c in fixture.values())),
                           'definesIntegersCertified': False}}
-    out = output_root/'family_abc98'
+    out = output_root/'family_abc97_v17'
     out.mkdir(parents=True, exist_ok=True)
-    for name, obj in [('quadratic-family-abc98.json', system), ('polynomial-family-abc98.json', polynomial),
-                      ('construction-report-abc98.json', report)]:
+    for name, obj in [('quadratic-family-abc97-v17.json', system), ('polynomial-family-abc97-v17.json', polynomial),
+                      ('construction-report-abc97-v17.json', report)]:
         (out/name).write_text(json.dumps(obj, indent=2)+'\n')
     print(json.dumps({k: report[k] for k in ('variables', 'quadraticResiduals', 'degree',
                                            'symbolicTerms', 'ordinaryMonomialPositions', 'fixture')}))

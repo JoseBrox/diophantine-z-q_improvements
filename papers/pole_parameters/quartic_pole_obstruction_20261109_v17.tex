@@ -1,0 +1,261 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,hyperref}
+\usepackage[margin=27mm]{geometry}
+\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}\newtheorem{definition}[theorem]{Definition}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\title{A local obstruction to a quartic pole equation}
+\author{}\date{}
+\begin{document}\maketitle
+\begin{abstract}
+The equation $y^2=T^2+\kappa R(1+Rs^2)^2$ gives the strict
+valuation inequality required to extract local tests from a reciprocal
+trace. Nevertheless, with $\kappa=1$ its associated genus-one equation
+has no point over $\Q_{1013}$ for an explicit infinite family of
+prepared positive inputs tending to zero. The inputs have square
+reduced denominators and satisfy all prescribed squareclass and
+valuation conditions at $2,3,17$. Thus these preparation conditions
+alone do not give completeness for this equation. More generally,
+no finite set of fixed nonzero rational coefficients $\kappa$
+is complete on all prepared inputs. The result does
+not decide completeness on a subfamily selected together with the
+comparison primes.
+\end{abstract}
+
+\section{The valuation implication}
+We normalize the valuation $v_p$ of $\Q_p$ by $v_p(p)=1$ and put
+$v_p(0)=+\infty$.
+
+\begin{lemma}\label{lem:extraction}
+Let $p$ be an odd prime and let $R,\kappa\in\Q_p^\times$ satisfy
+$v_p(\kappa)=0$ and $\nu=v_p(R)\in2\Z+1$. If $y,s,T\in\Q_p$
+satisfy
+\begin{equation}\label{eq:candidate}
+                   y^2=T^2+\kappa R(1+Rs^2)^2,
+\end{equation}
+then $T\ne0$ and
+\begin{equation}\label{eq:strict}
+                    2v_p(T)<\nu.
+\end{equation}
+\end{lemma}
+\begin{proof}
+If $s\ne0$, then $v_p(Rs^2)=\nu+2v_p(s)$ is odd and hence
+nonzero. Therefore
+\[
+ u:=v_p(1+Rs^2)=\min(0,\nu+2v_p(s))\le0.
+\]
+For $s=0$ the same conclusion holds with $u=0$. In particular
+$1+Rs^2\ne0$. The second term on the right of
+\eqref{eq:candidate} has the odd valuation $\nu+2u$.
+If $T=0$, this cannot be the valuation of a square. If $T\ne0$,
+its square has even valuation and cannot cancel the other term.
+The smaller valuation must be even, so
+$2v_p(T)<\nu+2u\le\nu$.
+\end{proof}
+
+\begin{corollary}\label{cor:trace}
+Let $K/\Q$ be quadratic and unramified at $p$, and let
+$W\in K^\times$. Put
+\[
+ T=\operatorname{Tr}_{K/\Q}(W^{-1}),\qquad
+ \lambda_p=\max_{\mathfrak p\mid p}v_{\mathfrak p}(W),
+\]
+where the local valuations have $v_{\mathfrak p}(p)=1$.
+Under the hypotheses of Lemma~\ref{lem:extraction}, a rational
+solution of~\eqref{eq:candidate} implies
+\[
+                         \lambda_p>-\nu/2.
+\]
+\end{corollary}
+\begin{proof}
+At a split prime the two terms of the trace have valuations at least
+$-\lambda_p$. At an inert prime conjugation preserves the unique
+valuation and gives the same conclusion. The nonarchimedean
+triangle inequality yields $v_p(T)\ge-\lambda_p$.
+Apply~\eqref{eq:strict}.
+\end{proof}
+
+Since $T\ne0$, the changes of variables
+\[
+             b=R/T^2,\qquad v=Ts,\qquad Y=y/T
+\]
+transform~\eqref{eq:candidate} exactly into
+\begin{equation}\label{eq:quartic}
+                   Y^2=1+\kappa b(1+bv^2)^2.
+\end{equation}
+For $b,\kappa>0$ the polynomial on the right is a separable
+quartic: its leading and constant coefficients are nonzero, and
+the discriminant of its quadratic expression in $v^2$ is
+$-4\kappa b^3\ne0$. Its smooth projective double cover of
+the $v$-line consequently has genus one.
+
+\section{A local obstruction with even negative valuation}
+
+\begin{lemma}\label{lem:negative}
+Let $p\equiv1\pmod4$ be prime. Suppose that $\kappa$ is a
+$p$-adic unit with square residue, and write
+\[
+                  b=p^{-2m}u,\qquad m\ge1,
+                  \quad u\in\Z_p^\times,
+\]
+with $u$ having nonsquare residue. Then~\eqref{eq:quartic}
+has no solution in $\Q_p$. Its smooth projective model also
+has no $\Q_p$-point.
+\end{lemma}
+\begin{proof}
+Since $v_p(\kappa b)<0$, one has $1+\kappa b\ne0$.
+The discriminant $-4\kappa b^3$ is nonzero, so the quartic is
+separable even when $\kappa$ is negative.
+Consider $v\ne0$. If $v_p(v)<m$, then $v_p(bv^2)<0$ and
+$v_p(1+bv^2)=v_p(bv^2)<0$. If $v_p(v)>m$, then
+$v_p(1+bv^2)=0$. In the remaining case $v_p(v)=m$, the residue
+of $bv^2$ is a nonsquare. Since $-1$ is a square modulo $p$,
+the sum $1+bv^2$ is a unit. The case $v=0$ also gives a unit.
+Thus in every case
+\[
+          v_p(1+bv^2)\le0,\qquad 1+bv^2\ne0.
+\]
+It follows that $\kappa b(1+bv^2)^2$ has negative even
+valuation and nonsquare leading unit. Adding one preserves
+both properties. The result cannot be a square in $\Q_p$.
+
+At infinity, the two points of the smooth quartic are defined
+over the extension obtained by adjoining a square root of the
+leading coefficient $\kappa b^3$. Its valuation is even and
+its leading unit is again a nonsquare. Neither point is defined
+over $\Q_p$.
+\end{proof}
+
+\section{Prepared counterexamples}
+
+\begin{definition}
+A rational number $b$ is prepared if its reduced denominator is
+a square and
+\[
+\begin{gathered}
+ 0<b<17,\qquad
+ b\in\Q_2^{\times2}\cap\Q_3^{\times2}\cap\Q_{17}^{\times2},\\
+ v_2(b)\ge3,\qquad v_3(b)\ge1,
+                  \qquad v_{17}(b)\ge2.
+\end{gathered}
+\]
+These are the preparation conditions of the pole-realization
+input in~\cite[Section~3]{Dependencies}.
+\end{definition}
+
+\begin{theorem}\label{thm:family}
+For every integer $m\ge1$, the number
+\[
+                         b_m=409\left(\frac{204}{1013^m}\right)^2
+\]
+is prepared, but the smooth projective curve
+\begin{equation}\label{eq:family}
+                         Y^2=1+b_m(1+b_mv^2)^2
+\end{equation}
+has no point over $\Q_{1013}$ and hence no rational point.
+The numbers $b_m$ are distinct and tend to zero.
+\end{theorem}
+\begin{proof}
+Trial division certifies that $1013$ is prime, and
+$\gcd(409\cdot204,1013)=1$. Thus the reduced denominator of
+$b_m$ is $1013^{2m}$. At $m=1$ one has
+\[
+ b_1=\frac{17020944}{1026169},\qquad
+ 17\cdot1026169-17020944=423929>0.
+\]
+Every $b_m$ lies in $(0,17)$, and
+\[
+          v_2(b_m)=4,\qquad v_3(b_m)=2,
+                         \qquad v_{17}(b_m)=2.
+\]
+The congruences $409\equiv1\pmod8$, $409\equiv1\pmod3$
+and $409\equiv1\pmod{17}$ show that $409$ is a square in
+each of $\Q_2,\Q_3,\Q_{17}$. Its product with the displayed
+rational square therefore satisfies all three local squareclass
+conditions.
+
+At $p=1013$ one has $p\equiv1\pmod4$ and
+\[
+                        409^{506}\equiv1012\pmod{1013}.
+\]
+The unit $409\cdot204^2$ is consequently a nonsquare modulo
+$1013$, and $v_{1013}(b_m)=-2m$.
+Lemma~\ref{lem:negative}, with $\kappa=1$, applies.
+Finally $b_{m+1}=b_m/1013^2$, proving the last assertion.
+\end{proof}
+
+\begin{corollary}\label{cor:finite}
+Let $C$ be a finite nonempty subset of $\Q^\times$. There are
+arbitrarily small prepared $b$ for which none of the equations
+\eqref{eq:quartic}, with $\kappa\in C$, has a rational point,
+even on its smooth projective model.
+\end{corollary}
+\begin{proof}
+Write $\kappa=a_\kappa/d_\kappa$ in reduced form with
+$d_\kappa>0$, and put
+\[
+             M=408\prod_{\kappa\in C}|a_\kappa d_\kappa|.
+\]
+Choose a prime divisor $p$ of the cyclotomic value $\Phi_M(M)>1$.
+It satisfies $p\nmid M$, since $\Phi_M(0)=1$. The cyclotomic
+order lemma gives $p\equiv1\pmod M$: in characteristic $p$
+the polynomial $x^M-1$ is separable, so its cyclotomic factors
+are pairwise coprime and a root of $\Phi_M$ has exact order $M$.
+In particular $p\equiv1\pmod8$ and $p\equiv1\pmod r$ for
+every odd prime divisor $r$ of a numerator or denominator above.
+Quadratic reciprocity shows that each such $r$, as well as
+$-1$ and $2$, is a square modulo $p$. Thus every $\kappa\in C$
+is a $p$-adic unit with square residue.
+
+The Chinese remainder theorem supplies a positive integer $c$
+which is congruent to one modulo $408$ and to a nonzero
+nonsquare modulo $p$. For all sufficiently large $m$, the numbers
+\[
+                         b_m=c(204/p^m)^2
+\]
+are in $(0,17)$, have reduced denominator $p^{2m}$ and
+valuations $4,2,2$ at $2,3,17$, and are squares in the three
+corresponding completions. Hence they are prepared. At $p$
+they have valuation $-2m$ and nonsquare leading unit
+$c\cdot204^2$. Lemma~\ref{lem:negative} applies simultaneously
+to every $\kappa\in C$, and $b_m\to0$.
+\end{proof}
+
+The valuation implication in Corollary~\ref{cor:trace} is valid
+independently of this failure of completeness. Theorem~\ref{thm:family}
+shows that the stated preparation conditions do not suffice to
+replace the pole-realization theorem by~\eqref{eq:quartic} with
+$\kappa=1$; Corollary~\ref{cor:finite} excludes any finite choice
+of fixed nonzero rational coefficients. Neither result shows that
+these counterexamples occur
+among the inputs obtained from simultaneous comparison-prime
+selection. No variable-count reduction follows without a realization
+argument on the required selected inputs.
+
+\section{Exact verification}
+The standard-library Python program
+\begin{center}\small
+\nolinkurl{check_quartic_pole_obstruction.py}
+\end{center}
+certifies primality, the Euler congruence, the preparation congruences,
+the exact first input, and the valuation case distinctions. It also
+checks every residue modulo $1013$ in the potentially cancelling
+case and saves its output in
+\begin{center}\small
+\nolinkurl{quartic-pole-obstruction.json}.
+\end{center}
+The proofs above establish the assertions for every $p$-adic
+argument and every $m\ge1$; the certificate records the finite
+arithmetic used in those proofs. No rank computation or conjectural
+input is needed for the obstruction.
+
+\begin{thebibliography}{9}
+\bibitem{Dependencies} Project repository,
+\emph{Arithmetic dependencies of the defining-polynomial constructions},
+\nolinkurl{arithmetic_dependencies_20261108_v8.tex}, Section~3.
+\end{thebibliography}
+\end{document}
