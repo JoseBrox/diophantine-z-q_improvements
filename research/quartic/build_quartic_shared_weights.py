@@ -2,12 +2,36 @@
 """Construct 297/342-coordinate quartics with one shared local weight."""
 from collections import defaultdict
 from hashlib import sha256
+from fractions import Fraction
+from math import gcd, lcm
 from pathlib import Path
 import json
 
 HERE=Path(__file__).resolve().parent
-DEFAULT_SOURCE=Path(__file__).resolve().parents[2]/'bundle_v11/publication/computation/quartic'
+DEFAULT_SOURCE=(HERE if (HERE/'family301').is_dir() else Path(__file__).resolve().parents[2]/'bundle_v11/publication/computation/quartic')
 PINS={301:'9917be941135778816ce25ecb0cbc872b4ed7c9f3691d79355e5e8352667a4fe',351:'452d063b6d7da598471aa1ec0302b9e37611a44168610592931ec56aac241966'}
+
+R_AFFINE={():-103171881284,(248,):-2103220824,(487,):-21050600,(488,):-7629700,(489,):-45771136}
+
+def affine_scalar(poly):
+ # Invert the exact rational affine change; the new coordinate is the actual r.
+ replacement={m:Fraction((-c if m!=(489,) else 1),R_AFFINE[(489,)]) for m,c in R_AFFINE.items()}
+ out=defaultdict(Fraction)
+ for (a,monomial),coefficient in poly.items():
+  terms={():Fraction(coefficient)}
+  for variable in monomial:
+   subst=replacement if variable==489 else {(variable,):Fraction(1)}
+   nxt=defaultdict(Fraction)
+   for m,c in terms.items():
+    for n,d in subst.items():nxt[tuple(sorted(m+n))]+=c*d
+   terms=nxt
+  for m,c in terms.items():out[a,m]+=c
+ out={m:c for m,c in out.items() if c}
+ den=lcm(*(c.denominator for c in out.values()))
+ integers={m:int(c*den) for m,c in out.items()}
+ g=gcd(*integers.values())
+ if integers[min(integers)]<0:g=-g
+ return {m:c//g for m,c in integers.items()}
 
 def run(baseline,source_root=DEFAULT_SOURCE,output_root=HERE):
  source=source_root/f'family{baseline}'/f'quadratic-family{baseline}.json'
@@ -15,7 +39,7 @@ def run(baseline,source_root=DEFAULT_SOURCE,output_root=HERE):
  old=json.loads(raw); lookup={c['id']:c['sourceId'] for c in old['coordinates']}
  count=2 if baseline==301 else 3; number=297 if baseline==301 else 342
  deleted={sid+48*d for d in range(count) for sid in (353,354,356)}
- names={};edits={};remove=set();newrows=[];newcoords=[]
+ names={489:'scalar.contactProduct'};edits={};remove=set();newrows=[];newcoords=[]
  for d in range(count):
   off=48*d;q,q4,c,q19,q38,q79=[x+off for x in [352,362,355,359,369,360]];q8=850+d
   for sid,name in [(c,'inverseCube'),(q19,'qPower19'),(q38,'qPower38'),(q79,'qPower79')]:names[sid]=f'detector{d}.{name}'
@@ -38,10 +62,12 @@ def run(baseline,source_root=DEFAULT_SOURCE,output_root=HERE):
    label='inverseCube' if '.toric.c.' in name else ('qPower19' if '.toric.q10.' in name else 'qPower79')
    name=name.split('.')[0]+'.'+label+'.definition'
   elif 'E10.power2.definition' in name:name=name.split('.')[0]+'.qPower38.definition'
+  if row['sourceId']==455:name='scalar.contact_product.definition'
   assembled.append((dict(row,name=name),poly))
  assert not edits
  assembled.extend(newrows)
  for metadata,poly in assembled:
+  poly=affine_scalar(poly)
   if poly[min(poly)]<0:poly={m:-c for m,c in poly.items()}
   assert all(i not in deleted for (a,m) in poly for i in m)
   transported={(a,tuple(sorted(mapping[i] for i in m))):c for (a,m),c in poly.items()}
@@ -55,7 +81,7 @@ def run(baseline,source_root=DEFAULT_SOURCE,output_root=HERE):
  maxsum=max(sum(abs(c) for c in p.values()) for p in ordinary.values())
  system=dict(old,format='integer-quadratic-family-v5',variables=number,source={'construction':f'quartic-family{baseline}','sha256':PINS[baseline]},coordinates=coords,residuals=rows)
  polynomial={'format':'integer-quartic-family-v5','variables':number,'degree':4,'inputCoordinate':1,'fixedParameter':old['fixedParameter'],'coordinates':coords,'terms':[{'parameterPower':a,'monomial':list(m),'coefficient':str(c)} for (a,m),c in sorted(coefs.items())]}
- report={'status':'Exact coefficient specification; projection theorem has stated arithmetic dependencies.','baselineVariables':baseline,'variables':number,'quadraticResiduals':len(rows),'degree':4,'symbolicTerms':len(coefs),'ordinaryMonomialsForNAtLeast27464':len(ordinary),'sourceSha256':PINS[baseline],'removedSourceCoordinates':sorted(deleted),'newSourceCoordinates':[c['sourceId'] for c in newcoords],'removedSourceRows':removed,'modifiedSourceRows':changed,'replacementWeights':{'q1':'1/(R*delta^4)','inverseCube':'q1^(-3)','q10':'q1^19','q40':'q1^79'},'quadraticWeightRelations':['q2=q1^2','q4=q2^2','c*q4=q1','q8=q4^2','c*q19=q8^2','q38=q19^2','c*q79=q38^2'],'heightBound':{'coefficientSumBitLength':maxsum.bit_length(),'formula':f'H(P_N)<2^{maxsum.bit_length()}*80989^(4*N+2)'},'effectiveness':'Ineffective eventual parameter' if baseline==301 else 'Every N>=27464; specified member A=80989^54929'}
+ report={'status':'Exact coefficient specification; projection theorem has stated arithmetic dependencies.','baselineVariables':baseline,'variables':number,'quadraticResiduals':len(rows),'degree':4,'symbolicTerms':len(coefs),'ordinaryMonomialsForNAtLeast27464':len(ordinary),'sourceSha256':PINS[baseline],'removedSourceCoordinates':sorted(deleted),'newSourceCoordinates':[c['sourceId'] for c in newcoords],'removedSourceRows':removed,'modifiedSourceRows':changed,'affineScalarNormalization':{'sourceCoordinate':489,'modifiedSourceRows':[455,733],'constant':-103171881284,'coefficients':{'248':-2103220824,'487':-21050600,'488':-7629700,'489':-45771136},'normalizedResidual':'R+80989^2*r*R-A*r','projectionPreserved':'invertible rational affine change of witness coordinates'},'replacementWeights':{'q1':'1/(R*delta^4)','inverseCube':'q1^(-3)','q10':'q1^19','q40':'q1^79'},'quadraticWeightRelations':['q2=q1^2','q4=q2^2','c*q4=q1','q8=q4^2','c*q19=q8^2','q38=q19^2','c*q79=q38^2'],'heightBound':{'coefficientSumBitLength':maxsum.bit_length(),'formula':f'H(P_N)<2^{maxsum.bit_length()}*80989^(4*N+2)','exactForNAtLeast27464':'H(P_N)=80989^(4*N+2)+1'},'effectiveness':'Ineffective eventual parameter' if baseline==301 else 'Every N>=27464; specified member A=80989^54929'}
  out=output_root/f'family{number}';out.mkdir(exist_ok=True,parents=True)
  for file,data in [(f'quadratic-family{number}.json',system),(f'polynomial-family{number}.json',polynomial),(f'construction-report{number}.json',report)]:
   (out/file).write_text(json.dumps(data,indent=2)+'\n')

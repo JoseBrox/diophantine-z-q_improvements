@@ -12,7 +12,7 @@ from math import gcd
 from pathlib import Path
 import json
 HERE=Path(__file__).resolve().parent
-DEFAULT_SOURCE=Path(__file__).resolve().parents[2]/'bundle_v11/publication/computation/quartic'
+DEFAULT_SOURCE=(HERE if (HERE/'family301').is_dir() else Path(__file__).resolve().parents[2]/'bundle_v11/publication/computation/quartic')
 PINS={301:'9917be941135778816ce25ecb0cbc872b4ed7c9f3691d79355e5e8352667a4fe',351:'452d063b6d7da598471aa1ec0302b9e37611a44168610592931ec56aac241966'}
 
 def norm(p):
@@ -48,6 +48,26 @@ def check(baseline,source_root=DEFAULT_SOURCE,output_root=HERE):
   if baseline==301:
    assert q8 not in oldmap.values();new_coords.add(q8)
    expected[q8]=(f'mixed.det{d}.q1Power8.definition',norm({(q4,q4):1,(q8,):-1}))
+ # Verify the scalar affine change by an independent reverse substitution.
+ # The new r definition must solve to the same old scalar gate identically.
+ affine={():-103171881284,(248,):-2103220824,(487,):-21050600,(488,):-7629700,(489,):-45771136}
+ def reverse_scalar(p):
+  out=defaultdict(int)
+  for monomial,coefficient in p.items():
+   terms={():coefficient}
+   for variable in monomial:
+    subst=affine if variable==489 else {(variable,):1}
+    nxt=defaultdict(int)
+    for m,c0 in terms.items():
+     for n,c1 in subst.items():nxt[tuple(sorted(m+n))]+=c0*c1
+    terms=nxt
+   for m,c0 in terms.items():out[m]+=c0
+  return norm(out)
+ for sid in (455,733):
+  assert reverse_scalar(actual[sid][1])==expected[sid][1]
+  expected[sid]=actual[sid]
+ assert actual[455][0]=='scalar.contact_product.definition'
+ assert actual[733][1]==norm({(702,):1,(489,702):80989**2,(-1,489):-1})
  assert expected==actual
  assert len(system['coordinates'])==number==system['variables']==polynomial['variables']
  assert len(actual)==(271 if number==297 else 314)
@@ -68,6 +88,8 @@ def check(baseline,source_root=DEFAULT_SOURCE,output_root=HERE):
  for m,c in exp.items():ordinary[tuple(i for i in m if i!=-1)][m.count(-1)]=c
  maxsum=max(sum(abs(c) for c in p.values()) for p in ordinary.values())
  A=pow(80989,54929);assert A>1+maxsum
+ assert ordinary[(489,489)]=={0:1,2:1}
+ assert all(max(part)<=1 for monomial,part in ordinary.items() if monomial!=(489,489))
  assert any(p=={0:1} for p in ordinary.values())
  exponents={'q':1,'q2':2,'q4':4,'c':-3,'q8':8,'q19':19,'q38':38,'q79':79}
  assert exponents['c']+exponents['q4']==exponents['q']
@@ -85,11 +107,15 @@ def check(baseline,source_root=DEFAULT_SOURCE,output_root=HERE):
      assert val%(2**(j+1))==2**j
      if nu>0 and 2*val> -nu:assert z>=m
      cases+=1
- data={'status':'PASS','variables':number,'quadraticResiduals':len(actual),'degree':4,'integerContent':1,'symbolicTerms':len(given),'ordinaryMonomialsForNAtLeast27464':len(ordinary),'coefficientSumBitLength':maxsum.bit_length(),'coefficientHeightBound':f'H(P_N)<2^{maxsum.bit_length()}*80989^(4*N+2)','completeUnorderedPairExpansion':True,'allRetainedRowsVerified':True,'allChangedWeightRowsVerified':True,'noCoordinateUnused':True,'inputCoordinate':1,'nonzeroDomainWeightExponents':exponents,'finiteValuationChecks':cases,'noCoefficientCancellationForNAtLeast27464':True,'quadraticTableSha256':sha256(syspath.read_bytes()).hexdigest(),'polynomialTableSha256':sha256(polpath.read_bytes()).hexdigest(),'arithmeticScope':'This is exact algebraic verification; the projection theorem retains the stated arithmetic dependencies.'}
+ data={'status':'PASS','variables':number,'quadraticResiduals':len(actual),'degree':4,'integerContent':1,'symbolicTerms':len(given),'ordinaryMonomialsForNAtLeast27464':len(ordinary),'coefficientSumBitLength':maxsum.bit_length(),'coefficientHeightBound':f'H(P_N)<2^{maxsum.bit_length()}*80989^(4*N+2)','uniformExactHeightForNAtLeast27464':'80989^(4*N+2)+1','uniqueQuadraticParameterCoefficient':'r^2: A^2+1','allOtherCoefficientsAtMostLinearInParameter':True,'completeUnorderedPairExpansion':True,'allRetainedRowsVerified':True,'allChangedWeightRowsVerified':True,'affineScalarChangeVerifiedByReverseSubstitution':True,'scalarNormalizerResidual':'R+80989^2*r*R-A*r','noCoordinateUnused':True,'inputCoordinate':1,'nonzeroDomainWeightExponents':exponents,'finiteValuationChecks':cases,'noCoefficientCancellationForNAtLeast27464':True,'quadraticTableSha256':sha256(syspath.read_bytes()).hexdigest(),'polynomialTableSha256':sha256(polpath.read_bytes()).hexdigest(),'arithmeticScope':'This is exact algebraic verification; the projection theorem retains the stated arithmetic dependencies.'}
  if number==342:
   ev={m:sum(c*A**a for a,c in p.items()) for m,p in ordinary.items()};height=max(abs(c) for c in ev.values())
   data.update(explicitParameter={'N':27464,'base':80989,'exponent':54929},largestCoefficientBinaryDigits=height.bit_length(),largestCoefficientMonomials=[list(m) for m,c in ev.items() if abs(c)==height])
   assert all(ev.values())
+  assert height==A*A+1
+  data['exactCoefficientHeight']='80989^109858+1'
+  data['uniformExactHeightForNAtLeast27464']='80989^(4*N+2)+1'
+  assert set(data['largestCoefficientMonomials'][0])=={489}
  (out/f'independent-verification{number}.json').write_text(json.dumps(data,indent=2)+'\n');print(json.dumps(data,indent=2))
 if __name__=='__main__':
  import argparse
