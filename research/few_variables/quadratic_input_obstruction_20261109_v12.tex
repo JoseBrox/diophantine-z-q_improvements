@@ -1,0 +1,230 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,booktabs,microtype}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\setlength{\emergencystretch}{2em}
+\title{A local obstruction to quadratic input maps}
+\author{}\date{9 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+Consider the five-contact polynomial
+$r(T)=T(T-1)(T-2401)(32T+343)(2T-1)$.
+No integer polynomial $q$ of degree at most two can simultaneously
+reflect integrality over the rationals, take odd values at every
+integer, and make $r(q(x))$ a square in $\Q_2$ for every integer $x$.
+The obstruction follows from an exact classification of quadratic
+integrality-reflecting maps and elementary two-adic calculations.
+It concerns this particular scalar normalization and imposes no
+lower bound on the degree of an arbitrary Diophantine definition.
+\end{abstract}
+
+\section{Integrality-reflecting quadratic maps}
+
+Say that $q\in\Z[X]$ reflects rational integrality if
+\[
+        q(x)\in\Z\quad\Longleftrightarrow\quad x\in\Z
+        \qquad(x\in\Q).
+\]
+
+\begin{proposition}\label{prop:reflection}
+Let $q(X)=AX^2+BX+C$ with nonzero integer $A$.
+Then $q$ reflects rational integrality if and only if
+$|A|$ is squarefree and $A$ divides $B$.
+\end{proposition}
+\begin{proof}
+Since $q(-B/A)=C$, reflection forces $A\mid B$.
+Write $B=Ak$. If a prime square $p^2$ divides $A$, then
+\[
+ q(1/p)=A/p^2+Ak/p+C\in\Z,
+\]
+contrary to reflection. Thus $|A|$ is squarefree.
+
+Conversely, suppose these two conditions hold. Write $x=u/v$
+in lowest terms, with $v>0$. If $q(x)$ is integral, then
+\[
+                 v^2\mid A u(u+kv).
+\]
+Both $u$ and $u+kv$ are prime to $v$, so $v^2\mid A$.
+Squarefreeness gives $v=1$.
+\end{proof}
+
+\section{Three nonsquare residue classes}
+
+Put
+\[
+             r(T)=T(T-1)(T-2401)(32T+343)(2T-1).
+\]
+For a nonzero rational number $a$, write $v_2(a)$ for its
+normalized two-adic valuation. An odd integer is a square in
+$\Q_2$ precisely when it is congruent to one modulo eight;
+in general the valuation must also be even.
+
+\begin{lemma}\label{lem:residues}
+For every integer $t$ in one of the following classes, $r(t)$
+is a nonzero nonsquare in $\Q_2$:
+\begin{center}
+\begin{tabular}{ccc}
+\toprule
+Class of $t$ & $v_2(r(t))$ & $r(t)/2^{v_2(r(t))}\pmod8$\\
+\midrule
+$t\equiv5\pmod8$ & $4$ & $3$\\
+$t\equiv7\pmod8$ & $2$ & $5$\\
+$t\equiv9\pmod{16}$ & $6$ & $3$\\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{lemma}
+\begin{proof}
+The two even factors differ by
+\[
+                  (t-1)-(t-2401)=2400=2^5\cdot75.
+\]
+If $t\equiv5\pmod8$, both have valuation two; their odd
+parts differ by $600\equiv0\pmod8$, so their product is
+one modulo eight. The other three factors have product
+$5\cdot7\cdot1\equiv3\pmod8$.
+If $t\equiv7\pmod8$, both even factors have valuation one;
+their odd parts differ by $1200\equiv0\pmod8$.
+The other factors have product $7\cdot7\cdot5\equiv5\pmod8$.
+
+If $t\equiv9\pmod{16}$, both even factors have valuation three.
+Their odd parts differ by $300\equiv4\pmod8$; the product
+of those odd parts is therefore five modulo eight. The other
+three factors have product $1\cdot7\cdot1\equiv7\pmod8$,
+and $5\cdot7\equiv3\pmod8$.
+\end{proof}
+
+\section{The obstruction}
+
+\begin{theorem}\label{thm:main}
+There is no polynomial $q\in\Z[X]$ of degree at most two
+satisfying all three conditions:
+\begin{enumerate}
+\item $q$ reflects rational integrality;
+\item $q(x)$ is odd for every $x\in\Z$;
+\item $r(q(x))$ is a square in $\Q_2$ for every $x\in\Z$.
+\end{enumerate}
+Here zero may be included among the squares; this convention
+does not affect the result.
+\end{theorem}
+\begin{proof}
+A constant polynomial cannot reflect integrality. A linear
+polynomial $BX+C$ reflects integrality only when $B=\pm1$:
+otherwise its value at $1/B$ is integral with nonintegral input.
+For $B=\pm1$ its integer values have both parities. Thus assume
+$q(X)=AX^2+BX+C$ with $A\ne0$.
+
+By Proposition~\ref{prop:reflection}, $A$ is squarefree up to
+sign and $B=Ak$. Odd integer values imply $C$ odd and
+$A(1+k)$ even.
+
+If $A$ is odd, then $k$ is odd. The values of $x(x+k)$ modulo
+eight are all four even residues. Indeed, replacing $x$ by $x+4$
+changes its value by four modulo eight, and replacing $x$ by $x+2$
+changes it by two modulo four. Multiplication by the odd number
+$A$ therefore makes $q(x)$ attain every odd residue modulo eight.
+In particular it attains seven, contrary to
+Lemma~\ref{lem:residues}.
+
+We may therefore write $A=2a$ with $a$ odd.
+If $k$ is odd, $x(x+k)$ attains both zero and two modulo four.
+Thus $q(x)$ attains both $C$ and $C+4$ modulo eight. One of
+these is five or seven, again a contradiction.
+
+It remains to consider $k=2h$. Completing the square gives
+\[
+                 q(x)=A(x+h)^2+c,\qquad c=C-Ah^2\text{ odd}.
+\]
+Translation by the integer $h$ preserves the set of integer inputs,
+so it is enough to consider $q(y)=Ay^2+c$.
+If $c$ is five or seven modulo eight, take $y=0$.
+Otherwise $c$ is one or three. Testing odd $y$ shows that
+$c+A$ must also be one or three modulo eight. Since
+$A\equiv2$ or $6\pmod8$, the only remaining possibilities are
+\[
+ (c,A)\equiv(1,2)\pmod8
+ \quad\hbox{or}\quad
+ (c,A)\equiv(3,6)\pmod8.
+\]
+In the first case, the values at $y=0$ and $y=2$ differ by
+eight modulo sixteen; one is nine modulo sixteen and is excluded
+by Lemma~\ref{lem:residues}.
+
+In the second case $c+A$ is one or nine modulo sixteen.
+The latter is excluded by $y=1$. In the former case,
+\[
+                \frac{1-c}{A}\in\Z_2^\times,
+                \qquad\frac{1-c}{A}\equiv1\pmod8.
+\]
+There is therefore an odd $y_0\in\Z_2$ with $Ay_0^2+c=1$.
+Choose an integer $y$ with $y-y_0\equiv16\pmod{32}$.
+Then $v_2(y-y_0)=4$ and $v_2(y+y_0)=1$, giving
+\[
+              v_2(q(y)-1)=v_2(A)+4+1=6.
+\]
+Since $v_2(2400)=5$, it follows that
+$v_2(q(y)-2401)=5$. The other three factors of $r(q(y))$
+are odd, so
+\[
+                         v_2(r(q(y)))=11.
+\]
+This odd valuation is incompatible with being a two-adic square.
+Every possible case has been excluded.
+\end{proof}
+
+\begin{corollary}\label{cor:sharpness}
+Among integer polynomials satisfying the three conditions of
+Theorem~\ref{thm:main} and $q(n)>0$ for every $n\in\Z$, the
+minimum degree is four. It is attained by $q(X)=8X^4+3$.
+If $q(n)>2401$ is required, $q(X)=8X^4+2403$ attains the same degree.
+\end{corollary}
+\begin{proof}
+A nonconstant polynomial positive on all integers has even degree.
+The theorem excludes degree two, and constants do not reflect
+integrality. For either displayed quartic, integrality at a reduced
+rational input $u/v$ implies $v^4\mid8$, and hence $v=1$.
+Its values have the required positivity and are three modulo eight.
+For every integer $t\equiv3\pmod8$, the two even factors of $r(t)$
+have valuation one and odd parts differing by
+$1200\equiv0\pmod8$. Their odd-part product is one modulo eight,
+as is the product $3\cdot7\cdot5$ of the other three factors.
+Thus $v_2(r(t))=2$ and $r(t)/4\equiv1\pmod8$, proving that
+$r(t)$ is a square in $\Q_2$.
+\end{proof}
+
+The conclusion concerns the simultaneous requirements in the theorem.
+It does not exclude quadratic input maps when parity is unrestricted,
+when an additional scalar correction is used, or when a different
+contact polynomial or pole construction is chosen. It therefore
+identifies a restriction of the stated normalization, rather than a
+minimum degree for the overall research problem.
+
+\section{Exact finite checks}
+
+The standard-library program
+\nolinkurl{check_quadratic_input_obstruction.py}
+checks all residue representatives modulo $512$ in
+Lemma~\ref{lem:residues}. It also checks the four images of
+$x(x+k)$ for odd $k$ modulo eight.
+For the final case of the proof it examines every pair
+\[
+ A\equiv6\pmod8,\qquad c\equiv3\pmod8,\qquad
+ A+c\equiv1\pmod{16}
+\]
+modulo $128$, and explicitly finds $0\le y<32$ with
+\[
+                     Ay^2+c-1\equiv64\pmod{128}.
+\]
+These $128$ cases all have the asserted valuations six, five,
+and eleven. The accompanying JSON certificate lists each witness.
+The checker also verifies the square residue class $t\equiv3\pmod8$
+and the two quartic examples in Corollary~\ref{cor:sharpness}.
+The proof is elementary and does not depend on any arithmetic
+hypothesis from a defining-polynomial construction.
+\end{document}

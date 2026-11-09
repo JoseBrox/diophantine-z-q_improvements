@@ -1,5 +1,14 @@
 # Research checkpoints
 
-This branch preserves ongoing work separately from the polished papers on main. Each checkpoint labels its proven results, assumptions, failed approaches, and remaining obligations. The 27/29-variable and 301/351-variable V11 snapshot is preserved on main at commit 29199c229008aa150373c1bacb9dea508802a43e, with all 27 finite verification stages passing. No numerical improvement beyond that snapshot is claimed in this first checkpoint.
+The reviewed results are published on main at commit [bd9e584d90f6a77c9828330eac19b04f3706a1ce](https://github.com/JoseBrox/diophantine-z-q_improvements/commit/bd9e584d90f6a77c9828330eac19b04f3706a1ce). The main README and papers contain the current statements, full proofs, bibliography, exact coefficients, and the 34-stage verification receipt.
 
-Current tasks: improve finite-algebra elimination for the few-variable constructions; seek lower-cost quadratic local tests for quartics; establish rigorous transfers and counterexample reductions for rings of integers of number fields. The quartic search files record a negative optimization result within their specified grouping model, not a global lower bound.
+## Current results
+
+- 27 total variables, degree less than 2^151; sufficient coefficient threshold remains ineffective.
+- 29 total variables with a certified fixed parameter, degree less than 2^157, coefficient height at most 2^(2^168).
+- Quartics in 297 and 342 total variables, respectively. The first has an ineffective defining threshold. The second is explicit at A=80989^54929.
+- Exact quartic height 80989^(4N+2)+1 for N>=23; this algebraic threshold is separate from the defining thresholds. The explicit height has 1,791,283 binary digits.
+- Number-field equivalences through rational integers, subfields, relative norm images, norm graphs and trace graphs; finite-extension descent and obstructions to unchanged finite collections of formulas.
+- A proved abscissa valuation obstruction to a multiplicative elliptic-curve strategy, and a sharp degree-four threshold for the restricted positive, odd-valued, correction-free scalar maps.
+
+All defining-polynomial projection assertions retain their stated arithmetic inputs. No actual counterexample to the ring-of-integers question and no general fraction-field theorem has been established. Checkpoint files record intermediate work and independent audits; use the linked main revision for the final statements and files.
