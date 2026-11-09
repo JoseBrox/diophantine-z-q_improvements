@@ -78,6 +78,15 @@ def main():
             stages.append(run(f'{count}-coordinate independent full coefficient checks',quartic/f'check_quartic{count}.py'))
             if count==389:
                 stages.append(run('All three detector affine normalizations',quartic/'verify_detector_normalizations.py'))
+        packed_originals = {}
+        for count in (301,351):
+            for name in (f'quadratic-family{count}.json',f'polynomial-family{count}.json',f'construction-report{count}.json'):
+                p=quartic/f'family{count}'/name
+                packed_originals[p]=p.read_bytes()
+        stages.append(run('301/351-variable exact quadratic constructions',quartic/'build_quartic_mixed.py'))
+        for p,raw in packed_originals.items():
+            assert p.read_bytes()==raw,str(p)
+        stages.append(run('301/351-variable independent complete coefficient and valuation checks',quartic/'check_quartic_mixed.py'))
         few=work/'computation/few_variables'
         module=few/'forced_prime29'
         module_manifest=json.loads((module/'manifest.json').read_text())
@@ -89,7 +98,7 @@ def main():
         assert (module/'source.json.gz').read_bytes()==old_source
         assert (module/'polynomial-specification.json').read_bytes()==old_spec
         stages.append(run('Explicit 29-variable effective-height source and bounds',
-            few/'effective29/reproduce.py'))
+            few/'effective29_nontorsion/reproduce.py'))
         stages.append(run('Complete optimal quadratic-field square predicates',
             work/'computation/square_predicates/check_square_predicates.py'))
         stages.append(run('Independent height-seven square-test coefficient certificate',
@@ -97,7 +106,7 @@ def main():
         stages.append(run('Effective elliptic abscissa-sum identities and constants',
             work/'computation/effective_sums/check_effective_elliptic_sums.py'))
         stages.append(run('27-variable cubic-chart family and uniform degree bound',
-            few/'trace27_cubic_family/reproduce.py','--anchor-exponent','137731'))
+            few/'trace27_nontorsion/reproduce.py','--anchor-exponent','137731'))
         stages.append(run('Quadratic extension square chart: exact cubic identities',
             work/'computation/quadratic_squares/check_quadratic_square_chart.py'))
         stages.append(run('Scalar normalization: Bezout certificate and exhaustive residue check',

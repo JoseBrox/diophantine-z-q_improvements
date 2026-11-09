@@ -1,0 +1,152 @@
+$ build_forced_prime_source.py --anchor-exponent 137731 --output /workspace/scratch/1eb5e1fd249a/diophantine_research_20261109_v11/few_variables/effective29_nontorsion/final-reproduction-xyukzt4r/source.json.gz
+{
+  "anchor_kind": "forced_prime",
+  "share_scalar_height_point": true,
+  "retained_base_count": 28,
+  "total_polynomial_variables_after_finite_algebra": 29,
+  "finite_generator_count": 13,
+  "monic_degree_product": {
+    "base": 2,
+    "exponent": 22
+  },
+  "counts": {
+    "retained.input": 1,
+    "retained.point": 18,
+    "retained.slope": 1,
+    "retained.pole": 6,
+    "retained.scalar_pole": 2,
+    "finite.point": 9,
+    "finite.pole": 3,
+    "finite.scalar_pole": 1
+  }
+}
+{"coefficient_nodes": 7944, "uncompressed_bytes": 222471, "uncompressed_sha256": "f9e3cedc354b8fc55cb53d31a84495af53c60f8d7cc3678c63a29e27b717a2a3"}
+
+$ check_forced_prime_source.py /workspace/scratch/1eb5e1fd249a/diophantine_research_20261109_v11/few_variables/effective29_nontorsion/final-reproduction-xyukzt4r/source.json.gz
+{
+  "prime": 76249,
+  "prime_trial_division_bound": 276,
+  "nonquartic_residues": [
+    32862,
+    32509,
+    24048,
+    904,
+    70810
+  ],
+  "fourth_power_tests": [
+    76248,
+    76248,
+    76248,
+    76248,
+    40177
+  ],
+  "normalization_exponent": 137731,
+  "minimum_contact_valuation": 137731,
+  "minimum_scalar_index_valuation": 2616890,
+  "linear_normalizer_residues_checked": 76249,
+  "raw_contact_image_size": 16859,
+  "linear_normalizer_has_no_root": true,
+  "scalar_contact_identity_checked_exactly": true,
+  "external_variables": 29,
+  "finite_rank_exponent": 22,
+  "finite_source_branches": 1,
+  "selected_anchor_sufficient": true,
+  "index_cutoff_left": 41870240,
+  "index_cutoff_right": 41869080,
+  "effective_sum_domination_checked": true,
+  "direct_square_abscissa_charts_checked": 9,
+  "automatic_point_guards_checked": 36,
+  "direct_point_identities_checked_over": "Z[h0,h1,Y]",
+  "adaptive_multiplier": "(2*A+B)-(A+B)*sqrt(2), where j^2=A+B*sqrt(2)",
+  "point_chart_extra_finite_cases": 1,
+  "point_chart_extra_retained_variables": 0,
+  "nonvanishing_proof": "The rational component equals 2*(u^3-2*v^3);2 is not a rational cube.",
+  "status": "passed",
+  "source_sha256": "f9e3cedc354b8fc55cb53d31a84495af53c60f8d7cc3678c63a29e27b717a2a3",
+  "builder_sha256": "33b58e66057f38f5772d0a46f53e69abeaa16982b4ec2046504238da65bebe97",
+  "checker_sha256": "b00c68735dff3e4afdbb289eef79a999e5127424eb787e0766912a8c442e1248",
+  "unchanged_source_methods_checked": 8,
+  "comparison_source_unchanged_outside_height_block": true,
+  "sum_and_three_scale_identities_checked": true,
+  "family_parameter": {
+    "name": "L",
+    "value": 137731,
+    "quantified": false,
+    "constraint": "odd integer L>=3",
+    "sufficient_threshold_exists": true,
+    "effective_threshold_known": true,
+    "effective_sufficient_threshold": 137731,
+    "selected_member_certified_to_define_Z": true
+  },
+  "scope": "Exact source inventory, point-chart and automatic-guard identities, inherited arithmetic preservation, three effective sum scales, scalar contact identity, and the certified fixed-exponent numerical cutoff. Identification with Z uses exactly the four inherited arithmetic inputs and the proved effective sum-height theorem."
+}
+
+$ compile_source.py /workspace/scratch/1eb5e1fd249a/diophantine_research_20261109_v11/few_variables/effective29_nontorsion/final-reproduction-xyukzt4r/source.json.gz --output /workspace/scratch/1eb5e1fd249a/diophantine_research_20261109_v11/few_variables/effective29_nontorsion/final-reproduction-xyukzt4r
+{
+  "total_variables": 29,
+  "existential_witnesses": 28,
+  "formal_algebra_generators_not_external_variables": 13,
+  "coefficient_dag_nodes": 3243,
+  "maximum_rank_power_of_two_exponent": 22,
+  "degree_bound_power_of_two_exponent": 161,
+  "coefficient_height_bound_double_power_of_two_exponent": 171,
+  "indexed_elliptic_anchor": false,
+  "specification_sha256": "daceb26d141bb265e33461957756445c565df9f1a7e5447c9258a466df976901",
+  "specification_bytes": 96407,
+  "source_json_sha256": "f9e3cedc354b8fc55cb53d31a84495af53c60f8d7cc3678c63a29e27b717a2a3",
+  "producer_sha256": "e31173bce2080d34c685835d3efcfd08c0f1848cc2d5fc21c74275f7c01b707e",
+  "verification_status": "Producer assertions passed; independent results are recorded separately in verification.json.",
+  "family_parameter": {
+    "name": "L",
+    "value": 137731,
+    "quantified": false,
+    "constraint": "odd integer L>=3",
+    "sufficient_threshold_exists": true,
+    "effective_threshold_known": true,
+    "effective_sufficient_threshold": 137731,
+    "selected_member_certified_to_define_Z": true
+  },
+  "arithmetic_status": "The fixed exponent meets the effective sufficient cutoff. This polynomial defines Z conditional on exactly the four inherited arithmetic inputs.",
+  "representation": "Complete determinant/coefficient/finite-product polynomial specification with a materialized integer coefficient DAG. No finite elliptic exclusion is used in the fixed-prime construction. Rank-sized matrices, finite products, and monomial expansion are specified exactly rather than expanded."
+}
+
+$ verify_specification.py /workspace/scratch/1eb5e1fd249a/diophantine_research_20261109_v11/few_variables/effective29_nontorsion/final-reproduction-xyukzt4r/source.json.gz /workspace/scratch/1eb5e1fd249a/diophantine_research_20261109_v11/few_variables/effective29_nontorsion/final-reproduction-xyukzt4r/polynomial-specification.json
+{
+  "status": "passed",
+  "external_variables": 29,
+  "existential_witnesses": 28,
+  "formal_algebra_generators_not_external_variables": 13,
+  "coefficient_dag_nodes": 3243,
+  "source_point_quartics_checked": 9,
+  "quadratic_pole_generators": 4,
+  "quadratic_strata_retained": 1,
+  "source_closed_conditions": 0,
+  "source_guard_atomic_factors_checked": 114,
+  "affine_source_substitutions_checked_exactly": true,
+  "all_zero_quadratic_strata_excluded_by_source_guards": true,
+  "source_point_derivatives_verified_automatically_nonzero": true,
+  "automatic_guard_atomic_factors_checked": 36,
+  "source_rational_square_clearings_checked": 4,
+  "all_external_base_coordinates_occur": true,
+  "indexed_elliptic_guard_canonical_clearing_checked": false,
+  "degree_and_coefficient_majorants_checked": true,
+  "maximum_rank_power_of_two_exponent": 22,
+  "degree_bound_power_of_two_exponent": 161,
+  "coefficient_height_bound_double_power_of_two_exponent": 171,
+  "direct_square_abscissa_quartics_checked": 9,
+  "scope": "Exact coefficient conversion, guard coverage, finite-case grammar, and degree/coefficient bounds. The finite-algebra theorem justifies the determinant, trace, resultant and finite-product operations. The supplied source arithmetic proof uses its four cited inputs; this computation does not verify those deep theorems.",
+  "family_parameter": {
+    "name": "L",
+    "value": 137731,
+    "quantified": false,
+    "constraint": "odd integer L>=3",
+    "sufficient_threshold_exists": true,
+    "effective_threshold_known": true,
+    "effective_sufficient_threshold": 137731,
+    "selected_member_certified_to_define_Z": true
+  },
+  "arithmetic_status": "The coefficient specification is exact. The source proof certifies L>=137731, conditional on the four inherited arithmetic inputs.",
+  "source_json_sha256": "f9e3cedc354b8fc55cb53d31a84495af53c60f8d7cc3678c63a29e27b717a2a3",
+  "specification_sha256": "daceb26d141bb265e33461957756445c565df9f1a7e5447c9258a466df976901",
+  "checker_sha256": "b75283c53963aad5f5fbddab7fcacc9779bdaedebcebe1fcef42e9b9e856facc"
+}

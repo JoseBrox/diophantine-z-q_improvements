@@ -1,0 +1,299 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,booktabs,microtype,xcolor}
+\usepackage[margin=26mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue!45!black,citecolor=blue!45!black,urlcolor=blue!45!black]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{remark}\newtheorem{remark}[theorem]{Remark}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}\newcommand{\HH}{\mathcal H}
+\DeclareMathOperator{\Tr}{Tr}
+\setlength{\emergencystretch}{2em}
+\title{A family of quartics in 301 variables}
+\author{}\date{9 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+We specify a family of integer quartics in 301 total variables by 275
+quadratic equations and complete coefficient tables. Under the arithmetic
+premises of the elliptic source construction, every sufficiently large
+member defines the integers in the rationals. Two height detectors use
+the rational trace of a sum of elliptic abscissas. The sixteen local tests
+are represented by polynomial expressions with distinct valuation classes,
+using fourth and eighth powers already computed for the formal logarithm.
+The coefficient family is explicit, but the sufficient parameter threshold
+is ineffective because the aggregate-trace height theorem has an
+ineffective additive constant. No particular defining member of this
+family is selected. A fully specified 351-variable quartic is a separate
+result.
+\end{abstract}
+
+\section{The exact family and its scope}
+All variable counts include the input $X$. Put
+\[
+                     A_N=80989^{2N+1}\qquad(N\ge1).
+\]
+The tables \nolinkurl{quadratic-family301.json} and
+\nolinkurl{polynomial-family301.json} specify 275 primitive integer
+quadratic rows $Q_{N,j}$ in 301 coordinates and
+\[
+                           P_N=\sum_{j=1}^{275}Q_{N,j}^2.
+\]
+Neither $A_N$ nor $N$ is a variable of $P_N$.
+
+\begin{theorem}\label{thm:main}
+Under the arithmetic premises in Section~\ref{sec:premises}, there is
+an integer $N_0\ge27464$ such that, for every $N\ge N_0$ and $x\in\Q$,
+\[
+ x\in\Z\quad\Longleftrightarrow\quad
+ \exists\boldsymbol y\in\Q^{300},\ P_N(x,\boldsymbol y)=0.
+\]
+For every $N\ge1$, $P_N$ has degree exactly four, content one, and
+coefficient height
+\[
+                           H(P_N)<2^{1520}80989^{4N+2}.
+\]
+For $N\ge27464$ it has 4305 nonzero coordinate monomials.
+The proof does not determine a numerical value of $N_0$.
+\end{theorem}
+
+An exact family specification and an effective choice of a defining
+member are different assertions. The theorem supplies the first together
+with eventual definition of $\Z$; its height argument does not supply
+the second. The explicit 351-variable theorem in \cite{Explicit} uses
+three height detectors and an effective sum-height inequality.
+
+\section{Arithmetic premises}\label{sec:premises}
+Let $K=\Q(\rho)$, $\rho^2=2$, $d=3-\rho$, and
+\[
+ E:y^2=x^3-d^2x,\qquad
+ P=2(1+\rho,2\rho)
+   =\left(\frac{57-28\rho}{8},\frac{-660+417\rho}{32}\right).
+\]
+The arithmetic input contract is the one precisely stated in
+\cite[Section~2]{Source} and restated in \cite[Section~2]{Explicit}:
+\begin{enumerate}
+\item $2E(K)=\Z P$ and $h(x([n]P))\ge n^2-6$ for every nonzero
+integer $n$.
+\item The five-contact height bound $h(t)\le\HH M_5(t)^{19}$, with
+\[
+ \HH=2^{110}210^{1800}\left(\prod_{p\le76176}p\right)^{19}+128
+       <2^{2093448}.
+\]
+Here $M_5(u/v)$ is the product of primes greater than $76176$ with
+positive odd valuation on at least one of
+$v,u,u-v,u-2401v,32u+343v$, in lowest terms with $v>0$, and the
+excluded contact values are $0,1,2401,-343/32$.
+\item The source pole obstruction outside $2,3,17$ and its simultaneous
+realization for inputs in $(0,17)$ with square reduced denominator and
+the specified local squareclasses and valuation bounds at $2,3,17$.
+The normalized seven-coordinate equations are retained literally.
+\item The simultaneous prime-pattern and conjugate reduction-order
+conditions with arbitrary fixed odd avoidance modulus, finite congruences,
+and real approximation, including the quantitative weighted selection
+premise stated in the cited contract. In particular the slowly decreasing
+separation parameter is available after all fixed data are chosen.
+\end{enumerate}
+No finite coefficient computation proves these inputs. The
+aggregate-trace height theorem used next is a proved consequence of
+Von Buhren's family height theorem, with an ineffective additive constant,
+as detailed in \cite{Aggregate}. It is not an additional conjecture.
+
+\section{The trace height and the two local detectors}
+The retained square charts give root points
+\[
+ Q_1=[n]P,\quad Q_2=[a]P,\quad Q_3=[t]P,\quad Q_4=[b]P,
+ \qquad B=\max(|n|,|a|,|t|,|b|),
+\]
+with nonzero integer labels. Their interpretation for all nonzero
+integer labels, without a parity restriction, is proved in
+\cite[Section~2]{Baseline}. Define
+\[
+ S_0=\frac12\Tr_{K/\Q}\left(\sum_{i=1}^4x(Q_i)\right).
+\]
+There are fixed constants $M_1>0,M_2\ge1$ such that
+\begin{equation}\label{eq:traceheight}
+                           B^2\le M_1h(S_0)+M_2.
+\end{equation}
+The additive constant is not effective in the cited proof. Every root
+abscissa is positive at both real embeddings, so $S_0>12$.
+
+Let $\sigma$ denote conjugation on $K/\Q$ and let $f=1/x$, extended
+by zero at the identity. The auxiliary comparison points satisfy
+$U_0=H$, $V_0=H-P$, and $Q_i=U_i-V_i$ as group differences on $E$.
+These are the exact addition relations of the retained point charts
+in \cite{Baseline}.
+
+Use the two nonzero rational square scales $1,S_0^2$. For each
+scale $a_*$ put $t_*=a_*\lambda$, $\delta=t_*-1$ and
+\[
+ R_* =\frac{\prod_{\theta\in\Theta}(t_*-\theta)}{a_*^5\delta^6},
+ \qquad q_m=R_*^{1-2m}\delta^{-2m-2},\qquad
+ \Theta=\{0,-1/2,-1,1/2399,-32/407\}.
+\]
+These formulas are used on their nonzero domain; the exact system
+consists of their cleared quadratic equations. The case $t_*=1$
+has empty contact radical and requires no reciprocal.
+
+Define $A_i=f(U_i)$, $B_i=\sigma f(V_i)$, and
+\[
+ \begin{aligned}
+ C_i&=L_i-L'_i\quad(1\le i\le4),& I&=L_1-\beta,\\
+ D_H&=f(H),&G&=L_3^2-L_2(L_2-2)L_3L_4+(L_2-2)^2L_4^2-1.
+ \end{aligned}
+\]
+The alternate ratios $L'_i$ already include conjugation. The nine tests
+$A_i,B_i$ have order one, $C_1,I$ have order ten, and $D_H,C_2,C_3,C_4,G$
+have order forty. For an ordered list of tests, use the factor
+\[
+ \mathcal T(D_0,\ldots,D_{s-1})
+ =1+\sum_{j=0}^{s-1}q_{m(D_j)}^{2^j}D_j^{2^{j+1}},
+\]
+where $m(D_j)$ is its stated order. Thus different required orders can
+occur within one factor.
+
+The detector uses the product of the factors for the following six lists:
+\[
+ \begin{gathered}
+ (D_H,C_1,B_0),\quad(C_2,I,B_2),\quad(C_3,A_2,B_3),\\
+ (C_4,A_3,B_4),\quad(G,A_4),\quad(A_1,B_1).
+ \end{gathered}
+\]
+Each of the sixteen tests occurs exactly once. The common-place valuation
+argument and the literal cleared trace equations are proved in
+\cite{Packing}; each contact prime supplies every required test order
+at one place. The rational logarithm approximants and the scalar point
+exclusions are retained.
+
+If a nonzero integer $J$ is divisible by the $k$th powers of both
+contact radicals, the contact-height theorem bounds
+$h(\lambda)$ and $h(S_0^2\lambda)$ by
+$(\HH+\log3)|J|^{19/k}$. Since $\lambda\ne0$,
+\[
+ 2h(S_0)=h(S_0^2)\le h(S_0^2\lambda)+h(\lambda).
+\]
+Combining this with \eqref{eq:traceheight} gives
+\begin{equation}\label{eq:height}
+ B^2\le C|J|^{19/k}+M_2,
+ \qquad C=M_1(\HH+\log3).
+\end{equation}
+
+\section{Soundness for every sufficiently large parameter}
+Put $\beta=51X^2+2504$ and $c=|a-1|$. The retained scalar circuit
+uses the positive contact product
+\[
+ r=\beta(\beta-1)(\beta-2401)(32\beta+343)(2\beta-1)
+\]
+and normalizer $R_s=A_Nr/(1+80989^2r)$, with shift $R_s+9792$.
+The fixed-prime argument gives
+\begin{equation}\label{eq:scalar}
+ c\ge80989^{L_N},\quad
+ L_N=\left\lfloor\frac{187(2N-1)}8\right\rfloor+1,\quad
+ h(\beta)\le\HH c^{19/24}.
+\end{equation}
+Its integral group identities and exceptional-point exclusions are
+unaffected by the local test factors.
+
+\begin{proof}[Proof of soundness in Theorem~\ref{thm:main}]
+Set
+\[
+ \Delta=t^2-a(a-2)tb+(a-2)^2b^2-1.
+\]
+The formal comparison gives divisibility of $\Delta$ by the fortieth
+powers of both contact radicals. If $\Delta\ne0$, then
+$|\Delta|\le14B^4$, and \eqref{eq:height} gives
+\[
+                     B^2\le C14^{19/40}B^{19/10}+M_2.
+\]
+This is impossible for sufficiently large $B$. Equation~\eqref{eq:scalar}
+ensures $B\ge c-1\to\infty$ uniformly as $N\to\infty$. Hence
+$\Delta=0$ for every sufficiently large $N$.
+
+The integral Lucas descent in \cite{Source} then gives
+$\log B>|a|-3\ge c-4$. Suppose $n-\beta\ne0$, and let $J$ be
+its nonzero reduced numerator. The order-ten tests imply that both
+tenth powers of the contact radicals divide $J$, while
+$|J|\le2B\exp(h(\beta))$. For $B^2\ge2M_2$, equation~\eqref{eq:height}
+therefore implies
+\[
+ \log B\le10\log(2C)+19\log2+19h(\beta)
+          \le10\log(2C)+19\log2+19\HH c^{19/24}.
+\]
+The right side is $o(c)$, contradicting the Lucas lower bound for
+sufficiently large $c$. Thus $n=\beta\in\Z$. Writing $X=u/v$ in
+lowest terms, $v>0$, gives $v^2\mid51$ and hence $v=1$.
+
+All thresholds depend only on the fixed constants $C,M_2,\HH$.
+Since $L_N$ increases, one integer $N_0\ge27464$ works for every
+$N\ge N_0$. The dependence on $M_2$ is precisely the ineffective
+part of the assertion.
+\end{proof}
+
+\section{Completeness and exact verification}
+Fix an integer input and a positive integer $N$. The scalar preparation
+and the Lucas construction select the same integer root labels and
+nonzero root points as in \cite{Baseline}. Fixed real neighborhoods,
+finite preparation depths, and an avoidance modulus are chosen before
+the contact primes. The modified factors introduce no new rational
+function poles and retain the same formal-depth requirements.
+
+The simultaneous completeness proposition of \cite{Packing} applies
+to both scales: at every selected contact prime the cleared trace
+has a unit value congruent to $1$ or $2$; the small-prime preparation
+is preserved by taking powers of its already small terms; and the
+real factors tend uniformly to $1$ as $\lambda\to+\infty$.
+Fresh pole witnesses therefore exist under exactly the retained
+arithmetic contract. Filling the rational arithmetic circuit gives
+all 275 quadratic rows. Their sum of squares vanishes, proving
+completeness and Theorem~\ref{thm:main}.
+
+All required fourth and eighth powers of the $B_i$ are explicit
+linear forms in existing logarithm coordinates. The five new field
+powers are $C_1^4,I^4,A_2^4,A_3^4,A_4^4$, each computed by squaring
+its existing square. Since every order-forty test occupies position
+zero, no square or cube of $q_{40}$ is retained. The complete accounting
+and both directions of the local argument are in \cite{Packing}.
+The resulting system has 301 coordinates and 275 quadratic rows.
+
+Run the following commands from \nolinkurl{computation/quartic}:
+\begin{verbatim}
+python build_quartic_mixed.py
+python check_quartic_mixed.py
+\end{verbatim}
+The independent checker verifies every coefficient of the quadratic
+system and the quartic. It confirms 4320 terms when powers of the
+fixed parameter are recorded separately, and 4305 ordinary monomials
+for $N\ge27464$. The coefficient-height bound and a retained
+coefficient equal to one give the asserted height and content.
+The checks do not select $N_0$ or prove the arithmetic premises.
+
+\begin{thebibliography}{9}
+\bibitem{Packing}
+\emph{Simultaneous valuation conditions and explicit quartics},
+9 November 2026, accompanying local theorem, simultaneous completeness
+proof, exact circuit, and independent verification.
+\href{../local_tests/mixed_valuation_tests_20261109_v11.pdf}{PDF}; source: \nolinkurl{mixed_valuation_tests_20261109_v11.tex}.
+\bibitem{Explicit}
+\emph{An explicit quartic in 351 variables}, 9 November 2026,
+specified polynomial and effective conditional projection theorem.
+\href{../quartic/quartic351_20261109_v11.pdf}{PDF}; source: \nolinkurl{quartic351_20261109_v11.tex}.
+\bibitem{Baseline}
+\emph{A family of quartics in 317 variables from aggregate trace heights},
+8 November 2026, full point-chart, trace-height, and scalar arguments.
+\href{quartic317_family_20261108_v9.pdf}{PDF}; source: \nolinkurl{quartic317_family_20261108_v9.tex}.
+\bibitem{Source}
+\emph{A forced prime condition and an explicit quartic in 392 variables},
+8 November 2026, arithmetic input contract and scalar/Lucas arguments.
+\href{../quartic/quartic392_20261108_v8.pdf}{PDF}; source: \nolinkurl{quartic392_20261108_v8.tex}.
+\bibitem{Aggregate}
+\emph{Aggregate trace heights of elliptic multiples},
+8 November 2026, proof of the linear height comparison from Von Buhren's
+family height theorem.
+\href{../trace_heights/aggregate_trace_height_20261108_v9.pdf}{PDF}; source: \nolinkurl{aggregate_trace_height_20261108_v9.tex}.
+\bibitem{Glazer}
+E.~Glazer, \emph{An explicit quartic defining the integers in the rationals},
+Version~13, manuscript and coefficient data, commit
+\nolinkurl{5bbd74f6a479776a332cbe036809d5dddae63720},
+\url{https://github.com/elliotglazer/diophantine-z-q}.
+\end{thebibliography}
+\end{document}

@@ -1,21 +1,21 @@
 {
-  "schema": "diophantine-results/v4",
-  "date": "2026-11-08",
+  "schema": "diophantine-results/v5",
+  "date": "2026-11-09",
   "variable_convention": "total coordinates including the input",
   "coefficient_height": "largest absolute integer coefficient after fixed constants are substituted",
   "construction_scope": {
     "algebraic_specification": "proved for every explicitly described polynomial or coefficient-family member",
     "projection_equals_Z": "proved implication from the stated arithmetic premises; the existence families require a sufficiently large fixed parameter",
     "variable_minimality": "best constructions in this collection; no global variable minimum claimed",
-    "effectiveness": "The 27-variable and 317-variable results have ineffective sufficient coefficient thresholds. The explicit 29-variable and 370-variable constructions specify every coefficient and certify numerical sufficient parameters."
+    "effectiveness": "The 27-variable and 301-variable results have ineffective sufficient coefficient thresholds. The explicit 29-variable and 351-variable constructions specify every coefficient and certify numerical sufficient parameters."
   },
   "constructions": [
     {
-      "id": "few_variables27_cubic_family",
+      "id": "few_variables27_nontorsion_family",
       "construction_kind": "existence_in_computable_coefficient_family",
       "total_variables": 27,
-      "degree_bound_power_of_two_exponent": 158,
-      "exact_degree_majorant": "232075682770882905150152990100588354340946706432",
+      "degree_bound_power_of_two_exponent": 154,
+      "exact_degree_majorant": "20373348814943897785292785017798269643599642624",
       "degree_bound_uniform_in_fixed_parameter": true,
       "coefficient_height_bound_for_certified_defining_member": null,
       "fixed_parameter": {
@@ -43,8 +43,8 @@
         2,
         2
       ],
-      "source_cases": 8,
-      "exact_final_factor_count": "630360244960710623232",
+      "source_cases": 1,
+      "exact_final_factor_count": "55340258609409818624",
       "additional_proved_input": "aggregate_trace_height_von_buhren",
       "arithmetic_inputs": [
         "elliptic_group_and_index_height",
@@ -52,18 +52,119 @@
         "pole_obstruction_and_realization",
         "simultaneous_prime_patterns"
       ],
-      "proof": "papers/few_variables27/few_variables27_cubic_20261108_v9.tex",
-      "computation": "computation/few_variables/trace27_cubic_family",
-      "uniform_degree_certificate": "computation/few_variables/trace27_cubic_family/degree-family-verification.json",
+      "proof": "papers/few_variables27/few_variables27_nontorsion_20261109_v11.tex",
+      "computation": "computation/few_variables/trace27_nontorsion",
+      "uniform_degree_certificate": "computation/few_variables/trace27_nontorsion/degree-family-verification.json",
       "algebraic_reproduction_example": {
         "L": 137731,
         "certified_to_define_Z": false,
         "purpose": "exact algebraic reproduction and coefficient-bound verification only",
-        "source_sha256": "3e298cc674ac1a16cfbbf3f48fff3aee8fb6b777ed0625013241bc621aed5e11",
-        "specification_sha256": "2642988efca1b76d4bb187b09e6afb97a3945b5003d74530929b2cd45634e57b",
-        "coefficient_height_bound_double_power_of_two_exponent": 168,
-        "data": "computation/few_variables/trace27_cubic_family/example_L137731"
-      }
+        "source_sha256": "9a1acec4ddd1c9832a2ff564f6c920a8e20a816334e3cf219fe5c68bedb6200d",
+        "specification_sha256": "62ddd437a8f95f7349a51b6655a642fde9467786724a4c2177b44a6f5f498887",
+        "coefficient_height_bound_double_power_of_two_exponent": 165,
+        "data": "computation/few_variables/trace27_nontorsion/example_L137731"
+      },
+      "degree_bound_strict": true,
+      "pole_witness_scope": "Uses the inherited restricted-converse/descent hypotheses and the simultaneous-realization construction, which supplies nonzero ordinates; this strengthening is not inferred from bare solvability alone."
+    },
+    {
+      "id": "quartic301_family",
+      "construction_kind": "existence_in_computable_coefficient_family",
+      "total_variables": 301,
+      "degree": 4,
+      "degree_status": "exact for every member",
+      "fixed_parameter": {
+        "name": "N",
+        "domain": "integers N>=1",
+        "quantified": false,
+        "coefficient": "A_N=80989^(2*N+1)",
+        "all_sufficiently_large_parameters_define_Z": true,
+        "effective_sufficient_threshold_known": false,
+        "certified_numerical_defining_parameter": null
+      },
+      "quadratic_residuals": 275,
+      "ordinary_monomials": 4305,
+      "ordinary_monomial_count_condition": "N>=27464; this is a coefficient noncancellation threshold, not a defining-projection threshold",
+      "coefficient_parameter_terms": 4320,
+      "integer_content": 1,
+      "coefficient_height_upper_bound": "2^1520*80989^(4*N+2)",
+      "coefficient_height_upper_bound_strict": true,
+      "input_label": "51*X^2+2504",
+      "scalar_correction": 9792,
+      "polynomial_sha256": "6108657d4998b3ba81a6630a2ac43dea64e206224ca477b596e48dc743e95621",
+      "residuals_sha256": "9917be941135778816ce25ecb0cbc872b4ed7c9f3691d79355e5e8352667a4fe",
+      "arithmetic_inputs": [
+        "elliptic_group_and_index_height",
+        "contact_height",
+        "pole_obstruction_and_realization",
+        "simultaneous_prime_patterns",
+        "weighted_prime_selection"
+      ],
+      "additional_proved_input": "aggregate_trace_height_von_buhren",
+      "proof": "papers/quartic_existence/quartic301_20261109_v11.tex",
+      "computation": "computation/quartic/family301",
+      "exact_height_data": "computation/quartic/family301/construction-report301.json",
+      "local_test_proof": "papers/local_tests/mixed_valuation_tests_20261109_v11.tex"
+    },
+    {
+      "id": "few_variables29_nontorsion",
+      "construction_kind": "explicit_polynomial",
+      "role": "Best fully specified few-variable construction in this collection",
+      "total_variables": 29,
+      "retained_coordinates": 28,
+      "finite_algebra_coordinate_count": 1,
+      "degree_bound_power_of_two_exponent": 161,
+      "degree_bound_strict": true,
+      "exact_degree_majorant": "2021432499262561030580590567538985948904131919872",
+      "coefficient_height_bound_double_power_of_two_exponent": 171,
+      "exact_binary_log_coefficient_majorant": "1824327990117465218468581252398965551307997696753664",
+      "all_fixed_coefficients_specified": true,
+      "fixed_prime": 76249,
+      "normalizer_exponent": 137731,
+      "certified_sufficient_exponent": true,
+      "source_sha256": "f9e3cedc354b8fc55cb53d31a84495af53c60f8d7cc3678c63a29e27b717a2a3",
+      "specification_sha256": "daceb26d141bb265e33461957756445c565df9f1a7e5447c9258a466df976901",
+      "arithmetic_inputs": [
+        "elliptic_group_and_index_height",
+        "contact_height",
+        "pole_obstruction_and_realization",
+        "simultaneous_prime_patterns"
+      ],
+      "additional_proved_input": "effective_elliptic_abscissa_sum_height",
+      "proof": "papers/few_variables/explicit29_nontorsion_20261109_v11.tex",
+      "computation": "computation/few_variables/effective29_nontorsion",
+      "pole_witness_scope": "Uses the inherited restricted-converse/descent hypotheses and the simultaneous-realization construction, which supplies nonzero ordinates; this strengthening is not inferred from bare solvability alone."
+    },
+    {
+      "id": "quartic351",
+      "construction_kind": "explicit_polynomial_and_effective_family",
+      "role": "Best fully specified quartic in this collection",
+      "total_variables": 351,
+      "degree": 4,
+      "degree_status": "exact",
+      "quadratic_residuals": 323,
+      "ordinary_monomials": 4990,
+      "coefficient_parameter_terms": 5005,
+      "integer_content": 1,
+      "all_fixed_coefficients_specified": true,
+      "explicit_parameter": "A=80989^54929",
+      "family_parameter": "A_N=80989^(2*N+1)",
+      "certified_sufficient_N": 27464,
+      "largest_coefficient_binary_digits": 1791357,
+      "coefficient_height_upper_bound": "2^1520*80989^(4*N+2)",
+      "polynomial_sha256": "c7af90124870465ef78d68b8c8e5381cfa4c232e8828913fb198bf42a35a5fc9",
+      "residuals_sha256": "452d063b6d7da598471aa1ec0302b9e37611a44168610592931ec56aac241966",
+      "arithmetic_inputs": [
+        "elliptic_group_and_index_height",
+        "contact_height",
+        "pole_obstruction_and_realization",
+        "simultaneous_prime_patterns",
+        "weighted_prime_selection"
+      ],
+      "additional_proved_input": "effective_elliptic_abscissa_sum_height",
+      "proof": "papers/quartic/quartic351_20261109_v11.tex",
+      "computation": "computation/quartic/family351",
+      "local_test_proof": "papers/local_tests/mixed_valuation_tests_20261109_v11.tex"
     },
     {
       "id": "quartic317_family",
@@ -101,40 +202,13 @@
       "additional_proved_input": "aggregate_trace_height_von_buhren",
       "proof": "papers/quartic_existence/quartic317_family_20261108_v9.tex",
       "computation": "computation/quartic/family317",
-      "exact_height_data": "computation/quartic/family317/construction-report317.json"
-    },
-    {
-      "id": "few_variables29_effective",
-      "construction_kind": "explicit_polynomial",
-      "role": "Best fully specified few-variable construction in this collection",
-      "total_variables": 29,
-      "retained_coordinates": 28,
-      "finite_algebra_coordinate_count": 1,
-      "degree_bound_power_of_two_exponent": 166,
-      "degree_bound_strict": true,
-      "exact_degree_majorant": "51807110488583875822172531230546510464175948431360",
-      "coefficient_height_bound_double_power_of_two_exponent": 175,
-      "exact_binary_log_coefficient_majorant": "46755536870962067049784996273902947989402021600952320",
-      "all_fixed_coefficients_specified": true,
-      "fixed_prime": 76249,
-      "normalizer_exponent": 137731,
-      "certified_sufficient_exponent": true,
-      "source_sha256": "25dfdf0e6b833b47ee57c4a0f490138104a49bb3a3d3656cba765a7a6eb3d549",
-      "specification_sha256": "b59e61c0145255b43cdc61b36ef122d5036bff012beb194e09fb66fef6eb2436",
-      "arithmetic_inputs": [
-        "elliptic_group_and_index_height",
-        "contact_height",
-        "pole_obstruction_and_realization",
-        "simultaneous_prime_patterns"
-      ],
-      "additional_proved_input": "effective_elliptic_abscissa_sum_height",
-      "proof": "papers/few_variables/explicit29_effective_20261108_v10.tex",
-      "computation": "computation/few_variables/effective29"
+      "exact_height_data": "computation/quartic/family317/construction-report317.json",
+      "role": "Exact input and supporting proof for the 301-variable family."
     },
     {
       "id": "quartic370",
       "construction_kind": "explicit_polynomial_and_effective_family",
-      "role": "Best fully specified quartic in this collection",
+      "role": "Exact input and supporting proof for the 351-variable construction.",
       "total_variables": 370,
       "degree": 4,
       "degree_status": "exact",
@@ -370,6 +444,23 @@
       "number_field_extension": "Totally real fields unramified at every odd rational prime, under the same integral and positivity hypotheses.",
       "conditional_index_consequence": "Under h(x([n]P)) >= n^2-6, B^2 <= 2*h(S0)+2*h(S0+S1)+82.",
       "proof": "papers/effective_sums/effective_elliptic_sums_20261108_v10.tex"
+    },
+    {
+      "id": "scalar_height_degree_threshold",
+      "minimum_degree": 4,
+      "scope": "For every number field F, no rational function A/B of two variables with max(deg A,deg B)<=3 is finite-to-one on the F-points of any nonempty archimedean open set. Some fiber there is infinite with unbounded height.",
+      "sharp_example": "U^4-delta*V^4 for delta in F not a fourth power has finite F-fibers.",
+      "scope_limit": "Ambient pairs only; not a lower bound on the coordinates of a Diophantine definition or on measurements of restricted elliptic multiples.",
+      "proof": "papers/scalar_heights/cubic_scalar_height_obstruction_20261109_v11.tex"
+    },
+    {
+      "id": "coprime_elliptic_sum_heights",
+      "general_scope": "Integral Weierstrass model over a totally real field, point Q of infinite order, pairwise coprime nonzero indices, all abscissas positive at all real embeddings.",
+      "general_inequality": "h(sum x([n_i]Q))>=max h(x([n_i]Q))-h_fin(x(Q))",
+      "specified_curve_inequality": "loss <= min(v_2(r),3)*log(2); zero if one index is even; for two coprime indices loss <=log(2)",
+      "scope_limit": "Coprimality is an additional hypothesis and is not assumed before the Lucas equation is proved.",
+      "proof": "papers/coprime_sums/coprime_elliptic_sums_20261109_v11.tex",
+      "fixed_abscissa_correction": "For an even number of pairwise coprime indices, adding the fixed x(P) makes the loss zero; no additional coordinate is required."
     }
   ],
   "source_pins": {
@@ -377,7 +468,7 @@
     "corrected_arithmetic_proof_v11": "650b298a2a18fa956f8859f3ca80e9d7c8cedd82",
     "quartic_source_v13": "5bbd74f6a479776a332cbe036809d5dddae63720"
   },
-  "release": "2026.11.08-v10",
+  "release": "2026.11.09-v11",
   "auxiliary_arithmetic_theorems": [
     {
       "id": "square_abscissa_subgroup_chart",

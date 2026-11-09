@@ -1,0 +1,370 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=29mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,microtype}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{remark}\newtheorem{remark}[theorem]{Remark}
+\newcommand{\Q}{\mathbb Q}\newcommand{\R}{\mathbb R}
+\newcommand{\PP}{\mathbb P}\newcommand{\Affine}{\mathbb A}
+\title{Rational fibers of cubic maps and a sharp obstruction to scalar height bounds}
+\author{}
+\date{9 November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+A rational function of two rational variables whose numerator and denominator
+have total degree at most three has an infinite rational fiber in every
+nonempty real open set.  The points on this fiber have unbounded height.
+The assertion for smooth cubic fibers follows from the tangent map and
+Mazur's torsion theorem.  Thus even a completely ineffective bound on the
+height of a rational pair in terms of a single rational measurement requires
+degree at least four, if the bound is to hold on a real open set.
+This degree threshold is sharp: the rational fibers of $U^4+V^4$ are all
+finite, by Faltings' theorem.  Both assertions extend to every number
+field, using Merel's torsion theorem and simultaneous archimedean
+approximation.  These assertions concern ambient rational
+pairs and do not exclude stronger height bounds on special sets of elliptic
+curve multiples.
+\end{abstract}
+
+\section{The height question}
+For a rational pair $(u,v)$, write $(1:u:v)=(c:a:b)$ with coprime integers
+$a,b,c$ and $c>0$, and put
+\[
+h_2(u,v)=\log\max\{|a|,|b|,c\}.
+\]
+For $q=a/b\in\Q$ in lowest terms with $b>0$, let
+$h(q)=\log\max\{|a|,b\}$.  Only finitely many rational pairs have
+$h_2$ at most any fixed real number.
+
+\begin{theorem}\label{thm:main}
+Let $A,B\in\Q[U,V]$ be relatively prime, with $B\ne0$,
+$\max\{\deg A,\deg B\}\le3$, and $A/B$ nonconstant.
+For every nonempty open subset $\Omega\subset\R^2$, there exists $c\in\Q$
+such that
+\[
+\{(u,v)\in\Omega\cap\Q^2:B(u,v)\ne0,\ A(u,v)/B(u,v)=c\}
+\]
+is infinite.  Its $h_2$-heights are unbounded.
+\end{theorem}
+
+The open set may in particular impose any finite list of strict real
+inequalities.  Thus positivity conditions on two real conjugates do not
+remove the obstruction in this theorem.
+
+\section{The tangent map on a plane cubic}
+Let $C\subset\PP^2$ be a smooth plane cubic over $\Q$ possessing a rational
+point.  Its tangent map $\tau:C\to C$ sends $P$ to the residual point of
+intersection with the tangent line at $P$, with intersection multiplicities
+included.  This is a morphism defined over $\Q$.  Let $H$ denote the
+hyperplane divisor class on $C$.
+
+\begin{lemma}\label{lem:torsion}
+For $P\in C(\Q)$, put $D_P=H-3[P]\in\operatorname{Pic}^0(C)(\Q)$.
+If $D_P$ is torsion, then
+\begin{equation}\label{eq:iterate}
+\tau^{39}(P)=\tau^3(P).
+\end{equation}
+The two morphisms $\tau^{39}$ and $\tau^3$ are distinct on every smooth
+plane cubic over a field of characteristic zero.
+\end{lemma}
+
+\begin{proof}
+Choose an origin $O\in C(\Q)$ and identify $C$ with its Jacobian $E$.
+Write $H_0=H-3[O]\in E(\Q)$.  The tangent intersection identity
+$2[P]+[\tau(P)]\sim H$ gives
+\[
+\tau(P)=H_0-2P,
+\qquad
+\tau^k(P)=(-2)^kP+\frac{1-(-2)^k}{3}H_0.
+\]
+The coefficient in this formula is an integer.  Since $D_P=H_0-3P$,
+\[
+\tau^{39}(P)-\tau^3(P)
+ =\frac{(-2)^3-(-2)^{39}}3D_P
+ =183251937960D_P.
+\]
+Mazur's theorem \cite[Theorem~(7$'$)]{Mazur} says that every rational
+torsion point of an elliptic curve has order in
+$\{1,2,\ldots,10,12\}$.  All these integers divide
+\[
+2520=\operatorname{lcm}(1,2,\ldots,10,12),
+\qquad
+183251937960=2520\cdot72719023.
+\]
+This proves \eqref{eq:iterate} for torsion $D_P$.
+Finally $\tau$ is translation followed by multiplication by $-2$; hence
+$\deg\tau^k=4^k$.  The degrees for $k=39$ and $k=3$ are unequal, so
+the morphisms cannot coincide.
+\end{proof}
+
+\begin{lemma}\label{lem:near}
+If $C/\Q$ is a smooth projective genus-one curve, $P\in C(\Q)$, and
+$E=\operatorname{Pic}^0(C)$ has a rational point of infinite order, then
+every real neighborhood of $P$ in $C(\R)$ contains infinitely many
+rational points of $C$.
+\end{lemma}
+
+\begin{proof}
+Use $P$ as origin and let $D\in E(\Q)$ have infinite order.
+The compact group $E(\R)$ contains a sequence of distinct multiples
+$[m_j]D$ converging to its identity.  To see this directly, compactness
+gives a convergent subsequence of the distinct points $[n]D$; differences
+of suitable pairs give distinct nonzero multiples converging to the
+identity.  Their translates by $P$ give the required rational points.
+\end{proof}
+
+\section{Proof of the fiber theorem}
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+Put $f=A/B$.  Delete the zero set of $B$ and the critical locus $df=0$.
+Because $f$ is nonconstant in characteristic zero, what remains is a
+nonempty Zariski open subset $W\subset\Affine^2$.  Every nonempty real
+open subset of $\R^2$ meets $W(\Q)$.
+
+First suppose the projective closure of the generic fiber of $f$ is not
+a smooth geometrically integral plane cubic.  Then there is a nonempty
+open subset $T\subset\Affine^1$ such that the fibers over $T$ have this same
+property and degree at most three.  Choose
+$P\in\Omega\cap W(\Q)$ with $c=f(P)\in T(\Q)$.
+The geometric component of $A-cB=0$ through $P$ is unique because $P$ is
+a smooth point of the fiber.  It is fixed by Galois, and is therefore
+defined over $\Q$.  It is either a line, a conic, or a singular integral
+plane cubic.  Its normalization has genus zero, and the smooth rational
+point $P$ lifts to a rational point on that normalization.  The
+normalization is consequently isomorphic to $\PP^1_\Q$.
+A rational parametrization gives infinitely many rational points
+arbitrarily close to $P$; all sufficiently close points belong to
+$\Omega$ and avoid $B=0$.
+
+Now suppose the generic projective fiber is a smooth geometrically
+integral plane cubic.  After deleting finitely many values of $f$,
+the projective fibers are smooth plane cubics.  Tangent intersection in
+these fibers defines a rational map $\tau$ on the total space, defined
+over $\Q$ and preserving $f$.  Equivalently it defines a rational map
+of the plane on a nonempty open subset, since the total space of the
+affine pencil is the graph of $f$.
+The rational maps $\tau^{39}$ and $\tau^3$ are unequal: their
+restrictions to a generic smooth cubic fiber have degrees $4^{39}$ and
+$4^3$, respectively.  Thus the locus on which both are defined and
+different contains a nonempty Zariski open subset of the plane.
+Choose $P\in\Omega\cap\Q^2$ in this open subset, in $W$, and above a
+smooth cubic fiber $C$.
+Lemma~\ref{lem:torsion} shows that $D_P\in\operatorname{Pic}^0(C)(\Q)$
+has infinite order.  Lemma~\ref{lem:near} supplies infinitely many
+rational points of $C$ arbitrarily close to $P$.  A small enough
+neighborhood stays in the affine chart, in $\Omega$, and away from
+$B=0$.  This proves the required infinitude in both cases.
+
+The height assertion follows because a bounded-height set of rational
+pairs is finite.
+\end{proof}
+
+\begin{corollary}\label{cor:height}
+Under the hypotheses of Theorem~\ref{thm:main}, there is no finite-valued
+function $\Phi:[0,\infty)\to\R$ such that
+\[
+h_2(u,v)\le\Phi\bigl(h(f(u,v))\bigr)
+\]
+for every $(u,v)\in\Omega\cap\Q^2$ with $B(u,v)\ne0$.
+In particular, no such $f$ is finite-to-one on the rational points of
+any nonempty real open subset of its domain.
+\end{corollary}
+
+\begin{proof}
+The infinite fiber in Theorem~\ref{thm:main} has one fixed value of
+$h(f(u,v))$ and unbounded $h_2(u,v)$.
+\end{proof}
+
+\section{Sharpness of the degree threshold}
+\begin{proposition}\label{prop:quartic}
+The polynomial $g(U,V)=U^4+V^4$ is finite-to-one on $\Q^2$.
+Consequently there exists a finite-valued nondecreasing function
+$\Phi:[0,\infty)\to[0,\infty)$ such that
+\[
+h_2(u,v)\le\Phi\bigl(h(u^4+v^4)\bigr)\qquad(u,v\in\Q).
+\]
+This assertion gives no effective formula for $\Phi$.
+\end{proposition}
+
+\begin{proof}
+The fiber above zero consists only of $(0,0)$.  For $c\in\Q^\times$,
+the projective curve
+\[
+U^4+V^4=cW^4
+\]
+is smooth over $\overline\Q$: its three partial derivatives vanish
+simultaneously only when $U=V=W=0$, which is not a projective point.
+A smooth plane quartic has genus three.  Its rational points are finite
+by Faltings' theorem \cite{Faltings}, proving the first assertion.
+For each real $T\ge0$ there are only finitely many $c\in\Q$ with
+$h(c)\le T$.  The union of their rational fibers under $g$ is finite.
+Take $\Phi(T)$ to be the maximum of $h_2$ over that finite union,
+including zero in the maximum.  This also proves monotonicity.
+\end{proof}
+
+\begin{remark}
+Finite fibers are substantially weaker than injectivity.
+Proposition~\ref{prop:quartic} does not solve the polynomial-injection
+problem for $\Q^2\to\Q$.  Poonen's theorem \cite{Poonen} obtains such
+an injection under a form of the Bombieri--Lang conjecture.
+\end{remark}
+
+\section{Scope for rational height measurements}
+Suppose a quadratic number field is written
+$K=\Q(\sqrt d)$, and a height argument produces an element
+$S=u+v\sqrt d$ with $u,v\in\Q$.  If the only restrictions on $u,v$
+are strict inequalities in the real embeddings, those restrictions
+describe a real open set.  Corollary~\ref{cor:height} rules out replacing
+the two independent rational coordinates by any single rational
+function with numerator and denominator of total degree at most three
+while retaining even an ineffective uniform height bound.
+
+If, however, $S$ is a prescribed sum of abscissas of integer multiples
+of fixed elliptic points, its attainable coordinate pairs form a much
+smaller arithmetic set.  Theorem~\ref{thm:main} makes no assertion that
+its infinite fiber meets this set infinitely often.  A height theorem
+on that special set may therefore hold, and must use the arithmetic
+restriction rather than positivity alone.  Similarly, this result is
+not a lower bound for the number of quantified variables in a
+Diophantine definition of the integers.
+
+\section{Extension to every number field}
+Let $F$ be a number field and let
+\[
+F_\infty=\prod_{v\mid\infty}F_v,
+\]
+where one place is used for each conjugate pair of complex embeddings.
+We give this product its usual real and complex topology and view $F$
+diagonally in it.  A $\Q$-basis of $F$ identifies
+$F\otimes_\Q\R$ with $F_\infty$ as a real vector space; the density of
+$\Q^{[F:\Q]}$ proves that $F$ is dense in $F_\infty$.
+The same argument shows that the $F$-points of every nonempty Zariski
+open subset of $\Affine_F^2$ meet every nonempty open subset of
+$F_\infty^2$.
+For $u,v\in F$ the pair height is the absolute logarithmic projective
+height $h(1:u:v)$.  Bounded-height subsets of $F^2$ are finite: for an
+algebraic number of degree at most $[F:\Q]$ and bounded height, its
+primitive minimal polynomial has bounded Mahler measure and hence
+bounded integer coefficients.  There are only finitely many such
+polynomials and their roots.  Apply this to $u$ and $v$, whose heights
+are each at most $h(1:u:v)$.  This is the form of Northcott's
+finiteness theorem used below.
+
+\begin{theorem}\label{thm:numberfield}
+Let $A,B\in F[U,V]$ be relatively prime, with $B\ne0$,
+$\max\{\deg A,\deg B\}\le3$, and $A/B$ nonconstant.
+For every nonempty open subset $\Omega\subset F_\infty^2$, there is
+$c\in F$ such that
+\[
+\{(u,v)\in F^2\cap\Omega:B(u,v)\ne0,\ A(u,v)/B(u,v)=c\}
+\]
+is infinite and has unbounded absolute logarithmic height.
+\end{theorem}
+
+\begin{proof}
+Merel's uniform torsion theorem \cite[Introduction, Corollary]{Merel}
+provides an integer $M_F\ge1$ annihilating the torsion subgroup of
+$E(F)$ for every elliptic curve $E/F$.  For instance, if $N$ is an
+integer upper bound for the orders of all such torsion points, one
+may take $M_F=\operatorname{lcm}(1,\ldots,N)$.
+Write $3M_F=2^a u$ with $u$ odd, and choose a positive even integer
+$h$ such that $2^h\equiv1\pmod u$.  Then
+\[
+M_F\ \bigm|\ \frac{(-2)^a-(-2)^{a+h}}3.
+\]
+On a smooth plane cubic, the tangent-map computation of
+Lemma~\ref{lem:torsion} therefore shows
+\[
+D_P\text{ torsion}\quad\Longrightarrow\quad
+\tau^{a+h}(P)=\tau^a(P).
+\]
+These maps have distinct degrees.  The unequal-iterate locus is thus
+a nonempty Zariski open set in any pencil with smooth generic cubic
+fiber.  Choose an $F$-point $P$ in this locus and in the prescribed
+archimedean open set, avoiding the same finite exceptional set of
+fibers as in the proof over $\Q$.  Then $D_P$ has infinite order.
+
+The group $\prod_{v\mid\infty}E(F_v)$ is compact.  Its infinite cyclic
+subgroup generated by $D_P$ has a sequence of distinct multiples
+converging to the identity simultaneously at every archimedean
+place.  Translation by $P$ gives infinitely many $F$-points of its
+fiber inside $\Omega$, avoiding the denominator and the points at
+infinity after shrinking the neighborhoods.
+
+If the generic projective fiber is not a smooth geometrically
+integral cubic, the component through a smooth $F$-point is a rational
+curve, exactly as in the proof of Theorem~\ref{thm:main}.  Its
+normalization is $\PP_F^1$, and density of $F$ in $F_\infty$ gives
+infinitely many points simultaneously close to the chosen point.
+Finally, bounded-height subsets of $F^2$ are finite by Northcott's
+finiteness theorem, so the heights in the infinite fiber are unbounded.
+\end{proof}
+
+\begin{corollary}\label{cor:numberfieldsharp}
+Over every number field $F$, degree four is the least possible degree
+of a rational scalar measurement of two variables that has finite
+fibers on all of $F^2$.  More precisely, no rational function of
+numerator and denominator degrees at most three is finite-to-one on
+the $F$-points of any nonempty archimedean open set, whereas for every
+$\delta\in F^\times\setminus F^{\times4}$ the polynomial
+\[
+g_\delta(U,V)=U^4-\delta V^4
+\]
+is finite-to-one on $F^2$.
+There is a finite-valued nondecreasing function $\Phi_F$ such that
+$h(1:u:v)\le\Phi_F(h(g_\delta(u,v)))$ for all $u,v\in F$.
+\end{corollary}
+
+\begin{proof}
+The lower bound follows from Theorem~\ref{thm:numberfield}.
+The zero fiber of $g_\delta$ contains only $(0,0)$: a point with
+$v\ne0$ would make $\delta=(u/v)^4$.
+For $c\ne0$, the projective curve
+$U^4-\delta V^4=cW^4$ is smooth of genus three.  Its $F$-points are
+finite by Faltings' theorem.  Northcott's theorem now gives the
+height function $\Phi_F$ by the same finite-union argument as in
+Proposition~\ref{prop:quartic}.
+Such a $\delta$ exists in every number field: any rational prime
+unramified in $F$ has valuation one at every prime of $F$ above it,
+and hence cannot be a fourth power in $F$.
+\end{proof}
+
+Neither the proof of Theorem~\ref{thm:numberfield} nor the sharpness
+argument assigns a numerical height bound.  The assertions remain
+separate from the problem of compressing a prescribed arithmetic
+subset of elliptic multiples.
+
+\begin{thebibliography}{9}
+\raggedright
+\bibitem{Mazur}
+B.~Mazur, \emph{Modular curves and the Eisenstein ideal},
+Publications Math\'ematiques de l'IH\'ES \textbf{47} (1977), 33--186,
+Theorems~(7$'$) and~(8).
+\href{https://doi.org/10.1007/BF02684339}{doi:10.1007/BF02684339}.
+
+\bibitem{Faltings}
+G.~Faltings, \emph{Endlichkeitss\"atze f\"ur abelsche Variet\"aten
+\"uber Zahlk\"orpern}, Inventiones Mathematicae \textbf{73} (1983),
+349--366, Satz~7, p.~365; erratum, \textbf{75} (1984), 381.
+\href{https://doi.org/10.1007/BF01388432}{doi:10.1007/BF01388432}.
+
+\bibitem{Merel}
+L.~Merel, \emph{Bornes pour la torsion des courbes elliptiques sur les
+corps de nombres}, Inventiones Mathematicae \textbf{124} (1996),
+no.~1--3, 437--449.
+\href{https://doi.org/10.1007/s002220050059}{doi:10.1007/s002220050059};
+\href{https://perso.imj-prg.fr/wp-content/uploads/merel-pub/torsion.pdf}
+{author's manuscript}.
+
+\bibitem{Poonen}
+B.~Poonen, \emph{Multivariable polynomial injections on rational numbers},
+Acta Arithmetica \textbf{145} (2010), no.~2, 123--127.
+\href{https://doi.org/10.4064/aa145-2-2}{doi:10.4064/aa145-2-2};
+\href{https://math.mit.edu/~poonen/papers/QQ.pdf}{author's manuscript}.
+\end{thebibliography}
+\end{document}
