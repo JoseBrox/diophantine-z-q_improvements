@@ -1,0 +1,290 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\usepackage[margin=27mm]{geometry}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\C}{\mathbb C}
+\newcommand{\hF}{h_{\mathrm F}}
+\newcommand{\OK}{\mathcal O_K}
+\title{Evaluation of differentials over an unramified fibre}
+\author{}\date{9 November 2026}
+\begin{document}\maketitle
+
+\noindent This is a candidate proof for independent mathematical review.
+The argument below does not use bounds for Green functions or for
+Faltings's delta invariant.
+
+\section{A height bound from the discriminant of one fibre}
+
+Let $X$ be a smooth projective geometrically connected curve over a
+number field, of genus $g\geq1$, and let
+$\pi:X\longrightarrow\mathbb P^1$ be a finite morphism of degree $d$,
+unramified outside $0,1,\infty$. Write $t$ for the coordinate on the
+target. Enlarge the number field $K$ so that $X$ has semistable
+reduction and every point in $\pi^{-1}(2)$ is $K$-rational.
+Let $\mathcal Y$ be the normalization of $\mathbb P^1_{\OK}$ in
+$K(X)$. This is finite and flat over $\mathbb P^1_{\OK}$: finiteness
+follows from excellence, and flatness from normality in dimension two
+and the regularity of the target. On the affine $t$-chart write
+$\mathcal Y=\operatorname{Spec}B$, where $B$ is a finite projective
+$\OK[t]$-algebra of rank $d$. Put
+\[
+ C=B/(t-2)B\subset K^d,\qquad O=\OK^d.
+\]
+The algebra $C$ is finite locally free over $\OK$, with generic fibre
+$K^d$, and every element is integral; hence $C\subset O$.
+Let $\mathfrak D(C)$ be its discriminant ideal, defined by the
+determinant of its trace pairing. Denote its absolute norm by
+$\mathrm N\mathfrak D(C)$.
+
+\begin{proposition}\label{prop:evaluation}
+With the Faltings metric induced by the inner product
+$\frac i2\int\omega\wedge\overline\omega$ on holomorphic
+differentials, one has
+\[
+ \hF(\operatorname{Jac}X)
+ \leq\frac{\log\mathrm N\mathfrak D(C)}{2[K:\Q]}
+       +g\log\frac2{\sqrt\pi}.
+\]
+A different standard normalization of the Faltings metric changes
+only an absolute constant times $g$.
+\end{proposition}
+
+\begin{proof}
+Let $\mathcal X$ be a minimal regular semistable model of $X$, and
+let $E=H^0(\mathcal X,\omega_{\mathcal X/\OK})$. This is a projective
+$\OK$-module of rank $g$, with its $L^2$ metric at each complex
+embedding, and its normalized arithmetic degree is the stable
+Faltings height of the Jacobian.
+
+Regular differentials on $\mathcal X$ define sections of the
+dualizing sheaf of $\mathcal Y$. Indeed, take a common regular model
+dominating $\mathcal X$ and $\mathcal Y$. Pullback preserves global
+regular differentials under blowups; a differential on the common
+model is regular at every codimension-one point of the normal
+surface $\mathcal Y$, and therefore extends to its reflexive
+dualizing sheaf. On the affine $t$-chart, finite duality identifies
+this sheaf with
+\[
+ \operatorname{Hom}_{\OK[t]}(B,\OK[t])\,dt.
+\]
+Specialization at $t=2$ commutes with this dual, because $B$ is
+finite projective. It therefore gives a map
+\[
+ E\longrightarrow C^\vee:=\operatorname{Hom}_{\OK}(C,\OK)
+       \subset K^d,
+\]
+where the inclusion is by the trace pairing on $K^d$. Its coordinates
+are the values $\omega/dt$ at the points of $\pi^{-1}(2)$.
+
+Riemann--Hurwitz gives
+$2g-2=-2d+\deg\operatorname{Ram}(\pi)\leq d-3$, since the
+ramification contribution over each of three points is at most
+$d-1$. In particular $d>2g-2$. A nonzero holomorphic differential
+cannot vanish at all $d$ distinct points of this fibre. Thus the
+evaluation map has rank $g$. Choose a set $I$ of $g$ coordinate
+positions for which the projection remains injective, and put
+$F=\operatorname{pr}_I(C^\vee)\subset K^g$.
+
+The trace pairing makes $O=\OK^d$ self-dual. Hence
+\[
+ O\subset C^\vee,\qquad
+ \operatorname{length}_{\OK_{\mathfrak p}}(C^\vee/O)
+ =\operatorname{length}_{\OK_{\mathfrak p}}(O/C)
+ =\tfrac12 v_{\mathfrak p}(\mathfrak D(C))
+\]
+for every finite prime $\mathfrak p$. Projection yields a surjection
+$C^\vee/O\twoheadrightarrow F/\OK^g$. Equip $K^g$ with its standard
+Euclidean metric at every complex embedding. It follows that
+\[
+ \widehat{\deg}(F)
+ \leq \tfrac12\log\mathrm N\mathfrak D(C).
+\]
+
+For an embedding $\sigma:K\hookrightarrow\C$, each point of the
+fibre lies on a separate analytic sheet above
+$D=\{t:|t-2|<1/2\}$, since $D$ is simply connected and avoids the
+branch locus. If $\omega=f(t)\,dt$ on such a sheet, the mean-value
+inequality gives
+\[
+ |f(2)|^2\leq\frac4\pi\int_D|f(t)|^2\,dx\,dy
+           \leq\frac4\pi\|\omega\|_{L^2}^2.
+\]
+Thus each row of the $g\times g$ evaluation matrix in an orthonormal
+basis has Euclidean norm at most $2/\sqrt\pi$. By Hadamard's
+inequality, the induced determinant map $\det E\to\det F$ has norm
+at most $(2/\sqrt\pi)^g$ at every embedding. This is an integral
+nonzero map of line bundles. Taking arithmetic degrees gives
+\[
+ \widehat{\deg}(E)
+ \leq\widehat{\deg}(F)
+       +[K:\Q]g\log(2/\sqrt\pi).
+\]
+The preceding inequality proves the proposition.
+\end{proof}
+
+\section{The finite discriminant estimate}
+
+Let $S$ be a finite set of rational primes. Assume that the
+normalization defining the cover is finite etale over
+\[
+ \operatorname{Spec}\Z[S^{-1},t,t^{-1},(t-1)^{-1}]
+\]
+(or over the corresponding base change to its field of definition).
+This property persists on normalization after any finite base
+extension, since a finite etale algebra over a normal base is normal.
+Write $\operatorname{rad}(S)=\prod_{p\in S}p$ and $\omega(S)=\#S$.
+
+\begin{lemma}\label{lem:discriminant}
+One has
+\[
+ \frac{\log\mathrm N\mathfrak D(C)}{[K:\Q]}
+ \leq d\left(\log2+\log\operatorname{rad}(S)
+              +\omega(S)\log d\right).
+\]
+\end{lemma}
+
+\begin{proof}
+The trace determinant of $B/\OK[t]$ is a section of an invertible
+sheaf, and defines its effective discriminant divisor. Base change
+to $t=2$ identifies its intersection with this section with
+$\log\mathrm N\mathfrak D(C)$. At a codimension-one point of the
+base, its coefficient is $\sum_j f_jr_j$, where $e_j,f_j,r_j$ are
+the ramification index, residue degree, and different exponent of
+the extensions of discrete valuation rings in the normalization.
+Here $\sum_j e_jf_j=d$.
+
+At a horizontal branch divisor the residue characteristic is zero,
+so $r_j=e_j-1$ and the coefficient is at most $d$. The section
+$t=2$ meets $t=0$ with normalized intersection $\log2$, and meets
+neither $t=1$ nor $t=\infty$. The horizontal contribution is thus
+at most $d\log2$.
+
+Let $\mathfrak p\mid p$ be a prime of $K$ and let
+$e_{\mathfrak p}=v_{\mathfrak p}(p)$. Lenstra's different bound,
+in the form of Javanpeykar, Proposition~4.1.3, gives
+\[
+ r_j\leq e_j-1+e_j e_{\mathfrak p}
+                 \left\lfloor\frac{\log d}{\log p}\right\rfloor.
+\]
+Consequently the discriminant coefficient at the vertical divisor
+over $\mathfrak p$ is at most
+\[
+ d\left(1+e_{\mathfrak p}
+                 \left\lfloor\frac{\log d}{\log p}\right\rfloor\right).
+\]
+Only $p\in S$ can contribute. Sum the intersections of these
+vertical divisors with the section, use
+$\sum_{\mathfrak p\mid p}e_{\mathfrak p}f_{\mathfrak p}=[K:\Q]$
+and $\sum_{\mathfrak p\mid p}f_{\mathfrak p}\leq[K:\Q]$, and then
+use $\lfloor\log d/\log p\rfloor\log p\leq\log d$. This gives
+the stated bound.
+\end{proof}
+
+\begin{theorem}\label{thm:coverheight}
+Under the hypotheses of Lemma~\ref{lem:discriminant},
+\[
+ \hF(\operatorname{Jac}X)
+ \leq\frac d2\left(\log2+\log\operatorname{rad}(S)
+              +\omega(S)\log d\right)
+       +g\log\frac2{\sqrt\pi}.
+\]
+\end{theorem}
+
+\section{Integral modular covers}
+
+Let $H\subset(\Z/N\Z)^\times$ contain $-1$, and let
+$X_H=X_1(N)/H$. The map $t=j/1728$ is unramified outside
+$0,1,\infty$. It has an integral finite etale model away from
+these three sections and the primes dividing $6N$. An explicit
+verification uses the elliptic curve
+\[
+ E_t:\quad y^2=x^3-\frac{3t}{t-1}x-\frac{2t}{t-1}
+\]
+over $\Z[1/(6N),t,t^{-1},(t-1)^{-1}]$. Its discriminant is
+$1728t^2/(t-1)^3$ and its $j$-invariant is $1728t$.
+The scheme of points of exact order $N$ is finite etale. Its
+quotient by the constant group $H$ is also finite etale, because
+$H$ acts freely. Its generic fibre is precisely the modular cover
+$X_H\to\mathbb P^1_j$ restricted to this open set: the only
+automorphisms of the elliptic curve are $\{1,-1\}\subset H$,
+and hence taking an $H$-orbit removes the ambiguity in choosing an
+isomorphism to $E_t$. The construction agrees with the
+normalization, since this finite etale model is normal.
+
+Theorem~\ref{thm:coverheight} therefore bounds the stable Jacobian
+height uniformly in $H$ by
+\[
+ \hF(\operatorname{Jac}X_H)
+ \leq\frac d2\left(\log2+\log\operatorname{rad}(6N)
+              +\omega(6N)\log d\right)+g\log\frac2{\sqrt\pi},
+ \qquad d=\deg(j|_{X_H}).
+\]
+
+\section{Application to the inherited five-contact realization}
+
+The inherited realization gives an abelian surface $A$, a squarefree
+integer $R=B_*M_5(a)$, a level $N$, and an even nebentypus character
+$\varepsilon$ with $H=\ker\varepsilon$, such that
+\[
+ \begin{gathered}
+ h(a)\leq2\max(0,\hF(A))+128,\qquad
+ N\leq210^{300}R^2,\quad\operatorname{rad}(N)\mid R,\\
+ t=\operatorname{ord}\varepsilon\leq4608\varphi(R),\qquad
+ d=\deg(j|_{X_H})
+   =Nt\prod_{p\mid N}(1+p^{-1})
+   \leq4608\cdot210^{300}R^3.
+ \end{gathered}
+\]
+The curve has $g\leq d$, and $A$ is an isogeny factor of its
+Jacobian over a field of degree at most $2304R$. The alternative
+complex multiplication case has $\hF(A)<854R$.
+The exact identity
+\[
+ \varphi(R)\prod_{p\mid R}(1+p^{-1})
+ =R\prod_{p\mid R}(1-p^{-2})<R
+\]
+is used in the bound for $d$. Since $6\mid R$,
+Theorem~\ref{thm:coverheight} gives
+\[
+ \hF(\operatorname{Jac}X_H)\ll R^3(1+\log R)^2.
+\]
+The stable subvariety inequality of R\'emond, followed by the
+fixed-dimension isogeny bound of Gaudron--R\'emond applied to an
+abelian surface factor, gives
+\[
+ \hF(A)\ll R^3(1+\log R)^2.
+\]
+The latter step only adds $O(g+\log R+\log^+\hF(\operatorname{Jac}X_H))$;
+the isogeny theorem is applied in dimension two, not in dimension
+$g$. Thus the candidate conclusion is
+\[
+ h(a)\ll M_5(a)^3(1+\log M_5(a))^2,
+\]
+with an absolute constant depending on the fixed bad-prime product
+$B_*$. In particular, for each fixed $\eta>0$ one obtains
+$h(a)\ll_\eta M_5(a)^{3+\eta}$.
+
+\section{Primary sources to verify in the independent review}
+\begin{itemize}
+\item A.~Javanpeykar, \emph{Polynomial bounds for Arakelov invariants
+of Belyi curves}, Algebra Number Theory 8 (2014), 89--140,
+especially Section~2.3 (normalization of the Jacobian height),
+Proposition~4.1.3 (different bound), and Section~4.2 (finite duality
+and the discriminant divisor). DOI 10.2140/ant.2014.8.89.
+\item Standard finite duality identifies the relative dualizing
+module of a finite flat algebra $B/A$ with
+$\operatorname{Hom}_A(B,A)$. The argument uses this module and
+does not require that the dualizing module of the normal surface
+be invertible.
+\item G.~R\'emond, \emph{Propri\'et\'es de la hauteur de Faltings},
+Ann. Sc. Norm. Super. Pisa Cl. Sci. 23 (2022), 1589--1596,
+Corollary~1.2 and its stable form.
+\item E.~Gaudron and G.~R\'emond, \emph{Nouveaux th\'eor\`emes
+d'isog\'enie}, M\'em. Soc. Math. France 176 (2023),
+Theorem~1.9(1), applied in dimension two.
+\end{itemize}
+\end{document}
