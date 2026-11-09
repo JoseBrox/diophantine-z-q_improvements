@@ -15,27 +15,29 @@ $$
 | Construction | Total variables | Degree | Coefficient information |
 |:--|--:|:--|:--|
 | [Fewest variables: existence theorem](papers/few_variables27/few_variables27_nontorsion_20261109_v12.pdf) | **27** | $<2^{151}$ | Every sufficiently large fixed odd coefficient exponent works; the sufficient threshold is ineffective. |
-| [Best quartic: existence theorem](papers/quartic_existence/quartic297_20261109_v12.pdf) | **297** | **4, exact** | $H(P_N)=80989^{4N+2}+1$ for $N\ge23$; a sufficient numerical defining parameter is not determined. |
+| [Best quartic: existence theorem](papers/quartic_existence/quartic279_20261109_v13.pdf) | **279** | **4, exact** | $H(P_N)=80989^{4N+2}+1$ for $N\ge23$; a sufficient numerical defining parameter is not determined. |
 | [Explicit construction with few variables](papers/few_variables/explicit29_nontorsion_20261109_v12.pdf) | **29** | $<2^{157}$ | $H(F)\le2^{\,2^{168}}$; the fixed exponent is $137731$. |
-| [Explicit quartic](papers/quartic/quartic342_20261109_v12.pdf) | **342** | **4, exact** | $H(P)=80989^{109858}+1<2^{1791283}$; every coefficient is specified. |
+| [Explicit quartic](papers/quartic/quartic322_20261109_v13.pdf) | **322** | **4, exact** | $H(P)=80989^{109858}+1<2^{1791283}$; every coefficient is specified. |
+
+The targets of fewer than ten total variables and fewer than one hundred for quartics remain open.
 
 These are **conditional projection theorems**: under the arithmetic premises stated in their papers, the polynomials have rational input projection exactly $\mathbb Z$. The quantitative prime selection used by the quartics is derived from the cited prime-pattern estimates in the [prime-selection paper](papers/prime_selection/prime_selection_20261109_v12.pdf); it is not an additional independent conjecture. The collection makes no claim of a global minimum in the number of variables.
 
-The 27- and 297-variable results prove that all sufficiently large members of computable coefficient families work, with ineffective sufficient thresholds. The 29- and 342-variable constructions instead have certified fixed parameters and fully specified integer coefficients. Fixed parameters are coefficients, not extra variables. The numerical 27-variable example at exponent $137731$ is only an algebraic reproduction fixture and is **not certified to define $\mathbb Z$**.
+The 27- and 279-variable results prove that all sufficiently large members of computable coefficient families work, with ineffective sufficient thresholds. The 29- and 322-variable constructions instead have certified fixed parameters and fully specified integer coefficients. Fixed parameters are coefficients, not extra variables. The numerical 27-variable example at exponent $137731$ is only an algebraic reproduction fixture and is **not certified to define $\mathbb Z$**.
 
-The 342-variable polynomial is the sum of squares of **314 quadratic equations**, has **4,938 nonzero coordinate monomials**, and has integer content one. Its largest coefficient has exactly **1,791,283 binary digits**. The 297-variable family uses **271 quadratic equations** and has **4,268 coordinate monomials**. These support counts hold for every positive parameter $A_N=80989^{2N+1}$. They do not determine the ineffective defining threshold.
+The 322-variable polynomial is the sum of squares of **294 quadratic equations**, has **4,992 nonzero coordinate monomials**, and has integer content one. Its largest coefficient has exactly **1,791,283 binary digits**. The 279-variable family uses **253 quadratic equations** and has **3,692 coordinate monomials**. These support counts hold for every positive parameter $A_N=80989^{2N+1}$. They do not determine the ineffective defining threshold.
 
 ### How the constructions attain these bounds
 
-The local construction uses one weight $q=1/(R\delta^4)$ and its powers $q^{19}$ and $q^{79}$ for required contact orders $1,10,40$. One shared reciprocal $c=q^{-3}$ gives the quadratic relations
+At every good unramified place of the elliptic curve, a nonzero reciprocal abscissa has even valuation. The [explicit quartic proof](papers/quartic/quartic322_20261109_v13.pdf) uses this parity to place sixteen local tests in four factors with distinct valuation classes. Smaller powers suffice, and the shared reference point needs formal depth ten. The proof establishes integrality of the comparison ratios before obtaining precision forty; it covers identity numerators and the enlarged reference-point chart.
 
-$$
-cq^4=q,\qquad cq^{19}=(q^8)^2,\qquad cq^{79}=(q^{38})^2.
-$$
+The [279-variable construction](papers/quartic_existence/quartic279_20261109_v13.pdf) combines this parity with twenty disjoint contact points. The resulting height exponent $19/4$ permits comparison orders twelve and three, shorter formal-logarithm approximations, and reference depth three. Its five factors use the normalization $R=F_{20}(a\lambda)/(a^{20}\delta^{22})$, with $q\delta^2=e$ and the matching trace equation $e\delta^2b=\tau^2$. The additional exceptional primes are $123121$ and $161303$. The proof supplies a new ineffective sufficient threshold; the explicit threshold $N=27464$ is asserted only for the separate 322-variable construction.
 
-Together with squaring equations and the existing formal-logarithm coordinates, these relations keep every residual quadratic. At consumed contact primes, $\delta$ is a unit and the powers have exactly the required valuations. The proof treats $q=0$ separately and proves simultaneous completeness at denominator primes and real places. An invertible affine change makes the scalar contact product itself a coordinate; the normalizer becomes $R+80989^2rR-A_Nr$, giving the exact coefficient height above.
+Both complete quadratic systems use an invertible affine scalar change that makes the contact product itself a coordinate. Its normalizer is $R+80989^2rR-A_Nr$, giving the exact coefficient height above.
 
 The few-variable constructions use a guarded finite algebra and one additional rational coordinate. The [weighted finite-algebra theorem](papers/finite_algebra/weighted_finite_algebra_20261109_v12.pdf) compiles directly scaled characteristic polynomials, excludes repeated roots with a resultant, and keeps the full-degree factor unsquared. Weights cancel in principal minors, reducing degree and coefficient bounds. The source's nonzero-ordinate realization supplies a single conic chart and nonzero quadratic generators. All inherited restricted-converse and descent hypotheses remain explicit.
+
+The [uniform scalar normalization](papers/scalar_normalization/uniform_scalar_normalization_20261109_v13.pdf) supplies a positive rational function bounded above and below at the real places, with the required square denominator and fixed exceptional primes. Replacing the unbounded elliptic parameter by $y/(x^2+D)$ removes a real-approximation condition on the point carrying the large index. Its exact coefficient multiplier is controlled by a resultant in $X^2$. This is a proved preparation lemma; the published 27- and 29-variable specifications are unchanged. Their variable counts cannot be lowered simply by prescribing an index divisible by powers of the contact primes, because the elliptic reduction orders impose additional divisibility conditions.
 
 ## Read the papers
 
@@ -45,9 +47,13 @@ Each paper contains definitions, proofs, precise dependencies, and a ready-to-re
 |:--|:--|:--|
 | Degree and coordinate lower bounds | [Read](papers/lower_bounds/lower_bounds_20261108_v8.pdf) | [Source](papers/lower_bounds/lower_bounds_20261108_v8.tex) |
 | The 27-variable family, degree less than $2^{151}$ | [Read](papers/few_variables27/few_variables27_nontorsion_20261109_v12.pdf) | [Source](papers/few_variables27/few_variables27_nontorsion_20261109_v12.tex) |
-| The 297-variable quartic family | [Read](papers/quartic_existence/quartic297_20261109_v12.pdf) | [Source](papers/quartic_existence/quartic297_20261109_v12.tex) |
 | The explicit 29-variable polynomial, degree less than $2^{157}$ | [Read](papers/few_variables/explicit29_nontorsion_20261109_v12.pdf) | [Source](papers/few_variables/explicit29_nontorsion_20261109_v12.tex) |
-| The explicit 342-variable quartic | [Read](papers/quartic/quartic342_20261109_v12.pdf) | [Source](papers/quartic/quartic342_20261109_v12.tex) |
+| The 279-variable quartic from twenty contacts | [Read](papers/quartic_existence/quartic279_20261109_v13.pdf) | [Source](papers/quartic_existence/quartic279_20261109_v13.tex) |
+| The explicit 322-variable quartic from even valuations | [Read](papers/quartic/quartic322_20261109_v13.pdf) | [Source](papers/quartic/quartic322_20261109_v13.tex) |
+| Disjoint contact sets and height exponents $19/r$ | [Read](papers/contact_heights/contact_height_amplification_20261109_v13.pdf) | [Source](papers/contact_heights/contact_height_amplification_20261109_v13.tex) |
+| A four-coordinate locally dense proper subset of the rational subfield | [Read](papers/number_fields/elliptic_ratios_and_integrality_20261109_v13.pdf) | [Source](papers/number_fields/elliptic_ratios_and_integrality_20261109_v13.tex) |
+| Uniform real preparation of the scalar elliptic certificate | [Read](papers/scalar_normalization/uniform_scalar_normalization_20261109_v13.pdf) | [Source](papers/scalar_normalization/uniform_scalar_normalization_20261109_v13.tex) |
+| Structural constraints on reducing elliptic witnesses | [Read](papers/elliptic_charts/structural_constraints_20261109_v13.pdf) | [Source](papers/elliptic_charts/structural_constraints_20261109_v13.tex) |
 | Shared local weights and exact quartic coefficient height | [Read](papers/local_tests/shared_local_weights_20261109_v12.pdf) | [Source](papers/local_tests/shared_local_weights_20261109_v12.tex) |
 | Weighted finite-algebra elimination with one extra coordinate | [Read](papers/finite_algebra/weighted_finite_algebra_20261109_v12.pdf) | [Source](papers/finite_algebra/weighted_finite_algebra_20261109_v12.tex) |
 | Quantitative prime selection and completeness of local weights | [Read](papers/prime_selection/prime_selection_20261109_v12.pdf) | [Source](papers/prime_selection/prime_selection_20261109_v12.tex) |
@@ -75,6 +81,8 @@ The following complete results supply the arithmetic arguments and exact source 
 
 | Result | PDF | LaTeX |
 |:--|:--|:--|
+| Shared-weight source with two scales | [Read](papers/quartic_existence/quartic297_20261109_v12.pdf) | [Source](papers/quartic_existence/quartic297_20261109_v12.tex) |
+| Shared-weight source with three scales | [Read](papers/quartic/quartic342_20261109_v12.pdf) | [Source](papers/quartic/quartic342_20261109_v12.tex) |
 | Mixed local-test source with two scales | [Read](papers/quartic_existence/quartic301_20261109_v11.pdf) | [Source](papers/quartic_existence/quartic301_20261109_v11.tex) |
 | Mixed local-test source with three scales | [Read](papers/quartic/quartic351_20261109_v11.pdf) | [Source](papers/quartic/quartic351_20261109_v11.tex) |
 | Two-scale quartic source and trace-height argument | [Read](papers/quartic_existence/quartic317_family_20261108_v9.pdf) | [Source](papers/quartic_existence/quartic317_family_20261108_v9.tex) |
@@ -87,7 +95,7 @@ The following complete results supply the arithmetic arguments and exact source 
 
 The common arithmetic inputs are the specified elliptic group and index-height assertions, the contact-height theorem, pole obstruction and realization, and simultaneous prime patterns. The few-variable constructions retain the restricted-converse and descent hypotheses used in the source realization proof. The quartics additionally use the quantitative consequence of the cited prime-pattern estimates proved in the prime-selection paper. The [arithmetic input guide](docs/arithmetic_inputs.md) separates these inputs from finite coefficient verification.
 
-The aggregate trace-height argument applies [Von Buhren's Theorem 1.1](https://www.numdam.org/item/10.5802/jtnb.981.pdf) after verifying its geometric hypotheses. Its additive constant is ineffective. Enlarging a fixed coefficient absorbs that constant in the 27-variable and 297-variable existence theorems. The explicit 29-variable and 342-variable constructions instead use the proved effective height estimate for the two components of an elliptic sum.
+The aggregate trace-height argument applies [Von Buhren's Theorem 1.1](https://www.numdam.org/item/10.5802/jtnb.981.pdf) after verifying its geometric hypotheses. Its additive constant is ineffective. Enlarging a fixed coefficient absorbs that constant in the 27-variable and 279-variable existence theorems. The explicit 29-variable and 322-variable constructions instead use the proved effective height estimate for the two components of an elliptic sum.
 
 ## Structural results and number fields
 
@@ -117,17 +125,27 @@ A genuine counterexample to the ring-of-integers question would remain a counter
 
 Rank stability supplies infinite Diophantine subsets of the rational subfield, rather than a definition of that subfield by itself. On $y^2=x^3-2$, all rational abscissas have even $5$-adic valuation, although $(3,5)$ has infinite order. Therefore ratios and finite products of these abscissas cannot represent $5$. This obstructs that multiplicative strategy; it does not obstruct sums or more elaborate definitions.
 
+The [elliptic-ratio paper](papers/number_fields/elliptic_ratios_and_integrality_20261109_v13.pdf) gives an explicit polynomial with **four total coordinates, degree 13, and height 162**. In eight specified real or imaginary quadratic fields, it defines the same proper subset $D\subset\mathbb Q$: it contains $0,1$ and excludes $-1$. Nevertheless, $D$ is simultaneously dense in every finite product of rational completions, and every local input has witnesses over every completion of each field. Unconditional elliptic rank calculations certify the global exclusion. This is an obstruction to a proposed rational-subfield construction, not a counterexample to defining a ring of integers. The same paper proves that a Diophantine set containing $\mathbb Z$ with uniformly bounded integral denominators would suffice to define the full ring of integers.
+
+The same paper applies [Corvaja–Zannier, Theorem 1.1](https://arxiv.org/html/2608.28255v1) to show that **every fixed finite collection of rational combinations of abelian point coordinates misses infinitely many integers**. This includes finite sums, products, and ratios of the stable-elliptic sets, and a separate four-coordinate slope polynomial of degree 11 and height 162. Consequently these operations cannot by themselves produce the bounded-denominator set containing all integers required by the integral-basis criterion. Arbitrary algebraic correspondences and unrestricted additional affine witnesses are outside this obstruction.
+
+The [contact-height paper](papers/contact_heights/contact_height_amplification_20261109_v13.pdf) derives exponent $19/r$ from the existing exponent-19 hypothesis by using $5r$ disjoint contacts. For two or three translates no exceptional prime above the existing cutoff is added. Four translates add exactly the primes $123121$ and $161303$. The 279-variable quartic implements this case with an exact circuit and full projection proof. Further translates reduce required congruence orders but increase the cost of the contact polynomial.
+
 The [input-map paper](papers/input_normalization/quadratic_input_obstruction_20261109_v12.pdf) proves that no integer quadratic can simultaneously reflect rational integrality, take odd values at every integer, and make the specified uncorrected five-contact product a square in $\mathbb Q_2$ at every integer. If positivity at all integers is also required, degree four is optimal in that restricted class, attained by $8X^4+3$. This is a restriction of that normalization, not a lower bound for all defining polynomials. Current research priorities and their proved constraints appear in the [research guide](docs/research_directions.md).
 
 ## Reproduce the results
 
-Python 3.10 or newer and its standard library suffice:
+The polynomial constructions and structural algebraic certificates require Python 3.10 or newer and its standard library:
 
 ~~~sh
 python3 scripts/verify.py --full
 ~~~
 
-The 34-stage verifier reconstructs the pinned source circuits, independently checks every quartic coefficient and the affine normalization, rebuilds the weighted 27- and 29-variable specifications, and checks their degree and coefficient bounds. It also checks the finite identities and residue certificates supporting the number-field and input-map results. It works in a temporary copy and leaves published inputs unchanged. The numerical 27-variable example is an algebraic reproducibility fixture and is **not** certified to exceed the ineffective defining threshold.
+The standard-library verifier reconstructs the pinned source circuits, independently checks every quartic coefficient and the affine normalization, rebuilds the weighted 27- and 29-variable specifications, and checks their degree and coefficient bounds. It also reconstructs the parity-based quartics and the disjoint-contact certificates. It also checks the finite identities and residue certificates supporting the number-field and input-map results. It works in a temporary copy and leaves published inputs unchanged. The numerical 27-variable example is an algebraic reproducibility fixture and is **not** certified to exceed the ineffective defining threshold.
+
+The [verification receipt](data/verification-v13.json) records **45 passing stages**, including the optional unconditional PARI rank calculations. The standard-library route runs 44 stages.
+
+To additionally rerun the unconditional elliptic rank calculations, install `cypari2` and use `python3 scripts/verify.py --full --with-pari`. The supplied rank certificate records the exact bounds and torsion computations; analytic rank and BSD are not used.
 
 The [reproducibility guide](docs/reproducibility.md) gives individual commands and verification boundaries. The [data-format guide](docs/data_format.md) explains the complete coefficient tables and finite-algebra specifications. [MANIFEST.json](MANIFEST.json) records file sizes and SHA-256 hashes; [data/results.json](data/results.json) records exact bounds, effectiveness, and theorem scope.
 

@@ -2,20 +2,20 @@
 
 ## Quartic coefficient tables
 
-The leading tables are in `computation/quartic/family297` and `family342`.
+The leading tables are in `computation/quartic/family279` and `family322`.
 
 | Family | Total variables | Quadratic equations | Terms with parameter powers separate | Ordinary monomials |
 |:--|--:|--:|--:|--:|
-| 297 | 297 | 271 | 4269 | 4268 |
-| 342 | 342 | 314 | 4939 | 4938 |
+| 279 | 279 | 253 | 3693 | 3692 |
+| 322 | 322 | 294 | 4993 | 4992 |
 
-Each family has exact degree four and integer content one. The support counts hold for every positive coefficient parameter, hence for every integer $N\ge1$. The 342-variable member at $N=27464$ has a certified defining theorem under the stated arithmetic inputs. The 297-variable family requires a sufficiently large $N$ with ineffective threshold; its support and height computations do not certify a defining member.
+Each family has exact degree four and integer content one. The support counts hold for every positive coefficient parameter, hence for every integer $N\ge1$. The 322-variable member at $N=27464$ has a certified defining theorem under the stated arithmetic inputs. The 279-variable family requires a sufficiently large $N$ with ineffective threshold; its support and height computations do not certify a defining member.
 
 The fixed coefficient is $A_N=80989^{2N+1}$. In each family,
 
 $$P_N=\sum_j Q_{N,j}^2,$$
 
-where the complete quadratic-system file lists all residuals $Q_{N,j}$. The parameter is not an extra variable. The `integer-quadratic-family-v5` and `integer-quartic-family-v5` formats have these fields:
+where the complete quadratic-system file lists all residuals $Q_{N,j}$. The parameter is not an extra variable. The 322-variable tables use `integer-quadratic-family-v6` and `integer-quartic-family-v6`; the 279-variable tables use the corresponding `v7` labels. They share these fields:
 
 | Field | Meaning |
 |:--|:--|
@@ -41,7 +41,7 @@ At $N=27464$, this number has exactly 1,791,283 binary digits. The reports retai
 
 ## Exact source dependencies
 
-The shared-weight builder reads the family301 and family351 quadratic systems and verifies their SHA-256 digests. Those systems are reconstructed from family317 and family370, respectively. The source chain is complete in the supplied constructors. The 392-coordinate baseline and original source tables are distributed as deterministic gzip archives; their uncompressed lengths and hashes are recorded in `data/compressed_sources.json`. The restoration script rejects conflicting existing files.
+The even-valuation builder reads and hash-checks family342 to produce family322. Its checker reconstructs the reduced powers and all four local factors. The contact-amplified builder reads family297 directly to produce family279; its separate checker reconstructs the degree-twenty contact polynomial from exact evaluations, every changed quadratic row, all five local factors, and the full quartic. The producers and checkers share no polynomial arithmetic implementation with each other. The shared-weight builder reads the family301 and family351 quadratic systems and verifies their SHA-256 digests. Those systems are reconstructed from family317 and family370, respectively. The source chain is complete in the supplied constructors. The 392-coordinate baseline and original source tables are distributed as deterministic gzip archives; their uncompressed lengths and hashes are recorded in `data/compressed_sources.json`. The restoration script rejects conflicting existing files.
 
 `PROVENANCE.json` in `computation/quartic` binds precise source commits, distributed computational files, and mathematical proofs. Every final quartic coefficient is stored; reconstruction requires no search or unpublished intermediate polynomial.
 

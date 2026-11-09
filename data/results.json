@@ -7,7 +7,7 @@
     "algebraic_specification": "proved for every explicitly described polynomial or coefficient-family member",
     "projection_equals_Z": "proved implication from the stated arithmetic premises; the existence families require a sufficiently large fixed parameter",
     "variable_minimality": "best constructions in this collection; no global variable minimum claimed",
-    "effectiveness": "The 27-variable and 297-variable results have ineffective sufficient coefficient thresholds. The explicit 29-variable and 342-variable constructions specify every coefficient and certify numerical sufficient parameters.",
+    "effectiveness": "The 27-variable and 279-variable results have ineffective sufficient coefficient thresholds. The explicit 29-variable and 322-variable constructions specify every coefficient and certify numerical sufficient parameters.",
     "prime_selection": "The quantitative weighted selection used by the quartics follows from the cited Sun v2 Propositions 5.1 and 6.2 and Section 6.1, with the separation argument recorded in the prime-selection paper. It is not an additional independent conjecture; dependence on the cited arithmetic estimates remains explicit."
   },
   "constructions": [
@@ -80,9 +80,9 @@
       "uniform_degree_certificate": "computation/few_variables/weighted_elimination/weighted27/construction-certificate.json"
     },
     {
-      "id": "quartic297_family",
+      "id": "quartic279_family",
       "construction_kind": "existence_in_computable_coefficient_family",
-      "total_variables": 297,
+      "total_variables": 279,
       "degree": 4,
       "degree_status": "exact for every member",
       "fixed_parameter": {
@@ -94,17 +94,17 @@
         "effective_sufficient_threshold_known": false,
         "certified_numerical_defining_parameter": null
       },
-      "quadratic_residuals": 271,
-      "ordinary_monomials": 4268,
+      "quadratic_residuals": 253,
+      "ordinary_monomials": 3692,
       "ordinary_monomial_count_condition": "Every positive coefficient parameter A; hence every N>=1. This is an algebraic support statement, not a sufficient defining threshold.",
-      "coefficient_parameter_terms": 4269,
+      "coefficient_parameter_terms": 3693,
       "integer_content": 1,
       "coefficient_height_upper_bound": "2^1520*80989^(4*N+2)",
       "coefficient_height_upper_bound_strict": true,
       "input_label": "51*X^2+2504",
       "scalar_correction": 9792,
-      "polynomial_sha256": "9611a929a8795df215ca34bbaa19ca39a98745b86da07a864bfc2020ecf23ec0",
-      "residuals_sha256": "144f99f6f76cadf5fae3796f7a0a6c3f740659d89fe062237b278989bcef5ce8",
+      "polynomial_sha256": "becc07489fe7efaaa9d595457e342d31aea6e4f345cb227b325d36126b62e52b",
+      "residuals_sha256": "9bf3b6e40af70d2a9313f3c211f07941fd6ef93068106d7332bafa73f0dd9069",
       "arithmetic_inputs": [
         "elliptic_group_and_index_height",
         "contact_height",
@@ -113,15 +113,29 @@
         "weighted_prime_selection"
       ],
       "additional_proved_input": "aggregate_trace_height_von_buhren",
-      "proof": "papers/quartic_existence/quartic297_20261109_v12.tex",
-      "computation": "computation/quartic/family297",
-      "exact_height_data": "computation/quartic/family297/independent-verification297.json",
-      "local_test_proof": "papers/local_tests/shared_local_weights_20261109_v12.tex",
+      "proof": "papers/quartic_existence/quartic279_20261109_v13.tex",
+      "computation": "computation/quartic/family279",
+      "exact_height_data": "computation/quartic/family279/independent-verification279.json",
+      "local_test_proof": "papers/quartic_existence/quartic279_20261109_v13.tex",
       "role": "Leading quartic existence family; sufficient threshold ineffective",
       "exact_coefficient_height": "80989^(4*N+2)+1",
       "exact_coefficient_height_condition": "N>=23; this is an algebraic coefficient threshold, not a sufficient defining threshold.",
       "height_formula_every_positive_parameter": "max(C,A^2+1), with C specified in the independent certificate",
-      "prime_selection_proof": "papers/prime_selection/prime_selection_20261109_v12.tex"
+      "prime_selection_proof": "papers/prime_selection/prime_selection_20261109_v12.tex",
+      "local_reference_reciprocal_abscissa_order": 6,
+      "local_comparison_orders": [
+        3,
+        12
+      ],
+      "local_factors_per_detector": 5,
+      "contact_blocks": 4,
+      "contact_points": 20,
+      "contact_height_exponent": "19/4",
+      "additional_exceptional_primes": [
+        123121,
+        161303
+      ],
+      "contact_height_proof": "papers/contact_heights/contact_height_amplification_20261109_v13.tex"
     },
     {
       "id": "few_variables29_nontorsion",
@@ -158,15 +172,15 @@
       "source_specification_sha256": "daceb26d141bb265e33461957756445c565df9f1a7e5447c9258a466df976901"
     },
     {
-      "id": "quartic342",
+      "id": "quartic322",
       "construction_kind": "explicit_polynomial_and_effective_family",
       "role": "Leading fully specified quartic",
-      "total_variables": 342,
+      "total_variables": 322,
       "degree": 4,
       "degree_status": "exact",
-      "quadratic_residuals": 314,
-      "ordinary_monomials": 4938,
-      "coefficient_parameter_terms": 4939,
+      "quadratic_residuals": 294,
+      "ordinary_monomials": 4992,
+      "coefficient_parameter_terms": 4993,
       "integer_content": 1,
       "all_fixed_coefficients_specified": true,
       "explicit_parameter": "A=80989^54929",
@@ -174,8 +188,8 @@
       "certified_sufficient_N": 27464,
       "largest_coefficient_binary_digits": 1791283,
       "coefficient_height_upper_bound": "2^1520*80989^(4*N+2)",
-      "polynomial_sha256": "4faadf8c7d7af369495a98d39afbe24b9e77d6625781d7fdd25d0a29ef6d0a74",
-      "residuals_sha256": "309d97f891bb9144a3a314b361f62ed1ed4d3064938b7d15121e763f7b99b12f",
+      "polynomial_sha256": "ac0db3ea6ab5dee2ca414e37d5dcb9fb78ac767c69761a4c8c988a6d5b0f1ace",
+      "residuals_sha256": "93f4aaac68efaba7654f3682d404e38c913dc05bd273d1e5f0e3c6cdd744ecde",
       "arithmetic_inputs": [
         "elliptic_group_and_index_height",
         "contact_height",
@@ -184,18 +198,24 @@
         "weighted_prime_selection"
       ],
       "additional_proved_input": "effective_elliptic_abscissa_sum_height",
-      "proof": "papers/quartic/quartic342_20261109_v12.tex",
-      "computation": "computation/quartic/family342",
-      "local_test_proof": "papers/local_tests/shared_local_weights_20261109_v12.tex",
+      "proof": "papers/quartic/quartic322_20261109_v13.tex",
+      "computation": "computation/quartic/family322",
+      "local_test_proof": "papers/quartic/quartic322_20261109_v13.tex",
       "ordinary_monomial_count_condition": "Every positive coefficient parameter A; hence every N>=1. This is an algebraic support statement, not a sufficient defining threshold.",
       "exact_coefficient_height": "80989^(4*N+2)+1",
       "exact_coefficient_height_condition": "N>=23; this is an algebraic coefficient threshold, not a sufficient defining threshold.",
       "height_formula_every_positive_parameter": "max(C,A^2+1), with C specified in the independent certificate",
       "prime_selection_proof": "papers/prime_selection/prime_selection_20261109_v12.tex",
-      "exact_height_data": "computation/quartic/family342/independent-verification342.json",
+      "exact_height_data": "computation/quartic/family322/independent-verification322.json",
       "coefficient_height_upper_bound_strict": true,
       "explicit_coefficient_height": "80989^109858+1",
-      "explicit_coefficient_height_upper_bound_power_of_two_exponent": 1791283
+      "explicit_coefficient_height_upper_bound_power_of_two_exponent": 1791283,
+      "local_reference_reciprocal_abscissa_order": 20,
+      "local_comparison_orders": [
+        10,
+        40
+      ],
+      "local_factors_per_detector": 4
     },
     {
       "id": "quartic301_family",
@@ -413,6 +433,90 @@
       "construction_kind": "explicit_polynomial",
       "all_fixed_coefficients_specified": true,
       "role": "supporting arithmetic baseline; retained for dependency proofs and independent reconstruction"
+    },
+    {
+      "id": "quartic297_family",
+      "construction_kind": "existence_in_computable_coefficient_family",
+      "total_variables": 297,
+      "degree": 4,
+      "degree_status": "exact for every member",
+      "fixed_parameter": {
+        "name": "N",
+        "domain": "integers N>=1",
+        "quantified": false,
+        "coefficient": "A_N=80989^(2*N+1)",
+        "all_sufficiently_large_parameters_define_Z": true,
+        "effective_sufficient_threshold_known": false,
+        "certified_numerical_defining_parameter": null
+      },
+      "quadratic_residuals": 271,
+      "ordinary_monomials": 4268,
+      "ordinary_monomial_count_condition": "Every positive coefficient parameter A; hence every N>=1. This is an algebraic support statement, not a sufficient defining threshold.",
+      "coefficient_parameter_terms": 4269,
+      "integer_content": 1,
+      "coefficient_height_upper_bound": "2^1520*80989^(4*N+2)",
+      "coefficient_height_upper_bound_strict": true,
+      "input_label": "51*X^2+2504",
+      "scalar_correction": 9792,
+      "polynomial_sha256": "9611a929a8795df215ca34bbaa19ca39a98745b86da07a864bfc2020ecf23ec0",
+      "residuals_sha256": "144f99f6f76cadf5fae3796f7a0a6c3f740659d89fe062237b278989bcef5ce8",
+      "arithmetic_inputs": [
+        "elliptic_group_and_index_height",
+        "contact_height",
+        "pole_obstruction_and_realization",
+        "simultaneous_prime_patterns",
+        "weighted_prime_selection"
+      ],
+      "additional_proved_input": "aggregate_trace_height_von_buhren",
+      "proof": "papers/quartic_existence/quartic297_20261109_v12.tex",
+      "computation": "computation/quartic/family297",
+      "exact_height_data": "computation/quartic/family297/independent-verification297.json",
+      "local_test_proof": "papers/local_tests/shared_local_weights_20261109_v12.tex",
+      "role": "Pinned source equations and proof dependencies for the 279-variable construction",
+      "exact_coefficient_height": "80989^(4*N+2)+1",
+      "exact_coefficient_height_condition": "N>=23; this is an algebraic coefficient threshold, not a sufficient defining threshold.",
+      "height_formula_every_positive_parameter": "max(C,A^2+1), with C specified in the independent certificate",
+      "prime_selection_proof": "papers/prime_selection/prime_selection_20261109_v12.tex"
+    },
+    {
+      "id": "quartic342",
+      "construction_kind": "explicit_polynomial_and_effective_family",
+      "role": "Pinned source equations and proof dependencies for the 322-variable construction",
+      "total_variables": 342,
+      "degree": 4,
+      "degree_status": "exact",
+      "quadratic_residuals": 314,
+      "ordinary_monomials": 4938,
+      "coefficient_parameter_terms": 4939,
+      "integer_content": 1,
+      "all_fixed_coefficients_specified": true,
+      "explicit_parameter": "A=80989^54929",
+      "family_parameter": "A_N=80989^(2*N+1)",
+      "certified_sufficient_N": 27464,
+      "largest_coefficient_binary_digits": 1791283,
+      "coefficient_height_upper_bound": "2^1520*80989^(4*N+2)",
+      "polynomial_sha256": "4faadf8c7d7af369495a98d39afbe24b9e77d6625781d7fdd25d0a29ef6d0a74",
+      "residuals_sha256": "309d97f891bb9144a3a314b361f62ed1ed4d3064938b7d15121e763f7b99b12f",
+      "arithmetic_inputs": [
+        "elliptic_group_and_index_height",
+        "contact_height",
+        "pole_obstruction_and_realization",
+        "simultaneous_prime_patterns",
+        "weighted_prime_selection"
+      ],
+      "additional_proved_input": "effective_elliptic_abscissa_sum_height",
+      "proof": "papers/quartic/quartic342_20261109_v12.tex",
+      "computation": "computation/quartic/family342",
+      "local_test_proof": "papers/local_tests/shared_local_weights_20261109_v12.tex",
+      "ordinary_monomial_count_condition": "Every positive coefficient parameter A; hence every N>=1. This is an algebraic support statement, not a sufficient defining threshold.",
+      "exact_coefficient_height": "80989^(4*N+2)+1",
+      "exact_coefficient_height_condition": "N>=23; this is an algebraic coefficient threshold, not a sufficient defining threshold.",
+      "height_formula_every_positive_parameter": "max(C,A^2+1), with C specified in the independent certificate",
+      "prime_selection_proof": "papers/prime_selection/prime_selection_20261109_v12.tex",
+      "exact_height_data": "computation/quartic/family342/independent-verification342.json",
+      "coefficient_height_upper_bound_strict": true,
+      "explicit_coefficient_height": "80989^109858+1",
+      "explicit_coefficient_height_upper_bound_power_of_two_exponent": 1791283
     }
   ],
   "unconditional_theorems": [
@@ -628,6 +732,106 @@
       "scope_limit": "Only this odd-valued, uncorrected contact-square normalization; not corrected or parity-free routes and not a lower bound for arbitrary defining polynomials.",
       "proof": "papers/input_normalization/quadratic_input_obstruction_20261109_v12.tex",
       "verification": "computation/input_normalization/quadratic-input-obstruction-certificate.json"
+    },
+    {
+      "id": "locally_dense_proper_rational_subset",
+      "polynomial": "T*((U^2*W-9*W^3-1)^2-2*(V^2*T*W-9*T^3*W^3-1)^2)",
+      "quadratic_fields_d": [
+        -15,
+        -13,
+        -11,
+        -10,
+        -1,
+        3,
+        5,
+        7
+      ],
+      "statement": "In every listedQ(sqrt(d)), the projection is the same proper subsetD ofQ containing0,1 and excluding-1.",
+      "local_statement": "D is simultaneously dense in every finite product ofQ-completions; every local input has witnesses in every completion of each listed quadratic field.",
+      "total_coordinates": 4,
+      "degree": 13,
+      "coefficient_height": 162,
+      "monomials": 11,
+      "rank_verification": "UnconditionalPARI ellrank bounds, with torsion and exact point calculations.",
+      "scope_limit": "Not a definition ofZ,Q,or a ring of integers, and not a counterexample to existence of a different definition.",
+      "proof": "papers/number_fields/elliptic_ratios_and_integrality_20261109_v13.tex",
+      "verification": "computation/number_fields/elliptic-ratio-certificate.json"
+    },
+    {
+      "id": "bounded_denominator_integral_basis_criterion",
+      "statement": "IfS is Diophantine inK, Z is contained inS andM*S is contained inO_K for a fixed positive integerM, thenO_K is Diophantine inK.",
+      "coordinate_bound": "IfS usesN total coordinates, [K:Q]*N coordinates suffice.",
+      "degree_bound": "With one defining equation of degreed forS, [K:Q] equations of degree at mostM*d suffice.",
+      "proof": "papers/number_fields/elliptic_ratios_and_integrality_20261109_v13.tex"
+    },
+    {
+      "id": "uniform_real_scalar_normalization",
+      "statement": "A fixed polynomial denominator and a square resultant multiplier give 0<R_min<R_L(X)<1 for all real X and odd L>=3, with R_min and exceptional primes independent of L.",
+      "integer_input_properties": "Square reduced denominator, squares in Q_2,Q_3,Q_17, and prescribed positive local depths.",
+      "ell_depth_all_rational_inputs": "v_76249(R_L(X))=L+2*v_76249(J)",
+      "bounded_parameter": "w(Q)=y(Q)/(x(Q)^2+D)",
+      "norm_tree_bound": "1<=W<=86249/65536<3/2",
+      "resultant_variable": "Y=X^2",
+      "resultant_bits": 1313,
+      "scalar_multiplier": "102^6*J^2",
+      "scope_limit": "No variable reduction or replacement of the finite reduction-order requirements is asserted.",
+      "proof": "papers/scalar_normalization/uniform_scalar_normalization_20261109_v13.tex",
+      "verification": "computation/scalar_normalization/uniform-scalar-normalization-certificate.json"
+    },
+    {
+      "id": "elliptic_witness_structural_constraints",
+      "finite_presentation_bound": "Recovering arbitrary tuples of r independent points in the specified simple Weil restriction by finite algebraic choices requires at least2r retained rational coordinates.",
+      "index_graph": "For a Zariski-dense cyclic subgroup of an abelian variety, the graph {(n,[n]P)} is Zariski dense in G_a times that variety.",
+      "rational_curve_obstruction": "The paired formal requirements H=[h]P at one split place and H-P at the other cannot hold for arbitrarily many good primes when E and P are rational.",
+      "two_curve_scope": "A curve correspondence containing a common-index graph yields an isogeny and prevents infinitely many coprime reduction orders.",
+      "scope_limit": "Restrictions on these specified compression mechanisms, not universal lower bounds for integer-defining polynomials.",
+      "proof": "papers/elliptic_charts/structural_constraints_20261109_v13.tex",
+      "verification": "computation/elliptic_constraints/large-split-order-certificate.json",
+      "large_prime_parity_counterexample": {
+        "prime": 77017,
+        "above_cutoff": 76176,
+        "sqrt2_residues": [
+          18810,
+          58207
+        ],
+        "exact_orders": [
+          2141,
+          2405
+        ],
+        "odd_common_index": 5149105,
+        "congruences": "p=1 mod8 and p=3 mod7",
+        "scope": "These congruences alone; the full Gaussian-generator and avoidance conditions are not asserted."
+      }
+    },
+    {
+      "id": "finite_rational_images_of_abelian_points_omit_integers",
+      "statement": "Every finite union of fixed rational-function images on finite products of fixed abelian varieties over a number field, even with finitely many values added, misses infinitely many rational integers.",
+      "source": "Corvaja and Zannier, arXiv:2608.28255v1, Theorem1.1; Mordell-Weil finite generation.",
+      "consequence": "Finite rational operations on the specified stable-elliptic subsets cannot produce a set containing every integer.",
+      "scope_limit": "Does not cover arbitrary algebraic correspondences or unrestricted affine witnesses. Not a nondefinability theorem for rings of integers.",
+      "proof": "papers/number_fields/elliptic_ratios_and_integrality_20261109_v13.tex"
+    },
+    {
+      "id": "slope_ratio_proper_rational_subset",
+      "polynomial": "T*((T^2*Z^2*W-9*W^3-1)^2-2*(Z^2*S-9*S^3-1)^2)",
+      "quadratic_fields_d": [
+        -15,
+        -13,
+        -11,
+        -10,
+        -1,
+        3,
+        5,
+        7
+      ],
+      "total_coordinates": 4,
+      "degree": 11,
+      "coefficient_height": 162,
+      "monomials": 11,
+      "statement": "The projection in each specified quadratic field is zero together with ratios of nonzero rational elliptic slopes; it misses infinitely many rational integers.",
+      "scope_limit": "Not a definition of the rational subfield or a ring of integers. The bounded search does not certify particular omitted values.",
+      "proof": "papers/number_fields/elliptic_ratios_and_integrality_20261109_v13.tex",
+      "verification": "computation/number_fields/rationality-filter-certificate.json"
     }
   ],
   "source_pins": {
@@ -635,7 +839,7 @@
     "corrected_arithmetic_proof_v11": "650b298a2a18fa956f8859f3ca80e9d7c8cedd82",
     "quartic_source_v13": "5bbd74f6a479776a332cbe036809d5dddae63720"
   },
-  "release": "2026.11.09-v12",
+  "release": "2026.11.09-v13",
   "auxiliary_arithmetic_theorems": [
     {
       "id": "square_abscissa_subgroup_chart",
@@ -653,6 +857,23 @@
       "novelty_scope": "An explicit dependency derivation recording the separation argument already used upstream, not a new independent prime theorem.",
       "primary_reference": "Sun, arXiv:2610.20691v2, Propositions 5.1 and 6.2 and Section 6.1.",
       "proof": "papers/prime_selection/prime_selection_20261109_v12.tex"
+    },
+    {
+      "id": "disjoint_contact_height_amplification",
+      "premise": "The stated five-contact odd-radical height bound with exponent19.",
+      "statement": "For5r disjoint translated contacts, h(t)<=C_r+H E_r^19 M_r(t)^(19/r).",
+      "contacts": "Union over0<=j<r of3j+{0,-1/2,-1,1/2399,-32/407}",
+      "exceptional_prime_product_for_r_1_2_3": 1,
+      "required_residual_order": "r*k>38",
+      "required_input_order": "2*r*mu>19",
+      "scope_limit": "Derived height and normalization theorem; its four-block specialization is implemented in the 279-variable family.",
+      "proof": "papers/contact_heights/contact_height_amplification_20261109_v13.tex",
+      "verification": "computation/contact_heights/contact-height-certificate.json",
+      "exceptional_prime_product_for_r_4": 19859786663,
+      "new_exceptional_primes_for_r_4": [
+        123121,
+        161303
+      ]
     }
   ]
 }

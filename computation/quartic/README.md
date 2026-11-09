@@ -1,33 +1,29 @@
-# Exact quartic constructions
+# Current quartic coefficient families
 
-The leading quartics have **297** and **342 total variables**, including the input. Both are sums of squares of complete primitive integer quadratic systems. The fixed coefficient is $A_N=80989^{2N+1}$.
+All counts include the input. The rational projections equal the integers under the arithmetic premises stated in the corresponding papers.
 
-| Construction | Quadratic equations | Ordinary monomials | Defining parameter |
-|:--|--:|--:|:--|
-| [297-variable family](family297/construction-report297.json) | 271 | 4268 | All sufficiently large $N$; sufficient threshold ineffective. |
-| [342-variable explicit polynomial](family342/construction-report342.json) | 314 | 4938 | Every $N\ge27464$; explicit member $A=80989^{54929}$. |
+| Family | Variables | Quadratic equations | Ordinary monomials | Terms with parameter powers separate | Defining parameter |
+|:--|--:|--:|--:|--:|:--|
+| family279 | 279 | 253 | 3692 | 3693 | Every sufficiently large $N$; threshold ineffective |
+| family322 | 322 | 294 | 4992 | 4993 | Every $N\ge27464$ |
 
-Both have exact degree four and content one. Support is constant for positive $A_N$, and the exact height for $N\ge23$ is $A_N^2+1$. These algebraic thresholds do not certify a defining member of the 297-variable family. The explicit polynomial's largest coefficient is $80989^{109858}+1$, with 1,791,283 binary digits.
+The fixed coefficient is $A_N=80989^{2N+1}$. Both families have exact degree four, integer content one, and support independent of positive $A_N$. Their coefficient height is $A_N^2+1$ for $N\ge23$. This is an algebraic coefficient threshold, not a sufficient defining threshold.
 
-## Complete specification
-
-Each family directory contains a complete quadratic-system table, a complete expanded polynomial table, a construction report, and an independent-verification certificate. Coordinate identifiers repeat in a monomial according to exponent. Separate powers of the fixed coefficient abbreviate huge integers without adding a variable. See the [data-format guide](../../docs/data_format.md).
-
-The builder reads the pinned 301- and 351-coordinate systems. It replaces three order-specific weights by $q$, $q^{19}$, and $q^{79}$, computed with squaring equations and a shared reciprocal cube. An invertible affine change replaces the scalar auxiliary coordinate by the actual contact product. The [shared-weight paper](../../papers/local_tests/shared_local_weights_20261109_v12.pdf) proves the valuation and simultaneous-completeness arguments, treats zero weights and denominator primes, and establishes the exact coefficient height. Separate papers state the [297-variable theorem](../../papers/quartic_existence/quartic297_20261109_v12.pdf) and [342-variable theorem](../../papers/quartic/quartic342_20261109_v12.pdf).
-
-## Reproduction
-
-After reconstructing source dependencies as in the [reproducibility guide](../../docs/reproducibility.md), run from this directory:
+From the repository root:
 
 ~~~sh
-python3 build_quartic_shared_weights.py
-python3 check_quartic_shared_weights.py
+python3 computation/quartic/build_quartic_even.py
+python3 computation/quartic/check_quartic_even.py
+python3 computation/quartic/build_quartic279.py
+python3 computation/quartic/check_quartic279.py
 ~~~
 
-The independent checker does not import the producer. It checks every unchanged and changed quadratic row, reverses the affine substitution, expands the sum of squares independently, and compares every final coefficient. Exact support, content, degree, height, and local finite valuation assertions are also checked. The top-level verifier compares reconstructed data and certificates byte for byte in a temporary copy.
+The first pair constructs and checks family322 from the pinned family342 table. The second constructs and checks family279 directly from family297. The 279 scripts import only the polynomial utilities of their respective producer or independent checker. No checker imports producer code. Each script accepts explicit source and output roots.
 
-The source systems and their papers are proof and replication dependencies. `PROVENANCE.json` records the exact construction chain and hashes. Reconstruction requires no optimizer or search output.
+Each family directory contains the full quadratic table, expanded quartic, construction report, and independent verification certificate. Checkers reconstruct every changed row, compare every retained row, verify coordinate incidence, and independently expand the sum of squares. The mathematical proofs establish the unrestricted local valuation implications and global projections; finite checks have their recorded scope.
+
+The complete source chain is in PROVENANCE.json. The current proofs are [the 279-variable theorem](../../papers/quartic_existence/quartic279_20261109_v13.pdf) and [the 322-variable theorem](../../papers/quartic/quartic322_20261109_v13.pdf).
 
 ## Arithmetic scope
 
-Projection theorems retain the stated elliptic group and index-height results, contact-height theorem, pole obstruction and realization, and simultaneous prime-pattern results. The quantitative prime separation is derived from the cited estimates in the [prime-selection paper](../../papers/prime_selection/prime_selection_20261109_v12.pdf). The 297-variable theorem uses aggregate trace height with an ineffective additive constant; the 342-variable theorem uses the effective two-component sum-height bound. Exact coefficient checks do not establish these global arithmetic inputs.
+The projection theorems retain the stated elliptic group and index-height assertions, contact-height theorem, pole obstruction and realization, and simultaneous prime-pattern results. Quantitative separation follows from the cited estimates in the prime-selection paper. The 279-variable construction uses the proved four-block contact-height amplification and aggregate trace height with an ineffective additive constant. The 322-variable construction uses the effective two-component sum-height estimate. Finite coefficient checks do not establish those arithmetic premises or determine an ineffective threshold.

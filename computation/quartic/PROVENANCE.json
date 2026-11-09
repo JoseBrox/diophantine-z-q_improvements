@@ -1,7 +1,7 @@
 {
   "format": "quartic-provenance-v3",
   "pathConvention": "All local paths are relative to this computation/quartic directory.",
-  "scope": "Exact polynomial specifications and conditional integer-projection theorems. Finite verification establishes the algebraic tables and stated numerical certificates, not the retained global arithmetic inputs. The leading 297-variable family has an ineffective sufficient coefficient threshold; the leading 342-variable quartic has a certified fixed parameter.",
+  "scope": "Exact polynomial specifications and conditional integer-projection theorems. Finite verification establishes the algebraic tables and stated numerical certificates, not the retained global arithmetic inputs. The leading 279-variable family has an ineffective sufficient coefficient threshold; the leading 322-variable quartic has a certified fixed parameter.",
   "sourceRepository": "https://github.com/elliotglazer/diophantine-z-q",
   "sourceCommit": "5bbd74f6a479776a332cbe036809d5dddae63720",
   "sourceFiles": [
@@ -43,7 +43,9 @@
       "family297",
       "specified342",
       "sharedLocalWeights",
-      "primeSelection"
+      "primeSelection",
+      "family279",
+      "specified322"
     ]
   },
   "finalConstructions": {
@@ -183,7 +185,7 @@
       "independentVerification": "family351/independent-verification351.json"
     },
     "family297": {
-      "role": "Leading quartic existence family; sufficient defining threshold ineffective.",
+      "role": "Exact source dependency for family279.",
       "projectionStatement": "There exists N0>=27464 such that every N>=N0 has input projection Z, under the stated arithmetic inputs.",
       "totalVariables": 297,
       "inputCoordinate": 1,
@@ -216,7 +218,7 @@
       "ineffectivity": "The aggregate-trace height theorem has an ineffective additive constant."
     },
     "specified342": {
-      "role": "Leading fully specified quartic under stated arithmetic inputs.",
+      "role": "Exact source dependency for specified322.",
       "projectionStatement": "Every integer N>=27464 has input projection Z, under the stated arithmetic inputs.",
       "totalVariables": 342,
       "inputCoordinate": 1,
@@ -251,6 +253,83 @@
         "exponent": 54929,
         "exactCoefficientHeight": "80989^109858+1",
         "largestCoefficientBinaryDigits": 1791283
+      }
+    },
+    "specified322": {
+      "role": "Leading fully specified quartic under stated arithmetic inputs.",
+      "projectionStatement": "Every integer N>=27464 has input projection Z, under the stated arithmetic inputs.",
+      "totalVariables": 322,
+      "inputCoordinate": 1,
+      "degree": 4,
+      "content": 1,
+      "quadraticResiduals": 294,
+      "parameter": {
+        "name": "A_N",
+        "base": 80989,
+        "exponent": "2*N+1",
+        "coordinate": false,
+        "familyDomain": "Integers N>=1",
+        "certifiedSufficientN": 27464
+      },
+      "symbolicTerms": 4993,
+      "ordinaryMonomials": {
+        "count": 4992,
+        "validFor": "Every positive A; hence every N>=1",
+        "scope": "Algebraic support only; not a sufficient defining threshold."
+      },
+      "exactCoefficientHeight": {
+        "expression": "80989^(4*N+2)+1",
+        "validFor": "Every N>=23",
+        "scope": "Algebraic height only; the defining thresholds are separate."
+      },
+      "quadraticSystem": "family322/quadratic-family322.json",
+      "polynomial": "family322/polynomial-family322.json",
+      "constructionReport": "family322/construction-report322.json",
+      "independentVerification": "family322/independent-verification322.json",
+      "explicitMember": {
+        "N": 27464,
+        "exponent": 54929,
+        "exactCoefficientHeight": "80989^109858+1",
+        "largestCoefficientBinaryDigits": 1791283
+      }
+    },
+    "family279": {
+      "role": "Leading quartic existence family; sufficient defining threshold ineffective.",
+      "projectionStatement": "There exists N0>=27464 such that every N>=N0 has input projection Z, under the stated arithmetic inputs.",
+      "totalVariables": 279,
+      "inputCoordinate": 1,
+      "degree": 4,
+      "content": 1,
+      "quadraticResiduals": 253,
+      "parameter": {
+        "name": "A_N",
+        "base": 80989,
+        "exponent": "2*N+1",
+        "coordinate": false,
+        "familyDomain": "Integers N>=1"
+      },
+      "symbolicTerms": 3693,
+      "ordinaryMonomials": {
+        "count": 3692,
+        "validFor": "Every positive A; hence every N>=1",
+        "scope": "Algebraic support only; not a sufficient defining threshold."
+      },
+      "exactCoefficientHeight": {
+        "expression": "80989^(4*N+2)+1",
+        "validFor": "Every N>=23",
+        "scope": "Algebraic height only; the defining thresholds are separate."
+      },
+      "quadraticSystem": "family279/quadratic-family279.json",
+      "polynomial": "family279/polynomial-family279.json",
+      "constructionReport": "family279/construction-report279.json",
+      "independentVerification": "family279/independent-verification279.json",
+      "knownNumericalSufficientN": null,
+      "ineffectivity": "The aggregate-trace height constant and the new amplified global comparison give an ineffective sufficient threshold.",
+      "contactBlocks": 4,
+      "localOrders": {
+        "referenceReciprocalAbscissa": 6,
+        "comparison": 12,
+        "input": 3
       }
     }
   },
@@ -318,6 +397,20 @@
       "producer": "build_quartic_shared_weights.py",
       "checker": "check_quartic_shared_weights.py",
       "change": "Use powers q,q^19,q^79 with a shared reciprocal cube; replace scalar coordinate by the actual contact product using an invertible rational affine change and primitive residual normalization."
+    },
+    {
+      "from": "family297",
+      "to": "family279",
+      "producer": "build_quartic279.py",
+      "checker": "check_quartic279.py",
+      "change": "Four disjoint contact blocks give height exponent19/4; even valuations and shorter logarithms permit local orders12/3, reference depth3, and five factors. Both normalization equations are changed."
+    },
+    {
+      "from": "specified342",
+      "to": "specified322",
+      "producer": "build_quartic_even.py",
+      "checker": "check_quartic_even.py",
+      "change": "Use even reciprocal-abscissa valuations, four factors, and formal reference depth10; retain comparison orders and global thresholds."
     }
   ],
   "reproduction": {
@@ -336,7 +429,11 @@
       "python3 build_quartic_mixed.py",
       "python3 check_quartic_mixed.py",
       "python3 build_quartic_shared_weights.py",
-      "python3 check_quartic_shared_weights.py"
+      "python3 check_quartic_shared_weights.py",
+      "python3 build_quartic_even.py",
+      "python3 check_quartic_even.py",
+      "python3 build_quartic279.py",
+      "python3 check_quartic279.py"
     ],
     "baselineArchiveHandling": "The new builders read and hash-check baseline392/*.json.gz directly. scripts/restore_data.py restores the separate upstream/final392 reproduction archives."
   },
@@ -423,296 +520,342 @@
       "tex_sha256": "86c8cb4df7f4e1b5c670755a2b3cf5a67ab1f630cdd7de327a3972a3319d2eff",
       "pdf": "../../papers/prime_selection/prime_selection_20261109_v12.pdf",
       "pdf_sha256": "2efb4e66efc6e359840c59a991e4d337e7db1d92cb9989a7f12046fb99875849"
+    },
+    "specified322": {
+      "tex": "../../papers/quartic/quartic322_20261109_v13.tex",
+      "pdf": "../../papers/quartic/quartic322_20261109_v13.pdf",
+      "tex_sha256": "f1cb273428bda3096395af99b19431e2620c78215d0cf01cb175f9a38ca6527e",
+      "pdf_sha256": "e52469bfa64314ac4d8a949638698dc9e0a6119ca831db2c7475bbed5b8a81e3"
+    },
+    "family279": {
+      "tex": "../../papers/quartic_existence/quartic279_20261109_v13.tex",
+      "pdf": "../../papers/quartic_existence/quartic279_20261109_v13.pdf",
+      "tex_sha256": "df5494a1c13c8eb55919e8e5046a412adebd02273316deeb9f896651c73382bb",
+      "pdf_sha256": "693522eb40e562675406f54f8821d770d4c6cabe9b126d923f6dc37d240825f0"
+    },
+    "contactHeightAmplification": {
+      "tex": "../../papers/contact_heights/contact_height_amplification_20261109_v13.tex",
+      "pdf": "../../papers/contact_heights/contact_height_amplification_20261109_v13.pdf",
+      "tex_sha256": "74617835d353919399b2db66123e4cb0b40bf5cf58a998fa257408ceb417cc6e",
+      "pdf_sha256": "79d394a88d5a697ff6440938753f49c8bdf2c4c04ccb7ff2c987c086b564d632"
     }
   },
   "documentation": {
     "dataFormat": "../../docs/data_format.md",
-    "dataFormatSHA256": "65bec2ec899c7189d1ff12e1636a1ecb7827ec37aed62ffccbdfa2609e6d30e1"
+    "dataFormatSHA256": "a43165409583d0edd269634eeb54091e11361d75c353413550b8785b8cb6ff28"
   },
   "files": {
     "README.md": {
-      "sha256": "f9a3e02532d44a831260db2c2e72a808b04514d2fe536f5597bfc924225d93b1",
-      "bytes": 3555
+      "bytes": 2650,
+      "sha256": "784aea3b052486e6b59c3c7139ec8c5079641c7cd53271ae31a44ac2259118ba"
     },
     "README370.md": {
-      "sha256": "fe259fb8956438268502de8a9540e1cfb8f260185a981f20ce546c1b99981b8f",
-      "bytes": 3578
+      "bytes": 3578,
+      "sha256": "fe259fb8956438268502de8a9540e1cfb8f260185a981f20ce546c1b99981b8f"
     },
     "README_mixed.md": {
-      "sha256": "50e0a2e2fb9f374bbeedadf33f8a091c7d7d513003449d8883a328578792bf12",
-      "bytes": 4341
+      "bytes": 4341,
+      "sha256": "50e0a2e2fb9f374bbeedadf33f8a091c7d7d513003449d8883a328578792bf12"
     },
     "baseline389/quadratic-system389.json.gz": {
-      "sha256": "2faf60cdf1cbb49c4f1c9f22232f616450f53aa191a6a361b8afd3701d6d8047",
       "bytes": 18094,
-      "uncompressed": {
-        "sha256": "f7fb5bdf6a3d47275f1d78ed5e275954e2cc1f21fec8204d6a395bfc2f8b5394",
-        "bytes": 373173
-      }
+      "sha256": "2faf60cdf1cbb49c4f1c9f22232f616450f53aa191a6a361b8afd3701d6d8047"
     },
     "baseline392/polynomial392.json.gz": {
-      "sha256": "d61e8d654541ed5aa1b942a781d72fd320cb7122821ac0b902e07724f40fe053",
       "bytes": 57559,
-      "uncompressed": {
-        "sha256": "65f978c8b6418395535816a485093213631623766024555c69ef5db6c185450d",
-        "bytes": 949546
-      }
+      "sha256": "d61e8d654541ed5aa1b942a781d72fd320cb7122821ac0b902e07724f40fe053"
     },
     "baseline392/quadratic-system392.json.gz": {
-      "sha256": "4e90eb91c8504dcba04a70a4097a411612ca24605b839d25b5e27cc29c0656cd",
       "bytes": 18081,
-      "uncompressed": {
-        "sha256": "b66609c16f649481ea8edb14785af2fb6f9da151f76d75dfa203f9db189e93a0",
-        "bytes": 374548
-      }
+      "sha256": "4e90eb91c8504dcba04a70a4097a411612ca24605b839d25b5e27cc29c0656cd"
+    },
+    "build_quartic279.py": {
+      "bytes": 12253,
+      "sha256": "692dec347fe22278346846d005f784bfa437bfabf5753a79de922b9ee374068b"
     },
     "build_quartic317.py": {
-      "sha256": "77d51d2782828296e98fe6f076269022afc0135077322500eaf5d0d66e233240",
-      "bytes": 4933
+      "bytes": 4933,
+      "sha256": "77d51d2782828296e98fe6f076269022afc0135077322500eaf5d0d66e233240"
     },
     "build_quartic329.py": {
-      "sha256": "e063d9bfaccac654a5d4d018d8cdb5e7b4a40730ec7849df356be4e08a4eda3b",
-      "bytes": 4846
+      "bytes": 4846,
+      "sha256": "e063d9bfaccac654a5d4d018d8cdb5e7b4a40730ec7849df356be4e08a4eda3b"
     },
     "build_quartic370.py": {
-      "sha256": "30a3751ed51977a0840855ba0de9523480ad0d30ee8c4c283aeb90dd32d78d70",
-      "bytes": 9049
+      "bytes": 9049,
+      "sha256": "30a3751ed51977a0840855ba0de9523480ad0d30ee8c4c283aeb90dd32d78d70"
     },
     "build_quartic389.py": {
-      "sha256": "77c31e4531ebfdbe7410f24440c99c46633550452d0d3428346e1eeaac32983b",
-      "bytes": 4394
+      "bytes": 4394,
+      "sha256": "77c31e4531ebfdbe7410f24440c99c46633550452d0d3428346e1eeaac32983b"
     },
     "build_quartic392.py": {
-      "sha256": "69f523d2bdd69a990b8571a06cd5846473ebbcd7b6bc3dc047458e8043bffc60",
-      "bytes": 6773
+      "bytes": 6773,
+      "sha256": "69f523d2bdd69a990b8571a06cd5846473ebbcd7b6bc3dc047458e8043bffc60"
+    },
+    "build_quartic_even.py": {
+      "bytes": 8961,
+      "sha256": "fef56290005a9b241e96fb258361a8bf896e530132ee1a734dd6d76efff65656"
     },
     "build_quartic_mixed.py": {
-      "sha256": "ee08c6d9506c82ac5ddaae55c8ed91ef12e7053213ca4165e425b341bbf15a47",
-      "bytes": 13152
-    },
-    "check_field_specialization392.py": {
-      "sha256": "2d3732be6764f0e392528a7b59705ccf3f12a409f25962412d69bf169be2b20c",
-      "bytes": 2323
-    },
-    "check_quartic317.py": {
-      "sha256": "9e829abc42ec807b51c5b25cf68b208e00f840a55d31c850d14384a87e814f41",
-      "bytes": 6612
-    },
-    "check_quartic329.py": {
-      "sha256": "e369421689618d8e9813d6291df4d45150dd3ceee8bc8100d896568f56eb75aa",
-      "bytes": 5986
-    },
-    "check_quartic370.py": {
-      "sha256": "f113b0471f9102a424f659824bad642927437ef90a3bfbea67ab40ebefbee9d6",
-      "bytes": 14984
-    },
-    "check_quartic389.py": {
-      "sha256": "130d298ee97a05112d582651ee6cb573ee6c35a466803363699e2eed132c16b4",
-      "bytes": 6101
-    },
-    "check_quartic_mixed.py": {
-      "sha256": "dc559d325ed81007731d294cd6959cc0d7cb544c7b45d4d25bb0f2a45487c75c",
-      "bytes": 15626
-    },
-    "family301/construction-report301.json": {
-      "sha256": "008d4ff581bdbe97dc9afe42d89b871cdf66cbaf769481dfadc96b303e475965",
-      "bytes": 3257
-    },
-    "family301/independent-verification301.json": {
-      "sha256": "27560f55534acd4df481d33aa2d17dfdd47eac2231c3536d7d70bc798837c68f",
-      "bytes": 1554
-    },
-    "family301/polynomial-family301.json": {
-      "sha256": "6108657d4998b3ba81a6630a2ac43dea64e206224ca477b596e48dc743e95621",
-      "bytes": 665072
-    },
-    "family301/quadratic-family301.json": {
-      "sha256": "9917be941135778816ce25ecb0cbc872b4ed7c9f3691d79355e5e8352667a4fe",
-      "bytes": 277575
-    },
-    "family317/construction-report317.json": {
-      "sha256": "4a909cf16acf0a42a8ab5add91b139ce55bf613af2ca0581b9fa084823863518",
-      "bytes": 925
-    },
-    "family317/independent-verification317.json": {
-      "sha256": "a97686953bf6597f2326280712b6209f5fccc4ae83b342f2488fb70ecb49c6a7",
-      "bytes": 6043
-    },
-    "family317/polynomial-family317.json": {
-      "sha256": "15027a2510f03944e008938508c8bd9b552e940063eb8005baaf7710ea0702b2",
-      "bytes": 768181
-    },
-    "family317/quadratic-family317.json": {
-      "sha256": "21ba60789e880826dff7298301ffcda1f33e465ed09a45ecf93170069deb9157",
-      "bytes": 304806
-    },
-    "family329/construction-report329.json": {
-      "sha256": "c95abdf3dea062412f77ddce225a034ccf75dfc2a5af5402db4fb469863a718b",
-      "bytes": 8630
-    },
-    "family329/independent-verification329.json": {
-      "sha256": "7e316179c09f75a8f0506db1c4f33445858075785e393d5160ed96e42f756bf9",
-      "bytes": 701
-    },
-    "family329/polynomial-family329.json": {
-      "sha256": "d5868a5880cc3116eff0a2dc22abd60eac9738f8f28aa2ee4bbf45b63d8eb858",
-      "bytes": 808036
-    },
-    "family329/quadratic-family329.json": {
-      "sha256": "9a9ece7045ebc14f1101aaf85bb7566434d4c411c9820669015242ba5df4170b",
-      "bytes": 320197
-    },
-    "family351/construction-report351.json": {
-      "sha256": "e9f1389f52ea26f173cd4c296c961009e9b95f14a796b07ba1ca8f3112b3843d",
-      "bytes": 4346
-    },
-    "family351/independent-verification351.json": {
-      "sha256": "5b466e9751e2873c3f70e41a2418d186ad492bc3f61be312a365d4c444106f79",
-      "bytes": 1905
-    },
-    "family351/polynomial-family351.json": {
-      "sha256": "c7af90124870465ef78d68b8c8e5381cfa4c232e8828913fb198bf42a35a5fc9",
-      "bytes": 767471
-    },
-    "family351/quadratic-family351.json": {
-      "sha256": "452d063b6d7da598471aa1ec0302b9e37611a44168610592931ec56aac241966",
-      "bytes": 316782
-    },
-    "family370/construction-report370.json": {
-      "sha256": "b75a03e1b1559cf5fda9d6c6131a8101aa9f6f1b850e1ec3dfd3978cdb62df47",
-      "bytes": 4727
-    },
-    "family370/independent-verification370.json": {
-      "sha256": "4207530b3632bd016e495530d9d0a25f1e35f39e64d1082ba154912cc84c0c27",
-      "bytes": 7416
-    },
-    "family370/polynomial-family370.json": {
-      "sha256": "3fb38773001a66e078ac461228ac50b8d561cc4cf807719c675d66f1e4551967",
-      "bytes": 887240
-    },
-    "family370/quadratic-family370.json": {
-      "sha256": "d4b9505504345de00c5b4493f32fa1a725405fa631e1226e178280831c078624",
-      "bytes": 348350
-    },
-    "final389/construction-report389.json": {
-      "sha256": "7a0aa68d4d1ea51c4e9e6906f2591939940c60a08f033a4f4e85d92e18ded935",
-      "bytes": 1205
-    },
-    "final389/detector-normalization-verification.json": {
-      "sha256": "7e6449271cf8d0e81c4d16084753a726c80995ee98263ae27fc20354cd940e8d",
-      "bytes": 1310
-    },
-    "final389/independent-verification389.json": {
-      "sha256": "5367a122855711ed99509291183f014f4d27eac5e7c1fb1e4fab7b168951f936",
-      "bytes": 782
-    },
-    "final389/polynomial389.json": {
-      "sha256": "debd9c8c9cba39e5a845ff63920b3c91dcee2b45be00905ecb0c00b6b0c73205",
-      "bytes": 948418
-    },
-    "final389/quadratic-system389.json": {
-      "sha256": "f7fb5bdf6a3d47275f1d78ed5e275954e2cc1f21fec8204d6a395bfc2f8b5394",
-      "bytes": 373173
-    },
-    "final392/construction-report392.json": {
-      "sha256": "f5100bd9758f93c0ce65d8ddbb1f893bf21432c448e00fc378ec6ff67f3adc43",
-      "bytes": 1435
-    },
-    "final392/field-specialization392.json": {
-      "sha256": "644de96c4ad82a6aeafb425674e215f4aad5d1419ac35cb914a6e1aec722697c",
-      "bytes": 1323
-    },
-    "final392/independent-verification392.json": {
-      "sha256": "aa0beabd81ef532a490ca4605758796a0a54bcce2a72f7bfcdc5375d7ab2b0e3",
-      "bytes": 2482
-    },
-    "final392/polynomial392.json.gz": {
-      "sha256": "d61e8d654541ed5aa1b942a781d72fd320cb7122821ac0b902e07724f40fe053",
-      "bytes": 57559,
-      "uncompressed": {
-        "sha256": "65f978c8b6418395535816a485093213631623766024555c69ef5db6c185450d",
-        "bytes": 949546
-      }
-    },
-    "final392/quadratic-system392.json.gz": {
-      "sha256": "4e90eb91c8504dcba04a70a4097a411612ca24605b839d25b5e27cc29c0656cd",
-      "bytes": 18081,
-      "uncompressed": {
-        "sha256": "b66609c16f649481ea8edb14785af2fb6f9da151f76d75dfa203f9db189e93a0",
-        "bytes": 374548
-      }
-    },
-    "fresh-reproduction370.json": {
-      "sha256": "cf4b51653572bb4ea13cdcb9c540e991596101feabf5a57907735dea7ed1c627",
-      "bytes": 854
-    },
-    "mixed-identities.json": {
-      "sha256": "23aecb0599657f4fa1036a8ea0e4d8534c13192386318cc9069ae6f7b4f3bd94",
-      "bytes": 392
-    },
-    "upstream/candidate394-ir.json.gz": {
-      "sha256": "0214ff877d29775c3226cf0d1ba07942994bddc540e057afca802904a7e1d099",
-      "bytes": 18668,
-      "uncompressed": {
-        "sha256": "7eb02f9913b55d60a790a287616f1bb80d9f93523e9f11e12481c9ab955746a5",
-        "bytes": 453081
-      }
-    },
-    "upstream/polynomial394.json.gz": {
-      "sha256": "c0bdf5d8718b042393018d70d9785a127b1c8388223ca756d90e5ede38a05c05",
-      "bytes": 59794,
-      "uncompressed": {
-        "sha256": "eb557a8c51bec3e6199261508834c0751a9534f75201d223355f3b49503524ed",
-        "bytes": 910685
-      }
-    },
-    "verify_detector_normalizations.py": {
-      "sha256": "8b109c9bc5b6bfeef00b7162dd713d9cd52b39d0ebef7df4721a24e0943635d8",
-      "bytes": 5471
-    },
-    "verify_quartic392.py": {
-      "sha256": "092ac1d69bec2f3d59d60584fbc831232377eb48967afba975ac8ef8e02cda59",
-      "bytes": 12706
-    },
-    "family297/quadratic-family297.json": {
-      "sha256": "144f99f6f76cadf5fae3796f7a0a6c3f740659d89fe062237b278989bcef5ce8",
-      "bytes": 274396
-    },
-    "family297/polynomial-family297.json": {
-      "sha256": "9611a929a8795df215ca34bbaa19ca39a98745b86da07a864bfc2020ecf23ec0",
-      "bytes": 656687
-    },
-    "family297/construction-report297.json": {
-      "sha256": "ef46c24f97b7b6773607d7182db0525b862da6c424884830f7c98f9b56f1f6c7",
-      "bytes": 2334
-    },
-    "family297/independent-verification297.json": {
-      "sha256": "a2214780f04f4cf4df69fe7c74fb6319a39f6a813334d380dec4a8fa6f272ce0",
-      "bytes": 2008
-    },
-    "family342/quadratic-family342.json": {
-      "sha256": "309d97f891bb9144a3a314b361f62ed1ed4d3064938b7d15121e763f7b99b12f",
-      "bytes": 311033
-    },
-    "family342/polynomial-family342.json": {
-      "sha256": "4faadf8c7d7af369495a98d39afbe24b9e77d6625781d7fdd25d0a29ef6d0a74",
-      "bytes": 756429
-    },
-    "family342/construction-report342.json": {
-      "sha256": "21e6904f582dfdad713e5064bc1d77d5b9037aead8e26766d9de12b75f306518",
-      "bytes": 2411
-    },
-    "family342/independent-verification342.json": {
-      "sha256": "50a0a7155c0d0c44f7a8a42964475ea80065ee84b4340b9ce852230feef9766e",
-      "bytes": 2259
+      "bytes": 13152,
+      "sha256": "ee08c6d9506c82ac5ddaae55c8ed91ef12e7053213ca4165e425b341bbf15a47"
     },
     "build_quartic_shared_weights.py": {
-      "sha256": "da062b03879849a5b2a1bfc6d8d15bbe47e773492b15cd944cabfdf5af9d87a5",
-      "bytes": 7716
+      "bytes": 7716,
+      "sha256": "da062b03879849a5b2a1bfc6d8d15bbe47e773492b15cd944cabfdf5af9d87a5"
+    },
+    "check_coordinate_budget.py": {
+      "bytes": 3218,
+      "sha256": "66edd89c5f2fba693878ac47c7fee5b4223f2aaecc232461cb216b73779133a8"
+    },
+    "check_field_specialization392.py": {
+      "bytes": 2323,
+      "sha256": "2d3732be6764f0e392528a7b59705ccf3f12a409f25962412d69bf169be2b20c"
+    },
+    "check_quartic279.py": {
+      "bytes": 12904,
+      "sha256": "4367dd6e33c2783e9a39218f66e8a988731a56689f5f5c5da7d78e436b26d310"
+    },
+    "check_quartic317.py": {
+      "bytes": 6612,
+      "sha256": "9e829abc42ec807b51c5b25cf68b208e00f840a55d31c850d14384a87e814f41"
+    },
+    "check_quartic329.py": {
+      "bytes": 5986,
+      "sha256": "e369421689618d8e9813d6291df4d45150dd3ceee8bc8100d896568f56eb75aa"
+    },
+    "check_quartic370.py": {
+      "bytes": 14984,
+      "sha256": "f113b0471f9102a424f659824bad642927437ef90a3bfbea67ab40ebefbee9d6"
+    },
+    "check_quartic389.py": {
+      "bytes": 6101,
+      "sha256": "130d298ee97a05112d582651ee6cb573ee6c35a466803363699e2eed132c16b4"
+    },
+    "check_quartic_even.py": {
+      "bytes": 9499,
+      "sha256": "02265ea13e32642e55597072365f33f26ff34e580c4818f58fcfd1edda8a89bd"
+    },
+    "check_quartic_mixed.py": {
+      "bytes": 15626,
+      "sha256": "dc559d325ed81007731d294cd6959cc0d7cb544c7b45d4d25bb0f2a45487c75c"
     },
     "check_quartic_shared_weights.py": {
-      "sha256": "c6ef3872b93d1b7cd4d070c57f062d37d260be2870069c4e197f4da2c9a4bdec",
-      "bytes": 8480
+      "bytes": 8480,
+      "sha256": "c6ef3872b93d1b7cd4d070c57f062d37d260be2870069c4e197f4da2c9a4bdec"
+    },
+    "coordinate-budget279.json": {
+      "bytes": 24411,
+      "sha256": "02af0610e33b06927f94970667dad8df59a65e1c145ad48b627140b64d770884"
+    },
+    "family279/construction-report279.json": {
+      "bytes": 10376,
+      "sha256": "854af6e17c2acc5d14bb77c6dff84441e1881401808f039125c1e6c29d46f657"
+    },
+    "family279/independent-verification279.json": {
+      "bytes": 2473,
+      "sha256": "156c5d8abad2c6e6f8bb9e875885e47e9d4a00f801171974c1ba630bc90ace5f"
+    },
+    "family279/polynomial-family279.json": {
+      "bytes": 577861,
+      "sha256": "becc07489fe7efaaa9d595457e342d31aea6e4f345cb227b325d36126b62e52b"
+    },
+    "family279/quadratic-family279.json": {
+      "bytes": 248542,
+      "sha256": "9bf3b6e40af70d2a9313f3c211f07941fd6ef93068106d7332bafa73f0dd9069"
+    },
+    "family297/construction-report297.json": {
+      "bytes": 2334,
+      "sha256": "ef46c24f97b7b6773607d7182db0525b862da6c424884830f7c98f9b56f1f6c7"
+    },
+    "family297/independent-verification297.json": {
+      "bytes": 2008,
+      "sha256": "a2214780f04f4cf4df69fe7c74fb6319a39f6a813334d380dec4a8fa6f272ce0"
+    },
+    "family297/polynomial-family297.json": {
+      "bytes": 656687,
+      "sha256": "9611a929a8795df215ca34bbaa19ca39a98745b86da07a864bfc2020ecf23ec0"
+    },
+    "family297/quadratic-family297.json": {
+      "bytes": 274396,
+      "sha256": "144f99f6f76cadf5fae3796f7a0a6c3f740659d89fe062237b278989bcef5ce8"
+    },
+    "family301/construction-report301.json": {
+      "bytes": 3257,
+      "sha256": "008d4ff581bdbe97dc9afe42d89b871cdf66cbaf769481dfadc96b303e475965"
+    },
+    "family301/independent-verification301.json": {
+      "bytes": 1554,
+      "sha256": "27560f55534acd4df481d33aa2d17dfdd47eac2231c3536d7d70bc798837c68f"
+    },
+    "family301/polynomial-family301.json": {
+      "bytes": 665072,
+      "sha256": "6108657d4998b3ba81a6630a2ac43dea64e206224ca477b596e48dc743e95621"
+    },
+    "family301/quadratic-family301.json": {
+      "bytes": 277575,
+      "sha256": "9917be941135778816ce25ecb0cbc872b4ed7c9f3691d79355e5e8352667a4fe"
+    },
+    "family317/construction-report317.json": {
+      "bytes": 925,
+      "sha256": "4a909cf16acf0a42a8ab5add91b139ce55bf613af2ca0581b9fa084823863518"
+    },
+    "family317/independent-verification317.json": {
+      "bytes": 6043,
+      "sha256": "a97686953bf6597f2326280712b6209f5fccc4ae83b342f2488fb70ecb49c6a7"
+    },
+    "family317/polynomial-family317.json": {
+      "bytes": 768181,
+      "sha256": "15027a2510f03944e008938508c8bd9b552e940063eb8005baaf7710ea0702b2"
+    },
+    "family317/quadratic-family317.json": {
+      "bytes": 304806,
+      "sha256": "21ba60789e880826dff7298301ffcda1f33e465ed09a45ecf93170069deb9157"
+    },
+    "family322/construction-report322.json": {
+      "bytes": 10212,
+      "sha256": "7085b25894a65dea09e4d466f65fc7126110090f60c865d65bd6a0b536887565"
+    },
+    "family322/independent-verification322.json": {
+      "bytes": 2784,
+      "sha256": "eaeeb7178af925c8925716d329e7d0f094cf2afbecdf3eac2f9a890607443acd"
+    },
+    "family322/polynomial-family322.json": {
+      "bytes": 767040,
+      "sha256": "ac0db3ea6ab5dee2ca414e37d5dcb9fb78ac767c69761a4c8c988a6d5b0f1ace"
+    },
+    "family322/quadratic-family322.json": {
+      "bytes": 301465,
+      "sha256": "93f4aaac68efaba7654f3682d404e38c913dc05bd273d1e5f0e3c6cdd744ecde"
+    },
+    "family329/construction-report329.json": {
+      "bytes": 8630,
+      "sha256": "c95abdf3dea062412f77ddce225a034ccf75dfc2a5af5402db4fb469863a718b"
+    },
+    "family329/independent-verification329.json": {
+      "bytes": 701,
+      "sha256": "7e316179c09f75a8f0506db1c4f33445858075785e393d5160ed96e42f756bf9"
+    },
+    "family329/polynomial-family329.json": {
+      "bytes": 808036,
+      "sha256": "d5868a5880cc3116eff0a2dc22abd60eac9738f8f28aa2ee4bbf45b63d8eb858"
+    },
+    "family329/quadratic-family329.json": {
+      "bytes": 320197,
+      "sha256": "9a9ece7045ebc14f1101aaf85bb7566434d4c411c9820669015242ba5df4170b"
+    },
+    "family342/construction-report342.json": {
+      "bytes": 2411,
+      "sha256": "21e6904f582dfdad713e5064bc1d77d5b9037aead8e26766d9de12b75f306518"
+    },
+    "family342/independent-verification342.json": {
+      "bytes": 2259,
+      "sha256": "50a0a7155c0d0c44f7a8a42964475ea80065ee84b4340b9ce852230feef9766e"
+    },
+    "family342/polynomial-family342.json": {
+      "bytes": 756429,
+      "sha256": "4faadf8c7d7af369495a98d39afbe24b9e77d6625781d7fdd25d0a29ef6d0a74"
+    },
+    "family342/quadratic-family342.json": {
+      "bytes": 311033,
+      "sha256": "309d97f891bb9144a3a314b361f62ed1ed4d3064938b7d15121e763f7b99b12f"
+    },
+    "family351/construction-report351.json": {
+      "bytes": 4346,
+      "sha256": "e9f1389f52ea26f173cd4c296c961009e9b95f14a796b07ba1ca8f3112b3843d"
+    },
+    "family351/independent-verification351.json": {
+      "bytes": 1905,
+      "sha256": "5b466e9751e2873c3f70e41a2418d186ad492bc3f61be312a365d4c444106f79"
+    },
+    "family351/polynomial-family351.json": {
+      "bytes": 767471,
+      "sha256": "c7af90124870465ef78d68b8c8e5381cfa4c232e8828913fb198bf42a35a5fc9"
+    },
+    "family351/quadratic-family351.json": {
+      "bytes": 316782,
+      "sha256": "452d063b6d7da598471aa1ec0302b9e37611a44168610592931ec56aac241966"
+    },
+    "family370/construction-report370.json": {
+      "bytes": 4727,
+      "sha256": "b75a03e1b1559cf5fda9d6c6131a8101aa9f6f1b850e1ec3dfd3978cdb62df47"
+    },
+    "family370/independent-verification370.json": {
+      "bytes": 7416,
+      "sha256": "4207530b3632bd016e495530d9d0a25f1e35f39e64d1082ba154912cc84c0c27"
+    },
+    "family370/polynomial-family370.json": {
+      "bytes": 887240,
+      "sha256": "3fb38773001a66e078ac461228ac50b8d561cc4cf807719c675d66f1e4551967"
+    },
+    "family370/quadratic-family370.json": {
+      "bytes": 348350,
+      "sha256": "d4b9505504345de00c5b4493f32fa1a725405fa631e1226e178280831c078624"
+    },
+    "final389/construction-report389.json": {
+      "bytes": 1205,
+      "sha256": "7a0aa68d4d1ea51c4e9e6906f2591939940c60a08f033a4f4e85d92e18ded935"
+    },
+    "final389/detector-normalization-verification.json": {
+      "bytes": 1310,
+      "sha256": "7e6449271cf8d0e81c4d16084753a726c80995ee98263ae27fc20354cd940e8d"
+    },
+    "final389/independent-verification389.json": {
+      "bytes": 782,
+      "sha256": "5367a122855711ed99509291183f014f4d27eac5e7c1fb1e4fab7b168951f936"
+    },
+    "final389/polynomial389.json": {
+      "bytes": 948418,
+      "sha256": "debd9c8c9cba39e5a845ff63920b3c91dcee2b45be00905ecb0c00b6b0c73205"
+    },
+    "final389/quadratic-system389.json": {
+      "bytes": 373173,
+      "sha256": "f7fb5bdf6a3d47275f1d78ed5e275954e2cc1f21fec8204d6a395bfc2f8b5394"
+    },
+    "final392/construction-report392.json": {
+      "bytes": 1435,
+      "sha256": "f5100bd9758f93c0ce65d8ddbb1f893bf21432c448e00fc378ec6ff67f3adc43"
+    },
+    "final392/field-specialization392.json": {
+      "bytes": 1323,
+      "sha256": "644de96c4ad82a6aeafb425674e215f4aad5d1419ac35cb914a6e1aec722697c"
+    },
+    "final392/independent-verification392.json": {
+      "bytes": 2482,
+      "sha256": "aa0beabd81ef532a490ca4605758796a0a54bcce2a72f7bfcdc5375d7ab2b0e3"
+    },
+    "final392/polynomial392.json.gz": {
+      "bytes": 57559,
+      "sha256": "d61e8d654541ed5aa1b942a781d72fd320cb7122821ac0b902e07724f40fe053"
+    },
+    "final392/quadratic-system392.json.gz": {
+      "bytes": 18081,
+      "sha256": "4e90eb91c8504dcba04a70a4097a411612ca24605b839d25b5e27cc29c0656cd"
+    },
+    "fresh-reproduction370.json": {
+      "bytes": 854,
+      "sha256": "cf4b51653572bb4ea13cdcb9c540e991596101feabf5a57907735dea7ed1c627"
+    },
+    "mixed-identities.json": {
+      "bytes": 392,
+      "sha256": "23aecb0599657f4fa1036a8ea0e4d8534c13192386318cc9069ae6f7b4f3bd94"
+    },
+    "upstream/candidate394-ir.json.gz": {
+      "bytes": 18668,
+      "sha256": "0214ff877d29775c3226cf0d1ba07942994bddc540e057afca802904a7e1d099"
+    },
+    "upstream/polynomial394.json.gz": {
+      "bytes": 59794,
+      "sha256": "c0bdf5d8718b042393018d70d9785a127b1c8388223ca756d90e5ede38a05c05"
+    },
+    "verify_detector_normalizations.py": {
+      "bytes": 5471,
+      "sha256": "8b109c9bc5b6bfeef00b7162dd713d9cd52b39d0ebef7df4721a24e0943635d8"
+    },
+    "verify_quartic392.py": {
+      "bytes": 12706,
+      "sha256": "092ac1d69bec2f3d59d60584fbc831232377eb48967afba975ac8ef8e02cda59"
     }
   },
   "additionalBaselines": [
@@ -732,6 +875,11 @@
       "repository": "https://github.com/JoseBrox/diophantine-z-q_improvements",
       "commit": "29199c229008aa150373c1bacb9dea508802a43e",
       "role": "Pinned 301/351-coordinate source systems for the 297/342-variable constructions."
+    },
+    {
+      "repository": "https://github.com/JoseBrox/diophantine-z-q_improvements",
+      "commit": "bd9e584d90f6a77c9828330eac19b04f3706a1ce",
+      "role": "Pinned 297/342-coordinate source systems for the parity constructions."
     }
   ],
   "primeSelectionDependency": {

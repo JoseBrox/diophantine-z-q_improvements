@@ -33,6 +33,7 @@ def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--full',action='store_true',help='run all supplied checks (also the default)')
     parser.add_argument('--receipt',type=Path)
+    parser.add_argument('--with-pari',action='store_true',help='also reproduce the unconditional elliptic rank certificate; requires cypari2')
     args=parser.parse_args()
     assert sys.version_info>=(3,10)
     manifest=json.loads((ROOT/'MANIFEST.json').read_text())
@@ -103,6 +104,32 @@ def main():
             quartic/'check_quartic_shared_weights.py'))
         for p,raw in shared_weight_checks.items():
             assert p.read_bytes()==raw,str(p)
+        even_originals = {}
+        even_checks = {}
+        for count in (322,):
+            for name in (f'quadratic-family{count}.json',f'polynomial-family{count}.json',f'construction-report{count}.json'):
+                p=quartic/f'family{count}'/name
+                even_originals[p]=p.read_bytes()
+            p=quartic/f'family{count}'/f'independent-verification{count}.json'
+            even_checks[p]=p.read_bytes()
+        stages.append(run('322-variable exact parity construction',quartic/'build_quartic_even.py'))
+        for p,raw in even_originals.items():
+            assert p.read_bytes()==raw,str(p)
+        stages.append(run('322-variable independent complete coefficients and formal-valuation checks',quartic/'check_quartic_even.py'))
+        for p,raw in even_checks.items():
+            assert p.read_bytes()==raw,str(p)
+        amplified = quartic/'family279'
+        amplified_originals = {name:(amplified/name).read_bytes() for name in (
+            'quadratic-family279.json','polynomial-family279.json',
+            'construction-report279.json','independent-verification279.json')}
+        stages.append(run('279-variable exact contact-amplified construction',quartic/'build_quartic279.py'))
+        stages.append(run('279-variable independent rows, complete coefficients, and normalization',
+            quartic/'check_quartic279.py'))
+        for name,raw in amplified_originals.items():
+            assert (amplified/name).read_bytes()==raw,name
+        coordinate_budget=(quartic/'coordinate-budget279.json').read_bytes()
+        stages.append(run('Disjoint coordinate accounting for the279-variable family',quartic/'check_coordinate_budget.py'))
+        assert (quartic/'coordinate-budget279.json').read_bytes()==coordinate_budget
         few=work/'computation/few_variables'
         module=few/'forced_prime29'
         module_manifest=json.loads((module/'manifest.json').read_text())
@@ -165,13 +192,48 @@ def main():
         stages.append(run('Number-field norm-image reduction and elliptic valuation obstruction',
             number_fields/'check_norm_image_reduction.py'))
         assert (number_fields/'norm-image-reduction-verification.json').read_bytes()==norm_verification
+        rationality_filter=(number_fields/'rationality-filter-certificate.json').read_bytes()
+        stages.append(run('Exact slope and ordinate polynomials and labelled bounded searches',
+            number_fields/'check_rationality_filters.py'))
+        assert (number_fields/'rationality-filter-certificate.json').read_bytes()==rationality_filter
+        contacts=work/'computation/contact_heights'
+        contact_certificate=(contacts/'contact-height-certificate.json').read_bytes()
+        stages.append(run('Disjoint contact sets, exceptional primes, and exact exponent inequalities',
+            contacts/'check_contact_height_amplification.py','--output',contacts/'contact-height-certificate.json'))
+        assert (contacts/'contact-height-certificate.json').read_bytes()==contact_certificate
+        scalar=work/'computation/scalar_normalization'
+        scalar_certificate=(scalar/'uniform-scalar-normalization-certificate.json').read_bytes()
+        stages.append(run('Uniform scalar normalization, two exact resultants, and exhaustive local residues',
+            scalar/'check_uniform_scalar_normalization.py'))
+        assert (scalar/'uniform-scalar-normalization-certificate.json').read_bytes()==scalar_certificate
+        constraints=work/'computation/elliptic_constraints'
+        parity_certificate=(constraints/'reduction-parity-certificate.json').read_bytes()
+        stages.append(run('Exact conjugate reduction orders and parity counterexamples',
+            constraints/'search_reduction_parities.py'))
+        assert (constraints/'reduction-parity-certificate.json').read_bytes()==parity_certificate
+        large_parity=(constraints/'large-split-order-certificate.json').read_bytes()
+        stages.append(run('Independent large-prime point orders above the exceptional cutoff',
+            constraints/'check_large_split_orders.py'))
+        assert (constraints/'large-split-order-certificate.json').read_bytes()==large_parity
+        if args.with_pari:
+            original=json.loads((number_fields/'elliptic-ratio-certificate.json').read_text())
+            stages.append(run('Unconditional elliptic ranks, exact quadratic-field stability, and local-global obstruction',
+                number_fields/'check_elliptic_ratio_obstruction.py','--output',number_fields/'elliptic-ratio-recomputed.json'))
+            recomputed=json.loads((number_fields/'elliptic-ratio-recomputed.json').read_text())
+            # Rank bounds, torsion, and polynomial terms are canonical;
+            # a PARI release may choose different point generators.
+            for key in ('four_coordinate_polynomial','additional_quadratic_fields','positive_rank_witness','local_witness_checks'):
+                assert original[key]==recomputed[key],key
+            for a,b in zip(original['curves'],recomputed['curves']):
+                for key in ('B','rank_lower','rank_upper','torsion_order','independent_finite_field_orders'):
+                    assert a[key]==b[key],(a['B'],key)
     report={'status':'PASS','manifest_files_checked':len(manifest['files']),
-        'compressed_tables_restored':restored,'stages':stages,
+        'compressed_tables_restored':restored,'pari_rank_checks_run':args.with_pari,'stages':stages,
         'scope':'Exact source identities, full quartic coefficients, finite-algebra specification, local constants and quantitative bounds. The global arithmetic projection premises are stated separately in the papers.'}
     if args.receipt:
         args.receipt.parent.mkdir(parents=True,exist_ok=True)
         args.receipt.write_text(json.dumps(report,indent=2)+'\n')
-    print('All supplied checks passed; published inputs were unchanged.')
+    print('All requested checks passed; published inputs were unchanged.')
 
 
 if __name__=='__main__':
