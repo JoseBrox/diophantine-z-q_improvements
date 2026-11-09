@@ -51,7 +51,7 @@ report = {
     'important_branch': 'N=0 includes H=-P+(0,0), so excluding only indices h=0,1 is insufficient.',
     'scope': 'An exact rational-function identity on its stated nonzero domain. The arithmetic argument excluding exceptional H is separate.'
 }
-folder = Path(__file__).resolve().parent / 'family_abc99'
+folder = Path(__file__).resolve().parent / 'family_abc98'
 folder.mkdir(exist_ok=True)
 output = folder / 'z-difference-identity.json'
 output.write_text(json.dumps(report, indent=2)+'\n')

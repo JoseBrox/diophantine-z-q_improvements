@@ -641,6 +641,45 @@ coefficient algorithms construct and bound each specified member.
 The exact finite checks establish their recorded algebraic assertions;
 they do not verify \eqref{eq:weak-abc} or the inherited arithmetic premises.
 
+\subsection{A uniform bound on the number of monomials}
+
+An ordinary monomial involves the polynomial coordinates after all
+fixed coefficient parameters have been substituted and equal monomials
+have been collected. The determinant construction is not expanded here,
+so its exact number of nonzero monomials is not known.
+
+\begin{proposition}
+Suppose the construction of~\cite{Active} uses $n$ total coordinates,
+a point algebra of rank $b$, a full algebra of rank $d$, and a total
+degree bound $D$. Put $E=(2b-1)d$. If $E<D$, its number of nonzero
+ordinary monomials is at most
+\[
+                 \binom{D+n}{n}-\binom{D-E+n-1}{n}.
+\]
+For $E\ge D$ the bound is simply $\binom{D+n}{n}$.
+\end{proposition}
+\begin{proof}
+Each determinant $H_r(U)=\det(I-U M_{\beta_r})$ has degree at
+most $d$ in the additional coordinate $U$, on every specialization.
+The final polynomial is one factor $H_b$ times $b-1$ factors
+$H_r^2+\sum_{j>r}a_j^2$. Thus its degree in $U$ is at most $E$;
+the remaining summands have no $U$ dependence. There are
+$\binom{D+n}{n}$ monomials of total degree at most $D$ in $n$
+coordinates. Those with $U$ exponent at least $E+1$ correspond,
+by subtracting $E+1$ from that exponent, to monomials of degree
+at most $D-E-1$. Subtracting their number proves the formula.
+Actual coefficient cancellations can only decrease the support.
+\end{proof}
+
+For the present family, $b=64$, $d=256$ and $E=32512$.
+The exact integer bound is less than $2^{509}$, uniformly in the
+fixed shift. Applying the same argument to the 27- and 29-variable
+specifications of~\cite{Active} gives strict upper bounds
+$2^{2202}$ and $2^{2417}$, respectively. The independent script
+\nolinkurl{computation/few_variables/check_monomial_bounds.py}
+checks the three binomial-coefficient calculations with exact integers.
+These are upper bounds; none is asserted to be an exact support count.
+
 \section{Other weak exponents}
 
 \begin{corollary}\label{cor:general-exponent}

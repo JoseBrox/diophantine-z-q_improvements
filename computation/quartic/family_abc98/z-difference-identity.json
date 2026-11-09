@@ -1,0 +1,34 @@
+{
+  "status": "PASS",
+  "pari_version": "[2, 17, 2]",
+  "method": "Exact function-field reduction against the elliptic addition law; no producer imported.",
+  "curve": "y^2=x^3-(11-6*sqrt(2))*x",
+  "H_coordinates": [
+    "x",
+    "x*S"
+  ],
+  "field_relation": "S^2=x-(11-6*sqrt(2))/x",
+  "g": "-((39-36*rho)+(8-14*rho)*S)/(8*(x(P)*x+D))",
+  "z_H_minus_P": "N/D0",
+  "N": "(-660+417*rho)+(-228+112*rho)*S",
+  "D0": "(-704+384*rho)+(660-417*rho)*S+(6888-5040*rho)*g",
+  "common_unit_used_in_source": "3+2*rho",
+  "checks": {
+    "point_P_on_curve": "Mod(0, hr^2 - 2)",
+    "H_on_curve": "Mod(0, hq^2 + ((-hx^2 + Mod(-6*hr + 11, hr^2 - 2))/hx))",
+    "g_cleared_equation": "Mod(0, hq^2 + ((-hx^2 + Mod(-6*hr + 11, hr^2 - 2))/hx))",
+    "reciprocal_abscissa_identity": "Mod(0, hq^2 + ((-hx^2 + Mod(-6*hr + 11, hr^2 - 2))/hx))",
+    "z_difference_identity": "Mod(0, hq^2 + ((-hx^2 + Mod(-6*hr + 11, hr^2 - 2))/hx))",
+    "N_zero_value_of_S": "Mod(0, hr^2 - 2)",
+    "N_zero_curve_factorization": "0",
+    "reduced_N_coefficients": "Mod(0, hq^2 + ((-hx^2 + Mod(-6*hr + 11, hr^2 - 2))/hx))",
+    "reduced_D_coefficients": "Mod(0, hq^2 + ((-hx^2 + Mod(-6*hr + 11, hr^2 - 2))/hx))"
+  },
+  "exceptional_H_classes_to_exclude_before_division": [
+    "E[2](K)",
+    "P+E[2](K)",
+    "-P+E[2](K)"
+  ],
+  "important_branch": "N=0 includes H=-P+(0,0), so excluding only indices h=0,1 is insufficient.",
+  "scope": "An exact rational-function identity on its stated nonzero domain. The arithmetic argument excluding exceptional H is separate."
+}
