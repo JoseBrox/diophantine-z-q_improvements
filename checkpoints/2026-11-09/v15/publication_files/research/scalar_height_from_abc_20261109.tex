@@ -1,0 +1,222 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,microtype}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\Z}{\mathbb Z}
+\DeclareMathOperator{\rad}{rad}
+\setlength{\emergencystretch}{2em}
+\title{A Conditional Height Bound for a Sum of Even Powers}
+\author{}\date{9 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+The rational $abc$ conjecture implies a linear logarithmic height
+bound for a rational pair in terms of its sum of fourth powers.
+In particular, $h(u)+h(v)\le3h(u^4+v^4)+C$ for every rational
+pair. The proof explicitly accounts for a common denominator and
+for a common factor of the two numerators. A general even-power
+version and the precise dependence on the $abc$ constant are given.
+\end{abstract}
+
+\section{Heights and the assumed inequality}
+
+For $r=a/b\in\Q$, with $a,b$ relatively prime integers and $b>0$,
+put $h(r)=\log\max\{|a|,b\}$. For a rational pair write
+$(1:u:v)=(D:A':B')$ with $D>0$ and
+$\gcd(D,A',B')=1$, and put
+\[
+             h_2(u,v)=\log\max\{D,|A'|,|B'|\}.
+\]
+In particular, $h(u),h(v)\le h_2(u,v)$. For a positive integer
+$n$, let $\rad(n)$ be the product of its distinct prime divisors.
+
+We use the following precise consequence of the rational $abc$
+conjecture. For every $\varepsilon>0$ there is a constant
+$K_\varepsilon\ge1$ such that
+\begin{equation}\label{eq:abc}
+ c\le K_\varepsilon\rad(abc)^{1+\varepsilon}
+\end{equation}
+whenever $a,b,c$ are positive relatively prime integers with
+$a+b=c$. This is the standard formulation, for example
+\cite[Section~1]{Granville}. The argument below applies
+\eqref{eq:abc} only to the triple $(A^d,B^d,A^d+B^d)$ with
+$d$ even and $A,B$ nonzero coprime integers.
+
+\section{The height inequality}
+
+\begin{theorem}\label{thm:even-power}
+Let $d\ge4$ be even. Choose $\varepsilon>0$ such that
+\[
+       a=\frac{d}{1+\varepsilon}-3>0,
+\]
+and assume \eqref{eq:abc} with constant $K_\varepsilon\ge1$.
+Then for all $u,v\in\Q$, putting $s=u^d+v^d$, one has
+\begin{align}
+ h_2(u,v)&\le\frac1a h(s)+C_{d,\varepsilon},\label{eq:pair}\\
+ h(u)+h(v)&\le\frac2a h(s)+2C_{d,\varepsilon},\label{eq:sum}\\
+ C_{d,\varepsilon}
+ &=\frac{1+a}{da}\log2+
+                    \frac{\log K_\varepsilon}{a(1+\varepsilon)}.
+ \nonumber
+\end{align}
+The same constant works uniformly for all signs, denominators,
+and common numerator factors.
+\end{theorem}
+\begin{proof}
+If both $u$ and $v$ are zero, all three heights vanish.
+If one coordinate is zero and the other is $w$, then
+$h_2(u,v)=h(w)=h(s)/d$. Since $0<a<d$, both asserted
+inequalities follow. Hence assume that $uv\ne0$.
+
+Choose the primitive common-denominator representation above and
+write
+\[
+ g=\gcd(|A'|,|B'|)>0,\qquad A=A'/g,\qquad B=B'/g.
+\]
+Then
+\[
+ u=\frac{gA}{D},\qquad v=\frac{gB}{D},\qquad
+ \gcd(A,B)=1,\qquad \gcd(g,D)=1.
+\]
+The last equality follows from $\gcd(D,A',B')=1$.
+Put
+\[
+ H=\max\{|A|,|B|\},\qquad N=A^d+B^d>0.
+\]
+Because $d$ is even,
+\begin{equation}\label{eq:N-size}
+                         H^d\le N\le2H^d.
+\end{equation}
+Let
+\[
+ k=\gcd(N,D^d),\qquad m_0=N/k,\qquad n=D^d/k.
+\]
+These positive integers satisfy $\gcd(m_0,n)=1$. Moreover
+$\gcd(g,n)=1$, since $n$ divides $D^d$. It follows that
+\begin{equation}\label{eq:reduced-output}
+         s=\frac{g^dN}{D^d}=\frac{m}{n},\qquad
+              m=g^d m_0,\qquad \gcd(m,n)=1.
+\end{equation}
+Thus if $M=\max\{m,n\}$, then $h(s)=\log M$ and
+$1\le m_0\le m\le M$.
+
+Every prime dividing $N$ either divides $D$ or survives in $m_0$.
+Consequently
+\begin{equation}\label{eq:radical}
+                    \rad(N)\le Dm_0.
+\end{equation}
+It is important that this bound uses $m_0=m/g^d$, not $m$:
+primes coming only from the common numerator factor $g$ need
+not divide $N$.
+
+Since $A$ and $B$ are coprime, the positive integers
+$A^d,B^d,N$ are pairwise coprime. The assumed $abc$ inequality,
+\eqref{eq:radical}, and $|AB|\le H^2$ give
+\[
+ H^d\le N
+ \le K_\varepsilon\bigl(|AB|\rad(N)\bigr)^{1+\varepsilon}
+ \le K_\varepsilon(H^2Dm_0)^{1+\varepsilon}.
+\]
+Therefore
+\begin{equation}\label{eq:first-H}
+ H^{d/(1+\varepsilon)-2}
+               \le K_\varepsilon^{1/(1+\varepsilon)}Dm_0.
+\end{equation}
+The identity $D^d=nN/m_0$ and \eqref{eq:N-size} imply
+\[
+                    D\le2^{1/d}H(n/m_0)^{1/d}.
+\]
+Substitution into \eqref{eq:first-H} and division by $H$ yield
+\begin{equation}\label{eq:H}
+ H^a\le2^{1/d}K_\varepsilon^{1/(1+\varepsilon)}
+                          m_0^{(d-1)/d}n^{1/d}.
+\end{equation}
+
+On the other hand, \eqref{eq:reduced-output} gives
+$g=(m/m_0)^{1/d}$, and hence
+\[
+ \max\{gH,D\}\le2^{1/d}H(M/m_0)^{1/d}.
+\]
+The left-hand side is exactly the exponential of $h_2(u,v)$,
+because $(D:gA:gB)$ is primitive. Taking logarithms and using
+\eqref{eq:H}, we obtain
+\begin{align*}
+ h_2(u,v)
+ &\le \log H+\frac1d(\log2+\log M-\log m_0)\\
+ &\le C_{d,\varepsilon}
+   +\frac{d-1-a}{da}\log m_0
+   +\frac1{da}\log n+\frac1d\log M.
+\end{align*}
+All three coefficients in the last line are nonnegative:
+$a<d-3<d-1$. Replacing $\log m_0$ and $\log n$ by
+$\log M$ gives coefficient
+\[
+            \frac{d-1-a}{da}+\frac1{da}+\frac1d=\frac1a.
+\]
+This proves \eqref{eq:pair}. Since each individual coordinate
+height is at most the pair height, \eqref{eq:sum} follows.
+\end{proof}
+
+\begin{corollary}\label{cor:quartic-three}
+Assume rational $abc$. There is a constant $C_0\ge0$ such that
+for every rational pair $(u,v)$,
+\[
+                   h(u)+h(v)\le3h(u^4+v^4)+C_0.
+\]
+If $K_{1/11}\ge1$ is an $abc$ constant at exponent $12/11$,
+one can take
+\[
+            C_0=\frac54\log2+\frac{11}4\log K_{1/11}.
+\]
+For the positive rational square
+$q=(u^4+v^4)^2$, with $(u,v)\ne(0,0)$, this becomes
+\[
+                         h(u)+h(v)\le\frac32h(q)+C_0.
+\]
+More generally, any fixed multiplicative constant strictly greater
+than two is valid in front of $h(u^4+v^4)$, after changing the
+additive constant.
+\end{corollary}
+\begin{proof}
+Take $d=4$, $\varepsilon=1/11$, so that $a=2/3$.
+For rational $s$, one has $h(s^2)=2h(s)$.
+Finally $2/a=2(1+\varepsilon)/(1-3\varepsilon)$ tends to
+two as $\varepsilon\to0^+$.
+\end{proof}
+
+\begin{corollary}
+Assume rational $abc$. There is a constant $C_1$ such that
+\[
+                   h(u)+h(v)\le h(u^6+v^6)+C_1
+                     \qquad(u,v\in\Q).
+\]
+One may take $C_1=\tfrac12\log2+
+\tfrac56\log K_{1/5}$.
+\end{corollary}
+\begin{proof}
+Take $d=6$, $\varepsilon=1/5$, so that $a=2$.
+\end{proof}
+
+\section{Unconditional scope}
+The finite-fiber assertion for $(u,v)\mapsto u^4+v^4$ is
+unconditional: each nonzero fiber has smooth projective completion
+$U^4+V^4=sW^4$, a genus-three curve, and thus has finitely many
+rational points by Faltings' theorem. The zero fiber consists only
+of $(0,0)$. This proves the existence of some finite-valued height
+bound, but supplies neither a linear bound nor an effective one.
+The preceding linear estimates use \eqref{eq:abc} as an additional
+arithmetic hypothesis.
+
+\begin{thebibliography}{9}
+\bibitem{Granville}
+A.~Granville, Rational and integral points on quadratic twists
+of a given hyperelliptic curve, \emph{International Mathematics
+Research Notices} (2007), article rnm027.
+\url{https://doi.org/10.1093/imrn/rnm027}; author's manuscript,
+\url{https://dms.umontreal.ca/~andrew/PDF/hyperelliptics.pdf}.
+\end{thebibliography}
+\end{document}
