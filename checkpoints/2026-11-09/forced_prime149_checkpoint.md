@@ -1,0 +1,11 @@
+# Forced-prime replacement by 149
+
+The scalar forced prime may be replaced by 149. This does not change any variable or row count. The exact screening is in `forced_prime149_screen.json`. For theta=0,1,2401,-343/32,1/2, the residues of (theta-2504)/51 are59,97,109,108,78; their Euler powers are all148. Trial division through12 proves primality. Thus the scalar contact product is a149-adic unit whenX is149-integral, and has valuation10v149(X) otherwise. With A_N=149^(2N+1) and R=A_N*r/(1+149^2*r), its valuation is2N+1 or2N-1.
+
+The norm extraction argument at this prime only uses good odd reduction over Q(sqrt2), that9792 is a unit, the ordinary pole obstruction, and formal-logarithm isometry. These hold since149 avoids2,3,7,17. The exceptional H classes E[2], plus/minusP+E[2], have reciprocal-abscissa norms supported on2,3,7,17,41, so their149-adic norms remain units and the same exclusion holds. The cutoff76176 is only needed for generic contact primes; it is unnecessary at a separately verified good forced prime. Moreover149 is automatically absent from every relevant contact radical.
+
+For integer input, direct finite residue checks give v2(r) in{2,3}, v3(r)=1, r=15 mod17. The new denominator is a unit at2 and3 and equals3 mod17. Thus v2(R),v3(R),v17(R) retain their old values. The product R(R+9792)=R^2(1+9792/R) is locally a square at2,3,17, with no condition on the squareclass of149. Its reduced denominator is square because gcd(r,1+149^2r)=1 and the latter is coprime to149. All remaining finite preparation, real approximation and prime-pattern steps are unchanged; the comparison primes already avoid149.
+
+Literal reconstruction audit: in the pinned249 quadratic source, the only old forced-prime square coefficient6559218121 occurs in source row733: R+80989^2*r*R-A*r=0. Replace that coefficient by22201 and set the fixed parameter base to149. All other literal rows are independent of the choice of forced prime. The unchanged rational normalizations of the scalar pole still give the exact same identities.
+
+The candidate248 source separately deletes source coordinate602 and row564, and replaces602 by601 in norm rows512 and566. Its proof uses the newly audited one-logarithm contact-height estimate and the stronger Lucas bound already proved in the source. Main249 files remain untouched.
