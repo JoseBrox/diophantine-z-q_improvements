@@ -1,7 +1,8 @@
 # Further four-coordinate rationality conditions
 
 Research checkpoint, 9 November 2026. These conditions do not define the
-integers, and completeness for the rational subfield is not asserted.
+integers. The degree-eleven condition is now proved to miss infinitely
+many rational integers by the rational-map theorem below.
 They use the exact point stability of `E:y²=x³+9` over each of the eight
 quadratic fields certified in the companion paper.
 
@@ -44,10 +45,36 @@ formal-logarithm and Chinese-remainder argument as in the companion
 paper shows that its actual rational projection is dense in every
 finite product of completions of Q.
 
-Its global coverage is unknown. A bounded search using
+Its global coverage is not all of Q. Corvaja--Zannier, with an appendix
+by Masser, *Rational and integral values of rational functions at
+rational points*, arXiv:2608.28255v1 (28 August 2026), Theorem 1.1,
+proves that a finite union of rational-map images of finitely generated
+subgroups of semiabelian varieties misses infinitely many rational
+integers. Apply it to `E×E`, its finitely generated rational point
+group, and the rational function `y(P)*x(Q)/(x(P)*y(Q))`. The explicit
+chart above ensures this function is defined on every nonzero-input
+witness; the leading factor adds only the finite exceptional value 0.
+Hence this condition fails integer completeness as well as rational
+completeness. Primary source:
+https://arxiv.org/html/2608.28255v1.
+
+A bounded search using
 `n*(-2,1)+k*(0,3)` with |n|≤30 and k=0,1,2 found no slope ratios 2 or
-3. This is only computational evidence, not a nonexistence theorem.
-No defining-polynomial claim should use completeness of this condition.
+3. This is only computational evidence about those particular inputs;
+the source theorem does not identify them as excluded values. The
+search and exact expansion are reproduced by
+`check_rationality_filters.py`, with PASS output in
+`rationality-filter-certificate.json`.
+
+The same source theorem rules out obtaining a set containing all
+integers by any fixed finite sums, products, or ratios of values supplied
+by fixed abelian varieties, including finite unions and added finite
+sets. Each such expression is a rational map on a product of abelian
+varieties; Mordell--Weil supplies finite generation. Additional
+restrictions on those point tuples only shrink the image. This does
+not cover arbitrary algebraic correspondences, or constructions with
+unrestricted additional affine witnesses whose outputs are not fixed
+rational functions of the abelian points.
 
 ## Ordinates: degree nine, with an elementary obstruction
 

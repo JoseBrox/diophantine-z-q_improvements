@@ -1,0 +1,815 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,booktabs,microtype}
+\usepackage[margin=26mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\newcommand{\OK}{\mathcal O_K}
+\setlength{\emergencystretch}{2em}
+\title{Locally Dense Diophantine Sets in the Rational Subfield}
+\author{}\date{9 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+We give an explicit polynomial of degree $13$, height $162$, and
+four total coordinates whose existential projection over $\Q(i)$ is
+a proper subset of $\Q$. This subset is dense simultaneously in every
+finite collection of completions of $\Q$, and the polynomial is locally
+soluble for every input in every completion of $\Q(i)$. Nevertheless,
+the rational input $-1$ has no global witness. The construction uses
+the curve $y^2=x^3+9$ and a rank-zero elliptic obstruction.
+We prove a general simultaneous density statement for ratios of
+elliptic coordinates under rank stability, and give a bounded-denominator
+criterion that would suffice for existential definability of a ring of
+integers. A theorem of Corvaja--Zannier shows that finite rational
+combinations of points on fixed abelian varieties always miss infinitely
+many rational integers. We apply this obstruction to the ratio
+constructions, including a four-coordinate variant of degree $11$.
+The bounded-denominator criterion therefore requires a construction
+beyond such finite rational combinations.
+\end{abstract}
+
+\section{An explicit polynomial and its scope}
+
+A subset $S$ of a field $L$ is \emph{Diophantine in $L$} if membership
+in $S$ can be expressed by the existence of finitely many solutions of
+polynomial equations over $L$. The total number of coordinates includes
+the distinguished input. The height of an integer polynomial is the
+largest absolute value of its coefficients.
+
+Put $K=\Q(i)$ and define
+\begin{align}
+ F(W,U)&=U^2W-9W^3-1,\label{eq:F}\\
+ G(T,W,V)&=V^2TW-9T^3W^3-1,\label{eq:G}\\
+ P(T,W,U,V)&=T\bigl(F(W,U)^2-2G(T,W,V)^2\bigr).\label{eq:P}
+\end{align}
+Let
+\begin{equation}\label{eq:D-definition}
+ D=\{t\in K:\exists w,u,v\in K,\ P(t,w,u,v)=0\}.
+\end{equation}
+
+\begin{theorem}\label{thm:main}
+The following statements hold.
+\begin{enumerate}
+\item $D$ is a proper subset of $\Q$, with $0,1\in D$ and $-1\notin D$.
+\item For every finite nonempty set $S$ of places of $\Q$, the diagonal
+image of $D$ is dense in $\prod_{v\in S}\Q_v$.
+\item For every place $\mathfrak p$ of $K$ and every $t\in K_{\mathfrak p}$,
+the equation $P(t,W,U,V)=0$ has a solution over $K_{\mathfrak p}$.
+\item The polynomial $P$ has four total coordinates, degree $13$,
+height $162$, and $11$ nonzero monomials.
+\end{enumerate}
+\end{theorem}
+
+The arithmetic needed for this theorem consists of two small rank-zero
+calculations, given in Section~\ref{sec:arithmetic} with reproducible
+unconditional descent computations. The other parts of the proof are
+given in Sections~\ref{sec:global}--\ref{sec:density}.
+
+Theorem~\ref{thm:main} concerns a proper subset of the rational subfield.
+Its coordinate count is therefore not a coordinate bound for a
+Diophantine definition of $\Z$, $\Q$, or $\Z[i]$ in $\Q(i)$.
+In particular, local solubility for every input and simultaneous
+local density do not establish the completeness of an existential
+definition of the rational subfield.
+
+\section{The elliptic curves and the arithmetic input}\label{sec:arithmetic}
+
+Consider the elliptic curves
+\[
+ E:y^2=x^3+9,\qquad
+ E':y^2=x^3+81,\qquad
+ E^-:y^2=x^3-9.
+\]
+Their origins are denoted by $O$.
+
+\begin{lemma}\label{lem:groups}
+One has
+\[
+ E'(\Q)=\{O,(0,9),(0,-9)\},\qquad E^-(\Q)=\{O\}.
+\]
+The point $R=(3,6)\in E(\Q)$ has infinite order.
+\end{lemma}
+\begin{proof}
+The rank-zero statements for $E'$ and $E^-$ are the rigorously computed
+entries $972b2$ and $3888k1$ in Cremona's tables; the corresponding
+entry for $E$ is $972c1$ \cite{CremonaData,LMFDB81,LMFDBReliability}.
+They can be reproduced independently by unconditional $2$-descent.
+In PARI/GP $2.17.2$, the commands
+\begin{verbatim}
+ellrank(ellinit([0,0,0,0,81]))
+ellrank(ellinit([0,0,0,0,-9]))
+\end{verbatim}
+both return \verb|[0, 0, 0, []]|. The first two entries are proven
+lower and upper bounds on the Mordell--Weil rank. PARI's bounds
+use the $2$-Selmer group and the Cassels pairing; no Birch--Swinnerton-Dyer
+assumption or numerical analytic-rank calculation is used
+\cite[\texttt{ellrank}]{PARI}. The accompanying program
+\nolinkurl{check_elliptic_ratio_obstruction.py} repeats these computations.
+
+For completeness, the torsion orders can also be checked by elementary
+finite-field calculations. Both curves have good reduction at $5$ and
+$7$. Direct counts give
+\[
+\begin{array}{c|cc}
+ &\#E_*(\mathbb F_5)&\#E_*(\mathbb F_7)\\\hline
+ E'&6&9\\
+ E^-&6&7.
+\end{array}
+\]
+Reduction is injective on torsion of order prime to the residue
+characteristic. These two counts bound the torsion order of $E'$ by
+$3$ and force the torsion subgroup of $E^-$ to be trivial. The three
+displayed points of $E'$ are distinct and rational, proving the asserted
+groups once the ranks are zero.
+
+Finally,
+\[
+                 [2](3,6)=\left(-\frac{15}{16},\frac{183}{64}\right).
+\]
+The Nagell--Lutz theorem says that a rational torsion point on an
+integral short Weierstrass equation has integral coordinates
+\cite[Chapter VIII, Section 7]{Silverman}. Thus $(3,6)$ cannot have
+finite order.
+\end{proof}
+
+\begin{lemma}\label{lem:exact-stability}
+Every point of $E(\Q(i))$ is rational:
+\[
+                          E(\Q(i))=E(\Q).
+\]
+\end{lemma}
+\begin{proof}
+Let $\sigma$ be complex conjugation and take $A\in E(\Q(i))$.
+Put $B=A-\sigma A$. Then $\sigma B=-B$.
+If $B\ne O$, write $B=(a,ib)$ with $a,b\in\Q$: the abscissa is
+fixed by $\sigma$ and the ordinate is negated. Its equation gives
+\[
+              -b^2=a^3+9,\qquad b^2=(-a)^3-9.
+\]
+Consequently $(-a,b)$ is an affine rational point of $E^-$,
+contrary to Lemma~\ref{lem:groups}. Therefore $B=O$,
+so $A=\sigma A$ and $A\in E(\Q)$.
+\end{proof}
+
+This proof establishes equality of point sets, which is stronger than
+equality of ranks. There is no unexamined finite-index quotient in the
+definition used below.
+
+\begin{proposition}\label{prop:quadratic-fields}
+Let $d\ne1$ be a squarefree integer. If
+\[
+               E^{(d)}:Y^2=X^3+9d^3
+\]
+has trivial rational Mordell--Weil group, then
+$E(\Q(\sqrt d))=E(\Q)$. The hypothesis holds for
+\[
+                   d\in\{-15,-13,-11,-10,-1,3,5,7\}.
+\]
+\end{proposition}
+\begin{proof}
+With $\sigma$ the nonidentity automorphism, an affine point
+$A-\sigma A$ has the form $(a,b\sqrt d)$, with $a,b\in\Q$.
+Its equation $db^2=a^3+9$ gives the rational point
+$(da,d^2b)$ on $E^{(d)}$. Triviality of $E^{(d)}(\Q)$ thus forces
+$A=\sigma A$. For each of the eight displayed values of $d$,
+the accompanying checker computes matching unconditional rank
+bounds zero and torsion order one for $E^{(d)}$.
+\end{proof}
+
+\section{The global projection and the excluded value}\label{sec:global}
+
+Define the set of nonzero abscissas
+\[
+       X=\{x(A):A\in E(\Q),\ A\ne O,\ x(A)\ne0\}.
+\]
+
+\begin{proposition}\label{prop:ratio-identification}
+The set in \eqref{eq:D-definition} is exactly
+\[
+                         D=\{0\}\cup X/X.
+\]
+\end{proposition}
+\begin{proof}
+The element $2$ is not a square in $\Q(i)$: if
+$(a+bi)^2=2$ with $a,b\in\Q$, then $ab=0$, and neither
+$a^2=2$ nor $-b^2=2$ is possible. Hence for $t\ne0$,
+\eqref{eq:P} vanishes if and only if $F=G=0$.
+
+The equation $F=0$ forces $w\ne0$ and is equivalent to the assertion
+that
+\[
+                      A=\left(\frac1w,\frac uw\right)
+\]
+lies on $E$. Likewise $G=0$ forces $tw\ne0$ and is equivalent to
+\[
+                      B=\left(\frac1{tw},\frac v{tw}\right)\in E.
+\]
+By Lemma~\ref{lem:exact-stability}, both points are rational.
+Their abscissas are nonzero and $x(A)/x(B)=t$, so $t\in X/X$.
+
+Conversely, if $t=x(A)/x(B)$ for points with nonzero abscissas,
+put $w=1/x(A)$, $u=y(A)/x(A)$, and $v=y(B)/x(B)$.
+These rational coordinates satisfy $F=G=0$.
+The factor $T$ in \eqref{eq:P} supplies the input $t=0$.
+\end{proof}
+
+The chart used in the proof has a simple geometric interpretation.
+In the projective equation $Y^2Z=X^3+9Z^3$, take the affine chart
+$X\ne0$ and put $u=Y/X$, $w=Z/X$. The equation becomes $F=0$.
+Thus nonvanishing of the original abscissa is enforced by the affine
+chart itself, without a separate inverse coordinate. The equation
+$G=0$ results from eliminating the second chart coordinate by
+$w_2=tw$.
+
+\begin{corollary}\label{cor:same-polynomial}
+The same polynomial $P$ defines the same set $D$ in each field
+$\Q(\sqrt d)$ listed in Proposition~\ref{prop:quadratic-fields}.
+\end{corollary}
+\begin{proof}
+In each listed field, $2$ is nonsquare: for a squarefree $d\ne1$,
+the only quadratic field containing $\sqrt2$ is the one with
+$d=2$, which is absent from the list. The proof of
+Proposition~\ref{prop:ratio-identification} therefore applies
+using Proposition~\ref{prop:quadratic-fields} in place of
+Lemma~\ref{lem:exact-stability}.
+\end{proof}
+
+\begin{proposition}\label{prop:minus-one}
+One has $-1\notin D$.
+\end{proposition}
+\begin{proof}
+Otherwise there would be rational points with abscissas $a$ and $-a$,
+where $a\ne0$. If their ordinates are $b$ and $c$, then
+\[
+          b^2=9+a^3,\qquad c^2=9-a^3.
+\]
+Multiplying gives
+\[
+                    (bc)^2=81-a^6=(-a^2)^3+81.
+\]
+Hence $(-a^2,bc)\in E'(\Q)$. Lemma~\ref{lem:groups} forces its
+abscissa to be zero, a contradiction.
+\end{proof}
+
+For the size assertion, direct expansion of \eqref{eq:P} gives
+\begin{align*}
+ P={}&TU^4W^2-18TU^2W^4-2TU^2W+81TW^6+18TW^3-T\\
+     &-2T^3V^4W^2+36T^5V^2W^4+4T^2V^2W
+       -162T^7W^6-36T^4W^3.
+\end{align*}
+The eleven monomials are distinct. Their maximum total degree is
+$13$, attained by $T^7W^6$, and the maximum coefficient magnitude
+is $162$. The supplied sparse expansion checker verifies these
+claims with integer arithmetic.
+
+\section{Solubility over every completion}\label{sec:local}
+
+\begin{proposition}\label{prop:all-local}
+Let $L$ be $\mathbb R$, $\mathbb C$, or a finite extension of
+$\Q_p$. For every $t\in L$ the equation $P(t,W,U,V)=0$ has an
+$L$-solution.
+\end{proposition}
+\begin{proof}
+The assertion is immediate for $t=0$. Suppose $t\ne0$.
+Squares in $L$ contain a neighborhood of the nonzero square $9$.
+For the nonarchimedean fields this follows from Hensel's lemma,
+and for the archimedean fields it follows from the local square-root
+function at $9$.
+
+Choose $s\in L^\times$ sufficiently close to zero that both
+$9+s^3$ and $9+t^3s^3$ are squares. This gives points of $E(L)$
+with nonzero abscissas $s$ and $ts$, whose ratio is $t$.
+The chart substitution in Proposition~\ref{prop:ratio-identification}
+therefore gives a solution with $F=G=0$.
+\end{proof}
+
+In particular, the excluded global input $-1$ has witnesses over
+every completion. There are uniform elementary choices for its
+local abscissa $s$: use $s=p$ for odd $p\ne3$, $s=9$ for $p=3$,
+$s=2$ for $p=2$, and $s=1$ over $\mathbb R$.
+For $p\ne2,3$ the two radicands reduce to $9$ modulo $p$;
+for $p=3$ their quotients by $9$ are $1$ modulo $3$;
+for $p=2$ the radicands are $17$ and $1$.
+Thus no local obstruction detects this global exclusion.
+
+\section{Simultaneous density of global ratios}\label{sec:density}
+
+Local solubility alone does not prove density of the global values.
+The following lemma supplies the required global approximation.
+
+\begin{lemma}\label{lem:cyclic-density}
+Let $E/\Q$ be an elliptic curve, let $R\in E(\Q)$ have infinite
+order, and let $S$ be a finite set of places of $\Q$.
+There is a positive integer $N$ such that the closure of
+$\{[Nn]R:n\in\Z\}$ in $\prod_{v\in S}E(\Q_v)$ contains a product
+of open neighborhoods of $O$.
+\end{lemma}
+\begin{proof}
+For each finite $p\in S$, choose an open subgroup of $E(\Q_p)$
+on which the elliptic logarithm is an analytic group isomorphism
+onto $p^{a_p}\Z_p$. After choosing $N$ sufficiently divisible,
+$[N]R$ belongs to all these subgroups. Its logarithm $\ell_p$ is
+nonzero, because the logarithm is injective there and $R$ is
+not torsion. The closure of its integer multiples is therefore
+the open subgroup corresponding to $\ell_p\Z_p$.
+
+The Chinese remainder theorem shows that the diagonal integers
+are dense in $\prod_{p\in S,\ p<\infty}\Z_p$. Thus the integer
+multiplier can approximate independently any prescribed element
+of each $\ell_p\Z_p$.
+
+If the real place belongs to $S$, enlarge $N$ so that $[N]R$ lies
+in $E(\mathbb R)^0$. Identify this connected real Lie group with
+$\mathbb R/\mathbb Z$. The image $\alpha$ of $[N]R$ is irrational,
+since otherwise the point would be torsion. Any finite list of
+$p$-adic approximation requirements on $n$ defines an arithmetic
+progression $n=n_0+Mk$. Along this progression,
+$n\alpha$ is dense modulo one because $M\alpha$ is irrational.
+The real approximation can therefore be imposed simultaneously
+with the finite-place conditions. This proves the assertion.
+\end{proof}
+
+\begin{proposition}\label{prop:general-density}
+Let $E/\Q$ have positive rank, and let $C\in E(\Q)$ be an affine
+point that is not a point of order two. Put $c=x(C)$ and
+\[
+ X_c=\{x(A)-c:A\in E(\Q),\ A\ne O,\ x(A)\ne c\}.
+\]
+Then $X_c/X_c$ is dense in $\prod_{v\in S}\Q_v$ for every finite
+nonempty set $S$ of places of $\Q$.
+\end{proposition}
+\begin{proof}
+Fix a point $R\in E(\Q)$ of infinite order and apply
+Lemma~\ref{lem:cyclic-density}. The rational points
+$C+[Nn]R$ are dense in a product of neighborhoods of $C$.
+The function $f=x-c$ has nonzero derivative at $C$, since
+$dx=2y\,\omega$ for the invariant differential $\omega$, and
+$y(C)\ne0$. The local inverse function theorem therefore shows
+that the values $f(C+[Nn]R)$ are dense in a product
+$\prod_{v\in S}U_v$, where each $U_v$ is a neighborhood of zero
+in $\Q_v$.
+
+Take target values $a_v\in\Q_v$. For each $v$, choose
+$b_v\in U_v\setminus\{0\}$ sufficiently small that $a_vb_v\in U_v$.
+Choose independently two global points in the above sequence,
+with their $f$-values sufficiently close to $(a_vb_v)_v$ and
+$(b_v)_v$. Both values can be required to be nonzero: the zeros
+of $f$ are only $C$ and $-C$, so at most finitely many integer
+multipliers are excluded. Taking their quotient approximates
+$(a_v)_v$ as closely as desired.
+\end{proof}
+
+Apply Proposition~\ref{prop:general-density} to the curve $E$ above
+and $C=(0,3)$. Then $c=0$ and $X_c=X$. Together with
+Propositions~\ref{prop:ratio-identification}, \ref{prop:minus-one},
+and \ref{prop:all-local}, this completes the proof of
+Theorem~\ref{thm:main}.
+
+\begin{remark}
+The density is in completions of $\Q$. The rational subset $D$ is
+not asserted to be dense in a completion $K_{\mathfrak p}$ in which
+the closure of $\Q$ is a proper local subfield.
+Proposition~\ref{prop:all-local} is a different assertion: it allows
+the witnesses themselves to range over the completion.
+\end{remark}
+
+\section{The general rank-stability construction}
+
+Ratios of local parameters on a stable abelian variety are used for
+weak approximation in \cite[Theorem 4.2(b)]{Poonen}. In the elliptic
+case the following statement includes the real place and records
+an explicit coordinate bound.
+
+\begin{proposition}\label{prop:six-coordinates}
+Let $K/\Q$ be a number field and let
+$E:y^2=x^3+ax+b$ be an elliptic curve over $\Q$ with
+\[
+              0<\operatorname{rank}E(\Q)=\operatorname{rank}E(K).
+\]
+There is a Diophantine subset $D_E\subseteq\Q$ inside $K$ that
+is simultaneously dense in every finite product of completions of
+$\Q$. It has a definition with six total coordinates and four
+equations. If $m\ge1$ annihilates $E(K)/E(\Q)$, the equations have
+degree at most $\max(3,3m^2-1)$.
+\end{proposition}
+\begin{proof}
+The quotient $E(K)/E(\Q)$ is finite by the Mordell--Weil theorem
+and equality of ranks. Choose $m$ annihilating it and a point
+$R\in E(\Q)$ of infinite order. Put $c=x([m]R)$.
+Write the abscissa of multiplication by $m$ as
+\[
+                 x([m]A)=\frac{\phi_m(x(A))}{B_m(x(A))},
+\]
+where $\deg\phi_m=m^2$ and $\deg B_m=m^2-1$; these are the
+usual division-polynomial expressions, with $B_1=1$.
+Put $A_m=\phi_m-cB_m$.
+
+For coordinates $(t,x_1,y_1,x_2,y_2,z)$ impose
+\begin{align*}
+ y_j^2-x_j^3-ax_j-b&=0\qquad(j=1,2),\\
+ tA_m(x_2)B_m(x_1)-A_m(x_1)B_m(x_2)&=0,\\
+ zB_m(x_1)B_m(x_2)A_m(x_2)-1&=0.
+\end{align*}
+The last equation excludes every denominator and the zero
+denominator of the ratio. Each multiplied point is rational, so
+the resulting input $t$ is rational. The degree bounds are
+$3$, $2m^2$, and $3m^2-1$, respectively.
+
+To prove simultaneous density, use rational inputs near $R$ in
+the sequences provided by Lemma~\ref{lem:cyclic-density}.
+The function $x\circ[m]-c$ has a simple zero at $R$, because
+the isogeny $[m]$ is unramified in characteristic zero and
+$[m]R$ is not two-torsion. The proof of
+Proposition~\ref{prop:general-density} applies unchanged.
+\end{proof}
+
+This proposition supplies locally rich rational values. It does not
+give every rational integer. The following theorem rules out that
+conclusion for every finite rational combination of such values.
+
+\section{Finite rational combinations of abelian points}\label{sec:rational-combinations}
+
+We use the following specialization of
+\cite[Theorem 1.1]{CorvajaZannier}. A rational map is evaluated only
+at points of its domain of definition.
+
+\begin{theorem}[Corvaja--Zannier]\label{thm:CZ}
+Let $k$ be a number field. For finitely many semiabelian varieties
+$B_j/k$, rational maps $f_j:B_j\dashrightarrow\mathbb P^1_k$,
+and finitely generated subgroups $\Gamma_j\subset B_j(k)$, the set
+\[
+                 \Z\setminus\bigcup_j f_j(\Gamma_j)
+\]
+is infinite.
+\end{theorem}
+
+A semiabelian variety is an extension of an abelian variety by a
+torus; in particular every abelian variety is semiabelian.
+The next consequence needs only the abelian case.
+
+\begin{corollary}\label{cor:finite-rational-combinations}
+Fix a number field $k$ and finitely many abelian varieties over $k$.
+Consider finitely many constructions in which one chooses finitely
+many points on these varieties and applies fixed rational functions
+to their coordinates, with every division defined. One may also add
+finitely many specified values. The union of the resulting value
+sets misses infinitely many rational integers.
+
+The same conclusion holds if additional conditions restrict the
+chosen points while leaving each output a fixed rational function
+of those points.
+\end{corollary}
+\begin{proof}
+For one construction, form the product $B$ of all the abelian
+varieties supplying its point coordinates, with repeated factors
+when several independent points are chosen on the same variety.
+This product is an abelian variety over $k$. Composition of the
+fixed rational functions gives a rational map
+$f:B\dashrightarrow\mathbb P^1$. The tuples on which the original
+expressions are defined form a subset of its domain; cancellation
+in a rational expression can enlarge that domain and cannot remove
+any such tuple. Thus the constructed values are contained in
+$f(B(k))$. A construction with no point coordinates contributes
+only a constant.
+
+By the Mordell--Weil theorem, every $B(k)$ is finitely generated.
+Apply Theorem~\ref{thm:CZ} to the finitely many products and maps.
+Their union misses infinitely many integers. Removing a finite
+list of specified values from that infinite complement leaves it
+infinite. Restricting the allowed point tuples only decreases the
+value sets, so it preserves the conclusion.
+\end{proof}
+
+\begin{corollary}\label{cor:ratios-miss-integers}
+The sets $D$ of Theorem~\ref{thm:main} and $D_E$ of
+Proposition~\ref{prop:six-coordinates} each miss infinitely many
+rational integers. No finite union of fixed sums, products, or
+ratios of finitely many elements of these sets, even with finitely
+many values added, can contain $\Z$.
+\end{corollary}
+\begin{proof}
+For $D$, Proposition~\ref{prop:ratio-identification} gives
+$D=\{0\}\cup X/X$, where $X$ is the set of nonzero abscissas of
+$E(\Q)$. Every nonzero value is therefore the value of the rational
+function $x(P_1)/x(P_2)$ on $E\times E$. The defining chart forces
+both abscissas and the denominator to be nonzero. The stratum $T=0$
+contributes exactly the one additional input value $0$.
+
+For $D_E$, the guard in Proposition~\ref{prop:six-coordinates}
+excludes all poles and the zero denominator of
+\[
+           \frac{x([m]P_1)-c}{x([m]P_2)-c},
+\]
+a rational function on $E_K\times E_K$. Hence its entire value
+set is contained in the rational-map image required by
+Corollary~\ref{cor:finite-rational-combinations}.
+
+For a finite rational combination involving $D$, separate the
+finitely many possibilities in which one of its arguments is the
+added value $0$. Each remaining argument is supplied by a pair of
+elliptic points. After substituting the chosen zero values, every
+nonempty defined case is again a fixed rational expression on a
+product of elliptic curves, or a constant. There are finitely many
+such cases, so the preceding corollary applies.
+\end{proof}
+
+The same obstruction applies to a smaller-degree slope construction.
+For any of the eight quadratic fields in
+Proposition~\ref{prop:quadratic-fields}, put
+\[
+\begin{split}
+ P_{\mathrm{sl}}(T,Z,W,S)=T\bigl(&
+ (T^2Z^2W-9W^3-1)^2\\
+ &-2(Z^2S-9S^3-1)^2\bigr).
+\end{split}
+\]
+
+\begin{proposition}\label{prop:slope-filter}
+The existential projection of $P_{\mathrm{sl}}$ over each of these
+fields is
+\[
+ D_{\mathrm{sl}}=\{0\}\cup
+ \left\{\frac{y(P_1)/x(P_1)}{y(P_2)/x(P_2)}:
+ P_1,P_2\in E(\Q),\ x(P_1)x(P_2)\ne0\right\}.
+\]
+It misses infinitely many rational integers. The polynomial has
+four total coordinates, degree $11$, height $162$, and eleven
+nonzero monomials.
+\end{proposition}
+\begin{proof}
+For a nonzero input $t$, nonsquareness of $2$ forces both squared
+residuals to vanish. The constant term $-1$ makes $w,s$ nonzero.
+The resulting elliptic points are
+\[
+                   (1/w,tz/w),\qquad(1/s,z/s).
+\]
+Exact point stability makes both points rational. The second
+ordinate is nonzero, since an ordinate-zero rational point on
+$E$ would give a rational solution of $x^3=-9$, which does not
+exist. Thus $z\ne0$, and the ratio of the two slopes is $t$.
+Conversely any two points in the displayed set give witnesses by
+taking $w=1/x(P_1)$, $s=1/x(P_2)$, and
+$z=y(P_2)/x(P_2)$. The input $0$ is represented separately by
+the leading factor $T$, so no extra nonzero stratum arises.
+
+The slope ratio is a rational function on $E\times E$, defined
+on every pair just used. Corollary~\ref{cor:finite-rational-combinations}
+therefore proves the infinite omission after adding $0$.
+Expansion of the displayed polynomial gives the stated numerical
+data; it is independently recorded by
+\nolinkurl{check_rationality_filters.py}.
+\end{proof}
+
+These results concern outputs given by fixed rational functions of
+abelian points. They do not cover arbitrary algebraic correspondences
+whose output is merely algebraic over those point coordinates, or
+constructions with unrestricted additional affine witnesses.
+Such a construction requires its own soundness and completeness
+arguments. The obstruction is consequently a restriction on a class
+of methods, not a proof that a ring of integers is not Diophantine
+in its field of fractions.
+
+\section{Fibers and rational parametrizations}
+
+\begin{proposition}\label{prop:genus-four}
+For $t\in\Q\setminus\{0,1\}$, the smooth projective curve associated
+to
+\[
+                 y^2=s^3+9,\qquad z^2=t^3s^3+9
+\]
+has genus four. In particular, the nonzero-ratio witnesses for each
+such fixed rational input form a finite set.
+\end{proposition}
+\begin{proof}
+Over an algebraic closure, the function field is a biquadratic
+extension of $\overline\Q(s)$. Each square root has three finite
+branch points and is ramified at infinity. The two finite branch
+sets are disjoint because $t^3\ne1$. Thus there are seven branch
+points in their composite, each with ramification index two.
+Riemann--Hurwitz gives
+\[
+                     2g-2=4(-2)+7\cdot2=6,
+\]
+so $g=4$. Faltings's theorem gives finiteness of its rational points
+\cite{Faltings}. The affine nonzero-ratio witnesses are a subset.
+\end{proof}
+
+The points with $s=0$ supply four rational points on the displayed
+projective curve. They are precisely the points removed when
+forming a nonzero abscissa ratio. For $t=-1$, the obstruction in
+Proposition~\ref{prop:minus-one} excludes every remaining affine
+point with $s\ne0$.
+
+\begin{proposition}\label{prop:no-section}
+Let $k$ be a characteristic-zero field, let $E/k$ be an elliptic
+curve, and let $h\in k(E^r)$ for some $r\ge1$. The rational map
+$h:E^r\dashrightarrow\mathbb P^1$ has no rational section.
+In particular, there are no $w,u,v\in k(T)$ satisfying $F=G=0$
+as identities for the polynomials in \eqref{eq:F}--\eqref{eq:G}.
+\end{proposition}
+\begin{proof}
+Every point of $E(k(T))$ is constant: a rational map
+$\mathbb P^1_k\dashrightarrow E$ extends to a morphism by
+properness, and a nonconstant morphism is impossible by
+Riemann--Hurwitz. Indeed, after extending scalars to an algebraic
+closure its ramification formula would read $-2\ge0$.
+
+A putative rational section of a ratio therefore has constant
+elliptic points and hence constant ratio. For the explicit system,
+$F=G=0$ would give the two points
+\[
+             (1/w,u/w),\qquad(1/(Tw),v/(Tw))
+\]
+over $k(T)$, both constant, while their abscissa ratio is the
+nonconstant parameter $T$. This is impossible.
+\end{proof}
+
+This obstruction concerns rational parametrizations. It does not
+exclude an arithmetic procedure that chooses unrelated rational
+points separately for different inputs.
+
+\section{A sufficient bounded-denominator condition for integrality}
+
+The following criterion gives a different target for the number-field
+problem. Unlike local density, it directly suffices for an existential
+definition of the full ring of integers.
+
+\begin{theorem}[Integral-basis criterion; cf.\ {\cite[Theorem 4.2(d)]{Poonen}}]\label{thm:sandwich}
+Let $K/\Q$ have degree $n$, and suppose that $S\subset K$ is
+Diophantine in $K$ with
+\[
+                           \Z\subseteq S\subseteq\OK.
+\]
+Then $\OK$ is Diophantine in $K$.
+If $S$ has a definition with $N$ total coordinates, one polynomial,
+and degree $d$, then $\OK$ has a definition with $nN$ total
+coordinates and $n$ equations of degree at most $d$.
+\end{theorem}
+\begin{proof}
+Choose an integral basis $\omega_1,\ldots,\omega_n$ of $\OK$.
+The two inclusions in the hypothesis give
+\[
+                     \OK=\omega_1S+\cdots+\omega_nS.
+\]
+Indeed, the right side is integral, and the integer coefficients
+of every integral-basis expansion belong to $S$.
+
+For an input $x$, retain $s_1,\ldots,s_{n-1}$ and eliminate
+$s_n=(x-\sum_{j<n}\omega_js_j)/\omega_n$.
+Impose $n$ copies of the definition of $S$, with disjoint witness
+blocks. The count is $1+(n-1)+n(N-1)=nN$; the substitutions
+are linear and do not increase degree.
+\end{proof}
+
+\begin{corollary}\label{cor:bounded-denominators}
+The conclusion still holds if $\Z\subseteq S$ and
+$MS\subseteq\OK$ for some positive rational integer $M$.
+With the same notation, $nN$ total coordinates and $n$ equations
+of degree at most $Md$ suffice.
+\end{corollary}
+\begin{proof}
+The finite union
+\[
+                 S'=\bigcup_{j=0}^{M-1}(j+MS)
+\]
+lies in $\OK$ and contains $\Z$, by division with remainder.
+If $f(T,\mathbf Y)=0$ defines $S$, the polynomial
+\[
+           \prod_{j=0}^{M-1}M^d
+                  f\!\left(\frac{T-j}{M},\mathbf Y\right)
+\]
+defines $S'$ using the same witness block. A product over a field
+vanishes if and only if one factor vanishes, so shared witnesses
+create no additional condition. Its degree is at most $Md$.
+Apply Theorem~\ref{thm:sandwich}.
+\end{proof}
+
+Neither criterion requires that $S$ be a ring. Neither follows from
+the simultaneous density proved above. In fact, the set $D$ in
+Theorem~\ref{thm:main} has unbounded denominators at every prime,
+as its density in each $\Q_p$ immediately shows.
+
+\section{Counterexample searches and the distinction between ambient rings}
+
+The explicit exclusion in this paper is not a counterexample to
+the existence of an existential definition of $\Z[i]$ in $\Q(i)$.
+It excludes one proposed way of obtaining the complete rational
+subfield from stable elliptic coordinates.
+
+The available undefinability results for large, or ample, fields
+do not provide such a number-field counterexample. A field is
+large if every smooth curve with a rational point has infinitely
+many rational points. Fehm's theorem and Kwon's extension show
+that infinite Diophantine sets in a perfect large field cannot
+be confined to a proper subfield or even to a finite union of
+affine translates of proper subfields \cite{Fehm,Kwon}.
+No number field is large: a smooth genus-two curve such as
+$y^2=x^5-x+1$, with point $(0,1)$, has only finitely many points
+over each number field by Faltings's theorem. The polynomial is
+squarefree, since a common root of $x^5-x+1$ and $5x^4-1$
+would have to be $5/4$, which does not satisfy the derivative
+equation.
+
+Similarly, the rank-stability transfer theorem of
+Mazur--Rubin--Shlapentokh defines one ring of integers inside
+another ring of integers; its witnesses are integral
+\cite[Theorem 1.1 and Section 14]{MRS}. Its approximate-logarithm
+method does not by itself remove that witness-domain restriction.
+For an approach through elliptic ratios, the remaining requirement
+is a construction that escapes the rational-map restriction of
+Section~\ref{sec:rational-combinations} and proves either complete
+coverage of $\Q$ or the bounded-denominator criterion above.
+Finite rational operations on the stable elliptic values cannot
+supply the required inclusion of every integer.
+
+\section{Reproducible computation}
+
+The program \nolinkurl{check_elliptic_ratio_obstruction.py} requires
+\texttt{cypari2} and uses PARI's unconditional rank bounds. It also
+checks the torsion orders, counts the reductions at $5$ and $7$
+by two independent finite-field methods, verifies the displayed
+doubling formula, expands \eqref{eq:P} with exact integer
+coefficients, and records the local square conditions.
+The result is stored in
+\nolinkurl{elliptic-ratio-certificate.json}.
+The commands
+\begin{verbatim}
+python3 -m pip install cypari2
+python3 check_elliptic_ratio_obstruction.py \
+  --output elliptic-ratio-certificate.json
+\end{verbatim}
+reproduce the calculation. The rank-zero bounds, rather than a
+finite search for points, are the decisive computational inputs.
+The standard-library program \nolinkurl{check_rationality_filters.py}
+independently expands $P_{\mathrm{sl}}$ and records a bounded
+elliptic-point search. That finite search is not used to prove the
+infinite omission of integers; the latter follows from
+Theorem~\ref{thm:CZ} and the proved rational-map containment.
+
+\begin{thebibliography}{99}
+\bibitem{CremonaData}
+J. E. Cremona, \emph{Elliptic curve data}, entries $972b2$, $972c1$,
+and $3888k1$ in \texttt{allcurves.00000-09999},
+\url{https://github.com/JohnCremona/ecdata}.
+
+\bibitem{LMFDB81}
+The LMFDB Collaboration, \emph{Elliptic curve $972.d2$ (Cremona
+label $972b2$)},
+\url{https://www.lmfdb.org/EllipticCurve/Q/972/d/2}.
+
+\bibitem{LMFDBReliability}
+The LMFDB Collaboration, \emph{Reliability of elliptic curve data
+over $\Q$},
+\url{https://www.lmfdb.org/EllipticCurve/Q/Reliability}.
+
+\bibitem{PARI}
+The PARI Group, \emph{PARI/GP reference documentation: Elliptic curves},
+especially \texttt{ellrank} and \texttt{elltors},
+\url{https://pari.math.u-bordeaux.fr/dochtml/ref/Elliptic_curves.html}.
+
+\bibitem{Silverman}
+J. H. Silverman, \emph{The Arithmetic of Elliptic Curves},
+second edition, Graduate Texts in Mathematics 106,
+Springer, 2009.
+
+\bibitem{Faltings}
+G. Faltings, Endlichkeitss\"atze f\"ur abelsche Variet\"aten
+\"uber Zahlk\"orpern, \emph{Invent. Math.} \textbf{73} (1983),
+349--366.
+
+\bibitem{CorvajaZannier}
+P. Corvaja and U. Zannier, with an appendix by D. Masser,
+\emph{Rational and integral values of rational functions at rational
+points}, arXiv:2608.28255v1, 28 August 2026, Theorem 1.1,
+\url{https://arxiv.org/abs/2608.28255v1}.
+
+\bibitem{Fehm}
+A. Fehm, Subfields of ample fields. Rational maps and definability,
+\emph{J. Algebra} \textbf{323} (2010), 1738--1744.
+
+\bibitem{Kwon}
+A. Kwon, \emph{A note on Diophantine subsets of large fields},
+arXiv:2411.03212, 2024,
+\url{https://arxiv.org/abs/2411.03212}.
+
+\bibitem{MRS}
+B. Mazur, K. Rubin, and A. Shlapentokh,
+Existential definability and diophantine stability,
+\emph{J. Number Theory} \textbf{254} (2024), 1--64;
+corrigendum, \textbf{262} (2024), 539--540;
+arXiv:2208.09963v3,
+\url{https://arxiv.org/abs/2208.09963}.
+
+\bibitem{Poonen}
+B. Poonen, \emph{Rank stability makes rings of integers diophantine},
+3 July 2026,
+\url{https://math.mit.edu/~poonen/papers/h10_over_OK.pdf}.
+\end{thebibliography}
+\end{document}
