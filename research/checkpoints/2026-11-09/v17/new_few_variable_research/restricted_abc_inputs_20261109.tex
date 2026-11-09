@@ -1,0 +1,239 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,microtype}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\DeclareMathOperator{\den}{den}
+\DeclareMathOperator{\Tr}{Tr}
+\title{Restricted $abc$ hypotheses on the scalar families}
+\author{}\date{9 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+We examine two unconditional restricted estimates suggested by the
+attached $abc$ literature survey. For the Frey curves of a sum of even
+powers, the reduced denominator of the $j$-invariant is exponentially
+large in its logarithmic height. Consequently a polynomial bound for
+that denominator cannot hold uniformly in the scalar family. We also
+show that the fixed asymmetric-size hypotheses of two subexponential
+$abc$ estimates fail along infinitely many required integer witnesses.
+These are precise restrictions on applying the cited estimates to the
+present construction, not assertions about all possible constructions.
+\end{abstract}
+
+\section{The denominator of the Frey invariant}
+
+For $r\in\Q$, let $h(r)$ be its logarithmic projective height and
+$\den(r)$ its positive reduced denominator. Fix a positive even integer
+$d$. For nonzero coprime integers $A,B$, put
+\[
+ a=A^d>0,\qquad b=B^d>0,\qquad c=a+b,
+ \qquad E_{A,B,d}:y^2=x(x-a)(x+b).
+\]
+The curve is nonsingular since $abc\ne0$.
+
+\begin{proposition}\label{prop:den}
+Let $H=\max(|A|,|B|)$. Then
+\[
+ j(E_{A,B,d})=\frac{256(a^2+ab+b^2)^3}{a^2b^2c^2}.
+\]
+The common divisor of this displayed numerator and denominator is
+\[
+ 2^{\min(8,v_2(a^2b^2c^2))}.
+\]
+In particular,
+\begin{equation}\label{eq:bounds}
+ \den(j)\ge\frac{H^{4d}}{256},\qquad
+ h(j)\le6d\log H+\log6912.
+\end{equation}
+Consequently
+\begin{equation}\label{eq:exponential}
+ \log\den(j)\ge\frac23h(j)
+                  -\frac23\log6912-\log256.
+\end{equation}
+\end{proposition}
+\begin{proof}
+The Weierstrass invariants are
+\[
+ c_4=16(a^2+ab+b^2),\qquad
+ \Delta=16a^2b^2(a+b)^2,
+\]
+which give the formula. The positive integers $a,b,c$ are pairwise
+coprime. If an odd prime divides $a$, the expression $a^2+ab+b^2$
+reduces to $b^2$ and is a unit; the analogous statement holds for $b$.
+If it divides $c$, then $a\equiv-b$ and the same expression again
+reduces to $b^2$. Thus no odd prime cancels. The expression is odd:
+if one of $a,b$ is even, the other is odd, and if both are odd its
+three summands are odd. Hence the exact cancellation is the displayed
+power of two.
+
+Since $|AB|\ge H$ and $c\ge H^d$, the original denominator is at
+least $H^{4d}$, proving the first bound. The numerator is at most
+$256(3H^{2d})^3=6912H^{6d}$, and the denominator is at most
+$H^{4d}(2H^d)^2=4H^{6d}$. Reduction cannot increase either number,
+which proves the second bound. Substitute the resulting lower bound
+for $\log H$ into the first bound to obtain~\eqref{eq:exponential}.
+\end{proof}
+
+\begin{corollary}\label{cor:finite}
+For fixed constants $C>0$ and $k\ge0$, only finitely many primitive
+pairs $(A,B)$ satisfy
+\[
+                    \den(j(E_{A,B,d}))\le C h(j(E_{A,B,d}))^k.
+\]
+\end{corollary}
+\begin{proof}
+The first bound in~\eqref{eq:bounds} shows that $h(j)$ tends to
+infinity with $H$. The exponential lower bound
+\eqref{eq:exponential} eventually exceeds every fixed polynomial
+in $h(j)$. Thus $H$ is bounded.
+\end{proof}
+
+Pasten's restricted Szpiro theorem~\cite[Theorem 1.2]{PastenSmall}
+assumes a bound for $\den(j)$ by a fixed power of
+$\log|\operatorname{num}(j)|$. The height-based variant in the attached
+survey is weaker than that hypothesis. Corollary~\ref{cor:finite}
+therefore excludes both hypotheses on an unbounded family of these
+Frey curves. Passing to another Weierstrass model or taking a quadratic
+twist leaves $j$ unchanged and does not repair this problem.
+
+\section{Application to the elliptic scalar}
+
+Let $P$ be the fixed nontorsion point of the construction over
+$K=\Q(\sqrt2)$, and put
+\[
+             T(n)=\Tr_{K/\Q}x([n]P),\qquad n\ne0.
+\]
+The retained trace-height theorem gives constants $A_0>0,J_0\ge0$
+such that
+\begin{equation}\label{eq:trace}
+                     n^2\le A_0h(T(n))+J_0.
+\end{equation}
+Also $T(n)>6$. At an integer input the scalar pair in the current
+construction is $(\beta,T(n))=(n,T(n))$. Write
+$n/T(n)=A_n/B_n$ in lowest terms. Then
+\[
+ \log\max(|A_n|,|B_n|)=h(n/T(n))
+ \ge h(T(n))-\log|n|
+ \ge\frac{n^2-J_0}{A_0}-\log|n|.
+\]
+This tends to infinity. Corollary~\ref{cor:finite} consequently
+applies already along the required integer-input witnesses. The
+restriction is not confined to unwanted rational-input solutions.
+The argument applies to every unbounded integer polynomial input
+sequence, including both current shifts of squares and shifts of
+fourth powers.
+
+\section{The asymmetric-size restrictions}
+
+Theorem 1.3 of Pasten--Sep\'ulveda-Manzo~\cite{PastenSepulveda} applies
+to primitive positive triples $a+b=c$ satisfying, for a fixed $\tau>0$,
+\begin{equation}\label{eq:asymmetric}
+ \min(a,b)\le c\exp\bigl(- (\log c)^\tau\log_2^*c\bigr).
+\end{equation}
+The earlier restricted estimate recalled in their Theorem 1.2 instead
+uses $\min(a,b)\le c^{1-\eta}$ for a fixed $\eta>0$.
+The word ``fixed'' is essential for a uniform height conclusion.
+
+\begin{lemma}\label{lem:boundedreal}
+Let $p\in\Z[X]$ be nonconstant, tend to positive infinity, and satisfy
+$p(0)\ne0$. There are arbitrarily large integers $m$ for which
+\[
+                    6<T(p(m))\le C_p
+\]
+with a constant $C_p$ independent of $m$.
+\end{lemma}
+\begin{proof}
+Consider the point $(P,\sigma P)$ in the compact real Lie group
+$E(\mathbb R)\times E^\sigma(\mathbb R)$, and the closure $G$ of its
+cyclic subgroup. The identity component $G^0$ is a torus, and $G/G^0$
+is finite. Choose a positive integer $q$ killing this component group;
+the cyclic group generated by $q(P,\sigma P)$ is dense in $G^0$.
+For $m=qk$, the polynomial difference $p(qk)-p(0)$ is divisible by $q$.
+For each nontrivial character of $G^0$, its value on
+$q(P,\sigma P)$ is an irrational rotation, by density and connectedness.
+Weyl's polynomial equidistribution theorem therefore shows that
+$[p(qk)](P,\sigma P)$ is equidistributed in the coset
+$[p(0)](P,\sigma P)+G^0$.
+
+The point $[p(0)]P$ and its conjugate are finite nontorsion points.
+Choose a relatively open neighborhood of this tuple whose compact
+closure avoids the two identity divisors. The trace of the abscissas
+is bounded above on that closure. The neighborhood has positive Haar
+measure in the coset and is visited infinitely often. Positivity gives
+the lower bound six at all the resulting nonzero multiples.
+\end{proof}
+
+\begin{proposition}\label{prop:asymmetric}
+Fix a positive even $d$ and a polynomial input sequence as in
+Lemma~\ref{lem:boundedreal}. Along infinitely many required integer
+witnesses, the primitive triple
+\[
+             a=A_n^d,\qquad b=B_n^d,\qquad c=A_n^d+B_n^d,
+             \qquad A_n/B_n=n/T(n),
+\]
+fails~\eqref{eq:asymmetric} for every fixed $\tau>0$, eventually
+along that subsequence. It also fails
+$\min(a,b)\le c^{1-\eta}$ for every fixed $\eta>0$.
+\end{proposition}
+\begin{proof}
+Take the subsequence where $6<T(n)\le C_p$. For sufficiently large
+$n$, $A_n>B_n>0$, and
+\[
+ \log\frac{c}{\min(a,b)}
+ =\log\left(1+\left(\frac{n}{T(n)}\right)^d\right)=O(\log n).
+\]
+By~\eqref{eq:trace} and the preceding lower bound for $h(n/T(n))$,
+\[
+ \log c\ge d\log A_n
+ \ge d\left(\frac{n^2-J_0}{A_0}-\log n\right)\gg n^2.
+\]
+For every fixed $\tau>0$, the quantity
+$(\log c)^\tau\log_2^*c$ grows faster than $\log n$.
+This contradicts the logarithmic form of~\eqref{eq:asymmetric}.
+Likewise $\eta\log c\gg n^2$ exceeds the displayed logarithmic
+ratio, proving the second assertion.
+\end{proof}
+
+The proposition rules out a direct uniform invocation of those
+restricted estimates on the present scalar triples. It does not
+exclude changing the scalar, using a different auxiliary family, or
+proving a new restricted inequality with hypotheses adapted to the
+actual point and pole equations. It makes no assertion that any of
+these triples violates the ordinary $abc$ conjecture.
+
+\section{Exact verification}
+
+The companion script \texttt{check\_frey\_denominator.py} computes the
+Weierstrass invariants independently, verifies the rational formula
+and its exact two-adic cancellation on a finite exhaustive set, and
+checks the integer forms of the two displayed height majorants.
+The arguments proving all-input statements and infinite subsequences
+are the proofs above; finite enumeration is not substituted for them.
+
+\begin{thebibliography}{9}
+\bibitem{PastenSmall}
+H.~Pasten, \emph{Szpiro's conjecture when the denominator of the
+$j$-invariant is small}, CUBO \textbf{28} (2026), no.~2, 383--389,
+\url{https://doi.org/10.56754/0719-0646.2802.383}.
+Primary manuscript: \url{https://arxiv.org/abs/2308.07114v2},
+Theorem~1.2 and Corollary~3.4.
+\bibitem{PastenSepulveda}
+H.~Pasten and R.~Sep\'ulveda-Manzo, \emph{On the $abc$ and the $abcd$
+conjectures}, Bull.~Braz.~Math.~Soc.~(N.S.) \textbf{56} (2025), article~54,
+\url{https://doi.org/10.1007/s00574-025-00476-1}.
+Primary manuscript: \url{https://arxiv.org/abs/2406.05083v1},
+Theorems~1.2 and~1.3. Only their precise size hypotheses are used here.
+\bibitem{Weyl}
+H.~Weyl, \emph{"Uber die Gleichverteilung von Zahlen mod.~Eins},
+Math.~Ann.~\textbf{77} (1916), 313--352,
+\url{https://doi.org/10.1007/BF01475864}.
+\bibitem{Trace}
+Project repository, \emph{The height of an aggregate elliptic trace},
+\texttt{aggregate\_trace\_height\_20261108\_v9.tex}, one-point case.
+\end{thebibliography}
+\end{document}
