@@ -1,0 +1,380 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,booktabs,microtype}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}\newtheorem{remark}[theorem]{Remark}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\newcommand{\F}{\mathbb F}
+\DeclareMathOperator{\Tr}{Tr}
+\setlength{\emergencystretch}{2em}
+\title{Rational Combinations of Two Contact Values}
+\author{}\date{10 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+A single rational combination of two independent contact values
+cannot have odd valuation whenever either contact value does.
+We prove this statement on the exact eighth-power scale used in
+the thirteen-variable construction under weak \(abc\).
+The counterexamples have positive slopes that are sums of two
+integer squares, nonintegral rational inputs, and an input residual
+that is a unit at the prime in question.
+The obstruction concerns this uniform local parity implication;
+it gives no lower bound for arbitrary Diophantine definitions.
+\end{abstract}
+
+\section{The contact function and the statement}
+
+For a prime \(p\), write \(v_p\) for the valuation on
+\(\Q_p^\times\) normalized by \(v_p(p)=1\). Put
+\begin{equation}\label{eq:R}
+ R(t)=
+ \frac{t(t+1)(2t+1)(3t+1)(4t+1)(5t+2)}
+      {120(t-1)^8}.
+\end{equation}
+Its six simple zeros are
+\[
+ 0,\quad -1,\quad-\frac12,\quad-\frac13,\quad-\frac14,
+ \quad-\frac25.
+\]
+Fix an odd integer \(B\ge3\), an integer \(n\ne0\), and a rational
+number \(T>6\). For \(X\in\Q\), define
+\begin{equation}\label{eq:scale}
+       \beta(X)=2X^2+B,\qquad a(X)=\beta(X)^8+T^8.
+\end{equation}
+In the application in~\cite{Conditional13}, one takes
+\(T=T(n)=\Tr_{\Q(\sqrt2)/\Q}x([n]P)\).
+The argument below uses only that this is a fixed rational number
+greater than \(6\); it uses no \(abc\) inequality.
+
+\begin{theorem}\label{thm:main}
+Let \(\Phi\in\Q(Z_0,Z_1)\) be nonzero, and let \(S\) be any finite
+set of primes. There are infinitely many primes \(p\notin S\)
+with the following property.
+
+There are positive integers \(\mu,\nu\), at least one of them odd,
+and rational numbers \(X,\lambda\) such that
+\begin{gather}
+ X\in\tfrac12\Z\setminus\Z,\qquad
+ \lambda=s^2+t^2>1\quad(s,t\in\Z),                                      \label{eq:domain}\\
+ v_p(R(\lambda))=\mu,\qquad v_p(R(a(X)\lambda))=\nu,                    \label{eq:depths}\\
+ \Phi(R(\lambda),R(a(X)\lambda))\ne0
+ \quad\hbox{is defined},                                               \label{eq:defined}\\
+ v_p\!\left(\Phi(R(\lambda),R(a(X)\lambda))\right)\in2\Z,\qquad
+ v_p(\beta(X)-n)=0.                                                     \label{eq:miss}
+\end{gather}
+For each such \(p\), both \(\mu\) and \(\nu\) can be made arbitrarily
+large. After fixing the depths, \(\lambda\) and \(|X|\) can also be
+made arbitrarily large.
+\end{theorem}
+
+Thus the implication
+\[
+ \bigl(v_p(R(\lambda))>0\text{ odd}\ \text{or}\
+       v_p(R(a(X)\lambda))>0\text{ odd}\bigr)
+ \ \Longrightarrow\
+ v_p\bigl(\Phi(R(\lambda),R(a(X)\lambda))\bigr)\text{ odd}
+\]
+cannot hold uniformly on this parameter domain, even after
+discarding any prescribed finite set of primes.
+Since \(X=q/2\) with \(q\) odd in the theorem,
+\(\beta(X)=q^2/2+B\) is itself nonintegral.
+
+\section{A valuation lemma}
+
+The elementary obstruction is slightly more general than the
+case of two contact values.
+
+\begin{lemma}\label{lem:parity}
+Let \(1\le m<d\), and let
+\(\Phi_1,\ldots,\Phi_m\in\Q(Z_1,\ldots,Z_d)\) be nonzero rational
+functions. There is a finite set of primes \(S_0\) and a sequence
+\[
+        w_N=(w_{N,1},\ldots,w_{N,d})\in\Z_{>0}^d
+\]
+such that every coordinate tends to infinity, at least one
+coordinate of every \(w_N\) is odd, and the following holds.
+For every \(p\notin S_0\) and every
+\(z_1,\ldots,z_d\in\Q_p^\times\) with
+\(v_p(z_i)=w_{N,i}\), all the \(\Phi_j(z_1,\ldots,z_d)\)
+are defined and nonzero and have even valuation.
+\end{lemma}
+
+\begin{proof}
+Write \(\Phi_j=P_j/Q_j\) with nonzero polynomials
+\(P_j,Q_j\in\Z[Z_1,\ldots,Z_d]\).
+Exclude the finitely many primes dividing a nonzero coefficient
+of any of these polynomials.
+
+For each polynomial, compare the linear forms
+\(\langle e,w\rangle\) belonging to its distinct exponent vectors
+\(e\). The equalities between these forms lie on finitely many
+proper hyperplanes. Choose \(w\) in the positive orthant off all
+these hyperplanes. There is an open cone \(C\) containing \(w\)
+on which each \(P_j\) and each \(Q_j\) has a unique monomial of
+smallest weight. Let their exponent vectors be \(u_j\) and
+\(v_j\), respectively. If the valuation vector of \(z\) lies in
+\(C\), the unique term of smallest valuation cannot cancel.
+Consequently
+\begin{equation}\label{eq:linear}
+         v_p(\Phi_j(z))=\langle u_j-v_j,v_p(z)\rangle.
+\end{equation}
+This also proves that both evaluated polynomials are nonzero.
+
+The matrix with rows \(u_j-v_j\), reduced modulo \(2\), has
+\(m<d\) rows. Its kernel over \(\F_2\) contains a nonzero vector
+\(\epsilon\in\{0,1\}^d\).
+Choose a positive integer vector \(v\in C\), and set
+\[
+                         w_N=2Nv+\epsilon .
+\]
+For all sufficiently large \(N\), this vector lies in \(C\).
+Every coordinate tends to infinity, its parity vector is the
+fixed nonzero vector \(\epsilon\), and all the expressions
+in~\eqref{eq:linear} are even. Discarding the finitely many initial
+values of \(N\) proves the statement.
+\end{proof}
+
+The lemma concerns valuations of rational functions of \(d\)
+independent values. Its linear-algebra statement is not a
+variable-count lower bound for arbitrary systems of polynomial
+equations.
+
+\section{Simple roots of the prescribed scale}
+
+We give the elementary prime-divisor argument needed to retain
+the exact scale~\eqref{eq:scale}.
+
+\begin{lemma}\label{lem:primevalues}
+Let \(G\in\Z[X]\) be nonconstant with \(G(0)\ne0\).
+There are infinitely many primes dividing nonzero values \(G(k)\),
+\(k\in\Z\).
+If \(G\) is separable over \(\Q\), then outside any finite set
+there are infinitely many primes at which \(G\) has a simple
+root modulo \(p\).
+\end{lemma}
+
+\begin{proof}
+Put \(c=G(0)\). Given a finite set of primes, let \(M\) be their
+product, with \(M=1\) for the empty set. The polynomial
+\[
+                        H(Y)=G(cMY)/c
+\]
+has integer coefficients, is nonconstant, has constant term
+\(1\), and is congruent to \(1\) modulo every prime dividing
+\(M\). Choose an integer \(k\) with \(|H(k)|>1\).
+A prime divisor \(p\) of \(H(k)\) lies outside the specified set
+and divides the nonzero integer \(G(cMk)\).
+This proves infinitude.
+
+If \(G\) is separable, enlarge the excluded set by the primes
+dividing its leading coefficient and its nonzero discriminant.
+A root of \(G\) modulo any remaining prime is simple.
+\end{proof}
+
+\begin{lemma}\label{lem:scale}
+There are infinitely many primes \(p\), outside any prescribed
+finite set, and \(\xi\in\Z_p\) such that
+\[
+       a(\xi)=1,\qquad a'(\xi)\in\Z_p^\times,\qquad
+       \beta(\xi)-n\in\Z_p^\times .
+\]
+\end{lemma}
+
+\begin{proof}
+The polynomial
+\[
+               f(X)=(2X^2+B)^8+T^8-1
+\]
+has derivative \(32X(2X^2+B)^7\).
+A common zero of \(f\) and its derivative would have either
+\(X=0\) or \(2X^2+B=0\). These alternatives give, respectively,
+\[
+                    B^8+T^8-1=0,\qquad T^8-1=0,
+\]
+both impossible because \(B\ge3\) and \(T>6\).
+Thus \(f\) is separable and \(f(0)\ne0\).
+After clearing denominators, apply Lemma~\ref{lem:primevalues},
+also excluding primes dividing the clearing factor and the
+denominator of \(T\). Hensel's lemma lifts every resulting
+simple root to a root \(\xi\in\Z_p\) with \(a'(\xi)\) a unit.
+
+The nonzero rational number \(n^8+T^8-1\) is positive.
+Exclude the primes dividing its numerator. If
+\(\beta(\xi)\equiv n\pmod p\), the equation
+\(a(\xi)=1\) would give \(n^8+T^8-1\equiv0\pmod p\), a
+contradiction. The enlarged excluded set is still finite.
+\end{proof}
+
+\section{Realizing the two contact valuations}
+
+At the common contact \(-1\), direct differentiation gives
+\begin{equation}\label{eq:derivative}
+                            R'(-1)=-\frac{3}{5120}.
+\end{equation}
+Hence, for \(p\notin\{2,3,5\}\) and \(z\equiv-1\pmod p\),
+\begin{equation}\label{eq:simple}
+                         v_p(R(z))=v_p(z+1).
+\end{equation}
+
+\begin{lemma}\label{lem:norm}
+Let \(p\) be odd and let \(\lambda_*\in\Z_p\) satisfy
+\(\lambda_*\equiv-1\pmod p\). For every positive integer \(M\)
+there exist integers \(s,t\) such that
+\[
+                  s^2+t^2\equiv\lambda_*\pmod{p^M}.
+\]
+The integer \(s^2+t^2\) can be chosen arbitrarily large.
+\end{lemma}
+
+\begin{proof}
+The sets of residues \(u^2\) and \(-1-v^2\) modulo \(p\)
+both have cardinality \((p+1)/2\), so they intersect.
+Thus \(u^2+v^2=-1\) has a solution over \(\F_p\), and its
+two coordinates cannot both be zero. Interchange them if
+necessary so that \(u\ne0\). Fix an integer lift \(t\) of \(v\).
+Hensel's lemma, applied to
+\(S^2+t^2-\lambda_*\), gives a root \(s_*\in\Z_p^\times\).
+Any integer \(s\equiv s_*\pmod{p^M}\) gives the required
+congruence. Adding arbitrary integer multiples of \(p^M\)
+to \(s\) makes the norm arbitrarily large.
+\end{proof}
+
+\begin{lemma}\label{lem:independent}
+For each prime furnished by Lemma~\ref{lem:scale} outside
+\(\{2,3,5\}\), and for every pair of positive integers
+\(\mu,\nu\), there are \(X,\lambda\) satisfying
+\eqref{eq:domain}, \eqref{eq:depths}, and
+\(v_p(\beta(X)-n)=0\).
+The quantities \(\lambda\) and \(|X|\) can be chosen arbitrarily
+large after fixing \(\mu,\nu\).
+\end{lemma}
+
+\begin{proof}
+Choose \(\xi\) as in Lemma~\ref{lem:scale}, and put
+\[
+ \lambda_*=-1+p^\mu,\qquad
+ \tau_*=-1+p^\nu,\qquad
+ a_*=\tau_*/\lambda_*.
+\]
+Both \(\lambda_*\) and \(\tau_*\) are units, and \(a_*\equiv1\pmod p\).
+Since \(a'(\xi)\) is a unit, Hensel's lemma gives
+\(X_*\equiv\xi\pmod p\) with \(a(X_*)=a_*\).
+Equivalently, the two-variable map
+\[
+            (X,\lambda)\longmapsto
+             \bigl(R(\lambda),R(a(X)\lambda)\bigr)
+\]
+has, at \((\xi,-1)\), Jacobian matrix
+\[
+ \begin{pmatrix}
+ 0 & R'(-1)\\
+ -a'(\xi)R'(-1) & R'(-1)
+ \end{pmatrix},
+ \qquad
+ \det=R'(-1)^2a'(\xi)\in\Z_p^\times .
+\]
+
+Choose \(M>\max(\mu,\nu)\).
+By Lemma~\ref{lem:norm}, take
+\(\lambda=s^2+t^2>1\) congruent to \(\lambda_*\) modulo \(p^M\).
+The Chinese remainder theorem gives an odd integer \(q\) such that
+\[
+                       q\equiv2X_*\pmod{p^M}.
+\]
+Set \(X=q/2\). Then \(X\in\tfrac12\Z\setminus\Z\) and
+\(X\equiv X_*\pmod{p^M}\).
+The coefficients of \(a\) are \(p\)-integral, so
+\[
+       \lambda\equiv-1+p^\mu\pmod{p^M},\qquad
+       a(X)\lambda\equiv-1+p^\nu\pmod{p^M}.
+\]
+Their respective contact depths are exactly \(\mu\) and \(\nu\);
+\eqref{eq:simple} proves~\eqref{eq:depths}.
+Moreover \(X\equiv\xi\pmod p\), so \(\beta(X)-n\) remains a unit.
+Arbitrarily large lifts of \(q\) modulo \(2p^M\), independently
+of the arbitrarily large norms in Lemma~\ref{lem:norm}, give
+the last assertion.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+Apply Lemma~\ref{lem:parity} with \(d=2\), \(m=1\), and the
+given \(\Phi\). Add its finite exceptional set and
+\(\{2,3,5\}\) to \(S\). Lemma~\ref{lem:scale} supplies infinitely
+many remaining primes. Fix one of them and choose a valuation
+vector \(w_N=(\mu,\nu)\) from Lemma~\ref{lem:parity}.
+Lemma~\ref{lem:independent} realizes that vector on the exact
+scale~\eqref{eq:scale}, with the required global parameter
+conditions and a unit residual. Lemma~\ref{lem:parity} then
+ensures that \(\Phi\) is defined and nonzero and has even
+valuation. Letting \(N\) grow makes both depths arbitrarily
+large.
+\end{proof}
+
+\section{Exact examples and scope}
+
+Take
+\[
+                    p=76213,\qquad B=3,\qquad n=1,\qquad T=57/4.
+\]
+The last value is the trace of the abscissa of the point \(P\)
+in~\cite{Conditional13}. The residue \(\xi=5598\) is a simple
+root of \(a(X)-1\) modulo \(p\):
+\[
+             \beta(\xi)\equiv28125,\qquad
+             a'(\xi)\equiv22560\pmod p.
+\]
+For the product \(\Phi(Z_0,Z_1)=Z_0Z_1\), set
+\[
+             X=\frac{6603791433}{2},\qquad
+             \lambda=3821558707^2+3^2.
+\]
+Then the valuations of \(R(\lambda)\), \(R(a(X)\lambda)\),
+their product, and \(\beta(X)-1\), in that order, are
+\[
+                              (1,1,2,0).
+\]
+For the harmonic combination
+\(\Phi(Z_0,Z_1)=Z_0Z_1/(Z_0+Z_1)\), set
+\[
+             X=\frac{24884609587871}{2},\qquad
+             \lambda=304951751852576^2+3^2.
+\]
+The corresponding valuations are
+\[
+                              (1,2,2,0).
+\]
+The supplied exact-arithmetic checker verifies primality,
+the root and derivative residues, the norm formulas, and all
+four valuations in both examples. These finite checks
+illustrate the theorem; the universal assertion is proved
+in the preceding sections. The choice \(B=3\) in the examples
+is a coefficient fixture, not a claim that this shift certifies
+the thirteen-variable definition. The theorem applies separately
+to every fixed odd \(B\ge3\).
+
+The obstruction is restricted to replacing the two contact
+values by one fixed nonzero rational function of those values
+and demanding that its odd valuation detect their union
+uniformly. It includes the product and the harmonic combination,
+and it persists under the scale and positivity conditions
+above. It does not assert that the constructed nonintegral
+parameters satisfy the elliptic tests or the pole equations of
+the full Diophantine source. It does not exclude a different
+height estimate for a rational combination, a construction using
+additional arithmetic conditions, functions with further
+independent arguments, or a definition with eleven or fewer
+variables.
+
+\begin{thebibliography}{9}
+\bibitem{Conditional13}
+\emph{Thirteen Variables from a Weak \(abc\) Inequality},
+9 November 2026, project paper,
+\href{https://github.com/JoseBrox/diophantine-z-q_improvements/blob/main/papers/conditional_few_variables/conditional13_20261109_v16.tex}
+{\texttt{conditional13\_20261109\_v16.tex}}.
+\end{thebibliography}
+\end{document}
