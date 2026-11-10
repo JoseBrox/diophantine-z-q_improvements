@@ -255,6 +255,75 @@ $v(E_i)=(K+1)\mu+2v(C_i)$. The strict lower bound
 This proves the last assertion.
 \end{proof}
 
+\subsection{A fixed choice of exponents}
+
+The integrality of valuations permits smaller exponents when only a
+fixed fourth power of each contact prime is needed, independently of
+the contact valuation itself.
+
+\begin{corollary}\label{cor:seven}
+Put $R=zw$, $E_i=z^7\Psi_z(C_i)$ and $G_j=w^7\Psi_w(S_j)$.
+Use denominator exponent seven for every factor in~\eqref{eq:product},
+and retain its domain and pole-exclusion assumptions.
+\begin{enumerate}
+\item Suppose $v_p(w)=\nu>0$ is odd and $v_p(z)=\mu$ is even.
+If $\mu+\nu<0$, there is no solution satisfying the pole exclusion.
+If $\mu+\nu>0$, one of the following holds at one common place
+$\mathfrak p\mid p$:
+\begin{enumerate}
+\item if $\mu\le\nu$, then $v_{\mathfrak p}(C_i)\ge4$ for every $i$;
+\item if $\mu>\nu$, then $v_{\mathfrak p}(S_j)\ge6$ for every $j$.
+\end{enumerate}
+\item Suppose $v_p(z)=\mu>0$ is odd and $v_p(w)=0$.
+Then at one common place
+\[
+          v_{\mathfrak p}(S_j)>\frac{25}{8}\mu,
+          \qquad v_{\mathfrak p}(S_j)\ge3\mu+1\ge4
+\]
+for every $j$. Each factor indexed by a $C_i$ is a unit.
+\end{enumerate}
+The first assertion also holds when the $E_i$ in the product are
+divided by a rational number $\delta$ with $v_p(\delta)=0$.
+The second also holds with this division if $v_p(\delta)\le0$.
+\end{corollary}
+\begin{proof}
+At a prime where $\rho=v_p(R)$ is odd, all factor valuations are
+nonpositive. The trace argument proves that $\rho>0$ is necessary
+and supplies a place at which each normalized test has valuation
+strictly greater than $25\rho/4$.
+
+Suppose first that $\mu\ge0$ is even and $\mu\le\nu$.
+For a comparison test $C_i$ this lower bound forces
+$\mu+2v(C_i)>0$: otherwise $v(E_i)\le7\mu$, whereas
+$25(\mu+\nu)/4>7\mu$. Consequently
+\[
+               v(C_i)>\frac{25\nu-7\mu}{8}.
+\]
+If $\nu=1$, parity gives $\mu=0$, so $v(C_i)>25/8$ and the
+integer valuation is at least four. If $\nu\ge3$, the bound
+is at least $18\nu/8\ge54/8>6$, which is stronger.
+For $\mu>\nu>0$, the symmetric argument gives
+\[
+               v(S_j)>\frac{25\mu-7\nu}{8}
+                        \ge\frac{18\mu+7}{8}\ge\frac{43}{8}.
+\]
+Here $\mu\ge2$ is even and $\nu\le\mu-1$, so the valuation
+is at least six. For $\mu<0<\mu+\nu$, positivity of the extracted
+$E_i$ forces $\mu+2v(C_i)>0$ and gives the same displayed
+comparison bound, now greater than $25\nu/8$, hence at least four.
+
+In the second assertion, Lemma~\ref{lem:normalization} gives
+$v(E_i)\ge7\mu$. The second term of the corresponding factor
+therefore has valuation at least $\mu>0$. Those factors are units.
+For the remaining factors the trace estimate gives
+$v(G_j)>25\mu/4$. Since $w$ is a unit, Lemma~\ref{lem:normalization}
+gives $v(G_j)=2v(S_j)$, or $S_j=0$. This proves the stated bound;
+integrality and $25\mu/8>3\mu$ give $v(S_j)\ge3\mu+1$.
+Finally, dividing $E_i$ by a unit has no effect. Dividing it by
+$\delta$ of nonpositive valuation only increases its valuation,
+so its factors remain units in the second assertion.
+\end{proof}
+
 \section{A unit among two balanced contact functions}
 
 Let $\Theta_0,\Theta_1$ be finite sets of nonzero rational numbers,
@@ -333,4 +402,21 @@ $r$ depends on the rational input. A construction which combines
 scalar and comparison pole inputs must also prove its global height
 inequalities and its simultaneous rational realization. No reduction
 in the number of defining-polynomial variables is asserted here.
+\section*{Exact finite verification}
+
+The standard-library program
+\begin{center}\small
+\nolinkurl{computation/local_tests/check_rational_normalization.py}
+\end{center}
+checks the rational-function formulas, including equal-valuation
+cancellation, over explicit finite ranges; it separately verifies the
+linear inequalities in Proposition~\ref{prop:even-strata} and the integer
+rounding in Corollary~\ref{cor:seven}. The certificate records
+$38\,725$ rational calculations, $60\,501$ cases of each precision
+argument, and $4\,680$ examples of Theorem~\ref{thm:unit}. In the
+exponent-seven specialization, the comparison order is at least four
+and an odd scalar coefficient order $\mu>0$ gives scalar order at least
+$3\mu+1$. The proofs in this paper establish the
+unrestricted statements; these finite checks verify arithmetic and
+specializations used in the accompanying construction.
 \end{document}

@@ -58,9 +58,10 @@ def run():
                             assert (got>0)==(d>0)
                             if d>0:assert got==2*d
                         count+=1
-    m=100;K=206
+    m=4;K=14
     assert F(K)-2*m-F(9,2)==F(3,2)>0
     precision_cases=0
+    rounded_cases=0
     for mu in range(-400,401,2):
         for nu in range(1,402,2):
             rho=mu+nu
@@ -77,6 +78,19 @@ def run():
                 bound=((F(K)-F(7,4))*nu-F(11,4)*mu)/2
                 assert bound>m*nu
             precision_cases+=1
+            # Final exponent-seven specialization: only fourth powers of
+            # contact primes are needed, not fourth powers per depth unit.
+            if mu<=nu:
+                bound=F(25*nu-7*mu,8)
+                assert bound.numerator//bound.denominator+1>=4
+            else:
+                bound=F(25*mu-7*nu,8)
+                assert bound.numerator//bound.denominator+1>=6
+            rounded_cases+=1
+    for mu in range(1,402,2):
+        bound=F(25*mu,8)
+        integer_lower=bound.numerator//bound.denominator+1
+        assert integer_lower>=3*mu+1>=4
     base=[F(0),F(-1,2),F(-1),F(1,2399),F(-32,407)]
     contacts=[[x+j for j in shifts for x in base] for shifts in ((2,4),(6,8))]
     poles=[F(-1),F(-2)]
@@ -114,9 +128,14 @@ def run():
         'rational_normalization_cases':count,
         'nontrivial_equal_valuation_cancellations':cancellation_count,
         'even_coefficient_precision_cases':precision_cases,
+        'rounded_exponent_seven_cases':rounded_cases,
         'two_contact_unit_cases':unit_cases,
         'precision':m,'switch_exponent':K,'norm_denominator_exponent':K-1,
         'linear_inequality_margin':'3/2',
+        'defining_source_profile':{'switch_exponent':7,'norm_denominator_exponent':7,
+            'comparison_radical_order':4,'scalar_radical_order':4,
+            'scalar_forced_depth':'at least 3*mu+1',
+            'reciprocal_abscissa_power':2,'formal_logarithm_precision':4},
         'contacts':[[str(x) for x in xs] for xs in contacts],
         'poles':[str(x) for x in poles],
         'exceptional_contact_primes':sorted(primes),
