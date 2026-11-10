@@ -1,0 +1,409 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,microtype}
+\usepackage[margin=26mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}\newtheorem{remark}[theorem]{Remark}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\newcommand{\hF}{h_{\mathrm F}}
+\newcommand{\ord}{\operatorname{ord}}
+\newcommand{\rad}{\operatorname{rad}}
+\setlength{\emergencystretch}{2em}
+\title{Scalar Characters and Contact-Height Estimates}
+\author{}\date{10 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+For the normalized quaternionic representation used in the five-contact
+construction, the square of the nebentypus is the inverse square of the
+scalar Dirichlet character. Choosing the local scalar characters of
+minimal two-power order bounds the nebentypus by the largest two-part of
+$p-1$ among the relevant primes. This gives a sharper modular degree
+bound, an explicit cubic logarithmic contact estimate with constant less
+than $2^{330670}$, and a finer estimate sensitive to congruence restrictions
+on the contact primes. Separately, evaluation of differentials at a
+primitive sixth root of unity removes the horizontal contribution to
+the discriminant estimate for modular Jacobians. The arithmetic
+realization remains an explicitly stated input.
+\end{abstract}
+
+\section{Scalar characters of minimal order}
+
+For a positive squarefree integer $R$ divisible by $6$, define
+\[
+ U(R)=\max\bigl(\{2\}\cup
+       \{2^{v_2(p-1)}:p\mid R,\ p\text{ odd prime}\}\bigr),
+ \qquad E(R)=\prod_{p\mid R}(1+p^{-1}).
+\]
+Here $v_2(n)$ is the exponent of $2$ in the nonzero integer $n$.
+Both $U(R)$ and $E(R)$ are effectively computable.
+
+\begin{lemma}\label{lem:characters}
+Prescribe a subset of the finite places dividing $R$ at which the
+local boundary of a Dirichlet character under the squaring sequence is
+to be nontrivial. The character used to realize these prescribed
+boundaries can be chosen tame at every odd prime, of conductor at most
+$4$ at $2$, and of order dividing $U(R)$. Moreover $U(R)\mid\varphi(R)$.
+\end{lemma}
+\begin{proof}
+At an odd prime $p$, put $p-1=2^a u$ with $u$ odd. If a nontrivial
+local boundary is prescribed, choose a generator $g$ of
+$(\Z/p\Z)^\times$ and set $\chi_p(g)=\zeta_{2^a}$, a primitive
+$2^a$-th root of unity. Then
+\[
+ \chi_p(-1)=\zeta_{2^a}^{(p-1)/2}=-1.
+\]
+Thus $\chi_p$ is odd and has the required boundary. The boundary
+criterion is the local reciprocity calculation used in the scalar
+lifting construction: the obstruction to taking a square root of a
+finite local character is its value at $-1$. If the boundary is
+trivial, use the trivial character. At $2$, use the character modulo
+$4$ when needed. The product of these characters has order dividing
+the least common multiple of their orders. All orders are powers of
+$2$, so that least common multiple divides $U(R)$. The global boundary
+is the prescribed sign class whenever the local prescription comes
+from that class, by the same reciprocity and global-to-local argument
+as in the scalar lifting construction. Finally each $2^{v_2(p-1)}$
+divides $\varphi(R)=\prod_{p\mid R,\ p>2}(p-1)$, and this product is
+even. The largest of these powers, together with $2$, therefore divides
+$\varphi(R)$.
+\end{proof}
+
+\section{The determinant identity}
+
+Let $A$ be an abelian surface over a finite normal extension $L/\Q$.
+Suppose that compatible isogenies
+$\mu_\sigma:{}^\sigma A\to A$ have been chosen, and that the normalized
+semilinear operators
+\begin{equation}\label{eq:normalized}
+ \rho_\ell(\sigma)=b(\sigma)^{-1}a_\sigma\mu_\sigma\circ\sigma,
+ \qquad a_\sigma=(\deg\mu_\sigma)^{-1/4},\qquad b^2=\chi,
+\end{equation}
+form a four-dimensional $\ell$-adic representation. Coefficient fields
+are enlarged to contain these scalars, with the trivial Galois action
+on the added coefficients. Assume that the quaternionic action gives
+$\rho_\ell=r_\ell\oplus r_\ell$ and that modularity identifies
+$r_\ell$ with a weight-two newform representation, in the Tate-module
+convention
+\[
+                         \det r_\ell=\varepsilon\chi_{\rm cyc}.
+\]
+Here $\chi_{\rm cyc}$ denotes the $\ell$-adic cyclotomic character and
+$\varepsilon$ is the nebentypus. These are precisely the normalized
+representations and conventions in the modular construction of
+\cite[proof of \texttt{o8-height}, (LR2)--(LR5)]{Source}.
+
+\begin{proposition}\label{prop:determinant}
+The character $\varepsilon\chi$ has order at most two. Consequently,
+if $\chi$ is chosen as in Lemma~\ref{lem:characters}, then
+\[
+                         \ord(\varepsilon)\mid U(R).
+\]
+\end{proposition}
+\begin{proof}
+For an abelian surface, cup product and the trace isomorphism give
+the natural identification
+\[
+                   \bigwedge^4 V_\ell(A)\simeq\Q_\ell(2).
+\]
+An isogeny acts on this determinant line by its degree. This follows
+equally from its action on the top cohomology of a complex abelian
+surface and comparison; the exterior-algebra description of abelian
+cohomology is recalled in \cite[Chapter~I, Section~12]{Milne}.
+Galois acts on the determinant line by $\chi_{\rm cyc}^2$.
+Consequently, even though the isogeny has a conjugate source,
+\[
+ \det(\mu_\sigma\circ\sigma)
+      =\deg(\mu_\sigma)\chi_{\rm cyc}(\sigma)^2.
+\]
+Taking determinants in~\eqref{eq:normalized}, and using
+$a_\sigma^4\deg(\mu_\sigma)=1$, gives
+\[
+ \det\rho_\ell=b^{-4}\chi_{\rm cyc}^2
+                 =\chi^{-2}\chi_{\rm cyc}^2.
+\]
+On the other hand,
+$\det\rho_\ell=(\det r_\ell)^2
+ =\varepsilon^2\chi_{\rm cyc}^2$.
+Cancelling the cyclotomic factor proves
+$\varepsilon^2=\chi^{-2}$. Thus
+$\kappa=\varepsilon\chi$ is quadratic or trivial.
+The orders of both $\chi$ and $\kappa$ divide $U(R)$, since $U(R)$
+is even. Therefore the order of $\varepsilon=\kappa\chi^{-1}$
+also divides $U(R)$.
+\end{proof}
+
+The quadratic twist of $b$ used to remove unwanted ramification
+does not change this calculation: its fourth power is one, and its
+square leaves $\chi$ unchanged. The proposition bounds the
+nebentypus directly; it does not bound the newform coefficient-field
+degree.
+
+\section{A unit fibre for differential evaluation}
+
+We use the original stable Faltings height. Let $X_H=X_1(N)/H$, where
+$H\subset(\Z/N\Z)^\times$ contains $-1$, and let $J_H$ be its
+Jacobian of positive dimension $g_H$. Write
+\[
+ d_H=[X_H:\mathbb P^1_j]
+       =N[(\Z/N\Z)^\times:H]\prod_{p\mid N}(1+p^{-1}).
+\]
+
+\begin{proposition}\label{prop:unitfibre}
+One has
+\[
+ \hF(J_H)\le\frac{d_H}{2}
+           (\log6+\log N+2\log d_H)-\frac{g_H}{2}\log\pi.
+\]
+\end{proposition}
+\begin{proof}
+Use $t=j/1728$ and let $\zeta$ be a primitive sixth root of unity.
+Choose a number field $K$ over which the curve is semistable, the
+fibre $t=\zeta$ splits, and $\zeta$ is rational. Normalize
+$\mathbb P^1_{\mathcal O_K}$ in $K(X_H)$ and specialize its affine
+algebra at $t=\zeta$ to obtain an order $C\subset\mathcal O_K^{d_H}$.
+The integral evaluation argument of \cite[Sections~1--3]{Evaluation}
+maps the Hodge lattice into the trace-dual order. After projection to
+$g_H$ coordinates on which evaluation is injective, the target's
+arithmetic degree is at most half the logarithmic discriminant of $C$.
+Injectivity holds because $d_H>2g_H-2$ for this Belyi map.
+
+Both $\zeta$ and $1-\zeta$ are algebraic units. The fibre therefore
+meets none of the horizontal branch divisors $0,1,\infty$ at finite
+places. At primes greater than three, the torsion-different argument
+of \cite[Lemma~4.2]{Evaluation} bounds the normalized vertical
+contribution by $d_H\log N$. At $2$ and $3$, Lenstra's different
+estimate gives at most $d_H(\log6+2\log d_H)$, exactly as in
+\cite[Section~4]{Evaluation}. These arguments are unchanged after
+the extension to $K$; its degree cancels after normalization.
+Thus
+\[
+ \frac{\log\mathrm N\mathfrak D(C)}{[K:\Q]}
+       \le d_H(\log6+\log N+2\log d_H).
+\]
+
+At every complex embedding, the distance from the image of $\zeta$
+to each of $0$ and $1$ is one. Every disk of radius $s<1$ about
+that image is unramified, and its inverse image consists of disjoint
+analytic sheets. The mean-value inequality bounds evaluation of
+$\omega/dt$ by $1/(\sqrt\pi s)$ times the $L^2$ norm of $\omega$.
+Letting $s$ tend to one gives operator norm at most $1/\sqrt\pi$.
+Hadamard's inequality bounds the determinant norm by $\pi^{-g_H/2}$.
+The arithmetic degree inequality now gives the displayed result.
+\end{proof}
+
+\section{The refined contact estimate}
+
+Put
+\[
+ B_* =\prod_{p\le76176}p,\qquad C_0=210^{300},\qquad
+ \mathcal D=\{0,1,2401,-343/32\}.
+\]
+For $a=u/v\in\Q\setminus\mathcal D$ in lowest terms with $v>0$,
+let $M=M_5(a)$ be the product of primes greater than $76176$ at
+which at least one of
+\[
+ v,\quad u,\quad u-v,\quad u-2401v,\quad32u+343v
+\]
+has positive odd valuation. Write $h(a)=\log\max(|u|,v)$.
+
+The arithmetic premise in this section is the normalized modular
+construction of \cite[proof of \texttt{o8-height}]{Source}, including
+its geometric inequality $h(a)\le2\max(0,\hF(A))+128$, its CM bound
+$\hF(A)<854R$, and in the non-CM case its surface factor on a modular
+Jacobian over $L'$, its level bound $N\le C_0R^2$, and
+$\rad(N)\mid R$, where $R=B_*M$. The scalar characters in that
+construction may be chosen as in Lemma~\ref{lem:characters}; its
+conductor estimates use only tameness at odd primes and conductor at
+most $4$ at $2$. Its field construction gives
+$[L':\Q]\le1152\ord(\chi)$. This retains the source's arithmetic
+premises and uses more information than a bare height inequality.
+
+\begin{theorem}\label{thm:refined}
+Under this premise, define
+\[
+ C_3'=19C_0B_*^3\log B_* ,\qquad
+ C_2'=19C_0B_*^2E(B_*)\log B_* .
+\]
+Then
+\begin{align}
+ h(a)&\le C_3'M^3(1+\log M),\label{eq:uniform}\\
+ h(a)&\le C_2'M^2 U(B_*M)E(M)(1+\log M).\label{eq:finer}
+\end{align}
+Moreover $C_3'<2^{330670}$, and hence
+\[
+                     h(a)<2^{330671}M^{7/2}.
+\]
+\end{theorem}
+\begin{proof}
+Let $H=\ker\varepsilon$. Proposition~\ref{prop:determinant} gives
+\begin{equation}\label{eq:degree}
+ d_H\le C_0R^2U(R)E(R)=:\mathcal T.
+\end{equation}
+Since $U(R)\mid\varphi(R)$,
+\[
+ U(R)E(R)\le\varphi(R)E(R)
+        =R\prod_{p\mid R}(1-p^{-2})<R,
+ \qquad \mathcal T<C_0R^3.
+\]
+Also $[L':\Q]\le1152U(R)\le1152R$.
+
+For completeness, the numerical height transfer can be made with
+the same estimates for both the refined and uniform bounds.
+Write $\ell=\log R$. The exact inequalities $C_0^2<B_*$,
+$144<B_*$ and $\ell\ge1$ give
+\[
+ \log N\le\tfrac52\ell,\qquad
+ \log d_H\le\tfrac72\ell,\qquad
+ \log12\le\tfrac12\ell.
+\]
+The weaker version of Proposition~\ref{prop:unitfibre} with
+$\log12$ in place of $\log6$ and with additive term
+$g_H\log(2/\sqrt\pi)$ yields
+$\hF(J_H)\le6d_H\ell$.
+Thus $H_J=\max(1,\hF(J_H)+3g_H/2)\le8\mathcal T\ell$.
+
+R\'emond's subvariety inequality and the dimension-two isogeny
+bound, in the form proved in \cite[Lemma~5.1]{Evaluation}, imply
+\[
+ \hF(A)\le H_J+8\left(32\log14+\log d'
+           +\log\max(1,\log d',H_J)\right),\qquad d'=[L':\Q].
+\]
+Here $\log d'<9\ell$ and
+$\log(8\mathcal T\ell)\le9\ell$, whereas
+$8\mathcal T\ell>\max(1,\log d')$.
+Using $\log14<3$ gives
+\[
+ \hF(A)\le8\mathcal T\ell+912\ell\le9\mathcal T\ell.
+\]
+The CM alternative is smaller than this bound as well.
+Since $\mathcal T\ell>128$, the geometric comparison gives
+$h(a)\le19\mathcal T\ell$. Substituting~\eqref{eq:degree}, using
+$E(R)=E(B_*)E(M)$ and
+$\log R\le(\log B_*)(1+\log M)$, proves~\eqref{eq:finer}.
+The inequality $\mathcal T<C_0R^3$ proves~\eqref{eq:uniform}.
+
+The exact checker described below verifies
+\[
+ 19C_0B_*^3\cdot109445<2^{330670},\qquad B_*<2^{109445}.
+\]
+Since $\log2<1$, these inequalities imply $C_3'<2^{330670}$.
+Finally $(1+u)e^{-u/2}<2$ for $u\ge0$, so the stated pure-power
+bound follows on taking $u=\log M$.
+\end{proof}
+
+\begin{corollary}\label{cor:restricted}
+Fix an integer $k\ge1$. Suppose that every prime dividing $M_5(a)$
+satisfies $v_2(p-1)\le k$. Then
+\[
+ h(a)\le C_2'\max(65536,2^k)
+                  M_5(a)^2(1+\log M_5(a))^2.
+\]
+In particular, for every fixed $\eta>0$ there is an effective constant
+$C_{k,\eta}$ such that $h(a)\le C_{k,\eta}M_5(a)^{2+\eta}$
+on this restricted set.
+\end{corollary}
+\begin{proof}
+The primes in $B_*$ have largest two-part $65536$, attained at $65537$;
+this is certified by exact trial division. Thus
+$U(B_*M)\le\max(65536,2^k)$.
+For squarefree $M$,
+\[
+ E(M)=\sum_{d\mid M}\frac1d\le\sum_{d=1}^{M}\frac1d
+                                      \le1+\log M.
+\]
+Apply~\eqref{eq:finer}. The remaining logarithmic factor is absorbed
+effectively by $M^\eta$, since
+$\sup_{u\ge0}(1+u)^2e^{-\eta u}<\infty$.
+\end{proof}
+
+For example, primes $p\equiv17\pmod{32}$ satisfy $v_2(p-1)=4$.
+The corollary applies when \emph{all} prime factors in the relevant
+contact radical obey that restriction. The freedom to choose such
+primes in a completeness argument does not impose the restriction on
+arbitrary rational solutions in a soundness argument. No such
+restriction on all contact primes is inferred here.
+
+\begin{proposition}\label{prop:quadratic-obstruction}
+For $\beta(X)=51X^2+2504$, the numbers
+$U(B_*M_5(\beta(X)))$, with $X\in\Z$, are unbounded.
+More precisely, for every $k\ge1$ there are infinitely many primes
+$p>76176$ with $v_2(p-1)\ge k$ for which infinitely many integers
+$X$ satisfy $v_p(\beta(X))=1$.
+\end{proposition}
+\begin{proof}
+Set $L=2^{k+3}\cdot51\cdot2504$. Dirichlet's theorem on primes
+in arithmetic progressions \cite[Section~1]{Kedlaya} supplies infinitely many primes
+$p\equiv1\pmod L$. Discard the finitely many primes at most $76176$.
+For every odd prime $q$ dividing $51\cdot2504$, quadratic
+reciprocity gives $(q/p)=(p/q)=1$, because $p\equiv1\pmod{4q}$.
+Also $(-1/p)=(2/p)=1$. Hence $-2504/51$ is a nonzero square
+modulo $p$. Choose $x_0$ with $51x_0^2+2504\equiv0\pmod p$.
+Its derivative $102x_0$ is nonzero modulo $p$.
+Among the $p$ residue classes $x_0+pt\pmod{p^2}$, exactly one
+makes $\beta$ vanish modulo $p^2$; any of the others has
+$v_p(\beta)=1$. Each such residue class contains infinitely many
+integers. For these inputs the contact at zero contributes $p$ to
+$M_5(\beta(X))$, so $U(B_*M_5(\beta(X)))\ge2^{v_2(p-1)}\ge2^k$.
+\end{proof}
+
+Thus the congruence condition in Corollary~\ref{cor:restricted} cannot
+hold with one fixed $k$ throughout this scalar family, even if the
+input is already restricted to the rational integers.
+
+\section{Exact verification and arithmetic scope}
+
+The program
+\begin{center}\small
+\nolinkurl{computation/contact_heights/check_nebentypus_height.py}
+\end{center}
+constructs $B_*$ by a sieve and independently by trial division,
+checks $U(B_*)=65536$, verifies the integer inequalities in
+Theorem~\ref{thm:refined}, and tests the character-order identities in
+cyclic groups. It also checks the two equations for a primitive sixth
+root, $\zeta^2-\zeta+1=0$ and $\zeta(1-\zeta)=1$.
+These finite checks verify the constants and elementary algebra.
+The determinant, duality, and arithmetic-realization assertions are
+the mathematical proofs and premises stated above, not conclusions
+of the computation.
+
+\begin{thebibliography}{9}\small
+\bibitem{Source}
+E.~Glazer and contributors, \emph{Diophantine definition of the integers
+in the rationals}, \texttt{manuscripts/quartic\_v9.tex}, commit
+\texttt{14e8f601fe0d9173d4a5f084aedc3e07066a7688},
+\url{https://github.com/elliotglazer/diophantine-z-q}.
+\bibitem{Evaluation}
+J.~Brox and contributors, \emph{Evaluation of Differentials and Heights
+of Modular Jacobians},
+\texttt{evaluation\_of\_differentials\_20261109\_v17.tex},
+\url{https://github.com/JoseBrox/diophantine-z-q_improvements}.
+\bibitem{Milne}
+J.~S. Milne, \emph{Abelian Varieties}, course notes, version 2.00,
+2008, Chapter~I, Section~12,
+\url{https://www.jmilne.org/math/CourseNotes/AV.pdf}.
+\bibitem{Kedlaya}
+K.~S. Kedlaya, \emph{Primes in arithmetic progressions},
+MIT 18.785 lecture notes, Spring 2007, Section~1,
+\url{https://kskedlaya.org/18.785/dirichlet.pdf}.
+\bibitem{Javanpeykar}
+A.~Javanpeykar, with an appendix by P.~Bruin,
+\emph{Polynomial bounds for Arakelov invariants of Belyi curves},
+Algebra \& Number Theory \textbf{8} (2014), 89--140,
+\url{https://doi.org/10.2140/ant.2014.8.89}.
+\bibitem{Remond}
+G.~R\'emond, \emph{Propri\'et\'es de la hauteur de Faltings},
+Annali della Scuola Normale Superiore di Pisa, Classe di Scienze
+\textbf{23} (2022), 1589--1596,
+\url{https://doi.org/10.2422/2036-2145.202010_062}.
+\bibitem{GaudronRemond}
+\'E.~Gaudron and G.~R\'emond,
+\emph{Nouveaux th\'eor\`emes d'isog\'enie},
+M\'emoires de la Soci\'et\'e Math\'ematique de France
+\textbf{176} (2023), Theorem~1.9(1),
+\url{https://doi.org/10.24033/msmf.484}.
+\end{thebibliography}
+\end{document}

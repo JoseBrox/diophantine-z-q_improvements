@@ -1,0 +1,424 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,microtype}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\Q}{\mathbb Q}
+\DeclareMathOperator{\Tr}{Tr}
+\title{Rational Normalization of Local Valuation Tests}
+\author{}\date{10 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+We give rational functions which suppress local conditions at a prime
+where an auxiliary coefficient has odd valuation, without requiring any
+bound on the poles of the original functions. At a prime where that
+coefficient is a unit, positive valuation of the normalized function is
+equivalent to positive valuation of the original one. A second result
+uses two balanced contact functions with disjoint contact and pole sets:
+after a suitable change of scale, at least one is a unit at each prime
+of odd valuation of the scalar coefficient. Together these results
+supply local extraction statements for products of two arithmetic
+coefficients. The statements concern local conditions and do not by
+themselves establish a smaller defining polynomial for the integers.
+\end{abstract}
+
+\section{A rational function with controlled valuations}
+
+Let $L$ be a finite extension of $\Q_p$ unramified over $\Q_p$.
+Normalize its valuation by $v(p)=1$, so that $v(L^\times)=\mathbb Z$,
+and put $v(0)=+\infty$. For $z\in L^\times$, define
+\[
+                   \Psi_z(D)=\frac{zD^2}{1+zD^2}
+\]
+whenever the denominator is nonzero. All assertions involving this
+rational function include that domain condition.
+
+\begin{lemma}\label{lem:normalization}
+The following statements hold.
+\begin{enumerate}
+\item If $v(z)$ is odd, then the denominator of $\Psi_z(D)$ is
+nonzero for every $D\in L$, and
+\[
+ v(\Psi_z(D))=\max\{0,v(z)+2v(D)\}\ge0
+ \qquad(D\ne0).
+\]
+For $D=0$ the value of the rational function is zero.
+\item If $v(z)=0$, then
+\[
+        v(\Psi_z(D))>0\quad\Longleftrightarrow\quad v(D)>0.
+\]
+When $0<v(D)<+\infty$, one has
+$v(\Psi_z(D))=2v(D)$.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+For $D\ne0$ write $e=v(z)+2v(D)$. If $v(z)$ is odd, then
+$e$ is odd and in particular is not zero. Thus
+$v(1+zD^2)=\min(0,e)$, and subtraction gives the first formula.
+For $D=0$ the assertions follow directly.
+
+Suppose now that $v(z)=0$. If $v(D)<0$, the same computation
+gives valuation zero. If $v(D)>0$, the denominator is a unit and
+the valuation is $2v(D)>0$. Finally, if $v(D)=0$, the numerator
+is a unit and the denominator has nonnegative valuation, so the
+quotient has nonpositive valuation. This proves the equivalence,
+including the zero value of $D$.
+\end{proof}
+
+In particular, if $v(z)=\nu>0$ is odd and $K$ is a nonnegative
+integer, then
+\begin{equation}\label{eq:inactive}
+             v\bigl(z^K\Psi_z(D)\bigr)\ge K\nu
+\end{equation}
+for every $D$. The assertion is uniform in $D$: a pole of
+arbitrarily large order does not weaken the lower bound. In contrast,
+multiplication by $z^K$ alone cannot give such a bound, since
+$v(z^KD)=K\nu+v(D)$ is unbounded below as $D$ varies.
+
+\section{Two collections of local conditions}
+
+Let $F/\Q$ be a number field and let $p$ be unramified in $F$.
+For a place $\mathfrak p$ above $p$, normalize
+$v_{\mathfrak p}(p)=1$. Let $z,w\in\Q^\times$, and let
+$C_1,\ldots,C_a,S_1,\ldots,S_b$ be elements of $F$.
+Fix positive integers $m_i,n_j$, and put
+\[
+        A_i=2m_i+1,\qquad B_j=2n_j+1.
+\]
+Choose an integer
+\[
+ K\ge1+\max\{A_1,\ldots,A_a,B_1,\ldots,B_b\}.
+\]
+Empty collections can simply be omitted. Define
+\[
+ R=zw,\qquad
+ E_i=z^K\Psi_z(C_i),\qquad
+ G_j=w^K\Psi_w(S_j),
+\]
+and
+\begin{equation}\label{eq:product}
+ W=\prod_{i=1}^a\left(1+R\left(\frac{E_i}{R^{A_i}}\right)^2\right)
+   \prod_{j=1}^b\left(1+R\left(\frac{G_j}{R^{B_j}}\right)^2\right).
+\end{equation}
+Assume all displayed denominators are nonzero, $W\ne0$, and
+\[
+ T=\Tr_{F/\Q}(W^{-1})\ne0,\qquad \mathfrak b=R/T^2.
+\]
+The only property of a pole certificate needed in the following theorem
+is the stated exclusion of negative odd valuations of $\mathfrak b$.
+
+\begin{theorem}\label{thm:two-collections}
+Assume $v_p(\mathfrak b)$ is not negative and odd.
+\begin{enumerate}
+\item If $v_p(z)=\nu>0$ is odd and $v_p(w)=0$, there is a place
+$\mathfrak p\mid p$ such that
+\[
+              v_{\mathfrak p}(S_j)\ge n_j\nu+1
+                       \qquad(1\le j\le b).
+\]
+At every place above $p$, each factor indexed by a $C_i$ in
+\eqref{eq:product} is a unit.
+\item If $v_p(w)=\nu>0$ is odd and $v_p(z)=0$, there is a place
+$\mathfrak p\mid p$ such that
+\[
+              v_{\mathfrak p}(C_i)\ge m_i\nu+1
+                       \qquad(1\le i\le a).
+\]
+At every place above $p$, each factor indexed by an $S_j$ is a unit.
+\end{enumerate}
+The conclusion holds without any bound on the valuations of the
+collection whose factors are units.
+\end{theorem}
+\begin{proof}
+We prove the first assertion; the second follows by interchanging
+the two collections and $z,w$. Since $v_p(R)=\nu$ is odd,
+the valuation of every factor in~\eqref{eq:product} is the minimum
+of zero and the valuation of its second term. There is no cancellation
+between terms of equal valuation: the second term has odd valuation.
+Every factor therefore has nonpositive valuation, and so does $W$.
+
+By~\eqref{eq:inactive}, $v_{\mathfrak p}(E_i)\ge K\nu$.
+Consequently
+\[
+ v_{\mathfrak p}\left(R(E_i/R^{A_i})^2\right)
+ \ge(1+2K-2A_i)\nu>0.
+\]
+Thus all factors in the first product are units.
+
+Put $q=\max_{\mathfrak p\mid p}v_{\mathfrak p}(W)\le0$.
+Local traces of integral elements are integral, so the decomposition
+of the global trace into local traces gives $v_p(T)\ge-q$.
+The integer
+\[
+                    v_p(\mathfrak b)=\nu-2v_p(T)
+\]
+is odd. By the assumed pole exclusion it is at least one, and hence
+$q>-\nu/2$. Choose a place at which this maximum is attained.
+Since the factor valuations are nonpositive and have sum $q$,
+each one is greater than $-\nu/2$. For a factor indexed by $j$ this gives
+\[
+           2v_{\mathfrak p}(G_j)-(2B_j-1)\nu>-\nu/2,
+\]
+or
+\[
+              v_{\mathfrak p}(G_j)>(B_j-3/4)\nu>0.
+\]
+Here $w$ is a unit. Lemma~\ref{lem:normalization} shows that
+$v_{\mathfrak p}(S_j)>0$ and
+$v_{\mathfrak p}(G_j)=2v_{\mathfrak p}(S_j)$, unless $S_j=0$,
+in which case the conclusion already holds. Therefore
+\[
+ v_{\mathfrak p}(S_j)>(n_j+1/8)\nu>n_j\nu.
+\]
+The valuation is an integer, proving the assertion.
+\end{proof}
+
+The trace argument does not require $p$ to split completely.
+It uses only unramifiedness, which ensures that the odd/even valuation
+comparison is valid at every place. Nor does it assume that the
+local traces are units: cancellation in a trace only strengthens the
+inequality used in the proof.
+
+\subsection{Even valuations of the other coefficient}
+
+The case where one coefficient is a unit does not describe every
+prime occurring in a product of contact functions. The following
+estimate also treats a nonzero even valuation of the other coefficient.
+
+\begin{proposition}\label{prop:even-strata}
+Fix a positive integer $m$ and an integer $K>2m+9/2$, and set $A=K-1$.
+Use
+\[
+ E_i=z^K\Psi_z(C_i),\qquad G_j=w^K\Psi_w(S_j),\qquad R=zw,
+\]
+with denominator exponent $A$ for every factor in~\eqref{eq:product}.
+Suppose $v_p(w)=\nu>0$ is odd and $v_p(z)=\mu$ is even.
+Retain all domain conditions and the pole exclusion of
+Theorem~\ref{thm:two-collections}.
+\begin{enumerate}
+\item If $0\le\mu\le\nu$, there is a place $\mathfrak p\mid p$
+such that $v_{\mathfrak p}(C_i)>m\nu$ for every $i$.
+\item If $\mu>\nu$, there is a place $\mathfrak p\mid p$
+such that $v_{\mathfrak p}(S_j)>m\mu$ for every $j$.
+\item If $\mu<0$ and $\mu+\nu<0$, the pole exclusion is impossible.
+If $\mu<0$ and $\mu+\nu>0$, the conclusion of the first assertion
+holds.
+\end{enumerate}
+In particular, zero cannot occur as $\mu+\nu$ under these parity
+hypotheses.
+\end{proposition}
+\begin{proof}
+Put $\rho=\mu+\nu$, which is odd. The valuation of each factor is
+the minimum of zero and the odd valuation of its second term. Thus
+every factor has nonpositive valuation. If $\rho<0$, the trace bound
+used above gives $v_p(\mathfrak b)\le\rho<0$, an odd valuation,
+contradicting the pole exclusion. We may therefore assume $\rho>0$.
+The same trace argument gives one place at which every normalized
+test $E_i,G_j$ has valuation greater than
+\begin{equation}\label{eq:threshold-new}
+                         (K-7/4)(\mu+\nu).
+\end{equation}
+
+For any $D$ whose denominator in $\Psi_z(D)$ is nonzero, one has
+\begin{equation}\label{eq:general-upper}
+ v(\Psi_z(D))\le\max\{0,\mu+2v(D)\}.
+\end{equation}
+Indeed the formula is an equality unless $\mu+2v(D)=0$;
+in that case cancellation in the denominator can only decrease
+the valuation. Zero tests satisfy every desired lower bound and
+may be omitted from this argument.
+
+If $0\le\mu\le\nu$ and $v(C_i)\le m\nu$, then
+\[
+              v(E_i)\le(K+1)\mu+2m\nu.
+\]
+Subtracting this upper bound from~\eqref{eq:threshold-new} gives
+\[
+ (K-2m-7/4)\nu-\tfrac{11}{4}\mu
+          \ge(K-2m-9/2)\nu>0,
+\]
+a contradiction. The same computation, with $\mu,\nu$ exchanged,
+excludes $v(S_j)\le m\mu$ when $\mu>\nu>0$.
+
+Finally suppose $\mu<0<\mu+\nu$. If $v(E_i)>0$, then
+$K\mu<0$ and~\eqref{eq:general-upper} force
+$\mu+2v(C_i)>0$. There is then no cancellation, and
+$v(E_i)=(K+1)\mu+2v(C_i)$. The strict lower bound
+\eqref{eq:threshold-new} implies
+\[
+ 2v(C_i)>(K-7/4)\nu-\tfrac{11}{4}\mu>2m\nu.
+\]
+This proves the last assertion.
+\end{proof}
+
+\subsection{A fixed choice of exponents}
+
+The integrality of valuations permits smaller exponents when only a
+fixed fourth power of each contact prime is needed, independently of
+the contact valuation itself.
+
+\begin{corollary}\label{cor:seven}
+Put $R=zw$, $E_i=z^7\Psi_z(C_i)$ and $G_j=w^7\Psi_w(S_j)$.
+Use denominator exponent seven for every factor in~\eqref{eq:product},
+and retain its domain and pole-exclusion assumptions.
+\begin{enumerate}
+\item Suppose $v_p(w)=\nu>0$ is odd and $v_p(z)=\mu$ is even.
+If $\mu+\nu<0$, there is no solution satisfying the pole exclusion.
+If $\mu+\nu>0$, one of the following holds at one common place
+$\mathfrak p\mid p$:
+\begin{enumerate}
+\item if $\mu\le\nu$, then $v_{\mathfrak p}(C_i)\ge4$ for every $i$;
+\item if $\mu>\nu$, then $v_{\mathfrak p}(S_j)\ge6$ for every $j$.
+\end{enumerate}
+\item Suppose $v_p(z)=\mu>0$ is odd and $v_p(w)=0$.
+Then at one common place
+\[
+          v_{\mathfrak p}(S_j)>\frac{25}{8}\mu,
+          \qquad v_{\mathfrak p}(S_j)\ge3\mu+1\ge4
+\]
+for every $j$. Each factor indexed by a $C_i$ is a unit.
+\end{enumerate}
+The first assertion also holds when the $E_i$ in the product are
+divided by a rational number $\delta$ with $v_p(\delta)=0$.
+The second also holds with this division if $v_p(\delta)\le0$.
+\end{corollary}
+\begin{proof}
+At a prime where $\rho=v_p(R)$ is odd, all factor valuations are
+nonpositive. The trace argument proves that $\rho>0$ is necessary
+and supplies a place at which each normalized test has valuation
+strictly greater than $25\rho/4$.
+
+Suppose first that $\mu\ge0$ is even and $\mu\le\nu$.
+For a comparison test $C_i$ this lower bound forces
+$\mu+2v(C_i)>0$: otherwise $v(E_i)\le7\mu$, whereas
+$25(\mu+\nu)/4>7\mu$. Consequently
+\[
+               v(C_i)>\frac{25\nu-7\mu}{8}.
+\]
+If $\nu=1$, parity gives $\mu=0$, so $v(C_i)>25/8$ and the
+integer valuation is at least four. If $\nu\ge3$, the bound
+is at least $18\nu/8\ge54/8>6$, which is stronger.
+For $\mu>\nu>0$, the symmetric argument gives
+\[
+               v(S_j)>\frac{25\mu-7\nu}{8}
+                        \ge\frac{18\mu+7}{8}\ge\frac{43}{8}.
+\]
+Here $\mu\ge2$ is even and $\nu\le\mu-1$, so the valuation
+is at least six. For $\mu<0<\mu+\nu$, positivity of the extracted
+$E_i$ forces $\mu+2v(C_i)>0$ and gives the same displayed
+comparison bound, now greater than $25\nu/8$, hence at least four.
+
+In the second assertion, Lemma~\ref{lem:normalization} gives
+$v(E_i)\ge7\mu$. The second term of the corresponding factor
+therefore has valuation at least $\mu>0$. Those factors are units.
+For the remaining factors the trace estimate gives
+$v(G_j)>25\mu/4$. Since $w$ is a unit, Lemma~\ref{lem:normalization}
+gives $v(G_j)=2v(S_j)$, or $S_j=0$. This proves the stated bound;
+integrality and $25\mu/8>3\mu$ give $v(S_j)\ge3\mu+1$.
+Finally, dividing $E_i$ by a unit has no effect. Dividing it by
+$\delta$ of nonpositive valuation only increases its valuation,
+so its factors remain units in the second assertion.
+\end{proof}
+
+\section{A unit among two balanced contact functions}
+
+Let $\Theta_0,\Theta_1$ be finite sets of nonzero rational numbers,
+and let $c_0,c_1\in\Q^\times$ satisfy $c_i\notin\Theta_i$.
+Assume
+\[
+       (\Theta_0\cup\{c_0\})\cap
+       (\Theta_1\cup\{c_1\})=\varnothing.
+\]
+Put $d_i=|\Theta_i|$ and define the balanced rational functions
+\[
+                 R_i(t)=\frac{\prod_{\theta\in\Theta_i}(t-\theta)}
+                                      {(t-c_i)^{d_i}}.
+\]
+The term balanced here means precisely that numerator and denominator
+have the same degree; no additional property is included in the term.
+If the intended application needs a square denominator, take $d_i$ even.
+Let $S$ contain all prime divisors of the numerators and denominators
+of the nonzero members of the two displayed sets and of their
+nonzero pairwise differences.
+
+\begin{theorem}\label{thm:unit}
+Let $r,T,\lambda\in\Q$, with $r\ne0$, and set
+\[
+                  a=(1+rT^2)^2,\qquad t_0=\lambda,\quad t_1=a\lambda.
+\]
+Suppose $p\notin S$ and $v_p(r)$ is odd. If $R_i(t_i)$ are
+defined and nonzero, then at least one is a $p$-adic unit:
+\[
+                       v_p(R_0(t_0))=0
+                       \quad\hbox{or}\quad v_p(R_1(t_1))=0.
+\]
+The conclusion permits negative as well as positive odd $v_p(r)$.
+\end{theorem}
+\begin{proof}
+If $T=0$, then $a=1$. Otherwise $v_p(rT^2)$ is odd and cannot
+be zero. If it is positive, $a$ is a unit congruent to one modulo $p$.
+If it is negative, $v_p(a)=2v_p(rT^2)<0$.
+Thus in every case $a\ne0$ and either $a\equiv1\pmod p$ or
+$v_p(a)<0$.
+
+For either balanced contact function, an argument of negative valuation
+has a numerator and denominator of the same valuation $d_i v_p(t)$,
+so its value is a unit. An argument of positive valuation, including
+zero, also gives a unit, since all the contacts and the pole are units.
+
+It remains to consider $v_p(\lambda)=0$ and
+$v_p(R_0(\lambda))\ne0$. The residue of $\lambda$ must then belong to
+$\Theta_0\cup\{c_0\}$. If $v_p(a)<0$, the argument $a\lambda$ has
+negative valuation, and $R_1(a\lambda)$ is a unit. Otherwise
+$a\lambda\equiv\lambda\pmod p$. The two contact-and-pole sets have
+disjoint reductions modulo $p$ by the choice of $S$, so this residue
+does not belong to $\Theta_1\cup\{c_1\}$. Every numerator and denominator
+factor of $R_1(a\lambda)$ is then a unit.
+\end{proof}
+
+\section{Scope for Diophantine constructions}
+
+Theorem~\ref{thm:unit} supplies one contact function of valuation exactly
+zero at a prime of odd valuation of $r$. Thus
+Theorem~\ref{thm:two-collections} can extract scalar local conditions
+from at least one product $rR_i(t_i)$, while its other collection of
+local conditions is suppressed independently of any pole depths.
+At a comparison prime where $r$ is a unit and $R_i(t_i)$ has positive
+odd valuation, the same theorem instead extracts the comparison
+conditions. Every transformation is rational and introduces no new
+unrestricted rational parameter; its denominators must be retained
+as nonzero guards in an algebraic presentation.
+
+For a single product, two odd coefficient valuations have even sum,
+so its pole condition alone need not extract either collection.
+In the two-contact-function construction, Theorem~\ref{thm:unit}
+then supplies the other function with valuation zero and permits
+scalar extraction there. Together with the even-valuation cases,
+this gives the alternative needed in the companion twenty-five-variable
+construction: each comparison prime divides either an integer
+residual or the scalar index to the required order. The global
+height inequalities and simultaneous rational realization are proved
+separately in that construction. The local lemmas here do not
+establish its inherited arithmetic premises.
+\section*{Exact finite verification}
+
+The standard-library program
+\begin{center}\small
+\nolinkurl{computation/local_tests/check_rational_normalization.py}
+\end{center}
+checks the rational-function formulas, including equal-valuation
+cancellation, over explicit finite ranges; it separately verifies the
+linear inequalities in Proposition~\ref{prop:even-strata} and the integer
+rounding in Corollary~\ref{cor:seven}. The certificate records
+$38\,725$ rational calculations, $60\,501$ cases of each precision
+argument, and $4\,680$ examples of Theorem~\ref{thm:unit}. In the
+exponent-seven specialization, the comparison order is at least four
+and an odd scalar coefficient order $\mu>0$ gives scalar order at least
+$3\mu+1$. The proofs in this paper establish the
+unrestricted statements; these finite checks verify arithmetic and
+specializations used in the accompanying construction.
+\end{document}

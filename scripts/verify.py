@@ -155,6 +155,24 @@ def main():
             for name,raw in fixed_current.items():
                 assert (folder/name).read_bytes()==raw,name
         abc97=quartic/'family_abc97_v17'
+        fixed_difference_files = {}
+        for folder_name in ('family238_v18','family_abc93_v18'):
+            for path in sorted((quartic/folder_name).glob('*.json')):
+                fixed_difference_files[path] = path.read_bytes()
+        stages.append(run('238- and additional-abc 93-variable four-coordinate elliptic constructions',
+            quartic/'build_fixed_difference_v18.py'))
+        stages.append(run('Independent 238/93 rows, invertible row basis, full coefficients, and exact heights',
+            quartic/'check_fixed_difference_v18.py'))
+        for path, raw in fixed_difference_files.items():
+            assert path.read_bytes()==raw,str(path)
+        explicit318={path:path.read_bytes() for path in
+            sorted((quartic/'family318_v18').glob('*.json'))}
+        stages.append(run('Explicit 318-variable quadratic construction with normalized numerator logarithms',
+            quartic/'build_quartic318_v18.py'))
+        stages.append(run('Independent 318-variable rows, normalized logarithm factors, full coefficients, and height',
+            quartic/'check_quartic318_v18.py'))
+        for path,raw in explicit318.items():
+            assert path.read_bytes()==raw,str(path)
         coordinate_budget=(quartic/'coordinate-budget279.json').read_bytes()
         stages.append(run('Disjoint coordinate accounting for the279-variable family',quartic/'check_coordinate_budget.py'))
         assert (quartic/'coordinate-budget279.json').read_bytes()==coordinate_budget
@@ -214,6 +232,28 @@ def main():
         stages.append(run('Seven exact finite-algebra degeneration and determinant comparisons',
             active/'check_active_degenerations.py','--output',active/'degeneration-certificate.json'))
         assert (active/'degeneration-certificate.json').read_bytes()==degenerations
+        merged=few/'merged25'
+        merged_files=[
+            merged/'certificate/source.json.gz',
+            merged/'certificate/source-polynomial-specification.json',
+            merged/'certificate/source-construction-certificate.json',
+            merged/'active25/polynomial-specification.json',
+            merged/'active25/construction-certificate.json',
+            merged/'independent-source-verification.json',
+            merged/'independent-bound-verification.json']
+        merged_originals={p:p.read_bytes() for p in merged_files}
+        stages.append(run('25-variable combined scalar and comparison source construction',
+            merged/'build_merged_source.py','--anchor-exponent','3','--output',merged/'certificate'))
+        stages.append(run('Independent 25-variable point quartics, source conversion, guards, and formulas',
+            merged/'check_merged_source.py',merged/'certificate',
+            '--output',merged/'independent-source-verification.json'))
+        stages.append(run('25-variable finite-algebra specification on the nonzero guard locus',
+            active/'build_active_specification.py',
+            merged/'certificate/source-polynomial-specification.json',merged/'active25'))
+        stages.append(run('Independent 25-variable uniform degree and support bounds over every active case',
+            merged/'check_merged_bounds.py','--output',merged/'independent-bound-verification.json'))
+        for p,raw in merged_originals.items():
+            assert p.read_bytes()==raw,str(p)
         conditional=few/'conditional13'
         conditional_files=[
             conditional/'certificate/source.json.gz',
@@ -307,12 +347,25 @@ def main():
         stages.append(run('Differential-evaluation height: exact modular identity and explicit constants',
             contacts/'check_evaluation_height.py'))
         assert (contacts/'evaluation-height-certificate.json').read_bytes()==evaluation_height
+        character_height=(contacts/'nebentypus-height-certificate.json').read_bytes()
+        stages.append(run('Modular character orders, refined contact-height constants, and obstruction family',
+            contacts/'check_nebentypus_height.py'))
+        assert (contacts/'nebentypus-height-certificate.json').read_bytes()==character_height
+        local_tests=work/'computation/local_tests'
+        normalized_tests=(local_tests/'rational-normalization-certificate.json').read_bytes()
+        stages.append(run('Rational local normalization, even valuation strata, and disjoint contact units',
+            local_tests/'check_rational_normalization.py'))
+        assert (local_tests/'rational-normalization-certificate.json').read_bytes()==normalized_tests
         scalar=work/'computation/scalar_normalization'
         scalar_certificate=(scalar/'uniform-scalar-normalization-certificate.json').read_bytes()
         stages.append(run('Uniform scalar normalization, two exact resultants, and exhaustive local residues',
             scalar/'check_uniform_scalar_normalization.py'))
         assert (scalar/'uniform-scalar-normalization-certificate.json').read_bytes()==scalar_certificate
         constraints=work/'computation/elliptic_constraints'
+        fixed_difference=(constraints/'fixed-difference-chart-certificate.json').read_bytes()
+        stages.append(run('General four-coordinate elliptic chart identities and exceptional strata',
+            constraints/'check_fixed_difference_chart.py'))
+        assert (constraints/'fixed-difference-chart-certificate.json').read_bytes()==fixed_difference
         parity_certificate=(constraints/'reduction-parity-certificate.json').read_bytes()
         stages.append(run('Exact conjugate reduction orders and parity counterexamples',
             constraints/'search_reduction_parities.py'))
@@ -326,10 +379,14 @@ def main():
         stages.append(run('Exact common-parameter and product-contact obstructions',
             poles/'check_pole_merger_obstructions.py','--output',poles/'pole-merger-obstructions.json'))
         assert (poles/'pole-merger-obstructions.json').read_bytes()==merger
-        small_tau=(poles/'small-fixed-tau17-obstruction.json').read_bytes()
-        stages.append(run('Dense prepared fixed-tau17 obstruction: exact small witness',
-            poles/'check_small_fixed_tau17_obstruction.py'))
-        assert (poles/'small-fixed-tau17-obstruction.json').read_bytes()==small_tau
+        six_contact=(poles/'six-contact-product-verification.json').read_bytes()
+        stages.append(run('Six-contact involution, exact negative-square product, and unbounded positive scales',
+            poles/'check_six_contact_product.py','--output',poles/'six-contact-product-verification.json'))
+        assert (poles/'six-contact-product-verification.json').read_bytes()==six_contact
+        small_tau_algebra=(poles/'small-fixed-tau17-algebra-verification.json').read_bytes()
+        stages.append(run('Dense prepared fixed-tau17 obstruction: rational identities and pinned rank input',
+            poles/'check_small_fixed_tau17_algebra.py'))
+        assert (poles/'small-fixed-tau17-algebra-verification.json').read_bytes()==small_tau_algebra
         quartic_pole=(poles/'quartic-pole-obstruction.json').read_bytes()
         stages.append(run('Quartic pole equation: prepared locally insoluble family and exact residue certificate',
             poles/'check_quartic_pole_obstruction.py'))
@@ -340,6 +397,13 @@ def main():
             restricted/'check_frey_denominator.py'))
         assert (restricted/'frey-denominator-certificate.json').read_bytes()==frey
         if args.with_pari:
+            original_small_tau=json.loads((poles/'small-fixed-tau17-obstruction.json').read_text())
+            stages.append(run('Dense prepared fixed-tau17 obstruction: independent exact 2-descent',
+                poles/'check_small_fixed_tau17_obstruction.py'))
+            recomputed_small_tau=json.loads((poles/'small-fixed-tau17-obstruction.json').read_text())
+            for key in original_small_tau:
+                if key != 'ellrank':
+                    assert original_small_tau[key]==recomputed_small_tau[key],('small-fixed-tau17-obstruction.json',key)
             original=json.loads((number_fields/'elliptic-ratio-certificate.json').read_text())
             stages.append(run('Unconditional elliptic ranks, exact quadratic-field stability, and local-global obstruction',
                 number_fields/'check_elliptic_ratio_obstruction.py','--output',number_fields/'elliptic-ratio-recomputed.json'))

@@ -8,23 +8,25 @@
 \newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}\newcommand{\HH}{\mathcal H}
 \DeclareMathOperator{\Tr}{Tr}\DeclareMathOperator{\Nm}{Nm}
 \setlength{\emergencystretch}{2em}
-\title{A family of defining quartics in 248 variables}
-\author{}\date{9 November 2026}
+\title{A family of defining quartics in 238 variables}
+\author{}\date{10 November 2026}
 \begin{document}\maketitle
 \begin{abstract}
 Under the specified modular-realization, elliptic, pole-realization and
 prime-pattern inputs of the source construction, we give an integer
-quartic family in 248 total variables whose sufficiently large members
+quartic family in 238 total variables whose sufficiently large members
 define the integers in the rationals. A proved contact-height estimate
 with exponent $7/2$ becomes $7/4$ after using two disjoint contact blocks.
-All elliptic comparison ratios use the plain formal parameter. Sixteen
+A quadratic chart in four field coordinates stores the common point
+and both reciprocal formal parameters. All elliptic comparison ratios
+use the plain formal parameter. Sixteen
 local tests are represented by five factors and three scalar weight
 outputs. A balanced contact normalization removes a separate reciprocal
 coordinate, while a fourth-power scalar norm certificate bounds the
 input height by an arbitrarily small fixed multiple of $c(1+\log c)$,
 where $c$ is an auxiliary integer index. A sharpened Lucas estimate
 then supplies the required contradiction.
-The quartic is a sum of 222 primitive quadratic squares, has 3189
+The quartic is a sum of 212 primitive quadratic squares, has 2924
 monomials, and has coefficient height $149^{4N+2}+1$ for $N\ge53$.
 The sufficient defining parameter remains ineffective because of the
 additive constant in the aggregate trace-height theorem. No $abc$
@@ -35,13 +37,13 @@ conjecture is added.
 All variable counts include the distinguished input $X$. For a fixed
 integer $N\ge1$ let $A_N=149^{2N+1}$. The complete tables
 \begin{center}\small
-\nolinkurl{quadratic-family248-v17.json}\\
-\nolinkurl{polynomial-family248-v17.json}
+\nolinkurl{quadratic-family238-v18.json}\\
+\nolinkurl{polynomial-family238-v18.json}
 \end{center}
-specify 222 primitive integer
+specify 212 primitive integer
 quadratic polynomials and their sum of squares
 \[
- P_N(X,Y_1,\ldots,Y_{247})=\sum_{j=1}^{222}Q_{N,j}^2.
+ P_N(X,Y_1,\ldots,Y_{237})=\sum_{j=1}^{212}Q_{N,j}^2.
 \]
 The parameter $A_N$ is a coefficient, not a variable.
 
@@ -50,11 +52,11 @@ Assume the arithmetic premises stated below. There is a fixed integer
 $N_0\ge53$ such that every $N\ge N_0$ satisfies
 \[
  x\in\Z\quad\Longleftrightarrow\quad
- \exists\mathbf y\in\Q^{247}\ P_N(x,\mathbf y)=0
+ \exists\mathbf y\in\Q^{237}\ P_N(x,\mathbf y)=0
  \qquad(x\in\Q).
 \]
 For every $N\ge1$ the polynomial $P_N$ has degree exactly four,
-content one, and 3189 nonzero coordinate monomials. For $N\ge53$,
+content one, and 2924 nonzero coordinate monomials. For $N\ge53$,
 \[
                        H(P_N)=149^{4N+2}+1.
 \]
@@ -78,15 +80,16 @@ and hypotheses recorded in \cite{Dependencies,Source,Weights}:
 integer $n$, together with the specified point charts and group domains.
 \item The modular-realization input of
 \cite[Definition~6.1]{NewHeight}, with the exact arithmetic scope inherited
-from the source's modular construction. Theorem~6.2 of that paper proves
+from the source's modular construction. The normalized character construction and the refinement in
+\cite[Theorem~4.1]{RefinedHeight} prove
 \begin{equation}\label{eq:baseheight}
- h(u)\le H M_5(u)^{7/2},\qquad H=2^{330789}.
+ h(u)\le H M_5(u)^{7/2},\qquad H=2^{330671}.
 \end{equation}
 Here $M_5(u)$ is the odd contact radical outside $76176$ for
 $\infty,0,1,2401,-343/32$, and $u$ avoids the four finite contacts.
-The same theorem also proves the sharper estimate
+The same refined theorem also proves the sharper estimate
 \begin{equation}\label{eq:baseheightsharp}
- h(u)\le C_3M_5(u)^3(1+\log M_5(u)),\qquad C_3=2^{330770}.
+ h(u)\le C_3M_5(u)^3(1+\log M_5(u)),\qquad C_3=2^{330670}.
 \end{equation}
 Both bounds are consequences of the modular input, rather than an
 additional $abc$ assumption.
@@ -188,6 +191,124 @@ $h(T)\le h(\lambda)+h(T\lambda)$ and
 \end{equation}
 The two radicals need not be coprime for this implication.
 
+\section{A quadratic chart for the common reference point}
+
+Write $a_P=x_P$, $b_P=y_P$, and set
+\[
+ A_P=a_P^2+D,\qquad B_P=a_P^2-D,\qquad
+ C_P=D^2+6a_P^2D-3a_P^4.
+\]
+The constants $a_P,b_P,D,A_P,C_P$ are nonzero. The first four
+nonvanishing assertions follow from the displayed coordinates and
+$D=(3-\rho)^2>0$ at both real embeddings; exact arithmetic gives
+\[
+ C_P=-\frac{94897379}{4096}+\frac{4195821}{256}\rho,
+ \qquad \Nm(C_P)=-\frac{8203357319351}{16777216}\ne0.
+\]
+Retain four field coordinates $S_H,T_H,f,F_0$. Put
+\begin{align*}
+ L_f&=2b_PD(a_PT_H-b_P),\\
+ Q_f&=a_PA_P S_H T_H+b_PA_P S_H-b_PB_PT_H+4a_P^2D,\\
+ L_g&=2b_PD(a_P S_H+b_P),\\
+ Q_g&=-a_PA_P S_H T_H-b_PB_P S_H+b_PA_PT_H-4a_P^2D.
+\end{align*}
+Impose the three quadratic equations
+\begin{equation}\label{eq:Hchart}
+ \begin{split}
+ L_ff&=Q_f,\\
+ L_gF_0&=Q_g,\\
+ D^2fF_0+a_PD(f+F_0)+a_PS_HT_H+b_P(S_H-T_H)+D&=0.
+ \end{split}
+\end{equation}
+
+\begin{lemma}\label{lem:commonchart}
+These equations describe exactly the points $H\in E(K)$ for which
+$H$ and $H-P$ are finite with nonzero abscissas, through
+\[
+ S_H=\frac{y(H)}{x(H)},\qquad T_H=\frac{y(H-P)}{x(H-P)},\qquad
+ f=\frac1{x(H)},\qquad F_0=\frac1{x(H-P)}.
+\]
+In particular $fF_0\ne0$ at every solution. The statement includes
+all finite exceptional cases of the displayed equations.
+\end{lemma}
+\begin{proof}
+For the algebraic calculation abbreviate $a=a_P$, $b=b_P$, $S=S_H$, $T=T_H$
+and $g=F_0$. Thus $b^2=a(a^2-D)$. Define
+\[
+ \Phi=aS^2T^2-(a^2-D)(S^2+T^2)+2(a^2+D)ST+4aD
+\]
+and the polynomial expressions
+\begin{align*}
+ 2bDf_0&=-(a^2+D)S+(a^2-D)T-bS^2-aS^2T,\\
+ 2bDg_0&=(a^2+D)T-(a^2-D)S-bT^2+aST^2.
+\end{align*}
+Direct expansion gives
+\begin{align}
+ Df_0^2+S^2f_0-1
+   &=\frac{a^2S^2-b^2}{4ab^2D}\Phi,\label{eq:chartcurve}\\
+ Dg_0^2+T^2g_0-1
+   &=\frac{a^2T^2-b^2}{4ab^2D}\Phi,\nonumber\\
+ L_ff_0-Q_f&=-a\Phi,\qquad L_gg_0-Q_g=a\Phi.\nonumber
+\end{align}
+Let $r_f=L_ff-Q_f$, $r_g=L_gg-Q_g$, and
+$R=D^2fg+aD(f+g)+aST+b(S-T)+D$. The further exact identity
+\begin{equation}\label{eq:chartmaster}
+\begin{split}
+ L_fL_gR={}&D^2r_fr_g+(aDL_g+D^2Q_g)r_f\\
+          &+(aDL_f+D^2Q_f)r_g-aD^2C_P\Phi
+\end{split}
+\end{equation}
+shows that every solution has $\Phi=0$, including the cases in which
+one leading coefficient vanishes. Also
+\[
+ (2bD)^2R(f_0,g_0)=
+ D^2\bigl((a^2-D)-aST-b(S-T)\bigr)\Phi.
+\]
+If $L_fL_g\ne0$, these identities give $f=f_0,g=g_0$.
+If $L_f=0$, then $T=b/a$ and $\Phi=0$ forces
+\[
+ S=\frac{a^4-6Da^2+D^2}{2b(a^2+D)},\qquad
+ L_g=-\frac{aDC_P}{a^2+D}\ne0.
+\]
+Thus $g=g_0=1/a$. The coefficient of $f$ in $R$ is
+$D(a^2+D)/a\ne0$, so $f=f_0$. The case $L_g=0$ is symmetric.
+In particular both leading coefficients cannot vanish simultaneously;
+at $S=-b/a,T=b/a$ one has $Q_f=C_P\ne0$.
+
+Equation~\eqref{eq:chartcurve} now proves $fg\ne0$ and gives the
+points $H=(f^{-1},S/f)$ and $H'=(g^{-1},T/g)$ on $E$.
+Two more identities prove the translation:
+\[
+ a(f_0T+g_0S)+b(g_0-f_0)=S+T,
+\]
+\[
+ f_0g_0(aS+b)^2-a(1-af_0)^2
+ =-\frac{(aS+b)^2\bigl(aST+b(S-T)+D\bigr)}{4b^2D^2}\Phi.
+\]
+If $x(H)\ne a$, the second identity gives the abscissa of
+$H-P$ from the chord slope $(x(H)S+b)/(x(H)-a)$.
+The first states that $H,-H',-P$ are collinear, and therefore gives
+the required ordinate. If $x(H)=a$, then $S=\pm b/a$.
+At $S=b/a$ the formula gives $f=-a/D\ne1/a$, which is impossible.
+At $S=-b/a$ it gives $H=-P$ and
+\[
+ T=-\frac{a^4-6Da^2+D^2}{2b(a^2+D)},\qquad
+ g=\frac{4b^2}{(a^2+D)^2},
+\]
+which are the coordinates of $H'=-2P$ in the stated form.
+Thus $H'=H-P$ in all cases.
+
+Conversely, the chord-and-tangent formulas for any allowed $H$ give
+$\Phi=0$ and the expressions $f_0,g_0$ above; the same explicit
+doubling computation covers $H=-P$. The displayed identities then
+prove all three equations. This proves both directions.
+\end{proof}
+
+Write $P=2R_0$ and $H=[m]R_0+T_0$, with $T_0\in E[2](K)$, and put $h=m/2$.
+This notation is an elliptic index; it does not define multiplication
+of a point by a nonintegral rational number.
+
+
 \section{The scalar certificate and the point domains}\label{sec:scalar}
 Put $\beta=51X^2+2504$, let $S=Q_2=[a]P$, and write
 $C_S=S-P=[a-1]P$. The scalar normalizer is
@@ -226,13 +347,9 @@ These identities are obtained from the chord-and-tangent formulas;
 they are the same fixed-subtraction identities independently checked
 in the exact function field by the supplied certificate.
 
-The common point chart retains $\chi,f,S_H\in K$ with
-\begin{equation}\label{eq:Hchart}
-                  \chi f=1,\qquad S_H^2=\chi-Df,
-                  \qquad H=(\chi,\chi S_H).
-\end{equation}
-Write $H=[m]R_0+T_0$, where $P=2R_0$ and $T_0\in E[2](K)$,
-and put $h=m/2$. Before any logarithm is used, the scalar ratio
+Use the common chart of Lemma~\ref{lem:commonchart}, so
+$H=(f^{-1},S_H/f)$ and $H-P=(F_0^{-1},T_H/F_0)$.
+Before any logarithm is used, the scalar ratio
 coordinate $Z=Z_0+\rho Z_1$ is determined by
 \[
                          ZD_S=-N_SS_H.
@@ -368,34 +485,28 @@ identity by zero. The retained point relations are
  \qquad(1\le i\le4).
 \]
 The charts permit $U_i=O$ or $V_i=O$ for $i>0$.
-The fixed subtraction for $H$ stores $g,F_0\in K$ with
+For each numerator pair retain its quadratic pair-chart coordinates
+$\mathcal V_i,\mathcal Q_i,\mathcal W_i,\mathcal I_i,\mathcal K_i$
+as specified in~\cite{Even}. Their exact relations give
 \[
- 8(x_P\chi+D)g+(39-36\rho)+(8-14\rho)S_H=0,
- \qquad fF_0=g^2.
+ z(U_i)=-\frac{\mathcal V_i}{\mathcal I_i},\qquad
+ z(V_i)=-\frac{\mathcal Q_i}{\mathcal K_i},\qquad
+ \mathcal I_i\mathcal K_i\ne0,
 \]
-Its affine numerator and denominator, after multiplying by the
-common unit $3+2\rho$, are
+including the identity branches with zero numerator.
+The common-point chart stores both negative reciprocal parameters
+$S_H=-1/z(H)$ and $T_H=-1/z(H-P)$. Thus the quadratic equations
 \[
- \begin{split}
- N_H&=(-312-69\rho)+(-236-120\rho)S_H,\\
- D_H'&=(-576-256\rho)+(312+69\rho)S_H+(504-1344\rho)g.
- \end{split}
+ L_i\mathcal I_i=\mathcal V_iS_H,\qquad
+ L_{i,0}'\mathcal K_i=\mathcal Q_iT_H,\qquad
+ L_i'=\sigma L_{i,0}'
 \]
-On the established domain, $F_0=f(H-P)$ and $z(H-P)=N_H/D_H'$.
-The exact function-field certificate checks these identities against
-the addition law, including the exceptional point
-$-P+(0,0)$ already excluded above.
-For each $i$, retain the primary ratio $L_i$ and an unconjugated
-alternate ratio $L_{i,0}'$ using
+mean precisely
 \[
-             L_{i,0}'N_H=z(V_i)D_H',\qquad L_i'=\sigma L_{i,0}'.
+ L_i=\frac{z(U_i)}{z(H)},\qquad
+ L_i'=\sigma\!\left(\frac{z(V_i)}{z(H-P)}\right).
 \]
-These are quadratic equations and mean precisely
-\[
-       L_i=\frac{z(U_i)}{z(H)},\qquad
-       L_i'=\sigma\!\left(\frac{z(V_i)}{z(H-P)}\right).
-\]
-No logarithm polynomial or coordinate for $z(H-P)$ is retained.
+No numerator-parameter coordinate or logarithm correction is required.
 Put
 \[
  D_H=f(H),\quad A_i=f(U_i),\quad B_i=\sigma f(V_i),\quad
@@ -417,11 +528,10 @@ of $K$ are unramified and normalized by $v(p)=1$.
 For a point on $E$, every finite value of $v(f)$ is even: if
 $v(x)<0$ then $2v(y)=3v(x)$, while if $v(x)>0$ then
 $2v(y)=v(x)$; the remaining case is valuation zero.
-This also holds for conjugated reciprocal abscissas. Before excluding
-the exceptional $H$ classes, the stored value for $f(H-P)$ still has even
-valuation: its literal equation is $f(H)F_0=g^2$, and $f(H)$ has even
-valuation. Thus the parity argument and the preceding exclusion do not
-assume the validity of a division in the fixed subtraction chart.
+This also holds for conjugated reciprocal abscissas. The common-point lemma identifies $F_0=f(H-P)$ on every solution,
+including the exceptional leading-coefficient cases. Its even valuation
+is therefore available before the exclusion of torsion classes and
+before any formal-parameter quotient is used.
 
 Use
 \begin{align*}
@@ -782,21 +892,31 @@ point equations are fixed by the literal coefficient tables.
 The exact count is
 \[
 \begin{array}{lr}\toprule
-\text{point, scalar, contact, ratio, and weight coordinates}&210\\
+\text{point, scalar, contact, ratio, and weight coordinates}&200\\
 \text{three shared fourth powers}&6\\
 \text{five factors and intermediate products for two detectors}&32\\\midrule
-\text{total coordinates, including the input}&248\\\midrule
-\text{point, scalar, contact, ratio, and weight quadratic rows}&180\\
+\text{total coordinates, including the input}&238\\\midrule
+\text{point, scalar, contact, ratio, and weight quadratic rows}&170\\
 \text{shared fourth-power rows}&6\\
 \text{factor and product rows}&36\\\midrule
-\text{total quadratic rows}&222\\\bottomrule
+\text{total quadratic rows}&212\\\bottomrule
 \end{array}
 \]
 
 The complete tables fix every coordinate, equation, coefficient, and
-normalization; the input is coordinate one. The producer clears
-denominators and primitive-normalizes each row before squaring.
-The independent checkers import no producer. The contact certificate recovers $P_5$ by
+normalization; the input is coordinate one. For the common point,
+the six primitive rational component equations are replaced by the
+fixed rational row combinations in the certificate, whose determinant
+is $-1/362963666515968$. The producer clears denominators and makes
+each resulting row primitive before squaring. The row change is
+nonsingular and preserves the common zero set.
+The independent checkers import no producer. The common-point
+certificate checks twelve general identities, including the master
+elimination identity without division, the curve equations and the
+translation law on every exceptional stratum. The coefficient checker
+reconstructs all six common-point rows, the direct ratio equations,
+and the full sum of squares, and compares every remaining row with
+its pinned coefficient source. The contact certificate recovers $P_5$ by
 Newton finite differences at six exact arguments, checks all five roots,
 and independently verifies $P_5((t-1)^2)=F_2(t)$ as a degree-ten
 polynomial identity. It reconstructs every modified quadratic equation,
@@ -813,8 +933,8 @@ noncancellation assertion for all integer valuations, together with
 the exact extraction bounds and sufficient completeness depths.
 The infinite arithmetic arguments are the proofs above.
 
-The expanded quartic has 3190 terms before powers of $A_N$ belonging
-to the same coordinate monomial are collected, and 3189 monomials
+The expanded quartic has 2925 terms before powers of $A_N$ belonging
+to the same coordinate monomial are collected, and 2924 monomials
 after collection. Its unique coefficient involving $A_N^2$ is
 $A_N^2+1$, at the square of the actual scalar contact-product coordinate.
 Every other coefficient is a nonzero constant or a nonzero constant
@@ -853,6 +973,10 @@ it does not make the defining threshold effective.
 \emph{Evaluation of Differentials and Heights of Modular Jacobians},
 \nolinkurl{evaluation_of_differentials_20261109_v17.tex},
 Definition~6.1 and Theorem~6.2.
+\bibitem{RefinedHeight} Project repository,
+\emph{Scalar Characters and Contact-Height Estimates},
+\nolinkurl{nebentypus_and_contact_heights_20261110_v18.tex},
+Theorem~4.1.
 \bibitem{Logs} Project repository,
 \emph{Uniform Rational Approximations to an Elliptic Logarithm},
 \nolinkurl{elliptic_logarithms_20261108_v8.tex}.
