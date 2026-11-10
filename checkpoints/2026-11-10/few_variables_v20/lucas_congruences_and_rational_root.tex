@@ -1,0 +1,208 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,microtype}
+\usepackage[margin=27mm]{geometry}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newcommand{\Z}{\mathbb Z}\newcommand{\Q}{\mathbb Q}
+\title{Lucas congruences and growth from a rational Pell root}
+\author{}\date{10 November 2026}
+\begin{document}\maketitle
+
+\section{The recurrence and its first two coefficients}
+For an indeterminate $A$, define $U_j(A)\in\Z[A]$ by
+\[
+ U_0(A)=0,\qquad U_1(A)=1,\qquad
+ U_{j+1}(A)=AU_j(A)-U_{j-1}(A).
+\]
+The identity
+\begin{equation}\label{eq:pell}
+ U_{j+1}(A)^2-AU_{j+1}(A)U_j(A)+U_j(A)^2=1
+\end{equation}
+follows by induction.
+
+\begin{lemma}\label{lem:expansion}
+For every integer $j\ge1$,
+\[
+ U_j(2+z)\equiv j+\binom{j+1}{3}z\pmod{z^2\Z[z]}.
+\]
+Consequently, for positive integers $d,j$,
+\begin{align*}
+ U_j(d+2)&\equiv j+d\binom{j+1}{3}\pmod{d^2},\\
+ U_j(d-2)&\equiv(-1)^{j-1}
+                 \left(j-d\binom{j+1}{3}\right)\pmod{d^2}.
+\end{align*}
+\end{lemma}
+\begin{proof}
+The recurrence gives $U_j(2)=j$. Differentiating it at $A=2$
+gives $V_{j+1}=j+2V_j-V_{j-1}$, where $V_0=V_1=0$.
+The sequence $V_j=\binom{j+1}{3}$ satisfies that recurrence and
+these initial conditions. Taylor expansion of the integer polynomial
+$U_j(2+z)$ proves the first assertion. The final assertion also uses
+$U_j(-A)=(-1)^{j-1}U_j(A)$.
+\end{proof}
+
+\begin{lemma}\label{lem:index}
+Let $a\in\Z$ with $|a|>2$, set $A=|a|$ and $d=|a-2|$,
+and suppose $d^2\mid U_j(A)$ for an integer $j\ge1$. Then
+\[
+ d\mid j,\qquad d^2\mid6j,\qquad
+ j\ge\frac{d^2}{\gcd(d,6)}\ge\frac{d^2}{6}.
+\]
+\end{lemma}
+\begin{proof}
+Reduction modulo $d$ in Lemma~\ref{lem:expansion} gives $d\mid j$.
+After multiplication of the congruence modulo $d^2$ by six, the
+linear correction is, up to sign,
+\[
+              6d\binom{j+1}{3}=dj(j^2-1),
+\]
+which is divisible by $d^2$. Hence $d^2\mid6j$.
+Since $6$ is squarefree, $\gcd(d^2,6)=\gcd(d,6)$, giving the
+stated positive lower bound.
+\end{proof}
+
+The constant $1/6$ in the last bound cannot be increased uniformly.
+Indeed take $d=6m$ with $m\equiv1\pmod6$ and $j=6m^2=d^2/6$.
+Lemma~\ref{lem:expansion} gives
+\[
+ U_j(d+2)\equiv6m^2\bigl(1-m+36m^5\bigr)\equiv0\pmod{36m^2}.
+\]
+Thus the lower bound is attained for infinitely many $d$.
+
+\section{Growth from a squared divisor}
+
+\begin{lemma}\label{lem:classification}
+Let $A\ge3$. Every pair of positive integers $T,C$ satisfying
+$T^2-ATC+C^2=1$ is an unordered pair of adjacent terms of $U_j(A)$.
+For $r\ge2$ one has $U_r(A)>(A-1)^{r-1}$.
+\end{lemma}
+\begin{proof}
+Order the coordinates as $M\ge m>0$. The replacement
+\[
+ (M,m)\longmapsto(m,Am-M),\qquad Am-M=(m^2-1)/M,
+\]
+preserves the equation and has second coordinate in $[0,m)$.
+It descends to $(1,0)$; reversing the steps gives precisely adjacent
+recurrence terms. For the growth estimate, $U_2=A>A-1$ and the
+recurrence gives $U_{r+1}>(A-1)U_r$ once $U_r>U_{r-1}>0$.
+\end{proof}
+
+\begin{theorem}\label{thm:squared}
+Suppose $a,t,b\in\Z$, $|a|>7$, $b\ne0$, and
+\begin{equation}\label{eq:squared}
+ t^2-a(a-2)^2tb+(a-2)^4b^2=1.
+\end{equation}
+Put $c=|a-1|$ and $B=\max(|a|,|t|,|b|)$. Then
+\[
+ \log B>
+ \left(\frac{(c-1)^2}{6}-2\right)\log(c-2).
+\]
+For every integer $a>2$ with $a\equiv1\pmod6$, there are
+positive odd integers $t,b$ satisfying~\eqref{eq:squared}.
+\end{theorem}
+\begin{proof}
+Set $A=|a|$, $d=|a-2|$, $T=|t|$, and $C=d^2|b|$.
+Equation~\eqref{eq:squared} forces the sign of $a t b$ to be
+positive, and therefore gives $T^2-ATC+C^2=1$.
+Neither $T$ nor $C$ is zero. By Lemma~\ref{lem:classification},
+$C=U_j(A)$ and $T\ge U_{j-1}(A)$ for some $j\ge1$.
+Lemma~\ref{lem:index} gives $j\ge d^2/6$.
+As $d\ge c-1$, $A-1\ge c-2$, and $|a|>7$, all relevant
+indices and logarithms are positive. Hence
+\[
+ \log B\ge\log T>(j-2)\log(A-1)
+ \ge\left(\frac{(c-1)^2}{6}-2\right)\log(c-2).
+\]
+
+For completeness let $d=a-2$, $j=d^2$, and define
+\[
+                    b=U_j(a)/d^2,\qquad t=U_{j+1}(a).
+\]
+Here $d$ is coprime to six. Thus $j$ is coprime to six and
+$6\mid j^2-1$, so the correction
+$d\binom{j+1}{3}$ is divisible by $d^2$. Lemma~\ref{lem:expansion}
+shows that $b$ is integral, and~\eqref{eq:pell} proves the equation.
+For odd $a$, the recurrence modulo two has period $0,1,1$.
+Since $d\equiv2\pmod3$ and $j=d^2\equiv1\pmod3$, both
+$U_j$ and $U_{j+1}$ are odd. Division by the odd integer $d^2$
+preserves oddness. Positivity follows from $a>2$.
+\end{proof}
+
+\section{A rational root with two integer labels}
+
+\begin{theorem}\label{thm:monic}
+Let $a,u\in\Z$, $|a|>7$, $u\ne0$, and put $t=(a-2)u+1$.
+If a rational number $C$ satisfies
+\begin{equation}\label{eq:monic}
+                         C^2-atC+t^2-1=0,
+\end{equation}
+then $C\in\Z$ and, with $d=|a-2|$,
+\[
+ \log\max(|a|,|u|)>
+              (d-2)\log(|a|-1)-\log(d+1).
+\]
+For every integer $a>2$, there are $u\in\Z_{>0}$ and
+$C\in\Z_{>0}$ satisfying~\eqref{eq:monic}.
+\end{theorem}
+\begin{proof}
+The rational root of the monic integer polynomial in~\eqref{eq:monic}
+is integral. If $C=0$ then $t=\pm1$. The case $t=1$ gives $u=0$,
+and $t=-1$ gives $(a-2)u=-2$, impossible for $d>2$.
+Likewise $t=0$ would imply $(a-2)u=-1$, also impossible.
+Taking absolute values with the appropriate sign gives
+$T^2-|a|T|C|+|C|^2=1$, where $T=|t|>1$.
+Write $T=U_j(|a|)$ using Lemma~\ref{lem:classification}.
+Reduction modulo $d$, together with $t\equiv1\pmod d$, gives
+$j\equiv1$ or $-1\pmod d$. Since $T>1$, the index $j=1$ is
+excluded, and therefore $j\ge d-1$.
+It follows that
+\[
+ \log T>(d-2)\log(|a|-1).
+\]
+On the other hand $T\le d|u|+1\le(d+1)|u|$, proving the bound.
+
+For the existence assertion put $d=a-2$ and choose
+\[
+ t=U_{d+1}(a),\qquad C=U_d(a),\qquad
+ u=(U_{d+1}(a)-1)/d.
+\]
+Modulo $d$, the recurrence is $U_j(a)\equiv j$, so $u$ is
+integral. Positivity and the equation follow from the recurrence
+and~\eqref{eq:pell}. If $a=3$, then $d=1$ and this also gives
+$u=2>0$.
+\end{proof}
+
+\section{A limitation of local residual divisibility}
+
+\begin{proposition}\label{prop:perturbation}
+Let $G(Z)=Z^2-a t Z+t^2-1\in\Z[Z]$ have an integer root $C_0$,
+and let $M\ge2$ and $r\ge1$ be fixed. For every positive integer
+$q$ coprime to $M$, define $C_q=C_0+M^r/q$. Then $h(C_q)$ is
+unbounded as $q$ increases, and
+\[
+ G(C_q)=\frac{M^rG'(C_0)q+M^{2r}}{q^2}.
+\]
+The displayed fraction is reduced, and
+$v_p(G(C_q))\ge r v_p(M)$ for each prime $p\mid M$.
+\end{proposition}
+\begin{proof}
+The numerator of $C_q$ is coprime to $q$, so its denominator is
+exactly $q$. Taylor expansion proves the displayed formula.
+Its numerator modulo any prime divisor of $q$ is $M^{2r}$,
+which is a unit. Thus its denominator is $q^2$ in lowest terms.
+The local divisibility statement follows because $q$ is a unit
+at each prime dividing $M$.
+\end{proof}
+
+Theorem~\ref{thm:monic} concerns exact integer labels $a,u$.
+In the elliptic source, the available rational functions approximate
+these labels only at selected finite places. Replacing their local
+residual tests by an exact rational-root equation requires a separate
+completeness argument. Keeping the new root merely in local tests
+instead leaves its height uncontrolled by the retained integer labels,
+as Proposition~\ref{prop:perturbation} illustrates. No reduction of
+the number of variables follows from these lemmas alone.
+
+\end{document}

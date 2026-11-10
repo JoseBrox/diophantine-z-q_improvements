@@ -1,0 +1,72 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,microtype}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true]{hyperref}
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}[proposition]{Corollary}
+\newcommand{\Z}{\mathbb Z}
+\title{Rational formulas for points on a cyclic elliptic subgroup}
+\author{}\date{10 November 2026}
+\begin{document}\maketitle
+
+\begin{proposition}
+Let $E$ be an elliptic curve over a field $K$ of characteristic zero.
+Suppose $P\in E(K)$ is nontorsion and $2E(K)=\Z P$.
+Then $\operatorname{End}_K(E)=\Z$.
+Every $K$-rational rational map $f:E^r\dashrightarrow E$ has the form
+\[
+                 f(Q_1,\ldots,Q_r)=Q_0+\sum_{i=1}^r[m_i]Q_i,
+                 \qquad Q_0\in E(K),\quad m_i\in\Z.
+\]
+If its value belongs to $2E(K)$ at one tuple from $(\Z P)^r$,
+then $Q_0=[m_0]P$ for an integer $m_0$, and
+\[
+ f([n_1]P,\ldots,[n_r]P)
+                    =[m_0+m_1n_1+\cdots+m_rn_r]P
+                    \qquad(n_i\in\Z).
+\]
+\end{proposition}
+\begin{proof}
+For $\phi\in\operatorname{End}_K(E)$, the point $\phi(P)$
+belongs to $2E(K)$ because $P$ is a double. Hence
+$\phi(P)=[m]P$ for some $m\in\Z$. The endomorphism
+$\phi-[m]$ kills the nontorsion point $P$. A nonzero elliptic
+endomorphism has finite kernel, so $\phi=[m]$.
+
+The extension and rigidity theorem for maps to abelian varieties
+implies that $f$ extends over $E^r$ and is a translation of a
+homomorphism~\cite[Chapter I, Corollary 3.7]{Milne}.
+A homomorphism from a product is the sum of its restrictions to
+the individual factors. These restrictions are $K$-endomorphisms
+of $E$, and therefore are integer multiplications by the first
+paragraph. If one value on $(\Z P)^r$ is a double, subtracting
+its integer-linear part puts $Q_0$ in $2E(K)$ as well.
+\end{proof}
+
+\begin{corollary}
+No $K$-rational point formula on $E^2$ can send
+$([m]P,[n]P)$ to $[mn]P$ for every pair of integers $m,n$.
+No such point formula on $E$ can send $[n]P$ to $[n^2]P$
+for every integer $n$.
+\end{corollary}
+\begin{proof}
+The label of a value of either rational point formula is affine
+linear in the input labels by the proposition. Neither $mn$ nor
+$n^2$ is such a function on the indicated integer tuples.
+\end{proof}
+
+The proposition restricts substitutions that give rational maps from
+a product of elliptic curves to the same elliptic curve. It does not
+exclude algebraic correspondences, additional equations on the inputs,
+or constructions on other varieties. In particular it is not a lower
+bound for the number of variables in a general Diophantine definition.
+
+\begin{thebibliography}{1}
+\bibitem{Milne}
+J.~S. Milne, \emph{Abelian Varieties}, version 2.00 (2008),
+Chapter I, Theorem 3.2 and Corollary 3.7, printed page 19.
+\url{https://www.jmilne.org/math/CourseNotes/AV.pdf}.
+The cited statements were checked directly in the author's text.
+\end{thebibliography}
+\end{document}
