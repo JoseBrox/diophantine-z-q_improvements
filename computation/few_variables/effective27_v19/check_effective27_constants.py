@@ -114,17 +114,26 @@ def main():
     delta_binary_bound = 36+24+18*common_height_bits
     assert delta_binary_bound == 3986520
     assert forced_binary_exponent > delta_binary_bound+1
-    # Input residual: log B <181205+(7/22)h(beta).
-    constant = q(9, 11)*(common_height_bits+2+2*residual_exponent)
-    assert constant == 181205
-    h_beta_coefficient = q(9, 11)*residual_exponent
-    assert h_beta_coefficient == q(7, 22)
-    # h(beta)<=c/120; c>=10^6 makes this upper bound below c-4.
+    # The target uses only order1. Keep c separate in |N*c|, with
+    # |N|<=2*exp(h(beta))*B, instead of replacing c by2B.
+    input_exponent = q(7, 6)
+    input_order = 1
+    exact_constant = q(6, 5)*(common_height_bits+2+input_exponent)
+    assert exact_constant == q(1328839, 5) < 265768
+    constant = 265768
+    h_beta_coefficient = q(6, 5)*input_exponent
+    assert h_beta_coefficient == q(7, 5)
+    # log(c)<=c/4 for c>=16: e^4>16 follows from its first four
+    # nonnegative Taylor terms; the derivative of c/4-log(c) is positive.
+    taylor4 = sum((q(4**k, prod(range(1, k+1))) for k in range(4)), q(0))
+    assert taylor4 > 16
+    assert q(1, 4)-q(1, 16) > 0
+    linear_coefficient = h_beta_coefficient*(q(1, 120)+q(1, 4))
+    assert linear_coefficient == q(217, 600) < 1
     c_floor = 10**6
     assert 1 << 20 > c_floor
     assert forced_binary_exponent > 20
-    assert constant+h_beta_coefficient*q(c_floor, 120) < c_floor-4
-    assert h_beta_coefficient/120 < 1
+    assert constant+linear_coefficient*c_floor < c_floor-4
     # Prime-cluster inequality needed for the all-linear scalar converse.
     # For u>=25, sqrt(u)<=u/5 and1<u/10, so u+1+2sqrt(u)<3u/2.
     assert q(1)+q(1, 10)+q(2, 5) == q(3, 2)
@@ -144,7 +153,10 @@ def main():
         'common_height_constant': '2^221470',
         'base_height_exponent': '7/3',
         'ten_contact_height_exponent': '7/6',
-        'comparison_residual_order': local_order,
+        'comparison_Lucas_residual_order': local_order,
+        'comparison_input_residual_order': input_order,
+        'comparison_orders': [1]*11+[3]*3+[1,3],
+        'scalar_orders': [1]*4+[3]*2,
         'rho_additive_height_constant_upper_bound': 128,
         'effective_sum_additive_constant': 82,
         'effective_common_height_additive_constant': 340,
@@ -153,7 +165,8 @@ def main():
         'forced_index_binary_lower_exponent': forced_binary_exponent,
         'nonzero_Lucas_residual_binary_upper_exponent': delta_binary_bound,
         'input_log_height_constant_upper_bound': str(constant),
-        'input_h_beta_coefficient': str(h_beta_coefficient),
+        'input_h_beta_and_log_c_coefficient': str(h_beta_coefficient),
+        'input_linear_c_coefficient': str(linear_coefficient),
         'counts': {'point_coordinate_pairs': 9, 'comparison_slope': 1,
                    'pole_parameter_pairs': 3, 'input': 1,
                    'retained_coordinates': 26, 'separating_coordinate': 1,

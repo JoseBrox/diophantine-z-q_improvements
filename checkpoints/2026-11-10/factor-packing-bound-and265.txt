@@ -1,0 +1,71 @@
+Further factor packing, 2026-11-10. Frozen published files not changed.
+
+RIGOROUS RESTRICTED COST BOUND
+Consider factors 1+sum q^k X^(2^e), where e is1 or2, with each of
+the six arbitrary-valuation tests and ten even-valuation reciprocal tests
+used once per detector. Require all term valuation classes to be disjoint
+and avoid0, for every odd positive contact valuation nu. Let a arbitrary
+tests and b even tests be fourth powers, and let m be the factor count.
+Modulo8 the sixteen square terms initially occupy44 residue positions.
+Taking fourth powers reduces that number by2a+b. A factor without an
+even-test fourth power can occupy at most6 of the8 residues, because all
+its classes have period at most4 and exclude0. A factor with such a term
+can occupy at most7. Thus
+ 44-2a-b <=6m+min(b,m).
+For m=5 this forces a+b>=7. For m=4 it forces a+b>=10. For m<=3 it is
+impossible (a<=6,b<=10). Dividing a factor equation by a weight can remove
+at most one fourth-power output: equal weight exponents give intersecting
+valuation classes. Hence at least a+b-m shared field fourth-power outputs
+remain. These output counts are for this literal power-sum model only;
+they do not exclude norm expressions, new algebraic dependencies, different
+local predicates, changes to the test list, or source-coordinate changes.
+
+With d detector copies, factor and intermediate-product coordinates cost
+d(4m-4), excluding final W coordinates present in either design. The shared
+fourth-power outputs cost at least2 max(0,a+b-m). Ignoring the scalar-weight
+cost and all order requirements, the minimum for d=2 is36, attained by the
+current five-factor design; four factors also have relaxed lower bound36.
+Thus merely reallocating squares/fourth powers in this restricted model
+cannot lower the inherited228 count unless scalar-weight costs decrease or
+some additional structure is used.
+
+EXPLICIT265 CANDIDATE (three detector copies)
+Four factors can save one variable after the actual scalar-weight cost.
+Use the same tests as the frozen266 paper:
+ T1=1+q9*C2^4+q3*C1^4+q2*DH^2+q4*B1^4,
+ T2=1+q9*G^4 +q3*A3^2+q2*B0^2+q4*B2^4,
+ T3=1+q9*C3^4+q3*A2^2+q2*I^4 +q4*B3^4,
+ T4=1+q9*C4^4+q3*A1^2+q2*A4^2+q4*B4^4.
+Here qj means q^j. All16 tests occur once. The four nonconstant valuation
+classes are -nu,nu,2 mod4,and4 mod8. They are disjoint and exclude0.
+The q9 fourth-power terms force vC>17nu/8, hence order>=3. The two input
+fourth powers q3*C1^4 andq2*I^4 force positive valuation, which is enough.
+All remaining reciprocal-square terms atq3/q2 force positive even
+valuation. At selected simple contacts, deep comparisons have order>=4,
+all reciprocal tests order>=2, so every term is positive. No deeper
+elliptic preparation is needed. All existing global arguments use only
+these orders, so the same sufficientN14521 applies.
+
+Store r1=q^-1,r2=r1^2,r4=r2^2 as before, plus one scalar w=q5 with
+w*r4=q. After multiplication by r4, the q9 coefficients become w,
+q3 become r1,q2 become r2,andq4 fourth powers are direct quadratic
+squares of stored Bi^2. Retain existing C1^4,I^4 and add C2^4,C3^4,C4^4,
+G^4 as four field outputs (eight rational coordinates). Remove the fifth
+factor and third intermediate product in each detector (twelve rational
+coordinates). Add one w per three detectors (three rational coordinates).
+Count266+8-12+3=265; rows238+8-12+3=237. For two detectors this design
+would give230, not an improvement over228.
+
+The candidate has a complete local/height proof but no exact builder or
+independent coefficient reconstruction yet. Parent notified immediately.
+It must not be reported as a fully verified new polynomial until those
+finite steps are completed. The frozen266 output remains current.
+
+OTHER ARITHMETIC TOOL
+Replacing Lucas w=(a-2)b by w=(a^2-4)b makes the index j divisible by
+lcm(a-2,a+2)>=(a^2-4)/4. Thus logB grows on the order ofc^2logc,
+c=|a-1|. This could absorb scalar height from M5^2 divisibility. In the
+quartic design, the residual degree becomes6 and requires comparison
+precision4; the added weight costs presently defeat the scalar saving.
+The few-variable agent independently has this tool and found a degree
+cost in its direct implementation. No count improvement claimed there.

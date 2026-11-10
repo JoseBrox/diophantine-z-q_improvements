@@ -81,6 +81,9 @@ def check():
             smallest=threshold.numerator//threshold.denominator+1
             assert smallest>=order
             rounded+=1
+        first_four_threshold=F(1,4)*alpha
+        assert first_four_threshold.numerator//first_four_threshold.denominator+1>=1
+        rounded+=1
         threshold=F(9,4)*alpha
         smallest=threshold.numerator//threshold.denominator+1
         assert smallest>=2*alpha+1>=3
@@ -97,7 +100,9 @@ def check():
             'excluded_zero_denominator_examples':singular,
             'integer_rounding_examples':rounded,
             'hasse_cluster_positive_polynomial_coefficients':[1,30,129],
-            'comparison_orders':[1]*10+[3]*6,'scalar_denominator_order':3,
+            'comparison_orders':[1]*11+[3]*3+[1,3],
+            'scalar_denominator_orders':[1]*4+[3]*2,
+            'lucas_residual_precision':3,'input_residual_precision':1,
             'formal_logarithm_relative_precision':4,
             'extra_common_index_divisibility':True,
             'contact_certificates':[contacts(2),contacts(3)],

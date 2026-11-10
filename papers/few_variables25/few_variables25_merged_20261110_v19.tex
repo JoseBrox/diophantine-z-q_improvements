@@ -56,9 +56,9 @@ with the following properties.
 \begin{enumerate}
 \item Every member has degree at most
 \[
- 24072202920766797054476288<2^{85}.
+ 20747108969426225455955968<2^{85}.
 \]
-Its number of nonzero monomials is less than $2^{1984}$.
+Its number of nonzero monomials is less than $2^{1979}$.
 \item There is a fixed $L_0$ such that every odd $L\ge L_0$
 defines $\Z$ over $\Q$.
 \item The proof does not give an effective sufficient value of $L_0$
@@ -252,11 +252,12 @@ are
 \end{equation}
 The first line contains ten functions. Define the required orders
 \begin{equation}\label{eq:comparison-orders}
- a_i=1\quad(1\le i\le10),\qquad a_i=3\quad(11\le i\le16).
+ a_i=3\quad(i=12,13,14,16),\qquad a_i=1\quad\text{otherwise}.
 \end{equation}
 Positive valuation of a reciprocal abscissa is sufficient to put its
-point in the formal group. Only the six ratio and residual functions
-need precision three.
+point in the formal group. The three Lucas-label comparisons and the Lucas residual need
+precision three. The input comparison and its paired ratio need
+only precision one.
 
 The six scalar functions $S_1,\ldots,S_6\in\Q$ are the two
 rational coefficients, in the basis $1,\sqrt2$, of each of
@@ -336,7 +337,8 @@ For any nonzero rational coefficient $q$ set
 \]
 For $j=0,1$, put $\mathcal R_j=\rho R_j$ and
 \begin{equation}\label{eq:normalized-functions}
-                         G_{j,k}=R_j^3\Phi_{R_j}(S_k).
+ G_{j,k}=R_j^{\kappa_k}\Phi_{R_j}(S_k),\qquad
+ \kappa_k=\begin{cases}1,&1\le k\le4,\\3,&k=5,6.\end{cases}
 \end{equation}
 Define
 \begin{equation}\label{eq:W}
@@ -344,7 +346,7 @@ Define
  \prod_{i=1}^{16}\left(1+\mathcal R_j
         \left(\frac{C_i}{\delta_j\mathcal R_j^{a_i}}\right)^2\right)
  \prod_{k=1}^{6}\left(1+\mathcal R_j
-        \left(\frac{G_{j,k}}{\mathcal R_j^3}\right)^2\right),
+        \left(\frac{G_{j,k}}{\mathcal R_j^{\kappa_k}}\right)^2\right),
 \end{equation}
 and
 \begin{equation}\label{eq:pole-inputs}
@@ -397,7 +399,7 @@ certificate. Then $\alpha>0$, and at some place above $p$ each
 factor of $W_j$ has valuation greater than $-\alpha/2$. Every
 scalar numerator $G_{j,k}$ at that place satisfies
 \[
-                         v(G_{j,k})>\frac94\alpha.
+                         v(G_{j,k})>(\kappa_k-3/4)\alpha.
 \]
 If $v_p(\delta_j)=0$, then at the same place
 \begin{equation}\label{eq:raw-extraction}
@@ -421,7 +423,7 @@ $V$ with denominator order $a$, this says
  (1-2a)\alpha+2v(V)>-\alpha/2,
  \qquad v(V)>(a-3/4)\alpha.
 \]
-Use $a=3$ for each scalar numerator and $a=a_i$ for the comparisons.
+Use $a=\kappa_k$ for a scalar numerator and $a=a_i$ for a comparison.
 The argument also covers a zero numerator, whose factor is $1$.
 \end{proof}
 
@@ -429,8 +431,11 @@ The argument also covers a zero numerator, whose factor is $1$.
 If $p\notin\mathcal S$ and $\mu=v_p(\rho)$ is odd, at least
 one $R_j$ is a unit. A source solution then has $\mu>0$ and
 \[
- v_p(S_k)>\frac94\mu\quad(1\le k\le6),\qquad
- v_p(c)>\frac94\mu.
+ \begin{gathered}
+ v_p(S_k)>\mu/4\quad(1\le k\le4),\qquad
+ v_p(S_k)>9\mu/4\quad(k=5,6),\\
+ v_p(c)>9\mu/4.
+ \end{gathered}
 \]
 In particular $v_p(c)\ge3$ and $v_p(c)\ge2\mu+1$.
 \end{lemma}
@@ -447,9 +452,9 @@ sets gives a unit $R_1$ in either case. This proves the unit
 assertion; compare~\cite{LocalTests}.
 
 At a detector with unit $R_j$, Lemma~\ref{lem:trace} forces
-$\mu>0$ and $v(G_{j,k})>9\mu/4$. As $R_j$ is a unit,
-Lemma~\ref{lem:phi} gives the same lower bound for the rational
-function $S_k$. No integrality assertion about the comparison
+$\mu>0$ and $v(G_{j,k})>(\kappa_k-3/4)\mu$. As $R_j$ is a
+unit, Lemma~\ref{lem:phi} gives the same positive lower bound
+for the rational function $S_k$. No integrality assertion about the comparison
 functions is needed: their factors have nonpositive valuation, which
 is precisely the hypothesis used in the trace argument.
 
@@ -518,10 +523,11 @@ $H_0=[h]P$. The full logarithm ratios are
 At least one of $h,h-1$ is a $p$-unit. Its ratio is integral;
 the cross test and~\eqref{eq:log-error} make the other truncated
 ratio integral as well. Both relative errors are then absolute
-errors. Modulo $p^3$ one has $L_i\equiv r_i\equiv r'_i$.
-Multiplication by $h,h-1$ and subtraction give
+errors. Put $d_1=1$ and $d_2=d_3=d_4=3$. Modulo $p^{d_i}$
+one has $L_i\equiv r_i\equiv r'_i$. Multiplication by $h,h-1$
+and subtraction give
 \begin{equation}\label{eq:index-congruence}
- L_i\equiv n_i\pmod{p^3}.
+ L_i\equiv n_i\pmod{p^{d_i}}.
 \end{equation}
 This argument is valid at split and inert primes.
 
@@ -532,16 +538,18 @@ Define the integer residual
 Then $p^3\mid\Delta$. If $\beta=u/v$ is in lowest terms
 with $v>0$, the direct target and~\eqref{eq:index-congruence}
 make $\beta$ integral at $p$ and give
-$p^3\mid u-nv$.
+$p\mid u-nv$.
 
 Let $M_j$ be the product of primes outside $\mathcal S$ at which
-$R_j$ has positive odd valuation. For either nonzero integer
-$N=\Delta$ or $N=u-nv$, Lemma~\ref{lem:mixed} therefore gives
+$R_j$ has positive odd valuation. Lemma~\ref{lem:mixed} gives
 \begin{equation}\label{eq:residual-divisibility}
-                         M_j^3\mid Nc\qquad(j=0,1).
+          M_j^3\mid\Delta c,\qquad M_j\mid(u-nv)c
+                         \qquad(j=0,1).
 \end{equation}
-Primes occurring in both arithmetic coefficients are included in this
-divisibility statement.
+For a nonzero residual these divisibilities bound its comparison
+radical. Primes common to the scalar and comparison coefficients
+are included: the scalar alternative gives $p^3\mid c$, which
+suffices for both statements.
 
 \section{Heights and soundness}
 
@@ -609,10 +617,12 @@ Combining~\eqref{eq:trace-height}, \eqref{eq:residual-divisibility},
 \eqref{eq:rho-height}, and~\eqref{eq:c-large} yields fixed
 constants $C_2\ge1$, $J_2\ge0$, independent of $X,L$, such that
 \begin{equation}\label{eq:common-height}
- B_{\mathrm{ind}}^2\le C_2|Nc|^{7/18}
+ B_{\mathrm{ind}}^2\le C_2|Nc|^{\eta}
              +C_2c^{7/9}+C_2\log c+J_2
 \end{equation}
-for each nonzero residual $N$ under consideration.
+where $\eta=7/18$ for $N=\Delta\ne0$, and $\eta=7/6$
+for $N=u-nv\ne0$. The different exponents reflect precisely the
+two divisibilities in~\eqref{eq:residual-divisibility}.
 
 \subsection{Eliminating the residuals}
 
@@ -634,21 +644,22 @@ then gives
                               \log B>c-4.
 \end{equation}
 If $\beta\ne n$, let $N=u-nv\ne0$ with $\beta=u/v$ in lowest
-terms. Since $\max(|u|,v)=e^{h(\beta)}$,
+terms. Since $\max(|u|,v)=e^{h(\beta)}$ and $B\ge|n|$,
 \[
-                         |Nc|\le4e^{h(\beta)}B^2.
+                         |Nc|\le2e^{h(\beta)}Bc.
 \]
 For sufficiently large $c$, the last three terms on the right of
 \eqref{eq:common-height} are at most $B^2/2$, because $B\ge c-1$.
-Putting $\eta=7/18$ gives
+Keep the factor $c$ separate and use $\eta=7/6<2$. Then
 \[
- B^{2-2\eta}\le2C_2 4^\eta e^{\eta h(\beta)},
- \qquad
- \log B\le\frac{\log(2C_2 4^\eta)+\eta H_1c^{7/9}}
-                         {2-2\eta}.
+ B^{2-\eta}\le2^{\eta+1}C_2 e^{\eta h(\beta)}c^\eta,
 \]
-This contradicts~\eqref{eq:Lucas-growth} for sufficiently large $c$.
-Thus $\beta=n\in\Z$.
+\[
+ \log B\le\frac{\log(2^{\eta+1}C_2)+\eta H_1c^{7/9}
+                              +\eta\log c}{2-\eta}.
+\]
+The right side is $o(c)$, contradicting~\eqref{eq:Lucas-growth}
+for sufficiently large $c$. Thus $\beta=n\in\Z$.
 
 For rational $X$, integrality of $216X^4+450459$ is equivalent
 to $X\in\Z$: in a reduced fraction $X=u/v$ it implies
@@ -826,7 +837,7 @@ half-difference preserves the smaller of two unequal valuations.
 Every scalar component $S_k$ consequently has either nonnegative
 valuation or valuation at most $-2$. As $v_p(R_j)=1$, the product
 $R_jS_k$ never has valuation zero. Lemma~\ref{lem:phi} shows
-that $\Phi_{R_j}(S_k)$ is integral. Hence $v_p(G_{j,k})\ge3$,
+that $\Phi_{R_j}(S_k)$ is integral. Hence $v_p(G_{j,k})\ge\kappa_k$,
 and every scalar second summand in~\eqref{eq:W} has valuation
 at least $1$. All scalar factors are units congruent to $1$ at
 both places. This argument allows arbitrarily deep formal reduction
@@ -956,16 +967,16 @@ exactly the rational projection of the guarded source, including
 specializations with an empty nonzero part or complex residue factors.
 
 The certified weights of the nine point generators are $6$; the
-two pole-generator weights are $287146,1541546$. The full
-guard and point-guard weights are $2231217,402525$.
+two pole-generator weights are $266506,1316106$. The full
+guard and point-guard weights are $1930897,348285$.
 The separating elements have weight at most $W_1r+W_0$, where
 \[
- W_1=334007250,\qquad W_0=8083776298.
+ W_1=287870930,\qquad W_0=6952845898.
 \]
 The principal-minor degree estimate, summed over every factor, is
 \[
  \deg F_L\le n_0\bigl(W_1b_0^2+(W_0+1)(2b_0-1)\bigr)
-       =24072202920766797054476288<2^{85}.
+       =20747108969426225455955968<2^{85}.
 \]
 The uniform checker treats $\ell^L$ and $\ell^{(L+1)/2}$ as
 independent coefficient symbols of weight zero. Consequently this
@@ -975,7 +986,7 @@ cannot increase it. Equations~\eqref{eq:c-large} and
 Theorem~\ref{thm:main}.
 
 There is also a uniform bound on the number of nonzero monomials.
-Let $\mathcal D=24072202920766797054476288$. From
+Let $\mathcal D=20747108969426225455955968$. From
 \eqref{eq:finite-product},
 \[
  \deg_U F_L\le\mathcal E=n_0(2b_0-1)=549754765312.
@@ -985,7 +996,7 @@ Counting monomials of total degree at most $\mathcal D$ in the
 \[
  \#\operatorname{supp}(F_L)
  \le\binom{\mathcal D+25}{25}
-      -\binom{\mathcal D-\mathcal E+24}{25}<2^{1984}.
+      -\binom{\mathcal D-\mathcal E+24}{25}<2^{1979}.
 \]
 The last inequality is checked by exact integer arithmetic. It is a
 support upper bound, not an assertion of the expanded monomial count.
@@ -996,10 +1007,10 @@ The directory \nolinkurl{computation/few_variables/merged25_v19} contains
 the source builder, the guarded rational source, its integer polynomial
 specification, the independent source checker, and the uniform degree
 certificate. Its finite-root elimination is in the subdirectory
-\nolinkurl{active25}. The source has $5860$ rational
-coefficient nodes, $2239$ integer coefficient nodes, and $136$
-atomic guard factors. The checks include the nonzero slope, the ten raw reciprocal-abscissa tests, the six
-order-three residual tests, every linear scalar denominator, the two pole charts,
+\nolinkurl{active25}. The source has $5864$ rational
+coefficient nodes, $2240$ integer coefficient nodes, and $136$
+atomic guard factors. The checks include the nonzero slope, the raw comparison functions with their individual orders,
+the six linear scalar functions with their individual orders, the two pole charts,
 the guard factorization, and the generator dependencies. The active
 specification has $262144$ finite-product factors. These are
 specification counts; the expanded monomial count is not asserted.
@@ -1043,7 +1054,7 @@ in~\cite{Dependencies}; the scalar realization is
 companion paper, 10 November 2026,
 \nolinkurl{rationally_normalized_local_tests_20261110.tex}.
 \bibitem{Multiplicity}
-\emph{Multiplicity and Contact-Height Estimates},
+\emph{Multiplicity of modular factors and quadratic contact-height bounds},
 companion paper, 10 November 2026,
 \nolinkurl{multiplicity_and_contact_heights_20261110_v19.tex}.
 \bibitem{Normalizer}

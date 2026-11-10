@@ -50,7 +50,7 @@ $L\ge125001$ defines $\Z$ over $\Q$. In particular,
 $F_{125001}$ is a fully specified defining polynomial.
 The integer $L$ is a fixed coefficient parameter and is not a
 quantified variable. The total degree is at most
-$99950805468739574201057280<2^{87}$, uniformly in $L$.
+$85829362869408651982929920<2^{87}$, uniformly in $L$.
 For $L=125001$, the maximum absolute integer coefficient is less
 than $2^{2^{102}}$. No additional $abc$ or Szpiro hypothesis is used.
 \end{theorem}
@@ -203,15 +203,18 @@ The sixteen comparison functions, in order, are
 \end{equation}
 Denote them by $C_1,\ldots,C_{16}$, and put
 \[
- m_i=1\quad(1\le i\le10),\qquad
- m_i=3\quad(11\le i\le16).
+ m_i=1\quad(i\in\{1,\ldots,11,15\}),\qquad
+ m_i=3\quad(i\in\{12,13,14,16\}).
 \]
 Let $\eta_1,\ldots,\eta_6\in\Q$ be the two rational coefficients
 in the basis $1,\sqrt2$ of each of
 \begin{equation}\label{eq:scalar-functions}
              f(H_0),\qquad f(S-P),\qquad z(S-P)/z(H_0),
 \end{equation}
-in that order.
+in that order. Assign the scalar orders
+\[
+ b_k=1\quad(1\le k\le4),\qquad b_k=3\quad(k=5,6).
+\]
 
 For fixed odd $L\ge3$, define
 \begin{equation}\label{eq:rho}
@@ -268,13 +271,13 @@ Require every contact and $\delta_j$ to be nonzero.
 For nonzero rational $q$ put $\Phi_q(v)=qv/(1+qv)$ on its
 nonzero-denominator domain. Define
 \begin{equation}\label{eq:weights}
- G_{j,k}=R_j^3\Phi_{R_j}(\eta_k),
+ G_{j,k}=R_j^{b_k}\Phi_{R_j}(\eta_k),
 \end{equation}
 \begin{equation}\label{eq:W}
  W_j=\prod_{i=1}^{16}
        \left(1+w_j\left(\frac{C_i}{\delta_jw_j^{m_i}}\right)^2\right)
      \prod_{k=1}^{6}
-       \left(1+w_j\left(\frac{G_{j,k}}{w_j^3}\right)^2\right),
+       \left(1+w_j\left(\frac{G_{j,k}}{w_j^{b_k}}\right)^2\right),
 \end{equation}
 \begin{equation}\label{eq:poleinputs}
                       b_j=\frac{4\rho R_j}{\Tr_{K/\Q}(W_j^{-1})^2}.
@@ -360,15 +363,14 @@ In particular
 Choose a unit $R_j$ by Lemma~\ref{lem:unit}. Lemma~\ref{lem:trace}
 forces $\mu>0$. Applied to each scalar factor, it gives
 \[
-                           v(G_{j,k})>9\mu/4.
+                           v(G_{j,k})>(b_k-3/4)\mu.
 \]
 For a unit $R_j$, positive valuation of $\Phi_{R_j}(\eta_k)$
 implies positive valuation of $\eta_k$, and the two valuations
-are equal. Therefore every rational scalar component has valuation
-$>9\mu/4$, hence at least $2\mu+1$.
-
-Both $H_0$ and $S-P$ are then in the formal group at every place
-above $p$. If $H_0=[h]P$, the full formal-logarithm ratio is
+are equal. Thus the first four rational scalar components have
+valuation $>\mu/4$, while the last two have valuation $>9\mu/4$.
+The first four put both $H_0$ and $S-P$ in the formal group at
+every place above $p$. If $H_0=[h]P$, the full formal-logarithm ratio is
 $(a-1)/h$. The quotient of a formal parameter and its logarithm
 is a unit. The third pair of scalar components consequently gives
 \[
@@ -382,9 +384,8 @@ Apply it at $\ell$, using~\eqref{eq:forcedrho}, to obtain
 
 \begin{lemma}\label{lem:comparison}
 Let $v_p(R_j)=\nu>0$ be odd and suppose $v_p(\rho)$ is even.
-At some place above $p$, the first ten functions in
-\eqref{eq:comparisons} have positive valuation and the last six
-have valuation at least three.
+At some place above $p$, every function in
+\eqref{eq:comparisons} has valuation at least its assigned order $m_i$.
 \end{lemma}
 \begin{proof}
 At such a contact prime $\delta_j$ is a unit. The integer
@@ -421,25 +422,27 @@ $(n_1,n_2,n_3,n_4)=(n,a,t,b)$. The exact logarithm ratios are
 At least one of $h,h-1$ is a $p$-unit, so its ratio is integral.
 The cross comparison and~\eqref{eq:formal} make the other truncated
 ratio integral as well. Both relative errors are then absolute
-errors, and modulo $p^3$ one has $L_i\equiv r_i\equiv r_i'$.
+errors. One has $L_1\equiv r_1\equiv r_1'\pmod p$, while
+$L_i\equiv r_i\equiv r_i'\pmod{p^3}$ for $i=2,3,4$.
 Multiplying by $h,h-1$ and subtracting gives
 \[
-                             L_i\equiv n_i\pmod{p^3}.
+       L_1\equiv n\pmod p,\qquad
+       L_i\equiv n_i\pmod{p^3}\quad(i=2,3,4).
 \]
 Define the integer residual $\Delta=\mathcal F(a,t,b)$. If
 $\beta=u/v$ is reduced with $v>0$, the direct target also makes
 $\beta$ integral at $p$. Consequently
 \[
-                         p^3\mid\Delta,\qquad p^3\mid u-nv.
+                         p^3\mid\Delta,\qquad p\mid u-nv.
 \]
 
 Let $M_j$ be the product of primes outside $\Sigma$ at which $R_j$
 has positive odd valuation. At a prime in $M_j$, an odd scalar
 valuation invokes Lemma~\ref{lem:scalar}; an even scalar valuation
-invokes Lemma~\ref{lem:comparison}. Therefore, for either nonzero
-integer residual $N=\Delta$ or $N=u-nv$,
+invokes Lemma~\ref{lem:comparison}. Consequently
 \begin{equation}\label{eq:divisibility}
-                         M_j^3\mid Nc\quad(j=0,1,2).
+        M_j^3\mid\Delta c\quad(\Delta\ne0),\qquad
+        M_j\mid(u-nv)c\quad(u-nv\ne0),\qquad j=0,1,2.
 \end{equation}
 No prime shared by the scalar and comparison coefficients is omitted.
 
@@ -578,13 +581,14 @@ with $2\log2<2$ yields
  B^2\le h(t_0)+\tfrac12h(t_1)+\tfrac12h(t_2)
                        +2h(\rho)+84.
 \end{equation}
-Consequently, for either nonzero residual $N=\Delta$ or $N=u-nv$,
-\eqref{eq:divisibility}, \eqref{eq:rhoheight}, and
+Consequently, \eqref{eq:divisibility}, \eqref{eq:rhoheight}, and
 \eqref{eq:tenheight} give the effective common inequality
 \begin{equation}\label{eq:commonheight}
- B^2\le2\overline H|Nc|^{7/18}
-                      +30h(\beta)+4L\log\ell+340.
+ B^2\le2\overline H|Nc|^{7/(6k)}
+                      +30h(\beta)+4L\log\ell+340,
 \end{equation}
+where $(N,k)=(\Delta,3)$ if $\Delta\ne0$, and
+$(N,k)=(u-nv,1)$ if $u-nv\ne0$.
 
 \section{An explicit sufficient coefficient parameter}
 
@@ -660,19 +664,21 @@ $c$ satisfies~\eqref{eq:binaryforced} and all root labels are nonzero.
 Suppose $\beta\ne n$. For $\beta=u/v$ reduced with $v>0$, put
 $N=u-nv\ne0$. Then
 \[
-                         |Nc|\le4e^{h(\beta)}B^2.
+                         |N|\le2e^{h(\beta)}B.
 \]
-After the same absorption, equation~\eqref{eq:commonheight} gives
+Retain $c$ separately in the product $|Nc|$. After the same
+absorption, equation~\eqref{eq:commonheight}, now with $k=1$, gives
 \[
- B^{11/9}\le4\overline H4^{7/18}e^{(7/18)h(\beta)}.
+ B^{5/6}\le4\overline H2^{7/6}e^{(7/6)h(\beta)}c^{7/6}.
 \]
 Taking logarithms and using $\log2<1$ yields
 \begin{equation}\label{eq:inputlog}
- \log B<181205+\frac7{22}h(\beta)
-          \le181205+\frac7{2640}c<c-4.
+ \log B<265768+\frac75\bigl(h(\beta)+\log c\bigr)
+          \le265768+\frac{217}{600}c<c-4.
 \end{equation}
-The last inequality holds already for $c\ge10^6$; its two sides
-have constant slopes and it holds strictly at $10^6$.
+Here $h(\beta)\le c/120$ and $\log c\le c/4$ for $c\ge16$.
+The last inequality holds for $c\ge10^6$: it is strict at $10^6$
+and the coefficient $217/600$ is less than one.
 This contradicts~\eqref{eq:Lucasgrowth}, so $\beta=n\in\Z$.
 If $X=u_0/v_0$ is reduced with $v_0>0$, integrality of
 $216X^4+450459$ implies $v_0^4\mid216=2^3 3^3$.
@@ -837,7 +843,7 @@ $v_p(R_j\eta_k)\ne0$. The identity
  v\left(\frac{x}{1+x}\right)=\max(0,v(x))\quad(v(x)\ne0)
 \]
 shows that every $\Phi_{R_j}(\eta_k)$ is integral.
-Consequently $v_p(G_{j,k})\ge3$, and all scalar second summands
+Consequently $v_p(G_{j,k})\ge b_k$, and all scalar second summands
 in~\eqref{eq:W} have positive valuation at both places over $p$.
 No upper bound on the initial formal depth is used.
 
@@ -939,7 +945,7 @@ no expanded coefficient table of this very large polynomial is needed.
 
 The independent weighted-degree calculation gives, uniformly in $L$,
 \begin{equation}\label{eq:degree}
- \deg F_L\le99950805468739574201057280<2^{87}.
+ \deg F_L\le85829362869408651982929920<2^{87}.
 \end{equation}
 At the explicit defining member $L=125001$, the maximum absolute
 integer coefficient is less than
@@ -947,10 +953,10 @@ integer coefficient is less than
                                   2^{\,2^{102}}.
 \end{equation}
 The separating variable has degree at most $E=1099509530624$.
-Writing $D=99950805468739574201057280$, the support is therefore
+Writing $D=85829362869408651982929920$, the support is therefore
 bounded above by
 \[
-          \binom{D+27}{27}-\binom{D-E+26}{27}<2^{2198}.
+          \binom{D+27}{27}-\binom{D-E+26}{27}<2^{2192}.
 \]
 This is a support upper bound, not an expanded monomial count. These bounds, together with
 the effective soundness and completeness proofs, establish
@@ -981,7 +987,7 @@ exponential where a logarithmic comparison is needed. Its output is
 The separate source and finite-algebra certificates in the same
 module reconstruct the thirty contacts, three scales, sixteen raw
 comparison tests, six scalar components, three pole charts and every
-guard. The source has $6892$ rational arithmetic nodes, $2587$
+guard. The source has $6898$ rational arithmetic nodes, $2588$
 integer coefficient nodes and $164$ atomic guard factors. The
 source-to-integer conversion, quartic relations, square clearings
 and guard coverage are checked by exact symbolic identities.

@@ -28,9 +28,9 @@ class MergedBuilder(PreferredBuilder):
         if type(anchor_exponent) is not int or anchor_exponent<3 or anchor_exponent%2!=1:
             raise ValueError('anchor_exponent must be a fixed odd integer >=3')
         self.forced_exponent=anchor_exponent;self.forced_prime=76249
-        self.high_order=self.input_order=self.scalar_order=3
+        self.high_order=self.scalar_order=3;self.input_order=1
         self.high_precision=self.input_precision=4
-        self.scalar_switch_exponent=3;self.scalar_norm_exponent=3
+        self.scalar_orders=[1]*4+[3]*2
         self.c=Circuit();self.D=self.field(11,-6)
         self.relations=[];self.closed_equations=[];self.events=[]
         self.fourfold_points={};self.parametrize_poles=True
@@ -74,7 +74,8 @@ class MergedBuilder(PreferredBuilder):
                        self.add(self.mul(self.mul(u,um2),self.mul(v,w)),self.field(1)))
         tests.append(lucas)
         assert len(tests)==16
-        comparison_orders=[1]*10+[3]*6
+        comparison_orders=[1]*11+[3]*3+[1,3]
+        scalar_orders=[1]*4+[3]*2
         scalar_point=self.fourfold_points['S']
         scalar_tests=list(self.reciprocal(H)+self.reciprocal(scalar_point)+
             self.div(self.parameter_at_identity(scalar_point),self.parameter_at_identity(H)))
@@ -99,7 +100,7 @@ class MergedBuilder(PreferredBuilder):
             'scalar':[self.rr(D) for D in scalar_tests],
             'L':[[self.rr(v) for v in D] for D in L],
             'Lprime':[[self.rr(v) for v in D] for D in Lprime],
-            'comparison_orders':comparison_orders,'scalar_orders':[3]*6,
+            'comparison_orders':comparison_orders,'scalar_orders':scalar_orders,
             'formal_precision':4})
         base=[Fraction(0),Fraction(-1,2),Fraction(-1),Fraction(1,2399),Fraction(-32,407)]
         contacts=[[theta+shift for shift in shifts for theta in base] for shifts in ((2,4),(6,8))]
@@ -120,11 +121,14 @@ class MergedBuilder(PreferredBuilder):
                 weight=combined/(delta**2*combined**(2*order))
                 comparison_weights.append(weight)
                 W=self.mul(W,self.add(self.field(1),self.scale(self.square(C),weight)))
-            normalized_scalar=[]
+            normalized_scalar=[];scalar_weights=[]
             for j,D in enumerate(scalar_tests):
-                E=self.field(R**3*self.scalar_phi(R,D,f'detector{r}.scalar{j}'))
+                order=scalar_orders[j]
+                E=self.field(R**order*self.scalar_phi(R,D,f'detector{r}.scalar{j}'))
                 normalized_scalar.append(E)
-                W=self.mul(W,self.add(self.field(1),self.scale(self.square(E),combined/combined**6)))
+                weight=combined/combined**(2*order)
+                scalar_weights.append(weight)
+                W=self.mul(W,self.add(self.field(1),self.scale(self.square(E),weight)))
             norm=W[0]**2-2*W[1]**2
             self.c.nonzero(norm,f'detector{r}.product norm')
             self.c.nonzero(W[0],f'detector{r}.trace numerator')
@@ -137,7 +141,7 @@ class MergedBuilder(PreferredBuilder):
                 'contact_function':self.rr(R),'combined_coefficient':self.rr(combined),
                 'normalized_scalar':[[self.rr(v) for v in E] for E in normalized_scalar],
                 'comparison_weights':[self.rr(weight) for weight in comparison_weights],
-                'scalar_weight':self.rr(combined/combined**6),
+                'scalar_weights':[self.rr(weight) for weight in scalar_weights],
                 'product_components':[self.rr(v) for v in W],
                 'pole_input':self.rr(pole),'pole_square_multiplier':4})
         assert self.base_count==24 and len(self.relations)==11
@@ -162,12 +166,12 @@ class MergedBuilder(PreferredBuilder):
             'finite_parameters':{f'pole_chart_detector{r}':[0] for r in range(2)},
             'comparison_tests':[[self.rr(v) for v in D] for D in tests],
             'scalar_tests':[self.rr(D) for D in scalar_tests],
-            'comparison_orders':comparison_orders,'scalar_orders':[3]*6,
+            'comparison_orders':comparison_orders,'scalar_orders':scalar_orders,
             'events':self.events,'counts':dict(Counter(v['category'] for v in self.c.variables)),
             'beta_formula':'216*input.X^4+450459','formal_precision':4,
             'comparison_normalization':'none',
             'scalar_normalization':'R*D/(1+R*D)',
-            'scalar_switch_exponent':3,'scalar_norm_denominator_exponent':3,
+            'scalar_switch_exponents':scalar_orders,'scalar_norm_denominator_exponents':scalar_orders,
             'common_index_divisible_by_selected_primes':True,
             'scalar_contact':self.rr(rs),'height_scales':[self.rr(a) for a in scales],
             'source_helpers':{name:hashlib.sha256((PINNED/name).read_bytes()).hexdigest()

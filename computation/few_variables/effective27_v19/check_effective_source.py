@@ -130,16 +130,19 @@ def finite_reconstruction(source,p,seed):
         u=scales[r]*names['slope.lambda']%p;delta=(u+r+1)%p
         R=prod((u-arith.q(c))%p for c in all_contacts[r])*pow(delta,-10,p)%p
         combined=z*R%p;W=arith.f(1)
-        orders=[1]*10+[3]*6
+        orders=[1]*11+[3]*3+[1,3]
         for j,(D,order) in enumerate(zip(tests,orders)):
             value=arith.scale(D,pow(delta*pow(combined,order,p)%p,-1,p))
             expected_weight=combined*pow(delta*delta*pow(combined,2*order,p)%p,-1,p)%p
             assert q(event['comparison_weights'][j])==expected_weight
             W=arith.mul(W,arith.add(arith.f(1),arith.scale(arith.sq(value),combined)))
-        for D in scalar:
+        for k,D in enumerate(scalar):
+            order=1 if k<4 else 3
             phi=R*D*pow(1+R*D,-1,p)%p
-            E=arith.f(pow(R,3,p)*phi)
-            value=arith.scale(E,pow(combined,-3,p))
+            E=arith.f(pow(R,order,p)*phi)
+            assert pair(event['normalized_scalar'][k])==E
+            assert q(event['scalar_weights'][k])==combined*pow(combined,-2*order,p)%p
+            value=arith.scale(E,pow(combined,-order,p))
             W=arith.mul(W,arith.add(arith.f(1),arith.scale(arith.sq(value),combined)))
         assert pair(event['product_components'])==W
         norm=(W[0]**2-2*W[1]**2)%p
@@ -165,10 +168,10 @@ def main():
     report=audit(source,spec)
     assert source['retained_base_count']==26 and source['total_polynomial_variables_after_finite_algebra']==27
     assert [r['kind'] for r in source['finite_monic_relations']]==['point']*9+['pole']*3
-    assert source['comparison_orders']==[1]*10+[3]*6 and source['scalar_orders']==[3]*6
+    assert source['comparison_orders']==[1]*11+[3]*3+[1,3] and source['scalar_orders']==[1]*4+[3]*2
     assert source['comparison_normalization']=='none'
     assert source['scalar_normalization']=='R*D/(1+R*D)'
-    assert source['scalar_switch_exponent']==source['scalar_norm_denominator_exponent']==3
+    assert source['scalar_switch_exponents']==source['scalar_norm_denominator_exponents']==[1]*4+[3]*2
     assert source['common_index_divisible_by_selected_primes'] is True
     builder=(HERE/'build_effective_source.py').read_bytes()
     assert source['source_builder_sha256']==hashlib.sha256(builder).hexdigest()
@@ -192,8 +195,8 @@ def main():
         source_sha256=hashlib.sha256(raw).hexdigest(),integer_specification_sha256=hashlib.sha256(encoded).hexdigest(),
         finite_field_formula_reconstructions=records,singular_finite_field_samples_skipped=skipped,
         explicit_nonzero_slope_guard=True,family_parameter=source['family_parameter'],
-        comparison_orders=[1]*10+[3]*6,comparison_normalization='none',
-        scalar_normalization='linear',scalar_denominator_exponent=3,
+        comparison_orders=[1]*11+[3]*3+[1,3],comparison_normalization='none',
+        scalar_normalization='linear',scalar_denominator_exponents=[1]*4+[3]*2,
         scope='Exact symbolic source-to-integer conversion, point quartics and derivatives, automatic guard coverage and monic pole-square clearings. Independent finite-field reconstruction of every new rational expression is finite evidence, not a proof of a universal identity. The projection theorem and its certified sufficient exponent are supplied by the mathematical paper.')
     args.output.parent.mkdir(parents=True,exist_ok=True);args.output.write_text(json.dumps(report,indent=2)+'\n')
     print(json.dumps({'status':'PASS','total_coordinates':27,'exact_point_quartics':report['source_point_quartics_checked'],
