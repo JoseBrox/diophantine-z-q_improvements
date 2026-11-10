@@ -12,11 +12,11 @@ python3 scripts/verify.py --full
 
 The verifier checks the publication manifest and quartic provenance, copies the inputs to a temporary directory, restores compressed data with hash checks, and runs every supplied reconstruction. It leaves published inputs unchanged. A failed equality, hash, or bound stops the verification. A receipt can be saved outside the publication tree with the optional argument --receipt /path/to/verification.json.
 
-The standard-library stages reconstruct every source dependency and the leading **228- and 265-variable quartics**, together with the separately labelled **91-variable additional-abc quartic**. Their independent checkers reconstruct every retained and changed quadratic row, reciprocal-weight identity, nonzero-domain condition, and coefficient of the expanded sum of squares. Exact degree, content, ordinary support, and coefficient-height formulas are checked separately from the arithmetic projection theorems. The fixed 265-variable member uses $N=14521$; its effective numerical inequalities are also certified.
+The standard-library stages reconstruct every source dependency and the leading **226- and 262-variable quartics**, together with the separately labelled **87-variable additional-abc quartic**. Their independent checkers reconstruct every retained and changed quadratic row, reciprocal-weight identity, nonzero-domain condition, and coefficient of the expanded sum of squares. Exact degree, content, ordinary support, and coefficient-height formulas are checked separately from the arithmetic projection theorems. The fixed 262-variable member uses $N=9682$; its effective numerical inequalities are also certified.
 
 The **25- and 27-variable specifications**, together with the **13-variable additional-hypothesis specification**, are rebuilt from complete guarded source algebras. The source-to-integer conversion, point quartics, square clearings, denominator guards, matrix bounds, and finite-product cases are exact checks. Fifteen independent finite-field reconstructions for each new 25- and 27-variable source are explicitly bounded supplementary evidence for the rational formulas. They are not proofs of universal identities or of the arithmetic projection theorems.
 
-The 25-variable degree calculation uses formal coefficient symbols to prove the bound below $2^{85}$ uniformly in the fixed odd exponent. Its $L=3$ fixture is not certified to define the integers. The effective 27-variable construction has fixed exponent $L=125001$, degree below $2^{87}$, coefficient height below $2^{2^{102}}$, and a separately checked numerical sufficient threshold. Uniform support bounds are below $2^{1979}$ and $2^{2192}$, respectively. Earlier coefficient systems are retained where they are required for exact source reconstruction.
+The 25-variable degree calculation uses formal coefficient symbols to prove the bound below $2^{85}$ uniformly in the fixed odd exponent. Its $L=3$ fixture is not certified to define the integers. The effective 27-variable construction has fixed exponent $L=20483$, degree below $2^{87}$, coefficient height below $2^{2^{99}}$, and a separately checked numerical sufficient threshold. Uniform support bounds are below $2^{1979}$ and $2^{2192}$, respectively. Earlier coefficient systems are retained where they are required for exact source reconstruction.
 
 Additional structural stages check the modular multiplicity constants, local normalization profile, exceptional contact primes, number-field finite-difference identities, elliptic examples, input-normalization obstructions, and product-height counterfamilies. These computations support the full proofs; bounded examples are labelled as such.
 
@@ -71,6 +71,12 @@ python3 computation/quartic/build_reciprocal_factors_v19.py
 python3 computation/quartic/check_reciprocal_factors_v19.py
 python3 computation/quartic/build_quartic265_v19.py
 python3 computation/quartic/check_quartic265_v19.py
+python3 computation/quartic/build_inverse_contact_v21.py
+python3 computation/quartic/check_inverse_contact_v21.py
+python3 computation/quartic/build_abc_inverse_contact_v21.py
+python3 computation/quartic/check_abc_inverse_contact_v21.py
+python3 computation/quartic/build_abc_reciprocal_contacts_v21.py
+python3 computation/quartic/check_abc_reciprocal_contacts_v21.py
 python3 computation/elliptic_constraints/check_fixed_difference_chart.py
 python3 computation/quartic/check_coordinate_budget.py
 ~~~
@@ -150,7 +156,7 @@ The optional PARI stages also check the prepared fixed-pole counterexamples, wit
 
 A passing receipt establishes the finite assertions stated in that receipt. Complete quartic coefficient tables and the finite-algebra expression graphs are exact polynomial specifications. The enormous few-variable polynomials are specified and bounded without expanding all their terms: the determinant, resultant, trace, and finite-product inequalities are proved in their papers and independently checked by the programs.
 
-Coefficient verification does not prove the global arithmetic inputs in [Arithmetic inputs](arithmetic_inputs.md). It also does not produce a numerical sufficient parameter for an ineffective existence theorem. The 25-variable and 228-variable results retain this explicit limitation. The numerical threshold for the explicit 27-variable source is checked separately from its coefficient reconstruction.
+Coefficient verification does not prove the global arithmetic inputs in [Arithmetic inputs](arithmetic_inputs.md). It also does not produce a numerical sufficient parameter for an ineffective existence theorem. The 25-variable and 226-variable results retain this explicit limitation. The numerical threshold for the explicit 27-variable source is checked separately from its coefficient reconstruction.
 
 The nonzero pole-witness strengthening uses the retained restricted-converse and descent hypotheses and the source simultaneous-realization construction. Its mathematical proof is in both leading few-variable papers. It is not a conclusion of enumerating finite cases.
 
@@ -160,7 +166,7 @@ The nonzero pole-witness strengthening uses the retained restricted-converse and
 python3 scripts/build_papers.py
 ~~~
 
-The build requires pdflatex and the AMS, lmodern, mathtools, geometry, booktabs, longtable, microtype, xcolor, and hyperref packages. It runs three passes per paper and rejects undefined or duplicate references, unresolved rerun requests, and overfull boxes. The [main paper index](../README.md#read-the-papers) links every PDF and editable TeX source. Rendered pages should be inspected after substantive edits.
+The build requires pdflatex and the AMS, lmodern, mathtools, geometry, booktabs, longtable, microtype, xcolor, and hyperref packages. It runs three passes per paper and rejects undefined or duplicate references, unresolved rerun requests, and overfull boxes. The [main paper index](../README.md#current-papers) links every PDF and editable TeX source. Rendered pages should be inspected after substantive edits.
 
 PDF bytes can depend on the TeX distribution and timestamp settings even when the mathematical text is unchanged. Source and data integrity are recorded separately.
 
@@ -249,14 +255,14 @@ The source checker proves the source-to-integer conversion, the point quartics, 
 ## Explicit twenty-seven-variable source
 
 ~~~sh
-python3 computation/few_variables/effective27_v19/build_effective_source.py --anchor-exponent 125001 --output computation/few_variables/effective27_v19/certificate
+python3 computation/few_variables/effective27_v19/build_effective_source.py --anchor-exponent 20483 --output computation/few_variables/effective27_v19/certificate
 python3 computation/few_variables/active_elimination/build_active_specification.py computation/few_variables/effective27_v19/certificate/source-polynomial-specification.json computation/few_variables/effective27_v19/active27
 python3 computation/few_variables/effective27_v19/check_effective_source.py computation/few_variables/effective27_v19/certificate --output computation/few_variables/effective27_v19/independent-source-verification.json
 python3 computation/few_variables/effective27_v19/check_effective_bounds.py --output computation/few_variables/effective27_v19/independent-bound-verification.json
 python3 computation/few_variables/effective27_v19/check_effective27_constants.py
 ~~~
 
-The source audit checks nine point quartics, three square clearings, and 164 atomic guards exactly. Its fifteen finite-field reconstructions are supplementary bounded evidence. The bound checker independently sums all 262144 active cases and verifies the uniform symbolic coefficient envelope. The constant checker separately proves the exact numerical inequalities used for the fixed exponent $125001$; the paper supplies the effective height and projection arguments. The module [README](../computation/few_variables/effective27_v19/README.md) records the source census, coefficient-norm bound, and complete commands.
+The source audit checks nine point quartics, three square clearings, and 164 atomic guards exactly. Its fifteen finite-field reconstructions are supplementary bounded evidence. The bound checker independently sums all 262144 active cases and verifies the uniform symbolic coefficient envelope. The constant checker separately proves the exact numerical inequalities used for the fixed exponent $20483$; the paper supplies the effective height and projection arguments. The module [README](../computation/few_variables/effective27_v19/README.md) records the source census, coefficient-norm bound, and complete commands.
 
 ## Product-height obstructions
 
@@ -280,3 +286,21 @@ python3 computation/pole_parameters/check_rational_contact_combinations_v20.py
 ~~~
 
 This standard-library check uses exact `Fraction` arithmetic to reconstruct two positive-slope examples, including the simple-root residues, primality, all contact valuations, the even combined valuations, and the unit input residuals. The certificate was also independently evaluated with exact `BigInt` numerator/denominator arithmetic. These finite examples illustrate the separate universal theorem proved in `papers/pole_parameters/rational_combinations_of_contacts_20261110_v20.tex`; they do not establish the theorem by sampling. The full verifier includes this check. The complete proof is available in both TeX and PDF.
+
+## Logarithmic contact-height thresholds
+
+```sh
+python3 computation/contact_heights/check_logarithmic_thresholds_v21.py
+```
+
+This exact integer and rational checker certifies the amplified constants, strict index thresholds, forced-prime comparisons, and final scalar inequalities for the explicit parameters $N=9682$ and $L=20483$. The proofs appear in the two explicit construction papers. Their retained arithmetic premises and the analytic inequalities are separate from the finite numerical certificate.
+
+## Quadratic contact covers
+
+The exact section identities, the ten branch points, and the inert-prime obstruction are verified by:
+
+~~~sh
+python3 computation/pole_parameters/check_quadratic_contact_covers.py
+~~~
+
+The checker reconstructs the trace at index three in two ways, verifies the finite-field annihilator and congruence modulo the inert prime squared, and checks the two odd contact valuations. The paper proves the infinite progression and the genus and finiteness theorems separately. No computation asserts the completeness of a one-pole definition.

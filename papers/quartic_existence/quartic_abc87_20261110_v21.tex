@@ -10,23 +10,25 @@
 \DeclareMathOperator{\Tr}{Tr}\DeclareMathOperator{\Nm}{N}
 \DeclareMathOperator{\rad}{rad}
 \setlength{\emergencystretch}{2em}
-\title{A Quartic in Ninety-One Variables under the Rational $abc$ Conjecture}
+\title{A Quartic in Eighty-Seven Variables under the Rational $abc$ Conjecture}
 \author{}\date{10 November 2026}
 \begin{document}\maketitle
 \begin{abstract}
 Assuming the rational $abc$ conjecture and the specified elliptic-group,
 pole-realization and simultaneous prime-pattern inputs, we construct a
-family of integer quartics in ninety-one total variables. Every
+family of integer quartics in eighty-seven total variables. Every
 sufficiently large fixed odd input shift gives rational input projection
-exactly $\Z$. The quartic is a sum of seventy-nine primitive quadratic
-squares and has exactly $926$ monomials. Its coefficient height, for a
-shift $B\ge3$, is $\max(4153456,B^2+797683)$. A common elliptic chart in four field coordinates stores both reciprocal
+exactly $\Z$. The quartic is a sum of seventy-five primitive quadratic
+squares and has exactly $918$ monomials. Its coefficient height, for a
+shift $B\ge3$, is $\max(4153456,B^2+797681)$. A common elliptic chart in four field coordinates stores both reciprocal
 formal parameters. Eight rational contacts symmetric about one permit a short quadratic evaluation and normalization.
 A height estimate for a sum of fourth powers bounds the input together
 with one elliptic index. All six local tests have order one; only plain
 elliptic formal parameters are used. Reciprocal factor equations
 avoid separately stored numerator fourth powers, and their zero stratum
-is excluded by the point-pair equations. The sufficient shift is ineffective.
+is excluded by the point-pair equations. Reciprocal symmetry of the eight contacts gives two scalar contact
+outputs and three inverse weights per detector, with an exact
+rescaling that preserves its pole input. The sufficient shift is ineffective.
 \end{abstract}
 
 \section{Statement and arithmetic assumptions}
@@ -40,17 +42,17 @@ All variable counts include the distinguished input.
 \begin{theorem}\label{thm:main}
 Under the assumptions below, there is a computable family
 \[
- P_B\in\Z[X,Y_1,\ldots,Y_{90}],\qquad B\ge3\text{ odd},
+ P_B\in\Z[X,Y_1,\ldots,Y_{86}],\qquad B\ge3\text{ odd},
 \]
 such that every member has degree exactly four, content one, exactly
-$926$ monomials, and coefficient height
+$918$ monomials, and coefficient height
 \[
- H(P_B)=\max(4153456,B^2+797683).
+ H(P_B)=\max(4153456,B^2+797681).
 \]
 There is a constant $B_*$ such that, for every odd $B\ge B_*$,
 \[
  x\in\Z\quad\Longleftrightarrow\quad
- \exists\boldsymbol y\in\Q^{90},\quad P_B(x,\boldsymbol y)=0.
+ \exists\boldsymbol y\in\Q^{86},\quad P_B(x,\boldsymbol y)=0.
 \]
 The integer $B$ is a fixed coefficient parameter. No numerical sufficient
 value of $B_*$ is determined. In particular, the coefficient fixture
@@ -119,11 +121,14 @@ at both real embeddings and exceeds $d$ there, so $T(n)>6$.
 
 Set
 \[
- \Theta_8=\{1\pm1,1\pm2,1\pm3,1\pm4\}
-          =\{-3,-2,-1,0,2,3,4,5\}.
+ \Theta_8=\{1\pm1,1\pm2,1\pm3,1\pm6\}
+          =\{-5,-2,-1,0,2,3,4,7\}.
 \]
 For $t\notin\Theta_8$, let $M(t)$ be the product of primes $p>76176$
 for which $v_p(t-\theta)>0$ is odd for some $\theta\in\Theta_8$.
+The nonzero contact differences have prime support contained in
+$\{2,3,5,7\}$, and the nonzero distances from one have prime support
+contained in $\{2,3\}$. These primes are below the fixed cutoff.
 
 \begin{lemma}\label{lem:contact}
 Assume rational $abc$. There is a fixed $C_0\ge0$ such that
@@ -432,53 +437,63 @@ root or making any division:
 \]
 
 Retain a rational $\lambda$. For $a\in\{a_0,a_1\}$ put $t=a\lambda$,
-$\delta=t-1$, and use scalar coordinates $r,q,c,k$ satisfying
+$\delta=t-1$. Use two scalar contact outputs $r_0,\zeta_0$ and
+three scalar weights $s,s_2,s_3$. Their literal quadratic equations are
 \begin{equation}\label{eq:contactcircuit}
- \begin{gathered}
- r=\delta^2,\qquad c=qr,\qquad k=cr,\\
- k^2-30kc+273c^2-820cq+576q^2=kr.
- \end{gathered}
+\begin{split}
+ r_0&=t^2-2t,\\
+ r_0\zeta_0+\zeta_0-r_0^2+35r_0&=0,\\
+ (r_0+1)s&=\zeta_0^2+24\zeta_0,
+\end{split}
 \end{equation}
-Define, without storing another coordinate,
-\[
- \begin{split}
- F&=(r-1)(r-4)(r-9)(r-16)\\
-  &=r^4-30r^3+273r^2-820r+576
-    =\prod_{\theta\in\Theta_8}(t-\theta).
- \end{split}
-\]
-The displayed equations imply $q^2F=qr^3$ and $k=qr^2$.
-The reciprocal-factor equations below exclude $q=0$, so this clearing
-recovers $qF=r^3$ without a coordinate for $F$.
-The two field factors will have the values
-\begin{equation}\label{eq:packed}
- \begin{split}
- T_1&=1+qC^2+q^2f(H)^2+q^4f(U)^4,\\
- T_2&=1+qI^2+q^2\sigma f(H-P)^2+q^4\sigma f(V_1)^4,
- \qquad W=T_1T_2=w_0+w_1\rho.
- \end{split}
-\end{equation}
-Their literal quadratic specification uses three scalar reciprocal
-weights $s_2,s_3,s_4$:
+and
 \begin{equation}\label{eq:reciprocalweights}
-                 s_4=s_2^2,\qquad qs_4=s_3,\qquad qs_3=s_2.
+                         s_2=s^2,\qquad s_3=ss_2.
 \end{equation}
-The two quadratic field equations are
+For interpretation define $r=r_0+1=\delta^2$ and
+$\zeta=\zeta_0+37$, without adjoining coordinates. The contact
+equations then give
+\begin{equation}\label{eq:reciprocalcontact}
+                  r(\zeta-r)=36,\qquad
+                  rs=\zeta^2-50\zeta+481.
+\end{equation}
+The first equation excludes $r=0$ and gives $\zeta=r+36/r$.
+The squared contact distances $1,4,9,36$ are paired by the involution
+$r\mapsto36/r$. Accordingly, their polynomial satisfies
+\begin{align}
+ P_4(r)&=(r-1)(r-4)(r-9)(r-36)\nonumber\\
+       &=r^4-50r^3+553r^2-1800r+1296,\label{eq:reciprocalpolynomial}\\
+ \frac{P_4(r)}{r^2}&=\zeta^2-50\zeta+481.\nonumber
+\end{align}
+Thus the contact equations give $P_4(r)=sr^3$ using only two contact
+outputs. Write
+\[
+                     F=P_4(r)=\prod_{\theta\in\Theta_8}(t-\theta).
+\]
+All constant coefficients in~\eqref{eq:contactcircuit} are zero.
+
+The stored field factors $A_1,A_2\in K$ are defined by
 \begin{equation}\label{eq:clearedfactors}
- \begin{split}
- s_4T_1&=s_4+s_3C^2+s_2f(H)^2+(f(U)^2)^2,\\
- s_4T_2&=s_4+s_3I^2+s_2\sigma f(H-P)^2+(\sigma f(V_1)^2)^2.
- \end{split}
+\begin{split}
+ s_3A_1&=s_2^2+s_3C^2+s_2f(H)^2+(f(U)^2)^2,\\
+ s_3A_2&=s_2^2+s_3I^2+s_2\sigma f(H-P)^2+(\sigma f(V_1)^2)^2.
+\end{split}
 \end{equation}
-Each fourth power is evaluated directly as a quadratic polynomial in
-the two components of its stored square. The lemma below proves
-$s_2\ne0$ and hence $s_j=q^{-j}$; multiplying
-\eqref{eq:clearedfactors} by $q^4$ then gives \eqref{eq:packed} exactly.
-Finally retain scalars $\tau,b$ with
-\begin{equation}\label{eq:trace}
-             w_0^2-2w_0\tau-2w_1^2=0,\qquad
-             kb=\tau^2.
+The constant term $s_2^2$ and every displayed fourth power are
+quadratic expressions in stored coordinates. Store a field value
+$\Omega=\omega_0+\omega_1\rho$ and scalars $\eta,b$, with
+\begin{equation}\label{eq:normalizedproduct}
+                         (r_0+1)\Omega=A_1A_2
 \end{equation}
+and
+\begin{equation}\label{eq:scaledtrace}
+ \omega_0^2-2\omega_0\eta-2\omega_1^2=0,
+ \qquad s_3b=\eta^2.
+\end{equation}
+These equations are quadratic in the stored coordinates. The
+unscaled factors, product, and trace parameter used in the valuation
+arguments will be recovered below; they are distinct from
+$A_1,A_2,\Omega,\eta$.
 
 The normalized pole uses seven further rational coordinates
 $e,u,p,v,w,p_2,w_2$ and five quadratic equations
@@ -497,32 +512,71 @@ Conversely a witness with $s_0\ne0$ gives the displayed normalized
 coordinates by these formulas and $v=e(17-b)/(17u)$.
 This explains both the pole obstruction and its use in completeness.
 
+
 \begin{lemma}\label{lem:domain}
-Every rational solution of the quadratic source has $\delta Fqk\ne0$
-in both detectors. Consequently
+Every rational solution has $rsF\ne0$. Put
 \[
- q=\frac{\delta^6}{F},\qquad
- k=\frac{\delta^{10}}F=\frac1R,
- \qquad R=\frac F{\delta^{10}}.
+ q=s^{-1},\qquad k=qr^2,\qquad R=\frac{F}{r^5}.
 \]
+Then
+\[
+ q=\frac{\delta^6}{F},\qquad k=\frac{\delta^{10}}F=R^{-1},
+ \qquad s_2=q^{-2},\quad s_3=q^{-3}.
+\]
+The unscaled factors $T_i=A_i/s$ have precisely the values
+\begin{equation}\label{eq:packed}
+\begin{split}
+ T_1&=1+qC^2+q^2f(H)^2+q^4f(U)^4,\\
+ T_2&=1+qI^2+q^2\sigma f(H-P)^2+q^4\sigma f(V_1)^4.
+\end{split}
+\end{equation}
+Put
+\[
+ W_0=\frac r{s^2}\Omega=T_1T_2=w_0+w_1\rho,
+ \qquad \tau_0=\frac r{s^2}\eta.
+\]
+These recovered rational values satisfy
+\begin{equation}\label{eq:trace}
+                  w_0^2-2w_0\tau_0-2w_1^2=0,
+                  \qquad kb=\tau_0^2.
+\end{equation}
+In particular $b=R\tau_0^2$. Conversely, let $r=\delta^2$ and
+$qF=r^3$ with $rq\ne0$, where $F$ is the displayed contact polynomial.
+Values satisfying the unscaled factor, product, and trace equations
+uniquely determine all the stored contact, weight, factor, product,
+and trace coordinates.
 \end{lemma}
 \begin{proof}
-Suppose $s_2=0$. Equations~\eqref{eq:reciprocalweights} give
-$s_4=s_3=0$, and \eqref{eq:clearedfactors} gives
-$f(U)^4=\sigma f(V_1)^4=0$. Since $K$ is a field,
-$f(U)^2=f(V_1)^2=0$. The identities in the pair-chart proof give
-$V^4=Q^4=0$. Thus $V=Q=0$, and $VQ=aW_A$, with $a\ne0$,
-forces $W_A=0$. The last equation of \eqref{eq:pairchart} would
-then say $0=1$. This contradiction proves $s_2\ne0$.
-Now $qs_3=s_2$ gives $q\ne0$. Substitution into
-$s_4=s_2^2$ and $q^2s_4=s_2$ gives $s_2=q^{-2}$, and then
-$s_3=q^{-3}$ and $s_4=q^{-4}$. This justifies \eqref{eq:packed}
-before any valuation or formal-parameter argument. The multiplied
-contact equation consequently gives $qF=r^3$.
-If $r=0$, then $F=576\ne0$ and the latter identity gives $q=0$,
-again impossible. Thus $r=\delta^2\ne0$. Finally $F=0$ would imply
-$r=0$. The asserted formulas and the nonvanishing of $k=qr^2$ follow.
-In particular $\lambda\ne0$ because zero is a contact.
+Equation~\eqref{eq:reciprocalcontact} already gives $r\ne0$.
+If $s=0$, then $s_2=s_3=0$, and~\eqref{eq:clearedfactors} gives
+$f(U)^4=\sigma f(V_1)^4=0$. Thus both numerator reciprocal squares
+vanish. The identities in the pair-chart proof give $V^4=Q^4=0$,
+hence $V=Q=0$. Since $a\ne0$, the equation $VQ=aW_A$ gives
+$W_A=0$, contradicting the last equation of~\eqref{eq:pairchart}.
+Thus $s\ne0$, and~\eqref{eq:reciprocalpolynomial} gives
+$F=P_4(r)=sr^3\ne0$. All asserted contact formulas follow.
+In particular $\lambda\ne0$, since zero is a contact.
+
+Dividing~\eqref{eq:clearedfactors} by $s^4$ and putting $T_i=A_i/s$
+gives~\eqref{eq:packed}. Equation~\eqref{eq:normalizedproduct}
+then gives $W_0=T_1T_2$. Multiplication of all three trace coordinates
+by $r/s^2$ preserves the homogeneous trace equation. Furthermore
+\[
+ kb=\frac{r^2}s\frac{\eta^2}{s^3}
+    =\left(\frac r{s^2}\eta\right)^2=\tau_0^2.
+\]
+No factor, product component, or trace parameter is divided out.
+The equations therefore also cover possible zero values of those
+quantities before the local argument excludes them.
+
+Conversely, put $s=q^{-1}$, $s_2=s^2$, $s_3=s^3$,
+$r_0=r-1$, and $\zeta_0=r+36/r-37$. Set
+\[
+ A_i=sT_i,\qquad \Omega=\frac{s^2}rW_0,
+ \qquad \eta=\frac{s^2}r\tau_0.
+\]
+Direct substitution gives every displayed quadratic equation, with
+the same pole input $b$. The values are uniquely determined.
 \end{proof}
 
 \section{Local extraction and denominator exclusions}
@@ -555,13 +609,13 @@ positive valuation. The four reciprocal-abscissa tests have valuation
 at least two.
 \end{proposition}
 \begin{proof}
-The preceding argument gives $W\ne0$. Equation~\eqref{eq:trace} then
+The preceding argument gives $W_0\ne0$. Equation~\eqref{eq:trace} then
 implies $w_0\ne0$, since $w_0=0$ would imply $w_1=0$. Hence
 \[
- \tau=\frac{\Nm(W)}{2w_0}=\frac1{\Tr(W^{-1})}\ne0,
- \qquad b=R\tau^2\ne0.
+ \tau_0=\frac{\Nm(W_0)}{2w_0}=\frac1{\Tr(W_0^{-1})}\ne0,
+ \qquad b=R\tau_0^2\ne0.
 \]
-Put $\ell=\max_{v\mid p}v(W)\le0$. The trace inequality gives
+Put $\ell=\max_{v\mid p}v(W_0)\le0$. The trace inequality gives
 $v_p(b)\le\nu+2\ell$. This valuation is odd, so the pole obstruction
 forces $0<v_p(b)\le\nu+2\ell$, hence $\ell>-\nu/2$.
 At a place attaining $\ell$, each factor valuation is at least $\ell$.
@@ -691,7 +745,7 @@ tests have valuation at least two and $C,I$ have valuation at least
 four at the chosen place. Since $v_p(q)=-1$, every nonconstant term
 of both factors in~\eqref{eq:packed} has positive valuation there.
 At the other place each factor is either a unit of residue one or has
-negative valuation. Thus $\Tr(W^{-1})$ has residue one or two and is
+negative valuation. Thus $\Tr(W_0^{-1})$ has residue one or two and is
 a unit. The pole input has valuation one at every selected contact prime.
 
 For arbitrary positive rational $a$ the exact identity
@@ -712,19 +766,19 @@ makes $v_p(t)\ll0$. Then
                    \left(1+\frac{1-\theta}{\delta}\right).
 \]
 The product is arbitrarily close to one and is a local square at
-$2,3,17$. All weighted test terms are small, so $\Tr(W^{-1})$ is
+$2,3,17$. All weighted test terms are small, so $\Tr(W_0^{-1})$ is
 arbitrarily close to two. Sufficient divisibility therefore gives the
 three local squareclasses and valuation depths in~\eqref{eq:prepared}.
 
 On the fixed compact real neighborhoods, as the lower bound on $\lambda$
-tends to infinity, $R\sim q\sim t^{-2}$, $W\to1$, and
+tends to infinity, $R\sim q\sim t^{-2}$, $W_0\to1$, and
 $b\sim1/(4t^2)$. Both real embeddings of every factor are positive
 for sufficiently large $\lambda$. Hence $0<b<17$ and every required
 denominator is nonzero. These bounds are uniform on the chosen compact
 sets, so they can be fixed before applying the prime-pattern theorem.
 Each prepared $b$ has a nonzero pole witness, which converts to
-\eqref{eq:normalizedpole}. All quadratic coordinates can now be filled
-by their stated rational values. This proves completeness for every
+\eqref{eq:normalizedpole}. The converse in Lemma~\ref{lem:domain} fills the stored contact,
+factor, product, and trace coordinates with these rational values. This proves completeness for every
 integer input and every odd $B\ge3$.
 
 \section{The polynomial and its exact certificate}
@@ -755,51 +809,65 @@ Pair chart for $U,V_1$ &10\\
 The two ratios &4\\
 Four reciprocal squares and two comparison squares &12\\
 Three scalar comparison-scale outputs &3\\
-Two detector blocks, including their pole coordinates &44\\
+Two detector blocks, including their pole coordinates &40\\
 The second argument $a_1\lambda$ &1\\\midrule
-Total &91\\\bottomrule
+Total &87\\\bottomrule
 \end{tabular}
 \end{center}
-Each detector uses two contact outputs $r,c$, four weight coordinates,
-four factor components, two product components, the three scalars
-$\tau,k,b$, and seven pole coordinates: twenty-two in all.
-There are $79$ primitive quadratic equations, so over $\Q$ their
-sum of squares vanishes exactly when they all vanish.
+Each detector uses two contact outputs $r_0,\zeta_0$, three inverse
+weights, four factor components, two product components, the two scalars
+$\eta,b$, and seven pole coordinates: twenty in all. There are
+$75$ primitive quadratic equations, so over $\Q$ their sum of squares
+vanishes exactly when they all vanish.
 
 The complete specification is in
-\nolinkurl{computation/quartic/family_abc91_v19}. The builder and independent
-checker reconstruct all $79$ rows and every coefficient of the full
-quartic. The programs are
-\nolinkurl{build_reciprocal_factors_v19.py} and
-\nolinkurl{check_reciprocal_factors_v19.py}. There are $927$ terms when powers of $B$ are stored separately,
-and $926$ ordinary monomials for every positive integer $B$.
-The fourth power of the rational component of the root coordinate $h$
-has coefficient one, proving degree four and content one.
-Only the constant coefficient contains two powers of $B$; it is
-$B^2+797683$. The remaining three coefficients involving the parameter
+\nolinkurl{computation/quartic/family_abc87_v21}. The producer and
+independent checker are
+\nolinkurl{build_abc_reciprocal_contacts_v21.py} and
+\nolinkurl{check_abc_reciprocal_contacts_v21.py}. They specify all $75$ rows
+and every coefficient of the full quartic. There are $919$ terms when
+powers of $B$ are stored separately, and $918$ ordinary monomials for
+every positive integer $B$. The fourth power of the rational component
+of the root coordinate $h$ has coefficient one, proving degree four
+and content one. Only the constant coefficient contains two powers of
+$B$; it is $B^2+797681$. The remaining three parameter coefficients
 are $4B,-2B,2B$, at the monomials $X^2$, $L_0^{\mathrm{prim}}$,
-and $I_0$, respectively. Every other coefficient is independent of $B$,
-and the largest absolute value among them is $4153456$. Therefore
+and $I_0$, respectively. Every other coefficient is independent of
+$B$, and their largest absolute value is $4153456$. Thus
 \[
- H(P_B)=\max(4153456,B^2+797683)
-       =B^2+797683\quad\text{for odd }B\ge1833.
+ H(P_B)=\max(4153456,B^2+797681)
+       =B^2+797681\quad\text{for odd }B\ge1833.
 \]
-No coefficient cancellation changes the stated support for positive integer $B$.
+No coefficient cancellation changes the stated support for positive
+integer $B$. This coefficient threshold is distinct from the
+ineffective sufficient defining shift in Theorem~\ref{thm:main}.
 
-The independent checker imports no producer. It reconstructs all
-changed reciprocal-weight and factor rows directly from their field
-formulas, and compares all 65 unmodified rows with their pinned source.
-It reconstructs the two additional reciprocal rows and expands the
-entire sum of 79 quadratic squares. The inherited common-point checker
-also verifies the nonsingularity of the rational row change. The separate
-standard-library program
+The independent checker imports no producer. It reconstructs the
+12 changed contact, weight, and real factor rows directly from the
+displayed formulas, and compares the remaining 63 rows exactly with
+their pinned coefficient source. It additionally reconstructs the
+imaginary factor rows and the product and pole normalizations.
+It checks every occurrence of the omitted contact outputs and
+independently expands all 75 quadratic squares.
+
+The contact certificate derives $P_4$ from its four squared distances
+and verifies its factorization in the original detector argument.
+It proves the reciprocal identity by an exact polynomial identity,
+checks the two affine shifts, and verifies the stated contact set
+and cutoff conditions. The zero-weight and zero-contact exclusions
+are the algebraic arguments in Lemma~\ref{lem:domain}. The trace
+scaling and preservation of $b$ follow from its homogeneous identities,
+also checked in the reconstruction dependencies. The changed contact
+set is treated directly by the height and completeness proofs above.
+
+The common-point reconstruction dependency verifies the nonsingularity
+of the rational row change. The separate standard-library program
 \nolinkurl{computation/elliptic_constraints/check_fixed_difference_chart.py}
 verifies twelve general polynomial identities, including elimination
 without division, the two curve equations, translation by $P$, and the
-exceptional leading-coefficient cases. The coefficient checker also
-verifies the nonzero exceptional constant for the specified point $P$.
-These are finite algebraic certificates. The arithmetic assumptions and
-the ineffective sufficient shift remain those stated in Section~1.
+exceptional leading-coefficient cases. These are finite algebraic
+certificates. The arithmetic assumptions and the ineffective sufficient
+shift remain those stated in Section~1.
 
 \begin{thebibliography}{10}
 \bibitem{Granville}

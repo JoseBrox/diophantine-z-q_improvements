@@ -37,8 +37,9 @@ def verify(source_root=HERE,output_root=HERE):
     assert list(ids.values())==[x for x in old_ids.values() if x not in removed]+list(range(80000,80008))+[81000,81001,81002]
     assert system['variables']==polynomial['variables']==report['variables']==265
     assert system['coordinates']==polynomial['coordinates']
-    assert system['fixedParameter']==polynomial['fixedParameter']==old['fixedParameter']
-    assert system['fixedParameter']['N'].startswith('Every integer N>=14521;')
+    assert system['fixedParameter']==polynomial['fixedParameter']
+    assert {k:v for k,v in system['fixedParameter'].items() if k!='N'}=={k:v for k,v in old['fixedParameter'].items() if k!='N'}
+    assert system['fixedParameter']['N'].startswith('Every integer N>=9682;')
     # Direct expressions for the four shared comparison squares, including
     # the source's affine G-square coordinate and half imaginary components.
     G2=(linear((1,variable(319)),(-2,variable(253)),(1,scalar(1))),
@@ -115,13 +116,16 @@ def verify(source_root=HERE,output_root=HERE):
     assert (2-Q(1,2))/4==Q(3,8)>0
     assert 4*4-9>0 and 4*4-3>0 and 4*4-2>0
     assert 2*2-3>0 and 2*2-2>0 and 4*2-4>0
-    N=14521;depth=19*(2*N-1)//8+1;c=149**depth
-    H,H2=1<<221234,1<<221284
-    assert depth==68973 and 5**18<14**11
-    assert (c-1)**4>(14*H2)**9 and c>40*H and c>40*265546
-    assert (149**(19*(2*(N-1)-1)//8+1)-1)**4<=(14*H2)**9
+    N=9682;depth=19*(2*N-1)//8+1;c=149**depth
+    assert depth==45988
+    threshold=331969
+    assert 2**(2*threshold-3*221274)*15**6>13**3*(345+7*threshold)**6
+    assert 5**3*14<13**3
+    assert c-1>=2**threshold and c>40*(1<<221234) and c>4640000
+    assert 149**(19*(2*(N-1)-1)//8+1)-1<2**threshold
+    assert 5290<2**13 and 23*221287<22*232000
     assert 149**3>10*(1+149**2) and 25*(10+9792)<17*10**5
-    assert (149**58086+1).bit_length()==419333
+    assert (149**38730+1).bit_length()==279599
     certificate={
         'status':'PASS','variables':265,'quadraticRows':237,'degree':4,'content':1,
         'ordinaryMonomialsForEveryPositiveParameter':3485,'symbolicTerms':3486,
@@ -132,8 +136,8 @@ def verify(source_root=HERE,output_root=HERE):
         'completeValuationResidueCheck':True,'comparisonPrecision':3,'inputPrecision':1,
         'deepComparisonValuationStrictLowerBound':'17*nu/8',
         'heightFormula':'max(C,A^2+1);149^(4*N+2)+1 for N>=53',
-        'definingThresholdN':N,'forcedIndexDepth':depth,'specifiedParameter':'149^29043',
-        'specifiedCoefficientHeight':'149^58086+1','specifiedCoefficientHeightBinaryDigits':419333,
+        'definingThresholdN':N,'forcedIndexDepth':depth,'specifiedParameter':'149^19365',
+        'specifiedCoefficientHeight':'149^38730+1','specifiedCoefficientHeightBinaryDigits':279599,
         'integerThresholdChecks':{'lucasResidual':True,'scalarHeight':True,
                                   'inputHeightAdditiveTerm':True,'realCompleteness':True,
                                   'previousNDoesNotMeetThisSufficientCriterion':True},

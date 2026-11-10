@@ -1,0 +1,466 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,booktabs,microtype}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\Odd}{Odd}
+\setlength{\emergencystretch}{2em}
+\title{Quadratic Covers of Two Contact Functions}
+\author{}\date{10 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+A quadratic equation can force two contact values to have the
+same valuation parity, including on the prescribed eighth-power
+scales. We determine the resulting curves: for every rational
+scale greater than four, the product cover has genus four.
+Consequently only finitely many rational slopes can have equal
+odd valuation sets outside a fixed finite set of primes.
+More generally, a finite curve cover on which the two contact
+squareclasses become dependent cannot have genus zero or one.
+The negative product cover has an explicit rational section for
+every scale, but an exact inert-prime calculation shows that this
+section is incompatible with the elliptic comparison tests for
+infinitely many odd input shifts. These statements distinguish
+the valid parity implication from the separate existence of all
+required arithmetic witnesses.
+\end{abstract}
+
+\section{Contacts and valuation parity}
+
+Put
+\[
+ \Theta=\left\{0,-1,-\frac12,-\frac13,-\frac14,-\frac25\right\},
+ \qquad \Theta^*=\Theta\setminus\{0\},
+\]
+\begin{equation}\label{eq:R}
+ F(t)=\prod_{\theta\in\Theta}(t-\theta)
+ =\frac{t(t+1)(2t+1)(3t+1)(4t+1)(5t+2)}{120},
+ \qquad R(t)=\frac{F(t)}{(t-1)^8}.
+\end{equation}
+Fix a rational number $a>4$. A rational slope $\lambda$ is
+admissible if $\lambda$ and $a\lambda$ lie outside
+$\Theta\cup\{1\}$. In particular all contact values considered
+below are defined and nonzero.
+
+Let $S$ be a finite set of primes containing $2,3,5$. For
+$q\in\Q^*$ define
+\[
+ \Odd_S(q)=\prod_{\substack{p\notin S\\v_p(q)\ \mathrm{odd}}}p.
+\]
+This definition includes negative odd valuations. For
+$t\in\Q\setminus(\Theta\cup\{1\})$, put
+\[
+ M_S(t)=\prod_{\substack{p\notin S\\
+    v_p(t-\theta)>0\ \mathrm{odd}\ \text{for some }\theta\in\Theta}}p.
+\]
+
+\begin{lemma}\label{lem:odd}
+For every such $t$, one has $M_S(t)=\Odd_S(R(t))$.
+Consequently an equation
+\begin{equation}\label{eq:covercondition}
+                       z^2=-R(\lambda)R(a\lambda)
+                       \qquad(z\in\Q^*)
+\end{equation}
+implies $M_S(\lambda)=M_S(a\lambda)$.
+\end{lemma}
+\begin{proof}
+Outside $2,3,5$, all contacts are integral and all their pairwise
+differences are units. If $v_p(t)<0$, every factor of $F(t)$
+has valuation $v_p(t)$ and $v_p(t-1)=v_p(t)$. Hence
+$v_p(R(t))=-2v_p(t)$ is even. If $t$ is integral, at most one
+contact factor has positive valuation. The denominator of $R$
+has even valuation, so the parity of $v_p(R(t))$ is exactly
+the parity of that contact valuation. This also handles primes
+at which a contact and the pole become congruent: no assertion
+that $v_p(R(t))$ is positive is needed here.
+
+Equation~\eqref{eq:covercondition} makes the sum of the two
+valuations even at every prime. Their odd valuation sets are
+therefore equal, and the first assertion proves the conclusion.
+\end{proof}
+
+\section{The genera of the covers}
+
+For $d\in\Q^*$, let $C_{a,d}$ be the smooth projective curve
+with function field obtained from $\Q(\lambda)$ by adjoining
+a square root of $dR(\lambda)R(a\lambda)$.
+
+\begin{theorem}\label{thm:genus}
+For every rational $a>4$ and $d\ne0$, the curve $C_{a,d}$ is
+geometrically integral of genus four. A birational affine model is
+\begin{equation}\label{eq:model}
+ Y^2=d\prod_{\theta\in\Theta^*}
+                      (\lambda-\theta)(\lambda-\theta/a).
+\end{equation}
+The quadratic covers associated with either $dR(\lambda)$ or
+$dR(a\lambda)$ have genus two.
+\end{theorem}
+\begin{proof}
+Factoring out the common zero at zero gives
+\[
+ R(\lambda)R(a\lambda)
+ =\frac{a^6\lambda^2
+       \prod_{\theta\in\Theta^*}(\lambda-\theta)(\lambda-\theta/a)}
+       {(\lambda-1)^8(a\lambda-1)^8}.
+\]
+If $z^2=dR(\lambda)R(a\lambda)$, the change
+\[
+             Y=\frac{z(\lambda-1)^4(a\lambda-1)^4}{a^3\lambda}
+\]
+proves~\eqref{eq:model} on the admissible open set.
+
+All ten displayed roots are distinct. Within either group this
+is immediate. An equality $\theta=\eta/a$, with
+$\theta,\eta\in\Theta^*$, would give $a=\eta/\theta$.
+The absolute values of the five nonzero contacts lie in
+$[1/4,1]$, so this ratio is at most four. Thus the degree-ten
+polynomial in~\eqref{eq:model} is squarefree.
+
+The double cover of the projective line is ramified at precisely
+these ten simple roots. Its even-degree pole at infinity is
+unramified. Riemann--Hurwitz~\cite[Section~53.12]{Stacks} gives
+\[
+                         2g-2=2(-2)+10=6.
+\]
+The simple roots also show that the defining rational function
+is not a square over $\overline\Q(\lambda)$, which proves
+geometric integrality. For a single contact function there are
+six simple zeros, and all pole orders are even. The same formula
+gives $2g-2=-4+6=2$, hence genus two.
+\end{proof}
+
+\begin{theorem}\label{thm:finite}
+Fix $a\in\Q$, $a>4$, and a finite set of primes $S$.
+There are only finitely many admissible rational slopes satisfying
+\begin{equation}\label{eq:equalsets}
+                          M_S(\lambda)=M_S(a\lambda).
+\end{equation}
+When $S$ does not contain $2,3,5$, the same conclusion holds
+with the evident contact definition of $M_S$.
+\end{theorem}
+\begin{proof}
+Enlarging $S$ weakens~\eqref{eq:equalsets}, so we may assume
+that it contains $2,3,5$. By Lemma~\ref{lem:odd}, the product
+$R(\lambda)R(a\lambda)$ has even valuation at every prime
+outside $S$. Therefore
+\[
+                     R(\lambda)R(a\lambda)=d w^2
+\]
+for $w\in\Q^*$ and one of the finitely many numbers
+\[
+                  d\in\left\{\pm\prod_{p\in S}p^{e_p}:
+                                           e_p\in\{0,1\}\right\}.
+\]
+Negative valuations cause no difficulty: only their parity
+enters the rational squareclass. This equation gives a rational
+point on $C_{a,d}$ by taking $z=dw$.
+Each of these finitely many curves has genus four by
+Theorem~\ref{thm:genus}, so its rational points form a finite set
+by Faltings' theorem~\cite{Faltings}. Their slope projections
+form a finite set as well.
+\end{proof}
+
+Thus equality of the two odd valuation sets cannot coexist with
+an unbounded supply of slopes at a fixed scale, even if arbitrary
+auxiliary algebraic variables are used to impose that equality.
+This conclusion does not assert that the finite set contains
+no arithmetically suitable slope.
+
+\begin{proposition}\label{prop:finitecovers}
+Let $C/\Q$ be a smooth projective geometrically integral curve
+with a nonconstant rational function $\lambda$. Suppose that,
+in $\Q(C)$,
+\[
+              R(\lambda)^{e_0}R(a\lambda)^{e_1}=d w^2,
+ \qquad d\in\Q^*,\quad w\in\Q(C)^*,
+\]
+for some nonzero $(e_0,e_1)\in\{0,1\}^2$.
+Then $g(C)\ge2$. If $e_0=e_1=1$, then $g(C)\ge4$.
+In particular, such a dependence of squareclasses cannot be
+imposed by a curve of genus zero or one dominating the slope line.
+\end{proposition}
+\begin{proof}
+The rational function on the left is not a square over
+$\overline\Q(\lambda)$, as shown by its simple branch points.
+The displayed equation therefore gives an embedding of the
+corresponding quadratic function field into $\Q(C)$, and hence
+a nonconstant morphism from $C$ to its smooth projective curve.
+The target has genus two if just one exponent is nonzero, and
+genus four if both are nonzero. Riemann--Hurwitz gives
+$g(C)-1\ge\deg(f)(g(\mathrm{target})-1)$, proving both assertions.
+\end{proof}
+
+\section{The rational section and an inert prime}
+
+The negative product cover nevertheless has a rational point
+for every scale. Set
+\begin{equation}\label{eq:section}
+                         \lambda_a=-\frac{a+1}{5a}.
+\end{equation}
+Then $-1/4<\lambda_a<-1/5$ and $a\lambda_a<-1$, so the pair
+is admissible and
+\begin{equation}\label{eq:signs}
+                         R(\lambda_a)<0<R(a\lambda_a).
+\end{equation}
+The exact identities are
+\begin{align}
+ R(\lambda_a)R(a\lambda_a)
+ &=-\left(\frac{25a(a-4)(a-1)(a+1)(2a-3)(3a-2)(4a-1)}
+ {24(a+6)^4(6a+1)^4}\right)^2,\label{eq:sectionidentity}\\
+ R(a\lambda_a)
+ &=\frac{25(a+1)(a-4)(2a-3)(3a-2)(4a-1)(a-1)}
+ {24(a+6)^8}.\label{eq:sectionR}
+\end{align}
+For a direct proof of the first identity, the involution
+$\psi(t)=-t/(5t+1)$ satisfies
+$F(\psi(t))=-F(t)/(5t+1)^6$ and
+$a\lambda_a=\psi(\lambda_a)$. Substitution gives
+\eqref{eq:sectionidentity}; direct substitution gives
+\eqref{eq:sectionR}. These identities also appear in~\cite{Product}.
+
+Use the elliptic curve and non-torsion point
+\[
+ K=\Q(\sqrt2),\quad D=11-6\sqrt2,\quad E:y^2=x^3-Dx,
+\]
+\[
+ P=\left(\frac{57-28\sqrt2}{8},
+          \frac{-660+417\sqrt2}{32}\right),\qquad
+ T(m)=\Tr_{K/\Q}x([m]P).
+\]
+The non-torsion assertion has an unconditional finite-reduction
+certificate in~\cite{CM}. At the places $\sqrt2\equiv6\pmod{17}$
+and $\sqrt2\equiv5\pmod{23}$, the reductions of $P$ have orders
+five and three, while the curve orders are twenty and twenty-four.
+If $P$ were torsion, its order would be divisible by five; its
+five-primary part would inject at the second place, contradicting
+the order twenty-four. Write $f(Q)=1/x(Q)$, with its regular
+value zero at the identity, and let $\sigma$ denote conjugation of $K$.
+
+\begin{lemma}\label{lem:inert}
+Let $p>76176$ be inert in $K$, and let $H\in E(K)$.
+The two conditions, when their values are defined,
+\[
+                  v(f(H))>0,\qquad
+                  v(\sigma f(H-P))>0
+\]
+cannot both hold at the unique place above $p$.
+\end{lemma}
+\begin{proof}
+The curve has good reduction, and a point with positive
+reciprocal-abscissa valuation reduces to the identity. The
+unique place above an inert prime is preserved by $\sigma$.
+The displayed conditions would therefore make both $H$ and
+$H-P$ reduce to the identity, and hence would make $P$ reduce
+to the identity. But the displayed affine coordinates of $P$
+are integral at every odd prime; on the good projective model
+their reduction is a finite point. This is a contradiction.
+\end{proof}
+
+\begin{theorem}\label{thm:sectionfailure}
+Put
+\[
+        p=315467,\qquad m=p+1=315468,\qquad
+        M=2p^2m=62790389880761304.
+\]
+For every integer $k\ge0$, take the true integer input $X=0$
+and the odd shift
+\[
+                  B=3+kM,\qquad n=\beta=B,
+ \qquad a=B^8+T(B)^8.
+\]
+At the slope~\eqref{eq:section},
+\[
+                v_p(R(\lambda_a))=v_p(R(a\lambda_a))=1.
+\]
+The elliptic comparison tests obtained from a single retained
+pole certificate for $R(a\lambda_a)$ cannot be satisfied.
+\end{theorem}
+\begin{proof}
+Trial division proves that $p$ is prime, and $p\equiv3\pmod8$,
+so it is inert in $K$. Exact addition on $E$ gives
+\begin{equation}\label{eq:T3}
+ T(3)=\frac{59609817879309699127684977}{508847420105479203017476}.
+\end{equation}
+The point $[3]P$ is affine and integral at $p$.
+Writing $a_3=3^8+T(3)^8$, exact rational arithmetic gives
+\begin{equation}\label{eq:modp2}
+              a_3\equiv4+67222p\pmod{p^2},
+              \qquad p^2=99519428089.
+\end{equation}
+In particular $v_p(a_3-4)=1$.
+The finite-field addition certificate also gives
+$[m]P=O$ after reduction modulo $p$. It computes the order
+of this reduction to be $157734$; the larger annihilator $m$
+is sufficient here.
+
+For completeness, work over the unramified quadratic extension
+of $\Q_p$. Let $E_1$ and $E_2$ be the kernels of reduction
+modulo $p$ and $p^2$. The formal parameter at the identity
+identifies the group law on $E_1/E_2$ with addition in
+$p\mathcal O/p^2\mathcal O$. Hence $[p]E_1\subset E_2$.
+As $[m]P\in E_1$, the congruence $B\equiv3\pmod{2p^2m}$
+implies
+\[
+                       [B]P\equiv[3]P\pmod{p^2}.
+\]
+Since the latter point is affine, its abscissa and its trace
+are preserved modulo $p^2$. Also $B\equiv3\pmod{p^2}$.
+Consequently
+\[
+                 B^8+T(B)^8\equiv a_3\pmod{p^2},
+                 \qquad v_p(a-4)=1.
+\]
+All other numerator factors and the denominator in
+\eqref{eq:sectionR} are units at this prime: their residues
+at $a=4$ involve only $2,3,5$. Thus $v_p(R(a\lambda_a))=1$.
+Likewise
+\[
+ \lambda_a+\tfrac14=\frac{a-4}{20a},\qquad
+ a\lambda_a+1=-\frac{a-4}{5}
+\]
+both have valuation one, and the remaining contact factors are
+units. This gives $v_p(R(\lambda_a))=1$.
+
+At a positive odd contact, the retained trace normalization
+and pole obstruction force every comparison test to have
+positive valuation at one place above $p$, exactly as in
+\cite[Lemma~4.1]{Conditional}. Two of those tests are
+$f(H)$ and $\sigma f(H-P)$. Lemma~\ref{lem:inert} makes
+their simultaneous positivity impossible. Hence no comparison
+witness exists at the displayed slope.
+\end{proof}
+
+The theorem concerns the explicit section~\eqref{eq:section}.
+It does not exclude every rational point of $C_{a,-1}$.
+The shifts in the theorem are unbounded, so increasing a
+uniform lower bound for the odd shift does not make this
+particular section sufficient for all integer inputs.
+
+\section{The implication supplied by one pole}
+
+We record separately what the quadratic equation does prove.
+Retain the hypotheses and guarded elliptic point data of
+\cite{Conditional}: the weak rational $abc$ inequality with
+exponent $121/100$, the group identity $2E(K)=\Z P$, and the
+specified pole obstruction. Put
+\[
+ A=[n]P,\quad H=[h]P,\quad U=[u]P,\quad
+ V_0=H-P,\quad V_1=U-A,
+\]
+with the nonzero charts and quotients required there. For
+$z=-x/y$, put
+\[
+ L=\frac{z(U)}{z(H)},\qquad
+ L'=\sigma\!\left(\frac{z(V_1)}{z(V_0)}\right),
+\]
+and use the six tests
+\[
+ D_1=f(H),\ D_2=f(U),\ D_3=\sigma f(V_0),\
+ D_4=\sigma f(V_1),\ D_5=L-L',\ D_6=L-\beta.
+\]
+Set $\beta=2X^2+B$, $a=\beta^8+T(n)^8$, and retain
+only the pole certificate for
+\[
+ W_1=\prod_{j=1}^6\left(1+
+        \frac{D_j^2}{(a\lambda-1)^4R(a\lambda)}\right),
+ \qquad b_1=\frac{R(a\lambda)}{\Tr(W_1^{-1})^2}.
+\]
+Adjoin equation~\eqref{eq:covercondition}, with all the displayed
+denominators and contact values guarded nonzero.
+
+\begin{proposition}\label{prop:soundness}
+Under these hypotheses, there is a constant $B_*$ such that
+every rational solution of this system for an odd $B\ge B_*$
+has $X\in\Z$.
+\end{proposition}
+\begin{proof}
+Take $S=\{p:p\le76176\}$ and suppose $\beta\ne n$.
+Let $N$ be the positive reduced numerator of $\beta-n$.
+The unchanged local comparison argument at the retained pole
+gives $M_S(a\lambda)\mid N$.
+Lemma~\ref{lem:odd} supplies $M_S(\lambda)=M_S(a\lambda)$,
+so both radicals divide $N$.
+
+The two height consequences of weak $abc$ proved in
+\cite[Lemmas~2.1 and~2.2]{Conditional} therefore give, for
+$\eta=h(1:\beta:T(n))$,
+\[
+                  \eta\le q\log N+C,
+                  \qquad q=\frac{14641}{16169}<1.
+\]
+The constant $C$ is independent of the input shift and all
+witnesses. Since
+$N\le e^{h(\beta)}(1+|n|)$ and $h(\beta)\le\eta$,
+\[
+          \eta\le\frac{q}{1-q}\log(1+|n|)+\frac{C}{1-q}.
+\]
+The retained trace-height theorem gives
+$n^2\le A_0h(T(n))+J\le A_0\eta+J$, with fixed constants.
+These inequalities bound $n$, and then $h(\beta)$, independently
+of $B$. But $\beta=2X^2+B\ge B$, so a sufficiently large odd
+$B$ is impossible unless $\beta=n$. Finally, if $X=u/v$ is
+reduced and $\beta\in\Z$, then $v^2\mid2$ and therefore $v=1$.
+\end{proof}
+
+No converse is asserted in Proposition~\ref{prop:soundness}.
+The quadratic condition supplies the needed parity implication,
+but a definition also requires suitable rational points on the
+cover together with all elliptic and pole witnesses for every
+integer input. Theorem~\ref{thm:finite} prevents retaining the
+usual unbounded choice of slopes at each fixed scale, and
+Theorem~\ref{thm:sectionfailure} excludes the displayed section
+as a uniform substitute. Neither statement excludes a different
+arithmetic existence argument.
+
+\section{Exact verification}
+
+The standard-library program
+\nolinkurl{computation/pole_parameters/check_quadratic_contact_covers.py}
+verifies both section identities by exact polynomial arithmetic.
+It enumerates the possible collision ratios of nonzero contacts;
+their largest value is four. The genus calculation then follows
+from the ten distinct branch points, not from sampled scales.
+
+The program reconstructs~\eqref{eq:T3} independently by
+chord-and-tangent addition and by the third division polynomial.
+It verifies primality and inertness of $315467$, all affine
+denominator conditions, the exact residues modulo $p^2$, and
+the two contact valuations. Two binary multiplication orders
+verify the finite-field annihilator used in the progression
+argument. The output is
+\nolinkurl{computation/pole_parameters/quadratic-contact-covers-certificate.json}.
+The proof of finiteness uses Faltings' theorem separately;
+no finite computation is claimed to prove that theorem or
+the completeness of a defining polynomial.
+
+\begin{thebibliography}{9}
+\bibitem{Conditional}
+\emph{Thirteen Variables from a Weak $abc$ Inequality},
+companion paper, 9 November 2026,
+\nolinkurl{papers/conditional_few_variables/conditional13_20261109_v16.tex}.
+\bibitem{Product}
+\emph{Odd Radicals and Products of Six Linear Factors},
+companion paper, 10 November 2026,
+\nolinkurl{papers/pole_parameters/product_height_obstructions_20261110_v19.tex}.
+\bibitem{CM}
+\emph{Complex Multiplication and Trace Cancellation},
+companion paper, 10 November 2026,
+\nolinkurl{papers/number_fields/complex_multiplication_and_trace_cancellation_20261110_v19.tex}.
+\bibitem{Stacks}
+The Stacks Project Authors, \emph{The Stacks Project},
+Section~53.12, Riemann--Hurwitz, Tag~0C1B.
+\url{https://stacks.math.columbia.edu/tag/0C1B}.
+\bibitem{Faltings}
+G.~Faltings, \emph{Endlichkeitss\"atze f\"ur abelsche Variet\"aten
+\"uber Zahlk\"orpern}, Inventiones Mathematicae \textbf{73} (1983),
+349--366, \url{https://doi.org/10.1007/BF01388432};
+erratum, \textbf{75} (1984), 381,
+\url{https://doi.org/10.1007/BF01388572}.
+\end{thebibliography}
+\end{document}

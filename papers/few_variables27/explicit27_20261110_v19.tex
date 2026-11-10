@@ -17,7 +17,7 @@
 Under the specified normalized elliptic, modular, pole-realization and
 prime-pattern inputs, we construct integer polynomials in twenty-seven
 total variables whose rational input projection is exactly the integers.
-An explicit sufficient coefficient parameter is $L=125001$.
+An explicit sufficient coefficient parameter is $L=20483$.
 Three comparison scales control the two rational components of a sum
 of four elliptic abscissas, so the height argument uses only effective
 constants. Scalar and comparison divisibility conditions share three
@@ -46,13 +46,13 @@ Under the arithmetic inputs below there is a computable family
  F_L\in\Z[X,Y_1,\ldots,Y_{26}],\qquad L\ge3\text{ odd},
 \]
 given by a finite integer coefficient specification. Every odd
-$L\ge125001$ defines $\Z$ over $\Q$. In particular,
-$F_{125001}$ is a fully specified defining polynomial.
+$L\ge20483$ defines $\Z$ over $\Q$. In particular,
+$F_{20483}$ is a fully specified defining polynomial.
 The integer $L$ is a fixed coefficient parameter and is not a
 quantified variable. The total degree is at most
 $85829362869408651982929920<2^{87}$, uniformly in $L$.
-For $L=125001$, the maximum absolute integer coefficient is less
-than $2^{2^{102}}$. No additional $abc$ or Szpiro hypothesis is used.
+For $L=20483$, the maximum absolute integer coefficient is less
+than $2^{2^{99}}$. No additional $abc$ or Szpiro hypothesis is used.
 \end{theorem}
 
 Write $h$ for the absolute logarithmic Weil height, and put
@@ -85,6 +85,10 @@ $p>76176$ having positive odd valuation in at least one of
 The modular realization, including the normalized compatible
 representation used in its multiplicity theorem, is retained as
 an explicit arithmetic input.
+We will also use the sharper estimate from the same theorem,
+\begin{equation}\label{eq:logbase}
+ h(q)\le C M_5(q)^2(1+\log M_5(q))^2,\qquad C<2^{221231}.
+\end{equation}
 \item For $b\ne0$ and $B_0=17b$, the pole predicate is
 \begin{equation}\label{eq:pole}
  \begin{split}
@@ -532,24 +536,27 @@ only even valuations. Hence
 \[
                          M_{4j+2}M_{4j+4}=M_j.
 \]
-If $h(t_j)>\log35$, applying~\eqref{eq:baseheight} to both
-five-contact sets and multiplying gives
+Put $\mathcal K=2^{221432}$. If $h(t_j)>\log35$, apply
+\eqref{eq:logbase} to the two blocks, multiply, and take a square
+root. This gives
 \[
- \bigl(h(t_j)-\log35\bigr)^2
-                  \le H^2E_*^{14/3}M_j^{7/3}.
+ h(t_j)-\log35\le CE_*^2M_j
+ (1+\log E_*+\log M_{4j+2})
+ (1+\log E_*+\log M_{4j+4}).
 \]
-The same final bound is immediate if $h(t_j)\le\log35$.
-Since
-\[
- \log35+H E_*^{7/3}<2^{221470}=\overline H,
-\]
-we conclude that
+The product of the last two factors is at most
+$(1+\log E_*+\tfrac12\log M_j)^2$. The same eventual bound
+is immediate if $h(t_j)\le\log35$. Since $E_*<2^{100}$,
+$CE_*^2<2^{221431}$ and $1+\log E_*<101$.
+Using $\log35<4$ and $M_j\ge1$, we can absorb the additive
+term by doubling the constant. Thus
 \begin{equation}\label{eq:tenheight}
-                         h(t_j)\le\overline H M_j^{7/6}
-                         \qquad(j=0,1,2).
+ h(t_j)\le \mathcal KM_j\left(101+\frac12\log M_j\right)^2
+                              \qquad(j=0,1,2).
 \end{equation}
-All excluded primes and the height cost of translation have now
-been included explicitly.
+All excluded primes and the height cost of translation are included
+explicitly. The pure-power estimate with $\overline H$ remains
+available for the separate scalar bound \eqref{eq:scalarheight}.
 
 \subsection{Two rational components of the abscissa sum}
 
@@ -584,7 +591,8 @@ with $2\log2<2$ yields
 Consequently, \eqref{eq:divisibility}, \eqref{eq:rhoheight}, and
 \eqref{eq:tenheight} give the effective common inequality
 \begin{equation}\label{eq:commonheight}
- B^2\le2\overline H|Nc|^{7/(6k)}
+ B^2\le2\mathcal K|Nc|^{1/k}
+       \left(101+\frac{\log|Nc|}{2k}\right)^2
                       +30h(\beta)+4L\log\ell+340,
 \end{equation}
 where $(N,k)=(\Delta,3)$ if $\Delta\ne0$, and
@@ -592,10 +600,11 @@ $(N,k)=(u-nv,1)$ if $u-nv\ne0$.
 
 \section{An explicit sufficient coefficient parameter}
 
-Assume throughout this section that $L\ge125001$ is odd.
-As $\ell>2^{16}$, equation~\eqref{eq:cforced} gives
+Assume throughout this section that $L\ge20483$ is odd.
+An exact integer comparison gives
 \begin{equation}\label{eq:binaryforced}
- c\ge\ell^{2L+1}>2^{4000048}.
+ c\ge\ell^{2L+1}\ge76249^{40967}>2^{664420},
+ \qquad 76249^{40967}-1\ge2^{664417}.
 \end{equation}
 In particular $\ell^{2L+1}>120\overline H$, so
 \eqref{eq:scalarheight} implies
@@ -616,14 +625,20 @@ Thus these three terms can be absorbed into $B^2/2$.
 
 If $\Delta\ne0$, the elementary bounds $B>4$, $c\le2B$ and
 $|\Delta|\le5B^4$ give $|\Delta c|\le10B^5$.
-Equation~\eqref{eq:commonheight} then implies
+Equation~\eqref{eq:commonheight} and absorption then imply
 \[
- B^{1/18}\le4\overline H10^{7/18},
- \qquad
- B\le4^{18}10^7\overline H^{18}<2^{3986520}.
+ B^{1/3}<9\mathcal K\left(102+\frac56\log B\right)^2.
 \]
-Here $10^7<2^{24}$ gives the last strict inequality. This contradicts
-$B\ge c-1$ and~\eqref{eq:binaryforced}. Therefore
+Indeed $4^3\cdot10<9^3$ and $\log10<3$. The quotient
+$\exp(b/3)/(102+5b/6)^2$ is increasing for $b\ge0$, since its
+logarithmic derivative is $1/3-\frac{5/3}{102+5b/6}>0$.
+Put $T_0=664417$. The exact integer inequality
+\[
+ 2^{T_0-664296}12^6>9^3(1224+7T_0)^6
+\]
+and $\log2<7/10$ show that the displayed bound fails at
+$b=T_0\log2$. Thus $B<2^{T_0}$, contradicting
+$B\ge c-1\ge2^{T_0}$. Therefore
 \begin{equation}\label{eq:Delta0}
                               \mathcal F(a,t,b)=0.
 \end{equation}
@@ -666,24 +681,33 @@ $N=u-nv\ne0$. Then
 \[
                          |N|\le2e^{h(\beta)}B.
 \]
-Retain $c$ separately in the product $|Nc|$. After the same
-absorption, equation~\eqref{eq:commonheight}, now with $k=1$, gives
+Retain $c$ separately in $|Nc|$, and put $b_0=\log B$ and
+$t_0=h(\beta)+\log c$. After the same absorption,
+\eqref{eq:commonheight} with $k=1$ and $\log2<1$ gives
 \[
- B^{5/6}\le4\overline H2^{7/6}e^{(7/6)h(\beta)}c^{7/6}.
+ b_0\le\log(8\mathcal K)+t_0+
+                 2\log\left(102+\frac{b_0+t_0}{2}\right).
 \]
-Taking logarithms and using $\log2<1$ yields
+Using $\log(1+x)\le x$ and then rearranging, we obtain
 \begin{equation}\label{eq:inputlog}
- \log B<265768+\frac75\bigl(h(\beta)+\log c\bigr)
-          \le265768+\frac{217}{600}c<c-4.
+ \begin{split}
+ \log B&\le\frac{103}{101}t_0+
+                    \frac{102}{101}\log(8\mathcal K\cdot102^2)\\
+       &<2\bigl(h(\beta)+\log c\bigr)+224000
+        \le\frac{31}{60}c+224000<c-4.
+ \end{split}
 \end{equation}
-Here $h(\beta)\le c/120$ and $\log c\le c/4$ for $c\ge16$.
-The last inequality holds for $c\ge10^6$: it is strict at $10^6$
-and the coefficient $217/600$ is less than one.
+The numerical constant follows from $102^2<2^{14}$ and
+$102\cdot221449<101\cdot224000$.
+Here $h(\beta)\le c/120$, and $\log c\le c/4$ for $c\ge16$.
+The final inequality is strict at $c=10^6$ and remains strict for
+larger $c$, because $31/60<1$; equation~\eqref{eq:binaryforced}
+ensures this range.
 This contradicts~\eqref{eq:Lucasgrowth}, so $\beta=n\in\Z$.
 If $X=u_0/v_0$ is reduced with $v_0>0$, integrality of
 $216X^4+450459$ implies $v_0^4\mid216=2^3 3^3$.
 Thus $v_0=1$ and $X\in\Z$. This proves soundness for every
-fixed odd $L\ge125001$.
+fixed odd $L\ge20483$.
 
 \section{Completeness}
 
@@ -947,10 +971,10 @@ The independent weighted-degree calculation gives, uniformly in $L$,
 \begin{equation}\label{eq:degree}
  \deg F_L\le85829362869408651982929920<2^{87}.
 \end{equation}
-At the explicit defining member $L=125001$, the maximum absolute
+At the explicit defining member $L=20483$, the maximum absolute
 integer coefficient is less than
 \begin{equation}\label{eq:coefficients}
-                                  2^{\,2^{102}}.
+                                  2^{\,2^{99}}.
 \end{equation}
 The separating variable has degree at most $E=1099509530624$.
 Writing $D=85829362869408651982929920$, the support is therefore
@@ -997,7 +1021,7 @@ they are not a proof of universal polynomial identities. The reports
 \nolinkurl{independent-source-verification.json} and
 \nolinkurl{independent-bound-verification.json} verify the stated
 source census, all $262144$ degree cases, the degree and support
-bounds, and the coefficient bound at $L=125001$. These finite
+bounds, and the coefficient bound at $L=20483$. These finite
 checks certify the specification and inequalities stated here; the
 arithmetic inputs remain precisely those in Section~1.
 

@@ -2,7 +2,7 @@
 
 This directory specifies the polynomial proved in
 [`explicit27_20261110_v19.tex`](../../../papers/few_variables27/explicit27_20261110_v19.tex).
-Under the paper's stated modular-realization, elliptic-group, pole-realization, and simultaneous prime-pattern inputs, the fixed odd coefficient exponent **L=125001** gives a Diophantine definition of the integers over the rationals. No additional abc hypothesis is used. The effective sum-height estimate provides the numerical threshold; no ineffective aggregate trace constant is used for this branch.
+Under the paper's stated modular-realization, elliptic-group, pole-realization, and simultaneous prime-pattern inputs, the fixed odd coefficient exponent **L=20483** gives a Diophantine definition of the integers over the rationals. No additional abc hypothesis is used. The effective sum-height estimate provides the numerical threshold; no ineffective aggregate trace constant is used for this branch.
 
 The source has 26 retained rational coordinates: the input, 18 coordinates for nine elliptic points, one nonzero slope, and six pole parameters. Nine quartic point generators and three nonzero quadratic pole generators belong to a finite coefficient algebra of rank 2^21. One additional separating coordinate eliminates these finite generators. The final polynomial has **27 total variables**, including the input.
 
@@ -19,11 +19,11 @@ Each detector has two disjoint translated five-contact blocks. The ten raw recip
 | Quantity | Certified value |
 |---|---:|
 | Total polynomial variables | 27 |
-| Fixed coefficient exponent | 125001 |
+| Fixed coefficient exponent | 20483 |
 | Total degree upper bound | 85829362869408651982929920, less than 2^87 |
 | Support upper bound | less than 2^2192 |
-| Coefficient height upper bound | less than 2^(2^102) |
-| Binary logarithmic coefficient-norm bound | 3593722961921650418383728672749 |
+| Coefficient height upper bound | less than 2^(2^99) |
+| Binary logarithmic coefficient-norm bound | 589273999334519307487155060717 |
 | Rational source coefficient nodes | 6898 |
 | Integer source coefficient nodes | 2588 |
 | Atomic guard factors | 164 |
@@ -36,7 +36,7 @@ These are upper bounds for the unexpanded determinant polynomial. The exact mono
 From the repository root, using the Python standard library:
 
 ```sh
-python computation/few_variables/effective27_v19/build_effective_source.py --anchor-exponent 125001 --output computation/few_variables/effective27_v19/certificate
+python computation/few_variables/effective27_v19/build_effective_source.py --anchor-exponent 20483 --output computation/few_variables/effective27_v19/certificate
 python computation/few_variables/active_elimination/build_active_specification.py computation/few_variables/effective27_v19/certificate/source-polynomial-specification.json computation/few_variables/effective27_v19/active27
 python computation/few_variables/effective27_v19/check_effective_source.py computation/few_variables/effective27_v19/certificate --output computation/few_variables/effective27_v19/independent-source-verification.json
 python computation/few_variables/effective27_v19/check_effective_bounds.py --output computation/few_variables/effective27_v19/independent-bound-verification.json

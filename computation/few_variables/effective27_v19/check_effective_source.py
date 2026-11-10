@@ -177,8 +177,8 @@ def main():
     assert source['source_builder_sha256']==hashlib.sha256(builder).hexdigest()
     assert source['formal_precision']==4
     assert source['family_parameter']['effective_threshold_known'] is True
-    assert source['family_parameter']['certified_sufficient_lower_bound']==125001
-    assert source['family_parameter']['selected_member_certified_to_define_Z']==(source['family_parameter']['value']>=125001)
+    assert source['family_parameter']['certified_sufficient_lower_bound']==20483
+    assert source['family_parameter']['selected_member_certified_to_define_Z']==(source['family_parameter']['value']>=20483)
     slope=next(v['index'] for v in source['variables'] if v['name']=='slope.lambda')
     slope_node=source['coefficient_dag'].index(['variable',slope])
     assert slope_node in source['guard_numerators']

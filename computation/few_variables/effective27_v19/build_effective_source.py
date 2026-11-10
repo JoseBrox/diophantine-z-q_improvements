@@ -2,7 +2,7 @@
 """Build the guarded source with three combined scalar/comparison pole inputs.
 
 The fixed odd exponent is a coefficient choice. The effective arithmetic
-proof certifies every odd exponent at least 125001. Successful coefficient
+proof certifies every odd exponent at least 20483. Successful coefficient
 reconstruction verifies the specification, not the arithmetic theorem.
 """
 from __future__ import annotations
@@ -149,14 +149,14 @@ class EffectiveBuilder(PreferredBuilder):
         assert [r['degree'] for r in self.relations]==[4]*9+[2]*3
         return {
             'format':'shared-point-source-coefficient-dag/v1',
-            'status':'Exact raw-comparison combined-pole coefficient family under the stated inherited arithmetic inputs. Every fixed odd exponent at least 125001 is certified by the effective companion proof.',
+            'status':'Exact raw-comparison combined-pole coefficient family under the stated inherited arithmetic inputs. Every fixed odd exponent at least 20483 is certified by the effective companion proof.',
             'source_commit':'34454098637ba9100b19071da55a38199589f5e0',
             'source_builder_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
             'additional_arithmetic_input':'Retains the elliptic group, pole obstruction and realization, simultaneous prime-pattern inputs, and the full modular realization used by the proved exponent-7/3 contact-height theorem. Uses the proved effective elliptic sum-height estimate with exponent 82. No additional abc hypothesis is used. Simultaneous preparation and global soundness are proved separately in the companion paper.',
             'family_parameter':{'name':'L','value':self.forced_exponent,'quantified':False,
                 'constraint':'odd integer L>=3','sufficient_threshold_exists':True,
-                'effective_threshold_known':True,'certified_sufficient_lower_bound':125001,
-                'selected_member_certified_to_define_Z':self.forced_exponent>=125001},
+                'effective_threshold_known':True,'certified_sufficient_lower_bound':20483,
+                'selected_member_certified_to_define_Z':self.forced_exponent>=20483},
             'anchor_kind':'forced_prime_with_three_combined_poles_and_effective_sum_height','share_scalar_height_point':True,
             'retained_base_count':26,'total_polynomial_variables_after_finite_algebra':27,
             'variables':self.c.variables,'coefficient_dag':self.c.nodes,
@@ -185,14 +185,14 @@ class EffectiveBuilder(PreferredBuilder):
 
 def main():
     ap=argparse.ArgumentParser(description=__doc__)
-    ap.add_argument('--anchor-exponent',type=int,default=125001)
+    ap.add_argument('--anchor-exponent',type=int,default=20483)
     ap.add_argument('--output',type=Path,required=True)
     args=ap.parse_args();source=EffectiveBuilder(args.anchor_exponent).build()
     raw=(json.dumps(source,separators=(',',':'))+'\n').encode()
     args.output.mkdir(parents=True,exist_ok=True)
     (args.output/'source.json.gz').write_bytes(gzip.compress(raw,mtime=0))
     spec=compile_source(source,hashlib.sha256(raw).hexdigest())
-    spec['arithmetic_status']='Under the stated inherited premises, the effective companion proof certifies all fixed odd exponents L>=125001. The family parameter records whether this selected member is certified.'
+    spec['arithmetic_status']='Under the stated inherited premises, the effective companion proof certifies all fixed odd exponents L>=20483. The family parameter records whether this selected member is certified.'
     encoded=(json.dumps(spec,separators=(',',':'))+'\n').encode()
     (args.output/'source-polynomial-specification.json').write_bytes(encoded)
     receipt={'source_sha256':hashlib.sha256(raw).hexdigest(),

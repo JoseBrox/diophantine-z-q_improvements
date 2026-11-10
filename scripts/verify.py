@@ -198,6 +198,31 @@ def main():
             quartic/'check_quartic265_v19.py'))
         for path,raw in four_factors.items():
             assert path.read_bytes()==raw,str(path)
+        inverse_contact={path:path.read_bytes()
+            for folder in ('family226_v21','family262_v21')
+            for path in sorted((quartic/folder).glob('*.json'))}
+        stages.append(run('226/262-variable inverse-weight contact reconstruction',
+            quartic/'build_inverse_contact_v21.py'))
+        stages.append(run('Independent contact projection, full rows, coefficients, and effective threshold',
+            quartic/'check_inverse_contact_v21.py'))
+        for path,raw in inverse_contact.items():
+            assert path.read_bytes()==raw,str(path)
+        abc_inverse={path:path.read_bytes() for path in
+            sorted((quartic/'family_abc89_v21').glob('*.json'))}
+        stages.append(run('89-variable abc inverse-contact quadratic reconstruction',
+            quartic/'build_abc_inverse_contact_v21.py'))
+        stages.append(run('Independent abc contact, factor, trace and pole equivalence and full coefficients',
+            quartic/'check_abc_inverse_contact_v21.py'))
+        for path,raw in abc_inverse.items():
+            assert path.read_bytes()==raw,str(path)
+        abc_reciprocal={path:path.read_bytes() for path in
+            sorted((quartic/'family_abc87_v21').glob('*.json'))}
+        stages.append(run('87-variable abc reciprocal-contact quadratic reconstruction',
+            quartic/'build_abc_reciprocal_contacts_v21.py'))
+        stages.append(run('Independent new contacts, full rows, coefficients, and exceptional prime supports',
+            quartic/'check_abc_reciprocal_contacts_v21.py'))
+        for path,raw in abc_reciprocal.items():
+            assert path.read_bytes()==raw,str(path)
         coordinate_budget=(quartic/'coordinate-budget279.json').read_bytes()
         stages.append(run('Disjoint coordinate accounting for the279-variable family',quartic/'check_coordinate_budget.py'))
         assert (quartic/'coordinate-budget279.json').read_bytes()==coordinate_budget
@@ -281,7 +306,7 @@ def main():
             assert p.read_bytes()==raw,str(p)
         for count,folder,stem,exponent in (
                 (25,'merged25_v19','merged',3),
-                (27,'effective27_v19','effective',125001)):
+                (27,'effective27_v19','effective',20483)):
             module=few/folder
             fixed_new={path:path.read_bytes() for path in module.rglob('*')
                 if path.is_file() and path.suffix in ('.json','.gz')}
@@ -409,6 +434,10 @@ def main():
         stages.append(run('Multiplicity contact-height constants and independent prime enumerations',
             contacts/'check_multiplicity_height.py'))
         assert (contacts/'multiplicity-height-certificate.json').read_bytes()==multiplicity
+        logarithmic=(contacts/'logarithmic-thresholds-v21-certificate.json').read_bytes()
+        stages.append(run('Logarithmic contact-height constants and explicit coefficient thresholds',
+            contacts/'check_logarithmic_thresholds_v21.py'))
+        assert (contacts/'logarithmic-thresholds-v21-certificate.json').read_bytes()==logarithmic
         local_tests=work/'computation/local_tests'
         normalized_tests=(local_tests/'rational-normalization-certificate.json').read_bytes()
         stages.append(run('Rational local normalization, even valuation strata, and disjoint contact units',
@@ -447,6 +476,10 @@ def main():
         assert (poles/'product-height-obstructions-v19-certificate.json').read_bytes()==product_obstructions
         stages.append(run('Rational contact-parity examples: exact positive norms, contact depths, and unit residuals',
             poles/'check_rational_contact_combinations_v20.py'))
+        contact_covers=(poles/'quadratic-contact-covers-certificate.json').read_bytes()
+        stages.append(run('Quadratic contact covers: exact section, branch points, and inert-prime obstruction',
+            poles/'check_quadratic_contact_covers.py'))
+        assert (poles/'quadratic-contact-covers-certificate.json').read_bytes()==contact_covers
         small_tau_algebra=(poles/'small-fixed-tau17-algebra-verification.json').read_bytes()
         stages.append(run('Dense prepared fixed-tau17 obstruction: rational identities and pinned rank input',
             poles/'check_small_fixed_tau17_algebra.py'))

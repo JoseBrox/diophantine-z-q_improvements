@@ -117,10 +117,12 @@ def build(source_root=HERE,output_root=HERE):
     C=max(abs(p[0]) for p in profiles.values() if set(p)=={0})
     L=max(abs(p[1]) for p in profiles.values() if set(p)=={1})
     assert C>L*L and 149**210+1<C<149**214+1
+    fixed_parameter=dict(source['fixedParameter'],
+        N='Every integer N>=9682; this effective sufficient threshold retains the logarithmic contact-height factor.')
     system=dict(source,format='integer-quadratic-family-four-factors-v19',variables=265,
-                source={'construction':SOURCE,'sha256':PIN},coordinates=coords,residuals=rows)
+                source={'construction':SOURCE,'sha256':PIN},fixedParameter=fixed_parameter,coordinates=coords,residuals=rows)
     quartic=dict(format='integer-quartic-family-four-factors-v19',variables=265,degree=4,
-                 inputCoordinate=1,fixedParameter=source['fixedParameter'],coordinates=coords,terms=terms(expanded))
+                 inputCoordinate=1,fixedParameter=fixed_parameter,coordinates=coords,terms=terms(expanded))
     report={
         'status':'Exact four-factor construction under the retained arithmetic premises and proved modular multiplicity height refinement.',
         'variables':265,'quadraticResiduals':237,'degree':4,'content':1,
@@ -135,10 +137,10 @@ def build(source_root=HERE,output_root=HERE):
         'deepComparisonValuationStrictLowerBound':'17*nu/8',
         'scalarWeights':['q^-1','q^-2','q^-4','q^5'],'scales':['1','S0^2','(S0+S1)^2'],
         'baseContactHeightConstant':'2^221234','baseContactHeightExponent':'7/3',
-        'tenContactHeightConstantUpperBound':'2^221284','tenContactHeightExponent':'7/6',
-        'definingThresholdN':14521,'forcedIndexDepthAtThreshold':68973,
-        'specifiedParameter':'149^29043','specifiedCoefficientHeight':'149^58086+1',
-        'specifiedCoefficientHeightBinaryDigits':419333,
+        'tenContactHeightConstantUpperBound':'2^221274','tenContactHeightExponent':'1 with (22+log(M)/2)^2',
+        'definingThresholdN':9682,'forcedIndexDepthAtThreshold':45988,
+        'specifiedParameter':'149^19365','specifiedCoefficientHeight':'149^38730+1',
+        'specifiedCoefficientHeightBinaryDigits':279599,
         'coordinateCountIdentity':'266+8+3-12=265',
         'arithmeticScope':'Full normalized modular realization, retained elliptic, pole and simultaneous-prime inputs; effective abscissa-sum height theorem. No additional abc hypothesis.',
     }

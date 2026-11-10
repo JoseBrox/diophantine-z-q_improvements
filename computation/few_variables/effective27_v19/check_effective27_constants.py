@@ -92,47 +92,45 @@ def main():
         factorial *= k
         taylor2 += q(2**k, factorial)
     assert taylor2 > 7
-    # Main profile and the explicit odd coefficient parameter.
+    # Logarithmic amplification retains the quadratic contact exponent.
+    logarithmic_height_bits = 221432
+    logarithmic_shift = 101
+    assert 221231+2*100 < logarithmic_height_bits
+    assert 4 < logarithmic_shift**2
+    # exp(7/10)>2 certifies log(2)<7/10 without floating arithmetic.
+    taylor07 = sum((q(7, 10)**k/q(prod(range(1, k+1))) for k in range(6)), q(0))
+    assert taylor07 > 2
     local_order = 3
-    L = 125001
+    L = 20483
     forced_exponent = 2*L+1
-    assert L >= 3 and L % 2 == 1 and forced_exponent == 250003
-    forced_binary_exponent = 16*forced_exponent
-    assert forced_binary_exponent == 4000048
-    # ell^(2L+1)>120*Hbar follows just from ell>2^16.
-    assert forced_binary_exponent > common_height_bits+7
-    assert 120 < 1 << 7
-    # Tail <=(9/4)c+340 is <(c-1)^2/2 for c>=100.
-    # The difference has positive derivative there; its value is checked.
+    forced_minimum = ell**forced_exponent
+    forced_binary_exponent = forced_minimum.bit_length()-1
+    assert L % 2 == 1 and forced_exponent == 40967
+    assert forced_binary_exponent == 664420
+    assert forced_minimum > 1 << forced_binary_exponent
+    assert forced_minimum > 120*(1 << common_height_bits)
+    # Scalar tail absorption is unchanged.
     assert q(99**2, 2) > q(9, 4)*100+340
     assert 100-1 > q(9, 4)
-    residual_exponent = exponent/(2*local_order)
-    assert residual_exponent == q(7, 18)
-    assert 5*residual_exponent == q(35, 18) < 2
-    # Delta!=0 implies B <=4^18 *10^7 *Hbar^18 <2^3986520.
-    assert 10**7 < 1 << 24
-    delta_binary_bound = 36+24+18*common_height_bits
-    assert delta_binary_bound == 3986520
-    assert forced_binary_exponent > delta_binary_bound+1
-    # The target uses only order1. Keep c separate in |N*c|, with
-    # |N|<=2*exp(h(beta))*B, instead of replacing c by2B.
-    input_exponent = q(7, 6)
+    # Delta!=0 implies B^(1/3)<9K(102+5log(B)/6)^2.
+    assert 4**3*10 < 9**3
+    delta_binary_bound = 664417
+    assert (1 << (delta_binary_bound-3*logarithmic_height_bits))*12**6 > 9**3*(1224+7*delta_binary_bound)**6
+    assert forced_minimum-1 >= 1 << delta_binary_bound
+    # Keep c separate in |N*c|<=2exp(h(beta))*B*c.
     input_order = 1
-    exact_constant = q(6, 5)*(common_height_bits+2+input_exponent)
-    assert exact_constant == q(1328839, 5) < 265768
-    constant = 265768
-    h_beta_coefficient = q(6, 5)*input_exponent
-    assert h_beta_coefficient == q(7, 5)
-    # log(c)<=c/4 for c>=16: e^4>16 follows from its first four
-    # nonnegative Taylor terms; the derivative of c/4-log(c) is positive.
+    constant = 224000
+    assert 102**2 < 1 << 14
+    assert 102*(logarithmic_height_bits+3+14) < 101*constant
+    assert q(103, 101) < 2
+    h_beta_coefficient = q(2)
     taylor4 = sum((q(4**k, prod(range(1, k+1))) for k in range(4)), q(0))
     assert taylor4 > 16
     assert q(1, 4)-q(1, 16) > 0
     linear_coefficient = h_beta_coefficient*(q(1, 120)+q(1, 4))
-    assert linear_coefficient == q(217, 600) < 1
+    assert linear_coefficient == q(31, 60) < 1
     c_floor = 10**6
-    assert 1 << 20 > c_floor
-    assert forced_binary_exponent > 20
+    assert forced_minimum > c_floor
     assert constant+linear_coefficient*c_floor < c_floor-4
     # Prime-cluster inequality needed for the all-linear scalar converse.
     # For u>=25, sqrt(u)<=u/5 and1<u/10, so u+1+2sqrt(u)<3u/2.
@@ -152,7 +150,9 @@ def main():
         'base_height_constant': '2^221234',
         'common_height_constant': '2^221470',
         'base_height_exponent': '7/3',
-        'ten_contact_height_exponent': '7/6',
+        'ten_contact_height_exponent': '1 with a quadratic logarithmic factor',
+        'ten_contact_logarithmic_constant': '2^221432',
+        'ten_contact_logarithmic_shift': 101,
         'comparison_Lucas_residual_order': local_order,
         'comparison_input_residual_order': input_order,
         'comparison_orders': [1]*11+[3]*3+[1,3],

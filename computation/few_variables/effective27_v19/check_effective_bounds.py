@@ -72,11 +72,11 @@ def main():
         'support_upper_bound':str(support),
         'support_upper_bound_power_of_two_exponent':support.bit_length(),
         'exact_monomial_count':None,
-        'certified_fixed_exponent':125001,
+        'certified_fixed_exponent':20483,
         'coefficient_l1_norm_log2_bound':actual_certificate['coefficient_l1_norm_log2_bound'],
         'coefficient_height_bound_double_power_of_two_exponent':actual_certificate['coefficient_height_bound_double_power_of_two_exponent'],
         'support_formula':'binom(D+27,27)-binom(D-E+26,27)',
-        'scope':'Independent degree recurrences and a literal sum of all active-algebra factors. The finite coefficient specification is unexpanded, and its monomial count is an upper bound only. The separately checked arithmetic proof certifies the supplied fixed exponent L=125001.'}
+        'scope':'Independent degree recurrences and a literal sum of all active-algebra factors. The finite coefficient specification is unexpanded, and its monomial count is an upper bound only. The separately checked arithmetic proof certifies the supplied fixed exponent L=20483.'}
     args.output.parent.mkdir(parents=True,exist_ok=True);args.output.write_text(json.dumps(report,indent=2)+'\n')
     print(json.dumps({k:report[k] for k in ('status','total_variables','degree_bound',
         'degree_bound_power_of_two_exponent','support_upper_bound_power_of_two_exponent',

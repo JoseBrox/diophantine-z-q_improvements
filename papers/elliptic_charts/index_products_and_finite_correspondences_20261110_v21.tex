@@ -1,0 +1,288 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,microtype}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}\newtheorem{remark}[theorem]{Remark}
+\newcommand{\Z}{\mathbb Z}\newcommand{\Q}{\mathbb Q}
+\DeclareMathOperator{\rk}{rank}
+\setlength{\emergencystretch}{2em}
+\title{Products of Elliptic Indices and Finite Algebraic Correspondences}
+\author{}\date{10 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+Let \(P\) generate a Zariski-dense cyclic subgroup of an abelian
+variety \(A\). The triples
+\(( [n]P,[h]P,[nh]P )\) are Zariski dense in \(A^3\), even if
+\(n\) ranges through an arbitrary infinite set and each \(n\)
+is assigned an arbitrary infinite set of values of \(h\).
+For elliptic curves we give a direct proof by intersecting
+divisors with graphs of multiplication. For general abelian
+varieties the assertion follows from Mordell--Lang and a
+criterion in terms of affine relations among the indices.
+Consequently a fixed finite algebraic correspondence cannot
+reconstruct the index product from the two input points
+uniformly on these sets. This restriction does not apply to
+arbitrary Diophantine definitions or to unrestricted additional
+arithmetic conditions.
+\end{abstract}
+
+\section{The density theorem}
+
+Throughout, \(k\) is a number field, all Zariski closures are
+geometric, and \(A/k\) is a positive-dimensional abelian
+variety. Let \(P\in A(k)\), and suppose that
+\(\Gamma=\Z P\) is Zariski dense in \(A\).
+In particular \(P\) is not torsion.
+
+\begin{theorem}\label{thm:product}
+Let \(I\subseteq\Z\) be infinite. For each \(n\in I\), let
+\(J_n\subseteq\Z\) be infinite. Then
+\[
+ \left\{\bigl([n]P,[h]P,[nh]P\bigr):
+                 n\in I,\ h\in J_n\right\}
+\]
+is Zariski dense in \(A^3\).
+\end{theorem}
+
+The sets \(J_n\) may depend on \(n\). In particular, arbitrary
+fixed congruence restrictions on the auxiliary index are allowed,
+provided an infinite set of indices remains for each \(n\).
+When \(A\) is an elliptic curve, every nontorsion point satisfies
+the density hypothesis on \(\Gamma\).
+
+\subsection{A direct proof for an elliptic curve}
+
+\begin{proof}[Proof of Theorem~\ref{thm:product} when \(A=E\)]
+Suppose a proper closed subset \(V\subsetneq E^3\) contains all
+the displayed triples. Let \(\mathcal L\) be an ample line bundle
+of degree \(d>0\) on \(E\), and put
+\[
+ \mathcal H=\mathcal L\boxtimes\mathcal L\boxtimes\mathcal L.
+\]
+A projective embedding given by a sufficiently large power of
+\(\mathcal H\), followed by a hypersurface containing \(V\)
+but not \(E^3\), supplies a nonzero effective divisor
+\[
+                      D\in|\mathcal H^{\otimes N}|,
+                      \qquad V\subseteq D,
+\]
+for some fixed \(N>0\).
+
+Only finitely many fibers of the first projection
+\(E^3\to E\) are contained in \(D\): any such fiber is an
+irreducible divisor and hence an irreducible component of \(D\).
+For every other \(n\in I\), the restriction \(D_n\) to the
+fiber over \([n]P\) is a nonzero effective divisor on \(E^2\),
+with fixed numerical class
+\[
+                   N(\mathcal L\boxtimes\mathcal L).
+\]
+The points
+\(( [h]P,[nh]P )\), for \(h\in J_n\), are dense in the graph
+\[
+              G_n=\{(Q,[n]Q):Q\in E\},
+\]
+because \(J_nP\) is an infinite subset of the curve \(E\).
+Thus \(G_n\) is an irreducible component of \(D_n\).
+
+Let \(\mathcal H_0=\mathcal L\boxtimes\mathcal L\) on \(E^2\).
+Its self-intersection is \(2d^2\), so
+\[
+                       \deg_{\mathcal H_0}(D_n)=2Nd^2.
+\]
+On the other hand,
+\[
+ \deg_{\mathcal H_0}(G_n)
+ =\deg\bigl(\mathcal L\otimes[n]^*\mathcal L\bigr)
+ =d(1+n^2),
+\]
+using \(\deg[n]=n^2\); see~\cite[Chapter~I, Theorem~7.2]{Milne}.
+Since \(\mathcal H_0\) is ample and \(D_n-G_n\) is effective,
+\[
+                         d(1+n^2)\le2Nd^2.
+\]
+This is impossible for the unbounded set of integers \(n\in I\)
+outside the finitely many excluded fibers.
+\end{proof}
+
+\section{Affine relations among indices}
+
+We use the following form of the Mordell--Lang theorem:
+the intersection of a closed subvariety of an abelian variety
+with a finitely generated subgroup is a finite union of cosets
+of subgroups of that finitely generated group. This is a theorem,
+not an additional conjecture; see~\cite{Faltings}, and the precise
+formulation in the introduction of~\cite{GHSZ}.
+
+\begin{proposition}\label{prop:criterion}
+Let \(r\ge1\) and \(\Sigma\subseteq\Z^r\).
+The set
+\[
+          \{([m_1]P,\ldots,[m_r]P):\mathbf m\in\Sigma\}
+\]
+is Zariski dense in \(A^r\) if and only if \(\Sigma\) is not
+contained in a finite union of proper rational affine hyperplanes
+in \(\Q^r\).
+\end{proposition}
+
+\begin{proof}
+The product \(\Gamma^r\) is Zariski dense in \(A^r\).
+Suppose the displayed set is contained in a proper closed
+subvariety \(V\). By Mordell--Lang, \(V\cap\Gamma^r\) is a
+finite union of cosets of subgroups of \(\Gamma^r\).
+Identify \(\Gamma^r\) with \(\Z^r\), using the nontorsion point
+\(P\). None of these subgroups has rank \(r\). Indeed a
+rank-\(r\) subgroup has finite index and contains \(m\Gamma^r\)
+for some nonzero integer \(m\); this is Zariski dense in \(A^r\),
+as multiplication by \(m\) is surjective. Its translate cannot
+be contained in \(V\).
+
+Every subgroup of \(\Z^r\) of rank at most \(r-1\) is annihilated
+by a nonzero integer linear form. Its cosets are therefore
+contained in proper rational affine hyperplanes.
+These finitely many hyperplanes contain \(\Sigma\).
+
+Conversely, after clearing denominators, an affine hyperplane
+has equation
+\[
+                   a_1m_1+\cdots+a_rm_r=c,
+                   \qquad a_i,c\in\Z,
+\]
+with some \(a_i\ne0\). The corresponding points lie in the
+proper closed subset
+\[
+             [a_1]Q_1+\cdots+[a_r]Q_r=[c]P
+\]
+of \(A^r\). This subset is proper because the indicated
+homomorphism \(A^r\to A\) is surjective.
+A finite union of such proper closed subsets is still proper.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:product} for general \(A\)]
+Apply Proposition~\ref{prop:criterion} to the index triples
+\((n,h,nh)\).
+On these triples, an affine hyperplane becomes
+\[
+                  (b+cn)h+an=d,
+                  \qquad (a,b,c)\ne(0,0,0).
+\]
+For all but at most one value of \(n\), this equation has at
+most one solution \(h\), or none.
+Indeed, if \(b+cn\ne0\), it determines \(h\).
+If \(b+cn=0\) for all \(n\), then \(b=c=0\), and \(a\ne0\)
+makes \(an=d\) possible for at most one \(n\).
+Thus finitely many such hyperplanes cannot contain infinitely
+many values of \(h\) for every \(n\) in the infinite set \(I\).
+\end{proof}
+
+\begin{corollary}\label{cor:polynomial}
+Let \(f_1,\ldots,f_r\in\Z[T_1,\ldots,T_s]\), and suppose that
+\(1,f_1,\ldots,f_r\) are linearly independent over \(\Q\).
+Then
+\[
+ \{([f_1(\mathbf t)]P,\ldots,[f_r(\mathbf t)]P):
+                            \mathbf t\in\Z^s\}
+\]
+is Zariski dense in \(A^r\).
+In particular, for every polynomial \(f\in\Z[T]\) of degree
+at least two and every infinite set \(I\subseteq\Z\),
+\[
+                        \{([n]P,[f(n)]P):n\in I\}
+\]
+is Zariski dense in \(A^2\).
+\end{corollary}
+
+\begin{proof}
+The preimage of a proper affine hyperplane is the zero set of a
+nonzero polynomial. A finite union of such zero sets cannot
+contain \(\Z^s\), since their product is a nonzero polynomial.
+For the last statement, the nonzero polynomial
+\(an+bf(n)-c\) has only finitely many roots.
+Now apply Proposition~\ref{prop:criterion}.
+\end{proof}
+
+\section{The finite-correspondence consequence}
+
+\begin{corollary}\label{cor:finite}
+There is no proper closed subset \(C\subsetneq A^3\) containing
+all the triples in Theorem~\ref{thm:product}.
+In particular there is no fixed algebraic correspondence that
+has finite fibers over a nonempty open subset of \(A^2\) and
+recovers the third coordinate \([nh]P\) from
+\(([n]P,[h]P)\) for all these pairs in that open subset.
+The same assertion holds for a finite union of such
+correspondences, and for finite algebraic auxiliary choices
+followed by rational formulas for the third point.
+\end{corollary}
+
+\begin{proof}
+The first assertion is Theorem~\ref{thm:product}.
+For the next assertion, restrict to the nonempty open set where
+the correspondence has finite fibers. Each component dominating
+the base has dimension at most \(2\dim A\); its image in
+\(A^3\) has proper closure. Components whose images do not
+dominate the base are contained over a proper closed subset
+of the base and also have proper image closure.
+The triples of Theorem~\ref{thm:product} remain Zariski dense
+after restriction to the inverse image of a nonempty open set
+of \(A^2\). They therefore cannot all lie in these finitely
+many proper closed images.
+
+Finite algebraic auxiliary choices over the base give a
+generically finite variety over that base. Applying rational
+formulas and restricting to their domains reduces to the
+same dimension argument.
+\end{proof}
+
+Here finite fibers means zero-dimensional geometric fibers.
+Merely having finitely many rational points in a geometrically
+positive-dimensional fiber does not meet this hypothesis.
+
+For an elliptic curve, this excludes replacing the point
+\(U=[hn]P\) by any fixed finite algebraic choice constructed
+from \(H=[h]P\) and \(Q=[n]P\), while retaining infinitely
+many auxiliary indices for every member of an infinite set of
+labels. Corollary~\ref{cor:polynomial} similarly excludes a
+fixed finite algebraic construction of \([n^2]P\) from
+\([n]P\) on any infinite set of indices.
+
+For a restriction of scalars, the general theorem applies once
+the chosen cyclic subgroup is known to be Zariski dense in that
+abelian variety. Its use does not follow from the cyclic
+description of the rational points alone: the Zariski-density
+hypothesis must be checked in the relevant variety.
+
+These are restrictions on the indicated reconstruction
+strategy. They do not exclude a source that retains only a
+specially chosen finite set of auxiliary indices for each
+input, changes the arithmetic conditions, uses a different
+algebraic group, introduces an additional free rational
+parameter, or defines the integers with fewer variables.
+The rational-root Pell strategy is not ruled out merely by
+these statements: its missing requirement is a complete global
+construction of the rational root, together with a sound
+argument controlling its denominators.
+
+\begin{thebibliography}{9}
+\bibitem{Faltings}
+G.~Faltings, \emph{The general case of S.~Lang's conjecture},
+in \emph{Barsotti Symposium in Algebraic Geometry},
+Perspectives in Mathematics~15, Academic Press, 1994,
+pp.~175--182,
+\url{https://doi.org/10.1016/B978-0-12-197270-7.50012-7}.
+\bibitem{GHSZ}
+D.~Ghioca, F.~Hu, T.~Scanlon, and U.~Zannier,
+\emph{A variant of the Mordell--Lang conjecture}, 2018,
+\url{https://arxiv.org/abs/1804.10561};
+author manuscript
+\url{https://math.berkeley.edu/~scanlon/papers/Ga_abelian.pdf}.
+\bibitem{Milne}
+J.~S.~Milne, \emph{Abelian Varieties}, version~2.0, 2008,
+\url{https://www.jmilne.org/math/CourseNotes/AV.pdf}.
+\end{thebibliography}
+\end{document}

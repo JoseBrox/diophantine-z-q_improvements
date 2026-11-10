@@ -7,7 +7,7 @@
     "algebraic_specification": "proved for every explicitly described polynomial or coefficient-family member",
     "projection_equals_Z": "proved implication from the stated arithmetic premises; the existence families require a sufficiently large fixed parameter",
     "variable_minimality": "best constructions in this collection; no global variable minimum claimed",
-    "effectiveness": "The leading 25-variable and 228-variable families have ineffective sufficient coefficient thresholds. The additional-hypothesis 13- and 91-variable families have ineffective sufficient input shifts. The explicit 27-variable and 265-variable constructions certify numerical sufficient parameters.",
+    "effectiveness": "The leading 25-variable and 226-variable families have ineffective sufficient coefficient thresholds. The additional-hypothesis 13- and 87-variable families have ineffective sufficient input shifts. The explicit 27-variable and 262-variable constructions certify numerical sufficient parameters.",
     "prime_selection": "The quantitative weighted selection used by the quartics follows from the cited Sun v2 Propositions 5.1 and 6.2 and Section 6.1, with the separation argument recorded in the prime-selection paper. It is not an additional independent conjecture; dependence on the cited arithmetic estimates remains explicit."
   },
   "constructions": [
@@ -121,19 +121,19 @@
       }
     },
     {
-      "id": "quartic228_family",
+      "id": "quartic226_family",
       "construction_kind": "existence_in_computable_coefficient_family",
       "role": "Leading quartic existence family under the inherited premises.",
-      "total_variables": 228,
+      "total_variables": 226,
       "degree": 4,
       "degree_status": "exact",
       "integer_content": 1,
-      "quadratic_residuals": 202,
-      "ordinary_monomials": 2829,
+      "quadratic_residuals": 200,
+      "ordinary_monomials": 2835,
       "ordinary_monomial_count_condition": "Every positive coefficient parameter; this is separate from the defining threshold.",
-      "coefficient_parameter_terms": 2830,
-      "polynomial_sha256": "cf3c153bb63130b0f22a4be4b8787b8a47714b0c3549e30ae73b9868f1cbf83f",
-      "residuals_sha256": "0fb0e11597d3915772d5342b7e7d37493cb501254349d4652b544d7e5a44e468",
+      "coefficient_parameter_terms": 2836,
+      "polynomial_sha256": "245c69c180b01281ebc95480d9336793068a5c0dde76659015f2eb6d7bf92c31",
+      "residuals_sha256": "ccc845018e4d89b9d19f797bbfeca10c17ec637fbde5cb5bc08ad3bba9da105b",
       "arithmetic_inputs": [
         "elliptic_group_and_index_height",
         "source_modular_realization",
@@ -143,10 +143,10 @@
       ],
       "additional_conjecture": null,
       "all_fixed_coefficients_specified": false,
-      "proof": "papers/quartic_existence/quartic228_20261110_v19.tex",
-      "computation": "computation/quartic/family228_v19",
-      "exact_height_data": "computation/quartic/family228_v19/independent-verification228-v19.json",
-      "local_test_proof": "papers/quartic_existence/quartic228_20261110_v19.tex",
+      "proof": "papers/quartic_existence/quartic226_20261110_v21.tex",
+      "computation": "computation/quartic/family226_v21",
+      "exact_height_data": "computation/quartic/family226_v21/independent-verification226-v21.json",
+      "local_test_proof": "papers/quartic_existence/quartic226_20261110_v21.tex",
       "fixed_parameter": {
         "name": "N",
         "quantified": false,
@@ -187,7 +187,10 @@
       "scales": [
         "1",
         "T"
-      ]
+      ],
+      "contact_outputs_per_detector": 3,
+      "contact_equations": "r=(t-1)^2; u=r^2; v=r*u-e1*(1+s1)*u+e2*(1+s1)*r; u*v=(1+s1)*(e3*u-e4*r+e5)",
+      "contact_projection_scope": "Exact on the whole rational zero set with q*s1=1, including r=0."
     },
     {
       "id": "few_variables27_explicit",
@@ -202,16 +205,16 @@
       "degree_bound_uniform_in_fixed_parameter": true,
       "fixed_parameter": {
         "name": "L",
-        "value": 125001,
+        "value": 20483,
         "quantified": false,
         "constraint": "odd integer L>=3",
         "sufficient_threshold_exists": true,
         "effective_threshold_known": true,
-        "certified_sufficient_lower_bound": 125001,
+        "certified_sufficient_lower_bound": 20483,
         "selected_member_certified_to_define_Z": true
       },
       "all_fixed_coefficients_specified": true,
-      "coefficient_height_bound_for_certified_defining_member": "H < 2^(2^102)",
+      "coefficient_height_bound_for_certified_defining_member": "H < 2^(2^99)",
       "arithmetic_inputs": [
         "elliptic_group_and_index_height",
         "source_modular_realization",
@@ -222,7 +225,8 @@
       "additional_proved_inputs": [
         "multiplicity_contact_height",
         "raw_comparison_and_linear_scalar_normalization",
-        "effective_elliptic_abscissa_sum_height"
+        "effective_elliptic_abscissa_sum_height",
+        "logarithmic_contact_height_amplification"
       ],
       "pole_certificates": 3,
       "point_roles": 9,
@@ -247,9 +251,9 @@
       "proof": "papers/few_variables27/explicit27_20261110_v19.tex",
       "computation": "computation/few_variables/effective27_v19/active27",
       "source_computation": "computation/few_variables/effective27_v19/certificate",
-      "source_sha256": "f2426d95af503297acf51ea713a3803e9e3e55b450c63697b81c1c4a7c70aaf5",
-      "source_specification_sha256": "1d3b8790cedfb527b2001e5b50d5b0da2e98723422526fe550b1349c50fa6c1a",
-      "specification_sha256": "14afd0650cd05b9e78d62063add63afc74acd6d6228d7fd78364a93d6875aae2",
+      "source_sha256": "a1eb330a92b2ae9dd777cd2cf0b0da0d6f9fc536a7a30f265238ae748fac1361",
+      "source_specification_sha256": "55fa5a3e7884972af851a074e2b9deab5f7ca217348824b3810524838ae16505",
+      "specification_sha256": "badf2ed05b73e2bf28d7e777874c3721ba3fa3fcd398a1b0027e5bcce67f2bab",
       "construction_certificate": "computation/few_variables/effective27_v19/active27/construction-certificate.json",
       "uniform_degree_certificate": "computation/few_variables/effective27_v19/independent-bound-verification.json",
       "elimination_theorem": "papers/finite_algebra/active_finite_algebra_20261109_v15.tex",
@@ -295,26 +299,28 @@
       ],
       "scope_limit": "The stated inherited arithmetic premises remain explicit. Formula comparisons over finite fields are finite evidence; the paper proves the arithmetic projection statement. No minimum number of variables is claimed.",
       "fixed_prime": 76249,
-      "normalizer_exponent": 125001,
-      "certified_sufficient_exponent": 125001,
-      "coefficient_height_bound_double_power_of_two_exponent": 102,
-      "exact_binary_log_coefficient_majorant": "3593722961921650418383728672749",
-      "effective_constants_certificate": "computation/few_variables/effective27_v19/effective27-constants-certificate.json"
+      "normalizer_exponent": 20483,
+      "certified_sufficient_exponent": 20483,
+      "coefficient_height_bound_double_power_of_two_exponent": 99,
+      "exact_binary_log_coefficient_majorant": "589273999334519307487155060717",
+      "effective_constants_certificate": "computation/few_variables/effective27_v19/effective27-constants-certificate.json",
+      "logarithmic_contact_height": "h(t)<=2^221432*M*(101+log(M)/2)^2",
+      "logarithmic_threshold_certificate": "computation/contact_heights/logarithmic-thresholds-v21-certificate.json"
     },
     {
-      "id": "quartic265_explicit",
+      "id": "quartic262_explicit",
       "construction_kind": "explicit_polynomial_and_effective_family",
       "role": "Leading fully specified quartic.",
-      "total_variables": 265,
+      "total_variables": 262,
       "degree": 4,
       "degree_status": "exact",
       "integer_content": 1,
-      "quadratic_residuals": 237,
-      "ordinary_monomials": 3485,
+      "quadratic_residuals": 234,
+      "ordinary_monomials": 3494,
       "ordinary_monomial_count_condition": "Every positive coefficient parameter; this is separate from the defining threshold.",
-      "coefficient_parameter_terms": 3486,
-      "polynomial_sha256": "0cd102c4324f87022dcbe420db0cd776c9f22ea4eda72f6199f058586347b968",
-      "residuals_sha256": "460956c6bf402206b82c7dd8dc45b5c7b5b0c932b643755ce7f92e6a88a9cc96",
+      "coefficient_parameter_terms": 3495,
+      "polynomial_sha256": "727244236b25c1b1b54f6cc615433f6259440d28215b632de9d60bd4e50e2523",
+      "residuals_sha256": "84c1130856dfda7d3a489f3077d7bc378cd8e594198dd8f3c03fe50463606a93",
       "arithmetic_inputs": [
         "elliptic_group_and_index_height",
         "source_modular_realization",
@@ -324,16 +330,16 @@
       ],
       "additional_conjecture": null,
       "all_fixed_coefficients_specified": true,
-      "proof": "papers/quartic/quartic265_20261110_v19.tex",
-      "computation": "computation/quartic/family265_v19",
-      "exact_height_data": "computation/quartic/family265_v19/independent-verification265-v19.json",
-      "local_test_proof": "papers/quartic/quartic265_20261110_v19.tex",
+      "proof": "papers/quartic/quartic262_20261110_v21.tex",
+      "computation": "computation/quartic/family262_v21",
+      "exact_height_data": "computation/quartic/family262_v21/independent-verification262-v21.json",
+      "local_test_proof": "papers/quartic/quartic262_20261110_v21.tex",
       "fixed_parameter": {
         "name": "N",
         "quantified": false,
         "constraint": "Integer N>=1",
         "effective_threshold_known": true,
-        "certified_sufficient_lower_bound": 14521
+        "certified_sufficient_lower_bound": 9682
       },
       "exact_coefficient_height": "149^(4*N+2)+1",
       "exact_coefficient_height_condition": "N>=53",
@@ -346,9 +352,9 @@
       ],
       "zero_weight_stratum": "q*s1=1 excludes q=0; the contact-pole stratum has radical one.",
       "prime_selection_proof": "papers/prime_selection/prime_selection_20261109_v12.tex",
-      "contact_height_exponent": "7/6",
+      "contact_height_exponent": "1 with a quadratic logarithmic factor",
       "contact_height_proof": "papers/contact_heights/multiplicity_and_contact_heights_20261110_v19.tex",
-      "base_contact_height_exponent": "7/3",
+      "base_contact_height_exponent": "2 with a quadratic logarithmic factor",
       "local_comparison_orders": [
         3,
         1
@@ -370,15 +376,21 @@
         "S0^2",
         "(S0+S1)^2"
       ],
-      "explicit_parameter": "A=149^29043",
+      "explicit_parameter": "A=149^19365",
       "family_parameter": "A_N=149^(2*N+1)",
-      "certified_sufficient_N": 14521,
-      "largest_coefficient_binary_digits": 419333,
-      "explicit_coefficient_height": "149^58086+1",
-      "explicit_coefficient_height_upper_bound_power_of_two_exponent": 419333,
-      "forced_index_depth_at_threshold": 68973,
+      "certified_sufficient_N": 9682,
+      "largest_coefficient_binary_digits": 279599,
+      "explicit_coefficient_height": "149^38730+1",
+      "explicit_coefficient_height_upper_bound_power_of_two_exponent": 279599,
+      "forced_index_depth_at_threshold": 45988,
       "additional_weight": "q^5, one rational coordinate for each of three comparison products",
-      "shared_deep_comparison_fourth_powers": 4
+      "shared_deep_comparison_fourth_powers": 4,
+      "logarithmic_contact_height": "h(t)<=2^221274*M*(22+log(M)/2)^2",
+      "logarithmic_threshold_certificate": "computation/contact_heights/logarithmic-thresholds-v21-certificate.json",
+      "contact_outputs_per_detector": 3,
+      "contact_equations": "r=(t-1)^2; u=r^2; v=r*u-e1*(1+s1)*u+e2*(1+s1)*r; u*v=(1+s1)*(e3*u-e4*r+e5)",
+      "contact_projection_scope": "Exact on the whole rational zero set with q*s1=1, including r=0.",
+      "scalar_contact_height_power_bound": "7/3"
     }
   ],
   "unconditional_theorems": [
@@ -831,6 +843,29 @@
       "pdf_available": true,
       "stronger_slope_restriction": "The same conclusions hold with lambda=1+s^2 for a nonzero integer s; lambda-1 is an integer square.",
       "pdf": "papers/pole_parameters/rational_combinations_of_contacts_20261110_v20.pdf"
+    },
+    {
+      "id": "quadratic_contact_cover_obstructions",
+      "proof": "papers/pole_parameters/quadratic_contact_covers_20261110_v21.tex",
+      "pdf": "papers/pole_parameters/quadratic_contact_covers_20261110_v21.pdf",
+      "certificate": "computation/pole_parameters/quadratic-contact-covers-certificate.json",
+      "product_cover_genus": 4,
+      "scale_domain": "Every rational a>4",
+      "single_contact_cover_genus": 2,
+      "finiteness": "At each fixed scale and finite prime set, only finitely many admissible rational slopes have equal odd contact sets.",
+      "section_obstruction_prime": 315467,
+      "section_obstruction_shifts": "B=3+k*62790389880761304, k>=0, at integer input X=0",
+      "scope": "Genus, finiteness and the inert-prime comparison obstruction are unconditional. The separately stated one-pole soundness implication retains weak abc and the original arithmetic premises; its converse is open. No new defining variable count."
+    },
+    {
+      "id": "index_products_and_finite_correspondences",
+      "proof": "papers/elliptic_charts/index_products_and_finite_correspondences_20261110_v21.tex",
+      "pdf": "papers/elliptic_charts/index_products_and_finite_correspondences_20261110_v21.pdf",
+      "statement": "If ZP is Zariski dense in an abelian variety A, the triples ([n]P,[h]P,[nh]P) are Zariski dense in A^3 for any infinite set of n and any infinite set of h for each n.",
+      "elliptic_proof": "An elementary intersection-degree argument using graphs of multiplication.",
+      "general_proof": "Mordell-Lang gives a density criterion in terms of finite unions of rational affine hyperplanes in the index lattice.",
+      "consequence": "No fixed algebraic correspondence with finite geometric fibers can recover the index product uniformly on those pairs; nonlinear polynomial index graphs satisfy the analogous obstruction.",
+      "scope": "No claim about arbitrary Diophantine definitions, additional free parameters, positive-dimensional fibers with finite rational point sets, or specially selected finite sets of auxiliary indices."
     }
   ],
   "source_pins": {
@@ -838,7 +873,7 @@
     "corrected_arithmetic_proof_v11": "650b298a2a18fa956f8859f3ca80e9d7c8cedd82",
     "quartic_source_v13": "5bbd74f6a479776a332cbe036809d5dddae63720"
   },
-  "release": "2026.11.10-v20",
+  "release": "2026.11.10-v21",
   "auxiliary_arithmetic_theorems": [
     {
       "id": "square_abscissa_subgroup_chart",
@@ -915,7 +950,7 @@
       "additional_conjecture": null,
       "statement": "h(a)<=C2*M5(a)^2*(1+log M5(a))^2 with explicit C2<2^221231; consequently h(a)<2^221234*M5(a)^(7/3). For every positive eta an effective exponent2+eta holds without restrictions on contact-prime character orders.",
       "multiplicity_bound": "If s is the nebentypus order and A_f is geometrically isogenous to A^r, then s/r<=4.",
-      "height_transfer": "Rémond height superadditivity gives a surface factor of height at most h(J_H)/r, followed by a dimension-two explicit isogeny estimate.",
+      "height_transfer": "R\u00e9mond height superadditivity gives a surface factor of height at most h(J_H)/r, followed by a dimension-two explicit isogeny estimate.",
       "proof": "papers/contact_heights/multiplicity_and_contact_heights_20261110_v19.tex",
       "verification": "computation/contact_heights/multiplicity-height-certificate.json",
       "scope_limit": "This is a consequence of the full stated modular realization, not a theorem from the conductor inequality alone."
@@ -989,19 +1024,19 @@
       "monomial_bound_certificate": "computation/few_variables/monomial-bound-certificate.json"
     },
     {
-      "id": "quartic91_abc_family",
+      "id": "quartic87_abc_family",
       "construction_kind": "existence_in_computable_coefficient_family",
       "role": "Leading quartic under ordinary rational abc.",
-      "total_variables": 91,
+      "total_variables": 87,
       "degree": 4,
       "degree_status": "exact",
       "integer_content": 1,
-      "quadratic_residuals": 79,
-      "ordinary_monomials": 926,
+      "quadratic_residuals": 75,
+      "ordinary_monomials": 918,
       "ordinary_monomial_count_condition": "Every positive coefficient parameter; this is separate from the defining threshold.",
-      "coefficient_parameter_terms": 927,
-      "polynomial_sha256": "1f5d0511ab8e55755d7dd375b2bce4c6e1bb282efaa05ddb4d7b806b86561bfe",
-      "residuals_sha256": "bbf424ee41a12729b2292812c118f7cc2a1a279762bc7232954a2ae477f869ab",
+      "coefficient_parameter_terms": 919,
+      "polynomial_sha256": "a7590e6fba2098553767ea248f35e6c623486e2c9ee5266beffa312dd2a7cc3e",
+      "residuals_sha256": "96ff18455b0b2aa131f38e5ef34d8375640b8f990b4bbc2e22e0280a08d5bd1c",
       "arithmetic_inputs": [
         "elliptic_group_and_index_height",
         "pole_obstruction_and_nonzero_realization_with_restricted_converse_and_descent",
@@ -1009,10 +1044,10 @@
       ],
       "additional_conjecture": "ordinary rational abc",
       "all_fixed_coefficients_specified": false,
-      "proof": "papers/quartic_existence/quartic_abc91_20261110_v19.tex",
-      "computation": "computation/quartic/family_abc91_v19",
-      "exact_height_data": "computation/quartic/family_abc91_v19/independent-verification-abc91-v19.json",
-      "local_test_proof": "papers/quartic_existence/quartic_abc91_20261110_v19.tex",
+      "proof": "papers/quartic_existence/quartic_abc87_20261110_v21.tex",
+      "computation": "computation/quartic/family_abc87_v21",
+      "exact_height_data": "computation/quartic/family_abc87_v21/independent-verification-abc87-v21.json",
+      "local_test_proof": "papers/quartic_existence/quartic_abc87_20261110_v21.tex",
       "fixed_parameter": {
         "name": "B",
         "quantified": false,
@@ -1020,30 +1055,30 @@
         "effective_threshold_known": false,
         "certified_sufficient_lower_bound": null
       },
-      "exact_coefficient_height": "max(4153456,B^2+797683)",
+      "exact_coefficient_height": "max(4153456,B^2+797681)",
       "exact_coefficient_height_condition": "B>=3",
       "common_elliptic_chart": "Three quadrics in four field coordinates; all exceptional strata proved.",
-      "factor_clearing": "Multiply each factor equation by q^(-4); shared field fourth powers become quadratic expressions in the existing squares.",
+      "factor_clearing": "Store A_i=s*T_i, (R+1)*Omega=A_1*A_2, and the scaled trace eta; s3*b=eta^2 is exactly the new-contact pole input.",
       "inverse_weights": [
-        "q^-2",
-        "q^-3",
-        "q^-4"
+        "s=1/q",
+        "s2=s^2",
+        "s3=s*s2"
       ],
-      "zero_weight_stratum": "The pair chart excludes s2=s3=s4=0, so all inverse identities hold.",
+      "zero_weight_stratum": "s=0 forces both numerator reciprocal squares to vanish, contradicting the point-pair chart.",
       "prime_selection_proof": "papers/prime_selection/prime_selection_20261109_v12.tex",
       "height_scales": [
         "1",
         "beta^4+T^4"
       ],
       "contacts": [
-        -3,
+        -5,
         -2,
         -1,
         0,
         2,
         3,
         4,
-        5
+        7
       ],
       "key_height_coefficient": "8/9",
       "point_roles": 3,
@@ -1056,9 +1091,22 @@
         1,
         1
       ],
-      "eventual_coefficient_height": "B^2+797683",
+      "eventual_coefficient_height": "B^2+797681",
       "eventual_coefficient_height_condition": "Odd B>=1833",
-      "scope_limit": "Ordinary rational abc is used; the weaker abc/Szpiro premise of the 13-variable theorem is not asserted sufficient for this quartic."
+      "scope_limit": "Ordinary rational abc is used; the weaker abc/Szpiro premise of the 13-variable theorem is not asserted sufficient for this quartic.",
+      "contact_outputs_per_detector": 2,
+      "contact_coordinates": [
+        "R=(t-1)^2-1",
+        "Z=r+36/r-37"
+      ],
+      "contact_projection_scope": "Exact quadratic encoding of the new contact set on its full rational domain, including all zero-stratum exclusions; its arithmetic projection is proved directly.",
+      "stored_weight_q": false,
+      "squared_contact_distances": [
+        1,
+        4,
+        9,
+        36
+      ]
     }
   ],
   "reconstruction_dependencies": [
@@ -1596,6 +1644,300 @@
       "role": "Exact reciprocal-factor source for the four-factor 265-variable construction.",
       "polynomial_sha256": "b8d73e1afca69a396553a6dc82abf513c78e132092f302c66d92a55730e95e16",
       "residuals_sha256": "23bb7d627672beecdbe2b7d833158b1c720fd30326d7bc97fceecd5518665e3c"
+    },
+    {
+      "id": "quartic228_family",
+      "construction_kind": "existence_in_computable_coefficient_family",
+      "role": "Pinned source for the inverse-weight contact equations.",
+      "total_variables": 228,
+      "degree": 4,
+      "degree_status": "exact",
+      "integer_content": 1,
+      "quadratic_residuals": 202,
+      "ordinary_monomials": 2829,
+      "ordinary_monomial_count_condition": "Every positive coefficient parameter; this is separate from the defining threshold.",
+      "coefficient_parameter_terms": 2830,
+      "polynomial_sha256": "cf3c153bb63130b0f22a4be4b8787b8a47714b0c3549e30ae73b9868f1cbf83f",
+      "residuals_sha256": "0fb0e11597d3915772d5342b7e7d37493cb501254349d4652b544d7e5a44e468",
+      "arithmetic_inputs": [
+        "elliptic_group_and_index_height",
+        "source_modular_realization",
+        "pole_obstruction_and_realization",
+        "simultaneous_prime_patterns",
+        "weighted_prime_selection"
+      ],
+      "additional_conjecture": null,
+      "all_fixed_coefficients_specified": false,
+      "computation": "computation/quartic/family228_v19",
+      "exact_height_data": "computation/quartic/family228_v19/independent-verification228-v19.json",
+      "fixed_parameter": {
+        "name": "N",
+        "quantified": false,
+        "constraint": "Integer N>=1",
+        "effective_threshold_known": false,
+        "certified_sufficient_lower_bound": null
+      },
+      "exact_coefficient_height": "149^(4*N+2)+1",
+      "exact_coefficient_height_condition": "N>=53",
+      "common_elliptic_chart": "Three quadrics in four field coordinates; all exceptional strata proved.",
+      "factor_clearing": "Multiply each factor equation by q^(-4); shared field fourth powers become quadratic expressions in the existing squares.",
+      "inverse_weights": [
+        "q^-1",
+        "q^-2",
+        "q^-4"
+      ],
+      "zero_weight_stratum": "q*s1=1 excludes q=0; the contact-pole stratum has radical one.",
+      "prime_selection_proof": "papers/prime_selection/prime_selection_20261109_v12.tex",
+      "contact_height_exponent": "7/6",
+      "contact_height_proof": "papers/contact_heights/multiplicity_and_contact_heights_20261110_v19.tex",
+      "base_contact_height_exponent": "7/3",
+      "local_comparison_orders": [
+        3,
+        1
+      ],
+      "local_reference_reciprocal_abscissa_order": 2,
+      "local_factors_per_detector": 5,
+      "contact_blocks": 2,
+      "contact_points": 10,
+      "additional_exceptional_primes": [
+        2029147
+      ],
+      "scalar_normalization_power": 4,
+      "scalar_contact_index_order": 3,
+      "forced_prime": 149,
+      "scalar_forced_index_depth": "floor(19*(2*N-1)/8)+1",
+      "scalar_separate_divisibility": "149^L_N*M5(beta)^3 divides |a-1|",
+      "scales": [
+        "1",
+        "T"
+      ]
+    },
+    {
+      "id": "quartic265_explicit",
+      "construction_kind": "explicit_polynomial_and_effective_family",
+      "role": "Pinned source for the inverse-weight contact equations.",
+      "total_variables": 265,
+      "degree": 4,
+      "degree_status": "exact",
+      "integer_content": 1,
+      "quadratic_residuals": 237,
+      "ordinary_monomials": 3485,
+      "ordinary_monomial_count_condition": "Every positive coefficient parameter; this is separate from the defining threshold.",
+      "coefficient_parameter_terms": 3486,
+      "polynomial_sha256": "5e73e2cd89506a2a30b1627207977556ecfeffe974176a455693b090cdb5a1a4",
+      "residuals_sha256": "e5cf559e1f8b243531299a7d6ace098b71322f58f1c13aff43811cbdb150c14f",
+      "arithmetic_inputs": [
+        "elliptic_group_and_index_height",
+        "source_modular_realization",
+        "pole_obstruction_and_realization",
+        "simultaneous_prime_patterns",
+        "weighted_prime_selection"
+      ],
+      "additional_conjecture": null,
+      "all_fixed_coefficients_specified": true,
+      "computation": "computation/quartic/family265_v19",
+      "exact_height_data": "computation/quartic/family265_v19/independent-verification265-v19.json",
+      "fixed_parameter": {
+        "name": "N",
+        "quantified": false,
+        "constraint": "Integer N>=1",
+        "effective_threshold_known": true,
+        "certified_sufficient_lower_bound": 9682
+      },
+      "exact_coefficient_height": "149^(4*N+2)+1",
+      "exact_coefficient_height_condition": "N>=53",
+      "common_elliptic_chart": "Three quadrics in four field coordinates; all exceptional strata proved.",
+      "factor_clearing": "Four factors use shared deep-comparison fourth powers. Multiplication by q^(-4) makes their defining equations quadratic; the weight w is fixed by w*q^(-4)=q.",
+      "inverse_weights": [
+        "q^-1",
+        "q^-2",
+        "q^-4"
+      ],
+      "zero_weight_stratum": "q*s1=1 excludes q=0; the contact-pole stratum has radical one.",
+      "prime_selection_proof": "papers/prime_selection/prime_selection_20261109_v12.tex",
+      "contact_height_exponent": "1 with a quadratic logarithmic factor",
+      "contact_height_proof": "papers/contact_heights/multiplicity_and_contact_heights_20261110_v19.tex",
+      "base_contact_height_exponent": "7/3",
+      "local_comparison_orders": [
+        3,
+        1
+      ],
+      "local_reference_reciprocal_abscissa_order": 2,
+      "local_factors_per_detector": 4,
+      "contact_blocks": 2,
+      "contact_points": 10,
+      "additional_exceptional_primes": [
+        2029147
+      ],
+      "scalar_normalization_power": 4,
+      "scalar_contact_index_order": 3,
+      "forced_prime": 149,
+      "scalar_forced_index_depth": "floor(19*(2*N-1)/8)+1",
+      "scalar_separate_divisibility": "149^L_N*M5(beta)^3 divides |a-1|",
+      "scales": [
+        "1",
+        "S0^2",
+        "(S0+S1)^2"
+      ],
+      "explicit_parameter": "A=149^19365",
+      "family_parameter": "A_N=149^(2*N+1)",
+      "certified_sufficient_N": 9682,
+      "largest_coefficient_binary_digits": 279599,
+      "explicit_coefficient_height": "149^38730+1",
+      "explicit_coefficient_height_upper_bound_power_of_two_exponent": 279599,
+      "forced_index_depth_at_threshold": 45988,
+      "additional_weight": "q^5, one rational coordinate for each of three comparison products",
+      "shared_deep_comparison_fourth_powers": 4,
+      "logarithmic_contact_height": "h(t)<=2^221274*M*(22+log(M)/2)^2",
+      "logarithmic_threshold_certificate": "computation/contact_heights/logarithmic-thresholds-v21-certificate.json"
+    },
+    {
+      "id": "quartic91_abc_family",
+      "construction_kind": "existence_in_computable_coefficient_family",
+      "role": "Pinned source for the inverse-weight abc contact construction.",
+      "total_variables": 91,
+      "degree": 4,
+      "degree_status": "exact",
+      "integer_content": 1,
+      "quadratic_residuals": 79,
+      "ordinary_monomials": 926,
+      "ordinary_monomial_count_condition": "Every positive coefficient parameter; this is separate from the defining threshold.",
+      "coefficient_parameter_terms": 927,
+      "polynomial_sha256": "1f5d0511ab8e55755d7dd375b2bce4c6e1bb282efaa05ddb4d7b806b86561bfe",
+      "residuals_sha256": "bbf424ee41a12729b2292812c118f7cc2a1a279762bc7232954a2ae477f869ab",
+      "arithmetic_inputs": [
+        "elliptic_group_and_index_height",
+        "pole_obstruction_and_nonzero_realization_with_restricted_converse_and_descent",
+        "simultaneous_prime_patterns"
+      ],
+      "additional_conjecture": "ordinary rational abc",
+      "all_fixed_coefficients_specified": false,
+      "computation": "computation/quartic/family_abc91_v19",
+      "exact_height_data": "computation/quartic/family_abc91_v19/independent-verification-abc91-v19.json",
+      "fixed_parameter": {
+        "name": "B",
+        "quantified": false,
+        "constraint": "Odd integer B>=3",
+        "effective_threshold_known": false,
+        "certified_sufficient_lower_bound": null
+      },
+      "exact_coefficient_height": "max(4153456,B^2+797683)",
+      "exact_coefficient_height_condition": "B>=3",
+      "common_elliptic_chart": "Three quadrics in four field coordinates; all exceptional strata proved.",
+      "factor_clearing": "Multiply each factor equation by q^(-4); shared field fourth powers become quadratic expressions in the existing squares.",
+      "inverse_weights": [
+        "q^-2",
+        "q^-3",
+        "q^-4"
+      ],
+      "zero_weight_stratum": "The pair chart excludes s2=s3=s4=0, so all inverse identities hold.",
+      "prime_selection_proof": "papers/prime_selection/prime_selection_20261109_v12.tex",
+      "height_scales": [
+        "1",
+        "beta^4+T^4"
+      ],
+      "contacts": [
+        -3,
+        -2,
+        -1,
+        0,
+        2,
+        3,
+        4,
+        5
+      ],
+      "key_height_coefficient": "8/9",
+      "point_roles": 3,
+      "pole_certificates": 2,
+      "comparison_orders": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "eventual_coefficient_height": "B^2+797683",
+      "eventual_coefficient_height_condition": "Odd B>=1833",
+      "scope_limit": "Ordinary rational abc is used; the weaker abc/Szpiro premise of the 13-variable theorem is not asserted sufficient for this quartic."
+    },
+    {
+      "id": "quartic89_abc_family",
+      "construction_kind": "existence_in_computable_coefficient_family",
+      "role": "Pinned coefficient source for the reciprocal-symmetric abc construction; the latter changes the contacts.",
+      "total_variables": 89,
+      "degree": 4,
+      "degree_status": "exact",
+      "integer_content": 1,
+      "quadratic_residuals": 77,
+      "ordinary_monomials": 936,
+      "ordinary_monomial_count_condition": "Every positive coefficient parameter; this is separate from the defining threshold.",
+      "coefficient_parameter_terms": 937,
+      "polynomial_sha256": "14ce2fc08bb0ca17dcbc45770ca04737521b8fc89518a0b46aae5379462eac9c",
+      "residuals_sha256": "30778238b1409e06e5856400122cdaea302241f9912a888e4b303a5f86e68c6a",
+      "arithmetic_inputs": [
+        "elliptic_group_and_index_height",
+        "pole_obstruction_and_nonzero_realization_with_restricted_converse_and_descent",
+        "simultaneous_prime_patterns"
+      ],
+      "additional_conjecture": "ordinary rational abc",
+      "all_fixed_coefficients_specified": false,
+      "computation": "computation/quartic/family_abc89_v21",
+      "exact_height_data": "computation/quartic/family_abc89_v21/independent-verification-abc89-v21.json",
+      "fixed_parameter": {
+        "name": "B",
+        "quantified": false,
+        "constraint": "Odd integer B>=3",
+        "effective_threshold_known": false,
+        "certified_sufficient_lower_bound": null
+      },
+      "exact_coefficient_height": "max(4153456,B^2+797681)",
+      "exact_coefficient_height_condition": "B>=3",
+      "common_elliptic_chart": "Three quadrics in four field coordinates; all exceptional strata proved.",
+      "factor_clearing": "Store A_i=s*T_i, (r0+1)*Omega=A_1*A_2, and the scaled trace eta; s3*b=eta^2 preserves the original pole input.",
+      "inverse_weights": [
+        "s2=s^2",
+        "s3=s^3",
+        "s4=s^4; s=s3/s2=1/q"
+      ],
+      "zero_weight_stratum": "The pair chart excludes s2=s3=s4=0, so all inverse identities hold.",
+      "prime_selection_proof": "papers/prime_selection/prime_selection_20261109_v12.tex",
+      "height_scales": [
+        "1",
+        "beta^4+T^4"
+      ],
+      "contacts": [
+        -3,
+        -2,
+        -1,
+        0,
+        2,
+        3,
+        4,
+        5
+      ],
+      "key_height_coefficient": "8/9",
+      "point_roles": 3,
+      "pole_certificates": 2,
+      "comparison_orders": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "eventual_coefficient_height": "B^2+797681",
+      "eventual_coefficient_height_condition": "Odd B>=1833",
+      "scope_limit": "Ordinary rational abc is used; the weaker abc/Szpiro premise of the 13-variable theorem is not asserted sufficient for this quartic.",
+      "contact_outputs_per_detector": 3,
+      "contact_coordinates": [
+        "r0=(t-1)^2-1",
+        "u0=(r0+1)^2-1",
+        "v0=xi+29"
+      ],
+      "contact_projection_scope": "Exact on the entire rational solution set, preserving all unchanged point and pole coordinates and the pole input b.",
+      "stored_weight_q": false
     }
   ]
 }

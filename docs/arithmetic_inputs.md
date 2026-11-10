@@ -5,13 +5,13 @@ The construction theorems identify rational input projections with $\mathbb Z$ u
 | Construction | Variables | Degree | Number of monomials | Sufficient coefficient parameter |
 |:--|--:|:--|:--|:--|
 | [Few-variable family](../papers/few_variables25/few_variables25_merged_20261110_v19.pdf) | 25 | $\le20747108969426225455955968<2^{85}$ | Upper bound $<2^{1979}$ | Every sufficiently large odd $L$; ineffective threshold |
-| [Fully specified polynomial](../papers/few_variables27/explicit27_20261110_v19.pdf) | 27 | $\le85829362869408651982929920<2^{87}$ | Upper bound $<2^{2192}$ | Every odd $L\ge125001$ |
-| [Quartic family](../papers/quartic_existence/quartic228_20261110_v19.pdf) | 228 | Exactly 4 | Exactly 2,829 | Every sufficiently large $N$; ineffective threshold |
-| [Fully specified quartic](../papers/quartic/quartic265_20261110_v19.pdf) | 265 | Exactly 4 | Exactly 3,485 | Every integer $N\ge14521$ |
+| [Fully specified polynomial](../papers/few_variables27/explicit27_20261110_v19.pdf) | 27 | $\le85829362869408651982929920<2^{87}$ | Upper bound $<2^{2192}$ | Every odd $L\ge20483$ |
+| [Quartic family](../papers/quartic_existence/quartic226_20261110_v21.pdf) | 226 | Exactly 4 | Exactly 2,835 | Every sufficiently large $N$; ineffective threshold |
+| [Fully specified quartic](../papers/quartic/quartic262_20261110_v21.pdf) | 262 | Exactly 4 | Exactly 3,494 | Every integer $N\ge9682$ |
 | [Weak-abc family](../papers/conditional_few_variables/conditional13_20261109_v16.pdf) | 13 | $\le12339485119488<2^{44}$ | Upper bound $<2^{509}$ | Every sufficiently large odd $B$; ineffective threshold |
-| [Ordinary-abc quartic](../papers/quartic_existence/quartic_abc91_20261110_v19.pdf) | 91 | Exactly 4 | Exactly 926 | Every sufficiently large odd $B$; ineffective threshold |
+| [Ordinary-abc quartic](../papers/quartic_existence/quartic_abc87_20261110_v21.pdf) | 87 | Exactly 4 | Exactly 918 | Every sufficiently large odd $B$; ineffective threshold |
 
-The first four constructions use the full normalized modular realization specified below and add no abc or Szpiro hypothesis. The thirteen-variable theorem assumes one weak abc inequality, or ordinary Szpiro through the proved implication. The ninety-one-variable theorem assumes ordinary rational abc. All six retain the applicable elliptic, pole, and simultaneous prime-pattern inputs.
+The first four constructions use the full normalized modular realization specified below and add no abc or Szpiro hypothesis. The thirteen-variable theorem assumes one weak abc inequality, or ordinary Szpiro through the proved implication. The eighty-seven-variable theorem assumes ordinary rational abc. All six retain the applicable elliptic, pole, and simultaneous prime-pattern inputs.
 
 ## The inherited arithmetic inputs
 
@@ -24,7 +24,7 @@ The [arithmetic-dependency paper](../papers/arithmetic_dependencies/arithmetic_d
 | Pole obstruction and realization | The pole equations exclude negative odd valuations outside $2,3,17$ and admit witnesses for the stated positive inputs with square reduced denominator and the required local squareclasses and depths. | Coordinate identities and domains are checked. The restricted-converse and descent inputs give the nonzero witnesses used by the finite charts. |
 | Simultaneous prime patterns | Prescribed prime values, Gaussian congruences, fixed avoidance and divisibility, conjugate reduction orders, and compatible real approximation are available together. | The dependency paper derives the required form from the pinned prime-pattern and reduction-order results. Finite computations check local congruences and order identities. |
 
-The modular input is stronger information than a single numerical contact-height inequality. The leading twenty-five-, twenty-seven-, 228-, and 265-variable theorems use its full normalized form. Their sharper height bounds are proved consequences of that form. The thirteen- and ninety-one-variable constructions instead use logarithmic bounds obtained from their stated additional height hypotheses.
+The modular input is stronger information than a single numerical contact-height inequality. The leading twenty-five-, twenty-seven-, 226-, and 262-variable theorems use its full normalized form. Their sharper height bounds are proved consequences of that form. The thirteen- and eighty-seven-variable constructions instead use logarithmic bounds obtained from their stated additional height hypotheses.
 
 The fixed prime and every finite exceptional set are chosen before applying the prime-pattern theorem. Enlarging a fixed coefficient changes only divisibility and avoidance conditions that are likewise fixed before the subsequent prime selection.
 
@@ -102,7 +102,7 @@ There are 24 retained rational coordinates: the input, eighteen coordinates for 
 
 The [aggregate trace-height theorem](../papers/trace_heights/aggregate_trace_height_20261108_v9.pdf) proves a uniform comparison between the sum of canonical heights of finitely many nonzero multiples of the specified point and the height of their rational trace. Its geometric argument excludes positive-dimensional abelian translates, including those defined over the algebraic closure, from a constant trace fiber. It then applies [von Buhren, Theorem 1.1](https://www.numdam.org/item/10.5802/jtnb.981.pdf) to a fixed graph and finite-rank subgroup.
 
-The additive constant in this proved theorem is ineffective here. This is why the twenty-five- and 228-variable families have no numerical sufficient coefficient parameter. The one-point version is also used in the thirteen- and ninety-one-variable theorems. Their additional abc constants are ineffective as well. None of these fixed coefficients becomes a quantified variable.
+The additive constant in this proved theorem is ineffective here. This is why the twenty-five- and 226-variable families have no numerical sufficient coefficient parameter. The one-point version is also used in the thirteen- and eighty-seven-variable theorems. Their additional abc constants are ineffective as well. None of these fixed coefficients becomes a quantified variable.
 
 For four positive elliptic abscissas, the [effective sum-height theorem](../papers/effective_sums/effective_elliptic_sums_20261108_v10.pdf) instead gives
 
@@ -120,11 +120,11 @@ $$
 1,\quad(1+\rho S_0^2)^2,\quad(1+\rho(S_0+S_1)^2)^2
 $$
 
-and three common scalar/comparison pole predicates. Here $\rho$ is its rational scalar normalizer, rather than the notation for $\sqrt2$ used in some other papers. Its complete exceptional set, effective common height constant, and threshold inequalities are checked in the [constant certificate](../computation/few_variables/effective27_v19/effective27-constants-certificate.json). Every odd $L\ge125001$ suffices. The selected member has degree at most $85829362869408651982929920<2^{87}$, support $<2^{2192}$, and coefficient height $<2^{2^{102}}$, as certified by the [independent bound check](../computation/few_variables/effective27_v19/independent-bound-verification.json). The finite specification is not expanded, so these degree and support statements are upper bounds.
+and three common scalar/comparison pole predicates. Here $\rho$ is its rational scalar normalizer, rather than the notation for $\sqrt2$ used in some other papers. Its complete exceptional set, effective common height constant, and threshold inequalities are checked in the [constant certificate](../computation/few_variables/effective27_v19/effective27-constants-certificate.json). Every odd $L\ge20483$ suffices. The selected member has degree at most $85829362869408651982929920<2^{87}$, support $<2^{2192}$, and coefficient height $<2^{2^{99}}$, as certified by the [independent bound check](../computation/few_variables/effective27_v19/independent-bound-verification.json). The finite specification is not expanded, so these degree and support statements are upper bounds.
 
-## The quartics in 228 and 265 variables
+## The quartics in 226 and 262 variables
 
-The [228-variable family](../papers/quartic_existence/quartic228_20261110_v19.pdf) uses two reflected five-contact blocks, whose only extra exceptional prime above $76176$ is $2029147$. With $H_2=2^{221284}$, its ten-contact height bound is
+The [226-variable family](../papers/quartic_existence/quartic226_20261110_v21.pdf) uses two reflected five-contact blocks, whose only extra exceptional prime above $76176$ is $2029147$. With $H_2=2^{221284}$, its ten-contact height bound is
 
 $$
 h(t)\le H_2M_{10}(t)^{7/6}.
@@ -142,15 +142,16 @@ $$
 \qquad\beta=51X^2+2504.
 $$
 
-Consequently $h(\beta)\le2^{221234}(c/149^{L_N})^{7/9}$. The nonzero Lucas residual would give growth exponent $14/9<2$; the input residual then contradicts Lucas growth. The aggregate trace constant makes the sufficient $N$ ineffective. The quartic is the sum of 202 primitive quadratic squares and has 2,829 monomials. Its coefficient height is exactly $149^{4N+2}+1$ for $N\ge53$; this coefficient-height threshold is distinct from a sufficient defining threshold.
+Consequently $h(\beta)\le2^{221234}(c/149^{L_N})^{7/9}$. The nonzero Lucas residual would give growth exponent $14/9<2$; the input residual then contradicts Lucas growth. The aggregate trace constant makes the sufficient $N$ ineffective. The quartic is the sum of 200 primitive quadratic squares and has 2,835 monomials. Its coefficient height is exactly $149^{4N+2}+1$ for $N\ge53$; this coefficient-height threshold is distinct from a sufficient defining threshold.
 
-The [265-variable quartic](../papers/quartic/quartic265_20261110_v19.pdf) uses four factors and the three effective scales $1,S_0^2,(S_0+S_1)^2$. Six shared comparison fourth powers and one additional scalar fifth-power weight per detector permit four factors to encode all sixteen tests. Their valuation classes are $-\nu,\nu,2$ modulo four and four modulo eight. Deep comparisons still have order three, and both input comparisons need order one. Its height transfer is
+The [262-variable quartic](../papers/quartic/quartic262_20261110_v21.pdf) uses four factors and the three effective scales $1,S_0^2,(S_0+S_1)^2$. Four shared fourth powers of the deep comparison tests and one additional scalar fifth-power weight per detector permit four factors to encode all sixteen tests. Their valuation classes are $-\nu,\nu,2$ modulo four and four modulo eight. Deep comparisons still have order three, and both input comparisons need order one. Its height transfer is
 
 $$
-B^2\le5H_2|J|^{7/(6k)}
+B^2\le5K_2|J|^{1/k}\left(22+\frac{\log|J|}{2k}\right)^2,
+\qquad K_2=2^{221274}.
 $$
 
-when each comparison radical divides the nonzero integer $J$ to order $k$. For the order-three Lucas residual this implies $B<(14H_2)^{9/4}$ unless the residual vanishes. Exact integer comparison proves that $N\ge14521$ excludes that case and then excludes a nonintegral input. At $N=14521$, the fixed coefficient is $A=149^{29043}$ and the coefficient height is exactly $149^{58086}+1$, with 419,333 binary digits. There are 237 primitive quadratic rows and 3,485 quartic monomials. The theorem uses no ineffective aggregate constant. [Exact tables and independent reconstruction](../computation/quartic/family265_v19/independent-verification265-v19.json) certify the stated finite assertions.
+when each comparison radical divides the nonzero integer $J$ to order $k$. For the order-three Lucas residual, the exact integer inequality in the logarithmic threshold certificate gives $B<2^{331969}$ unless the residual vanishes. Exact integer comparison proves that $N\ge9682$ excludes that case and then excludes a nonintegral input. At $N=9682$, the fixed coefficient is $A=149^{19365}$ and the coefficient height is exactly $149^{38730}+1$, with 279,599 binary digits. There are 234 primitive quadratic rows and 3,494 quartic monomials. The theorem uses no ineffective aggregate constant. [Exact tables and independent reconstruction](../computation/quartic/family262_v21/independent-verification262-v21.json) certify the stated finite assertions.
 
 ## Point charts, input maps, and exceptional strata
 
@@ -158,7 +159,7 @@ The [square-abscissa theorem](../papers/square_abscissa/square_abscissa_charts_2
 
 The [fixed-difference chart](../papers/elliptic_charts/fixed_difference_charts_20261110_v18.pdf) is an unconditional algebraic theorem. For $E:y^2=x^3-Dx$ and $P=(a,b)$ satisfying $abD(D^2+6a^2D-3a^4)\ne0$, three quadrics in four field coordinates describe exactly the allowed pairs $H,H-P$. A polynomial elimination identity covers vanishing leading coefficients. The rational component row change has nonzero determinant $-1/362963666515968$ and preserves the zero set. This chart is shared by the three leading quartics.
 
-The few-variable families use $\beta=216X^4+450459$: integrality for a reduced $X=u/v$ forces $v^4\mid216=2^3 3^3$, hence $v=1$. The 228- and 265-variable quartics use $51X^2+2504$, giving $v^2\mid51$. The thirteen- and ninety-one-variable constructions use $2X^2+B$, giving $v^2\mid2$. In each case the arithmetic comparison recovers integrality of the original input exactly.
+The 25- and 27-variable families use $\beta=216X^4+450459$: integrality for a reduced $X=u/v$ forces $v^4\mid216=2^3 3^3$, hence $v=1$. The 226- and 262-variable quartics use $51X^2+2504$, giving $v^2\mid51$. The thirteen- and eighty-seven-variable constructions use $2X^2+B$, giving $v^2\mid2$. In each case the arithmetic comparison recovers integrality of the original input exactly.
 
 ## The thirteen-variable theorem from weak abc
 
@@ -195,19 +196,28 @@ More generally, every one weak exponent $1<\kappa<4/3$ suffices after choosing a
 
 ## The additional-abc quartic
 
-The [ninety-one-variable family](../papers/quartic_existence/quartic_abc91_20261110_v19.pdf) uses ordinary rational abc and the eight contacts $\{-3,-2,-1,0,2,3,4,5\}$. Granville's squarefree binary-form estimate gives $h(t)\le\frac13\log M(t)+C_0$. A second abc consequence gives $h(1:u:v)\le\frac43h(u^4+v^4)+C_1$. The scales $1$ and $\beta^4+T^4$ therefore give strict absorption coefficient $8/9$.
+The [eighty-seven-variable family](../papers/quartic_existence/quartic_abc87_20261110_v21.pdf) uses ordinary rational abc and the eight contacts $\{-5,-2,-1,0,2,3,4,7\}$. Granville's squarefree binary-form estimate gives $h(t)\le\frac13\log M(t)+C_0$. A second abc consequence gives $h(1:u:v)\le\frac43h(u^4+v^4)+C_1$. The scales $1$ and $\beta^4+T^4$ therefore give strict absorption coefficient $8/9$.
 
 The exact point chart includes identity numerator points. A height argument excludes the exceptional torsion translates of the common reference point before interpreting any removed denominator. The local tests establish integrality before applying formal-logarithm congruences. Completeness permits arbitrary positive rational scales because the eighth-power scale prefactor is a square.
 
-Three inverse weights per detector satisfy $s_4=s_2^2$, $qs_4=s_3$, and $qs_3=s_2$. Clearing the two factor equations by $q^{-4}$ removes the two numerator fourth-power outputs. The potential component $s_2=s_3=s_4=0$ would force both numerator reciprocal squares to vanish. The pair chart then gives $V=Q=W_A=0$, contradicting its equation with constant term one. Thus every rational solution has the intended inverse weights; no extra nonzero guard or variable is needed.
+The squared contact distances from the center are $1,4,9,36$. With $r=(t-1)^2$ and $z=r+36/r$, the identity
 
-The source has 91 total coordinates and 79 primitive quadratic equations. Their sum of squares has exact degree four, content one, and 926 monomials. The input-comparison coordinate makes $B$ occur in one row only. For every integer $B\ge3$,
+$$\frac{(r-1)(r-4)(r-9)(r-36)}{r^2}=z^2-50z+481$$
+
+gives two contact outputs per detector. In the affine coordinates $R=r-1$ and $Z=z-37$, their equations are
+
+$$R=t^2-2t,\qquad RZ+Z-R^2+35R=0,$$
+$$ (R+1)s=Z^2+24Z,\qquad s_2=s^2,\qquad s_3=ss_2.$$
+
+The first contact identity excludes $r=0$. If $s=0$, the factor equations force both numerator reciprocal squares to vanish; the unchanged point-pair equations then give a contradiction. Thus all inverse weights have their intended values. The scaled factors $A_i=sT_i$, product $\Omega$, and trace $\eta$ satisfy $(R+1)\Omega=A_1A_2$ and $s_3b=\eta^2$. The local proof uses the recovered unscaled product and trace. The changed degree-eight contact set preserves the required local valuation classes, square-denominator identity, fixed-place preparation, and simultaneous prime construction. Only the ineffective height constant and sufficient defining shift can change.
+
+The source has 87 total coordinates and 75 primitive quadratic equations. Their sum of squares has exact degree four, content one, and 918 monomials. The input-comparison coordinate makes $B$ occur in one row only. For every integer $B\ge3$,
 
 $$
-H(P_B)=\max(4153456,B^2+797683).
+H(P_B)=\max(4153456,B^2+797681).
 $$
 
-No numerical sufficient odd defining shift is certified. The [complete tables and independent check](../computation/quartic/family_abc91_v19/independent-verification-abc91-v19.json) reconstruct every reciprocal factor, retained row, and quartic coefficient. Ordinary rational abc is the stated hypothesis; the weak-abc/Szpiro premise of the separate thirteen-variable theorem is not asserted sufficient here.
+No numerical sufficient odd defining shift is certified. The [complete tables and independent check](../computation/quartic/family_abc87_v21/independent-verification-abc87-v21.json) reconstruct every reciprocal factor, retained row, and quartic coefficient. Ordinary rational abc is the stated hypothesis; the weak-abc/Szpiro premise of the separate thirteen-variable theorem is not asserted sufficient here.
 
 ## Other conjectures and proved obstructions
 
@@ -229,6 +239,6 @@ The equation-combination theorem, guarded finite-algebra elimination, degree and
 
 The foundational coefficient source is Version 9 at commit `14e8f601fe0d9173d4a5f084aedc3e07066a7688`; the arithmetic interpretation incorporates the Version 11 Kato index-set and retained-class correction at commit `650b298a2a18fa956f8859f3ca80e9d7c8cedd82`. The baseline quartic source is Version 13 at commit `5bbd74f6a479776a332cbe036809d5dddae63720`. Sun's prime-pattern reference is arXiv:2610.20691v2, Theorem 4.1. The dependency paper gives exact statement identifiers and bibliography. [Quartic provenance](../computation/quartic/PROVENANCE.json) and the individual source certificates record all subsequent pinned tables and hashes.
 
-The twenty-five-, twenty-seven-, and thirteen-variable finite determinant specifications are not expanded. Their certified support bounds are respectively $<2^{1979}$, $<2^{2192}$, and $<2^{509}$. The three leading quartics are fully expanded, with exact monomial counts 2,829, 3,485, and 926. Parameter powers are fixed coefficients, not quantified coordinates.
+The twenty-five-, twenty-seven-, and thirteen-variable finite determinant specifications are not expanded. Their certified support bounds are respectively $<2^{1979}$, $<2^{2192}$, and $<2^{509}$. The three leading quartics are fully expanded, with exact monomial counts 2,835, 3,494, and 918. Parameter powers are fixed coefficients, not quantified coordinates.
 
 Exact identities, coefficient reconstructions, support bounds, finite valuation residues, and numerical integer inequalities are unconditional statements about the supplied expressions. A rational projection equals $\mathbb Z$ by the corresponding construction theorem under its explicit arithmetic premises. A passing computation certifies its listed finite assertions; it neither proves an arithmetic conjecture nor supplies a missing effective threshold.
