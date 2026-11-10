@@ -1,0 +1,112 @@
+{
+  "status": "PASS",
+  "scope": "Exact general polynomial identities and exceptional-stratum calculations; projection proof is supplied in the manuscript.",
+  "ring": "Z[a,b,D,S,T]/(b^2-a^3+aD)",
+  "assumptions": "a*b*D*(a^2+D)*(D^2+6*a^2*D-3*a^4) != 0; characteristic zero",
+  "chart_quadrics": [
+    "Lf*f-Qf",
+    "Lg*g-Qg",
+    "D^2*f*g+a*D*(f+g)+a*S*T+b*(S-T)+D"
+  ],
+  "coefficient_definition_sha256": "0df945049453bb99bf08f156d874aedd077681c7252f15bcb138d2e66c80526a",
+  "identities": {
+    "elimination_without_division": {
+      "status": "PASS",
+      "terms_before_reducing_b_squared": 38,
+      "terms_after_reducing_b_squared": 0
+    },
+    "first_polynomial_reconstruction": {
+      "status": "PASS",
+      "terms_before_reducing_b_squared": 3,
+      "terms_after_reducing_b_squared": 0
+    },
+    "second_polynomial_reconstruction": {
+      "status": "PASS",
+      "terms_before_reducing_b_squared": 3,
+      "terms_after_reducing_b_squared": 0
+    },
+    "third_quadratic_on_old_chart": {
+      "status": "PASS",
+      "terms_before_reducing_b_squared": 21,
+      "terms_after_reducing_b_squared": 0
+    },
+    "first_curve_equation": {
+      "status": "PASS",
+      "terms_before_reducing_b_squared": 20,
+      "terms_after_reducing_b_squared": 0
+    },
+    "second_curve_equation": {
+      "status": "PASS",
+      "terms_before_reducing_b_squared": 20,
+      "terms_after_reducing_b_squared": 0
+    },
+    "translation_abscissa": {
+      "status": "PASS",
+      "terms_before_reducing_b_squared": 43,
+      "terms_after_reducing_b_squared": 0
+    },
+    "translation_ordinate": {
+      "status": "PASS",
+      "terms_before_reducing_b_squared": 6,
+      "terms_after_reducing_b_squared": 0
+    },
+    "exceptional_Rf_Rg": {
+      "status": "PASS",
+      "terms_before_reducing_b_squared": 0,
+      "terms_after_reducing_b_squared": 0
+    },
+    "exceptional_nonvanishing": {
+      "status": "PASS",
+      "terms_before_reducing_b_squared": 4,
+      "terms_after_reducing_b_squared": 0
+    },
+    "exceptional_R3": {
+      "status": "PASS",
+      "terms_before_reducing_b_squared": 0,
+      "terms_after_reducing_b_squared": 0
+    },
+    "simultaneous_exception_excluded": {
+      "status": "PASS",
+      "terms_before_reducing_b_squared": 5,
+      "terms_after_reducing_b_squared": 0
+    }
+  },
+  "rational_point_checks": [
+    {
+      "case": "minus_P",
+      "S_T_f_g": [
+        "-1",
+        "7/6",
+        "1/2",
+        "4/9"
+      ],
+      "status": "PASS"
+    },
+    {
+      "case": "twice_P",
+      "S_T_f_g": [
+        "-7/6",
+        "1",
+        "4/9",
+        "1/2"
+      ],
+      "status": "PASS"
+    },
+    {
+      "case": "three_P",
+      "S_T_f_g": [
+        "239/13",
+        "-7/6",
+        "1/338",
+        "4/9"
+      ],
+      "status": "PASS"
+    }
+  ],
+  "zero_loci": {
+    "T=b/a": "H=2P, g=1/a, f=4*b^2/(a^2+D)^2",
+    "S=-b/a": "H=-P, f=1/a, g=4*b^2/(a^2+D)^2",
+    "both": "Phi=C/a != 0, so impossible",
+    "f_or_g_zero": "Impossible from D*f^2+S^2*f=1 and D*g^2+T^2*g=1"
+  }
+}
