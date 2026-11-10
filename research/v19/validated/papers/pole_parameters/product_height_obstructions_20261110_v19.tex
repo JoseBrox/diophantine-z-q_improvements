@@ -1,0 +1,421 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,booktabs,microtype}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\DeclareMathOperator{\Odd}{Odd}
+\setlength{\emergencystretch}{2em}
+\title{Odd Radicals and Products of Six Linear Factors}
+\author{}\date{10 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+For a fixed product of six rational linear factors, we exhibit three
+obstructions to bounding a multiplicative scale by the odd radical of
+the product at two arguments. A rational involution gives a negative
+square for every prescribed rational scale greater than four. A second
+involution gives positive examples of unbounded scale whose first
+argument is a sum of two rational squares. A partial symmetry yields
+an elliptic family with both arguments positive and the first greater
+than one. We determine all rational M\"obius transformations preserving
+the six factors and give exact certificates for the identities and
+the elliptic non-torsion calculation. The results concern height bounds
+for the product; they do not assert solutions of the auxiliary elliptic
+and pole equations in a Diophantine definition.
+\end{abstract}
+
+\section{Definitions and the height question}
+
+For a nonzero rational number $q$, let $v_p(q)$ be its normalized
+$p$-adic valuation. For a finite set $S$ of rational primes, put
+\[
+ \Odd_S(q)=\prod_{\substack{p\notin S\\v_p(q)\text{ odd}}}p.
+\]
+Negative valuations are included in this definition. In particular
+$\Odd_S(cq^2)=\Odd_S(c)$ for $c,q\in\Q^\times$.
+If $x=u/v$ in lowest terms with $v>0$, write
+$h(x)=\log\max(|u|,v)$.
+
+Set
+\begin{align}
+ \Theta&=\left\{0,-\frac12,-\frac14,-\frac25,-1,-\frac13\right\},
+       \label{eq:contacts}\\
+ F(t)&=\prod_{\theta\in\Theta}(t-\theta)
+      =\frac{t(t+1)(2t+1)(3t+1)(4t+1)(5t+2)}{120},
+       \label{eq:polynomial}\\
+ R(t)&=\frac{F(t)}{(t-1)^8}.\label{eq:R}
+\end{align}
+An admissible pair $(a,\lambda)$ consists of nonzero rational numbers
+such that both $\lambda$ and $a\lambda$ lie outside
+$\Theta\cup\{1\}$. We examine bounds of the form
+\begin{equation}\label{eq:height-question}
+ h(a)\le C\log\Odd_S(R(\lambda)R(a\lambda))+C'
+\end{equation}
+with constants independent of the admissible pair. The denominator
+in~\eqref{eq:R} is a square, but we retain it to record all poles
+and to match the rational functions used in the six-contact
+construction of~\cite{Conditional}.
+
+Theorems~\ref{thm:universal}, \ref{thm:positive} and
+\ref{thm:elliptic} give families for which the radical in
+\eqref{eq:height-question} is constant and $h(a)$ is unbounded.
+Their domains differ: the first permits every prescribed scale $a>4$,
+the second imposes a Gaussian norm condition on $\lambda$, and the
+third imposes $\lambda>1$. The additional conditions are stated
+separately throughout.
+
+\section{Cancellation for every prescribed scale}
+
+Define
+\[
+                         \psi(t)=-\frac{t}{5t+1}.
+\]
+This involution fixes $0,-2/5$ and exchanges $-1/2$ with $-1/3$
+and $-1/4$ with $-1$.
+
+\begin{lemma}\label{lem:negative-identity}
+As identities of rational functions,
+\begin{align}
+ F(\psi(t))&=-\frac{F(t)}{(5t+1)^6},\label{eq:psiF}\\
+ R(t)R(\psi(t))
+ &=-\left(\frac{F(t)(5t+1)}{(t-1)^4(6t+1)^4}\right)^2.
+       \label{eq:psiR}
+\end{align}
+\end{lemma}
+\begin{proof}
+Put $N=-t$ and $D=5t+1$. The five remaining numerator factors
+in $120F(N/D)$ are
+\[
+ N+D=4t+1,\quad 2N+D=3t+1,\quad 3N+D=2t+1,
+\]
+\[
+                    4N+D=t+1,\qquad 5N+2D=5t+2.
+\]
+Their product with $N$ is $-120F(t)$, which proves
+\eqref{eq:psiF}. Since $\psi(t)-1=-(6t+1)/(5t+1)$,
+substitution into~\eqref{eq:R} gives~\eqref{eq:psiR}.
+\end{proof}
+
+\begin{theorem}\label{thm:universal}
+For every rational $a>4$, set
+\[
+                        \lambda=-\frac{a+1}{5a}.
+\]
+Then $(a,\lambda)$ is admissible, $a\lambda=\psi(\lambda)$,
+and
+\begin{equation}\label{eq:universal-square}
+ R(\lambda)R(a\lambda)=
+ -\left(
+ \frac{25a(a-4)(a-1)(a+1)(2a-3)(3a-2)(4a-1)}
+      {24(a+6)^4(6a+1)^4}\right)^2.
+\end{equation}
+Every finite valuation of this nonzero product is even. Thus
+$\Odd_S(R(\lambda)R(a\lambda))=1$ for every finite set $S$.
+\end{theorem}
+\begin{proof}
+One has
+\[
+ 5\lambda+1=-1/a,\qquad
+ \psi(\lambda)=-(a+1)/5=a\lambda.
+\]
+The inequalities
+\[
+                 -1/4<\lambda<-1/5,\qquad a\lambda<-1
+\]
+exclude all six contacts and the pole $1$. Moreover
+\[
+ \lambda-1=-\frac{6a+1}{5a},\qquad
+ 6\lambda+1=-\frac{a+6}{5a},
+\]
+so the transformed denominators do not vanish.
+Lemma~\ref{lem:negative-identity} proves the negative-square assertion.
+Substitution and cancellation yield~\eqref{eq:universal-square},
+whose displayed factors are nonzero for $a>4$.
+\end{proof}
+
+\begin{corollary}\label{cor:eighth}
+Fix rational numbers $B\ge3$ and $T>0$. The inequality
+\eqref{eq:height-question} cannot hold for every admissible pair
+with
+\[
+                   a=(2X^2+B)^8+T^8,\qquad X\in\Q,
+\]
+for any constants $C,C'$ and any fixed finite set $S$.
+\end{corollary}
+\begin{proof}
+Each displayed scale exceeds four, so
+Theorem~\ref{thm:universal} gives an admissible slope with product
+odd radical one. Taking positive integers $X$ tending to infinity
+makes $a$ and hence $h(a)$ tend to infinity.
+\end{proof}
+
+In particular the restriction $a=\beta^8+T(n)^8$ in the
+weak-$abc$ construction does not, by itself, prevent cancellation:
+for a fixed nonzero elliptic index $n$, its trace $T(n)$ is a
+fixed positive rational number and $\beta=2X^2+B$. The product
+in~\eqref{eq:universal-square} is negative. The theorem asserts
+neither the auxiliary local tests nor solvability of a pole predicate.
+
+\section{Contact automorphisms and positive norm slopes}
+
+\begin{proposition}\label{prop:automorphisms}
+There are exactly twelve rational M\"obius transformations preserving
+$\Theta$. They are listed below. A row $(a,b,c,d;k)$ denotes
+\[
+ \gamma(t)=\frac{at+b}{ct+d},\qquad
+                 F(\gamma(t))(ct+d)^6=kF(t).
+\]
+\begin{center}
+\begin{tabular}{rrrrr}
+\toprule
+$a$&$b$&$c$&$d$&$k$\\
+\midrule
+1&0&-5&-1&-1\\
+1&0&0&1&1\\
+1&1&-7&-4&-27\\
+1&1&2&-1&27\\
+2&1&-7&-3&1\\
+2&1&-3&-2&-1\\
+3&1&-8&-3&-1\\
+3&1&-7&-2&1\\
+4&1&-13&-4&27\\
+4&1&-7&-1&-27\\
+5&2&-14&-5&-27\\
+5&2&-11&-5&27\\
+\bottomrule
+\end{tabular}
+\end{center}
+Apart from the identity, the only transformation sending some positive
+rational number to a positive number is
+\[
+                           \tau(t)=\frac{t+1}{2t-1}.
+\]
+Its positive domain is $t>1/2$. For $t>1$ it satisfies
+$0<\tau(t)/t<2$.
+\end{proposition}
+\begin{proof}
+A M\"obius transformation is determined by its values at the three
+distinct contacts $0,-1/2,-1/4$. There are exactly
+$6\cdot5\cdot4=120$ possible ordered triples of distinct images
+in $\Theta$. For a source triple $(x_i)$ and target triple $(y_i)$,
+its coefficient vector spans the kernel of
+\[
+ \begin{pmatrix}
+ x_1&1&-x_1y_1&-y_1\\
+ x_2&1&-x_2y_2&-y_2\\
+ x_3&1&-x_3y_3&-y_3
+ \end{pmatrix}.
+\]
+The signed $3\times3$ minors give that vector explicitly. Testing
+the remaining three contacts leaves exactly the twelve rows of the
+table. This is a finite rational calculation; the accompanying checker
+performs all 120 cases and verifies each polynomial identity.
+
+In each row other than the identity and $\tau$, the numerator
+coefficients are positive or zero and the denominator coefficients
+are negative. Such a transformation sends every $t>0$ to a negative
+number. The asserted positive domain of $\tau$ follows directly
+from its denominator. Finally, for $t>1$, the inequality
+$\tau(t)/t<2$ is equivalent to
+\[
+                     4t^2-3t-1=(t-1)(4t+1)>0.
+\]
+\end{proof}
+
+The rational function identity for $\tau$ in the table gives
+\begin{equation}\label{eq:tauR}
+ R(t)R(\tau(t))
+ =3\left(\frac{3F(t)(2t-1)}{(t-1)^4(t-2)^4}\right)^2.
+\end{equation}
+Here $\tau(t)-1=(2-t)/(2t-1)$ explains the additional denominator.
+
+\begin{theorem}\label{thm:positive}
+For every integer $m\ge2$, set
+\[
+ \lambda_m=\frac{m^2+1}{2m^2},\qquad
+ \mu_m=\frac{3m^2+1}{2},\qquad
+ a_m=\frac{m^2(3m^2+1)}{m^2+1}.
+\]
+Then $(a_m,\lambda_m)$ is admissible, $a_m>4$,
+$\mu_m=a_m\lambda_m=\tau(\lambda_m)$, and $a_m\to\infty$.
+Both arguments are positive and
+\begin{equation}\label{eq:norm}
+ \lambda_m=\left(\frac{m+1}{2m}\right)^2+
+              \left(\frac{m-1}{2m}\right)^2.
+\end{equation}
+Moreover $R(\lambda_m)R(a_m\lambda_m)\in3\Q^{\times2}$.
+Thus~\eqref{eq:height-question} fails even with positive Gaussian
+norm slopes when $3\in S$.
+\end{theorem}
+\begin{proof}
+All relations are immediate substitutions. In particular
+\[
+ 1/2<\lambda_m\le5/8,\qquad \mu_m\ge13/2,
+\]
+so no argument is a contact or pole. Also
+$a_m=3m^2-2+2/(m^2+1)>4$ and $a_m\to\infty$.
+Equation~\eqref{eq:norm} proves the norm condition, and
+\eqref{eq:tauR} proves the product squareclass assertion.
+\end{proof}
+
+For a prescribed rational scale $a>0$, the equation
+$\tau(\lambda)=a\lambda$ is
+\[
+                   2a\lambda^2-(a+1)\lambda-1=0.
+\]
+It has a rational root precisely when $a^2+10a+1$ is a rational
+square. Theorem~\ref{thm:positive} does not impose the further
+condition $a=\beta^8+T(n)^8$. Also, Proposition~\ref{prop:automorphisms}
+shows that no nonidentity contact automorphism gives
+$\gamma(\lambda)=a\lambda$ with $\lambda>1$ and $a>4$.
+That observation concerns contact automorphisms only; the next section
+gives an obstruction of a different kind.
+
+\section{An elliptic family above one}
+
+Put
+\[
+ \gamma(t)=\frac1{2(t-1)},\qquad
+ H(t)=(2t-1)(3t+1)(5t+2).
+\]
+Direct multiplication gives
+\begin{equation}\label{eq:elliptic-product}
+ F(t)F(\gamma(t))=
+ \left(\frac{t(t+1)(2t+1)(4t+1)}{480(t-1)^3}\right)^2H(t).
+\end{equation}
+Thus a rational point on $7y^2=H(t)$, away from the excluded
+arguments, gives $R(t)R(\gamma(t))\in7\Q^{\times2}$.
+
+\begin{lemma}\label{lem:elliptic-point}
+The elliptic curve
+\[
+                \mathcal E:\quad Y^2=(X-105)(X+70)(X+84)
+\]
+contains the non-torsion point $P=(210,2940)$. This point belongs
+to the identity component of $\mathcal E(\mathbb R)$.
+\end{lemma}
+\begin{proof}
+Substitution verifies that $P$ lies on the curve. The three roots
+are distinct modulo $11$ and modulo $13$, so both primes are of
+good reduction. Exact enumeration and the group law give
+\[
+ \#\mathcal E(\mathbb F_{11})=8,\qquad
+                    \operatorname{ord}(P\bmod13)=10.
+\]
+For clarity the successive nonidentity multiples modulo $13$ are
+\[
+ (2,2),(11,4),(0,10),(4,6),(1,0),
+ (4,7),(0,3),(11,9),(2,11).
+\]
+The next multiple is the identity. If $P$ were torsion, its order
+would therefore be divisible by five. Rational torsion of order
+prime to a good reduction prime injects under reduction
+\cite[Chapter~VII, Section~3]{Silverman}. At $11$ this would give
+an element of order five in a group of order eight, a contradiction.
+
+The largest real root of the cubic is $105$, and $X(P)=210>105$.
+Hence $P$ is on the unbounded real branch, which contains the point
+at infinity and is the identity component.
+\end{proof}
+
+\begin{theorem}\label{thm:elliptic}
+There are rational sequences $\lambda_j>1$ and $a_j>4$ with
+$a_j\to\infty$ such that $(a_j,\lambda_j)$ is admissible and
+\[
+                      R(\lambda_j)R(a_j\lambda_j)
+                                      \in7\Q^{\times2}.
+\]
+Consequently~\eqref{eq:height-question} fails on the domain
+$\lambda>1$, $a>4$, whenever $7\in S$.
+\end{theorem}
+\begin{proof}
+The change of variables $X=210t$, $Y=1470y$ identifies
+$7y^2=H(t)$ with $\mathcal E$. Indeed
+\[
+ (210t-105)(210t+70)(210t+84)=308700H(t),
+ \qquad1470^2=7\cdot308700.
+\]
+The point $P$ corresponds to $(t,y)=(1,2)$.
+
+The identity component of the real points of an elliptic curve is a
+circle group. The multiples of a non-torsion point are dense in that
+component: after identification with $\mathbb R/\mathbb Z$, such a
+point has irrational coordinate, and its cyclic subgroup is dense.
+By Lemma~\ref{lem:elliptic-point}, choose rational multiples $P_j$
+tending to $P$ from the local side where $X>210$. This side exists
+because $Y(P)\ne0$, so $X$ is a local real coordinate at $P$.
+Then
+\[
+                    \lambda_j=X(P_j)/210>1,\qquad
+                    \lambda_j\longrightarrow1.
+\]
+Set
+\[
+ \mu_j=\frac1{2(\lambda_j-1)},\qquad
+ a_j=\frac{\mu_j}{\lambda_j}
+            =\frac1{2\lambda_j(\lambda_j-1)}.
+\]
+For all sufficiently large $j$, $\mu_j>4\lambda_j>4$ and the
+arguments avoid every contact and pole. Equation~\eqref{eq:elliptic-product}
+proves the squareclass assertion. Finally $a_j\to\infty$, and
+therefore $h(a_j)\to\infty$.
+\end{proof}
+
+No assertion in Theorem~\ref{thm:elliptic} imposes that
+$\lambda_j-1$ be a sum of two rational squares or that
+$a_j=\beta^8+T(n)^8$. Adding either condition requires a further
+argument. In particular, this theorem does not settle the product
+height question on their intersection.
+
+\section{Quadratic twists and exact verification}
+
+The geometric meaning of the cancellation is straightforward.
+For a squarefree polynomial $f$, the equation
+\[
+                            z^2=f(x)f(y)
+\]
+records pairs of points on the same quadratic twist of
+$w^2=f(x)$. Allowing a fixed nonzero factor on the right records
+pairs of twists with a fixed ratio of squareclasses. This pair
+surface, including its rational curves and its relation to uniform
+height questions, is studied in~\cite[Sections~7--8]{Granville}.
+Finiteness of rational points on each fixed genus-two twist does
+not give a bound uniform in a varying squareclass. Consequently,
+excluding contact automorphism families alone does not establish
+\eqref{eq:height-question}.
+
+All identities and finite computations in this paper are verified by
+\texttt{check\_product\_height\_obstructions\_v19.py} in
+\texttt{computation/pole\_parameters}. The program uses only rational
+arithmetic and the Python standard library. It checks the two
+homogeneous sextic identities, the explicit square root in
+\eqref{eq:universal-square}, the complete 120-case automorphism
+enumeration, and the cleared polynomial identity
+\eqref{eq:elliptic-product}. It also verifies the cubic change of
+variables, enumerates the groups over $\mathbb F_{11}$ and
+$\mathbb F_{13}$, and checks the stated point orders. Its certificate
+records these finite results. The argument giving the infinite
+elliptic sequence is the real-density proof of
+Theorem~\ref{thm:elliptic}.
+
+\begin{thebibliography}{9}\small
+\bibitem{Conditional}
+J.~Brox and contributors, \emph{Thirteen Variables from a Weak $abc$
+Inequality},
+\texttt{conditional13\_20261109\_v16.tex},
+\url{https://github.com/JoseBrox/diophantine-z-q_improvements}.
+\bibitem{Granville}
+A.~Granville, \emph{Rational and integral points on quadratic twists
+of a given hyperelliptic curve}, International Mathematics Research
+Notices \textbf{2007}, article rnm027,
+\url{https://doi.org/10.1093/imrn/rnm027}.
+\bibitem{Silverman}
+J.~H.~Silverman, \emph{The Arithmetic of Elliptic Curves}, second
+edition, Graduate Texts in Mathematics \textbf{106}, Springer, 2009,
+\url{https://doi.org/10.1007/978-0-387-09494-6}.
+\end{thebibliography}
+\end{document}
