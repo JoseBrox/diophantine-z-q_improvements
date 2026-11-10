@@ -1,0 +1,51 @@
+2026-11-10: candidate 228 / 266 / abc91 by reciprocal factor equations
+
+These are rigorous algebraic/arithmetic candidates pending exact reconstruction.
+The parent has independently agreed with the valuation and zero-stratum checks.
+
+Inherited-premise 238 source: replace deep q^7 by q^5, and replace q*A2^2
+in the third factor by q^3*A2^2. The five unchanged factor variables now mean
+ T1=1+q^5*C2^2+q^2*DH^2+q^4*B1^4,
+ T2=1+q^5*G^2+q^2*A3^2+q^4*B0^4,
+ T3=1+q^5*I^4+q^3*A2^2+q^2*A4^2+q^4*B3^4,
+ T4=1+q^5*C3^2+q^2*C1^4+q^4*B4^4,
+ T5=1+q^5*C4^2+q^2*A1^2+q^4*B2^4.
+Store r1*q=1,r2=r1^2,r4=r2^2 instead of q^7,q^2,q^4.
+Multiply each factor equation by r4=q^-4. Terms q^4*Bi^4 become
+(stored Bi^2)^2, which are quadratic in their two rational coordinates.
+This deletes all five Bi^4 field outputs: ten rational coordinates.
+No factor variables or products change. Thus 238->228 and276->266.
+
+At a contact vq=-nu with nu odd positive, T3 has odd terms with residues
+4vI-5nu=-nu mod4 and2vA2-3nu=nu mod4 (vA2 even). The other two terms have
+exact 2-adic valuation divisors2 and4. All factors have unique smallest
+negative terms; valuation0 factors reduce to1. Pole extraction gives all
+terms >-nu/2. Deep C,G attain v>9nu/4, hence order>=3; inputI attains
+v>9nu/8, hence order>=2. Reciprocal f terms become positive (even>=2).
+Plain-z formal error is4, enough for required comparison order3.
+The new contact exponent7/3 gives ten-contact exponent7/6, hence Delta
+growth exponent14/9<2 for precision3 and degree4 residual.
+New equations impose q!=0; completeness witnesses have a chosen prime
+with negative q-valuation, so already satisfy q!=0.
+
+For explicit266, H2=2^221284 gives B^2<=5H2*(14B^4)^(7/18)
+<14H2*B^(14/9), so B<(14H2)^(9/4). Recompute the first N with
+(149^L_N-1)^4>(14H2)^9, L_N=floor(19(2N-1)/8)+1.
+Other276 scalar/input/completeness bounds remain unchanged.
+
+abc93 source: retain exact factors and clear each by q^-4. Replace2
+weights q2,q4 by3 weights r2,r3,r4 satisfying r4=r2^2,q*r4=r3,q*r3=r2.
+The cleared factors are
+r4*T1=r4+r3*C^2+r2*fH^2+(fU^2)^2,
+r4*T2=r4+r3*I^2+r2*conj(fHp)^2+(conj(fV)^2)^2.
+Delete both numerator fourth powers (four rational coords) and add one
+scalar weight per two detectors (two coords):93->91.
+Zero stratum r2=r3=r4=0 forces fU=fV=0. Numerator pair chart forces
+U=V=O, impossible because U-V=A is the nonzero root point. Equivalently
+the exact pair equations give V=Q=0 => W_A=0 => 0=1.
+Thus r2!=0 and the weights are the claimed inverse powers. No guard is
+needed. All abc arithmetic and conditional threshold are unchanged.
+
+Implementation owner /root/quartic. Parent handles remote checkpoints,
+published documentation, TeX compilation. New builders/checkers will pin
+238,276,93 JSON and independently reconstruct every changed row.
