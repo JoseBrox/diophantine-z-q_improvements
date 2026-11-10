@@ -8,60 +8,61 @@
 \newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}\newcommand{\HH}{\mathcal H}
 \DeclareMathOperator{\Tr}{Tr}\DeclareMathOperator{\Nm}{Nm}
 \setlength{\emergencystretch}{2em}
-\title{A family of defining quartics in 238 variables}
+\title{An explicit defining quartic in 265 variables}
 \author{}\date{10 November 2026}
 \begin{document}\maketitle
 \begin{abstract}
 Under the specified modular-realization, elliptic, pole-realization and
-prime-pattern inputs of the source construction, we give an integer
-quartic family in 238 total variables whose sufficiently large members
-define the integers in the rationals. A proved contact-height estimate
-with exponent $7/2$ becomes $7/4$ after using two disjoint contact blocks.
-A quadratic chart in four field coordinates stores the common point
-and both reciprocal formal parameters. All elliptic comparison ratios
-use the plain formal parameter. Sixteen
-local tests are represented by five factors and three scalar weight
-outputs. A balanced contact normalization removes a separate reciprocal
-coordinate, while a fourth-power scalar norm certificate bounds the
-input height by an arbitrarily small fixed multiple of $c(1+\log c)$,
-where $c$ is an auxiliary integer index. A sharpened Lucas estimate
-then supplies the required contradiction.
-The quartic is a sum of 212 primitive quadratic squares, has 2924
-monomials, and has coefficient height $149^{4N+2}+1$ for $N\ge53$.
-The sufficient defining parameter remains ineffective because of the
-additive constant in the aggregate trace-height theorem. No $abc$
-conjecture is added.
+prime-pattern inputs, we specify an integer quartic in 265 total
+variables defining the integers in the rationals. The quadratic
+contact-height estimate with exponent $7/3$ becomes $7/6$ on two
+disjoint five-contact blocks. Three comparison scales allow the use
+of the effective height theorem for four elliptic abscissas. A common
+elliptic chart uses four field coordinates, and all comparison ratios
+use the plain formal parameter. Four factors encode sixteen local tests;
+shared fourth powers distinguish their valuation classes. Inverse weights
+allow the numerator fourth powers to enter without separate outputs.
+The complete quadratic system has 237 rows;
+the expanded quartic has exactly 3485 monomials and content one.
+The fixed parameter $N=14521$ is sufficient. The resulting coefficient
+height is $149^{58086}+1$, with 419333 binary digits. All coefficient
+and numerical threshold assertions have independent exact
+certificates. No additional $abc$ conjecture is used.
 \end{abstract}
 
 \section{The family and its arithmetic scope}
-All variable counts include the distinguished input $X$. For a fixed
+Write $h$ for the absolute logarithmic Weil height; for a reduced
+rational number $r/s$, with $s>0$, it is
+$h(r/s)=\log\max(|r|,s)$. For an integer polynomial $F$, write
+$H(F)$ for the largest absolute coefficient. All variable counts
+include the distinguished input $X$. For a fixed
 integer $N\ge1$ let $A_N=149^{2N+1}$. The complete tables
 \begin{center}\small
-\nolinkurl{quadratic-family238-v18.json}\\
-\nolinkurl{polynomial-family238-v18.json}
+\nolinkurl{quadratic-family265-v19.json}\\
+\nolinkurl{polynomial-family265-v19.json}
 \end{center}
-specify 212 primitive integer
+specify 237 primitive integer
 quadratic polynomials and their sum of squares
 \[
- P_N(X,Y_1,\ldots,Y_{237})=\sum_{j=1}^{212}Q_{N,j}^2.
+ P_N(X,Y_1,\ldots,Y_{264})=\sum_{j=1}^{237}Q_{N,j}^2.
 \]
 The parameter $A_N$ is a coefficient, not a variable.
 
 \begin{theorem}\label{thm:main}
-Assume the arithmetic premises stated below. There is a fixed integer
-$N_0\ge53$ such that every $N\ge N_0$ satisfies
+Assume the arithmetic premises stated below. For every integer
+$N\ge14521$ and every $x\in\Q$,
 \[
  x\in\Z\quad\Longleftrightarrow\quad
- \exists\mathbf y\in\Q^{237}\ P_N(x,\mathbf y)=0
- \qquad(x\in\Q).
+ \exists\mathbf y\in\Q^{264}\ P_N(x,\mathbf y)=0.
 \]
-For every $N\ge1$ the polynomial $P_N$ has degree exactly four,
-content one, and 2924 nonzero coordinate monomials. For $N\ge53$,
+For every $N\ge1$, the polynomial $P_N$ has degree exactly four,
+content one, and 3485 nonzero coordinate monomials. For $N\ge53$,
 \[
                        H(P_N)=149^{4N+2}+1.
 \]
-The construction specifies every member exactly. The proof does not
-determine a sufficient numerical value of $N_0$.
+In particular $A_{14521}=149^{29043}$ gives a defining quartic of
+coefficient height $149^{58086}+1$, whose binary length is 419333.
+The coefficient tables specify this polynomial completely.
 \end{theorem}
 
 Set
@@ -79,20 +80,22 @@ and hypotheses recorded in \cite{Dependencies,Source,Weights}:
 \item $2E(K)=\Z P$ and $h(x([n]P))\ge n^2-6$ for every nonzero
 integer $n$, together with the specified point charts and group domains.
 \item The modular-realization input of
-\cite[Definition~6.1]{NewHeight}, with the exact arithmetic scope inherited
-from the source's modular construction. The normalized character construction and the refinement in
-\cite[Theorem~4.1]{RefinedHeight} prove
+\cite[Definition~6.1]{NewHeight}, with its normalized coefficient
+character. The multiplicity theorem of
+\cite[Theorem~4.1]{Multiplicity} proves
 \begin{equation}\label{eq:baseheight}
- h(u)\le H M_5(u)^{7/2},\qquad H=2^{330671}.
+ h(u)\le H M_5(u)^{7/3},\qquad H=2^{221234}.
 \end{equation}
 Here $M_5(u)$ is the odd contact radical outside $76176$ for
 $\infty,0,1,2401,-343/32$, and $u$ avoids the four finite contacts.
-The same refined theorem also proves the sharper estimate
-\begin{equation}\label{eq:baseheightsharp}
- h(u)\le C_3M_5(u)^3(1+\log M_5(u)),\qquad C_3=2^{330670}.
-\end{equation}
-Both bounds are consequences of the modular input, rather than an
-additional $abc$ assumption.
+Explicitly, if $u=r/s$ is reduced with $s>0$, then $M_5(u)$ is
+the product of primes $p>76176$ having a positive odd valuation on
+at least one of
+\[
+           s,\quad r,\quad r-s,\quad r-2401s,\quad32r+343s.
+\]
+The estimate is a consequence of the stated modular input, rather
+than an additional $abc$ assumption.
 \item The pole obstruction outside $2,3,17$, and its simultaneous
 realization for positive inputs less than $17$ with square reduced
 denominator and the stated local squareclasses and valuation bounds
@@ -102,13 +105,12 @@ finite congruence, and real approximation assertions used by the source.
 The weighted selection and fixed denominator dilation are justified
 from the cited analytic estimates in \cite{Selection}.
 \end{enumerate}
-The aggregate trace-height theorem used below is the proved consequence
-of the family height theorem described in \cite{Aggregate}; its additive
-constant is ineffective. The contact amplification below is an elementary consequence of~\eqref{eq:baseheight},
-not an additional arithmetic assumption. Exact coefficient verification
-does not prove the retained arithmetic premises.
+The effective sum-height theorem used below is proved in
+\cite{Sums}; it adds no arithmetic premise. Contact amplification is
+an elementary consequence of \eqref{eq:baseheight}. Exact coefficient
+verification does not prove the retained arithmetic premises.
 
-\section{Two contact blocks and the comparison scales}
+\section{Two contact blocks and three effective comparison scales}
 Put
 \[
  \Theta=\{0,-1/2,-1,1/2399,-32/407\},\qquad
@@ -126,23 +128,26 @@ certificate verify this exceptional set. In particular
  F_2(1)=-\frac{82429855236}{7878870169},\qquad M_2^\circ(1)=1.
 \]
 
-Set $E_2=2029147$ and $H_2=\log7+HE_2^{7/2}$. Then
+Set $E_2=2029147$ and $H_2=2^{221284}$. Then
 \begin{equation}\label{eq:contactheight}
-                   h(t)\le H_2M_2^\circ(t)^{7/4}
+                   h(t)\le H_2M_2^\circ(t)^{7/6}
                    \qquad(t\notin\Theta_2).
 \end{equation}
-Indeed, apply~\eqref{eq:baseheight} to $2+1/t$ and $2+1/(2-t)$.
+Indeed, apply \eqref{eq:baseheight} to $2+1/t$ and $2+1/(2-t)$.
 The inverse projective matrices have maximum absolute row sums three
-and seven, respectively, so the inverse height change is at most
-$\log7$. If $M_+,M_-$ are the corresponding block radicals with
-$\Sigma$ omitted, the original radicals are at most $E_2M_+$ and
-$E_2M_-$. Outside $\Sigma$ the two radicals are coprime and their
-product is $M_2^\circ(t)$. Multiplying the two inequalities
+and seven, respectively. If $M_+,M_-$ are the two block radicals
+with $\Sigma$ omitted, the original radicals are at most $E_2M_+$
+and $E_2M_-$. Outside $\Sigma$ these radicals are coprime, with
+$M_+M_-=M_2^\circ(t)$. Multiplying the two inequalities
 \[
-              h(t)-\log7\le HE_2^{7/2}M_\pm^{7/2}
+             h(t)-\log7\le HE_2^{7/3}M_\pm^{7/3}
 \]
-when their left side is positive proves~\eqref{eq:contactheight};
-if it is nonpositive, the conclusion is immediate.
+when the left side is positive gives the exponent $7/6$.
+If it is nonpositive, the asserted bound is immediate. Finally
+$E_2<2^{21}$ and $\log7<2$ give
+\[
+                 \log7+HE_2^{7/3}<2+2^{221283}<H_2.
+\]
 
 The retained root points are
 \[
@@ -151,17 +156,24 @@ The retained root points are
 \]
 with nonzero integer labels. Set
 \[
- T=\frac14\Tr_{K/\Q}\left(\sum_{i=1}^4x(Q_i)\right).
+ \mathcal S=\sum_{i=1}^4x(Q_i)=S_0+S_1\rho.
 \]
-It is positive, and the aggregate trace theorem gives fixed constants
-$M_1>0$, $M_2\ge1$ such that
+Each abscissa is a positive square at both real embeddings, so
+$S_0>12$ and $S_0>\sqrt2|S_1|$. The effective abscissa sum-height
+theorem \cite{Sums} gives $B^2\le2h(\mathcal S)+80$.
+Put $U=S_0$ and $V=S_0+S_1$, so
+$\mathcal S=(1-\rho)U+\rho V$. The product of the two archimedean
+coefficient sums is seven. The finite-place coefficients are integral,
+and therefore
+$h(\mathcal S)\le h(U)+h(V)+\tfrac12\log7$.
+Since $\log7<2$, this proves
 \begin{equation}\label{eq:aggregate}
-                         B^2\le M_1h(T)+M_2.
+                  B^2\le2h(S_0)+2h(S_0+S_1)+82.
 \end{equation}
-Use the two positive rational scales $a_*=1,T$. No square condition
-on a scale is needed. Replacing the half-trace in the aggregate
-height theorem by its half changes its logarithmic height by at
-most $\log2$; this is absorbed into $M_2$.
+Use the three positive rational square scales
+\[
+             a_0=1,\qquad a_1=S_0^2,\qquad a_2=(S_0+S_1)^2.
+\]
 For each scale put $t_*=a_*\lambda$ and $\delta=t_*-1$.
 On the nonzero domain use the balanced contact and the local weight
 \begin{equation}\label{eq:detector}
@@ -177,23 +189,30 @@ Its actual quadratic normalization is
 Thus $R^{-1}=1+q$ when $\delta\ne0$, and no additional coordinate
 for this reciprocal is needed. No contact value can occur:
 $F_2(t_*)=0$ would force $r=0$ and $t_*=1$, contradicting $F_2(1)\ne0$.
-There are two distinct exceptional strata. If $\delta=0$, then $q=-1$
-and $M_2^\circ(t_*)=1$; no reciprocal is used. If $q=0$, then $\delta\ne0$
-and $F_2(t_*)=\delta^{10}$, so again $M_2^\circ(t_*)=1$. Indeed a consumed
-contact prime would have odd valuation on the left and valuation zero
-on the right, since $\delta$ is a unit there.
+The reciprocal-weight equation below imposes $q\ne0$. The remaining
+exceptional stratum $\delta=0$ has $q=-1$ and
+$M_2^\circ(t_*)=1$; no value of $R$ is used on that stratum.
+Every witness constructed in completeness has a selected contact prime
+with $v_p(q)=-1$, and therefore satisfies $q\ne0$.
 
-If both radicals divide a nonzero integer $J$ to order $k$, then
-$h(T)\le h(\lambda)+h(T\lambda)$ and
-\eqref{eq:contactheight}--\eqref{eq:aggregate} imply
+For $j=0,1,2$, write $t_j=a_j\lambda$ and let $M_j=M_2^\circ(t_j)$.
+Suppose that the $k$th power of each $M_j$ divides a nonzero integer
+$J$. Since $t_0\ne0$,
+\[
+ 2h(S_0)\le h(t_1)+h(t_0),\qquad
+ 2h(S_0+S_1)\le h(t_2)+h(t_0).
+\]
+Consequently \eqref{eq:contactheight} and \eqref{eq:aggregate} give
 \begin{equation}\label{eq:heighttransfer}
- B^2\le C|J|^{7/(4k)}+M_2,\qquad C=2M_1H_2.
+ B^2\le4H_2|J|^{7/(6k)}+82
+             \le5H_2|J|^{7/(6k)}.
 \end{equation}
-The two radicals need not be coprime for this implication.
+The three radicals need not be pairwise coprime. No ineffective
+constant occurs in this inequality.
 
 \section{A quadratic chart for the common reference point}
 
-Write $a_P=x_P$, $b_P=y_P$, and set
+Write $a_P=x(P)$, $b_P=y(P)$, and set
 \[
  A_P=a_P^2+D,\qquad B_P=a_P^2-D,\qquad
  C_P=D^2+6a_P^2D-3a_P^4.
@@ -469,13 +488,14 @@ factors. We obtain
  \ell^{L_N}M_5(\beta)^3\mid c,\qquad
  L_N=\left\lfloor\frac{19(2N-1)}8\right\rfloor+1.
 \end{equation}
-Together with~\eqref{eq:baseheightsharp}, this gives
+Together with \eqref{eq:baseheight}, this gives
 \begin{equation}\label{eq:scalar}
- h(\beta)\le C_3\ell^{-L_N}c\left(1+\frac{\log c}{3}\right),
+ h(\beta)\le H\left(\frac{c}{\ell^{L_N}}\right)^{7/9}
+             \le H\ell^{-L_N}c,
  \qquad c\ge\ell^{L_N}.
 \end{equation}
-Indeed $M_5(\beta)^3\le c/\ell^{L_N}$ and
-$\log M_5(\beta)\le(\log c)/3$.
+The last inequality uses $c/\ell^{L_N}\ge1$. These scalar estimates
+are independent of the comparison logarithms.
 
 \section{Plain parameter ratios and the local tests}
 For $f=1/x$ and $z=-x/y$, extend their regular values at the
@@ -515,11 +535,11 @@ Put
 \[
  G=L_3^2-L_2(L_2-2)L_3L_4+(L_2-2)^2L_4^2-1.
 \]
-The required orders are two for $D_H$, four for $C_2,C_3,C_4,G$,
-one for $C_1$, two for $I$, and one for the nine $A_i,B_i$.
+The required orders are two for $D_H$, three for $C_2,C_3,C_4,G$,
+one for each of $C_1,I$, and one for the nine $A_i,B_i$.
 The final input comparison uses order one.
 
-\section{Five factors and extraction at one place}
+\section{Four factors and extraction at one place}
 At a contact prime $p\notin\Sigma$, $\delta$ is a unit and
 $\nu=v_p(R)=v_p(F_2(t_*))$ is positive and odd, and $v_p(q)=-\nu$. This follows
 from the unique contact factor with positive odd valuation and
@@ -535,12 +555,11 @@ before any formal-parameter quotient is used.
 
 Use
 \begin{align*}
- T_1&=1+q^7C_2^2+q^2D_H^2+q^4B_1^4,\\
- T_2&=1+q^7G^2+q^2A_3^2+q^4B_0^4,\\
- T_3&=1+q^7I^4+qA_2^2+q^2A_4^2+q^4B_3^4,\\
- T_4&=1+q^7C_3^2+q^2C_1^4+q^4B_4^4,\\
- T_5&=1+q^7C_4^2+q^2A_1^2+q^4B_2^4,
- \qquad W=T_1T_2T_3T_4T_5.
+ T_1&=1+q^9C_2^4+q^3C_1^4+q^2D_H^2+q^4B_1^4,\\
+ T_2&=1+q^9G^4+q^3A_3^2+q^2B_0^2+q^4B_2^4,\\
+ T_3&=1+q^9C_3^4+q^3A_2^2+q^2I^4+q^4B_3^4,\\
+ T_4&=1+q^9C_4^4+q^3A_1^2+q^2A_4^2+q^4B_4^4,
+ \qquad W=T_1T_2T_3T_4.
 \end{align*}
 
 \begin{lemma}\label{lem:residues}
@@ -548,32 +567,25 @@ At a contact prime, every factor is nonzero and has valuation at most
 zero. A factor of valuation zero is congruent to one in the residue field.
 \end{lemma}
 \begin{proof}
-First suppose every displayed test in a factor is nonzero. In each
-factor other than $T_3$, the three nonconstant valuations belong,
-respectively, to the odd integers, to $2+4\Z$, and to $4+8\Z$.
-For example $T_1$ has valuations
-\[
- 2v(C_2)-7\nu,\qquad 2v(D_H)-2\nu,\qquad4v(B_1)-4\nu.
-\]
-The second has exact factor two because $v(D_H)$ is even and $\nu$ is
-odd. The third has exact factor four because $v(B_1)$ is even.
-The term $q^2C_1^4$ in $T_4$ has valuation
-$2(2v(C_1)-\nu)$, again twice an odd integer.
+First suppose every displayed test in a factor is nonzero.
+The first nonconstant term in every factor has valuation
+$4v(C)-9\nu$, where $C$ is the indicated deep comparison.
+Its residue modulo four is $-\nu$.
+The second term has either valuation $4v(C_1)-3\nu$ or
+$2v(A_i)-3\nu$. The even valuation of every reciprocal abscissa
+therefore makes its residue $\nu$ modulo four.
+The third term has either valuation $2v(f)-2\nu$, with $v(f)$
+even, or $4v(I)-2\nu$. Its residue modulo four is two.
+Finally the fourth term has valuation $4v(B_i)-4\nu$,
+which has residue four modulo eight because $v(B_i)$ is even.
 
-In $T_3$ the four nonconstant valuations are
-\[
- 4v(I)-7\nu,\quad 2v(A_2)-\nu,\quad
- 2v(A_4)-2\nu,\quad4v(B_3)-4\nu.
-\]
-The first three have residues $\nu,-\nu,2$ modulo four. These are
-pairwise distinct and nonzero because $\nu$ is odd and the $A_i$
-have even valuations. The fourth has residue four modulo eight;
-it therefore differs from each of the first three and from zero.
-Thus, in every factor, all finite term valuations, including zero
-for the constant term, are distinct. Zero tests simply remove terms
-from this argument. The minimum is attained exactly once. This proves
-nonvanishing and the asserted bound. If the minimum is zero, every
-nonconstant term has positive valuation, so the residue is one.
+The classes $-\nu,\nu,2$ modulo four are pairwise distinct and
+nonzero because $\nu$ is odd. The fourth class differs from them
+and from the constant term's valuation zero. Thus the finite term
+valuations are pairwise distinct. Zero tests simply remove terms.
+The minimum is attained exactly once, which proves nonvanishing
+and valuation at most zero. If the minimum is zero, all
+nonconstant terms have positive valuation, so the residue is one.
 \end{proof}
 
 \begin{proposition}\label{prop:extract}
@@ -602,13 +614,13 @@ The resulting lower bounds, before integer rounding, are
 \[
 \begin{array}{c|c|c}
 \text{test}&\text{strict lower bound}&\text{integer order}\\\hline
-C_2,C_3,C_4,G&13\nu/4&4\\
-I&13\nu/8&2\\
-C_1&3\nu/8&1\\
+C_2,C_3,C_4,G&17\nu/8&3\\
+C_1&5\nu/8&1\\
+I&3\nu/8&1\\
 D_H&3\nu/4&2\\
-A_2&\nu/4&1\\
-A_1,A_3,A_4&3\nu/4&1\\
-B_0,B_1,B_2,B_3,B_4&7\nu/8&1
+A_1,A_2,A_3&5\nu/4&1\\
+A_4,B_0&3\nu/4&1\\
+B_1,B_2,B_3,B_4&7\nu/8&1
 \end{array}
 \]
 Here $\nu$ is a positive odd integer. The order two for $D_H$ uses
@@ -650,27 +662,35 @@ be used as absolute congruences. They give
  L_i'\equiv(u_i-n_i)/(h-1)\pmod{p^4}.
 \]
 Since $n_i=h(u_i/h)-(h-1)((u_i-n_i)/(h-1))$, the high cross tests
-give $L_i\equiv n_i\pmod{p^4}$ for $i>1$. The first cross test
+give $L_i\equiv n_i\pmod{p^3}$ for $i>1$. The first cross test
 gives $L_1\equiv n\pmod p$, while $I$ gives $L_1\equiv\beta\pmod p$.
 These arguments include identity numerator points, half-integral $h$,
 and inert primes, where conjugation preserves the unique valuation.
 
-\section{Global soundness for sufficiently large parameters}\label{sec:soundness}
-The scalar bounds~\eqref{eq:scalar} hold independently of the
-comparison logarithms. In particular $c\to\infty$ uniformly with $N$,
-and $B\ge c-1$.
+\section{Soundness at the explicit parameter}\label{sec:soundness}
+Let $N\ge14521$. Put $L=L_N$ and $c_0=149^L$; then $c\ge c_0$ and
+$B\ge c-1$. At $N=14521$ one has $L=68973$. Exact integer comparison
+establishes
+\begin{equation}\label{eq:thresholds}
+ \begin{split}
+ (149^{68973}-1)^4&>(14\cdot2^{221284})^9,\\
+ 149^{68973}&>40\cdot2^{221234},\\
+ 149^{68973}&>40\cdot265546.
+ \end{split}
+\end{equation}
+These inequalities remain true at every larger $N$.
+In particular $c>8$ and \eqref{eq:scalar} gives $h(\beta)<c/40$.
 
-Let
-$\Delta=t^2-a(a-2)tb+(a-2)^2b^2-1$.
-The local comparison shows that each fourth power of a comparison
-radical divides $\Delta$. If $\Delta\ne0$, then
-$|\Delta|\le14B^4$, and \eqref{eq:heighttransfer} gives
+Put $\Delta=t^2-a(a-2)tb+(a-2)^2b^2-1$.
+The local comparison proves that each $M_j^3$ divides $\Delta$.
+If $\Delta\ne0$, then $|\Delta|\le14B^4$ and
+\eqref{eq:heighttransfer}, with $k=3$, gives
 \[
-                  B^2\le C14^{7/16}B^{7/4}+M_2.
+ B^2\le5H_2(14B^4)^{7/18}<14H_2B^{14/9}.
 \]
-Since $7/4<2$, this bounds $B$ by a fixed constant. Equation
-\eqref{eq:scalar} gives $B\ge c-1\to\infty$ uniformly as
-$N\to\infty$, a contradiction. Thus $\Delta=0$ eventually.
+The last strict inequality follows from $5^{18}<14^{11}$.
+It implies $B<(14H_2)^{9/4}$, contradicting $B\ge c-1$ and
+\eqref{eq:thresholds}. Thus $\Delta=0$.
 A stronger form of the integral Lucas descent gives
 \begin{equation}\label{eq:stronglucas}
               \log B\ge(c-5)\log(c-2)\qquad(c\ge8).
@@ -695,40 +715,45 @@ $|t|\ge(A_0-1)^{A_0-4}$. Finally $A_0\ge c-1$, which proves
 \eqref{eq:stronglucas}.
 
 If $n-\beta\ne0$, let $J$ be its nonzero reduced numerator.
-The local input comparisons make both radicals divide $J$,
-while $|J|\le2B\exp(h(\beta))$. For $B^2\ge2M_2$,
-\eqref{eq:heighttransfer} gives
+The local input comparisons make all three radicals divide $J$,
+while $|J|\le2B\exp(h(\beta))$. Equation \eqref{eq:heighttransfer}
+with $k=1$ yields
 \[
- \log B\le4\log(2C)+7\log2+7h(\beta)
- \le C'+7C_3\ell^{-L_N}c\left(1+\frac{\log c}{3}\right).
+ \log B\le\frac65\log(5H_2)+\frac75\log2+\frac75h(\beta)
+       <265546+\frac75h(\beta)<\frac{3c}{50}.
 \]
-Choose $N$ sufficiently large that $7C_3\ell^{-L_N}\le1$.
-The right side is then at most $C'+c+(c\log c)/3$, which is
-strictly smaller than $(c-5)\log(c-2)$ for all sufficiently large
-$c$. Since $c\ge\ell^{L_N}\to\infty$ uniformly with $N$,
-this contradicts~\eqref{eq:stronglucas}.
-Hence $n=\beta\in\Z$. If $X=u/v$ is reduced with $v>0$, then
-$v^2\mid51$, and squarefreeness of $51$ gives $v=1$.
-All bounds depend only on fixed constants. Since $L_N$ is increasing,
-a single $N_0$ works for every larger $N$. Its dependence on the
-aggregate additive constant is ineffective.
+Here $\log2<1$, $\log5<3\log2$, and
+\eqref{eq:thresholds} justify every numerical bound.
+For $c\ge8$, the Lucas bound \eqref{eq:stronglucas} is at least
+$c-4\ge c/2$, a contradiction. Hence $n=\beta\in\Z$.
+If $X=u/v$ is reduced with $v>0$, integrality of $51X^2+2504$
+implies $v^2\mid51$; squarefreeness of $51$ gives $v=1$.
+This proves soundness for every $N\ge14521$.
 
 \section{Simultaneous completeness}
-Fix an integer input. The scalar construction can be made uniformly
-complete for all sufficiently large $N$, as follows. First choose a fixed
-real neighborhood of a nonzero reference point $[h_*]P$, with
-$64\mid h_*$, on which both real values of $|z(H)|$ are bounded below.
-Choose a fixed neighborhood of the identity for $C_S$ on which its two
-$z$ values are bounded. Then $|Z_0|,|Z_1|$ are bounded by a constant
-independent of the input and $N$. Also $|\Nm(f(H))|\le1/7$ when
-$H\in\Z P$ is nonzero, by the positive-square abscissa bounds.
-For $R_s\ge1$, equations~\eqref{eq:scalarnorm} consequently give
+Fix an integer input and $N\ge1$. Choose a real neighborhood of a
+nonzero reference point $[h_*]P$, with $64\mid h_*$, on which
+both values of $|z(H)|$ are bounded below. Then choose a sufficiently
+small real neighborhood of the identity for $C_S$. It gives
+$|Z_0|,|Z_1|\le1$. For nonzero $H\in\Z P$ the positive-square
+abscissa bound also gives $|\Nm(f(H))|\le1/7$.
+For $R_s\ge1$, equations \eqref{eq:scalarnorm} imply
 \[
-                 W_s=O(R_s^{-3}),\qquad b_s=O(R_s^{-4}),
+ A\le2R_s^{-3},\qquad
+ W_s\le4R_s^{-10}+\frac1{49}R_s^{-3}<5R_s^{-3}.
 \]
-with fixed constants. Since $r_s\ge1$,
-$R_s\ge A_N/(1+\ell^2)\to\infty$ uniformly in the input.
-Hence $0<b_s<17$ for all sufficiently large $N$ on these neighborhoods.
+Therefore
+\[
+ 0<b_s\le25\frac{R_s+9792}{R_s^5}<17\qquad(R_s\ge10).
+\]
+The displayed rational function is decreasing on $(0,\infty)$, and
+its value at ten is less than $17$. Since $r_s\ge1$,
+\[
+ R_s\ge\frac{149^{2N+1}}{1+149^2}
+       \ge\frac{149^3}{1+149^2}>10.
+\]
+Thus the required real preparation holds for every $N\ge1$ with
+explicit margins.
 
 The finite preparation uses no new arithmetic theorem. For integer
 input, $r_s$ is a positive integer and
@@ -765,7 +790,7 @@ to satisfy the retained divisibility conditions for the Lucas construction.
 After $S$ is fixed, continuity preserves this finite scalar preparation
 and its guards for all $h$ in one fixed congruence class modulo a
 sufficiently divisible integer $L$. Retain the source's integral Lucas
-construction, choose the four root labels, and fix both positive scales
+construction, choose the four root labels, and fix the three positive scales
 and compact neighborhoods for all comparison tests before selecting
 contact primes. The additional contact primes avoid the finite scalar
 preparation support. Hence these later congruences do not conflict with
@@ -860,16 +885,32 @@ large $\lambda$, because $q>0$ and all test powers are even.
 The simultaneous selection supplies the required real size after all
 fixed data have been chosen. The pole-realization input supplies its
 witnesses, and the exact power identities fill the quadratic circuit.
-This proves completeness for every integer input and all sufficiently large $N$.
+This proves completeness for every integer input and every $N\ge1$.
 
 \section{Exact quadratic specification}
-The local weights are specified by three scalar quadratic equations:
-\[
-                     q_2=q^2,\qquad q_4=q_2^2,\qquad qq_7=q_4^2.
-\]
-At every contact $q\ne0$, so $q_7=q^7$. If $q=0$, the contact
-radical is one; its possibly free $q_7$ value is not used for extraction.
-No inverse coordinate is required.
+Retain three scalar inverse weights $s_1,s_2,s_4$ and a fifth-power
+weight $w_5$ for each detector, with the quadratic equations
+\begin{equation}\label{eq:inverseweights}
+ qs_1=1,\qquad s_2=s_1^2,\qquad s_4=s_2^2,\qquad w_5s_4=q.
+\end{equation}
+They give $q\ne0$, $s_j=q^{-j}$ for $j=1,2,4$, and $w_5=q^5$.
+The factor coordinates satisfy the quadratic field equations
+\begin{equation}\label{eq:clearedfactors}
+\begin{split}
+ s_4T_1&=s_4+w_5C_2^4+s_1C_1^4+s_2D_H^2+(B_1^2)^2,\\
+ s_4T_2&=s_4+w_5G^4+s_1A_3^2+s_2B_0^2+(B_2^2)^2,\\
+ s_4T_3&=s_4+w_5C_3^4+s_1A_2^2+s_2I^4+(B_3^2)^2,\\
+ s_4T_4&=s_4+w_5C_4^4+s_1A_1^2+s_2A_4^2+(B_4^2)^2.
+\end{split}
+\end{equation}
+Each displayed comparison square or fourth power is a stored field
+value. Squaring a stored $B_i^2$ is quadratic in its two rational
+components. Multiplication by $q^4$ proves exact equivalence with
+the four factor definitions above. There is no additional zero stratum:
+$s_4\ne0$ follows from $qs_1=1$, and all fourth powers are
+uniquely determined by their quadratic definitions.
+Two intermediate field products and the final field value $W$
+compute $T_1T_2T_3T_4$.
 
 The four contact outputs are
 \[
@@ -884,22 +925,32 @@ $R_s+22201r_sR_s-A_Nr_s=0$.
 The scalar chain is $R_2=R_s^2$, $R_4=R_2^2$.
 The two scalar norm rows use $R_4$, as in~\eqref{eq:scalarnorm}.
 
-The retained fourth powers of all five $B_i$ are needed by the
-local factors; none is a logarithm correction. The three separately
-computed shared fourth powers are $C_1^4,I^4,B_1^4$, each with two
-rational coordinates. All other fourth-power coordinates and ordinary
-point equations are fixed by the literal coefficient tables.
+The six field fourth powers $C_1^4,C_2^4,C_3^4,C_4^4,I^4,G^4$
+are stored once and shared by all three detectors. The four required
+$B_i^4$ values occur directly as squares of stored field
+coordinates in \eqref{eq:clearedfactors}. All remaining point and
+scalar equations are fixed by the literal coefficient tables.
+The two nontrivial scale coordinates are quadratic outputs. In the
+stable identifiers of the coefficient table,
+\[
+ S_0=x_{82}+x_{84}+2x_{86}+x_{88},\qquad
+ S_1=2(x_{83}+x_{85}+x_{87}+x_{89}).
+\]
+The factors two account for the source's half-component convention;
+they are verified directly from the four square-abscissa equations.
+The third detector has the same equations as the first, with its
+argument replaced by $(S_0+S_1)^2\lambda$.
 The exact count is
 \[
 \begin{array}{lr}\toprule
-\text{point, scalar, contact, ratio, and weight coordinates}&200\\
-\text{three shared fourth powers}&6\\
-\text{five factors and intermediate products for two detectors}&32\\\midrule
-\text{total coordinates, including the input}&238\\\midrule
-\text{point, scalar, contact, ratio, and weight quadratic rows}&170\\
-\text{shared fourth-power rows}&6\\
-\text{factor and product rows}&36\\\midrule
-\text{total quadratic rows}&212\\\bottomrule
+\text{point, scalar, contact, ratio, and weight coordinates}&217\\
+\text{six shared fourth powers}&12\\
+\text{four factors and intermediate products for three detectors}&36\\\midrule
+\text{total coordinates, including the input}&265\\\midrule
+\text{point, scalar, contact, ratio, and weight quadratic rows}&183\\
+\text{shared fourth-power rows}&12\\
+\text{factor and product rows}&42\\\midrule
+\text{total quadratic rows}&237\\\bottomrule
 \end{array}
 \]
 
@@ -921,8 +972,16 @@ Newton finite differences at six exact arguments, checks all five roots,
 and independently verifies $P_5((t-1)^2)=F_2(t)$ as a degree-ten
 polynomial identity. It reconstructs every modified quadratic equation,
 compares the other equations with their pinned coefficient source, and
-checks the contact exceptional set and both height matrices. It also verifies the scalar pole scaling, the forced prime and its nonsquare tests, and the fourth-power extraction bounds.
-The balanced normalization, its two exceptional strata, the fixed factor $\gamma$, and the linear trace scale are verified directly.
+checks the contact exceptional set and both height matrices. It also verifies the scalar pole scaling, the forced prime and its nonsquare tests, and the scalar extraction bounds.
+The contact normalization and its remaining $t_*=1$ stratum are
+verified directly. The current coefficient checker checks all
+reciprocal-weight equations and reconstructs every cleared factor
+from its field formula. It compares 196 unmodified rows with their pinned source,
+reconstructs thirty changed factor and product rows, eight new shared
+fourth-power rows, and three fifth-power weight rows, and checks the
+entire expanded sum of squares. The residue certificate
+verifies the distinct valuation classes modulo eight and the rational
+extraction bounds for all integer valuations.
 The projection proof uses these literal equations and the preceding
 arithmetic argument.
 It expands the entire sum of squares independently by unordered
@@ -933,8 +992,8 @@ noncancellation assertion for all integer valuations, together with
 the exact extraction bounds and sufficient completeness depths.
 The infinite arithmetic arguments are the proofs above.
 
-The expanded quartic has 2925 terms before powers of $A_N$ belonging
-to the same coordinate monomial are collected, and 2924 monomials
+The expanded quartic has 3486 terms before powers of $A_N$ belonging
+to the same coordinate monomial are collected, and 3485 monomials
 after collection. Its unique coefficient involving $A_N^2$ is
 $A_N^2+1$, at the square of the actual scalar contact-product coordinate.
 Every other coefficient is a nonzero constant or a nonzero constant
@@ -947,8 +1006,11 @@ gives
  149^{210}+1<C_0<149^{214}+1.
 \]
 Thus $H(P_N)=\max(C_0,A_N^2+1)$ for every $N\ge1$ and the asserted
-exact height holds for $N\ge53$. This is a coefficient statement;
-it does not make the defining threshold effective.
+exact height holds for $N\ge53$. The distinct sufficient defining threshold $N\ge14521$ follows from
+the arithmetic proof above. At that parameter the exact height is
+$149^{58086}+1$, with 419333 binary digits. The producer
+\nolinkurl{build_quartic265_v19.py} and independent checker
+\nolinkurl{check_quartic265_v19.py} reproduce all these assertions.
 
 \begin{thebibliography}{99}\small\setlength{\itemsep}{2pt}
 \bibitem{Dependencies} Project repository,
@@ -966,16 +1028,16 @@ it does not make the defining threshold effective.
 \bibitem{Contacts} Project repository,
 \emph{Height Bounds from Disjoint Sets of Rational Contacts},
 \nolinkurl{contact_height_amplification_20261109_v13.tex}.
-\bibitem{Aggregate} Project repository,
-\emph{The height of an aggregate elliptic trace},
-\nolinkurl{aggregate_trace_height_20261108_v9.tex}.
+\bibitem{Sums} Project repository,
+\emph{Effective heights of sums of elliptic abscissas},
+\nolinkurl{effective_elliptic_sums_20261108_v10.tex}.
 \bibitem{NewHeight} Project repository,
 \emph{Evaluation of Differentials and Heights of Modular Jacobians},
 \nolinkurl{evaluation_of_differentials_20261109_v17.tex},
 Definition~6.1 and Theorem~6.2.
-\bibitem{RefinedHeight} Project repository,
-\emph{Scalar Characters and Contact-Height Estimates},
-\nolinkurl{nebentypus_and_contact_heights_20261110_v18.tex},
+\bibitem{Multiplicity} Project repository,
+\emph{Multiplicity of modular factors and quadratic contact-height bounds},
+\nolinkurl{multiplicity_and_contact_heights_20261110_v19.tex},
 Theorem~4.1.
 \bibitem{Logs} Project repository,
 \emph{Uniform Rational Approximations to an Elliptic Logarithm},

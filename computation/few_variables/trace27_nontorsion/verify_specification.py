@@ -21,9 +21,21 @@ def clog(n): return (n-1).bit_length() if n > 0 else 0
 
 
 def audit(source, spec):
-    check(spec["family_parameter"] == source["family_parameter"]
-          and spec["family_parameter"]["selected_member_certified_to_define_Z"] is False,
-          "Missing or overstated coefficient-family status")
+    family = spec["family_parameter"]
+    check(family == source["family_parameter"] and family["quantified"] is False,
+          "Changed or quantified coefficient-family metadata")
+    certified = family["selected_member_certified_to_define_Z"]
+    check(type(certified) is bool, "Non-Boolean defining-member status")
+    if certified:
+        threshold = family.get("effective_sufficient_threshold",
+                               family.get("certified_sufficient_lower_bound"))
+        check(family["effective_threshold_known"] is True
+              and family["sufficient_threshold_exists"] is True
+              and type(threshold) is int and threshold > 0
+              and type(family["value"]) is int and family["value"] >= threshold,
+              "Certified member lacks a consistent effective-threshold record")
+    # This checks consistency of the arithmetic metadata, not its theorem.
+    # A defining threshold is proved and certified separately from this audit.
     check(source["format"] == "shared-point-source-coefficient-dag/v1"
           and spec["format"] == "integer-polynomial-indexed-finite-algebra/v2", "Unknown source or output grammar")
     b = source["retained_base_count"]

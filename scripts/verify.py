@@ -173,6 +173,31 @@ def main():
             quartic/'check_quartic318_v18.py'))
         for path,raw in explicit318.items():
             assert path.read_bytes()==raw,str(path)
+        effective276={path:path.read_bytes() for path in
+            sorted((quartic/'family276_v19').glob('*.json'))}
+        stages.append(run('Three-scale effective quartic source reconstruction',
+            quartic/'build_quartic276_v19.py'))
+        stages.append(run('Independent effective source rows, coefficients, and numerical threshold',
+            quartic/'check_quartic276_v19.py'))
+        for path,raw in effective276.items():
+            assert path.read_bytes()==raw,str(path)
+        reciprocal={path:path.read_bytes()
+            for folder in ('family228_v19','family266_v19','family_abc91_v19')
+            for path in sorted((quartic/folder).glob('*.json'))}
+        stages.append(run('228/266/abc91-variable reciprocal-factor quartic reconstruction',
+            quartic/'build_reciprocal_factors_v19.py'))
+        stages.append(run('Independent reciprocal factors, complete coefficients, local orders, and effective threshold',
+            quartic/'check_reciprocal_factors_v19.py'))
+        for path,raw in reciprocal.items():
+            assert path.read_bytes()==raw,str(path)
+        four_factors={path:path.read_bytes() for path in
+            sorted((quartic/'family265_v19').glob('*.json'))}
+        stages.append(run('265-variable four-factor effective quartic construction',
+            quartic/'build_quartic265_v19.py'))
+        stages.append(run('Independent four-factor rows, valuation classes, full coefficients, and effective threshold',
+            quartic/'check_quartic265_v19.py'))
+        for path,raw in four_factors.items():
+            assert path.read_bytes()==raw,str(path)
         coordinate_budget=(quartic/'coordinate-budget279.json').read_bytes()
         stages.append(run('Disjoint coordinate accounting for the279-variable family',quartic/'check_coordinate_budget.py'))
         assert (quartic/'coordinate-budget279.json').read_bytes()==coordinate_budget
@@ -254,6 +279,31 @@ def main():
             merged/'check_merged_bounds.py','--output',merged/'independent-bound-verification.json'))
         for p,raw in merged_originals.items():
             assert p.read_bytes()==raw,str(p)
+        for count,folder,stem,exponent in (
+                (25,'merged25_v19','merged',3),
+                (27,'effective27_v19','effective',125001)):
+            module=few/folder
+            fixed_new={path:path.read_bytes() for path in module.rglob('*')
+                if path.is_file() and path.suffix in ('.json','.gz')}
+            stages.append(run(f'{count}-variable raw comparison and linear scalar source',
+                module/f'build_{stem}_source.py','--anchor-exponent',str(exponent),
+                '--output',module/'certificate'))
+            stages.append(run(f'Independent {count}-variable exact source conversion and finite-field formula comparisons',
+                module/f'check_{stem}_source.py',module/'certificate',
+                '--output',module/'independent-source-verification.json'))
+            stages.append(run(f'{count}-variable guarded finite-algebra reconstruction',
+                active/'build_active_specification.py',
+                module/'certificate/source-polynomial-specification.json',module/f'active{count}'))
+            stages.append(run(f'Independent {count}-variable degree and support bounds over all active cases',
+                module/f'check_{stem}_bounds.py','--output',module/'independent-bound-verification.json'))
+            if count==25:
+                stages.append(run('Raw comparison valuation profile and linear scalar completeness strata',
+                    module/'check_local_profile.py','--output',module/'local-profile-verification.json'))
+            else:
+                stages.append(run('Explicit 27-variable sufficient exponent and all numerical inequalities',
+                    module/'check_effective27_constants.py'))
+            for path,raw in fixed_new.items():
+                assert path.read_bytes()==raw,str(path)
         conditional=few/'conditional13'
         conditional_files=[
             conditional/'certificate/source.json.gz',
@@ -338,6 +388,10 @@ def main():
         stages.append(run('Exact slope and ordinate polynomials and labelled bounded searches',
             number_fields/'check_rationality_filters.py'))
         assert (number_fields/'rationality-filter-certificate.json').read_bytes()==rationality_filter
+        trace_cancellation=(number_fields/'trace-cancellation-certificate.json').read_bytes()
+        stages.append(run('Complex multiplication identities, rank decomposition, and exact nontorsion certificate',
+            number_fields/'check_trace_cancellation.py'))
+        assert (number_fields/'trace-cancellation-certificate.json').read_bytes()==trace_cancellation
         contacts=work/'computation/contact_heights'
         contact_certificate=(contacts/'contact-height-certificate.json').read_bytes()
         stages.append(run('Disjoint contact sets, exceptional primes, and exact exponent inequalities',
@@ -351,6 +405,10 @@ def main():
         stages.append(run('Modular character orders, refined contact-height constants, and obstruction family',
             contacts/'check_nebentypus_height.py'))
         assert (contacts/'nebentypus-height-certificate.json').read_bytes()==character_height
+        multiplicity=(contacts/'multiplicity-height-certificate.json').read_bytes()
+        stages.append(run('Multiplicity contact-height constants and independent prime enumerations',
+            contacts/'check_multiplicity_height.py'))
+        assert (contacts/'multiplicity-height-certificate.json').read_bytes()==multiplicity
         local_tests=work/'computation/local_tests'
         normalized_tests=(local_tests/'rational-normalization-certificate.json').read_bytes()
         stages.append(run('Rational local normalization, even valuation strata, and disjoint contact units',
@@ -383,6 +441,10 @@ def main():
         stages.append(run('Six-contact involution, exact negative-square product, and unbounded positive scales',
             poles/'check_six_contact_product.py','--output',poles/'six-contact-product-verification.json'))
         assert (poles/'six-contact-product-verification.json').read_bytes()==six_contact
+        product_obstructions=(poles/'product-height-obstructions-v19-certificate.json').read_bytes()
+        stages.append(run('All contact automorphisms, arbitrary-scale cancellation, and positive product-height obstructions',
+            poles/'check_product_height_obstructions_v19.py'))
+        assert (poles/'product-height-obstructions-v19-certificate.json').read_bytes()==product_obstructions
         small_tau_algebra=(poles/'small-fixed-tau17-algebra-verification.json').read_bytes()
         stages.append(run('Dense prepared fixed-tau17 obstruction: rational identities and pinned rank input',
             poles/'check_small_fixed_tau17_algebra.py'))
@@ -454,7 +516,7 @@ def main():
             assert set(original['checks'])==set(recomputed['checks'])
     report={'status':'PASS','manifest_files_checked':len(manifest['files']),
         'compressed_tables_restored':restored,'pari_rank_checks_run':args.with_pari,'stages':stages,
-        'scope':'Exact source identities, full quartic coefficients, finite-algebra specification, local constants and quantitative bounds. The global arithmetic projection premises are stated separately in the papers.'}
+        'scope':'Exact source conversion, full quartic coefficients, finite-algebra specifications, local constants and quantitative bounds; separately labelled finite-field formula comparisons are finite evidence. The global arithmetic projection premises and mathematical proofs are stated separately in the papers.'}
     if args.receipt:
         args.receipt.parent.mkdir(parents=True,exist_ok=True)
         args.receipt.write_text(json.dumps(report,indent=2)+'\n')

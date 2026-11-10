@@ -10,21 +10,23 @@
 \DeclareMathOperator{\Tr}{Tr}\DeclareMathOperator{\Nm}{N}
 \DeclareMathOperator{\rad}{rad}
 \setlength{\emergencystretch}{2em}
-\title{A Quartic in Ninety-Three Variables under the Rational $abc$ Conjecture}
+\title{A Quartic in Ninety-One Variables under the Rational $abc$ Conjecture}
 \author{}\date{10 November 2026}
 \begin{document}\maketitle
 \begin{abstract}
 Assuming the rational $abc$ conjecture and the specified elliptic-group,
 pole-realization and simultaneous prime-pattern inputs, we construct a
-family of integer quartics in ninety-three total variables. Every
+family of integer quartics in ninety-one total variables. Every
 sufficiently large fixed odd input shift gives rational input projection
-exactly $\Z$. The quartic is a sum of eighty-one primitive quadratic
-squares and has exactly $920$ monomials. Its coefficient height, for a
-shift $B\ge3$, is $\max(4153456,B^2+797687)$. A common elliptic chart in four field coordinates stores both reciprocal
+exactly $\Z$. The quartic is a sum of seventy-nine primitive quadratic
+squares and has exactly $926$ monomials. Its coefficient height, for a
+shift $B\ge3$, is $\max(4153456,B^2+797683)$. A common elliptic chart in four field coordinates stores both reciprocal
 formal parameters. Eight rational contacts symmetric about one permit a short quadratic evaluation and normalization.
 A height estimate for a sum of fourth powers bounds the input together
 with one elliptic index. All six local tests have order one; only plain
-elliptic formal parameters are used. The sufficient shift is ineffective.
+elliptic formal parameters are used. Reciprocal factor equations
+avoid separately stored numerator fourth powers, and their zero stratum
+is excluded by the point-pair equations. The sufficient shift is ineffective.
 \end{abstract}
 
 \section{Statement and arithmetic assumptions}
@@ -38,17 +40,17 @@ All variable counts include the distinguished input.
 \begin{theorem}\label{thm:main}
 Under the assumptions below, there is a computable family
 \[
- P_B\in\Z[X,Y_1,\ldots,Y_{92}],\qquad B\ge3\text{ odd},
+ P_B\in\Z[X,Y_1,\ldots,Y_{90}],\qquad B\ge3\text{ odd},
 \]
 such that every member has degree exactly four, content one, exactly
-$920$ monomials, and coefficient height
+$926$ monomials, and coefficient height
 \[
- H(P_B)=\max(4153456,B^2+797687).
+ H(P_B)=\max(4153456,B^2+797683).
 \]
 There is a constant $B_*$ such that, for every odd $B\ge B_*$,
 \[
  x\in\Z\quad\Longleftrightarrow\quad
- \exists\boldsymbol y\in\Q^{92},\quad P_B(x,\boldsymbol y)=0.
+ \exists\boldsymbol y\in\Q^{90},\quad P_B(x,\boldsymbol y)=0.
 \]
 The integer $B$ is a fixed coefficient parameter. No numerical sufficient
 value of $B_*$ is determined. In particular, the coefficient fixture
@@ -419,8 +421,8 @@ In the quadratic source retain the rational component $I_0$ of $I$, with
 Thus $\beta=L_0^{\mathrm{prim}}-I_0$ is affine in the retained
 coordinates, and $I=I_0+\rho L_1^{\mathrm{prim}}$.
 The fixed shift $B$ occurs only in this one equation.
-Retain the four reciprocal squares, $C^2,I^2$, and the fourth powers
-$f(U)^4,\sigma f(V_1)^4$ as quadratic outputs. The two fields in
+Retain the four reciprocal squares and $C^2,I^2$ as quadratic outputs.
+Their squares will occur directly in quadratic factor equations. The two fields in
 \eqref{eq:recipsquares} supply two reciprocal squares directly.
 Three scalar outputs compute the comparison scale without taking any
 root or making any division:
@@ -446,9 +448,9 @@ Define, without storing another coordinate,
  \end{split}
 \]
 The displayed equations imply $q^2F=qr^3$ and $k=qr^2$.
-The trace and pole equations will exclude $q=0$, so this clearing
+The reciprocal-factor equations below exclude $q=0$, so this clearing
 recovers $qF=r^3$ without a coordinate for $F$.
-Store $q^2,q^4$ and the two field factors
+The two field factors will have the values
 \begin{equation}\label{eq:packed}
  \begin{split}
  T_1&=1+qC^2+q^2f(H)^2+q^4f(U)^4,\\
@@ -456,6 +458,22 @@ Store $q^2,q^4$ and the two field factors
  \qquad W=T_1T_2=w_0+w_1\rho.
  \end{split}
 \end{equation}
+Their literal quadratic specification uses three scalar reciprocal
+weights $s_2,s_3,s_4$:
+\begin{equation}\label{eq:reciprocalweights}
+                 s_4=s_2^2,\qquad qs_4=s_3,\qquad qs_3=s_2.
+\end{equation}
+The two quadratic field equations are
+\begin{equation}\label{eq:clearedfactors}
+ \begin{split}
+ s_4T_1&=s_4+s_3C^2+s_2f(H)^2+(f(U)^2)^2,\\
+ s_4T_2&=s_4+s_3I^2+s_2\sigma f(H-P)^2+(\sigma f(V_1)^2)^2.
+ \end{split}
+\end{equation}
+Each fourth power is evaluated directly as a quadratic polynomial in
+the two components of its stored square. The lemma below proves
+$s_2\ne0$ and hence $s_j=q^{-j}$; multiplying
+\eqref{eq:clearedfactors} by $q^4$ then gives \eqref{eq:packed} exactly.
 Finally retain scalars $\tau,b$ with
 \begin{equation}\label{eq:trace}
              w_0^2-2w_0\tau-2w_1^2=0,\qquad
@@ -489,10 +507,18 @@ in both detectors. Consequently
 \]
 \end{lemma}
 \begin{proof}
-If $q=0$, then $c=k=0$, both factors in~\eqref{eq:packed} equal one,
-and $W=1$. Equation~\eqref{eq:trace} then gives $\tau=1/2$,
-contradicting $kb=\tau^2$. Hence $q\ne0$ and the multiplied contact
-equation gives $qF=r^3$.
+Suppose $s_2=0$. Equations~\eqref{eq:reciprocalweights} give
+$s_4=s_3=0$, and \eqref{eq:clearedfactors} gives
+$f(U)^4=\sigma f(V_1)^4=0$. Since $K$ is a field,
+$f(U)^2=f(V_1)^2=0$. The identities in the pair-chart proof give
+$V^4=Q^4=0$. Thus $V=Q=0$, and $VQ=aW_A$, with $a\ne0$,
+forces $W_A=0$. The last equation of \eqref{eq:pairchart} would
+then say $0=1$. This contradiction proves $s_2\ne0$.
+Now $qs_3=s_2$ gives $q\ne0$. Substitution into
+$s_4=s_2^2$ and $q^2s_4=s_2$ gives $s_2=q^{-2}$, and then
+$s_3=q^{-3}$ and $s_4=q^{-4}$. This justifies \eqref{eq:packed}
+before any valuation or formal-parameter argument. The multiplied
+contact equation consequently gives $qF=r^3$.
 If $r=0$, then $F=576\ne0$ and the latter identity gives $q=0$,
 again impossible. Thus $r=\delta^2\ne0$. Finally $F=0$ would imply
 $r=0$. The asserted formulas and the nonvanishing of $k=qr^2$ follow.
@@ -728,41 +754,44 @@ Common chart for $H,H-P$ &8\\
 Pair chart for $U,V_1$ &10\\
 The two ratios &4\\
 Four reciprocal squares and two comparison squares &12\\
-Two fourth powers &4\\
 Three scalar comparison-scale outputs &3\\
-Two detector blocks, including their pole coordinates &42\\
+Two detector blocks, including their pole coordinates &44\\
 The second argument $a_1\lambda$ &1\\\midrule
-Total &93\\\bottomrule
+Total &91\\\bottomrule
 \end{tabular}
 \end{center}
-Each detector uses two contact outputs $r,c$, three weight coordinates,
+Each detector uses two contact outputs $r,c$, four weight coordinates,
 four factor components, two product components, the three scalars
-$\tau,k,b$, and seven pole coordinates: twenty-one in all.
-There are $81$ primitive quadratic equations, so over $\Q$ their
+$\tau,k,b$, and seven pole coordinates: twenty-two in all.
+There are $79$ primitive quadratic equations, so over $\Q$ their
 sum of squares vanishes exactly when they all vanish.
 
 The complete specification is in
-\nolinkurl{computation/quartic/family_abc93_v18}. The builder and independent
-checker reconstruct all $81$ rows and every coefficient of the full
-quartic. There are $921$ terms when powers of $B$ are stored separately,
-and $920$ ordinary monomials for every positive integer $B$.
+\nolinkurl{computation/quartic/family_abc91_v19}. The builder and independent
+checker reconstruct all $79$ rows and every coefficient of the full
+quartic. The programs are
+\nolinkurl{build_reciprocal_factors_v19.py} and
+\nolinkurl{check_reciprocal_factors_v19.py}. There are $927$ terms when powers of $B$ are stored separately,
+and $926$ ordinary monomials for every positive integer $B$.
 The fourth power of the rational component of the root coordinate $h$
 has coefficient one, proving degree four and content one.
 Only the constant coefficient contains two powers of $B$; it is
-$B^2+797687$. The remaining three coefficients involving the parameter
+$B^2+797683$. The remaining three coefficients involving the parameter
 are $4B,-2B,2B$, at the monomials $X^2$, $L_0^{\mathrm{prim}}$,
 and $I_0$, respectively. Every other coefficient is independent of $B$,
 and the largest absolute value among them is $4153456$. Therefore
 \[
- H(P_B)=\max(4153456,B^2+797687)
-       =B^2+797687\quad\text{for odd }B\ge1833.
+ H(P_B)=\max(4153456,B^2+797683)
+       =B^2+797683\quad\text{for odd }B\ge1833.
 \]
 No coefficient cancellation changes the stated support for positive integer $B$.
 
 The independent checker imports no producer. It reconstructs all
-changed rows from the three common-point equations and the direct ratio
-relations, checks the nonsingularity of the rational row change, and
-compares every remaining row with its pinned source. The separate
+changed reciprocal-weight and factor rows directly from their field
+formulas, and compares all 65 unmodified rows with their pinned source.
+It reconstructs the two additional reciprocal rows and expands the
+entire sum of 79 quadratic squares. The inherited common-point checker
+also verifies the nonsingularity of the rational row change. The separate
 standard-library program
 \nolinkurl{computation/elliptic_constraints/check_fixed_difference_chart.py}
 verifies twelve general polynomial identities, including elimination

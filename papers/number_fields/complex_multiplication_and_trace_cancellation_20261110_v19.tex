@@ -1,0 +1,347 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,booktabs,microtype}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\DeclareMathOperator{\Tr}{Tr}\DeclareMathOperator{\rank}{rank}
+\setlength{\emergencystretch}{2em}
+\title{Complex Multiplication and Cancellation in Elliptic Trace Heights}
+\author{}\date{10 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+For the curve $E_D:y^2=x^3-Dx$ over a number field $K$ not
+containing $i$, adjoining $i$ doubles the Mordell--Weil rank.
+If $P\in E_D(K)$ is non-torsion, the point $C=(1+i)P$ generates
+an infinite cyclic subgroup whose nonidentity abscissas all have
+relative trace zero, while their heights grow quadratically.
+We also give four pairwise distinct doubled points, with distinct
+abscissas, whose abscissa sum is zero and whose heights are
+unbounded. The curve with $D=11-6\sqrt2$ provides an explicit
+example over $\Q(\sqrt2,i)$; a two-prime reduction certificate
+proves that the displayed point has infinite order. These results
+obstruct an unrestricted transfer of the particular elliptic rank
+and height inputs to a complex field. They do not give a
+counterexample to Diophantine definability of a ring of integers
+in its fraction field.
+\end{abstract}
+
+\section{The curve and its endomorphisms}
+
+Let $K$ be a number field with $i\notin K$, let $D\in K^*$, and put
+\[
+ E_D:y^2=x^3-Dx,\qquad L=K(i).
+\]
+In particular, $K$ may be any number field with a real embedding.
+The curve is nonsingular, with discriminant $64D^3$.
+Let $\sigma$ be the nonidentity element of $\operatorname{Gal}(L/K)$.
+Write $O$ for the identity of $E_D$. The automorphism
+\begin{equation}\label{eq:iota}
+             \iota(O)=O,\qquad \iota(x,y)=(-x,iy)
+\end{equation}
+is defined over $L$. It preserves the curve equation and the
+chord-and-tangent law, and satisfies
+\begin{equation}\label{eq:endomorphisms}
+ \iota^2=[-1],\qquad \sigma(\iota Q)=-\iota(\sigma Q)
+                         \quad(Q\in E_D(L)).
+\end{equation}
+The notation $(1+\iota)P$ means $P+\iota P$, and similarly for
+$1-\iota$. Thus
+\begin{equation}\label{eq:normendo}
+                    (1-\iota)(1+\iota)=[2].
+\end{equation}
+These identities are identities of elliptic endomorphisms, not
+statements about a chosen generator of a Mordell--Weil group.
+
+\begin{lemma}\label{lem:coordinates}
+If $P=(x,y)$ and $x\ne0$, then
+\begin{equation}\label{eq:Ccoordinates}
+ \begin{split}
+ x((1+\iota)P)&=-\frac{i(x^2-D)}{2x},\\
+ y((1+\iota)P)&=-\frac{(1+i)y(x^2+D)}{4x^2}.
+ \end{split}
+\end{equation}
+The endomorphism $1+\iota$ is a degree-two isogeny with kernel
+$\{O,(0,0)\}$.
+\end{lemma}
+\begin{proof}
+The line through $(x,y)$ and $(-x,iy)$ has slope
+$(1-i)y/(2x)$. Its third-intersection formula gives
+\[
+ x((1+\iota)P)
+       =\left(\frac{(1-i)y}{2x}\right)^2
+       =-\frac{i(x^2-D)}{2x}.
+\]
+Substituting into the ordinate formula gives the second identity.
+If $(1+\iota)Q=O$, then $\iota Q=-Q$. For an affine point this
+implies $-x(Q)=x(Q)$, hence $x(Q)=0$ and $Q=(0,0)$.
+Conversely $(0,0)$ lies in the kernel. In characteristic zero a
+nonzero elliptic endomorphism is separable, so its degree is the
+number of geometric kernel points, namely two
+\cite[Chapter III, Sections 4 and 6]{Silverman}.
+\end{proof}
+
+\section{Exact rank growth}
+
+\begin{theorem}\label{thm:rank}
+For every $K,D,L$ as above,
+\[
+                         \rank E_D(L)=2\rank E_D(K).
+\]
+More precisely,
+\begin{equation}\label{eq:rankinclusion}
+           2E_D(L)\subseteq E_D(K)+\iota E_D(K),
+\end{equation}
+and $E_D(K)\cap\iota E_D(K)$ consists of points killed by two.
+\end{theorem}
+\begin{proof}
+For $Q\in E_D(L)$, put
+\[
+ A=Q+\sigma Q,\qquad B=-\iota(Q-\sigma Q).
+\]
+Both points are fixed by $\sigma$: the assertion for $B$ uses
+\eqref{eq:endomorphisms}. Thus $A,B\in E_D(K)$, and
+\[
+                              2Q=A+\iota B.
+\]
+This proves~\eqref{eq:rankinclusion}.
+If $T\in E_D(K)\cap\iota E_D(K)$, write $T=\iota U$ with
+$U\in E_D(K)$. Then $T=\sigma T=-\iota U=-T$, so $2T=O$.
+The sum $E_D(K)+\iota E_D(K)$ therefore has rank
+$2\rank E_D(K)$. It has finite index in $E_D(L)$, since it
+contains $2E_D(L)$ and the Mordell--Weil group is finitely generated.
+The ranks are equal, proving the formula.
+\end{proof}
+
+In particular, if $E_D(K)$ has positive rank, the same curve
+cannot retain that rank after adjoining $i$. If its rank over $K$
+is one, its rank over $K(i)$ is two. Selecting a different elliptic
+curve is a separate possibility: Zywina's theorem provides curves
+of rank one stable in every prescribed quadratic extension
+\cite[Theorem 1.2]{Zywina}. The obstruction here concerns the
+specified family with $j=1728$.
+
+\section{An infinite cyclic subgroup with zero trace}
+
+Let $h$ denote the absolute logarithmic Weil height on
+$\mathbb P^1(\overline{\Q})$, with $h(0)=h(\infty)=0$, and put
+$x(O)=\infty$.
+Normalize the canonical height on $E_D$ by
+\[
+ \widehat h(Q)=\frac12\lim_{m\to\infty}4^{-m}
+                                      h(x([2^m]Q)).
+\]
+We use its quadraticity, Galois invariance, parallelogram law, and
+positivity away from torsion, together with
+\begin{equation}\label{eq:heightcomparison}
+                  h(x(Q))=2\widehat h(Q)+O_{E_D}(1).
+\end{equation}
+These are the standard canonical-height properties
+\cite[Chapter VIII, Section 9]{Silverman}.
+
+\begin{theorem}\label{thm:trace}
+Let $P\in E_D(K)$ have infinite order and put $C=(1+\iota)P$.
+Then $C$ has infinite order. For every nonzero integer $n$,
+\begin{equation}\label{eq:zerotrace}
+ \Tr_{L/K}(x([n]C))=0,
+ \qquad \Tr_{L/\Q}(x([n]C))=0,
+\end{equation}
+whereas
+\begin{equation}\label{eq:tracegrowth}
+                 h(x([n]C))=4n^2\widehat h(P)+O_{E_D}(1).
+\end{equation}
+In particular, even on the cyclic subgroup $\Z C$, the height of
+an abscissa cannot be bounded by any function of the height of
+its relative or absolute trace that is finite at zero.
+The same conclusion holds on $2\Z C\subseteq2E_D(L)$.
+\end{theorem}
+\begin{proof}
+Equation~\eqref{eq:normendo} sends $C$ to $[2]P$, so $C$ is
+non-torsion. Since $\sigma P=P$,
+\[
+ \sigma C=(1-\iota)P=-\iota(1+\iota)P=-\iota C.
+\]
+For $Q=[n]C$ this gives
+\[
+ \sigma(x(Q))=x(\sigma Q)=x(-\iota Q)=-x(Q).
+\]
+The points are non-torsion, so their abscissas are finite.
+This proves the relative trace identity; transitivity of trace
+proves the absolute one.
+
+The equality $x(\iota Q)=-x(Q)$ and the height definition give
+$\widehat h(\iota Q)=\widehat h(Q)$. Galois invariance gives
+$\widehat h(P+\iota P)=\widehat h(P-\iota P)$.
+The parallelogram law therefore yields
+\[
+ 2\widehat h(C)
+       =\widehat h(P+\iota P)+\widehat h(P-\iota P)
+       =2\widehat h(P)+2\widehat h(\iota P)
+       =4\widehat h(P).
+\]
+Quadraticity and~\eqref{eq:heightcomparison} prove
+\eqref{eq:tracegrowth}. Its leading coefficient is positive,
+while both trace heights are identically zero. Taking only even
+$n$ proves the last assertion.
+\end{proof}
+
+\section{Four distinct doubled points with cancelling abscissas}
+
+\begin{theorem}\label{thm:sum}
+For $n\ge1$, set
+\[
+ Q_{1,n}=[2n]P,\quad Q_{2,n}=\iota[2n]P,\quad
+ Q_{3,n}=[4n]P,\quad Q_{4,n}=\iota[4n]P.
+\]
+These are four pairwise distinct non-torsion points in $2E_D(L)$.
+Their abscissas are pairwise distinct and satisfy
+\begin{equation}\label{eq:sumzero}
+                       \sum_{j=1}^4x(Q_{j,n})=0.
+\end{equation}
+Nevertheless
+\[
+ \min_{1\le j\le4}h(x(Q_{j,n}))\longrightarrow\infty
+                         \quad\text{as }n\longrightarrow\infty.
+\]
+Consequently there are no constants $A,B$ for which
+\[
+ \max_jh(x(Q_j))\le A\,h\!\left(\sum_jx(Q_j)\right)+B
+\]
+holds for all four-tuples of distinct non-torsion doubled points
+of $E_D(L)$, even with pairwise distinct abscissas.
+\end{theorem}
+\begin{proof}
+All four points are doubles and non-torsion. Their abscissas cancel
+in pairs by~\eqref{eq:iota}.
+If $aP=\iota bP$ for nonzero integers $a,b$, applying
+$[a]+[b]\iota$ gives $[a^2+b^2]P=O$, a contradiction.
+The same argument permits either sign on the right. Equal
+abscissas on an elliptic curve mean equal or opposite points;
+thus no abscissa from one of the two $\iota$-directions can equal
+one from the other. Within either direction, equality would imply
+$[2n]P=\pm[4n]P$, again impossible. This proves both distinctness
+claims.
+Finally~\eqref{eq:heightcomparison} gives
+\[
+ h(x([2n]P))=8n^2\widehat h(P)+O_{E_D}(1),\qquad
+ h(x([4n]P))=32n^2\widehat h(P)+O_{E_D}(1).
+\]
+The $\iota$-images have the same heights, proving the assertions.
+\end{proof}
+
+\section{An explicit instance}
+
+Take
+\[
+ K=\Q(\sqrt2),\qquad D=11-6\sqrt2,
+\]
+\[
+ R_0=(1+\sqrt2,2\sqrt2),\qquad
+ P=\left(\frac{57-28\sqrt2}{8},
+          \frac{-660+417\sqrt2}{32}\right)=[2]R_0.
+\]
+Both curve identities and the doubling identity are exact.
+The following short verification of non-torsion is independent
+of any rank or Diophantine-definability input.
+
+\begin{lemma}\label{lem:nontorsion}
+The displayed point $P$ has infinite order.
+\end{lemma}
+\begin{proof}
+Use the degree-one primes of $K$ specified by
+$\sqrt2\equiv6\pmod{17}$ and $\sqrt2\equiv5\pmod{23}$.
+Both are good-reduction primes. Direct finite-field calculation gives
+\[
+\begin{array}{c|c|c|c|c}
+ p&D\bmod p&P\bmod p&\#E_D(\mathbb F_p)&
+                   \operatorname{ord}(P\bmod p)\\\hline
+ 17&9&(1,14)&20&5\\
+ 23&4&(4,5)&24&3.
+\end{array}
+\]
+If $P$ were torsion, its reduction of order five at the first
+prime would force its order to be divisible by five. A point of
+order five would then belong to $E_D(K)$. Reduction at the second
+prime is injective on five-primary torsion
+\cite[Chapter VII, Section 3]{Silverman}, but its group has order
+$24$. This is impossible.
+\end{proof}
+
+Theorems~\ref{thm:rank}, \ref{thm:trace} and~\ref{thm:sum} now
+apply over $\Q(\sqrt2,i)$ without additional arithmetic hypotheses.
+The point $C=(1+\iota)P$ is itself a double because $P=[2]R_0$.
+Thus all the trace-cancelling multiples in this explicit instance
+already lie in $2E_D(\Q(\sqrt2,i))$.
+
+\section{Scope for definitions over number fields}
+
+A ring of integers $\mathcal O_L$ is Diophantine in $L$ if it
+is the projection of a polynomial zero set with all witnesses
+ranging over $L$. None of the preceding theorems disproves the
+existence of such a definition. They rule out transferring the
+particular rank-one and elliptic trace-height assertions to
+unrestricted points of the larger field.
+
+The cancellation in Theorem~\ref{thm:trace} is an explicit Galois
+relation among the points. It violates the independence hypothesis
+required by the aggregate trace-height theorem~\cite{Aggregate}. The cancellation
+in Theorem~\ref{thm:sum} shows why a sum-height argument relying
+on positive abscissas at real embeddings requires a different
+justification over a field containing $i$.
+The rank formula shows that even the condition of being a double
+does not retain the original cyclic group.
+
+The isogeny-multiplicity argument for modular contact heights~\cite{Multiplicity} is
+separate. Its height averaging and dimension-two isogeny estimates
+are formulated over arbitrary number fields; they do not require
+real embeddings. The obstruction identified here is in the
+elliptic group and trace or sum encoding. A contact-height theorem
+for algebraic parameters would still require the appropriate
+modular realization and its stated uniform estimates, rather than
+an unrestricted change of its rational parameter field.
+
+\section{Exact verification}
+
+The standard-library program
+\nolinkurl{computation/number_fields/check_trace_cancellation.py}
+checks the coordinate identities in the universal ring
+\[
+ \Q[D,x,x^{-1},y,i]/(y^2-x^3+Dx,\ i^2+1).
+\]
+It verifies the automorphism, chord formulas, both coordinates of
+$(1-\iota)(1+\iota)P=[2]P$ after clearing denominators, conjugation,
+and the group decomposition used for rank growth. It also verifies
+the displayed point and its doubling, and counts the two
+finite reduction groups by two independent elementary methods.
+Their point orders give the non-torsion certificate above.
+
+Several exact multiples are included as supplementary checks of
+the trace and four-point identities. The general identities and
+height-growth conclusions follow from the proofs, not from those
+finite samples. The output is
+\nolinkurl{computation/number_fields/trace-cancellation-certificate.json}.
+
+\begin{thebibliography}{9}
+\bibitem{Aggregate}
+\emph{Aggregate trace heights of elliptic multiples},
+companion manuscript, 8 November 2026.
+\nolinkurl{papers/trace_heights/aggregate_trace_height_20261108_v9.tex}.
+\bibitem{Multiplicity}
+\emph{Multiplicity of modular factors and quadratic contact-height bounds},
+companion manuscript, 10 November 2026.
+\nolinkurl{papers/contact_heights/multiplicity_and_contact_heights_20261110_v19.tex}.
+\bibitem{Silverman}
+J.~H.~Silverman, \emph{The Arithmetic of Elliptic Curves},
+2nd edition, Graduate Texts in Mathematics~106, Springer, 2009;
+Chapters III, VII and VIII.
+\url{https://doi.org/10.1007/978-0-387-09494-6}.
+\bibitem{Zywina}
+D.~Zywina, \emph{Rank one elliptic curves and rank stability},
+arXiv:2505.16960, Theorems~1.1 and~1.2.
+\url{https://davidzywina.github.io/papers/Rank1WithStability.pdf}.
+\end{thebibliography}
+\end{document}

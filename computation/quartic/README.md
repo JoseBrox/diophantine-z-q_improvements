@@ -1,85 +1,84 @@
 # Current quartic coefficient families
 
-All counts include the input. The input projection equals the integers under the arithmetic assumptions stated in the corresponding paper.
+All counts include the input. The input projection equals the integers under the arithmetic premises stated in the corresponding paper.
 
 | Family | Additional hypothesis | Variables | Quadratic equations | Ordinary monomials | Terms with parameter powers separate | Defining parameter |
 |:--|:--|--:|--:|--:|--:|:--|
-| family238_v18 | None beyond the inherited premises | 238 | 212 | 2924 | 2925 | Every sufficiently large $N$; threshold ineffective |
-| family318_v18 | None beyond the inherited premises | 318 | 290 | 5060 | 5061 | Every $N\ge27464$ |
-| family_abc93_v18 | **Ordinary rational abc** | 93 | 81 | 920 | 921 | Every sufficiently large odd $B$; threshold ineffective |
+| family228_v19 | None beyond the inherited premises | 228 | 202 | 2829 | 2830 | Every sufficiently large $N$; threshold ineffective |
+| family265_v19 | None beyond the inherited premises | 265 | 237 | 3485 | 3486 | Every $N\ge14521$ |
+| family_abc91_v19 | **Ordinary rational abc** | 91 | 79 | 926 | 927 | Every sufficiently large odd $B$; threshold ineffective |
 
-Each family has exact degree four and integer content one. The ordinary support counts hold for every positive integer coefficient parameter. In family238_v18 the fixed coefficient is $A_N=149^{2N+1}$ and the height is $A_N^2+1$ for $N\ge53$. In family318_v18 the base is $80989$ and the corresponding coefficient threshold is $N\ge23$. In family_abc93_v18 the fixed coefficient is the odd input shift $B$ and the coefficient height for $B\ge3$ is $\max(4153456,B^2+797687)$. These coefficient thresholds do not certify the ineffective defining thresholds.
+Each family has exact degree four and integer content one. The ordinary support counts hold for every positive coefficient parameter. In the first two families the fixed coefficient is $A_N=149^{2N+1}$ and the height is $A_N^2+1$ for $N\ge53$. At the explicit defining value $N=14521$, the height is $149^{58086}+1$, with 419333 binary digits. The abc family has coefficient height $\max(4153456,B^2+797683)$ for $B\ge3$. Algebraic coefficient thresholds and sufficient defining thresholds are separate statements.
 
-From the repository root:
+The full papers prove the [228-variable theorem](../../papers/quartic_existence/quartic228_20261110_v19.pdf), the [265-variable theorem](../../papers/quartic/quartic265_20261110_v19.pdf), and the [91-variable theorem under abc](../../papers/quartic_existence/quartic_abc91_20261110_v19.pdf). No global minimum number of quartic variables is claimed.
+
+## Exact reconstruction
+
+From the repository root, with the distributed dependency tables present:
 
 ~~~sh
-python3 computation/quartic/build_quartic_even.py
-python3 computation/quartic/check_quartic_even.py
-python3 computation/quartic/build_quartic279.py
-python3 computation/quartic/check_quartic279.py
-python3 computation/quartic/build_quartic273.py
-python3 computation/quartic/check_quartic273.py
-python3 computation/quartic/build_quartic267.py
-python3 computation/quartic/check_quartic267.py
-python3 computation/quartic/build_quartic263.py
-python3 computation/quartic/check_quartic263.py
-python3 computation/quartic/build_quartic259_v17.py
-python3 computation/quartic/check_quartic259_v17.py
-python3 computation/quartic/build_quartic249_v17.py
-python3 computation/quartic/check_quartic249_v17.py
-python3 computation/quartic/build_quartic248_v17.py
-python3 computation/quartic/check_quartic248_v17.py
-python3 computation/quartic/build_quartic_abc97_v17.py
-python3 computation/quartic/check_quartic_abc97_v17.py
-python3 computation/quartic/build_fixed_difference_v18.py
-python3 computation/quartic/check_fixed_difference_v18.py
-python3 computation/quartic/build_quartic318_v18.py
-python3 computation/quartic/check_quartic318_v18.py
-python3 computation/elliptic_constraints/check_fixed_difference_chart.py
+python3 computation/quartic/build_quartic276_v19.py
+python3 computation/quartic/check_quartic276_v19.py
+python3 computation/quartic/build_reciprocal_factors_v19.py
+python3 computation/quartic/check_reciprocal_factors_v19.py
+python3 computation/quartic/build_quartic265_v19.py
+python3 computation/quartic/check_quartic265_v19.py
 ~~~
 
-The intermediate families are exact reconstruction dependencies. Each current family directory contains the complete quadratic table, expanded quartic, construction report, and independent verification certificate. No coefficient checker imports a producer. The checkers reconstruct every changed row, compare retained rows with their pinned source, verify coordinate incidence, and expand every coefficient of the sum of squares independently. Their finite algebraic checks support the mathematical projection proofs; they do not establish the inherited arithmetic premises or abc.
+For all source dependencies and the other papers, run `python3 scripts/verify.py`. The source chain, file hashes, proof hashes, and commands are recorded in [PROVENANCE.json](PROVENANCE.json).
 
-The source chain is in [PROVENANCE.json](PROVENANCE.json). The current papers prove the [238-variable theorem](../../papers/quartic_existence/quartic238_20261110_v18.pdf), the [318-variable theorem](../../papers/quartic/quartic318_20261110_v18.pdf), and the [93-variable theorem under abc](../../papers/quartic_existence/quartic_abc93_20261110_v18.pdf).
+Each current family directory contains the complete quadratic table, expanded quartic, construction report, and independent verification certificate. The checker does not import its producer. It reconstructs every changed row from the field formulas, compares all retained rows with the pinned source, checks every coordinate, and independently expands all coefficients of the sum of squares. The arithmetic premises, valuation arguments, and completeness statements are proved separately in the papers.
 
-## Symmetric ten-contact normalization
+## Reciprocal local factors
 
-For the scales $a=1,T$, where $T$ is one quarter of the trace of the sum of four root abscissas, put $t=a\lambda$ and $r=(t-1)^2$. The contacts are $\Theta\cup(2-\Theta)$, with the five-contact set $\Theta=\{0,-1/2,-1,1/2399,-32/407\}$. Their product is $F_{10}(t)=P_5(r)$, evaluated with four quadratic outputs. The only new exceptional prime beyond the inherited cutoff is $2029147$.
+The common-point chart uses three quadrics in four field coordinates for $H,H-P$, retaining both reciprocal abscissas and both $y/x$ values. Its [general proof](../../papers/elliptic_charts/fixed_difference_charts_20261110_v18.pdf) treats every exceptional leading coefficient and proves that the relevant denominators are nonzero.
 
-The literal equations are
+For the inherited-premise families, write $q=R^{-1}-1$. The local equations store
 
-$$F_{10}(t)(1+q)=r^2r^3,\qquad (1+q)b=(408/409)^2\tau^2.$$
+$$q s_1=1,\qquad s_2=s_1^2,\qquad s_4=s_2^2.$$
 
-For $t\ne1$, they give $R=F_{10}/(t-1)^{10}$ and $q=R^{-1}-1$. The strata $t=1$ and $q=0$ have radical one. The local weight outputs satisfy $q_2=q^2$, $q_4=q_2^2$, and $q q_7=q_4^2$; the last coordinate may be free when $q=0$, which the proof handles explicitly. At every consumed contact it equals $q^7$.
+Multiplying every factor equation by $q^{-4}$ allows terms $q^4B_i^4$ to become $(B_i^2)^2$ using the existing stored squares. In the 228-variable construction this eliminates five field coordinates. Its local factors before clearing are
 
-The proved bound $h(a)<2^{330671}M_5(a)^{7/2}$ gives exponent $7/4$ for the ten contacts. This permits plain formal parameters in every comparison. The scalar norm denominator uses $R_s^4$, forcing $149^{L_N}M_5(\beta)^3\mid c=|a-1|$. The sharper height bound is $h(\beta)\le2^{330670}149^{-L_N}c(1+\log c/3)$; the integral Lucas bound $(c-5)\log(c-2)$ gives the final contradiction for sufficiently large fixed $N$. These statements use the source's modular realization and the retained elliptic, pole, and prime-pattern inputs, with no additional abc.
+$$\begin{aligned}
+T_1&=1+q^5C_2^2+q^2D_H^2+q^4B_1^4,\\
+T_2&=1+q^5G^2+q^2A_3^2+q^4B_0^4,\\
+T_3&=1+q^5I^4+q^3A_2^2+q^2A_4^2+q^4B_3^4,\\
+T_4&=1+q^5C_3^2+q^2C_1^4+q^4B_4^4,\\
+T_5&=1+q^5C_4^2+q^2A_1^2+q^4B_2^4.
+\end{aligned}$$
 
-## Eight-contact normalization under abc
+The third factor has distinct valuation classes at every consumed contact. The comparison precision is three; the plain formal-parameter error has order four. The proof checks arbitrary witness pole orders, shared prime support, and every exceptional stratum.
 
-The additional-abc family uses the contacts $\{-3,-2,-1,0,2,3,4,5\}$ and two scales $1,a$, where $a=\beta^4+T^4$, $\beta=2X^2+B$, and $T$ is a single elliptic trace. With $r=(t-1)^2$, the quadratic equations
+The explicit 265-variable construction uses four factors for each of its three detectors:
 
-$$
-u=qr,\qquad k=ur,\qquad k^2-30ku+273u^2-820uq+576q^2=kr
-$$
+$$\begin{aligned}
+T_1&=1+q^9C_2^4+q^3C_1^4+q^2D_H^2+q^4B_1^4,\\
+T_2&=1+q^9G^4+q^3A_3^2+q^2B_0^2+q^4B_2^4,\\
+T_3&=1+q^9C_3^4+q^3A_2^2+q^2I^4+q^4B_3^4,\\
+T_4&=1+q^9C_4^4+q^3A_1^2+q^2A_4^2+q^4B_4^4.
+\end{aligned}$$
 
-give $qF_8(t)=r^3$ and $k=(t-1)^{10}/F_8(t)=1/R$ after the proof excludes $q=0$. The contact product is not a separate coordinate. The fourth-power scale is computed from
+The additional equation $w_5s_4=q$ gives $w_5=q^5$. After multiplication by $q^{-4}$, all four factor equations are quadratic in the stored coordinates. The four shared fourth powers $C_2^4,G^4,C_3^4,C_4^4$ use eight rational coordinates. At an active contact, the four nonconstant summands have disjoint valuation classes: $-\nu,\nu,2$ modulo four and $4$ modulo eight, where $\nu$ is the positive odd contact order. The resulting bounds give order three for $C_2,C_3,C_4,G$ and order one for $C_1,I$; every reciprocal abscissa has positive even valuation. These precisions suffice for the global arithmetic proof. The complete system has 265 coordinates and 237 quadratic rows.
 
-$$
-S=\beta^2+T^2,\quad p=\beta T,\quad a=S^2-2p^2.
-$$
+The [multiplicity height theorem](../../papers/contact_heights/multiplicity_and_contact_heights_20261110_v19.pdf) gives effective contact exponent $7/3$ without restricting the modular character orders of the contact primes. Two disjoint five-contact sets give exponent $7/6$. The 228-variable construction uses scales $1,T$, with $T$ one quarter of the trace of four root abscissas. The explicit construction uses $1,S_0^2,(S_0+S_1)^2$ and an effective height theorem for the two rational components. The retained scalar normalization yields
 
-The abc contact and projective-height estimates have respective coefficients $1/3$ and $4/3$, giving strict absorption coefficient $8/9$. Three elliptic point roles and six local tests of order one suffice. The input-comparison value is a coordinate, with $\beta=L_0-I_0$ and one row $I_0-L_0+2X^2+B=0$; this gives the quadratic coefficient-height dependence on $B$. The sufficient input shift remains ineffective.
+$$149^{L_N}M_5(\beta)^3\mid |a-1|,\qquad
+L_N=\left\lfloor\frac{19(2N-1)}8\right\rfloor+1.$$
 
-The compressed formula for the shared point difference is checked against the elliptic addition law by `check_z_difference_identity.py`, using exact PARI function-field arithmetic through `cypari2`. The full paper excludes all exceptional point classes before interpreting its quotients. The general coefficient reconstruction itself uses only the Python standard library.
+The independent checker verifies the sufficient integer inequalities at $N=14521$, including the resulting depth $L_N=68973$. The preceding integer fails this particular sufficient criterion; this is not a proof that it fails to define the integers.
 
-The family279 and family273 files are coefficient dependencies only: no integer-projection theorem is asserted for their literal tables. The current projection theorems are proved from the displayed current normalizations.
+## The abc family
 
+The eight contacts are $\{-3,-2,-1,0,2,3,4,5\}$, and the scales are $1,\beta^4+T^4$, where $\beta=2X^2+B$ and $T$ is a single elliptic trace. Ordinary rational abc and the projective-height estimate give strict absorption coefficient $8/9$.
 
-## Four-coordinate common point and direct ratios
+The reciprocal coordinates satisfy
 
-The current families use three quadratic equations in $S=y(H)/x(H)$, $T=y(H-P)/x(H-P)$, $f=1/x(H)$, and $g=1/x(H-P)$. The [general chart proof](../../papers/elliptic_charts/fixed_difference_charts_20261110_v18.pdf) treats every leading-coefficient exception and proves $fg\ne0$ from the equations themselves. The direct relations $L_iI_i=V_iS$ and $L'_iK_i=Q_iT$ compute both ratios from the existing numerator-pair coordinates.
+$$s_4=s_2^2,\qquad q s_4=s_3,\qquad q s_3=s_2.$$
 
-`build_fixed_difference_v18.py` reads the pinned quadratic sources in `family248_v17` and `family_abc97_v17`. Its independent checker reconstructs the three field equations, the direct ratios, the exact invertible six-row rational change, all retained rows, and the entire quartic. The determinant of the row change is $-1/362963666515968$. A separate standard-library program proves the general chart's polynomial identities by exact expansion. The older coefficient tables are reconstruction dependencies; the displayed current theorems are the 238-, 318-, and 93-variable results.
+The nonzero branch gives $s_j=q^{-j}$. On the zero branch the cleared factor equations force both numerator reciprocal abscissas to vanish; the exact point-pair chart then gives $0=1$. Thus no extra nonvanishing coordinate is needed. Two fourth-power field coordinates are removed and one additional inverse-weight coordinate per detector is added, giving 91 total rational coordinates.
 
+The sufficient odd input shift remains ineffective. The weak abc/Szpiro premise used for the separate 13-variable construction is not asserted sufficient for this quartic.
 
-The fully specified 318-variable family uses the same common-point equations and normalizes each numerator logarithm by the shared correction factor. `build_quartic318_v18.py` reads the pinned family322 source. Its independent checker reconstructs 22 changed rows, compares 268 unchanged rows, verifies each correction factor, and expands all coefficients. The new potential boundary is excluded arithmetically in the full proof. The certified defining parameter $N=27464$ and exact height $80989^{109858}+1$ are retained.
+## Supporting data
+
+Intermediate coefficient tables are retained only where needed for exact reconstruction and source comparisons. In particular, `family266_v19` is the pinned source of `family265_v19`, and `family276_v19` is a source of `family266_v19`. Their presence does not list them as current best results. The family279 and family273 tables remain algebraic dependencies without an integer-projection theorem for their literal equations. The current proofs use the displayed current local normalizations.

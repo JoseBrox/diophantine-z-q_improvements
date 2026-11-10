@@ -18,20 +18,20 @@ combined scalar and comparison conditions}
 \begin{abstract}
 Under the four arithmetic inputs of the specified elliptic source,
 we construct a computable family of integer polynomials in twenty-five
-total variables, each of degree less than $2^{87}$. Every sufficiently
+total variables, each of degree less than $2^{85}$. Every sufficiently
 large odd value of one fixed coefficient parameter gives a Diophantine
 definition of the integers over the rationals. The construction places
-the scalar divisibility conditions and the comparison conditions in two
-common pole predicates. Rational normalization controls arbitrarily
-large poles of the conditions that are inactive at a given prime.
-At primes common to the two arithmetic coefficients, a valuation
-comparison supplies either the desired integer residual or the scalar
-index; no prime of the comparison radical is discarded. Two disjoint
-sets of translated contacts make the scalar conditions available at
-every required prime. The aggregate trace-height theorem has an
-ineffective additive constant, so the sufficient coefficient parameter
-is not numerically certified. Exact source specifications and independent
-uniform degree checks accompany the existence theorem.
+scalar divisibility and elliptic comparisons in two common pole
+predicates. The comparison functions enter directly, at two different
+local precisions. A linear rational normalization controls the scalar
+functions. Its completeness follows by making the common elliptic
+index divisible by the selected primes, in addition to the prescribed
+reduction orders. A contact-height estimate with exponent $7/3$
+then supplies the required global bounds. The aggregate trace-height
+theorem has an ineffective additive constant, so the sufficient
+coefficient parameter is not numerically certified. Exact source
+specifications and independent uniform degree checks accompany the
+existence theorem.
 \end{abstract}
 
 \section{Statement and arithmetic inputs}
@@ -56,9 +56,9 @@ with the following properties.
 \begin{enumerate}
 \item Every member has degree at most
 \[
- 104263275909198787271196672<2^{87}.
+ 20747108969426225455955968<2^{85}.
 \]
-Its number of nonzero monomials is less than $2^{2035}$.
+Its number of nonzero monomials is less than $2^{1979}$.
 \item There is a fixed $L_0$ such that every odd $L\ge L_0$
 defines $\Z$ over $\Q$.
 \item The proof does not give an effective sufficient value of $L_0$
@@ -89,25 +89,22 @@ We use the following inputs, with the scope established in
 \begin{enumerate}
 \item $2E(K)=\Z P$, and $h(x([n]P))\ge n^2-6$ for every
 nonzero integer $n$.
-\item The modular realization input for the five contacts is the
-one specified in~\cite{Evaluation}. Its proved contact-height
-consequence~\cite{Nebentypus} is as follows. If $q=u/v\in\Q$,
-written in lowest terms with $v>0$, is
-not one of $0,1,2401,-343/32$, let $M_5(q)$ be the product of
-primes $p>76176$ at which at least one of
+\item The full normalized modular realization for the five contacts is
+specified in~\cite{Evaluation,Multiplicity}. Its contact-height
+consequence is as follows. If $q=u/v\in\Q$ is in lowest terms,
+$v>0$, and $q\notin\{0,1,2401,-343/32\}$, let $M_5(q)$ be the
+product of primes $p>76176$ at which at least one of
 \[
- v_p(v),\ v_p(u),\ v_p(u-v),\ v_p(u-2401v),\ v_p(32u+343v)
+ v_p(v),\quad v_p(u),\quad v_p(u-v),\quad
+ v_p(u-2401v),\quad v_p(32u+343v)
 \]
-is positive and odd, then
-\[
- h(q)\le C_3M_5(q)^3(1+\log M_5(q)),\qquad C_3<2^{330670}.
-\]
-In particular, since $1+\log M\le6M^{1/6}$ for $M\ge1$, we use
+is positive and odd. Then
 \begin{equation}\label{eq:contact-height}
-                  h(q)\le H M_5(q)^{19/6},\qquad H=6C_3.
+                  h(q)<H M_5(q)^{7/3},\qquad H=2^{221234}.
 \end{equation}
-The modular realization is the one inherited from the pinned source
-and is an explicit hypothesis of this theorem.
+The normalized modular realization is an explicit hypothesis here.
+The exponent $7/3$ is a proved consequence of that realization;
+it does not require an additional $abc$ hypothesis.
 \item With $B=17b$, the pole predicate consists of
 \begin{equation}\label{eq:pole}
  p_0^2=B(1-e)(1+3e),\qquad
@@ -247,15 +244,20 @@ The sixteen comparison functions $C_1,\ldots,C_{16}$, in order,
 are
 \begin{equation}\label{eq:comparison-list}
  \begin{gathered}
- (f(U_i)^2)_{i=0}^4,\qquad
- ((\sigma f(V_i))^2)_{i=0}^4,\\
+ (f(U_i))_{i=0}^4,\qquad
+ (\sigma f(V_i))_{i=0}^4,\\
  L_i-L'_i\quad(1\le i\le4),\qquad
  L_1-\beta,\qquad \mathcal F(L_2,L_3,L_4).
  \end{gathered}
 \end{equation}
-The first line contains ten functions. The exponent $2$ permits
-high valuation of these functions while requiring only first formal
-neighborhoods for the underlying points.
+The first line contains ten functions. Define the required orders
+\begin{equation}\label{eq:comparison-orders}
+ a_i=3\quad(i=12,13,14,16),\qquad a_i=1\quad\text{otherwise}.
+\end{equation}
+Positive valuation of a reciprocal abscissa is sufficient to put its
+point in the formal group. The three Lucas-label comparisons and the Lucas residual need
+precision three. The input comparison and its paired ratio need
+only precision one.
 
 The six scalar functions $S_1,\ldots,S_6\in\Q$ are the two
 rational coefficients, in the basis $1,\sqrt2$, of each of
@@ -331,20 +333,20 @@ In particular $\ell\notin\mathcal S$.
 
 For any nonzero rational coefficient $q$ set
 \[
- \Psi_q(v)=\frac{qv^2}{1+qv^2}.
+                     \Phi_q(v)=\frac{qv}{1+qv}.
 \]
 For $j=0,1$, put $\mathcal R_j=\rho R_j$ and
 \begin{equation}\label{eq:normalized-functions}
- E_i=\rho^7\Psi_\rho(C_i),\qquad
- G_{j,k}=R_j^7\Psi_{R_j}(S_k).
+ G_{j,k}=R_j^{\kappa_k}\Phi_{R_j}(S_k),\qquad
+ \kappa_k=\begin{cases}1,&1\le k\le4,\\3,&k=5,6.\end{cases}
 \end{equation}
 Define
 \begin{equation}\label{eq:W}
  W_j=
  \prod_{i=1}^{16}\left(1+\mathcal R_j
-        \left(\frac{E_i}{\delta_j\mathcal R_j^7}\right)^2\right)
+        \left(\frac{C_i}{\delta_j\mathcal R_j^{a_i}}\right)^2\right)
  \prod_{k=1}^{6}\left(1+\mathcal R_j
-        \left(\frac{G_{j,k}}{\mathcal R_j^7}\right)^2\right),
+        \left(\frac{G_{j,k}}{\mathcal R_j^{\kappa_k}}\right)^2\right),
 \end{equation}
 and
 \begin{equation}\label{eq:pole-inputs}
@@ -374,141 +376,119 @@ At primes outside $\mathcal S$, valuations on completions of $K$
 are normalized by $v(p)=1$ and have integer values. All arguments
 below permit zero test functions, whose valuations are $+\infty$.
 
-\begin{lemma}\label{lem:psi}
-If $v(q)$ is odd, then
+\begin{lemma}\label{lem:phi}
+Let $e=v(q)+v(v_0)$, allowing $v_0=0$. If $e\ne0$, then
 \[
- v(\Psi_q(v_0))=\max\{0,v(q)+2v(v_0)\}.
+                         v(\Phi_q(v_0))=\max(0,e).
 \]
-For arbitrary nonzero $q$,
-\[
- v(\Psi_q(v_0))\le\max\{0,v(q)+2v(v_0)\}.
-\]
-If $q$ is a unit, positive valuation of $\Psi_q(v_0)$ is equivalent
-to positive valuation of $v_0$, and then equals $2v(v_0)$.
+In all cases $v(\Phi_q(v_0))\le\max(0,e)$. When $q$ is a
+unit, positive valuation of $\Phi_q(v_0)$ is equivalent to positive
+valuation of $v_0$, and these valuations are equal.
 \end{lemma}
 \begin{proof}
-Write $e=v(q)+2v(v_0)$. If $e\ne0$, subtraction of
-$v(1+qv_0^2)=\min(0,e)$ gives the first formula. If $e=0$,
-the numerator is a unit and the denominator is integral, so the
-quotient has nonpositive valuation. This also proves the general
-upper bound and the unit assertion. Odd $v(q)$ excludes $e=0$.
+For $e\ne0$, the denominator has valuation $\min(0,e)$.
+For $e=0$, the numerator is a unit and the denominator is integral,
+so the quotient has nonpositive valuation. These statements also
+prove the unit assertion. The assertion for a zero numerator follows
+by continuity, with valuation $+\infty$.
 \end{proof}
 
 \begin{lemma}\label{lem:trace}
 Suppose $v_p(\rho R_j)=\alpha$ is odd and $b_j$ has a pole
 certificate. Then $\alpha>0$, and at some place above $p$ each
-factor of $W_j$ has valuation greater than $-\alpha/2$.
-Every scalar numerator $G_{j,k}$ at that place has valuation greater
-than $25\alpha/4$. If $v_p(\delta_j)=0$, the same holds for each
-comparison numerator $E_i$.
+factor of $W_j$ has valuation greater than $-\alpha/2$. Every
+scalar numerator $G_{j,k}$ at that place satisfies
+\[
+                         v(G_{j,k})>(\kappa_k-3/4)\alpha.
+\]
+If $v_p(\delta_j)=0$, then at the same place
+\begin{equation}\label{eq:raw-extraction}
+                         v(C_i)>(a_i-3/4)\alpha
+                         \qquad(1\le i\le16).
+\end{equation}
 \end{lemma}
 \begin{proof}
-Every nonzero second summand in~\eqref{eq:W} has odd
-valuation. Thus every factor, and hence $W_j$, has nonpositive
-valuation. Set $q=\max_{\mathfrak p\mid p}v_{\mathfrak p}(W_j)\le0$.
+Each nonzero second summand in~\eqref{eq:W} has odd valuation.
+Thus every factor has nonpositive valuation. Set
+$q=\max_{\mathfrak p\mid p}v_{\mathfrak p}(W_j)\le0$.
 Integrality of local traces gives
-$v_p(\Tr(W_j^{-1}))\ge-q$. Therefore
+$v_p(\Tr(W_j^{-1}))\ge-q$. The pole condition and oddness give
 \[
- 1\le v_p(b_j)\le\alpha+2q,
+                         1\le v_p(b_j)\le\alpha+2q.
 \]
-because $v_p(b_j)$ is odd and the pole predicate excludes negative
-odd values. In particular $\alpha>0$ and $q>-\alpha/2$.
-At a place attaining $q$, each nonpositive factor valuation is at
-least their sum $q$. A scalar numerator $V$, or a comparison
-numerator with unit $\delta_j$, consequently satisfies
+Consequently $\alpha>0$ and $q>-\alpha/2$. At a place attaining
+$q$, each factor valuation is at least the sum $q$. For a numerator
+$V$ with denominator order $a$, this says
 \[
- 2v(V)-13\alpha>-\alpha/2,
- \qquad v(V)>\frac{25}{4}\alpha.
+ (1-2a)\alpha+2v(V)>-\alpha/2,
+ \qquad v(V)>(a-3/4)\alpha.
 \]
+Use $a=\kappa_k$ for a scalar numerator and $a=a_i$ for a comparison.
+The argument also covers a zero numerator, whose factor is $1$.
 \end{proof}
 
 \begin{lemma}\label{lem:scalar-odd}
 If $p\notin\mathcal S$ and $\mu=v_p(\rho)$ is odd, at least
 one $R_j$ is a unit. A source solution then has $\mu>0$ and
 \[
- v_p(S_k)>\frac{25}{8}\mu\quad(1\le k\le6),\qquad
- v_p(c)>\frac{25}{8}\mu.
+ \begin{gathered}
+ v_p(S_k)>\mu/4\quad(1\le k\le4),\qquad
+ v_p(S_k)>9\mu/4\quad(k=5,6),\\
+ v_p(c)>9\mu/4.
+ \end{gathered}
 \]
-In particular $v_p(c)\ge4$ and $v_p(c)\ge3\mu+1$.
+In particular $v_p(c)\ge3$ and $v_p(c)\ge2\mu+1$.
 \end{lemma}
 \begin{proof}
-Since $v_p(\rho T^2)$ is odd, either $A_1\equiv1\pmod p$ or
-$v_p(A_1)<0$. For either contact function, an argument of positive
-or negative valuation gives a unit: at negative valuation numerator
-and denominator have the same degree, while at positive valuation
-all contact and pole constants are units. If $\lambda$ is a unit
-and $R_0$ is not, its residue is a contact or pole of the first
-set. Either $A_1\lambda$ has negative valuation, or it has the
-same residue as $\lambda$. Disjointness of the two reduced sets
-gives a unit $R_1$ in both cases. This is the unit assertion of
-\cite{LocalTests}.
+The valuation of $\rho T^2$ is odd. Thus either $A_1\equiv1\pmod p$
+or $v_p(A_1)<0$. For each balanced contact function an argument of
+positive or negative valuation gives a unit: at negative valuation the
+numerator and denominator have the same degree, while at positive
+valuation every contact and pole constant is a unit. If $\lambda$
+is a unit and $R_0$ is not, its residue is a contact or pole of the
+first set. Either $A_1\lambda$ has negative valuation or it has
+the same residue as $\lambda$. Disjointness of the two reduced
+sets gives a unit $R_1$ in either case. This proves the unit
+assertion; compare~\cite{LocalTests}.
 
-At the chosen detector, $v_p(\delta_j)\le0$. Lemma~\ref{lem:trace}
-excludes $\mu<0$. By Lemma~\ref{lem:psi},
-$v(E_i)\ge7\mu$; thus all comparison factors in~\eqref{eq:W}
-are units, even when the original comparison functions have poles.
-The scalar numerators satisfy $v(G_{j,k})>25\mu/4$ at the
-place supplied by the trace lemma. Since $R_j$ is a unit, this
-implies $v_p(S_k)>25\mu/8$.
+At a detector with unit $R_j$, Lemma~\ref{lem:trace} forces
+$\mu>0$ and $v(G_{j,k})>(\kappa_k-3/4)\mu$. As $R_j$ is a
+unit, Lemma~\ref{lem:phi} gives the same positive lower bound
+for the rational function $S_k$. No integrality assertion about the comparison
+functions is needed: their factors have nonpositive valuation, which
+is precisely the hypothesis used in the trace argument.
 
 The first four scalar components put $H_0$ and $S-P$ in the formal
-group at every place over $p$. Write $H_0=[h]P$; the point guard
-gives $h\ne0$. The formal logarithm is an isometry and
+group at every place over $p$. Write $H_0=[h]P$, where $h$ is a
+nonzero integer. The formal logarithm is an isometry and
 $[h](S-P)=[a-1]H_0$, so
 \[
  v_{\mathfrak p}(z(S-P)/z(H_0))=v_p((a-1)/h).
 \]
-The last two rational components give a lower bound $>25\mu/8$
-on the left. Since $h$ is an integer, the asserted bound for $c$
-follows.
+The last two scalar components bound the left side by $>9\mu/4$.
+Since $v_p(h)\ge0$, the asserted bound for $c$ follows. Integer
+valuations and $\mu\ge1$ give $v_p(c)\ge2\mu+1\ge3$.
 \end{proof}
 
 \begin{lemma}\label{lem:mixed}
 Let $p\notin\mathcal S$ and $\nu=v_p(R_j)>0$ be odd. A source
 solution has one of the following two properties:
 \begin{enumerate}
-\item at some place over $p$, every $C_i$ has valuation at least $4$;
-\item $v_p(c)\ge4$.
+\item at some place over $p$, $v(C_i)\ge a_i$ for every $i$;
+\item $v_p(c)\ge3$.
 \end{enumerate}
 \end{lemma}
 \begin{proof}
-Here $\delta_j$ is a unit. Put $\mu=v_p(\rho)$. If $\mu$ is
-odd, Lemma~\ref{lem:scalar-odd} proves the second alternative,
-or excludes the solution when $\mu<0$.
-
-Suppose $\mu$ is even. Lemma~\ref{lem:trace} gives
-$\alpha=\mu+\nu>0$ and one place where both numerator families
-have valuation $>25(\mu+\nu)/4$. For a nonzero comparison
-function with $u=v(C_i)$, Lemma~\ref{lem:psi} gives
+The normalizer $\delta_j$ is a unit. Put $\mu=v_p(\rho)$.
+If $\mu$ is odd, Lemma~\ref{lem:scalar-odd} proves the second
+alternative, or excludes the solution when $\mu<0$.
+If $\mu$ is even, $\alpha=\mu+\nu$ is odd. The trace lemma
+forces $\alpha>0$ and gives
 \[
- v(E_i)\le7\mu+\max(0,\mu+2u).
+ v(C_i)>(a_i-3/4)\alpha\ge a_i-3/4.
 \]
-If $0\le\mu\le\nu$, it follows that
-\[
- u>\frac{25\nu-7\mu}{8}\ge\frac94\nu.
-\]
-For $\nu=1$, evenness forces $\mu=0$, so $u>25/8$ and
-$u\ge4$. For $\nu\ge3$, the lower bound $u>9\nu/4$ is
-stronger. If $\mu<0$, the same calculation gives
-$u>(25\nu-7\mu)/8>25\nu/8\ge25/8$, again sufficient.
-The possible cancellation when $\mu+2u=0$ is covered by the
-upper bound and cannot satisfy the strict required inequality.
-
-It remains that $\mu>\nu>0$. For $s=v_p(S_k)$ the oddness of
-$\nu$ gives
-\[
- v(G_{j,k})=7\nu+\max(0,\nu+2s).
-\]
-Consequently
-\[
- s>\frac{25\mu-7\nu}{8}\ge\frac{43}{8}.
-\]
-The last lower bound uses $\nu\ge1$, $\mu\ge\nu+1$, with
-$\mu$ even and $\nu$ odd. All six rational scalar components
-therefore have valuation at least $6$.
-The formal-logarithm argument in Lemma~\ref{lem:scalar-odd}
-then gives $v_p(c)\ge6\ge4$. This proves the second
-alternative and completes all valuation cases.
+As valuations are integers, $v(C_i)\ge a_i$. This includes
+negative even $\mu$ and arbitrarily deep common contact valuations.
 \end{proof}
 
 \subsection{From comparison functions to integer residuals}
@@ -532,7 +512,7 @@ $v(a_j(Df^2)^j)\ge4jr_Q-j\ge3jr_Q\ge4r_Q$.
 These bounds tend to infinity and prove~\eqref{eq:log-error}.
 
 Suppose the first alternative of Lemma~\ref{lem:mixed} holds.
-The ten powered functions in~\eqref{eq:comparison-list} put
+The ten reciprocal-abscissa functions in~\eqref{eq:comparison-list} put
 $H_0,U_i$ in the formal group at the selected place and $V_0,V_i$
 in the formal group at its conjugate. Write $U_i=[u_i]P$ and
 $H_0=[h]P$. The full logarithm ratios are
@@ -543,10 +523,11 @@ $H_0=[h]P$. The full logarithm ratios are
 At least one of $h,h-1$ is a $p$-unit. Its ratio is integral;
 the cross test and~\eqref{eq:log-error} make the other truncated
 ratio integral as well. Both relative errors are then absolute
-errors. Modulo $p^4$ one has $L_i\equiv r_i\equiv r'_i$.
-Multiplication by $h,h-1$ and subtraction give
+errors. Put $d_1=1$ and $d_2=d_3=d_4=3$. Modulo $p^{d_i}$
+one has $L_i\equiv r_i\equiv r'_i$. Multiplication by $h,h-1$
+and subtraction give
 \begin{equation}\label{eq:index-congruence}
- L_i\equiv n_i\pmod{p^4}.
+ L_i\equiv n_i\pmod{p^{d_i}}.
 \end{equation}
 This argument is valid at split and inert primes.
 
@@ -554,19 +535,21 @@ Define the integer residual
 \[
  \Delta=\mathcal F(a,t,b).
 \]
-Then $p^4\mid\Delta$. If $\beta=u/v$ is in lowest terms
+Then $p^3\mid\Delta$. If $\beta=u/v$ is in lowest terms
 with $v>0$, the direct target and~\eqref{eq:index-congruence}
 make $\beta$ integral at $p$ and give
-$p^4\mid u-nv$.
+$p\mid u-nv$.
 
 Let $M_j$ be the product of primes outside $\mathcal S$ at which
-$R_j$ has positive odd valuation. For either nonzero integer
-$N=\Delta$ or $N=u-nv$, Lemma~\ref{lem:mixed} therefore gives
+$R_j$ has positive odd valuation. Lemma~\ref{lem:mixed} gives
 \begin{equation}\label{eq:residual-divisibility}
-                         M_j^4\mid Nc\qquad(j=0,1).
+          M_j^3\mid\Delta c,\qquad M_j\mid(u-nv)c
+                         \qquad(j=0,1).
 \end{equation}
-Primes occurring in both arithmetic coefficients are included in this
-divisibility statement.
+For a nonzero residual these divisibilities bound its comparison
+radical. Primes common to the scalar and comparison coefficients
+are included: the scalar alternative gives $p^3\mid c$, which
+suffices for both statements.
 
 \section{Heights and soundness}
 
@@ -581,15 +564,15 @@ the denominator $1+C_Lr$ is a unit. The prime $\ell$ contributes
 no contact, by the finite residue certificate for~\eqref{eq:forced}.
 Lemma~\ref{lem:scalar-odd} thus gives, with fixed $H_1$,
 \begin{equation}\label{eq:scalar-height}
- h(\beta)\le H_1c^{19/24}.
+ h(\beta)\le H_1c^{7/9}.
 \end{equation}
 Omitting the three additional primes in~\eqref{eq:exceptional}
 only multiplies the height constant by their product to power
-$19/6$. At the fixed prime $\ell$, the same lemma and
+$7/3$. At the fixed prime $\ell$, the same lemma and
 \eqref{eq:forced} give
 \begin{equation}\label{eq:c-large}
- v_\ell(c)\ge3L+1,\qquad
- c\ge\ell^{3L+1},\qquad L\log\ell\le\frac{\log c}{3}.
+ v_\ell(c)\ge2L+1,\qquad
+ c\ge\ell^{2L+1},\qquad L\log\ell\le\frac{\log c}{2}.
 \end{equation}
 
 The scalar coefficient has the elementary height bound
@@ -618,10 +601,10 @@ two groups are disjoint modulo every such prime. Consequently their
 radicals multiply to $M_j$, and applying the contact-height theorem
 to each group and multiplying gives a fixed constant $C_1$ with
 \begin{equation}\label{eq:balanced-height}
-                         h(t_j)\le C_1 M_j^{19/12}.
+                         h(t_j)\le C_1 M_j^{7/6}.
 \end{equation}
 For clarity, each separate application gives
-$h(t_j)\le C_sM_s^{19/6}$ with a fixed $C_s$; their product gives
+$h(t_j)\le C_sM_s^{7/3}$ with a fixed $C_s$; their product gives
 the square of~\eqref{eq:balanced-height}. Fixed exceptional primes
 are absorbed into $C_s$.
 
@@ -634,10 +617,12 @@ Combining~\eqref{eq:trace-height}, \eqref{eq:residual-divisibility},
 \eqref{eq:rho-height}, and~\eqref{eq:c-large} yields fixed
 constants $C_2\ge1$, $J_2\ge0$, independent of $X,L$, such that
 \begin{equation}\label{eq:common-height}
- B_{\mathrm{ind}}^2\le C_2|Nc|^{19/48}
-             +C_2c^{19/24}+C_2\log c+J_2
+ B_{\mathrm{ind}}^2\le C_2|Nc|^{\eta}
+             +C_2c^{7/9}+C_2\log c+J_2
 \end{equation}
-for each nonzero residual $N$ under consideration.
+where $\eta=7/18$ for $N=\Delta\ne0$, and $\eta=7/6$
+for $N=u-nv\ne0$. The different exponents reflect precisely the
+two divisibilities in~\eqref{eq:residual-divisibility}.
 
 \subsection{Eliminating the residuals}
 
@@ -645,8 +630,8 @@ Write $B=B_{\mathrm{ind}}$ in this subsection. From~\eqref{eq:c-large},
 $B\ge c-1>4$ and $c\le B+1\le2B$. If $\Delta\ne0$, then
 $|\Delta|\le5B^4$, so~\eqref{eq:common-height} implies
 \[
- B^2\le C_2 10^{19/48}B^{95/48}
-       +C_2(2B)^{19/24}+C_2\log(2B)+J_2.
+ B^2\le C_2 10^{7/18}B^{35/18}
+       +C_2(2B)^{7/9}+C_2\log(2B)+J_2.
 \]
 Every term on the right grows more slowly than $B^2$. There is
 therefore a fixed threshold, independent of $L$, beyond which this
@@ -659,21 +644,22 @@ then gives
                               \log B>c-4.
 \end{equation}
 If $\beta\ne n$, let $N=u-nv\ne0$ with $\beta=u/v$ in lowest
-terms. Since $\max(|u|,v)=e^{h(\beta)}$,
+terms. Since $\max(|u|,v)=e^{h(\beta)}$ and $B\ge|n|$,
 \[
-                         |Nc|\le4e^{h(\beta)}B^2.
+                         |Nc|\le2e^{h(\beta)}Bc.
 \]
 For sufficiently large $c$, the last three terms on the right of
 \eqref{eq:common-height} are at most $B^2/2$, because $B\ge c-1$.
-Putting $\eta=19/48$ gives
+Keep the factor $c$ separate and use $\eta=7/6<2$. Then
 \[
- B^{2-2\eta}\le2C_2 4^\eta e^{\eta h(\beta)},
- \qquad
- \log B\le\frac{\log(2C_2 4^\eta)+\eta H_1c^{19/24}}
-                         {2-2\eta}.
+ B^{2-\eta}\le2^{\eta+1}C_2 e^{\eta h(\beta)}c^\eta,
 \]
-This contradicts~\eqref{eq:Lucas-growth} for sufficiently large $c$.
-Thus $\beta=n\in\Z$.
+\[
+ \log B\le\frac{\log(2^{\eta+1}C_2)+\eta H_1c^{7/9}
+                              +\eta\log c}{2-\eta}.
+\]
+The right side is $o(c)$, contradicting~\eqref{eq:Lucas-growth}
+for sufficiently large $c$. Thus $\beta=n\in\Z$.
 
 For rational $X$, integrality of $216X^4+450459$ is equivalent
 to $X\in\Z$: in a reduced fraction $X=u/v$ it implies
@@ -739,14 +725,20 @@ in~\eqref{eq:scales} are now fixed.
 
 Temporarily set $H=[h]P$ and $U_i=[hn_i]P$. Restrict the shared
 index to a fixed congruence class and a compact real neighborhood
-on which all prepared scalar bounds persist. The comparison functions
-and their normalizations are continuous wherever defined. Shrinking
-the neighborhoods, and avoiding their finitely many poles under
-the fixed multiplication and translation maps, bounds all comparison
-functions there. These rational functions have no identically vanishing
-normalization denominators: $\rho>0$ makes $1+\rho C_i^2>0$
-at each real embedding. The fixed congruence class may be taken
-modulo a number divisible by $64$.
+on which all prepared scalar bounds persist. Choose $|S_k|<1/4$
+throughout that neighborhood. Then $1+R_jS_k>1/2$ whenever
+$1/2<R_j<2$, so every scalar normalization denominator is nonzero.
+The original point, difference, and ratio functions have only finitely
+many poles under each fixed multiplication and translation map.
+Avoiding those poles and shrinking the neighborhoods bounds every
+raw comparison function. For example, equal-abscissa failures of the
+chosen differences are absent for $h>2$ and nonzero $n_i$.
+The fixed congruence class is taken modulo a multiple of $64$ and
+of the order of the component group of the compact closure of
+$\Z P$ in the product of the two real elliptic groups. This component
+group is finite because a closed subgroup of a compact real Lie
+group has finitely many components.
+There are no additional comparison normalization denominators.
 
 \subsection{Choosing the slope and comparison primes}
 
@@ -775,34 +767,81 @@ the already bounded comparison neighborhoods. Thus all required
 finite and real closeness conditions on $W_j$ can be imposed
 before the prime-pattern theorem is used.
 
-Its prescribed conjugate reduction orders give a common arithmetic
-progression for the final index $h$: the primary orders divide $h$,
-the opposite orders divide $h-1$, and $h$ remains in the previously
-fixed congruence class. Their odd coprimality and exact two-adic
-compatibility are proved in~\cite{Dependencies}. Positive indices
-in this progression meet the chosen real neighborhood by density
-in the appropriate component of the compact cyclic closure. Choose
-such an $h>2$ and set $H_0=[h]P$, $U_i=[hn_i]P$.
-
-At a selected comparison prime, $v_p(R_j)=1$ at each incidence,
-while $\rho$ and $\delta_j$ are units. The reduction-order
-conditions put the relevant $U_i,V_i$ in their first formal
-neighborhoods. Consequently $v(f)\ge2$, and the first ten
-comparison functions have valuation at least $4$. The exact
-full ratios are the integers $n_i$; by~\eqref{eq:log-error},
-the other six comparison functions also have valuation at least
-$4$. Hence
+We impose one further size requirement before choosing the primes:
+\begin{equation}\label{eq:prime-cluster}
+ \lambda>4\max_{j,\theta\in\Theta_j}(\theta/A_j),\qquad u\ge25.
+\end{equation}
+All contacts here are positive. Each selected prime
+$p_i=u-(\theta/A_j)v$ therefore lies in $(3u/4,u)$. The full
+order of the reduced elliptic curve at either conjugate of any selected prime
+$p_k$ is even and at most
 \[
- v(E_i)\ge8,\qquad
- v\left(\mathcal R_j
-       (E_i/(\delta_j\mathcal R_j^7))^2\right)
-                       \ge1+16-14=3.
+ p_k+1+2\sqrt{p_k}<u+1+2\sqrt u<3u/2.
 \]
-All comparison factors are units congruent to $1$ at the designated
-place. The scalar factors are units congruent to $1$ at both places,
-regardless
-of possible poles of the scalar functions at these new primes,
-because odd $v_p(R_j)=1$ gives $v(G_{j,k})\ge7$.
+Evenness follows from the full rational two-torsion. The prescribed
+annihilating moduli divide these group orders. The last inequality holds for $u\ge25$.
+If any selected odd prime $p_i$ divided one of these even orders,
+that order would be at least $2p_i>3u/2$, a contradiction.
+Thus each selected prime is coprime to every prescribed reduction
+order. All of them also avoid the previously fixed modulus.
+
+The conjugate reduction orders give a common arithmetic progression
+for $h$: the primary orders divide $h$, the opposite orders divide
+$h-1$, and $h$ remains in its previously fixed congruence class.
+Their odd coprimality and two-adic compatibility are proved
+in~\cite{Dependencies}. By the preceding paragraph, we may add
+\begin{equation}\label{eq:extra-divisibility}
+                         h\equiv0\pmod{\prod_i p_i}.
+\end{equation}
+Positive indices in the resulting progression meet the prescribed
+real neighborhood. Indeed the initial fixed modulus annihilates the component group
+of the compact cyclic closure. Its identity component is a compact
+real torus, on which multiplication by every positive integer is
+surjective. Every compatible refinement therefore has the same
+closure inside the prescribed component; see~\cite{Dependencies}.
+Choose such an $h>2$, and set $H_0=[h]P$, $U_i=[hn_i]P$.
+
+At a selected comparison prime $p$, the argument in its detector
+meets exactly one contact. Thus $v_p(R_j)=1$, and $\rho,\delta_j$
+are units. The reduction-order conditions put the relevant $U_i,V_i$
+in their first formal neighborhoods. Consequently the first ten
+comparison functions have valuation at least $2$. The exact full
+ratios are the integers $n_i$, so~\eqref{eq:log-error} gives
+valuation at least $4$ for the last six comparisons. In particular
+\[
+ v\left(\mathcal R_j
+       (C_i/(\delta_j\mathcal R_j^{a_i}))^2\right)\ge3
+                         \qquad(1\le i\le16)
+\]
+at the designated place. All comparison factors are units congruent
+to $1$ there.
+
+It remains to check the linear scalar denominators at these new
+primes. Before prime selection exclude the finite set where the
+coordinates of $P$ or $S-P$, or their nonzero local parameters,
+are not units. At the primary place, $[h/p]P$ is in the formal
+group: division by $p$ preserves annihilation modulo its reduction
+order, since that order is coprime to $p$. Then
+$H_0=[p]([h/p]P)$ has local-parameter valuation at least two.
+At the opposite place $H_0$ reduces to $P$ and its local parameter
+is a unit. The prime is split in $K$, as specified by the inherited
+prime pattern. Its two rational components of $f(H_0)$ are units,
+because the two local values have respectively positive and zero
+valuation. The rational components of $f(S-P)$ are integral.
+Finally the two local values of $z(S-P)/z(H_0)$ have valuations
+at most $-2$ and exactly $0$. Its two rational components therefore
+both have valuation at most $-2$. In these assertions $2$ and
+$\sqrt2$ are units, so forming half the sum and the scaled
+half-difference preserves the smaller of two unequal valuations.
+
+Every scalar component $S_k$ consequently has either nonnegative
+valuation or valuation at most $-2$. As $v_p(R_j)=1$, the product
+$R_jS_k$ never has valuation zero. Lemma~\ref{lem:phi} shows
+that $\Phi_{R_j}(S_k)$ is integral. Hence $v_p(G_{j,k})\ge\kappa_k$,
+and every scalar second summand in~\eqref{eq:W} has valuation
+at least $1$. All scalar factors are units congruent to $1$ at
+both places. This argument allows arbitrarily deep formal reduction
+of $P$ and does not require a bound on elliptic Wieferich valuations.
 
 \subsection{Preparing the pole inputs}
 
@@ -844,8 +883,9 @@ $1$, so
 \[
                          0<b_j<8\rho<17.
 \]
-All normalization denominators, products, and traces are nonzero
-by positivity. The inherited converse supplies the two pole witnesses
+The scalar normalization denominators are nonzero by the prepared
+bound $|R_jS_k|<1/2$. All products and traces are nonzero by
+positivity. The inherited converse supplies the two pole witnesses
 with the nonzero chart conditions already described. All nine point
 charts and the guarded differences are available, since the chosen
 labels are nonzero, $a>1$, and $h>2$. This completes the rational
@@ -927,16 +967,16 @@ exactly the rational projection of the guarded source, including
 specializations with an empty nonzero part or complex residue factors.
 
 The certified weights of the nine point generators are $6$; the
-two pole-generator weights are $1181594,6716314$. The full
-guard and point-guard weights are $9642537,1744629$.
+two pole-generator weights are $266506,1316106$. The full
+guard and point-guard weights are $1930897,348285$.
 The separating elements have weight at most $W_1r+W_0$, where
 \[
- W_1=1446676194,\qquad W_0=35052024698.
+ W_1=287870930,\qquad W_0=6952845898.
 \]
 The principal-minor degree estimate, summed over every factor, is
 \[
  \deg F_L\le n_0\bigl(W_1b_0^2+(W_0+1)(2b_0-1)\bigr)
-       =104263275909198787271196672<2^{87}.
+       =20747108969426225455955968<2^{85}.
 \]
 The uniform checker treats $\ell^L$ and $\ell^{(L+1)/2}$ as
 independent coefficient symbols of weight zero. Consequently this
@@ -946,7 +986,7 @@ cannot increase it. Equations~\eqref{eq:c-large} and
 Theorem~\ref{thm:main}.
 
 There is also a uniform bound on the number of nonzero monomials.
-Let $\mathcal D=104263275909198787271196672$. From
+Let $\mathcal D=20747108969426225455955968$. From
 \eqref{eq:finite-product},
 \[
  \deg_U F_L\le\mathcal E=n_0(2b_0-1)=549754765312.
@@ -956,21 +996,21 @@ Counting monomials of total degree at most $\mathcal D$ in the
 \[
  \#\operatorname{supp}(F_L)
  \le\binom{\mathcal D+25}{25}
-      -\binom{\mathcal D-\mathcal E+24}{25}<2^{2035}.
+      -\binom{\mathcal D-\mathcal E+24}{25}<2^{1979}.
 \]
 The last inequality is checked by exact integer arithmetic. It is a
 support upper bound, not an assertion of the expanded monomial count.
 
 \section{Exact specifications and reproducibility}
 
-The directory \nolinkurl{computation/few_variables/merged25} contains
+The directory \nolinkurl{computation/few_variables/merged25_v19} contains
 the source builder, the guarded rational source, its integer polynomial
 specification, the independent source checker, and the uniform degree
 certificate. Its finite-root elimination is in the subdirectory
-\nolinkurl{active25}. The source has $7294$ rational
-coefficient nodes, $2565$ integer coefficient nodes, and $152$
-atomic guard factors. The checks include the nonzero slope, all ten
-squares, all normalization denominators, the two pole charts,
+\nolinkurl{active25}. The source has $5864$ rational
+coefficient nodes, $2240$ integer coefficient nodes, and $136$
+atomic guard factors. The checks include the nonzero slope, the raw comparison functions with their individual orders,
+the six linear scalar functions with their individual orders, the two pole charts,
 the guard factorization, and the generator dependencies. The active
 specification has $262144$ finite-product factors. These are
 specification counts; the expanded monomial count is not asserted.
@@ -1013,10 +1053,10 @@ in~\cite{Dependencies}; the scalar realization is
 \emph{Rational Normalization of Local Valuation Tests},
 companion paper, 10 November 2026,
 \nolinkurl{rationally_normalized_local_tests_20261110.tex}.
-\bibitem{Nebentypus}
-\emph{Scalar Characters and Contact-Height Estimates},
+\bibitem{Multiplicity}
+\emph{Multiplicity of modular factors and quadratic contact-height bounds},
 companion paper, 10 November 2026,
-\nolinkurl{nebentypus_and_contact_heights_20261110_v18.tex}.
+\nolinkurl{multiplicity_and_contact_heights_20261110_v19.tex}.
 \bibitem{Normalizer}
 \emph{Scalar contact normalization by finite-field avoidance},
 companion paper, 8 November 2026,

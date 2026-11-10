@@ -1,69 +1,94 @@
 # Research directions
 
-The current bounds are **25 total variables**, or **238 for a quartic**, under the stated inherited arithmetic premises. The fully specified alternatives have **29 variables** and **318 for a quartic**. A weak abc inequality gives **13 variables**; ordinary rational abc gives **93 for a quartic**. Every count includes the input. The priorities are the number of variables, degree, then coefficient height. The [main table](../README.md#main-results-and-arithmetic-assumptions) records precise hypotheses and effectiveness.
+The current bounds are **25 total variables**, or **228 for a quartic**, under the stated inherited arithmetic premises. Fully specified constructions use **27 variables**, or **265 for a quartic**. A weak abc inequality gives **13 variables**; ordinary rational abc gives **91 for a quartic**. Every count includes the input. The priorities remain the number of variables, degree, then coefficient height. The [main table](../README.md#main-results-and-arithmetic-assumptions) states the hypotheses and effectiveness.
 
-## Where the variables occur
+## Removing retained variables
 
-The [25-variable source](../papers/few_variables25/few_variables25_merged_20261110_v18.pdf) retains the input, eighteen rational coordinates for nine elliptic points over a quadratic field, one slope, and four coordinates for two pole predicates. One separating coordinate eliminates all finite algebraic choices. The scalar conditions already share the two comparison pole predicates.
+The [25-variable source](../papers/few_variables25/few_variables25_merged_20261110_v19.pdf) retains the input, eighteen rational coordinates for nine elliptic points over a quadratic field, one slope, and four coordinates for two pole predicates. One further coordinate eliminates all finite algebraic choices. The scalar conditions already share the two comparison pole predicates.
 
-Thus another substantial reduction requires a new arithmetic argument that removes a point role, removes a pole parameter pair, or replaces the nine-point source. Reducing circuit nodes or simplifying a finite algebra does not by itself remove a retained rational parameter. The existing elimination theorem already uses only one additional rational coordinate.
+A substantial reduction therefore requires a new arithmetic construction: fewer point roles, a complete pole predicate with fewer retained parameters, or a different representation of the integer labels. Simplifying arithmetic expressions improves the degree but does not remove retained variables. The elimination theorem already uses only one additional coordinate.
 
-The degree bound for the 25-variable family is 104263275909198787271196672, below $2^{87}$. The exact polynomial is specified by finite operations and determinants but has not been expanded. Its certified support bound is below $2^{2035}$. These are upper bounds, not exact degree and support counts.
+The nine points arise from four numerator roles and a common reference, together with translated points needed to compare the same integer labels at complementary denominator indices. The useful targets are an alternative integer-growth relation requiring fewer independent labels, or a local argument recovering a label from fewer point comparisons. Any replacement must work on every rational solution and must still supply witnesses for every integer input. The [elliptic witness constraints](../papers/elliptic_charts/structural_constraints_20261109_v13.pdf) identify limitations of several direct parameterizations; they are not lower bounds for arbitrary Diophantine constructions.
 
-## Combining local conditions
+Rational substitution of elliptic points has a precise restriction. Every rational map $E^r\dashrightarrow E$ is a translated homomorphism ([Milne, Chapter I, Corollary 3.7](https://www.jmilne.org/math/CourseNotes/AV.pdf)). Under $2E(K)=\mathbb ZP$, every $K$-endomorphism is multiplication by an integer: subtract the multiplication agreeing with its value on $P$, and the difference kills a nontorsion point, so it is zero. Thus a rational point formula sending integer multiples back to that subgroup has label $m_0+\sum m_i n_i$. It cannot produce multiplication or squaring of the integer labels. This excludes nonlinear rational substitutions as a way to remove a point role; it does not exclude algebraic correspondences, additional input equations, or constructions on other varieties.
 
-The useful arithmetic change is the rational normalization
+The degree bound of the current 25-variable family is
 
-$$\Psi_z(D)=\frac{zD^2}{1+zD^2}.$$
+$$20747108969426225455955968<2^{85}.$$
 
-It makes inactive tests integral at odd valuations of the coefficient even if the original test has an arbitrarily deep pole. Two balanced contact functions with disjoint contact and pole sets ensure that at least one is a unit at every scalar odd prime. Integer rounding permits normalization and denominator exponents both seven, while plain elliptic parameters give the required fourth-order accuracy.
+The support bound is below $2^{1979}$. The finite-operation specification is exact, but the determinant polynomial has not been expanded, so neither upper bound is asserted to be an exact count.
 
-The key global divisibility is $M_j^4\mid Nc$: a comparison prime may divide the desired residual or the separately controlled scalar index. This is stronger than deleting all primes shared by the scalar and comparison supports. The latter deletion need not preserve the height estimate. A further combination must retain an equally complete treatment of shared primes and prove simultaneous realization.
+## The height estimate and local conditions
 
-A potentially shorter normalization, such as $zD/(1+zD)$, needs a new audit of the case $v(z)+v(D)=0$. Odd coefficient valuation no longer excludes cancellation. Local pole orders of elliptic points are not uniformly bounded, so a finite-depth assertion cannot be assumed. Until the cancellation and rational-witness arguments are proved, this is a research direction rather than a defining-polynomial construction.
+The [modular multiplicity theorem](../papers/contact_heights/multiplicity_and_contact_heights_20261110_v19.pdf) proves
 
-## Reducing the thirteen-variable construction under abc
+$$h(a)\le C_2M_5(a)^2(1+\log M_5(a))^2,
+\qquad C_2<2^{221231}.$$
 
-The [conditional source](../papers/conditional_few_variables/conditional13_20261109_v16.pdf) has three elliptic point roles and two pole predicates. Its height comparison already removes the Lucas and separate scalar-growth mechanisms. The normalization used in the 25-variable construction therefore does not automatically remove another pair of coordinates here.
+It gives an effective exponent $2+\eta$ for every $\eta>0$, on the full rational contact family. The coefficient-field multiplicity absorbs the modular character order: if the character order is $s$ and the associated modular abelian variety is geometrically isogenous to $A^r$, then $s/r\le4$. Height superadditivity supplies one surface factor of height at most $h(J_H)/r$, and an explicit dimension-two isogeny estimate transfers that bound to the required surface. The full normalized source modular realization is essential; a conductor bound alone does not imply this theorem.
 
-The most direct targets are a single complete pole predicate for the two comparison scales, or an arithmetic family needing only two elliptic point roles. Both require a new global argument. A product of contact functions can lose every odd valuation when the two contact configurations are related by a rational symmetry. Choosing scales that depend on the slope can also make the prime-selection argument circular: its coefficients must be fixed before the primes and the final common index are chosen.
+Taking exponent $7/3$ and combining two disjoint five-contact sets gives exponent $7/6$. This supports order-three comparisons. The current few-variable source uses the raw comparison functions and the scalar normalization
 
-The [six-contact product theorem](../papers/pole_parameters/six_contact_product_obstruction_20261110.pdf) proves this cancellation for the exact conditional contact set. Its involution $\phi(t)=-(2t+1)/(3t+2)$ gives a negative-square product. For $\lambda_m=-1/m$ and $a_m=m(m-2)/(2m-3)$, with $m\ge5$, the odd radical of $R(\lambda_m)R(a_m\lambda_m)$ is one while $h(a_m)$ is unbounded. Thus the product alone cannot yield an unrestricted height bound. Whether the source restriction $a=\beta^8+T(n)^8$ and its other equations prevent this cancellation remains open.
+$$\Phi_R(S)=\frac{RS}{1+RS}.$$
 
-The present six-contact and projective-height inequalities have strict absorption coefficient $14641/16169<1$. Ordinary Szpiro supplies the needed weak abc exponent. Removing the extra height hypothesis requires an estimate on every rational solution of the proposed source, not merely on the specially chosen integer witnesses. The [restricted-abc analysis](../papers/restricted_abc/restricted_abc_inputs_20261109_v17.pdf) records why the available small-denominator and asymmetric-size theorems do not apply to the current families.
+The potentially troublesome case $v(RS)=0$ is excluded in the completeness construction by clustered prime selection together with the extra congruence $h\equiv0\pmod p$. This works without a bound on the depth of elliptic reduction. At shared scalar and comparison primes, the proof retains $M_j^3\mid\Delta c$ for the Lucas residual and $M_j\mid(u-nv)c$ for the input residual; it does not discard shared prime support.
+
+Further useful work should optimize the whole arithmetic relation and its local precision together. A lower required valuation can save polynomial operations or quadratic coordinates, but replacing a growth equation can also increase its degree. Both costs must be measured in the actual source. Merely improving a real constant while leaving the same integer rounding thresholds may not change the polynomial.
+
+## Effective coefficients
+
+The [explicit 27-variable construction](../papers/few_variables27/explicit27_20261110_v19.pdf) uses three scales
+
+$$1,\qquad(1+\rho S_0^2)^2,\qquad(1+\rho(S_0+S_1)^2)^2.$$
+
+The two rational components of the elliptic abscissa sum give a fully effective height bound. Retaining the coprime factor
+
+$$76249^{2L+1}(M_\beta^\circ)^3\mid c$$
+
+yields the certified odd parameter $L=125001$, degree below $2^{87}$, support below $2^{2192}$, and coefficient height below $2^{2^{102}}$.
+
+An effective trace-height bound of suitable strength could remove the third pole predicate and make the 25-variable family fully specified. The existing aggregate trace theorem has an ineffective additive constant. A proof must control cancellation on all relevant integer-index tuples; positivity of a selected real witness is not enough to supply that uniform arithmetic estimate.
+
+## Reducing the abc constructions
+
+The [13-variable construction](../papers/conditional_few_variables/conditional13_20261109_v16.pdf) has three elliptic point roles and two pole predicates. Its height comparison removes the Lucas and separate scalar-growth mechanisms. The most direct targets are a single complete pole predicate for the two scales, or an arithmetic family requiring only two point roles.
+
+Simple multiplication of the contact functions does not supply the needed height estimate, even at the actual source scales. For
+
+$$F(t)=\frac{t(t+1)(2t+1)(3t+1)(4t+1)(5t+2)}{120},
+\qquad R(t)=\frac{F(t)}{(t-1)^8},$$
+
+the [product-height obstruction theorem](../papers/pole_parameters/product_height_obstructions_20261110_v19.pdf) proves that every rational $a>4$ admits
+
+$$\lambda=-\frac{a+1}{5a},\qquad
+R(\lambda)R(a\lambda)\in-\mathbb Q^{\times2}.$$
+
+The odd radical is therefore one, including for scales $a=\beta^8+T(n)^8$. Additional elliptic and pole equations could exclude these particular slopes, but a proposed combined predicate must prove that exclusion and a sufficient height estimate on its entire rational solution set. Restricting the sign of the slope does not settle the problem: the same paper gives positive unbounded-scale counterfamilies, with their precise scope stated separately.
+
+The weak abc/Szpiro construction has strict absorption coefficient $14641/16169<1$. The quartic with 91 variables uses ordinary rational abc and an eight-contact estimate, with absorption coefficient $8/9$. These hypotheses should not be conflated. The [restricted-abc analysis](../papers/restricted_abc/restricted_abc_inputs_20261109_v17.pdf) explains why available small-denominator and asymmetric-size estimates do not replace the required uniform inequalities.
 
 No construction below thirteen total variables under abc is established.
 
-## Quartics and coefficient size
+## Quartic coordinates and coefficient height
 
-The [common-point chart](../papers/elliptic_charts/fixed_difference_charts_20261110_v18.pdf) describes $H,H-P$ by three quadrics in four field coordinates. It retains both reciprocal abscissas and both $y/x$ values. Direct ratio equations avoid a separate numerator parameter. The current 238- and 93-variable quartics use this chart, with complete treatment of every leading-coefficient exception.
+The [current quartics](../computation/quartic/README.md) clear each local factor by the inverse fourth power of its weight. Fourth powers of five existing field values become quadratic expressions in their stored squares. The inherited-premise factors use inverse weights $q^{-1},q^{-2},q^{-4}$; the abc factors use $q^{-2},q^{-3},q^{-4}$. The zero-weight components are excluded in the full proofs.
 
-For a further variable reduction, inspect intermediate values that occur in only one equation, repeated denominator normalization, and fixed-difference point pairs. A proposed quadratic substitution must be reversible on every required rational branch or have a separate proof that its additional branches are impossible. Counting fewer generic coordinates while overlooking an exceptional component does not give a new polynomial.
+The next useful targets are the remaining powered comparison values, the number of separately stored local factors, and quadratic representations of the point-pair relations. Distinct valuation classes prevent cancellation within a factor. Any attempt to pack more tests into fewer factors must check every odd valuation and arbitrary witness pole orders, and must preserve the rational completeness argument. A coordinate count on a generic open subset is insufficient without a proof for the excluded strata.
 
-For fixed coordinates, rational changes of the equation basis can reduce coefficient height without changing the rational zero set. The current six-row change has exact determinant $-1/362963666515968$. The abc quartic has coefficient height $\max(4153456,B^2+797687)$; the inherited-premise family has height $149^{4N+2}+1$ for $N\ge53$. An algebraic coefficient threshold is distinct from the ineffective defining threshold.
+The fully specified quartic uses $N=14521$ and has coefficient height $149^{58086}+1$, with 419333 binary digits. The 228-variable family has height $149^{4N+2}+1$ for $N\ge53$, while its sufficient defining threshold remains ineffective. The abc quartic has height $\max(4153456,B^2+797683)$ and an ineffective sufficient odd shift. Replacing a row by a rational multiple or an invertible rational row combination can reduce height without changing the zero set; primitive integer normalization and the resulting expanded coefficients must then be recomputed exactly.
 
-Degree four is already minimal for a single equation with the stated integer projection. Globally nonnegative quartics and quadratic systems require at least five total coordinates by the [lower-bound theorem](../papers/lower_bounds/lower_bounds_20261109_v15.pdf). These lower bounds do not show that five coordinates suffice.
+Degree four is minimal for a single defining equation under the [lower-bound theorem](../papers/lower_bounds/lower_bounds_20261109_v15.pdf). Globally nonnegative quartics and quadratic systems require at least five total coordinates. These results do not prove that five coordinates suffice or exclude different quartics with far fewer variables than the current constructions.
 
-## Contact-height improvements
+## Rings of integers of number fields
 
-The [scalar-character theorem](../papers/contact_heights/nebentypus_and_contact_heights_20261110_v18.pdf) gives
+No counterexample to $\mathcal O_K$ being Diophantine in $K$ has been established here. The [number-field reductions](../papers/number_fields/number_field_definability_20261109_v12.pdf) show that a counterexample would persist in every finite extension, and therefore would give a totally imaginary Galois counterexample. Failure of a particular rational defining polynomial after scalar extension does not answer the general question.
 
-$$h(a)<2^{330670}M_5(a)^3(1+\log M_5(a)).$$
+The [complex multiplication obstruction](../papers/number_fields/complex_multiplication_and_trace_cancellation_20261110_v19.pdf) shows that this particular $j=1728$ curve doubles its rank after adjoining $i$. An infinite cyclic subgroup then has identically zero abscissa trace and unbounded heights, and four distinct doubled points can have zero abscissa sum. Thus neither the original cyclic-group assertion nor an unrestricted trace or sum-height bound survives this extension. Zywina's rank-stability theorem allows a different curve for a prescribed quadratic extension, but the remaining denominator and local comparison arguments still need a proof.
 
-It also proves a bound with exponent $2+\eta$ on sets where the powers of two dividing the contact primes minus one are uniformly bounded. That restriction fails uniformly even for the integral scalar family $51X^2+2504$. It cannot be imposed on all rational solutions merely because the primes selected for completeness lie in favorable congruence classes.
+A Diophantine subset containing all rational integers and having uniformly bounded integral denominators would suffice for a positive construction. Rank stability alone can produce a much smaller rational subset. Norms or traces expressed in base-field coordinates do not automatically restrict unrestricted extension-field witnesses to that base field.
 
-A useful improvement would either control the relevant modular character orders on the full source family, or replace the scalar/contact family by one where that control follows from its equations. The explicit counterfamily in the same paper should be checked against either proposal.
+The [finite-correspondence results](../papers/number_fields/finite_correspondences_and_denominators_20261109_v14.pdf) exclude several proposals based on finitely many rational functions on abelian varieties, quasi-finite covers, and specified low-genus fibers. A promising replacement should supply a uniform denominator theorem outside those hypotheses and analyze exceptional positive-dimensional fibers explicitly. Local density and bounded searches are useful diagnostics, but neither proves that all integers occur.
 
-## Number fields: counterexamples and positive constructions
+## Scope of the obstructions
 
-No counterexample to $\mathcal O_K$ being Diophantine in $K$ is known from this project. The [number-field reductions](../papers/number_fields/number_field_definability_20261109_v12.pdf) show that a counterexample would persist in every finite extension, so it would produce a totally imaginary Galois counterexample. Failure of one unchanged formula after extension does not answer this question.
-
-For positive constructions, a Diophantine subset containing all rational integers and having uniformly bounded integral denominators would suffice. Rank stability alone gives only a potentially much smaller subset of the rational subfield. Norms and traces written with base-field coordinates do not automatically restrict an unrestricted extension-field witness to that base field.
-
-The [finite-correspondence results](../papers/number_fields/finite_correspondences_and_denominators_20261109_v14.pdf) rule out several proposals based on finitely many rational functions of abelian point coordinates, quasi-finite covers, and the stated families of low-genus fibers. Exceptional positive-dimensional fibers must be checked explicitly. A promising new family must go beyond those hypotheses and provide a uniform denominator theorem, not just local density.
-
-## Established limits on shortcuts
-
-The [fixed-pole](../papers/pole_parameters/fixed_pole_parameters_20261109_v17.pdf), [combined-pole](../papers/pole_parameters/combining_pole_certificates_20261109_v16.pdf), and [quartic-pole](../papers/pole_parameters/quartic_pole_obstruction_20261109_v17.pdf) papers give exact counterexamples to specified simplifications. Fixed actual pole parameters fail on prepared inputs; some fixed conic parameters fail on real-dense sets of such inputs; simple products can cancel the odd radical; and the proposed one-parameter quartic pole predicate has prepared local obstructions.
-
-These theorems have explicit scopes. They do not rule out a new predicate on a narrower family of generated inputs, a different contact configuration, or a different arithmetic construction. A new proposal should state precisely which previous obstruction it avoids and prove both soundness and rational completeness.
+The [fixed-pole](../papers/pole_parameters/fixed_pole_parameters_20261109_v17.pdf), [combined-pole](../papers/pole_parameters/combining_pole_certificates_20261109_v16.pdf), and [quartic-pole](../papers/pole_parameters/quartic_pole_obstruction_20261109_v17.pdf) papers prove exact counterexamples to specified simplifications. They leave open different contact configurations, different predicates on restricted generated inputs, and different arithmetic constructions. New proposals should identify the obstruction they avoid and prove both soundness and rational completeness.

@@ -1,7 +1,9 @@
+This directory is a pinned algebraic source dependency. The current source and its certificates are in [`../merged25_v19`](../merged25_v19). The current defining theorem uses the raw comparison and linear scalar formulas in that directory.
+
 # Twenty-five coordinates with two combined pole certificates
 
 This directory specifies the twenty-five-variable family proved in
-[`few_variables25_merged_20261110_v18.tex`](../../../papers/few_variables25/few_variables25_merged_20261110_v18.tex).
+[current 25-variable paper](../../../papers/few_variables25/few_variables25_merged_20261110_v19.tex).
 It retains the elliptic group, pole and prime-pattern inputs of the preceding
 construction, the full modular realization used in the proved cubic
 logarithmic contact-height estimate, and the proved aggregate trace-height
