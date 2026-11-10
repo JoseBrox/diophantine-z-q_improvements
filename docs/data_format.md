@@ -114,7 +114,18 @@ Exact coefficient data and passing checks establish the algebraic specifications
 
 ## Additional-hypothesis specifications
 
-The weak-abc 13-variable family is stored in `computation/few_variables/weak_abc13`. Three monic quartic point generators and two monic quadratic pole generators give a finite algebra of rank 256 over 12 retained coordinates. The point algebra has rank 64, so the final polynomial has 64 factors and one additional rational coordinate. Its degree is at most 12339485119488, less than $2^{44}$, uniformly in the fixed odd shift $B$. The supplied $B=3$ fixture has binary logarithmic coefficient-norm bound 29454018907833, less than $2^{45}$; it is not certified to exceed the ineffective defining threshold. All assumptions and guard conventions are recorded in the module's source specification.
+The two 13-variable families are stored in `computation/few_variables/direct_input13_v22`, under `weak` and `abc`. Both compare the input $X$ directly with the elliptic index and use the separate monic scale $\beta=X^2+B$. Three monic quartic point generators and two monic quadratic pole generators give a finite algebra of rank 256 over 12 retained coordinates. The point algebra has rank 64. The file `active13/polynomial-specification.json` specifies the 64-factor finite-algebra polynomial $Q_B$ and its one additional rational coordinate.
+
+The final `definition-polynomial-specification.json` uses the format `integer-polynomial-times-input/v1`. It records the exact identity $F_B=XQ_B$, the input coordinate, a hash of the base specification, and the resulting bounds. The extra factor adds zero to the input projection, increases the degree majorant by one, and preserves every coefficient and the number of monomials. Thus $F_B$ has the 64 specified finite-product factors and the additional input factor, with thirteen total coordinates.
+
+| Variant | Weak abc exponent | Scale power | Final degree majorant | Uniform support bound | $B=3$ binary logarithmic coefficient-norm bound |
+|:--|:--|--:|--:|:--|--:|
+| `weak` | $121/100$ | 6 | 11774654098433 | $<2^{508}$ | 28598607557817 |
+| `abc` | $16/15$ | 4 | 11212784195585 | $<2^{507}$ | 27756172773305 |
+
+The folder name `abc` records that ordinary rational abc supplies its weak exponent; the exact hypothesis is the single inequality with exponent $16/15$. Ordinary Szpiro is sufficient for the `weak` variant. Both degree bounds are below $2^{44}$ and uniform in the fixed odd shift. The coefficient-norm bounds in the last column are below $2^{45}$ and concern algebraic fixtures only: neither shift-three member is certified to exceed its ineffective defining threshold.
+
+Each source has 1756 rational nodes, 752 integer coefficient nodes, three point quartics, two pole-square clearings, and 48 atomic guards. The independent source audit checks the integer conversion and guard coverage exactly. Fifteen finite-field reconstructions per variant are bounded supplementary checks of the rational formulas. The bound audit checks every one of the 64 active degree cases, the final input factor, and the coefficient and support consequences. The older `weak_abc13` and `conditional13` sources remain supporting proof and reconstruction dependencies.
 
 The 87-variable additional-abc quartic tables use a fixed odd input shift $B$ instead of $A_N$. Their 75 primitive quadratic rows give 919 parameter-separated terms and exactly 918 ordinary monomials. The coefficient height for $B\ge3$ is $\max(4153456,B^2+797681)$. The `parameterPower` field is a power of $B$ and contributes zero to polynomial degree. The affine input-coordinate change puts $B$ in only one quadratic row, while $\beta=L_0-I_0$ appears elsewhere. Every row and every quartic coefficient is stored. The sufficient defining shift is ineffective; support and height formulas for numerical fixtures are algebraic assertions only.
 
@@ -128,4 +139,4 @@ $$
 \binom{D+n}{n}-\binom{D-E+n-1}{n},
 $$
 
-with the second term omitted when $E\ge D$. The independent `merged25_v19/check_merged_bounds.py` and `effective27_v19/check_effective_bounds.py` certificates compute bounds below $2^{1979}$ and $2^{2192}$, respectively. The retained `check_monomial_bounds.py` certificate computes the 13-variable bound below $2^{509}$. These are uniform support bounds, not exact monomial counts or assertions that every possible monomial occurs.
+with the second term omitted when $E\ge D$. The independent `merged25_v19/check_merged_bounds.py` and `effective27_v19/check_effective_bounds.py` certificates compute bounds below $2^{1979}$ and $2^{2192}$, respectively. For each direct-input 13-variable family, `direct_input13_v22/check_direct_input_bounds.py` applies the same count to $Q_B$, with separator degree $E=32512$, and then uses the support-preserving multiplication by $X$. The resulting bounds for $F_B$ are below $2^{508}$ and $2^{507}$. The retained `check_monomial_bounds.py` concerns supporting older specifications. These are uniform support bounds, not exact monomial counts or assertions that every possible monomial occurs.

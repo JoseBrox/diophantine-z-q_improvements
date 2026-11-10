@@ -1,0 +1,103 @@
+{
+  "format": "integer-polynomial-times-input/v1",
+  "base_specification": "active13/polynomial-specification.json",
+  "base_specification_sha256": "5286dfc708e1de758802bcbaaa3e76b66530db6b8ff522cf2774caee5ca2828b",
+  "polynomial_recipe": {
+    "base_name": "Q_B",
+    "final_name": "F_B",
+    "expression": "input.X * Q_B",
+    "multiplier_variable_index": 0
+  },
+  "external_variables": [
+    {
+      "index": 0,
+      "name": "input.X",
+      "category": "retained.input"
+    },
+    {
+      "index": 1,
+      "name": "A.a0",
+      "category": "retained.point"
+    },
+    {
+      "index": 2,
+      "name": "A.a1",
+      "category": "retained.point"
+    },
+    {
+      "index": 3,
+      "name": "H.a0",
+      "category": "retained.point"
+    },
+    {
+      "index": 4,
+      "name": "H.a1",
+      "category": "retained.point"
+    },
+    {
+      "index": 5,
+      "name": "UA.a0",
+      "category": "retained.point"
+    },
+    {
+      "index": 6,
+      "name": "UA.a1",
+      "category": "retained.point"
+    },
+    {
+      "index": 7,
+      "name": "slope.lambda",
+      "category": "retained.slope"
+    },
+    {
+      "index": 8,
+      "name": "detector0.conic_parameter",
+      "category": "retained.pole"
+    },
+    {
+      "index": 9,
+      "name": "detector0.s",
+      "category": "retained.pole"
+    },
+    {
+      "index": 10,
+      "name": "detector1.conic_parameter",
+      "category": "retained.pole"
+    },
+    {
+      "index": 11,
+      "name": "detector1.s",
+      "category": "retained.pole"
+    },
+    {
+      "index": 12,
+      "name": "U",
+      "category": "single finite-algebra witness"
+    }
+  ],
+  "total_variables": 13,
+  "family_parameter": {
+    "name": "B",
+    "value": 3,
+    "quantified": false,
+    "constraint": "odd integer B>=3",
+    "sufficient_threshold_exists": true,
+    "effective_threshold_known": false,
+    "selected_member_certified_to_define_Z": false
+  },
+  "arithmetic_status": "ADDITIONAL weak rational abc at exponent 16/15. Retains the specified elliptic group, pole obstruction and nonzero realization, and simultaneous prime-pattern inputs. Uses the proved one-point trace-height theorem with ineffective additive constant. The contact estimate follows from the degree-four rational map t*(t+2)^3/(2*t+1)^3 and weak abc; the scale uses even power 4. The comparison target is the input X itself, and h(X)<=h(X^2+B)/2. After finite-root elimination the polynomial is multiplied by X. This fixed odd input-shift fixture is not certified to exceed the ineffective sufficient threshold.",
+  "projection": "The rational input projection is {0} union the guarded-source input projection.",
+  "bounds": {
+    "base_degree_bound": 11212784195584,
+    "degree_bound": 11212784195585,
+    "degree_bound_power_of_two_exponent": 44,
+    "separator_degree_bound": 32512,
+    "ordinary_monomial_upper_bound": "268090630780290858949989083646485935217993534737832937910392022978378403075613783632096679405631152345353583671112690339705307623680547870178124901886465",
+    "ordinary_monomial_upper_bound_power_of_two_exponent": 507,
+    "support_reason": "Multiplication by input.X shifts all monomials injectively; apply the capped-separator monomial count to Q_B.",
+    "coefficient_l1_norm_log2_bound": 27756172773305,
+    "coefficient_height_bound_double_power_of_two_exponent": 45,
+    "coefficient_reason": "Multiplication by a coordinate preserves the complete coefficient multiset."
+  },
+  "expansion_status": "The determinant polynomial is specified by exact finite integer operations; no monomial expansion is materialized."
+}

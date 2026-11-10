@@ -14,7 +14,7 @@ The verifier checks the publication manifest and quartic provenance, copies the 
 
 The standard-library stages reconstruct every source dependency and the leading **226- and 262-variable quartics**, together with the separately labelled **87-variable additional-abc quartic**. Their independent checkers reconstruct every retained and changed quadratic row, reciprocal-weight identity, nonzero-domain condition, and coefficient of the expanded sum of squares. Exact degree, content, ordinary support, and coefficient-height formulas are checked separately from the arithmetic projection theorems. The fixed 262-variable member uses $N=9682$; its effective numerical inequalities are also certified.
 
-The **25- and 27-variable specifications**, together with the **13-variable additional-hypothesis specification**, are rebuilt from complete guarded source algebras. The source-to-integer conversion, point quartics, square clearings, denominator guards, matrix bounds, and finite-product cases are exact checks. Fifteen independent finite-field reconstructions for each new 25- and 27-variable source are explicitly bounded supplementary evidence for the rational formulas. They are not proofs of universal identities or of the arithmetic projection theorems.
+The **25- and 27-variable specifications**, together with **both 13-variable additional-hypothesis specifications**, are rebuilt from complete guarded source algebras. The source-to-integer conversion, point quartics, square clearings, denominator guards, matrix bounds, and finite-product cases are exact checks. Fifteen independent finite-field reconstructions for each current source are explicitly bounded supplementary evidence for the rational formulas. They are not proofs of universal identities or of the arithmetic projection theorems. The two 13-variable final specifications also certify the exact multiplication by the input coordinate.
 
 The 25-variable degree calculation uses formal coefficient symbols to prove the bound below $2^{85}$ uniformly in the fixed odd exponent. Its $L=3$ fixture is not certified to define the integers. The effective 27-variable construction has fixed exponent $L=20483$, degree below $2^{87}$, coefficient height below $2^{2^{99}}$, and a separately checked numerical sufficient threshold. Uniform support bounds are below $2^{1979}$ and $2^{2192}$, respectively. Earlier coefficient systems are retained where they are required for exact source reconstruction.
 
@@ -190,13 +190,33 @@ python3 computation/pole_parameters/check_fixed_e_obstruction.py
 The first checker uses only exact rational arithmetic. It verifies the smooth exceptional surface, its birational formulas, and the exceptional lines. The second requires cypari2 and verifies the prepared inputs, their elliptic images, exact ranks, torsion, and the squareclass obstruction. PARI's rank bounds are unconditional; BSD is not used. The full verifier runs these checks in its temporary copy.
 
 
-## Separate family under additional abc
+## Families under additional abc hypotheses
 
-The full verifier also rebuilds the [weak-abc13 source](../computation/few_variables/weak_abc13/README.md), audits all three point quartics, both pole clearings and every atomic guard, then reconstructs its final 64-factor finite-algebra specification and independently checks the bounds. That module's README gives all four standalone commands.
+The full verifier rebuilds both [direct-input 13-variable sources](../computation/few_variables/direct_input13_v22/README.md), audits all three point quartics, both pole clearings and all 48 atomic guards, then reconstructs the finite-algebra polynomial $Q_B$ and the final polynomial $F_B=XQ_B$. All 64 active degree cases and the final support and coefficient consequences are checked independently. Each variant is compared byte for byte with its distributed source, specifications, and certificates.
 
-These stages check the exact coefficient family and the degree bound uniform in its fixed shift. They neither verify the additional conjectures nor certify that the supplied shift 3 exceeds the ineffective defining threshold. The earlier conditional13 module remains only as a reconstruction dependency.
+Run the four commands for the weak $121/100$, sixth-power variant:
 
-The 13-variable family uses weak abc at exponent 121/100, which follows from ordinary abc or ordinary Szpiro. The additional-abc quartic uses ordinary rational abc. Both retain the stated elliptic and pole-realization premises. The exact quartic monomial counts are obtained by expanding the full sum of squares. For the determinant polynomials, `computation/few_variables/check_monomial_bounds.py` instead proves uniform support upper bounds; it does not report exact support counts.
+~~~sh
+python3 computation/few_variables/direct_input13_v22/build_direct_input_source.py --shift 3 --scale-power 6 --output computation/few_variables/direct_input13_v22/weak/certificate
+python3 computation/few_variables/direct_input13_v22/check_direct_input_source.py computation/few_variables/direct_input13_v22/weak/certificate --output computation/few_variables/direct_input13_v22/weak/independent-source-verification.json
+python3 computation/few_variables/direct_input13_v22/build_direct_input_specification.py computation/few_variables/direct_input13_v22/weak
+python3 computation/few_variables/direct_input13_v22/check_direct_input_bounds.py computation/few_variables/direct_input13_v22/weak --output computation/few_variables/direct_input13_v22/weak/independent-bound-verification.json
+~~~
+
+For the weak $16/15$, fourth-power variant:
+
+~~~sh
+python3 computation/few_variables/direct_input13_v22/build_direct_input_source.py --shift 3 --scale-power 4 --output computation/few_variables/direct_input13_v22/abc/certificate
+python3 computation/few_variables/direct_input13_v22/check_direct_input_source.py computation/few_variables/direct_input13_v22/abc/certificate --output computation/few_variables/direct_input13_v22/abc/independent-source-verification.json
+python3 computation/few_variables/direct_input13_v22/build_direct_input_specification.py computation/few_variables/direct_input13_v22/abc
+python3 computation/few_variables/direct_input13_v22/check_direct_input_bounds.py computation/few_variables/direct_input13_v22/abc --output computation/few_variables/direct_input13_v22/abc/independent-bound-verification.json
+~~~
+
+Both use $\beta=X^2+B$ and compare the elliptic label directly with $X$. Their final degree bounds are $11774654098433$ and $11212784195585$, with support bounds below $2^{508}$ and $2^{507}$. Multiplication by $X$ preserves the complete coefficient multiset. These stages verify the coefficient families and the degree bounds uniform in the fixed shift. They neither verify the additional conjectures nor certify that the supplied shift three exceeds the ineffective defining threshold.
+
+Ordinary Szpiro supplies weak abc at $121/100$; ordinary rational abc supplies both stated exponents. The additional-abc quartic uses ordinary rational abc. All these constructions retain the specified elliptic, pole-realization, and prime-pattern premises. The `weak_abc13` and `conditional13` modules and their proof files remain supporting dependencies, and the full verifier still reconstructs their exact data.
+
+Exact quartic monomial counts come from complete expansions. For the determinant specifications, the current independent bound checkers give uniform support upper bounds and leave the exact support counts unknown. The older `computation/few_variables/check_monomial_bounds.py` certificate remains a dependency.
 
 The following optional PARI commands check two retained-parameter counterexamples and the compressed elliptic subtraction identity:
 
@@ -304,3 +324,11 @@ python3 computation/pole_parameters/check_quadratic_contact_covers.py
 ~~~
 
 The checker reconstructs the trace at index three in two ways, verifies the finite-field annihilator and congruence modulo the inert prime squared, and checks the two odd contact valuations. The paper proves the infinite progression and the genus and finiteness theorems separately. No computation asserts the completeness of a one-pole definition.
+
+## Input-height amplification and four-contact obstruction
+
+~~~sh
+python3 computation/contact_heights/check_input_height_amplification.py
+~~~
+
+This standard-library checker verifies the exact absorption fractions for the stated eight-, six-, and five-contact criteria, the quartic-to-cubic transformations, the elliptic doubling identities, the nonzero discriminant, and the Nagell--Lutz nontorsion certificate for the four-contact obstruction. The uniform monic-power height inequality and the infinitude and height assertions are proved in the [companion paper](../papers/contact_heights/input_height_amplification_20261110_v22.pdf). The full verifier requires byte-for-byte reproduction of `input-height-amplification-certificate.json`. This certificate does not assert a new five-contact defining polynomial or a nonintegral solution of a full source.

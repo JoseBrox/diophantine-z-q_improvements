@@ -8,10 +8,11 @@ The construction theorems identify rational input projections with $\mathbb Z$ u
 | [Fully specified polynomial](../papers/few_variables27/explicit27_20261110_v19.pdf) | 27 | $\le85829362869408651982929920<2^{87}$ | Upper bound $<2^{2192}$ | Every odd $L\ge20483$ |
 | [Quartic family](../papers/quartic_existence/quartic226_20261110_v21.pdf) | 226 | Exactly 4 | Exactly 2,835 | Every sufficiently large $N$; ineffective threshold |
 | [Fully specified quartic](../papers/quartic/quartic262_20261110_v21.pdf) | 262 | Exactly 4 | Exactly 3,494 | Every integer $N\ge9682$ |
-| [Weak-abc family](../papers/conditional_few_variables/conditional13_20261109_v16.pdf) | 13 | $\le12339485119488<2^{44}$ | Upper bound $<2^{509}$ | Every sufficiently large odd $B$; ineffective threshold |
+| [Weak-abc $121/100$ family](../papers/conditional_few_variables/direct_input13_20261110_v22.pdf) | 13 | $\le11774654098433<2^{44}$ | Upper bound $<2^{508}$ | Every sufficiently large odd $B$; ineffective threshold |
+| [Weak-abc $16/15$ family](../papers/conditional_few_variables/direct_input13_20261110_v22.pdf) | 13 | $\le11212784195585<2^{44}$ | Upper bound $<2^{507}$ | Every sufficiently large odd $B$; ineffective threshold |
 | [Ordinary-abc quartic](../papers/quartic_existence/quartic_abc87_20261110_v21.pdf) | 87 | Exactly 4 | Exactly 918 | Every sufficiently large odd $B$; ineffective threshold |
 
-The first four constructions use the full normalized modular realization specified below and add no abc or Szpiro hypothesis. The thirteen-variable theorem assumes one weak abc inequality, or ordinary Szpiro through the proved implication. The eighty-seven-variable theorem assumes ordinary rational abc. All six retain the applicable elliptic, pole, and simultaneous prime-pattern inputs.
+The first four constructions use the full normalized modular realization specified below and add no abc or Szpiro hypothesis. Each thirteen-variable theorem assumes one weak abc inequality. Ordinary Szpiro supplies the exponent $121/100$; ordinary rational abc supplies both stated weak exponents. The eighty-seven-variable theorem assumes ordinary rational abc. All seven retain the applicable elliptic, pole, and simultaneous prime-pattern inputs.
 
 ## The inherited arithmetic inputs
 
@@ -159,11 +160,13 @@ The [square-abscissa theorem](../papers/square_abscissa/square_abscissa_charts_2
 
 The [fixed-difference chart](../papers/elliptic_charts/fixed_difference_charts_20261110_v18.pdf) is an unconditional algebraic theorem. For $E:y^2=x^3-Dx$ and $P=(a,b)$ satisfying $abD(D^2+6a^2D-3a^4)\ne0$, three quadrics in four field coordinates describe exactly the allowed pairs $H,H-P$. A polynomial elimination identity covers vanishing leading coefficients. The rational component row change has nonzero determinant $-1/362963666515968$ and preserves the zero set. This chart is shared by the three leading quartics.
 
-The 25- and 27-variable families use $\beta=216X^4+450459$: integrality for a reduced $X=u/v$ forces $v^4\mid216=2^3 3^3$, hence $v=1$. The 226- and 262-variable quartics use $51X^2+2504$, giving $v^2\mid51$. The thirteen- and eighty-seven-variable constructions use $2X^2+B$, giving $v^2\mid2$. In each case the arithmetic comparison recovers integrality of the original input exactly.
+The 25- and 27-variable families use $\beta=216X^4+450459$: integrality for a reduced $X=u/v$ forces $v^4\mid216=2^3 3^3$, hence $v=1$. The 226- and 262-variable quartics use $51X^2+2504$, giving $v^2\mid51$. The eighty-seven-variable construction uses $2X^2+B$, giving $v^2\mid2$. These comparisons recover integrality of the original input exactly.
 
-## The thirteen-variable theorem from weak abc
+The two thirteen-variable constructions compare the elliptic integer label directly with $X$. Their separate auxiliary height scale is $\beta=X^2+B$. Coprimality of $u^2+Bv^2$ and $v^2$ gives the uniform inequality $2h(X)\le h(\beta)$; the proof does not recover integrality by testing $\beta$ instead.
 
-The [thirteen-variable family](../papers/conditional_few_variables/conditional13_20261109_v16.pdf) assumes only one weak rational abc inequality with exponent $\kappa=121/100$, together with the specified elliptic group, pole obstruction and nonzero realization, and simultaneous prime patterns. Applying this inequality to
+## Thirteen variables with direct input comparison
+
+The [direct-comparison theorem](../papers/conditional_few_variables/direct_input13_20261110_v22.pdf) retains the specified elliptic group, pole obstruction and nonzero realization, simultaneous prime patterns, and the proved one-point trace-height theorem. Its extra hypothesis is one weak rational abc inequality with exponent $\kappa$. Applying that inequality to
 
 $$
 \varphi(z)=\frac{z(z+2)^3}{(2z+1)^3},\qquad
@@ -173,26 +176,48 @@ $$
 and changing coordinates by $z=2+1/t$ gives six finite rational contacts and
 
 $$
-h(t)\le\frac{121}{74}\log M(t)+C_0.
+h(t)\le\frac{1}{8/\kappa-6}\log M(t)+C_0.
 $$
 
-The primitive common-denominator calculation gives the projective estimate
+For an even fixed $d$ with $d/\kappa>3$, the primitive common-denominator calculation also gives
 
 $$
-h(1:u:v)\le\frac{121}{437}h(u^8+v^8)+C_1.
+h(1:u:v)\le\frac{1}{d/\kappa-3}h(u^d+v^d)+C_1.
 $$
 
-The scales are $1$ and $\beta^8+T^8$, where $T$ is the trace of the abscissa of one elliptic multiple. No square condition on the latter scale is needed: its sixth-power prefactor in the contact product is a square. All six local tests have order one. If $\beta\ne n$, their odd contact radicals divide the positive numerator $N$ of $\beta-n$, and
+The scales are $1$ and $\beta^d+T(n)^d$, with $\beta=X^2+B$ and $T(n)$ the trace of the abscissa of the nonzero elliptic multiple $[n]P$. The sixth-power prefactor in the contact product is a square; no square condition on the latter scale is required. All six local tests have order one. They compare the input directly with the index $n$, so if $X\ne n$, both odd contact radicals divide the positive numerator $N$ of $X-n$.
+
+Put $\eta=h(1:\beta:T(n))$. Combining the two contact bounds and the projective estimate gives
 
 $$
-h(1:\beta:T)\le\frac{14641}{16169}\log N+C.
+\eta\le q\log N+C,
+\qquad q=\frac{2}{(8/\kappa-6)(d/\kappa-3)}.
 $$
 
-This coefficient is less than one. Since $\log N\le h(\beta)+\log(1+|n|)$, the inequality and the one-point trace-height theorem bound $n$ and the input height independently of $B$. Every sufficiently large fixed odd shift excludes this case. There are three point pairs, two independent pole pairs, one slope and the input; finite-root elimination adds one coordinate, giving thirteen in total.
+The monic scale yields $h(X)\le h(\beta)/2$ uniformly in $B$, and hence
 
-The exact source and bound certificates in [the weak-abc module](../computation/few_variables/weak_abc13/README.md) give uniform degree at most 12,339,485,119,488, strictly below $2^{44}$. Its 64-factor polynomial specification has not been expanded. The shift-three coefficient-height check does not determine a sufficient defining shift.
+$$
+\log N\le\tfrac12\eta+\log(1+|n|).
+$$
 
-More generally, every one weak exponent $1<\kappa<4/3$ suffices after choosing an even $d$ with $(8/\kappa-6)(d/\kappa-3)>2$ and using $\beta^d+T^d$. The same thirteen-coordinate count holds. The supplied numerical degree certificate concerns only $\kappa=121/100,d=8$.
+The following two parameter choices give strict absorption:
+
+| Weak abc exponent $\kappa$ | Scale power $d$ | Residual coefficient $q$ | Absorption coefficient $q/2$ |
+|:--|--:|:--|:--|
+| $121/100$ | 6 | $14641/8769$ | $14641/17538<1$ |
+| $16/15$ | 4 | $16/9$ | $8/9<1$ |
+
+After absorption, $\eta\le C_2\log(1+|n|)+C_3$, with constants independent of $B$. The one-point trace-height theorem then bounds $n$ and $\eta$. Since $\beta\ge B$, every sufficiently large fixed odd shift excludes a nonzero residual. Completeness covers every nonzero integer input, including negative and even integers. At $n=\pm1$, some comparison tests vanish identically, which is allowed. Multiplying the eliminated polynomial $Q_B$ by $X$ adds the input zero without adding a coordinate: the final polynomial is $F_B=XQ_B$.
+
+There are three point pairs, two pole pairs, one slope and the input; finite-root elimination adds one coordinate, giving thirteen in total. The [exact source and bound certificates](../computation/few_variables/direct_input13_v22/README.md) give degree at most $11774654098433$ and support below $2^{508}$ for $(\kappa,d)=(121/100,6)$, and degree at most $11212784195585$ and support below $2^{507}$ for $(16/15,4)$. Neither determinant polynomial is expanded. The supplied shift-three coefficient bounds do not certify a defining shift.
+
+More generally, every one weak exponent $1<\kappa<4/3$ suffices when an even $d$ satisfies
+
+$$
+(8/\kappa-6)(d/\kappa-3)>1.
+$$
+
+The [input-height amplification paper](../papers/contact_heights/input_height_amplification_20261110_v22.pdf) proves the general monic-power height comparison and further conditional contact-height criteria. Its six- and five-contact criteria alone are not additional polynomial constructions. It also gives an unconditional four-contact obstruction: a fixed elliptic twist has infinitely many rational contact arguments of unbounded height whose odd radical outside $\{2,3,5\}$ is one. This rules out a height bound from that particular four-contact radical, without producing a nonintegral solution of a full defining source.
 
 ## The additional-abc quartic
 
@@ -221,7 +246,7 @@ No numerical sufficient odd defining shift is certified. The [complete tables an
 
 ## Other conjectures and proved obstructions
 
-The [arithmetic-hypotheses paper](../papers/arithmetic_hypotheses/arithmetic_hypotheses_20261109_v16.pdf) proves that ordinary discriminant--conductor Szpiro implies weak abc with every exponent $6/5+\epsilon$; $\epsilon=1/100$ supplies the thirteen-variable theorem. Modified Szpiro and the stated truncated Vojta conjecture imply ordinary abc. None of these implications removes the retained elliptic or pole-realization premises. No coordinate reduction is derived from RH, GRH, or Grimm's conjecture. Mazur's connected-component conjecture would exclude an existential integer projection and cannot be combined consistently with premises that already yield one.
+The [arithmetic-hypotheses paper](../papers/arithmetic_hypotheses/arithmetic_hypotheses_20261109_v16.pdf) proves that ordinary discriminant--conductor Szpiro implies weak abc with every exponent $6/5+\epsilon$; $\epsilon=1/100$ supplies the $121/100$ thirteen-variable theorem. Modified Szpiro and the stated truncated Vojta conjecture imply ordinary abc. None of these implications removes the retained elliptic or pole-realization premises. No coordinate reduction is derived from RH, GRH, or Grimm's conjecture. Mazur's connected-component conjecture would exclude an existential integer projection and cannot be combined consistently with premises that already yield one.
 
 The [restricted-abc paper](../papers/restricted_abc/restricted_abc_inputs_20261109_v17.pdf) checks the small-$j$-denominator and asymmetric-size hypotheses on the actual scalar families. Those hypotheses fail along the exhibited unbounded families, so the cited unconditional results do not currently give the required logarithmic contact estimate. The statements concern those applications, rather than all possible uses of the results.
 
@@ -239,6 +264,6 @@ The equation-combination theorem, guarded finite-algebra elimination, degree and
 
 The foundational coefficient source is Version 9 at commit `14e8f601fe0d9173d4a5f084aedc3e07066a7688`; the arithmetic interpretation incorporates the Version 11 Kato index-set and retained-class correction at commit `650b298a2a18fa956f8859f3ca80e9d7c8cedd82`. The baseline quartic source is Version 13 at commit `5bbd74f6a479776a332cbe036809d5dddae63720`. Sun's prime-pattern reference is arXiv:2610.20691v2, Theorem 4.1. The dependency paper gives exact statement identifiers and bibliography. [Quartic provenance](../computation/quartic/PROVENANCE.json) and the individual source certificates record all subsequent pinned tables and hashes.
 
-The twenty-five-, twenty-seven-, and thirteen-variable finite determinant specifications are not expanded. Their certified support bounds are respectively $<2^{1979}$, $<2^{2192}$, and $<2^{509}$. The three leading quartics are fully expanded, with exact monomial counts 2,835, 3,494, and 918. Parameter powers are fixed coefficients, not quantified coordinates.
+The twenty-five-, twenty-seven-, and both thirteen-variable finite determinant specifications are not expanded. Their certified support bounds are respectively $<2^{1979}$, $<2^{2192}$, and $<2^{508}$ or $<2^{507}$ for the two stated weak abc exponents. The three leading quartics are fully expanded, with exact monomial counts 2,835, 3,494, and 918. Parameter powers are fixed coefficients, not quantified coordinates.
 
 Exact identities, coefficient reconstructions, support bounds, finite valuation residues, and numerical integer inequalities are unconditional statements about the supplied expressions. A rational projection equals $\mathbb Z$ by the corresponding construction theorem under its explicit arithmetic premises. A passing computation certifies its listed finite assertions; it neither proves an arithmetic conjecture nor supplies a missing effective threshold.

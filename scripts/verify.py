@@ -375,6 +375,25 @@ def main():
             '--output',weak/'independent-bound-verification.json'))
         for p,raw in weak_originals.items():
             assert p.read_bytes()==raw,str(p)
+        direct=few/'direct_input13_v22'
+        for variant,scale_power,exponent in (('weak',6,'121/100'),('abc',4,'16/15')):
+            module=direct/variant
+            direct_files=[p for p in sorted(module.rglob('*'))
+                if p.is_file() and p.suffix in ('.json','.gz')]
+            direct_originals={p:p.read_bytes() for p in direct_files}
+            stages.append(run(f'Direct-input 13-variable source, weak abc {exponent}, scale power {scale_power}',
+                direct/'build_direct_input_source.py','--shift','3','--scale-power',str(scale_power),
+                '--output',module/'certificate'))
+            stages.append(run(f'Independent direct-input source conversion, guards, and bounded formula checks ({variant})',
+                direct/'check_direct_input_source.py',module/'certificate',
+                '--output',module/'independent-source-verification.json'))
+            stages.append(run(f'Direct-input finite-algebra specification and exact input factor ({variant})',
+                direct/'build_direct_input_specification.py',module))
+            stages.append(run(f'Independent direct-input degree, support, and fixture coefficient bounds ({variant})',
+                direct/'check_direct_input_bounds.py',module,
+                '--output',module/'independent-bound-verification.json'))
+            for p,raw in direct_originals.items():
+                assert p.read_bytes()==raw,str(p)
         support=(few/'monomial-bound-certificate.json').read_bytes()
         stages.append(run('Uniform monomial upper bounds for the 27-, 29-, and 13-variable specifications',
             few/'check_monomial_bounds.py'))
@@ -438,6 +457,10 @@ def main():
         stages.append(run('Logarithmic contact-height constants and explicit coefficient thresholds',
             contacts/'check_logarithmic_thresholds_v21.py'))
         assert (contacts/'logarithmic-thresholds-v21-certificate.json').read_bytes()==logarithmic
+        input_height=(contacts/'input-height-amplification-certificate.json').read_bytes()
+        stages.append(run('Input-height absorption fractions and exact four-contact elliptic obstruction',
+            contacts/'check_input_height_amplification.py'))
+        assert (contacts/'input-height-amplification-certificate.json').read_bytes()==input_height
         local_tests=work/'computation/local_tests'
         normalized_tests=(local_tests/'rational-normalization-certificate.json').read_bytes()
         stages.append(run('Rational local normalization, even valuation strata, and disjoint contact units',

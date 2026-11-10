@@ -1,4 +1,6 @@
-# Thirteen coordinates from a weak abc inequality
+# Supporting eighth-power coefficient construction
+
+This module is retained for exact reconstruction and for the supporting papers that study its eighth-power scale. The current thirteen-variable families and their complete specifications are in the [direct-input module](../direct_input13_v22/README.md).
 
 This coefficient family assumes the rational inequality
 
@@ -9,7 +11,7 @@ It also retains the specified elliptic group, pole obstruction and
 nonzero realization, and simultaneous prime-pattern inputs. Both ordinary
 rational abc and the ordinary Szpiro discriminant-conductor conjecture
 imply the displayed weak inequality; the precise statements and references
-are in [the current paper](../../../papers/conditional_few_variables/conditional13_20261109_v16.tex).
+are in [the supporting eighth-power paper](../../../papers/conditional_few_variables/conditional13_20261109_v16.tex).
 
 For each fixed odd integer B >= 3, the input is transformed to
 beta=2*X^2+B. Every sufficiently large such B gives a definition

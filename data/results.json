@@ -7,7 +7,7 @@
     "algebraic_specification": "proved for every explicitly described polynomial or coefficient-family member",
     "projection_equals_Z": "proved implication from the stated arithmetic premises; the existence families require a sufficiently large fixed parameter",
     "variable_minimality": "best constructions in this collection; no global variable minimum claimed",
-    "effectiveness": "The leading 25-variable and 226-variable families have ineffective sufficient coefficient thresholds. The additional-hypothesis 13- and 87-variable families have ineffective sufficient input shifts. The explicit 27-variable and 262-variable constructions certify numerical sufficient parameters.",
+    "effectiveness": "The leading 25-variable and 226-variable families have ineffective sufficient coefficient thresholds. Both additional-hypothesis 13-variable families and the 87-variable family have ineffective sufficient input shifts. The explicit 27-variable and 262-variable constructions certify numerical sufficient parameters.",
     "prime_selection": "The quantitative weighted selection used by the quartics follows from the cited Sun v2 Propositions 5.1 and 6.2 and Section 6.1, with the separation argument recorded in the prime-selection paper. It is not an additional independent conjecture; dependence on the cited arithmetic estimates remains explicit."
   },
   "constructions": [
@@ -866,6 +866,21 @@
       "general_proof": "Mordell-Lang gives a density criterion in terms of finite unions of rational affine hyperplanes in the index lattice.",
       "consequence": "No fixed algebraic correspondence with finite geometric fibers can recover the index product uniformly on those pairs; nonlinear polynomial index graphs satisfy the analogous obstruction.",
       "scope": "No claim about arbitrary Diophantine definitions, additional free parameters, positive-dimensional fibers with finite rational point sets, or specially selected finite sets of auxiliary indices."
+    },
+    {
+      "id": "four_contact_bounded_odd_radical_obstruction",
+      "proof": "papers/contact_heights/input_height_amplification_20261110_v22.tex",
+      "pdf": "papers/contact_heights/input_height_amplification_20261110_v22.pdf",
+      "verification": "computation/contact_heights/input-height-amplification-certificate.json",
+      "statement": "For the contacts {-1,0,2,3}, infinitely many rational t have unbounded logarithmic height and odd contact radical one outside {2,3,5}; the points can be chosen with 3<t<5.",
+      "quartic_curve": "10*y^2=(t+1)*t*(t-2)*(t-3)",
+      "elliptic_curve": "Y^2=X^3+10*X^2-2400*X+36000",
+      "nontorsion_point": [
+        "15",
+        "75"
+      ],
+      "proof_method": "Exact birational transformations and a Nagell-Lutz nontorsion certificate give infinitely many rational points; the twist and contact differences bound the odd prime support.",
+      "scope": "An obstruction to height bounds using this particular four-contact odd radical. It is not a nonintegral solution of a complete defining source, a counterexample to abc, or a variable-count lower bound."
     }
   ],
   "source_pins": {
@@ -873,7 +888,7 @@
     "corrected_arithmetic_proof_v11": "650b298a2a18fa956f8859f3ca80e9d7c8cedd82",
     "quartic_source_v13": "5bbd74f6a479776a332cbe036809d5dddae63720"
   },
-  "release": "2026.11.10-v21",
+  "release": "2026.11.10-v22",
   "auxiliary_arithmetic_theorems": [
     {
       "id": "square_abscissa_subgroup_chart",
@@ -918,7 +933,7 @@
     },
     {
       "id": "arithmetic_hypotheses_and_coordinate_bounds",
-      "statement": "Ordinary Szpiro supplies the weak abc exponent used by the thirteen-coordinate construction. Truncated Vojta implies ordinary abc. Pell examples show why consecutive-integer prime assignments alone do not control the odd radical.",
+      "statement": "Ordinary Szpiro supplies weak abc at exponent121/100, sufficient for the sixth-power thirteen-coordinate construction. Truncated Vojta implies ordinary abc, which supplies both leading thirteen-coordinate constructions. Pell examples show why consecutive-integer prime assignments alone do not control the odd radical.",
       "proof": "papers/arithmetic_hypotheses/arithmetic_hypotheses_20261109_v16.tex",
       "other_conjectures": "No coordinate reduction is derived from RH, GRH, or Grimm alone. No formal nonimplication is claimed."
     },
@@ -954,36 +969,72 @@
       "proof": "papers/contact_heights/multiplicity_and_contact_heights_20261110_v19.tex",
       "verification": "computation/contact_heights/multiplicity-height-certificate.json",
       "scope_limit": "This is a consequence of the full stated modular realization, not a theorem from the conductor inequality alone."
+    },
+    {
+      "id": "input_height_amplification_and_conditional_contact_criteria",
+      "proof": "papers/contact_heights/input_height_amplification_20261110_v22.tex",
+      "pdf": "papers/contact_heights/input_height_amplification_20261110_v22.pdf",
+      "verification": "computation/contact_heights/input-height-amplification-certificate.json",
+      "unconditional_height_lemma": "For integers r>=1 and B>=1, if gamma>=1 or r is even, beta=gamma^r+B satisfies beta>=B and r*h(gamma)<=h(beta), uniformly in B.",
+      "conditional_criteria": [
+        {
+          "contacts": 8,
+          "additional_hypothesis": "ordinary rational abc",
+          "input_power": 1,
+          "absorption_coefficient": "8/9"
+        },
+        {
+          "contacts": 6,
+          "additional_hypothesis": "ordinary rational abc",
+          "input_power": 2,
+          "absorption_coefficient": "8/9"
+        },
+        {
+          "contacts": 5,
+          "additional_hypothesis": "ordinary rational abc",
+          "input_power": 3,
+          "absorption_coefficient": "16/17"
+        }
+      ],
+      "scope": "These are height-transfer criteria. The five-contact criterion alone supplies no new defining polynomial or coordinate count; the complete six-contact construction is proved separately."
     }
   ],
   "additional_hypothesis_constructions": [
     {
       "id": "conditional13_weak_abc_family",
       "construction_kind": "existence_in_computable_coefficient_family",
+      "role": "Leading few-variable family under weak abc at exponent 121/100; ordinary Szpiro suffices.",
       "additional_conjecture": "One weak rational abc inequality c<=K*rad(abc)^(121/100)",
       "arithmetic_inputs": [
         "elliptic_group_and_index_height",
         "pole_obstruction_and_nonzero_realization_with_restricted_converse_and_descent",
         "simultaneous_prime_patterns"
       ],
-      "proved_additional_input": "one-point aggregate trace-height theorem",
-      "replaces_inherited_input": "The exponent-19 contact estimate is replaced by the six-contact inequality obtained from a degree-four rational Belyi map.",
+      "proved_additional_inputs": [
+        "one-point aggregate trace-height theorem",
+        "uniform monic input-height inequality 2*h(X)<=h(X^2+B)"
+      ],
+      "replaces_inherited_input": "The source modular contact estimate is replaced by the six-contact logarithmic inequality obtained from a degree-four rational Belyi map and the stated weak abc inequality.",
       "total_variables": 13,
       "retained_coordinates": 12,
       "point_roles": 3,
       "pole_certificates": 2,
       "finite_point_algebra_rank": 64,
       "finite_algebra_rank": 256,
-      "exact_final_factor_count": 64,
+      "finite_algebra_factor_count": 64,
+      "outer_input_factor": true,
+      "exact_final_factor_count": 65,
       "degree_bound_power_of_two_exponent": 44,
       "degree_bound_strict": true,
-      "exact_degree_majorant": "12339485119488",
+      "exact_degree_majorant": "11774654098433",
+      "base_finite_algebra_degree_majorant": "11774654098432",
       "degree_bound_uniform_in_fixed_parameter": true,
       "fixed_parameter": {
         "name": "B",
         "domain": "odd integers B>=3",
         "quantified": false,
-        "input_map": "beta=2*X^2+B",
+        "height_scale_map": "beta=X^2+B",
+        "comparison_target": "input X",
         "all_sufficiently_large_parameters_define_Z": true,
         "effective_sufficient_threshold_known": false,
         "certified_numerical_defining_parameter": null
@@ -992,10 +1043,10 @@
       "algebraic_reproduction_example": {
         "B": 3,
         "certified_to_define_Z": false,
-        "exact_binary_log_coefficient_majorant": "29454018907833",
+        "exact_binary_log_coefficient_majorant": "28598607557817",
         "coefficient_height_bound_double_power_of_two_exponent": 45
       },
-      "height_scales": "1,beta^8+(Tr x(A))^8",
+      "height_scales": "1,beta^6+(Tr x(A))^6",
       "comparison_orders": [
         1,
         1,
@@ -1004,24 +1055,127 @@
         1,
         1
       ],
-      "key_height_coefficient": "14641/16169",
-      "proof": "papers/conditional_few_variables/conditional13_20261109_v16.tex",
-      "computation": "computation/few_variables/weak_abc13",
-      "construction_certificate": "computation/few_variables/weak_abc13/active13/construction-certificate.json",
-      "source_specification_sha256": "801ab0f5946e5082be0ac369baa00b4d36ab0899651154e5c11408472a69847d",
-      "specification_sha256": "2459dd65959ca2292fc3e4e6243b8fa74e345a9dee6418f12ae2305e1d3dd75b",
-      "scope_limit": "Thirteen total coordinates under an additional arithmetic hypothesis; no construction below ten is established.",
+      "formal_logarithm_precision": 4,
+      "residual_height_coefficient": "14641/8769",
+      "key_height_coefficient": "14641/17538",
+      "input_height_bound": "2*h(X)<=h(beta), uniformly in B",
+      "zero_input_branch": "The final polynomial F_B=X*Q_B adds input zero; all nonzero integer indices, including negative and even indices, have complete guarded-source witnesses.",
+      "proof": "papers/conditional_few_variables/direct_input13_20261110_v22.tex",
+      "pdf": "papers/conditional_few_variables/direct_input13_20261110_v22.pdf",
+      "computation": "computation/few_variables/direct_input13_v22/weak",
+      "construction_certificate": "computation/few_variables/direct_input13_v22/weak/definition-construction-certificate.json",
+      "polynomial_specification": "computation/few_variables/direct_input13_v22/weak/definition-polynomial-specification.json",
+      "source_specification_sha256": "6e7f8f6c005fad2e355209861b04dedb255b9c97792c025c2b10b20aec51cae5",
+      "source_sha256": "ee36ebdadf5c6b4985011d2c67fe18e143958a308b7fae98ea4bfbc93f07d561",
+      "specification_sha256": "9118587c5da5e6d8634e8cb2b01ee6c6c9c53b2825f07a3c180ad4436a774ae6",
+      "base_specification_sha256": "3e6aa8672dbefa7507259d4b3be317fb22cbce5854610ff3ae5622bae7075146",
+      "independent_source_verification": "computation/few_variables/direct_input13_v22/weak/independent-source-verification.json",
+      "independent_bound_verification": "computation/few_variables/direct_input13_v22/weak/independent-bound-verification.json",
+      "source_rational_nodes": 1756,
+      "source_integer_nodes": 752,
+      "atomic_guard_factors": 48,
+      "scope_limit": "Thirteen total coordinates under an additional arithmetic hypothesis; this degree improvement does not reduce the established coordinate count. The numeric fixture has no certified defining threshold.",
       "sufficient_standard_conjectures": [
         "ordinary rational abc",
         "ordinary Szpiro (semistable elliptic curves suffice)"
       ],
-      "general_height_theorem": "Any one weak abc exponent 1<kappa<4/3 gives thirteen coordinates with a suitable even fixed power; the distributed degree certificate uses kappa=121/100 and power eight.",
+      "general_height_theorem": "For every one weak abc exponent 1<kappa<4/3, any even d with (8/kappa-6)*(d/kappa-3)>1 gives the same thirteen-coordinate construction after a sufficiently large fixed odd shift.",
       "ordinary_monomials": null,
       "ordinary_monomial_count_status": "Not computed: the determinant polynomial has not been expanded.",
-      "ordinary_monomial_upper_bound": "845832826960671682168043983625076750997462838564767197514171003813894326474088328739147468200276132263575272414298616664143729218901479440051591494071169",
-      "ordinary_monomial_upper_bound_power_of_two_exponent": 509,
+      "ordinary_monomial_upper_bound": "482056525816303549792088668732586932435301410937082605218036613753083944919512731790912537282439472184881641682852355644635446924321974660268893512751745",
+      "ordinary_monomial_upper_bound_power_of_two_exponent": 508,
       "ordinary_monomial_upper_bound_strict": true,
-      "monomial_bound_certificate": "computation/few_variables/monomial-bound-certificate.json"
+      "monomial_bound_certificate": "computation/few_variables/direct_input13_v22/weak/independent-bound-verification.json",
+      "support_reason": "The input factor shifts all monomials injectively, so the capped-separator support bound for Q_B also bounds F_B.",
+      "coefficient_comparison_scope": "The auxiliary height scale is monic. The maximum coefficients of the unexpanded final polynomials have not been compared; the distributed coefficient figures are upper bounds for the algebraic fixtures."
+    },
+    {
+      "id": "conditional13_fourth_power_weak_abc_family",
+      "construction_kind": "existence_in_computable_coefficient_family",
+      "role": "Lower-degree thirteen-variable family under weak abc at exponent 16/15; ordinary rational abc suffices.",
+      "additional_conjecture": "One weak rational abc inequality c<=K*rad(abc)^(16/15)",
+      "arithmetic_inputs": [
+        "elliptic_group_and_index_height",
+        "pole_obstruction_and_nonzero_realization_with_restricted_converse_and_descent",
+        "simultaneous_prime_patterns"
+      ],
+      "proved_additional_inputs": [
+        "one-point aggregate trace-height theorem",
+        "uniform monic input-height inequality 2*h(X)<=h(X^2+B)"
+      ],
+      "replaces_inherited_input": "The source modular contact estimate is replaced by the six-contact logarithmic inequality obtained from a degree-four rational Belyi map and the stated weak abc inequality.",
+      "total_variables": 13,
+      "retained_coordinates": 12,
+      "point_roles": 3,
+      "pole_certificates": 2,
+      "finite_point_algebra_rank": 64,
+      "finite_algebra_rank": 256,
+      "finite_algebra_factor_count": 64,
+      "outer_input_factor": true,
+      "exact_final_factor_count": 65,
+      "degree_bound_power_of_two_exponent": 44,
+      "degree_bound_strict": true,
+      "exact_degree_majorant": "11212784195585",
+      "base_finite_algebra_degree_majorant": "11212784195584",
+      "degree_bound_uniform_in_fixed_parameter": true,
+      "fixed_parameter": {
+        "name": "B",
+        "domain": "odd integers B>=3",
+        "quantified": false,
+        "height_scale_map": "beta=X^2+B",
+        "comparison_target": "input X",
+        "all_sufficiently_large_parameters_define_Z": true,
+        "effective_sufficient_threshold_known": false,
+        "certified_numerical_defining_parameter": null
+      },
+      "coefficient_height_bound_for_certified_defining_member": null,
+      "algebraic_reproduction_example": {
+        "B": 3,
+        "certified_to_define_Z": false,
+        "exact_binary_log_coefficient_majorant": "27756172773305",
+        "coefficient_height_bound_double_power_of_two_exponent": 45
+      },
+      "height_scales": "1,beta^4+(Tr x(A))^4",
+      "comparison_orders": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "formal_logarithm_precision": 4,
+      "residual_height_coefficient": "16/9",
+      "key_height_coefficient": "8/9",
+      "input_height_bound": "2*h(X)<=h(beta), uniformly in B",
+      "zero_input_branch": "The final polynomial F_B=X*Q_B adds input zero; all nonzero integer indices, including negative and even indices, have complete guarded-source witnesses.",
+      "proof": "papers/conditional_few_variables/direct_input13_20261110_v22.tex",
+      "pdf": "papers/conditional_few_variables/direct_input13_20261110_v22.pdf",
+      "computation": "computation/few_variables/direct_input13_v22/abc",
+      "construction_certificate": "computation/few_variables/direct_input13_v22/abc/definition-construction-certificate.json",
+      "polynomial_specification": "computation/few_variables/direct_input13_v22/abc/definition-polynomial-specification.json",
+      "source_specification_sha256": "0096676ea268500cb91774e5fcd05ccf459445bd1024aa9ed3efe37d0188d653",
+      "source_sha256": "8490d406ed2860ac10dfa0836e31b418dd70e47fe066ecba3de11bd44aa98107",
+      "specification_sha256": "ef0ab4697b2e0dde281ba834df5b10ae250855d909577164fffaafc974c528b8",
+      "base_specification_sha256": "5286dfc708e1de758802bcbaaa3e76b66530db6b8ff522cf2774caee5ca2828b",
+      "independent_source_verification": "computation/few_variables/direct_input13_v22/abc/independent-source-verification.json",
+      "independent_bound_verification": "computation/few_variables/direct_input13_v22/abc/independent-bound-verification.json",
+      "source_rational_nodes": 1756,
+      "source_integer_nodes": 752,
+      "atomic_guard_factors": 48,
+      "scope_limit": "Thirteen total coordinates under an additional arithmetic hypothesis; this degree improvement does not reduce the established coordinate count. The numeric fixture has no certified defining threshold.",
+      "sufficient_standard_conjectures": [
+        "ordinary rational abc"
+      ],
+      "general_height_theorem": "For every one weak abc exponent 1<kappa<4/3, any even d with (8/kappa-6)*(d/kappa-3)>1 gives the same thirteen-coordinate construction after a sufficiently large fixed odd shift.",
+      "ordinary_monomials": null,
+      "ordinary_monomial_count_status": "Not computed: the determinant polynomial has not been expanded.",
+      "ordinary_monomial_upper_bound": "268090630780290858949989083646485935217993534737832937910392022978378403075613783632096679405631152345353583671112690339705307623680547870178124901886465",
+      "ordinary_monomial_upper_bound_power_of_two_exponent": 507,
+      "ordinary_monomial_upper_bound_strict": true,
+      "monomial_bound_certificate": "computation/few_variables/direct_input13_v22/abc/independent-bound-verification.json",
+      "support_reason": "The input factor shifts all monomials injectively, so the capped-separator support bound for Q_B also bounds F_B.",
+      "coefficient_comparison_scope": "The auxiliary height scale is monic. The maximum coefficients of the unexpanded final polynomials have not been compared; the distributed coefficient figures are upper bounds for the algebraic fixtures."
     },
     {
       "id": "quartic87_abc_family",
@@ -1938,6 +2092,73 @@
       ],
       "contact_projection_scope": "Exact on the entire rational solution set, preserving all unchanged point and pole coordinates and the pole input b.",
       "stored_weight_q": false
+    },
+    {
+      "id": "conditional13_weak_abc_v16_dependency",
+      "construction_kind": "existence_in_computable_coefficient_family",
+      "additional_conjecture": "One weak rational abc inequality c<=K*rad(abc)^(121/100)",
+      "arithmetic_inputs": [
+        "elliptic_group_and_index_height",
+        "pole_obstruction_and_nonzero_realization_with_restricted_converse_and_descent",
+        "simultaneous_prime_patterns"
+      ],
+      "proved_additional_input": "one-point aggregate trace-height theorem",
+      "replaces_inherited_input": "The exponent-19 contact estimate is replaced by the six-contact inequality obtained from a degree-four rational Belyi map.",
+      "total_variables": 13,
+      "retained_coordinates": 12,
+      "point_roles": 3,
+      "pole_certificates": 2,
+      "finite_point_algebra_rank": 64,
+      "finite_algebra_rank": 256,
+      "exact_final_factor_count": 64,
+      "degree_bound_power_of_two_exponent": 44,
+      "degree_bound_strict": true,
+      "exact_degree_majorant": "12339485119488",
+      "degree_bound_uniform_in_fixed_parameter": true,
+      "fixed_parameter": {
+        "name": "B",
+        "domain": "odd integers B>=3",
+        "quantified": false,
+        "input_map": "beta=2*X^2+B",
+        "all_sufficiently_large_parameters_define_Z": true,
+        "effective_sufficient_threshold_known": false,
+        "certified_numerical_defining_parameter": null
+      },
+      "coefficient_height_bound_for_certified_defining_member": null,
+      "algebraic_reproduction_example": {
+        "B": 3,
+        "certified_to_define_Z": false,
+        "exact_binary_log_coefficient_majorant": "29454018907833",
+        "coefficient_height_bound_double_power_of_two_exponent": 45
+      },
+      "height_scales": "1,beta^8+(Tr x(A))^8",
+      "comparison_orders": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "key_height_coefficient": "14641/16169",
+      "proof": "papers/conditional_few_variables/conditional13_20261109_v16.tex",
+      "computation": "computation/few_variables/weak_abc13",
+      "construction_certificate": "computation/few_variables/weak_abc13/active13/construction-certificate.json",
+      "source_specification_sha256": "801ab0f5946e5082be0ac369baa00b4d36ab0899651154e5c11408472a69847d",
+      "specification_sha256": "2459dd65959ca2292fc3e4e6243b8fa74e345a9dee6418f12ae2305e1d3dd75b",
+      "scope_limit": "Thirteen-coordinate supporting source under the stated extra weak abc hypothesis; its algebraic shift-three fixture is not a certified defining member.",
+      "sufficient_standard_conjectures": [
+        "ordinary rational abc",
+        "ordinary Szpiro (semistable elliptic curves suffice)"
+      ],
+      "general_height_theorem": "Any one weak abc exponent 1<kappa<4/3 gives thirteen coordinates with a suitable even fixed power; the distributed degree certificate uses kappa=121/100 and power eight.",
+      "ordinary_monomials": null,
+      "ordinary_monomial_count_status": "Not computed: the determinant polynomial has not been expanded.",
+      "ordinary_monomial_upper_bound": "845832826960671682168043983625076750997462838564767197514171003813894326474088328739147468200276132263575272414298616664143729218901479440051591494071169",
+      "ordinary_monomial_upper_bound_power_of_two_exponent": 509,
+      "ordinary_monomial_upper_bound_strict": true,
+      "monomial_bound_certificate": "computation/few_variables/monomial-bound-certificate.json",
+      "role": "Supporting eighth-power source for the rational contact-parity and quadratic-cover proofs, and an exact reconstruction dependency; not a leading polynomial specification."
     }
   ]
 }

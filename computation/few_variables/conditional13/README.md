@@ -1,6 +1,6 @@
 # Retained coefficient-construction dependency
 
-This module remains available for coefficient-construction dependencies and exact algebraic checks. The current thirteen-variable theorem, which uses a weak abc inequality also implied by ordinary Szpiro, and its primary exact specification are in [the current paper](../../../papers/conditional_few_variables/conditional13_20261109_v16.tex) and [the weak-abc module](../weak_abc13/README.md). The source expressions in this directory use the sixth-power scales specified below.
+This module remains available for coefficient-construction dependencies and exact algebraic checks. The current thirteen-variable families and their complete specifications are in the [direct-input paper](../../../papers/conditional_few_variables/direct_input13_20261110_v22.tex) and [direct-input module](../direct_input13_v22/README.md). The source expressions in this directory use the squared sixth-power scales specified below.
 
 For each fixed odd integer `B >= 3`, the input is transformed by `beta = 2*X^2+B`. The theorem proves that every sufficiently large such `B` gives a definition of the integers. The sufficient threshold is ineffective. The supplied `B=3` files are an exact algebraic fixture and are **not certified to define the integers**.
 
@@ -8,7 +8,7 @@ For each fixed odd integer `B >= 3`, the input is transformed by `beta = 2*X^2+B
 
 The source has exactly twelve retained rational coordinates: the input, three pairs for the points `A,H,UA` over `Q(sqrt(2))`, a common comparison slope, and two independent pole parameter pairs. Three quartic point roots and two quadratic pole roots form a finite algebra of rank 256. The separating-element theorem eliminates all five roots with one extra coordinate, giving **13 total coordinates**, including the input.
 
-There are six local tests, all at order one. The ratios use `z=-x/y` directly. The two comparison scales in this retained source are `1` and `(beta^6+(Tr x(A))^6)^2`; the current primary specification instead uses the linear eighth-power scale and six rational contacts.
+There are six local tests, all at order one. The ratios use `z=-x/y` directly. The two comparison scales in this retained source are `1` and `(beta^6+(Tr x(A))^6)^2`.
 
 For every fixed odd `B >= 3`, the specified polynomial has degree at most **13155996618240**, strictly below `2^44`. The final finite product has 64 factors. The stored fixture has logarithmic coefficient-height bound 31315024824505, strictly below `2^45`; that coefficient estimate does not determine a sufficient defining shift.
 
