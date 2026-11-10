@@ -1,0 +1,1053 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,booktabs,microtype}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\DeclareMathOperator{\Tr}{Tr}\DeclareMathOperator{\Nm}{N}
+\setlength{\emergencystretch}{2em}
+\title{An Explicit Defining Polynomial in Twenty-Seven Variables}
+\author{}\date{10 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+Under the specified normalized elliptic, modular, pole-realization and
+prime-pattern inputs, we construct integer polynomials in twenty-seven
+total variables whose rational input projection is exactly the integers.
+An explicit sufficient coefficient parameter is $L=125001$.
+Three comparison scales control the two rational components of a sum
+of four elliptic abscissas, so the height argument uses only effective
+constants. Scalar and comparison divisibility conditions share three
+pole predicates. A clustered choice of the comparison primes permits
+one additional congruence on the common elliptic index and makes linear
+scalar normalization sufficient. Nine quartic roots and three quadratic
+roots are eliminated with one separating coordinate. An exact integer
+certificate verifies the finite exceptional set and every numerical
+inequality in the sufficient threshold.
+\end{abstract}
+
+\section{Statement and arithmetic inputs}
+
+A polynomial $F\in\Z[X,Y_1,\ldots,Y_m]$ defines $\Z$ over $\Q$
+when
+\[
+ x\in\Z\quad\Longleftrightarrow\quad
+ \exists\mathbf y\in\Q^m:\ F(x,\mathbf y)=0
+ \qquad(x\in\Q).
+\]
+All variable counts include the input $X$.
+
+\begin{theorem}\label{thm:main}
+Under the arithmetic inputs below there is a computable family
+\[
+ F_L\in\Z[X,Y_1,\ldots,Y_{26}],\qquad L\ge3\text{ odd},
+\]
+given by a finite integer coefficient specification. Every odd
+$L\ge125001$ defines $\Z$ over $\Q$. In particular,
+$F_{125001}$ is a fully specified defining polynomial.
+The integer $L$ is a fixed coefficient parameter and is not a
+quantified variable. The total degree is at most
+$99950805468739574201057280<2^{87}$, uniformly in $L$.
+For $L=125001$, the maximum absolute integer coefficient is less
+than $2^{2^{102}}$. No additional $abc$ or Szpiro hypothesis is used.
+\end{theorem}
+
+Write $h$ for the absolute logarithmic Weil height, and put
+\[
+ K=\Q(\sqrt2),\quad d=3-\sqrt2,\quad D=d^2=11-6\sqrt2,
+ \quad E:y^2=x^3-Dx,
+\]
+\[
+ P=\left(\frac{57-28\sqrt2}{8},
+          \frac{-660+417\sqrt2}{32}\right).
+\]
+The nonidentity automorphism of $K$ is denoted by $\sigma$.
+The following four arithmetic inputs have the scope established in
+\cite{Dependencies,Source}.
+\begin{enumerate}
+\item $2E(K)=\Z P$, the point $P$ is non-torsion, and
+$h(x([n]P))\ge n^2-6$ for every nonzero integer $n$.
+\item The full normalized compatible modular realization for the
+five contacts is the one in~\cite{Multiplicity}. Its proved consequence is
+\begin{equation}\label{eq:baseheight}
+ h(q)\le H M_5(q)^{7/3},\qquad H=2^{221234},
+\end{equation}
+for every rational $q$ outside $0,1,2401,-343/32$. If $q=u/v$
+is reduced with $v>0$, $M_5(q)$ is the product of primes
+$p>76176$ having positive odd valuation in at least one of
+\[
+                 v,\quad u,\quad u-v,\quad u-2401v,
+                         \quad32u+343v.
+\]
+The modular realization, including the normalized compatible
+representation used in its multiplicity theorem, is retained as
+an explicit arithmetic input.
+\item For $b\ne0$ and $B_0=17b$, the pole predicate is
+\begin{equation}\label{eq:pole}
+ \begin{split}
+ p_0^2&=B_0(1-e)(1+3e),\\
+ B_0q_0^2&=(s^2-B_0e(B_0-b^2))(s^2+3B_0e(B_0-b^2)).
+ \end{split}
+\end{equation}
+A rational solution excludes negative odd valuations of $b$ outside
+$\{2,3,17\}$. A solution with $p_0q_0s\ne0$ exists whenever
+\begin{equation}\label{eq:prepared}
+ \begin{gathered}
+ 0<b<17,\qquad b\text{ has square reduced denominator},\\
+ b\in\Q_2^{\times2}\cap\Q_3^{\times2}\cap\Q_{17}^{\times2},
+ \qquad v_2(b)\ge3,\quad v_3(b)\ge1,\quad v_{17}(b)\ge2.
+ \end{gathered}
+\end{equation}
+The restricted-converse and descent inputs supporting this assertion
+are those identified in~\cite{Dependencies,PointSource}.
+\item The simultaneous prime-pattern input applies to any fixed
+finite list of rational contact coefficients. It supplies positive
+prime numerators, the prescribed Gaussian generators and conjugate
+reduction orders, arbitrary fixed denominator divisibility, arbitrary
+fixed avoidance, and arbitrarily large real slope. Its precise
+consequence of Sun's theorem is stated in~\cite{Dependencies}.
+\end{enumerate}
+
+The effective abscissa-sum estimate in~\cite{Sums} is proved from the
+first input. We will use it explicitly in Section~\ref{sec:heights}.
+No ineffective aggregate trace-height bound enters the argument.
+
+\section{The rational source}
+
+Every displayed rational expression is restricted to its domain.
+All denominator guards are retained when clearing fractions. We also
+require the comparison slope $\lambda$ and every pole input to be
+nonzero.
+
+\subsection{Nine elliptic points}
+
+Retain the nine points
+\[
+ A,S,T_1,Z,H_0,U_A,U_S,U_T,U_Z\in2E(K)\setminus\{O\}.
+\]
+For each point use two rational coordinates $h_0,h_1$ and the finite
+chart
+\[
+ h=h_0+h_1\sqrt2,\qquad x=h^2,\qquad j^2=h^4-D,\qquad y=hj.
+\]
+Under the group input these are precisely the nonzero multiples of
+$P$. Indeed the two-isogeny descent map shows that the square-abscissa
+subgroup is $2E(K)$; the squareclass and sign checks for the displayed
+curve are proved in~\cite{SquareCharts}.
+
+For clarity, the one-root quartic chart for $j$ is as follows. Write
+\[
+ A_0=h_0^4+12h_0^2h_1^2+4h_1^4-11,\qquad
+ B_0=4h_0h_1(h_0^2+2h_1^2)+6,
+\]
+\[
+ c_0=2A_0+B_0,\quad d_0=-A_0-B_0,
+\]
+\[
+ A'=6A_0^3-9A_0B_0^2-4B_0^3,\qquad
+ B'=-4A_0^3+6A_0B_0^2+3B_0^3.
+\]
+Adjoin one root $Y$ of
+\begin{equation}\label{eq:pointquartic}
+ Y^4-4A'Y^2+8(B')^2=0,\qquad
+ j=\frac{Y/2+(B'/Y)\sqrt2}{c_0+d_0\sqrt2}.
+\end{equation}
+This chart is complete and separable at every rational retained-base
+specialization~\cite{QuadraticCharts,SquarePredicate}. Its discriminant is
+\[
+ 2^{15}B'^2(2A_0^2-B_0^2)^4(A_0^2-2B_0^2)^2\ne0.
+\]
+The nonvanishing follows from the norm obstruction to $h^4=D$,
+the identity
+$A'^2-2B'^2=(2A_0^2-B_0^2)^2(A_0^2-2B_0^2)$,
+and the Eisenstein cubic $4T^3-6T-3$ excluding $B'=0$.
+
+Write the integer labels of $(A,S,T_1,Z)$ as $(n,a,t,b)$, and set
+\[
+ c=|a-1|,\qquad B=\max(|n|,|a|,|t|,|b|).
+\]
+The affine formula for $S-P$ includes its equal-abscissa guard, so
+$a\ne\pm1$ and $c>0$. Put
+\[
+ Q_0=P,\quad (Q_1,Q_2,Q_3,Q_4)=(A,S,T_1,Z),\quad U_0=H_0,
+\]
+\[
+ (U_1,U_2,U_3,U_4)=(U_A,U_S,U_T,U_Z),\qquad V_i=U_i-Q_i.
+\]
+All differences use the usual guarded affine addition formulas.
+
+\subsection{Comparison and scalar functions}
+
+Write $f(Q)=1/x(Q)$ and $z(Q)=-x(Q)/y(Q)$. The order-four
+formal-logarithm truncation is $z(Q)$ itself. Set
+\[
+ L_i=\frac{z(U_i)}{z(H_0)},\qquad
+ L_i'=\sigma\left(\frac{z(V_i)}{z(V_0)}\right)
+ \quad(1\le i\le4),
+\]
+and
+\[
+ \mathcal F(u,v,w)=v^2-u(u-2)vw+(u-2)^2w^2-1,
+ \qquad \beta=216X^4+450459.
+\]
+The sixteen comparison functions, in order, are
+\begin{equation}\label{eq:comparisons}
+ \begin{gathered}
+ (f(U_i))_{i=0}^4,\qquad (\sigma f(V_i))_{i=0}^4,\\
+ (L_i-L_i')_{i=1}^4,\qquad L_1-\beta,\qquad
+                              \mathcal F(L_2,L_3,L_4).
+ \end{gathered}
+\end{equation}
+Denote them by $C_1,\ldots,C_{16}$, and put
+\[
+ m_i=1\quad(1\le i\le10),\qquad
+ m_i=3\quad(11\le i\le16).
+\]
+Let $\eta_1,\ldots,\eta_6\in\Q$ be the two rational coefficients
+in the basis $1,\sqrt2$ of each of
+\begin{equation}\label{eq:scalar-functions}
+             f(H_0),\qquad f(S-P),\qquad z(S-P)/z(H_0),
+\end{equation}
+in that order.
+
+For fixed odd $L\ge3$, define
+\begin{equation}\label{eq:rho}
+ \begin{gathered}
+ \ell=76249,\qquad
+ r=\beta(\beta-1)(\beta-2401)(32\beta+343)(2\beta-1),\\
+ C_L=17(\ell^{(L+1)/2}+1),\qquad
+ \rho=\frac{102^2\ell^Lr}{(1+C_Lr)^2}.
+ \end{gathered}
+\end{equation}
+The scalar normalization theorem~\cite{Normalizer} gives
+\begin{equation}\label{eq:forcedrho}
+ v_\ell(\rho)=
+ \begin{cases}L,&v_\ell(X)\ge0,\\L-20v_\ell(X),&v_\ell(X)<0.
+ \end{cases}
+\end{equation}
+This valuation is positive and odd. The same theorem gives, for real $X$,
+\begin{equation}\label{eq:smallrho}
+                  0<\rho<\frac{36}{\ell r}<1.
+\end{equation}
+For integral $X$, the reduced denominator of $\rho$ is a square;
+its squareclasses and depths at $2,3,17$ satisfy~\eqref{eq:prepared},
+and $v_2(\rho)=4$.
+
+\subsection{Three scales and three pole inputs}
+
+Put
+\[
+ \Theta=\{0,-1/2,-1,1/2399,-32/407\},
+\]
+\[
+ \Theta_j=(4j+2+\Theta)\cup(4j+4+\Theta),\qquad
+ \gamma_j=-j-1\quad(j=0,1,2).
+\]
+All thirty contacts are positive. The three contact-and-pole sets
+are pairwise disjoint. Write
+\[
+ \mathcal S=\sum_{i=1}^4x(Q_i)=S_0+S_1\sqrt2,
+ \qquad U=S_0,\qquad V=S_0+S_1,
+\]
+and define
+\begin{equation}\label{eq:scales}
+ A_0=1,\qquad A_1=(1+\rho U^2)^2,\qquad
+ A_2=(1+\rho V^2)^2,\qquad t_j=A_j\lambda.
+\end{equation}
+These scales are positive rational squares. For $j=0,1,2$, set
+\begin{equation}\label{eq:contactfunctions}
+ \delta_j=t_j-\gamma_j,\qquad
+ R_j=\frac{\prod_{\theta\in\Theta_j}(t_j-\theta)}{\delta_j^{10}},
+ \qquad w_j=\rho R_j.
+\end{equation}
+Require every contact and $\delta_j$ to be nonzero.
+
+For nonzero rational $q$ put $\Phi_q(v)=qv/(1+qv)$ on its
+nonzero-denominator domain. Define
+\begin{equation}\label{eq:weights}
+ G_{j,k}=R_j^3\Phi_{R_j}(\eta_k),
+\end{equation}
+\begin{equation}\label{eq:W}
+ W_j=\prod_{i=1}^{16}
+       \left(1+w_j\left(\frac{C_i}{\delta_jw_j^{m_i}}\right)^2\right)
+     \prod_{k=1}^{6}
+       \left(1+w_j\left(\frac{G_{j,k}}{w_j^3}\right)^2\right),
+\end{equation}
+\begin{equation}\label{eq:poleinputs}
+                      b_j=\frac{4\rho R_j}{\Tr_{K/\Q}(W_j^{-1})^2}.
+\end{equation}
+Each $b_j$ receives the pole predicate~\eqref{eq:pole}. Its first
+conic uses two retained rational parameters $\tau_j,s_j$ and
+\[
+ e_j=\frac{\tau_j^2-B_j}{\tau_j^2+3B_j},\qquad
+ p_j=\frac{-4B_j\tau_j}{\tau_j^2+3B_j},\qquad B_j=17b_j.
+\]
+The second equation is a single nonzero quadratic root after rational
+square clearing. The nonzero-witness form of the inherited converse
+makes this conic chart complete~\cite{PointSource}.
+
+Let $\Sigma$ be the primes at most $76176$, together with every
+prime dividing a numerator or denominator of a contact, a pole, or
+a nonzero difference between two such values. Exact factorization gives
+\begin{equation}\label{eq:exceptional}
+ \Sigma\setminus\{p:p\le76176\}
+ =\{149027,272011,1875611,3828397,3982747\}.
+\end{equation}
+Their product, denoted by $E_*$, satisfies $E_*<2^{100}$, and
+$\ell\notin\Sigma$. The checker in Section~\ref{sec:certificate}
+verifies these assertions independently by integer trial division.
+
+\section{Local divisibility}
+
+At primes outside $\Sigma$ all valuations on completions of $K$
+are integer valued and normalized by $v(p)=1$. A zero test function
+has valuation $+\infty$.
+
+\begin{lemma}\label{lem:trace}
+Suppose $\alpha=v_p(w_j)$ is odd and $b_j$ has a pole certificate.
+Then $\alpha>0$. At some place of $K$ above $p$, every factor
+of $W_j$ has valuation greater than $-\alpha/2$.
+\end{lemma}
+\begin{proof}
+The nonzero second summand of a factor $1+w_jq^2$ has odd
+valuation, so that factor has valuation at most zero. A zero second
+summand gives the unit factor $1$. Hence $W_j^{-1}$ is integral at
+every place above $p$, and its trace is integral. The pole obstruction
+and~\eqref{eq:poleinputs} give
+\[
+ 0\le\alpha-2v_p(\Tr(W_j^{-1})),\qquad
+ v_p(\Tr(W_j^{-1}))\le(\alpha-1)/2.
+\]
+Thus $\alpha>0$. At least one local value of $W_j^{-1}$ has
+valuation at most $(\alpha-1)/2$; otherwise so would its trace.
+At that place the sum of the nonpositive valuations of the factors
+of $W_j$ is greater than $-\alpha/2$. Each summand is therefore
+greater than $-\alpha/2$.
+\end{proof}
+
+\begin{lemma}\label{lem:unit}
+If $v_p(\rho)$ is odd, then at least one of $R_0,R_1$ is a unit.
+\end{lemma}
+\begin{proof}
+A balanced function $R_j$ is a unit whenever $v_p(t_j)\ne0$,
+because all contacts and poles are units. If $U=0$, then
+$A_1=1$, and disjointness of the two reduced contact-and-pole sets
+proves the assertion directly. Otherwise write
+$\kappa=v_p(\rho U^2)$, which is odd. If $\kappa>0$, then
+$A_1\equiv1\pmod p$. For nonunit $\lambda$, both arguments
+are nonunits and both contact functions are units. For unit
+$\lambda$, the arguments have the same residue; the disjointness
+of the two contact-and-pole sets modulo $p$ prevents both functions
+from being nonunits. If $\kappa<0$, then $v_p(A_1)=2\kappa\ne0$.
+The arguments $t_0$ and $t_1$ cannot both be units, so at least one
+of their balanced functions is a unit.
+\end{proof}
+
+\begin{lemma}\label{lem:scalar}
+If $\mu=v_p(\rho)$ is odd, then $\mu>0$ and
+\[
+                           v_p(c)\ge2\mu+1\ge3.
+\]
+In particular
+\begin{equation}\label{eq:cforced}
+               c\ge\ell^{2L+1},\qquad 4L\log\ell\le2\log c.
+\end{equation}
+\end{lemma}
+\begin{proof}
+Choose a unit $R_j$ by Lemma~\ref{lem:unit}. Lemma~\ref{lem:trace}
+forces $\mu>0$. Applied to each scalar factor, it gives
+\[
+                           v(G_{j,k})>9\mu/4.
+\]
+For a unit $R_j$, positive valuation of $\Phi_{R_j}(\eta_k)$
+implies positive valuation of $\eta_k$, and the two valuations
+are equal. Therefore every rational scalar component has valuation
+$>9\mu/4$, hence at least $2\mu+1$.
+
+Both $H_0$ and $S-P$ are then in the formal group at every place
+above $p$. If $H_0=[h]P$, the full formal-logarithm ratio is
+$(a-1)/h$. The quotient of a formal parameter and its logarithm
+is a unit. The third pair of scalar components consequently gives
+\[
+ v_p(a-1)-v_p(h)
+       =v(z(S-P)/z(H_0))\ge2\mu+1.
+\]
+Since $h$ is an integer, this proves the asserted bound for $c$.
+Apply it at $\ell$, using~\eqref{eq:forcedrho}, to obtain
+\eqref{eq:cforced}.
+\end{proof}
+
+\begin{lemma}\label{lem:comparison}
+Let $v_p(R_j)=\nu>0$ be odd and suppose $v_p(\rho)$ is even.
+At some place above $p$, the first ten functions in
+\eqref{eq:comparisons} have positive valuation and the last six
+have valuation at least three.
+\end{lemma}
+\begin{proof}
+At such a contact prime $\delta_j$ is a unit. The integer
+$\alpha=v_p(\rho)+\nu$ is odd. By Lemma~\ref{lem:trace},
+$\alpha>0$ and the comparison factors at one place satisfy
+\[
+ \alpha+2\bigl(v(C_i)-m_i\alpha\bigr)>-\alpha/2
+\]
+whenever the second summand is not integral. The same resulting
+lower bound holds if it is integral. Thus
+\[
+                   v(C_i)>(m_i-3/4)\alpha\ge m_i-3/4,
+\]
+which gives $v(C_i)\ge m_i$ by integer rounding.
+\end{proof}
+
+For a point in the first formal neighborhood at $p>76176$, one has
+\begin{equation}\label{eq:formal}
+ v(\log_E(Q)-z(Q))\ge5v(z(Q)),\qquad
+                         z(Q)/\log_E(Q)\in1+p^4\mathcal O.
+\end{equation}
+This follows from the formal logarithm of $y^2=x^3-Dx$, whose
+first omitted term has parameter order five; the integral-denominator
+estimate at these primes is proved in~\cite{PointSource,RawSource}.
+Positive valuation of $1/x(Q)$ is equivalent to membership in the
+first formal neighborhood.
+
+Suppose Lemma~\ref{lem:comparison} applies, and write
+$U_i=[u_i]P$, $H_0=[h]P$, and
+$(n_1,n_2,n_3,n_4)=(n,a,t,b)$. The exact logarithm ratios are
+\[
+             r_i=u_i/h,\qquad r_i'=(u_i-n_i)/(h-1).
+\]
+At least one of $h,h-1$ is a $p$-unit, so its ratio is integral.
+The cross comparison and~\eqref{eq:formal} make the other truncated
+ratio integral as well. Both relative errors are then absolute
+errors, and modulo $p^3$ one has $L_i\equiv r_i\equiv r_i'$.
+Multiplying by $h,h-1$ and subtracting gives
+\[
+                             L_i\equiv n_i\pmod{p^3}.
+\]
+Define the integer residual $\Delta=\mathcal F(a,t,b)$. If
+$\beta=u/v$ is reduced with $v>0$, the direct target also makes
+$\beta$ integral at $p$. Consequently
+\[
+                         p^3\mid\Delta,\qquad p^3\mid u-nv.
+\]
+
+Let $M_j$ be the product of primes outside $\Sigma$ at which $R_j$
+has positive odd valuation. At a prime in $M_j$, an odd scalar
+valuation invokes Lemma~\ref{lem:scalar}; an even scalar valuation
+invokes Lemma~\ref{lem:comparison}. Therefore, for either nonzero
+integer residual $N=\Delta$ or $N=u-nv$,
+\begin{equation}\label{eq:divisibility}
+                         M_j^3\mid Nc\quad(j=0,1,2).
+\end{equation}
+No prime shared by the scalar and comparison coefficients is omitted.
+
+\section{Effective height bounds}\label{sec:heights}
+
+Set
+\begin{equation}\label{eq:Hbar}
+                         \overline H=2^{221470}.
+\end{equation}
+All constants in this section are independent of $X$ and $L$.
+
+\subsection{Scalar contacts and a coprime divisibility}
+
+Let $M_\beta^\circ$ be the product of primes in $M_5(\beta)$
+outside $\Sigma$. Such a prime has positive odd valuation in $\rho$.
+Indeed, a negative valuation of $\beta$ is a multiple of four,
+so its denominator cannot contribute an odd contact. At a finite
+contact exactly one of the five factors of $r$ has positive odd
+valuation, and $1+C_Lr$ is a unit. The additional factor $2\beta-1$
+is a unit at these four finite contacts outside $\Sigma$.
+Lemma~\ref{lem:scalar} gives
+\[
+                         (M_\beta^\circ)^3\mid c.
+\]
+The prime $\ell$ does not contribute to $M_5(\beta)$. For
+$\ell$-integral $X$, enumeration of fourth-power residues excludes
+$\beta\equiv0,1,2401,-343/32\pmod\ell$; for nonintegral $X$,
+$v_\ell(\beta)$ is a multiple of four. The independent certificate
+in Section~\ref{sec:certificate} checks the finite enumeration.
+Combining this coprimality with~\eqref{eq:cforced} yields the stronger
+product divisibility
+\begin{equation}\label{eq:coprime}
+               \ell^{2L+1}(M_\beta^\circ)^3\mid c.
+\end{equation}
+
+Removing the five additional exceptional primes from a contact
+radical changes it by a factor at most $E_*$. Therefore
+\eqref{eq:baseheight} and $E_*<2^{100}$ give
+\begin{equation}\label{eq:scalarheight}
+ h(\beta)\le\overline H(M_\beta^\circ)^{7/3}
+       \le\overline H\left(\frac{c}{\ell^{2L+1}}\right)^{7/9}
+       \le\frac{\overline H}{\ell^{2L+1}}c.
+\end{equation}
+The last inequality uses $c/\ell^{2L+1}\ge1$. The factor
+$\ell^{2L+1}$ is retained before applying the height bound; it is
+not absorbed into an unspecified constant.
+
+The scalar coefficient also has the elementary estimate
+\begin{equation}\label{eq:rhoheight}
+                    h(\rho)\le15h(\beta)+2L\log\ell+128.
+\end{equation}
+To prove it, put $K_0=2\cdot2402\cdot375\cdot3=5404500$.
+The elementary height inequalities give
+\[
+ h(r)\le5h(\beta)+\log K_0,
+\]
+\[
+ h(\rho)\le\log102^2+L\log\ell+3h(r)+2\log C_L+2\log2.
+\]
+Since $C_L\le34\ell^{(L+1)/2}$, the remaining constant is
+\[
+ 3\log K_0+2\log34+\log\ell+\log102^2+2\log2<114<128.
+\]
+The displayed bound $114$ follows already from the binary lengths
+of the five positive integers and $\log2<1$.
+
+\subsection{Ten-contact heights}
+
+For $s\in\{2,4,6,8,10,12\}$ the rational map
+\[
+                         q_s=2+\frac1{t-s}
+\]
+sends $s+\Theta$ to the five contacts
+$\infty,0,1,2401,-343/32$. Its inverse has the integral matrix
+\[
+                         \begin{pmatrix}s&1-2s\\1&-2\end{pmatrix},
+\]
+whose determinant is $-1$ and whose largest absolute row sum is
+at most $35$. Thus $h(t)\le h(q_s)+\log35$.
+Outside $\Sigma$, this map preserves contact multiplicities, and
+the odd radical of $q_s$ is exactly the odd radical of the five
+translated contacts. Denote that radical by $M_s$.
+
+For each $j$, the two five-contact sets are disjoint modulo every
+prime outside $\Sigma$. The denominator $\delta_j^{10}$ contributes
+only even valuations. Hence
+\[
+                         M_{4j+2}M_{4j+4}=M_j.
+\]
+If $h(t_j)>\log35$, applying~\eqref{eq:baseheight} to both
+five-contact sets and multiplying gives
+\[
+ \bigl(h(t_j)-\log35\bigr)^2
+                  \le H^2E_*^{14/3}M_j^{7/3}.
+\]
+The same final bound is immediate if $h(t_j)\le\log35$.
+Since
+\[
+ \log35+H E_*^{7/3}<2^{221470}=\overline H,
+\]
+we conclude that
+\begin{equation}\label{eq:tenheight}
+                         h(t_j)\le\overline H M_j^{7/6}
+                         \qquad(j=0,1,2).
+\end{equation}
+All excluded primes and the height cost of translation have now
+been included explicitly.
+
+\subsection{Two rational components of the abscissa sum}
+
+The effective sum-height theorem~\cite{Sums} gives
+\[
+                         B^2\le2h(\mathcal S)+80.
+\]
+The variables $U=S_0$ and $V=S_0+S_1$ satisfy
+\[
+                         \mathcal S=(1-\sqrt2)U+\sqrt2 V.
+\]
+At finite places both coefficients are integral. The product of
+the two real coefficient sums is
+$(2\sqrt2-1)(2\sqrt2+1)=7$. It follows that
+\[
+ h(\mathcal S)\le h(U)+h(V)+\tfrac12\log7,
+ \qquad B^2\le2h(U)+2h(V)+82.
+\]
+This uses $\log7<2$.
+
+For $W=U,V$, respectively, the two nontrivial scales satisfy
+\[
+ h((1+\rho W^2)^2)
+       \ge4h(W)-2h(\rho)-2\log2.
+\]
+The nonzero slope gives $A_j=t_j/t_0$. Combining these inequalities
+with $2\log2<2$ yields
+\begin{equation}\label{eq:sumheight}
+ B^2\le h(t_0)+\tfrac12h(t_1)+\tfrac12h(t_2)
+                       +2h(\rho)+84.
+\end{equation}
+Consequently, for either nonzero residual $N=\Delta$ or $N=u-nv$,
+\eqref{eq:divisibility}, \eqref{eq:rhoheight}, and
+\eqref{eq:tenheight} give the effective common inequality
+\begin{equation}\label{eq:commonheight}
+ B^2\le2\overline H|Nc|^{7/18}
+                      +30h(\beta)+4L\log\ell+340.
+\end{equation}
+
+\section{An explicit sufficient coefficient parameter}
+
+Assume throughout this section that $L\ge125001$ is odd.
+As $\ell>2^{16}$, equation~\eqref{eq:cforced} gives
+\begin{equation}\label{eq:binaryforced}
+ c\ge\ell^{2L+1}>2^{4000048}.
+\end{equation}
+In particular $\ell^{2L+1}>120\overline H$, so
+\eqref{eq:scalarheight} implies
+\begin{equation}\label{eq:scalarlinear}
+                         h(\beta)\le c/120.
+\end{equation}
+Using $4L\log\ell\le2\log c$, the last three terms of
+\eqref{eq:commonheight} are bounded above by
+\[
+                       c/4+2\log c+340.
+\]
+For $c\ge100$, this is less than $(c-1)^2/2\le B^2/2$.
+For example, use $\log c\le c$: the polynomial
+$(c-1)^2/2-9c/4-340$ is positive at $100$ and increasing thereafter.
+Thus these three terms can be absorbed into $B^2/2$.
+
+\subsection{Vanishing of the Lucas residual}
+
+If $\Delta\ne0$, the elementary bounds $B>4$, $c\le2B$ and
+$|\Delta|\le5B^4$ give $|\Delta c|\le10B^5$.
+Equation~\eqref{eq:commonheight} then implies
+\[
+ B^{1/18}\le4\overline H10^{7/18},
+ \qquad
+ B\le4^{18}10^7\overline H^{18}<2^{3986520}.
+\]
+Here $10^7<2^{24}$ gives the last strict inequality. This contradicts
+$B\ge c-1$ and~\eqref{eq:binaryforced}. Therefore
+\begin{equation}\label{eq:Delta0}
+                              \mathcal F(a,t,b)=0.
+\end{equation}
+
+We recall the elementary growth consequence of this equation,
+including its proof. If $|a|>7$ and $b\ne0$, then
+\begin{equation}\label{eq:Lucasgrowth}
+                              \log B>c-4.
+\end{equation}
+Indeed, put $A=|a|$ and $C=|(a-2)b|$. Equation~\eqref{eq:Delta0}
+implies that $T=|t|$ and $C$ are positive integer solutions of
+$T^2-ATC+C^2=1$. Their signs before taking absolute values must
+agree after multiplying $(a-2)b$ by $\operatorname{sgn}(a)$.
+For the recurrence $U_0=0$, $U_1=1$,
+$U_{j+1}=AU_j-U_{j-1}$, every positive solution is an unordered
+pair of adjacent terms. To see this, order its coordinates
+$M\ge m>0$ and replace them by
+\[
+                         \left(m,Am-M\right),\qquad
+               Am-M=(m^2-1)/M\in[0,m).
+\]
+This preserves the equation and descends to $(1,0)$.
+Hence $C=U_j$ for some $j\ge1$ and $T\ge U_{j-1}$.
+Writing $d=|a-2|$, the recurrence modulo $d$ gives
+$U_j\equiv j$ if $a>0$ and
+$U_j\equiv(-1)^{j-1}j$ if $a<0$. Since $d\mid C$,
+we have $j\ge d\ge A-2$. Also
+$U_r>(A-1)^{r-1}$ for $r\ge2$, by induction.
+It follows that
+\[
+ \log T>(j-2)\log(A-1)\ge(A-4)\log7>A-3\ge c-4,
+\]
+proving~\eqref{eq:Lucasgrowth}. Its hypotheses hold here because
+$c$ satisfies~\eqref{eq:binaryforced} and all root labels are nonzero.
+
+\subsection{Integrality of the input}
+
+Suppose $\beta\ne n$. For $\beta=u/v$ reduced with $v>0$, put
+$N=u-nv\ne0$. Then
+\[
+                         |Nc|\le4e^{h(\beta)}B^2.
+\]
+After the same absorption, equation~\eqref{eq:commonheight} gives
+\[
+ B^{11/9}\le4\overline H4^{7/18}e^{(7/18)h(\beta)}.
+\]
+Taking logarithms and using $\log2<1$ yields
+\begin{equation}\label{eq:inputlog}
+ \log B<181205+\frac7{22}h(\beta)
+          \le181205+\frac7{2640}c<c-4.
+\end{equation}
+The last inequality holds already for $c\ge10^6$; its two sides
+have constant slopes and it holds strictly at $10^6$.
+This contradicts~\eqref{eq:Lucasgrowth}, so $\beta=n\in\Z$.
+If $X=u_0/v_0$ is reduced with $v_0>0$, integrality of
+$216X^4+450459$ implies $v_0^4\mid216=2^3 3^3$.
+Thus $v_0=1$ and $X\in\Z$. This proves soundness for every
+fixed odd $L\ge125001$.
+
+\section{Completeness}
+
+Fix an integer input $X$ and any fixed odd $L\ge3$.
+The construction below gives a rational source witness. Its order
+of choices is relevant: the prime-pattern input is applied only
+after the root labels, scales, neighborhoods and finite avoidance
+conditions have been fixed.
+
+\subsection{Scalar preparation and fixed neighborhoods}
+
+Let $\mathcal P$ consist of the finite prime support of $\rho$,
+$\Sigma$, and $2,3,17$. Choose $H_0=[h_0]P$, with positive
+$h_0>2$ divisible by $64$, in sufficiently deep formal subgroups
+at the finite preparation places and sufficiently close to the
+identity at both real embeddings. Such real returns exist in the
+compact closure of the cyclic subgroup after any finite index
+restriction. Now choose a positive $c$ divisible by $6$ and any
+additional required finite modulus, with $[c]P$ still closer to
+the identity at those places. Put $a=c+1$ and $S=[a]P$.
+The six scalar components in~\eqref{eq:scalar-functions} can
+thereby be made arbitrarily small simultaneously. For the ratio,
+$H_0$ has already been fixed with nonzero local parameter, and
+$[c]P$ can approach the identity as closely as needed. Deep formal
+subgroups and continuity give this assertion also at ramified
+and bad primes, as in the scalar realization of~\cite{Source}.
+
+With $\rho$ fixed, make the scalar factors in~\eqref{eq:W}
+arbitrarily close to $1$ whenever $R_j$ is close to $1$ at
+a finite preparation prime, and whenever $1/2<R_j<2$ over the
+reals. In the latter case also require $|\eta_k|<1/4$, so
+$1+R_j\eta_k>1/2$ for all six denominators.
+
+Set $n=\beta$. Define
+\[
+ U_0=0,\quad U_1=1,\quad U_{m+1}=aU_m-U_{m-1},\qquad
+ k=2(a-2),\quad b=U_k/(a-2),\quad t=U_{k+1}.
+\]
+The recurrence modulo $a-2$ gives $U_k\equiv k\equiv0$, so
+$b$ is integral. Its usual determinant identity gives
+$\mathcal F(a,t,b)=0$. Since $a$ is odd and $a\equiv1\pmod3$,
+the sequence modulo two has period $0,1,1$ and $k\equiv1\pmod3$.
+Thus $n,a,t,b$ are positive and odd. The root points and all three
+positive square scales are now fixed.
+
+Temporarily use $H=[h]P$, $U_i=[hn_i]P$. Restrict $h$ to a
+fixed congruence class at the finite preparation places and to a
+compact real neighborhood preserving all scalar bounds. Shrink
+these neighborhoods so that all raw comparison functions remain
+bounded and all their original charts are defined. The relevant
+multiplication and translation maps have only finitely many poles;
+at an integer $h>2$ their equal-abscissa failures are absent because
+$n_i\ne0$. There are no comparison normalization denominators.
+Take the initial modulus to be divisible by $64$ and by the order
+of the component group of the compact real closure of $\Z P$.
+That component group is finite, since the closure is a compact
+real Lie subgroup.
+
+\subsection{A clustered prime choice and the common index}
+
+Apply the rational-contact version of the prime-pattern input to
+$-\theta/A_j$, for $j=0,1,2$ and $\theta\in\Theta_j$.
+Repeated coefficients are listed once, with all incidences retained.
+It provides
+\[
+                         \lambda=u/v,\qquad v=D_0^2w^2,
+\]
+with every
+$p_i=u-(\theta/A_j)v$ a prescribed positive prime. Require these
+primes to avoid every fixed preparation prime, every numerator or
+denominator of a scale, every relevant contact difference, and
+all primes where a coordinate or the nonzero local parameter of
+$P$ or $S-P$ is not a unit. These are finite conditions, fixed
+before prime selection. Prescribe enough divisibility of $w$ to
+make $\lambda$ arbitrarily large in absolute value at all finite
+preparation places, and choose it arbitrarily large and positive
+at the real place. The rational-contact and avoidance consequences
+are those established in~\cite{Dependencies}.
+
+As $\lambda$ tends to infinity at any preparation place, $R_j$
+tends to $1$ and $\delta_j^{-1}$ to zero. The scalar factors
+are close to $1$ by preparation. The comparison factors tend
+uniformly to $1$ on the bounded comparison neighborhoods. Thus
+all required finite and real closeness conditions can be imposed
+by fixed requirements before invoking the prime-pattern input.
+
+Impose additionally
+\begin{equation}\label{eq:cluster}
+ \lambda>4\max_{j,\theta\in\Theta_j}(\theta/A_j),\qquad u\ge25.
+\end{equation}
+All contacts are positive, so every selected prime lies in
+$(3u/4,u)$. The full order of either conjugate reduction of $E$
+at any selected prime $p_k$ is even and bounded by
+\[
+ p_k+1+2\sqrt{p_k}<u+1+2\sqrt u<3u/2.
+\]
+The evenness follows from the rational two-torsion. For $u\ge25$,
+$\sqrt u\le u/5$ and $1<u/10$, proving the last inequality.
+If a selected odd prime $p_i$ divided one of these even group
+orders, that order would be at least $2p_i>3u/2$, a contradiction.
+Consequently every selected prime is coprime to every prescribed
+annihilating reduction modulus.
+
+The inherited conjugate-order construction imposes the primary
+annihilation on $h$, the opposite annihilation on $h-1$, and the
+initial fixed congruence on $h$. Its odd coprimality and two-adic
+compatibility are proved in~\cite{Dependencies}. The preceding
+paragraph permits the additional simultaneous congruences
+\begin{equation}\label{eq:hcongruence}
+                              h\equiv0\pmod{\prod_i p_i}.
+\end{equation}
+All selected primes also avoid the initial fixed modulus.
+
+This refined arithmetic progression still meets the prepared real
+neighborhood. Indeed, let $G$ be the compact closure of $\Z P$
+and $G^\circ$ its identity component. If the initial modulus $m$
+annihilates $G/G^\circ$, then $mG=G^\circ$: containment is clear,
+and multiplication by $m$ on the compact torus $G^\circ$ is
+surjective. For every positive integer $r$ one likewise has
+$mrG=G^\circ$. Hence every compatible refinement of the index
+congruence has the same closure in the prepared component.
+Choose an index $h>2$ in the refined progression and real
+neighborhood. Set $H_0=[h]P$ and $U_i=[hn_i]P$.
+
+\subsection{The linear scalar tests at the selected primes}
+
+At a selected prime $p$ for detector $j$, one has
+$v_p(R_j)=1$, while $\rho$ and $\delta_j$ are units. The
+reduction-order conditions put the required $U_i$ and $V_i$
+in their first formal neighborhoods. The first ten comparison
+functions therefore have valuation at least two. Their exact
+logarithm ratios are the integers $n_i$; equation~\eqref{eq:formal}
+gives valuation at least four for the last six comparisons.
+At the designated place every comparison second summand in
+\eqref{eq:W} thus has valuation at least three.
+
+We verify separately the six linear scalar denominators. At the
+primary place, $[h/p]P$ is in the formal group: division by $p$
+preserves reduction annihilation because the reduction modulus
+is coprime to $p$. Since $H_0=[p]([h/p]P)$, its local parameter
+has valuation at least two. At the opposite place, $H_0$ reduces
+to $P$, whose coordinates and parameter are units by avoidance.
+The selected primes split in $K$, as provided by the prime pattern.
+The two rational components of $f(H_0)$ are units: its two local
+values have respectively positive and zero valuation. The two
+components of $f(S-P)$ are integral. Finally, the local values
+of $z(S-P)/z(H_0)$ have valuations at most $-2$ and exactly zero;
+its two rational components consequently both have valuation at
+most $-2$. Here $2$ and $\sqrt2$ are units, so the sum and
+scaled difference of two values with unequal valuations preserve
+the smaller valuation.
+
+Every rational component $\eta_k$ thus has either nonnegative
+valuation or valuation at most $-2$. Since $v_p(R_j)=1$,
+$v_p(R_j\eta_k)\ne0$. The identity
+\[
+ v\left(\frac{x}{1+x}\right)=\max(0,v(x))\quad(v(x)\ne0)
+\]
+shows that every $\Phi_{R_j}(\eta_k)$ is integral.
+Consequently $v_p(G_{j,k})\ge3$, and all scalar second summands
+in~\eqref{eq:W} have positive valuation at both places over $p$.
+No upper bound on the initial formal depth is used.
+
+\subsection{The pole certificates}
+
+The exact contact factorization is
+\[
+ R_j=\left(\frac{A_j}{v\delta_j}\right)^{10}
+                  \prod_{\theta\in\Theta_j}
+                         \left(u-(\theta/A_j)v\right).
+\]
+Thus $R_j$ is a positive rational square times its ten selected
+primes, each of which has valuation exactly one and avoids the
+support of $\rho$. At the designated place over such a prime,
+$W_j^{-1}\equiv1$. At the conjugate place every factor has
+nonpositive valuation, since a nonzero second summand has odd
+valuation. Its inverse is congruent to zero or one, and so
+$W_j^{-1}\equiv0$ or $1$ there. The trace is therefore congruent
+to $1$ or $2$ and is a unit. The odd valuation of $b_j$ is positive.
+At primes in the support of $\rho$, both $R_j$ and $W_j$ are
+arbitrarily close to $1$ by preparation, so the odd valuations
+remain nonnegative in $b_j$. At every other prime the valuation
+of $\rho R_j$ is even, as is its change under division by the
+square trace. Each $b_j$ has square reduced denominator.
+
+At $2,3,17$, choose the same neighborhoods so that $R_j$ is a
+local square and $\Tr(W_j^{-1})$ is sufficiently close to $2$.
+The squareclass of $b_j$ is then that of $\rho$. At two, the
+factor $4$ in~\eqref{eq:poleinputs} cancels the limiting trace
+square and gives $v_2(b_j)=4$; the required depths at three and
+seventeen are unchanged. At the real embeddings arrange
+$1/2<R_j<2$ and $1\le W_j<2$. Every second summand is positive
+or zero, and preparation makes their finite product less than two.
+The trace is at least one, giving
+\[
+                              0<b_j<8\rho<17.
+\]
+All scalar denominators are nonzero by $|R_j\eta_k|<1/2$;
+all products and traces are nonzero by positivity. The inherited
+converse now supplies the three nonzero pole witnesses in the
+specified conic charts. All nine point charts are available, since
+the root labels are nonzero and the guarded differences have
+$h>2$, $a>1$. This completes the source witness for every integer
+input and every fixed odd $L\ge3$.
+
+\section{One polynomial and its numerical bounds}
+
+The retained coordinates consist of the input $X$, eighteen point
+coordinates, one nonzero slope, and six pole parameters. Their
+number is twenty-six. The finite algebra has nine quartic generators
+and three nonzero quadratic pole generators, hence rank
+\[
+                             4^9 2^3=2^{21}.
+\]
+The active finite-algebra construction~\cite{Active} eliminates all
+twelve finite roots and retains all guards with one additional
+rational coordinate. This gives exactly twenty-seven total variables.
+
+Here is its finite polynomial specification. Let $B_0$ be the
+algebra of the nine point roots and $A_0$ the algebra after adjoining
+the three pole roots $q_1,q_2,q_3$, with $q_j^2=c_j\in B_0$
+after rational square clearing. Put $b_0=2^{18}$, $n_0=2^{21}$.
+The complete guard has the form $G=gq_1q_2q_3$, with $g\in B_0$.
+There are no additional closed equations. Define
+\[
+ T_0=g^2c_1c_2c_3,\qquad
+ \det_{B_0}(I-vM_{T_0})=\sum_{j=0}^{b_0}a_jv^j,\qquad a_0=1.
+\]
+Let $\theta_1,\ldots,\theta_m$, with $m=12$, be the point and
+pole generators, and let $\delta_i$ be the discriminant of point
+quartic $i$. All nine discriminants are nonzero at every rational
+base specialization. Set
+\[
+ R=n_0\left(1+\sum_{i=1}^{m}\sum_{u,v=1}^{n_0}
+       (M_{\theta_i}^{A_0})_{uv}^2+
+       \sum_{u,v=1}^{b_0}(M_g^{B_0})_{uv}^2\right).
+\]
+For $1\le r\le b_0$, define
+\begin{align*}
+ c_r&=a_r,&h_r(Z)&=\sum_{j=0}^r a_jZ^{r-j},&E_r&=c_r-h_r(T_0),\\
+ D_r&=c_r^2\prod_{i=1}^9\delta_i^2,&s_r&=4r+108,\\
+ K_r&=(2R)^{s_r}(1+c_r^2)\prod_{i=1}^9(1+\delta_i^2),&
+ C_r&=D_r+4RK_r,\\
+ \beta_r&=D_rE_r\left(C_r^m+
+             \sum_{i=1}^m D_r^iC_r^{m-i}\theta_i\right),&
+ H_r(U)&=\det_{A_0}(I-UM_{\beta_r}).
+\end{align*}
+Then
+\begin{equation}\label{eq:polynomial}
+ F_L=H_{b_0}(U)\prod_{r=1}^{b_0-1}
+                 \left(H_r(U)^2+\sum_{j=r+1}^{b_0}a_j^2\right)
+\end{equation}
+is the required polynomial after clearing the fixed integer coefficient
+denominators in the prescribed source construction. The active
+finite-algebra theorem proves that its rational projection is exactly
+the guarded source projection. The displayed product has $262144$
+factors. It is a finite specification by integer polynomial operations;
+no expanded coefficient table of this very large polynomial is needed.
+
+The independent weighted-degree calculation gives, uniformly in $L$,
+\begin{equation}\label{eq:degree}
+ \deg F_L\le99950805468739574201057280<2^{87}.
+\end{equation}
+At the explicit defining member $L=125001$, the maximum absolute
+integer coefficient is less than
+\begin{equation}\label{eq:coefficients}
+                                  2^{\,2^{102}}.
+\end{equation}
+The separating variable has degree at most $E=1099509530624$.
+Writing $D=99950805468739574201057280$, the support is therefore
+bounded above by
+\[
+          \binom{D+27}{27}-\binom{D-E+26}{27}<2^{2198}.
+\]
+This is a support upper bound, not an expanded monomial count. These bounds, together with
+the effective soundness and completeness proofs, establish
+Theorem~\ref{thm:main}.
+
+\section{Exact certificates}\label{sec:certificate}
+
+All verification programs use the Python standard library. The
+independent constant checker is
+\begin{center}
+\nolinkurl{computation/few_variables/effective27_v19/}\par
+\nolinkurl{check_effective27_constants.py}.
+\end{center}
+It factors the numerators and denominators of all thirty contacts,
+the three poles and all pairwise differences. It verifies the
+five extra exceptional primes, their product
+\[
+                         E_*=1159294788412841845761453254053<2^{100},
+\]
+the primality and admissibility of $\ell$, all $76249$ input
+residues modulo $\ell$, and the strict numerical inequalities
+leading to~\eqref{eq:binaryforced}, \eqref{eq:inputlog} and the
+contradiction for $\Delta\ne0$. It uses only integers and exact
+rational arithmetic, including rational lower bounds for the
+exponential where a logarithmic comparison is needed. Its output is
+\nolinkurl{effective27-constants-certificate.json}.
+
+The separate source and finite-algebra certificates in the same
+module reconstruct the thirty contacts, three scales, sixteen raw
+comparison tests, six scalar components, three pole charts and every
+guard. The source has $6892$ rational arithmetic nodes, $2587$
+integer coefficient nodes and $164$ atomic guard factors. The
+source-to-integer conversion, quartic relations, square clearings
+and guard coverage are checked by exact symbolic identities.
+Fifteen independent reconstructions over three finite fields provide
+additional finite evidence for the rational expression formulas;
+they are not a proof of universal polynomial identities. The reports
+\nolinkurl{independent-source-verification.json} and
+\nolinkurl{independent-bound-verification.json} verify the stated
+source census, all $262144$ degree cases, the degree and support
+bounds, and the coefficient bound at $L=125001$. These finite
+checks certify the specification and inequalities stated here; the
+arithmetic inputs remain precisely those in Section~1.
+
+\begin{thebibliography}{99}
+\interlinepenalty=10000
+\bibitem{Active}
+\emph{Separating the Nonzero Part of a Finite Algebra},
+companion paper, 9 November 2026,
+\nolinkurl{active_finite_algebra_20261109_v15.tex}.
+\bibitem{Dependencies}
+\emph{Arithmetic dependencies of the construction with 29 variables},
+companion paper, 8 November 2026,
+\nolinkurl{arithmetic_dependencies_20261108_v8.tex}.
+\bibitem{Multiplicity}
+\emph{Multiplicity of modular factors and quadratic contact-height bounds},
+companion paper, 10 November 2026,
+\nolinkurl{multiplicity_and_contact_heights_20261110_v19.tex}.
+\bibitem{Normalizer}
+\emph{Scalar contact normalization by finite-field avoidance},
+companion paper, 8 November 2026,
+\nolinkurl{scalar_normalization_20261108_v9.tex}.
+\bibitem{PointSource}
+\emph{A defining polynomial in twenty-seven variables:
+an existence theorem with a uniform degree bound},
+companion source paper, 9 November 2026,
+\nolinkurl{few_variables27_nontorsion_20261109_v15.tex}.
+\bibitem{QuadraticCharts}
+\emph{A single quartic chart for square roots in a quadratic extension},
+companion paper, 8 November 2026,
+\nolinkurl{quadratic_square_chart_20261108_v9.tex}.
+\bibitem{RawSource}
+\emph{A Defining Polynomial in Twenty-Five Variables},
+companion paper, 10 November 2026,
+\nolinkurl{few_variables25_merged_20261110_v19.tex}.
+\bibitem{Source}
+E.~Glazer, \emph{Diophantine definition of the integers over the
+rationals}, Version~9, \nolinkurl{manuscripts/quartic_v9.tex},
+commit \nolinkurl{14e8f601fe0d9173d4a5f084aedc3e07066a7688}.
+\url{https://github.com/elliotglazer/diophantine-z-q}.
+The inherited restricted-converse correction is identified
+in~\cite{Dependencies}; the scalar realization is
+\nolinkurl{v5:scalar32-bridge}.
+\bibitem{SquareCharts}
+\emph{Square abscissas and direct charts for the elliptic subgroup},
+companion paper, 8 November 2026,
+\nolinkurl{square_abscissa_charts_20261108_v9.tex}.
+\bibitem{SquarePredicate}
+\emph{Optimal polynomial square tests in quadratic number fields},
+companion paper, 8 November 2026,
+\nolinkurl{quadratic_square_predicates_20261108_v10.tex}.
+\bibitem{Sums}
+\emph{Effective heights of sums of elliptic abscissas},
+companion paper, 8 November 2026,
+\nolinkurl{effective_elliptic_sums_20261108_v10.tex}.
+\bibitem{Sun}
+Z.-W.~Sun, simultaneous prime-pattern theorem,
+Theorem~4.1 of arXiv:2610.20691v2, as pinned in~\cite{Dependencies}.
+\end{thebibliography}
+\end{document}

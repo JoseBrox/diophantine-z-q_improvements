@@ -118,7 +118,18 @@ def check_directory(directory):
     assert spec['family_parameter']==c['family_parameter']
     assert spec['arithmetic_status']==c['arithmetic_status']
     assert c['family_parameter']['quantified'] is False
-    assert c['family_parameter']['selected_member_certified_to_define_Z']==(c['total_variables']==29)
+    family=c['family_parameter']
+    certified=family['selected_member_certified_to_define_Z']
+    assert type(certified) is bool
+    if certified:
+        threshold=family.get('effective_sufficient_threshold',
+                             family.get('certified_sufficient_lower_bound'))
+        assert family['effective_threshold_known'] is True
+        assert family['sufficient_threshold_exists'] is True
+        assert type(threshold) is int and threshold>0
+        assert type(family['value']) is int and family['value']>=threshold
+    # Definability is a separate arithmetic theorem; coordinate count alone
+    # neither certifies nor rules out an effective sufficient parameter.
     graph=inspect_graph(source,c)
     ds=[r['maximum_degree'] for r in source['monic_relations']]
     p=graph['point_relations']; s=graph['quadratic_relations']; m=p+s
