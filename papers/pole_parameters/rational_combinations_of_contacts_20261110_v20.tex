@@ -12,19 +12,21 @@
 \newcommand{\F}{\mathbb F}
 \DeclareMathOperator{\Tr}{Tr}
 \setlength{\emergencystretch}{2em}
-\title{Rational Combinations of Two Contact Values}
+\title{Two Contact Valuations and a Rational Function}
 \author{}\date{10 November 2026}
 \begin{document}\maketitle
 \begin{abstract}
-A single rational combination of two independent contact values
-cannot have odd valuation whenever either contact value does.
-We prove this statement on the exact eighth-power scale used in
-the thirteen-variable construction under weak \(abc\).
-The counterexamples have positive slopes that are sums of two
-integer squares, nonintegral rational inputs, and an input residual
-that is a unit at the prime in question.
-The obstruction concerns this uniform local parity implication;
-it gives no lower bound for arbitrary Diophantine definitions.
+No fixed nonzero rational function of the input and slope can
+have odd valuation whenever either of two independent contact
+values does. We prove this statement on the exact eighth-power
+scale used in the thirteen-variable construction under weak
+\(abc\). The counterexamples have positive slopes that are sums
+of two integer squares, nonintegral rational inputs, and an input
+residual that is a unit at the prime in question. The result
+includes arbitrary rational combinations of the two contact
+values, with explicit dependence on the input or scale allowed.
+It concerns a uniform local parity implication and gives no lower
+bound for arbitrary Diophantine definitions.
 \end{abstract}
 
 \section{The contact function and the statement}
@@ -52,37 +54,43 @@ The argument below uses only that this is a fixed rational number
 greater than \(6\); it uses no \(abc\) inequality.
 
 \begin{theorem}\label{thm:main}
-Let \(\Phi\in\Q(Z_0,Z_1)\) be nonzero, and let \(S\) be any finite
-set of primes. There are infinitely many primes \(p\notin S\)
+Let \(\Psi\in\Q(X,L)\) be nonzero, and let \(S\) be any finite
+set of primes. There are an integer \(C\ge1\), a nonzero vector
+\(\epsilon\in\{0,1\}^2\), and infinitely many primes \(p\notin S\)
 with the following property.
 
-There are positive integers \(\mu,\nu\), at least one of them odd,
-and rational numbers \(X,\lambda\) such that
+For every pair of positive integers \(\mu,\nu\) satisfying
+\[
+                  \nu>C\mu,\qquad
+                  (\mu,\nu)\equiv\epsilon\pmod2,
+\]
+there exist rational numbers \(X,\lambda\) such that
 \begin{gather}
  X\in\tfrac12\Z\setminus\Z,\qquad
  \lambda=s^2+t^2>1\quad(s,t\in\Z),                                      \label{eq:domain}\\
  v_p(R(\lambda))=\mu,\qquad v_p(R(a(X)\lambda))=\nu,                    \label{eq:depths}\\
- \Phi(R(\lambda),R(a(X)\lambda))\ne0
- \quad\hbox{is defined},                                               \label{eq:defined}\\
- v_p\!\left(\Phi(R(\lambda),R(a(X)\lambda))\right)\in2\Z,\qquad
+ \Psi(X,\lambda)\ne0\quad\hbox{is defined},\qquad
+ v_p(\Psi(X,\lambda))\in2\Z,\qquad
  v_p(\beta(X)-n)=0.                                                     \label{eq:miss}
 \end{gather}
-For each such \(p\), both \(\mu\) and \(\nu\) can be made arbitrarily
-large. After fixing the depths, \(\lambda\) and \(|X|\) can also be
-made arbitrarily large.
+For each such \(p\), both depths can be made arbitrarily large.
+After fixing the depths, \(\lambda\) and \(|X|\) can also be made
+arbitrarily large.
 \end{theorem}
 
-Thus the implication
+In particular, the implication
 \[
  \bigl(v_p(R(\lambda))>0\text{ odd}\ \text{or}\
        v_p(R(a(X)\lambda))>0\text{ odd}\bigr)
  \ \Longrightarrow\
- v_p\bigl(\Phi(R(\lambda),R(a(X)\lambda))\bigr)\text{ odd}
+ v_p(\Psi(X,\lambda))\text{ odd}
 \]
 cannot hold uniformly on this parameter domain, even after
 discarding any prescribed finite set of primes.
 Since \(X=q/2\) with \(q\) odd in the theorem,
 \(\beta(X)=q^2/2+B\) is itself nonintegral.
+The theorem allows \(\Psi\) to depend explicitly on \(\beta(X)\)
+or \(a(X)\), since both are rational functions of \(X\).
 
 \section{A valuation lemma}
 
@@ -177,10 +185,14 @@ A root of \(G\) modulo any remaining prime is simple.
 \end{proof}
 
 \begin{lemma}\label{lem:scale}
-There are infinitely many primes \(p\), outside any prescribed
-finite set, and \(\xi\in\Z_p\) such that
+The polynomial \(a(X)-1\) is separable over \(\Q\).
+Fix any one of its roots \(\alpha\), and put \(K=\Q(\alpha)\).
+Outside any prescribed finite set, there are infinitely many
+primes \(p\) admitting an embedding \(\iota:K\hookrightarrow\Q_p\)
+such that, with \(\xi=\iota(\alpha)\),
 \[
-       a(\xi)=1,\qquad a'(\xi)\in\Z_p^\times,\qquad
+       \xi\in\Z_p,\qquad a(\xi)=1,\qquad
+       a'(\xi)\in\Z_p^\times,\qquad
        \beta(\xi)-n\in\Z_p^\times .
 \]
 \end{lemma}
@@ -198,16 +210,120 @@ A common zero of \(f\) and its derivative would have either
 \]
 both impossible because \(B\ge3\) and \(T>6\).
 Thus \(f\) is separable and \(f(0)\ne0\).
-After clearing denominators, apply Lemma~\ref{lem:primevalues},
-also excluding primes dividing the clearing factor and the
-denominator of \(T\). Hensel's lemma lifts every resulting
-simple root to a root \(\xi\in\Z_p\) with \(a'(\xi)\) a unit.
 
-The nonzero rational number \(n^8+T^8-1\) is positive.
-Exclude the primes dividing its numerator. If
-\(\beta(\xi)\equiv n\pmod p\), the equation
-\(a(\xi)=1\) would give \(n^8+T^8-1\equiv0\pmod p\), a
-contradiction. The enlarged excluded set is still finite.
+Let \(G\in\Z[X]\) be a primitive integer multiple of the
+minimal polynomial of \(\alpha\). It is nonconstant and
+\(G(0)\ne0\). Exclude the primes dividing its leading coefficient
+or discriminant, the denominator of \(T\), and the numerator
+and denominator of the norm of the nonzero number \(a'(\alpha)\).
+Lemma~\ref{lem:primevalues} supplies infinitely many remaining
+primes where \(G\) has a simple root. Hensel's lemma lifts it
+to a root \(\xi\in\Z_p\), thereby defining the required embedding.
+Its image \(a'(\xi)\) is a unit; all finitely many denominator
+primes of the algebraic numbers in question may equivalently
+be included in the excluded set.
+
+The rational number \(n^8+T^8-1\) is positive.
+Also exclude the primes dividing its numerator. If
+\(\beta(\xi)\equiv n\pmod p\), then \(a(\xi)=1\) would give
+\(n^8+T^8-1\equiv0\pmod p\), a contradiction.
+All the exclusions are finite.
+\end{proof}
+
+\section{Local expansions of an arbitrary rational function}
+
+To allow dependence on the input as well as the two contact
+values, we use formal local coordinates. The integrality of
+all the coefficients is needed before specializing to rational
+primes.
+
+\begin{lemma}\label{lem:formal}
+Fix a root \(\alpha\) of \(a(X)-1\), put \(K=\Q(\alpha)\), and
+let \(\Psi\in\Q(X,L)\) be nonzero. There are a finite set of
+rational primes \(S_0\), an integer \(C\ge1\), and integers
+\(d_1,d_2\) with the following property.
+
+Let \(p\notin S_0\), let \(\iota:K\hookrightarrow\Q_p\) be an
+embedding, and put \(\xi=\iota(\alpha)\). Suppose
+\(X,L\in\Z_p\), \(X\equiv\xi\pmod p\), and
+\[
+     \mu=v_p(L+1)>0,\qquad
+     \nu=v_p(a(X)L+1)>C\mu .
+\]
+Then \(\Psi(X,L)\) is defined and nonzero, and
+\begin{equation}\label{eq:formalvaluation}
+                         v_p(\Psi(X,L))=d_1\mu+d_2\nu .
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Write \(\Psi=P/Q\) with nonzero \(P,Q\in\Q[X,L]\).
+By inverting finitely many rational primes in \(\mathcal O_K\),
+choose a ring \(A\) containing \(\alpha\), all coefficients
+of \(a,P,Q\), and both \(a'(\alpha)\) and its inverse.
+Thus
+\[
+ a(\alpha+h)-1=c_1h+\cdots+c_{16}h^{16},
+ \qquad c_j\in A,\qquad c_1\in A^\times .
+\]
+There is a unique formal inverse
+\[
+ \mathcal H(z)\in zA[[z]],\qquad
+          a(\alpha+\mathcal H(z))-1=z.
+\]
+Indeed, the first coefficient is \(c_1^{-1}\), and at every
+subsequent degree the new coefficient is obtained from earlier
+ones by ring operations and division by \(c_1\). Consequently
+no additional denominator primes occur.
+
+Set
+\begin{equation}\label{eq:localcoordinates}
+ u=L+1,\qquad v=a(X)L+1,\qquad
+ L=u-1,\qquad
+ X=\alpha+\mathcal H\!\left(\frac{u-v}{1-u}\right).
+\end{equation}
+These are inverse changes of formal coordinates at
+\((X,L)=(\alpha,-1)\); in particular
+\(a(X)-1=(u-v)/(1-u)\).
+The substitution sends \(P,Q\) to nonzero series
+\(\widetilde P,\widetilde Q\in A[[u,v]]\).
+Nonvanishing follows because the two coordinate substitutions
+are inverse isomorphisms of the completed local rings.
+
+For a nonzero series \(F=\sum c_{ij}u^iv^j\), let \(j_F\)
+be the smallest \(j\) with a nonzero coefficient, and then let
+\(i_F\) be the smallest \(i\) occurring with \(j=j_F\).
+For positive weights \(\mu,\nu\) satisfying \(\nu>i_F\mu\),
+the term \(c_{i_Fj_F}u^{i_F}v^{j_F}\) is uniquely of smallest
+weight. Terms with the same \(j\) have larger \(i\), while
+any term with larger \(j\) has excess weight at least
+\(\nu-i_F\mu>0\).
+
+Apply this observation to \(\widetilde P,\widetilde Q\) and
+take \(C=1+\max(i_P,i_Q)\). Enlarge the excluded set of rational
+primes so that the two selected nonzero algebraic coefficients
+are units at every remaining embedding into \(\Q_p\).
+This requires only finitely many primes: after the coefficients
+are integral, exclude the numerator primes of their nonzero
+field norms. All coefficients of the two series are now
+\(p\)-integral, and their selected coefficients are units.
+
+The series converge whenever \(\mu,\nu>0\), since the valuation
+of a term tends to infinity with its total degree.
+For \(\nu>C\mu\), unique minimality therefore gives
+\[
+        v_p(\widetilde P)=i_P\mu+j_P\nu,\qquad
+        v_p(\widetilde Q)=i_Q\mu+j_Q\nu.
+\]
+The actual \(X\) is on this formal inverse branch: its residue
+is \(\xi\), and the unit derivative gives a unique solution
+in that residue class to
+\(a(X)-1=(u-v)/(1-u)\).
+Thus these are the valuations of \(P(X,L),Q(X,L)\).
+Both are nonzero, and~\eqref{eq:formalvaluation} follows with
+\[
+                     d_1=i_P-i_Q,\qquad d_2=j_P-j_Q.
+\]
 \end{proof}
 
 \section{Realizing the two contact valuations}
@@ -245,11 +361,11 @@ to \(s\) makes the norm arbitrarily large.
 \end{proof}
 
 \begin{lemma}\label{lem:independent}
-For each prime furnished by Lemma~\ref{lem:scale} outside
-\(\{2,3,5\}\), and for every pair of positive integers
-\(\mu,\nu\), there are \(X,\lambda\) satisfying
-\eqref{eq:domain}, \eqref{eq:depths}, and
-\(v_p(\beta(X)-n)=0\).
+For each embedding furnished by Lemma~\ref{lem:scale} outside
+\(\{2,3,5\}\), with \(\xi=\iota(\alpha)\), and for every pair
+of positive integers \(\mu,\nu\), there are \(X,\lambda\)
+satisfying \eqref{eq:domain}, \eqref{eq:depths},
+\(X\equiv\xi\pmod p\), and \(v_p(\beta(X)-n)=0\).
 The quantities \(\lambda\) and \(|X|\) can be chosen arbitrarily
 large after fixing \(\mu,\nu\).
 \end{lemma}
@@ -302,17 +418,47 @@ the last assertion.
 \end{proof}
 
 \begin{proof}[Proof of Theorem~\ref{thm:main}]
-Apply Lemma~\ref{lem:parity} with \(d=2\), \(m=1\), and the
-given \(\Phi\). Add its finite exceptional set and
-\(\{2,3,5\}\) to \(S\). Lemma~\ref{lem:scale} supplies infinitely
-many remaining primes. Fix one of them and choose a valuation
-vector \(w_N=(\mu,\nu)\) from Lemma~\ref{lem:parity}.
-Lemma~\ref{lem:independent} realizes that vector on the exact
-scale~\eqref{eq:scale}, with the required global parameter
-conditions and a unit residual. Lemma~\ref{lem:parity} then
-ensures that \(\Phi\) is defined and nonzero and has even
-valuation. Letting \(N\) grow makes both depths arbitrarily
-large.
+Choose a root \(\alpha\) of \(a(X)-1\) and apply
+Lemma~\ref{lem:formal}. The linear map
+\[
+              (\bar\mu,\bar\nu)\longmapsto
+                         d_1\bar\mu+d_2\bar\nu
+\]
+from \(\F_2^2\) to \(\F_2\) has a nonzero kernel vector
+\(\epsilon\). Add the finite exceptional set of that lemma
+and \(\{2,3,5\}\) to \(S\).
+Lemma~\ref{lem:scale} gives infinitely many remaining primes
+and embeddings. Fix one and any positive depths satisfying
+\(\nu>C\mu\) and \((\mu,\nu)\equiv\epsilon\pmod2\).
+Lemma~\ref{lem:independent} realizes these depths with all the
+required global parameter conditions, in the residue class
+of the selected root. Lemma~\ref{lem:formal} then gives a
+defined nonzero value of \(\Psi\) of even valuation.
+
+The chosen parity class meets the cone with both coordinates
+arbitrarily large. For example, one may take
+\[
+       \mu=2k+\epsilon_1,\qquad
+       \nu=2(C+1)\mu+\epsilon_2,\qquad k\ge1 .
+\]
+The final assertion concerning the real sizes of the parameters
+follows from Lemma~\ref{lem:independent}.
+\end{proof}
+
+\begin{corollary}\label{cor:combination}
+The conclusion of Theorem~\ref{thm:main} holds with
+\(\Psi(X,\lambda)=\Phi(R(\lambda),R(a(X)\lambda))\)
+for every nonzero \(\Phi\in\Q(Z_0,Z_1)\).
+\end{corollary}
+
+\begin{proof}
+At \((X,\lambda)=(\alpha,-1)\), the contact map has Jacobian
+determinant \(R'(-1)^2a'(\alpha)\ne0\).
+Equivalently, its components are formal local coordinates,
+by~\eqref{eq:localcoordinates} and the nonzero linear term
+of \(R(-1+u)\). Hence it is dominant and its pullback on
+rational function fields is injective. The displayed
+\(\Psi\) is therefore nonzero, so the theorem applies.
 \end{proof}
 
 \section{Exact examples and scope}
@@ -357,18 +503,22 @@ is a coefficient fixture, not a claim that this shift certifies
 the thirteen-variable definition. The theorem applies separately
 to every fixed odd \(B\ge3\).
 
-The obstruction is restricted to replacing the two contact
-values by one fixed nonzero rational function of those values
-and demanding that its odd valuation detect their union
-uniformly. It includes the product and the harmonic combination,
-and it persists under the scale and positivity conditions
-above. It does not assert that the constructed nonintegral
-parameters satisfy the elliptic tests or the pole equations of
-the full Diophantine source. It does not exclude a different
-height estimate for a rational combination, a construction using
-additional arithmetic conditions, functions with further
-independent arguments, or a definition with eleven or fewer
-variables.
+The obstruction is restricted to demanding that the odd
+valuation of one fixed nonzero rational function detect the
+union of the two odd contact valuations uniformly. It includes
+all rational combinations of the two contact values and also
+permits explicit rational dependence on the input, the scale,
+and the slope. It persists under the scale and positivity
+conditions above.
+
+It does not assert that the constructed nonintegral parameters
+satisfy the elliptic tests or the pole equations of the full
+Diophantine source. It does not exclude a different height
+estimate, a construction using additional arithmetic conditions,
+functions depending on further independent elliptic coordinates
+or tests, or a definition with eleven or fewer variables.
+No uniform quantitative bound for the primes in the theorem
+is asserted.
 
 \begin{thebibliography}{9}
 \bibitem{Conditional13}
