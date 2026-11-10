@@ -1,0 +1,332 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,microtype}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\hF}{h_{\mathrm F}}
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\ord}{ord}
+\setlength{\emergencystretch}{2em}
+\title{Multiplicity of modular factors and quadratic contact-height bounds}
+\author{}\date{10 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+Under the normalized modular realization of the five-contact construction,
+we prove a contact-height estimate with exponent \(2+\eta\) for every
+\(\eta>0\). The estimate is uniform over all rational arguments outside
+the contacts. The coefficient field of a modular form contains its
+nebentypus values, and all coefficient conjugates of the form have the
+same restriction over the field realizing the quaternionic surface.
+Consequently the corresponding modular factor is isogenous to a power
+of that surface. Superadditivity of stable Faltings height along a
+filtration supplies one surface of height at most the ambient height
+divided by the multiplicity. A dimension-two isogeny estimate then
+transfers this bound to the original surface. This removes the
+character-order factor without imposing congruence restrictions on
+the contact primes.
+\end{abstract}
+
+\section{A height estimate using multiplicity}
+
+All Faltings heights use the original stable normalization. We use
+R\'emond's inequality
+\begin{equation}\label{eq:remond}
+ \hF(B)+\hF(J/B)\le\hF(J)
+\end{equation}
+for an abelian subvariety \(B\subset J\), and Bost's lower bound
+\(\hF(C)>-3\dim(C)/2\). The first is
+\cite[Corollary~1.2 and the paragraph after Corollary~1.3]{Remond};
+both assertions hold after arbitrary finite extension.
+
+\begin{lemma}\label{lem:average}
+Let \(L\) be a number field, let \(J/L\) have dimension \(g\), and
+let \(A/L\) be an abelian surface. Suppose \(J\) contains an
+\(L\)-abelian subvariety isogenous over \(L\) to \(A^r\), with \(r\ge1\).
+Put \(d_L=[L:\Q]\) and
+\[
+ H_J=\max(1,\hF(J)+3g/2).
+\]
+Then
+\[
+ \hF(A)\le \frac{H_J}{r}
+ +8\left(32\log14+\log d_L+
+       \log\max\left(1,\log d_L,\frac{H_J}{r}\right)\right).
+\]
+\end{lemma}
+\begin{proof}
+Choose an \(L\)-isogeny \(A^r\to B\subset J\), and let \(B_i\)
+be the image of its first \(i\) factors. Each quotient
+\(C_i=B_i/B_{i-1}\) is an abelian surface \(L\)-isogenous to \(A\).
+Applying \eqref{eq:remond} repeatedly gives
+\[
+ \sum_{i=1}^r\hF(C_i)\le\hF(B)
+ \le\hF(J)+\tfrac32(g-2r).
+\]
+Thus at least one \(C_i\) has height at most \(H_J/r\).
+The dimension-two specialization of
+\cite[Theorem~1.9(1)]{GaudronRemond} supplies an \(L\)-isogeny
+from this \(C_i\) to \(A\) of degree at most
+\[
+ \left(14^{32}d_L
+       \max(1,\log d_L,\hF(C_i))\right)^{16}.
+\]
+Stable Faltings height changes by at most half the logarithm of
+the degree in the required direction. Substituting the upper bound
+for \(\hF(C_i)\) proves the result.
+\end{proof}
+
+The lemma does not identify heights of isogenous varieties.
+It first selects an actual surface subquotient of small height and
+then applies the isogeny estimate only in dimension two. In particular,
+no isogeny estimate in dimension \(2r\) is required.
+
+\section{Multiplicity from rational restricted traces}
+
+Let \(f\) be a primitive weight-two newform of level \(N\), nebentypus
+\(\varepsilon\), and coefficient field
+\(E_f=\Q(a_n(f):n\ge1)\). Write \(e=[E_f:\Q]\).
+Let \(A_f/\Q\) be its modular abelian variety, of dimension \(e\).
+For a prime \(\ell\), its Tate module over \(\overline{\Q}_\ell\)
+is the direct sum of the two-dimensional representations \(r_f^\tau\)
+over the \(e\) embeddings of \(E_f\).
+
+\begin{proposition}\label{prop:multiplicity}
+Let \(L/\Q\) be a number field and let \(A/L\) be an absolutely
+simple abelian surface. Suppose
+\[
+ V_\ell(A)\otimes\overline{\Q}_\ell
+       \simeq (r_f|_{G_L})^{\oplus2},
+\]
+where \(r_f|_{G_L}\) is absolutely irreducible, and suppose this
+identification belongs to the compatible systems at all good places.
+Then \(e\) is even and
+\[
+                         (A_f)_L\sim_L A^{e/2}.
+\]
+If \(s=\ord(\varepsilon)\), its multiplicity \(r=e/2\) satisfies
+\[
+                     r\ge \varphi(s)/2.
+\]
+If \(s\) is a power of two, including \(s=1\), then \(s/r\le4\).
+\end{proposition}
+\begin{proof}
+At a good place \(v\) of \(L\), the compatible-system identification gives
+\[
+ \Tr r_f(\operatorname{Frob}_v)
+       =\tfrac12\Tr V_\ell(A)(\operatorname{Frob}_v)\in\Q.
+\]
+The left side is an algebraic number in \(E_f\), independently of
+the chosen coefficient embedding. Indeed, outside the finitely
+many bad rational primes, it is the trace of the appropriate
+power of a rational-prime Frobenius, hence a polynomial in
+\(a_p(f)\) and \(p\varepsilon(p)\).
+Every embedding \(\tau:E_f\hookrightarrow\overline{\Q}_\ell\)
+therefore gives the same restricted Frobenius traces.
+Chebotarev density and semisimplicity imply
+\[
+                         r_f^\tau|_{G_L}\simeq r_f|_{G_L}.
+\]
+Consequently
+\[
+ V_\ell((A_f)_L^2)\otimes\overline{\Q}_\ell
+       \simeq V_\ell(A^e)\otimes\overline{\Q}_\ell.
+\]
+The semisimple characters already agree over \(\Q_\ell\).
+Faltings' isogeny theorem gives \((A_f)_L^2\sim_L A^e\).
+As \(A\) is absolutely simple, every simple isogeny factor of
+\((A_f)_L\) is \(L\)-isogenous to \(A\).
+Thus \((A_f)_L\sim_L A^r\), and dimension comparison gives \(2r=e\).
+This argument also proves the parity assertion; it does not assume it.
+
+For \(p\nmid N\), the Hecke relation
+\[
+                  a_p(f)^2-a_{p^2}(f)=p\varepsilon(p)
+\]
+shows that \(\varepsilon(p)\in E_f\). Primes in residue classes
+prime to \(N\) supply the full image of \(\varepsilon\), so
+\(\Q(\zeta_s)\subset E_f\). Hence \(e\ge\varphi(s)\).
+For \(s\ge4\) a power of two, \(\varphi(s)=s/2\), giving
+\(r\ge s/4\). For \(s=1,2\), the already proved \(r\ge1\)
+gives the same stated bound.
+\end{proof}
+
+Put \(H=\ker\varepsilon\). The modular variety \(A_f\) is a
+quotient of \(J_H=\operatorname{Jac}(X_1(N)/H)\): every conjugate
+of \(f\) has the same kernel of its nebentypus, so all its
+differentials descend to this diamond quotient. Poincar\'e
+reducibility therefore supplies a subvariety of \(J_H\) isogenous
+to \(A_f\). Proposition~\ref{prop:multiplicity} and
+Lemma~\ref{lem:average} apply to that subvariety over \(L\).
+
+\section{The normalized arithmetic input}
+
+Let
+\[
+ B_*=\prod_{p\le76176}p,\qquad C_0=210^{300},\qquad
+ \mathcal D=\{0,1,2401,-343/32\}.
+\]
+For \(a=u/v\in\Q\setminus\mathcal D\), in lowest terms with \(v>0\),
+write \(h(a)=\log\max(|u|,v)\). Let \(M=M_5(a)\) be the product
+of primes greater than \(76176\) occurring to a positive odd
+power in at least one of
+\[
+                 v,\ u,\ u-v,\ u-2401v,\ 32u+343v.
+\]
+Thus \(M\) is squarefree and coprime to \(B_*\). Put \(R=B_*M\)
+and \(\mathcal E(R)=\prod_{p\mid R}(1+1/p)\).
+
+We retain the full normalized modular realization in
+\cite[proof of \texttt{o8-height}, equations (LR2)--(LR5)]{Source}.
+Precisely, there is a surface \(A\) with
+\[
+                  h(a)\le2\max(0,\hF(A))+128.
+\]
+In the CM case its height is less than \(854R\).
+Otherwise \(A\) is absolutely simple with geometric endomorphism
+algebra the quaternion division algebra of discriminant \(210\).
+The normalized representation has the form
+\[
+ \rho_\ell=b^{-1}a_\sigma\mu_\sigma\circ\sigma
+              =r_f\oplus r_f,
+\]
+and restricts to \(V_\ell(A)\) over the normal kernel field \(L'\)
+of \(b\) on the original fiber field. The modular representations
+are compatible with the Tate module over \(L'\), as required in
+Proposition~\ref{prop:multiplicity}. The source proves
+\[
+ N\le C_0R^2,\qquad \operatorname{rad}(N)\mid R.
+\]
+The minimal local characters and determinant calculation in
+\cite[Sections~1--2]{Characters} give
+\[
+ [L':\Q]\le1152U(R),\qquad s=\ord\varepsilon\mid U(R),
+\]
+where
+\[
+ U(R)=\max\bigl(\{2\}\cup
+             \{2^{v_2(p-1)}:p\mid R,\ p\text{ odd}\}\bigr).
+\]
+In particular \(s\) is a power of two,
+\(U(R)\mid\varphi(R)\), and \(U(R)\mathcal E(R)<R\).
+No bound on \(U(R)\) independent of \(R\) is assumed.
+
+\section{The quadratic contact-height estimate}
+
+\begin{theorem}\label{thm:height}
+Under the normalized arithmetic input above, one has
+\[
+ h(a)\le67C_0(B_*M)^2\mathcal E(B_*M)\log(B_*M).
+\]
+Consequently, with
+\[
+               C_2=67C_0B_*^2\mathcal E(B_*)\log B_*,
+\]
+one has
+\begin{equation}\label{eq:quadratic}
+                    h(a)\le C_2 M^2(1+\log M)^2.
+\end{equation}
+For every \(\eta>0\) there is an effective constant \(C_\eta\)
+such that \(h(a)\le C_\eta M^{2+\eta}\).
+The exact integer certificate gives $C_2<2^{221231}$. In particular
+\[
+                         h(a)<7C_2 M^{7/3}<2^{221234}M^{7/3}.
+\]
+\end{theorem}
+\begin{proof}
+Put \(\ell_R=\log R\) and \(\mathcal T=C_0R^2\mathcal E(R)\).
+The modular degree is
+\[
+ d_H=N s\prod_{p\mid N}(1+1/p)
+       \le C_0R^2s\mathcal E(R)<C_0R^3.
+\]
+The unit-fiber differential-evaluation estimate
+\cite[Section~3]{Characters} and its explicit numerical comparison give
+\[
+ H_J=\max(1,\hF(J_H)+3\dim J_H/2)\le8d_H\ell_R.
+\]
+Here the exact inequalities \(C_0^2<B_*\), \(144<B_*\), and
+\(\ell_R\ge1\) give
+\(\log N\le5\ell_R/2\), \(\log d_H\le7\ell_R/2\), and
+\(\log12\le\ell_R/2\); the genus is at most \(d_H\).
+
+By Proposition~\ref{prop:multiplicity}, \(J_H\) contains over \(L'\)
+a subvariety isogenous to \(A^r\), with \(s/r\le4\). Thus
+\[
+                            H_J/r\le32\mathcal T\ell_R.
+\]
+Write \(d'=[L':\Q]\). Since \(d'\le1152R\),
+\(\log d'<9\ell_R\). Also
+\[
+ \log(32\mathcal T\ell_R)<9\ell_R,\qquad
+ 32\mathcal T\ell_R>\max(1,\log d').
+\]
+Indeed \(\mathcal E(R)\le R\), \(\log C_0<\ell_R/2\),
+\(\log\ell_R\le\ell_R\), and \(\log32<4\le4\ell_R\).
+Lemma~\ref{lem:average} and \(\log14<3\) give
+\[
+ \hF(A)\le32\mathcal T\ell_R+912\ell_R
+                    \le33\mathcal T\ell_R.
+\]
+The last step uses \(\mathcal T>912\). The same upper bound
+dominates the CM estimate \(854R\). Since
+\(\mathcal T\ell_R>128\), the geometric comparison proves
+\(h(a)\le67\mathcal T\ell_R\).
+
+As \(M\) is coprime to \(B_*\),
+\(\mathcal E(R)=\mathcal E(B_*)\mathcal E(M)\).
+The elementary divisor identity gives
+\[
+ \mathcal E(M)=\sum_{d\mid M}\frac1d
+                       \le\sum_{d=1}^M\frac1d\le1+\log M.
+\]
+Also \(\log(B_*M)\le(\log B_*)(1+\log M)\).
+These inequalities prove \eqref{eq:quadratic}.
+For \(\eta>0\), the function
+\((1+u)^2e^{-\eta u}\), \(u\ge0\), has a finite computable
+maximum. For \(\eta=1/3\), its maximum is \(36e^{-5/3}<7\),
+which gives the final assertion.
+\end{proof}
+
+\section{Scope and verification}
+
+The estimate is uniform over all rational arguments outside the four
+finite contacts. It does not restrict the congruence classes of primes
+dividing \(M_5(a)\), and it does not assume \(abc\) or Szpiro.
+It uses the full normalized compatible representation in the stated
+arithmetic source. Merely knowing that \(A\) is one factor of a modular
+Jacobian would not justify the multiplicity conclusion.
+
+The finite constant and exponent checks do not prove modularity,
+the arithmetic realization, or the isogeny theorem. Those inputs and
+the preceding representation and height arguments are separate from
+the exact numerical certificate.
+
+\begin{thebibliography}{9}\small
+\bibitem{Source}
+E.~Glazer and contributors, \emph{Diophantine definition of the integers
+in the rationals}, \texttt{manuscripts/quartic\_v9.tex}, commit
+\texttt{14e8f601fe0d9173d4a5f084aedc3e07066a7688},
+\url{https://github.com/elliotglazer/diophantine-z-q}.
+\bibitem{Characters}
+J.~Brox and contributors, \emph{Scalar Characters and Contact-Height
+Estimates}, \texttt{nebentypus\_and\_contact\_heights\_20261110\_v18.tex},
+\url{https://github.com/JoseBrox/diophantine-z-q_improvements}.
+\bibitem{Remond}
+G.~R\'emond, \emph{Propri\'et\'es de la hauteur de Faltings},
+Annali della Scuola Normale Superiore di Pisa, Classe di Scienze
+\textbf{23} (2022), 1589--1596, Corollary~1.2 and the paragraph
+following Corollary~1.3,
+\url{https://doi.org/10.2422/2036-2145.202010_062}.
+\bibitem{GaudronRemond}
+\'E.~Gaudron and G.~R\'emond, \emph{Nouveaux th\'eor\`emes d'isog\'enie},
+M\'emoires de la Soci\'et\'e Math\'ematique de France
+\textbf{176} (2023), Theorem~1.9(1),
+\url{https://doi.org/10.24033/msmf.484}.
+\end{thebibliography}
+\end{document}

@@ -1,0 +1,91 @@
+\section{Cancellation for every prescribed positive scale}
+
+Let
+\[
+ \Theta=\{0,-1/2,-1/4,-2/5,-1,-1/3\},\qquad
+ F(t)=\frac{t(t+1)(2t+1)(3t+1)(4t+1)(5t+2)}{120},
+ \qquad R(t)=\frac{F(t)}{(t-1)^8}.
+\]
+Define the rational involution
+\[
+                         \psi(t)=-\frac{t}{5t+1}.
+\]
+It fixes $0,-2/5$ and exchanges $-1/2$ with $-1/3$ and
+$-1/4$ with $-1$.
+
+\begin{lemma}
+At every rational argument where the expressions are defined,
+\[
+ F(\psi(t))=-\frac{F(t)}{(5t+1)^6},\qquad
+ R(t)R(\psi(t))
+ =-\left(\frac{F(t)(5t+1)}
+               {(t-1)^4(6t+1)^4}\right)^2.
+\]
+\end{lemma}
+\begin{proof}
+Put $N=-t$ and $D=5t+1$. Then
+\[
+ N+D=4t+1,\quad 2N+D=3t+1,\quad 3N+D=2t+1,\quad
+ 4N+D=t+1,\quad 5N+2D=5t+2.
+\]
+Thus the product of $N$ and these five factors is $-120F(t)$.
+Division by $120D^6$ gives the first formula. Since
+$\psi(t)-1=-(6t+1)/(5t+1)$, the second follows immediately.
+\end{proof}
+
+\begin{theorem}
+For every rational $a>4$, put
+\[
+                     \lambda=-\frac{a+1}{5a}.
+\]
+Then $\lambda,a\lambda$ avoid every contact and the pole of $R$,
+$a\lambda=\psi(\lambda)$, and $R(\lambda)R(a\lambda)$ is the
+negative of a nonzero rational square. In particular every finite
+valuation of this product is even. More explicitly,
+\[
+ R(\lambda)R(a\lambda)=
+ -\left(
+ \frac{25a(a-4)(a-1)(a+1)(2a-3)(3a-2)(4a-1)}
+      {24(a+6)^4(6a+1)^4}
+ \right)^2.
+\]
+\end{theorem}
+\begin{proof}
+One has $5\lambda+1=-1/a$ and
+$\psi(\lambda)=-(a+1)/5=a\lambda$.
+The inequalities
+\[
+                  -1/4<\lambda<-1/5,\qquad a\lambda<-1
+\]
+exclude all six contacts. They also exclude the pole $1$.
+The transformed denominators do not vanish:
+\[
+ \lambda-1=-\frac{6a+1}{5a},\qquad
+ 6\lambda+1=-\frac{a+6}{5a}.
+\]
+The lemma proves the negative-square assertion. Substitution and
+cancellation give the displayed square root, whose factors are all
+nonzero when $a>4$.
+\end{proof}
+
+Consequently a restriction to the scales in the weak-$abc$ source,
+\[
+                         a=\beta^8+T(n)^8,
+\]
+does not prevent this cancellation. Indeed $\beta\ge3$ and $T(n)>6$
+make $a>4$, and the theorem gives an admissible rational slope for
+every such scale. Fixing any nonzero index $n$ and allowing the
+rational input to tend to infinity gives scales of unbounded height
+whose product odd radical remains one. Thus no height inequality
+\[
+ h(a)\le C\log\operatorname{Odd}(R(\lambda)R(a\lambda))+C_0
+\]
+can hold even on this prescribed-scale domain. The conclusion is
+unchanged after multiplying the product by a rational square or
+omitting any fixed finite set of primes from the odd radical.
+
+This is an obstruction to the stated product-based height argument.
+It does not assert that the remaining elliptic test equations or the
+pole predicate have witnesses on this family. In particular the
+product is negative, whereas the completeness construction uses
+positive pole inputs.

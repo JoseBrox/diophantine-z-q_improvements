@@ -1,0 +1,132 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}[proposition]{Lemma}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Q}{\mathbb Q}
+\begin{document}
+\title{Formal ratios with one free elliptic index}
+\author{}\date{10 November 2026}\maketitle
+
+These statements concern specified replacements of the current elliptic
+source. They give no lower bound for all Diophantine definitions of the
+integers. In particular, they do not exclude a different arithmetic
+source, a different prime construction, or correspondences not covered
+by their hypotheses.
+
+\begin{lemma}
+Let $E$ be an elliptic curve over a number field and let $P$ be a
+nontorsion rational point. For each positive integer $B$, there are
+only finitely many good finite places at which the reduction order of
+$P$ is at most $B$.
+\end{lemma}
+\begin{proof}
+At such a place, $[m]P$ reduces to the identity for some
+$1\le m\le B$. Every $[m]P$ is a fixed nonidentity point. Its
+reduction is the identity at only finitely many places, as is seen
+from an integral Weierstrass equation and the denominator of its
+abscissa. The union over the finitely many $m$ is finite.
+\end{proof}
+
+\begin{proposition}
+Fix integer coefficients $a_i,b_i,c_i$ for $i=0,1$, and set
+\[
+        L_i(n,h)=a_i n+b_i h+c_i.
+\]
+Let $I\subset\Z$ be infinite. Suppose that for every $n\in I$
+there are unbounded positive integers $M$ and integers $h$ for which
+\[
+                  M\mid L_0(n,h),\qquad M\mid L_1(n,h).
+\]
+Then
+\[
+        b_1a_0-b_0a_1=0,
+        \qquad b_1c_0-b_0c_1=0.
+\]
+If $b_0\ne0$, the two affine forms are proportional over $\Q$,
+with $L_1=(b_1/b_0)L_0$. If $b_0=0$, then $L_0$ is identically
+zero.
+\end{proposition}
+\begin{proof}
+Eliminating $h$ gives
+\[
+ M\mid b_1L_0-b_0L_1
+      =(b_1a_0-b_0a_1)n+b_1c_0-b_0c_1.
+\]
+For fixed $n$, unboundedness of $M$ forces the integer on the
+right to be zero. It vanishes at infinitely many $n$, so its two
+coefficients vanish. This proves proportionality if $b_0\ne0$.
+If $b_0=0$, the original divisibility $M\mid a_0n+c_0$ and
+unboundedness of $M$ force $a_0n+c_0=0$ for every $n\in I$;
+hence $a_0=c_0=0$.
+\end{proof}
+
+Applied to a fixed root point $[n]P$ and one free auxiliary point
+$[h]P$, the proposition excludes a varying formal-logarithm ratio
+whose numerator and denominator are fixed affine combinations of
+those points, if both must be formal at arbitrarily large comparison
+primes. The denominator form cannot be identically zero. Otherwise
+the exact ratio is the fixed rational number $b_1/b_0$. This explains
+why simply replacing the third point by an addition formula does not
+preserve the current completeness argument.
+
+\begin{proposition}
+Let $F\in\Q[H,U]$, let $d>0$ satisfy $dF\in\Z[H,U]$, and
+fix a rational number $\beta$. Suppose that unbounded positive
+integers $M$ admit integer pairs $(h,u)$ satisfying
+\[
+           M\mid h,\quad M\mid u,\quad F(h,u)=\beta.
+\]
+Then $\beta=F(0,0)$.
+\end{proposition}
+\begin{proof}
+The last equation makes $d\beta$ an integer and gives
+$M\mid d\beta-dF(0,0)$. Unboundedness of $M$ proves the claim.
+\end{proof}
+
+This excludes a second immediate replacement: two free primary-formal
+points whose index polynomial is asserted to equal the input. It does
+not exclude rational functions of the indices on a properly constrained
+subset. For example, the rational function
+\[
+       \frac{u-1}{h-1}-\frac uh
+          =\frac{u-h}{h(h-1)}
+\]
+can equal every rational input by choosing $h$ divisible by its
+denominator. Its existence alone therefore supplies no integrality
+criterion.
+
+\begin{proposition}
+Let $E$ be an elliptic curve in characteristic zero, let $f$ be a
+nonconstant rational function on $E$, and let $m\in\Z$ have
+$|m|>1$. There are only finitely many points $Q$ in the algebraic
+closure at which $f([m]Q)=mf(Q)$ is defined and holds.
+\end{proposition}
+\begin{proof}
+If there were infinitely many, the two rational functions would be
+identical. But the degree of $f\circ[m]$ is $m^2\deg f$, whereas
+the degree of $mf$ is $\deg f$, a contradiction.
+\end{proof}
+
+Thus a rational formal parameter such as $-x/y$ cannot replace the
+elliptic logarithm by an exactly linear function on infinitely many
+auxiliary multiples for a fixed input. In particular, imposing the
+exact monic Lucas equation directly on its ratios has a rational
+completeness requirement which is not supplied by the current source.
+
+\section*{The monic Lucas possibility}
+
+For integer $a,b$, a rational solution $t$ of
+\[
+ t^2-a(a-2)tb+(a-2)^2b^2-1=0
+\]
+is an integer, by the rational-root theorem. At the level of integer
+labels one can therefore replace the $t$ label by a finite rational
+root. The existing source, however, exposes these labels only through
+truncated local ratios. Applying this monic equation to those ratios
+does not give its rational completeness. Adding separate rational
+coordinates for $a,b$ instead requires a new height argument proving
+that these coordinates equal the elliptic indices. The existing
+single trace scale does not control their arbitrary denominators.
+No coordinate reduction is inferred from monicity alone.
+\end{document}

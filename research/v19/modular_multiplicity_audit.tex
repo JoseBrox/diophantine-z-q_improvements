@@ -1,0 +1,147 @@
+\section{Multiplicity of the surface in the modular quotient}
+
+The following argument uses the non-CM case of the pinned modular
+realization, rather than merely the conclusion that the surface is
+an isogeny factor. Let $A/L'$ be the abelian surface in that
+construction. Its geometric endomorphism algebra is a quaternion
+division algebra, so $A$ is absolutely simple. Let $f$ be the
+primitive weight-two newform, let $E_f$ be its coefficient field,
+let $\varepsilon$ be its nebentypus, and set
+$d_f=[E_f:\mathbb Q]$ and $s=\operatorname{ord}(\varepsilon)$.
+The scalar splitting construction gives, at one Tate prime,
+\[
+ V_\ell(A)\otimes\overline{\mathbb Q}_\ell
+       \simeq r_{f,\ell}|_{G_{L'}}^{\oplus2}.
+\]
+The associated modular abelian variety $A_f$ has dimension $d_f$,
+is an isogeny factor of $J_H=\operatorname{Jac}(X_1(N)/\ker\varepsilon)$
+over $\mathbb Q$, and has Tate representation
+\[
+ V_\ell(A_f)\otimes\overline{\mathbb Q}_\ell
+       \simeq\bigoplus_{\tau:E_f\hookrightarrow\overline{\mathbb Q}_\ell}
+                         r_{f,\ell}^{\tau}.
+\]
+
+\begin{lemma}
+Every coefficient conjugate $r_{f,\ell}^{\tau}|_{G_{L'}}$ is
+isomorphic to $r_{f,\ell}|_{G_{L'}}$. Consequently $d_f$ is even
+and
+\[
+                         (A_f)_{L'}\sim_{L'} A^{d_f/2}.
+\]
+\end{lemma}
+\begin{proof}
+At every good finite place $v$ of $L'$ away from $\ell$,
+\[
+ \operatorname{Tr}(r_{f,\ell}(\operatorname{Frob}_v))
+       =\tfrac12\operatorname{Tr}
+                    (V_\ell(A)(\operatorname{Frob}_v))\in\mathbb Q.
+\]
+Compatibility of the modular system identifies this trace with an
+element of $E_f$, independently of the chosen coefficient embedding.
+For a place of residue degree $f_v$ above a rational prime, it is
+the corresponding power-trace polynomial in the usual modular
+Frobenius coefficients. Hence every embedding $\tau$ fixes the
+displayed trace. Chebotarev density and semisimplicity give the
+asserted isomorphism of restricted representations.
+
+It follows that the Tate modules of $(A_f)^2$ and $A^{d_f}$
+become isomorphic over $\overline{\mathbb Q}_\ell$. They are
+semisimple representations over $\mathbb Q_\ell$, so their
+characters already identify them over $\mathbb Q_\ell$. Faltings'
+isogeny theorem gives $(A_f)^2\sim_{L'}A^{d_f}$. Absolute
+simplicity of $A$ and uniqueness of the simple factors in the
+isogeny category show that $A_f\sim_{L'}A^r$ for an integer $r$.
+Dimensions give $d_f=2r$.
+\end{proof}
+
+\begin{lemma}
+The coefficient field $E_f$ contains $\mathbb Q(\zeta_s)$.
+Consequently, if $s$ is a power of two, the multiplicity $r=d_f/2$
+satisfies $r\ge s/4$, and also $r\ge1$.
+\end{lemma}
+\begin{proof}
+For every prime $p\nmid N$ the Hecke relation gives
+\[
+               a_p(f)^2-a_{p^2}(f)=p\varepsilon(p).
+\]
+Thus $E_f$ contains every $\varepsilon(p)$ at such primes.
+Primes in residue classes modulo the conductor supply all values
+of the character, so $E_f$ contains the full group of $s$th roots
+of unity. Therefore $d_f\ge\varphi(s)$. If $s\ge2$ is a power
+of two, this gives $r\ge s/4$. For $s=1$, $r\ge1$ suffices.
+\end{proof}
+
+\section{Height averaging through surface quotients}
+
+\begin{lemma}
+Let $J/L'$ have dimension $g$, and suppose $A^r$ is an isogeny
+factor of $J$ over $L'$, with $A$ an abelian surface. There is an
+abelian surface $A_0/L'$ isogenous to $A$ such that
+\[
+ h_F(A_0)\le
+          \frac{h_F(J)+(3/2)(g-2r)}{r}
+       \le\frac{h_F(J)+3g/2}{r}.
+\]
+All heights are stable Faltings heights in the original normalization.
+\end{lemma}
+\begin{proof}
+Let $B\subset J$ be the image of an $L'$-isogeny from $A^r$.
+Let $B_i$ be the image of the first $i$ factors, with $B_0=0$.
+Then each $C_i=B_i/B_{i-1}$ is an abelian surface over $L'$
+isogenous to $A$. Repeated application of Rémond's exact-sequence
+inequality gives
+\[
+                  \sum_{i=1}^r h_F(C_i)\le h_F(B).
+\]
+Another application gives
+$h_F(B)+h_F(J/B)\le h_F(J)$.
+Bost's lower bound in this normalization is
+$h_F(J/B)>-(3/2)(g-2r)$, yielding the first displayed upper
+bound for the average of the $h_F(C_i)$. One of them is no
+larger than the average. Take it for $A_0$.
+\end{proof}
+
+Set
+\[
+ \mathcal H_r=\max\left(1,\frac{h_F(J)+3g/2}{r}\right),
+ \qquad d'=[L':\mathbb Q].
+\]
+Applying the existing dimension-two Gaudron--Rémond isogeny
+bound to $A_0\to A$ therefore gives
+\[
+ h_F(A)\le \mathcal H_r+
+ 8\left(32\log14+\log d'
+                   +\log\max(1,\log d',\mathcal H_r)\right).
+\]
+No isogeny estimate in the dimension of $J$ or $A_f$ is used.
+
+For the modular curve, its degree bound has the form
+$d_H\le Ns\prod_{p\mid N}(1+1/p)$. The multiplicity estimate
+$s/r\le4$ consequently removes the character-order factor from
+$d_H/r$. Combined with the existing differential-evaluation height
+bound, this gives an upper bound of order
+\[
+ R^2\prod_{p\mid R}(1+1/p)\,(1+\log R)
+\]
+for the non-CM surface, with effective constants determined by the
+already explicit level and realization-field bounds.
+For every fixed $\eta>0$, the elementary estimates for the finite
+Euler product and logarithm then give a bound of the form
+$C_\eta R^{2+\eta}$.
+
+The small-height CM branch of the inherited modular-realization
+input remains separate and already has a bound linear in $R$.
+
+\paragraph{Primary source check.}
+The pinned source, Version9 at commit
+14e8f601fe0d9173d4a5f084aedc3e07066a7688, explicitly states
+$\operatorname{End}^0(A_{\overline{\mathbb Q}})=B$ with $B$ a
+quaternion division algebra and the identity
+$\rho_\ell|_{G_{L'}}=V_\ell(A)$ with
+$\rho_\ell=r_\ell\oplus r_\ell$ in its level-repair proof.
+Rémond, \emph{Propriétés de la hauteur de Faltings}, Corollary1.2,
+states $h_F(B)+h_F(J/B)\le h_F(J)$; the paragraph immediately
+following Corollary1.3 states that the result also holds for stable
+heights. These exact assertions were checked in the primary text
+at https://www-fourier.univ-grenoble-alpes.fr/~remond/2476.pdf.
