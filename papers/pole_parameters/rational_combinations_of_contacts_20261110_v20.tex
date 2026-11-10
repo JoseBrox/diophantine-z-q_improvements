@@ -461,8 +461,56 @@ rational function fields is injective. The displayed
 \(\Psi\) is therefore nonzero, so the theorem applies.
 \end{proof}
 
+\begin{corollary}\label{cor:squarenorm}
+All conclusions of Theorem~\ref{thm:main} remain valid with
+the additional requirement
+\[
+                       \lambda=1+s^2,\qquad
+                       s\in\Z\setminus\{0\}.
+\]
+Thus \(\lambda-1\) may be required to be an integer square,
+while \(\lambda\) is still a sum of two integer squares.
+\end{corollary}
+
+\begin{proof}
+In the proof of the theorem, replace \(K=\Q(\alpha)\) by
+the finite extension \(K'=\Q(\alpha,\sqrt{-2})\).
+The formal coefficients and their integrality conditions are
+unchanged after this extension.
+
+Choose a nonzero primitive algebraic integer \(\eta\) for
+\(K'/\Q\), with minimal polynomial \(G\in\Z[X]\).
+Such an \(\eta\) is obtained by multiplying any primitive
+element by a suitable nonzero integer.
+The polynomial \(G\) is monic and separable, and \(G(0)\ne0\).
+Outside any finite set, Lemma~\ref{lem:primevalues} gives
+infinitely many primes at which \(G\) has a simple root.
+Hensel lifting gives embeddings \(K'\hookrightarrow\Q_p\).
+Enlarge the finite excluded set by the denominator primes
+in expressions for \(\alpha\) and \(\sqrt{-2}\) as rational
+polynomials in \(\eta\), as well as the earlier exceptional
+primes. The images of all required coefficients are then
+integral or units exactly as in the proof of the theorem.
+
+In particular, the image \(\zeta\) of \(\sqrt{-2}\) is a
+\(p\)-adic unit with \(\zeta^2=-2\).
+For the desired local slope \(\lambda_*=-1+p^\mu\),
+Hensel's lemma gives a unit \(s_*\), congruent to \(\zeta\)
+modulo \(p\), such that
+\[
+                          s_*^2=\lambda_*-1.
+\]
+For \(M>\max(\mu,\nu)\), choose arbitrarily large integers
+\(s\equiv s_*\pmod{p^M}\), and put \(\lambda=1+s^2\).
+This realizes the same slope jet as in
+Lemma~\ref{lem:independent}. The construction of the
+half-integral input and every subsequent valuation calculation
+are unchanged.
+\end{proof}
+
 \section{Exact examples and scope}
 
+Theorem~\ref{thm:main} has the following exact examples.
 Take
 \[
                     p=76213,\qquad B=3,\qquad n=1,\qquad T=57/4.

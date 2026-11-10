@@ -348,3 +348,22 @@ Newton-polyhedron machinery.
    general assertion. The derivative, separability, formal inverse,
    parity kernel, prime existence, and global realization are each
    proved above.
+
+
+## Independent audit of the integer-square slope corollary
+
+The final paper additionally permits lambda=1+s^2 for a nonzero integer s.
+Use K'=Q(alpha,sqrt(-2)). A nonzero primitive algebraic integer for K'
+has a monic separable minimal polynomial with nonzero constant term.
+The same elementary prime-value argument gives infinitely many simple-root
+primes outside the prescribed finite exceptional set, hence embeddings
+K' into Q_p. The image of sqrt(-2) is a unit for p not equal to two.
+For every required slope jet lambda_*=-1+p^mu, Hensel's lemma solves
+s_*^2=lambda_*-1 near that unit. Arbitrarily large integer lifts of s_*
+preserve the jet and give lambda=1+s^2>1. The half-integral input and
+all contact and residual valuations are unchanged.
+
+The independent auditor read the complete final TeX blob
+53b30f034445daace36bf9deb7e7ec0a8430f081 and found no mathematical
+discrepancy. This corollary needs neither Chebotarev nor a global
+rational square root of -2.

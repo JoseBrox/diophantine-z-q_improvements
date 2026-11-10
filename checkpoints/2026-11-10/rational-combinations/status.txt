@@ -1,30 +1,70 @@
-Completed proof checkpoint: rational functions and contact parity
-Date: 2026-11-10
+Publication and continuation checkpoint, 2026-11-10
 
-The strengthened theorem and independent audit are complete. They apply
-to every nonzero Psi(X,lambda) in Q(X,lambda), so explicit rational
-dependence on beta(X), a(X), and lambda is allowed. The formal inverse
-has coefficients integral outside finitely many primes; a fixed cone
-makes both numerator and denominator valuations integer-linear in the
-two contact depths. A nonzero parity kernel gives the obstruction.
+Main repository: JoseBrox/diophantine-z-q_improvements
+Current main commit: f9d0ecdf63fda59d91b4b98a82a8e1d162bd4f34
+Current main tree: adf74fe289967505736de20602ba0efacf01ad62
 
-The theorem retains a(X)=(2X^2+B)^8+T^8 with fixed odd B>=3 and rational
-T>6, half-integral X, positive lambda that is a sum of two integer
-squares, and beta(X)-n a p-unit. It holds at infinitely many good primes
-and permits arbitrarily large depths and real parameter sizes.
+The polynomial release c0e1a483251aeb0325f82501f7e4e05622681b99 passed
+108 standard-library stages and 114 stages including exact PARI work.
+Its GitHub run42799317018 passed.
+The final auxiliary-theorem update f9d0ecdf passed GitHub run42802602871,
+including the new independent Fraction check (109 standard stages).
+All541 remote file hashes matched the intended publication tree.
 
-No false full-source witness, general impossibility of a one-pole
-construction, or absolute variable-count lower bound is claimed.
+Current leading results, all counts including input:
+25 variables, degree<2^85, support<2^1979, ineffective sufficient exponent;
+228-variable quartic,2829monomials, ineffective sufficient coefficient parameter;
+27 variables fully specified at L125001, degree<2^87, support<2^2192,
+ coefficient height<2^(2^102);
+265-variable fully specified quartic at N14521,237quadratic rows,
+3485monomials, coefficient height149^58086+1 (419333bits);
+13 variables under weakabc with exponent121/100 (ordinaryabc or
+ ordinarySzpiro suffices), degree<2^44; sufficientshift ineffective;
+91-variable quartic underordinary rationalabc,926monomials,
+coefficient heightmax(4153456,B^2+797683); sufficientoddshift ineffective.
 
-The exact example certificate was independently checked by direct
-BigInt numerator/denominator arithmetic. The accompanying Python
-Fraction checker is prepared; execution of that new script awaits
-GitHub verification because the local workspace is unavailable.
+All defining statements retain the precise inherited arithmetic premises.
+The modular multiplicity theorem proves h(a)<=C2*M5(a)^2*(1+logM5(a))^2
+under the full normalized source realization, C2<2^221231.
+No result below25 without an added height conjecture or below13 underabc
+has been established. No number-field counterexample to integrality
+definability has been established.
 
-A short additional corollary requiring lambda=1+s^2 is being integrated:
-adjoin sqrt(-2) to the fixed algebraic contact field, choose degree-one
-primes by the same elementary prime-value argument, and lift s locally.
+The unconditional CM paper proves rank doubling overK(i) for the displayed
+j1728 family and zero abscissa traces with unbounded heights. It obstructs
+that particular group/height mechanism, not arbitrary definitions.
 
-Main publication c0e1a483251aeb0325f82501f7e4e05622681b99 is already
-complete and its GitHub verification run42799317018 passed. The new
-TeX has not been compiled to PDF.
+The new complete paper rational_combinations_of_contacts_20261110_v20.tex
+proves the arbitrary rational-function contact-parity obstruction, including
+the corollarylambda=1+s^2 with an integer s. Its proof is independently
+audited, and two exact examples were independently checked with BigInt and
+Python Fraction arithmetic. It does not produce full source witnesses or
+an absolute variable lower bound.
+
+The earlier v20 Lucas/Pell and rational-point-map work is preserved in this
+research branch. The monic Pell route has not solved the denominator and
+simultaneous-realization problem and does not yet give21variables.
+Rational point formulas induce only affine integer-linear index labels.
+
+All new polynomial, contact-height, product-height, and CM papers have
+compiled PDFs and completed visual review. Only the final rational
+contact-parity paper remains TeX-only: the execution workspace became
+unavailable after the main polynomial publication. Its labels, environments,
+and references passed static checks; its PDF has not been built.
+
+Next promising directions:
+- Replace independent elliptic point roles using a valid arithmetic
+  correspondence or a different integer-growth construction. The two-label
+  monic Pell idea needs an argument controlling all rational denominators.
+- A single-pole abc construction must exploit extra arithmetic relations
+  or a different height implication; no fixed rational function ofX,lambda
+  can uniformly retain the union of the two contact parities, even with
+  the actual scale andlambda-1 an integer square.
+- For quartics, reduce point-pair coordinates or share nonlinear outputs
+  across comparison scales while preserving every exceptional stratum.
+- Over number fields, use a curve avoiding the CM rank obstruction and
+  supply a uniform denominator theorem beyond rank stability alone.
+
+Local git reset to the new remote commit was not possible after the
+workspace vanished. On resumption fetch/clone main and inspect status
+before resetting or editing anything.
