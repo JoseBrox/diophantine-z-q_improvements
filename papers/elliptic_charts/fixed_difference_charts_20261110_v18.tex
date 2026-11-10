@@ -1,0 +1,258 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,microtype}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\Q}{\mathbb Q}
+\DeclareMathOperator{\Nm}{N}
+\setlength{\emergencystretch}{2em}
+\title{Three quadratic equations for two translated elliptic parameters}
+\author{}\date{10 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+Let $E:y^2=x^3-Dx$ over a field of characteristic zero and let
+$P=(a,b)$ be a fixed point satisfying the specified nonvanishing
+conditions. We give three quadratic equations in four field coordinates
+whose solutions describe exactly the points $H$ for which $H$ and
+$H-P$ are finite with nonzero abscissas. The coordinates retain both
+reciprocal abscissas and both values of $y/x$. All exceptional leading
+coefficients are treated explicitly. The resulting direct equations
+for formal-parameter ratios save one common field coordinate and one
+field coordinate for each numerator pair. Every identity has a separate
+exact verification using only the Python standard library.
+\end{abstract}
+
+\section{The quadratic equations}
+Let $k$ be a field of characteristic zero, let $D\in k^\times$, and put
+\[
+ E:y^2=x^3-Dx,\qquad P=(a,b)\in E(k).
+\]
+Assume
+\begin{equation}\label{eq:assumptions}
+ ab\ne0,\qquad C:=D^2+6a^2D-3a^4\ne0.
+\end{equation}
+Write $A=a^2+D$ and $B=a^2-D$. The point equation is $b^2=aB$.
+For four field coordinates $S,T,f,g$, define
+\begin{align*}
+ L_f&=2bD(aT-b),& Q_f&=aAST+bAS-bBT+4a^2D,\\
+ L_g&=2bD(aS+b),& Q_g&=-aAST-bBS+bAT-4a^2D.
+\end{align*}
+Consider the three quadratic equations
+\begin{equation}\label{eq:system}
+ L_ff=Q_f,\qquad L_gg=Q_g,\qquad
+ D^2fg+aD(f+g)+aST+b(S-T)+D=0.
+\end{equation}
+No inverse witness occurs in this system.
+
+\begin{theorem}\label{thm:chart}
+Equations~\eqref{eq:system} describe exactly the points
+\[
+ H\in E(k)\setminus\{O,(0,0),P,P+(0,0)\}
+\]
+through the identities
+\begin{equation}\label{eq:interpretation}
+ S=\frac{y(H)}{x(H)},\quad T=\frac{y(H-P)}{x(H-P)},\quad
+ f=\frac1{x(H)},\quad g=\frac1{x(H-P)}.
+\end{equation}
+In particular every solution has $fg\ne0$. Every allowed point has
+one and only one quadruple of coordinates satisfying these identities,
+and every solution of the quadratic system is such a quadruple.
+The theorem also holds when $a^2+D=0$.
+\end{theorem}
+
+\section{Polynomial reconstruction and its exceptional cases}
+Define
+\[
+ \Phi=aS^2T^2-B(S^2+T^2)+2AST+4aD
+\]
+and two polynomial expressions in $S,T$:
+\begin{align}
+ 2bDf_0&=-AS+BT-bS^2-aS^2T,\label{eq:reconstruct}\\
+ 2bDg_0&=AT-BS-bT^2+aST^2.\nonumber
+\end{align}
+The divisions here are only by the fixed nonzero constant $2bD$.
+The following identities hold as polynomial identities modulo
+$b^2-a^3+aD$:
+\begin{align}
+ Df_0^2+S^2f_0-1
+ &=\frac{a^2S^2-b^2}{4ab^2D}\Phi,\label{eq:curve}\\
+ Dg_0^2+T^2g_0-1
+ &=\frac{a^2T^2-b^2}{4ab^2D}\Phi,\nonumber\\
+ L_ff_0-Q_f&=-a\Phi,\qquad L_gg_0-Q_g=a\Phi.\label{eq:quotients}
+\end{align}
+Set
+\[
+ r_f=L_ff-Q_f,\qquad r_g=L_gg-Q_g,
+ \qquad R=D^2fg+aD(f+g)+aST+b(S-T)+D.
+\]
+The elimination identity is
+\begin{equation}\label{eq:master}
+\begin{split}
+ L_fL_gR={}&D^2r_fr_g+(aDL_g+D^2Q_g)r_f\\
+          &+(aDL_f+D^2Q_f)r_g-aD^2C\Phi.
+\end{split}
+\end{equation}
+One also has
+\begin{equation}\label{eq:compatibility}
+ (2bD)^2R(f_0,g_0)=D^2\bigl(B-aST-b(S-T)\bigr)\Phi.
+\end{equation}
+All these identities follow by expansion and substitution of
+$b^2=a(a^2-D)$. In particular, no division by $L_f$ or $L_g$ is
+used in~\eqref{eq:master}.
+
+\begin{lemma}\label{lem:unique}
+Every solution of~\eqref{eq:system} satisfies $\Phi=0$ and
+$f=f_0$, $g=g_0$.
+\end{lemma}
+\begin{proof}
+The nonvanishing of $aD^2C$ and~\eqref{eq:master} give $\Phi=0$.
+When $L_fL_g\ne0$, equations~\eqref{eq:quotients} give the claim.
+Suppose $L_f=0$. Then $T=b/a$. If $A=0$, substitution gives
+$\Phi=-8a^3\ne0$, a contradiction. If $A\ne0$, the equation
+$\Phi=0$ is linear in $S$ and gives
+\[
+ S=\frac{a^4-6Da^2+D^2}{2bA},\qquad
+ L_g=-\frac{aDC}{A}\ne0.
+\]
+Thus $g=g_0=1/a$. The coefficient of $f$ in $R$ is
+$D^2/a+aD=DA/a\ne0$, and~\eqref{eq:compatibility} then gives
+$f=f_0$. Interchanging $S$ and $T$ and replacing $b$ by $-b$
+handles $L_g=0$. The two leading coefficients cannot vanish
+together: at $S=-b/a,T=b/a$, one has $Q_f=C\ne0$.
+\end{proof}
+
+\section{Identification with elliptic translation}
+By~\eqref{eq:curve}, the equation $\Phi=0$ implies $f_0g_0\ne0$.
+It therefore supplies points
+\[
+ H=(f_0^{-1},S/f_0),\qquad H'=(g_0^{-1},T/g_0)
+\]
+on $E$. Two further identities are
+\begin{equation}\label{eq:line}
+ a(f_0T+g_0S)+b(g_0-f_0)=S+T
+\end{equation}
+and
+\begin{equation}\label{eq:abscissa}
+\begin{split}
+ f_0g_0(aS+b)^2-a(1-af_0)^2
+ =-\frac{(aS+b)^2\bigl(aST+b(S-T)+D\bigr)}{4b^2D^2}\Phi.
+\end{split}
+\end{equation}
+The first is an identity even before imposing $\Phi=0$.
+
+If $x=x(H)\ne a$, the slope of the chord through $H$ and $-P$ is
+\[
+ \mu=\frac{xS+b}{x-a}.
+\]
+The curve equation $x^2-S^2x-D=0$ and $b^2=a(a^2-D)$ give
+\[
+ \mu^2-x-a=\frac{x(aS+b)^2}{a(x-a)^2}.
+\]
+Equation~\eqref{eq:abscissa} says that this is $g_0^{-1}=x(H')$.
+After multiplying by $f_0g_0$, equation~\eqref{eq:line} is precisely
+the collinearity condition for $H,-H',-P$. It therefore identifies the
+ordinate too, and proves $H'=H-P$.
+
+Suppose $x(H)=a$. Then $S=\pm b/a$. At $S=b/a$ the expression
+for $f_0$ is $-a/D$. If $A\ne0$, this differs from $1/a$, so the
+case is impossible. If $A=0$, substitution in $\Phi$ gives
+$-8a^3\ne0$, which is again impossible. At $S=-b/a$, the same
+$A=0$ calculation excludes the case; otherwise
+\[
+ f_0=1/a,\quad
+ T=-\frac{a^4-6Da^2+D^2}{2bA},\quad
+ g_0=\frac{4b^2}{A^2}.
+\]
+The doubling formulas identify $H=-P$ and $H'=-2P$.
+This proves the translation assertion for every solution.
+
+Conversely, let $H$ and $H-P$ be finite with nonzero abscissas.
+For $x(H)\ne a$, substitution of the chord formulas gives $\Phi=0$
+and~\eqref{eq:reconstruct}. The preceding explicit doubling calculation
+covers $H=-P$; the other possibility $H=P$ is outside the allowed
+set. Equations~\eqref{eq:quotients} and~\eqref{eq:compatibility}
+then imply~\eqref{eq:system}. Uniqueness follows from the four
+rational functions in~\eqref{eq:interpretation}. This proves
+Theorem~\ref{thm:chart}.
+
+\section{Necessity of an exceptional-constant condition}
+The condition $C\ne0$ cannot simply be dropped. Over
+$k=\Q(\sqrt3)$, take
+\[
+ a=1,\qquad D=-3+2\sqrt3,\qquad b=\sqrt3-1.
+\]
+Then $abD\ne0$, $b^2=1-D$, and $C=0$. Set
+\[
+ S=-b,\qquad T=b,\qquad f=0,\qquad g=3/D-4.
+\]
+Here $L_f=L_g=Q_f=Q_g=0$, while the third equation reduces to
+$Dg+4D-3=0$. Thus this is a solution of the three quadrics with
+$f=0$, and it cannot have the interpretation~\eqref{eq:interpretation}.
+The elimination identity identifies the precise constant responsible
+for this failure.
+
+\section{Direct equations for formal-parameter ratios}
+Write $z=-x/y$. Suppose numerator points have a quadratic description
+with coordinates $V,Q,I,K$ such that
+\[
+ z(U)=-V/I,\qquad z(V_1)=-Q/K,\qquad IK\ne0.
+\]
+Zero numerators may represent the identity. At a common-point solution
+with $ST\ne0$, the two ratios are given directly by
+\[
+ LI=VS,\qquad L'K=QT.
+\]
+These are quadratic equations. They have exactly the values
+$L=z(U)/z(H)$ and $L'=z(V_1)/z(H-P)$, including either identity
+numerator. Consequently no separate coordinate for $z(V_1)$ is needed.
+
+Over a number field of degree $d$, expansion in a fixed rational basis
+turns each field coordinate into $d$ rational coordinates and each
+quadratic field equation into $d$ rational quadratic equations.
+The common-point model uses $4d$ coordinates and $3d$ equations.
+In a construction with $r$ numerator pairs, replacing a five-coordinate
+common chart and eliminating one numerator parameter per pair saves
+$d(r+1)$ rational coordinates, provided the construction already
+supplies the stated domains and the numerator identities.
+This is an algebraic statement about representations; it does not
+supply any Diophantine definition of a ring of integers by itself.
+
+For the applications over $\Q(\rho)$, $\rho^2=2$, the point is
+\[
+ a=\frac{57-28\rho}{8},\qquad b=\frac{-660+417\rho}{32},
+ \qquad D=11-6\rho.
+\]
+Exact calculation gives
+\[
+ C=-\frac{94897379}{4096}+\frac{4195821}{256}\rho,
+ \qquad \Nm(C)=-\frac{8203357319351}{16777216}\ne0.
+\]
+Thus the common-chart saving is two rational coordinates, and each
+numerator pair saves two more. All other arithmetic arguments remain
+those of the corresponding defining-polynomial construction.
+
+\section{Exact verification}
+The program
+\begin{center}\small
+\nolinkurl{computation/elliptic_constraints/check_fixed_difference_chart.py}
+\end{center}
+verifies twelve general identities in the quotient ring
+\[
+ \mathbb Z[a,b,D,S,T]/(b^2-a^3+aD).
+\]
+It uses explicit integer polynomial arithmetic, imports no producer,
+and checks the master identity without division. It also checks the
+curve identities, translation, reconstruction, and the nonzero
+coefficients in the exceptional cases. Independent rational-point
+checks compare the formulas with the chord-and-tangent law at
+$H=-P,2P,3P$ on $y^2=x^3-2x$ with $P=(2,2)$.
+Its output is
+\nolinkurl{fixed-difference-chart-certificate.json}.
+The separate quartic checker verifies the displayed nonzero constant
+in $\Q(\sqrt2)$ and the resulting rational component equations.
+The identities prove the assertions for every allowed field and point;
+the sample points serve only as additional verification.
+\end{document}

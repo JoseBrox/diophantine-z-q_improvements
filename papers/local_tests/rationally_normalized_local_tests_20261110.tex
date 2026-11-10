@@ -183,6 +183,78 @@ comparison is valid at every place. Nor does it assume that the
 local traces are units: cancellation in a trace only strengthens the
 inequality used in the proof.
 
+\subsection{Even valuations of the other coefficient}
+
+The case where one coefficient is a unit does not describe every
+prime occurring in a product of contact functions. The following
+estimate also treats a nonzero even valuation of the other coefficient.
+
+\begin{proposition}\label{prop:even-strata}
+Fix a positive integer $m$ and an integer $K>2m+9/2$, and set $A=K-1$.
+Use
+\[
+ E_i=z^K\Psi_z(C_i),\qquad G_j=w^K\Psi_w(S_j),\qquad R=zw,
+\]
+with denominator exponent $A$ for every factor in~\eqref{eq:product}.
+Suppose $v_p(w)=\nu>0$ is odd and $v_p(z)=\mu$ is even.
+Retain all domain conditions and the pole exclusion of
+Theorem~\ref{thm:two-collections}.
+\begin{enumerate}
+\item If $0\le\mu\le\nu$, there is a place $\mathfrak p\mid p$
+such that $v_{\mathfrak p}(C_i)>m\nu$ for every $i$.
+\item If $\mu>\nu$, there is a place $\mathfrak p\mid p$
+such that $v_{\mathfrak p}(S_j)>m\mu$ for every $j$.
+\item If $\mu<0$ and $\mu+\nu<0$, the pole exclusion is impossible.
+If $\mu<0$ and $\mu+\nu>0$, the conclusion of the first assertion
+holds.
+\end{enumerate}
+In particular, zero cannot occur as $\mu+\nu$ under these parity
+hypotheses.
+\end{proposition}
+\begin{proof}
+Put $\rho=\mu+\nu$, which is odd. The valuation of each factor is
+the minimum of zero and the odd valuation of its second term. Thus
+every factor has nonpositive valuation. If $\rho<0$, the trace bound
+used above gives $v_p(\mathfrak b)\le\rho<0$, an odd valuation,
+contradicting the pole exclusion. We may therefore assume $\rho>0$.
+The same trace argument gives one place at which every normalized
+test $E_i,G_j$ has valuation greater than
+\begin{equation}\label{eq:threshold-new}
+                         (K-7/4)(\mu+\nu).
+\end{equation}
+
+For any $D$ whose denominator in $\Psi_z(D)$ is nonzero, one has
+\begin{equation}\label{eq:general-upper}
+ v(\Psi_z(D))\le\max\{0,\mu+2v(D)\}.
+\end{equation}
+Indeed the formula is an equality unless $\mu+2v(D)=0$;
+in that case cancellation in the denominator can only decrease
+the valuation. Zero tests satisfy every desired lower bound and
+may be omitted from this argument.
+
+If $0\le\mu\le\nu$ and $v(C_i)\le m\nu$, then
+\[
+              v(E_i)\le(K+1)\mu+2m\nu.
+\]
+Subtracting this upper bound from~\eqref{eq:threshold-new} gives
+\[
+ (K-2m-7/4)\nu-\tfrac{11}{4}\mu
+          \ge(K-2m-9/2)\nu>0,
+\]
+a contradiction. The same computation, with $\mu,\nu$ exchanged,
+excludes $v(S_j)\le m\mu$ when $\mu>\nu>0$.
+
+Finally suppose $\mu<0<\mu+\nu$. If $v(E_i)>0$, then
+$K\mu<0$ and~\eqref{eq:general-upper} force
+$\mu+2v(C_i)>0$. There is then no cancellation, and
+$v(E_i)=(K+1)\mu+2v(C_i)$. The strict lower bound
+\eqref{eq:threshold-new} implies
+\[
+ 2v(C_i)>(K-7/4)\nu-\tfrac{11}{4}\mu>2m\nu.
+\]
+This proves the last assertion.
+\end{proof}
+
 \section{A unit among two balanced contact functions}
 
 Let $\Theta_0,\Theta_1$ be finite sets of nonzero rational numbers,
