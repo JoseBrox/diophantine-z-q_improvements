@@ -272,3 +272,11 @@ The current certificate is `computation/pole_parameters/product-height-obstructi
 ## Complex multiplication and trace cancellation
 
 `python3 computation/number_fields/check_trace_cancellation.py` checks the universal complex-multiplication and chord identities, conjugation and rank-decomposition identities, and the explicit point of infinite order. Two independent finite-field counts at17 and23 and the exact reduction orders give its nontorsion certificate. The general rank formula and height growth follow from the proofs in the [trace-cancellation paper](../papers/number_fields/complex_multiplication_and_trace_cancellation_20261110_v19.pdf), not from finite samples.
+
+## Rational contact-parity examples
+
+~~~sh
+python3 computation/pole_parameters/check_rational_contact_combinations_v20.py
+~~~
+
+This standard-library check uses exact `Fraction` arithmetic to reconstruct two positive-slope examples, including the simple-root residues, primality, all contact valuations, the even combined valuations, and the unit input residuals. The certificate was also independently evaluated with exact `BigInt` numerator/denominator arithmetic. These finite examples illustrate the separate universal theorem proved in `papers/pole_parameters/rational_combinations_of_contacts_20261110_v20.tex`; they do not establish the theorem by sampling. The full verifier includes this check. The TeX source is complete; this additional paper has not yet been compiled to PDF.

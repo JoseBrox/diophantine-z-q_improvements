@@ -445,6 +445,8 @@ def main():
         stages.append(run('All contact automorphisms, arbitrary-scale cancellation, and positive product-height obstructions',
             poles/'check_product_height_obstructions_v19.py'))
         assert (poles/'product-height-obstructions-v19-certificate.json').read_bytes()==product_obstructions
+        stages.append(run('Rational contact-parity examples: exact positive norms, contact depths, and unit residuals',
+            poles/'check_rational_contact_combinations_v20.py'))
         small_tau_algebra=(poles/'small-fixed-tau17-algebra-verification.json').read_bytes()
         stages.append(run('Dense prepared fixed-tau17 obstruction: rational identities and pinned rank input',
             poles/'check_small_fixed_tau17_algebra.py'))

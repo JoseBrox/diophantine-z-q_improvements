@@ -817,6 +817,19 @@
       "proof": "papers/number_fields/complex_multiplication_and_trace_cancellation_20261110_v19.tex",
       "verification": "computation/number_fields/trace-cancellation-certificate.json",
       "scope_limit": "An obstruction to extending the particular elliptic group and height mechanism; no counterexample to Diophantine definability of O_L in L is claimed."
+    },
+    {
+      "id": "rational_function_contact_parity",
+      "fixed_parameters": "Odd integer B>=3, nonzero integer n, rational T>6; beta(X)=2*X^2+B; a(X)=beta(X)^8+T^8.",
+      "statement": "For every nonzero Psi in Q(X,lambda), there are a fixed positive cone of contact depths, a nonzero parity class, and infinitely many good primes such that every positive depth pair in that cone and parity class is realized by half-integral X and lambda=s^2+t^2>1 with integers s,t. The two contact values have those depths, Psi is defined and nonzero with even valuation, and beta(X)-n is a p-unit.",
+      "scope": "No additional arithmetic conjecture; includes explicit rational dependence on the input and scale. The source specialization T=Tr(x([n]P)) is covered whenever T>6.",
+      "proof": "papers/pole_parameters/rational_combinations_of_contacts_20261110_v20.tex",
+      "verification": "computation/pole_parameters/rational-contact-combination-examples-v20.json",
+      "checker": "computation/pole_parameters/check_rational_contact_combinations_v20.py",
+      "computation_scope": "Two exact illustrative examples, independently checked by BigInt integer arithmetic and Fraction rational arithmetic; the universal statement is a formal-series and prime-existence proof.",
+      "scope_limit": "An obstruction to one rational function uniformly detecting the union of two odd contact valuations; no false solution of the complete Diophantine source and no absolute variable-count lower bound are asserted.",
+      "pdf_available": false,
+      "stronger_slope_restriction": "The same conclusions hold with lambda=1+s^2 for a nonzero integer s; lambda-1 is an integer square."
     }
   ],
   "source_pins": {
@@ -824,7 +837,7 @@
     "corrected_arithmetic_proof_v11": "650b298a2a18fa956f8859f3ca80e9d7c8cedd82",
     "quartic_source_v13": "5bbd74f6a479776a332cbe036809d5dddae63720"
   },
-  "release": "2026.11.10-v19",
+  "release": "2026.11.10-v20",
   "auxiliary_arithmetic_theorems": [
     {
       "id": "square_abscissa_subgroup_chart",
@@ -901,7 +914,7 @@
       "additional_conjecture": null,
       "statement": "h(a)<=C2*M5(a)^2*(1+log M5(a))^2 with explicit C2<2^221231; consequently h(a)<2^221234*M5(a)^(7/3). For every positive eta an effective exponent2+eta holds without restrictions on contact-prime character orders.",
       "multiplicity_bound": "If s is the nebentypus order and A_f is geometrically isogenous to A^r, then s/r<=4.",
-      "height_transfer": "R\u00e9mond height superadditivity gives a surface factor of height at most h(J_H)/r, followed by a dimension-two explicit isogeny estimate.",
+      "height_transfer": "Rémond height superadditivity gives a surface factor of height at most h(J_H)/r, followed by a dimension-two explicit isogeny estimate.",
       "proof": "papers/contact_heights/multiplicity_and_contact_heights_20261110_v19.tex",
       "verification": "computation/contact_heights/multiplicity-height-certificate.json",
       "scope_limit": "This is a consequence of the full stated modular realization, not a theorem from the conductor inequality alone."
