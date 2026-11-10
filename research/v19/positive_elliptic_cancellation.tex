@@ -1,0 +1,66 @@
+\section{An elliptic family with slopes greater than one}
+
+Retain the six-contact polynomials $F,R$ defined above.
+Put $\gamma(t)=1/(2(t-1))$. Direct multiplication gives
+\[
+ F(t)F(\gamma(t))=
+ \left(\frac{t(t+1)(2t+1)(4t+1)}{480(t-1)^3}\right)^2
+                  (2t-1)(3t+1)(5t+2).
+\]
+Consequently every rational point on
+\[
+             7y^2=(2t-1)(3t+1)(5t+2)
+\]
+with $t,\gamma(t)$ away from the contacts and poles gives
+$R(t)R(\gamma(t))\in7\mathbb Q^{\times2}$.
+
+\begin{proposition}
+There are rational sequences $\lambda_j>1$ and $a_j>4$ with
+$a_j\to+\infty$ such that
+\[
+             R(\lambda_j)R(a_j\lambda_j)\in7\mathbb Q^{\times2}.
+\]
+In particular, restricting the slope to $\lambda>1$ does not
+suffice for a bound on $h(a)$ in terms of the odd radical of the
+product outside a fixed prime set containing7.
+\end{proposition}
+\begin{proof}
+The displayed cubic is isomorphic, by $X=210t$, $Y=1470y$,
+to
+\[
+ \mathcal E:\quad Y^2=(X-105)(X+70)(X+84).
+\]
+It contains $P=(210,2940)$, corresponding to $(t,y)=(1,2)$.
+The tangent slope at $P$ is $97/4$, and the group law gives
+\[
+                         X(2P)=1905/16.
+\]
+The integral change to a short Weierstrass equation,
+$x'=9X+147$, $y'=27Y$, gives
+$x'(2P)=19497/16$. The Nagell--Lutz theorem therefore implies
+that $2P$, hence $P$, is non-torsion.
+
+The point $P$ lies in the identity component of
+$\mathcal E(\mathbb R)$, since $210>105$ is beyond the largest
+real root. This component is a circle group, and the multiples
+of a non-torsion point are dense in it. Choose rational multiples
+$P_j$ tending to $P$ from the local side on which $X>210$.
+Their coordinates give rational $\lambda_j=X(P_j)/210>1$
+with $\lambda_j\to1$. Set
+\[
+ \mu_j=\gamma(\lambda_j)=\frac1{2(\lambda_j-1)},\qquad
+ a_j=\frac{\mu_j}{\lambda_j}
+             =\frac1{2\lambda_j(\lambda_j-1)}.
+\]
+For all sufficiently large $j$, $\mu_j>4\lambda_j$ and
+all arguments avoid the finitely many contacts and poles.
+The identity above proves the squareclass claim, while
+$a_j\to+\infty$.
+\end{proof}
+
+This obstruction concerns unrestricted rational slopes greater
+than one. It does not assert that $\lambda_j-1$ is a sum of two
+rational squares, or that $a_j=\beta^8+T(n)^8$. Either condition
+would require an additional argument. Thus it does not disprove
+the proposed restricted Diophantine source, and it does not supply
+one-pole false witnesses.

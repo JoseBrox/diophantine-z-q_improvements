@@ -1,0 +1,108 @@
+\section{Positive slopes and the six-contact product}
+
+Let
+\[
+ \Theta=\{0,-1/2,-1/4,-2/5,-1,-1/3\},\qquad
+ F(t)=\prod_{\theta\in\Theta}(t-\theta)
+ =\frac{t(t+1)(2t+1)(3t+1)(4t+1)(5t+2)}{120},
+ \qquad R(t)=\frac{F(t)}{(t-1)^8}.
+\]
+For a nonzero rational number $x$ and a finite prime set $S$, let
+$\operatorname{Odd}_S(x)$ be the product of primes outside $S$
+whose valuation in $x$ is odd. Negative valuations are included.
+
+\begin{proposition}
+The rational involution
+\[
+                      \tau(t)=\frac{t+1}{2t-1}
+\]
+preserves $\Theta$ and satisfies
+\[
+ F(\tau(t))=\frac{27F(t)}{(2t-1)^6},\qquad
+ R(t)R(\tau(t))
+ =3\left(\frac{3F(t)(2t-1)}{(t-1)^4(t-2)^4}\right)^2.
+\]
+For every integer $m\ge2$, put
+\[
+ \lambda_m=\frac{m^2+1}{2m^2},\qquad
+ \mu_m=\frac{3m^2+1}{2},\qquad
+ a_m=\frac{m^2(3m^2+1)}{m^2+1}.
+\]
+Then $\mu_m=a_m\lambda_m=\tau(\lambda_m)$, $a_m>4$,
+$\lambda_m,\mu_m>0$, and neither argument is a contact or pole.
+Moreover $\lambda_m$ is a sum of two rational squares and
+$\operatorname{Odd}_S(R(\lambda_m)R(a_m\lambda_m))=1$
+whenever $3\in S$, whereas $h(a_m)\to\infty$.
+\end{proposition}
+\begin{proof}
+The first identity is obtained by substitution into the six factors;
+the second uses $\tau(t)-1=(2-t)/(2t-1)$. Direct calculation gives
+all formulas for $\lambda_m,\mu_m,a_m$. The norm representation is
+\[
+ \lambda_m=\left(\frac{m+1}{2m}\right)^2+
+            \left(\frac{m-1}{2m}\right)^2.
+\]
+Since $1/2<\lambda_m\le5/8$ and $\mu_m\ge13/2$, the
+arguments avoid the contacts, $1$, and $2$. The product is three
+times a nonzero rational square, so its odd radical outside $S$
+is one. Finally $a_m>3m^2-3$, whence $h(a_m)\ge\log a_m\to\infty$.
+\end{proof}
+
+Thus requiring a positive slope, even with an explicit
+$\mathbb Q(i)$-norm representation, does not by itself yield any
+bound for the scale in terms of the odd radical of the product.
+The proposition does not assert that $a_m$ has the further form
+$\beta^8+T(n)^8$, or that it extends to a solution of the complete
+Diophantine source.
+
+\begin{proposition}
+The following table lists every rational M\"obius transformation
+preserving $\Theta$. A row $(a,b,c,d;k)$ means
+\[
+ \gamma(t)=\frac{at+b}{ct+d},\qquad
+              F(\gamma(t))(ct+d)^6=kF(t).
+\]
+\[
+\begin{array}{rrrr|r}
+a&b&c&d&k\\\hline
+1&0&-5&-1&-1\\
+1&0&0&1&1\\
+1&1&-7&-4&-27\\
+1&1&2&-1&27\\
+2&1&-7&-3&1\\
+2&1&-3&-2&-1\\
+3&1&-8&-3&-1\\
+3&1&-7&-2&1\\
+4&1&-13&-4&27\\
+4&1&-7&-1&-27\\
+5&2&-14&-5&-27\\
+5&2&-11&-5&27
+\end{array}
+\]
+Apart from the identity, $\tau$ is the only map in the table
+that sends some positive rational number to a positive number.
+Its positive domain is $t>1/2$. If $t>1$, then
+$0<\tau(t)/t<2$. Consequently no nonidentity contact automorphism
+can satisfy $\gamma(\lambda)=a\lambda$ with $\lambda>1$ and $a>4$.
+\end{proposition}
+\begin{proof}
+A M\"obius transformation is determined by the images of the
+three distinct points $0,-1/2,-1/4$. Sending these to each of the
+$6\cdot5\cdot4=120$ ordered triples in $\Theta$, and then checking
+the remaining three contacts, gives exactly the twelve displayed
+matrices. The calculation uses only rational $3\times3$
+determinants; the accompanying exact checker supplies the resulting
+permutations and polynomial identities. Alternatively each of the
+120 candidates can be checked directly from the displayed defining
+rule. The positivity assertions follow from the signs of the matrix
+entries. For $t>1$, the inequality $\tau(t)/t<2$ is equivalent
+to $4t^2-3t-1=(t-1)(4t+1)>0$.
+\end{proof}
+
+Requiring $\lambda>1$ therefore removes these automorphism
+families. It does not prove a height bound for the product: other
+pairs on quadratic twists of $y^2=F(t)$ must still be controlled.
+Likewise, the identity
+$\tau(\lambda)=a\lambda$ has a rational solution precisely when
+$a^2+10a+1$ is a rational square. No conclusion about its
+intersection with the prescribed eighth-power scales is claimed.
