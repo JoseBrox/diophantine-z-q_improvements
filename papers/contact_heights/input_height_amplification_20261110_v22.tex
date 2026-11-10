@@ -1,0 +1,530 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,booktabs,microtype}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}\newtheorem{remark}[theorem]{Remark}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\newcommand{\R}{\mathbb R}
+\DeclareMathOperator{\rad}{rad}
+\DeclareMathOperator{\sfpart}{sf}
+\setlength{\emergencystretch}{2em}
+\title{Input Height Bounds and Odd Contact Radicals}
+\author{}\date{10 November 2026}
+\begin{document}\maketitle
+
+\begin{abstract}
+A positive power of a rational input gives a height scale whose
+growth is uniform in an arbitrarily large additive integer shift.
+We prove an exact inequality with factor $1/r$ for a power $r$,
+and give a criterion that combines it with an elliptic index-height
+estimate. Under rational $abc$, six fixed rational contacts and a
+quadratic input scale give the required strict height inequality;
+the precise absorption coefficient is $8/9$ for an explicit choice
+of exponent. A cubic input scale also gives a height criterion for
+five contacts. Four contacts behave differently: an explicit
+elliptic curve supplies rational arguments of unbounded height
+whose odd contact radical is one outside $\{2,3,5\}$. This last
+statement is unconditional. All point arithmetic and displayed
+polynomial identities in the example have an exact integer and
+rational certificate.
+\end{abstract}
+
+\section{Heights and contact radicals}
+
+For a reduced fraction $a/b$, with $b>0$, put
+\[
+                 h(a/b)=\log\max(|a|,b).
+\]
+For $u,v\in\Q$, write $u=A/D$, $v=C/D$ with
+$D>0$ and $\gcd(D,A,C)=1$, and define
+\[
+                 h(1:u:v)=\log\max(D,|A|,|C|).
+\]
+Both $h(u)$ and $h(v)$ are at most this projective height.
+For a nonzero integer $m$, let $\rad(m)$ be the product of
+its distinct prime divisors, and let $\sfpart(m)$ be the
+product of primes occurring to odd exponent. Signs are omitted.
+For a prime $p$, the valuation $v_p$ is normalized by $v_p(p)=1$.
+
+Let $\Theta\subset\Q$ be a finite set of distinct contacts.
+Choose a finite set $S$ of primes containing the denominators of
+the contacts and all primes at which two contacts have the same
+reduction. For $t\notin\Theta$, put
+\begin{equation}\label{eq:radical}
+ M_{\Theta,S}(t)=
+ \prod_{\substack{p\notin S:\text{ some }\theta\in\Theta\text{ has}\\
+                 v_p(t-\theta)>0\text{ odd}}}p.
+\end{equation}
+The empty product is one. Enlarging $S$ changes a logarithmic
+bound for this radical by at most a fixed additive constant.
+
+We use the following form of rational $abc$: for every
+$\epsilon>0$ there is $K_\epsilon\ge1$ such that
+\[
+ c\le K_\epsilon\rad(abc)^{1+\epsilon}
+ \quad(a+b=c, a,b,c>0, \gcd(a,b)=1).
+\]
+When a single exponent $\kappa>1$ is sufficient, we state that
+we assume a constant $K_\kappa\ge1$ with
+\begin{equation}\label{eq:weakabc}
+ c\le K_\kappa\rad(abc)^\kappa
+ \quad(a+b=c, a,b,c>0, \gcd(a,b)=1).
+\end{equation}
+
+\section{A height scale uniform in its additive shift}
+
+\begin{lemma}\label{lem:power}
+Let $r\ge1$ and $B\ge2$ be integers. Suppose that
+$\gamma\in\Q$ satisfies either $\gamma\ge1$ or that $r$ is even.
+Set
+\[
+                         \beta=2\gamma^r+B.
+\]
+Then $\beta\ge B$ and
+\begin{equation}\label{eq:powerheight}
+                         h(\gamma)\le\frac1r h(\beta).
+\end{equation}
+In particular the inequality is uniform in $B$.
+\end{lemma}
+\begin{proof}
+Write $\gamma=a/b$ with $\gcd(a,b)=1$ and $b>0$.
+The cancellation factor is
+\[
+ g=\gcd(2a^r+Bb^r,b^r)=\gcd(2,b^r)\le2.
+\]
+Under either stated condition, the numerator is positive and
+\[
+                   2a^r+Bb^r\ge2\max(|a|^r,b^r).
+\]
+It is also at least the denominator. Consequently
+\[
+ h(\beta)=\log\frac{2a^r+Bb^r}{g}
+                \ge r\log\max(|a|,b)=r h(\gamma).
+\]
+\end{proof}
+
+Two input choices will be useful. The direct choice
+$\gamma=X$ permits every rational $X$ when $r$ is even.
+The positive choice
+\begin{equation}\label{eq:positiveinput}
+                         \gamma=2X^2+1
+\end{equation}
+permits every $r\ge1$. For rational $X$, it satisfies
+\begin{equation}\label{eq:integrality}
+                      \gamma\in\Z\quad\Longleftrightarrow\quad X\in\Z.
+\end{equation}
+Indeed, if $X=c/d$ is reduced, integrality of $2X^2+1$ gives
+$d^2\mid2$, hence $d=1$. For integer input, $\gamma$ is a
+positive odd integer. If $B$ is odd, then $2\gamma^r+B$ is
+also a positive odd integer.
+
+\begin{theorem}[A uniform bound from a smaller input height]
+\label{thm:absorption}
+Let $T:\Z\setminus\{0\}\to\Q$ satisfy
+\begin{equation}\label{eq:indexheight}
+                  n^2\le A h(T(n))+J
+\end{equation}
+for fixed $A>0$ and $J\ge0$. Let $r\ge1$, let $B\ge2$ be
+an integer, and put $\beta=2\gamma^r+B$ under the hypotheses
+of Lemma~\ref{lem:power}. Set
+\[
+                      H=h(1:\beta:T(n)).
+\]
+Suppose that, whenever $\gamma\ne n$, the arithmetic conditions
+under consideration imply
+\begin{equation}\label{eq:residualheight}
+               H\le\kappa\log N_\gamma+C,
+               \qquad 0<\kappa<r,
+\end{equation}
+where $N_\gamma$ is the positive absolute reduced numerator of
+$\gamma-n$ and $C\ge0$ is independent of $B,\gamma,n$.
+Then $|n|$ and $H$ are bounded independently of $B$ whenever
+$\gamma\ne n$. In particular, for every sufficiently large $B$,
+these conditions imply $\gamma=n$.
+\end{theorem}
+\begin{proof}
+If $\gamma=a/b$ is reduced with $b>0$, then
+$\gcd(a-nb,b)=1$ and
+\[
+ N_\gamma=|a-nb|\le e^{h(\gamma)}(1+|n|).
+\]
+By Lemma~\ref{lem:power},
+\[
+                  \log N_\gamma\le H/r+\log(1+|n|).
+\]
+Insert this into~\eqref{eq:residualheight} and move the term
+$(\kappa/r)H$ to the left. With
+\[
+ c=\frac{\kappa}{1-\kappa/r},\qquad
+ C'=\frac{C}{1-\kappa/r},
+\]
+one obtains
+\begin{equation}\label{eq:absorbed}
+                         H\le c\log(1+|n|)+C'.
+\end{equation}
+Since $h(T(n))\le H$, equation~\eqref{eq:indexheight} gives
+\[
+ n^2\le Ac\log(1+|n|)+AC'+J\le Ac|n|+AC'+J.
+\]
+Thus any integer $M>Ac+\sqrt{AC'+J}$ bounds $|n|$ strictly.
+It follows that
+\[
+ H\le c\log(1+M)+C'=:H_*.
+\]
+But $H\ge h(\beta)\ge\log\beta\ge\log B$.
+Choosing $B>e^{H_*}$ rules out $\gamma\ne n$.
+\end{proof}
+
+\begin{remark}
+For the positive input~\eqref{eq:positiveinput}, the conclusion
+$\gamma=n$ proves $X\in\Z$ by~\eqref{eq:integrality}; the
+completeness label $n=2X^2+1$ never vanishes. For the direct
+input $\gamma=X$, the conclusion is already $X\in\Z$.
+If a polynomial $Q(X,\boldsymbol Y)$ describes precisely the
+nonzero integers, then $XQ(X,\boldsymbol Y)$ describes all
+integers, with the same variables and one higher degree.
+This last assertion is the elementary equivalence
+$XQ=0\Longleftrightarrow X=0\text{ or }Q=0$ over $\Q$.
+\end{remark}
+
+\section{Contact and power-sum height estimates}
+
+\begin{proposition}\label{prop:contacts}
+Assume rational $abc$. Let $\Theta$ consist of $d\ge5$ distinct
+rational contacts, and let $S$ be as in~\eqref{eq:radical}.
+For every $\epsilon$ with $0<2\epsilon<d-4$, there is a
+constant $C_{\Theta,S,\epsilon}\ge0$ such that
+\begin{equation}\label{eq:contactheight}
+ h(t)\le\frac{1}{d-4-2\epsilon}\log M_{\Theta,S}(t)
+                   +C_{\Theta,S,\epsilon}
+ \qquad(t\in\Q\setminus\Theta).
+\end{equation}
+\end{proposition}
+\begin{proof}
+Write each contact as $a_i/b_i$ in lowest terms with $b_i>0$,
+and set
+\[
+                   G(U,V)=\prod_{i=1}^d(b_iU-a_iV).
+\]
+This integral homogeneous form has no repeated factor.
+For a primitive integer pair $(u,v)$ with $v>0$, put
+$H_0=\max(|u|,v)$. Granville's consequence of rational
+$abc$~\cite[Proposition~1]{Granville} gives
+\[
+             \log\rad(G(u,v))\ge(d-2-\epsilon)\log H_0-C_1.
+\]
+The finitely many bounded heights can be included by enlarging
+$C_1$. Also $|G(u,v)|\le C_2H_0^d$. The primewise inequality
+\[
+                       \rad(m)^2\le |m|\sfpart(m)
+\]
+therefore gives
+\[
+ \log\sfpart(G(u,v))\ge(d-4-2\epsilon)\log H_0-C_3.
+\]
+Outside $S$, at most one primitive linear factor can be
+divisible by a given prime, and a prime dividing $v$ divides
+none. Its odd exponent occurs exactly at a positive odd
+valuation of one of $u/v-a_i/b_i$. Hence
+\[
+ \sfpart(G(u,v))\le\left(\prod_{p\in S}p\right)M_{\Theta,S}(u/v).
+\]
+Dividing the resulting inequality by $d-4-2\epsilon>0$
+proves~\eqref{eq:contactheight}.
+\end{proof}
+
+\begin{lemma}\label{lem:fermat}
+Assume~\eqref{eq:weakabc} for a fixed $\kappa>1$.
+Let $m\ge4$ be even and put $\alpha=m/\kappa-3$.
+If $\alpha>0$, then
+\begin{equation}\label{eq:fermatheight}
+ h(1:u:v)\le\alpha^{-1}h(u^m+v^m)+C_{m,\kappa}
+ \qquad(u,v\in\Q),
+\end{equation}
+where one may take
+\[
+ C_{m,\kappa}=\frac{\alpha+1}{m\alpha}\log2
+                       +\frac{1}{\kappa\alpha}\log K_\kappa.
+\]
+\end{lemma}
+\begin{proof}
+If a coordinate is zero, the left side is $h(u^m+v^m)/m$;
+if both are zero it is zero. These cases satisfy the assertion.
+Otherwise write
+\[
+ u=gA/D,\qquad v=gC/D,
+ \qquad \gcd(A,C)=\gcd(g,D)=1,\quad g,D>0.
+\]
+Put $H_0=\max(|A|,|C|)$ and $N=A^m+C^m$, so
+$H_0^m\le N\le2H_0^m$. Set
+\[
+ k=\gcd(N,D^m),\qquad m_0=N/k,\qquad n_0=D^m/k,
+ \qquad M=\max(g^m m_0,n_0).
+\]
+Then $u^m+v^m=g^m m_0/n_0$ is reduced. Every prime dividing
+$N$ either divides $D$ or survives in $m_0$, and so
+$\rad(N)\le Dm_0$. Applying~\eqref{eq:weakabc} to the
+pairwise coprime positive integers $A^m,C^m,N$ gives
+\[
+ H_0^{m/\kappa-2}\le K_\kappa^{1/\kappa}Dm_0.
+\]
+Since $D^m=n_0N/m_0\le2n_0H_0^m/m_0$, this implies
+\[
+ H_0^\alpha\le2^{1/m}K_\kappa^{1/\kappa}
+                         m_0^{(m-1)/m}n_0^{1/m}.
+\]
+Moreover
+\[
+ \max(gH_0,D)\le2^{1/m}H_0(M/m_0)^{1/m}.
+\]
+Combining the logarithms of these inequalities gives
+\[
+ h(1:u:v)\le C_{m,\kappa}
+ +\frac{m-1-\alpha}{m\alpha}\log m_0
+ +\frac{1}{m\alpha}\log n_0+\frac1m\log M.
+\]
+All three coefficients are nonnegative and sum to $1/\alpha$.
+Since $m_0,n_0\le M$, this proves~\eqref{eq:fermatheight}.
+\end{proof}
+
+Rational $abc$ supplies $\kappa=16/15$. With $m=4$, the
+lemma gives
+\begin{equation}\label{eq:fourthheight}
+ h(1:u:v)\le\frac43h(u^4+v^4)+C_4,
+ \qquad C_4=\frac7{12}\log2+\frac54\log K_{16/15}.
+\end{equation}
+
+\section{Six contacts and a quadratic input scale}
+
+\begin{theorem}\label{thm:six}
+Assume rational $abc$ and the index-height bound
+\eqref{eq:indexheight}. Fix six distinct rational contacts and
+the associated radical $M=M_{\Theta,S}$. Put
+\[
+ \gamma=2X^2+1,\qquad \beta=2\gamma^2+B,
+ \qquad a_1=\beta^4+T(n)^4,
+\]
+where $B\ge3$ is an odd fixed integer and $n\ne0$ is an
+integer label. Let $\lambda\in\Q^\times$. Suppose that, when $\gamma\ne n$, the local
+conditions give
+\begin{equation}\label{eq:twodivisibilities}
+             M(\lambda)\mid N_\gamma,
+             \qquad M(a_1\lambda)\mid N_\gamma,
+\end{equation}
+with both arguments outside the contact set. Then every
+sufficiently large odd $B$ forces $X\in\Z$.
+The sufficient bound is uniform in the input and witnesses.
+\end{theorem}
+\begin{proof}
+In Proposition~\ref{prop:contacts}, take $d=6$ and
+$\epsilon=1/4$. Then
+\[
+                       h(t)\le\frac23\log M(t)+C_0.
+\]
+By~\eqref{eq:twodivisibilities}, the quotient-height inequality
+and~\eqref{eq:fourthheight} give, with $H=h(1:\beta:T(n))$,
+\[
+ \begin{split}
+ H&\le\frac43h(a_1)+C_4\\
+  &\le\frac43\bigl(h(\lambda)+h(a_1\lambda)\bigr)+C_4\\
+  &\le\frac{16}{9}\log N_\gamma+C_2,
+       \qquad C_2=\frac83C_0+C_4.
+ \end{split}
+\]
+Lemma~\ref{lem:power} yields $h(\gamma)\le H/2$. Consequently
+\[
+ H\le\frac89H+\frac{16}{9}\log(1+|n|)+C_2,
+ \qquad H\le16\log(1+|n|)+9C_2.
+\]
+Theorem~\ref{thm:absorption}, with $r=2$ and $\kappa=16/9$,
+now gives $\gamma=n$ for sufficiently large $B$.
+Equation~\eqref{eq:integrality} proves the assertion.
+\end{proof}
+
+The same calculation gives other height criteria. The table
+records choices in Proposition~\ref{prop:contacts}, using the
+fourth-power estimate~\eqref{eq:fourthheight}. The column
+headed $\kappa/r$ is the coefficient of $H$ that is moved to
+the left in the proof of Theorem~\ref{thm:absorption}.
+\begin{center}
+\begin{tabular}{ccccc}
+\toprule
+Contacts $d$ & $\epsilon$ & Contact coefficient & Input power $r$ & $\kappa/r$\\
+\midrule
+8 & $1/2$ & $1/3$ & 1 & $8/9$\\
+6 & $1/4$ & $2/3$ & 2 & $8/9$\\
+5 & $1/36$ & $18/17$ & 3 & $16/17$\\
+\bottomrule
+\end{tabular}
+\end{center}
+For example, five contacts and $\beta=2\gamma^3+B$ give
+\[
+ H\le\frac{48}{17}\log N_\gamma+C
+       \le\frac{16}{17}H+\frac{48}{17}\log(1+|n|)+C,
+\]
+and hence $H\le48\log(1+|n|)+17C$.
+These assertions are height implications under the displayed
+local divisibilities. A polynomial construction must separately
+supply those divisibilities and prove completeness of its local
+and pole conditions.
+
+\begin{remark}
+The smaller input height helps only when the comparison residual
+is $\gamma-n$. Keeping the residual $\beta-n$ gives
+$\log N_\beta\le h(\beta)+\log(1+|n|)$, which does not acquire
+the factor $1/r$ from Lemma~\ref{lem:power}.
+\end{remark}
+
+\section{Four contacts with bounded odd radical}
+
+The degree restriction in Proposition~\ref{prop:contacts} reflects
+a genuine obstruction. For four contacts its radical argument
+has exponent $-2\epsilon$ after the square part is removed.
+The following explicit example shows that no replacement
+logarithmic estimate can hold for this contact set.
+
+\begin{theorem}\label{thm:fourcounterexample}
+Let
+\[
+                  \Theta=\{-1,0,2,3\},\qquad S\supseteq\{2,3,5\}
+\]
+with $S$ finite. There are infinitely many
+$t\in\Q\setminus(\Theta\cup\{1\})$ for which
+\[
+                         M_{\Theta,S}(t)=1.
+\]
+Their heights are unbounded. Consequently there are no constants
+$c,C\ge0$ such that
+\[
+                h(t)\le c\log M_{\Theta,S}(t)+C
+\]
+for every rational $t$ outside the contacts and the pole.
+No conjecture is used.
+\end{theorem}
+\begin{proof}
+Consider the smooth quartic curve
+\begin{equation}\label{eq:quartictwist}
+                   10y^2=(t+1)t(t-2)(t-3).
+\end{equation}
+Its four roots are distinct, and it has the rational point
+$(t,y)=(4,2)$. On $t\ne0$, make the substitutions
+\[
+                        X_E=\frac{60}{t},\qquad
+                        Y_E=\frac{600y}{t^2}.
+\]
+They give the elliptic curve
+\begin{equation}\label{eq:longcurve}
+ E:\quad Y_E^2=X_E^3+10X_E^2-2400X_E+36000
+              =(X_E+60)(X_E-20)(X_E-30),
+\end{equation}
+with inverse formulas
+\[
+                         t=\frac{60}{X_E},\qquad
+                         y=\frac{6Y_E}{X_E^2}.
+\]
+The point $(4,2)$ corresponds to $P=(15,75)$.
+The tangent slope at $P$ is $-19/2$, and the group law gives
+\begin{equation}\label{eq:double}
+                         2P=\left(\frac{201}{4},\frac{2079}{8}\right).
+\end{equation}
+
+To apply the integral short-form version of Nagell--Lutz, put
+\[
+                        x=9X_E+30,\qquad Y=27Y_E.
+\]
+Then
+\begin{equation}\label{eq:shortcurve}
+                 Y^2=x^3-197100x+32130000.
+\end{equation}
+This integral equation is nonsingular; its cubic has the distinct
+roots $-510,210,300$. The image of $2P$ has abscissa $1929/4$,
+which is not integral. Nagell--Lutz states that every rational
+torsion point on an integral short Weierstrass equation has
+integral coordinates; see~\cite[Theorem~1.1]{Alpoge} or
+\cite[Chapter~II, Theorem~5.1]{Milne}. Thus $P$ has infinite order.
+
+For each nonzero integer $n$, the point $[n]P$ is nonidentity
+and is not a point of order two. It cannot have $X_E=0$, since
+$Y_E^2=36000$ has no rational solution. The inverse formulas
+therefore give a rational point $(t_n,y_n)$ on
+\eqref{eq:quartictwist} with $t_n\notin\Theta$.
+Also $t_n\ne1$, since at $t=1$ the equation would require
+$y^2=2/5$. There are infinitely many distinct $t_n$: a fixed
+value of $t$ determines at most two points of~\eqref{eq:longcurve},
+whereas the multiples of $P$ are all distinct.
+
+Fix $p\notin\{2,3,5\}$. If $v_p(t_n)<0$, then all four
+differences $t_n-\theta$ have negative valuation, so $p$
+does not occur in~\eqref{eq:radical}. If $v_p(t_n)\ge0$,
+at most one difference has positive valuation, since the
+nonzero differences among the contacts have prime factors
+only two and three. Equation~\eqref{eq:quartictwist} gives
+\[
+ v_p\bigl((t_n+1)t_n(t_n-2)(t_n-3)\bigr)=2v_p(y_n),
+\]
+which is even. Therefore no positive contact valuation at such
+a prime is odd. It follows that $M_{\Theta,S}(t_n)=1$.
+
+Finally, only finitely many reduced rational fractions have
+height at most any fixed constant. Since the $t_n$ form an
+infinite set, their heights are unbounded. This proves all
+assertions.
+\end{proof}
+
+\begin{corollary}\label{cor:positive}
+The counterexamples in Theorem~\ref{thm:fourcounterexample}
+may be chosen with $3<t<5$, and still have unbounded height.
+\end{corollary}
+\begin{proof}
+The real group $E(\R)$ is compact. The closure of $\Z P$
+is an infinite compact subgroup, hence has no isolated point:
+otherwise it would be discrete and compact, and therefore finite.
+Every sufficiently small neighborhood of $P=(15,75)$ consequently
+contains infinitely many multiples of $P$. The rational function
+$60/X_E$ is continuous there and equals four at $P$.
+Choose the neighborhood so that its values lie in $(3,5)$.
+The preceding finite-fiber and height arguments apply to this
+infinite subset.
+\end{proof}
+
+The theorem concerns a proposed height bound for the odd radical.
+It does not assert that these arguments extend to complete
+nonintegral witnesses of any Diophantine construction.
+
+\section{Exact certificate}
+
+The standard-library program
+\nolinkurl{computation/contact_heights/check_input_height_amplification.py}
+checks the rational point and duplication in~\eqref{eq:longcurve},
+the birational substitution identity, the integral change to
+\eqref{eq:shortcurve}, and the nonintegral doubled abscissa.
+It also verifies the distinct roots, the excluded rational
+values, and the exact rational constants in the height table.
+Its machine-readable result is
+\nolinkurl{input-height-amplification-certificate.json} in the
+same directory. The infinitude assertion follows from the
+proved nontorsion criterion and the argument above; it is not
+inferred from a finite search over multiples.
+
+\begin{thebibliography}{9}
+\bibitem{Granville}
+A.~Granville, Rational and integral points on quadratic twists of a
+given hyperelliptic curve, \emph{International Mathematics Research
+Notices} (2007), article rnm027, Proposition~1,
+\url{https://doi.org/10.1093/imrn/rnm027}; author manuscript,
+\url{https://dms.umontreal.ca/~andrew/PDF/hyperelliptics.pdf}.
+\bibitem{Alpoge}
+L.~Alpoge, \emph{Nagell--Lutz, quickly}, author manuscript,
+Theorem~1.1,
+\url{https://people.math.harvard.edu/~alpoge/papers/nagell-lutz,%20quickly.pdf}.
+\bibitem{Milne}
+J.~S.~Milne, \emph{Elliptic Curves}, second edition,
+World Scientific, 2021, Chapter~II, Section~5,
+\url{https://www.jmilne.org/math/Books/EC2.pdf}.
+\end{thebibliography}
+\end{document}
