@@ -1,0 +1,900 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,booktabs,microtype}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\DeclareMathOperator{\Tr}{Tr}\DeclareMathOperator{\Nm}{N}
+\DeclareMathOperator{\rad}{rad}
+\setlength{\emergencystretch}{2em}
+\title{A Quartic in Eighty-Nine Variables under the Rational $abc$ Conjecture}
+\author{}\date{10 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+Assuming the rational $abc$ conjecture and the specified elliptic-group,
+pole-realization and simultaneous prime-pattern inputs, we construct a
+family of integer quartics in eighty-nine total variables. Every
+sufficiently large fixed odd input shift gives rational input projection
+exactly $\Z$. The quartic is a sum of seventy-seven primitive quadratic
+squares and has exactly $936$ monomials. Its coefficient height, for a
+shift $B\ge3$, is $\max(4153456,B^2+797681)$. A common elliptic chart in four field coordinates stores both reciprocal
+formal parameters. Eight rational contacts symmetric about one permit a short quadratic evaluation and normalization.
+A height estimate for a sum of fourth powers bounds the input together
+with one elliptic index. All six local tests have order one; only plain
+elliptic formal parameters are used. Reciprocal factor equations
+avoid separately stored numerator fourth powers, and their zero stratum
+is excluded by the point-pair equations. Three shifted contact outputs
+and three inverse weights suffice for each detector, with an exact
+rescaling that preserves its pole input. The sufficient shift is ineffective.
+\end{abstract}
+
+\section{Statement and arithmetic assumptions}
+
+For a reduced fraction $u/v$, with $v>0$, put
+$h(u/v)=\log\max(|u|,v)$. Write $h(1:u:v)$ for the logarithmic
+projective height of the indicated rational point. The coefficient height
+of an integer polynomial is the maximum absolute value of its coefficients.
+All variable counts include the distinguished input.
+
+\begin{theorem}\label{thm:main}
+Under the assumptions below, there is a computable family
+\[
+ P_B\in\Z[X,Y_1,\ldots,Y_{88}],\qquad B\ge3\text{ odd},
+\]
+such that every member has degree exactly four, content one, exactly
+$936$ monomials, and coefficient height
+\[
+ H(P_B)=\max(4153456,B^2+797681).
+\]
+There is a constant $B_*$ such that, for every odd $B\ge B_*$,
+\[
+ x\in\Z\quad\Longleftrightarrow\quad
+ \exists\boldsymbol y\in\Q^{88},\quad P_B(x,\boldsymbol y)=0.
+\]
+The integer $B$ is a fixed coefficient parameter. No numerical sufficient
+value of $B_*$ is determined. In particular, the coefficient fixture
+$B=3$ is not asserted to define the integers.
+\end{theorem}
+
+Let $K=\Q(\rho)$, where $\rho^2=2$, let $\sigma$ be conjugation, and put
+\[
+ d=3-\rho,\quad D=d^2=11-6\rho,\qquad E:y^2=x^3-Dx,
+\]
+\[
+ R_0=(1+\rho,2\rho),\qquad
+ P=2R_0=(x_P,y_P)
+   =\left(\frac{57-28\rho}{8},\frac{-660+417\rho}{32}\right).
+\]
+The arithmetic assumptions have the following precise scope.
+\begin{enumerate}
+\item The rational $abc$ conjecture: for every $\epsilon>0$ there is
+$K_\epsilon\ge1$ such that $c\le K_\epsilon\rad(abc)^{1+\epsilon}$
+for pairwise coprime positive integers $a+b=c$.
+\item The elliptic source gives $2E(K)=\Z P$, with $P$ of infinite
+order, and the index-height comparison stated in~\cite{Dependencies}.
+The square-abscissa characterization proved in~\cite{Squares} then
+applies to all nonzero multiples of $P$.
+\item For a nonzero rational $b$, set $B_0=17b$. The pole equations
+\begin{equation}\label{eq:originalpole}
+ \begin{split}
+ p_0^2&=B_0(1-e_0)(1+3e_0),\\
+ B_0q_0^2&=(s_0^2-B_0e_0(B_0-b^2))
+                  (s_0^2+3B_0e_0(B_0-b^2))
+ \end{split}
+\end{equation}
+exclude negative odd valuations of $b$ outside $\{2,3,17\}$.
+For inputs satisfying
+\begin{equation}\label{eq:prepared}
+ \begin{gathered}
+ 0<b<17,\qquad b\text{ has square reduced denominator},\\
+ b\in\Q_2^{\times2}\cap\Q_3^{\times2}\cap\Q_{17}^{\times2},
+ \qquad v_2(b)\ge3,\quad v_3(b)\ge1,\quad v_{17}(b)\ge2,
+ \end{gathered}
+\end{equation}
+the retained restricted-converse and descent hypotheses give a witness
+with $p_0q_0s_0\ne0$. The hypotheses and their nonzero-witness consequence
+are specified in~\cite{Dependencies,Source27,PoleDensity}.
+\item The simultaneous prime-pattern input has exactly the quantified
+form in~\cite{Dependencies,Selection}: arbitrary fixed rational contact
+coefficients after denominator clearing, the prescribed Gaussian
+congruences and conjugate reduction orders, fixed avoidance and
+divisibility, and compatible real approximation. Its analytic source is
+Sun's specified Theorem~4.1 and the estimates pinned in those papers.
+All scales and finite preparation data are fixed before prime selection.
+\end{enumerate}
+The exponent-nineteen contact-height input is not used here.
+
+The one-point case of the proved aggregate trace-height theorem
+\cite{Trace}, obtained from von Buhren's family height theorem, gives
+constants $A>0$, $J\ge0$ such that
+\begin{equation}\label{eq:traceheight}
+ n^2\le A h(T(n))+J,\qquad
+ T(n)=\Tr x([n]P),\quad n\in\Z\setminus\{0\}.
+\end{equation}
+The additive constant is ineffective. Each abscissa is a positive square
+at both real embeddings and exceeds $d$ there, so $T(n)>6$.
+
+\section{Two height consequences of $abc$}
+
+Set
+\[
+ \Theta_8=\{1\pm1,1\pm2,1\pm3,1\pm4\}
+          =\{-3,-2,-1,0,2,3,4,5\}.
+\]
+For $t\notin\Theta_8$, let $M(t)$ be the product of primes $p>76176$
+for which $v_p(t-\theta)>0$ is odd for some $\theta\in\Theta_8$.
+
+\begin{lemma}\label{lem:contact}
+Assume rational $abc$. There is a fixed $C_0\ge0$ such that
+\[
+                         h(t)\le\frac13\log M(t)+C_0.
+\]
+\end{lemma}
+\begin{proof}
+For a primitive pair $(u,v)$, $v>0$, use the squarefree binary form
+$G(u,v)=\prod_{\theta\in\Theta_8}(u-\theta v)$ of degree eight.
+Granville's consequence of $abc$~\cite[Proposition~1]{Granville},
+with $\epsilon=1/2$, gives
+\[
+ \log\rad(G(u,v))\ge\frac{11}{2}\log\max(|u|,v)-C.
+\]
+For a nonzero integer $m$, let $\operatorname{sf}(m)$ be the product
+of primes having odd valuation in $m$. Prime by prime,
+$\rad(m)^2\le |m|\operatorname{sf}(m)$.
+Also $|G(u,v)|\le C'\max(|u|,v)^8$.
+Outside the fixed cutoff, no prime divides two distinct factors of
+$G$, and a prime dividing $v$ divides none of them. Its squarefree
+part outside the cutoff is therefore precisely $M(u/v)$.
+The omitted squarefree factors are bounded by a fixed product of primes.
+Consequently
+\[
+ \log M(u/v)\ge\left(2\cdot\frac{11}{2}-8\right)h(u/v)-C''
+                 =3h(u/v)-C'',
+\]
+as required.
+\end{proof}
+
+\begin{lemma}\label{lem:pair}
+Assume rational $abc$. There is a fixed $C_1\ge0$ such that
+\[
+                    h(1:u:v)\le\frac43h(u^4+v^4)+C_1
+                    \qquad(u,v\in\Q).
+\]
+One may take $C_1=\frac7{12}\log2+\frac54\log K_{1/15}$.
+\end{lemma}
+\begin{proof}
+The zero-coordinate cases follow from $h(w^4)=4h(w)$.
+Otherwise write $u=gA/D_0$, $v=gB/D_0$, where
+$\gcd(A,B)=\gcd(g,D_0)=1$, $g,D_0>0$. Put
+$H=\max(|A|,|B|)$ and $N=A^4+B^4$, so $H^4\le N\le2H^4$.
+Let $k=\gcd(N,D_0^4)$, $m_0=N/k$, $n_0=D_0^4/k$.
+Then $u^4+v^4=g^4m_0/n_0$ is reduced. Write
+$M=\max(g^4m_0,n_0)$.
+
+Every prime dividing $N$ either divides $D_0$ or survives in $m_0$,
+so $\rad(N)\le D_0m_0$. Apply $abc$ with $\epsilon=1/15$ to
+$A^4+B^4=N$. The three positive terms are pairwise coprime, and
+\[
+ H^{7/4}\le K_{1/15}^{15/16}D_0m_0.
+\]
+Using $D_0^4=n_0N/m_0\le2n_0H^4/m_0$ gives
+\[
+ H^{3/4}\le2^{1/4}K_{1/15}^{15/16}m_0^{3/4}n_0^{1/4}.
+\]
+Moreover $\max(gH,D_0)\le2^{1/4}H(M/m_0)^{1/4}$.
+Taking logarithms and combining yields
+\[
+ \begin{split}
+ h(1:u:v)&=\log\max(gH,D_0)\\
+ &\le C_1+\frac34\log m_0+\frac13\log n_0+\frac14\log M
+ \le C_1+\frac43\log M.
+ \end{split}
+\]
+This includes common numerator factors and all denominator cancellation.
+\end{proof}
+
+\section{Quadratic point equations}
+
+Put $\beta=2X^2+B$. If $X=a/b$ is reduced, integrality of $\beta$
+implies $b^2\mid2$, hence $b=1$. Thus $\beta\in\Z$ if and only if
+$X\in\Z$; for integer input $\beta$ is odd, and always $\beta\ge B$.
+
+All equations in this section are over $K$ and mean their two rational
+component equations. Products of stored quantities have degree at most two.
+For the root point retain $h,j,a\in K$ and impose
+\begin{equation}\label{eq:root}
+                       a=h^2,\qquad j^2=a^2-D.
+\end{equation}
+Then $A=(a,hj)=[n]P$ for some nonzero integer $n$ by the
+square-abscissa theorem~\cite{Squares}. \subsection{The common reference point}
+
+Write $a_P=x_P$, $b_P=y_P$, and set
+\[
+ A_P=a_P^2+D,\qquad B_P=a_P^2-D,\qquad
+ C_P=D^2+6a_P^2D-3a_P^4.
+\]
+The constants $a_P,b_P,D,A_P,C_P$ are nonzero. The first four
+nonvanishing assertions follow from the displayed coordinates and
+$D=(3-\rho)^2>0$ at both real embeddings; exact arithmetic gives
+\[
+ C_P=-\frac{94897379}{4096}+\frac{4195821}{256}\rho,
+ \qquad \Nm(C_P)=-\frac{8203357319351}{16777216}\ne0.
+\]
+Retain four field coordinates $S,T_H,f,F_0$. Put
+\begin{align*}
+ L_f&=2b_PD(a_PT_H-b_P),\\
+ Q_f&=a_PA_PST_H+b_PA_PS-b_PB_PT_H+4a_P^2D,\\
+ L_g&=2b_PD(a_PS+b_P),\\
+ Q_g&=-a_PA_PST_H-b_PB_PS+b_PA_PT_H-4a_P^2D.
+\end{align*}
+Impose the three quadratic equations
+\begin{equation}\label{eq:H}
+ \begin{split}
+ L_ff&=Q_f,\\
+ L_gF_0&=Q_g,\\
+ D^2fF_0+a_PD(f+F_0)+a_PST_H+b_P(S-T_H)+D&=0.
+ \end{split}
+\end{equation}
+
+\begin{lemma}\label{lem:commonchart}
+These equations describe exactly the points $H\in E(K)$ for which
+$H$ and $H-P$ are finite with nonzero abscissas, through
+\[
+ S=\frac{y(H)}{x(H)},\qquad T_H=\frac{y(H-P)}{x(H-P)},\qquad
+ f=\frac1{x(H)},\qquad F_0=\frac1{x(H-P)}.
+\]
+In particular $fF_0\ne0$ at every solution. The statement includes
+all finite exceptional cases of the displayed equations.
+\end{lemma}
+\begin{proof}
+For the algebraic calculation abbreviate $a=a_P$, $b=b_P$, $T=T_H$
+and $g=F_0$. Thus $b^2=a(a^2-D)$. Define
+\[
+ \Phi=aS^2T^2-(a^2-D)(S^2+T^2)+2(a^2+D)ST+4aD
+\]
+and the polynomial expressions
+\begin{align*}
+ 2bDf_0&=-(a^2+D)S+(a^2-D)T-bS^2-aS^2T,\\
+ 2bDg_0&=(a^2+D)T-(a^2-D)S-bT^2+aST^2.
+\end{align*}
+Direct expansion gives
+\begin{align}
+ Df_0^2+S^2f_0-1
+   &=\frac{a^2S^2-b^2}{4ab^2D}\Phi,\label{eq:chartcurve}\\
+ Dg_0^2+T^2g_0-1
+   &=\frac{a^2T^2-b^2}{4ab^2D}\Phi,\nonumber\\
+ L_ff_0-Q_f&=-a\Phi,\qquad L_gg_0-Q_g=a\Phi.\nonumber
+\end{align}
+Let $r_f=L_ff-Q_f$, $r_g=L_gg-Q_g$, and
+$R=D^2fg+aD(f+g)+aST+b(S-T)+D$. The further exact identity
+\begin{equation}\label{eq:chartmaster}
+\begin{split}
+ L_fL_gR={}&D^2r_fr_g+(aDL_g+D^2Q_g)r_f\\
+          &+(aDL_f+D^2Q_f)r_g-aD^2C_P\Phi
+\end{split}
+\end{equation}
+shows that every solution has $\Phi=0$, including the cases in which
+one leading coefficient vanishes. Also
+\[
+ (2bD)^2R(f_0,g_0)=
+ D^2\bigl((a^2-D)-aST-b(S-T)\bigr)\Phi.
+\]
+If $L_fL_g\ne0$, these identities give $f=f_0,g=g_0$.
+If $L_f=0$, then $T=b/a$ and $\Phi=0$ forces
+\[
+ S=\frac{a^4-6Da^2+D^2}{2b(a^2+D)},\qquad
+ L_g=-\frac{aDC_P}{a^2+D}\ne0.
+\]
+Thus $g=g_0=1/a$. The coefficient of $f$ in $R$ is
+$D(a^2+D)/a\ne0$, so $f=f_0$. The case $L_g=0$ is symmetric.
+In particular both leading coefficients cannot vanish simultaneously;
+at $S=-b/a,T=b/a$ one has $Q_f=C_P\ne0$.
+
+Equation~\eqref{eq:chartcurve} now proves $fg\ne0$ and gives the
+points $H=(f^{-1},S/f)$ and $H'=(g^{-1},T/g)$ on $E$.
+Two more identities prove the translation:
+\[
+ a(f_0T+g_0S)+b(g_0-f_0)=S+T,
+\]
+\[
+ f_0g_0(aS+b)^2-a(1-af_0)^2
+ =-\frac{(aS+b)^2\bigl(aST+b(S-T)+D\bigr)}{4b^2D^2}\Phi.
+\]
+If $x(H)\ne a$, the second identity gives the abscissa of
+$H-P$ from the chord slope $(x(H)S+b)/(x(H)-a)$.
+The first states that $H,-H',-P$ are collinear, and therefore gives
+the required ordinate. If $x(H)=a$, then $S=\pm b/a$.
+At $S=b/a$ the formula gives $f=-a/D\ne1/a$, which is impossible.
+At $S=-b/a$ it gives $H=-P$ and
+\[
+ T=-\frac{a^4-6Da^2+D^2}{2b(a^2+D)},\qquad
+ g=\frac{4b^2}{(a^2+D)^2},
+\]
+which are the coordinates of $H'=-2P$ in the stated form.
+Thus $H'=H-P$ in all cases.
+
+Conversely, the chord-and-tangent formulas for any allowed $H$ give
+$\Phi=0$ and the expressions $f_0,g_0$ above; the same explicit
+doubling computation covers $H=-P$. The displayed identities then
+prove all three equations. This proves both directions.
+\end{proof}
+
+Write $H=[m]R_0+T_0$, with $T_0\in E[2](K)$, and put $h_*=m/2$.
+This notation is an elliptic index; it does not define multiplication
+of a point by a nonintegral rational number.
+
+
+\subsection{A pair of points with fixed difference}
+
+Retain $V,Q,W_A,I_A,K_A\in K$ satisfying
+\begin{equation}\label{eq:pairchart}
+ \begin{split}
+ hI_A&=(j+DW_A)V+aQ,\\
+ hK_A&=-(j+DW_A)Q-aV,\\
+ VQ&=aW_A,\\
+ V^2+Q^2+2jW_A+DW_A^2&=1.
+ \end{split}
+\end{equation}
+
+\begin{lemma}\label{lem:pairchart}
+Equations~\eqref{eq:root} and~\eqref{eq:pairchart} describe points
+$U,V_1\in\Z P$ with $U-V_1=A$, allowing either numerator point
+to be the identity. Both $I_A$ and $K_A$ are nonzero. On the
+nonidentity branches,
+\[
+ U=\left(\frac a{V^2},\frac{aI_A}{V^3}\right),\qquad
+ V_1=\left(\frac a{Q^2},\frac{aK_A}{Q^3}\right),
+ \qquad z(U)=-\frac V{I_A},\quad z(V_1)=-\frac Q{K_A},
+\]
+where $z=-x/y$. In all branches the quantities $R_U,R_1\in K$
+defined by
+\begin{equation}\label{eq:recipsquares}
+             I_A^2=a-DaR_U,\qquad K_A^2=a-DaR_1
+\end{equation}
+are $f(U)^2,f(V_1)^2$, with $f=1/x$ extended by zero at the identity.
+\end{lemma}
+\begin{proof}
+The square chart gives $haj\ne0$.
+Squaring the first two equations and using the last two gives
+$aI_A^2=a^2-DV^4$ and $aK_A^2=a^2-DQ^4$.
+For $VQ\ne0$ these are exactly the two curve equations. Their
+abscissas are squares, so the points lie in $\Z P$.
+The line with slope $(1/W_A-j)/h$ through $U$ also passes through
+$-V_1$ and $-A$. Substitution gives its three abscissas
+$a/V^2,a/Q^2,a$, counted with multiplicity. The chord-and-tangent
+law therefore gives $U-V_1=A$, including the tangent case.
+Nontorsion of the nonidentity points implies $I_AK_A\ne0$.
+
+If $V=0$, then $W_A=0$, $Q^2=1$, $I_A=hQ$ and
+$K_A=-jQ/h$. The interpretation is $U=O,V_1=-A$.
+If $Q=0$, then $W_A=0$, $V^2=1$, $I_A=jV/h$ and
+$K_A=-hV$, giving $U=A,V_1=O$. The two zero cases cannot occur
+together. The asserted nonvanishing and reciprocal-square identities
+also hold there.
+
+Conversely, let $U,V_1\in\Z P$ be nonidentity points with $U-V_1=A$.
+Their abscissas are squares. The line through $U,-V_1,-A$ has equation
+$y=\mu x+c$, with $c=-h(\mu h+j)$. Put $R=\mu h+j$.
+Vieta's identities give
+$x(U)x(V_1)=R^2$ and $x(U)+x(V_1)=\mu^2-a$; in particular $R\ne0$.
+Choose square roots $u_0^2=x(U)$, $v_0^2=x(V_1)$ with $u_0v_0=R$,
+and put
+\[
+ V=h/u_0,\qquad Q=h/v_0,\qquad W_A=1/R,\qquad
+ I_A=y(U)V^3/a,\qquad K_A=y(V_1)Q^3/a.
+\]
+The two Vieta identities give the last two chart equations, and the
+line ordinates give the first two. This also covers tangent lines.
+The identity branches are supplied by the explicit formulas above.
+\end{proof}
+
+\subsection{The two formal-parameter ratios}
+
+Retain $L,L_0\in K$ and impose the quadratic equations
+\begin{equation}\label{eq:ratios}
+                         I_AL=VS,\qquad K_AL_0=QT_H.
+\end{equation}
+The pair-chart lemma gives $I_AK_A\ne0$. Once $H$ and $H-P$ are
+nontorsion, the common-point lemma and $z=-x/y$ identify these values as
+\[
+ L=\frac{z(U)}{z(H)},\qquad
+ L'=\sigma L_0=\sigma\!\left(\frac{z(V_1)}{z(H-P)}\right).
+\]
+The equations also apply when $U$ or $V_1$ is the identity, with its
+formal parameter interpreted as zero. No additional coordinate for
+either numerator parameter is required.
+
+\section{Six tests and two comparison scales}
+
+Set
+\[
+ C=L-L',\qquad I=L-\beta,\qquad T=\Tr a,
+ \qquad a_0=1,\quad a_1=\beta^4+T^4.
+\]
+The six field tests are $C,I,f(H),f(U),\sigma f(H-P),\sigma f(V_1)$.
+Write $L=L_0^{\mathrm{prim}}+\rho L_1^{\mathrm{prim}}$, with rational components.
+In the quadratic source retain the rational component $I_0$ of $I$, with
+\[
+                  I_0-L_0^{\mathrm{prim}}+2X^2+B=0.
+\]
+Thus $\beta=L_0^{\mathrm{prim}}-I_0$ is affine in the retained
+coordinates, and $I=I_0+\rho L_1^{\mathrm{prim}}$.
+The fixed shift $B$ occurs only in this one equation.
+Retain the four reciprocal squares and $C^2,I^2$ as quadratic outputs.
+Their squares will occur directly in quadratic factor equations. The two fields in
+\eqref{eq:recipsquares} supply two reciprocal squares directly.
+Three scalar outputs compute the comparison scale without taking any
+root or making any division:
+\[
+ s_h=\beta^2+T^2,\quad p_h=\beta T,\quad
+ a_1=s_h^2-2p_h^2=\beta^4+T^4.
+\]
+
+Retain a rational $\lambda$. For $a\in\{a_0,a_1\}$ put $t=a\lambda$,
+$\delta=t-1$. Use three scalar contact outputs $r_0,u_0,v_0$ and
+three scalar weights $s_2,s_3,s_4$. Their literal quadratic equations are
+\begin{equation}\label{eq:contactcircuit}
+\begin{split}
+ r_0&=t^2-2t,\qquad u_0=r_0^2+2r_0,\\
+ (u_0-30r_0-v_0)s_2&=(r_0+1)s_3,\\
+ u_0v_0+v_0+244u_0-820r_0&=0,
+\end{split}
+\end{equation}
+and
+\begin{equation}\label{eq:reciprocalweights}
+                         s_4=s_2^2,\qquad s_3^2=s_2s_4.
+\end{equation}
+For interpretation, define the following rational expressions without
+adjoining coordinates:
+\[
+ r=r_0+1=\delta^2,\qquad r_2=u_0+1=r^2,\qquad \xi=v_0-29,
+\]
+\[
+ F=P_4(r)=(r-1)(r-4)(r-9)(r-16)
+          =r^4-30r^3+273r^2-820r+576
+          =\prod_{\theta\in\Theta_8}(t-\theta).
+\]
+The contact equations become
+\begin{equation}\label{eq:unshiftedcontact}
+ (r_2-30r-\xi)s_2=rs_3,\qquad r_2\xi+273r_2-820r+576=0.
+\end{equation}
+The affine shifts in~\eqref{eq:contactcircuit} give equivalent equations
+whose constant coefficients are zero.
+
+The stored field factors are $A_1,A_2\in K$, defined by
+\begin{equation}\label{eq:clearedfactors}
+\begin{split}
+ s_3A_1&=s_4+s_3C^2+s_2f(H)^2+(f(U)^2)^2,\\
+ s_3A_2&=s_4+s_3I^2+s_2\sigma f(H-P)^2+(\sigma f(V_1)^2)^2.
+\end{split}
+\end{equation}
+Every fourth power on the right is evaluated directly as a quadratic
+polynomial in the two components of its stored square. Store a field
+value $\Omega=\omega_0+\omega_1\rho$ and scalars $\eta,b$, with
+\begin{equation}\label{eq:normalizedproduct}
+                         (r_0+1)\Omega=A_1A_2
+\end{equation}
+and
+\begin{equation}\label{eq:scaledtrace}
+ \omega_0^2-2\omega_0\eta-2\omega_1^2=0,
+ \qquad s_3b=\eta^2.
+\end{equation}
+These equations are quadratic in the stored coordinates. The
+unscaled factors, product, and trace parameter used in the valuation
+arguments will be recovered in the following lemma; they are distinct
+from $A_1,A_2,\Omega,\eta$.
+
+The normalized pole uses seven further rational coordinates
+$e,u,p,v,w,p_2,w_2$ and five quadratic equations
+\begin{equation}\label{eq:normalizedpole}
+ \begin{gathered}
+ p_2=p^2,\qquad 17bp_2=289+34e-3e^2,\\
+ e(17-b)=17uv,\qquad w_2=w^2,\qquad
+ 17bw_2=u^2+34uv-867v^2.
+ \end{gathered}
+\end{equation}
+For $b\ne0$ these give~\eqref{eq:originalpole} under
+\[
+ e_0=e/17,\quad p_0=bp,\quad s_0=bu,\quad q_0=b^2uw.
+\]
+Conversely a witness with $s_0\ne0$ gives the displayed normalized
+coordinates by these formulas and $v=e(17-b)/(17u)$.
+This explains both the pole obstruction and its use in completeness.
+
+
+\begin{lemma}\label{lem:domain}
+Every rational solution has $rs_2s_3s_4F\ne0$. Define
+\[
+ s=\frac{s_3}{s_2},\qquad q=s^{-1},\qquad
+ k=qr^2,\qquad R=\frac{F}{r^5}.
+\]
+Then $s_j=s^j=q^{-j}$ for $j=2,3,4$, and
+\[
+ q=\frac{\delta^6}{F},\qquad k=\frac{\delta^{10}}F=R^{-1}.
+\]
+The unscaled factors $T_i=A_i/s$ have precisely the values
+\begin{equation}\label{eq:packed}
+\begin{split}
+ T_1&=1+qC^2+q^2f(H)^2+q^4f(U)^4,\\
+ T_2&=1+qI^2+q^2\sigma f(H-P)^2+q^4\sigma f(V_1)^4.
+\end{split}
+\end{equation}
+Put
+\[
+ W_0=\frac r{s^2}\Omega=T_1T_2=w_0+w_1\rho,
+ \qquad \tau_0=\frac r{s^2}\eta.
+\]
+These recovered rational values satisfy
+\begin{equation}\label{eq:trace}
+                  w_0^2-2w_0\tau_0-2w_1^2=0,
+                  \qquad kb=\tau_0^2.
+\end{equation}
+In particular the pole input is exactly $b=R\tau_0^2$.
+Conversely, let $r=\delta^2$ and $qF=r^3$ with $rq\ne0$.
+Values satisfying the unscaled factor, product, and trace equations
+then uniquely determine the stored contact, factor, product, and
+trace coordinates.
+\end{lemma}
+\begin{proof}
+If $s_2=0$, equations~\eqref{eq:reciprocalweights} give $s_3=s_4=0$.
+Equations~\eqref{eq:clearedfactors} then give
+$f(U)^4=\sigma f(V_1)^4=0$. Thus both numerator reciprocal squares
+vanish. The identities in the pair-chart proof give $V^4=Q^4=0$,
+hence $V=Q=0$. Since $a\ne0$, the equation $VQ=aW_A$ gives
+$W_A=0$, contradicting the last equation of~\eqref{eq:pairchart}.
+Consequently $s_2\ne0$. The two weight equations now give
+$s_3s_4\ne0$ and, with $s=s_3/s_2$,
+\[
+                         s^2=s_2,\quad s^3=s_3,\quad s^4=s_4.
+\]
+Equations~\eqref{eq:unshiftedcontact} give
+$\xi=r_2-(30+s)r$ and then $P_4(r)=sr^3$.
+If $r=0$, then $r_2=0$ and their last equation would give $576=0$.
+Equivalently, $r_0=u_0=-1$ makes the last row of
+\eqref{eq:contactcircuit} equal to $576$. Thus $r\ne0$, and
+$F=P_4(r)=sr^3\ne0$. All asserted contact formulas follow.
+In particular $\lambda\ne0$, since zero is a contact.
+
+Dividing~\eqref{eq:clearedfactors} by $s^4$ and putting $T_i=A_i/s$
+gives~\eqref{eq:packed}. Equation~\eqref{eq:normalizedproduct}
+then gives $W_0=T_1T_2$. Multiplication of all three trace coordinates
+by $r/s^2$ preserves the homogeneous trace equation. Furthermore
+\[
+ kb=\frac{r^2}s\frac{\eta^2}{s^3}
+    =\left(\frac r{s^2}\eta\right)^2=\tau_0^2.
+\]
+This calculation does not divide by a factor, a product component,
+or a trace parameter, and therefore also covers their possible zero
+values before the local argument excludes them.
+
+Conversely, put $s=q^{-1}$, $s_j=s^j$,
+$r_0=r-1$, $u_0=r^2-1$, and
+$v_0=r^2-(30+s)r+29$. Set
+\[
+ A_i=sT_i,\qquad \Omega=\frac{s^2}rW_0,
+ \qquad \eta=\frac{s^2}r\tau_0.
+\]
+Direct substitution gives every displayed quadratic equation, with
+the same pole input $b$. The values are uniquely determined.
+\end{proof}
+
+\section{Local extraction and denominator exclusions}
+
+At a prime $p>76176$, the curve has good reduction and $D$ is a unit.
+For a nonzero finite reciprocal abscissa $f(Q)$, its valuation at
+either place of $K$ above $p$ is even. If $v(x)<0$, the curve equation
+gives $2v(y)=3v(x)$; if $v(x)>0$, it gives $2v(y)=v(x)$.
+The unit case is immediate. Zero reciprocal abscissas are interpreted
+as having infinite valuation.
+Lemma~\ref{lem:commonchart} identifies both stored reciprocals at every
+solution, including the exceptional leading-coefficient cases of the
+quadratic chart. Their even valuations are therefore available before
+any formal-parameter quotient is interpreted.
+
+Let $p\mid M(t)$, put $\nu=v_p(R)$, and normalize valuations by
+$v(p)=1$. Then $\nu$ is positive and odd, $\delta$ is a unit, and
+$v(q)=-\nu$. For each factor in~\eqref{eq:packed}, the three
+nonconstant finite valuations belong respectively to
+\[
+                     1+2\Z,\qquad 2+4\Z,\qquad4+8\Z.
+\]
+Thus all term valuations, including zero for the constant term, are
+distinct. Each factor is nonzero and has valuation at most zero;
+valuation zero implies residue one. A zero test merely removes a term.
+
+\begin{proposition}\label{prop:local}
+At every contact prime, there is one place at which all six tests have
+positive valuation. The four reciprocal-abscissa tests have valuation
+at least two.
+\end{proposition}
+\begin{proof}
+The preceding argument gives $W_0\ne0$. Equation~\eqref{eq:trace} then
+implies $w_0\ne0$, since $w_0=0$ would imply $w_1=0$. Hence
+\[
+ \tau_0=\frac{\Nm(W_0)}{2w_0}=\frac1{\Tr(W_0^{-1})}\ne0,
+ \qquad b=R\tau_0^2\ne0.
+\]
+Put $\ell=\max_{v\mid p}v(W_0)\le0$. The trace inequality gives
+$v_p(b)\le\nu+2\ell$. This valuation is odd, so the pole obstruction
+forces $0<v_p(b)\le\nu+2\ell$, hence $\ell>-\nu/2$.
+At a place attaining $\ell$, each factor valuation is at least $\ell$.
+Each of its terms therefore has valuation greater than $-\nu/2$.
+For the three columns this gives respectively
+\[
+ v(C),v(I)>\nu/4,\qquad
+ v(f(H)),v(\sigma f(H-P))>3\nu/4,\qquad
+ v(f(U)),v(\sigma f(V_1))>7\nu/8.
+\]
+Integer rounding and evenness give the assertion.
+\end{proof}
+
+The finite $H$ chart may contain torsion translates. Before interpreting
+either ratio, exclude
+\[
+                  E[2](K)\ \cup\ (P+E[2](K))\ \cup\ (-P+E[2](K)).
+\]
+Every permitted point in this finite set has reciprocal abscissa a unit
+above $p>76176$. The torsion translation formulas, together with
+\[
+ \Nm(x_P)=41^2/64,\quad
+ \Nm(x_P-d)=17^2/64,\quad \Nm(x_P+d)=63^2/64,
+\]
+give this directly. If $H$ belonged to the set, Proposition~\ref{prop:local}
+would force both contact radicals to equal one. Lemmas~\ref{lem:contact}
+and~\ref{lem:pair}, and $h(a_1)\le h(a_1\lambda)+h(\lambda)$, would
+then give $h(1:\beta:T)\le\frac83C_0+C_1$. Since $\beta\ge B$, this is
+impossible for every sufficiently large fixed $B$.
+
+Consequently $h_*\notin\{-1,0,1\}$. Both reference points are
+nontorsion, so $S T_H\ne0$ and $z(H),z(H-P)$ are defined and nonzero.
+Equations~\eqref{eq:ratios} now have their stated quotient interpretation.
+This exclusion does not use a logarithmic ratio and therefore precedes
+its use.
+
+\section{Soundness for all sufficiently large shifts}
+
+Write $U=[u]P$, so $V_1=[u-n]P$. At a contact place supplied by
+Proposition~\ref{prop:local}, $H,U$ lie in the primary formal group
+and $H-P,V_1$ in the conjugate formal group. The formal parameter satisfies
+\begin{equation}\label{eq:log}
+ \log_E(Q)=z(Q)\mathcal A(Q),\qquad
+ \mathcal A(Q)\equiv1\pmod{p^{4v(z(Q))}}.
+\end{equation}
+This is the constant-term case of the proved formal-logarithm estimate
+in~\cite{Logs}. The unit is defined to be one at the identity.
+
+The integral group identities
+\[
+                [m]U=[2u]H,\qquad
+                [m-2]V_1=[2(u-n)](H-P)
+\]
+kill the torsion component of $H$. Their full logarithmic ratios are
+$r=u/h_*$ and $r'=(u-n)/(h_*-1)$. At least one of $h_*,h_*-1$ is a
+$p$-adic unit, so at least one full ratio is integral. The units in
+\eqref{eq:log} preserve the corresponding approximate valuation, and
+the positive-order test $C=L-L'$ transfers integrality to the other
+approximate ratio and hence to both full ratios.
+Only after this step does~\eqref{eq:log} give absolute congruences
+$L\equiv r$ and $L'\equiv r'\pmod p$. Therefore
+\[
+ n=h_*r-(h_*-1)r'\equiv L\equiv\beta\pmod p.
+\]
+The argument also covers identity numerator points and half-integral
+$h_*$, since $p$ is odd. In particular $\beta$ is integral at $p$.
+
+If $\beta\ne n$, let $N_\beta$ be the positive absolute reduced
+numerator of $\beta-n$. Both $M(\lambda)$ and $M(a_1\lambda)$ divide
+$N_\beta$. Lemma~\ref{lem:contact} gives
+\[
+ h(a_1)\le h(\lambda)+h(a_1\lambda)
+               \le\frac23\log N_\beta+2C_0.
+\]
+Put $H_2=h(1:\beta:T)$. Lemma~\ref{lem:pair} implies
+\[
+ H_2\le\frac89\log N_\beta+C_2,\qquad C_2=\frac83C_0+C_1.
+\]
+For a reduced fraction $\beta=a/b$,
+$|a-nb|\le(1+|n|)\max(|a|,b)$. Since $h(\beta)\le H_2$,
+\[
+ \log N_\beta\le H_2+\log(1+|n|),\qquad
+ H_2\le8\log(1+|n|)+9C_2.
+\]
+The trace-height bound~\eqref{eq:traceheight} now yields
+\[
+ n^2\le8A\log(1+|n|)+9AC_2+J.
+\]
+Its right side grows logarithmically, so $|n|$ and then $H_2$ are
+uniformly bounded. Every constant here is independent of $B$.
+Since $\beta\ge B$, choosing one sufficiently large odd shift excludes
+$\beta\ne n$. Thus $\beta=n\in\Z$, and consequently $X\in\Z$.
+Together with the earlier exceptional-point exclusion this proves
+soundness for every odd $B$ beyond one fixed threshold.
+
+\section{Simultaneous completeness}
+
+Fix $X\in\Z$ and an odd $B\ge3$. Put $n=\beta$ and $A=[n]P$;
+this fixes $T$ and both positive rational scales. Choose a nonzero
+reference integer divisible by $64$ and compact real and finite-place
+neighborhoods for the points
+\[
+ H=[h]P,\quad U=[hn]P,\quad H-P=[h-1]P,\quad
+ V_1=[(h-1)n]P
+\]
+which avoid the finitely many chart denominators. In these neighborhoods
+every rational test has a fixed lower valuation bound at the finitely
+many preparation primes. All these choices precede prime selection.
+
+Choose a fixed $D_1>0$ clearing $D_1^2\theta/a$ for both scales and
+all contacts, and sufficiently divisible at the preparation primes.
+Apply the retained prime-pattern input to the distinct coefficients
+$-D_1^2\theta/a$, with repetitions removed, and write
+\[
+                \lambda=\frac{u}{D_1^2w^2},\qquad L_1=D_1^2w^2.
+\]
+Its prime values are $u-(\theta/a)L_1$. The zero contact makes $u$
+one of the selected primes. The supplied conjugate reduction-order
+conditions and the compatible congruence progression in~\cite{Dependencies}
+give $h$ for which $H,U$ are formal at one place above each selected
+prime and $H-P,V_1$ are formal at the conjugate place. The fixed
+congruence and real neighborhoods are retained. Only natural depth one
+is requested at either branch.
+
+Both full logarithmic ratios equal $n$. Hence the four reciprocal
+tests have valuation at least two and $C,I$ have valuation at least
+four at the chosen place. Since $v_p(q)=-1$, every nonconstant term
+of both factors in~\eqref{eq:packed} has positive valuation there.
+At the other place each factor is either a unit of residue one or has
+negative valuation. Thus $\Tr(W_0^{-1})$ has residue one or two and is
+a unit. The pole input has valuation one at every selected contact prime.
+
+For arbitrary positive rational $a$ the exact identity
+\begin{equation}\label{eq:primeproduct}
+ R=\frac{a^8\prod_{\theta\in\Theta_8}(u-(\theta/a)L_1)}
+             {L_1^8(a\lambda-1)^{10}}
+\end{equation}
+has only square factors apart from the selected prime numerators.
+In particular no square condition on $a$ is needed. At every other
+prime $v_p(R)$ is even, and the reciprocal trace changes valuations
+by an even number. These facts give a square reduced denominator for $b$.
+
+At a preparation prime, increasing the fixed denominator divisibility
+makes $v_p(t)\ll0$. Then
+\[
+ v_p(q)=v_p(R)=-2v_p(t),\qquad
+ R=\delta^{-2}\prod_{\theta\in\Theta_8}
+                   \left(1+\frac{1-\theta}{\delta}\right).
+\]
+The product is arbitrarily close to one and is a local square at
+$2,3,17$. All weighted test terms are small, so $\Tr(W_0^{-1})$ is
+arbitrarily close to two. Sufficient divisibility therefore gives the
+three local squareclasses and valuation depths in~\eqref{eq:prepared}.
+
+On the fixed compact real neighborhoods, as the lower bound on $\lambda$
+tends to infinity, $R\sim q\sim t^{-2}$, $W_0\to1$, and
+$b\sim1/(4t^2)$. Both real embeddings of every factor are positive
+for sufficiently large $\lambda$. Hence $0<b<17$ and every required
+denominator is nonzero. These bounds are uniform on the chosen compact
+sets, so they can be fixed before applying the prime-pattern theorem.
+Each prepared $b$ has a nonzero pole witness, which converts to
+\eqref{eq:normalizedpole}. The converse in Lemma~\ref{lem:domain} fills the stored contact,
+factor, product, and trace coordinates with these rational values. This proves completeness for every
+integer input and every odd $B\ge3$.
+
+\section{The polynomial and its exact certificate}
+
+Each field value represents two rational coordinates. For the root abscissa
+$a$, the four reciprocal squares and $C^2$, the stored second
+coordinate is one half of the $\rho$ coefficient. Other stored field
+values use their ordinary coefficients. These rational changes of
+coordinates are invertible; they are fixed in the coefficient tables.
+The six component equations of~\eqref{eq:H} are first made primitive,
+then replaced by the nonsingular rational row combinations recorded in
+the coefficient certificate. Their row-change determinant is
+$-1/362963666515968$. Each resulting row, and each remaining component
+equation, is cleared to a primitive integer quadratic, with positive
+first nonzero coefficient in the prescribed monomial order.
+These operations preserve their common zero set. Their sum of squares
+defines $P_B$.
+
+The coordinate count is
+\begin{center}
+\begin{tabular}{lr}
+\toprule
+Coordinates & Number\\\midrule
+Input, its rational comparison component, and the common slope &3\\
+Root chart for $A$ &6\\
+Common chart for $H,H-P$ &8\\
+Pair chart for $U,V_1$ &10\\
+The two ratios &4\\
+Four reciprocal squares and two comparison squares &12\\
+Three scalar comparison-scale outputs &3\\
+Two detector blocks, including their pole coordinates &42\\
+The second argument $a_1\lambda$ &1\\\midrule
+Total &89\\\bottomrule
+\end{tabular}
+\end{center}
+Each detector uses three contact outputs $r_0,u_0,v_0$, three inverse
+weights, four factor components, two product components, the two scalars
+$\eta,b$, and seven pole coordinates: twenty-one in all. There are
+$77$ primitive quadratic equations, so over $\Q$ their sum of squares
+vanishes exactly when they all vanish.
+
+The complete specification is in
+\nolinkurl{computation/quartic/family_abc89_v21}. The producer and
+independent checker are
+\nolinkurl{build_abc_inverse_contact_v21.py} and
+\nolinkurl{check_abc_inverse_contact_v21.py}. They specify all $77$ rows
+and every coefficient of the full quartic. There are $937$ terms when
+powers of $B$ are stored separately, and $936$ ordinary monomials for
+every positive integer $B$. The fourth power of the rational component
+of the root coordinate $h$ has coefficient one, proving degree four
+and content one. Only the constant coefficient contains two powers of
+$B$; it is $B^2+797681$. The remaining three parameter coefficients
+are $4B,-2B,2B$, at the monomials $X^2$, $L_0^{\mathrm{prim}}$,
+and $I_0$, respectively. Every other coefficient is independent of
+$B$, and their largest absolute value is $4153456$. Thus
+\[
+ H(P_B)=\max(4153456,B^2+797681)
+       =B^2+797681\quad\text{for odd }B\ge1833.
+\]
+No coefficient cancellation changes the stated support for positive
+integer $B$. This coefficient threshold is distinct from the
+ineffective sufficient defining shift in Theorem~\ref{thm:main}.
+
+The independent checker imports no producer. It reconstructs all
+24 changed contact, factor, product, and pole rows directly from the
+displayed formulas, and compares the remaining 53 rows exactly with
+their pinned coefficient source. It verifies every occurrence of the
+omitted weight coordinates and independently expands all 77 quadratic
+squares. Separate polynomial identities check the affine contact
+translations, the contact normalization, the homogeneous trace scaling,
+and preservation of the pole input. These identities hold before
+assuming a product or trace parameter nonzero. The zero-weight and
+zero-contact exclusions are the algebraic arguments in
+Lemma~\ref{lem:domain}.
+
+The common-point reconstruction dependency verifies the nonsingularity
+of the rational row change. The separate standard-library program
+\nolinkurl{computation/elliptic_constraints/check_fixed_difference_chart.py}
+verifies twelve general polynomial identities, including elimination
+without division, the two curve equations, translation by $P$, and the
+exceptional leading-coefficient cases. These are finite algebraic
+certificates. The arithmetic assumptions and the ineffective sufficient
+shift remain those stated in Section~1.
+
+\begin{thebibliography}{10}
+\bibitem{Granville}
+A.~Granville, Rational and integral points on quadratic twists of a given
+hyperelliptic curve, \emph{International Mathematics Research Notices}
+(2007), article rnm027, Proposition~1.
+\url{https://doi.org/10.1093/imrn/rnm027}; author's manuscript,
+\url{https://dms.umontreal.ca/~andrew/PDF/hyperelliptics.pdf}.
+\bibitem{Dependencies}
+\emph{Arithmetic dependencies of the construction with 29 variables},
+companion paper, \nolinkurl{papers/arithmetic_dependencies}.
+\bibitem{Selection}
+\emph{Separation and denominator conditions in quadratic prime patterns},
+companion paper, \nolinkurl{papers/prime_selection}.
+\bibitem{Squares}
+\emph{Square abscissas and direct charts for the elliptic subgroup},
+companion paper, \nolinkurl{papers/square_abscissa}.
+\bibitem{Trace}
+\emph{Aggregate trace heights of elliptic multiples}, companion paper,
+\nolinkurl{papers/trace_heights}; it applies J.~von Buhren,
+\emph{J. Th\'eor. Nombres Bordeaux} \textbf{29} (2017), 307--320,
+Theorem~1.1, \url{https://www.numdam.org/item/10.5802/jtnb.981.pdf}.
+\bibitem{Logs}
+\emph{Uniform formal-logarithm estimates}, companion paper,
+\nolinkurl{papers/elliptic_logarithms}.
+\bibitem{Source27}
+\emph{A defining polynomial in twenty-seven variables: an existence
+theorem with a uniform degree bound}, companion paper,
+\nolinkurl{papers/few_variables27}, nonzero pole realization lemma.
+\bibitem{PoleDensity}
+\emph{Nonzero witnesses in the pole equations}, companion paper,
+\nolinkurl{papers/pole_parameters/pole_witness_density_20261109_v14.tex}.
+\end{thebibliography}
+\end{document}
