@@ -1,0 +1,53 @@
+name: Audit source snapshots 2026-11-13
+
+on:
+  push:
+    branches: [research/audit-sun-pr30-2026-11-13]
+    paths: [.github/workflows/audit-source-snapshots-20261113.yml]
+
+permissions:
+  contents: read
+
+jobs:
+  frozen-sources:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: fa09c9c6c97982c13265e7088d95cdb61b3e90cf
+          path: baseline
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          repository: elliotglazer/diophantine-z-q
+          ref: c84bbfa4dbe8f32fd3bf29df029f7b7849d36202
+          path: upstream
+          persist-credentials: false
+      - name: Record exact revisions
+        run: |
+          mkdir evidence
+          git -C baseline rev-parse HEAD > evidence/baseline-commit.txt
+          git -C upstream rev-parse HEAD > evidence/upstream-commit.txt
+          python3 --version > evidence/python-version.txt
+      - name: Reproduce all baseline stages
+        run: |
+          set -o pipefail
+          python3 baseline/scripts/verify.py --full --receipt "$PWD/evidence/baseline-verification.json" 2>&1 | tee evidence/baseline-verification.log
+      - name: Check the proposed 214-variable coefficient transformation
+        working-directory: upstream
+        run: |
+          set -o pipefail
+          python3 research/quartic214/construction/check_exact.py 2>&1 | tee ../evidence/pr30-coefficient-check.log
+      - name: Archive the pinned mathematical sources
+        if: always()
+        run: |
+          tar --exclude='baseline/.git' --exclude='upstream/.git' --exclude='*.pdf' --exclude='*.zip' --exclude='*.pyc' --exclude='__pycache__' -czf evidence/source-snapshots.tar.gz baseline upstream
+          sha256sum evidence/source-snapshots.tar.gz > evidence/source-snapshots.sha256
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: frozen-audit-sources-20261113
+          path: evidence/
+          retention-days: 14
+          if-no-files-found: error
