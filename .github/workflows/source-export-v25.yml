@@ -1,0 +1,30 @@
+name: Pinned sources for v25 verification
+on:
+  push:
+    branches: [research/2026-11-13-v25-integration]
+    paths: [.github/workflows/source-export-v25.yml]
+permissions:
+  contents: read
+jobs:
+  export:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - name: Collect exact public sources
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/v25-sources/ours" "$RUNNER_TEMP/v25-sources/upstream"
+          git archive HEAD | tar -x -C "$RUNNER_TEMP/v25-sources/ours"
+          git clone --filter=blob:none --no-checkout https://github.com/elliotglazer/diophantine-z-q.git "$RUNNER_TEMP/upstream-clone"
+          git -C "$RUNNER_TEMP/upstream-clone" fetch origin 1f7e1f1fb0438feda3c9f3da9cc16982126aeeed
+          git -C "$RUNNER_TEMP/upstream-clone" archive 1f7e1f1fb0438feda3c9f3da9cc16982126aeeed research/quartic214 research/version15/quartics/quartic-222/provenance/shared-T-redundancy224-006 manuscripts/quartic_v17.tex THIRD_PARTY_NOTICES.md | tar -x -C "$RUNNER_TEMP/v25-sources/upstream"
+          printf '%s\n' "$(git rev-parse HEAD)" > "$RUNNER_TEMP/v25-sources/OWN_COMMIT"
+          printf '%s\n' 1f7e1f1fb0438feda3c9f3da9cc16982126aeeed > "$RUNNER_TEMP/v25-sources/UPSTREAM_COMMIT"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pinned-v25-sources
+          path: ${{ runner.temp }}/v25-sources
+          retention-days: 7
