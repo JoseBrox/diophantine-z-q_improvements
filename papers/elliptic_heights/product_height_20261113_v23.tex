@@ -1,0 +1,267 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,microtype}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\DeclareMathOperator{\ord}{ord}\DeclareMathOperator{\N}{N}
+\setlength{\emergencystretch}{2em}
+\title{Equality in the Product-Height Inequality\ for Elliptic Abscissas}
+\author{}\date{13 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+For a fixed elliptic curve over $\Q(\sqrt2)$, the logarithmic height of a
+product of abscissas of nonzero multiples of a specified point equals the
+sum of their heights if and only if the indices have the same $2$-adic
+valuation. Positive integer weights are allowed. We prove both directions
+by reduction at finite primes and the product formula, without a rank
+calculation or a conjectural arithmetic input. This extends the odd-index
+identity used in Sun's twenty-eight-unknown construction. Mixed valuations
+have a positive height defect; the pair of indices $1,2$ has defect
+exactly $\log41$. We also give a number-field criterion and a three-scale
+height consequence.
+\end{abstract}
+
+\section{Statement and height convention}
+Put $K=\Q(\rho)$, $\rho^2=2$, $d=3-\rho$, $D=d^2$, and
+\[
+ E:y^2=x^3-Dx,\qquad R_0=(1+\rho,2\rho),\qquad P=2R_0
+ =\left(\frac{57-28\rho}{8},\frac{-660+417\rho}{32}\right).
+\]
+Write $h$ for the absolute logarithmic Weil height. For a number field
+$F$ containing $a\ne0$, our convention is
+\[
+ [F:\Q]h(a)=\sum_{\sigma:F\hookrightarrow\mathbb C}
+ \max(0,\log|\sigma(a)|)
+ +\sum_{\mathfrak p}\max(0,-\ord_{\mathfrak p}a)\log\N\mathfrak p.
+\]
+Both complex embeddings of a conjugate pair occur in the first sum.
+The order at a prime ideal has value group $\Z$.
+
+\begin{theorem}\label{thm:main}
+The point $P$ has infinite order. For nonzero integers $n_1,\ldots,n_s$
+and positive integers $a_1,\ldots,a_s$, put $x_i=x([n_i]P)$.
+Then
+\[
+ h\left(\prod_{i=1}^s x_i^{a_i}\right)=\sum_{i=1}^s a_i h(x_i)
+ \quad\Longleftrightarrow\quad
+ v_2(n_1)=\cdots=v_2(n_s).
+\]
+If the valuations differ, the difference between the right and left
+sides is at least $\log3$.
+\end{theorem}
+The odd-index special case is the identity stated in
+\cite[Lemma 2.2]{Sun}, where it is attributed to the earlier construction.
+Here equality is characterized, rather than merely established for odd
+indices. Signs and repetitions of the indices are unrestricted.
+No assertion that $2E(K)=\Z P$ is needed.
+
+\section{An exact expression for the height defect}
+For an embedding $\sigma$, set $L_\sigma(a)=\log|\sigma(a)|$.
+For a finite prime set $L_{\mathfrak p}(a)=-\ord_{\mathfrak p}(a)\log\N\mathfrak p$.
+Thus $[F:\Q]h(a)=\sum_v\max(0,L_v(a))$.
+\begin{lemma}\label{lem:defect}
+For nonzero $u_i\in F$ and positive real weights $a_i$, the formal
+weighted height defect is
+\[
+ \sum_i a_i h(u_i)-\frac1{[F:\Q]}
+          \sum_v\max\left(0,\sum_i a_iL_v(u_i)\right)
+ =\frac1{[F:\Q]}\sum_v\min(P_v,N_v),
+\]
+where $P_v=\sum_i a_i\max(0,L_v(u_i))$ and
+$N_v=\sum_i a_i\max(0,-L_v(u_i))$.
+For integral weights the second term is the height of the product.
+Equality holds exactly when no place has both a strictly positive and a
+strictly negative value among the $L_v(u_i)$.
+\end{lemma}
+\begin{proof}
+At each place $\sum_i a_iL_v(u_i)=P_v-N_v$, and
+$P_v-\max(0,P_v-N_v)=\min(P_v,N_v)$. All terms are nonnegative;
+only finitely many finite primes contribute.
+\end{proof}
+
+\section{The exceptional primes and the real embeddings}
+The discriminant of the displayed integral equation is $64D^3$.
+Its only possibly bad prime ideals are $(\rho)$ and $(d)$.
+
+\begin{lemma}\label{lem:bad}
+The point $P$ is nontorsion. For every $n\ne0$ one has
+\[
+ \ord_{(\rho)}x([n]P)=-6-4v_2(n),\qquad
+ \ord_{(d)}x([n]P)\le0.
+\]
+At both real embeddings $\sigma$ of $K$,
+$\sigma(x([n]P))>\sigma(d)>1$. Every $x([n]P)$ is a nonzero square in $K$.
+\end{lemma}
+\begin{proof}
+At $(\rho)$, normalize $\ord(\rho)=1$, so $\ord(2)=2$.
+The explicit coordinates give $\ord x(P)=-6$, $\ord y(P)=-9$,
+and $\ord z(P)=3$ for $z=-x/y$. The formal group at the integral
+point at infinity has an integral invariant differential; its logarithm
+therefore has coefficients $b_{m-1}/m$, with $b_{m-1}$ integral.
+If $\ord z\ge3$, then for $m\ge2$
+\[
+ \ord(b_{m-1}z^m/m)\ge m\ord z-2v_2(m)>\ord z,
+\]
+since $3(m-1)>2v_2(m)$. Thus the logarithm is valuation-preserving
+on this neighborhood. Integer multiplication preserves the neighborhood,
+and $\log_E([n]P)=n\log_E(P)\ne0$ for $n\ne0$.
+This proves nontorsion and gives
+$\ord z([n]P)=3+2v_2(n)$.
+The integral expansion $x=z^{-2}+O(z^{-1})$ yields the first formula.
+These formal-group facts apply to the displayed integral equation;
+minimality at $2$ is not required.
+
+At $(d)$ the residue field is $\mathbb F_7$, with $\rho=3$.
+The equation reduces to $y^2=x^3$, and $P$ reduces to $(1,6)$,
+a nonsingular point. The equation is minimal here: its discriminant
+has valuation $6<12$. Points with nonsingular reduction form a subgroup,
+so every multiple of $P$ has nonsingular reduction. Positive valuation
+of its abscissa would force positive valuation of the ordinate and
+reduction $(0,0)$, which is singular. This is impossible.
+
+For any nonzero $n$, the point $Q=[n]R_0$ is nontorsion and has
+nonzero ordinate. Duplication gives
+\[
+ x([n]P)=x(2Q)=\left(\frac{x(Q)^2+D}{2y(Q)}\right)^2.
+\]
+At both real embeddings the numerator is positive, so this square
+is strictly positive. The equation $y^2=x(x^2-D)$, together with
+nontorsion, now gives $x>\sqrt D=d$ at that embedding.
+The formal group and nonsingular reduction statements used here are
+standard for integral Weierstrass equations; see \cite[Chapters IV and VII]{Silverman}.
+\end{proof}
+
+\section{Good reduction and the equality criterion}
+\begin{lemma}\label{lem:good}
+At a prime of good reduction for the displayed equation,
+\[
+ \ord_{\mathfrak p}x([n]P)>0\ \Longleftrightarrow\ [n]\overline P=(0,0),
+ \qquad
+ \ord_{\mathfrak p}x([n]P)<0\ \Longleftrightarrow\ [n]\overline P=O.
+\]
+If indices $n,m$ give respectively a positive and a negative valuation,
+then $v_2(n)<v_2(m)$.
+\end{lemma}
+\begin{proof}
+The good prime has odd residue characteristic and $D$ is a unit.
+An integral point with abscissa zero modulo the prime has ordinate zero;
+the point $(0,0)$ is nonzero two-torsion. Negative abscissa valuation
+characterizes reduction to infinity. If $t$ is the finite order of
+$\overline P$, then $[n]\overline P$ has order two, whereas $t\mid m$.
+Thus $v_2(n)=v_2(t)-1$ and $v_2(m)\ge v_2(t)$.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+Suppose first that all indices have the same $2$-adic valuation.
+Lemma~\ref{lem:good} excludes opposite finite valuation signs at a good
+prime. Lemma~\ref{lem:bad} excludes opposite signs at the two remaining
+primes and at the real embeddings. Lemma~\ref{lem:defect} proves equality.
+
+Conversely, let $r=\min_i v_2(n_i)$ and suppose some index has larger
+valuation. Put $Q=[2^r]P$. Both real values of $x(Q)$ exceed one.
+The product formula forces $\ord_{\mathfrak p}x(Q)>0$ at some finite
+prime: otherwise all finite logarithms and all archimedean logarithms
+would be nonnegative, with a positive sum. Lemma~\ref{lem:bad} makes
+this a good prime. There $[2^r]\overline P=(0,0)$, so
+$\overline P$ has order exactly $2^{r+1}$. All indices of valuation $r$
+therefore reduce to $(0,0)$, and all indices of larger valuation reduce
+to $O$. Both signs occur, proving strict inequality.
+
+All abscissas are squares, so the nonzero valuations just found have
+absolute value at least two. The positive integral weights make
+$\min(P_{\mathfrak p},N_{\mathfrak p})\ge2\log\N\mathfrak p$.
+Dividing by $[K:\Q]=2$ gives a defect at least $\log\N\mathfrak p$.
+The prime does not lie over $2$, so $\N\mathfrak p\ge3$.
+\end{proof}
+
+\begin{corollary}[A number-field criterion]\label{cor:general}
+Let $F$ be a number field, $D\in\mathcal O_F\setminus\{0\}$, and
+$E_D:y^2=x^3-Dx$. Let $P\in E_D(F)$ be nontorsion.
+Assume that for every $n\ne0$, every embedding $\sigma$ satisfies
+$|\sigma(x([n]P))|>1$, and every prime over $2D$ satisfies
+$\ord_{\mathfrak p}x([n]P)\le0$.
+Then the product-height equality for positive integer weights holds
+exactly when all the indices have the same $2$-adic valuation.
+\end{corollary}
+\begin{proof}
+Outside $2D$ the displayed equation has good reduction. The two good
+reduction tests in Lemma~\ref{lem:good}, the sign criterion of
+Lemma~\ref{lem:defect}, and the product-formula argument in the converse
+apply without change. The quantitative bound $\log3$ is not asserted
+in this generality.
+\end{proof}
+
+\section{A three-scale consequence}
+\begin{corollary}\label{cor:scales}
+Let nonzero integers $n_1,\ldots,n_s$ have a common $2$-adic valuation,
+and put $C=\prod_i x([n_i]P)=C_0+C_1\rho$.
+Set $A_0=1$, $A_1=C_0^2$, $A_2=(1+C_1^2)^2$.
+These are nonzero rational squares. There are constants $c_1,c_2>0$
+depending only on $E,P$ such that, for $\eta\in\Q^\times$ and $H\ge1$,
+\[
+ h(A_j\eta)\le H\quad(0\le j\le2)
+ \quad\Longrightarrow\quad \max_i|n_i|^2\le c_1H+c_2.
+\]
+The constants are independent of the common valuation, the number of
+indices, and the indices themselves.
+\end{corollary}
+\begin{proof}
+Both real embeddings of $C$ are positive, so $C_0>0$.
+The quotient-height inequality gives $h(C_0)\le H$.
+For reduced $C_1=u/v$, $v>0$, the fraction
+$(u^2+v^2)/v^2$ is reduced. Thus
+$h((1+C_1^2)^2)=2\log(u^2+v^2)\ge4h(C_1)$, and $h(C_1)\le H/2$.
+Consequently $h(C)\le3H/2+h(\rho)+\log2$.
+Theorem~\ref{thm:main} bounds each $h(x([n_i]P))$ by $h(C)$.
+The standard comparison $h(x([n]P))=2n^2\widehat h(P)+O_E(1)$,
+with $\widehat h(P)>0$, proves the result; see
+\cite[Chapter VIII, Section 9]{Silverman}.
+\end{proof}
+This extends \cite[Corollary 2.4]{Sun}. It does not permit unrestricted
+indices in a product. An aggregate theorem for a \emph{sum} of abscissas
+is a different statement and is not contradicted by the example below.
+
+\section{An exact example and verification}
+Direct rational arithmetic gives
+\[
+ x(P)=\frac{57}{8}-\frac72\rho,\qquad
+ x(2P)=\frac{8226963211}{2285245536}
+       -\frac{1063929023}{1713934152}\rho.
+\]
+At the prime $\mathfrak p=(41,\rho-24)$ their orders are $2,-2$;
+at the conjugate prime $(41,\rho-17)$ both orders are zero.
+Moreover
+\[
+ \N_{K/\Q}x(P)=\frac{41^2}{2^6}.
+\]
+The denominators of $x(P)$ are supported only above $2$. Thus its only
+positive valuation is the order two just displayed. At $(\rho)$ both
+abscissas have negative valuation, and both real embeddings are positive
+and greater than one. The defect formula proves the exact identity
+\[
+ h(x(P))+h(x(2P))-h(x(P)x(2P))=\log41.
+\]
+This is a counterexample to deleting the common-valuation condition,
+not a counterexample to Sun's odd-index lemma.
+
+The accompanying standard-library program uses exact fractions in $K$,
+checks the two abscissas by addition and duplication, and certifies the
+local orders by Hensel lifting with an explicit precision check. It also
+compares division-polynomial evaluation with repeated point addition.
+These finite computations verify the displayed example and identities;
+the proofs above establish the universal assertions.
+
+\begin{thebibliography}{9}
+\bibitem{Sun} Zhi-Wei Sun, \emph{$\Z$ is Diophantine over $\Q$ with
+28 unknowns}, arXiv:2611.14605v1, 10 November 2026,
+\url{https://arxiv.org/html/2611.14605v1}, Lemma 2.2 and Corollary 2.4.
+\bibitem{Silverman} Joseph H. Silverman, \emph{The Arithmetic of Elliptic
+Curves}, second edition, Graduate Texts in Mathematics 106, Springer,
+2009, Chapters IV, VII and VIII. DOI: 10.1007/978-0-387-09494-6.
+\end{thebibliography}
+\end{document}
