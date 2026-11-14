@@ -1,0 +1,165 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[T1]{fontenc}\usepackage{lmodern,amsmath,amssymb,amsthm,microtype}
+\usepackage[margin=25mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue]{hyperref}
+\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}[section]\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\Z}{\mathbb Z}\newcommand{\Q}{\mathbb Q}
+\title{Reference-point elimination and label-dependent progressions}
+\author{}\date{14 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+Let $P$ be a non-torsion point on an elliptic curve. For infinitely many
+integer labels $n$, allow any infinite set of reference indices $h$,
+with the set allowed to depend on $n$. The tuples
+$([h]P,[hn]P,[(h-1)n]P)$ are Zariski dense in the third power of the
+curve. Thus even label-dependent congruence restrictions leave the
+basic obstruction to algebraically recovering a reference point from
+the two other points. A divisor intersection argument gives an
+explicit bound for the number of permitted reference indices after a
+fixed proper algebraic restriction, outside a finite set of labels.
+The result does not preclude a complete family with finitely many
+reference choices for each label and gives no absolute lower bound
+for Diophantine definitions.
+\end{abstract}
+
+\section{A quantitative statement for divisors}
+Work over an algebraically closed field of characteristic zero.
+Let $E$ be an elliptic curve with origin $O$, and let $P\in E$ be of
+infinite order. Put $L=\mathcal O_E(O)$, a line bundle of degree one,
+and write
+\[
+ L_d=L^{\otimes d}\boxtimes L^{\otimes d}\boxtimes L^{\otimes d}
+ \quad\hbox{on }E^3.
+\]
+Let $D$ be the zero divisor of a nonzero section of $L_d$, with $d\ge1$.
+For $n\in\Z$, put
+\[
+ \Gamma_n=\{(Q,[n]Q):Q\in E\}\subset E^2,
+ \qquad F_n=E^2\times\{[n]P\}\subset E^3.
+\]
+
+\begin{proposition}\label{prop:bound}
+There are only finitely many $n$ with $F_n\subset D$.
+If $F_n\not\subset D$ and $n^2+1>2d$, then
+\[
+ \#\{h\in\Z:([h]P,[hn]P,[n]P)\in D\}
+                       \le d(1+n^2).
+\]
+\end{proposition}
+\begin{proof}
+A fiber $E^2\times\{T\}$ contained in $D$ is an irreducible component
+of that divisor, since both have dimension two. There are finitely
+many such components, and $[n]P$ are distinct, proving the first claim.
+
+For a fiber not contained in $D$, restriction gives an effective
+Cartier divisor $D_n$ on $E^2$ with line bundle
+$L^{\otimes d}\boxtimes L^{\otimes d}$. Use the ample line bundle
+$A=L\boxtimes L$ on $E^2$. The two fiber classes have self-intersection
+zero and intersect each other in one, so
+\[
+                          A\cdot D_n=2d.
+\]
+On $\Gamma_n$, the projections to $E$ pull $L$ back to line bundles
+of degrees $1$ and $n^2$. Here $\deg([n]^*L)=n^2$ in characteristic
+zero, with degree zero when $n=0$ and the pullback is trivial.
+Consequently
+\[
+                        \deg(A|_{\Gamma_n})=1+n^2.
+\]
+If $\Gamma_n$ were a component of $D_n$, positivity of intersection
+with $A$ on every nonzero effective curve would give $2d\ge1+n^2$.
+The stated inequality excludes this.
+
+The restricted section on $\Gamma_n\simeq E$ is therefore nonzero.
+Its zero divisor has degree $d(1+n^2)$, so it has at most this many
+geometric points. Distinct integers $h$ give distinct points $[h]P$,
+which proves the bound, without any condition on the sign or
+coprimality of $h,n$.
+\end{proof}
+
+\section{Infinite choices for each label}
+\begin{theorem}\label{thm:dense}
+Let $I\subset\Z$ be infinite. For each $n\in I$, let
+$H_n\subset\Z$ be infinite, with no uniformity hypothesis on the sets
+$H_n$. Then
+\[
+ \{([h]P,[hn]P,[(h-1)n]P):n\in I,\ h\in H_n\}
+\]
+is Zariski dense in $E^3$.
+\end{theorem}
+\begin{proof}
+The map
+\[
+ (Q_0,Q_1,Q_2)\longmapsto(Q_0,Q_1,Q_1-Q_2)
+\]
+is an algebraic automorphism of $E^3$. It sends the displayed tuples
+to $([h]P,[hn]P,[n]P)$. It suffices to prove density of these images.
+
+Suppose a proper closed subset contains them. It is contained in the
+zero divisor of a nonzero section of some $L_d$. One way to see this
+is to embed each $E$ by $L^{\otimes3}$ and use the Segre embedding of
+the product. A homogeneous polynomial vanishing on the proper closed
+subset but not on $E^3$ restricts to a section of $L_{3k}$ for some
+positive $k$.
+
+By Proposition~\ref{prop:bound}, outside finitely many $n$ the fiber
+is not contained in this divisor, and outside another finite set
+$n^2+1>2d$. For any remaining $n\in I$, that proposition allows only
+finitely many $h$, contrary to the hypothesis on $H_n$.
+\end{proof}
+
+\begin{corollary}\label{cor:crt}
+For each $n$ in an infinite set, choose any integers $h_n,m_n$ with
+$m_n>0$. The tuples in Theorem~\ref{thm:dense} remain dense when $h$
+is restricted to $h_n+m_n\Z$, or to any infinite subset of that
+progression. Finite-place congruences and additional real restrictions
+which still leave infinitely many $h$ for each label do not change
+this conclusion.
+\end{corollary}
+\begin{proof}
+These are permitted choices of the infinite sets $H_n$.
+\end{proof}
+
+\section{The precise implication for a variable reduction}
+A rational formula recovering the first point from the last two on
+a fixed nonempty open subset would put the tuples in the graph of a
+rational map $E^2\dashrightarrow E$, whose closure has dimension at
+most two. A polynomial recovery rule with only finitely many choices
+for the first point, on such an open subset, likewise lies in a
+proper algebraic subset. Neither can hold on any of the dense families
+of Theorem~\ref{thm:dense}. The preimage of that open subset is itself
+dense and cannot be avoided by the displayed tuples.
+
+More generally, impose any fixed proper algebraic restriction on
+$(H,U,A)\in E^3$. After containing it in a divisor as above, all but
+finitely many labels $A=[n]P$ permit at most $d(1+n^2)$ of the reference
+indices $h$ used in the existing family $H=[h]P$, $U=[hn]P$.
+This is stronger than saying that one particular formula failed: a
+whole infinite congruence progression cannot survive such a restriction
+for arbitrarily large labels.
+
+The conclusion is nevertheless limited. A new completeness proof may
+select a finite, possibly nonuniform set of reference indices for each
+input. The theorem says nothing against that possibility. Nor does it
+rule out replacing the source equations by a fundamentally different
+construction. It does not prove that twenty-five or thirteen total
+variables is minimal, and it is not a justification for stopping the
+search for smaller definitions.
+
+\section{Source relation and checking scope}
+The result is an algebraic theorem and uses no prime-pattern,
+contact-height, pole-realization, or $abc$ hypothesis. For its project
+application, the assertion that the fixed point $P$ is non-torsion is
+one of the explicitly retained elliptic inputs. The theorem refers to
+the existing family of witnesses, not to every rational zero of the
+project's polynomials.
+
+The exact checker accompanying
+\nolinkurl{joint_pole_realization_20261114_v29.tex}
+checks the group-coordinate change on rational examples, including
+negative and zero indices and identity points. These examples are
+consistency checks only. The proof for all labels is the divisor
+argument above, not a finite point search.
+\end{document}

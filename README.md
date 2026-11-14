@@ -38,6 +38,24 @@ It has exactly the same rational input projection as the new 79-variable family 
 
 Machine-readable current results are in [data/results_20261114_v28.json](data/results_20261114_v28.json). The [current guide](docs/results_20261114_v28.md) distinguishes the arithmetic assumptions, effective parameters, source dependencies, and review scope.
 
+## Joint pole realization and reference-point restrictions in v29
+
+The [new joint-realization theorem](papers/pole_parameters/joint_pole_realization_20261114_v29.tex)
+replaces **2r retained pole parameters by 2** when the input and complement
+square classes match. It includes the old and the congruent-number pole
+systems, explicit witness maps, exact finite-choice encoding, and the precise
+arithmetic hypotheses. This is a proved reduction on its compatibility locus,
+**not a new 25- or 13-variable record**.
+
+The existing 13-variable prime witnesses have incompatible first square
+classes. At fixed scales, replacing them by matching classes leads to a
+**genus-four curve** in that route, and generically to genus **9** for two
+ten-contact blocks or **27** for three. The [reference-point theorem](papers/elliptic_charts/progression_density_20261114_v29.tex)
+also proves density after arbitrary label-dependent infinite restrictions
+on the reference indices. These results identify restrictions on a new
+completeness proof, not an absolute variable lower bound.
+See the [proof and verification guide](docs/joint_pole_realization_20261114_v29.md).
+
 ## General degree improvements in v28
 
 The [complete TeX manuscript](papers/finite_algebra/unit_norm_20261114_v28.tex)
@@ -94,6 +112,7 @@ Use **Python 3.12** for the byte-pinned legacy suite, and **SymPy 1.14.0** for t
 
 ```sh
 python -m pip install sympy==1.14.0
+python -B computation/pole_parameters/joint_realization_v29/check.py
 python -B scripts/verify_v28.py
 python -B scripts/verify_release_v27.py
 python -B scripts/verify.py --full
