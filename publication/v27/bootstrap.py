@@ -32,7 +32,7 @@ if hashlib.sha256(source).hexdigest()!='9f461531df52ac73e02cf7a4ce270422715642c0
 p=ROOT/'data/results.json';data=json.loads(p.read_text())
 data.update(current_results_reference='data/results_20261114_v27.json',current_results_guide='docs/results_20261114_v27.md',retained_source_records_notice='The pre-v27 entries in this file are retained pinned source constructions, not the current best table. Current bounds and successors are in current_results_reference.')
 p.write_text(json.dumps(data,indent=2)+'\n')
-for rel in ['docs/reproducibility.md','docs/arithmetic_inputs.md','docs/research_directions.md','computation/quartic/README.md','computation/few_variables/README.md']:
+for rel in ['docs/reproducibility.md','docs/arithmetic_inputs.md','docs/research_directions.md']:
     p=ROOT/rel;text=p.read_text();link='../../README.md' if rel.startswith('computation/') else '../README.md'
     banner=f'> **Retained source guide.** This page describes the dated constructions on the previous main branch. For the current counts, corrected proofs, exact specifications, and verification commands, see the repository [README]({link}) and `data/results_20261114_v27.json`. Historical source equations and assumptions below are retained, not replaced silently.\n\n'
     if not text.startswith('> **Retained source guide.**'):p.write_text(banner+text)
