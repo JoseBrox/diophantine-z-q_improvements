@@ -1,0 +1,819 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,booktabs,microtype}
+\usepackage[margin=26mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}\newtheorem{remark}[theorem]{Remark}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}\newcommand{\C}{\mathbb C}
+\DeclareMathOperator{\Tr}{Tr}\DeclareMathOperator{\N}{N}\DeclareMathOperator{\Disc}{Disc}
+\title{A single norm determinant for the 25- and 13-variable constructions}
+\author{}\date{14 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+We replace the product over all possible nonzero ranks in the previous
+finite-algebra elimination by a single determinant. This is justified by
+proving completeness with every conjugate denominator nonzero, not by
+silently deleting the other strata. A free rank-four point algebra,
+homogeneous elliptic differences, square extraction and a birational
+rescaling of the pole parameters give further reductions. The resulting
+degree bounds are $64674204453175296<2^{56}$ for 25 variables,
+$155568385<2^{28}$ for 13 variables under weak $abc$ with exponent
+$121/100$, and $126445825<2^{27}$ under exponent $16/15$.
+The fully specified 27-variable construction has degree below $2^{59}$
+and coefficient height below $2^{2^{72}}$, with the same certified
+exponent $20483$. Counts include the input. The external arithmetic
+premises remain explicit and are not certified by the finite checks.
+No decrease in the number of variables is asserted.
+\end{abstract}
+
+\section{Statements, scope, and arithmetic inputs}
+An integer polynomial $F(X,\boldsymbol Y)$ defines $\Z$ over $\Q$ when
+its rational input projection is exactly $\Z$. All counts below include $X$.
+Degree and support bounds are upper bounds, not expanded degrees or
+monomial counts. Coefficient height is the largest absolute integer
+coefficient after all fixed parameters have been substituted.
+
+\begin{theorem}\label{thm:main}
+Under the arithmetic premises specified below there are finite integer
+polynomial specifications with the following bounds:
+\begin{center}\begin{tabular}{lrrr}\toprule
+Construction & Variables & Degree at most & Strict power bound\\\midrule
+Inherited premises &25&64674204453175296&$2^{56}$\\
+Fully specified, inherited premises&27&442502070853959680&$2^{59}$\\
+Weak $abc$, exponent $121/100$&13&155568385&$2^{28}$\\
+Weak $abc$, exponent $16/15$&13&126445825&$2^{27}$\\\bottomrule
+\end{tabular}\end{center}
+Each polynomial has integer content one. The 25-variable family defines
+$\Z$ for every sufficiently large fixed odd exponent $L$; the sufficient
+threshold is ineffective and need not equal the threshold for the older
+squared-scale family. The 27-variable polynomial at $L=20483$ defines
+$\Z$ and has
+\[
+ H(F)<2^{2^{72}}.
+\]
+In each 13-variable family every sufficiently large fixed odd shift
+$B$ works, with an ineffective threshold. The displayed $L=3$ and $B=3$
+computational fixtures are not certified defining members.
+\end{theorem}
+
+The inherited inputs are those stated precisely in the source papers
+\cite{General,Explicit,Conditional}. They include the specified group
+and index-height assertions for
+\[
+ K=\Q(\sqrt2),\quad D=(3-\sqrt2)^2=11-6\sqrt2,\quad
+ E:y^2=x^3-Dx,
+\]
+\[
+ P=\left(\frac{57-28\sqrt2}{8},\frac{-660+417\sqrt2}{32}\right),
+ \qquad 2E(K)=\Z P;
+\]
+the prime-pattern theorem in its rational-contact form, with the
+prescribed conjugate reduction orders, fixed finite divisibility and
+avoidance, and real approximation in the prepared cyclic closure;
+and the pole obstruction and its simultaneous elliptic realization.
+The 25- and 27-variable routes also retain the full normalized modular
+realization used for their contact-height bound. The trace-height
+results and the explicit constants are exactly those used by their sources.
+The two 13-variable routes instead assume the weak rational $abc$
+inequality at the displayed exponent. Ordinary rational $abc$ implies
+both; ordinary Szpiro supplies the first, as in the source.
+
+In particular, the pole input used below is the \emph{two-curve
+realization}, not just the assertion that one rational pole witness
+exists. Its consequence, Zariski density in the two pole parameters,
+is proved in \cite{Density} and recalled in Section~\ref{sec:density}.
+This consequence uses an already retained arithmetic input. Assuming
+only a black-box existence assertion would not justify our additional
+nonvanishing requirements. None of these external arithmetic inputs is
+claimed independently audited here. No new use of the Hexagon pole
+replacement is needed for the present general-degree improvements.
+
+\section{A free rank-four algebra for each point}\label{sec:points}
+Retain $h_0,h_1\in\Q$, put $h=h_0+h_1\sqrt2$, and write
+\[
+ h^4-D=A+B\sqrt2,
+\quad A=h_0^4+12h_0^2h_1^2+4h_1^4-11,
+\quad B=4h_0^3h_1+8h_0h_1^3+6.
+\]
+The point source is $x=h^2$, $y=hj$, $j^2=A+B\sqrt2$.
+Its rational solutions describe the nonzero multiples of $P$ by the
+square-abscissa descent in the sources.
+
+Over $\Z[A,B]$ use the free module with basis $1,U,V,W$ and the
+following commutative multiplication table:
+\begin{equation}\label{eq:table}
+\begin{gathered}
+ U^2=2A+2W,\qquad V^2=A-W,\qquad UV=2B,\\
+ UW=AU-2BV,\qquad VW=BU-AV,\qquad W^2=A^2-2B^2.
+\end{gathered}
+\end{equation}
+The letter $W$ in this table is local to the point block; detector
+products below are denoted $\mathcal W$.
+
+\begin{lemma}\label{lem:block}
+The table defines an associative unital algebra. At every rational
+$(h_0,h_1)$ it is etale of dimension four. Its rational characters
+are exactly the pairs $j=u+v\sqrt2\in K$ with $j^2=A+B\sqrt2$,
+under
+\[
+ U=2u,\qquad V=2v,\qquad W=u^2-2v^2.
+\]
+\end{lemma}
+\begin{proof}
+Substitution of $u^2+2v^2=A$, $2uv=B$ verifies all six relations.
+After adjoining $\sqrt2$, the two values $u+\sqrt2v$ and
+$u-\sqrt2v$ independently satisfy the square equations with radicands
+$A+\sqrt2B$ and $A-\sqrt2B$. Where their product is nonzero these
+four characters are distinct, and the four basis functions are
+linearly independent. The table therefore agrees with multiplication
+in an associative four-dimensional algebra over $\Q(A,B)$.
+Associativity is a polynomial identity in $A,B$, so holds identically
+over $\Z[A,B]$. The same character description proves etaleness when
+$A^2-2B^2\ne0$.
+
+At a rational pair, $h^4-D$ cannot vanish: its vanishing would imply
+$\N_{K/\Q}(h)^4=\N(D)=49$, impossible for a rational norm. Since
+$K$ is a field, $A^2-2B^2\ne0$. Finally the table implies
+$u^2+2v^2=A$, $2uv=B$ and the displayed value of $W$, proving both
+directions of the rational-character assertion.
+\end{proof}
+
+For root separation only, retain the former primitive element
+\begin{equation}\label{eq:primitive}
+ z=(2A+B)U-2(A+B)V.
+\end{equation}
+It satisfies
+\[
+ f(Z)=Z^4-4A'Z^2+8(B')^2,
+\quad A'=6A^3-9AB^2-4B^3,
+\quad B'=-4A^3+6AB^2+3B^3,
+\]
+with
+\begin{equation}\label{eq:discriminant}
+ \Disc(f)=2^{15}(B')^2(2A^2-B^2)^4(A^2-2B^2)^2.
+\end{equation}
+All factors are nonzero at a rational pair. For $B'$, if $B\ne0$
+use Eisenstein at $3$ on $4T^3-6T-3$; if $B=0$ use $A\ne0$.
+The other two factors are anisotropic quadratic forms over $\Q$.
+The element $z$ generates the whole specialized point algebra:
+with $m_0=2A+B$, $m_1=-A-B$, its inverse formulas are
+\[
+ U=\frac{m_0z-4m_1B'/z}{m_0^2-2m_1^2},\qquad
+ V=\frac{-m_1z+2m_0B'/z}{m_0^2-2m_1^2}.
+\]
+The denominators are units, since $z\ne0$ and
+$m_0^2-2m_1^2=2A^2-B^2\ne0$. Thus the four characters have
+four distinct $z$ values. Importantly, these inverse formulas are
+\emph{not} used to construct the arithmetic tests. Those use $U/2,V/2$
+directly, avoiding the old high-degree denominators.
+
+\subsection{Homogeneous differences and norms}
+For points $(x,y)$ and $(x',y')$ on $E$, let
+\begin{equation}\label{eq:difference}
+\begin{split}
+ d&=x-x',\\
+ X_d&=(x+x')(xx'-D)+2yy',\\
+ Y_d&=(yx'+y'x)d^2-(y+y')X_d.
+\end{split}
+\end{equation}
+On $d\ne0$ their difference has coordinates
+$x_d=X_d/d^2$, $y_d=Y_d/d^3$. Indeed the usual slope is
+$(y+y')/d$, and substituting the two curve equations gives these
+numerators. Hence
+\[
+ f(P-Q)=\frac{d^2}{X_d},\qquad
+ z(P-Q)=-\frac{X_dd}{Y_d},\qquad f=1/x,\quad z=-x/y.
+\]
+For an original point, $z=-h/j$. Every field inversion retains its
+norm denominator as a nonzero condition. We use
+$\N(ab)=\N(a)\N(b)$, $\N(a^{-1})=\N(a)^{-1}$, and
+$\N(j)=W$ from \eqref{eq:table}. These are identities in the finite
+algebra, not numerical simplifications. The fourth-order formal
+logarithm truncation is precisely $z$; no unused higher-order terms
+or their denominators are introduced.
+
+\section{The arithmetic sources and the smaller comparison scale}
+We give the source formulas to fix the coefficient construction. Every
+stated division is guarded, as are the contacts, pole inputs, and the
+second pole roots. All scalar coordinates are rational.
+
+For the 25-variable route retain nine point pairs, with point roles
+\[
+ A,S,T_1,Z,H,U_A,U_S,U_T,U_Z,
+\]
+one slope $\lambda\ne0$, and two pole pairs. Together with $X$ this
+is 24 retained coordinates. Put $Q_1=A,Q_2=S,Q_3=T_1,Q_4=Z$,
+$U_0=H$, $U_1=U_A,\ldots,U_4=U_Z$, and
+\[
+ V_0=H-P,\quad V_i=U_i-Q_i,\quad
+ L_i=z(U_i)/z(H),\quad L'_i=\sigma(z(V_i)/z(V_0)).
+\]
+Here $\sigma$ acts on the displayed $K$ components. Define
+\[
+ \mathcal F(u,v,w)=v^2-u(u-2)vw+(u-2)^2w^2-1,
+ \qquad \beta=216X^4+450459.
+\]
+The sixteen field tests are, in order,
+\[
+ (f(U_i))_{i=0}^4,\quad(\sigma f(V_i))_{i=0}^4,\quad
+ (L_i-L'_i)_{i=1}^4,\quad L_1-\beta,\quad
+ \mathcal F(L_2,L_3,L_4).
+\]
+Their orders are one except at positions $12,13,14,16$, which have
+order three. The six scalar tests $S_k$ are the two rational components
+of $f(H)$, $f(S-P)$, and $z(S-P)/z(H)$, with orders
+$\kappa_k=(1,1,1,1,3,3)$.
+
+For a fixed odd $L\ge3$, set
+\begin{equation}\label{eq:rho}
+\begin{gathered}
+ \ell=76249,\quad
+ r=\beta(\beta-1)(\beta-2401)(32\beta+343)(2\beta-1),\\
+ C_L=17(\ell^{(L+1)/2}+1),\qquad
+ \rho=\frac{102^2\ell^Lr}{(1+C_Lr)^2}.
+\end{gathered}
+\end{equation}
+Let $T=\Tr\sum_i x(Q_i)$. The new scales are
+\begin{equation}\label{eq:unsquared}
+                         a_0=1,\qquad a_1=1+\rho T^2.
+\end{equation}
+This is the only change in the arithmetic source, as opposed to its
+algebraic presentation. Put
+\[
+ \Theta=\{0,-1/2,-1,1/2399,-32/407\},\qquad
+ \Theta_j=(4j+2+\Theta)\cup(4j+4+\Theta),\quad \gamma_j=-j-1,
+\]
+\[
+ t_j=a_j\lambda,\quad \delta_j=t_j-\gamma_j,\quad
+ F_j=\prod_{\theta\in\Theta_j}(t_j-\theta),\quad
+ R_j=F_j/\delta_j^{10},\quad w_j=\rho R_j.
+\]
+With $\Phi_R(s)=Rs/(1+Rs)$ and $G_{j,k}=R_j^{\kappa_k}\Phi_{R_j}(S_k)$,
+\begin{equation}\label{eq:detectors}
+\begin{split}
+ \mathcal W_j&=\prod_{i=1}^{16}
+ \left(1+\frac{C_i^2}{\delta_j^2w_j^{2a_i-1}}\right)
+ \prod_{k=1}^{6}\left(1+\frac{G_{j,k}^2}{w_j^{2\kappa_k-1}}\right),\\
+ b_j&=w_j\frac{\N(\mathcal W_j)^2}{(\mathcal W_j)_0^2}
+       =\frac{4w_j}{\Tr(\mathcal W_j^{-1})^2}.
+\end{split}
+\end{equation}
+The fixed integer $a_i$ in the first product is the order of the $i$th
+test, not the comparison scale.
+
+For the explicit 27-variable route use three pole pairs and the same
+nine point pairs. Write $\sum_i x(Q_i)=T_0+T_1'\sqrt2$, and retain
+\[
+ a_0=1,\quad a_1=(1+\rho T_0^2)^2,\quad
+ a_2=(1+\rho(T_0+T_1')^2)^2.
+\]
+The contacts and detectors are the preceding ones for $j=0,1,2$.
+These arithmetic scales are unchanged from \cite{Explicit}.
+
+For the 13-variable routes retain the three point pairs $A,H,U$, one
+slope, two pole pairs, and $X$, for 12 coordinates before elimination.
+Put $\beta=X^2+B$, $T=\Tr x(A)$, and
+\[
+ a_0=1,\quad a_1=\beta^d+T^d,\qquad
+ (\kappa,d)=(121/100,6)\ \hbox{or}\ (16/15,4).
+\]
+The six tests are
+\[
+ f(H),\ f(U),\ \sigma f(H-P),\ \sigma f(U-A),\
+ z(U)/z(H)-\sigma(z(U-A)/z(H-P)),\ z(U)/z(H)-X.
+\]
+Use $\Theta=\{0,-1/2,-1/4,-2/5,-1,-1/3\}$, and for each scale put
+\begin{equation}\label{eq:conditional}
+ t=a\lambda,\quad \delta=t-1,\quad F=\prod_{\theta\in\Theta}(t-\theta),
+ \quad \mathcal W=\prod_{i=1}^6(1+\delta^4C_i^2/F),\quad
+ b=\frac{F\N(\mathcal W)^2}{4\delta^8\mathcal W_0^2}.
+\end{equation}
+The arithmetic source is unchanged from \cite{Conditional}.
+
+\begin{proposition}\label{prop:unsquared}
+Under the premises of \cite{General}, the source with scales
+\eqref{eq:unsquared} has exactly the integer input projection for every
+sufficiently large fixed odd $L$. Completeness holds for each integer
+input and every fixed odd $L\ge3$.
+\end{proposition}
+\begin{proof}
+We check the three uses of the old outer square. At an odd valuation of
+$\rho$, $v(\rho T^2)$ is odd or is infinity. Thus $a_1$ is congruent
+to one, or has negative valuation; there is no valuation-zero
+cancellation in $1+\rho T^2$. The disjoint contact-and-pole sets give
+a unit among $R_0,R_1$, exactly as in the scalar-odd lemma of the source.
+The proof of that lemma uses only this alternative, not parity of
+$v(a_1)$. All local test-extraction and residual divisibilities remain
+unchanged.
+
+For the height step the new inequality is
+\[
+ h(a_1)\ge2h(T)-h(\rho)-\log2,
+ \qquad h(a_1)\le h(t_0)+h(t_1).
+\]
+Only the fixed constants change. In the notation of the source, with
+$c=|a-1|$ and $B_0$ the maximum absolute root index, the same bounds give
+\[
+ h(\beta)\le H_1c^{7/9},\quad c\ge\ell^{2L+1},\quad
+ B_0^2\le C|Nc|^\eta+Cc^{7/9}+C\log c+J,
+\]
+where $\eta=7/18$ for a nonzero Lucas residual
+$N=\mathcal F(n_2,n_3,n_4)$ and $\eta=7/6$ for a nonzero input
+residual $N=u-n_1v$, $\beta=u/v$ reduced. Constants are independent
+of the input, witnesses, and $L$. If the Lucas residual is nonzero,
+$|N|\le5B_0^4$ and $c\le2B_0$ give an upper exponent $35/18<2$;
+hence $B_0$ is bounded, contradicting the lower bound on $c$ for large $L$.
+Its vanishing gives the source's integer Lucas growth
+$\log B_0>c-4$. If the input residual is nonzero, use
+$|N|\le2e^{h(\beta)}B_0$ and absorb the lower-order terms. Taking
+logarithms yields
+\[
+ \log B_0\le C'+\frac75 h(\beta)+\frac75\log c=o(c),
+\]
+a contradiction. Thus $\beta=n_1\in\Z$. Integrality of
+$216X^4+450459$ forces integrality of $X$, since a reduced denominator
+$v$ would satisfy $v^4\mid216$.
+
+For completeness, after the root points have been fixed the scales are
+positive rational numbers. The prime-pattern application permits these
+fixed rational coefficients. For $\lambda=u/v$ its squareclass identity is
+\[
+ R_j=\left(\frac{a_j}{v\delta_j}\right)^{10}
+       \prod_{\theta\in\Theta_j}\bigl(u-(\theta/a_j)v\bigr).
+\]
+The exponent ten already makes the prefactor a square: $a_j$ itself
+need not be a square. The prescribed primes and real and finite-place
+limits $R_j\to1$, $\delta_j^{-1}\to0$ are unchanged. The extra
+common-index divisibility at the comparison primes, the scalar
+normalization argument, and the preparation of both $b_j$ therefore
+apply verbatim. In particular the prepared range is still $(0,17)$.
+This checks every use of the deleted outer square.
+\end{proof}
+
+\section{Rescaling the two retained pole parameters}\label{sec:poles}
+Write a nonzero pole input as $b=d t^2$, with rational nonzero $d,t$.
+We make this decomposition by flattening products and powers in the
+fixed numerator and denominator circuits, putting even exponents into
+$t^2$. This is syntactic square extraction, not an irreducible
+factorization or a squarefree assertion about polynomial factors.
+Use retained parameters $\tau,s$ and set
+\begin{equation}\label{eq:newpole}
+ e=\frac{\tau^2-17d}{\tau^2+51d},\qquad
+ q^2=17d\bigl(s^2-17e(17-b)\bigr)
+                  \bigl(s^2+51e(17-b)\bigr),\qquad q\ne0.
+\end{equation}
+The denominator is guarded nonzero.
+
+\begin{lemma}\label{lem:rescale}
+On $bt\ne0$, \eqref{eq:newpole} is equivalent, by invertible rational
+coordinate changes, to the former one-conic-chart pole system. Its
+retained parameters and second ordinate are
+\[
+ \tau_{\rm old}=t\tau,\qquad s_{\rm old}=bs,
+ \qquad q_{\rm old}=\frac{bt}{17}q.
+\]
+\end{lemma}
+\begin{proof}
+Put $B_0=17b$. The old chart gives
+$e=(\tau_{\rm old}^2-B_0)/(\tau_{\rm old}^2+3B_0)$,
+which becomes the displayed $e$. Since
+$B_0e(B_0-b^2)=17b^2e(17-b)$, the old radicand becomes
+\[
+ \frac{b^3}{17}
+       (s^2-17e(17-b))(s^2+51e(17-b)).
+\]
+Dividing by $(bt/17)^2=b^3/(289d)$ gives \eqref{eq:newpole}.
+All transformations are invertible and preserve nonzero ordinates.
+The first ordinate reconstructs as
+$-68dt\tau/(\tau^2+51d)$. Thus the pole obstruction is unchanged.
+\end{proof}
+
+If the last radicand is $N/D_0$, clear it by a finite square root
+$Z^2=ND_0$, $Z\ne0$, with $D_0\ne0$. Flatten multiplication and powers
+again to write $ND_0=S_0^2c$. Replace $Z$ by $S_0q_0$, and use
+$q_0^2=c$. All factors of $S_0$, of $c$, and of the source nonzero
+conditions will be included in the support product defined below.
+No unrestricted coordinate is added.
+
+\section{Completeness with all conjugate denominators nonzero}\label{sec:density}
+This section is essential: the new polynomial deliberately excludes
+some retained base tuples which the former polynomial allowed.
+
+\begin{lemma}[Density of the prepared pole parameters]\label{lem:density}
+Under the retained simultaneous elliptic realization, a prepared
+nonzero input $b$ has a Zariski-dense set of rational witness pairs in
+the old parameter plane $(\tau_{\rm old},s_{\rm old})$. The same is true
+in the rescaled plane $(\tau,s)$.
+\end{lemma}
+\begin{proof}
+We recall the argument of \cite{Density}. Put $B_0=17b$ and
+$V=B_0(B_0-b^2)=\theta c^2>0$. The realization supplies positive
+$n$ and infinite-order points on
+\[
+ E_n:y^2=x(x-n)(x+3n),\qquad E_{n\theta},
+\]
+with abscissas in $B_0\Q^{\times2}$. The non-torsion assertion follows
+from the source's fresh-prime condition and the torsion lemma in
+\cite{Density}: for nonsquare $a$, $E_a(\Q)$ has only two-torsion.
+That lemma follows from Mazur's theorem, absence of roots modulo five
+of $3z^4+8z^3-18z^2-9$, and the doubling test at the three two-torsion
+points.
+
+Independently vary positive odd multiples and write their abscissas
+as $B_0u^2,B_0v^2$. The two-isogeny squareclass homomorphism preserves
+these classes. The resulting witnesses have
+\[
+ e=n/(B_0u^2),\quad p=y_1/(B_0u^3),\quad
+ s_{\rm old}=cv/u,\quad q_{\rm old}=c^2y_2/(B_0^2u^2v).
+\]
+Here $p,q_{\rm old},s_{\rm old}$ are nonzero and $0<e<1$.
+Varying the first multiple gives infinitely many $e$, hence infinitely
+many $\tau_{\rm old}=p/(e-1)$. For each fixed first multiple, varying
+the second gives infinitely many $s_{\rm old}$. A polynomial vanishing
+on all these pairs vanishes first as a polynomial in $s_{\rm old}$,
+then coefficientwise at infinitely many $\tau_{\rm old}$; it is zero.
+This argument works over $\overline\Q$ as well. The rescaling of
+Lemma~\ref{lem:rescale} is an invertible diagonal linear map for fixed
+$b,t$, and preserves density.
+\end{proof}
+
+\begin{lemma}\label{lem:avoidance}
+Let $B_0$ be a finite etale $\Q$-algebra. Suppose the elements $b,d,t$
+are units and $b=dt^2$. In the rescaled pole formulas,
+$\N_{B_0}(\tau^2+51d)$ is a nonzero monic polynomial of degree
+$2\dim B_0$. After excluding it, the norm of the radicand in
+\eqref{eq:newpole}, as a polynomial in $s$, has degree
+$4\dim B_0$ and nonzero leading coefficient $\N_{B_0}(17d)$.
+Consequently, if the actual rational character sends $b$ to a prepared
+input, a rational pole witness can be chosen so that every native
+pole denominator and every conjugate radicand is nonzero.
+\end{lemma}
+\begin{proof}
+The first norm is the determinant of $\tau^2I+51M_d$. The second
+multiplication matrix has leading coefficient $17M_d$ in degree four.
+Both determinants are therefore nonzero polynomials. Clear the finitely
+many already nonzero scalar denominators. Every numerator or denominator
+used in forming the pole is a product of fixed unit factors, the conic
+denominator and the two monic quadratic factors in $s$; these give
+nonzero specialized polynomials at every geometric character. Their
+finitely many norm conditions can be avoided simultaneously by
+Lemma~\ref{lem:density}. Nonzero products imply nonvanishing of every
+syntactically extracted factor. Independent prepared poles are handled
+successively, or by the product of the dense witness sets.
+\end{proof}
+
+\begin{proposition}\label{prop:fullunits}
+For every integer input in the completeness range of each arithmetic
+source, there is a rational source witness for which every nonzero
+condition and every pole radicand is nonzero at \emph{every} geometric
+character of the point algebra. For the 13-variable sources this is
+asserted for nonzero integers; zero is included by the final factor $X$.
+\end{proposition}
+\begin{proof}
+Follow the order of choices in the source completeness proofs. For the
+general routes choose the scalar label $a=c+1>1$ and the four nonzero
+root labels first. For the conditional routes fix the root label $n=X\ne0$.
+After these choices the scales and all root abscissas are fixed rational
+quantities. Temporarily take $H=[h]P$ and $U_i=[hn_i]P$.
+
+At an actual rational point pair, $j$ has two real embeddings, both
+nonzero. Each geometric character of the point block amounts to choosing
+their two signs independently. It therefore changes, independently at
+the real places, each ordinate to one of its two signs, while leaving
+its abscissa fixed. All point-algebra characters are real at these
+completeness tuples. A difference on any such branch is one of
+$[\pm h\pm1]P$ or $[\pm hn_i\pm n_i]P$ at the respective embedding.
+The fixed scalar difference is $[a-1]P$ or $[-a-1]P$.
+These points are neither the identity nor two-torsion when $h>2$,
+$n_i\ne0$, and $a>1$. Equal-abscissa denominators are also nonzero.
+Thus the point, difference, reciprocal and ratio denominators on all
+sign branches can be kept nonzero in a sufficiently small real
+neighborhood of a prepared return. There are finitely many branches. No continuously varying rational
+square root of an abscissa is required here: the guard functions in
+question are functions of the points and their sign choices; the
+additional $h,j$ norm factors are already nonzero.
+The elementary $h,j$ denominators in the new formulas are nonzero
+there as well; their sign choices only permute these branches.
+
+The conditional source has no scalar normalizers. For a general source
+consider the additional denominators $1+R_j(\lambda)D(H)$, where $D$
+is any scalar component on any sign branch. On a connected real
+coordinate neighborhood in the prepared cyclic closure these are real
+analytic. If $D$ is a constant $d\ne0$, the equation
+$R_j(\lambda)=-1/d$ has only finitely many solutions, since the contact
+function $R_j$ is nonconstant. Increase the lower bound on the positive
+slope beyond all such solutions before prime selection. Constants zero
+impose no condition. If $D$ is nonconstant, for each subsequently fixed
+allowed slope the zero set of $1+R_j(\lambda)D(H)$ has empty interior.
+Deleting the finitely many such zero sets leaves a nonempty open subset
+of the prepared neighborhood.
+
+This deletion is compatible with the arithmetic order of choices.
+The initial congruence modulus annihilates the finite component group
+of the compact cyclic closure. Its identity component is a real torus;
+multiplication by any positive integer is surjective. Hence each
+compatible refinement of the common-index progression, including the
+conjugate reduction-order conditions and the additional selected-prime
+divisibility of the general source, is dense in the same component.
+After prime selection it therefore meets the remaining open subset,
+with $h>2$. All previously prepared real inequalities and finite-place
+conditions persist. Only avoidance of a finite number of exceptional
+slope values was added before the prime-pattern application.
+
+For sufficiently large positive slope all $R_j,w_j$ in the general
+source are positive, and all weights $\delta^4/F$ in the conditional
+source are positive. Each detector factor at either real embedding,
+on every point sign branch, is one plus a nonnegative square times a
+positive coefficient. Thus $\mathcal W_+,\mathcal W_->0$,
+$\mathcal W_0=(\mathcal W_++\mathcal W_-)/2>0$, and
+$\N(\mathcal W)>0$ on every character. Both forms of $b_j$ are therefore
+nonzero on every character: they are units of the point algebra.
+Their syntactic square decompositions have unit factors, since both
+the numerator and the denominator are already nonzero there.
+
+The actual character still has the prepared pole inputs supplied by the
+original completeness argument (or Proposition~\ref{prop:unsquared}).
+Apply Lemma~\ref{lem:avoidance} independently to these inputs. The
+remaining pole parameters then make all conic denominators, all cleared
+radicands and their extracted factors units. These are all denominator
+types in the displayed rational source: field norms, scalar normalization
+denominators, fixed coefficients, contacts, and the pole denominators.
+No residual equality or further denominator is omitted. This proves the
+proposition.
+\end{proof}
+
+\section{The single determinant}\label{sec:determinant}
+Let $R=\Z[x_1,\ldots,x_a]$ be the ring of retained coordinates. Let
+$B_0$ be the tensor product of the $p$ point blocks; it is free of rank
+$b=4^p$. After the square extractions let
+\[
+ A_0=B_0[q_1,\ldots,q_s]/(q_j^2-c_j),\qquad n=2^sb.
+\]
+Let $T_*$ be the product, without repetitions, of all nonconstant
+syntactic factors in the source nonzero conditions and in all cleared
+radicands, after the pole generators themselves have been removed.
+Nonzero integer constants are omitted; a fixed parameter is omitted
+only if it is a known nonzero constant. The supplied specifications
+retain all parameter atoms. Every factor lies in $B_0$.
+Define the scalar polynomial
+\begin{equation}\label{eq:normguard}
+                         \Delta_* = \det_{B_0}M_{T_*}.
+\end{equation}
+If it is nonzero at a rational base tuple, every source denominator,
+every square multiplier and every $c_j$ is a unit. If it vanishes, the
+final polynomial below is identically one in the extra coordinate.
+
+For each point use $z_i,f_i$ from \eqref{eq:primitive}. Write
+$f_i(Z)=Z^4+\sum_{k<4}f_{ik}Z^k$, and define, solely by integer
+polynomial and matrix operations,
+\begin{equation}\label{eq:separator}
+\begin{gathered}
+ Z_0=2+\sum_{i,k<4}f_{ik}^2,\qquad
+ S=b\left(1+\sum_{j=1}^s\sum_{u,v=1}^b(M_{c_j}^{B_0})_{uv}^2\right),\\
+ \delta_i=\Disc(f_i),\quad D_0=\prod_i\delta_i^2,\quad
+ K_0=(2Z_0)^5\prod_i(1+\delta_i^2),\quad C_0=D_0+4Z_0K_0,\\
+ J=4S,\quad Q=2SJ^{s-1},\quad
+ \Xi=\sum_{j=1}^s J^{s-j}\left(\prod_{k<j}c_k\right)q_j,\\
+ \Omega=Q\left(C_0^{p+1}+\sum_{i=1}^pD_0^iC_0^{p+1-i}z_i\right)
+                      +D_0^{p+1}\Xi.
+\end{gathered}
+\end{equation}
+The matrices use the tensor basis $1,U_i,V_i,W_i$ for each point,
+followed by the square exponents $0,1$ in the pole generators.
+
+\begin{lemma}\label{lem:separator}
+At a rational base tuple with $\Delta_*\ne0$, the values of $\Omega$
+on the $n$ geometric characters of $A_0$ are distinct and nonzero.
+\end{lemma}
+\begin{proof}
+We include the separation argument from \cite{Triangular} to specify
+its use in the new basis. Cauchy's bound gives $|z_i|\le Z_0$.
+The spectral-radius bound gives $|c_j|\le S$. Put
+$\epsilon=D_0/K_0$ and $L=C_0/D_0=1+4Z_0/\epsilon$.
+All discriminants are nonzero, and $0<\epsilon\le1$.
+If $d$ is one root difference of $f_i$, its discriminant gives
+$|\delta_i|\le |d|^2(2Z_0)^{10}$. Since
+$t^2/(1+t^2)\le\sqrt t$ for $t>0$, one obtains $|d|\ge\epsilon$.
+
+For nonzero $c_j$ the values
+\[
+ \phi=\frac1{2S}\sum_{j=1}^s(4S)^{1-j}
+                       \left(\prod_{k<j}c_k\right)q_j
+\]
+are distinct on the $2^s$ square-root choices and have absolute value
+at most $2/3$. For two choices first differing at $j$, divide out their
+common earlier product. The leading difference is $2q_j$; the ratio
+of the remaining absolute sum to its magnitude is at most
+$(|q_j|/\sqrt S)\sum_{r\ge1}4^{-r}\le1/3$. This uses no lower
+bound for the nonzero radicands and permits nonreal values.
+
+Divide $\Omega$ by the nonzero rational scalar $QD_0^{p+1}$. The result is
+\[
+ L^{p+1}+\sum_{i=1}^pL^{p+1-i}z_i+\phi.
+\]
+At the first differing point coordinate, the leading difference has
+magnitude at least $\epsilon L^k$, while the tail is strictly less
+than $2Z_0L^k/(L-1)=\epsilon L^k/2$. If no point coordinate differs,
+the preceding quadratic argument applies. Finally the distance from
+$L^{p+1}$ is less than
+$Z_0L^{p+1}/(L-1)\le L^{p+1}/4$. Thus the values are nonzero.
+\end{proof}
+
+Define
+\begin{equation}\label{eq:finaldet}
+                       P(\boldsymbol x,U)=
+                       \det_{A_0}(I-U\Delta_*M_\Omega).
+\end{equation}
+For the conditional sources set $F=XP$; otherwise set $F=P$.
+
+\begin{theorem}\label{thm:norm}
+If $\Delta_*=0$ at a rational base tuple, $P(U)=1$ for every rational
+$U$. If $\Delta_*\ne0$, $P$ has a rational zero if and only if the
+corresponding guarded rational source has a rational character.
+Together with Proposition~\ref{prop:fullunits}, this proves that the
+new polynomials have the asserted integer input projections.
+\end{theorem}
+\begin{proof}
+The first assertion follows directly from the identity matrix in
+\eqref{eq:finaldet}; it is true even if the square extensions have
+nilpotents. For the second, $A_0$ is etale and its character values of
+$\Delta_*\Omega$ are distinct nonzero numbers by Lemma~\ref{lem:separator}.
+A rational zero $u$ is necessarily nonzero. The kernel over $\Q$ of
+$I-u\Delta_*M_\Omega$ is one-dimensional. Every multiplication
+operator preserves this kernel, so acts on it by a rational scalar.
+These scalars define a unital $\Q$-algebra homomorphism $A_0\to\Q$.
+All source guards and square multipliers are units, so the rational
+reconstruction gives the guarded source, including its nonzero pole
+roots. Conversely, a rational character supplies
+$u=1/(\Delta_*\Omega)$ and hence a rational zero.
+
+Thus every nonzero-input rational zero belongs to the arithmetic source;
+its soundness applies. Completeness for each required integer is supplied
+by Proposition~\ref{prop:fullunits}. The conditional zero input is
+included by $XP$. Finally $P(\boldsymbol x,0)=1$ identically, proving
+integer content one for $P$ and also for $XP$.
+\end{proof}
+
+\begin{remark}
+We do not claim equality of the old and new rational projections to
+\emph{all} retained coordinates. The new construction excludes any
+base tuple with a zero conjugate denominator, even when another
+character is valid. The additional completeness proof is what preserves
+the projection to the distinguished input. No general inference from
+Zariski density to the existence of a point on a prescribed hypersurface
+is used: only avoidance of finitely many nonzero polynomials is required.
+\end{remark}
+
+\section{Degree and coefficient bounds}\label{sec:bounds}
+Base coordinates have weight one. In a point block use weights
+$0,2,2,4$ for $1,U,V,W$. The multiplication table does not increase
+weight. For coefficient $\ell^1$ norms use diagonal basis scales
+$1,16,16,64$. The exact point coefficients have
+\[
+ \|A\|_1=28,\qquad \|B\|_1=18.
+\]
+The weighted column norms of multiplication by $U,V,W$ are at most
+$16,16,64$, respectively. For example the last column for $U$ is
+bounded by $(28+2\cdot18)16/64=16$; the second is
+$56/16+2\cdot64/16<16$. The other columns follow immediately from
+\eqref{eq:table}. The tensor basis therefore has maximum degree weight
+$4p$ and maximum logarithmic scale $6p$.
+
+All circuit bounds use the following rules. Degree weights add under
+multiplication and take their maximum under addition. Upper bounds for
+$\log_2$ of operator coefficient norms add under multiplication; an
+addition of $k$ terms costs at most $\lceil\log_2 k\rceil$ beyond
+the maximum. A fixed integer has weight zero. A pole radicand with
+bounds $(d_j,\ell_j)$ gives the root weight
+$v_j=\lceil d_j/2\rceil$ and root logarithmic norm bound
+$g_j=\lceil\ell_j/2\rceil+1$. These rules follow from the weighted
+companion matrix and do not require expansion of the production matrices.
+
+Let $(t,\tau)$ bound the weight and logarithmic operator norm of $T_*$.
+Then
+\[
+ \deg\Delta_*\le bt,\qquad \log_2\|\Delta_*\|_1\le b\tau.
+\]
+For the norm bound, expand the determinant by columns: its coefficient
+norm is at most the product of column sums. Diagonal basis scales cancel
+in each determinant term. This also proves the degree bound by cancellation
+of row and column weights.
+
+For completeness we give the exact remaining recurrences. Write
+$\ell(k)=\lceil\log_2k\rceil$. Degree and logarithmic norm bounds for
+$Z_0,D_0,C_0,S,Q$ are
+\begin{align*}
+ z_d&=48,& z_l&=78+\ell(2+2p),\\
+ D_d&=144p,& D_l&=234p,\\
+ C_d&=288+D_d,&C_l&=5(1+z_l)+p+D_l+z_l+3,\\
+ S_d&=2\max_j(d_j+4p),&S_l&=\ell(b)+\ell(1+sb^2)+2\max_j(\ell_j+6p),\\
+ Q_d&=sS_d,&Q_l&=sS_l+2s-1.
+\end{align*}
+Indeed $\|A'\|_1\le236688<2^{18}$ and
+$\|B'\|_1\le159736<2^{18}$; the two nonzero coefficients of $f_i$
+have logarithmic bounds $20,39$. Also
+$\|2A^2-B^2\|_1\le1892<2^{11}$ and
+$\|A^2-2B^2\|_1\le1432<2^{11}$, so \eqref{eq:discriminant}
+gives a discriminant logarithmic bound $117$. The primitive element
+$z_i$ has weight six and norm at most $2656<2^{12}$.
+
+Put
+\begin{align*}
+ P_d&=Q_d+\max\bigl((p+1)C_d,
+                  \max_i(iD_d+(p+1-i)C_d+6)\bigr),\\
+ P_l&=Q_l+\ell(p+1)+\max\bigl((p+1)C_l,
+                  \max_i(iD_l+(p+1-i)C_l+12)\bigr),\\
+ X_d&=\max_j\bigl((s-j)S_d+\sum_{k<j}d_k+v_j\bigr),\\
+ X_l&=\ell(s)+\max_j\bigl((s-j)(S_l+2)+\sum_{k<j}\ell_k+g_j\bigr),\\
+ a_d&=\max(P_d,(p+1)D_d+X_d),\\
+ a_l&=1+\max(P_l,(p+1)D_l+X_l).
+\end{align*}
+They bound $\Omega$. Finally
+\begin{equation}\label{eq:finalbounds}
+ \deg P\le n(bt+a_d+1),\qquad
+ \log_2\|P\|_1\le n(b\tau+a_l+1),\qquad \deg_U P\le n.
+\end{equation}
+The conditional input factor adds one to degree and does not change
+coefficient norm or support size. If $V$ is the total variable count and
+$D_P=n(bt+a_d+1)$, a support upper bound is
+\[
+ \binom{D_P+V}{V}-\binom{D_P-n+V-1}{V}.
+\]
+This counts the monomials of total degree at most $D_P$ whose $U$ exponent
+is at most $n$; it remains valid after multiplying all monomials by $X$.
+
+\begin{center}\begin{tabular}{lrrrr}\toprule
+Construction & $p$ & $s$ & $t$ & $a_d$\\\midrule
+25 variables &9&2&235281&625256\\
+27 variables &9&3&804900&1724364\\
+13, exponent $121/100$&3&2&9127&23560\\
+13, exponent $16/15$&3&2&7427&18600\\\bottomrule
+\end{tabular}\end{center}
+Substitution in \eqref{eq:finalbounds} gives Theorem~\ref{thm:main}.
+The support upper bounds are respectively $2^{1282},2^{1457},2^{306}$
+and $2^{303}$, all strict. At the certified value $L=20483$, the
+27-variable logarithmic coefficient bound is
+\[
+ \log_2\|F\|_1\le3707461411940344004608<2^{72}.
+\]
+The 25-variable and conditional coefficient certificates refer only to
+their stored small-parameter fixtures. Their degree bounds are uniform
+in the permitted fixed parameters: integer coefficient leaves have
+weight zero, and the multiplicative exponents of nonconstant factors
+in this fixed construction do not change with those parameters.
+
+\section{Reproducible specification and remaining questions}
+The complete native source generator is
+\nolinkurl{computation/few_variables/unit_norm_v28/build_sources.py}.
+The four specifications under its \texttt{specifications} directory
+fix the generator arguments, the canonical source hashes, the point
+blocks, the exact syntactic square extractions, every support factor,
+and the finite determinant recipe. The complete integer circuits can
+be exported by the builder's \texttt{--native-sources} option. No
+unrecorded choice of a favorable root or a favorable rank is part of
+the polynomial definition.
+
+The independent verification separates polynomial identities and
+exact factor certificates from finite-field tests and small examples.
+The latter test the implementation and are not proofs of any infinite
+arithmetic input. Deliberate corruptions test whether the checks reject
+incorrect multiplication, square extraction, bounds, and boundary handling.
+The checks include three complete eight-dimensional examples of the
+separator, a partially vanishing guard, fourteen fixed-parameter
+reconstructions, and 180 nonsingular finite-field formula evaluations.
+There are eight altered-degree or altered-sign rejection tests, together
+with separate controls for the multiplication table, pole rescaling,
+nonseparation and omission of the scalar guard norm.
+The earlier source manuscripts, code and byte-pinned data remain unchanged.
+
+The variable counts 25 and 13 have not been reduced. The point and pole
+parameters are still needed by the completeness proof. In particular,
+density in a two-dimensional pole-parameter plane does not justify
+identifying two independent parameters, fixing one arbitrarily, or
+sharing parameters belonging to different pole inputs. The next reduction
+must establish a suitable arithmetic realization for such a restriction,
+or replace a retained elliptic point role, rather than infer a dimension
+reduction from the present avoidance argument.
+
+\begin{thebibliography}{9}
+\bibitem{General}\emph{A defining polynomial in twenty-five variables:
+combined scalar and comparison conditions}, project source, 10 November 2026,
+\nolinkurl{papers/few_variables25/few_variables25_merged_20261110_v19.tex}.
+\bibitem{Explicit}\emph{An Explicit Defining Polynomial in Twenty-Seven Variables}, project source, 10 November 2026,
+\nolinkurl{papers/few_variables27/explicit27_20261110_v19.tex}.
+\bibitem{Conditional}\emph{Thirteen Variables from Direct Elliptic Index
+Comparison}, project source, 10 November 2026,
+\nolinkurl{papers/conditional_few_variables/direct_input13_20261110_v22.tex}.
+\bibitem{Density}\emph{Zariski density of the prepared pole witnesses},
+project source, 9 November 2026,
+\nolinkurl{papers/pole_parameters/pole_witness_density_20261109_v14.tex}.
+\bibitem{Triangular}\emph{Separating Quadratic Roots in Finite Algebras and Smaller Degrees for Diophantine Presentations},
+project companion, 13 November 2026,
+\nolinkurl{papers/finite_algebra/triangular_separation_20261113_v24.tex}.
+\end{thebibliography}
+\end{document}

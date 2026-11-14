@@ -1,0 +1,1481 @@
+{
+  "schema": "unit-norm-independent-verification/v28",
+  "status": "PASS",
+  "symbolic": {
+    "point_product_identities": 16,
+    "primitive_characteristic_polynomial": true,
+    "primitive_discriminant": true,
+    "primitive_recovery_identities": 2,
+    "weighted_point_operator_norms": [
+      "16",
+      "16",
+      "64"
+    ],
+    "point_table_corruption_rejected": true,
+    "homogeneous_difference_identities": 2,
+    "pole_rescaling_identities": 3,
+    "wrong_ordinate_rescaling_rejected": true,
+    "torsion_polynomial_mod_five": true
+  },
+  "determinant_examples": {
+    "examples": [
+      {
+        "radicand": "-1",
+        "rational_roots": [],
+        "polynomial": "37*U**2 + 12*U + 1"
+      },
+      {
+        "radicand": "2",
+        "rational_roots": [],
+        "polynomial": "568*U**2 - 48*U + 1"
+      },
+      {
+        "radicand": "4",
+        "rational_roots": [
+          "1/136",
+          "1/152"
+        ],
+        "polynomial": "20672*U**2 - 288*U + 1"
+      },
+      {
+        "radicand": "1/10000",
+        "rational_roots": [
+          "500000000000/199500001",
+          "500000000000/200500001"
+        ],
+        "polynomial": "39999750400000001*U**2/250000000000000000000000 - 200000001*U/250000000000 + 1"
+      },
+      {
+        "radicand": "0",
+        "rational_roots": [],
+        "polynomial": "1"
+      }
+    ],
+    "nonseparating_element_rejected": true,
+    "omitted_guard_counterexample": true
+  },
+  "full_recipe_examples": {
+    "examples": [
+      {
+        "point_pair": [
+          "1",
+          "-7/4"
+        ],
+        "radicand": 4,
+        "dimension": 8,
+        "rational_character_count": 4,
+        "irreducible_factor_degrees": [
+          1,
+          1,
+          1,
+          1,
+          2,
+          2
+        ]
+      },
+      {
+        "point_pair": [
+          "1",
+          "-7/4"
+        ],
+        "radicand": 2,
+        "dimension": 8,
+        "rational_character_count": 0,
+        "irreducible_factor_degrees": [
+          2,
+          2,
+          2,
+          2
+        ]
+      },
+      {
+        "point_pair": [
+          "1",
+          "-7/4"
+        ],
+        "radicand": -1,
+        "dimension": 8,
+        "rational_character_count": 0,
+        "irreducible_factor_degrees": [
+          2,
+          2,
+          4
+        ]
+      }
+    ],
+    "partial_zero_guard_excludes_whole_base": true
+  },
+  "uniform_degree_fixtures": [
+    {
+      "name": "general25",
+      "parameters": [
+        3,
+        5,
+        101,
+        20483
+      ],
+      "degree_bound": 64674204453175296,
+      "scope": "Finite implementation checks; uniformity follows from the fixed nonconstant exponents in the proof."
+    },
+    {
+      "name": "explicit27",
+      "parameters": [
+        3,
+        5,
+        20483,
+        20485
+      ],
+      "degree_bound": 442502070853959680,
+      "scope": "Finite implementation checks; uniformity follows from the fixed nonconstant exponents in the proof."
+    },
+    {
+      "name": "weak13",
+      "parameters": [
+        3,
+        5,
+        101
+      ],
+      "degree_bound": 155568385,
+      "scope": "Finite implementation checks; uniformity follows from the fixed nonconstant exponents in the proof."
+    },
+    {
+      "name": "abc13",
+      "parameters": [
+        3,
+        5,
+        101
+      ],
+      "degree_bound": 126445825,
+      "scope": "Finite implementation checks; uniformity follows from the fixed nonconstant exponents in the proof."
+    }
+  ],
+  "constructions": [
+    {
+      "name": "general25",
+      "guards": 107,
+      "rational_denominators": 317,
+      "support_factors": 130,
+      "point_blocks": 9,
+      "pole_squares": 2,
+      "degree_bound": 64674204453175296,
+      "coefficient_l1_log2_bound": 474397871449309184,
+      "canonical_source_sha256": "664b9bf9081b3c571cd27bd7405339073761fd13078954aed1b3dd3f93ea4fdf",
+      "finite_field_reconstructions": [
+        {
+          "prime": 1009,
+          "seed": 2800,
+          "point_blocks": 9,
+          "tests": 16,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1009,
+          "seed": 2801,
+          "point_blocks": 9,
+          "tests": 16,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1009,
+          "seed": 2802,
+          "point_blocks": 9,
+          "tests": 16,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1009,
+          "seed": 2803,
+          "point_blocks": 9,
+          "tests": 16,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1009,
+          "seed": 2804,
+          "point_blocks": 9,
+          "tests": 16,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1009,
+          "seed": 2805,
+          "point_blocks": 9,
+          "tests": 16,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1009,
+          "seed": 2807,
+          "point_blocks": 9,
+          "tests": 16,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1009,
+          "seed": 2810,
+          "point_blocks": 9,
+          "tests": 16,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1009,
+          "seed": 2811,
+          "point_blocks": 9,
+          "tests": 16,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1009,
+          "seed": 2812,
+          "point_blocks": 9,
+          "tests": 16,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1009,
+          "seed": 2813,
+          "point_blocks": 9,
+          "tests": 16,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1009,
+          "seed": 2814,
+          "point_blocks": 9,
+          "tests": 16,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1009,
+          "seed": 2815,
+          "point_blocks": 9,
+          "tests": 16,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1033,
+          "seed": 2801,
+          "point_blocks": 9,
+          "tests": 16,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1033,
+          "seed": 2802,
+          "point_blocks": 9,
+          "tests": 16,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1033,
+          "seed": 2803,
+          "point_blocks": 9,
+          "tests": 16,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1033,
+          "seed": 2804,
+          "point_blocks": 9,
+          "tests": 16,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1033,
+          "seed": 2805,
+          "point_blocks": 9,
+          "tests": 16,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1033,
+          "seed": 2806,
+          "point_blocks": 9,
+          "tests": 16,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1033,
+          "seed": 2807,
+          "point_blocks": 9,
+          "tests": 16,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1033,
+          "seed": 2808,
+          "point_blocks": 9,
+          "tests": 16,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1033,
+          "seed": 2809,
+          "point_blocks": 9,
+          "tests": 16,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1033,
+          "seed": 2810,
+          "point_blocks": 9,
+          "tests": 16,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1033,
+          "seed": 2811,
+          "point_blocks": 9,
+          "tests": 16,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1033,
+          "seed": 2812,
+          "point_blocks": 9,
+          "tests": 16,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1033,
+          "seed": 2813,
+          "point_blocks": 9,
+          "tests": 16,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1033,
+          "seed": 2814,
+          "point_blocks": 9,
+          "tests": 16,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1033,
+          "seed": 2815,
+          "point_blocks": 9,
+          "tests": 16,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1201,
+          "seed": 2800,
+          "point_blocks": 9,
+          "tests": 16,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1201,
+          "seed": 2801,
+          "point_blocks": 9,
+          "tests": 16,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1201,
+          "seed": 2802,
+          "point_blocks": 9,
+          "tests": 16,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1201,
+          "seed": 2803,
+          "point_blocks": 9,
+          "tests": 16,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1201,
+          "seed": 2805,
+          "point_blocks": 9,
+          "tests": 16,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1201,
+          "seed": 2806,
+          "point_blocks": 9,
+          "tests": 16,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1201,
+          "seed": 2808,
+          "point_blocks": 9,
+          "tests": 16,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1201,
+          "seed": 2809,
+          "point_blocks": 9,
+          "tests": 16,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1201,
+          "seed": 2810,
+          "point_blocks": 9,
+          "tests": 16,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1201,
+          "seed": 2811,
+          "point_blocks": 9,
+          "tests": 16,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1201,
+          "seed": 2812,
+          "point_blocks": 9,
+          "tests": 16,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1201,
+          "seed": 2813,
+          "point_blocks": 9,
+          "tests": 16,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1201,
+          "seed": 2814,
+          "point_blocks": 9,
+          "tests": 16,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1201,
+          "seed": 2815,
+          "point_blocks": 9,
+          "tests": 16,
+          "pole_inputs": 2
+        }
+      ],
+      "singular_samples_skipped": 6
+    },
+    {
+      "name": "explicit27",
+      "guards": 138,
+      "rational_denominators": 393,
+      "support_factors": 174,
+      "point_blocks": 9,
+      "pole_squares": 3,
+      "degree_bound": 442502070853959680,
+      "coefficient_l1_log2_bound": 3707461411940344004608,
+      "canonical_source_sha256": "cdc9d22d40893ee69b151bb489f470ec2e95983548cad3aa14319061e8604e71",
+      "finite_field_reconstructions": [
+        {
+          "prime": 1009,
+          "seed": 2800,
+          "point_blocks": 9,
+          "tests": 16,
+          "pole_inputs": 3
+        },
+        {
+          "prime": 1009,
+          "seed": 2801,
+          "point_blocks": 9,
+          "tests": 16,
+          "pole_inputs": 3
+        },
+        {
+          "prime": 1009,
+          "seed": 2802,
+          "point_blocks": 9,
+          "tests": 16,
+          "pole_inputs": 3
+        },
+        {
+          "prime": 1009,
+          "seed": 2803,
+          "point_blocks": 9,
+          "tests": 16,
+          "pole_inputs": 3
+        },
+        {
+          "prime": 1009,
+          "seed": 2804,
+          "point_blocks": 9,
+          "tests": 16,
+          "pole_inputs": 3
+        },
+        {
+          "prime": 1009,
+          "seed": 2805,
+          "point_blocks": 9,
+          "tests": 16,
+          "pole_inputs": 3
+        },
+        {
+          "prime": 1009,
+          "seed": 2807,
+          "point_blocks": 9,
+          "tests": 16,
+          "pole_inputs": 3
+        },
+        {
+          "prime": 1009,
+          "seed": 2809,
+          "point_blocks": 9,
+          "tests": 16,
+          "pole_inputs": 3
+        },
+        {
+          "prime": 1009,
+          "seed": 2810,
+          "point_blocks": 9,
+          "tests": 16,
+          "pole_inputs": 3
+        },
+        {
+          "prime": 1009,
+          "seed": 2811,
+          "point_blocks": 9,
+          "tests": 16,
+          "pole_inputs": 3
+        },
+        {
+          "prime": 1009,
+          "seed": 2812,
+          "point_blocks": 9,
+          "tests": 16,
+          "pole_inputs": 3
+        },
+        {
+          "prime": 1009,
+          "seed": 2813,
+          "point_blocks": 9,
+          "tests": 16,
+          "pole_inputs": 3
+        },
+        {
+          "prime": 1009,
+          "seed": 2814,
+          "point_blocks": 9,
+          "tests": 16,
+          "pole_inputs": 3
+        },
+        {
+          "prime": 1009,
+          "seed": 2815,
+          "point_blocks": 9,
+          "tests": 16,
+          "pole_inputs": 3
+        },
+        {
+          "prime": 1033,
+          "seed": 2800,
+          "point_blocks": 9,
+          "tests": 16,
+          "pole_inputs": 3
+        },
+        {
+          "prime": 1033,
+          "seed": 2801,
+          "point_blocks": 9,
+          "tests": 16,
+          "pole_inputs": 3
+        },
+        {
+          "prime": 1033,
+          "seed": 2802,
+          "point_blocks": 9,
+          "tests": 16,
+          "pole_inputs": 3
+        },
+        {
+          "prime": 1033,
+          "seed": 2803,
+          "point_blocks": 9,
+          "tests": 16,
+          "pole_inputs": 3
+        },
+        {
+          "prime": 1033,
+          "seed": 2804,
+          "point_blocks": 9,
+          "tests": 16,
+          "pole_inputs": 3
+        },
+        {
+          "prime": 1033,
+          "seed": 2805,
+          "point_blocks": 9,
+          "tests": 16,
+          "pole_inputs": 3
+        },
+        {
+          "prime": 1033,
+          "seed": 2806,
+          "point_blocks": 9,
+          "tests": 16,
+          "pole_inputs": 3
+        },
+        {
+          "prime": 1033,
+          "seed": 2807,
+          "point_blocks": 9,
+          "tests": 16,
+          "pole_inputs": 3
+        },
+        {
+          "prime": 1033,
+          "seed": 2808,
+          "point_blocks": 9,
+          "tests": 16,
+          "pole_inputs": 3
+        },
+        {
+          "prime": 1033,
+          "seed": 2809,
+          "point_blocks": 9,
+          "tests": 16,
+          "pole_inputs": 3
+        },
+        {
+          "prime": 1033,
+          "seed": 2810,
+          "point_blocks": 9,
+          "tests": 16,
+          "pole_inputs": 3
+        },
+        {
+          "prime": 1033,
+          "seed": 2811,
+          "point_blocks": 9,
+          "tests": 16,
+          "pole_inputs": 3
+        },
+        {
+          "prime": 1033,
+          "seed": 2812,
+          "point_blocks": 9,
+          "tests": 16,
+          "pole_inputs": 3
+        },
+        {
+          "prime": 1033,
+          "seed": 2814,
+          "point_blocks": 9,
+          "tests": 16,
+          "pole_inputs": 3
+        },
+        {
+          "prime": 1201,
+          "seed": 2800,
+          "point_blocks": 9,
+          "tests": 16,
+          "pole_inputs": 3
+        },
+        {
+          "prime": 1201,
+          "seed": 2801,
+          "point_blocks": 9,
+          "tests": 16,
+          "pole_inputs": 3
+        },
+        {
+          "prime": 1201,
+          "seed": 2802,
+          "point_blocks": 9,
+          "tests": 16,
+          "pole_inputs": 3
+        },
+        {
+          "prime": 1201,
+          "seed": 2803,
+          "point_blocks": 9,
+          "tests": 16,
+          "pole_inputs": 3
+        },
+        {
+          "prime": 1201,
+          "seed": 2805,
+          "point_blocks": 9,
+          "tests": 16,
+          "pole_inputs": 3
+        },
+        {
+          "prime": 1201,
+          "seed": 2806,
+          "point_blocks": 9,
+          "tests": 16,
+          "pole_inputs": 3
+        },
+        {
+          "prime": 1201,
+          "seed": 2808,
+          "point_blocks": 9,
+          "tests": 16,
+          "pole_inputs": 3
+        },
+        {
+          "prime": 1201,
+          "seed": 2809,
+          "point_blocks": 9,
+          "tests": 16,
+          "pole_inputs": 3
+        },
+        {
+          "prime": 1201,
+          "seed": 2810,
+          "point_blocks": 9,
+          "tests": 16,
+          "pole_inputs": 3
+        },
+        {
+          "prime": 1201,
+          "seed": 2811,
+          "point_blocks": 9,
+          "tests": 16,
+          "pole_inputs": 3
+        },
+        {
+          "prime": 1201,
+          "seed": 2812,
+          "point_blocks": 9,
+          "tests": 16,
+          "pole_inputs": 3
+        },
+        {
+          "prime": 1201,
+          "seed": 2813,
+          "point_blocks": 9,
+          "tests": 16,
+          "pole_inputs": 3
+        },
+        {
+          "prime": 1201,
+          "seed": 2814,
+          "point_blocks": 9,
+          "tests": 16,
+          "pole_inputs": 3
+        },
+        {
+          "prime": 1201,
+          "seed": 2815,
+          "point_blocks": 9,
+          "tests": 16,
+          "pole_inputs": 3
+        }
+      ],
+      "singular_samples_skipped": 6
+    },
+    {
+      "name": "weak13",
+      "guards": 47,
+      "rational_denominators": 88,
+      "support_factors": 46,
+      "point_blocks": 3,
+      "pole_squares": 2,
+      "degree_bound": 155568385,
+      "coefficient_l1_log2_bound": 382260992,
+      "canonical_source_sha256": "dbf49f155104ab7a5ddd47b0dd13af1f517de783b606ea0097c844675a41cb01",
+      "finite_field_reconstructions": [
+        {
+          "prime": 1009,
+          "seed": 2800,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1009,
+          "seed": 2801,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1009,
+          "seed": 2802,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1009,
+          "seed": 2803,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1009,
+          "seed": 2804,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1009,
+          "seed": 2805,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1009,
+          "seed": 2806,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1009,
+          "seed": 2807,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1009,
+          "seed": 2808,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1009,
+          "seed": 2809,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1009,
+          "seed": 2810,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1009,
+          "seed": 2811,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1009,
+          "seed": 2812,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1009,
+          "seed": 2813,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1009,
+          "seed": 2814,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1009,
+          "seed": 2815,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1033,
+          "seed": 2800,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1033,
+          "seed": 2801,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1033,
+          "seed": 2802,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1033,
+          "seed": 2803,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1033,
+          "seed": 2804,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1033,
+          "seed": 2805,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1033,
+          "seed": 2806,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1033,
+          "seed": 2807,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1033,
+          "seed": 2808,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1033,
+          "seed": 2809,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1033,
+          "seed": 2810,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1033,
+          "seed": 2811,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1033,
+          "seed": 2812,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1033,
+          "seed": 2813,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1033,
+          "seed": 2814,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1033,
+          "seed": 2815,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1201,
+          "seed": 2800,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1201,
+          "seed": 2801,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1201,
+          "seed": 2802,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1201,
+          "seed": 2803,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1201,
+          "seed": 2804,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1201,
+          "seed": 2805,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1201,
+          "seed": 2806,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1201,
+          "seed": 2807,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1201,
+          "seed": 2808,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1201,
+          "seed": 2809,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1201,
+          "seed": 2810,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1201,
+          "seed": 2811,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1201,
+          "seed": 2812,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1201,
+          "seed": 2813,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1201,
+          "seed": 2814,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1201,
+          "seed": 2815,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        }
+      ],
+      "singular_samples_skipped": 0
+    },
+    {
+      "name": "abc13",
+      "guards": 47,
+      "rational_denominators": 88,
+      "support_factors": 46,
+      "point_blocks": 3,
+      "pole_squares": 2,
+      "degree_bound": 126445825,
+      "coefficient_l1_log2_bound": 338577152,
+      "canonical_source_sha256": "b9a00189ec2c52c1c30480fec8395c4f52450451cf1a233a4ad1bf9df0f67d82",
+      "finite_field_reconstructions": [
+        {
+          "prime": 1009,
+          "seed": 2800,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1009,
+          "seed": 2801,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1009,
+          "seed": 2802,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1009,
+          "seed": 2803,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1009,
+          "seed": 2804,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1009,
+          "seed": 2805,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1009,
+          "seed": 2806,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1009,
+          "seed": 2807,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1009,
+          "seed": 2808,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1009,
+          "seed": 2809,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1009,
+          "seed": 2810,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1009,
+          "seed": 2811,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1009,
+          "seed": 2812,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1009,
+          "seed": 2813,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1009,
+          "seed": 2814,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1009,
+          "seed": 2815,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1033,
+          "seed": 2800,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1033,
+          "seed": 2801,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1033,
+          "seed": 2802,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1033,
+          "seed": 2803,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1033,
+          "seed": 2804,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1033,
+          "seed": 2805,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1033,
+          "seed": 2806,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1033,
+          "seed": 2807,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1033,
+          "seed": 2808,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1033,
+          "seed": 2809,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1033,
+          "seed": 2810,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1033,
+          "seed": 2811,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1033,
+          "seed": 2812,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1033,
+          "seed": 2813,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1033,
+          "seed": 2814,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1033,
+          "seed": 2815,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1201,
+          "seed": 2800,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1201,
+          "seed": 2801,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1201,
+          "seed": 2802,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1201,
+          "seed": 2803,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1201,
+          "seed": 2804,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1201,
+          "seed": 2805,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1201,
+          "seed": 2806,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1201,
+          "seed": 2807,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1201,
+          "seed": 2808,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1201,
+          "seed": 2809,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1201,
+          "seed": 2810,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1201,
+          "seed": 2811,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1201,
+          "seed": 2812,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1201,
+          "seed": 2813,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1201,
+          "seed": 2814,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        },
+        {
+          "prime": 1201,
+          "seed": 2815,
+          "point_blocks": 3,
+          "tests": 6,
+          "pole_inputs": 2
+        }
+      ],
+      "singular_samples_skipped": 0
+    }
+  ],
+  "negative_controls": [
+    "general25: lowered degree rejected",
+    "general25: reversed radicand sign rejected",
+    "explicit27: lowered degree rejected",
+    "explicit27: reversed radicand sign rejected",
+    "weak13: lowered degree rejected",
+    "weak13: reversed radicand sign rejected",
+    "abc13: lowered degree rejected",
+    "abc13: reversed radicand sign rejected"
+  ],
+  "scope": "Exact symbolic identities and syntactic factor/degree certificates; finite-field source evaluations are bounded tests. The full-unit completeness theorem and infinite arithmetic premises are NOT certified by these computations."
+}

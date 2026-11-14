@@ -1,0 +1,21 @@
+name: Verify exact constructions
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  exact-verification:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install sympy==1.14.0
+      - name: Verify v28 general degree specifications
+        run: python -B scripts/verify_v28.py --report /tmp/v28-verification.json
+      - name: Verify cumulative v23-v27 constructions
+        run: python -B scripts/verify_release_v27.py --report /tmp/v27-verification.json
+      - name: Verify byte-pinned legacy constructions
+        run: python -B scripts/verify.py --full --receipt /tmp/legacy-verification.json
