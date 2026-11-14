@@ -1,0 +1,66 @@
+name: Build and verify v27 publication
+on:
+  push:
+    branches: [research/2026-11-14-integration-v27]
+    paths: [publication/**, .github/workflows/publication-v27-publish.yml]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  publish-to-research-branch:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install exact-check and document dependencies
+        run: |
+          python -m pip install sympy==1.14.0
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends texlive-latex-extra texlive-fonts-recommended lmodern
+      - name: Recover the pinned earlier audit and authenticate new sources
+        run: |
+          git fetch origin e9f52a7f0c80b2e86e0774437656658bcc537293
+          git checkout e9f52a7f0c80b2e86e0774437656658bcc537293 -- computation/sun_pr30_audit/check.py data/audits/sun_pr30_20261113.json data/audits/sun_pr30_20261113_manifest.json docs/audits/README_20261113.md docs/audits/sun_pr30_20261113.md papers/elliptic_heights/product_height_20261113_v23.tex papers/local_tests/height_precision_20261113_v23.tex
+          python -B publication/v27/bootstrap.py
+      - name: Produce the exact reference-chart certificates
+        run: python -B computation/quartic/abc79_v27/prove_reference.py
+      - name: Reconstruct all cumulative new results
+        run: python -B scripts/verify_v27.py --authenticate-sources --report /tmp/v27.json
+      - name: Build all thirteen source-bound PDFs
+        run: python -B scripts/build_release_v27.py --build-pdfs
+      - name: Verify the legacy constructions on native Python 3.12
+        run: |
+          rm -rf publication
+          rm .github/workflows/publication-v27.yml .github/workflows/publication-v27-publish.yml
+          python -B scripts/update_manifest.py
+          python -B scripts/verify.py --full --receipt /tmp/legacy.json
+      - name: Bind successful checks and independently reproduce the published data
+        run: |
+          python -B scripts/record_integration_v27.py --legacy-receipt /tmp/legacy.json --new-receipt /tmp/v27.json --execution-label 'GitHub Actions Ubuntu 24.04, native Python 3.12, SymPy 1.14.0' --source-commit "$GITHUB_SHA"
+          python -B scripts/update_manifest.py
+          python -B scripts/verify_release_v27.py --report /tmp/final-isolated.json
+      - name: Commit only to the research branch
+        run: |
+          test "$(git branch --show-current)" = 'research/2026-11-14-integration-v27'
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git commit -m 'Publish verified 204 and 260 variable quartics, corrected abc79, and cumulative degree improvements'
+          git push origin HEAD:refs/heads/research/2026-11-14-integration-v27
+          git rev-parse HEAD > /tmp/publication-commit.txt
+          git archive --format=tar HEAD | gzip -n > /tmp/publication-v27-source.tar.gz
+      - uses: actions/upload-artifact@v4
+        with:
+          name: verified-publication-v27
+          path: |
+            /tmp/publication-commit.txt
+            /tmp/publication-v27-source.tar.gz
+            /tmp/legacy.json
+            /tmp/v27.json
+            /tmp/final-isolated.json
+          retention-days: 7
