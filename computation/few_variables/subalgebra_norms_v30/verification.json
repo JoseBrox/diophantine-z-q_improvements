@@ -1,0 +1,263 @@
+{
+  "schema": "subalgebra-norm-exact-verification/v30",
+  "status": "PASS",
+  "constructions": [
+    {
+      "name": "general25",
+      "native_source_sha256": "664b9bf9081b3c571cd27bd7405339073761fd13078954aed1b3dd3f93ea4fdf",
+      "source_nodes": 6245,
+      "source_guards": 107,
+      "rational_denominators": 317,
+      "norm_factors": 130,
+      "norm_dimension_distribution": {
+        "0": 65,
+        "1": 9,
+        "2": 14,
+        "3": 18,
+        "4": 8,
+        "5": 8,
+        "6": 2,
+        "17": 6
+      },
+      "degree_bound": 25934337637613568,
+      "coefficient_log2_l1_bound": 190256180962000896,
+      "specification_sha256": "692e3babaa47162b1dcb8991bde6cbf46be928f9fa528b68046883e25f647d80"
+    },
+    {
+      "name": "explicit27",
+      "native_source_sha256": "cdc9d22d40893ee69b151bb489f470ec2e95983548cad3aa14319061e8604e71",
+      "source_nodes": 7748,
+      "source_guards": 138,
+      "rational_denominators": 393,
+      "norm_factors": 174,
+      "norm_dimension_distribution": {
+        "0": 87,
+        "1": 9,
+        "2": 19,
+        "3": 23,
+        "4": 12,
+        "5": 12,
+        "6": 3,
+        "17": 9
+      },
+      "degree_bound": 177313559789699072,
+      "coefficient_log2_l1_bound": 1485916763799083286528,
+      "specification_sha256": "a8d37a8bf59ca55890b95736d5c71adac3c412ffdf310c901eb563acb3386347"
+    },
+    {
+      "name": "weak13",
+      "native_source_sha256": "dbf49f155104ab7a5ddd47b0dd13af1f517de783b606ea0097c844675a41cb01",
+      "source_nodes": 1824,
+      "source_guards": 47,
+      "rational_denominators": 88,
+      "norm_factors": 46,
+      "norm_dimension_distribution": {
+        "0": 25,
+        "1": 3,
+        "2": 4,
+        "3": 6,
+        "5": 2,
+        "6": 6
+      },
+      "degree_bound": 126442497,
+      "coefficient_log2_l1_bound": 318736640,
+      "specification_sha256": "8c79d9b24c4beff385ceae3489dc88dff1e5c85f134d17cf5f46529c8d5d2369"
+    },
+    {
+      "name": "abc13",
+      "native_source_sha256": "b9a00189ec2c52c1c30480fec8395c4f52450451cf1a233a4ad1bf9df0f67d82",
+      "source_nodes": 1824,
+      "source_guards": 47,
+      "rational_denominators": 88,
+      "norm_factors": 46,
+      "norm_dimension_distribution": {
+        "0": 25,
+        "1": 3,
+        "2": 4,
+        "3": 6,
+        "5": 2,
+        "6": 6
+      },
+      "degree_bound": 103165953,
+      "coefficient_log2_l1_bound": 283186944,
+      "specification_sha256": "075ec1add2be672ab3b79d8257302771d0ea31d35f233470d34989336becb8fc"
+    }
+  ],
+  "symbolic_checks": {
+    "matrix_identities": 5,
+    "scalar_identity": true,
+    "exact_norm_identities": 3,
+    "operator_bounds": [
+      11,
+      20,
+      12
+    ],
+    "nonstable_subspace_rejected": true,
+    "incorrect_full_norm_rejected": true
+  },
+  "finite_algebra_checks": {
+    "examples": [
+      {
+        "A": 3,
+        "B": 2,
+        "case": "square",
+        "guard": "256",
+        "rank": 8,
+        "rational_character_count": 4,
+        "distinct_nonzero_eigenvalues": true,
+        "characteristic_sha256": "c7291f71bfec463cf3d8ef5ec613a464fa8bb4488bf61dc30f7315fbd3e73cfd"
+      },
+      {
+        "A": 3,
+        "B": 2,
+        "case": "nonsquare",
+        "guard": "16",
+        "rank": 8,
+        "rational_character_count": 0,
+        "distinct_nonzero_eigenvalues": true,
+        "characteristic_sha256": "4cb2e55c509ad118b413785106beb7fe5430f88af5ba7ab640f6481c046b5460"
+      },
+      {
+        "A": 3,
+        "B": 2,
+        "case": "negative",
+        "guard": "1",
+        "rank": 8,
+        "rational_character_count": 0,
+        "distinct_nonzero_eigenvalues": true,
+        "characteristic_sha256": "a2d2624043c0fcd4069fee17e2472d7df64f61b5eb6a0968396dbc98aaa89d99"
+      },
+      {
+        "A": 3,
+        "B": 2,
+        "case": "tiny",
+        "guard": "1/1000000000000000000000000000000000000000000000000",
+        "rank": 8,
+        "rational_character_count": 4,
+        "distinct_nonzero_eigenvalues": true,
+        "characteristic_sha256": "e9b1b07637cd2b15c0181a52c044dbce2ae6c63126fc4939bef8d40f7a9d30a7"
+      },
+      {
+        "A": 3,
+        "B": 2,
+        "case": "dependent_square",
+        "guard": "441",
+        "rank": 8,
+        "rational_character_count": 4,
+        "distinct_nonzero_eigenvalues": true,
+        "characteristic_sha256": "a9a415bc55ec41c68c1db4a8a61882412e2298167404dc5785a1600e519ea4fd"
+      },
+      {
+        "A": 3,
+        "B": 2,
+        "case": "zero_guard",
+        "guard": "0",
+        "polynomial_is_one": true
+      },
+      {
+        "A": 0,
+        "B": 1,
+        "case": "square",
+        "guard": "256",
+        "rank": 8,
+        "rational_character_count": 0,
+        "distinct_nonzero_eigenvalues": true,
+        "characteristic_sha256": "88963ae72351bb8c5a53db099d2fad5063ef6ddbfe63fd028c2dabcdf4659f80"
+      },
+      {
+        "A": -3,
+        "B": 2,
+        "case": "square",
+        "guard": "256",
+        "rank": 8,
+        "rational_character_count": 0,
+        "distinct_nonzero_eigenvalues": true,
+        "characteristic_sha256": "1646dfa7a5341aff9bcad63f03890d3ecf535b14cfa6b60da98a54b261b2c104"
+      },
+      {
+        "A": 1,
+        "B": 0,
+        "case": "square",
+        "guard": "256",
+        "rank": 8,
+        "rational_character_count": 4,
+        "distinct_nonzero_eigenvalues": true,
+        "characteristic_sha256": "5a1b5bbfd739a12e4d9cbe362563bb1c85c1def17748610ee6089d32a741f278"
+      }
+    ],
+    "dependent_squareclass_collision_detected": true
+  },
+  "split_character_checks": [
+    {
+      "name": "weak13",
+      "prime": 1000000007,
+      "point_pairs": [
+        [
+          2,
+          3
+        ],
+        [
+          9,
+          4
+        ],
+        [
+          16,
+          11
+        ]
+      ],
+      "full_point_characters": 64,
+      "norm_factors": 46,
+      "all_character_fibers_checked": true,
+      "all_affine_supports_checked": true,
+      "smaller_norms_sha256": "a72a11d93d10f3257b13b966fe6c6536e7531a4752cebf8d68bce92c57f9f982"
+    },
+    {
+      "name": "abc13",
+      "prime": 1000000007,
+      "point_pairs": [
+        [
+          2,
+          3
+        ],
+        [
+          9,
+          4
+        ],
+        [
+          16,
+          11
+        ]
+      ],
+      "full_point_characters": 64,
+      "norm_factors": 46,
+      "all_character_fibers_checked": true,
+      "all_affine_supports_checked": true,
+      "smaller_norms_sha256": "15744d41a396cc1276696fdb8d485945b9bf10b0aaa5e4a14d2b04d6986372fd"
+    }
+  ],
+  "mutation_controls": [
+    "general25:degree",
+    "general25:guard_omission",
+    "general25:rank",
+    "general25:root_bound",
+    "general25:source_hash",
+    "explicit27:degree",
+    "explicit27:guard_omission",
+    "explicit27:rank",
+    "explicit27:root_bound",
+    "explicit27:source_hash",
+    "weak13:degree",
+    "weak13:guard_omission",
+    "weak13:rank",
+    "weak13:root_bound",
+    "weak13:source_hash",
+    "abc13:degree",
+    "abc13:guard_omission",
+    "abc13:rank",
+    "abc13:root_bound",
+    "abc13:source_hash"
+  ],
+  "global_variable_count_improvement": false,
+  "independent_mathematical_review": false,
+  "scope": "Independent circuit, factor, affine-support, norm-rank, degree and coefficient-bound checks; symbolic identities and nine exact small regular-representation examples. Production determinants are not expanded. Universal separation and completeness are proved in the manuscript; inherited infinite arithmetic assumptions are not computationally certified."
+}

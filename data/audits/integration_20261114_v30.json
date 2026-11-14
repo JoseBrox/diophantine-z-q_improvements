@@ -1,0 +1,68 @@
+{
+  "schema": "subalgebra-norm-local-integration/v30",
+  "status": "PASS",
+  "base_remote_commit": "a1c2e7f3e51579ebd079a5fa7722525ca99a486a",
+  "baseline_manifest_files_authenticated": 774,
+  "execution": {
+    "python": "3.13.5",
+    "sympy": "1.14.0",
+    "native_python312_run": false,
+    "legacy_unmodified_python313_attempt": "Failed at changed ast.dump serialization; no mathematical assertion was suppressed.",
+    "legacy_compatibility": {
+      "script": "scripts/python313_legacy_compat.py",
+      "sha256": "251bb3354664a278c10e1cb85c3c0e07763800be5a2f6336926e2fd8b12c29e0",
+      "changes": [
+        "ast.dump includes empty fields, as in Python 3.12",
+        "gzip.compress(mtime=0) delegates to zlib, as in Python 3.12"
+      ],
+      "original_source_files_changed": false,
+      "verification_assertions_disabled": false,
+      "pinned_method_fingerprints_recovered": 9,
+      "gzip_example_difference": "One OS-header byte; uncompressed source and compressed payload unchanged."
+    }
+  },
+  "earlier_checks": {
+    "v29": "PASS",
+    "v28": "PASS",
+    "v27": "PASS",
+    "legacy": "PASS",
+    "legacy_stages": 126,
+    "legacy_pari_extension_run": false,
+    "v28_report_sha256": "944cdbb965767956c1e7842f838b7d6dc477aa347f24ac549cc83fa9240cabe9",
+    "v27_report_sha256": "1e670b658c18f916016020f6e1054d9580eac69c356e1a353c0732016b98cd20",
+    "legacy_receipt": "data/audits/legacy_verification_20261114_v30.json"
+  },
+  "new_checks": {
+    "reconstructed_specification_files": 5,
+    "exact_regular_representation_examples": 9,
+    "deliberate_algebra_mutations": 20,
+    "conditional_split_characters_per_fixture": 64,
+    "conditional_split_fixtures": 2,
+    "norm_factors_per_conditional_fixture": 46,
+    "additional_fixed_parameter_examples": 8,
+    "prepared_pole_pairs": 2
+  },
+  "proof_sources": [
+    {
+      "path": "papers/finite_algebra/subalgebra_norms_20261114_v30.tex",
+      "sha256": "d33527fbc0040f3c089769095d7768fcb7e6bfc95622218e77f4db10469cfe02",
+      "compiled": true,
+      "rendered_pages_reviewed": 7,
+      "pdf_published": false
+    },
+    {
+      "path": "papers/pole_parameters/common_twists_20261114_v30.tex",
+      "sha256": "a9b92d7d6bfefcdb1c25201624754da673fb8407aef954dcd5b9c06d81e0c3e2",
+      "compiled": true,
+      "rendered_pages_reviewed": 5,
+      "pdf_published": false
+    }
+  ],
+  "global_variable_count_improvement": false,
+  "independent_mathematical_review": false,
+  "remote_publication": {
+    "performed": false,
+    "reason": "No GitHub write action or configured CLI credential was available in this session."
+  },
+  "scope": "Local proof-source, certificate and exact reconstruction checks. Arithmetic inputs remain explicit premises; full production determinants were not expanded. This is not a native Python 3.12 or remote CI receipt."
+}

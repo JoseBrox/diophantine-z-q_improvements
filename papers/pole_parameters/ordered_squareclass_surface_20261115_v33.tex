@@ -1,0 +1,165 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,booktabs,microtype}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\Q}{\mathbb Q}\newcommand{\PP}{\mathbb P}
+\DeclareMathOperator{\Tr}{Tr}
+\setlength{\emergencystretch}{2em}
+\title{The surface of ordered matching contact square classes}
+\author{}\date{15 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+Allowing a comparison scale and slope to vary together does not make
+square-class matching a rational parametrization problem. For two contact
+polynomials of degrees $2g_0+2$ and $2g_1+2$, with simple roots, the smooth
+projective model of the ordered correspondence is a surface of general
+type when $g_0,g_1\ge2$. Its canonical self-intersection is
+$4(g_0-1)(g_1-1)$. This distinguishes the ordered correspondence needed
+by the detector arguments from an unordered Kummer quotient. It excludes
+a dominant rational parametrization by two free parameters and a
+fibration with a rational or genus-one general fiber; it does not exclude
+special complete families of arithmetic witnesses.
+\end{abstract}
+
+\section{The ordered correspondence}
+Let $F_i\in\Q[T]$ be squarefree of even degree $2g_i+2$, with $g_i\ge2$,
+for $i=0,1$. Its roots may be rational, but the proof only requires
+simplicity over $\overline\Q$. On the open set where $F_0(t_0)F_1(t_1)\ne0$,
+the two values have the same class in $\Q^\times/\Q^{\times2}$ exactly when
+\[
+                         z^2=F_0(t_0)F_1(t_1)
+\]
+has a rational solution $z$. The two arguments are ordered: interchanging
+them is not automatically a permitted identification in the source system.
+Homogenizing the $F_i$ gives a double cover of $Y=\PP^1\times\PP^1$ with
+branch divisor $D$ consisting of $2g_0+2$ vertical and $2g_1+2$ horizontal
+fibers. Write $\pi:X\to Y$ for this normal double cover and
+$\widetilde X\to X$ for its minimal resolution.
+
+\begin{theorem}\label{thm:surface}
+The surface $\widetilde X$ is smooth, geometrically connected, and of
+general type. Its canonical divisor is nef and big, and
+\[
+                         K_{\widetilde X}^2=4(g_0-1)(g_1-1).
+\]
+There is no dominant rational map from a rational surface to
+$\widetilde X$. No surface birational to $\widetilde X$ admits a
+fibration whose smooth general fiber is rational or has genus one.
+\end{theorem}
+\begin{proof}
+A vertical branch valuation of $F_0(t_0)F_1(t_1)$ is odd, so this function
+is not a square in $\overline\Q(t_0,t_1)$. The double cover is therefore
+geometrically connected. Put
+\[
+ L=\mathcal O_Y(g_0+1,g_1+1),\qquad D\sim2L.
+\]
+The cover is smooth above each smooth point of the branch divisor.
+There are precisely $(2g_0+2)(2g_1+2)$ crossings. In local coordinates
+at a crossing, a unit may be absorbed etale-locally, and the cover has
+equation $z^2=uv$, an ordinary double point.
+
+Adjunction for the equation defining a double cover gives
+\[
+ K_X=\pi^*(K_Y+L)=\pi^*\mathcal O_Y(g_0-1,g_1-1).
+\]
+This formula also follows directly from the local canonical form
+$du\wedge dv/z$ and its changes of coordinates. The resolution of each
+ordinary double point is crepant. Indeed in the chart
+$u=s$, $z=st$, $v=st^2$ of the resolution the displayed form pulls back to
+$2\,ds\wedge dt$, without a zero or pole on the exceptional curve.
+The other chart gives the same conclusion. Thus the canonical divisor
+of the resolution is the pullback of the divisor just displayed.
+
+The divisor $\mathcal O_Y(g_0-1,g_1-1)$ is ample because both entries are
+positive. Its pullback to the finite double cover is ample, and its
+pullback under the resolution is nef and big. On $\PP^1\times\PP^1$,
+a divisor of bidegree $(a,b)$ has square $2ab$. Multiplication by the
+degree two of $\pi$ gives the claimed square of the canonical divisor.
+Bigness of the canonical divisor is precisely the asserted general-type
+property.
+
+A dominant rational map from a rational surface would be generically
+finite. Resolve its indeterminacies. In characteristic zero, pullback
+under a generically finite morphism embeds pluricanonical forms of the
+target into those of the source (the ramification divisor is effective).
+A smooth rational surface has no nonzero pluricanonical forms, whereas
+bigness supplies such forms on $\widetilde X$. This is a contradiction.
+
+For the final assertion, resolve a proposed rational fibration on a
+smooth surface $Z$ mapping birationally to $\widetilde X$. Let $C$ be
+a smooth general fiber and put $K=K_{\widetilde X}$. One has
+$C^2=0$ and $K_Z\cdot C=2g(C)-2$. On a succession of point blowups,
+$K_Z=f^*K+E$ with $E$ effective and exceptional. Since $C$ is a general
+fiber, $E\cdot C\ge0$, and nefness gives $f^*K\cdot C\ge0$.
+Genus zero is already impossible. In genus one both intersections
+must vanish. As $(f^*K)^2>0$, the Hodge index theorem then implies
+$C^2<0$ for the nonzero numerical class of $C$, contrary to $C^2=0$.
+Here $C$ is numerically nonzero because it has positive intersection
+with an ample divisor on $Z$. This also treats fibrations on other
+birational models.
+\end{proof}
+
+\section{Consequences for the present source systems}
+The replacements $(t_0,t_1)=(\lambda,a\lambda)$ with $\lambda\ne0$,
+and $(t_0,t_1)=(\lambda,\lambda+a)$, are birational changes of the
+argument plane. Consequently varying $a$ and $\lambda$ together gives
+the same surface, not a rational surface obtained by removing the
+fixed-scale genus calculation. For equal contact degrees the values are
+\[
+\begin{array}{c|c|c}
+\text{contacts per detector}&g_0=g_1&K_{\widetilde X}^2\\\hline
+6&2&4\\
+8&3&16\\
+10&4&36.
+\end{array}
+\]
+These statements concern matching first contact square classes after
+nonzero square factors common to the source have been removed. Any
+additional matching of complement classes imposes further conditions.
+
+\begin{remark}[Ordered versus unordered arguments]
+When $F_0=F_1=F$, let $C:y^2=F(t)$. The ordered correspondence is
+birational to $(C\times C)/\langle(\iota,\iota)\rangle$, where
+$\iota$ is the hyperelliptic involution. It is not the additional
+quotient by interchanging the two factors. In genus two, that further
+unordered quotient is birational to the Kummer quotient of the
+Jacobian. Passing to it forgets the ordering and may replace two
+rational arguments by a conjugate quadratic pair. Recovering two
+\emph{rational} ordered detector arguments is a further condition.
+Thus a genus-one fibration on an unordered quotient does not provide
+one on the ordered surface in Theorem~\ref{thm:surface}.
+\end{remark}
+
+\paragraph{What is not excluded.}
+A surface of general type can contain rational curves. In particular,
+when $F(2-t)=F(t)$, reflection gives the two rational curves
+$t_1=2-t_0$, $z=\pm F(t_0)$. General type does not itself exclude their
+use. The separate arithmetic argument in
+\nolinkurl{reflection_obstruction_20261114_v32.tex} excludes the actual
+reflected eight-contact construction for every sufficiently large
+coefficient shift, using the inert prime $11$. Neither theorem excludes
+all other matching families, nor proves a variable-count lower bound.
+A construction selecting a finite suitable point for each input, or
+using a larger nonrational parameter space already present among its
+witnesses, is not contradicted by Theorem~\ref{thm:surface}.
+
+\paragraph{Relation to the new quartic.}
+The reduction from 204 to 200 variables in
+\nolinkurl{quartic200_20261115_v33.tex} avoids this correspondence: its
+pole witnesses remain independent. Its saving comes from a recovered
+elliptic difference and a shifted integral Lucas equation. No result
+here changes the general counts 25 and 13 or the conditional quartic
+count 79.
+
+\section*{Verification scope}
+The argument in this paper is a mathematical proof, not a finite search
+for rational points. The branch count and intersection computation do
+not certify the external arithmetic premises of any Diophantine source.
+The local double-point calculation is included to make the canonical
+divisor calculation auditable. There is no claim of an independent
+non-author review.
+\end{document}

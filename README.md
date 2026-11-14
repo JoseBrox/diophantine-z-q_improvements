@@ -8,23 +8,23 @@ whose rational input projection is the integers, under the arithmetic premises s
 
 **Every variable count includes the input.** Degree is total degree. Coefficient height is the maximum absolute integer coefficient after fixed parameters have been substituted. The priorities are variable count, degree, then coefficient height. No global minimum is claimed.
 
-## Current constructions — 14 November 2026
+## Current constructions — 15 November 2026
 
 “None” in the additional-hypothesis column means **no additional conjecture beyond the explicitly retained arithmetic premises**. It does not mean that a finite coefficient computation has verified those premises. The full independent audit of the prime-pattern, pole-realization and modular-height foundations is not declared complete.
 
 | Construction | Additional height hypothesis | Total variables | Degree | Coefficients and effectiveness |
 |:--|:--|--:|:--|:--|
-| [Fewest variables under inherited premises](papers/finite_algebra/unit_norm_20261114_v28.tex) | None | **25** | **< 2^56** | Every sufficiently large fixed odd exponent; sufficient threshold ineffective. |
-| [Fewest quartic variables under inherited premises](papers/quartic_existence/quartic204_20261114_v27.pdf) | None | **204** | **4, exact** | 186 quadratic squares; **3,046 monomials**. Sufficient defining threshold ineffective. |
-| [Fully specified general polynomial](papers/finite_algebra/unit_norm_20261114_v28.tex) | None | **27** | **< 2^59** | Fixed exponent **L=20483**; coefficient height **< 2^(2^72)**. |
+| [Fewest variables under inherited premises](papers/finite_algebra/subalgebra_norms_20261114_v30.tex) | None | **25** | **< 2^55** | Every sufficiently large fixed odd exponent; sufficient threshold ineffective. |
+| [Fewest quartic variables under inherited premises](papers/quartic_existence/quartic200_20261115_v33.tex) | None | **200** | **4, exact** | 186 quadratic squares; **3,221 monomials**. Sufficient defining threshold ineffective. |
+| [Fully specified general polynomial](papers/finite_algebra/subalgebra_norms_20261114_v30.tex) | None | **27** | **< 2^58** | Fixed exponent **L=20483**; coefficient height **< 2^(2^71)**. |
 | [Fully specified quartic](papers/quartic/explicit260_20261114_v27.pdf) | None | **260** | **4, exact** | **N=9682**; 232 quadratic squares; **3,704 monomials**; height **149^38730+1**. |
-| [Few variables under weak abc](papers/finite_algebra/unit_norm_20261114_v28.tex) | Weak abc at **121/100**; ordinary Szpiro suffices | **13** | **≤ 155,568,385 < 2^28** | Sufficient odd shift ineffective. |
-| [Lower degree under stronger weak abc](papers/finite_algebra/unit_norm_20261114_v28.tex) | Weak abc at **16/15**; ordinary rational abc suffices | **13** | **≤ 126,445,825 < 2^27** | Sufficient odd shift ineffective. |
+| [Few variables under weak abc](papers/finite_algebra/subalgebra_norms_20261114_v30.tex) | Weak abc at **121/100**; ordinary Szpiro suffices | **13** | **≤ 126,442,497 < 2^27** | Sufficient odd shift ineffective. |
+| [Lower degree under stronger weak abc](papers/finite_algebra/subalgebra_norms_20261114_v30.tex) | Weak abc at **16/15**; ordinary rational abc suffices | **13** | **≤ 103,165,953 < 2^27** | Sufficient odd shift ineffective. |
 | [Fewest quartic variables under abc](papers/quartic_existence/quartic_abc79_20261114_v27.pdf) | Ordinary rational abc | **79** | **4, exact** | 71 quadratic squares; **1,139 monomials**. Uses the stated simultaneous-twist theorem of Jaswal; sufficient shift ineffective. |
 
-The general degree bounds are upper bounds for explicitly specified, unexpanded determinant polynomials, not exact degrees. The exact general degree majorants are **64,674,204,453,175,296** for 25 variables and **442,502,070,853,959,680** for the fully specified 27-variable polynomial. Their support bounds are respectively below **2^1282** and **2^1457**. The two 13-variable support bounds are below **2^306** and **2^303**.
+The general degree bounds are upper bounds for explicitly specified, unexpanded determinant polynomials, not exact degrees. The exact general degree majorants are **25,934,337,637,613,568** for 25 variables and **177,313,559,789,699,072** for the fully specified 27-variable polynomial. Their support bounds are respectively below **2^1250** and **2^1423**. The two 13-variable support bounds are below **2^303** and **2^299**.
 
-The balanced 204-variable coefficient height is exactly
+The balanced 200-variable coefficient height is exactly
 
 $$H(P_N)=\max\{(5898050446009651968\cdot31581660^{28})^2,\;31581660^{28}149^{2N}\}.$$
 
@@ -36,7 +36,46 @@ $$\max(4153456,B^2+630511).$$
 
 It has exactly the same rational input projection as the new 79-variable family at every fixed shift. The variable-first optimization prefers 79; the 81-variable alternative is retained for its smaller coefficients. The **B=3** tables are algebraic fixtures, not certified defining members.
 
-Machine-readable current results are in [data/results_20261114_v28.json](data/results_20261114_v28.json). The [current guide](docs/results_20261114_v28.md) distinguishes the arithmetic assumptions, effective parameters, source dependencies, and review scope.
+Machine-readable current results are in [data/results_20261115_v33.json](data/results_20261115_v33.json). The [current guide](docs/results_20261115_v33.md) distinguishes the arithmetic assumptions, effective parameters, source dependencies, and review scope.
+
+## A corrected 200-variable quartic in v33
+
+The [complete proof](papers/quartic_existence/quartic200_20261115_v33.tex)
+removes the fourth stored elliptic root point. The shifted labels
+A=2a+2 and b=m+1/2 make (A-2)b=a(2m+1) a nonzero integer, preserving
+Lucas growth and constructive completeness. The weighted trace and every
+exceptional reciprocal-pair case are checked. The two poles remain independent.
+
+The previous unpublished v32 table shifted a stored ratio by 2 instead of
+2R. Its checker repeated that mistake. The [correction report](docs/audits/scalar_ratio_correction_20261115_v33.md)
+records the repair and supersession, and a separate physical-normalization
+test now rejects the old formula. Exact reconstruction alone is not a
+substitute for checking that the coordinates encode the stated arithmetic.
+
+The [reflection obstruction](papers/pole_parameters/reflection_obstruction_20261115_v33.tex)
+and [ordered square-class surface theorem](papers/pole_parameters/ordered_squareclass_surface_20261115_v33.tex)
+are retained as separate results. They do not yield a matching-class complete
+construction or a global variable lower bound.
+
+## Smaller degree bounds and compatible poles in v30
+
+The [new norm-determinant proof](papers/finite_algebra/subalgebra_norms_20261114_v30.tex)
+replaces repeated full-algebra norms by norms in Galois-stable multiquadratic
+subalgebras. A quadratic-tower separating element avoids quartic discriminants.
+The rational retained-coordinate projection is exactly that of v28 for every
+fixed coefficient parameter: no arithmetic input, completeness restriction or
+sufficient parameter is changed. All four variable counts are unchanged.
+[Exact specifications and checks](computation/few_variables/subalgebra_norms_v30)
+include symbolic identities, finite algebra examples and corruption controls.
+
+The separate [common-twist theorem](papers/pole_parameters/common_twists_20261114_v30.tex)
+uses the finite-family strengthening in the supplied row-5a audit. On the stated
+compatibility locus, two poles with one input square class and two complement
+classes need three retained parameters instead of four. A change of base class
+also covers certain overlapping complements. This does **not** make the current
+25- or 13-variable completeness witnesses compatible and changes no global
+variable record. The supplied strengthening and Jaswal's Hexagon source are
+credited separately. See the [v30 guide](docs/results_20261114_v30.md).
 
 ## Joint pole realization and reference-point restrictions in v29
 
@@ -112,6 +151,8 @@ Use **Python 3.12** for the byte-pinned legacy suite, and **SymPy 1.14.0** for t
 
 ```sh
 python -m pip install sympy==1.14.0
+python -B scripts/verify_v33.py
+python -B scripts/verify_v30.py
 python -B computation/pole_parameters/joint_realization_v29/check.py
 python -B scripts/verify_v28.py
 python -B scripts/verify_release_v27.py

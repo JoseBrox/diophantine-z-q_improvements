@@ -24,3 +24,16 @@ The upstream 214-coordinate numerical source is pinned to `elliotglazer/diophant
 The new abc pole realization uses **Manvir Jaswal, A proof that Z is Diophantine in Q through congruent-number twists, Hexagon 2611.00331v2 (12 November 2026), Theorem 1.2**, available at https://hexagonmath.org/pdf/2611.00331v2. The exact squareclass application and coordinate transformations are proved in `papers/pole_parameters/congruent_twist_poles_20261114_v27.tex`. This attribution does not claim a completed independent audit of the entire source paper or use its separate height and prime-pattern assertions.
 
 The positive weighted trace theorem applies the final published **Jérôme von Buhren, JTNB 29 (2017), 307–320, Theorem 1.1, p. 308**, with the actual fixed finite-rank group, projective embedding, graph family and exceptional translates checked in `papers/trace_heights/weighted_trace_20261114_v27.tex`. External papers are cited, not redistributed.
+
+## Source supplied for the v30 common-twist application
+
+The user-supplied project audit *A row-5a audit and a simultaneous-twist
+strengthening: On Manvir Jaswal's congruent-number route to Diophantine
+definability*, dated 13 November 2026, is preserved unchanged in
+`sources/hexagon/jaswal_row5a_audit_and_simultaneous_twists_20261113.tex`.
+SHA-256: `6764fcb1f3fd5d21494b9d18818f20abcb1f47d8d543829df69344223bf92bdb`.
+This is supplied project source material, not a redistribution of the external
+Hexagon paper. Its finite-family theorem (label `thm:sim`) is distinguished from
+Jaswal's original two-twist Theorem 1.2. The new application retains that theorem
+as an explicit input and does not claim to complete its independent arithmetic
+audit. The subalgebra-norm degree improvements use no new twist input.

@@ -1,0 +1,347 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,booktabs,microtype}
+\usepackage[margin=26mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\setlength{\emergencystretch}{3em}
+\newtheorem{theorem}{Theorem}[section]\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}\newtheorem{remark}[theorem]{Remark}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\DeclareMathOperator{\sfree}{sf}
+\title{Common twists for several pole inputs}
+\author{}\date{14 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+We apply the finite-family prescribed-class twist theorem in the supplied
+row-5a audit to the congruent-number pole equations. Inputs with a common
+nontrivial input square class and $k$ distinct nontrivial complement square
+classes can use $k+1$ retained rational parameters under an explicit common-twist
+hypothesis. Pairwise-coprime admissible complements satisfy that hypothesis
+by the supplied theorem. We also prove a change of base square class which
+extends the application to some overlapping families; two explicit prepared
+inputs have complements sharing the prime 89. The equations and witness maps
+are exact, including trivial complement classes and repeated classes.
+These are reductions of pole subsystems. They do not prove a smaller complete
+25- or 13-variable definition, whose present witnesses have different input
+square classes.
+\end{abstract}
+
+\section{Source theorem and scope}
+Write $C_n:y^2=x^3-n^2x$ for $n>0$ rational. For a positive rational
+number, its squarefree representative is the unique positive squarefree
+integer in its rational square class. Two positive squarefree integers
+$\beta,\theta$ are called admissible here when
+\[
+ \beta>1,\quad\beta\equiv\theta\equiv1\pmod8,\quad
+ \gcd(\beta,\theta)=1,
+\]
+and $\theta$ is a quadratic residue at every prime dividing $\beta$,
+while $\beta$ is a quadratic residue at every prime dividing $\theta$.
+The conditions on the latter set are vacuous for $\theta=1$.
+
+We use precisely the following consequence of the theorem entitled
+\emph{Simultaneous prescribed-class twists} in the supplied audit
+\cite{Audit}.
+To avoid confusing that strengthening with the original two-twist theorem,
+we state it explicitly as an input.
+
+\begin{theorem}[Retained finite-family input]\label{thm:input}
+Let $\beta>1$ be positive squarefree and $1\pmod8$. Let
+$\eta_1,\ldots,\eta_s$ be pairwise coprime positive squarefree
+integers, each admissible with $\beta$. There is a positive squarefree
+$m$ such that $C_m$ and all $C_{m\eta_j}$ have infinite-order rational
+points with abscissa in $\beta\Q^{\times2}$.
+\end{theorem}
+
+This is a weaker conclusion than the supplied audit's theorem, which also
+states rank, Selmer and density conclusions. Those stronger statements
+are not needed here. The finite-family theorem is the supplied audit's
+strengthening of the congruent-number construction in Jaswal's Hexagon
+preprint \cite{Jaswal}, not a conclusion of separate applications of
+Jaswal's two-twist Theorem~1.2. We retain its stated hypotheses and do not
+claim to have newly audited its external analytic dependencies. The supplied
+TeX source is preserved unchanged under
+\nolinkurl{sources/hexagon}; its hash is bound in the exact certificate.
+
+A positive rational $b$ is prepared for the pole equations of
+\cite{Congruent} when
+\[
+ 0<b<1,\quad b\text{ has square reduced denominator},\quad
+ b\in\Q_2^{\times2},\quad v_2(b)\ge3.
+\]
+For such a nonsquare $b$, the decompositions
+\[
+                       b=\beta z^2,\qquad 1-b=\theta c^2
+\]
+with positive squarefree representatives have $(\beta,\theta)$
+admissible. Briefly, the coprime numerators of $b$ and $1-b$ over their
+common square denominator give coprimality and the mutual residue
+conditions. The square unit of $b$ at two gives $\beta\equiv1\pmod8$;
+its even valuation is at least four, so $1-b\equiv1\pmod{16}$ and
+$\theta\equiv1\pmod8$. These statements are proved with the same
+conventions in \cite{Congruent}.
+
+\section{The common-twist implication and its exact parameter count}
+The pole equations are
+\begin{equation}\label{eq:pole}
+ e^2+bp^2=1,\qquad uv=e(1-b),\qquad u^2-v^2=bq^2.
+\end{equation}
+A retained parameter is a freely chosen rational coordinate before the
+single finite-algebra elimination. Square roots of specified rational
+functions are finite choices; their rationality must still be imposed.
+We use the one-coordinate encoding in \cite{Joint}, which can be shared
+with the existing finite choices in a larger construction.
+
+\begin{theorem}\label{thm:common}
+Let $b_1,\ldots,b_r$ be prepared nonsquare inputs with the same
+squarefree representative $\beta>1$. Write
+\[
+ b_i=\beta z_i^2,\qquad 1-b_i=\theta_i c_i^2,
+ \qquad z_i,c_i\in\Q^\times.
+\]
+Let $\mathcal T$ be the set of their distinct nontrivial complement
+representatives, and put $k=|\mathcal T|$.
+Suppose one positive rational $n$ exists for which $C_n$ and every
+$C_{n\theta}$, $\theta\in\mathcal T$, have infinite-order rational
+points with abscissa in $\beta\Q^{\times2}$.
+Then the joint pole systems have witnesses with only the $k+1$ retained
+parameters
+\[
+                              e,\quad (w_\theta)_{\theta\in\mathcal T},
+\]
+together with finite square roots. They may be chosen with
+$0<e<1$ and all $u_i,p_i,q_i$ nonzero. The attainable retained tuples
+are Zariski dense in $\mathbb A^{k+1}$.
+\end{theorem}
+\begin{proof}
+Choose a non-torsion rational point $(\beta a_0^2,y_0)$ on $C_n$,
+and independently points $(\beta a_\theta^2,y_\theta)$ on
+$C_{n\theta}$. Their abscissas are positive and their ordinates
+nonzero. Define
+\[
+ e=\frac{n}{\beta a_0^2},\quad
+ p_* =\frac{y_0}{\beta^2a_0^3},\quad
+ w_\theta=\frac{a_\theta}{a_0},\quad
+ q_\theta=\frac{y_\theta}{\beta^2a_0^3w_\theta^2}.
+\]
+The first curve equation gives
+\begin{equation}\label{eq:finite}
+ \beta p_*^2=1-e^2,\qquad
+ \beta w_\theta^2q_\theta^2=w_\theta^4-e^2\theta^2.
+\end{equation}
+The latter equality follows by dividing the corresponding second curve
+equation by $\beta^3a_0^6w_\theta^2$. A positive abscissa on $C_n$ is larger than $n$
+unless it is two-torsion. Hence $0<e<1$.
+
+For the trivial complement put $w_1=1$ and $q_1=p_*$; these satisfy
+\eqref{eq:finite} with $\theta=1$. For each input set
+\begin{equation}\label{eq:maps}
+ p_i=p_*/z_i,\qquad u_i=c_iw_{\theta_i},\qquad
+ v_i=e\theta_i c_i/w_{\theta_i},\qquad
+ q_i=c_iq_{\theta_i}/z_i.
+\end{equation}
+Substitution in \eqref{eq:pole} proves the first equation without a
+factor, and the other two after multiplication by $c_i^2$. All divisions
+are by nonzero quantities, and all specified nonzero witnesses follow
+from the non-torsion ordinates. Repeated complement classes use the same
+$w_\theta,q_\theta$, not extra retained coordinates.
+
+Vary positive odd multiples of every chosen point independently. On a
+curve $C_n$, the abscissa square-class homomorphism is constant on odd
+multiples. This follows from the chord-and-tangent product identity
+and the duplication formula, as detailed in \cite{Joint}. These odd
+multiples have infinitely many distinct abscissas: equality of two
+abscissas means equality of the points up to sign, which would give a
+torsion multiple of a non-torsion point. Thus the first point gives
+infinitely many $e$. With it fixed, the independently varying second
+points give independently infinitely many $w_\theta$. A polynomial
+vanishing on all these tuples first vanishes in all the $w_\theta$,
+and then each coefficient vanishes at infinitely many $e$. This proves
+density, also for $k=0$.
+
+For the parameter count in a \emph{uniform} polynomial construction,
+one must not introduce the variable squarefree representatives as
+coefficients. Choose an existing input $b_*=b_1$ instead of $\beta$,
+and for each nontrivial complement class choose an existing representative
+$d_\theta=1-b_{j(\theta)}=\theta c_{j(\theta)}^2$.
+Rescale $w_\theta$ to $\widetilde w_\theta=c_{j(\theta)}w_\theta$,
+$p_*$ to $\widetilde p=p_*/z_1$, and $q_\theta$ to
+$\widetilde q_\theta=c_{j(\theta)}q_\theta/z_1$. Their equations are
+\[
+ b_*\widetilde p^2=1-e^2,\qquad
+ b_*\widetilde w_\theta^2\widetilde q_\theta^2
+       =\widetilde w_\theta^4-e^2d_\theta^2.
+\]
+For input $i$ the remaining finite square roots are
+\[
+ Z_i^2=b_i/b_*,\qquad C_i^2=(1-b_i)/d_{\theta_i}.
+\]
+The formulas \eqref{eq:maps} hold with
+$(p_*,w_\theta,q_\theta,z_i,c_i,\theta)$ replaced by
+$(\widetilde p,\widetilde w_\theta,\widetilde q_\theta,Z_i,C_i,d_\theta)$.
+For trivial complement use $d_1=1$, $\widetilde w_1=1$ and
+$\widetilde q_1=\widetilde p$. Thus only already present input
+functions, not their arithmetically extracted squarefree parts, enter
+the coefficient construction. A fixed partition into complement classes
+selects the representatives; there are only finitely many such partitions
+for a fixed number of inputs, so alternatives may be handled by a finite
+disjunction when needed.
+
+All these radicands and their denominators are guarded nonzero. The
+separation construction in \cite{Joint} encodes their rational square
+roots using one shared additional coordinate. The retained count is
+$k+1$; a stand-alone polynomial also needs that separating coordinate,
+which a larger construction may already possess. No variable for
+$\beta$, $\theta$, or $n$ has been omitted from this accounting: they
+are used only in the existence proof, not in the displayed uniform
+finite encoding.
+\end{proof}
+
+The result is existential equivalence to the collection of individual
+pole conditions \emph{on the stated prepared locus and under the common-twist
+input}: its witnesses give every individual condition, and the theorem
+gives a common witness on that whole locus. It is not a bijection with
+all previously chosen witnesses. Further guards may be imposed only if
+their polynomials remain nonzero after the displayed substitutions;
+density does not imply arbitrary equalities or numerical coincidences.
+
+\begin{corollary}\label{cor:coprime}
+If the distinct nontrivial $\theta_i$ are pairwise coprime,
+Theorem~\ref{thm:input} supplies the common-twist hypothesis in
+Theorem~\ref{thm:common}. In particular two prepared inputs with the
+same nontrivial input class and two coprime nontrivial complement
+classes need three retained parameters rather than four.
+\end{corollary}
+\begin{proof}
+Apply the finite-family input to the distinct complement classes.
+Their admissibility follows from preparation. Then apply
+Theorem~\ref{thm:common}.
+\end{proof}
+
+\section{A change of base class for overlapping complements}
+The pairwise-coprime criterion is sufficient but not necessary. The next
+algebraic observation enlarges its scope without strengthening the
+finite-family input.
+
+\begin{proposition}\label{prop:change}
+Let $\theta_0=1,\theta_1,\ldots,\theta_k$ be positive squarefree
+integers. Suppose a positive squarefree $\delta$ exists such that the
+distinct nontrivial integers
+\[
+                  \eta_i=\sfree(\delta\theta_i)\quad(0\le i\le k)
+\]
+are pairwise coprime and each is admissible with $\beta$.
+Then Theorem~\ref{thm:input} supplies a positive rational $n$ such that
+$C_n$ and all $C_{n\theta_i}$ have the required infinite-order points
+in the abscissa class $\beta$.
+\end{proposition}
+\begin{proof}
+Choose $m$ from that theorem for the distinct nontrivial $\eta_i$,
+using its base curve $C_m$ for any $\eta_i=1$. Set $n=m\delta$.
+As $\delta,\theta_i$ are squarefree, with
+$h_i=\gcd(\delta,\theta_i)$ one has
+\[
+                  \delta\theta_i=\eta_i h_i^2.
+\]
+The isomorphism
+\[
+ C_{m\eta_i}\longrightarrow C_{n\theta_i},\qquad
+                   (x,y)\longmapsto(h_i^2x,h_i^3y)
+\]
+preserves infinite order and multiplies the abscissa by a rational square.
+For $i=0$ it supplies $C_n$. The rational parameter $n$ need not itself
+be squarefree; neither the pole formulas nor Theorem~\ref{thm:common}
+requires this. This is a change of base in the family of curves, not
+a claim that arbitrary overlaps satisfy the displayed admissibility
+conditions.
+\end{proof}
+
+\begin{corollary}\label{cor:star}
+Suppose the nontrivial complement classes have the form
+$\theta_i=a d_i$, where $a,d_1,\ldots,d_k$ are pairwise coprime
+positive squarefree integers, all admissible with $\beta$.
+Then Theorem~\ref{thm:common} applies even when $a>1$.
+\end{corollary}
+\begin{proof}
+Use $\delta=a$. The transformed classes are $a,d_1,\ldots,d_k$.
+Repeated or trivial classes are removed before applying the input.
+\end{proof}
+
+For two complements put $a=\gcd(\theta_1,\theta_2)$ and
+$d_i=\theta_i/a$. These three integers are automatically pairwise
+coprime. Admissibility of all three must still be checked: admissibility
+of their two products alone does not imply it. In particular the residue
+of $a$ modulo eight and its individual residue symbols at primes dividing
+$\beta$ cannot be dropped.
+
+\section{Explicit prepared inputs and exact tests}
+The first pair is
+\[
+ b_1=\frac{272}{361}=17\left(\frac4{19}\right)^2,\qquad
+ b_2=\frac{1088}{1225}=17\left(\frac8{35}\right)^2.
+\]
+Their complement classes are $89$ and $137$; these are coprime and
+admissible with $17$. Both inputs are prepared and fall under
+Corollary~\ref{cor:coprime}.
+
+For an overlapping example take
+\[
+ b_1=\frac{2448}{14641}=17\left(\frac{12}{121}\right)^2,\qquad
+ b_2=\frac{4352}{27225}=17\left(\frac{16}{165}\right)^2.
+\]
+Their complements are
+\[
+ 1-b_1=\frac{89\cdot137}{121^2},\qquad
+ 1-b_2=\frac{89\cdot257}{165^2}.
+\]
+The first criteria do not apply directly, since the two representatives
+share 89. Instead use $\delta=89$: the transformed classes are
+$89,137,257$. Each prime is $1\pmod8$ and a quadratic residue modulo
+17; reciprocity also gives the reverse symbols, or they may be checked
+directly. Thus Proposition~\ref{prop:change} supplies the common twist.
+The two inputs again require three retained parameters.
+
+The exact checker verifies preparation, prime factorization and all
+residue symbols, the witness substitutions modulo \eqref{eq:finite},
+and the change-of-base curve isomorphism. The examples establish the
+hypotheses of the realization theorem; no explicit huge twist or full
+numeric pole witness is asserted to have been computed for these pairs.
+
+\section{Relation to the variable-reduction objective}
+These results remove the extra unproved multi-twist hypothesis from the
+v29 common-first-parameter theorem on the two explicitly described
+compatibility loci. They do not force the input classes to coincide.
+In particular the current 13-variable completeness witnesses have
+\emph{different} first square classes at fresh selected primes, as
+proved in \cite{Joint}. Nor does this argument make the 25-variable
+pole inputs compatible. The global counts consequently remain 25 and
+13. No new quartic presentation or quartic count follows from the
+finite-square-root encoding used here.
+
+The unresolved application is a completeness construction whose pole
+inputs have a common first class while retaining the required local
+conditions and height inequalities. The present proof supplies an exact
+realization theorem once that condition is obtained; it does not assume
+that the old infinite-slope construction can impose it.
+
+\begin{thebibliography}{9}
+\bibitem{Audit} \emph{A row-5a audit and a simultaneous-twist strengthening:
+On Manvir Jaswal's congruent-number route to Diophantine definability},
+supplied project audit, 13 November 2026, theorem entitled
+\emph{Simultaneous prescribed-class twists} (source label
+\texttt{thm:sim}). Unmodified source:
+\nolinkurl{sources/hexagon/jaswal_row5a_audit_and_simultaneous_twists_20261113.tex}.
+\bibitem{Jaswal} M.~Jaswal, \emph{A proof that $\Z$ is Diophantine in $\Q$
+through congruent-number twists}, Hexagon \texttt{2611.00331v2},
+12 November 2026, Theorem~1.2.
+\url{https://hexagonmath.org/pdf/2611.00331v2}.
+\bibitem{Joint} \emph{Joint realization of compatible pole conditions},
+project manuscript, 14 November 2026.
+\nolinkurl{papers/pole_parameters/joint_pole_realization_20261114_v29.tex}.
+\bibitem{Congruent} \emph{Pole equations from simultaneous congruent-number twists},
+project manuscript, 14 November 2026.
+\nolinkurl{papers/pole_parameters/congruent_twist_poles_20261114_v27.tex}.
+\end{thebibliography}
+\end{document}

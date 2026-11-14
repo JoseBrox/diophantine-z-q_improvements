@@ -1,0 +1,1076 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=1.02in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern,microtype}
+\usepackage{amsmath,amssymb,amsthm,mathtools,mathrsfs}
+\usepackage{booktabs,array,enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{enumitem}
+\allowdisplaybreaks[2]
+\setlength{\parskip}{0.35em}
+\setlength{\parindent}{0pt}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\FF}{\mathbb F_2}
+\newcommand{\QQ}{\mathbb Q}
+\newcommand{\ZZ}{\mathbb Z}
+\newcommand{\rank}{\operatorname{rank}}
+\newcommand{\corank}{\operatorname{corank}}
+\newcommand{\Sel}{\operatorname{Sel}_2}
+\newcommand{\Sha}{\operatorname{\mathrlap{\mathchoice{\raisebox{.13ex}{$\displaystyle\amalg$}}{\raisebox{.13ex}{$\textstyle\amalg$}}{\amalg}{\amalg}}\amalg}}
+\newcommand{\sgnbit}[2]{\left[\frac{#1}{#2}\right]}
+\newcommand{\one}{\boldsymbol{1}}
+\newcommand{\diag}{\operatorname{diag}}
+\newcommand{\Pic}{\operatorname{Pic}}
+\title{A row-5a audit and a simultaneous-twist strengthening\\
+\large On Manvir Jaswal's congruent-number route to Diophantine definability}
+\author{Independent mathematical audit and new deduction}
+\date{13 November 2026}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We examine the arithmetic contribution in M.~Jaswal,
+\emph{A proof that $\ZZ$ is Diophantine in $\QQ$ through congruent-number twists},
+hexagon:2611.00331v2 (12 November 2026).  The change to congruent-number curves,
+minimal $2$-Selmer groups, R\'edei matrices and Tian--Yuan--Zhang's theorem already
+belong to the Glazer--McCarthy project.  Jaswal's different \emph{prescribed
+Selmer class} ($\beta\equiv1\pmod8$), its first-genus-sum (row-5a) determinant,
+and the associated auxiliary-prime pattern constitute a substantive alternative
+not found as a completed construction in the two inspected repositories.
+We give a proof-level audit of this contribution and prove a strengthening:
+\emph{one and the same squarefree twist parameter works for any finite set of
+pairwise-coprime admissible auxiliary twists}.  The resulting curves all have
+analytic and Mordell--Weil rank exactly one, have minimal $2$-Selmer group,
+have trivial $2$-primary Tate--Shafarevich group, and realize the same
+prescribed $2$-descent class by infinite-order rational points.  There are
+$\gg X/\log X$ suitable parameters up to $X$.  We spell out the Selmer
+matrix, finite-field determinant reduction, prime construction, and sources;
+we also give an exact numerical configuration as a reproducibility check.
+No improvement in the number of variables of a Diophantine polynomial is
+asserted.
+\end{abstract}
+
+\section{Scope and the novelty question}\label{sec:scope}
+
+The preprint \cite{Jaswal} states the existential Diophantine conclusion
+\(\exists N\ge1\;\exists D\in\ZZ[X,Y_1,\dots,Y_N]\), but does \emph{not}
+provide an explicit value of $N$, an explicit defining polynomial, a degree
+bound, or coefficient bounds.  Its introduction calls Theorem~1.2 its one
+new theorem.  Its six-contact height estimate (Theorem~1.3), its prime
+configuration theorem (Theorem~1.4), and its elliptic-index formula follow
+the earlier Glazer--OpenAI development, albeit with some modifications in
+presentation and imported modularity inputs.
+
+The following distinction is essential for correct attribution:
+\begin{enumerate}[label=\textup{(\roman*)},itemsep=2pt]
+\item The congruent-number family $E_d:y^2=x^3-d^2x$ and a
+      R\'edei--Monsky Selmer-minimality construction occur in the
+      \href{https://github.com/elliotglazer/diophantine-z-q/blob/main/docs/research/tyz-5b.md}{Glazer--McCarthy row-5b research note}
+      and its Lean development.  There the prescribed first square class has
+      absolute residue $7\pmod8$, and the decisive genus sum is the
+      \emph{second} Tian--Yuan--Zhang sum (row 5b).
+\item The \emph{definition} of the \emph{first} genus sum already occurs in
+      \href{https://github.com/elliotglazer/diophantine-z-q/blob/main/blueprint/roadmap/rank/literature/genus-sum-5a.md}{the existing row-5a blueprint},
+      and both sums occur in the project's work on Proposition~N.
+      Therefore the first sum or its source theorem is \emph{not} newly
+      discovered by the preprint.
+\item What appears new relative to the completed routes inspected is the
+      \emph{specific simultaneous existence construction}
+      $(\beta,d)\in\Sel(E_e)\cap\Sel(E_{e\theta})$ with
+      $\beta\equiv1\pmod8$, certified by row 5a and a compatible
+      finite-field configuration.  This is a new combination of known
+      ingredients and can replace a harder arithmetic dependency in a
+      pole-completeness proof; it is not by itself a new Diophantine
+      variable bound.
+\end{enumerate}
+The comparison includes the main branches of
+\href{https://github.com/JoseBrox/diophantine-z-q_improvements}{the user's improvements repository}
+and \href{https://github.com/elliotglazer/diophantine-z-q}{Glazer's repository},
+plus the open pull-request titles at the time of inspection.  An exhaustive
+claim about unmerged private work is not made.
+
+The mathematics proved below is a new strengthening of the preprint's
+Theorem~1.2, not a new proof of the entire Diophantine-definability
+machinery in its Sections~2--5 and~7--8.
+
+\section{Statement of the strengthened theorem}\label{sec:main}
+
+For $n>0$ squarefree, write
+\[
+ E_n:\quad y^2=x^3-n^2x=x(x-n)(x+n),\qquad
+ \partial_n:E_n(\QQ)/2E_n(\QQ)\hookrightarrow
+       (\QQ^\times/\QQ^{\times2})^2,
+\]
+where, away from $2$-torsion, $\partial_n(x,y)=(x,x-n)$.
+Let $\Sigma_{5a}(n)$ denote the \emph{first genus sum} of
+Tian--Yuan--Zhang for $n\equiv5\pmod8$ (defined in
+\S\ref{sec:published}).
+
+\begin{definition}\label{def:admissible}
+For odd positive squarefree $\beta,\theta$, say that $(\beta,\theta)$
+is \emph{admissible} if
+\[
+ \beta>1,\quad \beta\equiv\theta\equiv1\pmod8,\quad
+ (\beta,\theta)=1,
+\]
+and every prime dividing $\beta$ is a quadratic residue of $\theta$
+(equivalently $(\theta/p)=+1$ for all $p\mid\beta$), while every
+prime dividing $\theta$ is a quadratic residue of $\beta$
+(equivalently $(\beta/q)=+1$ for all $q\mid\theta$).
+The condition for $\theta=1$ is vacuous.
+\end{definition}
+
+\begin{theorem}[Simultaneous prescribed-class twists]\label{thm:sim}
+Fix a squarefree $\beta>1$ with $\beta\equiv1\pmod8$, and let
+$\theta_1,\ldots,\theta_s$ be any finite family of positive squarefree
+integers satisfying:
+\begin{enumerate}[label=\textup{(a)},itemsep=2pt]
+\item $(\beta,\theta_j)$ is admissible for every $j$;
+\item $\gcd(\theta_i,\theta_j)=1$ whenever $i\ne j$.
+\end{enumerate}
+There are a positive squarefree integer $e$ and a squarefree divisor
+$d\mid e/\beta$ with $d\equiv5\pmod8$ such that, setting
+$\theta_0=1$ and $n_j=e\theta_j$ for $0\le j\le s$, simultaneously:
+\begin{align*}
+ &n_j\equiv5\pmod8,\qquad \dim_{\FF}\Sel(E_{n_j})=3,\qquad
+          \Sigma_{5a}(n_j)\equiv1\pmod2;\\
+ &(\beta,d)\in\Sel(E_{n_j}),\qquad
+    \operatorname{ord}_{z=1}L(E_{n_j},z)
+      =\rank E_{n_j}(\QQ)=1;\\
+ &\Sha(E_{n_j}/\QQ)[2^\infty]=0,\qquad
+   \exists P_j\in E_{n_j}(\QQ)\text{ of infinite order with }
+     \partial_{n_j}(P_j)=(\beta,d).
+\end{align*}
+In particular $x(P_j)\in\beta\QQ^{\times2}$ for every $j$.
+
+More precisely, there exist a fixed positive integer $C$, a modulus
+$M$ and a reduced residue class $a\pmod M$ such that for every
+sufficiently large prime $p\equiv a\pmod M$, the integer $e=Cp$
+has all the displayed properties for the same $d$.  Thus the
+set of suitable $e$ contains a full prime arithmetic progression
+scaled by $C$.
+
+The parameter $e$ can be chosen with exactly
+\[
+                        \omega(e)=2\omega(\beta)+3
+\]
+distinct prime factors, independently of $s$, and with all its
+auxiliary prime factors arbitrarily large.
+For fixed $(\beta;\theta_1,\dots,\theta_s)$ there is a constant
+$c>0$ such that
+\[
+ \#\{e\le X:\ e\text{ has these simultaneous properties}\}
+                      \ \ge\ c\frac{X}{\log X}
+                  \qquad(X\gg_{\beta,\theta_1,\dots,\theta_s}1).
+\]
+\end{theorem}
+
+\begin{remark}\label{rem:scope}
+The pairwise-coprime assumption makes the free Legendre-symbol bits
+for the different $\theta_j$ disjoint.  This proof does not establish
+simultaneous realizability for general overlapping families.  It also does
+not supply simultaneous rational points with a shared numerical
+$y$-coordinate or bound their heights; these are different statements.
+\end{remark}
+
+\section{Published analytic input and the genus sum}\label{sec:published}
+
+For positive squarefree $n\equiv5\pmod8$ and a nonempty subset
+$T\subseteq\{p:p\mid n\}$ write $n_T=\prod_{p\in T}p$ and
+\[
+ g(n_T)=\#\bigl(2\operatorname{Cl}(\QQ(\sqrt{-n_T}))\bigr)
+                                \pmod2\ \in\FF.
+\]
+Define
+\begin{equation}\label{eq:genus}
+ \Sigma_{5a}(n)=
+    \sum_{\substack{\pi\text{ partition of }\{p:p\mid n\}\\
+           \text{exactly one block }T_0:\ n_{T_0}\equiv5(8)\\
+           \text{all other blocks }T:\ n_T\equiv1(8)}}
+        \prod_{T\in\pi}g(n_T)\ \in\FF.
+\end{equation}
+This is Tian--Yuan--Zhang's first sum over unordered factorizations;
+the partition with a single block is allowed.  The formula is the
+first sum in the published \cite[Theorem~1.4]{TYZ}, not just a
+conjectural reading of a preliminary manuscript.
+
+\begin{proposition}[Analytic parity criterion]\label{prop:tyz}
+If $n>0$ is squarefree, $n\equiv5\pmod8$, and
+$\Sigma_{5a}(n)=1$, then $E_n$ has analytic rank one.
+If moreover $\dim_{\FF}\Sel(E_n)=3$, then its Mordell--Weil rank is
+one, its $2$-primary Tate--Shafarevich group is zero, and every
+class of $\Sel(E_n)$ is represented by a rational point of
+infinite order.
+\end{proposition}
+\begin{proof}
+Tian--Yuan--Zhang prove that
+$2^{-\rho(n)}\mathcal L(n)$ can be even only if both their
+first and second genus sums are even, where $\rho(n)\ge0$ and
+$\mathcal L(n)$ vanishes whenever the analytic order exceeds one
+\cite[pp.~723--724, Theorem~1.4]{TYZ}.
+Consequently $\Sigma_{5a}(n)=1$ implies
+$\mathcal L(n)\ne0$, hence analytic order at most one.
+The root number is $-1$ for $n\equiv5\pmod8$, so the
+analytic order is exactly one.  Gross--Zagier supplies a
+nontorsion rational point (the curve is modular, indeed CM),
+so $\rank E_n(\QQ)\ge1$.
+
+All three nonidentity points of $E_n[2]$ are rational.  Thus
+\[
+ \dim_{\FF}E_n(\QQ)/2E_n(\QQ)
+        =\rank E_n(\QQ)+2\le\dim_{\FF}\Sel(E_n)=3.
+\]
+The rank is therefore exactly one, and the injection in the
+Kummer sequence
+\[
+ 0\longrightarrow E_n(\QQ)/2E_n(\QQ)
+ \overset{\partial_n}{\longrightarrow}\Sel(E_n)
+ \longrightarrow \Sha(E_n/\QQ)[2]\longrightarrow0
+\]
+is surjective.  Hence $\Sha[2]=0$.  Any nonzero element of
+$\Sha[2^\infty]$ has a nonzero element of order two, so the
+entire $2$-primary torsion subgroup vanishes.
+Finally, let a Selmer class be $\partial_n(P)$.
+If $P$ is torsion, replace it by $P+2Q$, where $Q$ has
+infinite order; the Kummer class does not change and the
+new point has infinite order.  This proves the last assertion.
+\end{proof}
+
+\section{The exact $2$-Selmer linear system}\label{sec:selmer}
+
+All vector spaces and matrix operations in this section are over
+$\FF$.  Write $n=p_1\cdots p_r$, with $n\equiv5\pmod8$,
+and set
+\[
+ y_i=\sgnbit{-1}{p_i},\quad z_i=\sgnbit{2}{p_i},\quad
+ a_{ij}=\sgnbit{p_j}{p_i}\quad(i\ne j),\quad
+ a_{ii}=\sum_{j\ne i}a_{ij}.
+\]
+The bracket is the additive Legendre symbol: it equals zero for a
+square and one for a nonsquare.  Quadratic reciprocity gives
+\begin{equation}\label{eq:reciprocity}
+ a_{ij}+a_{ji}=y_i y_j\quad(i\ne j),\qquad
+ y\cdot\one=0,\quad z\cdot\one=1.
+\end{equation}
+Let $A=(a_{ij})$ and $D_y=\diag(y)$, $D_z=\diag(z)$.
+The row sums of $A$ vanish, and summing the $j$th column
+using reciprocity gives
+\begin{equation}\label{eq:Arels}
+ A\one=0,\qquad A^\top\one=y,\qquad
+ A+A^\top=yy^\top+D_y.
+\end{equation}
+
+\begin{lemma}[Monsky--R\'edei system]\label{lem:selmer}
+Every element of $\Sel(E_n)$ has a unique representation
+\[
+ \left((-1)^\varepsilon\prod_i p_i^{u_i},\ 
+       (-1)^\varepsilon 2^{z\cdot u}\prod_i p_i^{w_i}\right)
+\]
+where $(\varepsilon,u,w)\in\FF\times\FF^r\times\FF^r$ satisfies
+\begin{align}
+ Au+D_y w&=\varepsilon y,                                      &&\tag{S1}\label{eq:S1}\\
+ (A+D_y)w+D_z u+(z\cdot u)z&=\varepsilon y,                    &&\tag{S2}\label{eq:S2}\\
+ y\cdot w&=y\cdot u.                                             &&\tag{S3}\label{eq:S3}
+\end{align}
+Set
+\begin{equation}\label{eq:M}
+ M=\begin{pmatrix}A+A^\top&A^\top\\ A&D_z\end{pmatrix},\qquad
+ b=\binom{y+z}{0},\qquad
+ M_{5a}=\begin{pmatrix}M&b\\b^\top&0\end{pmatrix}.
+\end{equation}
+Then
+\begin{equation}\label{eq:Selrank}
+                \dim_{\FF}\Sel(E_n)=2+\corank_{\FF}M.
+\end{equation}
+\end{lemma}
+\begin{proof}
+At $\infty$ the two Kummer coordinates have the same sign.
+For odd $p\nmid n$ they are unramified.  For $p\mid n$,
+the two local classes $\partial_n(0,0)$ and
+$\partial_n(n,0)$ have valuations $(0,1)$ and $(1,0)$;
+the unit-square comparisons give precisely the rows of
+\eqref{eq:S1} and \eqref{eq:S2}.  At $p=2$, since
+$n\equiv5\pmod8$, the curve is locally a quadratic-scaling
+of $E_5$.  The classes of $(0,0)$, $(5,0)$ and $(-4,6)$ on
+$E_5$ give $(\!-1,-5)$, $(5,2)$ and $(\!-1,-9)$;
+they independently generate the local Kummer image of order
+$8$.  If $a=2^{v_2(a)}a'$ with $a'$ a $2$-adic unit,
+let $s(a)=[a'\equiv3\pmod4]$ and
+$t(a)=[a'\equiv\pm3\pmod8]$.  The local image has
+$v_2(d_1)=0$, $v_2(d_2)=t(d_1)$, $s(d_2)=s(d_1)$.
+This yields the exponent $z\cdot u$, and \eqref{eq:S3}.
+The uniqueness is uniqueness of the square-class exponents
+supported on $-1,2,p_1,\ldots,p_r$.
+
+For the dimension identity, restrict the solution space to
+$\varepsilon=0$, $z\cdot u=1$.  The affine map
+\[
+ \Xi(u,w)=\bigl(u+w+(1+y\cdot u)\one,\quad u+\one\bigr)
+\]
+is a bijection onto $\ker M$.  To check one direction,
+put $c=1+y\cdot u$, $U=u+w+c\one$, $W=u+\one$.
+By \eqref{eq:S1}--\eqref{eq:S2} and \eqref{eq:Arels},
+\[
+ AU+D_zW
+ =Au+Aw+D_zu+z
+ =D_yw+(D_yw+D_zu+z)+D_zu+z=0.
+\]
+Moreover $A^\top w=A w+y(y\cdot w)+D_yw$; thus
+\[
+ (A+A^\top)U+A^\top W
+          =y(y\cdot w+c+1)=y\bigl(y\cdot(u+w)\bigr)=0.
+\]
+Conversely, the two block equations for $(U,W)\in\ker M$
+give $y\cdot U=0$ and $z\cdot W=0$, and the inverse is
+\[
+ u=W+\one,\qquad w=U+u+(1+y\cdot W)\one.
+\]
+The chosen affine slice has index four in the complete
+solution space: the rational $2$-torsion classes
+$(\varepsilon,u,w)=(1,0,\one)$ and $(0,\one,0)$ toggle
+$\varepsilon$ and $z\cdot u$, respectively.  Consequently
+the solution space has $4|\ker M|$ elements, proving
+\eqref{eq:Selrank}.
+\end{proof}
+
+\begin{lemma}[Bordered determinant]\label{lem:border}
+Suppose $\beta\mid n$, $\beta\equiv1\pmod8$, and
+$d\mid n$, $d\equiv5\pmod8$.  Let $u=\one_B$ be the
+indicator of the prime factors of $\beta$ and $w$ the
+indicator of those of $d$.  If $(\beta,d)\in\Sel(E_n)$,
+then
+\[
+       k=\binom{u+w}{u}\in\ker M,\qquad b^\top k=1.
+\]
+If $\corank M=1$, then $\det M_{5a}=1$.
+\end{lemma}
+\begin{proof}
+Here $y\cdot u=z\cdot u=0$, $z\cdot w=1$, and
+$y\cdot w=y\cdot u=0$.  The class corresponds to
+$(0,u,w)$ in \eqref{eq:S1}--\eqref{eq:S3}.  Adding the
+$2$-torsion class $(0,\one,0)$ and applying the bijection
+in Lemma~\ref{lem:selmer} gives the asserted kernel vector.
+Also
+\[
+ b^\top k=(y+z)\cdot(u+w)=z\cdot w=1.
+\]
+If $\ker M=\langle k\rangle$, a vector $(v,t)$ in the kernel
+of $M_{5a}$ satisfies $Mv+tb=0$, $b^\top v=0$.
+Pair the first equation with $k$ to get $t=0$;
+then $v\in\langle k\rangle$ and $b^\top v=0$ force $v=0$.
+Hence $M_{5a}$ is nonsingular.
+\end{proof}
+
+\section{Why the first genus sum is the bordered determinant}\label{sec:det}
+
+For a subset $T$ of prime indices, let $A_T$ be the
+R\'edei matrix computed with only the indices in $T$:
+its off-diagonal entries are inherited from $A$ and
+its diagonal entries are recomputed as its row sums.
+Set
+\[
+ G(T)=\det\bigl(A_T\text{ with one column replaced by }z_T\bigr)
+       \in\FF.
+\]
+It is independent of the replaced column because $A_T\one=0$.
+The R\'edei genus criterion identifies $G(T)=g(n_T)$
+whenever $n_T\equiv1\pmod4$.  In particular this applies
+to type-1 and type-5 blocks.  We record the determinant
+identity used in both \cite{Smith} and \cite[\S6.2]{Jaswal},
+including its combinatorial derivation.
+
+\begin{proposition}[Row 5a, in explicit matrix form]\label{prop:smith}
+For any collection of prime indices of total type 5
+(i.e. $\sum y_i=0$, $\sum z_i=1$), one has
+\begin{equation}\label{eq:smith}
+                         \det M_{5a}=\Sigma_{5a}(n).
+\end{equation}
+More generally, for a configuration $T$ of total type 1,
+\[
+ \det M(T)=\mathcal P_1(T),\qquad
+ \mathcal P_1(T):=
+ \sum_{\substack{\pi\text{ partition of }T\\
+                  \text{all blocks of type 1}}}\prod_{U\in\pi}G(U),
+ \quad \mathcal P_1(\varnothing)=1.
+\]
+\end{proposition}
+\begin{proof}
+We reproduce the determinant recursion, to identify exactly
+which part of the literature is needed.  For a symmetric
+matrix in characteristic two, terms in the permutation
+expansion cancel in inverse pairs unless the permutation
+is an involution.  Hence its determinant is the weighted
+sum of matchings (fixed vertices carry diagonal weights,
+paired vertices carry the off-diagonal weight).
+
+Apply this to $M$.  Choose $P$ as the set of indices whose
+$U$-vertices are paired with another $U$-vertex and $R$ as
+those whose $W$-vertices are fixed.  The $U$--$W$ pairs
+form a bijection $I\setminus R\to I\setminus P$, weighted
+by the corresponding minor of $A$.  By the all-minors
+matrix-tree theorem \cite{Chaiken}, that minor is a sum over
+rooted spanning forests; each tree carries a chosen root,
+a weight $z$ at the root, and marked vertices of weight $y$.
+When summed over its marks, an ordinary tree contributes
+$Y_T=\sum_{i\in T}y_i$; the tree containing the distinguished
+vertex $U_c$ in the principal minor contributes $1$;
+and the special tree meeting the added border vertex
+contributes $Y_T+Z_T$ (here $Z_T=\sum_{i\in T}z_i$).
+The parity of the number of trees gives the three resulting
+recursions (all sums in $\FF$):
+\begin{align}
+ \det M(I)&=\sum_{\substack{\pi\text{ partition of }I\\
+                         \text{all blocks type 3}}}\prod_{T\in\pi}G(T)
+                &&\text{if }Y_I=0;                                      \label{eq:rec1}\\
+ \det M(I)^{(U_c)}
+   &=\sum_{\substack{c\in T\subseteq I\\T\text{ type 1}}}
+          G(T)\det M(I\setminus T)
+                &&\text{if }I\text{ is type 1};                         \label{eq:rec2}\\
+ \det M_{5a}(I)
+   &=\sum_{\substack{T\subseteq I\\T\text{ type 5}}}
+          G(T)\det M(I\setminus T)
+                &&\text{if }I\text{ is type 5}.                         \label{eq:rec3}
+\end{align}
+In \eqref{eq:rec1} the type-3 blocks carry $Y_T=Z_T=1$;
+for $Y_I=1$ the determinant is zero.  For completeness,
+the all-minors formula itself follows by expanding every
+diagonal entry $a_{ii}=\sum_{j\ne i}a_{ij}$: a directed
+cycle is canceled by toggling that cycle in the determinant
+permutation, and an acyclic map contributes exactly when
+each rooted tree contains a unique marked vertex.
+This is the characteristic-two form of Chaiken's identity.
+
+For type-1 $I$, $\corank M(I)$ is even.  Indeed, with
+$N=M(I)$, its diagonal vector is $\delta=(0,z)$,
+and $N(\one,\one)^\top=\delta$; furthermore
+$(\one,\one)N(\one,\one)^\top=Z_I=0$.
+The associated symmetric bilinear form is alternating
+on the orthogonal hyperplane of $(\one,\one)$, implying
+even nullity.  Thus, if $N$ is singular, its adjugate
+vanishes.  If $N$ is invertible, its diagonal satisfies
+\(\diag(N^{-1})=N^{-1}\delta=(\one,\one)^\top\),
+so $\det N^{(U_c)}=\det N$ in either case.
+Equation~\eqref{eq:rec2} now provides the recursion for
+$\mathcal P_1(I)$, by sorting set partitions according to
+the type-1 block containing $c$.  Induction on $|I|$
+yields $\det M(I)=\mathcal P_1(I)$, with the empty
+configuration as base case.
+
+For total type 5, the complement of a type-5 subset
+has type 1.  Substitute the first identity into
+\eqref{eq:rec3}; the right side enumerates precisely
+partitions with one type-5 block and all other blocks
+type 1.  R\'edei's genus criterion identifies their
+weights with \eqref{eq:genus}.  This proves
+\eqref{eq:smith}.
+\end{proof}
+
+\section{The five-index core and prime compression}\label{sec:core}
+
+A configuration can be specified abstractly using the
+vectors $y,z$ and off-diagonal additive symbols $a_{ij}$,
+subject only to \eqref{eq:reciprocity}.  The rank and
+determinant identities of the preceding sections are
+polynomial identities in these bits and therefore can be
+established before any primes are selected.
+
+\begin{lemma}[Five-index core]\label{lem:five}
+Let the indices be $\{\widehat\beta,r_1,r_2,r_3,r_4\}$,
+with $(y,z)=(0,0)$ on $\widehat\beta$, $(1,1)$ on
+$r_1,r_2,r_3$, and $(1,0)$ on $r_4$.  Require
+\[
+ a_{r_i r_j}=0\ (i<j),\qquad
+ (a_{\widehat\beta,r_1},\dots,a_{\widehat\beta,r_4})
+              =(0,0,1,1)
+\]
+and use reciprocity for reversed entries.  Then the
+complete solutions of \eqref{eq:S1}--\eqref{eq:S3} are
+\begin{equation}\label{eq:base_solution}
+ u=(u_0,a,a,a,a),\qquad
+ w=(\varepsilon,\varepsilon,\varepsilon,
+       \varepsilon+u_0+a,\varepsilon+u_0+a),
+     \quad (\varepsilon,u_0,a)\in\FF^3.
+\end{equation}
+Consequently $\corank M=1$ and the principal minor of $M$
+obtained by deleting coordinate $U_{r_3}$ has determinant one.
+\end{lemma}
+\begin{proof}
+The R\'edei matrix has rows, in the displayed order,
+\[
+ \begin{pmatrix}
+ 0&0&0&1&1\\0&0&0&0&0\\0&1&1&0&0\\
+ 1&1&1&1&0\\1&1&1&1&0
+ \end{pmatrix}.
+\]
+Substitution into (S1) yields
+\(u_3=u_4\), \(w_1=\varepsilon\),
+\(w_2=\varepsilon+u_1+u_2\), and
+\(w_3=w_4=\varepsilon+u_0+u_1+u_2+u_3\).
+The remaining equations (S2) give
+$u_1=u_2=u_3$, $w_0=\varepsilon$; (S3) is automatic.
+This is exactly \eqref{eq:base_solution}.
+By Lemma~\ref{lem:selmer}, $\corank M=1$.
+The class with $u=e_{\widehat\beta}$ and
+$w=e_{r_3}+e_{r_4}$ gives the kernel vector
+$(e_{\widehat\beta}+e_{r_3}+e_{r_4},
+  e_{\widehat\beta})$, whose $U_{r_3}$ coordinate is
+one.  A symmetric matrix of corank one has a nonsingular
+principal minor upon deleting any coordinate at which
+a kernel generator is nonzero: if a vector in the kernel
+of the minor is extended by zero, orthogonality to the
+kernel generator forces the omitted row to vanish as well.
+This proves the claim.
+\end{proof}
+
+\begin{lemma}[Prime-compression determinant]\label{lem:compress}
+Let $B$ be a nonempty set of indices of total type 1,
+$|B|=k$.  Add $k-1$ type-1 indices
+$\Pi=\{\pi_1,\ldots,\pi_{k-1}\}$ with
+\[
+ a_{b\pi_i}=a_{\pi_i b}=C_{bi},\qquad
+  C_{bi}=[b\in\{b_1,b_{i+1}\}],
+\]
+where $B=\{b_1,\ldots,b_k\}$, and set all other symbols
+incident to $\Pi$ equal to zero.  Let $R$ be another
+disjoint index set and put
+\[
+                  \varsigma_x=\sum_{b\in B}a_{xb}
+                                =\sum_{b\in B}a_{bx}
+                    \qquad(x\in R),
+\]
+where the equality follows from $Y_B=0$.
+Replace $B$ by one formal type-1 index $\widehat\beta$
+whose symbols to $x\in R$ are $\varsigma_x$ in either
+direction.  Write $I=B\sqcup\Pi\sqcup R$,
+$I'=\{\widehat\beta\}\sqcup R$.
+Then for any coordinate $c$ associated to an index in $R$,
+\[
+                   \det M(I)^{(c)}=\det M(I')^{(c)}.
+\]
+\end{lemma}
+\begin{proof}
+The columns of $C$ form a basis of the even-weight
+hyperplane of $\FF^B$, with orthogonal complement
+$\langle\one_B\rangle$.  In each of the two copies of
+$\FF^B$ (the $U$- and $W$-coordinates), choose a basis
+beginning with $\one_B$ and completing it by a
+complement $H$.  In these coordinates, the $\Pi$ variables
+pair nondegenerately with the $H$ variables, since the
+pairing matrix is the restriction of $C^\top$ to $H$.
+The Gram matrix has block form
+\[
+ \begin{pmatrix}
+ G_{11}&G_{12}&0\\G_{21}&G_{22}&Y\\0&Y^\top&0
+ \end{pmatrix}
+\]
+with $Y$ invertible.  Elementary row and column
+elimination gives determinant $(\det Y)^2\det G_{11}$,
+and the same equality after deleting a coordinate in $R$.
+Over $\FF$ the scalar $(\det Y)^2$ equals one.
+The two retained $B$-vectors are the sums $U_B,W_B$.
+Their self-pairings vanish because $Y_B=Z_B=0$,
+and their pairings with each $x\in R$ give precisely
+$\varsigma_x$ in the $U$--$W$ cross block; the diagonal
+of the R\'edei matrix on $R$ receives $\varsigma_x$
+from $B$.  Thus $G_{11}$ is exactly $M(I')$,
+and its minor agrees as claimed.
+\end{proof}
+
+\section{Independent Legendre-symbol freedom}\label{sec:free}
+
+The following key observation makes a single twist work
+for arbitrarily many pairwise-disjoint auxiliary supports.
+
+\begin{lemma}[One free-support determinant]\label{lem:free}
+Let $I_0$ be a configuration of type 5, choose
+$q_0\in I_0$, and let $J$ be a disjoint new index set
+of total type 1.  Suppose
+\[
+ \sum_{j\in J}a_{xj}=\sum_{j\in J}a_{jx}=0
+           \quad\text{for every }x\in I_0\setminus\{q_0\}.
+\]
+The bits $t_j=a_{j q_0}$ may vary independently,
+all other data and reciprocity being fixed.
+If $c$ is a coordinate belonging to $I_0\setminus\{q_0\}$
+and $\det M(I_0)^{(c)}=1$, then for at least one
+$t\in\FF^J$ one has
+\[
+                   \det M(I_0\sqcup J)^{(c)}=1.
+\]
+\end{lemma}
+\begin{proof}
+Varying $t_j$ changes $a_{q_0j}$ and $a_{jq_0}$
+together by one; since the diagonal entries of $A$ are
+row sums, it changes $A$ by $b_jb_j^\top$ where
+$b_j=e_{q_0}+e_j$.  Change the basis in both the $U$
+and $W$ copies by replacing $e_{q_0}$ with
+$f=e_{q_0}+\sum_{j\in J}e_j$ and leaving all other
+basis vectors fixed.  In the new coordinates the
+variable $t_j$ occurs only in the symmetric positions
+$(U_j,W_j)$ and $(W_j,U_j)$.
+
+The principal submatrix on the old $I_0$ coordinates
+is precisely $M(I_0)$.  Indeed, all couplings of $f$
+with an old coordinate $x\ne q_0$ are unchanged because
+the sums of the incident symbols vanish; the diagonal
+involving $f$ is unchanged because $Y_J=Z_J=0$ and
+$\sum_{j\in J}y_j=0$; the other old entries are unaffected.
+The change of basis fixes the coordinate $c$.
+
+Expand the determinant with the $c$th row and column
+deleted.  It is a function $F(t)$ on $\FF^J$ and so has a
+unique multilinear polynomial representation.
+Its coefficient of the top monomial
+$\prod_{j\in J}t_j$ is $\det M(I_0)^{(c)}$: a term
+containing all the $t_j$ must match each $U_j$ with its
+corresponding $W_j$, after which the residual determinant
+is exactly the old principal minor.  This coefficient
+is one, hence $F$ is not the zero multilinear polynomial.
+A multilinear polynomial over $\FF$ is identically zero
+as a function on $\FF^J$ if and only if all its
+coefficients vanish (successive evaluation at 0 and 1
+proves this).  Thus $F(t)=1$ for some $t$.
+\end{proof}
+
+\begin{lemma}[Disjoint simultaneous support]\label{lem:disjoint}
+Fix $I_0$, $q_0$, $c$ as in Lemma~\ref{lem:free}.
+For each $1\le j\le s$ let $J_j$ be a separate new
+index set satisfying that lemma's conditions, with all
+$J_j$ pairwise disjoint.  Then the free bits
+$t_q$ for $q\in\bigcup_jJ_j$ can be selected once so that
+\[
+            \det M(I_0\sqcup J_j)^{(c)}=1
+                              \qquad(1\le j\le s).
+\]
+All bits for pairs between distinct $J_i,J_j$ may be
+fixed arbitrarily: they do not enter any displayed minor.
+\end{lemma}
+\begin{proof}
+For each $j$ the determinant in question depends only
+on the variables indexed by $J_j$, with a nonzero top
+coefficient.  By Lemma~\ref{lem:free} choose a satisfying
+value on each $J_j$.  Since the supports are disjoint,
+these choices do not conflict, and the remaining symbols
+are immaterial to the separate determinants.
+\end{proof}
+
+\section{Proof of the simultaneous-twist theorem}\label{sec:proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:sim}]
+Let $B=\{b_1,\dots,b_k\}$ be the set of prime factors
+of $\beta$ and $J_j=\{q:q\mid\theta_j\}$.
+The sets $J_j$ are disjoint and disjoint from $B$.
+Each $B$ and each $J_j$ has type 1, since its product
+is congruent to one modulo eight.
+For $1\le i\le k-1$ put
+\[
+ C_{b i}=[b\in\{b_1,b_{i+1}\}],\qquad
+ c_b=\sum_{i=1}^{k-1}C_{bi},\qquad
+ z_b=\sgnbit{2}{b}.
+\]
+If $k=1$ there will be no $\pi_i$; every formula below
+still makes sense with the empty sum.
+
+\emph{Step 1: prescribe the abstract prime symbols.}
+Introduce auxiliary indices $\pi_1,\ldots,\pi_{k-1}$
+of residue $1\pmod8$, and $r_1,r_2,r_3$ of residue
+$3\pmod8$ and $r_4$ of residue $7\pmod8$.
+Set all symbols between the $\pi$ indices to zero,
+and all symbols between $\pi$ and any $r_h$ or $q\in J_j$
+to zero.  Set
+\begin{align}
+  a_{b\pi_i}=a_{\pi_i b}&=C_{bi},\label{eq:pi_bits}\\
+  \bigl(a_{b r_1},a_{b r_2},a_{b r_3},a_{b r_4}\bigr)
+   &=\bigl(c_b+z_b,\ 0,\ [b=b_1],\ z_b+[b=b_1]\bigr),
+                                                   \label{eq:r_bits}\\
+  a_{r_i r_h}&=0\qquad(i<h).\label{eq:rr_bits}
+\end{align}
+All reverse symbols are determined by reciprocity.
+For $q\in J=\bigcup_j J_j$, prescribe
+\begin{align}
+ a_{q\pi_i}=a_{\pi_iq}&=0,\\
+ a_{q r_h}&=t_q+y_q\quad(h=1),\qquad
+                   a_{r_1q}=t_q,\label{eq:t_bits}\\
+ a_{r_hq}&=0\quad(h=2,3,4),
+          \qquad a_{q r_h}=y_q\quad(h=2,3,4).
+\end{align}
+Here the only free bits are $t_q\in\FF$.
+The symbols within $B$ and within each $J_j$ are the
+actual Legendre symbols of the given integers.
+
+The pairwise admissibility hypothesis makes
+\[
+ \sum_{q\in J_j}a_{bq}=
+ \sum_{q\in J_j}a_{qb}=0\quad(b\in B),
+ \qquad \sum_{q\in J_j}y_q=
+       \sum_{q\in J_j}z_q=0.
+\]
+The conditions of Lemma~\ref{lem:free} hold for
+$I_0=B\sqcup\Pi\sqcup\{r_1,r_2,r_3,r_4\}$,
+$q_0=r_1$, and each separate $J_j$: for $r_2,r_3,r_4$
+the required reverse sums equal $\sum_{q\in J_j}y_q=0$.
+We shall choose all the bits $t_q$ after checking
+invertibility for $I_0$.
+
+\emph{Step 2: the prescribed Selmer class exists on every support.}
+Set
+\[
+             u=\one_B,\qquad
+             w=e_{r_3}+e_{r_4},\qquad \varepsilon=0.
+\]
+These are the square-class coordinates for
+$(\beta,d)$ with $d=r_3r_4$.
+We check \eqref{eq:S1}--\eqref{eq:S3} on $I_0$
+and on each $I_0\sqcup J_j$.
+Because $Z_B=Y_B=0$, we have $z\cdot u=0$ and
+$y\cdot u=y\cdot w=0$.
+For (S1), the rows indexed by $b\in B$ give
+\[
+ (A\one_B)_b
+ =c_b+(c_b+z_b)+0+[b=b_1]+(z_b+[b=b_1])=0;
+\]
+the additional $J_j$ contribution is
+$[\theta_j/b]=0$.  Each row indexed by $\pi_i$
+has the even column sum $\sum_bC_{bi}=0$.
+By reciprocity and $Y_B=0$ the rows indexed by $r_h$
+give $(A\one_B)_{r_h}=0,0,1,1$, exactly
+$(D_yw)_{r_h}$.  Finally the $q\in J_j$ rows give
+$[\beta/q]=0$.
+For (S2), the row $b\in B$ has
+$(Aw)_b=[d/b]=[r_3/b]+[r_4/b]=z_b$,
+which is canceled by $(D_z u)_b=z_b$.
+Rows $q\in J_j$ and $\pi_i$ have $(Aw)_q=(Aw)_{\pi_i}=0$.
+For $r_3$ and $r_4$, use the row sums in the diagonal
+entry of $A$ and \eqref{eq:rr_bits}; one obtains
+$(Aw)_{r_3}=(Aw)_{r_4}=1$, which is canceled by
+$(D_yw)_{r_3}=(D_yw)_{r_4}=1$.
+The other $r_h$ rows give zero.  For the extended
+supports, the only relevant extra diagonal contributions
+are at $r_h$ for $h=3,4$, where
+$\sum_{q\in J_j}a_{r_hq}=0$ by construction (and
+$\sum_{q\in J_j}a_{q r_h}=Y_{J_j}=0$ by reciprocity).
+The diagonal at $r_1$ may depend on the free bits, but
+$w_{r_1}=0$, so it does not enter (S2).
+Finally (S3) is $1+1=0=Y_B$.  Thus
+\begin{equation}\label{eq:class_all}
+            (\beta,r_3r_4)\in\Sel(E_{I_0})
+               \cap\bigcap_{j=1}^s\Sel(E_{I_0\sqcup J_j})
+\end{equation}
+for \emph{every} choice of the free $t_q$.
+Here $E_I$ temporarily means the formal Selmer
+configuration with prime set $I$.
+
+\emph{Step 3: the base principal minor is invertible.}
+By Lemma~\ref{lem:compress}, the determinant of
+$M(I_0)^{(U_{r_3})}$ equals the same determinant on the
+five-index compressed configuration.  Indeed
+\[
+ \varsigma_{r_1}=\sum_b(c_b+z_b)=0,\quad
+ \varsigma_{r_2}=0,\quad
+ \varsigma_{r_3}=1,\quad
+ \varsigma_{r_4}=1;
+\]
+the first equality uses the even column sums of $C$
+and $Z_B=0$.  Thus the compressed data are precisely
+those of Lemma~\ref{lem:five}, and
+\begin{equation}\label{eq:baseminor}
+                      \det M(I_0)^{(U_{r_3})}=1.
+\end{equation}
+
+\emph{Step 4: select all free bits simultaneously.}
+Lemma~\ref{lem:disjoint} with $q_0=r_1$ and
+$c=U_{r_3}$ now gives one choice
+$t=(t_q)_{q\in J}$ for which
+\begin{equation}\label{eq:allminor}
+ \det M(I_0\sqcup J_j)^{(U_{r_3})}=1
+                         \quad(1\le j\le s).
+\end{equation}
+By \eqref{eq:class_all} and Lemma~\ref{lem:border},
+all matrices $M$ involved have the nonzero kernel vector
+\(\binom{\one_B+w}{\one_B}\), whose $U_{r_3}$ coordinate
+is one.  The nonzero principal minors
+\eqref{eq:baseminor}--\eqref{eq:allminor} therefore
+force $\corank M=1$ on all supports.  Hence
+\(\dim\Sel=3\) by Lemma~\ref{lem:selmer}; then
+Lemmas~\ref{lem:border} and Proposition~\ref{prop:smith}
+give $\Sigma_{5a}=1$ on every support.
+
+\emph{Step 5: realize the abstract configuration by primes.}
+Choose the primes in the order
+\[
+                  \pi_1,\ldots,\pi_{k-1},
+                  r_1,r_2,r_3,r_4.
+\]
+At the moment each prime $p$ is chosen, its residue
+modulo eight and its Legendre symbols modulo every
+previously selected prime and every prime of
+$\beta\theta_1\cdots\theta_s$ are specified by
+\eqref{eq:pi_bits}--\eqref{eq:t_bits}.
+These are independent congruence conditions on $p$:
+for each already fixed odd prime $q$, choose one of its
+nonzero residue classes having the desired quadratic
+character, and choose the required odd class mod eight.
+The Chinese remainder theorem gives a reduced residue
+class modulo the product, and Dirichlet's theorem provides
+arbitrarily large new primes in that class.  Reciprocity
+supplies the desired reverse symbols.
+Set
+\[
+          e=\beta\pi_1\cdots\pi_{k-1}r_1r_2r_3r_4,
+                  \qquad d=r_3r_4.
+\]
+The product is positive and squarefree, prime to all
+$\theta_j$, and
+\[
+ e\equiv 1\cdot1^{k-1}\cdot3^3\cdot7
+        \equiv5\pmod8,\qquad
+ d\equiv3\cdot7\equiv5\pmod8.
+\]
+Thus $e\theta_j\equiv5\pmod8$ and all the preceding
+finite-field calculations apply to the actual curves.
+The prime factor count is
+$\omega(e)=k+(k-1)+4=2k+3$.
+
+\emph{Step 6: pass from Selmer classes to rational points.}
+Apply Proposition~\ref{prop:tyz} to each of
+$e,e\theta_1,\ldots,e\theta_s$.
+This proves analytic and Mordell--Weil rank one,
+trivial $2$-primary $\Sha$, and surjectivity of the
+Kummer map.  Equation~\eqref{eq:class_all} is therefore
+represented on each curve by a point of infinite order.
+Because such a point is not one of the three nontrivial
+$2$-torsion points, its first Kummer coordinate is the
+square class of its abscissa, proving the prescribed
+$x$-square class.
+
+\emph{Step 7: quantitative infinitude.}
+Fix the auxiliary primes $\pi_1,\ldots,\pi_{k-1}$,
+$r_1,r_2,r_3$ selected above and their already fixed
+Legendre symbols.  At the final stage, all conditions on
+$r_4$ specify a reduced residue class
+$a\pmod M$, where $M$ is an odd prime product times
+eight; it is nonempty by the same CRT argument.
+Every sufficiently large prime $r\equiv a\pmod M$
+can replace $r_4$ with no change in any matrix bit.
+Let $C=\beta\pi_1\cdots\pi_{k-1}r_1r_2r_3$.
+Then every such $e=Cr$ has all the asserted properties.
+By the prime number theorem in arithmetic progressions,
+\[
+ \#\{r\le X/C:r\equiv a\pmod M\}
+       \sim\frac{\operatorname{Li}(X/C)}{\varphi(M)}
+       \asymp_{C,M}\frac{X}{\log X}.
+\]
+Removing finitely many forbidden primes changes only a
+bounded term.  This proves the claimed lower bound.
+\end{proof}
+
+\section{Exact checks and a concrete three-curve instance}\label{sec:checks}
+
+The preceding proof does not depend on numerics.  The checks
+below are useful for detecting transcription mistakes in the
+finite-field steps; they are evidence, not replacements for
+proof.
+
+\subsection{Finite-field checks}
+
+An independent script builds matrices $A,M,M_{5a}$ over
+$\FF$, computes the rank of the Selmer system
+(S1)--(S3), evaluates the first genus sum by enumerating
+set partitions and R\'edei determinants, and tests
+\[
+  \dim\operatorname{Sol}(S1\text{--}S3)=2+\corank M,
+           \qquad\det M_{5a}=\Sigma_{5a}.
+\]
+The five-index base configuration has Selmer dimension
+three, $\corank M=1$, determinant-one $U_{r_3}$ principal
+minor, and $\det M_{5a}=1$.
+The two displayed identities were also checked on
+independently randomized quadratic-reciprocity-compatible
+configurations of type 5: $100$ trials each for
+$1\le r\le4$, and $40$ trials each for $r=5,6$.
+No counterexample occurred.  The standalone source file \texttt{check\_row5a.py} accompanies this
+note and verifies all the claims displayed in this subsection.
+It additionally runs $420$ random type-1 matrix/partition checks.
+All arithmetic is exact modulo two; primality and Legendre symbols
+for the numerical example are verified with \texttt{sympy}.
+
+\subsection{A simultaneous instance with distinct auxiliary twists}
+
+Take
+\[
+        \beta=17,\qquad
+        \theta_1=89,\qquad\theta_2=137.
+\]
+All three are primes $\equiv1\pmod8$, and
+$(17/89)=(17/137)=+1$, so the pairs are admissible.
+Here $B$ has one element and there are no $\pi_i$.
+The choice of free bits $t_{89}=t_{137}=1$ is realized by
+\[
+       (r_1,r_2,r_3,r_4)=(43,443,107,4519),
+\]
+all prime, with respective residues $3,3,3,7\pmod8$.
+It gives
+\[
+ \boxed{\ e=17\cdot43\cdot443\cdot107\cdot4519
+          =156583941989,\qquad d=107\cdot4519=483533.\ }
+\]
+Exact F$_2$ arithmetic gives the following verifiable
+rank/determinant certificates:
+\begin{center}
+\begin{tabular}{@{}lccc@{}}
+\toprule
+$n$ & $\dim_{\FF}\Sel(E_n)$ & $\det M_{5a}(n)$
+                                  & $\Sigma_{5a}(n)$\\
+\midrule
+$e$      & $3$ & $1$ & $1$\\
+$89e$    & $3$ & $1$ & $1$\\
+$137e$   & $3$ & $1$ & $1$\\
+\bottomrule
+\end{tabular}
+\end{center}
+For each of these three curves the rank-one conclusion,
+triviality of $\Sha[2^\infty]$, and realization of
+$(17,483533)$ now follow from the proved analytic and
+Kummer implications.  The check has not computed the
+individual infinite-order points or their heights.
+
+\section{Validity assessment and implications for Diophantine complexity}\label{sec:audit}
+
+\textbf{Theorem 1.2 / Section 6.}  The argument has four
+nontrivial links: the exact local $2$-Selmer system;
+the bordered-determinant/first-genus-sum identity;
+the five-index compression and nonzero free-bit minor;
+and the published Tian--Yuan--Zhang criterion.
+The first three are checked by the proofs above and by
+independent exact finite-field tests; the fourth was
+compared with \cite[Theorem~1.4]{TYZ} in the published
+journal text.  No essential defect was found.  In
+particular the theorem does not need the unpublished
+Proposition~N of the row-5b route, an unpublished
+restricted $2$-converse, or a Birch--Swinnerton-Dyer
+conjecture.  It \emph{does} use the published deep
+Tian--Yuan--Zhang theorem and Gross--Zagier.
+
+\textbf{The rest of the paper.}  Sections~2--5 and~7--8
+are predominantly a reconstruction of earlier project
+methods: the rank-one curve over $\QQ(\sqrt2)$, a pole
+predicate, formal logarithm comparisons, six-contact
+heights, the eighteen-prime sieve/prime-pattern argument,
+and elliptic Lucas growth.  The switch to the simpler
+congruent-number pole equations (without multiplier lists),
+a different modularity proof via Serre's theorem rather than
+Pan's, the use of three slopes to make the finite coefficient
+set uniform in the input, and the scalar-condition guard are
+useful technical adaptations.  They are not identified here
+as new quantitative Diophantine theorems.  This audit of their statements, dependency
+structure, and key arithmetic interfaces found no
+specific counterexample or decisive contradiction;
+it is \emph{not} an independent line-by-line certification
+of every global geometric and analytic proof in those
+sections.  The proof of Theorem~\ref{thm:sim} needs none
+of those sections.
+
+\textbf{One nonfatal error in Section~7.}  The CM case of
+Proposition~7.3 (page~20 in the preprint) asserts that
+finitely many possible CM discriminants imply finitely many
+CM elliptic curves \emph{over $\QQ$}.  This is false:
+for example, the curves $y^2=x^3-m^2x$, as $m$ ranges
+over squarefree positive integers, give infinitely many
+$\QQ$-isomorphism classes with $j=1728$.  The intended
+height conclusion is repairable: a fixed CM discriminant
+permits only finitely many $\overline{\QQ}$-isomorphism
+classes (finitely many $j$-invariants), and the \emph{stable}
+Faltings height is invariant under geometric isomorphism.
+The degree-bounded isogeny step then proceeds from the
+height bound, not from finiteness of rational twists.
+This correction is not a counterexample to Theorem~1.3.
+
+\textbf{Depth limitation.}  The long argument in Section~7
+imports several difficult results on quaternionic Shimura
+curves, descent of compatible Galois representations, Serre
+modularity and Faltings heights.  Its dependency chain and
+central quantitative exponents were examined, but the present
+audit does not certify each of those imports or all their
+normalizations independently.  The same caveat applies to
+the fully uniform prime-pattern asymptotics in Section~8.
+Accordingly, the absence of a found fatal flaw in the
+full theorem is not a claim of complete external verification.
+
+\textbf{What this does and does not optimize.}  A common
+$e$ across several compatible pole systems creates a
+potential opportunity for sharing witness parameters.
+However the present theorem gives no elimination of a
+retained rational variable, no degree bound for a defining
+polynomial, and no bound on the heights of the rational
+points.  It would be incorrect to announce an improved
+Diophantine variable count from this theorem alone.
+A future application must explicitly construct the
+new existential formula, check its zero set in both
+directions, and count all retained coordinates.
+
+\textbf{Outstanding extension.}  When the $\theta_j$
+share prime factors, their free-bit subsets overlap.
+The individual determinant polynomials may have disjoint
+sets of satisfying assignments, so nonvanishing of their
+top coefficients does not on its own show that all can
+be made nonzero simultaneously.  The theorem above
+therefore makes no claim in this regime.  Removing this
+condition would require a new compatibility argument or
+new auxiliary-prime slots.
+
+\begin{thebibliography}{99}
+\bibitem{Jaswal}
+M.~Jaswal, \emph{A proof that $\ZZ$ is Diophantine in $\QQ$
+through congruent-number twists}, hexagon:2611.00331v2,
+12 November 2026,
+\url{https://hexagonmath.org/pdf/2611.00331v2}.
+\bibitem{TYZ}
+Y.~Tian, X.~Yuan and S.-W.~Zhang,
+\emph{Genus periods, genus points and congruent number problem},
+Asian Journal of Mathematics \textbf{21} (2017), no.~4,
+721--774, especially Theorem~1.4 and Theorem~3.5,
+\url{https://archive.ymsc.tsinghua.edu.cn/pacm_download/355/9144-cn.pdf},
+DOI: \href{https://doi.org/10.4310/AJM.2017.v21.n4.a5}{10.4310/AJM.2017.v21.n4.a5}.
+\bibitem{Smith}
+A.~Smith, \emph{The congruent numbers have positive natural density},
+preprint arXiv:1603.08479, Theorem~2.2 and Table~2
+(row 5a); the determinant argument used here is also
+reproduced in \cite[\S6.2]{Jaswal}.
+\bibitem{Chaiken}
+S.~Chaiken, \emph{A combinatorial proof of the all minors
+matrix tree theorem}, SIAM Journal on Algebraic and
+Discrete Methods \textbf{3} (1982), 319--329.
+\bibitem{Redei}
+L.~R\'edei, \emph{Arithmetischer Beweis des Satzes \"uber die
+Anzahl der durch vier teilbaren Invarianten der absoluten Klassengruppe
+im quadratischen Zahlk\"orper}, Journal f\"ur die reine und
+angewandte Mathematik \textbf{171} (1934), 55--60,
+\url{https://doi.org/10.1515/crll.1934.171.55}; for the precise
+matrix form see \cite[Proposition~6.7]{Jaswal}.
+\bibitem{GZ}
+B.~Gross and D.~Zagier, \emph{Heegner points and derivatives
+of $L$-series}, Inventiones Mathematicae \textbf{84}
+(1986), 225--320.
+\bibitem{Glazer}
+E.~Glazer and collaborators,
+\emph{Diophantine definability of $\ZZ$ in $\QQ$},
+project manuscript and verified research notes,
+\url{https://github.com/elliotglazer/diophantine-z-q},
+particularly \texttt{docs/research/tyz-5b.md} and
+\texttt{blueprint/roadmap/rank/literature/genus-sum-5a.md}.
+\bibitem{Brox}
+J.~Brox, \emph{Diophantine $\ZZ$ in $\QQ$: improvements
+and quantitative constructions}, project repository,
+\url{https://github.com/JoseBrox/diophantine-z-q_improvements}.
+\bibitem{Dirichlet}
+Dirichlet's theorem and the prime number theorem for
+arithmetic progressions, used in their standard forms.
+\end{thebibliography}
+\end{document}
