@@ -1,3 +1,5 @@
+> **Retained source guide.** This page describes the dated constructions on the previous main branch. For the current counts, corrected proofs, exact specifications, and verification commands, see the repository [README](../README.md) and `data/results_20261114_v27.json`. Historical source equations and assumptions below are retained, not replaced silently.
+
 # Reproducing the mathematical data
 
 ## Requirements and full verification

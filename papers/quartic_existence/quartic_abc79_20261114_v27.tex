@@ -1,0 +1,526 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,booktabs,microtype}
+\usepackage[margin=27mm]{geometry}\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}[section]\newtheorem{lemma}[theorem]{Lemma}\newtheorem{proposition}[theorem]{Proposition}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}\DeclareMathOperator{\Tr}{Tr}\DeclareMathOperator{\Nm}{Nm}\DeclareMathOperator{\rad}{rad}
+\setlength{\emergencystretch}{2em}
+\title{A 79-variable quartic under rational $abc$}
+\author{}\date{14 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+Under rational $abc$, the specified elliptic-group and prime-selection
+premises, and the simultaneous-twist theorem of Jaswal, we construct a
+quartic family in 79 total rational variables defining the integers for
+every sufficiently large fixed odd coefficient shift. It is a sum of 71
+primitive quadratic squares with 1139 ordinary monomials. A complete
+five-field reference chart removes two coordinates from the reciprocal
+81-variable construction; the new pole equations reduce their fixed
+coefficients without changing their count. This edition uses the
+corrected reference coefficient table, including its previously omitted
+$fS$ term. All exceptional strata, half-integral indices and pole
+realization conditions are included. The defining shift is ineffective.
+\end{abstract}
+
+\section{Statement and exact premises}
+All variable counts include the input. Heights of integer polynomials
+are maximum absolute coefficients after coefficient parameters have
+been substituted. Put
+\[
+ K=\Q(\rho),\quad\rho^2=2,\quad d=3-\rho,\quad D=d^2=11-6\rho,
+ \qquad E:y^2=x^3-Dx,
+\]
+\[
+ R_0=(1+\rho,2\rho),\qquad
+ P=2R_0=(a,b)=\left(\frac{57-28\rho}{8},\frac{-660+417\rho}{32}\right).
+\]
+The retained arithmetic premises have the following scope.
+
+\paragraph{Elliptic group.}
+We assume $2E(K)=\Z P$ and $P$ non-torsion. Hence every point has
+an index in $\frac12\Z$, as proved in \cite[Corollary 1.3]{TraceAll}.
+The reciprocal pair below is not restricted to $2E(K)$.
+
+\paragraph{Pole realization from simultaneous twists.}
+We use Jaswal's Theorem~1.2 in Hexagon version 2~\cite{Jaswal}: for
+coprime positive squarefree $\beta_0>1$, $\theta\ge1$, both
+$1\pmod8$ and each a square modulo every prime of the other, there
+is $r>0$ such that $y^2=x^3-r^2x$ and
+$y^2=x^3-r^2\theta^2x$ both have an infinite-order rational point
+with abscissa in $\beta_0\Q^{\times2}$. We do not use that paper's
+other height or prime-pattern assertions. The precise application,
+including the square input case $\beta_0=1$, is proved in \cite{Pole}.
+It supplies a witness for
+\[
+ e^2+b_0p^2=1,\qquad uv=e(1-b_0),\qquad u^2-v^2=b_0q^2
+\]
+with $upq\ne0$ whenever
+\begin{equation}\label{eq:prepared}
+ 0<b_0<1,\quad b_0\text{ has square reduced denominator},\quad
+ b_0\in\Q_2^{\times2},\quad v_2(b_0)\ge3.
+\end{equation}
+The same equations forbid a negative odd valuation at every odd prime,
+by the elementary proof in \cite{Pole}. Thus the older restricted-converse
+pole input is not required for this family. The stated simultaneous-twist
+input and the inherited prime and group premises remain explicit;
+this paper does not declare their complete external audit finished.
+
+\paragraph{Prime selection.}
+We retain the fixed-data simultaneous-prime statement of
+\cite{Dependencies,Selection}. It applies to any fixed finite list
+of distinct rational contact coefficients after a fixed square
+clearing of denominators. It allows prescribed divisibility of the
+square denominator, finite avoidance, an arbitrarily large fixed
+lower bound on the rational argument, and the Gaussian congruences
+and conjugate annihilating orders needed for the common index.
+In the source normalization these orders $U_*,V_*$ and preparation
+modulus $L_*$ have
+\[
+\gcd(U_*,V_*)=1,\quad\gcd(U_*,L_*)=16,\quad\gcd(V_*,L_*)=1,
+\]
+so $h\equiv0\pmod{U_*}$, $h\equiv1\pmod{V_*}$ and
+$h\equiv h_*\pmod{L_*}$ are compatible when $64\mid h_*$.
+The source also retains the prescribed compact real neighborhoods
+in that progression. All finite data and rational coefficients are
+fixed before prime selection. We check the new coefficient list and
+all subsequent uses in Section~\ref{sec:complete}.
+
+\paragraph{Additional hypothesis.}
+Ordinary rational $abc$ is assumed. The eight-contact estimate below
+is not asserted to follow from the separate weak-$abc$/Szpiro
+hypothesis of the thirteen-variable family. No modular contact-height
+premise is needed here.
+
+\begin{theorem}\label{thm:main}
+Under these premises there is a computable family
+$P_B\in\Z[X,Y_1,\ldots,Y_{78}]$, indexed by odd integers $B\ge3$,
+such that every member has degree four, content one, 1139 nonzero
+coordinate monomials, and exact height $\max(C_*,B^2+C_0)$, where
+\begin{align*}
+ C_*&=116167112798432587389449032604886634366655869137034483200,\\
+ C_0&=1747145497790223592810060466409331738555986526175317559.
+\end{align*}
+There is a fixed $B_*$ such that for every odd $B\ge B_*$,
+\[
+ x\in\Z\quad\Longleftrightarrow\quad
+ \exists\boldsymbol y\in\Q^{78}:P_B(x,\boldsymbol y)=0.
+\]
+The coefficient parameter $B$ is not a quantified variable. No numerical
+sufficient $B_*$ is given; the $B=3$ table is an algebraic fixture,
+not a certified defining member. A separate 81-variable presentation
+using the older reference chart and the same new poles has height
+$\max(4153456,B^2+630511)$ and the same input projection for every
+fixed $B$.
+\end{theorem}
+
+\section{The quadratic system}
+A field variable denotes two rational coordinates in the basis
+$1,\rho$. A bar denotes conjugation. The notation $S^2$ denotes
+an ordinary product, whereas the variables named $F_H,G_H,F_U,F_V$
+are stored field values. Every displayed equation has degree at most
+two in the retained rational coordinates.
+
+\subsection{The common reference point}
+Retain $f_H,S,T_H,F_H,G_H\in K$. Use the four exact field quadrics
+of \cite[Theorem~1.1 and corrected coefficient table]{Compressed},
+with substitutions $(f,S,B,w,T)=(f_H,S,F_H,G_H,T_H)$:
+\[
+ F_H=f_H^2,\qquad Q_1=0,\qquad M G_H+L=0,\qquad Q_3=0.
+\]
+Every coefficient is fixed by that table and the accompanying
+\nolinkurl{reference-equations.json}. In particular $L$ includes
+\[
+ \left(\frac{171357}{235298}+\frac{2519877}{7529536}\rho\right)f_HS.
+\]
+The complete proof gives $H,H-P$ finite with nonzero abscissas and
+\[
+ f_H=1/x(H),\quad S=y(H)/x(H),\quad T_H=y(H-P)/x(H-P),
+\]
+\[
+ F_H=1/x(H)^2,\qquad G_H=1/x(H-P)^2.
+\]
+It excludes the vanishing coefficient $M=0$ over $K$ by an exact
+quintic factorization and a nonsquare discriminant norm, not by a
+new inverse variable or a generic-open-set restriction. Conversely
+every allowed reference point supplies these five coordinates.
+Write $g_H=1/x(H-P)$ only for interpretation; it is not retained.
+No global nonvanishing of $S,T_H$ is assumed.
+
+\subsection{Two points and their difference}
+Retain $f,h,g,k,s\in K$, with stored squares $F_U,F_V$, and impose
+\begin{equation}\label{eq:pair}
+ F_U=f^2,\quad F_V=g^2,\quad h^2=f-DfF_U,\quad
+ s(f-g)=h+k,\quad s(h-k)=1-D(F_U+fg+F_V).
+\end{equation}
+The complete algebraic proof in \cite[Proposition 2.1]{TraceAll}
+identifies points $U,V\in E(K)$, including the identity, with
+$U\ne V$. Their finite difference $A=U-V$ has
+\[
+ c=x(A)=s^2+D(f+g),\qquad y(A)=Dh-s(Df+c).
+\]
+Neither $U,V$ nor $A$ is assumed to have square abscissa. The theorem
+includes the tangent case $f=g$, and excludes $(f,h)=(g,k)=(0,0)$.
+Define one retained rational coordinate
+\begin{equation}\label{eq:traceheightcoord}
+                           T=2\operatorname{Re}(s^2+D(f+g))=\Tr x(A).
+\end{equation}
+This is a quadratic equation. The index $n$ of $A$ belongs to
+$\frac12\Z$, and may be zero.
+
+\subsection{Ratios, comparisons and the additive scale}
+Retain $L,L_0\in K$ with
+\begin{align}
+ hL+fS&=0,& (1-DF_U)L+hS&=0,\\
+ kL_0+gT_H&=0,& (1-DF_V)L_0+kT_H&=0.\label{eq:ratios}
+\end{align}
+At formal nonidentity points these are the usual ratios, and at an
+identity numerator they force the ratio to be zero. No division by
+$h$ or $k$ is made on torsion components.
+
+Retain the input $X\in\Q$, a comparison coordinate $I_0\in\Q$ and a
+slope $\lambda\in\Q$. Write $L=L_r+\rho L_i$ and impose
+\[
+ I_0-L_r+X^2+B=0,
+ \qquad \beta=L_r-I_0=X^2+B,
+ \qquad I=I_0+\rho L_i,
+ \qquad C=L-\overline{L_0}.
+\]
+Retain $C_2,I_2\in K$ in addition to the already stored $F_H,G_H$, and two scalar height coordinates
+$u_h,v_h$, with
+\[
+ C_2=C^2,\quad I_2=I^2,
+ \qquad u_h=\beta^2+T^2,\quad v_h=\beta T.
+\]
+The scale $a_1=\beta^4+T^4=u_h^2-2v_h^2$ is not retained as a
+coordinate. Use arguments
+\begin{equation}\label{eq:arguments}
+            t_0=\lambda,\qquad t_1-\lambda=u_h^2-2v_h^2.
+\end{equation}
+Only $t_1$ is a further coordinate. Notice that $a_1\ge B^4\ge81$.
+
+\subsection{Contact and pole equations}
+For each argument $t=t_j$ retain scalars $R,Z,w,w_2,w_3$, field
+values $A_1,A_2,\Omega=\omega_0+\rho\omega_1$, and scalars
+$\eta,b_0,e,u,p,v,q,p_2,q_2$. Impose
+\begin{align}
+ R&=t^2-2t,\qquad RZ+Z-R^2+35R=0,\qquad (R+1)w=Z^2+24Z,\\
+ w_2&=w^2,\qquad w_3=ww_2,\\
+ w_3A_1&=w_2^2+w_3C_2+w_2F_H+F_U^2,\\
+ w_3A_2&=w_2^2+w_3I_2+w_2\overline{G_H}+\overline{F_V}^{\,2},\\
+ (R+1)\Omega&=A_1A_2,\\
+ \omega_0^2-2\omega_0\eta-2\omega_1^2&=0,\qquad w_3b_0=\eta^2,\\
+ p_2&=p^2,\qquad e^2+b_0p_2=1,\\
+ uv&=e(1-b_0),\qquad q_2=q^2,\\
+ u^2-v^2&=b_0q_2.\label{eq:blocks}
+\end{align}
+In each factor equation a scalar is interpreted as a field element.
+The two blocks have separate pole coordinates. The last five equations
+are the quadratic presentation of \cite{Pole}; all zero auxiliary
+branches are included in its local obstruction proof. Realization of
+their actual prepared inputs is established below, not by identifying
+their full zero set with that of the earlier pole equations.
+
+\section{Domains and local extraction}
+Put $r=R+1$, $z=Z+37$. The contact equations give
+\[
+ r=(t-1)^2,\quad r(z-r)=36,\quad rw=z^2-50z+481.
+\]
+Thus $r\ne0$. With
+\[
+ P_4(r)=(r-1)(r-4)(r-9)(r-36),\qquad
+ \Theta=\{-5,-2,-1,0,2,3,4,7\},
+\]
+one has $P_4(r)/r^2=z^2-50z+481$ and
+$F(t):=\prod_{\theta\in\Theta}(t-\theta)=wr^3$.
+If $w=0$, the factor equations give $F_U^2=\overline{F_V}^{\,2}=0$,
+hence $f=g=0$; the cubic gives $h=0$, the secant gives $k=0$, and
+the last equation of \eqref{eq:pair} gives $0=1$. Therefore
+$r w F(t)\ne0$ at every rational solution, and $t\notin\Theta$.
+
+For interpretation only, define
+\[
+ q_* =w^{-1}=\frac{(t-1)^6}{F(t)},\quad
+ R_* =\frac{F(t)}{(t-1)^{10}},\quad
+ T_i=A_i/w,\quad W=T_1T_2=\frac r{w^2}\Omega,
+ \quad\tau=\frac r{w^2}\eta.
+\]
+Then
+\begin{align*}
+T_1&=1+q_*C^2+q_*^2 f_H^2+q_*^4f^4,\\
+T_2&=1+q_*I^2+q_*^2\overline{g_H}^{\,2}+q_*^4\overline g^{\,4},
+\qquad b_0=R_*\tau^2.
+\end{align*}
+The cleared trace equation is preserved under this common rescaling.
+None of $W,\eta,b_0$ is assumed globally nonzero at this stage.
+
+For $t\notin\Theta$, let $M(t)$ be the product of primes $p>76176$
+with positive odd valuation at one of $t-\theta$. At such a prime,
+all contact differences and $t-1$ are units. Write
+$\nu=v_p(F(t))>0$, odd; then $v_p(q_*)=-\nu$.
+Every nonzero reciprocal abscissa has even valuation at these good
+places. This follows directly from $h^2=f-Df^3$ if $v(f)\ne0$;
+valuation zero is even too. The same statement holds for the common
+reference point. A zero reciprocal contributes no nonconstant term.
+
+The finite nonconstant valuations in each factor are respectively
+odd, $2$ modulo $4$, and $4$ modulo $8$, and differ from the
+constant term of valuation zero. Thus both factors are nonzero and
+have valuation at most zero at every place above $p$. Let
+$\ell=\max_{\mathfrak p\mid p}v_{\mathfrak p}(W)\le0$.
+The trace equation forces the rational component of $W$ and $\tau$
+to be nonzero, and
+\[
+ \tau=\Tr(W^{-1})^{-1},\qquad
+ v_p(b_0)=\nu-2v_p\Tr(W^{-1})\le\nu+2\ell.
+\]
+This valuation is odd. The pole obstruction forces it positive, so
+$\ell>-\nu/2$. At a place attaining $\ell$, each nonconstant
+summand valuation exceeds $-\nu/2$. Consequently
+\[
+ v(C),v(I)>\nu/4,\quad
+ v(f_H),v(\overline{g_H})>3\nu/4,\quad
+ v(f),v(\overline g)>7\nu/8.
+\]
+The reciprocal valuations are positive even integers, and $C,I$
+have order at least one. In particular the four indicated points are
+in the appropriate primary or conjugate formal groups, with the
+identity convention at zero reciprocals.
+
+Write the indices of $H,U,V,A$ as $h_*,u_*,u_*-n,n$ in
+$\frac12\Z$. At a consumed prime, $H,H-P$ are nonidentity formal
+points and therefore non-torsion. Multiplying the integer-index
+group identities by two kills every possible two-torsion component.
+The full formal-logarithm ratios are
+\[
+                u_*/h_*,\qquad (u_*-n)/(h_*-1).
+\]
+At least one denominator is a $p$-adic unit, and the numerator
+indices are $p$-integral. Thus one full ratio is integral.
+The order-four relative logarithm estimate in \cite{TraceAll}
+first makes its plain ratio integral. The test $C\equiv0\pmod p$
+then gives integrality of the other plain ratio, hence of its full
+ratio. Only after this step are the relative errors used as absolute
+congruences. Subtracting gives
+\[
+ n=h_*\frac{u_*}{h_*}-(h_*-1)\frac{u_*-n}{h_*-1}
+          \equiv L\equiv\beta\pmod p.
+\]
+This proves that, if $\beta\ne n$ and $N$ is the positive reduced
+numerator of $\beta-n$, then
+\begin{equation}\label{eq:div}
+                         M(t_0)\mid N,\qquad M(t_1)\mid N.
+\end{equation}
+Inert primes are included: if the required formal groups are
+incompatible, no solution occurs at that prime. No assertion that
+the two radicals are coprime is needed.
+
+\section{Heights and the uniform sufficient shift}
+\begin{lemma}\label{lem:abc}
+Under rational $abc$, fixed constants $C_0,C_1$ satisfy
+\[
+ h(t)\le\tfrac13\log M(t)+C_0\quad(t\notin\Theta),\qquad
+ h(1:u:v)\le\tfrac43 h(u^4+v^4)+C_1\quad(u,v\in\Q).
+\]
+\end{lemma}
+\begin{proof}
+For $t=a/b$ reduced use $G(a,b)=\prod_{\theta\in\Theta}(a-\theta b)$.
+Granville's Proposition 1~\cite{Granville}, with exponent loss $1/2$,
+gives $\rad(G)\gg\max(|a|,b)^{11/2}$. Since
+$\rad(m)^2\le |m|\operatorname{sf}(m)$ and
+$|G|\ll\max(|a|,b)^8$, its odd part is at least a fixed multiple of
+$\max(|a|,b)^3$. Outside the fixed exceptional primes it is exactly
+$M(t)$: two primitive contact factors cannot vanish together, and a
+prime in $b$ divides none. This proves the first assertion, including
+bounded heights by increasing $C_0$. The form has eight distinct
+factors and $G(a,b)\ne0$, so all source hypotheses are met.
+The author's corrigendum changes Theorems 8.1 and 8.3, not this
+proposition; neither corrected theorem is used here.
+
+For the second assertion, the zero-coordinate cases are immediate.
+Otherwise write $u=gA/D_0$, $v=gB_0/D_0$ with
+$\gcd(A,B_0)=\gcd(g,D_0)=1$, $g,D_0>0$. Set
+$H=\max(|A|,|B_0|)$, $N_0=A^4+B_0^4$, and
+$k=\gcd(N_0,D_0^4)$, $m_0=N_0/k$, $n_0=D_0^4/k$.
+Then $u^4+v^4=g^4m_0/n_0$ is reduced. Put
+$M=\max(g^4m_0,n_0)$. Rational $abc$ at exponent $16/15$ and
+$\rad(N_0)\le D_0m_0$ give
+$H^{7/4}\le K^{15/16}D_0m_0$. Also
+$D_0^4\le2n_0H^4/m_0$, whence
+$H^{3/4}\le2^{1/4}K^{15/16}m_0^{3/4}n_0^{1/4}$.
+Finally $\max(gH,D_0)\le2^{1/4}H(M/m_0)^{1/4}$. Taking logarithms
+bounds $h(1:u:v)$ by a fixed constant plus
+$\frac34\log m_0+\frac13\log n_0+\frac14\log M\le\frac43\log M$.
+This accounts for all common numerator and denominator cancellation.
+\end{proof}
+
+Suppose $\beta\ne n$. By \eqref{eq:arguments}, \eqref{eq:div} and
+the elementary additive height inequality,
+\[
+ h(a_1)\le h(t_0)+h(t_1)+\log2\le\tfrac23\log N+2C_0+\log2.
+\]
+Writing $H_2=h(1:\beta:T)$, the preceding lemma yields
+\[
+                         H_2\le\tfrac89\log N+C_2.
+\]
+Because $2n\in\Z$, the reduced numerator satisfies
+$N\le2(1+|n|)e^{h(\beta)}$. Hence
+\[
+             H_2\le8\log(2(1+|n|))+9C_2.
+\]
+The finite point $A=U-V$ satisfies the all-point trace theorem
+\cite[Corollary 1.3]{TraceAll}, including torsion and half-integral
+indices. Thus
+\[
+ n^2\le8A_0\log(2(1+|n|))+9A_0C_2+J_0.
+\]
+This bounds $|n|$ by a fixed constant and then bounds $H_2$ by a fixed
+constant, independent of $B$ and every witness. But
+$h(\beta)\ge\log\beta\ge\log B$, since $\beta=X^2+B$.
+One sufficiently large fixed $B_*$ excludes $\beta\ne n$ for all
+$B\ge B_*$. Therefore $\beta\in\frac12\Z$.
+Writing $X=a/b$ reduced gives $b^2\mid2a^2$, hence $b^2\mid2$ and
+$b=1$. This proves soundness. The replacement of $2X^2+B$ by
+$X^2+B$ is essential for this denominator argument with half-indices.
+
+\section{Completeness}\label{sec:complete}
+Fix an integer $X$ and an odd $B\ge3$. Set $n=\beta=X^2+B>0$ and
+$A=[n]P$. This fixes $T=\Tr x(A)$ and $a_1=\beta^4+T^4\ge81$
+before selecting primes. Choose a nonexceptional reference multiple
+$H=[h]P$, with its initial index divisible by $64$, in fixed compact
+real and finite-place neighborhoods. Set $U=[hn]P$ and
+$V=[(h-1)n]P$. All are in the doubled group, so the usual
+square-abscissa assertions are available for these particular
+witnesses, although they were not imposed on all solutions.
+Avoid finitely many forbidden reference points and denominators.
+The reciprocal-pair secant or tangent lemma then supplies its
+coordinates; $A$ is never the identity.
+
+The new fixed list of contact coefficients in the slope variable is
+\[
+                    \Theta\ \cup\ (\Theta-a_1).
+\]
+The two lists are disjoint since their span is $12$ and $a_1\ge81$.
+Choose an integer $D_1>0$ whose square clears these rational
+coefficients, sufficiently divisible at every preparation prime.
+Apply the retained prime-selection input to this list with
+$\lambda=u/(D_1^2w^2)$. Its prime numerators are exactly
+\[
+ u-\theta D_1^2w^2,\qquad
+ u+(a_1-\theta)D_1^2w^2\qquad(\theta\in\Theta).
+\]
+The zero contact in the first list makes $u$ one selected prime.
+The finite avoidance data include all denominators and contact
+collisions. The prescribed conjugate reduction orders and the
+compatible common-index progression make $H,U$ formal at the
+primary places, and $H-P,V$ formal at the opposite places. Both
+full ratios equal $n$, so the reciprocal tests have depth at least
+two and $C,I$ have depth at least four. With $v(q_*)=-1$, every
+nonconstant factor term is positive at the selected place. At the
+opposite place each factor is either a unit of residue one or has
+negative valuation. Thus $\Tr(W^{-1})$ reduces to one or two and is
+a unit. The actual pole input has valuation one there.
+
+Put $v_0=D_1^2w^2$. For $a\in\{0,a_1\}$ the exact identity is
+\[
+ R_*(\lambda+a)=
+ \frac{\prod_{\theta\in\Theta}(u+(a-\theta)v_0)}
+ {v_0^8(\lambda+a-1)^{10}}.
+\]
+All factors other than the selected prime numerators are rational
+squares. The trace changes every valuation by an even number.
+Consequently the pole input has square reduced denominator.
+At $2,3,17$ choose denominator divisibility so the argument dominates
+the fixed $a_1$ $p$-adically. Then $q_*,R_*\sim t^{-2}$, all weighted
+tests are small, and $\Tr(W^{-1})$ is arbitrarily close to two.
+This gives the required local squareclasses and depths in
+\eqref{eq:prepared}. On the compact real neighborhoods, choosing an
+arbitrarily large fixed lower bound on $\lambda$ makes both arguments
+large and positive; $W\to1$ and $b_0\sim1/(4t^2)$, so
+$0<b_0<1$. These bounds are chosen before the prime selection.
+The application of Jaswal's simultaneous-twist theorem in \cite{Pole} now supplies independent prepared pole witnesses for both blocks; the extra preparation at 3 and 17 is harmless.
+
+No parity restriction on $n$ was used: multiplication by an even or
+odd integer preserves the formal group, and the full ratios are the
+same integer $n$. The construction works for $X=0$ as well. It proves
+completeness for every integer input and every allowed fixed shift.
+Together with the uniform soundness threshold it proves
+Theorem~\ref{thm:main}.
+
+\section{Counts, coefficients and verification}
+The retained rational-coordinate census is
+\begin{center}\begin{tabular}{lr}\toprule
+Input, real comparison and slope&3\\
+Common point coordinates $f_H,S,T_H$&6\\
+Reciprocal pair and secant parameter&10\\
+Two field ratios&4\\
+Four reciprocal squares and two comparison squares&12\\
+Trace and two height outputs&3\\
+Two contact/pole blocks&40\\
+Second argument&1\\\midrule Total&79\\\bottomrule
+\end{tabular}\end{center}
+The common squares occur in the fifth row of this census and are not
+counted twice. There are 71 rational quadratic equations. Clear each
+to a primitive integer row with positive first coefficient in the
+specified monomial order; their sum of squares is $P_B$.
+
+The directory \nolinkurl{computation/quartic/abc79_v27} contains every
+coordinate, every quadratic row and the expanded quartic. Collection
+gives 1140 parameter-separated terms and 1139 coordinate monomials
+for every positive $B$. The coefficient of $X^4$ is one, proving
+exact degree four and content one. The only mixed parameter profile
+is the constant coefficient $B^2+C_0$; the largest fixed coefficient
+is $C_*$. All remaining parameter profiles are nonzero linear
+multiples of $B$ and are bounded by their maximum. Exact endpoint
+and monotonicity inequalities in the independent checker prove the
+height formula for every $B\ge3$.
+
+The checker reconstructs the unchanged rows against the complete
+81-variable source and the changed pole and reference rows from
+the exact field formulas. It independently expands all coefficients.
+The reference checker verifies five explicit ideal-membership
+certificates, two converse identities, all six original source
+components, and the exceptional coefficient calculation; omitting
+the corrected $f_HS$ term is rejected by a negative control.
+The 702 exact point-pair examples retained from \cite{TraceAll}
+include identity, tangent, torsion and half-integral cases. These are
+supplementary finite checks, not replacements for the universal proofs.
+
+For the lower-coefficient 81-variable alternative, retain the complete
+older reference chart and change only the three nonsquare-definition
+pole rows in each block. The two charts have the same interpreted
+reference points with rational reconstruction in both directions.
+All other field values and pole equations agree. Thus the two new
+families have exactly the same rational input projection for every
+fixed $B$, even before the sufficiently large shift is selected.
+This does not assert projection equivalence with the old pole system.
+The full low-coefficient tables and checker are retained separately.
+
+\begin{thebibliography}{9}
+\bibitem{Compressed} \emph{A complete five-coordinate elliptic reference chart},
+corrected project companion, 14 November 2026,
+\nolinkurl{compressed_reference_20261114_v27.tex}.
+\bibitem{Pole} \emph{Pole equations from simultaneous congruent-number twists},
+project companion, 14 November 2026,
+\nolinkurl{congruent_twist_poles_20261114_v27.tex}.
+\bibitem{Jaswal} M. Jaswal, \emph{A proof that $\Z$ is Diophantine in $\Q$
+through congruent-number twists}, Hexagon \texttt{2611.00331v2},
+12 November 2026, Theorem~1.2, printed p.~4.
+\url{https://hexagonmath.org/pdf/2611.00331v2}.
+\bibitem{TraceAll} Companion paper, \emph{Trace heights on quadratic
+twists with $j=1728$}, 13 November 2026,
+\nolinkurl{papers/trace_heights/trace_on_all_points_20261113_v25.tex}.
+\bibitem{Granville} Andrew Granville, \emph{Rational and integral points
+on quadratic twists of a given hyperelliptic curve}, International
+Mathematics Research Notices (2007), rnm027, Proposition 1; author's
+version, printed p.~6, \url{https://dms.umontreal.ca/~andrew/PDF/hyperelliptics.pdf}.
+See also \url{https://dms.umontreal.ca/~andrew/PDF/hyperellCorr.pdf};
+its corrections to Theorems 8.1 and 8.3 are not used here.
+\bibitem{Old87} Companion paper, \emph{An 87-variable quartic under
+$abc$}, \nolinkurl{papers/quartic_existence/quartic_abc87_20261110_v21.tex},
+repository commit \texttt{fa09c9c6c97982c13265e7088d95cdb61b3e90cf}.
+\bibitem{Common} Companion paper, \emph{Fixed-difference elliptic
+charts}, \nolinkurl{papers/elliptic_charts/fixed_difference_charts_20261110_v18.tex}.
+\bibitem{Dependencies} Companion paper,
+\nolinkurl{papers/arithmetic_dependencies/arithmetic_dependencies_20261108_v8.tex}.
+\bibitem{Selection} Companion paper,
+\nolinkurl{papers/prime_selection/prime_selection_20261109_v12.tex}.
+\end{thebibliography}\end{document}

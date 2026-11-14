@@ -1,0 +1,82 @@
+{
+  "schema": "consolidated-exact-verification/v25",
+  "date": "2026-11-13",
+  "status": "PASS",
+  "python_version": "3.12.16",
+  "sympy_version": "1.14.0",
+  "commands": [
+    {
+      "command": [
+        "computation/sun_pr30_audit/check.py",
+        "--output",
+        "data/audits/sun_pr30_20261113.json"
+      ],
+      "status": "PASS",
+      "stdout_sha256": "481997e27819cd22758560e98f0f7ba6d99fd8bf7a1eb083447e0e52bec950e9"
+    },
+    {
+      "command": [
+        "scripts/verify_v24.py",
+        "--authenticate-sources"
+      ],
+      "status": "PASS",
+      "stdout_sha256": "68ac1d21017e2c0681ea755ea081631238f81120823367e2b7e3254612664d94"
+    },
+    {
+      "command": [
+        "computation/quartic/abc81_v25/build.py"
+      ],
+      "status": "PASS",
+      "stdout_sha256": "f1dac7b133d08ed9a302a72f5d723f7856c6326ac7984f83fe834844f01b7e77"
+    },
+    {
+      "command": [
+        "computation/quartic/abc81_v25/check.py"
+      ],
+      "status": "PASS",
+      "stdout_sha256": "0ce2f8e8c968be2f518b15b60f884e6d06a0ae5e846cddc7e35b6a2019a2d472"
+    },
+    {
+      "command": [
+        "computation/quartic/abc81_v25/check_examples.py"
+      ],
+      "status": "PASS",
+      "stdout_sha256": "85e81589e93643ae8c20a5f2cb58bdafa185c37ff8f65bfac65db8eacfab30e2"
+    },
+    {
+      "command": [
+        "computation/quartic/additive212_v25/build.py"
+      ],
+      "status": "PASS",
+      "stdout_sha256": "ebb1d03ff9819dbf6d5652ae1a3220d8403f6411e2eeddac5a0af489158797ce"
+    },
+    {
+      "command": [
+        "computation/quartic/additive212_v25/check.py"
+      ],
+      "status": "PASS",
+      "stdout_sha256": "a083d46e142d9b839ef8b6045d9967d4a6b7eb1541f14e73b418d76c13a6cc9a"
+    }
+  ],
+  "top_level_commands": 7,
+  "abc81_exact_stages": 7,
+  "additive212_exact_stages": 8,
+  "v23_exact_stages": 25,
+  "finite_algebra_examples": 13,
+  "elliptic_ordered_pair_examples": 702,
+  "elliptic_regular_ratio_examples": 1300,
+  "quartic_rows_checked": {
+    "predecessor214": 188,
+    "new212": 186,
+    "new81": 73
+  },
+  "quartic_monomials_checked": {
+    "predecessor214": 2919,
+    "new212": 2908,
+    "new81": 941
+  },
+  "native_general_sources_authenticated": true,
+  "legacy_full_verifier_run_by_this_script": false,
+  "independent_non_author_review": false,
+  "scope": "Exact algebra and coefficient reconstruction, degree/norm bounds, bounded exact examples and negative controls. The arithmetic proofs and their inherited premises remain separate. This script does not publish to GitHub."
+}

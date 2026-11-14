@@ -1,0 +1,177 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,booktabs,microtype}
+\usepackage[margin=27mm]{geometry}\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}[section]\newtheorem{lemma}[theorem]{Lemma}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\setlength{\emergencystretch}{2em}
+\title{A fully specified defining quartic in 260 variables}
+\author{}\date{14 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+The complete reference-point chart removes two rational coordinates
+from the fully specified 262-variable quartic. The new polynomial has
+260 total variables, 232 quadratic residuals, degree exactly four,
+integer content one and 3704 monomials. Its rational input projection
+agrees with the predecessor for every fixed coefficient parameter.
+Consequently the same certified value $N=9682$ and the same coefficient
+height $149^{38730}+1$ are retained, under exactly the same arithmetic
+premises. No new prime-selection, height or pole-realization input is
+introduced. The same replacement also reduces the 226-variable
+existence family to 224 variables, although that is not the smallest
+existence family in this collection.
+\end{abstract}
+
+\section{Statement}
+All counts include the input. The source is the fully specified
+262-variable family of \cite{Parent}, at the retained main revision
+\texttt{fa09c9c6c97982c13265e7088d95cdb61b3e90cf}. Its quadratic-table
+SHA-256 is
+\begin{center}\small
+\texttt{84c1130856dfda7d3a489f3077d7bc378cd8e594198dd8f3c03fe50463606a93}.
+\end{center}
+The coefficient parameter is $A=149^{2N+1}$, never a quantified
+coordinate. Retain the exact elliptic group, normalized modular
+realization, pole-realization and fixed-data prime-pattern premises
+stated by that source.
+
+\begin{theorem}\label{thm:main}
+There is a completely specified family
+$P_N\in\Z[X,Y_1,\ldots,Y_{259}]$, $N\ge1$, with exact degree four,
+content one and 3704 nonzero coordinate monomials. For every fixed
+$N$, its rational input projection is equal to that of the source
+262-variable polynomial. Its height is
+\[
+                  H(P_N)=149^{4N+2}+1\qquad(N\ge53).
+\]
+Under the unchanged source arithmetic premises, every $N\ge9682$
+defines $\Z$ over $\Q$. In particular $N=9682$ gives one fully
+specified polynomial of height $149^{38730}+1$.
+\end{theorem}
+
+The source's effective threshold is preserved because the projection
+equivalence is for every fixed $N$, not merely for sufficiently large
+members with a new unspecified threshold. The algebraic equivalence
+itself is unconditional. The statement that either polynomial defines
+$\Z$ retains the source arithmetic inputs and their audit limitations.
+
+\section{The exact coordinate deletion}
+Work over $K=\Q(\rho)$, $\rho^2=2$. The source reference block stores
+$f=1/x(H)$, $S=y(H)/x(H)$, $g=1/x(H-P)$ and $T=y(H-P)/x(H-P)$,
+with the complete three-field-quadratic fixed-difference chart. It also
+stores $B=f^2$ and $w=g^2$ for the local factors. The latter four
+rational output coordinates have no other definition required beyond
+these two squares.
+
+In the literal source table the slots are
+\[
+ f=(x_{81},x_{82}),\quad S=(x_{83},x_{84}),\quad T=(x_{55},x_{56}),
+ \quad g=(x_{85},x_{86}),
+\]
+\[
+ B=x_{132}+2\rho x_{133},\qquad w=x_{87}+2\rho x_{88}.
+\]
+All ordinary pairs in the first line use the basis $1,\rho$.
+The factor two in the second line is part of the source convention.
+Delete $x_{85},x_{86}$ and their two square-definition rows 23,24.
+Replace the six reduced reference rows 17--22 by the rational
+components of
+\[
+ Q_1(f,S,B,T)=0,\qquad M(f,S,B)w+L(f,S,B,T)=0,
+ \qquad Q_3(f,S,B,T)=0,
+\]
+using exactly the corrected coefficient table in \cite{Chart}.
+The already present rows 68,69 impose $B=f^2$ and are retained.
+Every other row is unchanged, apart from the final coordinate
+compaction. Inspection of all occurrences, performed by the checker,
+shows that deleted slots 85,86 occur only in the six reference rows
+and the two deleted square definitions.
+
+\begin{lemma}\label{lem:equivalent}
+The deleted coordinates are uniquely reconstructed from every rational
+solution of the new equations, and the reconstructed tuple solves the
+old equations. Conversely deleting these two coordinates from any old
+solution gives a new solution.
+\end{lemma}
+\begin{proof}
+The complete chart theorem \cite[Theorem~1.1]{Chart} applies over $K$,
+with no arithmetic hypothesis. It gives the actual point $H$, its
+translate, and the interpretations of $f,S,B,w,T$, including all
+exceptional leading-coefficient cases. In its notation,
+\[
+ G=\frac{((118+60\rho)S+156+69\rho/2)T-(156+69\rho/2)S+288+128\rho}
+              {252-672\rho},\qquad g=G^2/f.
+\]
+The theorem proves $f\ne0$, so this reconstructs a unique element of
+$K$, hence two rational coordinates. It also proves $w=g^2$ and all
+three original fixed-difference equations. The six old reduced rows
+are an invertible rational row transformation of those component
+equations, so they vanish. Their coefficient convention is retained
+in the source table. No other row consumes $g$, so all remaining old
+rows hold. Conversely every old reference point satisfies the four
+new field quadrics by the converse part of that same theorem; all
+unchanged rows agree literally. The input coordinate and $N$ have
+not changed.
+\end{proof}
+
+Thus the new count is $262-2=260$ coordinates and $234-2=232$ rows.
+Their primitive integer sum of squares vanishes exactly when all rows
+vanish, proving projection equivalence.
+
+\section{Exact coefficient height and checks}
+The full producer and independent checker are in
+\begin{center}\small
+\nolinkurl{computation/quartic/compressed_reference_v27}.
+\end{center}
+The \texttt{family260} subdirectory includes the complete quadratic
+and expanded quartic tables. There are 3705 terms with powers of $A$
+kept separate, and 3704 ordinary coordinate monomials. All coordinate
+indices occur, degree is four, and the coefficient gcd is one.
+
+Every coefficient profile is a fixed nonzero integer, a nonzero linear
+multiple of $A$, or the single profile $A^2+1$. The largest linear
+coefficient in absolute value is 44402. The full exact fixed maximum
+$C_0$ is recorded as an integer in the construction certificate.
+The checker proves by integer comparison
+\[
+ C_0<149^{214}+1,\qquad44402<149^{107}.
+\]
+Consequently for $A\ge149^{107}$ all constant and linear profiles
+are strictly smaller in absolute value than $A^2+1$. The latter is
+attained, proving the height formula for every $N\ge53$.
+Positive parameter values cannot cancel any of the stated profiles,
+so the monomial count is uniform. The unchanged effective source
+threshold $9682$ is much larger, and is logically distinct from 53.
+
+The independent checker imports no producer. It authenticates the
+source bytes, reconstructs all changed rows from the separately
+certified field-equation table, compares all unchanged rows, and
+expands every coefficient by a different term-pair enumeration.
+Changing a row or a quartic coefficient is rejected. The chart's
+own checker separately verifies all ideal identities and every
+exceptional case, including rejection of the omitted $fS$ term.
+These computations are not a new audit of the source arithmetic
+premises and are not represented as non-author acceptance.
+
+\section{The corresponding 224-variable family}
+The 226-variable source has the same reference slots and square
+conventions. The identical deletion gives 224 variables, 198 rows,
+3045 coordinate monomials and degree four. The source hash is
+\begin{center}\small
+\texttt{ccc845018e4d89b9d19f797bbfeca10c17ec637fbde5cb5bc08ad3bba9da105b}.
+\end{center}
+The proof of Lemma~\ref{lem:equivalent} is unchanged. Its coefficient
+height is again $149^{4N+2}+1$ for $N\ge53$, but its sufficient
+defining threshold remains ineffective, just as in that source.
+The complete tables and checks are in \texttt{family224}. This is an
+additional application of the exact chart equivalence, not a claim to
+improve the separate 204-variable existence construction.
+
+\begin{thebibliography}{9}
+\bibitem{Parent} \emph{A fully specified defining quartic in 262 variables},
+retained project paper, \nolinkurl{quartic262_20261110_v21.tex}.
+\bibitem{Chart} \emph{A complete five-coordinate elliptic reference chart},
+corrected project paper, \nolinkurl{compressed_reference_20261114_v27.tex}.
+\bibitem{Existence} \emph{A family of defining quartics in 226 variables},
+retained project paper, \nolinkurl{quartic226_20261110_v21.tex}.
+\end{thebibliography}
+\end{document}

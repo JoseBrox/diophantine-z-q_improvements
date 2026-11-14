@@ -1,0 +1,75 @@
+{
+  "schema": "v25-source-application-record/v1",
+  "date": "2026-11-13",
+  "own_baseline": "fa09c9c6c97982c13265e7088d95cdb61b3e90cf",
+  "upstream214": "1f7e1f1fb0438feda3c9f3da9cc16982126aeeed",
+  "independent_nonauthor_review": false,
+  "sources": [
+    {
+      "source": "Jerome von Buhren, Borne de hauteur semi-effective pour le probleme de Mordell-Lang dans une variete abelienne, JTNB 29 (2017), 307-320",
+      "url": "https://www.numdam.org/article/JTNB_2017__29_1_307_0.pdf",
+      "doi": "10.5802/jtnb.981",
+      "location": "Theorem 1.1 and condition (1.1), printed page 308",
+      "consumer": "papers/trace_heights/trace_on_all_points_20261113_v25.tex, Theorem 1.1 and Corollary 1.3",
+      "application_checks": [
+        "fixed finite-rank group",
+        "graph closure and its actual finite graph points",
+        "absence of positive-dimensional abelian translates through the consumed point",
+        "ample symmetric product embedding",
+        "all-degree restriction-of-sections condition",
+        "parameter height normalization",
+        "ineffective additive constant retained"
+      ]
+    },
+    {
+      "source": "Andrew Granville, Rational and integral points on quadratic twists of a given hyperelliptic curve, IMRN (2007), rnm027",
+      "url": "https://dms.umontreal.ca/~andrew/PDF/hyperelliptics.pdf",
+      "doi": "10.1093/imrn/rnm027",
+      "location": "Proposition 1, printed page 6 of the author PDF",
+      "corrigendum": "https://dms.umontreal.ca/~andrew/PDF/hyperellCorr.pdf",
+      "corrigendum_scope": "Changes Theorems 8.1 and 8.3, not Proposition 1. Neither changed theorem is used.",
+      "consumer": "papers/quartic_existence/quartic_abc81_20261113_v25.tex, Lemma 4.1",
+      "application_checks": [
+        "squarefree homogeneous degree-eight form",
+        "eight distinct rational linear factors",
+        "primitive numerator-denominator pair",
+        "nonzero form value",
+        "fixed exceptional-prime removal",
+        "odd squarefree part rather than ordinary radical",
+        "rational abc is explicit"
+      ]
+    },
+    {
+      "source": "Pinned upstream 214 manuscript and uniform-existence proof",
+      "commit": "1f7e1f1fb0438feda3c9f3da9cc16982126aeeed",
+      "location": "research/quartic214/proofs/uniform-existence.md, P03-P20; manuscript sections A43-A47",
+      "consumer": "papers/quartic_existence/quartic212_20261113_v25.tex",
+      "application_checks": [
+        "identical scalar and point objects",
+        "177 retained rows",
+        "same contact set and physical local factors",
+        "new additive aggregate row",
+        "twenty fixed contact coefficients",
+        "uniform fixed threshold and input-dependent later choices separated"
+      ],
+      "review_limit": "Underlying prime, pole, rank and modular-height foundations remain inherited, not independently accepted here."
+    }
+  ],
+  "new_proof_files": [
+    {
+      "path": "papers/quartic_existence/quartic212_20261113_v25.tex",
+      "sha256": "3bc847ccc53974cf39e4083ffbe9e27f74b87bf3a9f9b47e4212f7574010e1c2",
+      "bytes": 21439
+    },
+    {
+      "path": "papers/quartic_existence/quartic_abc81_20261113_v25.tex",
+      "sha256": "71fb09ff0a66ec4c4453dc47d30edb2d5c4d3a6cd84d910a14654567e3ff9d9f",
+      "bytes": 23252
+    },
+    {
+      "path": "papers/trace_heights/trace_on_all_points_20261113_v25.tex",
+      "sha256": "039fc71d165123c34e59bdeb487f68d14ce241e6b3153a5588934065ec5f202e",
+      "bytes": 11680
+    }
+  ]
+}

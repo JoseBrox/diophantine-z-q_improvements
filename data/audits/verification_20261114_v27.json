@@ -1,0 +1,106 @@
+{
+  "schema": "cumulative-exact-verification/v27",
+  "date": "2026-11-14",
+  "status": "PASS",
+  "python_version": "3.12.16",
+  "top_level_commands": 10,
+  "commands": [
+    {
+      "command": [
+        "scripts/verify_v25.py",
+        "--authenticate-sources"
+      ],
+      "status": "PASS",
+      "stdout_sha256": "fb576ace39d1d75eac3ec3934c1eee48e6be61c8b2e7f310df036419ac831fa3"
+    },
+    {
+      "command": [
+        "computation/quartic/abc79_v27/build.py"
+      ],
+      "status": "PASS",
+      "stdout_sha256": "3c7d8d585956fe34461b1f04bfc1df1046665edfd2c413da80dfe9533edcb6f5"
+    },
+    {
+      "command": [
+        "computation/quartic/abc79_v27/check_reference.py"
+      ],
+      "status": "PASS",
+      "stdout_sha256": "2ca4ae42016357768df8dbea590eeb2a773e4a9f23cc43070460d7b2959c291b"
+    },
+    {
+      "command": [
+        "computation/quartic/abc79_v27/check.py"
+      ],
+      "status": "PASS",
+      "stdout_sha256": "8f9a541ff6e457a3d309b67a705bdcdf2c22f0004f0f898ba6a40dbb4ce45723"
+    },
+    {
+      "command": [
+        "computation/quartic/pole81_v27/build.py"
+      ],
+      "status": "PASS",
+      "stdout_sha256": "79a6b269a0766de27c41d0ba90e2560ba51c2174c1a31f87230d61dc44f50d63"
+    },
+    {
+      "command": [
+        "computation/quartic/compressed_reference_v27/build.py"
+      ],
+      "status": "PASS",
+      "stdout_sha256": "4b2b0b192ce92ceffb6b78a1ef1f7a740cfe4e18fcf2e7b76cc56db616b71a9d"
+    },
+    {
+      "command": [
+        "computation/quartic/compressed_reference_v27/check.py"
+      ],
+      "status": "PASS",
+      "stdout_sha256": "309653da68bc91b9ef87499e5eb81730251bae9381136ccd749f37ac920d3194"
+    },
+    {
+      "command": [
+        "computation/quartic/reciprocal204_v27/build.py"
+      ],
+      "status": "PASS",
+      "stdout_sha256": "323f83d4d49f4d41be43de6f96e1a0022e6a9aa4e0538a34d07291d232ecc9ef"
+    },
+    {
+      "command": [
+        "computation/quartic/reciprocal204_v27/check.py"
+      ],
+      "status": "PASS",
+      "stdout_sha256": "8a21c56de2679f86579d6dbd3a7663725525349d90774cf9ad9d41af13b0b0d2"
+    },
+    {
+      "command": [
+        "computation/quartic/reciprocal204_v27/check_arithmetic.py"
+      ],
+      "status": "PASS",
+      "stdout_sha256": "646bfa17694158418e96d5f8a6af84564a6d0d8dab2cab25a28fd1bd9794904f"
+    }
+  ],
+  "current_total_variables": {
+    "general": 25,
+    "explicit_general": 27,
+    "abc_general": 13,
+    "quartic": 204,
+    "explicit_quartic": 260,
+    "abc_quartic": 79
+  },
+  "current_quartic_rows": {
+    "204": 186,
+    "260": 232,
+    "79": 71,
+    "lower_coefficient_abc81": 73
+  },
+  "current_quartic_monomials": {
+    "204": 3046,
+    "260": 3704,
+    "79": 1139,
+    "lower_coefficient_abc81": 929
+  },
+  "prior_elliptic_pair_examples": 702,
+  "finite_algebra_examples": 13,
+  "native_general_sources_authenticated": true,
+  "legacy_full_verifier_run_by_this_script": false,
+  "independent_non_author_review": false,
+  "scope": "Exact row and coefficient reconstructions, exceptional reference-chart certificates, finite-algebra bounds, rational identities, finite examples and negative controls. Infinite arithmetic premises and complete non-author acceptance are not certified by these checks."
+}

@@ -1,0 +1,69 @@
+{
+  "schema": "source-applications/v27",
+  "date": "2026-11-14",
+  "status": "Authored proofs with exact supplementary checks",
+  "independent_non_author_review": false,
+  "applications": [
+    {
+      "id": "weighted_trace",
+      "supplier": "J. von Buhren, JTNB 29 (2017), 307\u2013320, Theorem 1.1, printed p. 308",
+      "url": "https://www.numdam.org/article/JTNB_2017__29_1_307_0.pdf",
+      "proof": {
+        "path": "papers/trace_heights/weighted_trace_20261114_v27.tex",
+        "sha256": "75ff9bc3bf6ebee4ae200568a1537b3e24fede021aa0262368f7babc494018fe"
+      },
+      "consumer": {
+        "path": "papers/quartic_existence/quartic204_20261114_v27.tex",
+        "sha256": "d2ba4a3260d1bfd5f8010a31f1375a5cee5c0abfc52361817f42a67be35647af"
+      },
+      "constructed_objects": "Integral graph closure over P1_r times P1_S, a fixed product of the j=1728 elliptic curve, and a fixed finite-rank group including the required torsion.",
+      "checks": [
+        "Every zero-index torsion choice is frozen before applying the theorem; finitely many choices are covered.",
+        "All evaluated weights are positive; pole coefficients cannot cancel on an abelian translate through an actual point.",
+        "The two conjugate generators are independent over Z[i] modulo torsion.",
+        "O(3O) and the Segre embedding satisfy condition (1.1) for every positive degree.",
+        "The group is fixed before the parameter; its points lie in C(Gamma,epsilon) with zero error.",
+        "The canonical height controls every retained index, including the doubled half-integral third index."
+      ],
+      "limitation": "The additive constant is ineffective. This is an authored source-application proof, not independent non-author acceptance."
+    },
+    {
+      "id": "jaswal_prepared_poles",
+      "supplier": "Manvir Jaswal, Hexagon 2611.00331v2, 12 November 2026, Theorem 1.2, printed p. 4",
+      "url": "https://hexagonmath.org/pdf/2611.00331v2",
+      "proof": {
+        "path": "papers/pole_parameters/congruent_twist_poles_20261114_v27.tex",
+        "sha256": "71b26c51e5c5d1ea2c5f82e040451726d637f5a38a94a6e3a9d79c41047e3e81"
+      },
+      "consumer": {
+        "path": "papers/quartic_existence/quartic_abc79_20261114_v27.tex",
+        "sha256": "82a13a5908f5efb5cc8ebece78be4997fb762ca597a02a43e9ccd72879004b9a"
+      },
+      "checks": [
+        "Prepared b satisfies 0<b<1, square reduced denominator, and the required 2-adic squareclass and depth.",
+        "The positive squarefree representatives beta and theta are coprime, both 1 modulo 8, and have the required mutual quadratic-residue conditions.",
+        "The beta=1 case is supplied separately without applying a theorem requiring beta>1.",
+        "The actual two points have abscissas in beta times rational squares, and the second curve is scaled explicitly.",
+        "The displayed rational changes of coordinates give both pole equations, with their required nonzero quantities.",
+        "No sharing of arbitrary distinct squareclasses is asserted."
+      ],
+      "limitation": "This uses precisely the cited preprint theorem as an explicit arithmetic supplier. It is not a complete audit of the preprint or a claim of peer review."
+    },
+    {
+      "id": "corrected_reference",
+      "supplier": "Complete fixed-difference chart in the retained source and corrected v27 five-coordinate chart",
+      "proof": {
+        "path": "papers/elliptic_charts/compressed_reference_20261114_v27.tex",
+        "sha256": "3206276ca6f556bcf2d645467518f5420209948a1de124c9455aa8335f07887c"
+      },
+      "checks": [
+        "The omitted f*S coefficient in the earlier printed v26 L is restored.",
+        "Five exact ideal-membership identities and two forward identities are checked.",
+        "The exceptional M=0 case has no K-rational solution, as proved by the quintic factorization and nonsquare discriminant.",
+        "Every rational point of the old chart uniquely reconstructs the new weight, and conversely.",
+        "Applications to the 79-, 224-, and 260-variable tables are reconstructed independently; no coordinate is dropped solely on a generic subset."
+      ],
+      "limitation": "Independent implementation is separate from independent non-author review; the latter is not claimed."
+    }
+  ]
+}

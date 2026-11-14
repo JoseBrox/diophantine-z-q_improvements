@@ -1,0 +1,245 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,microtype}
+\usepackage[margin=27mm]{geometry}\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}[section]\newtheorem{lemma}[theorem]{Lemma}\newtheorem{corollary}[theorem]{Corollary}\newtheorem{proposition}[theorem]{Proposition}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}\DeclareMathOperator{\Tr}{Tr}
+\setlength{\emergencystretch}{2em}
+\title{Trace heights on quadratic twists with $j=1728$}
+\author{}\date{13 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+For a quadratic number field $K$ and $d\in K^\times$ with
+$d\ne\sigma(d)$ and $d\ne-\sigma(d)$, the rational trace of the
+abscissa on $y^2=x^3-d^2x$ controls the canonical height of every
+$K$-rational point with finite abscissa. The additive constant is
+ineffective. The proof excludes all positive-dimensional abelian
+translates in the relevant finite fibers and checks the projective
+embedding required by von Buhren's family height theorem. No rank-one
+hypothesis or square-abscissa condition is needed for this height result.
+For the curve used in the Diophantine construction, the conclusion
+therefore covers half-integral indices and torsion translates. We also
+supply a reciprocal-coordinate description of an ordered pair of points
+and its difference, including the identity and tangent cases.
+\end{abstract}
+
+\section{The height theorem}
+Heights are absolute logarithmic Weil heights. For $a/b\in\Q$ reduced,
+$b>0$, write $h(a/b)=\log\max(|a|,b)$. Canonical heights on elliptic
+curves use the standard symmetric divisor at the identity; changing
+its normalization only changes the positive constants below.
+
+\begin{theorem}\label{thm:height}
+Let $K/\Q$ be quadratic with nontrivial automorphism $\sigma$. Let
+$d\in K^\times$ satisfy $d\ne\sigma(d)$ and $d\ne-\sigma(d)$, and set
+$E_d:y^2=x^3-d^2x$. There are constants $A>0$ and $J\ge0$, depending
+only on $K,d$, such that every $Q\in E_d(K)\setminus\{O\}$ satisfies
+\[
+ \widehat h(Q)\le A h\bigl(\Tr_{K/\Q}x(Q)\bigr)+J.
+\]
+The theorem is unconditional. The argument does not give an effective
+numerical value of $J$.
+\end{theorem}
+
+\begin{lemma}\label{lem:fibers}
+On $E_0^2$, where $E_0:Y^2=X^3-X$, let
+$F(Q_1,Q_2)=a x(Q_1)+b x(Q_2)$ with $ab\ne0$ and $a\ne\pm b$.
+No translate of a positive-dimensional abelian subvariety which meets
+$(E_0\setminus\{O\})^2$ has constant restriction of $F$.
+\end{lemma}
+\begin{proof}
+The whole surface does not have constant $F$. A proper
+positive-dimensional abelian subvariety is an elliptic curve. If one
+projection of its translate is constant, the other projection is
+nonconstant and $F$ is not constant. Otherwise, after an isogeny from
+$E_0$ to this elliptic curve, the two projections have the form
+$\alpha z+q_1$ and $\beta z+q_2$, with nonzero endomorphisms
+$\alpha,\beta$ of $E_0$.
+
+If $F$ were constant, its two summands would have identical pole
+supports. Their poles are all double, since the isogenies are etale
+in characteristic zero. Choose a common pole and translate the
+parameter so it is zero. The projections become $\alpha z,\beta z$;
+the equality of pole supports gives $\ker\alpha=\ker\beta$. Factoring
+through their common quotient gives $\beta=u\alpha$ for an
+origin-preserving automorphism $u$ of $E_0$. On this short
+Weierstrass model such an automorphism sends $x$ to $x$ or $-x$.
+For example, its action on the linear system $|2O|$ is affine in $x$;
+preservation of the three finite branch points $-1,0,1$ forces its
+translation to be zero and its slope to be $1$ or $-1$.
+Consequently the restriction is $(a+b)x(\alpha z)$ or
+$(a-b)x(\alpha z)$, a nonconstant function under the hypotheses.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:height}]
+Choose square roots of $d$ and $d'=\sigma(d)$ in a fixed number-field
+extension. The pointed isomorphisms to $E_0$ send $(x,y)$ to
+$(x/d,y/d^{3/2})$ and $(x/d',y/(d')^{3/2})$, respectively. The image
+of a point and its conjugate is therefore a point of $E_0^2$ at which
+\[
+                 F=d x_1+d'x_2=\Tr_{K/\Q}x(Q).
+\]
+Take the integral reduced projective closure $\mathcal V$ of the
+graph of $F$ in $E_0^2\times\mathbf P^1$. Its dimension is two.
+The set of images of $E_d(K)$ is a finitely generated subgroup
+$\Gamma$ of $E_0^2(\overline\Q)$, by Mordell--Weil and the fact that
+the two pointed maps commute with the group operations.
+
+We apply the published Theorem~1.1 of von Buhren~\cite{VB}. It bounds
+canonical height linearly in the parameter height, with a fixed
+additive constant for each finite-rank subgroup, away from the union
+of positive-dimensional abelian translates contained in the fiber.
+A point of the graph above an actual finite value of $F$ lies outside
+that union: a translate through it would meet the domain of $F$ in a
+dense open subset and make $F$ constant there, contrary to
+Lemma~\ref{lem:fibers}. This also treats possible components of the
+graph over the indeterminacy locus; none changes the argument through
+our point in the domain.
+
+Here are the remaining embedding and subgroup checks. Embed $E_0$ as
+its smooth plane cubic by $\mathcal O(3O)$, and embed its square by
+Segre in $\mathbf P^8$. For $n\ge1$ the sequence
+\[
+0\longrightarrow\mathcal O_{\mathbf P^2}(n-3)
+ \longrightarrow\mathcal O_{\mathbf P^2}(n)
+ \longrightarrow\mathcal O_{E_0}(3nO)\longrightarrow0
+\]
+and $H^1(\mathbf P^2,\mathcal O(n-3))=0$ prove surjectivity of the
+restriction of sections. Tensoring the two surjections and using
+Segre proves condition (1.1) in von Buhren's statement for every
+$n\ge1$. The line bundle on the surface is ample and symmetric.
+On the base use $\mathcal O_{\mathbf P^1}(1)$ with its ordinary height.
+Every point of $\Gamma$ lies in the source set $C(\Gamma,\epsilon)$
+by taking its error point to be zero. Thus no uniformity in a varying
+group or field is being invoked.
+
+The canonical height for the chosen product embedding is a fixed
+positive multiple of the sum of the two elliptic canonical heights.
+Pointed isomorphism invariance and Galois invariance identify these
+with the canonical height of $Q$. The source theorem now gives the
+displayed inequality. Its additive constant depends on this fixed
+$\Gamma$ and is not made effective by the source. Increase constants
+if necessary to make $A>0$ and $J\ge0$.
+\end{proof}
+
+\begin{corollary}\label{cor:index}
+Let $K=\Q(\sqrt2)$, $d=3-\sqrt2$, and $P=2R_0$, where
+$R_0=(1+\sqrt2,2\sqrt2)$. Retain the arithmetic premise
+$2E_d(K)=\Z P$ with $P$ non-torsion. Every $Q\in E_d(K)$ has a unique
+index $n\in\tfrac12\Z$, defined by $Q=[2n]R_0+T_0$ with $2T_0=O$.
+There are fixed $A>0,J\ge0$ such that
+\[
+ n^2\le A h\bigl(\Tr x(Q)\bigr)+J\qquad(Q\ne O).
+\]
+This includes finite torsion points, with index zero.
+\end{corollary}
+\begin{proof}
+If $2Q=mP$, then $2(Q-mR_0)=O$. Uniqueness follows from
+non-torsion of $R_0$. The canonical height of $Q$ equals
+$n^2\widehat h(P)$. Apply the theorem and divide by its positive
+constant $\widehat h(P)$; $d+d'=6$ and $d-d'=-2\sqrt2$ are nonzero.
+\end{proof}
+
+\section{Two reciprocal points and their difference}
+This section is algebraic and does not assume a group-rank statement.
+Work over any field of characteristic zero, with $D\ne0$, on
+$E:y^2=x^3-Dx$. The rational functions
+\[
+          f=1/x,
+          \qquad h=-y/x^2
+\]
+extend by $(f,h)=(0,0)$ at $O$. They identify
+$E\setminus\{(0,0)\}$ with $h^2=f-Df^3$. Indeed the affine map
+$(f,h)\mapsto(-Df,-Dh)$ gives translation by $(0,0)$ on $E$.
+
+\begin{proposition}\label{prop:pair}
+The three equations
+\begin{align}
+ h^2&=f-Df^3,\\
+ s(f-g)&=h+k,\\
+ s(h-k)&=1-D(f^2+fg+g^2)\label{eq:tangent}
+\end{align}
+describe ordered pairs $U,V\in E\setminus\{(0,0)\}$ with $U\ne V$,
+and their unique secant or tangent parameter $s$. Their difference
+is the finite point
+\[
+ A=U-V=(c,y_A),\qquad
+ c=s^2+D(f+g),\quad y_A=Dh-s(Df+c).
+\]
+Either $U$ or $V$ may be $O$. Finite torsion differences are permitted.
+\end{proposition}
+\begin{proof}
+Put $r_1=s(f-g)-h-k$, $r_2=s(h-k)-1+D(f^2+fg+g^2)$ and
+$r_3=h^2-f+Df^3$. Exact polynomial identities give
+\begin{align*}
+ k^2-g+Dg^3&=r_3-(f-g)r_2+(h-k)r_1,\\
+ y_A^2-c^3+Dc&=D^2r_3-D(Df+c)(r_2-sr_1).
+\end{align*}
+Thus both reciprocal points and the asserted finite point are on the
+curve. If $f\ne g$, translate both points by $(0,0)$. The line
+joining the first translated point to the negative of the second has
+slope $s$; the chord law gives exactly $(c,y_A)$. Translation by this
+two-torsion point does not alter their difference.
+
+If $f=g$, the equations give $k=-h$. If also $h=0$, the cubic gives
+$f=0$ or $Df^2=1$, whereas~\eqref{eq:tangent} would give
+$1-3Df^2=0$, a contradiction in either case. Hence $h\ne0$ and
+$2sh=1-3Df^2$. This is the tangent slope at the first translated
+point, so the tangent law gives the same formula. In particular
+$U\ne V$ in every case. Conversely these secant and tangent
+calculations supply $s$ for every allowed ordered pair. The identity
+case is the ordinary affine point $(f,h)=(0,0)$ in this translated
+model and is already covered.
+\end{proof}
+
+\section{Ratio equations and formal precision}
+If $H$ is finite with $S=y(H)/x(H)\ne0$, its formal parameter is
+$z(H)=-1/S$. The two equations
+\[
+              hL+fS=0,\qquad (1-Df^2)L+hS=0
+\]
+give $L=z(U)/z(H)$ whenever $U$ is non-torsion or $O$; at $O$ the
+second equation gives $L=0$. At a nonidentity formal point $h\ne0$,
+so the first equation gives the ratio and the second follows from the
+cubic. We impose both equations in the quartic construction and do
+not divide by $h$ on other components.
+
+For completeness, at a good unramified prime $p>5$, $D$ a unit, the
+invariant differential and formal logarithm in $z=-x/y$ are
+\[
+ \omega=\frac{dz}{\sqrt{1+4Dz^4}},\qquad
+ \log_E(z)=\sum_{j\ge0}\frac{(-1)^j\binom{2j}{j}D^j}{4j+1}z^{4j+1}.
+\]
+The first identity follows from
+$x=(1+\sqrt{1+4Dz^4})/(2z^2)$. The binomial coefficients are integers.
+For $j\ge1$, $v_p(4j+1)\le4j-4$, so if $v_p(z)\ge1$ all omitted
+terms have relative valuation at least $4v_p(z)$. Consequently
+$\log_E(z)=z(1+O(p^{4v_p(z)}))$. At $O$ both logarithm and parameter
+are zero; the multiplicative unit is assigned the value one.
+This supplies the order-four relative precision used by the new
+quartic without imposing a positive lower bound on a numerator index.
+
+\section{Verification and source scope}
+The exact code accompanying the 81-variable quartic checks the two
+polynomial identities for the pair symbolically. A separate
+standard-library program checks 702 ordered pairs over $\Q(\sqrt2)$,
+including 24 tangent pairs, 52 pairs involving the identity, 78
+nonzero torsion differences, and 352 half-integral index differences.
+It also checks 1300 regular ratio instances. These are finite examples,
+not a substitute for the universal proof or for Mordell--Weil.
+
+The final published statement of von Buhren's Theorem 1.1 and its
+embedding condition were checked in text and on the image of printed
+page 308. The application above is proved here; the internal proof of
+the published theorem is not represented as independently re-audited.
+No $abc$, prime-pattern or pole-realization hypothesis enters
+Theorem~\ref{thm:height}; the rank premise enters only its index
+corollary.
+
+\begin{thebibliography}{9}
+\bibitem{VB} J\'er\^ome von Buhren, \emph{Borne de hauteur semi-effective
+pour le probl\`eme de Mordell--Lang dans une vari\'et\'e ab\'elienne},
+Journal de Th\'eorie des Nombres de Bordeaux 29 (2017), 307--320,
+Theorem 1.1, p.~308. DOI: 10.5802/jtnb.981.
+\url{https://www.numdam.org/article/JTNB_2017__29_1_307_0.pdf}.
+\end{thebibliography}
+\end{document}

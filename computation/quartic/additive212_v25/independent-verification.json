@@ -1,0 +1,67 @@
+{
+  "schema": "additive212-independent-check/v1",
+  "status": "PASS",
+  "stages": [
+    {
+      "name": "source reconstruction against every original quartic coefficient",
+      "status": "PASS",
+      "quadraticRows": 188
+    },
+    {
+      "name": "nine changed and 177 retained quadratic equations; complete coordinate-use check",
+      "status": "PASS",
+      "changed": 9,
+      "retained": 177,
+      "removedRows": [
+        64,
+        65
+      ],
+      "removedCoordinates": [
+        119,
+        120
+      ]
+    },
+    {
+      "name": "universal contact identity, all ten roots, and the t=1 boundary",
+      "status": "PASS"
+    },
+    {
+      "name": "both physical contact normalizations independently matched to the pinned source",
+      "status": "PASS"
+    },
+    {
+      "name": "all-row verification of the two-coordinate coefficient rescaling",
+      "status": "PASS"
+    },
+    {
+      "name": "unbalanced complete quartic coefficients, all positive-parameter support and exact height",
+      "status": "PASS",
+      "variables": 212,
+      "quadraticRows": 186,
+      "monomials": 2908
+    },
+    {
+      "name": "balanced complete quartic coefficients, all positive-parameter support and exact height",
+      "status": "PASS",
+      "variables": 212,
+      "quadraticRows": 186,
+      "monomials": 2908
+    },
+    {
+      "name": "deliberate coefficient and missing-row rejection controls",
+      "status": "PASS"
+    }
+  ],
+  "stageCount": 8,
+  "independentImplementation": true,
+  "independentNonauthorReview": false,
+  "sourceRowsSha256": "49cf4066bf1e35e02e2156bf4bd24a21bb4c5e794f7374e056413d8306fb73c5",
+  "files": {
+    "balanced-polynomial.json": "2afaf031561252807933e81c3e0a4a06083d3dc14eab37dbe9fc2abef7e64760",
+    "balanced-quadratic.json": "2cd9285a3bd0fcc73e4c15a856f01e270ee48173586fb247a1bb7f1f57d56e61",
+    "construction-report.json": "ebb1d03ff9819dbf6d5652ae1a3220d8403f6411e2eeddac5a0af489158797ce",
+    "unbalanced-polynomial.json": "ebb5021480b9c9cc71f0e7884262a3dd25bd893e8a5c0e475d94656dbdb984af",
+    "unbalanced-quadratic.json": "b2f32d64ef1fb2591d37cfd41aadf8869ce691c39ed92e0e597ec10aaa53fc75"
+  },
+  "scope": "Finite exact algebra, all rows, full coefficients, contact-domain identities and coefficient thresholds. The arithmetic proof, its inherited premises, and a numerical defining threshold are not verified by this program."
+}

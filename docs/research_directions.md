@@ -1,3 +1,5 @@
+> **Retained source guide.** This page describes the dated constructions on the previous main branch. For the current counts, corrected proofs, exact specifications, and verification commands, see the repository [README](../README.md) and `data/results_20261114_v27.json`. Historical source equations and assumptions below are retained, not replaced silently.
+
 # Research directions
 
 The current bounds are **25 total variables**, or **226 for a quartic**, under the stated inherited arithmetic premises. Fully specified constructions use **27 variables**, or **262 for a quartic**. A weak abc inequality gives **13 variables**; ordinary rational abc gives **87 for a quartic**. Every count includes the input. The priorities remain the number of variables, degree, then coefficient height. The [main table](../README.md#main-results-and-arithmetic-assumptions) states the hypotheses and effectiveness.

@@ -1,0 +1,255 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,booktabs,microtype}
+\usepackage[margin=25mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\setlength{\emergencystretch}{2em}
+\hypersetup{pdftitle={Smaller Coefficients for a Quartic in 214 Variables}}
+\title{Smaller Coefficients for a Quartic in 214 Variables}
+\author{}\date{13 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+An invertible rational rescaling of six witness coordinates reduces the
+coefficient growth of the specified 214-variable quartic family. The
+original coefficient height is $149^{4N+2}+1$ for $N\ge53$. The new height
+is exactly $31581660^{28}149^{2N}$ for $N\ge57$ and is strictly smaller
+than the original height for every $N\ge53$. The rational input projection
+is unchanged for each parameter. All 188 quadratic equations and all
+2919 quartic coefficient profiles are checked exactly. The argument is
+algebraic: it does not verify the original arithmetic foundations or
+make the sufficient defining threshold effective.
+\end{abstract}
+
+\section{The source and the statement}
+The source polynomial is the sum of squares of 188 primitive integer
+quadratic equations in 214 rational coordinates. Its first coordinate
+is the distinguished input. Write the fixed coefficient as
+\[
+ A_N=149^{2N+1},\qquad
+ P_N(X_1,\ldots,X_{214})=\sum_{i=1}^{188}r_i(A_N,\boldsymbol X)^2.
+\]
+The exact source version is the family retained in the complete
+Version 17 manuscript at commit
+\begin{center}\small
+\nolinkurl{1f7e1f1fb0438feda3c9f3da9cc16982126aeeed}.
+\end{center}
+Its published coefficient file has Git blob identifier
+\begin{center}\small
+\nolinkurl{f6a32cc2f7ebcc37a952c5ce737169608cfe27c2}.
+\end{center}
+The accompanying source table is reconstructed from the printed equations.
+Its sum of squares reproduces that exact published coefficient file;
+no assertion of byte identity with the source's separate quadratic table
+is needed. The source and all new tables are retained in
+\begin{center}\small
+\nolinkurl{computation/quartic/balanced214_v24/}.
+\end{center}
+
+Set
+\[
+ K=31581660^{28},\qquad J=5898050446009651968,\qquad H_0=(JK)^2.
+\]
+Coefficient height means the largest absolute integer coefficient after
+substitution of the fixed parameter. All coordinate counts include the input.
+
+\begin{theorem}\label{thm:main}
+There is a completely specified integer quartic family
+$\widetilde P_N\in\Z[Y_1,\ldots,Y_{214}]$, for integers $N\ge1$, with
+these properties.
+\begin{enumerate}
+\item For every $x\in\Q$ and every $N\ge1$,
+\[
+ \exists\boldsymbol y\in\Q^{213}\ P_N(x,\boldsymbol y)=0
+ \quad\Longleftrightarrow\quad
+ \exists\boldsymbol z\in\Q^{213}\ \widetilde P_N(x,\boldsymbol z)=0.
+\]
+\item Each member has degree exactly four, integer content one, and exactly
+2919 nonzero coordinate monomials. It is a sum of 188 primitive quadratic
+squares.
+\item For every $N\ge1$,
+\[
+ H(\widetilde P_N)=\max\{H_0,K149^{2N}\}.
+\]
+For $N\ge57$ this is $K149^{2N}$. For every $N\ge53$,
+\[
+ H(\widetilde P_N)<149^{4N+2}+1=H(P_N).
+\]
+\end{enumerate}
+\end{theorem}
+The sufficient defining threshold of the source is not evaluated here.
+Consequently, if its integer-definability theorem is used with its stated
+premises and a fixed ineffective threshold $N_0$, exactly the same
+$N_0$ works for the new family. Neither $53$ nor $57$ is asserted to be
+a sufficient defining threshold. This is a coefficient improvement of
+that source, not a new variable-count result or an independent proof of
+its global arithmetic theorem.
+
+\section{Rational rescaling and row normalization}
+Put $C=149^N$, so $A_N=149C^2$, and let
+\[
+ I=\{90,91,93,117,118,120\}.
+\]
+Make the coordinate substitution
+\begin{equation}\label{eq:substitution}
+ X_j=\begin{cases}CY_j,&j\in I,\\Y_j,&j\notin I.\end{cases}
+\end{equation}
+This is an invertible rational linear map for every nonzero rational $C$;
+it fixes $X_1=Y_1$.
+
+For the source row numbers, define
+\[
+ m_{35}=2,\qquad m_{36}=m_{37}=m_{38}=m_{60}=m_{63}=m_{65}=1,
+\]
+and $m_i=0$ for all other rows. The new primitive rows are
+\begin{equation}\label{eq:rows}
+ \widetilde r_i(C,\boldsymbol Y)
+ =\varepsilon_i C^{-m_i}
+ r_i(149C^2,\boldsymbol X(C,\boldsymbol Y)),
+ \qquad \varepsilon_i\in\{1,-1\}.
+\end{equation}
+The sign is chosen so the first coefficient in the prescribed monomial
+order is positive; it has no effect on the sum of squares. Each numerator
+in~\eqref{eq:rows} is divisible by the stated power of $C$ in
+$\Z[C,\boldsymbol Y]$. The quotient has integer content one, degree at
+most two in $\boldsymbol Y$, and degree at most one in $C$.
+
+These statements can be checked term by term without evaluating any large
+parameter. A source term $aA^eX_{j_1}\cdots X_{j_k}$ becomes
+\[
+ a149^e C^{2e+\#\{\ell:j_\ell\in I\}}
+ Y_{j_1}\cdots Y_{j_k}.
+\]
+For each of the 188 rows the minimum exponent is $m_i$, and the difference
+between maximum and minimum exponents is at most one. The integer
+coefficients after division have greatest common divisor one. The supplied
+checker verifies the displayed identity for every term and every row.
+No coordinate monomial in an individual row has both a constant and a
+linear coefficient in $C$. If $g_0,g_1$ are the greatest common divisors
+of the constant and linear coefficient groups of a row, the checker gives
+$\gcd(g_0,g_1)=\gcd(g_0,149)=1$. Thus every specialization $C=149^N$
+remains primitive over $\Z$. Fifty-two rows change; the remaining 136
+retain their coefficient vectors up to the harmless chosen signs.
+
+Define
+\[
+ \widetilde P_N(\boldsymbol Y)=
+ \sum_{i=1}^{188}\widetilde r_i(149^N,\boldsymbol Y)^2.
+\]
+Over $\Q$, a sum of squares vanishes exactly when each summand vanishes.
+All the row multipliers in~\eqref{eq:rows} are nonzero, and the coordinate
+map~\eqref{eq:substitution} is bijective. This proves both directions of
+the projection assertion, on the entire rational solution set. No witness
+coordinate is divided out; zero witness values remain allowed. No local
+or global arithmetic existence assertion is added.
+
+\section{Exact coefficient height}
+Collect the expansion by its coordinate monomials $M$. Write
+\[
+ \widetilde P(C,\boldsymbol Y)=\sum_M p_M(C)M(\boldsymbol Y).
+\]
+The exact expansion has 2924 terms before equal coordinate monomials are
+collected, and 2919 after collection. The coefficient types are
+\begin{center}
+\begin{tabular}{cr}
+\toprule
+Nonzero powers of $C$ in $p_M$ & Number of coordinate monomials\\\midrule
+$\{0\}$&2508\\
+$\{1\}$&331\\
+$\{2\}$&75\\
+$\{0,2\}$&5\\\bottomrule
+\end{tabular}
+\end{center}
+In each of the five mixed profiles the two coefficients have the same
+sign. Therefore no coordinate monomial disappears when $C>0$.
+Every one of the 214 coordinates occurs. The coefficient of $Y_1^4$
+is exactly one for every $C$, proving degree four and content one.
+
+The two coefficients
+\begin{equation}\label{eq:attaining}
+ p_{Y_{112}^4}(C)=H_0,\qquad
+ p_{Y_{109}^2Y_{117}^2}(C)=KC^2
+\end{equation}
+will attain the height. The following elementary observation makes the
+check for all parameters finite.
+
+\begin{lemma}\label{lem:envelope}
+Let $H_0,K>0$ and $C>0$.
+\begin{enumerate}
+\item If $a^2\le H_0K$, then $|a|C\le\max(H_0,KC^2)$.
+\item If $|a_0|K+|a_2|H_0\le H_0K$, then
+$|a_0+a_2C^2|\le\max(H_0,KC^2)$.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+The geometric mean of $H_0$ and $KC^2$ is no larger than their maximum,
+which proves the first assertion. For the second, put $u=|a_0|/H_0$
+and $v=|a_2|/K$. Then $u,v\ge0$ and $u+v\le1$. The triangle
+inequality gives
+\[
+ |a_0+a_2C^2|\le uH_0+vKC^2\le\max(H_0,KC^2).
+\]
+\end{proof}
+
+For each of the 331 linear profiles the exact integer calculation gives
+$a^2\le H_0K$. For each of the remaining 2588 profiles it gives
+$|a_0|K+|a_2|H_0\le H_0K$, with a missing coefficient taken to be zero.
+Every coefficient is therefore bounded by the claimed maximum, and
+\eqref{eq:attaining} proves equality. The verification concerns every
+coefficient, not just an upper bound from a circuit norm.
+
+To locate the integer threshold, the checker verifies
+\[
+ 149^{56}<J31581660^{14}<149^{57}.
+\]
+Since $H_0/K=J^2K$, it follows that $KC^2>H_0$ for every
+$C=149^N$ with $N\ge57$, and that $H_0>KC^2$ for $N\le56$.
+The strict improvement over the source follows from the two exact
+inequalities
+\[
+ H_0<149^{214}+1,\qquad K<149^{108}.
+\]
+For $N\ge53$, the first is bounded by $149^{4N+2}+1$, and the second
+gives $K149^{2N}<149^{4N+2}$. These prove the height assertions of
+Theorem~\ref{thm:main}.
+
+For completeness the source height is also rechecked: its unique
+quadratic profile in $A$ is $A^2+1$. Every other profile has degree at
+most one and absolute value strictly smaller at $A=149^{107}$.
+After division by $A^2$, the corresponding absolute-value bounds decrease
+as $A$ increases. This establishes $H(P_N)=149^{4N+2}+1$ for all
+$N\ge53$, independently of the new coefficient calculation.
+
+\section{Reproducibility and audit scope}
+The accompanying standard-library producer writes the full new quadratic
+and quartic tables. A separate checker imports no producer and expands
+squares using unordered term pairs rather than the producer's ordered
+double loop. It performs the following finite checks: source polynomial
+identity, expansion of all reconstructed source rows, every row transformation,
+all new quartic coefficients, the exact support and content, all height
+envelope inequalities, and both parameter thresholds. A deliberately
+corrupted transformed coefficient is rejected.
+
+The reconstructed source polynomial has 246349 bytes and SHA-256
+\begin{center}\small
+\nolinkurl{9f461531df52ac73e02cf7a4ce270422715642c0d3112952cad4968d9a7e24ea}.
+\end{center}
+Its Git blob identifier matches the live repository metadata at the pinned
+commit. This binds the numerical source used here to the actual published
+polynomial, not merely to a count or an old review verdict. Coordinate
+names and the reconstructed equations are distributed beside the checker.
+The named indices in the proof are the original source indices, so no
+coordinate renumbering is implicit.
+
+These algebraic checks do not establish the source's elliptic rank,
+prime-pattern, pole-realization or contact-height theorems. In particular
+they do not supply complete independent acceptance of the assembled
+arithmetic proof. The producer, checker and written argument were developed
+in one research session; distinct implementations are not presented as
+non-author review. The statement proved here is exact algebraic
+projection equivalence and a coefficient improvement, with the original
+arithmetic status and quantifier order left unchanged.
+\end{document}

@@ -1,0 +1,57 @@
+{
+  "schema": "abc81-independent-verification/v1",
+  "status": "PASS",
+  "stages": [
+    {
+      "name": "independent reconstruction of all quadratic equations and invertible common-chart row basis",
+      "status": "PASS",
+      "rows": 73,
+      "variables": 81
+    },
+    {
+      "name": "independent complete quartic expansion, exact degree, content and support",
+      "status": "PASS",
+      "coefficientProfiles": 941,
+      "parameterTerms": 942
+    },
+    {
+      "name": "coefficient-height formula for every fixed odd B>=3",
+      "status": "PASS",
+      "formula": "max(4153456,B^2+797551)",
+      "coefficientOnlyThresholdOddB": 1833
+    },
+    {
+      "name": "universal reciprocal cubic and oriented-difference polynomial identities",
+      "status": "PASS"
+    },
+    {
+      "name": "exact reciprocal contact identity and its affine normalization",
+      "status": "PASS"
+    },
+    {
+      "name": "valuation residue classes, positive-depth implications, zero-weight exclusion, and strict height coefficient",
+      "status": "PASS"
+    },
+    {
+      "name": "three deliberate rejection controls",
+      "status": "PASS",
+      "controls": [
+        "changed quadratic coefficient",
+        "missing equation",
+        "changed quartic coefficient"
+      ]
+    }
+  ],
+  "stageCount": 7,
+  "sympyVersion": "1.14.0",
+  "sourceFiles": {
+    "build.py": "b06ebdeeef6043dbf0544575daa4b8a88cc2b4594c273563cbc21b0813af79c0",
+    "common-row-reduction.json": "47dcffa1ee29c129c1a76a8b8f770c817a30afb3b39382628a9f5cea17b03de6",
+    "quadratic-family.json": "e63af0a5ea7972cb53e029fb9abe04a7b2a9f565796e1848e09ba5d3c8c5e319",
+    "polynomial-family.json": "f8c7fdb3a969e5ade1a4269d7e21ef65eadc2244935b90616f012f924b4c15f7",
+    "construction-report.json": "f1dac7b133d08ed9a302a72f5d723f7856c6326ac7984f83fe834844f01b7e77"
+  },
+  "independentImplementation": true,
+  "independentNonauthorReview": false,
+  "scope": "Exact algebraic identities, all quadratic equations, all quartic coefficients, height profiles and rejection controls. Does not verify abc, the inherited prime-pattern/pole premises, a numerical defining threshold, or the repository-wide legacy suite."
+}

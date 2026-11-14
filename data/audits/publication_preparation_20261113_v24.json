@@ -1,0 +1,39 @@
+{
+  "schema": "prepared-main-update/v24",
+  "date": "2026-11-13",
+  "target_repository": "JoseBrox/diophantine-z-q_improvements",
+  "target_branch": "main",
+  "base_commit": "fa09c9c6c97982c13265e7088d95cdb61b3e90cf",
+  "remote_commit_created": false,
+  "remote_branch_updated": false,
+  "upstream_modified": false,
+  "publication_blocker": "The exposed GitHub connector has read actions but no write action; the container has no configured authenticated GitHub CLI.",
+  "local_new_checks": "PASS",
+  "source_checkout_authentication_run": false,
+  "prior_repository_full_suite_run": false,
+  "non_author_review": false,
+  "python_version": "3.13.5",
+  "proofs": [
+    {
+      "path": "papers/finite_algebra/triangular_separation_20261113_v24.pdf",
+      "pages": 7,
+      "sha256": "954d727807fb2ca0c507a482fe6287f35e2afdc633eb8759c90b07cc696a29eb",
+      "build": "pdflatex twice; no overfull boxes",
+      "layout": "All pages rendered and inspected; changed page rerendered after final correction."
+    },
+    {
+      "path": "papers/quartic/coefficient_balancing_20261113_v24.pdf",
+      "pages": 4,
+      "sha256": "85fe9771248685fc4fb0c5f4645f17b730d287fffecce147a30f4908350fa78d",
+      "build": "pdflatex twice; no overfull boxes",
+      "layout": "All pages rendered and inspected; changed page rerendered after final correction."
+    }
+  ],
+  "limitations": [
+    "No new variable-count reduction.",
+    "All source arithmetic assumptions are retained.",
+    "No effective defining threshold is supplied for an ineffective source.",
+    "Fixture-only norm bounds are not certified-member height bounds.",
+    "The prepared application script has not been run against a full checkout."
+  ]
+}

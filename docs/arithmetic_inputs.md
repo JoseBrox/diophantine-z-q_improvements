@@ -1,3 +1,5 @@
+> **Retained source guide.** This page describes the dated constructions on the previous main branch. For the current counts, corrected proofs, exact specifications, and verification commands, see the repository [README](../README.md) and `data/results_20261114_v27.json`. Historical source equations and assumptions below are retained, not replaced silently.
+
 # Arithmetic inputs, theorem scope, and effectiveness
 
 The construction theorems identify rational input projections with $\mathbb Z$ under explicitly stated arithmetic inputs. All variable counts include the input. A certified coefficient specification is distinguished from a certified sufficient choice of its fixed coefficient parameter.
