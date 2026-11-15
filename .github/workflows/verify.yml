@@ -13,6 +13,10 @@ jobs:
         with:
           python-version: '3.12'
       - run: python -m pip install sympy==1.14.0
+      - name: Verify exact 196 and 258 variable reductions and supplied 198 archive
+        run: python -B scripts/verify_v38.py --report /tmp/v38-verification.json
+      - name: Verify the 78 variable abc construction
+        run: python -B scripts/verify_v34.py --report /tmp/v34-verification.json
       - name: Verify corrected 200-variable quartic and local obstructions
         run: python -B scripts/verify_v33.py --report /tmp/v33-verification.json
       - name: Verify v30 subalgebra norms and common twists
