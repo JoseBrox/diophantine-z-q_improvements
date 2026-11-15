@@ -1,0 +1,320 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,booktabs,microtype}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}\newtheorem{definition}[theorem]{Definition}
+\newcommand{\Q}{\mathbb Q}\newcommand{\F}{\mathbb F}
+\DeclareMathOperator{\Nm}{N}
+\title{Local solubility at every shared pole parameter}
+\author{}\date{}
+\begin{document}\maketitle
+\begin{abstract}
+Every rational value of the normalized conic parameter gives an everywhere
+locally soluble second-pole quartic for every prepared input. The assertion
+holds for an arbitrary finite family at one prescribed parameter, and local
+witnesses can avoid the nonzero guards used by the finite-algebra encoding.
+We give explicit proofs at all primes, including the primes dividing the
+conic denominator, and an exact elliptic formulation of the remaining global
+existence problem. No local obstruction can exclude the common-parameter
+construction on prepared inputs. Simultaneous rational realization is not
+asserted.
+\end{abstract}
+
+\section{The local theorem}
+
+\begin{definition}
+A rational number $b$ is \emph{prepared} if its reduced denominator is a
+square and
+\[
+ 0<b<17,\qquad b\in\Q_2^{\times2}\cap\Q_3^{\times2}
+ \cap\Q_{17}^{\times2},\qquad
+ v_2(b)\ge3,\quad v_3(b)\ge1,\quad v_{17}(b)\ge2.
+\]
+These are the preparation conditions of the pole source in
+\cite{Fixed,UnitNorm}.
+\end{definition}
+
+Write $b=dt^2$ with $d,t\in\Q^\times$. The factorization may be the
+syntactic square extraction used by the source; no squarefreeness is needed.
+Set
+\begin{equation}\label{eq:data}
+ D=17d,\qquad C=17(17-b),\qquad
+ e_\tau=\frac{\tau^2-D}{\tau^2+3D},\qquad A_\tau=e_\tau C.
+\end{equation}
+The normalized second-pole equation is
+\begin{equation}\label{eq:quartic}
+ \mathcal C_\tau:\qquad
+ q^2=D(s^2-A_\tau)(s^2+3A_\tau).
+\end{equation}
+Its smooth projective model is understood when discussing points at infinity.
+
+\begin{theorem}\label{thm:local}
+For a prepared $b$ and every $\tau\in\Q$, the quantities in
+\eqref{eq:data} are defined, $D A_\tau\ne0$, and
+$\mathcal C_\tau$ is a smooth genus-one curve. It has points over every
+completion of $\Q$. At each completion it has infinitely many affine points
+with $q\ne0$, and these can avoid the zeros of any prescribed finite
+collection of nonzero polynomials in $s$.
+\end{theorem}
+
+The parameter is arbitrary. Thus the same rational $\tau$ can be used
+locally for every member of any finite family of prepared inputs, even when
+their input square classes are distinct.
+
+\begin{lemma}\label{lem:open}
+Let $k$ be $\mathbb R$ or a finite extension of $\Q_p$, and let $D,A\in
+k^\times$. If the smooth projective curve
+$q^2=D(s^2-A)(s^2+3A)$ has a $k$-point, then it has infinitely many affine
+$k$-points with $q\ne0$ outside any prescribed finite set of values of $s$.
+\end{lemma}
+\begin{proof}
+The four branch points over an algebraic closure are distinct in
+characteristic zero. Every projective $k$-point is therefore smooth, and a
+local coordinate identifies a neighborhood with a nonempty open subset of
+$k$, by the implicit function theorem. Such a neighborhood is infinite.
+The points at infinity, the zeros of $q$, and the fibers over finitely many
+values of $s$ form a finite set. Deleting them proves the assertion.
+\end{proof}
+
+\section{Proof at every place}
+
+Since $b>0$, one has $d>0$ and $D>0$. Hence $\tau^2+3D>0$ for
+$\tau\in\Q$. Preparation and $b=dt^2$ imply that $v_{17}(d)$ is even,
+so $v_{17}(D)$ is odd. Thus $D$ is not a rational square and
+$\tau^2\ne D$. Also $C>0$. Consequently $D A_\tau\ne0$.
+The polynomial on the right of \eqref{eq:quartic} has discriminant
+\begin{equation}\label{eq:disc}
+                         -2^{12}3D^6A_\tau^6,
+\end{equation}
+which proves smoothness and genus one. Fix $\tau\in\Q$, and abbreviate
+$e=e_\tau$, $A=A_\tau$.
+
+\subsection{Primes other than $2,3,17$}
+
+Fix such a prime $p$. If $D\in\Q_p^{\times2}$, the curve has two
+$\Q_p$-points at infinity: in the chart $u=1/s$, $z=q/s^2$, the
+equation at $u=0$ is $z^2=D$. If $-3D\in\Q_p^{\times2}$,
+the value $s=0$ gives the nonzero square $-3DA^2$ on the right.
+
+Suppose next that $v_p(D)$ is odd. The valuations of $D$ and $b$ have
+the same parity. The reduced denominator of $b$ is a square, so a negative
+valuation of $b$ is even. It follows that $v_p(b)>0$, and
+\[
+                      C=17^2(1-b/17)\in\Q_p^{\times2}.
+\]
+Write $D=h^2D_0$ with $h\in\Q_p^\times$ and $v_p(D_0)=1$, and
+replace $\tau$ by $\tau/h$ in the formula for $e$. This leaves $e$
+unchanged. If $v_p(\tau/h)\le0$, then
+\begin{equation}\label{eq:units}
+ e-1=\frac{-4D_0}{(\tau/h)^2+3D_0}
+\end{equation}
+has positive valuation. Thus $e$ is a square. If $v_p(\tau/h)\ge1$,
+including $\tau=0$, the identity
+\[
+ -3e-1=\frac{-4(\tau/h)^2}{(\tau/h)^2+3D_0}
+\]
+shows that $-3e$ is a square. In either case $A$ or $-3A$ is a square,
+giving a point with $q=0$.
+
+It remains that $v_p(D)$ is even and neither $D$ nor $-3D$ is a
+square. Remove an even power of $p$ from $D$, scaling $\tau$ in the
+same way, to make $D$ a unit. Both $D$ and $-3D$ then have nonsquare
+residues. For an integral scaled $\tau$, neither numerator nor denominator
+of $e$ can vanish modulo $p$; for a nonintegral scaled $\tau$ they have
+the same valuation. Therefore $v_p(e)=0$.
+
+We claim that $v_p(C)$ is even. If it is negative, it equals the negative
+valuation of $b$, which is even. If it were positive, then $b$ would be a
+unit congruent to $17$ modulo $p$. The number $17b$ would be a square in
+$\Q_p$, and so would $D=17b/t^2$, a contradiction. The remaining
+possibility is $v_p(C)=0$. Thus $v_p(A)$ is even. Remove this even power
+by scaling $s$ and $q$. The resulting quartic has unit leading coefficient
+and unit $A$, so \eqref{eq:disc} is a unit. Its projective reduction is a
+smooth genus-one curve over $\F_p$. It has an $\F_p$-point
+\cite[Chapter~IV, Corollary~9.3]{Milne}; equivalently its number of points
+satisfies the genus-one Hasse--Weil bound. Smooth lifting gives a
+$\Q_p$-point. This argument includes primes dividing the original conic
+denominator: if its valuation changes, one of the earlier square cases
+applies.
+
+\subsection{The primes 2, 3, 17 and the real place}
+
+At $2$, the numbers $d$ and $17$ are squares in $\Q_2$, so the points
+at infinity are rational. At the real place the same conclusion follows
+from $D>0$.
+
+At $3$, choose $h\in\Q_3^\times$ with $h^2=d$. Replacing $q$ by
+$q/h$ and writing $u=\tau/h$ reduces the leading coefficient to $17$
+and gives
+\[
+                     e=\frac{u^2-17}{u^2+51}.
+\]
+Preparation gives $v_3(b)\ge2$, because this valuation is even. Thus
+$C=17^2(1-b/17)$ is a square unit and is $1$ modulo $3$.
+If $v_3(u)<0$, then $e\equiv1\pmod3$ is a square unit.
+If $v_3(u)>0$, including $u=0$, then $-3e\equiv1\pmod3$ is a
+square unit. These two cases give $q=0$ as before. If $u$ is a unit,
+then $e\equiv2\pmod3$, and at $s=1$ the right side of the scaled
+equation is
+\[
+                  17(1-eC)(1+3eC)\equiv1\pmod3.
+\]
+It is a nonzero square in $\Q_3$.
+
+At $17$, choose $h^2=d$ in $\Q_{17}$ and make the same scaling.
+Now $v_{17}(17)=1$, and $C=17^2(1-b/17)$ is a square because
+$v_{17}(b)\ge2$. The odd-valuation argument above, with $D_0=17$,
+gives a point for every value of $u=\tau/h$.
+
+This proves local solubility at every place. Lemma~\ref{lem:open} gives
+the affine, nonzero-ordinate and avoidance assertions, and completes the
+proof of Theorem~\ref{thm:local}.
+
+\section{Finite families and conjugate guards}
+
+\begin{corollary}\label{cor:guards}
+Let $B_0$ be a finite etale $\Q$-algebra with a rational character
+$\chi:B_0\to\Q$. For $1\le i\le r$, let $b_i,d_i,t_i$ be units with
+$b_i=d_it_i^2$, and suppose each $\chi(b_i)$ is prepared. There is a
+finite set $\mathcal E\subset\Q$, not containing zero, such that for
+every $\tau\in\Q\setminus\mathcal E$ and every completion $k$ of
+$\Q$, the $r$ pole equations at $\chi$ have affine $k$-solutions with
+nonzero ordinates and
+\[
+ \Nm_{B_0/\Q}(\tau^2+51d_i)\ne0,
+ \qquad
+ \Nm_{B_0/\Q}\!\left(
+ 17d_i(s_i^2-A_i)(s_i^2+3A_i)\right)\ne0.
+\]
+Here $A_i=17(17-b_i)(\tau^2-17d_i)/(\tau^2+51d_i)$.
+Every native factor guard obtained by syntactic square extraction of these
+expressions is nonzero as well.
+\end{corollary}
+\begin{proof}
+The norm of each conic denominator is a monic nonzero polynomial in
+$\tau$, and its value at zero is $\Nm_{B_0/\Q}(51d_i)\ne0$.
+Let $\mathcal E$ consist of their rational zeros. Fix a permitted $\tau$.
+Each denominator is a unit in $B_0$. For each $i$, the radicand in the
+statement is a degree-four polynomial in $s_i$ with unit leading
+coefficient $17d_i$. Its norm is therefore a nonzero polynomial in
+$s_i$, of degree $4\dim_{\Q}B_0$.
+
+Apply Theorem~\ref{thm:local} to the rational numbers
+$\chi(b_i),\chi(d_i),\chi(t_i)$ and to the same fixed $\tau$.
+For each $i$, avoid the finitely many zeros of its norm polynomial.
+These choices are independent once $\tau$ is fixed. A nonzero product
+has no zero factor, which also proves the assertions for all factors
+extracted from the numerator, denominator and square multiplier.
+\end{proof}
+
+In particular $\tau=0$ always supplies simultaneous local witnesses with
+these conjugate guards. The corollary concerns the pole stage: it assumes
+that all earlier point-algebra guards have already been met. It supplies
+no simultaneous rational witness.
+
+\section{The exact global condition}
+
+For $n\in\Q^\times$, write
+\[
+                        E_n:\quad y^2=x(x-n)(x+3n).
+\]
+Put $n=DA_\tau$. The polynomial map
+\begin{equation}\label{eq:ellmap}
+                    (s,q)\longmapsto (Ds^2,Dsq)
+\end{equation}
+sends $\mathcal C_\tau$ to $E_n$ and extends to a degree-two map on
+the smooth projective curves.
+
+\begin{samepage}
+\begin{proposition}\label{prop:global}
+For prepared $b$, the following are equivalent for a fixed $\tau\in\Q$:
+\begin{enumerate}
+\item The pole quartic has an affine rational point with $q\ne0$.
+\item $E_{DA_\tau}(\Q)$ has a point with nonzero ordinate and abscissa
+in $D\Q^{\times2}$.
+\item $E_{N(\tau)}(\Q)$ has such a point, where
+\[
+             N(\tau)=DC(\tau^2-D)(\tau^2+3D).
+\]
+\end{enumerate}
+\end{proposition}
+\end{samepage}
+\begin{proof}
+If $s=0$, the right side of \eqref{eq:quartic} is negative over
+$\mathbb R$, because $D>0$. Hence a rational affine point has $s\ne0$,
+and \eqref{eq:ellmap} proves the first implication. Conversely, write
+$x=Ds^2$ with $s\in\Q^\times$ and set $q=y/(Ds)$. Substitution gives
+\eqref{eq:quartic} and preserves nonzero ordinates. Finally,
+\[
+        N(\tau)=DA_\tau(\tau^2+3D)^2.
+\]
+Scaling elliptic coordinates by $(\tau^2+3D)^2$ and
+$(\tau^2+3D)^3$ identifies the two curves and preserves abscissa
+square classes.
+\end{proof}
+
+Thus simultaneous rational realization asks for one rational $\tau$ at
+which specified abscissa classes occur on all the correlated quartic-twist
+families $E_{N_i(\tau)}$. The local theorem verifies all local conditions
+for each of these classes, for every rational $\tau$. It does not establish
+their simultaneous rational occurrence.
+
+This is consistent with the fixed-parameter examples of \cite{Fixed}.
+Those exclude rational points by exact elliptic rank and square-class
+calculations. The conic coordinates in the two normalizations satisfy
+$\tau_{\rm old}=t\tau$ \cite[Section~4]{UnitNorm}, so
+Theorem~\ref{thm:local} also applies to those fixed old parameters.
+The associated quartics are everywhere locally soluble despite their
+global obstruction. Consequently local solubility of every shared fiber
+does not supply the missing simultaneous rational realization.
+
+\section{Exact verification}
+
+The verifier
+\nolinkurl{computation/pole_parameters/shared_parameter_local_v41/check.py}
+checks the two unit identities, the discriminant \eqref{eq:disc}, the map
+\eqref{eq:ellmap}, and the polynomial twist identity exactly. It counts
+all $7704$ smooth unit quartics of the displayed form over the twelve
+prime fields from $\F_5$ through $\F_{43}$ in its specified list, checks
+the exceptional residue calculation at $3$, and exercises $19008$ exact
+local valuation branches, including rescaled square representatives.
+It also reconstructs all four current source circuits and checks their
+v40 guard specifications: the sole pole-stage guard factor involving
+$\tau_i$ but not $s_i$ is the conic denominator, whose value at
+$\tau_i=0$ is $51$ times the numerator of the unit $d_i$.
+The reconstructed first ordinate is neither stored nor guarded; the
+nonzero guards on the second ordinates can be met by the local witnesses
+of Theorem~\ref{thm:local}.
+
+It also gives a local certificate at every possible bad prime for the
+published prepared inputs excluding old $\tau=\pm1$ and $\tau=\pm17$,
+for the $e=-1/3$ counterexample, and for an input of square class $409$.
+At all remaining primes the corresponding quartic has smooth genus-one
+reduction. An invalid-preparation control retains all exceptional local
+square conditions and valuation inequalities but replaces $b=(204/55)^2$
+by $b/409$. Its negative odd valuation at $409$ makes the quartic at
+$\tau=0$ locally insoluble there, by an exact valuation-parity argument.
+These computations verify explicit identities and instances;
+the proof in Section~2 establishes the assertion for every prepared input
+and every rational parameter. No rank computation or local-to-global
+assumption enters the local theorem.
+
+\begin{thebibliography}{9}
+\bibitem{Fixed}
+\emph{Obstructions to fixed parameters in pole certificates},
+\nolinkurl{papers/pole_parameters/fixed_pole_parameters_20261109_v17.tex}.
+\bibitem{Milne}
+J. S. Milne, \emph{Elliptic Curves}, second edition,
+World Scientific, 2021. Chapter~IV, Corollary~9.3 and Theorem~9.4.
+\url{https://jmilne.org/math/Books/EC2.pdf}.
+\bibitem{UnitNorm}
+\emph{A single norm determinant for the 25- and 13-variable constructions},
+\nolinkurl{papers/finite_algebra/unit_norm_20261114_v28.tex}.
+\end{thebibliography}
+\end{document}

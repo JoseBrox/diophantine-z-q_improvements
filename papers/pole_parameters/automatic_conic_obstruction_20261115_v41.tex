@@ -1,0 +1,283 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,booktabs,microtype}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}\newtheorem{definition}[theorem]{Definition}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\title{Obstructions to automatic first conics in pole certificates}
+\author{}\date{}
+\begin{document}\maketitle
+\begin{abstract}
+Writing a pole input as $b=(1-e^2)r^2$ makes the first congruent-number
+conic automatic. This does not ensure that the second pole equations have
+rational witnesses. We give two dense families of prepared counterexamples,
+including arbitrarily small positive inputs. One has the fixed value
+$e=9/41$ and square inputs. The other occurs on a rational contact map for
+which $e,1-e,1+e$ all have completely split numerators. The obstructions use
+exact nonzero coefficients in Tunnell's theorem and allow a zero second
+ordinate. They concern prepared multipliers; no assertion is made that the
+specified multipliers occur in a complete integer-defining source.
+\end{abstract}
+
+\section{The pole predicate and noncongruent areas}
+
+The congruent-number pole equations of \cite{Pole} are
+\begin{equation}\label{eq:pole}
+ e^2+bp^2=1,\qquad uv=e(1-b),\qquad u^2-v^2=bq^2.
+\end{equation}
+A \emph{prepared} input in this note means a rational number $b$ with
+square reduced denominator satisfying
+\begin{equation}\label{eq:prepared}
+                 0<b<1,\qquad b\in\Q_2^{\times2},\qquad v_2(b)\ge3.
+\end{equation}
+If $b=(1-e^2)r^2$ with $r\ne0$, then $p=1/r$ satisfies the first
+equation. The remaining equations need a separate rational realization.
+
+\begin{lemma}\label{lem:area}
+Suppose $0<b<1$, $e>0$, and put $A=e(1-b)$. If the last two equations
+of \eqref{eq:pole} have a rational solution with $q\ne0$, then $bA$ is
+the area of a rational right triangle. If $A$ is not a rational square,
+there is no solution with $q=0$.
+\end{lemma}
+\begin{proof}
+For $q\ne0$, the positive rational numbers
+\[
+ \left|\frac{2A}{q}\right|,\qquad |bq|,\qquad
+ \left|\frac{u^2+v^2}{q}\right|
+\]
+are the sides of a right triangle. Indeed
+$(2uv)^2+(u^2-v^2)^2=(u^2+v^2)^2$, and its area is $bA$.
+If $q=0$, then $u^2=v^2$. Since $uv=A>0$, one has $u=v$ and
+$A=u^2$, proving the second assertion.
+\end{proof}
+
+The property of being the area of a rational right triangle is unchanged
+by multiplication by a nonzero rational square. We will use the following
+two noncongruent integers.
+
+\begin{proposition}\label{prop:noncongruent}
+Neither $17$ nor
+\[
+                    N_*=15\,499\,155=3\cdot5\cdot7\cdot17\cdot19\cdot457
+\]
+is the area of a rational right triangle.
+\end{proposition}
+\begin{proof}
+Tunnell's introduction theorem, part~(a), states that $a(n)\ne0$ excludes
+$n$ as such an area, where
+\begin{equation}\label{eq:tunnell}
+ \sum_{n\ge1}a(n)z^n
+ =z\prod_{m\ge1}(1-z^{8m})(1-z^{16m})
+       \sum_{c\in\Z}z^{2c^2}.
+\end{equation}
+This is the unconditional necessary direction of the theorem
+\cite[p.~323]{Tunnell}; its converse is not used.
+
+The first product, including its initial $z$, is
+$z-z^9-2z^{17}+O(z^{25})$, and the theta series is
+$1+2z^2+2z^8+O(z^{18})$. Thus $a(17)=-4$.
+
+For the larger integer, Euler's pentagonal identity gives the finite sum
+\begin{equation}\label{eq:finite-sum}
+ a(n)=\sum_{\substack{j,k,c\in\Z\\
+      4j(3j-1)+8k(3k-1)+2c^2=n-1}}(-1)^{j+k}.
+\end{equation}
+The exact verifier enumerates the $2273$ possible first exponents and
+$1607$ possible second exponents at $n=N_*$. It determines $c$ by exact
+integer square-root testing. There are $952$ exponent pairs contributing
+$+2$ and $1080$ contributing $-2$, with no $c=0$ contribution. Hence
+\[
+                        a(N_*)=2(952-1080)=-256.
+\]
+As an independent finite check, the numbers of integer solutions of
+$2x^2+y^2+8z^2=N_*$ and $2x^2+y^2+32z^2=N_*$ are $10752$ and
+$5120$, respectively; their difference $5120-10752/2$ is again $-256$.
+The corresponding counts for $17$ are $16$ and $4$. The nonzero
+coefficients in \eqref{eq:tunnell} prove both assertions.
+\end{proof}
+
+\section{A fixed conic with square prepared inputs}
+
+\begin{theorem}\label{thm:small}
+Fix
+\[
+                 e=\frac9{41},\qquad R=1-e^2=\left(\frac{40}{41}\right)^2.
+\]
+There is a dense subset of $(0,1)$ consisting of prepared rational squares
+$b=Rr^2$ for which the first equation of \eqref{eq:pole} has the explicit
+witness $p=1/r$, but the last two equations have no rational solution,
+even with $q=0$ allowed. One example is
+\[
+ b=\left(\frac{348}{349}\right)^2,\qquad
+ r=\frac{3567}{3490},\qquad p=\frac{3490}{3567}.
+\]
+\end{theorem}
+\begin{proof}
+Consider the rational conic
+\begin{equation}\label{eq:smallconic}
+ t^2+697w^2=1,\qquad
+ t=\frac{1-697z^2}{1+697z^2},\qquad
+ w=\frac{2z}{1+697z^2}.
+\end{equation}
+For nonzero rational $z$, neither $t$ nor $w$ vanishes: $697=17\cdot41$
+is not a rational square. Put
+\[
+                b=t^2,\qquad r=\frac{41t}{40},\qquad p=\frac{40}{41t}.
+\]
+Then $0<b<1$, $b=Rr^2$, and $e^2+bp^2=1$. If $z$ is a $2$-adic
+unit, then $697z^2\equiv1\pmod8$. The numerator of $t$ has valuation
+at least three and its denominator has valuation one. Hence
+$v_2(t)\ge2$, so $b$ satisfies \eqref{eq:prepared}. Its reduced
+denominator is a square because $b=t^2$.
+
+The second-pole factor is
+\[
+                     A=e(1-b)=\frac9{41}\,697w^2=17(3w)^2.
+\]
+It is not a rational square, so $q=0$ is excluded by Lemma~\ref{lem:area}.
+If $q\ne0$, the same lemma would make $bA=17(3tw)^2$ a rational
+right-triangle area. This contradicts Proposition~\ref{prop:noncongruent}.
+
+Rational $2$-adic units are dense in $\mathbb R$: fractions with odd
+numerator and arbitrarily large odd denominator approximate every real
+number. On $0<z<1/\sqrt{697}$, the continuous function $t(z)^2$
+has image $(0,1)$. This proves density and gives arbitrarily small prepared
+counterexamples. At $z=1/697$, one has $(t,w)=(348/349,1/349)$,
+which gives the displayed example and $v_2(b)=4$.
+\end{proof}
+
+The fixed first conic is not itself inconsistent with the full pole
+predicate. At the same $e=9/41$, the prepared input $b=R$ has the full
+witness
+\[
+                         p=1,\qquad u=e,\qquad v=e^2,\qquad q=e.
+\]
+The obstruction depends on the prepared multiplier.
+
+\section{A completely split six-contact map}
+
+Consider the rational functions
+\begin{equation}\label{eq:split}
+ e(\delta)=\frac{49\delta^2-1}{120\delta^3},\qquad
+ R(\delta)=\frac{\displaystyle\prod_{a\in\{3,5,8\}}
+                    (\delta^2-a^{-2})}{\delta^6}.
+\end{equation}
+The identities
+\begin{equation}\label{eq:splitids}
+ \begin{split}
+ e(\delta)&=\frac{(7\delta-1)(7\delta+1)}{120\delta^3},\\
+ 1-e(\delta)&=\frac{(3\delta-1)(5\delta-1)(8\delta+1)}{120\delta^3},\\
+ 1+e(\delta)&=\frac{(3\delta+1)(5\delta+1)(8\delta-1)}{120\delta^3}
+ \end{split}
+\end{equation}
+show that $R=1-e^2$ and that all the displayed numerators split over $\Q$.
+Thus $b=R(\delta)r^2$ and $p=1/r$ make the first pole conic automatic
+using only rational contact functions.
+
+\begin{theorem}\label{thm:split}
+At $\delta=7$, there is a dense subset of $(0,1)$ consisting of prepared
+inputs $b=R(7)r^2$ for which the last two equations of \eqref{eq:pole}
+have no rational solution, including solutions with $q=0$. In particular,
+put
+\[
+ t_* =\frac{38864}{1235629},\qquad
+ w_* =\frac{11759}{1235629},\qquad b_*=969t_*^2.
+\]
+Then $v_2(b_*)=8$, and the first conic has
+\[
+ e=\frac{20}{343},\qquad R(7)=969\left(\frac{11}{343}\right)^2,
+ \qquad r=\frac{343t_*}{11},\qquad p=\frac{11}{343t_*}.
+\]
+\end{theorem}
+\begin{proof}
+Set $\beta=969=3\cdot17\cdot19$ and $\theta=457$. The conic
+\begin{equation}\label{eq:largeconic}
+                         \beta t^2+\theta w^2=1
+\end{equation}
+has the rational parametrization
+\begin{equation}\label{eq:largeparam}
+ \begin{split}
+ t(z)&=\frac{8721+73120z-4113z^2}{1733(969+457z^2)},\\
+ w(z)&=\frac{77520-17442z-36560z^2}{1733(969+457z^2)}.
+ \end{split}
+\end{equation}
+It comes from lines through $(9/1733,80/1733)$, followed by reflection
+in the $w$-axis. Direct substitution proves \eqref{eq:largeconic}.
+At $z=1$ it gives $(t_*,w_*)$.
+
+For every rational $z$, both coordinates are nonzero: a zero coordinate
+would make $\beta$ or $\theta$ a rational square. Therefore
+$b=\beta t(z)^2$ lies in $(0,1)$. Its reduced denominator is a square.
+Indeed a negative valuation of $t$ at a prime dividing $\beta$ would
+give $\beta t^2$ negative odd valuation, whereas $\theta w^2$ has even
+valuation because $\gcd(\beta,\theta)=1$. These two valuations cannot
+cancel to give~$1$. Thus $t$ is integral at all primes dividing $\beta$;
+at every other prime a negative valuation of $b$ is even.
+
+Suppose now that $z$ is a $2$-adic unit. Modulo $8$, the numerator of
+$t(z)$ is $1-z^2=0$, while its denominator has valuation one. Thus
+$v_2(t)\ge2$. Since $\beta\equiv1\pmod8$, the value $b=\beta t^2$
+is a $2$-adic square and is prepared. The value at $z=1$ has
+$v_2(t_*)=4$ and $v_2(b_*)=8$.
+
+The first-conic identity follows from \eqref{eq:splitids}. For the
+remaining equations note that $e=20/343=35(2/49)^2$ and
+$1-b=457w^2$. Consequently
+\begin{equation}\label{eq:areas}
+ A=e(1-b)=15995\left(\frac{2w}{49}\right)^2,
+ \qquad
+ bA=N_*\left(\frac{2tw}{49}\right)^2.
+\end{equation}
+The first factor $15995=5\cdot7\cdot457$ is not a square, so $q=0$
+is impossible. A nonzero $q$ would give a rational right triangle of area
+$bA$ by Lemma~\ref{lem:area}, contradicting the noncongruence of $N_*$.
+
+Finally the rational parametrization \eqref{eq:largeparam} covers the
+real conic except at most one point. The function $\beta t^2$ has
+image $[0,1]$ on that conic. Every value in $(0,1)$ has a finite real
+parameter preimage, after choosing a suitable sign for $t$ or $w$.
+Approximate that parameter by rational $2$-adic units. The resulting
+prepared counterexamples are dense in $(0,1)$.
+\end{proof}
+
+Theorems~\ref{thm:small} and~\ref{thm:split} exclude a realization
+theorem for \emph{every} prepared multiplier after the first conic has
+been forced in the indicated ways. They do not exclude a more restricted
+arithmetic source whose detector values avoid these families. Such a source
+must prove the remaining rational realization for its actual multipliers;
+the automatic first-conic identity and real smallness of the pole input
+do not provide it.
+
+\section{Exact verification}
+
+The verifier
+\nolinkurl{computation/pole_parameters/automatic_conic_v41/check.py}
+checks the contact factorizations, both conic parametrizations, all displayed
+specializations, preparation of the explicit examples, and the square
+factors in \eqref{eq:areas}. It exhausts the four unit residue classes
+modulo $8$ in the second family's valuation argument. The direct formal
+product is checked through degree $257$ against the pentagonal enumeration.
+For $17$ and $N_*$, independent exhaustive ternary counts agree with the
+computed coefficients. The saved certificate includes the signed-sum
+counts, exact example coordinates, a positive-control witness, and the
+source hash of the verifier. No rank computation or conjectural converse
+to Tunnell's theorem is used.
+
+\begin{thebibliography}{9}
+\bibitem{Pole}
+\emph{Pole equations from simultaneous congruent-number twists},
+\nolinkurl{papers/pole_parameters/congruent_twist_poles_20261114_v27.tex}.
+\bibitem{Tunnell}
+J. B. Tunnell, \emph{A Classical Diophantine Problem and Modular Forms
+of Weight $3/2$}, Invent. Math. \textbf{72} (1983), 323--334.
+\href{https://doi.org/10.1007/BF01389327}{doi:10.1007/BF01389327}.
+Primary scan:
+\url{https://sites.math.rutgers.edu/~zeilberg/EM22/JT1983.pdf}.
+\end{thebibliography}
+\end{document}

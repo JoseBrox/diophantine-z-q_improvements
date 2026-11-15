@@ -1,0 +1,44 @@
+{
+  "schema": "diophantine-pole-verification/v41",
+  "status": "PASS",
+  "python": "3.12.14",
+  "sympy": "1.14.0",
+  "checks": [
+    {
+      "name": "shared-parameter-local-solubility",
+      "status": "PASS",
+      "certificate": "computation/pole_parameters/shared_parameter_local_v41/verification.json",
+      "sha256": "7b03d534c2522487e9aaca4b1aa1abab99d0f05668aef4a4734d707e075f0700"
+    },
+    {
+      "name": "all-rational-conic-chain-coefficients",
+      "status": "PASS",
+      "certificate": "computation/pole_parameters/conic_chain_v41/certificate.json",
+      "sha256": "328e922b0acad24cfcc90372a5ad83247677e79ad3ccb67cf2ec03039f714a3a"
+    },
+    {
+      "name": "automatic-conic-global-obstructions",
+      "status": "PASS",
+      "certificate": "computation/pole_parameters/automatic_conic_v41/verification.json",
+      "sha256": "825a979566b5507ac75c7dbd49d155c81fb6543348c33611820d30511c302906"
+    }
+  ],
+  "new_variable_reduction": false,
+  "construction_records": "data/results_20261115_v40.json",
+  "scope": "Exact polynomial identities, native pole-guard audit, finite local certificates, and independently computed Tunnell coefficients. The accompanying proofs establish the universal local and obstruction statements. No simultaneous rational realization or smaller defining polynomial is asserted.",
+  "external_arithmetic_foundation_audited": false,
+  "legacy_verification": {
+    "status": "PASS",
+    "stages": 126,
+    "manifest_files_checked_before_v41_integration": 1035,
+    "pari_rank_checks_run": false
+  },
+  "total_variable_counts": {
+    "general": 25,
+    "explicit_general": 27,
+    "weak_abc": 13,
+    "quartic": 196,
+    "explicit_quartic": 258,
+    "abc_quartic": 78
+  }
+}

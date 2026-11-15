@@ -40,6 +40,8 @@ The quartic transformations preserve the entire rational solution sets, with exp
 
 Current specifications: [results JSON](data/results_20261115_v40.json), [proof and verification guide](docs/results_20261115_v40.md), and [research directions](docs/research_directions.md).
 
+The [pole-parameter results](docs/pole_results_20261115_v41.md) establish local solubility for every rational shared parameter and prove limitations of two proposed pole compressions. They do not change the construction counts in the table.
+
 ## Finite algebras and the general polynomials
 
 The [terminal quadratic extension theorem](papers/finite_algebra/terminal_quadratic_root_20261115_v40.tex) permits the last quadratic radicand to vanish. Its separator distinguishes all distinct geometric characters even on a nonreduced fiber. Galois descent recovers a rational character from a rational determinant root without assuming a simple eigenvalue. An elementary valuation proof permits the zero final ordinate in the pole equations. Two large guard norms can therefore be omitted.
@@ -66,6 +68,10 @@ The [all-point trace theorem](papers/trace_heights/trace_on_all_points_20261113_
 
 The [joint-pole theorem](papers/pole_parameters/joint_pole_realization_20261114_v29.tex) and [common-twist theorem](papers/pole_parameters/common_twists_20261114_v30.tex) reduce pole parameters on specified square-class compatibility loci. The current completeness witnesses are not proved to lie on those loci. These results do not establish a 24-variable construction or a smaller abc variable count. The [ordered square-class surface](papers/pole_parameters/ordered_squareclass_surface_20261115_v33.tex) and [reflection obstruction](papers/pole_parameters/reflection_obstruction_20261115_v33.tex) give further limitations without asserting a global lower bound.
 
+The [shared-parameter local theorem](papers/pole_parameters/shared_parameter_local_solubility_20261115_v41.tex) proves that **every rational conic parameter** is locally admissible for every prepared input. A finite family can use the same parameter at every completion. Outside a finite set of conjugate denominator zeros, it also admits the pole-stage guards; zero is always allowed, provided the preceding point-algebra guards have been met. The unresolved step toward 24 variables is simultaneous **rational** realization on the explicitly identified elliptic square-class loci.
+
+The [conic-chain obstruction theorem](papers/pole_parameters/conic_chain_obstruction_20261115_v41.tex) excludes every fixed rational coefficient in a specified five-auxiliary quadratic family on the full prepared locus. The [automatic-conic theorem](papers/pole_parameters/automatic_conic_obstruction_20261115_v41.tex) gives dense prepared counterfamilies for forcing the first conic, including the fully split six-contact formula. Its global obstructions use Tunnell's unconditional necessary criterion, with independently computed coefficients. These are limitations of the stated replacements; they do not exclude other pole systems or a new realization theorem for a restricted family of actual detector inputs.
+
 ## Rings of integers of number fields
 
 The [definability reductions](papers/number_fields/number_field_definability_20261109_v12.tex) relate the questions for the ring of integers, the rational integers and the rational subfield. The [finite-correspondence theorem](papers/number_fields/finite_correspondences_and_denominators_20261109_v14.tex) excludes several proposed constructions from abelian varieties and finite covers. The [complex-multiplication obstruction](papers/number_fields/complex_multiplication_and_trace_cancellation_20261110_v19.tex) explains why the cyclic-group and trace arguments do not extend unchanged after adjoining i.
@@ -77,6 +83,7 @@ The [definability reductions](papers/number_fields/number_field_definability_202
 Use **Python 3.12** for the byte-pinned legacy suite and **SymPy 1.14.0** for symbolic checks. From the repository root:
 
     python -m pip install sympy==1.14.0
+    python -B scripts/verify_v41.py
     python -B scripts/verify_v40.py
     python -B scripts/verify_v38.py
     python -B scripts/verify_v34.py
@@ -87,7 +94,7 @@ Use **Python 3.12** for the byte-pinned legacy suite and **SymPy 1.14.0** for sy
     python -B scripts/verify_release_v27.py
     python -B scripts/verify.py --full
 
-The current verifier reconstructs the specifications in temporary files and checks the independent certificates. It covers terminal nonreduced examples, reference-chart identities and exceptional cases, Pell-label examples, paired-ratio implications, invertible row transformations and complete quartic expansions. The retained verifiers authenticate the sources and supplied 198-variable archive. The full legacy verifier has **126 stages**. Optional PARI rank checks remain separately requested by --with-pari; they are not implied by --full.
+The current verifiers reconstruct specifications and certificates in temporary files. They cover local pole cases and guards, Tunnell coefficients, terminal nonreduced examples, reference-chart identities and exceptional cases, Pell-label examples, paired-ratio implications, invertible row transformations and complete quartic expansions. The retained verifiers authenticate the sources and supplied 198-variable archive. The full legacy verifier has **126 stages**. Optional PARI rank checks remain separately requested by --with-pari; they are not implied by --full. The new local and automatic-conic certificates do not use PARI, analytic ranks, or BSD.
 
 The complete TeX manuscripts are the mathematical deliverables. They are compiled and visually inspected before publication. scripts/update_manifest.py records the distributed file hashes. Computational reconstruction certifies the finite identities and coefficients it checks; it does not certify external arithmetic premises or constitute independent non-author mathematical review.
 

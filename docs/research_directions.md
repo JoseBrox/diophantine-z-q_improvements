@@ -45,9 +45,17 @@ Replacing $\tau_0,\tau_1$ by one freely varying rational $\tau$ would leave the 
 
 The missing result is a **simultaneous rational realization theorem**. For every integer input, one must choose the actual elliptic, prime-pattern and comparison data so that both displayed square equations have rational solutions at a common $\tau$, with all required nonzero guards. A theorem for every prepared pair of pole inputs would suffice, but completeness only needs the pairs actually supplied by a proved source construction. Individual solvability or separate Zariski-density statements for the two pole surfaces do not establish that their permitted $\tau$-values intersect.
 
+The [local-solubility theorem](../papers/pole_parameters/shared_parameter_local_solubility_20261115_v41.tex) proves that **every rational $\tau$** works over every completion for every prepared input, and a finite family can use that same parameter. Conjugate denominator guards exclude at most a finite set of parameter values. Its guard corollary and native source audit permit $\tau=0$ with every pole-stage conjugate guard, assuming the preceding point-algebra guards. The problem is therefore simultaneous rational realization. In exact elliptic terms, for $D_i=17d_i$ and $C_i=17(17-b_i)$, one needs nonzero-ordinate points in the abscissa classes $D_i\mathbb Q^{\times2}$ on the correlated families
+
+$$E_{N_i(\tau)}:\ y^2=x(x-N_i(\tau))(x+3N_i(\tau)),\qquad N_i(\tau)=D_iC_i(\tau^2-D_i)(\tau^2+3D_i).$$
+
+Congruence sieves cannot exclude the shared parameter on this prepared locus. A global argument must decide the simultaneous rational square-class condition, including the required guard avoidance.
+
 This proposal shares the conic coordinate, not $e_i$ itself. Sharing $e$ requires matching input square classes; the [joint-pole theorem](../papers/pole_parameters/joint_pole_realization_20261114_v29.tex) proves that the existing fresh-prime witnesses violate that requirement. The [common-twist theorem](../papers/pole_parameters/common_twists_20261114_v30.tex) gives genuine savings on its explicitly compatible locus, but does not put the full integer construction on that locus. A common $\tau$ allows different $e_i$ and avoids that particular necessary square-class equality. It still needs its own arithmetic existence proof.
 
 A fixed value of $\tau$ does not supply this missing result. The [fixed-parameter obstruction](../papers/pole_parameters/fixed_pole_parameters_20261109_v17.tex) gives prepared inputs excluding $\tau=\pm1$ and $\tau=\pm17$, including arbitrarily small prepared inputs in the latter case. The proposed shared parameter must remain variable unless a new restricted completeness theorem proves otherwise.
+
+Those fixed-parameter counterexamples are global: their pole quartics are everywhere locally soluble by the preceding theorem. Their rank and square-class certificates do not constitute local obstructions.
 
 ### Integral labels from one finite Pell choice
 
@@ -123,6 +131,14 @@ The next mathematical target is a simultaneous choice of coordinate weights for 
 The complete ratio equations also imply the paired curve equations whenever the two reference ratios do not vanish together. The fixed translating point is not two-torsion, which supplies that nonvanishing on the entire reference chart. This gives [176 quadratic rows in 196 variables](../papers/quartic/quartic196_redundancy_20261115_v40.tex) and [68 rows in the 78-variable abc system](../papers/elliptic_charts/paired_ratio_redundancy_20261115_v40.tex), with the same full rational zero sets as the respective unreduced systems. The [primitive quadratic bases](../papers/quartic/primitive_quadratic_bases_20261115_v40.tex) then lower the coefficient heights by exact invertible rational row changes and specified constant coordinate scalings. Their quartics have 2994 and 1254 monomials, respectively. The variable counts, degree and sufficient defining thresholds are preserved. These identities can be used in further eliminations, but deleting rows or changing their basis alone does not lower the number of variables.
 
 ## Arithmetic and coefficient obligations
+
+Smaller pole equations need a complete realization theorem. The [conic-chain classification](../papers/pole_parameters/conic_chain_obstruction_20261115_v41.tex) proves that the quadratic family
+
+$$P=p^2,\qquad e^2+bP=1,\qquad D=1+(cb-1)P,\qquad z^2=bD$$
+
+fails on arbitrarily small prepared inputs for **every fixed rational coefficient $c$**. Its four-auxiliary specialization at $c=0$ and five-auxiliary member at $c=1$ already have explicit local obstructions at 29 and 5. This is not a lower bound for other pole models.
+
+Making the first conic automatic also leaves a substantive global problem. The identity $b=(1-e^2)r^2$, $p=1/r$ gives $e^2+bp^2=1$. The [automatic-conic obstruction](../papers/pole_parameters/automatic_conic_obstruction_20261115_v41.tex) proves failure of the remaining congruent-pole equations on dense prepared families, even for the fully split six-contact formula at $e=20/343$. Its noncongruence certificate uses Tunnell's unconditional necessary direction. A viable version of this approach must control the multiplier values actually produced by the detector and prove the remaining rational realization on that restricted set.
 
 A shared pole parameter preserves two separate parity tests. Replacing them by a single rational test is a different proposal and encounters stronger restrictions. The [product-height counterfamilies](../papers/pole_parameters/product_height_obstructions_20261110_v19.tex) show that the product of two contact functions can have trivial odd radical while the scale is large. The [local rational-combination theorem](../papers/pole_parameters/rational_combinations_of_contacts_20261110_v20.tex) excludes every fixed rational parity combination for its specified source family. These are obstructions to the stated implications, not to all single-pole constructions.
 
