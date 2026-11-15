@@ -1,199 +1,102 @@
 # Polynomial presentations of the integers over the rationals
 
-Complete mathematical proofs and exact computational specifications for integer polynomials
+Complete proofs and exact computational specifications for integer polynomials
 
 $$F(X,Y_1,\ldots,Y_m)$$
 
 whose rational input projection is the integers, under the arithmetic premises stated in each construction.
 
-**Every variable count includes the input.** Degree is total degree. Coefficient height is the maximum absolute integer coefficient after fixed parameters have been substituted. The priorities are variable count, degree, then coefficient height. No global minimum is claimed.
+**Every variable count includes the input.** Degree means total degree. Coefficient height is the maximum absolute integer coefficient after fixed parameters have been substituted. The priorities are variable count, degree, then coefficient height. No global minimum is claimed.
 
 ## Current constructions — 15 November 2026
 
-“None” in the additional-hypothesis column means **no additional conjecture beyond the explicitly retained arithmetic premises**. It does not mean that a finite coefficient computation has verified those premises. The full independent audit of the prime-pattern, pole-realization and modular-height foundations is not declared complete.
+“None” below means **no additional conjecture beyond the explicitly retained arithmetic premises**. The full independent audit of the prime-pattern, pole-realization and modular-height foundations is not declared complete.
 
 | Construction | Additional height hypothesis | Total variables | Degree | Coefficients and effectiveness |
 |:--|:--|--:|:--|:--|
-| [Fewest variables under inherited premises](papers/finite_algebra/subalgebra_norms_20261114_v30.tex) | None | **25** | **< 2^55** | Every sufficiently large fixed odd exponent; sufficient threshold ineffective. |
-| [Fewest quartic variables under inherited premises](papers/quartic/laurent_elimination_20261115_v38.tex) | None | **196** | **4, exact** | 182 quadratic squares; **2,943 monomials**. Same ineffective threshold as the supplied 198-variable parent. |
-| [Fully specified general polynomial](papers/finite_algebra/subalgebra_norms_20261114_v30.tex) | None | **27** | **< 2^58** | Fixed exponent **L=20483**; coefficient height **< 2^(2^71)**. |
-| [Fully specified quartic](papers/quartic/laurent_elimination_20261115_v38.tex) | None | **258** | **4, exact** | **N=9682**; 230 quadratic squares; **3,705 monomials**; height **9792² · 149^19364**, 139,819 binary digits. |
-| [Few variables under weak abc](papers/finite_algebra/subalgebra_norms_20261114_v30.tex) | Weak abc at **121/100**; ordinary Szpiro suffices | **13** | **≤ 126,442,497 < 2^27** | Sufficient odd shift ineffective. |
-| [Lower degree under stronger weak abc](papers/finite_algebra/subalgebra_norms_20261114_v30.tex) | Weak abc at **16/15**; ordinary rational abc suffices | **13** | **≤ 103,165,953 < 2^27** | Sufficient odd shift ineffective. |
-| [Fewest quartic variables under abc](papers/quartic_existence/quartic_abc78_20261115_v34.tex) | Ordinary rational abc | **78** | **4, exact** | 70 quadratic squares; **1,143 monomials**. Same stated simultaneous-twist input; new sufficient shift ineffective. |
+| [Fewest variables under inherited premises](papers/finite_algebra/terminal_quadratic_root_20261115_v40.tex) | None | **25** | **≤ 5,059,009,872,658,432 < 2^53** | Every sufficiently large fixed odd exponent; sufficient threshold ineffective. |
+| [Fewest quartic variables under inherited premises](papers/quartic/primitive_quadratic_bases_20261115_v40.tex) | None | **196** | **4, exact** | 176 quadratic squares; **2,994 monomials**. Exact height below; defining threshold ineffective. |
+| [Fully specified general polynomial](papers/finite_algebra/terminal_quadratic_root_20261115_v40.tex) | None | **27** | **≤ 99,279,020,543,180,800 < 2^57** | **L=20483**; coefficient height **< 2^(2^70)**. |
+| [Fully specified quartic](papers/quartic/laurent_elimination_20261115_v38.tex) | None | **258** | **4, exact** | **N=9682**; 230 quadratic squares; **3,705 monomials**; height **9792² · 149^19364**. |
+| [Few variables under weak abc](papers/finite_algebra/terminal_quadratic_root_20261115_v40.tex) | Weak abc at **121/100**; ordinary Szpiro suffices | **13** | **≤ 43,211,777 < 2^26** | Sufficient odd shift ineffective. |
+| [Lower degree under stronger weak abc](papers/finite_algebra/terminal_quadratic_root_20261115_v40.tex) | Weak abc at **16/15**; ordinary rational abc suffices | **13** | **≤ 39,858,177 < 2^26** | Sufficient odd shift ineffective. |
+| [Fewest quartic variables under abc](papers/quartic/primitive_quadratic_bases_20261115_v40.tex) | Ordinary rational abc | **78** | **4, exact** | 68 quadratic squares; **1,254 monomials**. Exact height below; sufficient shift ineffective. |
 
-The general degree bounds are upper bounds for explicitly specified, unexpanded determinant polynomials, not exact degrees. The exact general degree majorants are **25,934,337,637,613,568** for 25 variables and **177,313,559,789,699,072** for the fully specified 27-variable polynomial. Their support bounds are respectively below **2^1250** and **2^1423**. The two 13-variable support bounds are below **2^303** and **2^299**.
+All these polynomials have integer content one. The general degree figures are upper bounds for finite, unexpanded determinant specifications. Their support bounds are below **2^1193**, **2^1401**, **2^284**, and **2^283**, in the order 25, 27, weak-abc 13, stronger-abc 13.
 
-The 196-variable height is exactly
+The exact height of the 196-variable quartic is
 
-$$11903780636513165769654680680436132271178681610029854792\,149^{2N}.$$
+$$H(P_N)=\max\left\{126616122944180358034867798936,\;32561227748626372080\,149^{2N}\right\}.$$
 
-This formula holds for N>=1; the sufficient **defining** threshold is still
-ineffective. The 258-variable family is exactly equivalent to its fully
-specified 260-variable parent at every fixed N. Its coefficient crossover
-N=12 is not its certified defining threshold N=9682.
+This holds for every **N≥1**. The first term dominates for N=1,2 and the second for N≥3. A sufficient defining N exists under the stated source premises, but no sufficient numerical N is supplied for this family.
 
-The 78-variable abc construction compares the index with X²+3 and uses
-B+X⁸+T² as its height scale. Its strict height-absorption coefficient is
-602/679. The fixed odd B>=81 must be sufficiently large; B=81 is only
-an algebraic fixture. The historical 79- and lower-coefficient 81-variable
-families remain intact, with their original projection equivalence to
-each other, not a claimed parameterwise equivalence to the new family.
+The exact height of the 78-variable abc quartic is
 
-Current specifications: [results JSON](data/results_20261115_v38.json),
-[proof and verification guide](docs/results_20261115_v38.md).
+$$H(Q_B)=\max\left\{20828275368498373068800,\;B^2+275933278576697172\right\}.$$
 
-## Exact coordinate eliminations and recovery in v38
+Its fixed odd shift **B≥81** must be sufficiently large. B=81 is an algebraic fixture, not a certified defining member. This construction compares the elliptic index with X²+3, uses B+X⁸+T² as its height scale, and has strict absorption coefficient **602/679**. Its ordinary-abc hypothesis is distinct from the weak-abc hypotheses in the 13-variable rows.
 
-The [new proof](papers/quartic/laurent_elimination_20261115_v38.tex) deletes
-two stored fourth powers after invertible monomial rescaling. It preserves
-all rational solutions, not just a dense subset. Its unit conditions are
-proved from unchanged equations before division. It gives 198→196 and,
-separately, 260→259→258, with exact inverse maps and full coefficient tables.
+The quartic transformations preserve the entire rational solution sets, with explicit invertible maps where coordinates are rescaled. Their sufficient defining parameters are unchanged. The finite-algebra construction permits additional tuples with a zero final pole ordinate; its proof establishes soundness on that larger locus and retains the existing completeness witnesses.
 
-The 198-variable parent was supplied in Gabriel Conant's research archive
-with ChatGPT; [its original attribution and proof](sources/h10_quartic198/README.md)
-are preserved. All thirteen supplied checks were reproduced independently
-of the new coordinate-deletion checkers. All 89 original text files are
-preserved; the archived PDF is identified by hash in
-[supplementary provenance](sources/h10_quartic198/PDF_PROVENANCE.md).
+Current specifications: [results JSON](data/results_20261115_v40.json), [proof and verification guide](docs/results_20261115_v40.md), and [research directions](docs/research_directions.md).
 
-**No 233-variable construction is claimed.** The reattached v36 archives
-contain a failure receipt and a general method, not the alleged proof or
-tables. [Recovery audit](docs/audits/recovery_233_20261115_v38.md) records the
-source facts and withdraws the unsupported earlier conversational claim.
-The general counts remain 25 and 13; inherited arithmetic premises remain
-explicit and are not independently certified by these computations.
+## Finite algebras and the general polynomials
 
-## A corrected 200-variable quartic in v33
+The [terminal quadratic extension theorem](papers/finite_algebra/terminal_quadratic_root_20261115_v40.tex) permits the last quadratic radicand to vanish. Its separator distinguishes all distinct geometric characters even on a nonreduced fiber. Galois descent recovers a rational character from a rational determinant root without assuming a simple eigenvalue. An elementary valuation proof permits the zero final ordinate in the pole equations. Two large guard norms can therefore be omitted.
 
-The [complete proof](papers/quartic_existence/quartic200_20261115_v33.tex)
-removes the fourth stored elliptic root point. The shifted labels
-A=2a+2 and b=m+1/2 make (A-2)b=a(2m+1) a nonzero integer, preserving
-Lucas growth and constructive completeness. The weighted trace and every
-exceptional reciprocal-pair case are checked. The two poles remain independent.
+The [four complete specifications](computation/few_variables/terminal_root_v40) retain the integral point algebra, polynomial root envelopes and subalgebra norms. Every denominator and every preceding radicand remains guarded. The independent checker reconstructs these conditions from the native source circuits and recomputes all bounds. The [single-norm construction](papers/finite_algebra/unit_norm_20261114_v28.tex) and [subalgebra-norm theorem](papers/finite_algebra/subalgebra_norms_20261114_v30.tex) supply the underlying source and its full-unit completeness proof.
 
-The previous unpublished v32 table shifted a stored ratio by 2 instead of
-2R. Its checker repeated that mistake. The [correction report](docs/audits/scalar_ratio_correction_20261115_v33.md)
-records the repair and supersession, and a separate physical-normalization
-test now rejects the old formula. Exact reconstruction alone is not a
-substitute for checking that the coordinates encode the stated arithmetic.
+## Quartic equations and coefficient height
 
-The [reflection obstruction](papers/pole_parameters/reflection_obstruction_20261115_v33.tex)
-and [ordered square-class surface theorem](papers/pole_parameters/ordered_squareclass_surface_20261115_v33.tex)
-are retained as separate results. They do not yield a matching-class complete
-construction or a global variable lower bound.
+The [primitive quadratic basis theorem](papers/quartic/primitive_quadratic_bases_20261115_v40.tex) gives exact rational changes of the reference-equation basis, followed where specified by an invertible rational coordinate rescaling. The defining rows remain primitive integer quadrics. Stored matrices and inverses prove equivalence independently of the lattice algorithm used to find them. Independent expansions certify the exact heights and support for every allowed fixed parameter.
 
-## Smaller degree bounds and compatible poles in v30
+Complete coefficient tables are supplied for the [196-variable family](computation/quartic/primitive_basis196_v40) and the [78-variable abc family](computation/quartic/abc78_balanced_v40). The [196/258 coordinate-elimination theorem](papers/quartic/laurent_elimination_20261115_v38.tex) proves the underlying reductions after invertible monomial rescaling, with unit conditions established before division. The [78-variable arithmetic theorem](papers/quartic_existence/quartic_abc78_20261115_v34.tex) supplies the mixed-power height argument and completeness.
 
-The [new norm-determinant proof](papers/finite_algebra/subalgebra_norms_20261114_v30.tex)
-replaces repeated full-algebra norms by norms in Galois-stable multiquadratic
-subalgebras. A quadratic-tower separating element avoids quartic discriminants.
-The rational retained-coordinate projection is exactly that of v28 for every
-fixed coefficient parameter: no arithmetic input, completeness restriction or
-sufficient parameter is changed. All four variable counts are unchanged.
-[Exact specifications and checks](computation/few_variables/subalgebra_norms_v30)
-include symbolic identities, finite algebra examples and corruption controls.
+The [paired-ratio theorem](papers/elliptic_charts/paired_ratio_redundancy_20261115_v40.tex) shows that the complete ratio equations imply both reciprocal curve equations. It covers identities, torsion points and tangent pairs, and gives a quadratic-compatible uniform scaling of the seven pair coordinates. Deleting the redundant curve rows gives the [196-variable application](papers/quartic/quartic196_redundancy_20261115_v40.tex). For applications prioritizing support rather than coefficient height, tables with **2,853** and **1,113** monomials are retained in [paired_redundancy196_v40](computation/quartic/paired_redundancy196_v40) and [abc78_reduced_v40](computation/quartic/abc78_reduced_v40).
 
-The separate [common-twist theorem](papers/pole_parameters/common_twists_20261114_v30.tex)
-uses the finite-family strengthening in the supplied row-5a audit. On the stated
-compatibility locus, two poles with one input square class and two complement
-classes need three retained parameters instead of four. A change of base class
-also covers certain overlapping complements. This does **not** make the current
-25- or 13-variable completeness witnesses compatible and changes no global
-variable record. The supplied strengthening and Jaswal's Hexagon source are
-credited separately. See the [v30 guide](docs/results_20261114_v30.md).
+## Reference charts and integer labels
 
-## Joint pole realization and reference-point restrictions in v29
+The [three-coordinate reference chart](papers/elliptic_charts/three_coordinate_reference_20261115_v40.tex) describes a point and its translate using two quadrics in three field coordinates. Its exact domain is the complement of four specified elliptic points. Three linear functions are units with explicit linear inverses, and every tangent and two-torsion configuration in the domain is included. The reciprocal abscissas are quadratic in these coordinates; their squares are generally quartic. This chart alone therefore does not lower the total variable count of a defining quartic. [Exact certificates](computation/elliptic_charts/three_coordinate_v40) accompany the all-field proof.
 
-The [new joint-realization theorem](papers/pole_parameters/joint_pole_realization_20261114_v29.tex)
-replaces **2r retained pole parameters by 2** when the input and complement
-square classes match. It includes the old and the congruent-number pole
-systems, explicit witness maps, exact finite-choice encoding, and the precise
-arithmetic hypotheses. This is a proved reduction on its compatibility locus,
-**not a new 25- or 13-variable record**.
+The [integral Pell-label theorem](papers/integer_labels/pell_labels_20261115_v40.tex) obtains exponential growth from two exact integral labels and one finite quadratic choice. It proves sharp bounds and arbitrarily large witnesses with prescribed finite congruence data. A rational local-approximation counterexample explains why this result does not apply directly to approximate elliptic ratios. Its [checker and certificate](computation/integer_labels/pell_compression_v40) verify the identities and exceptional cases. No reduction below 25 variables follows from this theorem alone.
 
-The existing 13-variable prime witnesses have incompatible first square
-classes. At fixed scales, replacing them by matching classes leads to a
-**genus-four curve** in that route, and generically to genus **9** for two
-ten-contact blocks or **27** for three. The [reference-point theorem](papers/elliptic_charts/progression_density_20261114_v29.tex)
-also proves density after arbitrary label-dependent infinite restrictions
-on the reference indices. These results identify restrictions on a new
-completeness proof, not an absolute variable lower bound.
-See the [proof and verification guide](docs/joint_pole_realization_20261114_v29.md).
+## Height estimates and compatible poles
 
-## General degree improvements in v28
+The [all-point trace theorem](papers/trace_heights/trace_on_all_points_20261113_v25.tex) and [positive weighted trace theorem](papers/trace_heights/weighted_trace_20261114_v27.tex) include the half-integral index and torsion cases required by the sources. The latter also verifies that the selected Gaussian primes annihilate the half-generator using the existing congruences.
 
-The [complete TeX manuscript](papers/finite_algebra/unit_norm_20261114_v28.tex)
-replaces the product over nonzero ranks by **one norm determinant**. A separate
-completeness proof ensures that every required integer input admits witnesses
-with every conjugate denominator nonzero. This is not an equivalence on every
-old retained base tuple. A rank-four point basis, homogeneous elliptic
-differences and invertible rescaling of the pole parameters lower the degree
-further. Only the 25-variable family replaces the squared comparison scale by
-`1+rho*T^2`; its ineffective sufficient exponent may consequently change.
+The [joint-pole theorem](papers/pole_parameters/joint_pole_realization_20261114_v29.tex) and [common-twist theorem](papers/pole_parameters/common_twists_20261114_v30.tex) reduce pole parameters on specified square-class compatibility loci. The current completeness witnesses are not proved to lie on those loci. These results do not establish a 24-variable construction or a smaller abc variable count. The [ordered square-class surface](papers/pole_parameters/ordered_squareclass_surface_20261115_v33.tex) and [reflection obstruction](papers/pole_parameters/reflection_obstruction_20261115_v33.tex) give further limitations without asserting a global lower bound.
 
-The explicit 27-variable exponent **L=20483** and the conditional arithmetic
-sources are unchanged. Their coefficient and degree bounds improve through
-algebraic presentation and the justified restriction to the full-unit locus.
-The 25- and 13-variable counts have not decreased. The exact [specifications,
-code and certificates](computation/few_variables/unit_norm_v28) separate
-universal polynomial identities from finite implementation examples.
+## Rings of integers of number fields
 
-## Quartic reductions and their proofs
+The [definability reductions](papers/number_fields/number_field_definability_20261109_v12.tex) relate the questions for the ring of integers, the rational integers and the rational subfield. The [finite-correspondence theorem](papers/number_fields/finite_correspondences_and_denominators_20261109_v14.tex) excludes several proposed constructions from abelian varieties and finite covers. The [complex-multiplication obstruction](papers/number_fields/complex_multiplication_and_trace_cancellation_20261110_v19.tex) explains why the cyclic-group and trace arguments do not extend unchanged after adjoining i.
 
-The [204-variable construction](papers/quartic_existence/quartic204_20261114_v27.pdf) replaces two seven-field point blocks by two five-field reciprocal point pairs. Their differences are recovered rather than stored. One recovered index is allowed to be half-integral; the other is multiplied by two so that the Lucas equation still has integer labels. The nonzero fourth Lucas point is retained: deleting that condition would allow the trivial solutions with its index zero.
-
-A [positive weighted trace-height theorem](papers/trace_heights/weighted_trace_20261114_v27.pdf) proves the height bound on the enlarged point domain, with weights 1 and R². It includes negative and repeated indices, torsion differences, and varying rational weights. The proof checks the exceptional abelian translates and the embedding hypotheses of von Buhren's published theorem. A quadratic-reciprocity lemma shows that the existing Gaussian prime congruences also annihilate the required half-generator in the residue groups. Thus completeness does not require a stronger prime-distribution premise.
-
-The [complete five-coordinate reference chart](papers/elliptic_charts/compressed_reference_20261114_v27.pdf) gives the reduction from 81 to 79 variables and, independently, from 262 to 260. It proves both directions on every rational solution, including vanishing intermediate leading coefficients. The 260-variable replacement preserves the source input projection for **every fixed N**, so the effective parameter N=9682 is unchanged. The same exact replacement gives a 224-variable version of the older 226 family, retained as an additional application rather than a new best count.
-
-The [congruent-twist pole equations](papers/pole_parameters/congruent_twist_poles_20261114_v27.pdf) are
-
-$$e^2+bp^2=1,\qquad uv=e(1-b),\qquad u^2-v^2=bq^2.$$
-
-Their negative-odd-valuation obstruction is elementary. The paper verifies the prepared-input application of **Jaswal, Hexagon 2611.00331v2, Theorem 1.2**, including the square input, the two square classes and the scaling of both elliptic points. The source is cited in the papers and [THIRD_PARTY.md](THIRD_PARTY.md). This use is separate from that paper's other height and prime-pattern claims; the complete external arithmetic audit is not represented as finished.
-
-## Earlier improvements now integrated
-
-The [triangular finite-algebra separation theorem](papers/finite_algebra/triangular_separation_20261113_v24.pdf) improves the general degree and coefficient-height bounds without changing any rational input projection or arithmetic premise. Its proof includes nonreal roots, vanishing radicands and inactive nonreduced components. The complete indexed specifications, bounds, and thirteen exact test examples are retained in [triangular_elimination_v24](computation/few_variables/triangular_elimination_v24).
-
-The [212-variable additive construction](papers/quartic_existence/quartic212_20261113_v25.pdf), [81-variable reciprocal construction](papers/quartic_existence/quartic_abc81_20261113_v25.pdf), [all-point trace theorem](papers/trace_heights/trace_on_all_points_20261113_v25.pdf), and [214-variable coefficient balancing](papers/quartic/coefficient_balancing_20261113_v24.pdf) are retained as proved predecessors and exact reconstruction dependencies. The pinned upstream 214 numerical source is included with its attribution and source hashes. It is not silently replaced by a newer upstream revision.
-
-The [product-height theorem](papers/elliptic_heights/product_height_20261113_v23.pdf) characterizes equality by a common 2-adic valuation of the nonzero elliptic indices, and the [local-precision paper](papers/local_tests/height_precision_20261113_v23.pdf) supplies the earlier 49/13/25 improvement under the stated source inputs. Their [Sun and PR30 audit](docs/audits/sun_pr30_20261113.md) retains its explicit outstanding source checks.
-
-## Correction and review scope
-
-The printed v26 reference-chart table omitted
-
-$$(171357/235298+(2519877/7529536)\sqrt2)fS.$$
-
-Without this term one of the required polynomial identities fails. The [v27 erratum](docs/audits/reference_chart_correction_20261114_v27.md) records the finding and repair. The corrected equations have been authenticated against all six original component rows, and all five ideal-membership certificates, two converse identities, and exceptional-case calculations have been checked exactly. The retained 79-variable coefficient table was reconstructed from those corrected equations; no byte comparison with unavailable earlier v26 coefficient files is claimed.
-
-Independent **implementations** check the algebra and coefficients. They are not independent non-author mathematical reviews. Passing code, PDF builds and manifests do not certify the external arithmetic premises, complete source coverage, or a numerical defining threshold. Historical preparation receipts retain their original dates and limitations; the v27 integration records describe the unchanged earlier computations; the v28 checks and current CI describe the new general constructions.
+**No counterexample for a number field, and no theorem covering every number field, is established here.** Failure of a particular polynomial after scalar extension is not a counterexample to Diophantine definability. The [research guide](docs/research_directions.md#rings-of-integers-of-number-fields) states the remaining denominator and realization problems.
 
 ## Reproduction
 
-Use **Python 3.12** for the byte-pinned legacy suite, and **SymPy 1.14.0** for the additional symbolic checks. The new coefficient producers and most checkers use only the standard library. From the repository root:
+Use **Python 3.12** for the byte-pinned legacy suite and **SymPy 1.14.0** for symbolic checks. From the repository root:
 
-```sh
-python -m pip install sympy==1.14.0
-python -B scripts/verify_v38.py
-python -B scripts/verify_v34.py
-python -B scripts/verify_v33.py
-python -B scripts/verify_v30.py
-python -B computation/pole_parameters/joint_realization_v29/check.py
-python -B scripts/verify_v28.py
-python -B scripts/verify_release_v27.py
-python -B scripts/verify.py --full
-```
+    python -m pip install sympy==1.14.0
+    python -B scripts/verify_v40.py
+    python -B scripts/verify_v38.py
+    python -B scripts/verify_v34.py
+    python -B scripts/verify_v33.py
+    python -B scripts/verify_v30.py
+    python -B computation/pole_parameters/joint_realization_v29/check.py
+    python -B scripts/verify_v28.py
+    python -B scripts/verify_release_v27.py
+    python -B scripts/verify.py --full
 
-The v28 verifier authenticates nineteen inputs, reconstructs all four general specifications and their bounds, and independently checks the published certificates. The earlier cumulative verifier checks all v23–v27 improvements and authenticates the native general-polynomial sources. The separate legacy verifier checks the existing **126 stages**, source provenance, and the publication manifest. Optional PARI rank checks remain separately requested by `--with-pari`; they are not implied by `--full`.
+The current verifier reconstructs the specifications in temporary files and checks the independent certificates. It covers terminal nonreduced examples, reference-chart identities and exceptional cases, Pell-label examples, paired-ratio implications, invertible row transformations and complete quartic expansions. The retained verifiers authenticate the sources and supplied 198-variable archive. The full legacy verifier has **126 stages**. Optional PARI rank checks remain separately requested by --with-pari; they are not implied by --full.
 
-The v28 result is supplied as a complete TeX manuscript; it was compiled and visually reviewed without adding a new PDF. Every earlier PDF has its complete TeX source beside it. `scripts/build_release_v27.py --build-pdfs` rebuilds the current proof set and records its source/PDF hashes; `scripts/update_manifest.py` records the distributed files. PDF hashes from older local preparation receipts are historical outputs, not substitutes for the current build record.
+The complete TeX manuscripts are the mathematical deliverables. They are compiled and visually inspected before publication. scripts/update_manifest.py records the distributed file hashes. Computational reconstruction certifies the finite identities and coefficients it checks; it does not certify external arithmetic premises or constitute independent non-author mathematical review.
 
-## Other established results and retained sources
+## Attribution and review scope
 
-The subject directories also retain finite-algebra guards, effective elliptic sums, formal logarithms, contact-height estimates, local counterexamples to proposed pole simplifications, degree and coordinate lower bounds, and number-field reductions. The [arithmetic inputs](docs/arithmetic_inputs.md), [legacy reproducibility guide](docs/reproducibility.md), and [data format](docs/data_format.md) describe the pinned pre-v27 sources; numerical best-count statements in those historical source documents are superseded by the current table above. No general positive theorem or counterexample for rings of integers of arbitrary number fields is claimed here.
+The 198-variable parent of the current 196-variable construction was supplied in Gabriel Conant's research archive with ChatGPT. Its [original attribution and source](sources/h10_quartic198/README.md) are retained. The [pinned upstream 214-variable source](computation/quartic/balanced214_v24/source) and its hashes remain a separate dependency. The current work is maintained in this repository and does not modify the upstream repository.
 
-Original project contributions are under CC BY 4.0. Third-party sources retain their own rights and attribution. See [CONTRIBUTING.md](CONTRIBUTING.md), [THIRD_PARTY.md](THIRD_PARTY.md), and [CITATION.cff](CITATION.cff).
+The congruent-twist pole realization uses **Jaswal, Hexagon 2611.00331v2, Theorem 1.2**, with the preparation hypotheses stated in the [pole paper](papers/pole_parameters/congruent_twist_poles_20261114_v27.tex). The supplied finite-family strengthening is used only in the separate compatible-pole results. Bibliographies, [arithmetic dependencies](docs/arithmetic_inputs.md), and [THIRD_PARTY.md](THIRD_PARTY.md) retain the source distinctions.
+
+The [reference-chart correction](docs/audits/reference_chart_correction_20261114_v27.md), [physical-normalization correction](docs/audits/scalar_ratio_correction_20261115_v33.md), and [unsupported 233-variable claim audit](docs/audits/recovery_233_20261115_v38.md) remain explicit. No 233-variable result is claimed. Earlier source files and receipts remain available for exact reproduction; their superseded numerical summaries do not replace the current table.
+
+Original project contributions are under **CC BY 4.0**. Third-party material retains its own rights and attribution. See [CONTRIBUTING.md](CONTRIBUTING.md), [THIRD_PARTY.md](THIRD_PARTY.md), and [CITATION.cff](CITATION.cff).

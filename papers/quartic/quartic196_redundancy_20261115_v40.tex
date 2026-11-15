@@ -1,0 +1,170 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,booktabs,microtype}
+\usepackage[margin=25mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
+\setlength{\emergencystretch}{3em}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\title{A 196-variable quartic with 176 quadratic summands}
+\author{}\date{15 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+Complete formal-parameter ratio equations imply three reciprocal elliptic
+curve equations already present in a defining system. Removing their six
+rational components gives a quartic in 196 total variables with 176
+primitive quadratic summands and 2853 monomials. The rational zero set is
+unchanged for every fixed coefficient parameter. The degree, exact
+coefficient height, arithmetic premises and sufficient defining threshold
+are unchanged. The count of variables is not reduced.
+\end{abstract}
+
+\section{The polynomial specification}
+Let $K=\Q(\rho)$, $\rho^2=2$, $D=11-6\rho$, and let
+$E:y^2=x^3-Dx$. Use the 196-coordinate system of~\cite{Laurent},
+with input $X$ and fixed integer parameter $N\ge1$. Its unbalanced
+coefficient parameter is $A=149^{2N+1}$; its balanced parameter is
+$C=149^N$. Delete exactly the rows
+\[
+\begin{gathered}
+\texttt{pair1.curve.0},\quad\texttt{pair1.curve.1},\\
+\texttt{pair3.curve.0},\quad\texttt{pair3.curve.1},\\
+\texttt{pair4.curve.0},\quad\texttt{pair4.curve.1}.
+\end{gathered}
+\]
+Keep every coordinate and every other primitive integral row unchanged.
+The 176 retained rows are denoted $q_{N,1},\ldots,q_{N,176}$, and set
+\[
+                   P_N=\sum_{j=1}^{176}q_{N,j}^{\,2}.
+\]
+The directory
+\begin{center}\small
+\nolinkurl{computation/quartic/paired_redundancy196_v40}
+\end{center}
+contains the entire quadratic and quartic tables in both presentations,
+their source bindings, producer, independent checker and certificate.
+The fixed parameter is a coefficient, not a quantified variable.
+
+\begin{theorem}\label{thm:main}
+For every $N\ge1$, the rational zero set of the new quadratic system is
+exactly that of the 196-coordinate parent system. Its balanced sum of
+squares $P_N\in\Z[X,Y_1,\ldots,Y_{195}]$ has total degree exactly four,
+integer content one, exactly 2853 coordinate monomials, and height
+\[
+ H(P_N)=
+ 11903780636513165769654680680436132271178681610029854792
+ \,149^{2N}.
+\]
+Under precisely the arithmetic premises of the parent construction,
+every sufficiently large fixed $N$ therefore makes the rational input
+projection of $P_N=0$ equal to $\Z$. The same sufficient threshold works;
+no numerical value of that ineffective threshold is asserted.
+\end{theorem}
+
+The parent derives from the 198-variable construction supplied in the
+Conant--ChatGPT research archive~\cite{Archive}. Its original attribution
+and retained arithmetic hypotheses are unchanged. The present algebraic
+equivalence adds no prime, pole, modular-height or other arithmetic premise.
+
+\section{Recovery of the removed equations}
+We restate the algebraic implication from~\cite{Paired}. Suppose
+$f,h,g,k,s,F,G,L,M,S,T$ belong to a field of characteristic zero,
+$D\ne0$, and $\kappa,\lambda\ne0$. Assume
+\begin{align*}
+ F=f^2,\qquad G=g^2,\qquad
+ s(f-g)&=h+k,\\
+ s(h-k)&=1-D(F+fg+G),\\
+ hL+\kappa fS&=0,\qquad (1-DF)L+\kappa hS=0,\\
+ kM+\lambda gT&=0,\qquad (1-DG)M+\lambda kT=0.
+\end{align*}
+Put $U=h^2-f+Df^3$ and $V=k^2-g+Dg^3$.
+The secant and tangent equations give $U=V$, by subtraction.
+The primary ratio equations give $\kappa S U=0$:
+multiply their second row by $h$ and subtract $1-DF$ times their
+first row. The alternate ratio equations similarly give
+$\lambda T V=0$. Consequently, if $(S,T)\ne(0,0)$, both
+curve defects vanish. This reasoning includes $f=0$, $g=0$, tangent
+pairs and zero values of either single reference ratio; it never divides
+by a numerator coordinate or ratio.
+
+In the parent system the complete reference chart~\cite{Reference}
+gives finite points $H,H-P\in E(K)$ with nonzero abscissas and
+\[
+ S=y(H)/x(H),\qquad T=y(H-P)/x(H-P).
+\]
+Its fixed point is
+\[
+ P=\left(\frac{57-28\rho}{8},\frac{-660+417\rho}{32}\right),
+\]
+whose ordinate is nonzero. If $S=T=0$, both $H$ and $H-P$ would
+be points of order two, so their difference $P$ would have order
+dividing two, a contradiction. Thus $(S,T)\ne(0,0)$ follows from
+unchanged reference equations alone.
+
+The three retained paired-point blocks have exactly the form above.
+Their nonzero scale factors are $1,2,4$, with the affine fourth-block
+shift absorbed into $L,M$. Their physical reciprocal-square coordinates
+are the same as in the parent. The invertible monomial coordinate changes
+of~\cite{Laurent} do not alter the implication. Its base units $R,w_0,w_1$
+remain nonzero on the reduced system: the unchanged scalar product and
+forced-prime rows give $R>0$, and the unchanged rows $q_jw_j=1$ give
+$w_j\ne0$. Therefore the same inverse coordinate changes apply before
+using any of the three removed curve equations.
+
+Each omitted field curve equation, hence each of its two rational
+components, now follows from the retained rows. The reverse implication
+is immediate because rows were only deleted. This proves equality of
+the whole rational zero sets, with every original exceptional stratum
+included. It also proves that the sufficient defining parameter is
+unchanged.
+
+\section{Degree, height and exact verification}
+The input $X$ occurs only in the primitive row defining $X^2$.
+Its square contributes coefficient one to $X^4$, and no other retained
+row contains $X$. Hence $P_N$ has exact degree four and integer content
+one for every fixed parameter.
+
+The coefficient assertions are supplied with finite exact certificates.
+The checker expands each quadratic square by a symmetric-pair algorithm,
+independently of the producer's ordered-pair multiplication. It authenticates
+both complete parent tables, checks every retained row by name and source
+index, and reconstructs the six removed physical curve components using
+$D=11-6\rho$. It also checks the two universal curve-defect identities
+coefficientwise over the polynomial ring.
+
+For the balanced family each coordinate monomial has coefficient
+$p(C)=a_0+a_1C+a_2C^2$. There are 2853 such monomials. If $a_d$ is its
+leading nonzero coefficient, the certificate checks
+\[
+ |a_d|149^d>\sum_{j<d}|a_j|149^j.
+\]
+Thus no monomial disappears at any $C\ge149$. With
+\[
+ K_0=11903780636513165769654680680436132271178681610029854792,
+\]
+the checker also verifies, for every coefficient profile,
+\[
+ \frac{|a_0|}{149^2}+\frac{|a_1|}{149}+|a_2|\le K_0.
+\]
+This implies $|p(C)|\le K_0 C^2$ for all $C\ge149$.
+The monomial with coordinate indices $(15,16,152,152)$ has coefficient
+exactly $K_0C^2$, proving attainment and the asserted height.
+These coefficient checks certify finite algebraic statements; they do
+not certify the independent arithmetic premises of the defining theorem.
+
+\begin{thebibliography}{9}
+\bibitem{Laurent}\emph{Quartics in 196 and 258 variables by elimination
+after monomial rescaling}, project manuscript, 15 November 2026,
+\nolinkurl{papers/quartic/laurent_elimination_20261115_v38.tex}.
+\bibitem{Paired}\emph{Recovery of elliptic curve equations from complete ratio equations}, project manuscript, 15 November 2026,
+\nolinkurl{papers/elliptic_charts/paired_ratio_redundancy_20261115_v40.tex}.
+\bibitem{Reference}\emph{A complete five-coordinate elliptic reference
+chart}, corrected project manuscript, 14 November 2026,
+\nolinkurl{papers/elliptic_charts/compressed_reference_20261114_v27.tex}.
+\bibitem{Archive}\emph{A quartic in 198 variables}, supplied research
+archive, ChatGPT in collaboration with Gabriel Conant's research request,
+14 November 2026,
+\nolinkurl{sources/h10_quartic198/arithmetic/inverse_vieta_198.tex}.
+\end{thebibliography}
+\end{document}

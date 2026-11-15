@@ -1,0 +1,273 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,booktabs,microtype}
+\usepackage[margin=26mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue]{hyperref}
+\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\title{Integral Lucas labels from a finite quadratic choice}
+\author{}\date{15 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+An integral congruence on one coordinate of a norm-one equation forces
+exponential growth, while monicity makes the other coordinate integral
+without a separate integrality condition. We determine the sharp lower
+bound, give positive witnesses with prescribed finite congruence data,
+and record an equivalent single square equation of degree six and
+coefficient height sixteen. A rational parametrization also shows why
+arbitrarily accurate local approximations to the integral labels do not
+give the same conclusion. All results in this paper are unconditional.
+\end{abstract}
+
+\section{The norm-one equation}
+For $a\in\Z$ define the Lucas sequence
+\[
+ U_0(a)=0,\qquad U_1(a)=1,\qquad
+ U_{j+1}(a)=aU_j(a)-U_{j-1}(a)\quad(j\ge1).
+\]
+For $A\ge3$ these numbers are positive and strictly increasing for
+$j\ge1$. The recurrence gives
+\begin{equation}\label{eq:identities}
+ U_{j+1}(a)^2-aU_{j+1}(a)U_j(a)+U_j(a)^2=1,
+ \qquad U_j(-a)=(-1)^{j-1}U_j(a)
+\end{equation}
+for $j\ge1$. The first identity also holds for $j=0$.
+
+\begin{lemma}\label{lem:classification}
+Let $a,t\in\Z$, $|a|\ge3$, and let $w\in\Q$ satisfy
+\begin{equation}\label{eq:norm}
+                         t^2-atw+w^2=1.
+\end{equation}
+Then $w\in\Z$. If $t\ne0$, there are $j\ge1$ and
+$\varepsilon\in\{1,-1\}$ such that
+\[
+ t=\varepsilon U_j(a),\qquad
+ w\in\{\varepsilon U_{j-1}(a),\varepsilon U_{j+1}(a)\}.
+\]
+Conversely all these displayed pairs satisfy~\eqref{eq:norm}.
+For $A\ge3$ and $j\ge1$,
+\begin{equation}\label{eq:elementary-growth}
+                              U_j(A)\ge(A-1)^{j-1}.
+\end{equation}
+\end{lemma}
+\begin{proof}
+The number $w$ is a rational root of the monic integer polynomial
+$W^2-atW+t^2-1$, and hence is an integer. For an elementary
+classification first suppose $a=A\ge3$. If $tw\le0$, the equation
+implies $t^2+w^2\le1$, giving only the zero-coordinate solutions.
+Otherwise change the signs of both coordinates and interchange them
+as necessary to obtain $t\ge w>0$. Equality $t=w$ would give
+$(2-A)t^2=1$, which is impossible. The other root in the first
+coordinate is
+\[
+                    t'=Aw-t=\frac{w^2-1}{t}.
+\]
+It is an integer with $0\le t'<w$. Thus replacing $(t,w)$ by
+$(w,t')$ preserves the equation and strictly decreases the larger
+positive coordinate. The process terminates at $(1,0)$. Reversing
+these steps gives the consecutive pairs $(U_{j+1}(A),U_j(A))$.
+Their interchanges and simultaneous negatives give all solutions.
+For negative $a$, replace $w$ by $-w$ and use the second identity
+in~\eqref{eq:identities}. This proves the displayed classification.
+The converse is the first identity in~\eqref{eq:identities}.
+Finally $U_2(A)=A\ge A-1$, and the recurrence and monotonicity give
+$U_{j+1}(A)\ge(A-1)U_j(A)$ for $j\ge1$.
+\end{proof}
+
+\section{A congruence forcing a large index}
+
+\begin{theorem}\label{thm:compression}
+Let $a,n\in\Z$ satisfy
+\[
+ |a|\ge3,\qquad c=|a-2|\ge3,\qquad n\ne0,
+ \qquad t=(a-2)n+1.
+\]
+Suppose a rational $w$ satisfies~\eqref{eq:norm}. Then $w\in\Z$ and
+\begin{equation}\label{eq:sharp}
+ |t|\ge U_{c-1}(|a|)\ge(|a|-1)^{c-2},\qquad
+ |n|\ge\frac{U_{c-1}(|a|)-1}{c}.
+\end{equation}
+In particular,
+\begin{equation}\label{eq:log-growth}
+ \log|n|\ge(c-2)\log(|a|-1)-\log(2c).
+\end{equation}
+The first bound in~\eqref{eq:sharp} is sharp for every allowed $a$.
+If $a\ge5$ and $n>0$, the sharper sharp bound is
+\begin{equation}\label{eq:positive}
+ t\ge U_{c+1}(a),\qquad
+ n\ge\frac{U_{c+1}(a)-1}{c},\qquad c=a-2.
+\end{equation}
+\end{theorem}
+\begin{proof}
+Since $t\equiv1\pmod c$, one has $t\ne0$. The possibility $t=1$
+would give $n=0$, while $t=-1$ would give $c\mid2$. Thus
+$t\notin\{-1,0,1\}$. Lemma~\ref{lem:classification} gives
+$t=\varepsilon U_j(a)$ with $j\ge2$.
+As $a\equiv2\pmod c$, induction in the recurrence gives
+\[
+                              U_j(a)\equiv j\pmod c.
+\]
+Consequently $\varepsilon j\equiv1\pmod c$. Among integers $j\ge2$
+in either of the two allowed residue classes, the least is $c-1$.
+Monotonicity of $U_j(|a|)$ proves the first inequality in~\eqref{eq:sharp}.
+The second follows from $|t|\le c|n|+1$. Since
+$U_{c-1}(|a|)\ge2$, replacing $U_{c-1}(|a|)-1$ by
+$U_{c-1}(|a|)/2$ proves~\eqref{eq:log-growth}.
+
+Sharpness is supplied by
+\[
+ t=-U_{c-1}(a),\qquad w=-U_{c-2}(a),\qquad
+ n=\frac{-U_{c-1}(a)-1}{a-2}.
+\]
+The congruence just proved makes $n$ integral, and $|t|>1$ makes it
+nonzero. Identity~\eqref{eq:identities} proves the norm equation.
+For $a\ge5,n>0$ one has $t>1$, so $\varepsilon=1$ and
+$j\equiv1\pmod c$. Its least possible value is $c+1$.
+Taking $t=U_{c+1}(a)$ and $w=U_c(a)$ proves both the sharper bound
+and its sharpness.
+\end{proof}
+
+The exclusions on $a$ cannot simply be dropped. For $a=4,n=-1$,
+one has $t=-1,w=0$; for $a=3,n=-2$ the same pair occurs.
+Both satisfy the norm equation without any growth.
+
+\begin{corollary}[A finite square condition]\label{cor:square}
+For integers $a,n$ satisfying the hypotheses of
+Theorem~\ref{thm:compression}, the following are equivalent:
+\begin{enumerate}
+\item There is $w\in\Q$ satisfying~\eqref{eq:norm}, with
+      $t=(a-2)n+1$.
+\item There is $z\in\Q$ such that
+\begin{equation}\label{eq:square}
+          z^2=(a^2-4)((a-2)n+1)^2+4.
+\end{equation}
+\end{enumerate}
+Every such $z$ is an integer. Equation~\eqref{eq:square} has total
+degree six and coefficient height sixteen after expansion and primitive
+integer normalization. Its auxiliary coordinate is a finite choice
+over the two retained integral coordinates $a,n$.
+\end{corollary}
+\begin{proof}
+Completing the square gives
+\[
+ (2w-at)^2=(a^2-4)t^2+4.
+\]
+Conversely $w=(at+z)/2$ solves the norm equation. Its integrality
+follows from Lemma~\ref{lem:classification}; alternatively, a rational
+square root of an integer is integral, and reducing the discriminant
+modulo four shows that $at$ and $z$ have the same parity.
+The right side of~\eqref{eq:square} expands as
+\[
+ (a^4-4a^3+16a-16)n^2
+ +(2a^3-4a^2-8a+16)n+a^2.
+\]
+The coefficient of $z^2$ is one, and the claimed degree and height
+follow directly.
+\end{proof}
+
+\section{Positive witnesses and finite congruence conditions}
+
+\begin{proposition}\label{prop:progressions}
+Let $a\ge5$ be an integer, put $c=a-2$, and define
+\[
+ n_0=\frac{U_{c+1}(a)-1}{c},\qquad w_0=U_c(a).
+\]
+For every positive integer $M$ there are arbitrarily large positive
+integers $n\equiv n_0\pmod M$ and integers $w\equiv w_0\pmod M$
+satisfying~\eqref{eq:norm} with $t=cn+1$.
+If $a\equiv1\pmod6$, then $n_0$ and $w_0$ are odd.
+\end{proposition}
+\begin{proof}
+The matrix
+\[
+                    B_a=\begin{pmatrix}a&-1\\1&0\end{pmatrix}
+\]
+is invertible modulo $cM$, since its determinant is one. Let $T>0$
+be a multiple of its order in the finite group
+$\operatorname{GL}_2(\Z/cM\Z)$ and also a multiple of $c$.
+For $j_k=c+1+kT$, the recurrence gives
+\[
+ U_{j_k}(a)\equiv U_{c+1}(a)\pmod{cM},\qquad
+ U_{j_k-1}(a)\equiv U_c(a)\pmod{cM}.
+\]
+Set $n_k=(U_{j_k}(a)-1)/c$ and $w_k=U_{j_k-1}(a)$.
+These are positive integers, have the asserted residues, and satisfy
+the norm equation by~\eqref{eq:identities}. Their sizes tend to infinity
+by~\eqref{eq:elementary-growth}.
+If $a\equiv1\pmod6$, reduction of the recurrence modulo two has the
+period $0,1,1$. Thus $U_{a-1}(a)$ is even and $U_{a-2}(a)$ is odd.
+Since $c$ is odd, $n_0=(U_{a-1}(a)-1)/c$ is odd as well.
+\end{proof}
+
+\section{Local approximation and exact integral labels}
+The integrality assumptions on $a,n$ in
+Theorem~\ref{thm:compression} are essential. Replacing them by rational
+numbers arbitrarily close to integers at finitely many primes is a
+different condition, even when the norm equation holds exactly.
+
+\begin{proposition}\label{prop:local}
+For every integer $r\ge1$ there are rational numbers $n_r,w_r$ such
+that, with $t_r=3n_r+1$,
+\[
+ t_r^2-5t_rw_r+w_r^2=1,\qquad
+ v_{19}(n_r-1)\ge r,\qquad 0<n_r<1.
+\]
+In contrast the exact integral labels $a=5,n=1$ admit no rational
+solution of the norm equation.
+\end{proposition}
+\begin{proof}
+The integer $85$ has the simple square root $3$ modulo $19$.
+Lift it to an integer $q_r$ satisfying
+$q_r^2\equiv85\pmod{19^r}$ and $q_r\equiv3\pmod{19}$.
+Choose $s_r\ge19$ with
+\[
+                       3s_r\equiv10+q_r\pmod{19^r}.
+\]
+Put
+\begin{equation}\label{eq:param}
+ D_r=s_r^2-5s_r+1,\qquad
+ t_r=\frac{s_r^2-1}{D_r},\qquad
+ w_r=\frac{s_r(5s_r-2)}{D_r},\qquad
+ n_r=\frac{t_r-1}{3}.
+\end{equation}
+Substitution proves the norm equation identically in $s_r$.
+Modulo $19$, one has $s_r\equiv17$ and $D_r\equiv15$,
+so every denominator in~\eqref{eq:param} is a $19$-adic unit.
+Moreover
+\[
+ 3D_r(t_r-4)=-9s_r^2+60s_r-15
+                  =85-(3s_r-10)^2.
+\]
+It follows that $v_{19}(t_r-4)\ge r$, and hence
+$v_{19}(n_r-1)\ge r$. Since $s_r\ge19$, one has $D_r>0$,
+$t_r>1$ from $5s_r-2>0$, and $t_r<4$ from
+$3s_r^2-20s_r+5>0$. Thus $0<n_r<1$.
+
+For the integral target $a=5,n=1$, the value of $t$ is four and
+the discriminant is $340=4\cdot85$, which is not a rational square.
+The equivalence in Corollary~\ref{cor:square} proves the last assertion.
+\end{proof}
+
+The square condition in Corollary~\ref{cor:square} therefore removes
+a separate integral coordinate only when the other two labels are
+already exact integers. Proposition~\ref{prop:local} rules out deriving
+that replacement from local approximation alone. An application to
+elliptic index comparisons must separately identify the retained
+arguments with their integral indices.
+
+\section*{Exact verification}
+The standard-library verifier
+\nolinkurl{computation/integer_labels/pell_compression_v40/check.py}
+checks both polynomial identities by independent coefficient arithmetic,
+the discriminant expansion, positive and sharp witnesses for both signs
+of $a$, the parity assertion, the excluded small cases, finite recurrence
+periods, and explicit local approximants. It also exhausts a stated
+finite rectangle of integral labels using integer square roots.
+These computations check the specifications and edge cases; the proofs
+above establish the infinite statements. No arithmetic hypothesis from
+a defining-polynomial construction is used.
+\end{document}

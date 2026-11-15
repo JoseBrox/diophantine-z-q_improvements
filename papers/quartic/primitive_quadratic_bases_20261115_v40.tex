@@ -1,0 +1,267 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,booktabs,microtype}
+\usepackage[margin=25mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
+\setlength{\emergencystretch}{3em}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\DeclareMathOperator{\GL}{GL}
+\title{Primitive quadratic bases and small-coefficient quartic presentations}
+\author{}\date{15 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+Invertible rational changes of basis among quadratic equations give
+small-coefficient presentations of two defining systems. The first has
+196 total variables, 176 primitive quadratic summands and 2994 monomials;
+the second has 78 total variables, 68 primitive quadratic summands and
+1254 monomials. We give exact coefficient-height formulas for every allowed
+coefficient parameter. The rational zero sets are preserved, up to two
+specified nonzero constant coordinate scalings in the first family.
+No arithmetic premise or sufficient defining parameter is changed.
+The changes improve coefficients without reducing the variable counts.
+\end{abstract}
+
+\section{The two quartic families}
+A variable count includes the distinguished rational input $X$.
+A coefficient parameter is fixed before existential quantification.
+For an integer polynomial $F$, write $H(F)$ for the largest absolute
+value of its integer coefficients after the parameter is fixed.
+Set
+\begin{align*}
+ K_0&=126616122944180358034867798936,\\
+ K_2&=32561227748626372080,\\
+ J_0&=20828275368498373068800,\qquad
+ J_1=275933278576697172.
+\end{align*}
+
+\begin{theorem}\label{thm:families}
+There are complete integer coefficient specifications for families
+$P_N\in\Z[X,Y_1,\ldots,Y_{195}]$ and
+$Q_B\in\Z[X,Z_1,\ldots,Z_{77}]$ with the following properties.
+\begin{enumerate}
+\item For every integer $N\ge1$, $P_N$ is a sum of 176 primitive
+quadratic squares, has total degree exactly four, integer content one,
+and exactly 2994 coordinate monomials. Its exact height is
+\[
+                    H(P_N)=\max\{K_0,K_2\,149^{2N}\}.
+\]
+The first term dominates for $N=1,2$, and the second for $N\ge3$.
+Its rational input projection equals that of the 196-variable parent
+of~\cite{Parent196} for every fixed $N$.
+\item For every positive integer $B$, $Q_B$ is a sum of 68 primitive
+quadratic squares, has total degree exactly four, integer content one,
+and exactly 1254 coordinate monomials. Its exact height is
+\[
+                         H(Q_B)=\max\{J_0,B^2+J_1\}.
+\]
+Its whole rational zero set equals that of the 68-row paired-ratio
+system of~\cite{Paired}, for every fixed $B$.
+\end{enumerate}
+Consequently, under the precise inherited arithmetic premises of the
+respective parent constructions, $P_N$ defines $\Z$ over $\Q$ for every
+sufficiently large fixed $N$, and $Q_B$ does so for every sufficiently
+large fixed odd $B$. The latter assertion retains ordinary rational
+$abc$ as an additional hypothesis. Both sufficient thresholds are the
+parent thresholds and remain ineffective.
+\end{theorem}
+
+The $N=3$ comparison in the first assertion concerns coefficient size;
+it is not a numerical defining threshold. In the second assertion the
+algebraic statements hold for every positive $B$, while the inherited
+arithmetic theorem uses sufficiently large odd $B\ge81$.
+The 196-variable source retains the original attribution of the supplied
+Conant--ChatGPT 198-variable construction~\cite{Archive}.
+The full external arithmetic audit is not supplied by the finite
+coefficient certificates proved here.
+
+\section{Changing a basis of quadratic equations}
+Let $R=\Z[\tau,x_1,\ldots,x_n]$, with the coefficient parameter $\tau$
+assigned degree zero when taking degrees in the $x_i$. A row is primitive
+if the greatest common divisor of its integer coefficients is one.
+
+\begin{lemma}\label{lem:basis}
+Let $q_1,\ldots,q_r\in\Q[\tau,\boldsymbol x]$ have degree at most two
+in $\boldsymbol x$. Let $M\in\GL_r(\Q)$, and let
+$x_i=d_i y_i$ with $d_i\in\Q^\times$, fixing the input coordinate.
+Assume every row of $M\boldsymbol q(\tau,d_1y_1,\ldots,d_ny_n)$ is
+nonzero, and multiply each by a nonzero rational constant to obtain a
+primitive integer row. The resulting rows have degree at
+most two and define a rational zero set in input-preserving bijection
+with the original one, at every fixed rational value of $\tau$.
+Their sum of squares has the same rational input projection.
+\end{lemma}
+\begin{proof}
+The coordinate change is invertible over $\Q$, independently of
+$\tau$. The vector of transformed rows vanishes if and only if the
+original vector does, because $M$ has a rational inverse. Multiplying
+individual equations by nonzero rational constants does not alter their
+zero set. Each coordinate substitution is linear, so the degree bound
+is preserved. Over $\Q$ a sum of squares vanishes exactly when all its
+summands vanish. These statements also allow an unchanged collection
+of further equations to be adjoined.
+\end{proof}
+
+There is no requirement that $M$ be integral or unimodular over $\Z$.
+If $W$ is the rational span of coefficient vectors of some independent
+quadratic rows, its primitive integer vectors lie in
+$W\cap\Z^m$, where $m$ is the number of coefficient positions.
+A basis of this lattice may be strictly smaller in coefficient size
+than every integral basis change of the initially given row lattice.
+For example, an integer decomposition $UAV=D$ of a full-row-rank
+coefficient matrix into Smith form gives a rational basis change
+\[
+ R=\operatorname{diag}(D_{11}^{-1},\ldots,D_{rr}^{-1})U,
+ \qquad RA\in\operatorname{Mat}_{r\times m}(\Z).
+\]
+Indeed $(RA)V=(I_r\;0)$, and $V^{-1}$ is integral. Subsequent invertible
+integer row changes and primitive normalization remain covered by
+Lemma~\ref{lem:basis}. The specifications below use fixed rational
+matrices and their exact inverses. Their correctness requires no claim
+of an optimal basis and no search during reconstruction.
+
+\section{The 196-variable coefficient specification}
+Use the balanced 176-row system of~\cite{Parent196}, with $C=149^N$.
+Its source digest and all coordinate names are fixed by
+\begin{center}\small
+\nolinkurl{computation/quartic/primitive_basis196_v40/transform.json}.
+\end{center}
+Apply its displayed rational $8\times8$ matrix to the two rows
+\texttt{testSquare.40.0.0.definition},
+\texttt{testSquare.40.0.1.definition}, followed in order by the six
+\texttt{sharedT.reference.relation}$i$.$j$ rows, with
+$i=1,2,3$ and $j=0,1$. Its determinant is
+\[
+             \frac1{214450708242592116705963714180667354532074632082}\ne0.
+\]
+All other rows are initially unchanged. Next, for each of the two
+coordinates named \texttt{additive.detector}$i$\texttt{.contactCombination},
+$i=0,1$, make the constant change
+\[
+                   x_{\rm parent}=\frac{x_{\rm new}}{3813373161796}.
+\]
+These are coordinate indices 76 and 90. All other coordinates, including
+$X$, are fixed. Clear every row to primitive integer coefficients.
+The fixed matrix, coordinate map and primitive row multipliers specify
+all 176 new quadratic equations without an optimization algorithm.
+Primitivity also holds after every specialization $C=149^N$.
+The checker verifies that either the parameter-independent coefficients
+of a row already have greatest common divisor one, or each of its
+coefficient profiles is a single power of $C$ and the greatest common
+divisor of its parameter-independent coefficients is coprime to 149.
+In the second case no prime dividing $C$ can divide every specialized
+coefficient, and any other common prime would divide every formal
+coefficient, contrary to the checked formal primitivity.
+
+The independent checker constructs the rational inverse matrix and
+verifies every transformed coefficient. The resulting map is a bijection
+of rational solutions by Lemma~\ref{lem:basis}; the inverse first undoes
+the two constant coordinate scalings and then uses the equality of row
+spans. Thus no completeness witness or exceptional point is discarded.
+
+The complete quadratic and quartic tables are \texttt{quadratic.json}
+and \texttt{polynomial.json} in the same directory. For a coordinate
+monomial $m$, let its coefficient in the quartic be
+\[
+                         p_m(C)=a_{m,0}+a_{m,1}C+a_{m,2}C^2.
+\]
+The exact finite certificate checks these assertions:
+\begin{enumerate}
+\item There are 2994 such monomials, and if $d=\max\{j:a_{m,j}\ne0\}$,
+\[
+             |a_{m,d}|149^d>\sum_{j<d}|a_{m,j}|149^j.
+\]
+Hence none disappears for $C\ge149$.
+\item For every $m$,
+\[
+ \frac{|a_{m,0}|}{149^6}+\frac{|a_{m,1}|}{149^3}+|a_{m,2}|\le K_2.
+\]
+Thus $|p_m(C)|\le K_2C^2$ for all $C\ge149^3$.
+\item The monomial of coordinate indices $(15,18,152,152)$ has coefficient
+$-K_2C^2$. The leading bound is therefore attained.
+\item Direct exact substitution at $C=149$ and $C=149^2$ gives height
+$K_0$, and $K_2 149^4<K_0<K_2 149^6$.
+\end{enumerate}
+These finite integer inequalities prove the exact height formula for
+every $N\ge1$, rather than just for sampled values. The input fourth
+power still has coefficient one, as its defining square row is unchanged
+and no other row contains $X$. This proves the degree and content claims.
+
+\section{The 78-variable coefficient specification}
+Use the 68-row source from~\cite{Paired}, with fixed parameter $B$.
+The file
+\begin{center}\small
+\nolinkurl{computation/quartic/abc78_balanced_v40/basis-certificate.json}
+\end{center}
+specifies an invertible rational $8\times8$ transformation of the
+reference rows, in the order
+\[
+ \texttt{common.fSquare.0},\quad\texttt{common.fSquare.1},
+ \quad\texttt{common.first.0},\quad\texttt{common.first.1},
+\]
+\[
+ \texttt{common.second.0},\quad\texttt{common.second.1},
+ \quad\texttt{common.third.0},\quad\texttt{common.third.1}.
+\]
+Its exact determinant is
+\[
+               \frac1{107225354121296058352981857090333677266037316041}\ne0.
+\]
+The certificate includes its rational inverse. All other rows and all
+coordinates are unchanged. Primitive normalization and
+Lemma~\ref{lem:basis} prove equality of the entire rational zero sets
+for every fixed $B$.
+For each row the parameter-independent coefficients have greatest
+common divisor one, so every specialization at an integer $B$ is
+primitive as well.
+
+The complete tables \texttt{quadratic-family.json} and
+\texttt{polynomial-family.json} have 68 rows and 1254 monomials,
+respectively. The independent checker expands the rows separately and
+checks every coefficient as a polynomial in $B$. The only coefficient
+of degree two in $B$ is the constant term $B^2+J_1$. It proves that all
+other coefficient magnitudes are at most
+$\max\{J_0,B^2+J_1\}$ for every positive $B$, and identifies a fixed
+coefficient with magnitude $J_0$. The two candidates are therefore
+both attained. Its sign checks also establish that no supported
+monomial disappears for positive $B$. The untouched input-square
+row again supplies coefficient one at $X^4$.
+
+This establishes every algebraic assertion of
+Theorem~\ref{thm:families}. The defining assertions follow from the
+corresponding parent input-projection theorems, with exactly their
+arithmetic premises and sufficient parameters. In particular the
+$B^2$ term remains part of the coefficient height; improving the fixed
+coefficient part does not reduce that parameter contribution.
+
+\section{Reconstruction and verification}
+The producers apply the fixed matrices and specified coordinate scalings.
+The independent checkers import no producer code. They authenticate the
+parent coefficient files, check the rational inverses and all row
+identities, and expand the quadratic squares by separate algorithms.
+The 196-variable checker uses only standard-library exact integer and
+fraction arithmetic; the 78-variable checker also uses exact symbolic
+expansion. The certificates concern the algebraic equivalences and
+coefficient formulas, and do not replace the external arithmetic proofs.
+
+\begin{thebibliography}{9}
+\bibitem{Parent196}\emph{A 196-variable quartic with 176 quadratic
+summands}, project manuscript, 15 November 2026,
+\nolinkurl{papers/quartic/quartic196_redundancy_20261115_v40.tex}.
+\bibitem{Paired}\emph{Recovery of elliptic curve equations from complete
+ratio equations}, project manuscript, 15 November 2026,
+\nolinkurl{papers/elliptic_charts/paired_ratio_redundancy_20261115_v40.tex}.
+\bibitem{ABC78}\emph{A quartic in 78 variables from a mixed-power height estimate},
+project manuscript, 15 November 2026,
+\nolinkurl{papers/quartic_existence/quartic_abc78_20261115_v34.tex}.
+\bibitem{Laurent}\emph{Quartics in 196 and 258 variables by elimination
+after monomial rescaling}, project manuscript, 15 November 2026,
+\nolinkurl{papers/quartic/laurent_elimination_20261115_v38.tex}.
+\bibitem{Archive}\emph{A quartic in 198 variables}, supplied research
+archive, ChatGPT in collaboration with Gabriel Conant's research request,
+14 November 2026,
+\nolinkurl{sources/h10_quartic198/arithmetic/inverse_vieta_198.tex}.
+\end{thebibliography}
+\end{document}

@@ -1,0 +1,316 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,booktabs,microtype}
+\usepackage[margin=26mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\setlength{\emergencystretch}{3em}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}\newtheorem{remark}[theorem]{Remark}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\title{Recovery of elliptic curve equations from complete ratio equations}
+\author{}\date{15 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+Complete elliptic ratio equations, together with the secant and tangent
+relations of a reciprocal point pair, imply both point-curve equations
+provided that the two reference ratios do not vanish simultaneously.
+Translation by a fixed point outside the two-torsion subgroup supplies
+this nonvanishing without a rank hypothesis. For the quartic construction
+under ordinary rational $abc$, the implication removes two rational
+quadratic equations while preserving every solution, including identity
+and torsion cases. The resulting 78-variable polynomial is a sum of
+68 primitive quadratic squares with 1113 monomials. Its degree, coefficient
+height, rational input projection and defining parameter threshold are
+unchanged. No decrease in the number of variables is asserted.
+\end{abstract}
+
+\section{A polynomial implication for a reciprocal point pair}
+Throughout this section let $k$ be a field of characteristic zero and
+$D\in k^\times$. Use coordinates
+\[
+ f,h,g,j,s,F,G,L,M,S,T\in k.
+\]
+The letter $j$ denotes a coordinate, not an elliptic invariant.
+Consider the equations
+\begin{align}
+ F=f^2,&\qquad G=g^2,\label{eq:squares}\\
+ s(f-g)&=h+j,\label{eq:secant}\\
+ s(h-j)&=1-D(F+fg+G),\label{eq:tangent}\\
+ hL+fS&=0, & (1-DF)L+hS&=0,\label{eq:ratio1}\\
+ jM+gT&=0, & (1-DG)M+jT&=0.\label{eq:ratio2}
+\end{align}
+These are quadratic equations; zero coordinates are allowed.
+
+\begin{theorem}\label{thm:implication}
+If \eqref{eq:squares}--\eqref{eq:ratio2} hold and $(S,T)\ne(0,0)$,
+then
+\[
+                  h^2=f-Df^3,\qquad j^2=g-Dg^3.
+\]
+Consequently the additional equation $h^2-f+DfF=0$ is redundant on
+this entire locus.
+\end{theorem}
+\begin{proof}
+Put
+\[
+ C_U=h^2-f+Df^3,\qquad C_V=j^2-g+Dg^3,
+\]
+and denote the left sides of the secant and tangent equations by
+\[
+ r_1=s(f-g)-h-j,\qquad r_2=s(h-j)-1+D(F+fg+G).
+\]
+The following are identities in the polynomial ring on all displayed
+coordinates:
+\begin{align}
+ h\{(1-DF)L+hS\}-(1-DF)(hL+fS)
+ &=SC_U+DfS(F-f^2),\label{eq:id1}\\
+ j\{(1-DG)M+jT\}-(1-DG)(jM+gT)
+ &=TC_V+DgT(G-g^2),\label{eq:id2}\\
+ C_V-C_U+(f-g)r_2-(h-j)r_1
+ &=D(f-g)\{F-f^2+G-g^2\}.\label{eq:id3}
+\end{align}
+The equations therefore give $SC_U=0$, $TC_V=0$ and $C_U=C_V$.
+If $S\ne0$, the first equality gives $C_U=C_V=0$. Otherwise $T\ne0$,
+and the second gives the same conclusion. Only the specified nonzero
+reference value is divided by; none of $f,g,h,j,L,M$ is assumed nonzero.
+Using $F=f^2$ proves the last assertion.
+\end{proof}
+
+The proof is an identity argument over a field, rather than a statement
+restricted to a dense open set. In particular it includes $f=h=0$,
+$g=j=0$, tangencies, finite torsion points and vanishing ratio values
+whenever they satisfy the retained equations.
+
+\section{Uniform rescaling of the seven point coordinates}
+The square coordinates need not be rescaled by the squares of the
+factors used for the point coordinates. Rescaling all seven coordinates
+by the same unit gives a quadratic presentation that is useful when
+reference functions have variable denominators.
+
+\begin{theorem}\label{thm:scaling}
+Let $v\in k^\times$ be a further coordinate whose nonvanishing is
+guaranteed by retained equations. In the system of Section~1 replace
+the old coordinates by
+\[
+ (f_*,h_*,g_*,j_*,s_*,F_*,G_*)
+       =v(f,h,g,j,s,F,G),
+\]
+and leave $L,M,S,T$ unchanged. The following quadratic equations are
+equivalent to the original equations under this invertible substitution:
+\begin{align}
+ vF_*&=f_*^2,&vG_*&=g_*^2,\label{eq:scaled-squares}\\
+ s_*(f_*-g_*)&=v(h_*+j_*),\label{eq:scaled-secant}\\
+ s_*(h_*-j_*)&=v^2-D(vF_*+f_*g_*+vG_*),\label{eq:scaled-tangent}\\
+ h_*L+f_*S&=0,&(v-DF_*)L+h_*S&=0,\label{eq:scaled-ratio1}\\
+ j_*M+g_*T&=0,&(v-DG_*)M+j_*T&=0.\label{eq:scaled-ratio2}
+\end{align}
+If a point-curve equation is retained, its equivalent quadratic form is
+\begin{equation}\label{eq:scaled-curve}
+                         h_*^2=vf_*-Df_*F_*.
+\end{equation}
+On $(S,T)\ne(0,0)$ this last equation is a consequence of
+\eqref{eq:scaled-squares}--\eqref{eq:scaled-ratio2}.
+\end{theorem}
+\begin{proof}
+Substitute $f=f_*/v$, and similarly for the other six coordinates,
+in each original row. Multiply each square-definition row, the curve
+row and the two point-pair rows by $v^2$. Multiply each complete
+ratio row by $v$. The resulting equations are precisely those
+displayed. Their monomials have total degree at most two in all
+retained coordinates, including $v$ and the reference ratios.
+All multipliers are nonzero. Division by $v$ gives the inverse map
+on every solution, and Theorem~\ref{thm:implication} proves the last
+assertion by transport through this bijection.
+\end{proof}
+
+In particular, the new stored square is
+$F_*=vf^2=f_*^2/v$, rather than $f_*^2$.
+This distinction is necessary for the displayed degree assertions.
+
+Suppose in addition that $k/\Q$ is quadratic and that $v^{-1}$ is a
+retained linear function, as in the three-coordinate reference chart
+of~\cite{Three}. The old difference abscissa is
+\[
+                    x(U-V)=s^2+D(f+g).
+\]
+It may be recovered while keeping its trace equation quadratic by
+retaining one further field coordinate $r=s$ and imposing
+\[
+ s_*=vr,\qquad
+ \tau=\operatorname{Tr}_{k/\Q}
+                 \bigl(r^2+Dv^{-1}(f_*+g_*)\bigr).
+\]
+Both equations have degree at most two. A field coordinate here means
+two rational coordinates. This is an exact recovery construction;
+it does not remove those two rational coordinates or assert a reduction
+in any complete defining polynomial.
+
+\section{The reference nonvanishing}
+Let
+\[
+                    E:y^2=x^3-Dx
+\]
+over $k$, and fix $P\in E(k)$ with $2P\ne O$. Suppose that $H,H-P$
+are finite and have nonzero abscissas. Define
+\[
+             S=\frac{y(H)}{x(H)},\qquad
+             T=\frac{y(H-P)}{x(H-P)}.
+\]
+
+\begin{lemma}\label{lem:nonvanishing}
+For every such $H$, one has $(S,T)\ne(0,0)$.
+\end{lemma}
+\begin{proof}
+If both values were zero, both ordinates would be zero. On the given
+Weierstrass equation each finite point with ordinate zero is fixed by
+negation and therefore belongs to $E[2]$. Hence
+$P=H-(H-P)$ would belong to the subgroup $E[2]$, contrary to $2P\ne O$.
+\end{proof}
+
+For the construction below, $k=\Q(\rho)$, $\rho^2=2$,
+$D=11-6\rho$, and
+\[
+ P=(a,b)=\left(\frac{57}{8}-\frac72\rho,
+                  -\frac{165}{8}+\frac{417}{32}\rho\right).
+\]
+Here $b\ne0$, so $P\notin E[2]$ without any group-rank hypothesis.
+The complete five-coordinate reference chart of~\cite{Reference}
+recovers precisely such $H,H-P$ on every field solution. Its exceptional
+leading-coefficient cases are included in that theorem. Thus
+Lemma~\ref{lem:nonvanishing} applies to every solution of the retained
+reference equations.
+
+\section{The 78-variable quartic with 68 squares}
+We use the complete quadratic family of~\cite{ABC78}, including its
+counting convention that the input coordinate $X$ is included in the
+total. Its rational coordinate list is kept unchanged. The coefficient
+parameter $B$ is fixed and is not quantified.
+
+Let $q_{B,1},\ldots,q_{B,70}$ denote its primitive integral quadratic
+rows in their published order. Let $J$ consist of all row indices except
+the two rational components of
+\begin{equation}\label{eq:deleted}
+                         h^2-f+DfF_U=0.
+\end{equation}
+The two rows have names \texttt{pair.cubic.0} and
+\texttt{pair.cubic.1} in the exact source table. Define
+\begin{equation}\label{eq:polynomial}
+                       Q'_B=\sum_{i\in J}q_{B,i}^{\,2}.
+\end{equation}
+This gives a finite integer coefficient specification, with no
+normalization or modification of any retained row.
+
+\begin{theorem}\label{thm:quartic}
+For every fixed coefficient parameter $B$, the old and new quadratic
+systems have exactly the same rational zero set. For every positive
+integer $B$, the polynomial \eqref{eq:polynomial} has 78 variables,
+68 quadratic summands, total degree exactly four, integer content one,
+and exactly 1113 coordinate monomials. Its coefficient height is
+\[
+ H(Q'_B)=\max\{C_*,B^2+C_0\},
+\]
+where
+\begin{align*}
+ C_*&=116167112798432587389449032604886634366655869137034483200,\\
+ C_0&=1747145497790223592810060466409331738555986526175317640.
+\end{align*}
+Under the exact arithmetic inputs of~\cite{ABC78}, including ordinary
+rational $abc$, every sufficiently large fixed odd $B$ gives
+\[
+ x\in\Z\quad\Longleftrightarrow\quad
+       \exists\boldsymbol y\in\Q^{77}:Q'_B(x,\boldsymbol y)=0.
+\]
+The same sufficient threshold as for the parent family works.
+No effective numerical threshold is supplied.
+\end{theorem}
+\begin{proof}
+Every old solution is a new solution because only equations have been
+removed. Conversely, the reference chart on a new solution still
+recovers $H,H-P$ as above, so $(S,T_H)\ne(0,0)$ by
+Lemma~\ref{lem:nonvanishing}. Apply Theorem~\ref{thm:implication} with
+\[
+ (j,F,G,L,M,S,T)=(k,F_U,F_V,L,L_0,S,T_H).
+\]
+All of its hypotheses are retained literal rows. It recovers
+\eqref{eq:deleted}, hence both of its rational components. This proves
+equality of the entire rational zero sets without changing any parameter.
+Over $\Q$, a sum of squares is zero exactly when every square's base
+is zero, so the two polynomials have the same zero set as well.
+
+The variable list has 78 entries and exactly two of 70 rows were removed.
+The only row containing $X$ remains $z_2-X^2$. Consequently the
+coefficient of $X^4$ in \eqref{eq:polynomial} is one, independently of
+$B$, and no other row contributes to it. This proves exact degree four
+and primitive integer content.
+
+The complete collected coefficient table specified in the next section
+has 1113 coordinate monomials. Deleting \eqref{eq:deleted} changes only
+parameter-independent coefficients. Every coefficient profile involving
+$B$ is unchanged from the parent, as is the constant profile $B^2+C_0$.
+The maximum absolute value of the remaining constant profiles is $C_*$.
+The table and the explicit inequality checks below certify that these
+profiles give precisely the asserted height for all $B\ge1$.
+In particular this is an all-parameter coefficient statement, rather
+than a computation at one test member.
+
+Finally the parent's input-projection theorem applies because its full
+zero set has just been recovered. Its arithmetic premises are retained:
+the specified elliptic group and index statements, the fixed-data
+simultaneous prime theorem and preparation conditions, the prepared
+congruent-number simultaneous-twist realization, and ordinary rational
+$abc$. No new prime-distribution or pole-realization assumption is used.
+\end{proof}
+
+\section{Exact specification and independent verification}
+All coefficient data are in
+\begin{center}\small
+\path{computation/quartic/abc78_reduced_v40}.
+\end{center}
+The source table is authenticated by SHA-256
+\begin{center}\small
+\texttt{ceffdf6e0a38ac1c8c42812f5e7bef599231dc5bc4b5f7c4527303b81dfc11bb}.
+\end{center}
+The files \texttt{quadratic-family.json} and
+\texttt{polynomial-family.json} contain every coordinate, row and
+collected quartic coefficient. The separate checker does not import the
+producer. It verifies identities \eqref{eq:id1}--\eqref{eq:id3},
+authenticates all retained source rows, independently expands their
+squares, and checks degree, support, primitive content and height.
+
+For clarity, its all-parameter height check has the following form.
+Set $m=\lfloor\sqrt{\max(0,C_*-C_0)}\rfloor+1$.
+Every parameter-dependent coefficient other than the constant coefficient
+is of the form $c_0+c_1B$. Its exact table satisfies
+\[
+ |c_1|(m-1)+|c_0|\le C_*,\qquad
+ |c_1|m+|c_0|\le m^2+C_0,\qquad |c_1|\le2m.
+\]
+The first inequality controls $1\le B<m$; the latter two imply that
+$B^2+C_0-|c_1|B-|c_0|$ is nonnegative and increasing for $B\ge m$.
+Thus no parameter-dependent coefficient exceeds the stated height.
+Both its attaining profiles occur in the table. Nonconstant profiles
+have coefficients of one sign, so none vanishes for positive $B$;
+this also certifies the ordinary monomial count for all such $B$.
+
+The computation verifies finite identities and coefficients. It does not
+constitute a new audit of the source's infinite arithmetic premises.
+The full-set algebraic equivalence above is proved independently of
+those premises; only the interpretation as a definition of $\Z$ uses them.
+
+\begin{thebibliography}{9}
+\bibitem{Reference}\emph{A complete five-coordinate elliptic reference chart},
+project manuscript, corrected edition 14 November 2026,
+\nolinkurl{papers/elliptic_charts/compressed_reference_20261114_v27.tex}.
+\bibitem{ABC78}\emph{A quartic in 78 variables from a mixed-power height estimate},
+project manuscript, 15 November 2026,
+\nolinkurl{papers/quartic_existence/quartic_abc78_20261115_v34.tex}.
+\bibitem{Pair}\emph{Trace heights on quadratic twists with $j=1728$},
+project manuscript, Section 2,
+\nolinkurl{papers/trace_heights/trace_on_all_points_20261113_v25.tex}.
+\bibitem{Three}\emph{A three-coordinate quadratic chart for an elliptic
+point and its translate}, project manuscript, 15 November 2026,
+\nolinkurl{papers/elliptic_charts/three_coordinate_reference_20261115_v40.tex}.
+\end{thebibliography}
+\end{document}

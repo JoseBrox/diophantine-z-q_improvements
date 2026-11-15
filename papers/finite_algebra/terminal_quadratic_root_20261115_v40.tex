@@ -1,0 +1,357 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,booktabs,microtype}
+\usepackage[margin=25mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\setlength{\emergencystretch}{3em}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\DeclareMathOperator{\N}{N}
+\title{Smaller norm polynomials with a possibly singular final quadratic extension}
+\author{}\date{15 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+A separating element in a quadratic tower remains separating on geometric
+characters when the final radicand is allowed to vanish. Galois descent
+then recovers a rational character from a rational determinant root even
+on a nonreduced fiber. The pole valuation obstruction permits a zero final
+ordinate, so this removes two large norm factors from each of four
+defining-polynomial specifications. The resulting degree bounds are
+$5059009872658432<2^{53}$ in 25 variables,
+$99279020543180800<2^{57}$ in the fully specified 27-variable case,
+and $43211777,39858177<2^{26}$ in the two 13-variable cases.
+The explicit 27-variable coefficient height is less than $2^{2^{70}}$.
+Variable counts, sufficient coefficient parameters, and arithmetic
+premises are unchanged. The permitted retained-coordinate tuples are
+enlarged, while the rational input projections remain the integers under
+the corresponding stated premises.
+\end{abstract}
+
+\section{Results and arithmetic scope}
+All variable counts include the distinguished rational input $X$.
+Total degree and coefficient bounds concern finite specifications of
+integer polynomials; the production determinants are not expanded.
+Coefficient height is the maximum absolute integer coefficient after
+the fixed coefficient parameter has been substituted.
+
+\begin{theorem}\label{thm:main}
+Under the arithmetic premises of the corresponding sources in
+\cite{Unit,Subalgebra}, there are integer-polynomial specifications with
+the following bounds:
+\begin{center}\small
+\begin{tabular}{lrrr}\toprule
+Source & Variables & Degree at most & Strict bound\\\midrule
+Inherited arithmetic premises &25&5059009872658432&$2^{53}$\\
+Fully specified inherited-premise source &27&99279020543180800&$2^{57}$\\
+Weak rational $abc$, exponent $121/100$ &13&43211777&$2^{26}$\\
+Weak rational $abc$, exponent $16/15$ &13&39858177&$2^{26}$\\\bottomrule
+\end{tabular}
+\end{center}
+Each polynomial has integer content one. The 25-variable family defines
+$\Z$ for every sufficiently large fixed odd exponent $L$, with the same
+sufficient threshold as its source. The 27-variable member at $L=20483$
+defines $\Z$ and has coefficient height less than $2^{2^{70}}$.
+The two 13-variable families define $\Z$ for the same sufficiently large
+fixed odd shifts $B$ as their sources. The 25- and 13-variable sufficient
+thresholds remain ineffective.
+\end{theorem}
+
+The general sources retain their elliptic group, height, normalized
+modular realization, prime-pattern, and pole-realization premises.
+The two conditional sources retain the indicated weak $abc$ inequality
+and their specified remaining arithmetic inputs. No new realization
+or height hypothesis is introduced. The full audit of these external
+arithmetic premises remains outside the finite algebraic verification.
+The smaller $L=3$ and $B=3$ computational members remain algebraic
+fixtures, not numerically certified defining members.
+
+\section{The pole obstruction with zero ordinates}
+For a nonzero rational input $b$, put
+\[
+                         B=17b,\qquad V=B(B-b^2).
+\]
+The source pole equations are
+\begin{equation}\label{eq:pole}
+                 p^2=B(1-e)(1+3e),\qquad
+                 Bq^2=(s^2-eV)(s^2+3eV).
+\end{equation}
+The zero-preparation formulation of~\cite[Section 3]{Dependencies}
+allows zero witnesses. We give the relevant local argument explicitly.
+
+\begin{lemma}\label{lem:pole}
+If~\eqref{eq:pole} has a rational solution, with no nonzero condition
+on $e,p,q,s$, then $v_\ell(b)$ is not a negative odd integer for any
+prime $\ell\notin\{2,3,17\}$.
+\end{lemma}
+\begin{proof}
+Suppose $\nu=v_\ell(b)<0$ is odd. Then $v_\ell(B)=\nu$ and
+$v_\ell(V)=3\nu$, since the terms in $B-b^2$ have the distinct
+valuations $\nu,2\nu$.
+If $e=0$, the first right side is $B$, which cannot be a square.
+If $v_\ell(e)>0$, its two displayed linear factors are units, again
+giving an odd valuation. If $v_\ell(e)<0$, both factors have valuation
+$v_\ell(e)$ and their product with $B$ has the odd valuation
+$\nu+2v_\ell(e)$. Thus $v_\ell(e)=0$. This includes the possibilities
+$e=1,-1/3$, when the first ordinate is zero.
+
+Now $v_\ell(eV)=3\nu$ is odd. Its valuation differs from the even
+valuation of $s^2$, with infinity allowed when $s=0$. Both factors in
+the second right side are nonzero and have the same finite valuation
+\[
+                         \min\{2v_\ell(s),3\nu\}.
+\]
+Their product therefore has even valuation. The left side is zero if
+$q=0$, and otherwise has odd valuation. Neither is possible.
+\end{proof}
+
+The rescaled pole equations in~\cite{Unit} have the same implication.
+Their inverse coordinate changes divide only by the guarded input,
+square multiplier, and conic denominator. They do not divide by the
+second ordinate. Thus those maps remain valid when that ordinate is zero.
+
+\section{Separation when the last radicand vanishes}
+Let $A$ be a finite-dimensional commutative algebra over $\Q$ with a
+quadratic tower presentation
+\[
+ A=\Q[t_1,\ldots,t_m],\qquad t_i^2=d_i,
+ \qquad d_i\in\Q[t_1,\ldots,t_{i-1}],\qquad m\ge2.
+\]
+Here each quadratic adjunction is free of rank two; dependent square
+classes are permitted. A geometric character is a unital homomorphism
+$\chi:A\to\overline\Q$. Suppose every geometric value of $d_i$ is
+nonzero for $i<m$. No such condition is imposed on $d_m$.
+The final extension may therefore have nonzero nilpotents.
+
+\begin{lemma}\label{lem:separation}
+Choose positive rational numbers $M_i\ge1$ such that
+$|\chi(t_i)|\le M_i$ for every geometric character, with a fixed
+embedding into $\mathbb C$. Define backwards
+\[
+ \phi_{m+1}=0,\qquad
+ \phi_i=\frac{t_i}{2M_i}+\frac{d_i}{4M_i^2}\phi_{i+1}.
+\]
+Then $|\chi(\phi_i)|\le2/3$ for every $i,\chi$.
+The values $\chi(\phi_1)$ are nonzero and distinct as $\chi$ varies
+over the geometric characters.
+\end{lemma}
+\begin{proof}
+Backward induction gives the bound from
+$1/2+(1/4)(2/3)=2/3$. At any character with $t_i\ne0$, the first
+term in $\phi_i$ has magnitude $|t_i|/(2M_i)$, while the second has
+magnitude at most $|t_i|^2/(6M_i^2)\le|t_i|/(6M_i)$.
+In particular $\phi_1\ne0$, since $d_1\ne0$.
+
+Let $\chi,\psi$ be distinct characters and let $i$ be the first
+generator on which they differ. Their earlier values, and hence their
+values of $d_i$, coincide. The two $t_i$ values are opposite and
+nonzero; a zero value would give no difference. Their leading
+contribution to $\phi_i(\chi)-\phi_i(\psi)$ has magnitude
+$|t_i|/M_i$, while the remaining contribution has magnitude at most
+$|d_i|/(3M_i^2)\le|t_i|/(3M_i)$. The difference is nonzero.
+At each earlier stage it is multiplied by the same nonzero factor
+$d_j/(4M_j^2)$, since $j<i\le m$. Thus the values of $\phi_1$
+are distinct. The argument concerns characters, not their possible
+multiplicities in a regular representation.
+\end{proof}
+
+Clearing denominators gives the unchanged integral separator formula
+\begin{equation}\label{eq:omega}
+ \Omega=\sum_{i=1}^m2M_it_i
+             \left(\prod_{k<i}d_k\right)
+             \left(\prod_{k>i}4M_k^2\right)
+        =\left(\prod_{k=1}^m4M_k^2\right)\phi_1.
+\end{equation}
+The clearing factor is nonzero, so $\Omega$ has the same separation
+and nonvanishing properties.
+
+\begin{proposition}[Rational descent on a nonreduced algebra]
+\label{prop:descent}
+Let $A$ be any finite-dimensional commutative $\Q$-algebra. Suppose
+$\Omega\in A$ has distinct nonzero values at its geometric characters,
+and let $g\in\Q^\times$. If $M_\Omega$ denotes multiplication by
+$\Omega$, then
+\[
+ \exists y\in\Q:\det(I-ygM_\Omega)=0
+ \quad\Longleftrightarrow\quad
+ \exists\chi:A\longrightarrow\Q\text{ a unital homomorphism}.
+\]
+\end{proposition}
+\begin{proof}
+Over $\overline\Q$, the algebra is a product of Artinian local
+algebras. On a factor with residue character $\chi$, multiplication
+by $\Omega$ is its scalar value $\chi(\Omega)$ plus a nilpotent
+operator. Therefore
+\[
+ \det(I-ygM_\Omega)=
+       \prod_{\chi}(1-yg\chi(\Omega))^{\ell_\chi},
+\]
+where $\ell_\chi\ge1$ is the dimension of that local factor.
+If a rational $y$ makes the determinant zero, then $y\ne0$ and
+some character has $\chi(\Omega)=1/(yg)\in\Q$.
+Every Galois conjugate of $\chi$ has the same value on $\Omega$.
+Separation makes it the same character. Thus every value of $\chi$
+is fixed by $\operatorname{Gal}(\overline\Q/\Q)$ and belongs to $\Q$.
+Conversely, a rational character gives $y=1/(g\chi(\Omega))$.
+Nilpotents map to zero in every character and do not affect the argument.
+No simple-eigenvalue hypothesis is used.
+\end{proof}
+
+Allowing an earlier radicand to vanish would not justify the same
+conclusion for this formula. For example, in
+$\Q[t,q]/(t^2,q^2-1)$, with $M_1=M_2=10$, formula~\eqref{eq:omega}
+is $8000t$. It vanishes on both rational characters, and
+$\det(I-YM_\Omega)=1$. This is why all preceding radicands remain units.
+
+\section{The smaller scalar guard}
+We retain the integral finite algebra, source circuits, quadratic tower,
+root envelopes, and separator of~\cite{Subalgebra}. The point algebra
+$\mathcal B$ is the tensor product of $p$ free rank-four point blocks;
+the full algebra adjoins $s$ pole roots and has rank
+\[
+                            n=4^p2^s.
+\]
+The pairs $(p,s)$ are $(9,2),(9,3),(3,2),(3,2)$ in the four rows of
+Theorem~\ref{thm:main}. Its rational point-algebra specializations are
+always etale, as proved in~\cite{Unit}.
+
+The source specifies integer circuits and guarded rational expressions.
+Flattening multiplication and powers factors each circuit expression
+into syntactic factors; no irreducible factorization is assumed.
+Let $\mathcal F'$ contain the nonconstant factors of:
+\begin{enumerate}
+\item every native source guard except the final pole root;
+\item every native pole radicand except the final one.
+\end{enumerate}
+Pole root symbols themselves are omitted from this list, since the
+preceding radicands impose their nonvanishing. All source denominators
+remain in the first group. Every factor of every preceding pole square
+multiplier also remains in the second group.
+
+For each $f\in\mathcal F'$, retain exactly its Galois-stable
+multiquadratic subalgebra $\mathcal C_f$ specified in~\cite{Subalgebra}
+and its integral norm $g_f$. Define
+\begin{equation}\label{eq:guard}
+                         G'=\prod_{f\in\mathcal F'}g_f.
+\end{equation}
+At every rational retained tuple, $G'\ne0$ means that all these factors
+are units of the point algebra. In particular every denominator is
+nonzero at every geometric character and all preceding pole radicands
+are units. The last pole radicand is allowed to vanish.
+
+For clarity, the terminal square extraction remains valid on this
+larger locus. If the native equation is $Z^2=ND_0$ and
+$ND_0=S^2c$, the reduced equation is $q_m^2=c$ and the recovered root
+is $Z=S q_m$. Soundness uses multiplication by $S$, not division by it.
+The native rational ordinate is $Z/D_0$, where $D_0$ remains guarded.
+Neither $S$ nor $q_m$ needs to be nonzero. Existing full-unit
+completeness witnesses have $S\ne0$ and are still represented by
+$q_m=Z/S$.
+
+The complete coefficient specification is
+\begin{equation}\label{eq:polynomial}
+                       P'=\det_{\mathcal A}(I-YG'M_\Omega).
+\end{equation}
+If $G'=0$, then $P'=1$, including at nonreduced specializations.
+Otherwise Lemma~\ref{lem:separation} and
+Proposition~\ref{prop:descent} give exactly the rational characters
+of the enlarged guarded source. All the reconstructed pole equations
+hold, with a possible zero final ordinate. Lemma~\ref{lem:pole}
+gives the same local obstruction used throughout the source soundness
+proofs. No other arithmetic formula, guard, or height estimate changes.
+The same soundness arguments therefore prove integrality of the input.
+
+Conversely each integer input has the old full-unit witnesses of
+\cite{Unit}. The new guard is a subproduct of the old one, so these
+witnesses remain allowed, and Proposition~\ref{prop:descent} supplies
+the new rational $Y$. Thus completeness and its sufficient parameters
+are unchanged. For the conditional sources use $XP'$ as before,
+including input zero. Since $P'(\boldsymbol x,0)=1$, every final
+polynomial has integer content one. This proves the semantic assertion
+of Theorem~\ref{thm:main}. It is not an equivalence at every previously
+retained base tuple: some zero-ordinate tuples are now permitted.
+
+\section{Exact bounds and finite specifications}
+Use the same weighted element degrees, coefficient norms, and integral
+matrix basis as~\cite{Subalgebra}. Let $g,h$ bound respectively the
+degree and binary logarithm of the coefficient sum of $G'$, and let
+$o,l$ be the unchanged degree and logarithmic operator-norm bounds for
+$\Omega$. The determinant estimate is
+\begin{equation}\label{eq:bounds}
+ \deg P'\le n(g+o+1),\qquad
+ \log_2\|P'\|_1\le n(h+l+1),\qquad \deg_Y P'\le n.
+\end{equation}
+Multiplication by $X$ in the conditional cases adds one to total degree
+and changes neither the coefficient norm nor the support cardinality.
+These bounds do not require reduced specializations: they are estimates
+for the same formal multiplication matrices over the integer coefficient
+ring.
+
+The exact majorants are
+\begin{center}\scriptsize
+\begin{tabular}{lrrrr}\toprule
+Source & $g$ & $h$ & $o$ & $l$\\\midrule
+25 &4824475361&33250472120&172420&1695856\\
+27 &47339336484&392833791159924&589540&4941393118\\
+13, $121/100$ &162135&520362&6660&29662\\
+13, $16/15$ &150275&502572&5420&25322\\\bottomrule
+\end{tabular}
+\end{center}
+The coefficient majorants for the 25-variable and both 13-variable rows
+use the stored small fixtures. All degree majorants hold uniformly in the
+allowed fixed parameter. The explicit 27-variable row uses $L=20483$ and gives
+\[
+ \log_2 H(P')\le823842533651079233536<2^{70},
+\]
+as asserted. No effective coefficient estimate for an unspecified
+defining shift is inferred from a fixture.
+
+For total variable count $V$ and $D_*=n(g+o+1)$, the support has the
+upper bound
+\[
+ \binom{D_*+V}{V}-\binom{D_*-n+V-1}{V}.
+\]
+In the four rows these bounds are respectively less than
+$2^{1193},2^{1401},2^{284},2^{283}$. These are upper bounds, not exact
+expanded monomial counts.
+
+The directory
+\nolinkurl{computation/few_variables/terminal_root_v40}
+contains four complete specifications, the generator, the independent
+checker, and exact bound and verification reports. Each specification
+pins its parent by SHA-256. The two removed native factor nodes are
+\[
+ \begin{array}{c|c}
+ \text{source}&\text{removed nodes}\\\hline
+ 25&6223,6229\\
+ 27&7729,7735\\
+ 13\text{, either exponent}&1805,1811.
+ \end{array}
+\]
+The checker reconstructs support from the native circuits, checks every
+rational denominator, retains all preceding radicand factors, and
+independently recomputes every final bound. It authenticates all
+unchanged subalgebra and separator data through the separate parent
+checker. Twenty deliberately altered specifications are rejected.
+Eight small finite-algebra examples include negative and tiny radicands,
+nonrational components, and terminal dual-number factors with repeated
+rational eigenvalues. The displayed nonterminal-zero example checks the
+restriction on which radicand may vanish. The mathematical descent and
+arithmetic implications are proved above; the finite checks do not
+certify the external arithmetic inputs.
+
+\begin{thebibliography}{9}
+\bibitem{Unit} \emph{A single norm determinant for the 25- and
+13-variable constructions}, project manuscript,
+\nolinkurl{papers/finite_algebra/unit_norm_20261114_v28.tex}.
+\bibitem{Subalgebra} \emph{Smaller norm determinants for rational-point
+encoding}, project manuscript,
+\nolinkurl{papers/finite_algebra/subalgebra_norms_20261114_v30.tex}.
+\bibitem{Dependencies} \emph{Arithmetic dependencies of the
+defining-polynomial constructions}, project manuscript,
+\nolinkurl{papers/arithmetic_dependencies/arithmetic_dependencies_20261108_v8.tex}.
+The pole equations in its Section 3 expressly permit zero witnesses.
+\end{thebibliography}
+\end{document}
