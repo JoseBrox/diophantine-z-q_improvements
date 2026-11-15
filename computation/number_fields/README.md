@@ -1,14 +1,15 @@
 # Rings of integers and existentially defined subfields
 
-The paper `number_field_definability_20261109_v12.tex` gives complete proofs of the following statements. Counts include distinguished inputs.
+The paper [Existential Definitions of Rings of Integers and Subfields](../../papers/number_fields/number_field_definability_20261109_v12.tex) gives complete proofs of the following statements. Counts include distinguished inputs.
 
 - For every number field K, its ring of integers is Diophantine in K if and only if Z is Diophantine in K. The implication from the ring of integers uses the established Denef–Lipshitz theorem, cited to Alpöge–Bhargava–Ho–Shnidman, Corollary 1.2.
 - Assuming Z is Diophantine in Q, these statements are equivalent to Q being Diophantine as a subfield of K.
 - For every finite characteristic-zero extension L/K, defining K in L is equivalent to defining the relative norm image, norm graph, or trace graph as subsets of powers of L. The norm-image implication uses a finite-difference identity. For quadratic extensions, defining the conjugation graph is equivalent as well.
 - A definition of Z inside a degree-n number field with N total coordinates gives a definition of its ring of integers with nN total coordinates.
 - An N-coordinate definition of O_L in L descends along a degree-d extension L/K to a definition of O_K in K with 1+d(N−1) total coordinates. A genuine counterexample therefore remains a counterexample in every finite extension.
-- Rank stability gives an infinite Diophantine subset of the rational subfield, while the cited ring-transfer theorem quantifies over rings of integers and the field-transfer theorem retains one universal quantifier. The positive-rank curve y²=x³−2 gives a concrete obstruction to the simple multiplicative approach: every rational abscissa has even 5-adic valuation, so no multiplicative combination can equal 5.
-- A fixed finite family of existential formulas cannot define the rings of integers across all finite extensions. This concerns reuse of formulas, not separately chosen formulas for individual fields.
+- Rank stability gives an infinite Diophantine subset of the rational subfield, while the cited ring-transfer theorem quantifies over rings of integers and the field-transfer theorem retains one universal quantifier.
+
+Two separate notes prove the related obstructions. The [abscissa-product obstruction](../../negative_results/papers/number_fields/abscissa_product_obstruction_20261116_v42.tex) uses the positive-rank curve y²=x³−2: every rational abscissa has even 5-adic valuation, so no multiplicative combination can equal 5. The [unchanged-formula obstruction](../../negative_results/papers/number_fields/unchanged_formula_obstruction_20261116_v42.tex) proves that a fixed finite family of existential formulas cannot define the rings of integers across all finite extensions. This concerns reuse of formulas, not separately chosen formulas for individual fields.
 
 The paper does not claim that every number field has a Diophantine ring of integers in its field of fractions, and it does not supply a counterexample.
 

@@ -1,0 +1,199 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,booktabs,microtype}
+\usepackage[margin=26mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}\newtheorem{remark}[theorem]{Remark}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\newcommand{\R}{\mathbb R}\newcommand{\A}{\mathbb A}
+\newcommand{\PP}{\mathbb P}\newcommand{\sqcl}[1]{[#1]}
+\DeclareMathOperator{\Tr}{Tr}\DeclareMathOperator{\Nm}{N}
+\DeclareMathOperator{\N}{N}\DeclareMathOperator{\rad}{rad}
+\DeclareMathOperator{\sfpart}{sf}
+\title{Limitations of Auxiliary Hypotheses in Diophantine Constructions}
+\author{}\date{16 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+Consecutive composite integers can have product with odd squarefree
+part equal to two, even when they admit distinct prime divisors.
+Thus distinct prime assignments alone do not control the primes
+occurring to odd order. A dimension argument shows that a polynomial
+injection on rational points does not furnish a finite algebraic
+inverse on an open subset of affine space of dimension greater than
+one. Finally, Mazur's connected-component conjecture, if true, excludes
+an existential definition of $\Z$ in $\Q$. Each conclusion concerns
+its stated hypothesis or encoding procedure; none is a general
+variable lower bound.
+\end{abstract}
+
+\section{Scope and notation}
+For a nonzero integer $n$, let
+\[
+                 \sfpart(n)=\prod_{p:\,v_p(n)\text{ odd}}p;
+\]
+the sign of $n$ is omitted. A polynomial $F\in\Z[X,\mathbf Y]$
+defines $\Z$ in $\Q$ when its rational input projection is exactly
+$\Z$. The results below concern three specified proposals: obtaining
+odd-prime height information from distinct prime assignments, replacing
+several free coordinates by a finite algebraic encoding of a polynomial
+injection, and adjoining Mazur's connected-component conjecture to
+premises that imply such an existential definition. The first two
+limitations are unconditional; the last implication explicitly assumes
+Mazur's conjecture. The height implications of $abc$, Szpiro, and
+truncated Vojta are treated in~\cite{HeightHypotheses}.
+
+\section{Prime assignments and odd valuations}
+
+Grimm's conjecture asserts that a finite block of consecutive
+composite positive integers admits distinct prime divisors,
+one for each member. Its formulation and its relation to prime
+gaps are discussed in~\cite{ErdosPomerance}.
+The next elementary example isolates a difficulty in using
+such assignments as a height estimate.
+
+\begin{proposition}\label{prop:pell}
+There are arbitrarily large positive integers $n$ such that
+$n$ and $n+1$ are both composite and
+\[
+                    \sfpart(n(n+1))=2.
+\]
+Each such pair admits distinct prime divisors.
+\end{proposition}
+\begin{proof}
+Define positive integers $a_k,b_k$ by
+\[
+ (17+6\sqrt8)^k=a_k+b_k\sqrt8,\qquad k\ge1.
+\]
+Their norm identity is $a_k^2-8b_k^2=1$, and $a_k$ is odd.
+For $n_k=(a_k-1)/2$ this gives
+$n_k(n_k+1)=2b_k^2$.
+Multiplication by $17+6\sqrt8$ acts by the integral matrix
+\[
+ \begin{pmatrix}17&48\\6&17\end{pmatrix},
+\]
+whose determinant is one. Its image in
+$\mathrm{GL}_2(\Z/144\Z)$ has some finite order $L$.
+For $k\equiv1\pmod L$ we therefore have
+$a_k\equiv17\pmod{144}$, whence $n_k\equiv8\pmod{72}$.
+In particular $8\mid n_k$ and $9\mid n_k+1$; both are
+composite. These $n_k$ tend to infinity. Their consecutive
+members are coprime, so any prime divisor of one differs
+from every prime divisor of the other.
+\end{proof}
+
+Proposition~\ref{prop:pell} concerns the information supplied
+by a prime assignment. It is not an independence theorem
+between conjectures. In particular, it shows why assigning
+different primes to factors cannot be substituted for a
+lower bound on primes occurring to odd order.
+
+\section{Polynomial injections and finite algebraic encodings}
+
+The Bombieri--Lang conjecture predicts that the rational points
+of a projective variety of general type are not Zariski dense.
+For surfaces, Poonen proves that this conjecture implies the
+existence of a polynomial inducing an injection
+$\Q^2\to\Q$~\cite[Theorem 1.1]{Poonen}.
+His Remark 1.7 records a different sufficient hypothesis:
+the four-term generalized $abc$ conjecture.
+It is essential to distinguish that conjecture from ordinary,
+three-term $abc$.
+
+\begin{proposition}\label{prop:dimension}
+Let $k$ be a characteristic-zero field and let $U$ be a nonempty
+open subset of $\A^r_k$, with $r>1$.
+No rational function $j:U\dashrightarrow\A^1_k$ is generically
+finite onto its image.
+\end{proposition}
+\begin{proof}
+If $j$ is constant, its only fiber has dimension $r$.
+Otherwise $k(j)$ has transcendence degree one over $k$, whereas
+$k(U)=k(t_1,\ldots,t_r)$ has transcendence degree $r$.
+Thus
+$\operatorname{trdeg}_{k(j)}k(U)=r-1>0$,
+which is incompatible with a finite function-field extension.
+\end{proof}
+
+A polynomial may nevertheless be injective on $k$-rational
+points, since geometric and rational fibers are different.
+If $j$ is injective on $\Q^r$ and a relation is
+$F(x,\mathbf y)=0$, encoding its rational witnesses by
+$z=j(\mathbf y)$ gives the exact reformulation
+\begin{equation}\label{eq:encoding}
+ \exists\mathbf y\in\Q^r:
+   F(x,\mathbf y)=0,\quad z=j(\mathbf y).
+\end{equation}
+Injectivity proves uniqueness of a rational inverse when one
+exists; it does not supply its existence or remove the
+quantifiers in~\eqref{eq:encoding}.
+Proposition~\ref{prop:dimension} also excludes replacing that
+inverse on an open set by a finite algebraic extension, the
+setting required by the one-coordinate separation theorem.
+This is a limitation of that proposed encoding. It does not
+rule out a different use of polynomial injections in a
+Diophantine construction.
+
+\section{A conjecture incompatible with the projection}
+
+Mazur's connected-component conjecture asserts that for every
+variety $V/\Q$, the closure of $V(\Q)$ in $V(\mathbb R)$ has
+finitely many connected components. The implication below is
+classical; see~\cite[\S\S 2--3]{CornelissenZahidi}.
+
+\begin{proposition}\label{prop:mazur}
+If Mazur's connected-component conjecture holds, $\Z$ is
+not Diophantine in $\Q$.
+\end{proposition}
+\begin{proof}
+Suppose a polynomial $F(x,\mathbf y)$ defines $\Z$, and let
+$V$ be its affine zero set. Let $C$ be the real topological
+closure of $V(\Q)$ in $V(\mathbb R)$. The coordinate projection
+$\pi:V(\mathbb R)\to\mathbb R$ is continuous. Since
+$\pi(V(\Q))=\Z$ and $\Z$ is closed,
+$\pi(C)\subseteq\Z$. Conversely every integer occurs at a
+rational point, so $\pi(C)=\Z$.
+Every connected component of $C$ has a connected image in
+the discrete set $\Z$, hence a one-point image.
+Finitely many components would give a finite image, a
+contradiction. If the conjecture is formulated only for
+irreducible varieties, apply it to the finitely many
+irreducible components of $V$.
+\end{proof}
+
+Thus this topological conjecture cannot be adjoined to
+arithmetic premises already implying an existential definition
+of $\Z$ as a consistent method of reducing the number of witnesses.
+It is distinct from the Bombieri--Lang statement used above.
+
+\begin{thebibliography}{99}
+\bibitem{ErdosPomerance}
+P.~Erd\H{o}s and C.~Pomerance,
+An analogue of Grimm's problem of finding distinct prime
+factors of consecutive integers,
+\emph{Utilitas Math.} \textbf{24} (1983), 45--65.
+\url{https://math.dartmouth.edu/~carlp/PDF/38.pdf}.
+
+\bibitem{Poonen}
+B.~Poonen, Multivariable polynomial injections on rational numbers,
+\emph{Acta Arith.} \textbf{145} (2010), 123--127.
+\url{https://math.mit.edu/~poonen/papers/QQ.pdf}.
+
+\bibitem{CornelissenZahidi}
+G.~Cornelissen and K.~Zahidi,
+Topology of Diophantine sets: remarks on Mazur's conjectures,
+in \emph{Hilbert's Tenth Problem: Relations with Arithmetic
+and Algebraic Geometry}, Contemp. Math.~270, 2000, 253--260.
+\url{https://arxiv.org/abs/math/0006140}.
+
+\bibitem{HeightHypotheses}
+\emph{Additional arithmetic hypotheses and polynomial definitions of the integers},
+project manuscript, 9 November 2026,
+\nolinkurl{papers/arithmetic_hypotheses/arithmetic_hypotheses_20261109_v16.tex}.
+\end{thebibliography}
+\end{document}

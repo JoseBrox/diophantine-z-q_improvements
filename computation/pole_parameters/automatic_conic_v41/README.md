@@ -1,6 +1,6 @@
 # Automatic first conics: exact obstructions
 
-Companion paper: [Obstructions to automatic first conics in pole certificates](../../../papers/pole_parameters/automatic_conic_obstruction_20261115_v41.tex).
+Companion paper: [Obstructions to automatic first conics in pole certificates](../../../negative_results/papers/pole_parameters/automatic_conic_obstruction_20261115_v41.tex).
 
 Run from the repository root:
 

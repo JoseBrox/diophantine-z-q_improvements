@@ -1,0 +1,218 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,booktabs,microtype}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue]{hyperref}
+\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}\newcommand{\F}{\mathbb F}
+\title{Mixed torsion signs for doubled elliptic reference points}
+\author{}\date{16 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+An explicit progression of doubled points on the project elliptic curve
+reduces to the identity at one prime above a split rational prime, while
+its translate reduces to the distinguished two-torsion point at the
+conjugate prime. The two resulting formal-parameter signs are opposite.
+The construction stays inside the complete reference chart and gives
+infinitely many characteristic-zero points. Exact reduction orders and
+an independent finite-field certificate prove every assertion. The
+result excludes automatic agreement of these signs, including for
+doubled reference points; it makes no assertion about solutions of a
+complete detector system.
+\end{abstract}
+
+\section{An explicit progression}
+Put
+\[
+ K=\Q(\rho),\qquad \rho^2=2,\qquad D=11-6\rho,
+ \qquad E:y^2=x^3-Dx,
+\]
+\[
+ R_0=(1+\rho,2\rho),\qquad
+ P=2R_0=\left(\frac{57}{8}-\frac72\rho,
+                  -\frac{165}{8}+\frac{417}{32}\rho\right),
+ \qquad T_0=(0,0).
+\]
+For a rational prime $p$ and a root $r$ of $r^2=2$ in $\F_p$,
+reduction at $(p,\rho-r)$ is denoted by $\operatorname{red}_{p,r}$.
+At a prime of good reduction this denotes the group homomorphism
+on all of $E(K)$, including points reducing to the identity $O$.
+
+\begin{theorem}\label{thm:progression}
+Let
+\[
+ p=76537,\qquad r_1=26935,\qquad r_2=49602,
+\]
+and for every integer $j\ge0$ set
+\[
+ h_j=28101000+30510750j,\qquad H_j=[h_j]P.
+\]
+Then $p$ is prime, $r_1,r_2$ are the two roots of $X^2-2$ in
+$\F_p$, and $E$ has good reduction at both corresponding primes.
+The points $H_j$ are distinct, belong to $2E(K)$, and satisfy
+\[
+ \operatorname{red}_{p,r_1}(H_j)=O,
+ \qquad
+ \operatorname{red}_{p,r_2}(H_j-P)=T_0.
+\]
+For every $j$, the points $H_j,H_j-P$ are finite and have nonzero
+abscissas. Thus $H_j$ belongs to
+\[
+                     E\setminus\{O,T_0,P,P+T_0\},
+\]
+the full domain of the three-coordinate reference chart.
+\end{theorem}
+
+\section{Finite reduction certificates}
+The following data determine the two reductions and their exact point
+orders. All entries in this section are ordinary residues modulo the
+indicated prime.
+\[
+\begin{array}{c|r|r|r}
+ \rho&D&P&\operatorname{ord}(P)\\\hline
+ 26935&68012&(10973,56787)&6375\\
+ 49602&8547 &(46444,38843)&4786
+\end{array}
+\]
+The integer $76537$ has no divisor from $2$ through
+$\lfloor\sqrt{76537}\rfloor=276$. Both displayed values of $D$
+are nonzero, so the discriminant $64D^3$ is nonzero modulo $p$.
+The two listed roots of $2$ have sum $76537$, as required for the
+conjugate primes.
+
+The exact orders have short certificates. In the first reduction,
+$[6375]P=O$ and
+\[
+\begin{array}{c|r}
+ \text{multiplier}&\text{point}\\\hline
+ 6375/3 &(7526,20385)\\
+ 6375/5 &(5801,44942)\\
+ 6375/17&(52213,15802)
+\end{array}
+\]
+are all nonzero. The prime divisors of $6375$ are precisely $3,5,17$.
+In the second reduction, $[4786]P=O$ and
+\[
+ [4786/2]P=(0,0),\qquad
+ [4786/2393]P=(46317,70872),
+\]
+where $4786=2\cdot2393$ and $2393$ is prime. These identities prove
+the orders without an assumption about the full finite groups.
+They also give
+\begin{equation}\label{eq:half}
+                   [2393]\operatorname{red}_{p,r_2}(P)=T_0.
+\end{equation}
+
+\begin{lemma}\label{lem:nontorsion}
+The point $P$ has infinite order.
+\end{lemma}
+\begin{proof}
+At the good prime $(17,\rho-6)$, the curve has $D=9$ and
+$P=(1,14)$; this reduction has exact order $5$.
+Suppose $P$ had finite order. Its reduction of order $6375$ above
+shows that its order has a nontrivial $3$-primary part.
+A nonzero point in that $3$-primary subgroup would reduce to $O$
+at $(17,\rho-6)$, because its reduced order divides both a power
+of $3$ and $5$.
+
+The kernel of good reduction at $17$ has no nonzero $3$-power
+torsion. Indeed its formal parameter $t$ has positive valuation and
+satisfies $[3](t)=3t+O(t^2)$ with integral coefficients. Since $3$
+is a $17$-adic unit, $[3](t)$ has the same finite valuation as $t$.
+Iteration cannot give zero. This contradiction proves the lemma.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:progression}]
+The finite arithmetic just given verifies primality, splitting and good
+reduction. The exact orders are coprime and their product is
+$30510750$. Moreover
+\[
+ 28101000=6375\cdot4408,\qquad
+ 28101000-1=4786\cdot5871+2393.
+\]
+These congruences hold for every $h_j$. Reduction commutes with
+integer multiplication, so the first gives the identity at the first
+prime, while the second and~\eqref{eq:half} give $T_0$ at the second.
+
+The equality $P=2R_0$ gives $H_j=[2h_j]R_0\in2E(K)$.
+Lemma~\ref{lem:nontorsion} makes the $H_j$ distinct.
+Both $h_j$ and $h_j-1$ are nonzero. Thus $H_j$ and $H_j-P$ are
+non-torsion, so neither is $O$ or $T_0$. On this Weierstrass equation,
+the only point of abscissa zero is $T_0$. Both points are therefore
+finite with nonzero abscissas, proving the final assertion.
+\end{proof}
+
+\section{The formal-parameter signs}
+Use the local parameter
+\[
+                         \lambda(Q)=-x(Q)/y(Q)
+\]
+at $O$. Translation by $T_0$ is given, whenever $x\ne0$, by
+\begin{equation}\label{eq:translation}
+ (x,y)\longmapsto
+       \left(-\frac D x,\frac{Dy}{x^2}\right).
+\end{equation}
+The chord formula proves this identity directly. In particular,
+\begin{equation}\label{eq:sign}
+ \frac{y(Q+T_0)}{x(Q+T_0)}=-\frac{y(Q)}{x(Q)},
+ \qquad
+                         \lambda(Q+T_0)=-\lambda(Q).
+\end{equation}
+These are rational-function identities, including their regular
+extensions at the relevant formal neighborhoods.
+
+\begin{corollary}\label{cor:signs}
+For every $H_j$ of Theorem~\ref{thm:progression}, the primary reference
+$H_j$ is a nonidentity point in the formal group at $O$ for the first
+completion. For the second completion, the nonidentity formal point
+is $(H_j-P)+T_0$, and
+\[
+             \lambda(H_j-P)=-\lambda((H_j-P)+T_0).
+\]
+Hence identifying the two reference neighborhoods with the formal group
+at $O$ produces opposite translation signs. The signs need not agree
+for a single global doubled reference point.
+\end{corollary}
+\begin{proof}
+The reduction assertions put the indicated points in the formal groups.
+They are nonidentity because their characteristic-zero points are
+non-torsion. The first identification uses no torsion translation.
+The second uses $T_0$, and its minus sign is exactly~\eqref{eq:sign}.
+\end{proof}
+
+The corollary concerns the reference points and their local parameters.
+It does not supply witnesses for any contact, ratio, trace or pole
+system. In particular it is not a counterexample to an established
+defining polynomial. It rules out deducing automatic agreement of these
+two signs from the reference-chart equations and membership in $2E(K)$
+alone. A construction may impose further conditions that exclude or
+control the mixed branches; those conditions require their own proof.
+
+\section{Reproducible exact verification}
+The directory
+\begin{center}\small
+\path{negative_results/computation/mixed_sign_v42}
+\end{center}
+contains the complete finite certificate. The producer uses affine
+addition and right-to-left binary multiplication. The checker imports
+neither the producer nor a symbolic algebra package: it reconstructs the
+reductions and uses Jacobian doubling, mixed addition and left-to-right
+binary multiplication. It checks every proper-divisor order certificate,
+the Chinese remainder congruences, trial-division primality, and the
+order-five reduction used in Lemma~\ref{lem:nontorsion}. Exact arithmetic
+in $\Q(\sqrt2)$ authenticates $P=2R_0$. Laurent-polynomial arithmetic
+checks the translation and sign identities.
+
+Run
+\begin{verbatim}
+python -B negative_results/computation/mixed_sign_v42/build.py
+python -B negative_results/computation/mixed_sign_v42/check.py
+\end{verbatim}
+The checker also accepts a certificate path via \texttt{--certificate}.
+The finite computations establish the displayed group identities;
+the progression argument above supplies the infinitely many
+characteristic-zero examples.
+\end{document}

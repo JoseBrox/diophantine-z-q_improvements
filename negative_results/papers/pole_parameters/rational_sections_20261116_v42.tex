@@ -1,0 +1,286 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,microtype}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\newcommand{\Pp}{\mathbb P}
+\DeclareMathOperator{\Jac}{Jac}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\End}{End}
+\title{Rational sections of fixed-input pole fibrations}
+\author{}\date{16 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+We determine when a fixed-input normalized pole equation has a rational
+section in its conic parameter. For nonzero rational coefficients $C,D$,
+an affine section exists exactly when $C$ or $-3D$ is a rational square.
+When $C$ is nonsquare, all projective sections come from fixed points
+of an explicit genus-one involution. The proof identifies the relevant
+Jacobians as quadratic twists of a non-CM elliptic curve and accounts
+for the possible lack of a rational origin on the second genus-one
+curve. For prepared detector inputs, a section exists exactly when
+$17(17-b)$ is a rational square. This classifies rational functions
+of the parameter; it does not obstruct witnesses in individual rational
+fibers or a common rational parameter for several inputs.
+\end{abstract}
+
+\section{The section criterion}
+
+Fix $C,D\in\Q^\times$, let $\tau$ be transcendental over $\Q$, and put
+\[
+ k=\Q(\tau),\qquad e=\frac{\tau^2-D}{\tau^2+3D}.
+\]
+Let $F_{C,D}$ be the smooth projective curve over $k$ with affine equation
+\begin{equation}\label{eq:pole}
+                 q^2=D(s^2-Ce)(s^2+3Ce).
+\end{equation}
+Its four geometric branch points in the $s$ line are distinct, so it
+has genus one. A rational section of the associated fibration over
+$\Pp^1_\tau$ means a point of $F_{C,D}(k)$. An \emph{affine section}
+means a pair $s,q\in k$ satisfying \eqref{eq:pole}.
+All uses of ``square'' below mean a square in $\Q^\times$.
+
+\begin{theorem}\label{thm:sections}
+The following assertions hold.
+\begin{enumerate}
+\item If $C$ is nonsquare, the affine sections are exactly
+\begin{equation}\label{eq:fixedzero}
+              s=0,\qquad q=\pm Ce\sqrt{-3D},
+\end{equation}
+when $-3D$ is square, and there are no affine sections otherwise.
+The only additional projective sections are the two points at infinity,
+present exactly when $D$ is square.
+\item If $C=c^2$ with $c\in\Q^\times$, there is the affine section
+\begin{equation}\label{eq:squaresection}
+             s=c,\qquad q=-\frac{4CD\tau}{\tau^2+3D}.
+\end{equation}
+\end{enumerate}
+Consequently an affine section exists if and only if $C$ or $-3D$
+is square. A projective section exists if and only if at least one
+of $C,D,-3D$ is square.
+\end{theorem}
+
+We prove the theorem using explicit genus-one curves and descent.
+
+\section{The trivializing curve and its Jacobian}
+
+Let $B_D$ and $E_{C,D}$ denote the smooth projective curves with equations
+\begin{equation}\label{eq:curves}
+ B_D:\ r^2=\frac{\tau^2-D}{\tau^2+3D},\qquad
+ E_{C,D}:\ v^2=D(u^2-C)(u^2+3C).
+\end{equation}
+Both have genus one. On $B_D$, the substitution
+$z=r(\tau^2+3D)$ gives
+\[
+                  z^2=(\tau^2-D)(\tau^2+3D).
+\]
+The two points over $\tau=\infty$ have $r=\pm1$ and are rational.
+Choose the point with $r=1$ as origin. An explicit Weierstrass model is
+\begin{equation}\label{eq:jacobian}
+ J_D:\quad Y^2=X^3-4DX^2+16D^2X,
+\end{equation}
+with mutually inverse rational maps
+\begin{equation}\label{eq:weierstrassmaps}
+ \begin{gathered}
+ X=2(z+\tau^2+D),\qquad Y=2\tau X,\\
+ \tau=\frac{Y}{2X},\qquad z=\frac X2-\tau^2-D.
+ \end{gathered}
+\end{equation}
+They extend to an isomorphism of the smooth projective curves and
+send the chosen origin to the Weierstrass origin. Direct calculation gives
+\begin{equation}\label{eq:invariants}
+ c_4=-512D^2,\qquad \Delta=-196608D^6,\qquad j(J_D)=\frac{2048}{3}.
+\end{equation}
+The $j$-invariant of a complex elliptic curve with complex
+multiplication is an algebraic integer
+\cite[Corollary 21.13]{Sutherland}. Since $2048/3$ is not an integer,
+\begin{equation}\label{eq:endomorphisms}
+                       \End_{\overline\Q}(J_D)=\Z.
+\end{equation}
+
+Write
+\[
+ \sigma(\tau,r)=(\tau,-r),\qquad \iota(u,v)=(-u,v)
+\]
+for the involutions of the two curves. Their quotient curves are of
+genus zero, and each involution has four geometric fixed points.
+In particular $\iota$ induces $[-1]$ on $\Jac(E_{C,D})$: after
+choosing any geometric fixed point as origin, it is the nonidentity
+origin-preserving involution of an elliptic curve. This assertion
+does not require a rational fixed point.
+
+\begin{lemma}\label{lem:twist}
+The Jacobian of $E_{C,D}$ is the quadratic twist of $J_D$ by $C$.
+If $C$ is nonsquare, then
+\[
+           \Hom_{\Q}(\Jac(B_D),\Jac(E_{C,D}))=0,
+\]
+and every $\Q$-morphism $B_D\to E_{C,D}$ is constant.
+\end{lemma}
+\begin{proof}
+Choose $c\in\overline\Q$ with $c^2=C$. The formulas
+\begin{equation}\label{eq:twistmaps}
+ \begin{gathered}
+ \phi_c:B_D\longrightarrow E_{C,D},\qquad
+ u=\frac c r,\qquad
+ v=-\frac{4CD\tau}{\tau^2-D}=-\tau(u^2-C),\\
+ \tau=-\frac{v}{u^2-C},\qquad r=\frac c u
+ \end{gathered}
+\end{equation}
+are mutually inverse rational maps, hence an isomorphism of smooth
+projective curves over $\Q(c)$. For example,
+\[
+ u^2-C=\frac{4CD}{\tau^2-D},\qquad
+ u^2+3C=\frac{4C\tau^2}{\tau^2-D},
+\]
+which verifies the target equation. Changing $c$ to $-c$ replaces
+$\phi_c$ by $\iota\circ\phi_c$. If $C$ is nonsquare, the
+nontrivial automorphism of $\Q(c)/\Q$ therefore sends the induced
+Jacobian isomorphism $\Phi_c$ to $-\Phi_c$. If $C$ is square,
+$\phi_c$ is already defined over $\Q$. These are precisely the
+descent data for the quadratic twist by $C$; its Weierstrass equation is
+\[
+                  Y^2=X^3-4CDX^2+16C^2D^2X.
+\]
+
+By \eqref{eq:endomorphisms}, every geometric homomorphism between
+these Jacobians is $n\Phi_c$ for some $n\in\Z$. If $C$ is
+nonsquare, Galois conjugation sends it to $-n\Phi_c$. Hence the
+only homomorphism defined over $\Q$ is zero.
+
+Finally suppose $f:B_D\to E_{C,D}$ were nonconstant and defined
+over $\Q$. The rational origin $O\in B_D(\Q)$ would give a
+rational point $f(O)$ on $E_{C,D}$. Using these points as origins,
+$f$ would be a nonzero homomorphism of elliptic curves by
+\cite[Chapter II, Section 1, Proposition 1.5]{Milne}. It would
+therefore induce a nonzero $\Q$-homomorphism of their Jacobians,
+a contradiction. This argument does not assume a rational origin
+on $E_{C,D}$ before the map $f$ is given.
+\end{proof}
+
+\section{Descent of sections}
+
+Over the quadratic extension $\Q(B_D)/\Q(\tau)$, the substitutions
+\begin{equation}\label{eq:trivialization}
+                    u=\frac{s}{r},\qquad v=\frac{q}{r^2}
+\end{equation}
+identify $F_{C,D}$ with the constant curve $E_{C,D}$. It follows
+that $F_{C,D}(\Q(\tau))$ is in bijection with the morphisms
+\begin{equation}\label{eq:equivariance}
+          f:B_D\longrightarrow E_{C,D}\quad\hbox{over }\Q,
+          \qquad f\circ\sigma=\iota\circ f.
+\end{equation}
+Indeed a point of the generic fiber gives a rational map from $B_D$,
+which extends over its smooth projective model; the condition in
+\eqref{eq:equivariance} is precisely invariance of $s=ru$ and
+$q=r^2v$ under $\sigma$. Conversely that condition gives descent
+to $\Q(\tau)$. This includes the points at infinity on the
+smooth projective models.
+
+\begin{proof}[Proof of Theorem~\ref{thm:sections}]
+If $C$ is nonsquare, Lemma~\ref{lem:twist} makes every map in
+\eqref{eq:equivariance} constant. Its value is a rational point of
+$E_{C,D}$, since $B_D$ has a rational point. Equivariance says that
+this value is fixed by $\iota$.
+
+In the affine chart the fixed points have $u=0$, and their ordinates
+satisfy $v^2=-3DC^2$. They are rational exactly when $-3D$ is
+square, and \eqref{eq:trivialization} gives
+\eqref{eq:fixedzero}. At infinity use the coordinates
+$t=1/u$ and $w=v/u^2$. Their equation and involution are
+\[
+ w^2=D(1-Ct^2)(1+3Ct^2),\qquad (t,w)\longmapsto(-t,w).
+\]
+The two points at $t=0$ are rational exactly when $D$ is square.
+They correspond to the two infinity points of $F_{C,D}$, whose
+local ordinate is $q/s^2=\pm\sqrt D$. These are all fixed points,
+so the list of sections for nonsquare $C$ is exhaustive.
+
+If $C=c^2$ with $c\in\Q^\times$, then
+\[
+ (1-e)(1+3e)=\frac{16D\tau^2}{(\tau^2+3D)^2}.
+\]
+Substituting $s=c$ in \eqref{eq:pole} proves
+\eqref{eq:squaresection}. The two existence criteria now follow.
+\end{proof}
+
+The same maps also give a geometric description of the full surface:
+it is birational to
+\[
+                  (B_D\times E_{C,D})/\langle\sigma\times\iota\rangle,
+ \qquad s=ru,\quad q=r^2v.
+\]
+After choosing geometric fixed origins, this is the diagonal negation
+quotient of a product of elliptic curves. The section argument above
+retains the actual involutions, so it does not discard their possible
+translation terms relative to rational origins.
+
+\section{Prepared inputs and scope}
+
+For a prepared pole input in \cite{Guards}, write $b=da^2$ with
+$d,a\in\Q^\times$ and set
+\[
+                   D=17d,\qquad C=17(17-b).
+\]
+The preparation includes $0<b<17$ and $b\in\Q_{17}^{\times2}$.
+Thus $D>0$, $C>0$, and $v_{17}(D)$ is odd. In particular neither
+$D$ nor $-3D$ is a rational square.
+
+\begin{corollary}\label{cor:prepared}
+For a fixed prepared input, the normalized pole fibration has a
+rational section if and only if $17(17-b)$ is a rational square.
+For a finite list of fixed prepared inputs, a simultaneous tuple
+of affine rational-function sections in the same parameter $\tau$
+exists if and only if every $17(17-b_i)$ is a rational square.
+When these conditions hold, \eqref{eq:squaresection} gives the tuple
+explicitly, and each ordinate is nonzero as a rational function.
+\end{corollary}
+\begin{proof}
+Apply Theorem~\ref{thm:sections} to each input. Projection to each
+factor proves necessity for a simultaneous tuple, and the explicit
+sections prove sufficiency.
+\end{proof}
+
+The criterion concerns $\Q(\tau)$, with $\tau$ transcendental.
+Failure of a section does not imply that any particular rational
+fiber has no rational point. It also does not exclude one common
+rational value of $\tau$ for several prepared inputs, rational
+multisections, or constructions that vary the detector inputs.
+The criterion alone therefore gives no reduction in the number of
+variables in a defining polynomial.
+
+\section{Exact verification}
+
+The reproducible checker is
+\begin{center}\small
+\texttt{negative\_results/computation/rational\_sections\_v42/check.py}.
+\end{center}
+It verifies the quotient substitution, both inverse pairs of maps,
+the Weierstrass invariants and twist, the involution identities,
+the complete fixed-point equations, and the explicit sections.
+The non-CM, morphism, and Galois-descent steps are proved above with
+their stated references; they are not inferred from numerical tests.
+
+\begin{thebibliography}{9}\raggedright
+\bibitem{Sutherland}
+A.~V.~Sutherland, \emph{The Hilbert class polynomial},
+MIT 18.783 Elliptic Curves, Spring 2017, Lecture~21,
+1 May 2017, Corollary~21.13, p.~6,
+\url{https://math.mit.edu/classes/18.783/2017/LectureNotes21.pdf}.
+\bibitem{Milne}
+J.~S.~Milne, \emph{Elliptic Curves}, second edition,
+World Scientific, 2021,
+Chapter~II, Section~1, Proposition~1.5,
+\url{https://jmilne.org/math/Books/EC2.pdf}.
+\bibitem{Guards}
+\emph{Fixed pole fibers and independent detector indices},
+project paper, version~42,
+\texttt{papers/pole\_parameters/}\allowbreak
+\texttt{common\_parameter\_guard\_reduction\_20261116\_v42.tex}.
+\end{thebibliography}
+\end{document}

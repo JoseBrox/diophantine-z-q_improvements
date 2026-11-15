@@ -40,7 +40,7 @@ The quartic transformations preserve the entire rational solution sets, with exp
 
 Current specifications: [results JSON](data/results_20261115_v40.json), [proof and verification guide](docs/results_20261115_v40.md), and [research directions](docs/research_directions.md).
 
-The [pole-parameter results](docs/pole_results_20261115_v41.md) establish local solubility for every rational shared parameter and prove limitations of two proposed pole compressions. They do not change the construction counts in the table.
+The [fixed-fiber and detector-index theorems](docs/common_parameter_guard_reduction_20261116_v42.md) show that one common rational pole fiber with nonzero ordinates suffices for all remaining pole guards, and give independent auxiliary-index families with unchanged square-class scalars. The common rational fiber itself remains unproved. Proved obstructions and lower bounds are collected separately in [negative_results](negative_results/README.md).
 
 ## Finite algebras and the general polynomials
 
@@ -60,29 +60,36 @@ The [paired-ratio theorem](papers/elliptic_charts/paired_ratio_redundancy_202611
 
 The [three-coordinate reference chart](papers/elliptic_charts/three_coordinate_reference_20261115_v40.tex) describes a point and its translate using two quadrics in three field coordinates. Its exact domain is the complement of four specified elliptic points. Three linear functions are units with explicit linear inverses, and every tangent and two-torsion configuration in the domain is included. The reciprocal abscissas are quadratic in these coordinates; their squares are generally quartic. This chart alone therefore does not lower the total variable count of a defining quartic. [Exact certificates](computation/elliptic_charts/three_coordinate_v40) accompany the all-field proof.
 
-The [integral Pell-label theorem](papers/integer_labels/pell_labels_20261115_v40.tex) obtains exponential growth from two exact integral labels and one finite quadratic choice. It proves sharp bounds and arbitrarily large witnesses with prescribed finite congruence data. A rational local-approximation counterexample explains why this result does not apply directly to approximate elliptic ratios. Its [checker and certificate](computation/integer_labels/pell_compression_v40) verify the identities and exceptional cases. No reduction below 25 variables follows from this theorem alone.
+The [integral Pell-label theorem](papers/integer_labels/pell_labels_20261115_v40.tex) obtains exponential growth from two exact integral labels and one finite quadratic choice. It proves sharp bounds and arbitrarily large witnesses with prescribed finite congruence data. Its [checker and certificate](computation/integer_labels/pell_compression_v40) verify the identities and exceptional cases. Its application requires exact integral labels; no reduction below 25 variables follows from this theorem alone.
 
 ## Height estimates and compatible poles
 
 The [all-point trace theorem](papers/trace_heights/trace_on_all_points_20261113_v25.tex) and [positive weighted trace theorem](papers/trace_heights/weighted_trace_20261114_v27.tex) include the half-integral index and torsion cases required by the sources. The latter also verifies that the selected Gaussian primes annihilate the half-generator using the existing congruences.
 
-The [joint-pole theorem](papers/pole_parameters/joint_pole_realization_20261114_v29.tex) and [common-twist theorem](papers/pole_parameters/common_twists_20261114_v30.tex) reduce pole parameters on specified square-class compatibility loci. The current completeness witnesses are not proved to lie on those loci. These results do not establish a 24-variable construction or a smaller abc variable count. The [ordered square-class surface](papers/pole_parameters/ordered_squareclass_surface_20261115_v33.tex) and [reflection obstruction](papers/pole_parameters/reflection_obstruction_20261115_v33.tex) give further limitations without asserting a global lower bound.
+The [joint-pole theorem](papers/pole_parameters/joint_pole_realization_20261114_v29.tex) and [common-twist theorem](papers/pole_parameters/common_twists_20261114_v30.tex) reduce pole parameters on specified square-class compatibility loci. The current completeness witnesses are not proved to lie on those loci. These results do not establish a 24-variable construction or a smaller abc variable count.
 
-The [shared-parameter local theorem](papers/pole_parameters/shared_parameter_local_solubility_20261115_v41.tex) proves that **every rational conic parameter** is locally admissible for every prepared input. A finite family can use the same parameter at every completion. Outside a finite set of conjugate denominator zeros, it also admits the pole-stage guards; zero is always allowed, provided the preceding point-algebra guards have been met. The unresolved step toward 24 variables is simultaneous **rational** realization on the explicitly identified elliptic square-class loci.
+The [shared-parameter local theorem](papers/pole_parameters/shared_parameter_local_solubility_20261115_v41.tex) proves that **every rational conic parameter** is locally admissible for every prepared input. A finite family can use the same parameter at every completion.
 
-The [conic-chain obstruction theorem](papers/pole_parameters/conic_chain_obstruction_20261115_v41.tex) excludes every fixed rational coefficient in a specified five-auxiliary quadratic family on the full prepared locus. The [automatic-conic theorem](papers/pole_parameters/automatic_conic_obstruction_20261115_v41.tex) gives dense prepared counterfamilies for forcing the first conic, including the fully split six-contact formula. Its global obstructions use Tunnell's unconditional necessary criterion, with independently computed coefficients. These are limitations of the stated replacements; they do not exclude other pole systems or a new realization theorem for a restricted family of actual detector inputs.
+The [fixed-fiber theorem](papers/pole_parameters/common_parameter_guard_reduction_20261116_v42.tex) proves that one rational witness with nonzero ordinate gives infinitely many witnesses at that same parameter. In all four native sources, the extracted square-class scalars are positive rational numbers independent of the auxiliary points and finite-algebra characters. Thus every conic denominator is nonzero for every rational parameter, and the remaining pole norms can be avoided within the chosen rational fibers. The same paper gives independent auxiliary cyclic return sets preserving preparation and every earlier guard. The unresolved step toward **24 variables** is the existence of a common rational fiber for actual detector tuples; no additional pole-guard theorem is required.
 
 ## Rings of integers of number fields
 
-The [definability reductions](papers/number_fields/number_field_definability_20261109_v12.tex) relate the questions for the ring of integers, the rational integers and the rational subfield. The [finite-correspondence theorem](papers/number_fields/finite_correspondences_and_denominators_20261109_v14.tex) excludes several proposed constructions from abelian varieties and finite covers. The [complex-multiplication obstruction](papers/number_fields/complex_multiplication_and_trace_cancellation_20261110_v19.tex) explains why the cyclic-group and trace arguments do not extend unchanged after adjoining i.
+The [definability reductions](papers/number_fields/number_field_definability_20261109_v12.tex) relate the questions for the ring of integers, the rational integers and the rational subfield, and prove descent implications between number fields.
 
 **No counterexample for a number field, and no theorem covering every number field, is established here.** Failure of a particular polynomial after scalar extension is not a counterexample to Diophantine definability. The [research guide](docs/research_directions.md#rings-of-integers-of-number-fields) states the remaining denominator and realization problems.
+
+## Negative results
+
+The separate [obstructions and lower bounds](negative_results/README.md) directory contains the proved negative results, organized by subject with their exact hypotheses and limitations. It includes pole-predicate counterexamples, restrictions on elliptic-point compression, contact-height counterfamilies, and obstructions to extending a fixed formula to number fields. Shared computational dependencies remain linked from the corresponding papers and index.
+
+The [pole-compression guide](negative_results/docs/pole_compression_obstructions_20261115_v41.md) presents the all-rational-coefficient conic-chain classification and the automatic-conic counterfamilies. These concern the specified predicates and prepared inputs; they do not assert a global minimum for defining polynomials.
 
 ## Reproduction
 
 Use **Python 3.12** for the byte-pinned legacy suite and **SymPy 1.14.0** for symbolic checks. From the repository root:
 
     python -m pip install sympy==1.14.0
+    python -B scripts/verify_v42.py
     python -B scripts/verify_v41.py
     python -B scripts/verify_v40.py
     python -B scripts/verify_v38.py
@@ -94,7 +101,7 @@ Use **Python 3.12** for the byte-pinned legacy suite and **SymPy 1.14.0** for sy
     python -B scripts/verify_release_v27.py
     python -B scripts/verify.py --full
 
-The current verifiers reconstruct specifications and certificates in temporary files. They cover local pole cases and guards, Tunnell coefficients, terminal nonreduced examples, reference-chart identities and exceptional cases, Pell-label examples, paired-ratio implications, invertible row transformations and complete quartic expansions. The retained verifiers authenticate the sources and supplied 198-variable archive. The full legacy verifier has **126 stages**. Optional PARI rank checks remain separately requested by --with-pari; they are not implied by --full. The new local and automatic-conic certificates do not use PARI, analytic ranks, or BSD.
+The current verifiers reconstruct specifications and certificates in temporary files. They cover native fixed-fiber guards, rational-section maps, K3 branch and resolution identities, independently checked mixed reference signs, local pole cases, Tunnell coefficients, terminal nonreduced examples, reference-chart identities and exceptional cases, Pell-label examples, paired-ratio implications, invertible row transformations and complete quartic expansions. The retained verifiers authenticate the sources and supplied 198-variable archive. The full legacy verifier has **126 stages**. Optional PARI rank checks remain separately requested by --with-pari; they are not implied by --full. The new local and automatic-conic certificates do not use PARI, analytic ranks, or BSD.
 
 The complete TeX manuscripts are the mathematical deliverables. They are compiled and visually inspected before publication. scripts/update_manifest.py records the distributed file hashes. Computational reconstruction certifies the finite identities and coefficients it checks; it does not certify external arithmetic premises or constitute independent non-author mathematical review.
 

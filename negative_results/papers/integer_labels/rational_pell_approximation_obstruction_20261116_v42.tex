@@ -1,0 +1,110 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,booktabs,microtype}
+\usepackage[margin=26mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}\newtheorem{remark}[theorem]{Remark}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\newcommand{\R}{\mathbb R}\newcommand{\A}{\mathbb A}
+\newcommand{\PP}{\mathbb P}\newcommand{\sqcl}[1]{[#1]}
+\DeclareMathOperator{\Tr}{Tr}\DeclareMathOperator{\Nm}{N}
+\DeclareMathOperator{\N}{N}\DeclareMathOperator{\rad}{rad}
+\DeclareMathOperator{\sfpart}{sf}
+\title{Rational Local Approximations to Integral Pell Labels}
+\author{}\date{16 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+For every positive integer $r$, the equation
+$t^2-5tw+w^2=1$, with $t=3n+1$, has a rational solution with
+$0<n<1$ and $v_{19}(n-1)\ge r$. The exact integral target
+$n=1$ has no rational solution. A rational parametrization and
+a simple Hensel lift prove the assertion for every precision.
+Thus approximation at this prime cannot replace the exact
+integrality premise in the Pell-label growth argument.
+\end{abstract}
+
+\section{Norm equations and exact labels}
+Consider
+\begin{equation}\label{eq:norm}
+                    t^2-atw+w^2=1,\qquad t=(a-2)n+1.
+\end{equation}
+When $a,t$ are integers, a rational solution $w$ is integral by
+monicity. Under the further hypotheses stated in~\cite{IntegralLabels},
+the congruence $t\equiv1\pmod{|a-2|}$ forces a sharp exponential
+lower bound on the nonzero integer label $n$. The following explicit
+example keeps $a=5$ and the norm equation exact but replaces the
+integral label by a rational number. We normalize $v_{19}$ by
+$v_{19}(19)=1$.
+
+\begin{proposition}\label{prop:local}
+For every integer $r\ge1$ there are rational numbers $n_r,w_r$ such
+that, with $t_r=3n_r+1$,
+\[
+ t_r^2-5t_rw_r+w_r^2=1,\qquad
+ v_{19}(n_r-1)\ge r,\qquad 0<n_r<1.
+\]
+In contrast the exact integral labels $a=5,n=1$ admit no rational
+solution of the norm equation.
+\end{proposition}
+\begin{proof}
+The integer $85$ has the simple square root $3$ modulo $19$.
+Lift it to an integer $q_r$ satisfying
+$q_r^2\equiv85\pmod{19^r}$ and $q_r\equiv3\pmod{19}$.
+Choose $s_r\ge19$ with
+\[
+                       3s_r\equiv10+q_r\pmod{19^r}.
+\]
+Put
+\begin{equation}\label{eq:param}
+ D_r=s_r^2-5s_r+1,\qquad
+ t_r=\frac{s_r^2-1}{D_r},\qquad
+ w_r=\frac{s_r(5s_r-2)}{D_r},\qquad
+ n_r=\frac{t_r-1}{3}.
+\end{equation}
+Substitution proves the norm equation identically in $s_r$.
+Modulo $19$, one has $s_r\equiv17$ and $D_r\equiv15$,
+so every denominator in~\eqref{eq:param} is a $19$-adic unit.
+Moreover
+\[
+ 3D_r(t_r-4)=-9s_r^2+60s_r-15
+                  =85-(3s_r-10)^2.
+\]
+It follows that $v_{19}(t_r-4)\ge r$, and hence
+$v_{19}(n_r-1)\ge r$. Since $s_r\ge19$, one has $D_r>0$,
+$t_r>1$ from $5s_r-2>0$, and $t_r<4$ from
+$3s_r^2-20s_r+5>0$. Thus $0<n_r<1$.
+
+For the integral target $a=5,n=1$, the value of $t$ is four and
+the discriminant is $340=4\cdot85$, which is not a rational square.
+The quadratic formula therefore rules out a rational value of $w$.
+\end{proof}
+
+
+The proposition concerns arbitrarily accurate approximation at the
+single specified prime $19$. It shows that this local requirement,
+even together with the exact norm equation, cannot replace exact
+integral labels. It does not claim such a counterexample for every
+finite set of places or for additional arithmetic restrictions.
+
+\section{Exact verification}
+The standard-library program
+\nolinkurl{computation/integer_labels/pell_compression_v40/check.py}
+checks the parametrization identity and explicit local approximants
+with exact rational arithmetic. It also checks the identities and
+edge cases of the integral-label theorem~\cite{IntegralLabels}.
+The proof above establishes the assertion for every $r$; it is not
+inferred from a finite collection of approximants.
+
+\begin{thebibliography}{99}
+\bibitem{IntegralLabels}
+\emph{Integral Lucas labels from a finite quadratic choice},
+project manuscript, 15 November 2026,
+\nolinkurl{papers/integer_labels/pell_labels_20261115_v40.tex}.
+\end{thebibliography}
+\end{document}

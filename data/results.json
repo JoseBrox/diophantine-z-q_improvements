@@ -395,22 +395,6 @@
   ],
   "unconditional_theorems": [
     {
-      "id": "degree_and_coordinate_lower_bounds",
-      "minimum_total_degree_single_equation": 4,
-      "minimum_total_coordinates": 3,
-      "minimum_total_coordinates_quadratic_or_cubic_systems": 4,
-      "individual_degree_lower_bound": 2,
-      "scope": "Infinite input projections contained in O_K,S, for every number field K and finite S. The coordinate bounds also allow open conditions and finite alternatives. Individual-degree bounds concern essential coordinates of a single defining polynomial.",
-      "three_coordinate_system_theorem": "The equations must have a common irreducible factor of total degree at least four.",
-      "proof": "papers/lower_bounds/lower_bounds_20261109_v15.tex",
-      "minimum_total_coordinates_quadratic_systems": 5,
-      "minimum_total_coordinates_nonnegative_quartics": 5,
-      "minimum_degree_nonnegative_three_coordinate_polynomial": 8,
-      "sharp_coordinate_minimum_known": false,
-      "nonnegative_scope": "Globally nonnegative at one real embedding; includes all sums of squares. This does not exclude sign-changing quartics in three or four coordinates.",
-      "three_coordinate_quartic_constraints": "Absolutely irreducible, dense smooth rational points, and sign-changing."
-    },
-    {
       "id": "combine_systems",
       "degree_bound": "ceil(sqrt(s))*d",
       "additional_coordinates": 0,
@@ -422,25 +406,6 @@
       "additional_coordinates": 1,
       "scope": "The guarded finite free algebra presentation stated in the paper, over any fixed number field",
       "proof": "papers/finite_algebra/finite_algebra_20261107_v7.tex"
-    },
-    {
-      "id": "field_extension_obstruction",
-      "scope": "No one unchanged existential formula defines rings of integers in every finite extension; a different formula for each field is not excluded.",
-      "explicit_quartic_counterexample": {
-        "input": "1/2",
-        "nonzero_witness_coordinate": 293,
-        "specialization": "P392((1/2)e1+Y e293)=Y^2+D/16",
-        "field": "Q(sqrt(-D))",
-        "D": "16*P392((1/2)e1)>0",
-        "data": "computation/quartic/final392/field-specialization392.json"
-      },
-      "proof": "papers/systems_and_fields/systems_and_field_extensions_20261108_v8.tex"
-    },
-    {
-      "id": "elliptic_point_charts",
-      "minimum_retained_parameters": 2,
-      "scope": "Finite algebraic presentations of an infinite set of points of the specified elliptic curve over Q(sqrt(2)); not a general lower bound for defining Z.",
-      "proof": "papers/elliptic_charts/elliptic_chart_obstruction_20261107_v7.tex"
     },
     {
       "id": "quadratic_elliptic_height",
@@ -532,14 +497,6 @@
       "proof": "papers/effective_sums/effective_elliptic_sums_20261108_v10.tex"
     },
     {
-      "id": "scalar_height_degree_threshold",
-      "minimum_degree": 4,
-      "scope": "For every number field F, no rational function A/B of two variables with max(deg A,deg B)<=3 is finite-to-one on the F-points of any nonempty archimedean open set. Some fiber there is infinite with unbounded height.",
-      "sharp_example": "U^4-delta*V^4 for delta in F not a fourth power has finite F-fibers.",
-      "scope_limit": "Ambient pairs only; not a lower bound on the coordinates of a Diophantine definition or on measurements of restricted elliptic multiples.",
-      "proof": "papers/scalar_heights/cubic_scalar_height_obstruction_20261109_v11.tex"
-    },
-    {
       "id": "coprime_elliptic_sum_heights",
       "general_scope": "Integral Weierstrass model over a totally real field, point Q of infinite order, pairwise coprime nonzero indices, all abscissas positive at all real embeddings.",
       "general_inequality": "h(sum x([n_i]Q))>=max h(x([n_i]Q))-h_fin(x(Q))",
@@ -576,73 +533,22 @@
       "equivalent_sets": "K; relative norm image N_{L/K}(L); relative norm graph; relative trace graph are Diophantine in L simultaneously.",
       "finite_difference_identity": "sum_{j=0}^{n-1}(-1)^(n-1-j)*binomial(n-1,j)*(T+j)^n=n!*T+n!*(n-1)/2",
       "coordinate_bound": "M total coordinates for norm-image membership yield n*M total coordinates and n equations for K, where n=[L:K].",
-      "proper_extension_obstruction": "Norm and trace graphs are Zariski dense in the affine plane over L, so have no quantifier-free definitions.",
       "proof": "papers/number_fields/number_field_definability_20261109_v12.tex",
       "verification": "computation/number_fields/norm-image-reduction-verification.json"
     },
     {
-      "id": "number_field_descent_and_finite_formula_obstruction",
+      "id": "number_field_descent",
       "descent": "An N-coordinate definition of O_L in L descends along a degree-d extension L/K to a definition of O_K in K with 1+d*(N-1) total coordinates, d equations, and unchanged degree bound.",
       "counterexample_consequence": "An actual counterexample persists in every finite extension and yields a totally imaginary Galois counterexample.",
-      "finite_collection_obstruction": "Any fixed finite collection of existential formulas with infinite input projections over a number field simultaneously accepts some rational noninteger in a finite Galois extension of bounded degree.",
       "scope_limit": "No actual counterexample to a separately chosen defining polynomial for each field is established.",
       "proof": "papers/number_fields/number_field_definability_20261109_v12.tex"
-    },
-    {
-      "id": "abscissa_multiplicative_obstruction",
-      "general_statement": "For y^2=x^3+A*x+B over Q, if A,B are p-integral and B is a nonzero nonsquare modulo an odd prime p, every rational abscissa has even p-adic valuation.",
-      "example": "E:y^2=x^3-2 has the infinite-order point (3,5), but 5 is not in the multiplicative subgroup generated by its rational abscissas.",
-      "exact_point_counts": {
-        "5": 6,
-        "7": 7
-      },
-      "scope_limit": "This does not obstruct sums, more elaborate definitions, or definability of a ring of integers in its field.",
-      "proof": "papers/number_fields/number_field_definability_20261109_v12.tex"
-    },
-    {
-      "id": "quadratic_input_map_obstruction",
-      "contact_polynomial": "r(T)=T*(T-1)*(T-2401)*(32*T+343)*(2*T-1)",
-      "statement": "No q in Z[X] of degree at most two simultaneously reflects rational integrality, is odd at every integer, and has r(q(x)) square in Q_2 at every integer.",
-      "quadratic_classification": "A*X^2+B*X+C with A nonzero reflects integrality if and only if |A| is squarefree and A divides B.",
-      "positive_map_minimum_degree": 4,
-      "positive_examples": [
-        "8*X^4+3",
-        "8*X^4+2403"
-      ],
-      "scope_limit": "Only this odd-valued, uncorrected contact-square normalization; not corrected or parity-free routes and not a lower bound for arbitrary defining polynomials.",
-      "proof": "papers/input_normalization/quadratic_input_obstruction_20261109_v12.tex",
-      "verification": "computation/input_normalization/quadratic-input-obstruction-certificate.json"
-    },
-    {
-      "id": "locally_dense_proper_rational_subset",
-      "polynomial": "T*((U^2*W-9*W^3-1)^2-2*(V^2*T*W-9*T^3*W^3-1)^2)",
-      "quadratic_fields_d": [
-        -15,
-        -13,
-        -11,
-        -10,
-        -1,
-        3,
-        5,
-        7
-      ],
-      "statement": "In every listedQ(sqrt(d)), the projection is the same proper subsetD ofQ containing0,1 and excluding-1.",
-      "local_statement": "D is simultaneously dense in every finite product ofQ-completions; every local input has witnesses in every completion of each listed quadratic field.",
-      "total_coordinates": 4,
-      "degree": 13,
-      "coefficient_height": 162,
-      "monomials": 11,
-      "rank_verification": "UnconditionalPARI ellrank bounds, with torsion and exact point calculations.",
-      "scope_limit": "Not a definition ofZ,Q,or a ring of integers, and not a counterexample to existence of a different definition.",
-      "proof": "papers/number_fields/elliptic_ratios_and_integrality_20261109_v13.tex",
-      "verification": "computation/number_fields/elliptic-ratio-certificate.json"
     },
     {
       "id": "bounded_denominator_integral_basis_criterion",
       "statement": "IfS is Diophantine inK, Z is contained inS andM*S is contained inO_K for a fixed positive integerM, thenO_K is Diophantine inK.",
       "coordinate_bound": "IfS usesN total coordinates, [K:Q]*N coordinates suffice.",
       "degree_bound": "With one defining equation of degreed forS, [K:Q] equations of degree at mostM*d suffice.",
-      "proof": "papers/number_fields/elliptic_ratios_and_integrality_20261109_v13.tex"
+      "proof": "negative_results/papers/number_fields/elliptic_ratios_and_integrality_20261109_v13.tex"
     },
     {
       "id": "uniform_real_scalar_normalization",
@@ -659,61 +565,6 @@
       "verification": "computation/scalar_normalization/uniform-scalar-normalization-certificate.json"
     },
     {
-      "id": "elliptic_witness_structural_constraints",
-      "finite_presentation_bound": "Recovering arbitrary tuples of r independent points in the specified simple Weil restriction by finite algebraic choices requires at least2r retained rational coordinates.",
-      "index_graph": "For a Zariski-dense cyclic subgroup of an abelian variety, the graph {(n,[n]P)} is Zariski dense in G_a times that variety.",
-      "rational_curve_obstruction": "The paired formal requirements H=[h]P at one split place and H-P at the other cannot hold for arbitrarily many good primes when E and P are rational.",
-      "two_curve_scope": "A curve correspondence containing a common-index graph yields an isogeny and prevents infinitely many coprime reduction orders.",
-      "scope_limit": "Restrictions on these specified compression mechanisms, not universal lower bounds for integer-defining polynomials.",
-      "proof": "papers/elliptic_charts/structural_constraints_20261109_v13.tex",
-      "verification": "computation/elliptic_constraints/large-split-order-certificate.json",
-      "large_prime_parity_counterexample": {
-        "prime": 77017,
-        "above_cutoff": 76176,
-        "sqrt2_residues": [
-          18810,
-          58207
-        ],
-        "exact_orders": [
-          2141,
-          2405
-        ],
-        "odd_common_index": 5149105,
-        "congruences": "p=1 mod8 and p=3 mod7",
-        "scope": "These congruences alone; the full Gaussian-generator and avoidance conditions are not asserted."
-      }
-    },
-    {
-      "id": "finite_rational_images_of_abelian_points_omit_integers",
-      "statement": "Every finite union of fixed rational-function images on finite products of fixed abelian varieties over a number field, even with finitely many values added, misses infinitely many rational integers.",
-      "source": "Corvaja and Zannier, arXiv:2608.28255v1, Theorem1.1; Mordell-Weil finite generation.",
-      "consequence": "Finite rational operations on the specified stable-elliptic subsets cannot produce a set containing every integer.",
-      "scope_limit": "Does not cover arbitrary algebraic correspondences or unrestricted affine witnesses. Not a nondefinability theorem for rings of integers.",
-      "proof": "papers/number_fields/elliptic_ratios_and_integrality_20261109_v13.tex"
-    },
-    {
-      "id": "slope_ratio_proper_rational_subset",
-      "polynomial": "T*((T^2*Z^2*W-9*W^3-1)^2-2*(Z^2*S-9*S^3-1)^2)",
-      "quadratic_fields_d": [
-        -15,
-        -13,
-        -11,
-        -10,
-        -1,
-        3,
-        5,
-        7
-      ],
-      "total_coordinates": 4,
-      "degree": 11,
-      "coefficient_height": 162,
-      "monomials": 11,
-      "statement": "The projection in each specified quadratic field is zero together with ratios of nonzero rational elliptic slopes; it misses infinitely many rational integers.",
-      "scope_limit": "Not a definition of the rational subfield or a ring of integers. The bounded search does not certify particular omitted values.",
-      "proof": "papers/number_fields/elliptic_ratios_and_integrality_20261109_v13.tex",
-      "verification": "computation/number_fields/rationality-filter-certificate.json"
-    },
-    {
       "id": "finite_algebra_nonzero_guard_separation",
       "additional_coordinates": 1,
       "scope": "Finite algebra B defined by independent scalar monic separable equations, extended by square roots; guard g times the product of the square-root generators with g in B.",
@@ -722,74 +573,6 @@
       "proof": "papers/finite_algebra/active_finite_algebra_20261109_v15.tex",
       "verification": "computation/few_variables/active_elimination/independent-verification.json",
       "degeneration_verification": "computation/few_variables/active_elimination/degeneration-certificate.json"
-    },
-    {
-      "id": "finite_correspondences_over_abelian_varieties",
-      "statement": "For a variety mapping to an abelian variety, if each geometric fiber has only finitely many output values, its rational outputs meet every finitely generated multiplicative subgroup in a finite set.",
-      "includes": "Quasi-finite covers and affine translates of multiplicative subgroups; generic finiteness alone requires exceptional fibers to be treated separately.",
-      "proof": "papers/number_fields/finite_correspondences_and_denominators_20261109_v14.tex",
-      "exceptional_surface_verification": "computation/number_fields/exceptional-correspondence-certificate.json"
-    },
-    {
-      "id": "bounded_denominator_fiber_obstructions",
-      "statement": "Over an abelian base, bounded-denominator outputs with soluble unirational fibers or smooth proper genus-one fibers equipped with an ample line bundle cannot cover all integers.",
-      "genus_one_inputs": [
-        "Siegel",
-        "uniform torsion",
-        "finite map to the relative Jacobian",
-        "semiabelian Mordell-Lang"
-      ],
-      "scope_limit": "No obstruction for all higher-genus families, and no counterexample to general ring-of-integers definability.",
-      "proof": "papers/number_fields/finite_correspondences_and_denominators_20261109_v14.tex"
-    },
-    {
-      "id": "constant_pole_parameter_obstruction",
-      "statement": "No fixed rational value of the parameter e gives the complete stated zero-preparation pole certificate.",
-      "exceptional_parameters": [
-        "-1/3",
-        "1"
-      ],
-      "prepared_counterexample": "b=(204/55)^2",
-      "exact_rank_bounds": [
-        [
-          0,
-          0
-        ],
-        [
-          1,
-          1
-        ]
-      ],
-      "conditional_on_BSD": false,
-      "proof": "papers/pole_parameters/fixed_pole_parameters_20261109_v17.tex",
-      "verification": "computation/pole_parameters/fixed-e-obstruction-certificate.json",
-      "additional_retained_chart_obstructions": {
-        "tau=+/-1": "b=(204/61)^2",
-        "tau=+/-17": "b=(204/101)^2"
-      },
-      "retained_chart_verifications": [
-        "computation/pole_parameters/fixed-tau-one-obstruction.json",
-        "computation/pole_parameters/fixed-tau17-obstruction.json",
-        "computation/pole_parameters/small-fixed-tau17-obstruction.json"
-      ],
-      "scope_limit": "These counterexamples range over prepared inputs. They do not exclude a fixed retained parameter on a specially selected prime-pattern subfamily.",
-      "dense_prepared_counterexamples": "For tau=+/-17, counterexamples are dense in every real subinterval of (0,17), with valuations4,2,2 at2,3,17."
-    },
-    {
-      "id": "combining_pole_certificates_obstructions",
-      "statement": "Two explicit prepared inputs cannot share an actual pole parameter; symmetric contact products can have odd radical one at unbounded scale height.",
-      "proof": "papers/pole_parameters/combining_pole_certificates_20261109_v16.tex",
-      "verification": "computation/pole_parameters/pole-merger-obstructions.json",
-      "scope_limit": "Obstructions to specified simplifications, not general coordinate lower bounds."
-    },
-    {
-      "id": "restricted_abc_applicability_obstructions",
-      "statement": "The natural even-power Frey family has exponential growth of the reduced j denominator in logarithmic height. Infinitely many required integer witnesses fail the fixed asymmetric-size hypotheses.",
-      "frey_denominator_lower_bound": "max(|A|,|B|)^(4*d)/256 for coprime nonzero A,B and positive even d",
-      "frey_j_height_upper_bound": "6*d*log(max(|A|,|B|))+log(6912)",
-      "proof": "papers/restricted_abc/restricted_abc_inputs_20261109_v17.tex",
-      "verification": "computation/restricted_abc/frey-denominator-certificate.json",
-      "scope_limit": "Applicability obstruction for the specified families; neither disproves abc nor excludes other families."
     },
     {
       "id": "jacobian_height_by_differential_evaluation",
@@ -810,77 +593,6 @@
       "statement": "Psi_z(D)=zD^2/(1+zD^2) has nonnegative valuation at every odd-valuation coefficient, uniformly over arbitrarily deep poles D. A unit coefficient detects positive valuation of D. Mixed even-valuation extraction and disjoint balanced contacts are proved.",
       "proof": "papers/local_tests/rationally_normalized_local_tests_20261110.tex",
       "verification": "computation/local_tests/rational-normalization-certificate.json"
-    },
-    {
-      "id": "six_contact_product_cancellation",
-      "statement": "For every rational a>4, lambda=-(a+1)/(5a) gives a negative nonzero square R(lambda)R(a*lambda), hence odd radical one. This applies to the source scales a=beta^8+T(n)^8. Positive unbounded-scale examples and the full twelve-element contact automorphism group are also proved.",
-      "proof": "papers/pole_parameters/product_height_obstructions_20261110_v19.tex",
-      "verification": "computation/pole_parameters/product-height-obstructions-v19-certificate.json",
-      "scope_limit": "The fixed product alone cannot support a uniform height bound. These examples do not satisfy all the other elliptic and pole constraints automatically; no counterexample to the 13-variable theorem is claimed."
-    },
-    {
-      "id": "complex_multiplication_and_trace_cancellation",
-      "scope": "For every number field K with i not in K and every D in K*, with E_D:y^2=x^3-D*x and L=K(i).",
-      "rank_formula": "rank E_D(L)=2 rank E_D(K)",
-      "trace_statement": "For a nontorsion P in E_D(K), C=(1+iota)P has Tr_L/K x([n]C)=Tr_L/Q x([n]C)=0 for all nonzero n, while h(x([n]C))=4*n^2*hat_h(P)+O_E(1).",
-      "sum_statement": "The four distinct doubled points [2n]P, iota[2n]P, [4n]P, iota[4n]P have distinct abscissas summing to zero and unbounded heights.",
-      "explicit_field": "Q(sqrt(2),i)",
-      "explicit_nontorsion_certificate": "Reduction orders5 and3 at primes17 and23; group orders20 and24 exclude torsion.",
-      "proof": "papers/number_fields/complex_multiplication_and_trace_cancellation_20261110_v19.tex",
-      "verification": "computation/number_fields/trace-cancellation-certificate.json",
-      "scope_limit": "An obstruction to extending the particular elliptic group and height mechanism; no counterexample to Diophantine definability of O_L in L is claimed."
-    },
-    {
-      "id": "rational_function_contact_parity",
-      "fixed_parameters": "Odd integer B>=3, nonzero integer n, rational T>6; beta(X)=2*X^2+B; a(X)=beta(X)^8+T^8.",
-      "statement": "For every nonzero Psi in Q(X,lambda), there are a fixed positive cone of contact depths, a nonzero parity class, and infinitely many good primes such that every positive depth pair in that cone and parity class is realized by half-integral X and lambda=s^2+t^2>1 with integers s,t. The two contact values have those depths, Psi is defined and nonzero with even valuation, and beta(X)-n is a p-unit.",
-      "scope": "No additional arithmetic conjecture; includes explicit rational dependence on the input and scale. The source specialization T=Tr(x([n]P)) is covered whenever T>6.",
-      "proof": "papers/pole_parameters/rational_combinations_of_contacts_20261110_v20.tex",
-      "verification": "computation/pole_parameters/rational-contact-combination-examples-v20.json",
-      "checker": "computation/pole_parameters/check_rational_contact_combinations_v20.py",
-      "computation_scope": "Two exact illustrative examples, independently checked by BigInt integer arithmetic and Fraction rational arithmetic; the universal statement is a formal-series and prime-existence proof.",
-      "scope_limit": "An obstruction to one rational function uniformly detecting the union of two odd contact valuations; no false solution of the complete Diophantine source and no absolute variable-count lower bound are asserted.",
-      "pdf_available": true,
-      "stronger_slope_restriction": "The same conclusions hold with lambda=1+s^2 for a nonzero integer s; lambda-1 is an integer square.",
-      "pdf": "papers/pole_parameters/rational_combinations_of_contacts_20261110_v20.pdf"
-    },
-    {
-      "id": "quadratic_contact_cover_obstructions",
-      "proof": "papers/pole_parameters/quadratic_contact_covers_20261110_v21.tex",
-      "pdf": "papers/pole_parameters/quadratic_contact_covers_20261110_v21.pdf",
-      "certificate": "computation/pole_parameters/quadratic-contact-covers-certificate.json",
-      "product_cover_genus": 4,
-      "scale_domain": "Every rational a>4",
-      "single_contact_cover_genus": 2,
-      "finiteness": "At each fixed scale and finite prime set, only finitely many admissible rational slopes have equal odd contact sets.",
-      "section_obstruction_prime": 315467,
-      "section_obstruction_shifts": "B=3+k*62790389880761304, k>=0, at integer input X=0",
-      "scope": "Genus, finiteness and the inert-prime comparison obstruction are unconditional. The separately stated one-pole soundness implication retains weak abc and the original arithmetic premises; its converse is open. No new defining variable count."
-    },
-    {
-      "id": "index_products_and_finite_correspondences",
-      "proof": "papers/elliptic_charts/index_products_and_finite_correspondences_20261110_v21.tex",
-      "pdf": "papers/elliptic_charts/index_products_and_finite_correspondences_20261110_v21.pdf",
-      "statement": "If ZP is Zariski dense in an abelian variety A, the triples ([n]P,[h]P,[nh]P) are Zariski dense in A^3 for any infinite set of n and any infinite set of h for each n.",
-      "elliptic_proof": "An elementary intersection-degree argument using graphs of multiplication.",
-      "general_proof": "Mordell-Lang gives a density criterion in terms of finite unions of rational affine hyperplanes in the index lattice.",
-      "consequence": "No fixed algebraic correspondence with finite geometric fibers can recover the index product uniformly on those pairs; nonlinear polynomial index graphs satisfy the analogous obstruction.",
-      "scope": "No claim about arbitrary Diophantine definitions, additional free parameters, positive-dimensional fibers with finite rational point sets, or specially selected finite sets of auxiliary indices."
-    },
-    {
-      "id": "four_contact_bounded_odd_radical_obstruction",
-      "proof": "papers/contact_heights/input_height_amplification_20261110_v22.tex",
-      "pdf": "papers/contact_heights/input_height_amplification_20261110_v22.pdf",
-      "verification": "computation/contact_heights/input-height-amplification-certificate.json",
-      "statement": "For the contacts {-1,0,2,3}, infinitely many rational t have unbounded logarithmic height and odd contact radical one outside {2,3,5}; the points can be chosen with 3<t<5.",
-      "quartic_curve": "10*y^2=(t+1)*t*(t-2)*(t-3)",
-      "elliptic_curve": "Y^2=X^3+10*X^2-2400*X+36000",
-      "nontorsion_point": [
-        "15",
-        "75"
-      ],
-      "proof_method": "Exact birational transformations and a Nagell-Lutz nontorsion certificate give infinitely many rational points; the twist and contact differences bound the odd prime support.",
-      "scope": "An obstruction to height bounds using this particular four-contact odd radical. It is not a nonintegral solution of a complete defining source, a counterexample to abc, or a variable-count lower bound."
     }
   ],
   "source_pins": {
@@ -933,7 +645,7 @@
     },
     {
       "id": "arithmetic_hypotheses_and_coordinate_bounds",
-      "statement": "Ordinary Szpiro supplies weak abc at exponent121/100, sufficient for the sixth-power thirteen-coordinate construction. Truncated Vojta implies ordinary abc, which supplies both leading thirteen-coordinate constructions. Pell examples show why consecutive-integer prime assignments alone do not control the odd radical.",
+      "statement": "Ordinary Szpiro supplies weak abc at exponent121/100, sufficient for the sixth-power thirteen-coordinate construction. Truncated Vojta implies ordinary abc, which supplies both leading thirteen-coordinate constructions.",
       "proof": "papers/arithmetic_hypotheses/arithmetic_hypotheses_20261109_v16.tex",
       "other_conjectures": "No coordinate reduction is derived from RH, GRH, or Grimm alone. No formal nonimplication is claimed."
     },
@@ -949,15 +661,6 @@
       "verification": "computation/contact_heights/nebentypus-height-certificate.json",
       "torsion_different_bound": "The trace dual of the finite flat lci torsion order E[N] is N^(-1) times that order. Normalization and the tower formula give the modular vertical discriminant bound.",
       "underlying_evaluation_proof": "papers/contact_heights/evaluation_of_differentials_20261109_v17.tex"
-    },
-    {
-      "id": "quartic_pole_equation_local_obstruction",
-      "additional_conjecture": null,
-      "statement": "The odd-valuation implication holds for y^2=T^2+kappa*R*(1+R*s^2)^2. For every m>=1, the prepared b_m=409*(204/1013^m)^2 gives no Q_1013-point on Y^2=1+b_m*(1+b_m*v^2)^2, including on its smooth projective model.",
-      "scope_limit": "This disproves completeness on all prepared inputs even for a finite disjunction of fixed nonzero kappa values; the restricted comparison-prime family remains unresolved. No variable-count improvement follows.",
-      "proof": "papers/pole_parameters/quartic_pole_obstruction_20261109_v17.tex",
-      "verification": "computation/pole_parameters/quartic-pole-obstruction.json",
-      "general_obstruction": "For every finite fixed set C of nonzero rational kappa, infinitely many prepared b tending to zero make all the corresponding smooth quartic curves locally insoluble at one prime."
     },
     {
       "id": "multiplicity_contact_height",
@@ -2163,5 +1866,7 @@
   ],
   "current_results_reference": "data/results_20261115_v38.json",
   "current_results_guide": "docs/results_20261115_v38.md",
-  "retained_source_records_notice": "Pre-v28 entries are retained pinned constructions, not the current best table. See current_results_reference."
+  "retained_source_records_notice": "Pre-v28 entries are retained pinned constructions, not the current best table. See current_results_reference.",
+  "negative_results_catalog": "negative_results/data/results.json",
+  "organization_note": "Construction records in this historical catalog retain their original version. Standalone obstruction records are separated into the linked negative-results catalog; the current construction table is data/results_20261115_v40.json."
 }

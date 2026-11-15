@@ -14,7 +14,8 @@ def main():
     engine = shutil.which('pdflatex')
     if not engine:
         raise SystemExit('pdflatex is required; see docs/reproducibility.md')
-    sources = sorted((ROOT/'papers').glob('*/*.tex'))
+    sources = sorted(list((ROOT/'papers').glob('*/*.tex'))
+                     + list((ROOT/'negative_results/papers').glob('*/*.tex')))
     assert sources, 'No paper sources were found'
     environment = dict(os.environ)
     environment.setdefault('SOURCE_DATE_EPOCH','1794096000')

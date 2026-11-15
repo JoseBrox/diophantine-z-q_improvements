@@ -1,6 +1,6 @@
 # Field extensions and anisotropic forms
 
-The [systems and field-extensions paper](../../papers/systems_and_fields/systems_and_field_extensions_20261108_v8.pdf) proves the equation-combination and field-transfer statements, with their precise field hypotheses. This directory contains the exact anisotropic-form computations; the complete quartic specialization is supplied with the quartic data.
+The paper [Combining Polynomial Equations over Number Fields](../../papers/systems_and_fields/systems_and_field_extensions_20261108_v8.pdf) proves the equation-combination statements with their precise field hypotheses. The separate [unchanged-formula obstruction](../../negative_results/papers/number_fields/unchanged_formula_obstruction_20261116_v42.tex) proves the failures of unchanged field transfer, including the quartic specialization below. This directory contains the exact anisotropic-form computations; the complete quartic specialization is supplied with the quartic data.
 
 ## Anisotropic forms
 
@@ -31,4 +31,4 @@ python3 scripts/restore_data.py
 python3 computation/quartic/check_field_specialization392.py
 ```
 
-This proves that this particular polynomial does not define the ring of integers after unchanged transfer to every number field. The separate question of a field-dependent Diophantine definition is addressed with its stated hypotheses in the paper.
+This proves that this particular polynomial does not define the ring of integers after unchanged transfer to every number field. The separate question of a field-dependent Diophantine definition is addressed with its stated hypotheses in [Existential Definitions of Rings of Integers and Subfields](../../papers/number_fields/number_field_definability_20261109_v12.tex).

@@ -1,6 +1,14 @@
-> **Retained source guide.** This page describes the dated constructions on the previous main branch. For the current counts, corrected proofs, exact specifications, and verification commands, see the repository [README](../README.md) and `data/results_20261114_v27.json`. Historical source equations and assumptions below are retained, not replaced silently.
+> **Retained source guide.** This page describes dated source constructions. For the current counts, corrected proofs, exact specifications, and verification commands, see the repository [README](../README.md) and `data/results_20261115_v40.json`. The [fixed-fiber proof guide](common_parameter_guard_reduction_20261116_v42.md) covers the current shared-parameter research. Historical source equations and assumptions below are retained for reproduction.
 
 # Reproducing the mathematical data
+
+## Fixed pole fibers and separated obstructions
+
+```sh
+python -B scripts/verify_v42.py
+```
+
+This reconstructs the native scalar-dependency and fixed-fiber certificate, including all four source circuits and exact odd-multiple examples. It also reconstructs the mixed-reference-sign certificate and checks it independently with Jacobian coordinates, then verifies the exact branch and local-resolution identities for the fixed-input K3 models and the maps, twists, fixed points and explicit formulas in the rational-section classification. The positive proof is [Fixed pole fibers and independent detector indices](../papers/pole_parameters/common_parameter_guard_reduction_20261116_v42.tex); the obstruction proof and computational package are indexed separately in [negative_results](../negative_results/README.md). The universal recurrence, density and infinite-progression statements are proved in the manuscripts. No smaller defining polynomial or common rational fiber is certified by these computations.
 
 ## Requirements and full verification
 
@@ -299,7 +307,7 @@ The current certificate is `computation/pole_parameters/product-height-obstructi
 
 ## Complex multiplication and trace cancellation
 
-`python3 computation/number_fields/check_trace_cancellation.py` checks the universal complex-multiplication and chord identities, conjugation and rank-decomposition identities, and the explicit point of infinite order. Two independent finite-field counts at17 and23 and the exact reduction orders give its nontorsion certificate. The general rank formula and height growth follow from the proofs in the [trace-cancellation paper](../papers/number_fields/complex_multiplication_and_trace_cancellation_20261110_v19.pdf), not from finite samples.
+`python3 computation/number_fields/check_trace_cancellation.py` checks the universal complex-multiplication and chord identities, conjugation and rank-decomposition identities, and the explicit point of infinite order. Two independent finite-field counts at17 and23 and the exact reduction orders give its nontorsion certificate. The general rank formula and height growth follow from the proofs in the [trace-cancellation paper](../negative_results/papers/number_fields/complex_multiplication_and_trace_cancellation_20261110_v19.pdf), not from finite samples.
 
 ## Rational contact-parity examples
 
@@ -307,7 +315,7 @@ The current certificate is `computation/pole_parameters/product-height-obstructi
 python3 computation/pole_parameters/check_rational_contact_combinations_v20.py
 ~~~
 
-This standard-library check uses exact `Fraction` arithmetic to reconstruct two positive-slope examples, including the simple-root residues, primality, all contact valuations, the even combined valuations, and the unit input residuals. The certificate was also independently evaluated with exact `BigInt` numerator/denominator arithmetic. These finite examples illustrate the separate universal theorem proved in `papers/pole_parameters/rational_combinations_of_contacts_20261110_v20.tex`; they do not establish the theorem by sampling. The full verifier includes this check. The complete proof is available in both TeX and PDF.
+This standard-library check uses exact `Fraction` arithmetic to reconstruct two positive-slope examples, including the simple-root residues, primality, all contact valuations, the even combined valuations, and the unit input residuals. The certificate was also independently evaluated with exact `BigInt` numerator/denominator arithmetic. These finite examples illustrate the separate universal theorem proved in `negative_results/papers/pole_parameters/rational_combinations_of_contacts_20261110_v20.tex`; they do not establish the theorem by sampling. The full verifier includes this check. The complete proof is available in both TeX and PDF.
 
 ## Logarithmic contact-height thresholds
 
@@ -333,4 +341,4 @@ The checker reconstructs the trace at index three in two ways, verifies the fini
 python3 computation/contact_heights/check_input_height_amplification.py
 ~~~
 
-This standard-library checker verifies the exact absorption fractions for the stated eight-, six-, and five-contact criteria, the quartic-to-cubic transformations, the elliptic doubling identities, the nonzero discriminant, and the Nagell--Lutz nontorsion certificate for the four-contact obstruction. The uniform monic-power height inequality and the infinitude and height assertions are proved in the [companion paper](../papers/contact_heights/input_height_amplification_20261110_v22.pdf). The full verifier requires byte-for-byte reproduction of `input-height-amplification-certificate.json`. This certificate does not assert a new five-contact defining polynomial or a nonintegral solution of a full source.
+This standard-library checker verifies the exact absorption fractions for the stated eight-, six-, and five-contact criteria, the quartic-to-cubic transformations, the elliptic doubling identities, the nonzero discriminant, and the Nagell--Lutz nontorsion certificate for the four-contact obstruction. The uniform monic-power height inequality is proved in the [height-amplification paper](../papers/contact_heights/input_height_amplification_20261110_v22.tex). The infinitude and unbounded-height assertions are proved separately in the [four-contact obstruction](../negative_results/papers/contact_heights/four_contact_radical_obstruction_20261116_v42.tex). The full verifier requires byte-for-byte reproduction of `input-height-amplification-certificate.json`. This certificate does not assert a new five-contact defining polynomial or a nonintegral solution of a full source.

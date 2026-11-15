@@ -20,20 +20,15 @@
 An arbitrary finite collection of pole inputs with matching input and
 complement square classes can use a single pair of retained rational
 parameters. We prove explicit invertible changes of pole witnesses for
-both pole systems used in this project. Additional square-class tests are
-finite algebraic choices, not new retained parameters. The older system
-requires matching classes of $b$ and $17-b$; the congruent-number system
-requires matching classes of $b$ and $1-b$. The former uses only the
-previously retained pole-realization input. For the latter we state the
-exact use of Jaswal's simultaneous-twist theorem and prove a more general
-conditional common-parameter theorem.
-
-These are reductions of pole subsystems, not new records for defining
-$\Z$ in $\Q$. In the present thirteen-variable completeness construction,
-the two pole square classes are necessarily different at a selected
-prime. Requiring them to agree instead leads, for each fixed scale, to
-a genus-four curve. Thus the established reduction identifies a precise
-new realization problem; it does not settle that problem.
+both pole systems. The older system requires matching classes of $b$
+and $17-b$; the congruent-number system requires matching classes of
+$b$ and $1-b$. Additional square-class tests are finite algebraic
+choices and can share one separating coordinate. We state the exact
+arithmetic input for each system, including the use of Jaswal's
+simultaneous-twist theorem, and prove a more general conditional
+common-parameter theorem. These reductions apply to pole subsystems
+on the stated compatibility loci; application to a full definition
+also requires a complete witness family on that locus.
 \end{abstract}
 
 \section{Scope and parameter convention}
@@ -397,135 +392,12 @@ coordinate is reused; the savings in retained coordinates are
 $2r-2$. The other finite algebra and its guards must still be included.
 No quartic-degree claim follows from this general polynomial encoding.
 
-\section{Why the present prime construction cannot supply the match}
-The six-contact conditional construction uses
-\begin{equation}\label{eq:F}
- \Theta=\left\{0,-\tfrac12,-\tfrac14,-\tfrac25,-1,-\tfrac13\right\},
- \quad F(t)=\prod_{\theta\in\Theta}(t-\theta),\quad
- t_0=\lambda,\quad t_1=a\lambda.
-\end{equation}
-Here $a=\beta^d+T^d>4$, with the notation and hypotheses of
-\cite{Input13,UnitNorm}. The nonzero pole inputs have the form
-\begin{equation}\label{eq:actualclass}
- b_j=F(t_j)\left(\frac{\N(W_j)}{2(t_j-1)^4(W_j)_0}\right)^2.
-\end{equation}
-Thus $\sqcl {b_j}=\sqcl {F(t_j)}$. This statement is about the literal
-source equations, not a numerical approximation to them.
-
-\begin{proposition}[Incompatibility of the selected prime classes]
-\label{prop:fresh}
-In the simultaneous-prime completeness construction for
-\eqref{eq:F}, suppose each distinct contact coefficient has its own
-selected prime, with valuation one in its incident contact numerator,
-and with no incidence in any other distinct coefficient. These are the
-retained fresh-prime properties of that construction. Then
-$b_1/b_0$ in \eqref{eq:actualclass} is not a rational square.
-\end{proposition}
-\begin{proof}
-The nonzero numbers in $\Theta$ have absolute values between $1/4$ and~1.
-If $a>4$, the nonzero elements of $\Theta/a$ have absolute value less
-than $1/4$. Hence the contact coefficient sets $\Theta$ and $\Theta/a$
-intersect only at~0. Choose a selected prime belonging to a nonzero
-contact of the first detector. It has valuation one in $F(t_0)$ and
-valuation zero in $F(t_1)$; the fixed scale and denominator primes are
-excluded in the retained prime construction. The ratio in
-\eqref{eq:actualclass} therefore has odd valuation at this prime.
-\end{proof}
-
-This proves an incompatibility of the \emph{existing completeness
-witnesses} with both proposed first-class matching conditions. It does
-not prove that every possible witness has different classes, or that
-thirteen variables is a lower bound. A new complete family, not a
-renaming of the present parameters, is needed.
-
-\begin{proposition}[The fixed-scale curve]\label{prop:genus}
-Fix a rational $a>4$. Write $F(t)=tG(t)$, with $G$ the monic degree-five
-polynomial defined by \eqref{eq:F}. For nonzero $\lambda$ away from
-all contacts,
-\[
- \sqcl {F(\lambda)}=\sqcl {F(a\lambda)}
- \quad\Longleftrightarrow\quad
- \exists y\in\Q:\ y^2=aG(\lambda)G(a\lambda).
-\]
-The smooth projective model of this curve has genus four. In particular,
-for each fixed rational $a>4$ it has only finitely many rational
-$\lambda$, by Faltings' theorem.
-\end{proposition}
-\begin{proof}
-Two nonzero rationals have the same square class exactly when their
-product is a square, and
-$F(\lambda)F(a\lambda)=a\lambda^2G(\lambda)G(a\lambda)$.
-The ten roots are the nonzero contacts and their quotients by~$a$.
-They are distinct by the argument in Proposition~\ref{prop:fresh}.
-A squarefree polynomial of degree ten defines a double cover of
-$\mathbf P^1$ branched at ten points and unramified at infinity.
-Riemann--Hurwitz gives $2g-2=-4+10$, so $g=4$.
-Faltings' theorem applies to this smooth projective curve over $\Q$.
-\end{proof}
-
-\begin{remark}
-The assertion is pointwise in $a$, not a uniform bound on rational
-points as $a$ varies. It does not rule out one suitable finite witness
-for every required input. It does rule out proving the desired match by
-an arbitrarily-large-slope argument for a fixed scale. The points at
-infinity do not give finite witnesses to the source equations.
-\end{remark}
-
-\subsection{The ten-contact and three-pole variants}
-A similar calculation applies to the twenty-five-variable family.
-At fixed values of its other retained coordinates, write
-\[
- \Xi=\{0,-1/2,-1,1/2399,-32/407\},\qquad
- \Xi_j=(4j+2+\Xi)\cup(4j+4+\Xi),
-\]
-\[
- H_j(\lambda)=\prod_{\xi\in\Xi_j}(a_j\lambda-\xi),\qquad a_0=1.
-\]
-Each $\Xi_j$ has ten distinct nonzero elements. The literal pole
-input is $\rho H_j$ times a nonzero rational square, so equality of
-first square classes is equivalent to equality of the classes of
-$H_j$. The common factor $\rho$ cancels.
-
-\begin{proposition}\label{prop:multigenus}
-Let $r\ge2$, and let $H_0,\ldots,H_{r-1}$ be squarefree polynomials
-of the same positive even degree $m$, with disjoint root sets over
-$\overline\Q$. The smooth projective model of the simultaneous
-square-class correspondence
-\[
- y_i^2=H_0(\lambda)H_i(\lambda)\quad(1\le i<r)
-\]
-is geometrically connected and has genus
-\[
-                         g=1+2^{r-3}(rm-4).
-\]
-For the ten-contact family, outside the finite set of contact-ratio
-collisions this gives genus $9$ for two poles and genus $27$ for three.
-\end{proposition}
-\begin{proof}
-The $r-1$ functions $H_0H_i$ are independent modulo squares in
-$\overline\Q(\lambda)^\times$: a root unique to $H_i$ detects its
-exponent in any putative square product. The function-field extension
-therefore has degree $d=2^{r-1}$ and is geometrically connected.
-At each of the $rm$ distinct roots, the nonzero parity vector gives
-inertia of order two. Thus each branch point contributes $d/2$ to
-Riemann--Hurwitz. There is no ramification at infinity because each
-$H_0H_i$ has even degree. Hence
-\[
-             2g-2=-2d+rm\,d/2,
-\]
-which is the displayed formula. In the ten-contact application,
-root sets meet exactly when $a_j/a_i=\xi_j/\xi_i$ for some contacts;
-this is a finite exceptional collection of ratios. Taking $m=10$
-and $r=2,3$ gives the asserted genera.
-\end{proof}
-
-The statement freezes the scales and all other retained variables
-before varying the slope. It does not assert finiteness in the whole
-parameter space. The additional complement-class requirements in
-Theorem~\ref{thm:old} only restrict this correspondence further.
-As in Proposition~\ref{prop:genus}, the finiteness conclusion is an
-obstruction to retaining the old unlimited-slope proof, not a proof
-that no finite choice can work.
+\section{Scope of the compatibility hypothesis}
+The transfer theorems require the displayed input and complement
+square-class equalities. The selected-prime family and the
+fixed-scale contact correspondences impose separate constraints on
+these hypotheses, proved in~\cite{MatchingObstructions}. No
+compatibility assertion follows from the transfer identities alone.
 
 \section{An exact example and verification scope}
 For the newer system take
@@ -551,44 +423,40 @@ The reproducible checker in
 verifies the two transfer identities in polynomial rings, the elliptic
 scaling formulas modulo the curve equations, the displayed rational
 example, finite-algebra separation examples, deliberate corruption
-controls, and the fixed-scale root computation. It authenticates the
+controls, and the fixed-scale root computation of~\cite{MatchingObstructions}.
+It authenticates the
 retained source files by hash. These finite checks do not prove
-Jaswal's theorem, the inherited pole-realization theorem, Faltings'
-theorem, or completeness of a smaller global construction.
+Jaswal's theorem, the inherited pole-realization theorem, or
+completeness of a smaller global construction.
 
-\section{Conclusions for the current constructions}
-Theorems~\ref{thm:old} and~\ref{thm:new} establish genuine parameter
-reductions for compatible pole inputs. They do not establish the
-compatibility of the two inputs in the current twenty-five- or
-thirteen-variable definitions. Proposition~\ref{prop:fresh} proves
-that the present thirteen-variable completeness witnesses fail even
-the first matching condition. Proposition~\ref{prop:genus} identifies
-a fixed-scale curve governing any replacement with matching first
-classes. No result table is changed: the currently established general
-counts remain twenty-five and thirteen, with their previously stated
-arithmetic hypotheses. The missing assertion is existence of a
-suitable complete restricted witness family, not the algebraic transfer
-or the quantifier accounting.
+\section{Application of the parameter reduction}
+Theorems~\ref{thm:old} and~\ref{thm:new} reduce the pole parameters
+on their stated compatibility loci. For $r$ compatible older pole
+conditions, the reduction saves $2r-2$ retained coordinates, while
+the finite quadratic choices share one separating coordinate.
+Application to a full defining polynomial requires a complete
+witness family lying in that locus and satisfying all remaining
+source guards. The separate obstructions in~\cite{MatchingObstructions}
+specify restrictions on such a family; the transfer and
+finite-choice accounting do not supply its arithmetic existence.
 
-\begin{thebibliography}{9}
+\begin{thebibliography}{99}
 \bibitem{Density} \emph{Zariski density of the prepared pole witnesses},
 project manuscript, 9 November 2026,
 \nolinkurl{papers/pole_parameters/pole_witness_density_20261109_v14.tex}.
+
 \bibitem{Congruent} \emph{Pole equations from simultaneous congruent-number twists},
 project manuscript, 14 November 2026,
 \nolinkurl{papers/pole_parameters/congruent_twist_poles_20261114_v27.tex}.
+
 \bibitem{Jaswal} M.~Jaswal, \emph{A proof that $\Z$ is Diophantine in $\Q$
 through congruent-number twists}, Hexagon 2611.00331v2,
 12 November 2026, Theorem~1.2.
 \url{https://hexagonmath.org/2611.00331v2}.
-\bibitem{Input13} \emph{Thirteen Variables from Direct Elliptic Index Comparison},
-project source manuscript,
-\nolinkurl{papers/conditional_few_variables/direct_input13_20261110_v22.tex}.
-\bibitem{UnitNorm} \emph{A single norm determinant for the 25- and 13-variable constructions},
-project manuscript, 14 November 2026,
-\nolinkurl{papers/finite_algebra/unit_norm_20261114_v28.tex}.
-\bibitem{Faltings} G.~Faltings, \emph{Endlichkeitss\"atze f\"ur abelsche
-Variet\"aten \"uber Zahlk\"orpern}, Invent. Math. \textbf{73} (1983),
-349--366, Satz~7, p.~365; erratum, \textbf{75} (1984), 381.
+
+\bibitem{MatchingObstructions}
+\emph{Fresh-Prime and Fixed-Scale Obstructions to Joint Pole Realization},
+project manuscript, 16 November 2026,
+\nolinkurl{negative_results/papers/pole_parameters/fresh_prime_squareclass_obstruction_20261116_v42.tex}.
 \end{thebibliography}
 \end{document}

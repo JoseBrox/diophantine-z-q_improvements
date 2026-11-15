@@ -18,9 +18,7 @@ exponential growth, while monicity makes the other coordinate integral
 without a separate integrality condition. We determine the sharp lower
 bound, give positive witnesses with prescribed finite congruence data,
 and record an equivalent single square equation of degree six and
-coefficient height sixteen. A rational parametrization also shows why
-arbitrarily accurate local approximations to the integral labels do not
-give the same conclusion. All results in this paper are unconditional.
+coefficient height sixteen. All results in this paper are unconditional.
 \end{abstract}
 
 \section{The norm-one equation}
@@ -203,61 +201,10 @@ period $0,1,1$. Thus $U_{a-1}(a)$ is even and $U_{a-2}(a)$ is odd.
 Since $c$ is odd, $n_0=(U_{a-1}(a)-1)/c$ is odd as well.
 \end{proof}
 
-\section{Local approximation and exact integral labels}
-The integrality assumptions on $a,n$ in
-Theorem~\ref{thm:compression} are essential. Replacing them by rational
-numbers arbitrarily close to integers at finitely many primes is a
-different condition, even when the norm equation holds exactly.
 
-\begin{proposition}\label{prop:local}
-For every integer $r\ge1$ there are rational numbers $n_r,w_r$ such
-that, with $t_r=3n_r+1$,
-\[
- t_r^2-5t_rw_r+w_r^2=1,\qquad
- v_{19}(n_r-1)\ge r,\qquad 0<n_r<1.
-\]
-In contrast the exact integral labels $a=5,n=1$ admit no rational
-solution of the norm equation.
-\end{proposition}
-\begin{proof}
-The integer $85$ has the simple square root $3$ modulo $19$.
-Lift it to an integer $q_r$ satisfying
-$q_r^2\equiv85\pmod{19^r}$ and $q_r\equiv3\pmod{19}$.
-Choose $s_r\ge19$ with
-\[
-                       3s_r\equiv10+q_r\pmod{19^r}.
-\]
-Put
-\begin{equation}\label{eq:param}
- D_r=s_r^2-5s_r+1,\qquad
- t_r=\frac{s_r^2-1}{D_r},\qquad
- w_r=\frac{s_r(5s_r-2)}{D_r},\qquad
- n_r=\frac{t_r-1}{3}.
-\end{equation}
-Substitution proves the norm equation identically in $s_r$.
-Modulo $19$, one has $s_r\equiv17$ and $D_r\equiv15$,
-so every denominator in~\eqref{eq:param} is a $19$-adic unit.
-Moreover
-\[
- 3D_r(t_r-4)=-9s_r^2+60s_r-15
-                  =85-(3s_r-10)^2.
-\]
-It follows that $v_{19}(t_r-4)\ge r$, and hence
-$v_{19}(n_r-1)\ge r$. Since $s_r\ge19$, one has $D_r>0$,
-$t_r>1$ from $5s_r-2>0$, and $t_r<4$ from
-$3s_r^2-20s_r+5>0$. Thus $0<n_r<1$.
-
-For the integral target $a=5,n=1$, the value of $t$ is four and
-the discriminant is $340=4\cdot85$, which is not a rational square.
-The equivalence in Corollary~\ref{cor:square} proves the last assertion.
-\end{proof}
-
-The square condition in Corollary~\ref{cor:square} therefore removes
-a separate integral coordinate only when the other two labels are
-already exact integers. Proposition~\ref{prop:local} rules out deriving
-that replacement from local approximation alone. An application to
-elliptic index comparisons must separately identify the retained
-arguments with their integral indices.
+The labels in Theorem~\ref{thm:compression} are exact integers.
+The separate rational counterexample in~\cite{LocalApproximation}
+shows why approximation at a prime does not supply that premise.
 
 \section*{Exact verification}
 The standard-library verifier
@@ -265,9 +212,17 @@ The standard-library verifier
 checks both polynomial identities by independent coefficient arithmetic,
 the discriminant expansion, positive and sharp witnesses for both signs
 of $a$, the parity assertion, the excluded small cases, finite recurrence
-periods, and explicit local approximants. It also exhausts a stated
+periods, and the local approximants of~\cite{LocalApproximation}.
+It also exhausts a stated
 finite rectangle of integral labels using integer square roots.
 These computations check the specifications and edge cases; the proofs
 above establish the infinite statements. No arithmetic hypothesis from
 a defining-polynomial construction is used.
+
+\begin{thebibliography}{99}
+\bibitem{LocalApproximation}
+\emph{Rational Local Approximations to Integral Pell Labels},
+project manuscript, 16 November 2026,
+\nolinkurl{negative_results/papers/integer_labels/rational_pell_approximation_obstruction_20261116_v42.tex}.
+\end{thebibliography}
 \end{document}

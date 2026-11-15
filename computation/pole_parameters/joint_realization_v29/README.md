@@ -17,7 +17,7 @@ checks, which use explicit exceptions rather than `assert` statements.
 
 The two manuscripts are
 `papers/pole_parameters/joint_pole_realization_20261114_v29.tex` and
-`papers/elliptic_charts/progression_density_20261114_v29.tex`.
+`negative_results/papers/elliptic_charts/progression_density_20261114_v29.tex`.
 The checks certify polynomial identities, explicit rational examples, finite
 algebraic examples, and branch-count calculations. They do not prove the
 external arithmetic inputs, rational-point finiteness, or a smaller global

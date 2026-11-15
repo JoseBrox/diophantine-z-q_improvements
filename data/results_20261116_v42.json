@@ -1,0 +1,30 @@
+{
+  "schema": "diophantine-research-results/v42",
+  "date": "2026-11-16",
+  "construction_records": "data/results_20261115_v40.json",
+  "new_variable_reduction": false,
+  "positive_theorems": [
+    {
+      "id": "fixed_pole_fiber_density",
+      "proof": "papers/pole_parameters/common_parameter_guard_reduction_20261116_v42.tex",
+      "statement": "For a prepared pole input and a fixed rational conic parameter, one rational second-pole witness with nonzero ordinate gives infinitely many rational witnesses at the same parameter.",
+      "method": "The elliptic twist has odd valuation at 17, hence only two-torsion; odd multiples preserve the required abscissa square class."
+    },
+    {
+      "id": "native_common_parameter_guards",
+      "proof": "papers/pole_parameters/common_parameter_guard_reduction_20261116_v42.tex",
+      "statement": "In every native source the square-class scalars depend only on input, root abscissas and comparison data. At prepared actual tuples they are positive at every character. A common rational parameter with nonzero second ordinates suffices for every pole-stage norm guard.",
+      "hypotheses": "All earlier point-stage guards and actual preparation remain required."
+    },
+    {
+      "id": "independent_auxiliary_index_preparation",
+      "proof": "papers/pole_parameters/common_parameter_guard_reduction_20261116_v42.tex",
+      "statement": "Starting with one guarded prepared tuple, independent cyclic return sets preserve preparation, all point-stage guards, and fixed square-class scalars.",
+      "hypotheses": "The retained source group premise 2E(Q(sqrt(2)))=ZP and starting source tuple.",
+      "scope": "Independent choices of auxiliary indices, not independent detector values or arbitrary rational values."
+    }
+  ],
+  "verification": "computation/pole_parameters/fixed_fiber_guards_v42/verification.json",
+  "unresolved": "Simultaneous rational realization at a common parameter for actual detector tuples.",
+  "negative_results": "negative_results/README.md"
+}

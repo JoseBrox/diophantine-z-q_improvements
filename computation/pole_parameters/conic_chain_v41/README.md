@@ -1,6 +1,6 @@
 # Conic-chain pole obstructions
 
-The accompanying [paper](../../../papers/pole_parameters/conic_chain_obstruction_20261115_v41.tex) proves that every fixed rational coefficient `c` in
+The accompanying [paper](../../../negative_results/papers/pole_parameters/conic_chain_obstruction_20261115_v41.tex) proves that every fixed rational coefficient `c` in
 
     P=p², e²+bP=1, D=1+(c b−1)P, z²=bD
 

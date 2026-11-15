@@ -29,19 +29,14 @@ $\Z$ in $\mathcal O_K$ makes the definability of $\mathcal O_K$ in
 $K$ equivalent to that of $\Z$ in $K$. Assuming an existential
 definition of $\Z$ in $\Q$, these properties are also equivalent to
 existential definability of the rational subfield in $K$.
-We give explicit bounds on coordinates and degree for these
-reductions and for descent through a finite field extension.
-For every finite extension $L/K$ of characteristic-zero fields,
-existential definability of $K$ in $L$ is equivalent to definability
-of the relative norm image, the norm graph, or the trace graph.
-The norm-image implication follows from an exact finite-difference
-identity. In contrast, the norm and trace graphs of a proper
-extension are Zariski dense and have no quantifier-free definitions.
-Finally, a fixed finite collection of existential formulas cannot
-define rings of integers throughout all finite extensions of a
-number field. These results distinguish reductions and obstructions
-to transferring a formula from a counterexample to the existence of
-a separately chosen formula over each number field.
+We give explicit coordinate and degree bounds for these reductions
+and for descent through a finite field extension. For every finite
+extension $L/K$ of characteristic-zero fields, existential
+definability of $K$ in $L$ is equivalent to definability of the
+relative norm image, norm graph, or trace graph. The norm-image
+implication follows from an exact finite-difference identity.
+Finally, positive elliptic rank stability supplies an infinite
+Diophantine subset of the rational subfield.
 \end{abstract}
 
 \section{Definitions and arithmetic scope}
@@ -364,55 +359,11 @@ Indeed, for $q\in K$, the identity
 $((q+1)/2)^2-((q-1)/2)^2=q$ exhibits the difference of two norms
 of elements of $K$ itself.
 
-\subsection{Why an ordinary norm form does not solve this problem}
-
-A norm form with \emph{$K$-valued coordinates} is an ordinary
-polynomial over $K$. The map on a \emph{single $L$-valued input}
-addressed in Theorem~\ref{thm:norm-trace} is a different object.
-The distinction has the following exact algebraic manifestation.
-
-\begin{proposition}\label{prop:dense}
-If $L/K$ is proper, the graphs $G_N$ and $G_T$ are Zariski dense
-in $\A^2_L$. Neither has a quantifier-free definition in the
-language of rings with coefficients in $L$. In particular neither
-is the graph of a polynomial function in one variable over $L$.
-\end{proposition}
-\begin{proof}
-Choose $\theta\in L\setminus K$. The set $K^2$ is Zariski dense
-in $\A^2_L$, because a polynomial vanishing on $K^2$ is zero by
-applying the one-variable root bound successively.
-
-Consider first the trace graph. Its points include the images of
-$K^2$ under the $L$-linear map
-\[
-    (a,b)\longmapsto
-        \bigl(a+b\theta,\;na+b\Tr_{L/K}(\theta)\bigr).
-\]
-Its determinant is $\Tr_{L/K}(\theta)-n\theta\ne0$:
-otherwise $\theta\in K$. Hence this map is an automorphism of
-$\A^2_L$, proving density of $G_T$.
-
-For the norm, restrict the polynomial norm form to the two
-coordinates $a,b$ corresponding to $a+b\theta$ and consider
-\[
-        (a,b)\longmapsto
-          \bigl(a+b\theta,\;\Nm_{L/K}(a+b\theta)\bigr).
-\]
-At $(1,0)$ its Jacobian determinant is again
-$\Tr_{L/K}(\theta)-n\theta\ne0$, since the linear term in
-$\Nm(1+b\theta)$ is $b\Tr(\theta)$. The map is dominant.
-Its values on $K^2$ belong to $G_N$, so $G_N$ is dense as well.
-
-A quantifier-free formula defines a constructible set. A dense
-constructible subset of $\A^2_L$ contains a nonempty Zariski
-open subset. Since $L$ is infinite, such an open subset has
-infinitely many points in at least one vertical line; for instance,
-choose a first coordinate at which a nonzero defining polynomial
-of a principal open subset remains nonzero. A graph of a function
-has exactly one point in each vertical line. This contradiction
-rules out a quantifier-free definition. A polynomial graph is a
-proper closed subset and is excluded in particular.
-\end{proof}
+A polynomial norm form in $K$-valued basis coordinates does not
+automatically define the norm graph on one unrestricted $L$-valued
+input. The quantifier-free obstruction is proved in~\cite{NormGraphs};
+the existential equivalences in Theorem~\ref{thm:norm-trace} retain
+their stated subfield restrictions.
 
 \section{Descent and the structure of a possible counterexample}
 
@@ -463,91 +414,10 @@ construction of one. In particular, a polynomial that fails after
 base extension does not establish the hypothesis of
 Corollary~\ref{cor:counterexample}.
 
-\section{A finite collection of unchanged formulas is insufficient}
-
-An existential formula in this section may use finite Boolean
-combinations of polynomial equalities, so nonzero conditions and
-finite alternatives are allowed. Coefficients are fixed in a
-number field $k$. Its interpretation in an extension $L/k$ uses
-the same formula and the same coefficients, with witnesses in $L$.
-
-\begin{lemma}\label{lem:generic}
-Let $\Phi(T)$ be such a formula and suppose $\Phi(k)$ is infinite.
-There are an integer $d\ge1$ and a nonzero $h\in k[T]$ such that,
-for every $a\in k$ with $h(a)\ne0$, the formula $\Phi(a)$ holds
-in some extension $E_a/k$ of degree at most $d$.
-\end{lemma}
-\begin{proof}
-The constructible set of witness tuples has a constructible image
-in the input line by Chevalley's theorem \cite{Stacks}.
-An infinite image is dense in that line, so one conjunction in
-the formula has nonempty generic fiber over $k(T)$.
-Choose a closed point of this generic fiber, with residue field
-$E$ finite over $k(T)$. Write $E=k(T)[\alpha]$, with monic
-minimal polynomial $G(T,Z)$ of degree $d$ in $Z$.
-Express the witness coordinates and the inverses of all required
-nonzero expressions as polynomials in $\alpha$ with coefficients
-in $k(T)$.
-
-After inverting a nonzero $h\in k[T]$, all these expressions and
-the coefficients of $G$ belong to $R=k[T,1/h]$. The algebra
-$C=R[Z]/(G)$ is free of rank $d$ and embeds in $E$.
-All equations and inverse identities therefore hold in $C$.
-For $h(a)\ne0$, specialize to $C_a=k[Z]/(G(a,Z))$ and pass to
-any residue field at a maximal ideal. Its degree over $k$ is
-at most $d$, and all equations and nonzero conditions survive.
-\end{proof}
-
-\begin{theorem}\label{thm:finite-menu}
-Let $\Phi_1,\ldots,\Phi_r$ be a finite nonempty list of
-existential formulas over a number field $k$. Suppose
-$\Phi_i(k)$ is infinite for every $i$.
-There exists $B\ge1$ such that, for all but finitely many
-$q\in\Q\setminus\Z$, there is a finite Galois extension
-$L_q/k$ of degree at most $B$ in which every $\Phi_i(q)$ holds.
-Thus none of the formulas defines $\mathcal O_{L_q}$ in $L_q$.
-One may further require $L_q$ to have no real embedding, at the
-cost of at most doubling $B$.
-\end{theorem}
-\begin{proof}
-Apply Lemma~\ref{lem:generic} to each formula, obtaining $d_i$
-and $h_i$. Exclude the finite union of the rational zero sets
-of the $h_i$. For every remaining rational noninteger $q$,
-choose the witnessing fields $E_{i,q}$.
-The normal closure of $E_{i,q}/k$ has degree at most $d_i!$,
-by its permutation action on the conjugates of a primitive
-element. Take $L_q$ to be the compositum of these normal closures.
-Then $L_q/k$ is Galois of degree at most
-\[
-                              B=\prod_{i=1}^r d_i!.
-\]
-Each witness tuple remains a witness in $L_q$: polynomial
-equalities and nonzero conditions are preserved by field
-extensions. A rational algebraic integer is an integer, so
-$q\notin\mathcal O_{L_q}$. Adjoining $i$ gives the last assertion.
-\end{proof}
-
-\begin{corollary}
-A fixed finite collection of formulas over $k$, each correct for
-$\mathcal O_k$ in $k$, cannot supply a definition of the ring of
-integers in every finite extension by choosing one formula from
-that collection for each extension.
-\end{corollary}
-\begin{proof}
-Each formula has infinitely many inputs over $k$. The extension
-in Theorem~\ref{thm:finite-menu} makes every formula in the
-collection incorrect simultaneously.
-\end{proof}
-
-For a single nonzero polynomial $P(T,\mathbf Y)$ that depends on
-a witness coordinate $Y_j$, the integer $d$ in
-Lemma~\ref{lem:generic} may be chosen as $\deg_{Y_j}P$.
-Indeed, specialize all other witnesses to constants in $k$
-so that the leading coefficient in $Y_j$ remains a nonzero
-polynomial of $T$. Outside its finite zero set, adjoining a
-root gives the asserted extension. Consequently the factorial
-bound in Theorem~\ref{thm:finite-menu} can use the smallest
-positive individual witness degree of each polynomial.
+The descent theorem permits a separately chosen formula for each
+field. A fixed finite collection cannot define the rings of integers
+throughout all finite extensions; the precise bounded-degree
+obstruction is proved in~\cite{UnchangedFormulas}.
 
 \section{What rank stability supplies inside a field}
 
@@ -592,87 +462,18 @@ that conclusion from an existential definition in the whole
 field. Those results therefore do not remove the rational-input
 restriction in Proposition~\ref{prop:composition-count}.
 
-In general, taking multiplicative combinations of the abscissas
-in Proposition~\ref{prop:stable-set} does not yield every rational
-number. The following obstruction gives an explicit example.
-
-\begin{lemma}\label{lem:abscissa-parity}
-Let
-\[
-                       E:y^2=x^3+Ax+B
-\]
-be a nonsingular elliptic curve over $\Q$. Suppose that $p$ is
-an odd prime, $A$ and $B$ are $p$-integral, and the reduction
-of $B$ is a nonsquare in $\mathbb F_p^\times$.
-Every affine rational point of $E$ has nonzero abscissa $x$
-and even valuation $v_p(x)$. The multiplicative subgroup of
-$\Q^\times$ generated by all these abscissas consists entirely
-of numbers of even $p$-adic valuation.
-\end{lemma}
-\begin{proof}
-If $x=0$, then $y^2=B$, contrary to the nonsquare residue of
-$B$. If $v_p(x)>0$, the equation has a unit right-hand side
-congruent to $B$ modulo $p$, giving the same contradiction.
-If $v_p(x)<0$, then
-\[
-        3v_p(x)<v_p(Ax),\qquad 3v_p(x)<v_p(B).
-\]
-The term $x^3$ has the unique least valuation on the right,
-so $2v_p(y)=3v_p(x)$. This forces $v_p(x)$ to be even.
-The remaining case has valuation zero. Valuations add under
-multiplication and change sign under inversion, proving the
-last assertion.
-\end{proof}
-
-\begin{proposition}\label{prop:abscissa-example}
-The curve $E:y^2=x^3-2$ has a rational point of infinite order,
-but $5$ is not a ratio of two rational abscissas of $E$, or
-any finite product of integral powers of its rational abscissas.
-\end{proposition}
-\begin{proof}
-The point $(3,5)$ lies on $E$. The curve has good reduction at
-$5$ and $7$, since its discriminant is $-1728$. Direct counting
-gives
-\[
-                       \#E(\mathbb F_5)=6,
-                       \#E(\mathbb F_7)=7.
-\]
-For completeness, modulo $5$ the numbers of ordinates above
-$x=0,1,2,3,4$ are $0,2,2,1,0$. Modulo $7$ the corresponding
-numbers are $0,0,0,2,0,2,2$. Add the identity in each case.
-
-Prime-to-$p$ rational torsion injects under good reduction at
-$p$. One way to see the needed injectivity is to use the formal
-parameter $z=-x/y$ in the reduction kernel: if $p\nmid m$,
-then $[m]z=mz+O(z^2)$ has the same finite valuation as $z$ and
-cannot vanish. Thus a prime divisor $\ell\ne5,7$ of a rational
-torsion order would divide both $6$ and $7$, which is impossible.
-The $5$-primary torsion is excluded by reduction at $7$, and
-the $7$-primary torsion by reduction at $5$. Hence $E(\Q)$
-has trivial torsion, and $(3,5)\ne O$ has infinite order.
-
-At $p=5$, the constant coefficient is $B=-2\equiv3$, a
-nonsquare. Lemma~\ref{lem:abscissa-parity} shows that every
-multiplicative combination in the statement has even
-$5$-adic valuation, whereas $v_5(5)=1$.
-\end{proof}
-
-The obstruction in Proposition~\ref{prop:abscissa-example}
-concerns multiplicative combinations. It does not apply to
-sums of such values and does not disprove a more elaborate
-existential definition. In particular, it supplies neither a
-counterexample to Theorem~\ref{thm:equivalence}'s equivalent
-properties nor a positive result for a new number field.
+The set supplied by Proposition~\ref{prop:stable-set} need not yield
+all rational numbers under multiplicative combinations. An explicit
+positive-rank counterexample is given in~\cite{AbscissaProducts}.
+Thus this proposition supplies an infinite rational Diophantine
+subset, with no completeness assertion for the rational subfield.
 
 \section{Consequences for constructions over number fields}
 
-The distinction between two questions is exact. Theorems
-\ref{thm:descent} and \ref{thm:equivalence} concern the existence
-of a formula chosen for a specified field. Theorem
-\ref{thm:finite-menu} concerns reusing a fixed finite collection
-of formulas throughout extensions. The second question has a
-negative answer even if the first has a positive answer for
-every number field.
+Theorems~\ref{thm:descent} and~\ref{thm:equivalence} concern a formula
+chosen for a specified field. Their conclusions are compatible with
+the obstruction to reusing a fixed finite collection throughout
+extensions~\cite{UnchangedFormulas}.
 
 Under \eqref{eq:ZQ}, a proof that $\OK$ is Diophantine in $K$
 can therefore proceed by constructing any one of the following:
@@ -699,7 +500,7 @@ an arithmetic definition inside the field itself, with all
 witnesses in the field and with soundness against nonintegral
 inputs.
 
-\begin{thebibliography}{9}
+\begin{thebibliography}{99}
 \bibitem{ABHS}
 L.~Alp\"oge, M.~Bhargava, W.~Ho and A.~Shnidman,
 \emph{Rank stability in quadratic extensions and Hilbert's tenth
@@ -720,9 +521,19 @@ J. Math. Sci. (N.Y.) \textbf{158} (2009), 713--726.
 \url{https://doi.org/10.1007/s10958-009-9404-4};
 preprint \url{https://arxiv.org/abs/0708.3075v2}.
 
-\bibitem{Stacks}
-The Stacks Project Authors, \emph{The Stacks Project},
-Chevalley's theorem, Tag 00FE.
-\url{https://stacks.math.columbia.edu/tag/00FE}.
+\bibitem{NormGraphs}
+\emph{Norm and Trace Graphs Have No Quantifier-Free Definitions},
+project manuscript, 16 November 2026,
+\nolinkurl{negative_results/papers/number_fields/norm_trace_graph_obstruction_20261116_v42.tex}.
+
+\bibitem{UnchangedFormulas}
+\emph{Unchanged Existential Formulas after Finite Field Extensions},
+project manuscript, 16 November 2026,
+\nolinkurl{negative_results/papers/number_fields/unchanged_formula_obstruction_20261116_v42.tex}.
+
+\bibitem{AbscissaProducts}
+\emph{A Valuation Obstruction to Products of Elliptic Abscissas},
+project manuscript, 16 November 2026,
+\nolinkurl{negative_results/papers/number_fields/abscissa_product_obstruction_20261116_v42.tex}.
 \end{thebibliography}
 \end{document}
