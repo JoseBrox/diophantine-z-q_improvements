@@ -1,0 +1,376 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,booktabs,longtable,microtype}
+\usepackage[margin=25mm]{geometry}\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
+\setlength{\emergencystretch}{3em}
+\newtheorem{theorem}{Theorem}[section]\newtheorem{lemma}[theorem]{Lemma}\newtheorem{proposition}[theorem]{Proposition}\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}\newcommand{\Nm}{\operatorname{N}}
+\title{Quartics in 196 and 258 variables by elimination after monomial rescaling}
+\author{}\date{15 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+Two exact changes of coordinates remove stored fourth powers from existing
+quadratic systems without producing cubic equations. The 198-variable family
+supplied in the Conant--ChatGPT research archive becomes a 196-variable
+family with 182 quadratic equations. The fully specified 260-variable family
+becomes a 258-variable family with 230 quadratic equations. These changes
+preserve the entire rational input projection for every fixed coefficient
+parameter, rather than just a chosen completeness set. The latter family
+therefore retains the certified defining exponent $N=9682$. Its largest
+coefficient has 139819 binary digits. The former defining threshold remains
+ineffective. We prove the nonzero conditions before division and specify all
+maps, equations, and coefficients by exact finite data with separate checking
+algorithms. No new arithmetic hypothesis is introduced by these transformations;
+the parent projection theorems retain their stated arithmetic premises.
+\end{abstract}
+
+\section{Statements and scope}
+A total variable count includes the input $X$. A coefficient parameter is
+fixed and is not a quantified variable. Write $\pi_X(V(\Q))$ for the set of
+rational inputs of a rational algebraic zero set $V$. All statements about
+integer definitions below are conditional on the precise arithmetic inputs
+of the indicated parent constructions. The algebraic equivalences themselves
+hold without those arithmetic inputs.
+
+The first parent is the unbalanced table supplied in
+\texttt{H10-quartic198.zip}, namely
+\begin{center}\small\path{circuits/inverse198/quadratic.json}.\end{center}
+Its SHA-256 is
+\begin{center}\small\texttt{c55d7eefe41f62fee88b467e3ea8f6be8ba1e66f6a94b30eb74b39f6f6e7efad}.\end{center}
+The archive attributes its new analysis and code to ChatGPT in collaboration
+with Gabriel Conant's research request. Its 198-variable theorem builds on
+the project's 204-variable construction, not on the unpublished erroneous
+scalar substitution previously described as v32. The original editable sources and data are
+preserved without changes under \path{sources/h10_quartic198}; its own
+attribution, theorem, qualifications, and source bindings are retained.
+The original archived PDF is identified by its byte length and hash in
+\path{PDF_PROVENANCE.md}, rather than redistributed in this TeX-first release.
+
+The second parent is the complete 260-variable table of \cite{Explicit}, at
+repository commit \texttt{e950bd2eb46ffb6aaf77624cc9b3d0b880fd921f}.
+Both parents use $A=149^{2N+1}$, with integer $N\ge1$.
+Set $C=149^N$, so $A=149C^2$, and put
+\begin{align*}
+ K_{196}&=11903780636513165769654680680436132271178681610029854792,\\
+ K_{\rm fixed}&=484991541504995159662206970923766531374664106904986910720.
+\end{align*}
+
+\begin{theorem}\label{thm:results}
+There are explicit families of integer polynomials $P_N$ and $Q_N$ with
+\[
+\begin{array}{c|r|r|r|r}
+ &\text{total variables}&\text{quadratic summands}&\text{degree}&\text{monomials}\\\hline
+P_N&196&182&4&2943\\
+Q_N&258&230&4&3705
+\end{array}
+\]
+for every $N\ge1$. Both have integer content one, and
+\[
+ H(P_N)=K_{196}149^{2N},\qquad
+ H(Q_N)=\max\{K_{\rm fixed},9792^2 149^{2N}\}.
+\]
+For every fixed $N\ge1$, $P_N$ has the same rational input projection as
+the supplied 198-variable parent, and $Q_N$ has the same rational input
+projection as the fully specified 260-variable parent. Consequently:
+\begin{enumerate}
+\item Under the inherited arithmetic premises of \cite{Archive198}, every
+sufficiently large fixed $N$ makes $P_N$ define $\Z$ over $\Q$. The sufficient
+threshold is the same as the parent's and remains ineffective.
+\item Under the inherited arithmetic premises of \cite{Explicit}, every
+$N\ge9682$ makes $Q_N$ define $\Z$. At $N=9682$ its exact height is
+$9792^2 149^{19364}$, whose binary length is 139819.
+\end{enumerate}
+The coefficient crossover in the formula for $H(Q_N)$ is $N=12$; it is not a
+sufficient defining threshold. No 233-variable theorem is asserted here.
+\end{theorem}
+
+The inherited premises include the specified elliptic group and index
+statements over $\Q(\sqrt2)$, the appropriate contact-height/modular inputs,
+the pole obstruction and prepared pole realization, and fixed-data
+simultaneous prime selection. The 196-variable parent permits half-integral
+elliptic indices and finite torsion differences as stated in its proof.
+We do not narrow that domain. The 258-variable theorem uses exactly the
+effective threshold of the 260-variable parent. Neither statement adds $abc$.
+The separate 78-variable family \cite{ABC78} still uses ordinary rational
+$abc$ and its own stated group, prime, and simultaneous-twist inputs.
+
+\section{Elimination on a locus where specified coordinates are nonzero}
+\begin{theorem}\label{thm:general}
+Let a rational system $f_r=0$ have distinguished input $X$, retained
+coordinates $u_1,\ldots,u_k$, other coordinates $x_i$, and some coordinates
+$t_j$ to be deleted. Suppose specified retained equations imply
+$u_1\cdots u_k\ne0$. Suppose that, on this locus, the defining equations
+for the $t_j$ uniquely give monomials in the $u_\ell$ with nonzero rational
+coefficients. Make a diagonal substitution
+\[
+ x_i=c_i u_1^{w_{i1}}\cdots u_k^{w_{ik}}y_i,
+ \qquad c_i\in\Q^\times,\quad w_{i\ell}\in\Z,
+\]
+fixing $X$ and the $u_\ell$, and substitute the formulas for the $t_j$.
+For every remaining row suppose its substituted Laurent polynomial is
+\[
+ f_r(\text{substitution})=d_r\boldsymbol u^{\boldsymbol a_r}g_r,
+ \qquad d_r\in\Q^\times,
+\]
+where $g_r$ is an ordinary polynomial of degree at most two. Suppose also
+that the new equations imply the same required nonvanishing and retained
+power identities. Then the two rational zero sets are in bijection by
+these substitutions, with inverse given by inverse diagonal scaling and
+the unique formulas for the deleted coordinates. In particular their
+rational input projections agree. Clearing rational coefficients of each
+$g_r$ to primitive integers and taking their sum of squares gives a
+polynomial of degree at most four with that same projection.
+\end{theorem}
+\begin{proof}
+Every old solution has nonzero $u_\ell$, so inverse scaling defines a
+new tuple. The nonzero multipliers in the displayed identities show that
+all new equations vanish. Conversely, on a new solution all $u_\ell$ are
+nonzero by hypothesis. Reconstruct the $x_i$ and $t_j$ by the formulas.
+Deleted defining equations hold identically; every other old row vanishes
+by its identity with $g_r$. The two maps undo one another. Since the input
+is fixed, their projections agree. Over $\Q$ a sum of rational squares
+vanishes exactly when every summand vanishes, proving the last assertion.
+\end{proof}
+
+No density argument is involved: this is an all-solution statement.
+Nonvanishing must follow from the new equations, not just from the old
+system. This is why the retained inverse equations are checked separately.
+
+\subsection{A finite criterion for keeping the rows quadratic}
+When the retained power coordinates have exponent vectors in a finite set
+$\mathcal P\subset\Z^k$, let $\mathcal R_c$ be the vectors obtainable as
+sums of at most $c$ elements of $\mathcal P$, including the empty sum.
+Collect all cancellations in a substituted row and write its terms as
+$a_{m,e}y^m\boldsymbol u^e$. For a fixed row multiplier
+$\boldsymbol u^{-s}$, each such term has a quadratic representation by
+retained power coordinates whenever
+\[
+ |m|\le2,\qquad e-s\in\mathcal R_{2-|m|}.
+\]
+Thus the finite intersection of the sets $e-\mathcal R_{2-|m|}$, over its
+nonzero terms, supplies all possible row shifts for this particular
+monomial representation. Multiplication by each selected power monomial
+is verified using its defining relation. This criterion is not claimed
+necessary among arbitrary consequences of the whole ideal, and an
+unsuccessful search gives no lower bound on variable counts.
+
+\section{The 196-variable construction}
+\subsection{The nonzero scalar normalizer}
+In the 198-variable parent let $R$ be the scalar normalizer, $J$ the
+rescaled contact product, $u$ the input-square coordinate, and $v$ the
+first scalar-product coordinate. The following four literal rows are
+retained without scaling:
+\begin{align*}
+ u&=X^2,\\
+ 4v&=6255001+255102u+2601u^2,\\
+ 0&=14315517724+291790992u+15531948uv+767410608v-512v^2+RJ,\\
+ 0&=1+22201RJ-AJ.
+\end{align*}
+Substituting the first two into the third gives exactly
+\[
+ RJ=(51X^2+103)(51X^2+2503)(51X^2+2504)(1632X^2+80471)=r(X)>0.
+\]
+Hence $R,J\ne0$, and the fourth row gives
+\[
+ R=\frac{Ar(X)}{1+22201r(X)}>0.
+\]
+The retained square row gives $R_2=R^2$. This argument is an elementary
+identity and positivity proof valid for every rational input, before
+any source arithmetic theorem is invoked.
+
+\subsection{The detector coordinates and substitutions}
+For detector $j=0,1$, write its retained inverse weight as $w_j$ and its
+contact weight as $q_j$. Retain literally
+\[
+ q_jw_j=1,\qquad w_{j,2}=w_j^2.
+\]
+The two deleted fourth-power coordinates have physical values
+\[
+ w_{0,4}=w_0^4,\qquad w_{1,4}=w_1^4/R.
+\]
+The factor $R^{-1}$ in the second formula is part of the parent storage
+convention, not an additional assumption. The corresponding two defining
+rows become identities and are removed.
+
+Within detector $j$, old values of the following named coordinates equal
+the indicated factor times their new values:
+\[
+\begin{array}{c|c}
+\text{coordinate in the source table}&\text{factor}\\\hline
+\text{normalized.s},\ \text{factored.v}&w_j^{-1}\\
+\text{normalized.p}&w_j\\
+\text{normalized.p2.quadratic}&w_j^2\\
+\text{actualW.0},\ \text{actualW.1},\ \text{normOver2w0},\ \text{B}&w_j^{-2}\\
+\text{amplified.det}j\text{.factor}k\text{.}c\ (0\le k\le4)&R^j w_j^{-2}\\
+\text{amplified.det}j\text{.product1.}c&w_j^{-2}\\
+\text{amplified.det}j\text{.product}k\text{.}c\ (k=2,3)&R^{-j}w_j^{-2}
+\end{array}
+\]
+Here $c=0,1$ denotes the rational component. All unspecified coordinates
+are fixed. Put $H=31581660^{14}$ and $K=82479248H$. A simultaneous
+constant scaling multiplies old scalar coordinates, in terms of their
+new values, by
+\[
+\begin{array}{c|c}
+\text{scalar.W2.quadratic.rescaled}&H^{-1}\\
+\text{scalar.b.quadratic}&-K^{-1}\\
+\text{normalized\_scalar.scaled\_e}&-K\\
+\text{normalized\_scalar.s},\ \text{normalized\_scalar.p},\
+ \text{normalized\_scalar.factored.q}&K\\
+\text{normalized\_scalar.p2.quadratic},\ \text{normalized\_scalar.factored.q2}&K^2\\
+\text{normalized\_scalar.factored.v}&-1
+\end{array}
+\]
+These constants are nonzero and none of the nine nonzero-guard and
+power rows is changed. There are $198-2=196$ coordinates and
+$184-2=182$ retained rows.
+
+The exact coordinate indices, row multipliers, primitive clearing factors,
+and final rows are supplied in
+\path{computation/quartic/laurent_recovery_v38/config196.json} and
+\path{family196/certificate.json} relative to that directory. For each
+row its Laurent expansion and target expansion coincide coefficient by
+coefficient. The certificate lists exactly one identity for each retained
+row; every source row is either listed or one of the two deleted
+identities. This is a finite proof of the required row identities,
+reproducible by the independent checker in Section~\ref{sec:verification}.
+The coordinate table, not a generic existence assertion, specifies every
+coefficient of the defining polynomial.
+
+All three base units $R,w_0,w_1$ are nonzero on both systems by the
+literal equations proved above. Theorem~\ref{thm:general} therefore
+applies on the entire rational zero set, including every original
+identity, tangency, or torsion stratum. It gives an input-preserving
+bijection for each $N\ge1$.
+
+\section{The fully specified 258-variable construction}
+The first step starts with \path{compressed_reference_v27/family260/quadratic.json}.
+Within its detector zero, $q_0w_0=1$ and $w_{0,2}=w_0^2$ are literal
+retained rows. Eliminate $w_{0,4}=w_0^4$. Rescale the remaining coordinates
+by the integer powers of $w_0$ in \path{config259.json}. There are 259
+coordinates and 231 quadrics. In the second step, the detector-one
+relations are still literally $q_1w_1=1$, $w_{1,2}=w_1^2$.
+Eliminate $w_{1,4}=w_1^4$ and use the powers in \path{config258.json}.
+This gives 258 coordinates and 230 quadrics.
+
+For completeness, Appendix~\ref{app:weights} prints every nonzero
+coordinate exponent in these two steps. It is important to perform the
+steps in order: the second table uses the coordinate names after the
+first step. Their finite row certificates, generated and checked
+separately, give all common row powers and primitive integer factors.
+
+At the second step $q_1w_1=1$ remains unchanged. The other two inverse
+relations in the final table are
+\[
+ q_0w_0=w_1,\qquad q_2w_2=w_1^2.
+\]
+Thus all inverse weights are still nonzero, without a new coordinate.
+The two square relations used to reconstruct the deleted powers also
+remain valid. Apply Theorem~\ref{thm:general} first to the 260-to-259 map,
+then to the 259-to-258 map. At each step the specific unit used for the
+change of coordinates is excluded from zero by a retained literal inverse
+row. The composition is consequently a bijection on rational solutions.
+No elliptic index, point chart, local order, or comparison argument is
+changed as a physical quantity. In particular the effective parent
+threshold $9682$ is inherited unchanged; it is not recomputed from a
+new height inequality.
+
+\section{Coefficient balancing and exact heights}
+For a fixed nonzero $C$, a further diagonal substitution
+$x_i=c_i C^{v_i}y_i$ is invertible. Substitute $A=149C^2$, divide each
+row by its least power of $C$, and clear rational coefficients to
+primitive integers. Neither operation changes its rational zero set.
+The complete exponent vectors and row multipliers are in
+\path{family196/balancing.json} and \path{family258/balancing.json}.
+The 258-variable balancing uses only three nonzero $C$ weights: the
+coordinates named \texttt{scalar.r\_power\_2},
+\texttt{scalar.r\_power\_4}, and
+\texttt{scalar.forced\_positive\_parameter} each have weight one.
+Their old semantic names do not assert that their new stored values
+are literal powers before reconstruction. The scalar constant scalings
+are as above, with \texttt{scalar.W2.quadratic} in place of its
+198-parent name.
+
+For each coordinate monomial $m$, let $p_m(C)$ be its integer coefficient
+after expanding the sum of squares and collecting equal monomials.
+Every $p_m$ has degree at most two. The coefficient of $X^4$ is exactly
+one, and all coordinates occur. Thus the degree is exactly four and
+the integer content is one for every fixed integer $C=149^N$.
+
+For the 196-variable system the independent coefficient reconstruction
+verifies, for every $m$,
+\[
+ \sum_a |[C^a]p_m|149^a\le K_{196}149^2.
+\]
+Since $a\le2$, division by $C^2$ shows the same bound at all $C\ge149$.
+A pure coefficient $K_{196}C^2$ occurs, proving equality for the height.
+For each profile the highest-power term at $C=149$ strictly dominates
+the sum of the absolute values of the lower terms; it continues to do
+so for every larger $C$. Hence no coefficient cancels and the 2943
+monomial count holds for every $N\ge1$.
+
+For the 258-variable system the largest fixed coefficient is
+$K_{\rm fixed}$ and is attained by a constant profile. A pure coefficient
+$9792^2 C^2$ is also attained. Exact integer comparisons give
+\[
+ 9792^2 149^{22}<K_{\rm fixed}<9792^2 149^{24}.
+\]
+Every profile satisfies the absolute-coefficient bound by $K_{\rm fixed}$
+at $C=149^{11}$, and the bound by $9792^2C^2$ at $C=149^{12}$.
+The former bound extends downwards to $C=149$, the latter upwards to
+all larger $C$, proving the maximum formula of Theorem~\ref{thm:results}.
+The same leading-term domination test excludes zeros for all profiles
+at $C\ge149$. There are 3705 monomials. Finally the integer comparison
+\[
+ 2^{139818}\le9792^2 149^{19364}<2^{139819}
+\]
+proves the stated binary length exactly; no floating-point logarithm
+or decimal rounding is used.
+
+\section{Independent reconstruction and limitations}\label{sec:verification}
+The producer uses sparse Laurent exponent arithmetic. The checker does not
+import it: it separately expands the two sides of each row identity,
+verifies all necessary unit and power relations, checks row and coordinate
+coverage, and expands each sum of squares using unordered term pairs.
+It checks every coefficient, not selected evaluations. Each complete
+producer is rerun in a temporary directory and the regenerated files are
+compared byte for byte. There are five deliberate corruption tests for
+the 196-variable construction and eight for the two explicit reductions.
+Altered coefficients, shifts, unit guards, or powers are rejected.
+
+The supplied 198-variable archive has its own thirteen-command verifier;
+that verifier is run separately, in a temporary copy. The source archive's
+infinite arithmetic inputs are not proved by any of these finite checks.
+The 78-variable mixed-height construction is reconstructed by its separate
+checker and retains ordinary rational $abc$. The general counts 25 and
+13 are unchanged. Their finite-algebra presentations already eliminate
+stored products as finite choices, so the present deletion of auxiliary
+power coordinates alone does not remove one of their retained point or
+pole parameters.
+
+The two reattached v36 recovery archives contain neither a 233-variable
+manuscript nor its coefficient tables. Their own receipt states that
+recovery was not closed. That earlier conversational number, its asserted
+exponent 10220, and its asserted torsion-height estimate are not used as
+inputs to this work and are not certified here. The source inventory and
+hashes are recorded separately in the recovery audit.
+
+\appendix
+\section{All nonzero exponents for the two explicit deletions}\label{app:weights}
+In each table an exponent $v$ means $x_{\rm old}=w_j^v x_{\rm new}$;
+all omitted coordinates are fixed. Stored powers are interpreted by the
+separate retained power equations, as specified in the proof.
+\input{laurent_weights_20261115_v38.tex}
+
+\begin{thebibliography}{9}
+\bibitem{Archive198} Gabriel Conant research request with ChatGPT,
+\emph{A quartic in 198 variables}, 14 November 2026, supplied archive
+\texttt{H10-quartic198.zip}; original proof and attribution retained in
+\path{sources/h10_quartic198/arithmetic/inverse_vieta_198.tex} and its README.
+\bibitem{Explicit} \emph{A fully specified defining quartic in 260 variables},
+project source, 14 November 2026,
+\path{papers/quartic/explicit260_20261114_v27.tex}.
+\bibitem{ABC78} \emph{A quartic in 78 variables from a mixed-power height estimate},
+project source, 15 November 2026,
+\path{papers/quartic_existence/quartic_abc78_20261115_v34.tex}.
+\end{thebibliography}
+\end{document}

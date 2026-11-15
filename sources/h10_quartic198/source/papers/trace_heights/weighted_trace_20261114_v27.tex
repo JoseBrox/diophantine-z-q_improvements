@@ -1,0 +1,290 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,microtype}
+\usepackage[margin=25mm]{geometry}\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}[section]\newtheorem{lemma}[theorem]{Lemma}\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}\DeclareMathOperator{\Tr}{Tr}
+\setlength{\emergencystretch}{2em}
+\title{Heights of positive weighted elliptic traces}
+\author{}\date{14 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+A positive weighted trace of several elliptic abscissas controls all their
+indices, even when the weights vary through rational squares. The bound
+is linear in the heights of the weights and the resulting trace. The
+additive constant is ineffective. The result includes half-integral
+indices, repeated points, negative indices, and finite torsion points.
+The proof checks the exceptional translates and projective embedding in
+the published family height theorem. A separate quadratic-reciprocity
+lemma shows that the existing Gaussian prime conditions make the chosen
+half-generator divisible by two in both residue groups. Together these
+results permit two point differences to replace two stored doubled
+points in the quartic construction.
+\end{abstract}
+
+\section{The curve, indices, and statement}
+Put $K=\Q(\rho)$, $\rho^2=2$, $d=3-\rho$, $d'=3+\rho$,
+$D=d^2$, and
+\[
+ E:y^2=x^3-Dx,\qquad R_0=(1+\rho,2\rho),\qquad P=2R_0.
+\]
+Retain the arithmetic hypothesis $2E(K)=\Z P$, with $P$ of infinite
+order. Every $Q\in E(K)$ has a unique expression
+$Q=[m]R_0+T_0$, where $m\in\Z$ and $T_0\in E[2](K)$.
+Indeed, $2Q=mP$ implies $2(Q-mR_0)=O$, and uniqueness follows from
+non-torsion. Define its index by $\nu(Q)=m/2$.
+Write $h$ for absolute logarithmic Weil height, and $\widehat h$ for
+elliptic canonical height. Thus
+$\widehat h(Q)=\nu(Q)^2\widehat h(P)$.
+
+\begin{theorem}\label{thm:weighted}
+Fix a positive integer $s$ and fixed polynomials
+$w_1,\ldots,w_s\in\Q[Z]$. There are constants $A>0,J\ge0$ such
+that, for every $r\in\Q$ with $w_i(r)>0$ for all $i$, and every
+$Q_i\in E(K)\setminus\{O\}$, the number
+\[
+ S=\frac14\Tr_{K/\Q}\sum_{i=1}^s w_i(r)x(Q_i)
+\]
+satisfies
+\[
+ \max_i|\nu(Q_i)|^2\le A\bigl(h(r)+h(S)\bigr)+J.
+\]
+The constants depend only on the fixed curve, subgroup and polynomials,
+not on $r$ or the points. The argument does not make $J$ effective.
+In particular the conclusion applies to any prescribed assignment of
+weights $1$ and $r^2$, on $r\ne0$.
+\end{theorem}
+
+This is a theorem relative to the displayed group hypothesis, not a new
+$abc$ assumption. The analytic input to its proof is the published
+Theorem~1.1 of von Buhren~\cite{VB}. No prime-pattern or pole-realization
+hypothesis enters this height argument. The positivity is imposed at the
+actual rational parameter, not at every algebraic point of its projective
+parameter space.
+
+\section{Independence of the conjugate generators}
+Let $E_0:Y^2=X^3-X$. Over a fixed field containing $K(i,\sqrt d,\sqrt{d'})$,
+use the pointed isomorphisms
+\[
+ (x,y)\longmapsto (x/d,y/d^{3/2}),\qquad
+ (x,y)\longmapsto (x/d',y/(d')^{3/2}).
+\]
+Let $R,R'$ be the respective images of $R_0$ and its conjugate.
+
+\begin{lemma}\label{lem:independent}
+The points $R,R'$ are linearly independent modulo torsion over
+$\operatorname{End}(E_0)=\Z[i]$.
+\end{lemma}
+\begin{proof}
+The square classes of $d,d'$ are independent in $K(i)^\times/K(i)^{\times2}$.
+For completeness, an element of $K$ is a square in $K(i)$ only if it or
+its negative is a square in $K$: the imaginary part of $(a+bi)^2$
+forces $ab=0$. Neither $d$ nor $-d$ is a square in $K$, because its
+norm is 7, not a rational square. The same holds for $d'$. Their product
+is 7. If $(a+b\rho)^2=7$ with $a,b\in\Q$, then $ab=0$, giving either
+$a^2=7$ or $2b^2=7$, both impossible. The negative of 7 is not a square
+in the real field $K$. This proves the claimed independence.
+
+There is consequently an automorphism of the fixed compositum fixing
+$K(i,\sqrt d)$ and sending $\sqrt{d'}$ to $-\sqrt{d'}$. It fixes $R$
+and negates $R'$, while fixing every endomorphism in $\Z[i]$. If
+$\alpha R+\beta R'$ is torsion, subtraction of its image gives
+$2\beta R'$ torsion. A nonzero elliptic endomorphism is an isogeny;
+its inverse image of torsion consists of torsion points. Since $R'$ is
+non-torsion, $\beta=0$, and then $\alpha=0$.
+\end{proof}
+
+\section{Noncancellation at poles}
+Consider an actual tuple of points of $E_0^{2k}$ whose first block has
+coordinates $[m_j]R+T_j$ and whose second has coordinates
+$[m_j]R'+T_j'$, where $m_j\ne0$ and the $T_j,T_j'$ are torsion. Fix
+positive rational weights $a_j$. The function to be considered is
+\[
+ F=\frac d4\sum_{j=1}^k a_jx_j+
+   \frac {d'}4\sum_{j=1}^k a_jx_j'+c,
+\]
+where $c$ is any fixed constant.
+
+\begin{lemma}\label{lem:translates}
+No positive-dimensional abelian translate through this tuple, meeting
+the domain of $F$, has constant restriction of $F$.
+\end{lemma}
+\begin{proof}
+Any positive-dimensional abelian subvariety of a power of $E_0$ contains
+an elliptic subvariety isogenous to $E_0$. This follows from complete
+reducibility and the fact that every simple constituent of a subvariety
+of $E_0^{2k}$ is isogenous to $E_0$. Compose an isogeny from $E_0$ to
+such a subvariety with the inclusion. The resulting nonzero direction
+has coordinate endomorphisms $\alpha_j,\alpha_j'\in\Z[i]$.
+If a translate of the larger subvariety had constant $F$, the translate
+in this direction through our tuple would also have constant $F$.
+
+At a pole of a nonconstant coordinate in the first block, two such
+coordinates $i,j$ can have a common pole only if
+$[\alpha_j]Q_i-[\alpha_i]Q_j=O$. Non-torsion then gives
+$m_i\alpha_j=m_j\alpha_i$. In a local analytic parameter on $E_0$,
+the principal part of $x$ at the identity is $z^{-2}$. Thus the
+coefficient of the common double pole, summed over all first-block
+coordinates having that pole, is
+\[
+ \frac d{4\alpha_i^2}\sum_j a_j(m_i/m_j)^2\ne0.
+\]
+The sum is a strictly positive rational number. This argument allows
+negative or repeated indices and arbitrary torsion translates.
+
+A first-block and a second-block nonconstant coordinate cannot have
+a common pole: the same elimination would give a relation
+$m_i\alpha_j'R-m_j\alpha_iR'$ modulo torsion, contradicting
+Lemma~\ref{lem:independent}. The identical positive-sum argument holds
+within the second block. At least one direction coordinate is nonzero,
+so at least one nonconstant summand has a pole, and it cannot cancel.
+Consequently the restriction is not constant.
+\end{proof}
+
+\section{Application of the family height theorem}
+\begin{proof}[Proof of Theorem~\ref{thm:weighted}]
+First separate the finitely many possibilities for those $Q_i$ whose
+index is zero. Such points are finite two-torsion points; freeze their
+coordinates and omit them from the abelian ambient space. Their
+contributions to the function are fixed polynomials in $r$. There are
+only finitely many choices of omitted index sets and torsion points.
+If all points are omitted, the left side of the asserted bound is zero.
+Otherwise let $k\ge1$ denote the number of remaining indices.
+
+On $E_0^{2k}$, with an additional parameter $r$, form the rational
+function
+\[
+ F_r=\frac d4\sum_j w_j(r)x_j+
+       \frac {d'}4\sum_j w_j(r)x_j'+c(r),
+\]
+where $c(r)$ accounts for the frozen torsion coordinates. Let
+$\mathcal V$ be the integral reduced closure of its graph in
+$E_0^{2k}\times(\mathbf P^1_r\times\mathbf P^1_S)$. This closure is
+integral because the graph over its nonempty rational-function domain
+is integral. All actual tuples under consideration lie in that domain:
+$r$ and all abscissas are finite.
+
+Fix the finite-rank group generated by $R$ in the first-block factors,
+$R'$ in the second-block factors, and the finitely many needed torsion
+coordinates. It is independent of $r$ and of the integer indices.
+At an actual parameter with all weights positive,
+Lemma~\ref{lem:translates} excludes every positive-dimensional abelian
+translate in the fiber through our tuple. A translate in the projective
+graph fiber through a domain point would meet the domain densely and
+make the displayed rational function constant there; thus graph
+boundary components do not evade the lemma.
+
+We check all additional hypotheses of \cite[Theorem~1.1, p.~308]{VB}.
+Embed each $E_0$ by $\mathcal O(3O)$ and its product by Segre. For
+$n\ge1$, the plane-cubic sequence
+\[
+0\to\mathcal O_{\mathbf P^2}(n-3)\to\mathcal O_{\mathbf P^2}(n)
+ \to\mathcal O_{E_0}(3nO)\to0
+\]
+has surjective restriction of global sections, since
+$H^1(\mathbf P^2,\mathcal O(n-3))=0$. Tensoring these surjections
+and using Segre gives the source's condition (1.1) for every $n\ge1$.
+The resulting line bundle on the abelian variety is ample and symmetric.
+Embed the parameter surface by $\mathcal O(1,1)$, whose height is
+$h(r)+h(S)$ up to a fixed bounded term. The ambient parameter variety
+is projective and integral. Every point of the chosen finite-rank group
+belongs to the source set $C(\Gamma,\epsilon)$ by taking the error point
+to be zero. The source theorem therefore bounds its canonical product
+height by a fixed multiple of $h(r)+h(S)$ plus a fixed additive constant.
+
+That canonical height is a fixed positive multiple of
+$2\sum_j\widehat h(Q_j)$, by pointed-isomorphism and Galois invariance.
+As $\widehat h(P)>0$, it bounds the largest squared index. Take the
+largest constants over the finitely many frozen-torsion cases. All
+constants are now independent of $r$ and the points. The cited theorem
+does not make the additive constant effective.
+\end{proof}
+
+\begin{corollary}\label{cor:four}
+For finite $Q_1,Q_3\in E(K)$ and nonzero doubled points
+$Q_2=[a]P,Q_4=[b]P$, with $a,b\in\Z\setminus\{0\}$, put
+$\nu(Q_1)=n$, $2\nu(Q_3)=t\in\Z$ and
+\[
+ T=\frac14\Tr\bigl(x(Q_1)+x(Q_3)+r^2(x(Q_2)+x(Q_4))\bigr).
+\]
+There are fixed $A,J$ with
+\[
+ \max(|n|,|a|,|t|,|b|)^2\le A(h(r)+h(T))+J\qquad(r\ne0).
+\]
+If $r>1$, then $T>0$.
+\end{corollary}
+\begin{proof}
+The factor two in $t$ only enlarges the height constant by four.
+At either real embedding every finite elliptic point has $x\ge-d$,
+since $x(x-d)(x+d)\ge0$. A nonzero doubled point has square abscissa
+and is non-torsion, hence $x>d$. Summing conjugate embeddings gives
+$\Tr(x(Q_1)+x(Q_3))\ge-12$ and
+$\Tr(x(Q_2)+x(Q_4))>12$, proving $4T>12r^2-12$.
+\end{proof}
+
+\section{Divisibility of the half-generator at selected primes}
+\begin{lemma}\label{lem:gaussian}
+Let $p=A^2+B^2$ be prime, with $A\equiv9\pmod {16}$ and
+$B\equiv0\pmod {16}$. Then $R_0$ and its conjugate belong to
+$2E(\mathbf F_p)$ in their respective reductions. Consequently
+$\#E(\mathbf F_p)/4$ annihilates the reduction of $R_0$ whenever
+$E$ has good reduction, and the analogous statement holds for the
+conjugate curve.
+\end{lemma}
+\begin{proof}
+We have $AB\ne0$, $\gcd(A,B)=1$ and $p\equiv1\pmod8$. In
+$\mathbf F_p$ put $i=A/B$. Then $i^2=-1$. Quadratic reciprocity
+gives $(B/p)=1$: the 2-part and sign are squares, and for every odd
+prime $q\mid B$ one has $(p/q)=(A^2/q)=1$ and $p\equiv1\pmod4$.
+Likewise, using Jacobi symbols if $A+B$ is composite,
+\[
+ \left(\frac{A+B}{p}\right)
+ =\left(\frac{p}{|A+B|}\right)
+ =\left(\frac{2}{|A+B|}\right)=1.
+\]
+Here $p\equiv2A^2\pmod {|A+B|}$, and $A+B\equiv1\pmod8$;
+absolute value does not change the symbol of 2. Thus $2+2i$ is a
+square. Its product with $2-2i$ is 8, a square modulo $p$, so the
+latter is a square as well. Choose their square roots $u,v$.
+Then $uv=\pm2\sqrt2$, and
+$(u\pm v)^2/4=1\pm\sqrt2$. Both $1+\sqrt2$ and $1-\sqrt2$
+are therefore squares, for either choice of the root of 2.
+
+The three differences of the abscissa of $R_0$ from the roots
+$0,d,-d$ are
+\[
+ 1+\rho,\qquad 2(\rho-1)=2/(1+\rho),\qquad4.
+\]
+They are nonzero squares modulo $p$. The elementary full-two-torsion
+descent criterion for $y^2=(x-e_1)(x-e_2)(x-e_3)$ therefore puts the
+point in $2E(\mathbf F_p)$. This criterion follows directly from the
+halving formulas: choose square roots of the three differences with
+product $-y$ and use their pairwise products to construct the abscissa
+of a half-point. The same calculation applies to the conjugate.
+
+Finally a finite elliptic group with full rational two-torsion is
+$\Z/a\Z\times\Z/b\Z$ with $a\mid b$ and both $a,b$ even.
+The exponent of its doubled subgroup is $b/2$, which divides
+$ab/4=\#E(\mathbf F_p)/4$.
+\end{proof}
+
+The inherited simultaneous-prime construction already imposes the
+residue conditions in this lemma. Thus the existing conjugate order
+moduli may be used for $R_0$, not merely for $P=2R_0$. No additional
+prime-distribution theorem is required. The exact checker supplies
+33 prime examples and a wrong-residue counterexample; these finite
+calculations supplement, rather than replace, the proof above.
+
+\begin{thebibliography}{9}
+\bibitem{VB} J. von Buhren, \emph{Borne de hauteur semi-effective pour
+le probl\`eme de Mordell--Lang dans une vari\'et\'e ab\'elienne},
+Journal de Th\'eorie des Nombres de Bordeaux \textbf{29} (2017),
+307--320, Theorem~1.1, printed p.~308.
+\url{https://www.numdam.org/article/JTNB_2017__29_1_307_0.pdf}.
+\bibitem{Trace} \emph{Trace heights on quadratic twists with $j=1728$},
+project companion, 13 November 2026,
+\nolinkurl{trace_on_all_points_20261113_v25.tex}.
+\bibitem{Quartic} \emph{A quartic in 204 variables from recovered elliptic differences},
+project companion, 14 November 2026,
+\nolinkurl{quartic204_20261114_v27.tex}.
+\end{thebibliography}
+\end{document}

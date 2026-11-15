@@ -1,0 +1,218 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,microtype}
+\usepackage[margin=27mm]{geometry}\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}[section]\newtheorem{lemma}[theorem]{Lemma}
+\newcommand{\Q}{\mathbb Q}\DeclareMathOperator{\Nm}{Nm}
+\setlength{\emergencystretch}{2em}
+\title{A complete five-coordinate elliptic reference chart}
+\author{}\date{14 November 2026; corrected coefficient table}
+\begin{document}\maketitle
+\begin{abstract}
+Four quadratic equations in five field coordinates recover a point and
+its translate, their two ordinate-to-abscissa ratios, and both reciprocal
+abscissa squares. The proof treats every solution over $\Q(\sqrt2)$;
+the apparent vanishing leading coefficient has no solution. Exact
+rational polynomial certificates verify the identities and exceptional
+factorization. This edition corrects an omitted $fS$ term in the
+13 November 2026 printed coefficient table. The corrected equations
+are authenticated against all six original rational component rows.
+\end{abstract}
+
+\section{The exact equations}
+Put $K=\Q(\rho)$, $\rho^2=2$, $D=11-6\rho$ and
+\[
+ E:y^2=x^3-Dx,\quad P=(a,b),\quad
+ a=\frac{57}8-\frac72\rho,\quad b=-\frac{165}8+\frac{417}{32}\rho.
+\]
+Use coordinates $f,S,B,w,T\in K$ and impose
+\begin{equation}\label{eq:system}
+ B=f^2,\qquad Q_1=0,\qquad Mw+L=0,\qquad Q_3=0.
+\end{equation}
+The following expressions specify all coefficients:
+\begin{align*}
+Q_1={}&ST+\left(\frac{26325600}{4905889}-\frac{13327692}{4905889}\rho\right)fT
++\left(\frac{279649719}{201141449}-\frac{615250593}{804565796}\rho\right)T\\
+&+\left(-\frac{87}{41}+\frac{129}{164}\rho\right)S
++\left(\frac{76828374}{4905889}-\frac{48988044}{4905889}\rho\right)f
++\frac{21373536}{4905889}-\frac{4638784}{4905889}\rho,\\
+Q_3={}&BT+\left(\frac{310419}{658952}-\frac{15327}{329476}\rho\right)fT
++\left(-\frac{667923}{658952}-\frac{72481}{329476}\rho\right)fS\\
+&+\left(\frac{87}{41}-\frac{129}{164}\rho\right)B
++\left(-\frac{11}{49}-\frac6{49}\rho\right)T
++\frac{570}{2009}+\frac{669}{8036}\rho.
+\end{align*}
+Write $M=B+Af+JS+C$, where
+\begin{align*}
+ A&=\frac{23335979380411305}{9142573010269636}
+       -\frac{256685364214285}{4571286505134818}\rho,\\
+ J&=\frac{44649296511110307}{111996519375803041}
+       -\frac{2886885451827729}{447986077503212164}\rho,\\
+ C&=\frac{3317607896141091533}{7167777240051394624}
+       +\frac{677690583653850567}{1791944310012848656}\rho.
+\end{align*}
+Finally
+\[
+ L=\ell_0+\ell_f f+\ell_S S+\ell_T T+\ell_B B+\ell_{fS}fS+\ell_{fT}fT,
+\]
+with the seven coefficients listed in Section~\ref{sec:coefficients}.
+
+\begin{theorem}\label{thm:chart}
+Every $K$-solution of \eqref{eq:system} determines a unique
+$H\in E(K)$ such that $H,H-P$ are finite with nonzero abscissas, and
+\[
+ f=1/x(H),\quad S=y(H)/x(H),\quad T=y(H-P)/x(H-P),
+\]
+\[
+ B=1/x(H)^2,\qquad w=1/x(H-P)^2.
+\]
+Conversely every such point supplies a solution. At every solution
+$f\ne0$ and $M\ne0$. No rank, scalar, pole or prime-pattern premise
+is used in this theorem.
+\end{theorem}
+
+\section{Recovery without division by a variable leading coefficient}
+Let $\mathcal I=(Q_1(f,S,f^2,T),Q_3(f,S,f^2,T))\subset K[T,S,f]$.
+Put
+\[
+ g=\frac{((118+60\rho)S+156+69\rho/2)T-(156+69\rho/2)S+288+128\rho}
+              {252-672\rho}.
+\]
+The denominator is a nonzero constant. Write $A_P=a^2+D$, $B_P=a^2-D$
+and
+\begin{align*}
+ L_f&=2bD(aT-b),&Q_f&=aA_PST+bA_PS-bB_PT+4a^2D,\\
+ L_g&=2bD(aS+b),&Q_g&=-aA_PST-bB_PS+bA_PT-4a^2D.
+\end{align*}
+The following exact polynomial identities hold modulo $\mathcal I$:
+\begin{align}
+ fS^2+Df^2-1&=0,\label{eq:curve}\\
+ L_ff-Q_f&=0,\label{eq:first}\\
+ L_gg^2-fQ_g&=0,\label{eq:second}\\
+ D^2fg^2+aD(f^2+g^2)+f\{aST+b(S-T)+D\}&=0,\label{eq:third}\\
+ M(f,S,f^2)g^4+f^2L(f,S,f^2,T)&=0.\label{eq:weight}
+\end{align}
+Each identity is supplied as an explicit pair $U,V\in K[T,S,f]$
+whose product sum $UQ_1+VQ_3$ is its left side. The exact coefficient
+certificate and its independent checker are specified in Section~6.
+
+Equation \eqref{eq:curve} gives $f\ne0$. Set $F=g^2/f$.
+Equations \eqref{eq:first}--\eqref{eq:third}, dividing only by this
+already nonzero $f$, give
+\[
+ L_ff=Q_f,\quad L_gF=Q_g,\quad
+ D^2fF+aD(f+F)+aST+b(S-T)+D=0.
+\]
+These are exactly the complete fixed-difference chart in \cite{Fixed},
+including its exceptional leading-coefficient cases. It gives
+$H=(f^{-1},S/f)$ and $H-P=(F^{-1},T/F)$, with $fF\ne0$.
+To check the needed nondegeneracy explicitly,
+\[
+ C_P=D^2+6a^2D-3a^4=-\frac{94897379}{4096}+\frac{4195821}{256}\rho\ne0.
+\]
+The two leading coefficients cannot vanish together, since at
+$S=-b/a,T=b/a$ one has $Q_f=C_P$. If $L_f=0$, the chart identities
+force $F=1/a$ and the coefficient of $f$ in the remaining equation is
+$D(a^2+D)/a\ne0$. The symmetric case handles $L_g=0$.
+Thus no extra inversion of $L_f$ or $L_g$ is assumed.
+
+\section{Exclusion of the vanishing coefficient}
+Suppose $M=0$. Since $J\ne0$, we have
+$S=-(f^2+Af+C)/J$. Substitution in \eqref{eq:curve} gives
+\[
+ f(f^2+Af+C)^2+J^2(Df^2-1)=0.
+\]
+With $f_0=-291/392-17\rho/196$, exact factorization is
+\[
+ f(f^2+Af+C)^2+J^2(Df^2-1)=(f-f_0)^3(f^2+uf+v),
+\]
+where
+\begin{align*}
+ u&=\frac{52622151001413627}{18285146020539272}
+          -\frac{3405676270753831}{9142573010269636}\rho,\\
+ v&=-\frac{49748909256632945837931754176}{106615613836876012413675285169}
+          +\frac{17501993153580871856729407104}{106615613836876012413675285169}\rho.
+\end{align*}
+The discriminant has norm
+\[
+ \Nm_{K/\Q}(u^2-4v)=\frac{42669856913571796524289}{458737743363289255936}.
+\]
+Its 73-adic valuation is one. The norm of a square in $K$ is a rational
+square, so the quadratic has no $K$-root. At the remaining value $f=f_0$,
+the equation $M=0$ gives $S=87/41-129\rho/164$. Substitution in $Q_1$
+cancels the entire coefficient of $T$ and leaves
+\[
+ -\frac{743972797947}{65974395272}+\frac{139322800357}{16493598818}\rho\ne0.
+\]
+This is a contradiction, proving $M\ne0$ on the entire $K$-solution set.
+Combining \eqref{eq:weight} with $Mw+L=0$ gives
+$M(f^2w-g^4)=0$, hence $w=g^4/f^2=F^2$.
+This proves the forward direction of Theorem~\ref{thm:chart}.
+
+\section{Converse and intermediate zero denominators}
+In the function field of $E$, the first fixed-difference equation gives
+\[
+ T=\frac{bA_PS+4a^2D+2b^2Df}{2abDf-aA_PS+bB_P}.
+\]
+The denominator is not the zero function. Substitute this into $Q_1,Q_3$
+with $B=f^2$ and clear its powers. Both numerators are explicit polynomial
+multiples of $fS^2+Df^2-1$; their quotients are included in the certificate.
+Thus $Q_1=Q_3=0$ in the function field. On the nonempty open set where
+$L_g\ne0$, identities \eqref{eq:first}--\eqref{eq:third} identify
+$g^2/f$ with the actual reciprocal abscissa $F$ of $H-P$.
+Equation \eqref{eq:weight} gives $MF^2+L=0$ there.
+
+All the functions $f,S,F,T$ are regular on the entire open subset in
+the theorem. Every required equation is polynomial in these regular
+functions. A function-field identity therefore holds throughout that
+open subset, including points where a denominator used only in its
+verification vanishes. This proves the converse and covers all
+intermediate exceptional cases.
+
+\section{Corrected coefficient table}\label{sec:coefficients}
+\begin{align*}
+\ell_0&=-\frac{287384773949078688806717371}{430762914076126579926624016}
+         -\frac{81557625814705269604141077}{215381457038063289963312008}\rho,\\
+\ell_f&=\frac{1256455567493584412665635}{2197769969776156020033796}
+         +\frac{214486582192171922617190}{549442492444039005008449}\rho,\\
+\ell_S&=-\frac{4766844858863040}{111996519375803041}
+         -\frac{3149175549566448}{111996519375803041}\rho,\\
+\ell_T&=\frac{9191218419936655190467815}{26922682129757911245414001}
+         +\frac{47475418018975282967719917}{215381457038063289963312008}\rho,\\
+\ell_B&=-\frac{86993}{153664}-\frac{4947}{38416}\rho,\\
+\ell_{fS}&=\frac{171357}{235298}+\frac{2519877}{7529536}\rho,\\
+\ell_{fT}&=-\frac{47892880950890591270656509}{53845364259515822490828002}
+          -\frac{647265901015780366495244709}{1723051656304506319706496064}\rho.
+\end{align*}
+The $fS$ coefficient was omitted in the printed v26 table. Without it,
+\eqref{eq:weight} is false, so the omission cannot be ignored as an
+unproved assertion about a different chart. Restoring it reproduces the
+original six rational component rows and makes every identity above
+exact. The corrected 79-variable construction is reconstructed from
+these equations; this correction is not represented as a comparison
+with unavailable earlier coefficient-table bytes.
+
+\section{Reproducible proof certificates}
+The directory \nolinkurl{computation/quartic/abc79_v27} contains
+\nolinkurl{reference-equations.json}, \nolinkurl{reference-certificate.json}
+and \nolinkurl{check_reference.py}. The certificate gives $U,V$ for
+all five ideal identities, the two forward quotients, and the exact
+exceptional factorization. Multiplication and collection over
+$\Q(\sqrt2)$ verify them without numerical approximation.
+The standard-library checker imports no symbolic producer. It forms
+each target independently, checks all seven polynomial identities,
+reconstructs all six original rational component rows (including the
+half-coefficient conventions), and verifies the discriminant norm and
+exceptional substitution. Deliberately omitting the $fS$ term, changing
+an equation, or corrupting a certificate is rejected. The certificate
+producer uses exact symbolic arithmetic only to find the identities.
+This is a computationally certified algebraic proof, not an independent
+non-author review of itself.
+
+\begin{thebibliography}{9}
+\bibitem{Fixed} \emph{Three quadratic equations for two translated elliptic parameters},
+project companion, \nolinkurl{fixed_difference_charts_20261110_v18.tex}.
+\bibitem{Parent} \emph{A 212-variable quartic with additive height comparisons},
+project companion, \nolinkurl{quartic212_20261113_v25.tex};
+the six reference component rows are authenticated against its complete table.
+\end{thebibliography}
+\end{document}

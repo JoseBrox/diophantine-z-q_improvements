@@ -15,28 +15,55 @@ whose rational input projection is the integers, under the arithmetic premises s
 | Construction | Additional height hypothesis | Total variables | Degree | Coefficients and effectiveness |
 |:--|:--|--:|:--|:--|
 | [Fewest variables under inherited premises](papers/finite_algebra/subalgebra_norms_20261114_v30.tex) | None | **25** | **< 2^55** | Every sufficiently large fixed odd exponent; sufficient threshold ineffective. |
-| [Fewest quartic variables under inherited premises](papers/quartic_existence/quartic200_20261115_v33.tex) | None | **200** | **4, exact** | 186 quadratic squares; **3,221 monomials**. Sufficient defining threshold ineffective. |
+| [Fewest quartic variables under inherited premises](papers/quartic/laurent_elimination_20261115_v38.tex) | None | **196** | **4, exact** | 182 quadratic squares; **2,943 monomials**. Same ineffective threshold as the supplied 198-variable parent. |
 | [Fully specified general polynomial](papers/finite_algebra/subalgebra_norms_20261114_v30.tex) | None | **27** | **< 2^58** | Fixed exponent **L=20483**; coefficient height **< 2^(2^71)**. |
-| [Fully specified quartic](papers/quartic/explicit260_20261114_v27.pdf) | None | **260** | **4, exact** | **N=9682**; 232 quadratic squares; **3,704 monomials**; height **149^38730+1**. |
+| [Fully specified quartic](papers/quartic/laurent_elimination_20261115_v38.tex) | None | **258** | **4, exact** | **N=9682**; 230 quadratic squares; **3,705 monomials**; height **9792² · 149^19364**, 139,819 binary digits. |
 | [Few variables under weak abc](papers/finite_algebra/subalgebra_norms_20261114_v30.tex) | Weak abc at **121/100**; ordinary Szpiro suffices | **13** | **≤ 126,442,497 < 2^27** | Sufficient odd shift ineffective. |
 | [Lower degree under stronger weak abc](papers/finite_algebra/subalgebra_norms_20261114_v30.tex) | Weak abc at **16/15**; ordinary rational abc suffices | **13** | **≤ 103,165,953 < 2^27** | Sufficient odd shift ineffective. |
-| [Fewest quartic variables under abc](papers/quartic_existence/quartic_abc79_20261114_v27.pdf) | Ordinary rational abc | **79** | **4, exact** | 71 quadratic squares; **1,139 monomials**. Uses the stated simultaneous-twist theorem of Jaswal; sufficient shift ineffective. |
+| [Fewest quartic variables under abc](papers/quartic_existence/quartic_abc78_20261115_v34.tex) | Ordinary rational abc | **78** | **4, exact** | 70 quadratic squares; **1,143 monomials**. Same stated simultaneous-twist input; new sufficient shift ineffective. |
 
 The general degree bounds are upper bounds for explicitly specified, unexpanded determinant polynomials, not exact degrees. The exact general degree majorants are **25,934,337,637,613,568** for 25 variables and **177,313,559,789,699,072** for the fully specified 27-variable polynomial. Their support bounds are respectively below **2^1250** and **2^1423**. The two 13-variable support bounds are below **2^303** and **2^299**.
 
-The balanced 200-variable coefficient height is exactly
+The 196-variable height is exactly
 
-$$H(P_N)=\max\{(5898050446009651968\cdot31581660^{28})^2,\;31581660^{28}149^{2N}\}.$$
+$$11903780636513165769654680680436132271178681610029854792\,149^{2N}.$$
 
-The second term dominates for **N≥57**. This is a coefficient threshold, **not** a sufficient defining threshold. No particular small member of this family is certified to define the integers.
+This formula holds for N>=1; the sufficient **defining** threshold is still
+ineffective. The 258-variable family is exactly equivalent to its fully
+specified 260-variable parent at every fixed N. Its coefficient crossover
+N=12 is not its certified defining threshold N=9682.
 
-For the 79-variable family, the exact height is `max(C*, B^2+C0)`, with both integers specified in its complete coefficient certificate. A [lower-coefficient 81-variable alternative](papers/pole_parameters/congruent_twist_poles_20261114_v27.pdf) uses the same new pole equations, has **929 monomials**, and height
+The 78-variable abc construction compares the index with X²+3 and uses
+B+X⁸+T² as its height scale. Its strict height-absorption coefficient is
+602/679. The fixed odd B>=81 must be sufficiently large; B=81 is only
+an algebraic fixture. The historical 79- and lower-coefficient 81-variable
+families remain intact, with their original projection equivalence to
+each other, not a claimed parameterwise equivalence to the new family.
 
-$$\max(4153456,B^2+630511).$$
+Current specifications: [results JSON](data/results_20261115_v38.json),
+[proof and verification guide](docs/results_20261115_v38.md).
 
-It has exactly the same rational input projection as the new 79-variable family at every fixed shift. The variable-first optimization prefers 79; the 81-variable alternative is retained for its smaller coefficients. The **B=3** tables are algebraic fixtures, not certified defining members.
+## Exact coordinate eliminations and recovery in v38
 
-Machine-readable current results are in [data/results_20261115_v33.json](data/results_20261115_v33.json). The [current guide](docs/results_20261115_v33.md) distinguishes the arithmetic assumptions, effective parameters, source dependencies, and review scope.
+The [new proof](papers/quartic/laurent_elimination_20261115_v38.tex) deletes
+two stored fourth powers after invertible monomial rescaling. It preserves
+all rational solutions, not just a dense subset. Its unit conditions are
+proved from unchanged equations before division. It gives 198→196 and,
+separately, 260→259→258, with exact inverse maps and full coefficient tables.
+
+The 198-variable parent was supplied in Gabriel Conant's research archive
+with ChatGPT; [its original attribution and proof](sources/h10_quartic198/README.md)
+are preserved. All thirteen supplied checks were reproduced independently
+of the new coordinate-deletion checkers. All 89 original text files are
+preserved; the archived PDF is identified by hash in
+[supplementary provenance](sources/h10_quartic198/PDF_PROVENANCE.md).
+
+**No 233-variable construction is claimed.** The reattached v36 archives
+contain a failure receipt and a general method, not the alleged proof or
+tables. [Recovery audit](docs/audits/recovery_233_20261115_v38.md) records the
+source facts and withdraws the unsupported earlier conversational claim.
+The general counts remain 25 and 13; inherited arithmetic premises remain
+explicit and are not independently certified by these computations.
 
 ## A corrected 200-variable quartic in v33
 
@@ -141,7 +168,7 @@ The printed v26 reference-chart table omitted
 
 $$(171357/235298+(2519877/7529536)\sqrt2)fS.$$
 
-Without this term one of the required polynomial identities fails. The [v27 erratum](docs/audits/reference_chart_correction_20261114_v27.md) records the finding and repair. The corrected equations have been authenticated against all six original component rows, and all five ideal-membership certificates, two converse identities, and exceptional-case calculations have been checked exactly. The current 79-variable coefficient table is newly reconstructed from those corrected equations; no byte comparison with unavailable earlier v26 coefficient files is claimed.
+Without this term one of the required polynomial identities fails. The [v27 erratum](docs/audits/reference_chart_correction_20261114_v27.md) records the finding and repair. The corrected equations have been authenticated against all six original component rows, and all five ideal-membership certificates, two converse identities, and exceptional-case calculations have been checked exactly. The retained 79-variable coefficient table was reconstructed from those corrected equations; no byte comparison with unavailable earlier v26 coefficient files is claimed.
 
 Independent **implementations** check the algebra and coefficients. They are not independent non-author mathematical reviews. Passing code, PDF builds and manifests do not certify the external arithmetic premises, complete source coverage, or a numerical defining threshold. Historical preparation receipts retain their original dates and limitations; the v27 integration records describe the unchanged earlier computations; the v28 checks and current CI describe the new general constructions.
 
@@ -151,6 +178,8 @@ Use **Python 3.12** for the byte-pinned legacy suite, and **SymPy 1.14.0** for t
 
 ```sh
 python -m pip install sympy==1.14.0
+python -B scripts/verify_v38.py
+python -B scripts/verify_v34.py
 python -B scripts/verify_v33.py
 python -B scripts/verify_v30.py
 python -B computation/pole_parameters/joint_realization_v29/check.py

@@ -1,0 +1,293 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,booktabs,microtype}
+\usepackage[margin=25mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\setlength{\emergencystretch}{2em}
+\title{Local Precision and Height Contradictions\ in Elliptic Integer Definitions}
+\author{}\date{13 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+We isolate strict inequalities connecting contact-height exponents,
+local comparison precision, and a Lucas growth argument. For the
+height exponent $24$ in Sun's twenty-eight-unknown construction,
+orders $49,13,25$ suffice in place of $64,16,48$, while retaining the
+original degree-$64$ logarithm truncation. The conclusion keeps the
+original arithmetic hypotheses and the original number of free variables.
+We also record a general valuation lemma for iterated quadratic norm
+expressions and sharpen the final exponents of the proposed
+214-coordinate quartic, conditional on its stated height supplier.
+No new numerical defining threshold or variable record is asserted.
+\end{abstract}
+
+\section{A uniform height criterion}
+Here $h$ is the logarithmic rational height. All constants in the
+following theorem are independent of the fixed multiplier $M$,
+the input, and the witnesses. This uniformity is an explicit hypothesis.
+\begin{theorem}\label{thm:height}
+Let $q>0$ and let $k_D,k_I,k_S$ be positive integers satisfying
+\[
+                    k_D>2q,\qquad k_I>q/2,\qquad k_S>q.
+\]
+Suppose a family of rational certificates supplies $\beta\in\Q$,
+integers $n,s,t,z$, real $B\ge1$, and $c=|s-1|\ge M$, with $B\ge c-1$.
+Suppose its integer residual $\Delta$ and, when $\beta\ne n$,
+$J=|\operatorname{num}(\beta-n)|\ge1$ satisfy
+\begin{align*}
+ |\Delta|&\le C_D B^4,\\
+ \Delta\ne0&\Longrightarrow B^2\le C_0(1+|\Delta|^{q/k_D}),\\
+ \beta\ne n&\Longrightarrow B^2\le C_0(1+J^{q/k_I}),
+       \qquad J\le2B e^{h(\beta)},\\
+ h(\beta)&\le C_S c^{q/k_S},\\
+ \Delta=0&\Longrightarrow\log B>c-4.
+\end{align*}
+Then one sufficiently large fixed $M$ forces $\Delta=0$ and $\beta=n$
+for every certificate in the family.
+\end{theorem}
+\begin{proof}
+For $\Delta\ne0$, the first two inequalities imply
+$B^2\le C_0(1+C_D^{q/k_D}B^{4q/k_D})$.
+Since $4q/k_D<2$, this bounds $B$ by a constant independent of $M$.
+Choosing $M$ larger than this bound plus one excludes that case.
+
+Put $u=q/k_I<2$. If $\beta\ne n$, then $J\ge1$ gives
+$B^2\le2C_0J^u\le2^{u+1}C_0B^u e^{u h(\beta)}$.
+Therefore
+\[
+ \log B\le C_1+\frac{q}{2k_I-q}h(\beta)
+ \le C_1+\frac{qC_S}{2k_I-q}c^{q/k_S},
+\]
+where $C_1$ is fixed. The exponent $q/k_S<1$ makes the last expression
+smaller than $c-4$ for all sufficiently large $c$. This contradicts
+the last hypothesis, since $c\ge M$.
+\end{proof}
+No coprimality between different comparison radicals is used in this
+criterion. Their individual divisibilities are sufficient to obtain
+the displayed height estimates.
+
+\section{Valuations in quadratic norm expressions}
+\begin{lemma}\label{lem:tree}
+Let $v$ be a discrete valuation with value group $\Z$, and let
+$v(r)=R>0$ be odd. Evaluate a finite binary tree whose internal operation
+is $N_r(u,w)=u^2+rw^2$. If its root has valuation greater than $-R/2$,
+assign $c=1/2$ at the root and assign $c/2,(c+1)/2$ to the left and
+right children of a node assigned $c$. Every leaf assigned $c$ has
+valuation greater than $-cR$, and $0<c<1$ throughout the finite tree.
+In particular a leaf $G/r^k$, with integer $k\ge1$, satisfies $v(G)\ge k$.
+\end{lemma}
+\begin{proof}
+When both summands are nonzero, their valuations $2v(u)$ and
+$R+2v(w)$ have opposite parity. Thus the valuation of their sum is
+the minimum, not a cancellation value. Zero summands have valuation
+$+\infty$ and cause no difficulty. A lower bound $-cR$ at a node
+therefore gives $v(u)>-cR/2$ and $v(w)>-(c+1)R/2$.
+Induction proves the assertion. Finally
+$v(G)>(k-c)R>k-1$, since $R\ge1$ and $c<1$.
+\end{proof}
+For the seven-leaf tree in \cite[Section 5]{Sun}, the coefficients are
+\[
+       1/16,\ 9/16,\ 5/16,\ 13/16,\ 3/8,\ 7/16,\ 15/16.
+\]
+The lemma is not restricted to that tree or to the orders $1,48$.
+If the constant leaf $1$ lies on the all-left path and every other leaf
+is integral and zero modulo the maximal ideal, the root is one modulo
+that ideal. This follows by induction when $r$ is integral and supplies
+the corresponding nonzero condition in completeness arguments.
+
+\section{The precision change in Sun's construction}
+Retain all arithmetic statements consumed by \cite[Sections 2--6]{Sun},
+including the group description, the exponent-$24$ contact-height bound,
+the pole obstruction and its prepared-input converse, the simultaneous
+Gaussian prime-pattern theorem, and the stated real and finite-place
+preparation statements. These are premises of the application here,
+not assertions established by our finite checker.
+
+\begin{corollary}\label{cor:Sun}
+In Sun's construction, keep the logarithm truncations $\ell_{64}$ and
+$\ell_{64}^{\sigma}$, all nine point roles, the three ordinary pole
+predicates, and the scalar pole predicate. Change the orders of the
+four ratio differences and the Lucas residual from $64$ to $49$;
+change the input comparison order from $16$ to $13$; and change the two
+scalar ratio-component orders from $48$ to $25$.
+Recompute the normalizing powers with those orders, and choose the
+fixed multiplier using the resulting height constants.
+Under the same arithmetic premises, the resulting source defines exactly
+$\Z$ and has the same $28$ existential unknowns, or $29$ total coordinates.
+\end{corollary}
+\begin{proof}
+The reciprocal-abscissa tests keep order one. They place the appropriate
+points in the two formal groups. At least one anchor index is a unit
+at a consumed prime. The corresponding exact ratio and truncated ratio
+are integral. A positive-order ratio-difference test makes the other
+truncated ratio integral; the formal-logarithm unit then makes the
+other exact ratio integral. Only after this step is relative precision
+converted to absolute precision. The unchanged truncation still has
+precision $64$, so subtracting the two anchor equations proves
+$L_i\equiv n_i\pmod {p^{49}}$ from the revised ratio-difference tests.
+The Lucas and input tests give $p^{49}\mid\Delta$ and $p^{13}\mid J$.
+
+The ordinary norm--trace implication is independent of the chosen
+positive integer orders. More explicitly, at an odd contact of depth
+$\nu>0$, the factors have valuations
+\[
+ \min\{0,\,2v(D_i)+(1-2k_i)\nu\}.
+\]
+They cannot cancel. The trace and pole obstruction give a place at
+which every such summand is greater than $-\nu/2$. Hence
+$v(D_i)>(k_i-3/4)\nu\ge k_i-3/4$, and $v(D_i)\ge k_i$.
+This proves the revised individual radical divisibilities for all three
+scales, without any coprimality claim between them.
+
+Lemma~\ref{lem:tree} gives order $25$ for the scalar ratio components.
+The formal logarithm preserves the valuation of the scalar ratio,
+so its index identity yields $M_{\rm sc}^{25}\mid(s-1)$.
+The unchanged height supplier gives
+\[
+ B^2\ll1+|\Delta|^{24/49},\qquad
+ B^2\ll1+J^{24/13},\qquad h(\beta)\ll c^{24/25}.
+\]
+The implied constants remain fixed before $M$ is chosen. Theorem~\ref{thm:height}
+now applies, since $49>48$, $13>12$, and $25>24$. In particular the
+input estimate is $\log B\le C+12h(\beta)$.
+The original Lucas implication and $\beta=2X^2+3$ give soundness:
+integrality of $\beta$ forces the reduced denominator of $X$ to have
+square dividing $2$, and hence to be one.
+
+For completeness, choose the root indices before the contact primes,
+exactly as in the original construction. The logarithm ratios at the
+selected places still have precision $64$, which is more than every
+revised requirement. Thus the nonconstant terms in the ordinary norm
+factors have positive valuation. At a fixed preparation prime $q$, with
+$\nu=v_q(w^2)$ and $\alpha_j=v_q(A_j)$, the lower bound remains
+$3\nu+(10k_i-8)\alpha_j$, which tends to infinity with $\nu$ for each
+fixed scale and order. The same square-denominator and trace-unit
+arguments apply.
+
+For the scalar tree, replace the local requirement
+$v_q(s-1)-v_q(h)>48v_q(r_0)+1$ by the analogous requirement with $25$.
+The coefficientwise preparation at primes above $2$ is retained.
+The real bounds are also uniform: if $R=|r_0|\ge1$ and the scalar
+coefficients are bounded by $A$, the bottom pair involving the ratio
+now has absolute value at most $2A^2/R^{49}$. Its parent is bounded
+by $(A^2+4A^4)/R^2$, just as before. Thus the same form of input-independent
+real bound supplies the prepared pole inputs. All subsequent choices
+are made in the original order.
+
+Only integer exponents in rational formulas have changed. The finite
+point and pole-root choices and the twenty-seven free rational
+parameters are unchanged. The same all-specializations elimination
+argument adds one existential coordinate. No generic-open restriction
+or extra free coordinate has been introduced.
+\end{proof}
+The three orders are the least positive integers satisfying the three
+strict inequalities of Theorem~\ref{thm:height} for $q=24$.
+They are not lower bounds for every conceivable argument. We retain
+$\ell_{64}$ deliberately: reducing its degree is not needed here.
+No numerical total-degree bound or expanded coefficient table for the
+modified polynomial is claimed.
+
+\section{Keeping the stronger exponent in the 214-coordinate argument}
+Consider the construction at upstream revision
+\texttt{c84bbfa4dbe8f32fd3bf29df029f7b7849d36202}, specifically
+\nolinkurl{research/quartic214/proofs/uniform-existence.md}, P08--P12.
+This section is a consequence of its explicitly stated input estimates,
+not a new verification of their geometric or analytic foundations.
+
+\begin{lemma}\label{lem:blocks}
+Suppose two contact blocks have radicals $M_1,M_2\ge1$, disjoint outside
+a fixed finite set, and both give
+$h(t)-C_0\le C_1M_i^\alpha$ when $h(t)>C_0$.
+Then $h(t)\le C_0+C_1(M_1M_2)^{\alpha/2}$.
+Consequently, if two comparison scales separately have radical
+$M_j$ with $M_j^k\mid J\ne0$, and the aggregate trace comparison is
+$B^2\le A h(T)+A'$, then
+\[
+ B^2\le C|J|^{\alpha/(2k)}+A'
+\]
+for a fixed $C$, after adjusting the fixed additive constants.
+\end{lemma}
+\begin{proof}
+Multiply the two positive inequalities and take square roots.
+For the scales $t_0=\lambda$, $t_1=T\lambda$, use
+$h(T)\le h(t_0)+h(t_1)$ and the two separate divisibilities.
+The case $h(t)\le C_0$ is included by the additive constant.
+\end{proof}
+The quoted supplier gives $\alpha=2103/1024$; replacing it by $7/3$
+is unnecessary. Lemma~\ref{lem:blocks} gives
+\[
+ h(t)\ll M^{2103/2048},\qquad
+ \Delta\ne0\Longrightarrow B^2\le C'B^{701/512}+C'',
+\]
+because $k=3$ and $|\Delta|\le14B^4$.
+The power needed when solving the last inequality is
+\[
+ \frac1{2-701/512}=\frac{512}{323},
+\]
+in place of $9/4$. For the input comparison, $k=1$ and
+$J\le2B e^{h(\beta)}$ give, above the fixed additive-height threshold,
+\[
+ \log B\le C+\frac{2103}{1993}h(\beta),
+\]
+in place of $C+(7/5)h(\beta)$.
+These improvements change no coordinate or quadratic row. They do not
+remove the ineffective aggregate-height constant. Since $\alpha>2$,
+order two still does not satisfy the strict Lucas inequality in this
+argument.
+
+\section{A multiplicity-preserving height average}
+The product construction in the proof of \cite[Lemma 16.2(1)]{GR}
+keeps repeated simple factors. The following elementary consequence
+explains the precise use needed by the quartic height argument.
+\begin{lemma}
+Let $J$ be a $g$-dimensional abelian variety over a number field $L$,
+and let $A$ be simple over $L$, of dimension $a$.
+Suppose $J$ contains an $L$-subvariety $L$-isogenous to $A^r$, $r\ge1$.
+Assume there is an $L$-isogenous variety $J_0$, isomorphic over $L$ to
+a product of simple varieties, with $h_F(J_0)\le h_F(J)$.
+Assume also $h_F(B)\ge-c\dim B$ for all remaining product factors,
+with the same height normalization. Then some $L$-simple factor
+$C$, $L$-isogenous to $A$, satisfies
+\[
+                h_F(C)\le\frac{h_F(J)+cg}{r}-ca.
+\]
+\end{lemma}
+\begin{proof}
+Semisimplicity up to $L$-isogeny gives at least $r$ occurrences of the
+simple isogeny class of $A$ in $J_0$. Select $r$ occurrences, even if
+some factors are isomorphic, and write $J_0=C_1\times\cdots\times C_r\times E$.
+Then $\dim E=g-ra$. Height additivity and the lower bound give
+$\sum_i h_F(C_i)\le h_F(J)+c(g-ra)$. At least one factor is no larger
+than the average. No invariance under arbitrary isogeny is used.
+\end{proof}
+For surfaces and $c=3/2$ this retains a subtractive term $3$ compared
+with the coarser bound $(h_F(J)+3g/2)/r$. One must still transfer height
+from the selected factor to the original $A$ by an isogeny in the
+correct direction and pay its half-logarithmic degree cost.
+
+\section{Verification and scope}
+The exact checker verifies the rational exponents, the norm-tree
+coefficients, and the valuation residue classes of the revised quartic
+factors. It rejects the three boundary precision choices $48,12,24$
+for the strict criterion. Its small division-polynomial and scalar
+congruence tests are explicitly finite evidence, not universal proofs.
+The source constants in the two applications are different; they are
+not identified. The product-height result in the companion paper
+and the sum-height input used by the quartic are likewise distinct.
+
+\begin{thebibliography}{9}
+\bibitem{Sun} Zhi-Wei Sun, \emph{$\Z$ is Diophantine over $\Q$ with
+28 unknowns}, arXiv:2611.14605v1, 10 November 2026,
+\url{https://arxiv.org/html/2611.14605v1}.
+\bibitem{GR} \'Eric Gaudron and Ga\"el R\'emond,
+\emph{Nouveaux th\'eor\`emes d'isog\'enie}, M\'emoires de la Soci\'et\'e
+Math\'ematique de France 176 (2023), DOI: 10.24033/msmf.484.
+The directly inspected text for the product construction is the authors'
+September 2022 version, Lemma 16.2(1), printed p.~104,
+\url{https://lmbp.uca.fr/~gaudron/art20.pdf}.
+The final published page comparison is not certified here.
+\end{thebibliography}
+\end{document}

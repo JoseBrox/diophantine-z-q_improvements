@@ -37,3 +37,15 @@ Hexagon paper. Its finite-family theorem (label `thm:sim`) is distinguished from
 Jaswal's original two-twist Theorem 1.2. The new application retains that theorem
 as an explicit input and does not claim to complete its independent arithmetic
 audit. The subalgebra-norm degree improvements use no new twist input.
+
+
+## Uploaded 198-variable research archive (v38 integration)
+
+`sources/h10_quartic198/` preserves the supplied `H10-quartic198.zip` members
+unchanged. Its README attributes new analysis and code to ChatGPT in
+collaboration with Gabriel Conant's research request. It includes selected
+original sources and licenses from Jose Brox's repository and a pinned
+upstream arithmetic note. Those notices are retained. Our 196-variable
+construction is an exact subsequent coordinate transformation, not a claim
+to authorship of the supplied 198-variable reduction. The archive identity
+is bound in `ARCHIVE_ORIGIN.json`; all source bytes appear in the main manifest.

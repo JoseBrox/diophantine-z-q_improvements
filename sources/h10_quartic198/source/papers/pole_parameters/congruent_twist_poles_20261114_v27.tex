@@ -1,0 +1,149 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[T1]{fontenc}\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,microtype}
+\usepackage[margin=24mm]{geometry}\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}[section]\newtheorem{lemma}[theorem]{Lemma}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\setlength{\emergencystretch}{2em}
+\title{Pole equations from simultaneous congruent-number twists}
+\author{}\date{14 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+Three equations forbid a negative odd valuation of their rational input
+at every odd prime. For prepared positive inputs less than one, the
+simultaneous-twist theorem of Jaswal supplies rational witnesses.
+The application checks the precise square classes, local congruences
+and scaling of both elliptic points, and treats the square input
+separately. Seven auxiliary rational coordinates give a quadratic
+presentation, with smaller coefficients than the previous pole system.
+The pole replacement does not reduce the coordinate count on its own.
+\end{abstract}
+
+\section{The equations and their local implication}
+For $b\in\Q$, use rational $e,p,u,v,q$ and require
+\begin{equation}\label{eq:pole}
+ e^2+bp^2=1,\qquad uv=e(1-b),\qquad u^2-v^2=bq^2.
+\end{equation}
+No nonzero restriction is imposed for the local implication.
+
+\begin{theorem}\label{thm:local}
+If \eqref{eq:pole} has a rational solution and $b\ne0$, then
+$v_\ell(b)$ is not a negative odd integer for any odd prime $\ell$.
+\end{theorem}
+\begin{proof}
+Suppose $\nu=v_\ell(b)<0$ is odd. The first equation has terms of
+different valuation parity whenever both are nonzero. It forces
+$v_\ell(e)=0$ and $v_\ell(bp^2)>0$ (with the latter interpreted as
+infinity when $p=0$): a negative smaller valuation could not cancel,
+and a zero valuation on $bp^2$ is impossible by parity.
+Thus $e\ne0$ and $v_\ell(uv)=v_\ell(e(1-b))=\nu$, so both $u,v$
+are nonzero and their valuations have odd sum. In particular they are
+distinct. The valuation of $u^2-v^2$ is then the smaller of two distinct
+even integers, and is even. The right side $bq^2$ is either zero or has
+odd valuation. Both possibilities contradict the nonzero even-valuation
+left side.
+\end{proof}
+
+\section{The exact simultaneous-twist input}
+Write $E_r:y^2=x^3-r^2x$. We use the following statement, exactly the
+scope of Jaswal's Theorem~1.2 in Hexagon version 2~\cite{Jaswal}:
+for coprime positive squarefree integers $\beta>1$, $\theta\ge1$,
+with $\beta\equiv\theta\equiv1\pmod8$, each a square modulo every
+prime dividing the other, there is a positive squarefree integer $r$
+such that $E_r,E_{r\theta}$ both have an infinite-order rational point
+whose abscissa lies in $\beta\Q^{\times2}$. The source gives analytic
+and algebraic rank one as well, but those stronger conclusions are not
+needed for the following application.
+
+We retain this stated theorem as the input to the realization result.
+The application below is proved in full; it is not a claim that every
+part of the source's external arithmetic proof has been independently
+re-audited. No use is made of its separate contact-height or
+prime-pattern statements. In particular, the theorem does not assert
+that arbitrary different prescribed square classes share witnesses.
+
+\begin{theorem}\label{thm:complete}
+Assume the simultaneous-twist statement above. Suppose $b\in\Q$
+has square reduced denominator and satisfies
+\[
+ 0<b<1,\qquad b\in\Q_2^{\times2},\qquad v_2(b)\ge3.
+\]
+Then \eqref{eq:pole} has a rational solution with $upq\ne0$.
+\end{theorem}
+\begin{proof}
+Write $b=\beta z^2$ and $1-b=\theta c^2$, where $\beta,\theta$
+are positive squarefree integers and $z,c\in\Q^\times$. More
+explicitly, if $b=A/B^2$ in lowest terms, then $\beta$ is the squarefree
+part of $A$, and $\theta$ that of $B^2-A$. They are coprime: a prime
+dividing both would divide $A$ and $B$, which is impossible.
+At each odd prime dividing $\beta$, the value $1-b$ has square unit
+residue, so $\theta$ is a square modulo that prime. Conversely at a
+prime dividing $\theta$, $b$ has square unit residue and $\beta$ is a
+square. These primes cannot divide the reduced denominator.
+
+Because $b$ is a 2-adic square, $v_2(b)$ is even and is at least four.
+The square denominator is therefore odd in reduced form. The squarefree
+part $\beta$ is odd and is $1\pmod8$, as follows from the square unit
+part of $b$. Also $1-b\equiv1\pmod {16}$ in $\Z_2$, so its odd
+squarefree part $\theta$ is $1\pmod8$.
+
+If $\beta=1$, put $e=0$, $p=1/z$, $u=z$, $v=0$ and $q=1$.
+This proves the claim directly and does not apply a theorem requiring
+$\beta>1$. Otherwise apply the simultaneous-twist input to
+$\beta,\theta$. Scale the point on $E_{r\theta}$ by
+$(x,y)\mapsto(c^2x,c^3y)$, obtaining a point on $E_{r(1-b)}$.
+Both abscissas remain in $\beta\Q^{\times2}=b\Q^{\times2}$.
+Write the resulting points as $(ba_1^2,y_1)$ on $E_r$ and
+$(ba_2^2,y_2)$ on $E_{r(1-b)}$, with $a_1a_2y_1y_2\ne0$.
+Their ordinates are nonzero because the points have infinite order.
+Set
+\[
+ e=\frac{r}{ba_1^2},\quad p=\frac{y_1}{b^2a_1^3},\quad
+ u=\frac{a_2}{a_1},\quad v=\frac{e(1-b)}u,\quad
+ q=\frac{y_2}{b^2a_1^3u^2}.
+\]
+The first curve equation, divided by $b^3a_1^6$, gives
+$bp^2=1-e^2$. The second, divided by $b^3a_1^6u^2$, gives
+$bq^2=u^2-e^2(1-b)^2/u^2=u^2-v^2$. The middle equation is the
+chosen definition of $v$. All divisions are by quantities just shown
+nonzero, and $upq\ne0$.
+\end{proof}
+
+\section{Quadratic presentation and coefficient comparison}
+Retain two additional variables $p_2,q_2$ and impose five quadrics:
+\begin{equation}\label{eq:quadrics}
+ p_2=p^2,\quad q_2=q^2,\quad e^2+bp_2=1,\quad
+ uv=e(1-b),\quad u^2-v^2=bq_2.
+\end{equation}
+There are seven auxiliary coordinates, the same number as before.
+The replacement changes three rows per detector while keeping the two
+square definitions. It uses no fixed factor 17, and every displayed
+coefficient has absolute value one. The new prepared range is $(0,1)$;
+in the abc quartic the actual pole input tends to zero on the selected
+real neighborhoods, so this range can be imposed before prime selection.
+The old extra squareclass conditions at 3 and 17 may be retained but
+are not consumed by Theorem~\ref{thm:complete}.
+
+At a prime with positive odd contact order, the unchanged trace equations
+force a nonzero pole input of odd valuation. Theorem~\ref{thm:local}
+therefore gives the same strict local inequalities as the older pole
+system. No assertion about a zero pole input is needed away from these
+consumed primes. The new global zero set is not claimed identical to
+the old pole equations for every $b$; soundness and completeness of the
+whole construction are proved separately.
+
+In the unchanged 81-coordinate reference presentation the full quartic
+has exact height $\max(4153456,B^2+630511)$. In the compressed
+79-coordinate presentation the reference equations, not the pole
+coefficients, dominate the height. Both statements are verified after
+expanding and collecting all coefficients in their respective complete
+tables. They do not give an effective sufficient defining shift.
+
+\begin{thebibliography}{9}
+\bibitem{Jaswal} M. Jaswal, \emph{A proof that $\Z$ is Diophantine in $\Q$
+through congruent-number twists}, Hexagon \texttt{2611.00331v2},
+12 November 2026, Theorem~1.2, printed p.~4.
+\url{https://hexagonmath.org/pdf/2611.00331v2}.
+\bibitem{Quartic} \emph{A 79-variable quartic under rational $abc$},
+project companion, \nolinkurl{quartic_abc79_20261114_v27.tex}.
+\end{thebibliography}
+\end{document}

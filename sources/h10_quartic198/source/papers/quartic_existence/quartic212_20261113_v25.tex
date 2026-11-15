@@ -1,0 +1,461 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,booktabs,microtype}
+\usepackage[margin=27mm]{geometry}\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}[section]\newtheorem{lemma}[theorem]{Lemma}\newtheorem{proposition}[theorem]{Proposition}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}\DeclareMathOperator{\Tr}{Tr}
+\setlength{\emergencystretch}{2em}
+\title{A 212-variable quartic with additive height comparisons}
+\author{}\date{13 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+We reduce the pinned 214-variable quartic family to 212 total variables,
+under the same explicitly retained arithmetic premises. The new family
+has 186 primitive quadratic equations and 2908 nonzero quartic
+monomials. Replacing the comparison arguments $\lambda,T\lambda$ by
+$\lambda,\lambda+T$ permits both contact calculations to use three
+rather than four outputs, even after the scalar normalization of the
+elliptic coordinates. A rational rescaling of two coordinates also
+retains the earlier coefficient-height improvement. The sufficient
+defining parameter remains ineffective. The changed arithmetic
+applications, all rational boundary cases, all retained rows, and all
+quartic coefficients are treated separately from the source's still
+incomplete independent arithmetic audit.
+\end{abstract}
+
+\section{Statement and retained source}
+Every variable count includes the distinguished input. The source is
+the exact 214-coordinate, 188-row family at upstream commit
+\texttt{1f7e1f1fb0438feda3c9f3da9cc16982126aeeed}. Its numeric source,
+reconstructed from the pinned manuscript and checked against the
+published expanded quartic, is retained in
+\begin{center}\small
+\nolinkurl{computation/quartic/balanced214_v24/source}.
+\end{center}
+The source-row SHA-256 is
+\begin{center}\small
+\texttt{49cf4066bf1e35e02e2156bf4bd24a21bb4c5e794f7374e056413d8306fb73c5}.
+\end{center}
+The coordinate list is separate from the quadratic table. Every new
+row and retained row is specified by the transformation in Section~2
+and by the complete output table; no generic-coordinate deletion is
+being asserted.
+
+The retained premises are the source elliptic group and index-height
+statements; its scalar extraction and prepared realization; its pole
+obstruction and prepared nonzero realization; the full-family
+geometric/modular contact-height supplier; the aggregate \emph{sum}
+height theorem; and the fixed-data simultaneous-prime statement with
+arbitrary finite rational contact coefficients, finite avoidance,
+conjugate reduction orders, compatible common-index congruences and
+real neighborhoods. The exact supplying statements and their
+applications are recorded in the pinned source's
+\nolinkurl{research/quartic214/proofs/uniform-existence.md}, P03--P20.
+The coefficient and field identities below do not certify those
+arithmetic foundations. No additional $abc$ hypothesis is introduced.
+
+\begin{theorem}\label{thm:main}
+Under these retained inputs, there is a computable family
+\[P_N\in\Z[X,Y_1,\ldots,Y_{211}],\qquad N\ge1,\]
+with exact degree four, content one, and 2908 nonzero coordinate
+monomials. There is one fixed
+integer $N_0$ such that every $N\ge N_0$ has rational input projection
+exactly $\Z$. No numerical sufficient $N_0$ is determined.
+
+In the unbalanced presentation, put $A_N=149^{2N+1}$. Its exact
+height is $\max(C_0,A_N^2+1)$, where $C_0$ is the explicit constant in
+the coefficient certificate, and hence is $149^{4N+2}+1$ for $N\ge53$.
+In the balanced presentation put $C=149^N$ and
+\[
+ K_0=31581660^{28},\qquad J_0=5898050446009651968,\qquad
+ H_0=(J_0K_0)^2.
+\]
+Its exact height is
+\[
+                    \max(H_0,K_0C^2),
+\]
+and is $31581660^{28}149^{2N}$ for $N\ge57$.
+Both presentations have the same rational input projection at each
+fixed $N$. These coefficient thresholds are not defining thresholds,
+and the sufficient $N_0$ is not identified with the old 214 threshold.
+\end{theorem}
+
+\section{Exact changes to the quadratic equations}
+Use the pinned source coordinates before compaction. Its scalar
+normalizer is $R_s=x_{118}$, its square is $w=x_{117}$, and the root
+coordinates in four blocks are $C_i,E_i\in K=\Q(\sqrt2)$.
+The unchanged scalar rows give
+\[
+ \beta=51X^2+2504,\qquad
+ r_s=\beta(\beta-1)(\beta-2401)(32\beta+343)>0,
+\]
+\[
+       (1+149^2r_s)R_s=A_Nr_s,\qquad w=R_s^2>0.
+\]
+These identities use only retained rows. They can also be checked
+from source rows 48,49,60,63 and the input-square equation; the
+intermediate pair is $(51X^2+2501)^2/4$.
+The physical trace is
+\begin{equation}\label{eq:scale}
+ T=\frac14\Tr\sum_{i=1}^4 x([n_i]P),\qquad
+ wT=\frac18\sum_{i=1}^4\left((C_{i,0}-E_{i,0})^2
+                          +2(C_{i,1}-E_{i,1})^2\right).
+\end{equation}
+Each root is a nonzero doubled point; its abscissa exceeds $3\mp\sqrt2$
+in the corresponding real embedding. Thus $T>6$.
+
+Repurpose coordinate 4 as $t_0=\lambda$, and coordinate 90 as the
+\emph{unscaled} second argument $t_1$. Replace source row 182 by
+\begin{equation}\label{eq:aggregate}
+ 8w(t_1-t_0)=\sum_{i=1}^4
+       \left((C_{i,0}-E_{i,0})^2+2(C_{i,1}-E_{i,1})^2\right).
+\end{equation}
+Since $w>0$, this gives $t_1=t_0+T$. The equation remains quadratic;
+this is the point at which additive rather than multiplicative
+comparison permits removal of the old scaling on $t_1$.
+
+Put
+\[
+ \Theta_0=\{0,-1/2,-1,1/2399,-32/407\},\qquad
+ \Theta=\Theta_0\cup(2-\Theta_0),
+\]
+and
+\[
+ P_5(r)=\prod_{\theta\in\Theta_0}\bigl(r-(1-\theta)^2\bigr)
+       =r^5-e_1r^4+e_2r^3-e_3r^2+e_4r-e_5.
+\]
+The five squared distances are
+$1,9/4,4,5750404/5755201,192721/165649$.
+For $j=0,1$, let $q_j$ and $s_j$ be the existing weight and its
+inverse; retain $q_js_j=1$. Replace the contact equations by four
+quadrics with three outputs $r_j,u_j,v_j$:
+\begin{align}
+ r_j&=(t_j-1)^2,\qquad u_j=r_j^2,\\
+ v_j&=r_ju_j-e_1(1+s_j)u_j+e_2(1+s_j)r_j,\\
+ u_jv_j&=(1+s_j)(e_3u_j-e_4r_j+e_5).\label{eq:contact}
+\end{align}
+The first block uses old slots $(76,77,78)$ and inverse weight 80.
+The second uses $(91,92,93)$ and inverse weight 95. Delete old
+coordinates 119 and 120 and their defining rows 64 and 65.
+The four equations replace source rows 22--25 and 35--38,
+respectively. Compact the remaining coordinates and rows in increasing
+old-index order. All other 177 rows are unchanged, up to this
+compaction and primitive normalization. In particular no local-factor
+exponent, point relation, scalar condition, or pole equation changes.
+There are $214-2=212$ coordinates and $188-2=186$ rows.
+
+\begin{lemma}\label{lem:contact}
+With $qs=1$, equations \eqref{eq:contact} are equivalent to
+\[
+             r=(t-1)^2,\qquad (1+q)P_5(r)=r^5.
+\]
+The extra outputs are uniquely determined. Every solution has
+$P_5(r)\ne0$. The boundary $t=1$ is included and has $q=s=-1$.
+\end{lemma}
+\begin{proof}
+Substitute $u=r^2$ and the expression for $v$ into the last residual.
+The result is exactly
+\[
+                         (1+s)P_5(r)-sr^5.
+\]
+Multiplication by $q$ gives the asserted weight equation. These
+steps are reversible because $q\ne0$. If $P_5(r)=0$, then $r=0$,
+but $P_5(0)=-e_5\ne0$, a contradiction. At $r=0$ the same equation
+forces $s=-1$ and then $q=-1$; the outputs are $u=v=0$.
+\end{proof}
+
+Consequently $t_j$ avoids all ten contacts, including 0 and 2, but
+$t_j=1$ is not discarded. The first old contact representation is
+recovered, for purposes of comparison, by
+\[
+ \rho=1/t_0,\quad \rho^2,\rho^4,\rho^5,\quad
+ G(\rho)=t_0^{-10}P_5((t_0-1)^2).
+\]
+The second old representation is recovered by
+\[
+ t_{1,\mathrm{old}}=wt_1,\quad
+ r_{\mathrm{old}}=wr_1,\quad
+ u_{\mathrm{old}}=wr_1^2,\quad
+ v_{\mathrm{old}}=wr_1^3,\quad
+ F_{\mathrm{old}}=w^2P_5(r_1).
+\]
+Every old contact equation is then satisfied exactly. This verifies
+the same physical weight $q_j$, not a replacement chosen only to
+have the right degree. The old aggregate equation is deliberately
+not retained; its new arithmetic use is proved next.
+
+\section{The changed height comparison}
+Let $M(t)$ be the odd contact radical outside the source fixed
+exceptional set $\Sigma$, comprising primes at most 76176 and
+2029147. The source full-family height supplier, applied to the two
+reflected five-contact blocks, gives a fixed $H_2>0$ with
+\begin{equation}\label{eq:contactheight}
+                         h(t)\le H_2M(t)^{7/6}
+\end{equation}
+for every rational $t$ away from the ten contacts. It includes
+$t=1$, with radical one. This is the same source application as
+before: the contact set and excluded primes have not changed.
+The aggregate \emph{sum} theorem supplies fixed $M_1>0,M_2\ge1$,
+with $M_2$ ineffective, such that
+\[
+       B_0^2\le M_1h(T)+M_2,\qquad B_0=\max_i|n_i|.
+\]
+The index tuples and trace in \eqref{eq:scale} are the identical
+objects consumed by that theorem; no product-height statement is
+substituted.
+
+For the new arguments the additive height inequality gives
+\begin{equation}\label{eq:addheight}
+ h(T)=h(t_1-t_0)\le h(t_1)+h(t_0)+\log2.
+\end{equation}
+Thus whenever $M(t_j)^k\mid J$ separately for $j=0,1$, for one
+nonzero integer $J$, one has
+\begin{equation}\label{eq:bridge}
+ B_0^2\le C|J|^{7/(6k)}+M'_2,\qquad
+ C=2M_1H_2,\quad M'_2=M_2+M_1\log2.
+\end{equation}
+All constants are independent of $N$, the input and every witness.
+Only a fixed additive constant changes. It is not necessary for the
+two radicals to be coprime.
+
+\section{Local implication and soundness}
+The unchanged algebraic rows recover the same physical reference,
+scalar and numerator points as in the source. The scalar normalizer
+is positive independently of the changed contact and aggregate rows.
+The source's forced-prime argument therefore excludes the forbidden
+reference torsion and zero denominators before logarithms, exactly
+as in P04 of its uniform-existence proof. The new contact lemma gives
+the same $q_j=R_j^{-1}-1$ whenever $(t_j-1)\ne0$, with
+$R_j=P_5((t_j-1)^2)/(t_j-1)^{10}$; no division by $t_j-1$ is used
+on the boundary or unless a contact prime is being consumed.
+
+At a consumed prime, write $v(q_j)=-\nu$, with $\nu$ positive odd.
+The five unchanged physical factors are
+\begin{align*}
+1+q^5C_2^2+q^2D_H^2+q^4B_1^4,\\
+1+q^5G^2+q^2A_3^2+q^4B_0^4,\\
+1+q^5I^4+q^3A_2^2+q^2A_4^2+q^4B_3^4,\\
+1+q^5C_3^2+q^2C_1^4+q^4B_4^4,\\
+1+q^5C_4^2+q^2A_1^2+q^4B_2^4.
+\end{align*}
+Here the notation is the source notation: $D_H,A_i,B_i$ are
+reciprocal abscissas, $C_i$ are differences of primary and conjugate
+formal ratios, $I$ is the input comparison, and $G$ is the Lucas
+residual in those ratios. Reciprocals have even valuation. The
+nonconstant summands have distinct valuation classes, including the
+special third factor, so negative valuations and zero tests cannot
+cause cancellation. The cleared trace and pole equations force the
+maximum place valuation of the factor product to exceed $-\nu/2$.
+They give order at least three for $C_2,C_3,C_4,G$, order at least
+one for $C_1,I$, and positive even reciprocal orders. Integrality of
+one full logarithmic ratio is transferred to the other before using
+relative order-four precision as an absolute congruence.
+
+Consequently, for the same nonzero integer labels $(n,a,t,b)$,
+\[
+ \Delta=t^2-a(a-2)tb+(a-2)^2b^2-1,
+\]
+and for $J$ the reduced numerator of $n-\beta$ when nonzero,
+\begin{equation}\label{eq:divs}
+ M(t_j)^3\mid\Delta,\qquad M(t_j)\mid J\qquad(j=0,1).
+\end{equation}
+The source proof of these conclusions uses the contact equation only
+at a consumed prime and uses neither $t_1/t_0=T$ nor any other
+relation between the two arguments. Its hypotheses are therefore
+unchanged. The same bounds $|\Delta|\le14B_0^4$ and
+$|J|\le2B_0 e^{h(\beta)}$ apply.
+
+The unchanged scalar conclusion is
+\begin{equation}\label{eq:scalar}
+ c=|a|\ge149^{L_N},\qquad
+ h(\beta)\le2^{330770}149^{-L_N}c(1+\log c/3),
+ \quad L_N=\left\lfloor\frac{9(2N-1)}4\right\rfloor+1.
+\end{equation}
+If $\Delta\ne0$, \eqref{eq:bridge} gives
+$B_0^2\le C14^{7/18}B_0^{14/9}+M'_2$, so $B_0$ is bounded by a
+fixed constant. The lower bound $B_0\ge c\ge149^{L_N}$ excludes
+this case for every sufficiently large fixed $N$, uniformly in the
+input and all solutions.
+
+When $\Delta=0$, put $c=|a|$ and $w_0=\operatorname{sign}(a)(a-2)b$.
+Then $t^2-ctw_0+w_0^2=1$. The norm-one unit reduction with
+$\epsilon=(c+\sqrt{c^2-4})/2$ shows that $|w_0|=U_j$ and
+$|t|\in\{U_{j-1},U_{j+1}\}$, where
+$U_0=0,U_1=1,U_{j+1}=cU_j-U_{j-1}$.
+For clarity, $\epsilon$ is the smallest norm-one unit greater than
+one in $\Z[\epsilon]$: any such unit with nonzero coefficient of
+$\epsilon$ differs from its inverse in absolute value by at least
+$\sqrt{c^2-4}$. Reduction into $[1,\epsilon)$ proves the assertion
+without assuming a maximal order. Since $w_0\ne0$ and
+$|a-2|\mid w_0$, reduction of $U_j$ modulo $c-2$ or $c+2$ gives
+$j\ge c-2$. Induction gives $U_j\ge(c-1)^{j-1}$. For $c\ge8$ this
+implies the convenient weaker bound
+\[
+                        \log B_0\ge(c-5)\log(c-2).
+\]
+
+If also $J\ne0$, \eqref{eq:bridge} with $k=1$ gives, once
+$B_0^2\ge2M'_2$,
+\[
+ \log B_0\le K+\tfrac75 h(\beta)
+ \le K+\epsilon_N c(1+\log c/3),\qquad
+ \epsilon_N=\tfrac75\,2^{330770}149^{-L_N},
+\]
+where $K$ is fixed. Choose $N$ large enough that $\epsilon_N\le1$
+and $c\ge\max(e^{12},2\max(K,0)+1,\sqrt{2M'_2}+1)$.
+Then
+\[
+(c-5)\log(c-2)-c-\tfrac c3\log c
+ \ge c\bigl(\tfrac16\log c-1-\tfrac12\log2\bigr)>c/2>K,
+\]
+a contradiction. Hence $n=\beta$ is integral. If $X=u/v$ is
+reduced, $v^2\mid51$; squarefreeness of 51 gives $v=1$.
+This proves soundness with one fixed threshold. The additional
+$\log2$ in \eqref{eq:addheight} changes only that ineffective
+threshold, not the strict exponents.
+
+\section{Completeness with the new arguments}
+The scalar part is unchanged. Its source proof chooses a fixed
+threshold $N_C$ independent of the integer input: for the positive
+integer scalar product $r_s$, one has
+$R_s\ge A_N/(1+149^2)$, and fixed compact real neighborhoods make
+the scalar pole input lie in $(0,17)$ for every $N\ge N_C$.
+Finite-place depths may depend on $(N,X)$, as before. Choose its
+positive scalar label $a$ sufficiently divisible and large, then its
+nonzero Lucas labels $t,b$, and $n=\beta$. Their four points and the
+positive trace $T>6$ are now fixed. No subsequent step imposes a
+further lower bound on $N$.
+
+Choose fixed compact real and finite-place neighborhoods for the
+common reference point and all its numerator multiples, avoiding the
+source denominators. The new coefficient list in $\lambda$ is
+\[
+                       \Theta\ \cup\ (\Theta-T).
+\]
+The span of $\Theta$ is 4 and $T>6$, so there are exactly twenty
+distinct coefficients. The prime-selection premise permits this
+fixed list; it is not restricted to the nineteen or fewer values in
+a multiplicative list with a shared zero. Choose $D_1$ so that
+$D_1^2\theta$ and $D_1^2(\theta-T)$ are integers, include all fixed
+avoidance and preparation primes, and take
+$\lambda=u/(D_1^2w_1^2)$. The selected prime numerators are
+\[
+             u-\theta D_1^2w_1^2,\qquad
+             u+(T-\theta)D_1^2w_1^2\quad(\theta\in\Theta).
+\]
+All labels, coefficients and moduli are fixed before invoking the
+prime theorem. Its same conjugate annihilating orders and compatible
+common-index progression give the required primary/opposite formal
+groups while preserving the scalar data and real neighborhoods.
+At each selected contact, $v(q)=-1$, reciprocal tests have depth at
+least two, and comparison and Lucas tests have depth at least four.
+Every nonconstant summand of the five factors is then positive at
+the successful place. At the opposite place its inverse residue is
+zero or one. The reciprocal trace is a unit of residue one or two,
+exactly as in the source.
+
+For either fixed offset $a_0\in\{0,T\}$, with $v_0=D_1^2w_1^2$,
+\[
+ R_j=\frac{\prod_{\theta\in\Theta}(u+(a_0-\theta)v_0)}
+                {v_0^{10}(\lambda+a_0-1)^{10}}.
+\]
+The denominator is a square, and all numerator factors are the
+selected primes, each used once in that detector. The source factor
+$\gamma^2$, $\gamma=408/409$, and the squared reciprocal trace do
+not change valuation parity. Hence the pole input has square reduced
+denominator. At preparation primes, choose $\lambda$ to dominate
+both 1 and $T$ $p$-adically; then $R_j$ is arbitrarily close to one,
+$q_j$ is small and the inverse trace is close to two. The same
+$\gamma$ gives local squareclasses and depths $4,2,2$ at $2,3,17$.
+In the real compact neighborhoods, as $\lambda$ tends to infinity,
+\[
+ R_j=\prod_{\alpha}(1-\alpha/(t_j-1)^2)\longrightarrow1,
+ \quad q_j>0,\quad W_j\longrightarrow1,
+ \quad b_j\longrightarrow\gamma^2/4\in(0,17).
+\]
+An arbitrarily large fixed lower bound on the slope supplies all
+these conditions. The prepared nonzero pole-realization premise now
+supplies independent witnesses for the two actual pole inputs.
+
+Finally fill the new contact outputs by \eqref{eq:contact}, and take
+$t_1=\lambda+T$. The unchanged rows hold by the source physical
+reconstruction, while the nine changed rows hold by construction.
+This proves completeness for every integer input and every
+$N\ge N_C$. Taking the maximum with the soundness threshold proves
+Theorem~\ref{thm:main}. No numerical sample tuple is used to replace
+this universal existence argument.
+
+\section{Balanced coefficients and exact certificates}
+Set $A_N=149C^2$, $C=149^N$. In the new unbalanced system rescale
+only the coordinates with parent-214 IDs 117 and 118 by
+$x_i=C y_i$. All other coordinates are fixed. Divide each transformed
+row by its smallest common power of $C$ and normalize to a primitive
+integer row. Every resulting row remains quadratic and is at most
+linear in $C$. Since $C>0$, the change is invertible and preserves
+every rational solution and the input. Unlike the earlier 214
+balancing, no contact coordinate needs this rescaling.
+
+The unbalanced quartic has 2909 parameter-separated terms; the
+balanced one has 2910. Both have 2908 coordinate monomials for every
+positive coefficient parameter. The only mixed balanced coefficient
+profiles are $1+22201C^2$ and $1+2C^2$; no cancellation can alter
+the support. An independent expansion identifies a coefficient equal
+to $H_0$ and one equal to $K_0C^2$. Every other profile is either
+$\ell C$, with $\ell^2\le H_0K_0$, or $a+bC^2$, with
+\[
+                     |a|K_0+|b|H_0\le H_0K_0.
+\]
+The latter bounds the profile by $\max(H_0,K_0C^2)$ on both sides
+of $C^2=H_0/K_0$; the former follows by the geometric mean bound.
+Thus the exact height is the asserted maximum. Exact integer
+comparison gives $K_0 149^{112}<H_0\le K_0 149^{114}$, proving the
+coefficient threshold 57. The unbalanced certificate similarly
+identifies the unique $A_N^2+1$ profile and verifies threshold 53.
+
+The directory \texttt{computation/quartic/additive212\_v25} contains
+both complete quadratic and quartic tables, their builder, and a
+checker importing no producer. The checker re-expands all 188 source
+rows and matches every source coefficient, reconstructs all nine
+changed equations independently, compares all 177 retained rows,
+checks both physical contact normalizations and the boundary $t=1$,
+and expands every new coefficient. It also verifies the two-coordinate
+rescaling on every row, the exact height profiles for all positive
+parameters, and deliberate rejection of a changed coefficient and a
+missing row. These finite checks do not prove the source arithmetic
+premises or complete an independent non-author review.
+
+\section{Source and research status}
+The new contribution is the additive comparison, its simultaneous
+realization, and its compatibility with both shorter contact circuits.
+The earlier attempt to delete these two outputs while preserving the
+multiplicative, rescaled argument did not establish this construction.
+Changing to \eqref{eq:aggregate} is what makes the unscaled second
+contact circuit quadratic. This is not a fixed-witness bijection with
+the original 214 system; soundness and completeness have been proved
+again at the changed arguments. The coefficient balancing alone is
+an exact fixed-input bijection between the two new presentations.
+
+The 214 source is retained as a separately attributed predecessor,
+not erased by its improvement. Its exact upstream commit, tables,
+reviews and open audit limitations remain distinct from these new
+proofs. In particular the full prime-pattern, pole-realization and
+modular-height foundations are not declared exhaustively audited by
+this paper. All results here have precisely the arithmetic scope
+stated at the beginning.
+
+\begin{thebibliography}{9}
+\bibitem{Source} Pinned 214-variable construction and complete Version 17
+manuscript, upstream commit
+\texttt{1f7e1f1fb0438feda3c9f3da9cc16982126aeeed};
+\nolinkurl{research/quartic214/proofs/uniform-existence.md}, P03--P20,
+and \nolinkurl{manuscripts/quartic_v17.tex}, Sections A43--A47.
+The numeric source and provenance are retained in the present repository.
+\bibitem{Inverse} Companion paper,
+\nolinkurl{papers/quartic_existence/quartic226_20261110_v21.tex},
+the inverse-weight contact calculation.
+\bibitem{Balance} Companion paper, \emph{Coefficient balancing for a
+214-variable quartic},
+\nolinkurl{papers/quartic/coefficient_balancing_20261113_v24.tex}.
+\bibitem{Precision} Companion paper,
+\nolinkurl{papers/local_tests/height_precision_20261113_v23.tex},
+for the sharper optional exponent $2103/2048$ in place of $7/6$.
+\end{thebibliography}\end{document}

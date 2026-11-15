@@ -1,0 +1,244 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,geometry}
+\geometry{margin=1in}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\DeclareMathOperator{\Tr}{Tr}
+\title{An affine fourth label in the reciprocal quartic construction}
+\author{Research note; AI generated}
+\date{14 November 2026}
+\begin{document}\maketitle
+
+This note supplies the arithmetic argument for replacing the fourth
+seven-field root block of Brox's 204-coordinate family by a five-field
+reciprocal pair. It is relative to precisely the scalar, pole,
+contact-height, elliptic group, and fixed-data prime-selection premises
+retained in \texttt{quartic204\_20261114\_v27.tex}, at repository commit
+\texttt{d337a5500e2531139445bd7e30f966f62c4db03a}.
+It does not independently certify those premises. The quadratic-table
+construction and its independent verification are separate obligations.
+All counts include the rational input.
+
+Put $K=\Q(\rho)$, $\rho^2=2$, $d=3-\rho$, $D=d^2$, and
+$E:y^2=x^3-Dx$. Retain $P=2R_0$ and $2E(K)=\Z P$.
+For $Q=[m]R_0+T_0$, $T_0\in E[2](K)$, put $\nu(Q)=m/2$.
+The first and third pairs, scalar block, and reference point are unchanged.
+In particular $Q_2=[a]P$, where $a\in\Z\setminus\{0\}$, and
+\[
+ \beta=51X^2+2504,\quad R>100,\quad
+ c=|a|\ge149^{L_N},\quad
+ h(\beta)\le C_3 149^{-L_N}c(1+\log c/3),
+ \qquad L_N=\left\lfloor\frac{9(2N-1)}4\right\rfloor+1.
+\]
+Here $h$ is logarithmic Weil height and $C_3$ is the fixed source constant.
+
+\section*{The new point block and the affine label}
+Use five field variables $f,h,g,k,s$ for the fourth pair, and reuse its
+reciprocal-square slots $F,G$. Impose
+\[
+ F=f^2,\quad G=g^2,\quad h^2=f-DfF,\quad
+ s(f-g)=h+k,\quad s(h-k)=1-D(F+fg+G).
+\]
+The complete reciprocal-pair lemma in the source identifies points
+$U_4,V_4\in E(K)\setminus\{(0,0)\}$ with $U_4\ne V_4$ and finite difference
+$Q_4=U_4-V_4$, including every tangent and numerator-identity case.
+Its recovered coordinates are
+\[
+ x_4=s^2+D(f+g),\qquad y_4=Dh-s(Df+x_4).
+\]
+Let $S=y(H)/x(H)$ and $T_H=y(H-P)/x(H-P)$ be the unchanged nonzero
+reference parameters. Store the affine ratios
+\[
+ L_4=4z(U_4)/z(H)+1,\qquad L_4^0=4z(V_4)/z(H-P)+1,
+ \qquad z=-x/y,
+\]
+using the four field quadrics
+\[
+ h(L_4-1)+4fS=0,\quad (1-DF)(L_4-1)+4hS=0,
+\]
+\[
+ k(L_4^0-1)+4gT_H=0,\quad (1-DG)(L_4^0-1)+4kT_H=0.
+\]
+The second equation in either pair fixes the correct value $1$ at an
+identity numerator. The original nonidentity-two-torsion exclusion is
+unchanged: $h=0,f\ne0$ in the first equation would force $S=0$.
+Set $L_4'=\sigma L_4^0$ and $C_4=L_4-L_4'$ as before.
+The fourth integer label is now
+\[
+                  b=4\nu(Q_4)+1\in2\Z+1.
+\]
+Thus $b\ne0$ without a guard, even when $Q_4$ is finite torsion.
+In particular it is legitimate that the new chart does not force its
+index to be nonzero.
+
+Replace the Lucas expression by
+\[
+ G_{\rm Luc}=L_3^2-(L_2+1)(L_2-1)L_3L_4+(L_2-1)^2L_4^2-1.
+\]
+It uses the same two field multiplication outputs as before, now storing
+$(L_2-1)L_4$ and $(L_2+1)L_3$. The affine constants do not raise the
+quadratic degree. All local factor equations, including the reciprocal
+abscissa tests and their exponents, are retained.
+
+Replace the trace aggregate by
+\[
+ T=\frac14\Tr\bigl(x(Q_1)+x(Q_3)+x(Q_4)+R^2x(Q_2)\bigr),
+ \qquad t_0=\lambda,\quad t_1=\lambda+T.
+\]
+The recovered $x(Q_1),x(Q_3),x(Q_4)$ are quadratic expressions. The old
+scalar root expression already stores $R^2x(Q_2)$ quadratically.
+At either real embedding a finite elliptic point has $x\ge-d$, whereas
+the nonzero doubled scalar point has $x(Q_2)>d$. Consequently
+$4T>6R^2-18>0$.
+
+\section*{Height and local conclusions}
+Put
+\[
+ n=\nu(Q_1)\in\tfrac12\Z,\qquad t=2\nu(Q_3)\in\Z,
+ \qquad B=\max(1,|n|,|a|,|t|,|b|).
+\]
+The source weighted-trace theorem applies with weights $1,1,1,R^2$.
+Since $b=4\nu(Q_4)+1$, changing the fixed constants gives
+\[
+                 B^2\le A_0(h(R)+h(T))+J_0.
+\]
+The affine fourth ratio differs from four times the old physical ratio
+only by $1$. Its comparison difference is therefore four times the
+unshifted comparison. At every consumed prime the factor $4$ is a unit;
+the unchanged local tests and formal-group argument imply
+\[
+ L_1\equiv n\pmod p,\quad L_2\equiv a\pmod{p^3},\quad
+ L_3\equiv t\pmod{p^3},\quad L_4\equiv b\pmod{p^3}.
+\]
+This statement includes numerator identities and torsion differences,
+by the source argument after multiplying the group relations by $2$.
+Thus, writing $M_j=M(t_j)$ for the source contact radicals,
+\[
+ M_j^3\mid\Delta,\qquad M_j\mid J_X\quad(J_X\ne0),\qquad j=0,1,
+\]
+where
+\[
+ \Delta=t^2-(a+1)(a-1)tb+(a-1)^2b^2-1\in\Z,
+\]
+and $J_X$ is the positive absolute reduced numerator of $\beta-n$.
+For $B\ge1$, $|\Delta|\le14B^4$ and, when nonzero,
+$J_X\le4B\exp h(\beta)$.
+
+The retained scalar normalization still yields
+$h(R)\le4h(\beta)+C_RN+C_0$. Hence, exactly as in the source, if
+$M_j^k\mid J\ne0$ for both $j$, then
+\[
+ B^2\le C|J|^{7/(6k)}+C'h(\beta)+C''N+C'''.
+\]
+All constants are fixed before $N$, $X$, and every witness. The scalar
+bound gives $h(\beta)=O(B(1+\log B))$ uniformly in $N$; its forced
+lower bound gives $N=O(\log B)$.
+
+\section*{Uniform soundness}
+If $\Delta\ne0$, the preceding bound with $k=3$ gives
+\[
+ B^2\le C_1 B^{14/9}+C_2 B(1+\log B)+C_3'\log B+C_4.
+\]
+Its right side is $o(B^2)$, so $B$ is bounded by a fixed constant.
+For all sufficiently large fixed $N$, the lower bound
+$B\ge c\ge149^{L_N}$ excludes this case. Thus $\Delta=0$.
+
+Write $A=a+1$, $c'=|A|$, and
+$w=\operatorname{sgn}(A)(A-2)b$. For sufficiently large $N$, $A$ and
+$A-2$ are nonzero. The odd integer $b$ is nonzero, so $w\ne0$, and
+\[
+                     t^2-c'tw+w^2=1.
+\]
+The source elementary norm-one-unit argument, with recurrence
+$U_0=0$, $U_1=1$, $U_{j+1}=c'U_j-U_{j-1}$, identifies
+$|w|=U_j$ and $|t|\in\{U_{j-1},U_{j+1}\}$.
+Since $|A-2|$ divides $w$, reduction modulo $c'-2$ or $c'+2$ gives
+$j\ge c'-2$. For $j\ge3$, the retained coordinate satisfies
+$|t|\ge U_{j-1}\ge(c'-1)^{j-2}$. Thus the following lower bound
+holds for $B$ itself, without inserting $c'$ into its definition:
+\[
+ \log B\ge(c'-5)\log(c'-2)
+          \ge(c-6)\log(c-3),\qquad c=|a|.
+\]
+No assertion that $a+1$ has the same sign as $a$ is needed; the estimate
+uses only $c'\ge c-1$.
+
+If $J_X\ne0$, the terms involving $h(\beta)$ and $N$ in the transfer
+bound can be absorbed into $B^2/2$ once $B$ exceeds a fixed constant.
+The bound with $k=1$ therefore gives
+\[
+                    \log B\le\frac75 h(\beta)+C_5.
+\]
+Increase the single $N$ threshold until
+$(7/5)C_3 149^{-L_N}\le1$. The last upper bound becomes
+$c+(c/3)\log c+C_5$, contradicting
+$(c-6)\log(c-3)$ for every sufficiently large $c$.
+Hence $\beta=n\in\tfrac12\Z$. For reduced $X=u/v$, $v>0$,
+this implies $v^2\mid102$. Since $102$ is squarefree, $v=1$.
+Thus soundness holds with one fixed ineffective threshold.
+
+\section*{Completeness}
+Fix an integer input and a parameter $N$ beyond the unchanged uniform
+scalar-completeness threshold. In the scalar preparation choose the
+positive scalar index $a$ sufficiently large and divisible by $6$, in
+addition to its existing finite-place divisibilities and real recurrence
+conditions. The source preparation permits arbitrary extra fixed
+integer divisibility: the pinned upstream \texttt{uniform-existence.md},
+P13--P14, uses compact-group recurrence in finite-index progressions and
+chooses $a$ arbitrarily large and deeper at the finite support, with
+$[a]P$ in a fixed neighborhood of $O$. It explicitly imposes no residue
+condition $a=1$. Enlarging this modulus does not change $N$.
+Set $A=a+1$ and $j=a-1=A-2$. For the sequence
+$U_0=0$, $U_1=1$, $U_{r+1}=AU_r-U_{r-1}$ put
+\[
+                    b=U_j/(a-1),\qquad t=U_{j+1}.
+\]
+Modulo $a-1=A-2$, the recurrence gives $U_j\equiv j=0$; hence $b$ is
+an integer. Because $a$ is divisible by $6$, $A$ and $j$ are odd and
+$j\equiv2\pmod3$. Modulo $2$ the recurrence has period $0,1,1$,
+so $U_j$ is odd. Therefore $b$ is positive and odd; by choosing $a$
+large, $b>1$. The norm-one identity gives $\Delta=0$.
+Take
+\[
+ Q_1=[\beta]P,\qquad Q_2=[a]P,\qquad Q_3=[t]R_0,
+ \qquad Q_4=[(b-1)/2]R_0.
+\]
+The fourth point is a nonzero integer multiple of $R_0$, and
+$4\nu(Q_4)+1=b$. All four points, the weight $R$, and the positive
+trace $T$ are fixed before comparison-prime selection.
+
+For the reference integer $h$ the new fourth numerator points are
+\[
+ U_4=[h(b-1)/2]R_0,\qquad V_4=[(h-1)(b-1)/2]R_0.
+\]
+The source Gaussian reciprocity lemma annihilates $R_0$ at the same
+conjugate reduction-order moduli. Thus the unchanged $h\equiv0$ and
+$h\equiv1$ congruences make this pair formal at its designated places.
+The affine ratios there are $b$ to the required precision. All other
+comparison and input residues are unchanged. Since the labels are now
+fixed, the same compact-group recurrence supplies joint real neighborhoods
+avoiding the finite chart exceptions, and the same fixed-data prime
+premise applies to the rational coefficient list
+$\Theta\cup(\Theta-T)$. Repetitions are merged with their incidences.
+
+The factor exponents, contact squareclasses, and actual pole inputs are
+unchanged in form. The source argument therefore proves their square
+reduced denominators, prepared finite-place depths and squareclasses,
+and real interval conditions. Its pole-realization premise supplies
+witnesses. Filling the reciprocal pairs and affine ratios satisfies the
+new quadratic equations. No input-dependent lower bound on $N$ has been
+introduced. Together with soundness this proves the claimed equality of
+input projections for every sufficiently large fixed $N$.
+
+\section*{Algebraic count and scope}
+The fourth root block uses seven field coordinates and nine field
+quadrics. Its replacement uses five field coordinates and nine field
+quadrics, reusing the same square and ratio outputs. The two Lucas
+multiplication outputs and the aggregate retain their counts.
+Consequently the proposed table has $204-4=200$ total rational variables,
+with the same 186 rational quadratic residuals. This paragraph is an
+algebraic specification, not a substitute for a complete table and its
+independent coefficient check. The inherited hypotheses and ineffective
+sufficient parameter threshold remain explicit.
+\end{document}
