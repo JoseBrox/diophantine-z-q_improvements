@@ -1,6 +1,6 @@
 # Research directions
 
-The established counts under the retained arithmetic premises are **25 total variables**, or **196 for a quartic**. The additional height hypotheses give **13 total variables**; ordinary rational abc gives a **76-variable quartic**. Every count includes the input. The priorities are variable count, degree, then coefficient height. The [main results table](../README.md) distinguishes the hypotheses and effective parameters; no global minimum or completed independent audit of all inherited arithmetic premises is asserted.
+The established counts under the retained arithmetic premises are **25 total variables**, or **195 for a quartic**. The additional height hypotheses give **13 total variables**; ordinary rational abc gives a **76-variable quartic**. Every count includes the input. The priorities are variable count, degree, then coefficient height. The [main results table](../README.md) distinguishes the hypotheses and effective parameters; no global minimum or completed independent audit of all inherited arithmetic premises is asserted.
 
 ## The 25-coordinate budget
 
@@ -85,6 +85,14 @@ A fixed value of $\tau$ does not supply this missing result. The [fixed-paramete
 
 Those fixed-parameter counterexamples are global: their pole quartics are everywhere locally soluble by the preceding theorem. Their rank and square-class certificates do not constitute local obstructions.
 
+### The stronger rational-complement target
+
+The [native complement theorem](../papers/pole_parameters/guarded_complement_reduction_20261116_v45.tex) sharpens the payoff of the square-complement route. At an actual point-stage tuple every character lies in \(K=\mathbb Q(\sqrt2)\). Prepared inputs have the form \(b_i=w_iS_i^2\), with even \(v_{17}(w_i)\). Vanishing of a complement at any character would make \(w_i/17\) a square in \(K\), contradicting its odd valuation at 17. Thus the complement norm guards are automatic.
+
+If actual simultaneous rational complements exist for every integer input, they themselves exclude the negative odd valuations needed by soundness. Both retained pole pairs can then be removed, giving the conditional counts **21 and 9**, with the existing one-coordinate encoder. This implication is proved; the native realization assertion is not. The **24-variable** common-fiber route remains a weaker sufficient target and does not require square complements. A global coupling with varying twist classes must prove one of these arithmetic incidence statements on the unmodified detector values.
+
+The same theorem constructs infinitely many prepared free inputs at a fixed common pole parameter, including square reduced denominators and all preparation depths. The missing step remains equality with the actual reciprocal traces. Neither a rational parametrization of the free-input quadric nor finite local preparation proves that equality.
+
 ### Integral labels from one finite Pell choice
 
 The [integral Lucas-label theorem](../papers/integer_labels/pell_labels_20261115_v40.tex) supplies a different arithmetic compression. Let $a,n$ be integers with
@@ -134,7 +142,13 @@ $$w_2A=ww_2+C_2^2+wF_H+w_2F_U.$$
 
 The pole input is rescaled by \(\widetilde b=w^2b\). This makes the retained pole rows quadratic without a coordinate for \(w^3\). The zero-contact cases have bounded height and are included in the soundness proof; no new guard is needed. The full reference chart and its treatment of mixed torsion branches remain in the construction. All point, height and square costs are included, and the complete polynomial has 1,250 monomials with the exact height recorded below.
 
-The deeper comparison precision needed by the 196-variable construction is not supplied by this detector. A transfer there requires a new valuation argument or a different use of the integer-growth relation. The present ordinary-abc proof alone does not lower that count.
+The deeper comparison precision needed by the 195-variable construction is not supplied by this detector. A transfer there requires a new valuation argument or a different use of the integer-growth relation. Its variable reduction must therefore be justified separately from the input-preserving affine–Laurent elimination used in the 195-variable family.
+
+### Further elimination from the 195- and 257-variable systems
+
+The [current quartic](../papers/quartic/quartic195_20261116_v45.tex) centers the Lucas expression before rescaling by a guarded unit. The affine change removes constant and cross terms that previously required an inverse-weight square coordinate. Its complete certificate includes every source row, the retained inverse guard and the fixed input. A further reduction must provide the same full-system equivalence or a new soundness and completeness proof. Joint use of the detector units and scalar-normalizer unit is a precise algebraic direction; a favorable count for an isolated block is insufficient.
+
+The [257-variable explicit construction](../papers/quartic/quartic257_20261116_v45.tex) applies an affine centering using an existing inverse coordinate. Its complete rational zero-set equivalence preserves the sufficient parameter N=9682 and gives exact height $149^{19366}$. A further algebraic saving from either family must retain its inverse guards or prove soundness on every additional boundary.
 
 ### Propagating the three-coordinate chart
 
@@ -175,6 +189,14 @@ The next target is a revised quadratic reference test whose valuation argument h
 
 The complete ratio equations also imply the paired curve equations whenever the two reference ratios do not vanish together. The fixed translating point is not two-torsion, which supplies that nonvanishing on the entire reference chart. This redundancy is used in the [176-row, 196-variable construction](../papers/quartic/quartic196_redundancy_20261115_v40.tex) and the current 66-row, 76-variable abc construction. The [primitive quadratic bases](../papers/quartic/primitive_quadratic_bases_20261115_v40.tex) lower coefficient heights by exact invertible rational row changes and specified constant coordinate scalings. Deleting redundant rows or changing their basis alone does not lower the number of variables; the present 76-variable count also uses the arithmetic detector and pole rescaling above.
 
+### A height budget for a weaker local reference conclusion
+
+The [mixed-power height theorem](../papers/elliptic_heights/mixed_power_height_20261116_v45.tex) gives, for \(a=B+X^{16}+T^2\),
+
+$$h(X)\le\frac{703}{2360}h(a)+O(1),\qquad h(T)\le\frac{703}{295}h(a)+O(1).$$
+
+Under ordinary abc, the eight-contact estimate can therefore absorb a product residual \(\beta(n-\beta)\), with \(\beta=X^2+3\), provided its local divisibility and the original index-height bound are proved. Its strict coefficient is \(1406/2065\). The scale adds one shared quadratic coordinate, so the other blocks must save at least two coordinates to give a net improvement. A reference test must still control cancellation, all torsion branches, and its own quadratic conversion. This height theorem does not supply that missing test.
+
 ## Arithmetic and coefficient obligations
 
 Smaller pole equations need a complete realization theorem. The [conic-chain classification](../negative_results/papers/pole_parameters/conic_chain_obstruction_20261115_v41.tex) proves that the quadratic family
@@ -191,13 +213,13 @@ Forcing equality of the two contact square classes can prove soundness, but rati
 
 For effective coefficients in the few-variable construction, the unresolved analytic issue is a uniform effective trace-height estimate on the relevant integer-index tuples. The [explicit construction](../papers/few_variables27/explicit27_20261110_v19.tex) uses both rational components and a third pole predicate to avoid that issue. Positivity on selected completeness witnesses cannot replace a height bound needed for every soundness tuple.
 
-For quartic coefficient optimization, invertible rational combinations of quadratic rows preserve the rational zero set, and invertible coordinate rescalings give a bijection of zero sets. Each proposed change must be followed by primitive integer normalization and exact collection of the squared rows. A height claim for a parameter family needs a bound for every allowed parameter, together with a coefficient that attains it; one small test member does not establish that claim. The current [primitive-basis coefficient theorem](../papers/quartic/primitive_quadratic_bases_20261115_v40.tex) gives
+For quartic coefficient optimization, invertible rational combinations of quadratic rows preserve the rational zero set, and invertible coordinate rescalings give a bijection of zero sets. Each proposed change must be followed by primitive integer normalization and exact collection of the squared rows. A height claim for a parameter family needs a bound for every allowed parameter, together with a coefficient that attains it; one small test member does not establish that claim. The current [affine–Laurent coefficient theorem](../papers/quartic/quartic195_20261116_v45.tex) gives
 
 $$
-H(P_N)=\max\{126616122944180358034867798936,\;32561227748626372080\cdot149^{2N}\}
+H(P_N)=\max\{126616122944180358034867798936,\;149^{2N+2}\}
 $$
 
-for the 196-variable family, and
+for the 195-variable family, and
 
 $$
 H(Q_B)=\max\{20828275368498373068800,\;B^2+275933278576697172\}

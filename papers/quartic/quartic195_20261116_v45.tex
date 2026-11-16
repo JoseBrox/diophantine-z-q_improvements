@@ -1,0 +1,239 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,booktabs,microtype}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\setlength{\emergencystretch}{2em}
+\title{A quartic definition with 195 rational coordinates}
+\author{}\date{16 November 2026}
+\begin{document}\maketitle
+
+\begin{abstract}
+An affine change of the Lucas residual and its square permits a
+Laurent elimination of an inverse-weight square. The resulting
+system has 195 rational coordinates, including the input, and 175
+quadratic equations. Its sum of integer squares has degree
+four and content one. The transformation is a bijection on the full
+rational zero sets, preserves the input, and retains the source's
+arithmetic premises and sufficient parameter threshold. No additional
+$abc$ hypothesis is introduced.
+\end{abstract}
+
+\section{Arithmetic scope and exact specification}
+
+Let $C=149^N$, with $N\ge1$. Let $\mathcal S_{196}(C)$ be the
+primitive quadratic system specified in~\cite{Primitive}, with its
+input coordinate $X=x_1$. Its full coefficient table is
+\begin{center}\small
+\path{computation/quartic/primitive_basis196_v40/quadratic.json}.
+\end{center}
+The SHA-256 digest of that table is
+\begin{center}\small\ttfamily
+381ea54e77505a8d9b452b2afab42bd052beb0fb4dbd0804f63f2f609efbb275.
+\end{center}
+Its arithmetic assertion retains precisely the elliptic-group,
+scalar contact-height, pole obstruction and prepared realization,
+modular contact-height, and fixed-data simultaneous-prime premises
+specified in~\cite{InverseVieta,Laurent}. These are the premises of the
+following theorem. The finite polynomial verification below does not
+independently certify them.
+
+\begin{theorem}\label{thm:main}
+Under the stated arithmetic premises, there is an integer $N_0$ such
+that for every fixed $N\ge N_0$ there is a primitive integer quartic
+$P_N$ in 195 rational coordinates, including $X$, for which
+\[
+ X\in\Z\quad\Longleftrightarrow\quad
+ \exists y_2,\ldots,y_{195}\in\Q:\quad
+ P_N(X,y_2,\ldots,y_{195})=0.
+\]
+The sufficient $N_0$ is exactly a sufficient threshold for
+$\mathcal S_{196}$; it is ineffective. For every $N\ge1$, the
+quadratic construction has 175 rows and its quartic has content one,
+degree exactly four, and 2956 nonzero coordinate monomials. Its exact
+coefficient height is
+\[
+ H(P_N)=\max\{126616122944180358034867798936,\;149^{2N+2}\}.
+\]
+The constant term in this maximum dominates for $1\le N\le5$;
+the parameter term dominates for $N\ge6$. This crossover does not
+specify the sufficient defining threshold $N_0$.
+\end{theorem}
+
+The complete polynomial is specified by the quadratic table and its
+sum-of-squares expansion. The exact certificate records the affine
+map, each Laurent coordinate exponent, the deleted coordinate, the
+primitive row multiplier, and the old-to-new coordinate numbering.
+These finite tables specify every coefficient, without an implicit
+choice of equations or witnesses. They are distributed in
+\begin{center}\small
+\path{computation/quartic/affine_laurent195_v45/}.
+\end{center}
+The files \path{transformation.json}, \path{quadratic-family.json},
+and \path{polynomial-family.json} give the maps, quadratic rows,
+and complete quartic expansion, respectively.
+
+\section{Elimination after an affine coordinate change}
+
+We use the following elementary form of Laurent elimination.
+
+\begin{lemma}\label{lem:laurent}
+Let a polynomial system over $\Q$ have coordinates $x_1,\ldots,x_n$,
+and let $u$ be a coordinate which is nonzero on every rational solution.
+Retain that coordinate unchanged, with exponent zero, and let $x_d$
+be a different coordinate.
+Suppose an invertible affine change, fixing the input, is followed by
+\[
+ x_i=u^{a_i}y_i\quad(i\ne d),\qquad x_d=u^m,
+\]
+where all exponents are integers, the input exponent is zero, and
+$x_d=u^m$ is a defining equation. Assume that the remaining equations,
+after substitution and multiplication by nonzero Laurent monomials,
+are polynomial equations of degree at most two. Assume also that these
+new equations force $u\ne0$.
+Then the new and old rational zero sets are in input-preserving
+bijection. In particular they have the same rational input projection.
+\end{lemma}
+
+\begin{proof}
+On the locus $u\ne0$ every displayed substitution is defined and
+invertible. The eliminated coordinate has its unique specified value.
+The affine change is invertible, and every row multiplier is nonzero.
+Thus each direction of the coordinate map preserves and reflects all
+equations. The nonzero assertion for the new system excludes any
+additional boundary stratum. The input is fixed by both maps.
+\end{proof}
+
+For the source table, write
+\[
+ F=x_{50},\qquad F'=x_{51},\qquad
+ S=x_{72},\qquad S'=x_{73}.
+\]
+Introduce centered coordinates $\widehat F,\widehat S,\widehat S'$ by
+\begin{equation}\label{eq:affine}
+ F=\widehat F+C^{-1},\qquad
+ S=\widehat S+2\widehat F+C^{-1},\qquad
+ S'=\widehat S'+F'.
+\end{equation}
+All remaining coordinates are fixed. This affine transformation is
+triangular with determinant one for every nonzero $C$.
+The source square equations
+\[
+ S=C(F^2+8F'^2),\qquad S'=CFF'
+\]
+therefore become
+\[
+ \widehat S=C(\widehat F^2+8F'^2),\qquad
+ \widehat S'=C\widehat F F'.
+\]
+In particular the two combinations occurring in the detector factors
+simplify exactly to
+\[
+ 1-2CF+CS=C\widehat S,\qquad
+ 4CF'-4CS'=-4C\widehat S'.
+\]
+No square or auxiliary coordinate is added.
+
+Set $w=x_{78}$ and $q=x_{77}$. The source contains the literal rows
+\begin{equation}\label{eq:unit}
+ qw=1,\qquad x_{79}=w^2.
+\end{equation}
+Apply the integer Laurent exponents listed in the certificate to the
+centered coordinates, and eliminate $x_{79}$ using~\eqref{eq:unit}.
+The first row of~\eqref{eq:unit} is retained unchanged. Consequently
+$w\ne0$ on every rational solution of the new system, before any
+Laurent division is made.
+
+\begin{proposition}\label{prop:algebra}
+For every nonzero rational $C$, the 175 certified rows in 195
+coordinates are quadratic and have a rational zero set in
+input-preserving bijection with that of $\mathcal S_{196}(C)$.
+\end{proposition}
+
+\begin{proof}
+After~\eqref{eq:affine}, multiply each source row by the recorded
+power of $C$ to clear its parameter denominators. Such a multiplier
+is nonzero. For each remaining row, the certificate gives an integer
+$e$ and a nonzero rational $c$ such that its Laurent substitution is
+$cw^e$ times the specified target quadratic. The independent checker
+verifies these identities as exact Laurent-polynomial identities.
+It separately verifies that the deleted square equation becomes an
+identity and that the inverse row $qw=1$ is retained literally.
+The input exponent is zero. Lemma~\ref{lem:laurent} now applies.
+\end{proof}
+
+\section{Parameter scaling and coefficient height}
+
+After the affine and Laurent transformation, make the fixed-parameter
+coordinate change
+\[
+ y_i=C^{k_i}z_i,
+\]
+with the integer weights in the parameter-scaling certificate, and
+divide each quadratic row by its recorded power of $C$. The input
+weight is zero. Since $C=149^N\ne0$, this is another
+input-preserving bijection on rational zero sets.
+Every resulting row is an integer quadratic whose coefficients are
+linear in $C$. The absolute value of every coefficient multiplying
+$C$ in an individual row is at most $149$.
+
+The final coefficient tables contain 2965 parameter-separated terms
+and 2956 coordinate-monomial profiles. Each profile has degree at most
+two in $C$. To certify that no coordinate monomial disappears at an
+allowed parameter, the checker substitutes $C=149+t$ into the signed
+profile: the constant term is strictly positive and the remaining
+coefficients are nonnegative. Thus its sign is fixed for every
+$C\ge149$.
+
+The constant coefficient profile of greatest absolute value is
+\[
+ K=126616122944180358034867798936.
+\]
+The profile $22201C^2$ occurs. For $N=1,\ldots,5$, exact integer
+substitution in every profile gives height $K$. For $C\ge149^6$, the
+checker substitutes $C=149^6+t$ in each difference
+$22201C^2\pm c_m(C)$, where $c_m$ is a coefficient profile; every
+resulting coefficient is nonnegative. Hence the height is exactly
+$22201C^2$ in this range. This proves the height formula in
+Theorem~\ref{thm:main} for every $N\ge1$.
+
+\section{The quartic and verification}
+
+Denote the final certified integer quadratic rows by
+$Q_1,\ldots,Q_{175}$. Define
+\[
+                 P_N=\sum_{j=1}^{175}Q_j^2.
+\]
+Over $\Q$, this polynomial vanishes precisely when all $Q_j$ vanish.
+The input occurs only through its square in the retained input-square
+row. Its squared leading term gives coefficient one on $X^4$, and
+no other row contributes to that monomial. Therefore $P_N$ has degree
+exactly four and integer content one for every allowed parameter.
+Proposition~\ref{prop:algebra} and the source arithmetic assertion
+prove Theorem~\ref{thm:main}.
+
+The producer and independent checker use separate polynomial
+implementations. The latter verifies the source digest, all 175 row
+identities, the deleted identity, the nonzero guard, the fixed input,
+the parameter-scaling identities, the complete sum-of-squares
+expansion, and the coefficient-height and support certificates. These statements hold
+symbolically in the fixed parameter; they are not tests at sampled
+rational witnesses or numerical parameter values.
+
+\begin{thebibliography}{9}
+\bibitem{Primitive}
+\emph{Primitive quadratic bases and small-coefficient quartic presentations},
+\nolinkurl{papers/quartic/primitive_quadratic_bases_20261115_v40.tex}.
+\bibitem{Laurent}
+\emph{Quartics in 196 and 258 variables by elimination after monomial
+rescaling},
+\nolinkurl{papers/quartic/laurent_elimination_20261115_v38.tex}.
+\bibitem{InverseVieta}
+\emph{A quartic in 198 variables},
+\nolinkurl{sources/h10_quartic198/arithmetic/inverse_vieta_198.tex}.
+\end{thebibliography}
+\end{document}

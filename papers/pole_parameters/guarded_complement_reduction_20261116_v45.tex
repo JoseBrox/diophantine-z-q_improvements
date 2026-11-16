@@ -1,0 +1,313 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,booktabs,microtype}
+\usepackage[margin=25mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\setlength{\emergencystretch}{3em}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}\newtheorem{definition}[theorem]{Definition}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\DeclareMathOperator{\N}{N}\DeclareMathOperator{\Tr}{Tr}
+\title{Unit guards and a finite square-complement reduction for elliptic detectors}
+\author{}\date{16 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+For an actual rational specialization of the elliptic point algebra,
+every geometric character takes values in $\Q(\sqrt2)$. This implies
+that a prepared detector input has nonzero complement $17(17-b)$ at
+every character: vanishing would contradict its square class at~17.
+Thus rational square complements, if realized by actual detector
+tuples, can be encoded with the existing single finite-algebra
+coordinate and no additional complement-guard avoidance requirement.
+The resulting conditional counts are 21 variables for the general
+source and nine for either conditional source, including the input.
+The required simultaneous rational-complement realization is stated
+explicitly and is not proved. Separately, an elementary construction
+gives infinitely many prepared free coefficient inputs at a common
+pole parameter; it imposes no native trace realization.
+\end{abstract}
+
+\section{The point algebra and its splitting field}
+Put $K=\Q(\sqrt2)$. For retained rational coordinates $h_0,h_1$, write
+\[
+h=h_0+h_1\sqrt2,\qquad h^4-(3-\sqrt2)^2=A+B\sqrt2.
+\]
+The rank-four point algebra of~\cite{Unit} has basis $1,U,V,W$ and
+multiplication table
+\begin{equation}\label{eq:block}
+\begin{gathered}
+U^2=2A+2W,\qquad V^2=A-W,\qquad UV=2B,\\
+UW=AU-2BV,\qquad VW=BU-AV,\qquad W^2=A^2-2B^2.
+\end{gathered}
+\end{equation}
+It is etale at every rational pair $(h_0,h_1)$, and its rational
+characters correspond to $j=u+v\sqrt2\in K$ satisfying
+$j^2=A+B\sqrt2$, with $U=2u$, $V=2v$, and $W=u^2-2v^2$.
+An \emph{actual point specialization} means such a rational character
+has been chosen for every point block. The corresponding elliptic
+point is $(h^2,hj)$.
+
+\begin{lemma}\label{lem:split}
+At an actual point specialization, the tensor product $\mathcal B$ of
+any finite number of point blocks is split by $K$. In particular every
+geometric character of $\mathcal B$ has image in $K$.
+\end{lemma}
+\begin{proof}
+For one block let $j=u+v\sqrt2$ be the chosen root and let $\bar j$ be
+its conjugate. Its four geometric characters are
+\[
+U=\epsilon_+j+\epsilon_-\bar j,\qquad
+V=\frac{\epsilon_+j-\epsilon_-\bar j}{\sqrt2},\qquad
+W=\epsilon_+\epsilon_-\N_{K/\Q}(j),
+\quad \epsilon_+,\epsilon_-\in\{1,-1\}.
+\]
+Substitution verifies~\eqref{eq:block}. These are four distinct
+characters, because $j,\bar j$ are nonzero; they exhaust the
+characters of the rank-four etale algebra. Every value lies in $K$.
+Tensoring the resulting splitting isomorphisms over $K$ proves the
+assertion for $\mathcal B$.
+\end{proof}
+
+\begin{lemma}\label{lem:units}
+Let $\mathcal B$ be the point algebra at an actual point
+specialization. Let $w\in\Q^\times$ have even valuation at~17, and
+let $S\in\mathcal B^\times$. If $b=wS^2$, then
+\[
+                         17(17-b)\in\mathcal B^\times.
+\]
+\end{lemma}
+\begin{proof}
+If a geometric character $\chi$ annihilated this element, then
+$w\chi(S)^2=17$, and hence
+\[
+                         \frac w{17}=\chi(S)^{-2}\in K^{\times2}.
+\]
+A nonzero rational number that is a square in $K$ belongs to
+$\Q^{\times2}$ or $2\Q^{\times2}$. Indeed, the irrational component
+of $(a+b\sqrt2)^2$ vanishes only when $ab=0$. Both rational square
+classes have even valuation at~17, whereas $v_{17}(w/17)$ is odd.
+This is a contradiction. A finite etale algebra element is a unit
+exactly when every geometric character is nonzero on it.
+\end{proof}
+
+\section{The native complement condition}
+Both sources in~\cite{Unit} have detector inputs of the form
+\begin{equation}\label{eq:detector}
+b_i=w_i\left(\frac{\N(\mathcal W_i)}{(\mathcal W_i)_0}\right)^2
+    =\frac{4w_i}{\Tr(\mathcal W_i^{-1})^2},\qquad i=0,1.
+\end{equation}
+For the general source $w_i=\rho R_i$. For a conditional source,
+replace its weight $F_i$ by $w_i=F_i/(4\delta_i^8)$ to absorb
+the guarded scalar square in the displayed multiplier.
+Here $w_i$ is rational and depends only on the retained input,
+square-abscissa data, and slope. In particular it has the same value
+at every point-algebra character. All divisions and the displayed
+nonzero square multipliers are guarded in the point stage.
+
+Call a rational input \emph{prepared} if it has square reduced
+denominator, lies in $(0,17)$, is a square in each of
+$\Q_2,\Q_3,\Q_{17}$, and satisfies
+\[
+v_2(b)\ge3,\qquad v_3(b)\ge1,\qquad v_{17}(b)\ge2.
+\]
+
+\begin{corollary}\label{cor:nativeunits}
+At an actual guarded point-stage tuple with prepared detector inputs,
+each $17(17-b_i)$ is a unit of the whole point algebra.
+\end{corollary}
+\begin{proof}
+At the selected rational character the square multiplier
+in~\eqref{eq:detector} is a nonzero rational number. Preparation
+therefore implies that $v_{17}(w_i)$ is even. Apply
+Lemma~\ref{lem:units} separately to both inputs. The square multipliers
+are units because the native point-stage guards hold at every
+character.
+\end{proof}
+
+\begin{lemma}\label{lem:valuation}
+Let $b\in\Q^\times$. If $17(17-b)$ is a rational square, then
+$v_\ell(b)$ is not a negative odd integer at any prime $\ell\ne17$.
+\end{lemma}
+\begin{proof}
+If $v_\ell(b)<0$ and $\ell\ne17$, the valuations of $17$ and $b$
+are distinct, so
+$v_\ell(17(17-b))=v_\ell(b)$. The valuation of a nonzero square
+is even. The zero-complement case gives $b=17$ directly.
+\end{proof}
+
+Fix a coefficient member of the general source, or of either
+conditional source, in the sufficient soundness range of its
+corresponding theorem. Retain the source's remaining arithmetic
+premises. The following is the additional arithmetic assertion relevant
+to this reduction.
+
+\begin{definition}[Native rational-complement realization]
+\label{def:target}
+For every integer input covered by the source completeness statement,
+there is an actual rational point-stage tuple, with its native root
+and auxiliary elliptic indices, for which all point-stage guard norms
+are nonzero, both detector inputs are prepared, and
+\[
+                    17(17-b_0),\quad17(17-b_1)\in\Q^{\times2}
+\]
+at the selected rational character. For the conditional sources the
+completeness range consists of the nonzero integers; the final input
+factor includes zero.
+\end{definition}
+
+This assertion concerns the unmodified detector functions
+\eqref{eq:detector}, evaluated at actual source tuples. It is a global
+rational condition. Neither local squareness at finitely many places
+nor the existence of freely chosen coefficient inputs implies it.
+
+\begin{theorem}\label{thm:reduction}
+If Definition~\ref{def:target} holds for the chosen source, its pole
+stage can be replaced by two finite square choices using no retained
+pole coordinates. The guarded one-coordinate finite-algebra encoding
+then gives an integer polynomial defining $\Z$ with the following
+total numbers of variables:
+\begin{center}
+\begin{tabular}{lrrr}\toprule
+Source & Point pairs & Retained coordinates & Total\\\midrule
+General &9&$1+18+1=20$&21\\
+Either conditional &3&$1+6+1=8$&9\\\bottomrule
+\end{tabular}
+\end{center}
+The input is included. The native realization assertion is not a
+consequence of the guard lemmas.
+\end{theorem}
+\begin{proof}
+Retain the input, all point pairs, and the slope. Let $R$ be the
+integer polynomial ring in these coordinates, and let $\mathcal B_R$
+be the free rank-$4^p$ point algebra. Clearing the native guarded
+denominators gives $b_i=N_i/D_i$ with $N_i,D_i\in\mathcal B_R$.
+The denominators are included among the guards. Adjoin two finite
+generators by
+\begin{equation}\label{eq:newalgebra}
+\mathcal A_R=
+\mathcal B_R[q_0,q_1]/
+\bigl(q_i^2-17D_i(17D_i-N_i):i=0,1\bigr).
+\end{equation}
+This algebra is free of rank $4^{p+1}$. At a rational character with
+$D_i\ne0$, the rational number $q_i/D_i$ is a square root of
+$17(17-b_i)$, and every such root gives a character extending the
+point character.
+
+Include the norms of $17D_i-N_i$ in the scalar guard, together with
+all retained point-stage guards and denominator guards. At a rational
+base tuple where this scalar guard is nonzero, the point algebra is
+etale and both new quadratic radicands are units. Thus all hypotheses
+of the separator and determinant theorem in~\cite[Section 6]{Unit}
+hold. Its polynomial envelopes and multiplication matrices use only
+the retained coordinates. They introduce no further rational
+parameters. With a single encoder coordinate $Y$, the resulting
+integer determinant polynomial has a rational zero exactly when
+\eqref{eq:newalgebra} has a rational character satisfying the guards.
+If the scalar guard vanishes, that determinant is identically one.
+
+For soundness, its rational character supplies the same native point
+data and tests, together with both rational square complements.
+Lemma~\ref{lem:valuation} gives the no-negative-odd-valuation
+implication used by the detector soundness proofs of~\cite{General,Conditional}, outside their
+exceptional set containing $2,3,17$. The remaining local extraction
+and height arguments are unchanged. Thus the rational input is an
+integer. For a conditional source, multiply the determinant by $X$
+to include zero exactly as in its original source.
+
+For completeness, Definition~\ref{def:target} supplies the actual
+point tuple and both square roots. Corollary~\ref{cor:nativeunits}
+makes the new guard factors nonzero at every point-algebra character.
+The original point-stage guards are already nonzero by hypothesis.
+Both radicands in~\eqref{eq:newalgebra} are therefore units, and the
+separator theorem supplies the rational encoder coordinate. There are
+$2p+2$ retained coordinates and one encoder, giving $2p+3$ in total.
+\end{proof}
+
+The two new finite roots replace the two former finite pole ordinates.
+The four former retained coordinates $(\tau_0,s_0,\tau_1,s_1)$ have
+all been removed. The proof requires neither an additional common
+parameter nor any pole-guard density assertion. It retains every
+point-stage guard. No degree or coefficient bound, and no established
+variable record, is asserted without the realization hypothesis.
+
+\section{Prepared free inputs at a common pole parameter}
+The next result describes coefficient-level points on the rational
+surface of~\cite{Quadric}.
+
+\begin{proposition}\label{prop:preparation}
+Let $w>0$ be rational and a square in $\Q_2$, $\Q_3$, and
+$\Q_{17}$. Put $D=68w$ and fix $\tau\in\Q^\times$ with
+$\tau^2\ne D$. There are infinitely many rational $h>0$, tending
+to zero, for which
+\[
+b=\frac{68Dh^2}{(1+Dh^2)^2},\qquad
+s=17\frac{1-Dh^2}{1+Dh^2},\qquad
+V=\frac{1+Dh^2}{34h}
+\]
+satisfy $b=4w/V^2$, $17(17-b)=s^2$, and $b$ is prepared.
+With
+\[
+e=\frac{\tau^2-D}{\tau^2+3D},\qquad
+p=-\frac{4D\tau}{\tau^2+3D},\qquad q=ps^2,
+\]
+both pole equations
+\[
+p^2=D(1-e)(1+3e),\qquad
+q^2=D(s^2-eC)(s^2+3eC),\quad C=17(17-b),
+\]
+hold with $pqs\ne0$. A finite family of such weights admits these
+choices simultaneously at any one common admissible $\tau$.
+\end{proposition}
+\begin{proof}
+The identities follow by substitution. Let $S$ contain $2,3,17$ and
+the primes where $v_\ell(w)$ is odd. Choose integers $N_\ell\ge0$
+such that
+\[
+v_\ell(D)+2N_\ell>0,\qquad
+v_\ell(68D)+2N_\ell\ge r_\ell,
+\]
+where $(r_2,r_3,r_{17})=(3,1,2)$ and the other $r_\ell$ are zero.
+Set $H=\prod_{\ell\in S}\ell^{N_\ell}$ and take $h=H/M$ with
+positive $M\equiv1\pmod{\prod_{\ell\in S}\ell}$ tending to
+infinity. At each $\ell\in S$, $1+Dh^2$ is a unit and the required
+nonnegative valuation bound holds. Also
+\[
+\frac bw=\left(\frac{68h}{1+68wh^2}\right)^2,
+\]
+which gives the three local square conditions. Outside $S$, all
+valuations of $b$ are even. Hence every negative valuation is even,
+and the reduced denominator is a square. For sufficiently large $M$,
+$0<b<17$ and $0<Dh^2<1$. The displayed $s,p,q$ are nonzero.
+The function $b(h)$ is nonconstant, so these choices give infinitely
+many distinct $b$. Apply the construction independently to each
+weight for the finite-family assertion.
+\end{proof}
+
+Proposition~\ref{prop:preparation} does not impose
+$V=\Tr(\mathcal W^{-1})$. Establishing that equality for actual
+native tuples, simultaneously for both detectors and with their
+point-stage guards, remains the arithmetic requirement in
+Definition~\ref{def:target}.
+
+\begin{thebibliography}{9}
+\bibitem{Unit}
+\emph{A single norm determinant for the 25- and 13-variable constructions},
+project source, 14 November 2026, version 28,
+\nolinkurl{papers/finite_algebra/unit_norm_20261114_v28.tex}.
+\bibitem{General}
+\emph{A defining polynomial in twenty-five variables: combined scalar
+and comparison conditions}, project source, 10 November 2026, version 19,
+\nolinkurl{papers/few_variables25/few_variables25_merged_20261110_v19.tex}.
+\bibitem{Conditional}
+\emph{Thirteen Variables from Direct Elliptic Index Comparison}, project source,
+10 November 2026, version 22,
+\nolinkurl{papers/conditional_few_variables/direct_input13_20261110_v22.tex}.
+\bibitem{Quadric}
+\emph{A rational quadric model for a varying-input pole surface}, project source,
+16 November 2026, version 44,
+\nolinkurl{papers/pole_parameters/varying_input_quadric_20261116_v44.tex}.
+\end{thebibliography}
+\end{document}
