@@ -1,0 +1,203 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\Z}{\mathbb Z}
+\DeclareMathOperator{\Nm}{N}
+\title{A prepared two-coordinate pole test from congruent-number twists}
+\author{}\date{16 November 2026}
+\begin{document}\maketitle
+
+\section{Arithmetic input and scope}
+
+For a nonzero rational number $l$, write $E_l:y^2=x^3-l^2x$.
+We use Theorem B of Burungale's preprint \cite{B}: if $\beta,\eta$ are
+coprime positive squarefree integers, $\beta\equiv7\pmod8$,
+$\eta\equiv1\pmod8$, and each is a square in $\Q_p$ at every prime
+dividing the other, then there is a positive squarefree $n\equiv5\pmod8$
+such that both $E_n$ and $E_{n\eta}$ have rank one and contain rational
+points with abscissa in $\beta\Q^{\times2}$. The source gives further
+conclusions which are not used here. The application below checks all
+these hypotheses. It retains this published theorem as an arithmetic
+input; it does not independently reprove its deep arithmetic proof.
+
+Define
+\begin{equation}\label{eq:P}
+ P_b(u,s)=343b(7b+u^2)^2s^4
+       -7b(7b-u^2)^2(b-7)^2.
+\end{equation}
+The pole predicate is
+\begin{equation}\label{eq:predicate}
+ Q^2=P_b(u,s),\qquad
+ b s(7b-u^2)(b-7)(7b+u^2)Q\ne0.
+\end{equation}
+There are two unrestricted rational coordinates $u,s$ and one finite
+quadratic generator $Q$. Direct expansion of $P_b$ has total degree
+nine, twelve monomials, and coefficient height $16807=7^5$.
+
+\begin{theorem}[Local implication]\label{thm:sound}
+If \eqref{eq:predicate} has a rational solution, then $v_p(b)$ is not
+negative and odd for any prime $p\notin\{2,7\}$.
+\end{theorem}
+\begin{proof}
+Put
+\[
+ a=7b,\quad H=1-b/7,\quad
+ E=\frac{a-u^2}{a+u^2},\quad
+ p_0=\frac{2au}{a+u^2},\quad
+ q_0=\frac{Q}{7(a+u^2)}.
+\]
+The equation and elementary expansion give
+\[
+ p_0^2=a(1-E^2),\qquad q_0^2=a(s^4-E^2H^2).
+\]
+Consequently
+\[
+ (a,ap_0)\in E_{aE}(\Q),\qquad
+ (as^2,asq_0)\in E_{aEH}(\Q).
+\]
+Their abscissas are nonzero and belong to $a\Q^{\times2}$, and both
+curve parameters are nonzero by the guards.
+
+Suppose $p\notin\{2,7\}$ and $v_p(b)=k<0$ is odd. Then $v_p(H)=k$,
+so exactly one of $aE,aEH$ has even valuation, say $v_p(l)=2j$.
+Rescaling $x=p^{2j}X$, $y=p^{3j}Y$ gives
+\[
+ Y^2=X(X-L)(X+L),\qquad L=p^{-2j}l\in\Z_p^\times.
+\]
+The abscissa $X$ has odd valuation because its original square class
+was $a\Q^{\times2}$. But if $v_p(X)<0$, the right side has odd
+valuation $3v_p(X)$; if $v_p(X)>0$, it has odd valuation $v_p(X)$.
+Both contradict its being a square. This proves the assertion.
+\end{proof}
+
+\begin{theorem}[Prepared realization and density]\label{thm:complete}
+Suppose that $b\in\Q$ has square reduced denominator and
+\[
+ 0<b<7,\qquad b\in\Q_2^{\times2},\qquad
+ v_2(b)\ge3,\qquad v_7(b)\ge2.
+\]
+Under the arithmetic input above, the projection to the $(u,s)$ plane
+of the rational solutions of \eqref{eq:predicate} is Zariski dense.
+In particular, the predicate has rational witnesses, and they can
+avoid any prescribed finite collection of nonzero polynomials in $u,s$.
+\end{theorem}
+\begin{proof}
+Let $\beta$ and $\eta$ represent the positive square classes of $7b$
+and $H=1-b/7$, respectively, by positive squarefree integers.
+The $2$-adic hypotheses give $v_2(b)\ge4$ even, and hence
+\[
+ \beta\equiv7\pmod8,\qquad \eta\equiv1\pmod8.
+\]
+Write $b=A/D^2$ in lowest terms with $A,D>0$. The $7$-adic hypothesis
+gives $7\nmid D$, $49\mid A$, and
+\[
+ H=(D^2-A/7)/D^2,\qquad H\equiv1\pmod7.
+\]
+At every odd prime dividing $\beta$, the value $H$ is a unit square:
+away from $7$ its residue is $1$, and at $7$ the preceding congruence
+applies. Therefore $\eta$ is a square in $\Q_p$ at all such primes.
+Conversely, a prime dividing $\eta$ is different from $2,7$, does not
+divide $D$, and satisfies $b\equiv7\pmod p$. Thus $7b\equiv49\pmod p$
+is a unit square. It follows that $\beta,\eta$ are coprime and that
+$\beta$ is a square in $\Q_p$ at every prime dividing $\eta$.
+All hypotheses of the arithmetic input hold, including when $\eta=1$.
+
+Choose the resulting $n$. Write $H=\eta c^2$, $c\in\Q^\times$.
+The scaling $(x,y)\mapsto(c^2x,c^3y)$ transports the second curve to
+$E_{nH}$ and preserves the abscissa square class $\beta$.
+Both $E_n$ and $E_{nH}$ therefore have infinitely many rational points
+with abscissa in $7b\Q^{\times2}$. To see the infinitude in a fixed
+class, start with a point in that class and add arbitrary points of
+$2E_l(\Q)$: the abscissa square-class homomorphism is unchanged, and
+the curve has positive rank. Exclude the finitely many torsion points.
+
+Put $a=7b$, and independently choose points
+\[
+ R=(av^2,vY)\in E_n(\Q),\qquad
+ R'=(aw^2,wZ)\in E_{nH}(\Q),
+\]
+with $v,w,Y,Z$ nonzero. The positive abscissas of these nontorsion
+points exceed the positive curve parameters, so $av^2>n$.
+Define
+\[
+ E=\frac{n}{av^2},\quad
+ p_0=\frac{Y}{av^2},\quad
+ s=\frac wv,\quad q_0=\frac Z{av^2},\quad
+ u=\frac{p_0}{1+E}.
+\]
+The two elliptic equations give
+\[
+ p_0^2=a(1-E^2),\qquad q_0^2=a(s^4-E^2H^2),
+\]
+and $0<E<1$, $p_0q_0s\ne0$. Solving the first conic gives
+\[
+ E=\frac{a-u^2}{a+u^2},\qquad
+ p_0=\frac{2au}{a+u^2}.
+\]
+Now $Q=7(a+u^2)q_0$ satisfies \eqref{eq:predicate}.
+
+Varying the first point produces infinitely many distinct values of
+$v^2$, hence of $E$ and of $u^2=a(1-E)/(1+E)$, and therefore infinitely
+many $u$. For each fixed first point, independently varying the second
+point gives infinitely many $s=w/v$. If a polynomial vanishes on all
+these witness pairs, then for each of infinitely many $u$ its
+polynomial in $s$ has infinitely many roots. Every coefficient
+vanishes at infinitely many $u$, so the polynomial is zero.
+The same argument applies to polynomials with algebraic coefficients.
+This proves density and finite guard avoidance.
+\end{proof}
+
+\begin{proposition}[Whole-character guards]\label{prop:guards}
+Let $\mathcal A$ be a finite etale $\Q$-algebra and let
+$b,b-7\in\mathcal A^\times$. Suppose a rational character of
+$\mathcal A$ sends $b$ to an input satisfying Theorem~\ref{thm:complete}.
+Then actual rational witnesses can be chosen so that, at every
+geometric character of $\mathcal A$, all factors
+\[
+ s,\quad7b-u^2,\quad7b+u^2,\quad P_b(u,s)
+\]
+are nonzero. The assertion also allows any further finite set of
+guards whose norms are nonzero polynomials in $u,s$.
+\end{proposition}
+\begin{proof}
+At a character with value $c\ne0$, the two quadratic factors are
+nonzero polynomials in $u$. The leading coefficient of $P_c$ as a
+polynomial in $s$ is $343c(7c+u^2)^2$, which is nonzero as a polynomial
+in $u$. The product of these character polynomials, equivalently the
+corresponding norm, is therefore a nonzero polynomial over $\Q$.
+Apply Theorem~\ref{thm:complete} to their finite product.
+\end{proof}
+
+\section{Rescaling and coordinate census}
+
+If a fixed circuit square extraction writes $b=d t^2$ with $dt\ne0$,
+replace $u=t\tau$ and $q_0=tq_1$. The cleared radicand becomes
+\[
+ Q_1^2=343d(7d+\tau^2)^2s^4
+       -7d(7d-\tau^2)^2(b-7)^2.
+\]
+This still retains only two rational coordinates, $\tau,s$, and one
+finite quadratic root. The transformation is invertible on $t\ne0$,
+and the density and norm-guard arguments persist unchanged.
+
+In a source already carrying a finite point algebra, adjoining this
+one square root doubles its rank. A guarded finite-algebra encoder
+then uses the same single encoder coordinate as before. The block
+does not by itself lower the established $25$- or $13$-variable counts.
+The rescaled prior block in the repository also has total degree
+nine; no final determinant-degree improvement is claimed here.
+The two required additions to preparation are the upper bound $7$
+at every real point-algebra character and the selected rational
+input condition $v_7(b)\ge2$. Their compatibility with any particular
+whole-source construction must be checked before replacement.
+
+\begin{thebibliography}{9}
+\bibitem{B} A. Burungale, \emph{A Diophantine definition of $\Z$ in $\Q$},
+arXiv:2611.16130v1, 12 November 2026, Theorem B and Section 3.
+\url{https://arxiv.org/abs/2611.16130}.
+\end{thebibliography}
+\end{document}
