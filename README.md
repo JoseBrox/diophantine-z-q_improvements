@@ -40,7 +40,7 @@ The 74-variable quartic tests weighted products of reference and numerator recip
 
 The coefficient-basis transformations and the 195/257-coordinate eliminations preserve their corresponding full rational solution sets. The finite-algebra construction permits a zero final pole ordinate and proves soundness on that larger locus.
 
-Current specifications: [results JSON](data/results_20261116_v46.json), [proof and verification guide](docs/results_20261116_v46.md), and [research directions](docs/research_directions.md).
+Current specifications: [results JSON](data/results_20261116_v47.json), [proof and verification guide](docs/results_20261116_v47.md), and [research directions](docs/research_directions.md).
 
 The [fixed-fiber and detector-index theorems](docs/common_parameter_guard_reduction_20261116_v42.md) show that one common rational pole fiber with nonzero ordinates suffices for all remaining pole guards, and give independent auxiliary-index families with unchanged square-class scalars. The common rational fiber itself remains unproved. Proved obstructions and lower bounds are collected separately in [negative_results](negative_results/README.md).
 
@@ -76,6 +76,8 @@ The [three-coordinate reference chart](papers/elliptic_charts/three_coordinate_r
 
 The [quadratic reference and height rescaling](papers/elliptic_charts/scaled_reference_height_20261116_v43.tex) makes both reference reciprocal abscissas linear. It preserves quadratic point and ratio rows and recovers the original fixed-index height with one rational coordinate. The reference, point, ratio and height blocks use **32 rational coordinates on the nonzero-scale locus**; their necessary explicit quadratic guard adds one, giving **33 in total**, the same as the original blocks. Detector conversion remains separate. No smaller complete quartic follows.
 
+The [quadratic reference-cover theorem](papers/elliptic_charts/reference_covers_20261116_v47.tex) gives polynomially inverse presentations with three and four field coordinates, including all four points over the two identity-reference boundaries. The four-coordinate form makes both reference reciprocal abscissas linear and remains quadratic after input scaling. Its weighted numerator and ratio equations give the physical detector products directly. A separate Jacobi chart recovers the original difference trace with one rational helper and classifies its entire zero-scale fiber. [Universal exact certificates](computation/elliptic_charts/reference_covers_v47) verify the maps and identities. Combining these blocks within a smaller complete quartic remains unproved; the ordinary-abc record stays **74**.
+
 The [integral Pell-label theorem](papers/integer_labels/pell_labels_20261115_v40.tex) obtains exponential growth from two exact integral labels and one finite quadratic choice. It proves sharp bounds and arbitrarily large witnesses with prescribed finite congruence data. Its [checker and certificate](computation/integer_labels/pell_compression_v40) verify the identities and exceptional cases. Its application requires exact integral labels; no reduction below 25 variables follows from this theorem alone.
 
 ## Height estimates and compatible poles
@@ -100,6 +102,12 @@ The [native square-complement theorem](papers/pole_parameters/guarded_complement
 
 The [finite-class complement theorem](papers/pole_parameters/finite_complement_classes_20261116_v46.tex) weakens that realization target. Finitely many levels 17m² and positive square classes supported on the **original exceptional prime set** can be allowed without adding retained coordinates. At the single level 17, it is enough that both actual complements have even valuation outside that fixed set. All whole-algebra guards remain automatic. The paper proves the same conditional **21/9** census and gives an infinite prepared free-input family with nonsquare complement class 409, allowed when 409 belongs to the exceptional set. **Actual native realization remains unproved**, so the established general counts remain **25 and 13**.
 
+The [norm-compatible preparation](papers/pole_parameters/norm_compatible_scalar_20261116_v47.tex) makes both associated norm conics rationally soluble throughout a prepared integer-input family. For the general source it uses an explicit degree-eight input polynomial reflecting integrality and a scalar that is a norm from **Q(√10657)**, preserving the 25-coordinate source and its height argument. The conditional sources already admit the same bare-norm preparation without changing their scalar. The unresolved equations require the first conic coordinates to equal the **actual prescribed detector traces**; bare conic solubility does not imply the 21/9 target.
+
+The [actual prescribed-trace benchmark](papers/pole_parameters/admissible_levels_native_traces_20261116_v47.tex) realizes both equations for **X=−1 and X=1**, at the algebraic fixture **B=3**, after fixed positive exceptional-unit rescalings. It retains the actual point functions, detector products, traces and coupled arguments. [Three exact arithmetic implementations](computation/pole_parameters/native_trace_fixture_v47) check both equations and all **128 complement guards** over the **64 point-algebra characters**. The same paper allows general fixed levels with nonnegative even valuations outside the exceptional set; their complement guards must be established directly. This benchmark does not give uniform completeness or a sufficient defining shift. The separate [polynomial-level local theorem](papers/pole_parameters/polynomial_levels_local_20261116_v47.tex) gives explicit comparison and reference-product powers that preserve local extraction for levels cM(X)², without asserting global realization.
+
+The separate [signed finite-class obstruction](negative_results/papers/pole_parameters/finite_nonsquare_class_obstruction_20261116_v47.tex) proves that every finite set of nontrivial rational square classes fails uniformly for the original general scalar, even with arbitrary guarded auxiliary tuples and rational level multipliers. It leaves the rational-square class available and does not apply to the redesigned norm-compatible scalar.
+
 ## Rings of integers of number fields
 
 The [definability reductions](papers/number_fields/number_field_definability_20261109_v12.tex) relate the questions for the ring of integers, the rational integers and the rational subfield, and prove descent implications between number fields.
@@ -117,6 +125,7 @@ The [pole-compression guide](negative_results/docs/pole_compression_obstructions
 Use **Python 3.12** for the byte-pinned legacy suite and **SymPy 1.14.0** for symbolic checks. From the repository root:
 
     python -m pip install sympy==1.14.0
+    python -B scripts/verify_v47.py
     python -B scripts/verify_v46.py
     python -B scripts/verify_v45.py
     python -B scripts/verify_v44.py

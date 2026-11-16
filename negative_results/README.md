@@ -8,6 +8,7 @@ The [current construction table](../README.md#current-constructions--16-november
 
 | Manuscript | Result and scope |
 |:--|:--|
+| [Finite nontrivial complement classes](papers/pole_parameters/finite_nonsquare_class_obstruction_20261116_v47.tex) | Every finite set of nontrivial signed rational square classes fails for both complements on an arithmetic progression of inputs in the original general scalar source, uniformly in the odd exponent and all rational level multipliers. Arbitrary guarded auxiliary tuples are covered. The rational-square class and redesigned scalars remain possible. |
 | [Conic-chain predicates](papers/pole_parameters/conic_chain_obstruction_20261115_v41.tex) | Every fixed rational coefficient in the specified five-auxiliary family has arbitrarily small prepared local counterexamples. |
 | [Automatic first conics](papers/pole_parameters/automatic_conic_obstruction_20261115_v41.tex) | Dense prepared counterfamilies obstruct the remaining pole equations, including on the completely split six-contact map. The argument uses only Tunnell's unconditional necessary criterion. |
 | [Fixed pole parameters](papers/pole_parameters/fixed_pole_parameters_20261109_v17.tex) | Constant first-conic values and the specified fixed conic parameters fail on prepared inputs. The fixed-parameter genus-one examples are global obstructions, consistent with everywhere local solubility. |

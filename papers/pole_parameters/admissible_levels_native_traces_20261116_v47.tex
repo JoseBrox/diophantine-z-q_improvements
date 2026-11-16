@@ -1,0 +1,312 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,booktabs,microtype}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\N}{N}
+\title{Admissible complement levels and prescribed native traces}
+\author{}\date{16 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+We extend the negative-odd-valuation implication for complement equations
+to fixed rational levels having nonnegative even valuations outside the
+source's exceptional set. For the actual conditional elliptic detector
+at inputs $X=\pm1$, we construct two simultaneous rational complement
+witnesses at one common slope, with the required height-dependent second
+argument. The exceptional set is unchanged. Every point, difference and
+trace guard, and all 128 complement guards over the two finite point
+algebras, are checked exactly. Fixed positive coefficients supported on
+the exceptional primes convert these witnesses into prescribed-trace
+norm equations with levels $17m_i^2$. The coefficient member is $B=3$;
+no sufficient defining threshold or uniform realization theorem is
+asserted.
+\end{abstract}
+
+\section{Admissible fixed rational levels}
+
+Let $S$ be a fixed set of exceptional rational primes containing $17$.
+A nonzero rational level $a$ is \emph{admissible} if
+\begin{equation}\label{eq:admissible}
+             v_p(a)\in2\Z_{\ge0}\qquad(p\notin S).
+\end{equation}
+A nonzero rational class representative $d$ is allowed if
+$v_p(d)\in2\Z$ for every $p\notin S$.
+
+\begin{lemma}\label{lem:local}
+If $a$ is admissible and
+\[
+                         q^2=d\,a(a-b)
+\]
+has a rational solution, then $b$ has no negative odd valuation outside
+$S$.
+\end{lemma}
+\begin{proof}
+If $v_p(b)<0$ were odd, then it would be strictly smaller than
+$v_p(a)$, and
+\[
+ v_p\bigl(d\,a(a-b)\bigr)=v_p(d)+v_p(a)+v_p(b)
+\]
+would be odd. This contradicts squareness. If $a=b$, the conclusion
+follows directly from~\eqref{eq:admissible}.
+\end{proof}
+
+Finitely many admissible levels and allowed classes remain fixed
+coefficient data. Their finite union can be encoded by taking a product
+of the separately guarded finite-algebra encodings, as
+in~\cite{FiniteClasses}. This does not introduce a retained coordinate.
+For arbitrary admissible levels, the norms of $a-b$ in the whole point
+algebra must be established separately. No automatic nonvanishing
+assertion is being made for all such levels.
+
+\begin{lemma}\label{lem:scale}
+Let $\gamma\in\Q_{>0}$ satisfy $v_p(\gamma)=0$ for every $p\notin S$.
+Replacing a physical detector weight $w$ and its output $b$ by
+$\gamma w,\gamma b$, while keeping the detector product unchanged,
+preserves their valuations at every prime outside $S$. If the level is
+also replaced by $\gamma a$, then the whole-algebra complement guard is
+multiplied by the nonzero rational scalar $\gamma$.
+\end{lemma}
+\begin{proof}
+Both assertions follow from
+$v_p(\gamma)=0$ and $\gamma a-\gamma b=\gamma(a-b)$.
+\end{proof}
+
+This is a statement about fixed coefficients and local implications.
+A completeness theorem for the same coefficients at all integer inputs
+requires an additional argument.
+
+\section{An identity for the actual reciprocal trace}
+
+Put $K=\Q(\sqrt2)$, and write $W=W_0+W_1\sqrt2$ with
+$W_0\N(W)\ne0$. For $w\in\Q^\times$ define
+\[
+ V=\Tr(W^{-1}),\qquad
+ b=\frac{4w}{V^2}
+   =w\left(\frac{\N(W)}{W_0}\right)^2,\qquad a=w\N(W).
+\]
+Then
+\begin{equation}\label{eq:identity}
+ 2a(a-b)=
+ \left(\frac{2w\N(W)W_1}{W_0}\right)^2.
+\end{equation}
+Indeed $W_0^2-\N(W)=2W_1^2$. The identity alone does not make $a$
+admissible or fixed independently of the tuple. The next section
+establishes both requirements for an explicit actual tuple.
+
+\section{Two coupled native detector arguments}
+
+Use the curve and points of~\cite{Direct}:
+\[
+ E:\ y^2=x^3-Dx,\qquad D=(3-\sqrt2)^2,\qquad
+ R_0=(1+\sqrt2,2\sqrt2),\qquad P=2R_0.
+\]
+Thus
+\[
+ P=\left(\frac{57}{8}-\frac72\sqrt2,\,
+          -\frac{165}{8}+\frac{417}{32}\sqrt2\right).
+\]
+Write $f(Q)=1/x(Q)$ and $z(Q)=-x(Q)/y(Q)$.
+The source point tuple and fixed coefficient are
+\begin{equation}\label{eq:tuple}
+                X=1,\quad B=3,\quad A=P,\quad H=U=2P.
+\end{equation}
+The two comparison ratios are both one. The source scale, with exponent
+four, is
+\[
+ a_1=(X^2+B)^4+\Tr(x(A))^4
+     =\frac{10621537}{256}.
+\]
+Choose the common slope
+\begin{equation}\label{eq:slope}
+ \lambda=\frac{32003072}{10621537},\qquad
+ t_0=\lambda,\quad t_1=a_1\lambda=125012.
+\end{equation}
+In particular, the second argument is determined by the actual root
+height and the same slope.
+
+Put
+\[
+ \Theta=\left\{0,-\frac12,-\frac14,-\frac25,-1,-\frac13\right\},
+ \quad F(t)=\prod_{\theta\in\Theta}(t-\theta),\quad\delta=t-1,
+\]
+\[
+ w(t)=\frac{F(t)}{4\delta^8},\qquad
+ \alpha(t)=\frac{\delta^4}{F(t)}.
+\]
+At~\eqref{eq:tuple}, the six source tests give
+\begin{equation}\label{eq:product}
+ T_i=(1+\alpha(t_i)f(2P)^2)
+       (1+\alpha(t_i)\sigma(f(P))^2),\qquad W_i=T_i^2,
+\end{equation}
+where $\sigma$ is the nonidentity automorphism of $K$. Define the two
+fixed levels, physical inputs and witnesses by
+\begin{equation}\label{eq:levels}
+ \begin{split}
+ a_i&=w(t_i)\N(W_i),\\
+ b_i&=w(t_i)\left(\frac{\N(W_i)}{(W_i)_0}\right)^2,\\
+ q_i&=\frac{2w(t_i)\N(W_i)(W_i)_1}{(W_i)_0}\qquad(i=0,1).
+ \end{split}
+\end{equation}
+All constants in these formulas are specified rationally over $K$ by
+\eqref{eq:tuple}--\eqref{eq:product}; they are frozen for the remainder
+of the construction.
+
+\begin{theorem}\label{thm:fixture}
+For the original exceptional set $S=\{p:p\le76176\}$, both levels
+$a_i$ are positive and admissible. The unchanged native inputs satisfy
+\[
+                 0<b_i<a_i,\qquad q_i^2=2a_i(a_i-b_i)
+                 \quad(i=0,1).
+\]
+Every inherited point, difference and detector denominator is nonzero
+at every geometric character of the point algebra, and $a_i-b_i$
+is nonzero at each of its 64 characters, for both blocks.
+\end{theorem}
+\begin{proof}
+The denominators of the two rational coefficients of $f(P)$ and $f(2P)$
+have prime support $\{41,593,8273\}$. Define
+\[
+ \begin{split}
+ P_0={}&11\cdot47\cdot53\cdot59\cdot73\cdot197\cdot227\cdot281
+ \cdot653\cdot853\cdot857\cdot2203\\
+ &{}\cdot8863\cdot21751\cdot31253,\\
+ P_1={}&5\cdot7\cdot11\cdot13\cdot17\cdot19\cdot73\cdot137
+ \cdot1697\cdot5051\cdot5483\cdot5953\cdot31253.
+ \end{split}
+\]
+Exact substitution gives the reduced factorizations
+\[
+ w(t_0)=
+ \frac{2^6\,3^3P_0\,10621537^2}{5^7\,7^7\,43^8\,14207^8},
+ \qquad
+ w(t_1)=\frac{3^3P_1}{2^2\,149^8\,839^8}.
+\]
+The reduced denominators of $\alpha(t_0),\alpha(t_1)$ are respectively
+$2^8\,3^3P_0$ and $3^3P_1$. Thus $T_i$ is integral outside $S$.
+Since $\N(W_i)=\N(T_i)^2$, every outside-$S$ valuation of $a_i$ is
+nonnegative and even. No exceptional prime is added.
+
+Both arguments exceed one, so $\alpha(t_i),w(t_i)>0$. Every factor
+in~\eqref{eq:product} is positive at both real embeddings.
+The exact values have $(W_i)_1\ne0$, so~\eqref{eq:identity} gives
+$0<b_i<a_i$ and the displayed square equations.
+
+For completeness of the finite check, each source point block has four
+scalar roots over $K$. They independently select the two ordinate signs
+at the two embeddings. The exact duplication formula
+\[
+       h(2Q)=\frac{x(Q)^2+D}{2y(Q)},\qquad h(2Q)^2=x(2Q)
+\]
+supplies the required point charts for $A,H,U$. The certificate verifies
+their four scalar roots and all four sign pairs for each block.
+
+For a character indexed by the six signs of $A,H,U$, form
+$H-P$ and $U-A$ independently at the two embeddings. Their abscissas
+and ordinates, and all affine difference denominators, are nonzero.
+The difference points are signed copies of $P$ or $3P$.
+The six source tests in the first embedding are
+\[
+ f(H),\ f(U),\ \sigma f(H-P),\ \sigma f(U-A),\
+ \frac{z(U)}{z(H)}
+ -\sigma\frac{z(U-A)}{z(H-P)},\
+ \frac{z(U)}{z(H)}-1,
+\]
+and the second embedding uses their conjugate-slot formulas. Their
+products $W_+,W_-$ have nonzero sum and product. At this character,
+the physical input is
+\[
+                   w(t_i)\left(\frac{2W_+W_-}{W_++W_-}\right)^2.
+\]
+The certificate evaluates its difference from $a_i$ exactly in $K$
+and verifies that it is nonzero for all $2^6$ sign choices and both
+$i$. These are 128 exhaustive guard checks. The scripts described in
+Section~\ref{sec:certificates} independently reconstruct these values.
+\end{proof}
+
+\section{Fixed coefficients and standard norm levels}
+
+Let $c_i$ be the positive squarefree integer representing the rational
+square class of $a_i$. The preceding factorizations give
+$c_0=3\cdot5\cdot7P_0$ and $c_1=3P_1$. Set
+\[
+ r_i=\sqrt{a_i/c_i}\in\Q_{>0},\qquad
+ k_i=\operatorname{den}(r_i),\qquad m_i=k_ir_i\in\Z_{>0},\qquad
+ \gamma_i=\frac{17k_i^2}{c_i}.
+\]
+Admissibility shows that $c_i$ and $k_i$ are supported on $S$.
+Thus $\gamma_i$ has valuation zero outside $S$. All these are fixed
+constants; the exact reduced fractions are included in the certificate.
+
+\begin{corollary}\label{cor:incidence}
+Keep the actual $W_i$, reciprocal traces $V_i=\Tr(W_i^{-1})$, and
+coupled arguments~\eqref{eq:slope}. Replace only the physical weights
+and inputs by $w_i'=\gamma_iw(t_i)$ and $b_i'=\gamma_i b_i$.
+Then the actual prescribed-trace equations
+\[
+ (m_iV_i)^2-2Y_i^2=\frac{4w_i'}{17},\qquad
+ Y_i=2m_i[\sqrt2](W_i^{-1}),\qquad i=0,1,
+\]
+hold simultaneously. The levels are $17m_i^2$, and all complement
+guards remain nonzero.
+\end{corollary}
+\begin{proof}
+By construction $w_i'\N(W_i)=\gamma_i a_i=17m_i^2$.
+For $W_i^{-1}=u_i+v_i\sqrt2$, the identity
+$(2u_i)^2-2(2v_i)^2=4/\N(W_i)$ gives the result.
+Every new complement guard is $\gamma_i$ times its previously checked
+value. Lemma~\ref{lem:scale} proves the outside-$S$ valuation assertion.
+\end{proof}
+
+The same constants and witnesses work at $X=-1$, with $A=-P$,
+$U=-2P$ and $H=2P$. Negating $A,U,X$ negates both ratios and both
+comparison differences. Their squares, all reciprocal-abscissa tests,
+and the scale are unchanged. The six-sign characters are permuted,
+so the whole-algebra guard statement is unchanged as well.
+
+The two integers $m_0,m_1$ have respectively 205 and 151 decimal digits.
+Their sizes have no bearing on a quantified-variable count: they are
+fixed coefficient data. This result concerns $B=3$ and inputs $\pm1$.
+It does not place $B=3$ beyond the source's ineffective defining
+threshold, prove the original pole-preparation conditions, or establish
+completeness for the same levels and coefficients at every integer.
+
+\section{Exact certificates}\label{sec:certificates}
+
+The package
+\[
+ \texttt{computation/pole\_parameters/native\_trace\_fixture\_v47/}
+\]
+contains two producers, \texttt{build-fixture.py} and
+\texttt{build-scaling.py}, the exact rational tables
+\texttt{fixture.json} and \texttt{scaling.json}, and two independent
+checkers. The first checker uses SymPy's exact $\Q(\sqrt2)$ domain;
+the second uses the polynomial quotient $\Q[t]/(t^2-2)$.
+Neither imports a producer or the other checker. They reconstruct the
+source curve and point charts, all detector values, the factorization
+certificates, both norm incidences and all 128 guards. The first also
+checks the negative-input sign involution directly. The tables pin the
+source file by its SHA-256 hash, and both verification receipts record
+the exact table hashes.
+
+\begin{thebibliography}{9}
+\bibitem{Direct}
+\emph{Thirteen Variables from Direct Elliptic Index Comparison},
+project source, 10 November 2026,
+\nolinkurl{papers/conditional_few_variables/direct_input13_20261110_v22.tex}.
+\bibitem{FiniteClasses}
+\emph{Finite square-class conditions for native detector inputs},
+project source, 16 November 2026,
+\nolinkurl{papers/pole_parameters/finite_complement_classes_20261116_v46.tex}.
+\bibitem{UnitNorm}
+\emph{A single norm determinant for the 25- and 13-variable constructions},
+project source,
+\nolinkurl{papers/finite_algebra/unit_norm_20261114_v28.tex}.
+\end{thebibliography}
+\end{document}

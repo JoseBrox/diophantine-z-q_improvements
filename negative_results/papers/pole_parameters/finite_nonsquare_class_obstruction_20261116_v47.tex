@@ -1,0 +1,301 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,booktabs,microtype}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\DeclareMathOperator{\Tr}{Tr}\DeclareMathOperator{\Nm}{N}
+\title{A finite-class obstruction for the native scalar source}
+\author{}\date{16 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+For every finite set of nontrivial rational square classes, including
+negative classes, we construct an arithmetic progression of integer
+inputs for which the two native general-source complements cannot both
+belong to the specified classes. The obstruction holds for arbitrary
+guarded rational auxiliary tuples and slopes, for all nonzero rational
+level multipliers, and uniformly in the odd scalar exponent. The proof
+uses three quartic root fields, Chebotarev and the source's exact
+unit-weight alternative. It does not exclude the rational-square class
+or give a lower bound on defining-polynomial variables.
+\end{abstract}
+
+\section{The literal native source}
+Use the current unsquared general source of~\cite{UnitNorm}. In particular,
+\begin{equation}\label{eq:scalar}
+\begin{gathered}
+ \beta(X)=216X^4+450459,\quad\ell=76249,\\
+ r=\beta(\beta-1)(\beta-2401)(32\beta+343)(2\beta-1),\\
+ C_L=17(\ell^{(L+1)/2}+1),\qquad
+ \rho=\frac{102^2\ell^Lr}{(1+C_Lr)^2}\quad(L\ge3\text{ odd}).
+\end{gathered}
+\end{equation}
+The scales and contact functions are
+\begin{equation}\label{eq:contacts}
+\begin{gathered}
+ a_0=1,\quad a_1=1+\rho T^2,\quad t_j=a_j\lambda,\\
+ \Theta=\{0,-1/2,-1,1/2399,-32/407\},\\
+ \Theta_j=(4j+2+\Theta)\cup(4j+4+\Theta),\quad\gamma_j=-j-1,\\
+ R_j=\frac{\prod_{\theta\in\Theta_j}(t_j-\theta)}{(t_j-\gamma_j)^{10}},
+ \quad w_j=\rho R_j,\quad
+ V_j=\Tr(\mathcal W_j^{-1}),\quad b_j=4w_j/V_j^2.
+\end{gathered}
+\end{equation}
+The inherited guards require all displayed denominators, $w_j$ and
+$V_j$ to be nonzero. The argument uses only~\eqref{eq:scalar}--
+\eqref{eq:contacts}; it imposes no further restriction on the
+elliptic auxiliary tuples.
+
+Let $S$ be the original finite exceptional set. For $m\in\Q^\times$ put
+\[
+                         C_m(b)=17m^2(17m^2-b).
+\]
+
+\begin{theorem}\label{thm:main}
+Let $\mathcal D$ be any nonempty finite set of nontrivial rational
+square classes. There is an arithmetic progression of integer inputs
+$X$, independent of $L$, such that no guarded rational tuple of
+\eqref{eq:scalar}--\eqref{eq:contacts} satisfies
+\begin{equation}\label{eq:conditions}
+              d_jC_{m_j}(b_j)\in\Q^2\qquad(j=0,1)
+\end{equation}
+with $d_0,d_1\in\mathcal D$ and $m_0,m_1\in\Q^\times$.
+This holds for every fixed odd $L\ge3$ and for arbitrary rational
+slopes and auxiliary indices satisfying the inherited guards.
+\end{theorem}
+
+The class representatives need not be positive or supported on $S$.
+The theorem is an obstruction for the specified native scalar, not
+for other scalar input maps or all possible Diophantine constructions.
+It does not depend on the general source's external arithmetic premises.
+
+\begin{corollary}\label{cor:split}
+Allow all positive square classes supported on $S$. For some integer
+inputs, every successful two-complement tuple must use the rational-square
+class at at least one detector.
+\end{corollary}
+\begin{proof}
+Apply Theorem~\ref{thm:main} to the finite set of all nontrivial
+positive classes supported on $S$.
+\end{proof}
+This does not force both complements to be squares and does not
+disprove realization when the rational-square class is included.
+
+\section{The local norm obstruction}
+\begin{lemma}\label{lem:norm}
+For nonzero rational $w,V,m,d$ and $b=4w/V^2$,
+\[
+ dC_m(b)\in\Q^2
+ \quad\Longleftrightarrow\quad
+ \exists Y\in\Q:\quad(mV)^2-dY^2=4w/17.
+\]
+If $p\ne2,17$, $d$ is a $p$-adic unit and a nonsquare modulo $p$,
+and $v_p(w)$ is odd, this condition is impossible for every $m$.
+\end{lemma}
+\begin{proof}
+The identity
+\[
+ C_m(b)=\left(\frac{17m}{V}\right)^2
+               \left((mV)^2-\frac{4w}{17}\right)
+\]
+gives the equivalence: if $z^2=dC_m(b)$, take
+$Y=zV/(17md)$, and reverse this substitution for the converse.
+
+For $A,B\in\Q_p$ not both zero, nonsquareness of $d$ gives
+\[
+                   v_p(A^2-dB^2)=2\min\{v_p(A),v_p(B)\}.
+\]
+Unequal term orders cannot cancel; equal orders could cancel only if
+$d$ were a residue square. Thus the left side of the norm equation
+has even valuation, whereas its right side has odd valuation.
+\end{proof}
+
+\begin{lemma}\label{lem:unit}
+Let $p$ avoid the fixed finite set of contact denominators, zero
+residues and cross-set collisions. If $v_p(\rho)$ is odd, then
+at least one of $R_0,R_1$ is a unit at $p$.
+\end{lemma}
+\begin{proof}
+If $T\ne0$, the valuation of $\rho T^2$ is odd and hence nonzero.
+Thus $a_1\equiv1\pmod p$ or $v_p(a_1)<0$; the first alternative
+also covers $T=0$. An argument of positive or negative valuation
+gives a unit in a balanced contact function: all contact and pole
+constants are units, and the numerator and denominator have equal degree.
+
+If $v_p(\lambda)\ne0$, this gives a unit $R_0$. If $\lambda$ is a
+unit and $R_0$ is not, its residue is a contact or pole of the first
+set. Either $a_1\lambda$ has negative valuation or it has the same
+residue as $\lambda$. The second contact-and-pole set is disjoint
+from the first, so $R_1$ is a unit in either case. This is the unit
+part of the scalar-odd argument in~\cite{General,UnitNorm}.
+\end{proof}
+
+Consequently, at a prime inert in both selected classes and of odd
+$\rho$-valuation, at least one of the two conditions
+\eqref{eq:conditions} is impossible. This observation does not use
+a prime-prepared slope.
+
+\section{Three quartic root fields}
+For $\theta\in\{0,1,2401\}$ let $\alpha_\theta$ be a root of
+\[
+             216x^4+450459-\theta,
+ \qquad F_\theta=\Q(\alpha_\theta),\qquad
+ q_\theta=(450459-\theta)/216.
+\]
+
+\begin{lemma}\label{lem:fields}
+Each $F_\theta$ has degree four and has a unique quadratic subfield.
+The three quadratic subfields are respectively
+\[
+ \Q(\sqrt{-300306}),\qquad
+ \Q(\sqrt{-675687}),\qquad
+ \Q(\sqrt{-672087}).
+\]
+They are distinct imaginary fields.
+\end{lemma}
+\begin{proof}
+The three quartics are Eisenstein at $50051,79,13$, respectively.
+Their quadratic subfields $E_\theta=\Q(\alpha_\theta^2)$ follow from
+\[
+       q_0=50051/24,\quad q_1=225229/108,\quad q_{2401}=224029/108.
+\]
+These positive rationals are nonsquares.
+
+Since $q_\theta$ is a nonsquare, $E_\theta\ne\Q(i)$.
+The field $F_\theta$ does not contain $i$. Otherwise
+$F_\theta=E_\theta(i)$, and writing a square root of
+$\alpha_\theta^2$ as $a+bi$ with $a,b\in E_\theta$ shows that
+$\alpha_\theta^2$ or its negative is a square in $E_\theta$.
+Both alternatives contradict
+$\Nm_{E_\theta/\Q}(\alpha_\theta^2)=q_\theta\notin\Q^2$.
+Thus $F_\theta$ is not Galois, since the other roots include
+$i\alpha_\theta$. Two distinct quadratic subfields would make a
+quartic field biquadratic and Galois, proving uniqueness. The displayed
+negative squarefree radicands are distinct.
+\end{proof}
+
+\begin{lemma}\label{lem:chebotarev}
+For any two nontrivial rational square classes $d_0,d_1$, there are
+a contact $\theta\in\{0,1,2401\}$ and infinitely many rational primes
+$p$ such that $\beta(x)-\theta$ has a simple root modulo $p$ and
+both $d_0,d_1$ are nonsquares modulo $p$. These primes may avoid
+any prescribed finite set.
+\end{lemma}
+\begin{proof}
+The field $M=\Q(\sqrt{d_0},\sqrt{d_1})$ has at most two imaginary
+quadratic subfields: if two square classes are negative, their product
+is positive. Choose $\theta$ so that $E_\theta$ is not contained in
+$M$. Lemma~\ref{lem:fields} gives $F_\theta\cap M=\Q$: a quadratic
+intersection would be $E_\theta$, and a quartic intersection would
+make the non-Galois field $F_\theta$ equal to the Galois field $M$.
+
+Let $N$ be the Galois closure of $F_\theta M$. The restriction of
+$\operatorname{Gal}(N/F_\theta)$ to $M$ is all of
+$\operatorname{Gal}(M/\Q)$, since the fixed field of its image is
+$M\cap F_\theta$. There is an element of $\operatorname{Gal}(M/\Q)$
+acting by minus one on both chosen square roots: the classes are
+either equal or independent. Lift it to an element fixing
+$\alpha_\theta$.
+
+Chebotarev's theorem~\cite[Theorem~8.31]{Milne} gives infinitely many
+unramified primes with this Frobenius conjugacy class. Each conjugate
+fixes a root of the quartic, while its actions on the quadratic fields
+remain unchanged. The Frobenius factorization correspondence
+\cite[Corollary~8.22]{Milne} gives a root modulo $p$ and inertness
+in both quadratic fields. Excluding discriminant and leading-coefficient
+primes makes the root simple. Removing any further finite set preserves
+infinitude.
+\end{proof}
+
+\section{Uniform input progressions}
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+For each unordered pair of elements of $\mathcal D$, allowing repetition,
+choose a different prime and a contact as in Lemma~\ref{lem:chebotarev}.
+Exclude $S$, $\ell$, all representative numerator and denominator
+primes, the bad contact primes of Lemma~\ref{lem:unit}, and all primes
+dividing the nonzero differences among the five finite roots of $r$.
+
+At the selected simple root modulo $p$, choose a lift $x_p$ modulo
+$p^2$ with
+\[
+                        v_p(\beta(x_p)-\theta)=1.
+\]
+All but one of the $p$ lifts have this property. The Chinese remainder
+theorem gives an arithmetic progression of integer $X$ satisfying all
+these congruences. At every selected prime exactly one factor of $r$
+has valuation one and the other factors are units. Hence
+\[
+                            v_p(r)=v_p(\rho)=1.
+\]
+The denominator $1+C_Lr$ is congruent to one modulo $p$ for every
+odd $L$; the input progression is therefore independent of $L$.
+
+If a guarded tuple chose $d_0,d_1\in\mathcal D$, use the prime
+assigned to that pair. Lemma~\ref{lem:unit} makes one $R_j$ a unit,
+so $v_p(w_j)=1$. Both class representatives are nonsquares there,
+and Lemma~\ref{lem:norm} contradicts the corresponding complement
+condition, for every rational nonzero level $m_j$.
+\end{proof}
+
+\section{Exact examples and verification}
+For $\mathcal D=\{409,433\}$ a single prime suffices:
+\[
+                           p=76511,\qquad X\equiv31907\pmod{p^2}.
+\]
+Both classes are nonsquares modulo $p$. For $g(x)=24x^4+50051$,
+\[
+ g(31907)/p\equiv4411\pmod p,\qquad
+ g'(31907)\equiv10372\pmod p.
+\]
+The two contact-and-pole sets are nonzero and disjoint modulo $p$.
+Thus the integer input $31907$ itself rules out both detectors using
+these two classes, uniformly in $L$, even at arbitrary guarded slopes.
+
+For classes $409$, $433$ and $177097$, use primes
+$76511$, $76607$ and $76403$. Their inert-class pairs cover every
+unordered pair, including repetition. It gives the progression
+\[
+ X\equiv r_0\pmod{M},\qquad
+ \begin{aligned}
+ r_0&=183039969870449349691519947271,\\
+ M&=200542068630790781548849843561.
+ \end{aligned}
+\]
+No single prime can be inert in all three multiplicatively related
+classes; the pairwise construction is necessary for this certificate.
+
+The standard-library program
+\begin{center}\small
+\nolinkurl{negative_results/computation/finite_nonsquare_classes_v47/check.py}
+\end{center}
+verifies the three quartic-field numerical certificates, the explicit
+prime and contact computations, the exact valuation lifts, the CRT
+progression and the source hashes. Chebotarev proves the infinite
+statement for arbitrary finite class sets; finite computation is used
+only for the stated explicit examples.
+
+The class $1$ remains outside the obstruction. The theorem also does
+not apply after replacing the scalar input polynomial or contact weight
+by a different construction. In particular, it does not contradict a
+separately proved norm-compatible scalar replacement.
+
+\begin{thebibliography}{9}
+\bibitem{UnitNorm}
+\emph{A single norm determinant for the 25- and 13-variable constructions},
+project manuscript, 14 November 2026,
+\nolinkurl{papers/finite_algebra/unit_norm_20261114_v28.tex}.
+\bibitem{General}
+\emph{A defining polynomial in twenty-five variables: combined scalar
+and comparison conditions}, project source manuscript,
+\nolinkurl{papers/few_variables25/few_variables25_merged_20261110_v19.tex}.
+\bibitem{Milne}
+J.~S. Milne, \emph{Algebraic Number Theory}, version~3.08,
+19 July 2020, Corollary~8.22 and Theorem~8.31,
+\url{https://www.jmilne.org/math/CourseNotes/ANT.pdf}.
+\end{thebibliography}
+\end{document}
