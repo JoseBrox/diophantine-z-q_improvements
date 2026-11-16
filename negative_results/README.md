@@ -8,6 +8,7 @@ The [current construction table](../README.md#current-constructions--16-november
 
 | Manuscript | Result and scope |
 |:--|:--|
+| [Automatic native levels](papers/pole_parameters/automatic_level_finiteness_20261116_v48.tex) | The conditional level $a=w\operatorname{Norm}(W)$ is inadmissible at every positive odd contact for every guarded auxiliary tuple. Admissibility forces finitely many genus-two arguments, excluding uniform completeness even after fixed finite rational rescalings. Detector-dependent bounded levels and other scalar constructions remain open. |
 | [Finite nontrivial complement classes](papers/pole_parameters/finite_nonsquare_class_obstruction_20261116_v47.tex) | Every finite set of nontrivial signed rational square classes fails for both complements on an arithmetic progression of inputs in the original general scalar source, uniformly in the odd exponent and all rational level multipliers. Arbitrary guarded auxiliary tuples are covered. The rational-square class and redesigned scalars remain possible. |
 | [Conic-chain predicates](papers/pole_parameters/conic_chain_obstruction_20261115_v41.tex) | Every fixed rational coefficient in the specified five-auxiliary family has arbitrarily small prepared local counterexamples. |
 | [Automatic first conics](papers/pole_parameters/automatic_conic_obstruction_20261115_v41.tex) | Dense prepared counterfamilies obstruct the remaining pole equations, including on the completely split six-contact map. The argument uses only Tunnell's unconditional necessary criterion. |
@@ -36,6 +37,7 @@ The [fixed-fiber literature audit](docs/fixed_fiber_literature_20261116_v43.md) 
 
 | Manuscript | Result and scope |
 |:--|:--|
+| [Quadratic tangent completion](papers/elliptic_charts/tangent_completion_20261116_v48.tex) | Exact false-height families survive every quadratic identity in the specified ten-field-coordinate compressed pairing, every rational-component quadric including conjugate products, and every quadric after adjoining the physical trace. The latter trace remains arbitrary on the false family. Different embeddings, added helpers and separately proved restricted witness families are not excluded. |
 | [One-parameter elliptic presentations](papers/elliptic_charts/elliptic_chart_obstruction_20261107_v7.tex) | One retained rational parameter cannot give the specified finite algebraic presentation of infinitely many elliptic points. |
 | [Structural constraints](papers/elliptic_charts/structural_constraints_20261109_v13.tex) | Dimension, label-graph, common-index and square-class obstructions for the stated elliptic witness models. |
 | [Products of elliptic indices](papers/elliptic_charts/index_products_and_finite_correspondences_20261110_v21.tex) | The index-product graph is Zariski dense, obstructing a fixed finite correspondence on the stated infinite label sets. |

@@ -1,0 +1,306 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,microtype}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\DeclareMathOperator{\Tr}{Tr}\DeclareMathOperator{\N}{N}
+\title{Finiteness of automatic norm levels for conditional elliptic detectors}
+\author{}\date{16 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+For the conditional elliptic detectors, consider the complement level
+$w\N(W)$ obtained from the identity involving the actual reciprocal
+trace. At any positive odd contact valuation $\nu$, the two reference
+tests force this level to have valuation at most $-\nu$. The assertion
+holds for arbitrary guarded auxiliary points, at split and inert primes,
+and does not require the norm of the detector to be a square.
+Consequently an admissible automatic level confines the contact argument
+to a finite set of rational numbers, by the finiteness theorem for
+genus-two curves. Two such levels can occur at only finitely many
+integer inputs for any fixed coefficient member, and at no input when
+the fixed positive shift is sufficiently large. The result concerns
+these automatic levels; it imposes no such conclusion on independently
+chosen prescribed-trace norm incidences.
+\end{abstract}
+
+\section{The detector and its automatic complement level}
+
+Put
+\[
+ K=\Q(\rho),\quad \rho^2=2,\quad D=11-6\rho,\quad
+ E:\ y^2=x^3-Dx,
+\]
+and let
+\[
+ R_0=(1+\rho,2\rho),\qquad P=2R_0,
+ \qquad x(P)=\frac{57}{8}-\frac72\rho.
+\]
+For a point in the affine domains below write
+$f(Q)=1/x(Q)$ and $z(Q)=-x(Q)/y(Q)$.
+All statements concern actual guarded tuples of the conditional source
+\cite{Direct}. In particular, the required point coordinates,
+differences and ratios are defined. Write $\sigma$ for conjugation and
+set
+\[
+ L=\frac{z(U)}{z(H)},\qquad
+ L'=\sigma\!\left(\frac{z(U-A)}{z(H-P)}\right).
+\]
+The six tests are
+\begin{equation}\label{eq:tests}
+ C_1=f(H),\quad C_2=f(U),\quad C_3=\sigma f(H-P),\quad
+ C_4=\sigma f(U-A),\quad C_5=L-L',\quad C_6=L-X.
+\end{equation}
+Zero tests are allowed. Define
+\[
+ \Theta=\left\{0,-\frac12,-\frac14,-\frac25,-1,-\frac13\right\},
+ \quad F(t)=\prod_{\theta\in\Theta}(t-\theta),
+\]
+\begin{equation}\label{eq:weights}
+ \delta=t-1,\qquad
+ w(t)=\frac{F(t)}{4\delta^8},\qquad
+ \alpha(t)=\frac{\delta^4}{F(t)},\qquad
+ W(t)=\prod_{i=1}^{6}(1+\alpha(t)C_i^2).
+\end{equation}
+The source guards impose $t\notin\Theta\cup\{1\}$ and
+$\N(W)\Tr(W^{-1})\ne0$.
+Its physical input is
+\begin{equation}\label{eq:b}
+                  b(t)=\frac{4w(t)}{\Tr(W(t)^{-1})^2}.
+\end{equation}
+
+Writing $W=W_0+W_1\rho$, define the \emph{automatic level}
+\begin{equation}\label{eq:automatic}
+                         \mathcal A(t)=w(t)\N(W(t)).
+\end{equation}
+The exact identity
+\begin{equation}\label{eq:complement}
+ 2\mathcal A(t)(\mathcal A(t)-b(t))
+ =\left(\frac{2w(t)\N(W(t))W_1}{W_0}\right)^2
+\end{equation}
+follows from $\N(W)=W_0^2-2W_1^2$; see~\cite{Benchmark}.
+It supplies a rational complement but does not impose the required
+arithmetic condition on its level.
+
+For a finite set $S$ of rational primes, call a nonzero rational number
+$a$ \emph{admissible outside $S$} if
+\begin{equation}\label{eq:admissible}
+                       v_p(a)\in2\Z_{\ge0}\qquad(p\notin S).
+\end{equation}
+The original source uses $S_0=\{p:p\le76176\}$.
+The proofs below apply to every finite
+\begin{equation}\label{eq:S}
+                        S\supseteq\{2,3,5,7,41\}.
+\end{equation}
+They allow either sign of an admissible level and place no bound on
+its size. In particular the conclusion is stronger than a restriction
+to a fixed finite list of levels.
+
+\section{A valuation bound for every auxiliary tuple}
+
+\begin{lemma}\label{lem:contact}
+Let $p\notin S$. If $v_p(w(t))$ is odd, then it is positive,
+$v_p(\delta)=0$, and
+\[
+                v_p(w(t))=v_p(F(t))=:\nu>0,
+                \qquad v_p(\alpha(t))=-\nu.
+\]
+\end{lemma}
+\begin{proof}
+The contacts are integral and pairwise distinct modulo $p$, and none
+is congruent to $1$. All primes in the numerators and denominators
+of their nonzero differences and their differences from $1$ belong
+to $\{2,3,5,7\}$.
+If $v_p(t)<0$, then
+$v_p(F(t))=6v_p(t)$ and $v_p(\delta)=v_p(t)$, whence
+$v_p(w(t))=-2v_p(t)$ is even. If $v_p(t)\ge0$ and
+$v_p(\delta)>0$, every contact factor is a unit and
+$v_p(w(t))=-8v_p(\delta)$ is even. Otherwise $\delta$ is a
+unit and the contact valuation is nonnegative. This proves the
+assertion, including the sign of the odd valuation.
+\end{proof}
+
+Normalize the valuations on $K$ at primes above an odd $p$ by
+$v_{\mathfrak p}(p)=1$. They are integer-valued because $K/\Q$
+is unramified away from $2$.
+
+\begin{lemma}\label{lem:reference}
+For every $p\notin S$ and every place $\mathfrak p\mid p$,
+at least one of $f(H)$ and $f(H-P)$ has nonpositive valuation.
+\end{lemma}
+\begin{proof}
+The displayed integral Weierstrass equation has good reduction:
+its discriminant is $64D^3$ and $\N(D)=49$.
+Furthermore
+\[
+                           \N(x(P))=\frac{41^2}{64},
+\]
+so $x(P)$ is a unit at both places above $p$, and the reduction of
+$P$ is not the identity. A positive valuation of $f(Q)$ means that
+$Q$ reduces to the identity. If both $H$ and $H-P$ reduced to the
+identity, the reduction homomorphism would send their difference
+$P$ to the identity, a contradiction.
+\end{proof}
+
+\begin{theorem}\label{thm:local}
+For every actual guarded tuple and every $p\notin S$ with
+$v_p(w(t))=\nu>0$ odd,
+\begin{equation}\label{eq:bound}
+                 v_p(\N(W(t)))\le-2\nu,
+                 \qquad v_p(\mathcal A(t))\le-\nu<0.
+\end{equation}
+This holds whether $p$ splits or remains inert in $K$.
+\end{theorem}
+\begin{proof}
+For a local value $c\in K$, allowing $c=0$, put
+\[
+              m_{\mathfrak p}(c)=\min\{0,2v_{\mathfrak p}(c)-\nu\},
+              \qquad v_{\mathfrak p}(0)=+\infty.
+\]
+The two terms in $1+\alpha c^2$ have distinct valuations, since
+$\nu$ is odd. Hence this factor is nonzero and has valuation
+$m_{\mathfrak p}(c)\le0$.
+Lemma~\ref{lem:reference} gives
+\begin{equation}\label{eq:pairbound}
+ m_{\mathfrak p}(f(H))+m_{\mathfrak p}(f(H-P))\le-\nu.
+\end{equation}
+Let $f_{\mathfrak p}$ denote the residue degree. All remaining
+factors of $W$ have nonpositive valuation, and taking the norm
+removes the conjugation in its third test. Therefore
+\begin{align*}
+ v_p(\N(W))
+ &\le\sum_{\mathfrak p\mid p}f_{\mathfrak p}
+       \bigl(m_{\mathfrak p}(f(H))+
+             m_{\mathfrak p}(f(H-P))\bigr)\\
+ &\le-\nu\sum_{\mathfrak p\mid p}f_{\mathfrak p}=-2\nu.
+\end{align*}
+In the split case this is a sum over two places of residue degree
+one; in the inert case there is one place of residue degree two.
+Adding $v_p(w)=\nu$ proves the second inequality.
+\end{proof}
+
+The theorem makes no assumption about the elliptic indices of
+$A,H,U$, about a prime-selection procedure, or about the square
+class of $\N(W)$. It uses the two reference tests already present
+in~\eqref{eq:tests}. In particular it applies to both direct conditional
+sources, with height-scale exponents four and six.
+
+\section{Finiteness of admissible automatic levels}
+
+\begin{theorem}\label{thm:finitearguments}
+For every fixed finite $S$ satisfying~\eqref{eq:S}, there is a finite
+set $\mathcal T_S\subset\Q\setminus(\Theta\cup\{1\})$ such that
+every actual guarded tuple for which $\mathcal A(t)$ is admissible
+outside $S$ has $t\in\mathcal T_S$.
+The set is independent of all auxiliary points and elliptic indices.
+\end{theorem}
+\begin{proof}
+If $v_p(w(t))$ were odd at any $p\notin S$,
+Lemma~\ref{lem:contact} and Theorem~\ref{thm:local} would contradict
+admissibility. Thus every outside-$S$ valuation of $w(t)$, and hence
+of $F(t)$, is even.
+The square class of $F(t)$ therefore belongs to the finite group
+generated by $-1$ and the primes in $S$. Let $\mathcal D_S$ be the
+set of signed squarefree representatives of this group. For some
+$d\in\mathcal D_S$ there is a rational point on
+\begin{equation}\label{eq:genus2}
+                              y^2=dF(t).
+\end{equation}
+The polynomial $F$ has degree six and six distinct roots. Each
+smooth projective model of~\eqref{eq:genus2} is therefore a
+geometrically integral curve of genus two. Faltings' theorem
+\cite[Satz~7]{Faltings} makes its set of rational points finite.
+Taking the union of their finite rational $t$-coordinate sets,
+and deleting the excluded arguments, gives $\mathcal T_S$.
+No effective enumeration of this finite set is asserted.
+\end{proof}
+
+\begin{corollary}\label{cor:inputs}
+Fix $d\in\{4,6\}$ and $B\ge3$. Suppose that the two arguments are
+the actual coupled arguments of the conditional source,
+\[
+ t_0=\lambda,\qquad t_1=a\lambda,\qquad
+ a=(X^2+B)^d+\bigl(\Tr x(A)\bigr)^d,
+\]
+and that both automatic levels are admissible outside the same fixed
+finite $S$. Then only finitely many integer inputs $X$ are possible,
+even when all auxiliary points and both admissible levels vary.
+Moreover, when $B$ is sufficiently large in terms of $S$ and $d$,
+there is no such guarded tuple at any rational input.
+\end{corollary}
+\begin{proof}
+Both arguments belong to $\mathcal T_S$, and $t_0\ne0$ because
+$0\in\Theta$ is guarded. Their positive ratio therefore belongs
+to a fixed finite set. Let $M_S\ge1$ bound all those positive
+ratios, taking $M_S=1$ if there are none. Since $d$ is even,
+\[
+                        (X^2+B)^d\le a\le M_S.
+\]
+For fixed $B$ this bounds $|X|$, hence gives only finitely many
+integer inputs. If $B^d>M_S$, it is impossible for any rational $X$.
+\end{proof}
+
+\begin{corollary}\label{cor:scaling}
+Fixed exceptional-unit rescalings of the physical weights and automatic
+levels do not change either conclusion. More generally, a fixed finite
+set of nonzero rational rescaling coefficients cannot yield automatic
+admissible levels for infinitely many integer inputs.
+\end{corollary}
+\begin{proof}
+An exceptional-unit rescaling leaves every outside-$S$ valuation
+unchanged. For a finite set of arbitrary coefficients, let $S'$ be
+$S$ together with their finite prime supports. Admissibility of a
+rescaled level outside $S$ implies admissibility of the unscaled
+level outside $S'$. Apply the preceding results to this one fixed
+finite set $S'$. This enlargement is used only in the proof of
+finiteness; it does not modify a source soundness predicate.
+\end{proof}
+
+These results do not exclude a finite prescribed-trace benchmark such
+as that of~\cite{Benchmark}. They also do not concern levels chosen
+independently of~\eqref{eq:automatic}, nor the redesigned general scalar
+of~\cite{NormPreparation}. At a fixed native input $b\ne0$, the identity
+\[
+ a=\frac{b}{1-2u^2},\qquad q=\frac{2bu}{1-2u^2}
+ \quad\Longrightarrow\quad q^2=2a(a-b)
+\]
+parametrizes rational level choices. The automatic level corresponds
+to $u=W_1/W_0$. Choosing another value of $u$ supplies no automatic
+admissibility or fixed-level theorem.
+
+\section{Exact certificates}
+
+The self-contained checker in
+\nolinkurl{negative_results/computation/automatic_levels_v48}
+verifies the reference constants, their local exceptional support, the
+six simple contact roots, and the rational complement identities.
+It recomputes actual detector values for two point configurations, at
+one split prime and one inert prime outside $S_0$, with contact orders
+one and three. Every example has the negative automatic-level
+valuation in~\eqref{eq:bound}. It also checks that the two weights of
+the prescribed-trace benchmark have no odd valuation outside $S_0$,
+as required for consistency with that benchmark.
+A finite valuation screen supplements the symbolic inequality
+\eqref{eq:pairbound}; it is not used as a proof for all valuations.
+The genus-two finiteness step is the cited theorem, not a computational
+enumeration of rational points.
+
+\begin{thebibliography}{9}
+\bibitem{Direct}\emph{Thirteen Variables from Direct Elliptic Index Comparison},
+\nolinkurl{papers/conditional_few_variables/direct_input13_20261110_v22.tex}.
+\bibitem{Benchmark}\emph{Admissible complement levels and prescribed native traces},
+\nolinkurl{papers/pole_parameters/admissible_levels_native_traces_20261116_v47.tex}.
+\bibitem{NormPreparation}\emph{Norm preparation for general and conditional elliptic detectors},
+\nolinkurl{papers/pole_parameters/norm_compatible_scalar_20261116_v47.tex}.
+\bibitem{Faltings} G.~Faltings,
+\emph{Endlichkeitss\"atze f\"ur abelsche Variet\"aten \"uber Zahlk\"orpern},
+Invent. Math. \textbf{73} (1983), 349--366,
+\url{https://doi.org/10.1007/BF01388432}; correction,
+Invent. Math. \textbf{75} (1984), 381,
+\url{https://doi.org/10.1007/BF01388572}.
+\end{thebibliography}
+\end{document}

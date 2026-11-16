@@ -13,6 +13,8 @@ jobs:
         with:
           python-version: '3.12'
       - run: python -m pip install sympy==1.14.0
+      - name: Verify small-coefficient abc quartic, inverse references, norm levels, and completion obstructions
+        run: python -B scripts/verify_v48.py --report /tmp/v48-verification.json
       - name: Verify norm scalars, actual prescribed traces, reference covers, and signed-class obstructions
         run: python -B scripts/verify_v47.py --report /tmp/v47-verification.json
       - name: Verify the 74 variable abc quartic and finite complement classes

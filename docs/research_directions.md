@@ -107,6 +107,18 @@ with m_j from fixed finite admissible levels, the actual coupled detector data, 
 
 For the unchanged general scalar, the [signed finite-class theorem](../negative_results/papers/pole_parameters/finite_nonsquare_class_obstruction_20261116_v47.tex) excludes uniform realization using any finite collection consisting entirely of nontrivial square classes. Its three quartic contact fields and Chebotarev argument apply to every guarded rational auxiliary tuple, not only the prime-prepared family. Including the rational-square class or using the new norm-compatible scalar avoids this specific obstruction.
 
+### Detector-dependent bounded levels
+
+The [bounded native norm-level theorem](../papers/pole_parameters/bounded_norm_levels_20261116_v48.tex) permits $m_i=M_iN_i/(c_i+N_i)$ and $a_i=17m_i^2$, with $N_i=\operatorname{Norm}(W_i)$. At every odd weight valuation, of either sign, the norm has nonpositive valuation and a zero-valuation norm reduces to one. The required local implication and whole-character denominator and complement guards therefore hold with no additional retained coordinate. For finitely many permitted coefficient choices, simultaneous actual realization of
+
+```math
+\left(\frac{2M_iW_{i,0}}{c_i+N_i}\right)^2-d_i y_i^2=\frac{4w_i}{17},\qquad i=0,1,
+```
+
+with positive exceptional square classes $d_i$, still gives the conditional **21/9** census. The first coordinates remain the actual detector functions. For $M_i=c_i=1$, the exact relation $u_i^2-2v_i^2+z_i^2=1$ gives an additional incidence equation, with $0<u_i\le1$ on prepared real characters. A useful next step must construct rational points on this coupled incidence with the prescribed coordinates, or a proper coupled subfamily for which rational realization is proved. Bare conic solubility and local congruence searches do not do this.
+
+The separate [automatic-level finiteness theorem](../negative_results/papers/pole_parameters/automatic_level_finiteness_20261116_v48.tex) rules out uniform use of $a_i=w_iN_i$ for the conditional sources, even after finitely many fixed rational rescalings. The bounded native levels are outside that theorem. The actual $X=\pm1$ benchmark remains a finite example, not uniform completeness.
+
 ### Integral labels from one finite Pell choice
 
 The [integral Lucas-label theorem](../papers/integer_labels/pell_labels_20261115_v40.tex) supplies a different arithmetic compression. Let $a,n$ be integers with
@@ -150,7 +162,7 @@ These statements concern generic recovery and the specified finite correspondenc
 
 ## The 74-variable detector and further quartic reductions
 
-The [ordinary-abc construction](../papers/quartic_existence/quartic_abc74_20261116_v46.tex) uses **74 variables and 64 quadratic rows**. Put β=X/2, rescale the paired reciprocal coordinates by powers of β, and use the height scale B+β⁸+T². The complete five-field reference chart is retained. A normalized factor now has the form
+The [ordinary-abc construction](../papers/quartic_existence/quartic_abc74_20261116_v48.tex) uses **74 variables and 66 quadratic rows**, with exact coefficient height $\max\{30568,B^2+1\}$. Put $\beta=X$, use reference translator $R_0$ and the height scale $B+X^8+T^2$. The complete five-field inverse reference graph makes both reciprocal squares available and both reference ratios affine. A normalized factor now has the form
 
 $$1+C^2/w+(\beta^2 f(H)f(U))^2/w^2.$$
 
@@ -160,7 +172,7 @@ The physical pole input is b=w(N(W)/Tr(W))². The retained simultaneous-twist pr
 
 The [reference-cover theorem](../papers/elliptic_charts/reference_covers_20261116_v47.tex) gives an exact three-coordinate square-root cover and a polynomially isomorphic four-coordinate presentation. The latter makes both reciprocal abscissas linear; its input scaling, numerator product rows and ratio rows remain quadratic. Under the retained group premise the covered points are exactly 2E(K), so using that point restriction for every integer input requires an integral index relative to P, rather than silently retaining the half-generator convention. Its separate Jacobi chart recovers the original difference trace and identifies the complete zero-scale fiber.
 
-The next concrete quartic target is the asymmetric pairing between the two differently scaled numerator points. It must encode their actual difference trace within the saved reference budget and account for every zero-reference, zero-ratio and zero-contact stratum. The reference and numerator blocks alone do not give a smaller complete source; the current complete bound remains 74.
+The [inverse reference-square theorem](../papers/elliptic_charts/inverse_reference_squares_20261116_v48.tex) now supplies a complete quadratic interface to the detector, including every exceptional graph fiber, with no new guard. Its two square coordinates use the saving from the three-coordinate chart. A further complete saving therefore requires a different pairing or recovery embedding, or a separately justified restriction of the arithmetic witnesses. The [tangent-completion theorem](../negative_results/papers/elliptic_charts/tangent_completion_20261116_v48.tex) rules out repairs by any quadrics in the specified twenty-component compressed embedding; adjoining the physical trace still leaves an arbitrary false trace. Adding conjugate products or the existing trace alone cannot close that particular pairing. A different embedding must recover the actual difference and account for every zero-reference, zero-ratio and zero-contact stratum. The complete bound remains 74.
 
 The deeper comparison precision needed by the 195-variable construction is not supplied by this detector. A transfer there requires a new valuation argument or a different use of the integer-growth relation. Its variable reduction must be justified separately from the input-preserving affine–Laurent elimination used in the 195-variable family.
 
@@ -205,13 +217,13 @@ The separate [mixed-reference-sign theorem](../negative_results/papers/elliptic_
 
 The [duplication sign obstruction](../negative_results/papers/elliptic_charts/duplicated_reference_signs_20261116_v44.tex) shows that replacing the local parameter by its doubled-point version does not remove every sign branch. At the valid contact prime 76537, an allowed half-integral reference progression simultaneously enters a formal neighborhood at one embedding and an order-four neighborhood at the other. Duplication sends the latter to a two-torsion branch and reverses the formal-parameter sign. The quartic permits the full source group, so restricting this check to integral multiples of the doubled generator would omit allowed soundness tuples.
 
-The weighted-product test now handles every torsion branch with the complete reference chart. Propagating it through the three-coordinate chart remains a separate task. Its integration must include detector powers, the original height trace, all auxiliary squares, and every nonzero condition. A further quartic saving requires soundness on every rational solution, including any added chart boundary.
+The weighted-product test handles every torsion branch, and the complete inverse reference graph connects the three-coordinate chart to its squared detector outputs. This full quadratic conversion gives the current coefficient improvement, with every recovery square included in the 74-coordinate count. A further saving must reduce the paired-point, height or detector budget while preserving soundness on every rational solution, including any added chart boundary.
 
-The complete ratio equations also imply the paired curve equations whenever the two reference ratios do not vanish together. The fixed translating point is not two-torsion, which supplies that nonvanishing on the entire reference chart. This redundancy is used in the [176-row, 196-variable construction](../papers/quartic/quartic196_redundancy_20261115_v40.tex) and the current 64-row, 74-variable abc construction. The [primitive quadratic bases](../papers/quartic/primitive_quadratic_bases_20261115_v40.tex) lower coefficient heights by exact invertible rational row changes and specified constant coordinate scalings. Deleting redundant rows or changing their basis alone does not lower the number of variables; the present 74-variable count also uses the weighted-product detector, input rescaling and pole realization above.
+The complete ratio equations also imply the paired curve equations whenever the two reference ratios do not vanish together. The fixed translating point is not two-torsion, which supplies that nonvanishing on the entire reference chart. This redundancy is used in the [176-row, 196-variable construction](../papers/quartic/quartic196_redundancy_20261115_v40.tex) and the current 66-row, 74-variable abc construction. The [primitive quadratic bases](../papers/quartic/primitive_quadratic_bases_20261115_v40.tex) lower coefficient heights by exact invertible rational row changes and specified constant coordinate scalings. Deleting redundant rows or changing their basis alone does not lower the number of variables; the present 74-variable count also uses the weighted-product detector, input rescaling and pole realization above.
 
 ### Height budgets for further reference compression
 
-The [mixed-power height theorem](../papers/elliptic_heights/mixed_power_height_20261116_v45.tex) applies to several possible target choices. For the current β=X/2 target and scale a=B+β⁸+T² it gives
+The [mixed-power height theorem](../papers/elliptic_heights/mixed_power_height_20261116_v45.tex) applies to several possible target choices. For the current β=X target and scale a=B+β⁸+T² it gives
 
 $$h(\beta)\le\frac{301}{388}h(a)+O(1),\qquad h(T)\le\frac{301}{97}h(a)+O(1).$$
 
@@ -242,10 +254,10 @@ $$
 for the 195-variable family, and
 
 $$
-H(Q_B)=\max\{20828275368498373068800,\;B^2+275933278576697091\}
+H(Q_B)=\max\{30568,\;B^2+1\}
 $$
 
-for the [74-variable ordinary-abc family](../papers/quartic_existence/quartic_abc74_20261116_v46.tex). Exact expansion proves these height formulas for the stated parameter ranges. A sufficient defining parameter in each ineffective family still depends on the explicitly retained arithmetic premises.
+for the [74-variable ordinary-abc family](../papers/quartic_existence/quartic_abc74_20261116_v48.tex). Exact expansion proves these height formulas for the stated parameter ranges. A sufficient defining parameter in each ineffective family still depends on the explicitly retained arithmetic premises.
 
 The [lower-bound results](../negative_results/papers/lower_bounds/lower_bounds_20261109_v15.tex) require degree at least four for a single defining equation and at least five total coordinates for a globally nonnegative quartic or a quadratic system. They supply no lower bound near the current counts.
 
