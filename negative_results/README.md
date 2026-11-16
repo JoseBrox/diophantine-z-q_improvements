@@ -37,6 +37,7 @@ The [fixed-fiber literature audit](docs/fixed_fiber_literature_20261116_v43.md) 
 
 | Manuscript | Result and scope |
 |:--|:--|
+| [Affine scalar identifications](papers/integer_labels/affine_scalar_coupling_obstruction_20261116_v50.tex) | Every fixed finite set of identities $S=[m]A+[k]P$ excludes an infinite integer progression for the original general scalar source in its sufficient coefficient range. The pair $m=1,k=2$ fails at $X=11$, $p=80287$. This does not exclude changed scalars or other point couplings. |
 | [Quadratic tangent completion](papers/elliptic_charts/tangent_completion_20261116_v48.tex) | Exact false-height families survive every quadratic identity in the specified ten-field-coordinate compressed pairing, every rational-component quadric including conjugate products, and every quadric after adjoining the physical trace. The latter trace remains arbitrary on the false family. Different embeddings, added helpers and separately proved restricted witness families are not excluded. |
 | [One-parameter elliptic presentations](papers/elliptic_charts/elliptic_chart_obstruction_20261107_v7.tex) | One retained rational parameter cannot give the specified finite algebraic presentation of infinitely many elliptic points. |
 | [Structural constraints](papers/elliptic_charts/structural_constraints_20261109_v13.tex) | Dimension, label-graph, common-index and square-class obstructions for the stated elliptic witness models. |

@@ -1,0 +1,334 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,booktabs,microtype}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\Z}{\mathbb Z}
+\title{A local obstruction to affine identifications of scalar and input points}
+\author{}\date{16 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+For the general elliptic detector with input polynomial
+$216X^4+450459$ and its specified scalar coefficient, every fixed
+affine identification $S=[m]A+[k]P$ of the scalar point with the
+input point excludes an infinite arithmetic progression of integer
+inputs. The same holds for every fixed finite union of such
+identifications. The assertion holds throughout the source's sufficiently
+large coefficient range. The proof combines its scalar local
+inequality with an elementary prime-divisor argument. For
+$S=A+[2]P$, the integer input $X=11$ gives an exact obstruction
+at the prime $80287$. Consequently a simultaneous recovery of
+$S$ and its auxiliary point by these affine formulas cannot remove
+four rational coordinates while retaining completeness. The result
+concerns the specified source and coefficient functions, not a
+lower bound for Diophantine definitions.
+\end{abstract}
+
+\section{The source conditions}
+
+Put
+\[
+ K=\Q(\sqrt2),\qquad
+ E:\ y^2=x^3-(3-\sqrt2)^2x,
+\]
+and let
+\[
+ P=\left(\frac{57-28\sqrt2}{8},
+         \frac{-660+417\sqrt2}{32}\right).
+\]
+We use the general guarded source of~\cite[Section~3]{Unit}, with
+the original coefficient functions below. Its point roles include
+$A,S,H,U_A,U_S$, with
+\[
+                         A=[n]P,\qquad S=[a]P,
+                         \qquad n,a\in\Z.
+\]
+The specified source premise is $2E(K)=\Z P$, with $P$ of infinite
+order. The source guards exclude $S-P=O$; in particular $a\ne1$.
+All point and pole guards are retained.
+
+For each fixed odd integer $L\ge3$, set
+\begin{equation}\label{eq:coefficient}
+\begin{gathered}
+ \beta(X)=216X^4+450459,\qquad \ell=76249,\\
+ r(X)=\beta(X)(\beta(X)-1)(\beta(X)-2401)
+                         (32\beta(X)+343)(2\beta(X)-1),\\
+ C_L=17(\ell^{(L+1)/2}+1),\qquad
+ \rho_L(X)=\frac{102^2\ell^L r(X)}{(1+C_Lr(X))^2}.
+\end{gathered}
+\end{equation}
+The exceptional set is
+\begin{equation}\label{eq:exceptional}
+ \mathcal S=\{p\text{ prime}:p\le76176\}
+                    \cup\{1875611,3828397,3982747\}.
+\end{equation}
+In particular $\ell\notin\mathcal S$.
+
+The obstruction uses exactly the following two source conclusions.
+\begin{enumerate}
+\item For every rational source solution in the sufficiently large
+odd-$L$ range of~\cite[Section~3]{Unit},
+\begin{equation}\label{eq:inputindex}
+                              n=\beta(X).
+\end{equation}
+This is the vanishing of the input residual in that source's
+soundness proof, not merely its conclusion that $X$ is integral.
+\item For every odd $L\ge3$, every rational source solution and every
+$p\notin\mathcal S$, if $\mu=v_p(\rho_L(X))$ is odd, then
+$\mu>0$ and
+\begin{equation}\label{eq:scalar}
+                              v_p(a-1)>\frac94\mu.
+\end{equation}
+In particular $\mu=1$ forces $v_p(a-1)\ge3$.
+\end{enumerate}
+The scalar-odd lemma of~\cite[Section~3]{General} proves
+\eqref{eq:scalar}. Section~3 of~\cite{Unit} verifies that its local
+argument survives the unsquared comparison scale, and proves
+\eqref{eq:inputindex}. Allowing the final pole ordinate to vanish
+as in~\cite{Terminal} preserves these conclusions.
+
+When applying these statements to the defining-polynomial family,
+we retain all arithmetic premises of~\cite[Section~1.1]{General}
+and~\cite[Section~1]{Unit}: the specified elliptic subgroup and
+height, normalized modular realization and its contact-height
+consequence, prepared-input pole statements, and simultaneous
+prime-pattern input. No new arithmetic hypothesis is introduced.
+The proof below is an elementary implication of
+\eqref{eq:inputindex}--\eqref{eq:scalar}; it also applies to any
+other guarded source retaining these two properties and
+\eqref{eq:coefficient}--\eqref{eq:exceptional}.
+
+\section{Prime divisors of polynomial values}
+
+\begin{lemma}\label{lem:schur}
+If $f\in\Z[T]$ is nonconstant, infinitely many primes divide its
+nonzero values at integers.
+\end{lemma}
+\begin{proof}
+Suppose all such primes belong to a finite set with product $M$,
+where the empty product is one. Choose $n_0\in\Z$ with
+$A=f(n_0)\ne0$. The polynomial
+\[
+                    g(T)=\frac{f(n_0+AMT)}{A}
+\]
+has integer coefficients, is nonconstant, and has the form
+$1+MT h(T)$ with $h\in\Z[T]$. A sufficiently large integer
+argument gives $|g(T)|>1$. Every prime divisor of this value
+then lies outside the assumed set, since $g(T)\equiv1$ at
+all its primes. Such a prime also divides the nonzero integer
+$f(n_0+AMT)=A g(T)$, a contradiction.
+\end{proof}
+
+\begin{lemma}\label{lem:simplelift}
+Let $f\in\Z[T]$ and let $p$ be a prime such that
+$f(x_0)\equiv0\pmod p$ and $f'(x_0)\not\equiv0\pmod p$.
+There is a residue class $c\pmod{p^2}$ such that
+\[
+                         v_p(f(x))=1
+                         \qquad(x\equiv c\pmod{p^2}).
+\]
+\end{lemma}
+\begin{proof}
+For $j\in\Z$ the Taylor expansion gives
+\[
+ \frac{f(x_0+pj)}p
+          \equiv\frac{f(x_0)}p+jf'(x_0)\pmod p.
+\]
+Exactly one class of $j$ makes this zero. Choose another class;
+the resulting value of $x_0+pj$ modulo $p^2$ has the required
+property. Polynomial values are unchanged modulo $p^2$ on that
+class.
+\end{proof}
+
+\section{Exclusion of every fixed affine identification}
+
+\begin{theorem}\label{thm:affine}
+Fix integers $m,k$. If $(m,k)\ne(0,1)$, there are infinitely many primes
+$p\notin\mathcal S\cup\{\ell\}$, each with a residue class
+$c\pmod{p^2}$ such that, for every integer $X$ in that class and
+every odd $L\ge3$, the relation
+\begin{equation}\label{eq:affinelabel}
+                              a=m\beta(X)+k
+\end{equation}
+is incompatible with the scalar local condition
+\eqref{eq:scalar}. The prime and residue class are independent of
+$L$. If $(m,k)=(0,1)$, the relation gives $a=1$, excluded by the
+source guard.
+
+Consequently, throughout the sufficiently large odd-$L$ range
+where \eqref{eq:inputindex} holds, adjoining the point identity
+\begin{equation}\label{eq:pointidentity}
+                              S=[m]A+[k]P
+\end{equation}
+excludes infinitely many integer inputs from the guarded source.
+\end{theorem}
+\begin{proof}
+Suppose $(m,k)\ne(0,1)$. Choose $t\in\{0,1\}$ by
+\[
+ t=0\quad\text{if }k\ne1,\qquad
+ t=1\quad\text{if }k=1.
+\]
+Then
+\begin{equation}\label{eq:nonzeroconstant}
+                               mt+k-1\ne0.
+\end{equation}
+The nonconstant polynomial
+\[
+                    f_t(T)=216T^4+450459-t
+\]
+is squarefree over $\Q$: its derivative is $864T^3$, and
+$f_t(0)=450459-t\ne0$. By Lemma~\ref{lem:schur}, infinitely many
+primes divide nonzero values of $f_t$. Choose such a prime $p$
+outside $\mathcal S\cup\{\ell\}$ and outside the finite prime
+support of
+\[
+                        864(450459-t)(mt+k-1).
+\]
+A root $x_0$ of $f_t$ modulo this prime is nonzero modulo $p$,
+and $f_t'(x_0)=864x_0^3$ is a unit. Lemma~\ref{lem:simplelift}
+provides a residue class $c\pmod{p^2}$ on which
+\begin{equation}\label{eq:valuationone}
+                   v_p(\beta(X)-t)=1,\qquad
+                   \beta(X)\equiv t\pmod p.
+\end{equation}
+
+If $t=0$, the four other factors of $r(X)$ reduce to
+\[
+                              -1,\quad-2401,\quad343,\quad-1.
+\]
+If $t=1$, they reduce to
+\[
+                              1,\quad-2400,\quad375,\quad1.
+\]
+All are units because $p>76176$. Thus
+$v_p(r(X))=1$. Also $102\ell$ is a unit at $p$, whereas
+$1+C_Lr(X)\equiv1\pmod p$ for every fixed odd $L\ge3$.
+Equation~\eqref{eq:coefficient} therefore gives
+\[
+                               v_p(\rho_L(X))=1.
+\]
+The scalar condition requires $v_p(a-1)\ge3$. But
+\eqref{eq:affinelabel}, \eqref{eq:valuationone}, and the choice
+of $p$ give
+\[
+                    a-1\equiv mt+k-1\not\equiv0\pmod p.
+\]
+This is a contradiction for every integer $X$ in the residue class.
+The prime-divisor lemma permits infinitely many choices of $p$ outside
+the specified finite exclusions.
+
+Finally, $P$ has infinite order, so
+\eqref{eq:pointidentity} is equivalent to $a=mn+k$.
+Using \eqref{eq:inputindex} gives \eqref{eq:affinelabel}.
+This proves the point-identity conclusion in the stated coefficient
+range. The pair $(m,k)=(0,1)$ gives $S=P$ and is excluded directly.
+\end{proof}
+
+\begin{corollary}\label{cor:finiteunion}
+Let $\mathcal C\subset\Z^2$ be finite and nonempty. There is an
+infinite arithmetic progression of integer inputs for which no source
+solution satisfies $S=[m]A+[k]P$ for any $(m,k)\in\mathcal C$,
+throughout the sufficiently large coefficient range. Thus a finite
+union of these source restrictions is not complete.
+\end{corollary}
+\begin{proof}
+The pair $(0,1)$ is excluded by the source guard for every input and
+can be discarded. If no pair remains, the conclusion is immediate.
+Otherwise choose a distinct prime and its obstructing residue class
+from Theorem~\ref{thm:affine} for each remaining pair. This is possible
+because each pair permits infinitely many primes. The Chinese
+remainder theorem gives a simultaneous residue class modulo the
+product of their squares. Every integer in this class has the local
+obstruction for every allowed pair.
+\end{proof}
+
+\begin{corollary}\label{cor:two}
+The simultaneous substitutions
+\[
+                  S=[m]A+[k]P,\qquad
+                  U_S=[m]U_A+[k]H
+\]
+with fixed integers $m,k$ cannot preserve completeness of the
+specified general source. In particular these substitutions cannot
+remove the two $K$-point blocks, and hence four retained rational
+coordinates, while keeping that source's integer input projection.
+\end{corollary}
+\begin{proof}
+The first identity alone has the obstruction in
+Theorem~\ref{thm:affine}. Adding the second identity cannot restore
+an excluded input.
+\end{proof}
+
+The theorem concerns the coefficient functions
+\eqref{eq:coefficient} and the two source properties
+\eqref{eq:inputindex}--\eqref{eq:scalar}. It makes no assertion
+about altered scalar coefficients, point identities involving other
+root roles, or different Diophantine constructions.
+
+\section{An exact counterexample for a two-step translation}
+
+\begin{proposition}\label{prop:explicit}
+For $S=A+[2]P$, one can take $X=11$ and $p=80287$.
+The obstruction persists for all integers
+\[
+                              X\equiv11\pmod{6446002369}.
+\]
+\end{proposition}
+\begin{proof}
+Direct arithmetic gives
+\[
+ \beta(11)=3612915=3^2\cdot5\cdot80287,\qquad
+                         80287^2=6446002369.
+\]
+The number $80287$ is prime, lies outside~\eqref{eq:exceptional},
+and differs from $\ell$. The five factors of $r(11)$ have residues
+\[
+                    0,\quad80286,\quad77886,\quad343,\quad80286
+                    \pmod{80287}.
+\]
+The first factor has valuation one, so
+$v_{80287}(\rho_L(11))=1$ for every odd $L\ge3$.
+For $a=\beta(11)+2$, however,
+\[
+                            a-1\equiv1\pmod{80287}.
+\]
+This contradicts~\eqref{eq:scalar}. The same factor residues and
+first-order valuation hold whenever $X\equiv11\pmod{80287^2}$.
+In the sufficiently large source range, the point identity forces
+$a=\beta(X)+2$ by~\eqref{eq:inputindex}.
+\end{proof}
+
+\section*{Exact verification}
+The accompanying standard-library script
+\begin{center}\small
+\texttt{negative\_results/computation/affine\_coupling\_v50/check.py}
+\end{center}
+checks primality by trial
+division through $\lfloor\sqrt{80287}\rfloor$, the exact
+factorization of $\beta(11)$, every contact residue, and the first-order
+valuation. It writes \nolinkurl{affine_coupling_certificate.json}.
+The proof of Theorem~\ref{thm:affine} gives the infinite-family
+conclusion for every fixed pair $(m,k)$; it does not depend on a
+bounded computational search.
+
+\begin{thebibliography}{9}
+\bibitem{General}
+\emph{A defining polynomial in twenty-five variables: combined scalar
+and comparison conditions}, repository source,
+\nolinkurl{papers/few_variables25/few_variables25_merged_20261110_v19.tex}.
+\bibitem{Unit}
+\emph{A single norm determinant for the 25- and 13-variable constructions},
+repository source,
+\nolinkurl{papers/finite_algebra/unit_norm_20261114_v28.tex}.
+\bibitem{Terminal}
+\emph{Smaller norm polynomials with a possibly singular final quadratic
+extension}, repository source,
+\nolinkurl{papers/finite_algebra/terminal_quadratic_root_20261115_v40.tex}.
+\end{thebibliography}
+\end{document}

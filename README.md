@@ -46,7 +46,7 @@ The 71-variable quartic uses the complete three-coordinate unit reference chart 
 
 The coefficient-basis transformations and the 195/257-coordinate eliminations preserve their corresponding full rational solution sets. The finite-algebra construction permits a zero final pole ordinate and proves soundness on that larger locus.
 
-Current specifications: [results JSON](data/results_20261116_v49.json), [proof and verification guide](docs/results_20261116_v49.md), and [research directions](docs/research_directions.md).
+Current specifications: [results JSON](data/results_20261116_v50.json), [proof and verification guide](docs/results_20261116_v50.md), and [research directions](docs/research_directions.md).
 
 The [fixed-fiber and detector-index theorems](docs/common_parameter_guard_reduction_20261116_v42.md) show that one common rational pole fiber with nonzero ordinates suffices for all remaining pole guards, and give independent auxiliary-index families with unchanged square-class scalars. The common rational fiber itself remains unproved. Proved obstructions and lower bounds are collected separately in [negative_results](negative_results/README.md).
 
@@ -110,13 +110,22 @@ The [native square-complement theorem](papers/pole_parameters/guarded_complement
 
 The [finite-class complement theorem](papers/pole_parameters/finite_complement_classes_20261116_v46.tex) weakens that realization target. Finitely many levels $17m^2$ and positive square classes supported on the **original exceptional prime set** can be allowed without adding retained coordinates. At the single level 17, it is enough that both actual complements have even valuation outside that fixed set. All whole-algebra guards remain automatic. The paper proves the same conditional **21/9** census and gives an infinite prepared free-input family with nonsquare complement class 409, allowed when 409 belongs to the exceptional set. **Actual native realization remains unproved**, so the established general counts remain **25 and 13**.
 
-The [bounded native norm-level theorem](papers/pole_parameters/bounded_norm_levels_20261116_v48.tex) permits the detector-dependent level $a=17(N/(1+N))^2$, where $N=\operatorname{Norm}(W)$. It preserves local pole extraction at every relevant odd valuation and proves the denominator and complement are units at every prepared point-algebra character. The more general fixed choices $a=17(MN/(c+N))^2$ are also allowed under the stated coefficient conditions. They require no additional retained coordinate. The exact **21/9** target becomes
+The [adaptive complement theorem](papers/pole_parameters/adaptive_native_complements_20261116_v50.tex) permits trace-dependent levels and varying quadratic classes with no new retained coordinate. Its exact change of presentation is
 
 ```math
-\left(\frac{2M_iW_{i,0}}{c_i+N_i}\right)^2-d_i y_i^2=\frac{4w_i}{17},\qquad i=0,1.
+w_i^*=\frac{w_i}{(1+w_i)^2},\qquad W_i^*=(1+w_i)W_i,\qquad
+V_i^*=\operatorname{Tr}((W_i^*)^{-1}),\qquad J_i^*=\operatorname{Norm}((W_i^*)^{-1}).
 ```
 
-The first coordinates are still prescribed by the two actual coupled detector tuples. **Simultaneous rational realization remains unproved.**
+It preserves each actual detector output $b_i=4w_i^*/(V_i^*)^2$. At a hypothetical negative odd pole, $(w_i^*,V_i^*,J_i^*)$ reduces to $(0,0,0)$. Consequently the level multiplier $m_i=1/(1-V_i^*+J_i^*)$ retains pole exclusion, although it may have poles at good contacts. Its denominator and complement are units at every prepared point-algebra character. The earlier [bounded norm levels](papers/pole_parameters/bounded_norm_levels_20261116_v48.tex) remain a separate permitted family.
+
+The class $d_i=1-4w_i^*/17$ is automatically a local unit at the relevant primes and lies in $[16/17,1)$ on prepared real tuples. Its bare norm conic contains the fixed point $(1,1)$. The exact remaining **21/9** target is
+
+```math
+(m_iV_i^*)^2-d_i y_i^2=\frac{4w_i^*}{17},\qquad i=0,1,
+```
+
+with the first coordinates prescribed by the actual coupled detector tuple. Further classes may depend on the existing auxiliary data, subject to the proved local and whole-character conditions. A concrete sufficient target is $\operatorname{Norm}(W_i^*-1)=1$, using $m_i=1/(2-V_i^*)$; it forces both prescribed first coordinates to equal one. **Neither this simultaneous norm-one incidence nor the more general prescribed-trace realization is proved. The established general counts remain 25 and 13.** [Exact certificates](computation/pole_parameters/adaptive_levels_v50) verify the identities and specified local examples, not uniform rational realization.
 
 The [norm-compatible preparation](papers/pole_parameters/norm_compatible_scalar_20261116_v47.tex) makes both associated norm conics rationally soluble throughout a prepared integer-input family. For the general source it uses an explicit degree-eight input polynomial reflecting integrality and a scalar that is a norm from $\mathbb{Q}(\sqrt{10657})$, preserving the 25-coordinate source and its height argument. The conditional sources already admit the same bare-norm preparation without changing their scalar. The unresolved equations require the first conic coordinates to equal the **actual prescribed detector traces**; bare conic solubility does not imply the 21/9 target.
 
@@ -132,6 +141,8 @@ The [definability reductions](papers/number_fields/number_field_definability_202
 
 ## Negative results
 
+The [affine scalar-coupling theorem](negative_results/papers/integer_labels/affine_scalar_coupling_obstruction_20261116_v50.tex) proves that every fixed finite set of identities $S=[m]A+[k]P$ loses an infinite progression of integer inputs for the original general scalar source. Its explicit $S=A+[2]P$ counterexample is $X=11$ at $p=80287$. Altered scalar constructions and other couplings are outside its scope.
+
 The [automatic-level finiteness theorem](negative_results/papers/pole_parameters/automatic_level_finiteness_20261116_v48.tex) excludes uniform conditional completeness from the choice $a=w\operatorname{Norm}(W)$, including fixed finite rational rescalings. The [tangent-completion theorem](negative_results/papers/elliptic_charts/tangent_completion_20261116_v48.tex) proves that all quadrics in the specified compressed pairing, even after adjoining the physical trace, leave its false tangent family. These results concern those constructions; they leave bounded native levels and different paired-point embeddings open.
 
 The separate [obstructions and lower bounds](negative_results/README.md) directory contains the proved negative results, organized by subject with their exact hypotheses and limitations. It includes pole-predicate counterexamples, restrictions on elliptic-point compression, contact-height counterfamilies, and obstructions to extending a fixed formula to number fields. Shared computational dependencies remain linked from the corresponding papers and index.
@@ -143,6 +154,7 @@ The [pole-compression guide](negative_results/docs/pole_compression_obstructions
 Use **Python 3.12** for the byte-pinned legacy suite and **SymPy 1.14.0** for symbolic checks. From the repository root:
 
     python -m pip install sympy==1.14.0
+    python -B scripts/verify_v50.py
     python -B scripts/verify_v49.py
     python -B scripts/verify_v48.py
     python -B scripts/verify_v47.py
@@ -162,7 +174,7 @@ Use **Python 3.12** for the byte-pinned legacy suite and **SymPy 1.14.0** for sy
     python -B scripts/verify_release_v27.py
     python -B scripts/verify.py --full
 
-The current verifiers reconstruct specifications and certificates in temporary files. They cover the complete 195-, 257-, and 71-variable quartics and their coefficient expansions, complete variable-difference charts including torsion and tangent fibers, unit-reference product recovery and the scaled physical trace, the complete inverse reference-square graph, bounded native norm levels, automatic-level finiteness examples, both full tangent quadratic-identity spaces, weighted-product boundary certificates and input-rescaling identities, finite complement classes, the native complement guard and mixed-power height identities, the abelian-parameter and duplication obstructions, the revised scalar identities and source census, exact quadratic reference and height rescaling with its nonzero guard, the norm map, normalization and local cancellation counterexamples, fixed-class branch and quotient identities, native fixed-fiber guards, rational-section maps, K3 branch and resolution identities, independently checked mixed reference signs, local pole cases, Tunnell coefficients, terminal nonreduced examples, reference-chart identities and exceptional cases, Pell-label examples, paired-ratio implications, invertible row transformations and complete quartic expansions. The retained verifiers authenticate the sources and supplied 198-variable archive. The full legacy verifier has **126 stages**. Optional PARI rank checks remain separately requested by --with-pari; they are not implied by --full. The new local and automatic-conic certificates do not use PARI, analytic ranks, or BSD.
+The current verifiers reconstruct specifications and certificates in temporary files. They cover adaptive levels, the exact pole-preserving normalization, varying classes, norm-one incidence identities and the separate affine scalar-coupling obstruction, as well as the complete 195-, 257-, and 71-variable quartics and their coefficient expansions, complete variable-difference charts including torsion and tangent fibers, unit-reference product recovery and the scaled physical trace, the complete inverse reference-square graph, bounded native norm levels, automatic-level finiteness examples, both full tangent quadratic-identity spaces, weighted-product boundary certificates and input-rescaling identities, finite complement classes, the native complement guard and mixed-power height identities, the abelian-parameter and duplication obstructions, the revised scalar identities and source census, exact quadratic reference and height rescaling with its nonzero guard, the norm map, normalization and local cancellation counterexamples, fixed-class branch and quotient identities, native fixed-fiber guards, rational-section maps, K3 branch and resolution identities, independently checked mixed reference signs, local pole cases, Tunnell coefficients, terminal nonreduced examples, reference-chart identities and exceptional cases, Pell-label examples, paired-ratio implications, invertible row transformations and complete quartic expansions. The retained verifiers authenticate the sources and supplied 198-variable archive. The full legacy verifier has **126 stages**. Optional PARI rank checks remain separately requested by --with-pari; they are not implied by --full. The new local and automatic-conic certificates do not use PARI, analytic ranks, or BSD.
 
 The complete TeX manuscripts are the mathematical deliverables. They are compiled and visually inspected before publication. scripts/update_manifest.py records the distributed file hashes. Computational reconstruction certifies the finite identities and coefficients it checks; it does not certify external arithmetic premises or constitute independent non-author mathematical review.
 

@@ -1,5 +1,5 @@
 {
-  "schema": "diophantine-negative-results/v47",
+  "schema": "diophantine-negative-results/v50",
   "date": "2026-11-16",
   "scope": "Proved obstructions and lower bounds under their explicitly stated hypotheses. No global variable minimum or number-field counterexample is asserted.",
   "origin": "Historical theorem records separated from data/results.json, with additional proved obstruction records. The complete manuscript index is negative_results/README.md.",
@@ -464,6 +464,23 @@
       "consequence": "Every quadratic identity of the specified embedding, including rational conjugate products and the physical trace, vanishes on a false tangent family with arbitrary trace",
       "scope": "No statement about different embeddings, additional helpers, identities required only on a restricted arithmetic family, or a global variable minimum.",
       "global_variable_minimum_established": false
+    },
+    {
+      "id": "affine_scalar_coupling_v50",
+      "statement": "Every fixed finite set of affine identifications S=[m]A+[k]P excludes an infinite arithmetic progression of integer inputs in the specified general source.",
+      "scope": "Original beta=216X^4+450459 and scalar rho, throughout the sufficiently large coefficient range where n=beta. All original guards and arithmetic premises retained.",
+      "proof": "negative_results/papers/integer_labels/affine_scalar_coupling_obstruction_20261116_v50.tex",
+      "verification": "negative_results/computation/affine_coupling_v50/affine_coupling_certificate.json",
+      "counterexample": {
+        "m": 1,
+        "k": 2,
+        "X": 11,
+        "p": 80287,
+        "rho_valuation": 1,
+        "required_scalar_index_minus_one_valuation": 3,
+        "actual_valuation": 0
+      },
+      "global_minimum_claimed": false
     }
   ]
 }

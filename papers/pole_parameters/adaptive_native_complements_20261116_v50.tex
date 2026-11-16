@@ -1,0 +1,618 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,booktabs,microtype}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}\newtheorem{definition}[theorem]{Definition}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\DeclareMathOperator{\Tr}{Tr}\DeclareMathOperator{\Nm}{N}
+\title{Adaptive levels and varying norm classes for native elliptic detectors}
+\author{}\date{16 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+We give complement levels and varying quadratic norm classes that retain
+the negative-odd-valuation implication of the native elliptic detectors.
+An exact re-expression leaves the detector output unchanged and makes
+every odd valuation of its physical weight positive. For the re-expressed
+detector, the level multiplier $P(V,J)/Q(V,J)$ may use polynomials
+$P,Q$ with $S$-integral coefficients and an $S$-unit value $Q(0,0)$.
+Only that residue configuration is relevant to a negative odd pole. The example
+$1/(1-V+J)$ is a unit at every prepared point-algebra character and
+can have poles at positive contact valuations. A family of varying
+classes has automatic real nonvanishing and the required even local
+valuations. All denominators and complement guards are included.
+If both actual prescribed-trace norm equations can be realized
+simultaneously for every integer input, the existing finite-algebra
+encoding gives twenty-one variables for the general source and nine
+for either conditional source. That rational realization assertion is
+stated explicitly and is not proved; no smaller defining-variable
+bound is asserted.
+\end{abstract}
+
+\section{Native detectors and arithmetic scope}
+
+Let $K=\Q(\sqrt2)$ and let $S$ be the original finite exceptional
+prime set of the chosen native source; in particular $2,3,17\in S$.
+We retain the arithmetic premises, sufficient coefficient range,
+point-stage guards, local extraction argument, and height argument of
+the general twenty-five-variable source or either conditional
+thirteen-variable source in~\cite{Unit,Terminal,Complement}.
+
+For one native block write
+\begin{equation}\label{eq:native}
+ W=\prod_{k=1}^{r}(1+w h_k^2),\qquad
+ V=\Tr(W^{-1}),\qquad J=\Nm(W^{-1}),\qquad b=\frac{4w}{V^2}.
+\end{equation}
+Here $w$ is a nonzero rational scalar depending only on the retained
+base coordinates, and $h_k$ are the native field-valued rational
+functions. All divisions in~\eqref{eq:native} are guarded.
+For the general source $w=\rho R$; for a conditional source
+$w=F/(4\delta^8)$, absorbing the fixed guarded square in its
+physical input. The factorization~\eqref{eq:native} holds for these
+sources as in~\cite{Bounded}.
+
+Let $\mathcal B$ be the finite point algebra at an actual rational
+point-stage specialization. It is split by $K$, so every geometric
+character of $\mathcal B$ takes values in $K$~\cite[Lemma 1.1]{Complement}.
+Trace and norm in~\eqref{eq:native} are the coefficient operations
+in $\mathcal B\otimes_\Q K$. At the chosen rational character they
+are the usual field trace and norm. At another character the two
+slots need not be conjugates; their sum and product still give the
+evaluations of $V$ and $J$.
+
+An actual tuple is \emph{prepared} when it has the source's
+point-stage guards and prepared detector inputs. In particular the
+chosen rational inputs have square reduced denominator, lie in
+$(0,17)$, are squares at $2,3,17$, and have the required positive
+valuations at those primes. The native scalar $w$ is then positive
+and has even $17$-adic valuation. At every geometric character,
+every real value of a factor $1+w h_k^2$ is at least one. Thus
+both real slots of $W^{-1}$ belong to $(0,1]$.
+
+Every auxiliary function introduced below is a fixed rational
+expression in the retained native data. It is not an additional free
+rational parameter. A finite list of such expressions can be used
+by the finite-union encoding of~\cite{Finite}; no infinite choice of
+coefficients or class representatives is implicit.
+
+\section{Local residues and trace-dependent levels}
+
+\begin{lemma}\label{lem:residues}
+Let $p\notin S$ and suppose $v_p(w)$ is odd. At an actual rational
+character, $V,J$ are $p$-integral and their residue pair is one of
+\[
+                         (0,0),\qquad(1,0),\qquad(2,1).
+\]
+At an inert prime the middle pair does not occur.
+\end{lemma}
+\begin{proof}
+A zero $h_k$ contributes the factor one. For every other factor,
+at each place of $K$ above $p$, the summands in $1+w h_k^2$
+have valuations zero and an odd integer. Their minimum is unique.
+The reciprocal of the factor is therefore integral, reducing to
+one if the second summand has positive valuation and to zero if it
+has negative valuation. Each local slot of $W^{-1}$ consequently
+reduces to zero or one. Their sum and product give the displayed
+pairs. At an inert prime the two slots are conjugate and have the
+same residue in this two-element set.
+\end{proof}
+
+\begin{proposition}\label{prop:tracelevels}
+Let $P,Q\in\Z[S^{-1}][v,j]$ have nonnegative coefficients and
+positive constant coefficients. Suppose each value of $P$ and $Q$
+at $(0,0),(1,0),(2,1)$ is an $S$-unit. For a fixed positive integer
+$M$, put
+\[
+                     m=M\frac{P(V,J)}{Q(V,J)},\qquad a=17m^2.
+\]
+At every $p\notin S$ with $v_p(w)$ odd,
+$v_p(m)=v_p(M)\ge0$. Moreover $P(V,J)$, $Q(V,J)$, and $m$
+are units at every prepared point-algebra specialization.
+\end{proposition}
+\begin{proof}
+The local assertion follows from Lemma~\ref{lem:residues} and the
+six assumed unit values. At every prepared real character, $V,J$
+are positive. The coefficient and constant-term hypotheses make
+$P(V,J)$ and $Q(V,J)$ strictly positive there. They are therefore
+nonzero at every geometric character and hence units in the finite
+reduced algebra.
+\end{proof}
+
+For example, the multiplier
+\begin{equation}\label{eq:boundedexample}
+                         m=M\frac{1+V}{1+J}
+\end{equation}
+has residue ratios $1,2,3/2$. These are units outside $S$.
+If $u_+,u_-\in(0,1]$ are the two reciprocal slots, then
+$V=u_++u_-$, $J=u_+u_-$, and
+\[
+ V>J,\qquad 2(1+J)-(1+V)
+       =u_+u_-+(1-u_+)(1-u_-)>0.
+\]
+Consequently $M<m<2M$ at every prepared real character.
+
+\section{A pole-preserving re-expression}
+
+Adjoin the guard $1+w\ne0$ and define
+\begin{equation}\label{eq:normalization}
+ w^*=\frac{w}{(1+w)^2},\qquad
+ h_0^*=1+w,\qquad h_k^*=(1+w)h_k\quad(1\le k\le r).
+\end{equation}
+This guard holds at every prepared tuple because $w>0$.
+
+\begin{lemma}\label{lem:exact}
+The product and reciprocal trace and norm satisfy
+\begin{equation}\label{eq:staridentities}
+ \begin{gathered}
+ W^*:=\prod_{k=0}^{r}(1+w^*(h_k^*)^2)=(1+w)W,\\
+ V^*:=\Tr((W^*)^{-1})=\frac{V}{1+w},\qquad
+ J^*:=\Nm((W^*)^{-1})=\frac{J}{(1+w)^2},\\
+                         \frac{4w^*}{(V^*)^2}=b.
+ \end{gathered}
+\end{equation}
+Every odd valuation of $w^*$ is positive.
+\end{lemma}
+\begin{proof}
+For $k\ge1$, $w^*(h_k^*)^2=w h_k^2$, while the factor with
+index zero is $1+w$. Rational scalar multiplication has the displayed
+effects on reciprocal trace and norm, proving all identities.
+
+If $v_p(w)>0$, then $v_p(w^*)=v_p(w)$; if $v_p(w)<0$, then
+$v_p(w^*)=-v_p(w)$; and if $v_p(w)=0$, then
+$v_p(w^*)=-2v_p(1+w)$ is even. Hence every odd value is positive.
+\end{proof}
+
+\begin{theorem}[Adaptive trace levels]\label{thm:adaptive}
+Let $P,Q\in\Z[S^{-1}][v,j]$, with $Q(0,0)$ an $S$-unit. Set
+\begin{equation}\label{eq:adaptive}
+                     m=\frac{P(V^*,J^*)}{Q(V^*,J^*)},
+                     \qquad a=17m^2,
+\end{equation}
+and retain the nonzero guards on the numerator and denominator.
+If $p\notin S$ and $v_p(b)$ is negative and odd, then
+\[
+                    v_p(V^*)>0,\qquad v_p(J^*)>0,
+                    \qquad v_p(m)\ge0.
+\]
+In particular, if a rational class value $d\ne0$ has even valuation
+at every such prime, rational solubility of
+\begin{equation}\label{eq:complement}
+                         q^2=d\,a(a-b)
+\end{equation}
+excludes all negative odd valuations of $b$ outside $S$.
+No condition on $P$ or $Q$ at $(1,0)$ or $(2,1)$ is needed.
+\end{theorem}
+\begin{proof}
+The identity $b=4w^*/(V^*)^2$ shows that
+$\nu=v_p(w^*)$ is odd, and Lemma~\ref{lem:exact} makes it positive.
+The negative valuation of $b$ gives
+\[
+                         v_p(V^*)>\nu/2>0.
+\]
+Apply Lemma~\ref{lem:residues} to $W^*$. Its two local reciprocal
+slots reduce to zero or one. Their sum is zero modulo $p$, and
+$p\ne2$, so both reduce to zero. Their product $J^*$ also reduces
+to zero. Thus $P(V^*,J^*)$ is integral, while
+$Q(V^*,J^*)\equiv Q(0,0)\not\equiv0\pmod p$.
+This proves $v_p(m)\ge0$.
+
+The valuation of $a=17m^2$ is now even and nonnegative, strictly
+greater than the negative odd valuation of $b$. Thus $a-b$ has
+the valuation of $b$, and the right side of~\eqref{eq:complement}
+has odd valuation. It cannot be a rational square.
+\end{proof}
+
+The theorem only uses the residue configuration forced by a negative
+odd detector pole. It permits poles of the multiplier on the other
+two residue configurations.
+
+\section{A concrete adaptive denominator and its contact order}
+
+Take
+\begin{equation}\label{eq:concrete}
+              P(v,j)=1,\qquad Q(v,j)=1-v+j,
+              \qquad m^*=\frac{1}{1-V^*+J^*}.
+\end{equation}
+If $u_+,u_-$ are the two slots of $(W^*)^{-1}$, then
+\begin{equation}\label{eq:normdenominator}
+             1-V^*+J^*=(1-u_+)(1-u_-)
+                         =\Nm(1-(W^*)^{-1}).
+\end{equation}
+At each prepared real character the original slots of $W$ are at
+least one. Since $w>0$, the slots of $W^*=(1+w)W$ exceed one.
+Thus $0<u_+,u_-<1$, and~\eqref{eq:normdenominator} is strictly
+positive. Both it and $m^*$ are whole-algebra units. Also
+$Q(0,0)=1$, as required by Theorem~\ref{thm:adaptive}. At the
+selected prepared rational character one has $m^*>1$, so
+$17(m^*)^2>17>b$.
+
+The exact prescribed first coordinate is
+\begin{equation}\label{eq:actualu}
+             m^*V^*=\frac{V^*}{1-V^*+J^*}
+                         =\frac{\Tr(W^*)}{\Nm(W^*-1)}.
+\end{equation}
+
+\begin{proposition}\label{prop:contact}
+Let $p\notin S$ be split in $K$, and suppose $v_p(w)=1$.
+Write $W_+,W_-$ for its two local slots. Suppose
+\[
+                         v(W_+)=0,\qquad v(W_-)<0.
+\]
+At a guarded specialization,
+\[
+             v_p(b)=1,\qquad v_p(m^*)\le-1.
+\]
+The tests $h_{k,+}$ on the unit branch are integral. If
+\begin{equation}\label{eq:contactnoncancellation}
+                     1+\sum_{k=1}^{r}h_{k,+}^2
+                              \not\equiv0\pmod p,
+\end{equation}
+then $v_p(m^*)=-1$. More generally
+$v_p(m^*)=-v(W_+^*-1)$.
+\end{proposition}
+\begin{proof}
+Each original factor has nonpositive valuation. Since their product
+$W_+$ has valuation zero, every factor on that branch has valuation
+zero. The odd weight valuation then gives $v(h_{k,+})\ge0$,
+and $W_+\equiv1\pmod p$. Hence
+$W_+^*=(1+w)W_+\equiv1\pmod p$. The other slot of
+$(W^*)^{-1}$ has positive valuation. Therefore $V^*$ is a unit,
+and $b=4w^*/(V^*)^2$ has valuation one.
+
+The factor $1-u_-$ in~\eqref{eq:normdenominator} is a unit,
+whereas $1-u_+$ has valuation $v(W_+^*-1)\ge1$.
+This proves the general formula and inequality. Expanding the
+product modulo $p^2$ gives
+\[
+               \frac{W_+^*-1}{w}
+                   \equiv1+\sum_{k=1}^{r}h_{k,+}^2\pmod p.
+\]
+Condition~\eqref{eq:contactnoncancellation} makes the last value
+a unit, proving the exact order one. Without that condition,
+cancellation can increase the order and no equality is asserted.
+\end{proof}
+
+\section{Varying admissible norm classes}\label{sec:classes}
+
+\begin{theorem}\label{thm:classes}
+Let $\omega$ denote either $w$ or $w^*$, and let $R$ be a fixed
+native scalar rational function, taking values in $\mathcal B^\times$
+at every prepared point-algebra specialization. Fix a positive rational $S$-unit
+$\kappa>1/17$, and put
+\begin{equation}\label{eq:varyingclass}
+ d_{R,\kappa}
+     =\left(R+\frac{\kappa\omega}{R}\right)^2
+                                      -\frac{4\omega}{17}.
+\end{equation}
+At an actual rational character, $v_p(d_{R,\kappa})$ is even
+whenever $p\notin S$ and $v_p(\omega)$ is odd.
+At every prepared real character, $d_{R,\kappa}>0$, so it is
+a unit of the whole point algebra. In particular these classes
+can be used with Proposition~\ref{prop:tracelevels} or
+Theorem~\ref{thm:adaptive}, respectively, without a new retained
+coordinate.
+\end{theorem}
+\begin{proof}
+Write $n=v_p(\omega)$ and $r_0=v_p(R)$. Since $\kappa$ is an
+$S$-unit, the two summands inside the square in~\eqref{eq:varyingclass}
+have valuations $r_0$ and $n-r_0$. They are distinct because $n$
+is odd. The valuation of their squared sum is
+$2\min(r_0,n-r_0)<n$. It is strictly below the valuation of
+$4\omega/17$, and therefore equals the valuation of
+$d_{R,\kappa}$. It is even.
+
+Multiplication by $R^2>0$ at a real character gives
+\[
+ R^2d_{R,\kappa}
+    =\kappa^2\omega^2
+       +(2\kappa-4/17)R^2\omega+R^4.
+\]
+As a quadratic polynomial in the real value of $\omega$, its
+leading coefficient is positive and its discriminant is
+$16(1-17\kappa)R^4/289<0$. It is strictly positive.
+All geometric characters are real before the new root adjunctions,
+which proves the whole-algebra unit assertion. The only displayed
+denominator is the already guarded unit $R$.
+\end{proof}
+
+The choice $\kappa=2/17$ gives the simpler formula
+\begin{equation}\label{eq:simplerclass}
+                       d_R=R^2+\frac{4\omega^2}{289R^2}.
+\end{equation}
+Every class~\eqref{eq:varyingclass} supplies the bare norm point
+\[
+        u_0=R+\kappa\omega/R,\qquad y_0=1,
+        \qquad u_0^2-d_{R,\kappa}y_0^2=4\omega/17.
+\]
+This identity does not prescribe the native first coordinate.
+
+\section{A normalized class with a fixed norm point}
+
+\begin{proposition}\label{prop:normalizedclass}
+For the pole-preserving normalization, put
+\begin{equation}\label{eq:normalizedclass}
+                         d_0=1-\frac{4w^*}{17}.
+\end{equation}
+This value is a local unit at every $p\notin S$ with $v_p(w^*)$
+odd. At every prepared point-algebra character,
+\[
+                    \frac{16}{17}\le d_0<1.
+\]
+It is consequently a whole-algebra unit. Its bare norm conic has
+the fixed point $(u,y)=(1,1)$.
+\end{proposition}
+\begin{proof}
+Every odd valuation of $w^*$ is positive, so $d_0\equiv1\pmod p$.
+For prepared $w>0$, the identity $(1+w)^2-4w=(1-w)^2$ gives
+$0<w^*\le1/4$. This proves the real bounds and nonvanishing.
+Finally $1-d_0=4w^*/17$ proves the norm-point assertion.
+\end{proof}
+
+There is also a class family that can depend on the auxiliary
+point data. Let $D,E\in\Z[S^{-1}][s,v,j]$, and assume
+$D(0,0,0)$ and $E(0,0,0)$ are $S$-units. Define
+\begin{equation}\label{eq:residueclass}
+          d=\frac{D(w^*,V^*,J^*)}{E(w^*,V^*,J^*)},
+\end{equation}
+retaining both numerator and denominator guards.
+
+\begin{proposition}\label{prop:residueclass}
+At every $p\notin S$ for which $v_p(b)$ is negative and odd,
+$d$ in~\eqref{eq:residueclass} is a local unit. It can therefore
+be used in Theorem~\ref{thm:adaptive}. If its numerator and
+denominator are positive at every prepared real character, both
+are whole-algebra units and their quotient is positive there.
+\end{proposition}
+\begin{proof}
+The proof of Theorem~\ref{thm:adaptive} gives
+$(w^*,V^*,J^*)\equiv(0,0,0)\pmod p$. The specialized
+polynomials reduce to their nonzero constant coefficients, so both
+are local units. The assumed characterwise positivity proves the
+last assertion.
+\end{proof}
+
+The unit-constant condition is only a local criterion. The
+whole-character nonvanishing in the last assertion must still be
+proved for the chosen expressions. For example $d_0$ satisfies
+both requirements automatically. Both the finite list of such
+expressions and all their coefficients are fixed before the input;
+no new class-selection parameter is introduced.
+
+\section{All-character complement guards}
+
+\begin{lemma}\label{lem:complementguard}
+Let $\mathcal B$ be the native point algebra at a prepared actual
+specialization. Suppose $\omega\in\Q^\times$ has even valuation
+at $17$, and $m,T\in\mathcal B^\times$. Then
+\[
+                       17m^2-\omega T^2\in\mathcal B^\times.
+\]
+\end{lemma}
+\begin{proof}
+If a geometric character annihilated this element, then
+$17/\omega=(\chi(T)/\chi(m))^2\in K^{\times2}$.
+A nonzero rational number that is a square in $K$ is a rational
+square or twice a rational square: the irrational coefficient of
+$(a+b\sqrt2)^2$ vanishes only when $ab=0$. Both classes have
+even $17$-adic valuation, whereas $17/\omega$ has odd valuation.
+This contradiction proves nonvanishing at every character.
+\end{proof}
+
+For the original detector take $T=2/V$ and $\omega=w$.
+For the re-expressed detector take $T=2/V^*$ and $\omega=w^*$;
+Lemma~\ref{lem:exact} gives
+$v_{17}(w^*)\equiv v_{17}(w)\equiv0\pmod2$.
+Thus $a-b$ is a whole-algebra unit for all the levels considered,
+provided the numerator and denominator units of $m$ are established.
+Proposition~\ref{prop:tracelevels} and~\eqref{eq:concrete} supply
+two explicit sufficient conditions. For other $P,Q$, that
+nonvanishing requirement must be checked; $Q(0,0)$ alone is only
+the local soundness condition.
+
+Theorem~\ref{thm:classes}, Proposition~\ref{prop:normalizedclass},
+or the stated guards in Proposition~\ref{prop:residueclass} make $d$
+a unit. Therefore
+$d a(a-b)$ is a whole-algebra unit, and each new quadratic root
+adjunction is etale. The norms of every numerator, denominator,
+$1+w$, $R$, and $a-b$ that is needed are included in the scalar
+guard. Their nonvanishing has been proved on prepared tuples;
+none is omitted from the encoding.
+
+\section{Actual rational realization and the variable count}
+
+At a rational character, the complement equation for $a=17m^2$
+is equivalent to the prescribed-trace norm equation
+\begin{equation}\label{eq:actualnorm}
+                  (m\mathcal V)^2-dy^2=4\omega/17,
+\end{equation}
+where $(\omega,\mathcal V)=(w,V)$ or $(w^*,V^*)$ as appropriate.
+The rational conversions are
+\[
+                  y=\frac{q\mathcal V}{17dm},\qquad
+                  q=\frac{17dm y}{\mathcal V}.
+\]
+All displayed divisors have already been guarded.
+
+Fix one coefficient member of a native source in its sufficient
+soundness range. Choose the level and class functions from the preceding families
+in advance, with their fixed coefficients, allowing a fixed finite
+list of choices. Assume the all-character guards specified above have been
+proved for these choices.
+
+\begin{definition}\label{def:realization}
+\emph{Simultaneous actual realization} means that for every integer
+input in the native completeness range there is an actual prepared
+guarded point-stage tuple and an allowed fixed choice of the functions
+such that both equations~\eqref{eq:actualnorm} have rational solutions.
+The two physical arguments use the same native comparison slope and
+the source's prescribed root-dependent height scale. Their traces
+are the native traces at that tuple. For a conditional source the
+range consists of nonzero integers; zero is supplied by its final
+input factor.
+\end{definition}
+
+This is a global rational existence assertion. The freely specified
+points in Section~\ref{sec:classes}, finite-place solubility, and the guard lemmas do
+not establish Definition~\ref{def:realization}.
+
+\begin{proposition}[A sufficient norm-one incidence]\label{prop:torus}
+For each block use
+\[
+ m_i=\frac{1}{2-V_i^*},\qquad
+ d_i=1-\frac{4w_i^*}{17}.
+\]
+These levels and classes satisfy the local and prepared-character
+guard conditions above. At any actual prepared tuple satisfying
+\begin{equation}\label{eq:torus}
+                   \Nm(W_i^*-1)=1\qquad(i=0,1),
+\end{equation}
+both prescribed-trace equations~\eqref{eq:actualnorm} have the
+rational solution $y_i=1$. Thus realizing~\eqref{eq:torus} for
+every integer input would suffice for
+Definition~\ref{def:realization}.
+\end{proposition}
+\begin{proof}
+The level denominator has $S$-unit constant two and is strictly
+positive at every prepared character, since $V_i^*<2$.
+Proposition~\ref{prop:normalizedclass} handles $d_i$.
+The identity
+\[
+ \Nm(W^*-1)-1
+    =\Nm(W^*)-\Tr(W^*)
+    =\Nm(W^*)(1-V^*)
+\]
+shows that~\eqref{eq:torus} is equivalent to $V_i^*=1$.
+It gives $m_iV_i^*=1$, which is the bare norm point of
+Proposition~\ref{prop:normalizedclass}.
+\end{proof}
+
+The two incidences involve the actual coupled detector products.
+Rational parametrization of an unrestricted norm-one torus does not
+establish their realization.
+
+\begin{theorem}\label{thm:count}
+Under the retained source premises and
+Definition~\ref{def:realization}, the two pole stages can be replaced
+by finite quadratic choices with no retained pole coordinate. The
+resulting integer polynomial defines $\Z$ over $\Q$ with the following
+total variable counts, including the input:
+\begin{center}
+\begin{tabular}{lrrrr}\toprule
+Source & Point pairs & Input and point coordinates & Slope and encoder & Total\\\midrule
+General &9&19&2&21\\
+Either conditional &3&7&2&9\\\bottomrule
+\end{tabular}
+\end{center}
+Without Definition~\ref{def:realization}, these counts are not
+established defining bounds.
+\end{theorem}
+\begin{proof}
+Retain the input, the $2p$ rational square-abscissa coordinates,
+and the single comparison slope, with $p=9$ or $p=3$.
+The native point algebra is free of rank $4^p$ over their integer
+polynomial ring. Clear the already specified guarded denominators
+of each expression $d_i a_i(a_i-b_i)$ and write it as $C_i/D_i$.
+Adjoin the two monic roots
+\[
+                         q_i^2-C_iD_i=0\qquad(i=0,1).
+\]
+At a rational character, $q_i/D_i$ is precisely a square root of
+the corresponding complement. The new finite algebra is free of
+rank $4^{p+1}$. Include the inherited point-stage guards and the
+norms of all new denominator and unit factors in the scalar guard.
+The preceding results make both radicands units at every prepared
+character, so the algebra is etale there.
+
+The guarded separator and determinant construction
+of~\cite[Section 6]{Unit} uses one encoder coordinate. Its rational
+zeros are exactly the rational characters satisfying these guards;
+when a scalar guard vanishes its value is one. Polynomial envelopes
+and multiplication matrices add no rational parameters.
+
+For soundness, each rational character supplies the unchanged native
+detector outputs and the two complement equations. Their local
+conclusions exclude negative odd valuations outside the original
+exceptional set. The remaining source local extraction and height
+arguments are unchanged, since Lemma~\ref{lem:exact} preserves $b$
+exactly. The rational input is therefore integral.
+
+For completeness, Definition~\ref{def:realization} supplies the
+actual tuple and rational roots. The all-character unit results
+verify every new guard and etale root adjunction, so the separator
+supplies the encoder. A conditional source includes zero by the same
+final factor $X$ as its native construction. A fixed finite union
+of choices is encoded by a product of the corresponding determinant
+polynomials. There are $1+2p+1+1=2p+3$ variables in each case.
+\end{proof}
+
+In particular, one concrete arithmetic target is
+\[
+ \left(\frac{V_i^*}{1-V_i^*+J_i^*}\right)^2
+       -d_{R_i,\kappa_i}y_i^2=4w_i^*/17,
+                         \qquad i=0,1,
+\]
+on actual native tuples at the two coupled arguments. The simpler
+class $d_i=1-4w_i^*/17$ is also available. Their simultaneous rational
+realization, including the sufficient norm-one incidences, is unproved. The established
+general defining-variable counts remain twenty-five and thirteen.
+
+\section{Exact algebraic checks}
+
+The companion verifier
+\begin{center}\small
+\texttt{computation/pole\_parameters/adaptive\_levels\_v50/check.py}
+\end{center}
+checks the universal factor, trace, norm, pole-input and norm-equation
+identities by exact symbolic arithmetic. A separate implementation of
+$\Q(\sqrt2)$ with rational pairs checks native products at split and
+inert primes, both signs of odd original weight valuations, the residue
+configurations, and the varying-class parity formula. These finite
+examples are products of the stated native form; they are not asserted
+to arise from elliptic point tuples.
+
+An exact example distinguishes the adaptive multiplier from a locally
+integral level at every odd contact. Set
+\[
+ w=\frac7{16},\qquad h=\frac{4\sqrt2-12}{7},\qquad
+ W=1+wh^2=\frac{18-6\sqrt2}{7}.
+\]
+Then $V=1$, $J=7/36$, $b=7/4$, and
+\[
+ V^*=\frac{16}{23},\qquad J^*=\frac{448}{4761},\qquad
+ 1-V^*+J^*=\frac{1897}{4761},\qquad
+ m^*=\frac{4761}{1897}.
+\]
+Since $1897=7\cdot271$ and $7\nmid4761$, the multiplier has
+valuation $-1$ at the positive odd contact $7$. This example does not
+satisfy the full elliptic preparation hypotheses and is not used as a
+completeness witness. The proofs above, rather than the finite checks,
+establish the universal local and whole-algebra assertions.
+
+\begin{thebibliography}{9}
+\bibitem{Unit}
+\emph{A single norm determinant for the 25- and 13-variable constructions},
+repository source,
+\nolinkurl{papers/finite_algebra/unit_norm_20261114_v28.tex}.
+\bibitem{Terminal}
+\emph{Smaller norm polynomials with a possibly singular final quadratic extension},
+repository source,
+\nolinkurl{papers/finite_algebra/terminal_quadratic_root_20261115_v40.tex}.
+\bibitem{Complement}
+\emph{Unit guards and a finite square-complement reduction for elliptic detectors},
+repository source,
+\nolinkurl{papers/pole_parameters/guarded_complement_reduction_20261116_v45.tex}.
+\bibitem{Finite}
+\emph{Finite square-class conditions for native detector inputs},
+repository source,
+\nolinkurl{papers/pole_parameters/finite_complement_classes_20261116_v46.tex}.
+\bibitem{Bounded}
+\emph{Bounded complement levels from native detector norms},
+repository source,
+\nolinkurl{papers/pole_parameters/bounded_norm_levels_20261116_v48.tex}.
+\end{thebibliography}
+\end{document}

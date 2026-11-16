@@ -119,6 +119,37 @@ with positive exceptional square classes $d_i$, still gives the conditional **21
 
 The separate [automatic-level finiteness theorem](../negative_results/papers/pole_parameters/automatic_level_finiteness_20261116_v48.tex) rules out uniform use of $a_i=w_iN_i$ for the conditional sources, even after finitely many fixed rational rescalings. The bounded native levels are outside that theorem. The actual $X=\pm1$ benchmark remains a finite example, not uniform completeness.
 
+### Adaptive levels and an explicit norm-one target
+
+The [adaptive complement theorem](../papers/pole_parameters/adaptive_native_complements_20261116_v50.tex) provides a larger arithmetic search family while leaving the detector outputs exactly unchanged. Write
+
+```math
+w^*=w/(1+w)^2,\qquad W^*=(1+w)W,\qquad
+V^*=\operatorname{Tr}((W^*)^{-1}),\qquad J^*=\operatorname{Norm}((W^*)^{-1}).
+```
+
+Every odd valuation of $w^*$ is positive. At a negative odd valuation of $b=4w^*/(V^*)^2$, all three quantities $w^*,V^*,J^*$ reduce to zero. Thus a level $17(P(V^*,J^*)/Q(V^*,J^*))^2$ retains local extraction when $P,Q$ have coefficients integral outside the original exceptional set and $Q(0,0)$ is a unit there. Whole-character nonvanishing must also be proved. It is automatic for $m=1/(1-V^*+J^*)$, whose denominator is $\operatorname{Norm}(1-(W^*)^{-1})>0$ on prepared characters. This multiplier can have poles at good contacts.
+
+The normalized class $d_0=1-4w^*/17$ satisfies $16/17\le d_0<1$ and is a local unit at all relevant odd-weight primes. Its unrestricted conic has the fixed point $(1,1)$. More flexible classes $D(w^*,V^*,J^*)/E(w^*,V^*,J^*)$ are locally admissible when both polynomials have integral coefficients outside the original exceptional set and unit constant terms; their whole-character positivity and nonvanishing remain explicit obligations. Another permitted family is $(R+\kappa w^*/R)^2-4w^*/17$, with a specified whole-character unit $R$ and fixed positive exceptional-unit $\kappa>1/17$.
+
+The exact target is still simultaneous actual rational realization of
+
+```math
+(m_iV_i^*)^2-d_i y_i^2=4w_i^*/17,\qquad i=0,1.
+```
+
+A concrete stronger target uses the multiplier $m_i=1/(2-V_i^*)$, which is safe and has automatic prepared guards. The identities
+
+```math
+\operatorname{Norm}(W_i^*-1)=1
+\quad\Longleftrightarrow\quad V_i^*=1
+\quad\Longrightarrow\quad m_iV_i^*=1
+```
+
+then give the actual norm point $y_i=1$ for $d_i=d_{0,i}$. Constructing these two norm-one incidences on a proper global coupling of the native auxiliary indices is a precise sufficient route. A parametrization of free norm-one elements, real continuity, local congruences, or the fixed bare norm point does not supply the required detector values.
+
+No actual uniform realization is proved. The variable counts remain **25 and 13**, with **21/9** conditional on the displayed arithmetic assertion. The [proof and verification guide](results_20261116_v50.md) records the exact scope.
+
 ### Integral labels from one finite Pell choice
 
 The [integral Lucas-label theorem](../papers/integer_labels/pell_labels_20261115_v40.tex) supplies a different arithmetic compression. Let $a,n$ be integers with
@@ -157,6 +188,8 @@ Two established obstructions delimit direct substitutions:
 
 - The [dimension and label-graph theorems](../negative_results/papers/elliptic_charts/structural_constraints_20261109_v13.tex) show that a finite algebraic presentation recovering arbitrary tuples of nine points needs at least eighteen rational parameters. The integer-index graph itself is Zariski dense in the product of the additive group and the relevant abelian variety.
 - The [index-product theorem](../negative_results/papers/elliptic_charts/index_products_and_finite_correspondences_20261110_v21.tex) shows that a fixed correspondence with finite geometric fibers cannot recover $[nh]P$ from $[n]P,[h]P$ uniformly for infinitely many $n$ and infinitely many permitted $h$ for each $n$. Restricting each index to congruence classes does not remove this obstruction.
+
+The separate [affine scalar-coupling obstruction](../negative_results/papers/integer_labels/affine_scalar_coupling_obstruction_20261116_v50.tex) excludes every fixed finite set of identifications $S=[m]A+[k]P$ for the original general scalar source: scalar odd-contact divisibility contradicts those identities on an infinite integer progression. It does not cover a redesigned scalar or couplings involving other root roles.
 
 These statements concern generic recovery and the specified finite correspondences. They do not exclude a smaller arithmetic source whose witnesses satisfy additional dependencies, or one using a different integer-growth relation.
 
