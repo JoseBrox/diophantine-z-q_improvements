@@ -1,0 +1,429 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,booktabs,microtype}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}\newtheorem{remark}[theorem]{Remark}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Qbar}{\overline{\mathbb Q}}
+\DeclareMathOperator{\Tr}{Tr}\DeclareMathOperator{\Res}{Res}
+\DeclareMathOperator{\divisor}{div}\DeclareMathOperator{\Pic}{Pic}
+\title{Ramification of fixed-argument native complement covers}
+\author{}\date{16 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+Fix the input, root points, comparison scales, and slope of a native
+detector, with positive scalar coefficient. Its square-complement
+double cover of the full independent auxiliary-point variety is
+geometrically ramified. It therefore has no rational section after
+pullback by a dominant rational map from an abelian variety, including
+the multiplication-by-two map used to represent doubled source points.
+On a geometric boundary divisor, the trace detector restricts to the
+reciprocal of an elliptic function with three poles, each of order four.
+An unramified complement cover would restrict that function to a finite
+constant set, whereas a native index-comparison factor has moving zeros.
+The result does not exclude rational lifts at individual tuples or on
+proper subvarieties of the auxiliary-point space.
+\end{abstract}
+
+\section{Fixed data and independent auxiliary points}
+
+Let
+\[
+ K=\Q(\sqrt2),\qquad d=3-\sqrt2,\qquad
+ E:\ y^2=x^3-d^2x,\qquad \mathcal E=\Res_{K/\Q}E,
+\]
+and let $\sigma$ be the nontrivial automorphism of $K$. Write
+\[
+ f=1/x,\qquad z=-x/y,
+\]
+and retain the fixed nonzero native point $P$.
+Fix the rational input, all root points, the comparison scales, and
+the comparison slope of a native source in \cite{UnitNorm}.
+All resulting contact and scalar denominators are nonzero. The fixed
+root point denoted $A\in E(K)$ has nonzero abscissa and ordinate,
+as required by its native guards. In particular it is not a two-torsion
+point. The other fixed root guards are retained as well.
+
+For a general source the auxiliary roles are
+$H,U_A,U_S,U_T,U_Z$, independently varying on
+\[
+                         \mathcal B=\mathcal E^5.
+\]
+For either conditional source they are $H,U$, independently varying
+on $\mathcal B=\mathcal E^2$. We assume the native guard functions
+on this variety are nonzero rational functions. This includes any
+scalar denominator that becomes constant after the root data are fixed.
+
+For one detector put
+\begin{equation}\label{eq:incidence}
+ V=\Tr_{K/\Q}(\mathcal W^{-1}),\qquad
+ b=\frac{4w}{V^2},\qquad k=\frac{4w}{17},
+ \qquad \mathcal R=V^2-k.
+\end{equation}
+Here $w$ is fixed and positive. In the general source $w=\rho R$;
+in the conditional source $w=F/(4\delta^8)$. Positivity follows
+whenever the earlier data admit a prepared native tuple, since the
+input is $w$ times a nonzero square. The square-complement equation is
+equivalent to the rational incidence equation $Y^2=\mathcal R$:
+\[
+             17(17-b)=\left(\frac{17}{V}\right)^2\mathcal R.
+\]
+
+\begin{theorem}\label{thm:main}
+Under these fixed-data hypotheses, the function $\mathcal R$ has
+odd valuation at some geometric prime divisor of $\mathcal B$.
+Consequently its quadratic extension is geometrically ramified.
+
+For every dominant rational map $\phi:B\dashrightarrow\mathcal B$
+from an abelian variety $B/\Q$, the pullback $\phi^*\mathcal R$
+is not a square in $\Q(B)$. In particular, the complement incidence
+has no rational section after any isogeny, group translation followed
+by a surjective homomorphism, or multiplication by two on all auxiliary
+point factors.
+\end{theorem}
+
+The theorem concerns a section on the full independent auxiliary-point
+space and its dominant abelian pullbacks. The detector input $b$ varies
+with the auxiliary points; its square class is the fixed class of $w$.
+The theorem does not
+exclude rational lifts at selected tuples, a lift on a proper
+subvariety, or a direct common-pole construction that does not force
+square complements. In particular it does not resolve the existence
+problem for the prepared independent-index families of \cite{Returns}.
+
+\section{The native boundary formula}
+
+\subsection{Dependence on one auxiliary role}
+
+For the general source write $Q_1=A,Q_2=S,Q_3=T,Q_4=Z$,
+$U_0=H$, $V_0=H-P$, and $V_i=U_i-Q_i$. Put
+\[
+ L_i=\frac{z(U_i)}{z(H)},\qquad
+ L'_i=\sigma\left(\frac{z(V_i)}{z(H-P)}\right),\qquad
+ \beta=216X^4+450459.
+\]
+The sixteen native field tests are
+\begin{equation}\label{eq:generaltests}
+ (f(U_i))_{i=0}^4,\quad (\sigma f(V_i))_{i=0}^4,\quad
+ (L_i-L'_i)_{i=1}^4,\quad L_1-\beta,\quad
+ \mathcal F(L_2,L_3,L_4).
+\end{equation}
+Their orders $a_i$ are one except at positions $12,13,14,16$,
+which have order three. The six scalar tests $S_\nu$ are the two
+rational components of $f(H)$, $f(S-P)$, and $z(S-P)/z(H)$.
+Their orders are $\kappa_\nu=(1,1,1,1,3,3)$, and
+\[
+ G_\nu=R^{\kappa_\nu}\frac{RS_\nu}{1+RS_\nu}.
+\]
+In particular no scalar test contains $U_A$. With the fixed native
+$\delta$ and $w$, the detector is
+\begin{equation}\label{eq:generalW}
+ \mathcal W=
+ \prod_{i=1}^{16}\left(1+\frac{C_i^2}{\delta^2w^{2a_i-1}}\right)
+ \prod_{\nu=1}^6\left(1+\frac{G_\nu^2}{w^{2\kappa_\nu-1}}\right).
+\end{equation}
+
+For the conditional source, put
+\[
+ L=\frac{z(U)}{z(H)},\qquad
+ L'=\sigma\left(\frac{z(U-A)}{z(H-P)}\right).
+\]
+The six tests and product are
+\begin{equation}\label{eq:conditionalW}
+\begin{gathered}
+ f(H),\ f(U),\ \sigma f(H-P),\ \sigma f(U-A),\ L-L',\ L-X,\\
+ \mathcal W=\prod_{i=1}^{6}\left(1+\frac{\delta^4C_i^2}{F}\right).
+\end{gathered}
+\end{equation}
+These are the direct index-comparison formulas of
+\cite{Direct,UnitNorm}. Both weak-$abc$ parameter choices have the
+same six tests.
+
+\subsection{A geometric boundary divisor}
+
+Over $\Qbar$ split $\mathcal E=E_+\times E_-$ and use subscripts
+for the corresponding point coordinates and detector factors.
+Let $T_0=(0,0)$ on $E_-$. Set
+\[
+                 U_{A,-}=T_0
+\]
+in the general source, or $U_-=T_0$ in the conditional source.
+This defines a geometric prime divisor $D_0$ in $\mathcal B_{\Qbar}$.
+It lies outside the guarded affine source open set; only the
+restriction of rational functions at its generic point will be used.
+
+For any point $Q=(x,y)$ with $xy\ne0$, the addition law gives
+\begin{equation}\label{eq:torsiontranslate}
+ x(T_0-Q)=-\frac{d^2}{x},\qquad
+ y(T_0-Q)=-\frac{d^2y}{x^2},\qquad
+ z(T_0-Q)=z(Q).
+\end{equation}
+The analogous formula holds with the conjugate value of $d$.
+Thus the native nonzero abscissa and ordinate of $A$ ensure that
+$T_0-A_-$ is finite and avoids every pole of $z$ and $f$ that
+occurs in this restriction.
+
+The factor containing $f(U_{A,-})^2$, or $f(U_-)^2$, has a pole
+of order four along $D_0$. Every other factor is generically a unit
+there. Indeed, after the displayed substitution its remaining
+denominators can be avoided on a nonempty real open set of the
+independent point roles. The fixed denominators are nonzero by
+hypothesis, the difference involving $A$ is controlled by
+\eqref{eq:torsiontranslate}, and the remaining variable denominators
+are avoided by generic choices of $H$ and the other auxiliary roles.
+At such a real tuple each remaining detector factor is one plus a
+nonnegative quantity, since $w>0$. Hence it cannot vanish
+identically on $D_0$. It follows that
+\begin{equation}\label{eq:residue}
+ v_{D_0}(\mathcal W_-)=-4,\qquad
+ v_{D_0}(\mathcal W_+)=0,\qquad
+                 V|_{D_0}=W^{-1},
+\end{equation}
+where $W=\mathcal W_+|_{D_0}$.
+
+Write $U=U_{A,+}$ or $U=U_+$, respectively, and put
+\[
+ h=z(H_+),\qquad
+ c=\frac{z(T_0-A_-)}{z(H_--P_-)}.
+\]
+Exactly three positive-embedding field tests still depend on $U$:
+\[
+                 f(U),\qquad z(U)/h-c,\qquad z(U)/h-a.
+\]
+Their positions and constants are
+\begin{center}
+\begin{tabular}{llll}\toprule
+Source & Positions & $a$ & $\alpha$\\\midrule
+General & $2,11,15$ & $\beta$ & $1/(\delta^2w)$\\
+Conditional & $2,5,6$ & $X$ & $\delta^4/F=1/(4\delta^4w)$\\\bottomrule
+\end{tabular}
+\end{center}
+In the general source all three positions have order one.
+Both values of $\alpha$ are positive. Consequently
+\begin{equation}\label{eq:Wboundary}
+ W(U)=K_0\bigl(1+\alpha f(U)^2\bigr)
+       \bigl(1+\alpha(z(U)/h-c)^2\bigr)
+       \bigl(1+\alpha(z(U)/h-a)^2\bigr),
+\end{equation}
+where $K_0\ne0$ is independent of $U$. It may depend on $H$
+and on all other auxiliary roles; it is not assumed constant in
+those parameters.
+
+\section{A fixed pole divisor and moving zeros}
+
+\begin{lemma}\label{lem:divisor}
+As a rational function on the fixed elliptic curve $E_+$, over
+the function field of the other parameters on $D_0$, the function
+$W$ has pole divisor
+\begin{equation}\label{eq:poledivisor}
+                   \Delta=4(T_0+T_++T_-),
+\end{equation}
+where $T_0=(0,0)$ and $T_\pm=(\pm d_+,0)$ on $E_+$.
+The family $W$ is not a constant family of rational functions on
+$E_+$.
+\end{lemma}
+\begin{proof}
+The orders of the elementary functions are
+\begin{center}
+\begin{tabular}{lrrrr}\toprule
+Point & $v(x)$ & $v(y)$ & $v(f)$ & $v(z)$\\\midrule
+$O$ & $-2$ & $-3$ & $2$ & $1$\\
+$T_0$ & $2$ & $1$ & $-2$ & $1$\\
+$T_+,T_-$ & $0$ & $1$ & $0$ & $-1$\\\bottomrule
+\end{tabular}
+\end{center}
+At $T_0$, only the first factor of \eqref{eq:Wboundary} has a
+pole, of order four. Its remaining leading coefficient contains
+\[
+                  (1+\alpha c^2)(1+\alpha a^2),
+\]
+which is generically nonzero by real positivity. At each $T_\pm$,
+the two factors involving $z$ each have a pole of order two,
+while the first factor takes the nonzero value
+$1+\alpha/d_+^2$. There are no other poles. This proves
+\eqref{eq:poledivisor}.
+
+The last factor in \eqref{eq:Wboundary} has zeros at
+\begin{equation}\label{eq:moving}
+                    z(U)=h(a\pm i/\sqrt\alpha).
+\end{equation}
+Both multipliers are nonzero, since $a$ is real and $\alpha>0$.
+The function $h=z(H_+)$ is nonconstant, independently of $U$.
+Thus these zeros move as $H_+$ varies. They cannot cancel against
+$K_0$, which has no $U$ dependence, or against poles, whose
+support is the fixed three-point set in \eqref{eq:poledivisor}.
+The family of functions $W$ is therefore nonconstant.
+\end{proof}
+
+\section{Finiteness for an unramified complement cover}
+
+\begin{lemma}\label{lem:finite}
+Let $k_0$ be an algebraically closed field of characteristic zero,
+let $E/k_0$ be an elliptic curve, and let $T_0,T_+,T_-$ be its
+three distinct nonidentity two-torsion points. Fix
+$M\in k_0^\times$ and $\Delta=4(T_0+T_++T_-)$. There are
+only finitely many $W\in k_0(E)$ with pole divisor exactly
+$\Delta$ for which $\divisor(W^2-M^2)$ is even.
+After any algebraically closed extension of $k_0$, every such
+function still belongs to this same finite set.
+\end{lemma}
+\begin{proof}
+First suppose $W^2-M^2=R_0^2$ in the elliptic function field.
+Set $Z=W+R_0$. Then
+\[
+                   W=\frac{Z+M^2/Z}{2}.
+\]
+The poles of $W$ are exactly the zeros and poles of $Z$, with
+their orders unchanged. Their three equal weights four cannot
+be partitioned into zero and pole divisors of equal degree.
+Thus the square case is impossible, over any extension field.
+
+If $\divisor(W^2-M^2)$ is even, adjoining its square root instead
+gives a connected etale double cover $E'\to E$. There are only
+three such covers over an algebraically closed field. Indeed their
+trace-zero invertible sheaves are the three nontrivial elements of
+$\Pic^0(E)[2]$, and their multiplication is unique up to scaling
+by a square constant. All three covers and their points above the
+$T_i$ are defined over $k_0$ and remain the only choices after
+algebraically closed extension. Each $E'$ is an elliptic curve
+for a suitable origin; the covering is an isogeny
+\cite[Remark~15.3]{Milne}.
+
+Let $\iota$ be its deck involution and put
+\[
+               Z=W+\sqrt{W^2-M^2},\qquad Z\iota(Z)=M^2.
+\]
+Above each pole of $W$ of order four, $Z$ has a zero of order
+four at one preimage and a pole of order four at the other.
+It has no other zeros or poles. There are consequently only
+finitely many possible divisors of $Z$ on the three fixed curves.
+
+For any such principal divisor choose a function $Z_0$ over $k_0$.
+This choice is possible even if principality was first obtained
+after extending the constants: on a constant elliptic curve, a
+degree-zero divisor supported at constant points is principal
+exactly when its weighted sum in the elliptic group is zero.
+That is already an equality of points over $k_0$.
+Every other function with the same divisor is $cZ_0$ for a
+nonzero constant $c$. Since $Z_0\iota(Z_0)$ is a nonzero constant,
+the norm condition gives
+\[
+                      c^2=\frac{M^2}{Z_0\iota(Z_0)}.
+\]
+There are at most two choices, both in $k_0$. Finally
+$W=(Z+M^2/Z)/2$ is determined. This proves both finiteness and
+its constant-field assertion.
+\end{proof}
+
+The special pole divisor is essential. For a general divisor whose
+weights can be balanced, the square case can admit the varying family
+$(cZ_0+M^2/(cZ_0))/2$. Lemma~\ref{lem:finite} excludes that case
+by its three equal pole weights.
+
+\section{Ramification and dominant abelian pullbacks}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+Work over $\Qbar$. Suppose that every divisor valuation of
+$\mathcal R$ on $\mathcal B_{\Qbar}$ were even. On this smooth
+projective variety, write $\divisor(\mathcal R)=2D$. The
+trivialization of $\mathcal O(2D)$ then defines a finite etale
+double cover with function algebra obtained by adjoining
+$\sqrt{\mathcal R}$; a split cover is allowed. Locally the
+construction has equation $u^2=v$ with $v$ a unit, so there
+is no missing ramification in higher codimension.
+
+Restrict this etale cover to $D_0$. At its generic point,
+\eqref{eq:residue} gives
+\[
+                    \mathcal R|_{D_0}=W^{-2}-k,
+\]
+a nonzero rational function because $W$ is nonconstant in $U$.
+Next take the generic fiber of the projection of $D_0$ onto all
+its elliptic factors except $U$. This fiber is the constant curve
+$E_+$ over the function field of the remaining independent
+parameters. The restricted double cover remains etale, including
+after algebraic closure of that coefficient field.
+
+Multiplication of its radicand by a square and by a nonzero
+algebraic constant identifies its function extension with
+\[
+                         \sqrt{W^2-M^2},\qquad
+                         M^2=\frac1k=\frac{17}{4w}.
+\]
+Lemma~\ref{lem:divisor} supplies the fixed pole divisor
+$4(T_0+T_++T_-)$, so Lemma~\ref{lem:finite} would force $W$
+to belong to a finite constant set of elliptic functions.
+This contradicts its moving zero divisor. Some geometric divisor
+valuation of $\mathcal R$ must therefore be odd.
+
+Now let $\phi:B\dashrightarrow\mathcal B$ be a dominant
+rational map from an abelian variety. It extends to a morphism
+and is a translation of a homomorphism
+\cite[Theorem~3.1 and Corollary~2.2]{Milne}. Dominance makes it
+surjective, and it is smooth in characteristic zero. The inverse
+image of a reduced prime divisor under a smooth surjective map
+has multiplicity one at each of its generic points. An odd
+valuation of $\mathcal R$ therefore remains odd along a component
+of its inverse image. Thus $\phi^*\mathcal R$ is not a square.
+\end{proof}
+
+The native auxiliary points are obtained as doubles of independent
+half-points. Multiplication by two is a finite etale surjective map
+of $\mathcal E^5$ or $\mathcal E^2$. The ramification proved above
+therefore persists on precisely that half-point parameter space;
+the argument does not replace doubled source points by unconstrained
+scalar coefficients.
+
+The conclusion is geometric nonexistence of a section. A rational
+point of a ramified cover can still project to a suitable native
+tuple, and a proper coupled subvariety need not dominate
+$\mathcal B$. These possibilities, as well as direct common-pole
+constructions, remain outside the obstruction.
+
+\section{Exact verification}
+
+The reproducible standard-library checker is
+\begin{center}\small
+\texttt{negative\_results/computation/fixed\_argument\_complement\_v44/}\\
+\texttt{check.py}.
+\end{center}
+It binds the native test lists and orders, verifies the torsion
+translation and conditional scalar identities, audits the elliptic
+orders and the leading coefficients at all three poles, and checks
+the impossibility of balancing the three equal pole weights.
+The constant-field finiteness argument, etale restriction, and
+smooth pullback statements are proved above; the finite checks
+do not assert a rational witness or a variable-count improvement.
+
+\begin{thebibliography}{9}
+\raggedright
+\bibitem{Milne}
+J. S. Milne, \emph{Abelian Varieties}, in
+G. Cornell and J. H. Silverman (eds.), \emph{Arithmetic Geometry},
+Springer, 1986, pp.~103--150.
+Author's version dated 2 January 2022:
+\url{https://www.jmilne.org/math/xnotes/AVs.pdf}.
+
+\bibitem{UnitNorm}
+\emph{A single norm determinant for the 25- and 13-variable constructions},
+14 November 2026. Repository source:
+\texttt{papers/finite\_algebra/unit\_norm\_20261114\_v28.tex}.
+
+\bibitem{Direct}
+\emph{Thirteen Variables from Direct Elliptic Index Comparison},
+10 November 2026. Repository source:
+\texttt{papers/conditional\_few\_variables/}\\
+\texttt{direct\_input13\_20261110\_v22.tex}.
+
+\bibitem{Returns}
+\emph{Fixed pole fibers and independent detector indices},
+16 November 2026. Repository source:
+\texttt{papers/pole\_parameters/}\\
+\texttt{common\_parameter\_guard\_reduction\_20261116\_v42.tex}.
+\end{thebibliography}
+\end{document}

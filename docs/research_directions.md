@@ -1,6 +1,6 @@
 # Research directions
 
-The established counts under the retained arithmetic premises are **25 total variables**, or **196 for a quartic**. The additional height hypotheses give **13 total variables**; ordinary rational abc gives a **78-variable quartic**. Every count includes the input. The priorities are variable count, degree, then coefficient height. The [main results table](../README.md) distinguishes the hypotheses and effective parameters; no global minimum or completed independent audit of all inherited arithmetic premises is asserted.
+The established counts under the retained arithmetic premises are **25 total variables**, or **196 for a quartic**. The additional height hypotheses give **13 total variables**; ordinary rational abc gives a **76-variable quartic**. Every count includes the input. The priorities are variable count, degree, then coefficient height. The [main results table](../README.md) distinguishes the hypotheses and effective parameters; no global minimum or completed independent audit of all inherited arithmetic premises is asserted.
 
 ## The 25-coordinate budget
 
@@ -67,6 +67,16 @@ Two separate obstructions delimit that condition. The [actual-neighborhood theor
 
 The [fixed-class synchronization theorem](../negative_results/papers/pole_parameters/fixed_class_synchronization_20261116_v43.tex) gives genus $1+2^r(r-1)$ for the common propagation curve when $r$ distinct positive pole scales and their twist classes are fixed. For two poles the genus is five, with an explicit $1+1+1+2$ Jacobian decomposition. Every fixed class tuple therefore gives only finitely many rational parameters. Infinitely many varying class tuples remain available. The full common-parameter variety has Kodaira dimension one when $r\ge2$, so direct Kummer-quotient theorems do not apply to it. The [literature audit](../negative_results/docs/fixed_fiber_literature_20261116_v43.md) also checks the relevant two-torsion, semistability and cohomological hypotheses; no theorem from Schinzel and finite Sha alone is claimed.
 
+The [abelian-parameter obstruction](../negative_results/papers/rational_fibers/abelian_parameter_obstruction_20261116_v44.tex) excludes a uniform rational identity on an abelian parameter space when the detector argument varies nontrivially, even if every twist class may vary. It applies both to rational square complements and to the original normalized pole equations. The argument forces an odd contact divisor and a negative odd pole valuation. It does not cover an actual detector family at a fixed comparison slope, a ramified cover, or individually chosen rational points. Local return sets still supply the required preparation and guards, but cannot establish the rational incidence themselves.
+
+At a fixed allowed slope with positive detector weight, the [fixed-argument ramification theorem](../negative_results/papers/rational_fibers/fixed_argument_complement_ramification_20261116_v44.tex) proves that the complement cover of the full independent auxiliary product is geometrically ramified. Therefore a surjective abelian coupling, including an isogeny or independent half-point doubling, cannot furnish a uniform square-complement section. The next targets are a proper coupled subvariety with a separate rational realization proof, or rational points directly on the ramified incidence cover. A common rational pole fiber without square complements remains a separate possible route. None of these obstructions proves nonexistence of the required individual actual detector tuples.
+
+The [varying-input quadric theorem](../papers/pole_parameters/varying_input_quadric_20261116_v44.tex) gives a rational parameter space for compatible coefficient inputs at any fixed nonexceptional common conic parameter. For a pole scale \(D>0\) and \(e=(\tau^2-D)/(\tau^2+3D)\), the surface with input \(b=D/(17V^2)\) is birational to
+
+$$x^2-Dy^2=e(\sigma^2+3D),\qquad V=\frac{\sigma x-Dy}{17(x-\sigma y)}.$$
+
+The quadric has the explicit rational point \((\tau,1,\tau)\). The arithmetic target is to match this V with the native reciprocal trace while preserving the earlier source guards. This gives an exact incidence problem on which to try proper couplings or descent. The parametrization neither changes a final detector input by normalization nor proves that arbitrary actual tuples lift. Its explicit small-positive-input curve has square complement; its full two-parameter surface is the relevant broader family.
+
 The [native doubled-source norm map](../papers/pole_parameters/doubled_source_congruent_twists_20261116_v43.tex) supplies a different arithmetic handle: it constructs a nonzero-ordinate rational point on a congruent-number twist with abscissa square class $[\operatorname{Tr}(x\bar d)/2]$. Its class has not been identified with a required detector class. A useful next step is either an exact class identity or a descent argument trivializing the prescribed isogeny-Selmer elements, not only proving positive rank on an unrelated twist.
 
 This proposal shares the conic coordinate, not $e_i$ itself. Sharing $e$ requires matching input square classes; the separate [fresh-prime obstruction](../negative_results/papers/pole_parameters/fresh_prime_squareclass_obstruction_20261116_v42.tex) proves that the existing fresh-prime witnesses violate that requirement. The [common-twist theorem](../papers/pole_parameters/common_twists_20261114_v30.tex) gives genuine savings on its explicitly compatible locus, but does not put the full integer construction on that locus. A common $\tau$ allows different $e_i$ and avoids that particular necessary square-class equality. It still needs its own arithmetic existence proof.
@@ -116,7 +126,18 @@ Two established obstructions delimit direct substitutions:
 
 These statements concern generic recovery and the specified finite correspondences. They do not exclude a smaller arithmetic source whose witnesses satisfy additional dependencies, or one using a different integer-growth relation.
 
-## Propagating the three-coordinate chart through a quartic
+## The 76-variable detector and further quartic reductions
+
+The [ordinary-abc construction](../papers/quartic_existence/quartic_abc76_20261116_v44.tex) uses **76 variables and 66 quadratic rows**. Its normalized factors place the comparison error to the fourth power and the point reciprocals to the second power in distinct valuation classes modulo four. With \(w_2=w^2\), each factor is encoded by a quadratic row of the form
+
+$$w_2A=ww_2+C_2^2+wF_H+w_2F_U.$$
+
+The pole input is rescaled by \(\widetilde b=w^2b\). This makes the retained pole rows quadratic without a coordinate for \(w^3\). The zero-contact cases have bounded height and are included in the soundness proof; no new guard is needed. The full reference chart and its treatment of mixed torsion branches remain in the construction. All point, height and square costs are included, and the complete polynomial has 1,250 monomials with the exact height recorded below.
+
+The deeper comparison precision needed by the 196-variable construction is not supplied by this detector. A transfer there requires a new valuation argument or a different use of the integer-growth relation. The present ordinary-abc proof alone does not lower that count.
+
+### Propagating the three-coordinate chart
+
 
 The [three-coordinate reference chart](../papers/elliptic_charts/three_coordinate_reference_20261115_v40.tex) gives a complete algebraic improvement. For $P=(a,b)$ on $y^2=x^3-Dx$, put $c=b/a$ and $\delta=D/a$, with $abD\ne0$. The two quadratic equations
 
@@ -148,9 +169,11 @@ The reference, pair, ratio and trace blocks decrease from 33 to 32 rational coor
 
 The separate [mixed-reference-sign theorem](../negative_results/papers/elliptic_charts/mixed_reference_signs_20261116_v42.tex) shows that the reference chart and membership in $2E(K)$ alone do not force the two torsion-translation signs to agree. The [shared-reference test theorem](../negative_results/papers/elliptic_charts/shared_reference_test_obstructions_20261116_v43.tex) also gives exact local cancellations for the proposed squared test and its whole-factor odd-cube repairs. In the latter case the comparison slope can have positive valuation while its error from the target remains a unit. These are obstructions to the stated local test implications, not false solutions of a complete source.
 
+The [duplication sign obstruction](../negative_results/papers/elliptic_charts/duplicated_reference_signs_20261116_v44.tex) shows that replacing the local parameter by its doubled-point version does not remove every sign branch. At the valid contact prime 76537, an allowed half-integral reference progression simultaneously enters a formal neighborhood at one embedding and an order-four neighborhood at the other. Duplication sends the latter to a two-torsion branch and reverses the formal-parameter sign. The quartic permits the full source group, so restricting this check to integral multiples of the doubled generator would omit allowed soundness tuples.
+
 The next target is a revised quadratic reference test whose valuation argument handles every torsion branch. Its integration must include detector powers, the original height trace, all auxiliary squares, and every nonzero condition. A smaller quartic requires a net saving after these costs and soundness on every rational solution, including the added chart boundaries.
 
-The complete ratio equations also imply the paired curve equations whenever the two reference ratios do not vanish together. The fixed translating point is not two-torsion, which supplies that nonvanishing on the entire reference chart. This gives [176 quadratic rows in 196 variables](../papers/quartic/quartic196_redundancy_20261115_v40.tex) and [68 rows in the 78-variable abc system](../papers/elliptic_charts/paired_ratio_redundancy_20261115_v40.tex), with the same full rational zero sets as the respective unreduced systems. The [primitive quadratic bases](../papers/quartic/primitive_quadratic_bases_20261115_v40.tex) then lower the coefficient heights by exact invertible rational row changes and specified constant coordinate scalings. Their quartics have 2994 and 1254 monomials, respectively. The variable counts, degree and sufficient defining thresholds are preserved. These identities can be used in further eliminations, but deleting rows or changing their basis alone does not lower the number of variables.
+The complete ratio equations also imply the paired curve equations whenever the two reference ratios do not vanish together. The fixed translating point is not two-torsion, which supplies that nonvanishing on the entire reference chart. This redundancy is used in the [176-row, 196-variable construction](../papers/quartic/quartic196_redundancy_20261115_v40.tex) and the current 66-row, 76-variable abc construction. The [primitive quadratic bases](../papers/quartic/primitive_quadratic_bases_20261115_v40.tex) lower coefficient heights by exact invertible rational row changes and specified constant coordinate scalings. Deleting redundant rows or changing their basis alone does not lower the number of variables; the present 76-variable count also uses the arithmetic detector and pole rescaling above.
 
 ## Arithmetic and coefficient obligations
 
@@ -180,7 +203,7 @@ $$
 H(Q_B)=\max\{20828275368498373068800,\;B^2+275933278576697172\}
 $$
 
-for the 78-variable family. These algebraic improvements are independent of any remaining audit of the arithmetic premises; their parameter terms and ineffective sufficient defining thresholds remain.
+for the 76-variable ordinary-abc family. Exact expansion proves these height formulas for the stated parameter ranges. A sufficient defining parameter in each ineffective family still depends on the explicitly retained arithmetic premises.
 
 The [lower-bound results](../negative_results/papers/lower_bounds/lower_bounds_20261109_v15.tex) require degree at least four for a single defining equation and at least five total coordinates for a globally nonnegative quartic or a quadratic system. They supply no lower bound near the current counts.
 

@@ -1,0 +1,511 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,booktabs,microtype}
+\usepackage[margin=26mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}\newtheorem{remark}[theorem]{Remark}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\DeclareMathOperator{\Tr}{Tr}\DeclareMathOperator{\Nm}{N}
+\title{A quartic in 76 variables with separated detector valuations}
+\author{}\date{16 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+Under ordinary rational $abc$ and the specified elliptic-group,
+simultaneous-prime, trace-height and pole-realization inputs, we construct
+a defining quartic for the integers in 76 total rational variables.
+The four terms of each detector factor have distinct valuation classes
+modulo four. A square rescaling of the pole input then removes one
+weight coordinate from each detector. Contact-zero strata are retained
+and handled by bounded height, so no nonzero witness is added.
+The polynomial is a sum of 66 primitive integral quadratic squares,
+has 1250 monomials, and has an exact coefficient-height formula.
+Its sufficient fixed coefficient shift remains ineffective.
+\end{abstract}
+
+\section{Statement and arithmetic inputs}
+Every variable count includes the input. For a reduced rational number
+$u/v$, with $v>0$, put $h(u/v)=\log\max(|u|,v)$.
+Let
+\[
+ K=\Q(\rho),\quad\rho^2=2,\quad D=11-6\rho,
+ \quad E:y^2=x^3-Dx,
+\]
+\[
+ R_0=(1+\rho,2\rho),\qquad
+ P=2R_0=(a_P,b_P)
+ =\left(\frac{57}{8}-\frac72\rho,
+          -\frac{165}{8}+\frac{417}{32}\rho\right).
+\]
+We retain the exact arithmetic inputs of~\cite{ABC78}: the equality
+$2E(K)=\Z P$ with $P$ non-torsion; the fixed-data simultaneous-prime
+theorem with its prescribed local orders, finite avoidance, square
+denominator and real approximation; the all-point trace-height theorem;
+and the prepared simultaneous congruent-number pole realization
+of~\cite{Pole}. Ordinary rational $abc$ is additionally assumed.
+The prime and pole inputs have precisely their scope in~\cite{ABC78};
+no new realization or prime-distribution hypothesis is introduced.
+The algebraic charts and their exceptional loci are covered by
+\cite{Reference,Pair,Trace}.
+
+\begin{theorem}\label{thm:main}
+Under these inputs there is a computable family
+\[
+ Q_B\in\Z[X,Y_1,\ldots,Y_{75}],\qquad
+ B\ge81\text{ a fixed odd integer},
+\]
+such that every member is a sum of 66 primitive quadratic squares,
+has total degree exactly four, integer content one and 1250 nonzero
+coordinate monomials. Its coefficient height is
+\begin{equation}\label{eq:coefficientheight}
+ H(Q_B)=\max\{20828275368498373068800,
+                 B^2+275933278576697172\}.
+\end{equation}
+There is a fixed $B_*$ such that every odd $B\ge B_*$ satisfies
+\[
+ x\in\Z\quad\Longleftrightarrow\quad
+ \exists\boldsymbol y\in\Q^{75}:Q_B(x,\boldsymbol y)=0.
+\]
+The parameter $B$ is a coefficient, not a quantified coordinate.
+No numerical sufficient $B_*$, or equality with another family's
+sufficient threshold, is asserted.
+\end{theorem}
+
+The finite coefficient specification is the full quadratic and quartic
+table in \nolinkurl{computation/quartic/abc76_v44}. The eight optimized
+reference rows are bound to the balanced source of~\cite{Basis}.
+The value $B=81$ specifies an algebraic test member; it is not asserted
+to be a defining member.
+
+\section{A modulo-four local detector}
+For a discrete valuation $v$ with value group $\Z$, put $v(0)=+\infty$.
+
+\begin{lemma}\label{lem:separation}
+Suppose that $v(w)=\nu$ is positive and odd, and that every finite
+valuation of $f_0,f_1$ is even. For
+\begin{equation}\label{eq:factor}
+ \mathcal D=1+\frac{C^4}{w^3}
+                  +\frac{f_0^2}{w^2}+\frac{f_1^2}{w},
+\end{equation}
+the finite summand valuations are distinct modulo four. Thus
+$\mathcal D\ne0$ and $v(\mathcal D)$ is their minimum, at most zero.
+If $v(\mathcal D)>-\nu/2$, then
+\begin{equation}\label{eq:bounds}
+ v(C)>\frac58\nu,\qquad
+ v(f_0)>\frac34\nu,\qquad
+ v(f_1)>\frac14\nu.
+\end{equation}
+Zero values of $C$ or $f_1$ are permitted.
+\end{lemma}
+\begin{proof}
+The finite orders are
+\[
+ 0,\quad4v(C)-3\nu,\quad2v(f_0)-2\nu,\quad2v(f_1)-\nu.
+\]
+Their classes are $0,-3\nu,-2\nu,-\nu$ modulo four, in some order
+the four distinct classes. A unique term has least valuation. Each
+term therefore exceeds $-\nu/2$ when their minimum does, and solving
+the three inequalities gives~\eqref{eq:bounds}.
+\end{proof}
+
+At a good odd place of $E$, every finite valuation of $1/x(Q)$ is
+even. If $v(x)<0$, the curve equation has leading term $x^3$, so
+$3v(x)=2v(y)$. If $v(x)>0$, its leading term is $-Dx$, so
+$v(x)=2v(y)$. The case $v(x)=0$ is immediate. The reciprocal
+coordinate of $O$ is zero. Thus Lemma~\ref{lem:separation} applies
+to all points allowed by the source, including half-integral indices
+and identity numerator points.
+
+\section{The quadratic source}
+A field coordinate means two rational coordinates in the basis
+$1,\rho$; a bar denotes conjugation. Retain
+\[
+\begin{array}{ll}
+ \text{input and argument:}&X,\lambda\in\Q;\\
+ \text{reference:}&f_H,S,T_H,F_H,G_H\in K;\\
+ \text{point pair:}&f,h,g,k,s,F_U,F_V\in K;\\
+ \text{ratios and comparison squares:}&L,L_0,C_2,I_2\in K;\\
+ \text{height and input powers:}&T,z_2,z_4\in\Q;\\
+ \text{second argument:}&t_1\in\Q.
+\end{array}
+\]
+The complete reference equations recover precisely
+\[
+ H\in E(K)\setminus\{O,(0,0),P,P+(0,0)\},
+\]
+with $S=y(H)/x(H)$, $T_H=y(H-P)/x(H-P)$,
+$f_H=1/x(H)$, $F_H=f_H^2$ and $G_H=1/x(H-P)^2$.
+Use their eight primitive rational rows in the exact balanced basis
+of~\cite{Basis}. This basis is invertibly equivalent over $\Q$ to
+the complete reference system, including its exceptional cases.
+
+Retain the four paired field quadrics
+\begin{equation}\label{eq:pair}
+ \begin{gathered}
+ F_U=f^2,\qquad F_V=g^2,\\
+ s(f-g)=h+k,\qquad
+ s(h-k)=1-D(F_U+fg+F_V),
+ \end{gathered}
+\end{equation}
+and the four field ratio quadrics
+\begin{equation}\label{eq:ratios}
+ \begin{aligned}
+ hL+fS&=0,&(1-DF_U)L+hS&=0,\\
+ kL_0+gT_H&=0,&(1-DF_V)L_0+kT_H&=0.
+ \end{aligned}
+\end{equation}
+The reference values $S,T_H$ cannot vanish simultaneously, since
+otherwise both reference points would be two-torsion and so would $P$.
+Consequently~\cite[Theorem 1.1]{Pair} shows that these rows imply
+both reciprocal curve equations. The full paired-chart theorem
+of~\cite{Trace} then gives $U,V\in E(K)$, with identity numerator
+points allowed, $U\ne V$, and a finite difference $A=U-V$ satisfying
+\[
+                         x(A)=s^2+D(f+g).
+\]
+No point-curve row or nonzero ordinate witness is added.
+
+As affine expressions put
+\[
+ \beta=z_2+3,\qquad C=L-\overline{L_0},\qquad I=L-\beta.
+\]
+Impose
+\begin{equation}\label{eq:commonrows}
+ \begin{gathered}
+ C_2=C^2,\quad I_2=I^2,\qquad
+ T=\Tr\bigl(s^2+D(f+g)\bigr),\\
+ z_2=X^2,\quad z_4=z_2^2,\qquad
+ t_1-\lambda=B+z_4^2+T^2.
+ \end{gathered}
+\end{equation}
+Thus $\beta=X^2+3$, $T=\Tr x(A)$ and the additive scale is
+\begin{equation}\label{eq:scale}
+                         a=B+X^8+T^2.
+\end{equation}
+
+\subsection{The two detector blocks}
+For each argument $t=t_0=\lambda$ and $t=t_1$ retain thirteen rational
+coordinates
+\[
+ R,Z,w,w_2,\eta,\widetilde b,e,u,p,v,q,p_2,q_2
+\]
+and three field coordinates $A_1,A_2,\Omega=\omega_0+\rho\omega_1$.
+Impose
+\begin{align}
+ R&=t^2-2t,\qquad RZ+Z-R^2+35R=0,\notag\\
+ (R+1)w&=Z^2+24Z,\notag\\
+ w_2&=w^2,\label{eq:contactrows}\\
+ w_2A_1&=ww_2+C_2^2+wF_H+w_2F_U,\notag\\
+ w_2A_2&=ww_2+I_2^2+w\overline{G_H}+w_2\overline{F_V},\label{eq:factorrows}\\
+ (R+1)\Omega&=A_1A_2,\qquad
+ \omega_0^2-2\omega_0\eta-2\omega_1^2=0,\qquad
+ w\widetilde b=\eta^2,\label{eq:tracerows}\\
+ p_2&=p^2,\qquad e^2+\widetilde b p_2=1,\qquad
+ uv=e(w_2-\widetilde b),\notag\\
+ q_2&=q^2,\qquad u^2-v^2=\widetilde b q_2.\label{eq:polerows}
+\end{align}
+Every row is quadratic. The two blocks have independent pole witnesses.
+Each block has 19 rational coordinates and 17 rational equations.
+The total coordinate count is
+\[
+                 2+10+14+8+3+1+2\cdot19=76.
+\]
+There are 28 common reference, pair, ratio and comparison equations,
+three height/power equations, one argument equation and 34 detector
+equations, for a total of 66.
+
+\subsection{The full pole equivalence away from contact zeros}
+For $w\ne0$, define
+\begin{equation}\label{eq:polemap}
+ b=\widetilde b/w^2,\qquad
+ p_{\rm old}=wp,\quad u_{\rm old}=u/w,\quad
+ v_{\rm old}=v/w,\quad q_{\rm old}=q.
+\end{equation}
+Then~\eqref{eq:polerows} is exactly the original pole system
+\begin{equation}\label{eq:oldpole}
+ \begin{gathered}
+ e^2+bp_{\rm old}^2=1,\qquad
+ u_{\rm old}v_{\rm old}=e(1-b),\\
+ u_{\rm old}^2-v_{\rm old}^2=bq_{\rm old}^2.
+ \end{gathered}
+\end{equation}
+The inverse map is $p=p_{\rm old}/w$, $u=wu_{\rm old}$,
+$v=wv_{\rm old}$, $q=q_{\rm old}$, $\widetilde b=w^2b$.
+Thus the equivalence holds on every $w\ne0$ stratum, including zero
+pole ordinates. Only $w$ is divided by. Prepared pole realization
+will be applied to $b$, not to $\widetilde b$.
+
+\section{Local extraction and contact-zero strata}
+Put $r=R+1$ and $z=Z+37$. The contact rows give
+\[
+ r=(t-1)^2,\qquad r(z-r)=36,
+\]
+so $r\ne0$. With
+\[
+ \Theta=\{-5,-2,-1,0,2,3,4,7\},\qquad
+ F(t)=\prod_{\theta\in\Theta}(t-\theta),
+\]
+they also give
+\begin{equation}\label{eq:weight}
+                              r^3w=F(t).
+\end{equation}
+Indeed $r^2Z(Z+24)=(r-1)(r-4)(r-9)(r-36)$.
+Consequently $w=0$ is equivalent to $t\in\Theta$.
+
+For $w\ne0$, equations~\eqref{eq:factorrows} give
+$A_i=w\mathcal D_i$, where
+\begin{equation}\label{eq:twophysical}
+ \begin{split}
+ \mathcal D_1&=1+C^4/w^3+f_H^2/w^2+f^2/w,\\
+ \mathcal D_2&=1+I^4/w^3+\overline{g_H}^{\,2}/w^2
+                                     +\overline g^{\,2}/w,
+ \end{split}
+\end{equation}
+and $g_H=1/x(H-P)$. Put $W=\mathcal D_1\mathcal D_2$.
+Whenever $W\ne0$, the trace row forces $\Tr\Omega\ne0$:
+otherwise it forces $\Nm(\Omega)=0$ and hence $\Omega=0$,
+contradicting $r\Omega=w^2W$. Therefore
+\begin{equation}\label{eq:physicalpole}
+ \tau=\frac{\Nm(W)}{\Tr W},\qquad
+ \eta=\frac{w^2}{r}\tau,\qquad
+ \widetilde b=\frac{w^3}{r^2}\tau^2,\qquad
+ b=\frac{w}{r^2}\tau^2.
+\end{equation}
+
+\begin{lemma}\label{lem:local}
+At every prime counted by the source contact radical $M(t)$ for a
+noncontact argument, $\beta$ is $p$-integral and
+$n\equiv\beta\pmod p$, where $n\in\tfrac12\Z$ is the index of
+$A=U-V$ relative to $P$.
+\end{lemma}
+\begin{proof}
+Such a prime is outside the fixed exceptional set. It has a positive
+odd contact order $\nu=v_p(w)$ and $r$ is a unit. Lemma~\ref{lem:separation}
+applies at every place above $p$ to both factors. Thus both are
+nonzero and have valuation at most zero; in particular $W\ne0$
+and~\eqref{eq:physicalpole} is justified.
+
+The pole obstruction applied through~\eqref{eq:polemap} excludes a
+negative odd valuation of $b$. Since
+$v_p(b)=\nu+2v_p(\tau)$ is odd, it follows that
+$v_p(\tau)>-\nu/2$. The elementary reciprocal-trace inequality
+\[
+                  v_p(\tau)\le\max_{\mathfrak p\mid p}v_{\mathfrak p}(W)
+\]
+holds also when trace terms cancel. Choose a place attaining a value
+larger than $-\nu/2$. As both factor valuations are at most zero,
+each factor separately exceeds that lower bound. Applying
+Lemma~\ref{lem:separation} gives positive valuations of both comparisons
+and of the four relevant reciprocal abscissas. Thus $H,U$ are formal
+at one place and $H-P,V$ at its conjugate place. A zero numerator
+reciprocal represents the identity and is included.
+
+Here is the index step, to specify why positive formal depth suffices.
+Write the labels of $H,U,V$ as $h_0,u_0,v_0\in\tfrac12\Z$.
+The reference labels are $h_0,h_0-1$, at least one a $p$-adic unit.
+The formal logarithm extends to the whole local elliptic group by
+first multiplying into the formal subgroup and then dividing by that
+integer. Its value at a point of label $a$ is $a$ times its nonzero
+value at $P$; two-torsion contributes zero. On the formal subgroup
+the logarithm has the same valuation as its parameter, and differs
+from that parameter by a factor in $1+\mathfrak p$.
+
+At the reference with unit label, the corresponding numerator ratio
+is therefore integral, since numerator labels are $p$-integral.
+The congruences $C\equiv I\equiv0$ then make $\beta,L$ and
+$\overline{L_0}$ integral. If a reference label is a unit, the
+logarithm comparison directly yields the corresponding congruence
+below. If it is divisible by $p$, integrality of the raw ratio forces
+the numerator label to be divisible by $p$ too, giving the same
+congruence. Identity numerators give label and ratio zero. Hence
+\[
+ u_0\equiv h_0L\equiv h_0\beta,\qquad
+ v_0\equiv(h_0-1)\overline{L_0}\equiv(h_0-1)\beta\pmod p.
+\]
+Subtraction gives $n=u_0-v_0\equiv\beta$. The argument applies at
+split and inert places and makes no Gaussian prime-selection assumption
+about an arbitrary soundness witness.
+\end{proof}
+
+At $w=0$ the factor rows instead force $C=I=0$. These strata are
+retained; no division by $w$ or local extraction is asserted there.
+Their arguments belong to the fixed set $\Theta$, so have height at
+most $\log7$. Both arguments cannot be contacts, because their real
+difference~\eqref{eq:scale} is at least 81, greater than the contact
+diameter 12. The source includes no extra nonzero-coordinate guard.
+
+\section{Height soundness}
+We use the proved ordinary-$abc$ consequences in~\cite{ABC78}:
+for $t\notin\Theta$,
+\begin{equation}\label{eq:contactheight}
+ h(t)\le\frac27\log M(t)+C_0,
+\end{equation}
+and, for $a=B+X^8+T^2$,
+\begin{equation}\label{eq:mixedheight}
+ h(X)\le\frac{301}{388}h(a)+C_1,\qquad
+ h(T)\le\frac{301}{97}h(a)+4C_1,\qquad h(a)\ge\log B.
+\end{equation}
+All constants are independent of $B,X,T$ and the witnesses.
+The source all-point trace theorem gives fixed constants $A_0,J_0$
+such that, for $m=2n\in\Z$,
+\begin{equation}\label{eq:traceheight}
+                         m^2\le A_0h(T)+J_0.
+\end{equation}
+It includes torsion differences and index zero.
+
+Suppose $n\ne\beta$. Write $X=u_X/v_X$ in lowest terms with
+$v_X>0$ and put
+\[
+ N=|m v_X^2-2u_X^2-6v_X^2|>0.
+\]
+At a consumed prime, Lemma~\ref{lem:local} gives $p\nmid v_X$
+and $p\mid N$. Hence $M(t_j)\mid N$ for every noncontact argument.
+For a contact argument use $h(t_j)\le\log7$ instead. Since $N\ge1$,
+both cases yield the uniform estimate
+\[
+ h(t_j)\le\frac27\log N+C_2,
+ \qquad h(a)\le\frac47\log N+C_3.
+\]
+No coprimality of the two contact radicals is needed. Also
+\[
+                   N\le8(1+|m|)e^{2h(X)}.
+\]
+Combining these inequalities with~\eqref{eq:mixedheight} gives
+\[
+ h(X)\le\frac{602}{679}h(X)
+             +\frac{301}{679}\log(1+|m|)+C_4.
+\]
+The strict coefficient is $602/679=86/97<1$. Rearrangement and the
+companion trace estimate give
+\[
+ h(X)\le\frac{301}{77}\log(1+|m|)+C_5,\qquad
+ h(T)\le\frac{1204}{77}\log(1+|m|)+C_6.
+\]
+Equation~\eqref{eq:traceheight} first bounds $|m|$, then $h(X)$,
+$\log N$ and $h(a)$, by constants independent of $B$. This contradicts
+$h(a)\ge\log B$ for all sufficiently large fixed odd $B$.
+
+Consequently $n=X^2+3$. Thus $2X^2=m-6$ is an integer. In a reduced
+fraction $X=u_X/v_X$, this forces $v_X^2\mid2$, so $v_X=1$ and
+$X\in\Z$. This proves soundness, including the permitted contact-zero
+strata.
+
+\section{Completeness and the order of choices}
+Fix $X\in\Z$ and an odd $B\ge81$. Set
+\[
+ \beta=X^2+3\ge3,\qquad A=[\beta]P,\qquad
+ T=\Tr x(A),\qquad a=B+X^8+T^2.
+\]
+These are fixed before invoking the simultaneous-prime theorem.
+The two contact lists $\Theta$ and $\Theta-a$ are disjoint because
+$a>12$. Their denominators, all finite preparation data and the chosen
+real neighborhoods are fixed before prime selection.
+
+The retained theorem and compatible order congruences supply the argument
+$\lambda$ and a common index $h_0$ with
+\[
+ H=[h_0]P,\qquad U=[h_0\beta]P,\qquad
+ V=[(h_0-1)\beta]P,
+\]
+so $U-V=A$. The source formal estimates give comparison orders at
+least four and reciprocal orders at least two at every selected simple
+contact. The three nonconstant terms in~\eqref{eq:twophysical}
+then have orders at least $13,2,3$ in the intended embedding.
+Both factors are consequently units congruent to one.
+
+In the conjugate embedding, each opposite reference reciprocal is a
+unit: the reference reductions are $P$ and $-P$ instead of the identity.
+The reference term therefore has order $-2$. The modulo-four separation
+makes each conjugate factor have negative order, at most $-2$.
+Thus $W$ is a unit in the intended embedding and has negative order
+in its conjugate. There is no equal-order trace cancellation, and
+$\tau$ is a local unit. Formula~\eqref{eq:physicalpole} gives
+$v_p(b)=1$ at each selected odd contact.
+
+At each fixed preparation prime, the point and ratio functions range
+in fixed bounded local neighborhoods. Increasing the prescribed
+denominator depth makes $1/w$ arbitrarily small, so the three new
+nonconstant terms tend to zero. Thus $W$ tends to one and
+$\Tr(W^{-1})$ tends to two. The same finite preparation as in the
+source makes the physical input $b$ a square in $\Q_2$ with
+$v_2(b)\ge3$. The odd-valuation primes of $w$ outside the fixed
+exceptional set are the selected contacts, where $v_p(b)=1$ as just
+proved; all remaining valuations of $b$ are even. Hence its reduced
+denominator is a square.
+
+On the fixed real compact neighborhoods, $1/w$ tends to zero as both
+arguments increase. The factors tend uniformly to one, and
+\[
+                 b=\frac{w}{r^2}\tau^2\sim\frac1{4t^2}.
+\]
+The source real preparation therefore gives $0<b<1$. The retained
+simultaneous pole-realization theorem now applies to the two actual
+physical inputs $b$, with independent witnesses of~\eqref{eq:oldpole}.
+Transport them by~\eqref{eq:polemap} to obtain every row of the new
+system. No preparation inequality is required for $\widetilde b$ itself.
+The same construction covers $X=0$, for which $\beta=3$.
+
+This proves completeness for every integer and every fixed odd $B\ge81$.
+Together with soundness it proves the defining assertion of
+Theorem~\ref{thm:main}. The sufficient soundness threshold is ineffective
+and is not identified with a threshold for another detector family.
+
+\section{Exact polynomial and verification}
+Clear each rational row to a primitive integer quadratic $q_{B,j}$ and set
+\[
+                         Q_B=\sum_{j=1}^{66}q_{B,j}^2.
+\]
+Over $\Q$, this has exactly the common zero set of the rows. The input
+$X$ occurs only in the primitive row $z_2-X^2$, so its fourth power
+has coefficient one in $Q_B$. This proves exact degree four and content
+one for every fixed integer $B$.
+
+The producer binds the balanced parent quadratic table by its SHA-256
+digest, removes exactly the two cube-weight coordinates and their rows,
+derives twelve changed rational rows, and preserves the remaining
+54 rows by name. Its full expansion has 1253 parameter-separated terms
+and 1250 coordinate monomials. The coefficient profile of the constant
+monomial is $B^2+275933278576697172$; the largest fixed coefficient is
+$20828275368498373068800$. All other parameter-dependent profiles have
+linear coefficient of absolute value at most two and constant part of
+absolute value at most one, with no cancellation at positive $B$.
+They are bounded by the displayed constant profile. This proves
+\eqref{eq:coefficientheight} and the support assertion from the exact
+coefficient tables.
+
+The separate checker imports no producer code. It reconstructs the
+changed field equations in the basis $1,\rho$, verifies every retained
+row and every expanded coefficient with independent symbolic arithmetic,
+and regenerates the tables in an isolated directory byte for byte.
+It also checks the pole transformation, valuation residue classes,
+contact factorization, contact-zero witnesses and strict height coefficient.
+These finite certificates verify the polynomial specification and the stated
+algebraic identities. The infinite arithmetic conclusions use the proofs
+above and the retained hypotheses at their specified scope.
+
+\begin{thebibliography}{9}
+\bibitem{ABC78}\emph{A quartic in 78 variables from a mixed-power height
+estimate}, project manuscript, 15 November 2026,
+\nolinkurl{papers/quartic_existence/quartic_abc78_20261115_v34.tex}.
+\bibitem{Reference}\emph{A complete five-coordinate elliptic reference chart},
+project manuscript, 14 November 2026,
+\nolinkurl{papers/elliptic_charts/compressed_reference_20261114_v27.tex}.
+\bibitem{Pair}\emph{Recovery of elliptic curve equations from complete
+ratio equations}, project manuscript, 15 November 2026,
+\nolinkurl{papers/elliptic_charts/paired_ratio_redundancy_20261115_v40.tex}.
+\bibitem{Trace}\emph{Trace heights on quadratic twists with $j=1728$},
+project manuscript, 13 November 2026,
+\nolinkurl{papers/trace_heights/trace_on_all_points_20261113_v25.tex}.
+\bibitem{Basis}\emph{Primitive quadratic bases and small-coefficient quartic
+presentations},
+project manuscript, 15 November 2026,
+\nolinkurl{papers/quartic/primitive_quadratic_bases_20261115_v40.tex}.
+\bibitem{Pole}\emph{Pole equations from simultaneous congruent-number
+twists}, project manuscript, 14 November 2026,
+\nolinkurl{papers/pole_parameters/congruent_twist_poles_20261114_v27.tex}.
+\end{thebibliography}
+\end{document}

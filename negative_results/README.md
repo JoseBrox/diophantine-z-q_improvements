@@ -2,7 +2,7 @@
 
 This directory contains proved negative results, separated from the constructive results in [papers](../papers). Each obstruction concerns the precise equations, arithmetic family, or geometric presentation stated in its manuscript. Failure of a replacement on all prepared inputs does not exclude a construction whose actual witnesses lie in a smaller, separately proved locus.
 
-The [current construction table](../README.md#current-constructions--15-november-2026) gives the positive bounds. No result in this directory establishes a number field whose ring of integers is not Diophantine in its fraction field.
+The [current construction table](../README.md#current-constructions--16-november-2026) gives the positive bounds. No result in this directory establishes a number field whose ring of integers is not Diophantine in its fraction field.
 
 ## Pole predicates and contact functions
 
@@ -24,6 +24,8 @@ The [current construction table](../README.md#current-constructions--15-november
 | [Actual square-complement neighborhoods](papers/pole_parameters/actual_square_complement_neighborhoods_20261116_v43.tex) | For every odd source exponent, a legitimate independent-index family has nonsquare complements throughout a fixed 23-adic neighborhood. Other detector choices and common rational fibers remain possible. |
 | [Square-complement normalization](papers/pole_parameters/square_complement_normalization_20261116_v43.tex) | The square-class-preserving map 1156b/(17+b)² forces square complements but destroys the original pole predicate on an explicit 409-adic counterfamily. This concerns the pole subsystem. |
 | [Fixed-class synchronization](papers/pole_parameters/fixed_class_synchronization_20261116_v43.tex) | For distinct positive pole scales, fixed twist classes give genus 1+2^r(r−1), hence finitely many rational parameter values when r≥2. The full common-parameter variety has Kodaira dimension one. One common fiber and varying class tuples are not excluded. |
+| [Abelian parameter spaces](papers/rational_fibers/abelian_parameter_obstruction_20261116_v44.tex) | No uniform rational square-complement or original-pole identity on an abelian parameter space with nonconstant detector argument, even with varying twist classes. Fixed-argument rational fibers, ramified covers and individual witnesses are not excluded. |
+| [Fixed-argument complement ramification](papers/rational_fibers/fixed_argument_complement_ramification_20261116_v44.tex) | For allowed fixed source data and positive detector weight, the complement double cover on the full independent auxiliary product is geometrically ramified. No surjective abelian coupling gives a uniform section. Proper coupled subvarieties, individual rational tuples and common pole fibers without square complements remain open. |
 
 The [pole-compression guide](docs/pole_compression_obstructions_20261115_v41.md) gives the recent explicit counterfamilies. Their exact checkers remain in [conic_chain_v41](../computation/pole_parameters/conic_chain_v41) and [automatic_conic_v41](../computation/pole_parameters/automatic_conic_v41). The positive [shared-parameter local theorem](../papers/pole_parameters/shared_parameter_local_solubility_20261115_v41.tex) remains with the constructive results.
 
@@ -39,6 +41,7 @@ The [fixed-fiber literature audit](docs/fixed_fiber_literature_20261116_v43.md) 
 | [Label-dependent progressions](papers/elliptic_charts/progression_density_20261114_v29.tex) | Allowing infinite progressions depending on the label does not provide the proposed algebraic elimination of the reference point. |
 | [Mixed reference signs](papers/elliptic_charts/mixed_reference_signs_20261116_v42.tex) | An explicit progression of doubled points lies in opposite torsion neighborhoods at the two primes above 76537. The reference chart alone cannot force agreement of the corresponding formal-parameter signs. |
 | [Shared reference test obstructions](papers/elliptic_charts/shared_reference_test_obstructions_20261116_v43.tex) | Exact local cancellation defeats the stated squared reference factor and the whole-factor odd-cube repairs, including a positive-valuation comparison with unit error. These are factor-level obstructions, not complete-source counterexamples. |
+| [Duplicated reference signs](papers/elliptic_charts/duplicated_reference_signs_20261116_v44.tex) | An explicit allowed half-integral reference progression has opposite local translation signs after duplication at a valid soundness contact prime. This concerns the reference branches, not a solution of the full detector. |
 | [Rational Pell approximations](papers/integer_labels/rational_pell_approximation_obstruction_20261116_v42.tex) | Arbitrarily accurate rational approximation at 19, even with the exact norm equation, does not replace the integral-label hypothesis. |
 
 ## Heights, inputs and general lower bounds

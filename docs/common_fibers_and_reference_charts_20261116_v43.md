@@ -1,6 +1,6 @@
 # Common rational fibers and quadratic reference coordinates
 
-The defining-variable records remain **25**, **196 for quartics**, **13 under the stated additional height hypotheses**, and **78 for quartics under ordinary rational abc**. All counts include the input and retain the arithmetic premises listed in the [current construction table](../README.md). The results below supply arithmetic and algebraic reductions, with no smaller complete defining polynomial asserted.
+The current defining-variable records are listed in the [main construction table](../README.md), with complete hypotheses and counts including the input. This guide states the scalar, common-fiber and reference-chart results; these auxiliary results alone do not establish a smaller defining polynomial. The [76-variable ordinary-abc quartic](results_20261116_v44.md) has its own detector, boundary and completeness proof.
 
 ## An early scalar with a rational square complement
 

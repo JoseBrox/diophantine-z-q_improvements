@@ -1,0 +1,384 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,booktabs,microtype}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}\newtheorem{remark}[theorem]{Remark}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Qbar}{\overline{\mathbb Q}}
+\DeclareMathOperator{\Tr}{Tr}\DeclareMathOperator{\Res}{Res}
+\DeclareMathOperator{\divisor}{div}\DeclareMathOperator{\Jac}{Jac}
+\title{Native pole equations over abelian parameter spaces}
+\author{}\date{16 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+Fix the input of a native ten-contact or six-contact detector. We prove
+that its square-complement equation has no rational section on an
+abelian parameter variety when the detector argument is nonconstant.
+The original normalized pole equations have no rational witness over
+the same function field, even when their square-class representative
+and conic parameter vary. At an odd contact divisor, two mandatory
+reference tests force the detector input to have negative odd valuation.
+Such a divisor must exist: otherwise an etale cover of the parameter
+variety would map nontrivially to a curve of genus four or two.
+The result concerns uniform function-field constructions. It does not
+decide rational lifts after the input, root points, and slope are fixed.
+\end{abstract}
+
+\section{Native detectors and the obstruction}
+
+Put
+\[
+ K=\Q(\sqrt2),\qquad d=3-\sqrt2,\qquad
+ E:\ y^2=x^3-d^2x,\qquad A=\Res_{K/\Q}E,
+\]
+and let $\sigma$ be the nontrivial automorphism of $K$. The source
+point and reciprocal abscissa are
+\[
+ P=\left(\frac{57-28\sqrt2}{8},
+          \frac{-660+417\sqrt2}{32}\right),\qquad f=1/x.
+\]
+On $E$, the function $f$ has divisor $2[O]-2[(0,0)]$.
+
+Let $B/\Q$ be an abelian variety. The point roles of a native source
+are rational maps $B\dashrightarrow A$; all source functions and
+guards are pulled back along these maps. The input is fixed. For the
+general source its early scalar $\rho\in\Q^\times$ is consequently
+fixed as well. This includes the scalar
+\[
+ \rho_*=\frac{102^2\ell^L r}{(1+153\ell^L r)^2}
+\]
+of \cite{Baseline}. The result uses the unchanged detector factors,
+and does not require the arithmetic completeness premises of the source.
+
+\subsection{The ten-contact detector}
+
+For $j=0,1,2$ define
+\[
+\begin{gathered}
+ \Theta=\{0,-1/2,-1,1/2399,-32/407\},\qquad
+ \Theta_j=(4j+2+\Theta)\cup(4j+4+\Theta),\\
+ \gamma_j=-j-1,\quad
+ F_j(T)=\prod_{\theta\in\Theta_j}(T-\theta),\quad
+ \delta=t-\gamma_j,\quad w=\rho F_j(t)/\delta^{10}.
+\end{gathered}
+\]
+The ten contacts are distinct and none equals $\gamma_j$.
+The native product of \cite[Section~3]{UnitNorm} is
+\begin{equation}\label{eq:general}
+ \mathcal W=
+ \prod_{i=1}^{16}\left(1+\frac{C_i^2}{\delta^2w^{2a_i-1}}\right)
+ \prod_{k=1}^{6}\left(1+\frac{G_k^2}{w^{2\kappa_k-1}}\right).
+\end{equation}
+Here $a_i,\kappa_k$ are positive integers. To specify the required
+tests, write $U_0=H$, $V_0=H-P$, and $V_i=U_i-Q_i$ for the other
+four root roles. The first ten field tests, in one-based order, are
+\[
+ (f(U_i))_{i=0}^4,\qquad (\sigma f(V_i))_{i=0}^4.
+\]
+Their orders are all one. In particular
+\begin{equation}\label{eq:mandatory}
+             C_1=f(H),\qquad C_6=\sigma f(H-P),
+             \qquad a_1=a_6=1.
+\end{equation}
+The orders of the remaining field tests are one or three. The scalar
+factors have exactly the displayed square numerators and odd powers
+of $w$; their further formulas are immaterial to the obstruction.
+
+\subsection{The six-contact detector}
+
+For either conditional source of \cite[Section~3]{UnitNorm}, put
+\[
+ \Theta=\{0,-1/2,-1/4,-2/5,-1,-1/3\},\quad
+ F(T)=\prod_{\theta\in\Theta}(T-\theta),\quad
+ \delta=t-1,\quad w=\frac{F(t)}{4\delta^8}.
+\]
+Its product and mandatory tests are
+\begin{equation}\label{eq:conditional}
+ \mathcal W=\prod_{i=1}^6\left(1+\frac{\delta^4C_i^2}{F(t)}\right),
+ \qquad C_1=f(H),\quad C_3=\sigma f(H-P).
+\end{equation}
+The identity
+\[
+       \frac{\delta^4C_i^2}{F(t)}
+                   =\frac{(C_i/(2\delta^2))^2}{w}
+\]
+puts every factor in the same form as an order-one factor above.
+
+\subsection{Statement}
+
+In either case write
+\begin{equation}\label{eq:input}
+        V=\Tr_{K/\Q}(\mathcal W^{-1}),\qquad b=\frac{4w}{V^2}.
+\end{equation}
+These are the native input formulas. All source denominators and
+nonzero guards are assumed nonzero in $\Q(B)$. In particular the
+displayed functions are defined, $wV\ne0$, and a constant point role
+$H$ is neither $O$ nor $P$ and has the required nonzero abscissas.
+
+\begin{theorem}\label{thm:main}
+Suppose the detector argument $t\in\Q(B)$ is nonconstant.
+Then
+\[
+                     V^2-\frac{4w}{17}
+\]
+is not a square in $\Q(B)$. Equivalently, $17(17-b)$ is not a
+square in $\Q(B)$.
+
+More strongly, choose any $d_0,u\in\Q(B)^\times$ with $b=d_0u^2$,
+and put $D=17d_0$, $C=17(17-b)$. There are no rational witnesses
+over $\Q(B)$ for the normalized pole equations
+\begin{equation}\label{eq:poles}
+ p^2=D(1-e)(1+3e),\qquad
+ q^2=D(s^2-eC)(s^2+3eC).
+\end{equation}
+This includes all projective conic parameters and the points above
+$s=\infty$ on the second-pole curve.
+\end{theorem}
+
+The point-role maps may be arbitrary rational maps on $B$. Thus the
+theorem permits group translations, isogenies, and combinations of
+point roles. It does not fix a pole square class in advance. Its
+nonconstant-argument hypothesis is essential to the proof. In the
+independent-index families of \cite{Returns}, the input, root points,
+and slope are fixed, so every $t$ and $w$ is constant. The theorem
+does not settle the rational incidence equations
+\[
+                      Y_j^2=V_j^2-4w_j/17
+\]
+on those families, or exclude suitable individual rational tuples.
+
+\section{The two mandatory tests}
+
+\begin{lemma}\label{lem:simple}
+The abelian surface $A=\Res_{K/\Q}E$ is simple over $\Q$.
+Every nonconstant rational map from an abelian variety over $\Q$
+to $A$ extends to a surjective morphism whose geometric fibers have
+codimension two.
+\end{lemma}
+\begin{proof}
+At the prime of $K$ above $17$ specified by $\sqrt2=6$, the curve
+and its conjugate have good reduction and the following exact counts:
+\begin{center}
+\begin{tabular}{lrr}\toprule
+Curve over $\mathbf F_{17}$ & Points & Frobenius trace\\\midrule
+$y^2=x^3-9x$ &20&$-2$\\
+$y^2=x^3-13x$&16&$2$\\\bottomrule
+\end{tabular}
+\end{center}
+The discriminants $64(3\mp\sqrt2)^6$ are nonzero at this prime.
+A $K$-isogeny would identify the rational $l$-adic Tate modules
+for $l\ne17$, hence their good-reduction Frobenius traces.
+The unequal traces exclude a $K$-isogeny between $E$ and $E^\sigma$.
+
+If $A$ had an elliptic subvariety over $\Q$, its two projections
+after extension to $K$ would both be nonzero: one zero projection
+would force the other to be zero by Galois conjugacy. Both projections
+would therefore be isogenies, giving a $K$-isogeny between $E$ and
+$E^\sigma$. This proves simplicity.
+
+Rational maps from a nonsingular variety to an abelian variety extend
+everywhere \cite[Theorem~3.1]{Milne}. A morphism between abelian
+varieties is a homomorphism followed by a translation
+\cite[Corollary~2.2]{Milne}. Its nonconstant image in $A$ is therefore
+all of $A$. In characteristic zero the homomorphism is smooth, and
+its fibers are translates of a kernel of codimension two.
+\end{proof}
+
+\begin{lemma}[Odd contact divisor]\label{lem:contact}
+Let $Z$ be a geometric prime divisor of $B_{\Qbar}$ such that
+$v_Z(t-\theta)=m>0$ is odd for one native contact $\theta$.
+Then
+\begin{equation}\label{eq:valuations}
+ v_Z(V)\ge m,\qquad
+ v_Z(V^2-4w/17)=m,\qquad
+ v_Z(b)=m-2v_Z(V)<0\quad\hbox{is odd}.
+\end{equation}
+\end{lemma}
+\begin{proof}
+The contacts are distinct and $\delta$ is a unit at $Z$, so
+$v_Z(w)=m$. Each product factor, at either embedding, is of the
+form $1+a^2/w^{2r-1}$ up to a square unit at $Z$. For $a\ne0$,
+the valuation of its second summand is
+\[
+                         2v_Z(a)-(2r-1)m,
+\]
+an odd integer. It cannot be zero or cancel the constant term.
+Thus every factor has nonpositive valuation. An identically zero
+$a$ gives the factor one and the same conclusion.
+
+Over $\Qbar$ write $A=E_+\times E_-$, $H=(H_+,H_-)$,
+and $P=(P_+,P_-)$. At the positive embedding the two mandatory
+tests are $f(H_+)$ and $f(H_--P_-)$, and at the negative embedding
+they are $f(H_-)$ and $f(H_+-P_+)$.
+
+If $H$ is nonconstant, both positive-embedding tests can have
+positive valuation only if $H(Z)=(O,P_-)$. This would place a
+divisor in a codimension-two fiber, contrary to
+Lemma~\ref{lem:simple}. At least one test therefore has valuation
+at most zero. The same argument at $(P_+,O)$ applies to the other
+embedding. If $H$ is constant, its generically valid tests are
+nonzero algebraic constants and have valuation zero. The argument
+is made separately at every geometric prime divisor and does not
+require a prime divisor over $\Q$ to remain irreducible.
+
+Each mandatory test has order one. The factor supplied by a test
+of nonpositive valuation has valuation at most $-m$; every other
+factor has nonpositive valuation. Hence
+\[
+                 v_Z(\mathcal W_+)\le-m,\qquad
+                 v_Z(\mathcal W_-)\le-m.
+\]
+Their inverses have valuation at least $m$, and so does their sum
+$V$, which is generically nonzero. Since $2v_Z(V)>m$, the
+summands in $V^2-4w/17$ have unequal valuations. This gives the
+second equality in \eqref{eq:valuations}. Formula~\eqref{eq:input}
+gives the final assertion.
+\end{proof}
+
+\section{Existence of an odd contact divisor}
+
+\begin{lemma}\label{lem:oddexists}
+For a nonconstant $t\in\Q(B)$ and either native contact polynomial
+$F$, some geometric divisor above a contact has odd multiplicity.
+\end{lemma}
+\begin{proof}
+Suppose otherwise. Every valuation of $F(t)$ is even: this follows
+from the supposition at a contact, from
+$v_Z(F(t))=(\deg F)v_Z(t)$ at a pole of $t$, and from valuation zero
+elsewhere. The degrees $10$ and $6$ are even. Therefore
+\[
+                            \divisor(F(t))=2\Delta
+\]
+for an integral Cartier divisor $\Delta$ on the smooth variety
+$B_{\Qbar}$. The induced trivialization of
+$\mathcal O(2\Delta)$ gives a finite etale double cover with
+function algebra obtained by adjoining $\sqrt{F(t)}$. Locally
+its equation is $z^2=u$ with $u$ a unit, so it is etale in
+characteristic zero. If it splits, take either component.
+
+A connected finite etale cover $B'$ of an abelian variety over an
+algebraically closed field is an abelian variety for a suitable
+origin, and the cover is an isogeny \cite[Remark~15.3]{Milne}.
+The functions $t$ and $\sqrt{F(t)}$ give a nonconstant rational map
+from $B'$ to the smooth projective curve
+\[
+                              C_F:\ y^2=F(t).
+\]
+Its genus is four or two, since the contacts are distinct.
+
+Embed $C_F$ in its Jacobian using a geometric base point. The
+resulting rational map $B'\dashrightarrow\Jac(C_F)$ extends to
+a morphism and is a translated homomorphism, by the two results
+of \cite{Milne} used above. Its nonconstant image is a closed
+abelian translate contained in $C_F$, hence an elliptic curve
+equal to $C_F$. This contradicts the genus. An odd contact
+divisor must therefore exist.
+\end{proof}
+
+Lemmas~\ref{lem:contact} and \ref{lem:oddexists} prove the first
+assertion of Theorem~\ref{thm:main}. The square-complement
+equivalence follows from
+\[
+       17(17-b)=\left(\frac{17}{V}\right)^2
+                           \left(V^2-\frac{4w}{17}\right).
+\]
+
+\section{All normalized pole parameters}
+
+\begin{lemma}\label{lem:oddpole}
+Let $F_0$ be a characteristic-zero field with a discrete valuation
+$v$ trivial on $\Q^\times$. If $v(b)<0$ is odd, the normalized
+pole equations \eqref{eq:poles} have no witness over $F_0$ for
+any decomposition $b=d_0u^2$ with $d_0u\ne0$. Both projective
+boundaries are included.
+\end{lemma}
+\begin{proof}
+The standard first-conic parametrization is
+\[
+ e_\tau=\frac{\tau^2-D}{\tau^2+3D},\qquad
+ p_\tau=-\frac{4D\tau}{\tau^2+3D}.
+\]
+Every first-conic point with $e\ne1$ is obtained with
+$\tau=p/(e-1)$; the point $(e,p)=(1,0)$ corresponds to
+$\tau=\infty$.
+
+Put $k=v(b)<0$. Both $k$ and $v(D)$ are odd. For every finite
+$\tau$, the valuation of $\tau^2$ is even or infinite, so it
+differs from $v(D)$. The numerator and denominator defining
+$e_\tau$ are nonzero and have equal valuation. Thus $v(e_\tau)=0$,
+also at $\tau=0$; the parameter infinity gives $e=1$.
+Since $v(C)=v(17(17-b))=k$, the quantity $A_\tau=e_\tau C$
+has valuation $k$.
+
+For every finite $s$, including zero, the two factors in the
+second-pole equation are nonzero and satisfy
+\[
+ v(s^2-A_\tau)=v(s^2+3A_\tau)=\min\{2v(s),k\}.
+\]
+Their radicand has odd valuation
+\[
+ v\bigl(D(s^2-A_\tau)(s^2+3A_\tau)\bigr)
+                    =v(D)+2\min\{2v(s),k\}.
+\]
+It cannot equal $q^2$, including $q=0$. At $s=\infty$, the
+chart $u_0=1/s$, $q_0=q/s^2$ requires $q_0^2=D$ at $u_0=0$,
+again impossible. The quartic has distinct roots because
+$DA_\tau\ne0$ in characteristic zero, so these charts account
+for its smooth projective completion.
+\end{proof}
+
+Apply Lemma~\ref{lem:oddpole} to the geometric divisor valuation
+of Lemma~\ref{lem:contact} over $\Qbar(B)$. This excludes
+witnesses over $\Q(B)$ and proves the second assertion of
+Theorem~\ref{thm:main}.
+
+\section{Verification and applicability}
+
+The exact checker is
+\begin{center}\small
+\texttt{negative\_results/computation/abelian\_parameter\_v44/check.py}.
+\end{center}
+It binds the native source formulas, verifies all contact polynomials
+and their distinct roots, independently counts both curves over
+$\mathbf F_{17}$, checks the source point and the conditional weight
+normalization, and audits the valuation formulas on finite integer
+grids. The geometric arguments and universal valuation statements
+are proved above; finite enumeration does not replace them.
+
+The obstruction applies to a uniform parametrization by an abelian
+variety with nonconstant detector argument. A ramified correspondence
+need not admit such a parametrization. Neither suitable rational
+specializations nor the fixed-argument incidence problem is excluded.
+
+\begin{thebibliography}{9}
+\raggedright
+\bibitem{Milne}
+J. S. Milne, \emph{Abelian Varieties}, in
+G. Cornell and J. H. Silverman (eds.), \emph{Arithmetic Geometry},
+Springer, 1986, pp.~103--150.
+Author's version dated 2 January 2022:
+\url{https://www.jmilne.org/math/xnotes/AVs.pdf}.
+
+\bibitem{UnitNorm}
+\emph{A single norm determinant for the 25- and 13-variable constructions},
+14 November 2026. Repository source:
+\texttt{papers/finite\_algebra/unit\_norm\_20261114\_v28.tex}.
+
+\bibitem{Baseline}
+\emph{A scalar normalization for local square-complement realization},
+16 November 2026. Repository source:
+\texttt{papers/pole\_parameters/}\\
+\texttt{square\_complement\_baseline\_20261116\_v43.tex}.
+
+\bibitem{Returns}
+\emph{Fixed pole fibers and independent detector indices},
+16 November 2026. Repository source:
+\texttt{papers/pole\_parameters/}\\
+\texttt{common\_parameter\_guard\_reduction\_20261116\_v42.tex}.
+\end{thebibliography}
+\end{document}
