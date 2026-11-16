@@ -1,0 +1,308 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,booktabs,microtype}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\Q}{\mathbb Q}
+\DeclareMathOperator{\Tr}{Tr}\DeclareMathOperator{\Nm}{N}
+\title{High-genus fixed fibers of a native square criterion}
+\author{}\date{16 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+We compute the genera of four fixed fibers of the rational-square
+criterion for the faster conditional elliptic detector. The input
+values are one and two, with actual source points
+$A=[X]P$, $H=3P$, and $U=[3X]P$, and with coefficient shift three
+and height exponent four. Both the original and symmetric final
+comparison are treated. The single square covers have genera $59$
+and $83$, and their geometrically integral simultaneous-cover fibers
+have genera $236$ and $332$. Exact good-reduction certificates prove
+the characteristic-zero squarefreeness and branch intersections.
+Each simultaneous fiber has four rational points at infinity, which
+are outside the guarded source domain. No nonexistence of finite
+rational points, obstruction to auxiliary-index variation, or smaller
+defining-variable bound is asserted.
+\end{abstract}
+
+\section{Actual point data and detector functions}
+Put
+\[
+ K=\Q(\sqrt2),\qquad d=3-\sqrt2,\qquad
+ E_K:\ y^2=x^3-d^2x,
+\]
+and use the specified source point
+\[
+ P=\left(\frac{57-28\sqrt2}{8},
+          \frac{-660+417\sqrt2}{32}\right)
+   =2(1+\sqrt2,2\sqrt2).
+\]
+For each $X\in\{1,2\}$ fix
+\begin{equation}\label{eq:points}
+                  A=[X]P,\qquad H=3P,\qquad U=[3X]P.
+\end{equation}
+Thus $H-P=2P$ and $U-A=[2X]P$. These are actual doubled source
+points, rather than free coordinates on a norm conic. All ordinates,
+abscissas and difference denominators used below are nonzero; the
+exact certificate verifies this on the displayed points.
+
+Write $f_0(Q)=1/x(Q)$, $z(Q)=-x(Q)/y(Q)$ and
+\[
+ r=\frac{z(U)}{z(H)},\qquad
+ s=\frac{z(U-A)}{z(H-P)}.
+\]
+Conjugation in $K/\Q$ is denoted by a bar. The first five tests are
+\[
+ C_1=f_0(H),\quad C_2=f_0(U),\quad
+ C_3=\overline{f_0(H-P)},\quad C_4=\overline{f_0(U-A)},
+ \quad C_5=r-\bar s.
+\]
+We consider both choices
+\begin{equation}\label{eq:last}
+       C_6^{\mathrm{orig}}=r-X,
+       \qquad C_6^{\mathrm{sym}}=r+\bar s-2X.
+\end{equation}
+They are the original conditional comparison of~\cite{Direct} and
+the symmetric replacement of~\cite{Criterion}, respectively.
+All six tests are fixed elements of $K$ once~\eqref{eq:points} is
+fixed.
+
+Let
+\begin{equation}\label{eq:F}
+ F(t)=\frac{t(t+1)(2t+1)(3t+1)(4t+1)(5t+2)}{120},\qquad
+ \delta=t-1,\qquad w(t)=\frac{F(t)}{4\delta^8}.
+\end{equation}
+Use the faster quadratic product
+\begin{equation}\label{eq:product}
+                    W(t)=\prod_{i=1}^{6}\left(1+\frac{C_i^2}{F(t)}\right).
+\end{equation}
+Set $V=\Tr(W^{-1})$, $J=\Nm(W^{-1})$, $g=1+w$, and
+\begin{equation}\label{eq:criterion}
+ Q=1-V/g+J/g^2,\qquad
+ \mathcal R(t)=Q\left(1+\frac{1-V/2}{w}\right).
+\end{equation}
+This is the flat member of the finite square criterion
+of~\cite{Criterion}. All functions retain their source denominators
+and guards. The complete curves below mean the smooth projective
+models of the indicated function fields; the source domain is an
+open subset of those models.
+
+For the coefficient shift $B=3$ and height exponent four, the two
+actual arguments are $t_0=\lambda$ and $t_1=a\lambda$, where
+\begin{equation}\label{eq:scale}
+                     a=(X^2+3)^4+\bigl(\Tr x(A)\bigr)^4.
+\end{equation}
+The value $a$ is the source scale, not an independently selected
+rational coefficient.
+
+\section{A polynomial model of the square cover}
+Let $m$ be the number of nonzero tests among $C_1,\ldots,C_6$.
+For the two conjugate embeddings write
+\[
+ P_\pm(t)=\prod_{C_i\ne0}\bigl(F(t)+C_{i,\pm}^2\bigr),\qquad
+ D_0(t)=F(t)^m,\qquad W_\pm=P_\pm/D_0.
+\]
+The two polynomials $P_\pm$ are conjugate and monic of degree $6m$.
+Define
+\begin{equation}\label{eq:branchpolynomials}
+\begin{gathered}
+ E_0(t)=4(t-1)^8,\qquad G(t)=E_0(t)+F(t),\\
+ L_\pm(t)=G(t)P_\pm(t)-E_0(t)D_0(t),\\
+ M(t)=2G(t)P_+(t)P_-(t)
+             -E_0(t)D_0(t)\bigl(P_+(t)+P_-(t)\bigr),\\
+                       \mathfrak f(t)=2F(t)L_+(t)L_-(t)M(t).
+\end{gathered}
+\end{equation}
+In particular $\mathfrak f\in\Q[t]$.
+
+\begin{lemma}\label{lem:identity}
+On the guarded rational-function domain,
+\begin{equation}\label{eq:coveridentity}
+         \mathcal R(t)=
+          \frac{\mathfrak f(t)}
+               {\bigl(2F(t)G(t)P_+(t)P_-(t)\bigr)^2}.
+\end{equation}
+Moreover
+\[
+ \deg\mathfrak f=24m+24,\qquad
+                  \text{the leading coefficient of }\mathfrak f\text{ is }4.
+\]
+\end{lemma}
+\begin{proof}
+Let $N=\Nm(W)$ and $A_0=\Tr(W)/2$. The rational identity for the
+flat criterion is
+\[
+ \mathcal R=
+ \frac{(g^2N-2gA_0+1)(gN-A_0)}{wg^2N^2}.
+\]
+Substitute $N=P_+P_-/D_0^2$, $2A_0=(P_++P_-)/D_0$,
+$w=F/E_0$, and $g=G/E_0$. The result is
+\[
+ \mathcal R=
+ \frac{L_+L_-M}{2FG^2(P_+P_-)^2},
+\]
+which is~\eqref{eq:coveridentity}.
+
+Since $P_\pm-D_0$ has degree at most $6m-6$,
+\[
+ L_\pm=E_0(P_\pm-D_0)+FP_\pm
+\]
+has degree $6m+6$ and leading coefficient one. Similarly,
+\[
+ M=2FP_+P_-+E_0\bigl((P_+-D_0)P_-+(P_--D_0)P_+\bigr)
+\]
+has degree $12m+6$ and leading coefficient two. Multiplying in
+\eqref{eq:branchpolynomials} proves the degree and coefficient
+assertions.
+\end{proof}
+
+Thus the rational square test has the same quadratic function-field
+extension as $y^2=\mathfrak f(t)$. This statement does not remove
+any of the source guards.
+
+\section{Squarefreeness and the simultaneous-cover genus}
+
+\begin{theorem}\label{thm:genera}
+For the actual point tuples~\eqref{eq:points}, with either final
+comparison in~\eqref{eq:last}, the polynomial $\mathfrak f$ is
+squarefree. Its degree is $120$ at $X=1$ and $168$ at $X=2$.
+The corresponding single covers have genera $59$ and $83$.
+
+For the actual scale~\eqref{eq:scale},
+\[
+            \gcd\bigl(\mathfrak f(t),\mathfrak f(at)\bigr)=t
+\]
+up to multiplication by a nonzero constant. The simultaneous-cover
+function field
+\[
+ \Q(t)\left(\sqrt{\mathfrak f(t)},\sqrt{\mathfrak f(at)}\right)
+\]
+is geometrically integral of degree four over $\Q(t)$. Its smooth
+projective curve has genus $236$ at $X=1$ and $332$ at $X=2$.
+\end{theorem}
+
+\begin{proof}
+At $X=1$ one has $A=P$ and $U=H$, so $r=s=1$. Both ratio tests
+vanish and exactly four reciprocal tests remain: $m=4$. At $X=2$
+all six tests are nonzero, as certified by their nonzero reductions
+in the table below. Lemma~\ref{lem:identity} gives the two degrees.
+
+The exact good-reduction data are as follows. Each prime is only a
+verification prime; it need not lie outside the detector's arithmetic
+exceptional set.
+\begin{center}
+\begin{tabular}{llrrrr}\toprule
+$X$ & Final test & Prime & $a\bmod p$ & Degree & Branch gcd\\\midrule
+1 & Original & 97 & 71 & 120 & $t$\\
+1 & Symmetric & 97 & 71 & 120 & $t$\\
+2 & Original & 97 & 79 & 168 & $t$\\
+2 & Symmetric & 241 & 125 & 168 & $t$\\\bottomrule
+\end{tabular}
+\end{center}
+All rational coefficient denominators, actual point ordinates and
+abscissas, and affine difference denominators used in constructing
+these reductions are units at the indicated prime. The certificate
+records the actual $K$-coordinates, their reductions, the complete
+coefficient vectors in~\eqref{eq:branchpolynomials}, and the two
+explicit polynomial identities
+\begin{equation}\label{eq:bezout}
+\begin{gathered}
+ s_0\mathfrak f+t_0\mathfrak f'=1,\\
+ s_1\bigl(\mathfrak f/t\bigr)
+       +t_1\bigl(\mathfrak f(at)/t\bigr)=1
+                         \qquad\text{in }\mathbb F_p[t].
+\end{gathered}
+\end{equation}
+These identities are verified by the independent standard-library
+checker using polynomial addition and multiplication, without a
+factorization package. Both reduced polynomials retain their full
+degrees. A characteristic-zero common factor of positive degree
+would retain that degree after monic normalization at this prime:
+it divides a polynomial with unit leading coefficient and integral
+coefficients, so its coefficients are integral. Therefore the first
+identity proves squarefreeness over $\Q$.
+
+The root zero is simple in $F$. At zero every nonzero test is still
+nonzero, $P_\pm(0)\ne0$, and the expressions for $L_\pm,M$ are
+nonzero. Hence $t$ divides $\mathfrak f$ exactly once. Since
+$a\ne0$, it also divides $\mathfrak f(at)$ exactly once. The second
+identity in~\eqref{eq:bezout} excludes every further
+characteristic-zero common factor.
+
+Write $n=\deg\mathfrak f$. The single cover has $n$ simple finite
+branch points and is unramified at infinity because $n$ is even.
+Its genus is $(n-2)/2$ by Riemann--Hurwitz~\cite{RH}.
+The two branch sets have only zero in common. Their square classes
+are independent over $\overline\Q(t)$: either polynomial has a
+simple root absent from the other, and their product is also
+nonsquare. The simultaneous cover is consequently geometrically
+integral of degree four. Its branch-set union has size $2n-1$.
+Above each branch point there are two points of ramification index
+two, including at the common branch point. Riemann--Hurwitz gives
+\[
+                 2g-2=-8+2(2n-1),\qquad g=2n-4,
+\]
+which gives the stated genera.
+\end{proof}
+
+The intermediate identities are supplied as coefficient vectors rather
+than only as hashes or factorization reports. Recomputing the source
+curve operations and all modular polynomial products suffices to audit
+the characteristic-zero conclusions.
+
+\section{Rational boundary points and the unresolved interior}
+
+\begin{proposition}\label{prop:infinity}
+Each simultaneous-cover curve in Theorem~\ref{thm:genera} has exactly
+four rational points above $t=\infty$.
+\end{proposition}
+\begin{proof}
+If $n=\deg\mathfrak f$, the local coordinate $y/t^{n/2}$ on the
+first quadratic cover has limiting square equal to four. Thus the
+two points at infinity are rational, with limiting values $2,-2$.
+For the second cover the corresponding values are
+$2a^{n/2},-2a^{n/2}$, again rational because $a\in\Q^\times$.
+Both covers are unramified there, so their four ordered pairs give
+exactly four rational points on the simultaneous cover.
+\end{proof}
+
+The parameter infinity is not in the guarded source domain. These
+boundary points therefore give no detector witness at a finite common
+slope. In particular, the geometrically integral curves in
+Theorem~\ref{thm:genera} have no rational or elliptic component on
+which a chord or tangent construction from the boundary would provide
+the missing witnesses.
+
+The theorem does not assert that the curves have no finite rational
+points. It treats only the four displayed fixed fibers, with $B=3$
+and exponent four. It does not restrict another choice of auxiliary
+indices, a proper coupled family of actual points, or a different
+square criterion. The simultaneous actual rational-square property
+needed for the twenty-one- and nine-variable constructions remains
+unresolved.
+
+\section{Verification package}
+The accompanying files are \nolinkurl{certificate.json},
+\nolinkurl{generate.py}, and \nolinkurl{check.py}. Generation uses
+exact rational arithmetic in $\Q(\sqrt2)$ and modular polynomial
+arithmetic. The independent checker uses only the Python standard
+library and verifies the complete coefficient and B\'ezout data,
+the cyclic source-point reductions, the actual scale, and the source
+file hashes. It does not search for rational points on these curves
+or replace a global realization theorem by local evidence.
+
+\begin{thebibliography}{9}
+\bibitem{Direct}\emph{Thirteen variables from direct elliptic index
+comparison}, repository manuscript,
+\nolinkurl{papers/conditional_few_variables/direct_input13_20261110_v22.tex}.
+\bibitem{Criterion}\emph{A guarded rational-square criterion for
+normalized elliptic detectors}, companion manuscript, 16 November 2026.
+\bibitem{RH} The Stacks Project Authors, \emph{Riemann--Hurwitz},
+Section 53.12, Tag 0C1B,
+\url{https://stacks.math.columbia.edu/tag/0C1B}.
+\end{thebibliography}
+\end{document}

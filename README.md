@@ -46,7 +46,7 @@ The 71-variable quartic uses the complete three-coordinate unit reference chart 
 
 The coefficient-basis transformations and the 195/257-coordinate eliminations preserve their corresponding full rational solution sets. The finite-algebra construction permits a zero final pole ordinate and proves soundness on that larger locus.
 
-Current specifications: [results JSON](data/results_20261116_v52.json), [proof and verification guide](docs/results_20261116_v52.md), and [research directions](docs/research_directions.md).
+Current specifications: [results JSON](data/results_20261116_v53.json), [proof and verification guide](docs/results_20261116_v53.md), and [research directions](docs/research_directions.md).
 
 The [fixed-fiber and detector-index theorems](docs/common_parameter_guard_reduction_20261116_v42.md) show that one common rational pole fiber with nonzero ordinates suffices for all remaining pole guards, and give independent auxiliary-index families with unchanged square-class scalars. The common rational fiber itself remains unproved. Proved obstructions and lower bounds are collected separately in [negative_results](negative_results/README.md).
 
@@ -135,6 +135,22 @@ The [actual prescribed-trace benchmark](papers/pole_parameters/admissible_levels
 
 The separate [signed finite-class obstruction](negative_results/papers/pole_parameters/finite_nonsquare_class_obstruction_20261116_v47.tex) proves that every finite set of nontrivial rational square classes fails uniformly for the original general scalar, even with arbitrary guarded auxiliary tuples and rational level multipliers. It leaves the rational-square class available and does not apply to the redesigned norm-compatible scalar.
 
+## Reweighted detectors and rational square tests
+
+The [quadratic reweighting theorem](papers/pole_parameters/reweighted_elliptic_detectors_20261116_v53.tex) gives complete revised general and conditional sources under their retained arithmetic premises. The general source uses the physical weight $w=u/(1+u)^2$ throughout the detector and one extra contact factor in each scalar numerator. The conditional source uses $W(t)=\prod_i(1+C_i^2/F(t))$, with the symmetric final comparison $r+\bar s-2X$. It retains the original weight and satisfies $W-1=O(w^3)$ at fixed preparation places. The full local extraction, height, ordered completeness and whole-character guard arguments retain **25 and 13 variables**. No numerical defining degree bound is transferred to these changed families.
+
+The [guarded rational-square criterion](papers/pole_parameters/native_square_criterion_20261116_v53.tex) uses the actual trace and norm $V=\operatorname{Tr}(W^{-1})$, $J=\operatorname{Norm}(W^{-1})$:
+
+```math
+\mathcal R_a=
+\left(1-\frac{V}{1+w}+\frac{J}{(1+w)^2}\right)
+\left(1+\frac{a^2(1-V/2)}w\right).
+```
+
+A rational-square value excludes every required negative odd detector pole. The radicand is positive at every prepared character, and its reference value at $W=1$ is exactly $w^2/(1+w)^2$. Fixed nonzero exceptional-set units are admissible coefficients; so are the proved source-dependent choices $a=1+wc^2$ for existing guarded rational source functions $c$. These choices add no rational coordinate or nonzero guard. The flat choice $a=1$ has an exact prescribed-coordinate elliptic form, and the conditional detector has a trace-preserving reference involution.
+
+**Two simultaneous rational-square values on actual prepared detector tuples would give 21 variables, or 9 under the conditional source hypotheses. This global realization theorem remains unproved.** The proved local preparation and exact finite-algebra count do not replace it. The [current proof guide](docs/results_20261116_v53.md) states the precise condition and its limitations.
+
 ## Rings of integers of number fields
 
 The [definability reductions](papers/number_fields/number_field_definability_20261109_v12.tex) relate the questions for the ring of integers, the rational integers and the rational subfield, and prove descent implications between number fields.
@@ -142,6 +158,8 @@ The [definability reductions](papers/number_fields/number_field_definability_202
 **No counterexample for a number field, and no theorem covering every number field, is established here.** Failure of a particular polynomial after scalar extension is not a counterexample to Diophantine definability. The [research guide](docs/research_directions.md#rings-of-integers-of-number-fields) states the remaining denominator and realization problems.
 
 ## Negative results
+
+The [fixed-fiber genus theorem](negative_results/papers/pole_parameters/fixed_flat_fibers_20261116_v53.tex) gives geometrically integral simultaneous square covers of genera **236** and **332** for two actual fixed point tuples in the faster conditional detector. Their four rational points over infinity lie outside the guarded domain. The exact coefficient fixture is $B=3$, with no sufficient defining-shift assertion. These computations do not exclude finite rational witnesses or varying auxiliary indices.
 
 The [fixed-trace obstruction theorem](negative_results/papers/pole_parameters/fixed_trace_obstructions_20261116_v51.tex) excludes both normalized traces equalling one at the original general-source input $X=4$, uniformly in the slope, auxiliary tuple and odd exponent. It also excludes every finite fixed set of trace targets from uniform completeness for that source. For both conditional six-contact sources, a separate real scale bound excludes simultaneous unit traces at every prepared slope when $B\ge19$. Varying prescribed-trace norm equations and modified scalar sources remain outside these obstructions.
 
@@ -158,6 +176,7 @@ The [pole-compression guide](negative_results/docs/pole_compression_obstructions
 Use **Python 3.12** for the byte-pinned legacy suite and **SymPy 1.14.0** for symbolic checks. From the repository root:
 
     python -m pip install sympy==1.14.0
+    python -B scripts/verify_v53.py
     python -B scripts/verify_v52.py
     python -B scripts/verify_v51.py
     python -B scripts/verify_v50.py
@@ -180,7 +199,7 @@ Use **Python 3.12** for the byte-pinned legacy suite and **SymPy 1.14.0** for sy
     python -B scripts/verify_release_v27.py
     python -B scripts/verify.py --full
 
-The current verifiers reconstruct specifications and certificates in temporary files. They cover the detector-field scalar norm and integrality-reflection certificates, fixed-trace inert-prime certificates, the conditional positive-interval derivative identities, normalization norm restrictions, adaptive levels, the exact pole-preserving normalization, varying classes, norm-one incidence identities and the separate affine scalar-coupling obstruction, as well as the complete 195-, 257-, and 71-variable quartics and their coefficient expansions, complete variable-difference charts including torsion and tangent fibers, unit-reference product recovery and the scaled physical trace, the complete inverse reference-square graph, bounded native norm levels, automatic-level finiteness examples, both full tangent quadratic-identity spaces, weighted-product boundary certificates and input-rescaling identities, finite complement classes, the native complement guard and mixed-power height identities, the abelian-parameter and duplication obstructions, the revised scalar identities and source census, exact quadratic reference and height rescaling with its nonzero guard, the norm map, normalization and local cancellation counterexamples, fixed-class branch and quotient identities, native fixed-fiber guards, rational-section maps, K3 branch and resolution identities, independently checked mixed reference signs, local pole cases, Tunnell coefficients, terminal nonreduced examples, reference-chart identities and exceptional cases, Pell-label examples, paired-ratio implications, invertible row transformations and complete quartic expansions. The retained verifiers authenticate the sources and supplied 198-variable archive. The full legacy verifier has **126 stages**. Optional PARI rank checks remain separately requested by --with-pari; they are not implied by --full. The new local and automatic-conic certificates do not use PARI, analytic ranks, or BSD.
+The current verifiers reconstruct specifications and certificates in temporary files. They cover the reweighted source identities, the guarded square criterion and prescribed-coordinate elliptic identity, the independent fixed-fiber Bézout and genus certificates, the detector-field scalar norm and integrality-reflection certificates, fixed-trace inert-prime certificates, the conditional positive-interval derivative identities, normalization norm restrictions, adaptive levels, the exact pole-preserving normalization, varying classes, norm-one incidence identities and the separate affine scalar-coupling obstruction, as well as the complete 195-, 257-, and 71-variable quartics and their coefficient expansions, complete variable-difference charts including torsion and tangent fibers, unit-reference product recovery and the scaled physical trace, the complete inverse reference-square graph, bounded native norm levels, automatic-level finiteness examples, both full tangent quadratic-identity spaces, weighted-product boundary certificates and input-rescaling identities, finite complement classes, the native complement guard and mixed-power height identities, the abelian-parameter and duplication obstructions, the revised scalar identities and source census, exact quadratic reference and height rescaling with its nonzero guard, the norm map, normalization and local cancellation counterexamples, fixed-class branch and quotient identities, native fixed-fiber guards, rational-section maps, K3 branch and resolution identities, independently checked mixed reference signs, local pole cases, Tunnell coefficients, terminal nonreduced examples, reference-chart identities and exceptional cases, Pell-label examples, paired-ratio implications, invertible row transformations and complete quartic expansions. The retained verifiers authenticate the sources and supplied 198-variable archive. The full legacy verifier has **126 stages**. Optional PARI rank checks remain separately requested by --with-pari; they are not implied by --full. The new local and automatic-conic certificates do not use PARI, analytic ranks, or BSD.
 
 The complete TeX manuscripts are the mathematical deliverables. They are compiled and visually inspected before publication. scripts/update_manifest.py records the distributed file hashes. Computational reconstruction certifies the finite identities and coefficients it checks; it does not certify external arithmetic premises or constitute independent non-author mathematical review.
 

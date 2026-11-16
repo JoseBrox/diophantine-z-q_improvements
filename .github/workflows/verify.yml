@@ -13,6 +13,8 @@ jobs:
         with:
           python-version: '3.12'
       - run: python -m pip install sympy==1.14.0
+      - name: Verify reweighted sources, native square criteria and fixed-fiber certificates
+        run: python -B scripts/verify_v53.py --report /tmp/v53-verification.json
       - name: Verify the detector-field norm scalar and unchanged records
         run: python -B scripts/verify_v52.py --report /tmp/v52-verification.json
       - name: Verify fixed trace obstructions and unchanged construction records

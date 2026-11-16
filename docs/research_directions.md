@@ -25,6 +25,26 @@ $$
 
 with the same variable count and inherited arithmetic premises. The two 13-variable constructions have degree below $2^{26}$. These are certified upper bounds from exact finite-operation specifications, not expanded polynomial degrees. Only the last quadratic step may lose its unit condition in this theorem: all preceding radicands remain nonzero. The character-descent proof handles nilpotents at that last step, so a simple-eigenvalue argument is unnecessary.
 
+### Current target: the native square criterion
+
+The [quadratic reweighting theorem](../papers/pole_parameters/reweighted_elliptic_detectors_20261116_v53.tex) supplies complete general and conditional sources whose odd physical weight valuations are positive. The conditional detector is the quadratic product $W=\prod_i(1+C_i^2/F)$, with $W-1=O(w^3)$ at fixed preparation places. The general detector uses $w=u/(1+u)^2$ throughout its factors and one extra contact factor in each scalar numerator. Their full source counts remain 25 and 13.
+
+The [guarded square theorem](../papers/pole_parameters/native_square_criterion_20261116_v53.tex) reduces the desired **21/9** construction to simultaneous actual rational-square values of
+
+```math
+\mathcal R_a=\left(1-\frac{V}{1+w}+\frac{J}{(1+w)^2}\right)
+             \left(1+\frac{a^2(1-V/2)}w\right),
+\quad V=\operatorname{Tr}(W^{-1}),\quad J=\operatorname{Norm}(W^{-1}).
+```
+
+All point lifts, source denominators, whole-character guards, common slope and height scales must be retained. Fixed exceptional-set units are admissible choices of $a$. The source-dependent family $a=1+wc^2$, with $c$ an existing guarded rational source function, is also admissible and has no additional coordinate cost. Its local soundness comes from $v_p(a)\le0$ at every hypothetical negative odd detector pole. An unrestricted new rational parameter would have a coordinate cost; an unproved finite root for that parameter cannot be substituted.
+
+For $a=1$, put $W^{-1}=u+v\sqrt2$, $x=1+(1-u)/w$ and $q=v/w$. The square condition is exactly the prescribed-coordinate equation $y^2=x^3-2q^2x$. This makes a coupling to the source's elliptic points a concrete target. The actual $x$ and $q$ cannot be replaced by freely chosen coordinates.
+
+The local theorem gives rational-square values at every fixed preparation place and at the stated fresh split-contact patterns. New prime divisors of detector numerators and the global rational lifts remain uncontrolled. The [fixed-fiber genus theorem](../negative_results/papers/pole_parameters/fixed_flat_fibers_20261116_v53.tex) gives genera 236 and 332 for the explicit fixed-index fixtures $X=1,2$, $B=3$. Their rational boundary points do not supply finite witnesses. The next global argument must therefore allow auxiliary indices or admissible source functions to vary, or produce individually chosen rational points on the resulting ramified incidence. This fixed-fiber result does not exclude either possibility.
+
+The realization statement is **unproved**. The [current proof guide](results_20261116_v53.md) records the full implication and exact checks.
+
 ### A shared conic parameter: the precise route to 24
 
 For a pole input written $b_i=d_i t_i^2$ with $d_i t_i\ne0$, the current rational chart is
@@ -144,7 +164,7 @@ The [fixed-trace obstruction](../negative_results/papers/pole_parameters/fixed_t
 
 The arithmetic target must therefore retain varying first coordinates, or use a separately justified modified scalar construction. The norm-compatible scalar remains available. A solution must match the actual traces in the displayed equations with all guards; a bare conic point or a free norm-one parametrization does not do so.
 
-No actual uniform realization is proved. The variable counts remain **25 and 13**, with **21/9** conditional on the displayed arithmetic assertion. The [proof and verification guide](results_20261116_v52.md) records the exact scope.
+No actual uniform realization is proved. The variable counts remain **25 and 13**, with **21/9** conditional on the displayed arithmetic assertion. The [proof and verification guide](results_20261116_v53.md) records the exact scope.
 
 ### Integral labels from one finite Pell choice
 

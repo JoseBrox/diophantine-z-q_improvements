@@ -1,0 +1,529 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,booktabs,microtype}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\DeclareMathOperator{\Tr}{Tr}\DeclareMathOperator{\Nm}{N}
+\title{A guarded rational-square criterion for normalized elliptic detectors}
+\author{}\date{16 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+We give a finite quadratic test excluding negative odd detector poles
+when every odd valuation of the physical weight is positive. The test
+is strictly positive at every prepared character of the point algebra
+and has an exact square value at the algebraic reference product
+$W=1$. For the conditional sources, a quadratic detector product with
+faster decay gives local square values at every fixed preparation
+place. The exact multiplication family also satisfies the local test
+at its selected split contacts. Two simultaneous rational square values
+on actual guarded detector tuples would give twenty-one total variables
+for the general source and nine for either conditional source. That
+global realization statement is not proved; the established defining
+counts remain twenty-five and thirteen.
+\end{abstract}
+
+\section{Detector hypotheses and arithmetic scope}
+
+Let $K=\Q(\sqrt2)$ and let $S$ be the source's finite exceptional
+set of rational primes, containing all primes at most $76176$.
+Every valuation above
+$p\notin S$ is normalized by $v(p)=1$. We use an actual field-valued
+detector product $W$, a nonzero rational physical weight $w$, and
+\begin{equation}\label{eq:native}
+ V=\Tr_{K/\Q}(W^{-1}),\qquad
+ J=\Nm_{K/\Q}(W^{-1}),\qquad b=\frac{4w}{V^2}.
+\end{equation}
+All point, difference, rational-function and trace denominators are
+guarded. The following hypotheses concern the guarded rational source.
+\begin{enumerate}
+\item Every odd valuation of $w$ outside $S$ is positive.
+\item At an odd valuation of $w$, each local reciprocal slot of $W$
+is integral and reduces to either zero or one.
+\item At a prepared specialization, every geometric character of the
+finite point algebra is real, $w>0$, and both real slots of $W$ are
+at least one.
+\end{enumerate}
+
+The normalized general source in~\cite{Normalized} satisfies these
+hypotheses. Its physical weight is
+\[
+             w=\frac{u}{(1+u)^2},\qquad u=\rho R,
+\]
+with $1+u$ guarded. Its field factors use this physical weight in
+every denominator, and its scalar numerators are
+\[
+ G_k=R^{\kappa_k+1}\Phi_R(S_k),\qquad
+ \Phi_R(s)=\frac{Rs}{1+Rs}.
+\]
+The nine point roles and common slope are those of the general
+source~\cite{General,Unit}. All assertions about their integer input
+projection retain the arithmetic premises specified there.
+
+For the conditional sources, put
+\begin{equation}\label{eq:conditionalweight}
+ F(t)=\frac{t(t+1)(2t+1)(3t+1)(4t+1)(5t+2)}{120},\qquad
+ \delta=t-1,\qquad w=\frac{F(t)}{4\delta^8}.
+\end{equation}
+The six actual field tests and the faster quadratic product are
+specified in Section~\ref{sec:conditional}. The ordinary and weak
+abc assumptions, subgroup input and remaining arithmetic premises
+are exactly those of the corresponding conditional sources
+\cite{Conditional,Normalized}.
+
+\begin{lemma}\label{lem:weight}
+The displayed general weight has positive odd valuations. The same
+is true of~\eqref{eq:conditionalweight} at every rational guarded
+argument outside the conditional exceptional set.
+\end{lemma}
+\begin{proof}
+If $n=v_p(u)\ne0$, then
+\[
+ v_p\left(\frac{u}{(1+u)^2}\right)=|n|.
+\]
+When $n=0$ the valuation is even. For the conditional weight,
+$v_p(t)<0$ gives $v_p(w)=-2v_p(t)$, since $F$ is monic of degree
+six outside $S$. If $v_p(t-1)>0$, then $F(t)\equiv F(1)=7$ is a
+unit and $v_p(w)=-8v_p(t-1)$. Otherwise $t$ and all coefficients
+are integral and the denominator is a unit. Every odd valuation is
+therefore positive.
+\end{proof}
+
+\section{The finite rational-square test}
+
+Set
+\begin{equation}\label{eq:criterion}
+ g=1+w,\qquad Q=1-\frac Vg+\frac J{g^2},\qquad
+ \mathcal R_a=Q\left(1+\frac{a^2(1-V/2)}w\right),
+ \qquad a\in\Z[S^{-1}]^\times.
+\end{equation}
+The coefficient $a$ is fixed, so it is not an additional rational
+coordinate. Different fixed coefficients may be used in the two blocks.
+
+\begin{theorem}\label{thm:criterion}
+Under the three detector hypotheses, a rational-square value of
+$\mathcal R_a$ excludes every negative odd valuation of $b$ outside
+$S$. At every prepared point-algebra specialization,
+$\mathcal R_a$ is strictly positive at every geometric character and
+is a whole-algebra unit. Its value at the algebraic reference product
+$W=1$ is
+\begin{equation}\label{eq:baseline}
+                  \mathcal R_a=\frac{w^2}{(1+w)^2}.
+\end{equation}
+\end{theorem}
+\begin{proof}
+Suppose $v_p(b)<0$ is odd. Then $\nu=v_p(w)>0$ is odd and
+$v_p(V)>\nu/2>0$. The local reciprocal slots of $W$ reduce to zero
+or one. Their trace reduces to zero, so both slots reduce to zero:
+at a split prime this uses $p\ne2$, and at an inert prime the trace
+of the residue one is two. Hence $J\equiv0$, $g\equiv1$ and
+$Q\equiv1\pmod p$. Since $a$ is a local unit, the second factor
+of~\eqref{eq:criterion} has valuation $-\nu$. Thus
+$v_p(\mathcal R_a)=-\nu$ is odd, contrary to rational squareness.
+
+At a prepared character, write the two reciprocal slots of $W$ as
+$u_+,u_-\in(0,1]$. Then $0<V=u_++u_-\le2$, and
+\[
+ Q=\left(1-\frac{u_+}{g}\right)
+   \left(1-\frac{u_-}{g}\right)>0
+\]
+because $g>1$. The second factor of~\eqref{eq:criterion} is at
+least one. Every character is real, so the strict inequalities give
+the whole-algebra unit assertion. Finally, $W=1$ gives $V=2$, $J=1$,
+and hence~\eqref{eq:baseline}.
+\end{proof}
+
+For coefficient construction write $W=A+B\sqrt2$ and $N=A^2-2B^2$.
+The exact rational expression is
+\begin{equation}\label{eq:cleared}
+ \mathcal R_a=
+ \frac{(g^2N-2gA+1)\bigl((w+a^2)N-a^2A\bigr)}
+ {wg^2N^2}.
+\end{equation}
+In particular, the square test introduces no denominator divisor beyond
+$w$, $1+w$ and the retained product norm. All are nonzero at every
+prepared character.
+
+The choice $a=1$ has a useful norm--trace form. Define
+\[
+ E=1-(gW)^{-1}=e_0+e_1\sqrt2,\qquad
+ \omega=\frac{w}{g^2}.
+\]
+Then $Q=\Nm(E)$, $e_0=1-V/(2g)$, and
+\begin{equation}\label{eq:flat}
+ \mathcal R_1=
+ \frac{e_0\Nm(E)}{\omega g}
+ =Q\left(1+\frac{1-V/2}{w}\right).
+\end{equation}
+Equation~\eqref{eq:flat} always uses the actual detector trace and
+norm. A parametrization with freely assigned $e_0,e_1$ would not
+establish a realization of this test.
+
+\begin{proposition}\label{prop:adaptive}
+The fixed coefficient $a$ in Theorem~\ref{thm:criterion} may be replaced
+by a rational function of the retained source coordinates, provided
+that its denominators are guarded and $v_p(a)\le0$ whenever
+$p\notin S$ and $b$ has negative odd valuation. No new unrestricted
+coordinate is needed for such a function.
+
+For example, let $M$ be a fixed nonzero $S$-unit and let $P_0,P_1$
+be polynomials in $w,V,J$ over $\Z[S^{-1}]$, whose constant terms
+are $S$-units. Then
+\[
+                    a=M\frac{P_0(w,V,J)}{P_1(w,V,J)}
+\]
+has the required local unit property on its guarded domain.
+If $P_1$ has nonnegative coefficients and a positive constant term,
+its denominator is nonzero at every prepared character.
+\end{proposition}
+\begin{proof}
+At a hypothetical bad prime put $\nu=v_p(w)>0$. The proof of
+Theorem~\ref{thm:criterion} gives $Q\equiv1$ and
+$1-V/2\equiv1\pmod p$. The unique lowest valuation in the second
+factor is now
+\[
+                         2v_p(a)-\nu<0,
+\]
+which is odd. This proves the first assertion. For the displayed
+polynomial family, $(w,V,J)$ reduces to $(0,0,0)$ at a hypothetical
+bad prime, so both polynomial values are local units. At a prepared
+character $w,V,J>0$, which proves the last assertion. Squaring the
+real value of $a$ preserves the positivity argument.
+\end{proof}
+
+\begin{corollary}\label{cor:outer}
+Let $c$ be an existing guarded rational source function. Then
+\[
+                              a=1+wc^2
+\]
+satisfies the hypothesis of Proposition~\ref{prop:adaptive}. Products
+of such factors are also admissible. These choices add no unrestricted
+coordinate and no additional nonzero guard beyond the denominators
+already retained for the chosen source functions. At a prepared real
+character each factor is at least one.
+\end{corollary}
+\begin{proof}
+At an odd physical valuation $\nu>0$, if $c\ne0$ the two summands
+have valuations zero and the odd integer $\nu+2v_p(c)$. Hence
+\[
+                    v_p(1+wc^2)=\min\{0,\nu+2v_p(c)\}\le0.
+\]
+For $c=0$ the factor is one. Product valuations add, and prepared
+real positivity follows from $w>0$.
+\end{proof}
+
+The rationality of $c$ is essential to this parity calculation. An
+unconstrained finite-extension root may have a half-integral valuation.
+Introducing a new finite equation for $c$ therefore requires its own
+rational-character and completeness argument; it does not provide an
+arbitrary extra rational parameter without a coordinate cost.
+
+For $a=1$ the actual arithmetic condition also has a direct elliptic
+form. Write $W^{-1}=u+v\sqrt2$, and define the prescribed rational
+quantities
+\[
+              \epsilon=1-u,\qquad x=1+\epsilon/w,\qquad q=v/w.
+\]
+Then the exact identity
+\begin{equation}\label{eq:elliptic}
+          \mathcal R_1=\frac{w^2}{(1+w)^2}\,x(x^2-2q^2)
+\end{equation}
+shows that the square condition is equivalent to
+\[
+                  y^2=x^3-2q^2x,\qquad
+                  y=\frac{1+w}{w}\sqrt{\mathcal R_1}.
+\]
+For $q\ne0$ this is a rational $j=1728$ twist with its abscissa and
+twist coefficient prescribed by the actual detector. The identity
+remains valid at $q=0$; interpreting that degenerate equation as an
+elliptic curve is neither required nor used. No rational point with
+the prescribed coordinates, or at both detector arguments, follows
+from the identity alone.
+
+\section{The faster conditional product and its symmetry}
+\label{sec:conditional}
+
+Use the source curve, fixed point $P$, and three point roles $A,H,U$
+from~\cite{Conditional}. Write $f=1/x$, $z=-x/y$ and
+\[
+ r=\frac{z(U)}{z(H)},\qquad
+ s=\frac{z(U-A)}{z(H-P)}.
+\]
+Conjugation in $K/\Q$ is denoted by a bar. Define
+\begin{equation}\label{eq:tests}
+ \begin{gathered}
+ C_1=f(H),\quad C_2=f(U),\quad
+ C_3=\overline{f(H-P)},\quad C_4=\overline{f(U-A)},\\
+ C_5=r-\bar s,\qquad C_6=r+\bar s-2X.
+ \end{gathered}
+\end{equation}
+The product used here is
+\begin{equation}\label{eq:fastproduct}
+                  W(t)=\prod_{i=1}^6\left(1+\frac{C_i^2}{F(t)}\right).
+\end{equation}
+The physical weight remains~\eqref{eq:conditionalweight}. The two
+arguments are the actual $t_0=\lambda$ and $t_1=a_1\lambda$, with
+the source's unchanged input-dependent height scale $a_1$.
+
+\begin{proposition}\label{prop:conditional}
+At an odd physical weight valuation $\nu>0$ outside $S$, every local
+reciprocal slot of~\eqref{eq:fastproduct} is integral and reduces to
+zero or one. If the corresponding physical input has no negative odd
+valuation, all six original source tests have positive valuation at
+one place above the prime. Thus the original local extraction and
+height argument apply.
+\end{proposition}
+\begin{proof}
+Lemma~\ref{lem:weight} shows that $t$ is integral and $\delta$ is a
+unit, so $v_p(F)=\nu$. Each factor has valuation
+\[
+                    \min\{0,2v(C_i)-\nu\}\le0.
+\]
+The two displayed terms have distinct parity. If the minimum is zero,
+the factor reduces to one; otherwise its inverse reduces to zero.
+
+Put $q=\max_{\mathfrak p\mid p}v_{\mathfrak p}(W)\le0$.
+Then $v_p(V)\ge-q$. Nonnegative odd valuation of $b$ gives
+$1\le v_p(b)\le\nu+2q$, hence $q>-\nu/2$. At a place attaining
+$q$, every individual factor valuation is at least $q$, so
+\[
+                         v(C_i)>\nu/4>0.
+\]
+The original last test is $(C_5+C_6)/2=r-X$. Since $2$ is a unit,
+both original comparisons have positive valuation. All six original
+tests therefore meet their order-one thresholds, which are exactly
+the hypotheses used by the conditional local extraction proof.
+\end{proof}
+
+The ordered source completeness also transfers to this product: the
+selected-contact orders are unchanged, while its fixed-place and real
+decay are stronger. The full retained-source statement, including the
+unchanged thirteen-variable encoding with pole blocks, is given in
+\cite{Normalized}.
+
+\begin{proposition}\label{prop:symmetry}
+On the common guarded rational-function domain, the involution
+\[
+                         \tau:(H,U)\longmapsto(P-H,A-U)
+\]
+satisfies $W\circ\tau=\bar W$. Consequently $V,J,Q$ and
+$\mathcal R_a$ descend under $\tau$ for fixed rational $a$.
+The exact multiplication family $A=[X]P$, $U=[X]H$ is preserved.
+\end{proposition}
+\begin{proof}
+The involution interchanges $r$ and $s$. It sends the first four
+tests to the conjugates of $C_3,C_4,C_1,C_2$, respectively, and
+\[
+                C_5\circ\tau=-\bar C_5,\qquad
+                C_6\circ\tau=\bar C_6.
+\]
+Their squares give the stated product identity. The trace and norm
+are invariant under conjugation. Finally,
+$[X](P-H)=A-U$ on the exact multiplication family.
+\end{proof}
+
+The statement concerns the common open domain of the charts and their
+translates. Quotient points still have to lift to actual source points,
+including the square-abscissa lift and every original guard. No
+coordinate saving is inferred from the symmetry alone.
+
+\section{Local realization of the actual square radicands}
+
+\begin{lemma}[Stability at the reference product]\label{lem:stability}
+Let $p$ be any finite prime. For fixed $w_0\in\Q_p\setminus\{0,-1\}$,
+if $w\to w_0$ and both slots of $W\to1$, then
+\[
+                  \mathcal R_a\longrightarrow
+                           \frac{w_0^2}{(1+w_0)^2}.
+\]
+Thus the actual radicand is a nonzero square in $\Q_p$ throughout a
+sufficiently small neighborhood. If instead $w\to0$ and
+$W_\pm-1=o(w)$, then
+\begin{equation}\label{eq:rapidsquare}
+             \frac{\mathcal R_a}{(w/(1+w))^2}\longrightarrow1.
+\end{equation}
+The same local-square conclusion holds. Here $a$ is fixed, or tends
+to a finite $p$-adic limit.
+\end{lemma}
+\begin{proof}
+The first statement is continuity and~\eqref{eq:baseline}. For the
+second, write $W_\pm=1+\varepsilon_\pm$. Then
+\[
+ \frac{1-1/(gW_\pm)}{w/g}
+             =1+\frac{\varepsilon_\pm}{w(1+\varepsilon_\pm)}
+             \longrightarrow1,
+ \qquad 1-V/2=o(w).
+\]
+Multiplying the two first identities and using the last gives
+\eqref{eq:rapidsquare}. Nonzero squares form an open subgroup of
+$\Q_p^\times$: a sufficiently close quotient is one modulo $p$ for
+odd $p$, and one modulo eight at $p=2$.
+\end{proof}
+
+For the faster conditional product, fixed actual tests give, uniformly
+on bounded finite-place or compact real neighborhoods,
+\begin{equation}\label{eq:infinity}
+ w(t)\sim\frac1{4t^2},\qquad
+ W(t)-1=O(t^{-6})=O(w(t)^3)\qquad(t\longrightarrow\infty).
+\end{equation}
+Consequently Lemma~\ref{lem:stability} applies at every fixed finite
+preparation place, including $2,3,17$, simultaneously to the two
+arguments $t_0,t_1$. Both scales are fixed before the slope is chosen.
+For the normalized general source, the finite preparation has
+$w_j\to\rho/(1+\rho)^2\ne0,-1$ and $W_j\to1$, so the first
+part of that lemma applies instead.
+
+\begin{lemma}[Fresh split contacts]\label{lem:contacts}
+Let $p\notin S$ split in $K$. Suppose the actual native preparation
+has
+\[
+ v_p(w)=1,\qquad W_{\rm good}=1+O(p^2),\qquad
+                         W_{\rm bad}^{-1}=O(p^2).
+\]
+If $v_p(a)\le0$, then
+\[
+                         \mathcal R_a/a^2\equiv1/2\pmod p,
+\]
+and the actual radicand is a nonzero square in $\Q_p$.
+\end{lemma}
+\begin{proof}
+One has $1-(gW_{\rm good})^{-1}=w+O(p^2)$ and
+$1-(gW_{\rm bad})^{-1}=1+O(p^2)$. Hence
+$Q=w+O(p^2)$ and $V=1+O(p^2)$. Now
+\[
+ \frac{\mathcal R_a}{a^2}
+        =\frac Q{a^2}+\frac Qw(1-V/2).
+\]
+The first term is divisible by $p$, giving the stated residue.
+Since $p$ splits in
+$\Q(\sqrt2)$, the element $2$ is a local square, and Hensel's
+lemma gives the conclusion.
+\end{proof}
+
+The exact multiplication family in the conditional source supplies
+these orders: the first four successful tests have valuation at least
+two, the two comparisons have valuation at least four, and $v_p(F)=1$.
+Thus the successful product is $1+O(p^3)$. Excluding the fixed
+coordinate and denominator support of $P$ and $A$ makes the opposite
+reciprocal product $O(p^2)$. The strengthened scalar normalizers in
+the general source give the same sufficient orders~\cite{Normalized}.
+
+\begin{lemma}[Conditional pole places]\label{lem:poles}
+Suppose $p$ is odd, $v_p(w)<0$, and both local slots of $W^{-1}$ are
+integral. Then $\mathcal R_a\equiv1\pmod p$, provided $a$ is a
+$p$-adic unit. In particular this applies at an ordinary conditional
+pole $t\to1$ whenever the limiting product
+\[
+                     \prod_{i=1}^6(1+C_i^2/7)
+\]
+is nonzero and a local unit in both slots.
+\end{lemma}
+\begin{proof}
+The trace and norm $V,J$ are integral. Since $v_p(g)=v_p(w)<0$,
+one has $Q\equiv1$, and $1+a^2(1-V/2)/w\equiv1\pmod p$.
+At the specified conditional pole $F(1)=7$ and the displayed unit
+condition gives integrality of the reciprocal slots.
+\end{proof}
+
+These are local statements for the stated actual preparation patterns.
+They do not assert local square values at every prime. In particular,
+new prime divisors of detector numerators at even physical valuations
+remain subject to the square condition itself. Nor does local
+solubility imply simultaneous rational square values.
+
+\section{Finite algebra and the remaining global realization}
+
+\begin{definition}\label{def:realization}
+The simultaneous native square property for a source means that every
+required integer input admits a prepared actual rational source tuple
+on the whole-character real and guard locus specified above, with all
+inherited point, difference, scalar, trace and comparison guards and
+the unchanged common slope and height scales, such that
+\[
+                       \mathcal R_{a_0,0},\quad
+                       \mathcal R_{a_1,1}\in\Q^{\times2}.
+\]
+For a conditional source the required inputs are the nonzero integers.
+Each $a_j$ is fixed in advance either as a nonzero $S$-unit or as an
+admissible rational-function expression in the existing source
+coordinates, as in Proposition~\ref{prop:adaptive} or
+Corollary~\ref{cor:outer}; every denominator of that expression is
+included in the retained guard locus. It is not a new unrestricted
+parameter. These subscripts are independent of the source's notation
+for its comparison scales.
+\end{definition}
+
+\begin{theorem}[Guarded conditional reduction]\label{thm:count}
+Assume the retained arithmetic premises of the normalized general
+source or one of the conditional sources, and assume its simultaneous
+native square property. Then the corresponding defining polynomial
+may be constructed with twenty-one total variables in the general
+case, and nine in either conditional case, including the input.
+
+Without that realization assumption, the square criterion proves the
+soundness direction of this finite-algebra construction only. It does
+not improve the established defining counts.
+\end{theorem}
+\begin{proof}
+Retain $p$ point pairs, with $p=9$ in the general source and $p=3$
+in either conditional source. Their finite point algebra has rank
+$4^p$, as in~\cite{Unit}. Replace each pole block by its square test.
+Write the two actual radicands as $C_j/D_j$ in the localized point
+algebra and adjoin the two monic finite generators
+\[
+                     Y_j^2=C_jD_j,\qquad j=0,1.
+\]
+Then the square root is $Y_j/D_j$. At a prepared tuple the numerator
+and denominator norms are nonzero by Theorem~\ref{thm:criterion}
+and the inherited guard audit. Include these scalar norms in the guard
+product. The two quadratic extensions are finite etale over the guarded
+point algebra, have radicands in that original algebra, and give total rank
+\[
+                              4^p\,2^2=4^{p+1}.
+\]
+The one-coordinate guarded separator and determinant descent of
+\cite{Unit} therefore apply without an additional unrestricted
+parameter. Soundness follows from Theorem~\ref{thm:criterion} and the
+unchanged source local extraction and height argument. The realization
+assumption extends the selected rational point character to both
+quadratic generators, proving completeness.
+
+The unrestricted coordinates are the input, $2p$ point coordinates,
+one common slope and one final determinant coordinate, totaling
+$2p+3$. In a conditional source the usual final input factor includes
+zero. This gives the stated counts.
+\end{proof}
+
+Definition~\ref{def:realization} is the unresolved arithmetic step.
+The local results above preserve prescribed actual traces and can
+filter candidate families, but neither their congruences nor the
+reference identity~\eqref{eq:baseline} establish that definition.
+An affirmative result must produce rational points on both actual
+square covers at one common slope, with all point lifts and guards.
+
+\begin{thebibliography}{9}
+\raggedright
+\bibitem{General}
+\emph{A defining polynomial in twenty-five variables: combined scalar
+and comparison conditions}, repository source,
+\nolinkurl{papers/few_variables25/few_variables25_merged_20261110_v19.tex}.
+\bibitem{Conditional}
+\emph{Thirteen variables from direct elliptic index comparison},
+repository source,
+\nolinkurl{papers/conditional_few_variables/direct_input13_20261110_v22.tex}.
+\bibitem{Unit}
+\emph{A single norm determinant for the 25- and 13-variable constructions},
+repository source,
+\nolinkurl{papers/finite_algebra/unit_norm_20261114_v28.tex}.
+\bibitem{Normalized}
+\emph{Quadratic reweightings of native elliptic detectors},
+companion source specification, 16 November 2026,
+\nolinkurl{papers/pole_parameters/reweighted_elliptic_detectors_20261116_v53.tex}.
+\end{thebibliography}
+\end{document}
