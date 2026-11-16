@@ -1,0 +1,255 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,microtype}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\Q}{\mathbb Q}
+\title{Square-complement normalization does not preserve the pole predicate}
+\author{}\date{16 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+The rational substitution $\Phi(b)=1156b/(17+b)^2$ preserves input
+square class and makes $17(17-\Phi(b))$ a rational square. We prove that
+it does not preserve the normalized pole predicate. For the infinite
+family $b_n=204^2/409^{2n-1}$, $n\ge2$, no parameter gives a pole point
+over $\Q_{409}$, including all zero and projective boundary cases.
+The transformed inputs are fully prepared and have explicit nonzero
+rational witnesses at every finite nonzero rational conic parameter. The result
+concerns the isolated pole subsystem; no full detector-source
+counterexample or defining-polynomial lower bound is asserted.
+\end{abstract}
+
+\section{The normalized equations and the substitution}
+
+For a nonzero rational input $b=dt^2$, with $d,t\ne0$, put
+\begin{equation}\label{eq:data}
+ D=17d,\qquad C=17(17-b),\qquad
+ e_\tau=\frac{\tau^2-D}{\tau^2+3D},\qquad A_\tau=e_\tau C.
+\end{equation}
+The normalized first conic and second pole of \cite{UnitNorm,Returns} are
+\begin{equation}\label{eq:pole}
+ p^2=D(1-e_\tau)(1+3e_\tau),\qquad
+ q^2=D(s^2-A_\tau)(s^2+3A_\tau).
+\end{equation}
+The first conic has the ordinate
+\begin{equation}\label{eq:p}
+                    p_\tau=-\frac{4D\tau}{\tau^2+3D}.
+\end{equation}
+The missing conic parameter $\tau=\infty$ gives $e=1$, $p=0$.
+Indeed every first-conic solution with $e\ne1$ has
+$\tau=p/(e-1)$ and is recovered by these formulas.
+
+A prepared rational input has square reduced denominator and satisfies
+\[
+ 0<b<17,\qquad
+ b\in\Q_2^{\times2}\cap\Q_3^{\times2}\cap\Q_{17}^{\times2},
+ \qquad v_2(b)\ge3,\quad v_3(b)\ge1,\quad v_{17}(b)\ge2.
+\]
+No prepared-input existence theorem is needed for the obstruction below.
+
+For $b\ne0,-17$, define
+\begin{equation}\label{eq:phi}
+ \Phi(b)=\frac{1156b}{(17+b)^2}
+        =b\left(\frac{34}{17+b}\right)^2.
+\end{equation}
+Direct expansion gives
+\begin{equation}\label{eq:square}
+ 17(17-\Phi(b))=
+       \left(\frac{17(17-b)}{17+b}\right)^2.
+\end{equation}
+Thus the rational square class of the input is unchanged.
+Its denominator information need not be unchanged: for $p\nmid34$
+and $v_p(b)<0$ one has
+\begin{equation}\label{eq:reverse}
+                         v_p(\Phi(b))=-v_p(b)>0.
+\end{equation}
+
+\begin{samepage}
+\begin{theorem}\label{thm:obstruction}
+For $n\ge2$ let
+\[
+ P_n=409^{2n-1},\qquad b_n=\frac{204^2}{P_n},\qquad B_n=\Phi(b_n).
+\]
+Then:
+\begin{enumerate}
+\item $0<b_n<1$, and $b_n$ satisfies all the distinguished local-square
+      and valuation conditions above. Its reduced denominator is not
+      a square: $v_{409}(b_n)=1-2n<0$ is odd.
+\item For $b_n$, no local conic parameter in $\mathbf P^1(\Q_{409})$
+      gives a point on the smooth projective second-pole curve. This
+      includes $s=0$, $q=0$, and the points above $s=\infty$.
+\item The transformed input $B_n$ is prepared. With the same
+      square-class representative $d=409$, it has nonzero rational
+      witnesses for both equations in~\eqref{eq:pole} at every
+      rational $\tau\ne0$.
+\end{enumerate}
+In particular \eqref{eq:phi} is not an equivalence of the isolated
+pole predicates.
+\end{theorem}
+\end{samepage}
+
+\section{Uniform local nonexistence before normalization}
+
+The prime $409$ satisfies
+\[
+ 409\equiv1\pmod8,\qquad409\equiv1\pmod3,\qquad
+ 409\equiv1\pmod{17},\qquad204=2^2\cdot3\cdot17.
+\]
+It is a square in each of $\Q_2,\Q_3,\Q_{17}$, by the usual
+local square criteria. Therefore $b_n$ is a square in all three fields,
+with valuations $4,2,2$. Since $409^3>204^2$, it lies in $(0,1)$.
+Its numerator is prime to $409$, proving part~1 of the theorem.
+It is not prepared; hence its local nonexistence does not conflict
+with the local theorem for prepared inputs in \cite{Local}.
+
+Use the decomposition
+\[
+        b_n=409\left(\frac{204}{409^n}\right)^2,
+        \qquad D=17\cdot409=6953.
+\]
+Write $v=v_{409}$. For every $\tau\in\Q_{409}$, the valuations
+of $\tau^2$ and $D$ are different: one is even and the other is one.
+With $v(0)=+\infty$, this includes $\tau=0$. Since $3$ is a unit,
+\[
+ v(\tau^2-D)=v(\tau^2+3D)=\min\{2v(\tau),1\}.
+\]
+Both expressions are nonzero. Thus $e_\tau$ is a nonzero unit.
+Since $v(b_n)=1-2n<0$, it follows that
+\begin{equation}\label{eq:A}
+                 v(C)=v(A_\tau)=1-2n.
+\end{equation}
+For every $s\in\Q_{409}$, the even valuation of $s^2$ differs
+from this odd integer, again with the convention at zero. Hence
+\[
+ v(s^2-A_\tau)=v(s^2+3A_\tau)
+                  =\min\{2v(s),1-2n\},
+\]
+and both factors are nonzero. Their pole radicand has odd valuation
+\begin{equation}\label{eq:odd}
+ v\bigl(D(s^2-A_\tau)(s^2+3A_\tau)\bigr)
+                  =1+2\min\{2v(s),1-2n\}.
+\end{equation}
+It is not a square. This excludes every affine solution, including
+$s=0$ or $q=0$.
+
+The chart $u=1/s$, $z=q/s^2$ at infinity has equation
+\[
+               z^2=D(1-A_\tau u^2)(1+3A_\tau u^2).
+\]
+At $u=0$ it would require $z^2=D$, impossible because $v(D)=1$.
+The quartic has four distinct roots over an algebraic closure:
+$DA_\tau\ne0$, and $A_\tau\ne-3A_\tau$ in characteristic zero.
+Thus the two charts account for the smooth projective completion.
+For the conic parameter $\tau=\infty$, set $e=1$; the same
+valuation argument applies. This proves part~2.
+
+The obstruction is independent of the rational representative $d$ of
+the input square class. Any such representative has odd $409$-adic
+valuation. Replace the leading one in~\eqref{eq:odd} by that odd
+valuation; the argument, including both boundaries, is unchanged.
+
+\section{Prepared inputs and explicit witnesses after normalization}
+
+Direct cancellation in~\eqref{eq:phi} gives
+\begin{equation}\label{eq:B}
+                B_n=\frac{408^2P_n}{(P_n+2448)^2}.
+\end{equation}
+This fraction is reduced. Indeed $2448=6\cdot408$ and
+$409\equiv1\pmod{408}$, so
+\[
+ \gcd(P_n+2448,408)=1,
+ \qquad \gcd(P_n+2448,P_n)=1.
+\]
+The reduced denominator is therefore a square, and
+$v_{409}(B_n)=2n-1>0$ is odd. Identity~\eqref{eq:square} gives
+$0<B_n<17$, because $0<b_n<1$.
+The quotient $B_n/b_n$ is a nonzero rational square, so the three
+local square conditions are retained. Moreover
+$P_n+2448\equiv1\pmod{408}$ and $408=2^3\cdot3\cdot17$, giving
+\[
+                    v_2(B_n)=6,\qquad v_3(B_n)=2,
+                    \qquad v_{17}(B_n)=2.
+\]
+Thus $B_n$ is fully prepared. Its decomposition in the same square
+class is
+\[
+ B_n=409\left(\frac{408\,409^{n-1}}{P_n+2448}\right)^2.
+\]
+
+Put
+\[
+             c_n=\frac{17(P_n-2448)}{P_n+2448}>0.
+\]
+Then $17(17-B_n)=c_n^2$. For any rational $\tau\ne0$, retain
+$D=6953$, take $e=e_\tau$ and $p=p_\tau$ from
+\eqref{eq:data}, \eqref{eq:p}, and set
+\begin{equation}\label{eq:witness}
+                         s=c_n,\qquad q=c_n^2p_\tau.
+\end{equation}
+The second-pole equation is the exact identity
+\[
+ D(s^2-e c_n^2)(s^2+3e c_n^2)
+          =c_n^4D(1-e)(1+3e)=c_n^4p_\tau^2=q^2.
+\]
+All denominators are nonzero since $D>0$. In addition
+\[
+ 1-e_\tau=\frac{4D}{\tau^2+3D},\qquad
+ 1+3e_\tau=\frac{4\tau^2}{\tau^2+3D}.
+\]
+Thus both factors and both ordinates are nonzero. At the single
+uniform parameter $\tau=1$, the witness is
+\[
+ e=-\frac{1738}{5215},\qquad p=-\frac{6953}{5215},\qquad
+ s=c_n,\qquad q=-\frac{6953}{5215}c_n^2.
+\]
+This proves part~3 and Theorem~\ref{thm:obstruction}.
+
+The same substitution~\eqref{eq:witness} works whenever $D>0$ and
+$C=c^2\ne0$, with $c_n$ replaced by $c$. Consequently a square
+complement can supply automatic pole witnesses while the transformation
+that produced it removes the forbidden negative odd denominator.
+
+\newpage
+\section{Subsystem scope and exact verification}
+
+The family above has not been realized as actual detector values for a
+nonintegral input in a full defining-polynomial source. The theorem
+excludes treating \eqref{eq:phi} as an unconditional equivalence of pole
+predicates; it does not exclude an independently proved construction
+which recovers the original denominator information by other conditions.
+
+The standard-library checker is
+\begin{center}\small
+\texttt{negative\_results/computation/}\\
+\texttt{square\_complement\_normalization\_v43/check.py}.
+\end{center}
+It verifies the polynomial identities, primality and congruence
+constants, coprimality formulas, exact family instances, and both witness
+equations. It also checks the valuation alternatives on a finite audit
+grid and on exact rational local examples including zero parameters.
+The proof above supplies the universal quantifiers and both projective
+boundary arguments; the finite checks do not replace those arguments.
+
+\begin{thebibliography}{9}
+\raggedright
+\bibitem{UnitNorm}
+\emph{A single norm determinant for the 25- and 13-variable constructions},
+project source, version 28,
+\texttt{papers/finite\_algebra/}\allowbreak
+\texttt{unit\_norm\_20261114\_v28.tex}.
+\bibitem{Returns}
+\emph{Fixed pole fibers and independent detector indices},
+project source, version 42,
+\texttt{papers/pole\_parameters/}\allowbreak
+\texttt{common\_parameter\_guard\_reduction\_20261116\_v42.tex}.
+\bibitem{Local}
+\emph{Local solubility at every shared pole parameter},
+project source, version 41,
+\texttt{papers/pole\_parameters/}\allowbreak
+\texttt{shared\_parameter\_local\_solubility\_20261115\_v41.tex}.
+\end{thebibliography}
+\end{document}

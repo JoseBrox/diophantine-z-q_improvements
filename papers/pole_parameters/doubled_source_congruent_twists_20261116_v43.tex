@@ -1,0 +1,122 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,microtype}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\N}{\operatorname N}
+\newcommand{\Tr}{\operatorname{Tr}}
+\title{Doubled source points on rational congruent-number twists}
+\author{}
+\date{16 November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+A nonzero doubled point on $y^2=x^3-(3-\sqrt2)^2x$ gives an explicit
+rational point on a congruent-number twist. Its abscissa has the square
+class of the weighted trace $3x_0+2x_1$, where
+$x=x_0+x_1\sqrt2$. The construction uses only rational norms, and all
+nonzero conditions follow from doubling and the two real embeddings.
+\end{abstract}
+
+\section{The norm construction}
+
+Put $K=\Q(\sqrt2)$, $d=3-\sqrt2$, and
+\[
+                         E:\quad y^2=x^3-d^2x.
+\]
+A bar denotes the nontrivial automorphism of $K/\Q$.
+
+\begin{theorem}
+Let $R=(x,y)\in2E(K)\setminus\{O\}$. Choose $h,j\in K$ with
+$x=h^2$ and $j^2=x^2-d^2$, and put
+\[
+ a=\N(h),\qquad b=\N(j),\qquad
+ r=\tfrac12\Tr(x\bar d),\qquad L=\N(x+d),\qquad m=rb.
+\]
+Then $r>0$, $b\ne0$, $L$ is a nonzero rational square, and
+\[
+ b^2=(a^2+7)^2-4r^2,\qquad L=a^2+7+2r.
+\]
+The rational point
+\[
+                         (X,Y)=(rL,2r^2L)
+\]
+has nonzero ordinate on the congruent-number curve
+\[
+                         Y^2=X^3-m^2X,
+\]
+and its abscissa has rational square class $[X]=[r]$.
+\end{theorem}
+\begin{proof}
+Write $R=2Q$ with $Q=(z,w)$. Since $R\ne O$, the point $Q$ is finite
+and $w\ne0$. The duplication identities give
+\begin{align*}
+ h&=\frac{z^2+d^2}{2w},&
+ x&=h^2,\\
+ k_+&=\frac{z^2+2dz-d^2}{2w},&
+ x+d&=k_+^2,\\
+ k_-&=\frac{z^2-2dz-d^2}{2w},&
+ x-d&=k_-^2.
+\end{align*}
+Thus $j=k_+k_-$ is an available choice. At either real embedding,
+$z^2+d^2>0$, so $h\ne0$ and $x>0$. Moreover $x\ne\pm d$: otherwise
+$\N(x)=\N(h)^2=7$, an impossibility for rational $\N(h)$.
+Hence $j\ne0$, and $x^2-d^2=j^2$ implies $x>d>0$ at both embeddings.
+In particular $r>0$, $b\ne0$, and $L=\N(k_+)^2>0$.
+
+Since $\N(d)=7$ and $\N(x)=a^2$, direct multiplication gives
+\begin{align*}
+ \N(x+d)&=a^2+7+x\bar d+\bar x d=a^2+7+2r,\\
+ \N(x-d)&=a^2+7-2r.
+\end{align*}
+Taking norms of $j^2=(x-d)(x+d)$ proves
+\[
+             b^2=(a^2+7-2r)(a^2+7+2r).
+\]
+It follows that $L^2-b^2=4rL$, and therefore
+\[
+ (rL)^3-(rb)^2(rL)=r^3L(L^2-b^2)=4r^4L^2=(2r^2L)^2.
+\]
+The nonzero and square-class assertions follow from $r,L>0$ and
+$L\in\Q^{\times2}$.
+\end{proof}
+
+\begin{corollary}
+Every such point produces a rational right triangle with nonzero legs
+$|b|$ and $2r$, hypotenuse $a^2+7$, and area $|m|$.
+\end{corollary}
+
+\section{An exact source point}
+
+For the doubled source point
+\[
+ P=2(1+\sqrt2,2\sqrt2)
+   =\left(\frac{57-28\sqrt2}{8},
+            \frac{-660+417\sqrt2}{32}\right),
+\]
+one obtains
+\[
+  a=-\frac{41}{8},\quad b=-\frac{1071}{64},\quad
+  r=\frac{115}{8},\quad L=\frac{3969}{64},\quad
+  m=-\frac{123165}{512}.
+\]
+The triangle identity is
+$1071^2+1840^2=2129^2$ after clearing the denominator $64$.
+
+\begin{remark}
+The construction prescribes the square class of the weighted trace
+$r=3x_0+2x_1$ when $x=x_0+x_1\sqrt2$. It does not identify this class
+with an independently prescribed rational input class, nor does it impose
+a complementary twist relation.
+\end{remark}
+
+The script
+\nolinkurl{computation/pole_parameters/doubled_source_congruent_twists_v43/verify.py}
+verifies the norm and duplication identities symbolically and checks
+this source point with exact arithmetic in $\Q(\sqrt2)$.
+\end{document}

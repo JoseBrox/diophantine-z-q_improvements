@@ -1,8 +1,8 @@
 {
-  "schema": "diophantine-negative-results/v42",
+  "schema": "diophantine-negative-results/v43",
   "date": "2026-11-16",
   "scope": "Proved obstructions and lower bounds under their explicitly stated hypotheses. No global variable minimum or number-field counterexample is asserted.",
-  "origin": "Historical theorem records separated from data/results.json; the complete manuscript index is negative_results/README.md.",
+  "origin": "Historical theorem records separated from data/results.json, with additional proved obstruction records. The complete manuscript index is negative_results/README.md.",
   "theorems": [
     {
       "id": "degree_and_coordinate_lower_bounds",
@@ -340,6 +340,45 @@
       "prepared_criterion": "For prepared b=d*a^2, D=17d and C=17(17-b), a section exists iff C is a rational square.",
       "explicit_section_when_C_is_square": "C=c^2: s=c and q=-4CD*tau/(tau^2+3D).",
       "scope": "A section obstruction, not nonexistence of specialized rational fibers, common rational parameters, multisections, or actual variable-input constructions."
+    },
+    {
+      "id": "actual_square_complement_return_neighborhoods",
+      "proof": "negative_results/papers/pole_parameters/actual_square_complement_neighborhoods_20261116_v43.tex",
+      "certificate": "negative_results/computation/actual_square_complement_v43/verification.json",
+      "statement": "For every odd L>=3 in the original general source, some X in {3,6,7} has nonsquare-unit baseline complement modulo 23. Actual prepared guarded tuples and independent-index return families can keep all detector inputs in that nonsquare-complement neighborhood.",
+      "scope_limit": "This excludes global square complements on those particular legitimate families, not on all source choices. It does not obstruct common rational fibers without sections."
+    },
+    {
+      "id": "square_complement_normalization_destroys_pole_predicate",
+      "proof": "negative_results/papers/pole_parameters/square_complement_normalization_20261116_v43.tex",
+      "certificate": "negative_results/computation/square_complement_normalization_v43/verification.json",
+      "normalization": "Phi(b)=1156*b/(17+b)^2",
+      "counterfamily": "b_n=204^2/409^(2n-1), n>=2",
+      "statement": "The original pole curves have no Q_409-point for any local conic parameter, whereas the normalized prepared input has a rational square complement and an explicit nonzero rational pole section. The square class is preserved.",
+      "scope_limit": "A counterexample to replacing the final pole input by Phi(b), not a false solution of the complete detector source and not an objection to separately proved early-scalar changes."
+    },
+    {
+      "id": "shared_reference_test_cancellations",
+      "proof": "negative_results/papers/elliptic_charts/shared_reference_test_obstructions_20261116_v43.tex",
+      "certificate": "negative_results/computation/shared_reference_tests_v43/verification.json",
+      "statement": "The stated squared reference factor admits exact cancellation at the specified split prime. Both whole-factor odd-cube repairs have local zeros, and arbitrarily high nonzero valuations, while the comparison error is a unit. The actual contact function has a local inverse realizing the required parameter.",
+      "prime": 76537,
+      "scope_limit": "Local factor-level implications only. No simultaneous global, cyclic, doubled, two-detector or full-source counterexample is asserted."
+    },
+    {
+      "id": "fixed_class_synchronization_and_common_parameter_geometry",
+      "proof": "negative_results/papers/pole_parameters/fixed_class_synchronization_20261116_v43.tex",
+      "certificate": "negative_results/computation/fixed_class_synchronization_v43/certificate.json",
+      "assumptions": "Distinct positive rational D_i and fixed nonzero rational twist classes alpha_i; nonzero C_i for the full common-pole variety.",
+      "propagation_curve_genus": "1+2^r*(r-1)",
+      "two_pole_jacobian_factor_dimensions": [
+        1,
+        1,
+        1,
+        2
+      ],
+      "statement": "Each fixed class tuple permits only finitely many rational parameters when r>=2. The rational-Mobius two-pole genus remains five when D_1/D_2 is nonsquare. A smooth proper model of the full common-pole variety has omega_X=f^*O(2r-2), hence Kodaira dimension one for r>=2 and cannot be birational to a finite quotient of an abelian variety.",
+      "scope_limit": "No obstruction to one common rational fiber or the infinite union over varying classes. Direct Kummer-quotient methods are excluded for this variety, not every possible reformulation."
     }
   ]
 }

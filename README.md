@@ -60,6 +60,8 @@ The [paired-ratio theorem](papers/elliptic_charts/paired_ratio_redundancy_202611
 
 The [three-coordinate reference chart](papers/elliptic_charts/three_coordinate_reference_20261115_v40.tex) describes a point and its translate using two quadrics in three field coordinates. Its exact domain is the complement of four specified elliptic points. Three linear functions are units with explicit linear inverses, and every tangent and two-torsion configuration in the domain is included. The reciprocal abscissas are quadratic in these coordinates; their squares are generally quartic. This chart alone therefore does not lower the total variable count of a defining quartic. [Exact certificates](computation/elliptic_charts/three_coordinate_v40) accompany the all-field proof.
 
+The [quadratic reference and height rescaling](papers/elliptic_charts/scaled_reference_height_20261116_v43.tex) makes both reference reciprocal abscissas linear. It preserves quadratic point and ratio rows and recovers the original fixed-index height with one rational coordinate. The reference, point, ratio and height blocks use **32 rational coordinates on the nonzero-scale locus**; their necessary explicit quadratic guard adds one, giving **33 in total**, the same as the original blocks. Detector conversion remains separate. No smaller complete quartic follows.
+
 The [integral Pell-label theorem](papers/integer_labels/pell_labels_20261115_v40.tex) obtains exponential growth from two exact integral labels and one finite quadratic choice. It proves sharp bounds and arbitrarily large witnesses with prescribed finite congruence data. Its [checker and certificate](computation/integer_labels/pell_compression_v40) verify the identities and exceptional cases. Its application requires exact integral labels; no reduction below 25 variables follows from this theorem alone.
 
 ## Height estimates and compatible poles
@@ -71,6 +73,10 @@ The [joint-pole theorem](papers/pole_parameters/joint_pole_realization_20261114_
 The [shared-parameter local theorem](papers/pole_parameters/shared_parameter_local_solubility_20261115_v41.tex) proves that **every rational conic parameter** is locally admissible for every prepared input. A finite family can use the same parameter at every completion.
 
 The [fixed-fiber theorem](papers/pole_parameters/common_parameter_guard_reduction_20261116_v42.tex) proves that one rational witness with nonzero ordinate gives infinitely many witnesses at that same parameter. In all four native sources, the extracted square-class scalars are positive rational numbers independent of the auxiliary points and finite-algebra characters. Thus every conic denominator is nonzero for every rational parameter, and the remaining pole norms can be avoided within the chosen rational fibers. The same paper gives independent auxiliary cyclic return sets preserving preparation and every earlier guard. The unresolved step toward **24 variables** is the existence of a common rational fiber for actual detector tuples; no additional pole-guard theorem is required.
+
+The [early-scalar theorem](papers/pole_parameters/square_complement_baseline_20261116_v43.tex) preserves the general source with the same 25-coordinate census and gives a baseline with a nonzero rational square complement. Its actual guarded detector inputs can simultaneously have square complements at any prescribed finite set of rational primes. This is a finite-local realization theorem; global rational square complements and a common rational pole fiber remain open. The modified family has no newly certified effective exponent or coefficient bound.
+
+The [doubled-source norm map](papers/pole_parameters/doubled_source_congruent_twists_20261116_v43.tex) constructs rational congruent-number points directly from native doubled elliptic points, with explicit abscissa square class. Matching that class to the required detector class remains unresolved. The [current common-fiber and reference guide](docs/common_fibers_and_reference_charts_20261116_v43.md) gives the formulas, complete block counts, exact checks, and remaining proof targets.
 
 ## Rings of integers of number fields
 
@@ -89,6 +95,7 @@ The [pole-compression guide](negative_results/docs/pole_compression_obstructions
 Use **Python 3.12** for the byte-pinned legacy suite and **SymPy 1.14.0** for symbolic checks. From the repository root:
 
     python -m pip install sympy==1.14.0
+    python -B scripts/verify_v43.py
     python -B scripts/verify_v42.py
     python -B scripts/verify_v41.py
     python -B scripts/verify_v40.py
@@ -101,7 +108,7 @@ Use **Python 3.12** for the byte-pinned legacy suite and **SymPy 1.14.0** for sy
     python -B scripts/verify_release_v27.py
     python -B scripts/verify.py --full
 
-The current verifiers reconstruct specifications and certificates in temporary files. They cover native fixed-fiber guards, rational-section maps, K3 branch and resolution identities, independently checked mixed reference signs, local pole cases, Tunnell coefficients, terminal nonreduced examples, reference-chart identities and exceptional cases, Pell-label examples, paired-ratio implications, invertible row transformations and complete quartic expansions. The retained verifiers authenticate the sources and supplied 198-variable archive. The full legacy verifier has **126 stages**. Optional PARI rank checks remain separately requested by --with-pari; they are not implied by --full. The new local and automatic-conic certificates do not use PARI, analytic ranks, or BSD.
+The current verifiers reconstruct specifications and certificates in temporary files. They cover the revised scalar identities and source census, exact quadratic reference and height rescaling with its nonzero guard, the norm map, normalization and local cancellation counterexamples, fixed-class branch and quotient identities, native fixed-fiber guards, rational-section maps, K3 branch and resolution identities, independently checked mixed reference signs, local pole cases, Tunnell coefficients, terminal nonreduced examples, reference-chart identities and exceptional cases, Pell-label examples, paired-ratio implications, invertible row transformations and complete quartic expansions. The retained verifiers authenticate the sources and supplied 198-variable archive. The full legacy verifier has **126 stages**. Optional PARI rank checks remain separately requested by --with-pari; they are not implied by --full. The new local and automatic-conic certificates do not use PARI, analytic ranks, or BSD.
 
 The complete TeX manuscripts are the mathematical deliverables. They are compiled and visually inspected before publication. scripts/update_manifest.py records the distributed file hashes. Computational reconstruction certifies the finite identities and coefficients it checks; it does not certify external arithmetic premises or constitute independent non-author mathematical review.
 
