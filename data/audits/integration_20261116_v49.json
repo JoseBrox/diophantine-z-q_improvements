@@ -1,0 +1,134 @@
+{
+  "schema": "diophantine-integration-audit/v49",
+  "date": "2026-11-16",
+  "status": "PASS",
+  "base_main_sha": "75aed2ecbaa5c51472246dcaf595162056adfb35",
+  "current_construction_records": "data/results_20261116_v49.json",
+  "new_defining_variable_reduction": true,
+  "new_coefficient_improvement": true,
+  "local_verification": {
+    "v49": {
+      "schema": "diophantine-exact-verification/v49",
+      "status": "PASS",
+      "python": "3.12.14",
+      "sympy": "1.14.0",
+      "checks": [
+        {
+          "name": "pair-check.py",
+          "status": "PASS",
+          "files": [
+            {
+              "path": "computation/quartic/abc71_v49/pair-certificate.json",
+              "sha256": "fb1911e1687205270c803dfc2f6335e76c8b93411d65f7f09e6c5f2b17b2e57c"
+            }
+          ]
+        },
+        {
+          "name": "independent-pair-check.py",
+          "status": "PASS",
+          "files": [
+            {
+              "path": "computation/quartic/abc71_v49/independent-pair-verification.json",
+              "sha256": "46df175a4688949af06cb2e45212d8589be200126b32ba1a1b6aedb72768aa26"
+            }
+          ]
+        },
+        {
+          "name": "complete-abc71",
+          "status": "PASS",
+          "files": [
+            {
+              "path": "computation/quartic/abc71_v49/quadratic-family.json",
+              "sha256": "7263b24ceb702d51a19989bcdba5d8ecce924aa7bf1ca59ea212eb16de9da535"
+            },
+            {
+              "path": "computation/quartic/abc71_v49/polynomial-family.json",
+              "sha256": "bf26931056b95d6a34eae7e21cf9b879ced7e105ee2130c2b3e8e0386d1e8527"
+            },
+            {
+              "path": "computation/quartic/abc71_v49/construction-report.json",
+              "sha256": "bd5ee668d87604fc9c2fb857b67ecd9a94a8588083d2155e8a7461e9690f6385"
+            },
+            {
+              "path": "computation/quartic/abc71_v49/basis-transformation.json",
+              "sha256": "1394c5a07e4372e577a20e8a9c6ff4711b8576aa284c006d79b85d63a6a126e2"
+            },
+            {
+              "path": "computation/quartic/abc71_v49/independent-verification.json",
+              "sha256": "6c66afafaafb9533b05ee47bdd779f2979f24d919fa6280213eae4a1a8bdda69"
+            }
+          ]
+        }
+      ],
+      "total_variable_counts": {
+        "general": 25,
+        "explicit_general": 27,
+        "weak_abc": 13,
+        "quartic": 195,
+        "explicit_quartic": 257,
+        "abc_quartic": 71
+      },
+      "new_variable_reduction": true,
+      "abc_quartic": {
+        "variables": 71,
+        "degree": 4,
+        "quadratic_rows": 59,
+        "monomials": 1187,
+        "parameter_separated_terms": 1190,
+        "content": 1,
+        "exact_coefficient_height_for_fixed_odd_B_at_least_81": "B^2+1",
+        "largest_fixed_coefficient": 3554,
+        "input_comparison": "beta=X",
+        "reference_translator": "R0",
+        "retained_rational_trace_coordinates": 0,
+        "scaled_physical_trace": "Tr(a)=X^2*Tr(x(U-V))",
+        "additional_nonzero_guard": false
+      },
+      "construction_records": "data/results_20261116_v49.json",
+      "negative_results_catalog": "negative_results/data/results.json",
+      "scope": "Complete literal quadratic source, automatic reference units, physical product recovery, universal variable-difference identities and exhaustive finite pair fibers including two-torsion differences, invertible row transformations, independent full quartic expansion and coefficient profiles. The zero-input finite fixture is only an algebraic consistency check, not a sufficient defining parameter. The manuscript proves soundness and completeness under ordinary rational abc and its retained arithmetic premises. Uniform actual prescribed-trace realization for 21/9 remains unproved.",
+      "external_arithmetic_foundation_audited": false,
+      "non_author_review": false
+    }
+  },
+  "retained_parent_remote_verification": {
+    "commit": "75aed2ecbaa5c51472246dcaf595162056adfb35",
+    "run_id": 43884496524,
+    "conclusion": "success"
+  },
+  "manuscript_builds": [
+    {
+      "paper": "papers/quartic_existence/quartic_abc71_20261116_v49.tex",
+      "pdflatex_passes": 2,
+      "pages": 10,
+      "warnings": [],
+      "source_sha256": "f828c24cfe4d4dc12854ec1faf62ac0bf71800dd02bebcb8f75c121fcddf4bd2"
+    }
+  ],
+  "visual_review": "Rendered pages2,3,6,9 inspected: complete reference and pair charts, tangent inverse, physical product recovery, scaled trace height, zero-input witness and coefficient specification. No clipping or layout defects observed.",
+  "independent_mathematical_reviews": [
+    "Complete variable-difference chart by line intersection multiplicities, including c=0 two-torsion differences and tangent/flex inverse",
+    "Three-coordinate reference unit equations and exact physical product graph with no added inverse or guard",
+    "Inverse-error local extraction for zero ordinates and every mixed torsion branch",
+    "Integer labels relative to R0, selected Gaussian orders, and nonzero-integer completeness with error/product orders5 and6",
+    "Scaled physical trace and h(Tr x(A))<=h(Tr(a))+2h(X), preserving strict absorption602/679",
+    "Zero-weight exclusion at nonzero input and separate literal zero-input completeness with fixed rational gap",
+    "Full71-coordinate/59-row census, independent literal source reconstruction, all row-basis inverses and complete coefficient expansion"
+  ],
+  "coefficient_record": {
+    "variables": 71,
+    "degree": 4,
+    "quadratic_rows": 59,
+    "monomials": 1187,
+    "parameter_separated_terms": 1190,
+    "integer_content": 1,
+    "height": "B^2+1 for every fixed odd B>=81",
+    "effective_sufficient_defining_B": false
+  },
+  "contributor_and_citation_section_preserved": true,
+  "contributor_and_citation_section_sha256": "bec5e749954eb50b1206e43bc7b27462419ac135762f820a201e528b222b3285",
+  "readme_math_rendering": "Retained GitHub inline dollar delimiters and fenced math blocks; no legacy TeX delimiters.",
+  "external_arithmetic_foundation_audited": false,
+  "non_author_review": false,
+  "scope": "New quartic source and coefficient record under ordinary rational abc and the explicitly retained arithmetic premises. Exact computations supplement the mathematical proofs. Uniform actual prescribed-trace realization for21/9 remains unproved. Remote CI for this final commit is reported separately after publication."
+}
