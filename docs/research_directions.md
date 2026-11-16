@@ -105,6 +105,8 @@ $$ (m_j\operatorname{Tr}(\mathcal W_j^{-1}))^2-10657Y_j^2=4w_j/17,$$
 
 with m_j from fixed finite admissible levels, the actual coupled detector data, and all guards. The free first coordinate of a conic point must not be substituted for the prescribed trace.
 
+The [detector-field norm scalar](../papers/pole_parameters/detector_field_norm_scalar_20261116_v52.tex) aligns this norm field with $K=\mathbb Q(\sqrt2)$ itself. Its integer elliptic label has degree four, and its scalar contact polynomial has degree sixteen. The scalar contact-height theorem is applied to the fixed rational rescaling $q=\beta/n$, while comparison tests use the integral label $\beta$. The full soundness, ordered completeness and whole-character guard transfer retain 25 variables under the existing arithmetic premises. Both prepared physical weights, and those of the unchanged conditional sources, are norms from $K$ without extra prime-pattern congruences. This supplies bare conics with class $d=2$; their actual first coordinates still need to be matched. No numerical determinant degree bound is transferred from a different scalar family.
+
 For the unchanged general scalar, the [signed finite-class theorem](../negative_results/papers/pole_parameters/finite_nonsquare_class_obstruction_20261116_v47.tex) excludes uniform realization using any finite collection consisting entirely of nontrivial square classes. Its three quartic contact fields and Chebotarev argument apply to every guarded rational auxiliary tuple, not only the prime-prepared family. Including the rational-square class or using the new norm-compatible scalar avoids this specific obstruction.
 
 ### Detector-dependent bounded levels
@@ -142,7 +144,7 @@ The [fixed-trace obstruction](../negative_results/papers/pole_parameters/fixed_t
 
 The arithmetic target must therefore retain varying first coordinates, or use a separately justified modified scalar construction. The norm-compatible scalar remains available. A solution must match the actual traces in the displayed equations with all guards; a bare conic point or a free norm-one parametrization does not do so.
 
-No actual uniform realization is proved. The variable counts remain **25 and 13**, with **21/9** conditional on the displayed arithmetic assertion. The [proof and verification guide](results_20261116_v51.md) records the exact scope.
+No actual uniform realization is proved. The variable counts remain **25 and 13**, with **21/9** conditional on the displayed arithmetic assertion. The [proof and verification guide](results_20261116_v52.md) records the exact scope.
 
 ### Integral labels from one finite Pell choice
 
