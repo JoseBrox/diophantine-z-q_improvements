@@ -1,0 +1,256 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,booktabs,microtype}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\title{Finite square-class conditions for native detector inputs}
+\author{}\date{16 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+We give a finite-square-class version of the rational-complement
+criterion for the general and conditional elliptic detector sources.
+Finitely many complement levels and square classes supported on the
+original exceptional primes require no additional retained coordinates.
+All complement norms are automatically nonzero at prepared actual
+point tuples. A corresponding rational realization theorem would yield
+twenty-one or nine total variables; that realization remains an explicit
+unproved premise. An infinite family of prepared coefficient inputs
+demonstrates, for exceptional sets allowing the class $409$, that the
+square-class condition is strictly weaker than rational squareness,
+without asserting realization by native point tuples.
+\end{abstract}
+
+\section{The fixed exceptional set}
+Fix the general source or either conditional source covered
+by~\cite{Complements}. Retain its arithmetic premises, a coefficient
+member in its sufficient soundness range, and its original fixed set
+$S$ of exceptional rational primes. In particular $17\in S$.
+Every prime at which the source requires its negative-odd-valuation
+implication remains outside $S$. The set is not enlarged during the
+construction; the fixed consumed prime of the general source is not
+made exceptional.
+
+Let $\mathcal M\subset\Z_{>0}$ and $\mathcal D\subset\Q_{>0}$ be
+nonempty finite sets, with
+\begin{equation}\label{eq:classes}
+ v_p(d)\in2\Z\qquad(d\in\mathcal D,\ p\notin S).
+\end{equation}
+We may replace each $d$ by the positive squarefree integer representing
+its rational square class. Thus $\mathcal D$ may be taken to consist of
+distinct products of primes in $S$. Put
+\[
+ a_m=17m^2,\qquad C_m(b)=a_m(a_m-b)\quad(m\in\mathcal M).
+\]
+Both finite sets are fixed coefficient data, not quantified variables.
+
+\begin{lemma}\label{lem:local}
+If $dC_m(b)$ is a rational square for some $m\in\mathcal M$ and
+$d\in\mathcal D$, then $b$ has no negative odd valuation at any
+prime outside $S$.
+\end{lemma}
+\begin{proof}
+At such a prime, $v_p(a_m)=2v_p(m)$ is nonnegative and even. If
+$v_p(b)<0$ were odd, it would be strictly smaller than $v_p(a_m)$.
+Consequently
+\[
+ v_p\bigl(d a_m(a_m-b)\bigr)
+       =v_p(d)+v_p(a_m)+v_p(b)
+\]
+would be odd, contradicting squareness. If $C_m(b)=0$, then $b=a_m$
+has no negative valuation and satisfies the conclusion directly.
+\end{proof}
+
+\section{Guards at every point-algebra character}
+At an actual prepared point-stage tuple, the finite point algebra
+splits over $K=\Q(\sqrt2)$. Each detector input has the form
+\begin{equation}\label{eq:native}
+ b=wT^2,
+\end{equation}
+where $w\in\Q^\times$ is independent of the character and $T$ is a
+unit of the point algebra. At the selected rational character, $T$ is
+a nonzero rational number. Preparation makes $v_{17}(b)$ even, hence
+$v_{17}(w)$ is even. These facts, including all characters rather than
+only the selected one, are proved in~\cite[Sections 1--2]{Complements}.
+
+\begin{lemma}\label{lem:guard}
+At every such tuple, $a_m-b$ is a unit of the whole point algebra
+for every $m\in\mathcal M$.
+\end{lemma}
+\begin{proof}
+If a geometric character $\chi$ annihilated $a_m-b$, then
+\[
+                    a_m/w=\chi(T)^2\in K^{\times2}.
+\]
+A nonzero rational number that is a square in $K$ belongs to
+$\Q^{\times2}$ or $2\Q^{\times2}$: the irrational coefficient of
+$(u+v\sqrt2)^2$ vanishes only when $uv=0$. Both classes have even
+valuation at $17$, whereas
+\[
+             v_{17}(a_m/w)=1+2v_{17}(m)-v_{17}(w)
+\]
+is odd. This is impossible. An element of a finite algebra over a
+field is a unit exactly when it is nonzero at every geometric character.
+\end{proof}
+
+The conclusion holds simultaneously for the entire fixed finite set.
+For a prepared input $0<b<17$, every $a_m\ge17$, so every $C_m(b)$
+is positive as well as nonzero.
+
+\section{The conditional variable reduction}
+The realization condition below concerns the unchanged native detector
+functions, not freely chosen coefficient inputs.
+
+\begin{theorem}\label{thm:reduction}
+Suppose that for every integer input required by the chosen source's
+completeness statement, there is an actual rational point-stage tuple
+with all inherited guards nonzero, prepared inputs $b_0,b_1$, and choices
+$m_i\in\mathcal M$, $d_i\in\mathcal D$ such that
+\begin{equation}\label{eq:realization}
+                         d_iC_{m_i}(b_i)\in\Q^2
+                         \qquad(i=0,1).
+\end{equation}
+Then, under the retained source premises, there is an integer polynomial
+defining $\Z$ over $\Q$ in twenty-one total variables for the general
+source, or nine total variables for either conditional source. The input
+is included. Condition~\eqref{eq:realization} is an additional unproved
+arithmetic premise, not a conclusion of the guard lemmas.
+\end{theorem}
+\begin{proof}
+First fix all four finite choices. Write $b_i=N_i/D_i$ in the native
+point algebra, with each $D_i$ a unit by the inherited guards. Adjoin
+the two finite roots
+\begin{equation}\label{eq:roots}
+ Q_i^2=d_i a_{m_i}D_i(a_{m_i}D_i-N_i),\qquad i=0,1.
+\end{equation}
+For squarefree integer representatives $d_i$, these are monic equations
+over the integral point algebra. At a rational character, $Q_i/D_i$ is
+a square root of $d_iC_{m_i}(b_i)$, and conversely every such square
+root extends that character. Include the norms of
+$a_{m_i}D_i-N_i$ in the scalar guard, along with all inherited point
+and denominator guards.
+
+On this guarded locus the two radicands are units. The finite algebra
+is therefore etale whenever the inherited point algebra is etale, as
+required by the separating-element construction of~\cite{UnitNorm}.
+It has rank $4^{p+1}$ when there are $p$ point pairs. The polynomial
+denominator envelopes, norm conditions and single separating coordinate
+are exactly those of the guarded construction in~\cite{Complements}.
+Lemma~\ref{lem:local} gives the same local implication used by source
+soundness, at every required prime. All other soundness arguments are
+unchanged. Lemma~\ref{lem:guard} makes the added norms automatically
+nonzero at the actual tuple supplied by~\eqref{eq:realization}.
+
+The retained coordinates are the input, $2p$ point coordinates and
+the comparison slope. The encoder adds one, giving $2p+3$: this is
+twenty-one for $p=9$ and nine for $p=3$.
+
+Finally construct one such polynomial for each pair of finite choices
+and take their product, using the same variable names, including the
+same encoder variable. Over $\Q$ the product vanishes exactly when
+one factor vanishes. This finite union does not increase the variable
+count. For a conditional source, the usual input factor includes zero
+and need occur only once after the finite product is formed.
+\end{proof}
+
+The product construction does not require distinct radicands from
+different choices. Coincident radicands can occur, and treating all
+choices as an unlabelled quadratic extension would not justify a
+distinct-character separator. Separate encodings avoid that issue.
+If there are $r=|\mathcal M||\mathcal D|$ choices per block and every
+individual polynomial has degree at most $\Delta$, the product has
+degree at most $r^2\Delta$, with the single input factor accounted for
+separately when applicable. No numerical degree or coefficient bound
+is assigned here.
+
+\begin{corollary}\label{cor:allclasses}
+Take $\mathcal M=\{1\}$ and let $\mathcal D$ contain all positive
+squarefree products of primes in $S$. Then the realization premise
+in Theorem~\ref{thm:reduction} is equivalent to requiring both actual
+complements $17(17-b_i)$ to have even valuation at every prime outside
+$S$. There are $2^{|S|}$ possible positive square classes.
+\end{corollary}
+\begin{proof}
+Each complement is positive. A positive rational number whose valuations
+outside $S$ are all even is a rational square times a unique squarefree
+product $d$ of primes in $S$. Multiplying by that same $d$ makes it a
+rational square. The converse follows immediately from
+\eqref{eq:classes}.
+\end{proof}
+
+\section{Prepared inputs with a nonsquare complement}
+The following family establishes strict enlargement on the coefficient
+locus. It is not asserted to arise from actual native detector tuples.
+
+\begin{proposition}\label{prop:family}
+For $k\in\Z_{\ge0}$ put $t=10+187272k$ and
+\[
+ s(t)=\frac{34(3272t^2-409t-136)}{69(17+409t^2)},\qquad
+ q(t)=\frac{17(17-544t-409t^2)}{69(17+409t^2)},
+ \qquad b(t)=s(t)^2.
+\]
+These give infinitely many distinct prepared positive rational inputs
+with
+\[
+ 0<b(t)<17,\qquad
+ \bigl(v_2(b),v_3(b),v_{17}(b)\bigr)=(4,2,2),
+ \qquad17(17-b(t))=409q(t)^2\ne0.
+\]
+Their reduced denominators are squares, and the inputs are squares in
+$\Q_2$, $\Q_3$ and $\Q_{17}$. Their complements are not rational
+squares. If $409\in S$, their complement classes are permitted in
+Corollary~\ref{cor:allclasses}.
+\end{proposition}
+\begin{proof}
+The displayed functions parametrize the conic
+$17s^2+409q^2=289$ from the point
+$(s,q)=(272/69,17/69)$. Direct substitution proves the equation.
+For $t\ge10$, the numerator of $s(t)$ is positive and
+\[
+ \frac{272}{69}-s(t)
+   =\frac{2(17\cdot272+409\cdot17t)}{69(17+409t^2)}>0.
+\]
+Since $(272/69)^2<17$, the required real inequalities follow.
+The numerator of $q(t)$ is negative for $t\ge10$, so it is nonzero.
+
+At $t=10$ the values are
+\[
+ s=\frac{1220124}{313697},\qquad
+ q=-\frac{87499}{313697},\qquad
+ b=\frac{1488702575376}{98405807809}.
+\]
+In the unreduced numerator and denominator polynomials of $s$, their
+valuation pairs at $2,3,17$ are respectively $(2,0)$, $(3,2)$ and
+$(1,0)$. Now $187272=2^3 3^4 17^2$. Substituting
+$t=10+187272k$ leaves each polynomial congruent to its value at $10$
+modulo a strictly higher power of the respective prime. The valuations
+of $s$ are therefore always $(2,1,1)$, giving the stated values for $b$.
+All other preparation assertions follow from $b=s^2$.
+
+The rational function $s(t)^2$ is nonconstant, so its values on this
+infinite progression are infinite in number. The integer $409$ is prime
+and is not a rational square; since $q(t)\ne0$, no displayed complement
+is a rational square.
+\end{proof}
+
+The missing step for a defining-variable reduction remains actual
+rational realization in Theorem~\ref{thm:reduction}. A family of prepared
+coefficient inputs, even one with these exact class constraints, does
+not supply equality with the native reciprocal traces.
+
+\begin{thebibliography}{9}
+\bibitem{Complements}
+\emph{Unit guards and a finite square-complement reduction for elliptic detectors},
+project source,
+\nolinkurl{papers/pole_parameters/guarded_complement_reduction_20261116_v45.tex}.
+\bibitem{UnitNorm}
+\emph{A single norm determinant for the 25- and 13-variable constructions},
+project source,
+\nolinkurl{papers/finite_algebra/unit_norm_20261114_v28.tex}.
+\end{thebibliography}
+\end{document}

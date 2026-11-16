@@ -1,6 +1,6 @@
 # Research directions
 
-The established counts under the retained arithmetic premises are **25 total variables**, or **195 for a quartic**. The additional height hypotheses give **13 total variables**; ordinary rational abc gives a **76-variable quartic**. Every count includes the input. The priorities are variable count, degree, then coefficient height. The [main results table](../README.md) distinguishes the hypotheses and effective parameters; no global minimum or completed independent audit of all inherited arithmetic premises is asserted.
+The established counts under the retained arithmetic premises are **25 total variables**, or **195 for a quartic**. The additional height hypotheses give **13 total variables**; ordinary rational abc gives a **74-variable quartic**. Every count includes the input. The priorities are variable count, degree, then coefficient height. The [main results table](../README.md) distinguishes the hypotheses and effective parameters; no global minimum or completed independent audit of all inherited arithmetic premises is asserted.
 
 ## The 25-coordinate budget
 
@@ -93,6 +93,10 @@ If actual simultaneous rational complements exist for every integer input, they 
 
 The same theorem constructs infinitely many prepared free inputs at a fixed common pole parameter, including square reduced denominators and all preparation depths. The missing step remains equality with the actual reciprocal traces. Neither a rational parametrization of the free-input quadric nor finite local preparation proves that equality.
 
+The [finite-class complement theorem](../papers/pole_parameters/finite_complement_classes_20261116_v46.tex) gives a weaker sufficient realization condition. Fix finite sets of levels 17m² and positive square classes supported on the source's original exceptional primes. For each actual input it suffices to make one allowed multiple of the corresponding complement a rational square. The complement norms are still units at every point-algebra character. Separate finite-algebra encodings followed by their product give the same 21/9 conditional census without a retained class-selection coordinate, even if branch radicands coincide.
+
+At the single level 17, allowing all exceptional square classes means that both actual complements need only have even valuations outside the original exceptional set. No consumed prime may be moved into that set. This is the most permissive proved complement criterion currently available. Its actual rational realization is still missing. The explicit nonsquare-class coefficient family in the paper does not establish native trace matching.
+
 ### Integral labels from one finite Pell choice
 
 The [integral Lucas-label theorem](../papers/integer_labels/pell_labels_20261115_v40.tex) supplies a different arithmetic compression. Let $a,n$ be integers with
@@ -134,15 +138,19 @@ Two established obstructions delimit direct substitutions:
 
 These statements concern generic recovery and the specified finite correspondences. They do not exclude a smaller arithmetic source whose witnesses satisfy additional dependencies, or one using a different integer-growth relation.
 
-## The 76-variable detector and further quartic reductions
+## The 74-variable detector and further quartic reductions
 
-The [ordinary-abc construction](../papers/quartic_existence/quartic_abc76_20261116_v44.tex) uses **76 variables and 66 quadratic rows**. Its normalized factors place the comparison error to the fourth power and the point reciprocals to the second power in distinct valuation classes modulo four. With \(w_2=w^2\), each factor is encoded by a quadratic row of the form
+The [ordinary-abc construction](../papers/quartic_existence/quartic_abc74_20261116_v46.tex) uses **74 variables and 64 quadratic rows**. Put β=X/2, rescale the paired reciprocal coordinates by powers of β, and use the height scale B+β⁸+T². The complete five-field reference chart is retained. A normalized factor now has the form
 
-$$w_2A=ww_2+C_2^2+wF_H+w_2F_U.$$
+$$1+C^2/w+(\beta^2 f(H)f(U))^2/w^2.$$
 
-The pole input is rescaled by \(\widetilde b=w^2b\). This makes the retained pole rows quadratic without a coordinate for \(w^3\). The zero-contact cases have bounded height and are included in the soundness proof; no new guard is needed. The full reference chart and its treatment of mixed torsion branches remain in the construction. All point, height and square costs are included, and the complete polynomial has 1,250 monomials with the exact height recorded below.
+At a consumed prime, the three terms have distinct valuation classes. The complete ratio equations show that a positive product valuation with v(β)≤0 forces both reference and numerator into the formal group at the identity. This controls all torsion branches and gives the residual β(n−β), with strict height absorption **602/679**. Each factor is converted quadratically using the existing reciprocal squares; no stored w² coordinate is needed. The original trace is recovered exactly.
 
-The deeper comparison precision needed by the 195-variable construction is not supplied by this detector. A transfer there requires a new valuation argument or a different use of the integer-growth relation. Its variable reduction must therefore be justified separately from the input-preserving affine–Laurent elimination used in the 195-variable family.
+The physical pole input is b=w(N(W)/Tr(W))². The retained simultaneous-twist premise supplies rational pole witnesses for the actual prepared b>1 inputs. The source Gaussian congruences already make the order quotients annihilate the half-generator, giving completeness for odd and negative X. Zero weight is excluded automatically for X≠0; X=0 has an explicit degenerate scaled-point witness. Every square, height and nonzero constraint is included in the 74-coordinate total.
+
+The next concrete quartic target is to integrate the three-coordinate reference chart into this weighted-product detector. A local reference saving must persist through the original trace recovery and the physical pole equations. The current proof uses the complete five-field reference chart and does not establish that further saving.
+
+The deeper comparison precision needed by the 195-variable construction is not supplied by this detector. A transfer there requires a new valuation argument or a different use of the integer-growth relation. Its variable reduction must be justified separately from the input-preserving affine–Laurent elimination used in the 195-variable family.
 
 ### Further elimination from the 195- and 257-variable systems
 
@@ -185,17 +193,17 @@ The separate [mixed-reference-sign theorem](../negative_results/papers/elliptic_
 
 The [duplication sign obstruction](../negative_results/papers/elliptic_charts/duplicated_reference_signs_20261116_v44.tex) shows that replacing the local parameter by its doubled-point version does not remove every sign branch. At the valid contact prime 76537, an allowed half-integral reference progression simultaneously enters a formal neighborhood at one embedding and an order-four neighborhood at the other. Duplication sends the latter to a two-torsion branch and reverses the formal-parameter sign. The quartic permits the full source group, so restricting this check to integral multiples of the doubled generator would omit allowed soundness tuples.
 
-The next target is a revised quadratic reference test whose valuation argument handles every torsion branch. Its integration must include detector powers, the original height trace, all auxiliary squares, and every nonzero condition. A smaller quartic requires a net saving after these costs and soundness on every rational solution, including the added chart boundaries.
+The weighted-product test now handles every torsion branch with the complete reference chart. Propagating it through the three-coordinate chart remains a separate task. Its integration must include detector powers, the original height trace, all auxiliary squares, and every nonzero condition. A further quartic saving requires soundness on every rational solution, including any added chart boundary.
 
-The complete ratio equations also imply the paired curve equations whenever the two reference ratios do not vanish together. The fixed translating point is not two-torsion, which supplies that nonvanishing on the entire reference chart. This redundancy is used in the [176-row, 196-variable construction](../papers/quartic/quartic196_redundancy_20261115_v40.tex) and the current 66-row, 76-variable abc construction. The [primitive quadratic bases](../papers/quartic/primitive_quadratic_bases_20261115_v40.tex) lower coefficient heights by exact invertible rational row changes and specified constant coordinate scalings. Deleting redundant rows or changing their basis alone does not lower the number of variables; the present 76-variable count also uses the arithmetic detector and pole rescaling above.
+The complete ratio equations also imply the paired curve equations whenever the two reference ratios do not vanish together. The fixed translating point is not two-torsion, which supplies that nonvanishing on the entire reference chart. This redundancy is used in the [176-row, 196-variable construction](../papers/quartic/quartic196_redundancy_20261115_v40.tex) and the current 64-row, 74-variable abc construction. The [primitive quadratic bases](../papers/quartic/primitive_quadratic_bases_20261115_v40.tex) lower coefficient heights by exact invertible rational row changes and specified constant coordinate scalings. Deleting redundant rows or changing their basis alone does not lower the number of variables; the present 74-variable count also uses the weighted-product detector, input rescaling and pole realization above.
 
-### A height budget for a weaker local reference conclusion
+### Height budgets for further reference compression
 
-The [mixed-power height theorem](../papers/elliptic_heights/mixed_power_height_20261116_v45.tex) gives, for \(a=B+X^{16}+T^2\),
+The [mixed-power height theorem](../papers/elliptic_heights/mixed_power_height_20261116_v45.tex) applies to several possible target choices. For the current β=X/2 target and scale a=B+β⁸+T² it gives
 
-$$h(X)\le\frac{703}{2360}h(a)+O(1),\qquad h(T)\le\frac{703}{295}h(a)+O(1).$$
+$$h(\beta)\le\frac{301}{388}h(a)+O(1),\qquad h(T)\le\frac{301}{97}h(a)+O(1).$$
 
-Under ordinary abc, the eight-contact estimate can therefore absorb a product residual \(\beta(n-\beta)\), with \(\beta=X^2+3\), provided its local divisibility and the original index-height bound are proved. Its strict coefficient is \(1406/2065\). The scale adds one shared quadratic coordinate, so the other blocks must save at least two coordinates to give a net improvement. A reference test must still control cancellation, all torsion branches, and its own quadratic conversion. This height theorem does not supply that missing test.
+The quadratic residual β(n−β) then has strict absorption **602/679** under the ordinary-abc eight-contact estimate. This is sufficient with two input-power coordinates. A modified detector that leaves a higher-degree residual must recalculate this budget and include any extra power coordinates in its count. Height absorption alone never supplies a missing rational completeness theorem or a quadratic conversion.
 
 ## Arithmetic and coefficient obligations
 
@@ -222,10 +230,10 @@ $$
 for the 195-variable family, and
 
 $$
-H(Q_B)=\max\{20828275368498373068800,\;B^2+275933278576697172\}
+H(Q_B)=\max\{20828275368498373068800,\;B^2+275933278576697091\}
 $$
 
-for the 76-variable ordinary-abc family. Exact expansion proves these height formulas for the stated parameter ranges. A sufficient defining parameter in each ineffective family still depends on the explicitly retained arithmetic premises.
+for the [74-variable ordinary-abc family](../papers/quartic_existence/quartic_abc74_20261116_v46.tex). Exact expansion proves these height formulas for the stated parameter ranges. A sufficient defining parameter in each ineffective family still depends on the explicitly retained arithmetic premises.
 
 The [lower-bound results](../negative_results/papers/lower_bounds/lower_bounds_20261109_v15.tex) require degree at least four for a single defining equation and at least five total coordinates for a globally nonnegative quartic or a quadratic system. They supply no lower bound near the current counts.
 
