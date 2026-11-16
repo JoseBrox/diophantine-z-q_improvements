@@ -1,5 +1,5 @@
 {
-  "schema": "diophantine-negative-results/v50",
+  "schema": "diophantine-negative-results/v51",
   "date": "2026-11-16",
   "scope": "Proved obstructions and lower bounds under their explicitly stated hypotheses. No global variable minimum or number-field counterexample is asserted.",
   "origin": "Historical theorem records separated from data/results.json, with additional proved obstruction records. The complete manuscript index is negative_results/README.md.",
@@ -481,6 +481,42 @@
         "actual_valuation": 0
       },
       "global_minimum_claimed": false
+    },
+    {
+      "id": "fixed_native_traces_v51",
+      "proof": "negative_results/papers/pole_parameters/fixed_trace_obstructions_20261116_v51.tex",
+      "certificate": "negative_results/computation/fixed_traces_v51/certificate.json",
+      "conditional_certificate": "negative_results/computation/fixed_traces_v51/chamber_certificate.json",
+      "original_general_source": {
+        "input": 4,
+        "prime": 252877,
+        "prime_square": 63946777129,
+        "rho_valuation": 1,
+        "inert_reciprocal_trace_residues": [
+          0,
+          2
+        ],
+        "all_guarded_slopes_and_tuples": true,
+        "all_odd_L": true,
+        "unit_trace_obstructed": true,
+        "any_finite_fixed_trace_menu_uniformly_obstructed": true
+      },
+      "conditional_source": {
+        "unit_trace_real_roots_on_t_greater_than_1": 1,
+        "two_coupled_unit_traces_on_that_interval": false,
+        "other_real_intervals_excluded": true,
+        "unit_trace_real_roots_on_t_less_than_minus_1": 1,
+        "all_slope_scope": "Actual prepared tuples with source shift B>=19; only simultaneous unit trace is excluded.",
+        "necessary_scale_strict_upper_bound": 147456,
+        "negative_argument_scale_strict_upper_bound": 80,
+        "source_shift_threshold": 19
+      },
+      "scope": "Fixed trace targets only. The varying prescribed-trace norm equations and modified scalar sources remain open.",
+      "global_variable_minimum_established": false,
+      "conditional_scale_certificates": [
+        "negative_results/computation/fixed_traces_v51/positive_scale_certificate.json",
+        "negative_results/computation/fixed_traces_v51/negative_scale_certificate.json"
+      ]
     }
   ]
 }

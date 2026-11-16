@@ -119,7 +119,7 @@ with positive exceptional square classes $d_i$, still gives the conditional **21
 
 The separate [automatic-level finiteness theorem](../negative_results/papers/pole_parameters/automatic_level_finiteness_20261116_v48.tex) rules out uniform use of $a_i=w_iN_i$ for the conditional sources, even after finitely many fixed rational rescalings. The bounded native levels are outside that theorem. The actual $X=\pm1$ benchmark remains a finite example, not uniform completeness.
 
-### Adaptive levels and an explicit norm-one target
+### Adaptive levels with varying prescribed traces
 
 The [adaptive complement theorem](../papers/pole_parameters/adaptive_native_complements_20261116_v50.tex) provides a larger arithmetic search family while leaving the detector outputs exactly unchanged. Write
 
@@ -138,17 +138,11 @@ The exact target is still simultaneous actual rational realization of
 (m_iV_i^*)^2-d_i y_i^2=4w_i^*/17,\qquad i=0,1.
 ```
 
-A concrete stronger target uses the multiplier $m_i=1/(2-V_i^*)$, which is safe and has automatic prepared guards. The identities
+The [fixed-trace obstruction](../negative_results/papers/pole_parameters/fixed_trace_obstructions_20261116_v51.tex) excludes replacing both actual normalized traces by values from any finite fixed rational set for the original general scalar. In particular, the unit-trace specialization fails already at $X=4$, at the inert prime $252877$, independently of all auxiliary indices and the slope. The obstruction persists through the specified iterated native normalizations. For both conditional six-contact sources, a real scale bound excludes simultaneous unit trace at every prepared slope when $B\ge19$.
 
-```math
-\operatorname{Norm}(W_i^*-1)=1
-\quad\Longleftrightarrow\quad V_i^*=1
-\quad\Longrightarrow\quad m_iV_i^*=1
-```
+The arithmetic target must therefore retain varying first coordinates, or use a separately justified modified scalar construction. The norm-compatible scalar remains available. A solution must match the actual traces in the displayed equations with all guards; a bare conic point or a free norm-one parametrization does not do so.
 
-then give the actual norm point $y_i=1$ for $d_i=d_{0,i}$. Constructing these two norm-one incidences on a proper global coupling of the native auxiliary indices is a precise sufficient route. A parametrization of free norm-one elements, real continuity, local congruences, or the fixed bare norm point does not supply the required detector values.
-
-No actual uniform realization is proved. The variable counts remain **25 and 13**, with **21/9** conditional on the displayed arithmetic assertion. The [proof and verification guide](results_20261116_v50.md) records the exact scope.
+No actual uniform realization is proved. The variable counts remain **25 and 13**, with **21/9** conditional on the displayed arithmetic assertion. The [proof and verification guide](results_20261116_v51.md) records the exact scope.
 
 ### Integral labels from one finite Pell choice
 
