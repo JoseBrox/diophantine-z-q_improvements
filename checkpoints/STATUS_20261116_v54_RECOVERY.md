@@ -113,3 +113,57 @@ requires separate integration and must not silently broaden that theorem.
 are impossible. Continue with a proper ramified coupling or a different
 scalar/label construction that preserves both reduction-order divisibility
 and the height argument. No ongoing background work is implied by this file.
+
+## Subsequent checkpoint audits
+
+The conditional rational-product obstruction is stored separately in
+negative_results/checkpoints/v54/conditional_rational_product_obstruction.md.
+It excludes making both actual conditional W-products rational as a uniform
+completeness strategy. It does not exclude nonrational W, and it is not
+asserted for the general source without a separate local audit.
+
+The polynomial-label reduction-order example has an independent exact checker
+in negative_results/checkpoints/v54/check_scalar_index.mjs and a scoped proof
+in scalar_index_identification.md. It does not exclude all choices of M.
+
+The corrected degree-for-precision calculation is saved in
+checkpoints/positive_designs/general_precision_trade_v54.md.
+It uses scalar order2, Lucas precision6, reciprocal-test order3, and the
+squared Lucas parameter. Both relevant exponents are below2 (7/4 and7/6).
+The complete source transfer is still unproved; this is not a new count.
+
+## New positive single-cover criterion
+
+The complete TeX proof is in
+checkpoints/positive_designs/single_cover_criterion_20261116_v55.tex,
+with exact height constants and a reproducible BigInt checker alongside it.
+
+Retain z and set beta=X²+B, T=Tr x(A), H0=beta^e+T^e,
+t=H0^(dm)+z². Use the unchanged fast conditional detector and ONE native R1
+square condition. The mixed-power height lemma proves conditional soundness
+for sufficiently large fixed B. It is not a completeness theorem.
+
+Under ordinary abc one can take kappa=201/200, e4,d10,m2:
+t=(beta^4+T^4)^20+z² and the crucial coefficient is
+88922601/46027474 <2.
+The kappa16/15 and121/100 choices have powers40 and60, respectively,
+and coefficients256/135 and13484361/6781360 <2.
+
+The whole-character new guards are automatic, z=0 is allowed, the finite
+algebra has rank128, and the count is9 CONDITIONAL ON the unresolved actual
+single-cover realization property. There is one retained parameter replacing
+the old slope, not an additional u or height-root coordinate. The order-three
+symmetry and invariant eta are unnecessary for this simpler construction.
+
+Fixed-place preparation is the original fast regime W−1=O(t^-6)=O(w³).
+The remaining prime-pattern issue concerns restricted binary quadratic
+contact forms; even solving that preparation would not prove that the
+actual native radicand is a rational square. No new defining bound is claimed,
+and this abc height argument supplies no unconditional21 transfer.
+
+The mixed-height proof and the simpler source were independently audited.
+All three numerical coefficient rows pass exact checks. The new v55 TeX
+source has NOT been compiled because the workspace is unavailable. Keep it
+on the recovery branch until its manuscript and full repository integration
+can be verified. The older v54 obstruction TeX had already compiled before
+the outage. Main remains the previously verified v53 publication.
