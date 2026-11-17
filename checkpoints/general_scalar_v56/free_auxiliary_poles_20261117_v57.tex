@@ -1,0 +1,280 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,microtype}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\DeclareMathOperator{\Tr}{Tr}
+\title{Unbounded auxiliary poles with fixed elliptic detector roots}
+\author{}\date{17 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+In the complete normalized twenty-five-coordinate source, the heights
+of the formal comparison ratios are not bounded by the fixed root and
+contact data. We construct complete rational source tuples with these
+data fixed and with both rational components of one comparison ratio
+having arbitrarily deep poles at one fixed prime. The construction uses
+the source's retained prime-pattern and intrinsic pole-realization
+premises. It concerns the existing detector equations; an additional
+Pell-cover equation may impose further restrictions.
+\end{abstract}
+
+\section{Source and scope}
+
+Use the preferred scalar-rescaled intrinsic source of
+\cite{Scalar}, with the order-two comparisons of \cite{Precision}.
+The same argument applies to its order-three comparisons.
+Its curve, point roles and comparison function are
+\[
+ K=\Q(\sqrt2),\qquad E:y^2=x^3-(11-6\sqrt2)x,
+\]
+\[
+ A,S,T_1,Z,H,U_A,U_S,U_T,U_Z,
+ \qquad \ell_8(Q)=-\frac{x(Q)}{y(Q)}
+       \left(1-\frac{2(11-6\sqrt2)}{5x(Q)^2}\right).
+\]
+Write the four root points as \(Q_i=[n_i]P\), with
+\(Q_S=S\). They are fixed multiples of the retained non-torsion
+point \(P\). Once these roots and the rational slope are fixed, the
+two physical weights
+\[
+ w_j=\frac{\rho^*R_j}{(1+\rho^*R_j)^2}
+\]
+are fixed rational numbers. The remaining detector inputs are
+\[
+ V_j=\Tr(W_j^{-1}),\qquad b_j=4w_j/V_j^2.
+\]
+The intrinsic pole block is
+\[
+ Y_j^2=b_j(b_j+v_j^2)^2s_j^4
+          -b_j(b_j-v_j^2)^2(1-b_j)^2.
+\]
+Its prepared completeness is used in precisely the scope in
+\cite{Scalar,Intrinsic}. All original point, difference, scalar and
+detector guards are retained.
+
+The source has no equation requiring \(U_i=[h]Q_i\) when
+\(H=[h]P\). This equality is a choice in its completeness proof.
+After one prepared tuple has been constructed, the rational source
+therefore permits its five auxiliary points to vary independently.
+
+\begin{lemma}\label{lem:even}
+Fix a nonzero rational weight \(w\). At every rational prime where
+\(v_p(w)\) is even, the valuation of \(4w/V^2\) is even for
+every nonzero rational \(V\). In particular, the square-denominator
+condition imposes no bound on the depths of poles of the detector
+functions at such a prime.
+\end{lemma}
+\begin{proof}
+Its valuation is \(2v_p(2)+v_p(w)-2v_p(V)\), which is even.
+\end{proof}
+
+\section{A fixed unused prime}
+
+We recall two explicit consequences of the retained simultaneous
+prime-pattern premise. One may append finitely many fixed rational
+contact coefficients before the pattern is chosen, prescribe avoidance
+of any fixed finite set of primes, and make the positive slope
+arbitrarily large. The source also supplies compatible primary and
+opposite reduction-order conditions on the reference index.
+
+\begin{lemma}\label{lem:dummy}
+In the ordered completeness construction, one can select an additional
+split prime \(p_*\), used by neither detector, with the following
+properties:
+\begin{enumerate}
+\item Both physical weights are units at \(p_*\).
+\item The values \(\ell_8(P)\) and \(\ell_8(S)\), the nonzero
+root index \(n_S\), and all fixed good-reduction data are units at
+both places above \(p_*\).
+\item Every selected rational prime is coprime to all the prescribed
+primary and opposite reduction orders. The prime \(p_*\) also avoids
+the modulus for the previously prepared finite and real neighborhoods.
+\item The initial reference index \(h_0\) can satisfy all the usual
+completeness conditions and \(v_{p_*}(h_0)=1\).
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+Fix the integer input, scalar, roots, scales and preparation
+neighborhoods in the original order. Choose a positive rational
+coefficient \(c_*\) distinct from every actual contact and pole
+coefficient, such that \(R_j(c_*)\) and
+\(1+\rho^*R_j(c_*)\) are nonzero for \(j=0,1\).
+There are only finitely many forbidden values, and sufficiently large
+positive values have these properties. Enlarge the fixed avoidance
+list by the supports of these rational values, of \(\rho^*\), of
+\(n_S\), and of the nonzero fixed point-function values in item two.
+All these data precede prime selection.
+
+Append \(c_*\) to the prime pattern. In rational-contact notation,
+the additional prime is \(p_*=u-c_*v\), where \(\lambda=u/v\),
+with the prescribed fixed denominator clearing understood. The chosen
+prime avoids that denominator. Thus \(\lambda\equiv c_*\pmod{p_*}\),
+which proves item one. The avoidance conditions prove item two.
+
+For completeness, the elementary separation used by the source applies
+at both conjugate places. Take the slope sufficiently large that every
+selected prime lies in \((3u/4,u)\), with \(u\ge25\).
+The full elliptic reduction order at either place above any selected
+prime is even and less than
+\(u+1+2\sqrt u<3u/2\). A selected odd prime dividing such an even
+order would force that order to be at least \(2p>3u/2\).
+Every selected prime is therefore coprime to every such group order,
+and hence to every prescribed annihilating modulus. This proves
+item three, including the fixed-modulus avoidance imposed before
+prime selection.
+
+The retained conjugate-order theorem supplies compatible conditions
+putting the reference point in the primary formal group and congruent
+to \(P\) at the opposite place for every selected prime.
+The usual extra divisibility by all selected primes can be strengthened
+at the unused prime to
+\(h_0\equiv p_*\pmod{p_*^2}\). The preceding coprimality makes
+this compatible with all earlier congruences. The fixed initial
+modulus kills the component group of the compact cyclic real closure.
+Every compatible progression refinement has the same real closure in
+that component, so a positive \(h_0\) in the required real neighborhood
+exists. It gives item four.
+\end{proof}
+
+\section{The unbounded-pole family}
+
+\begin{theorem}\label{thm:unbounded}
+Retain the arithmetic premises of \cite{Scalar}, including its group,
+prime-pattern and intrinsic pole-realization inputs. For every integer
+input and every fixed odd scalar parameter \(L\ge3\), there are
+fixed roots, a fixed common slope, fixed contact data and fixed auxiliary
+points \(U_i\), together with infinitely many complete rational source
+tuples obtained by varying only \(H\) among the point coordinates.
+There is a fixed split prime \(p_*\) such that, for arbitrarily large
+integers \(r\), the two rational components of
+\[
+              L_S=\ell_8(U_S)/\ell_8(H)
+\]
+both have valuation \(1-r\) at \(p_*\). In particular their
+rational logarithmic heights are at least \((r-1)\log p_*\),
+although the input, root indices, root heights, contact arguments,
+contact radicals and physical weights remain fixed.
+\end{theorem}
+\begin{proof}
+Choose the complete prepared tuple supplied by Lemma~\ref{lem:dummy},
+initially using \(H_0=[h_0]P\) and \(U_i=[n_i h_0]P\).
+Freeze every root, the slope, and every \(U_i\) at these values.
+Only the reference point \(H\) will change.
+
+Let \(\mathcal T\) consist of all primes at which one of the two
+fixed physical weights has odd valuation, together with two and the
+source's finite preparation primes. The unused prime is not in
+\(\mathcal T\). At the initial tuple the two \(b_j\) have positive
+valuation at every odd-weight prime and satisfy the prepared local
+conditions at two. Each of these is an open condition on \(H\),
+because all the rational functions involved are defined and nonzero
+at the initial point. Choose neighborhoods of \(H_0\) at the finitely
+many places over \(\mathcal T\) preserving these conditions.
+At the real places choose a neighborhood preserving the selected
+inequalities \(0<b_j<1\), all scalar denominator inequalities,
+and all point-algebra guard nonvanishing.
+
+These finite neighborhoods are met by a fixed congruence
+\(h\equiv h_0\pmod M\). We may take \(M\) prime to \(p_*\).
+Indeed, the old preparation congruences have moduli supported on the
+initial fixed modulus and powers of the old preparation primes.
+The additional neighborhoods at actual selected contacts use their
+reduction orders and powers of those contacts. The fixed avoidance
+and Lemma~\ref{lem:dummy}(3) make every such factor prime to
+\(p_*\). Include in \(M\) the order of the component group of
+the real cyclic closure.
+
+Write \(d_*\) and \(d_*'\) for the retained primary and opposite
+annihilating moduli at the unused prime. Preserve the compatible
+conditions on \(h\) supplied by the initial tuple, in particular
+\([h]P\equiv O\) at the primary place and
+\([h]P\equiv P\) at the opposite place. They are compatible with
+\(h\equiv h_0\pmod M\). Their moduli are prime to \(p_*\).
+For every \(r\ge2\), CRT therefore permits the further condition
+\[
+                         h\equiv p_*^r\pmod{p_*^{r+1}}.
+\]
+The same compact-group progression argument supplies a positive
+integer \(h_r\) satisfying these conditions and the chosen real
+neighborhood. Put \(H_r=[h_r]P\).
+
+Let \(\mathfrak p_*\) be the primary place and let \(d\) be the
+exact order of the reduction of \(P\) there. It is prime to \(p_*\).
+Set \(e=v_{\mathfrak p_*}(z([d]P))\ge1\), where \(z=-x/y\).
+The formal-group logarithm is an isometry at this good prime, and
+\(\ell_8/z\) is a unit throughout its formal group. Since
+\(v_{p_*}(n_S)=0\), the frozen point and varying reference give
+\[
+ v_{\mathfrak p_*}(\ell_8(U_S))=e+1,
+ \qquad v_{\mathfrak p_*}(\ell_8(H_r))=e+r.
+\]
+Consequently \(v_{\mathfrak p_*}(L_S)=1-r\).
+At the opposite place, \(H_r\) reduces to \(P\) and the frozen
+\(U_S\) reduces to \(S\); both \(\ell_8\)-values are units by
+the fixed avoidance, so \(L_S\) is a unit there.
+If \(L_S=a_r+b_r\sqrt2\), half the sum and the scaled
+half-difference of its two local values show
+\[
+                   v_{p_*}(a_r)=v_{p_*}(b_r)=1-r,
+\]
+because \(2\sqrt2\) is a unit and the two input valuations differ.
+The height lower bounds follow from their reduced denominators.
+
+It remains to verify that these tuples have complete pole witnesses.
+At \(\mathcal T\) the neighborhoods preserve every odd-weight
+valuation and the required two-adic class and depth. At every other
+prime both weight valuations are even, so Lemma~\ref{lem:even}
+preserves the square reduced denominators regardless of the new
+auxiliary poles. The real inequalities remain in the prepared range.
+Thus the intrinsic theorem supplies rational witness pairs for each
+of the two actual values of \(b_j\).
+
+At every real point-algebra character the roots and detector data
+remain in the common guarded neighborhood. In particular the
+detector factors are positive, their reciprocal traces are nonzero,
+and the character values of \(b_j\) are nonzero. The intrinsic
+witness density avoids all finitely many radicand and denominator
+norms, exactly as in \cite{Scalar}. The existing finite-algebra
+encoder supplies its rational coordinate. These are complete source
+solutions, not merely local tuples.
+\end{proof}
+
+\begin{corollary}
+No finite upper bound for the heights of the two rational components
+of \(L_S\), depending only on the fixed input, root indices, root
+heights, common slope and contact data, follows from the existing
+source equations and guards. In particular, a proposed elimination
+of a Pell point using a monic equation with coefficients depending on
+\(L_S\) cannot justify such a coefficient-height bound by those
+equations alone.
+\end{corollary}
+
+The theorem does not exclude an estimate on a smaller locus defined
+by an additional monic Pell-cover equation. It does not apply to a
+native-square source unless that additional rational-square condition
+is also proved along the family. It gives no lower bound for the
+number of variables in a definition of the integers.
+
+\begin{thebibliography}{9}\raggedright
+\bibitem{Scalar}\emph{Intrinsic congruent-curve poles from a fixed scalar
+rescaling},
+\nolinkurl{burungale_scalar_transfer_20261117_v56.tex}.
+\bibitem{Precision}\emph{Scalar precision two with an eighth-order
+elliptic comparison},
+\nolinkurl{precision_transfer_20261117_v56.tex}.
+\bibitem{Intrinsic}\emph{A two-coordinate pole test of coefficient height
+four},
+\nolinkurl{../single_cover_realization_v56/intrinsic_burungale_pole.tex}.
+\bibitem{General}\emph{A defining polynomial in twenty-five variables},
+\nolinkurl{papers/few_variables25/few_variables25_merged_20261110_v19.tex},
+Section 6, especially the prime-cluster and progression-refinement
+arguments.
+\bibitem{Sun}Z.-W.~Sun, \emph{86 unknowns for Hilbert's tenth problem
+over the rationals}, arXiv:2610.20691v2, Theorem 4.1.
+\end{thebibliography}
+\end{document}

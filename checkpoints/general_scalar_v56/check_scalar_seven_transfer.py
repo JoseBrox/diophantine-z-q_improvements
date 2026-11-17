@@ -3,7 +3,7 @@
 from fractions import Fraction
 from hashlib import sha256
 from pathlib import Path
-from math import isqrt
+from math import gcd, isqrt
 import json
 
 ell = 76249
@@ -15,6 +15,8 @@ A = 1296233
 Z0 = 12556178240
 M = 189711668070091549022366223774716198062888712249407876629023195358725017888
 assert A == 17*ell
+assert eta == 2*3*17
+assert 216 % 3 == 450459 % 3 == 0
 
 def original_r(x, modulus=None):
     b = 216*x**4+450459
@@ -83,6 +85,7 @@ for name, function, expected_two in [
         numerator_constant = eta**2*ell**L*(1 if name == 'original' else M)
         for x in range(-24,25):
             r = function(x)
+            assert gcd(7*numerator_constant*r, 1+7*C*r) == 1
             old = Fraction(numerator_constant*r,(1+C*r)**2)
             new = Fraction(7*numerator_constant*r,(1+7*C*r)**2)
             assert new/old == 7*Fraction(1+C*r,1+7*C*r)**2
@@ -107,6 +110,13 @@ result = {
     'finite_certificates':reports,
     'integer_input_fixtures':sample_reports,
     'norm_multiplier':'N_Q(sqrt(2))/Q(3+sqrt(2)) = 7',
+    'denominator_coprimality': {
+        'contact_part':'gcd(r,1+7*C_L*r)=1',
+        'original_coefficient_primes':[2,3,7,17,ell],
+        'aligned_coefficient_support':'primes of 102*M divide C_L; 7 and ell are handled separately',
+        'ell_verification':'exhaustive finite-residue certificate above',
+        'integer_fixture_full_gcd':1,
+    },
     'coordinate_count':25,
     'new_smaller_variable_bound':False,
     'scope':'Residue certificate is exhaustive; integer fixtures supplement the universal proof.'

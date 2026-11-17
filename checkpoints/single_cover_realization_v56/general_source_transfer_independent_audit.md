@@ -20,8 +20,16 @@ An independent certificate uses the polynomial gcd with `X^ell-X`
 instead of the author's enumeration. Its checker is
 `check_scalar_transfer_independent.py`.
 
-For integer inputs the new denominator is square and seven-adically a
-unit; the numerator is divisible by seven. At two the squareclass is
+For integer inputs one must check cancellation before asserting a square
+reduced denominator. Write `D=1+7 C_L r`. Then `gcd(r,D)=1`. For the
+aligned scalar, every prime of `A_L` other than `ell` divides `C_L`, so
+is a unit in `D`; `ell` is covered by the residue certificate. For the
+original scalar the coefficient primes are `2,3,17,ell`: `C_L` is even,
+`r=0 mod3`, and `17` divides `C_L`, so the first three are units in `D`,
+while `ell` is again certified. Also `D=1 mod7`. Thus the numerator and
+denominator are coprime, and reduction leaves a square denominator.
+The denominator is seven-adically a unit and the numerator is divisible
+by seven. At two the squareclass is
 multiplied by seven and the old valuation (four or twelve) is preserved.
 The fixed coefficient change alters height constants by an absolute
 amount, with no new dependence on the selectable exponent `L`.

@@ -1,0 +1,229 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,microtype}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\setlength{\emergencystretch}{2em}
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{example}[proposition]{Example}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\DeclareMathOperator{\Tr}{Tr}\DeclareMathOperator{\Nm}{N}
+\title{Rational points in a rescaled native square incidence}
+\author{}\date{17 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+A tangent construction gives an explicit rational point on the native
+square incidence when the physical weight can be rescaled. Its positive
+branch produces an exact prescribed-trace example on the elliptic
+multiplication family at inputs $\pm2$. The rescaling is a fixed rational
+constant for this example. Uniform realization with finitely many fixed
+rescalings remains an additional arithmetic requirement. We also give
+the exact genus-three equation obtained when the positive prefactor is
+a rational square.
+\end{abstract}
+
+\section{A positive tangent section}
+
+Let $W=a+b\sqrt2\in\Q(\sqrt2)$, and put
+\[
+ N=a^2-2b^2,\qquad H=N-a,\qquad J=N-2a+1.
+\]
+For a rational physical weight $w$ write $g=1+w$ and
+\[
+ \Delta=g^2N-2ga+1,\qquad
+ {\cal S}=\frac{w(gN-a)}{\Delta}.
+\]
+On the guarded domain the native radical of \cite{Single} satisfies
+\begin{equation}\label{eq:equiv}
+ {\cal R}={\cal S}\left(\frac{\Delta}{wgN}\right)^2.
+\end{equation}
+
+\begin{proposition}\label{prop:tangent}
+Suppose that both real values of $W$ exceed one and
+$8b^2>3H^2$. Then
+\[
+ w_* =\frac{4HJ}{8b^2-3H^2}>0,\qquad
+ k_* =\frac{2H^2}{8b^2-H^2}\in(0,1)
+\]
+satisfy ${\cal S}(w_*,W)=k_*^2$. Consequently
+\[
+ \frac{k_*\Delta(w_*)}{w_*(1+w_*)N}
+\]
+is a nonzero rational square root of the full native radical.
+\end{proposition}
+\begin{proof}
+The equation ${\cal S}=k^2$ is quadratic in $w$:
+\[
+ N(1-k^2)w^2+H(1-2k^2)w-Jk^2=0.
+\]
+Using $H^2-NJ=2b^2$, its discriminant is
+\[
+ y^2=H^2+8b^2 k^2(k^2-1).
+\]
+The parabola
+\[
+ y=H+\frac{8b^2}{H}(k^2-k)
+\]
+passes through $(0,H)$ and is tangent at $(1,H)$. Substitution gives
+\[
+ y^2-H^2-8b^2k^2(k^2-1)
+ =\frac{8b^2}{H^2}k(k-1)^2\bigl((8b^2-H^2)k-2H^2\bigr).
+\]
+The fourth intersection yields $k_*$, and the positive quadratic
+branch yields $w_*$. Direct substitution verifies ${\cal S}=k_*^2$.
+
+Write the two values of $W$ as $W_+,W_->1$. Then
+$J=(W_+-1)(W_--1)>0$ and
+$H=J+(W_++W_-)/2-1>0$. Moreover
+$8b^2=(W_+-W_-)^2<4H^2$. Together with the assumed lower bound,
+this gives $0<k_*<1$. Positivity of $w_*$ follows directly.
+Each $gW_\pm-1$ is positive, so $\Delta>0$. Equation
+\eqref{eq:equiv} gives the final assertion.
+\end{proof}
+
+\section{An actual multiplication-family example}
+
+Use the curve and source functions of \cite{Single}:
+\[
+ E:y^2=x^3-(3-\sqrt2)^2x,\qquad
+ P=\left(\frac{57-28\sqrt2}{8},\frac{-660+417\sqrt2}{32}\right).
+\]
+Put $f=1/x$, $\zeta=-x/y$, and retain the six tests
+\[
+ \begin{gathered}
+ r=\zeta(U)/\zeta(H_1),\qquad
+ s=\zeta(U-A)/\zeta(H_1-P),\\
+ C_1=f(H_1),\quad C_2=f(U),\quad
+ C_3=\overline{f(H_1-P)},\quad C_4=\overline{f(U-A)},\\
+ C_5=r-\bar s,\qquad C_6=r+\bar s-2X.
+ \end{gathered}
+\]
+The notation $H_1$ distinguishes the elliptic reference point from
+$H=N-a$ in Proposition~\ref{prop:tangent}.
+
+\begin{example}\label{ex:two}
+Take
+\[
+ X=2,\quad A=2P,\quad H_1=4P,\quad U=8P=[X]H_1,
+\]
+and use the ordinary-$abc$ height parameters
+\[
+ B=3,\quad e=8,\quad d=6,\quad z=1,\qquad
+ t=\left(7^8+(\Tr x(2P))^8\right)^6+1.
+\]
+Define the actual source values
+\[
+ F(t)=\frac{t(t+1)(2t+1)(3t+1)(4t+1)(5t+2)}{120},
+ \quad w_0=\frac{F(t)}{4(t-1)^8},\quad
+ W=\prod_{i=1}^6\left(1+\frac{C_i^2}{F(t)}\right).
+\]
+The exact certificate accompanying this manuscript verifies
+$8b^2>3H^2$ for $W=a+b\sqrt2$. Fix the rational constant
+\begin{equation}\label{eq:gamma}
+ \gamma=\frac{w_*}{w_0}
+ =\frac{4HJ}{(8b^2-3H^2)w_0}.
+\end{equation}
+Then the actual radical with physical weight $\gamma w_0$ is a
+nonzero rational square, with the square root in
+Proposition~\ref{prop:tangent}.
+
+Every retained point guard is satisfied. The differences at all
+ordinate-sign characters have nonzero labels $3,5,6,10$, and the
+three original point charts are checked exactly. At every character
+the detector slots exceed one. The fixed positive weight therefore
+makes both native radical factors positive and nonzero. These facts
+include all final character guards.
+
+Replacing $(X,A,U)$ by $(-X,-A,-U)$ changes the signs of $C_5,C_6$
+and preserves every other squared test, the trace, and the argument.
+Thus the same frozen constant also gives an example at $X=-2$.
+\end{example}
+
+The certificate uses exact rational arithmetic and the complete
+source equations. Its reduced $t$ has numerator and denominator
+lengths $478$ and $435$ decimal digits. The corresponding lengths
+for $\gamma$ are $70136$ and $70308$. Equation~\eqref{eq:gamma},
+the recorded rational tests, and the checker give an exact finite
+specification of this constant.
+
+\section{Fixed rescalings and the remaining arithmetic condition}
+
+For a fixed exceptional set $S$, a fixed rational rescaling $\gamma$
+preserves every consumed valuation if $v_p(\gamma)=0$ for every
+$p\notin S$. If this condition is not known, one may instead fix
+\[
+ S^*=S\cup\{p:v_p(\gamma)\ne0\}
+\]
+once and for all. The contact-height bound changes by a fixed additive
+constant, and every local extraction outside $S^*$ is unchanged.
+The coefficient $\gamma$ may not then vary with the input.
+
+More generally, a finite menu $\Gamma\subset\Q_{>0}$ is compatible
+with the same argument after its finite prime supports are included
+in a common fixed exceptional set. Uniform completeness would require
+that every integer input have an actual guarded source tuple for which
+the full native radical is a square for some $\gamma\in\Gamma$.
+The tangent section gives the exact sufficient condition
+\[
+ \Gamma\cap
+ \left\{
+ \frac{4H(W)J(W)}{(8b(W)^2-3H(W)^2)w_0}:
+ \text{actual guarded tuples at }X,\quad8b(W)^2>3H(W)^2
+ \right\}\ne\varnothing
+\]
+for every such input. The example proves this intersection for
+$X=\pm2$ with a one-element menu. No fixed finite menu with the
+required intersections for all integer inputs has been constructed.
+In particular, this example is not a defining polynomial with a
+smaller variable census. The shift $B=3$ is an algebraic example,
+not a certified sufficient defining shift.
+
+\section{A square positive prefactor}
+
+The alternative normalizer
+\[
+ w=\frac{4u}{(1-u)^2},\qquad
+ g=1+w=\left(\frac{1+u}{1-u}\right)^2
+\]
+preserves every consumed odd valuation outside two: if $v_p(u)$ is
+odd then $v_p(w)=|v_p(u)|$. Values introduced by $1-u$ have even
+valuation. The guards $u\ne1,-1$ hold in a prepared neighborhood
+of $u=0$. With the fast conditional detector, its product remains
+unchanged, because it uses $1/F(t)$ rather than $w$.
+
+Write $g=s_0^2$. Clearing a rational square factor in the native
+condition gives the exact equation
+\begin{equation}\label{eq:genus3}
+ Y^2=(s_0^2-1)(Ns_0^2-a)(Ns_0^4-2as_0^2+1).
+\end{equation}
+The discriminant of its degree-eight right side is
+\[
+ 4096\,aN^6(a-N)^4(a^2-N)^6(2a-N-1)^4.
+\]
+For distinct slots $W_\pm>1$, every displayed factor is nonzero;
+thus \eqref{eq:genus3} is a smooth genus-three curve. Its quotient
+under $s_0\mapsto-s_0$ is the original genus-one weight incidence.
+
+At $X=\pm1$, take $A=\pm P$ and $U=\pm H_1$. The comparison
+tests vanish and
+\[
+ W=Z^2,\qquad
+ Z=\left(1+\frac{f(H_1)^2}{F(t)}\right)
+   \left(1+\frac{\overline{f(H_1-P)}^2}{F(t)}\right).
+\]
+Writing $Z=c+d_1\sqrt2$ gives $N=(c^2-2d_1^2)^2$ and
+$a=c^2+2d_1^2$. The final quartic factor in
+\eqref{eq:genus3} splits as
+$(s_0Z-1)(s_0Z+1)(s_0\bar Z-1)(s_0\bar Z+1)$ over
+$\Q(\sqrt2)$. This factorization does not remove the prescribed
+square-abscissa lifting condition. The evident points $s_0=\pm1$
+and the two points at infinity lie on guarded boundary loci.
+No finite rational witness for the prescribed $s_0$ follows from
+the simultaneous square structures alone.
+
+\begin{thebibliography}{9}\raggedright
+\bibitem{Single}\emph{A single-cover criterion from a mixed-power height
+inequality}, repository manuscript,
+\nolinkurl{papers/pole_parameters/single_cover_criterion_20261117_v56.tex}.
+\end{thebibliography}
+\end{document}
