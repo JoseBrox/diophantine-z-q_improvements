@@ -1,0 +1,67 @@
+{
+  "schema": "diophantine-tex-build/v74",
+  "papers": [
+    {
+      "paper": "papers/quartic/quartic193_20261117_v74.tex",
+      "returncode": 0,
+      "compile_result": "Both pdflatex passes produced PDFs; final pass has zero errors, warnings, overfull or underfull boxes.",
+      "warnings": [],
+      "source_sha256": "7dd6f0b37a2e3f8e22511c13e21fdc2faeabf5b3094abcf0c0861ffa2e70d09e",
+      "pages": 15,
+      "passes": 2,
+      "all_rendered_pages_reviewed": true,
+      "render_dpi": 105,
+      "visual_review": "All fifteen rendered pages have been inspected individually. After the corrected mixed-coefficient passage, pages 1--12 are pixel-identical to their inspected renders; newly rendered pages 13--15 were reinspected. The alternative-basis constant, equations, tables, long constants, paths and bibliography fit without clipping or overlap. All references resolve. The final page contains bibliography items 3--6.",
+      "pdf_sha256": "f4715bbf0cc80363ff55faf3dc982df74223687a75deac72926bbc13e5823183",
+      "final_log_sha256": "2b5c39fa4d2943fadd17ce343fd2262f3f99331e821c078d11dbc7a910f4692f",
+      "rendered_page_sha256": {
+        "page-01.png": "0eedf4de7d73a7d34519c9eab91800f2a23c0e79699eb117a359c5a592eb9932",
+        "page-02.png": "7af77d4091c017686c1033a3e13e9608f3a639b485faa52823fb6ecb79b8bc4e",
+        "page-03.png": "b516a5ad4ee63f7e5b22f94557be975595f467463d03f7cca553a22e1d328b32",
+        "page-04.png": "31de7029d60ddcec1dc0ba8065056591c1a1c0335318a15131808ff1883034e3",
+        "page-05.png": "8a63ac0596d32fed6ab1d251e50b5b10554c45013a87ff87ff38e7764a7e3483",
+        "page-06.png": "48a310577cb22e204df4497624d4f8720ef1600b46b1812a325979c9686b0c92",
+        "page-07.png": "cfad73803c1b3227221b94b7139e754174d574e64ff443009f26bfd5b1e33b8f",
+        "page-08.png": "40aa973abf5e9777bed8a561de1de5e0cabbd207adf41a189fb38eab6d0b471b",
+        "page-09.png": "8d58229aa8861f042a98a17d1f6681f8c04f86335d52acbb8f8046d172e9cec7",
+        "page-10.png": "0ac77073c4f8986c24032b6c63b89b1813d2932d205278875f1849a1ee3c3a2b",
+        "page-11.png": "4adf59f3c8e96203668af8db23a1ca9d08f7d76ca00489b0ec1ec1512eb10a2f",
+        "page-12.png": "9b688e14cd6aa1c7ce62bcf3c173e16028d0d9bdb9c181e5d73cae82ac76f03a",
+        "page-13.png": "5e67523cb14ac614242d359a1554104100ccdad49cdfbd21db7c572ffadf7df1",
+        "page-14.png": "c573df3bc04d2968023c13b05e561dd38bcf8e4a4937c4cae5a0e64ddb71ad23",
+        "page-15.png": "fbdda5722949b66092b9bdf95a5490dcdb843e86ce323e3393877cfd230c8601"
+      },
+      "corrected_source_reinspection": {
+        "changed_pages": [
+          13,
+          14,
+          15
+        ],
+        "pixel_identical_previously_reviewed_pages": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ]
+      }
+    }
+  ],
+  "runtime_repair": {
+    "cause": "TeX was installed but default !! database-only searches could not find files, and no usable format was present.",
+    "method": "Workspace-local recursive search paths, TEXMFVAR and TEXMFCONFIG; built pdflatex.fmt with pdftex -ini -etex; local English hyphenation configuration and combined installed Latin Modern/AMS font map.",
+    "system_files_modified": false,
+    "escalation_used": false,
+    "environment_file": "/workspace/scratch/7097ce35f5b7/tex-runtime/env.sh",
+    "format_command": "pdftex -ini -jobname=pdflatex -progname=pdflatex -output-directory=$TEXMFVAR/web2c/pdftex -interaction=nonstopmode -halt-on-error -etex /usr/share/texlive/texmf-dist/tex/latex/tex-ini-files/pdflatex.ini",
+    "compile_command": "pdflatex -interaction=nonstopmode -halt-on-error -output-directory=/workspace/scratch/7097ce35f5b7/tex-runtime/build papers/quartic/quartic193_20261117_v74.tex",
+    "render_command": "pdftoppm -r 105 -png quartic193_20261117_v74.pdf quartic193-pages/page"
+  }
+}

@@ -87,7 +87,10 @@ def main(output):
     link=re.search(r'\[results JSON\]\((data/results_[^)]*\.json)\)',readme)
     assert link
     latest=json.loads((ROOT/link.group(1)).read_text())
-    latest194=next(r for r in latest['current_constructions']if r['id']=='quartic194')
+    # Later releases retain the complete former record under its original ID.
+    # Check that same record even when a smaller family replaces it in the table.
+    latest194=next((r for r in latest['current_constructions']if r['id']=='quartic194'),
+                   latest.get('superseded_constructions',{}).get('quartic194'))
     assert latest194==new
     assert 'docs/results_20261117_v73.md'in readme
     report={'schema':'diophantine-exact-verification/v73','status':'PASS','python':platform.python_version(),
