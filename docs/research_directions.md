@@ -22,7 +22,12 @@ with reference point $(49,336)$. The arithmetic objective is a rational point **
 
 The adaptive class $\delta_c=(q^2-2q-1)^2+4q(q^2-1)V$, $q=2+wc^2$, is also admissible for any fixed guarded rational scalar function $c$ of the existing source coordinates. Its parity proof permits arbitrarily large auxiliary denominators. In particular $c=\lambda$ preserves fixed-place preparation and lets the class vary with the actual common slope. This structured family avoids the height cost of arbitrary square classes. The next arithmetic step is to match such a class with the actual reciprocal trace; choosing a fresh free $c$ would require its own coordinate.
 
+The [small-class theorem](../papers/pole_parameters/small_trace_classes_20261117_v58.tex) adds the classes $V+2$, $V^2-V+2$ and $1+w(2-V)$ without a contact loss or height budget. The first gives the four-term cubic $V^3+(2-w)V^2+4w$. The [actual multiplication-surface obstruction](../negative_results/papers/rational_fibers/actual_multiplication_surface_20261117_v58.tex) rules out a uniform rational square formula on the full fixed-index surface even with a nonconstant rationally coupled slope. Individual rational witnesses and genuinely ramified incidence families remain the arithmetic targets.
+
 ## A single-cover route and finite square-class choices
+
+The [sharp signed height theorem](../papers/elliptic_heights/signed_mixed_power_height_20261117_v58.tex) reduces the ordinary-abc single-cover argument degrees to **48** for fixed classes and **60** for the support-budget-two menu. Positivity of the actual trace permits an odd inner exponent. Its exact optimization and every guard retain a nine-coordinate criterion, conditional on rational realization. A [two-square counterfamily](../negative_results/papers/contact_heights/two_square_height_20261117_v58.tex) prevents substituting two independent squares into the same unrestricted height estimate.
+
 
 The [height-controlled class theorem](../papers/pole_parameters/variable_squareclasses_20261117_v57.tex) broadens the conditional target to the menu $\{1,(X^2+B)^2+\operatorname{Tr}(x(A))^2,1+X^4\}$, with fixed positive exceptional-unit multipliers. The class support may vary with the input and root point. The contact primes lost to it have a proved height budget, so suitable larger powers retain soundness and the nine-coordinate census. The missing step remains simultaneous **rational realization on actual detector tuples**, with the prescribed root index and all source guards. Local filters do not prove it.
 
@@ -77,7 +82,7 @@ For $a=1$, put $W^{-1}=u+v\sqrt2$, $x=1+(1-u)/w$ and $q=v/w$. The square conditi
 
 The local theorem gives rational-square values at every fixed preparation place and at the stated fresh split-contact patterns. New prime divisors of detector numerators and the global rational lifts remain uncontrolled. The [fixed-fiber genus theorem](../negative_results/papers/pole_parameters/fixed_flat_fibers_20261116_v53.tex) gives genera 236 and 332 for the explicit fixed-index fixtures $X=1,2$, $B=3$. Their rational boundary points do not supply finite witnesses. The next global argument must therefore allow auxiliary indices or admissible source functions to vary, or produce individually chosen rational points on the resulting ramified incidence. This fixed-fiber result does not exclude either possibility.
 
-The realization statement is **unproved**. The [current proof guide](results_20261117_v57.md) records the full implication and exact checks.
+The realization statement is **unproved**. The [current proof guide](results_20261117_v58.md) records the full implication and exact checks.
 
 ### A shared conic parameter: the precise route to 24
 

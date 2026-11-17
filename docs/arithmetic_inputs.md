@@ -23,7 +23,7 @@ $$
 149^{19366},\qquad B^2+1.
 $$
 
-The first height formula holds for every $N\ge1$; the last holds for the permitted odd $B\ge81$. Neither algebraic range supplies an effective defining threshold. The fully specified 27-variable coefficient height is below $2^{2^{70}}$. See the [current records](../data/results_20261117_v57.json) for the exact source binding of every figure.
+The first height formula holds for every $N\ge1$; the last holds for the permitted odd $B\ge81$. Neither algebraic range supplies an effective defining threshold. The fully specified 27-variable coefficient height is below $2^{2^{70}}$. See the [current records](../data/results_20261117_v58.json) for the exact source binding of every figure.
 
 ## Retained elliptic and prime-pattern inputs
 
@@ -60,3 +60,7 @@ The [trace-conic criterion](../papers/pole_parameters/trace_conic_criterion_2026
 The [native-square criterion](../papers/pole_parameters/native_square_criterion_20261116_v53.tex) gives a complete 21/9 census if actual guarded detector tuples satisfy its simultaneous rational square conditions. The [single-cover theorem](../papers/pole_parameters/single_cover_criterion_20261117_v56.tex) gives a conditional nine-coordinate criterion with a more restricted contact argument. The [variable-class theorem](../papers/pole_parameters/variable_squareclasses_20261117_v57.tex) permits certain input- and root-dependent classes with controlled height in the conditional source. **None proves uniform rational realization.** Arbitrary rational trace and norm coordinates cannot replace the actual detector functions.
 
 The [prepared covering obstruction](../negative_results/papers/pole_parameters/prepared_sha_obstruction_20261117_v57.tex) gives an everywhere locally soluble one-coordinate specialization with no rational point. Its exact Cassels pairing shows why local congruences or positive elliptic rank alone cannot settle the required abscissa class. The obstruction is to that specified prepared-input family, not to every actual source coupling.
+
+## Signed height and small-class criteria
+
+The [signed mixed-power theorem](../papers/elliptic_heights/signed_mixed_power_height_20261117_v58.tex) proves its rational-height bound directly from the stated weak abc inequality, including both signs and arbitrary denominator cancellation. The optimized single-cover argument degrees are 48 for fixed classes and 60 for the permitted varying menu under ordinary abc. They do not certify a complete defining polynomial without actual rational realization. The [small trace classes](../papers/pole_parameters/small_trace_classes_20261117_v58.tex) use the existing Sun modulus containing three, retaining selected primes congruent to one modulo 24 and the original order conditions. They introduce no additional arithmetic hypothesis or lost contact. The actual multiplication-surface obstruction uses characteristic-zero Riemann–Hurwitz; it does not exclude individual rational witnesses.
