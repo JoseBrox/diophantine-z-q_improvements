@@ -1,0 +1,447 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,microtype,booktabs}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\title{Restrictions on elliptic point-role couplings}
+\author{}\date{17 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+For the general Diophantine source, any fixed finite menu of nonzero
+quadratic relations among its four root indices excludes infinitely
+many positive inputs in every arithmetic progression. Fixed affine
+couplings of the scalar and reference points also obstruct
+completeness. Within the exact multiplication family, two independent
+fixed group words have the same defect, including a finite menu of
+pairs and all exceptional determinant fibers. Three individual
+cross-root identifications are impossible. A shifted Lucas identity
+supplies an integral single-coupling family with controllable fixed
+finite congruences; its required joint prime and real realization
+remains an additional arithmetic problem.
+\end{abstract}
+
+\section{Arithmetic setting}
+
+Fix the arithmetic premises and a sufficiently large odd coefficient
+exponent $L$ of the general source in \cite{General,Unit}. Put
+\[
+ K=\Q(\sqrt2),\quad D=11-6\sqrt2,\quad E:y^2=x^3-Dx,
+ \qquad
+ P=\left(\frac{57-28\sqrt2}{8},
+          \frac{-660+417\sqrt2}{32}\right).
+\]
+The retained group statement is $2E(K)=\Z P$, with $P$ non-torsion.
+The root and reference roles have nonzero integer labels
+\[
+ A=[n]P,\quad S=[a]P,\quad T=[t]P,\quad Z=[b]P,
+ \qquad H=[h]P.
+\]
+Every guarded source solution satisfies
+\begin{equation}\label{eq:source}
+ \begin{gathered}
+ n=\beta(X)=216X^4+450459,\qquad |a|>7,\qquad a\ne1,\qquad b\ne0,\\
+ F_a(t,b):=t^2-a(a-2)tb+(a-2)^2b^2-1=0.
+ \end{gathered}
+\end{equation}
+Thus $n$ is the input root index, whereas $a$ is the parameter of
+the Lucas recurrence. The elementary Lucas lemma of \cite{Lucas}
+gives
+\begin{equation}\label{eq:growth}
+                         \log|t|>|a|-3.
+\end{equation}
+
+Set
+\[
+ r_{\rm sc}(X)=\beta(\beta-1)(\beta-2401)(32\beta+343)(2\beta-1).
+\]
+There is a fixed finite exceptional set $\mathcal S_L$ such that,
+for integral $X$ and $p\notin\mathcal S_L$ with
+$v_p(r_{\rm sc}(X))=1$, scalar extraction gives
+\begin{equation}\label{eq:scalar}
+ \begin{gathered}
+ p^3\mid a-1,\qquad H,\ S-P\text{ are formal at every place above }p,\\
+                         v_p((a-1)/h)>0.
+ \end{gathered}
+\end{equation}
+At the fixed prime $\ell=76249$, formality of both points and
+$v_\ell((a-1)/h)>0$ also hold. This is a good split prime, and
+$P$ has integral affine, hence nonidentity, reduction there.
+These are source consequences; the unsquared comparison scale
+preserves them by \cite{Unit}.
+
+\begin{lemma}\label{lem:contacts}
+Each of the five displayed factors of $r_{\rm sc}$ has arbitrarily
+large prime divisors among its integer values. Outside a fixed
+finite set, each such prime admits a full input class modulo its
+square on which $v_p(r_{\rm sc}(X))=1$. On this class the
+corresponding residue of $\beta(X)$ is, respectively,
+\begin{equation}\label{eq:contacts}
+                         0,\ 1,\ 2401,\ -343/32,\ 1/2.
+\end{equation}
+Any additional fixed finite set of primes may be avoided.
+\end{lemma}
+\begin{proof}
+Schur's elementary argument supplies infinitely many prime divisors
+of the values of any nonconstant integer polynomial. Indeed, after
+an input translation its constant term $c$ is nonzero. If all prime
+divisors lay in a finite set with product $N$, including the prime
+divisors of $c$, its value at $cNu$, divided by $c$, would be an
+integer congruent to one modulo $N$ and of absolute value greater
+than one for sufficiently large $u$, a contradiction.
+
+Here every factor is a nonzero constant plus a nonzero multiple of
+$X^4$, and the five factors have disjoint roots. Their product is
+squarefree over $\Q$. Outside its leading-coefficient and
+discriminant primes, every residue root is simple. Exactly one of
+its $p$ lifts modulo $p^2$ remains a root modulo $p^2$; any other
+lift gives valuation one, while the other four factors remain units.
+\end{proof}
+
+\section{Quadratic restrictions on root indices}
+
+\begin{lemma}\label{lem:bounded}
+Let $R\in\Q[n,a,t,b]$ have total degree at most two.
+There are fixed constants $C_0,C_1,C_2$ such that every integer
+solution of \eqref{eq:source} and $R(n,a,t,b)=0$, with $b\ne0$,
+$R(n,a,\cdot,\cdot)$ nonzero, and $|a|>C_2$, satisfies
+\[
+                       |a|\le C_0+C_1\log(2+|n|).
+\]
+\end{lemma}
+\begin{proof}
+Clear the fixed coefficient denominators of $R$.
+For $|a|>7$, the homogenized conic $F_a$ is nonsingular, since
+the determinant of its quadratic form is
+\[
+                   -(a-2)^2(1-a^2/4)\ne0.
+\]
+It is therefore geometrically irreducible. The coefficients $u,v$
+of $t^2,tb$ in $R$ are fixed constants. If the nonzero specialized
+polynomial $R(n,a,\cdot,\cdot)$ shares a component with $F_a$,
+it equals $\lambda F_a$, and comparison gives
+\[
+                       \lambda=u,\qquad v=-u a(a-2).
+\]
+For $u=0$ this is impossible. For $u\ne0$ it permits only finitely
+many $a$. Choose $C_2$ beyond their absolute values.
+
+The resultant in $b$ is now a nonzero integer polynomial in $t$
+vanishing at the given $t$. Use the actual specialized degree in
+$b$ if that degree drops. Put $M=2+|a|+|n|$. All coefficient
+polynomials of $F_a$ and $R$ in $t,b$ have height at most $CM^2$.
+The Sylvester determinant has size at most four, so its coefficient
+height is at most $C'M^8$. Its nonzero leading coefficient has
+absolute value at least one. Cauchy's bound gives
+$|t|\le1+C'M^8$. Comparing with \eqref{eq:growth} and absorbing
+$O(\log(2+|a|))$ into $|a|/2$ proves the assertion.
+\end{proof}
+
+\begin{theorem}\label{thm:quadratic}
+Fix a finite nonempty menu of nonzero polynomials in
+$\Q[n,a,t,b]$ of total degree at most two. Require at least one
+polynomial in the menu to vanish in the unchanged general source.
+In every fixed arithmetic progression of inputs, infinitely many
+positive integers admit no guarded rational witness. Finitely many
+exceptional input repairs cannot restore completeness. The menu's
+coefficients may depend on the fixed exponent $L$.
+\end{theorem}
+\begin{proof}
+Start with a fixed input class $X\equiv X_*\pmod{M_*}$.
+For each $R$, divide out its full power of $a-1$; this preserves
+its vanishing at source labels. The resulting polynomial is
+nonzero at $a=1$ as a polynomial in $n,t,b$. Some coefficient
+$g(a,n)$ of its expansion in $t,b$ therefore satisfies
+$g(1,n)\ne0$. Its degree in $n$ is at most two, so one of the
+five contacts \eqref{eq:contacts} is not a root of $g(1,n)$.
+
+Choose a distinct fresh prime for this relation at that contact,
+using Lemma~\ref{lem:contacts}, and avoid the coefficient
+denominators and the nonzero value of $g(1,n)$ there.
+On its valuation-one input class, a source solution has
+$a\equiv1$ and $n\equiv\beta(X)$ equal to the chosen contact.
+Thus $g(a,n)$ is a unit, and $R(n,a,\cdot,\cdot)$ is nonzero.
+Choose a prime separately for every menu member. The Chinese
+remainder theorem combines these classes with the original class
+into $X_0\pmod{M_0}$.
+
+Choose arbitrarily large fresh scalar-contact primes $p\nmid M_0$.
+Combine a valuation-one class modulo $p^2$ with the fixed class,
+and take $0\le X<M_0p^2$. Every putative witness then satisfies
+\[
+ |a|\ge p^3-1,\qquad
+ \log(2+|n|)=\log(2+\beta(X))\le C_3+8\log p.
+\]
+The first inequality excludes all exceptional $a$ from
+Lemma~\ref{lem:bounded}, for large $p$. That lemma and the second
+inequality give $|a|=O(1+\log p)$, a contradiction.
+The constructed inputs include infinitely many distinct positive
+integers: each fixed integral $X$ has $r_{\rm sc}(X)\ne0$ and
+hence only finitely many prime divisors. All inputs lie in the
+original progression.
+\end{proof}
+
+\section{The scalar point and the reference point}
+
+\begin{proposition}\label{prop:reference}
+For any fixed finite nonempty menu of integer pairs $(k,c)$,
+there is an arithmetic progression of integer inputs on which
+no guarded source witness satisfies any relation
+\[
+                             S=[k]H+[c]P
+\]
+from the menu. The progression may be chosen inside any
+previously fixed input progression.
+\end{proposition}
+\begin{proof}
+At a fresh scalar contact, $H$ and $S-P$ are formal.
+For $c\ne1$, their indicated difference $[c-1]P$ must be
+formal as well. Each of these finitely many fixed nonidentity
+points is formal at only finitely many good primes. Exclude all
+such primes. For $c=1$ and $k\ne0$, the index relation gives
+\[
+                     v_p((a-1)/h)=v_p(k).
+\]
+Exclude the prime divisors of these finitely many nonzero $k$;
+this contradicts \eqref{eq:scalar}. The case $c=1,k=0$ gives
+$a=1$, already excluded. A remaining fresh scalar prime yields
+a full class modulo its square excluding every menu member.
+Choose it prime to the previously prescribed modulus and combine
+the two classes.
+\end{proof}
+
+\section{Restrictions on exact multiplication witnesses}
+
+The exact multiplication family is
+\begin{equation}\label{eq:prepared}
+ U_A=[hn]P,\quad U_S=[ha]P,\quad
+ U_T=[ht]P,\quad U_Z=[hb]P.
+\end{equation}
+These identities specify the witness family in this section.
+They are not global conclusions for arbitrary source solutions.
+
+\subsection{Individual cross-root identifications}
+
+\begin{proposition}\label{prop:cross}
+No guarded source witness in \eqref{eq:prepared} satisfies any of
+\[
+                          U_T=Z,\qquad U_Z=T,\qquad U_S=Z.
+\]
+\end{proposition}
+\begin{proof}
+The Pell relation gives $\gcd(t,b)=1$. If $ht=b$, then
+$|t|=1$, contradicting \eqref{eq:growth}.
+If $hb=t$, then $|b|=1$. The two roots $t$ and
+$a(a-2)b-t$ of the resulting monic quadratic have positive
+product $(a-2)^2-1$, so
+\[
+ |t|<|a(a-2)|\le |a|(|a|+2)<\exp(|a|-3)
+ \qquad(|a|\ge8),
+\]
+again contradicting \eqref{eq:growth}.
+
+Suppose $ha=b$. At one place over $\ell$, let $m>1$ be the
+reduction order of the affine integral point $P$. Scalar
+formality gives $m\mid h$, $m\mid a-1$, and hence $m\mid b$.
+The elementary norm-one-unit descent of \cite{Lucas} writes
+\[
+                   |(a-2)b|=U_j(|a|),\qquad j\ge1,
+\]
+where $U_0(A)=0$, $U_1(A)=1$, and
+$U_{j+1}(A)=AU_j(A)-U_{j-1}(A)$.
+Since $|a|\equiv\pm1\pmod m$, this value is zero modulo $m$
+precisely when $3\mid j$: at parameter $1$ the sequence is
+$0,1,1,0,-1,-1$ periodically, and parameter $-1$ only changes
+alternating signs. Thus $3\mid j$. The Lucas addition identity
+gives $U_3(|a|)=a^2-1\mid U_j(|a|)$. Hence $a-1\mid b$,
+because $\gcd(a-1,a-2)=1$. From $b=ah$ and
+$\gcd(a,a-1)=1$, one obtains $a-1\mid h$, contradicting
+$v_\ell((a-1)/h)>0$.
+\end{proof}
+
+\subsection{Finite menus of two group words}
+
+A fixed group word is an integer linear combination of the nine
+point roles and $P$. On \eqref{eq:prepared}, its vanishing becomes
+\[
+                         hB(n,a,t,b)+A(n,a,t,b)=0,
+\]
+where $A,B$ are affine forms with fixed rational coefficients.
+The ten monomials
+\[
+                       1,n,a,t,b,h,hn,ha,ht,hb
+\]
+are linearly independent.
+Two group words are consequently independent over $\Q$ exactly
+when their pairs $(A_i,B_i)$ are independent over $\Q$.
+
+\begin{theorem}\label{thm:two}
+Fix a finite nonempty menu of pairs of fixed group-word equations
+among the nine point roles and $P$, each pair linearly independent.
+Require both equations from at least one pair to hold.
+In every fixed arithmetic progression, infinitely many positive
+integer inputs admit no guarded source witness in the exact
+multiplication family satisfying this requirement. The conclusion
+does not prescribe an order for choosing the root labels,
+reference index, or comparison primes.
+\end{theorem}
+\begin{proof}
+For a pair write its equations as $hB_i+A_i=0$ and put
+$R=A_1B_2-A_2B_1$. When $R\ne0$, every witness satisfies a
+nonzero quadratic relation among the root indices. Collect these
+relations over the menu.
+
+If $R=0$ and both $B_i$ vanish identically, collect a nonzero
+affine form among the $A_i$. Otherwise reorder so that $B_1\ne0$.
+If $A_1,B_1$ are not proportional over $\Q$, they are coprime
+affine polynomials, with at least one of degree one. The identity
+$A_1B_2=A_2B_1$ in the polynomial unique factorization domain
+makes $A_2,B_2$ the same polynomial multiple of $A_1,B_1$.
+The degree bound forces the multiplier to be constant, contrary
+to independence of the pair. Therefore $A_1=cB_1$ for a rational
+constant $c$, including $c=0$, and then $A_2=cB_2$. The equations
+are $(h+c)B_i=0$.
+
+Collect the nonzero affine form $B_1$ for this case. If $-c$ is
+a nonzero integer, also list the possible fixed point $[-c]P$.
+If $-c$ is not a nonzero integer, every witness already satisfies
+$B_1=0$. This classifies every identically-zero determinant case.
+
+The finite list of fixed nonidentity reference points is formal
+at only finitely many good primes in total. Choose a fresh
+scalar-contact prime outside their union and outside the modulus
+of the prescribed input progression. On its valuation-one class,
+\eqref{eq:scalar} excludes every fixed-reference possibility.
+If the list is empty, no refinement is needed.
+Every remaining witness must satisfy at least one of the collected
+nonzero polynomials, all of total degree at most two. Apply
+Theorem~\ref{thm:quadratic} on the refined input progression.
+\end{proof}
+
+Thus two point-role deletions by independent fixed group expressions
+cannot preserve cofinite completeness within \eqref{eq:prepared},
+even after changing the order of the construction or allowing a
+fixed finite menu. The theorem does not concern arbitrary numerator
+indices satisfying only local comparisons, nonconstant coefficients
+in the group expressions, or non-group rational maps.
+
+\section{A shifted Lucas coupling}
+
+\begin{lemma}\label{lem:shifted}
+For integers $a>2$ and $r\ge1$, define
+\[
+ j=6(a-2)r,\qquad
+ b=\frac{U_j(a)}{a-2},\qquad
+ t=U_{j+1}(a),\qquad
+ h=\frac{U_j(a)}{(a-1)(a-2)}.
+\]
+Then $b,t,h$ are positive integers,
+\begin{equation}\label{eq:shifted}
+ F_a(t,b)=0,\qquad b=(a-1)h,\qquad
+                         h\equiv-4r\pmod{a-1}.
+\end{equation}
+If $a$ is odd, then $b$ is even and $t$ is odd.
+\end{lemma}
+\begin{proof}
+Since $U_j(a)\equiv j\pmod{a-2}$, the factor $a-2$ divides
+$U_j(a)$. Since $3\mid j$, evaluation at parameter $1$ shows
+that $a-1$ also divides $U_j(a)$. The two factors are coprime.
+The recurrence is positive and increasing for $a>2$, and its
+determinant identity gives
+$U_{j+1}^2-aU_jU_{j+1}+U_j^2=1$.
+
+For the stronger congruence, put
+\[
+ M(a)=\begin{pmatrix}a&-1\\1&0\end{pmatrix},\qquad
+ J=\begin{pmatrix}1&-2\\2&-1\end{pmatrix}.
+\]
+Direct multiplication gives
+\[
+ M(a)^3\equiv-I+(a-1)J\pmod{(a-1)^2}.
+\]
+The lower-left entry of $M(a)^m$ is $U_m(a)$. Taking the $k$th
+power consequently gives
+\[
+ \frac{U_{3k}(a)}{a-1}
+              \equiv2k(-1)^{k+1}\pmod{a-1}.
+\]
+Here $k=2(a-2)r$ is even. Division by the unit $a-2$ modulo
+$a-1$ proves \eqref{eq:shifted}. For odd $a$, the recurrence
+modulo two has period $0,1,1$. Since $3\mid j$, $U_j(a)$ is
+even and $U_{j+1}(a)$ is odd; division by the odd number $a-2$
+preserves the parity of $b$.
+\end{proof}
+
+\begin{corollary}\label{cor:finite}
+Let $M_0\ge1$ and $h_0\in\Z$ satisfy
+$\gcd(4,M_0)\mid h_0$. Choose $r\ge1$ with
+$-4r\equiv h_0\pmod{M_0}$. For every $a>2$ with
+$a\equiv1\pmod{M_0}$, Lemma~\ref{lem:shifted} gives
+$h\equiv h_0\pmod{M_0}$. At every prime $p$ such that
+$v_p(a-1)>v_p(4r)$, one also has
+\[
+                  v_p(h)=v_p(4r),\qquad
+                  v_p((a-1)/h)>0.
+\]
+\end{corollary}
+\begin{proof}
+Both conclusions follow directly from the congruence
+$h\equiv-4r\pmod{a-1}$.
+\end{proof}
+
+The equation $b=(a-1)h$ realizes the single group coupling
+$U_S=Z+H$ on the exact multiplication family.
+Corollary~\ref{cor:finite} controls finite congruences prescribed
+in advance and is compatible with positive scalar ratio valuations.
+It does not assert the completeness of a coupled source.
+
+Such completeness requires the actual Lucas roots and their trace
+scales to be realized jointly with the comparison prime pattern.
+At each selected prime the primary reduction order must divide
+$h$, the opposite order must divide $h-1$, and the selected prime
+must divide $h$, together with the required avoidance and
+two-adic conditions. The finite and real scalar inequalities,
+all denominator guards, and the pole preparation for the actual
+trace inputs must hold simultaneously.
+In the retained completeness proof, the roots and scales are fixed
+before these primes, and $h$ is selected afterward. In
+Lemma~\ref{lem:shifted}, $h$ is already fixed with $a,b,t$;
+changing $r$ changes $b,t$ and the trace scales. The inherited
+prime-pattern theorem \cite{Dependencies} and the fixed-modulus
+congruence above do not supply this joint realization or the
+required real returns of the coupled reference point.
+
+\section{Exact algebra checks}
+
+The companion \nolinkurl{check.py} verifies the conic determinant,
+the universal quadratic-resultant identity and its coefficient
+degrees for a general quadratic root relation, the matrix identity
+in Lemma~\ref{lem:shifted}, and exact finite Lucas specializations.
+It also checks the good split prime and affine reduction assertions
+used in Proposition~\ref{prop:cross}. The checks use integer and
+symbolic arithmetic and write a JSON certificate using
+\nolinkurl{--output}. They certify these algebraic inputs, not the
+retained arithmetic premises or the unresolved joint realization.
+
+\begin{thebibliography}{9}
+\bibitem{General}
+\emph{A defining polynomial in twenty-five variables: combined scalar
+and comparison conditions},
+\nolinkurl{papers/few_variables25/few_variables25_merged_20261110_v19.tex}.
+\bibitem{Unit}
+\emph{A single norm determinant for the 25- and 13-variable constructions},
+\nolinkurl{papers/finite_algebra/unit_norm_20261114_v28.tex}.
+\bibitem{Lucas}
+\emph{An explicit polynomial in 29 variables over the rationals},
+\nolinkurl{papers/few_variables/few_variables_20261108_v8.tex},
+the elementary Lucas growth and descent lemma.
+\bibitem{Dependencies}
+\emph{Arithmetic dependencies of the construction with 29 variables},
+\nolinkurl{papers/arithmetic_dependencies/arithmetic_dependencies_20261108_v8.tex}.
+\end{thebibliography}
+\end{document}

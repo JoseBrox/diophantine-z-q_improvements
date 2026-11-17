@@ -95,6 +95,12 @@ It is enough to obtain actual witnesses for every sufficiently large positive in
 
 The [actual derivative-fiber genus theorem](negative_results/papers/pole_parameters/derivative_trace_genus_20261117_v65.tex) identifies eighteen simple rational branch contacts on each fixed-point slope fiber, giving genus at least eight. No geometric rational curve meets the guarded multiplication locus, even when the auxiliary elliptic point is allowed to vary. The known branch points violate the nonzero-weight guard. This excludes rational parametrization of that locus; it does not exclude individual rational witnesses or disprove the nine-variable criterion.
 
+## Restrictions on point-role reductions
+
+The [point-role theorem](negative_results/papers/integer_labels/point_role_restrictions_20261117_v66.tex) proves that every nonzero relation of total degree at most two among the four root indices, including a fixed finite menu, excludes infinitely many positive inputs in every fixed arithmetic progression of the general source. Scalar-contact divisibility forces the Lucas parameter to grow faster than the resultant bound permits. Within the exact multiplication witnesses, this also excludes deleting two point roles by independent fixed group expressions, even with finite menus and a different order of choices. Arbitrary source witnesses and other couplings are outside that conclusion.
+
+The single shifted coupling `U_S=Z+H` admits explicit integral Lucas values with `b=(a-1)h` and `h=-4r mod(a-1)`. This meets any compatible finite scalar congruences fixed in advance. Joint comparison-prime, trace-scale and real realization remains unproved. The [proof guide and certificates](docs/results_20261117_v66.md) keep these statements separate from the unchanged construction records.
+
 ## Elliptic sums over arbitrary number fields
 
 The [cyclic-group height theorem](papers/effective_sums/elliptic_sum_heights_over_number_fields_20261117_v63.tex) applies to every elliptic curve over every number field. For finite points $Q_i=[n_i]P+T_i$ in one cyclic group modulo torsion, $M=\max(1,|n_i|)$, and every integral $c$, it gives
@@ -153,6 +159,8 @@ The [229-variable theorem](papers/quartic/quartic229_20261117_v62.tex) uses thre
 The [effective torsion-sum theorem](papers/effective_sums/effective_torsion_sums_20261117_v62.tex) gives an explicit logarithmic loss for abscissa sums over totally real fields, allowing arbitrary torsion translates and zero or negative indices. Its ramification allowance is at most the logarithmic discriminant divided by the field degree. The theorem controls the algebraic sum; the rational trace is a separate question.
 
 The [68-variable arithmetic theorem](papers/quartic_existence/quartic_abc68_20261117_v65.tex) propagates the unit reference chart through every detector equation. It recovers the two weighted reciprocal products quadratically, replaces separate ratios by affine inverse comparison errors, and retains only the rational half-trace of the quadratic difference-abscissa output. All recovery coordinates, comparison squares and nonzero constraints are included in its 68-coordinate count. The proof covers soundness, nonzero integer completeness and zero input; independent exact expansion certifies the degree, support and coefficient height.
+
+The [five-factor local theorem](papers/quartic/revised_detector_factors_20261117_v66.tex) gives a revised arithmetic interface for the general quartics. It proves valuation separation at every odd contact depth, retains all comparison and reciprocal thresholds, and checks selected-contact residues and fixed-place preparation. A smaller complete quadratic table is not yet available.
 
 The [paired-ratio theorem](papers/elliptic_charts/paired_ratio_redundancy_20261115_v40.tex) shows that the complete ratio equations imply both reciprocal curve equations. It covers identities, torsion points and tangent pairs, and gives a quadratic-compatible uniform scaling of the seven pair coordinates. This redundancy is used in the source of the current [195-variable construction](papers/quartic/quartic195_20261116_v45.tex). The retained source tables give the exact dependencies of its complete polynomial specification.
 
