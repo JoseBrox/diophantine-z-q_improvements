@@ -27,6 +27,28 @@ The coordinate $X^2x(U)-x(H)$ cannot supply that condition through the specified
 
 The separate [square-rescaling obstruction](../negative_results/papers/pole_parameters/square_rescaled_weight_perturbation_20261117_v60.tex) excludes identifying the external input solely by square-rescaling an input-independent weight class with the stated strict preparation. Individual rational witnesses for the actual trace covers remain an open route.
 
+The [explicit input-only helper](../negative_results/papers/pole_parameters/input_only_weight_false_witnesses_20261117_v61.tex) is also incomplete: it bounds $h(X)$ by the reference height under abc, yet permits $X=2+1/q$ with complete rational witnesses. Its local index map is an isometric bijection, so the second index can satisfy all finite congruences while growing arbitrarily large. Any new growth condition must control this quotient-size term, not only the input height.
+
+## Infinitely many rationally soluble levels
+
+For each prepared input $d$, the [varying-level theorem](../papers/pole_parameters/varying_level_pole_fibers_20261117_v61.tex) studies
+
+```math
+k(r)=(1-d)\frac{d+r^2}{d-r^2},\qquad
+y^2=d\bigl(k(r)^2-s^4\bigr).
+```
+
+Every rational $r$ gives an everywhere locally soluble fiber. Under the retained simultaneous-twist theorem, infinitely many rational levels $0<r<\sqrt d$ have infinitely many rational points. The proof selects two fixed elliptic curves and varies their points independently; it identifies the required abscissa square class, rather than inferring it from positive rank. The combined witness set is Zariski dense and permits all-character guard avoidance, including characters at which $d=1$.
+
+The cleared radicand has degree nine, twelve monomials and coefficient height four. For the nonsquare-complement input $d=112/225$, an exact example is
+
+```math
+r=\frac{44}{69},\quad k=\frac{3364}{675},\quad
+s=\frac{29}{15},\quad y=\frac{23548}{10125}.
+```
+
+The theorem selects good levels; it does not realize a level prescribed by an existing detector coordinate. Both $r$ and $s$ remain free, and it does not synchronize two actual detector inputs. The construction counts are unchanged.
+
 ## Current target: simultaneous actual-trace conics
 
 The [trace-conic theorem](../papers/pole_parameters/trace_conic_criterion_20261117_v57.tex) reduces the **21/9** target to rational squares of $V_j^2+w_j(2-V_j)$ at actual source traces and one common slope. It removes the separate detector norm from the square condition. The conic has the exact chart

@@ -1,0 +1,335 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,microtype}
+\usepackage[margin=26mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\title{Input-only weights do not complete an elliptic index comparison}
+\author{}\date{17 November 2026}
+\begin{document}\maketitle
+
+\begin{abstract}
+An additional balanced pole with a polynomial weight in the input
+can force a genuine upper bound for the input height. It does not
+identify that input with the integer quotient of two elliptic
+indices. For a specific degree-eight weight, every input $2+1/q$
+outside a fixed finite set of denominator primes has a complete
+rational witness. The construction uses a local inverse for the
+truncated-logarithm ratio and the Chinese remainder theorem.
+All fixed-place, real, denominator and finite-character guards are
+retained. The obstruction concerns the stated source, not arbitrary
+sources with two elliptic points.
+\end{abstract}
+
+\section{Local interpolation of an index ratio}
+
+Fix $d\in\Z_{>0}$ and $E_d:y^2=x^3-d^2x$, with formal
+parameter $z=-x/y$. Let $\Lambda(Z)\in\Q[Z]$ satisfy
+$\Lambda(0)=0$, $\Lambda'(0)=1$. At every prime $p$, choose a
+depth $e_p$ such that the formal logarithm identifies
+$E_{e_p}(\Q_p)$ with $p^{e_p}\Z_p$ isometrically and
+\[
+ p^{-e}\Lambda(p^e Z)=Z+pG_e(Z),\qquad G_e\in\Z_p[Z],
+                         \qquad e\ge e_p.
+\]
+Such a depth exists by the formal-group logarithm
+\cite[Chapters IV and VII]{AEC}. If $p$ is odd and the coefficients of
+$\Lambda$ are $p$-integral, one may take $e_p=1$.
+
+\begin{lemma}\label{lem:interpolation}
+Let $H\in E_{e_p}(\Q_p)$ be nonzero. The continuous map
+\[
+ \Phi_H:\Z_p\longrightarrow\Z_p,\qquad
+ a\longmapsto\frac{\Lambda(z([a]H))}{\Lambda(z(H))},
+\]
+where $[a]H$ is defined through the formal logarithm, is an
+isometric bijection. In particular, for every $X\in\Z_p$ and
+every $N\ge1$, there is a residue class of integers $a$ modulo
+$p^N$ for which $v_p(\Phi_H(a)-X)\ge N$.
+\end{lemma}
+\begin{proof}
+Write $e=v_p(z(H))$. The normalized polynomial above is an
+isometric bijection of $\Z_p$, by Hensel's lemma. Thus
+$z\mapsto\Lambda(z)$ is an isometric bijection of
+$p^e\Z_p$. The formal logarithm and its inverse are also
+isometries there. Consequently the four maps
+\[
+ a\mapsto a\log_E(H),\quad
+ a\log_E(H)\mapsto z([a]H),\quad
+ z\mapsto\Lambda(z),\quad
+ t\mapsto t/\Lambda(z(H))
+\]
+compose to an isometric bijection of $\Z_p$. The two scaling
+maps contribute opposite valuation shifts $e$ and $-e$.
+The last assertion follows by reducing this bijection modulo
+$p^N$.
+\end{proof}
+
+\section{The two pole blocks}
+
+Fix a rank-one congruent-number curve and a nontorsion point
+$R\in2E_d(\Q)$, and put $P=2R$. Choose $R$ sufficiently deep in the formal
+groups at two and seven. Orient $R$ so that
+\[
+ q_0=\frac{x(R)^2+d^2}{2y(R)}>0,\qquad q_0^2=x(P).
+\]
+Choose a positive rational $\lambda_0$ with
+$v_2(\lambda_0)=2$, $v_7(\lambda_0)=-1$ and
+$\lambda_0^2>100$, and put $c=q_0\lambda_0^2$.
+
+Fix $T\ge1$, let $\Lambda=\Lambda_T$ be the degree-at-most-$T$
+truncation of the formal logarithm, and put $k=8T-7$. Retain
+points $H=[h]P$, $U=[j]P$, rational square abscissas
+$q_H^2=x(H)$ and $q_U^2=x(U)$, and the comparison test
+\[
+             C=\frac{\Lambda(z(U))}{\Lambda(z(H))}-X.
+\]
+The first block has weight and tests
+\[
+        u_1=(c/q_H)^k,\qquad C_{1,1}=x(U)^{-T},
+                          \qquad C_{1,2}=C.
+\]
+The second block has
+\begin{equation}\label{eq:input-weight}
+ \begin{split}
+ F(X)&=\prod_{a\in\{1,3,5,9\}}((56X)^2-a^2),\\
+ u_2&=16F(X),\qquad C_{2,1}=x(H)^{-T},
+                         \qquad C_{2,2}=C.
+ \end{split}
+\end{equation}
+For $i=1,2$ define
+\[
+ D_{i,r}=\frac{C_{i,r}^2}{1+u_iC_{i,r}^2},\qquad
+ W_i=\prod_{r=1}^2(1+D_{i,r}^2/u_i),\qquad
+ b_i=\frac{4u_iW_i^2}{(1+u_i)^2},\qquad \eta_i=7b_i.
+\]
+Impose the two intrinsic equations
+\begin{equation}\label{eq:intrinsic}
+ Y_i^2=\eta_i(\eta_i+v_i^2)^2s_i^4
+       -\eta_i(\eta_i-v_i^2)^2(1-\eta_i)^2.
+\end{equation}
+Keep the point, quotient, weight and intrinsic norm guards
+of the index-pole source \cite{Index}. Exclude any fixed finite
+set of indices $h$. The all-index primitive-denominator theorem
+under weak $abc$ with exponent $4/3$ may be used; no coprime-index
+progression is imposed here.
+
+\begin{theorem}\label{thm:false-inputs}
+There is a fixed finite set $S_0$ of primes such that every prime
+$q\notin S_0$ gives a noninteger input
+\[
+                              X=2+1/q
+\]
+having complete rational witnesses for the two-block source.
+The witnesses may be taken with $U=[m]H$ for an integer
+$m\ne0$, and with arbitrarily large $|h|$.
+Every finite-character guard is nonzero at the prepared rational
+parameters. In particular, the second pole does not make this
+source a definition of $\Z$.
+\end{theorem}
+
+\section{Preparation of the reference point}
+
+For a point $T$ near the identity write
+\[
+                q(T)=\frac{x(T)^2+d^2}{2y(T)},
+                       \qquad q(T)^2=x([2]T).
+\]
+The product $q(T)\log_E(T)$ is analytic at the identity with
+nonzero limiting value $-1/2$. By choosing $R$ sufficiently
+deep at two and seven, uniformly for every nonzero integer $h$,
+\begin{equation}\label{eq:square-ratio}
+ \frac{q_0}{q([h]R)}=h\epsilon_{p,h},\qquad
+ \epsilon_{2,h}\in1+8\Z_2,\qquad
+ \epsilon_{7,h}\in1+7\Z_7.
+\end{equation}
+Indeed $\log_E([h]R)=h\log_E(R)$ and every $[h]R$ stays in
+the same fixed formal neighborhood.
+Both displayed unit groups consist of local squares.
+
+Fix $q$ outside the bad reduction, coefficient, logarithm and
+constant primes, also excluding two and seven. Put $X=2+1/q$.
+The weight $u_2$ is positive and larger than $50$,
+\[
+ u_2\in\Q_2^{\times2},\quad v_2(u_2)=4,\qquad
+ u_2\in\Q_7^{\times2},\quad v_7(u_2)=0.
+\]
+These facts follow from $56X\in8\Z_2\cap7\Z_7$, the four
+odd integers $1,3,5,9$, and $X>2$. At $q$ one has
+\[
+                            v_q(u_2)=-8.
+\]
+At every other prime $X$ is integral and $u_2$ is integral.
+
+Choose $H=[h]P$ formal, to any prescribed sufficiently large
+depth, at all fixed exceptional primes, at $q$, and at every
+positive odd prime of $u_2$. At $q$ require
+$v_q(z(H))$ to be even. These conditions can be imposed on
+an arithmetic progression of integers $h$ that are local squares
+at two and seven. To see this, choose an integer $L$ such that
+$[L]P$ is sufficiently deep at all these finitely many places.
+Write $h=L^2r$. Impose $r\equiv1\pmod8$ and
+$r\equiv1\pmod7$. At $q$, choose $v_q(r)$ to be zero or one,
+as necessary to make the denominator depth of $H$ even, and
+fix the corresponding nonzero residue modulo the next power
+of $q$. These congruences are compatible. Increasing $L$
+beforehand supplies every other required depth.
+
+For completeness of this assertion, on a sufficiently deep
+formal subgroup,
+$v_p(z([a]Q))=v_p(z(Q))+v_p(a)$ for integral nonzero $a$.
+Thus the selected parity at $q$ is exact. The required finite
+depths can be chosen so that, whenever $v_p(u_i)>0$ is odd,
+the first detector factor is a unit:
+\[
+ 4v_p(C_{1,1})-v_p(u_1)>0,\qquad
+ 4v_p(C_{2,1})-v_p(u_2)>0.
+\]
+For the first inequality, outside the constant primes it is
+at least $(8T-k)v_p(z(H))=7v_p(z(H))>0$.
+At a constant prime it follows after increasing the chosen
+depth. The second inequality has a fixed right-hand threshold
+once $X$ is fixed.
+
+Take $[h]R$ in a sufficiently small real neighborhood of $R$,
+so that the coherent root $q_H=q([h]R)$ is positive and
+$c/q_H>50$. This is possible for infinitely many arbitrarily
+large $h$ in the chosen arithmetic progression: multiples of
+a nontorsion point are dense in the appropriate real component.
+Here $R\in2E_d(\Q)$ lies in the identity real component.
+The fixed affine and logarithm guards remove finitely many
+indices. Formula~\eqref{eq:square-ratio} gives
+\begin{equation}\label{eq:weight-fixed}
+ \begin{split}
+ &u_1\in\Q_2^{\times2},\qquad
+       v_2(u_1)=k(4+v_2(h))\ge4k,\\
+ &u_1\in\Q_7^{\times2},\qquad
+       v_7(u_1)=k(-2+v_7(h)).
+ \end{split}
+\end{equation}
+At $q$, the valuation of $u_1$ is even by the prescribed
+denominator parity. This is the only prime where $X$ is not
+integral.
+
+\section{Choosing the second index and the intrinsic witnesses}
+
+After fixing $H$, let $\mathcal T$ contain two, seven, all fixed
+exceptional primes, and every positive odd prime of $u_1$ or
+$u_2$, omitting $q$. At each prime of $\mathcal T$ where a
+comparison is required, $H$ is formal and $X\in\Z_p$.
+At primes arising only from the denominator of $H$, this follows
+automatically; at the other primes it was imposed above.
+The interpolation lemma applies, with the enlarged fixed depths
+at coefficient primes.
+
+Choose an integer $m\ne0$ by the Chinese remainder theorem so
+that, with $U=[m]H$,
+\[
+ v_p(C)>N_p\qquad(p\in\mathcal T),
+\]
+where $N_p$ exceeds one quarter of every positive $v_p(u_i)$
+present at that prime. All such choices form an arithmetic
+progression, so finitely many additional index exclusions may
+be avoided.
+
+At every positive odd weight valuation, both detector factors
+are now units, and $v_p(b_i)=v_p(u_i)>0$. At a negative odd
+valuation $\nu=v_p(u_i)$, the balanced identity
+\[
+             v_p(D_{i,r})=\max(2v_p(C_{i,r}),-\nu)
+\]
+makes every factor of $W_i$ a unit and gives
+$v_p(b_i)=-\nu>0$. At an even weight valuation the valuation
+of $b_i$ is even, regardless of cancellation. In particular,
+the denominator prime $q$ is harmless for both blocks.
+
+At two put $e_P=v_2(z(P))\ge4$. Then
+$e_H=e_P+v_2(h)$ and
+\[
+ 4v_2(C_{1,1})-v_2(u_1)
+   \ge8T(e_P+v_2(h))-k(4+v_2(h))
+   \ge28+7v_2(h)>0.
+\]
+The first factor of the second block is also a unit, since
+$8Te_H>v_2(u_2)=4$. Both comparison factors are units by
+interpolation. Therefore
+\[
+ b_i\in\Q_2^{\times2},\qquad
+                     v_2(b_i)=2+v_2(u_i)\ge6.
+\]
+At seven the square class of $u_i$ prevents cancellation
+against $-1$. If $v_7(u_i)\le0$, both detector factors are
+units automatically. If $v_7(u_i)>0$, the depth and interpolation
+conditions make them units. Since $1+u_i$ is a unit when
+$v_7(u_i)=0$, one obtains $v_7(b_i)\ge0$ in every case.
+Thus both $\eta_i=7b_i$ have square reduced denominator and
+satisfy the required two-adic class and depth.
+
+At every real point character, $u_i>50$ and all tests are real.
+Consequently
+\[
+ 0\le D_{i,r}<1/u_i,\qquad
+ 1\le W_i\le(1+u_i^{-3})^2,\qquad
+                  0<b_i<1/7.
+\]
+The balanced denominators, products and inputs are therefore
+nonzero at every character, independently of the size of $m$.
+Finite isogeny covers do not change these image values. The
+intrinsic realization theorem \cite{Intrinsic} supplies rational
+pairs $(v_i,s_i)$ for \eqref{eq:intrinsic}. Its Zariski density
+allows simultaneous avoidance of the radicand norms and every
+retained guard whose restriction to the corresponding intrinsic
+solution variety is nonzero. This proves
+Theorem~\ref{thm:false-inputs}.
+
+\section{The input-height estimate still holds}
+
+Under ordinary rational $abc$, the polynomial-form radical
+estimate of \cite{Derivative} gives, outside a fixed set $S$,
+\[
+ \log r^+_{\mathrm{odd},S}(u_2)\ge3h(X)-O(1).
+\]
+Indeed the homogeneous form
+\[
+           \prod_{a\in\{1,3,5,9\}}(56^2A^2-a^2B^2)
+\]
+is squarefree of degree eight. Its radical has logarithm at
+least $(6-\epsilon)h(A:B)-O(1)$, while its logarithmic size
+is at most $8h(A:B)+O(1)$. The simple-prime support therefore
+has logarithm at least $(4-2\epsilon)h(A:B)-O(1)$.
+Use $\epsilon=1/2$. Rational cancellation occurs only at the
+fixed coefficient primes.
+
+The second pole forces $H$ formal at every consumed odd prime,
+since its first test is $x(H)^{-T}$. Hence
+\[
+                          3h(X)\le\widehat h(H)+O(1).
+\]
+For $T=4$ and the weak exponent $4/3$, the amplified first
+block also implies, for every false input $X\ne m$,
+\[
+              \log(1+|m|)\ge\tfrac53\widehat h(H)-O(1).
+\]
+The witnesses above have room for this growth because the
+second index is chosen after all finite local constraints.
+An input-height bound alone therefore leaves the index-size
+term uncontrolled.
+
+\begin{thebibliography}{9}
+\bibitem{Index}\emph{Elliptic index divisibility and amplified congruences},
+companion manuscript,
+\nolinkurl{elliptic_index_poles_20261117_v60.tex}.
+\bibitem{Intrinsic}\emph{A two-coordinate pole test of coefficient
+height four}, companion manuscript,
+\nolinkurl{intrinsic_pole_20261117_v56.tex}.
+\bibitem{Derivative}\emph{An eleven-variable construction under
+rational $abc$}, companion manuscript,
+\nolinkurl{derivative_detector11_20261117_v59.tex}, Section 1.
+\bibitem{AEC}J.~H.~Silverman, \emph{The Arithmetic of Elliptic Curves},
+second edition, Graduate Texts in Mathematics 106, Springer, 2009,
+Chapters IV and VII.
+\end{thebibliography}
+\end{document}

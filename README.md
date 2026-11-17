@@ -47,7 +47,7 @@ The 71-variable quartic uses the complete three-coordinate unit reference chart 
 
 The coefficient-basis transformations and the 195/257-coordinate eliminations preserve their corresponding full rational solution sets. The finite-algebra construction permits a zero final pole ordinate and proves soundness on that larger locus.
 
-Current specifications: [results JSON](data/results_20261117_v60.json), [proof and verification guide](docs/results_20261117_v60.md), and [research directions](docs/research_directions.md).
+Current specifications: [results JSON](data/results_20261117_v61.json), [proof and verification guide](docs/results_20261117_v61.md), and [research directions](docs/research_directions.md).
 
 The [fixed-fiber and detector-index theorems](docs/common_parameter_guard_reduction_20261116_v42.md) show that one common rational pole fiber with nonzero ordinates suffices for all remaining pole guards, and give independent auxiliary-index families with unchanged square-class scalars. The common rational fiber itself remains unproved. Proved obstructions and lower bounds are collected separately in [negative_results](negative_results/README.md).
 
@@ -88,6 +88,20 @@ The [primitive-denominator theorem](papers/elliptic_divisibility/simple_primitiv
 The [index-pole theorem](papers/elliptic_divisibility/elliptic_index_poles_20261117_v60.tex) uses that prime to force $h\mid j$ for $H=[h]P$ and $U=[j]P$. It proves infinitely many complete witnesses for every nonzero integer quotient. Formal-logarithm truncation then forces $X-j/h$ to vanish to any prescribed fixed order at the simple reference-denominator primes, without another free coordinate. The finite isogeny restrictions, exceptional indices, real and fixed-place preparation, and whole-character guards are included. A separate height condition is still needed to turn those congruences into equality.
 
 The [pole-cancelling coordinate](papers/elliptic_heights/pole_cancelling_quotient_height_20261117_v60.tex) $X^2x(U)-x(H)$ has a proved height lower bound and local expansion. Its proposed use in the specified derivative detector is excluded by the separate [denominator-support theorem](negative_results/papers/pole_parameters/denominator_support_height_obstruction_20261117_v60.tex): all positive odd contact primes must lie in the denominator of $H$, which cannot support a height growing quadratically with $j/h$. The theorem extends to every fixed rational replacement generically nonconstant in $U$ within the stated support architecture; Siegel's theorem handles its constant specializations. It concerns intended integer witnesses and does not exclude other sources. The construction counts above are unchanged.
+
+The separate [input-only helper theorem](negative_results/papers/pole_parameters/input_only_weight_false_witnesses_20261117_v61.tex) proves that the displayed degree-eight input weight does give $3h(X)\le\widehat h(H)+O(1)$ under abc, but still admits every noninteger $X=2+1/q$ outside a fixed finite set. A local inverse for the formal-logarithm ratio and compatible index progressions produce complete witnesses with an unrestricted integer quotient. Controlling the input height alone therefore does not close this source's equality gap.
+
+## Rational pole levels
+
+The [varying-level theorem](papers/pole_parameters/varying_level_pole_fibers_20261117_v61.tex) proves that, for every prepared $d$, all fibers
+
+```math
+y^2=d\left(\left((1-d)\frac{d+r^2}{d-r^2}\right)^2-s^4\right)
+```
+
+are everywhere locally soluble. Under the retained simultaneous-twist theorem, infinitely many rational levels $0<r<\sqrt d$ have infinitely many rational points. Two fixed elliptic curves supply these levels and witnesses, and their combined projection is Zariski dense with all-character guard avoidance. The cleared pole polynomial again has degree nine, twelve monomials and coefficient height four. An exact nonsquare-complement example has $d=112/225$, $r=44/69$, $s=29/15$ and $y=23548/10125$.
+
+The theorem does not prescribe the good level as an existing detector coordinate or synchronize two actual detector inputs. Both free pole coordinates remain; no defining-variable count changes. The [proof and independent certificates](computation/pole_parameters/varying_levels_v61) distinguish the infinite existence theorem from the finite algebra and local checks.
 
 ## Finite algebras and the general polynomials
 
@@ -206,7 +220,7 @@ The [guarded rational-square criterion](papers/pole_parameters/native_square_cri
 
 A rational-square value excludes every required negative odd detector pole. The radicand is positive at every prepared character, and its reference value at $W=1$ is exactly $w^2/(1+w)^2$. Fixed nonzero exceptional-set units are admissible coefficients; so are the proved source-dependent choices $a=1+wc^2$ for existing guarded rational source functions $c$. These choices add no rational coordinate or nonzero guard. The flat choice $a=1$ has an exact prescribed-coordinate elliptic form, and the conditional detector has a trace-preserving reference involution.
 
-**Two simultaneous rational-square values on actual prepared detector tuples would give 21 variables, or 9 under the conditional source hypotheses. This global realization theorem remains unproved.** The proved local preparation and exact finite-algebra count do not replace it. The [current proof guide](docs/results_20261117_v60.md) states the precise conditions and their limitations.
+**Two simultaneous rational-square values on actual prepared detector tuples would give 21 variables, or 9 under the conditional source hypotheses. This global realization theorem remains unproved.** The proved local preparation and exact finite-algebra count do not replace it. The [current proof guide](docs/results_20261117_v61.md) states the precise conditions and their limitations.
 
 ### A single cover and finite square-class alternatives
 

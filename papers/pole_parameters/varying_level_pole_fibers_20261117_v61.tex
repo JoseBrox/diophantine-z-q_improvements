@@ -1,0 +1,240 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,microtype}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newcommand{\Q}{\mathbb Q}
+\setlength{\emergencystretch}{2em}
+\title{Locally soluble pole fibers and infinitely many rational levels}
+\author{}\date{17 November 2026}
+\begin{document}\maketitle
+
+Call $d\in\Q$ prepared if
+\begin{equation}\label{eq:prepared}
+0<d<1,\quad \operatorname{den}(d)\text{ is a square},\quad
+d\in7\Q_2^{\times2},\quad v_2(d)\ge4.
+\end{equation}
+For such $d$ put $\eta=1-d$. For $r\in\Q$ define
+\begin{equation}\label{eq:level}
+k(r)=\eta\frac{d+r^2}{d-r^2},\qquad
+h(r)=\frac{2d\eta r}{d-r^2}.
+\end{equation}
+The denominator does not vanish: a prepared $d$ is not a rational
+square. Also $k(r)\ne0$. Consider
+\begin{equation}\label{eq:fiber}
+C_{d,r}:\qquad y^2=d\bigl(k(r)^2-s^4\bigr).
+\end{equation}
+
+\begin{theorem}\label{thm:local}
+Every fiber \eqref{eq:fiber} is everywhere locally soluble.
+At every completion a local point can be chosen outside any fixed
+finite subset of its smooth projective model.
+\end{theorem}
+\begin{proof}
+The quartic has nonzero discriminant, since $dk(r)\ne0$.
+The real place is immediate. At two, $-d$ is a square by
+\eqref{eq:prepared}. Taking $s$ sufficiently large in the $2$-adic
+absolute value makes
+\[
+d(k^2-s^4)=-d\,s^4(1-k^2/s^4)
+\]
+a square. The same argument works at an odd prime where $-d$ is
+a local square. If $d$ is a local square, the point with $s=0$
+works instead.
+
+It remains to consider an odd prime $p$ at which neither $d$ nor
+$-d$ is a square. If $v_p(d)$ is odd, it is positive by the square
+denominator hypothesis. Its valuation differs from $2v_p(r)$, so
+$(d+r^2)/(d-r^2)$ is a unit with residue $1$ or $-1$. Since
+$\eta\equiv1\pmod p$, one of $k,-k$ is a local square. A root
+of $s^2=k$ or $s^2=-k$ gives a point with $y=0$.
+
+Suppose instead $v_p(d)=2a$ is even. Write $d=p^{2a}D$ with
+$D\in\mathbb Z_p^\times$. The units $D$ and $-D$ are both
+nonsquares. The two terms $d$ and $r^2$ either have different
+valuations, or, after division by $p^{2a}$, neither their sum nor
+their difference vanishes modulo $p$. Thus their ratio in
+\eqref{eq:level} is a unit. Moreover
+\[
+v_p(\eta)=2\min(a,0).
+\]
+For $a=0$ this uses $D\not\equiv1\pmod p$; the other cases
+follow from unequal valuations in $1-d$. Put $b=\min(a,0)$ and
+$k=p^{2b}K$ with $K$ a unit. The substitutions
+\[
+s=p^bS,\qquad y=p^{a+2b}Z
+\]
+give
+\[
+Z^2=D(K^2-S^4).
+\]
+This curve has good smooth genus-one reduction at $p$. The finite-field quartic theorem of Aitken and Lemmermeyer
+\cite[Theorem 6]{AL} gives a point over the residue field.
+Smoothness lifts it to $\Q_p$. Finally, every smooth local neighborhood contains
+infinitely many points, so finitely many forbidden points can be
+avoided.
+\end{proof}
+
+\begin{theorem}\label{thm:global}
+Use the simultaneous-twist theorem of Burungale in the precise form
+stated in \cite[Section 2]{Intrinsic}. For every prepared $d$, there
+are infinitely many rational $r\in(0,\sqrt d)$ for which
+$C_{d,r}(\Q)$ is infinite. The corresponding curves
+\[
+E_{dk(r)}:\quad Y^2=X^3-d^2k(r)^2X
+\]
+may all be chosen in one fixed rational isomorphism class of
+rank one.
+\end{theorem}
+\begin{proof}
+The hypotheses \eqref{eq:prepared} imply the mutual local-square
+conditions for the positive squarefree classes of $d$ and $1-d$,
+as verified in \cite{Intrinsic}. Burungale's theorem therefore
+supplies a fixed positive rational $n$ such that $E_n$ and
+$E_{n\eta}$ have rank one and infinitely many rational points
+whose abscissas have square class $d$. The replacement of the
+squarefree class of $\eta$ by $\eta$ itself is a rational scaling.
+
+Choose independently, excluding torsion,
+\[
+R=(da^2,aU)\in E_n(\Q),\qquad
+R'=(db^2,bV)\in E_{n\eta}(\Q).
+\]
+Take the sign of $V$ positive. Their positive abscissas satisfy
+$da^2>n$ and $db^2>n\eta$. Define
+\begin{equation}\label{eq:globalconstruction}
+k=\frac{db^2}{n},\qquad h=\frac Vn,\qquad
+r=\frac{V}{db^2+n\eta}.
+\end{equation}
+The equation of $R'$ gives
+\[
+h^2=d(k^2-\eta^2),\qquad
+r^2=d\frac{k-\eta}{k+\eta}.
+\]
+Thus \eqref{eq:level} holds and $0<r<\sqrt d$.
+Varying $R'$ yields infinitely many abscissas, hence infinitely
+many $k$ and $r$. Also
+\[
+dk=n\left(\frac{db}{n}\right)^2,
+\]
+so all the curves $E_{dk}$ are rationally isomorphic to the fixed
+rank-one curve $E_n$.
+
+For each fixed $R'$ and corresponding $k,r$, vary $R$ and put
+\[
+s=\frac ba,\qquad y=\frac{kU}{da^2}.
+\]
+Its curve equation gives $y^2=d(k^2-s^4)$. There are infinitely
+many distinct $a^2$, and hence infinitely many $s$. This proves
+the theorem without inferring a rational point from local
+solubility or from rank alone.
+\end{proof}
+
+\begin{proposition}\label{prop:guards}
+For fixed prepared $d$, the projection of the rational witnesses
+in Theorem~\ref{thm:global} to the $(r,s)$ plane is Zariski dense,
+also over $\overline\Q$. In a finite etale algebra with
+$d$ a unit and one rational character sending $d$ to a prepared
+input, these witnesses may simultaneously avoid every character
+zero of
+\[
+d-r^2,\qquad d+r^2,\qquad s,\qquad
+(1-d)(d+r^2)+(d-r^2)s^2,
+\]
+and of the cleared radicand
+\begin{equation}\label{eq:cleared}
+Q_d(r,s)=d(1-d)^2(d+r^2)^2-d(d-r^2)^2s^4.
+\end{equation}
+Any additional finite collection of guards with nonzero polynomial
+norms in $r,s$ can be avoided as well.
+\end{proposition}
+\begin{proof}
+A polynomial vanishing on the projection is zero as a polynomial
+in $s$ at infinitely many $r$, by Theorem~\ref{thm:global}.
+Every coefficient is therefore zero. This argument works over
+$\overline\Q$.
+
+At a geometric character sending $d$ to $c\ne0$, each displayed
+factor is a nonzero polynomial in $r,s$. For the radicand, its
+coefficient of $s^4$ is $-c(c-r^2)^2$, which is not the zero
+polynomial. Their character products are therefore nonzero
+polynomials. Apply the density just proved to their finite
+product. No guard on $1-d$ or on $h$ is imposed: at a different
+character one may have $c=1$.
+\end{proof}
+
+\section*{Reconstruction and the prescribed-level requirement}
+
+On $k+s^2\ne0$, a rational point of \eqref{eq:fiber} yields the
+intrinsic witness
+\[
+v=\frac{y}{k+s^2},\qquad
+Y=\frac{2ds^2h}{k+s^2},
+\]
+which satisfies
+\[
+Y^2=d(d+v^2)^2s^4-d(d-v^2)^2(1-d)^2.
+\]
+The denominator is positive for the witnesses in
+Theorem~\ref{thm:global}. The identity follows from
+$(d-v^2)/(d+v^2)=s^2/k$.
+This reconstruction is asserted at the selected prepared
+character. Whole-character guard avoidance for the alternative
+block $\widetilde y^2=Q_d(r,s)$ is supplied directly by
+Proposition~\ref{prop:guards}; it does not require reconstruction
+of every conjugate into the former guarded chart.
+
+The pole implication can also be read directly from
+\eqref{eq:level}--\eqref{eq:fiber}. At a negative odd valuation
+$\nu=v_p(d)$, one has $v_p(\eta)=\nu$ and
+$v_p((d+r^2)/(d-r^2))=0$. Thus $v_p(k)=\nu$, and the two terms
+in $d(k^2-s^4)$ have distinct odd valuations $3\nu$ and
+$\nu+4v_p(s)$. They cannot sum to a rational square, at any prime.
+
+For a prescribed $k>0$, the map
+\[
+(s,y)\longmapsto(-ds^2,dsy)\in E_{dk}(\Q)
+\]
+shows that rational realization is exactly the occurrence of
+abscissa class $[-d]$ on this particular curve. A point with zero
+ordinate is included when $k$ is a rational square.
+Theorem~\ref{thm:global} selects infinitely many suitable levels;
+it does not prescribe $r$ to be a chosen existing detector
+coordinate. Both $r$ and $s$ remain free in this presentation.
+Consequently the result alone does not reduce the source's
+number of variables.
+
+\section*{An explicit rational fiber}
+
+The prepared input $d=112/225$ has nonsquare complement $113/225$.
+The points $(28,98)$ on $E_{21}$ and $(23548,3595130)$ on
+$E_{2373}$ give, after scaling the second point by
+$(x,y)\mapsto(x/225,y/3375)$,
+\[
+r=\frac{44}{69},\qquad k=\frac{3364}{675},\qquad
+h=\frac{7084}{2025},\qquad
+s=\frac{29}{15},\qquad y=\frac{23548}{10125}.
+\]
+These values satisfy \eqref{eq:level} and \eqref{eq:fiber} exactly.
+The reconstructed intrinsic witness is
+\[
+v=\frac4{15},\qquad Y=\frac{226688}{151875}.
+\]
+This example concerns a prepared input; it does not identify that
+input with the value of a complete elliptic detector.
+
+\begin{thebibliography}{9}
+\bibitem{Burungale}A.~Burungale,
+\emph{A Diophantine definition of $\mathbb Z$ in $\mathbb Q$},
+arXiv:2611.16130v1, Theorem B and Section 3.
+\url{https://arxiv.org/html/2611.16130v1}.
+\bibitem{Intrinsic}\emph{A two-coordinate pole test of coefficient
+height four}, project manuscript, 17 November 2026, Section 2;
+\texttt{intrinsic\_pole\_20261117\_v56.tex}. Its arithmetic input is \cite{Burungale}.
+\bibitem{AL}W.~Aitken and F.~Lemmermeyer,
+\emph{Counterexamples to the Hasse principle}, Theorem 6 and Appendix C.
+\url{https://public.csusm.edu/aitken_html/CounterHasse.pdf}.
+\end{thebibliography}
+\end{document}
