@@ -1,0 +1,629 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,booktabs,microtype}
+\usepackage[margin=25mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\DeclareMathOperator{\rad}{rad}\DeclareMathOperator{\Tr}{Tr}
+\title{An eleven-variable construction under rational \texorpdfstring{$abc$}{abc}}
+\author{}\date{17 November 2026}
+\begin{document}\maketitle
+
+\begin{abstract}
+A derivative quotient recovers simple collisions between two translated
+contact polynomials. Under ordinary rational $abc$, the unrecovered
+multiple factors have a height cost independent of the contact degree.
+Sixteen symmetric shifts give a single detector containing the input and
+root-height information. A balanced transformation of the six elliptic
+tests makes every new odd denominator prime harmless for completeness.
+Using one two-parameter intrinsic pole block and the guarded finite-algebra
+encoder gives eleven variables, including the distinguished input.
+A complete integer circuit has degree below $2^{33}$ and content one.
+The construction uses the retained elliptic group and formal-comparison
+theorems, simultaneous prime-pattern theorem, trace-height theorem, and
+Burungale's simultaneous-twist theorem.
+\end{abstract}
+
+\section{Radicals of translated power values}
+
+All heights are absolute logarithmic heights. For a nonzero rational
+number $r$, set
+\[
+ r^+_{\mathrm{odd},S}(r)=
+ \prod_{\substack{p\notin S\\v_p(r)>0\text{ odd}}}p.
+\]
+For a nonzero integer $N$, its simple-prime support is
+$\prod_{v_p(N)=1}p$ and its multiple-prime support is
+$\prod_{v_p(N)\ge2}p$. A fixed finite set $S$ changes their logarithms
+by bounded constants.
+
+We use the following standard consequence of ordinary rational $abc$:
+for every fixed squarefree homogeneous form $H\in\Z[A,B]$ and every
+$\epsilon>0$,
+\begin{equation}\label{eq:polyabc}
+ \log\rad H(A,B)\ge(\deg H-2-\epsilon)\log\max(|A|,|B|)-O(1)
+\end{equation}
+for primitive integer pairs with $H(A,B)\ne0$.
+This is the Belyi-form consequence stated in
+\cite[Appendix A.2, equation (A.2)]{RSZ}.
+All forms and exponents used below are fixed before the coefficient
+shift or source tuple is chosen.
+
+\begin{lemma}\label{lem:simple}
+Let $G(X)=\prod_{i=1}^k(X+c_i)$ for fixed distinct integers $c_i$.
+For $G(x)\ne0$, let $T(x)$ be the product of primes outside $S$
+with $v_p(G(x))=1$, and $J(x)$ the product with
+$v_p(G(x))\ge2$. Then
+\[
+ \log T(x)\ge(k-4-2\epsilon)h(x)-O(1),\qquad
+ \log J(x)\le(2+\epsilon)h(x)+O(1).
+\]
+\end{lemma}
+\begin{proof}
+Write $x=A/B$ in lowest terms, $B>0$, and
+$N=\prod_i(A+c_iB)$. Then $\gcd(N,B)=1$.
+The squarefree homogeneous form $\prod_i(A+c_iB)$ has degree $k$,
+so \eqref{eq:polyabc} gives
+$\log\rad N\ge(k-2-\epsilon)h(x)-O(1)$.
+Also $\log|N|\le k h(x)+O(1)$. Prime by prime,
+\[
+ \log J(x)\le\log|N|-\log\rad N.
+\]
+Finally $\log T(x)=\log\rad N-\log J(x)+O(1)$.
+\end{proof}
+
+\begin{lemma}\label{lem:power-multiple}
+Fix $m\ge1$ and distinct nonzero rationals $s_1,\ldots,s_r$.
+For $M\ne0$ with $D(M):=\prod_j(2M^m+s_j)\ne0$, the product
+of primes outside a fixed set with $v_p(D(M))\ge2$ has logarithm
+at most
+\[
+                         (2+\epsilon)h(M)+O(1).
+\]
+The constants may depend on $m$ and the shifts, but not on $M$.
+\end{lemma}
+\begin{proof}
+Write $M=A/B$ in lowest terms and $s_j=p_j/q_j$ in lowest terms.
+After excluding the fixed coefficient primes, use
+\[
+ H(A,B)=AB\prod_j(2q_jA^m+p_jB^m).
+\]
+This form is squarefree and has degree $rm+2$: the nonzero distinct
+shifts give disjoint simple root sets, disjoint also from $AB=0$.
+By \eqref{eq:polyabc},
+\[
+ \log\rad\prod_j(2q_jA^m+p_jB^m)
+              \ge(rm-2-\epsilon)h(M)-O(1),
+\]
+since $\log\rad(AB)\le2h(M)$.
+The numerator product has logarithmic size at most $rm h(M)+O(1)$.
+Its prime support of multiplicity at least two is bounded by the
+difference between logarithmic size and logarithmic radical.
+Rational cancellation affects only the excluded coefficient primes:
+the displayed factors are coprime to $B$ outside that set.
+\end{proof}
+
+\section{The derivative height estimate}
+
+Fix distinct integer shifts $c_1,\ldots,c_k$ and write
+\[
+ a=M^m,\quad x=a-z,\quad y=a+z,\quad t=xy=a^2-z^2,
+\]
+\[
+ F(a,z)=G(x)G(y)=\prod_{i=1}^k((a+c_i)^2-z^2),\qquad
+                         u=-\frac{2kaF}{F_a},
+\]
+where $F_a$ denotes the derivative with respect to $a$ while $z$ is
+fixed. Retain $M,t,F,F_a\ne0$, and require
+$2M^m+c_i+c_j\ne0$ for every nonzero sum $c_i+c_j$.
+The fixed set $S$ contains the primes dividing $2k$ and
+all primes at which distinct shifts cease to be distinct.
+
+\begin{theorem}\label{thm:derivative-height}
+Under ordinary rational $abc$, for every fixed $\epsilon>0$ with
+$k-6-3\epsilon>0$,
+\begin{equation}\label{eq:derivative-height}
+ \log r^+_{\mathrm{odd},S}(u)
+ \ge \frac{k-6-3\epsilon}{2}h(t)
+                  -(4+\epsilon)h(M)-O(1).
+\end{equation}
+The constant is uniform in $M,z$.
+\end{theorem}
+\begin{proof}
+Interchange $x,y$ if necessary so that $h(x)\ge h(y)$.
+Start with the simple-prime support $T(x)$ of Lemma~\ref{lem:simple}.
+Discard primes dividing the numerator or denominator of $M$, at a
+cost at most $2h(M)$. At every remaining prime under consideration,
+$2ka$ is a unit. Thus multiplying $-F/F_a$ by $2ka$ does not change
+any valuation used below. Since $G(x)$ has positive valuation, $x$ is integral;
+then $y=2a-x$ is integral too.
+
+If $v_p(G(y))=0$, exactly one factor $L=x+c_i$ has valuation one.
+The identity
+\[
+                         F_a=G'(x)G(y)+G(x)G'(y)
+\]
+shows that $F_a$ is a unit, and $v_p(u)=1$.
+If $v_p(G(y))\ge2$, discard $p$ in the support $J(y)$.
+This costs at most $(2+\epsilon)h(y)+O(1)$.
+
+It remains to treat $v_p(G(x))=v_p(G(y))=1$.
+There are unique factors $L=x+c_i$ and $R=y+c_j$ of valuation one.
+Write $F=LRK$, where $K$ is a local unit. Differentiation gives
+\[
+                       F_a=(L+R)K+LRK_a.
+\]
+The derivative $K_a$ is integral. Since
+$L+R=2a+c_i+c_j$, valuation one of this sum implies
+$v_p(F_a)=1$ and again $v_p(u)=1$.
+Otherwise $p^2\mid 2a+c_i+c_j$ locally.
+The case $c_i+c_j=0$ is impossible here because $a$ is a unit.
+Let $D(M)$ be the product over the distinct nonzero sums $c_i+c_j$.
+Lemma~\ref{lem:power-multiple} bounds the remaining exceptional
+support by $(2+\epsilon)h(M)+O(1)$.
+
+Every surviving prime therefore occurs in
+$r^+_{\mathrm{odd},S}(u)$. Consequently
+\begin{align*}
+ \log r^+_{\mathrm{odd},S}(u)
+ &\ge(k-4-2\epsilon)h(x)-(2+\epsilon)h(y)\\
+ &\hspace{12mm}-(4+\epsilon)h(M)-O(1)\\
+ &\ge(k-6-3\epsilon)\max(h(x),h(y))
+                  -(4+\epsilon)h(M)-O(1).
+\end{align*}
+Finally $h(t)\le h(x)+h(y)\le2\max(h(x),h(y))$.
+\end{proof}
+
+\section{One elliptic detector}
+
+Retain the curve, point charts, subgroup and formal-comparison theorems
+of \cite{Conditional,Unit}:
+\[
+ K=\Q(\sqrt2),\qquad E:y^2=x^3-(3-\sqrt2)^2x,\qquad
+ 2E(K)=\Z P,
+\]
+\[
+ P=\left(\frac{57-28\sqrt2}{8},
+          \frac{-660+417\sqrt2}{32}\right).
+\]
+The three point roles are $A=[n]P$, $H=[h]P$, $U=[j]P$.
+Keep every original nonzero point, affine difference and quotient guard.
+With $f=1/x$ and $\zeta=-x/y$, put
+\[
+ r=\frac{\zeta(U)}{\zeta(H)},\qquad
+ r'=\overline{\frac{\zeta(U-A)}{\zeta(H-P)}},
+\]
+\[
+ C_1=f(H),\quad C_2=f(U),\quad
+ C_3=\overline{f(H-P)},\quad C_4=\overline{f(U-A)},\quad
+ C_5=r-r',\quad C_6=r-X.
+\]
+For a fixed odd integer $B\ge3$, set
+\begin{equation}\label{eq:scale}
+ \beta=X^2+B,\quad T=\Tr x(A),\quad
+ M=\beta^4+T^4,\quad a=M^3,\quad t=a^2-z^2=M^6-z^2,
+\end{equation}
+where $z\in\Q$ is the one retained slope parameter.
+Choose the sixteen shifts
+\[
+                  \{c_i\}=\{-8,-7,\ldots,-1,1,\ldots,7,8\}.
+\]
+Define $F,u$ as in the preceding section. An expression without $a$
+uses
+\begin{equation}\label{eq:squared-expression}
+ \mathcal A=M^6,\quad \mathcal Z=z^2,\quad
+ \mathcal G(\mathcal A,\mathcal Z)=
+ \prod_{j=1}^8\bigl((\mathcal A+j^2-\mathcal Z)^2-4j^2\mathcal A\bigr).
+\end{equation}
+Then $F=\mathcal G(a^2,z^2)$, $F_a=2a\mathcal G_{\mathcal A}$ and
+\[
+                         u=-16\frac{\mathcal G}{\mathcal G_{\mathcal A}}.
+\]
+The integer polynomial $\mathcal G_{\mathcal A}$ has content eight.
+Thus the reduced displayed expression is
+$u=-2\mathcal G/\mathcal H$, where
+$\mathcal H=\mathcal G_{\mathcal A}/8$ is primitive.
+Set
+\begin{equation}\label{eq:balanced}
+ D_i=\frac{C_i^2}{1+uC_i^2},\qquad
+ W=\prod_{i=1}^6\left(1+\frac{D_i^2}{u}\right),\qquad
+ V=\Tr(W^{-1}),\qquad
+ w=\frac{u}{(1+u)^2},\qquad b=\frac{4w}{V^2}.
+\end{equation}
+All divisions, $M,t,F,F_a$, the two-slot product norm, and $V$ are
+guarded nonzero. No nonzero condition is imposed on an individual $C_i$.
+
+For the single pole block use two rational parameters $v,s$ and the
+intrinsic equation of \cite{Intrinsic}:
+\begin{equation}\label{eq:pole}
+ \eta=7b,\qquad
+ Y^2=P_\eta(v,s):=
+ \eta(\eta+v^2)^2s^4-\eta(\eta-v^2)^2(1-\eta)^2.
+\end{equation}
+The root $Y$ is a finite quadratic generator, not an additional free
+coordinate. Its cleared radicand norm is retained as a guard.
+
+\begin{lemma}\label{lem:balanced}
+Let $p$ be an odd prime unramified in $K$ and let $\nu=v_p(u)$ be odd.
+At each place above $p$,
+\[
+                  v_p(D_i)=\max(2v_p(C_i),-\nu).
+\]
+If $\nu>0$, positivity of $v_p(D_i)$ is equivalent to positivity of
+$v_p(C_i)$. If $\nu<0$, every factor of $W$ is congruent to one
+modulo $p$, independently of poles among the $C_i$.
+\end{lemma}
+\begin{proof}
+The two terms of $1+uC_i^2$ have distinct valuations, since
+$\nu+2v_p(C_i)$ is odd when finite. The displayed identity follows.
+For $\nu<0$, it gives
+\[
+                v_p(D_i^2/u)\ge-3\nu>0.
+\]
+Identically zero tests are included by assigning them valuation
+$+\infty$.
+\end{proof}
+
+\begin{lemma}\label{lem:extract}
+For every rational solution of the guarded source, if $X\ne n$ then
+\[
+              r^+_{\mathrm{odd},S}(u)\mid |\operatorname{num}(X-n)|.
+\]
+Here $S$ is the retained fixed exceptional set, containing all primes
+at most $76176$.
+\end{lemma}
+\begin{proof}
+Let $\nu=v_p(u)>0$ be odd. Then $v_p(w)=\nu$.
+Every factor of $W$ has valuation
+$\min(0,2v(D_i)-\nu)\le0$. Let $q\le0$ be the largest local
+valuation of $W$ at a place above $p$. Then $v_p(V)\ge-q$.
+The intrinsic pole equation excludes negative odd valuations of
+$\eta=7b$; outside $S$ this gives
+\[
+                    1\le v_p(b)\le\nu+2q.
+\]
+At a place attaining $q$, each factor has valuation greater than
+$-\nu/2$, which implies $v(D_i)>\nu/4>0$.
+Lemma~\ref{lem:balanced} gives $v(C_i)>0$ for all six original tests.
+The retained formal-comparison theorem now applies without a change:
+one of $h,h-1$ is a local unit; the two truncated logarithmic ratios
+are congruent to $j/h$ and $(j-n)/(h-1)$; their equality and the
+target test imply $X\equiv n\pmod p$ and $p$-integrality of $X$.
+This is the local-implication argument of \cite[Section 4]{Conditional}.
+\end{proof}
+
+\section{Height soundness}
+
+Put $E_h=h(1:\beta:T)$ and take $\kappa=1001/1000$.
+Ordinary rational $abc$ supplies this weak exponent and every use of
+\eqref{eq:polyabc}. The retained binary-power lemma and the signed
+mixed-power theorem \cite{Signed} give
+\begin{equation}\label{eq:rootbounds}
+ \alpha E_h\le h(M)+O(1),\qquad
+ h(M)\le Qh(t)+O(1),\qquad
+ \alpha=\frac{997}{1001},\quad Q=\frac{1002}{995}.
+\end{equation}
+The second estimate uses $t=M^6-z^2$; its denominator is
+$6-5\kappa=199/200>0$.
+The trace-height theorem also gives
+\[
+                     n^2\le A_0h(T)+J_0
+\]
+for fixed constants. These constants are independent of $B$.
+
+Taking $\epsilon=1/100$ in Theorem~\ref{thm:derivative-height} gives
+\[
+ \gamma h(t)\le\log r^+_{\mathrm{odd},S}(u)+C h(M)+O(1),\qquad
+             \gamma=\frac{997}{200},\quad C=\frac{401}{100}.
+\]
+The exact strict absorption inequality is
+\begin{equation}\label{eq:strict}
+ Q\left(C+\frac1{2\alpha}\right)
+       =\frac{225373347}{49600750}<\frac{997}{200}.
+\end{equation}
+Its positive difference is $87545567/198403000$.
+No further $h(M)$ loss occurs in Lemma~\ref{lem:extract}.
+
+\begin{theorem}\label{thm:sound}
+Under the stated arithmetic inputs and ordinary rational $abc$,
+every guarded rational source solution has $X=n\in\Z$ for every
+sufficiently large fixed odd $B$.
+\end{theorem}
+\begin{proof}
+Suppose $X\ne n$. Lemma~\ref{lem:extract} and the input-height bound
+$2h(X)\le h(\beta)\le E_h$ give
+\[
+ \log r^+_{\mathrm{odd},S}(u)
+           \le\tfrac12 E_h+\log(1+|n|).
+\]
+Together with \eqref{eq:rootbounds}, this gives
+\[
+ \left(\gamma-Q\left(C+\frac1{2\alpha}\right)\right)h(t)
+                          \le\log(1+|n|)+O(1).
+\]
+The coefficient is positive. The trace-height bound and
+$h(T)\le E_h\le Qh(t)/\alpha+O(1)$ bound $n$, then $h(t)$ and
+$E_h$, independently of $B$. This contradicts
+$E_h\ge h(\beta)\ge\log B$ for sufficiently large $B$.
+\end{proof}
+
+\section{Prime preparation and completeness}
+
+Fix $X=n\ne0$ and take $A=[n]P$. Then $M$ and $a$ are fixed positive
+rationals, with $a>8$. Temporarily put $U=[n]H$. Use the retained
+point and sign-branch avoidance argument to choose compact real and
+fixed finite-place neighborhoods for $H$ and its required differences.
+For each actual test that is not identically zero on this multiplication
+family, avoid its zero set as well, so its valuation is fixed in the
+chosen finite neighborhoods. Identically zero tests remain zero.
+Such finite avoidance is permitted by the retained cyclic-point density
+and congruence refinement. All original guards are retained.
+
+The sixteen symmetric shifts make $F$ even in both $a$ and $z$.
+In particular $F_a$ is divisible by $a$, and
+\begin{equation}\label{eq:asymptotics}
+ F\sim z^{32},\qquad F_a\sim-32a z^{30},\qquad
+ u\sim z^2,\qquad w\sim\frac1{z^2}
+\end{equation}
+as $z$ tends to infinity at any fixed place.
+Both leading expressions for $u,w$ are rational squares.
+At the selected real character, choose $z>a+8$.
+Every factor of $F$ is negative, so $F>0$, and
+\[
+ \frac{F_a}{F}=\sum_i\frac{2(a+c_i)}{(a+c_i)^2-z^2}<0.
+\]
+Thus $u>0$. The same inequalities may be required at every prepared
+real character by increasing the real lower bound for $z$.
+
+At a fixed finite place, make $z$ sufficiently large relative to the
+already fixed test valuations. Then $D_i\sim1/u$ for every nonzero
+test, and $D_i=0$ for an identically zero test. Hence
+\[
+                       W\longrightarrow1,\qquad V\longrightarrow2.
+\]
+The convergence is uniform on the chosen neighborhoods.
+At two, \eqref{eq:asymptotics} makes $w$ a local square of arbitrarily
+large positive even valuation, and $v_2(V)=1$. Consequently
+\[
+ b\in\Q_2^{\times2},\quad v_2(b)\ge4,\quad
+ \eta=7b\in7\Q_2^{\times2}.
+\]
+At seven make $w$ a local square of positive valuation and $V$ a unit;
+then $v_7(b)\ge0$. At the real places $W\to1$, $w\to0$, and
+$b\to0$, so require $0<b<1/7$. Include all fixed primes dividing
+the numerator or denominator of $a$, and the original exceptional
+and avoidance primes, in this temporary preparation. It does not
+enlarge the global exceptional set in the soundness argument.
+
+Choose an integer $D>0$ with $D^2(a+c_i)\in\Z$ for all $i$.
+Apply Sun's simultaneous prime theorem \cite[Theorem 4.1]{Sun} to
+the thirty-two distinct coefficients $\pm D^2(a+c_i)$, with arbitrary
+prescribed divisibility of its square-denominator parameter, sufficiently
+large primes, and the real lower bound just chosen. It gives
+\[
+ p_i^\pm=N\pm D^2(a+c_i)L^2,\qquad
+                         z=\frac{N}{D^2L^2},
+\]
+where all thirty-two $p_i^\pm$ are distinct positive primes.
+Prescribed divisibility of $L$ makes $z$ arbitrarily large at the
+fixed finite places: the common numerator is a unit at these places,
+since otherwise the distinct selected primes would all be divisible
+by the same fixed prime. The theorem supplies the same conjugate
+reduction-order compatibility and finite avoidance as the retained
+elliptic preparation; the exact common-progression and rational-contact
+deductions are \cite[Section 2]{Dependencies}. The theorem permits
+every fixed finite number of positions, so all thirty-two positions
+are covered by its stated scope. Uniformity in their coefficients is
+not required for completeness.
+
+The exact factorization is
+\begin{equation}\label{eq:primefactorization}
+                    F=\frac{\prod_i p_i^-p_i^+}{D^{64}L^{64}}.
+\end{equation}
+At a selected prime, just one of the thirty-two linear factors has
+valuation one. Its opposite factor is a unit, and therefore so is
+the derivative of its quadratic factor, $2(a+c_i)$. Hence
+$v_p(F_a)=0$ and $v_p(u)=v_p(w)=1$.
+Refine the shared auxiliary index using the retained compatible
+congruences, preserving the already selected finite and real neighborhoods.
+At the successful place the first four original tests have valuation
+at least two and the comparisons at least four. The transformed tests
+therefore make $W\equiv1\pmod p$.
+At the other place its reciprocal product is zero or one modulo $p$,
+so $V$ is a unit. Thus $v_p(b)=1$.
+
+We verify all other odd valuations, including new primes of $F_a$.
+Away from the temporary preparation set, $a$ is a local unit.
+If $z$ is integral and $p$ is not selected, \eqref{eq:primefactorization}
+makes $F$ a unit, while $F_a$ is integral. Thus $v_p(u)\le0$.
+If $z$ has negative valuation, the leading terms in
+\eqref{eq:asymptotics} dominate, since the remaining coefficients are
+integral, $a$ is a unit, and $p\ne2$. Hence
+\[
+ v_p(F)=32v_p(z),\quad v_p(F_a)=30v_p(z),\quad
+                         v_p(u)=2v_p(z)
+\]
+is even. At the fixed numerator and denominator primes of $a$, the
+prescribed dominance in \eqref{eq:asymptotics} gives
+$v_p(u)=2v_p(z)$, again even. The same holds at the fixed primes
+dividing $2k$, by making the prescribed dominance sufficiently strong.
+
+It follows that every positive odd valuation of $u$ outside the fixed
+preparation occurs at a selected prime. At every negative odd valuation,
+Lemma~\ref{lem:balanced} makes both slots of $W$ congruent to one,
+so $V\equiv2\pmod p$ and
+$v_p(b)=v_p(w)=-v_p(u)>0$.
+If $v_p(u)$ is even, then $v_p(w)$ is even too: when $v_p(u)=0$,
+the denominator $(1+u)^2$ still contributes an even valuation.
+Division by $V^2$ does not change parity. The fixed-place preparation
+handles two and seven as above. Therefore $b$ has square reduced
+denominator, and so does $\eta=7b$.
+
+The actual input to the intrinsic pole satisfies
+\[
+ 0<\eta<1,\qquad \eta\text{ has square reduced denominator},\qquad
+ \eta\in7\Q_2^{\times2},\qquad v_2(\eta)\ge4.
+\]
+Burungale's theorem, in the intrinsic form \cite{Intrinsic}, supplies
+the rational witnesses $v,s,Y$ in \eqref{eq:pole}.
+
+\section{Guards and eleven coordinates}
+
+At every prepared point-algebra character, $a>8$ and $z>a+8$.
+Thus $F>0$, $-F_a>0$, $u>0$, $1+u>0$, and $w>0$.
+Each new denominator $1+uC_i^2$ is positive in both real slots,
+and each factor of $W$ is at least one. Therefore the new denominator,
+product, trace and input norms are nonzero. The original point and
+difference guard proof is unchanged.
+
+The intrinsic witness pairs are Zariski dense in their parameter plane.
+At any point-algebra character with value $\eta=c\ne0$, the
+polynomial $P_c(v,s)$ is nonzero, with leading coefficient
+$c(c+v^2)^2$ in $s$. Consequently the norm of its cleared radicand
+is a nonzero polynomial in $v,s$. Density permits avoiding that norm
+and all other retained pole guards simultaneously. No bound $c<1$
+is required at the other characters, and no guard on $1-c$ is used.
+
+The point algebra has rank $4^3=64$. Adjoining the single monic
+quadratic pole root gives rank $128$. The guarded separator and norm
+determinant of \cite{Unit} use one rational coordinate and force a
+rational character of the entire algebra. Their separation proof
+permits nonreal conjugate pole roots; nonzero radicand norms suffice.
+The coordinate census is
+\[
+ 1\text{ input}+6\text{ point coordinates}+1\text{ slope }z
+                 +2\text{ pole parameters}+1\text{ encoder}=11.
+\]
+All displayed rational operations admit finite integer polynomial
+specifications after clearing the guarded denominators.
+In the retained coordinates, the height argument $t=M^6-z^2$ has
+degree at most $48$. The displayed numerator and denominator of $u$
+have degrees at most $768$ and $720$, respectively. These bounds describe the local expressions. The complete determinant
+bounds are stated below.
+
+\begin{theorem}\label{thm:eleven}
+Under ordinary rational $abc$ and the retained proved arithmetic
+inputs cited above, there is a computable family of integer polynomials
+in eleven variables, including the input, whose input projection is
+exactly $\Z$ for every sufficiently large fixed odd coefficient shift
+$B$. The usual final factor $X$ includes zero. The sufficient shift
+is not numerically specified. The integer circuit below has degree at
+most $5444199553<2^{33}$, fewer than $2^{309}$ monomials, and
+integer content one. Its coefficient bound is computable for each fixed $B$.
+\end{theorem}
+\begin{proof}
+Theorem~\ref{thm:sound} gives soundness. The prime preparation and
+intrinsic pole construction give completeness for each nonzero integer
+input, including every whole-character guard. The one-coordinate
+encoder gives the stated polynomial and census.
+\end{proof}
+
+
+\section{An integer coefficient specification}
+
+Retain, in order,
+\[
+ X,\ A.a_0,A.a_1,\ H.a_0,H.a_1,\ U.a_0,U.a_1,\ z,v,s,\ E_0.
+\]
+Here $E_0$ is the sole encoder coordinate. For each point role write
+$h=h_0+h_1\sqrt2$ and $h^4-(11-6\sqrt2)=A_0+B_0\sqrt2$.
+Use the integral rank-four multiplication table of \cite[Section 2]{Unit},
+with basis $1,\mathsf U,\mathsf V,\mathsf W$ and
+$j=(\mathsf U+\mathsf V\sqrt2)/2$. Then $x=h^2$ and $y=hj$.
+Form the two affine differences by the homogeneous formulas of that
+section. Equations \eqref{eq:scale}--\eqref{eq:pole} now specify
+rational operations in their rank-$64$ tensor algebra $\mathcal B$.
+Every inversion retains its denominator norm.
+
+The accompanying circuit uses $u=-2\mathcal G/\mathcal H$, where
+$\mathcal H=\mathcal G_{\mathcal A}/8$ is primitive. It includes
+$M,t,\mathcal G,\mathcal H,u,1+u$, every original point and difference
+denominator, every balanced denominator norm, the detector product norm
+and trace numerator, and the intrinsic input as nonzero conditions.
+The additional intrinsic guards are $s$ and $\eta\pm v^2$; their
+norms are nonzero at a suitable dense witness pair. It imposes no
+guard on an individual comparison test or on $1-\eta$.
+
+If the intrinsic radicand is $N/D$ in the guarded algebra, replace its
+root by $q$ with $q^2=ND$. Syntactic square extraction, with its
+multipliers guarded, gives the equivalent rank-$128$ free algebra
+$\mathcal A$. Let $T_*$ be the product of the distinct nonconstant
+factors of all source guards and cleared radicands, and set
+\[
+ \Delta=\det_{\mathcal B}M_{T_*}.
+\]
+The integral separator $\Omega$ is given by \cite[Section 6]{Unit},
+with three point blocks and one quadratic block. The specified polynomial is
+\[
+             F_B=X\det_{\mathcal A}(I-E_0\Delta M_\Omega).
+\]
+At $\Delta=0$ the determinant is one. At $\Delta\ne0$ a rational
+root is equivalent to a rational character of the entire guarded source.
+This proves the required equivalence without adding an inverse coordinate.
+Since $F_B|_{E_0=0}=X$, its integer content is one.
+
+The machine-readable circuit and complete determinant recipe are in
+\nolinkurl{computation/few_variables/derivative11_v59}.
+The native circuit has $2119$ integer arithmetic nodes and $38$ recorded
+guard numerators. Factoring their syntactic supports and the cleared
+quadratic radicand gives $41$ nonconstant support factors.
+The weighted degree bounds of \cite{Unit} give
+\[
+ \deg T_*\le652607,\qquad \deg\Omega\le765960.
+\]
+The respective algebra ranks are $64$ and $128$, so
+\[
+ \deg F_B\le1+128(64\cdot652607+765960+1)
+                         =5444199553<2^{33}.
+\]
+The encoder degree is at most $128$. The corresponding monomial bound is
+\[
+ \binom{5444199552+11}{11}
+ -\binom{5444199552-128+10}{11}<2^{309}.
+\]
+Both bounds are uniform in the fixed odd $B\ge3$ because its value is
+an integer parameter of degree zero. The degree proof does not depend
+on a numerical test of its sufficient defining threshold.
+The compiler also gives coefficient norm bounds for every specified $B$.
+For example, its $B=3$ algebraic fixture has
+$H(F_3)\le2^{9459941120}$; this fixture is not claimed to define $\Z$.
+An independent iterative traversal checks all recorded rational
+ denominators, support factorizations, square extractions and degree bounds.
+Finite arithmetic checks are distinct from the universal arithmetic
+proofs in the preceding sections.
+
+\begin{thebibliography}{9}\raggedright
+\bibitem{RSZ}Z.~Rudnick, P.~Sarnak and A.~Zaharescu,
+\emph{The distribution of spacings between the fractional parts of
+$n^2\alpha$}, Inventiones Mathematicae 145 (2001), 37--57,
+Appendix A.2, equation (A.2),
+\url{https://www.math.tau.ac.il/~rudnick/papers/rsz.pdf}.
+\bibitem{Conditional}\emph{Thirteen Variables from Direct Elliptic
+Index Comparison}, repository manuscript,
+\nolinkurl{papers/conditional_few_variables/direct_input13_20261110_v22.tex}.
+\bibitem{Unit}\emph{A single norm determinant for the 25- and 13-variable
+constructions}, repository manuscript,
+\nolinkurl{papers/finite_algebra/unit_norm_20261114_v28.tex}.
+\bibitem{Signed}\emph{A signed mixed-power height inequality},
+companion manuscript,
+\nolinkurl{papers/elliptic_heights/signed_mixed_power_height_20261117_v58.tex}.
+\bibitem{Intrinsic}\emph{A two-coordinate pole test of coefficient
+height four}, companion manuscript,
+\nolinkurl{papers/pole_parameters/intrinsic_pole_20261117_v56.tex},
+using A.~Burungale,
+\emph{A Diophantine definition of $\Z$ in $\Q$},
+arXiv:2611.16130v1, Theorem B,
+\url{https://arxiv.org/abs/2611.16130}.
+\bibitem{Sun}Z.-W.~Sun,
+\emph{48 unknowns for Hilbert's tenth problem over the rationals},
+arXiv:2610.20691v3, Theorem 4.1,
+\url{https://arxiv.org/pdf/2610.20691v3}.
+\bibitem{Dependencies}\emph{Arithmetic dependencies of the defining
+polynomial}, repository manuscript,
+\nolinkurl{papers/arithmetic_dependencies/arithmetic_dependencies_20261108_v8.tex}.
+\end{thebibliography}
+\end{document}

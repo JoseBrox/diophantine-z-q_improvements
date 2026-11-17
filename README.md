@@ -10,7 +10,7 @@ whose rational input projection is the integers, under the arithmetic premises s
 
 **Every variable count includes the input.** Degree means total degree. Coefficient height is the maximum absolute integer coefficient after fixed parameters have been substituted. The priorities are variable count, degree, then coefficient height. No global minimum is claimed.
 
-## Current constructions — 16 November 2026
+## Current constructions — 17 November 2026
 
 “None” below means **no additional conjecture beyond the explicitly retained arithmetic premises**. The full independent audit of the prime-pattern, pole-realization and modular-height foundations is not declared complete.
 
@@ -22,6 +22,7 @@ whose rational input projection is the integers, under the arithmetic premises s
 | [Fully specified quartic](papers/quartic/quartic257_20261116_v45.tex) | None | **257** | **4, exact** | $N=9682$; 229 quadratic squares; **3,679 monomials**; exact height $149^{19366}$. |
 | [Few variables under weak abc](papers/finite_algebra/terminal_quadratic_root_20261115_v40.tex) | Weak abc at $121/100$; ordinary Szpiro suffices | **13** | $\le 43{,}211{,}777 < 2^{26}$ | Sufficient odd shift ineffective. |
 | [Lower degree under stronger weak abc](papers/finite_algebra/terminal_quadratic_root_20261115_v40.tex) | Weak abc at $16/15$; ordinary rational abc suffices | **13** | $\le 39{,}858{,}177 < 2^{26}$ | Sufficient odd shift ineffective. |
+| [Fewest variables under ordinary abc](papers/conditional_few_variables/derivative_detector11_20261117_v59.tex) | Ordinary rational abc | **11** | $\le 5{,}444{,}199{,}553 < 2^{33}$ | Complete integer circuit; every sufficiently large fixed odd shift; sufficient threshold ineffective. |
 | [Fewest quartic variables under abc](papers/quartic_existence/quartic_abc71_20261116_v49.tex) | Ordinary rational abc | **71** | **4, exact** | 59 quadratic squares; **1,187 monomials**. Exact height below; sufficient shift ineffective. |
 
 All these polynomials have integer content one. The general degree figures are upper bounds for finite, unexpanded determinant specifications. Their support bounds are below $2^{1193}$, $2^{1401}$, $2^{284}$, and $2^{283}$, in the order 25, 27, weak-abc 13, stronger-abc 13.
@@ -46,7 +47,7 @@ The 71-variable quartic uses the complete three-coordinate unit reference chart 
 
 The coefficient-basis transformations and the 195/257-coordinate eliminations preserve their corresponding full rational solution sets. The finite-algebra construction permits a zero final pole ordinate and proves soundness on that larger locus.
 
-Current specifications: [results JSON](data/results_20261117_v58.json), [proof and verification guide](docs/results_20261117_v58.md), and [research directions](docs/research_directions.md).
+Current specifications: [results JSON](data/results_20261117_v59.json), [proof and verification guide](docs/results_20261117_v59.md), and [research directions](docs/research_directions.md).
 
 The [fixed-fiber and detector-index theorems](docs/common_parameter_guard_reduction_20261116_v42.md) show that one common rational pole fiber with nonzero ordinates suffices for all remaining pole guards, and give independent auxiliary-index families with unchanged square-class scalars. The common rational fiber itself remains unproved. Proved obstructions and lower bounds are collected separately in [negative_results](negative_results/README.md).
 
@@ -57,6 +58,28 @@ This repository belongs to the ℤℚ Diophantine Project, which uses the collec
 This repository includes updated results and more related work: polynomial witnesses of unrestricted degree but lower number of variables, results conditional on the abc conjecture, etc.
 
 Cite this work as "ℤℚ Diophantine Project contributors. ℤ is Diophantine in ℚ. 2026. https://github.com/elliotglazer/diophantine-z-q". If you want to include any of the related results specific to this repository, please add "https://github.com/JoseBrox/diophantine-z-q_improvements" to the end of the reference.
+
+## Eleven variables under ordinary abc
+
+The [derivative detector theorem](papers/conditional_few_variables/derivative_detector11_20261117_v59.tex) gives a complete **11-variable family**, under ordinary rational abc and the precisely stated elliptic, prime-pattern, trace-height and intrinsic-pole inputs. It uses one contact argument for both the input and root trace heights:
+
+```math
+\beta=X^2+B,\qquad T=\operatorname{Tr}x(A),\qquad
+M=\beta^4+T^4,\qquad a=M^3,\qquad t=M^6-z^2.
+```
+
+For the sixteen shifts $c=\pm1,\ldots,\pm8$, set
+
+```math
+F(a,z)=\prod_c((a+c)^2-z^2),\qquad
+u=-\frac{32aF}{\partial F/\partial a},\qquad
+D_i=\frac{C_i^2}{1+uC_i^2},\qquad
+W=\prod_{i=1}^{6}\left(1+\frac{D_i^2}{u}\right).
+```
+
+The derivative quotient recovers simple simultaneous contact factors. The transformed tests preserve local extraction at every positive odd valuation of $u$ and automatically prepare its new negative odd valuations. The resulting input $7b$, with $b=4u/((1+u)^2\operatorname{Tr}(W^{-1})^2)$, therefore needs only one complete intrinsic pole block. Sun's theorem applies to the **32 fixed prime positions**; the proof checks their order compatibility, fixed-place preparation and every algebra-character guard.
+
+The count is **1 input + 6 point coordinates + 1 contact parameter + 2 pole parameters + 1 encoder = 11**. The finite algebra has rank **128**. The [complete specification and independent checks](computation/few_variables/derivative11_v59) certify degree at most **5,444,199,553**, fewer than $2^{309}$ monomials and integer content one. The sufficient odd shift is ineffective; $B=3$ is an algebraic fixture only. This ordinary-abc result does not assert the same count under the two weaker fixed-exponent abc hypotheses. **The targets 21 and 9 remain unproved.**
 
 ## Finite algebras and the general polynomials
 
@@ -134,7 +157,7 @@ The separate [abelian-parameter obstruction](negative_results/papers/rational_fi
 
 The [native square-complement theorem](papers/pole_parameters/guarded_complement_reduction_20261116_v45.tex) proves that every complement $17(17-b_i)$ is a unit of the entire point algebra at a prepared actual tuple. The proof uses splitting over $\mathbb Q(\sqrt2)$ and the odd valuation of $w_i/17$. If the two actual complements can be realized as rational squares for each integer input, both complete pole blocks can be removed: the conditional census is **21 variables**, or **9** in either conditional source. **That additional realization theorem is unproved; these are targets, not established record counts.** The same paper gives infinitely many prepared free inputs at one common pole parameter, without asserting native trace matching.
 
-The [finite-class complement theorem](papers/pole_parameters/finite_complement_classes_20261116_v46.tex) weakens that realization target. Finitely many levels $17m^2$ and positive square classes supported on the **original exceptional prime set** can be allowed without adding retained coordinates. At the single level 17, it is enough that both actual complements have even valuation outside that fixed set. All whole-algebra guards remain automatic. The paper proves the same conditional **21/9** census and gives an infinite prepared free-input family with nonsquare complement class 409, allowed when 409 belongs to the exceptional set. **Actual native realization remains unproved**, so the established general counts remain **25 and 13**.
+The [finite-class complement theorem](papers/pole_parameters/finite_complement_classes_20261116_v46.tex) weakens that realization target. Finitely many levels $17m^2$ and positive square classes supported on the **original exceptional prime set** can be allowed without adding retained coordinates. At the single level 17, it is enough that both actual complements have even valuation outside that fixed set. All whole-algebra guards remain automatic. The paper proves the same conditional **21/9** census and gives an infinite prepared free-input family with nonsquare complement class 409, allowed when 409 belongs to the exceptional set. **Actual native realization remains unproved**, so this criterion gives no smaller defining bound.
 
 The [detector-field norm scalar](papers/pole_parameters/detector_field_norm_scalar_20261116_v52.tex) gives a further **25-variable** family under the retained arithmetic premises. Its degree-four input polynomial reflects rational integrality, while a fixed rescaling supplies the scalar contact-height argument. The scalar is an explicit norm from $\mathbb Q(\sqrt2)$ for every rational input, and both prepared physical weights can be chosen as norms from that same field. The unchanged conditional sources also admit this norm preparation. Thus their bare conics $u_i^2-2y_i^2=4w_i/17$ have rational points. Matching $u_i$ to the actual detector traces remains unproved; no numerical defining-polynomial degree is assigned to this family.
 
@@ -153,7 +176,7 @@ The class $d_i=1-4w_i^*/17$ is automatically a local unit at the relevant primes
 (m_iV_i^*)^2-d_i y_i^2=\frac{4w_i^*}{17},\qquad i=0,1,
 ```
 
-with the first coordinates prescribed by the actual coupled detector tuple. Further classes may depend on the existing auxiliary data, subject to the proved local and whole-character conditions. **Simultaneous prescribed-trace rational realization remains unproved. The established general counts remain 25 and 13.** [Exact certificates](computation/pole_parameters/adaptive_levels_v50) verify the identities and specified local examples, not uniform rational realization.
+with the first coordinates prescribed by the actual coupled detector tuple. Further classes may depend on the existing auxiliary data, subject to the proved local and whole-character conditions. **Simultaneous prescribed-trace rational realization remains unproved. The general and weak-abc source counts remain 25 and 13; the ordinary-abc construction above uses 11.** [Exact certificates](computation/pole_parameters/adaptive_levels_v50) verify the identities and specified local examples, not uniform rational realization.
 
 The [norm-compatible preparation](papers/pole_parameters/norm_compatible_scalar_20261116_v47.tex) makes both associated norm conics rationally soluble throughout a prepared integer-input family. For the general source it uses an explicit degree-eight input polynomial reflecting integrality and a scalar that is a norm from $\mathbb{Q}(\sqrt{10657})$, preserving the 25-coordinate source and its height argument. The conditional sources already admit the same bare-norm preparation without changing their scalar. The unresolved equations require the first conic coordinates to equal the **actual prescribed detector traces**; bare conic solubility does not imply the 21/9 target.
 
@@ -175,7 +198,7 @@ The [guarded rational-square criterion](papers/pole_parameters/native_square_cri
 
 A rational-square value excludes every required negative odd detector pole. The radicand is positive at every prepared character, and its reference value at $W=1$ is exactly $w^2/(1+w)^2$. Fixed nonzero exceptional-set units are admissible coefficients; so are the proved source-dependent choices $a=1+wc^2$ for existing guarded rational source functions $c$. These choices add no rational coordinate or nonzero guard. The flat choice $a=1$ has an exact prescribed-coordinate elliptic form, and the conditional detector has a trace-preserving reference involution.
 
-**Two simultaneous rational-square values on actual prepared detector tuples would give 21 variables, or 9 under the conditional source hypotheses. This global realization theorem remains unproved.** The proved local preparation and exact finite-algebra count do not replace it. The [current proof guide](docs/results_20261117_v58.md) states the precise conditions and their limitations.
+**Two simultaneous rational-square values on actual prepared detector tuples would give 21 variables, or 9 under the conditional source hypotheses. This global realization theorem remains unproved.** The proved local preparation and exact finite-algebra count do not replace it. The [current proof guide](docs/results_20261117_v59.md) states the precise conditions and their limitations.
 
 ### A single cover and finite square-class alternatives
 
@@ -219,6 +242,8 @@ The [definability reductions](papers/number_fields/number_field_definability_202
 **No counterexample for a number field, and no theorem covering every number field, is established here.** Failure of a particular polynomial after scalar extension is not a counterexample to Diophantine definability. The [research guide](docs/research_directions.md#rings-of-integers-of-number-fields) states the remaining denominator and realization problems.
 
 ## Negative results
+
+The [fixed-slope incidence theorem](negative_results/papers/rational_fibers/fixed_slope_trace_finiteness_20261117_v59.tex) proves finiteness for the actual first trace on a fixed smooth genus-one trace curve, allowing all independent point roles of the stated reweighted sources. It excludes infinite fixed-slope propagation; individual witnesses, a varying slope, point-dependent curve coefficients and the untwisted conic remain open. Its scope is distinct from the new derivative detector.
 
 The [prepared-cover obstruction](negative_results/papers/pole_parameters/prepared_sha_obstruction_20261117_v57.tex) gives $d=112/225$ for which $y^2=d((1-d)^2-s^4)$ is soluble over every completion of $\mathbb Q$ and has no rational point. An exact Cassels pairing on $E_{791}$ proves the obstruction, with two independent arithmetic certificates. This excludes the specified one-coordinate pole specialization on all prepared inputs; it does not assert that this input is an actual detector value.
 

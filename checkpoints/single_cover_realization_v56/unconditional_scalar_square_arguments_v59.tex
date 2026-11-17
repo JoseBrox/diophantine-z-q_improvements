@@ -1,0 +1,73 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\usepackage[margin=27mm]{geometry}
+\newtheorem{lemma}{Lemma}
+\newcommand{\Q}{\mathbb Q}
+\title{Square arguments at odd scalar primes}
+\author{}\date{17 November 2026}
+\begin{document}\maketitle
+
+\section{A local simplification}
+
+Fix distinct nonzero rational contact values $c_1,\ldots,c_k$ and
+a nonzero rational pole $b$ disjoint from them. Put
+\[
+ R(t)=\frac{\prod_{i=1}^k(t-c_i)}{(t-b)^k}.
+\]
+Let $S$ contain the primes dividing the numerators or denominators
+of the contacts and pole, and their differences.
+
+\begin{lemma}
+Let $p\notin S$, $\rho,q\in\Q^\times$, and suppose that
+$v_p(\rho)$ is odd. Then $R(\rho q^2)$ is a $p$-adic unit.
+\end{lemma}
+\begin{proof}
+The argument has valuation $v_p(\rho)+2v_p(q)$, which is odd
+and therefore nonzero. If it is positive, every numerator and
+denominator factor of $R$ is a unit. If it is negative, every factor
+has the same valuation as the argument; the equal degrees cancel.
+\end{proof}
+
+Thus a single balanced contact block at argument $\rho q^2$ suffices
+for the scalar-unit part of the general-source extraction proof.
+For example, the two arguments
+\[
+ t_0=\rho q^2,\qquad
+ t_1=\rho(q+T)^2
+\]
+both have this property at an odd scalar valuation, provided their
+arguments are defined and nonzero. Their heights also give the
+unconditional inequality
+\[
+ h(T)\le \frac{h(t_0)+h(t_1)}2+h(\rho)+\log2,
+\]
+since $T=(q+T)-q$ and
+$2h(q)\le h(t_0)+h(\rho)$, with the same bound for $q+T$.
+
+\section{The two remaining requirements}
+
+This lemma does not give a reduced-variable source. The first remaining
+requirement is a single detector that captures sufficient odd contact
+support from both arguments. Multiplying their contact functions loses
+primes where both valuations are odd. A derivative quotient recovers
+equal simple collisions, but can lose a simple odd contact when the
+opposite contact has a larger even valuation. In the eleven-variable
+conditional source these losses are bounded using the squarefree-form
+consequence of ordinary rational $abc$. That estimate is not an
+unconditional input.
+
+The second requirement is completeness. The fresh contact factors here
+are quadratic forms $\rho q^2-c_i$ and
+$\rho(q+T)^2-c_i$. The existing simultaneous theorem for
+$N+c_iL^2$ does not directly assert simultaneous prime realization
+for these quadratic norm forms with the same $q$. In particular,
+the local unit lemma must not be reported as an established
+twenty-three-variable construction.
+
+The established unconditional twenty-five-variable source retains its
+two separate contact blocks. Its polynomial contact-height estimate
+and Lucas growth argument remain valid there. Neither is replaced by
+the logarithmic radical estimate used in the eleven-variable
+ordinary-$abc$ construction.
+
+\end{document}

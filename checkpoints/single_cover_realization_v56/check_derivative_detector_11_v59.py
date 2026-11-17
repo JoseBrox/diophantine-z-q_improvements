@@ -19,6 +19,9 @@ A, Z, a, z, N, D, L, c = sp.symbols("A Z a z N D L c")
 G = sp.Poly(sp.prod((A + j*j - Z)**2 - 4*j*j*A
                     for j in range(1, 9)), A, Z)
 GA = G.diff(A)
+assert GA.content() == 8
+H = sp.Poly(GA.as_expr()/8,A,Z)
+assert H.content() == 1
 F_direct = sp.Poly(sp.prod((a+c0)**2-z*z for c0 in SHIFTS), a, z)
 F_squared = sp.Poly(G.as_expr().subs({A:a*a, Z:z*z}), a, z)
 assert F_direct == F_squared
@@ -186,6 +189,9 @@ certificate={
  "prime_factorization_denominator":{"D":64,"L":64},
  "G_monomials":len(G.terms()),
  "G_A_monomials":len(GA.terms()),
+ "G_A_content":8,
+ "primitive_denominator_monomials":len(H.terms()),
+ "reduced_u":"-2*G/H, H=G_A/8 primitive",
  "G_coefficient_height":str(max(abs(int(v)) for _,v in G.terms())),
  "local_expression_degrees":{"height_argument":48,"u_numerator":degree_F,"u_denominator":degree_den_u},
  "balanced_valuation_cases":balanced_checks,

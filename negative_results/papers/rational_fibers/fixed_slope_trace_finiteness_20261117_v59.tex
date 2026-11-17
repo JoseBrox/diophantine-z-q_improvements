@@ -1,0 +1,288 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,booktabs,microtype}
+\usepackage[margin=26mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\DeclareMathOperator{\Res}{Res}\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\Hom}{Hom}\DeclareMathOperator{\End}{End}
+\title{Finiteness of elliptic trace incidence at a fixed slope}
+\author{}\date{17 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+For each fixed input and prepared slope, the first actual detector
+trace has only finitely many rational realizations on any fixed
+genus-one trace curve. The result allows all independent source
+point roles and every rational point on the auxiliary curve. We
+compute the rational endomorphism ring of the restriction-of-scalars
+surface, prove nonconstancy on every relevant rational abelian
+translate using positive detector factors, and apply Mordell--Lang.
+No source Mordell--Weil rank assertion is needed. The theorem does
+not exclude individual witnesses, a jointly varying slope, or the
+untwisted conic criterion.
+\end{abstract}
+
+\section{The rational endomorphism ring}
+Let
+\[
+ K=\Q(\sqrt2),\quad d=3-\sqrt2,\quad d'=3+\sqrt2=7/d,
+ \qquad E:y^2=x^3-d^2x,\qquad A=\Res_{K/\Q}E.
+\]
+Write $E^\sigma$ for the conjugate curve.
+
+\begin{lemma}\label{lem:end}
+The abelian surface $A$ is simple over $\Q$ and
+\[
+                         \End_{\Q}(A)=\Z.
+\]
+In particular $\Hom_{\Q}(A,B)=0$ for every elliptic curve
+$B/\Q$.
+\end{lemma}
+\begin{proof}
+Both geometric elliptic endomorphism rings are $\Z[i]$, since
+these are characteristic-zero curves with $j=1728$.
+Complex conjugation over the real field $K$ fixes precisely $\Z$,
+so $\End_K(E)=\End_K(E^\sigma)=\Z$.
+
+The explicit geometric isomorphism
+\[
+ \phi:E\longrightarrow E^\sigma,\qquad
+ (x,y)\longmapsto
+       \left(\frac{7x}{d^2},\frac{7\sqrt7\,y}{d^3}\right)
+\]
+is negated by the automorphism fixing $K(i)$ and negating $\sqrt7$.
+This automorphism exists: the quadratic subfields of
+$K(i)=\Q(\sqrt2,i)$ are $\Q(\sqrt2)$, $\Q(i)$ and
+$\Q(\sqrt{-2})$, so seven is not a square there.
+Every geometric homomorphism $E\to E^\sigma$ is
+$\phi\circ\alpha$ with $\alpha\in\Z[i]$. The same automorphism
+fixes $\alpha$ and negates $\phi$, so a homomorphism defined over
+$K$ must be zero. The reverse cross-homomorphism group is also zero.
+
+Over $K$, the restriction of scalars is $E\times E^\sigma$.
+Its endomorphism ring over $K$ is therefore $\Z\oplus\Z$.
+The nontrivial automorphism of $K/\Q$ exchanges the two diagonal
+integers. Descent gives $\End_{\Q}(A)=\Z$. If $A$ were not
+$\Q$-simple, Poincar\'e complete reducibility over $\Q$
+\cite[Proposition 12.1]{Milne} would give a nontrivial idempotent
+in $\End_{\Q}(A)\otimes\Q=\Q$, a contradiction.
+A nonzero homomorphism to an elliptic curve would have a
+one-dimensional connected kernel over $\Q$, contradicting simplicity.
+\end{proof}
+
+\begin{lemma}\label{lem:direction}
+Every positive-dimensional abelian subvariety $G\subset A^r$
+defined over $\Q$ contains the image of
+\[
+ A\longrightarrow A^r,\qquad
+ Z\longmapsto([a_1]Z,\ldots,[a_r]Z)
+\]
+for some primitive integer vector $(a_1,\ldots,a_r)$.
+\end{lemma}
+\begin{proof}
+Complete reducibility and simplicity show that $G$ is isogenous
+over $\Q$ to a positive power of $A$. A nonzero homomorphism
+$A\to G\hookrightarrow A^r$ has integer components by
+Lemma~\ref{lem:end}. Dividing their vector by its greatest common
+divisor does not change the image, since multiplication by a
+nonzero integer on $A$ is surjective. This gives a primitive vector.
+\end{proof}
+
+\section{A general incidence theorem}
+
+\begin{theorem}\label{thm:incidence}
+Let $B/\Q$ be an elliptic curve, $g\in\Q(B)$ a nonconstant
+rational function and $f\in\Q(A^r)$. Suppose $f$ is nonconstant
+on every positive-dimensional abelian translate defined over $\Q$
+that meets its guarded domain. Then
+\[
+ \{(R,Q)\in A^r(\Q)\times B(\Q): f(R)=g(Q),
+                     \text{ all specified guards hold}\}
+\]
+is finite.
+\end{theorem}
+\begin{proof}
+Take the reduced closed incidence subvariety $Y\subset A^r\times B$.
+Mordell--Weil makes $\Gamma=A^r(\Q)\times B(\Q)$ finitely
+generated. Mordell--Lang, in the coset form of
+\cite[Theorem 1.1 and equation (1.1)]{GGK}, expresses $Y\cap\Gamma$
+as a finite union of cosets of subgroups of $\Gamma$.
+
+Suppose one such coset contains infinitely many guarded points and
+choose a guarded rational point $q$ in it. The identity component
+$G$ of the Zariski closure of its underlying rational subgroup is a
+positive-dimensional abelian subvariety defined over $\Q$, and
+$q+G\subset Y$. Thus the argument does not assume that the original
+geometric cosets in a Mordell--Lang decomposition were defined over
+$\Q$.
+
+Let $G_A$ be the projection of $G$ to $A^r$. If $G$ contains
+$0\times B$, then $q+(0\times B)\subset Y$ would make $g$
+constant. Otherwise its projection to $G_A$ has finite kernel,
+so is an isogeny. Complete reducibility makes $G_A$ isogenous
+to a power of $A$; hence its homomorphism space to $B$, and that
+of $G$ to $B$, are zero by Lemma~\ref{lem:end}. The second
+projection is therefore zero and $G=G_A\times0$. Then $f$ is
+constant on the positive-dimensional translate $q_A+G_A$,
+contrary to the hypothesis.
+
+Boundary fibers over excluded denominators cause no problem:
+$q$ was chosen in the guarded domain, so each translate used in the
+contradiction meets the actual incidence. Therefore every relevant
+coset contributes only finitely many guarded points.
+\end{proof}
+
+The conclusion also holds for a smooth projective genus-one curve
+with a rational point, by choosing that point as origin. If such a
+curve has no rational point, the incidence is empty.
+
+\section{Positive detector factors on abelian translates}
+Fix an input and a slope for which the first detector block is
+prepared: its physical weight and comparison scale are nonzero
+constants, and every displayed square denominator is positive at
+the real places. All source point roles remain independent.
+
+For the conditional source, the three roles are $(A_0,H,U)$ and
+\[
+\begin{gathered}
+ f_0=1/x,\quad z=-x/y,\quad
+ r=z(U)/z(H),\quad s=z(U-A_0)/z(H-P),\\
+ C_1=f_0(H),\quad C_2=f_0(U),\quad
+ C_3=\overline{f_0(H-P)},\quad C_4=\overline{f_0(U-A_0)},\\
+ C_5=r-\bar s,\qquad C_6=r+\bar s-2X,\\
+ W=\prod_{i=1}^{6}(1+C_i^2/F),\qquad
+ V=\Tr_{K/\Q}(W^{-1}),\qquad F>0.
+\end{gathered}
+\]
+The first argument is $t_0=\lambda$, so $F=F(\lambda)$ and
+$w=F(\lambda)/(4(\lambda-1)^8)$ are fixed independently of
+all three point roles. Every prepared $\lambda>1$ has $F>0$.
+
+For the general source, write the nine independent roles as
+\[
+ (Q_1,Q_2,Q_3,Q_4,U_0,U_1,U_2,U_3,U_4),\qquad U_0=H.
+\]
+Its first detector block includes the reciprocal-abscissa tests
+\[
+ (f_0(U_i))_{i=0}^4,\qquad
+ \overline{f_0(U_0-P)},\qquad
+ (\overline{f_0(U_i-Q_i)})_{i=1}^4.
+\]
+Each occurs in a factor $1+f_0(L)^2/(\delta_0^2w_0)$, possibly
+with the real slots interchanged. At fixed input and slope,
+$a_0=1$ makes $\delta_0,w_0$ constants; $w_0>0$ on the prepared
+range. All additional field and rational scalar factors are also
+one plus a nonnegative square. These are exactly the first blocks
+of the retained quadratic reweighted sources \cite{Reweighted}.
+
+\begin{lemma}\label{lem:nonconstant}
+In either source, the first trace $V$ is nonconstant on every
+positive-dimensional abelian translate over $\Q$ that meets the
+guarded real domain. In particular it is nonconstant at every
+prepared positive specialization, with all point roles independent.
+\end{lemma}
+\begin{proof}
+By Lemma~\ref{lem:direction}, such a translate contains a direction
+with a primitive integer coefficient vector. In the conditional
+case write that vector $(a,h,u)$. If $h$ or $u$ is odd, the
+corresponding tested point $H$ or $U$ has odd coefficient. If
+both are even, then $a$ is odd and the tested point $U-A_0$ has
+odd coefficient $u-a$.
+
+In the general case, if one auxiliary coefficient $u_i$ is odd,
+use $U_i$. Otherwise all $u_i$ are even, so a root coefficient
+$q_i$ is odd and the tested point $U_i-Q_i$ has odd coefficient.
+Thus, in both cases, some reciprocal-abscissa test is evaluated at
+\[
+                             R+[c]Z
+\]
+for a fixed real point $R\in A(\mathbb R)$ and an odd integer $c$.
+
+Each real elliptic factor of $A(\mathbb R)$ has two components,
+since $x(x^2-d_\sigma^2)$ has three distinct real roots.
+Multiplication by an odd integer is surjective on both the identity
+tori and the component group. Hence $[c]$ is surjective on
+$A(\mathbb R)$. Choose $Z$ tending to a preimage for which both
+real slots of $R+[c]Z$ tend to the two-torsion point $(0,0)$.
+In both slots the corresponding reciprocal abscissa tends to infinity.
+
+All detector factors are at least one, and the chosen factor gives
+$W_\sigma\ge1+c_\sigma f_0(R+[c]Z)_\sigma^2$ with a fixed
+$c_\sigma>0$, allowing the slot interchange. Therefore
+$V=\sum_\sigma W_\sigma^{-1}\longrightarrow0$.
+At the original guarded point, however, $V>0$.
+The restricted rational denominator divisors are proper because the
+translate contains that guarded point. They can be avoided in
+punctured real neighborhoods, so the limiting argument is valid.
+
+The real path tests a rational-function identity; it need not remain
+in the square-abscissa or doubled-point component used in source
+completeness. Every real open subset of the smooth irreducible
+parameter surface $A$ is Zariski dense. Thus the positive value and
+zero limit prove nonconstancy on the translate.
+\end{proof}
+
+\section{Consequences for the actual trace equations}
+
+\begin{corollary}\label{cor:actual}
+Fix the input and a prepared slope in either retained source.
+For any fixed smooth genus-one trace curve, only finitely many
+rational source point tuples realize the first actual detector
+trace on that curve. All three conditional point roles, or all nine
+general point roles, may vary independently. The conclusion permits
+every rational point on the auxiliary curve and does not assume a
+source Mordell--Weil rank or an auxiliary rank bound.
+\end{corollary}
+\begin{proof}
+Apply Theorem~\ref{thm:incidence} with $r=3$ or $9$, $f=V$,
+and $g$ the nonconstant trace-coordinate function. Lemma
+\ref{lem:nonconstant} gives its translate hypothesis. A rational
+point on the genus-one curve may be chosen as origin; if none
+exists, there are no incidences.
+\end{proof}
+
+For $0<w\le1/4$, the corollary applies to each of
+\[
+\begin{aligned}
+ Y^2&=(V+2)(V^2+w(2-V)),\\
+ Y^2&=(V^2-V+2)(V^2+w(2-V)),\\
+ Y^2&=(1+w(2-V))(V^2+w(2-V)).
+\end{aligned}
+\]
+These curves are smooth and have rational reference points by
+\cite{SmallClasses}. A finite menu of genus-one choices still
+gives only finitely many point tuples at each fixed input and slope.
+The same conclusion holds for an adaptive coefficient depending
+only on that fixed slope, such as $c=\lambda$, whenever the
+resulting trace curve is smooth of genus one. Imposing a second
+trace equation, the source height equation or additional guards
+can only reduce the set.
+
+There can therefore be no infinite fixed-slope propagation of exact
+elliptic trace witnesses through independent auxiliary indices,
+regardless of the availability of compatible contact congruences or
+real approximation. The result does not assert that any fixed-slope
+incidence set is empty. It leaves open jointly varying the slope and
+point tuple, or making the auxiliary curve itself vary with the point
+tuple. The untwisted equation $Y^2=V^2+w(2-V)$ is a conic and is
+outside the theorem. No smaller defining-polynomial count is proved.
+
+\begin{thebibliography}{9}\raggedright
+\bibitem{Milne}J.~S.~Milne, \emph{Abelian varieties},
+Proposition~12.1, author notes.
+\url{https://www.jmilne.org/math/xnotes/AVs.pdf}.
+\bibitem{GGK}Z.~Gao, T.~Ge and L.~K\"uhne,
+\emph{The uniform Mordell--Lang conjecture}, Theorem~1.1 and
+equation~(1.1), author manuscript.
+\url{https://ziyangjeremygao.github.io/articles/UML.pdf}.
+\bibitem{Reweighted}\emph{Quadratic reweightings of native elliptic
+detectors}, repository manuscript,
+\nolinkurl{papers/pole_parameters/reweighted_elliptic_detectors_20261116_v53.tex}.
+\bibitem{SmallClasses}\emph{Small polynomial classes for the actual
+detector trace}, repository manuscript,
+\nolinkurl{papers/pole_parameters/small_trace_classes_20261117_v58.tex}.
+\end{thebibliography}
+\end{document}

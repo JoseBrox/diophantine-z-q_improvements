@@ -12,18 +12,19 @@ The construction theorems identify rational input projections with $\mathbb Z$ u
 | [Fully specified quartic](../papers/quartic/quartic257_20261116_v45.tex) | 257 | Exactly 4 | Exactly 3,679 | $N=9682$ is sufficient |
 | [Weak-abc $121/100$ family](../papers/finite_algebra/terminal_quadratic_root_20261115_v40.tex) | 13 | $\le43211777<2^{26}$ | $<2^{284}$ | Every sufficiently large odd $B$; ineffective threshold |
 | [Weak-abc $16/15$ family](../papers/finite_algebra/terminal_quadratic_root_20261115_v40.tex) | 13 | $\le39858177<2^{26}$ | $<2^{283}$ | Every sufficiently large odd $B$; ineffective threshold |
+| [Ordinary-abc derivative family](../papers/conditional_few_variables/derivative_detector11_20261117_v59.tex) | 11 | $\le5444199553<2^{33}$ | $<2^{309}$ | Every sufficiently large odd $B$; ineffective threshold |
 | [Ordinary-abc quartic](../papers/quartic_existence/quartic_abc71_20261116_v49.tex) | 71 | Exactly 4 | Exactly 1,187 | Every sufficiently large odd $B\ge81$; ineffective threshold |
 
-The first four rows add no abc or Szpiro conjecture to their retained arithmetic premises. Ordinary Szpiro supplies the weak exponent $121/100$; ordinary rational abc supplies both displayed weak exponents. The 71-variable quartic uses ordinary rational abc. All seven retain their applicable elliptic, height, pole and prime-pattern inputs. The full independent audit of these arithmetic foundations is not declared complete.
+The first four rows add no abc or Szpiro conjecture to their retained arithmetic premises. Ordinary Szpiro supplies the weak exponent $121/100$; ordinary rational abc supplies both displayed weak exponents. The 71-variable quartic uses ordinary rational abc. All eight retain their applicable elliptic, height, pole and prime-pattern inputs. The full independent audit of these arithmetic foundations is not declared complete.
 
-All listed polynomials have integer content one. The four general polynomials are unexpanded finite determinant specifications with certified upper bounds. The three quartics are fully expanded. Their exact heights are, respectively,
+All listed polynomials have integer content one. The five unrestricted-degree constructions are unexpanded finite determinant specifications with certified upper bounds. The three quartics are fully expanded. Their exact heights are, respectively,
 
 $$
 \max\{126616122944180358034867798936,149^{2N+2}\},\qquad
 149^{19366},\qquad B^2+1.
 $$
 
-The first height formula holds for every $N\ge1$; the last holds for the permitted odd $B\ge81$. Neither algebraic range supplies an effective defining threshold. The fully specified 27-variable coefficient height is below $2^{2^{70}}$. See the [current records](../data/results_20261117_v58.json) for the exact source binding of every figure.
+The first height formula holds for every $N\ge1$; the last holds for the permitted odd $B\ge81$. Neither algebraic range supplies an effective defining threshold. The fully specified 27-variable coefficient height is below $2^{2^{70}}$. See the [current records](../data/results_20261117_v59.json) for the exact source binding of every figure.
 
 ## Retained elliptic and prime-pattern inputs
 
@@ -66,3 +67,11 @@ The [prepared covering obstruction](../negative_results/papers/pole_parameters/p
 The [signed mixed-power theorem](../papers/elliptic_heights/signed_mixed_power_height_20261117_v58.tex) proves its rational-height bound directly from the stated weak abc inequality, including both signs and arbitrary denominator cancellation. The optimized single-cover argument degrees are 48 for fixed classes and 60 for the permitted varying menu under ordinary abc. They do not certify a complete defining polynomial without actual rational realization. The [small trace classes](../papers/pole_parameters/small_trace_classes_20261117_v58.tex) use the existing Sun modulus containing three, retaining selected primes congruent to one modulo 24 and the original order conditions. They introduce no additional arithmetic hypothesis or lost contact. The actual multiplication-surface obstruction uses characteristic-zero Riemann–Hurwitz; it does not exclude individual rational witnesses.
 
 For the smallest trace cubic, the point $(4,4)$ has infinite order for every rational $0<w\le1/4$. This uses the same Mazur torsion theorem cited for the earlier cubic, together with exact division-polynomial and independent group-law computations. It supplies no actual prescribed-trace realization hypothesis.
+
+## Ordinary-abc derivative detector
+
+The [eleven-variable theorem](../papers/conditional_few_variables/derivative_detector11_20261117_v59.tex) uses ordinary rational abc through two specific consequences: the homogeneous squarefree-form radical bound in Rudnick–Sarnak–Zaharescu, Appendix A.2, equation (A.2), and the fixed exponent $1001/1000$ for the binary- and signed-power height lemmas. The first consequence is not asserted from either previously used weak exponent. Its fixed forms yield a bound on multiple prime factors whose height coefficient is independent of the contact degree. The exact absorption margin is $87545567/198403000$.
+
+Completeness applies **Sun, arXiv:2610.20691v3, Theorem 4.1**, to thirty-two fixed distinct integer coefficients after square-denominator dilation. The theorem explicitly allows every fixed finite number of positions. The argument checks all new derivative-denominator primes directly, then uses the prepared intrinsic Burungale theorem with its full parameter density. All three original elliptic point roles, their group and formal-comparison assertions, the one-point trace-height theorem and the one-coordinate finite-algebra encoder are retained. The sufficient shift remains ineffective.
+
+The separate fixed-slope incidence theorem uses Poincare complete reducibility and Mordell–Lang after proving the rational endomorphism ring and nonconstancy on every relevant abelian translate. It concerns the stated earlier reweighted sources and supplies no nonexistence claim for individual witnesses or the derivative source.

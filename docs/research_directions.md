@@ -1,6 +1,16 @@
 # Research directions
 
-The established counts under the retained arithmetic premises are **25 total variables**, or **195 for a quartic**. The additional height hypotheses give **13 total variables**; ordinary rational abc gives a **71-variable quartic**. Every count includes the input. The priorities are variable count, degree, then coefficient height. The [main results table](../README.md) distinguishes the hypotheses and effective parameters; no global minimum or completed independent audit of all inherited arithmetic premises is asserted.
+The established counts under the retained arithmetic premises are **25 total variables**, or **195 for a quartic**. The stated weak-abc hypotheses give **13 total variables**. Ordinary rational abc gives **11 total variables** and a **71-variable quartic**. Every count includes the input. The priorities are variable count, degree, then coefficient height. The [main results table](../README.md) distinguishes the hypotheses and effective parameters; no global minimum or completed independent audit of all inherited arithmetic premises is asserted.
+
+## From eleven toward nine
+
+The [complete derivative detector](../papers/conditional_few_variables/derivative_detector11_20261117_v59.tex) combines both heights in one signed contact argument and proves ordinary-abc completeness with one intrinsic pole block. The positive odd valuations still extract the original elliptic tests; negative odd derivative valuations are automatically harmless. Its complete count is eleven, with degree below $2^{33}$ and every guard included.
+
+Two remaining pole parameters account for the difference between eleven and nine. Removing them requires a proved rational realization on the actual derivative-source tuples, or a different arithmetic source. The earlier native square criterion is not transferred merely by counting coordinates. Any proposed replacement must prove its own local implication, ordered completeness and all-character guards. Another possible source uses fewer point roles, but must replace the original index-recovery argument.
+
+For the general target twenty-one, the derivative height proof cannot be imported without its abc hypothesis. A merger of the two general contact blocks needs an unconditional height argument under the already retained premises, together with prime realization and collision control. The original simultaneous actual-trace route remains open.
+
+The [fixed-slope incidence theorem](../negative_results/papers/rational_fibers/fixed_slope_trace_finiteness_20261117_v59.tex) proves finiteness on fixed genus-one trace curves for all independent point roles in the stated reweighted sources. Infinite propagation at a fixed slope therefore cannot complete that route. A variable slope, point-dependent auxiliary curve, untwisted conic, or individual rational witnesses remain possible. The theorem does not automatically transfer to the derivative source.
 
 ## Current target: simultaneous actual-trace conics
 

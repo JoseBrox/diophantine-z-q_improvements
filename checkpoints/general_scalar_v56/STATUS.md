@@ -1,6 +1,25 @@
 # Scalar precision transfer checkpoint
 
-## Latest v59 independent audit
+## Latest v59 eleven-coordinate construction audit
+
+The ordinary-abc eleven-coordinate derivative source passed the full
+independent proof audit in `derivative_source_independent_audit_v59.md`.
+The balanced tests remove the new negative-odd derivative denominator
+obstruction without additional congruences. The strict height gap is
+`87545567/198403000`. Ordered Sun preparation, square denominators,
+intrinsic realization, every finite-algebra character guard, and the
+rank128/eleven-coordinate census all pass. This is a conditional
+eleven-coordinate result; it does not prove nine or unconditional21.
+
+The native source also passed an independent exact evaluation using
+actual elliptic point tuples, the ordinary chord/tangent law, and all64
+point-sign characters. The checker `check_native_derivative_source_v59.py`
+and certificate verify384 evaluations and all38 guards. The implementation
+receipt is `native_derivative_source_independent_audit_v59.md`. The B=3
+stored source remains an algebraic fixture, with no numerical sufficient
+defining shift certified.
+
+## Latest v59 independent finiteness audit
 
 The final full audit is
 `independent_points_trace_finiteness_audit_v59.md`. The theorem now

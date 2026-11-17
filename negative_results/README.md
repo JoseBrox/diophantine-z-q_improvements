@@ -2,12 +2,13 @@
 
 This directory contains proved negative results, separated from the constructive results in [papers](../papers). Each obstruction concerns the precise equations, arithmetic family, or geometric presentation stated in its manuscript. Failure of a replacement on all prepared inputs does not exclude a construction whose actual witnesses lie in a smaller, separately proved locus.
 
-The [current construction table](../README.md#current-constructions--16-november-2026) gives the positive bounds. No result in this directory establishes a number field whose ring of integers is not Diophantine in its fraction field.
+The [current construction table](../README.md#current-constructions--17-november-2026) gives the positive bounds. No result in this directory establishes a number field whose ring of integers is not Diophantine in its fraction field.
 
 ## Pole predicates and contact functions
 
 | Manuscript | Result and scope |
 |:--|:--|
+| [Fixed-slope trace incidence](papers/rational_fibers/fixed_slope_trace_finiteness_20261117_v59.tex) | The actual first trace has finitely many rational realizations on a fixed smooth genus-one trace curve, at fixed input and prepared slope, with all source point roles independent. Individual witnesses, varying slopes, point-dependent curves, the conic and the new derivative source are not excluded. |
 | [Actual multiplication surfaces](papers/rational_fibers/actual_multiplication_surface_20261117_v58.tex) | Nonconstant rational slope coupling on the full fixed-index multiplication surface cannot make the stated safely twisted trace tests rational-function squares. Individual rational points, constant slopes, proper subfamilies and ramified covers are not excluded. |
 | [A prepared covering obstruction](papers/pole_parameters/prepared_sha_obstruction_20261117_v57.tex) | The prepared input $112/225$ gives an everywhere locally soluble one-coordinate pole curve without a rational point; an exact Cassels pairing excludes the required abscissa class. No actual detector tuple is asserted. |
 | [Intrinsic specializations](papers/pole_parameters/intrinsic_specializations_20261117_v57.tex) | No finite rational-function menu for the second coordinate works on all prepared inputs. The rank-one class theorem restricts the specified congruent curves; adaptive relations and higher rank remain possible. |

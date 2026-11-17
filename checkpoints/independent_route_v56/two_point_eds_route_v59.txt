@@ -1,0 +1,76 @@
+Two-point elliptic divisibility route: checkpoint, 17 November 2026
+
+POSITIVE ARITHMETIC INPUT
+
+The independently audited paper
+checkpoints/general_scalar_v56/simple_primitive_denominators_v59.tex
+proves, for fixed E_d/Q and P in 2E_d(Q), under weak rational abc with
+exponent 16/15, that every sufficiently large denominator term B_h has
+a SIMPLE primitive prime outside any fixed finite set. Thus odd denominator
+support inclusion from H=hP to U=jP forces h|j. The ordinary-abc
+odd-primitivity background is already in Silverman1988 and
+Cornelissen--Zahidi2007; the explicit weak exponent and simple-valuation
+proof are the current useful refinement.
+
+LOCAL SOURCE POSSIBILITY
+
+On E_d/Q, retain q_H=sqrt(x(H)) as the one free point coordinate and its
+quartic ordinate as a finite quadratic generator. The weight u=1/q_H
+is positive odd exactly when q_H has negative odd valuation, i.e. at odd
+denominator valuations of H. Numerator primes have negative odd u and
+are automatically harmless for the balanced transformation
+D=C^2/(1+u C^2). At an active prime, adding f(H), f(U) and a formal-ratio
+comparison among the tests would force U formal. This is a possible
+support-inclusion block; it is NOT a completed definition.
+
+EXTERNAL INPUT GAP
+
+Even after h|j, m=j/h is an unbounded integer. Congruences X=m modulo
+the denominator support of H do not force X=m. They can be faked by m
+of size exponential in h^2. The exact perturbation theorem in
+negative_results/square_rescaled_weight_perturbation_v59.tex makes this
+failure rigorous for any weight whose square class is fixed as X varies
+with the retained points held fixed. A closed coupling or genuinely
+X-dependent odd-prime support is required.
+
+Adding the current derivative source with a scale involving heights of
+H,U is not automatically complete: its Sun prime choices force the order
+of the base point to be comparable to the contact prime, while a scale
+depending on those auxiliary point heights can demand primes far larger
+than their fixed indices. The old source avoids this by fixing a separate
+root point A=nP before selecting the growing auxiliary indices.
+
+GROWTH IDEA AND REMAINING REPRESENTATION PROBLEM
+
+There is an elementary useful integer inequality: if h|j, h>1, m=j/h,
+|m|>=2, and r^2-j^2+h^2=1, then |m|<h. Indeed r<|m|h and
+(|m|h-r)(|m|h+r)=h^2-1, whose first factor is a positive integer.
+Conversely for any integer |m|>=2, Pell equations
+r^2-(m^2-1)h^2=1 have arbitrarily large h. This could supply a growth
+condition compatible with all true inputs. However an elliptic point
+R=rP does NOT impose the quadratic relation on indices by its curve
+equation. No low-coordinate existential encoding of this relation is
+provided. Addition/divisibility alone does not existentially define
+integer multiplication (its existential theory is decidable).
+
+RATIONAL-CURVE BUDGET
+
+Using E_d/Q would cost one retained rational coordinate per point plus
+finite square roots, not two as for the current quadratic-field curve.
+This leaves room below nine for a new scalar or point growth mechanism.
+No numerical improvement is asserted from this budget alone.
+
+REJECTED TWO-RATIO SHORTCUT
+
+At opposite formal contacts on the quadratic-field source, ratios
+R=zeta(H)/zeta(U), R'=conj(zeta(H-P)/zeta(U)) satisfy
+j(R-R')=1 modulo p. The test X(R-R')-1 would read the integer j directly.
+But completeness would fix U=XP while requiring it to carry arbitrary
+large Sun primes. It cannot replace the root-point source.
+
+CURRENT STATUS
+
+The scaled eleven-variable source has a saved independent completeness,
+whole-character guard and census audit. Its separate height proof is
+owned by the other agent/root. The EDS route proves a useful arithmetic
+lemma but does not yet yield nine or twenty-one variables.
