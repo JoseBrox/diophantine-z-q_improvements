@@ -1,0 +1,75 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,microtype}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue]{hyperref}
+\newtheorem{proposition}{Proposition}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\setlength{\emergencystretch}{2em}
+\title{A two-label monic Lucas clause}
+\author{}\date{17 November 2026}
+\begin{document}\maketitle
+
+\begin{proposition}
+Let $s,b\in\Z$, with $|s|\ge3$ and $b\ne0$. Put
+$a=s^2$ and $d=a-2$. The following are equivalent:
+\begin{enumerate}
+\item There is a rational number $z$ satisfying the monic equation
+\begin{equation}\label{eq:monic}
+ z^2=(a^2-4)d^2b^2+4.
+\end{equation}
+\item There is an integer $t$ such that
+\begin{equation}\label{eq:lucas}
+ t^2-a(a-2)tb+(a-2)^2b^2=1.
+\end{equation}
+\end{enumerate}
+Every rational root $z$ in the first assertion is integral, and
+\[
+ t=\frac{z+adb}{2}
+\]
+is an integer satisfying the second. Every such integer satisfies
+\[
+ \log|t|>s^2-3.
+\]
+\end{proposition}
+\begin{proof}
+The radicand in \eqref{eq:monic} is an integer, so a rational square
+root is integral. Furthermore
+\[
+ z^2-(adb)^2=4(1-d^2b^2).
+\]
+Squares modulo four show that $z$ and $adb$ have the same parity;
+therefore the displayed $t$ is integral. Substitution gives
+\eqref{eq:lucas}. Conversely $z=2t-adb$ gives
+\eqref{eq:monic}. These assertions do not require $s$ or $b$ to be
+odd. The growth estimate is the elementary Lucas lemma of
+\cite{Lucas}, applied to $a=s^2>7$.
+\end{proof}
+
+The radicand is positive because $a\ge9$ and $b\ne0$.
+The two roots are distinct and nonzero. Thus, when the two integer
+labels $s,b$ are available as exact rational elements of a source
+algebra, the growth clause needs only one additional finite quadratic
+root and no additional free rational coordinate. In the existing
+elliptic source the functions $L_S,L_Z$ only approximate the integer
+indices at selected primes; they are not those indices. The proposition
+does not justify substituting these functions for $s,b$, and it does
+not give a smaller defining-variable bound.
+
+For completeness at the numerical-label level, put
+$U_0(a)=0$, $U_1(a)=1$ and
+$U_{j+1}(a)=aU_j(a)-U_{j-1}(a)$. With
+\[
+ k=2(a-2),\qquad b=U_k(a)/(a-2),\qquad t=U_{k+1}(a),
+\]
+the congruence $U_k(a)\equiv k\pmod{a-2}$ makes $b$ integral,
+and the Lucas norm identity gives \eqref{eq:lucas}.
+The preceding proposition then supplies $z=2t-adb$.
+
+\begin{thebibliography}{9}\raggedright
+\bibitem{Lucas}\emph{An explicit polynomial in 29 variables over the
+rationals}, repository manuscript, elementary Lucas growth lemma,
+\nolinkurl{papers/few_variables/few_variables_20261108_v8.tex},
+lines 349--397.
+\end{thebibliography}
+\end{document}

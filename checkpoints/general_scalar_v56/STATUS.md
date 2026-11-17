@@ -1,5 +1,53 @@
 # Scalar precision transfer checkpoint
 
+## Latest v58 results and independent audits
+
+`small_quadratic_trace_class_20261117_v58.tex` proves that
+`delta(V)=V^2−V+2` is an admissible no-loss class for the actual trace
+conic. The inherited comparison primes split in Q(sqrt2), so its
+fresh values2 and4 are local squares. It is strictly positive at every
+real character; fixed-place preparation near V=2 handles every finite
+place, including two. The radicand product has degree4, seven monomials,
+and coefficient height4 in `(V,w)` only. The manuscript compiles cleanly.
+
+`fixed_index_trace_ramification_independent_audit.md` independently
+passes both propositions in the other agent's v58 negative manuscript:
+the fixed-index multiplication family with free slope, and every
+nonconstant rational slope graph on the entire multiplication surface,
+retain an odd contact divisor. The second proof uses six even contact
+fibers versus the genus-one Riemann–Hurwitz bound. Scope excludes
+proper correspondences and individual rational witnesses.
+`check_small_trace_and_ramification_v58.py` and its certificate pass.
+
+`two_label_lucas_clause_20261117_v58.tex` proves the exact numerical
+two-label clause: for integer s,b with |s|>=3 and b nonzero, a rational
+root of `z^2=(s^4−4)(s^2−2)^2 b^2+4` is integral and recovers an
+integer t satisfying the full squared-Lucas relation and exponential
+growth. It does not identify the elliptic ratios with the integer
+labels, so no coordinate reduction follows yet.
+
+`negative_results/finite_lucas_point_reconstruction_v58.tex` proves a
+sharper scoped obstruction. Any unbounded-s family of integer
+squared-Lucas triples gives a Zariski-dense set in `(Res E)^3`.
+Adjoining the shared auxiliary and the three multiplication points
+keeps density if each root triple retains infinitely many auxiliary
+indices. Therefore a fixed finite algebraic reconstruction of a Pell
+point cannot preserve that entire flexible preparation family. The
+proof uses the source's conjugate-generator independence and the
+Mordell–Lang theorem. It is not an obstruction to a changed index
+coupling, a numerical finite Pell root, or a smaller defining
+polynomial. Both other agents passed the mathematical argument with
+this scope. The full independent audit receipt is
+`../independent_route_v56/lucas_reconstruction_independent_audit_v58.md`;
+it rechecks the full manuscript, Lucas-growth source, conjugate
+independence, and the primary Mordell--Lang theorem. The exact algebra checker/certificate are
+`check_lucas_reconstruction_v58.py` and
+`lucas_reconstruction_v58_certificate.json`.
+
+**No new defining-variable bound is proved. The established counts
+remain25 and13.** The outstanding numerical-label problem and actual
+trace-square realization problem remain distinct.
+
 ## Latest v57 positive results
 
 `trace_conic_criterion_20261117_v57.tex` replaces the earlier native

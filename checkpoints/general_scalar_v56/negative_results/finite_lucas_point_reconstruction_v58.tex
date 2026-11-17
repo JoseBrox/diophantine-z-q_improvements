@@ -1,0 +1,235 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,microtype}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue]{hyperref}
+\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\DeclareMathOperator{\Res}{Res}
+\title{Finite reconstruction of elliptic Lucas points}
+\author{}\date{17 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+Squared-Lucas triples with unbounded scalar label are Zariski dense
+in the threefold power of the source's restriction-of-scalars abelian
+surface. The same remains true after adjoining the shared auxiliary
+point and its three multiplication points, provided each triple retains
+infinitely many auxiliary indices. Consequently a fixed finite
+algebraic reconstruction of a discarded Pell point cannot preserve
+this flexible preparation family. This is an obstruction to that
+specific elimination procedure, not a lower bound on the number of
+variables in a Diophantine definition.
+\end{abstract}
+
+\section{The integer-label obstruction}
+Write
+\[
+ F(a,t,b)=t^2-a(a-2)tb+(a-2)^2b^2-1.
+\]
+
+\begin{lemma}\label{lem:affine}
+For fixed integers $u,v,w,r$, with $(u,v,w)\ne(0,0,0)$,
+the integer solutions of
+\[
+ F(s^2,t,b)=0,\qquad b\ne0,\qquad us+vt+wb=r
+\]
+have bounded $|s|$.
+\end{lemma}
+\begin{proof}
+It suffices to consider $|s|\ge3$. The elementary Lucas growth lemma
+gives $\log|t|>s^2-3$; see \cite{Lucas}. Suppose first $v\ne0$.
+Put $a=s^2$ and $R=r-us$. Eliminating $t=(R-wb)/v$ gives
+\[
+ A(a)b^2+B(s)b+C(s)=0,
+\]
+where
+\begin{align*}
+ A(a)&=w^2+vw\,a(a-2)+v^2(a-2)^2,\\
+ B(s)&=R[-2w-va(a-2)],\\
+ C(s)&=R^2-v^2.
+\end{align*}
+The leading coefficient is never the zero polynomial. Indeed
+\[
+ A(a)=v(w+v)a^2-2v(w+2v)a+(w^2+4v^2);
+\]
+if its quadratic coefficient vanishes, then $w=-v$ and
+$A(a)=v^2(5-2a)\ne0$. Outside finitely many values of $s$,
+the integer $A(s^2)$ is nonzero and has absolute value at least one.
+The elementary polynomial-root bound therefore gives
+\[
+ |b|\le 1+\max(|B/A|,|C/A|)=O((1+|s|)^5).
+\]
+The linear relation gives the same polynomial bound for $t$,
+contradicting the Lucas estimate as $|s|$ tends to infinity.
+
+If $v=0$ and $w\ne0$, then $b=(r-us)/w=O(1+|s|)$.
+Applying the root bound directly to the monic quadratic $F(s^2,t,b)$
+gives $|t|=O((1+|s|)^6)$, again a contradiction. If $v=w=0$,
+then $u\ne0$ and the relation fixes $s$. This proves the lemma.
+\end{proof}
+
+The integrality of the cofactor $b$ is essential. For every integer
+$|s|\ge3$, setting
+\[
+ a=s^2,\qquad b=\frac1{a-2},\qquad t=a
+\]
+gives $F(a,t,b)=0$, but $\log|t|=2\log|s|$.
+Thus retaining only the integrality of $(a-2)b$, as provided by a
+monic equation in that product, does not retain Lucas growth.
+
+\section{The cyclic group and its closure}
+
+Let
+\[
+ K=\Q(\sqrt2),\quad d=3-\sqrt2,\quad
+ E:y^2=x^3-d^2x,\quad A=\Res_{K/\Q}E,
+\]
+and let $\gamma\in A(\Q)$ correspond to the fixed non-torsion source
+point $P\in E(K)$. Set $\Gamma=\Z\gamma$.
+
+\begin{lemma}\label{lem:densecyclic}
+The cyclic subgroup $\Gamma$ is Zariski dense in $A$.
+\end{lemma}
+\begin{proof}
+Over an algebraic closure, identify both conjugate factors with
+$E_0:Y^2=X^3-X$. The resulting points $R,R'$ are independent
+modulo torsion over $\operatorname{End}(E_0)=\Z[i]$;
+\cite[Section 2]{Weighted} proves this directly. Briefly, the
+square classes of $3-\sqrt2$ and $3+\sqrt2$ are independent in
+$K(i)^\times/K(i)^{\times2}$, so an automorphism fixes $R$ and
+every endomorphism while negating $R'$. Applying this automorphism
+to an endomorphism relation forces each coefficient to vanish.
+
+The identity component of the closure of a subgroup of an abelian
+variety is an abelian subvariety. If the closure of $(R,R')$ were
+proper in $E_0^2$, a nonzero homomorphism $E_0^2\to E_0$ would
+vanish on that component. A positive multiple of $(R,R')$ belongs
+to the component, giving a nonzero endomorphism relation modulo
+torsion. Independence excludes this. Hence the closure is all $A$.
+\end{proof}
+
+We use Mordell--Lang in the following familiar form: the intersection
+of a closed subvariety of an abelian variety with a finitely generated
+subgroup is a finite union of cosets of subgroups. For a primary
+reference, the stronger uniform theorem and its explicit coset
+formulation are \cite[Theorem 1.1 and equation (1.1)]{GGK}; only the
+ordinary finiteness statement is needed here.
+
+\begin{lemma}\label{lem:lattices}
+If $Y\subsetneq A^m$ is closed, the integer vectors
+\[
+ (n_1,\ldots,n_m)\in\Z^m,
+ \qquad ([n_1]\gamma,\ldots,[n_m]\gamma)\in Y
+\]
+lie in a finite union of proper affine rational hyperplanes.
+\end{lemma}
+\begin{proof}
+Mordell--Lang gives finitely many cosets of subgroups of
+$\Gamma^m\cong\Z^m$. A subgroup of rank $m$ has finite index.
+Its closure is $A^m$ by Lemma~\ref{lem:densecyclic}, since it
+contains $N\Gamma^m$ for some positive $N$. A coset contained in
+the proper variety $Y$ therefore has rank at most $m-1$.
+Each corresponding affine lattice satisfies a nontrivial affine
+equation with integer coefficients, as required.
+\end{proof}
+
+\section{Density and finite reconstruction}
+
+\begin{theorem}\label{thm:roots}
+Let $\mathcal T\subset\Z^3$ consist of solutions $(s,t,b)$ of
+$F(s^2,t,b)=0$ with $b\ne0$. If $|s|$ is unbounded on
+$\mathcal T$, then
+\[
+ \{([s]\gamma,[t]\gamma,[b]\gamma):(s,t,b)\in\mathcal T\}
+\]
+is Zariski dense in $A^3$.
+\end{theorem}
+\begin{proof}
+Otherwise Lemma~\ref{lem:lattices} would place all the integer
+triples in finitely many proper affine hyperplanes. Lemma~\ref{lem:affine}
+bounds $|s|$ on each of them, a contradiction.
+\end{proof}
+
+The theorem allows only one chosen Lucas solution for each scalar
+label. No density in the set of integer labels is assumed.
+
+\begin{theorem}\label{thm:auxiliary}
+Retain $\mathcal T$ as above. For each $(s,t,b)\in\mathcal T$
+let $\mathcal H_{s,t,b}\subset\Z$ be any infinite set. The points
+of $A^7$ with index vectors
+\[
+ (s,t,b,h,hs,ht,hb),\qquad
+ (s,t,b)\in\mathcal T,\quad h\in\mathcal H_{s,t,b},
+\]
+are Zariski dense.
+\end{theorem}
+\begin{proof}
+If their closure were proper, Lemma~\ref{lem:lattices} would give
+a finite list of nontrivial affine equations in the seven indices.
+Upon substitution, each equation has the form
+\[
+ L_0(s,t,b)+hL_1(s,t,b)=0,
+\]
+where $L_0,L_1$ are affine integer polynomials and at least one is
+nonzero. For a fixed triple infinitely many $h$ occur. At least one
+equation in the finite list must hold for infinitely many of them;
+for this equation both $L_0$ and $L_1$ vanish at the triple.
+The zero set of a nonzero constant contains no triple; otherwise
+Lemma~\ref{lem:affine} bounds $|s|$ on that fixed affine equation.
+Taking the maximum over the finite list bounds $|s|$ on all of
+$\mathcal T$, a contradiction.
+\end{proof}
+
+\begin{corollary}\label{cor:finite}
+No fixed finite algebraic correspondence over the retained point
+coordinates can reconstruct the discarded point $[t]\gamma$ from
+$[s]\gamma,[b]\gamma$ on a family as in
+Theorem~\ref{thm:roots}. Likewise no such correspondence can
+delete one or more of the seven point roles in
+Theorem~\ref{thm:auxiliary} while preserving its full preparation
+family and leaving the others as its only point parameters.
+\end{corollary}
+\begin{proof}
+The closure of a finite algebraic reconstruction has dimension at
+most that of its retained point base. It is therefore a proper
+closed subvariety of $A^3$, respectively $A^7$. The two density
+theorems exclude it.
+\end{proof}
+
+For the old completeness construction, a fixed input fixes its input
+point. Its paired input auxiliary is $[n]H$, an algebraic function
+of $H$ when this input index $n$ is fixed. Adjoining these fixed-input
+data therefore does not change Corollary~\ref{cor:finite}.
+The old preparation permits arbitrarily large scalar labels and
+infinitely many compatible auxiliary indices after its contact primes
+have been selected; the theorem applies to that flexible family.
+
+The conclusion has a deliberately limited scope. It does not exclude
+a new construction that chooses only finitely many scalar labels for
+each fixed input, imposes a new arithmetic relation restricting the
+auxiliary index, replaces the growth clause, or reconstructs a
+\emph{numerical} Pell root without reconstructing its elliptic point.
+It does not assert that a rational-square cover has no individual
+rational witnesses. In particular it provides no lower bound on the
+number of variables defining the integers over the rationals.
+
+\begin{thebibliography}{9}\raggedright
+\bibitem{Lucas}\emph{An explicit polynomial in 29 variables over the
+rationals}, repository manuscript, elementary Lucas growth lemma,
+\nolinkurl{papers/few_variables/few_variables_20261108_v8.tex},
+lines 349--397.
+\bibitem{Weighted}\emph{Heights of positive weighted elliptic traces}, repository
+manuscript, Section 2,
+\nolinkurl{papers/trace_heights/weighted_trace_20261114_v27.tex}.
+\bibitem{GGK}Z.~Gao, T.~Ge and L.~K\"uhne,
+\emph{The Uniform Mordell--Lang Conjecture},
+Publications Math\'ematiques de l'IH\'ES \textbf{143} (2026), 189--235,
+\href{https://doi.org/10.5802/pmihes.26}{doi:10.5802/pmihes.26}.
+Author manuscript:
+\url{https://ziyangjeremygao.github.io/articles/UML.pdf},
+Theorem 1.1 and equation (1.1).
+\end{thebibliography}
+\end{document}

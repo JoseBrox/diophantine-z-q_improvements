@@ -1,0 +1,196 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,booktabs,microtype}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue]{hyperref}
+\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\DeclareMathOperator{\rad}{rad}
+\title{Rational height bounds for a signed power and a square}
+\author{}\date{17 November 2026}
+\begin{document}\maketitle
+
+For a rational number $r=A/D$ in lowest terms, with $D>0$, write
+$h(r)=\log\max(|A|,D)$; in particular $h(0)=0$.
+Fix $\kappa>1$ and $K_\kappa\ge1$, and assume
+\begin{equation}\label{eq:abc}
+ c\le K_\kappa\rad(abc)^\kappa
+\end{equation}
+for every positive coprime integer triple $a+b=c$.
+
+\begin{theorem}\label{thm:height}
+Let $d$ be a positive even integer with
+\[
+ \epsilon=d-\kappa(d/2+2)>0,
+ \qquad
+ Q_{\kappa,d}=\frac{2\kappa-1}{\epsilon}
+              =\frac{4\kappa-2}{(2-\kappa)d-4\kappa}.
+\]
+For every $x,y\in\Q$ and $\sigma\in\{1,-1\}$ with
+$u=x^d+\sigma y^2\ne0$, one has
+\begin{equation}\label{eq:bound}
+ h(x)\le Q_{\kappa,d}h(u)+\frac{\log K_\kappa}{\epsilon}.
+\end{equation}
+No integrality, denominator, or real-sign assumption is imposed on
+$x,y$, or on the nonzero number $u$.
+\end{theorem}
+
+\begin{proof}
+If $x=0$, the result is immediate. If $y=0$, then
+$h(x)=h(u)/d$; the inequality follows from
+$Q_{\kappa,d}\ge1/d$ and $K_\kappa\ge1$.
+Henceforth both numbers are nonzero.
+
+Put $m=d/2$ and write
+\[
+ x=A/D,\qquad y=B/E,\qquad u=C/F
+\]
+in lowest terms, with $D,E,F>0$, $A,B,C\ne0$.
+Let
+\[
+ \ell=\operatorname{lcm}(D^m,E),\qquad
+ M=\ell/D^m,\qquad N=\ell/E.
+\]
+Clearing the common square denominator gives the integer identity
+\begin{equation}\label{eq:triple}
+ A^dM^2+\sigma B^2N^2=C\ell^2/F.
+\end{equation}
+In particular $F\mid\ell^2$.
+
+Let
+\[
+ g=\gcd(A^dM^2,B^2N^2)=G^2,
+ \qquad G=\gcd(|A|^mM,|B|N).
+\]
+We first verify the denominator facts needed below.
+For every prime $p\mid\ell$, at least one term on the left of
+\eqref{eq:triple} is a $p$-adic unit. Indeed, if
+$m v_p(D)\ge v_p(E)$, then $v_p(M)=0$ and $A$ is a unit;
+otherwise $v_p(N)=0$ and $B$ is a unit. Thus
+\begin{equation}\label{eq:coprime}
+ \gcd(g,\ell)=1,\qquad g\mid C,\qquad G\mid B.
+\end{equation}
+The divisibility $g\mid C$ follows from \eqref{eq:triple}, since
+$\ell^2/F$ is an integer with all its prime factors in $\ell$.
+For $G\mid B$, use $G\mid BN$ and $\gcd(G,N)=1$.
+
+There is also the useful divisibility
+\begin{equation}\label{eq:M}
+ M^2\mid F.
+\end{equation}
+To prove it, let $p\mid M$, write $r=v_p(D)$ and $e=v_p(E)$,
+and note $e>mr$. The term $y^2$ then has strictly smaller
+valuation than $x^d$, namely $-2e$. Hence $v_p(F)=2e$, whereas
+$v_p(M)=e-mr\le e$. This proves \eqref{eq:M} at every prime.
+Finally the prime support of $\ell=D^mM$ gives
+\begin{equation}\label{eq:radell}
+ \rad(\ell)\le D\rad(M).
+\end{equation}
+
+Let $T$ be the largest of the absolute values of the three nonzero
+terms in \eqref{eq:triple}. After division by $g$ and a possible
+reordering, they form a positive coprime $abc$ triple. Its radical
+$\mathcal R$ satisfies
+\begin{equation}\label{eq:radical}
+ \mathcal R
+ \le |A|\,\frac{|B|}{G}\,\frac{|C|}{g}\,\rad(\ell).
+\end{equation}
+Indeed, the prime factors of the first divided term lie in $AM$,
+those of the second lie in $(B/G)N$, and those of the third lie
+in $(C/g)\ell$. All expressions used here are integers by
+\eqref{eq:coprime}. Combining their prime supports proves the bound.
+
+Define positive real numbers
+\[
+ H=(T/M^2)^{1/d},\qquad
+ R=\max\{1,(F/|C|)^{1/d}\}.
+\]
+The three terms defining $T$ give
+\[
+ |A|\le H,\qquad |B|\le H^mM/N,\qquad D\le HR.
+\]
+Consequently $\max(|A|,D)\le HR$, and
+\eqref{eq:radical}--\eqref{eq:radell} imply
+\[
+ \mathcal R\le
+ |C|G^{-3} H^{m+2}R\,\frac{M\rad(M)}N.
+\]
+Apply \eqref{eq:abc} to $T/g$ and substitute $T=H^dM^2$:
+\[
+ H^\epsilon\le
+ K_\kappa |C|^\kappa R^\kappa
+ G^{2-3\kappa}M^{\kappa-2}\rad(M)^\kappa N^{-\kappa}.
+\]
+Since $\kappa>1$, one has $G^{2-3\kappa}\le1$ and
+$N^{-\kappa}\le1$. Since $\rad(M)\le M$, and using
+\eqref{eq:M}, one obtains
+\begin{equation}\label{eq:H}
+ H^\epsilon\le
+ K_\kappa |C|^\kappa F^{\kappa-1}R^\kappa.
+\end{equation}
+
+Set $c=\log|C|$, $f=\log F$, and
+$r=\log R=(f-c)_+/d$. Both $c,f$ are nonnegative, and
+$h(u)=\max(c,f)$. From $h(x)\le\log H+r$ and
+\eqref{eq:H},
+\begin{equation}\label{eq:finalnumerator}
+ \epsilon h(x)\le
+ \log K_\kappa+\kappa c+(\kappa-1)f+(\kappa+\epsilon)r.
+\end{equation}
+If $c\ge f$, the last three terms are at most
+$(2\kappa-1)c$. If $f\ge c$, substitute $r=(f-c)/d$;
+the coefficients of $c$ and $f$ become
+\[
+ \kappa-\frac{\kappa+\epsilon}{d}
+   =\frac{3\kappa}{2}-1+\frac\kappa d>0,
+ \qquad
+ \kappa-1+\frac{\kappa+\epsilon}{d}
+   =\frac\kappa2-\frac\kappa d>0.
+\]
+Their sum is $2\kappa-1$. Therefore the same terms are at most
+$(2\kappa-1)f$. Dividing \eqref{eq:finalnumerator} by
+$\epsilon$ proves \eqref{eq:bound}.
+\end{proof}
+
+\begin{corollary}\label{cor:powered}
+Under the same hypotheses, put $a=x^{d/2}$. Then
+\[
+ h(a)\le
+ \frac{d(2\kappa-1)}{(2-\kappa)d-4\kappa}\,h(u)
+ +\frac{d\log K_\kappa}{2\epsilon}.
+\]
+For fixed $1<\kappa<2$, the displayed height coefficient tends to
+$(2\kappa-1)/(2-\kappa)$ as $d$ tends to infinity through the
+admissible even integers.
+\end{corollary}
+\begin{proof}
+Use $h(x^{d/2})=(d/2)h(x)$ in Theorem~\ref{thm:height}.
+\end{proof}
+
+The weaker coefficient
+\[
+ C_{\kappa,d}=
+ \frac{(4+\kappa)d-6\kappa}{(2-\kappa)d-4\kappa}
+\]
+from the earlier plus-square argument also holds for the signed
+equation, since $C_{\kappa,d}>Q_{\kappa,d}$ throughout the stated
+range. The square gcd and minimal common denominator in the proof
+avoid the height cost of multiplying by the full $d$th power of
+the denominator of $u$.
+
+The exclusion $u=0$ is necessary: one may set
+$y=x^{d/2}$ in the minus case with arbitrarily large $h(x)$.
+The theorem concerns one square. It gives no assertion for a sum or
+difference containing two independently varying squares, and no
+prime-pattern realization or defining-variable count follows from
+the height bound alone.
+
+\begin{thebibliography}{9}\raggedright
+\bibitem{Single}\emph{A single-cover criterion from a mixed-power height
+inequality}, repository manuscript,
+\nolinkurl{papers/pole_parameters/single_cover_criterion_20261117_v56.tex}.
+\end{thebibliography}
+\end{document}

@@ -1,0 +1,208 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,booktabs,microtype}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue]{hyperref}
+\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\title{Single-cover criteria from the signed mixed-power height bound}
+\author{}\date{17 November 2026}
+\begin{document}\maketitle
+
+\section{Source and height constants}
+Retain the conditional single-cover source of \cite{Single}, its
+three point roles $A,H,U$, its guarded finite point algebra, and all
+of its group, formal-comparison and trace-height premises. Write
+$A=[n]P$, where $n\in\Z\setminus\{0\}$, and set
+\[
+ \beta=X^2+B,\qquad T=\operatorname{Tr}_{K/\Q}x(A),\qquad
+ H_0=\beta^e+T^e,\qquad t=H_0^d+z^2,
+\]
+where $B\ge3$ is fixed and odd, $e,d$ are positive even integers,
+and $z\in\Q$ is the sole free detector parameter.
+There are no new coordinates for $H_0$ or $t$.
+
+Assume the fixed weak rational $abc$ inequality with exponent
+$\kappa>1$ and constant $K_\kappa\ge1$, and put
+\[
+ \epsilon=d-\kappa(d/2+2),\quad
+ \alpha_e=e/\kappa-3,\quad
+ \gamma=8/\kappa-6.
+\]
+All three quantities are required to be positive. Let $\mathcal M(t)$
+be the retained odd contact radical, and write
+$E_h=h(1:\beta:T)$. The source's contact and even-power estimates give
+\[
+ h(t)\le\gamma^{-1}\log\mathcal M(t)+O(1),\qquad
+ E_h\le\alpha_e^{-1}h(H_0)+O(1).
+\]
+The signed mixed-power theorem \cite{Height}, applied to the plus
+sign, gives
+\begin{equation}\label{eq:height}
+ E_h\le q\log\mathcal M(t)+O(1),\qquad
+ q=\frac{2\kappa-1}{\epsilon\alpha_e\gamma}.
+\end{equation}
+Every constant is independent of $B$, $X$ and the source tuple.
+
+The old optional outer power causes no additional case: if the
+argument is written $H_0^{dm}+z^2$, apply \cite{Height} directly
+with the single even exponent $D=dm$. For $m>1$ this is stronger
+than first applying the degree-$d$ bound to $H_0^m$, because
+\[
+ \epsilon_{dm}=m\epsilon_d+2\kappa(m-1)>m\epsilon_d.
+\]
+The optimization below therefore uses one total even exponent $d$.
+
+\section{Fixed and varying square classes}
+
+Retain the native single quadratic radicand $\mathcal R$ of
+\cite{Single}. For $k=0$ allow its rational-square condition, or
+the established fixed finite positive $S$-unit class menu. For
+positive even $k$, retain the varying-class construction of
+\cite{Classes}: its positive class has odd support satisfying
+\[
+ \log\operatorname{rad}_{S}^{\mathrm{odd}}(\delta)
+       \le k E_h+O(1).
+\]
+In particular the finite menu
+\[
+ \{1,\beta^2+T^2,1+X^4\}
+\]
+has $k=2$. The menu can also be multiplied by any fixed finite
+positive $S$-unit menu. All its previous preparation and
+whole-character guards are retained.
+
+\begin{theorem}\label{thm:sound}
+The single-cover source is sound for every sufficiently large fixed
+odd $B$, uniformly in all its rational witnesses, whenever
+\begin{equation}\label{eq:absorption}
+ q(k+1/2)<1.
+\end{equation}
+For $k=0$ this is the condition $q<2$.
+\end{theorem}
+\begin{proof}
+Suppose $X\ne n$. The source's local extraction and the support
+budget of \cite{Classes} give
+\[
+ \log\mathcal M(t)
+ \le(k+1/2)E_h+\log(1+|n|)+O(1).
+\]
+Here the factor $1/2$ uses the exact input inequality
+$2h(X)\le h(\beta)$, valid for $\beta=X^2+B$ with $B\ge1$.
+Substitution in \eqref{eq:height} and strict absorption give
+\[
+ E_h\le C\log(1+|n|)+C'
+\]
+with constants independent of $B$. The retained trace-height theorem
+then bounds $n^2$ by the same type of expression, so both $n$ and
+$E_h$ are bounded independently of $B$. This contradicts
+$E_h\ge h(\beta)\ge\log B$ for all sufficiently large fixed
+odd $B$. Thus $X=n\in\Z$.
+\end{proof}
+
+\section{Exact parameter rows and argument degrees}
+
+For the fixed-class case $k=0$, the following rows have strict
+contraction:
+\[
+\begin{array}{c|c|c|c|c|c}
+\kappa&e&d&2ed&q&q/2\\\hline
+101/100&4&6&48&520251/893855&520251/1787710\\
+25/24&4&6&48&8125/8379&8125/16758\\
+16/15&4&6&48&68/45&34/45\\
+121/100&6&8&96&1039511/648906&1039511/1297812
+\end{array}
+\]
+For the varying menu with $k=2$, exact rows are
+\[
+\begin{array}{c|c|c|c|c|c}
+\kappa&e&d&2ed&q&(5/2)q\\\hline
+101/100&4&8&64&520251/1825346&2601255/3650692\\
+25/24&6&6&72&8125/27531&40625/55062\\
+16/15&4&10&80&68/171&170/171\\
+121/100&6&14&168&1039511/2727159&5197555/5454318
+\end{array}
+\]
+Ordinary rational $abc$ supplies the first row of each table.
+The remaining rows use only the indicated fixed weak exponents,
+together with the retained source premises.
+
+The column $2ed$ is the exact degree of the scalar argument $t$ in
+the retained input, point and square-parameter coordinates. Indeed
+$\beta=X^2+B$ has degree two, and in the direct square-abscissa
+chart $T=2(h_0^2+2h_1^2)$ also has degree two. Hence $H_0$ has
+degree $2e$ and $t=H_0^d+z^2$ has degree $2ed$. This column is
+not a degree bound for the full defining determinant.
+
+\begin{proposition}\label{prop:optimal}
+Within the displayed even-power criterion, the least argument degree
+under ordinary rational $abc$ is $48$ for $k=0$ and $64$ for $k=2$.
+For each fixed exponent in the two tables, its row has the smallest
+argument degree among all even $e,d$ satisfying the stated positivity
+and contraction inequalities.
+\end{proposition}
+\begin{proof}
+Positivity with $\kappa>1$ forces $e\ge4$ and $d\ge6$.
+Thus $2ed\ge48$, attained in the first table.
+For $k=2$, note
+\[
+ \frac{\partial}{\partial\kappa}
+ \frac{2\kappa-1}{d-\kappa(d/2+2)}
+ =\frac{3d/2-2}{\epsilon^2}>0.
+\]
+Both $\alpha_e$ and $\gamma$ decrease with $\kappa$, so $q$
+increases on its positive domain. Its best limiting value at
+$\kappa=1$ is
+\[
+ q_{1,e,d}=\frac1{(d-4)(e-3)}.
+\]
+The only even pair with $e\ge4$, $d\ge6$, and $2ed<64$ is
+$(e,d)=(4,6)$. At this pair the limiting contraction is $5/4>1$.
+Degree $64$ is attained by the first row of the second table.
+
+For each fixed exponent, a smaller argument degree would require
+$2ed$ smaller than the degree of its displayed row. There are only
+finitely many such even pairs, since $e\ge4,d\ge6$. The accompanying
+exact rational certificate lists every one, checks the positivity
+conditions, and records a contraction at least one for each remaining
+pair. It also checks all rows directly. Thus no unbounded search
+range or numerical approximation is used for this assertion.
+\end{proof}
+
+\section{Guards, coordinates and the remaining realization problem}
+
+No detector, pole-extraction, finite-algebra, or guard equation is
+changed in this height argument. At every prepared real character,
+$H_0>1$ and $t>1$, so the previous positivity and radicand-unit
+proofs still apply for every row. The scalar shift $B$ enters only
+through $\beta$ and creates no $B$-dependent additive constant.
+
+The external-coordinate census remains nine for the single finite
+square criterion: one input, six point coordinates, one square
+parameter $z$, and one encoder coordinate. Its algebra has rank
+$64\cdot2=128$ per fixed menu branch; a finite product over menu
+branches uses the same external coordinates.
+
+These are soundness criteria. A defining polynomial still requires,
+for every nonzero integer input, rational points on the actual source
+with its prescribed root label, square parameter, chosen class, and
+every retained whole-character guard. That simultaneous realization
+is unproved. The height theorem does not establish the required
+restricted prime pattern or rational-square incidence. In particular
+the established defining-variable bounds remain twenty-five and
+thirteen.
+
+\begin{thebibliography}{9}\raggedright
+\bibitem{Height}\emph{Rational height bounds for a signed power and a
+square}, companion manuscript,
+\nolinkurl{signed_mixed_power_height_v58.tex}.
+\bibitem{Single}\emph{A single-cover criterion from a mixed-power
+height inequality}, repository manuscript,
+\nolinkurl{papers/pole_parameters/single_cover_criterion_20261117_v56.tex}.
+\bibitem{Classes}\emph{Variable square classes with a support-height
+budget}, repository manuscript,
+\nolinkurl{papers/pole_parameters/variable_squareclasses_20261117_v57.tex}.
+\end{thebibliography}
+\end{document}

@@ -1,0 +1,158 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,microtype}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,urlcolor=blue]{hyperref}
+\setlength{\emergencystretch}{2em}
+\newtheorem{proposition}{Proposition}
+\newcommand{\Q}{\mathbb Q}
+\title{Scope of the Achenjang--Woo prime and twist theorems}
+\author{}\date{17 November 2026}
+\begin{document}\maketitle
+
+\section{The cited statements}
+
+The source is the complete 74-page manuscript \cite{AW}, version 1,
+submitted 11 November 2026, with manuscript date 13 November 2026.
+Theorem A, on page 3, treats a fixed system of pairwise independent
+binary affine linear forms together with one positive definite binary
+quadratic norm form from an imaginary quadratic field. It gives the
+prime-value asymptotic, and simultaneous prime values when the singular
+series is positive. The norm form may have the separate affine changes
+$N_{K/\Q}(T_1(x)+T_2(y)\alpha)$ displayed in that theorem.
+It does not state a simultaneous-prime theorem for several independent
+irreducible binary quadratic forms.
+
+Theorem 10.1, on page 39, gives infinitely many rank-exactly-two
+quadratic twists of
+\[
+ E_{\mu,\lambda}:y^2=x(x-\mu)(x-\lambda)
+\]
+when $(\mu,\lambda)$ satisfies Definition 10.4, page 40. The
+conditions include $\mu$ odd and squarefree, $\lambda=\mu m^2$,
+$m\equiv2\pmod8$, and the following two essential auxiliary-prime
+requirements:
+\begin{itemize}
+\item two distinct primes $p_1,p_2>14$ divide $m^2-1$ to odd order,
+      with the additional Hilbert-symbol and residue requirements
+      specified in (A3);
+\item two distinct odd primes $\ell_0,\ell_1$ divide $m$ and do not
+      divide $\mu$, with the additional splitting requirement in (A4).
+\end{itemize}
+The coprimality and parity conditions (A5)--(A6) are also required.
+The theorem is not a result for all curves with three rational
+two-torsion points. Its statement does not prescribe arbitrary
+abscissa square classes or an external polynomial family of twist
+parameters.
+
+\section{The original pole family}
+
+\begin{proposition}
+Theorem 10.1 does not apply directly to any quadratic twist of the
+original pole curve
+\[
+ E_n:y^2=x(x-n)(x+3n),\qquad n\ne0,
+\]
+in any ordering of its three rational roots.
+\end{proposition}
+\begin{proof}
+The substitution $X=x-n$ gives
+\[
+ y^2=X(X+n)(X+4n),
+\]
+so the pair of nonzero roots can be written $(\mu,\lambda)=(-n,-4n)$.
+The ratio is $4$, giving $m=2$. But $m^2-1=3$ has no prime factor
+greater than fourteen, and $m$ has no odd prime factor. Thus both
+(A3) and (A4) fail, independently of $n$.
+
+The possible ratios from all root orderings are
+\[
+ -3,\quad -\tfrac13,\quad 4,\quad \tfrac14,
+ \quad\tfrac34,\quad\tfrac43.
+\]
+The only square ratios are $4$ and $1/4$; reordering to make the
+square root a positive integer gives $m=2$ again. A quadratic twist
+does not change these ratios. Hence it cannot repair these failures.
+\end{proof}
+
+The same source also does not apply directly to the intrinsic
+congruent-number family $y^2=x(x-n)(x+n)$: its root ratios are
+$-1,2,1/2$, none of which is a rational square.
+
+\section{The generic two-point family and the missing incidence}
+
+Proposition 10.2 of \cite{AW} recalls the Rubin--Silverberg family.
+For distinct nonzero $\mu,\lambda$ with $\mu+\lambda\ne0$, put
+\[
+ \alpha=\frac{\mu\lambda}{\mu+\lambda},\qquad
+ G(u)=\frac{(u^2+\alpha^2)(u^2+\alpha^2-\alpha\mu)
+                    (u^2+\alpha^2-\alpha\lambda)}{\alpha^3}.
+\]
+The twist $G(u)y^2=x(x-\mu)(x-\lambda)$ has the two independent
+generic sections
+\[
+ \left(\frac{u^2+\alpha^2}{\alpha},1\right),\qquad
+ \left(\frac{\alpha u^2+\alpha^3}{u^2},\frac{\alpha^3}{u^3}\right).
+\]
+This construction remains valid for $(\mu,\lambda)=(-1,-4)$,
+although the exact-rank theorem does not apply there.
+Putting $u=2v/5$ and translating back to the original root ordering
+gives
+\[
+ G=-\frac{(v^2+4)(v^2-1)(v^2-16)}{125}
+\]
+and points on $E_G$ with
+\begin{align*}
+ x_1&=G\frac{1-v^2}{5}, & y_1&=G^2,\\
+ x_2&=G\frac{v^2-16}{5v^2}, & y_2&=-\frac{8G^2}{v^3}.
+\end{align*}
+Their abscissa classes, away from the indicated zeros and poles, are
+\[
+ [x_1]=[(v^2+4)(v^2-16)],\qquad
+ [x_2]=[-(v^2+4)(v^2-1)]
+ \quad\text{in }\Q^\times/\Q^{\times2}.
+\]
+These formulas give individual rank-at-least-two twist families.
+They do not prescribe arbitrary classes $D_i$ on the native curves
+\[
+ E_{N_i(\tau)},\qquad
+ N_i(\tau)=D_iC_i(\tau^2-D_i)(\tau^2+3D_i),
+\]
+and do not furnish a common rational $\tau$.
+Matching a specialization would require, at a minimum,
+$G(v_i)/N_i(\tau)\in\Q^{\times2}$ and the required nonzero point
+class. Neither condition follows from generic rank two or from
+the prime theorem. The relation must also use the actual $D_i,C_i$
+and actual detector traces.
+
+\section{Scope for the single-square prime proposal}
+
+In the proposal $t=A+z^2$, a common square denominator for $z$ makes
+the native contact factors proportional to
+\[
+ m^2+(A-\theta_j)n^2.
+\]
+For the source's large positive $A$ and distinct fixed real contact
+roots $\theta_j$, these are distinct positive definite irreducible
+binary quadratic forms. Theorem A of \cite{AW} permits one such norm
+form alongside linear forms; it does not permit this whole collection.
+Thus it does not fill the restricted-prime-pattern gap left by Sun's
+free-translation theorem.
+
+The conic-bundle consequence, Theorem B and its generalization
+Theorem 9.2, concerns sufficiency of the Brauer--Manin obstruction
+for weak approximation in the displayed family. It cannot be used
+without verifying that a proposed incidence variety belongs to that
+family and has an appropriate adelic point orthogonal to its Brauer
+group. Neither verification has been made for the detector incidence.
+
+\begin{thebibliography}{9}\raggedright
+\bibitem{AW}N.~Achenjang and K.~Woo,
+\emph{Prime values of linear forms and a quadratic form: one proof
+and two arithmetic applications}, arXiv:2611.16062v1 (2026),
+\url{https://arxiv.org/abs/2611.16062}.
+The full author manuscript was inspected through
+\url{https://arxiv.cnoctave.top/pdf/2611.16062};
+Theorem A, Theorem 10.1, Proposition 10.2 and Definition 10.4.
+\end{thebibliography}
+\end{document}

@@ -1,0 +1,255 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,microtype}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,urlcolor=blue]{hyperref}
+\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\DeclareMathOperator{\Tr}{Tr}
+\title{A detector normalization for a signed moving-contact cover}
+\author{}\date{17 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+A signed one-square cover gives twelve prime positions of exactly
+the common-translation form in Sun's theorem. A rational normalizer
+preserves the native six-test detector, ordered completeness and
+whole-character guards. Its extraction conclusion loses only the
+numerator-prime support of the height parameter. No moving-contact
+height inequality, and hence no eleven-variable definition, is proved.
+\end{abstract}
+
+\section{The rational functions}
+
+Fix distinct positive integers $c_1,\ldots,c_6$; one may take
+$c_i=i$. For nonzero $a,t\in\Q$ adjoin a finite root
+\[
+ z^2=a^2-t,
+\]
+and put
+\begin{equation}\label{eq:functions}
+ \begin{split}
+ F(t,a)&=\prod_{i=1}^6(t+2c_i a+c_i^2),\\
+ \delta&=t/a,\qquad w=F/(4\delta^8),\\
+ W&=\prod_{i=1}^6(1+C_i^2/F),\qquad
+ V=\Tr_{\Q(\sqrt2)/\Q}(W^{-1}),\qquad b=4w/V^2.
+ \end{split}
+\end{equation}
+The six $C_i$ are the actual conditional detector tests, with all
+their original point and difference-chart guards. Guard $a,t,F,W,V$;
+if the cover is to exclude its diagonal branch, also guard
+$a^2-t=z^2$. The last condition is a scalar guard and adds no free
+coordinate. The functions in \eqref{eq:functions} do not depend on
+the choice of sign of $z$.
+
+In the proposed height application,
+\[
+ M=(X^2+B)^e+T^e,\qquad a=M^{d/2},\qquad d\text{ even},
+\]
+where $T=\Tr x(A)$ and $e$ is even. Thus $M,a$ are positive
+rational functions of retained abscissas and are the same at every
+finite point-algebra character.
+
+\section{Odd valuations and extraction}
+
+Let $S$ contain two, the original fixed exceptional primes, and the
+prime divisors of the fixed $c_i$. Write $v=v_p$ for $p\notin S$.
+
+\begin{lemma}\label{lem:valuation}
+Assume $z\in\Q$ and $F(t,a)\ne0$. If $v(F)$ is odd, then:
+\begin{enumerate}
+\item if $v(a)<0$, one has $v(t)=v(a)$ and $v(\delta)=0$;
+\item if $v(a)=0$, one has $v(F)>0$ and $v(\delta)\ge0$;
+\item if $v(a)>0$, one has $v(z)=0$, $v(t)=0$, $v(F)>0$
+      and $v(\delta)=-v(a)$.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+Suppose first $q=v(a)<0$. If $v(z)<q$, then all six factors
+have valuation $2v(z)$, so $v(F)=12v(z)$ is even. If $v(z)>q$,
+all have valuation $2q$, again giving an even total. Thus an odd
+total requires $v(z)=q$. Put $r=v(t)$. The terms $2c_i a$ have
+valuation $q$ and the constants $c_i^2$ have valuation zero.
+If $r<q$, every factor has valuation $r$, giving $6r$; if $r>q$,
+every factor has valuation $q$, giving $6q$. Both are even.
+Consequently $r=q$, proving the first assertion.
+
+If $v(a)=0$ and $v(z)<0$, the total is again $12v(z)$.
+Otherwise $t,F$ are integral, so an odd $v(F)$ is positive and
+$v(\delta)=v(t)\ge0$.
+
+Finally suppose $v(a)>0$. If $v(z)<0$, the total is even as
+before. If $v(z)>0$, all six factors are units because every $c_i$
+is a unit. Hence $v(z)=0$; then $t$ is a unit and $F$ is integral,
+giving the remaining assertions.
+\end{proof}
+
+\begin{theorem}\label{thm:extraction}
+Suppose the pole equation ensures that $b$ has no negative odd
+valuation outside $S$. At every $p\notin S$ for which $v_p(F)$ is
+odd and $v_p(a)\le0$, some place above $p$ satisfies
+\[
+                        v(C_i)>0\qquad(1\le i\le6).
+\]
+Moreover every negative valuation of $F$ outside $S$ is even in a
+source solution.
+\end{theorem}
+\begin{proof}
+Put $\nu=v_p(F)$ and $k=v_p(\delta)$. At every place above $p$,
+each factor of $W$ has valuation
+\[
+                  \min(0,2v(C_i)-\nu)\le0;
+\]
+the two summands cannot tie because $\nu$ is odd. Let $q\le0$ be
+the largest of the local valuations of $W$. Then
+$v_p(V)\ge-q\ge0$. Consequently the pole condition gives
+\[
+ 1\le v_p(b)\le\nu-8k+2q,
+ \qquad q>-(\nu-8k)/2.
+\]
+At a place attaining $q$, each factor valuation is at least their
+sum $q$, and hence
+\begin{equation}\label{eq:bound}
+                         v(C_i)>\nu/4+2k.
+\end{equation}
+If $v_p(a)<0$, Lemma~\ref{lem:valuation} gives $k=0$ and
+the displayed inequality for $b$ forces $\nu>0$. If $v_p(a)=0$,
+the lemma gives $\nu>0$ and $k\ge0$. Thus \eqref{eq:bound} is
+positive in either case. A negative odd $\nu$ could only occur
+in the first case, where it has just been excluded.
+\end{proof}
+
+The restriction on numerator primes cannot be removed from this
+local argument. For example take $p=17$, $a=17^2$ and $z=18$.
+Then $v_{17}(F)=1$ and $v_{17}(\delta)=-2$. With the toy tests
+$C_1=1$, $C_2=\cdots=C_6=0$, one has $W=1+1/F\in\Q$ and
+$V=2/W$, so $v_{17}(b)=15>0$ although $C_1$ is a unit.
+This example concerns the valuation mechanism, not an actual
+elliptic source tuple.
+
+If $a=M^{d/2}$, its positive prime support is exactly that of the
+numerator of $M$. Thus the omitted radical has cost
+\[
+ \log\prod_{v_p(a)>0}p
+ =\log\prod_{v_p(M)>0}p\le h(M),
+\]
+independent of the exponent $d/2$. For a nonintegral residual
+$X-n$, the native formal comparison therefore gives the prospective
+radical bound
+\[
+ \log\operatorname{rad}_{\rm odd,S}(F)
+ \le\log|\operatorname{num}(X-n)|+h(M),
+\]
+where only positive odd valuations outside $S$ enter the radical.
+The point is the omission cost $h(M)$; no lower bound for this
+moving-contact radical is asserted here.
+
+\section{The exact prime construction}
+
+\begin{proposition}\label{prop:prime}
+Fix $a>0$ rational. Under Sun's Theorem 4.1, the signed cover has
+infinitely many choices with $z>a+\max c_i$, for which $F$ is a
+product of twelve distinct selected primes times a rational square.
+The primes have the same simultaneous conjugate reduction-order,
+avoidance and denominator-divisibility properties as in the native
+conditional source.
+\end{proposition}
+\begin{proof}
+Choose an integer $D>0$ such that every $D^2(a+c_i)$ is integral.
+The twelve numbers $\pm D^2(a+c_i)$ are distinct. Apply Sun's
+theorem to these twelve integer coefficients. It supplies $u,h>0$
+such that
+\[
+ p_i^- =u-D^2(a+c_i)h^2,\qquad
+ p_i^+ =u+D^2(a+c_i)h^2
+\]
+are the required primes. Put $z=u/(D^2h^2)$ and choose the slope
+lower bound so that $z>a+\max c_i$. Then
+\[
+ (a+c_i)^2-z^2=-\frac{p_i^-p_i^+}{D^4h^4},\qquad
+ F=\frac{\prod_i p_i^-p_i^+}{D^{24}h^{24}}>0.
+\]
+Both prime positions have the same $+u$ coefficient. Their signs
+therefore impose no opposite Gaussian congruences: at a prime
+dividing the prescribed denominator, both positions have the same
+residue. The six minus signs cancel in the product.
+
+The fixed input $a$ is chosen before prime selection. The avoidance
+list may thus include the numerator and denominator prime support
+of $a$, of every $c_i(2a+c_i)$, and of the rational coefficient
+differences. At a selected prime the corresponding factor has
+valuation one, all other factors are units, and $\delta=t/a$ is
+a unit. Every other possible odd valuation of $F$ is absent.
+\end{proof}
+
+\section{Ordered completeness and the finite census}
+
+Fix an integer input $X=n\ne0$, take $A=[n]P$, and choose the
+same provisional point neighborhoods and signed-branch avoidance
+as in the original conditional preparation. All quantities $M,a$
+are now fixed. At each fixed finite place, as $z$ tends to infinity,
+\[
+ F\sim z^{12},\qquad \delta\sim-z^2/a,\qquad
+ w\sim\frac{a^8}{4z^4},\qquad W\longrightarrow1,\quad
+ V\longrightarrow2.
+\]
+The leading term of $w$ is a rational square. Arbitrary denominator
+divisibility in Proposition~\ref{prop:prime} gives all the original
+finite preparation depths, including the $2$-adic square class and
+valuation and the added preparation at seven for the intrinsic pole.
+At real places, $z>a+\max c_i$ gives $F>0$, and sufficiently large
+$z$ gives small positive $w$ and $V>1$ in the prepared neighborhoods.
+Thus $0<7b<1$ at the actual character. The twelve compatible contact
+orders permit the same final refinement $H=[h_0]P$, $U=[n]H$.
+
+At every fresh selected prime $v_p(F)=v_p(w)=1$, the detector has
+its original successful slot, and $V$ is a unit. Thus $v_p(b)=1$.
+At all other primes the weight valuation is even, except for the
+already prepared fixed places. Hence the actual $7b$ has square
+reduced denominator and satisfies the intrinsic realization
+hypotheses. The intrinsic two-parameter pole theorem supplies
+its rational witnesses and the established Zariski-density guard
+avoidance.
+
+At every point-algebra character, $a,t,F$ have the same rational
+values, $F>0$, all factors of $W$ are positive, and $V>0$.
+The new cover root is nonzero since $z>a+\max c_i$; the scalar
+guards $a,t,F$ are nonzero. All original point, difference, quotient
+and denominator guards remain present. The pole radicand norms
+are avoided exactly as in the intrinsic transfer theorem.
+
+The prospective finite algebra has rank $64\cdot2\cdot2=256$:
+three point blocks, one cover root and one pole root. The proposed
+unrestricted coordinates are one input, six point coordinates, one
+retained $t$, two pole parameters and the single encoder coordinate.
+This is a census of eleven coordinates for the incomplete
+specification. Soundness still requires a new moving-contact height
+theorem, with the omitted numerator primes of $M$ included. The
+fixed-contact height theorem cannot be cited in its place.
+
+\section{Remaining height problem}
+
+Writing $r=z-a$ and $s=z+a$ gives
+\[
+ F=\prod_i(r-c_i)(s+c_i),\qquad s-r=2a.
+\]
+An odd prime common to a factor from each group may cancel from
+the parity radical. Such a prime divides $2a+c_i+c_j$.
+These are input-dependent collision factors, with heights of order
+$h(a)$, so the old fixed-contact estimate does not apply. The
+perfect-power constraint $a=M^{d/2}$ and the signed one-square
+height lemma do not by themselves give the required lower bound.
+In addition, the branch $z=0$ makes $F$ a square and must not be
+silently included in a proposed radical-height inequality.
+
+\begin{thebibliography}{9}\raggedright
+\bibitem{Sun}Z.-W.~Sun, \emph{48 unknowns for Hilbert's tenth problem
+over the rationals}, arXiv:2610.20691v3, Theorem 4.1,
+\url{https://arxiv.org/pdf/2610.20691}.
+\bibitem{Intrinsic}\emph{Thirteen-variable conditional sources with
+intrinsic congruent-number poles}, repository manuscript,
+\nolinkurl{papers/pole_parameters/conditional_intrinsic_transfer_20261117_v57.tex}.
+\end{thebibliography}
+\end{document}
