@@ -1,0 +1,132 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,microtype}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,urlcolor=blue]{hyperref}
+\newtheorem{proposition}{Proposition}
+\newcommand{\Q}{\mathbb Q}
+\title{Diagonal admissible classes and a congruent-curve cover}
+\author{}\date{17 November 2026}
+\begin{document}\maketitle
+
+Put $\mathcal C=V^2+w(2-V)$ and $b=4w/V^2$. Retain the source
+assumption that every odd valuation of $w$ outside the fixed exceptional
+set $S$, containing two, is positive. All source denominators are guarded.
+
+\begin{proposition}\label{prop:class}
+Let $k\in\Q^\times$ be a fixed $S$-unit. For any rational value $c$,
+define
+\[
+                    \Delta_{k,c}=1+k^2w^2c^4.
+\]
+If $\Delta_{k,c}\mathcal C$ is a nonzero rational square, then $b$
+has no negative odd valuation outside $S$. At every prepared real
+character, where $w>0$ and $0<V\le2$, the radicand is positive.
+There is no lost-prime or height-support allowance.
+\end{proposition}
+\begin{proof}
+At a hypothetical negative odd pole of $b$, let $\nu=v_p(w)>0$ be
+odd and $m=v_p(V)$, so $2m>\nu$. The usual trace argument gives
+$v_p(\mathcal C)=\nu$. If $c=0$, then $\Delta_{k,c}=1$.
+Otherwise its two summand valuations are
+\[
+                         0,\qquad 2\nu+4v_p(c).
+\]
+The second is even and is not zero, because $\nu$ is odd. Their
+minimum is therefore even. Consequently the product with $\mathcal C$
+has odd valuation and cannot be a square. At a real prepared character,
+$\Delta_{k,c}\ge1$ and $\mathcal C\ge V^2>0$.
+\end{proof}
+
+\begin{proposition}\label{prop:local}
+At every selected contact prime outside $S$, $\Delta_{k,c}$ is a
+nonzero local square for every rational $c$. The class also admits
+the source's simultaneous fixed-place preparation without another
+coordinate. In the two-cover sources one may take $c=\lambda^2$,
+where $\lambda$ is the existing common slope. In the single-cover
+source $t=M^d+z^2$, one may take $c=z^3$.
+\end{proposition}
+\begin{proof}
+At a selected prime $\nu=v_p(w)>0$ is odd. Put $r=kwc^2$.
+For $c\ne0$, $v_p(r)=\nu+2v_p(c)$ is odd and nonzero. If it is
+positive, $1+r^2\in1+p\mathbb Z_p$. If it is negative, then
+$(1+r^2)/r^2=1+r^{-2}\in1+p\mathbb Z_p$. Each expression is a
+nonzero local square; $c=0$ is immediate. Multiplying by the already
+prepared local square $\mathcal C$ preserves the conclusion.
+
+For the conditional two-cover source, $t_j=a_j\lambda$ with each
+$a_j$ fixed before slope selection, and
+\[
+ w_j\sim\frac1{4a_j^2\lambda^2},\qquad
+ k w_j(\lambda^2)^2\sim\frac{k\lambda^2}{4a_j^2}.
+\]
+The last expression becomes arbitrarily large in every fixed local
+absolute value. For the normalized general source, $w_j$ tends to
+a fixed nonzero value, so $kw_j\lambda^4$ does so as well.
+For a single cover, $t\sim z^2$ and
+\[
+                 w\sim\frac1{4z^4},\qquad kwz^6\sim\frac{kz^2}{4}.
+\]
+In all cases, dividing $\Delta_{k,c}$ by the square $(kwc^2)^2$
+gives a quotient tending to one. At two, take the valuation of
+$(kwc^2)^{-2}$ at least three; at an odd place take it positive.
+These refinements use the original fixed-place order of choices.
+\end{proof}
+
+If $c$ is a fixed rational function of already retained coordinates,
+this construction adds no unrestricted coordinate. Its denominators
+are included in the existing guard convention, and positivity makes
+the new radicand norm a unit at every prepared character. If $c$ is
+instead allowed to vary independently, it is one additional free
+coordinate; the finite-algebra encoder cannot remove that parameter.
+
+\section*{The resulting arithmetic curve}
+
+For fixed nonzero actual values $(V,w)$, the free-class equation is
+\begin{equation}\label{eq:cover}
+                   Y^2=\mathcal C(1+k^2w^2c^4).
+\end{equation}
+It is a genus-one curve. Its Jacobian is the congruent-number curve
+\begin{equation}\label{eq:jacobian}
+           E_{2k\mathcal Cw}:\quad
+           y^2=x^3-4k^2\mathcal C^2w^2x.
+\end{equation}
+To check the model, first remove the factor $\mathcal C$ over
+$\Q(\sqrt{\mathcal C})$. For $s^2=1+K^2c^4$, $K=kw$, the
+birational formulas
+\[
+                   x=\frac{2(s+1)}{c^2},\qquad
+                   y=\frac{4(s+1)}{c^3}
+\]
+give $y^2=x^3-4K^2x$, with inverse $c=2x/y$ on the common open
+set. Quadratic twisting by $\mathcal C$ gives
+\eqref{eq:jacobian}. Equivalently, the binary quartic invariants are
+$I=12k^2\mathcal C^2w^2$ and $J=0$; its standard Jacobian model
+scales to \eqref{eq:jacobian}.
+
+Thus varying this admissible class replaces the prescribed-abscissa
+problem on a variable-$j$ cubic by a prescribed torsor on a $j=1728$
+curve. It does not remove the arithmetic requirement. The twist
+$2k\mathcal Cw$ is determined by the actual detector, and positive
+rank of its Jacobian would not by itself prove that the torsor
+\eqref{eq:cover} has a rational point.
+
+There is also a necessary norm condition: a rational solution of
+\eqref{eq:cover} makes $\mathcal C$ a norm from $\Q(i)$, because
+both $Y^2$ and $1+(kwc^2)^2$ are such norms. In particular every
+prime $p\equiv3\pmod4$ must have even valuation in $\mathcal C$.
+The native preparation verifies local conditions at selected and
+fixed primes, but does not currently control these new numerator
+primes of the actual trace radicand.
+
+Taking $k=5/2$ makes the Jacobian parameter $5\mathcal Cw$.
+At the conditional fixed two-adic preparation, $w$ and $\mathcal C$
+are squares, so its squarefree representative has two-adic unit
+class five. This is a possible arithmetic specialization, not a
+positive-rank or rational-torsor theorem.
+
+The proposed twenty-one- and nine-coordinate counts are unchanged
+when $c$ is chosen from the already retained coordinates. Proving
+completeness still requires rational solutions of \eqref{eq:cover}
+with those actual coordinate values and every original guard.
+\end{document}

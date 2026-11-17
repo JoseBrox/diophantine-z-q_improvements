@@ -1,0 +1,50 @@
+CURRENT ARITHMETIC TARGET AFTER FIXED-SLOPE FINITENESS
+17 November 2026
+
+Proved checkpoint:
+negative_results/fixed_slope_elliptic_trace_finiteness_v59.tex
+The first genus-one trace block has finitely many rational incidences for
+fixed input X and fixed prepared slope lambda, even with all independent
+source point roles (three conditional, nine general). The proof needs no
+source Mordell--Weil rank assertion. Fixed-slope propagation through
+independent indices cannot supply a global realization theorem.
+
+The remaining sufficient realization statement is still unproved:
+For every required integer input X, choose a complete guarded source point
+tuple and common rational slope lambda, jointly, so that for j=0,1
+    C_j = V_j^2 + w_j*(2-V_j)
+is a rational square. Here V_j=Tr(W_j^-1) and w_j are the ACTUAL detector
+functions of those same source coordinates. Keep the original height
+arguments, source input hypotheses, and every point/difference/denominator
+and whole-algebra norm guard. Independent auxiliary integer indices are
+allowed; they are labels for already retained points, not new coordinates.
+
+Equivalent conic incidence equations:
+    (1+2*k_j)*V_j + w_j*k_j^2 = 2,  j=0,1.
+The correspondence is Y_j=V_j+w_j*k_j and k_j=(Y_j-V_j)/w_j.
+The guarded w_j are nonzero. These k_j are finite quadratic roots, not
+unrestricted rational parameters in the proposed encoding. Rationality must
+come from the entire algebra's rational-character separator. Generic conic
+parametrization in a freely chosen trace does not solve these actual equations.
+
+What would follow if this statement were proved:
+input + 2r point coordinates + one common slope + one encoder = 2r+3,
+namely 21 for r=9 and 9 for r=3. Each block adds only a finite quadratic
+extension. The existing whole-character positivity of C_j supplies the
+nonzero radicand guards. No such bound is claimed in this checkpoint.
+
+Routes still outside the fixed-slope obstruction:
+1. The untwisted conics above. They are genus zero, so the abelian-incidence
+   finiteness theorem does not apply.
+2. Choose the slope jointly with independent point indices, allowing the
+   genus-one curves themselves to vary; fixed-slope finiteness does not say
+   these moving incidence covers have no rational points.
+3. In the proved adaptive safe-class family q=2+w*c^2, use c equal to an
+   existing guarded point-coordinate function, instead of c=lambda. Then
+   delta=(q^2-2q-1)^2+4*q*(q^2-1)*V varies with the point tuple, so it is not
+   a fixed auxiliary elliptic curve at fixed slope. This avoids the precise
+   finiteness theorem but supplies no realization theorem by itself.
+
+The rank theorem, compatible local congruences, real density, and any finite
+menu of fixed genus-one curves do not establish these moving incidences.
+The established complete counts remain 25 and 13; the quartic remains 71.

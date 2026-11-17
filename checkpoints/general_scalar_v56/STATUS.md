@@ -1,5 +1,35 @@
 # Scalar precision transfer checkpoint
 
+## Latest v59 independent audit
+
+The final full audit is
+`independent_points_trace_finiteness_audit_v59.md`. The theorem now
+allows all three conditional or all nine general point roles to vary
+independently at a fixed input and prepared slope. Exact CM descent
+proves End_Q(Res E)=Z, and hence Q-simplicity, without a source rank
+assertion. The reciprocal-test forms span all roles modulo two, so
+every positive-dimensional rational abelian translate has an odd
+tested direction; real two-torsion poles force the block-zero trace
+to be nonconstant on that translate. Mordell--Lang then gives only
+finitely many guarded rational point tuples realizing a fixed smooth
+genus-one trace test. All rational points of that trace curve are
+allowed. The primary GGK and Milne statements were independently
+reopened, and the final rewritten manuscript passed the full audit.
+
+`check_independent_trace_finiteness_v59.py` and its certificate check
+the CM scaling identities and all518 nonzero conditional/general
+direction parities. The geometric finiteness proof is not inferred
+from finite computation. The result does not imply emptiness, and
+does not cover the untwisted conic, point-dependent curve coefficients,
+or jointly varying slopes and tuples. The earlier restricted-family
+receipt is retained as `fixed_slope_finiteness_independent_audit_v59.md`.
+
+`unit_input_actual_trace_reduction_v59.md` records the exact square
+detector reduction for actual inputs plus/minus one. It gives an
+explicit rational conic target for V=1 and retains the unresolved
+equations relating that target to the actual elliptic point and
+contact polynomial. It is not a source-realization theorem.
+
 ## Latest v58 results and independent audits
 
 ### Smaller trace cubic: independent rank audit

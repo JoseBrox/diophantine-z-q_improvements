@@ -1,0 +1,79 @@
+POINT-NORM PHYSICAL REWEIGHTING CANDIDATE
+17 November 2026. This is a research checkpoint, not a complete 21/9 theorem.
+
+Current conditional source:
+F=t(t+1)(2t+1)(3t+1)(4t+1)(5t+2)/120,
+delta=t-1, w0=F/(4*delta^8), W0=product_i(1+C_i^2/F).
+Use the EXISTING square-abscissa coordinate h_H in K with x(H)=h_H^2.
+Its rational norm is already nonzero under the point denominator guards.
+Put
+    g = 1/Nm(h_H),       g^2 = Nm(f(H)),    f=1/x,
+    u = w0*g^2,
+    w = u/(1+u)^2,
+    F_eff = 4*delta^8*w = F*g^2/(1+w0*g^2)^2,
+    W = product_i(1+C_i^2/F_eff), V=Tr(W^-1), b=4*w/V^2.
+The extra guard 1+u!=0 is positive at every prepared real character and
+costs no free coordinate in the guarded finite-algebra encoder.
+
+EXACT LOCAL SOUNDNESS FACT:
+For p outside the old fixed exceptional set, the parity of v_p(w) is
+that of v_p(F), and any odd valuation of w is positive, because
+v_p(u/(1+u)^2)=|v_p(u)| when v_p(u)!=0. The factor g^2 and delta^8
+have even valuations. If v_p(F) is odd, delta is a unit: negative
+v_p(t) gives v_p(F)=6v_p(t), and positive v_p(delta) gives F(1)=7,
+so neither yields an odd F valuation outside the old set.
+Thus v_p(F_eff)=v_p(w)=nu>0 odd at every consumed odd contact.
+The source max-valuation proof applies verbatim with F_eff in place
+of F: each factor has valuation min(0,2v(C_i)-nu)<=0 with a unique
+minimum. If b has no negative odd valuation, at the successful slot
+v(C_i)>nu/4>0 for every i. Every original odd contact remains consumed.
+There is no lost-radical height allowance from the new normalization.
+This is a simultaneous change of physical weight AND detector factors;
+normalizing b alone would not have this property.
+
+PROSPECTIVE COMPLETENESS CHECKS:
+At fixed real and finite neighborhoods of the original guarded point
+tuple, g is nonzero and bounded with fixed finite-place valuations.
+As t becomes large, w0~1/(4t^2), u~g^2/(4t^2), w~u, and
+F_eff~F*g^2. Hence W->1, V->2. The original fixed-place square
+and positivity preparation should transfer after increasing depths.
+All point-character values of g^2 are positive (indeed invariant under
+ordinate signs), so real positivity of the new weights and factors holds.
+
+At a selected fresh p with v(F)=1, use the actual multiplication family
+A=[n]P,U=[n]H and choose equal formal depths k>=1 for H in one slot
+and H-P in the other. Then v(g)=k, v(u)=2k+1 and
+v(F_eff)=2k+1. First-four tests have valuation at least2k and comparisons
+at least4k, so every successful factor is 1 modp. The other reciprocal
+slot is zero modp because f(P) is a unit and F_eff has positive valuation.
+Thus V is a unit and v(b)=2k+1>0.
+Equal depths can be arranged locally even when the two source formal
+logarithms have different base valuations: lift the smaller depth by
+choosing h close to0 or1 modulo p. Compatibility with every other selected
+order modulus needs the common-prime comparability argument described
+below; this has not yet been packaged as a full ordered-completeness proof.
+
+PRIME COMPARABILITY FOR EXTRA h CONGRUENCES:
+All selected p_j=u+c_j*v are comparable when the common slope u/v
+is chosen sufficiently large relative to the fixed coefficients c_j.
+One may require max p_j < 2 min p_j. Hasse gives every doubled-group
+annihilator N_j^+- <=(p_j+1+2sqrt(p_j))/4 < p_j/2 for p_j>=7.
+Hence every selected prime exceeds every N_j^+-, so no selected prime
+can divide another selected order modulus. Extra h conditions modulo
+powers of all p_j then remain compatible with the existing order CRT.
+
+WHY THIS IS STRUCTURALLY DIFFERENT:
+For fixed input and fixed slope, w now varies with the existing point
+coordinate H. A genus-one trace curve E_w is therefore not fixed as H
+varies, and the fixed-curve Mordell--Lang incidence theorem does not apply.
+No new unrestricted coordinate has been introduced. This only removes
+that specific obstruction; a global simultaneous rational realization
+of the new actual trace squares remains unproved.
+
+OUTSTANDING AUDIT:
+1. Full ordered prime/index preparation, including every branch and guard.
+2. Square-denominator and 7-adic preparation for both intrinsic pole inputs.
+3. Source soundness and height theorem with point-dependent normalization
+   stated explicitly (local support preservation above is not the whole proof).
+4. An actual GLOBAL rational-square incidence theorem. No coordinate-bound
+   reduction can be claimed until this last step is proved.
