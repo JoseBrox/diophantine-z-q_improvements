@@ -1,0 +1,229 @@
+{
+  "schema": "diophantine-integration/v75",
+  "status": "PASS",
+  "verification": "scripts/verify_v75.py",
+  "new_version_gate": {
+    "schema": "diophantine-exact-verification/v75",
+    "status": "PASS",
+    "python": "3.12.14",
+    "stages": [
+      {
+        "script": "computation/few_variables/seven_contact11_v74/build_source.py",
+        "arguments": [],
+        "status": "PASS",
+        "seconds": 0.156
+      },
+      {
+        "script": "computation/few_variables/seven_contact11_v74/check.py",
+        "arguments": [],
+        "status": "PASS",
+        "seconds": 1.092
+      },
+      {
+        "script": "computation/few_variables/even_valuation11_v75/build_source.py",
+        "arguments": [],
+        "status": "PASS",
+        "seconds": 0.119
+      },
+      {
+        "script": "computation/few_variables/even_valuation11_v75/check.py",
+        "arguments": [],
+        "status": "PASS",
+        "seconds": 1.02
+      },
+      {
+        "script": "computation/few_variables/even_valuation11_v75/build_source.py",
+        "arguments": [
+          "--contacts",
+          "7"
+        ],
+        "status": "PASS",
+        "seconds": 0.118
+      },
+      {
+        "script": "computation/few_variables/even_valuation11_v75/check.py",
+        "arguments": [
+          "--specification",
+          "/workspace/scratch/7097ce35f5b7/diophantine/diophantine-v75-bz333pwv/computation/few_variables/even_valuation11_v75/seven_contact"
+        ],
+        "status": "PASS",
+        "seconds": 0.977
+      },
+      {
+        "script": "computation/few_variables/even_valuation25_v75/build_source.py",
+        "arguments": [
+          "--L",
+          "3"
+        ],
+        "status": "PASS",
+        "seconds": 0.187
+      },
+      {
+        "script": "computation/few_variables/even_valuation25_v75/check.py",
+        "arguments": [],
+        "status": "PASS",
+        "seconds": 1.208
+      },
+      {
+        "script": "computation/few_variables/seven_contact11_v74/independent_math_check.py",
+        "arguments": [],
+        "status": "PASS",
+        "seconds": 1.878
+      },
+      {
+        "script": "computation/few_variables/even_valuation11_v75/independent_math_check.py",
+        "arguments": [],
+        "status": "PASS",
+        "seconds": 0.334
+      },
+      {
+        "script": "computation/few_variables/even_valuation25_v75/independent_math_check.py",
+        "arguments": [],
+        "status": "PASS",
+        "seconds": 0.583
+      },
+      {
+        "script": "computation/pole_parameters/general21_recovery_v74/check.py",
+        "arguments": [],
+        "status": "PASS",
+        "seconds": 13.589
+      },
+      {
+        "script": "computation/pole_parameters/general21_recovery_v74/check_independent.py",
+        "arguments": [],
+        "status": "PASS",
+        "seconds": 0.027
+      },
+      {
+        "script": "computation/pole_parameters/halfpoint_trace_v74/check.py",
+        "arguments": [],
+        "status": "PASS",
+        "seconds": 0.928
+      },
+      {
+        "script": "computation/pole_parameters/halfpoint_trace_v74/check_independent.py",
+        "arguments": [],
+        "status": "PASS",
+        "seconds": 0.52
+      },
+      {
+        "script": "computation/pole_parameters/even_halfpoint_trace_v75/check.py",
+        "arguments": [],
+        "status": "PASS",
+        "seconds": 0.835
+      },
+      {
+        "script": "computation/pole_parameters/even_halfpoint_trace_v75/check_independent.py",
+        "arguments": [],
+        "status": "PASS",
+        "seconds": 0.429
+      },
+      {
+        "script": "computation/pole_parameters/even_halfpoint_trace_v75/check.py",
+        "arguments": [
+          "--contacts",
+          "9"
+        ],
+        "status": "PASS",
+        "seconds": 1.034
+      },
+      {
+        "script": "computation/pole_parameters/even_halfpoint_trace_v75/check_independent.py",
+        "arguments": [
+          "--contacts",
+          "9"
+        ],
+        "status": "PASS",
+        "seconds": 0.536
+      }
+    ],
+    "rebuilt_json_files_compared": 43,
+    "complete_constructions": [
+      {
+        "variables": 25,
+        "degree_upper_bound": 4863007848923136,
+        "native_characters_checked": 72
+      },
+      {
+        "variables": 11,
+        "degree_upper_bound": 230932097,
+        "native_characters_checked": 384
+      }
+    ],
+    "complete_seven_contact_degree_upper_bounds": [
+      357309057,
+      356146817
+    ],
+    "actual_halfpoint_weight_genus": 12,
+    "actual_physical_slope_genera": {
+      "seven_contacts": 181,
+      "nine_contacts": 233
+    },
+    "coupled_normalized_weight_lifting_verified": true,
+    "rendered_manuscripts": [
+      {
+        "paper": "papers/conditional_few_variables/seven_contact_detector_20261117_v74.tex",
+        "source_sha256": "0fe86a2955c4d36b822f0ba8859b1b0cbd46757e8a2871929fb2b0ce7f49a82a",
+        "pages": 6
+      },
+      {
+        "paper": "papers/conditional_few_variables/even_valuation_detector_20261117_v75.tex",
+        "source_sha256": "5ccaf85b3831864307e3d178c97b309fe1c2fa9278bce48abbdf30d310c548da",
+        "pages": 5
+      },
+      {
+        "paper": "papers/few_variables25/even_valuation25_20261117_v75.tex",
+        "source_sha256": "aad160eab77625def0686afebda1d46b2ad5a09eb1312a825f465ce4925ad299",
+        "pages": 4
+      },
+      {
+        "paper": "papers/pole_parameters/coupled_weight_lifting_20261117_v74.tex",
+        "source_sha256": "245512f83ff6f778bc0cc5b602698c9bc7666e98812e8ecad5343dc4f012bb80",
+        "pages": 5
+      }
+    ],
+    "complete_integer_families_under_retained_premises": true,
+    "sufficient_defining_parameters_effective": false,
+    "global_21_or_9_realization_proved": false,
+    "arithmetic_foundations_complete_independent_audit": false
+  },
+  "regression_gates": [
+    {
+      "script": "scripts/verify_v71.py",
+      "status": "PASS",
+      "receipt_sha256": "5cdaa3da4db76a223672074360480bef93125e7617024760a1c758afb46641c7"
+    },
+    {
+      "script": "scripts/verify_v72.py",
+      "status": "PASS",
+      "receipt_sha256": "7529fe7fc70f4f7196558f83037415e8200c9fdc7e99ae49004a51bf74be93b5"
+    },
+    {
+      "script": "scripts/verify_v74.py",
+      "status": "PASS",
+      "receipt_sha256": "7ef44b14733802d720800d91cac476dff5ffe2b218b778a210428efb330ff933"
+    },
+    {
+      "script": "scripts/verify_v33.py",
+      "status": "PASS",
+      "receipt_sha256": "21ae60e34e635711ca8aed82ba6faa0cc58b49e7f37a30664114b8462f724a03"
+    }
+  ],
+  "legacy_full_verifier": {
+    "status": "PASS",
+    "stages": 126,
+    "manifest_files_checked": 1942,
+    "receipt_sha256": "b0e05d3e37cea73b6ce5f006346eca13bc06592e1fed3b71ed3a3fbebd91fb42",
+    "published_inputs_unchanged": true,
+    "pari_rank_checks_run": false,
+    "scope": "Full legacy verifier rerun on the v75 tree; only this execution receipt and its manifest entry were subsequently updated."
+  },
+  "inherited_quartic_release": "8589039c1a0985e777bed63274cabae194c29b1a",
+  "publication_scope": "Complete degree improvements at unchanged 25/11 variable counts, seven-contact variants and exact physical lifting/curve certificates. No global 21/9 rational-realization proof.",
+  "quartic_publication_workflow": {
+    "commit": "8589039c1a0985e777bed63274cabae194c29b1a",
+    "run_id": 44164100419,
+    "conclusion": "success",
+    "url": "https://github.com/JoseBrox/diophantine-z-q_improvements/actions/runs/44164100419"
+  }
+}

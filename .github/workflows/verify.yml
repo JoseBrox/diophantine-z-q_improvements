@@ -13,6 +13,8 @@ jobs:
         with:
           python-version: '3.12'
       - run: python -m pip install sympy==1.14.0
+      - name: Verify even-valuation improvements, seven contacts and exact physical lifting
+        run: python -B scripts/verify_v75.py --report /tmp/v75-verification.json
       - name: Verify the reconstructed 193-coordinate quartic and improved exact heights
         run: python -B scripts/verify_v74.py --report /tmp/v74-verification.json
       - name: Verify the complete 194-coordinate quartic and synchronized arithmetic

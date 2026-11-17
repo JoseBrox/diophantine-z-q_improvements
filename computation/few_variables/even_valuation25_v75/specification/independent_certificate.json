@@ -1,0 +1,644 @@
+{
+  "status": "PASS",
+  "scope": "Independent finite audit for the even-valuation general25 integer circuit.",
+  "variables": 25,
+  "degree_bound": 4863007848923136,
+  "source_sha256": "9e9f3370e442a57e58f25304dcb5da69c77740a91b7f737158a6e0752bd9cedb",
+  "point_algebra": {
+    "status": "PASS",
+    "multiplication_relations": 6,
+    "commutators": 3,
+    "primitive_characteristic_quartic": "z**4 - z**2*(24*a**3 - 36*a*b**2 - 16*b**3) + (-32*a**3 + 48*a*b**2 + 24*b**3)*(-4*a**3 + 6*a*b**2 + 3*b**3)",
+    "discriminant_factorization": "32768*(a**2 - 2*b**2)**2*(2*a**2 - b**2)**4*(-4*a**3 + 6*a*b**2 + 3*b**3)**2",
+    "auxiliary_stage_degrees": [
+      6,
+      9
+    ],
+    "basis_weights": [
+      0,
+      2,
+      2,
+      3
+    ],
+    "coefficient_chart_identity": true
+  },
+  "elementary_bounds": {
+    "coefficient_l1": [
+      30,
+      22
+    ],
+    "basis_scales": [
+      1,
+      16,
+      16,
+      80
+    ],
+    "weighted_columns": {
+      "U": [
+        "16",
+        "55/4",
+        "11/4",
+        "74/5"
+      ],
+      "V": [
+        "16",
+        "11/4",
+        "55/8",
+        "52/5"
+      ],
+      "W": [
+        "80",
+        "74",
+        "52",
+        "467/20"
+      ]
+    },
+    "point_norm_radicand_log2": 11,
+    "point_primitive_radicand_log2": 20,
+    "primitive_root_log2": 12
+  },
+  "pinned_dependencies": {
+    "scope": "Pinned general25 source and full-auxiliary compilers, point-algebra audit and independent native/specification checkers; read only.",
+    "sha256": {
+      "computation/few_variables/derivative11_v63/build_source.py": "3cd0011d2ba8edc1992b81db2587ae9d29ff035420b327cf21970f9229eee969",
+      "computation/few_variables/derivative11_v63/check_native.py": "8c31f15a42115dea8de647c82ddafc5cd1c6d4ce54d8c0a67b5d32ce40114a19",
+      "computation/few_variables/direct_input13_v22/build_direct_input_source.py": "85d5d6c92b7545920faabd70abacf0d9c47e0a4ab598d3ffe05f7acad9987dad",
+      "computation/few_variables/effective27_v19/build_effective_source.py": "1e99944bb356d03405873bc0fe8570584c88a7fc47e07e1f25e1302fe0708230",
+      "computation/few_variables/full_auxiliary11_v71/build_source.py": "3065f612dd3a9229f5603a688939d9a14bb7a65e6e7b6ba3b90758852ec5f8b1",
+      "computation/few_variables/full_auxiliary11_v71/check.py": "42a749a5894df50cabd1133cde27b837a3af70e871d52a4c0909ed2e901aaaad",
+      "computation/few_variables/full_auxiliary11_v71/dependencies.json": "b64c9d6da9ccc7bd01f6c6e09e60c6ee2782b5cc092a41b41c67425b87e4960b",
+      "computation/few_variables/merged25_v19/build_merged_source.py": "107ba312eb16651a64a25c61f824cfcebe881b843214e6265985280fa6a5a117",
+      "computation/few_variables/subalgebra_norms_v30/build.py": "4ca176fc0a8733ccf255fa78ac3f79aa96c83ce6526e0c638bf61a87a3f11a65",
+      "computation/few_variables/subalgebra_norms_v30/check.py": "7d6d15a7aceb30aa13f44d94e92a0605de817e1ef3b5d7f434c69f22161fb38e",
+      "computation/few_variables/terminal_root_v40/build.py": "a2ed654f2a37650fda4e987ace1208b40e82d61e838c96eac33ea5ad31350ba4",
+      "computation/few_variables/terminal_root_v40/check.py": "25cf8ef4404b8b38a375c6156cb3bdbaa44a2ba18adac8537226310fcfcc846c",
+      "computation/few_variables/trace27_nontorsion/build_forced_prime_source.py": "bdf0c3857110c3ff5f5f5250743978fc36e0b0620e61fdac7588726acac5e7b0",
+      "computation/few_variables/trace27_nontorsion/compile_source.py": "c0e0360e02fa00be38f1e0c8d19e5e3e49c67f9b73197b2a0c269a1113986d17",
+      "computation/few_variables/trace27_nontorsion/field_circuit.py": "135bd7776b0f22c92dc216a891f1e8ab6b709b32dd85f04bc91f8a5d75008a8e",
+      "computation/few_variables/trace27_nontorsion/finite_algebra_core.py": "e5aea8e6226d8d27300c3c56c7043f4911a5cfaba0ca9ed44cf2457cf0b4de77",
+      "computation/few_variables/unit_norm_v28/build.py": "d6aa9df4d3c0a8957f487b4e0aa5044ba995e4332f81b6c8ab27c96b1e4d6a10",
+      "computation/few_variables/unit_norm_v28/build_sources.py": "cabe6d02cb21d740d225b882f5566e3716cb0293206b43329e6cd98bfe2ba49b",
+      "computation/few_variables/unit_norm_v28/check.py": "04680e14766aa1578a04938b42adb365f6ba5e7db7648c0cea678fdd48fc6b63",
+      "computation/few_variables/full_auxiliary25_v72/build_source.py": "a1c0d66ce9d2a078309a83375787ddd334a6cf819ce0d1c2cd319f7fe325d778",
+      "computation/few_variables/full_auxiliary25_v72/dependencies.json": "c85cf96bae23b6aaa75f1d8a9eb28c45653b3a7abb9251cdd2a513e8bae3434d"
+    }
+  },
+  "independent_subalgebra_audit": {
+    "name": "general25",
+    "native_source_sha256": "9e9f3370e442a57e58f25304dcb5da69c77740a91b7f737158a6e0752bd9cedb",
+    "source_nodes": 6039,
+    "source_guards": 101,
+    "rational_denominators": 317,
+    "norm_factors": 130,
+    "norm_dimension_distribution": {
+      "0": 65,
+      "1": 9,
+      "2": 14,
+      "3": 18,
+      "4": 8,
+      "5": 8,
+      "6": 2,
+      "17": 6
+    },
+    "degree_bound": 25581105451106304,
+    "coefficient_log2_l1_bound": 189654452847771648,
+    "specification_sha256": "f188f60cd7fb2c9e6b4a82fd40750b644400da569efad7ca089f2483bce3bb11"
+  },
+  "independent_terminal_audit": {
+    "name": "general25",
+    "source_sha256": "9e9f3370e442a57e58f25304dcb5da69c77740a91b7f737158a6e0752bd9cedb",
+    "source_denominators_checked": 317,
+    "omitted_nodes": [
+      6017,
+      6023
+    ],
+    "degree_bound": 4863007848923136,
+    "coefficient_log2_l1_bound": 34532878499971072,
+    "specification_sha256": "e5f3e8b1aeb9c0aa46eeeb019d55e6650798e2f68de18571968c346ee230d153"
+  },
+  "corruption_controls_rejected": 2,
+  "checker_adjustments": {
+    "(2,2,4), (4,4,6), (x,x,x^y)": "(2,2,4 if block['name'] in ('A','S','T','Z') else 3), (4,4,7), (x,x,x^y)",
+    "td += [(8,11,4,6),(12,20,6,12)]": "td += ([(8,11,4,7),(12,20,6,12)] if points[i]['name'] in ('A','S','T','Z') else [(6,11,3,7),(9,20,5,12)])"
+  },
+  "actual_point_indices": {
+    "A": "2",
+    "S": "3",
+    "T": "4",
+    "Z": "5",
+    "H": "3/2",
+    "UA": "3",
+    "US": "9/2",
+    "UT": "6",
+    "UZ": "15/2"
+  },
+  "native_character_evaluations": 72,
+  "native_records": [
+    {
+      "prime": 1000000007,
+      "seed": 0,
+      "point_blocks": 9,
+      "tests": 16,
+      "pole_inputs": 2
+    },
+    {
+      "prime": 1000000007,
+      "seed": 1,
+      "point_blocks": 9,
+      "tests": 16,
+      "pole_inputs": 2
+    },
+    {
+      "prime": 1000000007,
+      "seed": 2,
+      "point_blocks": 9,
+      "tests": 16,
+      "pole_inputs": 2
+    },
+    {
+      "prime": 1000000007,
+      "seed": 3,
+      "point_blocks": 9,
+      "tests": 16,
+      "pole_inputs": 2
+    },
+    {
+      "prime": 1000000007,
+      "seed": 4,
+      "point_blocks": 9,
+      "tests": 16,
+      "pole_inputs": 2
+    },
+    {
+      "prime": 1000000007,
+      "seed": 5,
+      "point_blocks": 9,
+      "tests": 16,
+      "pole_inputs": 2
+    },
+    {
+      "prime": 1000000007,
+      "seed": 6,
+      "point_blocks": 9,
+      "tests": 16,
+      "pole_inputs": 2
+    },
+    {
+      "prime": 1000000007,
+      "seed": 7,
+      "point_blocks": 9,
+      "tests": 16,
+      "pole_inputs": 2
+    },
+    {
+      "prime": 1000000007,
+      "seed": 8,
+      "point_blocks": 9,
+      "tests": 16,
+      "pole_inputs": 2
+    },
+    {
+      "prime": 1000000007,
+      "seed": 9,
+      "point_blocks": 9,
+      "tests": 16,
+      "pole_inputs": 2
+    },
+    {
+      "prime": 1000000007,
+      "seed": 10,
+      "point_blocks": 9,
+      "tests": 16,
+      "pole_inputs": 2
+    },
+    {
+      "prime": 1000000007,
+      "seed": 11,
+      "point_blocks": 9,
+      "tests": 16,
+      "pole_inputs": 2
+    },
+    {
+      "prime": 1000000007,
+      "seed": 12,
+      "point_blocks": 9,
+      "tests": 16,
+      "pole_inputs": 2
+    },
+    {
+      "prime": 1000000007,
+      "seed": 13,
+      "point_blocks": 9,
+      "tests": 16,
+      "pole_inputs": 2
+    },
+    {
+      "prime": 1000000007,
+      "seed": 14,
+      "point_blocks": 9,
+      "tests": 16,
+      "pole_inputs": 2
+    },
+    {
+      "prime": 1000000007,
+      "seed": 15,
+      "point_blocks": 9,
+      "tests": 16,
+      "pole_inputs": 2
+    },
+    {
+      "prime": 1000000007,
+      "seed": 16,
+      "point_blocks": 9,
+      "tests": 16,
+      "pole_inputs": 2
+    },
+    {
+      "prime": 1000000007,
+      "seed": 17,
+      "point_blocks": 9,
+      "tests": 16,
+      "pole_inputs": 2
+    },
+    {
+      "prime": 1000000007,
+      "seed": 18,
+      "point_blocks": 9,
+      "tests": 16,
+      "pole_inputs": 2
+    },
+    {
+      "prime": 1000000007,
+      "seed": 19,
+      "point_blocks": 9,
+      "tests": 16,
+      "pole_inputs": 2
+    },
+    {
+      "prime": 1000000007,
+      "seed": 20,
+      "point_blocks": 9,
+      "tests": 16,
+      "pole_inputs": 2
+    },
+    {
+      "prime": 1000000007,
+      "seed": 21,
+      "point_blocks": 9,
+      "tests": 16,
+      "pole_inputs": 2
+    },
+    {
+      "prime": 1000000007,
+      "seed": 22,
+      "point_blocks": 9,
+      "tests": 16,
+      "pole_inputs": 2
+    },
+    {
+      "prime": 1000000007,
+      "seed": 23,
+      "point_blocks": 9,
+      "tests": 16,
+      "pole_inputs": 2
+    },
+    {
+      "prime": 1000000007,
+      "seed": 24,
+      "point_blocks": 9,
+      "tests": 16,
+      "pole_inputs": 2
+    },
+    {
+      "prime": 1000000007,
+      "seed": 25,
+      "point_blocks": 9,
+      "tests": 16,
+      "pole_inputs": 2
+    },
+    {
+      "prime": 1000000007,
+      "seed": 26,
+      "point_blocks": 9,
+      "tests": 16,
+      "pole_inputs": 2
+    },
+    {
+      "prime": 1000000007,
+      "seed": 27,
+      "point_blocks": 9,
+      "tests": 16,
+      "pole_inputs": 2
+    },
+    {
+      "prime": 1000000007,
+      "seed": 28,
+      "point_blocks": 9,
+      "tests": 16,
+      "pole_inputs": 2
+    },
+    {
+      "prime": 1000000007,
+      "seed": 29,
+      "point_blocks": 9,
+      "tests": 16,
+      "pole_inputs": 2
+    },
+    {
+      "prime": 1000000007,
+      "seed": 30,
+      "point_blocks": 9,
+      "tests": 16,
+      "pole_inputs": 2
+    },
+    {
+      "prime": 1000000007,
+      "seed": 31,
+      "point_blocks": 9,
+      "tests": 16,
+      "pole_inputs": 2
+    },
+    {
+      "prime": 1000000007,
+      "seed": 32,
+      "point_blocks": 9,
+      "tests": 16,
+      "pole_inputs": 2
+    },
+    {
+      "prime": 1000000007,
+      "seed": 33,
+      "point_blocks": 9,
+      "tests": 16,
+      "pole_inputs": 2
+    },
+    {
+      "prime": 1000000007,
+      "seed": 34,
+      "point_blocks": 9,
+      "tests": 16,
+      "pole_inputs": 2
+    },
+    {
+      "prime": 1000000007,
+      "seed": 35,
+      "point_blocks": 9,
+      "tests": 16,
+      "pole_inputs": 2
+    },
+    {
+      "prime": 1000000009,
+      "seed": 0,
+      "point_blocks": 9,
+      "tests": 16,
+      "pole_inputs": 2
+    },
+    {
+      "prime": 1000000009,
+      "seed": 1,
+      "point_blocks": 9,
+      "tests": 16,
+      "pole_inputs": 2
+    },
+    {
+      "prime": 1000000009,
+      "seed": 2,
+      "point_blocks": 9,
+      "tests": 16,
+      "pole_inputs": 2
+    },
+    {
+      "prime": 1000000009,
+      "seed": 3,
+      "point_blocks": 9,
+      "tests": 16,
+      "pole_inputs": 2
+    },
+    {
+      "prime": 1000000009,
+      "seed": 4,
+      "point_blocks": 9,
+      "tests": 16,
+      "pole_inputs": 2
+    },
+    {
+      "prime": 1000000009,
+      "seed": 5,
+      "point_blocks": 9,
+      "tests": 16,
+      "pole_inputs": 2
+    },
+    {
+      "prime": 1000000009,
+      "seed": 6,
+      "point_blocks": 9,
+      "tests": 16,
+      "pole_inputs": 2
+    },
+    {
+      "prime": 1000000009,
+      "seed": 7,
+      "point_blocks": 9,
+      "tests": 16,
+      "pole_inputs": 2
+    },
+    {
+      "prime": 1000000009,
+      "seed": 8,
+      "point_blocks": 9,
+      "tests": 16,
+      "pole_inputs": 2
+    },
+    {
+      "prime": 1000000009,
+      "seed": 9,
+      "point_blocks": 9,
+      "tests": 16,
+      "pole_inputs": 2
+    },
+    {
+      "prime": 1000000009,
+      "seed": 10,
+      "point_blocks": 9,
+      "tests": 16,
+      "pole_inputs": 2
+    },
+    {
+      "prime": 1000000009,
+      "seed": 11,
+      "point_blocks": 9,
+      "tests": 16,
+      "pole_inputs": 2
+    },
+    {
+      "prime": 1000000009,
+      "seed": 12,
+      "point_blocks": 9,
+      "tests": 16,
+      "pole_inputs": 2
+    },
+    {
+      "prime": 1000000009,
+      "seed": 13,
+      "point_blocks": 9,
+      "tests": 16,
+      "pole_inputs": 2
+    },
+    {
+      "prime": 1000000009,
+      "seed": 14,
+      "point_blocks": 9,
+      "tests": 16,
+      "pole_inputs": 2
+    },
+    {
+      "prime": 1000000009,
+      "seed": 15,
+      "point_blocks": 9,
+      "tests": 16,
+      "pole_inputs": 2
+    },
+    {
+      "prime": 1000000009,
+      "seed": 16,
+      "point_blocks": 9,
+      "tests": 16,
+      "pole_inputs": 2
+    },
+    {
+      "prime": 1000000009,
+      "seed": 17,
+      "point_blocks": 9,
+      "tests": 16,
+      "pole_inputs": 2
+    },
+    {
+      "prime": 1000000009,
+      "seed": 18,
+      "point_blocks": 9,
+      "tests": 16,
+      "pole_inputs": 2
+    },
+    {
+      "prime": 1000000009,
+      "seed": 19,
+      "point_blocks": 9,
+      "tests": 16,
+      "pole_inputs": 2
+    },
+    {
+      "prime": 1000000009,
+      "seed": 20,
+      "point_blocks": 9,
+      "tests": 16,
+      "pole_inputs": 2
+    },
+    {
+      "prime": 1000000009,
+      "seed": 21,
+      "point_blocks": 9,
+      "tests": 16,
+      "pole_inputs": 2
+    },
+    {
+      "prime": 1000000009,
+      "seed": 22,
+      "point_blocks": 9,
+      "tests": 16,
+      "pole_inputs": 2
+    },
+    {
+      "prime": 1000000009,
+      "seed": 23,
+      "point_blocks": 9,
+      "tests": 16,
+      "pole_inputs": 2
+    },
+    {
+      "prime": 1000000009,
+      "seed": 24,
+      "point_blocks": 9,
+      "tests": 16,
+      "pole_inputs": 2
+    },
+    {
+      "prime": 1000000009,
+      "seed": 25,
+      "point_blocks": 9,
+      "tests": 16,
+      "pole_inputs": 2
+    },
+    {
+      "prime": 1000000009,
+      "seed": 26,
+      "point_blocks": 9,
+      "tests": 16,
+      "pole_inputs": 2
+    },
+    {
+      "prime": 1000000009,
+      "seed": 27,
+      "point_blocks": 9,
+      "tests": 16,
+      "pole_inputs": 2
+    },
+    {
+      "prime": 1000000009,
+      "seed": 28,
+      "point_blocks": 9,
+      "tests": 16,
+      "pole_inputs": 2
+    },
+    {
+      "prime": 1000000009,
+      "seed": 29,
+      "point_blocks": 9,
+      "tests": 16,
+      "pole_inputs": 2
+    },
+    {
+      "prime": 1000000009,
+      "seed": 30,
+      "point_blocks": 9,
+      "tests": 16,
+      "pole_inputs": 2
+    },
+    {
+      "prime": 1000000009,
+      "seed": 31,
+      "point_blocks": 9,
+      "tests": 16,
+      "pole_inputs": 2
+    },
+    {
+      "prime": 1000000009,
+      "seed": 32,
+      "point_blocks": 9,
+      "tests": 16,
+      "pole_inputs": 2
+    },
+    {
+      "prime": 1000000009,
+      "seed": 33,
+      "point_blocks": 9,
+      "tests": 16,
+      "pole_inputs": 2
+    },
+    {
+      "prime": 1000000009,
+      "seed": 34,
+      "point_blocks": 9,
+      "tests": 16,
+      "pole_inputs": 2
+    },
+    {
+      "prime": 1000000009,
+      "seed": 35,
+      "point_blocks": 9,
+      "tests": 16,
+      "pole_inputs": 2
+    }
+  ],
+  "all_characters_exhausted": false,
+  "general21_realization_claimed": false
+}

@@ -1,0 +1,341 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,microtype,hyperref}
+\usepackage[margin=27mm]{geometry}
+\setlength{\emergencystretch}{2em}
+\newcommand{\Q}{\mathbf Q}
+\newcommand{\Pp}{\mathbf P}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\title{Coupled physical weights and exact rational lifting}
+\author{}\date{17 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+The two physical weights of the general actual-trace
+source determine its common slope birationally, before and after
+their rational normalization, for every fixed
+positive rational comparison scale. The proof uses the two unique
+poles and the positive rational contact set. A coprimality certificate
+handles the scale at which the poles coincide. This gives an exact
+coupled lifting algorithm: a generic compatible rational pair has a
+rational slope obtained from a linear polynomial greatest common
+divisor. Exceptional image points require the full rational-root
+test. Normalized weights can be lifted directly, or through up to
+four reciprocal branch pairs.
+The two actual-trace square equations and cofinite integer-input
+realization remain unproved. No smaller complete defining count is
+claimed.
+\end{abstract}
+
+\section{The physical pair}
+
+Use the reweighted general source of \cite{Reweighted}, its trace
+criterion \cite{Trace}, and the full auxiliary charts of \cite{Auxiliary}.
+Fix its rational input and root point tuple, hence its nonzero rational
+scalar $\rho$ and positive rational comparison scale
+\[
+                    a=1+\rho T^2.
+\]
+The result below applies to every positive rational $a$ and every
+$\rho\ne0$, independently of these particular formulas.
+Set
+\[
+ \Theta=\{0,-1/2,-1,1/2399,-32/407\},\qquad
+ \Theta_0=(2+\Theta)\cup(4+\Theta),\qquad
+ P(t)=\prod_{\theta\in\Theta_0}(t-\theta).
+\]
+The ten elements of $\Theta_0$ are distinct positive rational numbers.
+Since the second contact set is $\Theta_0+4$, the physical pair is
+\begin{equation}\label{eq:pair}
+ u_0(\lambda)=\rho\frac{P(\lambda)}{(\lambda+1)^{10}},\qquad
+ u_1(\lambda)=\rho\frac{P(a\lambda-4)}{(a\lambda+2)^{10}}.
+\end{equation}
+Both functions are of degree ten. Their denominators are the original
+contact denominators, and their unique poles are respectively $-1$
+and $-2/a$, each of order ten. There is no cancellation at these
+poles because every root of $P$ is positive.
+
+\section{A birationality theorem}
+
+\begin{lemma}\label{lem:two-poles}
+Let $f_0,f_1\in\Q(t)$ be nonconstant. Suppose that each has a
+unique pole, that these poles $p_0,p_1$ are distinct rational points
+of $\Pp^1$, and that all zeros of $f_0$ are distinct rational points.
+Let $z$ be a rational coordinate with its zero at $p_0$ and pole at
+$p_1$. If all zeros of $f_0$ have positive $z$-coordinate, then
+\[
+                         \Q(f_0,f_1)=\Q(t).
+\]
+\end{lemma}
+\begin{proof}
+By L\"uroth's theorem, the intermediate field is $\Q(h)$ for
+some nonconstant $h\in\Q(t)$; a formal reference for precisely
+this field statement is \cite{Luroth}. Write $f_i=g_i\circ h$,
+and let $d=\deg h$.
+Every point above a pole of $g_i$ is a pole of $f_i$. Since $f_i$
+has just one pole, $g_i$ has one pole $c_i=h(p_i)$ and its full
+fiber is $d p_i$. The two values $c_0,c_1$ are distinct: equality
+would make $p_1$ a pole of $f_0$. They are rational because $h$
+and $p_i$ are rational.
+
+Apply a rational fractional linear transformation to $h$ sending
+$c_0$ to zero and $c_1$ to infinity. The resulting function has
+divisor $d p_0-d p_1$, so it equals $c z^d$ with
+$c\in\Q^\times$. In particular both $f_i$ are rational
+functions of $z^d$.
+
+Choose a zero $t_0$ of $f_0$ and put $z_0=z(t_0)>0$.
+Its $z^d$-fiber consists of the $d$ distinct values
+$\zeta z_0$, where $\zeta^d=1$, and all give zeros of $f_0$.
+If $d\ge3$, some $\zeta$ is nonreal, contradicting the
+rationality of every zero. If $d=2$, the second value is $-z_0$,
+contradicting positivity of every zero's $z$-coordinate. Thus
+$d=1$, proving the claim.
+\end{proof}
+
+\begin{theorem}\label{thm:birational}
+For every $\rho\in\Q^\times$ and $a\in\Q_{>0}$,
+the functions in \eqref{eq:pair} satisfy
+\[
+                       \Q(u_0,u_1)=\Q(\lambda).
+\]
+The map from the common slope to its physical weight pair is
+therefore birational onto its image curve.
+\end{theorem}
+\begin{proof}
+If $a\ne2$, the poles are distinct. Use
+\[
+                         z=\frac{\lambda+1}{a\lambda+2}.
+\]
+At every contact $\theta\in\Theta_0$ both numerator and
+denominator are positive. Lemma~\ref{lem:two-poles} applies.
+For example, the only possible rational nontrivial deck involution
+would be
+\[
+ \lambda\longmapsto
+ -\frac{(a+2)\lambda+4}{2a\lambda+a+2},
+\]
+which sends every positive contact to a negative number and hence
+cannot preserve the contact set.
+
+It remains to handle $a=2$. In the coordinate $s=1/(\lambda+1)$,
+division by $\rho$ gives the polynomial pair
+\[
+ q_0(s)=\prod_{\theta\in\Theta_0}(1-(\theta+1)s),\qquad
+ q_1(s)=\prod_{\theta\in\Theta_0}(1-(\theta+6)s/2).
+\]
+These both have degree ten. If their joint field were $\Q(h)$
+with $\deg h>1$, the unique pole of $q_0$ would permit a
+fractional linear change of $h$ making $h$ a polynomial, with
+both $q_i$ polynomials in $h$. Thus the nonconstant polynomial
+$h'$ would divide both $q_0'$ and $q_1'$.
+
+The exact certificate below gives $\gcd(q_0',q_1')=1$ in
+$\Q[s]$, a contradiction. This handles the coincident-pole
+case as well.
+\end{proof}
+
+For the original scalar of the general source, the coincident-pole
+case is in fact impossible: $v_{76249}(\rho)$ is odd, whereas
+$a=2$ would give $\rho T^2=1$. The proof includes this case so
+that the lifting theorem is independent of that particular scalar.
+
+\section{The coincident-pole certificate}
+
+Multiply each $q_i$ by the positive least common multiple of its
+coefficient denominators, obtaining integer polynomials $Q_i$.
+Modulo $101$, their derivatives, in descending coefficient order,
+are
+\[
+\begin{split}
+ f={}&(43,35,20,27,30,29,73,42,14,73),\\
+ g={}&(13,58,99,60,62,61,95,88,41,49).
+\end{split}
+\]
+Their degrees are both nine, so reduction preserves both derivative
+degrees. The coefficient lists
+\[
+\begin{split}
+ e={}&(3,74,9,88,39,35,15,93,7),\\
+ k={}&(60,0,32,85,50,36,38,14,37)
+\end{split}
+\]
+satisfy $ef+kg=1$ in $\mathbf F_{101}[s]$.
+Consequently the rational derivatives are coprime. The primary
+checker constructs the integer polynomials directly from the contact
+set. A separate checker, using only integer lists, differentiates
+them modulo $101$ and verifies this Bezout identity by convolution.
+The full integer coefficient lists are in the machine-readable
+certificate; no floating-point calculation is used.
+
+\section{Exact lifting, including exceptional fibers}
+
+\begin{lemma}[Normalization without lost joint information]\label{lem:normalization}
+Let $f_1,\ldots,f_r\in\Q(t)^\times$ be nonconstant and generate
+$\Q(t)$ as a field over $\Q$. Suppose that, for every $i$, no
+fractional linear transformation of $\Pp^1$ defined over $\Q$
+pulls the pole divisor of $f_i$ back to its zero divisor.
+Then
+\[
+ \Q\left(\frac{f_1}{(1+f_1)^2},\ldots,
+          \frac{f_r}{(1+f_r)^2}\right)=\Q(t).
+\]
+\end{lemma}
+\begin{proof}
+Denote the field on the left by $K$ and put $L=\Q(t)$.
+Each $f_i$ satisfies
+\[
+ w_i Z^2+(2w_i-1)Z+w_i=0,\qquad
+ w_i=f_i/(1+f_i)^2\in K.
+\]
+Its roots are $f_i$ and $f_i^{-1}$, both in $L$.
+Thus $L=K(f_1,\ldots,f_r)$ is the splitting field over $K$ of
+these separable quadratics. It is a finite Galois extension.
+Every $K$-automorphism $\sigma$ of $L$ fixes $\Q$ and sends
+each $f_i$ to either $f_i$ or $f_i^{-1}$.
+
+A $\Q$-automorphism of $\Q(t)$ sends $t$ to a fractional linear
+function: the degrees of this function and its inverse multiply to
+one. The alternative $\sigma(f_i)=f_i^{-1}$ would therefore
+identify the indicated pole and zero divisors, contrary to the
+hypothesis. Every $\sigma$ fixes every $f_i$, hence fixes $L$.
+The finite Galois group is trivial, so $K=L$.
+\end{proof}
+
+\begin{corollary}\label{cor:normalized-birational}
+For the physical pair \eqref{eq:pair}, put
+$w_j=u_j/(1+u_j)^2$. For every positive rational $a$ and nonzero
+rational $\rho$,
+\[
+                         \Q(w_0,w_1)=\Q(\lambda).
+\]
+\end{corollary}
+\begin{proof}
+The unnormalized functions jointly generate $\Q(\lambda)$ by
+Theorem~\ref{thm:birational}. Each has a single pole of order ten
+and ten distinct simple zeros. A fractional linear transformation
+preserves the number and multiplicities of points in a divisor,
+so it cannot identify these two divisors. Apply
+Lemma~\ref{lem:normalization}.
+\end{proof}
+
+\begin{proposition}\label{prop:lift}
+Fix $\rho\in\Q^\times$, $a\in\Q_{>0}$, and a rational candidate
+pair $(v_0,v_1)$. Form
+\[
+\begin{split}
+ F_0(t)&=\rho P(t)-v_0(t+1)^{10},\\
+ F_1(t)&=\rho P(at-4)-v_1(at+2)^{10},\\
+ G(t)&=\gcd(F_0,F_1)\quad\text{in }\Q[t].
+\end{split}
+\]
+The finite rational slopes producing this pair are precisely the
+rational roots $r$ of $G$ with $r\ne-1$ and $ar\ne-2$.
+If $G$ is linear, its unique root is rational and gives the unique
+finite physical lift, subject to these two pole checks.
+If $G$ is constant, there is no finite lift. For $\deg G>1$,
+every rational root must be tested; no rationality conclusion follows
+solely from the rationality of $(v_0,v_1)$.
+\end{proposition}
+\begin{proof}
+Away from the two contact poles, the equations $F_i(r)=0$ are
+exactly $u_i(r)=v_i$. The common finite roots are the roots of
+their greatest common divisor. A linear polynomial over $\Q$
+has a rational root, and the other assertions are immediate.
+\end{proof}
+
+There is also a direct normalized test. Write
+\[
+ A_0=\rho P(t),\quad B_0=(t+1)^{10},\qquad
+ A_1=\rho P(at-4),\quad B_1=(at+2)^{10}.
+\]
+For a candidate normalized pair $(w_0,w_1)$ form
+\begin{equation}\label{eq:normalized-gcd}
+ H_j=w_j(A_j+B_j)^2-A_jB_j\quad(j=0,1).
+\end{equation}
+The finite rational slopes are exactly the rational roots of
+$\gcd(H_0,H_1)$ on $B_0B_1(A_0+B_0)(A_1+B_1)\ne0$.
+Each $H_j$ has degree at most twenty. The same linear-gcd rule
+holds generically by Corollary~\ref{cor:normalized-birational};
+higher-degree gcds must again retain every rational-root test.
+This method does not assume that either inverse quadratic has
+a rational root in advance.
+
+Theorem~\ref{thm:birational} implies that $G$ is linear for a
+generic image pair. There is an inverse rational function on a
+nonempty open subset of the image, computable by the first nonzero
+linear subresultant. For example, if that subresultant is
+$A(v_0,v_1)t+B(v_0,v_1)$ with $A\ne0$, its inverse is
+$-B/A$. Only finitely many points of the image curve lie outside
+such an open subset. Singular image points, branch collisions and
+the image of the infinite slope must not be inferred to lift
+rationally from this statement. Proposition~\ref{prop:lift}
+handles them separately and exactly.
+
+\begin{corollary}\label{cor:normalized}
+Given nonzero rational normalized weights $w_0,w_1$, first solve
+\[
+ w_jv_j^2+(2w_j-1)v_j+w_j=0\qquad(j=0,1).
+\]
+There are at most four rational branch pairs $(v_0,v_1)$.
+For each pair, Proposition~\ref{prop:lift} gives exactly its finite
+rational common slopes. The union of these lists is the full
+rational lift set for the normalized pair.
+\end{corollary}
+\begin{proof}
+The displayed equation is equivalent to
+$w_j=v_j/(1+v_j)^2$. Its discriminant is $1-4w_j$, and its
+nonzero roots, when rational, are reciprocal. The value $v_j=-1$
+never solves it. At $w_j=1/4$ the two roots coincide at one.
+Apply Proposition~\ref{prop:lift} to each rational pair.
+\end{proof}
+
+\section{What remains for the twenty-one-variable target}
+
+The theorem concerns the physical scalar pair only. In particular,
+the general detector contains the contact denominators
+$\delta_0=\lambda+1$ and $\delta_1=a\lambda+2$ in addition
+to its weights. They must be recovered from the same lifted slope
+before evaluating the actual products and traces. One cannot assign
+the traces independently or evaluate them using only two arbitrary
+scalar weights.
+
+For each fixed actual elliptic tuple, the exact procedure is now:
+recover each candidate common slope by the coupled test, reconstruct
+both complete detectors, check
+\[
+ Y_j^2=V_j^2+w_j(2-V_j),\qquad j=0,1,
+\]
+and check all original point, difference, scalar, contact, denominator
+and whole-character guards. Prepared witnesses also require all
+fixed-place, selected-contact and real conditions. No step of the
+birationality proof asserts these square values or supplies such
+tuples for all sufficiently large positive integers. The complete
+general count therefore remains twenty-five under the inherited
+arithmetic premises; twenty-one is still a sound source with an
+unproved completeness condition.
+
+The checked positive fixtures use $\rho=3/7$, $\lambda=7$ and
+$a=3/2,2,3$. They test exact physical lifting, and are not prepared
+elliptic witnesses. A pair taking its first weight at slope seven
+and its second weight at slope eight, with $a=3$, has constant gcd
+and no common finite lift. The same accepted and rejected fixtures
+are checked directly after normalization by the degree-twenty test.
+This explicitly checks that independent
+one-weight solutions cannot be accepted as a coupled solution.
+
+\begin{thebibliography}{9}\raggedright
+\bibitem{Reweighted}\emph{Quadratic reweightings of native elliptic detectors},
+\nolinkurl{papers/pole_parameters/reweighted_elliptic_detectors_20261116_v53.tex}.
+\bibitem{Trace}\emph{A rational conic criterion using the actual detector trace},
+\nolinkurl{papers/pole_parameters/trace_conic_criterion_20261117_v57.tex}.
+\bibitem{Auxiliary}\emph{Full auxiliary point charts for the general twenty-five-variable source},
+\nolinkurl{papers/few_variables25/full_auxiliary25_20261117_v72.tex}.
+\bibitem{Luroth}The mathlib community, \emph{L\"uroth's theorem},
+\texttt{Mathlib.FieldTheory.RatFunc.Luroth}, theorem
+\texttt{RatFunc.Luroth.eq\_adjoin\_generator}; checked 17 November 2026.
+\url{https://leanprover-community.github.io/mathlib4_docs/Mathlib/FieldTheory/RatFunc/Luroth.html}.
+\end{thebibliography}
+\end{document}

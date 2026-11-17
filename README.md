@@ -16,16 +16,16 @@ whose rational input projection is the integers, under the arithmetic premises s
 
 | Construction | Additional height hypothesis | Total variables | Degree | Coefficients and effectiveness |
 |:--|:--|--:|:--|:--|
-| [Fewest variables under inherited premises](papers/few_variables25/full_auxiliary25_20261117_v72.tex) | None | **25** | `≤ 4,924,857,429,000,192 < 2⁵³` | Full auxiliary elliptic points; sufficient odd exponent ineffective. |
+| [Fewest variables under inherited premises](papers/few_variables25/even_valuation25_20261117_v75.tex) | None | **25** | `≤ 4,863,007,848,923,136 < 2⁵³` | Even-valuation abscissa tests and full auxiliary points; sufficient odd exponent ineffective. |
 | [Fewest quartic variables under inherited premises](papers/quartic/quartic193_20261117_v74.tex) | None | **193** | **4, exact** | 167 quadratic squares; **2,770 monomials**, or **2,626** in an equivalent basis. Exact improved heights below; defining threshold ineffective. |
 | [Fully specified general polynomial](papers/finite_algebra/terminal_quadratic_root_20261115_v40.tex) | None | **27** | `≤ 99,279,020,543,180,800 < 2⁵⁷` | `L=20483`; coefficient height `< 2^(2^70)`. |
 | [Fully specified quartic](papers/quartic/quartic229_compact_20261117_v68.tex) | None | **229** | **4, exact** | `N=15`; 207 quadratic squares; **3,312 monomials**; exact height `149³⁰` (217 bits); **74,007 bytes** fully expanded. |
 | [Few variables under weak abc](papers/finite_algebra/terminal_quadratic_root_20261115_v40.tex) | Weak abc at `121/100`; ordinary Szpiro suffices | **13** | `≤ 43,211,777 < 2²⁶` | Sufficient odd shift ineffective. |
 | [Lower degree under stronger weak abc](papers/finite_algebra/terminal_quadratic_root_20261115_v40.tex) | Weak abc at `16/15`; ordinary rational abc suffices | **13** | `≤ 39,858,177 < 2²⁶` | Sufficient odd shift ineffective. |
-| [Fewest variables under ordinary abc](papers/conditional_few_variables/full_auxiliary11_20261117_v71.tex) | Ordinary rational abc | **11** | `≤ 232,094,337 < 2²⁸` | Complete integer circuit with unrestricted auxiliary elliptic points; sufficient odd shift ineffective. |
+| [Fewest variables under ordinary abc](papers/conditional_few_variables/even_valuation_detector_20261117_v75.tex) | Ordinary rational abc | **11** | `≤ 230,932,097 < 2²⁸` | Even-valuation balancing with full auxiliary points; sufficient odd shift ineffective. |
 | [Fewest quartic variables under abc](papers/quartic_existence/quartic_abc68_20261117_v65.tex) | Ordinary rational abc | **68** | **4, exact** | 56 quadratic squares; **1,078 monomials**. Exact height below; sufficient shift ineffective. |
 
-All these polynomials have integer content one. The general degree figures are upper bounds for finite, unexpanded determinant specifications. Their support bounds are below `2¹¹⁹³`, `2¹⁴⁰¹`, `2²⁸⁴`, and `2²⁸³`, in the order 25, 27, weak-abc 13, stronger-abc 13.
+All these polynomials have integer content one. The general degree figures are upper bounds for finite, unexpanded determinant specifications. Their support bounds are below `2¹¹⁹²`, `2¹⁴⁰¹`, `2²⁸⁴`, and `2²⁸³`, in the order 25, 27, weak-abc 13, stronger-abc 13.
 
 The exact height of the 193-variable quartic in the primitive reference basis is
 
@@ -53,7 +53,7 @@ The 68-variable quartic uses a three-field-coordinate unit reference and a six-f
 
 The two 193-coordinate reference bases have the same rational zero set. Five literal equations define seven nonzero contact-unit coordinates and make the Laurent compilation invertible on every rational solution. The omitted inverse is recovered as a product of retained units. Dividing twelve noninput coordinates by the fixed nonzero parameter lowers the parameter degree from four to two in the quartic. All 162 physical component equations and the arithmetic proof are unchanged from v73, including the zero-ordinate strata. The complete 229-coordinate construction retains every copied detector guard and proves soundness and integer completeness for every `N ≥ 15`. The finite-algebra construction permits a zero final pole ordinate and proves soundness on that larger locus.
 
-Current specifications: [results JSON](data/results_20261117_v74.json), [proof and verification guide](docs/results_20261117_v74.md), and [research directions](docs/research_directions.md). The [twenty-five-variable guide](docs/results_20261117_v72.md), [eleven-variable guide](docs/results_20261117_v71.md), [compact 229-variable guide](docs/results_20261117_v68.md), and [68-variable construction guide](docs/results_20261117_v65.md) give the separate specifications. The [68-variable source records](data/results_20261117_v65.json) retain its arithmetic and coefficient data.
+Current specifications: [results JSON](data/results_20261117_v75.json), [proof and verification guide](docs/results_20261117_v75.md), and [research directions](docs/research_directions.md). The [193-variable guide](docs/results_20261117_v74.md), previous [twenty-five-variable guide](docs/results_20261117_v72.md), previous [eleven-variable guide](docs/results_20261117_v71.md), [compact 229-variable guide](docs/results_20261117_v68.md), and [68-variable construction guide](docs/results_20261117_v65.md) give the separate specifications. The [68-variable source records](data/results_20261117_v65.json) retain its arithmetic and coefficient data.
 
 The previous [**194**-variable family](papers/quartic/quartic194_20261117_v73.tex), with 2,765 or 2,621 monomials, remains fully reproducible in its [v73 guide](docs/results_20261117_v73.md). The interrupted 193-variable files were unavailable; the new package is a complete reconstruction from the published v73 equations, with regenerated certificates and an independently checked improved coefficient bound.
 
@@ -73,7 +73,7 @@ Cite this work as "ℤℚ Diophantine Project contributors. ℤ is Diophantine i
 
 ## Eleven variables under ordinary abc
 
-The [full auxiliary-point theorem](papers/conditional_few_variables/full_auxiliary11_20261117_v71.tex) gives a complete **11-variable family**, under ordinary rational abc and the precisely stated elliptic, prime-pattern, trace-height and intrinsic-pole inputs. Its [derivative detector](papers/conditional_few_variables/derivative_detector11_20261117_v63.tex) uses one contact argument for both the input and root trace heights:
+The [even-valuation theorem](papers/conditional_few_variables/even_valuation_detector_20261117_v75.tex), using the full auxiliary charts, gives a complete **11-variable family**, under ordinary rational abc and the precisely stated elliptic, prime-pattern, trace-height and intrinsic-pole inputs. Its [derivative detector](papers/conditional_few_variables/derivative_detector11_20261117_v63.tex) uses one contact argument for both the input and root trace heights:
 
 ```math
 \beta=X^2+B,\qquad T=\mathrm{Tr}x(A),\qquad
@@ -85,13 +85,17 @@ For the nine shifts `c ∈ {-10,-8,-5,1,2,3,4,6,7}`, set
 ```math
 F(a,z)=\prod_c((a+c)^2-z^2),\qquad
 u=-\frac{18F}{\partial F/\partial a},\qquad
-D_i=\frac{C_i^2}{1+uC_i^2},\qquad
+D_i=\begin{cases}C_i/(1+uC_i),&1\le i\le4,\\ C_i^2/(1+uC_i^2),&i=5,6,\end{cases}\qquad
 W=\prod_{i=1}^{6}\left(1+\frac{D_i^2}{u}\right).
 ```
 
 The derivative quotient recovers simple simultaneous contact factors. The shifts sum to zero and have no opposite pair, so numerator and denominator primes of `M` cause no extra height loss. The transformed tests preserve local extraction at every positive odd valuation of `u` and automatically prepare its new negative odd valuations. The resulting input `7b`, with `b=4u/((1+u)²Tr(W⁻¹)²)`, therefore needs only one complete intrinsic pole block. Sun's theorem applies to the **18 fixed prime positions**; the proof checks their order compatibility, fixed-place preparation and every algebra-character guard.
 
-The count is **1 input + 6 point coordinates + 1 contact parameter + 2 pole parameters + 1 encoder = 11**. The finite algebra has rank **128**. The [complete specification and independent checks](computation/few_variables/full_auxiliary11_v71) certify degree at most **232,094,337**, fewer than `2²⁶⁴` monomials and integer content one. The root point remains in `2E(K)`; the two auxiliary points may range over the guarded affine points of `E(K)`, with cubic point radicands. Their half-integral indices preserve the formal comparison at every consumed odd prime. The source has 1,990 integer arithmetic nodes and 32 recorded guards. Subalgebra norms retain every denominator and preceding radicand, while the final pole ordinate may vanish. The sufficient odd shift is ineffective; `B=3` is an algebraic fixture only. This ordinary-abc result does not assert the same count under the two weaker fixed-exponent abc hypotheses.
+The count is **1 input + 6 point coordinates + 1 contact parameter + 2 pole parameters + 1 encoder = 11**. The finite algebra has rank **128**. The [complete specification and independent checks](computation/few_variables/even_valuation11_v75) certify degree at most **230,932,097**, fewer than `2²⁶⁴` monomials and integer content one. The root point remains in `2E(K)`; the two auxiliary points may range over the guarded affine points of `E(K)`, with cubic point radicands. Their half-integral indices preserve the formal comparison at every consumed odd prime. The source has 1,865 integer arithmetic nodes and 32 recorded guards. Subalgebra norms retain every denominator and preceding radicand, while the final pole ordinate may vanish. The sufficient odd shift is ineffective; `B=3` is an algebraic fixture only. This ordinary-abc result does not assert the same count under the two weaker fixed-exponent abc hypotheses.
+
+The first four tests are reciprocal abscissae. Their valuations are even outside the fixed exceptional set, directly from the elliptic equation. This removes their redundant squaring before balancing while retaining negative-odd preparation and every whole-character guard. The previous degree bound **232,094,337** and its [v71 specification](computation/few_variables/full_auxiliary11_v71) remain reproducible.
+
+The [seven-contact variant](papers/conditional_few_variables/seven_contact_detector_20261117_v74.tex) uses shifts `{-7,-6,-4,1,3,5,8}` and `a=M^8`. Its strict height margin is `38695561/597203000`. With even-valuation balancing its complete 11-variable degree bound is **356,146,817**, and its physical weight map has degree seven in the squared slope. This gives a smaller lifting equation at a higher defining-degree bound.
 
 The same auxiliary enlargement preserves the sound **nine-coordinate** actual-trace source and includes every earlier guarded witness. It gives a larger space for rational-point arithmetic. Completeness still requires a rational square at the actual detector trace for every sufficiently large positive integer. **The targets 21 and 9 remain unproved.**
 
@@ -108,6 +112,10 @@ The resulting nine-coordinate source is sound at every sufficiently large fixed 
 It is enough to obtain actual witnesses for every sufficiently large positive integer: a sign involution supplies negative inputs, and multiplying by `∏_{1≤m<N}(X²−m²)` includes the finitely many remaining integers with **no added variables**. This weaker realization hypothesis is also unproved. **The established ordinary-abc count remains 11, and the general count remains 25.** [Criterion metadata and checks](data/criteria_20261117_v64.json) are separate from the construction records.
 
 The [arithmetic reduction](papers/pole_parameters/actual_trace_arithmetic_20261117_v70.tex) places the fixed-tuple problem on an actual detector-weight curve of genus at most **36**. An exact fixture has genus **24**, while its slope curve has genus **449**; both polynomial specifications and the genus certificates are independently reconstructed. A rational point must still solve the physical degree-nine equation, give a rational-square squared slope, and satisfy all original guards and preparation. The fixture shift `B=3` is not asserted sufficient for a defining polynomial.
+
+The [halfpoint calculation](papers/conditional_few_variables/seven_contact_detector_20261117_v74.tex) uses the actual tuple `X=1, B=3, A=P, H=U=P/2` in the enlarged auxiliary domain. Its weight curve has **genus 12**. With seven contacts, its squared-slope and physical-slope covers have genera **90** and **181**. The [even-valuation revision](papers/conditional_few_variables/even_valuation_detector_20261117_v75.tex) gives another genus-12 weight curve; its physical-slope genera are **181** with seven contacts and **233** with nine. Exact coefficient reconstructions and degree-preserving Bezout identities certify these figures. No guarded rational point or physical lift is asserted.
+
+The [coupled-weight theorem](papers/pole_parameters/coupled_weight_lifting_20261117_v74.tex) proves that the general source's physical weight pair determines the common slope birationally, including after normalization `w=u/(1+u)^2`. A paired polynomial gcd gives exact rational lifting and detects incompatible weight pairs; exceptional higher-degree fibers require rational-root testing. Both actual square equations, physical guards and integer-input realization remain necessary.
 
 The [actual-trace curve theorem](negative_results/papers/pole_parameters/curves_and_abelian_families_20261117_v69.tex) applies at a fixed rational input to the nine-variable derivative route and the specified general 21-variable route, with their point roles independent. Every fixed algebraic curve in either guarded locus has only finitely many rational points; no curve over the rationals of normalization genus zero or one maps nonconstantly into it. The first fixed-point covers have genus at least eight and four, respectively. The derivative fiber has two rational boundary points at infinity and is everywhere locally soluble; those points do not supply guarded rational witnesses.
 
@@ -168,7 +176,7 @@ The theorem does not prescribe the good level as an existing detector coordinate
 
 ## Finite algebras and the general polynomials
 
-The [full auxiliary-point theorem](papers/few_variables25/full_auxiliary25_20261117_v72.tex) gives the complete **25-variable** family of degree at most **4,924,857,429,000,192**. Four root points retain integral indices in `2E(K)`; the five auxiliary points range over guarded affine `E(K)` through cubic radicands. Half-integral auxiliary indices preserve both the scalar valuation argument and the required comparison congruences. The [integer circuit](computation/few_variables/full_auxiliary25_v72) has 6,169 arithmetic nodes and 101 recorded guards, with 128 retained subalgebra norm factors. Its coefficient bound is reconstructed for each fixed odd exponent. The stored `L=3` member is an algebraic fixture, not a certified defining member.
+The [even-valuation theorem](papers/few_variables25/even_valuation25_20261117_v75.tex) gives the complete **25-variable** family of degree at most **4,863,007,848,923,136**, improving the previous **4,924,857,429,000,192** bound of the [full auxiliary-point construction](papers/few_variables25/full_auxiliary25_20261117_v72.tex). Four root points retain integral indices in `2E(K)`; the five auxiliary points range over guarded affine `E(K)` through cubic radicands. The first ten reciprocal-abscissa factors use their even valuations to remove an extra square. This strengthens local extraction and preserves the original whole-character completeness witnesses. The [integer circuit](computation/few_variables/even_valuation25_v75) has 6,039 arithmetic nodes and 101 recorded guards, with 128 retained subalgebra norm factors and support strictly below `2¹¹⁹²`. The stored `L=3` member is an algebraic fixture, not a certified defining member.
 
 The same enlargement preserves the sound **21-coordinate** two-detector source. Simultaneous rational realization at the two actual traces remains unproved. The complete 25-variable family retains its four free pole parameters and all whole-character guards.
 
@@ -367,6 +375,7 @@ The [pole-compression guide](negative_results/docs/pole_compression_obstructions
 Use **Python 3.12** for the byte-pinned legacy suite and **SymPy 1.14.0** for symbolic checks. From the repository root:
 
     python -m pip install sympy==1.14.0
+    python -B scripts/verify_v75.py
     python -B scripts/verify_v74.py
     python -B scripts/verify_v73.py
     python -B scripts/verify_v72.py

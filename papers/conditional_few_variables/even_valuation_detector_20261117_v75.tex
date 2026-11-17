@@ -1,0 +1,359 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,microtype,booktabs}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\DeclareMathOperator{\Tr}{Tr}
+\title{Even abscissa valuations and a smaller eleven-variable degree bound}
+\author{}\date{17 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+The first four tests of the derivative detector have even valuation
+at every consumed odd place, including for unrestricted auxiliary
+elliptic points. They therefore need no additional squaring before
+balancing. This preserves extraction, fixed-place and contact preparation,
+and all finite-character guards. A complete eleven-variable ordinary-$abc$
+family has degree at most $230932097$, improving the previous bound
+$232094337$. Its seven-contact variant has degree at most $356146817$
+and a degree-seven physical lifting equation. For a halfpoint fixture,
+the actual weight equation has an explicit genus-twelve model with
+smaller coefficients. Exact physical compositions have genera $233$
+and $181$ for nine and seven contacts, respectively. Global actual-trace
+realization, and hence completeness in nine variables, remains unproved.
+\end{abstract}
+
+\section{An even-valuation lemma}
+The relevant assertion is local parity, not a global square class.
+\begin{lemma}\label{lem:general}
+Let $L$ be a number field, let $v$ be a normalized nonarchimedean
+valuation, and let
+\[
+                   E:y^2=x(x^2+A x+B)
+\]
+with $v(A)\ge0$ and $v(B)=0$. Every finite point $(x,y)\in E(L)$
+with $xy\ne0$ satisfies $v(x)\in2\Z$.
+\end{lemma}
+\begin{proof}
+If $v(x)>0$, then $B$ is the unique term of least valuation in
+$x^2+A x+B$, so $2v(y)=v(x)$. If $v(x)<0$, then $x^2$ is the
+unique term of least valuation, giving $2v(y)=3v(x)$. Each equality
+forces $v(x)$ to be even. The case $v(x)=0$ is immediate.
+\end{proof}
+
+For the retained source
+\[
+ K=\Q(\sqrt2),\qquad E:y^2=x^3-dx,\qquad
+ d=11-6\sqrt2,\qquad N_{K/\Q}(d)=49,
+\]
+the lemma applies at every place above a rational prime other than
+seven. All consumed odd primes are outside the existing exceptional
+set $S_0$, which contains two and seven; they are unramified in $K$.
+Thus their normalized slot valuations of rational $u$ equal $v_p(u)$.
+The same parity conclusion applies to every guarded difference point.
+
+\begin{lemma}\label{lem:balanced}
+Let $p\notin S_0$, put $\nu=v_p(u)$, and suppose $\nu$ is odd.
+If $C\in K^\times$ has even valuation in both slots, then
+\[
+                 D=\frac{C}{1+uC},\qquad
+                  v(D)=\max\{v(C),-\nu\}
+\]
+at each place above $p$. In particular, if $\nu>0$, then
+$v(D)>0$ if and only if $v(C)>0$. If $\nu<0$, then
+$v(D^2/u)\ge-3\nu>0$.
+\end{lemma}
+\begin{proof}
+The integer $\nu+v(C)$ is odd and therefore nonzero, so the two
+terms of $1+uC$ have unequal valuations. Hence
+$v(D)=v(C)-\min(0,\nu+v(C))$, which is the displayed maximum.
+The remaining assertions follow directly. No rational or global
+$K$-square assumption on $C$ is used.
+\end{proof}
+
+\section{The modified source}
+Retain ordinary rational $abc$, all arithmetic premises of the derivative
+construction \cite{Derivative}, and its full auxiliary extension
+\cite{FullAux}. In particular,
+\[
+ 2E(K)=\Z P,\qquad
+ P=\left(\frac{57-28\sqrt2}{8},\frac{-660+417\sqrt2}{32}\right).
+\]
+The root $A=[n]P$ retains its two-coordinate chart and integral index.
+The two auxiliaries $H,U$ may range over all guarded affine points.
+With $f=1/x$ and $\zeta=-x/y$, put
+\[
+ r=\frac{\zeta(U)}{\zeta(H)},\qquad
+ r'=\overline{\frac{\zeta(U-A)}{\zeta(H-P)}},
+\]
+\[
+ (C_1,C_2,C_3,C_4,C_5,C_6)
+ =\bigl(f(H),f(U),\overline{f(H-P)},\overline{f(U-A)},r-r',r-X\bigr).
+\]
+All original point, ordinate, difference and quotient guards remain.
+By Lemma~\ref{lem:general}, the first four tests have even valuations
+at every consumed place. The last two tests need not have this property
+and may vanish.
+
+For the degree-improving variant use
+\begin{equation}\label{eq:height}
+ \beta=X^2+B,\quad T=\Tr x(A),\quad M=\beta^4+T^4,
+ \quad a=M^4,\quad t=M^8-z^2,
+\end{equation}
+where $B\ge3$ is a fixed odd integer and $z\in\Q$ is the one free
+slope. Use the nine shifts
+$\mathcal S_9=\{-10,-8,-5,1,2,3,4,6,7\}$, and put
+\[
+ F=\prod_{c\in\mathcal S_9}((a+c)^2-z^2),\qquad
+ u=-18F/F_a,\qquad w=\frac{u}{(1+u)^2}.
+\]
+The modification is exactly
+\begin{equation}\label{eq:newD}
+ D_i=\begin{cases}
+ C_i/(1+uC_i),&1\le i\le4,\\
+ C_i^2/(1+uC_i^2),&5\le i\le6.
+ \end{cases}
+\end{equation}
+The detector and intrinsic input remain
+\begin{equation}\label{eq:detector}
+ W=\prod_{i=1}^6(1+D_i^2/u),\quad V=\Tr(W^{-1}),\quad
+ b=4w/V^2,\quad\eta=7b.
+\end{equation}
+Retain all original nonzero requirements on $M,t,F,F_a,u,1+u$,
+the detector product and trace, and $\eta$. The first four balanced
+norm guards are replaced by the norms of $1+uC_i$; the last two are
+unchanged. We do not omit any guard on the ground that its value might
+usually be nonzero.
+
+Two free pole coordinates $v,s$ and the finite root of
+\begin{equation}\label{eq:pole}
+ Y^2=\eta(\eta+v^2)^2s^4-\eta(\eta-v^2)^2(1-\eta)^2
+\end{equation}
+complete the eleven-coordinate source. The final root may vanish in
+soundness; all preceding point radicands and syntactic denominators
+remain units.
+
+\section{Arithmetic transfer}
+\begin{theorem}\label{thm:transfer}
+The source \eqref{eq:height}--\eqref{eq:pole} is sound and complete
+for every sufficiently large fixed odd $B$, under the same retained
+premises as \cite{FullAux}. It therefore defines $\Z$ by a polynomial
+in eleven total variables, including the input. The nine-variable
+actual-trace source obtained by replacing \eqref{eq:pole} with
+$Y^2=V^2+w(2-V)$ remains sound; its completeness is not asserted.
+\end{theorem}
+\begin{proof}
+Let $\nu=v_p(u)>0$ be odd, $p\notin S_0$, and let $q\le0$
+be the largest slot valuation of $W$. Every factor of $W$ has
+valuation $\min(0,2v(D_i)-\nu)$, since its two terms have distinct
+valuations when the second is nonzero. The intrinsic pole implication
+excludes negative odd valuations of $b$, giving
+$1\le v_p(b)\le\nu+2q$. Thus in a slot attaining $q$, each factor
+has valuation greater than $-\nu/2$, and $v(D_i)>\nu/4>0$.
+Lemma~\ref{lem:balanced} forces $v(C_i)>0$ for $i\le4$.
+For the comparison tests the old identity
+$v(D_i)=\max(2v(C_i),-\nu)$ gives the same conclusion. The retained
+formal-comparison theorem therefore extracts $X\equiv n\pmod p$
+and $p$-integrality of $X$ exactly as before.
+
+Neither the contact weight $u$ nor its height argument has changed.
+The complete height absorption argument of \cite{Derivative} therefore
+applies, with the same positive margin $44272779/198801800$.
+The extension to half-integral auxiliary indices is exactly that of
+\cite{FullAux}; only the four local abscissa parities were additionally
+used. They hold on the full auxiliary domain, not merely on old witnesses.
+
+For completeness retain the old multiplication subfamily
+$U=[n]H$, $H\in2E(K)$. At a selected contact the original first four
+tests have valuation at least two. By Lemma~\ref{lem:balanced}, their
+new $D_i$ still have valuation at least two when $v_p(u)=1$.
+Hence their factors are one modulo $p$, and the original successful-slot
+and unit-trace proof is unchanged. Comparison factors are unchanged.
+At a negative odd valuation of $u$, Lemma~\ref{lem:balanced} makes
+each of the first four factors one modulo $p$ regardless of abscissa
+poles. The old squared balancing does the same for the last two.
+Thus $V\equiv2$, and the proof that $\eta$ has square reduced
+denominator remains valid, including new denominator primes of $F_a$.
+At even valuations the parity argument for $b$ is unchanged.
+
+At each fixed place, make $z$ large relative to the already prepared
+nonzero tests. Both versions of \eqref{eq:newD} then satisfy
+$D_i\sim1/u$ for nonzero $C_i$, while identically zero comparisons
+remain zero. Thus $W\to1$, $V\to2$, and the original two-adic and
+seven-adic preparation remains valid. The finite norm guards also stay
+nonzero after taking the original neighborhoods sufficiently small and
+the slope sufficiently large.
+
+For completeness, all prepared point characters can still be chosen
+real with positive first four tests. Indeed all old integral-index
+points have square nonzero abscissae. The algebraic identity
+\[
+ x(Q)x(R)x(Q-R)
+   =\left(\frac{x(Q)y(R)+x(R)y(Q)}{x(Q)-x(R)}\right)^2
+\]
+shows that their required differences have positive abscissae at each
+real sign character whenever the original difference guards hold.
+This identity remains valid for either ordinate sign. Therefore
+$1+uC_i>0$ for $i\le4$ when $u>0$, and the last two balanced
+denominators are also positive. Every detector factor is at least one,
+so $0<V\le2$. The original real preparation gives $0<\eta<1$.
+This argument is for the subfamily used in completeness; arbitrary
+full-auxiliary real points are not assumed to have positive abscissae.
+
+The intrinsic-pole existence and all-character finite-norm avoidance
+proofs now apply unchanged, since their inputs have exactly the same
+preparation. No preceding radicand is allowed to vanish. The final
+root remains permitted to vanish in soundness.
+
+Finally the actual-trace implication excluding negative odd valuations
+of $b$ depends only on $w=u/(1+u)^2$ and $V$, not on the formula for
+the balanced tests. It therefore supplies the same soundness for the
+nine-variable source. At every prepared contact, negative odd valuation,
+fixed place and real character, its local-square proof transfers as
+well. Those local statements do not prove global rational squareness.
+\end{proof}
+
+\section{Integral specification and degree}
+The direct identities
+\[
+ \frac{1/x}{1+u/x}=\frac1{x+u},\qquad
+ \frac{\Delta^2/X_0}{1+u\Delta^2/X_0}
+                  =\frac{\Delta^2}{X_0+u\Delta^2}
+\]
+avoid unnecessary fraction expansions. Here a difference abscissa is
+stored as $X_0/\Delta^2$. The original nonzero guards on $x$, $X_0$
+and $\Delta$ make these identities and the corresponding norm-guard
+replacements equivalent at every finite-algebra character.
+The coefficient circuit uses these identities directly for the first
+four factors; its independent native checker evaluates
+$C_i/(1+uC_i)$ instead.
+
+The three finite point blocks have rank $64$; adjoining the terminal
+quadratic root gives rank $128$. The unchanged guarded subalgebra norms
+and terminal-root separator \cite{Terminal} use one encoder coordinate.
+The coordinate count is $1+6+1+2+1=11$. The source has 1865 arithmetic
+nodes and 32 native guards. Independent specification traversal gives
+\[
+ \deg F_B\le230932097<2^{28},\qquad
+ \#\operatorname{supp}(F_B)<2^{264},\qquad
+                     \operatorname{content}(F_B)=1.
+\]
+This is an upper bound for the finite determinant specification, not
+an expanded exact degree. The coefficient bound is computable for every
+specified $B$. For the stored fixture $B=3$, its coefficient $\ell^1$
+norm is at most $2^{480197504}$. No sufficient numerical defining $B$
+is claimed.
+
+The same modification applies to the seven-contact source of
+\cite{Seven}, where $a=M^8$, $t=M^{16}-z^2$ and
+$\mathcal S_7=\{-7,-6,-4,1,3,5,8\}$. Its strict height margin is
+$38695561/597203000$. It has 1815 nodes, 32 native guards, rank 128,
+and degree at most $356146817<2^{29}$, with fewer than $2^{270}$
+monomials. Its purpose is the degree-seven physical lift, not a lower
+final degree. Each variant is checked at 384 finite-field sign characters,
+and independent corrupted-degree and missing-guard controls are rejected.
+
+\section{The new actual halfpoint curve}
+Use the guarded full-auxiliary fixture
+\[
+ X=1,\quad B=3,\quad A=P,\quad H=U=R_0=(1+\sqrt2,2\sqrt2).
+\]
+One has $2R_0=P$ and $H-P=-H$. The actual six tests are
+$(c,c,\bar c,\bar c,0,0)$ with $c=\sqrt2-1$. In this section the
+first four factors use the unsquared balancing \eqref{eq:newD}.
+Define
+\begin{align*}
+ D_0(u)&=u^2(1-2u-u^2)^2,\\
+ R_0(u)&=D_0(u)+2u^3+4u^2+6u+1,\\
+ \Pi_0(u)&=4D_0(u)^4(1+u)^2
+       +2uR_0(u)^2\bigl(R_0(u)^2-D_0(u)^2\bigr).
+\end{align*}
+The point $R_0$ and polynomial $R_0(u)$ are distinguished by their
+arguments. Since $c+\bar c=-2$ and $c\bar c=-1$,
+\[
+ J_0(u)=\frac{\bigl(u(1+uc)^2+c^2\bigr)
+                  \bigl(u(1+u\bar c)^2+\bar c^2\bigr)}
+                  {u^2(1-2u-u^2)^2}
+       =\frac{R_0(u)}{D_0(u)}.
+\]
+It follows exactly that $W=J_0^2$, $V=2D_0^2/R_0^2$, and
+\begin{equation}\label{eq:curve}
+ Y_0^2=\Pi_0(u),\qquad Y_0=(1+u)R_0(u)^2Y
+\end{equation}
+is the actual weight cover.
+
+\begin{proposition}\label{prop:genus}
+The curve \eqref{eq:curve} has genus twelve after normalization.
+Every rational weight $u\ne0,-1$ satisfies the selected-character
+balanced, detector-product and trace denominator guards. For the seven-
+and nine-contact physical maps, the squared-slope covers have genera
+$90$ and $116$, respectively; the slope covers have genera $181$ and
+$233$, respectively.
+\end{proposition}
+\begin{proof}
+The degree of $\Pi_0$ is 26, its leading coefficient is four, and
+zero is a simple root. The stored finite-field Bezout certificate
+proves it squarefree. Thus its genus is twelve.
+The quadratic $1-2u-u^2$ has nonsquare discriminant eight. The monic
+polynomial $R_0$ has constant coefficient one and
+$R_0(1)=17$, $R_0(-1)=1$; hence it has no rational root. Consequently
+$D_0R_0\ne0$ at every rational $u\ne0$. The denominator and trace
+formulas prove the assertion about the selected character.
+
+Let $k$ be seven or nine. The fixed physical scale is
+$a=(10621537/256)^8$ when $k=7$ and
+$a=(10621537/256)^4$ when $k=9$. Differentiate
+$F(a,T_0)=\prod_{c\in\mathcal S_k}((a+c)^2-T_0)$ before specializing
+$a$, and form the common-content primitive pair
+$A_k/B_k=-2kF/F_a$ over $\Z[T_0]$. Its degrees are $k,k-1$.
+The polynomial
+\[
+              P_k(T_0)=B_k(T_0)^{26}\Pi_0(A_k(T_0)/B_k(T_0))
+\]
+has degree $26k$, is squarefree, and does not vanish at zero; the
+certificate reconstructs the pair and verifies the appropriate
+finite-field Bezout identity independently. Thus
+$Y_1^2=P_k(T_0)$ has genus $13k-1$,
+$Y_2^2=T_0P_k(T_0)$ has genus $13k$, and
+$Y_1^2=P_k(z^2)$ has genus $26k-1$.
+\end{proof}
+
+A rational point $(u,Y_0)$ on \eqref{eq:curve} still needs a root of
+$uB_k(T_0)-A_k(T_0)$ in $\Q$, with $B_k(T_0)\ne0$ and
+$T_0$ a rational square. The physical guard $a^2-T_0\ne0$ and
+all original point, whole-character and preparation requirements remain.
+The known boundary points $u=0,\infty$ do not meet these conditions.
+No admissible rational point is asserted here. The fixture $B=3$ is
+not certified to exceed a sufficient defining threshold. In particular
+none of these arithmetic reductions proves nine- or twenty-one-variable
+completeness.
+
+\section{Reproduction}
+The directory
+\nolinkurl{computation/few_variables/even_valuation11_v75}
+contains both complete integer circuit specifications, their pinned
+producers, and independently adapted degree and native point checks.
+The second directory
+\nolinkurl{computation/pole_parameters/even_halfpoint_trace_v75}
+contains the exact weight polynomials, both physical pairs, and their
+finite-field certificates. Its independent reconstruction imports no
+producer routine and differentiates before specializing the physical
+scale. These finite computations establish their listed algebraic
+assertions; the mathematical transfer proofs above retain the source's
+stated infinite arithmetic premises.
+
+\begin{thebibliography}{9}
+\bibitem{Derivative}\emph{An eleven-variable construction under rational $abc$},
+\nolinkurl{papers/conditional_few_variables/derivative_detector11_20261117_v63.tex}.
+\bibitem{FullAux}\emph{Full auxiliary elliptic points in the eleven-variable source},
+\nolinkurl{papers/conditional_few_variables/full_auxiliary11_20261117_v71.tex}.
+\bibitem{Seven}\emph{Seven-contact detectors and a genus-twelve actual weight curve},
+\nolinkurl{papers/conditional_few_variables/seven_contact_detector_20261117_v74.tex}.
+\bibitem{Terminal}\emph{A terminal quadratic root and complete polynomial specifications},
+\nolinkurl{papers/finite_algebra/terminal_quadratic_root_20261115_v40.tex}.
+\end{thebibliography}
+\end{document}

@@ -1,0 +1,280 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,booktabs,microtype,hyperref}
+\usepackage[margin=27mm]{geometry}
+\setlength{\emergencystretch}{3em}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\newcommand{\Tr}{\operatorname{Tr}}
+\newtheorem{lemma}{Lemma}
+\newtheorem{theorem}[lemma]{Theorem}
+\newtheorem{proposition}[lemma]{Proposition}
+\title{Even-valuation abscissa tests in the general detector}
+\author{}\date{17 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+The first ten field tests in the general detector are reciprocal
+abscissas. Their valuations are even outside the retained exceptional
+set, so their detector factors do not require squared numerators.
+The resulting local implication is stronger, and the original
+prepared witnesses retain all real and whole-character guards.
+With the full auxiliary charts this gives a complete twenty-five-variable
+family, under the unchanged arithmetic premises, of degree at most
+$4863007848923136$ and support strictly below $2^{1192}$.
+The same change is valid in the normalized two-actual-trace source;
+its simultaneous rational realization remains unproved.
+\end{abstract}
+
+\section{The revised factors}
+
+Retain the general source of \cite{General,Unit}, its full auxiliary
+charts from \cite{FullAux}, and all of their arithmetic premises.
+In particular
+\[
+ K=\Q(\sqrt2),\qquad D=11-6\sqrt2,\qquad
+ E:y^2=x^3-Dx,
+\]
+and the four root points retain their integer indices in $2E(K)$.
+The five auxiliary points range over guarded affine points of $E(K)$.
+Write $U_0=H$, $Q_0=P$ and keep the other four root and numerator
+roles $Q_i,U_i$. The first ten field tests are
+\[
+ C_1,\ldots,C_{10}
+ =\bigl(f(U_i)\bigr)_{i=0}^4,
+   \bigl(\overline{f(U_i-Q_i)}\bigr)_{i=0}^4,
+ \qquad f(Q)=1/x(Q).
+\]
+They have order one. The six remaining field tests, their orders
+$a_i\in\{1,3\}$, the six rational scalar tests $S_k$, their orders
+$\kappa_k\in\{1,3\}$, the contact functions $R_j$, normalizers
+$\delta_j$ and scalar $\rho$ are unchanged.
+
+For the compiled family put $q_j=\rho R_j$ and retain the original
+scalar normalizations
+\[
+ G_{j,k}=R_j^{\kappa_k}\frac{R_jS_k}{1+R_jS_k}.
+\]
+Replace the detector product by
+\begin{equation}\label{eq:product}
+ W_j=
+ \prod_{i=1}^{10}\left(1+\frac{C_i}{\delta_j^2q_j}\right)
+ \prod_{i=11}^{16}
+       \left(1+\frac{C_i^2}{\delta_j^2q_j^{2a_i-1}}\right)
+ \prod_{k=1}^{6}
+       \left(1+\frac{G_{j,k}^2}{q_j^{2\kappa_k-1}}\right).
+\end{equation}
+Keep $V_j=\Tr_{K/\Q}(W_j^{-1})$, the two native pole inputs
+$b_j=4q_j/V_j^2$, and every source guard. The only native circuit
+change is the power of each of the first ten field-test numerators.
+
+\section{Even valuations and local extraction}
+
+\begin{lemma}\label{lem:even}
+Let $v$ be an integer-valued nonarchimedean valuation of a
+characteristic-zero field, with $v(D)=0$. Every finite point of
+$y^2=x^3-Dx$ with nonzero abscissa has even $v(x)$ and hence
+even $v(1/x)$.
+\end{lemma}
+\begin{proof}
+Put $m=v(x)$. If $m>0$, the two terms on the right have distinct
+valuations $3m$ and $m$, so $2v(y)=m$. If $m<0$, the smaller
+valuation is $3m$, so $2v(y)=3m$. Either equality makes $m$
+even. The remaining case is $m=0$.
+\end{proof}
+
+The norm of $D$ is $49$. At every rational prime outside $2,7$,
+the extension $K/\Q$ is unramified and $D$ is a local unit.
+Thus each of the first ten tests has even valuation at every place
+above every consumed prime. The retained exceptional set already
+contains $2$ and $7$. No restriction to the subgroup $2E(K)$ is
+needed for this local assertion.
+
+\begin{proposition}\label{prop:local}
+Suppose the unchanged native pole test excludes a negative odd
+valuation of $b_j$ at a nonexceptional prime. If
+$\alpha=v_p(q_j)$ is odd, it is positive. At some place above $p$
+every factor of \eqref{eq:product} has valuation greater than
+$-\alpha/2$. If $\delta_j$ is a unit there, then
+\[
+ v(C_i)>\alpha/2\quad(1\le i\le10),\qquad
+ v(C_i)>(a_i-3/4)\alpha\quad(11\le i\le16),
+\]
+and the scalar inequalities of the original source are unchanged.
+\end{proposition}
+\begin{proof}
+For each revised factor the valuation of its second summand is
+$v(C_i)-2v(\delta_j)-\alpha$, an odd integer by
+Lemma~\ref{lem:even}. The second summands of the other factors
+likewise have odd valuation when nonzero. Thus every factor has
+nonpositive valuation, with no cancellation at valuation zero.
+A zero test contributes the factor one.
+
+Let $m$ be the larger of the two valuations of $W_j$. Then
+$m\le0$ and integrality of local traces gives $v_p(V_j)\ge-m$.
+If $\alpha<0$, the odd number $v_p(b_j)$ is at most
+$\alpha+2m<0$, a contradiction. Otherwise the pole implication
+gives
+\[
+             1\le v_p(b_j)\le\alpha+2m,
+             \qquad m>-\alpha/2.
+\]
+At a place attaining $m$, each factor has valuation at least the
+sum $m$. Applying this to a revised summand at a unit normalizer
+gives $v(C_i)-\alpha>-\alpha/2$. The unchanged squared factors
+give the other inequalities exactly as before.
+\end{proof}
+
+In particular the new first-ten inequality implies the old one
+$v(C_i)>\alpha/4$. All scalar-odd and mixed-contact alternatives,
+formal logarithmic comparisons, integer residual divisibilities,
+and subsequent height arguments therefore survive. The full
+auxiliary charts satisfy the same formal-index conclusions proved
+in \cite{FullAux}.
+
+\section{Completeness and guards}
+
+Use the original ordered construction of prepared witnesses, with
+all chosen points in $2E(K)$. At a selected fresh contact prime,
+$v_p(q_j)=1$, $\delta_j$ is a unit and every successful-slot
+reciprocal abscissa has valuation at least two. Each revised
+summand consequently has valuation at least one, so its factor
+is congruent to one. At the opposite slot its valuation is odd;
+the factor is either congruent to one or has negative valuation.
+The reciprocal product there is therefore zero or one modulo the
+selected place. The scalar and other comparison factors are
+unchanged. The trace remains a unit, as required for the positive
+odd pole-input valuation.
+
+At the fixed preparation places, the scalar preparation is
+unchanged. After fixing the compact point neighborhoods, the first
+ten raw tests are bounded there, and their revised summands tend to
+zero as $\delta_j^{-1}$ tends to zero and $R_j$ tends to one.
+Thus the prescribed arbitrary finite precisions and real bounds
+can still be imposed before selecting the slope and fresh primes.
+The same denominator-square and native pole-input preparation
+arguments apply.
+
+For the whole-character real conditions, retain the old complete
+subfamily inside the enlarged point charts. At each real embedding,
+its points and guarded differences lie in $2E(\mathbb R)$, the
+identity component of $E(\mathbb R)$. Since $D>0$ at both
+embeddings, a finite point in this component has
+$x\ge\sqrt D>0$. Hence each revised $C_i$ is positive at every
+prepared character. With $q_j>0$ and $\delta_j\ne0$, its factor
+is at least one. All product and reciprocal-trace norm guards are
+therefore preserved. The old and enlarged auxiliary point algebras
+agree at these witnesses by \cite{FullAux}; no new denominator or
+unrestricted coordinate has been added.
+
+\begin{theorem}\label{thm:complete}
+Under exactly the retained arithmetic premises of the general
+source, there is a computable family of integer polynomials in
+twenty-five total rational coordinates, including the input, whose
+input projection is $\Z$ for every sufficiently large fixed odd
+$L$. Its degree is at most $4863007848923136<2^{53}$, its support
+is strictly below $2^{1192}$, and its integer content is one.
+The sufficient defining exponent remains ineffective.
+\end{theorem}
+\begin{proof}
+Proposition~\ref{prop:local} supplies the original local
+implications and hence soundness for every sufficiently large fixed
+odd $L$. The preceding prepared construction gives completeness for
+every integer input and every fixed odd $L\ge3$. The two pole blocks
+and the finite-algebra separator are unchanged. Their count is
+$1+18+1+4+1=25$, including the input.
+
+The exact circuit package below retains the point-basis and terminal
+root bounds of \cite{FullAux}. It computes
+\[
+ \deg G_*\le4637555553,\qquad \deg\Omega\le170132,
+\]
+so the rank-$1048576$ encoder has degree at most
+\[
+ 1048576(4637555553+170132+1)=4863007848923136.
+\]
+The encoder-coordinate degree is at most $1048576$. Counting
+monomials under these two bounds gives support strictly below
+$2^{1192}$. Setting the encoder coordinate to zero gives one,
+so the integer content is one.
+\end{proof}
+
+\section{The normalized actual-trace source}
+
+The same first-ten change is valid in the reweighted general source
+of \cite{Reweighted}. There use $w_j=q_j/(1+q_j)^2$ in place
+of $q_j$ throughout \eqref{eq:product}, and keep that source's
+scalar numerators $R_j^{\kappa_k+1}\Phi_{R_j}(S_k)$.
+The parity argument is identical and the new extraction is again
+stronger. Selected contacts still have $v_p(w_j)=1$; at fixed
+preparation places $w_j$ tends to the same nonzero limiting value.
+Thus this revision preserves the complete twenty-five-variable
+normalized source and the sound twenty-one-variable actual-trace
+source with the same guards and local preparation. The numerical
+degree bound in Theorem~\ref{thm:complete} is for the compiled
+unnormalized family \eqref{eq:product} only.
+
+No simultaneous rational square realization follows. At fixed
+guarded point values, each of the first detector's ten contacts
+is still a simple zero of $w_0$. In each slot its nonzero
+reciprocal tests give poles of $W_0$, while the scalar factors tend
+to one. Hence
+\[
+ V_0=O(w_0),\qquad
+ V_0^2+w_0(2-V_0)=2w_0+O(w_0^2).
+\]
+The ten simple branch points and genus-at-least-four obstruction
+of \cite{Obstruction} therefore remain. In particular this
+simplification does not create a rational parametrization of the
+fixed-point square cover or settle the complete twenty-one-variable
+target.
+
+At a fixed input and fixed $L$, the scalar $\rho$ is fixed by the
+source. The other scale is $1+\rho T^2$, with
+$T=\Tr\sum_i x(Q_i)$ determined by the four integer-index root
+points. Neither scalar is an independent free rational parameter.
+The odd valuation of $\rho$ at $76249$ excludes the value
+$1+\rho T^2=2$. An arbitrary auxiliary square rescaling of $\rho$
+would also change its height estimate and is not an operation
+justified by the retained proof.
+
+\section{Exact specification and checks}
+
+The package
+\begin{quote}\small
+\nolinkurl{computation/few_variables/even_valuation25_v75}
+\end{quote}
+specifies the integer polynomial family by its native circuit and
+finite-algebra determinant. It has $6039$ integer arithmetic nodes,
+$101$ recorded guards and $128$ retained norm factors. The stored
+$L=3$ member is an algebraic fixture; its coefficient $\ell^1$-norm
+bound is $2^{34532878499971072}$. This value of $L$ is not
+asserted to exceed the sufficient defining threshold.
+
+The independent checker verifies the point-algebra identities,
+guard and subalgebra supports, weighted degrees and coefficient
+bounds, and rejects deliberate degree and guard corruption. It
+independently evaluates the revised native detector at $72$ finite
+characters of actual point charts, including half-integral auxiliary
+indices. The direct evaluator uses unsquared first-ten factors
+without reading the circuit's product expression. These finite
+checks certify the algebraic implementation and bounds; they do
+not prove the retained arithmetic premises or global actual-square
+realization.
+
+\begin{thebibliography}{9}\raggedright
+\bibitem{General}\emph{Twenty-five variables from combined scalar and
+comparison conditions},
+\nolinkurl{papers/few_variables25/few_variables25_merged_20261110_v19.tex}.
+\bibitem{Unit}\emph{A single norm determinant for the 25- and
+13-variable constructions},
+\nolinkurl{papers/finite_algebra/unit_norm_20261114_v28.tex}.
+\bibitem{FullAux}\emph{Full auxiliary point charts for the general
+twenty-five-variable source},
+\nolinkurl{papers/few_variables25/full_auxiliary25_20261117_v72.tex}.
+\bibitem{Reweighted}\emph{Quadratic reweightings of native elliptic
+detectors},
+\nolinkurl{papers/pole_parameters/reweighted_elliptic_detectors_20261116_v53.tex}.
+\bibitem{Obstruction}\emph{Curves and abelian families in an
+actual-trace square locus},
+\nolinkurl{negative_results/papers/pole_parameters/curves_and_abelian_families_20261117_v69.tex}.
+\end{thebibliography}
+\end{document}

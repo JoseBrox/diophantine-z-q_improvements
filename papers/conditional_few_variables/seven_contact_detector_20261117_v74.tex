@@ -1,0 +1,416 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,microtype,booktabs}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
+\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\DeclareMathOperator{\Tr}{Tr}
+\title{Seven-contact detectors and a genus-twelve actual weight curve}
+\author{}\date{17 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+The ordinary-$abc$ derivative construction can use seven contact shifts
+when its scale is changed from $M^4$ to $M^8$. All extraction, preparation
+and finite-character guards transfer. The resulting complete eleven-variable
+family has an independently checked degree bound $357309057$; this is an
+arithmetic variant, not a degree record. Its sound nine-variable source has
+physical lifting degree seven in the squared slope. In the enlarged auxiliary
+point domain, the exact tuple $X=1$, $A=P$, $H=U=P/2$ has an actual weight
+cover of genus twelve. The associated squared-slope and slope covers have
+genera $90$ and $181$, respectively. These statements do not prove a guarded
+rational point on either cover, nor the global realization needed for nine
+variables. The general twenty-one-variable target is also unchanged.
+\end{abstract}
+
+\section{Source and arithmetic premises}
+We retain ordinary rational $abc$ and exactly the elliptic group,
+formal-comparison, trace-height, simultaneous-prime and intrinsic-pole
+inputs of the derivative source \cite{Derivative}, with the auxiliary
+point extension of \cite{FullAux}. No new assertion about those imported
+foundations is made here. Put
+\[
+ K=\Q(\sqrt2),\quad E:y^2=x^3-(11-6\sqrt2)x,
+ \quad P=\left(\frac{57-28\sqrt2}{8},\frac{-660+417\sqrt2}{32}\right).
+\]
+The retained group statement is $2E(K)=\Z P$. The root role $A=[n]P$
+uses its original two-coordinate square-abscissa chart. The roles $H,U$
+may use the guarded full affine curve, each with two rational abscissa
+components and its finite ordinate algebra. The original finite point
+algebra has rank $4^3=64$.
+
+For $f(Q)=1/x(Q)$ and $\zeta(Q)=-x(Q)/y(Q)$ set
+\[
+ r=\frac{\zeta(U)}{\zeta(H)},\qquad
+ r'=\overline{\frac{\zeta(U-A)}{\zeta(H-P)}},
+\]
+\[
+ (C_1,\ldots,C_6)=
+ \bigl(f(H),f(U),\overline{f(H-P)},\overline{f(U-A)},r-r',r-X\bigr).
+\]
+Every original point, ordinate, difference and quotient guard is retained;
+individual tests $C_i$ may vanish. For a fixed odd integer $B\ge3$ put
+\begin{equation}\label{eq:height}
+ \beta=X^2+B,\quad T=\Tr x(A),\quad M=\beta^4+T^4,
+ \quad a=M^8,\quad t=a^2-z^2=M^{16}-z^2.
+\end{equation}
+Here $z\in\Q$ is one free slope. Our seven shifts are
+\[
+ \mathcal S=\{-7,-6,-4,1,3,5,8\}.
+\]
+They are nonzero, distinct, sum to zero, and have no opposite pair.
+Define
+\begin{equation}\label{eq:weight}
+ F(a,z)=\prod_{c\in\mathcal S}((a+c)^2-z^2),\qquad
+ u=-14F/F_a,\qquad w=\frac{u}{(1+u)^2},
+\end{equation}
+where the derivative is taken before specializing $a$. The balanced
+six-test detector is unchanged:
+\begin{equation}\label{eq:detector}
+ D_i=\frac{C_i^2}{1+uC_i^2},\quad
+ W=\prod_{i=1}^6(1+D_i^2/u),\quad
+ V=\Tr(W^{-1}),\quad b=\frac{4w}{V^2}.
+\end{equation}
+Retain $M,t,F,F_a,u,1+u\ne0$, all six balanced denominator norms,
+the two-slot norm of $W$, the trace guard $V\ne0$, and the inherited
+guards. The formerly required $2a+c+d\ne0$ follows here from $a>10$.
+The existing fixed exceptional set $S_0$, containing every prime at most
+$76176$, already contains the prime divisors of $14$, of every shift
+difference, and of every nonzero pair sum. Thus no exceptional set changes.
+
+The complete source retains two rational pole parameters $v,s$ and the
+finite quadratic root
+\begin{equation}\label{eq:pole}
+ Y^2=\eta(\eta+v^2)^2s^4-\eta(\eta-v^2)^2(1-\eta)^2,
+ \qquad \eta=7b.
+\end{equation}
+Only this final ordinate may vanish. The first six quadratic-stage
+radicands in the point algebra remain units.
+
+\section{Soundness with seven contacts}
+For nonzero rational $q$ let $r^+_{\mathrm{odd},S_0}(q)$ be the product
+of the primes outside $S_0$ having positive odd valuation on $q$.
+The derivative-height theorem of \cite[Theorem 2.1]{Derivative} applies
+to $a=M^m$ for every fixed $m$, provided the shifts have no opposite
+pair. With seven shifts, $m=8$ and $\epsilon=1/100$ it gives
+\begin{equation}\label{eq:radical}
+ \frac{97}{200}h(t)
+ \le \log r^+_{\mathrm{odd},S_0}(u)+\frac{201}{100}h(M)+O(1).
+\end{equation}
+This is precisely the existing one-variable $abc$ consequence; no
+moving-form or multivariable version of $abc$ is being assumed.
+
+The binary-power and signed mixed-power bounds \cite{Signed} give, for
+$E_h=h(1:\beta:T)$ and $\kappa=1001/1000$,
+\begin{equation}\label{eq:contractions}
+ \alpha E_h\le h(M)+O(1),\qquad h(M)\le Qh(t)+O(1),
+ \quad \alpha=\frac{997}{1001},\quad Q=\frac{501}{2995}.
+\end{equation}
+Indeed the signed mixed-power denominator is
+$16-10\kappa=599/100>0$, and its numerator is
+$2\kappa-1=501/500$. The precise absorption margin is
+\begin{equation}\label{eq:margin}
+ \frac{97}{200}-\frac{501}{2995}
+       \left(\frac{201}{100}+\frac{1001}{1994}\right)
+           =\frac{38695561}{597203000}>0.
+\end{equation}
+
+\begin{theorem}\label{thm:sound}
+Under the retained premises, every guarded rational solution of
+\eqref{eq:height}--\eqref{eq:pole} has $X=n\in\Z$ for every
+sufficiently large fixed odd $B$.
+\end{theorem}
+\begin{proof}
+The balanced valuation identity and the intrinsic pole implication are
+unchanged. At a positive odd valuation $\nu=v_p(u)$ outside $S_0$,
+write $q\le0$ for the largest valuation of $W$ in the two slots. The
+absence of negative odd valuations of $b$ gives
+$1\le v_p(b)\le\nu+2q$. Thus in a slot attaining $q$, each of the
+six original tests has positive valuation. The formal-comparison theorem,
+including its full-auxiliary extension, gives $p$-integrality of $X$ and
+$X\equiv n\pmod p$. Consequently, if $X\ne n$,
+\[
+ \log r^+_{\mathrm{odd},S_0}(u)
+       \le\tfrac12 E_h+\log(1+|n|).
+\]
+Combine this with \eqref{eq:radical}--\eqref{eq:contractions}.
+The positive coefficient \eqref{eq:margin} yields
+$h(t)\ll\log(1+|n|)+1$. The retained trace-height bound
+$n^2\le A_0 h(T)+J_0$ and
+$h(T)\le E_h\le Qh(t)/\alpha+O(1)$ then bound $n$ and $E_h$
+independently of $B$. Since $E_h\ge h(\beta)\ge\log B$, this
+is impossible for sufficiently large $B$. The root index remains
+integral; allowing half-integral auxiliary indices does not alter the
+formal comparison at any consumed odd prime.
+\end{proof}
+
+\section{Completeness and all guards}
+\begin{theorem}\label{thm:complete}
+The source has a guarded rational witness for every nonzero integer $X$.
+For all sufficiently large fixed odd $B$, it therefore gives a complete
+eleven-variable polynomial family, including the input.
+\end{theorem}
+\begin{proof}
+Fix $X=n\ne0$, $A=[n]P$ and use the original subfamily $U=[n]H$
+with $H\in2E(K)$. The enlarged auxiliary source contains this entire
+subfamily. All original point and difference guards can therefore be
+prepared and avoided exactly as in \cite{Derivative,FullAux}.
+
+Since the shifts sum to zero,
+\[
+ F\sim-z^{14},\qquad F_a\sim14az^{12},\qquad
+ u\sim z^2/a,\qquad w\sim a/z^2.
+\]
+The number $a=M^8$ is a rational square. Thus the fixed-place
+preparation by making $z$ large again makes $u,w$ local squares
+with the required even valuations, and sends $W\to1$, $V\to2$.
+In particular it prepares the two-adic class $\eta\in7\Q_2^{\times2}$,
+$v_2(\eta)\ge4$, and the place seven. At every prepared real
+character choose $z>a+10$. Then $F<0$, $F_a>0$, $u,w>0$;
+each balanced denominator is positive in both slots, and
+$0<V\le2$. Taking $z$ larger makes $0<\eta<1$ at the selected
+character. This also ensures every new denominator and trace norm
+is nonzero on the entire real point-character locus used in completeness.
+
+Choose $D>0$ with $D^2(a+c)\in\Z$ for $c\in\mathcal S$. The
+same simultaneous-prime theorem now has fourteen distinct positions:
+\[
+ p_c^\pm=N\pm D^2(a+c)L^2,\qquad z=N/(D^2L^2).
+\]
+It retains the prescribed divisibility of $L$, order compatibility,
+finite avoidance and real lower bound. Its coefficient set is fixed
+once $n,A,B$ are fixed; no coefficient uniformity is required.
+One has
+\[
+ F=-\frac{\prod_{c\in\mathcal S}p_c^-p_c^+}{D^{28}L^{28}}.
+\]
+At a selected prime just one linear factor has valuation one and
+$F_a$ is a unit, so $v_p(u)=1$. The retained compatible index
+congruences make the first four tests vanish to order at least two
+and the comparisons to order at least four in a successful slot.
+Therefore the original detector proof gives $V$ a unit and $v_p(b)=1$.
+
+At unselected primes outside the temporary preparation, an integral
+$z$ gives $v_p(u)\le0$. A pole of $z$ gives
+$v_p(F)=14v_p(z)$ and $v_p(F_a)=12v_p(z)$, so $v_p(u)$ is even.
+At the fixed numerator and denominator primes of $a$, sufficiently
+strong leading-term dominance gives
+$v_p(u)=2v_p(z)-v_p(a)$, also even because $v_p(a)$ is divisible by
+eight. The same conclusion holds at primes dividing fourteen after
+making the preparation sufficiently deep. At every negative odd
+valuation of $u$, the unchanged balanced identity gives $W\equiv1$
+in both slots, so $V\equiv2$ and $v_p(b)=-v_p(u)>0$.
+Hence $\eta$ has square reduced denominator and satisfies all hypotheses
+of the retained intrinsic-pole existence theorem.
+
+That theorem supplies $v,s,Y$. Its Zariski-dense rational witness pairs
+avoid the finite product of all nonzero character norms of the pole
+and denominator guards, as before. No condition $\eta<1$ is required
+at other characters; the polynomial in $v,s$ is nonzero at each character
+because $\eta$ is a unit. Only the last root may be zero in soundness.
+All point radicands and every preceding denominator retain their original
+nonzero guards. This proves the full whole-character statement.
+\end{proof}
+
+The coordinate count is
+$1+6+1+2+1=11$: input, point coordinates, slope, pole parameters,
+and the single finite-algebra encoder. The integer circuit uses
+$u=-7\mathcal G/\mathcal H$, where
+$\mathcal G(a,Z)=\prod_c((a+c)^2-Z)$ and
+$\mathcal H=\mathcal G_a/2$. The ordinary terminal-root construction
+and its guarded subalgebra norms \cite{Terminal} give a single integer
+polynomial with content one. The stored generator and independent
+coefficient-DAG traversal certify 1940 nodes, 32 native guards, rank 128,
+and the uniform total-degree upper bound
+\[
+                         357309057<2^{29}.
+\]
+The monomial bound is below $2^{270}$. For the stored fixture $B=3$,
+the coefficient $\ell^1$ norm is at most $2^{727796736}$; this is a
+bound for that fixture, not a sufficient defining value of $B$.
+The generator computes a coefficient bound for every specified $B$.
+The previous degree bound $232094337$ remains smaller.
+
+\section{The nine-variable source and its unresolved requirement}
+Replace \eqref{eq:pole} and its two free coordinates by one finite root
+\begin{equation}\label{eq:actual}
+                          Y^2=V^2+w(2-V).
+\end{equation}
+The local argument of \cite{Criterion} applies without alteration:
+a negative odd valuation of $b$ outside $S_0$ would give
+$v_p(V^2+w(2-V))=v_p(w)$ odd. Thus Theorem~\ref{thm:sound}
+applies to this source as well. The two finite point and terminal-root
+ranks remain $64$ and $128$; the coordinate count is nine.
+All new rational denominators are already guarded by
+\eqref{eq:weight}--\eqref{eq:detector}; no inverse of $2-V$ or of the
+terminal ordinate is introduced.
+
+Completeness requires actual prepared point tuples and a rational
+slope giving a square in \eqref{eq:actual}, for every nonzero integer
+input. No free trace or free weight may replace $V$ or $u$.
+The fixed-place, selected-contact, negative odd valuation, and real
+local-square statements of \cite{Criterion} transfer by the preceding
+preparation proof. They do not establish a rational square.
+The source is invariant under $(X,A,U)\mapsto(-X,-A,-U)$, because
+only signs of the last two tests change. Hence realization for all
+sufficiently large positive integers would suffice after multiplying
+by finitely many integer input factors, without adding variables.
+Neither this cofinite realization nor full nine-variable completeness
+is proved here.
+
+\section{An actual genus-twelve weight curve}
+Take the algebraic fixture
+\[
+ X=1,\quad B=3,\quad A=P,\quad
+ H=U=R_0:=(1+\sqrt2,2\sqrt2).
+\]
+Direct duplication gives $2R_0=P$. Thus $H-P=-H$ and $U-A=-H$.
+The full auxiliary chart is essential here: $R_0$ is not being claimed
+to belong to the old integral-index subfamily. Its affine abscissa,
+ordinate, and required differences are nonzero; $x(R_0)\ne x(P)$.
+Put $c=1/x(R_0)=\sqrt2-1$. The actual tests are
+\[
+                       (c,c,\bar c,\bar c,0,0).
+\]
+Define the following integer polynomials:
+\begin{align*}
+ D(u)&=u^2(u^2+6u+1)^2,\\
+ R(u)&=D(u)+2u^3+12u^2+34u+1,\\
+ \Pi(u)&=4D(u)^4(1+u)^2+2uR(u)^2\bigl(R(u)^2-D(u)^2\bigr).
+\end{align*}
+Here $D$ is a polynomial name, unrelated to the integer used in prime
+preparation. For $\alpha=c^2=3-2\sqrt2$,
+\[
+ J(u)=\frac{\bigl(u(1+u\alpha)^2+\alpha^2\bigr)
+              \bigl(u(1+u\bar\alpha)^2+\bar\alpha^2\bigr)}
+             {u^2(1+6u+u^2)^2}=\frac{R(u)}{D(u)}.
+\]
+Consequently the detector and actual reciprocal trace are
+\[
+                  W=J(u)^2,\qquad V=\frac{2}{J(u)^2}
+                                      =\frac{2D(u)^2}{R(u)^2}.
+\]
+This calculation uses the actual six tests, not independent constants.
+
+\begin{proposition}\label{prop:small}
+The actual weight cover is
+\[
+ Y_0^2=\Pi(u),\qquad Y_0=(1+u)R(u)^2Y.
+\]
+It is smooth after normalization and has genus twelve. At rational
+weights, all selected-character balanced, product and trace denominator
+guards hold whenever $u\ne0,-1$.
+\end{proposition}
+\begin{proof}
+Substitute the displayed expression for $V$ into \eqref{eq:actual}
+and clear the square denominator. The polynomial $\Pi$ has degree
+26, leading coefficient four, and a simple zero at zero.
+The certificate contains $e,f\in\mathbb F_{53}[u]$ satisfying
+$e\Pi+f\Pi'=1$, with reduction preserving degree. Hence $\Pi$
+is squarefree over $\Q$ and its normalization has genus $(26-2)/2=12$.
+
+The quadratic $u^2+6u+1$ has nonsquare discriminant $32$, so it has
+no rational zero. The monic polynomial $R$ has constant term one;
+its only possible rational roots are $1,-1$, and
+$R(1)=113$, $R(-1)=-7$. Thus $D,R$ are nonzero for rational $u\ne0$.
+The norm of each balanced denominator is $1+6u+u^2$, and the product
+and trace are nonzero by the formulas above. The guard $1+u\ne0$
+is separate. These statements concern the selected actual character;
+other characters and full preparation remain separate requirements.
+\end{proof}
+
+The branch point at $u=0$ and the two rational points at infinity lie
+outside the guarded affine weight domain. No admissible rational point
+is asserted by Proposition~\ref{prop:small}.
+
+\section{The exact degree-seven physical lift}
+For the fixed tuple above, the physical scale is
+\[
+                a=\left(\frac{10621537}{256}\right)^8.
+\]
+In this section only, let $T_0=z^2$. Form
+\[
+ F(a,T_0)=\prod_{c\in\mathcal S}((a+c)^2-T_0),\qquad
+                   \frac{A(T_0)}{B(T_0)}=-14F/F_a,
+\]
+with $F_a$ differentiated before specializing $a$. Clear the common
+rational denominators of this pair and divide its common integer
+content. This defines the stored integral pair $A,B$ uniquely with
+the indicated signs; its degrees are seven and six, respectively.
+Set
+\[
+                P_0(T_0)=B(T_0)^{26}\Pi(A(T_0)/B(T_0)).
+\]
+It is kept as an exact homogeneous composition, not as an unnecessarily
+large expanded list of coefficients.
+
+\begin{proposition}\label{prop:physical}
+The polynomial $P_0$ is squarefree of degree 182 and $P_0(0)\ne0$.
+The normalized curves
+\[
+ Y_1^2=P_0(T_0),\qquad Y_2^2=T_0P_0(T_0),\qquad
+                         Y_1^2=P_0(z^2)
+\]
+have genera $90,91,181$, respectively. A finite rational point
+$(u,Y_0)$ of Proposition~\ref{prop:small} lifts to the actual source
+exactly when it admits a rational $T_0$ with
+\[
+ uB(T_0)-A(T_0)=0,\quad B(T_0)\ne0,\quad
+ T_0=z^2\ (z\in\Q),
+\]
+and all original physical guards. For full prepared realization, every
+retained finite-place, contact, real, and whole-character requirement
+must also be checked.
+\end{proposition}
+\begin{proof}
+Modulo 53 the stored pair remains coprime and has degrees seven and
+six. The homogeneous composition has degree 182 and nonzero constant
+term. Its stored Bezout identity with its derivative certifies
+squarefreeness over $\Q$. Multiplying by $T_0$ or substituting $z^2$
+introduces no repeated root because the constant term is nonzero.
+The hyperelliptic genus formulas give the three values.
+
+The degree-seven equation is exactly the physical-weight relation,
+and the separate square test is exactly rational recoverability of the
+slope. The ordinate transformations are
+$Y=Y_0/((1+u)R(u)^2)$ and $Y_1=B(T_0)^{13}Y_0$.
+All denominators displayed here are guarded. Retain also
+$a^2-T_0\ne0$ and every original point/chart guard. No implication
+from quotient rationality to the missing lift or preparation is used.
+\end{proof}
+
+\section{Reproduction and scope}
+The directory
+\nolinkurl{computation/few_variables/seven_contact11_v74}
+contains the complete circuit, its pinned dependencies and independent
+bound traversal. Independent chord-and-tangent evaluations at two
+finite fields check 384 sign characters, including half-integral
+auxiliary indices. Deliberately corrupted degree and guard specifications
+are rejected. These checks establish their stated finite assertions,
+not the imported infinite arithmetic theorems.
+
+The directory
+\nolinkurl{computation/pole_parameters/halfpoint_trace_v74}
+contains integer coefficient lists for $D,R,\Pi,A,B$, the two
+finite-field Bezout certificates, and a second reconstruction that
+imports no producer routine. Neither directory claims rational-point
+enumeration, a prepared rational witness for the fixed tuple, or
+nine-variable completeness. The old fixture $B=3$ is not certified to
+exceed any sufficient defining threshold.
+
+\begin{thebibliography}{9}
+\bibitem{Derivative}\emph{An eleven-variable construction under rational $abc$},
+\nolinkurl{papers/conditional_few_variables/derivative_detector11_20261117_v63.tex}.
+\bibitem{FullAux}\emph{Full auxiliary elliptic points in the eleven-variable source},
+\nolinkurl{papers/conditional_few_variables/full_auxiliary11_20261117_v71.tex}.
+\bibitem{Signed}\emph{Signed mixed-power heights and single-cover criteria},
+\nolinkurl{papers/elliptic_heights/signed_mixed_power_height_20261117_v58.tex}.
+\bibitem{Criterion}\emph{One actual-trace square in a derivative detector},
+\nolinkurl{papers/pole_parameters/single_trace_derivative_criterion_20261117_v64.tex}.
+\bibitem{Terminal}\emph{A terminal quadratic root and complete polynomial specifications},
+\nolinkurl{papers/finite_algebra/terminal_quadratic_root_20261115_v40.tex}.
+\end{thebibliography}
+\end{document}

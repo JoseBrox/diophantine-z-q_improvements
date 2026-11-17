@@ -97,6 +97,8 @@ def main(report_path):
     latest = json.loads((ROOT/record_link.group(1)).read_text())
     latest_11 = next(row for row in latest['current_constructions']
                      if row['id'] == 'ordinary_abc11')
+    if latest_11 != ordinary:
+        latest_11 = latest.get('superseded_constructions', {}).get('ordinary_abc11_v71')
     assert latest_11 == ordinary
     assert 'docs/results_20261117_v71.md' in readme
     report = dict(schema='diophantine-exact-verification/v71', status='PASS',
