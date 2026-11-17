@@ -1,0 +1,133 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,microtype}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\newtheorem{proposition}{Proposition}
+\newtheorem{theorem}[proposition]{Theorem}
+\newcommand{\Q}{\mathbb Q}
+\setlength{\emergencystretch}{2em}
+\title{A coupled one-coordinate slice of the intrinsic pole surface}
+\author{}\date{17 November 2026}
+\begin{document}\maketitle
+
+For $d\in\Q$, the intrinsic pole equation is
+\begin{equation}\label{eq:intrinsic}
+ Y^2=d(d+v^2)^2s^4-d(d-v^2)^2(1-d)^2.
+\end{equation}
+Its complete prepared-input construction retains the two parameters
+$v,s$. The following coupling retains only one parameter but is not
+complete on all prepared inputs.
+
+\begin{proposition}\label{prop:slice}
+Let $d>0$ and put $e=(d-v^2)/(d+v^2)$. The slice
+\begin{equation}\label{eq:coupling}
+ s^2=(1+d)e
+\end{equation}
+has the explicit ordinate $Y=2d(d-v^2)$ in \eqref{eq:intrinsic}.
+The rational points of this slice are in bijection with the rational
+points of
+\begin{equation}\label{eq:plus}
+ y^2=d\bigl((1+d)^2-s^4\bigr),
+\end{equation}
+by
+\[
+ y=(1+d+s^2)v,\qquad v=\frac{y}{1+d+s^2}.
+\]
+The equation \eqref{eq:plus} has total degree five and coefficient
+height two. Every rational solution excludes negative odd valuations
+of $d$ at every prime, including two.
+\end{proposition}
+\begin{proof}
+Under \eqref{eq:coupling}, the right side of \eqref{eq:intrinsic} is
+\[
+ d(d+v^2)^2 e^2\bigl((1+d)^2-(1-d)^2\bigr)
+ =4d^2(d-v^2)^2.
+\]
+Rearranging the coupling gives
+\[
+ v^2=\frac{d(1+d-s^2)}{1+d+s^2}.
+\]
+The asserted change of variables follows; its denominator is positive.
+Now suppose $\nu=v_p(d)<0$ is odd. Then $v_p(1+d)=\nu$.
+The two terms on the right side of \eqref{eq:plus} have valuations
+$3\nu$ and $\nu+4v_p(s)$. If both are finite, they are odd and
+distinct: equality would imply $\nu=2v_p(s)$. If $s=0$, only the
+first term remains. Their sum is consequently nonzero of odd
+valuation and cannot be a rational square.
+\end{proof}
+
+Call $d$ prepared if
+\[
+ 0<d<1,\qquad \operatorname{den}(d)\text{ is a square},\qquad
+ d\in7\Q_2^{\times2},\qquad v_2(d)\ge4.
+\]
+\begin{theorem}\label{thm:counterexample}
+The number
+\[
+ d_0=\frac{448}{13225}=7\left(\frac8{115}\right)^2
+\]
+is prepared, but \eqref{eq:plus} has no rational point for $d=d_0$.
+Its smooth projective model has a point over every completion of
+$\Q$.
+\end{theorem}
+\begin{proof}
+The displayed fraction is reduced, $13225=115^2$, and
+$v_2(d_0)=6$. Also
+\[
+ 1+d_0=113\left(\frac{11}{115}\right)^2.
+\]
+The invertible rational changes
+\[
+ s=\frac{11}{115}t,\qquad
+ y=\frac{8\cdot11^2}{115^3}z
+\]
+identify \eqref{eq:plus} with
+\begin{equation}\label{eq:sha}
+ z^2=7(113^2-t^4).
+\end{equation}
+The complete descent certificate in \cite{Sha} proves that this
+curve is everywhere locally soluble and has no rational point.
+Explicitly, a rational point with $tz\ne0$ would give
+\[
+ (X,Y)=(-7t^2,7tz)\in E_{791}(\Q),\qquad
+ E_{791}:Y^2=X^3-791^2X,
+\]
+with abscissa square class $[-7]$. That certificate proves
+\[
+ \operatorname{rank}E_{791}(\Q)=1,
+ \qquad
+ \delta(E_{791}(\Q))=\{[1],[-1],[791],[-791]\}.
+\]
+It uses the three-dimensional pure $2$-Selmer group, an explicitly
+nonzero Cassels pairing, and the point $(-784,-2940)$; it does not
+infer the rank from a search. The omitted affine cases $t=0$ or
+$z=0$ are impossible since $7$ and $113$ are nonsquares. The leading
+coefficient $-7$ excludes rational points at infinity.
+\end{proof}
+
+\paragraph{Scope.}
+This is a counterexample to uniform completeness of the specific
+coupling \eqref{eq:coupling} on all prepared inputs. It is not asserted
+that $d_0$ occurs in a selected actual detector tuple. The result does
+not exclude a different coupled relation, a finite menu containing
+other relations, or a construction tailored to actual detector
+values. The original two-parameter pole equation remains complete
+on the prepared class by its simultaneous-twist theorem.
+
+\begin{thebibliography}{9}
+\bibitem{Sha}
+\raggedright
+\emph{A prepared input with a nontrivial one-coordinate covering
+obstruction}, project manuscript, 17 November 2026,
+\texttt{negative\_results/papers/pole\_parameters/}\allowbreak
+\texttt{prepared\_sha\_obstruction\_20261117\_v57.tex};
+exact checkers and Cassels certificate in
+\texttt{negative\_results/computation/prepared\_sha\_v57/}.
+Its primary descent references are Z.~Wang,
+\emph{Congruent elliptic curves with non-trivial Shafarevich--Tate
+groups}, arXiv:1511.03810, Sections 2.1--2.2, and S.~Zhang,
+\emph{On non-congruent numbers as multiples of non-congruent numbers},
+28 August 2025, Sections 2.1--2.2.
+\end{thebibliography}
+\end{document}

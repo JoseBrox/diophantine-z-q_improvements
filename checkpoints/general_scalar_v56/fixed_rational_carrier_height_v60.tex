@@ -1,0 +1,165 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,microtype}
+\usepackage[margin=26mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue]{hyperref}
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{corollary}[lemma]{Corollary}
+\newcommand{\Q}{\mathbb Q}
+\title{Heights of specialized rational functions on a congruent curve}
+\author{}\date{17 November 2026}
+\begin{document}\maketitle
+
+Fix $d\in\mathbf Z_{>0}$ and
+$E_d:y^2=f(x)=x^3-d^2x$. All heights are absolute logarithmic
+heights over $\Q$.
+
+\section{A uniform specialization estimate}
+
+Let $A,B,C,D\in\Q[Z]$ have degree at most $N\ge0$.
+Pad their coefficient vectors with zeros and form the vectors
+$\mathbf p,\mathbf q$ of $A(Z)+B(Z)y$ and $C(Z)+D(Z)y$
+in the basis
+\[
+                  1,Z,\ldots,Z^N,y,Zy,\ldots,Z^Ny.
+\]
+Define
+\[
+ \Gamma=\sum_{i<j}(p_iq_j-p_jq_i)^2,\qquad
+ H_c=h(1:\mathbf p:\mathbf q).
+\]
+For rational coefficients, $\Gamma\ne0$ is equivalent to
+$\mathbf p,\mathbf q$ being linearly independent. In the function
+field of $E_d$, it is therefore equivalent to the quotient
+$(A+By)/(C+Dy)$ being defined and nonconstant.
+
+\begin{lemma}\label{lem:coefficient}
+Suppose $\Gamma\ne0$ and $U=(x_U,y_U)\in E_d(\Q)$ satisfies
+$C(x_U)+D(x_U)y_U\ne0$. Put
+\[
+                   r=\frac{A(x_U)+B(x_U)y_U}{C(x_U)+D(x_U)y_U}.
+\]
+Then
+\[
+ h(r)\ge\frac12h(x_U)-H_c
+               -\frac12\log\bigl(4(N+1)(d^2+2)\bigr).
+\]
+\end{lemma}
+\begin{proof}
+The polynomial
+\[
+  F_r(Z)=(A(Z)-rC(Z))^2-f(Z)(B(Z)-rD(Z))^2
+\]
+vanishes at $x_U$. It is not the zero polynomial. Indeed, if
+$B-rD$ were nonzero and $F_r=0$, the squarefree cubic $f$
+would be a square in $\Q(Z)$, which is impossible. If
+$B-rD=0$, then $F_r=0$ also gives $A-rC=0$, contradicting
+$\Gamma\ne0$.
+
+Choose a common denominator $L$ for the coefficients of
+$A,B,C,D$ such that
+$(L,L\mathbf p,L\mathbf q)$ is a primitive integer vector.
+Every entry has absolute value at most $\exp(H_c)$.
+Write $r=a/b$ in lowest terms, $b>0$, so that
+$\max(|a|,b)=\exp(h(r))$.
+The coefficients of
+$L(bA-aC)$ and $L(bB-aD)$ have absolute value at most
+$2\exp(H_c+h(r))$. Hence the nonzero integer polynomial
+\[
+ L^2\bigl((bA-aC)^2-f(Z)(bB-aD)^2\bigr)
+\]
+has every coefficient bounded in absolute value by
+\[
+                 4(N+1)(d^2+2)\exp(2H_c+2h(r)).
+\]
+
+For a nonzero integer polynomial having a rational root
+$a_0/b_0\ne0$ in lowest terms, the rational-root theorem
+shows that $a_0$ divides its lowest nonzero coefficient and
+$b_0$ divides its leading coefficient. Thus the height of the root is
+at most the logarithm of the largest absolute coefficient.
+The root zero has height zero and satisfies the same bound.
+Apply this observation to $x_U$ and rearrange.
+\end{proof}
+
+\section{Coefficients depending on another point and an input}
+
+Let $\mathcal R(X,H,U)$ be a fixed rational function on
+$\mathbf A^1\times E_d\times E_d$, generically nonconstant
+in $U$. Reduce it using $y_U^2=f(x_U)$, and write
+\[
+ \mathcal R=
+ \frac{A(X,H,x_U)+B(X,H,x_U)y_U}
+      {C(X,H,x_U)+D(X,H,x_U)y_U}.
+\]
+After clearing a fixed common coefficient denominator in
+$X,H$, and then a fixed integer denominator, the coefficients
+in $x_U$ are integer polynomials in $X,x_H,y_H$.
+Retain the denominators used in this presentation as nonzero
+guards. Let the partial degrees of these coefficient polynomials
+in the three parameters
+be bounded by $D_X,D_x,D_y$, respectively. Put
+\[
+                         K_H=2D_x+3D_y.
+\]
+The integer polynomials defining the coefficient vectors
+give a uniform bound
+\begin{equation}\label{eq:coeff-height}
+ H_c\le D_Xh(X)+D_xh(x_H)+D_yh(y_H)+O_{\mathcal R,d}(1).
+\end{equation}
+For example, this follows by clearing the three rational
+parameter denominators to their indicated partial degrees;
+the remaining multiplicative constant is the maximum of one
+and the coefficient $\ell^1$ norms of these finitely many
+integer polynomials.
+
+Let $\Gamma(X,H)$ be the sum of coefficient-minor squares
+defined above. It is not identically zero on
+$\mathbf A^1\times E_d$: this surface has Zariski-dense real
+points, so a sum of rational-function squares can vanish
+identically only when every summand vanishes.
+Over rational specializations,
+its zero locus is exactly the locus where all coefficient
+minors vanish.
+
+\begin{corollary}\label{cor:canonical}
+There is a fixed constant $C_{\mathcal R,d}$ such that, at
+every rational source point where the displayed denominators
+and $\Gamma(X,H)$ are nonzero,
+\[
+ h(\mathcal R(X,H,U))
+   \ge\widehat h(U)-K_H\widehat h(H)-D_Xh(X)-C_{\mathcal R,d}.
+\]
+\end{corollary}
+\begin{proof}
+The standard comparison gives
+$|h(x_R)-2\widehat h(R)|\le C_d$ for nonzero rational
+points $R$. Also the curve equation gives
+\[
+                 2h(y_H)\le3h(x_H)+\log(1+d^2).
+\]
+Insert these estimates into \eqref{eq:coeff-height} and
+Lemma~\ref{lem:coefficient}. The canonical-height comparison
+is as in \cite[Chapter VIII, Section9]{AEC}.
+\end{proof}
+
+In particular, suppose $U=[n]H$ for a nonzero integer $n$,
+and let $\mathcal E$ be any quantity satisfying
+\[
+               \mathcal E\ge2h(X),\qquad
+               \mathcal E\ge h(\mathcal R(X,H,U)).
+\]
+Then
+\begin{equation}\label{eq:index-height}
+ \mathcal E\ge\frac{2}{D_X+2}(n^2-K_H)\widehat h(H)-O_{\mathcal R,d}(1).
+\end{equation}
+This follows by multiplying the first inequality by $D_X/2$
+and adding the second before applying the corollary.
+The constants are uniform in the input and both points.
+
+\begin{thebibliography}{9}
+\bibitem{AEC}J.~H.~Silverman, \emph{The Arithmetic of Elliptic Curves},
+second edition, Graduate Texts in Mathematics 106, Springer, 2009,
+Chapter VIII, Section9.
+\end{thebibliography}
+\end{document}
