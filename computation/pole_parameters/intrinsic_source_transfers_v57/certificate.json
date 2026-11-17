@@ -1,0 +1,96 @@
+{
+  "status": "PASS",
+  "consumed_prime": 76249,
+  "scalar_change": "A_L*r/(1+C_L*r)^2 -> 7*A_L*r/(1+7*C_L*r)^2",
+  "physical_weight_change": false,
+  "intrinsic_pole_input": "d=b",
+  "finite_certificates": [
+    {
+      "source": "original",
+      "input_residues_checked": 76249,
+      "contact_residue_count": 16859,
+      "old_C_residue": 17,
+      "new_C_residue": 119,
+      "contact_zero_residues": 0,
+      "old_denominator_zero_residues": 0,
+      "new_denominator_zero_residues": 0,
+      "ordered_row_sha256": "cdeca0ab1906de75ad959381c18fd282c3dc5cb87f3cf3b91316d750dd39a724",
+      "constant_contact_residue": null,
+      "constant_new_denominator_residue": null
+    },
+    {
+      "source": "aligned",
+      "input_residues_checked": 76249,
+      "contact_residue_count": 1,
+      "old_C_residue": 25593,
+      "new_C_residue": 26653,
+      "contact_zero_residues": 0,
+      "old_denominator_zero_residues": 0,
+      "new_denominator_zero_residues": 0,
+      "ordered_row_sha256": "f1b1009ca32cd7db7995db8d7787bf4c7abdb0ac670fab67700085ee42ee68d4",
+      "constant_contact_residue": 68886,
+      "constant_new_denominator_residue": 18888
+    }
+  ],
+  "integer_input_fixtures": [
+    {
+      "source": "original",
+      "L": 3,
+      "integer_inputs": 49,
+      "two_adic_valuation": 4,
+      "seven_adic_valuation_at_least": 1
+    },
+    {
+      "source": "original",
+      "L": 5,
+      "integer_inputs": 49,
+      "two_adic_valuation": 4,
+      "seven_adic_valuation_at_least": 1
+    },
+    {
+      "source": "original",
+      "L": 13,
+      "integer_inputs": 49,
+      "two_adic_valuation": 4,
+      "seven_adic_valuation_at_least": 1
+    },
+    {
+      "source": "aligned",
+      "L": 3,
+      "integer_inputs": 49,
+      "two_adic_valuation": 12,
+      "seven_adic_valuation_at_least": 1
+    },
+    {
+      "source": "aligned",
+      "L": 5,
+      "integer_inputs": 49,
+      "two_adic_valuation": 12,
+      "seven_adic_valuation_at_least": 1
+    },
+    {
+      "source": "aligned",
+      "L": 13,
+      "integer_inputs": 49,
+      "two_adic_valuation": 12,
+      "seven_adic_valuation_at_least": 1
+    }
+  ],
+  "norm_multiplier": "N_Q(sqrt(2))/Q(3+sqrt(2)) = 7",
+  "denominator_coprimality": {
+    "contact_part": "gcd(r,1+7*C_L*r)=1",
+    "original_coefficient_primes": [
+      2,
+      3,
+      7,
+      17,
+      76249
+    ],
+    "aligned_coefficient_support": "primes of 102*M divide C_L; 7 and ell are handled separately",
+    "ell_verification": "exhaustive finite-residue certificate above",
+    "integer_fixture_full_gcd": 1
+  },
+  "coordinate_count": 25,
+  "new_smaller_variable_bound": false,
+  "scope": "Residue certificate is exhaustive; integer fixtures supplement the universal proof."
+}

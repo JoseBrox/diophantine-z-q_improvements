@@ -46,7 +46,7 @@ The 71-variable quartic uses the complete three-coordinate unit reference chart 
 
 The coefficient-basis transformations and the 195/257-coordinate eliminations preserve their corresponding full rational solution sets. The finite-algebra construction permits a zero final pole ordinate and proves soundness on that larger locus.
 
-Current specifications: [results JSON](data/results_20261117_v56.json), [proof and verification guide](docs/results_20261117_v56.md), and [research directions](docs/research_directions.md).
+Current specifications: [results JSON](data/results_20261117_v57.json), [proof and verification guide](docs/results_20261117_v57.md), and [research directions](docs/research_directions.md).
 
 The [fixed-fiber and detector-index theorems](docs/common_parameter_guard_reduction_20261116_v42.md) show that one common rational pole fiber with nonzero ordinates suffices for all remaining pole guards, and give independent auxiliary-index families with unchanged square-class scalars. The common rational fiber itself remains unproved. Proved obstructions and lower bounds are collected separately in [negative_results](negative_results/README.md).
 
@@ -89,6 +89,22 @@ The [quadratic reference-cover theorem](papers/elliptic_charts/reference_covers_
 The [integral Pell-label theorem](papers/integer_labels/pell_labels_20261115_v40.tex) obtains exponential growth from two exact integral labels and one finite quadratic choice. It proves sharp bounds and arbitrarily large witnesses with prescribed finite congruence data. Its [checker and certificate](computation/integer_labels/pell_compression_v40) verify the identities and exceptional cases. Its application requires exact integral labels; no reduction below 25 variables follows from this theorem alone.
 
 ## Height estimates and compatible poles
+
+The [trace-conic criterion](papers/pole_parameters/trace_conic_criterion_20261117_v57.tex) gives a simpler current target for **21/9**:
+
+```math
+\mathcal C_j=V_j^2+w_j(2-V_j),\qquad V_j=\operatorname{Tr}(W_j^{-1}).
+```
+
+A rational-square value excludes every relevant negative odd pole. The test uses the actual detector trace and physical weight, and is positive at every prepared character. It has compatible local squares at all prescribed preparation places and selected contacts. Each block may independently multiply its radicand by a class from
+
+```math
+\{1,\ 1+24V_j,\ 1+3(V_j-1)^2\}.
+```
+
+These trace-dependent classes preserve every consumed contact, so they require **no additional height hypothesis or height budget**, including in the general Lucas source. The same theorem permits the class $\delta_c=(q^2-2q-1)^2+4q(q^2-1)V$, where $q=2+wc^2$ and $c$ is a fixed guarded function of existing source coordinates. In particular $c=\lambda$ uses the retained common slope, preserves fixed-place preparation and adds no coordinate. Thus the allowed class can vary with the actual slope and auxiliary points without a height penalty. The untwisted equation is a rational conic; the linear-class equation is a cubic elliptic equation with reference point $(49,336)$ in its stated Weierstrass coordinates. The complete finite-algebra count would be **21 or 9**, with every guard included, **if the simultaneous actual-trace realization is proved**. That global rational realization remains open. The degrees of these small radicands are not full defining-polynomial degree bounds.
+
+The [cubic rank theorem](papers/pole_parameters/cubic_trace_rank_20261117_v57.tex) proves that the reference point $(49,336)$ has infinite order for **every rational $0<w\le1/4$**. Its exact torsion classification has projective finite-field certificates and an independent group-law check. Arithmetic progressions of its multiples give infinitely many free traces $1<V<2$, arbitrarily close to the reference at the real and any prescribed finite places. This supplies a positive-rank family throughout the general source's normalized range; matching those traces to the actual elliptic detector functions remains unproved.
 
 The [all-point trace theorem](papers/trace_heights/trace_on_all_points_20261113_v25.tex) and [positive weighted trace theorem](papers/trace_heights/weighted_trace_20261114_v27.tex) include the half-integral index and torsion cases required by the sources. The latter also verifies that the selected Gaussian primes annihilate the half-generator using the existing congruences.
 
@@ -149,7 +165,7 @@ The [guarded rational-square criterion](papers/pole_parameters/native_square_cri
 
 A rational-square value excludes every required negative odd detector pole. The radicand is positive at every prepared character, and its reference value at $W=1$ is exactly $w^2/(1+w)^2$. Fixed nonzero exceptional-set units are admissible coefficients; so are the proved source-dependent choices $a=1+wc^2$ for existing guarded rational source functions $c$. These choices add no rational coordinate or nonzero guard. The flat choice $a=1$ has an exact prescribed-coordinate elliptic form, and the conditional detector has a trace-preserving reference involution.
 
-**Two simultaneous rational-square values on actual prepared detector tuples would give 21 variables, or 9 under the conditional source hypotheses. This global realization theorem remains unproved.** The proved local preparation and exact finite-algebra count do not replace it. The [current proof guide](docs/results_20261117_v56.md) states the precise conditions and their limitations.
+**Two simultaneous rational-square values on actual prepared detector tuples would give 21 variables, or 9 under the conditional source hypotheses. This global realization theorem remains unproved.** The proved local preparation and exact finite-algebra count do not replace it. The [current proof guide](docs/results_20261117_v57.md) states the precise conditions and their limitations.
 
 ### A single cover and finite square-class alternatives
 
@@ -164,6 +180,16 @@ Under the stated weak-abc inequality, one actual native square condition gives s
 
 Both this criterion and the two-block 21/9 criterion permit any **fixed finite menu of positive exceptional-unit square classes**, such as $\{1,2\}$. A finite product of the existing quadratic-branch polynomials encodes the choices without a new coordinate. The selected class may vary with the input; its allowed prime support must remain fixed. This relaxed realization property does not impose the optional exceptional-place square neighborhoods used to prepare class one. No uniform realization theorem is asserted.
 
+### Variable square classes with controlled height
+
+The [variable-class theorem](papers/pole_parameters/variable_squareclasses_20261117_v57.tex) allows each conditional native radicand to use a positive exceptional-unit multiple of any class in
+
+```math
+\{1,\ (X^2+B)^2+\operatorname{Tr}(x(A))^2,\ 1+X^4\}.
+```
+
+The varying classes may have prime support outside the exceptional set. Their height budget is absorbed by stronger source powers, with no new coordinate or guard. Under ordinary abc, the two-cover choice has exponent **6** and contraction $135/136$; the single-cover argument has degree **224** and contraction $103006635/103133368$. These optimize the stated even-power height criteria, not the complete defining degree. The nine-coordinate census remains conditional on actual rational realization for every integer input. **That realization is unproved**, and no unrestricted 21-variable transfer of these varying classes is asserted.
+
 ### A prepared pole block with coefficient height four
 
 The [intrinsic pole theorem](papers/pole_parameters/intrinsic_pole_20261117_v56.tex) uses
@@ -172,7 +198,7 @@ The [intrinsic pole theorem](papers/pole_parameters/intrinsic_pole_20261117_v56.
 Y^2=d(d+v^2)^2s^4-d(d-v^2)^2(1-d)^2.
 ```
 
-Its radicand has **degree 9**, **12 monomials**, **content 1**, and **coefficient height 4**. The equation alone, without chart guards, excludes negative odd valuations of $d$ at **every prime**, including two. For $0<d<1$ with square reduced denominator, $d\in7\mathbb Q_2^{\times2}$ and $v_2(d)\ge4$, the stated application of **Burungale, arXiv:2611.16130v1, Theorem B** gives a dense rational witness projection and avoidance of every whole-character guard. It retains two free coordinates per pole; a complete replacement in a defining source still requires that source's preparation audit.
+Its radicand has **degree 9**, **12 monomials**, **content 1**, and **coefficient height 4**. The equation alone, without chart guards, excludes negative odd valuations of $d$ at **every prime**, including two. For $0<d<1$ with square reduced denominator, $d\in7\mathbb Q_2^{\times2}$ and $v_2(d)\ge4$, the stated application of **Burungale, arXiv:2611.16130v1, Theorem B** gives a dense rational witness projection and avoidance of every whole-character guard. It retains two free coordinates per pole. The complete [general source transfer](papers/pole_parameters/general_intrinsic_transfer_20261117_v57.tex) and [conditional source transfer](papers/pole_parameters/conditional_intrinsic_transfer_20261117_v57.tex) verify that preparation and every character guard, retaining **25 and 13 variables**. The general transfer changes only the early scalar; the conditional transfer keeps the fast detector and uses $d=7b$. No new complete determinant-degree or coefficient bound is assigned to these source variants.
 
 The [scalar-precision theorem](papers/pole_parameters/precision_transfer_20261117_v56.tex) gives a complete general source with scalar orders two, reciprocal orders one, the eighth-order logarithm $\ell_8=z(1-2Df^2/5)$, and sixth-order comparisons. Its squared Lucas parameter gives strict height exponents $7/4$ and $7/6$. The source retains **25 variables** and all original arithmetic premises; no new determinant degree bound is assigned.
 
@@ -183,6 +209,10 @@ The [definability reductions](papers/number_fields/number_field_definability_202
 **No counterexample for a number field, and no theorem covering every number field, is established here.** Failure of a particular polynomial after scalar extension is not a counterexample to Diophantine definability. The [research guide](docs/research_directions.md#rings-of-integers-of-number-fields) states the remaining denominator and realization problems.
 
 ## Negative results
+
+The [prepared-cover obstruction](negative_results/papers/pole_parameters/prepared_sha_obstruction_20261117_v57.tex) gives $d=112/225$ for which $y^2=d((1-d)^2-s^4)$ is soluble over every completion of $\mathbb Q$ and has no rational point. An exact Cassels pairing on $E_{791}$ proves the obstruction, with two independent arithmetic certificates. This excludes the specified one-coordinate pole specialization on all prepared inputs; it does not assert that this input is an actual detector value.
+
+The [intrinsic-specialization theorem](negative_results/papers/pole_parameters/intrinsic_specializations_20261117_v57.tex) excludes every finite rational-function menu for $s(d)$ and identifies the positive abscissa classes of the relevant rank-one congruent curves. Relations coupling both pole coordinates and higher-rank constructions remain outside its scope.
 
 The [deterministic contact-coupling theorem](negative_results/papers/pole_parameters/order_three_inert_obstruction_20261117_v56.tex) excludes the specified order-three height substitution with prescribed root $A=[X]P$, for **every positive odd shift**. Its certificate covers all **81,421 residues** of the shift at one inert prime and gives infinitely many failing integer inputs, independently of the auxiliary points. Other couplings and free slopes remain open.
 
@@ -205,6 +235,7 @@ The [pole-compression guide](negative_results/docs/pole_compression_obstructions
 Use **Python 3.12** for the byte-pinned legacy suite and **SymPy 1.14.0** for symbolic checks. From the repository root:
 
     python -m pip install sympy==1.14.0
+    python -B scripts/verify_v57.py
     python -B scripts/verify_v56.py
     python -B scripts/verify_v53.py
     python -B scripts/verify_v52.py
