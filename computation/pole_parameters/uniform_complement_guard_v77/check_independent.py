@@ -126,6 +126,7 @@ def main():
             'weight_upper_bound_u_ge_10': rational(aligned_weight_endpoint),
             'eta_exact_upper_bound': rational(aligned_eta_bound),
             'eta_simple_strict_upper_bound': rational(Fraction(294, 1369)),
+            'reference_comparison_domain': 'u>=10 on the chosen real completeness domain',
             'reference_value_is_actual_witness': False,
             'actual_global_square_realization_proved': False,
         },

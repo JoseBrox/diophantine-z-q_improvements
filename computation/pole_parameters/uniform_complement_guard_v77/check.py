@@ -116,6 +116,7 @@ def reference_normalizer():
         'detector_u_D_W_V_unchanged': True,
         'reference_identity_verified': '(4+7u)^2-112u=(4-7u)^2',
         'reference_trace': 2,
+        'reference_comparison_domain': 'u>=10 on the chosen real completeness domain',
         'reference_trace_is_actual_guarded_value': False,
         'eta_star_exact_strict_upper_bound': str(upper),
         'eta_star_simplified_strict_upper_bound': str(Q(294, 1369)),

@@ -85,8 +85,8 @@ under the same premises. No smaller complete variable bound or new
 polynomial degree bound follows.
 
 The checker separately verifies `(4+7u)^2-112u=(4-7u)^2`.
-This aligns the complement at `V=2`. Every finite guarded actual
-tuple instead has `V<2`, since the four nonzero reciprocal-abscissa
+This aligns the complement at `V=2`. On the chosen real completeness
+domain `u>=10`, every finite guarded actual tuple has `V<2`, since the four nonzero reciprocal-abscissa
 factors strictly exceed one. Therefore the reference identity is not
 a rational witness on the actual source. Its proposed nine-coordinate
 replacement still requires the actual equation

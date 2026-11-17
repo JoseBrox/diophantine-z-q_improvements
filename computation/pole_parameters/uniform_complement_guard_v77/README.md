@@ -39,10 +39,11 @@ under ordinary rational abc and the same retained arithmetic premises.
 The proof checks every valuation case and fixed-place preparation; it does
 not infer square reduced denominators merely from a square ratio.
 
-The full auxiliary bound strengthens to `0<eta_star<294/1369<1`.
+On `u>=10`, the full auxiliary bound strengthens to `0<eta_star<294/1369<1`.
 At the reference value `V=2`, the complement is
-`1-7w_star=((4-7u)/(4+7u))^2`. Every finite guarded actual tuple has
-`V<2`, so that identity alone supplies no actual square witness.
+`1-7w_star=((4-7u)/(4+7u))^2`. On the chosen real completeness domain,
+every finite guarded actual tuple has `V<2`, so that identity alone
+supplies no actual square witness.
 The nine-coordinate complement variant still requires the actual square
 `V^2-448u/(4+7u)^2`. Its realization remains open. No new coefficient source
 or degree bound is claimed.
