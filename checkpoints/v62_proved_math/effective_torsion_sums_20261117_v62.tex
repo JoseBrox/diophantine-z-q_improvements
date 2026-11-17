@@ -1,0 +1,270 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,microtype}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\setlength{\emergencystretch}{2em}
+\title{Effective heights of elliptic sums with torsion translates}
+\author{}\date{17 November 2026}
+\begin{document}\maketitle
+
+\begin{abstract}
+For a rank-one family on $y^2=x^3-d^2x$ over a totally real
+number field, an integral translation of an abscissa sum has height
+at least the height of any summand, up to an explicit logarithmic
+index loss and a ramification constant. Arbitrary torsion translates,
+negative indices, repeated points and finite points of index zero
+are allowed. Over $\Q(\sqrt2)$ the ramification constant vanishes.
+On the normalized elliptic source this gives an effective quadratic
+index bound on the entire finite point domain.
+\end{abstract}
+
+\section{The uniform height inequality}
+
+Let $K$ be totally real, let $k=[K:\Q]$, and let
+$d\in\mathcal O_K$ be totally positive. Put
+\[
+ E:\quad y^2=x^3-d^2x.
+\]
+Fix an infinite-order point $P\in E(K)$ and an integer $r\ge1$.
+For $1\le i\le r$ let
+\[
+ Q_i=[n_i]P+T_i\in E(K)\setminus\{O\},\qquad
+ n_i\in\Z,\qquad T_i\in E(K)_{\mathrm{tors}}.
+\]
+Every $Q_i$ is finite, but its index may be zero. Set
+\[
+ M=\max(1,|n_1|,\ldots,|n_r|),\qquad
+ Z=\sum_{i=1}^r x(Q_i)+rd+1.
+\]
+We use the absolute logarithmic Weil height, with finite valuation
+$v_\mathfrak p$ normalized to have value group $\Z$ and weight
+$f_\mathfrak p\log p/k$.
+Define
+\[
+ A_r=(r-1)2^{r-1},\qquad
+ B_r=\sum_{j=1}^r\binom{r-1}{j-1}\log j,
+\]
+and the explicit ramification allowance
+\[
+ R_K=\frac2k\sum_{\substack{\mathfrak p\mid p\\p\ne2}}
+       f_\mathfrak p\left\lfloor\frac{e_\mathfrak p-1}{2}\right\rfloor\log p.
+\]
+Only odd primes with ramification index at least three contribute.
+
+\begin{theorem}\label{thm:main}
+With the preceding notation,
+\[
+ h(Z)\ge\max_i h(x(Q_i))-A_r\log M-B_r-h(d)-R_K.
+\]
+Moreover
+\[
+ R_K\le\frac1k\log|\operatorname{disc}(K)|.
+\]
+In particular $R_K=0$ when every odd ramification index is at most
+two, including every totally real multiquadratic field.
+\end{theorem}
+
+The result bounds a single algebraic abscissa sum. It makes no
+claim that its field trace has the same effective lower bound.
+Its constants do not depend on the chosen torsion translates or
+on an upper bound for their orders.
+
+\section{Local principal parts and ramification}
+
+Write $D=d^2$ and $z=-x/y$ at the origin. The formal
+expansions are
+\begin{align}
+ x(z)&=z^{-2}+Dz^2-D^2z^6+2D^3z^{10}-\cdots,\label{eq:x}\\
+ \ell(z)&=\sum_{j\ge0}
+ \frac{(-1)^j\binom{2j}{j}D^j}{4j+1}z^{4j+1}.
+ \label{eq:log}
+\end{align}
+The first expansion follows by solving the quadratic equation for
+$x$ in terms of $z$. The second follows by integrating the invariant
+differential
+$dx/(2y)=(1+4Dz^4)^{-1/2}dz$.
+These computations and the positive-subset argument below extend
+the integral principal-part method of~\cite{Sums}.
+
+Fix a finite place $\mathfrak p\mid p$ with ramification index $e$.
+A nonidentity formal point has
+\[
+ a=v_\mathfrak p(z)>0,\qquad v_\mathfrak p(x)=-2a.
+\]
+Call it deep if $a\ge\lceil e/2\rceil$ for odd $p$, and if
+$a\ge1$ for $p=2$.
+Let
+\[
+ b_\mathfrak p=\begin{cases}2\lfloor(e-1)/2\rfloor,&p\ne2,\\0,&p=2.\end{cases}
+\]
+A finite point which is not deep has
+$v_\mathfrak p(x)\ge-b_\mathfrak p$.
+
+\begin{lemma}\label{lem:principal}
+On the deep formal subgroup,
+\[
+ v_\mathfrak p(\ell(z))=v_\mathfrak p(z),\qquad
+ x(z)-\ell(z)^{-2}\in\mathcal O_{K_\mathfrak p}.
+\]
+The logarithm is injective there.
+\end{lemma}
+\begin{proof}
+For odd $p$ and $j\ge1$,
+$v_p(4j+1)\le2j-1$, since $3^{2j}>4j+1$.
+If $2a\ge e$, the $j$th nonconstant
+term of~\eqref{eq:log} has valuation at least
+\[
+ (4j+1)a-e\,v_p(4j+1)\ge(4j+1)a-2a(2j-1)=3a.
+\]
+The valuations tend to infinity, since $v_p(4j+1)=O(\log j)$.
+For $p=2$ every denominator $4j+1$ is a unit and the same terms
+have valuation at least $5a$. Hence in both cases
+$\ell(z)=z(1+\eta)$ with $v_\mathfrak p(\eta)\ge2a$.
+It follows that $\ell(z)^{-2}-z^{-2}$ is integral.
+The terms of~\eqref{eq:x} after $z^{-2}$ are integral as well.
+The formal logarithm is a group homomorphism, and the valuation
+identity proves that its kernel on this subgroup is trivial.
+\end{proof}
+
+The deep subgroup is open in the compact group $E(K_\mathfrak p)$.
+Choose $m>0$ with $[m]P$ in it and set $L=\ell([m]P)/m$.
+The homomorphism property makes this independent of $m$.
+It is nonzero: otherwise injectivity would make $P$ torsion.
+If $Q_i$ is deep, multiplication by a common multiple of $m$ and
+the order of $T_i$, followed by the homomorphism identity, gives
+\[
+ \ell(Q_i)=n_iL.
+\]
+In particular $n_i\ne0$, and
+\[
+ x(Q_i)=(n_iL)^{-2}+\varepsilon_i,
+ \qquad v_\mathfrak p(\varepsilon_i)\ge0.
+\]
+No assertion of integrality for a shallow torsion point is needed.
+
+\section{The positive subset numerators}
+
+Fix $i$, and suppose first that $Q_i$ is deep at $\mathfrak p$.
+Let $J$ be the set of all deep indices at that place and put
+\[
+ C_J=\sum_{j\in J}\prod_{a\in J\setminus\{j\}}n_a^2
+       \in\Z_{>0}.
+\]
+Adding the preceding expansions and the other abscissas gives
+\[
+ Z=(n_iL)^{-2}
+      \frac{C_J}{\prod_{j\in J\setminus\{i\}}n_j^2}
+      +\varepsilon,
+ \qquad v_\mathfrak p(\varepsilon)\ge-b_\mathfrak p.
+\]
+The integral translation $rd+1$ is included in $\varepsilon$.
+Let $H=-v_\mathfrak p(x(Q_i))$ and let $v(A)$ denote the
+valuation of the displayed rational quotient.
+If $H-v(A)>b_\mathfrak p$, its principal part dominates and
+the loss of local height is $v(A)$. Otherwise the loss is at
+most $H\le v(A)+b_\mathfrak p$. Since the denominator of $A$
+is a product of integer squares, $v(A)\le v(C_J)$.
+Thus in all cases the local loss is at most
+\[
+ v_\mathfrak p(C_J)+b_\mathfrak p.
+\]
+If $Q_i$ is not deep, its entire local height is already at most
+$b_\mathfrak p$, giving the same bound without a subset term.
+
+For fixed $i$, summing over finite places is bounded by summing
+$\log C_J$ over all subsets containing $i$ and consisting of
+nonzero indices, plus $R_K$. For $|J|=j$,
+\[
+ C_J\le jM^{2(j-1)}.
+\]
+There are at most $\binom{r-1}{j-1}$ such subsets.
+Consequently their total logarithmic cost is at most
+$A_r\log M+B_r$. If $n_i=0$, its point is never deep and the
+same upper bound remains valid.
+
+At a real embedding, $x(x-d)(x+d)\ge0$ implies $x\ge-d$.
+Hence $Z\ge1$. A nonnegative summand is at most $Z$, and a
+negative summand has absolute value at most $d$. Therefore
+\[
+ \max(1,|x(Q_i)|)\le\max(1,d)\max(1,Z).
+\]
+The sum of these archimedean losses is $h(d)$ because $d$ is
+integral. Combining the finite and infinite estimates proves the
+first assertion of Theorem~\ref{thm:main}.
+Finally $2\lfloor(e-1)/2\rfloor\le e-1$, and the exponent of
+the local different is at least $e-1$. The discriminant formula
+bounds $R_K$ by $\log|\operatorname{disc}(K)|/k$.
+At an odd prime the inertia subgroup in a multiquadratic extension
+is tame and cyclic of exponent at most two; hence its ramification
+index is at most two, proving the last assertion.
+
+\section{The complete normalized point domain}
+
+Take $K=\Q(\sqrt2)$, $d=3-\sqrt2$ and
+\[
+ R_0=(1+\sqrt2,2\sqrt2),\qquad P_0=2R_0.
+\]
+The retained normalized elliptic source~\cite{Source} supplies
+\[
+ E(K)=\Z R_0\oplus E[2](K),\qquad
+ \widehat h(P_0)\ge\tfrac12,
+\]
+and its uniform duplication inequality
+\[
+ h(x(2Q))\le4h(x(Q))+\log676
+\]
+for non-torsion $Q$. We identify these as arithmetic inputs to
+the following numerical corollary; Theorem~\ref{thm:main} itself
+requires none of this particular group computation.
+
+\begin{corollary}\label{cor:four}
+For four finite points $Q_i=[m_i]R_0+T_i$, with $T_i\in E[2](K)$,
+put $Z=\sum_i x(Q_i)+4d+1$ and
+\[
+ B=\max(1,|m_1|/2,|m_2|,|m_3|,|2m_4+1|).
+\]
+Then
+\[
+                         B^2<40h(Z)+2285.
+\]
+\end{corollary}
+\begin{proof}
+The odd primes of $K$ are unramified, $h(d)=\tfrac12\log7$,
+$A_4=24$ and $B_4=\log864$.
+Iterating the duplication inequality and using the canonical-height
+limit gives
+\[
+ h(x(Q_i))\ge2\widehat h(Q_i)-\tfrac13\log676
+             \ge m_i^2/4-3
+\]
+when $m_i\ne0$. Let $M=\max(1,|m_i|)$.
+If every index is zero the asserted bounds below are immediate.
+Otherwise apply Theorem~\ref{thm:main} to an index attaining $M$,
+use the weaker constant six in the last inequality, and use
+\[
+ 24\log M-M^2/8\le12\log96-12<43.
+\]
+Since $6+43+\log864+\tfrac12\log7<57$, this yields
+$M^2<8h(Z)+456$.
+Finally $B\le2M+1$ and $(2M+1)^2\le5M^2+5$.
+\end{proof}
+
+\begin{thebibliography}{9}
+\bibitem{Sums}
+\emph{Effective heights of sums of elliptic abscissas},
+8 November 2026,
+\nolinkurl{papers/effective_sums/effective_elliptic_sums_20261108_v10.tex}.
+\bibitem{Source}
+\(\Z\Q\) Diophantine Project contributors,
+\emph{$\Z$ is Diophantine in $\Q$}, Version 19,
+17 November 2026; the normalized duplication bounds preceding
+equation \textup{(o8-indexheight)}, and the half-generator domain.
+Pinned commit \texttt{498efba6fe75e9d28d6804f1391d7f70e4150afa},
+\url{https://github.com/elliotglazer/diophantine-z-q}.
+\end{thebibliography}
+\end{document}
