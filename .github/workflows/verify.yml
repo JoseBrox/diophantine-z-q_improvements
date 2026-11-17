@@ -13,6 +13,8 @@ jobs:
         with:
           python-version: '3.12'
       - run: python -m pip install sympy==1.14.0
+      - name: Verify the complete eleven-variable abc source and fixed-slope incidence theorem
+        run: python -B scripts/verify_v59.py --report /tmp/v59-verification.json
       - name: Verify signed heights, small trace classes and actual-surface obstructions
         run: python -B scripts/verify_v58.py --report /tmp/v58-verification.json
       - name: Verify intrinsic transfers, variable classes and exact prepared descent obstruction

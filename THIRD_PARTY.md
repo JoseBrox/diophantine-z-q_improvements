@@ -65,3 +65,9 @@ The cubic trace rank theorems, including the four-term trace cubic, use **B. Maz
 ## Geometric reference for actual multiplication surfaces
 
 The obstruction in [the actual multiplication-surface paper](negative_results/papers/rational_fibers/actual_multiplication_surface_20261117_v58.tex) uses the characteristic-zero Riemann–Hurwitz formula in the Stacks Project, [Section 53.12, tag 0C1B](https://stacks.math.columbia.edu/tag/0C1B). It concerns uniform rational identities on the specified full surface, not individual rational witnesses. The small trace-class preparation uses the already cited Sun Theorem 4.1 with its existing odd avoidance modulus containing three.
+
+## Derivative detector and fixed-slope incidence
+
+The eleven-variable height argument uses Z. Rudnick, P. Sarnak and A. Zaharescu, *The distribution of spacings between the fractional parts of n²α*, Inventiones Mathematicae **145** (2001), 37–57, Appendix A.2, equation (A.2): [author PDF](https://www.math.tau.ac.il/~rudnick/papers/rsz.pdf). That precise homogeneous squarefree-form consequence requires ordinary rational abc. Its prime realization uses the explicitly arbitrary fixed finite number of positions in **Sun, arXiv:2610.20691v3, Theorem 4.1**: [primary text](https://arxiv.org/html/2610.20691v3). The inherited elliptic and intrinsic-pole premises remain as stated in the construction paper.
+
+The fixed-slope incidence proof uses J. S. Milne, *Abelian varieties*, Proposition 12.1 ([author notes](https://www.jmilne.org/math/xnotes/AVs.pdf)), and Z. Gao, T. Ge and L. Kühne, *The Uniform Mordell–Lang Conjecture*, Publications Mathématiques de l’IHÉS **143** (2026), 189–235, Theorem 1.1 and equation (1.1) ([author manuscript](https://ziyangjeremygao.github.io/articles/UML.pdf)). The repository proves the required rational endomorphism calculation and nonconstancy hypotheses. These external works are cited, not redistributed.
