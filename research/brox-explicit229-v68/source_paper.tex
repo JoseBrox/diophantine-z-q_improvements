@@ -1,0 +1,805 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,booktabs,microtype}
+\usepackage[margin=26mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\newcommand{\Tr}{\operatorname{Tr}}
+\setlength{\emergencystretch}{2em}
+\title{Three-detector quartics with 229 rational coordinates}
+\author{}\date{17 November 2026}
+\begin{document}\maketitle
+
+\begin{abstract}
+A complete quadratic detector can be duplicated using 34 additional
+rational coordinates. Both components of the elliptic abscissa sum
+are already quadratic expressions in the retained coordinates.
+Consequently three additive detector arguments require 229 total
+coordinates and 207 quadratic equations. The resulting primitive
+quartic has 3,312 monomials and exact coefficient height
+$\max\{9063965991649194484576286065455625302,149^{2N+2}\}$.
+Every fixed $N\ge15$ defines the integers under the stated arithmetic
+premises. At $N=15$ its coefficient height is $149^{32}$, a 232-bit
+integer. The argument shifts remain uniformly separated on the full
+finite elliptic point domain, including its torsion strata.
+\end{abstract}
+
+\section{Exact specification and arithmetic scope}
+
+Every count includes the distinguished input $X=x_1$.
+Fix $N\ge1$ and the integer coefficient $C=149^N$.
+Let $\mathcal S_{195}(C)$ be the 175-row system of~\cite{Parent195}.
+Its complete quadratic table has SHA-256 digest
+\begin{center}\small\ttfamily
+304f94843c1a4ac94fcd5f1295fee8b532e7f0424e638314d892c556e2fbfdf9.
+\end{center}
+All source reference, scalar, comparison and elliptic equations are
+retained. Their interpretations use the exact source arithmetic
+premises and the certified source coordinate transformations.
+These premises include the elliptic group description, scalar
+contact-height argument, pole obstruction and prepared realization,
+modular contact-height estimates, and fixed-data simultaneous-prime
+theorem. Finite coefficient verification does not replace these
+arithmetic results.
+
+In the source table the second detector has precisely the following
+34 local coordinates:
+\[
+ \{7,8,9,10\}\ \cup\ \{86,\ldots,99\}
+ \ \cup\ \{134,\ldots,149\}.
+\]
+In increasing order, copy these coordinates to
+$x_{196},\ldots,x_{229}$. Copy each of the 31 source rows whose
+name contains \texttt{detector1} or \texttt{det1}, replacing just
+these local coordinates by their copies. In the names replace the
+detector index by two. The newly stored argument is $x_{200}$.
+Replace the contact equations of all three detectors by the exact
+center-$3/11$ circuit below; the shared point and scalar coordinates
+are unchanged.
+
+Only the argument $x_{86}$ has a consumer outside the source second
+detector: the final aggregate row. Thus this operation is a copy of
+the full detector, including its contact circuit, two trace
+components, pole realization, auxiliary squares, and nonzero guard.
+It does not omit an external recovery equation or require a new
+shared coordinate. Replace the source aggregate row and add the
+second component row specified in the next section. This gives
+$175+31+1=207$ rows in $195+34=229$ coordinates.
+
+The files \path{quadratic.json}, \path{polynomial.json}, and
+\path{graft.json} give, respectively, all 207 integer quadrics,
+their complete quartic expansion, and the coordinate and row maps.
+The only fixed parameter in these tables is $C$, which is not
+quantified. The directory
+\path{computation/quartic/explicit229_v62/} contains these files and
+\path{contact-change.json}, which specifies every changed contact row.
+
+\begin{theorem}\label{thm:main}
+Under the stated arithmetic inputs, for every integer $N\ge15$ the
+specified quartic $P_N$ satisfies
+\[
+ X\in\Z\quad\Longleftrightarrow\quad
+ \exists y_2,\ldots,y_{229}\in\Q:\quad
+ P_N(X,y_2,\ldots,y_{229})=0.
+\]
+It is primitive, has degree four and 3,312 monomials, and at $N=15$
+has exact coefficient height $149^{32}$. Every helper and guard is
+included in the 229-coordinate count.
+\end{theorem}
+
+\section{Both abscissa components without a recovery coordinate}
+
+Put $\rho=\sqrt2$, $d=3-\rho$, $D=d^2=11-6\rho$ and
+$E:y^2=x^3-Dx$. Set
+\[
+ R_0=(1+\rho,2\rho),\qquad P_0=2R_0.
+\]
+Let $Q_1,Q_2,Q_3,Q_4$ be the finite elliptic
+points recovered by the source reciprocal and inverse Vieta charts.
+Write
+\[
+ \mathcal S=\sum_{i=1}^4 x(Q_i)=S_0+S_1\rho.
+\]
+The source permits finite torsion points in the first, third, and
+fourth difference blocks. The scalar inverse Vieta point $Q_2$
+is nontorsion. The following formulas do not require a difference
+point to be nontorsion.
+
+Let $q=x_{77}$ and $w=x_{78}$. Their literal guard is
+$qw=1$. In the final source coordinates set
+\begin{align*}
+ f_1&=x_{152}+x_{153}\rho,&g_1&=x_{156}+x_{157}\rho,
+ &s_1&=x_{160}+x_{161}\rho,\\
+ f_3&=C(x_{162}+x_{163}\rho),&g_3&=x_{166}+x_{167}\rho,
+ &s_3&=x_{170}+x_{171}\rho,\\
+ f_4&=C(x_{172}+x_{173}\rho),&g_4&=x_{176}+x_{177}\rho,
+ &s_4&=x_{180}+x_{181}\rho,\\
+ p&=x_{192}+x_{193}\rho.&&&&
+\end{align*}
+These symbols denote the displayed stored expressions; their
+physical scalings are given by
+\begin{equation}\label{eq:recovery}
+ x(Q_i)=\frac{s_i^2}{q^2}+D\frac{f_i+g_i}{q}
+ \quad(i=1,3,4),\qquad x(Q_2)=\frac p q.
+\end{equation}
+They are precisely the source point-recovery formulas after its
+Laurent and fixed-parameter substitutions.
+
+Define $A_0,A_1$ by the quadratic field expression
+\begin{equation}\label{eq:components}
+ A_0+A_1\rho
+ =s_1^2+s_3^2+s_4^2
+  +Dq(f_1+g_1+f_3+g_3+f_4+g_4)+qp.
+\end{equation}
+Then $A_j=q^2S_j$. In particular, both components have degree
+at most two in the retained rational coordinates. No ordinate,
+height or square coordinate is needed to recover $A_1$.
+
+The physical detector arguments are
+\[
+ t_0=x_2/q,\qquad t_1=x_{86}/q,\qquad t_2=x_{200}/q.
+\]
+Use the two rows
+\begin{align}
+ 2q(x_2-x_{86})+26q^2+A_0&=0,
+   \label{eq:trace}\\
+ 2q(x_2-2x_{86}+x_{200})-8q^2+A_1&=0.
+   \label{eq:shift}
+\end{align}
+The first replaces the source aggregate row, changing just its
+$q^2$ coefficient from $14$ to $26$.
+The second is the one additional aggregate row.
+Dividing by the guarded $q^2$ shows that these rows are equivalent
+to
+\begin{equation}\label{eq:physical-shifts}
+ t_1-t_0=13+S_0/2,\qquad
+ t_2-t_1=17+(S_0-S_1)/2.
+\end{equation}
+The same conclusion follows by subtracting
+\eqref{eq:shift} from~\eqref{eq:trace}; hence the two equations
+control both components independently.
+
+\section{The reflected contact equations}
+
+Put
+\[
+ \Theta=\{0,-\tfrac12,-1,\tfrac1{2399},-\tfrac{32}{407}\},
+ \qquad c=\tfrac3{11},\qquad h_c=\tfrac3{22},
+ \qquad \Theta_c=\Theta\cup(c-\Theta).
+\]
+The reflection center $c$ belongs to the contact families discussed
+in the pinned source. Its use here changes only the contact
+equations; all scalar and pole inputs and all guards are retained.
+Let
+\[
+ \alpha_\theta=(22\theta-3)^2,\qquad
+ P_5(r)=\prod_{\theta\in\Theta}(r-\alpha_\theta)
+       =r^5-e_1r^4+e_2r^3-e_3r^2+e_4r-e_5.
+\]
+The five paired constants are
+\[
+ 9,\quad196,\quad625,\quad
+ (7175/2399)^2,\quad(175/37)^2.
+\]
+Their elementary symmetric coefficients have common denominator
+$L=7878870169$, with
+\[
+\begin{array}{c|r}
+j&Le_j\\\hline
+1&6786192246520\\
+2&1229741066709366\\
+3&42042541279847500\\
+4&476802068222265625\\
+5&1738195040039062500
+\end{array}
+\]
+
+For each detector argument $t$ and its guarded inverse weight $w$,
+the physical contact equations are
+\begin{align*}
+ r&=(22t-3)^2,&s&=r^2,\\
+ v&=rs-e_1(1+w)s+e_2(1+w)r,&
+ sv&=(1+w)(e_3s-e_4r+e_5).
+\end{align*}
+They are quadratic after the stored coordinate substitutions below.
+Eliminating the defined $r,s,v$ gives
+\[
+ (1+w)P_5(r)=wr^5.
+\]
+Writing the physical weight as $q_t=1/w$ and using
+\[
+ P_5((22t-3)^2)
+  =22^{10}\prod_{\theta\in\Theta}(t-\theta)(t-c+\theta)
+\]
+shows that this is exactly
+\[
+ (1+q_t)\prod_{\eta\in\Theta_c}(t-\eta)=(t-h_c)^{10}.
+\]
+The midpoint $t=h_c$ is included: it gives $q_t=w=-1$.
+No division by $t-h_c$ is used. The contacts themselves cannot occur,
+because none equals the midpoint and the right side is then nonzero.
+
+For the final table put $q=x_{77}$. The stored arguments, squares,
+fourth powers and combination coordinates have physical values
+\[
+\begin{array}{c|cccc|c}
+j&t_j&r_j&s_j&v_j&w_j\\\hline
+0&x_2/q&x_{74}/q&x_{75}/q&Cx_{76}/(Lq)&1/q\\
+1&x_{86}/q&x_{87}/q&x_{88}/q&x_{89}/(Lq)&x_{91}/q\\
+2&x_{200}/q&x_{201}/q&x_{202}/q&x_{203}/(Lq)&x_{205}/q
+\end{array}
+\]
+The contact equations multiplied by $q^2$, or by $Lq^2$ as
+appropriate, are precisely the twelve rows in the complete table.
+Their degrees are at most two. The literal unit equations
+$x_{77}x_{78}=1$, $x_{90}x_{91}=1$ and
+$x_{204}x_{205}=1$ supply all required inverses.
+
+The ten contacts are distinct and have diameter $25/11$.
+The aggregate shifts are at least seven and nine. Consequently
+the three translated ten-contact sets are pairwise disjoint.
+Every square, inverse and realization coordinate used in these
+equations is already included in the 229-coordinate count.
+
+\section{Separation on the full point domain}
+
+\begin{lemma}\label{lem:separation}
+For every finite real point on $y^2=x^3-d^2x$ with $d>0$,
+$x\ge-d$. Consequently the shifts in~\eqref{eq:physical-shifts}
+satisfy
+\[
+ t_1-t_0\ge7,\qquad t_2-t_1\ge9.
+\]
+\end{lemma}
+\begin{proof}
+If $x<-d$, then all three factors of $x(x-d)(x+d)$ are negative,
+contradicting its being a square. Apply this separately at the two
+real embeddings of $\Q(\rho)$. The four-point sum therefore has
+\[
+ \sigma_+(\mathcal S)\ge-12+4\sqrt2,
+ \qquad \sigma_-(\mathcal S)\ge-12-4\sqrt2.
+\]
+Their average gives $S_0\ge-12$. Moreover,
+\[
+ S_0-S_1=
+ \frac{(2-\sqrt2)\sigma_+(\mathcal S)
+ +(2+\sqrt2)\sigma_-(\mathcal S)}4\ge-16.
+\]
+Insert these two inequalities in~\eqref{eq:physical-shifts}.
+\end{proof}
+
+The contact set $\Theta_c$ has diameter $25/11$.
+Lemma~\ref{lem:separation} therefore makes the three translates
+\[
+ \Theta_c,\quad \Theta_c-(t_1-t_0),\quad
+ \Theta_c-(t_2-t_0)
+\]
+pairwise disjoint, including the finite torsion branches.
+Each copied contact circuit has its own literal inverse guard,
+and all guards are included in the coordinate and row counts.
+
+The shifted sum $Z=\mathcal S+4d+1$ has positive value at both
+real embeddings. The two aggregate equations give the exact identity
+\[
+ Z=-(2+2\rho)t_0+(2+4\rho)t_1-2\rho t_2-13+4\rho.
+\]
+All coefficients are algebraic integers, and the sum of their
+absolute values is less than $32$ at either real embedding.
+For the absolute logarithmic height this implies
+\begin{equation}\label{eq:height}
+ h(Z)\le h(t_0)+h(t_1)+h(t_2)+\log32.
+\end{equation}
+The statement follows place by place from the ultrametric inequality
+at finite places and the triangle inequality at the two real places.
+
+\section{Arithmetic inputs and the finite exceptional set}
+
+The arithmetic proof uses the normalized elliptic group and point
+interpretations in~\cite{ExplicitParent}, the prepared pole obstruction
+and realization theorem stated there, its fixed-data simultaneous-prime
+theorem and compatible index progressions, and its full-family
+five-contact height theorem. We state the quantitative height input
+precisely. Put
+\[
+ S=\{2,3,5,7,11,13,17,37,41,2399\},\qquad B_S=\prod_{p\in S}p,
+\]
+\[
+ c_0=74712001/10^6,\qquad C_0=2^{68}3^{16}5^{16}7^4,
+ \qquad E(R)=\prod_{p\mid R}(1+1/p).
+\]
+For $u=r/s$ in lowest terms, $s>0$, outside the four finite contacts
+$0,1,2401,-343/32$, let $M_S(u)$ contain each prime outside $S$
+having positive odd valuation on one of
+\[
+                       s,r,r-s,r-2401s,32r+343s.
+\]
+The retained full-family theorem, including its non-CM and CM branches,
+is
+\begin{equation}\label{eq:height-input}
+ h(u)<c_0C_0 R^2E(R)\log R,\qquad R=B_SM_S(u).
+\end{equation}
+This is the theorem for this particular radical, identified as H4.1
+in~\cite{ExplicitParent}. No reduction of an exceptional set is
+inferred from a theorem with a different radical.
+
+For the reflected contacts at center $c=3/11$, put
+\[
+ \Theta_c=\Theta\cup(c-\Theta),\qquad
+ \Gamma=S\cup\{79,89,647,3593\}.
+\]
+Every contact denominator, every contact difference, and every
+difference $c/2-\theta$ has prime support in $\Gamma$.
+For $t\notin\Theta_c$, let $M(t)$ be the odd positive contact radical
+outside $\Gamma$. The exact finite factorizations are supplied with
+the coefficient and arithmetic certificates.
+
+\subsection{Formal ratios without a numerical prime cutoff}
+
+At an unramified odd place, with $r=v(z(Q))\ge1$ and $z=-x/y$,
+the formal logarithm is
+\[
+ \ell(z)=\sum_{j\ge0}
+ \frac{(-1)^j\binom{2j}{j}D^j}{4j+1}z^{4j+1}.
+\]
+When $p\ne5$, the first correction $-2Dz^5/5$ has valuation
+at least $5r$. For $j\ge2$ the inequality
+$v_p(4j+1)\le4j-4$ gives the same lower bound for every
+subsequent term. The series converges and therefore
+\begin{equation}\label{eq:local-log}
+ v(\ell(Q))=v(z(Q)),\qquad
+                  \ell(Q)/z(Q)\in1+p^{4r}\mathcal O.
+\end{equation}
+All primes outside $S$ satisfy these hypotheses and give good
+reduction of the curve. This proof concerns the parameter $z$
+itself; no higher-order logarithm truncation is required.
+
+The complete source charts recover labels
+\[
+ n=m_1/2\in\tfrac12\Z,\quad a=m_2\in\Z\setminus\{0\},
+ \quad t=m_3\in\Z,\quad b=2m_4+1\in2\Z+1.
+\]
+Put $c_a=|a|$ and $B=\max(1,|n|,|a|,|t|,|b|)$.
+The physical scalar is
+\[
+ \beta=51X^2+2504,\quad
+ r_4=\beta(\beta-1)(\beta-2401)(32\beta+343),\quad
+ R_s=\frac{149^{2N+1}r_4}{1+149^2r_4}.
+\]
+The source's forced valuation at 149 excludes the reference torsion
+and shifted-torsion strata before any logarithmic ratio is used.
+In particular its reference index $h$ is nonzero and is not one,
+and all reference ratios have their stated point interpretations.
+
+\subsection{Scalar divisibility at all primes outside \texorpdfstring{$S$}{S}}
+
+The four finite scalar contacts have collision support only
+$\{2,3,5,7\}$. Outside $S$, a negative valuation of $\beta$
+is $2v_p(X)$ and is even. Every contributing finite contact other
+than 149 therefore gives an odd positive valuation
+$\mu=v_p(R_s)$. At 149 the four residues
+$(\theta-2504)/51$ are $59,97,109,108$, all nonsquares.
+Thus 149 is absent from $M_S(\beta)$, while
+$v_{149}(R_s)$ is independently $2N+1$ or $2N-1$.
+
+The actual scalar equations give
+\[
+ W_s=Z_0^4/R_s^{10}+Z_1^2/R_s^5+F^2/R_s^4,
+ \qquad b_s=R_s(R_s+9792)W_s^2,
+\]
+where $Z=2z(Q_2)/z(H)$ and $F=\operatorname{Nm}(1/x(H))\ne0$.
+At every prime under consideration, $9792$ is a unit and $v_p(F)$
+is even. The three finite term valuations in $R_s^4W_s$ have the
+distinct classes $2+4\Z$, $1+2\Z$, and $4\Z$.
+The pole obstruction forbids negative odd valuation of $b_s$.
+Reading the three terms therefore gives
+\[
+ v_p(Z_0)>19\mu/8,\qquad v_p(Z_1)>9\mu/4,
+ \qquad v_p(F)>7\mu/4.
+\]
+Zero components are omitted from this valuation comparison.
+
+At some place above $p$, the reference is formal. The scalar point
+is formal or reduces to $(0,0)$; translation by this two-torsion
+point changes $z$ by a sign and makes it formal.
+Multiplication by two kills the torsion terms in the index relation.
+Equation~\eqref{eq:local-log} then gives
+$v_p(a/h)>9\mu/4$. Since $h\in\tfrac12\Z$ is $p$-integral,
+the same strict lower bound holds for $v_p(a)$.
+Consequently, with
+\[
+ L_N=\left\lfloor\frac{9(2N-1)}4\right\rfloor+1,
+\]
+we obtain
+\begin{equation}\label{eq:scalar-div}
+              149^{L_N}M_S(\beta)^3\mid c_a.
+\end{equation}
+The H4.2 form of~\eqref{eq:height-input} has constant
+$c_0C_0B_S^2E(B_S)\log B_S<2^{237}$.
+Using $E(M)\le1+\log M$ and $(1+\log M)^2<2M$ gives
+\begin{equation}\label{eq:scalar-height}
+ \tau:=h(\beta)<2^{238}M_S(\beta)^3
+                    \le2^{238}149^{-L_N}c_a.
+\end{equation}
+
+\subsection{The complete detector comparison}
+
+At a positive odd contact of depth $\mu$ outside $\Gamma$, the
+normalizing difference $t_j-c/2$ is a unit and the weight satisfies
+$v_p(q_j)=-\mu$.
+Write $C_i=L_i-L_i'$, $I=L_1-\beta$, and
+\[
+ G=L_3^2-(L_2+1)(L_2-1)L_3L_4+(L_2-1)^2L_4^2-1.
+\]
+The physical factors recovered by each complete detector are
+\begin{align*}
+ &1+q_j^5C_2^2+q_j^2D_H^2+q_j^4B_1^4,\\
+ &1+q_j^5G^2+q_j^2A_3^2+q_j^4B_0^4,\\
+ &1+q_j^5I^4+q_j^3A_2^2+q_j^2A_4^2+q_j^4B_3^4,\\
+ &1+q_j^5C_3^2+q_j^2C_1^4+q_j^4B_4^4,\\
+ &1+q_j^5C_4^2+q_j^2A_1^2+q_j^4B_2^4.
+\end{align*}
+Here $D_H=1/x(H)$, $A_i=1/x(U_i)$ and the $B_i$ are the
+conjugate opposite reciprocals, including the reference predecessor
+for $B_0$. Identity numerators have reciprocal zero.
+
+All finite reciprocal valuations are even. The summands in each
+factor have distinct valuation classes, so its valuation is at most
+zero and no cancellation is possible. If $W_j$ is their product
+and $\ell=\max_{v\mid p}v(W_j)\le0$, the trace equations give
+\[
+ b_j=\frac{(408/409)^2R_j}{\operatorname{Tr}(W_j^{-1})^2},
+ \qquad v_p(b_j)\le\mu+2\ell.
+\]
+The formula is used here only at a consumed contact, where the
+factor argument and the trace equation ensure that both denominators
+are nonzero. Outside $\Gamma$, $v_p(408/409)\le0$; its negative
+valuation at 409 only strengthens the inequality.
+The pole obstruction gives $\ell>-\mu/2$. The individual terms
+then imply
+\[
+ v(C_2,C_3,C_4,G)\ge3,\quad v(C_1,I)\ge1,
+ \quad v(D_H,A_i,B_i,B_0)\ge2
+\]
+at a successful place.
+
+One of $h$ and $h-1$ is a $p$-adic unit. The corresponding full
+logarithmic ratio is integral; its positive comparison with the
+other ratio transfers that integrality. Only after this step is
+the relative precision in~\eqref{eq:local-log} used as an absolute
+congruence. Multipliers 1, 2, 4 and the fourth-label offset 1
+are integral, and 2 and 4 are units. This proves
+\[
+ L_1\equiv n\pmod p,\qquad
+             (L_2,L_3,L_4)\equiv(a,t,b)\pmod{p^3}.
+\]
+The argument includes identity numerator points, two-torsion
+differences, and split or inert places.
+
+Define the integer residual
+\[
+ \Delta=t^2-(a+1)(a-1)tb+(a-1)^2b^2-1.
+\]
+If $n\ne\beta$, let $J_X$ be the absolute reduced numerator
+of $n-\beta$. For each detector separately,
+\begin{equation}\label{eq:residual-div}
+ M(t_j)^3\mid\Delta\quad(\Delta\ne0),\qquad
+ M(t_j)\mid J_X\quad(J_X\ne0).
+\end{equation}
+The elementary size bounds are
+\[
+                 |\Delta|\le14B^4,\qquad J_X\le4Be^\tau.
+\]
+No coprimality of the three radicals is asserted or needed.
+
+\section{Effective soundness at \texorpdfstring{$N=15$}{N=15}}
+
+Put
+\[
+ J_*=\prod_{p\in\Gamma}p
+       =30366775457346956958330<2^{75},\qquad
+ \mathcal C=c_0C_0J_*^2E(J_*)<2^{300}.
+\]
+For $u_+=2+1/t$ and $u_-=2+1/(3/11-t)$, the inverse
+linear-fractional transformations have height constants at most
+3 and 33. Outside $\Gamma$ their five-contact radicals are
+disjoint and their product is $M=M(t)$. With
+$R_\pm=B_SM_S(u_\pm)$, this gives
+\[
+ R_+R_-\le J_*^2M,\qquad
+ E(R_+)E(R_-)\le E(J_*)^2E(M).
+\]
+Multiply~\eqref{eq:height-input} for the two arguments and take
+square roots. The arithmetic-geometric mean inequality gives
+\begin{equation}\label{eq:reflected-sharp}
+ h(t)\le\log33+\mathcal C M\sqrt{E(M)}
+                         (\log J_*+\tfrac12\log M).
+\end{equation}
+If $h(t)\le\log33$ the same conclusion is immediate.
+This includes the midpoint $t=3/22$, where the height argument
+does not divide by the normalizing difference.
+
+The exact product of $1+1/p$ over primes $p\le1000$ outside
+$\Gamma$ is less than $21/10$. For every larger prime,
+$\log(1+1/p)<1/p<\log p/6006$. Hence
+\begin{equation}\label{eq:euler}
+                  E(M)<\frac{21}{10}M^{1/6006}.
+\end{equation}
+For a weaker estimate, use $E(R)\le1+\log R$ in the joint
+height bound, $J_*<2^{75}$ and $c_0C_0<2^{149}$. It gives
+\begin{equation}\label{eq:reflected-coarse}
+       h(t)\le K M(22+\tfrac12\log M)^2,\qquad K=2^{304}.
+\end{equation}
+Indeed $1+75\log2<54<4\cdot22$; the factor 16 from squaring
+and one further factor two absorb the additive $\log33$.
+
+The four-point corollary in~\cite{TorsionSums}, followed by
+\eqref{eq:height}, gives
+\begin{equation}\label{eq:index-height}
+                    B^2<40\sum_{j=0}^2h(t_j)+2425.
+\end{equation}
+It applies to every finite point recovered by the charts, with
+arbitrary two-torsion translates and half-integral original indices.
+
+Suppose $\Delta\ne0$. Apply
+\eqref{eq:reflected-sharp}--\eqref{eq:euler} and the three separate
+divisibilities~\eqref{eq:residual-div}. Absorbing the additive
+constants gives
+\[
+ B^2<121\mathcal C\sqrt{21/10}\,
+ |\Delta|^{1/3+1/36036}
+                  (\log J_*+\tfrac16\log|\Delta|).
+\]
+Use $|\Delta|\le14B^4$ and write $s=\log B$.
+Since $121\sqrt{21/10}\,14^{1/3+1/36036}<500$, we obtain
+\begin{equation}\label{eq:delta-contradiction}
+ e^{\frac23(1-1/6006)s}
+                   <500\cdot2^{300}(53+2s/3).
+\end{equation}
+For $N\ge15$, scalar divisibility gives $s\ge66\log149$.
+The quotient of the left side of~\eqref{eq:delta-contradiction}
+by its final linear factor is increasing for $s\ge0$.
+At the endpoint its logarithmic comparison is reversed:
+\[
+ \frac23(1-1/6006)66\log149
+       >220\frac{6005}{6006}>219.963,
+\]
+whereas
+\[
+ \log500+300\log2+\log(53+44\log149)
+ <\frac{25}{4}+300\frac{173287}{250000}+\frac{45}{8}
+ =219.8194.
+\]
+Here $5<\log149<501/100$, $\log500<25/4$,
+$\log2<173287/250000$ and $\log274<45/8$ have certified
+rational series bounds. This contradiction proves $\Delta=0$.
+
+The affine Lucas lemma in~\cite{ExplicitParent} now applies:
+$b$ is odd and hence nonzero, and
+\begin{equation}\label{eq:lucas-growth}
+                   \log B\ge(c_a-6)\log(c_a-3).
+\end{equation}
+Its norm-one equation is obtained by putting $A=a+1$, $c'=|A|$
+and $w=\operatorname{sgn}(A)(A-2)b$:
+$t^2-c'tw+w^2=1$.
+The integer-unit classification in $\Z[(c'+\sqrt{c'^2-4})/2]$
+and the recurrence congruence modulo $c'\mp2$ force the Lucas
+index to be at least $c'-2$. This gives~\eqref{eq:lucas-growth}
+for $c_a\ge8$.
+
+If $J_X\ne0$, use~\eqref{eq:reflected-coarse},
+\eqref{eq:index-height} and $J_X\le4Be^\tau$. They imply
+\[
+ e^s<484K e^\tau(23+(s+\tau)/2)^2,
+\]
+and hence, by $\log(1+x)\le x$,
+\[
+ s<\frac{23}{22}\log(256036K)+\frac{12}{11}\tau<240+c_a.
+\]
+The last inequality uses~\eqref{eq:scalar-height} and
+$149^{66}>2^{239}$, which give $\tau<c_a/2$.
+But $c_a\ge149^{66}>600$ and $\log c_a>330$, so
+\eqref{eq:lucas-growth} gives $s>320c_a>240+c_a$.
+Thus $J_X=0$ and $\beta=n\in\tfrac12\Z$.
+For $X=u/v$ in lowest terms, $v>0$, this gives $v^2\mid102$.
+Squarefreeness of 102 proves $X\in\Z$.
+
+Every numerical inequality strengthens as $N$ increases.
+The exact arithmetic checker verifies the finite prime supports,
+scalar nonsquare residues, product constants and decisive rational
+logarithm bounds. The retained global arithmetic inputs and complete
+witness construction remain mathematical proof obligations, proved
+by their cited suppliers and the following argument.
+
+\section{Complete witnesses for every integer input}
+
+This construction requires only $N\ge3$; in particular it applies
+at the sufficient soundness parameter below. Fix $X\in\Z$.
+Then $r_4$ is a positive integer and
+$R_s\ge149^{2N+1}/22202>2^{20}$.
+The compact real neighborhoods proved in~\cite{ExplicitParent}
+permit both $|z(H)|>1/2000$ and $|z(Q_2)|\le1$, with all reference
+denominators nonzero. Hence $|Z_0|,|Z_1|<2^{12}$ and $|F|\le1/7$.
+Uniformly in the input,
+\[
+              0<W_s<2^{49}R_s^{-4},\qquad
+              0<b_s<2^{112}R_s^{-6}<17.
+\]
+
+Let $D_s=1+149^2r_4$. The numerators of $R_s$ and
+$R_s+9792$ are coprime to $D_s$, so their product has square
+reduced denominator. The scalar congruences give
+$v_2(R_s)\in\{2,3\}$ and $v_3(R_s)=v_{17}(R_s)=0$;
+$R_s(R_s+9792)$ is a square in $\Q_2$, $\Q_3$ and $\Q_{17}$.
+First choose $H_*=[h_*]P_0$, with $64\mid h_*$, sufficiently
+formal at the finite odd-valuation support, at 2, 3 and 17 whether
+or not they occur in that support, and in the fixed real
+neighborhoods. Next choose $a_0>0$, divisible by three, with
+$Q_2=[a_0]P_0$ deeper at those places and close to the real identity.
+The finite-index recurrence theorem permits $a_0$ to be arbitrarily
+large. This gives square denominator and the required scalar
+depths at 2, 3 and 17. After $a_0$ is fixed, continuity gives a
+reference progression preserving these conditions.
+
+Set $a=2a_0\in6\Z$. With $U_0=0$, $U_1=1$ and
+$U_{k+1}=(a+1)U_k-U_{k-1}$, put
+\[
+       j=a-1,\qquad b=U_j/(a-1),\qquad t=U_{j+1}.
+\]
+The integral Lucas identities in~\cite{ExplicitParent} give
+$b>1$ odd, $t>0$ and $\Delta=0$. Choose the four fixed points
+\[
+ Q_1=[\beta]P_0,\quad Q_2=[a_0]P_0,\quad
+ Q_3=[t]R_0,\quad Q_4=[(b-1)/2]R_0.
+\]
+Their labels are exactly $\beta,a,t,b$. All are finite and
+nontorsion. In particular both argument shifts in
+\eqref{eq:physical-shifts} are now fixed before choosing contact
+primes.
+
+Let $U_0'=0$, $U_1'=t_1-t_0$, $U_2'=t_2-t_0$.
+The thirty coefficients $\theta-U_j'$, for
+$\theta\in\Theta_c$ and $0\le j\le2$, are distinct by the
+shift separation. Choose an integer $D_0>0$ clearing their
+denominators, including those of the midpoint shifts, by squares.
+Before applying the prime theorem, shrink the reference neighborhoods
+so that all tests are regular and bounded. Enlarge the finite
+preparation set to include every fixed denominator, guard and shift
+prime. At a prepared prime $p$, let $-B_p$ be a common lower
+valuation bound, with $B_p\ge0$, for the finitely many powered test expressions in
+the five factors. Prescribe the divisibility of $w$ sufficiently
+deeply that $\lambda$ dominates all contact and midpoint shifts
+and $v_p(q_j)\ge B_p+5$ for all three detectors. This makes every
+nonconstant factor term have positive valuation, uniformly on those
+neighborhoods. These data and the real bounds are fixed before the
+analytic prime-selection parameter varies. Take the final reference
+modulus $L$ to be a multiple of 64, the earlier scalar progression
+modulus, and the orders of the relevant real component groups.
+The fixed-data prime theorem gives
+\[
+ \lambda=u/(D_0^2w^2),\qquad
+ p_{j,\theta}=u+D_0^2(U_j'-\theta)w^2
+\]
+simultaneously prime, outside every fixed exceptional and preparation
+set, with the required Gaussian congruences and arbitrarily large
+fixed prime and real-slope cutoffs. The selected primes may still be required to exceed 76176; soundness merely consumes
+more primes than completeness needs to select.
+
+The half-generator reduction and compatible progression theorem
+then choose the final $H=[h]P_0$, with
+$U_i=[h]Q_i$ and $V_i=[h-1]Q_i$, in the prescribed primary and
+opposite formal groups while preserving all prepared and real
+neighborhoods. All excluded chart denominators form a finite
+exceptional set and are avoided. At a selected prime the labels
+are integral and the absolute formal errors have order at least
+four. Every nonconstant factor term therefore has positive
+valuation at the successful place. The reciprocal trace is a
+unit with residue one or two, giving valuation one for the actual
+detector input $b_j$.
+
+More explicitly, for each $j$ the contact ratio is
+\[
+ R_j=\frac{\prod_{\theta\in\Theta_c}p_{j,\theta}}
+              {(u+D_0^2(U_j'-c/2)w^2)^{10}}.
+\]
+Its denominator is a square. Outside its ten selected numerator
+primes every valuation is even, and division by the squared trace
+preserves parity. Thus every actual $b_j$ has square reduced
+denominator. At the fixed preparation places,
+\[
+ R_j=\prod_{\theta\in\Theta}
+ \left(1-\frac{(c/2-\theta)^2}{(t_j-c/2)^2}\right)
+\]
+is arbitrarily close to one. The bounded test functions make
+$W_j$ close to one and its trace close to two. The factor $408/409$
+gives the required local squares and depths $4,2,2$ at 2, 3 and 17.
+At both real embeddings, large positive slope gives $q_j>0$,
+all factors positive, and
+$b_j\longrightarrow(408/409)^2/4\in(0,17)$.
+
+After this final reference is fixed, apply the prepared pole
+realization theorem independently to $b_s,b_0,b_1,b_2$.
+Their pole-coordinate sets are disjoint and include the complete
+zero-auxiliary branches. Fill the reference and point charts by
+their converses, and fill every product, square and contact helper
+by its specified value. The three inverse weights are nonzero,
+so all certified Laurent substitutions are defined. Both aggregate
+rows hold by the chosen shifts. This constructs a rational zero
+of the complete table for every integer input. No earlier pole
+certificate is assumed to persist during the reference progression.
+
+\section{Exact coefficient theorem}
+
+Let $Q_{N,1},\ldots,Q_{N,207}$ be the specified integer quadratic
+rows, and put
+\[
+ P_N=\sum_{j=1}^{207}Q_{N,j}^2.
+\]
+
+\begin{theorem}\label{thm:coefficients}
+For every integer $N\ge1$, the polynomial $P_N$ has exactly 229
+variables, degree four, content one, and 3,312 nonzero coordinate
+monomials. Its exact coefficient height is
+\[
+ H(P_N)=\max\{9063965991649194484576286065455625302,149^{2N+2}\}.
+\]
+The constant term in this maximum dominates for $1\le N\le7$;
+the parameter term dominates for $N\ge8$.
+Over $\Q$, $P_N=0$ is equivalent to the complete three-detector
+system with~\eqref{eq:physical-shifts}. Every square, height-recovery
+expression and nonzero guard used in this system is included above.
+\end{theorem}
+
+\begin{proof}
+The independent verifier authenticates the source table and checks
+all 168 unchanged parent rows, the aggregate change, the six
+changed parent contact rows, and the 34 coordinate copies. It checks
+the 31 copied equations against the updated second detector and
+independently reconstructs all twelve contact equations. Multiplication in
+$\Q[\rho]/(\rho^2-2)$ independently verifies both components
+of~\eqref{eq:components}. It reconstructs both aggregate rows and
+their equivalence to~\eqref{eq:physical-shifts}. The three inverse
+guards are literal rows numbered 26, 38 and 180.
+
+Expansion by unordered pairs of terms gives 3,322 parameter-separated
+terms and 3,312 coordinate-monomial profiles. Each profile is a
+polynomial of degree at most two in $C$. After choosing its leading
+sign, substitution $C=149+T$ gives positive constant coefficient and
+nonnegative remaining coefficients. Thus none of these monomials
+disappears for $C\ge149$. Every coordinate occurs.
+
+Write $K=9063965991649194484576286065455625302$. A constant coefficient
+profile of absolute value $K$ and the profile $22201C^2$ both occur. For $N=1,\ldots,7$,
+exact evaluation gives height $K$. For every coefficient profile
+$c_m(C)$, each of $22201C^2\pm c_m(C)$ has nonnegative coefficients
+after substitution $C=149^8+T$. This proves the uniform height
+formula. The coefficient of $X^4$ is one, proving both exact degree
+four and content one. Finally a sum of rational squares vanishes
+exactly when every summand vanishes.
+\end{proof}
+
+The coefficient crossover at $N=8$ concerns only this height formula.
+The soundness and complete witness arguments prove the defining
+threshold $N=15$, completing Theorem~\ref{thm:main}.
+
+\begin{thebibliography}{9}
+\bibitem{Parent195}
+\emph{A quartic definition with 195 rational coordinates},
+\nolinkurl{papers/quartic/quartic195_20261116_v45.tex},
+with the complete table in
+\nolinkurl{computation/quartic/affine_laurent195_v45/quadratic-family.json}.
+\bibitem{TorsionSums}
+\emph{Effective heights of elliptic sums with torsion translates},
+17 November 2026,
+\nolinkurl{papers/effective_sums/effective_torsion_sums_20261117_v62.tex}.
+\bibitem{ExplicitParent}
+\emph{$\Z$ is Diophantine in $\Q$}, Version 19, Part I,
+17 November 2026. The three-detector construction there is attributed
+to Gemini Carbon and builds on Jos\'e Brox's quadratic constructions.
+Pinned commit
+\texttt{498efba6fe75e9d28d6804f1391d7f70e4150afa},
+\url{https://github.com/elliotglazer/diophantine-z-q}.
+\end{thebibliography}
+\end{document}
