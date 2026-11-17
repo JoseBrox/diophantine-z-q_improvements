@@ -1,0 +1,296 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,microtype}
+\usepackage[margin=25mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\DeclareMathOperator{\rad}{rad}
+\title{Simple primitive denominator primes under weak \texorpdfstring{$abc$}{abc}}
+\author{}\date{17 November 2026}
+\begin{document}\maketitle
+
+\begin{abstract}
+For a fixed congruent-number curve over the rationals and a non-torsion
+point in its fourfold subgroup, weak rational $abc$ with exponent $4/3$
+implies that every sufficiently large denominator term has a primitive
+prime of valuation one, outside any prescribed finite set.
+For any fixed weak exponent less than two, the same conclusion
+holds after excluding a fixed finite set of prime factors from the index.
+Consequently, inclusion of the odd denominator support of one sufficiently
+large term in another denominator forces divisibility of the indices.
+The proof uses duplication, a quartic identity and canonical height.
+\end{abstract}
+
+\section{Denominator heights}
+
+Fix an integer $d\ge1$ and the elliptic curve
+\[
+                       E_d:y^2=x^3-d^2x.
+\]
+Let $Q\in2E_d(\Q)$ have infinite order and put $P=[2]Q$.
+For $n\ge1$, write
+\begin{equation}\label{eq:coordinates}
+ x([n]Q)=\frac{A_n^2}{B_n^2},\qquad
+ y([n]Q)=\frac{A_n C_n}{B_n^3},\qquad
+ A_n,B_n>0,\quad\gcd(A_n,B_n)=1.
+\end{equation}
+These expressions exist because
+\[
+ x([2]R)=\left(\frac{x(R)^2+d^2}{2y(R)}\right)^2
+\]
+for a non-torsion point $R$. The equation of the curve then gives
+\begin{equation}\label{eq:quartic}
+                         C_n^2=A_n^4-d^2B_n^4.
+\end{equation}
+Initially $C_n$ is rational; its square is integral, so $C_n\in\Z$.
+It is nonzero, since $[n]Q$ is not torsion. In particular
+$A_n^4>d^2B_n^4$, and
+\[
+                  h_n:=h(A_n:B_n)=\log A_n.
+\]
+Normalize the canonical height by
+$\widehat h(R)=\tfrac12h(x(R))+O_{E_d}(1)$. Its standard bounded
+comparison with the naive height and its quadraticity give
+\begin{equation}\label{eq:canonical}
+              h_n=n^2\widehat h(Q)+O_{E_d}(1),\qquad
+                         \widehat h(Q)>0.
+\end{equation}
+These height facts are as in \cite[Chapter VIII, Section 9]{AEC}.
+
+Write
+\[
+ x([n]P)=\frac{\mathcal A_n^2}{\mathcal B_n^2},\qquad
+ \mathcal A_n,\mathcal B_n>0,\quad
+ \gcd(\mathcal A_n,\mathcal B_n)=1.
+\]
+Then
+\begin{equation}\label{eq:height-double}
+ H_n:=h(\mathcal A_n:\mathcal B_n)
+    =n^2\widehat h(P)+O_{E_d}(1)=4h_n+O_{E_d}(1).
+\end{equation}
+For a finite set $S$ of primes, define the simple denominator support
+\[
+                 L_{n,S}=\prod_{\substack{p\notin S\\v_p(\mathcal B_n)=1}}p.
+\]
+Assume weak rational $abc$ with exponent $\kappa>1$: there is
+$K_\kappa\ge1$ such that
+\[
+ c\le K_\kappa\rad(abc)^\kappa
+\]
+for coprime positive integers $a+b=c$.
+
+\begin{lemma}\label{lem:radical}
+Uniformly in $n$,
+\[
+ \log\rad(A_nB_nC_n)\ge\frac4\kappa h_n
+                              -O_{d,\kappa,K_\kappa}(1),
+\]
+and
+\begin{equation}\label{eq:simple}
+ \log L_{n,S}\ge\left(\frac2\kappa-1\right)H_n
+                              -O_{d,S,\kappa,K_\kappa}(1).
+\end{equation}
+\end{lemma}
+\begin{proof}
+Put $g=\gcd(A_n^4,d^2B_n^4)$. Coprimality of $A_n,B_n$ gives
+$g=\gcd(A_n^4,d^2)\le d^2$. Dividing
+$C_n^2+d^2B_n^4=A_n^4$ by $g$ gives a coprime positive $abc$ triple.
+Its prime support is contained in that of $dA_nB_nC_n$. Therefore
+\[
+ \frac{A_n^4}{g}\le K_\kappa\rad(dA_nB_nC_n)^\kappa
+                  \le K_\kappa\bigl(d\rad(A_nB_nC_n)\bigr)^\kappa.
+\]
+This proves the first estimate. Duplication gives
+\begin{equation}\label{eq:duplication}
+ \sqrt{x([n]P)}=\frac{A_n^4+d^2B_n^4}{2|A_nB_nC_n|}.
+\end{equation}
+Outside the primes dividing $2d$, the three integers $A_n,B_n,C_n$
+are pairwise coprime, and the numerator in \eqref{eq:duplication}
+is coprime to their product. Indeed, reduction modulo a prime
+dividing $A_n$, $B_n$, or $C_n$ gives respectively a nonzero
+multiple of $d^2B_n^4$, $A_n^4$, or $2A_n^4$.
+It follows that
+\[
+ v_p(\mathcal B_n)=v_p(A_nB_nC_n)\qquad(p\nmid2d).
+\]
+For any nonzero integer $D$, prime-by-prime comparison gives
+\[
+       \prod_{v_p(D)=1}p\ \ge\ \frac{\rad(D)^2}{|D|}.
+\]
+Since $B_n\le A_n$ and $|C_n|<A_n^2$, one has
+$\log|A_nB_nC_n|\le4h_n$. Consequently the simple support of
+$A_nB_nC_n$, outside $S$ and the primes dividing $2d$, has logarithm
+at least $(8/\kappa-4)h_n-O(1)$.
+Omitting fixed primes costs a bounded amount for simple support.
+Using \eqref{eq:height-double} proves \eqref{eq:simple}.
+\end{proof}
+
+\section{Primitive primes and index divisibility}
+
+A prime $p$ is primitive for $\mathcal B_n$ if $p\mid \mathcal B_n$ and
+$p\nmid \mathcal B_m$ for every $1\le m<n$. At a prime of good reduction,
+\begin{equation}\label{eq:order}
+ p\mid \mathcal B_n\quad\Longleftrightarrow\quad [n]\widetilde P=O
+                    \quad\Longleftrightarrow\quad r_p\mid n,
+\end{equation}
+where $r_p$ is the order of $\widetilde P\in E_d(\mathbf F_p)$.
+This follows directly from the reduction homomorphism: negative
+valuation of the affine abscissa means reduction to the identity.
+
+The usual primitive-denominator and odd-primitivity results are
+discussed in \cite[Lemmas 9 and 13]{Silverman} and
+\cite[Proposition 3.10 and the following remarks]{CZ}.
+The following statement specifies a weak exponent and valuation one.
+
+\begin{theorem}\label{thm:primitive}
+Assume weak rational $abc$ with exponent $4/3$.
+For every fixed finite set $S$ of primes, there exists $n_0$ such
+that, for every $n\ge n_0$, the integer $\mathcal B_n$ has a primitive prime
+$p\notin S$ with $v_p(\mathcal B_n)=1$.
+\end{theorem}
+\begin{proof}
+Enlarge $S$ by the primes dividing $2d$. Every prime outside $S$
+is then a prime of good reduction. If $p\mid \mathcal B_n$ is not primitive,
+\eqref{eq:order} gives a proper divisor $r_p<n$ of $n$. Choose a
+prime $\ell\mid n/r_p$. Then $r_p\mid n/\ell$, so
+$p\mid \mathcal B_{n/\ell}$. Thus the product of all nonprimitive prime
+divisors of $\mathcal B_n$ outside $S$ divides
+\[
+ \prod_{\substack{\ell\mid n\\\ell\text{ prime}}}\mathcal B_{n/\ell}.
+\]
+If there is no simple primitive prime outside $S$, this gives
+\begin{align*}
+ \log L_{n,S}
+ &\le\sum_{\substack{\ell\mid n\\\ell\text{ prime}}}
+                                     \log\mathcal B_{n/\ell}\\
+ &\le n^2\widehat h(P)
+       \sum_{\substack{\ell\mid n\\\ell\text{ prime}}}\ell^{-2}
+                                                     +O_{E_d}(\omega(n)).
+\end{align*}
+An elementary bound, sufficient here, is
+\begin{align*}
+ \sum_{\ell\text{ prime}}\ell^{-2}
+ &\le\frac14+\frac19+\frac1{25}
+                    +\sum_{j=3}^{\infty}(2j+1)^{-2}\\
+ &\le\frac14+\frac19+\frac1{25}+\frac1{49}
+                         +\int_3^{\infty}(2x+1)^{-2}\,dx\\
+ &=\frac{21739}{44100}<\frac12.
+\end{align*}
+On the other hand $2/(4/3)-1=1/2$, so
+Lemma~\ref{lem:radical} and \eqref{eq:height-double} imply
+\[
+ \frac12 n^2\widehat h(P)-O(1)\le\log L_{n,S}.
+\]
+Consequently
+\[
+                    \frac{311}{44100}n^2\widehat h(P)
+                                       \le O(1)+O(\omega(n)),
+\]
+which bounds $n$, since $\omega(n)\le\log_2 n$.
+This contradiction proves the theorem for every sufficiently large $n$.
+\end{proof}
+
+The same proof works for every fixed exponent
+$1<\kappa<88200/65839$, since then
+$2/\kappa-1>21739/44100$. In particular the theorem holds under
+either weak exponent $16/15$ or $121/100$.
+
+\begin{theorem}\label{thm:coprime}
+Assume weak rational $abc$ with a fixed exponent
+$1<\kappa<2$. Put $a_\kappa=2/\kappa-1$, choose an integer
+$R>1/a_\kappa$, and let
+\[
+                  M_R=\prod_{\substack{\ell\le R\\\ell\text{ prime}}}\ell.
+\]
+For every fixed finite set $S$, there is $n_0$ such that every
+$n\ge n_0$ with $\gcd(n,M_R)=1$ has a primitive denominator
+prime $p\notin S$ with $v_p(\mathcal B_n)=1$.
+\end{theorem}
+\begin{proof}
+The same nonprimitive-support argument gives, in the absence
+of a simple primitive prime,
+\[
+ \log L_{n,S}\le n^2\widehat h(P)
+                  \sum_{\substack{\ell\mid n\\\ell\text{ prime}}}\ell^{-2}
+                  +O_{E_d}(\omega(n)).
+\]
+Every prime divisor of $n$ exceeds $R$. Since $x^{-2}$ is
+decreasing on the positive real axis,
+\[
+ \sum_{\substack{\ell\mid n\\\ell\text{ prime}}}\ell^{-2}
+     \le\sum_{m=R+1}^{\infty}m^{-2}
+     \le\int_R^\infty x^{-2}\,dx
+     =1/R<a_\kappa.
+\]
+Lemma~\ref{lem:radical} bounds the same simple support below
+by $a_\kappa n^2\widehat h(P)-O(1)$.
+Thus $(a_\kappa-1/R)n^2\widehat h(P)\le O(1)+O(\omega(n))$,
+which bounds $n$.
+\end{proof}
+
+\begin{corollary}\label{cor:divides}
+Assume weak rational $abc$ with exponent $4/3$, and fix a finite
+set $S$ containing the bad reduction primes.
+For every pair of nonzero integers $h,j$ with
+$|h|\ge n_0$, the implication
+\[
+ \bigl(\forall p\notin S:\ v_p(\mathcal B_{|h|})\text{ odd }
+                                      \Longrightarrow p\mid \mathcal B_{|j|}\bigr)
+                          \quad\Longrightarrow\quad h\mid j
+\]
+holds. Conversely, $h\mid j$ implies the displayed support inclusion.
+\end{corollary}
+\begin{proof}
+Take the simple primitive prime of $\mathcal B_{|h|}$ from
+Theorem~\ref{thm:primitive}. Its reduction order is $|h|$.
+The assumed support inclusion puts it in $\mathcal B_{|j|}$, so
+\eqref{eq:order} gives $|h|\mid |j|$. The reverse implication
+follows from \eqref{eq:order} at every prime outside $S$.
+\end{proof}
+
+Under the hypothesis of Theorem~\ref{thm:coprime}, the same
+corollary holds for $|h|\ge n_0$ with $\gcd(h,M_R)=1$.
+In particular one may restrict to the progression
+$h\equiv1\pmod{M_R}$.
+
+For a rank-one curve this progression is compatible with a
+finite isogeny-coset condition. More precisely, suppose
+$E_d(\Q)=\Z G\oplus T$ and $P=[L]G$, where $L$ annihilates
+the finite torsion subgroup $T$. Then
+\[
+       H\in P+[M_RL]E_d(\Q)
+       \quad\Longleftrightarrow\quad
+       H=[h]P\text{ with }h\equiv1\pmod{M_R}.
+\]
+Indeed $[M_RL](rG+T_0)=[M_Rr]P$ for every integer $r$ and
+$T_0\in T$. The isogeny cover is finite, so this condition
+does not require another free point coordinate in a finite-algebra
+description. If $P$ is not a generator of the full free group,
+the factor $L$ in this cover is essential.
+
+The theorem concerns curves over $\Q$ and rational $abc$.
+It makes no assertion over a quadratic number field from rational
+$abc$ alone. The support-inclusion predicate in Corollary~\ref{cor:divides}
+is not given an existential encoding here. Nor is an equality between
+a rational input and the index ratio $j/h$ established. These are
+additional requirements for an application to a defining polynomial.
+
+\begin{thebibliography}{9}\raggedright
+\bibitem{AEC}J.~H.~Silverman, \emph{The Arithmetic of Elliptic Curves},
+Graduate Texts in Mathematics 106, second edition, Springer, 2009,
+Chapter VIII, Section 9.
+\bibitem{Silverman}J.~H.~Silverman,
+\emph{Wieferich's criterion and the $abc$-conjecture},
+Journal of Number Theory 30 (1988), 226--237,
+\url{https://doi.org/10.1016/0022-314X(88)90019-4}.
+\bibitem{CZ}G.~Cornelissen and K.~Zahidi,
+\emph{Elliptic divisibility sequences and undecidable problems about
+rational points}, Journal f\"ur die reine und angewandte Mathematik
+613 (2007), 1--33, arXiv:math/0412473v3,
+\url{https://arxiv.org/html/math/0412473v3}.
+\end{thebibliography}
+\end{document}

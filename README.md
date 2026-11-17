@@ -47,7 +47,7 @@ The 71-variable quartic uses the complete three-coordinate unit reference chart 
 
 The coefficient-basis transformations and the 195/257-coordinate eliminations preserve their corresponding full rational solution sets. The finite-algebra construction permits a zero final pole ordinate and proves soundness on that larger locus.
 
-Current specifications: [results JSON](data/results_20261117_v59.json), [proof and verification guide](docs/results_20261117_v59.md), and [research directions](docs/research_directions.md).
+Current specifications: [results JSON](data/results_20261117_v60.json), [proof and verification guide](docs/results_20261117_v60.md), and [research directions](docs/research_directions.md).
 
 The [fixed-fiber and detector-index theorems](docs/common_parameter_guard_reduction_20261116_v42.md) show that one common rational pole fiber with nonzero ordinates suffices for all remaining pole guards, and give independent auxiliary-index families with unchanged square-class scalars. The common rational fiber itself remains unproved. Proved obstructions and lower bounds are collected separately in [negative_results](negative_results/README.md).
 
@@ -80,6 +80,14 @@ W=\prod_{i=1}^{6}\left(1+\frac{D_i^2}{u}\right).
 The derivative quotient recovers simple simultaneous contact factors. The transformed tests preserve local extraction at every positive odd valuation of $u$ and automatically prepare its new negative odd valuations. The resulting input $7b$, with $b=4u/((1+u)^2\operatorname{Tr}(W^{-1})^2)$, therefore needs only one complete intrinsic pole block. Sun's theorem applies to the **32 fixed prime positions**; the proof checks their order compatibility, fixed-place preparation and every algebra-character guard.
 
 The count is **1 input + 6 point coordinates + 1 contact parameter + 2 pole parameters + 1 encoder = 11**. The finite algebra has rank **128**. The [complete specification and independent checks](computation/few_variables/derivative11_v59) certify degree at most **5,444,199,553**, fewer than $2^{309}$ monomials and integer content one. The sufficient odd shift is ineffective; $B=3$ is an algebraic fixture only. This ordinary-abc result does not assert the same count under the two weaker fixed-exponent abc hypotheses. **The targets 21 and 9 remain unproved.**
+
+## Elliptic index divisibility and amplified congruences
+
+The [primitive-denominator theorem](papers/elliptic_divisibility/simple_primitive_denominators_20261117_v60.tex) gives a simple primitive denominator prime for every sufficiently large index in a fixed coprime progression, under any fixed weak-abc exponent $1<\kappa<2$. Under exponent $4/3$, every sufficiently large index is allowed. Duplication gives the simple-support coefficient $2/\kappa-1$; the progression makes the nonprimitive support strictly smaller.
+
+The [index-pole theorem](papers/elliptic_divisibility/elliptic_index_poles_20261117_v60.tex) uses that prime to force $h\mid j$ for $H=[h]P$ and $U=[j]P$. It proves infinitely many complete witnesses for every nonzero integer quotient. Formal-logarithm truncation then forces $X-j/h$ to vanish to any prescribed fixed order at the simple reference-denominator primes, without another free coordinate. The finite isogeny restrictions, exceptional indices, real and fixed-place preparation, and whole-character guards are included. A separate height condition is still needed to turn those congruences into equality.
+
+The [pole-cancelling coordinate](papers/elliptic_heights/pole_cancelling_quotient_height_20261117_v60.tex) $X^2x(U)-x(H)$ has a proved height lower bound and local expansion. Its proposed use in the specified derivative detector is excluded by the separate [denominator-support theorem](negative_results/papers/pole_parameters/denominator_support_height_obstruction_20261117_v60.tex): all positive odd contact primes must lie in the denominator of $H$, which cannot support a height growing quadratically with $j/h$. The theorem extends to every fixed rational replacement generically nonconstant in $U$ within the stated support architecture; Siegel's theorem handles its constant specializations. It concerns intended integer witnesses and does not exclude other sources. The construction counts above are unchanged.
 
 ## Finite algebras and the general polynomials
 
@@ -198,7 +206,7 @@ The [guarded rational-square criterion](papers/pole_parameters/native_square_cri
 
 A rational-square value excludes every required negative odd detector pole. The radicand is positive at every prepared character, and its reference value at $W=1$ is exactly $w^2/(1+w)^2$. Fixed nonzero exceptional-set units are admissible coefficients; so are the proved source-dependent choices $a=1+wc^2$ for existing guarded rational source functions $c$. These choices add no rational coordinate or nonzero guard. The flat choice $a=1$ has an exact prescribed-coordinate elliptic form, and the conditional detector has a trace-preserving reference involution.
 
-**Two simultaneous rational-square values on actual prepared detector tuples would give 21 variables, or 9 under the conditional source hypotheses. This global realization theorem remains unproved.** The proved local preparation and exact finite-algebra count do not replace it. The [current proof guide](docs/results_20261117_v59.md) states the precise conditions and their limitations.
+**Two simultaneous rational-square values on actual prepared detector tuples would give 21 variables, or 9 under the conditional source hypotheses. This global realization theorem remains unproved.** The proved local preparation and exact finite-algebra count do not replace it. The [current proof guide](docs/results_20261117_v60.md) states the precise conditions and their limitations.
 
 ### A single cover and finite square-class alternatives
 

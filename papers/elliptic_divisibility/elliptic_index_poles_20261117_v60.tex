@@ -1,0 +1,509 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,microtype}
+\usepackage[margin=26mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\title{Elliptic index divisibility and amplified congruences}
+\author{}\date{17 November 2026}
+\begin{document}\maketitle
+
+\begin{abstract}
+For a fixed rational congruent-number curve, a reciprocal square
+abscissa supplies a balanced pole test at the odd denominator primes
+of an elliptic multiple. Under weak rational $abc$ with any fixed
+exponent strictly between one and two, an index progression ensures
+that every solution outside a fixed finite exceptional set forces
+divisibility of the two elliptic indices. Conversely, every nonzero
+integer ratio occurs for infinitely many index pairs satisfying the
+complete intrinsic-pole preparation. Adding a local logarithmic-ratio
+test preserves completeness. Formal-logarithm truncation amplifies
+the resulting congruences to any fixed multiplicity without a new free
+coordinate. A separate height condition is required to identify an
+external rational input with the index ratio.
+\end{abstract}
+
+\section{The source}\label{sec:source}
+
+Fix $d\in\Z_{>0}$ and
+\[
+                         E_d:y^2=x^3-d^2x.
+\]
+Let $P\in4E_d(\Q)$ have infinite order. Choose its sign and replace
+it by a fixed positive multiple so that it belongs to the formal group at two with
+parameter $\zeta(P)=-x(P)/y(P)$ of valuation at least four.
+Write
+\[
+              H=[h]P,\qquad U=[j]P,\qquad h,j\in\Z\setminus\{0\}.
+\]
+These index representations are hypotheses of the arithmetic statement.
+For a rank-one curve they may be enforced by restricting both points
+to a fixed multiple of $E_d(\Q)$. This restriction is a finite
+isogeny cover and introduces no further free point coordinate.
+
+Let $q_H\in\Q^\times$ satisfy $q_H^2=x(H)$. There is a positive
+choice $q_0=\sqrt{x(P)}\in\Q$. Choose a fixed positive rational
+$\lambda_0$ with
+\[
+                  v_2(\lambda_0)=2,\qquad v_7(\lambda_0)=-1,
+\]
+and sufficiently large real absolute value, as specified below. Set
+$c=q_0\lambda_0^2$ and define
+\begin{equation}\label{eq:weight}
+                       u=\frac c{q_H},\qquad w=\frac{u}{(1+u)^2}.
+\end{equation}
+Use the test $C_1=f(U)=1/x(U)$. Optionally, for an external rational
+input $X$, also use
+\[
+                 C_2=\frac{\zeta(U)}{\zeta(H)}-X.
+\]
+For either test list put
+\begin{equation}\label{eq:detector}
+ D_i=\frac{C_i^2}{1+uC_i^2},\qquad
+ W=\prod_i\left(1+\frac{D_i^2}{u}\right),\qquad
+ b=4wW^2,\qquad \eta=7b.
+\end{equation}
+Retain all nonzero denominators. Impose the intrinsic equation
+\begin{equation}\label{eq:pole}
+ Y^2=\eta(\eta+v^2)^2s^4
+             -\eta(\eta-v^2)^2(1-\eta)^2,
+                \qquad v,s,Y\in\Q.
+\end{equation}
+The intrinsic pole theorem \cite{Intrinsic} implies from this equation
+that $\eta$ has square reduced denominator.
+
+\section{Soundness}
+
+Let $S$ contain $2,7$, the bad reduction primes, and the numerator
+and denominator primes of $c$. Write
+\[
+       x([n]P)=A_n^2/B_n^2,
+       \qquad A_n,B_n>0,\quad\gcd(A_n,B_n)=1.
+\]
+Fix $1<\kappa<2$, choose an integer
+$R_\kappa>1/(2/\kappa-1)$, and put
+\[
+                 N_\kappa=\prod_{\substack{p\le R_\kappa\\p\text{ prime}}}p.
+\]
+Restrict $h\equiv1\pmod{N_\kappa}$. Under weak rational $abc$
+with exponent $\kappa$, the coprime-index version of the simple
+primitive-prime theorem of \cite{Simple} gives $n_0$ such that
+$B_{|h|}$ has a primitive prime of valuation one outside $S$
+whenever $|h|\ge n_0$. Its proof uses the strict inequality
+\[
+        \sum_{\substack{\ell\mid h\\\ell\text{ prime}}}\ell^{-2}
+                         \le1/R_\kappa<2/\kappa-1.
+\]
+
+On a rank-one curve, suppose $P=L G$ for a generator $G$
+modulo torsion, where $L$ kills torsion and imposes the retained
+subgroup. The required coset is enforced by
+\[
+                 H-P\in[LN_\kappa]E_d(\Q),
+                 \qquad U\in[L]E_d(\Q).
+\]
+The factor $L$ in the first condition is essential. Both conditions
+are finite isogeny covers over the retained image points.
+
+\begin{theorem}\label{thm:sound}
+Assume weak rational $abc$ with a fixed exponent $1<\kappa<2$,
+$h\equiv1\pmod{N_\kappa}$ and $|h|\ge n_0$.
+Every rational solution of \eqref{eq:pole}
+in the guarded source satisfies $h\mid j$. The assertion remains
+valid when any additional rational tests are included in
+\eqref{eq:detector}.
+\end{theorem}
+\begin{proof}
+Choose a simple primitive prime $p\notin S$ of $B_{|h|}$.
+Since $c$ is a unit there, $v_p(u)=1$.
+More generally, when $\nu=v_p(u)$ is odd,
+\[
+                  v_p(D_i)=\max(2v_p(C_i),-\nu).
+\]
+The two terms of $1+uC_i^2$ have distinct valuations, which proves
+this formula, with the convention $v_p(0)=+\infty$.
+Every factor $1+D_i^2/u$ has valuation at most zero: its two terms
+have distinct valuations because $2v_p(D_i)-\nu$ is odd.
+
+If $U$ is not formal at $p$, then $v_p(C_1)\le0$, so
+$v_p(D_1)\le0$ and $v_p(W)\le-\nu=-1$. Thus
+\[
+                  v_p(b)=\nu+2v_p(W)<0
+\]
+is odd. The same is true of $7b$ because $p\ne7$, contradicting
+\eqref{eq:pole}. Therefore $U$ is formal at $p$.
+The order of $\widetilde P$ modulo $p$ is exactly $|h|$ by
+primitivity. Since $[j]\widetilde P=O$, it follows that $h\mid j$.
+\end{proof}
+
+The finite restriction $|h|\ge n_0$ requires no free coordinate.
+After the cyclic subgroup has been imposed, it can be expressed by
+the nonzero guard
+\[
+                 \prod_{1\le r<n_0}\bigl(x(H)-x([r]P)\bigr)\ne0.
+\]
+The affine point guards already exclude $h=0$.
+
+\section{Completeness for every integer ratio}
+
+\begin{theorem}\label{thm:complete}
+The fixed constant $c$ may be chosen so that the following holds.
+For every nonzero integer $m$, there are infinitely many nonzero
+integers $h\equiv1\pmod{N_\kappa}$ with $|h|\ge n_0$ for which,
+setting $j=mh$ and
+choosing $q_H>0$, the input $b$ in \eqref{eq:detector} satisfies
+\[
+ 0<b<1/7,\qquad b\in\Q_2^{\times2},\qquad v_2(b)\ge4,
+ \qquad v_7(b)\ge0,
+\]
+and has square reduced denominator. This also holds with the
+optional test $C_2$ when $X=m$. Consequently the intrinsic
+theorem supplies rational solutions of \eqref{eq:pole}.
+\end{theorem}
+\begin{proof}
+Choose $\lambda_0$ as above with $\lambda_0^2>100$.
+Take $h\equiv1\pmod{N_\kappa}$ in a sufficiently
+small fixed congruence neighborhood of one so that $H=[h]P$
+is close to $P$ at every prime in $S$. Choose the rational
+square-root branch $q_H$ close to $q_0$ at these primes. This
+branch is coherent: since $P=2R$ for some fixed rational point
+$R$, the rational function
+\[
+        q([h]R)=\frac{x([h]R)^2+d^2}{2y([h]R)}
+\]
+is a square root of $x([h]P)$; changing the initial sign of $R$
+if necessary makes its value $q_0>0$ at $h=1$. Congruences
+may also be imposed on $[h]R$.
+At the odd primes of $S$, closeness ensures
+$v_p(u)=v_p(\lambda_0^2)$, which is even. At two and seven, refine it
+so that $q_0/q_H$ is a local square. Thus
+\[
+ u\in\Q_2^{\times2},\quad v_2(u)=4,\qquad
+ u\in\Q_7^{\times2},\quad v_7(u)=-2.
+\]
+
+The formal group at two gives $v_2(\zeta(H))\ge2$ and
+$v_2(\zeta(U))\ge v_2(\zeta(H))$, since $U=[m]H$ and
+$m\in\Z$. Hence $v_2(C_1)\ge4$. Also the integral formal
+multiplication series gives
+\[
+       \frac{\zeta([m]H)}{\zeta(H)}-m
+                      \in\zeta(H)\Z_2,
+\]
+so $v_2(C_2)\ge2$ when this test is present. Therefore all
+factors of $W$ are two-adic units congruent to one modulo two.
+It follows that $b$ is a two-adic square and $v_2(b)=6$.
+
+At seven the terms of $1+uC_i^2$ cannot cancel: in the
+equal-valuation case $uC_i^2$ has square residue, whereas
+$-1$ is not a square modulo seven. Thus the displayed valuation
+formula for $D_i$ remains valid even though $v_7(u)=-2$.
+It gives $v_7(D_i)\ge2$, so $W\equiv1\pmod7$ and $v_7(b)=2$.
+
+Consider any other prime. If $v_p(u)$ is even, then
+$v_p(b)=v_p(4)+v_p(u)-2v_p(1+u)+2v_p(W)$ is even.
+If $\nu=v_p(u)<0$ is odd, the balanced valuation formula gives
+$v_p(D_i^2/u)\ge-3\nu>0$, hence $W\equiv1\pmod p$ and
+$v_p(b)=-\nu>0$.
+It remains to consider odd positive $\nu$ outside $S$.
+Here $H$ is formal and $v_p(\zeta(H))=\nu$, while $U=[m]H$.
+Thus $v_p(C_1)\ge2\nu$ and, if present,
+$v_p(C_2)\ge\nu$ by the same integral formal multiplication
+series. Every factor of $W$ is a unit congruent to one, and
+$v_p(b)=\nu>0$. This proves square denominator at all primes.
+
+Finally take $[h]R$ in a sufficiently small real neighborhood
+of $R$. Then $q_H>0$ and $u$ remains larger than $50$.
+All tests are real, and
+\[
+       0\le D_i<1/u,\qquad
+       1\le W\le(1+u^{-3})^2.
+\]
+Consequently $0<b\le4u^{-1}(1+u^{-3})^4<1/7$.
+Every fixed arithmetic progression of multiples of a nontorsion
+real elliptic point is dense in the appropriate connected real
+component. Therefore this real neighborhood is reached for
+infinitely many arbitrarily large $h$ in the specified congruence
+class. The nonzero affine guards exclude at most finitely many
+of these indices. Apply the intrinsic completeness theorem to
+$\eta=7b$.
+\end{proof}
+
+\section{A monic algebra for the finite isogeny covers}
+
+Let $R_n(Z)=\mathcal A_n(Z)/\mathcal B_n(Z)$ be the rational
+function giving the abscissa of multiplication by a positive integer
+$n$ on $E_d$. Choose coprime numerator and denominator with
+$\mathcal A_n$ monic. The degrees are $n^2$ and $n^2-1$,
+respectively; the leading coefficient of $\mathcal B_n$ is $n^2$.
+These follow either from the division polynomials or from the degree
+of $[n]$ and its formal expansion at infinity; see
+\cite[Chapter III]{AEC}.
+
+\begin{lemma}\label{lem:isogeny-algebra}
+Let $K$ be a characteristic-zero field and let
+$T_0=(x_0,y_0)\in E_d(K)$ with $y_0\ne0$. The monic algebra
+\[
+ \mathcal C=K[Z]/\bigl(\mathcal A_n(Z)-x_0\mathcal B_n(Z)\bigr)
+\]
+is finite etale of rank $n^2$. Both $\mathcal B_n(Z)$ and
+$R_n'(Z)$ are units in $\mathcal C$. The formulas
+\[
+                  x_R=Z,\qquad y_R=\frac{ny_0}{R_n'(Z)}
+\]
+give a point $R\in E_d(\mathcal C)$ satisfying $[n]R=T_0$.
+Every $K$-rational preimage of $T_0$ is obtained uniquely from
+a $K$-algebra character of $\mathcal C$.
+\end{lemma}
+\begin{proof}
+Coprimality of $\mathcal A_n,\mathcal B_n$ makes
+$\mathcal B_n$ a unit in the quotient. Pullback of the invariant
+differential under $[n]$ gives
+\[
+ y([n]R)=\frac{y(R)R_n'(x(R))}{n},\qquad
+ (R_n(Z))^3-d^2R_n(Z)
+     =\frac{(Z^3-d^2Z)(R_n'(Z))^2}{n^2}.
+\]
+In $\mathcal C$ the left side of the second identity is
+$y_0^2\ne0$. It follows that $R_n'(Z)$ is a unit, and the
+displayed formulas for $x_R,y_R$ satisfy the curve equation
+and map to $T_0$. Moreover, modulo the defining polynomial,
+\[
+ (\mathcal A_n-x_0\mathcal B_n)'
+                         =\mathcal B_n R_n'
+\]
+is a unit, so the algebra is etale. Its rank is the degree
+$n^2$ of the monic polynomial. The ordinate is uniquely
+determined by the abscissa and the chosen target ordinate,
+which proves the assertion about characters.
+\end{proof}
+
+Apply the lemma with $n=LN_\kappa$ and target $H-P$, and
+with $n=L$ and target $U$. Retain the affine target guards and
+their nonzero ordinates. On the intended source, the guard
+$x(H)\ne x(P)$ excludes $h=\pm1$ and ensures that both
+sign characters of $H$ give a nontorsion target $H-P$.
+The finite exceptional-index guard may always include this
+factor. The isogeny part has rank $(LN_\kappa)^2L^2$ over the
+image-point algebra and introduces no new free coordinate.
+The same construction over a finite etale base algebra applies
+componentwise when the target guards are units.
+
+\section{Finite coordinates and guards}\label{sec:scope}
+
+On a rational elliptic curve each point uses one retained rational
+abscissa coordinate and finite algebraic roots. The pole contributes
+two free parameters, while its ordinate is a finite quadratic root.
+Finite isogeny covers and the displayed nonzero guards introduce no
+additional free parameters in the finite-algebra encoder.
+Lemma~\ref{lem:isogeny-algebra} implements the required isogeny
+cosets by monic finite algebras.
+
+For the square-abscissa chart, retain $q_H,q_U$ freely and use
+the monic roots $l_H^2=q_H^4-d^2$, $l_U^2=q_U^4-d^2$, with
+$y(H)=q_Hl_H$ and $y(U)=q_Ul_U$. At the prepared rational
+values all these point characters are real, while $u=c/q_H>50$
+is independent of their signs. Thus every balanced denominator,
+$W$, and $b$ is nonzero at every point character. A finite isogeny
+cover does not change the images of these point characters.
+The intrinsic density theorem allows the pole parameters to avoid
+the radicand and division guards simultaneously at every character.
+
+The theorem establishes an integer \emph{index ratio}. With the
+optional comparison test, it supplies local congruences between
+$X$ and $j/h$. Identifying these two rational numbers requires
+an additional argument. No defining-variable bound for
+$\Z\subset\Q$ is asserted here.
+
+\section{The amplified detector}
+
+Use the notation, fixed weak exponent $1<\kappa<2$, and cyclic
+point coset of Sections~\ref{sec:source}--\ref{sec:scope} on
+$E_d:y^2=x^3-d^2x$, with $P\in4E_d(\Q)$,
+$H=[h]P$, $U=[j]P$, and $q_H^2=x(H)$.
+Fix an integer $T\ge1$ and put $k=8T-7$.
+Let $\Lambda_T(Z)\in\Q[Z]$ be the degree-at-most-$T$ truncation
+of the formal logarithm in the parameter $\zeta=-x/y$, normalized
+to begin with $Z$. In particular $\Lambda_1(Z)=Z$.
+For this curve the coefficients are explicitly
+\[
+ \log_E(Z)=\sum_{r\ge0}
+      \frac{(-1)^r\binom{2r}{r}d^{2r}}{4r+1}Z^{4r+1}.
+\]
+Indeed, with $w=-1/y$ the curve equation is
+$w=Z^3-d^2Zw^2$, and its invariant differential is
+$dZ/\sqrt{1+4d^2Z^4}$.
+Replace the weight and test list by
+\[
+ u=\left(\frac c{q_H}\right)^k,\qquad
+ C_1=f(U)^T,\qquad
+ C_2=\frac{\Lambda_T(\zeta(U))}{\Lambda_T(\zeta(H))}-X.
+\]
+Keep the balanced definitions
+\[
+ D_i=\frac{C_i^2}{1+uC_i^2},\quad
+ W=\prod_{i=1}^2\left(1+\frac{D_i^2}{u}\right),\quad
+ b=\frac{4uW^2}{(1+u)^2},\quad\eta=7b,
+\]
+and the intrinsic pole equation
+\[
+ Y^2=\eta(\eta+v^2)^2s^4
+              -\eta(\eta-v^2)^2(1-\eta)^2.
+\]
+Retain the previous guards and also
+$\Lambda_T(\zeta(H))\ne0$. The finite exceptional set $S$
+contains $2,7$, the bad reduction and coefficient primes, and
+every prime at most $T+1$.
+
+\begin{lemma}\label{lem:truncation}
+At every good prime $p\notin S$, if $H$ is formal with
+$v_p(\zeta(H))=e>0$ and $U=[m]H$ for $m\in\Z\setminus\{0\}$,
+then
+\[
+ v_p\left(
+ \frac{\Lambda_T(\zeta(U))}{\Lambda_T(\zeta(H))}-m
+ \right)\ge Te.
+\]
+\end{lemma}
+\begin{proof}
+The invariant differential has integral formal coefficients, so
+the coefficient of $Z^r$ in its logarithm has valuation at least
+$-v_p(r)$. For $r\ge T+1$ and $p>T+1$ one has
+$r-1-v_p(r)\ge T$: this is immediate when $p\nmid r$, while
+$p^a-1-a\ge T$ when $a=v_p(r)\ge1$.
+Consequently
+\[
+ \frac{\Lambda_T(z)}{\log_E(z)}\in1+p^{Te}\Z_p
+                         \qquad(v_p(z)=e).
+\]
+Both the logarithm and its truncation have valuation $e$.
+Now use $\log_E(U)=m\log_E(H)$ and
+$v_p(\zeta(U))\ge e$. Multiplication by the integral number
+$m$ does not decrease the stated error valuation.
+\end{proof}
+
+\begin{theorem}\label{thm:amplified}
+Assume weak rational $abc$ with the fixed exponent $1<\kappa<2$,
+retain $h\equiv1\pmod{N_\kappa}$, and exclude the
+same finite exceptional set of indices as in Sections~\ref{sec:source}--\ref{sec:scope}, enlarged
+for the present $S$. Every rational pole solution satisfies
+$h\mid j$. Set $m=j/h$.
+If $p\notin S$ satisfies $v_p(B_{|h|})=1$, then
+\[
+                              v_p(X-m)\ge T.
+\]
+For every nonzero integer $m$, there are infinitely many $h$
+in the prescribed index progression
+with $j=mh$ and $X=m$ for which the complete intrinsic-pole
+preparation holds. The initial choice $v_2(\zeta(P))\ge4$
+suffices simultaneously for every $T$. The amplification introduces no new
+free parameter.
+\end{theorem}
+\begin{proof}
+At a simple primitive denominator prime of $H$, $v_p(u)=k$.
+If $U$ is not formal, then $v_p(C_1)\le0$. The same balanced
+valuation argument as in Sections~\ref{sec:source}--\ref{sec:scope} gives a negative odd
+valuation of $b$, which is impossible. Thus $h\mid j$.
+
+At any simple denominator prime, not necessarily primitive,
+$v_p(u)=k$. Every factor of $W$ has valuation at most zero.
+If $v_p(D_2)\le k/4$, the second factor has negative valuation
+and
+\[
+ v_p(b)=k+2v_p(W)\le4v_p(D_2)-k<0;
+\]
+the last strict inequality follows because the left side of
+the preceding bound is odd. Hence $v_p(D_2)>k/4$.
+Its positivity implies $v_p(D_2)=2v_p(C_2)$, so
+\[
+                      v_p(C_2)>k/8=T-7/8,
+\]
+and the integral valuation is at least $T$.
+Lemma~\ref{lem:truncation} now gives $v_p(X-m)\ge T$.
+
+For completeness take $j=mh$ and $X=m$. At any positive odd
+denominator depth $e=v_p(q_H^{-1})$ outside $S$, one has
+$v_p(u)=ke$, $v_p(C_1)\ge2Te$ and $v_p(C_2)\ge Te$.
+The first factor of $W$ is a unit. The second has valuation
+at least $\min(0,(4T-k)e)$, and therefore
+\[
+ v_p(b)\ge\min(k,8T-k)e=\min(8T-7,7)e>0.
+\]
+At negative odd valuations of $u$, the balanced transformation
+makes $W$ a unit and $b$ has positive valuation. Even
+valuations of $u$ always give even valuations of $b$.
+
+At the fixed places choose $c=q_0\lambda_0^2$ and the progression of $h$
+as in Sections~\ref{sec:source}--\ref{sec:scope}. Then $u$ is a square at two and seven,
+with valuations $4k$ and $-2k$, respectively. All coefficients
+of the displayed formal logarithm are two-adic integers,
+because the denominators $4r+1$ are odd. Therefore the truncation
+estimate $v_2(C_2)\ge T v_2(\zeta(H))$ holds at two as well,
+uniformly in $T$ and the integer $m$.
+Choose the initial $P$ with $v_2(\zeta(P))\ge4$.
+Then $v_2(C_1)\ge8T$ and $v_2(C_2)\ge4T$, so both
+balanced denominators are units. The first factor of $W$ is
+a unit since $4v_2(C_1)-4k\ge28>0$. For the second,
+possible cancellation can only increase its valuation. Hence
+\[
+ v_2(b)\ge2+4k+2\min(0,16T-4k)
+             =2+\min(4k,28)\ge6.
+\]
+The input $b$ is a two-adic square because $u$ is.
+At seven, the non-cancellation argument using the nonsquareness
+of $-1$ gives $W\equiv1\pmod7$ and $v_7(b)=2k$.
+The other fixed places have even valuation of $u$.
+
+Real preparation is unchanged: when $c/q_H>50$, also $u>50$,
+and $0\le D_i<1/u$ uniformly in both tests. Hence $0<b<1/7$.
+The logarithm guard excludes finitely many points, and the
+usual real density in a fixed arithmetic progression supplies
+infinitely many admissible $h$. The intrinsic theorem gives
+the rational pole witnesses and simultaneous norm-guard avoidance.
+\end{proof}
+
+\section{The exact remaining height condition}
+
+Write $H_H=h(q_H)$ and let $L_{h,S}$ be the product of the
+simple denominator primes of $H$ outside $S$. The refined
+primitive-denominator argument of \cite{Simple} gives
+\[
+ \log L_{h,S}\ge\left(\frac2\kappa-1\right)H_H-O(1),
+\]
+under the fixed weak exponent $1<\kappa<2$.
+If $X\ne m$, Theorem~\ref{thm:amplified} implies
+\begin{equation}\label{eq:remaining}
+ T\left(\frac2\kappa-1\right)H_H
+           \le h(X)+\log(1+|m|)+O_T(1).
+\end{equation}
+Indeed $L_{h,S}^T$ divides the reduced numerator of $X-m$,
+whose absolute value is at most
+$\exp(h(X))(1+|m|)$.
+
+Consequently any additional source condition giving
+\[
+       h(X)+\log(1+|m|)\le C H_H+O(1),
+       \qquad C<T(2/\kappa-1),
+\]
+would bound $H_H$ for every false input. Excluding the
+corresponding finite set of elliptic indices would force
+$X=m\in\Z$. For a true input $X=m$, the numerical inequality
+itself is compatible with arbitrarily large $h$.
+What is missing is a complete, low-coordinate existential
+encoding of such a growth condition. A real inequality alone
+does not bound the rational height of $X$, and a finite
+collection of congruences does not bound the integer $m$.
+
+\begin{thebibliography}{9}
+\bibitem{AEC}J.~H.~Silverman, \emph{The Arithmetic of Elliptic Curves},
+second edition, Graduate Texts in Mathematics 106, Springer, 2009,
+Chapter III.
+\bibitem{Simple}\emph{Simple primitive denominator primes under weak
+$abc$}, companion paper, \nolinkurl{simple_primitive_denominators_20261117_v60.tex}.
+\bibitem{Intrinsic}\emph{A two-coordinate pole test of coefficient
+height four}, companion paper, \nolinkurl{intrinsic_pole_20261117_v56.tex}.
+\end{thebibliography}
+\end{document}

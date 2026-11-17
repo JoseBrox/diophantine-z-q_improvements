@@ -12,6 +12,21 @@ For the general target twenty-one, the derivative height proof cannot be importe
 
 The [fixed-slope incidence theorem](../negative_results/papers/rational_fibers/fixed_slope_trace_finiteness_20261117_v59.tex) proves finiteness on fixed genus-one trace curves for all independent point roles in the stated reweighted sources. Infinite propagation at a fixed slope therefore cannot complete that route. A variable slope, point-dependent auxiliary curve, untwisted conic, or individual rational witnesses remain possible. The theorem does not automatically transfer to the derivative source.
 
+### Complete index divisibility and the remaining equality step
+
+The [elliptic index source](../papers/elliptic_divisibility/elliptic_index_poles_20261117_v60.tex) proves $h\mid j$ and has infinitely many fully prepared witnesses for each nonzero quotient. Under a fixed weak-abc exponent below two, a fixed index progression supplies the required simple primitive denominator primes. Truncating the formal logarithm amplifies the congruence between $X$ and $j/h$ to any fixed order with no new free coordinate. A sufficient missing condition is
+
+```math
+h(X)+\log(1+|j/h|)\le C h(\sqrt{x(H)})+O(1),
+\qquad C<T(2/\kappa-1).
+```
+
+Its complete existential realization is unproved. A real inequality alone does not bound rational height.
+
+The coordinate $X^2x(U)-x(H)$ cannot supply that condition through the specified second derivative detector. The [denominator-support obstruction](../negative_results/papers/pole_parameters/denominator_support_height_obstruction_20261117_v60.tex) bounds the quotient and proves finiteness of intended integer inputs for every fixed rational carrier generically nonconstant in $U$ under the same hypotheses, including its degenerate specializations. Those hypotheses require every positive odd contact prime to occur in the reference denominator. A successful replacement must change that support condition, obtain input equality by a different mechanism, or use additional free data without losing the intended count.
+
+The separate [square-rescaling obstruction](../negative_results/papers/pole_parameters/square_rescaled_weight_perturbation_20261117_v60.tex) excludes identifying the external input solely by square-rescaling an input-independent weight class with the stated strict preparation. Individual rational witnesses for the actual trace covers remain an open route.
+
 ## Current target: simultaneous actual-trace conics
 
 The [trace-conic theorem](../papers/pole_parameters/trace_conic_criterion_20261117_v57.tex) reduces the **21/9** target to rational squares of $V_j^2+w_j(2-V_j)$ at actual source traces and one common slope. It removes the separate detector norm from the square condition. The conic has the exact chart
