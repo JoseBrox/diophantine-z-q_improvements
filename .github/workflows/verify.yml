@@ -13,6 +13,8 @@ jobs:
         with:
           python-version: '3.12'
       - run: python -m pip install sympy==1.14.0
+      - name: Verify the actual-trace transfer and cofinite obstruction
+        run: python -B scripts/verify_v64.py --report /tmp/v64-verification.json
       - name: Verify the derivative degree bound and number-field height tools
         run: python -B scripts/verify_v63.py --report /tmp/v63-verification.json
       - name: Verify the explicit 229-variable quartic and coupling obstruction

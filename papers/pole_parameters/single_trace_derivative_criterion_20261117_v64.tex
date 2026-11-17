@@ -1,0 +1,399 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,microtype}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\DeclareMathOperator{\Tr}{Tr}\DeclareMathOperator{\TC}{TC}
+\title{One actual-trace square in a derivative detector}
+\author{}\date{17 November 2026}
+\begin{document}\maketitle
+
+\begin{abstract}
+The ordinary-$abc$ derivative detector admits a nine-coordinate
+sound source with one finite quadratic test at its actual reciprocal
+trace. Its completeness follows from an additional witness
+requirement, for which the existing preparation supplies several local
+conditions but no global rational realization. We verify the full
+guard and terminal-root hypotheses. The source is invariant under
+simultaneous negation of the input and its two associated elliptic
+points. Consequently actual-trace square witnesses for all sufficiently
+large positive integers would suffice for an integer definition in
+nine variables, after multiplication by finitely many integer input
+factors. Neither that witness assertion nor a new defining count
+is proved.
+\end{abstract}
+
+\section{The retained source}
+
+Use the nine-shift derivative source of \cite{Derivative}, including
+its arithmetic hypotheses: ordinary rational $abc$, the retained
+elliptic group and point charts, formal comparison, trace heights,
+and prime preparation. The fixed exceptional set $S$ is unchanged
+and contains all primes at most $76176$.
+The curve and generator are
+\[
+ K=\Q(\sqrt2),\qquad E:y^2=x^3-(11-6\sqrt2)x,
+\]
+\[
+ P=\left(\frac{57-28\sqrt2}{8},\frac{-660+417\sqrt2}{32}\right),
+ \qquad 2E(K)=\Z P.
+\]
+For the three point roles $A,H,U$, put $f=1/x$, $\zeta=-x/y$, and
+\[
+ r=\frac{\zeta(U)}{\zeta(H)},\qquad
+ r'=\overline{\frac{\zeta(U-A)}{\zeta(H-P)}}.
+\]
+The six tests are
+\[
+ \begin{gathered}
+ C_1=f(H),\quad C_2=f(U),\quad
+ C_3=\overline{f(H-P)},\quad C_4=\overline{f(U-A)},\\
+ C_5=r-r',\qquad C_6=r-X.
+ \end{gathered}
+\]
+The point chart for each role retains two rational coordinates and
+its original free rank-four point algebra.
+
+Fix an odd integer $B\ge3$ and define
+\begin{equation}\label{eq:source}
+\begin{gathered}
+ \beta=X^2+B,\quad T=\Tr x(A),\quad M=\beta^4+T^4,\quad
+ a=M^4,\quad t=M^8-z^2,\\
+ F(a,z)=\prod_{c\in\{-10,-8,-5,1,2,3,4,6,7\}}
+                  ((a+c)^2-z^2),\qquad u=-18\frac{F}{F_a},\\
+ D_i=\frac{C_i^2}{1+uC_i^2},\qquad
+ W=\prod_{i=1}^6\left(1+\frac{D_i^2}{u}\right),\qquad
+ V=\Tr(W^{-1}),\\
+ w=\frac{u}{(1+u)^2},\qquad b=\frac{4w}{V^2}.
+\end{gathered}
+\end{equation}
+Only $z$ is an unrestricted slope coordinate. The integral circuit
+uses the equivalent quotient $u=-9\mathcal G/\mathcal H$, where
+$\mathcal G(A,Z)=\prod_c((A+c)^2-Z)$ and the primitive polynomial
+$\mathcal H=\mathcal G_A/2$ is evaluated at $(a,z^2)$.
+
+Retain every original point, chart, affine-difference and quotient
+guard. Also retain the nonzero conditions on $M,t,F,F_a,u,1+u$,
+the six balanced denominator norms, the two-slot product norm,
+and the actual trace $V$. The existing nonzero guard on $7b$ may
+be retained. Every syntactic rational denominator is guarded,
+and all six preceding quadratic-stage radicands in the point algebra
+remain units. No individual $C_i$ is required to be nonzero.
+
+Use the actual-trace test of \cite{Conic} in place of the two
+unrestricted intrinsic-pole parameters and their finite ordinate:
+\begin{equation}\label{eq:conic}
+                  Y^2=\mathcal C,\qquad
+                  \mathcal C=V^2+w(2-V).
+\end{equation}
+The root $Y$ is a finite generator. Its value and its radicand may
+vanish in soundness; no free conic parameter is introduced.
+
+\section{The local implication and preparation}
+
+\begin{lemma}\label{lem:normalized}
+Every odd valuation of $w=u/(1+u)^2$ is positive. If
+\eqref{eq:conic} has a rational solution, then $b$ has no negative
+odd valuation outside $S$.
+\end{lemma}
+\begin{proof}
+For $\nu=v_p(u)$ one has
+\[
+ v_p(w)=
+ \begin{cases}
+ \nu,&\nu>0,\\
+ -\nu,&\nu<0,\\
+ -2v_p(1+u),&\nu=0.
+ \end{cases}
+\]
+Suppose $v_p(b)<0$ is odd, with $p\notin S$.
+Then $v_p(w)$ is odd and positive, and
+$2v_p(V)>v_p(w)$. Thus $V$ has positive valuation and $2-V$
+is a unit. The two terms of $\mathcal C$ have distinct valuations,
+so $v_p(\mathcal C)=v_p(w)$ is odd. In particular
+$\mathcal C\ne0$ and cannot be a rational square. This includes
+a zero putative terminal ordinate. Outside $S$, the conclusion is
+exactly the implication formerly supplied by the intrinsic equation
+for $7b$.
+\end{proof}
+
+\begin{proposition}\label{prop:local}
+The following assertions hold for the actual derivative detector.
+\begin{enumerate}
+\item At every selected contact of the retained preparation,
+$\mathcal C$ is a nonzero local square.
+\item At every prime outside $S$ where $v_p(u)<0$ is odd,
+$\mathcal C$ is a nonzero local square, including new primes of
+$F_a$.
+\item The fixed finite-place preparation can make $\mathcal C$
+a nonzero local square at each prescribed place, including two.
+\item At every prepared real point-algebra character,
+$\mathcal C>0$ and all new denominator and trace guards are nonzero.
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+At a selected contact, $v_p(u)=v_p(w)=1$ and $V$ is a unit,
+congruent to one or two. Hence
+\begin{equation}\label{eq:local-square}
+          \frac{\mathcal C}{V^2}
+               =1+\frac{w(2-V)}{V^2}\in1+p\Z_p,
+\end{equation}
+and Hensel's lemma applies.
+
+For any odd $\nu=v_p(u)$, the balanced identity gives
+\[
+                  v(D_i)=\max(2v(C_i),-\nu)
+\]
+at either place of the unramified quadratic algebra. Zero tests have
+valuation infinity. If $\nu<0$, then
+$v(D_i^2/u)\ge-3\nu>0$ for every test. Both slots of $W$ are
+one modulo $p$, so $V\equiv2\pmod p$, while
+$v_p(w)=-\nu>0$. Equation~\eqref{eq:local-square} proves the
+second assertion.
+
+At each fixed preparation place the source asymptotics are
+\[
+                      u\sim z^2/a,\qquad w\sim a/z^2,
+                         \qquad V\longrightarrow2.
+\]
+The already chosen nonzero test valuations stay fixed; identically
+zero tests stay zero. Taking the existing preparation sufficiently
+deep puts $w(2-V)/V^2$ in $p\Z_p$ at an odd place and in
+$8\Z_2$ at two. This proves the third assertion using the same point family and the single source
+slope, without an independent trace parameter or a change in the
+order of preparation.
+
+At every prepared real character $a>10$ and $z>a+10$. Thus
+$u,w>0$, every denominator $1+uC_i^2$ is positive in both slots,
+and every slot of $W$ is at least one. Consequently
+\begin{equation}\label{eq:positive}
+                   0<V\le2,\qquad
+                    \mathcal C=V^2+w(2-V)>0.
+\end{equation}
+All corresponding denominator, product and trace norms are nonzero.
+The original point and difference guard preparation is retained.
+\end{proof}
+
+These local statements do not settle squareness at every new prime
+of even physical valuation. They do not imply rational squareness.
+
+\section{The exact witness requirement}
+
+\begin{definition}\label{def:TC}
+For a fixed odd $B\ge3$ and a nonzero integer $n$, write
+$\TC_B(n)$ if there exist the three actual rational point-chart
+pairs and one rational slope $z$, with $X=n$ and $A=[n]P$,
+satisfying every retained guard and the whole-character preparation
+of \cite{Derivative}, for which the actual value
+\[
+                          V^2+\frac{u}{(1+u)^2}(2-V)
+\]
+is a rational square. The preparation includes the original point
+and difference avoidance conditions, fixed-place and selected-contact
+conditions, and $a>10$, $z>a+10$ at every real character.
+The multiplication family $U=[n]H$ is permitted.
+
+Write $\TC(B)$ if $\TC_B(n)$ holds for every nonzero integer $n$.
+Write $\TC^+_{\mathrm{cof}}(B)$ if some integer $N\ge1$ has
+$\TC_B(n)$ for every integer $n\ge N$.
+\end{definition}
+
+These conditions concern the existing point tuple and the same slope
+appearing in $F$. They do not replace $V$ by a freely chosen rational
+trace, or introduce an extra norm, conic, multiplier or square-class
+coordinate. The value $B$ must exceed the same ineffective soundness
+threshold as in the derivative construction.
+
+\begin{theorem}\label{thm:transfer}
+Under the retained arithmetic premises and ordinary rational $abc$,
+there is an ineffective $B_0$ and a computable family $P_B$ of
+integer polynomials in nine total variables, including the input,
+with these properties.
+\begin{enumerate}
+\item For every odd $B\ge B_0$, the input projection of $P_B=0$
+is contained in $\Z$ and contains zero.
+\item For every such $B$, each input satisfying $\TC_B(n)$ is
+in that projection. In particular $\TC(B)$ implies that the
+projection is exactly $\Z$.
+\item The native finite algebra has rank $128=4^3\cdot2$.
+\end{enumerate}
+No assertion that any $B\ge B_0$ satisfies $\TC(B)$ is made.
+\end{theorem}
+\begin{proof}
+Let $v_p(u)=\nu>0$ be odd. Every factor of $W$ has valuation
+$\min(0,2v(D_i)-\nu)\le0$. Let $q\le0$ be the largest
+valuation of $W$ over the places above $p$. Then $v_p(V)\ge-q$.
+Lemma~\ref{lem:normalized} implies
+\[
+                         1\le v_p(b)\le\nu+2q.
+\]
+At a place attaining $q$, every individual factor has valuation
+at least $q> -\nu/2$, so $v(D_i)>\nu/4>0$. The balanced
+identity gives $v(C_i)>0$ for all six original tests.
+The retained formal comparison therefore implies $p$-integrality
+of $X$ and $X\equiv n\pmod p$, where $A=[n]P$.
+Thus the derivative source's extraction and height argument apply
+unchanged. Its strict absorption margin is
+\[
+ \frac{297}{200}
+ -\frac{501}{997}\left(\frac{201}{100}+\frac{1001}{1994}\right)
+                 =\frac{44272779}{198801800}>0.
+\]
+It follows that every guarded rational source solution has $X=n$
+for sufficiently large fixed odd $B$. No new exceptional primes or
+height-support losses are introduced.
+
+We verify the finite algebra and every new denominator.
+Write $W=A_0+B_0\sqrt2$ and $N_W=A_0^2-2B_0^2$. Then
+\begin{equation}\label{eq:cleared}
+ \mathcal C=
+           \frac{4A_0^2+2wN_W(N_W-A_0)}{N_W^2}.
+\end{equation}
+There is no denominator beyond those of the guarded weight and
+detector norm, and no division by $2-V$. The original guard on
+$V$ remains necessary to define $b$.
+
+If $\mathcal C=N_C/D_C$, adjoin a monic root $q^2=N_CD_C$.
+If a syntactic square is extracted, write $N_CD_C=S_0^2c$ and
+adjoin $q_0^2=c$; then $Y=S_0q_0/D_C$. Soundness requires
+no inverse of $S_0$. The original free rank-64 point algebra and
+this one quadratic step have rank 128. Every preceding radicand
+remains a unit; only the last one may vanish. The subalgebra norms
+of \cite{Subalgebra} and terminal-root separator of \cite{Terminal}
+therefore apply with their stated hypotheses. They use one rational
+coordinate and force a rational geometric character of the complete
+source, even on a nonreduced terminal fiber. The pole implication
+of Lemma~\ref{lem:normalized} remains valid there.
+
+If $\TC_B(n)$ holds, its selected rational character extends to
+the new quadratic algebra because the actual $\mathcal C$ is square.
+All whole-character guards hold, and \eqref{eq:positive} makes
+every radicand value nonzero on the prepared locus. Consequently
+any extracted $S_0$ is automatically nonzero there, so the chosen
+rational ordinate gives the reduced quadratic root as well. No
+additional witness-avoidance parameter is needed. The separator is
+nonzero at every geometric character and supplies its single rational
+inverse coordinate. Nonreal terminal roots away from the prepared
+locus do not affect descent.
+
+The unrestricted coordinates are
+\[
+ 1\text{ input}+6\text{ point coordinates}+1\text{ slope}
+                         +1\text{ separator}=9.
+\]
+Clearing the guarded denominators and taking the specified norm
+determinant gives a computable integer family. Multiplication by $X$
+includes zero. No degree or coefficient bound is asserted here.
+\end{proof}
+
+\section{Sign symmetry and finite exceptions}
+
+\begin{proposition}\label{prop:sign}
+For every fixed $B$ and nonzero integer $n$,
+\[
+                              \TC_B(n)\iff\TC_B(-n).
+\]
+\end{proposition}
+\begin{proof}
+Apply
+\begin{equation}\label{eq:sign}
+                     (X,A,H,U,z)\longmapsto(-X,-A,H,-U,z).
+\end{equation}
+Point abscissas and $T$ remain fixed, so all scalar functions
+$\beta,M,a,t,F,F_a,u,w$ are fixed. Since $f(-Q)=f(Q)$ and
+$\zeta(-Q)=-\zeta(Q)$, the first four tests remain fixed while
+$r,r',C_5,C_6$ negate. Their squares, and hence $D_i,W,V,b$ and
+$\mathcal C$, remain fixed.
+
+The retained guards are preserved as well. In the source's homogeneous
+difference formula, with $\Delta x=x_1-x_2$ and $D=11-6\sqrt2$,
+\[
+ \begin{aligned}
+ X_{12}&=(x_1+x_2)(x_1x_2-D)+2y_1y_2,\\
+ Y_{12}&=(y_1x_2+y_2x_1)(\Delta x)^2-(y_1+y_2)X_{12}.
+ \end{aligned}
+\]
+Simultaneously negating both points fixes $\Delta x,X_{12}$ and
+negates $Y_{12}$. Thus the difference-denominator norms and all
+quotient guards stay nonzero. The difference $H-P$ is unchanged.
+The original point inverses have unchanged norms. No comparison
+test is separately guarded, and all added detector guards depend
+on the unchanged squares or scalar functions.
+
+In each of the $A,U$ rank-four blocks, the finite generators
+$(\mathsf U,\mathsf V,\mathsf W)$ transform as
+$(-\mathsf U,-\mathsf V,\mathsf W)$. This preserves the point
+multiplication relations and permutes all geometric characters.
+Therefore the preceding radicand-unit conditions and every
+whole-character guard are preserved. The real inequalities and
+all local valuation and congruence preparations are unchanged after
+the corresponding point signs are reversed. The actual square in
+\eqref{eq:conic} is unchanged. Applying the involution twice proves
+the equivalence.
+\end{proof}
+
+\begin{corollary}\label{cor:cofinite}
+Suppose the retained arithmetic premises and ordinary rational $abc$
+hold, and some odd $B\ge B_0$ satisfies
+$\TC^+_{\mathrm{cof}}(B)$. Then the integers have a Diophantine
+definition with nine total variables. More precisely, if
+$\TC_B(n)$ holds for all $n\ge N\ge1$, the polynomial
+\[
+              \widetilde P_B
+                =P_B\prod_{m=1}^{N-1}(X^2-m^2)
+\]
+has input projection exactly $\Z$.
+\end{corollary}
+\begin{proof}
+Proposition~\ref{prop:sign} and Theorem~\ref{thm:transfer} supply
+every integer with $|n|\ge N$. The factor $X$ already supplies
+zero, and the displayed factors supply the remaining integers.
+Every new root has integer input, so soundness is preserved.
+No variable or inverse is added.
+\end{proof}
+
+The hypothesis of Corollary~\ref{cor:cofinite} is unproved. The
+integer $N$ and sufficient shift $B$ are not numerically specified.
+The result supplies no effective exception set or bound on the
+extra degree and coefficients. Its significance is that an eventual
+positive-input realization theorem suffices; completeness at finitely
+many exceptional inputs can be included without increasing the
+number of variables.
+
+\section{Exact algebraic verification}
+
+\begingroup\raggedright
+The checker
+\nolinkurl{computation/pole_parameters/single_trace_v64/check.py}
+verifies the cleared trace identity, invariance of the homogeneous
+difference formulas, and the sign action on all six rank-four point
+relations. These are exact symbolic controls of the added identities.
+The valuation, height, finite-algebra and cofinite implications are
+proved above; no global actual-trace realization is inferred from
+those calculations.\par\endgroup
+
+\begin{thebibliography}{9}\raggedright
+\bibitem{Derivative}\emph{An eleven-variable construction under rational
+$abc$}, repository manuscript, 17 November 2026, version 63,
+\nolinkurl{papers/conditional_few_variables/derivative_detector11_20261117_v63.tex},
+published source commit
+\nolinkurl{f70057ffce6b8318a79a7e3648779067fd98c2e3}.
+\bibitem{Conic}\emph{A rational conic criterion using the actual detector
+trace}, repository manuscript, 17 November 2026, version 57,
+\nolinkurl{papers/pole_parameters/trace_conic_criterion_20261117_v57.tex}.
+\bibitem{Subalgebra}\emph{Smaller defining polynomials from subalgebra
+norms}, repository manuscript, version 30,
+\nolinkurl{papers/finite_algebra/subalgebra_norms_20261114_v30.tex}.
+\bibitem{Terminal}\emph{Smaller norm polynomials with a possibly singular
+final quadratic extension}, repository manuscript, version 40,
+Section 3,
+\nolinkurl{papers/finite_algebra/terminal_quadratic_root_20261115_v40.tex}.
+\end{thebibliography}
+\end{document}

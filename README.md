@@ -81,6 +81,18 @@ The derivative quotient recovers simple simultaneous contact factors. The shifts
 
 The count is **1 input + 6 point coordinates + 1 contact parameter + 2 pole parameters + 1 encoder = 11**. The finite algebra has rank **128**. The [complete specification and independent checks](computation/few_variables/derivative11_v63) certify degree at most **234,157,441**, fewer than $2^{264}$ monomials and integer content one. Subalgebra norms reduce the degree of the denominator guard, and the terminal-root theorem permits the final pole ordinate to vanish. Every preceding radicand and every denominator remains guarded. The sufficient odd shift is ineffective; $B=3$ is an algebraic fixture only. This ordinary-abc result does not assert the same count under the two weaker fixed-exponent abc hypotheses. **The targets 21 and 9 remain unproved.**
 
+## A single actual-trace target for nine variables
+
+The [derivative trace criterion](papers/pole_parameters/single_trace_derivative_criterion_20261117_v64.tex) replaces the two free parameters of the current single pole block by one finite quadratic equation:
+
+```math
+Y^2=V^2+w(2-V),\qquad V=\operatorname{Tr}(W^{-1}),\quad w=\frac{u}{(1+u)^2}.
+```
+
+The resulting nine-coordinate source is sound at every sufficiently large fixed odd shift under the same stated arithmetic premises and ordinary abc. Completeness requires rational squareness at the **actual** detector trace. The paper verifies extraction, the stated local preparation, all denominator and character guards, and zero terminal roots. It does not prove global rational realization.
+
+It is enough to obtain actual witnesses for every sufficiently large positive integer: a sign involution supplies negative inputs, and multiplying by $\prod_{m=1}^{N-1}(X^2-m^2)$ includes the finitely many remaining integers with **no added variables**. This weaker realization hypothesis is also unproved. **The established ordinary-abc count remains 11, and the general count remains 25.** [Criterion metadata and checks](data/criteria_20261117_v64.json) are separate from the construction records.
+
 ## Elliptic sums over arbitrary number fields
 
 The [cyclic-group height theorem](papers/effective_sums/elliptic_sum_heights_over_number_fields_20261117_v63.tex) applies to every elliptic curve over every number field. For finite points $Q_i=[n_i]P+T_i$ in one cyclic group modulo torsion, $M=\max(1,|n_i|)$, and every integral $c$, it gives
@@ -108,7 +120,7 @@ The [pole-cancelling coordinate](papers/elliptic_heights/pole_cancelling_quotien
 
 The separate [input-only helper theorem](negative_results/papers/pole_parameters/input_only_weight_false_witnesses_20261117_v61.tex) proves that the displayed degree-eight input weight does give $3h(X)\le\widehat h(H)+O(1)$ under abc, but still admits every noninteger $X=2+1/q$ outside a fixed finite set. A local inverse for the formal-logarithm ratio and compatible index progressions produce complete witnesses with an unrestricted integer quotient. Controlling the input height alone therefore does not close this source's equality gap.
 
-The [six-contact coupling obstruction](negative_results/papers/pole_parameters/six_contact_mobius_obstruction_20261117_v63.tex) covers every integer exponent at least four and every fixed finite menu of those exponents. One arithmetic progression of odd coefficient shifts defeats all twelve Möbius symmetries at the prescribed input and root point. This excludes that coupling strategy; it does not exclude the derivative construction or every nine-variable definition.
+The [six-contact coupling obstruction](negative_results/papers/pole_parameters/six_contact_mobius_obstruction_20261117_v63.tex) covers every integer exponent at least four and every fixed finite menu of those exponents. One arithmetic progression of odd coefficient shifts defeats all twelve Möbius symmetries at the prescribed input and root point. The [cofinite extension](negative_results/papers/pole_parameters/cofinite_mobius_coupling_obstruction_20261117_v64.tex) propagates the obstruction to an infinite progression of positive inputs at each obstructed shift, so finitely many input factors cannot repair those prescribed-index sources. It does not exclude the derivative construction, every fixed coefficient shift, or every nine-variable definition.
 
 ## Rational pole levels
 
@@ -317,6 +329,7 @@ The [pole-compression guide](negative_results/docs/pole_compression_obstructions
 Use **Python 3.12** for the byte-pinned legacy suite and **SymPy 1.14.0** for symbolic checks. From the repository root:
 
     python -m pip install sympy==1.14.0
+    python -B scripts/verify_v64.py
     python -B scripts/verify_v63.py
     python -B scripts/verify_v62.py
     python -B scripts/verify_v61.py
