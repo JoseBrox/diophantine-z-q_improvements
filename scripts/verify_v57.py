@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Check intrinsic source transfers, variable classes and prepared obstructions."""
+"""Check intrinsic transfers, trace criteria, cubic rank and prepared obstructions."""
 from pathlib import Path
 import argparse
 import hashlib
@@ -18,6 +18,7 @@ PACKAGES = (
     'negative_results/computation/intrinsic_specializations_v57',
     'negative_results/computation/prepared_sha_v57',
     'computation/pole_parameters/trace_conic_v57',
+    'computation/pole_parameters/cubic_trace_rank_v57',
 )
 PAPERS = (
     'papers/pole_parameters/general_intrinsic_transfer_20261117_v57.tex',
@@ -26,6 +27,7 @@ PAPERS = (
     'negative_results/papers/pole_parameters/intrinsic_specializations_20261117_v57.tex',
     'negative_results/papers/pole_parameters/prepared_sha_obstruction_20261117_v57.tex',
     'papers/pole_parameters/trace_conic_criterion_20261117_v57.tex',
+    'papers/pole_parameters/cubic_trace_rank_20261117_v57.tex',
 )
 
 
@@ -38,6 +40,7 @@ def main(output):
     with tempfile.TemporaryDirectory(prefix='diophantine-v57-') as temporary:
         jobs = [(p, 'check.py', 'certificate.json') for p in PACKAGES]
         jobs.append((PACKAGES[3], 'independent_check.py', 'independent_certificate.json'))
+        jobs.append((PACKAGES[5], 'independent_check.py', 'independent_certificate.json'))
         for i, (relative, script, certificate) in enumerate(jobs):
             package = ROOT/relative
             generated = Path(temporary)/f'certificate-{i}.json'
@@ -52,7 +55,7 @@ def main(output):
             hashes[str((package/script).relative_to(ROOT))] = digest(package/script)
             certificates[str(original.relative_to(ROOT))] = digest(generated)
 
-    scalar, classes, specialization, sha, conic = [
+    scalar, classes, specialization, sha, conic, rank = [
         json.loads((ROOT/p/'certificate.json').read_text()) for p in PACKAGES]
     assert scalar['coordinate_count'] == 25
     assert scalar['physical_weight_change'] is False
@@ -88,6 +91,18 @@ def main(output):
     assert conic['adaptive_class']['bad_pole_fixtures_including_negative_auxiliary_valuations'] == 3264
     assert not conic['adaptive_class']['lost_contact_primes']
     assert not conic['adaptive_class']['actual_global_realization_proved']
+    assert rank['status'] == 'PASS'
+    assert rank['non_torsion_for_all_rational_0_lt_w_le_1_over4']
+    assert rank['all_rational_torsion_candidates'] == ['-96/49','100/49','296/49']
+    assert len(rank['projective_no_root_certificates']) == 11
+    assert not rank['actual_detector_trace_matching_proved']
+    rank_independent = json.loads((ROOT/PACKAGES[5]/'independent_certificate.json').read_text())
+    assert rank_independent['status'] == 'PASS'
+    assert [x['n'] for x in rank_independent['group_law_checks']] == [8,10,12]
+    assert [x['x_denominator_degree'] for x in rank_independent['group_law_checks']] == [30,48,70]
+    division_data = ROOT/PACKAGES[5]/'division_data.json'
+    assert rank_independent['certificate_sha256'] == digest(division_data)
+    hashes[str(division_data.relative_to(ROOT))] = digest(division_data)
 
     current = json.loads((ROOT/'data/results_20261117_v57.json').read_text())
     previous = json.loads((ROOT/'data/results_20261117_v56.json').read_text())
@@ -117,6 +132,9 @@ def main(output):
         'conditional_variable_squareclass_target':9,
         'trace_conic_targets':[21,9],
         'trace_classes_without_height_loss':['1','1+24V','1+3(V-1)^2'],
+        'adaptive_trace_class_without_new_coordinates':True,
+        'positive_rank_for_all_rational_normalized_weights':True,
+        'cubic_rank_direct_group_law_independent_check':True,
         'single_cover_height_argument_degrees':[224,384,1536],
         'prepared_cover_obstruction':{'input':'112/225','local_solubility':True,
                                       'rational_point':False,'independent_exact_check':True},
@@ -124,8 +142,9 @@ def main(output):
         'new_defining_variable_count':False,
         'new_full_defining_degree_or_coefficient_bound':False,
         'external_arithmetic_foundation_audited':False,
-        'scope':('Exact scalar residues, height inequalities, specialization identities '
-                 'and two independent Cassels-pairing data checks. Universal proofs '
+        'scope':('Exact scalar residues, height inequalities, specialization identities, '
+                 'adaptive-class identities, cubic torsion certificates with an independent '
+                 'group-law audit, and two independent Cassels-pairing data checks. Universal proofs '
                  'and cited descent theory are stated in the manuscripts. No global '
                  'rational realization or 21/9 defining bound is certified.'),
     }

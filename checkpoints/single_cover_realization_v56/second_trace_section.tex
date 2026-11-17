@@ -1,0 +1,110 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,microtype}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue]{hyperref}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}[proposition]{Lemma}
+\newcommand{\Q}{\mathbb Q}
+\title{Two rational sections of the cubic trace family}
+\author{}\date{17 November 2026}
+\begin{document}\maketitle
+
+Put
+\[
+ C(V,w)=V^2+w(2-V),\qquad
+ E_w:\ y^2=x^3-(2+24w)x^2+(1+1176w)x.
+\]
+The substitutions $x=1+24V$ and $y=24Y$ identify $E_w$ with
+$Y^2=(1+24V)C(V,w)$. It has the rational reference section
+$P=(49,336)$, corresponding to $(V,Y)=(2,14)$.
+
+\begin{proposition}\label{prop:sections}
+Over $\Q(r)$, put $w=r^2-1$. The points
+\[
+                 P=(49,336),\qquad Q=(25,120r)
+\]
+are independent non-torsion points on $E_{r^2-1}$. The point $Q$
+corresponds to $(V,Y)=(1,5r)$. Their sums satisfy
+\[
+ x(P+Q)=(7r-10)^2,\qquad x(P-Q)=(7r+10)^2.
+\]
+In particular
+\[
+ V(P+Q)=\frac{(7r-11)(7r-9)}{24}.
+\]
+\end{proposition}
+\begin{proof}
+Substitution verifies both points. The slopes for addition are
+$14-5r$ and $14+5r$, respectively; the formulas follow from
+the Weierstrass group law.
+
+At $r=2$, the curve is
+\[
+                 y^2=x^3-74x^2+3529x.
+\]
+It has good reduction at $7$, $11$ and $13$, with respectively
+$12$, $16$ and $18$ rational points over those residue fields.
+Consequently its rational torsion subgroup has order dividing two.
+Both specialized points have nonzero ordinate, so both have infinite
+order. Therefore the original sections are non-torsion.
+
+The involution $r\mapsto-r$ fixes $P$ and sends $Q$ to $-Q$.
+If $mP+nQ=0$ over $\Q(r)$, applying the involution and subtracting
+gives $2nQ=0$, hence $n=0$ and then $m=0$.
+\end{proof}
+
+The point-count argument uses the injectivity of rational torsion
+under good reduction at an odd prime. Equivalently, one may use
+prime-to-residue-characteristic injectivity at the three distinct
+primes: it gives the same divisor two for every primary torsion part.
+The exact point counts and addition identities are certified by
+\texttt{check\_second\_trace\_section.py}.
+
+\section*{Physical normalization and local preparation}
+
+For a rational weight parameter $u\ne1$, define
+\[
+             w=\frac{4u}{(1-u)^2},\qquad
+             r=\frac{1+u}{1-u}.
+\]
+Then $1+w=r^2$. At an odd prime, if $v_p(u)\ne0$,
+\[
+                         v_p(w)=|v_p(u)|;
+\]
+if $v_p(u)=0$, the valuation of $w$ is even. Thus every odd
+valuation of $u$ becomes a positive odd valuation of $w$.
+This observation does not on its own transfer a full detector:
+its scalar factors, height bounds, and the denominator $1-u$
+must all be treated coherently.
+
+As $u$ tends to zero at a fixed place, $w$ tends to zero and
+$r$ tends to one. Both sections stay rational. The reference section
+has trace two and the second section has trace one, exactly the two
+residues permitted by the reciprocal detector tests at selected
+contacts. At a hypothetical bad pole, the multiplier $1+24V$
+still reduces to one. Consequently adjoining the second section
+does not change the local square-class argument.
+
+The sections do not identify an actual detector trace. In particular,
+forcing an actual trace to equal the constant value one is a separate
+and generally obstructed condition. Likewise, generic independence
+of two sections does not prove independent specialization at every
+rational $r$, or simultaneous approximation to independently chosen
+points at all places.
+
+\section*{The remaining incidence condition}
+
+For actual detector points and a physical parameter $u$, write
+$V=\operatorname{Tr}(W^{-1})$ and $r=(1+u)/(1-u)$.
+A sufficient completeness construction would produce an integer
+pair $(a,b)$ such that
+\[
+                    1+24V=x(aP+bQ)
+\]
+on $E_{r^2-1}$, together with every original point, difference,
+height and nonzero constraint. The existence of the sections proves
+that the right-hand side has many rational values. It does not
+prove this prescribed-abscissa equality. No reduction to twenty-one
+or nine defining coordinates follows from this proposition alone.
+\end{document}

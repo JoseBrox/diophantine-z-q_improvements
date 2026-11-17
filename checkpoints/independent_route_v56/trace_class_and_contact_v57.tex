@@ -1,0 +1,111 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,microtype}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true]{hyperref}
+\setlength{\emergencystretch}{2em}
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{corollary}[proposition]{Corollary}
+\newcommand{\Q}{\mathbb Q}
+\title{A quadratic trace class and the fresh-contact trace}
+\author{}\date{17 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+A quadratic trace class of coefficient height three preserves the
+negative-odd-pole test and all its prepared local square conditions.
+We also determine the trace residue at every fresh comparison contact:
+it is one. Neither assertion proves simultaneous rational realization
+on actual detector tuples or a smaller complete defining-variable bound.
+\end{abstract}
+
+\section{A smaller trace class}
+Let $S$ contain two. Let $w,V\in\Q^\times$ and assume that every
+odd valuation of $w$ outside $S$ is positive. Put
+\[
+ b=4w/V^2,\qquad C=V^2+w(2-V).
+\]
+For a fixed positive rational $S$-unit $t$ with $0<t<8$, put
+\[
+ D_t(V)=V^2+t(V-1)(V-2).
+\]
+\begin{proposition}
+If $D_t(V)C$ is a rational square, then $b$ has no negative odd
+valuation outside $S$. The polynomial $D_t$ is strictly positive on
+the whole real line, and
+\[
+ D_t(0)=2t,\qquad D_t(1)=1,\qquad D_t(2)=4.
+\]
+Consequently this class has the same fixed-place and selected-contact
+local square preparation as the trace-conic criterion. It introduces
+no additional free coordinate or exceptional prime.
+\end{proposition}
+\begin{proof}
+At a hypothetical negative odd pole, write $\nu=v_p(w)>0$ odd and
+$m=v_p(V)>\nu/2$. Since $p\ne2$, the term $w(2-V)$ has
+valuation $\nu$, strictly less than $2m$, so $v_p(C)=\nu$.
+Because $t$ is an $S$-unit, $D_t(V)\equiv2t\not\equiv0\pmod p$.
+The product still has odd valuation and cannot be a square.
+
+The leading coefficient of $D_t$ is $1+t>0$ and its discriminant
+is $t(t-8)<0$. This proves strict real positivity. The displayed
+three evaluations follow directly. Near the fixed reference trace
+$V=2$, the class is near the nonzero rational square four. At a
+selected contact with $V\equiv1$ or $2\pmod p$, it has residue
+one or four. The usual local square neighborhoods give the assertions,
+including arbitrary fixed precision at two. All denominators are
+already those of $V$ or fixed $S$-units. The finite-algebra square
+extension and guard norms therefore have the same coordinate count.
+\end{proof}
+
+For $t=1$ this gives
+\[
+ \boxed{D_1(V)=2V^2-3V+2.}
+\]
+The coefficient height is three. In the class of integer polynomials
+of degree at most two, with nonzero constant coefficient, positive on
+$[0,2]$, and nonzero square values at both one and two, every example
+of coefficient height at most two is either the constant one or the
+square $(V+1)^2$. Thus height three is minimal for a nonsquare
+polynomial in this specified class. This finite assertion is verified
+by the accompanying exact checker.
+
+\section{The trace at an actual fresh comparison contact}
+Let $K=\Q(\sqrt2)$, and retain the general or conditional source
+with its reference point $P$ and product $W$. At a fresh split
+comparison prime $p$, the curve has good reduction, $P$ has finite
+reduction at both places, and $v_p(w)=1$. Each comparison denominator
+has odd valuation, with its other normalizers units. The tests include
+$f(H)$ and $\overline{f(H-P)}$, where $f=1/x$.
+
+\begin{proposition}
+At every fresh selected comparison prime in the retained completeness
+construction,
+\[
+                 \operatorname{Tr}_{K/\Q}(W^{-1})\equiv1\pmod p.
+\]
+The alternative residue two does not occur there.
+\end{proposition}
+\begin{proof}
+The successful slot has $W\equiv1\pmod p$. Every factor in the
+other slot has nonpositive valuation: its second summand has odd
+valuation and cannot cancel its constant term. If that product were
+a unit, every factor would be a unit and every field test would have
+positive valuation at both places. In particular $f(H)$ and
+$f(H-P)$ would have positive valuation at the same place.
+At good reduction this means that both $H$ and $H-P$ reduce to the
+identity. Their difference $P$ would also reduce to the identity,
+contrary to its finite reduction. Thus the other product has negative
+valuation and its reciprocal vanishes modulo $p$. Adding the two
+reciprocal slots gives one.
+
+The extra rational factors in the general detector have nonpositive
+valuations as well, so they cannot undo this argument. The selected
+large primes avoid the fixed denominators of $P$ and the bad-reduction
+set; no additional exclusion is needed.
+\end{proof}
+
+The conic, the quadratic-class elliptic tests and adaptive trace
+classes give separate arithmetic possibilities. Their simultaneous
+rational realization at the actual prescribed detector traces remains
+unproved.
+\end{document}

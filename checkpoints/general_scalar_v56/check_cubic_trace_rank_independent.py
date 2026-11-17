@@ -8,7 +8,7 @@ nonlinear factor.  General torsion and division-polynomial theorems are
 the explicitly cited mathematical inputs.
 """
 from fractions import Fraction as F
-from math import isqrt
+from math import isqrt, gcd
 from pathlib import Path
 import json
 
@@ -120,6 +120,9 @@ whole_checks=[]
 divrows={row['n']:row for row in data['division_factorizations']}
 for row in data['whole_quotient_certificates']:
     n=row['n']; coeff=row['coefficients_descending'];p=row['certificate_prime']
+    content=0
+    for a in coeff:content=gcd(content,abs(a))
+    assert content==1 and coeff[0]>0
     assert prime(p) and coeff[0]%p==row['value_at_projective_infinity']!=0
     vals=[modvalue(coeff,u,p)for u in range(p)]
     assert vals==row['affine_value_table'] and all(vals)

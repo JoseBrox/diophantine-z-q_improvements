@@ -1,5 +1,75 @@
 # Scalar precision transfer checkpoint
 
+## Latest v57 positive results
+
+`trace_conic_criterion_20261117_v57.tex` replaces the earlier native
+norm–trace square target by the simpler actual-trace radicand
+`C=V^2+w(2−V)`. It proves pole soundness, whole-character positivity,
+all local preparation assertions, both rational conic parametrizations,
+and the exact 21/9 census conditional on simultaneous actual rational
+realization. **The realization is not proved; defining counts stay
+25/13.** The fixed admissible class menu is
+`{1,1+24V,1+3(V−1)^2}`; it loses no contact prime and requires no
+height budget in the unconditional Lucas source. The cubic branch has
+five monomials and coefficient height47 as a radicand in `(V,w)`;
+these are not full determinant bounds. Its checker and certificate pass.
+
+The parent's broader family
+`q=2+wc^2`,
+`delta=(q^2−2q−1)^2+4q(q^2−1)V`
+is independently audited in
+`adaptive_trace_class_independent_audit.md`. It is valid for any already
+guarded rational source function `c`, with no added free coordinate or
+lost-contact height term. The explicit choice `c=lambda` is compatible
+with both general and conditional fixed-place preparations. The exact
+independent checker/certificate pass486 local fixtures and the three
+square identities. Parent owns the integration of this proposition;
+the agent's trace manuscript does not include that parent-owned text.
+
+`cubic_trace_rank_20261117_v57.tex` proves that
+`P=(49,336)` on
+`y^2=x^3−(2+24w)x^2+(1+1176w)x`
+has infinite order for every rational `0<w<=1/4`. Its only rational
+nonsingular torsion specializations are `296/49`, `−96/49` (order3)
+and `100/49` (order4). Exact division-polynomial factor products have
+eleven projective no-root certificates at5,11,13; a separate whole-
+quotient check uses5,877,449. Every test explicitly checks infinity
+through a nonzero leading coefficient. The standard-library verifier
+passes. Another agent independently confirmed the result by direct
+group-law denominators over Q(w). The real/finite approximation
+corollary supplies infinitely many **free** rational traces1<V<2;
+it does not match prescribed actual detector traces.
+
+The rank manuscript and trace-conic manuscript compile cleanly.
+`cubic_trace_rank_build.json` and the latest trace build record the
+successful builds. The full independent audit of both the cubic rank
+and adaptive classes is in
+`../single_cover_realization_v56/adaptive_and_cubic_independent_audit.md`.
+
+## Latest v57 audits and scoped negative result
+
+The parent's input/root-dependent squareclass theorem passes the audit
+in `variable_squareclasses_independent_audit.md`. Its extra class
+`1+X^4` has the same `k=2` height-support budget, uniformly inB>=1.
+The exact checker/certificate include the improved ordinary-abc
+parameter choices and1276 rational reduced-denominator fixtures.
+
+`prepared_q0_independent_audit.md` and its independent checker/certificate
+prove the correctness of the other agent's prepared-input Sha
+counterexample `d=112/225`. The exact Cassels pairing onE791 is nonzero;
+the curve has rank1 and excludes abscissa class−7. This disproves
+uniform completeness of the q0=0 one-coordinate replacement for all
+prepared inputs, not its completeness on some future actual-detector
+subfamily.
+
+`free_auxiliary_poles_20261117_v57.tex` gives a complete-source family
+with all roots, slope, contact data and U_i fixed but with both rational
+components of L_S having valuation1−r at one fixed unused prime.
+It proves existing source conditions alone cannot bound these auxiliary
+heights by fixed root/contact heights. Its scope excludes a newly
+imposed Pell-cover or native-square equation. The manuscript compiles;
+no separate independent audit receipt has yet been obtained.
+
 ## Latest complete intrinsic-pole transfer
 
 The preferred same-count transfer is

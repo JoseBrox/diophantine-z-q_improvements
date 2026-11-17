@@ -1,0 +1,122 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=27mm]{geometry}
+\newtheorem{proposition}{Proposition}
+\title{Trace-square ramification after fixing the multiplication index}
+\author{}\date{17 November 2026}
+\begin{document}\maketitle
+Fix a nonzero integer $n$ in the actual conditional source. On the
+multiplication subvariety put $X=n$, $A=[n]P$ and $U=[n]H$.
+Keep the rational slope $\lambda$ independent of $H$. Both comparison
+scales $a_j$ are now fixed nonzero rationals. Define
+\[
+ F(t)=\frac{t(t+1)(2t+1)(3t+1)(4t+1)(5t+2)}{120},\quad
+ w_j=\frac{F(a_j\lambda)}{4(a_j\lambda-1)^8},
+\]
+and retain the six actual tests and product
+\[
+ W_j=\prod_{i=1}^6(1+C_i^2/F(a_j\lambda)),\quad
+ V_j=\operatorname{Tr}(W_j^{-1}),\quad
+ C_j^{\mathrm{tr}}=V_j^2+w_j(2-V_j).
+\]
+
+\begin{proposition}
+On this fixed-$n$ multiplication subvariety with independent slope,
+$C_j^{\mathrm{tr}}$ has an odd divisorial valuation. It is not a square
+in the rational-function field. The same holds after multiplication
+by any of the trace classes
+\[
+ 1+24V_j,\quad 1+3(V_j-1)^2,\quad 2V_j^2-3V_j+2,
+ \quad V_j^2-V_j+2,\quad V_j+2,\quad1+w_j(2-V_j).
+\]
+It also holds for the adaptive class
+\[
+ (q^2-2q-1)^2+4q(q^2-1)V_j,\qquad q=2+w_jc^2,
+\]
+where $c$ is any rational function on this fixed-index subvariety.
+\end{proposition}
+\begin{proof}
+Choose any simple zero $t=\theta$ of $F$ and take the valuation of
+$a_j\lambda-\theta$. Its residue field is the function field of the
+generic point $H$; the fixed contact does not specialize $H$.
+Since $n\ne0$, all four functions
+\[
+ f(H),\quad f([n]H),\quad
+ \overline{f(H-P)},\quad\overline{f([n](H-P))}
+\]
+are nonzero in that field. Their four detector factors therefore each
+have valuation $-1$ in both split geometric slots. The remaining
+two factors have valuation either $-1$ or zero; this includes their
+possible identically zero tests when $n=\pm1$.
+Both reciprocal products have valuation at least four, hence
+$v(V_j)\ge4$. The trace is a nonzero rational function, as is clear
+on any real locus with $F>0$. The normalizing denominator is a unit
+at every zero of $F$, so $v(w_j)=1$. Therefore
+\[
+ v(C_j^{\mathrm{tr}})=1.
+\]
+Each listed fixed class has a nonzero constant residue there and is
+a unit.
+
+For the adaptive class, $v(w_jc^2)$ is odd and nonzero unless
+$c=0$, which gives $q=2$. If this valuation is positive, $q$ reduces
+to two and the class reduces to one. If it is negative, put
+$e=v(q)<0$. The first summand has valuation $4e$, while the second
+has valuation $3e+v(V_j)>4e$. Thus the class has even valuation
+$4e$. In either case the product with $C_j^{\mathrm{tr}}$ has odd
+valuation, proving the assertions.
+\end{proof}
+
+The proposition concerns a rational-function identity on the full
+fixed-index multiplication subvariety with free slope. It does not
+exclude isolated rational witnesses or a proper subvariety that also
+couples the slope to the auxiliary points. Such an additional coupling
+is necessary for a rational identity of this kind. No nonexistence
+claim is made for the desired actual tuples.
+
+\section*{Nonconstant rational slope graphs}
+There is also an obstruction to imposing a rational graph for the slope
+on the whole multiplication subvariety. Over an algebraic closure the
+restriction of scalars splits into two independent elliptic coordinates
+$H_1,H_2$; the conjugation in the detector exchanges these coordinates.
+
+\begin{proposition}
+Fix $n\ne0$ as above. Let $\lambda$ be a nonconstant rational function
+of the two coordinates $H_1,H_2$. Substitute this function for the slope,
+keeping $A=[n]P$ and $U=[n]H$. Then none of the trace tests in the
+preceding proposition is a square in the resulting rational-function
+field. This includes an adaptive class with any rational function $c$
+of the same coordinates.
+\end{proposition}
+\begin{proof}
+Assume first that $\lambda$ is nonconstant in $H_1$ over the field of
+the generic $H_2$, and extend that constant field to an algebraic closure.
+It is then a nonconstant map from a smooth genus-one curve to the
+projective line, of some degree $d>0$. At a point of odd multiplicity
+over a zero of $F(a_j\lambda)$, put $\nu=v(w_j)>0$, odd.
+In the first slot the factor containing $f(H_2-P_2)$ has valuation
+$-\nu$, since that function is a nonzero constant. In the second slot
+the factor containing $f(H_2)$ likewise has valuation $-\nu$.
+Every other factor has nonpositive valuation: its second summand has
+odd valuation, so cancellation with one is impossible. Consequently
+$v(V_j)\ge\nu$, and $v(C_j^{\mathrm{tr}})=\nu$ is odd.
+The fixed and adaptive classes have even valuations by the same
+calculation as before.
+
+If the trace test were a square, all multiplicities in each of the
+six distinct fibers over the contact values would therefore be even.
+Each fiber would contain at most $d/2$ distinct points and contribute
+at least $d/2$ to the ramification divisor. Their combined contribution
+would be at least $3d$. Riemann--Hurwitz gives total ramification
+$2d$ for a map from a genus-one curve to the projective line, a
+contradiction. If $\lambda$ is constant in $H_1$ but nonconstant in
+$H_2$, interchange the two coordinates and apply the same argument.
+\end{proof}
+
+The proposition does not concern rational points on a proper
+correspondence of the elliptic coordinates, or on a nontrivial
+algebraic cover that couples them to the slope. It rules out a
+rational graph identity on the entire two-dimensional multiplication
+subvariety, rather than the individual witnesses needed for a
+defining polynomial.
+\end{document}

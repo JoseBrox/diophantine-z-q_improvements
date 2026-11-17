@@ -18,7 +18,7 @@ $$
 Y_c^2=X_c^3-(2+24w)X_c^2+(1+1176w)X_c,\qquad X_c=1+24V,
 $$
 
-with reference point $(49,336)$. The arithmetic objective is a rational point **at that prescribed abscissa**, simultaneously for the two actual blocks. A rational parametrization in free trace coordinates, or positive rank on this curve, would not alone prove the required incidence.
+with reference point $(49,336)$. The arithmetic objective is a rational point **at that prescribed abscissa**, simultaneously for the two actual blocks. The [cubic rank theorem](../papers/pole_parameters/cubic_trace_rank_20261117_v57.tex) now gives infinite order for this section at every rational $0<w\le1/4$, and proves finite-place approximation with infinitely many free traces in $(1,2)$. The unresolved step is to couple these points to the actual source trace map; positive rank alone does not prove that incidence.
 
 The adaptive class $\delta_c=(q^2-2q-1)^2+4q(q^2-1)V$, $q=2+wc^2$, is also admissible for any fixed guarded rational scalar function $c$ of the existing source coordinates. Its parity proof permits arbitrarily large auxiliary denominators. In particular $c=\lambda$ preserves fixed-place preparation and lets the class vary with the actual common slope. This structured family avoids the height cost of arbitrary square classes. The next arithmetic step is to match such a class with the actual reciprocal trace; choosing a fresh free $c$ would require its own coordinate.
 

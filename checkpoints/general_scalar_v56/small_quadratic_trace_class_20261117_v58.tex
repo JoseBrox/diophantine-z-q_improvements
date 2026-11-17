@@ -1,0 +1,114 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,microtype}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue]{hyperref}
+\setlength{\emergencystretch}{2em}
+\newtheorem{proposition}{Proposition}
+\newcommand{\Q}{\mathbb Q}
+\title{A small quadratic admissible trace class}
+\author{}\date{17 November 2026}
+\begin{document}\maketitle
+
+Retain a native detector weight $w$ and its actual rational trace
+$V=\operatorname{Tr}(W^{-1})$. Let
+\[
+ C=V^2+w(2-V),\qquad \delta(V)=V^2-V+2.
+\]
+The exceptional set contains two. Outside this set every odd valuation
+of the physical weight is positive, as in the normalized general and
+conditional sources. All existing point, denominator and detector
+guards are retained.
+
+\begin{proposition}
+The rational-square condition $C\delta(V)\in\Q^{\times2}$ excludes
+every negative odd valuation of $b=4w/V^2$ outside the exceptional set.
+At every prepared real point-algebra character the radicand is strictly
+positive. The additional class introduces no free coordinate,
+denominator, guard, or loss of contact primes in the soundness proof.
+\end{proposition}
+\begin{proof}
+At a hypothetical negative odd valuation of $b$, put
+$\nu=v_p(w)$ and $m=v_p(V)$. The weight property gives an odd
+$\nu>0$, and $2m>\nu$, so $m\ge1$. Thus $2-V$ is a unit and
+$v_p(C)=\nu$. Since $\delta(V)\equiv2\pmod p$, this class is a
+unit. The product has odd valuation and cannot be a rational square.
+Local squareness of the class is not required at these bad primes.
+
+The identity
+\[
+ \delta(V)=(V-\tfrac12)^2+\tfrac74
+\]
+gives strict positivity for every real $V$. Prepared characters have
+$w>0$ and $0<V\le2$, whence $C>0$. The class is a polynomial in
+the already guarded trace. It has no additional denominator and cannot
+vanish at any prepared real character, so its finite-algebra norm is
+a unit there. The pole argument loses no prime, and the existing
+unconditional Lucas or conditional height proof is unchanged.
+\end{proof}
+
+\begin{proposition}
+The class is compatible with all selected comparison contacts in the
+retained completeness construction and with arbitrary fixed-place
+preparation near $V=2$.
+\end{proposition}
+\begin{proof}
+Every selected comparison prime is split in $\Q(\sqrt2)$. At a
+successful contact the actual trace has residue one or two, while
+$w$ has positive valuation. Hence $C$ has residue one or four and
+$\delta(V)$ has residue two or four. Both residues are nonzero
+squares because two is a square at a split odd prime. Hensel's lemma
+applies. This uses the split-contact condition from the retained prime
+pattern, not a newly imposed splitting requirement.
+
+At every fixed finite place, $V$ can be prepared arbitrarily close to
+two and $\delta(2)=4$. The quotient $\delta(V)/4$ therefore lies
+in the local square neighborhood for sufficient preparation. At two
+one may explicitly write $V=2+e$ and use
+\[
+ \delta(2+e)=4+3e+e^2;
+\]
+the sufficient condition $v_2(e)\ge5$ gives
+$\delta(V)/4\in1+8\mathbb Z_2$. The preparation of $C$ itself
+is unchanged. The same argument treats primes dividing the fixed
+scalar or earlier denominators by increasing their already prescribed
+finite preparation depths.
+\end{proof}
+
+The exact polynomial identity is
+\[
+ C\delta(V)=V^4-V^3-wV^3+2V^2+3wV^2-4wV+4w.
+\]
+It has total degree four, seven monomials and coefficient height four
+as a polynomial in $(V,w)$. These are radicand statistics, not degree
+or height bounds for a complete defining polynomial. Finite disjunction
+with the other admissible classes retains the same external
+coordinates and the same one-coordinate encoder. A twenty-one- or
+nine-coordinate definition still requires simultaneous rational
+realization on the actual detector traces; no such realization is
+asserted here.
+
+\section*{Exact retained source references}
+The normalized general completeness proof, in the subsection on
+comparison primes immediately after its extra-divisibility condition,
+states that the selected prime is split in $K$; see
+\cite[lines 811--835]{General}. The conditional completeness proof
+uses the same inherited prime pattern and its two conjugate
+annihilating-order families; see \cite[lines 559--595]{Conditional}.
+The explicit split-place statement and the fact that two is a local
+square are also isolated in \cite[Lemma ``Fresh split contacts'',
+lines 382--404]{Native}. These line numbers refer to the versioned
+source filenames below, not to a moving unversioned draft.
+
+\begin{thebibliography}{9}\raggedright
+\bibitem{General}\emph{A defining polynomial in twenty-five variables:
+combined scalar and comparison conditions}, repository manuscript,
+\nolinkurl{papers/few_variables25/few_variables25_merged_20261110_v19.tex}.
+\bibitem{Conditional}\emph{Thirteen Variables from Direct Elliptic
+Index Comparison}, repository manuscript,
+\nolinkurl{papers/conditional_few_variables/direct_input13_20261110_v22.tex}.
+\bibitem{Native}\emph{A guarded rational-square criterion for normalized
+elliptic detectors}, repository manuscript,
+\nolinkurl{papers/pole_parameters/native_square_criterion_20261116_v53.tex}.
+\end{thebibliography}
+\end{document}

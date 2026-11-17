@@ -1,0 +1,145 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,microtype}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true]{hyperref}
+\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newcommand{\Q}{\mathbb Q}
+\title{A weight-dependent cubic trace test}
+\author{}\date{17 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+The class $1+w(2-V)$ preserves the trace pole test, its local preparation,
+and its finite-algebra coordinate count. Its cubic square equation has
+two rational sections and a rational point of order two. We give the
+exact group-law model. Simultaneous rational realization at actual
+detector traces remains unproved; the result is a new sufficient
+criterion, not a smaller complete defining polynomial.
+\end{abstract}
+
+\section{Soundness, preparation and encoding}
+Let $S$ contain two, let $w,V\in\Q^\times$, and assume that every
+odd valuation of $w$ outside $S$ is positive. Set
+\[
+ b=4w/V^2,\qquad C=V^2+w(2-V),\qquad D=1+w(2-V).
+\]
+\begin{theorem}
+If $DC$ is a rational square, then $b$ has no negative odd valuation
+outside $S$. On the prepared real domain $w>0$, $0<V\le2$, both
+$D$ and $C$ are strictly positive. The new class is a nonzero local
+square at every fixed preparation place and every fresh selected
+comparison contact of the retained general and conditional sources.
+It adds no free coordinate or lost-contact height budget.
+\end{theorem}
+\begin{proof}
+At a hypothetical negative odd pole, put $\nu=v_p(w)>0$ odd and
+$m=v_p(V)>\nu/2$. Then $v_p(C)=\nu$, while
+$D\equiv1\pmod p$. The product has odd valuation and is not a
+square. On the real prepared domain, $D\ge1$ and $C\ge V^2>0$.
+
+At a selected contact, $w$ has positive valuation and $V$ is integral,
+so $D\in1+p\mathbb Z_p$. At a fixed preparation place, $V$ may be
+taken sufficiently close to two while $w$ remains in its prescribed
+bounded neighborhood; in the conditional construction $w$ tends to
+zero. Thus $D$ is in the standard local square neighborhood of one,
+including $1+8\mathbb Z_2$ at two. The original preparation already
+makes $C$ locally square. All denominators are retained weight and
+trace denominators. Strict positivity at every prepared character
+makes the cleared finite square extensions totally real and etale.
+Their norm guards and one-coordinate separator are the same as for
+the trace-conic criterion.
+\end{proof}
+
+Thus simultaneous rational squareness of the two actual values $D_jC_j$,
+with the retained point tuple, common slope and every guard, suffices for
+the twenty-one- and nine-variable criteria. This simultaneous property
+is an additional arithmetic requirement and is not established here.
+
+\section{The elliptic curve and its sections}
+For fixed $w\ne0$, write
+\[
+ \mathcal E_w:\quad
+ Y^2=(1+w(2-V))(V^2+w(2-V)).
+\]
+Its affine cubic is
+\[
+ -wV^3+(w+1)^2V^2-w(4w+1)V+2w(2w+1).
+\]
+The change
+\[
+ x=1+w(2-V),\qquad z=wY
+\]
+gives the Weierstrass model
+\begin{equation}\label{eq:model}
+ z^2=x\bigl(x^2+(w^2-4w-2)x+(w+1)(3w+1)\bigr).
+\end{equation}
+Its discriminant is
+\[
+ 16w^3(w-8)(w+1)^2(3w+1)^2.
+\]
+In particular every prepared $0<w\le1/4$ gives a nonsingular curve.
+The cubic discriminant in the coordinate $V$ is
+$w(w-8)(w+1)^2(3w+1)^2$.
+
+\begin{proposition}
+The points
+\[
+ Q=(V,Y)=(1,1+w),\qquad R=(2,2)
+\]
+are rational sections, and $R=-[2]Q$ with the point at infinity as
+origin. The point $(x,z)=(0,0)$ in \eqref{eq:model} has order two.
+In trace coordinates translation by it sends
+\[
+ V\longmapsto\frac{w-(1+2w)V}{1+w(2-V)}.
+\]
+\end{proposition}
+\begin{proof}
+The section equations follow by substitution. If $f(V)$ is the cubic,
+then
+\[
+ f(V)-\bigl((1-w)V+2w\bigr)^2
+       =-w(V-2)(V-1)^2.
+\]
+Thus the line through $Q$ and $R$ is tangent at $Q$, proving the
+group-law assertion. For a model $z^2=x(x^2+ax+b)$, translation
+by $(0,0)$ sends $x$ to $b/x$. Substitution of the displayed
+coordinate change gives the stated formula.
+\end{proof}
+
+The section at $V=-1$, with $Y=1+3w$, is a torsion translate of
+$Q$ up to sign. These sections supply rational traces on the auxiliary
+curve; they do not identify those traces with the detector trace.
+The rational normalization $w=u/(1+u)^2$ may be substituted in
+\eqref{eq:model}, but that base change by itself gives no actual-source
+incidence theorem.
+
+\section{The linear class $V+2$ and the existing prime selection}
+The class $V+2$ is positive on the prepared domain and is a unit,
+congruent to two, at every hypothetical bad pole outside $S$.
+At the reference trace it is four. At a selected contact with trace
+residue one, it is three.
+
+The required local square condition at that contact follows from
+the already retained prime selection: the repository's
+\emph{Arithmetic dependencies and whole-system completeness}, Lemma
+on arbitrary avoidance, chooses $p\equiv1\pmod{8\cdot3\cdot17}$.
+This is also a direct consequence of Sun's Theorem~4.1 in
+arXiv:2610.20691v3: the Gaussian generators satisfy
+$\pi\equiv9\pmod{16}$ and $\pi\equiv i\pmod M$, where $M$
+may contain three. Taking norms gives $p\equiv1\pmod{24}$,
+so quadratic reciprocity gives $(3/p)=1$. The theorem retains its
+self-order and cross-order conditions and arbitrary fixed denominator
+divisibility with this same $M$. Thus no extra splitting premise or
+height support is required for the linear class.
+
+\begin{thebibliography}{9}
+\bibitem{Sun} Z.-W. Sun,
+\emph{48 unknowns for Hilbert's tenth problem over the rationals},
+arXiv:2610.20691v3 (11 November 2026), Theorem 4.1, p.~16.
+\url{https://arxiv.org/pdf/2610.20691}.
+\bibitem{Trace} \emph{A rational conic criterion using the actual
+detector trace}, repository research manuscript, 17 November 2026.
+\end{thebibliography}
+\end{document}
