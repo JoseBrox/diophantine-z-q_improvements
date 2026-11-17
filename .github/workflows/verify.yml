@@ -13,6 +13,8 @@ jobs:
         with:
           python-version: '3.12'
       - run: python -m pip install sympy==1.14.0
+      - name: Verify the compact explicit 229-variable quartic
+        run: python -B scripts/verify_v68.py --report /tmp/v68-verification.json
       - name: Verify physical detector coordinates and exact scaling obstructions
         run: python -B scripts/verify_v67.py --report /tmp/v67-verification.json
       - name: Verify local factors and point-role obstructions

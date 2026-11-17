@@ -81,3 +81,7 @@ The fixed rational carrier obstruction uses Siegel's theorem in rational-functio
 ## Local fibers and varying rational levels
 
 The varying-level pole theorem retains Burungale's exact simultaneous-twist input above. Its local proof uses **W. Aitken and F. Lemmermeyer, Counterexamples to the Hasse principle, Theorem 6 and Appendix C**, [author manuscript](https://public.csusm.edu/aitken_html/CounterHasse.pdf), for a nontrivial point on a nonsingular binary quartic over an odd residue field. The exact rational maps, infinite selected levels, character guards and explicit examples are proved in the repository. The external paper is cited, not redistributed.
+
+## Canonical explicit-polynomial measurement
+
+The compact 229-variable package includes unchanged copies of the explicit-record notation and measuring program from [elliotglazer/diophantine-z-q, commit 970ec6bf338dc47fad151132a4122fd5c899e348](https://github.com/elliotglazer/diophantine-z-q/tree/970ec6bf338dc47fad151132a4122fd5c899e348/docs/explicit-record). Their original paths are `docs/explicit-record/README.md` and `docs/explicit-record/measure_plain_text.py`. Their SHA-256 digests, source URLs and Git blob identities are retained in `computation/quartic/explicit229_compact_v68/transformation.json`. These files specify and measure the upstream notation; the new coefficient normalization and independent algebra checker are separate project work. Meeting the notation's size requirement does not assert upstream review or acceptance.
