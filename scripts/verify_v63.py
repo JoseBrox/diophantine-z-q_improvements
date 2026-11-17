@@ -139,8 +139,8 @@ def main(output):
     section = re.search(r'(?ms)^## Contributors and citation\n.*?(?=^## |\Z)', readme)
     assert section and hashlib.sha256(section.group().encode()).hexdigest() == CONTRIBUTORS_HASH
     assert r'\(' not in readme and r'\[' not in readme
-    assert 'data/results_20261117_v63.json' in readme
-    assert 'docs/results_20261117_v63.md' in readme
+    assert (ROOT / 'data/results_20261117_v63.json').is_file()
+    assert (ROOT / 'docs/results_20261117_v63.md').is_file()
     assert '234,157,441' in readme and '**229**' in readme
 
     builds = json.loads((ROOT / 'data/audits/tex_build_20261117_v63.json').read_text())

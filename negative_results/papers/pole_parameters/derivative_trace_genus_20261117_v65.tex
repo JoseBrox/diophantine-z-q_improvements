@@ -1,0 +1,241 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,microtype}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\DeclareMathOperator{\Res}{Res}\DeclareMathOperator{\Tr}{Tr}
+\title{Genus of the actual-trace fibers in a derivative detector}
+\author{}\date{17 November 2026}
+\begin{document}\maketitle
+
+\begin{abstract}
+For the nine-contact derivative detector, fixing a guarded auxiliary
+elliptic point gives an actual-trace double cover of the slope line
+with at least eighteen simple rational branch points. Its smooth
+projective normalization has genus at least eight. The contact
+values of the weight and trace-radicand derivatives are respectively
+$\pm18$ and $\pm36$. More generally, no geometric rational curve
+meets the guarded locus after imposing the elliptic multiplication
+relation. These statements exclude rational parametrizations of
+that locus; they do not exclude individual rational witnesses or
+prove failure of the actual-trace realization criterion.
+\end{abstract}
+
+\section{Contact fibers}
+
+Let
+\[
+                \mathcal S=\{-10,-8,-5,1,2,3,4,6,7\}
+\]
+and fix a rational number $a>10$. Define
+\begin{equation}\label{eq:contact}
+ F(a,z)=\prod_{c\in\mathcal S}((a+c)^2-z^2),\qquad
+                 u(z)=-18\frac{F(a,z)}{F_a(a,z)},
+\end{equation}
+where $F_a$ is taken with $z$ fixed. The parameter $a$ is then held
+constant when differentiating in $z$.
+
+For each of two slots $\sigma\in\{+,-\}$, fix constants
+$C_{1,\sigma},\ldots,C_{6,\sigma}$ in a characteristic-zero field.
+Assume the first four are nonzero; the last two may vanish. Put
+\begin{equation}\label{eq:detector}
+ \begin{gathered}
+ D_{i,\sigma}=\frac{C_{i,\sigma}^2}{1+uC_{i,\sigma}^2},\qquad
+ W_\sigma=\prod_{i=1}^6\left(1+\frac{D_{i,\sigma}^2}{u}\right),\\
+ V=W_+^{-1}+W_-^{-1},\qquad
+ w=\frac{u}{(1+u)^2},\qquad
+                     \mathcal C=V^2+w(2-V).
+ \end{gathered}
+\end{equation}
+These are rational functions; identities at a contact mean their
+regular extensions where such extensions exist.
+
+\begin{lemma}\label{lem:contacts}
+The eighteen numbers $z_{c,\varepsilon}=\varepsilon(a+c)$,
+with $c\in\mathcal S$ and $\varepsilon\in\{1,-1\}$, are
+distinct rational numbers. At each of them,
+\[
+ F=0,\qquad F_a\ne0,\qquad u=0,\qquad u'=18\varepsilon.
+\]
+Moreover $\mathcal C$ is regular there, with
+\[
+                       \mathcal C=0,\qquad
+                         \mathcal C'=36\varepsilon.
+\]
+\end{lemma}
+\begin{proof}
+Every $a+c$ is positive and the nine values are distinct. Their
+positives and negatives therefore give eighteen distinct nonzero
+rational points. Set
+\[
+ P_c(a)=\prod_{d\in\mathcal S\setminus\{c\}}
+                ((a+d)^2-(a+c)^2)
+       =\prod_{d\ne c}(d-c)(2a+c+d).
+\]
+Each factor is nonzero: $d\ne c$ and $2a+c+d>0$ because $a>10$.
+At $z=z_{c,\varepsilon}$, direct differentiation gives
+\[
+        F_a=2(a+c)P_c(a),\qquad
+        F_z=-2\varepsilon(a+c)P_c(a).
+\]
+Thus $u$ has a simple zero and $u'=-18F_z/F_a=18\varepsilon$.
+
+In a slot with $r_\sigma$ nonzero tests, $4\le r_\sigma\le6$,
+each nonzero test contributes
+\[
+ \left(1+\frac{D_{i,\sigma}^2}{u}\right)^{-1}
+ =\frac{u(1+uC_{i,\sigma}^2)^2}
+        {u(1+uC_{i,\sigma}^2)^2+C_{i,\sigma}^4}.
+\]
+This has a simple zero at $u=0$; a zero test contributes one.
+Consequently $W_\sigma^{-1}=O(u^{r_\sigma})$ and
+$V=O(u^4)$. Possible cancellation between the slots only raises
+the latter order. Therefore
+\begin{equation}\label{eq:expansion}
+                         \mathcal C=2u+O(u^2).
+\end{equation}
+Composing with \eqref{eq:contact} gives
+$\mathcal C'=2u'=36\varepsilon$.
+\end{proof}
+
+\begin{theorem}\label{thm:genus}
+Suppose the two slots are conjugate over a quadratic number field,
+so $\mathcal C(z)\in\Q(z)$. The double cover
+\[
+                              Y^2=\mathcal C(z)
+\]
+has a geometrically integral smooth projective normalization of
+genus at least eight. Its eighteen contact points are simple rational
+branch points, and their unique points on the normalization are
+rational. The same geometric genus bound holds after fixing arbitrary
+slot constants over any algebraically closed field of characteristic
+zero subject to the four-nonzero-tests hypothesis.
+\end{theorem}
+\begin{proof}
+Lemma~\ref{lem:contacts} gives eighteen simple zeros of
+$\mathcal C$. Hence its square class is nontrivial even over an
+algebraic closure, and the associated function-field extension is
+geometrically quadratic. At a simple zero the local equation has
+nonzero derivative in $z$, so its single point with $Y=0$ is smooth
+and ramified of index two. Over a rational contact its residue field
+is $\Q$.
+
+Let $r$ be the total number of geometric branch points of the
+normalized double cover, including all additional zeros and poles
+of odd order. Riemann--Hurwitz gives
+\[
+                         2g-2=-4+r,\qquad r\ge18.
+\]
+Thus $g\ge8$. The same proof uses only characteristic zero and the
+stated nonzero conditions on the constants.
+\end{proof}
+
+The original source requires $u\ne0$. Accordingly all eighteen
+known rational ramification points are outside its guarded locus.
+The theorem does not assert the existence or absence of any other
+rational point.
+
+\section{The elliptic multiplication locus}
+
+Fix the curve and point of \cite{Derivative,Criterion}:
+\[
+ K=\Q(\sqrt2),\quad E:y^2=x^3-(11-6\sqrt2)x,\quad
+ P=\left(\frac{57-28\sqrt2}{8},\frac{-660+417\sqrt2}{32}\right).
+\]
+Fix an odd $B\ge3$ and a nonzero integer $n$. Set
+\[
+ A=[n]P,\qquad U=[n]H,\qquad
+ T=\Tr x(A),\qquad a=((n^2+B)^4+T^4)^4.
+\]
+The point $A$ and the rational $a$ are fixed while $H$ and $z$ vary.
+In particular $a\ge B^{16}>10$.
+Use $f=1/x$, $\zeta=-x/y$ and the six actual tests
+\[
+ \begin{gathered}
+ C_1=f(H),\quad C_2=f(U),\quad
+ C_3=\overline{f(H-P)},\quad C_4=\overline{f(U-A)},\\
+ C_5=\frac{\zeta(U)}{\zeta(H)}-
+          \overline{\frac{\zeta(U-A)}{\zeta(H-P)}},\qquad
+ C_6=\frac{\zeta(U)}{\zeta(H)}-n.
+ \end{gathered}
+\]
+All original point, affine-difference and quotient guards are retained.
+They make every test finite. Each of the first four is a reciprocal
+of the finite nonzero abscissa of an affine point, so is nonzero in
+each geometric slot. This remains true when the last two tests vanish.
+Theorem~\ref{thm:genus} therefore applies to every guarded fixed $H$.
+
+For a precise geometric statement, let $R=\Res_{K/\Q}E$, an abelian
+surface, and let $R^\circ$ be the open subset on which all these
+point and quotient expressions are defined and the first four tests
+are nonzero in both slots. The multiplication relation uses the
+morphism $[n]:R\to R$; it introduces no independent $U$ coordinate.
+The rational functions \eqref{eq:contact}--\eqref{eq:detector} are
+then defined over $R^\circ\times\mathbf P^1_z$.
+Let $\mathcal X^\circ_{B,n}$ be the locus $Y^2=\mathcal C$
+on which all retained source denominators and nonzero guards hold.
+It is defined by the rational equation on this open set, without
+extra components from clearing a vanishing denominator.
+
+\begin{corollary}\label{cor:rational}
+There is no nonconstant rational map
+$\mathbf P^1_{\overline\Q}\dashrightarrow\mathcal X^\circ_{B,n}$.
+Thus no geometric rational curve has a nonempty open subset in this
+guarded locus. The same assertion holds for any finite point-chart
+cover of the guarded multiplication locus.
+\end{corollary}
+\begin{proof}
+Project such a map to $R$. Since $R$ is proper, the rational map
+from the smooth curve $\mathbf P^1$ extends to a morphism. It is
+constant: after embedding in $\mathbb C$, translation-invariant
+holomorphic one-forms span every cotangent space of the abelian
+surface, while $\mathbf P^1$ has no holomorphic one-forms. The
+morphism has zero differential and is constant in characteristic zero.
+
+Thus the proposed curve lies over a fixed $H\in R^\circ$.
+If its $z$ coordinate varies, it induces a nonconstant map from
+$\mathbf P^1$ to the smooth projective normalization of that fiber,
+whose genus is at least eight by Theorem~\ref{thm:genus}.
+Riemann--Hurwitz rules out this map. If $z$ is constant, the quadratic
+equation gives at most two values of $Y$, so the image is a point.
+A finite point-chart cover cannot have a curve mapping to a point
+of this locus. The same conclusion follows for such a cover.
+\end{proof}
+
+This excludes rational parametrizations of the guarded multiplication
+locus, including ones that attempt to vary $H$ rationally along with
+the existing slope. It neither excludes isolated rational witnesses
+nor proves that there are only finitely many witnesses as $H$ varies.
+In particular it does not disprove $\mathrm{TC}_B(n)$ or its eventual
+positive-input form in \cite{Criterion}. These statements concern the displayed derivative and trace test;
+they assert no such obstruction for a different detector.
+
+\section{Exact verification}
+
+The checker
+\nolinkurl{negative_results/computation/derivative_trace_genus_v65/check.py}
+uses exact polynomial arithmetic to verify all eighteen contact
+identities, nonzero factor decompositions, and the values
+$u'=18\varepsilon$, $\mathcal C'=36\varepsilon$.
+It also checks the reciprocal-factor identity and the first-order
+trace expansion. The normalization, ramification and rational-curve
+arguments are proved above, not inferred from numerical samples.
+
+\begin{thebibliography}{9}\raggedright
+\bibitem{Derivative}\emph{An eleven-variable construction under rational
+$abc$}, repository manuscript, 17 November 2026, version 63,
+\nolinkurl{papers/conditional_few_variables/derivative_detector11_20261117_v63.tex},
+published commit
+\nolinkurl{f70057ffce6b8318a79a7e3648779067fd98c2e3}.
+\bibitem{Criterion}\emph{One actual-trace square in a derivative detector},
+repository manuscript, 17 November 2026, version 64,
+\nolinkurl{papers/pole_parameters/single_trace_derivative_criterion_20261117_v64.tex},
+published commit
+\nolinkurl{aa7013ce6129af0db621b89d5e44deaa07590b35}.
+\end{thebibliography}
+\end{document}

@@ -92,7 +92,7 @@ def main(output):
     section = re.search(r'(?ms)^## Contributors and citation\n.*?(?=^## |\Z)', readme)
     assert section and hashlib.sha256(section.group().encode()).hexdigest() == CONTRIBUTORS_HASH
     assert 'data/criteria_20261117_v64.json' in readme
-    assert 'data/results_20261117_v63.json' in readme
+    assert (ROOT / 'data/results_20261117_v63.json').is_file()
 
     report = dict(schema='diophantine-criteria-verification/v64', status='PASS',
                   python=platform.python_version(), derivative_source_commit=SOURCE_COMMIT,

@@ -2,7 +2,7 @@
 
 The fully specified quartic uses **229 variables at $N=15$**, with exact coefficient height $149^{32}$; its [complete proof](../papers/quartic/quartic229_20261117_v62.tex) uses both abscissa components and three detectors.
 
-The established counts under the retained arithmetic premises are **25 total variables**, or **195 for a quartic**. The stated weak-abc hypotheses give **13 total variables**. Ordinary rational abc gives **11 total variables** and a **71-variable quartic**. Every count includes the input. The priorities are variable count, degree, then coefficient height. The [main results table](../README.md) distinguishes the hypotheses and effective parameters; no global minimum or completed independent audit of all inherited arithmetic premises is asserted.
+The established counts under the retained arithmetic premises are **25 total variables**, or **195 for a quartic**. The stated weak-abc hypotheses give **13 total variables**. Ordinary rational abc gives **11 total variables** and a **68-variable quartic**. Every count includes the input. The priorities are variable count, degree, then coefficient height. The [main results table](../README.md) distinguishes the hypotheses and effective parameters; no global minimum or completed independent audit of all inherited arithmetic premises is asserted.
 
 ## Rank-one curves over general number fields
 
@@ -12,9 +12,20 @@ The [rank-stable contact obstruction](../negative_results/papers/number_fields/r
 
 The [finite-exception criterion](../papers/number_fields/finite_exceptions_and_integrality_20261117_v63.tex) weakens the global goal: a detector containing almost all rational integers need only have bounded-height nonintegral inputs. Finite correction and an integral basis then recover the whole ring. This can avoid an unnecessary positivity-based shift argument over complex fields, but supplies no local completeness theorem by itself.
 
+The same height theorem also controls reciprocal abscissas on $E:y^2=x^3-Dx$, $D\ne0$. If $Q_i=[n_i]P+T_i$ are finite points in one cyclic group modulo torsion with $x(Q_i)\ne0$, and $M=\max(1,|n_i|)$, then effectively
+
+$$
+h\!\left(\sum_i\frac1{x(Q_i)}\right)
+\ge \max_i h(x(Q_i))-C\log(M+2)-C'.
+$$
+
+Indeed, $T_0=(0,0)$ is rational two-torsion and $x(Q+T_0)=-D/x(Q)$. The translated points remain in the same cyclic group modulo torsion and are finite under the stated nonzero-abscissa condition. Applying the sum-height theorem to them, then using $h(1/x)=h(x)$ and $|h(Dx)-h(x)|\le h(D)$ twice, gives the inequality. The constants depend only on the fixed curve, field, generator and number of summands. This is a direct corollary useful for reciprocal charts; it neither controls field-trace cancellation nor supplies detector completeness.
+
 ## Quartic chart target
 
-The complete counts remain 195 and 71. The [scoped chart audit](audits/quartic_chart_review_20261117_v63.md) shows why exposing both reciprocals with independent scaled point charts does not preserve the established completeness family when the fixed difference trace is replaced by a positive sum trace. A concrete remaining target is a seven-field-coordinate quadratic chart replacing the current eight-coordinate point-pair and reciprocal chart, while preserving the affine scaled difference abscissa, inverse-parameter outputs and quadratic product recovery. All tangent and two-torsion boundary cases must remain covered. No smaller complete quartic follows from the separate chart identities.
+The complete counts are **195 without an additional height conjecture** and **68 under ordinary abc**. The [translated-secant chart](../papers/quartic_existence/quartic_abc68_20261117_v65.tex) includes both reciprocal abscissas in six field coordinates, with four field quadrics. Its difference abscissa is a quadratic output; only its rational half-trace is stored. This preserves the prescribed difference carrier and the full multiplication-witness family, including tangencies, zero ordinates and every finite two-torsion difference. The imaginary output component has no other consumer and is eliminated exactly.
+
+The next algebraic targets are the remaining product helpers and rational half-trace output, with quadratic rows and complete boundary coverage. The [direct-elimination audit](audits/quartic68_direct_elimination_review_20261117_v65.md) shows why the immediate substitutions leave cubic or quartic residuals; it does not rule out new presentations or localization at the input. The same chart may also be useful in the reciprocal-pair blocks of the 195- and 229-variable sources. That transfer requires separate checks of identity numerators, quotient equations, zero-input completeness and the full Laurent scaling; no resulting count reduction is asserted. The [positive-sum chart obstruction](audits/quartic_chart_review_20261117_v63.md) still excludes the inherited multiplication-witness family for the different replacement considered there.
 
 ## From eleven toward nine
 
@@ -27,6 +38,10 @@ The [Möbius coupling obstruction](../negative_results/papers/pole_parameters/si
 The [cofinite coupling obstruction](../negative_results/papers/pole_parameters/cofinite_mobius_coupling_obstruction_20261117_v64.tex) survives finite input repairs: local square classes and inert contacts persist on a positive integer progression. This closes that particular finite-exception escape at every obstructed coefficient shift. It does not prove an obstruction at every fixed shift.
 
 For the general target twenty-one, the derivative height proof cannot be imported without its abc hypothesis. A merger of the two general contact blocks needs an unconditional height argument under the already retained premises, together with prime realization and collision control. The original simultaneous actual-trace route remains open.
+
+For that original route it is enough to realize the two actual guarded fibers simultaneously for all but finitely many integer inputs at one fixed defining parameter. Their four free pole coordinates would then be removed. Since the retained source is sound, multiplying its polynomial by the finitely many missing integer-input factors restores completeness without adding a coordinate. A rational point on a curve with freely assigned trace, or local preparation at only the prescribed primes, does not establish this simultaneous realization premise.
+
+The [derivative-fiber genus theorem](../negative_results/papers/pole_parameters/derivative_trace_genus_20261117_v65.tex) gives at least eighteen simple branch contacts and genus at least eight after fixing the auxiliary point. The guarded multiplication locus contains no geometric rational curve, so allowing that point to vary rationally does not restore a rational parametrization. The actual existence target therefore concerns individual rational points or positive-genus arithmetic families, not a rational section over the slope line. The theorem does not disprove eventual actual-trace realization.
 
 The [fixed-slope incidence theorem](../negative_results/papers/rational_fibers/fixed_slope_trace_finiteness_20261117_v59.tex) proves finiteness on fixed genus-one trace curves for all independent point roles in the stated reweighted sources. Infinite propagation at a fixed slope therefore cannot complete that route. A variable slope, point-dependent auxiliary curve, untwisted conic, or individual rational witnesses remain possible. The theorem does not automatically transfer to the derivative source.
 
@@ -315,33 +330,33 @@ The separate [affine scalar-coupling obstruction](../negative_results/papers/int
 
 These statements concern generic recovery and the specified finite correspondences. They do not exclude a smaller arithmetic source whose witnesses satisfy additional dependencies, or one using a different integer-growth relation.
 
-## The 71-variable detector and further quartic reductions
+## The 68-variable detector and further quartic reductions
 
-The [ordinary-abc construction](../papers/quartic_existence/quartic_abc71_20261116_v49.tex) uses **71 variables and 59 quadratic rows**, with exact coefficient height $B^2+1$ for every permitted fixed odd $B\ge81$. Its reference translator is $R_0$ and its input comparison is $\beta=X$. The scaled physical trace $T_{\mathrm{sc}}=X^2\operatorname{Tr}x(U-V)$ is affine in an existing point coordinate. The height scale is $B+X^8+T_{\mathrm{sc}}^2$.
+The [ordinary-abc construction](../papers/quartic_existence/quartic_abc68_20261117_v65.tex) uses **68 variables and 56 quadratic rows**, with exact coefficient height $B^2+1$ for every permitted fixed odd $B\ge81$. Its reference translator is $R_0$ and its input comparison is $\beta=X$. The scaled physical trace $T_{\mathrm{sc}}=X^2\operatorname{Tr}x(U-V)$ is twice the retained rational half-trace coordinate. The height scale is $B+X^8+T_{\mathrm{sc}}^2$.
 
-The complete three-field reference has units $u_H,w_H,v_H$ and reciprocal outputs $u_H/v_H,w_H/v_H$. The existing numerator helpers $F=\beta^2f(U)$ and $G=\beta^2f(V)$ give the physical products through
+The complete three-field reference has units $u_H,w_H,v_H$ and reciprocal outputs $u_H/v_H,w_H/v_H$. The numerator chart coordinates $F=\beta^2f(U)$ and $G=\beta^2f(V)$ give the physical products through
 
 ```math
 v_HJ=u_HF,\qquad v_HK=w_HG.
 ```
 
-These rows are quadratic, and the reference equations already make $v_H$ a unit. No extra guard or square is required. The six-field variable-difference chart supplies both numerator points, their actual difference and its scaled trace, including nonzero two-torsion differences and all allowed tangencies. Its inverse comparison errors are affine and control every relevant local branch.
+These rows are quadratic, and the reference equations already make $v_H$ a unit. No extra guard or square is required. The six-field translated-secant chart supplies both numerator points and their difference; one rational quadratic output stores half the scaled trace. Every finite two-torsion difference and every allowed tangency is included. Its inverse comparison errors are affine and control every relevant local branch.
 
 The modulo-four factor separation yields the residual $X(m-X)$ and unchanged strict height absorption **602/679**. Recovering the unscaled trace adds $2h(X)$ only after absorption. Every coordinate is included in the complete count; nonzero input excludes zero contact weight, and zero input has a separate literal witness. The physical pole input is still $b=w(\operatorname{Norm}(W)/\operatorname{Tr}(W))^2$ and uses the retained simultaneous-twist premise.
 
-The next concrete quartic target is to reduce the **four field reciprocal/product helpers** while keeping both comparison errors affine and the original difference trace available with its controlled input scaling. Any replacement must preserve the unit proof at nonzero input and admit a complete zero-input witness. The [tangent-completion theorem](../negative_results/papers/elliptic_charts/tangent_completion_20261116_v48.tex) excludes repairs by quadrics in its specified old compressed embedding, including after adjoining the physical trace. It does not exclude the variable-difference embedding used here or a further change of coordinates. A proposed saving must count every newly introduced product, square and inverse.
+The next concrete quartic target is to reduce the **two field product helpers and the rational half-trace output** while keeping both comparison errors affine and the original difference trace available with its controlled input scaling. Any replacement must preserve the unit proof at nonzero input and admit a complete zero-input witness. The [tangent-completion theorem](../negative_results/papers/elliptic_charts/tangent_completion_20261116_v48.tex) excludes repairs by quadrics in its specified old compressed embedding, including after adjoining the physical trace. It does not exclude the variable-difference embedding used here or a further change of coordinates. A proposed saving must count every newly introduced product, square and inverse.
 
 The deeper comparison precision needed by the 195-variable construction is not supplied by this detector. A transfer there requires a new valuation argument or a different use of the integer-growth relation. Its variable reduction must be justified separately from the input-preserving affine–Laurent elimination used in the 195-variable family.
 
-### Further elimination from the 195- and 257-variable systems
+### Further elimination from the 195- and 229-variable systems
 
 The [current quartic](../papers/quartic/quartic195_20261116_v45.tex) centers the Lucas expression before rescaling by a guarded unit. The affine change removes constant and cross terms that previously required an inverse-weight square coordinate. Its complete certificate includes every source row, the retained inverse guard and the fixed input. A further reduction must provide the same full-system equivalence or a new soundness and completeness proof. Joint use of the detector units and scalar-normalizer unit is a precise algebraic direction; a favorable count for an isolated block is insufficient.
 
-The [257-variable explicit construction](../papers/quartic/quartic257_20261116_v45.tex) applies an affine centering using an existing inverse coordinate. Its complete rational zero-set equivalence preserves the sufficient parameter N=9682 and gives exact height $149^{19366}$. A further algebraic saving from either family must retain its inverse guards or prove soundness on every additional boundary.
+The [229-variable explicit construction](../papers/quartic/quartic229_20261117_v62.tex) uses both components of the abscissa sum and three complete detectors. Its fixed sufficient parameter is $N=15$, with exact height $149^{32}$. The current certified inequality fails at $N=14$; this is a limitation of that sufficient comparison, not a lower bound for the polynomial family. Sharper constants or a stronger comparison might lower the parameter without changing the variable count. Any algebraic saving must retain every copied guard and prove soundness on each added boundary.
 
 ### Complete reference propagation and its height budget
 
-The [three-coordinate reference theorem](../papers/elliptic_charts/three_coordinate_reference_20261115_v40.tex) and the variable-difference point chart are fully combined in the current 71-variable construction. Their unit equations recover the physical detector products without a new inverse coordinate. The six-field pair contributes the affine expression $T_{\mathrm{sc}}=\operatorname{Tr}(a)=X^2\operatorname{Tr}x(U-V)$, eliminating a separate rational height coordinate. The complete census is 5 rational common coordinates, 3 reference field coordinates, 6 pair field coordinates, 4 reciprocal/product field helpers, 2 comparison-square field coordinates and two blocks of 18 rational coordinates.
+The [three-coordinate reference theorem](../papers/elliptic_charts/three_coordinate_reference_20261115_v40.tex) and the translated-secant chart are fully combined in the current 68-variable construction. Reference units recover both physical detector products without a new inverse coordinate. The complete census is six rational common coordinates including the half-trace, three reference field coordinates, six pair field coordinates including the reciprocals, two product field helpers, two comparison-square field coordinates and two blocks of eighteen rational coordinates.
 
 The [mixed-power height theorem](../papers/elliptic_heights/mixed_power_height_20261116_v45.tex) gives, for $a_{\mathrm{gap}}=B+X^8+T_{\mathrm{sc}}^2$,
 
@@ -382,7 +397,7 @@ $$
 H(Q_B)=B^2+1
 $$
 
-for the [71-variable ordinary-abc family](../papers/quartic_existence/quartic_abc71_20261116_v49.tex). Exact expansion proves these height formulas for the stated parameter ranges. A sufficient defining parameter in each ineffective family still depends on the explicitly retained arithmetic premises.
+for the [68-variable ordinary-abc family](../papers/quartic_existence/quartic_abc68_20261117_v65.tex). Exact expansion proves these height formulas for the stated parameter ranges. A sufficient defining parameter in each ineffective family still depends on the explicitly retained arithmetic premises.
 
 The [lower-bound results](../negative_results/papers/lower_bounds/lower_bounds_20261109_v15.tex) require degree at least four for a single defining equation and at least five total coordinates for a globally nonnegative quartic or a quadratic system. They supply no lower bound near the current counts.
 

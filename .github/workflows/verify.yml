@@ -13,6 +13,8 @@ jobs:
         with:
           python-version: '3.12'
       - run: python -m pip install sympy==1.14.0
+      - name: Verify the complete 68-variable quartic and derivative-fiber genus
+        run: python -B scripts/verify_v65.py --report /tmp/v65-verification.json
       - name: Verify the actual-trace transfer and cofinite obstruction
         run: python -B scripts/verify_v64.py --report /tmp/v64-verification.json
       - name: Verify the derivative degree bound and number-field height tools
