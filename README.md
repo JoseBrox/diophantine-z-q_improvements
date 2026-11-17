@@ -116,6 +116,8 @@ This block has total degree **3**, **4 monomials**, and coefficient height **4**
 
 The [all-point trace theorem](papers/trace_heights/trace_on_all_points_20261113_v25.tex) and [positive weighted trace theorem](papers/trace_heights/weighted_trace_20261114_v27.tex) include the half-integral index and torsion cases required by the sources. The latter also verifies that the selected Gaussian primes annihilate the half-generator using the existing congruences.
 
+For this smallest cubic, $x=V+2$ gives $E_w:y^2=x(x^2-(w+4)x+4(w+1))$. The [same paper](papers/pole_parameters/small_trace_classes_20261117_v58.tex) proves that **$(4,4)$ has infinite order for every rational $0<w\le1/4$**. An exact division-polynomial certificate and an independent tangent/chord calculation prove the torsion exclusions. This supplies positive rank throughout the normalized weight range; prescribing $x=2+\operatorname{Tr}(W^{-1})$ for both actual detectors remains unproved.
+
 The [joint-pole theorem](papers/pole_parameters/joint_pole_realization_20261114_v29.tex) and [common-twist theorem](papers/pole_parameters/common_twists_20261114_v30.tex) reduce pole parameters on specified square-class compatibility loci. The current completeness witnesses are not proved to lie on those loci. These results do not establish a 24-variable construction or a smaller abc variable count.
 
 The [shared-parameter local theorem](papers/pole_parameters/shared_parameter_local_solubility_20261115_v41.tex) proves that **every rational conic parameter** is locally admissible for every prepared input. A finite family can use the same parameter at every completion.
