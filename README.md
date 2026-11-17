@@ -22,7 +22,7 @@ whose rational input projection is the integers, under the arithmetic premises s
 | [Fully specified quartic](papers/quartic/quartic229_20261117_v62.tex) | None | **229** | **4, exact** | $N=15$; 207 quadratic squares; **3,312 monomials**; exact height $149^{32}$ (232 bits). |
 | [Few variables under weak abc](papers/finite_algebra/terminal_quadratic_root_20261115_v40.tex) | Weak abc at $121/100$; ordinary Szpiro suffices | **13** | $\le 43{,}211{,}777 < 2^{26}$ | Sufficient odd shift ineffective. |
 | [Lower degree under stronger weak abc](papers/finite_algebra/terminal_quadratic_root_20261115_v40.tex) | Weak abc at $16/15$; ordinary rational abc suffices | **13** | $\le 39{,}858{,}177 < 2^{26}$ | Sufficient odd shift ineffective. |
-| [Fewest variables under ordinary abc](papers/conditional_few_variables/derivative_detector11_20261117_v59.tex) | Ordinary rational abc | **11** | $\le 5{,}444{,}199{,}553 < 2^{33}$ | Complete integer circuit; every sufficiently large fixed odd shift; sufficient threshold ineffective. |
+| [Fewest variables under ordinary abc](papers/conditional_few_variables/derivative_detector11_20261117_v63.tex) | Ordinary rational abc | **11** | $\le 234{,}157{,}441 < 2^{28}$ | Complete integer circuit; every sufficiently large fixed odd shift; sufficient threshold ineffective. |
 | [Fewest quartic variables under abc](papers/quartic_existence/quartic_abc71_20261116_v49.tex) | Ordinary rational abc | **71** | **4, exact** | 59 quadratic squares; **1,187 monomials**. Exact height below; sufficient shift ineffective. |
 
 All these polynomials have integer content one. The general degree figures are upper bounds for finite, unexpanded determinant specifications. Their support bounds are below $2^{1193}$, $2^{1401}$, $2^{284}$, and $2^{283}$, in the order 25, 27, weak-abc 13, stronger-abc 13.
@@ -47,7 +47,7 @@ The 71-variable quartic uses the complete three-coordinate unit reference chart 
 
 The coefficient-basis transformations and the 195-coordinate eliminations preserve their corresponding full rational solution sets. The complete 229-coordinate construction retains every copied detector guard and proves soundness and integer completeness for every $N\ge15$. The finite-algebra construction permits a zero final pole ordinate and proves soundness on that larger locus.
 
-Current specifications: [results JSON](data/results_20261117_v62.json), [proof and verification guide](docs/results_20261117_v62.md), and [research directions](docs/research_directions.md).
+Current specifications: [results JSON](data/results_20261117_v63.json), [proof and verification guide](docs/results_20261117_v63.md), and [research directions](docs/research_directions.md).
 
 The [fixed-fiber and detector-index theorems](docs/common_parameter_guard_reduction_20261116_v42.md) show that one common rational pole fiber with nonzero ordinates suffices for all remaining pole guards, and give independent auxiliary-index families with unchanged square-class scalars. The common rational fiber itself remains unproved. Proved obstructions and lower bounds are collected separately in [negative_results](negative_results/README.md).
 
@@ -61,25 +61,42 @@ Cite this work as "ℤℚ Diophantine Project contributors. ℤ is Diophantine i
 
 ## Eleven variables under ordinary abc
 
-The [derivative detector theorem](papers/conditional_few_variables/derivative_detector11_20261117_v59.tex) gives a complete **11-variable family**, under ordinary rational abc and the precisely stated elliptic, prime-pattern, trace-height and intrinsic-pole inputs. It uses one contact argument for both the input and root trace heights:
+The [derivative detector theorem](papers/conditional_few_variables/derivative_detector11_20261117_v63.tex) gives a complete **11-variable family**, under ordinary rational abc and the precisely stated elliptic, prime-pattern, trace-height and intrinsic-pole inputs. It uses one contact argument for both the input and root trace heights:
 
 ```math
 \beta=X^2+B,\qquad T=\operatorname{Tr}x(A),\qquad
-M=\beta^4+T^4,\qquad a=M^3,\qquad t=M^6-z^2.
+M=\beta^4+T^4,\qquad a=M^4,\qquad t=M^8-z^2.
 ```
 
-For the sixteen shifts $c=\pm1,\ldots,\pm8$, set
+For the nine shifts $c\in\{-10,-8,-5,1,2,3,4,6,7\}$, set
 
 ```math
 F(a,z)=\prod_c((a+c)^2-z^2),\qquad
-u=-\frac{32aF}{\partial F/\partial a},\qquad
+u=-\frac{18F}{\partial F/\partial a},\qquad
 D_i=\frac{C_i^2}{1+uC_i^2},\qquad
 W=\prod_{i=1}^{6}\left(1+\frac{D_i^2}{u}\right).
 ```
 
-The derivative quotient recovers simple simultaneous contact factors. The transformed tests preserve local extraction at every positive odd valuation of $u$ and automatically prepare its new negative odd valuations. The resulting input $7b$, with $b=4u/((1+u)^2\operatorname{Tr}(W^{-1})^2)$, therefore needs only one complete intrinsic pole block. Sun's theorem applies to the **32 fixed prime positions**; the proof checks their order compatibility, fixed-place preparation and every algebra-character guard.
+The derivative quotient recovers simple simultaneous contact factors. The shifts sum to zero and have no opposite pair, so numerator and denominator primes of $M$ cause no extra height loss. The transformed tests preserve local extraction at every positive odd valuation of $u$ and automatically prepare its new negative odd valuations. The resulting input $7b$, with $b=4u/((1+u)^2\operatorname{Tr}(W^{-1})^2)$, therefore needs only one complete intrinsic pole block. Sun's theorem applies to the **18 fixed prime positions**; the proof checks their order compatibility, fixed-place preparation and every algebra-character guard.
 
-The count is **1 input + 6 point coordinates + 1 contact parameter + 2 pole parameters + 1 encoder = 11**. The finite algebra has rank **128**. The [complete specification and independent checks](computation/few_variables/derivative11_v59) certify degree at most **5,444,199,553**, fewer than $2^{309}$ monomials and integer content one. The sufficient odd shift is ineffective; $B=3$ is an algebraic fixture only. This ordinary-abc result does not assert the same count under the two weaker fixed-exponent abc hypotheses. **The targets 21 and 9 remain unproved.**
+The count is **1 input + 6 point coordinates + 1 contact parameter + 2 pole parameters + 1 encoder = 11**. The finite algebra has rank **128**. The [complete specification and independent checks](computation/few_variables/derivative11_v63) certify degree at most **234,157,441**, fewer than $2^{264}$ monomials and integer content one. Subalgebra norms reduce the degree of the denominator guard, and the terminal-root theorem permits the final pole ordinate to vanish. Every preceding radicand and every denominator remains guarded. The sufficient odd shift is ineffective; $B=3$ is an algebraic fixture only. This ordinary-abc result does not assert the same count under the two weaker fixed-exponent abc hypotheses. **The targets 21 and 9 remain unproved.**
+
+## Elliptic sums over arbitrary number fields
+
+The [cyclic-group height theorem](papers/effective_sums/elliptic_sum_heights_over_number_fields_20261117_v63.tex) applies to every elliptic curve over every number field. For finite points $Q_i=[n_i]P+T_i$ in one cyclic group modulo torsion, $M=\max(1,|n_i|)$, and every integral $c$, it gives
+
+```math
+h\left(\sum_i x(Q_i)+c\right)
+\ge \max_i h(x(Q_i))-O_{E,K,P,r}(\log(M+2)),
+```
+
+with an effective constant. The finite-place loss is explicit; the archimedean estimate uses David–Hirata-Kohno's published elliptic-logarithm theorem with fixed periods. Arbitrary torsion translates, zero indices and negative indices are included. The same method gives effective finiteness of $S$-integral abscissa sums.
+
+Zywina's rank-one existence theorem, cited as a preprint, supplies suitable curves over every number field on which this controls the entire finite point domain. The result concerns algebraic sums. A field trace can still cancel, and no definition of every number-field ring of integers, or counterexample to such a definition, is asserted.
+
+The [finite-exception criterion](papers/number_fields/finite_exceptions_and_integrality_20261117_v63.tex) shows that it suffices to construct a Diophantine set containing all but finitely many rational integers whose nonintegral inputs have bounded height. Finite correction and an integral basis then define the entire ring of integers. The required detector remains unconstructed.
+
+The separate [rank-stable contact obstruction](negative_results/papers/number_fields/rank_stable_adjacent_contacts_20261117_v63.tex) rules out directly inserting base-field rank-stable curves into the adjacent-index conjugate detector: the two contacts force a fixed non-torsion multiple to reduce to the identity, which occurs at only finitely many base primes. A different comparison architecture or a curve that does not descend is needed for that route.
 
 ## Elliptic index divisibility and amplified congruences
 
@@ -90,6 +107,8 @@ The [index-pole theorem](papers/elliptic_divisibility/elliptic_index_poles_20261
 The [pole-cancelling coordinate](papers/elliptic_heights/pole_cancelling_quotient_height_20261117_v60.tex) $X^2x(U)-x(H)$ has a proved height lower bound and local expansion. Its proposed use in the specified derivative detector is excluded by the separate [denominator-support theorem](negative_results/papers/pole_parameters/denominator_support_height_obstruction_20261117_v60.tex): all positive odd contact primes must lie in the denominator of $H$, which cannot support a height growing quadratically with $j/h$. The theorem extends to every fixed rational replacement generically nonconstant in $U$ within the stated support architecture; Siegel's theorem handles its constant specializations. It concerns intended integer witnesses and does not exclude other sources. The construction counts above are unchanged.
 
 The separate [input-only helper theorem](negative_results/papers/pole_parameters/input_only_weight_false_witnesses_20261117_v61.tex) proves that the displayed degree-eight input weight does give $3h(X)\le\widehat h(H)+O(1)$ under abc, but still admits every noninteger $X=2+1/q$ outside a fixed finite set. A local inverse for the formal-logarithm ratio and compatible index progressions produce complete witnesses with an unrestricted integer quotient. Controlling the input height alone therefore does not close this source's equality gap.
+
+The [six-contact coupling obstruction](negative_results/papers/pole_parameters/six_contact_mobius_obstruction_20261117_v63.tex) covers every integer exponent at least four and every fixed finite menu of those exponents. One arithmetic progression of odd coefficient shifts defeats all twelve Möbius symmetries at the prescribed input and root point. This excludes that coupling strategy; it does not exclude the derivative construction or every nine-variable definition.
 
 ## Rational pole levels
 
@@ -224,7 +243,7 @@ The [guarded rational-square criterion](papers/pole_parameters/native_square_cri
 
 A rational-square value excludes every required negative odd detector pole. The radicand is positive at every prepared character, and its reference value at $W=1$ is exactly $w^2/(1+w)^2$. Fixed nonzero exceptional-set units are admissible coefficients; so are the proved source-dependent choices $a=1+wc^2$ for existing guarded rational source functions $c$. These choices add no rational coordinate or nonzero guard. The flat choice $a=1$ has an exact prescribed-coordinate elliptic form, and the conditional detector has a trace-preserving reference involution.
 
-**Two simultaneous rational-square values on actual prepared detector tuples would give 21 variables, or 9 under the conditional source hypotheses. This global realization theorem remains unproved.** The proved local preparation and exact finite-algebra count do not replace it. The [current proof guide](docs/results_20261117_v62.md) states the precise conditions and their limitations.
+**Two simultaneous rational-square values on actual prepared detector tuples would give 21 variables, or 9 under the conditional source hypotheses. This global realization theorem remains unproved.** The proved local preparation and exact finite-algebra count do not replace it. The [current proof guide](docs/results_20261117_v63.md) states the precise conditions and their limitations.
 
 ### A single cover and finite square-class alternatives
 
@@ -298,6 +317,7 @@ The [pole-compression guide](negative_results/docs/pole_compression_obstructions
 Use **Python 3.12** for the byte-pinned legacy suite and **SymPy 1.14.0** for symbolic checks. From the repository root:
 
     python -m pip install sympy==1.14.0
+    python -B scripts/verify_v63.py
     python -B scripts/verify_v62.py
     python -B scripts/verify_v61.py
     python -B scripts/verify_v60.py

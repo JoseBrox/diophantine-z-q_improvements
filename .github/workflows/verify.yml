@@ -13,10 +13,8 @@ jobs:
         with:
           python-version: '3.12'
       - run: python -m pip install sympy==1.14.0
-      - name: Verify rational pole levels and input-only helper false witnesses
-        run: python -B scripts/verify_v61.py --report /tmp/v61-verification.json
-      - name: Verify elliptic index poles and separate denominator-support obstructions
-        run: python -B scripts/verify_v60.py --report /tmp/v60-verification.json
+      - name: Verify the derivative degree bound and number-field height tools
+        run: python -B scripts/verify_v63.py --report /tmp/v63-verification.json
       - name: Verify the explicit 229-variable quartic and coupling obstruction
         run: python -B scripts/verify_v62.py --report /tmp/v62-verification.json
       - name: Verify rational pole levels and input-only false witnesses

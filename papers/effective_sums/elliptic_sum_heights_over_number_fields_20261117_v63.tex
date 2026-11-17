@@ -1,0 +1,440 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,microtype}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\newcommand{\OK}{\mathcal O_K}
+\newcommand{\hfin}{h_{\mathrm{fin}}}
+\newcommand{\hinf}{h_{\infty}}
+\DeclareMathOperator{\ord}{ord}
+\setlength{\emergencystretch}{2em}
+\title{Effective heights of sums on cyclic elliptic groups over number fields}
+\author{}\date{17 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+Let $E$ be an elliptic curve over a number field and let $P$ have
+infinite order. The height of a sum of finitely many abscissas of
+points $[n_i]P+T_i$, with rational torsion translates $T_i$, is at
+least the largest summand height minus an effective logarithmic
+index term. The result holds over arbitrary number fields and for
+every elliptic curve. The finite-place estimate has explicit
+constants for any integral short Weierstrass model. The
+archimedean estimate follows from the optimal coefficient-height
+dependence in the theorem of David and Hirata--Kohno.
+An effective finiteness statement for integral and $S$-integral
+abscissa sums follows. These results concern a fixed cyclic group
+modulo torsion; neither field traces nor arbitrary collections of
+elliptic points satisfy the same assertion.
+\end{abstract}
+
+\section{Statement and normalization}
+Let $K$ be a number field of degree $d_K$ and let
+\[
+ E:\quad y^2=x^3+Ax+B,\qquad A,B\in\OK,\qquad 4A^3+27B^2\ne0.
+\]
+Fix an infinite-order point $P\in E(K)$ and an integer $r\ge1$.
+For $1\le i\le r$ take
+\[
+ Q_i=[n_i]P+T_i\ne O,\qquad n_i\in\Z,\qquad T_i\in E(K)_{\rm tors}.
+\]
+Put $M=\max(1,|n_1|,\ldots,|n_r|)$. Repeated points, negative
+indices and index zero are allowed, provided every $Q_i$ is finite.
+We write $h$ for the absolute logarithmic height and decompose it
+as $h=\hfin+\hinf$. At a finite place $\mathfrak p\mid p$,
+$v_{\mathfrak p}$ has value group $\Z$; the local contribution is
+\[
+ \frac{f_{\mathfrak p}\log p}{d_K}
+                    \max(0,-v_{\mathfrak p}(a)).
+\]
+All these heights of zero are zero. Define
+\[
+ a_r=(r-1)2^{r-1},\qquad
+ b_r=\sum_{j=1}^r\binom{r-1}{j-1}\log j,
+\]
+and
+\[
+ R_K=\frac{2}{d_K}
+ \sum_{\substack{\mathfrak p\mid p\\p\ne2}}
+ f_{\mathfrak p}\left\lfloor\frac{e_{\mathfrak p}-1}{2}\right\rfloor\log p.
+\]
+Only odd ramified places with ramification index at least three
+contribute to $R_K$.
+
+\begin{theorem}\label{thm:main}
+There is an effectively computable constant $C=C(E,K,P)>0$ such
+that, for every tuple as above and every $c\in K$, setting
+$Z_c=\sum_i x(Q_i)+c$ gives
+\begin{align}
+ \hfin(Z_c)&\ge\max_i\hfin(x(Q_i))
+       -a_r\log M-b_r-R_K-\hfin(c),\label{eq:finite}\\
+ h(Z_c)&\ge\max_i h(x(Q_i))
+       -a_r\log M-b_r-R_K-C\log(M+2)-\hfin(c).
+       \label{eq:global}
+\end{align}
+Moreover
+\[
+ R_K\le\frac{\log|\operatorname{disc}(K)|}{d_K}.
+\]
+The constant $C$ is independent of $r,c,n_i$ and the chosen
+$K$-rational torsion translates. In particular, for fixed $r$
+and integral $c$ the loss in~\eqref{eq:global} is $O_{E,K,P,r}(\log(M+2))$,
+with an effective implied constant.
+\end{theorem}
+
+Every elliptic curve over a number field admits an integral short
+Weierstrass model after a change of variables and clearing fixed
+denominators. Thus the theorem applies to every elliptic curve;
+changing its fixed abscissa changes only effective constants.
+The explicit finite-place bound refers to the displayed integral
+model. No assertion is made that the David--Hirata--Kohno constant
+has a convenient numerical size.
+
+\section{Integral formal expansions}
+Write $z=-x/y$ at the identity and $X=z^2x$. The curve equation
+becomes
+\[
+ X^3-X^2+Az^4X+Bz^6=0.
+\]
+Its derivative with respect to $X$ is one at $(X,z)=(1,0)$.
+Coefficient recursion therefore gives
+\[
+ X\in\Z[A,B][[z^2]],\qquad X=1+O(z^4).
+\]
+In particular $x=z^{-2}+O(z^2)$, with integral coefficients.
+The invariant differential satisfies
+\[
+ \frac{dx}{2y}=\left(1-\frac{zX'}{2X}\right)dz.
+\]
+Since $X$ is an even integral series and $X(0)=1$, the factor in
+parentheses belongs to $1+z^4\Z[A,B][[z^2]]$. Its integral with
+zero constant term is the formal logarithm
+\[
+ \ell(z)=z+\sum_{\substack{m\ge5\\m\text{ odd}}}\frac{a_m}{m}z^m,
+ \qquad a_m\in\OK.
+ \label{eq:log}
+\]
+These calculations do not require good reduction.
+
+At $\mathfrak p\mid p$, put $e=e_{\mathfrak p}$ and call a formal
+point \emph{deep} if its depth $v_{\mathfrak p}(z)$ is at least
+$\lceil e/2\rceil$ when $p$ is odd, or at least one when $p=2$.
+The deep points together with $O$ form an open subgroup of
+$E(K_{\mathfrak p})$: the integral formal group law and its inverse
+preserve every positive valuation ideal. Set
+\[
+ b_{\mathfrak p}=
+ \begin{cases}2\lfloor(e-1)/2\rfloor,&p\ne2,\\0,&p=2.\end{cases}
+\]
+A finite point outside the deep subgroup has
+$v_{\mathfrak p}(x)\ge-b_{\mathfrak p}$. Indeed, a point of negative
+abscissa valuation is formal, and there
+$v_{\mathfrak p}(x)=-2v_{\mathfrak p}(z)$.
+
+\begin{lemma}\label{lem:principal}
+For every nonidentity deep point,
+\[
+ v_{\mathfrak p}(\ell(z))=v_{\mathfrak p}(z),\qquad
+                 x(z)-\ell(z)^{-2}\in\mathcal O_{K_{\mathfrak p}}.
+\]
+The formal logarithm is injective on the deep subgroup.
+\end{lemma}
+\begin{proof}
+Put $a=v_{\mathfrak p}(z)$. For every odd $m\ge5$ and odd prime
+$p$ we have $v_p(m)\le(m-3)/2$. To see this, if the reverse
+integer inequality held, then $m\ge3^{(m-1)/2}>m$; the latter
+strict inequality holds for odd $m\ge5$. When $2a\ge e$,
+\[
+ ma-e v_p(m)\ge ma-2a(m-3)/2=3a.
+\]
+The valuations tend to infinity, since $v_p(m)=O(\log m)$.
+At $p=2$ every denominator $m$ is a unit, and every term beyond
+$z$ has valuation at least $5a$. Thus in all cases
+$\ell(z)=z(1+\eta)$ with $v_{\mathfrak p}(\eta)\ge2a$.
+It follows that $\ell(z)^{-2}-z^{-2}$ is integral, as is
+$x(z)-z^{-2}$. The logarithm is a homomorphism on the formal
+group, and its valuation identity gives injectivity on this
+subgroup.
+\end{proof}
+
+Compactness of $E(K_{\mathfrak p})$ implies that a positive multiple
+$[q]P$ belongs to the deep subgroup. Put
+$L_{\mathfrak p}=\ell([q]P)/q$. The homomorphism law makes this
+independent of $q$. It is nonzero because $P$ is non-torsion and
+the logarithm is injective on the deep subgroup. If $Q_i$ is deep,
+choose a common multiple killing $T_i$ and carrying $P$ into that
+subgroup. Applying the logarithm gives
+\[
+ \ell(Q_i)=n_iL_{\mathfrak p}.
+\]
+Consequently a deep $Q_i$ has $n_i\ne0$, and
+\[
+ x(Q_i)=(n_iL_{\mathfrak p})^{-2}+\varepsilon_i,
+             \qquad v_{\mathfrak p}(\varepsilon_i)\ge0.\tag{*}
+\]
+This also handles torsion translates of every order: no assertion
+that a shallow torsion abscissa is integral is used.
+
+\section{The finite-place inequality}
+Fix $i$. At a place where $Q_i$ is deep, let $J$ be the set of
+all deep points among the $Q_j$ and put
+\[
+ C_J=\sum_{j\in J}\prod_{a\in J\setminus\{j\}}n_a^2\in\Z_{>0}.
+\]
+All the indices in $J$ are nonzero. Positivity ensures that $C_J$
+cannot vanish, even for negative indices. Summing~$(*)$ gives
+\[
+ Z_c=(n_iL_{\mathfrak p})^{-2}
+       \frac{C_J}{\prod_{j\in J\setminus\{i\}}n_j^2}+\varepsilon,
+\]
+where
+\[
+ v_{\mathfrak p}(\varepsilon)\ge
+ -b_{\mathfrak p}-\max(0,-v_{\mathfrak p}(c)).
+\]
+Write $H=-v_{\mathfrak p}(x(Q_i))$ and let $A_J$ denote the
+rational quotient in the principal term. If
+$H-v_{\mathfrak p}(A_J)$ exceeds the displayed error allowance,
+the principal term controls the valuation of $Z_c$. Otherwise
+the entire local height of $x(Q_i)$ is at most
+$v_{\mathfrak p}(A_J)$ plus that allowance. In both cases the
+local height loss, before multiplying by its place weight, is at
+most
+\[
+ v_{\mathfrak p}(C_J)+b_{\mathfrak p}
+                        +\max(0,-v_{\mathfrak p}(c)),
+\]
+because the denominator of $A_J$ is an integer. If $Q_i$ is
+not deep, its whole local height is at most $b_{\mathfrak p}$.
+
+For each fixed positive integer $C$, the sum over all finite
+places of its weighted valuation is $\log C$. Each possible
+subset $J$ containing $i$ satisfies
+$C_J\le |J|M^{2(|J|-1)}$. Summing over the at most
+$\binom{r-1}{j-1}$ subsets of size $j$ gives
+\[
+ \sum_{j=1}^r\binom{r-1}{j-1}
+       \bigl(\log j+2(j-1)\log M\bigr)
+                  =b_r+a_r\log M.
+\]
+The remaining local allowances sum to $R_K+\hfin(c)$. This
+proves~\eqref{eq:finite} for every $i$, hence for their maximum.
+The argument also covers $n_i=0$, since that point is never deep.
+
+Finally $2\lfloor(e-1)/2\rfloor\le e-1$, whereas the exponent
+of the local different is at least $e-1$. The discriminant formula
+therefore gives the asserted bound on $R_K$.
+
+\section{The archimedean estimate}
+The coefficient-height dependence in the following result is
+essential. Theorem 1.6 of David and Hirata--Kohno~\cite{DHK}
+implies the fixed-data statement used here:
+
+\begin{lemma}\label{lem:dhk}
+Fix elliptic curves over a number field and fixed elliptic
+logarithms $u_1,\ldots,u_k$ of algebraic points, where periods
+are permitted as logarithms of the identity. There is an
+effectively computable $C_0>0$ such that for any integers
+$b_0,\ldots,b_k$, if
+$\Lambda=b_0+\sum_{j=1}^k b_j u_j\ne0$, then
+\[
+ \log|\Lambda|\ge-C_0\log\bigl(2+\max_j|b_j|\bigr).
+\]
+\end{lemma}
+\begin{proof}[Verification of the specialization]
+Use Theorem 1.6 with one linear form, and use the fixed vector
+$u=(1,u_1,\ldots,u_k)$. Since $\Lambda\ne0$, this vector is not
+in the kernel of the form, and cannot belong to the tangent
+space of a subgroup contained in that kernel. This is precisely
+the theorem's nonvanishing hypothesis $s=t=1$.
+In Data 1.4, choose the auxiliary parameter $\mathcal E=e$ and
+choose each $V_j$ once and for all large enough to satisfy the
+canonical-height and analytic-size inequalities. This is possible
+because the points, logarithms, periods and number field are
+fixed. The degree, model heights, modular heights and all $V_j$
+are then fixed. Only the coefficient-height parameter $B_0$
+varies, and one can take $B_0=\max(e,|b_0|,\ldots,|b_k|)$.
+In the stated bound, $\log B_0$ occurs linearly; the iterated
+logarithm is $\log\log^+ V$, with $V=\max V_j$, not an iterated
+logarithm of $B_0$. All remaining factors are fixed and effective.
+This yields the displayed inequality after enlarging $C_0$.
+The paper's projective exponential map includes the identity,
+so no exclusion of period logarithms is needed.
+\end{proof}
+
+\begin{proposition}\label{prop:arch}
+There is an effectively computable $C=C(E,K,P)>0$ such that
+\[
+ \hinf\bigl(x([n]P+T)\bigr)\le C\log(2+|n|)
+\]
+for every $n\in\Z$, every $T\in E(K)_{\rm tors}$, and every
+finite $[n]P+T$.
+\end{proposition}
+\begin{proof}
+Fix an embedding $\sigma:K\hookrightarrow\mathbb C$. For the
+complex uniformization of the displayed curve, choose periods
+$\omega_1,\omega_2$ and an elliptic logarithm $u_P$ in their
+closed centered fundamental parallelogram. The coordinate map is
+$x=\wp(u)$ and $y=\wp'(u)/2$, with invariants
+$g_2=-4\sigma(A)$ and $g_3=-4\sigma(B)$.
+Choose an effectively known positive integer $t$ annihilating
+$E(K)_{\rm tors}$. Such an integer can, for example, be obtained
+from reduction counts at two good places of distinct residue
+characteristics. If their counts are $a,b$, then $t=ab$ suffices:
+for every rational prime $\ell$ at least one reduction is injective
+on the $\ell$-primary torsion, and its order divides the corresponding
+count.
+
+For a torsion point $T$, choose
+$u_T=(a_T\omega_1+b_T\omega_2)/t$, with
+$0\le a_T,b_T<t$. Reduce $nu_P+u_T$ to a representative $u_Q$
+in the centered parallelogram. Then
+\[
+ t u_Q=tnu_P+(a_T-tm_1)\omega_1+(b_T-tm_2)\omega_2
+\]
+for integers $m_1,m_2$ satisfying
+$|m_j|\le |n|/2+2$. Thus every coefficient on the right has
+absolute value at most $t(|n|+3)$. The right side is nonzero,
+since $Q=[n]P+T\ne O$ and the only lattice point in this
+parallelogram is zero.
+
+Apply Lemma~\ref{lem:dhk} to the three fixed logarithms
+$u_P,\omega_1,\omega_2$ of $P,O,O$. It gives
+$-\log|u_Q|\le C_1\log(2+|n|)$ with an effective constant.
+On the fixed closed parallelogram, $|u|^2|\wp(u)|$ is bounded,
+with its removable value at zero defined by the Laurent
+expansion. Its bound is effective from the convergent
+Weierstrass series, or from the analytic estimates in
+\cite[Section 2.1]{DHK}. Hence
+\[
+ \log\max(1,|\sigma(x(Q))|)\le C_2\log(2+|n|).
+\]
+This proof also covers $n=0$: the linear form is still nonzero
+for a finite torsion point. Summing with the normalized
+archimedean weights proves the proposition.
+\end{proof}
+
+Since $h(Z_c)\ge\hfin(Z_c)$, applying Proposition~\ref{prop:arch}
+to an index maximizing $h(x(Q_i))$ and then using~\eqref{eq:finite}
+proves~\eqref{eq:global}. This completes the proof of
+Theorem~\ref{thm:main}.
+
+\section{Effective finiteness and the role of the cyclic group}
+Normalize the canonical height by
+\[
+ \widehat h(Q)=\tfrac12\lim_{k\to\infty}4^{-k}h(x([2^k]Q)).
+\]
+The usual effective comparison with naive height gives
+$h(x(Q))=2\widehat h(Q)+O_E(1)$; see~\cite[Chapter VIII,
+Section 9]{Silverman}. The constant can be obtained from
+resultant bounds for the duplication morphism.
+
+\begin{corollary}\label{cor:growth}
+For fixed $r$ and integral $c$, there is an effective constant
+$C_r$ such that
+\[
+ h\left(\sum_i x(Q_i)+c\right)
+ \ge 2\widehat h(P)\max_i n_i^2-C_r\log(M+2).
+\]
+More strongly, for any fixed finite set $S$ of finite places,
+there is an effective $C_{r,S}$ such that the same lower bound,
+with $C_r$ replaced by $C_{r,S}$, holds for the height contribution
+outside $S$ whenever $c$ is $S$-integral. Consequently there are
+only finitely many tuples of indices and rational torsion
+translates for which $\sum_i x(Q_i)$ is $S$-integral, and all
+indices are effectively bounded.
+\end{corollary}
+\begin{proof}
+The first assertion follows from Theorem~\ref{thm:main} and
+$\widehat h([n]P+T)=n^2\widehat h(P)$.
+For the stronger assertion, the finite-place proof can simply be
+summed over places outside $S$. At a fixed place in $S$, a deep
+point satisfies
+\[
+ \max(0,-v_{\mathfrak p}(x([n]P+T)))
+       =2v_{\mathfrak p}(n)+2v_{\mathfrak p}(L_{\mathfrak p}),
+\]
+where $n\ne0$. The first term is at most
+$2e_{\mathfrak p}\log M/\log p$; the second is fixed and
+computable from any sufficiently deep multiple of $P$. A
+nondeep point has bounded local height. Thus the sum of local
+heights over $S$, like the archimedean contribution, is
+$O_{E,K,P,S}(\log(M+2))$, effectively. Subtracting these
+contributions from the naive height and applying the
+finite-place inequality outside $S$ proves the claim.
+If the sum is $S$-integral, this outside height is zero, whereas
+$\widehat h(P)>0$. A positive quadratic eventually exceeds every
+fixed logarithmic term, which gives an effective index bound.
+There are only finitely many bounded integer tuples and
+$K$-rational torsion points.
+\end{proof}
+
+\begin{corollary}\label{cor:rankonecurves}
+For every number field $K$ there exist infinitely many elliptic
+curves $E/K$, up to isomorphism, for which the following holds.
+Choose an integral short Weierstrass model and fix $r\ge1$.
+There is a constant $C_r>0$ such that, for all finite points
+$Q_1,\ldots,Q_r\in E(K)$ and all $c\in\OK$, putting
+$H=\max_i h(x(Q_i))$ gives
+\[
+ h\left(\sum_i x(Q_i)+c\right)\ge H-C_r\log(H+2).
+\]
+For a fixed curve and a supplied generator modulo torsion,
+$C_r$ is effectively computable. For each fixed finite set $S$,
+only finitely many tuples of finite $K$-rational points have an
+$S$-integral abscissa sum.
+\end{corollary}
+\begin{proof}
+Zywina's rank-one existence theorem~\cite[Theorem 1.1]{Zywina}
+supplies infinitely many such curves. On each one, choose $P$
+generating the free part of $E(K)$. Every finite point is then
+$[n]P+T$ with $T$ rational torsion. Canonical-height comparison
+gives $\max_i n_i^2\le C_E(H+1)$, so
+$\log(M+2)\le C'_E\log(H+2)$. Apply
+Theorem~\ref{thm:main} and Corollary~\ref{cor:growth}.
+\end{proof}
+
+The use of a common cyclic group modulo torsion is indispensable
+in the finite-place proof: it produces the positive integer
+$C_J$. For the curve $y^2=x^3-Dx$ over a field containing $i$,
+the automorphism $\iota(x,y)=(-x,iy)$ gives
+$x(Q)+x(\iota Q)=0$. If $Q$ varies through non-torsion multiples,
+its abscissa height is unbounded. The two families generally
+span two independent directions over $\Z$, so they are outside
+the theorem's hypothesis. Likewise a field trace can cancel
+between conjugates that do not lie in the same cyclic group
+modulo torsion. These obstructions are developed in~\cite{CM}.
+
+The theorems above do not supply a Diophantine definition of a
+ring of integers in its fraction field. Such an application
+would still need a Diophantine description of the required
+cyclic point domain, an integrality detector, and complete
+rational witness constructions. Replacing a sum by a field trace
+is an additional step not justified by the present estimates.
+
+\begin{thebibliography}{9}
+\bibitem{DHK}
+S. David and N. Hirata--Kohno,
+\emph{Linear forms in elliptic logarithms},
+Journal f\"ur die reine und angewandte Mathematik \textbf{628}
+(2009), 37--89. Data 1.4 and Theorems 1.5--1.6, pp.~41--43.
+\url{https://doi.org/10.1515/CRELLE.2009.018}.
+\bibitem{Silverman}
+J. H. Silverman, \emph{The Arithmetic of Elliptic Curves},
+second edition, Graduate Texts in Mathematics \textbf{106},
+Springer, 2009.
+\bibitem{Zywina}
+D. Zywina, \emph{Rank one elliptic curves and rank stability},
+preprint, 2025, arXiv:2505.16960v1, Theorem 1.1.
+\url{https://arxiv.org/abs/2505.16960}.
+\bibitem{CM}
+\begingroup\raggedright
+\emph{Complex Multiplication and Cancellation in Elliptic Trace Heights},
+10 November 2026,
+\nolinkurl{negative_results/papers/number_fields/complex_multiplication_and_trace_cancellation_20261110_v19.tex}.\par\endgroup
+\end{thebibliography}
+\end{document}

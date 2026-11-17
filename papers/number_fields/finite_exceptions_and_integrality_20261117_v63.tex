@@ -1,0 +1,193 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,microtype}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\Z}{\mathbb Z}\newcommand{\Q}{\mathbb Q}
+\newcommand{\OK}{\mathcal O_K}
+\setlength{\emergencystretch}{2em}
+\title{Finite exceptions in Diophantine integrality criteria}
+\author{}\date{17 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+A Diophantine subset of a number field suffices to define its ring
+of integers if it contains all but finitely many rational integers
+and its nonintegral elements have bounded absolute height. The
+criterion permits nonrational integral inputs. A finite correction
+uses one additional coordinate, after which an integral basis gives
+a definition of the whole ring of integers. A stronger hypothesis
+that bounds every noninteger input defines the rational integers
+as well. The result isolates the amount of height soundness needed
+for an existence theorem; it does not construct the required
+Diophantine subset.
+\end{abstract}
+
+\section{Finite corrections over a number field}
+All Diophantine definitions in a number field $K$ allow
+coefficients in $K$ and quantify every witness over $K$.
+Every coordinate count includes the distinguished input.
+
+\begin{proposition}\label{prop:correction}
+Suppose $S\subseteq K$ is defined by
+\[
+ x\in S\quad\Longleftrightarrow\quad
+ \exists\mathbf y\in K^{N-1}: P(x,\mathbf y)=0,
+\]
+where $P\in K[X,\mathbf Y]$ has total degree at most $D$.
+Let $A,B\subseteq K$ be finite and disjoint. Then
+$(S\setminus A)\cup B$ has a single-polynomial definition with
+$N+1$ total coordinates and degree at most
+\[
+ |B|+2\max(D,|A|+1).
+\]
+\end{proposition}
+\begin{proof}
+Choose $\delta\in K$ that is not a square and put
+\[
+ a(X)=\prod_{\alpha\in A}(X-\alpha),\qquad
+ b(X)=\prod_{\beta\in B}(X-\beta),
+\]
+with empty products equal to one. In the coordinates
+$(X,\mathbf Y,V)$ use
+\[
+ b(X)\left(P(X,\mathbf Y)^2-
+                 \delta\bigl(Va(X)-1\bigr)^2\right)=0.
+\]
+If $b(X)\ne0$, the nonsquare property of $\delta$ forces both
+$P(X,\mathbf Y)=0$ and $Va(X)=1$. These conditions hold exactly
+for $X\in S\setminus A$. If $b(X)=0$, the equation is satisfied
+and $X\in B$. Conversely each of the two sets supplies witnesses.
+The coordinate and degree bounds follow directly.
+\end{proof}
+
+No effective identification of $A$ or $B$ is implicit here.
+Once the finite sets and the original polynomial are supplied,
+the new polynomial is explicit.
+
+\section{Bounded height of nonintegral inputs}
+Let $h$ be the absolute logarithmic Weil height on
+$\mathbb P^1(\overline{\Q})$. Northcott's theorem states that
+algebraic numbers of bounded degree and bounded height form a
+finite set~\cite[Theorem B.2.3]{HS}. In particular, a bounded-height
+subset of a fixed number field is finite.
+
+\begin{theorem}\label{thm:integers}
+Let $K$ be a number field and let $S\subseteq K$ be Diophantine
+in $K$. Suppose
+\begin{enumerate}
+\item $\Z\setminus S$ is finite;
+\item there is a real constant $C$ such that every
+      $x\in S\setminus\OK$ satisfies $h(x)\le C$.
+\end{enumerate}
+Then $\OK$ is Diophantine in $K$.
+More precisely, set
+\[
+ A=S\setminus\OK,\qquad B=\Z\setminus S.
+\]
+These sets are finite and disjoint. If $S$ is given by $P$ as in
+Proposition~\ref{prop:correction}, and $d=[K:\Q]$, then
+$\OK$ has a definition with $d(N+1)$ total coordinates and
+$d$ equations of degree at most
+\[
+ D'=|B|+2\max(D,|A|+1).
+\]
+It also has a single-equation definition in the same coordinates
+of degree at most $dD'$.
+\end{theorem}
+\begin{proof}
+Northcott's theorem makes $A$ finite. By hypothesis $B$ is finite,
+and $A\cap B$ is empty because every rational integer is integral.
+The corrected set
+\[
+ S_0=(S\setminus A)\cup B
+\]
+is Diophantine by Proposition~\ref{prop:correction} and satisfies
+$\Z\subseteq S_0\subseteq\OK$.
+Choose an integral basis $\omega_1,\ldots,\omega_d$ of $\OK$.
+Then
+\[
+                    \OK=\sum_{i=1}^d\omega_iS_0.
+\]
+The inclusion from right to left uses integrality; the reverse
+inclusion uses the integral-basis expansion with integer
+coefficients, all of which belong to $S_0$.
+
+For input $X$, retain $s_1,\ldots,s_{d-1}$ and substitute
+\[
+ s_d=\frac{X-\sum_{i<d}\omega_i s_i}{\omega_d}
+\]
+into the last of $d$ independent copies of the defining
+polynomial for $S_0$. The substitutions are linear, and the
+number of coordinates is
+\[
+ 1+(d-1)+dN=d(N+1).
+\]
+This proves the stated system bound.
+To combine its residuals $R_1,\ldots,R_d$ into one equation,
+choose a degree-$d$ field extension $F/K$ with basis
+$e_1,\ldots,e_d$ and use
+\[
+                  N_{F/K}\left(\sum_i e_iR_i\right)=0.
+\]
+A field element has norm zero exactly when it is zero, and
+basis independence then forces every $R_i=0$. The norm is a
+homogeneous polynomial of degree $d$ in the residuals, giving
+the degree bound. Such an extension exists, for example by an
+Eisenstein polynomial at a finite prime of $K$; for $d=1$ use
+$F=K$.
+\end{proof}
+
+The theorem permits $S_0$ to contain nonrational algebraic
+integers. Thus neither existential definability of $\Q$ in $K$
+nor an exact index-equality conclusion is needed for this
+criterion. The substantive remaining requirements are the
+Diophantine definition of $S$, integer completeness outside a
+finite set, and the height bound on its nonintegral inputs.
+
+\begin{corollary}\label{cor:rationalintegers}
+Suppose instead that $\Z\setminus S$ is finite and that every
+$x\in S\setminus\Z$ has bounded height. Then $\Z$ is
+Diophantine in $K$. With
+$A=S\setminus\Z$ and $B=\Z\setminus S$, the polynomial and
+bounds of Proposition~\ref{prop:correction} define $\Z$ itself.
+\end{corollary}
+\begin{proof}
+Northcott's theorem makes $A$ finite, and
+$(S\setminus A)\cup B=\Z$.
+\end{proof}
+
+\section{Use in height arguments}
+
+If a proposed detector is complete for all nonzero integers but
+its soundness argument only bounds the heights of false inputs,
+Corollary~\ref{cor:rationalintegers} already gives the required
+existence conclusion, with the possible omitted input zero
+included in $B$. One need not force a contradiction for every
+false input by introducing a further fixed parameter.
+For a direct integrality detector, Theorem~\ref{thm:integers}
+requires the height bound only on nonintegral inputs.
+
+This observation does not assert that an available detector
+satisfies these hypotheses over every number field. In
+particular, estimates for elliptic point heights do not by
+themselves prove local detector completeness or the existence
+of rational witnesses in the required field. The finite
+exception sets may also be ineffective even when their
+finiteness is known. The assertions above concern existence of
+a formula unless those sets are separately identified.
+
+\begin{thebibliography}{9}
+\bibitem{HS}
+M. Hindry and J. H. Silverman,
+\emph{Diophantine Geometry: An Introduction},
+Graduate Texts in Mathematics 201, Springer, 2000,
+Theorem B.2.3.
+\bibitem{FieldDefinitions}
+\emph{Existential Definitions of Rings of Integers and Subfields},
+project manuscript, 9 November 2026,
+\nolinkurl{papers/number_fields/number_field_definability_20261109_v12.tex}.
+\end{thebibliography}
+\end{document}

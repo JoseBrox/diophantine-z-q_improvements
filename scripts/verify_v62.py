@@ -111,8 +111,9 @@ def main(output):
     section=re.search(r'(?ms)^## Contributors and citation\n.*?(?=^## |\Z)',readme)
     assert section and hashlib.sha256(section.group().encode()).hexdigest()==CONTRIBUTORS_HASH
     assert r'\(' not in readme and r'\[' not in readme
-    assert 'data/results_20261117_v62.json' in readme
-    assert 'docs/results_20261117_v62.md' in readme
+    # Historical records remain available after the public table advances.
+    assert (ROOT/'data/results_20261117_v62.json').is_file()
+    assert (ROOT/'docs/results_20261117_v62.md').is_file()
     assert '**229**' in readme and '$149^{32}$' in readme
 
     builds=json.loads((ROOT/'data/audits/tex_build_20261117_v62.json').read_text())

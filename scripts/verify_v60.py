@@ -103,7 +103,10 @@ def main(output):
     assert r'\(' not in readme and r'\[' not in readme
     current_link=re.search(r'\[results JSON\]\((data/results_\d{8}_v\d+\.json)\)',readme)
     assert current_link and (ROOT/current_link.group(1)).is_file()
-    assert '**11**' in readme and '5{,}444{,}199{,}553' in readme
+    # The historical construction remains certified after README advances.
+    assert any(row['id']=='ordinary_abc11' and row['variables']==11 and
+               row['degree_upper_bound']=='5444199553'
+               for row in current['current_constructions'])
     builds=json.loads((ROOT/'data/audits/tex_build_20261117_v60.json').read_text())
     assert [row['paper'] for row in builds['papers']]==list(PAPERS)
     for row in builds['papers']:

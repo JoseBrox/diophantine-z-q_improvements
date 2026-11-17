@@ -1,0 +1,152 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,microtype}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newcommand{\Z}{\mathbb Z}\newcommand{\Q}{\mathbb Q}
+\setlength{\emergencystretch}{2em}
+\title{A reduction obstruction to adjacent contacts on rank-stable elliptic curves}
+\author{}\date{17 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+A non-torsion elliptic point that descends to a smaller number field
+after a fixed multiplication cannot realize adjacent index contacts
+at two places above the same prime, except at finitely many primes.
+The assertion includes torsion translates and any fixed finite set
+of nonzero index shifts. Consequently a rank-stable elliptic curve
+defined over the base field cannot be substituted directly into the
+conjugate adjacent-index detector used in the rational construction.
+This is an obstruction to that local completeness mechanism, not to
+Diophantine definability of rings of integers.
+\end{abstract}
+
+\section{Two reductions above one prime}
+Let $L/K$ be a finite extension of number fields, let $E/K$ be an
+elliptic curve, and let $P\in E(L)$ have infinite order. Suppose
+that $[t_0]P\in E(K)$ for a positive integer $t_0$.
+Choose a positive multiple $t$ of $t_0$ annihilating
+$E(L)_{\rm tors}$, and put $Q=[t]P\in E(K)$. The point $Q$ is
+non-torsion. For a prime of good reduction $\mathfrak p$ of $K$,
+write $\widetilde Q_{\mathfrak p}$ for the reduction of $Q$.
+For a place $\mathfrak P$ of $L$ above $\mathfrak p$, reduction
+of any $K$-rational point agrees with extension of its reduction
+from the residue field of $\mathfrak p$ to that of $\mathfrak P$.
+
+\begin{theorem}\label{thm:reduction}
+Let $c\in\Z\setminus\{0\}$. Suppose that for some integer $h$,
+some torsion points $T_1,T_2\in E(L)$, and two places
+$\mathfrak P_1,\mathfrak P_2$ above the same good prime
+$\mathfrak p$ of $K$, the points
+\[
+ [h]P+T_1,\qquad [h-c]P+T_2
+\]
+reduce to the identity at $\mathfrak P_1,\mathfrak P_2$,
+respectively. Then $[c]Q$ reduces to the identity at
+$\mathfrak p$.
+In particular, such contacts are possible only at finitely many
+primes of $K$, independently of $h,T_1,T_2$.
+The two places need not be distinct, unramified, or split.
+\end{theorem}
+\begin{proof}
+Multiplication by $t$ commutes with reduction and kills each
+$T_i$. Thus $[h]Q$ reduces to the identity at
+$\mathfrak P_1$, and $[h-c]Q$ does so at $\mathfrak P_2$.
+This uses only that multiplication is a group-scheme morphism
+on a good-reduction model. It does not divide by $t$ and
+remains valid when the residue characteristic divides $t$.
+Both points belong to $E(K)$. Extension of a residue field is
+injective on the points of the reduced curve, so their
+reductions already vanish over the residue field of
+$\mathfrak p$. Subtracting gives
+$[c]\widetilde Q_{\mathfrak p}=O$.
+
+The point $[c]Q$ is a fixed nonidentity point. Choose a fixed
+integral Weierstrass model and discard the finitely many primes
+dividing its discriminant. At every remaining prime it reduces
+to the identity exactly when its abscissa has negative valuation.
+Only finitely many prime ideals divide the denominator of this
+fixed abscissa. Restoring the discarded finite set proves the
+finiteness assertion, including good primes at which the chosen
+global equation was nonminimal.
+\end{proof}
+
+An equivalent order formulation is useful when the prime splits.
+If $m$ is the order of $\widetilde Q_{\mathfrak p}$, the two
+contacts imply $m\mid h$ and $m\mid h-c$, hence $m\mid c$.
+For adjacent indices $c=1$, they force
+$\widetilde Q_{\mathfrak p}=O$.
+
+\begin{corollary}\label{cor:menu}
+For any fixed finite set $C\subset\Z\setminus\{0\}$, there is
+a finite set of primes outside which none of the contact pairs
+in Theorem~\ref{thm:reduction} is possible for any $c\in C$.
+\end{corollary}
+\begin{proof}
+Choose a fixed integral Weierstrass model. Take the union of
+the finite denominator supports of $x([c]Q)$ for $c\in C$,
+together with the primes dividing the discriminant of that model.
+\end{proof}
+
+\section{Rank-stable curves and the conjugate detector}
+
+\begin{corollary}\label{cor:rankstable}
+Suppose $E/K$ has
+\[
+ 0<\operatorname{rank}E(K)=\operatorname{rank}E(L).
+\]
+Then every infinite-order $P\in E(L)$ satisfies the descent
+hypothesis of Theorem~\ref{thm:reduction}. If the common rank is
+one and $P$ generates the free part of $E(L)$, the obstruction
+covers the entire point domain modulo rational torsion.
+\end{corollary}
+\begin{proof}
+The Mordell--Weil groups are finitely generated. Their quotient
+$E(L)/E(K)$ has rank zero, hence is finite. A positive integer
+annihilating that quotient carries every $P$ into $E(K)$.
+In rank one every point is an integer multiple of a free
+generator plus torsion.
+\end{proof}
+
+For example, let $L/K$ be quadratic and let $\sigma$ be its
+nontrivial automorphism. A conjugate adjacent-index detector
+requires, at a chosen place $\mathfrak P$ of $L$, simultaneous
+positive valuations of the reciprocal abscissas
+\[
+ \frac1{x(H)},\qquad
+ \sigma\left(\frac1{x(H-P)}\right),\qquad H=[h]P,
+\]
+after excluding the fixed coefficient and bad-reduction primes.
+The first condition says that $H$ reduces to the identity at
+$\mathfrak P$; the second says that $H-P$ reduces to the identity
+at $\sigma^{-1}\mathfrak P$. Theorem~\ref{thm:reduction} with
+$c=1$ therefore excludes the pair outside the finite support of
+$x(Q)$. A balance transformation preserving positivity of these
+two original tests does not alter this conclusion.
+
+Zywina's theorem~\cite[Theorem 1.2]{Zywina} supplies rank-one
+curves over $K$ whose rank remains one over a prescribed quadratic
+extension $L/K$. Such curves have useful global height properties,
+but they satisfy the hypotheses of Corollary~\ref{cor:rankstable}.
+They cannot supply arbitrarily large primes for this particular
+conjugate adjacent-index preparation. The obstruction does not
+concern curves over $L$ that are not defined over $K$, nor does it
+exclude a different local comparison construction.
+
+No assertion here concerns the existence of a Diophantine
+definition of $\mathcal O_K$ in $K$. The theorem isolates one
+failed substitution in a proposed proof of that assertion.
+
+\begin{thebibliography}{9}
+\bibitem{Zywina}
+D. Zywina, \emph{Rank one elliptic curves and rank stability},
+preprint, 2025, arXiv:2505.16960v1, Theorem 1.2.
+\url{https://arxiv.org/abs/2505.16960}.
+\bibitem{Silverman}
+J. H. Silverman, \emph{The Arithmetic of Elliptic Curves},
+second edition, Graduate Texts in Mathematics 106,
+Springer, 2009; Chapters VII and VIII.
+\end{thebibliography}
+\end{document}

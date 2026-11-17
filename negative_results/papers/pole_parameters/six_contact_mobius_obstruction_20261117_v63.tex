@@ -1,0 +1,420 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,booktabs,microtype}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\DeclareMathOperator{\Tr}{Tr}\DeclareMathOperator{\Gal}{Gal}
+\title{An obstruction to finite M\"obius coupling of six elliptic contacts}
+\author{}\date{17 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+The six-contact polynomial of the conditional elliptic source has
+exactly twelve rational M\"obius symmetries. Coupling its two arguments
+by these symmetries fails the prescribed-index completeness assertion
+for every fixed integer power at least four, and for every fixed finite
+menu of such powers. At input one, ten branches have no rational slope
+and the identity violates a contact guard. For the remaining involution,
+an arithmetic progression of coefficient shifts produces a simple
+contact at an inert prime, forcing a negative odd detector pole.
+A binomial root-field lemma and Chebotarev's theorem supply the required
+primes outside every fixed finite exceptional set. Distinct primes and
+the Chinese remainder theorem give one progression obstructing all
+powers in a finite menu simultaneously.
+\end{abstract}
+
+\section{The prescribed source}
+
+Let
+\[
+ K=\Q(\sqrt2),\qquad D=(3-\sqrt2)^2,\qquad E:y^2=x^3-Dx,
+\]
+\[
+ P=\left(\frac{57-28\sqrt2}{8},
+                    \frac{-660+417\sqrt2}{32}\right).
+\]
+Conjugation in $K/\Q$ is denoted by a bar. For points $A,H,U$, use
+$f=1/x$, $z=-x/y$ and the six tests
+\begin{equation}\label{eq:tests}
+\begin{gathered}
+ r=\frac{z(U)}{z(H)},\qquad s=\frac{z(U-A)}{z(H-P)},\\
+ C_1=f(H),\quad C_2=f(U),\quad
+ C_3=\overline{f(H-P)},\quad C_4=\overline{f(U-A)},\\
+ C_5=r-\bar s,\qquad C_6=r+\bar s-2X.
+\end{gathered}
+\end{equation}
+All point, difference and quotient guards are retained. For an odd
+integer $B\ge3$ and an integer $e\ge4$, define
+\begin{equation}\label{eq:source}
+ T=\Tr x(A),\qquad a_e=(X^2+B)^e+T^e,
+ \qquad t_0=\lambda,\quad t_1=a_e\lambda,
+\end{equation}
+and
+\begin{equation}\label{eq:F}
+ F(t)=\frac{t(t+1)(2t+1)(3t+1)(4t+1)(5t+2)}{120}.
+\end{equation}
+For nonzero rational multipliers $\varepsilon_j$, the detectors are
+\begin{equation}\label{eq:detector}
+ d_j=\varepsilon_jF(t_j),\quad
+ w_j=\frac{d_j}{4(t_j-1)^8},\quad
+ W_j=\prod_{i=1}^6\left(1+\frac{C_i^2}{d_j}\right),\quad
+ V_j=\Tr(W_j^{-1}),\quad b_j=\frac{4w_j}{V_j^2}.
+\end{equation}
+The literal source has $\varepsilon_0=\varepsilon_1=1$
+\cite{Reweighted}. Its guards include
+$d_j(t_j-1)V_j\ne0$ and invertibility of $W_j$.
+The pole predicates considered here imply
+\begin{equation}\label{eq:pole}
+ v_p(b_j)\text{ is not a negative odd integer}\qquad(p\notin S),
+\end{equation}
+for a common fixed finite set $S$ of rational primes. An intrinsic
+pole block for $7b_j$ has this property\cite{Intrinsic}.
+
+Put
+\[
+ \mathcal R=\{0,-1,-1/2,-1/3,-1/4,-2/5\},\qquad
+ \mathcal M=\{\phi\in\operatorname{PGL}_2(\Q):\phi(\mathcal R)=\mathcal R\}.
+\]
+The additional coupling is
+\begin{equation}\label{eq:coupling}
+                         a_e\lambda=\phi(\lambda),\qquad\phi\in\mathcal M,
+\end{equation}
+with a nonzero M\"obius denominator.
+
+\begin{theorem}\label{thm:main}
+Let $\mathcal E$ be any nonempty finite set of integers at least
+four. Let $S$ be a finite set of primes containing $2,3,5,7$, and let
+$\mathcal U\subset\Q^\times$ be finite and nonempty.
+There are an odd integer $B_0$ and a positive even integer $M$ such
+that, for every $B\ge3$ with $B\equiv B_0\pmod M$, the prescribed data
+\[
+                             X=1,\qquad A=P
+\]
+admit no guarded rational auxiliary tuple satisfying
+\eqref{eq:source}--\eqref{eq:coupling} and at least one of the two
+pole conditions~\eqref{eq:pole}, for any choices
+\[
+                  e\in\mathcal E,\qquad \phi\in\mathcal M,
+                  \qquad \varepsilon_0,\varepsilon_1\in\mathcal U.
+\]
+The exponent, symmetry, multipliers and retained pole index may be
+chosen separately for each tuple and shift. Pole predicates may vary
+within any family whose members all imply~\eqref{eq:pole} outside
+the same $S$.
+\end{theorem}
+
+Taking $\mathcal E=\{e\}$ gives the obstruction for each fixed integer
+exponent $e\ge4$. The theorem excludes eventual prescribed-index
+completeness for every fixed finite power menu. It concerns the
+displayed scales and the prescribed point $A=P$: it does not assert
+failure for every individual shift, for an infinite menu of exponents,
+for an independently chosen root index, or for a different contact
+system. If a restricted source retains the conclusion that the root
+index equals $X$, the theorem also obstructs that source's eventual
+completeness.
+
+\section{The symmetry menu and uniform square gaps}
+
+\begin{lemma}\label{lem:menu}
+The group $\mathcal M$ consists of the following twelve maps
+$\phi(t)=(\alpha t+\beta)/(\gamma t+\delta)$.
+The last column gives the multiplier in
+$F(\phi(t))(\gamma t+\delta)^6=\kappa F(t)$.
+\begin{center}
+\begin{tabular}{rrrrr}\toprule
+$\alpha$&$\beta$&$\gamma$&$\delta$&$\kappa$\\\midrule
+1&0&0&1&1\\
+1&0&$-5$&$-1$&$-1$\\
+1&1&2&$-1$&27\\
+4&1&$-7$&$-1$&$-27$\\
+2&1&$-3$&$-2$&$-1$\\
+3&1&$-7$&$-2$&1\\
+2&1&$-7$&$-3$&1\\
+3&1&$-8$&$-3$&$-1$\\
+1&1&$-7$&$-4$&$-27$\\
+4&1&$-13$&$-4$&27\\
+5&2&$-11$&$-5$&27\\
+5&2&$-14$&$-5$&$-27$\\\bottomrule
+\end{tabular}
+\end{center}
+\end{lemma}
+\begin{proof}
+A M\"obius map is determined by the images of $0,-1,-1/2$.
+Enumerate their $6\cdot5\cdot4=120$ ordered triples of distinct
+images in $\mathcal R$. For an image triple $(u,v,w)$, a representing
+matrix is
+\[
+ \delta=v-w,\qquad \gamma=u+v-2w,\qquad
+ \alpha=v\gamma+(u-v)\delta,\qquad \beta=u\delta.
+\]
+Retain the nonsingular maps having no pole in $\mathcal R$ and
+mapping all six roots onto $\mathcal R$. Normalization gives exactly
+the displayed matrices. Multiplying the six linear factors in
+\eqref{eq:F} verifies the multipliers. These finite rational
+calculations are reproduced by the standard-library checker.
+\end{proof}
+
+At the prescribed point, $T=57/4$. Write $a=a_e=p_B/q$, where
+\begin{equation}\label{eq:scale}
+              q=4^e,\qquad p_B=q(B+1)^e+57^e.
+\end{equation}
+In particular $a>4$. The identity symmetry forces $\lambda=0$,
+contrary to the contact guard. In each of rows $3$--$12$, a rational
+solution of the coupling would make
+\[
+                  G=(\delta p_B-\alpha q)^2+4\gamma\beta p_Bq
+\]
+an integer square. Set
+\begin{equation}\label{eq:gapdefinitions}
+ c=-\delta\alpha+2\gamma\beta,\qquad
+ N=\delta^2p_B+cq,\qquad
+ K_0=4\beta\gamma(\alpha\delta-\beta\gamma).
+\end{equation}
+Expansion gives $\delta^2G=N^2+K_0q^2$.
+
+\begin{lemma}\label{lem:gap}
+For every integer $e\ge4$, every integer $B\ge3$, and all rows
+$3$--$12$, one has $N>0$ and
+\[
+                         0<|K_0|q^2<2N-1.
+\]
+Consequently none of these ten branches has a rational slope.
+\end{lemma}
+\begin{proof}
+The integer $N$ increases with $B$, so take $B=3$. The gap is
+\[
+ g_e=2\delta^2 57^e+(2\delta^2-|K_0|)16^e+2c4^e-1.
+\]
+The initial values are positive:
+\begin{center}
+\begin{tabular}{rrrr}\toprule
+Row&$c$&$K_0$&$g_4$\\\midrule
+3&5&$-24$&19672769\\
+4&$-10$&$-84$&15732929\\
+5&$-2$&12&84184839\\
+6&$-8$&$-28$&83133191\\
+7&$-8$&$-28$&189348561\\
+8&$-7$&32&189086929\\
+9&$-10$&$-84$&334379039\\
+10&$-10$&156&329660447\\
+11&$-19$&264&513765617\\
+12&$-31$&$-336$&509040881\\\bottomrule
+\end{tabular}
+\end{center}
+Moreover
+\[
+        g_{e+1}-16g_e=82\delta^2 57^e-24c4^e+15>0,
+\]
+because $\delta^2\ge1$, $c\le5$, and $57^e>2\cdot4^e$.
+Thus $g_e>0$ for all integers $e\ge4$. This also gives $N>0$.
+If $K_0<0$, the integer $N^2+K_0q^2$ lies strictly between
+$(N-1)^2$ and $N^2$; if $K_0>0$, it lies strictly between
+$N^2$ and $(N+1)^2$. It cannot be a square.
+\end{proof}
+
+\section{Simple contacts at inert primes}
+
+The remaining symmetry is $\phi(t)=-t/(5t+1)$. Since $\lambda=0$
+is forbidden, its coupling has the unique candidate
+\begin{equation}\label{eq:involution}
+ \lambda=-\frac{a+1}{5a},\qquad
+ H(a)=(a^2-1)(4a-1)(3a-2)(2a-3)(a-4).
+\end{equation}
+Direct multiplication gives
+\begin{equation}\label{eq:H}
+             -F(\lambda)=\frac{H(a)}{375000a^6},\qquad
+              F(a\lambda)=\frac{H(a)}{375000},\qquad H'(4)=11250.
+\end{equation}
+
+\begin{lemma}\label{lem:inert}
+Let $p\ne2,7$ be inert in $K$. For a defined detector
+\[
+ W=\prod_i(1+C_i^2/d),\qquad V=\Tr(W^{-1}),\qquad b=4w/V^2,
+\]
+suppose $v_p(d)=v_p(w)=1$ and the tests include
+$f(H)$ and $\overline{f(H-P)}$. Then either $V=0$ or $v_p(b)$
+is a negative odd integer.
+\end{lemma}
+\begin{proof}
+The curve has good reduction at $p$, since its discriminant is
+$64D^3$ and $\operatorname{N}_{K/\Q}(D)=49$. The coordinates of $P$
+are integral at $p$, so its reduction is affine and not the identity.
+Conjugation fixes the unique place above $p$. If both displayed tests
+had positive valuation, both $H$ and $H-P$ would reduce to the identity,
+which would force $P$ to do so. At least one test therefore has
+nonpositive valuation.
+
+In the unramified quadratic completion, valuations are integral and
+$v(p)=1$. For a nonzero test, the two summands of $1+C_i^2/d$ have
+different valuations, so its valuation is $\min(0,2v(C_i)-1)\le0$.
+A zero test gives the factor one. At least one factor has valuation
+at most $-1$. Hence $W^{-1}\in p\mathcal O_{K_p}$ and
+$V\in p\Z_p$. If $V\ne0$, then $v_p(b)=1-2v_p(V)$ is negative
+and odd.
+\end{proof}
+
+\section{A binomial root-field lemma}
+
+\begin{lemma}\label{lem:rootfield}
+Let $m$ be a positive odd integer, and let $e$ be a positive integer.
+If $e$ is odd or $m$ is nonsquare, then $Y^e+m$ has a root $\alpha$
+such that $\sqrt2\notin\Q(\alpha)$.
+\end{lemma}
+\begin{proof}
+If $e$ is odd, the polynomial has an irreducible factor of odd degree
+over $\Q$. The field generated by a root of that factor has odd degree,
+so cannot contain a quadratic subfield.
+
+Now suppose that $e$ is even and $m$ is nonsquare.
+Write $e=2^r s$ with $r\ge1$ and $s$ odd. Choose an odd prime $\ell$
+for which $v_\ell(m)$ is odd. Let $\beta$ satisfy
+$\beta^{2^r}=-m$ and put $L=\Q(\beta)$. At any prime of $L$
+above $\ell$, normalize the valuation by $v(\ell)=1$. Then
+\[
+                       v(\beta)=\frac{v_\ell(m)}{2^r}.
+\]
+The denominator in lowest terms is $2^r$, so the ramification index
+is divisible by $2^r$. Since $[L:\Q]\le2^r$, the degree equals
+$2^r$, and the degree formula shows that $\ell$ has exactly one
+prime in $L$, with ramification index $2^r$ and residue degree one.
+
+The quadratic field $\Q(\sqrt2)$ is unramified at the odd prime
+$\ell$. If $\ell$ splits there, an inclusion $\Q(\sqrt2)\subset L$
+would give at least two primes of $L$ above $\ell$. If $\ell$ is
+inert there, the residue degree in $L$ would be divisible by two.
+Both conclusions contradict the preceding paragraph, so
+$\sqrt2\notin L$.
+
+Factor $Y^s-\beta$ over $L$. Its odd degree implies that at least
+one irreducible factor has odd degree. Choose a root $\alpha$ of
+such a factor. Then $\beta=\alpha^s$, so $L\subset\Q(\alpha)$
+and $[\Q(\alpha):L]$ is odd. Consequently $\sqrt2$ cannot belong
+to $\Q(\alpha)$, since otherwise the quadratic extension
+$L(\sqrt2)/L$ would be a subextension. Finally
+$\alpha^e=\beta^{2^r}=-m$.
+\end{proof}
+
+\begin{corollary}\label{cor:primes}
+For every integer $e\ge4$, infinitely many rational primes inert in
+$\Q(\sqrt2)$ admit a simple residue root of
+\[
+                         Y^e+57^e-4^{e+1}.
+\]
+These primes may be chosen outside any fixed finite set.
+\end{corollary}
+\begin{proof}
+Put $m=57^e-4^{e+1}$, which is positive and odd. If $e$ is even,
+put $k=e/2\ge2$ and $n=57^k$. Since
+$4\cdot16^k<57^k<2\cdot57^k-1$, one has
+\[
+                              (n-1)^2<m<n^2.
+\]
+Thus $m$ is nonsquare when $e$ is even. For either parity,
+Lemma~\ref{lem:rootfield} gives a root $\alpha$ of $Y^e+m$ with
+$\sqrt2\notin L=\Q(\alpha)$.
+
+Let $M$ be the splitting field of $Y^e+m$ with $\sqrt2$ adjoined.
+The nontrivial automorphism of $L(\sqrt2)/L$ extends to an element
+$\sigma\in\Gal(M/L)$. It fixes $\alpha$ and sends $\sqrt2$ to
+$-\sqrt2$. Chebotarev's theorem\cite[Theorem 8.31]{Milne} gives
+infinitely many unramified rational primes whose Frobenius conjugacy
+class is that of $\sigma$. Their Frobenius is nontrivial on
+$\Q(\sqrt2)$, so these primes are inert there. Its action on the
+roots has a fixed point, so, after excluding primes dividing the
+polynomial discriminant, $Y^e+m$ has a simple root modulo each
+such prime. Removing any additional finite set preserves infinitude.
+\end{proof}
+
+\section{Simultaneous obstruction for a finite menu}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+Enlarge $S$ by all numerator and denominator primes of elements of
+$\mathcal U$. For each $e\in\mathcal E$, choose a distinct prime
+$p_e$ supplied by Corollary~\ref{cor:primes}, outside $S$ and the
+primes dividing $e(57^e-4^{e+1})$. Choose a simple root $y_e$ modulo
+$p_e$. The residue
+\[
+                        B+1\equiv y_e/4\pmod{p_e}
+\]
+then gives $a_e(B)\equiv4\pmod{p_e}$. Its derivative
+$e(B+1)^{e-1}$ is nonzero modulo $p_e$. Of the $p_e$ lifts of
+this residue class modulo $p_e^2$, exactly one satisfies
+$a_e(B)\equiv4\pmod{p_e^2}$. Choose any other lift $b_e$.
+Since $H'(4)=11250$ is a unit at $p_e$, this gives
+\begin{equation}\label{eq:exactcontact}
+               v_{p_e}(H(a_e(B)))=1
+               \qquad(B\equiv b_e\pmod{p_e^2}).
+\end{equation}
+
+By the Chinese remainder theorem, the simultaneous conditions
+\[
+             B\equiv1\pmod2,\qquad
+             B\equiv b_e\pmod{p_e^2}\quad(e\in\mathcal E)
+\]
+define one arithmetic progression of odd integers, of modulus
+$M=2\prod_{e\in\mathcal E}p_e^2$.
+Take any member $B\ge3$ and any choice $e\in\mathcal E$.
+Lemma~\ref{lem:gap} excludes ten symmetries, and the identity
+violates the contact guard. The remaining involution has
+$\lambda=-(a_e+1)/(5a_e)$. Modulo $p_e$, its values are
+\[
+                     a_e=4,\qquad \lambda=-1/4,
+                     \qquad a_e\lambda=-1.
+\]
+The denominators in~\eqref{eq:H}, both $t_j-1$, and the M\"obius
+denominator $5\lambda+1$ are units. Equations~\eqref{eq:H}
+and~\eqref{eq:exactcontact} therefore give valuation one for both
+$F(t_j)$ and both weights $w_j$. Each allowed multiplier is a
+$p_e$-adic unit, so both $d_j$ also have valuation one.
+Lemma~\ref{lem:inert} contradicts either retained pole condition.
+This argument applies to every exponent in the menu at the same
+shift $B$, completing the proof.
+\end{proof}
+
+\section{Exact certificates}
+
+The standard-library checker \texttt{check.py} verifies all $120$
+ordered image triples, the twelve multiplier identities, the ten
+discriminant identities, the positive initial square gaps, the
+coefficient inequalities in their recurrence, and the involution
+identities. It also verifies a simultaneous local certificate for
+the following finite menu. The residue $b_e$ is taken modulo $p_e^2$.
+\begin{center}
+\begin{tabular}{rrrr}\toprule
+$e$&$p_e$&$y_e$&$b_e$\\\midrule
+4&76213&11332&2832\\
+5&76333&44199&30132\\
+6&76259&34651&65856\\
+7&76261&16102&42155\\
+8&76243&36746&47307\\
+10&76253&28091&26085\\
+12&76379&10315&59862\\
+16&76283&9710&40568\\
+32&76421&24909&63542\\\bottomrule
+\end{tabular}
+\end{center}
+Each prime exceeds $76176$ and is verified prime by trial division.
+The checker verifies inertness, the simple binomial root, the exact
+contact valuation modulo $p_e^2$, the relevant denominator units,
+and the Chinese remainder progression. The infinite assertions for
+arbitrary integer powers at least four and arbitrary finite menus follow from the
+proofs above, independently of the numerical examples.
+
+\begin{thebibliography}{9}
+\bibitem{Reweighted}
+\emph{Quadratic reweightings of native elliptic detectors}, repository source,
+\nolinkurl{papers/pole_parameters/reweighted_elliptic_detectors_20261116_v53.tex}.
+\bibitem{Intrinsic}
+\emph{A two-coordinate pole test of coefficient height four}, repository source,
+\nolinkurl{papers/pole_parameters/intrinsic_pole_20261117_v56.tex}.
+\bibitem{Milne}
+J.~S.~Milne, \emph{Algebraic Number Theory}, version 3.08, 2020,
+Theorem~8.31, \url{https://www.jmilne.org/math/CourseNotes/ANT.pdf},
+accessed 17 November 2026.
+\end{thebibliography}
+\end{document}

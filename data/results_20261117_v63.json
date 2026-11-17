@@ -1,0 +1,481 @@
+{
+  "schema": "diophantine-current-results/v63",
+  "date": "2026-11-17",
+  "variable_convention": "All variables, including the input.",
+  "optimization_order": [
+    "total_variables",
+    "total_degree",
+    "coefficient_height"
+  ],
+  "current_constructions": [
+    {
+      "id": "general25",
+      "variables": 25,
+      "degree_upper_bound": "5059009872658432",
+      "degree_power_two_strict": 53,
+      "additional_hypothesis": null,
+      "parameter_effective": false,
+      "proof": "papers/finite_algebra/terminal_quadratic_root_20261115_v40.tex",
+      "monomials_strict_power_two": 1193,
+      "integer_content": 1,
+      "data": "computation/few_variables/terminal_root_v40/specifications/general25.json",
+      "full_unit_completeness_required": true,
+      "parameter_notice": "Same sufficient defining parameters and completeness witnesses; enlarged guarded source permits a zero final pole ordinate.",
+      "terminal_zero_allowed": true
+    },
+    {
+      "id": "quartic195",
+      "variables": 195,
+      "degree": 4,
+      "quadratic_rows": 175,
+      "monomials": 2956,
+      "additional_hypothesis": null,
+      "parameter_effective": false,
+      "balanced_height": "max(126616122944180358034867798936,149^(2N+2))",
+      "proof": "papers/quartic/quartic195_20261116_v45.tex",
+      "data": "computation/quartic/affine_laurent195_v45",
+      "integer_content": 1,
+      "parameter_notice": "Input-preserving bijection of full rational zero sets for every N>=1; retained unit guard; affine, Laurent, and fixed-parameter rescalings; same ineffective defining threshold.",
+      "source_attribution": "Conant research request with ChatGPT: H10-quartic198.zip; retained exact source transformations and certified affine-Laurent elimination.",
+      "coefficient_crossover_N": 6
+    },
+    {
+      "id": "explicit27",
+      "variables": 27,
+      "degree_upper_bound": "99279020543180800",
+      "degree_power_two_strict": 57,
+      "additional_hypothesis": null,
+      "parameter_effective": true,
+      "parameter": {
+        "L": 20483
+      },
+      "coefficient_height_strict": "2^(2^70)",
+      "proof": "papers/finite_algebra/terminal_quadratic_root_20261115_v40.tex",
+      "monomials_strict_power_two": 1401,
+      "integer_content": 1,
+      "data": "computation/few_variables/terminal_root_v40/specifications/explicit27.json",
+      "full_unit_completeness_required": true,
+      "parameter_notice": "Same sufficient defining parameters and completeness witnesses; enlarged guarded source permits a zero final pole ordinate.",
+      "terminal_zero_allowed": true
+    },
+    {
+      "id": "explicit_quartic229",
+      "variables": 229,
+      "degree": 4,
+      "quadratic_rows": 207,
+      "monomials": 3312,
+      "parameter_separated_terms": 3322,
+      "integer_content": 1,
+      "additional_hypothesis": null,
+      "parameter_effective": true,
+      "parameter": {
+        "N": 15
+      },
+      "sufficient_all_larger_N": true,
+      "coefficient_height": "149^32",
+      "largest_coefficient_bits": 232,
+      "balanced_height": "max(9063965991649194484576286065455625302,149^(2N+2))",
+      "coefficient_crossover_N": 8,
+      "reflection_center": "3/11",
+      "midpoint": "3/22",
+      "proof": "papers/quartic/quartic229_20261117_v62.tex",
+      "data": "computation/quartic/explicit229_v62",
+      "parameter_notice": "Complete soundness and integer completeness for every N>=15 under the explicitly retained arithmetic premises; every helper, square and guard counted.",
+      "independent_arithmetic_foundations_audit_complete": false
+    },
+    {
+      "id": "weak13",
+      "variables": 13,
+      "degree_upper_bound": "43211777",
+      "degree_power_two_strict": 26,
+      "additional_hypothesis": "weak rational abc at 121/100; ordinary Szpiro suffices",
+      "parameter_effective": false,
+      "proof": "papers/finite_algebra/terminal_quadratic_root_20261115_v40.tex",
+      "monomials_strict_power_two": 284,
+      "integer_content": 1,
+      "data": "computation/few_variables/terminal_root_v40/specifications/weak13.json",
+      "full_unit_completeness_required": true,
+      "parameter_notice": "Same sufficient defining parameters and completeness witnesses; enlarged guarded source permits a zero final pole ordinate.",
+      "terminal_zero_allowed": true
+    },
+    {
+      "id": "abc13",
+      "variables": 13,
+      "degree_upper_bound": "39858177",
+      "degree_power_two_strict": 26,
+      "additional_hypothesis": "weak rational abc at 16/15; ordinary rational abc suffices",
+      "parameter_effective": false,
+      "proof": "papers/finite_algebra/terminal_quadratic_root_20261115_v40.tex",
+      "monomials_strict_power_two": 283,
+      "integer_content": 1,
+      "data": "computation/few_variables/terminal_root_v40/specifications/abc13.json",
+      "full_unit_completeness_required": true,
+      "parameter_notice": "Same sufficient defining parameters and completeness witnesses; enlarged guarded source permits a zero final pole ordinate.",
+      "terminal_zero_allowed": true
+    },
+    {
+      "id": "abc_quartic71",
+      "variables": 71,
+      "degree": 4,
+      "quadratic_rows": 59,
+      "monomials": 1187,
+      "additional_hypothesis": "ordinary rational abc",
+      "parameter_effective": false,
+      "coefficient_height": "B^2+1 for every fixed odd B>=81",
+      "proof": "papers/quartic_existence/quartic_abc71_20261116_v49.tex",
+      "data": "computation/quartic/abc71_v49",
+      "pole_realization_source": "Jaswal, Hexagon 2611.00331v2, Theorem 1.2",
+      "parameter_notice": "Every sufficiently large fixed odd B>=81 defines the integers under ordinary rational abc and the explicitly retained arithmetic premises. No numerical sufficient B is supplied. The complete unit reference, variable-difference point chart, inverse-error detector and scaled physical trace give soundness on the full rational zero set and completeness for zero, odd and negative integer inputs. Every helper and comparison square is counted, with no additional nonzero or rational trace coordinate.",
+      "integer_content": 1,
+      "additional_nonzero_guard": false,
+      "absorption_coefficient": "602/679",
+      "zero_weight_excluded_when_input_nonzero": true,
+      "zero_input_completeness": true,
+      "input_comparison": "beta=X",
+      "height_scale": "B+X^8+Tr(a)^2, where Tr(a)=X^2*Tr(x(U-V))",
+      "physical_pole_input": "b=w*(Norm(W)/Trace(W))^2",
+      "local_residual": "X*(m-X), with m the integer index relative to R0",
+      "parameter_separated_terms": 1190,
+      "reference_translator": "R0=(1+sqrt(2),2sqrt(2))",
+      "reference_field_coordinates": 3,
+      "reference_rational_quadrics": 4,
+      "paired_field_coordinates": 6,
+      "product_helper_field_coordinates": 4,
+      "comparison_square_field_coordinates": 2,
+      "retained_rational_trace_coordinates": 0,
+      "largest_fixed_coefficient": 3554,
+      "physical_comparisons": "s-S and conjugate(t-T_H), where s=X*y(U)/x(U), t=X*y(V)/x(V)",
+      "product_recovery": "v_H*J=u_H*F; v_H*K=w_H*G; v_H is a unit in the reference algebra",
+      "coefficient_basis_reference_determinant": 1
+    },
+    {
+      "id": "ordinary_abc11",
+      "variables": 11,
+      "degree_upper_bound": "234157441",
+      "degree_power_two_strict": 28,
+      "monomials_strict_power_two": 264,
+      "integer_content": 1,
+      "additional_hypothesis": "Ordinary rational abc",
+      "parameter_effective": false,
+      "parameter_notice": "Every sufficiently large fixed odd B>=3; B=3 is an algebraic fixture, not a certified defining member.",
+      "proof": "papers/conditional_few_variables/derivative_detector11_20261117_v63.tex",
+      "data": "computation/few_variables/derivative11_v63/specification/polynomial.json",
+      "native_source": "computation/few_variables/derivative11_v63/specification/source.json",
+      "full_unit_completeness_required": true,
+      "finite_algebra_rank": 128,
+      "point_roles": 3,
+      "intrinsic_pole_blocks": 1,
+      "source_integer_arithmetic_nodes": 2003,
+      "recorded_guard_numerators": 35,
+      "ordinary_abc_only": true,
+      "weaker_fixed_exponent_transfer_proved": false,
+      "terminal_zero_allowed": true,
+      "subalgebra_norms": true,
+      "source_prime_positions": 18
+    }
+  ],
+  "new_variable_reduction": false,
+  "arithmetic_foundations_complete_independent_audit": false,
+  "non_author_review": false,
+  "verification_script": "scripts/verify_v63.py",
+  "execution_record": "data/audits/integration_20261117_v63.json",
+  "proof_guide": "docs/results_20261117_v63.md",
+  "new_auxiliary_theorems": [
+    {
+      "id": "cyclic_elliptic_sum_heights_all_number_fields",
+      "proof": "papers/effective_sums/elliptic_sum_heights_over_number_fields_20261117_v63.tex",
+      "data": "computation/effective_sums/cyclic_number_fields_v63",
+      "all_number_fields": true,
+      "all_elliptic_curves": true,
+      "cyclic_group_modulo_torsion_required": true,
+      "arbitrary_rational_torsion": true,
+      "zero_negative_repeated_indices": true,
+      "effective_logarithmic_index_loss": true,
+      "finite_place_explicit": true,
+      "arbitrary_integral_translation": true,
+      "effective_S_integral_finiteness": true,
+      "rank_one_curves_in_every_number_field": "Zywina, arXiv:2505.16960v1 (preprint)",
+      "number_field_integer_definition_claimed": false
+    },
+    {
+      "id": "finite_exception_integrality_criterion",
+      "proof": "papers/number_fields/finite_exceptions_and_integrality_20261117_v63.tex",
+      "scope": "A Diophantine set contains all but finitely many rational integers; its nonintegral inputs have bounded absolute height.",
+      "finite_correction_additional_coordinates": 1,
+      "integral_basis_coordinate_count": "d*(N+1), including the input",
+      "single_equation_degree_bound": "d*(|B|+2*max(D,|A|+1))",
+      "complete_initial_detector_constructed": false,
+      "finite_exceptions_effectively_identified": false,
+      "all_number_fields_definition_claimed": false
+    }
+  ],
+  "number_fields": {
+    "counterexample_established": false,
+    "all_number_fields_theorem_established": false,
+    "proofs": "papers/number_fields",
+    "strategy_guide": "docs/research_directions.md"
+  },
+  "scope": "Complete algebraic implications and exact computational specifications, with arithmetic premises explicitly inherited. No numerical sufficient parameter is inferred from a fixture and no global minimum is claimed.",
+  "negative_results_catalog": "negative_results/data/results.json",
+  "new_coefficient_improvement": false,
+  "adaptive_complements": {
+    "proof": "papers/pole_parameters/adaptive_native_complements_20261116_v50.tex",
+    "verification": "computation/pole_parameters/adaptive_levels_v50/certificate.json",
+    "unchanged_pole_output": true,
+    "normalized_weight": "w/(1+w)^2",
+    "normalized_product": "(1+w)W",
+    "adaptive_level": "17/(1-Vstar+Jstar)^2",
+    "normalized_class": "1-4*wstar/17",
+    "varying_class": "(R+kappa*omega/R)^2-4*omega/17; fixed positive S-unit kappa>1/17",
+    "whole_character_guards_proved": true,
+    "new_retained_coordinates": 0,
+    "realization_targets": [
+      21,
+      9
+    ],
+    "actual_uniform_rational_realization_proved": false,
+    "new_defining_variable_count": false,
+    "fixed_trace_targets": "Uniform finite fixed targets are excluded for the original general scalar by the separate v51 theorem; varying norm coordinates remain open."
+  },
+  "native_square_realization": {
+    "required": "Simultaneous rational-square values of the two actual guarded radicands R_a at one common source slope, for every required integer input.",
+    "radicand": "(1-V/(1+w)+J/(1+w)^2)*(1+a^2*(1-V/2)/w)",
+    "trace": "V=Trace(W^-1)",
+    "norm": "J=Norm(W^-1)",
+    "safe_coefficient": "a=1+w*c^2 for an existing guarded rational source function c",
+    "targets": [
+      21,
+      9
+    ],
+    "proved": false,
+    "local_preparation_proved": true,
+    "all_prime_local_solubility_claimed": false,
+    "free_norm_coordinate_substitution_allowed": false,
+    "finite_positive_S_unit_menu_allowed": true,
+    "menu_realization_proved": false
+  },
+  "single_cover_realization": {
+    "proved": false,
+    "target": 9,
+    "source_argument": "t=((X^2+B)^e+T^e)^d+z^2",
+    "prescribed_root": "A=[X]P",
+    "free_parameter": "z",
+    "z_zero_allowed": true,
+    "required": "For every nonzero integer input, actual guarded source points and rational z giving a rational square, or a member of a fixed finite positive S-unit squareclass menu.",
+    "fixed_place_preparation_proved": true,
+    "restricted_quadratic_prime_pattern_proved": false,
+    "general_21_transfer_proved": false
+  },
+  "retained_record_comparison": "data/results_20261117_v62.json",
+  "variable_squareclass_realization": {
+    "proved": false,
+    "menus": [
+      "1",
+      "(X^2+B)^2+Trace(x(A))^2",
+      "1+X^4"
+    ],
+    "conditional_target": 9,
+    "unrestricted_21_transfer_proved": false,
+    "ordinary_abc_two_cover_exponent": 6,
+    "ordinary_abc_single_cover_argument_degree": 60,
+    "new_complete_defining_degree_bound": false
+  },
+  "new_negative_results": [
+    {
+      "id": "six_contact_mobius_all_integer_powers",
+      "proof": "negative_results/papers/pole_parameters/six_contact_mobius_obstruction_20261117_v63.tex",
+      "data": "negative_results/computation/six_contact_mobius_v63",
+      "scope": "The displayed six-contact source, prescribed X=1 and A=P, every fixed integer exponent at least4, and every fixed finite menu of such exponents; failure of eventual completeness over sufficiently large odd shifts.",
+      "symmetry_count": 12,
+      "uniform_rational_square_gap_branches": 10,
+      "all_integer_exponents_at_least_four": true,
+      "simultaneous_fixed_finite_exponent_menus": true,
+      "fixed_finite_rational_multiplier_menus": true,
+      "all_finite_exceptional_sets": true,
+      "uses_chebotarev": true,
+      "all_fixed_shifts_excluded": false,
+      "variable_nonunit_rescalings_excluded": false,
+      "derivative_detector_excluded": false,
+      "all_nine_variable_sources_excluded": false
+    },
+    {
+      "id": "rank_stable_adjacent_contacts",
+      "proof": "negative_results/papers/number_fields/rank_stable_adjacent_contacts_20261117_v63.tex",
+      "scope": "A fixed non-torsion elliptic point descends after multiplication; two identity contacts with a fixed nonzero index difference at places above the same good base prime.",
+      "arbitrary_finite_extensions": true,
+      "torsion_translates": true,
+      "ramified_places_allowed": true,
+      "residue_characteristic_dividing_multiplier_allowed": true,
+      "finite_index_shift_menus": true,
+      "all_local_detector_architectures_excluded": false,
+      "number_field_counterexample": false
+    }
+  ],
+  "trace_conic_realization": {
+    "proved": false,
+    "targets": [
+      21,
+      9
+    ],
+    "radicand": "V^2+w(2-V)",
+    "trace": "V=Trace(W^-1), actual source value",
+    "admissible_class_menu": [
+      "1",
+      "1+24V",
+      "1+3(V-1)^2",
+      "V+2",
+      "V^2-V+2",
+      "1+w*(2-V)"
+    ],
+    "lost_contact_primes": false,
+    "extra_height_hypothesis": false,
+    "all_character_guards_proved": true,
+    "all_prime_local_solubility_proved": false,
+    "linear_class_block": {
+      "total_degree": 3,
+      "monomials": 5,
+      "coefficient_height": 47
+    },
+    "new_complete_defining_degree_bound": false,
+    "adaptive_class": {
+      "q": "2+w*c^2",
+      "class": "(q^2-2q-1)^2+4q(q^2-1)*V",
+      "c": "a fixed already guarded rational scalar source function",
+      "slope_choice": "c=lambda",
+      "new_free_coordinates": 0,
+      "lost_contact_primes": false,
+      "height_budget_required": false,
+      "ordered_slope_preparation_proved": true,
+      "actual_realization_proved": false
+    },
+    "cubic_reference_family": {
+      "section": [
+        49,
+        336
+      ],
+      "infinite_order_for_all_rational_0_lt_w_le_1_over_4": true,
+      "torsion_specializations": {
+        "296/49": 3,
+        "-96/49": 3,
+        "100/49": 4
+      },
+      "free_trace_approximation_proved": true,
+      "actual_trace_matching_proved": false,
+      "proof": "papers/pole_parameters/cubic_trace_rank_20261117_v57.tex"
+    },
+    "smallest_cubic_block": {
+      "radicand": "V^3+(2-w)*V^2+4*w",
+      "total_degree": 3,
+      "monomials": 4,
+      "coefficient_height": 4
+    },
+    "smallest_cubic_rank": {
+      "curve": "y^2=x*(x^2-(w+4)*x+4*(w+1))",
+      "reference_point": [
+        4,
+        4
+      ],
+      "reference_point_infinite_order_for_all_rational_0_lt_w_le_1_over_4": true,
+      "positive_rank_proved": true,
+      "actual_trace_matching_proved": false,
+      "proof": "papers/pole_parameters/small_trace_classes_20261117_v58.tex",
+      "certificate": "computation/pole_parameters/small_trace_classes_v58/rank_certificate.json",
+      "independent_certificate": "computation/pole_parameters/small_trace_classes_v58/independent_rank_certificate.json"
+    }
+  },
+  "sharp_single_cover_criterion": {
+    "height_coefficient": "(2*kappa-1)/(d-kappa*(d/2+2))",
+    "arbitrary_rational_denominators": true,
+    "both_signs": true,
+    "zero_output_excluded": true,
+    "positive_inner_inputs": true,
+    "odd_inner_exponents_allowed": true,
+    "ordinary_argument_degrees": [
+      48,
+      60
+    ],
+    "fixed_weak_exponents": [
+      "25/24",
+      "16/15",
+      "121/100"
+    ],
+    "fixed_class_argument_degrees": [
+      48,
+      48,
+      96
+    ],
+    "varying_class_argument_degrees": [
+      72,
+      80,
+      168
+    ],
+    "actual_realization_proved": false,
+    "new_complete_defining_degree_bound": false,
+    "certificate": "computation/pole_parameters/sharp_single_cover_v58/criteria_certificate.json"
+  },
+  "current_ordinary_abc_variables": 11,
+  "new_eleven_source": {
+    "proved_under_stated_premises": true,
+    "k": 9,
+    "e": 4,
+    "d": 8,
+    "prime_positions": 18,
+    "u": "-18*F/F_a = -9*G/H, H=G_a/2",
+    "balanced_test": "C_i^2/(1+u*C_i^2)",
+    "height_margin": "44272779/198801800",
+    "coordinate_census": {
+      "input": 1,
+      "point_coordinates": 6,
+      "contact_parameter": 1,
+      "intrinsic_pole_parameters": 2,
+      "encoder": 1,
+      "total": 11
+    },
+    "full_determinant_degree_bound": 234157441,
+    "root_degree_check": "1+128*(1541062+288292+1)",
+    "actual_nine_variable_realization_proved": false,
+    "external_foundations_independently_audited": false,
+    "terminal_zero_allowed": true,
+    "omitted_optional_intrinsic_guards": [
+      "s",
+      "eta+v^2",
+      "eta-v^2"
+    ],
+    "shifts": [
+      -10,
+      -8,
+      -5,
+      1,
+      2,
+      3,
+      4,
+      6,
+      7
+    ],
+    "no_M_prime_height_loss": true
+  },
+  "elliptic_index_route": {
+    "primitive_prime_hypothesis": "A fixed weak rational abc exponent 1<kappa<2, with a fixed index progression",
+    "index_divisibility_complete": true,
+    "formal_log_amplification_proved": true,
+    "external_input_equality_proved": false,
+    "growth_condition_existentially_encoded": false,
+    "quotient_height_derivative_application_complete": false,
+    "quotient_height_derivative_application_obstructed": true,
+    "fixed_rational_carrier_extension_proved": true,
+    "intended_input_finiteness_uses_siegel": true,
+    "new_defining_variable_bound": false,
+    "specified_input_only_height_helper_obstructed": true
+  },
+  "upstream_audit": {
+    "requested_version": 59,
+    "requested_version_located": false,
+    "audited_version": 19,
+    "repository": "elliotglazer/diophantine-z-q",
+    "commit": "498efba6fe75e9d28d6804f1391d7f70e4150afa",
+    "guide": "docs/upstream_version19_audit_20261117_v62.md",
+    "new_parts_and_consumers_audited": true,
+    "all_foundations_independently_audited": false
+  },
+  "new_degree_improvement": true
+}

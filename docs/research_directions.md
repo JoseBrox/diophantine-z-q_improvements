@@ -1,12 +1,28 @@
-# Research directions The fully specified quartic uses **229 variables at $N=15$**, with exact coefficient height $149^{32}$; its [complete proof](../papers/quartic/quartic229_20261117_v62.tex) uses both abscissa components and three detectors.
+# Research directions
+
+The fully specified quartic uses **229 variables at $N=15$**, with exact coefficient height $149^{32}$; its [complete proof](../papers/quartic/quartic229_20261117_v62.tex) uses both abscissa components and three detectors.
 
 The established counts under the retained arithmetic premises are **25 total variables**, or **195 for a quartic**. The stated weak-abc hypotheses give **13 total variables**. Ordinary rational abc gives **11 total variables** and a **71-variable quartic**. Every count includes the input. The priorities are variable count, degree, then coefficient height. The [main results table](../README.md) distinguishes the hypotheses and effective parameters; no global minimum or completed independent audit of all inherited arithmetic premises is asserted.
 
+## Rank-one curves over general number fields
+
+The [effective sum-height theorem](../papers/effective_sums/elliptic_sum_heights_over_number_fields_20261117_v63.tex) now works for every elliptic curve over every number field. Together with Zywina's rank-one existence theorem it supplies whole-domain height control on suitable curves, without retaining the original complex-multiplication model. The remaining tasks are to construct the required local integrality detector over the chosen field, prove simultaneous rational realization on that field, and encode the complete witness set. The height theorem does not identify field traces with algebraic sums and does not establish a Diophantine definition of the ring of integers.
+
+The [rank-stable contact obstruction](../negative_results/papers/number_fields/rank_stable_adjacent_contacts_20261117_v63.tex) excludes a direct use of a curve defined over the base field whose positive rank remains stable in the detector extension. Its adjacent contacts can occur at only finitely many primes. A new local architecture, or a curve defined over the extension without the stated descent property, is required.
+
+The [finite-exception criterion](../papers/number_fields/finite_exceptions_and_integrality_20261117_v63.tex) weakens the global goal: a detector containing almost all rational integers need only have bounded-height nonintegral inputs. Finite correction and an integral basis then recover the whole ring. This can avoid an unnecessary positivity-based shift argument over complex fields, but supplies no local completeness theorem by itself.
+
+## Quartic chart target
+
+The complete counts remain 195 and 71. The [scoped chart audit](audits/quartic_chart_review_20261117_v63.md) shows why exposing both reciprocals with independent scaled point charts does not preserve the established completeness family when the fixed difference trace is replaced by a positive sum trace. A concrete remaining target is a seven-field-coordinate quadratic chart replacing the current eight-coordinate point-pair and reciprocal chart, while preserving the affine scaled difference abscissa, inverse-parameter outputs and quadratic product recovery. All tangent and two-torsion boundary cases must remain covered. No smaller complete quartic follows from the separate chart identities.
+
 ## From eleven toward nine
 
-The [complete derivative detector](../papers/conditional_few_variables/derivative_detector11_20261117_v59.tex) combines both heights in one signed contact argument and proves ordinary-abc completeness with one intrinsic pole block. The positive odd valuations still extract the original elliptic tests; negative odd derivative valuations are automatically harmless. Its complete count is eleven, with degree below $2^{33}$ and every guard included.
+The [complete derivative detector](../papers/conditional_few_variables/derivative_detector11_20261117_v63.tex) combines both heights in one signed contact argument and proves ordinary-abc completeness with one intrinsic pole block. The positive odd valuations still extract the original elliptic tests; negative odd derivative valuations are automatically harmless. Its complete count is eleven, with degree at most 234,157,441, below $2^{28}$ and every guard included.
 
 Two remaining pole parameters account for the difference between eleven and nine. Removing them requires a proved rational realization on the actual derivative-source tuples, or a different arithmetic source. The earlier native square criterion is not transferred merely by counting coordinates. Any proposed replacement must prove its own local implication, ordered completeness and all-character guards. Another possible source uses fewer point roles, but must replace the original index-recovery argument.
+
+The [Möbius coupling obstruction](../negative_results/papers/pole_parameters/six_contact_mobius_obstruction_20261117_v63.tex) excludes the full twelve-symmetry menu for every fixed integer exponent at least four and every fixed finite exponent menu in the displayed six-contact architecture. Varying actual traces on a suitable incidence cover remains a different target.
 
 For the general target twenty-one, the derivative height proof cannot be imported without its abc hypothesis. A merger of the two general contact blocks needs an unconditional height argument under the already retained premises, together with prime realization and collision control. The original simultaneous actual-trace route remains open.
 
