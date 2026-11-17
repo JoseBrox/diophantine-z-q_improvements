@@ -1,0 +1,222 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,booktabs,microtype}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\Z}{\mathbb Z}
+\DeclareMathOperator{\Nm}{N}
+\title{A two-coordinate pole test of coefficient height four}
+\author{}\date{17 November 2026}
+\begin{document}\maketitle
+
+\begin{abstract}
+A polynomial of total degree nine and coefficient height four gives a
+pole test with two unrestricted rational parameters and one quadratic
+root. Its rational solutions exclude negative odd valuations of the
+input at every prime. For positive inputs below one, with square
+reduced denominator and a specified $2$-adic square class, Burungale's
+simultaneous-twist theorem supplies rational witnesses. Their projection
+to the parameter plane is Zariski dense, which permits simultaneous
+avoidance of the denominator and radicand zeros at every character of a
+finite point algebra. The pole block retains two free coordinates; no
+smaller defining-variable bound follows from the block alone.
+\end{abstract}
+
+\section{The equation and its local implication}
+
+Set
+\begin{equation}\label{eq:radicand}
+ P_d(v,s)=d(d+v^2)^2s^4-d(d-v^2)^2(1-d)^2.
+\end{equation}
+For a rational input $d$, use rational parameters $v,s$ and impose
+\begin{equation}\label{eq:pole}
+ Y^2=P_d(v,s).
+\end{equation}
+No nonzero condition is needed for the local implication below.
+The equation is monic quadratic in $Y$. Its radicand has total degree
+nine, twelve monomials, and coefficient height four.
+For example, the prepared values
+\[
+ d=\frac{112}{841},\qquad v=\frac4{29},\qquad s=\frac{27}{29},\qquad
+ Y=\frac{653184}{20511149}
+\]
+satisfy the equation with nonzero ordinate. They arise from the
+point $(28,98)$ on $E_{21}$ and $1-d=(27/29)^2$.
+
+\begin{theorem}\label{thm:local}
+If \eqref{eq:pole} has a rational solution, then $v_p(d)$ is not a
+negative odd integer at any prime $p$. In particular its reduced
+denominator is a square.
+\end{theorem}
+\begin{proof}
+Suppose $n=v_p(d)<0$ is odd and use the convention $v_p(0)=+\infty$.
+Since $n$ and $2v_p(v)$ have different parity whenever both are finite,
+\[
+ v_p(d+v^2)=v_p(d-v^2)=r:=\min(n,2v_p(v)).
+\]
+Also $v_p(1-d)=n$. The two summands in \eqref{eq:radicand} have
+valuations
+\[
+ n+2r+4v_p(s),\qquad 3n+2r.
+\]
+If $s\ne0$, both are odd and they are unequal: equality would imply
+$2v_p(s)=n$. If $s=0$, only the second summand remains, and it has
+odd valuation. In either case $P_d(v,s)$ is nonzero with odd valuation,
+contradicting its being a rational square. This argument applies at
+every prime, including two, and permits $v=0$ and $Y=0$.
+\end{proof}
+
+\section{The arithmetic input}
+
+For $l\ne0$ put $E_l:y^2=x^3-l^2x$.
+We use the following part of Burungale's Theorem B~\cite{Burungale}.
+Let $\beta,\eta$ be coprime positive squarefree integers such that
+\[
+ \beta\equiv7\pmod8,\qquad \eta\equiv1\pmod8.
+\]
+Suppose $\eta$ is a square in $\Q_p$ at each prime dividing $\beta$,
+and $\beta$ is a square in $\Q_p$ at each prime dividing $\eta$.
+Then there is a positive squarefree integer $n\equiv5\pmod8$ for
+which $E_n$ and $E_{n\eta}$ have rank one and rational points with
+abscissa in $\beta\Q^{\times2}$. The source proves additional
+conclusions that are not needed here. The application below verifies
+every hypothesis of this theorem; it does not independently reprove
+the source's arithmetic proof.
+
+\begin{theorem}\label{thm:density}
+Assume the arithmetic input above. Suppose $d\in\Q$ has square
+reduced denominator and
+\begin{equation}\label{eq:prepared}
+ 0<d<1,\qquad d\in7\Q_2^{\times2},\qquad v_2(d)\ge4.
+\end{equation}
+The projection to the $(v,s)$ plane of the rational solutions of
+\eqref{eq:pole} is Zariski dense, including over $\overline\Q$.
+\end{theorem}
+\begin{proof}
+Write $d=A/D^2$ in lowest terms with $A,D>0$. Let $\beta$ be the
+positive squarefree representative of $d$ and let $\eta$ be that of
+$1-d=(D^2-A)/D^2$. The two integer numerators are coprime, so
+$\beta$ and $\eta$ are coprime. At each odd prime dividing $\beta$,
+$1-d$ is a unit with residue one; hence $\eta$ is a local square.
+At each odd prime dividing $\eta$, the value $d$ is a unit with
+residue one; hence $\beta$ is a local square.
+
+The $2$-adic square class of $d$ gives $\beta\equiv7\pmod8$.
+Its valuation is even and at least four, so $1-d\equiv1\pmod{16}$
+and $\eta\equiv1\pmod8$. Thus the arithmetic input applies, also
+when $\eta=1$. Fix the resulting $n$ and write $1-d=\eta c^2$,
+$c\in\Q^\times$. Scaling the point on $E_{n\eta}$ by
+$(x,y)\mapsto(c^2x,c^3y)$ gives a point on $E_{n(1-d)}$ with the
+same abscissa square class.
+
+Each of $E_n$ and $E_{n(1-d)}$ has infinitely many rational points
+in the abscissa square class $d$. Indeed the abscissa square-class
+homomorphism is unchanged upon adding an element of $2E_l(\Q)$,
+and each curve has positive rank. Exclude the finitely many torsion
+points and write two independently chosen points as
+\[
+ R=(da^2,aU)\in E_n(\Q),\qquad
+ R'=(db^2,bV)\in E_{n(1-d)}(\Q),
+\]
+where $abUV\ne0$. Their positive abscissas exceed the corresponding
+positive curve parameters. In particular, define
+\[
+ e=\frac{n}{da^2}\in(0,1),\qquad
+ p_0=\frac{U}{da^2},\qquad
+ s=\frac ba,\qquad q_0=\frac{V}{da^2},\qquad
+ v=\frac{p_0}{1+e}.
+\]
+The curve equations give
+\[
+ p_0^2=d(1-e^2),\qquad
+ q_0^2=d\bigl(s^4-e^2(1-d)^2\bigr).
+\]
+The first relation yields
+\[
+ e=\frac{d-v^2}{d+v^2},\qquad p_0=\frac{2dv}{d+v^2}.
+\]
+It follows that $Y=(d+v^2)q_0$ gives a solution of \eqref{eq:pole}.
+Moreover $vsY(d-v^2)(d+v^2)\ne0$ by the choices just made.
+
+Varying $R$ gives infinitely many values of $a^2$, hence of $e$ and
+$v^2=d(1-e)/(1+e)$, and therefore infinitely many $v$. For each
+fixed $R$, varying $R'$ gives infinitely many $s$. A polynomial that
+vanishes on all witness pairs therefore vanishes as a polynomial in
+$s$ for infinitely many $v$; all its coefficients vanish identically.
+This proves the asserted density.
+\end{proof}
+
+\section{Guards in a finite algebra}
+
+\begin{proposition}\label{prop:guards}
+Let $\mathcal A$ be a finite etale $\Q$-algebra with
+$d\in\mathcal A^\times$. Suppose a rational character of
+$\mathcal A$ sends $d$ to an input satisfying \eqref{eq:prepared}.
+Actual rational witnesses may be chosen so that all factors
+\[
+ s,\quad d-v^2,\quad d+v^2,\quad P_d(v,s)
+\]
+are nonzero at every geometric character of $\mathcal A$.
+Any additional finite collection of guards with nonzero polynomial
+norms in $v,s$ may be avoided at the same time.
+\end{proposition}
+\begin{proof}
+At a character taking $d$ to $c\ne0$, the two quadratic factors
+are nonzero polynomials in $v$, and $P_c$ has nonzero leading
+coefficient $c(c+v^2)^2$ as a polynomial in $s$. Their character
+products, or equivalently their norms, are nonzero polynomials over
+$\Q$. Apply Theorem~\ref{thm:density} to their finite product.
+\end{proof}
+
+The block has two free rational parameters and one monic quadratic
+generator. A finite-algebra construction therefore multiplies the
+existing finite rank by two and retains the same single encoder
+coordinate. No additional coordinate is needed for the displayed
+guards. If a source already has two parameters per pole block, this
+replacement does not change its variable count.
+
+\section{Application to prepared detector inputs}
+
+For a detector input $b$ one may put $d=7b$. If
+\[
+ 0<b<1/7,\quad b\text{ has square reduced denominator},\quad
+ b\in\Q_2^{\times2},\quad v_2(b)\ge4,\quad v_7(b)\ge0,
+\]
+then $d$ satisfies \eqref{eq:prepared} and still has square reduced
+denominator. The local implication for $d$ excludes negative odd
+valuations of $b$ outside $\{7\}$, including at two. For the
+whole-character avoidance of Proposition~\ref{prop:guards}, it is
+enough that $b$ is a unit in the existing point algebra. The prepared
+upper bound $b<1/7$ is only needed at the selected rational character.
+
+These are conditions on a source's preparation. The intrinsic theorem
+does not assert that a particular source has met them. A proposed
+source replacement must check its complete ordered preparation and
+every new guard before using the theorem.
+
+For comparison with the scaled expression
+\[
+ P^{\rm sc}_{b_0}(u,s)=343b_0(7b_0+u^2)^2s^4
+             -7b_0(7b_0-u^2)^2(b_0-7)^2,
+\]
+the exact substitutions are
+\[
+ b_0=7d,\qquad u=7v,\qquad
+ P^{\rm sc}_{7d}(7v,s)=7^8P_d(v,s),\qquad Q_0=2401Y.
+\]
+Thus the small radicand is obtained by invertible rational scaling.
+The accompanying exact checker verifies both conic identities, this
+scaling, and the expanded coefficient table.
+
+\begin{thebibliography}{9}
+\bibitem{Burungale}
+A. Burungale, \emph{A Diophantine definition of $\Z$ in $\Q$},
+arXiv:2611.16130v1, 12 November 2026, Theorem B and Section 3.
+\url{https://arxiv.org/abs/2611.16130}.
+\end{thebibliography}
+\end{document}

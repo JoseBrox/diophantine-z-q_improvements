@@ -1,0 +1,247 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,microtype}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newcommand{\Q}{\mathbb Q}
+\DeclareMathOperator{\Tr}{Tr}
+\title{An intrinsic congruent-curve pole block in the general elliptic source}
+\author{}\date{17 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+We transfer the intrinsic two-coordinate congruent-curve pole equation
+to the normalized general elliptic source. A coherent change of the
+physical weight gives its required real range and two-adic class,
+while preserving the local extraction and height proof. The new pole
+equation has no arithmetic nonzero guards. Its terminal radicand may
+be made a unit at every point-algebra character by the proved density
+of its actual rational witnesses. The transfer uses Burungale's
+simultaneous-twist theorem in place of the former pole realization
+premise, retains all other stated source premises, and has twenty-five
+total variables. No numerical degree bound or smaller variable count
+is asserted.
+\end{abstract}
+
+\section{Specification and premises}
+
+Use either the normalized general source of \cite{Reweighted} or its
+order-two scalar revision \cite{Precision}. Retain its nine point
+roles, integer-reflecting input label, scalar \(\rho=\rho_L(X)\),
+common slope, two contact functions \(R_j\), unsquared comparison
+scales, tests and assigned orders. Either the original scalar or
+the aligned scalar of \cite{Aligned} may be used.
+The fixed exceptional set contains \(2,7\).
+
+Every integer input has the following established scalar properties:
+\[
+ \rho>0,\qquad \rho\text{ has square reduced denominator},\qquad
+ \rho\in\Q_2^{\times2},\qquad v_2(\rho)\ge4.
+\]
+The last valuation is four for the original scalar and twelve for
+the aligned scalar. These statements are used only in completeness.
+The group, prime-pattern, normalized contact-height and aggregate
+trace-height premises retain exactly their scope in the cited sources.
+The old pole realization premise is replaced by Burungale's Theorem B
+in the precise form proved sufficient in \cite{Intrinsic}.
+
+In both blocks put
+\begin{equation}\label{eq:weights}
+ u_j=\rho R_j,\qquad w_j=\frac{u_j}{(1+7u_j)^2}.
+\end{equation}
+Use this physical weight in \emph{every} field and scalar detector
+denominator. Thus, with the unchanged normalized scalar numerators,
+\[
+ W_j=\prod_i\left(1+\frac{C_i^2}
+                           {\delta_j^2w_j^{2a_i-1}}\right)
+     \prod_k\left(1+\frac{G_{j,k}^2}
+                           {w_j^{2\kappa_k-1}}\right),
+ \qquad
+ G_{j,k}=R_j^{\kappa_k+1}\frac{R_jS_k}{1+R_jS_k}.
+\]
+Retain all point, difference, scalar and trace denominators, and
+guard \(1+7u_j\). Put
+\[
+ V_j=\Tr(W_j^{-1}),\qquad b_j=\frac{4w_j}{V_j^2},\qquad d_j=7b_j.
+\]
+Replace each old pole pair by two unrestricted rational coordinates
+\(v_j,s_j\) and the single finite equation
+\begin{equation}\label{eq:pole}
+ Y_j^2=P_{d_j}(v_j,s_j),\qquad
+ P_d(v,s)=d(d+v^2)^2s^4-d(d-v^2)^2(1-d)^2.
+\end{equation}
+No arithmetic guard on \(s_j,v_j,Y_j,d_j\pm v_j^2,1-d_j\) is imposed
+by this pole equation. For the separable one-coordinate encoding we
+retain the unit guard on the cleared terminal radicand. The density
+argument below supplies it without a further free coordinate.
+
+\section{Local soundness}
+
+\begin{lemma}\label{lem:weight}
+For \(p\ne7\), every odd valuation of \(w_j\) is positive.
+More precisely, if \(n=v_p(u_j)\) is odd, then
+\(v_p(w_j)=|n|\). For positive real \(u_j\), one has
+\(0<w_j\le1/28\).
+\end{lemma}
+\begin{proof}
+For nonzero \(n\), the denominator in \eqref{eq:weights} has
+valuation \(2\min(0,n)\). If \(n=0\), the weight valuation is
+even. Finally \((1+7u)^2-28u=(1-7u)^2\ge0\).
+\end{proof}
+
+\begin{lemma}\label{lem:pole}
+Equation \eqref{eq:pole} excludes negative odd valuations of \(d\)
+at every prime, without any nonzero hypotheses.
+\end{lemma}
+\begin{proof}
+Suppose \(k=v_p(d)<0\) is odd and set
+\(m=\min(k,2v_p(v))\). The two summands of \(d\pm v^2\)
+have different valuations, so both have valuation \(m\), and
+\(v_p(1-d)=k\). For \(s\ne0\), the two radicand terms have
+valuations
+\[
+ k+2m+4v_p(s),\qquad 3k+2m.
+\]
+Both are odd and they are distinct, because \(2v_p(s)\ne k\).
+Their sum therefore has odd valuation. For \(s=0\) the second
+term alone has odd valuation. The same calculation includes \(v=0\)
+by taking its valuation to be infinity. A rational square cannot
+have the resulting odd valuation, including when \(Y=0\).
+\end{proof}
+
+At every prime outside the unchanged exceptional set, Lemma~\ref{lem:pole}
+for \(d_j=7b_j\) excludes the same negative odd valuations of \(b_j\)
+as the former pole predicate. Lemma~\ref{lem:weight} gives exactly
+the normalized weight parity used in \cite{Reweighted,Precision}.
+The trace-factor extraction, scalar divisibility, comparison
+divisibility and height proof consequently apply unchanged.
+This includes the order-two revision's relative logarithmic precision
+eight, sixth-order comparisons and squared Lucas parameter.
+Thus its soundness conclusion holds for every sufficiently large
+fixed odd \(L\), with the same scope of the remaining premises.
+
+\section{Complete preparation of the selected rational inputs}
+
+Fix an integer input and a fixed odd \(L\ge3\).
+After fixing \(\rho\), first form the temporary finite preparation
+and avoidance set, including the prime supports of \(\rho\) and
+\(1+7\rho\) and all inherited fixed data. This is a completeness
+choice, not an enlargement of the global exceptional set used in
+the height proof. Choose the reference, scalar and root points in
+the retained order using this set, then fix all comparison scales.
+The scalar functions can be made arbitrarily
+small in the required real and fixed finite neighborhoods.
+The limiting physical weights are now
+\[
+                 w_{j,0}=\frac{\rho}{(1+7\rho)^2}\ne0.
+\]
+At each fixed place, \(R_j\to1\), the field attenuation still tends
+to zero, and the unchanged scalar preparation makes the actual
+detectors as close to one as needed. Keep every inherited fixed
+avoidance and denominator condition, enlarging only the temporary
+completeness set when the later fixed root data require it.
+
+At selected fresh contacts, \(p\ne7\), \(v_p(u_j)=1\), and
+\(1+7u_j\) is a unit. All field and scalar local estimates and
+the original primary extra divisibility are therefore unchanged.
+The reciprocal trace is a unit and \(v_p(b_j)=1\).
+The original contact factorization shows that every other odd
+valuation of the raw weight is at a fixed preparation prime.
+The new denominator \((1+7u_j)^2\) and the trace square change
+only even valuations. Preserving the prepared square classes at
+the fixed primes therefore gives square reduced denominators
+for both \(b_j\).
+
+For the actual real character, choose both slots of \(W_j\) in
+\([1,2)\). Then \(V_j>1\), and Lemma~\ref{lem:weight} gives
+\[
+                    0<b_j=4w_j/V_j^2<1/7.
+\]
+Only the selected rational character needs this bound.
+
+At two, the sufficiently close contact and detector preparation gives
+\[
+ b_j\in\Q_2^{\times2},\qquad
+ v_2(b_j)=v_2(\rho)\ge4.
+\]
+Indeed \(R_j\) is a local square close to one,
+\(1+7u_j\) is a unit, and \(V_j\) is sufficiently close to two
+to have valuation one. The quotient \(b_j/u_j\) is a rational square.
+
+At seven let \(n=v_7(\rho)\). Its square reduced denominator
+implies that either \(n\ge0\) or \(n\le-2\) is even. Directly,
+\[
+ v_7\left(\frac{\rho}{(1+7\rho)^2}\right)
+ =\begin{cases}n,&n\ge0,\\-n-2,&n\le-2\text{ even}.
+ \end{cases}
+\]
+Both alternatives are nonnegative. The sufficiently close preparation,
+with \(V_j\) a seven-adic unit, gives \(v_7(b_j)\ge0\).
+Consequently multiplication by seven preserves the square reduced
+denominator, and
+\[
+ 0<d_j<1,\qquad d_j\in7\Q_2^{\times2},\qquad v_2(d_j)\ge4.
+\]
+These are exactly the hypotheses of the intrinsic density theorem
+in \cite{Intrinsic}. It supplies rational witnesses to each equation
+\eqref{eq:pole}.
+
+\section{Every character and the coordinate count}
+
+The retained source preparation makes all point-algebra characters
+real. At every such character the physical weights are positive,
+all detector factors are at least one, and the reciprocal traces
+are positive. Thus \(d_j\) is a unit of the point algebra, although
+its values at other characters need not lie below one.
+This causes no restriction: equation \eqref{eq:pole} has no
+\(1-d_j\) guard and its local implication already includes \(d_j=1\).
+
+At a geometric character taking \(d_j\) to \(c\ne0\), the
+polynomial \(P_c(v,s)\) is nonzero, since its leading coefficient
+in \(s\) is \(c(c+v^2)^2\). Its norm from the point algebra is
+therefore a nonzero polynomial in \(v,s\). The intrinsic theorem
+gives a Zariski-dense set of actual rational witness pairs, so one
+can avoid this norm and the finitely many retained denominator
+norms simultaneously. The cleared radicand is consequently a
+whole-algebra unit. Each terminal quadratic extension is etale,
+and the existing one-coordinate unit-norm encoder applies directly.
+
+\begin{theorem}
+Under the retained group, normalized height, trace-height and
+prime-pattern premises and Burungale's Theorem B in the stated
+intrinsic form, the modified general source defines the integers
+for every sufficiently large fixed odd \(L\). It is complete
+for every integer input and every fixed odd \(L\ge3\).
+Its polynomial specification has twenty-five total variables:
+the input, eighteen point coordinates, the common slope, four
+pole coordinates, and the one encoder coordinate.
+\end{theorem}
+\begin{proof}
+Soundness follows from the unchanged extraction and height arguments
+and Lemmas~\ref{lem:weight}--\ref{lem:pole}. Ordered preparation,
+the intrinsic realization theorem, and simultaneous guard avoidance
+prove completeness. All added quantities besides the four displayed
+pole coordinates are rational source functions or finite monic
+generators, so the stated census is exact.
+\end{proof}
+
+No numerical sufficient value of \(L\), degree bound for the complete
+determinant, or smaller defining-variable bound is asserted here.
+
+\begin{thebibliography}{9}\raggedright
+\bibitem{Reweighted}\emph{Quadratic reweightings of native elliptic detectors},
+\nolinkurl{papers/pole_parameters/reweighted_elliptic_detectors_20261116_v53.tex}.
+\bibitem{Precision}\emph{Scalar precision two with an eighth-order elliptic comparison},
+\nolinkurl{precision_transfer_20261117_v56.tex}.
+\bibitem{Aligned}\emph{A scalar norm from the detector field},
+\nolinkurl{papers/pole_parameters/detector_field_norm_scalar_20261116_v52.tex}.
+\bibitem{Intrinsic}\emph{A two-coordinate pole test of coefficient height four},
+\nolinkurl{intrinsic_burungale_pole.tex}.
+\bibitem{Burungale}A.~Burungale,
+\emph{A Diophantine definition of $\mathbb Z$ in $\mathbb Q$},
+arXiv:2611.16130v1, 12 November 2026, Theorem B.
+\url{https://arxiv.org/abs/2611.16130}.
+\end{thebibliography}
+\end{document}

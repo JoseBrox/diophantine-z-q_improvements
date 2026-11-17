@@ -1,0 +1,246 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{Q}{\mathbb Q}
+\newcommand{Z}{\mathbb Z}
+\newcommand{Fp}{\mathbb F_p}
+\newcommand{Sha}{\mathop{\mathrm{\Sha}}}
+\title{A fixed normalization for a square-denominator predicate}
+\author{}
+\date{}
+\begin{document}
+\maketitle
+
+Put
+\[
+ C(A)=\frac{(A^3+1)(A^2+2)}{(A^2+1)^2},\qquad
+ f_{c,i}(T)=c^2T^4+T+i\quad(i=1,2).
+\]
+For $b\in\Q$, let $\Theta(b)$ be the condition that there are
+$a,x,y,z\in\Q$ satisfying
+\begin{equation}\label{predicate}
+ a^2=4b^2,\qquad c=C(a),\qquad
+ cz^2=f_{c,1}(x)f_{c,2}(y),\qquad cz\ne0.
+\end{equation}
+Here $c$ is an abbreviation, not a quantified coordinate. Its denominator
+never vanishes over $\Q$. Let $\mathcal S_2$ be the rational numbers whose
+reduced denominator is an odd square.
+
+\begin{theorem}\label{main}
+The following assertions hold.
+\begin{enumerate}
+\item If $\Theta(b)$ holds, every negative valuation $v_p(b)$ at an odd
+prime $p$ is even.
+\item Assume that the $2$-primary part of the Tate--Shafarevich group of
+every elliptic curve over $\Q$ is finite. Then $\Theta(b)$ holds for every
+$b\in\mathcal S_2$, in particular for every integer $b$.
+\end{enumerate}
+After the finite choice $a=\pm2b$ and the quadratic root $z$ are encoded,
+the predicate has two free rational parameters, $x$ and $y$.
+\end{theorem}
+
+\begin{proof}[Proof of the first assertion]
+Suppose $v_p(b)=-k$ with $p$ odd and $k$ positive and odd. Then
+$v_p(a)=-k$ and the leading terms of the numerator and denominator of
+$C(a)$ give $v_p(c)=-k$. For $v=v_p(x)\le(k-1)/2$, the term $c^2x^4$
+is the unique term of least valuation in $f_{c,i}(x)$, so that
+$v_p(f_{c,i}(x))=-2k+4v$ is even. For $v\ge(k+1)/2$, the constant term
+$i$ is a unit and the remaining terms have positive valuation, so the
+valuation is zero. The same argument applies to $f_{c,2}(y)$. Thus the
+right side of \eqref{predicate} has even valuation and the left side
+has odd valuation, a contradiction.
+\end{proof}
+
+\begin{lemma}\label{properties}
+If $a\ge0$ is rational with positive $2$-adic valuation and odd square
+reduced denominator, then $c=C(a)>1/2$, $v_2(c)=1$, and every negative
+valuation of $c$ is even. Also $v_3(c)=0$ implies $c\equiv2\pmod3$.
+\end{lemma}
+\begin{proof}
+The identity
+\[
+ 2(a^3+1)(a^2+2)-(a^2+1)^2
+   =a^3(2a^2-a+4)+3>0
+\]
+proves the inequality. If $a=m/n$ with $n$ a positive odd square, then
+\[
+ c=\frac{(m^3+n^3)(m^2+2n^2)}{n(m^2+n^2)^2},
+\]
+whose denominator is a square. Since $m$ is even and $n$ odd, its
+$2$-adic valuation is one. If $v_3(a)<0$, then $v_3(c)=v_3(a)<0$.
+Otherwise reduction modulo $3$ gives $c\in\{0,2\}$, since $a^2+1$
+is a $3$-adic unit.
+\end{proof}
+
+The case $a=0$ in this lemma is understood directly: $C(0)=2$.
+
+\begin{lemma}\label{local}
+Suppose $c>0$, $v_2(c)=1$, and every negative valuation of $c$ is even.
+Then the surface
+\[
+ cz^2=f_{c,1}(x)f_{c,2}(y)
+\]
+has a local point with $z\ne0$ at every place. If additionally
+$v_3(c)=0$ implies $c\equiv2\pmod3$, the curve obtained by imposing
+$y=0$ is everywhere locally soluble with $z\ne0$.
+\end{lemma}
+\begin{proof}
+For the real place, take $x=y=0$. If $v_p(c)>0$ and $p$ is odd,
+Hensel's lemma solves $f_{c,1}(x)=c/2$, giving $y=0,z=1$; the derivative
+is $1$ modulo $p$. At $2$, writing $c=2u$ with $u$ a unit, solve
+$f_{c,1}(x)=u$ by Hensel's lemma, again giving $y=0,z=1$.
+
+Suppose next that $p$ is odd and $c$ a unit. If $2c$ is a square
+modulo $p$, take $x=y=0$. Otherwise it suffices, with $y=0$, to find a
+nonsquare value of $c^2x^4+x+1$ modulo $p$. If this quartic is
+nonsingular and all its nonzero values were squares, its smooth genus-one
+curve would have at least $2p-2$ points, including the two points at
+infinity. This contradicts Hasse's bound for $p\ge11$. If the quartic
+is singular and $p\ge5$, its unique multiple root is $r=-4/3$ and
+\[
+ c^2X^4+X+1=c^2(X-r)^2(X^2+2rX+3r^2).
+\]
+The quadratic factor has nonzero discriminant. Its quadratic-character
+sum is $-1$, so it takes a nonsquare value away from $r$ for $p\ge5$.
+The cases $p=5,7$ for nonsingular quartics are finite checks. At $p=3$,
+$c\equiv2$ permits $x=y=0$, while $c\equiv1$ permits $x=0,y=1$.
+Thus the latter case is the only one in this argument that changes $y$
+from zero. All values used are nonzero, and Hensel's lemma lifts their
+square roots.
+
+Finally let $v_p(c)=-2k<0$ at an odd prime, and put $c=p^{-2k}\gamma$
+with $\gamma$ a unit. Set $x=p^kX$ and $y=0$. It suffices that
+\[
+ 2\gamma(\gamma^2X^4+1)
+\]
+be a nonzero square modulo $p$. If $2\gamma$ is a square, $X=0$ works.
+Otherwise the same genus-one point-count argument produces a nonsquare
+value of $\gamma^2X^4+1$ for $p\ge11$. This quartic is always
+nonsingular for odd $p$. Direct checks give the required values for
+$p=3,5,7$. The valuation of $2f_{c,1}(x)/c$ is $2k$ and its unit part
+is a square, so it is a square in $\Q_p$.
+\end{proof}
+
+\begin{lemma}\label{galois}
+If $c>1/2$ and $v_2(c)=1$, each $f_{c,i}$ is irreducible with Galois
+group $S_4$. There exist distinct primes $p_1,p_2\notin\{2,3,7\}$ such that $c$ is
+a unit at both primes,
+\[
+ v_{p_i}(\operatorname{disc}(f_{c,i}))>0\text{ is odd},\qquad
+ v_{p_i}(\operatorname{disc}(f_{c,j}))=0\quad(i\ne j).
+\]
+\end{lemma}
+\begin{proof}
+The real minimum of $f_{c,i}$ is
+$i-\frac34(4c^2)^{-1/3}>i-\frac34>0$, so it has no rational root.
+Its Newton polygon at $2$ has a segment of length three and slope
+$2/3$, from $(1,0)$ to $(4,2)$, producing an irreducible cubic factor
+over $\Q_2$. The absence of a rational root therefore implies global
+irreducibility. Its discriminant is
+\[
+ \Delta_i=c^4D_i,\qquad D_i=256i^3c^2-27.
+\]
+Here $D_i\equiv5\pmod8$, so the discriminant is not a rational square.
+The transitive Galois group has order divisible by three and is not
+contained in $A_4$; consequently it is $S_4$.
+
+The numbers $D_i$ are positive and satisfy
+$D_2-8D_1=189$. Suppose one of them has even valuation at every prime
+outside $\{2,3,7\}$. Its positivity and residue $5$ modulo $8$ force
+its rational square class to be $21$. This is impossible at $3$.
+Indeed, if $v_3(c)<0$, $v_3(D_i)=2v_3(c)$; if $v_3(c)=0$ or $1$, the
+valuation is respectively $0$ or $2$. If $v_3(c)\ge2$, the valuation
+is $3$ and $D_i/27\equiv-1\pmod3$, whereas a number of square class
+$21$ with valuation $3$ has this quotient congruent to $1$ modulo $3$.
+Thus there is a prime $p_i\notin\{2,3,7\}$ of odd valuation. It cannot divide the
+numerator of $c$, where $D_i$ is a unit, or its denominator, where
+$v_{p_i}(D_i)=2v_{p_i}(c)$ is even. Hence $c$ is a unit there and the
+valuation is positive. The identity $D_2-8D_1=189$ proves the required
+separation.
+\end{proof}
+
+\begin{proof}[Proof of the second assertion of Theorem~\ref{main}]
+For $b\ne0$ choose $a=2|b|$ and $c=C(a)$. Lemmas~\ref{properties}
+and~\ref{local} give the local solubility of the Kummer surface
+\[
+ Z^2=g_1(x)g_2(y),\qquad g_1=f_{c,1},\quad g_2=c f_{c,2}.
+\]
+We verify the hypotheses of Harpaz--Skorobogatov's general
+Theorem~2.3~\cite{HS}, rather than imposing valuation one as in their
+Theorem~A.
+
+Let $E_i$ be the Jacobian of $w^2=g_i(t)$. By Lemma~\ref{galois}, its
+$2$-torsion field has Galois group $S_3$, the group of the cubic
+resolvent. This supplies conditions (a)--(d) in \cite{HS}. For
+$f_{c,i}$ the binary-quartic invariants are
+\[
+ I_i=12ic^2,\qquad J_i=-27c^2,
+\]
+and one Jacobian model is
+$Y^2=X^3-27I_iX-27J_i$. Multiplication of the quartic by $c$ multiplies
+$I_i,J_i$ by $c^2,c^3$. At the primes $p_i\notin\{2,3,7\}$ in
+Lemma~\ref{galois}, the corresponding $c_4$ invariant is a unit, while
+the discriminant has positive odd valuation. Therefore $E_i$ has
+multiplicative reduction of type $I_{n_i}$ with $n_i$ odd; the
+geometric component group has odd order. The other elliptic curve has
+good reduction there. This proves condition (f).
+
+The unique quadratic subfield of the $S_3$-extension
+$\Q(E_i[2])/\Q$ is the discriminant field, which is ramified at
+$p_i$. The other $2$-torsion field is unramified there by good
+reduction. Every nontrivial Galois quotient of $S_3$ contains its
+quadratic quotient, so the two $2$-torsion fields are linearly disjoint.
+This proves (e), while the quadratic ramification proves (g).
+
+The four roots of $g_i$ form the torsor for $E_i[2]$ defining its
+$2$-covering. Its class is nonzero because $g_i$ has no rational root.
+At $p_i$ the reduction of $f_{c,i}$ has the unique double root
+$r_i=-4i/3$ and two simple roots: it factors as
+$c^2(X-r_i)^2(X^2+2r_iX+3r_i^2)$, whose residual quadratic has
+nonzero discriminant. This follows directly from the equations
+$f_{c,i}=f_{c,i}^{\prime}=0$. A simple geometric root lifts to the
+maximal unramified extension. At $p_j$ with $j\ne i$, all four roots
+are simple. Thus both torsor classes are unramified at both selected
+primes. All hypotheses of \cite[Theorem~2.3]{HS} are satisfied. Under
+the stated finiteness assumption the Kummer surface has a Zariski
+dense set of rational points. Choose one on the displayed affine open
+with $Z\ne0$ and put $z=Z/c$. This proves \eqref{predicate}.
+For $b=0$ take $a=0,c=2,x=y=0,z=1$.
+\end{proof}
+
+\begin{remark}[A one-parameter specialization]
+For the same inputs $b\in\mathcal S_2$ and choice $a=2|b|$, the curve
+\[
+ cz^2=2(c^2x^4+x+1)
+\]
+is everywhere locally soluble by Lemmas~\ref{properties}
+and~\ref{local}. Its rational solubility has not been established.
+Finiteness of the $2$-primary Tate--Shafarevich group does not imply the
+Hasse principle for this genus-one curve. For $b=1$, one point is
+$c=54/25$, $x=5/6$, $z=35/18$.
+\end{remark}
+
+\begin{remark}[Hypotheses and counts]
+The theorem is conditional on finiteness of $2$-primary
+Tate--Shafarevich groups. It does not follow from $abc$ alone, and it
+does not establish a $21$- or $9$-variable definition of the integers.
+It replaces the free parameter in the predicate of
+\cite[Section~4]{KPV} by a fixed rational function, while preserving
+negative-odd-pole soundness and proving completeness on
+$\mathcal S_2$. The existential variables $x,y$ remain independent.
+\end{remark}
+
+\begin{thebibliography}{9}
+\bibitem{HS} Y. Harpaz and A. N. Skorobogatov,
+\emph{Hasse principle for Kummer varieties},
+Algebra \& Number Theory \textbf{10} (2016), 813--841.
+\href{https://msp.org/ant/2016/10-4/ant-v10-n4-p05-p.pdf}{Published text}.
+\bibitem{KPV} A. Kozachinskiy, H. Pasten, and X. Vidaux,
+\emph{Why should $\mathbb Z$ be Diophantine in $\mathbb Q$?},
+arXiv:2611.17124v1, 12 November 2026.
+\href{https://arxiv.org/html/2611.17124v1}{Version 1}.
+\end{thebibliography}
+\end{document}
