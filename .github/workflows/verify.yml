@@ -13,6 +13,8 @@ jobs:
         with:
           python-version: '3.12'
       - run: python -m pip install sympy==1.14.0
+      - name: Verify intrinsic transfers, variable classes and exact prepared descent obstruction
+        run: python -B scripts/verify_v57.py --report /tmp/v57-verification.json
       - name: Verify single-cover criteria, intrinsic poles, precision transfer and inert obstruction
         run: python -B scripts/verify_v56.py --report /tmp/v56-verification.json
       - name: Verify reweighted sources, native square criteria and fixed-fiber certificates

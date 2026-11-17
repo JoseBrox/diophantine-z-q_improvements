@@ -2,13 +2,37 @@
 
 The established counts under the retained arithmetic premises are **25 total variables**, or **195 for a quartic**. The additional height hypotheses give **13 total variables**; ordinary rational abc gives a **71-variable quartic**. Every count includes the input. The priorities are variable count, degree, then coefficient height. The [main results table](../README.md) distinguishes the hypotheses and effective parameters; no global minimum or completed independent audit of all inherited arithmetic premises is asserted.
 
+## Current target: simultaneous actual-trace conics
+
+The [trace-conic theorem](../papers/pole_parameters/trace_conic_criterion_20261117_v57.tex) reduces the **21/9** target to rational squares of $V_j^2+w_j(2-V_j)$ at actual source traces and one common slope. It removes the separate detector norm from the square condition. The conic has the exact chart
+
+$$
+(1+2k)V+k^2w=2.
+$$
+
+Here $V$ and $w$ must remain the actual functions of the source points; assigning them freely does not supply witnesses. The finite quadratic root introduces no retained coordinate, and the full source count and all-character guards are proved. Fixed-place and selected-contact local squareness do not control new prime divisors or global rational points.
+
+Each block can use any of the classes $1$, $1+24V$, and $1+3(V-1)^2$. They preserve parity at every hypothetical bad detector pole, even when their prime supports vary, and therefore leave the general Lucas and conditional height arguments unchanged. The linear class gives the elliptic family
+
+$$
+Y_c^2=X_c^3-(2+24w)X_c^2+(1+1176w)X_c,\qquad X_c=1+24V,
+$$
+
+with reference point $(49,336)$. The arithmetic objective is a rational point **at that prescribed abscissa**, simultaneously for the two actual blocks. A rational parametrization in free trace coordinates, or positive rank on this curve, would not alone prove the required incidence.
+
+The adaptive class $\delta_c=(q^2-2q-1)^2+4q(q^2-1)V$, $q=2+wc^2$, is also admissible for any fixed guarded rational scalar function $c$ of the existing source coordinates. Its parity proof permits arbitrarily large auxiliary denominators. In particular $c=\lambda$ preserves fixed-place preparation and lets the class vary with the actual common slope. This structured family avoids the height cost of arbitrary square classes. The next arithmetic step is to match such a class with the actual reciprocal trace; choosing a fresh free $c$ would require its own coordinate.
+
 ## A single-cover route and finite square-class choices
+
+The [height-controlled class theorem](../papers/pole_parameters/variable_squareclasses_20261117_v57.tex) broadens the conditional target to the menu $\{1,(X^2+B)^2+\operatorname{Tr}(x(A))^2,1+X^4\}$, with fixed positive exceptional-unit multipliers. The class support may vary with the input and root point. The contact primes lost to it have a proved height budget, so suitable larger powers retain soundness and the nine-coordinate census. The missing step remains simultaneous **rational realization on actual detector tuples**, with the prescribed root index and all source guards. Local filters do not prove it.
+
+The [prepared-cover obstruction](../negative_results/papers/pole_parameters/prepared_sha_obstruction_20261117_v57.tex) rules out the proposed specialization $q_0=0$ uniformly: $d=112/225$ yields an everywhere locally soluble genus-one curve without a rational point. The [finite-menu obstruction](../negative_results/papers/pole_parameters/intrinsic_specializations_20261117_v57.tex) also excludes prescribing $s$ from finitely many rational functions of $d$. A viable coordinate relation must use a more restricted actual-input locus or couple the two pole coordinates in a way that evades these precise obstructions. Positive rank alone does not supply the required abscissa class.
 
 The [single-cover theorem](../papers/pole_parameters/single_cover_criterion_20261117_v56.tex) proves conditional soundness with $t=((X^2+B)^e+T^e)^d+z^2$ and one actual native square. Its full nine-coordinate census includes $z$, six point coordinates, the input and the finite-algebra encoder. The required rational realization remains open. The binary quadratic contact forms must also meet the actual prime-preparation constraints; unrestricted-numerator prime patterns do not suffice.
 
 The native square condition may be relaxed to a **fixed finite menu of positive exceptional-unit square classes** without adding a coordinate. A finite product of the existing quadratic-branch encoders supplies the union. The menu may vary between blocks and its selected class may vary with the input, but its support is fixed in advance. Do not retain optional exceptional-place square neighborhoods that would force every allowed class back to one. No global realization is known for this relaxed target either.
 
-The [intrinsic pole block](../papers/pole_parameters/intrinsic_pole_20261117_v56.tex) has degree nine and coefficient height four, with dense prepared witnesses from the stated Burungale theorem. It retains two free coordinates and therefore offers a coefficient and arithmetic-foundation option, not the missing 21/9 reduction. Its use in a full source requires the complete preparation audit.
+The [intrinsic pole block](../papers/pole_parameters/intrinsic_pole_20261117_v56.tex) has degree nine and coefficient height four, with dense prepared witnesses from the stated Burungale theorem. It retains two free coordinates and therefore offers a coefficient and arithmetic-foundation option, not the missing 21/9 reduction. The complete [general](../papers/pole_parameters/general_intrinsic_transfer_20261117_v57.tex) and [conditional](../papers/pole_parameters/conditional_intrinsic_transfer_20261117_v57.tex) transfers supply those preparation and all-character audits, with unchanged counts.
 
 The [precision revision](../papers/pole_parameters/precision_transfer_20261117_v56.tex) lowers scalar test orders to two while retaining reciprocal orders one. The eighth-order formal logarithm supports sixth-order comparisons without demanding incompatible deeper formal neighborhoods. It provides a complete 25-variable source, leaving the actual source-point coupling or pole-coordinate elimination as the count problem.
 
@@ -35,7 +59,7 @@ $$
 
 with the same variable count and inherited arithmetic premises. The two 13-variable constructions have degree below $2^{26}$. These are certified upper bounds from exact finite-operation specifications, not expanded polynomial degrees. Only the last quadratic step may lose its unit condition in this theorem: all preceding radicands remain nonzero. The character-descent proof handles nilpotents at that last step, so a simple-eigenvalue argument is unnecessary.
 
-### Current target: the native square criterion
+### The trace-and-norm square criterion
 
 The [quadratic reweighting theorem](../papers/pole_parameters/reweighted_elliptic_detectors_20261116_v53.tex) supplies complete general and conditional sources whose odd physical weight valuations are positive. The conditional detector is the quadratic product $W=\prod_i(1+C_i^2/F)$, with $W-1=O(w^3)$ at fixed preparation places. The general detector uses $w=u/(1+u)^2$ throughout its factors and one extra contact factor in each scalar numerator. Their full source counts remain 25 and 13.
 
@@ -53,7 +77,7 @@ For $a=1$, put $W^{-1}=u+v\sqrt2$, $x=1+(1-u)/w$ and $q=v/w$. The square conditi
 
 The local theorem gives rational-square values at every fixed preparation place and at the stated fresh split-contact patterns. New prime divisors of detector numerators and the global rational lifts remain uncontrolled. The [fixed-fiber genus theorem](../negative_results/papers/pole_parameters/fixed_flat_fibers_20261116_v53.tex) gives genera 236 and 332 for the explicit fixed-index fixtures $X=1,2$, $B=3$. Their rational boundary points do not supply finite witnesses. The next global argument must therefore allow auxiliary indices or admissible source functions to vary, or produce individually chosen rational points on the resulting ramified incidence. This fixed-fiber result does not exclude either possibility.
 
-The realization statement is **unproved**. The [current proof guide](results_20261116_v53.md) records the full implication and exact checks.
+The realization statement is **unproved**. The [current proof guide](results_20261117_v57.md) records the full implication and exact checks.
 
 ### A shared conic parameter: the precise route to 24
 

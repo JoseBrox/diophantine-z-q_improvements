@@ -1,0 +1,77 @@
+\subsection{Classes from retained source functions}
+
+Let $c$ be an already guarded scalar source function that is rational
+at the selected rational character, and put
+\begin{equation}\label{eq:adaptiveclass}
+ q=2+wc^2,\qquad
+ \delta_c(V)=(q^2-2q-1)^2+4q(q^2-1)V.
+\end{equation}
+The function may use the existing slope or point coordinates, including
+finite point-algebra generators whose selected character is rational.
+A raw $K$-valued function is not permitted in place of this rational
+scalar. No new unrestricted coordinate is introduced by this definition.
+
+\begin{proposition}\label{prop:adaptiveclass}
+The class in \eqref{eq:adaptiveclass} preserves the pole implication
+and the coordinate census of Theorem~\ref{thm:census}. It is strictly
+positive at every prepared character. At every selected contact prime
+$p>7$ with positive odd $v_p(w)$ and $V\equiv1$ or $2\pmod p$,
+it is a nonzero local square, for every rational value of $c$.
+These statements require no bound on the height or denominator of $c$.
+\end{proposition}
+\begin{proof}
+At a hypothetical bad pole, write $\nu=v_p(w)>0$ odd and
+$m=v_p(V)>0$. If $c=0$, then $q=2$ and $\delta_c=1+24V$.
+Otherwise $v_p(wc^2)$ is odd and nonzero. If it is positive,
+$q\equiv2\pmod p$, so $\delta_c\equiv1\pmod p$.
+If it is negative, put $e=v_p(q)<0$. The two summands defining
+$\delta_c$ have valuations $4e$ and $3e+m$, respectively.
+Since $3e+m>4e$, the first, a nonzero square, dominates.
+The class is therefore a local square, in particular of even
+valuation, in both cases.
+
+At a selected contact $v_p(V)=0$. The same negative-$e$ argument
+applies, while the other case reduces to $1+24V$, with residues
+$25$ and $49$. They are nonzero squares for $p>7$.
+
+At a prepared real character, $w>0$, $V>0$ and $q\ge2$.
+Consequently $4q(q^2-1)V>0$, giving strict positivity.
+All new denominators are already denominators of $w,V,c$.
+Proposition~\ref{prop:class} and the existing encoder now apply.
+\end{proof}
+
+The reference and contact values have the identities
+\[
+ \delta_c(0)=(q^2-2q-1)^2,\quad
+ \delta_c(1)=(q^2+1)^2,\quad
+ \delta_c(2)=(q^2+2q-1)^2.
+\]
+In particular the explicit choice $c=\lambda$, the retained common
+slope, is compatible with fixed-place preparation. In a conditional
+block with $t=a\lambda$, letting $\lambda$ tend to infinity at a
+fixed place gives
+\[
+ w\lambda^2\longrightarrow\frac1{4a^2},\qquad
+ q\longrightarrow2+\frac1{4a^2},\qquad V\longrightarrow2.
+\]
+The limiting value of $q$ is rational, and $q^2+2q-1$ has no rational
+zero. Thus the limiting class is a nonzero rational square; the local
+square neighbourhood is open, including at two. In the general source,
+the prepared weight tends to a fixed nonzero value as the slope
+becomes large at the fixed place. Then $v_p(q)$ tends to minus infinity
+and
+\[
+ \frac{\delta_c(V)}{(q^2-2q-1)^2}
+ =1+\frac{4q(q^2-1)V}{(q^2-2q-1)^2}\longrightarrow1.
+\]
+The same square-neighbourhood argument applies while retaining the
+already prepared trace-conic square condition. The source's arbitrary
+fixed denominator precision permits this refinement in its original
+order of choices.
+
+Any fixed finite selection of the functions in
+\eqref{eq:adaptiveclass}, together with the earlier classes, may be
+compiled by the same finite product of branch encoders. This allows
+the square class to depend on the actual slope and on auxiliary
+points without a lost-contact or height penalty. It still requires
+simultaneous global rational realization on actual detector tuples.

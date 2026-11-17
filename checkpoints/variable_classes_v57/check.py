@@ -60,7 +60,8 @@ def main(output):
     report = {
         'status':'PASS',
         'varying_class':'(X^2+B)^2+Trace(x(A))^2',
-        'optional_menu_of_forms':['1', '(X^2+B)^2+Trace(x(A))^2'],
+        'optional_menu_of_forms':['1', '(X^2+B)^2+Trace(x(A))^2', '1+X^4'],
+        'input_class_support_budget':'log r_S(1+X^4) <= 4h(X)+log2 <= 2 h(1:beta:T)+log2',
         'support_budget':'log r_S(delta) <= 2 h(1:beta:T) + log 2',
         'two_cover_rows':two, 'single_cover_rows':single,
         'conditional_retained_coordinates':9,

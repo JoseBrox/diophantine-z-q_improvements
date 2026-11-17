@@ -1,0 +1,410 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,booktabs,microtype}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\DeclareMathOperator{\Tr}{Tr}\DeclareMathOperator{\Nm}{N}
+\title{A rational conic criterion using the actual detector trace}
+\author{}\date{17 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+For normalized elliptic detectors, one rational square depending only
+on the actual reciprocal trace excludes every relevant negative odd
+pole. Its radicand is positive at every prepared character and equals
+four at the reference product. The auxiliary curve in trace and root
+is a rational conic. The test is locally square at every fixed
+preparation place and selected contact of the existing completeness
+construction. Simultaneous rational realization at the two actual
+detector traces remains an additional arithmetic requirement; if it
+holds, the finite-algebra constructions have twenty-one and nine
+total variables. No such realization or new defining count is proved.
+\end{abstract}
+
+\section{The trace square}
+
+Let \(\mathcal S\) be the fixed exceptional set of the source, with
+\(2\in\mathcal S\), and let
+\[
+ w\in\Q^\times,\qquad V\in\Q^\times,\qquad b=\frac{4w}{V^2}.
+\]
+Assume that every odd valuation of \(w\) outside \(\mathcal S\)
+is positive. In the elliptic application \(V=\Tr_{K/\Q}(W^{-1})\),
+where \(K=\Q(\sqrt2)\). The normalized general weight
+\(w=u/(1+u)^2\) and the conditional weight
+\(F(t)/(4(t-1)^8)\) have this property on their retained guarded
+domains \cite{Native,Normalized}.
+
+Define
+\begin{equation}\label{eq:conic}
+                       \mathcal C=V^2+w(2-V).
+\end{equation}
+
+\begin{theorem}\label{thm:pole}
+If \(\mathcal C\) is a rational square, then \(b\) has no negative
+odd valuation outside \(\mathcal S\). This implication does not
+require any residue condition on the individual reciprocal slots.
+At every prepared character where \(w>0\) and the two real slots of
+\(W\) are at least one, \(\mathcal C\) is strictly positive.
+At the algebraic reference product \(W=1\), its value is exactly four.
+\end{theorem}
+\begin{proof}
+Suppose \(v_p(b)<0\) is odd, with \(p\notin\mathcal S\).
+Then \(\nu=v_p(w)\) is odd, hence positive by hypothesis, and
+\(2v_p(V)>\nu\). In particular \(v_p(V)>0\), and because
+\(p\ne2\), the number \(2-V\) is a unit. The two summands in
+\eqref{eq:conic} have distinct valuations \(2v_p(V)>\nu\) and
+\(\nu\). Thus \(v_p(\mathcal C)=\nu\) is odd, contradicting
+rational squareness. This argument also excludes the possibility
+\(\mathcal C=0\) at such a bad pole.
+
+At a prepared real character, the two reciprocal slots are in
+\((0,1]\), so \(0<V\le2\). Both terms in \eqref{eq:conic} are
+nonnegative and the first is positive. If \(V=2\), including the
+reference product, the value is four. No limiting or nonzero
+assumption on \(2-V\) is needed.
+\end{proof}
+
+The conclusion excludes exactly the primes used in the retained source
+height argument. It is not an all-prime statement at two. The original
+guards \(w\ne0\) and \(V\ne0\) are retained.
+
+Writing \(W=A+B\sqrt2\) and \(N=A^2-2B^2\), one has
+\begin{equation}\label{eq:cleared}
+ \mathcal C=\frac{4A^2+2wN(N-A)}{N^2}.
+\end{equation}
+Thus the new test introduces no denominator divisor beyond those
+already used for the weight and the detector norm. In particular, no
+norm-of-reciprocal value is an additional prescribed arithmetic datum.
+
+\section{Local preparation with the actual trace}
+
+\begin{proposition}\label{prop:local}
+The existing normalized general and conditional completeness
+preparations give the following local square conditions for
+\eqref{eq:conic}:
+\begin{enumerate}
+\item At each selected contact prime, where \(v_p(w)>0\) and
+\(V\equiv1\) or \(2\pmod p\), the value \(\mathcal C\) is
+a nonzero square in \(\Q_p\).
+\item At every fixed preparation place, the source may arrange that
+\(\mathcal C\) is a nonzero local square by taking \(V\) sufficiently
+close to two, with the nonzero physical weight in its prescribed
+neighborhood.
+\end{enumerate}
+Both assertions retain the actual detector trace, point tuple, common
+slope and comparison scales.
+\end{proposition}
+\begin{proof}
+At an odd selected contact, \(V\) is a unit and
+\[
+             \frac{\mathcal C}{V^2}
+             =1+\frac{w(2-V)}{V^2}\in1+p\Z_p.
+\]
+Hensel's lemma gives a square. In particular its residue is one or
+four according to the two possible trace residues.
+
+At a fixed odd place, make the valuation of the second term in the
+displayed ratio positive. At two, make it at least three. These
+conditions are possible by taking \(V\) sufficiently close to two;
+the weight stays in a fixed neighborhood of a nonzero value, or in
+the stated conditional preparation tends to zero. The familiar local
+square neighborhoods \(1+p\Z_p\), for odd \(p\), and
+\(1+8\Z_2\) prove the assertion. The general source prepares its
+scalar functions first and then the slope, so it allows this arbitrary
+fixed precision without changing the order of choices.
+\end{proof}
+
+The proposition does not settle local square conditions at new primes
+dividing detector numerators with even physical valuation. It also
+does not imply rational squareness or simultaneous global realization.
+
+\section{Rational parametrizations}
+
+\begin{proposition}\label{prop:param}
+For fixed \(w\ne0\), the conic \(Y^2=V^2+w(2-V)\) has the
+rational point \((V,Y)=(2,2)\). On the chart \(1+2k\ne0\) its
+rational parametrization is
+\begin{equation}\label{eq:param}
+ V=\frac{2-k^2w}{1+2k},\qquad Y=V+kw.
+\end{equation}
+Every rational point with \(1+2(Y-V)/w\ne0\) lies on this chart.
+The exceptional value \(k=-1/2\) can occur only when \(w=8\);
+then the conic splits as \(Y^2=(V-4)^2\).
+An alternative chart from the line through \((2,2)\) is
+\[
+ V=\frac{2(t-1)^2-w}{t^2-1},\qquad Y=2+t(V-2),
+ \qquad t^2\ne1.
+\]
+\end{proposition}
+\begin{proof}
+Substitute \(Y=V+kw\), cancel the nonzero \(w\), and obtain
+\((1+2k)V=2-k^2w\). The exceptional case and converse follow
+directly. Substitution of \(Y=2+t(V-2)\), followed by removal of
+the reference-point factor \(V-2\), gives the second chart.
+\end{proof}
+
+These are arithmetic parametrizations, not new unrestricted coordinates
+in the finite-algebra specification. A solution must match the actual
+\(V\) and \(w\) coming from the retained point tuple and common
+slope. The reference value \(W=1\) need not itself be an actual source
+tuple.
+
+The simple slice \(Y=2-V\) is equivalent, away from \(V=2\), to
+\[
+                         w=\frac{4(1-V)}{2-V}.
+\]
+On the prepared real domain \(w>0\), \(0<V\le2\), this requires
+\(0<V<1\). It is therefore outside the usual completeness
+neighborhood \(V>1\), although it may be investigated using a
+different real preparation. Local compatibility at a contact with
+\(V\equiv1\) alone does not provide that new real preparation.
+
+\section{Whole-character encoding and exact coordinate count}
+
+\begin{definition}
+The simultaneous trace-conic property for a retained source means
+that every required integer input has a prepared actual rational
+point tuple and one common slope, with its original scales and all
+point, difference, scalar, weight and trace guards, such that both
+values
+\[
+                     V_j^2+w_j(2-V_j),\qquad j=0,1,
+\]
+are rational squares. The property includes the whole-character real
+and guard locus of the source. In a conditional source the required
+inputs are the nonzero integers.
+\end{definition}
+
+\begin{theorem}\label{thm:census}
+Under the source's retained arithmetic premises and its simultaneous
+trace-conic property, the general source gives a defining polynomial
+with twenty-one total variables, and either conditional source gives
+one with nine total variables. Without that property, the construction
+proves soundness only. The established complete defining counts are
+unchanged.
+\end{theorem}
+\begin{proof}
+Let \(p=9\) in the general source and \(p=3\) in a conditional
+source. Retain the \(p\) rational point pairs and their free point
+algebra of rank \(4^p\). Replace each two-coordinate pole block
+by the finite quadratic test \eqref{eq:conic}. If its rational
+expression in the localized point algebra is \(N_j/D_j\), adjoin
+the monic generator
+\[
+                              Y_j^2=N_jD_j.
+\]
+The original guard product includes all syntactic denominators.
+At every prepared character Theorem~\ref{thm:pole} makes the radicand
+positive and nonzero. Include the numerator and denominator norms in
+the scalar guard product, as required by the existing encoder; these
+are automatic nonzero guards on the prepared locus and require no
+new rational coordinate. The two extensions are finite etale and
+totally real there. Their joint rank is
+\[
+                          4^p\cdot2^2=4^{p+1}.
+\]
+The one-coordinate separator and determinant descent of \cite{Unit}
+therefore apply, with no additional point, square, height-recovery or
+nonzero-witness coordinate.
+
+Every rational solution excludes the same negative odd poles by
+Theorem~\ref{thm:pole}. The unchanged source extraction and height
+argument give soundness, including the same exceptional set and fixed
+defining-parameter qualifications. The simultaneous trace-conic
+property extends the selected rational character to both quadratic
+generators and proves completeness. The total number of unrestricted
+coordinates is
+\[
+              1\text{ input}+2p\text{ point coordinates}
+                +1\text{ slope}+1\text{ separator}=2p+3.
+\]
+The conditional source's original final input factor includes zero.
+\end{proof}
+
+All comparisons in the general source, including its Lucas relation
+and scalar-height argument, are retained. No ordinary or weak abc
+hypothesis is introduced into the general criterion. No degree or
+coefficient bound for the complete resulting determinant is asserted.
+
+\section{Trace-dependent classes with no lost contact primes}
+
+\begin{proposition}\label{prop:class}
+In Theorem~\ref{thm:pole}, replace rational squareness of
+\(\mathcal C\) by that of \(\delta\mathcal C\), where \(\delta\)
+is a retained rational source function whose valuation is even at every
+hypothetical negative odd pole of \(b\). The pole implication is
+unchanged. If \(\delta\) is positive at every prepared character
+and all its denominators are retained guards, the finite-algebra
+argument has the same coordinate count.
+
+In particular, both functions
+\begin{equation}\label{eq:traceclass}
+       \delta_{\mathrm{lin}}(V)=1+24V,\qquad
+       \delta_{\mathrm{quad}}(V)=1+3(V-1)^2
+\end{equation}
+are admissible for the general and conditional sources, without any
+height-support budget. They introduce no lost contact prime. Each is
+locally square at every fixed preparation place and every selected
+contact of the retained constructions, without a splitting assumption.
+\end{proposition}
+\begin{proof}
+At a bad pole the valuation of \(\mathcal C\) is odd, and adding
+the even valuation of \(\delta\) cannot change that parity.
+For \eqref{eq:traceclass}, one has \(v_p(V)>0\) at a bad pole,
+so the linear and quadratic functions reduce to one and four,
+respectively. Both are strictly positive on the prepared domain
+\(0<V\le2\), and their denominators are powers of that of \(V\),
+already retained. At the reference trace their values are forty-nine
+and four. Arbitrary fixed local precision near \(V=2\) makes each
+a local square, including at two and seven.
+At a selected contact the linear function reduces to twenty-five or
+forty-nine, and the quadratic function to one or four. The selected
+primes are greater than \(76176\), so these are nonzero square
+residues. No splitting assumption is needed. No contact is lost in the
+soundness proof, and the original height constants and exponents
+are unchanged.
+\end{proof}
+
+More generally, the same assertions hold for
+\[
+          \delta_r(V)=r^2+(4-r^2)(V-1)^2,
+\]
+where \(r\) is a fixed positive \(\mathcal S\)-unit with \(r<2\).
+Its values at traces zero and two are four, its value at trace one is
+\(r^2\), and it is strictly positive on the entire real line.
+The choice \(r=1\) has integral coefficients. The product
+\(\delta_{\mathrm{quad}}(V)\mathcal C\) has total degree four in
+\((V,w)\). The linear class gives the smaller cubic radicand
+\begin{equation}\label{eq:cubic}
+ (1+24V)\mathcal C
+ =24V^3-24V^2w+V^2+47Vw+2w,
+\end{equation}
+with five monomials and coefficient height forty-seven. These are
+degrees and coefficients of the displayed trace radicands, not bounds
+for the complete defining determinant.
+
+For fixed \(w\), the cubic curve has the rational point
+\((V,Y)=(2,14)\). The change \(X_c=1+24V\), \(Y_c=24Y\)
+puts it in the form
+\[
+ Y_c^2=X_c^3-(2+24w)X_c^2+(1+1176w)X_c,
+\]
+where the reference point is \((49,336)\) and \((0,0)\) is a
+rational point of order two when the curve is nonsingular.
+The discriminant is
+\[
+                    9216w(w-8)(1+1176w)^2.
+\]
+Thus every general prepared weight \(0<w\le1/4\) gives a smooth
+elliptic curve. This model retains a prescribed abscissa
+\(X_c=1+24V\) when used in the actual detector problem.
+
+In particular, the finite menu
+\(\{1,1+24V,1+3(V-1)^2\}\) is available separately in each block.
+One may use any fixed finite menu of such positive admissible
+functions, by a finite product of branch encoder polynomials sharing
+the same unrestricted coordinates. This increases polynomial size,
+but introduces no additional rational variable. It provides further
+square classes for a future actual-trace realization; it is not itself
+such a realization.
+
+\subsection{Classes from retained source functions}
+
+Let $c$ be an already guarded scalar source function that is rational
+at the selected rational character, and put
+\begin{equation}\label{eq:adaptiveclass}
+ q=2+wc^2,\qquad
+ \delta_c(V)=(q^2-2q-1)^2+4q(q^2-1)V.
+\end{equation}
+The function may use the existing slope or point coordinates, including
+finite point-algebra generators whose selected character is rational.
+A raw $K$-valued function is not permitted in place of this rational
+scalar. No new unrestricted coordinate is introduced by this definition.
+
+\begin{proposition}\label{prop:adaptiveclass}
+The class in \eqref{eq:adaptiveclass} preserves the pole implication
+and the coordinate census of Theorem~\ref{thm:census}. It is strictly
+positive at every prepared character. At every selected contact prime
+$p>7$ with positive odd $v_p(w)$ and $V\equiv1$ or $2\pmod p$,
+it is a nonzero local square, for every rational value of $c$.
+These statements require no bound on the height or denominator of $c$.
+\end{proposition}
+\begin{proof}
+At a hypothetical bad pole, write $\nu=v_p(w)>0$ odd and
+$m=v_p(V)>0$. If $c=0$, then $q=2$ and $\delta_c=1+24V$.
+Otherwise $v_p(wc^2)$ is odd and nonzero. If it is positive,
+$q\equiv2\pmod p$, so $\delta_c\equiv1\pmod p$.
+If it is negative, put $e=v_p(q)<0$. The two summands defining
+$\delta_c$ have valuations $4e$ and $3e+m$, respectively.
+Since $3e+m>4e$, the first, a nonzero square, dominates.
+The class is therefore a local square, in particular of even
+valuation, in both cases.
+
+At a selected contact $v_p(V)=0$. The same negative-$e$ argument
+applies, while the other case reduces to $1+24V$, with residues
+$25$ and $49$. They are nonzero squares for $p>7$.
+
+At a prepared real character, $w>0$, $V>0$ and $q\ge2$.
+Consequently $4q(q^2-1)V>0$, giving strict positivity.
+All new denominators are already denominators of $w,V,c$.
+Proposition~\ref{prop:class} and the existing encoder now apply.
+\end{proof}
+
+The reference and contact values have the identities
+\[
+ \delta_c(0)=(q^2-2q-1)^2,\quad
+ \delta_c(1)=(q^2+1)^2,\quad
+ \delta_c(2)=(q^2+2q-1)^2.
+\]
+In particular the explicit choice $c=\lambda$, the retained common
+slope, is compatible with fixed-place preparation. In a conditional
+block with $t=a\lambda$, letting $\lambda$ tend to infinity at a
+fixed place gives
+\[
+ w\lambda^2\longrightarrow\frac1{4a^2},\qquad
+ q\longrightarrow2+\frac1{4a^2},\qquad V\longrightarrow2.
+\]
+The limiting value of $q$ is rational, and $q^2+2q-1$ has no rational
+zero. Thus the limiting class is a nonzero rational square; the local
+square neighbourhood is open, including at two. In the general source,
+the prepared weight tends to a fixed nonzero value as the slope
+becomes large at the fixed place. Then $v_p(q)$ tends to minus infinity
+and
+\[
+ \frac{\delta_c(V)}{(q^2-2q-1)^2}
+ =1+\frac{4q(q^2-1)V}{(q^2-2q-1)^2}\longrightarrow1.
+\]
+The same square-neighbourhood argument applies while retaining the
+already prepared trace-conic square condition. The source's arbitrary
+fixed denominator precision permits this refinement in its original
+order of choices.
+
+Any fixed finite selection of the functions in
+\eqref{eq:adaptiveclass}, together with the earlier classes, may be
+compiled by the same finite product of branch encoders. This allows
+the square class to depend on the actual slope and on auxiliary
+points without a lost-contact or height penalty. It still requires
+simultaneous global rational realization on actual detector tuples.
+
+\begin{thebibliography}{9}\raggedright
+\bibitem{Native}\emph{A guarded rational-square criterion for normalized
+elliptic detectors},
+\nolinkurl{papers/pole_parameters/native_square_criterion_20261116_v53.tex}.
+\bibitem{Normalized}\emph{Quadratic reweightings of native elliptic
+detectors},
+\nolinkurl{papers/pole_parameters/reweighted_elliptic_detectors_20261116_v53.tex}.
+\bibitem{Unit}\emph{A single norm determinant for the 25- and 13-variable
+constructions},
+\nolinkurl{papers/finite_algebra/unit_norm_20261114_v28.tex}.
+\bibitem{Scalar}\emph{Intrinsic congruent-curve poles from a fixed scalar
+rescaling},
+\nolinkurl{papers/pole_parameters/general_intrinsic_transfer_20261117_v57.tex}.
+\end{thebibliography}
+\end{document}

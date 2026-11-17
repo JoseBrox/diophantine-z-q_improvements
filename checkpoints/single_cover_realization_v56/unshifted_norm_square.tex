@@ -1,0 +1,225 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,microtype}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\setlength{\emergencystretch}{2em}
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{lemma}[proposition]{Lemma}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\DeclareMathOperator{\Tr}{Tr}\DeclareMathOperator{\Nm}{N}
+\title{An unshifted norm-square detector}
+\author{}\date{17 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+The single square condition $w\Nm(1-W^{-1})\in\Q^{\times2}$ gives
+local elliptic index extraction for the fast conditional detector.
+On actual multiplication tuples, its rational-square condition can be
+prepared at every fresh split contact by one additional congruence on
+the auxiliary index. The prescribed leading ratio is the integer input,
+and requires no varying twist class. This proves soundness and fresh
+contact preparation, not global rational realization.
+\end{abstract}
+
+\section{The square condition}
+
+Retain the curve, point charts, six symmetric tests and contact function
+of \cite{Single}. Thus
+\[
+ \begin{gathered}
+ K=\Q(\sqrt2),\quad E:y^2=x^3-Dx,\quad D=(3-\sqrt2)^2,
+ \quad 2E(K)=\Z P,\\
+ F(t)=\frac{t(t+1)(2t+1)(3t+1)(4t+1)(5t+2)}{120},
+ \qquad w=\frac{F(t)}{4(t-1)^8},\\
+ W=\prod_{i=1}^6\left(1+\frac{C_i^2}{F(t)}\right),
+ \quad V=\Tr(W^{-1}),\quad J=\Nm(W^{-1}).
+ \end{gathered}
+\]
+Keep every point, difference and rational-function guard, and consider
+the single condition
+\begin{equation}\label{eq:R0}
+                 {\cal R}_0=w(1-V+J)
+                    =w\Nm(1-W^{-1})\in\Q^{\times2}.
+\end{equation}
+
+\begin{proposition}\label{prop:extract}
+At every nonexceptional odd contact of $F(t)$, a guarded solution of
+\eqref{eq:R0} has a place above that contact where all six tests
+have positive valuation. More precisely, if
+$\nu=v_p(F(t))>0$ is odd, then
+$v_{\mathfrak p}(C_i)>\nu/2$ for all $i$ at some place
+$\mathfrak p\mid p$.
+\end{proposition}
+\begin{proof}
+The contact normalizer is a unit, so $v_p(w)=\nu$.
+At each place above $p$, every factor of $W$ has valuation
+\[
+        \min\{0,2v_{\mathfrak p}(C_i)-\nu\}\le0.
+\]
+The two candidate valuations cannot tie. Its inverse is integral,
+with residue one when the factor is a unit and zero otherwise.
+Consequently each local value of $W^{-1}$ has residue zero or one.
+
+If all of these residues were zero, then
+$\Nm(1-W^{-1})\equiv1\pmod p$. This would make
+$v_p({\cal R}_0)=\nu$ odd, contrary to \eqref{eq:R0}.
+Thus at least one local value of $W$ is a unit. Every summand in
+its valuation is nonpositive, so each must be zero. Therefore
+$2v_{\mathfrak p}(C_i)-\nu>0$ for every $i$.
+\end{proof}
+
+The original formal comparison then gives $X\equiv n\pmod p$
+when $A=[n]P$. The mixed-power height argument of \cite{Single}
+is unchanged. Thus its sound nine-coordinate criterion remains
+sound with \eqref{eq:R0} in place of its larger radical.
+This statement retains the source's subgroup, trace-height and
+weak-$abc$ hypotheses.
+
+At a prepared real tuple $t>1$, each real detector slot exceeds one:
+the factor containing $f(H)$ is strictly greater than one because
+the source guards exclude $f(H)=0$. Hence
+\[
+            w>0,\qquad \Nm(1-W^{-1})>0.
+\]
+The same argument holds at every geometric point-algebra character.
+The final radicand is therefore a unit at every prepared character.
+One quadratic root gives rank $128$ and the same nine-coordinate
+census, conditional on actual rational realization.
+
+\section{Square preparation at a fresh contact}
+
+Fix an integer input $X=n\ne0$, put $A=[n]P$, and restrict to
+the actual multiplication family
+\[
+                        H=[h]P,\qquad U=[n]H.
+\]
+Let $p$ be a split good contact prime outside the fixed exceptional
+set and the support of $n(1+n^4)$, with $v_p(F(t))=1$.
+Choose the successful slot so that $H$ is formal there and $H-P$
+is formal at the conjugate slot. Write
+\[
+ \tau=\zeta(H),\qquad
+ \tau'=\overline{\zeta(H-P)},\qquad \zeta=-x/y.
+\]
+
+\begin{lemma}\label{lem:lead}
+If $v_p(\tau)=v_p(\tau')=m\ge1$ and
+$\tau/\tau'\equiv\varepsilon n\pmod p$ for
+$\varepsilon\in\{1,-1\}$, then ${\cal R}_0$ is a nonzero
+square in $\Q_p$.
+\end{lemma}
+\begin{proof}
+The integral formal series give
+\[
+ f(Q)=\zeta(Q)^2(1+O(p^{4m})),\qquad
+ \frac{\zeta([n]Q)}{\zeta(Q)}=n+O(p^{4m}).
+\]
+The first four tests therefore give
+\[
+ C_1^2+C_2^2+C_3^2+C_4^2
+ =(1+n^4)(\tau^4+(\tau')^4)+O(p^{8m}).
+\]
+Both comparison tests have valuation at least $4m$, so the same
+leading expression holds for $\sum_{i=1}^6C_i^2$.
+The prescribed ratio makes this expression congruent to
+\[
+                         (1+n^4)^2(\tau')^4
+                           \pmod {p^{4m+1}},
+\]
+with nonzero leading coefficient.
+
+At the successful slot,
+\[
+ W-1=\frac{\sum_iC_i^2}{F(t)}(1+O(p)).
+\]
+At the other slot, the mandatory reciprocal test of $H$ is a unit:
+there $H$ reduces to $P$, whose nonzero abscissa is a unit outside
+the source's fixed exceptional set. Thus $W^{-1}=O(p)$ at that
+slot. Taking the norm and using $w/F(t)=1/(4(t-1)^8)$ gives
+\[
+ {\cal R}_0=\frac{\sum_iC_i^2}{4(t-1)^8}(1+O(p)).
+\]
+Its valuation is $4m$ and its unit part is a square modulo $p$.
+Hensel's lemma proves the assertion.
+\end{proof}
+
+\begin{proposition}\label{prop:chooseh}
+The additional leading-ratio condition in Lemma~\ref{lem:lead}
+can be imposed by a $p$-power congruence on $h$ compatible with
+the original conjugate reduction congruences, provided $p$ is
+coprime to their total modulus.
+\end{proposition}
+\begin{proof}
+For the two embeddings define the formal logarithms of $P$ by
+\[
+ L_i=r_i^{-1}\log_E([r_i]P),
+\]
+where $r_i$ is a prime-to-$p$ annihilating reduction order. These
+are nonzero elements of $p\Z_p$. On the original reduction
+progression, the relevant logarithms are $hL_1$ and $(h-1)L_2$.
+
+Choose $\varepsilon\in\{1,-1\}$ so that
+\[
+ v_p(L_1-\varepsilon nL_2)
+                   =\min\{v_p(L_1),v_p(L_2)\}.
+\]
+If the valuations differ either sign works. If they agree, at
+least one sign works because $p\ne2$ and $n$ is a unit. Then
+\[
+ h_*=-\frac{\varepsilon nL_2}{L_1-\varepsilon nL_2},\qquad
+ h_*-1=-\frac{L_1}{L_1-\varepsilon nL_2}
+\]
+are nonzero elements of $\Z_p$. The logarithms have common
+valuation $m=\max\{v_p(L_1),v_p(L_2)\}$ and exact ratio
+$\varepsilon n$. The formal exponential differs from its linear
+term by relative order at least $4m$, so their formal parameters
+have the required leading ratio. A sufficiently precise congruence
+$h\equiv h_*\pmod {p^k}$ preserves this property. The Chinese
+remainder theorem combines it with the original modulus.
+\end{proof}
+
+\section{Simultaneous compatibility and exact verification}
+
+For the original unrestricted rational-contact source, the
+prime-pattern theorem chooses contacts of the form
+$u+c_iw_1^2$, with fixed integer $c_i$. By increasing its prescribed
+real lower bound on $u/w_1^2$, all fresh primes can be taken in an
+interval $[P_0,2P_0]$ with $P_0$ arbitrarily large. Each split
+reduction has full rational two-torsion, so its group order is a
+multiple of four. Hasse's bound makes that order less than $4P_0$.
+No fresh prime can therefore divide any of these group orders.
+The finite initial modulus and the support of $n(1+n^4)$ are
+avoided in advance. Thus all additional $p$-power congruences in
+Proposition~\ref{prop:chooseh} are simultaneously compatible with
+the original order progression. The retained real-orbit argument
+continues to apply after this finite congruence refinement.
+This use of the prime-pattern theorem does not impose the additional
+thin condition $t=(\beta^e+T^e)^d+z^2$. For the nine-coordinate
+criterion, the local lemmas apply to any contact already satisfying
+their hypotheses; existence of a suitable thin argument remains part
+of the unproved rational realization problem.
+
+The checker accompanying this manuscript independently computes
+the formal logarithm units at $p=77017$ using Jacobian arithmetic
+modulo $p^2$. The conjugate annihilating orders are $2141,2405$;
+the logarithm units are $8412,71610$. It verifies the leading-square
+identity and compatible index congruences for inputs
+$1,2,3,5,8,-2,-5$. For example, at $n=2$ it obtains
+$h\equiv7796\pmod {77017}$, with formal leading units
+$38485,57751$ and squared leading root $36042$ modulo $77017$.
+The full combined congruence is recorded exactly in the certificate.
+
+These results do not provide the required rational square over
+$\Q$. Preparation at all fixed places is a separate task, and
+fresh-contact local squares cannot exclude new odd valuations
+arising from the rational functions $\Nm(W)$ and $\Nm(W-1)$.
+In particular no global factorization on the actual multiplication
+family, no complete rational realization theorem, and no improved
+defining-variable bound is asserted.
+
+\begin{thebibliography}{9}\raggedright
+\bibitem{Single}\emph{A single-cover criterion from a mixed-power height
+inequality}, repository manuscript,
+\nolinkurl{papers/pole_parameters/single_cover_criterion_20261117_v56.tex}.
+\end{thebibliography}
+\end{document}

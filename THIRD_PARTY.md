@@ -53,3 +53,9 @@ is bound in `ARCHIVE_ORIGIN.json`; all source bytes appear in the main manifest.
 ## Prepared pole input from Burungale
 
 The intrinsic degree-nine pole block uses **Ashay Burungale, A Diophantine definition of Z in Q, arXiv:2611.16130v1 (12 November 2026), Theorem B**: [primary source](https://arxiv.org/html/2611.16130v1). The [intrinsic pole manuscript](papers/pole_parameters/intrinsic_pole_20261117_v56.tex) checks the squarefree, congruence and reciprocal local-square hypotheses and proves the coordinate transformations, density and all-character guards. It does not claim an independent reproof of Theorem B or import the paper's separate height and prime-pattern theorems. Existing construction records retain their stated arithmetic premises. The external paper is cited, not redistributed.
+
+## Intrinsic source transfers and prepared descent obstructions
+
+The complete intrinsic source transfers use A. Burungale, *A Diophantine definition of Z in Q*, arXiv:2611.16130v1, Theorem B, in the exact prepared-input form stated in the repository intrinsic-pole paper. The other source arithmetic premises remain explicit. The new source variants have no separately certified numerical full determinant bound.
+
+The prepared covering obstruction uses the full 2-descent, Monsky-matrix and Cassels-pairing conventions in Z. Wang, *Congruent Elliptic Curves with Non-trivial Shafarevich-Tate Groups*, arXiv:1511.03810v2, Sections 2.1–2.2 ([primary paper](https://arxiv.org/pdf/1511.03810)), and S. Zhang, *On non-congruent numbers as multiples of non-congruent numbers*, 28 August 2025, Sections 2.1–2.2 ([author manuscript](https://zhangshenxing.github.io/publications/Zhang2025.pdf)). Its specific conics, tangent identities, all-prime local factors and Mordell–Weil point are proved and exactly checked in this repository. The proof does not infer rank from a numerical L-value or assume finiteness of the Tate–Shafarevich group.

@@ -1,0 +1,253 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,microtype}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\DeclareMathOperator{\Tr}{Tr}\DeclareMathOperator{\Nm}{N}
+\title{Intrinsic congruent-curve poles from a fixed scalar rescaling}
+\author{}\date{17 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+A change of two fixed scalar coefficients puts the normalized general
+elliptic source in the prepared range of an intrinsic congruent-curve
+pole equation. The physical detector weights and all point roles remain
+unchanged. An exhaustive certificate at the consumed prime verifies the
+only new finite-residue condition. Ordered completeness uses Burungale's
+simultaneous-twist theorem, including density for all-character guard
+avoidance. Under the remaining stated source premises the resulting
+family defines the integers with twenty-five total variables. The source
+also retains the hypotheses of the native square-cover criterion, whose
+smaller realization problem is not resolved here.
+\end{abstract}
+
+\section{Scalar specification}
+
+Write either retained general scalar in the form
+\[
+ \rho_L(X)=\frac{A_Lr(X)}{(1+C_Lr(X))^2},\qquad \ell=76249,
+ \qquad L\ge3\text{ odd}.
+\]
+For the original scalar of \cite{General},
+\[
+ \beta=216X^4+450459,\qquad A_L=102^2\ell^L,
+ \qquad C_L=17(\ell^{(L+1)/2}+1),
+\]
+\[
+ r=\beta(\beta-1)(\beta-2401)(32\beta+343)(2\beta-1).
+\]
+For the aligned scalar of \cite{Aligned}, put
+\[
+ n=116576341082536192,\quad D_0=5951086353,\quad
+ A=1296233=17\ell,\quad Z_0=12556178240,
+\]
+\[
+ \beta=2(AX^2+Z_0)^2-D_0^2,
+ \qquad r=\beta(\beta-n)(\beta-2401n)(32\beta+343n),
+\]
+\[
+ M=r(0),\qquad A_L=102^2\ell^LM,
+ \qquad C_L=102^2M(\ell^{(L+1)/2}+1).
+\]
+These are the exact retained labels and contacts. Define instead
+\begin{equation}\label{eq:scalar}
+                 \rho_L^*(X)=\frac{7A_Lr(X)}{(1+7C_Lr(X))^2}.
+\end{equation}
+Use \(\rho_L^*\) in every scalar and comparison-scale occurrence.
+The fixed exceptional sets of the two sources are unchanged.
+
+\begin{lemma}\label{lem:scalar}
+The scalar \eqref{eq:scalar} preserves the integrality-reflecting
+label, the scalar contact-height proof, and every consumed-prime
+valuation. For integer inputs it has square reduced denominator and
+\[
+ \rho_L^*\in7\Q_2^{\times2},\qquad
+ v_2(\rho_L^*)=4\text{ or }12,\qquad v_7(\rho_L^*)\ge1.
+\]
+For every real input, \(0<\rho_L^*<\rho_L<1/56\).
+Its height estimate has the same exponents and an absolute change
+of constant. For the aligned source it remains a norm from \(\Q(\sqrt2)\).
+\end{lemma}
+\begin{proof}
+The exact ratio is
+\[
+ \frac{\rho_L^*}{\rho_L}
+       =7\left(\frac{1+C_Lr}{1+7C_Lr}\right)^2.
+\]
+Outside the fixed coefficient supports and seven, this preserves the
+odd contact primes. At a positive odd contact of \(r\) the two
+denominators are units, so it preserves the required odd valuation
+itself. The fixed coefficient supports have exactly the treatment
+already specified in the source's height proof. The scalar-height
+bound uses the same polynomial degrees; multiplying the fixed
+coefficients by seven changes only its absolute constant.
+
+At \(\ell\), the scalar coefficient \(C_L\) is a unit. If the
+input has negative \(\ell\)-adic valuation, the source proves
+\(v_\ell(r)<0\), and both old and new denominators have valuation
+\(v_\ell(r)\). If the input is \(\ell\)-integral, the exact
+residue certificate accompanying this paper verifies
+\[
+            r(X)\not\equiv0,\qquad 1+7C_Lr(X)\not\equiv0\pmod\ell
+\]
+for all \(76249\) residues \(X\). Here \(C_L\equiv17\) in the
+original case and \(C_L\equiv102^2M\) in the aligned case,
+independently of \(L\). The aligned contact value is itself
+constant modulo \(\ell\), because \(A=17\ell\).
+Thus the complete consumed-prime valuation is unchanged, not just
+its parity; in particular it is positive odd and at least \(L\).
+
+For integer inputs, put \(D=1+7C_Lr\). One has \(\gcd(r,D)=1\).
+In the original scalar the remaining numerator primes are
+\(2,3,7,17,\ell\). The denominator is a unit at two because
+\(C_L\) is even, at three because \(\beta\equiv0\pmod3\) and
+therefore \(r\equiv0\pmod3\), at seventeen because \(17\mid C_L\),
+and at seven by its displayed form. At \(\ell\) this is the
+residue certificate just proved. For the aligned scalar, every
+prime dividing \(102M\) divides \(C_L\), and again seven and
+\(\ell\) give units by the preceding arguments. Thus in both cases
+\(\gcd(7A_Lr,D)=1\). The reduced denominator in
+\eqref{eq:scalar} is consequently the square \(D^2\), with no
+odd cancellation. The numerator is divisible by seven.
+At two the old and new denominators are units by the original
+local preparation, and multiplying \(C_L\) by an odd integer does
+not alter this fact. The displayed square ratio gives the claimed
+two-adic class and unchanged valuation.
+
+On the real line both source specifications have \(C_Lr\ge1\).
+For \(t\ge1\),
+\[
+ \frac{7(1+t)^2}{(1+7t)^2}\le\frac7{16}<1.
+\]
+The original scalar bound is \(\rho_L<36/\ell<1/56\), and
+the aligned bound is smaller. Finally
+\(7=\Nm(3+\sqrt2)\), so the square ratio also preserves the
+aligned norm assertion.
+\end{proof}
+
+\section{Detectors and pole equations}
+
+Use either the normalized general tests of \cite{Reweighted} or the
+order-two revision of \cite{Precision}. Keep the common slope, all
+nine point roles, the two contact functions \(R_j\), and the
+unsquared scales \(a_0=1,a_1=1+\rho_L^*T^2\).
+The physical weights are the established ones:
+\[
+ u_j=\rho_L^*R_j,\qquad w_j=\frac{u_j}{(1+u_j)^2},
+ \qquad b_j=\frac{4w_j}{\Tr(W_j^{-1})^2}.
+\]
+The detector \(W_j\), with its chosen field and scalar orders,
+uses this weight in every denominator. Keep all point, difference,
+scalar, contact and trace guards.
+
+For each block take two rational coordinates \(v_j,s_j\) and
+the finite equation
+\begin{equation}\label{eq:pole}
+ Y_j^2=P_{b_j}(v_j,s_j),\qquad
+ P_d(v,s)=d(d+v^2)^2s^4-d(d-v^2)^2(1-d)^2.
+\end{equation}
+The intrinsic pole theorem of \cite{Intrinsic} proves, without
+guards, that this equation excludes negative odd valuations of
+\(b_j\) at every prime. Its proof uses the two distinct odd
+valuations of the radicand terms at a hypothetical negative odd
+valuation of \(b_j\).
+Hence the source's local extraction and height soundness are
+unchanged by Lemma~\ref{lem:scalar}.
+
+\section{Ordered completeness and all-character guards}
+
+Fix an integer input and a fixed odd \(L\ge3\). After fixing
+\(\rho_L^*\), form the temporary finite preparation and avoidance
+set including its support and the support of \(1+\rho_L^*\).
+This is not an enlargement of the global exceptional set used
+in the height proof. Choose the reference, scalar and root points
+in the retained order, and fix the comparison scales before
+applying the prime-pattern theorem.
+
+All fixed local scalar functions can be made as small as needed.
+At a selected contact the old normalizer and reciprocal-trace
+proofs still give positive odd valuation of \(b_j\). At fixed
+preparation primes the contact functions tend to one and the
+detectors to one, preserving the scalar's prescribed square
+classes. The unchanged even-degree contact factorization shows
+that every other valuation is even. Thus both \(b_j\) have square
+reduced denominator.
+
+At two the preparation gives
+\[
+          b_j\in7\Q_2^{\times2},\qquad
+          v_2(b_j)=v_2(\rho_L^*)\ge4,
+\]
+since the reciprocal trace is sufficiently close to two.
+At seven \(u_j\) has positive valuation and \(1+u_j\) is a unit;
+the reciprocal trace is close to two and is a unit. In particular
+no negative odd valuation is introduced there.
+
+At the selected real character choose \(R_j<2\) and both real
+detector slots in \([1,2)\). The reciprocal trace exceeds one,
+and \(0<w_j<u_j<2\rho_L^*\). Therefore
+\[
+                    0<b_j<8\rho_L^*<1/7<1.
+\]
+These are precisely the prepared-input hypotheses of the intrinsic
+theorem, which follows from Burungale's Theorem B. It supplies a
+Zariski-dense set of rational witness pairs \((v_j,s_j)\) for each
+actual input.
+
+At every geometric point-algebra character all detector factors
+are positive and the traces nonzero, so \(b_j\) is a unit. Other
+characters need not satisfy \(b_j<1\), and may take the value one.
+No such restriction is needed in \eqref{eq:pole}.
+For each character value \(c\ne0\), the polynomial \(P_c(v,s)\)
+is nonzero: its leading coefficient in \(s\) is \(c(c+v^2)^2\).
+Its point-algebra norm is consequently a nonzero polynomial.
+The intrinsic density allows the actual witness pairs to avoid
+this norm and every retained denominator norm simultaneously.
+The cleared terminal radicands are thus units at every character,
+and the existing one-coordinate quadratic encoder applies.
+
+\begin{theorem}
+Retain the source's group, prime-pattern, normalized contact-height
+and aggregate trace-height premises, and use Burungale's Theorem B
+in the intrinsic form stated in \cite{Intrinsic}.
+With either scalar and either indicated set of scalar orders,
+the modified source defines \(\Z\) over \(\Q\) for every sufficiently
+large fixed odd \(L\). It is complete for every integer input and
+every fixed odd \(L\ge3\). Its finite polynomial specification has
+twenty-five total variables.
+\end{theorem}
+\begin{proof}
+Soundness is the retained source argument with the scalar properties
+of Lemma~\ref{lem:scalar} and the intrinsic all-prime pole implication.
+The ordered preparation and guard argument prove completeness.
+The coordinates are the input, eighteen point coordinates, one slope,
+four pole coordinates and one encoder coordinate. No other free
+coordinate is introduced.
+\end{proof}
+
+Every odd valuation of a physical weight outside the fixed
+exceptional set is still positive. Thus the native square-cover
+criterion remains applicable to this source as well. No rational
+realization of that smaller cover, numerical sufficient \(L\), or
+degree bound for the complete determinant is asserted here.
+
+\begin{thebibliography}{9}\raggedright
+\bibitem{General}\emph{A defining polynomial in twenty-five variables},
+\nolinkurl{papers/few_variables25/few_variables25_merged_20261110_v19.tex}.
+\bibitem{Aligned}\emph{A scalar norm from the detector field},
+\nolinkurl{papers/pole_parameters/detector_field_norm_scalar_20261116_v52.tex}.
+\bibitem{Reweighted}\emph{Quadratic reweightings of native elliptic detectors},
+\nolinkurl{papers/pole_parameters/reweighted_elliptic_detectors_20261116_v53.tex}.
+\bibitem{Precision}\emph{Scalar precision two with an eighth-order elliptic comparison},
+\nolinkurl{papers/pole_parameters/precision_transfer_20261117_v56.tex}.
+\bibitem{Intrinsic}\emph{A two-coordinate pole test of coefficient height four},
+\nolinkurl{papers/pole_parameters/intrinsic_pole_20261117_v56.tex}.
+\bibitem{Burungale}A.~Burungale,
+\emph{A Diophantine definition of $\Z$ in $\Q$},
+arXiv:2611.16130v1, 12 November 2026, Theorem B.
+\url{https://arxiv.org/abs/2611.16130}.
+\end{thebibliography}
+\end{document}

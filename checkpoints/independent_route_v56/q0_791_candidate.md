@@ -1,6 +1,6 @@
 # Candidate prepared Sha obstruction: n=791
 
-Status: **rank-one certificate still needed**. Do not report the nonexistence assertion as proved yet.
+Status: **superseded by a complete proof** in `negative_results/prepared_q0_sha_counterexample.tex`, with `check_prepared_q0_sha_counterexample.py` and its exact certificate. The Cassels pairing is −1. Two independent agents have audited the proof. The text below is retained as an earlier research checkpoint only.
 
 Prepared input d=112/225=7(4/15)^2. Here A=112, B=15, C=B^2−A=113. The replacement curve y²=d((1−d)²−s^4), after t=15s and scaling ordinate, is
 

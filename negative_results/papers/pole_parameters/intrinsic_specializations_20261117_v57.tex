@@ -1,0 +1,128 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,microtype}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\Q}{\mathbb Q}
+\begin{document}
+\title{Two restrictions on intrinsic pole specializations}
+\author{}\date{17 November 2026}\maketitle
+Let
+\[
+ P_d(v,s)=d(d+v^2)^2s^4-d(d-v^2)^2(1-d)^2.
+\]
+Call a rational number $d$ prepared if
+\[
+ 0<d<1,\qquad \operatorname{den}(d)\text{ is a square},\qquad
+ d\in 7\Q_2^{\times2},\qquad v_2(d)\ge4.
+\]
+Here the denominator is reduced and positive.
+
+\section{A predetermined rational-function menu for the second coordinate}
+
+\begin{theorem}\label{thm:menu}
+Let $R_1(T),\ldots,R_r(T)\in\Q(T)$ be any finite collection of rational functions. There are infinitely many prepared $d$ at which every $R_j$ is defined, such that, for a prime $p$ depending on $d$,
+\[
+ P_d(v,R_j(d))\notin\Q_p^2
+ \quad\text{for every }v\in\Q_p\text{ and }1\le j\le r.
+\]
+In particular no finite menu of fixed rational values of $s$, or of rational functions of $d$ alone, supplies witnesses for every prepared input.
+\end{theorem}
+
+\begin{proof}
+Choose a prime $p\equiv13\pmod{28}$, large enough that $p^2>112$, and excluding the numerators and denominators of every nonzero coefficient of chosen numerator and denominator polynomials for the $R_j$. There are infinitely many such primes by Dirichlet's theorem. Set
+\[
+ d=112/p^2.
+\]
+Then $d$ is prepared: its denominator is $p^2$, $d=7(4/p)^2$, and $v_2(d)=4$. Quadratic reciprocity gives $(7/p)=-1$, while $-1$ is a square in $\Q_p$. In particular the classes of both $d$ and $-d$ are nonsquares. Put $e=v_p(d)=-2$.
+
+For $v\ne0$, if $e=2v_p(v)$, the leading residues of $d+v^2$ and $d-v^2$ cannot cancel, since neither $d$ nor $-d$ is a local square. Otherwise their valuations are determined by their unique smaller term. Thus in all cases, also with the evident interpretation for $v=0$,
+\[
+ v_p(d+v^2)=v_p(d-v^2)=M:=\min(e,2v_p(v)).
+\]
+Moreover $v_p(1-d)=e$.
+
+Suppose $R_j\ne0$ and write $m_j=\deg N_j-\deg D_j$ for a numerator and denominator. All their nonzero coefficients are $p$-units. Since $e<0$, the leading monomials are uniquely of smallest valuation, and
+\[
+ v_p(R_j(d))=m_je.
+\]
+The two summands of $P_d(v,R_j(d))$ have valuations
+\[
+ e+2M+4m_je\quad\text{and}\quad e+2M+2e.
+\]
+If $m_j\ge1$ the first summand dominates and the square class of their sum is $d$. If $m_j\le0$ the second dominates and its square class is $-d$. Indeed their quotient after division by the dominant term is $1$ plus an element of $p\mathbb Z_p$, and is a square because $p$ is odd. Neither class is a square. If $R_j=0$, the value is exactly $-d$ times a nonzero square. The required conclusion follows.
+\end{proof}
+
+\begin{proposition}\label{prop:small}
+For the prepared input $d=112/169$, the specialization $s=1$ has no point over $\Q_{13}$, including the points at infinity on its smooth projective model.
+\end{proposition}
+\begin{proof}
+There is the identity
+\[
+ P_d(v,1)=d^2(v^2+2-d)((2-d)v^2+d^2).
+\]
+Theorem~\ref{thm:menu}'s valuation proof applies with $p=13$ and $s=1$. An explicit check at the only critical valuation $v_{13}(v)=-1$ is also useful. Write $v=u/13$, with $u$ a $13$-adic unit. Multiplying the displayed product of quadratics by $13^6$ gives
+\[
+ (u^2+226)(226u^2+12544)
+ \equiv5(u^2+5)^2\pmod{13}.
+\]
+Here $5$ and $8$ are nonsquares modulo $13$, so this is always a nonzero nonsquare. The leading coefficient $2-d=226/169$ is also nonsquare in $\Q_{13}$, excluding the points at infinity.
+\end{proof}
+
+\begin{remark}
+Theorem~\ref{thm:menu} does not exclude relations such as $s=cv$, algebraic choices with half-integral growth in the valuation of $d$, or a curve coupling $s$ to $v$. At a prime used in its proof, such a relation may allow the two summands to have equal valuation.
+\end{remark}
+
+\section{The positive abscissa classes on a rank-one congruent curve}
+
+\begin{proposition}\label{prop:rankone}
+Let $l$ be a positive squarefree integer with $l\equiv5\pmod8$. Suppose $E_l:y^2=x(x-l)(x+l)$ has rank one over $\Q$ and has a rational point with abscissa in $\beta\Q^{\times2}$, where $\beta$ is positive squarefree and $\beta\equiv7\pmod8$. Then the positive abscissa square classes occurring on $E_l(\Q)$ are exactly
+\[
+ \{[1],[l],[\beta],[l\beta]\}.
+\]
+In particular $[\beta]$ is the only positive class lying in $7\Q_2^{\times2}$. Two distinct positive rational square classes in $7\Q_2^{\times2}$ cannot both occur on such a rank-one curve.
+\end{proposition}
+
+\begin{proof}
+The standard $2$-isogeny descent homomorphism is
+\[
+ \delta:E_l(\Q)\longrightarrow\Q^\times/\Q^{\times2},\qquad
+ \delta(O)=1,\quad\delta((0,0))=-1,\quad
+ \delta(P)=[x(P)]\quad(x(P)\ne0).
+\]
+The homomorphism property follows from the chord-and-tangent product identity; in particular $2E_l(\Q)$ lies in its kernel. Also $\delta((l,0))=[l]$. Since the rational $2$-torsion has dimension two, the rank-one hypothesis gives
+\[
+ \dim_{\mathbb F_2} E_l(\Q)/2E_l(\Q)=3.
+\]
+The classes $[-1],[l],[\beta]$ are independent: the real sign separates $[-1]$ from the other two, and the positive classes $[l],[\beta]$ are nontrivial and distinct, with $2$-adic unit images $5$ and $7$. They therefore exhaust the image. Its positive half is the four-element set asserted. Their $2$-adic unit classes are respectively $1,5,7,3$, proving uniqueness.
+\end{proof}
+
+\begin{remark}
+In the proof, independence of $[-1]$ uses the real place: $-1$ and $\beta$ have the same $2$-adic square class, so the $2$-adic place alone does not establish independence of all three generators.
+\end{remark}
+
+\begin{proposition}\label{prop:pair}
+In the situation of Burungale's Theorem~B, let $n=\beta m$ and suppose $\eta>1$. Then the positive abscissa square classes represented simultaneously by $E_n$ and $E_{n\eta}$ are precisely $[1]$ and $[\beta]$.
+\end{proposition}
+\begin{proof}
+The theorem has squarefree positive $\beta,\eta,n$, with $\beta\mid n$, $(n,\eta)=1$, $\beta\equiv7$, $n\equiv5$, and $\eta\equiv1\pmod8$. Consequently $m>1$ is squarefree, $m\equiv3\pmod8$, and $\beta,m,\eta$ have pairwise disjoint prime supports. Both curves have rank one and represent $[\beta]$. Proposition~\ref{prop:rankone} gives their positive images as
+\[
+ \{[1],[\beta],[m],[\beta m]\},\qquad
+ \{[1],[\beta],[m\eta],[\beta m\eta]\}.
+\]
+Disjoint prime supports and $\eta>1$ give the claimed intersection.
+\end{proof}
+
+\begin{remark}
+The restrictions include taking arbitrary multiples, adding rational torsion, and the rational coordinate changes
+$(x,y)\mapsto(r^2x,r^3y)$ from $E_l$ to $E_{r^2l}$, since these do not change the abscissa class. They do not exclude rank at least two, coincident prescribed detector classes, or constructions using unrelated curves. No assertion about arbitrary isogenies is made. When $\eta=1$, the two curves coincide and Proposition~\ref{prop:pair}'s intersection statement is not asserted.
+\end{remark}
+
+\begin{thebibliography}{9}
+\bibitem{B} A. Burungale, \emph{A Diophantine definition of $\mathbb Z$ in $\mathbb Q$}, arXiv:2611.16130v1, Theorem B. \url{https://arxiv.org/html/2611.16130v1}
+\end{thebibliography}
+\end{document}

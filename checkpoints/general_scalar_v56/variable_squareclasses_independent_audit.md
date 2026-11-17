@@ -104,3 +104,26 @@ on the degree of defining polynomials and does not prove realization.
 
 `check_variable_classes_independent.py` reproduces the exact
 inequalities, the improved rows, and the finite optimization.
+# Additional input-only class
+
+The menu may include `delta=1+X^4` with the same support budget `k=2`.
+Indeed, for `X=a/q` in lowest terms, with `q>0`, its reduced denominator
+is `q^4`, so every odd-valuation prime divides `a^4+q^4`. Thus
+
+\[
+\log r_S(1+X^4)\le\log(a^4+q^4)
+\le4h(X)+\log2\le2E_h+\log2.
+\]
+
+The final inequality is exact and uniform for `B>=1`:
+`beta=(a^2+Bq^2)/q^2` is reduced and its numerator is at least
+`max(|a|,q)^2`. All point-algebra characters retain the same rational
+input, so `1+X^4>0` at every character. It is a polynomial with no new
+denominator, and needs no extra guard or free coordinate. A finite menu
+`{1, beta^2+T^2, 1+X^4}` consequently obeys the same numerical tables and
+nine-coordinate census. Simultaneous actual realization is still open.
+
+The independent checker verifies reducedness and the exact universal
+height inequality on rational fixtures and records the identity
+`2(a^2+Bq^2)^2-(a^4+q^4)=a^4+4Ba^2q^2+(2B^2-1)q^4`.
+

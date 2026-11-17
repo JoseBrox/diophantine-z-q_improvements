@@ -66,3 +66,14 @@ Web refs available to the parent after opening the sources: turn156view0, turn15
 Run `python checkpoints/independent_route_v56/negative_results/check_higher_kummer_sharing.py`; it writes `higher_kummer_sharing_certificate.json`. A separate Newton-polytope parity argument rules out a single rational common coefficient that would detect either independent input's odd pole uniformly. This argument also leaves open restricted actual-trace families.
 
 No rigorous nonexistence proof for the c=6 one-coordinate curve was obtained. Its bounded-search absences remain only computational evidence, and no rank is asserted.
+
+
+## 17 November: intrinsic one-coordinate obstructions
+
+The latest exact counterexample is in `negative_results/prepared_q0_sha_counterexample.tex` (compiled PDF), with `check_prepared_q0_sha_counterexample.py` and its JSON certificate. The prepared input d=112/225 has no rational point on y²=d((1−d)²−s⁴), although that curve is everywhere locally soluble. The proof gives a nonzero Cassels pairing on E_791, an exact rank-one certificate, and the complete abscissa-class image {±1,±791}, which excludes −7. The pairing was independently audited by both `single_cover_realization_v56` and `general_scalar_v56`. All primes, including3,5,17, are covered by explicit tangent-product identities. This is a prepared-input counterexample, not an asserted actual detector tuple.
+
+`adaptive_intrinsic_single_coordinate.tex` proves the all-input local-solubility theorem, all-prime pole soundness, identifies the Jacobian E'_(AC), and records a nonzero rational point at d=112/169. Its positive conditional statement requires vanishing of the relevant Sha[2] and positive rank; finite Sha alone is not sufficient. The counterexample proves that these sufficient hypotheses cannot be assumed uniformly.
+
+`negative_results/intrinsic_specialization_obstructions.tex` proves that any finite menu of rational functions s=R_j(d) fails on infinitely many prepared inputs. It includes the small local counterexample d=112/169 to s=1. The same file proves that the rank-one curves supplied by Burungale’s Theorem B represent only one positive abscissa square class in7Q_2², preventing two distinct prescribed prepared classes from sharing one such rank-one curve. The exact checker is `check_intrinsic_specialization_obstructions.py`.
+
+No21/9 claim follows. Adaptive relations s=s(d,v), in particular s=cv, remain separate routes; the fixed-menu theorem does not exclude them.

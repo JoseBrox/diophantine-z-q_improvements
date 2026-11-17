@@ -4,6 +4,7 @@
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{remark}[theorem]{Remark}
 \newcommand{\Q}{\mathbb Q}
+\newcommand{\Sha}{\operatorname{Sha}}
 \begin{document}
 \title{An everywhere locally soluble one-coordinate pole curve}
 \author{}\date{17 November 2026}\maketitle
@@ -67,21 +68,21 @@ Conversely an abscissa $x=-At^2\ne0$ determines $Y=z/(At)$. The quartic is the s
 \end{proof}
 
 \begin{remark}\label{rem:gap}
-Theorem~\ref{thm:local} places this cover in the relevant $2$-isogeny Selmer group. It does not make its class in $Section ha(E'_{AC})[2]$ vanish. Finiteness of that group is likewise insufficient. A sufficient additional hypothesis is $Section ha(E'_{AC})[2]=0$, together with positive Mordell--Weil rank to obtain infinitely many rational points and arbitrary finite guard avoidance. This is a precise extra hypothesis, not a consequence of ordinary abc and not an established uniform property of these twists.
+Theorem~\ref{thm:local} places this cover in the relevant $2$-isogeny Selmer group. It does not make its class in $\Sha(E'_{AC})[2]$ vanish. Finiteness of that group is likewise insufficient. A sufficient additional hypothesis is $\Sha(E'_{AC})[2]=0$, together with positive Mordell--Weil rank to obtain infinitely many rational points and arbitrary finite guard avoidance. This is a precise extra hypothesis, not a consequence of ordinary abc and not an established uniform property of these twists.
 \end{remark}
 
 \begin{proposition}\label{prop:conditional}
-Fix a prepared $d$. If $Section ha(E'_{AC})[2]=0$ and $E'_{AC}(\Q)$ has positive rank, then $C_d(\Q)$ is infinite. In particular, if $\mathcal A$ is a finite etale $\Q$-algebra containing a unit $d$ and a rational character sends $d$ to this prepared input, one may choose rational $s,y$ satisfying \eqref{eq:C} at that character and avoiding any specified finite set of guards whose norms are nonzero polynomials in $s$.
+Fix a prepared $d$. If $\Sha(E'_{AC})[2]=0$ and $E'_{AC}(\Q)$ has positive rank, then $C_d(\Q)$ is infinite. In particular, if $\mathcal A$ is a finite etale $\Q$-algebra containing a unit $d$ and a rational character sends $d$ to this prepared input, one may choose rational $s,y$ satisfying \eqref{eq:C} at that character and avoiding any specified finite set of guards whose norms are nonzero polynomials in $s$.
 \end{proposition}
 \begin{proof}
-The genus-one curve has a rational divisor class of degree two, so its torsor class is killed by two. It is everywhere locally soluble by Theorem~\ref{thm:local}; the asserted vanishing of $Section ha[2]$ therefore gives a rational point. The curve then becomes isomorphic to its positive-rank Jacobian and has infinitely many rational points. The degree-two function $s$ has finite fibres, so there are infinitely many rational values of $s$. A finite collection of nonzero norm polynomials excludes only finitely many such values.
+The genus-one curve has a rational divisor class of degree two, so its torsor class is killed by two. It is everywhere locally soluble by Theorem~\ref{thm:local}; the asserted vanishing of $\Sha[2]$ therefore gives a rational point. The curve then becomes isomorphic to its positive-rank Jacobian and has infinitely many rational points. The degree-two function $s$ has finite fibres, so there are infinitely many rational values of $s$. A finite collection of nonzero norm polynomials excludes only finitely many such values.
 \end{proof}
 
 For example the prepared input $d=112/169$ has the exact nonzero point
 \[
  s=\frac{57}{104},\qquad y=\frac{4389}{35152}.
 \]
-This verifies one input, and does not establish uniform rational solubility.
+This verifies one input. Uniform rational solubility is false: the separately proved prepared counterexample $d=112/225$ has no rational point, by an exact Cassels pairing on $E_{791}$. See \texttt{prepared\_q0\_sha\_counterexample.tex}.
 
 \section{Relation to the two-coordinate block}
 The intrinsic block is obtained from
@@ -89,7 +90,7 @@ The intrinsic block is obtained from
  p_0^2=d(1-e^2),\qquad
  q_0^2=d\bigl(s^4-e^2(1-d)^2\bigr).
 \]
-Setting $q_0=0$ and $e=\pm s^2/(1-d)$ yields \eqref{eq:C} with $y=(1-d)p_0$. The existing block's guard $q_0\ne0$ is not preserved by this specialization. Proposition~\ref{prop:sound} supplies a separate soundness proof for the replacement block; its quadratic root and guards must therefore be re-audited in the finite algebra. There is one free rational coordinate $s$ and one quadratic generator $y$. No uniform global realization, and hence no numerical improvement of the repository's bounds, is claimed.
+Setting $q_0=0$ and $e=\pm s^2/(1-d)$ yields \eqref{eq:C} with $y=(1-d)p_0$. The existing block's guard $q_0\ne0$ is not preserved by this specialization. Proposition~\ref{prop:sound} supplies a separate soundness proof for the replacement block; its quadratic root and guards must therefore be re-audited in the finite algebra. There is one free rational coordinate $s$ and one quadratic generator $y$. The counterexample $d=112/225$ excludes uniform global realization on all prepared inputs. No numerical improvement of the repository's bounds follows from this specialization.
 
 \begin{thebibliography}{9}
 \bibitem{XZ} M. Xiong and A. Zaharescu, \emph{Selmer groups and Tate--Shafarevich groups for the congruent number problem}, Comment. Math. Helv. 84 (2009), 21--56, Section 2.1. \url{https://doi.org/10.4171/CMH/151}
