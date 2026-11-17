@@ -92,7 +92,12 @@ def main(report_path):
         text = (ROOT/name).read_text()
         assert '$' not in text and r'\operatorname' not in text, name
     assert '232,094,337' in readme and '234,157,441' not in readme
-    assert 'data/results_20261117_v71.json' in readme
+    record_link = re.search(r'\[results JSON\]\((data/results_[^)]*\.json)\)', readme)
+    assert record_link
+    latest = json.loads((ROOT/record_link.group(1)).read_text())
+    latest_11 = next(row for row in latest['current_constructions']
+                     if row['id'] == 'ordinary_abc11')
+    assert latest_11 == ordinary
     assert 'docs/results_20261117_v71.md' in readme
     report = dict(schema='diophantine-exact-verification/v71', status='PASS',
         python=platform.python_version(), current_records='data/results_20261117_v71.json',

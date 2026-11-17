@@ -1,0 +1,61 @@
+{
+  "status": "PASS",
+  "scope": "Exact integer circuit construction; independent checks are in check.py",
+  "source_sha256": "efd9d7ea2d5e2560e280a69aec10771b0d8f6787eb541fec27cecb3749c21201",
+  "nodes": 6169,
+  "guards": 101,
+  "bounds": {
+    "total_variables": 25,
+    "point_blocks": 9,
+    "pole_quadratics": 2,
+    "full_rank": 1048576,
+    "guard_factors": 128,
+    "scalar_guard_degree_bound": 4696539189,
+    "scalar_guard_log2_l1_bound": 33152948791,
+    "separator_degree_bound": 170852,
+    "separator_operator_log2_norm_bound": 1690745,
+    "degree_before_input_factor": 4924857429000192,
+    "degree_bound": 4924857429000192,
+    "strict_degree_power_of_two": 53,
+    "separator_variable_degree_bound": 1048576,
+    "coefficient_log2_l1_bound": 34765159307149312,
+    "coefficient_height_double_power_exponent": 55,
+    "monomial_upper_bound": "70039422484645259138508942479083883687570143440669936936038274656291432200855845294091112282598968727371443069147967241765221189678580674651034611086150766703451114925675178355868384788605441929159653998984691587688319827312530185009822571477116833537993485991544448974612576784841030747780949805315500753928790364241553552609044473222412778241816183502405633",
+    "support_strict_power_of_two": 1193,
+    "integer_content": 1
+  },
+  "compiler_adjustments": {
+    "old_compiler_replacements": {
+      "weights[variable]=(2,2,4)[k]": "weights[variable]=(2,2,4 if block['name'] in ('A','S','T','Z') else 3)[k]",
+      "logs[variable]=(4,4,6)[k]": "logs[variable]=(4,4,7)[k]",
+      "b=4**p;n=b*2**s": "b=4**p;n=b*2**s\n    point_basis_weight=sum(4 if block['name'] in ('A','S','T','Z') else 3 for block in blocks[:p])",
+      "+4*p": "+point_basis_weight",
+      "point_basis_maximum_weight=4*p": "point_basis_maximum_weight=point_basis_weight",
+      "D_l=234*p": "D_l=242*p",
+      "+6*p": "+7*p",
+      "point_basis_maximum_log2_scale=6*p": "point_basis_maximum_log2_scale=7*p"
+    },
+    "subalgebra_replacements": {
+      "degree=8, operator_log2_norm=11,": "degree=(8 if point['name'] in ('A','S','T','Z') else 6), operator_log2_norm=11,",
+      "root_weight=4, root_operator_log2_norm=6)": "root_weight=(4 if point['name'] in ('A','S','T','Z') else 3), root_operator_log2_norm=7)",
+      "degree=12, operator_log2_norm=20,": "degree=(12 if point['name'] in ('A','S','T','Z') else 9), operator_log2_norm=20,",
+      "root_weight=6, root_operator_log2_norm=12)": "root_weight=(6 if point['name'] in ('A','S','T','Z') else 5), root_operator_log2_norm=12)"
+    },
+    "point_basis_scales": [
+      1,
+      16,
+      16,
+      80
+    ]
+  },
+  "family_parameter": {
+    "name": "L",
+    "value": 3,
+    "quantified": false,
+    "sufficient_threshold_exists": true,
+    "effective_threshold_known": false,
+    "selected_member_certified_to_define_Z": false
+  },
+  "coefficient_scope": "The numerical coefficient bound is for the specified fixed L; no numerical L is certified to exceed the sufficient defining threshold.",
+  "general21_realization_claimed": false
+}

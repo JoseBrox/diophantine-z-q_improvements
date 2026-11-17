@@ -1,0 +1,195 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,booktabs,microtype,hyperref}
+\usepackage[margin=27mm]{geometry}
+\setlength{\emergencystretch}{2em}
+\newcommand{\Q}{\mathbf Q}\newcommand{\Z}{\mathbf Z}
+\newcommand{\N}{\operatorname{N}}\newcommand{\Tr}{\operatorname{Tr}}
+\newtheorem{theorem}{Theorem}\newtheorem{lemma}[theorem]{Lemma}
+\title{Full auxiliary point charts for the general twenty-five-variable source}
+\author{}\date{17 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+The five auxiliary points of the general source may range over all
+guarded affine points of the elliptic curve. The four root points
+retain integer indices. The scalar valuation estimates and both
+comparison precisions are preserved. Cubic auxiliary charts give a
+complete twenty-five-variable specification of degree at most
+$4924857429000192$, under the retained arithmetic premises. The
+corresponding twenty-one-variable actual-trace source has a larger
+witness space, while its simultaneous rational realization remains
+unproved.
+\end{abstract}
+
+\section{The point roles}
+Retain the general source and all its arithmetic premises
+\cite{General,Unit,Terminal}. Thus
+\[
+ K=\Q(\sqrt2),\qquad E:y^2=x^3-(11-6\sqrt2)x,
+ \qquad 2E(K)=\Z P,
+\]
+with the specified point $P$. Its four root points
+$Q_i=[n_i]P$, for $1\le i\le4$, keep their original point charts.
+Write $S=Q_2$ and $a=n_2$. The other roles are $H,U_1,\ldots,U_4$.
+For each of these five points use
+\[
+ x=h_0+h_1\sqrt2,\qquad y=j,\qquad
+ j^2=x^3-(11-6\sqrt2)x.
+\]
+Keep every original affine point, difference and rational denominator
+guard. The auxiliary ordinate guard makes its cubic radicand and
+both quadratic stages of its rank-four point algebra units.
+The chart and all-character transfer statements of \cite{FullAux}
+apply independently to these five blocks.
+
+For some $h,j_1,\ldots,j_4\in\tfrac12\Z$ one has
+\[
+ 2H=[2h]P,\qquad 2U_i=[2j_i]P.
+\]
+At every retained odd prime these labels are integral. The point
+guards exclude $h=0,1$ and $j_i=0,n_i$ whenever the relevant
+formal ratios occur.
+
+\section{Local divisibilities}
+\begin{lemma}\label{lem:local}
+The scalar-odd, mixed-extraction and integer-residual divisibility
+lemmas of the general source remain valid with the enlarged
+auxiliary charts.
+\end{lemma}
+\begin{proof}
+The scalar functions are the two rational components of each of
+\[
+ f(H),\qquad f(S-P),\qquad \zeta(S-P)/\zeta(H).
+\]
+Their valuation extraction uses only the displayed rational
+functions, so is unchanged. When the first four components are
+positive, $H$ and $S-P$ are in the formal group at each place
+above the selected prime. The doubled group identity is
+\[
+ [2h](S-P)=[a-1](2H).
+\]
+The extended elliptic logarithm kills torsion. Since two is a
+local unit and $h\ne0$, this gives
+\[
+ v\!\left(\frac{\zeta(S-P)}{\zeta(H)}\right)
+       =v_p\!\left(\frac{a-1}{h}\right).
+\]
+Here the equality of valuations follows from the formal-logarithm
+isometry. The inequality $v_p(h)\ge0$ therefore gives exactly the
+source's lower bound for $v_p(a-1)$. In particular the fixed-prime
+consequence $|a-1|\ge\ell^{2L+1}$ is retained.
+
+For a comparison extraction, the exact logarithmic ratios are
+\[
+ \frac{j_i}{h},\qquad\frac{j_i-n_i}{h-1}.
+\]
+One of $h,h-1$ is a local unit. Therefore one ratio is integral,
+and the paired comparison makes the other integral. The fourth-
+order logarithmic approximation has the same absolute error as in
+the source. With $d_1=1$ and $d_2=d_3=d_4=3$, the paired tests
+give, modulo $p^{d_i}$,
+\[
+ L_i h\equiv j_i,\qquad
+ L_i(h-1)\equiv j_i-n_i.
+\]
+Subtracting yields $L_i\equiv n_i\pmod{p^{d_i}}$.
+The four $n_i$ are still integers. Hence the input and Lucas
+residuals, their integer divisibilities, and the alternative
+$p^3\mid(a-1)$ are precisely those of the original source.
+\end{proof}
+
+\begin{theorem}\label{thm:main}
+Under the arithmetic premises of the general source, there is a
+computable family of integer polynomials in twenty-five variables,
+including the input, whose input projection is exactly $\Z$ for
+every sufficiently large fixed odd exponent $L$. Their degrees
+are at most $4924857429000192<2^{53}$, their support sizes are
+strictly below $2^{1193}$, and their integer content is one.
+The sufficient exponent remains ineffective.
+\end{theorem}
+\begin{proof}
+Lemma \ref{lem:local} supplies all local divisibilities used in
+the source's scalar and aggregate height arguments. Those arguments
+involve only the input and the four integer root indices. Their
+inequalities and strict exponents are unchanged, so they prove
+soundness for every sufficiently large fixed odd $L$.
+
+Every original complete witness remains represented. For each
+auxiliary chart $x=g^2$, $y=gk$, substitute the new retained value
+$h=g^2$ and new finite root $j=gk$. Since $g$ is a unit, this
+identifies the old and new point algebras at all geometric
+characters. It preserves the scalar functions, comparisons,
+contact functions and pole inputs. The new ordinate and radicand
+guards hold on every original prepared character. The retained
+pole parameters thus give completeness for every integer input.
+
+The point algebra still has rank $4^9$. Adjoining the two pole
+roots gives rank $4^9\cdot4=1048576$. The final pole root may
+vanish, while every preceding radicand remains a unit. The same
+one-coordinate encoder consequently gives $25$ total variables.
+Its degree and support bounds are computed below. Setting the
+encoder coordinate to zero gives one, so the integer content is one.
+\end{proof}
+
+The proof of Lemma \ref{lem:local} also applies to the corresponding
+two actual-trace tests of \cite{Trace}: their local implications supply the same
+comparison and scalar extractions. Keeping the four integer root
+points and allowing the five auxiliary points to range over $E(K)$
+therefore preserves soundness of the twenty-one-coordinate source.
+All its retained guards, including the nonterminal square-root
+guard, remain in force. Completeness still requires simultaneous
+rational realization of the two actual square equations; the
+twenty-five-variable pole witnesses do not imply that realization.
+
+\section{Finite specification and verification}
+Use the point basis weights and coefficient scales proved in
+\cite{FullAux}. The four root blocks have weights $(0,2,2,4)$;
+the five auxiliary blocks have weights $(0,2,2,3)$. The diagonal
+coefficient scales are $(1,16,16,80)$ in every block. The point
+quadratic stages have degrees $(8,12)$ for each root block and
+$(6,9)$ for each auxiliary block.
+
+The subalgebra norm and terminal-root construction gives
+\[
+ \deg G_*\le4696539189,\qquad \deg\Omega\le170852.
+\]
+Therefore
+\[
+ \deg\det(I-E_0G_*M_\Omega)
+ \le1048576(4696539189+170852+1)
+ =4924857429000192.
+\]
+The native integer circuit has $6169$ arithmetic nodes, $101$
+recorded guards and $128$ retained norm factors. The encoder degree
+is at most $1048576$. Its support bound is obtained by counting
+monomials below the total-degree bound with this encoder-degree
+restriction; it is strictly below $2^{1193}$.
+For the algebraic fixture $L=3$, the coefficient norm bound is
+$2^{34765159307149312}$. No assertion is made that $L=3$ is
+a sufficient defining exponent. For each specified odd $L$ the
+same finite compiler gives a coefficient bound.
+
+An independent iterative traversal verifies all retained guards,
+subalgebra supports, weighted degrees, coefficient bounds and
+quadratic-stage envelopes. It rejects deliberate changes to the
+degree and guard records. Exact polynomial arithmetic verifies
+the point multiplication table, primitive quartic and discriminant.
+Independent chord-and-tangent arithmetic verifies the native
+detector operations at $72$ finite characters of actual rational
+point charts, including half-integral auxiliary indices. These
+are finite circuit checks, not a proof of the external arithmetic
+inputs or of simultaneous twenty-one-variable realization.
+
+\begin{thebibliography}{9}\raggedright
+\bibitem{General} \emph{Twenty-five variables from combined scalar and comparison conditions},
+project source, \nolinkurl{papers/few_variables25/few_variables25_merged_20261110_v19.tex}.
+\bibitem{Unit} \emph{A single norm determinant for the 25- and 13-variable constructions},
+project source, \nolinkurl{papers/finite_algebra/unit_norm_20261114_v28.tex}.
+\bibitem{Terminal} \emph{A possibly vanishing terminal quadratic root},
+project source, \nolinkurl{papers/finite_algebra/terminal_quadratic_root_20261115_v40.tex}.
+\bibitem{FullAux} \emph{Unrestricted auxiliary points in the derivative detector},
+project source, \nolinkurl{papers/conditional_few_variables/full_auxiliary11_20261117_v71.tex}.
+\bibitem{Trace} \emph{A rational conic criterion using the actual detector trace},
+project source, \nolinkurl{papers/pole_parameters/trace_conic_criterion_20261117_v57.tex}.
+\end{thebibliography}
+\end{document}

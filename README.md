@@ -16,7 +16,7 @@ whose rational input projection is the integers, under the arithmetic premises s
 
 | Construction | Additional height hypothesis | Total variables | Degree | Coefficients and effectiveness |
 |:--|:--|--:|:--|:--|
-| [Fewest variables under inherited premises](papers/finite_algebra/terminal_quadratic_root_20261115_v40.tex) | None | **25** | `≤ 5,059,009,872,658,432 < 2⁵³` | Every sufficiently large fixed odd exponent; sufficient threshold ineffective. |
+| [Fewest variables under inherited premises](papers/few_variables25/full_auxiliary25_20261117_v72.tex) | None | **25** | `≤ 4,924,857,429,000,192 < 2⁵³` | Full auxiliary elliptic points; sufficient odd exponent ineffective. |
 | [Fewest quartic variables under inherited premises](papers/quartic/quartic195_20261116_v45.tex) | None | **195** | **4, exact** | 175 quadratic squares; **2,956 monomials**. Exact height below; defining threshold ineffective. |
 | [Fully specified general polynomial](papers/finite_algebra/terminal_quadratic_root_20261115_v40.tex) | None | **27** | `≤ 99,279,020,543,180,800 < 2⁵⁷` | `L=20483`; coefficient height `< 2^(2^70)`. |
 | [Fully specified quartic](papers/quartic/quartic229_compact_20261117_v68.tex) | None | **229** | **4, exact** | `N=15`; 207 quadratic squares; **3,312 monomials**; exact height `149³⁰` (217 bits); **74,007 bytes** fully expanded. |
@@ -47,7 +47,7 @@ The 68-variable quartic uses a three-field-coordinate unit reference and a six-f
 
 The coefficient-basis transformations and the 195-coordinate eliminations preserve their corresponding full rational solution sets. The complete 229-coordinate construction retains every copied detector guard and proves soundness and integer completeness for every `N ≥ 15`. The finite-algebra construction permits a zero final pole ordinate and proves soundness on that larger locus.
 
-Current specifications: [results JSON](data/results_20261117_v71.json), [proof and verification guide](docs/results_20261117_v71.md), and [research directions](docs/research_directions.md). The [compact 229-variable guide](docs/results_20261117_v68.md) and the [68-variable construction guide](docs/results_20261117_v65.md) retain the separate quartic specifications.
+Current specifications: [results JSON](data/results_20261117_v72.json), [proof and verification guide](docs/results_20261117_v72.md), and [research directions](docs/research_directions.md). The [eleven-variable guide](docs/results_20261117_v71.md), [compact 229-variable guide](docs/results_20261117_v68.md), and [68-variable construction guide](docs/results_20261117_v65.md) give the separate specifications. The [68-variable source records](data/results_20261117_v65.json) retain its arithmetic and coefficient data.
 
 The [physical detector scaling theorem](negative_results/papers/quartic/physical_detector_scaling_20261117_v67.tex) excludes two specified diagonal Laurent compilations of the revised general-quartic factors. The stronger obstruction uses just one literal reference equation and three field factors, with unbounded real scaling weights. Its [exact certificates and coordinate audit](docs/results_20261117_v67.md) distinguish the physical second weight from its stored ratio. Different factor pairings, reference equations and polynomial coordinate changes remain open; the construction counts above are unchanged.
 
@@ -159,6 +159,10 @@ are everywhere locally soluble. Under the retained simultaneous-twist theorem, i
 The theorem does not prescribe the good level as an existing detector coordinate or synchronize two actual detector inputs. Both free pole coordinates remain; no defining-variable count changes. The [proof and independent certificates](computation/pole_parameters/varying_levels_v61) distinguish the infinite existence theorem from the finite algebra and local checks.
 
 ## Finite algebras and the general polynomials
+
+The [full auxiliary-point theorem](papers/few_variables25/full_auxiliary25_20261117_v72.tex) gives the complete **25-variable** family of degree at most **4,924,857,429,000,192**. Four root points retain integral indices in `2E(K)`; the five auxiliary points range over guarded affine `E(K)` through cubic radicands. Half-integral auxiliary indices preserve both the scalar valuation argument and the required comparison congruences. The [integer circuit](computation/few_variables/full_auxiliary25_v72) has 6,169 arithmetic nodes and 101 recorded guards, with 128 retained subalgebra norm factors. Its coefficient bound is reconstructed for each fixed odd exponent. The stored `L=3` member is an algebraic fixture, not a certified defining member.
+
+The same enlargement preserves the sound **21-coordinate** two-detector source. Simultaneous rational realization at the two actual traces remains unproved. The complete 25-variable family retains its four free pole parameters and all whole-character guards.
 
 The [terminal quadratic extension theorem](papers/finite_algebra/terminal_quadratic_root_20261115_v40.tex) permits the last quadratic radicand to vanish. Its separator distinguishes all distinct geometric characters even on a nonreduced fiber. Galois descent recovers a rational character from a rational determinant root without assuming a simple eigenvalue. An elementary valuation proof permits the zero final ordinate in the pole equations. Two large guard norms can therefore be omitted.
 
