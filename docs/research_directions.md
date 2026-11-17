@@ -41,6 +41,8 @@ The [intrinsic pole block](../papers/pole_parameters/intrinsic_pole_20261117_v56
 
 The [precision revision](../papers/pole_parameters/precision_transfer_20261117_v56.tex) lowers scalar test orders to two while retaining reciprocal orders one. The eighth-order formal logarithm supports sixth-order comparisons without demanding incompatible deeper formal neighborhoods. It provides a complete 25-variable source, leaving the actual source-point coupling or pole-coordinate elimination as the count problem.
 
+The [smallest trace cubic](../papers/pole_parameters/small_trace_classes_20261117_v58.tex) now has a proved infinite-order section $(4,4)$ for every rational normalized weight. Its equation has four radicand monomials and coefficient height four. The required construction must couple its abscissa to the actual detector trace; a free point on this positive-rank curve does not meet that obligation.
+
 ## The 25-coordinate budget
 
 The [finite-algebra source](../papers/finite_algebra/unit_norm_20261114_v28.tex) has the following budget.

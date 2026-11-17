@@ -2,6 +2,19 @@
 
 ## Latest v58 results and independent audits
 
+### Smaller trace cubic: independent rank audit
+
+`small_cubic_rank_independent_audit_v58.md` passes the other agent's
+positive-rank theorem for `y^2=x^3-(w+4)x^2+4(w+1)x`, `P=(4,4)`,
+for every rational `0<w<=1/4`. The new checker uses direct tangent
+and chord addition over Q(w), without division recurrences. Reduced
+abscissa denominators for multiples8,10,12 have degrees30,48,70;
+their primitive square roots have leading coefficients1,5,3 and
+match the separate division-polynomial arrays exactly. The sole
+possible root1/5 is excluded modulo3. The primary Mazur theorem
+was reopened at Numdam. This proves positive rank of the free-trace
+cubic, not matching of the prescribed detector trace and not21/9.
+
 ### Signed mixed-power heights and optimal conditional criteria
 
 The canonical publication manuscript is now

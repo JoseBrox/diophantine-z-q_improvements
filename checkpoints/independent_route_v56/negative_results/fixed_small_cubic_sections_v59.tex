@@ -1,0 +1,174 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,booktabs,microtype}
+\usepackage[margin=26mm]{geometry}
+\usepackage[colorlinks=true]{hyperref}
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}[proposition]{Corollary}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\DeclareMathOperator{\Tr}{Tr}
+\title{Fixed multiples on the small trace cubic and actual detector contacts}
+\author{}\date{17 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+We compute the nodal specializations of all fixed multiples of the
+reference point on the small trace cubic. A finite menu of these
+sections and their two-torsion translates cannot realize the actual
+detector traces in the large-slope preparation. It also fails at every
+fresh contact outside an explicitly determined finite prime set.
+The statements do not exclude individual rational witnesses or
+indices varying with the source tuple.
+\end{abstract}
+
+\section{The nodal specialization}
+Consider
+\[
+ E_w:\ y^2=x\bigl(x^2-(w+4)x+4(w+1)\bigr),\qquad
+ P=(4,4),\quad T=(0,0),\quad V=x-2.
+\]
+For $m\ge1$ define the positive integers $a_m,b_m$ by
+\[
+ (3+2\sqrt2)^m=a_m+b_m\sqrt2.
+\]
+Thus $a_m^2-2b_m^2=1$, and
+\[
+ a_1=3,\quad b_1=2,\qquad
+ a_{m+1}=3a_m+4b_m,\quad b_{m+1}=2a_m+3b_m.
+\]
+Write $V_m(w)=x([m]P)-2$ and
+$V_{m,T}(w)=x([m]P+T)-2$.
+
+\begin{proposition}\label{prop:limits}
+For every nonzero fixed integer $m$, both rational functions are
+regular at $w=0$, and
+\[
+ V_m(0)=\frac4{a_{|m|}-1},\qquad
+ V_{m,T}(0)=-\frac4{a_{|m|}+1}.
+\]
+In particular $V_{\pm1}=2$ identically, whereas
+$0<V_m(0)\le1/4$ for $|m|\ge2$ and $V_{m,T}(0)<0$.
+The section $T$ itself has $V=-2$.
+\end{proposition}
+\begin{proof}
+At $w=0$ the curve is the nodal cubic
+\[
+                         y^2=x(x-2)^2.
+\]
+Its nonsingular affine locus is parametrized by
+\[
+ x=q^2,\qquad y=q(q^2-2).
+\]
+On this locus the chord law gives
+\[
+ q(R+S)=\frac{q(R)q(S)+2}{q(R)+q(S)}.
+\]
+Equivalently, over $\Q(\sqrt2)$ the coordinate
+$(q+\sqrt2)/(q-\sqrt2)$ is multiplicative. At $P$ it equals
+$3+2\sqrt2$. It follows that
+\[
+ q([m]P)=\frac{2b_m}{a_m-1},\qquad
+ x([m]P)=\frac{2(a_m+1)}{a_m-1},\qquad
+ y([m]P)=\frac{8b_m}{(a_m-1)^2}.
+\]
+All these points are nonsingular; hence the same group-law
+computation gives the regular specialization of the rational
+sections. The formula is unchanged in $x$ when $m$ is replaced by
+$-m$. Translation by $T$ sends $x$ to $4(w+1)/x$, so its
+specialization gives the second formula. Finally $a_1=3$,
+$a_2=17$, and $a_m$ is strictly increasing.
+\end{proof}
+
+\section{The actual preparation}
+For the conditional detector retain its actual tests $C_i$ and
+\[
+ F(t)=\frac{t(t+1)(2t+1)(3t+1)(4t+1)(5t+2)}{120},\qquad
+ w(t)=\frac{F(t)}{4(t-1)^8},
+\]
+\[
+ W=\prod_{i=1}^{6}\left(1+\frac{C_i^2}{F(t)}\right),
+ \qquad V_{\mathrm{act}}=\Tr_{\Q(\sqrt2)/\Q}(W^{-1}).
+\]
+The retained real preparation places the points in fixed compact
+neighborhoods on which all test functions are defined and bounded.
+Both embeddings have $F(t)>0$. Since $C_1=1/x(H)$ is nonzero,
+both real values of $W$ are strictly greater than one. Consequently
+\[
+ 0<V_{\mathrm{act}}<2,\qquad
+ w(t)\longrightarrow0,\qquad
+ V_{\mathrm{act}}\longrightarrow2\quad(t\longrightarrow+\infty),
+\]
+uniformly on these neighborhoods.
+
+\begin{corollary}\label{cor:tail}
+Fix a finite set of integer multiples of $P$, allowing translation
+by $T$. In the stated conditional preparation, for all sufficiently
+large $t$ none of their trace functions equals $V_{\mathrm{act}}$.
+The same holds for both arguments $t_j=a_j\lambda$, with the
+actual fixed positive scales $a_j$, as $\lambda\longrightarrow+\infty$.
+\end{corollary}
+\begin{proof}
+Every section in the finite set other than $\pm P$ has a limiting
+trace different from two by Proposition~\ref{prop:limits}.
+The exceptional sections $\pm P$ have trace exactly two and are
+excluded by the strict inequality $V_{\mathrm{act}}<2$.
+\end{proof}
+
+\begin{proposition}\label{prop:contact}
+Fix a finite set of multiples $[m]P$ with $|m|\ge2$ and of
+translates $[m]P+T$. There is a finite prime set $S_0$, determined
+by these indices, such that no corresponding trace equals an actual
+detector trace at a fresh contact $p\notin S_0$ where
+\[
+            w\in p\Z_p,\qquad V_{\mathrm{act}}\equiv1
+                    \ \text{or}\ 2\pmod p.
+\]
+For a section $[m]P$, it suffices to exclude the prime divisors of
+$2(a_{|m|}-1)(a_{|m|}-3)(a_{|m|}-5)$.
+For $[m]P+T$, it suffices to exclude the prime divisors of
+$2(a_{|m|}+1)(a_{|m|}+3)(a_{|m|}+5)$; the section $T$ itself
+requires only a fixed finite exclusion.
+\end{proposition}
+\begin{proof}
+Outside two the special fiber at $w\equiv0$ is nodal, and $P,T$
+are in its nonsingular locus. The same chord-law calculation
+reduces the multiple to the fractions in
+Proposition~\ref{prop:limits}, whenever the displayed denominators
+are units. For the first fraction, its differences from one and
+two have numerators $5-a_{|m|}$ and $2(3-a_{|m|})$.
+For the translated fraction the corresponding numerators are
+$-(a_{|m|}+5)$ and $-2(a_{|m|}+3)$. The exclusions make these
+differences units. The original section $T$ has trace $-2$ and
+is treated directly.
+\end{proof}
+
+For example, the duplication trace is
+\[
+                  V_2(w)=\frac{w^2-6w+1}{4}.
+\]
+It can have residue one or two at a contact only at the exceptional
+odd primes three or seven. The original prime-selection theorem
+permits arbitrary finite avoidance, so this section cannot match
+the original prepared contact family.
+
+\section{What a varying index would require}
+At a split odd prime choose $\sqrt2\in\mathbb F_p$ and put
+$r=3+2\sqrt2$. Whenever $r^m\ne1$, the same specialization gives
+\[
+ V_m(0)=\frac{8r^m}{(r^m-1)^2}.
+\]
+Thus trace residue two is equivalent to
+\[
+                    m\equiv\pm1\pmod{\operatorname{ord}(r)}.
+\]
+If also $\sqrt3\in\mathbb F_p$, trace residue one is equivalent to
+\[
+               r^m\in\{5+2\sqrt6,\,5-2\sqrt6\}.
+\]
+These are necessary residue conditions, not rational realization
+theorems. They allow indices depending on the selected primes;
+neither proposition excludes such indices or individual rational
+points on the actual incidence cover. Introducing an unrestricted
+index or another free elliptic point would require a separate
+coordinate count. The present results preserve the established
+counts and establish no smaller defining polynomial.
+\end{document}

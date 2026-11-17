@@ -1,0 +1,67 @@
+\section{Positive rank throughout the normalized weight range}
+
+\begin{proposition}\label{prop:smallcubic-rank}
+For every rational $w$ with $0<w\le1/4$, the point $P=(4,4)$
+has infinite order on
+\[
+ E_w:\quad y^2=x\bigl(x^2-(w+4)x+4(w+1)\bigr).
+\]
+In particular, $E_w(\Q)$ has positive rank.
+\end{proposition}
+\begin{proof}
+The discriminant is $256w(w-8)(w+1)^2$, which is nonzero in the
+stated range. The quadratic factor of the cubic has discriminant
+$w(w-8)<0$. Thus $(0,0)$ is the unique nonzero rational point of
+order two. Mazur's torsion theorem
+\cite[Introduction, Theorem~(8), p.~35]{Mazur1977} shows that the
+rational torsion subgroup is cyclic of order $2,4,6,8,10$, or $12$.
+If $P$ were torsion, its order would therefore divide one of
+$8,10,12$.
+
+Write $\Psi_n(w)=\psi_n(P)$ for the standard division polynomials
+evaluated at $P$, with $\Psi_1=1$ and $\Psi_2=8$. Their initial
+values and recurrences are
+\begin{align*}
+ \Psi_3&=-16(w-7)(w+1),\\
+ \Psi_4&=1024(w-3)(w^2-8w-1),\\
+ \Psi_{2m+1}&=\Psi_{m+2}\Psi_m^3-
+                     \Psi_{m-1}\Psi_{m+1}^3,\\
+ 8\Psi_{2m}&=\Psi_m\bigl(\Psi_{m+2}\Psi_{m-1}^2-
+                     \Psi_{m-2}\Psi_{m+1}^2\bigr).
+\end{align*}
+The recurrences give the following exact primitive data. Here
+$c_n$ is the positive content of $\Psi_n$ and $Q_n=\Psi_n/c_n$.
+\begin{center}
+\begin{tabular}{rrrr}\toprule
+$n$&$c_n$&$\deg Q_n$&Leading coefficient of $Q_n$\\\midrule
+8&$2^{35}$&15&1\\
+10&$2^{51}$&24&5\\
+12&$2^{74}$&35&3\\\bottomrule
+\end{tabular}
+\end{center}
+All coefficient arrays and their contents are obtained by integer
+arithmetic from the displayed recurrences.
+
+By the rational-root theorem, a rational zero of $Q_8$ is an
+integer, whereas a rational zero of $Q_{12}$ has reduced denominator
+dividing three. Neither polynomial has a rational zero in
+$(0,1/4]$. A rational zero of $Q_{10}$ in this interval could only
+be $1/5$. Reduction modulo three excludes that value: at $w=2$,
+the initial values and recurrences give
+\[
+ (\Psi_2,\Psi_3,\Psi_4,\Psi_5,\Psi_7,\Psi_{10})
+                    \equiv(2,0,1,2,1,1)\pmod3.
+\]
+Since $1/5\equiv2\pmod3$ and $2^{51}\equiv2\pmod3$, it follows
+that $Q_{10}(1/5)\equiv2\pmod3$. Consequently none of
+$\psi_8(P),\psi_{10}(P),\psi_{12}(P)$ vanishes. This contradicts
+every possible torsion order and proves the proposition.
+\end{proof}
+
+The proposition supplies positive rank for each fixed normalized
+weight. Realization of the original detector trace
+$V=\Tr_{K/\Q}(W^{-1})$ still requires a rational point whose
+abscissa is precisely $V+2$; positive rank alone does not prescribe
+that abscissa. Thus this result does not establish the simultaneous
+trace realization required for the proposed $21$- and $9$-variable
+constructions.

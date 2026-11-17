@@ -1,0 +1,20 @@
+PROVED CHECKPOINT: For every rational 0 < w <= 1/4, the point P=(4,4)
+has infinite order on y^2=x*(x^2-(w+4)*x+4*(w+1)).
+
+The discriminant is 256*w*(w-8)*(w+1)^2. The remaining 2-torsion
+quadratic has discriminant w*(w-8)<0, so the rational torsion group
+is cyclic. By Mazur, a torsion P would have order dividing 8, 10 or 12.
+
+After dividing psi_n(P) by its positive integer content, the primitive
+division polynomials Q_8,Q_10,Q_12 have (degree,leading coefficient)
+(15,1),(24,5),(35,3), and contents 2^35,2^51,2^74 respectively.
+The rational-root theorem excludes Q_8 and Q_12 roots in (0,1/4].
+The only possible Q_10 root there is 1/5, but Q_10(1/5)=2 modulo 3.
+Hence P has infinite order throughout the required range.
+
+Exact coefficient arrays are saved in small_cubic_rank_v58_coefficients.json.
+The standard-library checker is check_small_cubic_rank_v58.py.
+Its exact output is small_cubic_rank_v58_certificate.json.
+
+SCOPE: This proves positive rank of the free-trace cubic, not realization
+of the actual prescribed detector traces and not a 21/9 variable bound.
