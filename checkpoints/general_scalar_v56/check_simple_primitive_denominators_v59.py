@@ -70,24 +70,31 @@ def reduce_point(P, p):
 
 
 def main():
-    kappa = F(16, 15)
+    kappa = F(4, 3)
     old_support = F(1, 4)+F(1, 9)+F(1, 25)+F(1, 49)+F(1, 14)
-    assert 8/kappa-7 == F(1, 2)
+    assert 2/kappa-1 == F(1, 2)
     assert old_support == F(21739, 44100)
     assert F(1, 2)-old_support == F(311, 44100)
 
-    # A standard nonintegral rational point on E_5; P is its double.
+    assert 2/(1+old_support) == F(88200, 65839)
+    assert 2/F(121, 100)-1 == F(79, 121)
+
+    # A standard nonintegral rational point on E_5. Q=2R and P=4R.
     R = (F(25, 4), F(75, 8))
     assert R[1]**2 == R[0]**3-25*R[0]
-    P = add(R, R)
-    assert P == (F(1681, 144), F(-62279, 1728))
+    Q = add(R, R)
+    assert Q == (F(1681, 144), F(-62279, 1728))
+    P = add(Q, Q)
     fixtures = []
     points = []
-    Q = None
+    nQ = None
+    nP = None
     for n in range(1, 13):
-        Q = add(Q, P)
-        points.append(Q)
-        x, y = Q
+        nQ = add(nQ, Q)
+        nP = add(nP, P)
+        assert nP == add(nQ, nQ)
+        points.append(nP)
+        x, y = nQ
         assert y*y == x*x*x-25*x
         A, B = isqrt(x.numerator), isqrt(x.denominator)
         assert A*A == x.numerator and B*B == x.denominator
@@ -101,7 +108,27 @@ def main():
         assert g == gcd(A**4, 25) and g <= 25
         assert gcd(C*C//g, 25*B**4//g) == 1
         assert C*C//g+25*B**4//g == A**4//g
-        fixtures.append({"n": n, "A": str(A), "B": str(B), "C": str(C), "g": g})
+        numerator = A**4+25*B**4
+        denominator = 2*abs(A*B*C)
+        root_double = F(numerator, denominator)
+        assert root_double**2 == nP[0]
+        common = gcd(numerator, denominator)
+        rem = common
+        for p in (2, 5):
+            while rem % p == 0:
+                rem //= p
+        assert rem == 1
+        for D1, D2 in ((A, B), (A, C), (B, C)):
+            rem = gcd(D1, D2)
+            for p in (2, 5):
+                while rem % p == 0:
+                    rem //= p
+            assert rem == 1
+        fixtures.append({"n": n, "A_Q": str(A), "B_Q": str(B),
+                         "C_Q": str(C), "g": g,
+                         "A": str(root_double.numerator),
+                         "B": str(root_double.denominator),
+                         "duplication_gcd": str(common)})
 
     # An independently computed finite-field order for each good small prime
     # tests the reduction-order equivalence, not just the recurrence itself.
@@ -124,6 +151,9 @@ def main():
             n, B = f["n"], int(f["B"])
             assert (B % p == 0) == (n % order == 0)
             assert (reduce_point(point, p) is None) == (n % order == 0)
+            if B % p == 0:
+                product = int(f["A_Q"])*int(f["B_Q"])*int(f["C_Q"])
+                assert val(B, p) == val(product, p)
             reduction_checks += 1
             if B % p == 0 and order < n:
                 assert any(int(fixtures[n//ell-1]["B"]) % p == 0
@@ -137,11 +167,14 @@ def main():
         "status": "PASS",
         "scope": "Exact constants and finite elliptic arithmetic fixtures; the asymptotic theorem is conditional on weak abc and proved in the manuscript.",
         "kappa": str(kappa),
-        "simple_support_coefficient": str(8/kappa-7),
+        "simple_support_coefficient": str(2/kappa-1),
+        "general_kappa_upper_endpoint": str(2/(1+old_support)),
+        "coefficient_at_121_over_100": str(2/F(121, 100)-1),
         "old_support_upper_bound": str(old_support),
         "strict_gap": str(F(1, 2)-old_support),
         "curve": "y^2=x^3-25x",
         "point_P": [str(v) for v in P],
+        "point_Q": [str(v) for v in Q],
         "good_primes_checked": len(good_primes),
         "reduction_order_checks": reduction_checks,
         "primitive_prime_fixtures": primitive_fixtures,

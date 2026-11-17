@@ -1,0 +1,244 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,microtype}
+\usepackage[margin=26mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\title{An intrinsic pole test for elliptic index divisibility}
+\author{}\date{17 November 2026}
+\begin{document}\maketitle
+
+\begin{abstract}
+For a fixed rational congruent-number curve, a reciprocal square
+abscissa supplies a balanced pole test at the odd denominator primes
+of an elliptic multiple. Under weak rational $abc$ with exponent
+$4/3$, every solution outside a fixed finite exceptional set forces
+divisibility of the two elliptic indices. Conversely, every nonzero
+integer ratio occurs for infinitely many index pairs satisfying the
+complete intrinsic-pole preparation. Adding a local logarithmic-ratio
+test preserves completeness but does not identify an external
+rational input with the index ratio.
+\end{abstract}
+
+\section{The source}
+
+Fix $d\in\Z_{>0}$ and
+\[
+                         E_d:y^2=x^3-d^2x.
+\]
+Let $P\in4E_d(\Q)$ have infinite order. Choose its sign and replace
+it by a fixed positive multiple so that it belongs to the formal group at two with
+parameter $\zeta(P)=-x(P)/y(P)$ of valuation at least two.
+Write
+\[
+              H=[h]P,\qquad U=[j]P,\qquad h,j\in\Z\setminus\{0\}.
+\]
+These index representations are hypotheses of the arithmetic statement.
+For a rank-one curve they may be enforced by restricting both points
+to a fixed multiple of $E_d(\Q)$. This restriction is a finite
+isogeny cover and introduces no further free point coordinate.
+
+Let $q_H\in\Q^\times$ satisfy $q_H^2=x(H)$. There is a positive
+choice $q_0=\sqrt{x(P)}\in\Q$. Choose a fixed positive rational
+$L$ with
+\[
+                  v_2(L)=2,\qquad v_7(L)=-1,
+\]
+and sufficiently large real absolute value, as specified below. Set
+$c=q_0L^2$ and define
+\begin{equation}\label{eq:weight}
+                       u=\frac c{q_H},\qquad w=\frac{u}{(1+u)^2}.
+\end{equation}
+Use the test $C_1=f(U)=1/x(U)$. Optionally, for an external rational
+input $X$, also use
+\[
+                 C_2=\frac{\zeta(U)}{\zeta(H)}-X.
+\]
+For either test list put
+\begin{equation}\label{eq:detector}
+ D_i=\frac{C_i^2}{1+uC_i^2},\qquad
+ W=\prod_i\left(1+\frac{D_i^2}{u}\right),\qquad
+ b=4wW^2,\qquad \eta=7b.
+\end{equation}
+Retain all nonzero denominators. Impose the intrinsic equation
+\begin{equation}\label{eq:pole}
+ Y^2=\eta(\eta+v^2)^2s^4
+             -\eta(\eta-v^2)^2(1-\eta)^2,
+                \qquad v,s,Y\in\Q.
+\end{equation}
+The intrinsic pole theorem \cite{Intrinsic} implies from this equation
+that $\eta$ has square reduced denominator.
+
+\section{Soundness}
+
+Let $S$ contain $2,7$, the bad reduction primes, and the numerator
+and denominator primes of $c$. Write
+\[
+       x([n]P)=A_n^2/B_n^2,
+       \qquad A_n,B_n>0,\quad\gcd(A_n,B_n)=1.
+\]
+Under weak rational $abc$ with exponent $4/3$, the simple
+primitive-prime theorem of \cite{Simple} gives $n_0$ such that
+$B_n$ has a primitive prime of valuation one outside $S$ whenever
+$n\ge n_0$.
+
+\begin{theorem}\label{thm:sound}
+Assume weak rational $abc$ with exponent $4/3$ and
+$|h|\ge n_0$. Every rational solution of \eqref{eq:pole}
+in the guarded source satisfies $h\mid j$. The assertion remains
+valid when any additional rational tests are included in
+\eqref{eq:detector}.
+\end{theorem}
+\begin{proof}
+Choose a simple primitive prime $p\notin S$ of $B_{|h|}$.
+Since $c$ is a unit there, $v_p(u)=1$.
+More generally, when $\nu=v_p(u)$ is odd,
+\[
+                  v_p(D_i)=\max(2v_p(C_i),-\nu).
+\]
+The two terms of $1+uC_i^2$ have distinct valuations, which proves
+this formula, with the convention $v_p(0)=+\infty$.
+Every factor $1+D_i^2/u$ has valuation at most zero: its two terms
+have distinct valuations because $2v_p(D_i)-\nu$ is odd.
+
+If $U$ is not formal at $p$, then $v_p(C_1)\le0$, so
+$v_p(D_1)\le0$ and $v_p(W)\le-\nu=-1$. Thus
+\[
+                  v_p(b)=\nu+2v_p(W)<0
+\]
+is odd. The same is true of $7b$ because $p\ne7$, contradicting
+\eqref{eq:pole}. Therefore $U$ is formal at $p$.
+The order of $\widetilde P$ modulo $p$ is exactly $|h|$ by
+primitivity. Since $[j]\widetilde P=O$, it follows that $h\mid j$.
+\end{proof}
+
+The finite restriction $|h|\ge n_0$ requires no free coordinate.
+After the cyclic subgroup has been imposed, it can be expressed by
+the nonzero guard
+\[
+                 \prod_{1\le r<n_0}\bigl(x(H)-x([r]P)\bigr)\ne0.
+\]
+The affine point guards already exclude $h=0$.
+
+\section{Completeness for every integer ratio}
+
+\begin{theorem}\label{thm:complete}
+The fixed constant $c$ may be chosen so that the following holds.
+For every nonzero integer $m$, there are infinitely many nonzero
+integers $h$ with $|h|\ge n_0$ for which, setting $j=mh$ and
+choosing $q_H>0$, the input $b$ in \eqref{eq:detector} satisfies
+\[
+ 0<b<1/7,\qquad b\in\Q_2^{\times2},\qquad v_2(b)\ge4,
+ \qquad v_7(b)\ge0,
+\]
+and has square reduced denominator. This also holds with the
+optional test $C_2$ when $X=m$. Consequently the intrinsic
+theorem supplies rational solutions of \eqref{eq:pole}.
+\end{theorem}
+\begin{proof}
+Choose $L$ as above with $L^2>100$. Take $h$ in a sufficiently
+small fixed congruence neighborhood of one so that $H=[h]P$
+is close to $P$ at every prime in $S$. Choose the rational
+square-root branch $q_H$ close to $q_0$ at these primes. This
+branch is coherent: since $P=2R$ for some fixed rational point
+$R$, the rational function
+\[
+        q([h]R)=\frac{x([h]R)^2+d^2}{2y([h]R)}
+\]
+is a square root of $x([h]P)$; changing the initial sign of $R$
+if necessary makes its value $q_0>0$ at $h=1$. Congruences
+may also be imposed on $[h]R$.
+At the odd primes of $S$, closeness ensures
+$v_p(u)=v_p(L^2)$, which is even. At two and seven, refine it
+so that $q_0/q_H$ is a local square. Thus
+\[
+ u\in\Q_2^{\times2},\quad v_2(u)=4,\qquad
+ u\in\Q_7^{\times2},\quad v_7(u)=-2.
+\]
+
+The formal group at two gives $v_2(\zeta(H))\ge2$ and
+$v_2(\zeta(U))\ge v_2(\zeta(H))$, since $U=[m]H$ and
+$m\in\Z$. Hence $v_2(C_1)\ge4$. Also the integral formal
+multiplication series gives
+\[
+       \frac{\zeta([m]H)}{\zeta(H)}-m
+                      \in\zeta(H)\Z_2,
+\]
+so $v_2(C_2)\ge2$ when this test is present. Therefore all
+factors of $W$ are two-adic units congruent to one modulo two.
+It follows that $b$ is a two-adic square and $v_2(b)=6$.
+
+At seven the terms of $1+uC_i^2$ cannot cancel: in the
+equal-valuation case $uC_i^2$ has square residue, whereas
+$-1$ is not a square modulo seven. Thus the displayed valuation
+formula for $D_i$ remains valid even though $v_7(u)=-2$.
+It gives $v_7(D_i)\ge2$, so $W\equiv1\pmod7$ and $v_7(b)=2$.
+
+Consider any other prime. If $v_p(u)$ is even, then
+$v_p(b)=v_p(4)+v_p(u)-2v_p(1+u)+2v_p(W)$ is even.
+If $\nu=v_p(u)<0$ is odd, the balanced valuation formula gives
+$v_p(D_i^2/u)\ge-3\nu>0$, hence $W\equiv1\pmod p$ and
+$v_p(b)=-\nu>0$.
+It remains to consider odd positive $\nu$ outside $S$.
+Here $H$ is formal and $v_p(\zeta(H))=\nu$, while $U=[m]H$.
+Thus $v_p(C_1)\ge2\nu$ and, if present,
+$v_p(C_2)\ge\nu$ by the same integral formal multiplication
+series. Every factor of $W$ is a unit congruent to one, and
+$v_p(b)=\nu>0$. This proves square denominator at all primes.
+
+Finally take $[h]R$ in a sufficiently small real neighborhood
+of $R$. Then $q_H>0$ and $u$ remains larger than $50$.
+All tests are real, and
+\[
+       0\le D_i<1/u,\qquad
+       1\le W\le(1+u^{-3})^2.
+\]
+Consequently $0<b\le4u^{-1}(1+u^{-3})^4<1/7$.
+Every fixed arithmetic progression of multiples of a nontorsion
+real elliptic point is dense in the appropriate connected real
+component. Therefore this real neighborhood is reached for
+infinitely many arbitrarily large $h$ in the specified congruence
+class. The nonzero affine guards exclude at most finitely many
+of these indices. Apply the intrinsic completeness theorem to
+$\eta=7b$.
+\end{proof}
+
+\section{Scope of the index test}
+
+On a rational elliptic curve each point uses one retained rational
+abscissa coordinate and finite algebraic roots. The pole contributes
+two free parameters, while its ordinate is a finite quadratic root.
+Finite isogeny covers and the displayed nonzero guards introduce no
+additional free parameters in the finite-algebra encoder.
+An eventual complete polynomial construction must implement this
+finite isogeny cover explicitly; no complete polynomial census is
+claimed here.
+
+For the square-abscissa chart, retain $q_H,q_U$ freely and use
+the monic roots $l_H^2=q_H^4-d^2$, $l_U^2=q_U^4-d^2$, with
+$y(H)=q_Hl_H$ and $y(U)=q_Ul_U$. At the prepared rational
+values all these point characters are real, while $u=c/q_H>50$
+is independent of their signs. Thus every balanced denominator,
+$W$, and $b$ is nonzero at every point character. A finite isogeny
+cover does not change the images of these point characters.
+The intrinsic density theorem allows the pole parameters to avoid
+the radicand and division guards simultaneously at every character.
+
+The theorem establishes an integer \emph{index ratio}. With the
+optional comparison test, it supplies local congruences between
+$X$ and $j/h$. It does not prove $X=j/h$. For fixed $H,U$, the
+weight is independent of $X$, and the prepared source persists
+under sufficiently small rational perturbations of $X$ at the
+real place and finitely many finite places. Thus noninteger
+external inputs can still occur. No defining-variable bound for
+$\Z\subset\Q$ follows from this source alone.
+
+\begin{thebibliography}{9}
+\bibitem{Simple}\emph{Simple primitive denominator primes under weak
+$abc$}, companion paper, \nolinkurl{simple_primitive_denominators_v59.tex}.
+\bibitem{Intrinsic}\emph{A two-coordinate pole test of coefficient
+height four}, companion paper, \nolinkurl{intrinsic_pole_20261117_v56.tex}.
+\end{thebibliography}
+\end{document}

@@ -1,0 +1,202 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,microtype}
+\usepackage[margin=26mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\title{Arbitrary contact multiplicity in the elliptic index pole test}
+\author{}\date{17 November 2026}
+\begin{document}\maketitle
+
+\begin{abstract}
+Fixed truncations of the elliptic formal logarithm amplify the
+congruences supplied by the index-divisibility pole test. Every
+simple denominator prime can be required to divide the input-index
+error to any prescribed multiplicity, without adding a free
+coordinate. Completeness for every integer index ratio is preserved.
+The resulting height inequality identifies a precise remaining
+growth condition needed to determine the external rational input.
+No existential encoding of that growth condition is asserted.
+\end{abstract}
+
+\section{The amplified detector}
+
+Use the notation and cyclic point source of \cite{Index} on
+$E_d:y^2=x^3-d^2x$, with $P\in4E_d(\Q)$,
+$H=[h]P$, $U=[j]P$, and $q_H^2=x(H)$.
+Fix an integer $T\ge1$ and put $k=8T-7$.
+Let $\Lambda_T(Z)\in\Q[Z]$ be the degree-at-most-$T$ truncation
+of the formal logarithm in the parameter $\zeta=-x/y$, normalized
+to begin with $Z$. In particular $\Lambda_1(Z)=Z$.
+For this curve the coefficients are explicitly
+\[
+ \log_E(Z)=\sum_{r\ge0}
+      \frac{(-1)^r\binom{2r}{r}d^{2r}}{4r+1}Z^{4r+1}.
+\]
+Indeed, with $w=-1/y$ the curve equation is
+$w=Z^3-d^2Zw^2$, and its invariant differential is
+$dZ/\sqrt{1+4d^2Z^4}$.
+Replace the weight and test list by
+\[
+ u=\left(\frac c{q_H}\right)^k,\qquad
+ C_1=f(U)^T,\qquad
+ C_2=\frac{\Lambda_T(\zeta(U))}{\Lambda_T(\zeta(H))}-X.
+\]
+Keep the balanced definitions
+\[
+ D_i=\frac{C_i^2}{1+uC_i^2},\quad
+ W=\prod_{i=1}^2\left(1+\frac{D_i^2}{u}\right),\quad
+ b=\frac{4uW^2}{(1+u)^2},\quad\eta=7b,
+\]
+and the intrinsic pole equation
+\[
+ Y^2=\eta(\eta+v^2)^2s^4
+              -\eta(\eta-v^2)^2(1-\eta)^2.
+\]
+Retain the previous guards and also
+$\Lambda_T(\zeta(H))\ne0$. The finite exceptional set $S$
+contains $2,7$, the bad reduction and coefficient primes, and
+every prime at most $T+1$.
+
+\begin{lemma}\label{lem:truncation}
+At every good prime $p\notin S$, if $H$ is formal with
+$v_p(\zeta(H))=e>0$ and $U=[m]H$ for $m\in\Z\setminus\{0\}$,
+then
+\[
+ v_p\left(
+ \frac{\Lambda_T(\zeta(U))}{\Lambda_T(\zeta(H))}-m
+ \right)\ge Te.
+\]
+\end{lemma}
+\begin{proof}
+The invariant differential has integral formal coefficients, so
+the coefficient of $Z^r$ in its logarithm has valuation at least
+$-v_p(r)$. For $r\ge T+1$ and $p>T+1$ one has
+$r-1-v_p(r)\ge T$: this is immediate when $p\nmid r$, while
+$p^a-1-a\ge T$ when $a=v_p(r)\ge1$.
+Consequently
+\[
+ \frac{\Lambda_T(z)}{\log_E(z)}\in1+p^{Te}\Z_p
+                         \qquad(v_p(z)=e).
+\]
+Both the logarithm and its truncation have valuation $e$.
+Now use $\log_E(U)=m\log_E(H)$ and
+$v_p(\zeta(U))\ge e$. Multiplication by the integral number
+$m$ does not decrease the stated error valuation.
+\end{proof}
+
+\begin{theorem}\label{thm:amplified}
+Assume weak rational $abc$ with exponent $4/3$, and exclude the
+same finite exceptional set of indices as in \cite{Index}, enlarged
+for the present $S$. Every rational pole solution satisfies
+$h\mid j$. Set $m=j/h$.
+If $p\notin S$ satisfies $v_p(B_{|h|})=1$, then
+\[
+                              v_p(X-m)\ge T.
+\]
+For every nonzero integer $m$, there are infinitely many $h$
+with $j=mh$ and $X=m$ for which the complete intrinsic-pole
+preparation holds. Fixed further powers in the initial choice
+of $P$ suffice at two. The amplification introduces no new
+free parameter.
+\end{theorem}
+\begin{proof}
+At a simple primitive denominator prime of $H$, $v_p(u)=k$.
+If $U$ is not formal, then $v_p(C_1)\le0$. The same balanced
+valuation argument as in \cite{Index} gives a negative odd
+valuation of $b$, which is impossible. Thus $h\mid j$.
+
+At any simple denominator prime, not necessarily primitive,
+$v_p(u)=k$. Every factor of $W$ has valuation at most zero.
+If $v_p(D_2)\le k/4$, the second factor has negative valuation
+and
+\[
+ v_p(b)=k+2v_p(W)\le4v_p(D_2)-k<0;
+\]
+the last strict inequality follows because the left side of
+the preceding bound is odd. Hence $v_p(D_2)>k/4$.
+Its positivity implies $v_p(D_2)=2v_p(C_2)$, so
+\[
+                      v_p(C_2)>k/8=T-7/8,
+\]
+and the integral valuation is at least $T$.
+Lemma~\ref{lem:truncation} now gives $v_p(X-m)\ge T$.
+
+For completeness take $j=mh$ and $X=m$. At any positive odd
+denominator depth $e=v_p(q_H^{-1})$ outside $S$, one has
+$v_p(u)=ke$, $v_p(C_1)\ge2Te$ and $v_p(C_2)\ge Te$.
+The first factor of $W$ is a unit. The second has valuation
+at least $\min(0,(4T-k)e)$, and therefore
+\[
+ v_p(b)\ge\min(k,8T-k)e=\min(8T-7,7)e>0.
+\]
+At negative odd valuations of $u$, the balanced transformation
+makes $W$ a unit and $b$ has positive valuation. Even
+valuations of $u$ always give even valuations of $b$.
+
+At the fixed places choose $c=q_0L^2$ and the progression of $h$
+as in \cite{Index}. Then $u$ is a square at two and seven,
+with valuations $4k$ and $-2k$, respectively. The formal
+multiplication series and the fixed rational coefficients of
+$\Lambda_T$ show that
+$\Lambda_T(\zeta([m]H))/\Lambda_T(\zeta(H))-m$
+has valuation at least $v_2(\zeta(H))-O_T(1)$, uniformly for
+integer $m$. Choose the initial $P$ sufficiently deep in the
+two-adic formal group so that both tests have valuation greater
+than $2k$ there. Thus $W$ is a two-adic unit and
+$v_2(b)=2+4k\ge6$.
+At seven, the non-cancellation argument using the nonsquareness
+of $-1$ gives $W\equiv1\pmod7$ and $v_7(b)=2k$.
+The other fixed places have even valuation of $u$.
+
+Real preparation is unchanged: when $c/q_H>50$, also $u>50$,
+and $0\le D_i<1/u$ uniformly in both tests. Hence $0<b<1/7$.
+The logarithm guard excludes finitely many points, and the
+usual real density in a fixed arithmetic progression supplies
+infinitely many admissible $h$. The intrinsic theorem gives
+the rational pole witnesses and simultaneous norm-guard avoidance.
+\end{proof}
+
+\section{The exact remaining height condition}
+
+Write $H_H=h(q_H)$ and let $L_{h,S}$ be the product of the
+simple denominator primes of $H$ outside $S$. The refined
+primitive-denominator argument of \cite{Simple} gives
+\[
+ \log L_{h,S}\ge\left(\frac2\kappa-1\right)H_H-O(1),
+\]
+under a fixed weak exponent $\kappa$ in its stated range.
+If $X\ne m$, Theorem~\ref{thm:amplified} implies
+\begin{equation}\label{eq:remaining}
+ T\left(\frac2\kappa-1\right)H_H
+           \le h(X)+\log(1+|m|)+O_T(1).
+\end{equation}
+Indeed $L_{h,S}^T$ divides the reduced numerator of $X-m$,
+whose absolute value is at most
+$\exp(h(X))(1+|m|)$.
+
+Consequently any additional source condition giving
+\[
+       h(X)+\log(1+|m|)\le C H_H+O(1),
+       \qquad C<T(2/\kappa-1),
+\]
+would bound $H_H$ for every false input. Excluding the
+corresponding finite set of elliptic indices would force
+$X=m\in\Z$. For a true input $X=m$, the numerical inequality
+itself is compatible with arbitrarily large $h$.
+What is missing is a complete, low-coordinate existential
+encoding of such a growth condition. A real inequality alone
+does not bound the rational height of $X$, and a finite
+collection of congruences does not bound the integer $m$.
+
+\begin{thebibliography}{9}
+\bibitem{Index}\emph{An intrinsic pole test for elliptic index
+divisibility}, companion paper,
+\nolinkurl{elliptic_index_divisibility_pole_v59.tex}.
+\bibitem{Simple}\emph{Simple primitive denominator primes under weak
+$abc$}, companion paper, \nolinkurl{simple_primitive_denominators_v59.tex}.
+\end{thebibliography}
+\end{document}

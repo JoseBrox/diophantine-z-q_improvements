@@ -1,5 +1,38 @@
 # Scalar precision transfer checkpoint
 
+## Latest v59 primitive denominator theorem
+
+`simple_primitive_denominators_v59.tex` proves that weak rational
+abc with exponent4/3 gives a simple primitive denominator prime,
+outside any fixed finite set, for every sufficiently large multiple
+of a fixed nontorsion point P in4E_d(Q), E_d:y²=x³−d²x.
+Duplication transfers the full radical of A·B·C in the quartic
+C²=A⁴−d²B⁴ into the denominator of the doubled point. Its simple
+support has logarithm at least (2/kappa−1) times the point height,
+up to a fixed additive constant. The elementary old-support bound
+21739/44100 is below1/2, leaving the strict gap311/44100 at kappa4/3.
+Thus the theorem also holds under both16/15 and121/100.
+
+The primitive prime converts odd denominator-support inclusion into
+divisibility of the two indices. The theorem does not identify an
+external rational input with their quotient and does not itself
+supply an existential support predicate. The proof is for E/Q and
+does not infer number-field abc from rational abc.
+
+The exact checker `check_simple_primitive_denominators_v59.py` and
+its certificate verify the constants,12 actual quartic/duplication
+fixtures, the duplication cancellation support, and1,992 independent
+finite-field reduction-order checks at166 good primes. The
+asymptotic assertion is proved from abc and canonical height, not
+inferred from these fixtures. Independent-route audit passes the
+strengthened mathematical proof.
+
+`fixed_form_weak_abc_v59.md` records a quantified Belyi transfer for
+the existing eleven-coordinate derivative source. A fully specified
+but extremely conservative weak exponent1+1/(100U),
+U=3200^(9·100³·2^98·100!), suffices for the same circuit. This does
+not establish the source under either16/15 or121/100.
+
 ## Latest v59 eleven-coordinate construction audit
 
 The ordinary-abc eleven-coordinate derivative source passed the full

@@ -1,0 +1,210 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,microtype}
+\usepackage[margin=26mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\title{A pole-cancelling height coordinate for an elliptic quotient}
+\author{}\date{17 November 2026}
+\begin{document}\maketitle
+
+\section{Height and local cancellation}
+
+Fix $d\in\Z_{>0}$, $E_d:y^2=x^3-d^2x$, and a nontorsion point
+$P\in E_d(\Q)$. Let $H=[h]P$, $U=[j]P$, where $h,j$ are
+nonzero integers. Suppose that $h\mid j$, and write $n=j/h$, so
+$U=[n]H$. For a nonzero rational input $X$ and a positive integer
+$B$, put
+\[
+ \beta=X^2+B,\qquad
+ Y=X^2x(U)-x(H),\qquad
+ E_h=h(1:\beta:Y).
+\]
+The letter $Y$ denotes a rational height coordinate, not a pole
+ordinate. Let $C_E$ be a constant such that
+$|h(x(R))-2\widehat h(R)|\le C_E$ for every nonzero rational
+point $R$ of $E_d$; such a constant exists by
+\cite[Chapter VIII, Section9]{AEC}.
+
+\begin{lemma}\label{lem:height}
+Uniformly in $X,B,h,j$ subject to these hypotheses,
+\[
+ E_h\ge2h(X),\qquad
+ E_h\ge(n^2-1)\widehat h(H)-C_E-\tfrac12\log2.
+\]
+In particular
+$E_h\ge(n^2-1)\widehat h(P)-C_E-\tfrac12\log2$.
+\end{lemma}
+\begin{proof}
+For $X=a/b$ in lowest terms with $b>0$, the fraction
+$\beta=(a^2+Bb^2)/b^2$ is reduced, and its positive numerator
+dominates both $a^2$ and $b^2$. Hence $h(\beta)\ge2h(X)$.
+The height of a projective vector dominates the height of every
+ratio of its coordinates, so $E_h\ge\max(h(\beta),h(Y))$.
+
+Since $X\ne0$, the standard sum and product inequalities give
+\[
+ h(x(U))\le h(Y)+h(x(H))+2h(X)+\log2.
+\]
+Consequently
+\[
+ h(Y)+2h(X)\ge2(n^2-1)\widehat h(H)-2C_E-\log2.
+\]
+Use $2E_h\ge h(Y)+2h(X)$ and
+$\widehat h(H)=h^2\widehat h(P)\ge\widehat h(P)>0$.
+\end{proof}
+
+\begin{lemma}\label{lem:local}
+For the formal parameter $t=-x/y$ at the identity of $E_d$,
+\[
+ n^2x([n]H)-x(H)
+       =\frac{d^2(n^4-1)}5\,t^2+O(t^6)\quad\text{in }\Q((t)).
+\]
+Thus on the intended input $X=n$, the function $Y$ is regular
+at $H=O$ and vanishes there. For $p\nmid 10dn$ and formal
+$H\in E_d(\Q_p)$ one has $v_p(Y)\ge2v_p(t)$.
+For $n=1$ or $-1$, the function $Y$ is identically zero.
+\end{lemma}
+\begin{proof}
+The curve equation and the choice of $t$ give
+\[
+ x=t^{-2}+d^2t^2+O(t^6),\qquad
+ \frac{dx}{2y}=(1-2d^2t^4+O(t^8))\,dt.
+\]
+The formal logarithm is therefore
+$\ell(t)=t-(2d^2/5)t^5+O(t^9)$, and its inverse gives
+\[
+ [n]t=nt+\frac{2d^2}{5}(n^5-n)t^5+O(t^9).
+\]
+Substitution in $x([n]t)$ yields the displayed coefficient.
+At $p\nmid10dn$, the curve and its formal group have integral
+coefficients and $n$ is a unit. After cancellation of the leading
+Laurent term the remaining series belongs to $t^2\Z_p[[t]]$.
+\end{proof}
+
+For even $e\ge4$, define
+\[
+ M=\beta^e+Y^e.
+\]
+This quantity is positive. On $X=n$, at every prime in
+Lemma~\ref{lem:local} where $\beta$ is integral,
+\[
+ M\equiv\beta^e\pmod{p^{2e v_p(t)}}.
+\]
+Hence a finite collection of simple contact congruences involving
+$M$ can be prepared by first using the limiting value $\beta^e$
+and then taking $H$ sufficiently deep in the corresponding formal
+groups. This local statement makes no assertion about primes
+outside the prescribed collection.
+
+\section{A soundness implication for a second pole block}
+
+The following implication isolates the height calculation that
+would apply to a second detector after an index-divisibility
+block has established $h\mid j$.
+
+\begin{theorem}\label{thm:soundness}
+Assume ordinary rational $abc$. Take $e=4$, put
+\[
+ M=\beta^4+Y^4,\quad a=M^3,\quad t_0=M^6-z^2\ne0,
+\]
+and let
+\[
+ F(a,z)=\prod_{c\in\{-8,\ldots,-1,1,\ldots,8\}}
+                  ((a+c)^2-z^2),\qquad
+ u=-\frac{32aF(a,z)}{F_a(a,z)}.
+\]
+Retain the nonzero guards of the derivative-height source.
+Suppose that a second pole block, uniformly outside a fixed finite
+set $S$, has the following implication for its positive odd
+valuations:
+\[
+ v_p(u)>0\text{ odd}\quad\Longrightarrow\quad
+             p\mid\operatorname{num}(X-n).
+\]
+Then for all sufficiently large fixed $B$, every such guarded
+source solution has $X=n\in\Z$. The sufficient threshold for
+$B$ is independent of $h,j,X,z$.
+\end{theorem}
+\begin{proof}
+Suppose $X\ne n$. The positive even-power height estimate and
+the signed mixed-power height estimate of \cite{Height} give
+\[
+ h(M)\ge\alpha E_h-O(1),\qquad
+ h(M)\le Qh(t_0)+O(1),
+ \quad\alpha=\frac{997}{1001},\quad Q=\frac{1002}{995}.
+\]
+The derivative-height theorem of \cite{Derivative}, for the
+sixteen shifts displayed above, gives
+\[
+ \log r_S^+(u)\ge\gamma h(t_0)-C h(M)-O(1),\qquad
+ \gamma=\frac{997}{200},\quad C=\frac{401}{100},
+\]
+where $r_S^+(u)$ is the product of primes outside $S$ at which
+$u$ has positive odd valuation. All constants here are independent
+of $B$ and of the source variables. The assumed divisibility gives
+\[
+ \log r_S^+(u)\le h(X)+\log(1+|n|)
+                  \le\tfrac12E_h+\log(1+|n|).
+\]
+Combining these estimates yields
+\[
+ \left(\frac\gamma Q-C-\frac1{2\alpha}\right)h(M)
+                     \le\log(1+|n|)+O(1).
+\]
+The coefficient is positive, because
+\[
+ \gamma-Q\left(C+\frac1{2\alpha}\right)
+                       =\frac{87545567}{198403000}>0.
+\]
+It follows that $E_h=O(\log(1+|n|)+1)$.
+Lemma~\ref{lem:height} bounds $n$ by a constant depending only
+on the fixed curve, generator, arithmetic constants and guards.
+Then $E_h$ is bounded independently of $B$. Since
+$E_h\ge h(\beta)\ge\log B$, taking $B$ larger than the resulting
+constant gives a contradiction.
+\end{proof}
+
+The local implication in Theorem~\ref{thm:soundness} follows from
+the one-slot balanced detector with tests
+\[
+ C_1=1/x(H),\qquad C_2=1/x(U),\qquad
+ C_3=\zeta(U)/\zeta(H)-X,
+\]
+using $D_i=C_i^2/(1+uC_i^2)$ and the intrinsic pole input
+$b=4u(1+u)^{-2}\prod_i(1+D_i^2/u)^2$.
+At a positive odd valuation of $u$, a nonpositive valuation of
+any $C_i$ would give an odd negative pole of $7b$. Thus $H,U$
+are formal and $C_3$ has positive valuation. Since $U=[n]H$,
+the integral formal multiplication series gives
+$\zeta(U)/\zeta(H)\equiv n\pmod p$, as required.
+
+\section{The remaining realization requirement}
+
+The two-point height and soundness statements above are proved.
+They do not prove completeness of the combined source. Although
+the limiting-value preparation controls a prescribed finite set
+of simple contacts, changing $H$ also changes $M$ and may introduce
+additional positive odd valuations of the actual $F(a,z)$.
+The local construction gives no detector control at those extra
+primes. A complete argument must produce $H,U,z$ simultaneously
+so that every relevant odd prime is admissible; local congruence
+preparation alone is insufficient. Consequently no defining
+variable bound follows from this checkpoint.
+
+\begin{thebibliography}{9}
+\bibitem{AEC}J.~H.~Silverman, \emph{The Arithmetic of Elliptic Curves},
+second edition, Springer, 2009, Chapter VIII, Section9.
+\bibitem{Height}\emph{Signed mixed-power heights and single-cover
+criteria}, companion manuscript,
+\nolinkurl{signed_mixed_power_height_v58.tex}.
+\bibitem{Derivative}\emph{An eleven-variable polynomial under
+ordinary abc}, source manuscript,
+\nolinkurl{derivative_detector11_20261117_v59.tex}.
+\bibitem{Index}\emph{An intrinsic pole test for elliptic index
+divisibility}, companion manuscript,
+\nolinkurl{elliptic_index_divisibility_pole_v59.tex}.
+\end{thebibliography}
+\end{document}

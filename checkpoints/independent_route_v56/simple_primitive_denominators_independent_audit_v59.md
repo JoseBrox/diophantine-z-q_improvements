@@ -1,13 +1,37 @@
 # Independent audit: simple primitive denominator primes
 
-Date: 17 November 2026.
+Date: 17 November 2026. Updated for the strengthened duplication proof.
 
 Audited manuscript:
 `checkpoints/general_scalar_v56/simple_primitive_denominators_v59.tex`.
 
-**Result: PASS.** The theorem is proved under weak rational abc with exponent
-16/15 for a fixed congruent-number curve over Q and a fixed nontorsion point
-in its doubled subgroup. It does not supply a defining polynomial by itself.
+**Result: PASS.** The preferred theorem is proved under weak rational abc with
+exponent 4/3 for a fixed congruent-number curve over Q and a fixed nontorsion
+point in 4E(Q). It does not supply a defining polynomial by itself. The direct
+16/15 argument for a point in 2E(Q), audited below, is also valid.
+
+## Preferred duplication refinement
+
+Write P=2Q with Q in 2E(Q). For nQ use A,B,C as in the direct audit below.
+Direct abc gives `log rad(ABC)>=(4/kappa)h(A:B)-O(1)`. The duplication
+identity is
+
+`sqrt(x(nP))=(A^4+d^2 B^4)/(2|ABC|)`.
+
+Outside the fixed primes dividing 2d, A,B,C are pairwise coprime and the
+displayed numerator is coprime to ABC. Hence the denominator exponent of
+sqrt(x(nP)) is exactly v_p(ABC). Since `log|ABC|<=4h(A:B)`, its simple
+support has logarithm at least `(8/kappa-4)h(A:B)-O(1)`.
+Canonical height changes by four under doubling, so in terms of the height
+of the square abscissa at nP this coefficient is `2/kappa-1`.
+At kappa=4/3 the coefficient is 1/2, and the same old-support subtraction
+below leaves the exact positive gap 311/44100. Thus the stronger theorem
+and its divisibility corollary pass independently. The old-support bound
+also permits every `1<kappa<88200/65839`.
+
+The manuscript was checked for denominator cancellation outside 2d,
+the fourfold canonical-height conversion, and the fixed-set cost. No
+additional arithmetic assumption is used in the refinement.
 
 ## Decisive checks
 

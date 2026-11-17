@@ -1,0 +1,154 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\usepackage[margin=26mm]{geometry}
+\newtheorem{theorem}{Theorem}\newtheorem{lemma}{Lemma}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\title{A rational elliptic denominator-support block}
+\author{}\date{17 November 2026}
+\begin{document}\maketitle
+
+\section{Points and the predicate}
+
+Use $E:y^2=x^3-36x$, whose rational group has rank one, generator
+$(-3,9)$ and torsion subgroup $E[2](\Q)$; these data are recorded
+in the primary database entry \cite{LMFDB}. Put
+$P=2(-3,-9)=(25/4,35/8)$. The square-abscissa points are exactly
+$2E(\Q)\setminus\{O\}=\Z P\setminus\{O\}$.
+Indeed the two-isogeny descent classes of the torsion points are
+$1,-1,6,-6$, and that of $(-3,9)$ is $-3$; an odd multiple,
+even after adding torsion, has class $-3,3,-2$ or $2$.
+Among the torsion classes only $1$ is a square. The converse follows
+from the duplication formula.
+
+Thus one retained rational coordinate $q$ and the finite quadratic
+generator $r$ give a point by
+\[
+                 r^2=q^4-36,\qquad x=q^2,\quad y=qr.
+\]
+For two such points $H=[h]P$, $U=[j]P$, let their retained
+coordinates be $q_H,q_U$. Define
+\[
+ u=\frac1{q_H},\quad C=\frac1{q_U^2},\quad
+ D=\frac{C^2}{1+uC^2},\quad W=1+\frac{D^2}{u},\quad
+ b=\frac{uW^2}{(1+u)^2},\quad\eta=7b.
+\]
+Guard all displayed denominators and $W$. Impose the intrinsic pole
+equation with two retained parameters $v,s$ and one finite root $Y$:
+\[
+ Y^2=\eta(\eta+v^2)^2s^4
+          -\eta(\eta-v^2)^2(1-\eta)^2.
+\]
+
+\begin{lemma}
+Every rational solution has the following property at every prime:
+if the denominator of $q_H$ has positive odd valuation, then $U$
+reduces to the identity in the formal group.
+Conversely, if $U=[n]H$ for an integer $n\ne0$, then $b$ has
+square reduced denominator at every prime.
+\end{lemma}
+\begin{proof}
+Let $\nu=v_p(u)$ be odd and $c=v_p(C)$. Distinct parity gives
+\[
+                    v_p(D)=\max(2c,-\nu).
+\]
+Suppose $\nu>0$ and $U$ is not formal. Then $v_p(q_U)\ge0$,
+so $c\le0$ and $d_0:=v_p(D)\le0$. Therefore
+$v_p(W)=2d_0-\nu$ and
+\[
+                     v_p(b)=4d_0-\nu<0
+\]
+is odd, contradicting intrinsic-pole soundness.
+
+For the converse, first suppose $\nu>0$ is odd. Then $H$ is
+formal, with $v_p(\zeta(H))=\nu$, where $\zeta=-x/y$.
+The integral formal group gives
+$v_p(\zeta([n]H))\ge\nu$, including at two and three.
+Thus $c\ge2\nu$, $v_p(D)\ge4\nu$, and $W$ is a local unit.
+It follows that $v_p(b)=\nu>0$. If $\nu<0$ is odd, the displayed
+maximum instead gives $v_p(D^2/u)\ge-3\nu>0$, so $W$ is a unit
+and $v_p(b)=-\nu>0$. Finally, even valuations of $u$ give even
+valuations of $u/(1+u)^2$, and multiplication by $W^2$ preserves
+parity. Hence no negative odd valuation of $b$ occurs.
+\end{proof}
+
+\section{Prepared completeness, uniformly in the quotient}
+
+\begin{theorem}
+For every fixed finite index cutoff $B$, there are infinitely many
+points $H=[h]P$ with $|h|>B$ such that the displayed pole block
+has rational witnesses for every $U=[n]H$, $n\in\Z\setminus\{0\}$.
+Every retained whole-algebra guard can be satisfied.
+\end{theorem}
+\begin{proof}
+Choose the positive real square root $q_H$ and require
+\[
+              \frac1{2\cdot6^4}<u<\frac2{6^4}.
+\]
+For every nonzero doubled rational point $U$, its positive square
+abscissa satisfies $x(U)>6$, so $0<C<1/6$. Hence
+$0<D<C^2<1/36$ and
+\[
+ 0<b\le u\left(1+\frac1{6^4u}\right)^2
+       =u+\frac2{6^4}+\frac1{6^8u}
+       <\frac6{6^4}=\frac1{216}<\frac17.
+\]
+This real bound is uniform in the integer $n$.
+
+Simultaneously require $u\in\Q_2^{\times2}$ with even valuation
+at least four, and require $H$ sufficiently formal at seven.
+These conditions are available in the cyclic group. To see the local
+square-class freedom explicitly, write $H=2R$ with $R$ a multiple
+of $(-3,-9)$. The duplication square root is
+\[
+ q_H=\frac{x(R)^2+36}{2y(R)},\qquad
+ u=\frac{2y(R)}{x(R)^2+36}\sim-2\zeta(R)
+\]
+near the identity. A sufficiently deep fixed congruence on the
+multiple of $R$ prescribes this $2$-adic square class and valuation,
+as well as the required depth at seven. Any such congruence progression
+is dense in its real connected cyclic closure; one can impose the
+displayed positive interval and avoid finitely many indices.
+
+For $U=[n]H$, the preceding lemma makes $W$ a unit at these prepared
+places. Thus $b$ is a $2$-adic square of valuation at least four and
+is seven-integral. Together with the square denominator and the real
+bound, $\eta=7b$ satisfies the prepared intrinsic-pole theorem.
+That theorem supplies Zariski-dense witness pairs $(v,s)$.
+
+The values $u,C,D,W,b$ depend only on the retained coordinates
+$q_H,q_U$, not on the finite ordinate signs. They are positive and
+their denominators nonzero at every point-algebra character of these
+prepared tuples. Pole-witness density avoids the remaining radicand
+norm and separator guards.
+\end{proof}
+
+\section{Index divisibility and scope}
+
+Under the simple-primitive-denominator theorem of \cite{Primitive},
+weak rational $abc$ at exponent $16/15$ gives an index threshold
+$n_0$. A finite guard can force $|h|>B\ge n_0$ without an additional
+coordinate:
+\[
+ \prod_{m=1}^{B}\bigl(\operatorname{den}(x([m]P))q_H^2
+                    -\operatorname{num}(x([m]P))\bigr)\ne0.
+\]
+The support implication then forces $h\mid j$. Its prepared
+completeness supplies every nonzero integer quotient $j/h$.
+The two point quadratics and one pole quadratic have finite rank
+eight; one separator coordinate suffices for their guarded encoder.
+
+This does not identify an external rational variable $X$ with $j/h$.
+Congruences modulo the odd denominator support of $H$ leave the integer
+quotient unbounded. A second source must establish the input link;
+no nine-variable defining polynomial follows from this block alone.
+
+\begin{thebibliography}{9}
+\bibitem{LMFDB}The LMFDB Collaboration, elliptic curve $576.c3$,
+equation $y^2=x^3-36x$, Mordell--Weil group and generators,
+\url{https://www.lmfdb.org/EllipticCurve/Q/576/c/3}, accessed
+17 November 2026.
+\bibitem{Primitive}\emph{Simple primitive denominator primes under
+weak $abc$}, companion checkpoint manuscript,
+\nolinkurl{checkpoints/general_scalar_v56/simple_primitive_denominators_v59.tex}.
+\end{thebibliography}
+\end{document}
