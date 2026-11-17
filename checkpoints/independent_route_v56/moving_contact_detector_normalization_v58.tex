@@ -24,9 +24,9 @@ height inequality, and hence no eleven-variable definition, is proved.
 \section{The rational functions}
 
 Fix distinct positive integers $c_1,\ldots,c_6$; one may take
-$c_i=i$. For nonzero $a,t\in\Q$ adjoin a finite root
+$c_i=i$. Retain one rational coordinate $z$ and define
 \[
- z^2=a^2-t,
+ t=a^2-z^2,
 \]
 and put
 \begin{equation}\label{eq:functions}
@@ -48,7 +48,8 @@ In the proposed height application,
 \[
  M=(X^2+B)^e+T^e,\qquad a=M^{d/2},\qquad d\text{ even},
 \]
-where $T=\Tr x(A)$ and $e$ is even. Thus $M,a$ are positive
+where $T=\Tr x(A)>0$ in the direct square-abscissa chart and $e$
+is a positive integer. Thus $M,a$ are positive
 rational functions of retained abscissas and are the same at every
 finite point-algebra character.
 
@@ -215,19 +216,27 @@ avoidance.
 
 At every point-algebra character, $a,t,F$ have the same rational
 values, $F>0$, all factors of $W$ are positive, and $V>0$.
-The new cover root is nonzero since $z>a+\max c_i$; the scalar
+The retained square parameter is nonzero since $z>a+\max c_i$; the scalar
 guards $a,t,F$ are nonzero. All original point, difference, quotient
 and denominator guards remain present. The pole radicand norms
 are avoided exactly as in the intrinsic transfer theorem.
 
-The prospective finite algebra has rank $64\cdot2\cdot2=256$:
-three point blocks, one cover root and one pole root. The proposed
+The prospective finite algebra has rank $64\cdot2=128$:
+three point blocks and one pole root. The proposed
 unrestricted coordinates are one input, six point coordinates, one
-retained $t$, two pole parameters and the single encoder coordinate.
+retained $z$, two pole parameters and the single encoder coordinate.
 This is a census of eleven coordinates for the incomplete
 specification. Soundness still requires a new moving-contact height
 theorem, with the omitted numerator primes of $M$ included. The
 fixed-contact height theorem cannot be cited in its place.
+
+Equivalently, one could retain $t$ and adjoin $z$ as a finite quadratic
+root, with $z^2=a^2-t$ guarded. This raises the finite rank to $256$
+without changing the free-coordinate count. The rational-character
+theorem for the guarded separating encoder ensures that this finite
+root is rational at a rational source solution; a bare unseparated
+norm equation would not justify that assertion. Retaining $z$
+directly avoids this unnecessary finite extension.
 
 \section{Remaining height problem}
 

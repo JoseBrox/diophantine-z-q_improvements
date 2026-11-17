@@ -2,6 +2,45 @@
 
 ## Latest v58 results and independent audits
 
+### Signed mixed-power heights and optimal conditional criteria
+
+The canonical publication manuscript is now
+`signed_mixed_power_height_v58.tex`. It combines the proved signed
+height theorem and its complete single-cover application. Under weak
+rational abc with exponent kappa>1 and constant K, for even d and
+epsilon=d−kappa(d/2+2)>0 it proves
+
+`h(x) <= ((2*kappa−1)/epsilon) h(x^d ± y^2) + log(K)/epsilon`,
+
+whenever the output is nonzero, with no integrality or sign condition.
+The minimal common denominator and the square gcd give the improved
+coefficient. Parent and both other agents passed the proof. The exact
+checker/certificate `check_signed_mixed_power_height_v58.py` and
+`signed_mixed_power_height_v58_certificate.json` pass3133 fixtures,
+including cancellation, unrelated denominators, negative output,
+446 nontrivial square gcds, and519 denominator cancellations.
+
+The application uses
+`q=(2*kappa−1)/(epsilon*(e/kappa−3)*(8/kappa−6))` and strict
+contraction `q*(k+1/2)<1`. Positive beta and the exact point-chart
+trace `T=2(h0^2+2h1^2)>0` permit every integer e>=4, including odd e;
+a self-contained proof of this binary-power height lemma is included.
+The argument degree is exactly2ed. Ordinary-abc minima in this
+criterion are48 for k=0 and60 for k=2. The latter uses e5,d6.
+For weak exponents25/24,16/15,121/100, the optimal k2 degrees are
+72,80,168. At degree ties the rows choose the least d.
+
+`check_single_cover_height_criteria_v58.py` and its certificate verify
+all8 exact rows, all46 smaller pairs, and all same-degree alternatives.
+The application-only checkpoint `single_cover_height_criteria_v58.tex`
+is synchronized with the canonical merged manuscript. These are scalar
+argument degrees, not full determinant degrees. The nine-coordinate
+criterion still requires unproved actual rational realization; the
+established defining counts remain25/13.
+
+The independent full-height/application receipt is
+`../independent_route_v56/signed_height_application_independent_audit_v58.md`.
+
 `small_quadratic_trace_class_20261117_v58.tex` proves that
 `delta(V)=V^2−V+2` is an admissible no-loss class for the actual trace
 conic. The inherited comparison primes split in Q(sqrt2), so its

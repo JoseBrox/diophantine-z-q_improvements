@@ -46,7 +46,7 @@ The 71-variable quartic uses the complete three-coordinate unit reference chart 
 
 The coefficient-basis transformations and the 195/257-coordinate eliminations preserve their corresponding full rational solution sets. The finite-algebra construction permits a zero final pole ordinate and proves soundness on that larger locus.
 
-Current specifications: [results JSON](data/results_20261117_v57.json), [proof and verification guide](docs/results_20261117_v57.md), and [research directions](docs/research_directions.md).
+Current specifications: [results JSON](data/results_20261117_v58.json), [proof and verification guide](docs/results_20261117_v58.md), and [research directions](docs/research_directions.md).
 
 The [fixed-fiber and detector-index theorems](docs/common_parameter_guard_reduction_20261116_v42.md) show that one common rational pole fiber with nonzero ordinates suffices for all remaining pole guards, and give independent auxiliary-index families with unchanged square-class scalars. The common rational fiber itself remains unproved. Proved obstructions and lower bounds are collected separately in [negative_results](negative_results/README.md).
 
@@ -105,6 +105,14 @@ A rational-square value excludes every relevant negative odd pole. The test uses
 These trace-dependent classes preserve every consumed contact, so they require **no additional height hypothesis or height budget**, including in the general Lucas source. The same theorem permits the class $\delta_c=(q^2-2q-1)^2+4q(q^2-1)V$, where $q=2+wc^2$ and $c$ is a fixed guarded function of existing source coordinates. In particular $c=\lambda$ uses the retained common slope, preserves fixed-place preparation and adds no coordinate. Thus the allowed class can vary with the actual slope and auxiliary points without a height penalty. The untwisted equation is a rational conic; the linear-class equation is a cubic elliptic equation with reference point $(49,336)$ in its stated Weierstrass coordinates. The complete finite-algebra count would be **21 or 9**, with every guard included, **if the simultaneous actual-trace realization is proved**. That global rational realization remains open. The degrees of these small radicands are not full defining-polynomial degree bounds.
 
 The [cubic rank theorem](papers/pole_parameters/cubic_trace_rank_20261117_v57.tex) proves that the reference point $(49,336)$ has infinite order for **every rational $0<w\le1/4$**. Its exact torsion classification has projective finite-field certificates and an independent group-law check. Arithmetic progressions of its multiples give infinitely many free traces $1<V<2$, arbitrarily close to the reference at the real and any prescribed finite places. This supplies a positive-rank family throughout the general source's normalized range; matching those traces to the actual elliptic detector functions remains unproved.
+
+The [small trace-class theorem](papers/pole_parameters/small_trace_classes_20261117_v58.tex) also permits $V+2$, $V^2-V+2$, and $1+w(2-V)$, with no lost contact prime, new coordinate, or height budget. Its smallest radicand is
+
+```math
+(V+2)\bigl(V^2+w(2-V)\bigr)=V^3+(2-w)V^2+4w.
+```
+
+This block has total degree **3**, **4 monomials**, and coefficient height **4**. The source proof includes the existing selected-prime splitting, every fixed-place preparation, and every point-algebra character guard. The finite menu may vary with the input. These block measurements do not give a complete defining-polynomial bound, and actual simultaneous rational realization remains unproved.
 
 The [all-point trace theorem](papers/trace_heights/trace_on_all_points_20261113_v25.tex) and [positive weighted trace theorem](papers/trace_heights/weighted_trace_20261114_v27.tex) include the half-integral index and torsion cases required by the sources. The latter also verifies that the selected Gaussian primes annihilate the half-generator using the existing congruences.
 
@@ -165,18 +173,18 @@ The [guarded rational-square criterion](papers/pole_parameters/native_square_cri
 
 A rational-square value excludes every required negative odd detector pole. The radicand is positive at every prepared character, and its reference value at $W=1$ is exactly $w^2/(1+w)^2$. Fixed nonzero exceptional-set units are admissible coefficients; so are the proved source-dependent choices $a=1+wc^2$ for existing guarded rational source functions $c$. These choices add no rational coordinate or nonzero guard. The flat choice $a=1$ has an exact prescribed-coordinate elliptic form, and the conditional detector has a trace-preserving reference involution.
 
-**Two simultaneous rational-square values on actual prepared detector tuples would give 21 variables, or 9 under the conditional source hypotheses. This global realization theorem remains unproved.** The proved local preparation and exact finite-algebra count do not replace it. The [current proof guide](docs/results_20261117_v57.md) states the precise conditions and their limitations.
+**Two simultaneous rational-square values on actual prepared detector tuples would give 21 variables, or 9 under the conditional source hypotheses. This global realization theorem remains unproved.** The proved local preparation and exact finite-algebra count do not replace it. The [current proof guide](docs/results_20261117_v58.md) states the precise conditions and their limitations.
 
 ### A single cover and finite square-class alternatives
 
-The [single-cover height theorem](papers/pole_parameters/single_cover_criterion_20261117_v56.tex) places both input and trace heights in
+The [signed mixed-power theorem and single-cover criterion](papers/elliptic_heights/signed_mixed_power_height_20261117_v58.tex) place both input and trace heights in
 
 ```math
 t=\bigl((X^2+B)^e+T^e\bigr)^d+z^2,
 \qquad T=\operatorname{Tr}x(A).
 ```
 
-Under the stated weak-abc inequality, one actual native square condition gives soundness with a nine-coordinate census. The optimized height arguments have degrees **96**, **120**, and **384** in the retained coordinates for exponents $25/24$, $16/15$, and $121/100$, respectively. These are argument degrees, not full defining-polynomial degree bounds. **Rational realization for every prescribed integer input remains unproved**, including the required restriction on the prime preparation.
+Under the stated weak-abc inequality, one actual native square condition gives soundness with a nine-coordinate census. The optimized height arguments have degrees **48**, **48**, and **96** in the retained coordinates for exponents $25/24$, $16/15$, and $121/100$, respectively. Ordinary abc permits degree **48**. The height theorem covers $x^d+y^2$ and $x^d-y^2$ with arbitrary rational denominators and nonzero output; its coefficient is $(2\kappa-1)/(d-\kappa(d/2+2))$. Positivity of the actual root trace also permits odd inner exponents. These are argument degrees, not full defining-polynomial degree bounds. **Rational realization for every prescribed integer input remains unproved**, including the required restriction on the prime preparation.
 
 Both this criterion and the two-block 21/9 criterion permit any **fixed finite menu of positive exceptional-unit square classes**, such as $\{1,2\}$. A finite product of the existing quadratic-branch polynomials encodes the choices without a new coordinate. The selected class may vary with the input; its allowed prime support must remain fixed. This relaxed realization property does not impose the optional exceptional-place square neighborhoods used to prepare class one. No uniform realization theorem is asserted.
 
@@ -188,7 +196,7 @@ The [variable-class theorem](papers/pole_parameters/variable_squareclasses_20261
 \{1,\ (X^2+B)^2+\operatorname{Tr}(x(A))^2,\ 1+X^4\}.
 ```
 
-The varying classes may have prime support outside the exceptional set. Their height budget is absorbed by stronger source powers, with no new coordinate or guard. Under ordinary abc, the two-cover choice has exponent **6** and contraction $135/136$; the single-cover argument has degree **224** and contraction $103006635/103133368$. These optimize the stated even-power height criteria, not the complete defining degree. The nine-coordinate census remains conditional on actual rational realization for every integer input. **That realization is unproved**, and no unrestricted 21-variable transfer of these varying classes is asserted.
+The varying classes may have prime support outside the exceptional set. Their height budget is absorbed by source powers, with no new coordinate or guard. Under ordinary abc, the two-cover choice has exponent **6** and contraction $135/136$. The [sharp single-cover criterion](papers/elliptic_heights/signed_mixed_power_height_20261117_v58.tex) has argument degree **60** and contraction $520251/726142$, using inner exponent five and outer exponent six. For weak exponents $25/24$, $16/15$, and $121/100$, its optimized argument degrees are **72**, **80**, and **168**. These optimize the stated power criteria, not the complete defining degree. The nine-coordinate census remains conditional on actual rational realization for every integer input. **That realization is unproved**, and no unrestricted 21-variable transfer of these varying classes is asserted.
 
 ### A prepared pole block with coefficient height four
 
@@ -228,6 +236,8 @@ The [automatic-level finiteness theorem](negative_results/papers/pole_parameters
 
 The separate [obstructions and lower bounds](negative_results/README.md) directory contains the proved negative results, organized by subject with their exact hypotheses and limitations. It includes pole-predicate counterexamples, restrictions on elliptic-point compression, contact-height counterfamilies, and obstructions to extending a fixed formula to number fields. Shared computational dependencies remain linked from the corresponding papers and index.
 
+The [actual multiplication-surface obstruction](negative_results/papers/rational_fibers/actual_multiplication_surface_20261117_v58.tex) excludes uniform rational square identities even after imposing $A=[n]P$, $U=[n]H$ for a fixed nonzero integer $n$ and letting the slope be any nonconstant rational function of $H$. The specified safe trace classes are included. Individual rational witnesses, constant slopes, proper subfamilies and ramified covers remain open. The separate [two-square height obstruction](negative_results/papers/contact_heights/two_square_height_20261117_v58.tex) gives fixed-output families with unbounded rational height for powers of two; it does not impose the actual inner detector form.
+
 The [pole-compression guide](negative_results/docs/pole_compression_obstructions_20261115_v41.md) presents the all-rational-coefficient conic-chain classification and the automatic-conic counterfamilies. These concern the specified predicates and prepared inputs; they do not assert a global minimum for defining polynomials.
 
 ## Reproduction
@@ -235,6 +245,7 @@ The [pole-compression guide](negative_results/docs/pole_compression_obstructions
 Use **Python 3.12** for the byte-pinned legacy suite and **SymPy 1.14.0** for symbolic checks. From the repository root:
 
     python -m pip install sympy==1.14.0
+    python -B scripts/verify_v58.py
     python -B scripts/verify_v57.py
     python -B scripts/verify_v56.py
     python -B scripts/verify_v53.py

@@ -10,10 +10,10 @@ rows=[
  (Q(25,24),0,4,6,Q(8125,8379)),
  (Q(16,15),0,4,6,Q(68,45)),
  (Q(121,100),0,6,8,Q(1039511,648906)),
- (Q(101,100),2,4,8,Q(520251,1825346)),
+ (Q(101,100),2,5,6,Q(520251,1815355)),
  (Q(25,24),2,6,6,Q(8125,27531)),
- (Q(16,15),2,4,10,Q(68,171)),
- (Q(121,100),2,6,14,Q(1039511,2727159)),
+ (Q(16,15),2,5,8,Q(68,243)),
+ (Q(121,100),2,7,12,Q(1039511,2892808)),
 ]
 
 def calc(kappa,e,d,k):
@@ -34,17 +34,27 @@ for kappa,k,e,d,expected in rows:
     assert Q(data['q'])==expected
     degree=2*e*d
     smaller=[]
-    # e>=4 and d>=6 are necessary for any kappa>1. These are all
-    # even pairs of smaller degree, rather than a heuristic box search.
-    for ep in range(4,degree//12+1,2):
+    # e>=4 and even d>=6 are necessary for any kappa>1. Positivity of
+    # beta and T permits either parity of e. These are all pairs of
+    # smaller degree, rather than a heuristic box search.
+    for ep in range(4,degree//12+1):
         for dp in range(6,(degree-1)//(2*ep)+1,2):
             assert 2*ep*dp<degree
             check=calc(kappa,ep,dp,k)
             assert not check.get('admissible',False)
             smaller.append({'e':ep,'d':dp,'degree':2*ep*dp,**check})
+    same_degree=[]
+    for ep in range(4,degree//12+1):
+        if degree%(2*ep): continue
+        dp=degree//(2*ep)
+        if dp<6 or dp%2: continue
+        check=calc(kappa,ep,dp,k)
+        same_degree.append({'e':ep,'d':dp,**check})
+    assert d==min(p['d'] for p in same_degree if p.get('admissible',False))
     certificate_rows.append({'kappa':str(kappa),'support_degree':k,'e':e,'d':d,
                              'argument_degree':degree,**data,
-                             'all_smaller_even_pairs':smaller})
+                             'all_smaller_pairs':smaller,
+                             'all_same_degree_pairs':same_degree})
 
 d,kappa,m=sp.symbols('d kappa m',positive=True)
 eps=d-kappa*(d/2+2)
@@ -69,9 +79,9 @@ for e0,d0 in sorted(set((r[2],r[3]) for r in rows)):
     assert 2*e0*d0>2
 
 cert={'status':'PASS','rows':certificate_rows,
-      'ordinary_abc_minimum_argument_degrees':{'k0':48,'k2':64},
+      'ordinary_abc_minimum_argument_degrees':{'k0':48,'k2':60},
       'degree_formula':'2*e*d; this is the scalar argument degree, not the defining determinant degree.',
       'scope':'Soundness/height criteria only; actual rational realization remains unproved, defining counts remain25/13.'}
 Path(__file__).with_name('single_cover_height_criteria_v58_certificate.json').write_text(json.dumps(cert,indent=2)+'\n')
-print(json.dumps({'status':'PASS','rows':[{k:v for k,v in r.items() if k!='all_smaller_even_pairs'} for r in certificate_rows],
-                  'excluded_smaller_pairs':sum(len(r['all_smaller_even_pairs']) for r in certificate_rows)},indent=2))
+print(json.dumps({'status':'PASS','rows':[{k:v for k,v in r.items() if k not in ['all_smaller_pairs','all_same_degree_pairs']} for r in certificate_rows],
+                  'excluded_smaller_pairs':sum(len(r['all_smaller_pairs']) for r in certificate_rows)},indent=2))

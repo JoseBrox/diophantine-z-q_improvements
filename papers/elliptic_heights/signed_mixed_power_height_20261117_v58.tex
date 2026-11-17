@@ -1,0 +1,437 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,booktabs,microtype}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue]{hyperref}
+\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\DeclareMathOperator{\rad}{rad}
+\title{Signed mixed-power heights and single-cover criteria}
+\author{}\date{17 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+Under a fixed weak rational $abc$ inequality, we bound the height of $x$
+from the height of $x^d+y^2$ or $x^d-y^2$, for even $d$. The coefficient
+is $(2\kappa-1)/(d-\kappa(d/2+2))$, with no restriction on rational
+denominators or the sign of the nonzero output. Applying the bound to
+the conditional single-cover source gives exact contraction criteria
+and optimal argument degrees. The nine-coordinate census
+remains conditional on the actual rational realization assertion.
+\end{abstract}
+
+\section{The height inequality}
+
+For a rational number $r=A/D$ in lowest terms, with $D>0$, write
+$h(r)=\log\max(|A|,D)$; in particular $h(0)=0$.
+Fix $\kappa>1$ and $K_\kappa\ge1$, and assume
+\begin{equation}\label{eq:abc}
+ c\le K_\kappa\rad(abc)^\kappa
+\end{equation}
+for every positive coprime integer triple $a+b=c$.
+
+\begin{theorem}\label{thm:height}
+Let $d$ be a positive even integer with
+\[
+ \epsilon=d-\kappa(d/2+2)>0,
+ \qquad
+ Q_{\kappa,d}=\frac{2\kappa-1}{\epsilon}
+              =\frac{4\kappa-2}{(2-\kappa)d-4\kappa}.
+\]
+For every $x,y\in\Q$ and $\sigma\in\{1,-1\}$ with
+$u=x^d+\sigma y^2\ne0$, one has
+\begin{equation}\label{eq:bound}
+ h(x)\le Q_{\kappa,d}h(u)+\frac{\log K_\kappa}{\epsilon}.
+\end{equation}
+No integrality, denominator, or real-sign assumption is imposed on
+$x,y$, or on the nonzero number $u$.
+\end{theorem}
+
+\begin{proof}
+If $x=0$, the result is immediate. If $y=0$, then
+$h(x)=h(u)/d$; the inequality follows from
+$Q_{\kappa,d}\ge1/d$ and $K_\kappa\ge1$.
+Henceforth both numbers are nonzero.
+
+Put $m=d/2$ and write
+\[
+ x=A/D,\qquad y=B/E,\qquad u=C/F
+\]
+in lowest terms, with $D,E,F>0$, $A,B,C\ne0$.
+Let
+\[
+ \ell=\operatorname{lcm}(D^m,E),\qquad
+ M=\ell/D^m,\qquad N=\ell/E.
+\]
+Clearing the common square denominator gives the integer identity
+\begin{equation}\label{eq:triple}
+ A^dM^2+\sigma B^2N^2=C\ell^2/F.
+\end{equation}
+In particular $F\mid\ell^2$.
+
+Let
+\[
+ g=\gcd(A^dM^2,B^2N^2)=G^2,
+ \qquad G=\gcd(|A|^mM,|B|N).
+\]
+We first verify the denominator facts needed below.
+For every prime $p\mid\ell$, at least one term on the left of
+\eqref{eq:triple} is a $p$-adic unit. Indeed, if
+$m v_p(D)\ge v_p(E)$, then $v_p(M)=0$ and $A$ is a unit;
+otherwise $v_p(N)=0$ and $B$ is a unit. Thus
+\begin{equation}\label{eq:coprime}
+ \gcd(g,\ell)=1,\qquad g\mid C,\qquad G\mid B.
+\end{equation}
+The divisibility $g\mid C$ follows from \eqref{eq:triple}, since
+$\ell^2/F$ is an integer with all its prime factors in $\ell$.
+For $G\mid B$, use $G\mid BN$ and $\gcd(G,N)=1$.
+
+There is also the useful divisibility
+\begin{equation}\label{eq:M}
+ M^2\mid F.
+\end{equation}
+To prove it, let $p\mid M$, write $r=v_p(D)$ and $e=v_p(E)$,
+and note $e>mr$. The term $y^2$ then has strictly smaller
+valuation than $x^d$, namely $-2e$. Hence $v_p(F)=2e$, whereas
+$v_p(M)=e-mr\le e$. This proves \eqref{eq:M} at every prime.
+Finally the prime support of $\ell=D^mM$ gives
+\begin{equation}\label{eq:radell}
+ \rad(\ell)\le D\rad(M).
+\end{equation}
+
+Let $T$ be the largest of the absolute values of the three nonzero
+terms in \eqref{eq:triple}. After division by $g$ and a possible
+reordering, they form a positive coprime $abc$ triple. Its radical
+$\mathcal R$ satisfies
+\begin{equation}\label{eq:radical}
+ \mathcal R
+ \le |A|\,\frac{|B|}{G}\,\frac{|C|}{g}\,\rad(\ell).
+\end{equation}
+Indeed, the prime factors of the first divided term lie in $AM$,
+those of the second lie in $(B/G)N$, and those of the third lie
+in $(C/g)\ell$. All expressions used here are integers by
+\eqref{eq:coprime}. Combining their prime supports proves the bound.
+
+Define positive real numbers
+\[
+ H=(T/M^2)^{1/d},\qquad
+ R=\max\{1,(F/|C|)^{1/d}\}.
+\]
+The three terms defining $T$ give
+\[
+ |A|\le H,\qquad |B|\le H^mM/N,\qquad D\le HR.
+\]
+Consequently $\max(|A|,D)\le HR$, and
+\eqref{eq:radical}--\eqref{eq:radell} imply
+\[
+ \mathcal R\le
+ |C|G^{-3} H^{m+2}R\,\frac{M\rad(M)}N.
+\]
+Apply \eqref{eq:abc} to $T/g$ and substitute $T=H^dM^2$:
+\[
+ H^\epsilon\le
+ K_\kappa |C|^\kappa R^\kappa
+ G^{2-3\kappa}M^{\kappa-2}\rad(M)^\kappa N^{-\kappa}.
+\]
+Since $\kappa>1$, one has $G^{2-3\kappa}\le1$ and
+$N^{-\kappa}\le1$. Since $\rad(M)\le M$, and using
+\eqref{eq:M}, one obtains
+\begin{equation}\label{eq:H}
+ H^\epsilon\le
+ K_\kappa |C|^\kappa F^{\kappa-1}R^\kappa.
+\end{equation}
+
+Set $c=\log|C|$, $f=\log F$, and
+$r=\log R=(f-c)_+/d$. Both $c,f$ are nonnegative, and
+$h(u)=\max(c,f)$. From $h(x)\le\log H+r$ and
+\eqref{eq:H},
+\begin{equation}\label{eq:finalnumerator}
+ \epsilon h(x)\le
+ \log K_\kappa+\kappa c+(\kappa-1)f+(\kappa+\epsilon)r.
+\end{equation}
+If $c\ge f$, the last three terms are at most
+$(2\kappa-1)c$. If $f\ge c$, substitute $r=(f-c)/d$;
+the coefficients of $c$ and $f$ become
+\[
+ \kappa-\frac{\kappa+\epsilon}{d}
+   =\frac{3\kappa}{2}-1+\frac\kappa d>0,
+ \qquad
+ \kappa-1+\frac{\kappa+\epsilon}{d}
+   =\frac\kappa2-\frac\kappa d>0.
+\]
+Their sum is $2\kappa-1$. Therefore the same terms are at most
+$(2\kappa-1)f$. Dividing \eqref{eq:finalnumerator} by
+$\epsilon$ proves \eqref{eq:bound}.
+\end{proof}
+
+\begin{corollary}\label{cor:powered}
+Under the same hypotheses, put $a=x^{d/2}$. Then
+\[
+ h(a)\le
+ \frac{d(2\kappa-1)}{(2-\kappa)d-4\kappa}\,h(u)
+ +\frac{d\log K_\kappa}{2\epsilon}.
+\]
+For fixed $1<\kappa<2$, the displayed height coefficient tends to
+$(2\kappa-1)/(2-\kappa)$ as $d$ tends to infinity through the
+admissible even integers.
+\end{corollary}
+\begin{proof}
+Use $h(x^{d/2})=(d/2)h(x)$ in Theorem~\ref{thm:height}.
+\end{proof}
+
+The exclusion $u=0$ is necessary: one may set
+$y=x^{d/2}$ in the minus case with arbitrarily large $h(x)$.
+The theorem concerns one square. It gives no assertion for a sum or
+difference containing two independently varying squares, and no
+prime-pattern realization or defining-variable count follows from
+the height bound alone.
+
+\section{Source and height constants}
+Retain the conditional single-cover source of \cite{Single}, its
+three point roles $A,H,U$, its guarded finite point algebra, and all
+of its group, formal-comparison and trace-height premises. Write
+$A=[n]P$, where $n\in\Z\setminus\{0\}$, and set
+\[
+ \beta=X^2+B,\qquad T=\operatorname{Tr}_{K/\Q}x(A),\qquad
+ H_0=\beta^e+T^e,\qquad t=H_0^d+z^2,
+\]
+where $B\ge3$ is fixed and odd, $e$ is a positive integer, $d$ is
+a positive even integer,
+and $z\in\Q$ is the sole free detector parameter.
+There are no new coordinates for $H_0$ or $t$.
+
+Assume the fixed weak rational $abc$ inequality with exponent
+$\kappa>1$ and constant $K_\kappa\ge1$, and put
+\[
+ \epsilon=d-\kappa(d/2+2),\quad
+ \alpha_e=e/\kappa-3,\quad
+ \gamma=8/\kappa-6.
+\]
+All three quantities are required to be positive. The direct point
+chart of \cite[Section 3]{Conditional} has
+$x(A)=(h_0+h_1\sqrt2)^2$, so
+\begin{equation}\label{eq:positiveT}
+ T=2(h_0^2+2h_1^2)>0.
+\end{equation}
+The nonzero point guard supplies strictness. This rational trace is
+independent of every finite ordinate-root choice. Hence $\beta,T$ are
+positive at every point-algebra character, and $e$ need not be even.
+
+\begin{lemma}\label{lem:positivepowers}
+Let $a,b>0$ be rational. For any positive integer $e$ with
+$\alpha=e/\kappa-3>0$, one has
+\[
+ h(1:a:b)\le\alpha^{-1}h(a^e+b^e)
+ +\frac{\alpha+1}{e\alpha}\log2
+ +\frac{\log K_\kappa}{\kappa\alpha}.
+\]
+\end{lemma}
+\begin{proof}
+Use the denominator normalization of \cite[Lemma 2.2]{Conditional}:
+write $a=gA/D$, $b=gB/D$, with positive integers $A,B,g,D$,
+$\gcd(A,B)=\gcd(g,D)=1$. Put $H=\max(A,B)$ and
+$N=A^e+B^e$, so $H^e\le N\le2H^e$. Write
+\[
+ k_0=\gcd(N,D^e),\quad m_0=N/k_0,\quad n_0=D^e/k_0,
+ \quad m=g^em_0,\quad M=\max(m,n_0).
+\]
+The fraction $m/n_0$ is reduced. Every prime in $N$ divides $D$
+or survives in $m_0$, whence $\rad(N)\le Dm_0$. The positive
+coprime triple $A^e+B^e=N$ and \eqref{eq:abc} imply
+\[
+ H^{e/\kappa-2}\le K_\kappa^{1/\kappa}Dm_0,
+ \qquad
+ H^\alpha\le2^{1/e}K_\kappa^{1/\kappa}
+               m_0^{(e-1)/e}n_0^{1/e}.
+\]
+Also $\max(gH,D)\le2^{1/e}H(M/m_0)^{1/e}$.
+Combining logarithms bounds $h(1:a:b)$ by the stated additive
+constant plus
+\[
+ \frac{e-1-\alpha}{e\alpha}\log m_0
+ +\frac1{e\alpha}\log n_0+\frac1e\log M.
+\]
+The three coefficients are nonnegative and sum to $1/\alpha$;
+since $m_0,n_0\le M$, the assertion follows. Positivity of $a,b$
+supplies every sign assertion in this argument for both parities of $e$.
+\end{proof}
+
+Let $\mathcal M(t)$ be the retained odd contact radical, and write
+$E_h=h(1:\beta:T)$. The source's contact estimate and
+Lemma~\ref{lem:positivepowers} give
+\[
+ h(t)\le\gamma^{-1}\log\mathcal M(t)+O(1),\qquad
+ E_h\le\alpha_e^{-1}h(H_0)+O(1).
+\]
+Theorem~\ref{thm:height}, applied to the plus sign, gives
+\begin{equation}\label{eq:height}
+ E_h\le q\log\mathcal M(t)+O(1),\qquad
+ q=\frac{2\kappa-1}{\epsilon\alpha_e\gamma}.
+\end{equation}
+Every constant is independent of $B$, $X$ and the source tuple.
+
+If the argument is written $H_0^{dm}+z^2$, apply
+Theorem~\ref{thm:height} directly
+with the single even exponent $D=dm$. For $m>1$ this is stronger
+than first applying the degree-$d$ bound to $H_0^m$, because
+\[
+ \epsilon_{dm}=m\epsilon_d+2\kappa(m-1)>m\epsilon_d.
+\]
+The optimization below therefore uses one total even exponent $d$.
+
+\section{Fixed and varying square classes}
+
+Retain the native single quadratic radicand $\mathcal R$ of
+\cite{Single}. For $k=0$ allow its rational-square condition, or
+the established fixed finite positive $S$-unit class menu. For
+positive even $k$, retain the varying-class construction of
+\cite{Classes}: its positive class has odd support satisfying
+\[
+ \log\operatorname{rad}_{S}^{\mathrm{odd}}(\delta)
+       \le k E_h+O(1).
+\]
+In particular the finite menu
+\[
+ \{1,\beta^2+T^2,1+X^4\}
+\]
+has $k=2$. The menu can also be multiplied by any fixed finite
+positive $S$-unit menu. All its previous preparation and
+whole-character guards are retained.
+
+\begin{theorem}\label{thm:sound}
+The single-cover source is sound for every sufficiently large fixed
+odd $B$, uniformly in all its rational witnesses, whenever
+\begin{equation}\label{eq:absorption}
+ q(k+1/2)<1.
+\end{equation}
+For $k=0$ this is the condition $q<2$.
+\end{theorem}
+\begin{proof}
+Suppose $X\ne n$. The source's local extraction and the support
+budget of \cite{Classes} give
+\[
+ \log\mathcal M(t)
+ \le(k+1/2)E_h+\log(1+|n|)+O(1).
+\]
+Here the factor $1/2$ uses the exact input inequality
+$2h(X)\le h(\beta)$, valid for $\beta=X^2+B$ with $B\ge1$.
+Substitution in \eqref{eq:height} and strict absorption give
+\[
+ E_h\le C\log(1+|n|)+C'
+\]
+with constants independent of $B$. The retained trace-height theorem
+then bounds $n^2$ by the same type of expression, so both $n$ and
+$E_h$ are bounded independently of $B$. This contradicts
+$E_h\ge h(\beta)\ge\log B$ for all sufficiently large fixed
+odd $B$. Thus $X=n\in\Z$.
+\end{proof}
+
+\section{Exact parameter rows and argument degrees}
+
+For the fixed-class case $k=0$, the following rows have strict
+contraction:
+\[
+\begin{array}{c|c|c|c|c|c}
+\kappa&e&d&2ed&q&q/2\\\hline
+101/100&4&6&48&520251/893855&520251/1787710\\
+25/24&4&6&48&8125/8379&8125/16758\\
+16/15&4&6&48&68/45&34/45\\
+121/100&6&8&96&1039511/648906&1039511/1297812
+\end{array}
+\]
+For the varying menu with $k=2$, exact rows are
+\[
+\begin{array}{c|c|c|c|c|c}
+\kappa&e&d&2ed&q&(5/2)q\\\hline
+101/100&5&6&60&520251/1815355&520251/726142\\
+25/24&6&6&72&8125/27531&40625/55062\\
+16/15&5&8&80&68/243&170/243\\
+121/100&7&12&168&1039511/2892808&5197555/5785616
+\end{array}
+\]
+Ordinary rational $abc$ supplies the first row of each table.
+The remaining rows use only the indicated fixed weak exponents,
+together with the retained source premises.
+
+The column $2ed$ is the exact degree of the scalar argument $t$ in
+the retained input, point and square-parameter coordinates. Indeed
+$\beta=X^2+B$ has degree two, and in the direct square-abscissa
+chart $T=2(h_0^2+2h_1^2)$ also has degree two. Hence $H_0$ has
+degree $2e$ and $t=H_0^d+z^2$ has degree $2ed$. This column is
+not a degree bound for the full defining determinant.
+
+\begin{proposition}\label{prop:optimal}
+Within the displayed power criterion, the least argument degree
+under ordinary rational $abc$ is $48$ for $k=0$ and $60$ for $k=2$.
+For each fixed exponent in the two tables, its row has the smallest
+argument degree among all integers $e$ and even integers $d$ satisfying
+the stated positivity and contraction inequalities. Among pairs of
+the same minimal degree the table chooses the smallest $d$.
+\end{proposition}
+\begin{proof}
+Positivity with $\kappa>1$ forces $e\ge4$ and $d\ge6$.
+Thus $2ed\ge48$, attained in the first table.
+For $k=2$, note
+\[
+ \frac{\partial}{\partial\kappa}
+ \frac{2\kappa-1}{d-\kappa(d/2+2)}
+ =\frac{3d/2-2}{\epsilon^2}>0.
+\]
+Both $\alpha_e$ and $\gamma$ decrease with $\kappa$, so $q$
+increases on its positive domain. Its best limiting value at
+$\kappa=1$ is
+\[
+ q_{1,e,d}=\frac1{(d-4)(e-3)}.
+\]
+The only pair with integer $e\ge4$, even $d\ge6$, and $2ed<60$ is
+$(e,d)=(4,6)$. At this pair the limiting contraction is $5/4>1$.
+Degree $60$ is attained by the first row of the second table.
+
+For each fixed exponent, a smaller argument degree would require
+$2ed$ smaller than the degree of its displayed row. There are only
+finitely many such pairs, since $e\ge4,d\ge6$. The accompanying
+exact rational certificate lists every one, checks the positivity
+conditions, and records a contraction at least one for each remaining
+pair. It also checks all rows and all pairs of the same degree
+directly. Thus no unbounded search
+range or numerical approximation is used for this assertion.
+\end{proof}
+
+\section{Guards, coordinates and the remaining realization problem}
+
+No detector, pole-extraction, finite-algebra, or guard equation is
+changed in this height argument. At every prepared real character,
+$H_0>1$ and $t>1$, so the previous positivity and radicand-unit
+proofs still apply for every row. The scalar shift $B$ enters only
+through $\beta$ and creates no $B$-dependent additive constant.
+
+The external-coordinate census remains nine for the single finite
+square criterion: one input, six point coordinates, one square
+parameter $z$, and one encoder coordinate. Its algebra has rank
+$64\cdot2=128$ per fixed menu branch; a finite product over menu
+branches uses the same external coordinates.
+
+These are soundness criteria. A defining polynomial still requires,
+for every nonzero integer input, rational points on the actual source
+with its prescribed root label, square parameter, chosen class, and
+every retained whole-character guard. That simultaneous realization
+is unproved. The height theorem does not establish the required
+restricted prime pattern or rational-square incidence. In particular
+the established defining-variable bounds remain twenty-five and
+thirteen.
+
+\begin{thebibliography}{9}\raggedright
+\bibitem{Conditional}\emph{Thirteen Variables from Direct Elliptic
+Index Comparison}, repository manuscript,
+\nolinkurl{papers/conditional_few_variables/direct_input13_20261110_v22.tex}.
+\bibitem{Single}\emph{A single-cover criterion from a mixed-power
+height inequality}, repository manuscript,
+\nolinkurl{papers/pole_parameters/single_cover_criterion_20261117_v56.tex}.
+\bibitem{Classes}\emph{Variable square classes with controlled height},
+repository manuscript,
+\nolinkurl{papers/pole_parameters/variable_squareclasses_20261117_v57.tex}.
+\end{thebibliography}
+\end{document}
