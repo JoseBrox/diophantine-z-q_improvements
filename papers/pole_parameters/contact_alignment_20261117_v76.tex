@@ -1,0 +1,150 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,microtype}
+\usepackage[margin=25mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\setlength{\emergencystretch}{2em}
+\newtheorem{proposition}{Proposition}
+\newcommand{\Q}{\mathbb Q}
+\title{Aligned contact numerators and physical detector scales}
+\author{}\date{17 November 2026}
+\begin{document}\maketitle
+
+\begin{abstract}
+An explicit slope relation makes the two general contact numerators
+identical. Both the original and normalized weight ratios are then
+rational squares. The physical contact normalizers prevent this
+identity from identifying even the order-one detector coefficients
+on the prepared positive domain. The result isolates a usable
+square-class identity and the additional conditions that a shared
+pole-witness construction would still have to meet.
+\end{abstract}
+
+\section*{The physical weights}
+Retain the contact set of the general source \cite{Reweighted}:
+\[
+ \Theta=\{0,-1/2,-1,1/2399,-32/407\},\qquad
+ \Theta_0=(2+\Theta)\cup(4+\Theta),
+\]
+and put
+\[
+ P(t)=\prod_{\theta\in\Theta_0}(t-\theta).
+\]
+Its ten roots are distinct and positive. Let $\rho,T\in\Q^\times$
+with $\rho>0$, and define
+\[
+ a=1+\rho T^2,\qquad
+ R_0=\frac{P(\lambda)}{(\lambda+1)^{10}},\qquad
+ R_1=\frac{P(a\lambda-4)}{(a\lambda+2)^{10}},
+\]
+\[
+ u_j=\rho R_j,\qquad
+ w_j=\frac{u_j}{(1+u_j)^2},\qquad
+ \delta_0=\lambda+1,\quad \delta_1=a\lambda+2.
+\]
+The scale $a$ is fixed by the actual root traces; it is not an
+independent variable. The detectors contain factors of the form
+$1+C^2/(\delta_j^2u_j)$, or their normalized counterparts with
+$w_j$. The even-abscissa variant \cite{Even} replaces certain
+numerators $C^2$ by $C$ while retaining these same denominators.
+
+\begin{proposition}\label{prop:alignment}
+Impose
+\[
+                   \lambda=\frac4{\rho T^2},
+\]
+and suppose that $\lambda$ exceeds every root of $P$ and
+$0<\rho<2/3$. Put $s=(\lambda+1)/(\lambda+6)$. Then $0<s<1$,
+all the displayed weights and normalizers are positive, and
+\begin{align}
+ a\lambda&=\lambda+4,& R_1&=s^{10}R_0,& u_1&=s^{10}u_0,\label{eq:raw}\\
+ \frac{w_1}{w_0}
+ &=\left(\frac{s^5(1+u_0)}{1+s^{10}u_0}\right)^2.\label{eq:norm}
+\end{align}
+Nevertheless, the two corresponding detector denominators satisfy
+\begin{align}
+ \frac{\delta_1^2u_1}{\delta_0^2u_0}&=s^8<1,\label{eq:rawscale}\\
+ \frac{\delta_1^2w_1}{\delta_0^2w_0}
+ &=\left(\frac{s^4(1+u_0)}{1+s^{10}u_0}\right)^2<1.\label{eq:normscale}
+\end{align}
+Thus this alignment does not identify the order-one detector
+coefficients when the field tests are kept unchanged.
+\end{proposition}
+\begin{proof}
+The slope relation gives $\rho T^2\lambda=4$, hence
+$a\lambda=\lambda+4$. The two contact numerators are consequently
+both $P(\lambda)$, while $\delta_1=\lambda+6$.
+This proves \eqref{eq:raw}; substitution into the normalized
+weights gives \eqref{eq:norm}. Dividing by the contact normalizers
+proves the identities in \eqref{eq:rawscale}--\eqref{eq:normscale}.
+
+For each $\theta\in\Theta_0$ one has
+$0<(\lambda-\theta)/(\lambda+1)<1$. Thus
+$0<R_0<1$ and $0<u_0<\rho<2/3$. Equality of the positive square
+root in \eqref{eq:normscale} to one would require
+\[
+ u_0=u_*:=\frac{1-s^4}{s^4-s^{10}}
+          =\frac{1+s^2}{s^4(1+s^2+s^4)}.
+\]
+The exact factorization
+\[
+ u_*-\frac23
+ =\frac{(1-s^2)(2s^6+4s^4+6s^2+3)}
+        {3s^4(1+s^2+s^4)}
+\]
+shows $u_*>2/3$. Moreover,
+\[
+ 1+s^{10}u_0-s^4(1+u_0)
+                 =(s^4-s^{10})(u_*-u_0)>0.
+\]
+This proves the strict inequality in \eqref{eq:normscale}.
+The one in \eqref{eq:rawscale} follows immediately from $0<s<1$.
+\end{proof}
+
+\section*{Square classes and the remaining arithmetic conditions}
+Whenever $V_0,V_1\in\Q^\times$ are the actual reciprocal traces,
+the two normalized pole inputs $b_j=4w_j/V_j^2$ have the same
+rational square class on this alignment. More precisely,
+\[
+ \frac{b_1}{b_0}
+ =\left(\frac{s^5(1+u_0)V_0}
+                {(1+s^{10}u_0)V_1}\right)^2.
+\]
+This statement uses the actual traces but imposes no relation
+between them. It does not show that $(1-7b_1)/(1-7b_0)$ is a
+square, that the two intrinsic pole blocks can share their full
+witness pair, or that either trace-conic radicand is a square.
+
+The coefficient inequality concerns the indicated terms with their
+unchanged field tests. It does not rule out accidental equality
+of the complete products at a special tuple, a more general
+correspondence between pole surfaces, or individual rational
+solutions on either actual square cover.
+
+The slope is fixed once $\rho$ and the root traces have fixed $T$.
+In the inherited completeness proof the roots and scale are fixed
+before the fresh comparison primes and slope are chosen. Its
+prime-pattern theorem therefore does not itself produce an aligned
+family: that would be an additional arithmetic realization assertion.
+The general scalar bounds in \cite{Scalar} give
+$0<\rho<1/56$, so the small-scalar hypothesis of
+Proposition~\ref{prop:alignment} is satisfied by those scalars; the
+separate condition that this particular slope lie beyond the contacts
+still has to be checked.
+
+The computations in
+\nolinkurl{computation/pole_parameters/general21_alignment_v75}
+verify the rational identities and threshold factorization exactly.
+An independent integer-polynomial convolution checks the decisive
+positive factorization. No actual elliptic witness or complete
+twenty-one-variable definition is asserted.
+
+\begin{thebibliography}{9}\raggedright
+\bibitem{Reweighted}\emph{Quadratic reweightings of native elliptic detectors},
+\nolinkurl{papers/pole_parameters/reweighted_elliptic_detectors_20261116_v53.tex}.
+\bibitem{Even}\emph{Even abscissa valuations in the general twenty-five-variable source},
+\nolinkurl{papers/few_variables25/even_valuation25_20261117_v75.tex}.
+\bibitem{Scalar}\emph{Intrinsic congruent-curve poles from a fixed scalar rescaling},
+\nolinkurl{papers/pole_parameters/general_intrinsic_transfer_20261117_v57.tex}.
+\end{thebibliography}
+\end{document}

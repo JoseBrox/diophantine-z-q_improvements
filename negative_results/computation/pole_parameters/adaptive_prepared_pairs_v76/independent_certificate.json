@@ -1,0 +1,44 @@
+{
+  "status": "PASS",
+  "producer_imported": false,
+  "cas_used": false,
+  "certificate_sha256": "885450ea910bd24e5909edd446898d29e164a5735c8b6b9dcd22864ffebe6097",
+  "method": "quadratic-field arithmetic, exact rational valuations, sparse polynomial coefficient checks",
+  "fixtures": [
+    {
+      "name": "quartic_in_q_class",
+      "all_exact_rational_values_match": true,
+      "b_valuations": {
+        "2": 4,
+        "3": 4,
+        "7": 4,
+        "17": 4
+      }
+    },
+    {
+      "name": "positive_quartic_class",
+      "all_exact_rational_values_match": true,
+      "b_valuations": {
+        "2": 4,
+        "3": 2,
+        "7": 0,
+        "17": 2
+      }
+    }
+  ],
+  "fresh_prime_valuations_second_fixture": {
+    "u": 0,
+    "w": -4,
+    "V": 0,
+    "C": -1,
+    "b": -4,
+    "2-V": 3
+  },
+  "polynomial_checks": {
+    "delta_identity": true,
+    "quartic_discriminant_via_q_minus_inverse_q": true,
+    "quartic_to_plus_cubic_map": true,
+    "two_isogeny_after_clearing_denominators": true
+  },
+  "scope": "Prepared abstract native products; no actual elliptic or physical lifting asserted"
+}

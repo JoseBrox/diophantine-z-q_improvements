@@ -1,0 +1,354 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,booktabs,microtype,hyperref}
+\usepackage[margin=27mm]{geometry}
+\setlength{\emergencystretch}{3em}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\newcommand{\Tr}{\operatorname{Tr}}\newcommand{\Nm}{\operatorname{N}}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}[lemma]{Proposition}
+\newtheorem{theorem}[lemma]{Theorem}
+\title{Prepared native products with no adaptive square witness}
+\author{}\date{17 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+Two admissible adaptive square classes fail to have a rational
+witness at some fully prepared native detector inputs, even when
+their added scalar is unrestricted. The first class is the previously
+retained quartic in $q=2+wc^2$. The second is $1+w^2V^4c^4$.
+For each, an exact positive native product over $\Q(\sqrt2)$ gives
+a pole input with square reduced denominator and all intrinsic-pole
+preparation conditions, but a local obstruction at $100003$ excludes
+every scalar value. At any fixed finite set of primes away from
+the obstruction prime, arbitrary prescribed finite-place and real
+closeness to the reference product can also be imposed. The second
+square equation is identified with a quartic covering of a prescribed
+congruent-number curve. These are abstract native products, not
+verified actual elliptic source tuples; the results do not disprove
+the twenty-one- or nine-variable realization criteria.
+\end{abstract}
+
+\section{Two scalar criteria and their scope}
+
+Use $K=\Q(\sqrt2)$ and write
+\[
+ w=\frac{u}{(1+u)^2},\qquad
+ W=\prod_i(1+wh_i^2)\in K^\times,\qquad
+ V=\Tr(W^{-1}),\qquad b=\frac{4w}{V^2},
+\]
+with $h_i\in K$ and all displayed divisions defined. Set
+\[
+                         C=V^2+w(2-V).
+\]
+The trace criterion of \cite{Trace} says that rational squareness
+of $C$ excludes the negative odd poles used by the source, when
+every odd valuation of $w$ is positive. Its adaptive class is
+\begin{equation}\label{eq:first}
+ q=2+wc^2,\qquad
+ \Delta(q,V)=(q^2-2q-1)^2+4q(q^2-1)V.
+\end{equation}
+Here $c$ may be any guarded rational source function. The proof in
+\cite{Trace} already permits poles of $c$ at the hypothetical bad
+prime and imposes no bound on its height or denominator.
+
+A second candidate is
+\begin{equation}\label{eq:second}
+                         \Lambda(c)=1+w^2V^4c^4.
+\end{equation}
+At a hypothetical bad pole, $\nu=v_p(w)>0$ is odd and
+$v_p(V)>\nu/2$. For nonzero $c$, the valuation of $wV^2c^2$
+is odd and nonzero. Therefore
+\[
+ v_p(\Lambda(c))=2\min\{0,v_p(wV^2c^2)\}
+\]
+is even; for $c=0$ it is zero. Thus $C\Lambda(c)$ has the same
+pole implication as $C$. It is strictly positive on the prepared
+real domain. This is an admissible sufficient test, not yet a
+complete replacement for a native pole block.
+
+For this paper, a prepared detector input means
+\begin{equation}\label{eq:prepared}
+ 0<b<1/7,\qquad b\text{ has square reduced denominator},\qquad
+ b\in\Q_2^{\times2},\quad v_2(b)\ge4,\quad v_7(b)\ge0.
+\end{equation}
+Then $d=7b$ meets the exact hypotheses of the intrinsic-pole
+realization theorem in \cite{Intrinsic}. Our examples also satisfy
+the older local square and positive-valuation requirements at
+$3$ and $17$. The assertion to be tested is whether these
+preparation conditions, together with a positive native product,
+ensure a rational $c$ for either adaptive square equation.
+
+\section{A universal obstruction for the first class}
+
+\begin{lemma}\label{lem:firstlocal}
+Let $p\equiv3\pmod4$ be prime and let $V\in\Q_p$ satisfy
+$V\equiv1\pmod p$. Then $\Delta(q,V)$ is a nonzero square
+in $\Q_p$ for every $q\in\Q_p$. Consequently, if $C$ is a
+nonsquare unit, $C\Delta(q,V)$ is never a square, even with
+$q$ unrestricted.
+\end{lemma}
+\begin{proof}
+The exact identity is
+\[
+ \Delta(q,V)=(q^2+1)^2+4(V-1)q(q^2-1).
+\]
+For integral $q$, the denominator $q^2+1$ is a unit because
+$-1$ is not a square modulo $p$. Thus
+$\Delta/(q^2+1)^2\in1+p\Z_p$.
+For $e=v_p(q)<0$, the correction quotient has valuation
+$v_p(V-1)-e>0$, giving the same conclusion. The case $q=0$
+gives $\Delta=1$. The subgroup $1+p\Z_p$ consists of squares
+for odd $p$, proving both assertions.
+\end{proof}
+
+\begin{theorem}\label{thm:first}
+There is a positive native product with
+$0<w<1/4$, $200/101<V<2$ and prepared input \eqref{eq:prepared}
+for which
+\[
+                      C\Delta(2+wc^2,V)
+\]
+is not a square in $\Q_{100003}$ for any $c\in\Q_{100003}$.
+\end{theorem}
+\begin{proof}
+Put
+\[
+ p=100003,\qquad
+ m=\frac{509796}{28707122557},\qquad
+ z=\frac{509796}{32337379873},
+\]
+and define
+\[
+ u=m^2,\quad w=\frac{m^2}{(1+m^2)^2},\quad
+ h=\frac{z(1+m^2)}m,\quad W=1+wh^2=1+z^2.
+\]
+These are rational elements of $K$, so both reciprocal slots
+agree and
+\[
+ V=\frac2{1+z^2},\qquad
+ b=\left(\frac{m(1+z^2)}{1+m^2}\right)^2.
+\]
+The exact checker verifies $0<m,z<1/1000$, the claimed real
+bounds, and \eqref{eq:prepared}. In particular $b$ is a rational
+square; its valuations at $2,3,7,17$ are all four.
+
+Trial division through $316$ verifies that $p$ is prime, and
+$p\equiv19\pmod{24}$. Direct rational reduction gives
+\[
+ m\equiv7121,\quad 7121^2-7121+1\equiv0,\quad z\equiv1,
+ \qquad w\equiv V\equiv1,\quad C\equiv2\pmod p.
+\]
+Euler's criterion gives $2^{50001}\equiv-1\pmod p$.
+Thus $C$ is a nonsquare unit and Lemma~\ref{lem:firstlocal}
+applies to every $q$, hence to every $2+wc^2$.
+\end{proof}
+
+This obstruction is compatible with arbitrarily strong preparation
+at any fixed finite set of other primes. To see this directly, choose
+an integer $M$ divisible by sufficiently high powers of those primes,
+with $p\nmid M$, and put
+\[
+                         m=\frac{M}{1+Mk},\qquad
+                         z=\frac{M}{1+Ml}.
+\]
+Prescribe $m\equiv7121$ and $z\equiv1\pmod p$ by choosing
+the classes of $k,l$ modulo $p$. Then increase positive $k,l$
+in those classes. This makes $m,z$ arbitrarily small at the real
+place while keeping their prescribed large positive valuations
+at the fixed primes. Consequently $W\to1$, $V\to2$ there,
+and $b$ is a small rational square. The radicand $C\Delta(2,V)$
+can be made a nonzero local square at every fixed preparation
+prime; its limit is $4\cdot49$. The fresh-prime obstruction
+remains unchanged.
+
+\section{A different obstruction for the second class}
+
+\begin{lemma}\label{lem:secondlocal}
+For $p\equiv3\pmod4$ and every $r\in\Q_p$,
+\[
+                         v_p(1+r^2)=2\min\{0,v_p(r)\}
+\]
+is even, with the usual interpretation at $r=0$. If $v_p(C)$
+is odd, then $C\Lambda(c)$ is not a square for any
+$c\in\Q_p$.
+\end{lemma}
+\begin{proof}
+When $v_p(r)\ne0$ the summands have different valuations.
+When $v_p(r)=0$, $-1$ is not a residue square, so the sum is
+a unit. Apply this to $r=wV^2c^2$.
+\end{proof}
+
+\begin{theorem}\label{thm:second}
+There is a positive native product with both real slots between
+$1$ and $101/100$, with normalized weight and prepared input
+\eqref{eq:prepared}, such that $C\Lambda(c)$ is not a square
+in $\Q_{100003}$ for any $c\in\Q_{100003}$.
+\end{theorem}
+\begin{proof}
+Keep $p=100003$ and set
+\[
+ r=44974,\qquad M=714^2,\qquad
+ h=Mp^3(r+\sqrt2),
+\]
+\[
+ u=52581464203154325228257242401217852539664811276478096.
+\]
+\[
+ w=\frac{u}{(1+u)^2},\qquad W=1+wh^2.
+\]
+Write $W=A+B\sqrt2$, $N=A^2-2B^2$, and use
+$V=2A/N$, $b=4w/V^2$. The integer $u$ satisfies
+\[
+ \begin{array}{c|ccccc}
+ \text{modulus}&p^3&128&27&4913&7\\\hline
+ u& p^2-1&16&9&289&1.
+ \end{array}
+\]
+It was chosen by the Chinese remainder theorem above
+$100H^2+100$, where $H=Mp^3(r+2)$ bounds the absolute
+value of both real slots of $h$. Since $w<1/u$, both slots
+of $W$ lie in $(1,101/100)$. Hence $200/101<V<2$,
+and the exact bound also gives $0<b<1/7$.
+
+All odd valuations of $w$ are positive because $u$ is a positive
+integer and its normalization denominator is a square. Moreover
+\begin{equation}\label{eq:bsquareclass}
+                         b=u\left(\frac{N}{(1+u)A}\right)^2.
+\end{equation}
+At every odd prime dividing $u$, the integrality of $h$ gives
+$W\equiv1$, $A,N\equiv1$, and $V\equiv2$. Thus $b$ has
+positive valuation there. At all other odd primes its valuation
+is even. The displayed congruences give $v_2(b)=4$ and the
+$2$-adic square class of a square. They also give the square
+classes and valuations two at $3$ and $17$. At $7$, $h$ is
+divisible by $7$ and $u\equiv1$, so $A,N,V$ are units and
+$v_7(b)=0$. This proves \eqref{eq:prepared}, including square
+reduced denominator. The checker also verifies that denominator
+directly as an integer square.
+
+At the fresh prime, $v_p(r^2+2)=1$ and $v_p(1+u)=2$.
+Both slots of $h$ have valuation three in the unramified
+quadratic extension. With $t=wh^2$ one has $v_p(t)=2$ and
+\[
+ v_p(\Tr(t))=v_p\bigl(2wM^2p^6(r^2+2)\bigr)=3.
+\]
+The terms from $t^2,t^3,\ldots$ in the convergent expansion of
+$(1+t)^{-1}$ have trace valuation at least four. Consequently
+\[
+ v_p(w)=-4,\quad v_p(V)=0,\quad v_p(2-V)=3,
+ \quad v_p(C)=-1,\quad v_p(b)=-4.
+\]
+The negative valuation of $b$ is even and is compatible with
+pole preparation. The odd valuation of $C$ invokes
+Lemma~\ref{lem:secondlocal}, excluding every scalar $c$.
+\end{proof}
+
+Here too any prescribed finite preparation away from $p$ can
+be strengthened. Increase the divisibility of $M$ at the fixed
+primes. At each of them choose $u$ with arbitrarily large even
+positive valuation and square unit part, while retaining
+$u\equiv p^2-1\pmod{p^3}$. Increase the positive CRT solution
+so that $u/H^2$ is arbitrarily large. Then $W$ approaches one
+and $V$ approaches two at the fixed places and at the real place,
+while $b$ remains prepared. The proof of the fresh valuations
+uses only the unchanged congruences at $p$.
+
+\section{The quartic curve behind the second criterion}
+
+Let $w>0$ and $1<V<2$ be fixed rational values. Put
+\[
+ B_*=\frac C{V^2}=1+\frac b4(2-V),\qquad z=\frac{V^2c}{2}.
+\]
+Dividing the square root by $V$ transforms the second criterion
+exactly into
+\begin{equation}\label{eq:quartic}
+                         y^2=B_*(1+b^2z^4).
+\end{equation}
+Its nonsingular projective normalization has genus one. For
+$z\ne0$, the explicit map
+\[
+ X=B_*b^2z^2,\qquad Y=B_*b^2zy
+\]
+gives
+\[
+                         Y^2=X^3+(B_*b)^2X.
+\]
+Conversely a point on this latter curve with
+$X\in B_*\Q^{\times2}$ gives a point of \eqref{eq:quartic}.
+The point $z=0$ exists exactly when $B_*$ is a rational square.
+Writing $n=B_*b$, the usual degree-two map
+\[
+ x=X+\frac{n^2}{X},\qquad y'=Y\left(1-\frac{n^2}{X^2}\right)
+\]
+lands on the prescribed congruent-number curve
+\[
+                         (y')^2=x^3-(2n)^2x.
+\]
+The checker verifies both maps by exact polynomial identities.
+They preserve an additional square-class requirement; mere positive
+rank of the last curve would not automatically recover the
+prescribed quartic point.
+
+The intrinsic-pole theorem permits choosing an auxiliary twist
+parameter after the prepared input has been fixed. It does not
+prescribe a point on this fixed curve with parameter $2B_*b$.
+Theorem~\ref{thm:second} directly shows that pole preparedness
+cannot supply such a conclusion in general.
+
+For comparison, the first criterion is already a higher-genus
+problem in its unrestricted scalar $c$. Its quartic in $q$ has
+discriminant
+\[
+                 16384V^2(V-2)^2(V-1)^2.
+\]
+For $1<V<2$ it has four distinct roots, none equal to $2$,
+since $\Delta(2,V)=1+24V>0$. Substituting $q=2+wc^2$
+therefore gives a squarefree degree-eight polynomial, whose
+double cover has genus three. This observation is independent
+of the two exact local obstructions.
+
+\section{What the counterexamples do and do not establish}
+
+Both examples are literal positive native products of the form
+$1+wh^2$ over $K$. They satisfy the normalized-weight parity
+condition, the intrinsic pole preparation, and strict real bounds;
+arbitrary fixed-place preparation away from the obstruction prime
+is compatible with the obstructions.
+Under the retained arithmetic premise, the intrinsic-pole theorem
+still supplies its two-parameter witnesses at $d=7b$.
+
+The examples therefore disprove completeness of either proposed
+one-free-scalar replacement on the class of all such prepared
+native inputs. The first obstruction permits every $q\in\Q_p$,
+which is stronger than merely varying $c$ in its specified formula.
+The second obstruction defeats every rational value of $c$ in
+\eqref{eq:second}.
+
+Neither $h$ nor $u$ in these examples has been lifted to the actual
+elliptic test tuple and physical contact map of the general or
+conditional source. These results are not counterexamples to
+existence of some other actual prepared witness for each integer
+input. No impossibility of a complete twenty-one- or nine-variable
+definition, and no lower bound on defining-polynomial variables,
+is asserted.
+
+The standalone exact verifier and full rational values are in
+\begin{quote}\small
+\nolinkurl{negative_results/computation/pole_parameters/adaptive_prepared_pairs_v76}.
+\end{quote}
+The universal quantifiers over $c$ follow from the valuation
+lemmas, not from a finite search. The checker verifies primality,
+residue and valuation data, reduced denominators, all stated
+preparation inequalities, and the polynomial identities.
+
+\begin{thebibliography}{9}\raggedright
+\bibitem{Trace}\emph{A rational conic criterion using the actual
+detector trace},
+\nolinkurl{papers/pole_parameters/trace_conic_criterion_20261117_v57.tex},
+especially the adaptive-class proposition in its final subsection.
+\bibitem{Intrinsic}\emph{A two-coordinate pole test of coefficient
+height four},
+\nolinkurl{papers/pole_parameters/intrinsic_pole_20261117_v56.tex},
+Theorem 2.1 and its prepared detector-input application.
+\end{thebibliography}
+\end{document}

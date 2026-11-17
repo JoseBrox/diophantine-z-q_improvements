@@ -1,0 +1,418 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,booktabs,microtype}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\setlength{\emergencystretch}{3em}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\newcommand{\Tr}{\operatorname{Tr}}\newcommand{\Nm}{\operatorname{N}}
+\newcommand{\ord}{\operatorname{ord}}\newcommand{\PP}{\mathbb P}
+\title{Native pole witnesses: norm composition and forced ramification}
+\author{}\date{17 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+The detector product has an explicit quadratic norm representation.
+An actual seven-contact multiplication tuple and physical slope show that
+this representation does not supply a native pole witness: all pre-pole
+whole-character guards hold, but the pole input has valuation $-7$ at
+$100003$. We also show that the native pole equations themselves, over
+discretely valued function fields, force even ramification above every
+negative odd contact pole. A degree-$d$ fixed-point slope cover carrying
+native witnesses therefore has genus at least $1+d(r-4)/4$, where
+$r=10,14,18$ for the general, seven-contact and nine-contact sources.
+The existing abelian-family argument extends to native pole witnesses,
+including the even-valuation revisions. These conclusions concern
+specific geometric constructions; they do not disprove prepared rational
+realization or give a lower bound for other Diophantine definitions.
+\end{abstract}
+
+\section{What the built-in norm actually gives}
+Let $K=\Q(\sqrt2)$, let $u\in\Q^\times$, and let $D_i\in K$.
+In the quadratic algebra with $s^2=-u$, put
+\[
+ Z=\prod_i(1+D_i s/u)=X+Ys,
+ \qquad X=a+b\sqrt2,\quad Y=c+d\sqrt2.
+\]
+Then
+\begin{equation}\label{eq:norm}
+ W=\prod_i(1+D_i^2/u)=X^2+uY^2=W_0+W_1\sqrt2,
+\end{equation}
+where
+\[
+ W_0=a^2+2b^2+u(c^2+2d^2),\qquad W_1=2(ab+ucd).
+\]
+Taking the other quadratic norm first gives
+\begin{equation}\label{eq:cross}
+ \Nm_{K/\Q}(W)=C^2+uE^2=W_0^2-2W_1^2,
+ \quad C=a^2-2b^2-u(c^2-2d^2),\quad E=2(ac-2bd).
+\end{equation}
+Thus, whenever $W_0\ne0$, there is an explicit rational point on
+\[
+              (C/W_0)^2+u(E/W_0)^2+2(W_1/W_0)^2=1.
+\]
+Writing $Z^{-1}=A+Bs$ likewise expresses
+$\Tr(W^{-1})$ as twice a value of
+$x_1^2+2x_2^2+u(x_3^2+2x_4^2)$.
+These identities hold for every list $D_i$. They add no condition to
+the detector. The following example shows why they cannot be used as
+an automatic native pole certificate, even on actual multiplication points.
+
+\section{An actual physical counterexample}
+Use the original squared balancing of the seven-contact source
+\cite{Seven}, with its enlarged auxiliary charts. On
+\[
+ E:y^2=x^3-(11-6\sqrt2)x
+\]
+take
+\[
+ X=1,\quad B=3,\quad A=P,\quad H=U=R=(1+\sqrt2,2\sqrt2),
+ \quad 2R=P.
+\]
+This is the intended multiplication relation $U=[1]H$.
+Its selected-character tests are
+\[
+ (C_1,\ldots,C_6)=(c,c,\bar c,\bar c,0,0),\qquad c=\sqrt2-1.
+\]
+Set
+\begin{equation}\label{eq:fixture}
+ p=100003,\quad M=\frac{10621537}{256},\quad a=M^8,
+ \quad z=a+8+p,
+\end{equation}
+and use the actual physical functions
+\[
+ F=\prod_{c_0\in\{-7,-6,-4,1,3,5,8\}}((a+c_0)^2-z^2),
+ \quad u=-14F/F_a,\quad w=\frac{u}{(1+u)^2},
+\]
+where differentiation precedes specialization of $a$.
+The number $p$ is prime. Exact arithmetic gives the residues below;
+the modulus is $p^2=10000600009$.
+\[
+\begin{array}{c|rrrr}
+ &a&z&F&F_a\\\hline
+ \bmod p^2&4435335376&4435435387&3047091410&2746251916
+\end{array}
+\]
+In particular $v_p(F)=1$, $v_p(F_a)=0$, $v_p(u)=1$, and
+$(u/p)\bmod p=14$. Also $a>10$ and $z>a+10$.
+Every factor of $F$ is negative and every summand in $F_a$ is
+positive. More precisely,
+\[
+ u=\frac{14}{\sum_{c_0}2(a+c_0)/(z^2-(a+c_0)^2)}>2p>0,
+\]
+because each denominator difference $z-a-c_0$ is at least $p$.
+
+For this actual tuple define
+\[
+ D(u)=u^2(u^2+6u+1)^2,\qquad
+ R(u)=D(u)+2u^3+12u^2+34u+1.
+\]
+Direct conjugate multiplication, independently reconstructed in
+\cite{Seven}, gives
+\[
+ W=(R/D)^2,\qquad V=\Tr(W^{-1})=2/W,\qquad
+                       b=\frac{4w}{V^2}=wW^2.
+\]
+Consequently
+\begin{equation}\label{eq:bad}
+ v_p(D)=2,\quad v_p(R)=0,\quad v_p(W)=-4,
+ \quad v_p(V)=4,\quad v_p(b)=v_p(7b)=-7.
+\end{equation}
+The norm product \eqref{eq:norm} still holds exactly: its factors use
+$D_i=C_i^2/(1+uC_i^2)$ with the actual six tests above.
+
+\begin{proposition}\label{prop:example}
+The tuple \eqref{eq:fixture} satisfies every pre-pole point, contact,
+balanced-denominator, product and trace guard of the seven-contact
+source at all $64$ geometric point characters. Its built-in norm
+representation does not lift to any intrinsic native pole witness.
+\end{proposition}
+\begin{proof}
+At each real slot the three point ordinates have independent signs.
+Every required difference is one of $\pm R,\pm3R$. Exact duplication
+and addition verify that $P,R,3R$ have nonzero abscissae and ordinates
+at both embeddings, and $x(P)-x(R)$ is nonzero at both. The old point,
+difference and quotient guards therefore hold at every character.
+The scale and contact functions depend only on retained abscissae,
+so the positivity just proved holds at every character.
+
+All balanced denominators are $1+uC_i^2>0$ at every real slot.
+Every detector factor is at least one; thus products, their norms,
+and their reciprocal traces are positive. The trace and intrinsic
+input are nonzero. The companion checker also evaluates the actual
+stored coefficient DAG at all $64$ characters modulo $1000000007$.
+Every native pre-pole guard has nonzero reduction, independently
+certifying its nonvanishing in characteristic zero. The checker
+verifies all $768$ balanced denominator signs exactly in $\Q(\sqrt2)$.
+
+Finally \eqref{eq:bad} and Lemma~\ref{lem:intrinsic} below exclude
+every intrinsic pole witness, including one with zero final ordinate.
+\end{proof}
+
+The example is not asserted to meet fixed-place or selected-prime
+preparation. It shows failure of an automatic implication from the
+norm identity, actual multiplication points, a physical slope, and
+all pre-pole guards. It does not show failure of the integer input's
+prepared existence assertion. The fixture $B=3$ is not certified to
+be a sufficient defining parameter.
+
+\section{Native pole equations over valued function fields}
+All valuations in this section are discrete, with values in $\Z$.
+The value of zero is $+\infty$.
+
+\begin{lemma}\label{lem:intrinsic}
+Over any discretely valued field, a solution of
+\begin{equation}\label{eq:intrinsic}
+ Y^2=\eta(\eta+v^2)^2s^4-
+                 \eta(\eta-v^2)^2(1-\eta)^2
+\end{equation}
+cannot have a negative odd value of $\eta$.
+No nonzero restriction on $v,s,Y$ is needed.
+\end{lemma}
+\begin{proof}
+Suppose $\nu=v(\eta)<0$ is odd. Set
+$r=\min(\nu,2v(v))$. The two terms defining $\eta\pm v^2$
+have unequal valuations, so both expressions have value $r$.
+Also $v(1-\eta)=\nu$. The two summands on the right of
+\eqref{eq:intrinsic} have values
+\[
+                       \nu+2r+4v(s),\qquad3\nu+2r.
+\]
+When $s\ne0$ they are odd and unequal, since equality would give
+$2v(s)=\nu$. When $s=0$, only the second remains. The radicand
+is therefore nonzero with odd valuation, contradicting the square.
+This is the proof of \cite[Theorem 1.1]{Intrinsic}, with no use of
+the residue field being finite or of the valued field being $\Q_p$.
+\end{proof}
+
+\begin{lemma}\label{lem:general}
+Suppose $v(2)=v(3)=v(17)=0$. The general native equations
+\begin{equation}\label{eq:general}
+ p_0^2=B_0(1-e)(1+3e),\qquad
+ B_0q_0^2=(s^2-B_0e(B_0-b^2))(s^2+3B_0e(B_0-b^2)),
+ \quad B_0=17b
+\end{equation}
+exclude a negative odd valuation of $b$. This permits zero ordinates.
+The same assertion holds in their guarded rescaled chart.
+\end{lemma}
+\begin{proof}
+Let $\nu=v(b)<0$ be odd. If $v(e)<0$, the first right side has
+valuation $\nu+2v(e)$, which is odd. If $v(e)>0$, including
+$e=0$, it has valuation $\nu$, again odd. Thus $v(e)=0$.
+Write $A_0=B_0e(B_0-b^2)$. Since $v(B_0-b^2)=2\nu$, we get
+$v(A_0)=3\nu$, an odd integer. The values $2v(s)$ and $3\nu$
+are unequal. Both factors in the second right side have valuation
+$\min(2v(s),3\nu)$; their product is nonzero of even valuation.
+The left side is zero or has odd valuation, a contradiction.
+
+The rational rescaling in \cite[Section 4]{Unit} is invertible when
+its input, multiplier and denominator guards hold. Hence it carries
+any rescaled-chart solution back to \eqref{eq:general}. The argument
+does not require the last ordinate to be nonzero.
+\end{proof}
+
+For geometric valuations in characteristic zero, rational nonzero
+constants have valuation zero. Thus both lemmas apply, and replacing
+$b$ by $7b$ in the intrinsic source does not change a pole order.
+
+\section{Every finite slope cover carrying native witnesses}
+
+\begin{theorem}\label{thm:cover}
+Let $k$ be an algebraically closed field of characteristic zero and
+let $b(t)\in k(t)^\times$ have negative odd order at $r\ge1$ distinct
+points of $\PP^1$. Let $C$ be a smooth projective connected curve
+with a finite map $t:C\to\PP^1$ of degree $d$, and suppose
+$k(C)$ contains native pole witnesses for $b(t)$ of either preceding
+kind, on the required guarded chart. Then every ramification index
+above these $r$ points is even. In particular $d$ is even and
+\begin{equation}\label{eq:genus}
+                         g(C)\ge1+\frac{d(r-4)}4.
+\end{equation}
+The same conclusion holds for any replacement certificate whose
+solutions over these valued function fields exclude negative odd
+orders of the same input.
+\end{theorem}
+\begin{proof}
+At a point of $C$ above a pole of odd order $m<0$, the pulled-back
+order is $em$, where $e$ is its ramification index. The native local
+lemmas force $e$ even. Thus there are at most $d/2$ geometric points
+in each such fiber, and its contribution to ramification is at least
+$d-d/2=d/2$. Riemann--Hurwitz \cite{Stacks} gives
+\[
+                      2g(C)-2\ge-2d+rd/2,
+\]
+which is \eqref{eq:genus}. The fibers also show that $d$ is even.
+\end{proof}
+
+Fix a guarded rational point character in one of the actual detector
+sources, including its point coordinates and scale. In a derivative
+source $a>\max_c|c|$, as in the actual construction, so its $2k$
+contact positions are pairwise distinct. At a derivative contact
+$z=\pm(a+c)$, the derivative
+weight has a simple zero: for $k$ shifts,
+\[
+ u=-2kF/F_a,\qquad u'(\pm(a+c))=\pm2k.
+\]
+The same is true of $w=u/(1+u)^2$. Every nonzero balanced test
+contributes a simple pole to $W$ in each slot; each zero test
+contributes one. The required reciprocal tests are nonzero, so
+$V=\Tr(W^{-1})$ vanishes to order at least one. If cancellation
+raises that order, the following conclusion only becomes stronger:
+\[
+                  \ord(b)=1-2\ord(V)<0\quad\hbox{is odd}.
+\]
+If $V$ vanishes identically, the guarded fiber is empty and is omitted.
+The argument applies to both versions of balanced abscissa tests.
+
+For the first general detector, its ten contacts are simple zeros
+of $q=\rho R$ and of its normalized $w$. The normalizer is a unit.
+Each nonzero field factor has a pole; zero field tests contribute
+one. Scalar factors tend to one, with second summands of order at
+least three in the native source and at least five in the normalized
+source. The nonzero reference reciprocal supplies a pole in each
+slot. Therefore the same negative odd order of $b$ follows. It also
+holds for the unsquared first-ten revision \cite{Even25}.
+
+The resulting bounds are
+\[
+\begin{array}{lrrl}
+\toprule
+\text{Source}&r&\text{minimum }g\ (d=2)&\text{bound for degree }d\\
+\midrule
+\text{General first detector}&10&4&1+3d/2\\
+\text{Seven derivative contacts}&14&6&1+5d/2\\
+\text{Nine derivative contacts}&18&8&1+7d/2\\
+\bottomrule
+\end{array}
+\]
+This excludes every genus-zero or genus-one finite slope cover
+carrying native witnesses, regardless of which rational expressions
+are used for its pole parameters. It is not restricted to the
+previous actual-trace square equation. A genus bound does not exclude
+individual rational points or higher-dimensional arithmetic families.
+
+\section{Nonconstant slopes on abelian families}
+Let $\mathcal R=\operatorname{Res}_{K/\Q}E$. We use the established
+simplicity of $\mathcal R$ over $\Q$ and the point-map facts in
+\cite[Sections 3 and 5]{Abelian}. They concern the original and full
+auxiliary point domains. The following proof spells out the additional
+native-pole step and the required codimension condition.
+
+\begin{theorem}\label{thm:abelian}
+Let $J/\Q$ be an abelian variety with a rational map into a guarded
+native-pole source. In the derivative source fix the input, coefficient
+parameter and root point $A$, so its contact positions are constant.
+In the general source fix the input and coefficient exponent; its
+first detector already has constant comparison scale one. Then the
+physical slope of the rational map is constant. This includes both
+even-valuation revisions, and holds after isogenies. No exclusion of
+constant-slope abelian families is asserted.
+\end{theorem}
+\begin{proof}
+The reference-point map $J\dashrightarrow\mathcal R$ extends to
+a morphism, a homomorphism followed by translation
+\cite[Chapter I, Theorem 3.2 and Corollary 3.7]{Milne}.
+By simplicity its image is a point or all of $\mathcal R$.
+If constant, the two reference reciprocals are nonzero constants by
+the guards. Otherwise work over $\overline\Q$, where
+$\mathcal R=E\times E^\sigma$. In the first slot the simultaneous
+zero locus of
+\[
+                     f(H),\qquad\overline{f(H-P)}
+\]
+is the inverse image of $(O,\bar P)$; in the other slot it is the
+inverse image of $(P,O)$. The only zero of $f=1/x$ is $O$.
+Fibers of a surjective abelian homomorphism have codimension two.
+Thus no divisor has both reference reciprocals of positive order
+in either slot.
+
+Consider a prime divisor of $J_{\overline\Q}$ where the slope
+minus one of its constant contact values has positive odd order
+$\nu$. The physical contact weight has order $\nu$.
+In the derivative source, every detector factor has nonpositive
+order. For the original balancing this follows from
+\[
+ \ord(D_i)=\max(2\ord(C_i),-\nu),\qquad
+ \ord(1+D_i^2/u)=\min(0,2\ord(D_i)-\nu).
+\]
+For unsquared abscissa balancing replace $2\ord(C_i)$ in the first
+formula by $\ord(C_i)$. This is valid because the divisor of an
+elliptic reciprocal abscissa is even, also after pullback. In each
+slot one reference test has nonpositive order, so its factor has
+order at most $-\nu$.
+
+For the general source the normalizer is a unit at a contact.
+Its squared factors have an even numerator order minus an odd
+multiple of $\nu$. The unsquared reciprocal factors have the same
+parity because their reciprocal divisors are even. All factors again
+have nonpositive order, and one reference factor in each slot has
+order at most $-\nu$. Zero comparison or scalar tests contribute one.
+
+In either source $\ord(V)\ge\nu$, including any cancellation
+between slots. Hence the pole input has odd negative order
+\[
+                         \ord(b)=\nu-2\ord(V)\le-\nu.
+\]
+The native pole lemmas contradict the supposed rational witnesses.
+Every component of each contact fiber must therefore have even
+multiplicity.
+
+Let $t$ denote the slope and let $t_1,\ldots,t_r$ be these constant
+contacts. The divisor of $q=\prod_i(t-t_i)$ is even: its zero
+divisors are even and its poles are $r$ times the pole divisor of
+$t$, with $r=10,14,18$ even. Half this divisor defines a line bundle
+whose square is trivial. The associated square-root algebra gives
+a finite etale double cover on which $q$ is a square. If already a
+square, use the trivial cover. A connected component of that cover
+is an abelian variety after choosing an origin
+\cite[Chapter I, Remark 12.3]{Milne}. Alternatively over $\mathbb C$
+it is a finite-index lattice cover of a complex torus, and is
+projective by pullback of an ample bundle.
+
+If $t$ were nonconstant, this abelian variety would map rationally
+to $s^2=\prod_i(t-t_i)$, a fixed smooth curve of genus
+$(r-2)/2\ge4$. Composing with its Abel--Jacobi embedding gives a
+rational map to its Jacobian. It extends and is a translated
+homomorphism. A one-dimensional image is an elliptic translate,
+which cannot be that higher-genus curve. Thus $t$ is constant.
+\end{proof}
+
+\section{Scope and exact checks}
+The package \texttt{native\_pole\_ramification\_v75}, under
+\nolinkurl{negative_results/computation/pole_parameters/},
+checks the norm identities, the exact physical example, its point
+duplication and tripling, and every native pre-pole character guard.
+Finite valuation boundary checks supplement the universal proofs;
+they are not used to infer them. The proof handles zero tests, trace
+cancellation and zero terminal ordinates explicitly.
+
+The ramification theorem applies to covers carrying native witnesses
+or another certificate with the same valued-function-field property.
+It does not cover an arbitrary arithmetically sound criterion whose
+proof over $\Q$ does not extend to those geometric valuations.
+The abelian theorem leaves constant slopes, individual rational
+witnesses and nonabelian varieties of dimension at least two open.
+None of the results disproves the required prepared realization for
+integer inputs, proves a variable lower bound, or completes the
+twenty-one- or nine-variable target.
+
+\begin{thebibliography}{9}\raggedright
+\bibitem{Intrinsic}\emph{An intrinsic two-parameter pole witness},
+\nolinkurl{papers/pole_parameters/intrinsic_pole_20261117_v56.tex}.
+\bibitem{Unit}\emph{A single norm determinant for the 25- and 13-variable constructions},
+\nolinkurl{papers/finite_algebra/unit_norm_20261114_v28.tex}.
+\bibitem{Seven}\emph{Seven-contact detectors and a genus-twelve actual weight curve},
+\nolinkurl{papers/conditional_few_variables/seven_contact_detector_20261117_v74.tex}.
+\bibitem{Even25}\emph{Even-valuation abscissa tests in the general detector},
+\nolinkurl{papers/few_variables25/even_valuation25_20261117_v75.tex}.
+\bibitem{Abelian}\emph{Curves and abelian families in an actual-trace square locus},
+\nolinkurl{negative_results/papers/pole_parameters/curves_and_abelian_families_20261117_v69.tex}.
+\bibitem{Milne}J. S. Milne, \emph{Abelian Varieties}, version 2.0,
+2008, Chapter I, Theorem 3.2, Corollary 3.7 and Remark 12.3.
+\url{https://www.jmilne.org/math/CourseNotes/AV.pdf}.
+\bibitem{Stacks}The Stacks Project, Section 53.12, Riemann--Hurwitz,
+Tag 0C1B.\quad\url{https://stacks.math.columbia.edu/tag/0C1B}.
+\end{thebibliography}
+\end{document}

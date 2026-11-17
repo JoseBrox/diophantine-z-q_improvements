@@ -1,0 +1,241 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,microtype,booktabs}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue]{hyperref}
+\setlength{\emergencystretch}{2em}
+\newtheorem{proposition}{Proposition}
+\newcommand{\Q}{\mathbb Q}\DeclareMathOperator{\Tr}{Tr}
+\title{Failure of automatic preparation for raw abscissa factors}
+\author{}\date{17 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+At an exact multiplication tuple and an actual physical slope, replacing
+four balanced abscissa factors by either $1+C_i/u$ or $1+C_i^2/u$
+creates negative odd valuation in the pole input. The two comparison
+tests remain balanced. All pre-pole point, contact and detector guards
+hold, and the real pole input lies strictly between zero and one at
+every point character. The defect occurs in both conjugate slots at
+$76777$. Projective multiplication modulo $76777^2$ and a separate
+affine computation certify it. This disproves automatic preparation
+for these raw replacements; it does not exclude a different choice
+of witnesses or a new completeness argument.
+\end{abstract}
+
+\section*{The two precisely specified replacements}
+Retain the derivative detector's curve and non-torsion point
+\[
+ K=\Q(\sqrt2),\quad E:y^2=x^3-d^2x,\quad d=3-\sqrt2,
+ \quad P=\left(\frac{57-28\sqrt2}{8},\frac{-660+417\sqrt2}{32}\right).
+\]
+The arithmetic input $2E(K)=\mathbb ZP$ and the point charts are those
+of \cite{Derivative,FullAux}. Put $f=1/x$, $\zeta=-x/y$, and retain
+\[
+ r=\frac{\zeta(U)}{\zeta(H)},\qquad
+ r'=\overline{\frac{\zeta(U-A)}{\zeta(H-P)}},
+\]
+\[
+ (C_1,\ldots,C_6)
+ =\bigl(f(H),f(U),\overline{f(H-P)},\overline{f(U-A)},r-r',r-X\bigr).
+\]
+For $e\in\{1,2\}$ define the candidate raw detector
+\begin{equation}\label{eq:raw}
+ W_e=\prod_{i=1}^4\left(1+\frac{C_i^e}{u}\right)
+          \prod_{i=5}^6\left(1+\frac{D_i^2}{u}\right),
+ \qquad D_i=\frac{C_i^2}{1+uC_i^2}.
+\end{equation}
+Thus the exponent-one variant uses the even abscissa valuations directly;
+the exponent-two variant merely omits the first four balancing denominators.
+Both retain the original balanced comparison tests. Write
+\[
+ V_e=\Tr(W_e^{-1}),\quad w=\frac{u}{(1+u)^2},\quad
+ b_e=\frac{4w}{V_e^2},\quad\eta_e=7b_e,
+ \qquad R_e=V_e^2+w(2-V_e).
+\]
+
+\section*{An exact actual tuple}
+\begin{proposition}
+Take
+\[
+ X=n=2,\qquad B=3,\qquad A=2P,\quad H=10336P,\quad U=20672P=2H.
+\]
+The root trace and the physical data are
+\[
+ T=\Tr x(2P)=\frac{8226963211}{1142622768},\qquad
+ M=7^4+T^4,\qquad a=M^4,\qquad z=670434583579295,
+\]
+\[
+ F=\prod_{c\in\{-10,-8,-5,1,2,3,4,6,7\}}((a+c)^2-z^2),
+ \qquad u=-18F/F_a.
+\]
+Here $F_a$ is differentiated before specializing $a$.
+All pre-pole point, difference, contact and detector denominator guards
+are nonzero at every point-algebra character. In both real embeddings,
+and at every real point character, one has
+\[
+ z>a+100,\qquad u>100,\qquad 0<\eta_e<\frac{847}{10000}<1.
+\]
+Nevertheless, at $p=76777$,
+\[
+                 v_p(b_1)=-1,\qquad v_p(b_2)=-5,
+                 \qquad v_p(R_1)=v_p(R_2)=1.
+\]
+Thus neither actual $R_e$ is a rational square, and neither $\eta_e$
+has square reduced denominator. The intrinsic pole equation has no
+rational solution for either input.
+\end{proposition}
+
+\begin{proof}
+Every point or difference used here is a nonzero multiple of $P$.
+In particular the difference indices are $10335$ and $20670$.
+Non-torsion excludes zero abscissae and ordinates. The affine addition
+denominators are nonzero because $10336\ne\pm1$ and
+$20672\ne\pm2$. The same statements hold after independently
+changing the ordinate signs in either real slot: the resulting
+difference indices are among $\pm10336-1$ and
+$\pm20672\mp2$, none of which is zero. All these points lie in
+$2E(K)$.
+
+For completeness of the real guard argument, every nonzero double on
+$y^2=x^3-d^2x$ has abscissa at least $d$ in its real embedding.
+This follows, for example, from
+\[
+ x(2Q)-d=
+ \left(\frac{x(Q)^2-2d x(Q)-d^2}{2y(Q)}\right)^2\ge0.
+\]
+Here $d$ is positive in both embeddings, and $3-\sqrt2>1$.
+Equality would make $2Q$ a point of order two, which cannot occur
+for a nonzero multiple of $P$. Therefore each of the first four
+$C_i$ lies strictly between zero and one, at every real point
+character. The ordinate roots of the point algebra at these data
+are real in both slots. Thus these sign characters exhaust all its
+characters for purposes of the nonzero norm guards.
+
+Exact rational comparison gives $z>a+100$. Every contact factor is
+negative, so $F<0$, $F_a>0$, and $u>0$. More precisely,
+\[
+ -\frac{F_a}{F}
+  =\sum_c\frac{2(a+c)}{z^2-(a+c)^2}
+       <\frac9{z-a-7},\qquad u>2(z-a-7)>100.
+\]
+Hence $M,a^2-z^2,F,F_a,u,1+u$ are nonzero. Both comparison
+denominators are positive and $0\le D_i<1/u$ for $i=5,6$.
+Each real slot of \eqref{eq:raw} consequently satisfies
+\[
+ 1<W_e<\left(\frac{101}{100}\right)^4
+              \left(1+\frac1{10^6}\right)^2<\frac{11}{10}.
+\]
+Thus $20/11<V_e<2$, $0<w<1/100$, and
+$0<\eta_e<7\cdot4(1/100)/(20/11)^2=847/10000$.
+Every product, trace and comparison-denominator norm is nonzero.
+These arguments establish all pre-pole guards, including at the other
+point characters; no pole ordinate is asserted to exist.
+
+We now give the exact local certificate. The integer $p=76777$ is
+prime and exceeds the source's $76176$ cutoff. Put
+$p^2=5894707729$. The two roots of two modulo $p^2$ used for the
+slots are
+\[
+                    3367298917,\qquad2527408812.
+\]
+They reduce to $13251$ and its negative modulo $p$. Independent
+elliptic multiplication gives the following data for $Q=H-P=10335P$:
+\[
+\begin{array}{c|r|r|r}
+ \sqrt2\pmod {p^2}&x(Q)\pmod {p^2}& y(Q)/p\pmod p&x(Q)/p^2\pmod p\\
+ \hline
+ 3367298917&0&57786&64192\\
+ 2527408812&0&63990&61852
+\end{array}
+\]
+The two middle nonzero residues show $v(y(Q))=1$. Since $d^2$ is
+a unit, the curve equation gives $v(x(Q))=2$ and
+$x(Q)/p^2\equiv-(y(Q)/p)^2/d^2\pmod p$, yielding the last column.
+In each residue slot $H=P+(0,0)$, $U=A$, and $U-A$ reduces to
+the identity. The abscissae of $H,U$ are units. Duplication near
+$(0,0)$, or the formula
+\[
+            f(2Q)=\frac{4y(Q)^2}{(x(Q)^2+d^2)^2},
+\]
+shows $v(f(U-A))=2$. Thus the four abscissa-test valuations are
+$(0,0,-2,2)$ in both slots.
+
+Exact evaluation of the physical contact polynomial gives
+\[
+ z\equiv21480\pmod p,\qquad F\equiv44843\pmod p,
+ \qquad F_a\equiv169753947\pmod {p^2}.
+\]
+Here $169753947=2211p$ with $2211\not\equiv0\pmod p$.
+Consequently
+\[
+                  v_p(u)=-1,\qquad pu\equiv66932\pmod p.
+\]
+The two comparison factors in \eqref{eq:raw} are units congruent
+to one: their old balanced valuation identity gives
+$v(D_i^2/u)\ge3$ independently of possible poles in the comparisons.
+Of the four raw factors, exactly the factor for $C_3$ has negative
+valuation, namely $1-2e$; the other three are one modulo $p$.
+Therefore $v(W_e^{-1})=2e-1$ in each slot.
+
+Let $\xi_1=64192$, $\xi_2=61852$. Since $C_3$ is conjugated,
+the two reciprocal-product leading coefficients are interchanged;
+their sum is unchanged. They give
+\[
+ \frac{V_e}{p^{2e-1}}
+       \equiv66932(\xi_1^e+\xi_2^e)\pmod p
+       =\begin{cases}43471,&e=1,\\72176,&e=2.\end{cases}
+\]
+Both residues are nonzero. Hence $v_p(V_e)=2e-1$.
+One also has $v_p(w)=1$, so
+$v_p(b_e)=1-2(2e-1)=3-4e$.
+Finally $2-V_e$ is a unit, while $v_p(V_e^2)\ge2$;
+therefore $v_p(R_e)=1$.
+The intrinsic pole implication excludes a negative odd valuation of
+$\eta_e$; at $p\ne7$ its valuation equals that of $b_e$.
+This proves the asserted failures.
+\end{proof}
+
+\section*{Scope and independent verification}
+The example is an actual multiplication tuple and uses the actual
+physical derivative quotient, not an independently chosen trace or
+weight. It satisfies the full real inequalities and the pre-pole
+nonvanishing guards. It is not asserted to satisfy the selected-prime
+factorization or all fixed finite-place preparation conditions of a
+completeness proof. The fixed shift $B=3$ is an algebraic fixture, not
+a certified sufficient defining shift. The conclusion is that the
+removed balancing factors do not prepare the new denominator primes
+automatically. A different choice of auxiliary indices, stronger
+prime-order avoidance, or another complete source is not excluded.
+
+The exact specification and certificates are in
+\nolinkurl{negative_results/computation/pole_parameters/raw_abscissa_v75}.
+The producer uses projective multiplication modulo $p^2$, verifies the
+curve equation and primitive reduction at every step, and rejects a
+nonregular addition formula. The independent checker imports no
+producer module and instead performs affine multiplication modulo $p^2$,
+checking that every denominator it inverts is a unit. It reconstructs
+$\Tr x(2P)$ from the original curve and evaluates $F_a$ by a separate
+product-derivative sum. The large rational coordinates of $10336P$
+are not needed: their group-multiple specification and good reduction
+are exact.
+
+A third checker evaluates the division-polynomial recurrences of
+\cite[Sections 5.5--5.6]{Division} directly modulo $p^3$, importing
+neither group-law implementation. It verifies the curve equation,
+all inverted denominators, and a separate doubling control. The
+literal values of $x(10335P)/p^2$ modulo $p$ are $64192$ and $61852$,
+independently confirming the two decisive abscissa valuations.
+
+\begin{thebibliography}{9}
+\bibitem{Derivative}\emph{An eleven-variable construction under rational $abc$},
+\nolinkurl{papers/conditional_few_variables/derivative_detector11_20261117_v63.tex}.
+\bibitem{FullAux}\emph{Full auxiliary elliptic points in the eleven-variable source},
+\nolinkurl{papers/conditional_few_variables/full_auxiliary11_20261117_v71.tex}.
+\bibitem{Even}\emph{Even abscissa valuations and a smaller eleven-variable degree bound},
+\nolinkurl{papers/conditional_few_variables/even_valuation_detector_20261117_v75.tex}.
+\bibitem{Division}A. Sutherland, \emph{18.783 Elliptic Curves,
+Lecture 5: Isogeny kernels and division polynomials}, MIT, Fall 2025,
+Sections 5.5--5.6 and Theorem 5.21; checked 17 November 2026.
+\url{https://math.mit.edu/classes/18.783/2025/LectureNotes5.pdf}.
+\end{thebibliography}
+\end{document}
