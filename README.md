@@ -46,7 +46,7 @@ The 71-variable quartic uses the complete three-coordinate unit reference chart 
 
 The coefficient-basis transformations and the 195/257-coordinate eliminations preserve their corresponding full rational solution sets. The finite-algebra construction permits a zero final pole ordinate and proves soundness on that larger locus.
 
-Current specifications: [results JSON](data/results_20261116_v53.json), [proof and verification guide](docs/results_20261116_v53.md), and [research directions](docs/research_directions.md).
+Current specifications: [results JSON](data/results_20261117_v56.json), [proof and verification guide](docs/results_20261117_v56.md), and [research directions](docs/research_directions.md).
 
 The [fixed-fiber and detector-index theorems](docs/common_parameter_guard_reduction_20261116_v42.md) show that one common rational pole fiber with nonzero ordinates suffices for all remaining pole guards, and give independent auxiliary-index families with unchanged square-class scalars. The common rational fiber itself remains unproved. Proved obstructions and lower bounds are collected separately in [negative_results](negative_results/README.md).
 
@@ -149,7 +149,32 @@ The [guarded rational-square criterion](papers/pole_parameters/native_square_cri
 
 A rational-square value excludes every required negative odd detector pole. The radicand is positive at every prepared character, and its reference value at $W=1$ is exactly $w^2/(1+w)^2$. Fixed nonzero exceptional-set units are admissible coefficients; so are the proved source-dependent choices $a=1+wc^2$ for existing guarded rational source functions $c$. These choices add no rational coordinate or nonzero guard. The flat choice $a=1$ has an exact prescribed-coordinate elliptic form, and the conditional detector has a trace-preserving reference involution.
 
-**Two simultaneous rational-square values on actual prepared detector tuples would give 21 variables, or 9 under the conditional source hypotheses. This global realization theorem remains unproved.** The proved local preparation and exact finite-algebra count do not replace it. The [current proof guide](docs/results_20261116_v53.md) states the precise condition and its limitations.
+**Two simultaneous rational-square values on actual prepared detector tuples would give 21 variables, or 9 under the conditional source hypotheses. This global realization theorem remains unproved.** The proved local preparation and exact finite-algebra count do not replace it. The [current proof guide](docs/results_20261117_v56.md) states the precise conditions and their limitations.
+
+### A single cover and finite square-class alternatives
+
+The [single-cover height theorem](papers/pole_parameters/single_cover_criterion_20261117_v56.tex) places both input and trace heights in
+
+```math
+t=\bigl((X^2+B)^e+T^e\bigr)^d+z^2,
+\qquad T=\operatorname{Tr}x(A).
+```
+
+Under the stated weak-abc inequality, one actual native square condition gives soundness with a nine-coordinate census. The optimized height arguments have degrees **96**, **120**, and **384** in the retained coordinates for exponents $25/24$, $16/15$, and $121/100$, respectively. These are argument degrees, not full defining-polynomial degree bounds. **Rational realization for every prescribed integer input remains unproved**, including the required restriction on the prime preparation.
+
+Both this criterion and the two-block 21/9 criterion permit any **fixed finite menu of positive exceptional-unit square classes**, such as $\{1,2\}$. A finite product of the existing quadratic-branch polynomials encodes the choices without a new coordinate. The selected class may vary with the input; its allowed prime support must remain fixed. This relaxed realization property does not impose the optional exceptional-place square neighborhoods used to prepare class one. No uniform realization theorem is asserted.
+
+### A prepared pole block with coefficient height four
+
+The [intrinsic pole theorem](papers/pole_parameters/intrinsic_pole_20261117_v56.tex) uses
+
+```math
+Y^2=d(d+v^2)^2s^4-d(d-v^2)^2(1-d)^2.
+```
+
+Its radicand has **degree 9**, **12 monomials**, **content 1**, and **coefficient height 4**. The equation alone, without chart guards, excludes negative odd valuations of $d$ at **every prime**, including two. For $0<d<1$ with square reduced denominator, $d\in7\mathbb Q_2^{\times2}$ and $v_2(d)\ge4$, the stated application of **Burungale, arXiv:2611.16130v1, Theorem B** gives a dense rational witness projection and avoidance of every whole-character guard. It retains two free coordinates per pole; a complete replacement in a defining source still requires that source's preparation audit.
+
+The [scalar-precision theorem](papers/pole_parameters/precision_transfer_20261117_v56.tex) gives a complete general source with scalar orders two, reciprocal orders one, the eighth-order logarithm $\ell_8=z(1-2Df^2/5)$, and sixth-order comparisons. Its squared Lucas parameter gives strict height exponents $7/4$ and $7/6$. The source retains **25 variables** and all original arithmetic premises; no new determinant degree bound is assigned.
 
 ## Rings of integers of number fields
 
@@ -158,6 +183,10 @@ The [definability reductions](papers/number_fields/number_field_definability_202
 **No counterexample for a number field, and no theorem covering every number field, is established here.** Failure of a particular polynomial after scalar extension is not a counterexample to Diophantine definability. The [research guide](docs/research_directions.md#rings-of-integers-of-number-fields) states the remaining denominator and realization problems.
 
 ## Negative results
+
+The [deterministic contact-coupling theorem](negative_results/papers/pole_parameters/order_three_inert_obstruction_20261117_v56.tex) excludes the specified order-three height substitution with prescribed root $A=[X]P$, for **every positive odd shift**. Its certificate covers all **81,421 residues** of the shift at one inert prime and gives infinitely many failing integer inputs, independently of the auxiliary points. Other couplings and free slopes remain open.
+
+The [rational-product finiteness theorem](negative_results/papers/pole_parameters/rational_detector_products_20261117_v56.tex) shows that a rational actual conditional product $W$ satisfying the pole implication has no nonexceptional odd contact. Requiring this in both blocks permits only finitely many integer inputs. This does not exclude nonrational products or arbitrary individual witnesses.
 
 The [fixed-fiber genus theorem](negative_results/papers/pole_parameters/fixed_flat_fibers_20261116_v53.tex) gives geometrically integral simultaneous square covers of genera **236** and **332** for two actual fixed point tuples in the faster conditional detector. Their four rational points over infinity lie outside the guarded domain. The exact coefficient fixture is $B=3$, with no sufficient defining-shift assertion. These computations do not exclude finite rational witnesses or varying auxiliary indices.
 
@@ -176,6 +205,7 @@ The [pole-compression guide](negative_results/docs/pole_compression_obstructions
 Use **Python 3.12** for the byte-pinned legacy suite and **SymPy 1.14.0** for symbolic checks. From the repository root:
 
     python -m pip install sympy==1.14.0
+    python -B scripts/verify_v56.py
     python -B scripts/verify_v53.py
     python -B scripts/verify_v52.py
     python -B scripts/verify_v51.py
@@ -199,7 +229,7 @@ Use **Python 3.12** for the byte-pinned legacy suite and **SymPy 1.14.0** for sy
     python -B scripts/verify_release_v27.py
     python -B scripts/verify.py --full
 
-The current verifiers reconstruct specifications and certificates in temporary files. They cover the reweighted source identities, the guarded square criterion and prescribed-coordinate elliptic identity, the independent fixed-fiber Bézout and genus certificates, the detector-field scalar norm and integrality-reflection certificates, fixed-trace inert-prime certificates, the conditional positive-interval derivative identities, normalization norm restrictions, adaptive levels, the exact pole-preserving normalization, varying classes, norm-one incidence identities and the separate affine scalar-coupling obstruction, as well as the complete 195-, 257-, and 71-variable quartics and their coefficient expansions, complete variable-difference charts including torsion and tangent fibers, unit-reference product recovery and the scaled physical trace, the complete inverse reference-square graph, bounded native norm levels, automatic-level finiteness examples, both full tangent quadratic-identity spaces, weighted-product boundary certificates and input-rescaling identities, finite complement classes, the native complement guard and mixed-power height identities, the abelian-parameter and duplication obstructions, the revised scalar identities and source census, exact quadratic reference and height rescaling with its nonzero guard, the norm map, normalization and local cancellation counterexamples, fixed-class branch and quotient identities, native fixed-fiber guards, rational-section maps, K3 branch and resolution identities, independently checked mixed reference signs, local pole cases, Tunnell coefficients, terminal nonreduced examples, reference-chart identities and exceptional cases, Pell-label examples, paired-ratio implications, invertible row transformations and complete quartic expansions. The retained verifiers authenticate the sources and supplied 198-variable archive. The full legacy verifier has **126 stages**. Optional PARI rank checks remain separately requested by --with-pari; they are not implied by --full. The new local and automatic-conic certificates do not use PARI, analytic ranks, or BSD.
+The current verifiers reconstruct specifications and certificates in temporary files. They cover the single-cover height coefficients and square-class menus, the intrinsic pole coefficient table, the complete precision-transfer exponents and Lucas witnesses, the independent inert-prime certificate, the reweighted source identities, the guarded square criterion and prescribed-coordinate elliptic identity, the independent fixed-fiber Bézout and genus certificates, the detector-field scalar norm and integrality-reflection certificates, fixed-trace inert-prime certificates, the conditional positive-interval derivative identities, normalization norm restrictions, adaptive levels, the exact pole-preserving normalization, varying classes, norm-one incidence identities and the separate affine scalar-coupling obstruction, as well as the complete 195-, 257-, and 71-variable quartics and their coefficient expansions, complete variable-difference charts including torsion and tangent fibers, unit-reference product recovery and the scaled physical trace, the complete inverse reference-square graph, bounded native norm levels, automatic-level finiteness examples, both full tangent quadratic-identity spaces, weighted-product boundary certificates and input-rescaling identities, finite complement classes, the native complement guard and mixed-power height identities, the abelian-parameter and duplication obstructions, the revised scalar identities and source census, exact quadratic reference and height rescaling with its nonzero guard, the norm map, normalization and local cancellation counterexamples, fixed-class branch and quotient identities, native fixed-fiber guards, rational-section maps, K3 branch and resolution identities, independently checked mixed reference signs, local pole cases, Tunnell coefficients, terminal nonreduced examples, reference-chart identities and exceptional cases, Pell-label examples, paired-ratio implications, invertible row transformations and complete quartic expansions. The retained verifiers authenticate the sources and supplied 198-variable archive. The full legacy verifier has **126 stages**. Optional PARI rank checks remain separately requested by --with-pari; they are not implied by --full. The new local and automatic-conic certificates do not use PARI, analytic ranks, or BSD.
 
 The complete TeX manuscripts are the mathematical deliverables. They are compiled and visually inspected before publication. scripts/update_manifest.py records the distributed file hashes. Computational reconstruction certifies the finite identities and coefficients it checks; it does not certify external arithmetic premises or constitute independent non-author mathematical review.
 

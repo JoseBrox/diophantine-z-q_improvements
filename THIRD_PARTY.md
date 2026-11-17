@@ -49,3 +49,7 @@ upstream arithmetic note. Those notices are retained. Our 196-variable
 construction is an exact subsequent coordinate transformation, not a claim
 to authorship of the supplied 198-variable reduction. The archive identity
 is bound in `ARCHIVE_ORIGIN.json`; all source bytes appear in the main manifest.
+
+## Prepared pole input from Burungale
+
+The intrinsic degree-nine pole block uses **Ashay Burungale, A Diophantine definition of Z in Q, arXiv:2611.16130v1 (12 November 2026), Theorem B**: [primary source](https://arxiv.org/html/2611.16130v1). The [intrinsic pole manuscript](papers/pole_parameters/intrinsic_pole_20261117_v56.tex) checks the squarefree, congruence and reciprocal local-square hypotheses and proves the coordinate transformations, density and all-character guards. It does not claim an independent reproof of Theorem B or import the paper's separate height and prime-pattern theorems. Existing construction records retain their stated arithmetic premises. The external paper is cited, not redistributed.

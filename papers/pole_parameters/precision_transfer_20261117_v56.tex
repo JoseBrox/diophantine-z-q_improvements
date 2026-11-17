@@ -1,0 +1,362 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,booktabs,microtype}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\Nm}{N}
+\title{Scalar precision two with an eighth-order elliptic comparison}
+\author{}\date{17 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+We give a complete revision of the general elliptic source in which
+the final scalar tests have order two. An eighth-order logarithmic
+truncation supplies sixth-order comparisons in the first formal
+neighborhood. A squared Lucas parameter gives the growth needed for
+soundness with the weaker scalar height bound. The root and auxiliary
+point roles, two pole pairs, and one-coordinate finite-algebra encoder
+are retained. Under the source's arithmetic premises the resulting
+family defines the integers with twenty-five total variables. No
+twenty-one-variable construction or numerical degree bound is asserted.
+\end{abstract}
+
+\section{The revised functions}
+
+Retain the general normalized source of \cite{Reweighted}, including
+its scalar \(\rho=\rho_L(X)\), integrality-reflecting label \(\beta(X)\),
+consumed prime \(\ell\), exceptional set, two contact functions \(R_j\),
+and unsquared scales \(a_0=1,a_1=1+\rho T^2\).
+Here \(L\ge3\) is fixed and odd, and \(T\) is the rational trace of
+the sum of the four root abscissas. Either scalar covered by that
+source may be used. All group, contact-height, aggregate trace-height,
+prime-pattern, and pole-realization premises keep their stated scope.
+
+The curve and source point are
+\[
+ K=\Q(\sqrt2),\quad D=11-6\sqrt2,\quad E:y^2=x^3-Dx,
+ \quad
+ P=\left(\frac{57-28\sqrt2}{8},\frac{-660+417\sqrt2}{32}\right).
+\]
+The nine point roles are
+\[
+ A,S,T_1,Z,H,U_A,U_S,U_T,U_Z.
+\]
+Write the root labels as \((n,s,t,b)\), so the four root points are
+\([n]P,[s]P,[t]P,[b]P\), and set
+\[
+ c=|s-1|,\qquad B_0=\max(|n|,|s|,|t|,|b|).
+\]
+Let \(Q_0=P\), \((Q_1,Q_2,Q_3,Q_4)=(A,S,T_1,Z)\),
+\(U_0=H\), and \(V_i=U_i-Q_i\). Keep all native point and
+difference guards.
+
+For \(f=1/x\), \(z=-x/y\), put
+\begin{equation}\label{eq:ell8}
+ \ell_8(Q)=z(Q)\left(1-\frac25D f(Q)^2\right)
+          =\frac{2D-5x(Q)^2}{5x(Q)y(Q)}.
+\end{equation}
+Define the four paired comparisons by
+\[
+ L_i=\frac{\ell_8(U_i)}{\ell_8(H)},\qquad
+ L_i'=\overline{\frac{\ell_8(V_i)}{\ell_8(V_0)}}.
+\]
+The sixteen field tests are
+\begin{equation}\label{eq:fieldtests}
+ (f(U_i))_{i=0}^4,\quad
+ (\overline{f(V_i)})_{i=0}^4,\quad
+ (L_i-L_i')_{i=1}^4,\quad
+ L_1-\beta,\quad \mathcal F(L_2^2,L_3,L_4),
+\end{equation}
+where
+\[
+ \mathcal F(a,t,b)=t^2-a(a-2)tb+(a-2)^2b^2-1.
+\]
+The ten reciprocal tests have order one. The final six tests have
+orders \((1,6,6,6,1,6)\), respectively.
+
+The six scalar tests remain the rational components of
+\[
+ f(H),\qquad f(S-P),\qquad z(S-P)/z(H),
+\]
+and have orders \(\kappa=(1,1,1,1,2,2)\).
+In particular, the scalar ratio still uses \(z\), not \(\ell_8\).
+For each contact block retain
+\[
+ u_j=\rho R_j,\quad w_j=\frac{u_j}{(1+u_j)^2},\quad
+ G_{j,k}=R_j^{\kappa_k+1}\frac{R_jS_k}{1+R_jS_k},
+\]
+and use
+\begin{equation}\label{eq:detector}
+ W_j=\prod_{i=1}^{16}\left(1+
+ \frac{C_i^2}{\delta_j^2w_j^{2a_i-1}}\right)
+ \prod_{k=1}^6\left(1+\frac{G_{j,k}^2}{w_j^{2\kappa_k-1}}\right),
+ \qquad b_j=\frac{4w_j}{\Tr(W_j^{-1})^2}.
+\end{equation}
+Both native pole pairs remain. All displayed divisions and syntactic
+denominators are guarded; no unrestricted coordinate is introduced by
+\eqref{eq:ell8}.
+
+\section{Formal precision and scalar extraction}
+
+\begin{lemma}\label{lem:formal}
+At a good prime \(p>76176\), if a source point \(Q\) lies in the
+first formal neighborhood and \(r=v(z(Q))\ge1\), then
+\[
+ \frac{\ell_8(Q)}{\log_E(Q)}\in1+p^{8r}\mathcal O.
+\]
+At every prepared real sign branch of a nonzero source multiple,
+\(\ell_8(Q)\ne0\).
+\end{lemma}
+\begin{proof}
+The exact source expansion is
+\[
+ \log_E(Q)=z(Q)\sum_{j\ge0}a_j(Df(Q)^2)^j,
+ \quad a_0=1,\quad a_1=-2/5,\quad
+ a_j=a_{j-1}\frac{4j-5}{4j+1}\quad(j\ge2).
+\]
+The omitted terms in \eqref{eq:ell8} start at \(j=2\), and
+\(v(Df(Q)^2)=4r\). When \(4j+1<p\), the coefficient is
+integral and its term has valuation at least \(8r\).
+For all remaining terms, the denominator estimate used in the source
+gives \(v(a_j)\ge-j\). Since then \(j\ge19044\),
+\(4jr-j\ge3jr\ge8r\), and these valuations tend to infinity.
+Thus the relative omitted tail has valuation at least \(8r\).
+The full logarithm divided by \(z(Q)\) is a unit, proving the assertion.
+
+At either real embedding a nonzero multiple of \(P\) has a positive
+square abscissa, and its equation implies \(x(Q)^2>D\).
+Consequently
+\[
+ 1-\frac{2D}{5x(Q)^2}>\frac35>0.
+\]
+The old nonzero ordinate and abscissa guards therefore give the last claim.
+The same argument applies to every prepared sign branch of every
+guarded difference, since its index is again nonzero.
+\end{proof}
+
+\begin{lemma}\label{lem:local}
+Let \(p\) be outside the retained exceptional set.
+If \(\mu=v_p(\rho)\) is odd, every rational source solution satisfies
+\[
+ v_p(c)>\frac54|\mu|,\qquad v_p(c)\ge2.
+\]
+At a positive odd contact of \(R_j\), either all field tests have
+their assigned orders at one place above \(p\), or \(p^2\mid c\).
+\end{lemma}
+\begin{proof}
+The unchanged disjoint-contact argument gives a unit \(R_j\) at an
+odd scalar valuation. Its physical weight has valuation \(|\mu|\).
+The normalized trace lemma of \cite{Reweighted} applies to arbitrary
+positive integer test orders. It gives the bounds \(|\mu|/4\) on
+the first four scalar components and \(5|\mu|/4\) on the last two.
+The unchanged formal-group isometry for the scalar ratio gives
+\[
+ v(z(S-P)/z(H))=v_p((s-1)/h),\qquad H=[h]P.
+\]
+Since \(h\) is a nonzero integer, the bound for \(c\) follows.
+At a comparison contact with even scalar valuation, the same trace
+lemma gives
+\(v(C_i)>(a_i-3/4)|v_p(\rho R_j)|\ge a_i-3/4\).
+Integral valuations give the assigned orders. An odd scalar valuation
+instead gives \(p^2\mid c\).
+\end{proof}
+
+Suppose the comparison alternative holds. The reciprocal tests put
+the five points in their first formal neighborhoods at the appropriate
+conjugate places. Lemma~\ref{lem:formal} is therefore sufficient:
+no second formal neighborhood is needed. The usual paired-ratio
+argument first makes both exact index ratios integral, because at
+least one of \(h,h-1\) is a unit. Relative precision eight then becomes
+absolute precision eight. Hence
+\[
+ L_1\equiv n\pmod p,\qquad
+ (L_2,L_3,L_4)\equiv(s,t,b)\pmod{p^6}.
+\]
+Writing \(\beta=u/v\) in lowest terms and
+\(\Delta=\mathcal F(s^2,t,b)\), the resulting radical divisibilities are
+\begin{equation}\label{eq:divisibilities}
+ M_j^6\mid\Delta c^3,\qquad M_j\mid(u-nv)c.
+\end{equation}
+Indeed a scalar alternative gives \(p^6\mid c^3\), whereas a
+comparison alternative gives \(p^6\mid\Delta\).
+
+\section{Heights and soundness}
+
+The scalar contact-height bound and Lemma~\ref{lem:local} give
+\begin{equation}\label{eq:scalarheight}
+ h(\beta)\le Cc^{7/6},\qquad
+ h(\rho)\le Cc^{7/6}+C\log c+C.
+\end{equation}
+For the aligned scalar, apply the same estimate to its fixed affine
+contact argument and absorb the fixed affine constants. The consumed
+prime still has positive odd valuation at least \(L\); hence
+\[
+ v_\ell(c)>5L/4,\qquad c\longrightarrow\infty
+ \quad\text{uniformly as }L\longrightarrow\infty.
+\]
+In particular \(2L\log\ell<(8/5)\log c\), which gives the logarithmic
+term in \eqref{eq:scalarheight}.
+
+The balanced contact-height estimate is unchanged:
+\(h(t_j)\le C M_j^{7/6}\). The unsquared comparison scale still gives
+\[
+ 2h(T)\le h(a_1)+h(\rho)+\log2,
+ \qquad h(a_1)\le h(t_0)+h(t_1).
+\]
+Together with the aggregate trace-height theorem and
+\eqref{eq:divisibilities}, these imply, when \(\Delta\ne0\),
+\[
+ B_0^2\le C(|\Delta|c^3)^{7/36}
+               +Cc^{7/6}+C\log c+C.
+\]
+All constants are independent of \(L\) and the source tuple.
+Since \(\Delta\) has degree six, \(|\Delta|\le5B_0^6\) for
+\(B_0\ge2\), and \(c\le B_0+1\), the first exponent in \(B_0\)
+is \((6+3)7/36=7/4<2\). The other polynomial exponent is
+\(7/6<2\). The forced growth of \(c\) therefore gives
+\(\Delta=0\) for every sufficiently large fixed odd \(L\).
+
+Apply the integer Lucas growth lemma of \cite{Baseline} with parameter
+\(a=s^2\). The point guards give \(b\ne0\), and sufficiently
+large \(c\) gives \(|s|>3\). Thus
+\[
+ \log B_0\ge\log|t|>s^2-3
+              \ge c(c-2)-2.
+\]
+If the input residual \(N=u-nv\) is nonzero, the second divisibility
+in \eqref{eq:divisibilities} instead gives
+\[
+ B_0^2\le C(|N|c)^{7/6}+Cc^{7/6}+C\log c+C.
+\]
+The last three terms can be absorbed into \(B_0^2/2\) for large
+\(c\). Using \(|N|\le2e^{h(\beta)}B_0\) and taking logarithms yields
+\[
+ \log B_0\le Cc^{7/6}+C\log c+C,
+\]
+which contradicts the preceding quadratic lower bound.
+Therefore \(\beta=n\in\Z\), and the unchanged input label implies
+\(X\in\Z\).
+
+\section{Ordered completeness and every character guard}
+
+Fix an integer input and any fixed odd \(L\ge3\).
+Prepare the shared reference point, the scalar point \(S=[s]P\),
+and the six scalar components in exactly the order of
+\cite{General,Reweighted}. Choose \(s=c+1>1\) odd and congruent to
+one modulo three. The scalar orders are lower, so the original
+arbitrarily small scalar neighborhoods are sufficient.
+
+For the Lucas labels use parameter \(a=s^2\). Let
+\[
+ U_0(a)=0,\quad U_1(a)=1,\quad
+ U_{j+1}(a)=aU_j(a)-U_{j-1}(a),
+\]
+and choose
+\[
+ k=2(a-2),\qquad b=U_k(a)/(a-2),\qquad t=U_{k+1}(a).
+\]
+The congruence \(U_k(a)\equiv k\pmod{a-2}\) makes \(b\) integral,
+and the norm identity gives \(\mathcal F(s^2,t,b)=0\).
+As \(a\) is odd and \(a\equiv1\pmod3\), the mod-two sequence has
+period \(0,1,1\), and \(k\equiv1\pmod3\). Thus \(t,b\) are positive
+and odd. The input label remains \(n=\beta\). All roots and scales
+are now fixed.
+
+Temporarily put \(H=[h]P\), \(U_i=[hn_i]P\).
+The new truncated ratios are continuous on the old prepared real
+neighborhoods and fixed finite-place neighborhoods once their
+denominators are guarded. Lemma~\ref{lem:formal} shows that the new
+real denominator factors never vanish on any prepared sign branch.
+The same finite avoidance and compact-neighborhood argument therefore
+bounds every revised field test before prime selection.
+
+Apply the unchanged simultaneous prime-pattern theorem, including the
+original fixed avoidance (in particular the prime support of
+\(1+\rho\)), denominator divisibility, positive large
+slope, conjugate reduction-order conditions and extra divisibility
+\(h\equiv0\pmod{\prod p_i}\). No deeper opposite-place congruence
+is imposed. The compatible progression remains dense in the required
+component of the compact cyclic closure, as in \cite{Unit}.
+
+At a selected comparison prime, all reference and shifted points lie
+in their first formal neighborhoods, so the reciprocal tests have
+valuation at least two. The exact logarithmic ratios are the integers
+\(n_i\). Lemma~\ref{lem:formal} consequently gives valuation at least
+eight for every paired comparison and for the input target.
+Because the exact Lucas residual vanishes, its polynomial comparison
+also has valuation at least eight. For the order-six tests,
+\[
+ v\left(C_i^2/(\delta_j^2w_j^{11})\right)\ge16-11=5.
+\]
+For the order-one reciprocal tests the same lower bound is at least
+\(4-1=3\). Hence all field factors are one modulo \(p^3\) at the
+designated place.
+
+The scalar normalization argument is unchanged. The original extra
+divisibility makes the primary reference point have formal depth at
+least two, while at the opposite place it reduces to \(P\).
+The six rational scalar components therefore have nonnegative
+valuation or valuation at most minus two. Thus \(R_jS_k\) never has
+valuation zero at a fresh contact, and the normalizers are integral.
+Now \(v(G_{j,k})\ge\kappa_k+1\), so every scalar second summand has
+valuation at least three. The reciprocal trace is a unit, and the
+fresh odd valuation of the pole input is positive.
+
+At every fixed preparation place, \(R_j\to1\),
+\(w_j\to\rho/(1+\rho)^2\), and \(\delta_j^{-1}\to0\) as the slope
+tends to infinity. The new orders are fixed, the weights have a fixed
+nonzero limit, and the revised tests are bounded on the already chosen
+neighborhoods. Thus every old finite and real pole preparation remains
+available. The same source factorization controls all odd weight primes.
+Both pole inputs satisfy the retained converse hypotheses.
+
+For the whole-character guards, root and difference signs still give
+nonzero multiples \([\pm h\pm1]P\) and
+\([\pm hn_i\pm n_i]P\), with \(h>2\) and \(n_i\ne0\).
+Their new factors \(1-2Df^2/5\) are positive by
+Lemma~\ref{lem:formal}. The scalar normalizers are precisely the old
+ones, and their zero sets are avoided by the original analytic
+avoidance argument after the compatible index refinement.
+All revised detector factors are one plus a nonnegative square times
+a positive coefficient at every real point-algebra character.
+Their product and trace norms are therefore units.
+The same density of the independent pole witnesses avoids every
+remaining conjugate pole denominator and radicand.
+
+\begin{theorem}
+Under the retained arithmetic premises, the revised source defines
+\(\Z\) over \(\Q\) for every sufficiently large fixed odd \(L\).
+It is complete for every integer input and every fixed odd \(L\ge3\).
+Its finite-algebra polynomial has twenty-five total variables:
+one input, eighteen point coordinates, one slope, four pole coordinates,
+and one encoder coordinate. No numerical determinant degree or smaller
+defining-variable bound is asserted.
+\end{theorem}
+\begin{proof}
+Soundness and ordered completeness have been proved above.
+All added denominator factors lie in the existing point algebra and
+are units at the prepared whole-character specializations. The guarded
+finite-algebra encoder of \cite{Unit} therefore applies with unchanged
+free coordinates and finite ranks.
+\end{proof}
+
+\begin{thebibliography}{9}\raggedright
+\bibitem{General}\emph{A defining polynomial in twenty-five variables:
+combined scalar and comparison conditions}, repository manuscript,
+\nolinkurl{papers/few_variables25/few_variables25_merged_20261110_v19.tex}.
+\bibitem{Reweighted}\emph{Quadratic reweightings of native elliptic detectors},
+repository manuscript,
+\nolinkurl{papers/pole_parameters/reweighted_elliptic_detectors_20261116_v53.tex}.
+\bibitem{Unit}\emph{A single norm determinant for the 25- and 13-variable constructions},
+repository manuscript,
+\nolinkurl{papers/finite_algebra/unit_norm_20261114_v28.tex}.
+\bibitem{Baseline}\emph{An explicit polynomial in 29 variables over the rationals},
+repository manuscript, elementary Lucas growth lemma,
+\nolinkurl{papers/few_variables/few_variables_20261108_v8.tex}.
+\end{thebibliography}
+\end{document}

@@ -2,6 +2,16 @@
 
 The established counts under the retained arithmetic premises are **25 total variables**, or **195 for a quartic**. The additional height hypotheses give **13 total variables**; ordinary rational abc gives a **71-variable quartic**. Every count includes the input. The priorities are variable count, degree, then coefficient height. The [main results table](../README.md) distinguishes the hypotheses and effective parameters; no global minimum or completed independent audit of all inherited arithmetic premises is asserted.
 
+## A single-cover route and finite square-class choices
+
+The [single-cover theorem](../papers/pole_parameters/single_cover_criterion_20261117_v56.tex) proves conditional soundness with $t=((X^2+B)^e+T^e)^d+z^2$ and one actual native square. Its full nine-coordinate census includes $z$, six point coordinates, the input and the finite-algebra encoder. The required rational realization remains open. The binary quadratic contact forms must also meet the actual prime-preparation constraints; unrestricted-numerator prime patterns do not suffice.
+
+The native square condition may be relaxed to a **fixed finite menu of positive exceptional-unit square classes** without adding a coordinate. A finite product of the existing quadratic-branch encoders supplies the union. The menu may vary between blocks and its selected class may vary with the input, but its support is fixed in advance. Do not retain optional exceptional-place square neighborhoods that would force every allowed class back to one. No global realization is known for this relaxed target either.
+
+The [intrinsic pole block](../papers/pole_parameters/intrinsic_pole_20261117_v56.tex) has degree nine and coefficient height four, with dense prepared witnesses from the stated Burungale theorem. It retains two free coordinates and therefore offers a coefficient and arithmetic-foundation option, not the missing 21/9 reduction. Its use in a full source requires the complete preparation audit.
+
+The [precision revision](../papers/pole_parameters/precision_transfer_20261117_v56.tex) lowers scalar test orders to two while retaining reciprocal orders one. The eighth-order formal logarithm supports sixth-order comparisons without demanding incompatible deeper formal neighborhoods. It provides a complete 25-variable source, leaving the actual source-point coupling or pole-coordinate elimination as the count problem.
+
 ## The 25-coordinate budget
 
 The [finite-algebra source](../papers/finite_algebra/unit_norm_20261114_v28.tex) has the following budget.
