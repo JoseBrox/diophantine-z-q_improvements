@@ -13,6 +13,8 @@ jobs:
         with:
           python-version: '3.12'
       - run: python -m pip install sympy==1.14.0
+      - name: Verify full auxiliary elliptic points and the eleven-variable degree bound
+        run: python -B scripts/verify_v71.py --report /tmp/v71-verification.json
       - name: Verify actual-trace arithmetic and quadratic obstructions
         run: python -B scripts/verify_v70.py --report /tmp/v70-verification.json
       - name: Verify power shifts, actual-trace obstructions and the Sun audit

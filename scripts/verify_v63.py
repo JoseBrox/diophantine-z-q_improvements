@@ -141,7 +141,14 @@ def main(output):
     assert r'\(' not in readme and r'\[' not in readme
     assert (ROOT / 'data/results_20261117_v63.json').is_file()
     assert (ROOT / 'docs/results_20261117_v63.md').is_file()
-    assert '234,157,441' in readme and '**229**' in readme
+    record_link = re.search(r'\[results JSON\]\((data/results_[^)]*\.json)\)', readme)
+    assert record_link
+    latest = json.loads((ROOT / record_link.group(1)).read_text())
+    current_11 = next(row for row in latest['current_constructions']
+                      if row['id'] == 'ordinary_abc11')
+    assert current_11['variables'] == 11
+    assert int(current_11['degree_upper_bound']) <= 234157441
+    assert f"{int(current_11['degree_upper_bound']):,}" in readme and '**229**' in readme
 
     builds = json.loads((ROOT / 'data/audits/tex_build_20261117_v63.json').read_text())
     assert {row['paper'] for row in builds['papers']} == set(PAPERS)

@@ -104,7 +104,14 @@ def main(output):
     assert '$' not in readme and r'\operatorname' not in readme
     assert r'\(' not in readme and r'\[' not in readme
     assert readme.count('```math') > 0
-    assert '74,007' in readme and 'data/results_20261117_v68.json' in readme
+    assert '74,007' in readme
+    record_link = re.search(r'\[results JSON\]\((data/results_[^)]*\.json)\)', readme)
+    assert record_link
+    latest = json.loads((ROOT / record_link.group(1)).read_text())
+    current_229 = next(row for row in latest['current_constructions']
+                       if row['id'] == 'explicit_quartic229')
+    assert current_229['canonical_ascii_bytes'] == 74007
+    assert current_229['polynomial_sha256'] == TEXT_HASH
     assert 'docs/results_20261117_v68.md' in readme
     assert 'explicit229_compact_v68' in readme
 

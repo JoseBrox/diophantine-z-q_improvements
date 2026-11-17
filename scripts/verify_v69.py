@@ -130,7 +130,11 @@ def main(output):
         text = (ROOT/name).read_text()
         assert '$' not in text and r'\operatorname' not in text, name
     assert 'docs/results_20261117_v69.md' in readme
-    assert 'data/results_20261117_v68.json' in readme
+    record_link = re.search(r'\[results JSON\]\((data/results_[^)]*\.json)\)', readme)
+    assert record_link
+    latest = read(record_link.group(1))
+    assert not latest['targets_21_and_9_proved']
+    assert not latest['arithmetic_foundations_complete_independent_audit']
 
     report = dict(schema='diophantine-exact-verification/v69', status='PASS',
         python=platform.python_version(), current_records=criteria['current_construction_records'],

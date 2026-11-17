@@ -22,7 +22,7 @@ whose rational input projection is the integers, under the arithmetic premises s
 | [Fully specified quartic](papers/quartic/quartic229_compact_20261117_v68.tex) | None | **229** | **4, exact** | `N=15`; 207 quadratic squares; **3,312 monomials**; exact height `149³⁰` (217 bits); **74,007 bytes** fully expanded. |
 | [Few variables under weak abc](papers/finite_algebra/terminal_quadratic_root_20261115_v40.tex) | Weak abc at `121/100`; ordinary Szpiro suffices | **13** | `≤ 43,211,777 < 2²⁶` | Sufficient odd shift ineffective. |
 | [Lower degree under stronger weak abc](papers/finite_algebra/terminal_quadratic_root_20261115_v40.tex) | Weak abc at `16/15`; ordinary rational abc suffices | **13** | `≤ 39,858,177 < 2²⁶` | Sufficient odd shift ineffective. |
-| [Fewest variables under ordinary abc](papers/conditional_few_variables/derivative_detector11_20261117_v63.tex) | Ordinary rational abc | **11** | `≤ 234,157,441 < 2²⁸` | Complete integer circuit; every sufficiently large fixed odd shift; sufficient threshold ineffective. |
+| [Fewest variables under ordinary abc](papers/conditional_few_variables/full_auxiliary11_20261117_v71.tex) | Ordinary rational abc | **11** | `≤ 232,094,337 < 2²⁸` | Complete integer circuit with unrestricted auxiliary elliptic points; sufficient odd shift ineffective. |
 | [Fewest quartic variables under abc](papers/quartic_existence/quartic_abc68_20261117_v65.tex) | Ordinary rational abc | **68** | **4, exact** | 56 quadratic squares; **1,078 monomials**. Exact height below; sufficient shift ineffective. |
 
 All these polynomials have integer content one. The general degree figures are upper bounds for finite, unexpanded determinant specifications. Their support bounds are below `2¹¹⁹³`, `2¹⁴⁰¹`, `2²⁸⁴`, and `2²⁸³`, in the order 25, 27, weak-abc 13, stronger-abc 13.
@@ -47,7 +47,7 @@ The 68-variable quartic uses a three-field-coordinate unit reference and a six-f
 
 The coefficient-basis transformations and the 195-coordinate eliminations preserve their corresponding full rational solution sets. The complete 229-coordinate construction retains every copied detector guard and proves soundness and integer completeness for every `N ≥ 15`. The finite-algebra construction permits a zero final pole ordinate and proves soundness on that larger locus.
 
-Current specifications: [results JSON](data/results_20261117_v68.json), [proof and verification guide](docs/results_20261117_v68.md), and [research directions](docs/research_directions.md). The [68-variable construction guide](docs/results_20261117_v65.md) and its [source records](data/results_20261117_v65.json) retain the separate abc result.
+Current specifications: [results JSON](data/results_20261117_v71.json), [proof and verification guide](docs/results_20261117_v71.md), and [research directions](docs/research_directions.md). The [compact 229-variable guide](docs/results_20261117_v68.md) and the [68-variable construction guide](docs/results_20261117_v65.md) retain the separate quartic specifications.
 
 The [physical detector scaling theorem](negative_results/papers/quartic/physical_detector_scaling_20261117_v67.tex) excludes two specified diagonal Laurent compilations of the revised general-quartic factors. The stronger obstruction uses just one literal reference equation and three field factors, with unbounded real scaling weights. Its [exact certificates and coordinate audit](docs/results_20261117_v67.md) distinguish the physical second weight from its stored ratio. Different factor pairings, reference equations and polynomial coordinate changes remain open; the construction counts above are unchanged.
 
@@ -65,7 +65,7 @@ Cite this work as "ℤℚ Diophantine Project contributors. ℤ is Diophantine i
 
 ## Eleven variables under ordinary abc
 
-The [derivative detector theorem](papers/conditional_few_variables/derivative_detector11_20261117_v63.tex) gives a complete **11-variable family**, under ordinary rational abc and the precisely stated elliptic, prime-pattern, trace-height and intrinsic-pole inputs. It uses one contact argument for both the input and root trace heights:
+The [full auxiliary-point theorem](papers/conditional_few_variables/full_auxiliary11_20261117_v71.tex) gives a complete **11-variable family**, under ordinary rational abc and the precisely stated elliptic, prime-pattern, trace-height and intrinsic-pole inputs. Its [derivative detector](papers/conditional_few_variables/derivative_detector11_20261117_v63.tex) uses one contact argument for both the input and root trace heights:
 
 ```math
 \beta=X^2+B,\qquad T=\mathrm{Tr}x(A),\qquad
@@ -83,7 +83,9 @@ W=\prod_{i=1}^{6}\left(1+\frac{D_i^2}{u}\right).
 
 The derivative quotient recovers simple simultaneous contact factors. The shifts sum to zero and have no opposite pair, so numerator and denominator primes of `M` cause no extra height loss. The transformed tests preserve local extraction at every positive odd valuation of `u` and automatically prepare its new negative odd valuations. The resulting input `7b`, with `b=4u/((1+u)²Tr(W⁻¹)²)`, therefore needs only one complete intrinsic pole block. Sun's theorem applies to the **18 fixed prime positions**; the proof checks their order compatibility, fixed-place preparation and every algebra-character guard.
 
-The count is **1 input + 6 point coordinates + 1 contact parameter + 2 pole parameters + 1 encoder = 11**. The finite algebra has rank **128**. The [complete specification and independent checks](computation/few_variables/derivative11_v63) certify degree at most **234,157,441**, fewer than `2²⁶⁴` monomials and integer content one. Subalgebra norms reduce the degree of the denominator guard, and the terminal-root theorem permits the final pole ordinate to vanish. Every preceding radicand and every denominator remains guarded. The sufficient odd shift is ineffective; `B=3` is an algebraic fixture only. This ordinary-abc result does not assert the same count under the two weaker fixed-exponent abc hypotheses. **The targets 21 and 9 remain unproved.**
+The count is **1 input + 6 point coordinates + 1 contact parameter + 2 pole parameters + 1 encoder = 11**. The finite algebra has rank **128**. The [complete specification and independent checks](computation/few_variables/full_auxiliary11_v71) certify degree at most **232,094,337**, fewer than `2²⁶⁴` monomials and integer content one. The root point remains in `2E(K)`; the two auxiliary points may range over the guarded affine points of `E(K)`, with cubic point radicands. Their half-integral indices preserve the formal comparison at every consumed odd prime. The source has 1,990 integer arithmetic nodes and 32 recorded guards. Subalgebra norms retain every denominator and preceding radicand, while the final pole ordinate may vanish. The sufficient odd shift is ineffective; `B=3` is an algebraic fixture only. This ordinary-abc result does not assert the same count under the two weaker fixed-exponent abc hypotheses.
+
+The same auxiliary enlargement preserves the sound **nine-coordinate** actual-trace source and includes every earlier guarded witness. It gives a larger space for rational-point arithmetic. Completeness still requires a rational square at the actual detector trace for every sufficiently large positive integer. **The targets 21 and 9 remain unproved.**
 
 ## A single actual-trace target for nine variables
 
