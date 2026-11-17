@@ -2,7 +2,7 @@
 
 The fully specified quartic uses **229 variables at $N=15$**, with exact coefficient height $149^{30}$ and a fully expanded canonical decimal size of **74,007 bytes**. Its [complete proof](../papers/quartic/quartic229_compact_20261117_v68.tex) uses both abscissa components and three detectors, followed by a fixed input-preserving diagonal normalization. The exact source and inverse maps preserve every guard and boundary stratum.
 
-The established counts under the retained arithmetic premises are **25 total variables**, or **195 for a quartic**. The stated weak-abc hypotheses give **13 total variables**. Ordinary rational abc gives **11 total variables** and a **68-variable quartic**. Every count includes the input. The priorities are variable count, degree, then coefficient height. The [main results table](../README.md) distinguishes the hypotheses and effective parameters; no global minimum or completed independent audit of all inherited arithmetic premises is asserted.
+The established counts under the retained arithmetic premises are **25 total variables**, or **194 for a quartic**. The stated weak-abc hypotheses give **13 total variables**. Ordinary rational abc gives **11 total variables** and a **68-variable quartic**. Every count includes the input. The priorities are variable count, degree, then coefficient height. The [main results table](../README.md) distinguishes the hypotheses and effective parameters; no global minimum or completed independent audit of all inherited arithmetic premises is asserted.
 
 ## Rank-one curves over general number fields
 
@@ -23,13 +23,13 @@ Indeed, $T_0=(0,0)$ is rational two-torsion and $x(Q+T_0)=-D/x(Q)$. The translat
 
 ## Quartic chart target
 
-The complete counts are **195 without an additional height conjecture** and **68 under ordinary abc**. The [translated-secant chart](../papers/quartic_existence/quartic_abc68_20261117_v65.tex) includes both reciprocal abscissas in six field coordinates, with four field quadrics. Its difference abscissa is a quadratic output; only its rational half-trace is stored. This preserves the prescribed difference carrier and the full multiplication-witness family, including tangencies, zero ordinates and every finite two-torsion difference. The imaginary output component has no other consumer and is eliminated exactly.
+The complete counts are **194 without an additional height conjecture** and **68 under ordinary abc**. The [translated-secant chart](../papers/quartic_existence/quartic_abc68_20261117_v65.tex) includes both reciprocal abscissas in six field coordinates, with four field quadrics. Its difference abscissa is a quadratic output; only its rational half-trace is stored. This preserves the prescribed difference carrier and the full multiplication-witness family, including tangencies, zero ordinates and every finite two-torsion difference. The imaginary output component has no other consumer and is eliminated exactly.
 
-The next algebraic targets are the remaining product helpers and rational half-trace output, with quadratic rows and complete boundary coverage. The [direct-elimination audit](audits/quartic68_direct_elimination_review_20261117_v65.md) shows why the immediate substitutions leave cubic or quartic residuals; it does not rule out new presentations or localization at the input. The same chart may also be useful in the reciprocal-pair blocks of the 195- and 229-variable sources. That transfer requires separate checks of identity numerators, quotient equations, zero-input completeness and the full Laurent scaling; no resulting count reduction is asserted. The [positive-sum chart obstruction](audits/quartic_chart_review_20261117_v63.md) still excludes the inherited multiplication-witness family for the different replacement considered there.
+The [194-coordinate general quartic](../papers/quartic/quartic194_20261117_v73.tex) combines three translated point charts with four polynomial cross comparisons, a cleared input numerator and a homogeneous Lucas circuit. All 168 quadratic rows and both complete coefficient expansions are independently reconstructed. A refinement of the reference progression synchronizes the two formal depths for integer witnesses. Arbitrary odd-depth extraction, the unit boundaries and all allowed zero-ordinate cases have separate proofs.
 
-For the general quartics, the six-field chart recovers raw reciprocal abscissas but does not retain their squares as linear outputs. The [revised five-factor theorem](../papers/quartic/revised_detector_factors_20261117_v66.tex) replaces the relevant fourth powers by squared reciprocal tests while preserving arbitrary odd-depth extraction, selected-contact residues and finite and real preparation. It also permits different comparison and reciprocal pairings between detectors. The outstanding problem is a complete quadratic compilation with a net coordinate saving.
+The remaining quartic targets are the scalar primary ratio, the product helpers, and the transfer of this construction to the three-detector explicit source. The two excluded diagonal scaling families concern different specified factor interfaces; they impose no lower bound on these new polynomial coordinate changes. Every proposed deletion must include a complete quadratic compilation, every required guard, and a soundness and integer-completeness proof.
 
-The [physical scaling obstruction](../negative_results/papers/quartic/physical_detector_scaling_20261117_v67.tex) excludes two specified factor allocations with either of the stated five-coordinate unit bases. Its stronger proof uses only one reference row and three factors: their projected row weights would satisfy both `r01-r00=12` and `r01-r00<=6`. This holds for arbitrary real scaling weights. The [coordinate audit](results_20261117_v67.md) composes the full published transformations and verifies 71 literal consumer equations. In the stored basis `u=x77`, `v=x90`, the physical weights are `q0=u`, `q1=u*v`; factor outputs have unit direction `(1,2j)` in detector `j`. Different factor pairings, an alternative reference equation basis, or polynomial coordinate changes remain possible. No smaller complete general quartic is asserted.
+For the ordinary-abc quartic, the [direct-elimination audit](audits/quartic68_direct_elimination_review_20261117_v65.md) explains why immediate substitutions for the two field product helpers and rational half-trace output raise the degree. Further changes of coordinates or combinations of equations remain possible. The zero-input witness and the unit proof at nonzero input must both be retained.
 
 ## From eleven toward nine
 
@@ -358,11 +358,11 @@ The modulo-four factor separation yields the residual $X(m-X)$ and unchanged str
 
 The next concrete quartic target is to reduce the **two field product helpers and the rational half-trace output** while keeping both comparison errors affine and the original difference trace available with its controlled input scaling. Any replacement must preserve the unit proof at nonzero input and admit a complete zero-input witness. The [tangent-completion theorem](../negative_results/papers/elliptic_charts/tangent_completion_20261116_v48.tex) excludes repairs by quadrics in its specified old compressed embedding, including after adjoining the physical trace. It does not exclude the variable-difference embedding used here or a further change of coordinates. A proposed saving must count every newly introduced product, square and inverse.
 
-The deeper comparison precision needed by the 195-variable construction is not supplied by this detector. A transfer there requires a new valuation argument or a different use of the integer-growth relation. Its variable reduction must be justified separately from the input-preserving affine–Laurent elimination used in the 195-variable family.
+The general quartic needs deeper comparison precision than this ordinary-abc detector. The 194-coordinate construction supplies that precision through polynomial cross products and a homogeneous Lucas identity, together with a separate synchronized-depth completeness proof.
 
-### Further elimination from the 195- and 229-variable systems
+### Further elimination from the 194- and 229-variable systems
 
-The [current quartic](../papers/quartic/quartic195_20261116_v45.tex) centers the Lucas expression before rescaling by a guarded unit. The affine change removes constant and cross terms that previously required an inverse-weight square coordinate. Its complete certificate includes every source row, the retained inverse guard and the fixed input. A further reduction must provide the same full-system equivalence or a new soundness and completeness proof. Joint use of the detector units and scalar-normalizer unit is a precise algebraic direction; a favorable count for an isolated block is insufficient.
+The [current general quartic](../papers/quartic/quartic194_20261117_v73.tex) has 194 coordinates, eight contact units and 168 quadratic rows. Its exact physical source and unit transformation provide the starting point for further deletion of implicit ratios or changes to the scalar chart. A favorable count for an isolated block is insufficient; all consumers and every unit boundary must remain part of the count and proof.
 
 The [229-variable explicit construction](../papers/quartic/quartic229_compact_20261117_v68.tex) uses both components of the abscissa sum and three complete detectors. Its fixed sufficient parameter is `N=15`; the input-preserving normalization has exact height `149^30` and canonical expanded size 74,007 bytes. The current certified inequality fails at $N=14$; this is a limitation of that sufficient comparison, not a lower bound for the polynomial family. Sharper constants or a stronger comparison might lower the parameter without changing the variable count. Any algebraic saving must retain every copied guard and prove soundness on each added boundary.
 
@@ -397,17 +397,17 @@ Forcing equality of the two contact square classes can prove soundness, but rati
 
 For effective coefficients in the few-variable construction, the unresolved analytic issue is a uniform effective trace-height estimate on the relevant integer-index tuples. The [explicit construction](../papers/few_variables27/explicit27_20261110_v19.tex) uses both rational components and a third pole predicate to avoid that issue. Positivity on selected completeness witnesses cannot replace a height bound needed for every soundness tuple.
 
-For quartic coefficient optimization, invertible rational combinations of quadratic rows preserve the rational zero set, and invertible coordinate rescalings give a bijection of zero sets. Each proposed change must be followed by primitive integer normalization and exact collection of the squared rows. A height claim for a parameter family needs a bound for every allowed parameter, together with a coefficient that attains it; one small test member does not establish that claim. The current [affine–Laurent coefficient theorem](../papers/quartic/quartic195_20261116_v45.tex) gives
+For quartic coefficient optimization, invertible rational combinations of quadratic rows preserve the rational zero set, and invertible coordinate rescalings give a bijection of zero sets. Each proposed change must be followed by primitive integer normalization and exact collection of the squared rows. A height claim for a parameter family needs a bound for every allowed parameter, together with a coefficient that attains it; one small test member does not establish that claim. The current [194-coordinate coefficient theorem](../papers/quartic/quartic194_20261117_v73.tex) gives
 
-$$
-H(P_N)=\max\{126616122944180358034867798936,\;149^{2N+2}\}
-$$
+```math
+H(F_N)=\max\{126616122944180358034867798936,\;128\cdot149^{4N}\}
+```
 
-for the 195-variable family, and
+in its primitive reference basis, with 2,765 monomials. The equivalent basis with 2,621 monomials has a larger fixed coefficient term; its height agrees for `N ≥ 7`. Neither coefficient crossover specifies a sufficient defining parameter. The exact height is
 
-$$
+```math
 H(Q_B)=B^2+1
-$$
+```
 
 for the [68-variable ordinary-abc family](../papers/quartic_existence/quartic_abc68_20261117_v65.tex). Exact expansion proves these height formulas for the stated parameter ranges. A sufficient defining parameter in each ineffective family still depends on the explicitly retained arithmetic premises.
 

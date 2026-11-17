@@ -13,6 +13,8 @@ jobs:
         with:
           python-version: '3.12'
       - run: python -m pip install sympy==1.14.0
+      - name: Verify the complete 194-coordinate quartic and synchronized arithmetic
+        run: python -B scripts/verify_v73.py --report /tmp/v73-verification.json
       - name: Verify full auxiliary points in the general twenty-five-variable construction
         run: python -B scripts/verify_v72.py --report /tmp/v72-verification.json
       - name: Verify full auxiliary elliptic points and the eleven-variable degree bound
