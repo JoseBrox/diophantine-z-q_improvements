@@ -1,4 +1,4 @@
-# Research directions
+# Research directions The fully specified quartic uses **229 variables at $N=15$**, with exact coefficient height $149^{32}$; its [complete proof](../papers/quartic/quartic229_20261117_v62.tex) uses both abscissa components and three detectors.
 
 The established counts under the retained arithmetic premises are **25 total variables**, or **195 for a quartic**. The stated weak-abc hypotheses give **13 total variables**. Ordinary rational abc gives **11 total variables** and a **71-variable quartic**. Every count includes the input. The priorities are variable count, degree, then coefficient height. The [main results table](../README.md) distinguishes the hypotheses and effective parameters; no global minimum or completed independent audit of all inherited arithmetic premises is asserted.
 

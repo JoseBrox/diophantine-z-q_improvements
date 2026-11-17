@@ -17,6 +17,12 @@ jobs:
         run: python -B scripts/verify_v61.py --report /tmp/v61-verification.json
       - name: Verify elliptic index poles and separate denominator-support obstructions
         run: python -B scripts/verify_v60.py --report /tmp/v60-verification.json
+      - name: Verify the explicit 229-variable quartic and coupling obstruction
+        run: python -B scripts/verify_v62.py --report /tmp/v62-verification.json
+      - name: Verify rational pole levels and input-only false witnesses
+        run: python -B scripts/verify_v61.py --report /tmp/v61-verification.json
+      - name: Verify index divisibility and quotient-height obstructions
+        run: python -B scripts/verify_v60.py --report /tmp/v60-verification.json
       - name: Verify the complete eleven-variable abc source and fixed-slope incidence theorem
         run: python -B scripts/verify_v59.py --report /tmp/v59-verification.json
       - name: Verify signed heights, small trace classes and actual-surface obstructions

@@ -1,0 +1,398 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,booktabs,microtype}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\DeclareMathOperator{\Tr}{Tr}\DeclareMathOperator{\Gal}{Gal}
+\title{An obstruction to finite M\"obius coupling of six elliptic contacts}
+\author{}\date{17 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+The six-contact polynomial of the conditional elliptic source has
+exactly twelve rational M\"obius symmetries. Coupling the two source
+arguments by any of these symmetries does not preserve the prescribed-index
+completeness theorem. For input one, ten branches have no rational slope
+for either retained power scale and every permitted coefficient shift.
+The identity violates a contact guard. The remaining involution has
+simple contacts at inert primes for an unbounded progression of shifts,
+forcing a negative odd detector pole for every auxiliary tuple.
+Chebotarev gives such primes outside every fixed finite exceptional set.
+The symmetry and pole-class choices may vary with the input and shift,
+provided the pole classes retain the stated common local implication.
+\end{abstract}
+
+\section{The prescribed source and the statement}
+
+Set
+\[
+ K=\Q(\sqrt2),\quad D=(3-\sqrt2)^2,\quad E:y^2=x^3-Dx,
+ \quad P=\left(\frac{57-28\sqrt2}{8},
+                    \frac{-660+417\sqrt2}{32}\right).
+\]
+The conditional source uses points $A,H,U$, the functions
+$f=1/x$, $z=-x/y$, and the six field-valued tests
+\begin{equation}\label{eq:tests}
+\begin{gathered}
+ r=\frac{z(U)}{z(H)},\qquad s=\frac{z(U-A)}{z(H-P)},\\
+ C_1=f(H),\quad C_2=f(U),\quad
+ C_3=\overline{f(H-P)},\quad C_4=\overline{f(U-A)},\\
+ C_5=r-\bar s,\qquad C_6=r+\bar s-2X.
+\end{gathered}
+\end{equation}
+All point, difference and quotient guards are retained. For a fixed odd
+integer $B\ge3$ and $e\in\{4,6\}$, the two source arguments are
+\begin{equation}\label{eq:source}
+ T=\Tr x(A),\qquad a=(X^2+B)^e+T^e,
+ \qquad t_0=\lambda,\quad t_1=a\lambda,
+\end{equation}
+and the contact polynomial is
+\begin{equation}\label{eq:F}
+ F(t)=\frac{t(t+1)(2t+1)(3t+1)(4t+1)(5t+2)}{120}.
+\end{equation}
+The literal source in~\cite{Reweighted} has
+\begin{equation}\label{eq:detector}
+ d_j=F(t_j),\quad w_j=\frac{d_j}{4(t_j-1)^8},\quad
+ W_j=\prod_{i=1}^6\left(1+\frac{C_i^2}{d_j}\right),\quad
+ V_j=\Tr(W_j^{-1}),\quad b_j=\frac{4w_j}{V_j^2}.
+\end{equation}
+The guards include $d_j(t_j-1)V_j\ne0$ and invertibility of $W_j$.
+An intrinsic pole block for $7b_j$, for example, implies
+\begin{equation}\label{eq:localpole}
+ v_p(b_j)\ \text{is not a negative odd integer}\qquad(p\notin S),
+\end{equation}
+where $S$ is fixed and finite~\cite{Intrinsic}.
+
+Write
+\[
+ \mathcal R=\{0,-1,-1/2,-1/3,-1/4,-2/5\},\qquad
+ \mathcal M=\{\phi\in\operatorname{PGL}_2(\Q):\phi(\mathcal R)=\mathcal R\}.
+\]
+The coupling considered here is
+\begin{equation}\label{eq:coupling}
+                         a\lambda=\phi(\lambda),\qquad\phi\in\mathcal M.
+\end{equation}
+Every chosen M\"obius denominator is required to be nonzero.
+
+\begin{theorem}\label{thm:main}
+Fix $e\in\{4,6\}$ and a finite set $S$ containing $2,3,5,7$.
+At the prescribed integer-input point
+\[
+                        X=1,\qquad A=P,
+\]
+there are infinitely many odd shifts $B\ge3$ for which no guarded
+rational auxiliary tuple satisfies~\eqref{eq:source}--\eqref{eq:coupling}
+and~\eqref{eq:localpole}, even if only one of the two pole conditions
+is retained. The index of that pole condition and the symmetry
+$\phi$ may be chosen separately for each tuple and shift.
+
+The assertion also holds if $d_j$ in~\eqref{eq:detector} is replaced
+by $\varepsilon_jF(t_j)$, with $\varepsilon_j$ chosen from a fixed finite
+subset of $\Q^\times$. It suffices to enlarge $S$ by the numerator
+and denominator primes of these constants. Pole predicates may be
+chosen from any family whose members all imply~\eqref{eq:localpole}
+outside the same fixed $S$.
+\end{theorem}
+
+Thus no choice from the complete symmetry menu supplies the prescribed
+completeness assertion for every sufficiently large odd shift. The
+theorem concerns the displayed source, height scales and prescribed
+root point. It does not exclude a particular fixed shift, a changed
+height scale, an independently chosen root index, or another contact
+system. It does not cover variable nonunit rescalings that change the
+local detector condition or derivative detectors with a different
+contact polynomial. If a restricted source retains the source's
+soundness conclusion that the root index must equal $X$, the theorem
+also obstructs that source's eventual completeness.
+
+\section{The complete symmetry menu}
+
+\begin{lemma}\label{lem:menu}
+The group $\mathcal M$ has precisely the following twelve elements.
+For $\phi(t)=(\alpha t+\beta)/(\gamma t+\delta)$, the last column is
+the constant in
+\[
+                F(\phi(t))(\gamma t+\delta)^6=\kappa F(t).
+\]
+\begin{center}
+\begin{tabular}{rrrrr}\toprule
+$\alpha$&$\beta$&$\gamma$&$\delta$&$\kappa$\\\midrule
+1&0&0&1&1\\
+1&0&$-5$&$-1$&$-1$\\
+1&1&2&$-1$&27\\
+4&1&$-7$&$-1$&$-27$\\
+2&1&$-3$&$-2$&$-1$\\
+3&1&$-7$&$-2$&1\\
+2&1&$-7$&$-3$&1\\
+3&1&$-8$&$-3$&$-1$\\
+1&1&$-7$&$-4$&$-27$\\
+4&1&$-13$&$-4$&27\\
+5&2&$-11$&$-5$&27\\
+5&2&$-14$&$-5$&$-27$\\\bottomrule
+\end{tabular}
+\end{center}
+\end{lemma}
+\begin{proof}
+A M\"obius map is determined by the images of the three distinct
+points $0,-1,-1/2$. There are $6\cdot5\cdot4=120$ possible ordered
+images in $\mathcal R$. For each choice $(u_1,u_2,u_3)$, solve
+\[
+ \alpha r_i+\beta-u_i\gamma r_i-u_i\delta=0
+ \qquad(r_1,r_2,r_3)=(0,-1,-1/2).
+\]
+The nullspace is one-dimensional. Discard singular matrices, maps
+having a pole at a root, and maps whose six images are not exactly
+$\mathcal R$. The retained primitive integer matrices are exactly
+the twelve displayed ones. These finite rational computations and
+each multiplier identity are reproduced by the exact checker.
+\end{proof}
+
+\section{Uniform square gaps for ten branches}
+
+At $X=1,A=P$, the actual source trace and scale are
+\begin{equation}\label{eq:actualscale}
+ T=\frac{57}{4},\qquad
+ a=\frac{p_B}{q},\qquad
+ q=4^e,\quad p_B=q(B+1)^e+57^e.
+\end{equation}
+In particular $a>4$, and $p_B$ is odd.
+
+The identity symmetry forces $(a-1)\lambda=0$, contradicting
+$F(\lambda)\ne0$. For every row except the first two, coupling gives
+\[
+ a\gamma\lambda^2+(a\delta-\alpha)\lambda-\beta=0.
+\]
+A rational solution would require
+\[
+ G=(\delta p_B-\alpha q)^2+4\gamma\beta p_Bq
+\]
+to be an integer square. Set
+\begin{equation}\label{eq:squaregap}
+ N=\delta^2p_B+(-\delta\alpha+2\gamma\beta)q,
+ \qquad K_0=4\beta\gamma(\alpha\delta-\beta\gamma).
+\end{equation}
+Direct expansion gives
+\[
+                           \delta^2G=N^2+K_0q^2.
+\]
+
+\begin{lemma}\label{lem:gap}
+For all ten rows under consideration, both exponents, and every
+integer $B\ge3$, one has
+\[
+                         N>0,\qquad 0<|K_0|q^2<2N-1.
+\]
+Consequently none of these ten branches has a rational slope.
+\end{lemma}
+\begin{proof}
+The integer $N$ is increasing with $B$. At $B=3$, the respective
+values of $p_B$ are $10621537$ and $34313224465$.
+The following table gives $K_0$ and the positive gap
+$2N-1-|K_0|q^2$ at that minimum; the rows follow Lemma~\ref{lem:menu}.
+\begin{center}
+\begin{tabular}{rrrr}\toprule
+Row&$K_0$&Gap, $e=4$&Gap, $e=6$\\\midrule
+3&$-24$&19672769&68223836705\\
+4&$-84$&15732929&67217080865\\
+5&12&84184839&274304452743\\
+6&$-28$&83133191&274035968135\\
+7&$-28$&189348561&617168212785\\
+8&32&189086929&617101112113\\
+9&$-84$&334379039&1096613814815\\
+10&156&329660447&1095405855263\\
+11&264&513765617&1711231882577\\
+12&$-336$&509040881&1710023824721\\\bottomrule
+\end{tabular}
+\end{center}
+Each $N$ is positive at the minimum. If $K_0<0$, the value
+$N^2+K_0q^2$ lies strictly between $(N-1)^2$ and $N^2$.
+If $K_0>0$, it lies strictly between $N^2$ and $(N+1)^2$.
+It is therefore not an integer square, whereas a square $G$ would
+make $\delta^2G$ one.
+\end{proof}
+
+\section{The involution and the inert-place obstruction}
+
+The only remaining symmetry is $\phi(t)=-t/(5t+1)$. Its guarded
+coupling has the unique solution
+\begin{equation}\label{eq:involution}
+ \lambda=-\frac{a+1}{5a},\qquad
+ H(a)=(a^2-1)(4a-1)(3a-2)(2a-3)(a-4),
+\end{equation}
+with identities
+\begin{equation}\label{eq:H}
+                  -F(\lambda)=\frac{H(a)}{375000a^6},
+                  \qquad F(a\lambda)=\frac{H(a)}{375000}.
+\end{equation}
+
+\begin{lemma}\label{lem:inert}
+Let $p\ne2,7$ be inert in $K$. Suppose $v_p(d)=v_p(w)=1$ in
+a defined detector
+\[
+ W=\prod_i(1+C_i^2/d),\qquad V=\Tr(W^{-1}),\qquad b=4w/V^2,
+\]
+whose tests include $f(H)$ and $\overline{f(H-P)}$.
+Then $V=0$ or $v_p(b)$ is negative and odd.
+\end{lemma}
+\begin{proof}
+The curve has good reduction at $p$: its discriminant is $64D^3$
+and $\operatorname{N}_{K/\Q}(D)=49$. The displayed coordinates of
+$P$ are integral, so its reduction is an affine point and is not
+the identity. Conjugation fixes the unique place above an inert prime.
+If both indicated tests had positive valuation, both $H$ and $H-P$
+would reduce to the identity, forcing $P$ to do so. Thus one of these
+tests has nonpositive valuation.
+
+Every factor has valuation
+\[
+                         \min(0,2v(C_i)-1)\le0;
+\]
+the two summands have different valuation parity. A zero test gives
+factor one. At least one factor has valuation at most $-1$.
+Hence $W^{-1}\in p\mathcal O_{K_p}$ and $V\in p\Z_p$. If $V\ne0$,
+then $v_p(b)=1-2v_p(V)$ is negative and odd.
+\end{proof}
+
+\section{Explicit congruence certificates}
+
+The prime $p=76253$ satisfies $p>76176$ and $p\equiv5\pmod8$,
+so it is inert in $K$. The following two shifts satisfy
+$v_p(H(a))=1$ for the exact scale~\eqref{eq:actualscale}:
+\begin{center}
+\begin{tabular}{rrrl}\toprule
+$e$&$B$&$a\pmod p$&Exact $a$\\\midrule
+4&88285&4&$15552754887321993945697/256$\\
+6&99329&$2/3$&$3934074326572091195237078520447249/4096$\\\bottomrule
+\end{tabular}
+\end{center}
+The same valuation holds on the full odd progressions
+\begin{equation}\label{eq:progressions}
+ \begin{array}{ll}
+ B\equiv88285\pmod{11629040018},&e=4,\\
+ B\equiv99329\pmod{11629040018},&e=6,
+ \end{array}
+\end{equation}
+because $11629040018=2p^2$ and the denominator of the polynomial
+$a(B)$ is a unit at $p$. Each displayed contact root of $H$ is simple;
+$a,\lambda,\lambda-1,a\lambda-1,5\lambda+1$ are units at $p$.
+Equations~\eqref{eq:H} give valuation one for both contact values and
+both physical weights. Lemma~\ref{lem:inert} therefore applies to
+either detector, and to either sign of its contact function.
+
+The finite certificate checks primality by division by every possible
+divisor at most $276$, verifies Euler's criterion for $2$, and evaluates
+the scale and contact valuations using exact rational arithmetic.
+As a supplementary order certificate, write
+$\mathbb F_{p^2}=\mathbb F_p[s]/(s^2-2)$. Then
+\[
+ \widetilde P=((28602,38123),(9511,26225))
+\]
+in the basis $1,s$, and
+\[
+ \operatorname{ord}(\widetilde P)=16518755=5\cdot11\cdot157\cdot1913.
+\]
+The checker verifies annihilation by this integer and nonannihilation
+by its quotient by each of the four prime factors, entirely in the
+finite field. The proof of Lemma~\ref{lem:inert} requires only the
+nonidentity reduction, not its exact order.
+
+\section{Primes outside every finite exceptional set}
+
+\begin{lemma}\label{lem:chebotarev}
+For each $e\in\{4,6\}$, infinitely many rational primes inert in
+$\Q(\sqrt2)$ admit a simple residue root of
+\[
+                         Y^e+57^e-4^{e+1}.
+\]
+\end{lemma}
+\begin{proof}
+Put $m_e=57^e-4^{e+1}$. The exact factorizations are
+\[
+ m_4=10554977=17\cdot193\cdot3217,\qquad
+ m_6=34296430865=5\cdot47\cdot3943\cdot37013.
+\]
+Thus $Y^4+m_4$ is Eisenstein at $17$, and $Y^6+m_6$ is
+Eisenstein at $5$. Let $L_e=\Q(\alpha_e)$ for a root $\alpha_e$.
+In each case the Eisenstein prime has a unique prime above it in
+$L_e$, with total ramification and residue degree one.
+
+The field $L_4$ cannot contain $\Q(\sqrt2)$: $17$ splits in that
+quadratic field, as $6^2\equiv2\pmod{17}$, and the two primes
+would have distinct primes above them in $L_4$. The field $L_6$
+cannot contain $\Q(\sqrt2)$ either: $5$ is inert in that field,
+so the residue degree of a prime of $L_6$ above $5$ would be
+divisible by two.
+
+Let $M_e$ be a Galois closure of $L_e(\sqrt2)$ over $\Q$.
+Since $\sqrt2\notin L_e$, there is an automorphism
+$\sigma\in\Gal(M_e/L_e)$ that sends $\sqrt2$ to $-\sqrt2$.
+Chebotarev's theorem~\cite[Theorem 8.31]{Milne} supplies infinitely
+many unramified rational primes whose Frobenius conjugacy class is
+that of $\sigma$. Its action on $\sqrt2$ makes each prime inert
+in the quadratic field. Since $\sigma$ fixes $\alpha_e$, its
+permutation of the roots has a fixed point; after omitting the finitely
+many polynomial-discriminant primes, the polynomial has a simple
+root modulo each such prime.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+Enlarge $S$ to contain the numerator and denominator primes of the
+allowed fixed multipliers. Choose a prime from
+Lemma~\ref{lem:chebotarev} outside $S$ and the remaining finite
+exceptional set, and a simple root $y$ modulo $p$.
+The residue $B+1=y/4$ gives
+\[
+                      (B+1)^e+(57/4)^e\equiv4\pmod p.
+\]
+The derivative $e(B+1)^{e-1}$ is nonzero after omitting primes
+dividing $em_e$. Also $H'(4)=11250$, so $H(a(B))$ has a simple
+zero in this residue class. Of its $p$ lifts modulo $p^2$, precisely
+one is a zero modulo $p^2$. Any other lift, chosen odd, gives
+\[
+                             v_p(H(a(B)))=1
+\]
+on an infinite progression modulo $2p^2$.
+
+For $B\ge3$, Lemma~\ref{lem:gap} excludes ten possible symmetries
+and the identity violates the contact guard. The involution is
+therefore the only remaining candidate. At its residue $a=4$,
+all the denominator guards in~\eqref{eq:H} and the physical weights
+are units. Multiplication by any allowed $\varepsilon_j$ preserves
+valuation one. Lemma~\ref{lem:inert} contradicts either retained
+pole condition. Since this argument excludes all twelve possibilities
+at every shift in the progression, allowing their choices to vary
+does not change the conclusion.
+\end{proof}
+
+\section{Reproduction}
+
+The exact computation is distributed at
+\nolinkurl{negative_results/computation/six_contact_mobius_v62/}.
+Run \texttt{python check.py --output certificate.json} in that directory.
+The checker enumerates all $120$ possible ordered image triples,
+verifies the twelve rational identities, the twenty uniform square-gap
+inequalities, both explicit progressions, the finite-field order,
+and the two Eisenstein factorizations. The independent standard-library
+checker \texttt{check\_independent.py} reconstructs the symmetry group
+by explicit interpolation, verifies identities by polynomial coefficient
+multiplication, and checks the square gaps and the integral contact
+numerators. The infinite assertion uses the
+proof of Lemma~\ref{lem:chebotarev}; it is not inferred from a finite search.
+
+\begin{thebibliography}{9}
+\bibitem{Reweighted}
+\emph{Quadratic reweightings of native elliptic detectors}, repository source,
+\nolinkurl{papers/pole_parameters/reweighted_elliptic_detectors_20261116_v53.tex}.
+\bibitem{Intrinsic}
+\emph{A two-coordinate pole test of coefficient height four}, repository source,
+\nolinkurl{papers/pole_parameters/intrinsic_pole_20261117_v56.tex}.
+\bibitem{Milne}
+J.~S.~Milne, \emph{Algebraic Number Theory}, course notes, Theorem~8.31,
+\url{https://www.jmilne.org/math/CourseNotes/ANT.pdf}, accessed 17 November 2026.
+\end{thebibliography}
+\end{document}

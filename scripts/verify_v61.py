@@ -102,8 +102,9 @@ def main(output):
     section=re.search(r'(?ms)^## Contributors and citation\n.*?(?=^## |\Z)',readme)
     assert section and hashlib.sha256(section.group().encode()).hexdigest()==CONTRIBUTORS_HASH
     assert r'\(' not in readme and r'\[' not in readme
-    assert 'data/results_20261117_v61.json' in readme
-    assert 'docs/results_20261117_v61.md' in readme
+    # Historical releases retain their records after README advances.
+    assert (ROOT/'data/results_20261117_v61.json').is_file()
+    assert (ROOT/'docs/results_20261117_v61.md').is_file()
     builds=json.loads((ROOT/'data/audits/tex_build_20261117_v61.json').read_text())
     assert {build['paper'] for build in builds['papers']}=={PAPER,LEVEL_PAPER}
     for build in builds['papers']:
