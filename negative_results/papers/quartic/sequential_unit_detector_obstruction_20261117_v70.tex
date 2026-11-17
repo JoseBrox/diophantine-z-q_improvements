@@ -1,0 +1,284 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,microtype}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue]{hyperref}
+\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\Pset}{\mathcal P}
+\title{A quadratic scaling obstruction for sequential six-unit bases}
+\author{}\date{17 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+We consider two field-valued detectors whose contact weights are $u$ and
+$uv$. Four shared comparison tests and four shared reciprocal tests are
+distributed independently among their quadratic slots. We prove that
+no integer diagonal Laurent scaling makes these factor equations
+quadratic using any of $2834$ explicitly specified six-unit bases.
+An exact finite enumeration leaves two bases; their exclusion follows
+from incompatible weights forced on the reciprocal tests. The result
+concerns this factor design and these monomial transformations only.
+\end{abstract}
+
+\section{Unit coordinates and allowed transformations}
+
+Let $u,v$ be formal invertible variables. Associate the exponent vector
+$(a,b)\in\Z^2$ to the Laurent monomial $u^av^b$. The zero vector
+represents the constant $1$. Start with the four unit coordinates
+\begin{equation}\label{eq:initial}
+u,\quad u^{-1},\quad v,\quad z=u^sv^{-1},
+\qquad -2\le s\le2,
+\end{equation}
+and put
+\[
+ \Pset_s^{(0)}=\{(0,0),(1,0),(-1,0),(0,1),(s,-1)\}.
+\]
+The initial guards are $u u^{-1}=1$ and $vz=u^s$. In the second
+guard, $u^s$ means $u^2$, $u$, $1$, $u^{-1}$ or $(u^{-1})^2$,
+as appropriate, so both guards have degree at most two.
+
+For a finite exponent set $P$ containing zero, define
+\[
+ \mathcal E(P)=(P+P-P)\setminus P.
+\]
+Choose $e_1\in\mathcal E(\Pset_s^{(0)})$, then
+$e_2\in\mathcal E(\Pset_s^{(0)}\cup\{e_1\})$, and let
+\begin{equation}\label{eq:finalP}
+ \Pset=\Pset_s^{(0)}\cup\{e_1,e_2\}.
+\end{equation}
+Thus $\Pset$ describes six unit coordinates and the constant one.
+If $e=a+b-c$ is chosen at either stage, its new coordinate $U_e$
+has the quadratic definition
+\[
+                         U_eU_c=U_aU_b.
+\]
+Every coordinate on the right, and $U_c$, is already available.
+The initial guards imply that all initial coordinates are nonzero;
+induction gives the same conclusion for both new coordinates.
+The definitions therefore determine the new coordinates uniquely.
+
+Every nonunit coordinate $X$ may be replaced by
+$u^{w_{X,0}}v^{w_{X,1}}\widetilde X$, with $w_X\in\Z^2$.
+Each rational component equation may be divided by an arbitrary
+Laurent monomial with integer exponent vector $r$.
+The resulting terms must be written literally as ordinary monomials
+of total degree at most two in the available coordinates. We allow
+neither combinations of factor equations nor substitutions using
+other relations among nonunit coordinates.
+
+For a nonunit monomial of degree $d$, the residual unit exponent
+must be a sum of at most $2-d$ elements of $\Pset$. In particular,
+a quadratic nonunit monomial must have residual exponent zero,
+and a constant term has residual exponent in $\Pset+\Pset$.
+
+\section{The two factor systems}
+
+Work in $K=\Q(\rho)$, where $\rho^2=2$, and put
+\[
+                  q_0=u,\qquad q_1=uv.
+\]
+There are four shared comparison tests and four shared raw tests.
+Use separate field-coordinate blocks
+$J_i=J_{i,0}+\rho J_{i,1}$ and
+$R_i=R_{i,0}+\rho R_{i,1}$, $1\le i\le4$.
+The comparison test is $u^{-6}J_i^2$ and the raw test is $R_i^2$.
+Nonzero rational diagonal changes in these component coordinates
+are immaterial.
+
+Each detector has four regular factors. Each factor contains a
+noncancelled constant $1$ and two quadratic-test slots. For detector
+$j$, the allowed contributions are
+\begin{equation}\label{eq:slots}
+\begin{array}{c|cc}
+ &\text{first slot}&\text{second slot}\\\hline
+\text{comparison }i&q_j^9u^{-6}J_i^2&q_j^{11}u^{-6}J_i^2\\
+\text{raw }i&q_jR_i^2&q_j^3R_i^2.
+\end{array}
+\end{equation}
+The eight tests are assigned bijectively to the eight slots in each
+detector. The assignments in the two detectors are independent.
+Any remaining terms, including the factor output, are linear in
+separate nonunit coordinates and cancel none of the displayed
+constant or square monomials.
+
+For the elliptic detector normalization in \cite{Physical}, the
+four comparisons are $C_2^4,C_3^4,C_4^4,G^4$. Their stored
+squares have the form $u^{-3}J_i$, after fixed nonzero diagonal
+normalization; hence their fourth powers have the form used in
+\eqref{eq:slots}. The raw tests are reciprocal squares stored
+without a fixed Laurent factor. The contact powers in
+\eqref{eq:slots} are those of \cite{Factors}.
+
+\begin{lemma}\label{lem:components}
+In a quadratic presentation of a factor containing a full square,
+the two components of that square have equal Laurent weights.
+The real and imaginary factor equations have equal row-division
+exponents, even if they were initially allowed independent exponents.
+\end{lemma}
+\begin{proof}
+For a square with unit exponent $e$, the real equation contains
+the two nonzero monomials
+$u^{e_0}v^{e_1}X_0^2$ and
+$2u^{e_0}v^{e_1}X_1^2$. Their quadratic degree forces
+\[
+                 e+2w_{X_0}=r_{\rm re}=e+2w_{X_1}.
+\]
+Thus $w_{X_0}=w_{X_1}$. The nonzero imaginary monomial
+$2u^{e_0}v^{e_1}X_0X_1$ then gives
+$r_{\rm im}=e+w_{X_0}+w_{X_1}=r_{\rm re}$.
+The different test blocks prevent cancellation of these terms.
+\end{proof}
+
+\section{The finite unit enumeration}
+
+For a comparison occurring with powers $p_0,p_1\in\{9,11\}$,
+write $w\in\Z^2$ for its common component weight, and let $r_j$
+be the row exponent of the factor containing it in detector $j$.
+Lemma~\ref{lem:components} gives
+\begin{equation}\label{eq:r}
+ r_0=2w+(-6+p_0,0),\qquad
+ r_1=2w+(-6+p_1,p_1).
+\end{equation}
+Since both factors have constant $1$, their constant exponents
+$E_j=-r_j$ belong to $\Pset+\Pset$. Consequently
+\begin{equation}\label{eq:filter}
+\begin{split}
+ E_0,E_1&\in\Pset+\Pset,\\
+ E_1-E_0&=(p_0-p_1,-p_1),\\
+ E_0&\equiv(-6+p_0,0)\pmod2.
+\end{split}
+\end{equation}
+
+\begin{lemma}\label{lem:enumeration}
+Among the bases \eqref{eq:finalP}, exactly two admit a state
+\eqref{eq:filter}. They have $s=0$, $e_1=(0,-3)$ and
+$e_2=(\varepsilon,-6)$, where $\varepsilon\in\{-1,1\}$.
+Their complete state lists are
+\begin{equation}\label{eq:state-table}
+\begin{array}{c|c|c|c|c}
+\varepsilon&(p_0,p_1)&E_0&E_1&w\\\hline
+-1&(9,9)&(-1,0)&(-1,-9)&(-1,0)\\
+ 1&(9,9)&(1,0)&(1,-9)&(-2,0)\\
+ 1&(11,9)&(-1,0)&(1,-9)&(-2,0).
+\end{array}
+\end{equation}
+\end{lemma}
+\begin{proof}
+The finite enumeration is given by the following exact procedure.
+For each $s=-2,-1,0,1,2$, form $P_0=\Pset_s^{(0)}$.
+For every $e_1\in(P_0+P_0-P_0)\setminus P_0$, form
+$P_1=P_0\cup\{e_1\}$. For every
+$e_2\in(P_1+P_1-P_1)\setminus P_1$, form
+$P=P_1\cup\{e_2\}$, retaining each resulting set once for that
+$s$. For each $(p_0,p_1)\in\{9,11\}^2$ and every
+$E_0\in P+P$, check the two parity conditions and membership of
+$E_0+(p_0-p_1,-p_1)$ in $P+P$. The resulting counts are
+\[
+\begin{array}{r|r|r|r}
+s&\text{ordered extension choices}&\text{distinct bases for }s
+ &\text{bases passing \eqref{eq:filter}}\\\hline
+-2&1140&762&0\\
+-1&868&592&0\\
+ 0&648&458&2\\
+ 1&868&592&0\\
+ 2&1140&762&0\\\hline
+\text{total}&4664&3166&2.
+\end{array}
+\]
+Removing duplicates between different values of $s$ gives $2834$
+distinct final exponent sets. The successful state lists are exactly
+\eqref{eq:state-table}. All set operations, membership tests and
+parity checks are over integers. The standard-library checker in
+Section~\ref{sec:certificate} implements precisely these loops,
+reconstructs the complete sets and verifies the displayed lists.
+
+For both surviving bases, the two additional quadratic definitions
+can be written
+\[
+                  vU_{(0,-3)}=(v^{-1})^2,
+\]
+and, respectively,
+\[
+ uU_{(-1,-6)}=U_{(0,-3)}^2,
+ \qquad u^{-1}U_{(1,-6)}=U_{(0,-3)}^2.
+\]
+These also verify their sequential admissibility directly.
+\end{proof}
+
+\section{Incompatible detector weights}
+
+\begin{theorem}\label{thm:obstruction}
+For every unit basis \eqref{eq:finalP}, the two factor systems
+\eqref{eq:slots} admit no quadratic presentation by the integer
+diagonal Laurent transformations and monomial row divisions specified
+above. The conclusion holds for every independent assignment of the
+quadratic tests and every choice of the additional linear terms.
+\end{theorem}
+\begin{proof}
+Apply \eqref{eq:filter} to any comparison. By
+Lemma~\ref{lem:enumeration}, only the two displayed bases remain.
+Apply the same lemma separately to all four comparisons. In either
+basis they all have the same component weight, namely $(-1,0)$
+for $\varepsilon=-1$ and $(-2,0)$ for $\varepsilon=1$.
+Moreover, every comparison has power $9$ in detector $1$.
+
+There are four comparisons and four first slots. Thus the comparisons
+occupy all first slots of detector $1$, and the raw tests occupy all
+second slots, where their power is $3$. Equation~\eqref{eq:r}
+shows that every factor row exponent in this detector is $(1,9)$
+for $\varepsilon=-1$, or $(-1,9)$ for $\varepsilon=1$.
+If $b$ is the common component weight of a raw test, its square
+forces
+\[
+ 2b+(3,3)=(1,9)\quad\hbox{or}\quad
+ 2b+(3,3)=(-1,9),
+\]
+respectively. Hence every raw test has second weight component $3$.
+
+In detector $0$, two comparisons cannot share one factor: their
+common weight and their slot powers $9,11$ would give row exponents
+differing by $(2,0)$. Since there are four comparisons and four
+factors, each factor therefore contains exactly one comparison and
+one raw test. The comparison term forces the second row-exponent
+component to be zero. The raw term, whether its power is $1$ or $3$,
+has second exponent component $2\cdot3=6$, since $q_0=u$.
+The two quadratic terms cannot have the same row exponent.
+This contradiction excludes both surviving bases.
+\end{proof}
+
+The theorem uses no reference equation, point-chart equation, special
+factor, product-chain equation or particular linear-test allocation.
+It imposes no bound on the size of the integer Laurent weights.
+Different unit families, detector powers, nonmonomial coordinates,
+or operations using other equations are outside its hypotheses.
+In particular it gives no lower bound for unrestricted quartic
+Diophantine definitions.
+
+\section{Exact certificate}\label{sec:certificate}
+
+The portable specification is \texttt{factor\_model.json};
+\texttt{check.py} reconstructs every finite exponent set, every
+surviving comparison state, and the vector contradiction in
+Theorem~\ref{thm:obstruction}. It requires only the Python standard
+library and accepts
+\begin{quote}\ttfamily
+python -B check.py --output certificate.json
+\end{quote}
+The certificate records the per-$s$ and global counts, hashes of the
+sorted finite sets, both quadratic unit-definition chains, all
+surviving states and both incompatible raw-test weights. Its proof
+does not depend on an SMT solver.
+
+\begin{thebibliography}{9}\raggedright
+\bibitem{Physical}
+\emph{Laurent scaling obstructions for two elliptic detectors},
+\nolinkurl{negative_results/papers/quartic/physical_detector_scaling_20261117_v67.tex},
+with its exact physical-coordinate mapping certificates.
+\bibitem{Factors}
+\emph{Five local factors with squared reciprocal tests},
+\nolinkurl{papers/quartic/revised_detector_factors_20261117_v66.tex}.
+\end{thebibliography}
+\end{document}

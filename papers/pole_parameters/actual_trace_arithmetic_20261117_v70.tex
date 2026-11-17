@@ -1,0 +1,320 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,microtype}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newcommand{\Q}{\mathbb Q}
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\Jac}{Jac}
+\title{Arithmetic reductions for an actual-trace square equation}
+\author{}\date{17 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+For a fixed rational elliptic point tuple, the derivative detector's
+actual-trace square equation factors through a curve in its physical
+weight, of genus at most $36$. Rational points on that curve lift to
+the source precisely through a degree-nine equation, a rational-square
+condition, and the retained guards. An exact point tuple gives an
+intermediate curve of genus $24$, a squared-slope quotient of genus
+$224$, and a slope curve of genus $449$. The latter Jacobian is
+isogenous over $\Q$ to the product of Jacobians of genera $224$
+and $225$. Integer polynomial specifications and finite-field Bezout
+certificates verify these genera. A separate exact slope has a soluble
+split contact and a unit-weight local obstruction. No uniform rational
+realization or defining-variable reduction is asserted.
+\end{abstract}
+
+\section{The actual weight curve}
+
+Put $K=\Q(\sqrt2)$ and use the source curve and point
+\[
+ E:y^2=x^3-(3-\sqrt2)^2x,\qquad
+ P=\left(\frac{57-28\sqrt2}{8},\frac{-660+417\sqrt2}{32}\right).
+\]
+Fix a guarded rational point tuple of the derivative source
+\cite{Derivative,Criterion}. Its six tests $C_i\in K$ are actual
+constants; the trace is not an independent parameter. For a variable
+$u$ write
+\begin{equation}\label{eq:actual}
+ D_i=\frac{C_i^2}{1+uC_i^2},\quad
+ W=\prod_{i=1}^6(1+D_i^2/u),\quad
+ V=\Tr(W^{-1}),\quad
+ \mathcal C(u)=V^2+\frac{u}{(1+u)^2}(2-V).
+\end{equation}
+In the source the first four tests are nonzero. The two comparison
+tests may vanish, and a terminal ordinate may be zero.
+
+\begin{proposition}\label{prop:small}
+For any such fixed tuple, the normalization of
+$Y^2=\mathcal C(u)$ is geometrically integral and has genus at
+most $36$. It has a rational branch point at $u=0$ and two rational
+points over $u=\infty$, outside the guarded affine source.
+\end{proposition}
+\begin{proof}
+For each test put
+\[
+ L_i(u)=u(1+uC_i^2)^2+C_i^4,\qquad
+ S_i(u)=u(1+uC_i^2)^2.
+\]
+Both products $L=\prod_i L_i$ and $S=\prod_i S_i$ have
+degree at most $18$ over $K$. Thus
+\[
+ V=\frac{S\overline L+\overline S L}{L\overline L}
+      =\frac{N(u)}{D(u)},\qquad N,D\in\Q[u],\quad
+                  \deg N,\deg D\le36.
+\]
+Common factors may be cancelled; the original guards are retained
+independently of that cancellation. Clearing the square denominator
+gives the polynomial model
+\begin{equation}\label{eq:weight-polynomial}
+ Y_0^2=\Pi(u):=N(u)^2(1+u)^2+uD(u)(2D(u)-N(u)),
+ \qquad Y_0=(1+u)D(u)Y.
+\end{equation}
+Its degree is at most $74$. Removing square factors gives a
+hyperelliptic normalization of genus at most $36$.
+
+Every nonzero test contributes a simple zero to $W^{-1}$ at
+$u=0$ in both embeddings. Since at least one test is nonzero,
+$V=O(u)$, and $\mathcal C(u)=2u+O(u^2)$. The function is
+therefore not a square even over $\overline\Q(u)$. This also
+gives the rational branch point. At infinity,
+$D_i=u^{-1}+O(u^{-2})$ for nonzero tests, while zero tests
+contribute the factor one. Hence $V=2+O(u^{-3})$ and
+$\mathcal C(u)=4+O(u^{-3})$, giving two rational points there.
+\end{proof}
+
+The genus statement concerns the smooth normalization. If a polynomial
+model in \eqref{eq:weight-polynomial} is singular, its finitely many
+rational singular points must also be tested directly in the affine
+equation; a rational singular point need not lift rationally to its
+normalization. This includes permitted zero terminal ordinates.
+
+\section{An exact rational point tuple}
+
+Take
+\begin{equation}\label{eq:fixture}
+ X=1,\qquad B=3,\qquad A=P,\qquad H=U=5P.
+\end{equation}
+Here $B=3$ is an algebraic fixture. No claim is made that it exceeds
+the ineffective defining-shift threshold of the source theorem.
+The identity
+\[
+                  2(1+\sqrt2,2\sqrt2)=P
+\]
+places the three point roles in $2E(K)$. The points $P,4P,5P$
+have nonzero finite abscissas and ordinates, and $x(5P)\ne x(P)$;
+these assertions are checked exactly by the accompanying program.
+
+Let $f(Q)=1/x(Q)$ and put
+\[
+ c=f(5P),\qquad d=\overline{f(4P)}.
+\]
+The six source tests are exactly
+\[
+                    (C_1,\ldots,C_6)=(c,c,d,d,0,0).
+\]
+Indeed both formal quotients are one, since $U=H$ and $U-A=H-P$.
+Writing $\alpha=c^2$ and $\beta=d^2$, define
+\[
+ \begin{aligned}
+ L_\alpha&=u(1+u\alpha)^2+\alpha^2,
+       &L_\beta&=u(1+u\beta)^2+\beta^2,\\
+ Q&=L_\alpha L_\beta,
+       &S&=u^2(1+u\alpha)^2(1+u\beta)^2.
+ \end{aligned}
+\]
+Then $W=(Q/S)^2$. Consequently the actual trace is
+\begin{equation}\label{eq:trace-fixture}
+ V=\frac{(S\overline Q)^2+(\overline S Q)^2}
+          {(Q\overline Q)^2}=\frac{N(u)}{D(u)}.
+\end{equation}
+The last pair is made integral by multiplying numerator and denominator
+by the same common denominator and dividing their common integer
+content. This specifies $N,D$ exactly; their ascending coefficient
+lists are also included in the certificate.
+
+\begin{theorem}\label{thm:fixture}
+For \eqref{eq:fixture}, $N$ and $D$ are coprime of degree $24$,
+with $\operatorname{lc}(N)=2\operatorname{lc}(D)$. The polynomial
+$\Pi$ of \eqref{eq:weight-polynomial} is squarefree of degree $50$.
+Thus the actual intermediate curve has genus $24$.
+\end{theorem}
+\begin{proof}
+The exact polynomial construction verifies the degrees and leading
+coefficients. Reduction modulo $101$ preserves the degrees and
+certifies $\gcd(N,D)=1$. The certificate supplies polynomials
+$e,f\in\mathbb F_{101}[u]$ satisfying
+\[
+                     e\Pi+f\Pi'=1.
+\]
+Thus $\Pi$ is squarefree over $\Q$, giving genus $(50-2)/2=24$.
+As an independent arithmetic check of the trace formula, exact field
+evaluation of \eqref{eq:actual} at $u=1,2,3$ agrees with $N/D$.
+\end{proof}
+
+\section{The physical map and its two quotients}
+
+For \eqref{eq:fixture}, the scale is
+\[
+ a=\left(4^4+(57/4)^4\right)^4
+          =\left(\frac{10621537}{256}\right)^4>10.
+\]
+Throughout this section $t=z^2$; it is not the source expression
+$a^2-z^2$. For
+$\mathcal S=\{-10,-8,-5,1,2,3,4,6,7\}$ put
+\[
+ F(a,t)=\prod_{c\in\mathcal S}((a+c)^2-t),\qquad
+              \frac{\mathsf A(t)}{\mathsf B(t)}=-18\frac{F}{F_a},
+\]
+where $F_a$ is differentiated before $a$ is specialized.
+The integer pair $\mathsf A,\mathsf B$ is obtained by the same
+common-denominator and common-content convention as above. It is
+coprime, with degrees $9$ and $8$. Its coefficient lists are in the
+certificate. Define the polynomial by homogeneous composition:
+\begin{equation}\label{eq:composition}
+ \mathcal P(t)=\mathsf B(t)^{50}
+                 \Pi\!\left(\frac{\mathsf A(t)}{\mathsf B(t)}\right).
+\end{equation}
+This is an exact integer polynomial specification without a printed
+degree-$450$ expansion. On $\mathsf B(t)\ne0$ put
+$Y_1=\mathsf B(t)^{25}Y_0$; this identifies the displayed
+composition curves with the corresponding actual equations.
+
+\begin{theorem}\label{thm:genera}
+The polynomial $\mathcal P$ is squarefree of degree $450$, and
+$\mathcal P(0)\ne0$. The normalized curves
+\[
+ \mathcal C_t:Y_1^2=\mathcal P(t),\quad
+ \mathcal C_t':Y_2^2=t\mathcal P(t),\quad
+ \mathcal C_z:Y_1^2=\mathcal P(z^2)
+\]
+have genera $224,225,449$, respectively. There is an isogeny over
+$\Q$
+\[
+              \Jac(\mathcal C_z)\longrightarrow
+              \Jac(\mathcal C_t)\times\Jac(\mathcal C_t').
+\]
+\end{theorem}
+\begin{proof}
+The degree follows from $\deg\Pi=50$, $\deg\mathsf A=9$ and
+$\deg\mathsf B=8$. Modulo $101$ this degree is preserved,
+$\mathcal P(0)\ne0$, and a second recorded Bezout identity gives
+$e_t\mathcal P+f_t\mathcal P'=1$. It follows that both
+$t\mathcal P(t)$ and $\mathcal P(z^2)$ are squarefree. The
+hyperelliptic genus formulas give the stated values.
+
+The two maps are
+\[
+ (z,Y_1)\longmapsto(z^2,Y_1),\qquad
+ (z,Y_1)\longmapsto(z^2,zY_1).
+\]
+Their pullbacks send the regular differential bases to
+\[
+ 2z^{2i+1}\frac{dz}{Y_1}\quad(0\le i\le223),\qquad
+ 2z^{2j}\frac{dz}{Y_1}\quad(0\le j\le224).
+\]
+Together these form the full $449$-dimensional space of regular
+differentials on $\mathcal C_z$. The product of the induced
+Jacobian pushforwards therefore has invertible cotangent map.
+In characteristic zero it is surjective with finite kernel, hence
+an isogeny; see the basic Jacobian and isogeny constructions in
+\cite{Milne}.
+\end{proof}
+
+\section{Exact rational lifting}
+
+\begin{proposition}\label{prop:lift}
+A finite rational point $(u,Y_0)$ on $Y_0^2=\Pi(u)$ gives an
+actual rational square witness for the fixed tuple precisely when
+there is $t\in\Q$ such that
+\begin{equation}\label{eq:lift}
+ u\mathsf B(t)-\mathsf A(t)=0,\qquad
+ \mathsf B(t)\ne0,\qquad t=z^2\text{ for some }z\in\Q,
+\end{equation}
+and all retained source guards hold. In particular these include
+\[
+ u\ne0,-1,\qquad N(u)D(u)\ne0,\qquad a^2-t\ne0,
+\]
+the balanced denominator norms, both slots of $W$, and the original
+point and difference guards. For a prepared witness one additionally
+retains every prescribed fixed-place, selected-contact, real and
+whole-character condition of \cite{Criterion}.
+The equation in $t$ has degree exactly nine.
+\end{proposition}
+\begin{proof}
+The finite weight $u$ is physical exactly when the first two
+conditions of \eqref{eq:lift} hold. Its polynomial has degree nine
+because $\deg\mathsf A=9>\deg\mathsf B$. The last condition
+is precisely rational recoverability of the slope. Under the guards,
+\[
+                   Y=\frac{Y_0}{(1+u)D(u)}
+\]
+then satisfies the actual square equation, and every actual witness
+arises this way. Zero $Y_0$ is allowed. Extra preparation conditions
+are additional tests, not consequences of rationality on a quotient.
+\end{proof}
+
+Equivalently, rational points $(t,Y_1)$ and $(t,Y_2)$ on the two
+squared-slope quotients with the same $t$ and $Y_1\ne0$ give
+$z=Y_2/Y_1\in\Q$. When $Y_1=0$, both quotient ordinates
+vanish and the separate rational-square test on $t$ is still needed.
+The known rational points above $u=0$ and $u=\infty$ violate the
+affine source guards. Thus the reductions do not by themselves
+produce an admissible rational point.
+
+\section{An exact local comparison at one slope}
+
+Keep \eqref{eq:fixture} and set $z=a+12$. Then $z>a+10$ and
+$u>0$: every summand in
+\[
+                     \frac{F_a}{F}
+               =\sum_{c\in\mathcal S}\frac{2(a+c)}{(a+c)^2-z^2}
+\]
+is negative. All balanced denominators and factors are positive in
+both real embeddings, so $0<V<2$ and $\mathcal C>0$.
+
+At $17$, the contact $z\equiv a-5$ is isolated and
+$v_{17}(u)=1$, with $u/17\equiv1\pmod{17}$. In the slot
+$\sqrt2\equiv244\pmod{17^2}$, both $c$ and $d$ vanish modulo
+$17^2$; in the other slot they are $2$ and $1$ modulo $17$.
+Consequently $V\equiv1$ and $\mathcal C\equiv1\pmod{17}$,
+so the actual radicand is a nonzero square in $\Q_{17}$.
+
+At $31$, exact reduction of the same rational functions gives
+\[
+       u\equiv9,\qquad V\equiv22,\qquad
+       \frac{u}{(1+u)^2}\equiv19,\qquad
+                       \mathcal C\equiv11\pmod{31}.
+\]
+The balanced-factor and trace expressions have unit denominators
+after reduction, while $11^{15}\equiv-1\pmod{31}$.
+Thus this actual positive radicand is not a rational square. These
+calculations verify the real condition and a single split contact;
+they do not verify the retained preparation at every other place or
+point-algebra character. Both $17$ and $31$ belong to the retained
+fixed exceptional set. In particular this is not a counterexample
+to rational realization after full preparation.
+
+\section{Certificate scope}
+
+The portable program uses exact rational arithmetic in $K$, exact
+polynomial arithmetic, and the displayed finite-field Bezout
+identities. It verifies the source point additions, trace identity,
+coprimality and genera, and the two local calculations. The degree-$450$
+polynomial is kept in homogeneous-composition form. The computations
+do not enumerate rational points on the genus-$24$ curve and do not
+show that a point surviving the lifting and preparation tests exists.
+
+\begin{thebibliography}{9}
+\bibitem{Derivative}\emph{An eleven-variable construction under rational $abc$},
+\nolinkurl{papers/conditional_few_variables/derivative_detector11_20261117_v63.tex}.
+\bibitem{Criterion}\emph{One actual-trace square in a derivative detector},
+\nolinkurl{papers/pole_parameters/single_trace_derivative_criterion_20261117_v64.tex}.
+\bibitem{Milne}J. S. Milne, \emph{Abelian Varieties}, version 2.0,
+2008, Chapters I and III. \url{https://www.jmilne.org/math/CourseNotes/AV.pdf}.
+\end{thebibliography}
+\end{document}

@@ -1,0 +1,211 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,microtype}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
+\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\Z}{\mathbb Z}
+\title{A quadratic obstruction to retaining half a scalar helper}
+\author{}\date{17 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+For a specified translated-secant chart, retaining only the rational
+component of the product of the scalar quotient and the secant intercept
+does not give a quadratic presentation of the scalar-quotient graph.
+An exact finite-field minor certifies the complete space of its quadratic
+identities in characteristic zero. All these identities admit an explicit
+wrong nonzero scalar quotient at a nontorsion point pair. The result
+concerns this interface and this helper, not the full 195-coordinate
+system or arbitrary alternative charts.
+\end{abstract}
+
+\section{The interface and its guards}
+
+Put $K=\Q(\rho)$, $\rho^2=2$, $D=11-6\rho$, and
+$E:y^2=x^3-Dx$. Use six field coordinates $F,G,s,t,h,d$, and
+write $p=h+s+t$. The translated-secant chart is
+\begin{equation}\label{eq:chart}
+ d=pF,\qquad d=hG,\qquad
+ D(F+G)=(s-t)h-t^2,\qquad
+ 1=d(s-t)-DFG.
+\end{equation}
+Adjoin the already available square outputs $F_2=F^2$, $G_2=G^2$.
+For the present argument restrict to the nonempty open set
+\[
+ FG(F-G)stdS\ne0,\qquad d(h+s)-1\ne0,
+\]
+where $S\in K$ is a free nonzero reference coordinate. A field
+nonzero condition means that its rational norm is nonzero.
+The chart recovers
+\[
+ U=(F^{-1},s/F),\quad V=(G^{-1},t/G),\quad
+ x(U-V)=hp,\quad q=-\frac{y(U-V)}{x(U-V)}=h+s-d^{-1}.
+\]
+These formulas also follow directly from the secant through the two
+translated points. On the displayed open set all denominators used
+below are nonzero.
+
+The scalar-quotient graph requires
+\begin{equation}\label{eq:scalar}
+                  Z=-2S/q,
+ \qquad Z\bigl[d(h+s)-1\bigr]+2Sd=0.
+\end{equation}
+Thus $Z\ne0$. One quadratic presentation uses a field helper $e=Zd$
+and the field equation $e(h+s)-Z+2Sd=0$. Consider instead retaining
+only $e_0$, the rational component of $e=e_0+e_1\rho$.
+There are then 21 rational coordinates: the two components of
+\[
+              F,G,s,t,h,d,S,Z,F_2,G_2
+\]
+and $e_0$. No other reference, ratio, normalizer or scalar-square
+coordinates of the 195-coordinate source are allowed in this interface.
+
+The eliminated component has the quadratic expression
+$e_1=Z_0d_1+Z_1d_0$. Its two consumers become
+\begin{align*}
+ e_0(h_0+s_0)+2(Z_0d_1+Z_1d_0)(h_1+s_1)
+       -Z_0+2(S_0d_0+2S_1d_1)&=0,\\
+ e_0(h_1+s_1)+(Z_0d_1+Z_1d_0)(h_0+s_0)
+       -Z_1+2(S_0d_1+S_1d_0)&=0.
+\end{align*}
+These are cubic expressions. The following theorem shows that replacing
+them by other quadratic identities in the same interface cannot repair
+the loss.
+
+\section{The complete quadratic identity space}
+
+\begin{theorem}\label{thm:space}
+The vector space over $\Q$ of polynomials of degree at most two
+vanishing identically on the scalar-quotient graph has dimension 17.
+A basis consists of the two rational components of the four equations
+in \eqref{eq:chart}, of
+\[
+ F_2-F^2=0,\quad G_2-G^2=0,\quad
+ Fd-pF_2=0,\quad Gd-hG_2=0,
+\]
+and the one rational equation
+\[
+                     e_0-Z_0d_0-2Z_1d_1=0.
+\]
+In particular, no quadratic identity imposes the scalar quotient after
+these chart identities and the definition of $e_0$ have been imposed.
+\end{theorem}
+\begin{proof}
+The displayed 17 equations hold identically. The last two field
+equations follow by multiplying $d=pF$, $d=hG$ by $F,G$ and using
+the square outputs. Their coefficient vectors have rank 17 modulo
+1009, as checked by the retained exact certificate, so they are
+linearly independent over $\Q$.
+
+There are $\binom{23}{2}=253$ monomials of degree at most two
+in 21 coordinates. The certificate evaluates them at 300 points
+of the guarded scalar graph modulo 1009, using $\rho=439$.
+The evaluation matrix has a $236$ by $236$ minor with determinant
+\[
+                             514\pmod {1009}.
+\]
+The selected rows, columns and evaluation points are retained. The
+17 displayed relations annihilate every row. Thus the evaluation
+matrix has rank exactly 236 and kernel dimension 17.
+
+Here reduction modulo 1009 bounds characteristic-zero identities,
+not merely identities at a finite selection of unrelated points.
+To see this, parameterize a dense open part of the graph by the
+two elliptic points $U,V$ and the free reference $S$ over $K$.
+After extending scalars to $K$, restriction of scalars gives four
+independent elliptic-point slots, two on $E$ and two on its conjugate,
+and two free reference slots. Work over
+$A=\Z_{(1009)}[\rho]$ and invert 2, $\rho$, and the denominators
+of these rational coordinate functions. The affine equations for
+the four elliptic slots are monic in their separate squared
+ordinates. Their coordinate ring, with the free reference variables,
+is therefore torsion-free over $\Z_{(1009)}$; localization preserves
+this property. All selected points have the inverted denominators
+nonzero, and the curves have good reduction at 1009.
+
+Consequently every characteristic-zero polynomial identity with
+coefficients in $\Z_{(1009)}$ vanishes in this localized ring and
+specializes to zero at every selected point. If $W\subset\Q^{253}$
+is the space of characteristic-zero identities, then
+$W\cap\Z_{(1009)}^{253}$ is saturated. Since
+$\Z_{(1009)}$ is a discrete valuation ring, its reduction has
+dimension $\dim_\Q W$ and lies in the 17-dimensional evaluation
+kernel. Therefore $\dim_\Q W\le17$, proving the theorem.
+\end{proof}
+
+\section{An admissible wrong quotient}
+
+\begin{proposition}
+The quadrics of Theorem~\ref{thm:space} do not define the scalar
+graph on its stated nonzero domain, even at a nontorsion point pair.
+\end{proposition}
+\begin{proof}
+Take the retained point $R_0=(1+\rho,2\rho)$ and $P=2R_0$,
+where
+\[
+ P=\left(\frac{57}{8}-\frac72\rho,
+           -\frac{165}{8}+\frac{417}{32}\rho\right).
+\]
+Set $U=R_0$, $V=P$. Their difference is $-R_0$, which is
+nontorsion under the retained fixed-curve group assertion. The
+chart coordinates are
+\begin{align*}
+ F&=-1+\rho,&G&=\frac{456+224\rho}{1681},\\
+ s&=4-2\rho,&t&=-\frac{87}{41}+\frac{129}{164}\rho,\\
+ h&=-1+\frac74\rho,&d&=\frac{8+14\rho}{41}.
+\end{align*}
+Here $hp=1+\rho$ and $q=s$. Choose $S=s$.
+The required scalar quotient is $Z=-2$. Instead set $Z=1$,
+$e_0=8/41$, $F_2=F^2$, and $G_2=G^2$.
+Every listed nonzero guard holds, and every one of the 17 quadratic
+identities vanishes. However the residual in \eqref{eq:scalar} is
+\[
+                       \frac{-72+120\rho}{41}\ne0.
+\]
+Thus this point satisfies every quadratic identity of the graph and
+does not belong to the graph.
+\end{proof}
+
+The rationally simple restriction of scalars and the nontorsion
+point $R_0$ imply that $E(K)$ is Zariski dense in
+$\operatorname{Res}_{K/\Q}E$, as in \cite{Families}. Products and
+nonempty open subsets preserve this density. Hence requiring a
+quadric to vanish at every rational point of this interface graph
+already makes it an identity, so the obstruction also applies to
+an exact rational zero-set presentation. Adding finitely many
+nonvanishing polynomial guards cannot fix the interface: after fixing
+any admissible base chart and $S$, all 17 quadrics allow arbitrary
+$Z\in K$, with its prescribed $e_0$. Guards that hold at the true
+quotient leave a nonempty rational open set of wrong quotients.
+
+\section{The separate torsion boundary}
+
+Even retaining both components of $e=Zd$ requires attention to the
+scalar source's nontorsion condition. For $U=R_0$ and
+$V=R_0+(0,0)$, the same six-field chart has
+\[
+ F=-1+\rho,\quad G=-\frac{23+17\rho}{49},\quad
+ s=4-2\rho,\quad t=-s,\quad h=d=0.
+\]
+Its difference is $(0,0)$. The polynomial helper equations admit
+$Z=e=0$ for every $S$, although this branch is excluded from the
+inverse-Vieta scalar source. The nonzero guard on $d$ removes this
+boundary; it does not remove the nontorsion wrong-quotient example.
+
+The exact checks use only the standard Python library. They verify
+the rational examples, all finite-field graph equations, the 17
+coefficient relations, the full evaluation rank and the displayed
+nonzero minor. They neither assert a lower bound for the complete
+195-coordinate construction nor rule out use of its additional global
+coordinates, a different helper, or a different polynomial presentation.
+
+\begin{thebibliography}{9}
+\bibitem{Families}\emph{Curves and abelian families in an actual-trace square locus},
+\nolinkurl{negative_results/papers/pole_parameters/curves_and_abelian_families_20261117_v69.tex}.
+\bibitem{Scalar}\emph{A quartic in 198 variables},
+\nolinkurl{sources/h10_quartic198/arithmetic/inverse_vieta_198.tex}.
+\end{thebibliography}
+\end{document}
