@@ -49,6 +49,8 @@ The coefficient-basis transformations and the 195-coordinate eliminations preser
 
 Current specifications: [results JSON](data/results_20261117_v65.json), [proof and verification guide](docs/results_20261117_v65.md), and [research directions](docs/research_directions.md).
 
+The [physical detector scaling theorem](negative_results/papers/quartic/physical_detector_scaling_20261117_v67.tex) excludes two specified diagonal Laurent compilations of the revised general-quartic factors. The stronger obstruction uses just one literal reference equation and three field factors, with unbounded real scaling weights. Its [exact certificates and coordinate audit](docs/results_20261117_v67.md) distinguish the physical second weight from its stored ratio. Different factor pairings, reference equations and polynomial coordinate changes remain open; the construction counts above are unchanged.
+
 The [fixed-fiber and detector-index theorems](docs/common_parameter_guard_reduction_20261116_v42.md) show that one common rational pole fiber with nonzero ordinates suffices for all remaining pole guards, and give independent auxiliary-index families with unchanged square-class scalars. The common rational fiber itself remains unproved. Proved obstructions and lower bounds are collected separately in [negative_results](negative_results/README.md).
 
 ## Contributors and citation

@@ -1,0 +1,281 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,microtype}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue]{hyperref}
+\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\Q}{\mathbb Q}
+\title{Laurent scaling obstructions for two elliptic detectors}
+\author{}\date{17 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+We prove two obstructions to quadratic compilation by diagonal Laurent
+scaling with specified unit coordinates. Both use the exact normalization
+of the two physical contact weights in the retained elliptic system.
+The first concerns a shared special-factor allocation. The second uses
+one literal rational reference row and three field factors; it holds
+for both the original unit basis and a modified basis of the same size.
+The proofs allow arbitrary real weights. Exact integer certificates and
+coordinate-map checks require only the Python standard library.
+These results concern the stated monomial transformations and give no
+general lower bound on the number of variables in quartic definitions.
+\end{abstract}
+
+\section{Physical contact weights and retained unit coordinates}
+
+Let $x_i$ denote the coordinates of the table in \cite{Quartic}, and set
+\[
+                         u=x_{77},\qquad v=x_{90}.
+\]
+The two physical contact weights are
+\begin{equation}\label{eq:physical-weights}
+                         q_0=u,\qquad q_1=uv.
+\end{equation}
+In particular, $v$ is their ratio. The retained inverse coordinates are
+$x_{78}=u^{-1}$, $x_{91}=v^{-1}$, and $x_{92}=u^{-1}v^{-2}$.
+For formal unit exponents in the basis $(u,v)$, put
+\[
+\begin{aligned}
+\mathcal P_-&=\{(0,0),(1,0),(-1,0),(0,1),(0,-1),(-1,-2)\},\\
+\mathcal P_+&=\{(0,0),(1,0),(-1,0),(0,1),(0,-1),(-1,2)\}.
+\end{aligned}
+\]
+The zero vector represents the constant one. The modified basis
+$\mathcal P_+$ replaces $x_{92}$ by $y=u^{-1}v^2$, defined by
+$uy=v^2$. Since $x_{92}=v^{-4}y$, this is an invertible Laurent
+change and adds no coordinate.
+
+The identities \eqref{eq:physical-weights} follow by composing the
+retained coordinate maps. The first Laurent reduction sends the
+physical $q_1$ coordinate $92$ to coordinate $91$ of the
+196-coordinate table. Its parameter-balancing exponent is zero.
+The next Laurent map gives this coordinate weight $-1$ in
+$w_0=u^{-1}$, and compacts it to coordinate $90$. The final
+parameter weight is zero. Thus its physical value is $uv$.
+Similarly the physical inverse square is $u^{-1}x_{92}$, giving
+$x_{92}=u/q_1^2=u^{-1}v^{-2}$.
+
+We allow a diagonal change $Z=u^{a_Z}v^{b_Z}\widetilde Z$ for every
+nonunit coordinate and division of each row by a Laurent monomial.
+The weight vector $w_Z=(a_Z,b_Z)$ may even be real. Only literal
+monomials are used: no addition of rows or additional polynomial
+consequence replaces a nonunit monomial. If a term $u^{e_0}v^{e_1}M$
+has nonunit degree $d$, at most $2-d$ retained unit coordinates may
+multiply it in a quadratic row. In particular a quadratic nonunit
+monomial must have residual unit exponent zero.
+
+\section{A shared special-factor obstruction}
+
+Write $d_0=(1,0)$ and $d_1=(1,1)$ for the physical directions in
+\eqref{eq:physical-weights}.
+
+\begin{theorem}\label{thm:special}
+Suppose two rows contain the noncancelled terms $q_j^4J^2$ and
+$q_j A$, for $j=0,1$, where $J,A$ are shared nonunit coordinates.
+Neither $\mathcal P_-$ nor $\mathcal P_+$ permits a quadratic
+presentation obtained by the allowed diagonal Laurent transformations.
+Common fixed unit factors attached to either displayed term do not
+change the conclusion.
+\end{theorem}
+\begin{proof}
+If $r_j$ is the row-division exponent, the square term forces
+$r_j=4d_j+2w_J$. The residual exponent of the linear term is
+$z_j=w_A-2w_J-3d_j\in\mathcal P_\pm$. Hence
+\[
+                         z_1-z_0=(0,-3).
+\]
+In either exponent set, two points with the same first coordinate
+have second-coordinate difference at most two. Thus
+$(0,-3)\notin\mathcal P_\pm-\mathcal P_\pm$, a contradiction.
+Fixed factors common to the two rows cancel on subtraction.
+\end{proof}
+
+For example, storing $J=I^4$ in the physical factors
+$1+q_j^4 I^8+q_j A+q_j^2B+q_j^3C_1^4$ gives exactly these two
+terms. This assertion concerns a shared allocation; distributing
+the linear tests differently is outside Theorem~\ref{thm:special}.
+
+\section{A reference-row and factor obstruction}
+
+Consider six nonunit coordinates $v_0,h_1,j_0,j_1,a_0,a_1$ and
+the following required support:
+\begin{equation}\label{eq:four-support}
+\begin{array}{c|l}
+\text{row}&\text{noncancelled terms}\\\hline
+R&uv_0,\ v_0h_1\\
+F_{00}&uh_1,\ u^3j_0^2,\ u^3j_1^2\\
+F_{01}&1,\ ua_0^2,\ ua_1^2\\
+F_{10}&u^5v^{11}j_0j_1,\ uv a_0a_1.
+\end{array}
+\end{equation}
+Here $R$ is one literal rational reference row. The other three
+rows are pairs of field-component equations with common row
+multipliers; the justification for this convention is given below.
+Coefficients of the displayed monomials need only be nonzero.
+
+\begin{theorem}\label{thm:reference}
+Neither $\mathcal P_-$ nor $\mathcal P_+$ permits a quadratic
+presentation of \eqref{eq:four-support} by diagonal Laurent
+coordinate changes and monomial row division. The conclusion
+holds for arbitrary real weights, with no bound on their size.
+\end{theorem}
+\begin{proof}
+Project exponent vectors by $\ell(e_0,e_1)=e_0+e_1$. On either
+unit basis the maximum is one. The minimum is $-m$, where $m=3$
+for $\mathcal P_-$ and $m=1$ for $\mathcal P_+$.
+Write $H,J_i,A_i$ for the projected weights of $h_1,j_i,a_i$, and
+$r,r_{00},r_{01},r_{10}$ for the projected row-division weights.
+
+The quadratic term $v_0h_1$ in $R$ determines its row weight.
+The residual exponent of the linear term $uv_0$ therefore has
+projection $1-H$. Its degree budget is one, so $1-H\le1$ and
+$H\ge0$. The linear term $uh_1$ in $F_{00}$ similarly gives
+$1+H-r_{00}\le1$. Consequently $r_{00}\ge H\ge0$.
+
+The quadratic terms give the exact equalities
+\[
+\begin{aligned}
+r_{00}&=3+2J_0=3+2J_1=3+J_0+J_1,\\
+r_{01}&=1+2A_0=1+2A_1=1+A_0+A_1,\\
+r_{10}&=16+J_0+J_1=2+A_0+A_1.
+\end{aligned}
+\]
+It follows that $r_{01}-r_{00}=12$. However, the constant term in
+$F_{01}$ has residual exponent $-r_{01}$ and unit degree budget
+two. Thus $-r_{01}\ge-2m$, so
+\[
+                    r_{01}-r_{00}\le2m\le6<12,
+\]
+a contradiction.
+\end{proof}
+
+\subsection{The literal physical interface}
+
+In the table of \cite{Quartic}, take $v_0=x_{19}$ and $h_1=x_{65}$.
+The rational row named
+\[
+\texttt{sharedT.reference.relation3.0}
+\]
+contains $x_{19}x_{77}$ with coefficient $2128691946$ and
+$x_{19}x_{65}$ with coefficient $56549819456$. These are the two
+nonzero terms of $R$ used above. The source table is pinned by
+SHA-256
+\begin{quote}\small\ttfamily\raggedright
+304f94843c1a4ac94fcd5f1295fee8b532e7f0424e638314d892c556e2fbfdf9.
+\end{quote}
+
+Let $C=149^N$ be the fixed coefficient parameter and $\rho^2=2$.
+Composition of all diagonal, affine and parameter maps gives
+\[
+\begin{aligned}
+L_2&=Cu^{-1}(x_{33}+x_{34}\rho),&
+L_2^0&=Cu^{-1}(x_{35}+x_{36}\rho),\\
+C_2^2&=Cu^{-3}(x_{66}+2x_{67}\rho),&
+C_3^2&=Cu^{-3}(x_{68}+2x_{69}\rho),\\
+D_H^2&=u^{-1}(x_{64}+2x_{65}\rho),&
+B_0^2&=u^{-1}(x_{19}+2x_{20}\rho).
+\end{aligned}
+\]
+For example, the final comparison-square rows are exactly
+\[
+\begin{aligned}
+x_{66}u^{-1}
+ &=C\bigl((x_{33}-x_{35})^2+2(x_{34}+x_{36})^2\bigr),\\
+x_{67}u^{-1}
+ &=C(x_{33}-x_{35})(x_{34}+x_{36}).
+\end{aligned}
+\]
+Thus $j_0=Cx_{66}$ and $j_1=2Cx_{67}$ are diagonal
+normalizations with $C_2^2=u^{-3}(j_0+j_1\rho)$.
+Similarly write $C_3^2=u^{-3}(k_0+k_1\rho)$ and
+$A_1=a_0+a_1\rho$, $B_1=b_0+b_1\rho$. These fixed nonzero
+normalizations affect no unit exponent.
+
+The relevant physical factors are
+\[
+\begin{aligned}
+\Phi_{00}&=1+q_0^9C_2^4+q_0^{11}C_3^4+q_0^2D_H^2,\\
+\Phi_{01}&=1+q_0A_1^2+q_0^3B_1^2+q_0^2B_0^2,\\
+\Phi_{10}&=1+q_1^{11}C_2^4+q_1A_1^2+q_1^2L,
+\end{aligned}
+\]
+where $L$ is a separately stored linear test output. Substituting
+$q_0=u$, $q_1=uv$ gives the unit powers $u^5v^{11}$ and $uv$
+in $F_{10}$. Expansion into real and imaginary components gives
+every factor term in \eqref{eq:four-support}. Subtracting distinct
+factor-output coordinates cancels none of these terms.
+
+The retained physical output formulas, including their unit factors,
+are
+\[
+\begin{aligned}
+\Phi_{00}&=Cu(x_{118}+x_{119}\rho),\\
+\Phi_{01}&=Cu(x_{120}+x_{121}\rho),\\
+\Phi_{10}&=Cuv^2(x_{134}+x_{135}\rho).
+\end{aligned}
+\]
+Thus the second detector output has unit exponent $(1,2)$.
+Absorbing the fixed nonzero factor $C$ into an output coordinate
+does not remove this unit factor. The exact mapping checker verifies
+all twenty factor-component output maps, not only these three pairs.
+
+For completeness, common component-row multipliers are forced
+even if independent multipliers are initially allowed. If a field
+factor contains a full square $u^av^b(Z_0+\rho Z_1)^2$, its real
+row contains the nonzero terms $u^av^bZ_0^2$ and
+$2u^av^bZ_1^2$. Preserving degree two forces
+\[
+ (a,b)+2w(Z_0)=r_{\rm real}=(a,b)+2w(Z_1).
+\]
+Thus the two coordinate weights agree. The nonzero imaginary term
+$2u^av^bZ_0Z_1$ then gives $r_{\rm imag}=r_{\rm real}$.
+Use $Z=(j_0,j_1)$ in $\Phi_{00},\Phi_{10}$ and
+$Z=(a_0,a_1)$ in $\Phi_{01}$. These square monomials belong to
+distinct variable blocks and have nonzero coefficients after
+collection. The rational reference row has its own independent
+multiplier.
+
+Theorem~\ref{thm:reference} uses no other detector row and no
+choice of $L$. It excludes the displayed reference/factor
+configuration, including arbitrary redistribution of the remaining
+linear tests. Other comparison pairings, different reference
+equations, row combinations, or identities using other source
+relations are outside its hypotheses.
+
+\section{Exact certificates}
+
+The portable specification and checkers are in
+\begin{quote}\raggedright
+\nolinkurl{negative_results/computation/physical_detector_scaling_v67}.
+\end{quote}
+The file \texttt{model.json} specifies all retained unit exponents,
+the literal reference row, physical field formulas and selected
+supports. The file \texttt{farkas\_certificate.json} gives ten
+nonnegative integer multipliers for necessary unit-degree
+inequalities. Their exact sums are $0\le-12$ for $\mathcal P_-$
+and $0\le-20$ for $\mathcal P_+$. These are separate finite
+certificates of Theorem~\ref{thm:reference}.
+
+Running \texttt{python check.py --output certificate.json} uses
+only the Python standard library. It reconstructs both components
+of the physical factors, checks that all selected coefficients are
+nonzero, verifies the full-square multiplier witnesses, and checks
+the complete integer cancellation. It also checks
+$(0,-3)\notin\mathcal P_\pm-\mathcal P_\pm$.
+The separate \texttt{check\_mapping.py} composes the source maps,
+checks the literal comparison-square equations and verifies the
+normalization $q_1=uv$. Both checks pin the full source table when
+it is available. No numerical optimizer, SMT solver or bounded
+weight search enters either verification.
+
+\begin{thebibliography}{9}\raggedright
+\bibitem{Quartic}\emph{A quartic in 195 variables},
+\nolinkurl{papers/quartic/quartic195_20261116_v45.tex}; exact table
+\nolinkurl{computation/quartic/affine_laurent195_v45/quadratic-family.json}.
+\bibitem{Factors}\emph{Five local factors with squared reciprocal tests},
+\nolinkurl{papers/quartic/revised_detector_factors_20261117_v66.tex}.
+\end{thebibliography}
+\end{document}

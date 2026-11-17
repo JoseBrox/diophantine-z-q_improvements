@@ -61,6 +61,12 @@ The [fixed-fiber literature audit](docs/fixed_fiber_literature_20261116_v43.md) 
 | [Duplicated reference signs](papers/elliptic_charts/duplicated_reference_signs_20261116_v44.tex) | An explicit allowed half-integral reference progression has opposite local translation signs after duplication at a valid soundness contact prime. This concerns the reference branches, not a solution of the full detector. |
 | [Rational Pell approximations](papers/integer_labels/rational_pell_approximation_obstruction_20261116_v42.tex) | Arbitrarily accurate rational approximation at 19, even with the exact norm equation, does not replace the integral-label hypothesis. |
 
+## Quadratic compilation of quartic sources
+
+| Manuscript | Result and scope |
+|:--|:--|
+| [Physical detector weights and Laurent scaling](papers/quartic/physical_detector_scaling_20261117_v67.tex) | One literal reference row and three specified physical factors cannot all remain quadratic under diagonal Laurent coordinate changes and monomial row division, for either stated unit basis and arbitrary real weights. A separate shared-factor obstruction also holds. Exact certificates and a complete coordinate-map audit accompany the proof. Different factor pairings, reference equations, row combinations and nonlinear substitutions are outside its scope; no general variable lower bound is asserted. |
+
 ## Heights, inputs and general lower bounds
 
 | Manuscript | Result and scope |
