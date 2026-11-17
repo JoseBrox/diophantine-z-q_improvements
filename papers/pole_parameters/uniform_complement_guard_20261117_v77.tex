@@ -1,0 +1,354 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,booktabs,microtype}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\setlength{\emergencystretch}{3em}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\Tr}{\operatorname{Tr}}
+\title{Uniform complement guards on full auxiliary elliptic points}
+\author{}\date{17 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+For either even-valuation derivative detector, the completeness choice
+$u\ge10$ gives $0<\eta=28w/V^2<147/242$ at every point character
+of an actual guarded full auxiliary tuple. The original physical choice
+$z>a+10$ already implies this weight bound for both contact sets.
+Thus the finite complement equation $c^2=1-\eta$ has positive unit
+radicand in every character. If its selected value is a rational square,
+it supplies a native pole witness with no retained pole parameters and
+nonzero terminal ordinate, using the same nine-coordinate finite source.
+The required selected rational square is not proved to exist.
+A constant-coefficient normalizer gives a rational complement at the
+reference trace two and preserves the complete eleven-coordinate source
+under its stated arithmetic premises; its actual square condition remains open.
+\end{abstract}
+
+\section{The actual point characters}
+Retain the complete source and all point, ordinate, difference, quotient
+and physical guards of the even-valuation construction \cite{Even}.
+Its curve and root point are
+\[
+ K=\Q(\sqrt2),\qquad
+ E:y^2=x\bigl(x^2-(3-\sqrt2)^2\bigr),\qquad A=[n]P.
+\]
+The root retains its square-abscissa chart, while $H,U$ use the full
+guarded affine charts. This note does not restrict $H,U$ to $2E(K)$.
+At an actual rational tuple, the three rank-four point blocks have
+$64$ geometric characters. They are obtained by choosing the two
+ordinate signs independently in the two real embeddings for each
+point role. All these characters are real, since the actual ordinates
+give nonzero real square roots in both embeddings. The retained
+guards keep every required difference and quotient defined at every
+character \cite{Full}.
+
+The six tests are the actual source functions
+\[
+ \begin{gathered}
+ f(Q)=1/x(Q),\quad \zeta(Q)=-x(Q)/y(Q),\qquad
+ r=\zeta(U)/\zeta(H),\quad
+ r'=\overline{\zeta(U-A)/\zeta(H-P)},\\
+ (C_1,\ldots,C_6)=
+ (f(H),f(U),\overline{f(H-P)},\overline{f(U-A)},r-r',r-X).
+ \end{gathered}
+\]
+The last two tests may vanish. For a rational physical weight $u>0$,
+common to every point character, put
+\begin{equation}\label{eq:detector}
+ \begin{gathered}
+ D_i=\begin{cases}C_i/(1+uC_i),&1\le i\le4,\\
+ C_i^2/(1+uC_i^2),&5\le i\le6,
+ \end{cases}\\
+ W=\prod_{i=1}^6(1+D_i^2/u),
+ \quad V=\Tr(W^{-1}),\quad w=\frac{u}{(1+u)^2},\quad
+ \eta=\frac{28w}{V^2}.
+ \end{gathered}
+\end{equation}
+The scale and weight depend on the retained root abscissa and slope,
+not on the ordinate signs. Thus the same rational $u$ occurs at all
+characters. No independent trace or freely assigned test is used.
+
+\begin{lemma}\label{lem:abscissa}
+At either real embedding, every finite real point of $E$ has
+$x> -5$. Under the retained guards all four reciprocal abscissa
+tests in \eqref{eq:detector} therefore satisfy
+\[
+              D_i=\frac1{x(Q)+u},\qquad 0<D_i<\frac2u
+                         \quad(u\ge10),
+\]
+with the appropriate embedding for the conjugated tests.
+\end{lemma}
+\begin{proof}
+The two positive real curve parameters are $3-\sqrt2$ and
+$3+\sqrt2$. If $x<-(3+\sqrt2)$, then
+$x(x^2-(3\mp\sqrt2)^2)<0$, which cannot be a real square.
+Hence $x\ge-(3+\sqrt2)>-5$. The point and difference guards
+already exclude the torsion and zero-ordinate cases required to
+define the tests; the bound itself also holds for those finite
+points. Since $x\ne0$, the first balancing simplifies to
+$1/(x+u)$. For $u\ge10$,
+$x+u>u-5\ge u/2>0$, proving both assertions. The original
+denominator $1+uC=(x+u)/x$ is nonzero; when $x<0$ its sign is
+negative. The positivity used here is that of the cleared denominator
+$x+u$ and of $D_i$.
+\end{proof}
+
+\begin{theorem}\label{thm:uniform}
+At every point character of an actual guarded tuple, $u\ge10$ implies
+\begin{equation}\label{eq:bound}
+ 1<W_\pm<(1+4/u^3)^6,\qquad
+ \frac2{(1+4/u^3)^6}<V<2,\qquad
+                  0<\eta<\frac{147}{242}<1.
+\end{equation}
+In particular all balanced denominators, detector products, traces,
+and the complement $1-\eta$ are units at every character.
+\end{theorem}
+\begin{proof}
+Lemma~\ref{lem:abscissa} treats the first four factors and their
+denominators. At every real character the remaining tests are real,
+so $1+uC_i^2>0$ and $0\le D_i<1/u$ for $i=5,6$.
+Every detector factor is positive and smaller than $1+4/u^3$.
+The first four are strictly greater than one. This proves the two
+product bounds and, after taking reciprocal sums, the bounds on $V$.
+Consequently
+\[
+ 0<\eta<7\frac{u}{(1+u)^2}(1+4/u^3)^{12}
+ \le \frac{70}{121}\left(\frac{251}{250}\right)^{12}
+ <\frac{70}{121}\frac{21}{20}=\frac{147}{242}.
+\]
+Both factors in the middle expression decrease for $u\ge10$.
+The final strict inequality is the exact integer comparison
+\[
+ 21\cdot250^{12}-20\cdot251^{12}
+                    =1108398992054805009292439980>0.
+\]
+All $64$ point characters are real as specified above, so nonzero
+values at these characters prove the claimed finite-algebra units.
+\end{proof}
+
+The choice $u\ge10$ is made only in completeness. It is not imposed
+as an inequality in the global sound source. All inherited guards
+remain in that source; their nonvanishing here is proved, not presumed.
+
+\section{The original physical real bound suffices}
+For $k=7$ or $9$ use the retained contact sets
+\[
+ \mathcal S_7=\{-7,-6,-4,1,3,5,8\},\qquad
+ \mathcal S_9=\{-10,-8,-5,1,2,3,4,6,7\}.
+\]
+With the respective fixed scales $a=M^8$ and $a=M^4$, put
+\[
+ F(a,z)=\prod_{c\in\mathcal S_k}((a+c)^2-z^2),\qquad
+                         u=-2kF/F_a,
+\]
+where differentiation precedes specialization. In actual source tuples
+$a>\max_c|c|$. For example $B\ge3$ gives $a\ge B^{16}>10$
+in the nine-contact case, and an even larger lower bound in the
+seven-contact case \cite{Even,Seven}.
+
+\begin{proposition}\label{prop:physical}
+For either contact set, $a>\max_c|c|$ and $z>a+10$ imply $u>10$.
+Thus the original real choice in completeness already supplies
+Theorem~\ref{thm:uniform}, uniformly in all auxiliary points.
+\end{proposition}
+\begin{proof}
+All $a+c$ are positive and smaller than $z$. Logarithmic
+differentiation gives the exact positive expression
+\[
+ u=\frac{2k}{\displaystyle\sum_{c\in\mathcal S_k}
+                     \frac{2(a+c)}{z^2-(a+c)^2}}.
+\]
+Its summands satisfy
+\[
+ \frac{2(a+c)}{z^2-(a+c)^2}
+ =\frac{2(a+c)}{z+a+c}\frac1{z-a-c}
+ <\frac1{z-a-c}<\frac1{10-c}.
+\]
+The exact harmonic sums therefore give
+\[
+\begin{array}{crr}
+\toprule
+k&\displaystyle\sum_{c\in\mathcal S_k}\frac1{10-c}
+&\text{strict lower bound for }u\\[2pt]
+\midrule
+7&98251/85680&1199520/98251>10\\
+9&1093/840&15120/1093>10\\
+\bottomrule
+\end{array}
+\]
+The same formula proves $F,F_a,u\ne0$ on this real domain.
+Also $z>a$ makes the signed height argument $a^2-z^2$ nonzero.
+\end{proof}
+
+\section{A finite complement root and the precise remaining question}
+The native radicand is
+\[
+ P_d(v,s)=d(d+v^2)^2s^4-d(d-v^2)^2(1-d)^2.
+\]
+If $c^2=1-d$, the polynomial identity
+\begin{equation}\label{eq:special}
+                     P_d(1,c)=[2d(1-d)]^2
+\end{equation}
+gives a native witness with no retained pole parameters. Its ordinate
+is nonzero when $d(1-d)\ne0$. This is not the degenerate witness
+with zero final ordinate.
+
+\begin{proposition}\label{prop:finite}
+Replace the two free pole coordinates in the derivative source by the
+single finite equation $c^2=1-\eta$. For every sufficiently large fixed
+odd $B$, under ordinary rational $abc$ and the retained arithmetic
+premises, this gives a sound
+nine-coordinate finite source, including the input. If an actual
+guarded tuple with $z>a+10$ has its selected
+value $1-\eta$ in $\Q^2$, every new finite-character unit and real-root
+condition holds automatically. Its native witness is
+\[
+                      (v,s,Y)=(1,c,2\eta(1-\eta)).
+\]
+No completeness assertion for the selected rational square is made.
+\end{proposition}
+\begin{proof}
+For soundness no real bound is needed. If a discrete prime valuation
+of $\eta$ is negative and odd, then
+$v_p(1-\eta)=v_p(\eta)$ is also odd, contradicting its being a
+rational square. Outside the retained exceptional set, which contains
+seven, this excludes negative odd valuations of $b=\eta/7$.
+The unchanged local extraction and height proof of \cite{Even}
+therefore applies. Equivalently \eqref{eq:special} gives the native
+pole equation, whose local implication permits zero terminal ordinates
+\cite{Intrinsic}.
+
+For the completeness statement in this proposition,
+Theorem~\ref{thm:uniform} and Proposition~\ref{prop:physical} give
+$0<\eta<147/242$ at every point character. Thus $1-\eta$ is
+a positive unit everywhere; both of its roots at every real character
+are nonzero and real. Also $\eta(1-\eta)$ is a unit, so the native
+ordinate in the displayed witness is nonzero at every character.
+The stipulated rational square supplies the rational root at the
+selected character. The point rank stays $4^3=64$ and one monic
+quadratic extension gives rank $128$, just as in the previous source.
+The same finite-algebra encoder is shared with the point choices.
+The coordinate census is
+\[
+                 1\text{ input}+6\text{ point coordinates}
+                    +1\text{ slope}+1\text{ encoder}=9.
+\]
+No new free coordinate is used to impose these unit conditions.
+\end{proof}
+
+For a fixed nonzero integer input $n$, fixed defining parameter and
+$A=[n]P$, the unresolved arithmetic assertion is the existence of
+actual guarded $H,U$ and rational $z>a+10$ such that
+\[
+                         V(H,U,z)^2-28w(z)\in\Q^2.
+\]
+This is equivalent to the selected complement-square condition, since
+$V\ne0$. The trace and weight here are the actual source functions.
+The uniform positive bound and real roots do not imply that this
+rational number is a rational square. The retained prime preparation
+and finite local approximation statements do not supply that missing
+global assertion. No nine-variable completeness, new polynomial degree,
+or twenty-one-variable construction follows from this note alone.
+
+\section{A normalizer with a rational reference complement}
+Keep $u,D_i,W,V$ unchanged and define
+\begin{equation}\label{eq:star}
+ w_* = \frac{16u}{(4+7u)^2},\qquad b_* = \frac{4w_*}{V^2},
+ \qquad \eta_* = 7b_*.
+\end{equation}
+Retain all old guards, including $1+u\ne0$, and add $4+7u\ne0$.
+The latter is automatic on the chosen real completeness domain.
+
+\begin{proposition}\label{prop:star}
+With the intrinsic pole equation at $\eta_*$, the variant
+\eqref{eq:star} retains a complete eleven-coordinate source for every
+sufficiently large fixed odd $B$, under ordinary rational $abc$ and
+the retained arithmetic premises. At every actual point character,
+$u\ge10$ gives
+\[
+                0<\eta_*<\frac{294}{1369}<1.
+\]
+Its finite complement replacement is a sound nine-coordinate source,
+with the same automatic character-unit conclusion conditional on a
+selected rational square. No new degree bound is claimed.
+\end{proposition}
+\begin{proof}
+For $p\notin\{2,7\}$, writing $\nu=v_p(u)$ gives
+\[
+ v_p(w_*)=\begin{cases}
+ \nu,&\nu>0,\\ -\nu,&\nu<0,\\
+ -2v_p(4+7u),&\nu=0.
+ \end{cases}
+\]
+Thus positive odd contact extraction is unchanged. At negative odd
+$\nu$, the unchanged balancing gives $W\equiv1$ in both slots
+and $V\equiv2$, so $v_p(b_*)=-\nu>0$. At even $\nu$ the
+valuation of $b_*$ is even, including primes newly dividing $4+7u$.
+At selected positive odd contacts the old unit-trace preparation gives
+$v_p(b_*)=\nu$. These cases retain the square-denominator proof
+outside two and seven. The exact square ratio
+$w_*/w=[4(1+u)/(4+7u)]^2$ alone would not prove that assertion.
+
+At fixed places take the same sufficiently deep large-slope preparation.
+Since $a$ is a rational square,
+\[
+ u\sim z^2/a,\qquad w_*\sim(4\sqrt a/(7z))^2,\qquad V\longrightarrow2.
+\]
+At two, take $\nu=v_2(u)$ negative and even with $u$ a local square.
+Then $v_2(b_*)=4-\nu\ge4$ is even and $b_*$ is a local square.
+At seven choose even $\nu=v_7(u)\le-4$; the unit trace gives
+$v_7(b_*)=-\nu-2\ge2$. Hence $\eta_*$ has square reduced
+denominator, belongs to $7\Q_2^{\times2}$, and has the required
+two-adic depth. The new denominator is nonzero in these fixed
+neighborhoods. No new prime outside the retained exceptional set is used.
+
+For the real bound use Theorem~\ref{thm:uniform}'s unchanged trace estimate.
+The function $16u/(4+7u)^2$ decreases for $u\ge10$, so
+\[
+ 0<\eta_*<7w_*(1+4/u^3)^{12}
+ \le\frac{280}{1369}\left(\frac{251}{250}\right)^{12}
+ <\frac{294}{1369}<1.
+\]
+This holds on the full auxiliary domain at all point characters.
+The retained intrinsic-pole theorem now gives rational witness pairs
+and the same density for finite-character guard avoidance
+\cite{Intrinsic}. The point roles, prime preparation, height argument,
+finite ranks and retained coordinate count do not change.
+Replacing those two pole coordinates by $c^2=1-\eta_*$ uses
+Proposition~\ref{prop:finite} and identity~\eqref{eq:special} exactly
+as before; its actual selected square is an additional requirement.
+\end{proof}
+
+The choice of constants in \eqref{eq:star} gives the exact reference identity
+\[
+ \left.1-\frac{28w_*}{V^2}\right|_{V=2}
+ =1-7w_* = \left(\frac{4-7u}{4+7u}\right)^2.
+\]
+Every finite guarded actual tuple on the real domain has $V<2$ by
+Theorem~\ref{thm:uniform}. Thus the identity at the reference value
+does not supply an actual witness. The unresolved actual equation is
+\[
+                         S^2=V^2-\frac{448u}{(4+7u)^2}.
+\]
+
+The standard-library checker in \texttt{uniform\_complement\_guard\_v77},
+under \nolinkurl{computation/pole_parameters/}, verifies the exact integer
+margin, both harmonic sums, identity~\eqref{eq:special}, the new
+normalizer identity and bound, and the previously audited source census
+and guard metadata. It does not compile a new coefficient source or
+search for either selected square.
+
+\begin{thebibliography}{9}\raggedright
+\bibitem{Even}\emph{Even abscissa valuations and a smaller eleven-variable degree bound},
+\nolinkurl{papers/conditional_few_variables/even_valuation_detector_20261117_v75.tex}.
+\bibitem{Full}\emph{Full auxiliary point charts in the derivative construction},
+\nolinkurl{papers/conditional_few_variables/full_auxiliary11_20261117_v71.tex}.
+\bibitem{Seven}\emph{Seven-contact detectors and a genus-twelve actual weight curve},
+\nolinkurl{papers/conditional_few_variables/seven_contact_detector_20261117_v74.tex}.
+\bibitem{Intrinsic}\emph{A two-coordinate pole test of coefficient height four},
+\nolinkurl{papers/pole_parameters/intrinsic_pole_20261117_v56.tex}.
+\end{thebibliography}
+\end{document}
