@@ -1,0 +1,351 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,microtype}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\newcommand{\OK}{\mathcal O_K}
+\setlength{\emergencystretch}{2em}
+\title{Power shifts and finite exceptions in Diophantine definitions}
+\author{}\date{17 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+A fixed integral power shift removes finite exceptions from an
+integrality criterion without adding a quantified coordinate.
+For a number field of degree $d$, a Diophantine set containing all
+but finitely many rational integers and having only finitely many
+nonintegral elements gives a definition of its ring of integers in
+$dN$ total coordinates when the original definition uses $N$.
+The resulting single equation has degree at most $2dD$ if the
+original polynomial has degree at most $D$. A stronger finite-error
+hypothesis gives a definition of the rational integers in the
+original $N$ coordinates. Its degree is at most $2D$ whenever
+the field has no quadratic subfield, in particular whenever its
+degree is odd. Every shift may be constrained to a
+prescribed integral arithmetic progression. No detector satisfying
+these hypotheses over all number fields is constructed here.
+\end{abstract}
+
+\section{Avoiding finite sets by a power shift}
+Throughout, $K$ is a number field of degree $d=[K:\Q]$, and all
+Diophantine witnesses range over $K$. Coefficients may lie in $K$.
+The total coordinate count includes the distinguished input.
+For $m\ge2$ write $K^m=\{x^m:x\in K\}$.
+
+\begin{lemma}\label{lem:avoid}
+Let $T\subset K$ be finite, let $m\ge2$, and let $b_0\in\Z$ and
+$M_0\ge1$. There are integers $b_1$ and $M_1\ge1$ such that
+\[
+ b_1+M_1\Z\subseteq b_0+M_0\Z,
+ \qquad (K^m+B)\cap T=\varnothing
+ \quad\text{for every }B\in b_1+M_1\Z.
+\]
+In particular the shifts can be chosen arbitrarily large and positive.
+\end{lemma}
+\begin{proof}
+The assertion is immediate when $T$ is empty. Otherwise let $L/\Q$
+be a finite Galois extension containing $K$ and all $m$th roots of
+unity. Infinitely many rational primes split completely in $L$,
+by the identity-class case of the Chebotarev density theorem
+\cite[Theorem~8.31 and Corollary~8.32]{Milne}.
+For each $\alpha\in T$ choose a distinct such prime $\ell_\alpha$
+which divides neither $mM_0$ nor a denominator of $\alpha$.
+Choose a prime $\mathfrak p_\alpha$ of $K$ above $\ell_\alpha$.
+Its residue field is $\mathbb F_{\ell_\alpha}$, and
+$\ell_\alpha\equiv1\pmod m$.
+
+The cyclic group $\mathbb F_{\ell_\alpha}^{\times}$ has elements
+which are not $m$th powers. Choose one, denoted $t_\alpha$, and
+impose the rational integer congruence
+\[
+ B\equiv\overline\alpha-t_\alpha\pmod{\ell_\alpha},
+\]
+where the bar denotes reduction at $\mathfrak p_\alpha$.
+Together with $B\equiv b_0\pmod{M_0}$ these congruences are
+compatible by the Chinese remainder theorem. Let
+$b_1+M_1\Z$ be their common solution progression.
+
+If $x^m+B=\alpha$ for $x\in K$, then $x^m=\alpha-B$ is a
+$\mathfrak p_\alpha$-adic unit. Hence $x$ is also a unit there,
+and reduction gives $\overline x^{\,m}=t_\alpha$, a contradiction.
+This proves the assertion for every shift in the progression.
+\end{proof}
+
+The construction is finite once $T$ is supplied as exact algebraic
+numbers: split primes and the required residues can be found by
+enumeration. If the finiteness of $T$ is known without an effective
+description, the lemma supplies an existence result for the shift.
+No effective determination of that set is asserted.
+
+\section{Integrality criteria with the same witness count}
+Suppose $S\subset K$ is defined by an integer $N\ge1$ and
+\begin{equation}\label{eq:source}
+ x\in S\quad\Longleftrightarrow\quad
+ \exists\mathbf y\in K^{N-1}:P(x,\mathbf y)=0,
+ \qquad P\in K[X,\mathbf Y],\quad\deg P\le D.
+\end{equation}
+
+\begin{theorem}\label{thm:ring}
+Suppose both $\Z\setminus S$ and $S\setminus\OK$ are finite.
+In every prescribed integral arithmetic progression there is a
+subprogression of shifts $B$ for which
+\begin{equation}\label{eq:intermediate}
+ S_B=\{x\in K:\exists\mathbf y\in K^{N-1},
+                      \ P(x^2+B,\mathbf y)=0\}
+ \quad\text{satisfies}\quad \Z\subseteq S_B\subseteq\OK.
+\end{equation}
+Thus $S_B$ has a definition in $N$ total coordinates of degree at
+most $2D$. The ring $\OK$ has a definition by $d$ equations in
+$dN$ total coordinates, each of degree at most $2D$, and by one
+equation in those same coordinates of degree at most $2dD$.
+\end{theorem}
+\begin{proof}
+Apply Lemma~\ref{lem:avoid} with $m=2$ and
+\[
+ T=(S\setminus\OK)\cup(\Z\setminus S).
+\]
+For $n\in\Z$, the integer $n^2+B$ avoids $\Z\setminus S$, so
+belongs to $S$. This proves $\Z\subseteq S_B$.
+If $x\in S_B$, then $x^2+B\in S$ and avoids
+$S\setminus\OK$, hence lies in $\OK$. Therefore
+$x^2\in\OK$. The monic polynomial $Z^2-x^2\in\OK[Z]$ makes
+$x$ integral over $\OK$, and the integral closedness of $\OK$
+in $K$ gives $x\in\OK$. Equivalently, at every finite prime
+$\mathfrak p$ the inequality $2v_\mathfrak p(x)\ge0$ implies
+$v_\mathfrak p(x)\ge0$.
+
+Choose an integral basis $\omega_1,\ldots,\omega_d$ of $\OK$.
+Then
+\[
+                     \OK=\sum_{i=1}^d\omega_i S_B.
+\]
+For the forward inclusion expand an algebraic integer in this basis
+with integer coefficients. For the reverse inclusion use
+$S_B\subseteq\OK$.
+Retain $s_1,\ldots,s_{d-1}$ and $d$ independent witness tuples
+$\mathbf y_i\in K^{N-1}$, and put
+\[
+ s_d=\frac{X-\sum_{i<d}\omega_i s_i}{\omega_d}.
+\]
+The $d$ residual equations
+\[
+             R_i=P(s_i^2+B,\mathbf y_i)=0
+             \qquad(1\le i\le d)
+\]
+use exactly
+\[
+                 1+(d-1)+d(N-1)=dN
+\]
+coordinates and have degree at most $2D$.
+Choose a field extension $F/K$ of degree $d$ and a $K$-basis
+$e_1,\ldots,e_d$; for $d=1$ take $F=K$. Such an extension exists
+by an Eisenstein polynomial at a finite prime of $K$.
+The single equation
+\[
+                N_{F/K}\left(\sum_{i=1}^d e_iR_i\right)=0
+\]
+is equivalent to all $R_i=0$, because the norm of a field element
+vanishes exactly at zero. Its degree is at most $2dD$.
+\end{proof}
+
+\begin{corollary}\label{cor:positive-integrality}
+Suppose $S\setminus\OK$ is finite and $S$ contains every
+sufficiently large positive rational integer. In every prescribed
+integral arithmetic progression, all sufficiently large positive
+members of a suitable subprogression give
+$\Z\subseteq S_B\subseteq\OK$ with the same square-shift
+definition \eqref{eq:intermediate}. The bounds $dN$ and $2dD$
+for a single equation defining $\OK$ remain valid.
+\end{corollary}
+\begin{proof}
+Apply Lemma~\ref{lem:avoid} with $T=S\setminus\OK$ and $m=2$.
+Choose $B$ above a threshold beyond which all positive integers
+belong to $S$. Then $n^2+B\in S$ for every $n\in\Z$.
+The integrality argument and the basis and norm construction in
+Theorem~\ref{thm:ring} are unchanged.
+\end{proof}
+
+\begin{corollary}\label{cor:almost-ring}
+If the symmetric difference of $S$ and $\OK$ is finite, then
+$\OK$ itself has a definition in the same $N$ total coordinates
+and degree at most $2D$.
+\end{corollary}
+\begin{proof}
+In Lemma~\ref{lem:avoid} take $m=2$ and
+$T=(S\setminus\OK)\cup(\OK\setminus S)$. For $x\in\OK$,
+the integral element $x^2+B$ avoids the omitted set and belongs to
+$S$. Conversely, the integrality argument in
+Theorem~\ref{thm:ring} applies. Thus $S_B=\OK$.
+\end{proof}
+
+\section{The rational integers over a number field}
+Say that an exponent $m\ge2$ \emph{reflects rationality in $K$}
+if $x\in K$ and $x^m\in\Q$ imply $x\in\Q$.
+
+\begin{lemma}\label{lem:power-rationality}
+An exponent $m\ge2$ reflects rationality in $K$ if
+\[
+       \gcd(m,d)=1\quad\text{and}\quad \mu_m(K)\subseteq\Q,
+\]
+where $\mu_m(K)=\{\zeta\in K:\zeta^m=1\}$.
+The exponent $2$ reflects rationality in $K$ if and only if
+$K$ contains no quadratic subfield. In particular, it does so
+whenever $d$ is odd.
+
+Every number field has a rationality-reflecting exponent: an odd
+prime $p$ with $p-1>d$ suffices. More generally, an odd prime
+$p\nmid d$ suffices whenever $\mu_p(K)=\{1\}$. For a totally
+real field the latter root-of-unity condition is automatic.
+
+For any rationality-reflecting exponent $m$, the implication
+$x^m\in\Z\Rightarrow x\in\Z$ holds for $x\in K$.
+\end{lemma}
+\begin{proof}
+Suppose first that the two displayed conditions hold and that
+$a=x^m\in\Q^\times$. Set $c=N_{K/\Q}(x)\in\Q^\times$.
+Taking norms gives $c^m=a^d$. Choose integers $r,s$ with
+$rm+sd=1$. Then
+\[
+                       a=(a^r c^s)^m.
+\]
+Thus $x/(a^rc^s)\in\mu_m(K)\subseteq\Q$, so $x\in\Q$.
+The case $x=0$ is immediate.
+
+If $x\notin\Q$ and $x^2\in\Q$, then $\Q(x)$ is a quadratic
+subfield of $K$. Conversely, a quadratic subfield contains an
+irrational square root of a rational number. This proves the
+square criterion. An odd-degree extension cannot contain a
+quadratic subfield, by the tower formula.
+
+If $p-1>d$, a nontrivial $p$th root of unity would generate a
+subfield of degree $p-1$, which is impossible. Also $p>d$, so
+$p\nmid d$. For any odd prime, the only real $p$th root of
+unity is one. These facts give the remaining sufficient criteria.
+Finally a rational number whose positive integral power is an
+integer is an integer, by reduction of numerator and denominator.
+\end{proof}
+
+\begin{theorem}\label{thm:Z}
+Suppose the symmetric difference of $S$ and $\Z$ is finite.
+Let $m\ge2$ reflect rationality in $K$. In every prescribed integral
+arithmetic progression there is a subprogression of shifts $B$
+such that
+\[
+ x\in\Z\quad\Longleftrightarrow\quad
+ \exists\mathbf y\in K^{N-1}:P(x^m+B,\mathbf y)=0.
+\]
+This definition uses $N$ total coordinates and has degree at most
+$mD$. If $K$ has no quadratic subfield, the degree bound is $2D$.
+\end{theorem}
+\begin{proof}
+Apply Lemma~\ref{lem:avoid} with exponent $m$ and
+$T=(S\setminus\Z)\cup(\Z\setminus S)$. If $x\in\Z$, then
+$x^m+B$ is an integer avoiding $\Z\setminus S$, so it belongs
+to $S$. Conversely, membership in $S$ and avoidance of
+$S\setminus\Z$ imply $x^m+B\in\Z$, hence $x\in\Z$ by
+Lemma~\ref{lem:power-rationality}.
+\end{proof}
+
+\begin{corollary}\label{cor:positive-Z}
+Suppose $S\setminus\Z$ is finite and $S$ contains every
+sufficiently large positive rational integer. Let $m\ge2$
+reflect rationality in $K$. In every prescribed integral arithmetic
+progression there are arbitrarily large shifts $B$ such that
+\[
+ x\in\Z\quad\Longleftrightarrow\quad
+ \exists\mathbf y\in K^{N-1}:\quad
+ \begin{cases}
+ P(x^m+B,\mathbf y)=0,&m\text{ even},\\
+ P(x^m+B,\mathbf y)P(-x^m+B,\mathbf y)=0,&m\text{ odd}.
+ \end{cases}
+\]
+This definition uses the same $N$ total coordinates and has
+degree at most $mD$ for even $m$ and $2mD$ for odd $m$.
+In particular, when $K$ has no quadratic subfield a single
+square-shift equation suffices, with degree at most $2D$.
+\end{corollary}
+\begin{proof}
+Apply Lemma~\ref{lem:avoid} with $T=S\setminus\Z$ and
+exponent $m$, and choose $B$ above the positive completeness
+threshold. When $m$ is even, $n^m+B\ge B$ for all $n\in\Z$,
+so the single equation is complete. Its soundness follows as in
+Theorem~\ref{thm:Z}.
+
+When $m$ is odd, both $x^m+B$ and $-x^m+B=(-x)^m+B$ avoid $T$.
+If the displayed product vanishes, one factor vanishes, so one
+of these two inputs is an integer. Lemma~\ref{lem:power-rationality}
+then gives $x\in\Z$. Conversely, if $x\in\Z$, at least one
+of the two inputs is an integer at least $B$, hence belongs to
+$S$. A witness tuple for that input makes the product vanish.
+The same tuple can be used in both factors because only one
+factor is required to vanish.
+\end{proof}
+
+For example, a real quadratic field admits the exponent $m=3$,
+giving degree bounds $3D$ in Theorem~\ref{thm:Z} and $6D$ in
+Corollary~\ref{cor:positive-Z}. More generally, a totally real
+field admits every odd prime not dividing its degree. In
+$\Q(\sqrt{-3})$, the cube does not reflect rationality because
+of the nontrivial cube roots of unity, whereas the exponent $5$
+satisfies Lemma~\ref{lem:power-rationality}.
+
+\section{Height hypotheses and limits of the conclusions}
+\begin{corollary}\label{cor:height}
+The conclusions of Theorem~\ref{thm:ring} hold if
+$\Z\setminus S$ is finite and the elements of $S\setminus\OK$
+have bounded absolute logarithmic height. The conclusions of
+Theorem~\ref{thm:Z} hold if $\Z\setminus S$ is finite and the
+elements of $S\setminus\Z$ have bounded height.
+\end{corollary}
+\begin{proof}
+Northcott's theorem makes a bounded-height subset of the fixed
+number field $K$ finite \cite[Part~B, Section~2]{HS}.
+For completeness, if $\alpha$ has degree $e\le d$ and height
+at most $C$, its primitive integral minimal polynomial has
+Mahler measure $\exp(eh(\alpha))\le\exp(dC)$.
+Every coefficient then has absolute value at most
+$2^d\exp(dC)$, by the elementary symmetric function formulas.
+Only finitely many such integral polynomials exist.
+Apply the corresponding theorem.
+\end{proof}
+
+All substitutions preserve the number of existential witnesses.
+They change the accepted parameter set by composition; they do not
+assert equality with the set obtained by deleting and adjoining
+arbitrary finite subsets of $S$. The coefficients of the shifts
+may be ineffective when only finiteness of the exceptional sets is
+known. The bounds concern degree and coordinates, and supply no
+uniform coefficient-height estimate in that situation.
+
+In particular, a height inequality for elliptic points alone does
+not furnish the Diophantine set required in
+Corollary~\ref{cor:height}. Its integer completeness and the height
+bound on false inputs remain separate hypotheses. No assertion
+that $\OK$ is Diophantine in every number field follows without
+constructing such a set.
+
+Uniform bounds for false inputs arise from the power-law and
+logarithmic height comparisons used in rational integer
+certificates; see \cite[Sections~7 and~11]{Sun}.
+When such a bound is available for a complete source, the
+substitution above removes its finite false-input set.
+This use of a fixed power shift is distinct from the computation
+of a fixed multiplication map in \cite[Section~9]{Sun}.
+
+\begin{thebibliography}{9}
+\bibitem{Milne} J. S. Milne, \emph{Algebraic Number Theory},
+version 3.08, 19 July 2020, Theorem 8.31 and Corollary 8.32.
+\url{https://www.jmilne.org/math/CourseNotes/ANT.pdf}.
+\bibitem{HS} M. Hindry and J. H. Silverman,
+\emph{Diophantine Geometry: An Introduction},
+Graduate Texts in Mathematics 201, Springer, 2000,
+Part B, Section 2. \url{https://doi.org/10.1007/978-1-4612-1210-2}.
+\bibitem{Sun} Z.-W. Sun, \emph{$\mathbb Z$ is diophantine over
+$\mathbb Q$ with 26 unknowns}, arXiv:2611.14605v2,
+13 November 2026. \url{https://arxiv.org/abs/2611.14605v2}.
+\end{thebibliography}
+\end{document}

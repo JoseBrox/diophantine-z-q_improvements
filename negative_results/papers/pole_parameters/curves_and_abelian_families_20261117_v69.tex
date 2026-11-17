@@ -1,0 +1,533 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,microtype}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\DeclareMathOperator{\Res}{Res}\DeclareMathOperator{\Tr}{Tr}
+\title{Curves and abelian families in an actual-trace square locus}
+\author{}\date{17 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+Fixing the rational input in the nine-contact derivative detector,
+every algebraic curve in its guarded actual-trace square locus has
+only finitely many rational points. There is no geometrically integral
+curve defined over the rationals whose smooth projective normalization
+has genus zero or one. The three elliptic point roles may vary
+independently; no multiplication relation is needed. For a fixed root
+point, a rational family parametrized by an abelian variety must also
+have constant slope. These assertions restrict curve and abelian-family
+constructions. They do not exclude individual rational witnesses,
+constant-slope abelian families, or rational points varying on a
+higher-dimensional nonabelian subvariety. The corresponding two-trace
+general source has the same curve finiteness property; every rational
+abelian family at a fixed input has constant common slope.
+\end{abstract}
+
+\section{The guarded locus at a fixed input}
+
+Put
+\[
+ K=\Q(\sqrt2),\quad d=3-\sqrt2,\quad D=d^2,\quad
+ E:y^2=x^3-Dx,\quad R=\Res_{K/\Q}E,
+\]
+and use the fixed point
+\[
+ P=\left(\frac{57-28\sqrt2}{8},
+          \frac{-660+417\sqrt2}{32}\right).
+\]
+Fix $x_0\in\Q$ and an odd integer $B\ge3$. The three point roles
+$A,H,U$ range independently over $R$. Write $f(Q)=1/x(Q)$,
+$\zeta(Q)=-x(Q)/y(Q)$ and
+\[
+ r=\frac{\zeta(U)}{\zeta(H)},\qquad
+ r'=\overline{\frac{\zeta(U-A)}{\zeta(H-P)}}.
+\]
+The six actual tests are
+\[
+ \begin{gathered}
+ C_1=f(H),\quad C_2=f(U),\quad
+ C_3=\overline{f(H-P)},\quad C_4=\overline{f(U-A)},\\
+ C_5=r-r',\qquad C_6=r-x_0.
+ \end{gathered}
+\]
+The bar interchanges the two geometric slots of the Weil restriction.
+Set
+\begin{equation}\label{eq:scale}
+ \beta=x_0^2+B,\qquad T=\Tr x(A),\qquad
+ M=\beta^4+T^4,\qquad a=M^4,
+\end{equation}
+and let $\mathcal S=\{-10,-8,-5,1,2,3,4,6,7\}$. The actual
+detector functions are
+\begin{equation}\label{eq:detector}
+ \begin{gathered}
+ F(a,z)=\prod_{c\in\mathcal S}((a+c)^2-z^2),\qquad
+ u=-18F/F_a,\qquad w=u/(1+u)^2,\\
+ D_i=C_i^2/(1+uC_i^2),\qquad
+ W=\prod_{i=1}^6(1+D_i^2/u),\qquad
+ V=\Tr(W^{-1}),\qquad \mathcal C=V^2+w(2-V).
+ \end{gathered}
+\end{equation}
+Here $F_a$ is the partial derivative with $z$ fixed.
+
+Let $\mathcal X_{B,x_0}$ be the locus $Y^2=\mathcal C$ on the
+following open domain. Retain all point, affine-difference and quotient
+guards of the derivative source \cite{Derivative,Criterion}. In
+particular $A$ has finite abscissa in both slots; the tests $C_i$ are
+finite; and $C_1,C_2,C_3,C_4$ are nonzero in both slots. Retain
+the nonzero guards on $M$, $M^8-z^2$, $F$, $F_a$, $u$, $1+u$,
+the balanced denominators, both slots of $W$, and $V$.
+We may additionally remove the finitely many constant values of $a$
+for which two numbers $\pm(a+c)$ coincide or one is zero.
+Every rational point tuple satisfies
+\begin{equation}\label{eq:large-a}
+                    a\ge\beta^{16}\ge B^{16}>10,
+\end{equation}
+so this last removal discards no rational source point. There is no
+nonzero condition on $C_5,C_6$ or the terminal ordinate $Y$.
+Additional original guards or preparation inequalities only restrict
+the locus further.
+
+This is an algebraic locus in the actual point roles and the existing
+slope. It has no independent trace parameter. The fixed-root locus
+$A=[n]P$, $x_0=n\in\Z\setminus\{0\}$, and its sublocus
+$U=[n]H$ are special cases. The results also apply after passing to
+the source's finite point-chart covers.
+
+\section{The fixed-point fibers}
+
+\begin{lemma}\label{lem:fiber}
+Fix a guarded rational point tuple $(A,H,U)$. The smooth projective
+normalization of
+\[
+                         Y^2=\mathcal C(z)
+\]
+is geometrically integral of genus at least eight. It has eighteen
+distinct rational branch points over $z=\pm(a+c)$ and two further
+rational points over $z=\infty$, with $Y=\pm2$.
+All twenty lie outside the original guarded affine source.
+The guarded fiber has points over every completion of $\Q$.
+\end{lemma}
+\begin{proof}
+At $z=\varepsilon(a+c)$, the distinctness supplied by $a>10$ gives
+\[
+ F=0,\qquad F_a\ne0,\qquad u=0,\qquad
+                         \frac{du}{dz}=18\varepsilon.
+\]
+In each slot at least four tests are nonzero. A nonzero test contributes
+\[
+ \left(1+\frac{D_i^2}{u}\right)^{-1}
+ =\frac{u(1+uC_i^2)^2}{u(1+uC_i^2)^2+C_i^4},
+\]
+which has a simple zero at $u=0$; a zero test contributes one.
+Consequently $V=O(u^4)$ and
+\[
+             \mathcal C=2u+O(u^2),\qquad
+             \frac{d\mathcal C}{dz}=36\varepsilon.
+\]
+These are eighteen simple rational zeros. The degree-two
+function-field extension is geometrically nontrivial, and
+Riemann--Hurwitz gives genus at least eight. This is the contact
+calculation of \cite{Genus}; it requires no relation between $U$ and $H$.
+
+Since $\sum_c c=0$, at infinity one has
+\[
+ F=-z^{18}+O(z^{16}),\qquad
+ F_a=18az^{16}+O(z^{14}),\qquad u\sim z^2/a.
+\]
+Each nonzero test gives $D_i=u^{-1}+O(u^{-2})$ there, while a zero
+test gives $D_i=0$. Thus $V=2+O(u^{-3})$ and
+$\mathcal C=4+O(z^{-6})$. The local equation at infinity has
+the two smooth rational points $Y=\pm2$, because its derivative in
+$Y$ is nonzero at each. They are unramified. The eighteen contacts
+violate $u\ne0$, and infinity is outside the affine slope chart.
+
+At every finite place, taking $z$ sufficiently close to infinity makes
+$\mathcal C$ a nonzero local square near four and keeps the finitely
+many slope-dependent guards nonzero. At two, for example, require
+$\mathcal C/4\in1+8\Z_2$. At the real place take $z>a+10$.
+Then $u,w>0$, both slots of $W$ exceed one, and
+$0<V<2$, so $\mathcal C>0$. These are points of the guarded
+local fiber. This argument does not impose selected-contact prime
+patterns or assert a global rational point in the guarded open set.
+\end{proof}
+
+\section{The rational simple abelian surface}
+
+\begin{lemma}\label{lem:simple}
+The surface $R$ is simple over $\Q$. Every positive power $R^s$
+has no elliptic abelian subvariety defined over $\Q$.
+\end{lemma}
+\begin{proof}
+The nonisogeny and simplicity statements are established in
+\cite{Charts}; the following also verifies the field of definition.
+Write $\sigma(d)=3+\sqrt2$ and
+\[
+ \delta=\frac{\sigma(d)}d=\frac{\sigma(d)^2}{7},\qquad
+ \lambda=\frac{\sigma(d)}{\sqrt7},\qquad \lambda^2=\delta.
+\]
+The map $\phi(x,y)=(\lambda^2x,\lambda^3y)$ identifies
+$E$ with $E^\sigma$ over $K(\sqrt7)$. The geometric
+endomorphism ring of the characteristic-zero curve of invariant
+$j=1728$ is $\Z[i]$, and all its endomorphisms are defined over
+$K(i)$. The automorphism of $K(i,\sqrt7)$ fixing $K(i)$ and
+negating $\sqrt7$ therefore negates every element of
+\[
+             \operatorname{Hom}_{\overline\Q}(E,E^\sigma)
+                        =\phi\operatorname{End}_{\overline\Q}(E).
+\]
+It exists because $\sqrt7\notin K(i)$: the real subfield of
+$K(i)$ is $K$, and $\sqrt7\notin K$. Hence
+$\operatorname{Hom}_{K(i)}(E,E^\sigma)=0$.
+The argument concerns rationality of isogenies, not geometric
+nonisogeny. As a separate exact verification, at the degree-one place
+of $K(i)$ above $17$ with $\sqrt2=6$, $i=4$, the two good
+reductions have respectively $20$ and $16$ points.
+
+If an elliptic abelian subvariety $J\subset R$ were defined over
+$\Q$, its two projections after base change to
+$R_K=E\times E^\sigma$ could not both be nonzero: two such
+projections would be isogenies, contradicting the preceding
+nonisogeny. Exactly one would be nonzero, making $J_K$ one of
+the two factors. Galois interchanges those factors, so neither
+descends to $\Q$. This proves simplicity. An elliptic subvariety
+of $R^s$ would have a nonzero projection into some factor $R$,
+again impossible.
+\end{proof}
+
+\begin{lemma}\label{lem:lowgenus}
+Every morphism from a smooth projective geometrically integral
+curve of genus at most one over $\Q$ to $R^s$ is constant.
+No rational-point hypothesis on the curve is required.
+\end{lemma}
+\begin{proof}
+A morphism $f:C\to R^s$ induces a homomorphism
+$J(C)\to R^s$ through the difference map
+$(c_1,c_2)\mapsto f(c_1)-f(c_2)$. This Jacobian construction
+is defined over $\Q$ even if $C(\Q)$ is empty
+\cite[Chapter III, Proposition 6.4]{Milne}. Its image is zero:
+the Jacobian has dimension zero or one and
+Lemma~\ref{lem:simple} excludes an elliptic image. Hence $f$ is
+constant. Rational maps from the smooth projective curve to the
+proper variety $R^s$ extend to morphisms, so the same conclusion
+holds for them.
+\end{proof}
+
+\section{Finiteness on every fixed algebraic curve}
+
+\begin{theorem}\label{thm:curves}
+For fixed $B,x_0$ as above, no geometrically integral curve defined
+over $\Q$, with smooth projective normalization of genus zero or
+one, admits a nonconstant rational map into $\mathcal X_{B,x_0}$.
+Every algebraic subset of $\mathcal X_{B,x_0}$ of dimension at
+most one has only finitely many rational points. Both statements
+hold for finite point-chart covers of this locus.
+\end{theorem}
+\begin{proof}
+Suppose such a map from a curve of genus at most one exists.
+Its projection to $R^3$ is constant by Lemma~\ref{lem:lowgenus}.
+The constant point is rational, because the curve is geometrically
+integral over $\Q$. Thus $(A,H,U)$ is fixed and $a>10$ by
+\eqref{eq:large-a}. All four required reciprocal tests remain
+finite and nonzero in both slots; vanishing of either final
+comparison does not change Lemma~\ref{lem:fiber}.
+If $z$ varies, the map induces a nonconstant map to the smooth
+normalization of that fiber, whose genus is at least eight.
+Riemann--Hurwitz rules this out. If $z$ is constant, $Y$ has
+at most two values, so the original map is constant.
+
+Every geometrically integral curve in the locus therefore has
+normalization of genus at least two. Faltings's theorem makes
+the rational points of that normalization finite \cite{Faltings}.
+Normalization is an isomorphism away from finitely many singular
+points, so these exceptions do not affect finiteness. If an
+irreducible curve over $\Q$ is not geometrically integral, its
+rational points lie in the finite intersections of distinct
+conjugate geometric components. Zero-dimensional components also
+contribute only finitely many points. Taking the finitely many
+components proves the second assertion.
+
+Under a finite point-chart cover, an algebraic curve cannot map
+to a point. Its image is a curve of the preceding kind; the same
+genus argument and finite fibers give both assertions.
+\end{proof}
+
+The theorem fixes the input. It allows $A,H,U$ to vary independently
+and includes every torsion specialization that survives the displayed
+guards. In particular it applies to the full fixed-root locus of
+$\mathrm{TC}_B(n)$ and to its exact multiplication family. It does
+not give a uniform bound as curves or inputs vary, or finiteness of
+all rational points of the higher-dimensional locus.
+
+\section{Nonconstant slopes in abelian families}
+
+In this section fix the root point $A\in R(\Q)$ as well as
+$B,x_0$, so that $a>10$ is a constant. Denote the resulting
+guarded locus by $\mathcal X_{B,x_0,A}$. The numerator point $U$
+is still independent of $H$.
+
+\begin{theorem}\label{thm:abelian}
+Let $J/\Q$ be an abelian variety. Every rational map
+\[
+                    J\dashrightarrow\mathcal X_{B,x_0,A}
+\]
+has constant slope $z$. In particular, a rational section after an
+isogeny of the reference abelian surface cannot use a nonconstant
+slope. No exclusion of constant-slope abelian families is asserted.
+\end{theorem}
+\begin{proof}
+Suppose $z$ is nonconstant. The reference-point map to $R$ extends
+to a morphism on $J$ and is a homomorphism followed by a translation
+\cite[Chapter I, Theorem 3.2 and Corollary 3.7]{Milne}. By simplicity of $R$, it is
+either constant or surjective. Work over $\overline\Q$ and let
+$v$ be the order at any prime divisor of $J_{\overline\Q}$.
+
+If the reference map is constant, its first and third tests are
+nonzero constants, by the guards. If it is surjective, the common
+zero locus of $C_{1,+},C_{3,+}$ is the inverse image of the point
+\[
+                            (O,\overline P)
+                  \quad\text{in }R_{\overline\Q}=E\times E^\sigma.
+\]
+The common zero locus for the other slot is the inverse image of
+$(P,O)$. Fibers of a surjective abelian homomorphism have constant
+codimension two. Neither common zero locus contains a divisor.
+We have used the exact fact that $f=1/x$ has its only zero at $O$.
+Thus in either case and in each slot at least one of $C_1,C_3$
+has valuation at most zero.
+
+Suppose $\nu=v(u)>0$ is odd. For any nonzero test, parity gives
+\[
+ v(D_i)=\max(2v(C_i),-\nu),\qquad
+ v(1+D_i^2/u)=\min(0,2v(D_i)-\nu)\le0.
+\]
+A zero test contributes the factor one. For a test of valuation at
+most zero the last displayed valuation is at most $-\nu$.
+Consequently, in both slots $v(W^{-1})\ge\nu$, and hence
+$v(V)\ge\nu$. Since $v(w)=\nu$ and $2-V$ is a unit,
+\[
+                         v(\mathcal C)=\nu
+\]
+is odd. This contradicts the square identity $Y^2=\mathcal C$.
+There is therefore no divisor on which $u$ has positive odd order.
+
+At each of the eighteen constant contacts $z_c=\pm(a+c)$,
+$u$ has a simple zero as a rational function of $z$. It follows
+that every component of the zero divisor of $z-z_c$ has even
+multiplicity. Therefore the rational function
+\[
+                            q=\prod_{z_c}(z-z_c)
+\]
+has even divisor on $J_{\overline\Q}$: the pole divisor is
+eighteen times that of $z$, and its zero divisors are even.
+The equation $s^2=q$ consequently defines an unramified
+double cover of the smooth abelian variety. Explicitly, half of
+$\operatorname{div}(q)$ defines a line bundle whose square is
+trivial, and the associated square-root algebra is finite etale.
+If $q$ is already a square, use the trivial cover. A connected
+component $J'$ of this finite etale cover is an abelian variety
+after choosing an origin. For a direct verification, embed the
+ground field in $\mathbb C$ and write the complex abelian variety
+as $\mathbb C^g/\Lambda$. A connected finite unramified cover
+has the form $\mathbb C^g/\Lambda'$ for a finite-index sublattice
+$\Lambda'$. It is projective, since the pullback of an ample
+line bundle under the finite covering is ample. Hence this complex
+torus is an abelian variety; this is all that the following
+geometric contradiction requires.
+
+The functions $z,s$ now give a nonconstant rational map from $J'$
+to the fixed smooth hyperelliptic curve
+\[
+                          s^2=\prod_{z_c}(z-z_c),
+\]
+which has genus eight. This is impossible. Indeed compose with
+its Abel--Jacobi embedding. The rational map into the Jacobian
+extends to a morphism from $J'$ and is a homomorphism followed
+by a translation. Its image, if one-dimensional, is an elliptic
+translate and cannot equal a curve of genus eight. This contradiction
+proves that $z$ is constant.
+\end{proof}
+
+Theorem~\ref{thm:abelian} uses the actual reciprocal trace, including
+possible cancellations between its slots; such cancellation only
+increases $v(V)$. It does not impose $U=[n]H$ or assume the last
+two comparisons are nonzero. The fixed root and fixed input are
+essential to the displayed constant-contact hyperelliptic argument.
+The theorem leaves open a constant-slope abelian family, an isolated
+rational witness, or a family on a nonabelian variety of dimension
+at least two. Neither theorem disproves the eventual-positive
+actual-trace realization criterion or supplies a new defining count.
+
+\begin{corollary}\label{cor:classes}
+The conclusions of Theorems~\ref{thm:curves} and \ref{thm:abelian}
+also hold if $Y^2=\mathcal C$ is replaced by any one of
+\[
+ Y^2=(V+2)\mathcal C,\qquad
+ Y^2=(V^2-V+2)\mathcal C,\qquad
+ Y^2=(1+w(2-V))\mathcal C.
+\]
+They hold separately for every member of a fixed finite menu of
+these three tests and the original test.
+\end{corollary}
+\begin{proof}
+These are the three retained classes of \cite{Classes}. At every
+contact their multipliers are respectively $2,2,1$, so each
+radicand still has eighteen simple zeros. At a positive odd
+divisorial valuation in the proof of Theorem~\ref{thm:abelian},
+$v(V)\ge v(u)>0$ and $v(w)=v(u)>0$. Each multiplier is a
+unit. The odd-order contradiction and the even-contact-fiber
+argument are consequently unchanged. A rational map from an
+irreducible variety into a finite union has image in one component,
+so allowing a finite menu does not alter either conclusion.
+\end{proof}
+
+\section{The two-trace general source}
+
+Use the general source of \cite[Section 1]{Reweighted} and its
+two actual-trace equations from \cite{TwoTrace}. Fix its rational
+input $X=x_0$ and odd coefficient exponent $L\ge3$. The scalar
+$\rho=\rho_L(x_0)$ is now a fixed nonzero rational number.
+There are nine independent point roles on $R^9$, and one common
+slope $\lambda$. Keep all the displayed point, difference,
+scalar, contact, weight and trace guards of that source.
+
+Only the first detector is needed for the following assertion.
+Its comparison scale is $a_0=1$. Put
+\[
+ \begin{gathered}
+ \Theta=\{0,-1/2,-1,1/2399,-32/407\},\qquad
+ \Theta_0=(2+\Theta)\cup(4+\Theta),\\
+ \delta_0=\lambda+1,\qquad
+ R_0=\frac{\prod_{\theta\in\Theta_0}(\lambda-\theta)}
+             {\delta_0^{10}},\qquad
+ u_0=\rho R_0,\qquad w_0=\frac{u_0}{(1+u_0)^2}.
+ \end{gathered}
+\]
+Its ten distinct rational contacts are disjoint from the pole $-1$.
+With the field tests and scalar tests of \cite{Reweighted},
+\[
+ \begin{split}
+ G_{0,k}&=R_0^{\kappa_k+1}\frac{R_0S_k}{1+R_0S_k},\\
+ W_0&=\prod_{i=1}^{16}
+       \left(1+\frac{C_i^2}{\delta_0^2w_0^{2a_i-1}}\right)
+       \prod_{k=1}^{6}
+       \left(1+\frac{G_{0,k}^2}{w_0^{2\kappa_k-1}}\right),\\
+ V_0&=\Tr(W_0^{-1}),\qquad
+ \mathcal C_0=V_0^2+w_0(2-V_0).
+ \end{split}
+\]
+The orders $a_i$ are one except for $i=12,13,14,16$, where
+they are three; $\kappa_k=(1,1,1,1,3,3)$.
+The first ten tests are
+$(f(U_i))_{i=0}^{4}$ and
+$(\overline{f(U_i-Q_i)})_{i=0}^{4}$, with $U_0=H$, $Q_0=P$.
+Only the nonzero reference tests $f(H)$ and
+$\overline{f(H-P)}$ are needed below. All other finite tests may
+vanish, including any zero reciprocal numerator admitted by a native
+point chart. The second detector and its actual square equation
+$Y_1^2=\mathcal C_1$ are retained in full.
+
+\begin{theorem}\label{thm:general}
+In this fixed-input two-trace locus, every algebraic subset of
+dimension at most one has finitely many rational points, and no
+geometrically integral curve over $\Q$ of normalization genus
+zero or one admits a nonconstant rational map into the locus.
+Every rational map from an abelian variety over $\Q$ into the
+locus has constant common slope $\lambda$. These conclusions
+also hold for its finite point-chart covers and separately for
+the small-class alternatives of Corollary~\ref{cor:classes}.
+\end{theorem}
+\begin{proof}
+First fix all nine guarded point roles. At each contact
+$\lambda=\theta$, $w_0$ has a simple zero, $\delta_0$ is
+nonzero. In each slot the nonzero reference reciprocal supplies a
+field factor with a simple pole. All other field factors either
+have a pole or equal one. Every scalar test is a finite constant, so
+$G_{0,k}=O(R_0^{\kappa_k+2})$ and its factor equals
+$1+O(R_0^5)$. It follows that $V_0=O(w_0)$ and
+\[
+                           \mathcal C_0=2w_0+O(w_0^2).
+\]
+The normalization of $Y_0^2=\mathcal C_0(\lambda)$ therefore
+has ten simple rational branch points and genus at least four.
+Any curve component in the two-square fiber maps finitely to
+this first cover, so its normalization has genus at least four.
+The projection to $R^9$, Lemma~\ref{lem:lowgenus}, and Faltings's
+theorem now prove the first two assertions exactly as in
+Theorem~\ref{thm:curves}, including singular and non-geometric
+components.
+
+For an abelian family, consider a divisor where
+$\lambda-\theta$ has positive odd order $\nu$. The scalar
+$\rho$ and $\delta_0$ are units there, and $v(w_0)=\nu$.
+Every detector factor has nonpositive valuation: its nonconstant
+summand has valuation an even integer minus an odd multiple of
+$\nu$, and therefore cannot have valuation zero. Zero tests
+again contribute one. In each slot at least one of $f(H)$ and
+$\overline{f(H-P)}$ has valuation at most zero, by the same
+constant-or-surjective reference-map argument used in
+Theorem~\ref{thm:abelian}. Its field factor has valuation at
+most $-\nu$. Hence $v(V_0)\ge\nu$ and
+$v(\mathcal C_0)=\nu$, contradicting rational squareness.
+
+Every zero divisor of $\lambda-\theta$ is consequently even.
+The product of these ten functions has even divisor, since its
+pole divisor is ten times that of $\lambda$. Its square root on
+a finite etale abelian cover would give a nonconstant map to the
+fixed genus-four curve
+\[
+                           s^2=\prod_{\theta\in\Theta_0}
+                                            (\lambda-\theta).
+\]
+The same Jacobian argument forces $\lambda$ to be constant.
+The small-class multipliers are units at the contact valuations,
+so their inclusion does not change the proof.
+\end{proof}
+
+The first comparison scale is constant, so the abelian-family
+assertion in Theorem~\ref{thm:general} does not require fixing
+any root point. It concerns the displayed reweighted general
+source and its actual two-square replacement. It asserts neither
+failure of its realization criterion nor a lower bound for other
+Diophantine constructions.
+
+\section{Exact algebra checks}
+The companion checker verifies the conjugate-twist isomorphism,
+the two point counts at $17$, the eighteen contact derivatives,
+and the expansion at infinity. It also checks the two universal
+valuation identities used in Theorem~\ref{thm:abelian} on a
+finite set of integer boundary cases. The general valuation,
+Jacobian, and etale-cover arguments are proved above; they are
+not inferred from those finite checks.
+
+\begin{thebibliography}{9}\raggedright
+\bibitem{Derivative}\emph{An eleven-variable construction under rational
+$abc$ using a derivative detector},
+\nolinkurl{papers/conditional_few_variables/derivative_detector11_20261117_v63.tex}.
+\bibitem{Criterion}\emph{One actual-trace square in a derivative detector},
+\nolinkurl{papers/pole_parameters/single_trace_derivative_criterion_20261117_v64.tex}.
+\bibitem{Genus}\emph{Genus of the actual-trace fibers in a derivative detector},
+\nolinkurl{negative_results/papers/pole_parameters/derivative_trace_genus_20261117_v65.tex}.
+\bibitem{Charts}\emph{An obstruction to one-parameter presentations of an elliptic point},
+\nolinkurl{negative_results/papers/elliptic_charts/elliptic_chart_obstruction_20261107_v7.tex}.
+\bibitem{Classes}\emph{Small polynomial classes for the actual detector trace},
+\nolinkurl{papers/pole_parameters/small_trace_classes_20261117_v58.tex}.
+\bibitem{Reweighted}\emph{Quadratic reweightings of native elliptic detectors},
+\nolinkurl{papers/pole_parameters/reweighted_elliptic_detectors_20261116_v53.tex}.
+\bibitem{TwoTrace}\emph{A rational conic criterion using the actual detector trace},
+\nolinkurl{papers/pole_parameters/trace_conic_criterion_20261117_v57.tex}.
+\bibitem{Milne} J. S. Milne, \emph{Abelian Varieties}, version 2.0,
+2008, Chapters I and III.\quad
+\url{https://www.jmilne.org/math/CourseNotes/AV.pdf}.
+\bibitem{Faltings} G. Faltings,
+\emph{Endlichkeitss\"atze f\"ur abelsche Variet\"aten \"uber Zahlk\"orpern},
+Invent. Math. \textbf{73} (1983), 349--366; erratum,
+\textbf{75} (1984), 381.\quad
+\url{https://doi.org/10.1007/BF01388432}.
+\end{thebibliography}
+\end{document}

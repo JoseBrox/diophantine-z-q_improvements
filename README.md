@@ -95,7 +95,7 @@ The resulting nine-coordinate source is sound at every sufficiently large fixed 
 
 It is enough to obtain actual witnesses for every sufficiently large positive integer: a sign involution supplies negative inputs, and multiplying by `∏_{1≤m<N}(X²−m²)` includes the finitely many remaining integers with **no added variables**. This weaker realization hypothesis is also unproved. **The established ordinary-abc count remains 11, and the general count remains 25.** [Criterion metadata and checks](data/criteria_20261117_v64.json) are separate from the construction records.
 
-The [actual derivative-fiber genus theorem](negative_results/papers/pole_parameters/derivative_trace_genus_20261117_v65.tex) identifies eighteen simple rational branch contacts on each fixed-point slope fiber, giving genus at least eight. No geometric rational curve meets the guarded multiplication locus, even when the auxiliary elliptic point is allowed to vary. The known branch points violate the nonzero-weight guard. This excludes rational parametrization of that locus; it does not exclude individual rational witnesses or disprove the nine-variable criterion.
+The [actual-trace curve and abelian-family theorem](negative_results/papers/pole_parameters/curves_and_abelian_families_20261117_v69.tex) applies at a fixed rational input to the nine-variable derivative route and the specified general 21-variable route, with their point roles independent. Every fixed algebraic curve in either guarded locus has only finitely many rational points; no curve over the rationals of normalization genus zero or one maps nonconstantly into it. The first fixed-point covers have genus at least eight and four, respectively. Every abelian family in the general source has constant common slope; the derivative statement additionally fixes the root point. The derivative fiber also has two rational points at infinity and is everywhere locally soluble, but these boundary points do not supply guarded rational witnesses. Individual witnesses, constant-slope abelian families and the two global realization criteria remain open.
 
 ## Restrictions on point-role reductions
 
@@ -116,9 +116,15 @@ with an effective constant. The finite-place loss is explicit; the archimedean e
 
 Zywina's rank-one existence theorem, cited as a preprint, supplies suitable curves over every number field on which this controls the entire finite point domain. The result concerns algebraic sums. A field trace can still cancel, and no definition of every number-field ring of integers, or counterexample to such a definition, is asserted.
 
-The [finite-exception criterion](papers/number_fields/finite_exceptions_and_integrality_20261117_v63.tex) shows that it suffices to construct a Diophantine set containing all but finitely many rational integers whose nonintegral inputs have bounded height. Finite correction and an integral basis then define the entire ring of integers. The required detector remains unconstructed.
+The [power-shift theorem](papers/number_fields/power_shifts_and_finite_exceptions_20261117_v69.tex) removes finite exceptional inputs without adding a witness coordinate. If a degree-`D` polynomial in `N` total coordinates defines a subset of a degree-`d` number field containing every sufficiently large positive rational integer and only finitely many nonintegral elements, it gives a single equation for the ring of integers in **`dN` total coordinates**, of degree at most **`2dD`**. The fixed shift may satisfy any prescribed integer congruence. With finite error relative to the rational integers themselves, the count remains `N`; a square shift gives degree at most `2D` whenever the field has no quadratic subfield, including every odd-degree field. The theorem supplies a conditional reduction; the required all-field detector remains unconstructed.
 
 The separate [rank-stable contact obstruction](negative_results/papers/number_fields/rank_stable_adjacent_contacts_20261117_v63.tex) rules out directly inserting base-field rank-stable curves into the adjacent-index conjugate detector: the two contacts force a fixed non-torsion multiple to reduce to the identity, which occurs at only finitely many base primes. A different comparison architecture or a curve that does not descend is needed for that route.
+
+## Sun’s revised construction and finite exceptions
+
+The [version-pinned audit](docs/audits/sun_v2_20261117_v69/audit.md) compares Sun’s arXiv:2611.14605v2 with v1 and checks its main arithmetic reduction under the explicitly retained suppliers. Its 26 and 16 existential unknowns mean **27 and 17 total coordinates**, respectively. The revised aggregate sum-trace estimate removes one ordinary pole block. The odd-index certificates can also be omitted from the revised source, reducing a branch-rank bound from `2⁴²` to `2²⁴` without changing its coordinate count. A fixed shift can replace the unspecified multiplication map in that presentation; no numerical degree bound competitive with the current records is claimed.
+
+The audit found no essential invalid implication in the reconstructed reduction, and records which imported foundations remain unaudited. The mixed-parity product-height example does not refute v1, whose relevant indices are odd. The [new power-shift theorem](papers/number_fields/power_shifts_and_finite_exceptions_20261117_v69.tex), [bibliography](docs/audits/sun_v2_20261117_v69/references.bib), and [proof guide](docs/results_20261117_v69.md) state the transferable improvements. Sun’s paper does not establish the missing actual-trace realization for 21 or 9 variables.
 
 ## Elliptic index divisibility and amplified congruences
 
@@ -341,7 +347,8 @@ The [pole-compression guide](negative_results/docs/pole_compression_obstructions
 Use **Python 3.12** for the byte-pinned legacy suite and **SymPy 1.14.0** for symbolic checks. From the repository root:
 
     python -m pip install sympy==1.14.0
-    python -B scripts/verify_v68.py
+    python -B scripts/verify_v69.py
+python -B scripts/verify_v68.py
     python -B scripts/verify_v67.py
     python -B scripts/verify_v66.py
     python -B scripts/verify_v65.py
