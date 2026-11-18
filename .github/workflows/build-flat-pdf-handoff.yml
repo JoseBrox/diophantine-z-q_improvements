@@ -1,0 +1,54 @@
+name: Build flat PDF Playground handoff
+
+on:
+  push:
+    branches:
+      - playground-handoff-20261118
+    paths:
+      - ".github/workflows/build-flat-pdf-handoff.yml"
+      - "build_flat_pdf_handoff.py"
+      - "01_must_have/**"
+      - "02_should_have/**"
+      - "SOURCE_MANIFEST.json"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-handoff:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Check out pinned handoff branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: playground-handoff-20261118
+          persist-credentials: true
+      - name: Install LaTeX and PDF validation utilities
+        run: |
+          sudo apt-get update -qq
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -qq --no-install-recommends \
+            latexmk texlive-latex-base texlive-latex-recommended \
+            texlive-latex-extra texlive-fonts-recommended lmodern poppler-utils
+      - name: Compile every TeX and package a flat PDF ZIP
+        run: python3 -B build_flat_pdf_handoff.py
+      - name: Publish downloadable archive to the handoff branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add handoff_packages/zq-playground-flat-pdf-handoff-20261118.zip \
+                  handoff_packages/zq-playground-flat-pdf-verification.json
+          git diff --cached --quiet && exit 0
+          git commit -m "Publish verified flat PDF-first Playground research ZIP"
+          git push origin HEAD:playground-handoff-20261118
+      - name: Upload copy as workflow artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: zq-playground-flat-pdf-handoff
+          path: |
+            handoff_packages/zq-playground-flat-pdf-handoff-20261118.zip
+            handoff_packages/zq-playground-flat-pdf-verification.json
+          if-no-files-found: ignore
