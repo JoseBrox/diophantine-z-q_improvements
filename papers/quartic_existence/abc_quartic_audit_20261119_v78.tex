@@ -1,0 +1,525 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools,booktabs,microtype}
+\usepackage[margin=25mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue]{hyperref}
+\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\DeclareMathOperator{\Tr}{Tr}\DeclareMathOperator{\Nm}{Nm}
+\title{Audit and extensions of the 62-coordinate quartic\\Small pole inputs, weaker hypotheses, and coefficient height}
+\author{Research integration of the supplied coauthor constructions}
+\date{19 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+The supplied reduction from 68 to 62 rational coordinates passes an
+independent reconstruction of its physical equations and every expanded
+coefficient. We verify the local selector, its zero and tangent strata,
+and the order of the integer-witness preparations. A small-input version
+of the retained simultaneous-twist lemma permits deletion of a constant
+from each of the two selector gates. This gives 825 monomials, or a
+752-monomial weighted presentation, in the same 62 coordinates. Clearing
+four reference constants by the existing unit equation gives another
+presentation with 840 monomials and exact height $B+1$ on an explicitly
+specified cofinal fourth-power subfamily. The supplied 63- and 64-coordinate
+weak-$abc$ quartics already work at the weaker exponents $9/8$ and $17/14$.
+An eight-contact extension gives a quartic for every fixed weak-$abc$
+exponent below $3/2$; at exponent $7/5$ it uses 67 coordinates. All defining
+claims retain the upstream elliptic, trace, prime-pattern and
+simultaneous-twist inputs. The sufficient defining coefficient remains
+ineffective. No reduction below 62 coordinates is proved here.
+\end{abstract}
+
+\section{Scope, arithmetic inputs, and the audited result}
+All counts include the distinguished input $X$. The base is the supplied
+\texttt{H10-quartics/abc62} construction, pinned to Brox repository commit
+\texttt{d3a8c223716a0fc0dbf5af4eb7998d640c21048d}.
+The arithmetic inputs retained from v65 are the asserted description of
+$E(K)$, the simultaneous prime-pattern input with arbitrary finite
+avoidance and real and local preparation, the all-point trace-index
+bound, and the simultaneous congruent-twist statement stated in
+Section~\ref{sec:small}. Ordinary rational $abc$ is used for the original
+62-coordinate row. Each later weak-$abc$ row instead uses its single
+specified exponent and the same remaining inputs. These premises are
+not silently deduced from $abc$.
+
+Write
+\[
+ K=\Q(\rho),\quad \rho^2=2,\quad \Delta=11-6\rho,\quad
+ E:y^2=x^3-\Delta x,\quad R_0=(1+\rho,2\rho).
+\]
+The v65 chart theorem identifies all its nonzero-input solutions with
+finite pairs $U,V\in E(K)$ of nonzero abscissa, $U\ne V$, and an allowed
+reference $H$. It includes tangencies, zero ordinates, and every finite
+two-torsion difference $U-V$, including $(0,0)$.
+With $f(Q)=1/x(Q)$ and $S_Q=y(Q)/x(Q)$, its outputs are
+\[
+\begin{gathered}
+s=XS_U,\qquad t=XS_V,\qquad S=S_H,\qquad T=S_{H-R_0},\\
+J=X^2f(H)f(U),\qquad K'=X^2f(H-R_0)f(V).
+\end{gathered}
+\]
+\[
+ T_{\rm sc}=X^2\Tr x(U-V),\qquad
+ t_1-t_0=B+X^8+T_{\rm sc}^2.
+\]
+Only one rational half-trace is stored. The original reference variables
+are replaced invertibly by $S,T,v$, with
+\[
+ v(v+T-S)+\delta=0,\qquad ST+k(T-S)+2kv+2\delta=0,
+\]
+where $a=1+\rho$, $k=4-2\rho$, $\delta=-23+17\rho$.
+The old variables are $u=(v-k-S)/a$ and $w=(v-k+T)/a$.
+Their source unit identities force $u,w,v$ to be nonzero. No new
+reference denominator is left unguarded.
+
+For the two contact arguments the original weights are
+\[
+ w_j=\frac{\prod_{\theta\in\Theta}(t_j-\theta)}{(t_j-1)^6},\qquad
+ \Theta=\{-5,-2,-1,0,2,3,4,7\}.
+\]
+The three contact equations are
+\[
+ R=t^2-2t,\qquad(R+1)Z=R^2-35R,\qquad(R+1)w=Z^2+24Z.
+\]
+If $t=1$, the second equation gives $0=36$; hence elimination of
+$R,Z$ is valid at every rational solution. The reciprocal equations
+$q_jw_j=1$ exclude every zero of the numerator. Store $q_0$ and $c$,
+put $q_1=c-q_0$, and retain the literal unit equation for $c^{-1}$.
+
+Put $C=s-S$, $I=t-T$ and
+\begin{equation}\label{eq:W}
+ W=1+cC^4+c^2J^2-c^3\overline I^{\,4}-c^4\overline {K'}^{\,2},
+ \qquad D\Tr W=\Nm(W-1).
+\end{equation}
+For the supplied construction use
+\begin{equation}\label{eq:gate-eps}
+ 2\tau_j=\varepsilon+(c-q_j)^2+q_jD^2,
+ \qquad q_jb_j=\tau_j^2,\qquad \varepsilon=1.
+\end{equation}
+Each $b_j$ enters the native pole equations
+\begin{equation}\label{eq:native}
+ e^2+bp^2=1,\qquad uv=e(1-b),\qquad u^2-v^2=bq^2.
+\end{equation}
+The two square registers for $p^2,q^2$ are retained. The symbols $q$ in
+\eqref{eq:native} and $q_j=1/w_j$ have different roles.
+
+The replacements
+\[
+ A_\pm=C^2\pm c\overline I^{\,2},\qquad
+ B_\pm=J\pm c\overline {K'}
+\]
+are invertible because $2c\ne0$, and give
+$W=1+cA_+A_-+c^2B_+B_-$. Together with the supplied integral Laurent
+weights and row divisors they yield precisely 50 integral quadrics in
+62 rational coordinates. The weighted basis changes preserve simultaneous
+vanishing. The standard sum of squares has 830 monomials and exact
+height $B^2+4091$ for odd $B\ge81$; the independent check also verifies
+all 833 parameter-separated terms and content one.
+
+\section{The selector: soundness and all zero cases}
+Normalize valuations by $v_p(p)=1$ and put $v(0)=+\infty$.
+Outside the fixed exceptional set, every finite reciprocal-abscissa
+valuation is even. Consequently $v(J)$ and $v(K')$ are even, including
+when $X$ has negative valuation.
+
+\begin{lemma}\label{lem:gate}
+Let $v(q_j)=-\mu$ with $\mu>0$ odd. Suppose \eqref{eq:gate-eps} and
+\eqref{eq:native} hold, where $\varepsilon=0$ or $1$. Then
+\[
+ v(D)>\mu/4,\qquad v(c-q_j)>-\mu/4,\qquad v(c)=-\mu.
+\]
+\end{lemma}
+\begin{proof}
+The native obstruction excludes a negative odd valuation of $b_j$.
+If $\tau_j\ne0$, then
+$v(b_j)=\mu+2v(\tau_j)$ is odd, so $v(\tau_j)>-\mu/2$.
+For $\tau_j=0$ the same inequality holds with the adopted convention.
+Any negative valuation of $\varepsilon+(c-q_j)^2$ is even; the finite
+valuation of $q_jD^2$ is odd. A negative minimum cannot cancel.
+Thus every negative summand valuation is greater than $-\mu/2$.
+It follows that $2v(D)-\mu>-\mu/2$ and
+$2v(c-q_j)>-\mu/2$. Since $-\mu<-\mu/4$, adding $q_j$ gives
+$v(c)=-\mu$. Zero summands satisfy the inequalities automatically.
+\end{proof}
+
+\begin{lemma}\label{lem:select}
+At every rational solution of \eqref{eq:W}, $\Tr W\ne0$.
+Under the conclusions of Lemma~\ref{lem:gate}, at one place above $p$
+all four raw tests $C,J,\overline I,\overline {K'}$ have positive valuation.
+\end{lemma}
+\begin{proof}
+If $\Tr W=0$, then $\Nm(W-1)=0$. Since $K$ is a field this gives
+$W=1$, contradicting $\Tr 1=2$.
+If both slot values of $W$ are negative, say $a,b<0$, then
+$v(\Nm(W-1))=a+b$ and $v(\Tr W)\ge\min(a,b)$.
+Hence $v(D)\le\max(a,b)<0$, a contradiction. The same calculation
+includes an inert place with repeated valuations. Therefore one slot
+has $v(W)\ge0$. At that slot the four nonconstant summands in
+\eqref{eq:W} have four different residue classes modulo four:
+$-\mu,-2\mu,-3\mu,-4\mu$. This uses even valuation of $J,K'$.
+A negative minimum would therefore be unique and could not cancel.
+All four summands have nonnegative valuation. Since their powers of $c$
+are positive, all four raw tests have strictly positive valuation.
+A zero test causes no exception, and the fourth term may tie the
+constant at valuation zero without affecting the proof.
+\end{proof}
+
+The v65 inverse-parameter extraction lemma now applies exactly as
+stated: at every consumed contact prime, $X$ is integral and
+$X(m-X)\equiv0\pmod p$, where $m$ is the index of $U-V$.
+This includes vanishing individual ordinates and finite torsion
+ differences. If $X=0$, soundness already holds. For the original
+contact map, the unchanged ordinary-$abc$ argument has strict
+absorption $602/679<1$. Thus its soundness is preserved.
+
+\section{Small native pole inputs}\label{sec:small}
+The retained simultaneous-twist statement is the following implication:
+if $\beta_0>1$, $\theta\ge1$ are coprime positive squarefree integers,
+both $1\pmod8$, and each is a square modulo every prime of the other,
+then some positive squarefree $r$ makes $E_r$ and $E_{r\theta}$ have
+infinite-order rational points whose abscissas belong to
+$\beta_0\Q^{\times2}$, where $E_a:y^2=x^3-a^2x$.
+This is precisely the upstream premise; it is not strengthened here.
+
+\begin{lemma}\label{lem:small}
+Under that premise, if
+\[
+ 0<b<1,\qquad b\text{ has square reduced denominator},\qquad
+ b\in\Q_2^{\times2},\qquad v_2(b)\ge4,
+\]
+then \eqref{eq:native} has rational witnesses with $upq\ne0$.
+No congruence restriction on the odd primes in the numerator of $b$
+is required.
+\end{lemma}
+\begin{proof}
+Write $b=A/B_0^2$ in lowest terms and write
+$b=\beta_0z^2$, $1-b=\theta d^2$, with $\beta_0,\theta$ positive
+squarefree and $z,d\ne0$. Coprimality follows from
+$\gcd(A,B_0^2-A)=1$. The two-adic assumptions give $B_0$ odd,
+$v_2(A)\ge4$ even, and the odd unit part of $A$ congruent to one
+modulo eight. Hence $\beta_0\equiv\theta\equiv1\pmod8$.
+At a prime of $\beta_0$, $1-b\equiv1$; at a prime of $\theta$,
+$b\equiv1$. Removing square factors shows that the two squarefree
+integers are mutual quadratic residues as required.
+
+If $\beta_0=1$, use $e=0$, $p=1/z$, $u=z$, $v=0$, $q=1$.
+Otherwise apply the retained statement and scale the second point by
+$(x,y)\mapsto(d^2x,d^3y)$. The resulting points are
+$(ba_1^2,y_1)\in E_r(\Q)$ and
+$(ba_2^2,y_2)\in E_{r(1-b)}(\Q)$, with all displayed nonconstant
+factors nonzero. Set
+\[
+ e=\frac r{ba_1^2},\quad p=\frac{y_1}{b^2a_1^3},\quad
+ u=\frac{a_2}{a_1},\quad v=\frac{e(1-b)}u,\quad
+ q=\frac{y_2}{b^2a_1^3u^2}.
+\]
+The two curve equations give respectively $e^2+bp^2=1$ and
+$u^2-v^2=bq^2$; the middle equation is the definition of $v$.
+All divisions are by nonzero numbers, and the infinite-order points
+have nonzero ordinates. These identities are also checked symbolically
+in the independent verifier.
+\end{proof}
+
+\section{Constant-free gates and completeness}
+We now take $\varepsilon=0$ in \eqref{eq:gate-eps}. Lemmas
+\ref{lem:gate} and~\ref{lem:select} prove the unchanged soundness.
+Fix an integer $X\ne0$. As in v65, first fix $A=[X]R_0$,
+its scaled trace, the positive gap, and bounded real and fixed-local
+neighborhoods of the reference and numerator point functions.
+All contact lists and their avoidance values are fixed before prime
+selection. The two translated lists are disjoint because the gap is
+at least 81 and exceeds the contact diameter.
+
+At a selected simple contact for block $j$, $v(w_j)=1$ and the other
+reciprocal $q_{1-j}$ is a unit after excluding the numerator and
+denominator primes of its fixed nonzero contact value. The successful
+slot has $v(C),v(\overline I)\ge3$ and $v(J),v(\overline {K'})\ge4$.
+Thus $W\equiv1$ there. At the other slot the reciprocal products are
+units; the $-c^4\overline {K'}^{\,2}$ term has valuation $-4$ and
+is the unique minimum. Thus $v(D)>0$. The new gate gives
+$2\tau_j\equiv q_{1-j}^2\not\equiv0\pmod p$, and hence
+$v(b_j)=1$. For the supplied $\varepsilon=1$ gates one additionally
+avoids the primes of $1+q_{1-j}^2$; their values are positive rational
+numbers, so this is legitimate finite avoidance. Both preparations
+therefore respect the required order of choices.
+
+As the two real arguments tend to positive infinity with fixed gap,
+\[
+ w_j\sim t_j^2,\quad q_j\sim t_j^{-2},\quad c=O(t_j^{-2}),\quad
+ W-1=O(t_j^{-2}),\quad D=O(t_j^{-4}),
+\]
+\[
+ \tau_j\sim\frac1{2t_j^4},\qquad b_j\sim\frac1{4t_j^6}.
+\]
+These bounds are uniform on the already fixed compact point
+neighborhoods. Thus $0<b_j<1$. The same asymptotics at fixed places
+are obtained by increasing the prescribed slope-denominator depth.
+At two, if $v_2(q_j)=2k$ at the common leading order, then eventually
+$v_2(\tau_j)=4k-1$ and $v_2(b_j)=6k-2\ge4$.
+The contact squareclass formula makes $w_j$, and consequently $b_j$,
+a two-adic square. Its selected primes have positive odd valuations;
+every other valuation is even because the gate contributes a square.
+Thus the reduced denominator is a square. Lemma~\ref{lem:small}
+supplies both actual pole blocks.
+
+For $X=0$ use the v65 zero fiber: $H=2R_0$, $s=S$, $t=T$,
+$F=G=d=J=K'=0$, and $h=t^2/(s-t)$. Its denominator is nonzero
+because $\Nm(S-T)=7199/328$. The half-trace gives a fixed positive gap.
+Now every raw test is zero, so $W=1$, $D=0$ and
+$\tau_j=q_{1-j}^2/2$. The same prime, local, and real preparation gives
+both small native inputs. This proves completeness without deleting
+any zero-input, tangent, or zero-ordinate branch.
+
+\section{Coefficients and exact height}
+In stored coordinates the only change from the supplied system is
+removing $-x_{35}x_{62}$ from \texttt{gate0} and
+$-x_{49}x_{62}$ from \texttt{gate1}. The same 62 coordinates, 50 rows,
+Laurent weights, and inverse maps remain valid. Direct expansion gives
+825 monomials and height $B^2+4091$. On the supplied cofinal scaling
+$B=n^4$, the balanced table has 825 monomials and height $B+4091$
+for odd $n\ge3$. Its supplied positive weighted row operations give
+752 monomials and height $B+758541$ in the same range.
+
+For the smaller height presentation start from the balanced rows.
+Its unit row is $r_{50}=n x_{61}x_{62}-1$. The constants of the four
+reference rows are respectively $23,17,46,34$. Replace those rows by
+\[
+ r_1+23r_{50},\quad r_2+17r_{50},\quad
+ r_3+46r_{50},\quad r_4+34r_{50}.
+\]
+These are invertible row operations. The resulting sum of 50 squares
+has 840 coordinate monomials and 841 parameter-separated terms.
+The maximum absolute coefficients at powers $n^0,n^1,n^2,n^3,n^4$
+are respectively
+\[
+                    1548,\quad1280,\quad4091,\quad4,\quad1.
+\]
+The sole mixed profile is its constant coefficient $n^4+1$.
+Every other coordinate monomial has a single parameter power.
+Consequently, for every positive integer $n$,
+\[
+                 H=\max(4091n^2,n^4+1).
+\]
+For odd $n\ge65$ this is exactly $B+1$.
+Every coordinate occurs, the degree is exactly four, and the coefficient
+of $X^4$ is one, proving content one. The cutoff $65$ certifies the
+algebraic height formula only; it is not a sufficient defining shift.
+
+\section{Fixed weak-abc hypotheses and new quartic families}
+Assume weak rational $abc$ at one fixed exponent $\kappa>1$.
+For six contacts use
+\[
+ \Theta_6=\{1,31,37,41,46,61\}.
+\]
+The map $z=2+60/(t-61)$ sends them to
+$\{0,-2,-1/2,1,-1,\infty\}$. The identity
+\[
+ z(z+2)^3-(2z+1)^3=(z-1)^3(z+1)
+\]
+gives the six-contact rate $\gamma_6=8/\kappa-6$.
+For eight contacts use
+\[
+ \Theta_8=\{1,8,22,28,29,36,43,64\}.
+\]
+The identity
+\[
+ (v+4)(v+20)^3(v-5)^2-(v-4)(v-20)^3(v+5)^2=108v^5
+\]
+and the map $t=43+210/(v-10)$ give the eight-contact rate
+$\gamma_8=12/\kappa-8$.
+Indeed the coprime degree-four or degree-six homogeneous abc triple
+has bounded common divisor, so its radical has logarithm at least
+$(k-2)h(t)/\kappa-O(1)$. Its full homogeneous contact form has degree
+$k$. The inequality $S_1(N)\ge\operatorname{rad}(N)^2/|N|$, where
+$S_1$ is the product of primes occurring exactly once, gives
+\begin{equation}\label{eq:rate}
+ \log M(t)\ge\gamma_kh(t)-O(1),\qquad
+ \gamma_k=\frac{2(k-2)}\kappa-k.
+\end{equation}
+Here $M$ can include all positive odd contact primes. The omitted
+primes form a fixed finite set consisting of the point-chart bad primes,
+contact coefficients, differences and transformation resultants.
+All constants are independent of the later coefficient $B$.
+
+Put $G_k(t)=\prod_{\theta\in\Theta_k}(t-\theta)$ and
+$w(t)=G_k(t)/t^{k-2}$. Since zero is not a contact, the equations
+$te=1$, $f=e^2$ and, when $k=8$, $g=ef$ give quadratic charts:
+\[
+\begin{split}
+ k=6:\quad w={}&t^2+a_5t+a_4+a_3e+a_2f+a_1ef+a_0f^2,\\
+ k=8:\quad w={}&t^2+a_7t+a_6+a_5e+a_4f+a_3g+a_2f^2+a_1fg+a_0g^2,
+\end{split}
+\]
+where $G_k(t)=\sum a_it^i$. Each six-contact block uses three
+helpers, as before; each eight-contact block uses four.
+Under the existing Laurent weights all these coordinates have physical
+factor $c$, and division by $c^2$ makes the displayed equations literal
+quadrics using $c^{-1}$. At $t=0$ the inverse equation is impossible;
+at every contact $w=0$ contradicts $wq=1$.
+
+Replace the gap by
+\[
+             G=t_1-t_0=B+X^{2^r}+T_{\rm sc}^2,\qquad r\ge3.
+\]
+Keep the original $X^2,X^4$ registers and add successive squares up to
+$X^{2^{r-1}}$. Thus the respective coordinate counts are
+\begin{equation}\label{eq:count}
+                  N_6(r)=59+r,\qquad N_8(r)=61+r.
+\end{equation}
+There are $N_k(r)-12$ rational quadratic rows.
+
+\begin{theorem}\label{thm:weak}
+If $\gamma_k>0$ and
+\begin{equation}\label{eq:strict}
+ \bigl(2^r-\kappa(2^{r-1}+2)\bigr)\gamma_k>4(2\kappa-1),
+\end{equation}
+then, under the retained remaining premises, every sufficiently large
+fixed odd $B$ gives integer input projection for the above quartic.
+In particular $k=6$ covers every fixed $1<\kappa<4/3$ for sufficiently
+large $r$, and $k=8$ covers every fixed $1<\kappa<3/2$.
+\end{theorem}
+\begin{proof}
+The local selector is unchanged. For $X=u/v\ne0$ in lowest terms and
+$X\ne m$, both contact prime products divide
+$|u(mv-u)|\le(1+|m|)\exp(2h(X))$. Equation~\eqref{eq:rate} gives
+\[
+ h(G)\le\frac2{\gamma_k}\bigl(2h(X)+\log(1+|m|)\bigr)+O(1).
+\]
+Set $s=X^{2^r}+T_{\rm sc}^2\ge0$. Then $h(s)\le h(G)$ and
+$h(G)\ge\log B$. The retained signed mixed-power height theorem,
+applied with the plus sign, gives
+\[
+ h(X)\le\frac{2\kappa-1}{2^r-\kappa(2^{r-1}+2)}h(s)+O(1).
+\]
+Condition~\eqref{eq:strict} makes the resulting coefficient of $h(G)$
+strictly smaller than one. Thus $h(G)$ and $h(X)$ are bounded by fixed
+multiples of $\log(1+|m|)+1$. Also
+$2h(T_{\rm sc})\le h(s)+2^rh(X)+\log2$.
+The retained trace-index bound
+$m^2\le C(h(T_{\rm sc})+2h(X))+J_0$ bounds $m$, including finite
+torsion differences by taking $m=0$. It follows that $h(G)$ is uniformly
+bounded independently of $B$, contradicting $h(G)\ge\log B$.
+
+For completeness, the point family and the constant-free gates are
+prepared as above. Both fixed contact lists are disjoint because their
+diameter is at most 63 and the gap is at least 81. For
+$t_j=N/L+g_j$ the prime-pattern theorem provides the positive prime values
+$p_{j,\theta}=N+(g_j-\theta)L$, with all specified avoidance and local
+conditions. The exact squareclass formula is
+\[
+ w_j=\frac{\prod_{\theta\in\Theta_k}p_{j,\theta}}
+             {L^2(N+g_jL)^{k-2}}.
+\]
+Its denominator is a square and its leading real coefficient is one.
+The same selected-prime, real, and two-adic calculations therefore give
+the small native pole inputs, including the separate zero-input fiber.
+The new power registers are determined uniquely. This proves both
+implications.
+\end{proof}
+
+For $k=6,r=4$, the exact strict coefficient at $\kappa=9/8$ is
+$18/19$; for $k=6,r=5$ at $\kappa=17/14$ it is $68/71$.
+These conclusions also strengthen the hypotheses of the supplied
+63- and 64-coordinate fractional-contact families without changing any
+of their coefficients. Their originally stated exponents were $16/15$
+and $121/100$. For $k=8,r=6$, exponent $7/5$ has coefficient $63/82$.
+
+The new integer-contact, constant-free families have the following
+independently verified presentations, all with $B=n^4$:
+\begin{center}
+\begin{tabular}{rrrrrr}
+\toprule
+$\kappa$&Variables&Rows&Monomials&Height&Odd algebraic cutoff\\
+\midrule
+$9/8$&63&51&863&$B+1$&$n\ge17207$\\
+$17/14$&64&52&866&$B+1$&$n\ge17207$\\
+$7/5$&67&55&905&$B+1$&$n\ge192405$\\
+\bottomrule
+\end{tabular}
+\end{center}
+The first two coefficient caps at powers $n^0$ through $n^4$ are
+\[
+ 39067747815195764,\quad64245567274,\quad296062522,\quad434,\quad1;
+\]
+for the third they are
+\[
+ 524140711592652177408,\quad8551459564032,\quad37019305472,\quad462,\quad1.
+\]
+The sole mixed coefficient is $n^4+1$, so the stated height cutoffs
+follow directly and hold uniformly thereafter. These are algebraic
+height cutoffs, not effective integer-defining thresholds.
+
+\section{A number-field version of the shifted-norm selector}
+\begin{proposition}
+Let $L/\Q$ be a number field of degree $d$, and let
+$e_{d-1}(W)$ be the penultimate elementary symmetric polynomial in its
+$d$ conjugates. The equation
+\[
+                D e_{d-1}(W)=\Nm_{L/\Q}(W-1)
+\]
+forces $e_{d-1}(W)\ne0$ at every rational solution with $W\in L$.
+If all local conjugate valuations of $W$ are negative, then
+$v(D)\le\max_\sigma v(\sigma W)<0$. Conversely, suppose $k\ge1$
+conjugates satisfy $W_\sigma\equiv1$ and the others are poles.
+If $p\nmid k$, then $v(D)>0$, with $D=0$ allowed.
+\end{proposition}
+\begin{proof}
+A zero denominator would force $\Nm(W-1)=0$, hence $W=1$, whereas
+$e_{d-1}(1)=d\ne0$. Put $a_\sigma=v(\sigma W)$. If all are negative,
+the numerator has valuation $\sum a_\sigma$ and the denominator has
+valuation at least $\sum a_\sigma-\max a_\sigma$, proving the bound.
+For the converse divide numerator and denominator by the product of
+the pole conjugates. The denominator reduces to $k$ modulo the maximal
+ideal: precisely the terms omitting one of the successful conjugates
+survive. The numerator contains the product of their positive-order
+errors $W_\sigma-1$ and unit factors from all pole conjugates. Thus its
+valuation is positive, or it is zero identically. Excluding the finitely
+many primes at most $d$ makes the condition automatic for every $k$.
+\end{proof}
+The residue-class separation argument similarly extends to $2^a$ tests
+when their powered valuations are multiples of $2^a$ and the selector
+unit has negative odd valuation. Distinct exponents modulo $2^a$ give
+a unique negative minimum. This field theorem concerns the arithmetic
+selector; in higher degree its norm equation need not remain quadratic.
+It is not a new quartic coordinate-count claim.
+
+\section{Audit record and limitations}
+The supplied standard-library checker and its independent SymPy checker
+both pass. The latter compares the full five-row span containing the
+reference equations and a pole row with the pinned v65 source, reverses
+every Laurent and hyperbolic substitution, and independently expands
+all 50 squared quadrics. The supplementary fractional-contact 63- and
+64-coordinate checkers also pass. The new independent checks verify the
+changed gate identity, the two native twist witness identities, both
+Belyi identities and transformations, every new contact and power row,
+all scaling and row operations, every expanded coefficient, support,
+content, and exact coefficient caps.
+
+The computation is not a proof of the external arithmetic premises or
+an effective defining coefficient. Neither the recovered charts nor
+finite valuation searches establish a smaller rational coordinate count.
+Several direct eliminations merely replace a field helper by another:
+for example removing the secant helper $d$ changes the scale equation
+into $\Delta G^2+t^2G=X^4$, which needs a square helper to stay quadratic.
+No optimality theorem is inferred from these unsuccessful reductions.
+
+\begin{thebibliography}{9}\raggedright
+\bibitem{v65} J.~Brox and contributors, \emph{A quartic in 68 variables from
+translated secants}, 17 November 2026, repository file
+\nolinkurl{papers/quartic_existence/quartic_abc68_20261117_v65.tex}.
+\bibitem{v58} J.~Brox and contributors, signed mixed-power height theorem,
+repository file
+\nolinkurl{papers/elliptic_heights/signed_mixed_power_height_20261117_v58.tex}.
+\bibitem{v22} J.~Brox and contributors, direct-input weak-$abc$ construction,
+repository file
+\nolinkurl{papers/conditional_few_variables/direct_input13_20261110_v22.tex}.
+\bibitem{coauthor} Supplied coauthor bundles
+\texttt{H10-quartic-constructions.zip} and
+\texttt{H10-eleven-variable-constructions.zip}, particularly
+\texttt{abc62/PROOF.md}, \texttt{counts/abc/quartics/proof.md}, and
+\texttt{eight\_cusps.py}. The independent checks certify relative
+transfer from their pinned upstream, with the arithmetic scope stated above.
+\end{thebibliography}
+\end{document}

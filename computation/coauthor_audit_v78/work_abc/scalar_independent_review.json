@@ -1,0 +1,162 @@
+{
+  "schema_version": 1,
+  "review_date": "2026-11-19",
+  "reviewer": "audit_abc_quartic",
+  "status": "PASS: independent mathematical transfer review and exact finite replay, conditional on explicitly retained premises",
+  "parent_repository_commit": "d3a8c223716a0fc0dbf5af4eb7998d640c21048d",
+  "artifact_path_base": "audit_20261119/work_root",
+  "artifacts": {
+    "four_contact_scalar_20261119_v78.tex": {
+      "sha256": "4d278a1b6053209d66d23e6eebc009a08bf7b354e1ed0bcf81f4422095b1f3a4",
+      "bytes": 20024
+    },
+    "check_scalar_arithmetic.py": {
+      "sha256": "9dff6e74b737a3c99e3599487f11e4b746f148b4bd6439e5361220b4caee0b6e",
+      "bytes": 4599
+    },
+    "check_scalar_circuits.py": {
+      "sha256": "5a0cc60d04ab0084c26d11f6d8a099b6d6b6e64d775c3213ccb43c5a1cdbfa5d",
+      "bytes": 10931
+    },
+    "scalar_arithmetic_certificate.json": {
+      "sha256": "b72b8a9ee550f65445eaf750ca47760f39349290015a7ffa79e70ccc0d00236a",
+      "bytes": 6384
+    },
+    "scalar_circuit_independent.json": {
+      "sha256": "015f4671f9dca4179fb3247ff6fd7411842f8b300c202589b8203f8ae74136ff",
+      "bytes": 1493
+    },
+    "four_contact/general25/native.json": {
+      "sha256": "e14001da1d90cc11e1cb834c41197045315bcf082c06d6c26122e92fc718d155",
+      "bytes": 224140
+    },
+    "four_contact/general25/parent.json": {
+      "sha256": "46db6d9af4f2466375f2a64cface33671ce28b332afb56b20c9e9f2f3dcfd396",
+      "bytes": 57081
+    },
+    "four_contact/general25/certificate.json": {
+      "sha256": "94ee1032d21e1be5d25c0f87d1d19ccaf9f67c4c728c582da2bec37c2acad4fd",
+      "bytes": 1006
+    },
+    "four_contact/general25/reduced.json": {
+      "sha256": "787028d22668fbacd0c66f9011456e324d4e92e209d940dcb49c9f288d5ab0ed",
+      "bytes": 1057
+    },
+    "four_contact/general25/projective.json": {
+      "sha256": "be8aeab90d796e1057c59de9b7aa66cf39bf27af03c6fbce65661cace14a056e",
+      "bytes": 334
+    },
+    "four_contact/explicit27/native.json": {
+      "sha256": "d56d7e58477e13ad1a4ca95732da9ffc52dfef96259486513ce3b166af965710",
+      "bytes": 301920
+    },
+    "four_contact/explicit27/parent.json": {
+      "sha256": "07add1de6ceb9916a65659778bf88a261df4cfd31f6e3070f3886b3b1198709c",
+      "bytes": 73594
+    },
+    "four_contact/explicit27/certificate.json": {
+      "sha256": "90d53626f1d17f761b93dba1ffde7c08095134c7b0f488a42841b790abfc66d1",
+      "bytes": 1223
+    },
+    "four_contact/explicit27/reduced.json": {
+      "sha256": "0ba2fa8b415da514b74d20ab2d5e2354845bcfe822dfd392e5cb3e3e3c27dd9c",
+      "bytes": 1274
+    }
+  },
+  "final_route_certificates": {
+    "general25": "four_contact/general25/projective.json",
+    "explicit27": "four_contact/explicit27/reduced.json"
+  },
+  "certificate_stage_note": "Files named certificate.json record the earlier additive-separator stage. The final general25 bound is in projective.json; the final explicit27 bound is in reduced.json. These are not interchangeable.",
+  "mathematical_proof_review": {
+    "scope": "Read and checked the new scalar and unsquared-scale transfer, explicit inequalities, contact handling, and guard-restoration arguments. This is a relative proof audit, not an independent proof of the source project arithmetic foundations.",
+    "checked": [
+      "For beta=1632*X^2+2477, the four scalar factors are positive for every rational X; the denominator B+T_L*A never vanishes. The construction gives 0<rho<1/167 and v_67(rho)=L, including inputs with negative 67-adic valuation.",
+      "For integral X, rho has square reduced denominator, the required local square classes at 2, 3 and 17, and the stated valuation depths. The argument uses q>0 in q/(1+q)^2, so the excluded q=-1 boundary cannot arise.",
+      "The reduced numerator comparison establishes h(X^2+1)<=h(beta). The degree-four scalar height estimate h(rho)<=4*h(beta)+2*L*log(67)+128 has the required uniform constants.",
+      "Unsquared positive scales cost 2*h(rho) in the main height estimate. The resulting factor 4 in the main bound, coefficient 18 in the Delta contradiction, and coefficient 16 in the final numerator bound are retained consistently.",
+      "The L=143 explicit argument has enough room for the unsquared-scale losses: 67^287-1>=2^1727, the exact threshold comparison is strict, and the monotonicity step applies throughout the forced range.",
+      "The first two comparison contact-and-pole sets are disjoint modulo 67; this is sufficient for the forced-prime contradiction in both routes. No pairwise-disjointness assertion is made for all three sets.",
+      "Scaled real contact positions from different blocks may coincide. The final manuscript records each repeated position once while retaining all incidences; the source simultaneous preparation is used for all corresponding comparisons.",
+      "The first root label n=X^2+1 is nonzero but need not be odd. The preparation only uses its nonvanishing and finite prime avoidance. The zero input X=0 therefore remains covered.",
+      "Early scalar and scale guard deletions use positivity of expressions in rational base coordinates before character extraction. Detector positivity deletions remain after recovery of the protected denominators and a rational character.",
+      "For a square-abscissa root, Norm(g^4-D)=0 would imply g^4=D and (Norm g)^4=49, impossible over Q. The corresponding root norm-square is therefore nonzero before rational-character extraction.",
+      "For a full auxiliary chart, the retained ordinate-norm guard forces Norm(x^3-D*x) nonzero and hence Norm(x) nonzero. Root and auxiliary point etaleness is restored before applying the point separator.",
+      "After rational-character extraction, the root equation j^2=g^4-D and total positivity of D exclude g=0. The integral multiplication algebra exists on the deleted loci, so the recovery does not require prematurely evaluating an unguarded rational denominator.",
+      "Four root abscissa norms, four root ordinate-norm guards, and five auxiliary abscissa norms can therefore be removed: 13 atoms, total guard degree 50. This proof is separate from the later detector-positivity guard deletions.",
+      "The final determinant degree formulas agree with the final route certificates: 2^20*(1+8375+75336)=87778394112 and 2^21*(1+14698+145350)=335647080448."
+    ],
+    "retained_premises": [
+      "Normalized elliptic group description over Q(sqrt(2)).",
+      "The source trace-height theorem for the general25 route, or effective abscissa-sum height theorem for explicit27.",
+      "The stated modular contact-height theorem and its retained effective constants.",
+      "Prepared native-pole converse and its density assertion.",
+      "Compatible simultaneous prime-pattern theorem and index refinement for each fixed finite list of rational contact positions.",
+      "Pinned source point-chart, integral-algebra, and separator transfer lemmas, including the supplied projective two-pole encoding argument."
+    ],
+    "threshold_status": {
+      "general25": "A sufficiently large fixed odd L gives the claimed integer projection under the retained premises, but no effective sufficient threshold is obtained. Its L=143 coefficient certificate is an algebraic fixture only.",
+      "explicit27": "L=143 is a fully specified sufficient member for the transferred proof, under the retained effective arithmetic premises."
+    }
+  },
+  "finite_check_review": {
+    "method": "Read both checker sources and ran them successfully. Arithmetic uses Python exact integers and fractions. Circuit replay uses the supplied independent auditor and pinned source interfaces; it does not import the new scalar producer build_scalar.py.",
+    "new_scalar_producer_imported": false,
+    "pinned_source_interfaces_imported": true,
+    "arithmetic_checker_cas_used": false,
+    "runs": [
+      {
+        "command": "python audit_20261119/work_root/check_scalar_arithmetic.py",
+        "exit_code": 0,
+        "stdout_path": "audit_20261119/work_abc/scalar_review_arithmetic.log",
+        "stdout_sha256": "f0d19d40b2831c4d67e94dfe7755b32b31f5ee81b4554a43b63b9a0e7054ffc2"
+      },
+      {
+        "command": "python audit_20261119/work_root/check_scalar_circuits.py",
+        "exit_code": 0,
+        "stdout_path": "audit_20261119/work_abc/scalar_review_circuits.log",
+        "stdout_sha256": "015f4671f9dca4179fb3247ff6fd7411842f8b300c202589b8203f8ae74136ff"
+      }
+    ],
+    "checked": [
+      "All residue classes needed for the finite 67-adic unit certificate and the integral local square-class checks.",
+      "Exact scalar/comparison exceptional prime sets, explicit integer constants, coefficient-height majorants, and strict L=143 threshold inequalities.",
+      "The new scalar, target, every scale, all contact products and weights, and structural reconciliation of unchanged point charts and comparison tests with pinned source interfaces.",
+      "All 44 or 66 positive detector factors and 411 or 534 denominator records, followed by the independent quadratic-tower and envelope replay.",
+      "Dependencies of early positivity atoms, the exact 13 automatic point atoms, their combined guard-degree saving 50, and the retained guard factor lists.",
+      "The final projective/general25 and reduced/explicit27 degree and coefficient one-norm majorants, plus the exact combinatorial support bounds."
+    ],
+    "not_certified_by_finite_checks": [
+      "The infinite arithmetic premises listed in mathematical_proof_review.retained_premises.",
+      "A general25 integer-defining claim specifically at L=143.",
+      "Any polynomial in 21 or 9 coordinates, or any quartic reduction below the separately audited 62-coordinate family.",
+      "An expanded coefficient list for these very large finite-algebra determinants. The replay certifies their circuit descriptions and rigorous upper bounds, not an exhaustive expansion.",
+      "Optimality of the coordinate counts, degree bounds, coefficient bounds, or sufficient L."
+    ]
+  },
+  "final_results": {
+    "general25": {
+      "variables_including_input": 25,
+      "algebra_rank": 1048576,
+      "retained_guard_degree": 8375,
+      "projective_numerator_degree_bound": 75336,
+      "projective_denominator_degree_bound": 75336,
+      "polynomial_total_degree_upper_bound": 87778394112,
+      "support_strict_upper_bound": "2^814",
+      "L_143_fixture_log2_coefficient_one_norm_upper_bound": 11446664560640,
+      "L_143_fixture_integer_projection_certified": false
+    },
+    "explicit27": {
+      "variables_including_input": 27,
+      "algebra_rank": 2097152,
+      "retained_guard_degree": 14698,
+      "separator_degree_bound": 145350,
+      "polynomial_total_degree_upper_bound": 335647080448,
+      "support_strict_upper_bound": "2^929",
+      "fixed_L": 143,
+      "log2_coefficient_one_norm_upper_bound": 53113872449536,
+      "integer_projection_status": "Z, conditional on the explicitly retained premises"
+    }
+  },
+  "final_source_check": "The pinned manuscript contains the repeated-contact incidence convention, the 13-guard proof, and the updated general25 coefficient one-norm bound. No outstanding flaw was identified within this review scope."
+}

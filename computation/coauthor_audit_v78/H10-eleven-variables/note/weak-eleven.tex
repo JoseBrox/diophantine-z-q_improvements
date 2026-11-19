@@ -1,0 +1,166 @@
+\documentclass[11pt]{article}
+\usepackage[letterpaper,margin=0.98in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs,hyperref}
+\hypersetup{hidelinks,pdftitle={Eleven variables under a fixed weak abc inequality}}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\newcommand{\Tr}{\operatorname{Tr}}\newcommand{\rad}{\operatorname{rad}}
+\newcommand{\OO}{\mathcal O}
+\newtheorem{theorem}{Theorem}\newtheorem{lemma}[theorem]{Lemma}
+\setlength{\emergencystretch}{2em}
+\title{Eleven variables under a fixed weak \texorpdfstring{$abc$}{abc} inequality}
+\author{H10 research note}
+\date{November 18, 2026}
+\begin{document}
+\maketitle
+\newcommand{\PPt}{P_0}
+The reference is the Brox repository at commit \texttt{d3a8c22}. Variable counts include the input. Write $W_\kappa$ for the assertion that there is $K_\kappa$ such that for all coprime positive integers $a+b=c$,
+\[
+ c\le K_\kappa\rad(abc)^\kappa.
+\]
+Throughout we retain the elliptic group, trace-height, simultaneous prime-pattern and prepared-pole inputs used in the repository's direct-input construction [1,2]. This includes the two-curve realization used to choose pole witnesses away from finitely many algebraic conditions.
+\begin{theorem}
+Assume $W_\kappa$ for a fixed $1<\kappa<3/2$. There is a computable family of integer polynomials $F_B(X,Y_1,\ldots,Y_{10})$ such that for every sufficiently large fixed odd integer $B$,
+\[
+ x\in\Z\quad\Longleftrightarrow\quad
+ \exists\,\mathbf y\in\Q^{10}\quad F_B(x,\mathbf y)=0
+ \qquad (x\in\Q).
+\]
+For the following two exponents the accompanying determinant specifications give the indicated degree upper bounds. The sufficient shift is ineffective.
+\end{theorem}
+\begin{center}\small
+\begin{tabular}{lrrr}\toprule
+ &Variables&Previous degree bound at 13&New degree bound at 11\\\midrule
+$W_{121/100}$ & $13\to11$ &2,525,697&33,344,385\\
+$W_{16/15}$ & $13\to11$ &2,206,209&19,861,377\\\bottomrule
+\end{tabular}
+\end{center}
+The 13-variable degree bounds are those of our preceding note. Here both branches of the height argument use a single set of primes and one native pole predicate. This removes its second pair of rational parameters. The 11-variable ordinary-$abc$ comparison from the preceding note has degree bound 36,482,433.
+
+\section{A rational function detecting simple contact primes}
+Use the six rational numbers
+\[
+ \Theta=\{0,-1,-1/2,-1/3,-1/4,-2/5\},\qquad G(t)=\prod_{\theta\in\Theta}(t-\theta).
+\]
+For rational $a,z$, write $x=a-z$, $y=a+z$, $P=G(x)$, $Q=G(y)$ and $J=(x-1)(y-1)$. For an integer $k\ge6$ set
+\[
+ u=\frac{J^{6k}(PQ)^3}{(P^3+Q^5)(P+Q^k)(P^k+Q)}.
+\]
+Require nonzero numerator and denominator. Enlarge the fixed source exceptional set $S$ by primes in the denominators, nonzero differences, and $1-\theta$ of the contact data. Denote by $r(u)$ the product of $p\notin S$ for which $v_p(u)$ is positive and odd. All heights below are logarithmic.
+\begin{lemma}\label{radbound}
+With $\gamma=8/\kappa-6$, one has uniformly in $a,z$
+\[
+ \log r(u)\ \ge\ (\gamma-6/k)\max\{h(x),h(y)\}-O(1).
+\]
+\end{lemma}
+\begin{proof}
+Let $N(t)$ be the product of the six primitive homogeneous contact forms evaluated on a primitive pair representing $t$. The degree-four rational map
+\[
+ z\longmapsto\frac{z(z+2)^3}{(2z+1)^3}
+\]
+and the fixed coordinate change in [1, contact lemma] give $\log\rad N(t)\ge(4/\kappa)h(t)-O(1)$ by applying $W_\kappa$ to the numerator, denominator and their difference. Also $\log|N(t)|\le6h(t)+O(1)$. Thus the product of primes of multiplicity exactly one in $N(t)$ outside $S$ has logarithm at least $\gamma h(t)-O(1)$, since its logarithm is at least $2\log\rad N(t)-\log|N(t)|-O(1)$. At these primes $v_p(G(t))=1$.
+
+Choose the higher-height argument. Discard its simple primes for which the other contact product has valuation at least $k$. Their logarithmic cost is at most $(6/k)$ times the other height plus $O(1)$, by the numerator bound. We prove every remaining simple prime contributes to $r(u)$.
+
+If $x,y$ are integral at $p$, put $m=v_p(P)$, $n=v_p(Q)$. One equals one. When the other is zero, $v_p(u)=3+6kv_p(J)$. When both are positive, the three denominator valuations are $\min(3m,5n),m,n$ with strict minima in all three factors. The second assertion uses $m,n<k$. Consequently
+\[
+ v_p(u)=6kv_p(J)+2(m+n)-\min(3m,5n).
+\]
+The final two terms give $2n-1$ when $m=1$, or $2m-3$ when $n=1$ and $m\ge2$. Each result is positive and odd. If $v_p(P)=1$ and $s=v_p(y)<0$, then $v_p(Q)=6s$ and $v_p(J)=s$, as $x-1$ is a unit. The denominator valuation is $6(k+6)s$, giving $v_p(u)=3-18s$. With $v_p(Q)=1$ and $s=v_p(x)<0$, the corresponding result is $3-6s$. This exhausts the retained primes.
+\end{proof}
+
+\section{The height contradiction}
+Let $E/K$ be the source elliptic curve with $K=\Q(\sqrt2)$, $E\colon Y^2=X^3-(3-\sqrt2)^2 X$, and $2E(K)=\Z\PPt$ with the generator of [1]. Use three points $A,H,U$ in the original chart. On a rational character $A=[n]\PPt$ for a nonzero integer $n$. Put
+\[
+ T=\Tr_{K/\Q}x_E(A),\quad \beta=X^2+B,\quad a=\beta^e+T^e,\quad E_h=h(1:\beta:T)
+\]
+with $e$ even. The power-sum bound of [1] gives $h(a)\ge(e/\kappa-3)E_h-O(1)$. Since $2a=x+y$, Lemma~\ref{radbound} gives
+\[
+ \log r(u)\ge\lambda E_h-O(1),\qquad
+ \lambda=\tfrac12(8/\kappa-6-6/k)(e/\kappa-3).
+\]
+For $(\kappa,k,e)=(121/100,15,10)$ and $(16/15,6,6)$ the values of $\lambda-1/2$ are $8331/146410$ and $5/32$. For $1<\kappa<4/3$, choose $k$ with $6/k<8/\kappa-6$, and then choose $e$ large enough for $\lambda>1/2$.
+
+Here are the local tests entering the single pole predicate. With $f=1/x_E$, $\zeta=-x_E/y_E$ and $\sigma$ the conjugation of $K$, set $l=\zeta(U)/\zeta(H)$. The six quantities $C$ are
+\[
+ f(H),\ f(U),\ \sigma f(H-\PPt),\ \sigma f(U-A),\ 
+ l-\sigma\big(\zeta(U-A)/\zeta(H-\PPt)\big),\ l-X .
+\]
+Put
+\[
+ t_C=\frac{C^4}{1+u^2 C^4},\quad W=\prod_C\bigl(1+t_C^2/u^2\bigr),\quad
+ V=\Tr(1/W),\quad b=\frac{4u}{(1+u)^2 V^2}.
+\]
+Use the native pole equations of [1,2] at $b$. At a prime counted by $r(u)$ write $\nu=v_p(u)$. At a place above $p$, a nonzero $C$ has
+$v(t_C)=2\max(2v(C),-\nu)$. Thus $v(t_C/u)$ is odd, every factor of $W$ has nonpositive valuation, and a zero $C$ contributes one. Write $q$ for the larger of the two valuations of $W$. Since $v_p(V)\ge-q$ and the native pole excludes negative odd $v_p(b)$, one has $0<v_p(b)\le\nu+2q$. At a place attaining $q$ each factor has valuation $>-\nu/2$. This implies $v(C)>0$ for all six tests there. The formal-group comparison of [1] now gives $X\equiv n\pmod p$, including $p$-integrality of $X$.
+
+If $X\ne n$, the product $r(u)$ divides the absolute reduced numerator of $X-n$. Hence
+\[
+ (\lambda-1/2) E_h\le \log(1+|n|)+O(1)
+\]
+because $2h(X)\le h(\beta)\le E_h$. The retained trace-height estimate $n^2\le C_0h(T)+J_0$ bounds $E_h$ uniformly, whereas $E_h\ge\log B$. This proves soundness for every sufficiently large fixed $B$.
+
+\section{Completeness and the count}
+Fix $X=n\in\Z\setminus\{0\}$, $A=[n]\PPt$ and the resulting $a$. On the multiplication family $U=[n]H$, use the real and finite-place neighborhoods of [1,2]. The twelve contact positions $\pm(a-\theta)$ are distinct. At the finitely many preparation places require $|z|$ large. In addition to the source places, include the denominators of $a,\Theta$, primes of contact differences, and prime divisors of the nonzero numerators and denominators of the two contact polynomials and the three denominator factors of $u$ at $(x,y)=(1,2a-1),(2a-1,1)$. All specialized factors are positive. At infinity in $z$, one has $u\sim z^6$, $W\to1$, $b\sim z^{-6}$. Thus $b$ has the required local square classes and depths at $2,3,17$ and can be made positive and less than $17$ at the real place.
+
+Apply the retained simultaneous prime theorem to the twelve linear positions, with the preceding finite avoidance and denominator divisibility fixed in advance. It gives a square-denominator slope whose twelve contact numerators are distinct suitable primes. Refine the index of $H$ by the original compatible congruences. At each selected prime, precisely one contact has valuation one, the opposing product and $J$ are units, and $v_p(u)=3$. At the selected place all six nonzero tests have valuation at least one, whence $W\equiv1$. At the conjugate place $1/W$ reduces to zero or one, as every nonzero $t_C/u$ has odd valuation. Hence $V$ is a unit and $v_p(b)=3$.
+
+At other unprepared primes where $z$ has a pole, $v_p(u)=6v_p(z)$ is even. Where $z$ is integral and $p$ unselected, $P,Q$ are units. If $J$ is a unit then $v_p(u)\le0$. If $J$ has positive valuation, the specializations just protected make the denominator a unit and $v_p(u)$ is even. Even valuations give even $v_p(b)$. A negative odd $\nu$ gives $v(t_C)\ge-2\nu$ for nonzero tests, $W\equiv1$ at both places and $v_p(b)=-\nu>0$. Thus $b$ has square reduced denominator, and the native realization supplies its two rational parameters. The upstream point guards persist. At all prepared real characters the added denominators $1+u^2 C^4$ are positive, as are $W$ in both embeddings and its rational component. The pole-density lemma of [2] supplies simultaneous avoidance of the remaining finite-character zeros.
+
+The free coordinates are $X$, the six rational point coordinates, $z$, two pole parameters, and one rational coordinate for the determinant. The successive point and pole blocks have ranks $4,4,4,2$. Multiplication by $X$ includes the integer zero. The archive gives the integral matrices by a finite specification, proves the character condition including vanishing terminal roots, and checks the determinant bounds. Its $B=3$ data serve to reproduce the circuits; the degree bounds hold uniformly in $B$.
+
+\section{Eight rational contacts and the stronger bounds}
+The preceding proof works with any even number $s$ of distinct rational contacts in $[-1,0]$ for which the primitive contact product satisfies a simple-prime lower bound $\gamma h(t)-O(1)$. With $G$ their monic product, replace $J^{6k}$ by $J^{sk}$. The loss from the other argument becomes $(s/k)h(t)$; the same integral valuation cases apply, and the two cases with opposite argument of valuation $t_0<0$ give $3-3s t_0$ and $3-s t_0$. The weight is asymptotic to $z^s$, a square leading term. The preparation uses $2s$ linear positions.
+
+There is an eight-contact choice with $\gamma=12/\kappa-8$. Indeed,
+\begin{align*}
+ &(w+4)(w+20)^3(w-5)^2\\[-2pt]
+ &\hspace{12mm}-(w-4)(w-20)^3(w+5)^2=108w^5 .
+\end{align*}
+This is the degree-six Belyi map recorded in [5]. Its three fibers together have the eight points $0,\pm4,\pm5,\pm20,\infty$. Sending $w$ to $1/(w-21)$ puts all eight in $[-1,0]$. Homogenize the identity to degree six, so its last term is $108W^5V$. The two forms on the left have nonzero resultant. On a primitive pair the gcd removed from the $abc$ triple is thus bounded by a fixed constant, and its largest absolute value is $\gg\exp(6h(w))$, by the absence of a common zero on the unit sphere. Applying $W_\kappa$ gives $\log\rad N(t)\ge(6/\kappa)h(t)-O(1)$ for the primitive octic contact product. The simple-prime estimate follows as in Lemma~\ref{radbound}. For every $1<\kappa<3/2$, take $k$ large, then $e$ large and even, such that
+\[
+ \lambda=\tfrac12(12/\kappa-8-8/k)(e/\kappa-3)>1/2.
+\]
+This proves the full range of the theorem. For $(\kappa,e,k)=(121/100,6,6),(16/15,4,5)$ one has respectively $\lambda=8374/14641$ and $99/160$.
+
+For clarity, the two numerical degree bounds on the first page use the following further simplification; it leaves the count and the displayed height constants unchanged. With $s=8$, use
+\[
+ u'=\frac{J^{s(k-1)}PQ(P^2+Q^3)^2}
+ {(P^3+Q^5)(P+Q^k)(P^k+Q)}.
+\]
+In the two positive-valuation cases from Lemma~\ref{radbound}, the contribution apart from $J$ is
+$2\min(2m,3n)-\min(3m,5n)=1$ if one valuation is one and the other is positive and less than $k$. Both minima are strict. If the other contact product is a unit the contribution is also one. When the opposite argument has negative valuation the full result is exactly one in either direction. Thus the same simple primes are still detected. At a selected prime in completeness $J$ is a unit, so $v_p(u')=1$.
+
+An extra numerator zero cannot introduce an unwanted positive odd valuation in the prepared data. For fixed $a$ the polynomials $P^2+Q^3$ and the displayed denominator have no common complex root. Indeed $P=Q=0$ is impossible since $x+y=2a$ and the contact sets are disjoint. At any other putative common root the absolute-value equations $|P|^2=|Q|^3$ and one of $|P|^3=|Q|^5$, $|P|=|Q|^k$ or $|P|^k=|Q|$ force $|P|=|Q|=1$. The location of the contacts implies $|x|,|y|\le 2$, contradicting $x+y=2a>4$. Include the primes of the nonzero resultant in the finite preparation before selecting the slope. The previous cases for $p\mid J$ and for a pole of $z$ apply, since $u'\sim z^s$.
+
+For the four reciprocal-abscissa tests use $c=C$, and for the two other tests use $c=C^2$. Write $t=c/(1+u'c)$ in each factor $1+(t/u')^2$. At every relevant odd place, $v(c)$ is even when finite. For an abscissa this follows from $y_E^2=x_E(x_E^2-(3-\sqrt2)^2)$ away from $2,7$, including on the difference points [4a]. Thus $v(t)=\max(v(c),-v(u'))$ and $v(t/u')\ne0$ at odd $v(u')$. The same pole argument forces all six tests to vanish modulo a positive odd prime at one place above it. At a fresh prime the original tests give $v(c)\ge2$, so $W\equiv1$ in the successful slot. At every fixed preparation place $W\to1$ as before.
+
+The compact determinant omits six denominator norms. At a descended rational point character the original point guards are protected first. Before using the pole predicate, the height estimate and $E_h\ge\log B$ give $r(u')>1$ for all sufficiently large fixed $B$. At a prime dividing this product the valuation of $u'$ is odd and those of all six nonzero $c$ are even. Hence no $1+u'c$ can vanish in $K$. The real sums of squares then certify the product and trace guards. The archive also includes a determinant retaining the six norms explicitly, with degree bounds $57{,}863{,}041$ and $34{,}647{,}937$. The certified compact degree bounds are $33{,}344{,}385$ and $19{,}861{,}377$, with supports below $2^{236}$ and $2^{228}$.
+
+\section{One attempted further elimination}
+The intrinsic pole predicate in the ordinary-$abc$ row has two free parameters $v,s$. Setting $s=v$ would save one. The resulting curve over a scalar $d$ is
+\[
+ C_d:\quad Y^2=d\big((d+v^2)^2v^4-(d-v^2)^2(1-d)^2\big).
+\]
+In the source, an input is prepared if $0<d<1$, its reduced denominator is a square, $d\in7\Q_2^{\times2}$, and $v_2(d)\ge4$. The archive proves that $C_d$ has affine points over every completion of $\Q$ for each prepared $d$. Nevertheless, $d=112/289=7(4/17)^2$ gives $C_d(\Q)=\varnothing$.
+
+To see the global obstruction write $v=a/b$ in lowest terms, $r=a^2$, $s=b^2$, and put
+\[
+ U_\pm=289r(112s+289r)\ \pm\ 177s(112s-289r).
+\]
+The product has square class $7$ whenever nonzero. Any common prime factor is in $S=\{2,3,7,17,59\}$, by taking the sum and difference and using $\gcd(a,b)=1$. There are therefore signed squarefree $k,j$ supported on $S$, with $j$ the squarefree representative of $7k$, such that $kU_+$ and $jU_-$ are integer squares. This also holds if one factor is zero, since every prime of the other is then common to both. Checking primitive pairs in the two projective charts modulo $256,27,49,41$ successively reduces the 64 candidates to $32,16,4,0$. At infinity $d$ is nonsquare. The accompanying short program reproduces the full enumeration. This excludes the universal diagonal substitution for prepared values. The example leaves open whether each integer admits some other choice of its elliptic witnesses and slope with a soluble diagonal fiber.
+
+\section*{Other rows}
+The general family in 25 variables remains at its preceding degree bound of 238,739,783,680. For the fully specified 27-variable row the archive gives a new degree bound of 702,371,856,384, down from 1,941,079,851,008. Its quadratic input is $\beta=102X^2+2957$, and the fixed exponent is $L=117$. The normalization $q/(1+q)^2$ has square reduced denominator for every $q\ne-1$, since it equals $mn/(m+n)^2$ for $q=m/n$ in lowest terms. The file \texttt{counts/effective/COMPACT.md} gives the scalar formula, the verification at the forced prime and the effective height estimates.
+
+Under ordinary rational $abc$ the 11-variable degree bound falls from 36,482,433 to 18,565,505. The proof of the source's nine-contact derivative inequality bounds the logarithmic radical below in terms of $\max(h(a-z),h(a+z))$. Taking $a=M^2$ gives a lower bound of $h(M)-O(1)$ for this maximum, which allows one to replace the previous $a=M^4$. The ordinary-$abc$ hypothesis and other source premises and the ineffective defining shift of that row are retained. Proof and determinant specifications are in \texttt{counts/poles/ordinary\_scale/}.
+
+\smallskip
+\noindent\textbf{Sources.} All version numbers refer to
+\href{https://github.com/JoseBrox/diophantine-z-q_improvements/tree/d3a8c223716a0fc0dbf5af4eb7998d640c21048d}{the pinned Brox repository}.
+[1] \emph{Thirteen variables from direct elliptic index comparison}, v22, Sections 1--5.
+[2] \emph{A single norm determinant for the 25- and 13-variable constructions}, v28, and \emph{The terminal quadratic-root theorem}, v40.
+[3] \emph{An eleven-variable construction under rational $abc$}, v63, for the ordered prime preparation with a moving contact set.
+[4] \emph{A two-coordinate pole test of coefficient height four}, v56, for the intrinsic predicate considered in the last section.
+[4a] \emph{Even abscissa valuations and a smaller eleven-variable degree bound}, v75.
+[5] M. Musty, S. Schiavone, J. Sijsling and J. Voight, \emph{A database of Belyi maps}, Open Book Ser. 2 (2019), 375--392. \href{https://www.lmfdb.org/Belyi/6T16/5.1/3.2.1/3.2.1/a/}{LMFDB orbit \texttt{6T16-5.1\_3.2.1\_3.2.1-a}}.
+\end{document}

@@ -1,0 +1,376 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,booktabs,microtype,hyperref,array}
+\pdfmapfile{+lm.map}
+\usepackage[margin=26mm]{geometry}
+\setlength{\emergencystretch}{2em}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\newcommand{\Tr}{\operatorname{Tr}}\newcommand{\N}{\operatorname{N}}
+\newtheorem{proposition}{Proposition}\newtheorem{lemma}[proposition]{Lemma}
+\title{Ancillary audit: intrinsic slices, selector density, and local normalization}
+\author{Z diophantine in $\Q$ project}
+\date{19 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+We audit the attached realization, selector, and point-restriction results.
+The two explicit universal-specialization counterexamples are valid, and
+an independent exact derivative certificate verifies the rank-one theorem
+used by the zero-ordinate obstruction. Their scopes must be preserved:
+neither counterexample is known to be an actual detector input that must
+occur for an integer. We also prove a local trace lemma and verify a
+birational intrinsic-pole normalization used in the improved ordinary
+eleven-variable source.
+\end{abstract}
+
+\section{Audit verdict and scope}
+The following attached statements withstand the audit. ``Prepared'' means
+$0<d<1$, a square reduced denominator, $d\in7\Q_2^{\times2}$, and
+$v_2(d)\ge4$. The finite checks supplement the indicated proofs; they do
+not replace their quantifiers.
+
+\begin{center}\small
+\begin{tabular}{p{.28\linewidth}p{.65\linewidth}}
+\toprule
+Attached result & Audited scope\\\midrule
+Every diagonal prepared fiber is everywhere locally soluble &
+Valid, with nonzero affine ordinate at every completion. Rational weak
+approximation of the abscissa supplies local squares at a prescribed finite
+set, not a global square.\\[3pt]
+$d=112/289$ diagonal failure &
+Valid global failure with all completions soluble. It disproves uniform
+diagonal realization on all prepared inputs. It is not identified as a
+forced actual detector value.\\[3pt]
+Infinite soluble diagonal families &
+Valid. One has fixed global class $7$ and nonzero ordinate; the other has
+zero ordinate and escapes every finite set of classes for $d$ and $1-d$.
+Neither proves completeness of a diagonal defining source.\\[3pt]
+Selector-density obstruction &
+Valid under the inherited supplier and density premises for the complete
+set of all old prepared tuples. It is not a general lower bound of eleven
+or thirteen variables.\\[3pt]
+Fixed-twist slice finiteness &
+Valid for fixed twist and a plane constraint without horizontal or vertical
+geometric components. The twist may vary in a proposed new construction.\\[3pt]
+$d=112/225$ zero-ordinate obstruction &
+Valid. The required elliptic rank-one input is unconditionally certified
+using the standard analytic formula and Gross--Zagier--Kolyvagin. Again this
+is a universal prepared-input obstruction, not actual detector alignment.\\[3pt]
+Fixed proper point restrictions &
+Valid as an obstruction to arbitrarily fresh prime selection on a fixed
+proper algebraic locus. It does not exclude using a finite set of primes
+or input-dependent loci.\\\bottomrule
+\end{tabular}
+\end{center}
+
+\section{The diagonal Hasse-principle failure}
+The diagonal curve is
+\[
+ C_d:\quad Y^2=d\big[(d+v^2)^2v^4-(d-v^2)^2(1-d)^2\big].
+\]
+Writing $r=v^2,h=1-d$, its bracket factors into
+\[
+ (r^2+(d-h)r+dh)(r^2+(d+h)r-dh).
+\]
+The two factors are coprime; their discriminants are
+$d^2-6dh+h^2$ and $d^2+6dh+h^2$. Neither can vanish for rational
+$d/h$, and their constant terms are nonzero. This proves that the eight
+roots in $v$ are distinct and $C_d$ has genus three.
+
+The local proof in the attachment is sound, including its exceptional
+cases. Where $d$ is square, sufficiently large $v$ works; where $-d$ is
+square, $v^2=-d$ works. The latter includes $2$. At odd primes with
+$v_p(d)>0$, the bracket has a simple root at $v=1$ modulo $p$; lift it
+and perturb the smooth zero-ordinate point. In the remaining nonsquare
+cases $p\equiv1\pmod4$. After normalization the equation is
+\[
+ y^2=D\big[(D+x^2)^2x^4-(D-x^2)^2h^2\big]
+\]
+with $D$ a nonsquare unit and $h\equiv1-D$ or $-D$. If the two quadratics
+are separable, the genus-three bound gives a point for $p\ge37$, and the
+two points at infinity are not rational. If one quadratic is a square,
+the remaining genus-one curve has enough points for $p\ge13$ to avoid
+the at most four excluded points. The discriminants differ by $12Dh$,
+so they cannot both vanish. An independent symbolic derivative and
+finite-field enumeration checks all $60$ remaining cases for
+$p=5,13,17,29$.
+
+For $d=112/289$ and primitive $(a,b)$, let $r=a^2,s=b^2$ and
+\[
+ U_+=83521r^2-18785rs+19824s^2,\qquad
+ U_-=83521r^2+83521rs-19824s^2.
+\]
+Their product must have square class $7$. The elementary half-sum and
+half-difference argument restricts their common prime support to
+$S=\{2,3,7,17,59\}$. Therefore, including the cases where one factor
+vanishes, some signed squarefree $S$-supported class $k$ makes
+$kU_+$ and $jU_-$ squares, where $j$ represents $7k$.
+
+Our independent checker enumerates \emph{all} primitive residue pairs,
+instead of importing the attachment's projective-chart enumeration:
+\[
+\begin{array}{c|r|r}
+\text{modulus}&\text{primitive pairs checked}&\text{classes surviving}\\\hline
+256&49152&32\\27&648&16\\49&2352&4\\41&1680&0
+\end{array}
+\]
+The four classes before the last step are $(7,1),(14,2),(-413,-59)$,
+and $(-826,-118)$. The points at infinity are nonrational because $d$
+is nonsquare. Thus the smooth projective curve has no rational point.
+The attachment's generalization to fixed slopes whose prime factors
+are $1$ modulo $256\cdot27\cdot49\cdot41=13886208$ follows by the
+same finite residue patterns and is valid.
+
+The distinct elementary valuation obstruction to $s=cv^m$, $m\ge2$,
+is also valid. At a sufficiently large prime $p\equiv13\pmod{28}$,
+take $d=112/p^2$. The two terms force $v_p(s)=-1$, impossible when
+$v_p(c)=0$ and $m\mid v_p(s)$. For a rational function $c(d)$ this
+gives the necessary condition $m\mid 2\deg_\infty(c)-1$. It remains a
+condition on this class of specializations, not all possible couplings.
+
+The two infinite globally soluble families in the attachment use
+nontorsion seeds on elliptic quartics. Their displayed maps to integral
+Weierstrass models preserve a denominator at $67$ in the first case;
+in the second $x(2(8,24))=49/36$. Nagell--Lutz supplies nontorsion.
+Local logarithms, the Chinese remainder theorem, and real circle density
+justify the simultaneous open conditions. In the second family, the two
+double covers adjoining a prescribed class of $d$ or $1-d$ ramify at
+simple zeros, have genus at least two, and Faltings gives the asserted
+escape from any finite set of square classes. These arguments do not
+restore the lost two-dimensional pole-parameter density on a fixed
+genus-three diagonal fiber.
+
+\section{The zero-ordinate obstruction and its rank certificate}
+Take $d=112/225=7(4/15)^2$ and $1-d=113/225$. For a putative zero
+ordinate in the intrinsic pole, set
+\[
+ e=\frac{d-v^2}{d+v^2},\qquad p=\frac{2dv}{d+v^2}.
+\]
+Then $p^2=d(1-e^2)$ and $s^2=(1-d)|e|$. The exceptional $e=0$ is
+impossible because $d$ is nonsquare; $s=0$ would force the same
+exception. Put $N=791=7\cdot113$ and
+\[
+ a=\frac{113}{4s},\qquad
+ x=\frac{N(1-d)}{s^2}=\frac{N}{|e|}=da^2,\qquad y=axp.
+\]
+Then $y^2=x^3(1-e^2)=x^3-N^2x$, giving a rational
+point on $E_N$ with square class $x=7\Q^{\times2}$.
+
+Here is a complete certificate route for ruling it out. The conductor is
+$32N^2=20021792$ and the root number is $-1$, since $N\equiv7\pmod8$.
+These standard formulas for congruent-number curves are explicitly
+recorded in the primary sources \cite{Stein,Elkies}. The analytic formula
+implemented in Sage's documented \texttt{deriv\_at1} routine \cite{Sage} is
+\[
+ L'(E_N,1)=2\sum_{n\ge1}\frac{a_n}{n}E_1(cn),\qquad
+ c=\frac{2\pi}{\sqrt{32N^2}},\quad
+ E_1(cn)=\int_n^\infty\frac{e^{-ct}}{t}\,dt.
+\]
+The supplied attachment uses a mesh of $1/16$ and cutoff $12000$.
+We independently use a unit mesh and cutoff $7000$, direct
+Legendre-symbol counts for every good prime, and prime-power recurrences
+followed by multiplicativity. There is no call to a numerical rank routine.
+
+For reproducibility, Machin's identity
+$\pi=16\arctan(1/5)-4\arctan(1/239)$ and alternating-series remainder
+bounds give exact rational bounds for $c$. Degree-seven and degree-six
+alternating Taylor bounds enclose $e^{-c}$. All powers and sums are
+rounded outward with integer scale $10^{30}$. The decreasing integrand
+is enclosed by its right and left unit-mesh sums. The omitted mesh is
+bounded geometrically. Finally $|a_n|\le\tau(n)\sqrt n\le2n$ gives
+\[
+ 2\sum_{n>K}\frac{|a_n|}{n}E_1(cn)
+ \le\frac{4e^{-c(K+1)}}{c(K+1)(1-e^{-c})}.
+\]
+The exact resulting interval is
+\[
+ \frac{6489867793040175244734154791093}{10^{30}}
+ \le L'(E_{791},1)\le
+ \frac{8941913002135842990365653860323}{10^{30}}.
+\]
+It is strictly positive. Functional-equation parity therefore gives
+analytic rank exactly one. Modularity and Gross--Zagier--Kolyvagin give
+algebraic rank exactly one; this implication is unconditional and is
+stated explicitly in \cite{Venerucci}. No Birch--Swinnerton-Dyer conjecture
+is being assumed.
+
+Reduction at $3$ and $19$, with group orders $4$ and $20$, shows that
+the torsion is the full rational two-torsion. The point
+$G=(-784,-2940)$ lies on $E_{791}$. For the Kummer map $x+791$, the
+torsion image is $\{1,791,1582,2\}$ but $x(G)+791=7$ is outside it.
+Thus $G$ is an odd multiple of a free generator modulo torsion. Under
+the Kummer map $x$, the torsion image is
+$\{1,-1,791,-791\}$ and $x(G)$ has class $-1$. Rank one then forces
+the entire image of $x$ to lie in that four-element group. The class $7$
+is absent, as required.
+
+The related quartic $y^2=113(112^2-z^4)$ is everywhere locally soluble:
+at good primes use a smooth genus-one point and local perturbation;
+at $2,7$ use the local squareness of $113$; at $113$ use
+$z^2=112$ and perturb the rational zero ordinate. This does not conflict
+with the preceding global obstruction.
+
+\section{Selector and point restrictions}
+The density proof correctly starts from the upstream CM-independence
+lemma for the two conjugate generators. It uses the identity component
+of their compact real orbit closure, whose nonempty real open subsets
+are Zariski dense. The multiplication graphs
+$(n,[n]P,H,[n]H)$ are dense as $n$ varies: divide a putative polynomial
+relation by its largest power of $n$, approximate arbitrary triples in
+the real torus using the $1/n$ preimage mesh, and descend on that power.
+The supplier's reference progressions and unbounded slopes, followed by
+pole-parameter density, give density of \emph{all} old prepared base
+tuples. Taking products under the sign changes handles square-root
+abscissa charts.
+
+Consequently any fixed rational substitution for the selector, or finite
+collection of polynomial conditions, which vanishes on every old base
+tuple must vanish identically after denominator clearing. This excludes
+retaining every old tuple with the same free-coordinate interface. It
+does not exclude a new proper slice with at least one suitable point
+over each integer.
+
+For a fixed intrinsic twist and nonsquare $1-d>0$, the two elliptic
+factors $E_n$ and $E_{n(1-d)}$ are not $\Q$-isogenous. Indeed their
+geometric homomorphisms are defined over
+$\Q(i,\sqrt{1-d})$, and the automorphism fixing $i$ but negating
+$\sqrt{1-d}$ negates every such homomorphism. A plane constraint with
+no horizontal or vertical component pulls back to proper curves.
+Mordell--Lang would make an infinite component a translate of an
+elliptic subgroup; a subgroup projecting nontrivially to both factors
+would be an isogeny, and factor subgroups are excluded by the no-line
+hypothesis. Thus the fixed-twist finiteness assertion is valid.
+
+The affine index-restriction proof also correctly allows half-integral
+auxiliary indices. Doubling kills two-torsion; successful local tests
+then force one of two explicitly fixed nonidentity multiples of $P$ to
+reduce to the origin. Such a point has only finitely many reduction
+primes. Mordell--Lang extends this to a fixed finite menu of proper
+algebraic point loci. Its conclusion is about fresh-prime supply, and
+should not be promoted to a general variable-count obstruction.
+
+Two further restricted-family statements also have the claimed scopes.
+If freezing all other data of a genuine witness leaves pole inputs
+$b_i(X)=d_i r_i(X)^2$ with fixed classes and leaves only open residual
+conditions on $X$, weak approximation preserves those conditions at the
+finite exceptional places and the real place while giving $X$ a
+denominator at a new prime. Outside the exceptional set the pole
+valuations remain even. The prepared converse and finite-character
+avoidance then produce a noninteger input. This excludes precisely such
+fixed-class perturbation schemes; additional genuine equations in $X$
+or varying classes are outside its hypotheses.
+
+The vertical/horizontal three-fiber lemma is likewise valid: if the
+divisors of $f$ and $1-f$ on a product of smooth projective curves have
+only vertical and horizontal components, write
+$f=u(x)v(y)$ and $1-f=r(x)s(y)$. The tensor identity
+$1=u\otimes v+r\otimes s$ has rank one. One pair of factors must be
+linearly dependent; the identity then forces $f$ to depend on only one
+coordinate. This statement constrains that divisor-support pattern.
+
+Finally the pair $d_0=112/13^2,d_1=112/13^4$ disproves a shared diagonal
+parameter theorem for arbitrary prepared pairs: at $13$, both $d_i$
+and $-d_i$ are nonsquares and the two radicand terms can avoid
+nonsquare dominance only when $v_{13}(v)=-1$ and $-2$, respectively.
+No single $v$ meets both conditions. Actual alignment of detector pairs
+has further structure and is not excluded by this example.
+
+\section{A rigorous trace lemma for the new intrinsic normalization}
+Let $K=\Q(\sqrt2)$, $D=11-6\sqrt2$, and
+\[
+ P=\big((57-28\sqrt2)/8,(-660+417\sqrt2)/32\big),\qquad
+ T(n)=\Tr x([n]P).
+\]
+\begin{lemma}
+For every nonzero integer $n$,
+\[
+ n^2T(n)-57/4\in16\Z_2,\qquad
+ v_2(T(n))=-2-2v_2(n),\qquad T(n)\in\Q_2^{\times2}.
+\]
+Consequently, for integral $\beta$ and any integer $e\ge2$,
+$\beta^e+T(n)^e$ is a nonzero square in $\Q_2$.
+\end{lemma}
+\begin{proof}
+Put $\pi=\sqrt2$ and $\mathcal O=\Z_2[\sqrt2]$, with $v_\pi(\pi)=1$.
+The formal parameter $t=-x/y$ at $P$ has valuation three, while
+$v_\pi(x(P))=-6$. The integral formal group commutes with the CM
+automorphism $t\mapsto it$. Thus for odd $m$ its multiplication series
+has only powers $1$ modulo four:
+\[
+ [m](t)=mt+O(t^5),\qquad x(t)=t^{-2}+O(t^2).
+\]
+All coefficients here are integral in the relevant valuation ring.
+Since $m$ is a unit, this proves
+$m^2x([m]P)-x(P)\in\pi^6\mathcal O$.
+
+For any formal point $Q$, the exact duplication identity is
+\[
+ 4x([2]Q)-x(Q)
+  =\frac{D(3x(Q)^2+D)}{x(Q)(x(Q)^2-D)}.
+\]
+If $v_\pi(x(Q))<0$, its right side has valuation $-v_\pi(x(Q))$;
+also $v_\pi(x([2]Q))=v_\pi(x(Q))-4$.
+For $n=2^rm$ with $m$ odd, telescope the duplication identities after
+multiplication by $4^jm^2$. Every added term lies in
+$\pi^6\mathcal O$. Hence $n^2x([n]P)-x(P)\in\pi^6\mathcal O$.
+The trace of $\pi^6\mathcal O=8\mathcal O$ is contained in $16\Z_2$,
+and $\Tr x(P)=57/4$. This proves the first assertion. Multiplying by
+four gives $4n^2T(n)\equiv57\equiv1\pmod8$, proving both the valuation
+and square-class assertions. Finally $v_2(\beta/T(n))\ge2$, so
+\[
+ \frac{\beta^e+T(n)^e}{T(n)^e}
+      =1+(\beta/T(n))^e\in1+16\Z_2\subset\Q_2^{\times2}.
+\]
+Since $T(n)$ itself is square, this works for odd as well as even $e$.
+\end{proof}
+
+This final assertion concerns the local square class at $2$. A global
+square reduced denominator is automatic for even $e$, since at an odd
+denominator prime of $T$ its valuation in $\beta^e+T^e$ is $e\,v_p(T)$.
+For odd $e$ that parity statement is not asserted. In particular
+$M=\beta^4+T^4$ and every positive integral power of $M$ have the needed
+square denominator, and $M$ itself has the required local square class.
+The separate odd-$e$ weak-$abc$ generalization absorbs the fixed scale
+denominators in its finite preparation and does not need the stronger
+global claim.
+
+Finally suppose the intrinsic input has the exact factorization
+$\eta=dt^2$, with $t\ne0$. In the original radicand substitute
+$v_{\rm old}=tv$ and $Y_{\rm old}=t^3Y$. Cancelling $t^6$ gives
+\[
+ Y^2=d(d+v^2)^2s^4-d(d-v^2)^2(1-\eta)^2.
+\]
+This is a birational change of the two pole parameters and ordinate, with
+an explicit inverse. It preserves rational existence, zero-ordinate
+cases, and density for avoiding finitely many proper conditions. The
+independent checker verifies both this polynomial identity and the exact
+duplication identity above.
+
+\begin{thebibliography}{9}
+\bibitem{Attachment} Attached coauthor package,
+\emph{H10-eleven-variable-constructions},
+\texttt{counts/realization/}, \texttt{counts/selector/}, and
+\texttt{counts/points/point-restrictions.md}, 18 November 2026.
+\bibitem{Project} Project source at
+\texttt{d3a8c223716a0fc0dbf5af4eb7998d640c21048d}:
+weighted trace-height v27 (CM independence), pole density v14,
+intrinsic pole v56/v57, derivative detector v63, full auxiliary v71,
+and ordinary scale v75. These are inherited arithmetic inputs where
+explicitly indicated, not claims proved by the present finite checkers.
+\bibitem{Stein} W. Stein, \emph{The Congruent Number Problem}, SIMUW notes.
+\url{https://www.williamstein.org/simuw06/notes/notes.pdf}.
+Conductor and Euler-coefficient formulas for the congruent-number family.
+\bibitem{Elkies} N. Elkies, \emph{Elliptic curves $ny^2=x^3-x$ of rank 3,
+$|n|\equiv7\pmod8$, $|n|<10^6$}.
+\url{https://people.math.harvard.edu/~elkies/cong_r3_7a.html}.
+The functional-equation sign and its residue-class formula.
+\bibitem{Sage} SageMath reference manual, \emph{L-series of elliptic curves},
+\texttt{deriv\_at1}.
+\url{https://doc.sagemath.org/html/en/reference/arithmetic_curves/sage/schemes/elliptic_curves/lseries_ell.html}.
+\bibitem{Venerucci} R. Venerucci, \emph{On the p-converse of the
+Kolyvagin--Gross--Zagier theorem}, introduction, the forward
+Gross--Zagier--Kolyvagin implication for analytic rank at most one.
+\url{https://arxiv.org/abs/1407.1816}.
+The additional hypotheses for converse theorems in that article are not
+being used here.
+\end{thebibliography}
+\end{document}

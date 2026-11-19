@@ -1,0 +1,38 @@
+{
+  "status": "PASS_WITH_RETAINED_ARITHMETIC_PREMISES",
+  "reviewer": "Independent general-quartic audit agent; not the twelve-contact producer.",
+  "reviewed_files": {
+    "audit_20261119/work_root/twelve_contact_first_scale_20261119_v78.tex": "05bdc9e2a05f1c3032610bbfebffab2977be529ecffef024d1fda4dd4e192f1d",
+    "audit_20261119/work_root/check_twelve.py": "707898df49cacbe6e6ddfbe760b94cb38e97e2b6ad3989f86261bae363384958",
+    "audit_20261119/work_root/twelve/abc11/native.json": "6f8fa4987f5f24278e28428f1c3948f0075ed764fb05426d4b01995a5b0fd6ed",
+    "audit_20261119/work_root/twelve/abc11/parent.json": "17e6a295b300f0f5bb5c4eb7d8f0cc02ea29bd28c8e9ce6c571a88a4f37fedc2",
+    "audit_20261119/work_root/twelve/abc11/strengthened.json": "88788008f5441fece061730ff4328e42ed57d08a22b83eeb58c5168578d0ca60",
+    "audit_20261119/work_root/twelve_independent_certificate.json": "cb557a4de7cef8f93e2485a99edb105e937d7c19820a3b7831a234e663f0a317"
+  },
+  "final_bounds": {
+    "variables": 11,
+    "rank": 128,
+    "degree": 6361985,
+    "guard_degree": 650,
+    "separator_degree": 49052,
+    "support_power": 212,
+    "log2_l1_fixture_B3": 25322112
+  },
+  "proof_review": {
+    "obsolete_t_guard": "The v63 derivative proof supplies the max-slot bound before its optional last h(xy) estimate. Its simple-prime argument applies also to a zero slot because all shifts are nonzero; the other slot gives the maximum height. No retained denominator uses t. For B>=3, M>=B^4 makes every 2M+c_i+c_j positive.",
+    "eventual_one_plus_u": "The uniform max-slot bound gives log r^+(u)>0 on every guarded rational base tuple for sufficiently large fixed B. This uses neither the pole equation nor X=n. Hence u cannot be -1. M>0 is unconditional for positive B.",
+    "all_integer_two_adic_trace": "Integral formal multiplication has only exponents 1 modulo4; odd multiplication preserves n^2 x(nP)-x(P) modulo pi^6. The exact duplication identity telescopes with errors of valuation at least6. Trace(pi^6 O)=16 Z_2 proves the stated congruence for every nonzero integer n. It yields v2(T_n)=-2-2v2(n), and M=T_n^4(1+(beta/T_n)^4) is a 2-adic square at every integer witness.",
+    "intrinsic_normalization": "For e=d*t^2 with t nonzero, v_old=t*v and Y_old=t^3*Y give an exact invertible rational change, including zero ordinates. The actual e remains in the factor (1-e)^2. The rational-character positivity guards ensure the square factor is nonzero before the transfer.",
+    "point_guard_deletions": "Root norm-radicand zero would force (Norm g)^4=49, contradicted by its 7-adic valuation. Each auxiliary abscissa norm is nonzero because its retained ordinate norm is nonzero. These recover point etaleness before separation. After rational descent, root g=0 would give a square equal to -D, excluded at every real embedding. The four removed point atoms have total guard degree14.",
+    "ordered_completeness": "First choose the integer root and auxiliary neighborhoods, then the 24 distinct contacts and fixed preparations, then prime selection and index refinement. At two the proved square class of a=M replaces the old global square scale. At other fixed primes only nonnegative final pole depth is needed; they are prepared before prime selection. Positive factors and the intrinsic invertible scaling preserve the existing finite-character avoidance.",
+    "height_margin": "(39/40)*(997/1001)-1/2=18863/40040>0. The retained n^2 versus trace-height bound absorbs the remaining logarithm, giving uniform soundness for sufficiently large B.",
+    "finite_bound": "Independent checker replay passed on the final exact files: six balanced factors,164 denominator records, terminal scaling, point guards, separator degree49052, retained guard650, rank128. Thus1+128*(1+650+49052)=6361985. Y=0 gives X, so content one."
+  },
+  "checker_provenance": "The new build_twelve.py producer is not imported or invoked by check_twelve.py. The checker reuses pinned circuit arithmetic and the coauthor independent checker; that checker imports pinned build_sources but reads the abc11 ancestor from stored v75 JSON and does not call make_source for this route.",
+  "resolved_publication_issue": "The missing corollary environment declaration identified during review has been added.",
+  "scope": "This audits the new reduction and its transfer from the explicitly retained v63/v71/v75 arithmetic interfaces. It does not independently prove ordinary abc, the elliptic group/formal comparison inputs, trace-height estimates, prime-pattern supplier, or intrinsic-pole arithmetic theorem. The sufficient fixed odd B remains ineffective; B=3 is only a coefficient fixture. No eleven-variable polynomial was fully expanded, and no nine-variable realization or smaller variable count is asserted.",
+  "checker_receipt_provenance_flags": {
+    "new_producer_imported": false,
+    "pinned_source_interfaces_imported": true
+  }
+}

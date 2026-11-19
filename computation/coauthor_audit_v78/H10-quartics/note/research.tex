@@ -1,0 +1,104 @@
+\documentclass[11pt]{article}
+\usepackage[letterpaper,margin=.91in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs,array,xcolor,hyperref}
+\hypersetup{colorlinks=true,urlcolor=blue!50!black,linkcolor=black}
+\newtheorem{lemma}{Lemma}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}\newcommand{\Tr}{\operatorname{Tr}}\newcommand{\Nm}{\operatorname{Nm}}
+\newcommand{\abs}[1]{\lvert#1\rvert}
+\setlength{\parindent}{0pt}\setlength{\parskip}{4pt}
+\input{metrics}
+\begin{document}
+\begin{center}
+{\Large\bfseries Sharing the elliptic test across contact arguments}\\[5pt]
+{\large Quartic presentations of $\Z$ over $\Q$}\\[6pt]
+{\small Research note, November 18, 2026}
+\end{center}
+
+Every variable count includes the input $X$. The baseline is Jos\'e Brox's repository at commit \texttt{d3a8c22}. We use the arithmetic premises in the respective manuscripts there. In particular these include the elliptic group and height results, the simultaneous prime-pattern input and the prepared pole-realization result in the forms used in the source. The finite coefficient checks in this note do not audit those inputs.
+
+\begin{center}
+\begin{tabular}{lrrr}
+\toprule
+Quartic & Source variables & New variables & New monomials\\
+\midrule
+General, sufficiently large fixed parameter &193&\generalcount&\generalterms\\
+General, fully specified coefficients &229&\explicitcount&\explicitterms\\
+Ordinary rational $abc$, large fixed shift &68&\abccount&\abcterms\\
+\bottomrule
+\end{tabular}
+\end{center}
+For the first row a numerical sufficient parameter is unknown. For the second row the accompanying plain-text file specifies every coefficient. Its height has \explicitbits\ bits. The first quartic has exact height $\max(126616122944180358034867798936,149^{2N+2})$ for every $N\ge1$. The first two constructions use one shared product to test all the contact arguments. The ordinary-$abc$ construction uses a separate pair of elliptic comparisons.
+
+\section{One product for several contact arguments}
+Let $K=\Q(\sqrt{2})$. Write $m=2$ or $3$ for the number of contact arguments. The $j$th argument $t_j$ has rational weight $q_j$. At a prime consumed by $t_j$, outside the relevant fixed exceptional set, $v_p(q_j)=-\mu$ for a positive odd integer $\mu$, and $v_p(R_j)=\mu$ for the original pole multiplier $R_j$. The original construction computes a product of five factors in $K$ separately at each $q_j$. Each product carries all sixteen elliptic tests. Write $c=\sum_{j<m}q_j$ and compute one product $W=W(c)$ using the cleared tests of v74. The factors use the ten reciprocal abscissas, four cross comparisons, the homogeneous Lucas residual and the input residual. Write $A_i,B_i$ for the reciprocal abscissas, $D_H,B_0$ for the two reference tests, $E_i$ for the cleared comparisons, $H$ for the homogeneous Lucas residual, and $J$ for the cleared input numerator. Here $W$ has four factors. In the next table each row $(U,V,Z,R)$ gives a factor
+\[
+  1+cU^2+c^2 V^2-c^3 Z^2+c^4 R^4 .
+\]
+\[
+\begin{array}{cccc}U&V&Z&R\\ \hline
+J^2&B_1&E_1^2&D_H\\
+E_4^2&A_3&H^2&B_2\\
+E_3^2&B_4&E_2^2&A_2\\
+A_1&B_3&A_4&B_0\\
+\end{array}
+\]
+The first three rows use $c(U+cZ)(U-cZ)=cU^2-c^3Z^2$. Since $c\ne0$ in the compiled chart, the two coordinates $U+cZ,U-cZ$ recover $U,Z$ over $K$. The fourth row stores $L=U+cZ$ and uses $cLU-c^2LZ$. Each $R$ is a reciprocal abscissa of even valuation. Thus $c^4R^4$ has valuation $4\bmod8$ when finite, distinct from the constant and from the other three terms.
+
+Define the rational coordinate $D$ and the rational normalizers by
+\[
+ D\Tr(W)=\Nm(W-1),\qquad
+ g_j=1+D^2+(c-q_j)^2/q_j .
+\]
+The first equation is quadratic over $\Q$. It forces $\Tr(W)\ne0$, since otherwise $\Nm(W-1)=0$, hence $W=1$. The original pole predicate for argument $t_j$ now receives $b_j=\gamma^2 R_j g_j^2/4$, with $\gamma=408/409$. At every consumed prime this expression follows from its cleared equation.
+
+\begin{lemma}
+For each consumed prime of argument $j$ one has $v_p(c)=-\mu$. At some place $v$ of $K$ over $p$, one has $v(W)>-\mu/4$.
+\end{lemma}
+\begin{proof}
+Normalize the valuations at the two conjugate slots by $v(p)=1$ and set $v(0)=+\infty$. The slots can coincide. If $g_j\ne0$, the valuation of $b_j$ is odd. The retained pole obstruction excludes negative odd valuation. Since $v_p(\gamma)\le0$, this gives $v_p(g_j)>-\mu/2$. The same inequality holds if $g_j=0$. The finite valuations of $D^2$ are even, whereas those of $(c-q_j)^2/q_j$ are odd. Thus no negative minimum can cancel, giving
+\[
+ v_p(D)>-\mu/4,\qquad v_p(c-q_j)>-3\mu/4,\qquad v_p(c)=-\mu.
+\]
+At this weight each individual factor has nonpositive valuation at either slot, by the distinct valuation classes of its terms. In particular $W\ne0$. If one slot has $v(W)=0$, use that slot. If both valuations $w_1,w_2$ of $W$ are negative, then $v_p(\Nm(W-1))=w_1+w_2$ and $v_p(\Tr(W))\ge\min(w_1,w_2)$. It follows that $\max(w_1,w_2)\ge v_p(D)>-\mu/4$.
+\end{proof}
+
+At this slot every factor has valuation greater than $-\mu/4$, since all other factors have nonpositive valuation. The three terms with powers $c,c^2,c^3$ have distinct nonzero valuation classes modulo four. The last term in each factor is distinguished from the constant modulo eight. Consequently every individual summand has valuation greater than $-\mu/2$, the original v74 threshold. This gives the requisite ten reciprocal-abscissa, four cross-comparison, Lucas and input tests. In particular the reciprocal tests have positive even valuations. After transferring integrality of the ratios, the formal logarithm gives $M_j^3\mid\Delta$ for the integral Lucas residual and $M_j\mid J_X$ for the nonzero reduced numerator of the input comparison. For $M_j=1$ these divisibilities are automatic. This proof permits overlapping contact radicals on arbitrary rational solutions. The source height argument for two contacts now gives soundness for its original sufficiently large fixed $N$.
+
+\section{Three contacts and effectiveness}
+The finite translated-point charts of v74 supply $\sum_i x(Q_i)=S_0+\sqrt2 S_1$. Each component is a quadratic expression after the common coordinate rescaling. For the three-contact construction impose the two v68 shifts
+\[
+ t_1-t_0=13+S_0/2,\qquad t_2-t_1=17+(S_0-S_1)/2.
+\]
+Use precisely its reflection center $3/22$, contact polynomial and exceptional set $\Gamma$. The scalar and reference blocks have a common 195-coordinate ancestor in v68 and v74. The accompanying transfer check matches 41 source rows. The retained scalar primary and quotient equations give the two nonzero denominators used in scalar extraction even when the alternate ordinate vanishes. Its label, and the other three labels recovered by the finite charts, are those of v68.
+
+For every $p\notin\Gamma$, the good formal logarithm estimate in v68 is valid through relative order four. The lemma therefore gives the three separate divisibilities that enter v68's numerical height argument. This includes $p=409$, where $v_p(\gamma)=-1$. With the same shifts its four-point bound reads $B_0^2<40\sum_{j<3} h(t_j)+2425$, with $B_0$ the largest absolute label or one. All numerical inequalities that follow depend only on this bound, the supplied divisibilities and the scalar estimates. The source normalizer at $N=15$ supplies those scalar estimates. The fixed-coefficient variant below supplies them as well.
+
+\section{Completeness at the actual pole inputs}
+For integral $X$, keep the original ordered choices of elliptic points, argument shifts, selected primes, and real and finite-place neighborhoods. For the general construction $Q_1=[\beta]P_0$ and $Q_2=[a]R_0$ are nonzero doubles, since $P_0=2R_0$ and $a\in6\Z$. At both real embeddings they have $x>d$ in the identity component of $y^2=x^3-d^2x$. The other two points have $x\ge-d$, so $T=7+\Tr(\sum_i x(Q_i))/4>7$, against contact diameter four. For the explicit construction the successive shifts are at least seven and nine, against diameter $25/11$. The translated contact lists of the integer witnesses are thus pairwise disjoint.
+
+At a prime selected for $j$, $v_p(q_j)=-1$ and all other weights are integral. Their residues are evaluations of the rational contact function at fixed translates of the chosen contact. The prime cutoff may avoid the finite set of denominators and nonzero differences of the fixed contact shifts.
+
+At all twenty or thirty selected primes refine the reference progression to equal primary and opposite formal depths as in v74. The primes can be chosen in a short interval, beyond the previous finite cutoff. The reduction orders are divisible by four and less than twice the smallest chosen prime. They are consequently coprime to every chosen prime. The extra depth congruences are compatible by the Chinese remainder theorem, and the fixed compact-component progression retains the required real returns. At the successful slot the shared product is congruent to one since $v_p(c)=-1$. In the opposite slot it either has residue one or has a pole, by the individual factor estimates. In the former case the trace is a unit and $\Nm(W-1)$ vanishes modulo $p$. In the latter case the valuation of $\Tr(W)$ equals the negative valuation at the opposite slot and the norm in the numerator has strictly greater valuation. Thus $v_p(D)>0$. The quotient $(c-q_j)^2/q_j$ has positive valuation, so $g_j\equiv1$ at this prime and $v_p(b_j)=1$.
+
+At the prepared real places and at $2,3,17$, all weights tend to zero, the point functions remain bounded, $W\to1$, $D\to0$ and $g_j\to1$. For the last limit, write $q(\lambda+u)=a\lambda^{-2}+O(\lambda^{-3})$ for every fixed shift $u$, with the same nonzero $a$ equal to the sum of the five squared offsets from the reflection midpoint. This follows by expanding the reflected contact product at infinity and gives $(c-q_j)^2/q_j\to0$ at all the prepared places. Hence the actual pole inputs retain their prescribed real interval and local square classes. Away from each argument's selected primes, the source factorization of $R_j$ gives even valuation. Multiplication by a rational square preserves this parity. The reduced denominators of the actual inputs are squares. The retained realization theorem supplies independent witnesses for every pole.
+
+\section{The fully specified scalar}
+With $\beta=51X^2+2504$ and $r=\beta(\beta-1)(\beta-2401)(32\beta+343)$, replace the source normalizer by
+\[
+ R=Ar/(1+25r),\quad A=23\cdot149\cdot263\cdot337\cdot631\cdot1063\cdot1093\cdot1171
+\]
+\[
+ {}\hspace{23mm}\cdot1439\cdot2161\cdot2437\cdot2837\cdot2851\cdot3187\cdot3343\cdot3793.
+\]
+For each $p\mid A$, enumeration of $X\in\mathbb F_p$ gives $r(X)(1+25r(X))\ne0$. For $v_p(X)<0$, $v_p(r)=8v_p(X)<0$ and $v_p(1+25r)=v_p(r)$. Therefore $v_p(R)=1$ for all rational $X$. At each such prime the scalar extraction gives $v_p(a)>9/4$, hence $p^3\mid a$. The reference exclusions use the prime $149$ before the formal logarithm is applied. No prime dividing $A$ belongs to the variable scalar radical $M_S(\beta)$. The original extraction at the primes of that radical gives
+\[
+ A^3M_S(\beta)^3\mid |a|,\qquad A>149^{22}.
+\]
+This recovers the explicit source's required lower bound with $149^{66}$. For integral inputs $R\ge A/26$, the denominator of $R(R+9792)$ reduces to a square, and $1+9792/R$ is a square at $2,3,17$. The accompanying proof and checker provide the integer congruences and the exact row substitutions.
+
+\input{additional}
+\section*{Sources and verification}
+The bundle contains both new quartic coefficient tables, the literal for the fully specified quartic, the physical transfer and expansion checks, the 68-variable families, and the finite-algebra specifications. Its README gives reproduction commands and distinguishes the elementary checks from the arithmetic results they use.
+
+\href{https://github.com/JoseBrox/diophantine-z-q_improvements/tree/d3a8c223716a0fc0dbf5af4eb7998d640c21048d}{Jos\'e Brox, \emph{Polynomial presentations of the integers over the rationals}, pinned repository.} The primary manuscripts used above are the 193-variable quartic v74, the explicit quartic v68, the ordinary-$abc$ quartic v65, and the finite-algebra v40 and v75 specifications.
+\end{document}

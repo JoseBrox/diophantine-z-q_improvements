@@ -1,0 +1,431 @@
+\documentclass[11pt]{article}
+\usepackage[margin=27mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs,hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\newcommand{\Tr}{\operatorname{Tr}}\newcommand{\Nm}{\operatorname{Nm}}
+\newcommand{\rad}{\operatorname{rad}}
+\title{Four scalar contacts and unsquared comparison scales}
+\author{\(\Z\Q\) Diophantine Project: audit and continuation}
+\date{19 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+We audit the positive-factor and projective finite-algebra encodings supplied
+in the two coauthor bundles of 18 November 2026, and replace the scalar in
+the general 25- and explicit 27-coordinate sources. Four finite contacts
+suffice. A square-shifted input target separates integrality recognition
+from scalar preparation. Unsquaring both nontrivial scales in the
+27-coordinate source preserves its effective proof. The resulting degree
+bounds are $87\,778\,394\,112$ and $335\,647\,080\,448$.
+The latter is a completely specified member at $L=143$; the former still
+has an ineffective sufficient fixed exponent. All defining statements
+retain the precisely identified arithmetic premises of the source project.
+\end{abstract}
+
+\section{Scope, source systems, and result}
+
+The base is the project repository cited below, commit \texttt{d3a8c22}.
+The source manifest records its complete commit identifier and all file hashes.
+We use the 25-coordinate source of v19, its unsquared-scale revision in
+v28, its full auxiliary charts in v72, and its even-valuation tests in v75.
+For 27 coordinates we use the three-scale v19 source and the full-family
+modular estimate with small exceptional set recorded in v68. The coauthor
+bundles contribute the termwise-positive detector, the projective
+two-pole encoder, and the improved effective height ledger.
+
+The retained premises are the normalized group over $K=\Q(\sqrt2)$,
+the relevant trace or effective abscissa-sum height theorem, the stated
+modular contact-height theorem, the prepared native-pole converse and
+its density assertion, and the compatible simultaneous prime-pattern
+theorem for a fixed finite list of rational positions. This paper does
+not reprove those foundations or make their audit implicit in a finite
+coefficient check. It proves the transfers from them.
+
+The four root roles $A,S,T,Z$ retain their square-abscissa charts and
+have nonzero integral labels $n,a,t,b$. The five auxiliary roles use the
+v72 full charts; their half-integral labels are integral at every consumed
+odd prime. All old point, difference, logarithm, and comparison guards
+are retained except the explicit automatic guards discussed below.
+Write $c=|a-1|>0$, $B_0=\max(1,|n|,|a|,|t|,|b|)$, and
+\[
+ \Delta=t^2-a(a-2)tb+(a-2)^2b^2-1.
+\]
+
+\begin{theorem}\label{thm:main}
+Under the corresponding retained premises there are integer-polynomial
+presentations with the following bounds; every count includes the input.
+\begin{center}\begin{tabular}{lrrr}
+\toprule
+Presentation&Coordinates&Degree at most&Support less than\\\midrule
+General, sufficiently large odd $L$&25&$87\,778\,394\,112$&$2^{814}$\\
+Fully specified, $L=143$&27&$335\,647\,080\,448$&$2^{929}$\\\bottomrule
+\end{tabular}\end{center}
+Their rational input projections are exactly $\Z$. For the 27-coordinate
+member the coefficient one-norm is at most $2^{53113872449536}<2^{2^{46}}$.
+The 25-coordinate receipt at $L=143$ is only an algebraic fixture, with
+coefficient one-norm at most $2^{11446664560640}$; no assertion that this
+particular exponent defines $\Z$ is made. The degree and support bounds
+are uniform over sufficiently large odd fixed exponents.
+\end{theorem}
+
+\section{A scalar with four finite contacts}
+
+Put $p_*=67$, and for odd $L\ge3$ define
+\begin{align*}
+ \beta&=1632X^2+2477,&\tau&=X^2+1,\\
+ A(\beta)&=\beta(\beta-1),& B(\beta)&=(\beta-2401)(32\beta+343),\\
+ T_L&=\bigl(1224(p_*^{(L+1)/2}+1)\bigr)^2,&q&=T_LA/B,\\
+ \rho&=102^2p_*^L\frac{q}{(1+q)^2}
+       =\frac{102^2p_*^LT_LAB}{(B+T_LA)^2}.
+\end{align*}
+Replace the first target test $L_1-\beta$ by $L_1-\tau$.
+All sixteen comparison tests and six scalar components otherwise retain
+their definitions and required formal orders. The scalar point remains
+$S-P$ in the original normalized notation.
+
+\begin{lemma}\label{lem:scalar}
+For every rational $X$, $\rho$ is defined and positive,
+$0<\rho<1/167$, and $v_{67}(\rho)=L$.
+For integral $X$, $\rho$ has square reduced denominator, is a square in
+$\Q_2,\Q_3,\Q_{17}$, and has respective valuations at least $10,6,4$.
+Moreover
+\[
+ h(\tau)\le h(\beta),\qquad
+ h(\rho)\le4h(\beta)+2L\log67+128.
+\]
+\end{lemma}
+\begin{proof}
+Since $\beta\ge2477$, both $A$ and $B$ are positive. Also
+\[
+ \frac BA<\frac{32\beta+343}{\beta-1}<33.
+\]
+Consequently $\rho<33/(144\cdot67)<1/167$.
+The certificate enumerates all 67 values of $X$ modulo 67 and verifies
+\[
+ AB(B+1224^2A)\not\equiv0\pmod {67}.
+\]
+If $v_{67}(X)<0$, then $v_{67}(\beta)=2v_{67}(X)$ and
+$A/B\equiv1/32$ after cancellation of their common valuation.
+Both $1224^2$ and $32+1224^2$ are units modulo 67. Thus the claimed
+valuation is exactly $L$ in both cases.
+
+For any nonzero rational $q$, every negative valuation of
+$q/(1+q)^2$ is even: if $v(q)\ne0$ its valuation is $|v(q)|$;
+if $v(q)=0$ any negative valuation equals $-2v(1+q)$.
+Multiplication by $102^2$ preserves parity, and the only remaining
+prime, 67, has positive valuation. This proves the denominator assertion.
+
+For integral $X$, $\beta\equiv13\pmod {32}$, so
+$v_2(A)=v_2(B)=2$ and $AB/16\equiv3\pmod8$.
+Since $67\equiv3\pmod8$ and $L$ is odd, the square class of
+$67^LAB$ is trivial over $\Q_2$. The formula for $T_L$ gives
+$v_2(T_L)\ge8$, hence $v_2(\rho)\ge10$.
+Modulo 3 one has $AB\equiv1$ and $67\equiv1$, giving a square
+class and $v_3(\rho)=6$. Modulo 17 one has $\beta\equiv12$,
+$AB\equiv9$ and $67AB\equiv8$, a nonzero square; the valuation
+of $\rho$ is at least four. All denominators in these square-class
+calculations are squares.
+
+If $X=u/v$ is reduced with $v>0$, the cancellation in $\beta$ is
+\[
+ g=\gcd(1632u^2+2477v^2,v^2)=\gcd(1632,v^2)\le1632.
+\]
+Its positive reduced numerator is therefore at least $u^2+v^2$.
+As $\tau=(u^2+v^2)/v^2$ is reduced, $h(\tau)\le h(\beta)$.
+Finally $\|A\|_1=2$, $\|B\|_1=900064$, and
+$T_L\le 4\cdot1224^2\cdot67^{L+1}$. Put
+$F_0=4\cdot1224^2\cdot67$. After factoring out $67^{2L}$,
+the numerator and denominator coefficient one-norms of the degree-four
+map in $\beta$ are bounded by
+\[
+ \max\{102^2F_0\cdot2\cdot900064,
+              (900064+2F_0)^2\}<2^{128}.
+\]
+The standard elementary height estimate for a rational map proves the
+last bound, with room to replace $128\log2$ by 128.
+\end{proof}
+
+The use of four finite contacts is essential to the improvement in the
+circuit degree. The denominator contact of $\beta$ has even order
+outside the fixed set containing the primes of 1632. At a finite odd
+contact exactly one factor of $AB$ has odd valuation. Since $T_L$ is
+a square, $v(q)$ is odd, and normalization makes the valuation of $\rho$
+positive and odd. This argument includes primes dividing $T_L$; they
+do not need to be added to the fixed exceptional set.
+
+\section{Local tests and unsquared scales}
+
+Use $\Theta=\{0,-1/2,-1,1/2399,-32/407\}$ and
+\[
+ \Theta_j=(4j+2+\Theta)\cup(4j+4+\Theta),\quad
+ \delta_j=t_j+j+1,\quad
+ R_j=\frac{\prod_{\theta\in\Theta_j}(t_j-\theta)}{\delta_j^{10}}.
+\]
+For two arguments set $t_0=\lambda$ and
+$t_1=(1+\rho\mathcal T^2)\lambda$, where
+$\mathcal T=\Tr\sum x(Q_i)$. This is the unsquared v28 scale.
+For three arguments write $\sum x(Q_i)=U+\sqrt2S_1$, set $V=U+S_1$,
+and use
+\[
+ t_0=\lambda,\qquad t_1=(1+\rho U^2)\lambda,\qquad
+ t_2=(1+\rho V^2)\lambda.
+\]
+The outer squares in the old three-scale source are omitted.
+
+For each detector keep the v75 reciprocal-abscissa numerators unsquared
+and all other raw tests and weights unchanged. Replace every factor
+$1+a$ by $1+a^2$, including the normalized scalar factors.
+At a consumed odd valuation each nonzero $a$ has odd valuation, so
+\[
+ v(1+a^2)=2\min(0,v(a))\le0.
+\]
+The negative-odd pole obstruction therefore implies at least the old
+local depths. At a freshly selected prime the successful factors are
+one modulo the prime, and the opposite inverse factors are zero or one.
+The trace remains a unit. At fixed finite and real preparation places
+the old small raw tests give the same limiting trace two. Zero raw
+tests contribute one throughout.
+
+For clarity, the unsquared scales preserve the scalar-unit argument.
+At a prime with odd $v_p(\rho)$, each $\rho U^2$ has odd valuation;
+therefore a nontrivial scale is either congruent to one or has negative
+valuation. If $\lambda$ is nonintegral or has positive valuation,
+$R_0$ is a unit at the relevant nonexceptional primes. Otherwise
+either some $t_j$ is nonintegral, making $R_j$ a unit, or all $t_j$
+have the same residue as $\lambda$. The old exclusion of common
+contact/pole residues applies. The two sets are disjoint modulo 67,
+as is independently checked. Thus the fixed-prime extraction works
+even though 67 lies below the old large technical cutoff. The good
+formal-logarithm estimate of v68 supplies the same relative order four
+at this prime. No new modular theorem is needed for the two-scale
+ineffective argument, whose original large-cutoff height estimate may
+be retained.
+
+Consequently, with the relevant excluded finite sets, the old scalar
+and mixed-contact lemmas give
+\[
+ 67^{2L+1}M_\beta^3\mid c,\qquad
+ M_j^3\mid\Delta c,\qquad M_j\mid Nc,
+ \quad N=\operatorname{num}(\tau-n),
+\]
+whenever a residual is nonzero. The first root label is integral;
+there is no half-integral-label shortcut here.
+
+\section{Effective soundness for three arguments}
+
+We reproduce the numerical ledger so that unsquaring the scales is
+paid for explicitly. Put
+\[
+ S=\{2,3,5,7,11,13,17,37,41,2399\},\quad
+ \Gamma=S\cup\{19,23,457,4799\}.
+\]
+The differences among $0,1,2401,-343/32$ add no prime to $\Gamma$.
+The full-family modular premise is used in exactly the form
+\[
+ h(q)<C_*R^2E(R)\log R,\quad
+ C_*=\frac{74712001}{10^6}2^{68}3^{16}5^{16}7^4,
+ \quad E(R)=\prod_{p\mid R}(1+1/p).
+\]
+The independent integer ledger verifies the scalar bound
+$h(\beta)<2^{342}M_\beta^3$ and the three contact bounds
+\[
+ h(t_j)\le K M_j(199+\tfrac12\log M_j)^2,
+ \qquad K=2^{551}.
+\]
+For the latter, at a prime in the enlarged $j$th exceptional set,
+both five-contact radicals can contain that prime only when contacts
+in opposite blocks collide. Counting that prime twice precisely in
+this case gives $K_j<2^{398}$ and $C_*K_jE_j<2^{550}$.
+Taking the geometric mean of the two modular estimates gives the
+displayed bound. The checker reconstructs every finite prime set and
+every multiplicity, not just the resulting powers of two.
+
+The effective abscissa-sum premise gives
+$B_0^2\le2h(U)+2h(V)+82$. The new scales satisfy
+\[
+ h(1+\rho U^2)\ge2h(U)-h(\rho)-\log2
+\]
+and its analogue for $V$. Hence
+\[
+ B_0^2\le2h(t_0)+h(t_1)+h(t_2)+2h(\rho)+84.
+\]
+Keeping the weaker scalar coefficient bound $15h(\beta)$, a nonzero
+residual $N$ of order $k=3$ or $1$ now gives
+\[
+ B_0^2\le4K|Nc|^{1/k}
+       (199+\tfrac1{2k}\log|Nc|)^2
+       +30h(\beta)+4L\log67+340.                 \tag{*}
+\]
+The factor four, rather than two, is the exact cost of unsquaring.
+
+For every odd $L\ge143$, the certificate verifies
+\[
+ 67^{2L+1}\ge120\cdot2^{342},\qquad
+ c-1\ge2^{1727}.
+\]
+Thus $h(\beta)<c/120$ and $4L\log67\le2\log c$.
+The last three terms of (*) are less than $B_0^2/2$.
+If $\Delta\ne0$, the source integer estimate
+$|\Delta c|\le10B_0^5$ would imply
+\[
+ B_0^{1/3}<18K(200+\tfrac56\log B_0)^2.
+\]
+The quotient of the two variable factors is increasing for $B_0\ge1$.
+At $B_0=2^{1727}$ the reverse inequality follows from the exact test
+\[
+ 2^{1727-3\cdot551}12^6>18^3(2400+7\cdot1727)^6
+\]
+and $\log2<7/10$. Therefore $\Delta=0$, and the retained elementary
+Lucas descent gives $\log B_0>c-4$.
+
+If $N=\operatorname{num}(\tau-n)\ne0$, then
+$|N|\le2e^{h(\tau)}B_0\le2e^{h(\beta)}B_0$.
+Writing $s=\log B_0$ and $t=h(\beta)+\log c$, the $k=1$ case of
+(*) yields
+\[
+ s\le\log(16K)+t+2\log(200+(s+t)/2).
+\]
+Using $\log(1+x)\le x$ and the exact inequality
+$200(551+4+16)<199\cdot574$ gives
+\[
+ s<2t+574\le(31/60)c+574<c-4,
+\]
+a contradiction. Thus $\tau=n\in\Z$. Since
+$\tau=(u^2+v^2)/v^2$ is reduced, this implies $v=1$ and $X\in\Z$.
+
+For two arguments the same transfer retains the v28 inequality with
+unspecified fixed constants, scalar loss $c^{7/9}$, and comparison
+exponents $7/18$ and $7/6$. The stronger scalar height bound and
+$h(\tau)\le h(\beta)$ preserve both contradictions. The fixed-prime
+lower bound tends to infinity with $L$. Its sufficient threshold remains
+ineffective because the retained trace-height constant is ineffective.
+
+\section{Completeness and guards}
+
+Fix an integer $X$ and put $n=X^2+1\ge1$. Choose the scalar reference
+neighborhood, then the Lucas labels, then all root points and scales,
+in the original order. No proof step concerning the first root requires
+that $n$ be odd: it must be nonzero, and its finitely many prime divisors
+are avoided before selecting comparison primes. The other Lucas parity
+conditions are unchanged. The auxiliary points may be chosen in the
+original $2E(K)$ subfamily.
+
+Lemma~\ref{lem:scalar} gives every scalar square-class, denominator,
+depth and real-size condition used in preparation. The unsquared
+scales are positive rational numbers. In the prime factorization of
+each balanced ten-contact function the scale occurs to exponent ten;
+its contribution is a square whether or not the scale itself is a
+square. All finite cutoffs and denominator clearing are fixed before
+prime selection. If scaled positions from different blocks coincide,
+the prime list records that position once and retains every incidence,
+as in v19. Within each block the contacts are simple; across blocks the
+same successful elliptic comparisons are prepared. Thus repeated
+positions impose compatible requirements. The simultaneous prime-pattern theorem and compatible
+index refinement therefore supply the old integer witnesses. Positive
+factors have the same residues and limiting traces, so the actual pole
+inputs satisfy the same restricted converse. Its dense choices avoid
+the finitely many remaining pole conditions. This includes $X=0$:
+its first root label is one, and no separate input factor is needed.
+
+The finite-algebra guard can omit the atoms in $\rho$ and the scale
+numerators which are automatically nonzero. Indeed all four scalar
+factors are positive for every rational input, $B+T_LA>0$, and every
+scale is $1+\rho r^2>0$ for a rational base-coordinate expression $r$.
+The checker proves that these expressions involve no finite generator.
+Their positivity therefore precedes, and does not depend on, rational
+character recovery. The later positive-detector guard deletions are
+the audited two-stage argument of the coauthor bundle. They are used
+only after the remaining protected denominators and a rational character
+have been obtained.
+
+\section{Finite-algebra specifications and independent checks}
+
+All point algebras, their integral bases and quadratic envelopes are
+the pinned v28/v30/v72/v75 ones. Zero terminal pole ordinates are
+allowed. For three poles $q_0,q_1,q_2$ over a point character use
+$E=q_0^3+2q_1^3+4q_2^3$ as the terminal sign separator. In a common
+Galois 2-extension, at a prime over 2 the nonzero summands of any
+signed difference have pairwise different valuations modulo three.
+They cannot cancel. The bounded point-prefix construction then
+separates distinct point characters and gives a nonzero integral
+separator $\Omega$. The polynomial is $\det(I-YG\,\mathrm{Mult}(\Omega))$.
+
+For two poles use the audited projective terminal value
+\[
+ \frac18\left(x^3+\frac{z}{1+z}\right),\qquad
+ x=\frac{q_1}{2M_1},\quad z=\frac{q_2}{2M_2},\quad |x|,|z|\le\tfrac12.
+\]
+Once the point character is rational, $x^2=d,z^2=e$ are rational.
+If the displayed value is rational and a root is irrational, both
+roots must lie in the same quadratic field. With $z=rx$, cancellation
+of their irrational parts yields $d^2r^2-r-d=0$ and makes
+$1+4d^3$ a square. The curve $y^2+y=d^3$ has only $d=0$ among its
+affine rational points, contrary to irrationality of $x$.
+This classical exponent-three fact is proved by the Fermat reduction
+in the coauthor's \texttt{PROJECTIVE.md}; it is also the rank-zero,
+order-three curve 27.a4 in LMFDB. Appending the bounded point prefix
+therefore gives a numerator/denominator pair $N_1,D_1$ for which
+\[
+ \det(\mathrm{Mult}(D_1)-YG\,\mathrm{Mult}(N_1))
+\]
+has a rational zero exactly when the source has a rational character.
+The denominator is nonzero on every geometric character. At $G=0$
+the determinant is its nonzero norm. Nilpotent specializations cause
+no problem: multiplication on each Artin local factor has the residue
+character value on its diagonal. One may divide by the positive
+integer content to obtain a primitive polynomial without increasing
+any stated bound.
+
+There is one further guard reduction valid for both sources. In a root
+chart write $x=g^2$ and $j^2=g^4-D$, with $D=11-6\sqrt2$.
+The norm-root square $\Nm(g^4-D)$ is nonzero at every rational base:
+otherwise $g^4=D$, and $(\Nm g)^4=49$, impossible over $\Q$.
+Its norm guard is therefore automatic before extracting a character.
+For a full auxiliary chart, the retained ordinate-norm guard makes
+$\Nm(x^3-Dx)$ nonzero, which forces $\Nm(x)\ne0$.
+These facts restore point etaleness before using the integral point
+separator. After a rational character has been extracted, $g=0$ would
+give $j^2=-D$, impossible because $D$ is totally positive.
+Thus the root abscissa norm is recovered at this later stage.
+The integral multiplication algebra exists on all the removed loci;
+raw rational denominators are evaluated only after their recovery.
+For four root and five auxiliary charts this removes thirteen norm
+atoms of total guard degree 50. It does not assert positivity at
+nonrational characters and is independent of the detector deletions.
+
+The rank is $2^{20}$ for 25 coordinates and $2^{21}$ for 27.
+The retained guard degrees are respectively $8375$ and $14698$.
+For 25 the projective numerator and denominator operator degrees are
+both $75336$; hence the bound is
+$2^{20}(1+8375+75336)=87778394112$.
+For 27 the separator degree is $145350$, giving
+$2^{21}(1+14698+145350)=335647080448$.
+The support counts use the exact binomial difference for the total
+degree and the encoder degree at most the algebra rank.
+
+\texttt{check\_scalar\_arithmetic.py} is a standard-library checker
+for all residues, exceptional prime sets, scalar constants and threshold
+inequalities. It imports neither the producer nor a CAS.
+\texttt{check\_scalar\_circuits.py} independently reconstructs the
+scalar, target, all scales, all contact products and weights; reconciles
+every unchanged chart and test with the pinned source; and replays all
+44 or 66 positive detector factors, 411 or 534 denominator records,
+square extractions, envelopes, guard degrees, and coefficient majorants.
+The finite checks certify those algebraic assertions; the preceding
+proof supplies their arithmetic meaning under the retained premises.
+
+\begin{thebibliography}{9}\raggedright
+\bibitem{sources} \(\Z\Q\) Diophantine Project, pinned repository above:
+25- and 27-coordinate v19 papers; unit-norm v28; subalgebra-norm v30;
+terminal-root v40; compact quartic v68; full auxiliary v72;
+even-valuation v75. All sources accompany the reproducibility bundle.
+\bibitem{coauthor} Coauthor research bundles, 18 November 2026:
+\emph{H10-quartic-constructions} and \emph{H10-eleven-variable-constructions};
+in particular \texttt{POSITIVE.md}, \texttt{PROJECTIVE.md}, and the
+effective \texttt{PROOF.md} and \texttt{COMPACT.md}.
+\bibitem{lmfdb} LMFDB, elliptic curve 27.a4,
+\url{https://www.lmfdb.org/EllipticCurve/Q/27/a/4}, checked 19 November 2026.
+\end{thebibliography}
+\end{document}

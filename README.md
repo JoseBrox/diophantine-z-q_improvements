@@ -10,62 +10,61 @@ whose rational input projection is the integers, under the arithmetic premises s
 
 **Every variable count includes the input.** Degree means total degree. Coefficient height is the maximum absolute integer coefficient after fixed parameters have been substituted. The priorities are variable count, degree, then coefficient height. No global minimum is claimed.
 
-## Current constructions — 17 November 2026
+## Current constructions — 19 November 2026
 
-“None” below means **no additional conjecture beyond the explicitly retained arithmetic premises**. The full independent audit of the prime-pattern, pole-realization and modular-height foundations is not declared complete.
+The coauthor reductions **193→165, 229→180, 68→62 and 13→11** have been audited and integrated, with further degree, coefficient and hypothesis improvements. “None” in the table means **no additional conjecture beyond the explicitly retained arithmetic premises**. The independent audit of all elliptic, prime-pattern, pole-realization and height foundations is not declared complete.
 
 | Construction | Additional height hypothesis | Total variables | Degree | Coefficients and effectiveness |
 |:--|:--|--:|:--|:--|
-| [Fewest variables under inherited premises](papers/few_variables25/even_valuation25_20261117_v75.tex) | None | **25** | `≤ 4,863,007,848,923,136 < 2⁵³` | Even-valuation abscissa tests and full auxiliary points; sufficient odd exponent ineffective. |
-| [Fewest quartic variables under inherited premises](papers/quartic/quartic193_20261117_v74.tex) | None | **193** | **4, exact** | 167 quadratic squares; **2,770 monomials**, or **2,626** in an equivalent basis. Exact improved heights below; defining threshold ineffective. |
-| [Fully specified general polynomial](papers/finite_algebra/terminal_quadratic_root_20261115_v40.tex) | None | **27** | `≤ 99,279,020,543,180,800 < 2⁵⁷` | `L=20483`; coefficient height `< 2^(2^70)`. |
-| [Fully specified quartic](papers/quartic/quartic229_compact_20261117_v68.tex) | None | **229** | **4, exact** | `N=15`; 207 quadratic squares; **3,312 monomials**; exact height `149³⁰` (217 bits); **74,007 bytes** fully expanded. |
-| [Few variables under weak abc](papers/finite_algebra/terminal_quadratic_root_20261115_v40.tex) | Weak abc at `121/100`; ordinary Szpiro suffices | **13** | `≤ 43,211,777 < 2²⁶` | Sufficient odd shift ineffective. |
-| [Lower degree under stronger weak abc](papers/finite_algebra/terminal_quadratic_root_20261115_v40.tex) | Weak abc at `16/15`; ordinary rational abc suffices | **13** | `≤ 39,858,177 < 2²⁶` | Sufficient odd shift ineffective. |
-| [Fewest variables under ordinary abc](papers/conditional_few_variables/even_valuation_detector_20261117_v75.tex) | Ordinary rational abc | **11** | `≤ 230,932,097 < 2²⁸` | Even-valuation balancing with full auxiliary points; sufficient odd shift ineffective. |
-| [Fewest quartic variables under abc](papers/quartic_existence/quartic_abc68_20261117_v65.tex) | Ordinary rational abc | **68** | **4, exact** | 56 quadratic squares; **1,078 monomials**. Exact height below; sufficient shift ineffective. |
+| [General few-variable family](papers/few_variables25/four_contact_scalar_20261119_v78.tex) | None | **25** | **≤ 87,778,394,112** | Four-contact scalar and projective two-root encoder; sufficient odd exponent ineffective. |
+| [General quartic family](papers/quartic/shared_product_audit_20261119_v78.tex) | None | **165** | **4, exact** | 139 quadratic squares; **2,607 monomials**; exact height below; defining threshold ineffective. |
+| [Fully specified general polynomial](papers/few_variables25/four_contact_scalar_20261119_v78.tex) | None | **27** | **≤ 335,647,080,448** | Explicit `L=143`; coefficient height **< 2^(2^46)**. |
+| [Fully specified quartic](papers/quartic/shared_product_audit_20261119_v78.tex) | None | **180** | **4, exact** | 152 quadratic squares; **2,850 monomials**; **108-bit** exact height; fully expanded literal. |
+| [Few variables under weak abc](papers/conditional_few_variables/weak11_audit_and_transfer_20261119_v78.tex) | Weak abc at `121/100` | **11** | **≤ 32,542,081** | Full auxiliary charts and ordered guard recovery; sufficient shift ineffective. |
+| [Lower degree under stronger weak abc](papers/conditional_few_variables/weak11_audit_and_transfer_20261119_v78.tex) | Weak abc at `16/15` | **11** | **≤ 19,366,273** | Same variable count and retained arithmetic inputs; sufficient shift ineffective. |
+| [Few variables under ordinary abc](papers/conditional_few_variables/twelve_contact_first_scale_20261119_v78.tex) | Ordinary rational abc | **11** | **≤ 6,361,985** | Twelve contacts at the first height scale; sufficient shift ineffective. |
+| [Small-height ordinary-abc quartic](papers/quartic_existence/abc_quartic_audit_20261119_v78.tex) | Ordinary rational abc | **62** | **4, exact** | 50 quadratic squares; **840 monomials**; height **B+1** on the stated cofinal family. |
+| [Weak-abc quartic](papers/quartic_existence/abc_quartic_audit_20261119_v78.tex) | Weak abc at `9/8` | **63** | **4, exact** | 51 quadratic squares; **863 monomials**; sufficient shift ineffective. |
+| [Weak-abc quartic](papers/quartic_existence/abc_quartic_audit_20261119_v78.tex) | Weak abc at `17/14` | **64** | **4, exact** | 52 quadratic squares; **866 monomials**; sufficient shift ineffective. |
+| [Eight-contact weak-abc quartic](papers/quartic_existence/abc_quartic_audit_20261119_v78.tex) | Weak abc at `7/5` | **67** | **4, exact** | 55 quadratic squares; **905 monomials**; sufficient shift ineffective. |
 
-All these polynomials have integer content one. The general degree figures are upper bounds for finite, unexpanded determinant specifications. Their support bounds are below `2¹¹⁹²`, `2¹⁴⁰¹`, `2²⁸⁴`, and `2²⁸³`, in the order 25, 27, weak-abc 13, stronger-abc 13.
+Every count includes the input. The few-variable degrees are upper bounds for complete finite determinant specifications, not claims of full expansion or exact degree. All rows admit integer content one; the projective 25-variable polynomial is primitively normalized if necessary. No global minimum is claimed.
 
-The exact height of the 193-variable quartic in the primitive reference basis is
-
-```math
-H(F_N)=\max\left\{126616122944180358034867798936,\;149^{2N+2}\right\}.
-```
-
-This presentation has 2,770 monomials for every `N ≥ 1`; the second term dominates for `N ≥ 6`. An equivalent basis has 2,626 monomials and exact height
+The enhanced 165-variable quartic has exact height
 
 ```math
-H(\widetilde F_N)=\max\left\{484991541504995159662206970923766531374664106904986910720,\;149^{2N+2}\right\}.
+H(F_N)=\max\{126616122944180358034867798936,\;149^{2N+2}\},\qquad N\ge1.
 ```
 
-Its second term dominates for `N ≥ 13`. These are coefficient crossovers. A sufficient defining `N` exists under the stated source premises, but no sufficient numerical value is supplied for either presentation. Both have degree four, content one and the same rational zero set.
-
-The exact height of the 68-variable abc quartic is
+The new shared-factor packing strengthens local extraction without changing its 165 coordinates. The sufficient defining `N` remains ineffective. The explicit 180-variable polynomial uses the certified anchor
 
 ```math
-H(Q_B)=B^2+1.
+A=51132150162547763354407979038657
 ```
 
-Its fixed odd shift `B ≥ 81` must be sufficiently large. No numerical sufficient defining value is supplied; `B=81` is only an algebraic test value. The reference translator is `R_0` and the input comparison is `β=X`. The scaled physical trace `T_sc = X²·Tr(x(U−V))` is twice the single rational half-trace output, so its square in the height scale `B+X⁸+T_sc²` is quadratic. The strict absorption coefficient remains `602/679`. Its ordinary-abc hypothesis is distinct from the weak-abc hypotheses in the 13-variable rows.
+and has exact height
 
-The 68-variable quartic uses a three-field-coordinate unit reference and a six-field-coordinate translated-secant chart over `ℚ(√2)`. Both numerator reciprocal abscissas are already chart coordinates. A single rational output stores half the scaled difference trace; its imaginary component is recovered polynomially. Quadratic product recovery uses an existing reference unit. The chart includes every allowed tangent, zero numerator ordinate and finite two-torsion difference, including `(0,0)`, whose elliptic index is zero. Zero contact weight is impossible for nonzero input, and zero input has a separate complete witness. The retained prime congruences and simultaneous-twist premise supply completeness for every integer, including odd and negative inputs.
+```math
+206625078319751697390503348692624.
+```
 
-The two 193-coordinate reference bases have the same rational zero set. Five literal equations define seven nonzero contact-unit coordinates and make the Laurent compilation invertible on every rational solution. The omitted inverse is recovered as a product of retained units. Dividing twelve noninput coordinates by the fixed nonzero parameter lowers the parameter degree from four to two in the quartic. All 162 physical component equations and the arithmetic proof are unchanged from v73, including the zero-ordinate strata. The complete 229-coordinate construction retains every copied detector guard and proves soundness and integer completeness for every `N ≥ 15`. The finite-algebra construction permits a zero final pole ordinate and proves soundness on that larger locus.
+Its [literal polynomial](computation/coauthor_audit_v78/work_general/enhanced/180/anchor_scaled/quartic180.txt) has **59,084 bytes**. The coauthor's [sparser 180-variable presentation](computation/coauthor_audit_v78/H10-quartics/quartics/explicit/quartic180.txt) remains available: **2,648 monomials, 54,695 bytes**, and a larger 161-bit height.
 
-Current specifications: [results JSON](data/results_20261117_v75.json), [proof and verification guide](docs/results_20261117_v75.md), and [research directions](docs/research_directions.md). The [193-variable guide](docs/results_20261117_v74.md), previous [twenty-five-variable guide](docs/results_20261117_v72.md), previous [eleven-variable guide](docs/results_20261117_v71.md), [compact 229-variable guide](docs/results_20261117_v68.md), and [68-variable construction guide](docs/results_20261117_v65.md) give the separate specifications. The [68-variable source records](data/results_20261117_v65.json) retain its arithmetic and coefficient data.
+For the 62-variable small-height family, `B=n⁴` with positive odd `n`, and
 
-The previous [**194**-variable family](papers/quartic/quartic194_20261117_v73.tex), with 2,765 or 2,621 monomials, remains fully reproducible in its [v73 guide](docs/results_20261117_v73.md). The interrupted 193-variable files were unavailable; the new package is a complete reconstruction from the published v73 equations, with regenerated certificates and an independently checked improved coefficient bound.
+```math
+H=\max(4091n^2,n^4+1).
+```
 
-The [v76 recovery and realization checkpoint](docs/results_20261117_v76.md) retains these complete bounds. It proves the exact contact-alignment identities and certifies three actual physical failures of proposed automatic pole replacements, including the odd halfpoint coset. A new theorem forces even ramification for native-pole covers, and two independently checked prepared abstract products exclude the proposed adaptive scalar replacements. Each result has a precise scope: none proves or disproves global 21/9 realization.
+Thus `H=B+1` for odd `n≥65`. This is a coefficient-height cutoff, not a sufficient defining parameter. A [752-monomial presentation](computation/coauthor_audit_v78/work_abc/small_gate62/sparse/polynomial.json) has height `B+758541`; a balanced 825-monomial presentation has height `B+4091`.
 
-The [v77 continuation](docs/results_20261117_v77.md) proves that the physical real choice `z>a+10` makes the native complement a positive unit at all 64 point characters, throughout the full auxiliary derivative domain. Its finite square root would remove both free pole parameters; the selected rational square remains unproved. A reference-aligned constant normalizer preserves a complete eleven-variable source and its local preparation, with no new degree bound. Its identity at `V=2` does not furnish an actual trace witness. The [current criterion records](data/criteria_20261117_v77.json) keep the proved guard and source-transfer statements separate from the open 21/9 assertions.
+The eight-contact argument gives an eleven-variable family for **every fixed weak-abc exponent `1<κ<3/2`**, with suitable source parameters. Its quartic extension uses `61+r` coordinates when the explicit absorption inequality in the proof holds, also covering every fixed exponent below `3/2`. The 63- and 64-variable rows improve the supplied hypothesis exponents without increasing their counts.
 
-The [physical detector scaling theorem](negative_results/papers/quartic/physical_detector_scaling_20261117_v67.tex) excludes two specified diagonal Laurent compilations of the revised general-quartic factors. The stronger obstruction uses just one literal reference equation and three field factors, with unbounded real scaling weights. Its [exact certificates and coordinate audit](docs/results_20261117_v67.md) distinguish the physical second weight from its stored ratio. Different factor pairings, reference equations and polynomial coordinate changes remain open; the construction counts above are unchanged.
+Current specifications: [result JSON](data/results_20261119_v78.json), [complete audit and proof guide](docs/results_20261119_v78.md), [source and certificate package](computation/coauthor_audit_v78), and [research directions](docs/research_directions.md). The two original coauthor packages and the new workstreams remain separately attributable. The verification gate materializes their pinned sources and byte-compares the regenerated data.
 
-The [sequential-unit obstruction](negative_results/papers/quartic/sequential_unit_detector_obstruction_20261117_v70.tex) excludes the specified compression with six unit coordinates across **2,834 distinct unit bases**, for every assignment of its eight quadratic tests. An exact integer certificate first leaves two bases and then forces incompatible weights on each raw test. This obstruction concerns its specified factor interface and supplies no general minimum. The 193-coordinate construction uses different polynomial comparisons and homogeneous Lucas equations. The separate [scalar-helper obstruction](negative_results/papers/elliptic_charts/half_scalar_helper_20261117_v70.tex) excludes retaining only the helper’s rational component in its specified chart interface; all seventeen quadratic identities still permit a wrong nonzero scalar quotient. [Proof and reproducibility guide](docs/results_20261117_v70.md).
+The [reconstructed 193-variable family](docs/results_20261117_v74.md) and the earlier [229-variable](docs/results_20261117_v68.md), [68-variable](docs/results_20261117_v65.md), and [v75 few-variable](docs/results_20261117_v75.md) constructions remain reproducible. They are historical records superseded by the table above.
 
-The [fixed-fiber and detector-index theorems](docs/common_parameter_guard_reduction_20261116_v42.md) show that one common rational pole fiber with nonzero ordinates suffices for all remaining pole guards, and give independent auxiliary-index families with unchanged square-class scalars. The common rational fiber itself remains unproved. Proved obstructions and lower bounds are collected separately in [negative_results](negative_results/README.md).
+The [v76](docs/results_20261117_v76.md), [v77](docs/results_20261117_v77.md), and [new ancillary](negative_results/papers/pole_parameters/ancillary_audit_20261119_v78.tex) results preserve the precise scope of physical-lift, diagonal and selector-density obstructions. **The complete 21-variable general and 9-variable ordinary-abc targets remain unproved.** These counterexamples to specified universal specializations do not prove those global targets impossible.
 
 ## Contributors and citation
 
@@ -77,31 +76,37 @@ Cite this work as "ℤℚ Diophantine Project contributors. ℤ is Diophantine i
 
 ## Eleven variables under ordinary abc
 
-The [even-valuation theorem](papers/conditional_few_variables/even_valuation_detector_20261117_v75.tex), using the full auxiliary charts, gives a complete **11-variable family**, under ordinary rational abc and the precisely stated elliptic, prime-pattern, trace-height and intrinsic-pole inputs. Its [derivative detector](papers/conditional_few_variables/derivative_detector11_20261117_v63.tex) uses one contact argument for both the input and root trace heights:
+The [twelve-contact theorem](papers/conditional_few_variables/twelve_contact_first_scale_20261119_v78.tex) gives a complete **11-variable family of degree at most 6,361,985**, under ordinary rational abc and the precisely retained elliptic, trace-height, prime-pattern and intrinsic-pole inputs. Set
 
 ```math
-\beta=X^2+B,\qquad T=\mathrm{Tr}x(A),\qquad
-M=\beta^4+T^4,\qquad a=M^4,\qquad t=M^8-z^2.
+\beta=X^2+B,\qquad T=\mathrm{Tr}x(A),\qquad M=\beta^4+T^4,\qquad a=M.
 ```
 
-For the nine shifts `c ∈ {-10,-8,-5,1,2,3,4,6,7}`, set
+For the twelve shifts `{-9,-8,-7,-5,-4,-3,-2,-1,6,10,11,12}`, put
 
 ```math
-F(a,z)=\prod_c((a+c)^2-z^2),\qquad
-u=-\frac{18F}{\partial F/\partial a},\qquad
-D_i=\begin{cases}C_i/(1+uC_i),&1\le i\le4,\\ C_i^2/(1+uC_i^2),&i=5,6,\end{cases}\qquad
-W=\prod_{i=1}^{6}\left(1+\frac{D_i^2}{u}\right).
+F(a,z)=\prod_c((a+c)^2-z^2),\qquad u=-24F/F_a.
 ```
 
-The derivative quotient recovers simple simultaneous contact factors. The shifts sum to zero and have no opposite pair, so numerator and denominator primes of `M` cause no extra height loss. The transformed tests preserve local extraction at every positive odd valuation of `u` and automatically prepare its new negative odd valuations. The resulting input `7b`, with `b=4u/((1+u)²Tr(W⁻¹)²)`, therefore needs only one complete intrinsic pole block. Sun's theorem applies to the **18 fixed prime positions**; the proof checks their order compatibility, fixed-place preparation and every algebra-character guard.
+The shifts are nonzero, distinct, have sum zero and contain no opposite pair. The intermediate derivative-height estimate gives `log r⁺(u) ≥ (39/40)h(M)−O(1)`, with exact strict absorption margin `18863/40040`. The all-integer congruence
 
-The count is **1 input + 6 point coordinates + 1 contact parameter + 2 pole parameters + 1 encoder = 11**. The finite algebra has rank **128**. The [complete specification and independent checks](computation/few_variables/even_valuation11_v75) certify degree at most **230,932,097**, fewer than `2²⁶⁴` monomials and integer content one. The root point remains in `2E(K)`; the two auxiliary points may range over the guarded affine points of `E(K)`, with cubic point radicands. Their half-integral indices preserve the formal comparison at every consumed odd prime. The source has 1,865 integer arithmetic nodes and 32 recorded guards. Subalgebra norms retain every denominator and preceding radicand, while the final pole ordinate may vanish. The sufficient odd shift is ineffective; `B=3` is an algebraic fixture only. This ordinary-abc result does not assert the same count under the two weaker fixed-exponent abc hypotheses.
+```math
+n^2\mathrm{Tr}x([n]P)-57/4\in16\mathbb Z_2
+```
 
-The first four tests are reciprocal abscissae. Their valuations are even outside the fixed exceptional set, directly from the elliptic equation. This removes their redundant squaring before balancing while retaining negative-odd preparation and every whole-character guard. The previous degree bound **232,094,337** and its [v71 specification](computation/few_variables/full_auxiliary11_v71) remain reproducible.
+supplies the two-adic square class of the prepared first scale. This is proved using the integral formal group and duplication. The former guard `a²−z²≠0` is unnecessary; the stronger estimate includes that boundary.
 
-The [seven-contact variant](papers/conditional_few_variables/seven_contact_detector_20261117_v74.tex) uses shifts `{-7,-6,-4,1,3,5,8}` and `a=M^8`. Its strict height margin is `38695561/597203000`. With even-valuation balancing its complete 11-variable degree bound is **356,146,817**, and its physical weight map has degree seven in the squared slope. This gives a smaller lifting equation at a higher defining-degree bound.
+Use the six positive balanced tests, and write the actual intrinsic input as
 
-The same auxiliary enlargement preserves the sound **nine-coordinate** actual-trace source and includes every earlier guarded witness. It gives a larger space for rational-point arithmetic. Completeness still requires a rational square at the actual detector trace for every sufficiently large positive integer. **The targets 21 and 9 remain unproved.**
+```math
+e=7u\left(\frac{\mathrm{Nm}(W)}{(1+u)W_0}\right)^2.
+```
+
+Removing its displayed rational square by an invertible change of the pole parameters gives a smaller terminal equation, including zero ordinates. Ordered recovery of automatic point, height, balancing and detector guards leaves guard degree 650 and separator degree 49,052 in rank 128. The defining degree bound is `1+128(1+650+49052)`; the support is less than `2²¹²` and content is one.
+
+The count is **1 input + 6 point coordinates + 1 contact parameter + 2 pole parameters + 1 encoder = 11**. The sufficient fixed odd shift remains ineffective; `B=3` is an algebraic fixture. The [complete source and independent checks](computation/coauthor_audit_v78/work_root/twelve/abc11) specify every denominator and coefficient majorant.
+
+The original nine-coordinate actual-trace criteria below concern their explicitly recorded source architectures. The new eleven-variable construction supplies no automatic global rational square for those criteria. Their physical realization requirements remain open.
 
 ## A single actual-trace target for nine variables
 

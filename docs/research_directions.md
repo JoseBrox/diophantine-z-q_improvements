@@ -1,8 +1,14 @@
 # Research directions
 
-The fully specified quartic uses **229 variables at $N=15$**, with exact coefficient height $149^{30}$ and a fully expanded canonical decimal size of **74,007 bytes**. Its [complete proof](../papers/quartic/quartic229_compact_20261117_v68.tex) uses both abscissa components and three detectors, followed by a fixed input-preserving diagonal normalization. The exact source and inverse maps preserve every guard and boundary stratum.
+The [v78 audit and continuation](results_20261119_v78.md) establishes the coauthor counts **165 and 180 for the general quartics, 62 for the ordinary-abc quartic, and 11 under the stated weak-abc hypotheses**, retaining the source arithmetic premises. The general few-variable count remains 25. The explicit 180-variable polynomial has 108-bit exact height; the ordinary-abc eleven-variable degree bound is 6,361,985. Every count includes the input. The priorities remain variable count, degree, then coefficient height. No global minimum or complete independent audit of the inherited arithmetic foundations is asserted.
 
-The established counts under the retained arithmetic premises are **25 total variables**, or **194 for a quartic**. The stated weak-abc hypotheses give **13 total variables**. Ordinary rational abc gives **11 total variables** and a **68-variable quartic**. Every count includes the input. The priorities are variable count, degree, then coefficient height. The [main results table](../README.md) distinguishes the hypotheses and effective parameters; no global minimum or completed independent audit of all inherited arithmetic premises is asserted.
+## Consequences of the coauthor audit
+
+The shared norm selector and stronger odd-power packing preserve the 165/180 coordinate counts while improving local divisibility. The six- and eight-contact weak-abc estimates give explicit variable/hypothesis tradeoffs; the eight-contact quartic family covers every fixed exponent below 3/2. Positive detector factors, square-class normalization of the intrinsic pole, and ordered removal of automatic point guards substantially lower the finite-algebra degree. These are proved changes to complete constructions.
+
+Further variable reduction still requires new arithmetic or a genuinely smaller guarded quadratic compilation. Searches within the audited Laurent and pairing menus have not supplied a smaller complete construction; they do not establish optimality. The general 21 and ordinary-abc 9 targets continue to require rational realization at actual physical traces. The new diagonal Hasse and zero-ordinate obstructions concern specific universal specializations on all prepared inputs and cannot be promoted to nonexistence of 21/9 constructions.
+
+The older degree bounds cited below identify their original source architectures. Current complete bounds and all parameter qualifications are in the [main table](../README.md) and [v78 records](../data/results_20261119_v78.json).
 
 ## Rank-one curves over general number fields
 

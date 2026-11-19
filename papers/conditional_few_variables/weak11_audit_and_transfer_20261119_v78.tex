@@ -1,0 +1,495 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,booktabs,microtype,hyperref}
+\pdfmapfile{+lm.map}
+\usepackage[margin=27mm]{geometry}
+\setlength{\emergencystretch}{2em}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\newcommand{\Tr}{\operatorname{Tr}}\newcommand{\rad}{\operatorname{rad}}
+\newcommand{\N}{\operatorname{N}}
+\newtheorem{theorem}{Theorem}\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\title{Audit and strengthening of the single-pole weak-$abc$ construction}
+\author{Z diophantine in $\Q$ project}
+\date{19 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+The attached coauthor construction combines the two contact-height branches
+of the earlier thirteen-variable construction in one pole predicate. We
+verify the rational scalar, the ordered local preparation, and the finite
+algebra guard logic. The resulting eleven-variable theorem is valid under
+its expressly retained arithmetic premises. Full auxiliary elliptic
+charts, ten further automatically nonzero factors, and a birational
+normalization of the pole square class improve the two displayed degree
+bounds to $32542081$ and $19366273$. The sufficient fixed input shift
+remains ineffective. A split-contact formulation explains the full range
+$1<\kappa<3/2$ and permits odd positive scale exponents. None of these
+arguments establishes a ten- or nine-variable defining polynomial.
+\end{abstract}
+
+\section{Scope and precise statements}
+Let $W_\kappa$ assert that there is a constant $K_\kappa$ with
+$c\le K_\kappa\rad(abc)^\kappa$ for every coprime positive integer triple
+$a+b=c$. We retain the arithmetic inputs of the project's v22 and v28
+constructions: the stated elliptic group and index-chart identification,
+the one-point trace-height estimate, the simultaneous prime-pattern
+selection with its specified finite congruences and order compatibility,
+and the native pole obstruction and prepared converse. The latter includes
+the density and finite-character avoidance used in v28; mere existence of
+one rational point on one pole fiber is not substituted for that input.
+These hypotheses are unchanged by the present transformations.
+
+In particular put
+\[
+ K=\Q(\sqrt2),\quad D=11-6\sqrt2,\quad E:y^2=x^3-Dx,
+ \quad 2E(K)=\Z P_0,
+\]
+where
+\[
+ P_0=\left((57-28\sqrt2)/8,(-660+417\sqrt2)/32\right).
+\]
+The retained root chart represents $A=[n]P_0$ with $n\ne0$ and
+\(T=\Tr x(A)\), and supplies constants $c_0,j_0$ such that
+\(n^2\le c_0 h(T)+j_0\).
+
+\begin{theorem}\label{thm:main}
+Assume these retained inputs and $W_\kappa$.
+For either row below there is an explicitly specified family of integer
+polynomials in eleven variables, including the input, whose rational input
+projection equals $\Z$ for every sufficiently large fixed odd integer $B$.
+\[
+\begin{array}{c|c|c|r|r}
+\kappa&e&k&\text{coauthor degree bound}&\text{improved degree bound}\\\hline
+121/100&6&6&33344385&32542081\\
+16/15&4&5&19861377&19366273
+\end{array}
+\]
+The support bounds for the improved polynomials are respectively
+$<2^{235}$ and $<2^{228}$. The rank of the finite algebra is $128$.
+The coefficient files at $B=3$ are reproducible fixtures; no claim that
+$B=3$ exceeds the sufficient defining threshold is made.
+\end{theorem}
+The families are specified by the native rational DAG, integral finite
+algebra, and strengthened determinant receipt. All counts include the
+input. The degree statements are upper bounds, not claims about an
+expanded determinant having exactly that degree.
+
+\section{Eight split contacts and the scalar inequality}
+The exact identity
+\[
+ (w+4)(w+20)^3(w-5)^2-(w-4)(w-20)^3(w+5)^2=108w^5
+\]
+is verified by expansion. The degree-six forms obtained by homogenizing
+have no common projective zero. Their three fibers consist of
+$0,\infty,\pm4,\pm5,\pm20$; the fixed transformation $t=1/(w-21)$ gives
+\[
+ \Theta=\{0,-1/21,-1/17,-1/25,-1/16,-1/26,-1,-1/41\}.
+\]
+Write $s=8$ and $G(t)=\prod_{\theta\in\Theta}(t-\theta)$.
+The cited LMFDB orbit is a primary reference for the Belyi map, while the
+identity and coprimality needed here are independently exact.
+
+Enlarge a fixed set $S$ by $2,3,7,17$, the fixed arithmetic exceptions,
+and primes of contact denominators, nonzero contact differences, and
+$1-\theta$. For a primitive numerator-denominator pair representing $t$,
+let $N(t)$ be the product of the eight primitive homogeneous contact forms.
+The bounded resultant gcd in the degree-six identity and $W_\kappa$ give
+\[
+ \log\rad N(t)\ge(6/\kappa)h(t)-O(1),\qquad
+ \log|N(t)|\le8h(t)+O(1).
+\]
+Hence the product of primes outside $S$ dividing $N(t)$ exactly once
+has logarithm at least $(12/\kappa-8)h(t)-O(1)$. Indeed each exponent
+$r\ge2$ has $2-r\le0$, so this simple-prime product is at least
+$\rad(N)^2/|N|$ up to a fixed factor. At such a prime the finite contact
+product $G(t)$ has valuation one. No prime dividing the denominator of
+$t$ divides a good finite contact form.
+
+Set
+\[
+ \begin{gathered}
+ \beta=X^2+B,\qquad a=\beta^e+T^e,\qquad x=a-z,\quad y=a+z,\\
+ P=G(x),\qquad Q=G(y),\qquad J=(x-1)(y-1),
+ \end{gathered}
+\]
+\[
+ F=P^2+Q^3,\quad
+ \mathcal D=(P^3+Q^5)(P+Q^k)(P^k+Q),\qquad
+ u=\frac{J^{s(k-1)}PQF^2}{\mathcal D}.
+\]
+Initially protect $P,Q,x-1,y-1$ and the original point charts. The four
+contact sums are automatically nonzero by Lemma~\ref{lem:positive} below.
+Let $r(u)$ be the product of primes outside $S$ with positive odd valuation
+on $u$.
+
+\begin{lemma}\label{lem:scalar}
+For $k\ge2$ and $s=8$,
+\[
+ \log r(u)\ge\left(12/\kappa-8-8/k\right)
+                  \max(h(x),h(y))-O(1).
+\]
+The constants do not depend on $B,n,z$.
+\end{lemma}
+\begin{proof}
+Choose the slot of greater height and its simple primes. Discard those at
+which the other integral slot's contact product has valuation at least
+$k$. The lost logarithm is at most $(8/k)$ times the other height plus a
+fixed constant, by its primitive octic numerator bound.
+At a remaining prime with both slots integral let $m=v(P),n'=v(Q)$.
+One equals one and the other is less than $k$. If the other equals zero,
+$F$ and all three factors of $\mathcal D$ are units, and
+$v(u)=1+s(k-1)v(J)$, positive odd. If both are positive, $J$ is a unit and
+all relevant minima are strict, so
+\[
+ v(u)=2\min(2m,3n')-\min(3m,5n')=1.
+\]
+For $m=1$ the two minima are $2,3$; for $n'=1,m\ge2$ they are $3,5$.
+If instead $v(P)=1$ and $t_0=v(y)<0$, then $v(Q)=s t_0$ and
+$v(J)=t_0$. Direct substitution gives
+\[
+ s(k-1)t_0+1+s t_0+6s t_0-(k+6)s t_0=1.
+\]
+The reversed mixed case gives
+$s(k-1)t_0+1+s t_0+4s t_0-(k+4)s t_0=1$.
+This includes denominator primes of the moving scale; none was discarded
+merely because the scale has a pole.
+\end{proof}
+
+Let $E_h=h(1:\beta:T)$. The source binary-power argument gives
+\[
+ h(a)\ge(e/\kappa-3)E_h-O(1).
+\]
+Here $\beta>0$ and $T=2g_0^2+4g_1^2>0$ on the root chart, so the proof
+also applies to odd positive $e$: its use of evenness was solely to ensure
+positive summands and $H^e\le A_0^e+B_0^e\le2H^e$.
+Since $x+y=2a$, $\max(h(x),h(y))\ge h(a)/2-O(1)$. Consequently
+\begin{equation}\label{eq:lambda}
+ \log r(u)\ge\lambda E_h-O(1),\qquad
+ \lambda=\tfrac12(12/\kappa-8-8/k)(e/\kappa-3).
+\end{equation}
+For the two rows of Theorem~\ref{thm:main}, $\lambda$ is respectively
+$8374/14641$ and $99/160$, strictly greater than $1/2$.
+In particular $r(u)>1$ for all such scalar specializations when $B$ is
+sufficiently large, because $E_h\ge\log B$. This conclusion is obtained
+before any balancing denominator or pole equation is used.
+
+\section{Ten more automatic factors}
+\subsection{Four point guards and the character-extraction order}
+There are three rational-base point norm factors and three ordinate-norm
+factors in the unchanged native charts. Write $\mathsf W_A=\N(k_0)$
+for the root ordinate norm, where $k_0^2=g^4-D$, and write
+$\mathsf W_H,\mathsf W_U$ for the full auxiliary ordinate norms.
+Retain $\mathsf W_H,\mathsf W_U$, but remove the norms of
+$g,x(H),x(U)$ and the norm factor for $\mathsf W_A$.
+
+The recovery occurs partly before and partly after obtaining a rational
+character. For every rational base $g\in K$, the equation $g^4=D$
+is impossible: taking norms would give $(\N g)^4=49$, whereas no rational
+number has fourth power $49$. Consequently
+\[
+ \mathsf W_A^2=\N(g^4-D)\ne0
+\]
+holds at every rational base, independently of any rational character.
+For either full auxiliary abscissa $h\in K$, $\N h=0$ would imply $h=0$;
+then $h^3-Dh=0$ and $\mathsf W_H=0$, contrary to its retained norm
+factor. The auxiliary abscissa norms are therefore also recovered before
+character extraction.
+
+All three point blocks are now etale. In the v71 primitive-point proof,
+the only necessary rational-base hypothesis is $a^2-2b^2\ne0$ for its
+ordinate radicand $a+b\sqrt2$. It implies both $2a^2-b^2\ne0$ and
+$-4a^3+6ab^2+3b^3\ne0$; the latter follows from the Eisenstein polynomial
+$4T^3-6T-3$ when $b\ne0$. Thus the six point-prefix quadratic generators
+remain nonzero and separating, and the terminal root may still vanish
+under the v40 argument. Apply the determinant and Galois separation to
+obtain a rational character. At that character $k_0\in K$; if $g=0$,
+then $k_0^2=-D$, impossible because $D=11-6\sqrt2$ is totally positive.
+This recovers the last removed point norm, $\N g$.
+
+No rational expression with a removed denominator has been evaluated
+before this recovery. The cleared integral multiplication algebra and
+its separator polynomials exist on those base loci. The argument first
+recovers the exact hypotheses used for character extraction, and only
+then evaluates the native point and detector expressions.
+
+\subsection{Four positive contact sums and two odd-valuation factors}
+\begin{lemma}\label{lem:positive}
+Let $G$ be monic of even degree with every root in $[-1,0]$, and suppose
+$x+y=2a>4$. Then
+\[
+ P^2+Q^3>0,\quad P^3+Q^5>0,\quad P+Q^k>0,\quad P^k+Q>0
+ \qquad(k\ge2).
+\]
+\end{lemma}
+\begin{proof}
+Outside $[-1,0]$ the even-degree product $G$ is nonnegative. If $G(t)<0$,
+then $t\in[-1,0]$ and every $|t-\theta|\le1$, so $|G(t)|\le1$.
+At least one of $x,y$ is at least $a>2$, and its contact product exceeds
+one. If both contact products are nonnegative every displayed expression
+is positive. If one is negative, its absolute value is at most one and
+the positive opposite product exceeds one; the same conclusion follows
+in each expression, including both parities of $k$.
+\end{proof}
+
+The following recovery order is essential. First recover the point units
+as above and retain the individual contact and $J$ factors. Lemma~\ref{lem:positive}
+recovers the four contact sums and makes $u$ well defined and nonzero.
+Equation~\eqref{eq:lambda} then supplies a prime $p\notin S$ of positive
+odd valuation. Therefore $u\ne-1$. It also recovers every balance
+denominator as shown in the next section. The positive detector factors
+then recover the norm and trace of their product. Finally the native pole
+conic denominator is recovered from the same odd prime. No deleted
+factor is used to justify its own nonvanishing.
+
+\section{Full auxiliary points and one detector}
+The root $A$ keeps $x=g^2,y=gk_0,k_0^2=g^4-D$. The auxiliary points use
+\[
+ H:(x,y)=(h,j),\ j^2=h^3-Dh,\qquad
+ U:(x,y)=(v,l_0),\ l_0^2=v^3-Dv.
+\]
+Each element of $K$ here has two retained rational abscissa coordinates
+and a rank-four finite ordinate algebra. On the guards these are precisely
+the affine points of $E(K)$ with nonzero abscissa and ordinate.
+For example if $h=h_0+h_1\sqrt2$, the radicand coefficients are
+\[
+ h^3-Dh=(h_0^3+6h_0h_1^2-11h_0+12h_1)
+ +(3h_0^2h_1+2h_1^3+6h_0-11h_1)\sqrt2.
+\]
+The v71 rank-four multiplication table and two quadratic point stages
+apply; the auxiliary stage degrees are $6,9$, instead of $8,12$.
+
+Keep the six physical tests, with $f=1/x_E$, $\zeta=-x_E/y_E$,
+$r=\zeta(U)/\zeta(H)$, and conjugation denoted by a bar:
+\[
+ \begin{gathered}
+ C_1=f(H),\qquad C_2=f(U),\\
+ C_3=\overline{f(H-P_0)},\qquad C_4=\overline{f(U-A)},\\
+ C_5=r-\overline{\zeta(U-A)/\zeta(H-P_0)},\qquad C_6=r-X.
+ \end{gathered}
+\]
+Set $c_i=C_i$ for $i\le4$ and $c_i=C_i^2$ for $i=5,6$, and put
+\[
+ t_i=\frac{c_i}{1+u c_i},\qquad
+ W=\prod_{i=1}^6\left(1+(t_i/u)^2\right),\quad V=\Tr(W^{-1}),
+ \quad b=\frac{4u}{(1+u)^2V^2}.
+\]
+For the first four tests the homogeneous implementations $R/(L+uR)$
+retain the old nonzero $L$; no extraneous affine chart is introduced.
+
+At every prime outside $\{2,7\}$, a nonzero abscissa of any $K$-rational
+point of $E$ has even valuation. If its valuation is positive or negative,
+the curve equation respectively has valuations $v(x)$ or $3v(x)$,
+which must be even; valuation zero is already even. Thus every nonzero
+$c_i$ has even valuation outside the fixed set. This argument replaces the
+stronger global-square assertion, which is not available for unrestricted
+auxiliary points.
+
+At the positive odd prime obtained above, $1+u c_i$ cannot vanish: its
+two terms have different valuations. It is consequently a nonzero element
+of $K$ and invertible in both embeddings. At any real rational point
+character, all factors of $W$ are at least one, so $\N(W)>0$ and
+$V>0$. Hence their scalar norms and trace guards may be omitted after
+this ordered recovery.
+
+\section{The pole normalization and soundness}
+Write the exact native square extraction as $b=d_0 t_0^2$. Let
+$\delta=P+Q^k>0$, and replace it by
+\[
+ d=d_0/\delta^2,\qquad t=t_0\delta,\qquad b=dt^2.
+\]
+Use free rational parameters $\tau,s_0$, and a terminal quadratic root $q$:
+\[
+ e_0=\frac{\tau^2-17d}{\tau^2+51d},\qquad
+ q^2=17d\bigl(s_0^2-17e_0(17-b)\bigr)
+           \bigl(s_0^2+51e_0(17-b)\bigr).
+\]
+The old and new pole charts are isomorphic on the guarded source:
+$\tau_{\rm old}=\delta\tau$ and $q_{\rm old}=\delta q$, with $s_0$ unchanged.
+Thus both rational existence and density for avoiding finitely many
+proper algebraic conditions transfer.
+
+At the chosen odd prime, $v_p(d)\equiv v_p(b)\equiv v_p(u)\pmod2$.
+The constants $3,17$ are units there. Hence $\tau^2+51d\ne0$, including
+$\tau=0$, because otherwise an even valuation would equal an odd one.
+This completes the six scalar and pole guard deletions in addition to
+the four point guards. The terminal ordinate may
+vanish; the retained pole obstruction explicitly covers that case.
+
+For soundness take any prime outside $S$ with $\nu=v_p(u)>0$ odd.
+The saturation identity at either place above $p$ is
+\[
+ v(t_i)=\max(v(c_i),-\nu),
+\]
+where a zero test is treated separately as a factor one. Parity makes
+$v(t_i/u)\ne0$, so each detector factor has nonpositive valuation.
+Put $q_*=\max_{\mathfrak p\mid p}v_{\mathfrak p}(W)\le0$.
+Since $v_p(V)\ge-q_*$ and $b/u$ is a nonzero rational square, the native
+negative-odd obstruction gives
+\[
+ 0<v_p(b)\le\nu+2q_*.
+\]
+At a place attaining $q_*$ every detector factor has valuation
+$> -\nu/2$, forcing $v(t_i)>3\nu/4$ and hence $v(C_i)>0$.
+
+For arbitrary auxiliary points write $2H=[h']P_0$, $2U=[j']P_0$ and
+$h=h'/2,j=j'/2$. These are locally integral at our odd primes.
+The guarded logarithmic quotients are $j/h$ and $(j-n)/(h-1)$.
+The formal comparison and the six positive tests imply
+$Xh\equiv j$ and $X(h-1)\equiv j-n$ modulo $p$, with $X$ integral there.
+Subtracting gives $X\equiv n$. This is exactly the v71 extension of the
+original local implication; no integer label for $H$ itself is assumed.
+
+If $X\ne n$, therefore $r(u)$ divides the nonzero reduced numerator of
+$X-n$. As $2h(X)\le h(\beta)\le E_h$,
+\[
+ (\lambda-1/2)E_h\le\log(1+|n|)+O(1).
+\]
+The trace estimate $n^2\le c_0E_h+j_0$ bounds $E_h$ uniformly, contradicting
+$E_h\ge\log B$ for every sufficiently large fixed $B$. This proves
+soundness, including all sign possibilities for $u$.
+
+\section{Completeness and its order of choices}
+Fix a nonzero integer $n$, its actual root $A=[n]P_0$, and hence $a$.
+Choose the inherited real and finite-place neighborhoods on the
+multiplication family $U=[n]H$, avoiding the original chart poles.
+Use the old $2E(K)$ subfamily for these prepared witnesses. The full
+auxiliary charts preserve all geometric characters: if the old chart is
+$x=g^2,y=gk_0$, set $h=g^2,j=gk_0$; multiplication by the guarded unit $g$
+identifies the two square-root algebras in each embedding.
+
+Before selecting $z$, enlarge the temporary finite set by the denominators
+of $a$ and the contacts, their nonzero differences, the nonzero specialized
+values at $(x,y)=(1,2a-1),(2a-1,1)$, and the three resultants of $F$ with
+the factors of $\mathcal D$. The resultants are nonzero: a common complex
+zero either has $P=Q=0$, or the absolute-value equations force
+$|P|=|Q|=1$. In the latter case $|x|,|y|\le2$, since $|G(t)|>1$ for
+$|t|>2$; in the former the same bounds hold. Both contradict $x+y=2a>4$.
+
+At every fixed place, $u/z^8\to1$ as $|z|\to\infty$.
+On the chosen point neighborhoods, $W\to1,V\to2$, and $bz^8\to1$.
+This prepares local square classes and arbitrarily deep positive even
+valuations at $2,3,17$, and $0<b<17$ over the reals.
+Apply the retained prime theorem to the sixteen distinct rational
+positions $\pm(a-\theta)$, with all finite constraints already fixed,
+to choose $z=N/(d_1^2L^2)$ and distinct suitable prime numerators.
+Refine the auxiliary index by the compatible CRT conditions while
+preserving the earlier neighborhoods.
+
+At a fresh prime exactly one contact has valuation one; the other contact
+product and $J$ are units. Thus $v_p(u)=1$. In the successful field slot
+the first four reciprocal abscissas have valuation at least two and the
+last two squares also have valuation at least two. Consequently
+$W\equiv1$ there. In the other slot $W^{-1}$ is congruent to zero or one
+by the strict parity argument. Hence $V$ is a unit and $v_p(b)=1$.
+
+At every unprepared, unselected integral slope prime, $P,Q$ are units.
+A prime of $\mathcal D$ is not a prime of $F$ or $J$ by the prepared
+specializations and resultants, so it gives $v_p(u)<0$; otherwise the
+possible positive contributions from $J$ and $F$ are even. At a new pole
+of $z$, $v_p(u)=8v_p(z)$ is even. Negative odd $\nu=v_p(u)$ gives
+$v(t_i/u)\ge-2\nu>0$ in both slots, so $W\equiv1,V\equiv2$ and
+$v_p(b)=-\nu>0$. Even valuations of $u$ give even valuations of $b$.
+Thus the reduced denominator of $b$ is a square at every prime.
+The native prepared converse now supplies the pole parameters, with the
+retained density furnishing finite-character avoidance. The new square
+class normalization is birational by the nonzero scalar $\delta$.
+
+This verifies all prime classes, not only the freshly selected primes.
+No choice of contact primes precedes a subsequently changing value of $a$.
+The usual factor $X$ includes the integer zero independently.
+
+\section{The integral determinant and exact checks}
+The free coordinates are $X$, two root abscissa coordinates, four
+auxiliary abscissa coordinates, $z$, and two pole parameters: ten in
+all. The character encoder adds one. The three point blocks and the
+terminal square block have ranks $4,4,4,2$, for total rank $128$.
+For the seven quadratic generators use the positive polynomial envelopes
+$M_i$ in the parent specification and the triangular separator
+\[
+ \phi_7=q_7/(4M_7),\qquad
+ \phi_i=q_i(1+\phi_{i+1})/(4M_i),\qquad
+ \Omega=\left(\prod_i4M_i\right)\phi_1.
+\]
+The first six generators are units on the retained point guards; the
+last may vanish. The v40 proof separates distinct characters even on
+this terminal zero stratum and makes $\Omega$ nonzero. Multiplication
+in the integral free algebra is defined by the supplied coefficient
+DAG and its cleared relations. If $G_0$ is the product of the retained
+subalgebra norms, the polynomial is
+\[
+                 F_B=X\det\bigl(I-YG_0\operatorname{Mult}(\Omega)\bigr).
+\]
+A determinant zero makes $G_0\ne0$ and recovers a rational character by
+Galois separation. The automatic factors are then recovered in the
+order already proved. Conversely a prepared character gives rational
+$Y=(G_0\Omega)^{-1}$. The coefficient of $X Y^0$ is one, so the integer
+content is one.
+
+For the two preferred specifications the independently recomputed guard
+and separator degrees are
+\[
+ (g,w)=(490,253744),\qquad (418,150880).
+\]
+Thus $\deg F_B\le1+128(1+g+w)$ gives exactly the asserted upper bounds.
+The support bound uses total pre-input degree $d=128(1+g+w)$ and
+$Y$-degree at most $128$:
+\[
+ \#\operatorname{supp}(F_B)\le
+ \binom{d+11}{11}-\binom{d-128+10}{11}.
+\]
+The fixture coefficient one-norm bounds are $2^{131679488}$ and
+$2^{83631616}$ at $B=3$. Their scope is deliberately distinct from the
+uniform-in-$B$ degree and support claims.
+
+The independent checks reconcile the point and test expressions with
+v71, reconstruct the entire scalar and detector circuit, verify
+$b=dt^2$, recompute the subalgebra bounds, and verify the staged deleted
+atom sets. Corrupted degree or guard receipts are rejected. These finite
+checks certify the algebra and numerical ledger; they are not numerical
+proofs of the external arithmetic inputs or an effective defining shift.
+
+\section{Generalizations and remaining limits}
+More generally, suppose a coprime homogeneous degree-$m$ triple
+$A+B=C$ has completely split rational branch support of size $s$.
+A fixed rational change of coordinate puts that support in $[-1,0]$.
+The same argument gives simple-prime coefficient $\gamma=2m/\kappa-s$
+and, for the shared scalar, the sufficient condition
+\[
+ \tfrac12(2m/\kappa-s-s/k)(e/\kappa-3)>1/2.
+\]
+For even $s$ the preceding proof applies unchanged. Thus any such split
+triple with $1<\kappa<2m/s$ gives an eleven-variable family after choosing
+$k$ and then $e$ sufficiently large. The degree-six triple gives
+$1<\kappa<3/2$.
+For odd $s$, the underlying guarded construction still works with odd
+$k$ and locally square prepared $z$: then $s(k-1)$ is even, and every
+new pole of the square-denominator slope has even valuation. The four
+positive-contact-sum deletions are not asserted for odd $s$, because a
+monic odd-degree contact product is negative on an unbounded interval.
+The resulting guard version is a generalization of the construction,
+not of the specific degree receipts above.
+
+The two displayed $(e,k)$ choices remain the best among the nearby
+parameters checked with the same compiler, including the closest odd
+competitors. Odd exponents can improve other fixed weak exponents; for
+example $\kappa=7/5$ permits $e=11,k=22$ with
+$\lambda=272/539>1/2$. No higher-degree completely split triple is claimed
+from a limited database scan, and no variable elimination follows merely
+from an auxiliary curve being everywhere locally soluble.
+
+\begin{thebibliography}{9}
+\bibitem{Coauthor} Attached coauthor package,
+\emph{H10-eleven-variable-constructions}, research note dated 18 November
+2026, \texttt{note/weak-eleven.tex} and \texttt{counts/poles/}.
+\bibitem{Project} J. Brox and contributors,
+\emph{Polynomial presentations of the integers over the rationals},
+commit \texttt{d3a8c223716a0fc0dbf5af4eb7998d640c21048d}.
+\url{https://github.com/JoseBrox/diophantine-z-q_improvements}.
+Relevant complete proofs: direct-input v22, finite algebras v28/v30,
+terminal roots v40, full auxiliary points v71, even abscissa valuations v75.
+\bibitem{Belyi} M. Musty, S. Schiavone, J. Sijsling and J. Voight,
+\emph{A database of Belyi maps}, Open Book Series 2 (2019), 375--392.
+The exact orbit used here is
+\url{https://www.lmfdb.org/Belyi/6T16/5.1/3.2.1/3.2.1/a/}.
+\end{thebibliography}
+\end{document}

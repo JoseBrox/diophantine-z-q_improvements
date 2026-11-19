@@ -1,0 +1,353 @@
+\documentclass[11pt]{article}
+\usepackage[margin=27mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs,hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\newcommand{\Tr}{\operatorname{Tr}}\newcommand{\Nm}{\operatorname{Nm}}
+\title{Twelve contacts and a square-class normalization of the intrinsic pole}
+\author{\(\Z\Q\) Diophantine Project: audit and continuation}
+\date{19 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+The ordinary-abc eleven-coordinate source can use its first height scale,
+rather than its second or fourth power. A two-adic trace lemma supplies
+the missing square class for integer witnesses. We also remove a known
+rational square from the intrinsic-pole input before forming the finite
+algebra. Together with automatic point and height guards and one obsolete guard,
+these changes lower the degree bound to $6\,361\,985$. No pole parameter
+or rationality witness is silently deleted; the count remains eleven.
+The sufficient fixed shift is ineffective. All statements retain the
+elliptic, trace-height, prime-pattern and intrinsic-pole premises of v63.
+\end{abstract}
+
+\section{Statement and source}
+
+Use the project at commit \texttt{d3a8c22}, the ordinary-abc derivative
+source v63, the full auxiliary charts v71, and even-valuation tests v75.
+The coauthor's positive factors and positive balancing denominators are
+as specified in \texttt{fewvars/POSITIVE.md} and \texttt{BALANCED.md}
+in the supplied 18 November 2026 bundles. Ordinary rational abc is
+assumed, together with precisely the normalized group, formal comparison,
+trace-height, simultaneous prime-selection and intrinsic-pole inputs
+of those papers. A finite circuit audit is not an audit of those inputs.
+
+\begin{theorem}\label{thm:main}
+For every sufficiently large fixed odd integer $B$, the finite
+specification accompanying this paper gives a polynomial in eleven total
+rational coordinates, including its input, with input projection $\Z$.
+Its degree is at most $6\,361\,985$, its support is less than $2^{212}$,
+and its integer content is one. The threshold for $B$ is ineffective.
+The stored $B=3$ fixture has coefficient one-norm at most
+$2^{25322112}$; it is not asserted to be a defining member.
+\end{theorem}
+
+\section{An exact square-class transfer}
+
+For $e,v,s$ put
+\[
+ P_e(v,s)=e(e+v^2)^2s^4-e(e-v^2)^2(1-e)^2.
+\]
+\begin{lemma}\label{lem:transfer}
+Suppose $e=dt^2$ with rational $t\ne0$. The substitution
+\[
+ v_{\rm old}=tv,\qquad Y_{\rm old}=t^3Y
+\]
+is a bijection between rational solutions of
+\[
+ Y^2=d(d+v^2)^2s^4-d(d-v^2)^2(1-e)^2
+\]
+and of $Y_{\rm old}^2=P_e(v_{\rm old},s)$.
+It includes zero ordinates and preserves any density assertion under
+the resulting invertible rational scaling of the parameter plane.
+\end{lemma}
+\begin{proof}
+Substitution gives $P_{dt^2}(tv,s)$ equal to $t^6$ times the displayed
+right side. Division by $t^6$ is legitimate. The inverse changes are
+$v=v_{\rm old}/t$ and $Y=Y_{\rm old}/t^3$.
+\end{proof}
+This elementary identity is valid over every field of characteristic
+different from two; the rational setting is needed for the later source.
+It is a change of coordinates, not an additional realization assumption.
+
+\section{The trace at two}
+
+Write $K=\Q(\sqrt2)$, $\pi=\sqrt2$, and
+\[
+ D=11-6\sqrt2,\qquad E:y^2=x^3-Dx,\qquad
+ P=\left(\frac{57-28\sqrt2}{8},\frac{-660+417\sqrt2}{32}\right).
+\]
+Normalize $v_\pi(\pi)=1$ in $K_\pi$, so $v_\pi(2)=2$.
+\begin{lemma}\label{lem:trace}
+For every nonzero integer $n$, put $T_n=\Tr_{K/\Q}x([n]P)$.
+Then
+\[
+ n^2T_n-57/4\in16\Z_2,
+ \qquad v_2(T_n)=-2-2v_2(n),\qquad T_n\in\Q_2^2.
+\]
+\end{lemma}
+\begin{proof}
+Let $z=-x/y$ be the formal parameter. Direct norms give
+$v_\pi(x(P))=-6$, $v_\pi(y(P))=-9$, and $v_\pi(z(P))=3$.
+The equation gives
+\[
+ x=z^{-2}+D/x=z^{-2}+O(z^2)
+\]
+with integral formal coefficients; equivalently
+$x=(1+\sqrt{1+4Dz^4})/(2z^2)$, whose coefficients are integral
+Catalan multiples of powers of $D$.
+The integral formal group has $[m](z)=mz+O(z^5)$.
+Indeed its coefficients are integral, and the automorphism
+$(x,y)\mapsto(-x,iy)$ sends $z$ to $iz$; commutation with $[m]$
+excludes every exponent not congruent to one modulo four. This argument
+may be made after the integral extension adjoining $i$ and descends.
+For odd $m$, substitution at $v_\pi(z(P))=3$ consequently gives
+\[
+ m^2x([m]P)-x(P)\in\pi^6\mathcal O_{K_\pi}.
+\]
+
+For a point $Q$ with $v_\pi(x(Q))<0$, the duplication formula gives
+the exact identity
+\[
+ 4x(2Q)-x(Q)
+   =\frac{D(3x(Q)^2+D)}{x(Q)(x(Q)^2-D)}.
+\]
+As $D$ is a unit, its valuation is $-v_\pi(x(Q))>0$, and
+$v_\pi(x(2Q))=v_\pi(x(Q))-4$. Apply this successively to
+$Q=[2^jm]P$. Multiplying each difference by $4^jm^2$ and
+telescoping proves
+\[
+ n^2x([n]P)-x(P)\in\pi^6\mathcal O_{K_\pi}
+\]
+for all positive $n$; negative $n$ have the same abscissa.
+Now $\pi^6\mathcal O=8\mathcal O$, and
+$\Tr\mathcal O=2\Z_2$. Taking traces proves the congruence.
+It gives $4n^2T_n\equiv57\pmod {64}$, hence this last number is a
+two-adic unit congruent to one modulo eight. The valuation and square
+class follow.
+\end{proof}
+
+\begin{corollary}\label{cor:scale}
+For integral $X=n\ne0$ and odd integral $B$, the number
+\[
+ M=(X^2+B)^4+T_n^4
+\]
+is a square in $\Q_2$.
+\end{corollary}
+\begin{proof}
+The input $\beta=n^2+B$ is integral, whereas $v_2(T_n)\le-2$.
+Thus $1+(\beta/T_n)^4\in1+2^8\Z_2\subset\Q_2^2$, and
+$T_n^4$ is a square. This is a statement about the prepared integer
+witnesses, not a claim that $M$ is a square for all rational base tuples.
+\end{proof}
+
+\section{The twelve-contact source}
+
+Retain the square-abscissa root $A=[n]P$, $n\in\Z\setminus\{0\}$,
+and the two full auxiliary point charts $H,U$. Set
+\[
+ \beta=X^2+B,\quad T=\Tr x(A),\quad M=\beta^4+T^4,\quad a=M,
+ \quad x=a-z,\quad y=a+z.
+\]
+The twelve shifts are
+\[
+ \{-9,-8,-7,-5,-4,-3,-2,-1,6,10,11,12\}.
+\]
+They are distinct, nonzero, have sum zero, and no two are opposites.
+Let $G_0(t)=\prod_c(t+c)$ and
+\[
+ F=G_0(x)G_0(y),\qquad
+ H_a=\frac12\frac{\partial F}{\partial a},\qquad
+ u=-\frac{12F}{H_a},\qquad w=\frac{u}{(1+u)^2}.
+\]
+Guard $F,H_a,u$ and all original point and test denominators.
+The former guard $a^2-z^2\ne0$ is deleted: no formula divides by it,
+and the stronger height estimate below does not use it.
+
+The six raw tests are the four direct or conjugated reciprocal
+abscissae and the cross and target errors of v63. For the first four
+let $C$ be the raw reciprocal test; for the last two let $C$ be the
+square of the raw error. Use
+\[
+ r_C=\frac{C^2}{u(1+u^2C^2)},\qquad
+ W=\prod_C(1+r_C^2)=W_0+\sqrt2W_1,
+ \quad V=\Tr(W^{-1}),\quad b=\frac{4w}{V^2},\quad e=7b.
+\]
+These are exactly the coauthor's balanced positive factors. The first
+four tests have even valuations at every good unramified place by
+the equation of $E$; no global square assertion is needed for the
+full auxiliary charts. Hence the same unique-minimum proof supplies
+the old positive-odd extraction and negative-odd preparation.
+
+Since $V=2W_0/\Nm(W)$,
+\[
+ e=7u\left(\frac{\Nm(W)}{(1+u)W_0}\right)^2.
+\]
+Apply Lemma~\ref{lem:transfer} with $d=7u$ and the square factor in
+parentheses. The sole terminal equation is therefore
+\[
+ Y^2=7u(7u+v^2)^2s^4
+       -7u(7u-v^2)^2(1-e)^2.                 \tag{1}
+\]
+The free coordinates are the input, six point coordinates, the slope,
+the two pole parameters, and the encoder: eleven in total.
+
+\section{Height soundness and an automatic denominator}
+
+Use ordinary rational abc with $\epsilon=1/100$ in the intermediate
+derivative-height estimate of v63. Its proof, before replacing the
+larger slot height by half the product height, gives for any fixed
+positive exponent $m$ and $a=M^m$
+\[
+ \log r^+(u)\ge(k-6-3\epsilon)\max(h(x),h(y))
+                         -(2+\epsilon)h(M)-O(1).
+\]
+Here $r^+(u)$ is the positive odd radical outside a fixed exceptional
+set containing the shift denominators, differences, nonzero pair sums,
+and $2k$. Constants are uniform in $B$. The contact-pair noncollision needed by
+the estimate holds here: $M\ge B^4$ and $B\ge3$ make every
+$2M+c_i+c_j$ positive.
+The proof also applies when $a^2-z^2=0$: then one slot is zero, its
+contact values are nonzero constants, and the simple-prime argument
+for the other slot is unchanged. The derivative denominator remains
+guarded.
+
+Since $x+y=2M$, the larger slot height is at least
+$h(M)/2-O(1)$. With $k=12$ the result is
+\[
+ \log r^+(u)\ge\frac{39}{40}h(M)-O(1).       \tag{2}
+\]
+The original binary-power bound with $\kappa=1001/1000$ gives
+\[
+ \alpha E_h\le h(M)+O(1),\qquad
+ \alpha=\frac{997}{1001},\qquad E_h=h(1:\beta:T).
+\]
+If $X\ne n$, the retained local extraction makes $r^+(u)$ divide
+the reduced numerator of $X-n$, so
+\[
+ \log r^+(u)\le\tfrac12E_h+\log(1+|n|).
+\]
+The exact positive margin is
+\[
+ \frac{39}{40}\frac{997}{1001}-\frac12=\frac{18863}{40040}>0.
+\]
+The retained trace estimate $n^2\le A_0h(T)+J_0$ now bounds
+$E_h$ uniformly in $B$. Since $E_h\ge h(\beta)\ge\log B$,
+this is impossible for sufficiently large fixed $B$. Thus $X=n$.
+
+There is a second use of (2) which does not use the pole equation or
+the desired conclusion $X=n$. For every rational tuple with $F,H_a$
+nonzero, $M\ge B^4$. Thus for sufficiently large $B$, the right
+side of (2) is positive. Consequently $u$ has a positive odd
+valuation and cannot equal $-1$. The denominator $1+u$ is therefore
+automatic. This is an eventual assertion under abc, not a claim about
+every tuple in the $B=3$ fixture. Also $M>0$ at every rational tuple.
+These facts justify the two additional norm-guard deletions in the
+finite-algebra specification without circular use of the pole.
+
+\section{Complete integer witnesses}
+
+Fix $X=n\ne0$ and $A=[n]P$. Take the original multiplication family
+$U=[n]H$ in the full auxiliary domain. The new scale $a=M$ is fixed
+and positive before choosing the slope. It exceeds all shift
+magnitudes for $B\ge3$, so the 24 rational positions $\pm(a+c)$
+are distinct. All other exceptional sets, point neighborhoods and
+reduction-order constraints are fixed in the old order.
+
+At fixed finite and real infinity in the slope, the derivative quotient
+satisfies $u\sim z^2/a$ and $w\sim a/z^2$. The fixed nonzero tests
+stay bounded away from zero in the prepared neighborhoods, so the
+balanced detector satisfies $W\to1$ and $V\to2$.
+Corollary~\ref{cor:scale} makes $a$ a square over $\Q_2$, which is
+precisely the square-class requirement formerly supplied by $a=M^2$
+or $M^4$. Arbitrarily large negative $v_2(z)$ gives the required
+positive even depth. At seven and the other fixed places, the same
+large-slope preparation gives the required nonnegative depths.
+
+Apply the retained simultaneous prime-pattern theorem to the 24
+fixed positions. At every selected prime one contact has valuation
+one, so $u$ has valuation one. The source compatible index refinement
+makes all successful elliptic tests sufficiently deep; every positive
+factor has residue one there, while the opposite inverse factors
+are zero or one. Thus the reciprocal trace is a unit and the actual
+pole input has positive odd valuation at the selected primes.
+At every other prime the source denominator argument is unchanged:
+negative odd valuations of $u$ give $W\equiv1$ at both slots, while
+even valuations stay even after division by the rational square trace.
+The finite support of the now-fixed scale is prepared in advance.
+The actual input has square reduced denominator and the required
+real interval $0<e<1$ and intrinsic local square class.
+
+The intrinsic-pole converse supplies the old parameters and ordinate.
+The square factor in Lemma~\ref{lem:transfer} is nonzero, so they give
+rational parameters for (1). The density/avoidance conclusion transfers
+by that invertible scaling. Every whole-character condition retained
+by the compiler is handled by the same prepared finite avoidance;
+the positive balancing and detector factors stay nonzero on rational
+characters. The final factor $X$ includes the integer zero exactly
+as in v63. This proves completeness and Theorem~\ref{thm:main}.
+
+\section{The finite specification and audit}
+
+The three point blocks retain rank $4^3=64$ and the terminal square
+has rank two, for total rank 128. The point-prefix separator and
+zero-terminal-root theorem are the audited constructions of v40 and
+the coauthor bundle. Four point norm atoms may also be omitted.
+For the root chart $x=g^2$, $j^2=g^4-D$, the norm-root square
+$\Nm(g^4-D)$ never vanishes at a rational base: vanishing would force
+$(\Nm g)^4=\Nm D=49$, impossible in $\Q$.
+For each full auxiliary chart, the retained ordinate norm forces
+$\Nm(x^3-Dx)\ne0$ and hence $\Nm x\ne0$.
+These facts restore point etaleness before character extraction.
+After a rational character is obtained, $g=0$ would give $j^2=-D$,
+which total positivity of $D$ excludes. The integral algebra and
+separator are defined before these rational denominators are evaluated.
+The four deleted atoms save total guard degree 14.
+
+Guard recovery then proceeds through
+the retained point/test denominators; positivity of $M$ and the
+independent height proof that $1+u\ne0$; positivity of the six balanced
+denominators; positivity of $W_0$ and $\Nm(W)$; and the invertible
+intrinsic-pole scaling. No deleted guard is used to justify itself.
+
+The final polynomial is
+\[
+ X\det(I-YG_*\,\mathrm{Mult}(\Omega)).
+\]
+The final guard degree is 650 and the separator operator degree is
+49052, so
+\[
+ \deg\le1+128(1+650+49052)=6\,361\,985.
+\]
+Setting $Y=0$ gives $X$, proving integer content one. The support
+bound counts total degree at most $d=6361984$ and encoder degree at
+most 128 before multiplication by $X$:
+\[
+ \binom{d+11}{11}-\binom{d-128+10}{11}<2^{212}.
+\]
+The numerical coefficient bound concerns only the stored fixture.
+
+The independent checker reconstructs all twelve factors and their
+derivative, the scale and raw tests, all six balanced positive factors,
+all 164 denominator records, and the new terminal equation. It compares
+the point charts and original tests against the pinned v75 source and
+replays all square extractions, guard degrees, envelopes and coefficient
+majorants. It separately verifies the intrinsic square-factor identity,
+the exact duplication identity, the fixed-point valuations and the
+strict height margin. The proof of Lemma~\ref{lem:trace} covers every
+integer $n$; it is not inferred from a finite list of multiples.
+
+\begin{thebibliography}{9}\raggedright
+\bibitem{source} \(\Z\Q\) Diophantine Project, v63 derivative detector,
+v71 full auxiliary chart, v75 even-valuation detector; repository
+\url{https://github.com/JoseBrox/diophantine-z-q_improvements},
+commit \texttt{d3a8c22}. The relevant full sources accompany this bundle.
+\bibitem{algebra} Project papers on unit norms v28, subalgebra norms v30,
+and possibly vanishing terminal quadratic roots v40.
+\bibitem{coauthor} Coauthor bundles of 18 November 2026,
+\texttt{POSITIVE.md}, \texttt{BALANCED.md}, and
+\texttt{counts/poles/ordinary\_scale/proof.md}.
+\end{thebibliography}
+\end{document}

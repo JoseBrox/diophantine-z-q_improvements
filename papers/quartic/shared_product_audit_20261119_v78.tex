@@ -1,0 +1,651 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=26mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs,longtable,hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}\newtheorem{remark}[theorem]{Remark}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\newcommand{\Tr}{\operatorname{Tr}}\newcommand{\Nm}{\operatorname{Nm}}
+\newcommand{\ord}{\operatorname{ord}}
+\title{Audit and extension of the shared-product quartics}
+\author{Z diophantine in Q project}
+\date{19 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+We audit the coauthor's attached reductions from 193 to 165 and from
+229 to 180 rational coordinates, counting the distinguished input.
+The exact supplied coefficient tables pass an independent expansion,
+parameter-scaling, fixed-scalar and canonical-text verification.
+We give the arithmetic transfer, with its hypotheses and boundary
+cases explicit, and generalize the shared gate to any number of contact
+arguments and any number field. The latter extension is a gate theorem,
+not a new assertion that the necessary arithmetic inputs exist in every
+number field. The same counts also support stronger fourth-order Lucas extraction,
+which lowers the fixed 180-variable coefficient height from 161 to
+108 bits. No smaller quartic variable count is claimed here.
+\end{abstract}
+
+\section{Status, sources and exact statements}
+The sources are the user-supplied archive
+\texttt{H10-quartic-constructions.zip}, in particular its
+\texttt{quartics/} tables and transfer notes, and the project repository
+\begin{center}\small
+\url{https://github.com/JoseBrox/diophantine-z-q_improvements}
+\end{center}
+The pinned commit is
+\begin{center}\small
+\texttt{d3a8c223716a0fc0dbf5af4eb7998d640c21048d}.
+\end{center}
+We retain the exact arithmetic interfaces of the source 193-variable
+manuscript v74 and, for the effective member, the 229-variable
+manuscripts v62 and v68. These are hypotheses of the transfer below.
+They are not conclusions of a finite coefficient computation.
+
+The retained interfaces are as follows.
+\begin{enumerate}
+\item For $K=\Q(\sqrt2)$, $d=3-\sqrt2$, $E:y^2=x^3-d^2x$,
+$R_0=(1+\sqrt2,2\sqrt2)$ and $P_0=2R_0$, the source group
+and formal-logarithm statements hold. The charts give
+$E(K)=\Z R_0+E[2](K)$ with the indicated label conventions.
+The relative formal error has order four at every consumed good prime.
+\item The scalar extraction and ordered scalar preparation hold.
+For the general source $C=149^N$ and
+$R_s=149^{2N+1}r/(1+149^2r)$, where
+$\beta=51X^2+2504$ and
+$r=\beta(\beta-1)(\beta-2401)(32\beta+343)$.
+They exclude the exceptional reference strata before a ratio is used.
+Their lower bound and scalar-height bound are the v74 bounds with
+$L_N=\lfloor9(2N-1)/4\rfloor+1$.
+\item The full-domain contact-height estimates hold for the prescribed
+reflected ten-contact set, including the midpoint where the radical is
+one. The general reflection has center $1$; the effective reflection
+has center $3/22$. We do not substitute an arbitrary contact set.
+\item The positive aggregate trace-height theorem holds on all the
+finite point differences allowed by the charts, including finite
+two-torsion differences.
+\item The source pole obstruction excludes negative odd valuations
+at the consumed primes. The prepared pole-realization theorem applies
+after its actual rational argument has the required positivity, real
+upper bound, square reduced denominator and local preparations at
+$2,3,17$.
+\item The fixed-data Gaussian prime-pattern and compatible annihilation
+supplier permits arbitrary finite avoidance, arbitrarily large prime
+cutoffs and arbitrarily large prescribed slope. Its real and finite
+approximation statements are those used in the source ordered proof.
+\end{enumerate}
+The explicit theorem additionally uses the effective source
+contact-height inequalities outside its stated exceptional sets, with
+the numerical constants of v68. No new effective arithmetic estimate
+is being inferred from the attached coefficient tables.
+
+\begin{theorem}[Audited transfer]
+Under the corresponding retained interfaces, the supplied balanced
+165-variable quartic has rational input projection $\Z$ for every
+sufficiently large fixed $N$. Its sufficient threshold remains
+ineffective. For every integer $N\ge1$ it has degree exactly four,
+139 quadratic rows, 2608 coordinate monomials, content one, and exact
+height
+\[
+ \max\{126616122944180358034867798936,149^{2N+2}\}.
+\]
+Under the retained effective interfaces the supplied fixed
+180-variable quartic has rational input projection $\Z$. It has degree
+exactly four, 152 quadratic rows, 2648 monomials and height
+\[
+2584403986888404839167627077886434458396171597584.
+\]
+Its canonical literal has 54695 ASCII bytes and SHA-256
+\begin{center}\small
+\texttt{e6fd2cab3564dd0eb84c388aa252db1b6057f1135fbedfdf248416cd6585fd73}.
+\end{center}
+All counts include the distinguished input.
+\end{theorem}
+
+\section{The shared scalar gate, including its zero boundaries}
+Let $m\ge2$ and $q_0,\ldots,q_{m-1}\in\Q^\times$. Put
+$c=\sum_jq_j$ and $s_j=c-q_j$. The compiled chart requires $c\ne0$.
+Let $W\in K$ be the common product of the field factors. Define the
+rational $D$ by
+\begin{equation}\label{eq:gate}
+ D\Tr(W)=\Nm(W-1),\qquad
+ g_j=1+D^2+s_j^2/q_j.
+\end{equation}
+The relation itself forces $\Tr(W)\ne0$: otherwise the norm vanishes,
+so $W=1$ in the field $K$, contradicting $\Tr(W)=0$. Thus $D$ is
+uniquely defined. This argument does not require a real sign
+assumption on $W$.
+
+At a consumed prime $p$ for argument $j$, write
+\[
+ v_p(q_j)=-\mu,\qquad v_p(R_j)=\mu,\qquad \mu>0\text{ odd}.
+\]
+The actual pole argument is
+$b_j=(408/409)^2R_jg_j^2/4$.
+The exceptional sets include $2,3,17$, so
+$v_p(408/409)\le0$. This inequality also covers $p=409$;
+the negative valuation there strengthens the obstruction.
+
+\begin{lemma}\label{lem:gate}
+Every rational solution satisfies
+\[
+ v_p(D)>-\mu/4,\qquad v_p(s_j)>-3\mu/4,
+ \qquad v_p(c)=-\mu.
+\]
+If all field factors have nonpositive valuation at each slot above
+$p$, then some slot satisfies $v(W)>-\mu/4$.
+\end{lemma}
+\begin{proof}
+Set $v(0)=+\infty$. If $g_j\ne0$, the valuation of $b_j$ is odd,
+and a negative odd valuation is forbidden. It follows that
+$v_p(g_j)>-\mu/2$. The inequality also holds when $g_j=0$.
+A negative finite valuation of $D^2$ is even; a finite valuation of
+$s_j^2/q_j$ is $2v_p(s_j)+\mu$, which is odd. A negative minimum
+therefore cannot cancel with the other term or the constant. Each
+nonconstant term has valuation greater than $-\mu/2$, proving the
+first two inequalities. Since $v_p(s_j)>-\mu$, the last follows.
+
+Use the two conjugate valuation slots, with repetition when $p$ is
+inert. If one slot has $v(W)=0$, it suffices. Otherwise both values
+$w_1,w_2$ are negative. The shifted norm has valuation $w_1+w_2$,
+whereas $v_p(\Tr W)\ge\min(w_1,w_2)$. Hence
+\[
+ v_p(D)\le\max(w_1,w_2),
+\]
+which proves the assertion. Zero components are omitted from minima;
+$W=0$ is already impossible under \eqref{eq:gate}.
+\end{proof}
+No disjointness of contact radicals on an arbitrary rational
+solution has entered this proof. Disjointness is used only in the
+construction of integer witnesses.
+
+\section{The four factors and all sixteen tests}
+Let $A_i,B_i$ denote the source reciprocal abscissas, $D_H,B_0$ the
+reference tests, $E_i$ the four cleared comparisons, $\mathcal H$ the
+homogeneous Lucas residual, and $\mathcal N$ the cleared input
+numerator. The four factors have constant term one and the following
+nonconstant terms:
+\[
+\begin{array}{c|rrrr}
+ &c&c^2&c^3&c^4\\\hline
+0&\mathcal N^4&B_1^2&-E_1^4&D_H^4\\
+1&E_4^4&A_3^2&-\mathcal H^4&B_2^4\\
+2&E_3^4&B_4^2&-E_2^4&A_2^4\\
+3&A_1^2&B_3^2&-A_4^2&B_0^4
+\end{array}
+\]
+Reciprocal-abscissa valuations are even at good unramified slots.
+For $v(c)=-\mu$ with $\mu$ odd, the first three displayed terms
+belong to the distinct nonzero classes
+$-\mu,-2\mu,-3\mu\pmod4$. The last term has class $4\pmod8$.
+It cannot have valuation zero, and it cannot tie any of the first
+three terms. Thus the minimum in each factor is unique, its
+valuation is nonpositive, and a factor of valuation zero reduces to
+one. The signs do not alter any of these assertions.
+
+At the slot supplied by Lemma~\ref{lem:gate}, every factor and then
+every term has valuation greater than $-\mu/4$, in particular greater
+than the source cutoff $-\mu/2$. Every reciprocal consequently has
+strictly positive even valuation, at least two. Every cleared error
+has positive valuation, at least one. In the source notation
+\[
+ L_i-\overline{L_i'}=\frac{k_iE_i}{s_i\overline{t_i}},
+ \qquad \mathcal H=s_4^2\mathcal G,
+ \qquad L_1-\beta=\mathcal N/s_1.
+\]
+The positive reciprocal tests imply $v(s_i),v(\overline{t_i})\le-1$,
+so the comparison and Lucas depths are at least three, and the input
+depth is at least two. These divisions are made only after the local
+nonvanishing has been established. Integrality is transferred through
+one of the unit reference labels $h,h-1$ before relative formal
+precision is used as absolute precision.
+
+Consequently the source radical divisibilities survive:
+\[
+ M_j^3\mid\Delta,\qquad M_j^2\mid
+ |\operatorname{num}(\beta-n)|
+\]
+when the latter numerator is nonzero. The source height proof requires
+only the weaker first power in the second divisibility. If $M_j=1$
+both divisibilities are automatic; no global quotient is imposed merely
+to state them. Thus the allowed zero-ordinate and finite-torsion
+boundaries are still covered by the source global height argument.
+
+The coefficient savings use the exact signed identity
+$c(U+cZ)(U-cZ)=cU^2-c^3Z^2$ for the first three rows.
+The inverse map is $U=(P+Q)/2$, $Z=(P-Q)/(2c)$; the existing unit
+condition makes this a rational bijection. In the last row one added
+field coordinate $L=U+cZ$ gives
+$cLU-c^2LZ=cU^2-c^3Z^2$.
+These substitutions are applied in every retained physical equation,
+including the different imaginary-component normalizations. They are
+not identifications of independently chosen elliptic points.
+
+\section{Integer completeness and the order of choices}
+Fix an integer input. Choose the source scalar reference neighborhoods,
+then the arbitrarily large positive scalar label $a\in6\Z$, the Lucas
+labels, and the four nonzero nontorsion difference points. All their
+multipliers, trace shifts and compact neighborhoods are now fixed.
+For two arguments the shift is
+$T=7+\Tr(\sum_i x(Q_i))/4>7$ on these witnesses. Indeed the first
+two points are nonzero doubles, with $x>d$ at each real embedding,
+and the other two have $x\ge-d$. The contact diameter is four.
+For three arguments the successive shifts are at least seven and
+nine and the contact diameter is $25/11$. Thus the translated contact
+sets are disjoint before any comparison prime is chosen.
+
+Increase the fixed avoidance cutoff to include poles and bad reductions
+of the other weights evaluated at each translated contact. At a selected
+prime for $j$, $v_p(q_j)=-1$ and every other weight is integral, giving
+$v_p(c)=-1$.
+
+The compatible Gaussian prime supplier may choose all selected primes
+in a sufficiently short multiplicative interval. Each relevant reduced
+elliptic group has order divisible by four and, by Hasse's bound, less
+than twice the smallest selected prime. No selected odd prime divides
+any such order: its only possible positive multiple below this bound
+would be itself, incompatible with divisibility by four. Avoid also the
+previous preparation moduli and fixed nonzero root multipliers.
+
+The source synchronization now refines $h$ modulo powers of each
+selected prime so that the primary and opposite reference formal depths
+are equal. If the initial depths are $d_0,e_0$, only the smaller one is
+raised, by imposing the appropriate valuation of $h$ or $h-1$.
+One does not demand that both $h$ and $h-1$ have positive valuation.
+The new prime-power constraints are coprime to inherited reduction
+orders and to one another. CRT retains the annihilation conditions,
+including the half-generator conditions. The source compact-component
+argument retains the real returns on the refined progression.
+
+At a successful slot of common depth $d\ge1$, reciprocals have depth
+at least $2d$, cleared comparisons and the homogeneous Lucas error have
+depth at least $2d$, and the input numerator has depth at least $3d$.
+Every displayed nonconstant factor term therefore has positive
+valuation. The shared $W$ is one modulo $p$ at that slot. At the
+opposite slot every factor is either a unit of residue one or has a
+pole. If $W$ is a unit there, $\Tr W\equiv2$ and the shifted norm
+has positive valuation. If it is a pole of order $k$, the trace has
+valuation $-k$ and the shifted norm has valuation at least $1-k$.
+In either case $v_p(D)>0$, including $D=0$. Since $s_j$ is integral,
+\[
+ g_j\equiv1\pmod p,\qquad v_p(b_j)=1.
+\]
+
+At the prepared finite and real places, the reflected contact function
+has the expansion
+\[
+ q(\lambda+u)=\kappa\lambda^{-2}+O(\lambda^{-3}),\qquad
+ \kappa=\sum_{\theta\in\Theta_0}(\theta-a)^2>0,
+\]
+with the same leading coefficient for every fixed shift $u$ and
+reflection midpoint $a$. Hence all $q_j\to0$, their pairwise ratios
+tend to one, and $s_j^2/q_j\to0$. The bounded physical tests give
+$W\to1$, $D\to0$, $g_j\to1$. This includes the place two; a bare
+claim that numerator and denominator both vanish would not suffice.
+The actual pole arguments consequently retain their prescribed local
+square classes and tend to $(204/409)^2\in(0,17)$ at the real place.
+The signed factors remain positive on sufficiently small prepared
+neighborhoods by continuity. Positivity is not asserted for arbitrary
+rational solutions.
+
+The source contact factorization gives even valuation of each $R_j$
+away from its own selected support. Multiplication by the rational square
+$g_j^2/4$ preserves parity. The selected valuations are positive, so the
+reduced denominators are squares. At this point the actual rational
+arguments are fixed and meet the source realization hypotheses. Give
+each pole its own witnesses, fill the complete finite charts, and apply
+the invertible Laurent substitutions. No previously fixed prime or
+root choice is revisited.
+
+\section{Effective three-contact transfer and the numerical anchor}
+The 41 retained scalar, reference and inverse-Vieta component rows match
+the pinned source coefficient by coefficient. The remaining three pairs
+use the v74 complete finite translated-point chart. Their difference
+abscissas are $h_i(h_i+s_i+t_i)$, even when the difference is finite
+two-torsion. The retained scalar primary ratio and scalar quotient force
+the two denominators needed by scalar extraction; deleting its alternate
+ratio permits a zero alternate ordinate but does not invalidate those
+two denominators.
+
+Writing $\sum_i x(Q_i)=S_0+\sqrt2S_1$, the two aggregate rows recover
+exactly the effective source shifts
+\[
+ t_1-t_0=13+S_0/2,\qquad t_2-t_1=17+(S_0-S_1)/2.
+\]
+Thus the effective four-point estimate
+$B_0^2<40\sum_{j<3}h(t_j)+2425$ and its label conventions are
+unchanged. The source formal estimate at every prime outside $\Gamma$
+recovers the required divisibilities, including $p=409$ as already
+explained. With the original scalar, the source $N=15$ contradiction
+therefore transfers unchanged.
+
+The displayed fixed member instead uses
+\[
+ R_s=Ar/(1+25r),
+\]
+where
+\[
+\begin{split}
+ A={}&23\cdot149\cdot263\cdot337\cdot631\cdot1063\cdot1093\cdot1171\\
+ &{}\cdot1439\cdot2161\cdot2437\cdot2837\cdot2851\cdot3187
+ \cdot3343\cdot3793\\
+ ={}&645904574641049503754777843805872291231896003979.
+\end{split}
+\]
+For each of these primes, exact exhaustive residue enumeration verifies
+$r(X)(1+25r(X))\ne0$ for every $X\in\mathbb F_p$. If $v_p(X)<0$,
+the leading coefficient $32\cdot51^4$ is a unit and
+$v_p(r)=8v_p(X)=v_p(1+25r)$. Thus $v_p(R_s)=1$ for every rational
+input, not only every integral input.
+
+The forced prime 149 still excludes the exceptional reference strata
+first. The relevant nonzero norms are $41^2/64$, $17^2/64$, $63^2/64$
+and $7$, all 149-adic units. The unchanged scalar extraction then gives
+$v_p(a)>9/4$ at each prime dividing $A$, hence $A^3\mid a$.
+None of these primes belongs to the variable scalar radical $M_S(\beta)$.
+At its primes the denominator $1+25r$ is a unit and the same extraction
+continues to give $M_S(\beta)^3\mid a$. Therefore
+\[
+ A^3M_S(\beta)^3\mid |a|,
+ \qquad A>149^{22},
+\]
+which is exactly strong enough for both effective source estimates
+\[
+ \log|a|\ge66\log149,\qquad
+ h(\beta)<2^{238}149^{-66}|a|.
+\]
+The subsequent source height calculation uses only these bounds, the
+retained shifts and the already proved divisibilities.
+
+For integer inputs $r\ge1$, so $R_s\ge A/26>2^{20}$, the uniform
+real scalar preparation bound. The numerator $Ar$ is coprime to
+$1+25r$, so $R_s(R_s+9792)$ has square reduced denominator.
+Uniform exact congruences are
+\[
+ r\bmod16\in\{4,8,12\},\qquad r\bmod3=1,
+ \qquad r\bmod17=13.
+\]
+The denominator is a unit at these primes. Since
+$9792=2^6\cdot3^2\cdot17$, the unit $1+9792/R_s$ belongs to
+$1+8\Z_2$, $1+3\Z_3$, and $1+17\Z_{17}$, respectively.
+The required local squares and the ordered scalar construction persist.
+
+The coefficient table uses a split $A=UV$. Its parameter gauge fixes
+input coordinate one and removes the parameter from all 151 non-forced
+rows, up to nonzero row factors. In the forced row it changes
+$1+22201x_{78}x_{90}-149C x_{78}$ to
+$1+25x_{78}x_{90}-Vx_{78}$, with $C=U$.
+This is exactly the physical replacement above. The remaining recorded
+maps are input-fixing diagonal maps, invertible elementary row operations,
+a witness permutation and integral shears. Every one is independently
+checked. The final polynomial is the sum of the 152 resulting squares.
+
+\section{Stronger extraction in the same numbers of variables}
+The audit suggests a further improvement that is absent from the
+coauthor's tables. In the first three field factors, replace the two
+signed terms $cU^2-c^3Z^2$ by
+\[
+                         c^5U^2-c^7Z^2.
+\]
+Keep the $c^2$ reciprocal square, the $c^4$ reciprocal fourth power,
+and the entire fourth factor unchanged. The same hyperbolic variables
+work, because
+\[
+              c^5(U+cZ)(U-cZ)=c^5U^2-c^7Z^2.
+\]
+The four residue classes used in the audit are unchanged. The shared
+gate therefore still provides a slot with every term of valuation
+greater than $-\mu/4$.
+
+\begin{proposition}[One additional order of precision]
+The modified factors give
+\[
+ M_j^4\mid\Delta,
+ \qquad M_j^3\mid |\operatorname{num}(\beta-n)|
+\]
+when the corresponding residual is nonzero. They admit complete
+quartic compilations in 165 and 180 variables, with 139 and 152
+quadratic rows respectively. The balanced 165-variable family has
+2607 monomials and the same exact coefficient-height formula as the
+audited 165-variable family.
+\end{proposition}
+\begin{proof}
+Each of the four cleared comparison errors and the homogeneous Lucas
+error occurs to the fourth power with exponent five or seven in $c$.
+Its valuation is thus greater than $19\mu/16$ or $27\mu/16$,
+respectively. Since $\mu\ge1$, each error has valuation at least two.
+The same holds for the input numerator, whose exponent is five.
+The unchanged reciprocal tests still have even valuation at least two.
+The comparison denominators and the squared homogeneous Lucas
+factor regain two orders, while the input denominator regains one.
+Thus the comparison and Lucas depths are at least four, and the input
+depth is at least three.
+
+As in the audit, transfer integrality before invoking the formal
+logarithm. The retained relative error of order four is now an
+absolute error of order four. Hence all four actual ratios are
+congruent to their labels modulo $p^4$, the Lucas residual vanishes
+modulo $p^4$, and the input residual vanishes modulo $p^3$.
+Taking squarefree products proves the assertions. There is no
+claim of greater label precision than the available order-four
+formal estimate.
+
+Completeness needs no additional formal depth. At the existing
+synchronized depth $d\ge1$ the ordinary errors have valuation at
+least $2d$ and the input numerator at least $3d$. The new error
+terms have valuation at least $8d-7>0$; the new input term has
+valuation at least $12d-5>0$. The opposite-slot separation, the
+shared gate, and all fixed-place and real limits are unchanged.
+
+The stored integral Laurent weights give ordinary quadratic rows
+with exactly the same physical coordinates and the same three
+unit coordinates $c,c^{-1},c^{-2}$. Their literal equations are
+$c c^{-1}=1$ and $c^{-2}=(c^{-1})^2$. The independent checker
+reverses both gauges and proves that exactly six factor-component
+rows acquire the specified $c^4$ multiplier on their odd
+hyperbolic term; every other physical row is unchanged. It also
+expands the two systems and verifies the parameter balancing and
+exact height for every $N\ge1$.
+\end{proof}
+
+\section{A smaller fully specified 180-variable member}
+The stronger Lucas divisibility reduces the sufficient forced scalar
+size substantially. Retain the effective source constants
+\[
+ \mathcal C<2^{300},\quad K=2^{304},\quad J_*<2^{75},
+ \quad E(M)<(21/10)M^{1/6006}.
+\]
+With $B_0=\max(1,|n|,|a|,|t|,|b|)$ and $s=\log B_0$, the
+same reflected-height calculation, now using $M_j^4\mid\Delta$,
+gives, if $\Delta\ne0$,
+\[
+ B_0^2<121\mathcal C\sqrt{21/10}\,
+ |\Delta|^{1/4+1/48048}
+ \left(\log J_*+\frac18\log|\Delta|\right).
+\]
+The additive constants are absorbed exactly as in the effective
+source: at $|\Delta|=1$ the same positive constant majorant applies.
+Using $|\Delta|\le14B_0^4$ gives
+\begin{equation}\label{eq:improved-endpoint}
+ e^{(1-1/12012)s}<350\,2^{300}(53+s/2).
+\end{equation}
+For example, the exact rational estimates
+\[
+ \sqrt{21/10}<29/20,\quad 14^{1/4}<97/50,
+ \quad 14^{1/48048}<10001/10000
+\]
+show the coefficient is less than 350. The last estimate follows
+already from the first three terms of the binomial expansion of
+$(1+1/10000)^{48048}$. Also $\log2<7/10$ and $\log14<4$ imply
+the displayed bound on its linear factor.
+
+The quotient of the left side of
+\eqref{eq:improved-endpoint} by $53+s/2$ is increasing for $s\ge0$,
+since $12011/12012>1/106$. At $s=316\log2$, division by $2^{300}$
+and $e^{-x}>1-x$ give the exact reversed comparison
+\[
+ 2^{16}\left(1-\frac{316\cdot7}{10\cdot12012}\right)
+ =\frac{137986048}{2145}
+ >57260
+ =350\left(53+\frac{158\cdot7}{10}\right).
+\]
+Thus $B_0\ge2^{316}$ excludes $\Delta\ne0$.
+
+Choose the smaller squarefree anchor
+\[
+\begin{split}
+ A_\mathrm{new}={}&23\cdot149\cdot263\cdot631\cdot1063\cdot1171
+ \cdot1439\cdot2161\cdot2437\cdot2851\cdot3343\\
+ ={}&51132150162547763354407979038657.
+\end{split}
+\]
+Every prime is one of the previously certified anchor primes, and
+\[
+ A_\mathrm{new}^3\ge2^{316},\qquad A_\mathrm{new}>26\,2^{20}.
+\]
+With $R_s=A_\mathrm{new}r/(1+25r)$, the same reference exclusion,
+scalar extraction and ordered scalar completeness proof applies.
+It gives $c_a=|a|\ge A_\mathrm{new}^3$ and
+\[
+ \tau=h(\beta)<2^{238}A_\mathrm{new}^{-3}c_a<c_a/2.
+\]
+Consequently $\Delta=0$ by the preceding endpoint.
+
+For the remaining input residual it is enough to use the weaker
+source divisibility $M_j\mid J_X$, which follows from the improved
+third power. The unchanged coarse calculation gives
+\[
+ s<\frac{23}{22}\log(256036K)+\frac{12}{11}\tau<240+c_a.
+\]
+Here the constant inequality follows from
+$(23/22)\,322\,(7/10)<240$, while the coefficient of $c_a$ is
+less than one. The source Lucas descent gives
+$s\ge(c_a-6)\log(c_a-3)$. Since $c_a\ge2^{316}$, this is
+strictly greater than $2(c_a-6)>240+c_a$, a contradiction.
+Therefore $J_X=0$, and the source squarefree-denominator argument
+again gives $X\in\Z$. Integer completeness was proved above.
+
+\begin{theorem}[Improved fixed member]
+Under the same effective arithmetic interfaces, the improved literal
+specifies an integer quartic in 180 total rational variables whose
+input projection is $\Z$. It has 152 quadratic rows, 2850 monomials,
+content one, and exact coefficient height
+\[
+             206625078319751697390503348692624,
+\]
+which has 108 bits, compared with the supplied member's 161 bits.
+Its canonical literal has 59084 ASCII bytes and SHA-256
+\begin{center}\small
+\texttt{5ee7330c9e2edd7d0f918fc692e7824089007ee0358e47079601e8aa9c8b4683}.
+\end{center}
+\end{theorem}
+\begin{proof}
+Use the input-fixing parameter gauge of the checked enhanced table
+and the split
+\[
+ U=3593614808933267,\qquad V=14228611824350171,
+ \qquad UV=A_\mathrm{new}.
+\]
+The forced row in this gauge has constant monomial $c^2$ rather
+than 1; replacing its two scalar coefficients still gives exactly
+$R_s=A_\mathrm{new}r/(1+25r)$. All other rows have a common parameter
+power under the stored physical gauge, so the substitution changes
+no other physical equation. Apply the recorded diagonal parameter
+weights and a witness permutation. Finally multiply each of the
+three contact-combination coordinates by 245 and primitively
+normalize the affected rows. This is an invertible rational diagonal
+map and fixes the input. The independent checker reconstructs all
+these operations from the enhanced source, expands every row
+square, and verifies the exact maximum coefficient, equal to $16U^2$,
+and the literal. The input fourth-power coefficient remains one.
+\end{proof}
+The new member prioritizes smaller coefficient height. The supplied
+180-variable member remains a valid alternative with fewer monomials
+and a slightly shorter literal.
+
+
+\section{A general number-field gate theorem}
+The quadratic-field mechanism admits a useful precise extension.
+For a number field $F/\Q$ of degree $d\ge2$, let
+$e_{d-1}(W)$ denote the elementary symmetric function of degree $d-1$
+of the $d$ conjugates of $W$; it is rational and has polynomial degree
+$d-1$ in field coordinates. Define
+\begin{equation}\label{eq:general-gate}
+ D\,e_{d-1}(W)=\Nm_{F/\Q}(W-1).
+\end{equation}
+For $d=2$, this is exactly the preceding trace gate.
+
+\begin{theorem}[Shared gate over an arbitrary number field]
+Suppose $p$ is unramified in $F$ and the pole obstruction and rational
+contact valuations are as in Lemma~\ref{lem:gate}. Assume all factors
+of $W$ have nonpositive valuation at all $d$ conjugate slots, counted
+with multiplicity. Use \eqref{eq:general-gate} and the same
+$g_j=1+D^2+(c-q_j)^2/q_j$. Then its denominator is automatically
+nonzero on every rational solution, and some slot satisfies
+$v(W)>-\mu/4$.
+
+For completeness, suppose the prepared $W$ at every slot is either a
+unit congruent to one or has a pole, with at least one unit slot.
+If $p>d$, then $v_p(D)>0$. Thus the same integer-witness preparation
+works for any fixed number $m$ of separated contact arguments, provided
+its remaining source interfaces and common weight asymptotic hold.
+\end{theorem}
+\begin{proof}
+If $e_{d-1}(W)=0$, the equation forces $W=1$ because the norm is the
+norm of a field element. But $e_{d-1}(1)=d\ne0$, a contradiction.
+The rational parity proof of Lemma~\ref{lem:gate} is unchanged.
+If one slot has nonnegative valuation, use it. Otherwise all slot
+values $w_i$ are negative. Every summand of $e_{d-1}(W)$ has valuation
+at least $\sum_iw_i-\max_iw_i$. The shifted norm has valuation
+$\sum_iw_i$. Hence $v_p(D)\le\max_iw_i$ as required.
+
+For the preparation, $W\ne0$ and
+$e_{d-1}(W)=\Nm(W)\Tr(W^{-1})$.
+If precisely $k$ slots are units congruent to one, then
+$\Tr(W^{-1})\equiv k\pmod p$. Here $1\le k\le d<p$, so the trace
+is a unit. At a pole slot $v(W-1)=v(W)$, and at a unit slot
+$v(W-1)>v(W)=0$. Consequently the numerator in
+\eqref{eq:general-gate} has strictly greater valuation than its
+denominator, giving $v_p(D)>0$.
+At fixed real and finite places $W\to1$ gives $D\to0$ because the
+denominator tends to $d$. The common asymptotic gives
+$(c-q_j)^2/q_j\to0$ for every fixed $m$. The remaining preparation
+is precisely the already stated source interface.
+\end{proof}
+\begin{remark}
+The field hypothesis is essential for automatic denominator exclusion:
+in a product of fields a zero norm need not force $W=1$ in every
+component. The extension does not supply elliptic, prime-selection,
+contact-height or pole-realization inputs for new number fields. Its
+gate has degree $d$ before any quadratic compilation, so a new
+quartic count is not implied for $d>2$.
+\end{remark}
+
+\section{Verification limits and further searches}
+The independent standard-library checker reads the supplied tables,
+expands every row square, checks all active coordinate indices and
+input fourth-power coefficients, derives the exact general height
+for all $N\ge1$, applies every fixed-map operation afresh, and parses
+the literal independently. It also checks 26778 residues in the 16
+anchor prime fields and the complete modulo-eight noncancellation
+classes for every odd contact depth. The supplied physical checker
+separately reverses every Laurent scaling and compares to the pinned
+physical source. Its scalar checker matches all 41 retained source
+rows. These are complementary checks with explicitly different scopes.
+
+Two documentation references need normalizing when integrated:
+\texttt{scalar\_audit.py} in the transfer prose means the supplied
+\texttt{check\_scalar.py}, and the example \texttt{check\_gated.py} in
+the physical checker's docstring means \texttt{check\_physical.py}.
+No mathematical repair of the two claimed reductions was needed in
+this audit.
+
+Exploratory linear-integer searches found no feasible unit weighting
+that deletes the stored square of $c^{-1}$ from the supplied packing,
+or that turns its last partial hyperbolic pair into a full pair with
+only the same three unit coordinates. These observations are not
+certificates of optimality and are not lower bounds on arbitrary
+quartic presentations. A different chart, packing, or arithmetic
+mechanism could lower the counts further.
+\end{document}
