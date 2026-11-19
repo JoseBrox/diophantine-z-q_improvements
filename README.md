@@ -12,7 +12,7 @@ whose rational input projection is the integers, under the arithmetic premises s
 
 ## Current constructions — 19 November 2026
 
-The reductions **193→165, 229→180, 68→62 and 13→11** come from **notes of Gabe Conant with Astra 6.2**. They have been audited and integrated here, with further degree, coefficient and hypothesis improvements. The [source audit](docs/results_20261119_v78.md) distinguishes those contributions from the subsequent work. The [v79 continuation](docs/results_20261119_v79.md) further reduces the ordinary-abc quartic from **62 to 59 variables**.
+The reductions **193→165, 229→180, 68→62 and 13→11** come from **notes of Gabe Conant with Astra 6.2**. They have been audited and integrated here, with further degree, coefficient and hypothesis improvements. The [source audit](docs/results_20261119_v78.md) distinguishes those contributions from the subsequent work. The [v80 continuation](docs/results_20261119_v80.md) further reduces the ordinary-abc quartic through **62→59→58 variables** and uses the published pole theorem directly.
 
 “None” in the height-hypothesis column means **no additional conjecture beyond the arithmetic premises explicitly retained in the proof**. A complete independent audit of all inherited elliptic, prime-pattern, pole-realization and height foundations has not been established.
 
@@ -23,11 +23,11 @@ The reductions **193→165, 229→180, 68→62 and 13→11** come from **notes o
 | [Fully specified general polynomial](papers/few_variables25/four_contact_scalar_20261119_v78.tex) | None | **27** | **≤ 335,647,080,448** | Explicit `L=143`; coefficient height < `2^(2^46)`. |
 | [Fully specified quartic](papers/quartic/shared_product_audit_20261119_v78.tex) | None | **180** | **4, exact** | 152 quadratic squares; 2,850 monomials; 108-bit exact height. |
 | [Few-variable family under abc](papers/conditional_few_variables/twelve_contact_first_scale_20261119_v78.tex) | Ordinary rational abc | **11** | **≤ 6,361,985** | Twelve contacts at the first height scale; sufficient fixed odd shift ineffective. |
-| [Quartic family under abc](papers/quartic_existence/single_derivative59_20261119_v79.tex) | Ordinary rational abc | **59** | **4, exact** | 51 quadratic squares; 873 monomials; sufficient fixed odd shift ineffective. |
+| [Quartic family under abc](papers/quartic_existence/one_helper58_20261119_v80.tex) | Ordinary rational abc | **58** | **4, exact** | 50 quadratic squares; 867 monomials; sufficient fixed odd shift ineffective. |
 
 The unrestricted-degree bounds describe complete finite determinant specifications; those enormous polynomials have not been fully expanded. All displayed quartics are exactly expanded. Every construction has integer content one, with primitive normalization where needed. Small coefficient fixtures and coefficient-height cutoffs are not sufficient defining parameters.
 
-The [results JSON](data/results_20261119_v79.json) records the exact specifications, source assumptions and parameter qualifications. Weaker fixed-exponent versions of abc and alternative coefficient presentations are retained in the [detailed proof guide](docs/results_20261119_v78.md#weaker-hypotheses-and-generalizations).
+The [results JSON](data/results_20261119_v80.json) records the exact specifications, source assumptions and parameter qualifications. Weaker fixed-exponent versions of abc and alternative coefficient presentations are retained in the [detailed proof guide](docs/results_20261119_v78.md#weaker-hypotheses-and-generalizations).
 
 ## Coefficients and explicit files
 
@@ -39,7 +39,7 @@ H(F_N)=\max\{126616122944180358034867798936,\;149^{2N+2}\},\qquad N\ge1.
 
 A sufficient defining `N` exists under the retained premises, but its value is ineffective. The fully specified quartic has exact coefficient height **206625078319751697390503348692624**. Its [expanded polynomial](computation/coauthor_audit_v78/work_general/enhanced/180/anchor_scaled/quartic180.txt) occupies **59,084 ASCII bytes**. The [sparser presentation from Gabe Conant with Astra 6.2](computation/coauthor_audit_v78/H10-quartics/quartics/explicit/quartic180.txt) is also retained: 54,695 bytes and a larger 161-bit height.
 
-The 59-variable conditional quartic has exact height `max(22838305425411,B²+4092)` for every positive integer `B`; every sufficiently large fixed odd `B` is defining under its stated premises. The threshold is ineffective. Its [expanded coefficient table](computation/variable_reductions_v79/abc/quartic59/polynomial.json), [quadratic equations](computation/variable_reductions_v79/abc/quartic59/quadrics.json), and [independent reconstruction](computation/variable_reductions_v79/abc/check59.py) are supplied. The previous 62-variable coefficient presentations remain in the [v78 package](computation/coauthor_audit_v78).
+The 58-variable conditional quartic has exact height `max(22838305425411,B²+4091)` for every positive integer `B`; every sufficiently large fixed odd `B` is defining under its stated premises. The threshold is ineffective. Its [expanded coefficient table](computation/variable_reductions_v80/abc/quartic58/polynomial.json), [quadratic equations](computation/variable_reductions_v80/abc/quartic58/quadrics.json), and [independent reconstruction](computation/variable_reductions_v80/abc/check58.py) are supplied. The previous 62-variable coefficient presentations remain in the [v78 package](computation/coauthor_audit_v78).
 
 ## Contributors and citation
 
@@ -82,6 +82,7 @@ Use **Python 3.12** and **SymPy 1.14.0**. From the repository root:
 
 ```sh
 python -m pip install sympy==1.14.0
+python -B scripts/verify_v80.py --report /tmp/v80-verification.json
 python -B scripts/verify_v79.py --report /tmp/v79-verification.json
 python -B scripts/verify_v78.py --report /tmp/v78-verification.json
 python -B scripts/verify.py --full --receipt /tmp/legacy-verification.json

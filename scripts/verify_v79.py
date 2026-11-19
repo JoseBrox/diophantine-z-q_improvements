@@ -79,9 +79,15 @@ def main():
     assert 'notes of Gabe Conant with Astra 6.2' in readme
     abc_rows = [line for line in readme.splitlines() if '| Ordinary rational abc |' in line]
     assert len(abc_rows) == 2
-    assert any('| **59** | **4, exact** |' in line for line in abc_rows)
+    # Keep the complete historical 59-variable audit while README advances.
+    record_link = re.search(r'\[results JSON\]\((data/results_[^)]*\.json)\)', readme)
+    assert record_link
+    latest = read(ROOT / record_link.group(1))
+    latest_quartic = next(row for row in latest['current_constructions']
+                          if row['id'].startswith('ordinary_abc_quartic'))
+    assert latest_quartic['degree'] == 4 and latest_quartic['variables'] <= 59
+    assert any(f"| **{latest_quartic['variables']}** | **4, exact** |" in line for line in abc_rows)
     assert any('| **11** | **≤ 6,361,985** |' in line for line in abc_rows)
-    assert '[results JSON](data/results_20261119_v79.json)' in readme
     assert '$' not in readme and r'\(' not in readme and r'\[' not in readme
 
     builds = read(ROOT / 'data/audits/tex_build_20261119_v79.json')

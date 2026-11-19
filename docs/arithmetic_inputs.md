@@ -1,8 +1,10 @@
+> **Source map through v59.** The numerical table below is historical. Current records are in the [v80 result table](../data/results_20261119_v80.json) and [v80 proof guide](results_20261119_v80.md). The 58-variable quartic uses Burungale, arXiv:2611.16130v1, Theorem B in its stated square class seven; it does not require the square-class-one strengthening retained in the v79 construction. Other elliptic, comparison, trace and prime-pattern inputs remain explicit in its proof.
+
 # Arithmetic inputs, theorem scope, and effectiveness
 
 The construction theorems identify rational input projections with $\mathbb Z$ under the arithmetic inputs stated in each paper. Every variable count includes the input. A finite coefficient specification and a certified sufficient value of its fixed parameter are separate conclusions.
 
-## Current constructions
+## Constructions at the v59 checkpoint
 
 | Construction | Total variables | Degree | Monomials | Sufficient fixed parameter |
 |:--|--:|:--|:--|:--|

@@ -1,6 +1,6 @@
 # Research directions
 
-The [v79 continuation](results_20261119_v79.md) reduces the ordinary-abc quartic from **62 to 59 variables**, using a single derivative contact, a rational normalizer valid at both signs of odd valuation, and a quadratic derivative circuit without cubic-power registers. It retains the parent arithmetic premises in addition to ordinary rational abc. The constructions originating in **notes of Gabe Conant with Astra 6.2** are distinguished from these subsequent improvements in the [source audit](results_20261119_v78.md).
+The [v80 continuation](results_20261119_v80.md) reduces the ordinary-abc quartic from **59 to 58 variables**, following the earlier 62-to-59 reduction. The single auxiliary scalar `alpha=u+u²D²` and `tau(1+alpha)=alpha` replace two normalization coordinates by one. Scaling the native input to `b=7*tau²/u` matches Burungale's published Theorem B and removes the stronger square-class-one twist premise retained in v79. The remaining parent arithmetic inputs are unchanged. The contributions originating in **notes of Gabe Conant with Astra 6.2** remain distinguished from the subsequent project work.
 
 The other current counts remain **25** for the general polynomial, **165** and **180** for the general quartics, and **11** for the unrestricted-degree abc construction. No further reduction of those counts has been proved. Every count includes the input. The priorities remain variable count, degree, then coefficient height; neither global minimality nor a complete independent audit of inherited arithmetic foundations is asserted.
 
@@ -12,7 +12,7 @@ The shared norm selector and stronger odd-power packing preserve the 165/180 coo
 
 Further general variable reduction still requires a new arithmetic argument or a smaller guarded quadratic compilation. The [full-pair parity obstruction](../papers/quartic/hyperbolic_parity_20261119_v79.tex) proves failure only within its specified retained chart and termwise integral Laurent model; it does not establish optimality. The general 21 and ordinary-abc 9 targets continue to require rational realization at actual physical traces. The new diagonal Hasse and zero-ordinate obstructions concern specific universal specializations on all prepared inputs and cannot be promoted to nonexistence of 21/9 constructions.
 
-The older degree bounds cited below identify their original source architectures. Current complete bounds and all parameter qualifications are in the [main table](../README.md) and [v79 records](../data/results_20261119_v79.json).
+The older degree bounds cited below identify their original source architectures. Current complete bounds and all parameter qualifications are in the [main table](../README.md) and [v80 records](../data/results_20261119_v80.json).
 
 ## Rank-one curves over general number fields
 
