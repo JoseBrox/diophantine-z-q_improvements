@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Materialize the pinned coauthor sources and replay the v78 finite audits.
+"""Materialize Gabe Conant's pinned notes with Astra 6.2 and replay v78.
 
 The repository is never modified. Arithmetic premises and universal transfer
 arguments are stated in the accompanying papers; this gate checks finite data.
@@ -23,6 +23,29 @@ def read(path):
 
 def digest(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
+
+def authenticate_reviewed_source(path, expected):
+    """Keep the original review pins after the named-attribution correction.
+
+    Exact reverse edits recover the bytes covered by the original review;
+    no arithmetic, coefficient or original-source assertion is relaxed.
+    """
+    if digest(path) == expected:
+        return
+    revisions = read(ROOT / 'data/audits/attribution_20261119.json')['papers']
+    revision = revisions[str(path.relative_to(ROOT))]
+    assert revision['previous_sha256'] == expected
+    assert revision['current_sha256'] == digest(path)
+    current = path.read_text()
+    previous = current
+    last_start = len(current)
+    for edit in reversed(revision['reverse_edits']):
+        start, end = edit['current_start'], edit['current_end']
+        assert 0 <= start <= end <= last_start
+        assert current[start:end] == edit['current_text']
+        previous = previous[:start] + edit['previous_text'] + previous[end:]
+        last_start = start
+    assert hashlib.sha256(previous.encode()).hexdigest() == expected
 
 def materialize(destination):
     """Create the original two archives and new work beside a pinned source tree."""
@@ -61,7 +84,10 @@ def main():
         assert digest(PACKAGE/name) == expected, name
     for name, expected in manifest['papers'].items():
         assert digest(ROOT/name) == expected, name
-    reviews = read(ROOT/'data/audits/tex_build_20261119_v78.json')
+    original_reviews = read(ROOT/'data/audits/tex_build_20261119_v78.json')
+    for paper in original_reviews['papers']:
+        authenticate_reviewed_source(ROOT/paper['paper'], paper['source_sha256'])
+    reviews = read(ROOT/'data/audits/tex_build_20261119_attribution.json')
     assert len(reviews['papers']) == 6
     for paper in reviews['papers']:
         assert digest(ROOT/paper['paper']) == paper['source_sha256']
@@ -95,12 +121,12 @@ def main():
     for name, expected in ordinary_review['reviewed_files'].items():
         relative = str(Path(name).relative_to('audit_20261119'))
         path = ROOT/paper_paths[relative] if relative in paper_paths else PACKAGE/relative
-        assert digest(path) == expected, name
+        authenticate_reviewed_source(path, expected)
     scalar_review = read(PACKAGE/'work_abc/scalar_independent_review.json')
     for name, record in scalar_review['artifacts'].items():
         relative = 'work_root/'+name
         path = ROOT/paper_paths[relative] if relative in paper_paths else PACKAGE/relative
-        assert digest(path) == record['sha256'], name
+        authenticate_reviewed_source(path, record['sha256'])
     stages = []
     with tempfile.TemporaryDirectory(prefix='diophantine-v78-') as temporary:
         audit, source_count = materialize(Path(temporary))

@@ -85,3 +85,21 @@ The varying-level pole theorem retains Burungale's exact simultaneous-twist inpu
 ## Canonical explicit-polynomial measurement
 
 The compact 229-variable package includes unchanged copies of the explicit-record notation and measuring program from [elliotglazer/diophantine-z-q, commit 970ec6bf338dc47fad151132a4122fd5c899e348](https://github.com/elliotglazer/diophantine-z-q/tree/970ec6bf338dc47fad151132a4122fd5c899e348/docs/explicit-record). Their original paths are `docs/explicit-record/README.md` and `docs/explicit-record/measure_plain_text.py`. Their SHA-256 digests, source URLs and Git blob identities are retained in `computation/quartic/explicit229_compact_v68/transformation.json`. These files specify and measure the upstream notation; the new coefficient normalization and independent algebra checker are separate project work. Meeting the notation's size requirement does not assert upstream review or acceptance.
+
+
+## Gabe Conant’s notes with Astra 6.2 (v78 integration)
+
+The supplied `H10-quartic-constructions.zip` and
+`H10-eleven-variable-constructions.zip` are **notes of Gabe Conant with
+Astra 6.2**. They supply the shared-product reductions 193→165 and
+229→180, the conditional quartic reduction 68→62, the weak-abc reduction
+13→11, and their associated finite-algebra and realization notes. The
+[attribution record](computation/coauthor_audit_v78/ATTRIBUTION.md)
+distinguishes these source contributions from the subsequent independent
+audit and extensions. Original source files and archive checksum lists
+remain unchanged; historical technical identifiers retain their spelling.
+
+The six integration papers, current proof guide, package documentation and
+main README use this named attribution. The earlier 198-variable archive
+is separately attributed above and is not relabeled as part of these new
+notes.

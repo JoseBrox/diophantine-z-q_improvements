@@ -1,6 +1,19 @@
-> **Retained source guide.** This page describes dated source constructions. For the current counts, corrected proofs, exact specifications, and verification commands, see the repository [README](../README.md) and `data/results_20261115_v40.json`. The [fixed-fiber proof guide](common_parameter_guard_reduction_20261116_v42.md) covers the current shared-parameter research. Historical source equations and assumptions below are retained for reproduction.
+> **Current and retained checks.** Current counts, exact specifications and arithmetic qualifications are in the [README](../README.md), [v79 result records](../data/results_20261119_v79.json), and [v79 proof guide](results_20261119_v79.md). The full ordered sequence is in the [CI workflow](../.github/workflows/verify.yml). Historical source equations and their checks below remain available for reproduction.
 
 # Reproducing the mathematical data
+
+## Current verification
+
+Use **Python 3.12** and **SymPy 1.14.0** for the complete current sequence. Run the new exact gate and its source audit with:
+
+```sh
+python -B scripts/verify_v79.py --report /tmp/v79-verification.json
+python -B scripts/verify_v78.py --report /tmp/v78-verification.json
+```
+
+The v79 gate reconstructs the 59-variable abc quartic in a temporary tree, independently checks every coefficient and physical source map, and verifies the general-pole normalization and scoped parity certificate. The v78 gate restores the pinned notes of **Gabe Conant with Astra 6.2** and replays their source checks and subsequent extensions. The original attribution-era review hashes remain authenticated by exact reverse edits. Neither gate establishes the retained arithmetic premises or an effective shift for an existence family.
+
+Run every command in the CI workflow for the complete regression sequence. The final `scripts/verify.py --full` command covers the retained legacy inputs; it does not by itself run all later dated gates. Verification receipts should be written outside the checkout. If the system temporary directory is unavailable, set `TMPDIR` to a writable directory outside the checkout before running the copy-based gates.
 
 ## Fixed pole fibers and separated obstructions
 
@@ -10,7 +23,7 @@ python -B scripts/verify_v42.py
 
 This reconstructs the native scalar-dependency and fixed-fiber certificate, including all four source circuits and exact odd-multiple examples. It also reconstructs the mixed-reference-sign certificate and checks it independently with Jacobian coordinates, then verifies the exact branch and local-resolution identities for the fixed-input K3 models and the maps, twists, fixed points and explicit formulas in the rational-section classification. The positive proof is [Fixed pole fibers and independent detector indices](../papers/pole_parameters/common_parameter_guard_reduction_20261116_v42.tex); the obstruction proof and computational package are indexed separately in [negative_results](../negative_results/README.md). The universal recurrence, density and infinite-progression statements are proved in the manuscripts. No smaller defining polynomial or common rational fiber is certified by these computations.
 
-## Requirements and full verification
+## Requirements for the retained legacy sequence
 
 All polynomial construction checks and the finite structural algebra use **Python 3.10 or newer and its standard library**. The optional exact elliptic rank, descent, and function-field calculations additionally require **cypari2** (tested with version 2.2.4 and PARI/GP 2.17.2). The published data support offline reproduction. TeX is needed only to rebuild the PDFs.
 

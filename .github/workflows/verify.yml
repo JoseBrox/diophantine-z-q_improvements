@@ -13,7 +13,9 @@ jobs:
         with:
           python-version: '3.12'
       - run: python -m pip install sympy==1.14.0
-      - name: Verify audited coauthor reductions and the strengthened v78 constructions
+      - name: Verify the 59-variable quartic, physical maps and scoped parity certificate
+        run: python -B scripts/verify_v79.py --report /tmp/v79-verification.json
+      - name: Verify Gabe Conant notes with Astra 6.2 and the strengthened v78 constructions
         run: python -B scripts/verify_v78.py --report /tmp/v78-verification.json
       - name: Verify uniform complement guards and the reference normalizer
         run: python -B scripts/verify_v77.py --report /tmp/v77-verification.json

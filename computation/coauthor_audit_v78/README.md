@@ -1,6 +1,6 @@
-# Coauthor audit and extensions, v78
+# Audit of Gabe Conant’s notes with Astra 6.2 and extensions, v78
 
-This package integrates the two coauthor archives supplied on 19 November 2026,
+This package integrates the two archives of notes by Gabe Conant with Astra 6.2 supplied on 19 November 2026,
 with separate independent audits and further proved improvements. Their original
 attribution is retained. See the complete [result guide](../../docs/results_20261119_v78.md)
 and [result table](../../data/results_20261119_v78.json).
@@ -26,7 +26,7 @@ The new work is in four separate directories:
 
 The directory labels identify the separate audit workstreams; all contributions
 belong to the project under the repository's attribution and license terms.
-The original coauthor reductions are credited in every associated proof.
+The original reductions of Gabe Conant with Astra 6.2 are credited in every associated proof.
 
 Run from the repository root:
 

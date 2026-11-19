@@ -1,12 +1,12 @@
 # Weak eleven-variable audit and preferred improvements
 
-This directory contains an integration-ready audit of the coauthor single-pole weak-abc construction, improvements that preserve its eleven-variable count, and independent checks of the ancillary realization obstructions. No shared repository files were edited by this subtask.
+This directory contains an integration-ready audit of the Gabe Conant–Astra 6.2 single-pole weak-abc construction, improvements that preserve its eleven-variable count, and independent checks of the ancillary realization obstructions. No shared repository files were edited by this subtask.
 
 ## Preferred results
 
 All counts include the rational input. The finite algebra has rank 128.
 
-| Weak-abc exponent κ | Scale power e | Band k | Coauthor degree bound | Preferred degree bound | Guard degree | Separator degree | Support bound |
+| Weak-abc exponent κ | Scale power e | Band k | Conant–Astra degree bound | Preferred degree bound | Guard degree | Separator degree | Support bound |
 |---|---:|---:|---:|---:|---:|---:|---:|
 | 121/100 | 6 | 6 | 33,344,385 | **32,542,081** | 490 | 253,744 | less than 2^235 |
 | 16/15 | 4 | 5 | 19,861,377 | **19,366,273** | 418 | 150,880 | less than 2^228 |
@@ -15,7 +15,7 @@ The preferred specifications are `full_flip_first/` and `full_strong_flip/`. In 
 
 - `native.json`: exact rational coefficient DAG and finite algebra source;
 - `polynomial.json`: independently replayed parent integral-algebra certificate;
-- `compact.json`: the independently replayed coauthor compact-guard intermediate;
+- `compact.json`: the independently replayed Conant–Astra 6.2 compact-guard intermediate;
 - `strengthened.json`: the final certificate with ten further automatic factors and explicit recovery order;
 - `compiler_adjustments.json`: the full auxiliary point-degree adjustments.
 
@@ -75,7 +75,7 @@ python3 -B strengthen_guards.py --repo ../../diophantine full_flip_first full_st
 
 The initial relative paths assume this directory's current placement. When relocating the scripts, supply the corresponding explicit paths; the checkers likewise accept `--repo`.
 
-Required coauthor sources are only `counts/poles/build_weak11.py` and `counts/poles/finite_bounds.py`, with the latter's ordinary upstream compiler dependencies. The required pinned repository components are:
+Required sources from Gabe Conant with Astra 6.2 are only `counts/poles/build_weak11.py` and `counts/poles/finite_bounds.py`, with the latter's ordinary upstream compiler dependencies. The required pinned repository components are:
 
 - `computation/few_variables/trace27_nontorsion/field_circuit.py`;
 - `computation/few_variables/unit_norm_v28/build_sources.py` and `build.py`;

@@ -14,7 +14,7 @@ The `height62/` presentation is superseded by `small_gate62/height/`. The one-un
 
 ## Reproduction
 
-Python 3.11 or later and SymPy are sufficient. By default the scripts use the attached coauthor parent at `../H10-quartics/abc62`. When relocated, set `ABC62_PARENT` to that directory. Only the parent's `quadrics.json`, `parameter-scaling.json`, and `sparsity.json` are needed by the new checkers; the original physical-source reconstruction is separately audited by the coauthor checkers.
+Python 3.11 or later and SymPy are sufficient. By default the scripts use the attached parent from Gabe Conant with Astra 6.2 at `../H10-quartics/abc62`. When relocated, set `ABC62_PARENT` to that directory. Only the parent's `quadrics.json`, `parameter-scaling.json`, and `sparsity.json` are needed by the new checkers; the original physical-source reconstruction is separately audited by the supplied Conant–Astra 6.2 checkers.
 
 ```sh
 ABC62_PARENT=/absolute/path/to/abc62 python3 -B check_small_gate62.py

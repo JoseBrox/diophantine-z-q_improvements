@@ -1,14 +1,18 @@
 # Research directions
 
-The [v78 audit and continuation](results_20261119_v78.md) establishes the coauthor counts **165 and 180 for the general quartics, 62 for the ordinary-abc quartic, and 11 under the stated weak-abc hypotheses**, retaining the source arithmetic premises. The general few-variable count remains 25. The explicit 180-variable polynomial has 108-bit exact height; the ordinary-abc eleven-variable degree bound is 6,361,985. Every count includes the input. The priorities remain variable count, degree, then coefficient height. No global minimum or complete independent audit of the inherited arithmetic foundations is asserted.
+The [v79 continuation](results_20261119_v79.md) reduces the ordinary-abc quartic from **62 to 59 variables**, using a single derivative contact, a rational normalizer valid at both signs of odd valuation, and a quadratic derivative circuit without cubic-power registers. It retains the parent arithmetic premises in addition to ordinary rational abc. The constructions originating in **notes of Gabe Conant with Astra 6.2** are distinguished from these subsequent improvements in the [source audit](results_20261119_v78.md).
 
-## Consequences of the coauthor audit
+The other current counts remain **25** for the general polynomial, **165** and **180** for the general quartics, and **11** for the unrestricted-degree abc construction. No further reduction of those counts has been proved. Every count includes the input. The priorities remain variable count, degree, then coefficient height; neither global minimality nor a complete independent audit of inherited arithmetic foundations is asserted.
+
+The next constructive tasks are to merge general contact conditions with a controlled loss in their odd prime supports; replace the scalar elliptic chart by a smaller chart that still supplies its logarithmic ratio; and produce rational witnesses on the actual intrinsic pole fibers with one fewer free parameter. A new parity certificate excludes only the full hyperbolic pair in the retained diagonal Laurent compilation, so changing the chart or equations remains open.
+
+## Consequences of the audit of Gabe Conant’s notes with Astra 6.2
 
 The shared norm selector and stronger odd-power packing preserve the 165/180 coordinate counts while improving local divisibility. The six- and eight-contact weak-abc estimates give explicit variable/hypothesis tradeoffs; the eight-contact quartic family covers every fixed exponent below 3/2. Positive detector factors, square-class normalization of the intrinsic pole, and ordered removal of automatic point guards substantially lower the finite-algebra degree. These are proved changes to complete constructions.
 
-Further variable reduction still requires new arithmetic or a genuinely smaller guarded quadratic compilation. Searches within the audited Laurent and pairing menus have not supplied a smaller complete construction; they do not establish optimality. The general 21 and ordinary-abc 9 targets continue to require rational realization at actual physical traces. The new diagonal Hasse and zero-ordinate obstructions concern specific universal specializations on all prepared inputs and cannot be promoted to nonexistence of 21/9 constructions.
+Further general variable reduction still requires a new arithmetic argument or a smaller guarded quadratic compilation. The [full-pair parity obstruction](../papers/quartic/hyperbolic_parity_20261119_v79.tex) proves failure only within its specified retained chart and termwise integral Laurent model; it does not establish optimality. The general 21 and ordinary-abc 9 targets continue to require rational realization at actual physical traces. The new diagonal Hasse and zero-ordinate obstructions concern specific universal specializations on all prepared inputs and cannot be promoted to nonexistence of 21/9 constructions.
 
-The older degree bounds cited below identify their original source architectures. Current complete bounds and all parameter qualifications are in the [main table](../README.md) and [v78 records](../data/results_20261119_v78.json).
+The older degree bounds cited below identify their original source architectures. Current complete bounds and all parameter qualifications are in the [main table](../README.md) and [v79 records](../data/results_20261119_v79.json).
 
 ## Rank-one curves over general number fields
 
@@ -27,9 +31,9 @@ $$
 
 Indeed, $T_0=(0,0)$ is rational two-torsion and $x(Q+T_0)=-D/x(Q)$. The translated points remain in the same cyclic group modulo torsion and are finite under the stated nonzero-abscissa condition. Applying the sum-height theorem to them, then using $h(1/x)=h(x)$ and $|h(Dx)-h(x)|\le h(D)$ twice, gives the inequality. The constants depend only on the fixed curve, field, generator and number of summands. This is a direct corollary useful for reciprocal charts; it neither controls field-trace cancellation nor supplies detector completeness.
 
-## Quartic chart target
+## Earlier quartic chart foundations
 
-The complete counts are **194 without an additional height conjecture** and **68 under ordinary abc**. The [translated-secant chart](../papers/quartic_existence/quartic_abc68_20261117_v65.tex) includes both reciprocal abscissas in six field coordinates, with four field quadrics. Its difference abscissa is a quadratic output; only its rational half-trace is stored. This preserves the prescribed difference carrier and the full multiplication-witness family, including tangencies, zero ordinates and every finite two-torsion difference. The imaginary output component has no other consumer and is eliminated exactly.
+The earlier **194-variable general** and **68-variable ordinary-abc** constructions provide chart foundations for the current records. The [translated-secant chart](../papers/quartic_existence/quartic_abc68_20261117_v65.tex) includes both reciprocal abscissas in six field coordinates, with four field quadrics. Its difference abscissa is a quadratic output; only its rational half-trace is stored. This preserves the prescribed difference carrier and the full multiplication-witness family, including tangencies, zero ordinates and every finite two-torsion difference. The imaginary output component has no other consumer and is eliminated exactly.
 
 The [194-coordinate general quartic](../papers/quartic/quartic194_20261117_v73.tex) combines three translated point charts with four polynomial cross comparisons, a cleared input numerator and a homogeneous Lucas circuit. All 168 quadratic rows and both complete coefficient expansions are independently reconstructed. A refinement of the reference progression synchronizes the two formal depths for integer witnesses. Arbitrary odd-depth extraction, the unit boundaries and all allowed zero-ordinate cases have separate proofs.
 

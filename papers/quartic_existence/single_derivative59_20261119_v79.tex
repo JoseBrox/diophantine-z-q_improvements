@@ -1,0 +1,544 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools,booktabs,microtype}
+\usepackage[margin=25mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue]{hyperref}
+\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\DeclareMathOperator{\Tr}{Tr}\DeclareMathOperator{\Nm}{Nm}
+\title{One derivative contact and one pole:\\an ordinary-abc quartic in 59 coordinates}
+\author{\(\Z\Q\) Diophantine Project}
+\date{19 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+We replace the two contact arguments and two pole blocks of the audited
+62-coordinate quartic by one derivative quotient and one pole block.
+A rational ratio normalizer simultaneously preserves extraction at
+positive odd contact valuations and controls every negative odd valuation,
+without assuming that auxiliary-point denominators were fixed before prime
+selection. Two derivative identities avoid the cubic-power registers in
+the contact circuit, including the zero-coordinate fibers. The result is
+51 integral quadrics in 59 rational coordinates, whose sum of squares has
+873 monomials, degree four, and integer content one. Every sufficiently
+large fixed odd shift defines the integers, under ordinary rational abc
+and precisely the other arithmetic premises retained by the parent
+construction. The sufficient shift remains ineffective.
+\end{abstract}
+
+\section{Statement, attribution, and retained inputs}
+
+The shared detector, translated-secant chart, reference rechart, and
+Laurent packing used below originate in the notes of \textbf{Gabe Conant
+with Astra 6.2}, supplied as \texttt{H10-quartic-constructions.zip} and
+\texttt{H10-eleven-variable-constructions.zip}. Their 62-coordinate
+construction was audited and extended in v78~\cite{Conant,v78}.
+The single-pole derivative transfer and uniform rational normalizer in
+this paper are subsequent project work. No claim about new arithmetic
+foundations is made.
+
+We retain the parent assertions concerning the elliptic group over
+$K=\Q(\sqrt2)$, the inverse-parameter extraction theorem and its formal
+comparison estimates, the trace-index bound for all allowed points, the
+simultaneous prime-pattern theorem with finite avoidance and local and
+real preparation, and the simultaneous congruent-twist implication used
+in the small-input pole lemma of v78. Ordinary rational abc supplies both
+the derivative contact estimate and the signed mixed-power estimate.
+These other premises are not claimed to follow from abc.
+
+\begin{theorem}\label{thm:main}
+Under these retained premises and ordinary rational abc, there is an
+ineffective constant $B_0$ such that, for every odd integer $B\ge B_0$,
+the polynomial specified below has rational input projection $\Z$.
+It has 59 total variables, including the input $X$, and is the sum of
+51 squares of integral quadrics. Its degree is exactly four, its content
+is one, and it has 873 coordinate monomials. For every positive integer
+$B$, its exact coefficient height is
+\[
+ H(F_B)=\max\{22838305425411,\ B^2+4092\}.
+\]
+This coefficient formula is algebraic and is not a sufficient defining
+threshold for $B$.
+\end{theorem}
+
+The complete expanded coefficient list and quadratic specification are
+\nolinkurl{computation/variable_reductions_v79/abc/quartic59/polynomial.json}
+and \nolinkurl{quadrics.json} in that directory. A finite reconstruction
+does not certify the retained arithmetic premises.
+
+\section{The unchanged elliptic chart}
+
+Put $\rho^2=2$, $\Delta=11-6\rho$, and
+\[
+ E:y^2=x^3-\Delta x,\qquad R_0=(1+\rho,2\rho).
+\]
+We use exactly the complete paired chart of v65 as recharted in
+v78. For $X\ne0$ it gives finite points $U,V,H\in E(K)$ with the
+specified nonzero abscissas and an allowed reference, with $U\ne V$.
+It includes tangencies, zero ordinates, and every finite two-torsion
+difference. Its physical outputs are
+\[
+\begin{gathered}
+ s=X\,y(U)/x(U),\qquad t=X\,y(V)/x(V),\\
+ S=y(H)/x(H),\qquad T=y(H-R_0)/x(H-R_0),\\
+ J=X^2f(H)f(U),\qquad K'=X^2f(H-R_0)f(V),\qquad f=1/x.
+\end{gathered}
+\]
+Let $C=s-S$ and $I=t-T$. The stored rational half-trace $h_0$ satisfies
+\[
+ T_{\mathrm{sc}}=2h_0=X^2\Tr x(U-V).
+\]
+The retained index $m\in\Z$ of $U-V$ has the parent trace bound
+\begin{equation}\label{eq:index}
+ m^2\le C_0\bigl(h(T_{\mathrm{sc}})+2h(X)\bigr)+J_0,
+\end{equation}
+with fixed constants. Finite torsion differences are included with
+$m=0$. The parent inverse-parameter extraction theorem says that
+positivity of the four valuations of $C,J,\overline I,\overline{K'}$
+at one good slot implies that $X$ is locally integral and
+\begin{equation}\label{eq:local-label}
+                         X(m-X)\equiv0\pmod p.
+\end{equation}
+All fixed exceptions in these statements remain excluded.
+
+For a nonzero rational $c$ define
+\begin{equation}\label{eq:detector}
+ W=1+cC^4+c^2J^2-c^3\overline I^{\,4}-c^4\overline{K'}^{\,2},
+ \qquad D\Tr W=\Nm(W-1).
+\end{equation}
+Every rational solution has $\Tr W\ne0$: otherwise the norm vanishes,
+so $W=1$ in the field $K$, contrary to $\Tr 1=2$.
+The even valuations of reciprocal abscissas give even valuations of
+$J,K'$ at every good unramified slot, with zero values interpreted as
+having infinite valuation.
+
+\section{The contact quotient and its automatic guards}
+
+Set
+\[
+ M=B+X^8+T_{\mathrm{sc}}^2,\qquad a=M^4,\qquad
+ x=a-z,\quad y=a+z,
+\]
+where $z$ is the one free contact parameter. Let
+\[
+ \mathcal C=\{-8,-7,-2,-1,3,4,5,6\},\qquad
+ G(t)=\prod_{r\in\mathcal C}(t+r),
+\]
+\begin{equation}\label{eq:derivative}
+ F=G(x)G(y),\qquad F_a=G'(x)G(y)+G(x)G'(y),\qquad
+ u=-16F/F_a,\qquad c=1/u.
+\end{equation}
+The shifts are distinct, nonzero, have sum zero, and no two are
+opposites. In particular $2a+r+s>0$ for all shifts when $B\ge3$.
+
+The equations used in the quadratic chart are $c c^{-1}=1$ and
+$F_a/c+16F=0$, together with the exact value and derivative evaluations.
+They force $F F_a\ne0$ for $B\ge3$. Indeed $G(x)=G(y)=0$ would give
+$x+y=-(r+s)$ of absolute value at most 16, whereas $x+y=2M^4>16$.
+If just one factor is zero, its derivative is nonzero because $G$ is
+squarefree, and the other factor is nonzero. Thus $F_a\ne0$, contradicting
+the displayed relation. If $F_a=0$, that relation first gives $F=0$,
+which was just excluded. No inverse of $F$ or $F_a$ needs another
+coordinate.
+
+The intermediate derivative-height theorem of v63~\cite{v63}, before
+replacing the larger slot height by half the product height, gives for
+$\epsilon=1/100$
+\[
+ \log r^+(u)\ge\frac{197}{100}\max\{h(x),h(y)\}
+                         -\frac{201}{100}h(M)-O(1),
+\]
+where $r^+(u)$ is the product of primes of positive odd valuation
+outside a fixed set. The fixed set includes every bad chart prime,
+shift difference, nonzero pair sum, and the primes of 16.
+The constants are independent of $B$. Since $x+y=2M^4$,
+\begin{equation}\label{eq:radical}
+             \log r^+(u)\ge\frac{193}{100}h(M)-O(1).
+\end{equation}
+The proof of the intermediate estimate remains valid if $x$ or $y$
+vanishes: its eight shifted contact factors are then nonzero constants,
+and the larger-height slot supplies the simple-prime argument.
+There is no division by $xy$ in this construction.
+
+Because $M\ge B$, estimate~\eqref{eq:radical} also shows, before use of
+the pole equations or conclusion $X=m$, that $u\ne-1$ for every
+allowed rational tuple once $B$ is sufficiently large. Indeed $-1$
+has no positive odd valuation. This supplies an eventual automatic
+guard, rather than an assertion about a small algebraic fixture.
+
+\section{A normalizer uniform at both signs of odd valuation}
+
+Use
+\begin{equation}\label{eq:normalizer}
+ g=\frac{1+uD^2}{1+u^3D^2},\qquad
+ \tau=\frac{g}{1+c},\qquad
+ b=c\tau^2=\frac{u g^2}{(1+u)^2}.
+\end{equation}
+Its native pole equations are
+\begin{equation}\label{eq:pole}
+ e^2+bp^2=1,\qquad u_0v_0=e(1-b),\qquad u_0^2-v_0^2=bq^2.
+\end{equation}
+Here $u$ denotes the contact quotient; $u_0,v_0$ are pole coordinates.
+The retained native obstruction states that \eqref{eq:pole} excludes
+negative odd valuations of $b$ at every prime. Zero coordinates are
+allowed in the obstruction; no additional nonzero guard is imposed.
+
+\begin{lemma}\label{lem:normalizer}
+Let $p$ be odd, $\mu=v_p(u)$ odd and finite, and $d=v_p(D)$, allowing
+$d=+\infty$. The numerator and denominator of $g$ do not vanish, and
+\[
+ v_p(g)=\min(0,\mu+2d)-\min(0,3\mu+2d).
+\]
+If $\mu<0$, then $v_p(g)\ge0$ and $v_p(b)>0$ is odd. If $\mu>0$
+and the native pole equations hold, then $d>-3\mu/4$.
+\end{lemma}
+\begin{proof}
+Each finite summand valuation $\mu+2d$ and $3\mu+2d$ is odd and
+therefore cannot be zero. No cancellation with the constant term is
+possible. If $\mu<0$, the first argument of the minimum is at least
+the second, proving $v_p(g)\ge0$. Also
+$v_p(u/(1+u)^2)=-\mu>0$, proving the assertion about $b$.
+
+If $\mu>0$ and $3\mu+2d<0$, both nonconstant terms dominate and
+$v_p(g)=-2\mu$, giving $v_p(b)=-3\mu$, impossible. Otherwise the
+denominator is a unit. If the numerator is also a unit the desired
+bound is immediate. In the remaining case
+$v_p(b)=3\mu+4d$, an odd integer which must be positive. This is
+equivalent to $d>-3\mu/4$.
+\end{proof}
+
+This lemma applies to arbitrary actual point denominators. In particular
+negative odd poles of the derivative quotient do not require a second
+round of incompatible preparation after the auxiliary points have been
+chosen. Omitting the denominator $1+u^3D^2$ would lose precisely this
+uniform conclusion.
+
+The polynomial gates below also recover this denominator. If
+$1+u^3D^2=0$, their cleared ratio equation forces $1+uD^2=0$.
+Consequently $u^2=1$; the choice $u=1$ would give $D^2=-1$ over
+$\Q$, and $u=-1$ has already been excluded by~\eqref{eq:radical}.
+Thus both denominators in~\eqref{eq:normalizer} are valid before the
+pole soundness argument is used.
+
+\section{Soundness}
+
+Take a consumed prime with $\mu=v_p(u)>0$ odd. Then $v_p(c)=-\mu$.
+If both slot valuations of $W$ are negative, say $w_1,w_2$, then
+\[
+ v_p\Nm(W-1)=w_1+w_2,\qquad
+ v_p\Tr W\ge\min(w_1,w_2),
+\]
+so $v_p(D)\le\max(w_1,w_2)$. Otherwise a slot is already integral.
+Lemma~\ref{lem:normalizer} therefore gives a slot at which
+$v(W)>-3\mu/4$. This includes an inert prime with repeated slot
+valuations.
+
+At that slot the four nonconstant terms of~\eqref{eq:detector} have
+pairwise distinct classes modulo four, namely $-\mu,-2\mu,-3\mu,0$.
+Here the second and fourth powers have the required classes because
+$v(J),v(K')$ are even. Every negative minimum is unique. It follows
+that each nonconstant term has valuation greater than $-3\mu/4$.
+In particular
+\[
+ v(C)>\mu/16,\quad v(J)>5\mu/8,\quad
+ v(\overline I)>9\mu/16,\quad v(\overline{K'})>13\mu/8.
+\]
+All four tests are positive. Zero tests satisfy the inequalities with
+infinite valuation. The retained extraction theorem now gives
+\eqref{eq:local-label}.
+
+If $X\ne0$ and $X\ne m$, writing $X=A/Q$ in lowest terms gives
+\[
+ \log r^+(u)\le\log|A(mQ-A)|
+             \le2h(X)+\log(1+|m|).
+\]
+Apply the signed mixed-power estimate~\cite{v58} with exponent eight
+and $\kappa=1001/1000$ to $s=X^8+T_{\mathrm{sc}}^2$. Since
+$h(s)\le h(M)$ for $B>0$,
+\[
+ h(X)\le\frac{501}{997}h(M)+O(1).
+\]
+Combining with~\eqref{eq:radical} leaves the strict positive margin
+\[
+ \frac{193}{100}-\frac{1002}{997}
+                       =\frac{92221}{99700}>0.
+\]
+It follows that $h(M)$ is bounded by a fixed multiple of
+$\log(1+|m|)+1$. Also
+\[
+ 2h(T_{\mathrm{sc}})\le h(s)+8h(X)+\log2.
+\]
+The trace estimate~\eqref{eq:index} then bounds $m$, and therefore
+$h(M)$, independently of $B$. This contradicts $h(M)\ge\log B$
+for sufficiently large $B$. Thus every rational input solution has
+$X=0$ or $X=m\in\Z$.
+
+\section{Complete integer witnesses}
+
+Fix $X=n\ne0$. Use the parent multiplication family with
+$U-V=[n]R_0$, so $T_{\mathrm{sc}}$, $M$ and $a=M^4$ are fixed before
+contact prime selection. The sixteen rational positions $\pm(a+r)$,
+$r\in\mathcal C$, are distinct. Apply the retained simultaneous
+prime-pattern theorem with all fixed exceptions, bounded real and local
+point neighborhoods, and the same compatible comparison-index refinements
+as in the parent construction. These are sixteen simple contacts instead
+of the two previous eight-contact lists; the retained theorem allows any
+fixed finite list. At each selected contact prime exactly one of the
+sixteen linear factors vanishes simply, its opposite factor is a unit,
+and therefore $v_p(u)=1$ by the derivative identity.
+
+The parent successful-slot preparation gives $v(C),v(\overline I)\ge3$
+and $v(J),v(\overline{K'})\ge4$ there. Thus $W\equiv1$. At the other
+slot the prepared reciprocal products are units and the fourth term in
+\eqref{eq:detector} has the unique minimum $-4$. The shifted norm and
+trace give $v_p(D)>0$, including $D=0$. Hence $g$ is a unit and
+$v_p(b)=1$ at every selected prime.
+
+For this fixed integer witness, enlarge the finite preparation set to
+$S_n$ by the coefficient and denominator primes of the now-fixed contact
+positions, and by the primes of the nonzero rational $a$. This does not
+enlarge the fixed exceptional set in the height theorem. Choose a fixed
+positive integer $D_0$ with $D_0^2(a+r)\in\Z$ for every shift and take
+the prepared slope in the form
+\[
+ z=\frac{N}{D_0^2L^2},\qquad
+ p_{r,\pm}=N\pm D_0^2(a+r)L^2.
+\]
+The retained prime supplier gives the sixteen distinct positive primes
+$p_{r,\pm}$ with the required finite avoidance. Exactly,
+\begin{equation}\label{eq:prime-factorization}
+ F=\frac{\prod_{r\in\mathcal C}p_{r,-}p_{r,+}}
+                {D_0^{32}L^{32}}.
+\end{equation}
+The sign is positive because there are eight quadratic factors.
+
+Every other prime is covered by the following three cases. Outside
+$S_n$, if $z$ is integral and the prime is not one of the sixteen selected
+primes, its denominator is a unit: otherwise that prime divides $N,L$
+and hence all sixteen distinct selected primes, a contradiction.
+Formula~\eqref{eq:prime-factorization} then gives $v_p(F)=0$.
+The derivative is integral, so $v_p(u)\le0$. If $v_p(z)<0$ outside
+$S_n$, the leading terms are $F=z^{16}+O(z^{14})$ and
+$F_a=-16az^{14}+O(z^{12})$ with $a$ a unit. Their strict dominant
+valuations give $v_p(u)=2v_p(z)$, an even integer. At the finitely many
+places in $S_n$, including any numerator or denominator prime of $a$,
+the prescribed sufficiently deep slope denominator gives instead
+\[
+                      v_p(u)=2v_p(z)-v_p(a).
+\]
+This is again even because $a=M^4$. The coefficient 16 cancels between
+the quotient numerator and the derivative leading term, including at
+two. Thus all positive odd valuations of $u$ occur among the selected
+primes already checked.
+
+At any negative odd valuation of $u$, including an uncontrolled odd
+factor of the derivative denominator, Lemma~\ref{lem:normalizer} applies
+without any restriction on the actual point coordinates and gives
+positive odd valuation of $b$. If $v_p(u)$ is even, then
+$v_p(u/(1+u)^2)$ is even, and multiplication by $g^2$ leaves it even.
+At two the prescribed valuation is even. Therefore every negative
+valuation of the actual $b$ is even: its reduced denominator is a square.
+
+At fixed places and real infinity in the slope, the zero shift sum gives
+\[
+ u\sim z^2/a,\qquad c\sim a/z^2.
+\]
+The already fixed point neighborhoods keep the raw tests bounded.
+Consequently $W-1=O(c)$, $D=O(c^2)$, and
+\[
+ uD^2=O(c^3),\qquad u^3D^2=O(c),\qquad g\longrightarrow1.
+\]
+At the real place take $z$ sufficiently large; then $c>0$, $g>0$,
+and $0<b<1$. At two, $a=M^4$ is a rational square. By prescribing
+an arbitrarily deep slope denominator, $c$ is a two-adic square of
+arbitrarily large positive even valuation, and $g$ and $1+c$ are
+nonzero units. Hence $b$ is a two-adic square with $v_2(b)\ge4$.
+At every other fixed exceptional place the same preparation makes
+$v_p(c)$ positive and even, and the displayed expansions make $g$
+and $1+c$ units. These preparations precede the selected prime choices
+and impose only the permitted finitely many local conditions.
+
+The small-input pole lemma in v78~\cite{v78} now supplies rational
+solutions of~\eqref{eq:pole}. Its hypotheses are exactly
+\[
+ 0<b<1,\qquad b\text{ has square reduced denominator},\qquad
+ b\in\Q_2^{\times2},\quad v_2(b)\ge4.
+\]
+No restriction on odd numerator-prime residue classes is needed.
+This proves existence for the actual detector input, rather than merely
+for a nearby local value.
+
+For $X=0$, retain the checked parent zero fiber: $H=2R_0$,
+$s=S$, $t=T$, $F_{\mathrm{pair}}=G_{\mathrm{pair}}=d_{
+\mathrm{pair}}=J=K'=0$, and
+$h=t^2/(s-t)$, whose denominator is nonzero because
+$\Nm(S-T)=7199/328$. Its scaled trace fixes $M$ before the contact
+choice. Every raw test vanishes, so $W=1$, $D=0$, $g=1$, and
+$b=c/(1+c)^2$. The same contact, real and fixed-place preparations
+and the small-input lemma supply a rational zero. No input factor is
+multiplied into the quartic.
+
+\section{A quadratic contact circuit without cubic-power registers}
+
+Write $G(t)=\sum_{i=0}^8a_it^i$. Our shifts give $a_8=1$, $a_7=0$,
+and $a_6=-102$. Define
+\[
+ P(t)=tG'(t)-8G(t),\qquad
+ Q(t)=(4t^2+a_6)G'(t)-32tG(t).
+\]
+Both have degree at most six. The degree-nine terms in the second
+identity cancel; its degree-eight term vanishes because $a_7=0$, and
+its degree-seven coefficient is $-8a_6+8a_6=0$.
+
+\begin{lemma}\label{lem:derivative-circuit}
+Store $t,t_2,t_4,G_t,H_t$ with $t_2=t^2$, $t_4=t_2^2$, the exact
+quadratic evaluation $G_t=G(t)$, and
+\[
+ tH_t-8G_t=P(t),\qquad
+ (4t_2+a_6)H_t-32tG_t=Q(t).
+\]
+Every displayed residual is quadratic in these five coordinates, and
+the equations imply $H_t=G'(t)$ at every rational point, including $t=0$.
+\end{lemma}
+\begin{proof}
+Every power through degree six is a product of at most two among
+$1,t,t_2,t_4$, and $t^8=t_4^2$; $G$ has no degree-seven term.
+Subtract the exact derivative identities from the stored equations.
+They give $t(H_t-G')=0$ and $(4t^2+a_6)(H_t-G')=0$.
+The identity $(4t^2+a_6)-4t\,t=a_6=-102\ne0$ proves the claim.
+The second equation supplies exactly the missing zero-coordinate fiber.
+\end{proof}
+
+There are two such evaluations, one for each slot. The sum
+$F_a=G'(x)G(y)+G(x)G'(y)$ needs one further stored coordinate.
+Together they use two fewer coordinates than the direct circuit with
+separate $x^3,y^3$ registers. The extra derivative rows are algebraically
+dependent on the nonzero slots; row count is not being used as a
+dimension or independence assertion.
+
+\section{Exact compilation and coefficient verification}
+
+Use the original v78 Laurent-scaled coordinates for the reference,
+paired points, hyperbolic test pairs, input powers, $W,D$, and the first
+native pole. Store $c,c^{-1}$ with their literal unit equation.
+In particular the physical-to-stored conventions are
+\[
+ D=cD_s,\quad b=cb_s,\quad e=ce_s,\quad
+ u_0=cu_s,\quad v_0=cv_s,\quad p=p_s,\quad q=q_s,
+\]
+\[
+ p^2=cP_s,\qquad q^2=cQ_s.
+\]
+The five unchanged pole rows therefore read
+\[
+ p_s^2=cP_s,\quad e_s^2+b_sP_s=c^{-2},\quad
+ u_sv_s=e_sc^{-1}-b_se_s,
+\]
+\[
+ q_s^2=cQ_s,\qquad u_s^2-v_s^2=b_sQ_s.
+\]
+These equations decode exactly to~\eqref{eq:pole}; in particular
+there is no hidden additional square in the physical input $b$.
+
+The new scalar coordinates are $\tau$, $J_s=D_s^2$, and
+$\lambda=g/c$. Their four rows, including the pole-input row, are
+\begin{equation}\label{eq:quadratic-gate}
+\begin{gathered}
+ J_s=D_s^2,\qquad c\lambda-1-cJ_s+\lambda J_s=0,\\
+ c\lambda=\tau(1+c),\qquad b_s=\tau^2.
+\end{gathered}
+\end{equation}
+The second equation gives
+$\lambda(c+J_s)=1+cJ_s$. If $c+J_s=0$, it forces $c^2=1$;
+$J_s=D_s^2\ge0$ excludes $c=1$, and $c=-1$ was already excluded.
+Thus these rows recover~\eqref{eq:normalizer} exactly.
+
+Store $M,M_2$ unscaled with
+\[
+ M=B+x_{31}^2+4h_0^2,\qquad M_2=M^2.
+\]
+Here $x_{31}=X^4$ in the retained input-power chart. For both contact
+slots, physical $t,t_2,t_4,G_t,H_t$ are $c$ times their stored
+coordinates, while physical $F_a$ is $c^2$ times its stored coordinate.
+The midpoint equation is $c(x_s+y_s)=2M_2^2$.
+Divide each contact evaluation and derivative row by $c^2$;
+Lemma~\ref{lem:derivative-circuit} shows that the resulting residuals
+remain quadratic, with $c^{-1}$ and $c^{-2}=(c^{-1})^2$ accounting for
+linear and constant terms. The last two rows are
+\[
+ (F_a)_s=(G'_x)_s(G_y)_s+(G_x)_s(G'_y)_s,
+ \qquad (F_a)_sc^{-1}+16(G_x)_s(G_y)_s=0.
+\]
+
+\begin{samepage}
+The exact census is
+\begin{center}
+\begin{tabular}{lr}
+\toprule
+Coordinates&Count\\\midrule
+Input, reference and paired chart, four tests, input powers&30\\
+Shared $W$ and $D$&3\\
+One native pole, its input, and $\tau$&9\\
+$c,c^{-1}$&2\\
+$M,M_2$&2\\
+Two contact slots, each with two powers, value and derivative&10\\
+Derivative sum&1\\
+Uniform normalizer $J_s,\lambda$&2\\\midrule
+Total&59\\\bottomrule
+\end{tabular}
+\end{center}
+\end{samepage}
+The complete list has 51 quadrics. Their sum of squares vanishes over
+$\Q$ precisely when every residual vanishes. Every change of coordinates
+used above has a recovered nonzero denominator, including the native
+zero-coordinate cases.
+
+Direct exact expansion gives 873 coordinate monomials and 876
+parameter-separated terms. The maximum coefficient independent of $B$
+is $22838305425411$. The only mixed profiles are
+$B^2+4092$, $8B+1$, and $2B+1$; the remaining parameter-dependent
+coefficients are bounded by these or by the fixed maximum. For $B>0$,
+$B^2+4092$ dominates the two linear mixed profiles and all pure linear
+profiles. This proves the height formula in Theorem~\ref{thm:main}.
+The coefficient of $X^4$ is one, proving both exact degree four and
+content one. All 59 coordinates occur.
+
+The independent checker reconstructs the retained chart from its pinned
+parent, decodes every new physical scaling, derives the two derivative
+identities independently, expands every squared row with independent
+SymPy polynomial arithmetic, and checks the census, support, content,
+height profiles and exact rational height margin. The universal
+valuation and completeness arguments are the proofs above, not an
+inference from a finite residue sample.
+
+\section{Scope of the improvement}
+
+This is a reduction from 62 to 59 coordinates for the ordinary-abc
+quartic route. The normalizer is reusable wherever a rational $u$ is
+required to detect positive odd valuations while its negative odd
+valuations must remain admissible for a native pole. It does not supply
+a rational one-parameter specialization of the intrinsic pole surface.
+Accordingly, this paper does not reduce the separate eleven-coordinate
+unbounded-degree construction or resolve its proposed nine-coordinate
+actual-realization condition. No global minimum is asserted.
+
+\begin{thebibliography}{9}\small\raggedright
+\bibitem{Conant} G.~Conant, with Astra 6.2,
+supplied notes \texttt{H10-quartic-constructions.zip} and
+\texttt{H10-eleven-variable-constructions.zip}, November 2026;
+particularly \texttt{abc62/PROOF.md} and \texttt{fewvars/BALANCED.md}.
+The original provenance is retained in the repository's v78 package.
+\bibitem{v78} \(\Z\Q\) Diophantine Project,
+\emph{Audit and extensions of the 62-coordinate quartic},
+\nolinkurl{papers/quartic_existence/abc_quartic_audit_20261119_v78.tex}.
+\bibitem{v65} J.~Brox and contributors,
+\emph{A quartic in 68 variables from translated secants},
+\nolinkurl{papers/quartic_existence/quartic_abc68_20261117_v65.tex}.
+\bibitem{v63} \(\Z\Q\) Diophantine Project,
+\emph{An eleven-variable derivative detector},
+\nolinkurl{papers/conditional_few_variables/derivative_detector11_20261117_v63.tex}.
+\bibitem{v58} \(\Z\Q\) Diophantine Project, signed mixed-power height theorem,
+\nolinkurl{papers/elliptic_heights/signed_mixed_power_height_20261117_v58.tex}.
+\end{thebibliography}
+\end{document}

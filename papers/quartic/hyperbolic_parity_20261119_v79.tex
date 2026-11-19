@@ -1,0 +1,154 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=27mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\Z}{\mathbb Z}
+\title{An integral-weight obstruction to a full hyperbolic reciprocal pair}
+\author{Z diophantine in Q project}
+\date{19 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+A parity certificate explains why replacing the final partial hyperbolic
+pair in the 165- and 180-coordinate quartics by a full pair fails in the
+retained integral Laurent compilation. The obstruction holds with any
+number of stored powers of the common unit and survives every
+parity-preserving change of the factor exponents. It is a restriction on
+this particular compilation, not a lower bound for quartics defining the
+integers.
+\end{abstract}
+
+\paragraph{Source credit.}
+The shared-product constructions and the original partial hyperbolic
+packing are from the notes of Gabe Conant with Astra~6.2, supplied in
+\emph{H10-quartic-constructions}. The project audit and stronger extraction
+are in the v78 shared-product paper~\cite{Audit}. The present parity
+certificate is a subsequent project result. No new arithmetic premise is
+used.
+
+\section{The precise compilation model}
+Let $c$ be an already guarded nonzero rational coordinate. An integral
+Laurent compilation replaces each retained coordinate $x_i$ by
+$c^{w_i}y_i$, with $w_i\in\Z$, and divides each equation by a fixed
+integer power $c^{r_j}$. Powers of $c$ may be represented by additional
+unit coordinates with their defining equations. The output is obtained
+termwise, with each residual an ordinary polynomial of degree at most
+two in the retained and unit coordinates. In particular a nonzero term
+already containing two retained coordinates must have residual exponent
+zero in $c$: multiplying it by an extra unit coordinate would give degree
+at least three. This is the same termwise rule as in the v78 tables.
+
+This model does not permit replacing the equations by variable-dependent
+row combinations before this step, a new elliptic chart, or a nonlinear
+change of the retained coordinates. Such operations lie outside the
+statement below.
+
+\begin{theorem}[Parity obstruction]\label{thm:parity}
+Suppose a retained equation contains the two nonzero monomials $sU$ and
+$sV$ with equal powers of $c$. Suppose another retained equation contains
+$c^aUV$ and $c^bB^2$ with nonzero coefficients, where $a-b$ is odd.
+These equations have no termwise quadratic integral Laurent compilation
+of the specified kind, regardless of the number or powers of the added
+unit coordinates.
+\end{theorem}
+\begin{proof}
+Let $r$ be the first equation's row exponent, and let $e$ be the common
+power on its two indicated terms. Quadraticity requires
+\[
+ e+w_s+w_U-r=0=e+w_s+w_V-r.
+\]
+Thus $w_U=w_V$. If $r'$ is the second row exponent, its two indicated
+quadratic monomials require
+\[
+ a+w_U+w_V-r'=0=b+2w_B-r'.
+\]
+It follows that $a-b=2(w_B-w_U)$, contrary to oddness. Every indicated
+monomial already has degree two, so additional stored powers of $c$
+cannot alter these equalities. Fixed nonzero rational coefficients and
+fixed parameter powers have weight zero and do not affect the argument.
+\end{proof}
+
+\section{The final pair of the general quartics}
+The fourth shared factor has the physical terms
+\[
+ 1+cA_1^2+c^2\overline{B_3}^{\,2}-c^3A_4^2
+       +c^4\overline{B_0}^{\,4}.
+\]
+Here $A_1,A_4$ are raw reciprocal abscissas; they are not stored squares
+of independent cleared comparison functions. The v78 presentation keeps
+both and introduces one field helper $L=A_1+cA_4$. Its odd terms are
+\[
+ cL(A_1-cA_4)=cA_1^2-c^3A_4^2.
+\]
+The proposed full replacement would retain only
+\[
+ U=A_1+cA_4,\qquad V=A_1-cA_4,
+\]
+with inverse
+\[
+ A_1=(U+V)/2,\qquad A_4=(U-V)/(2c).
+\]
+This is a valid rational coordinate change when $c\ne0$. The issue is
+its compatibility with the required quadratic degree.
+
+In the retained translated point chart for the first pair,
+\[
+ d_1=(h_1+s_1+t_1)A_1.
+\]
+After the full substitution, its rational real-component row contains
+$-s_{1,0}U_0/2$ and $-s_{1,0}V_0/2$ with identical unit powers.
+They are distinct monomials with nonzero coefficients. In the factor's
+real-component row the odd pair contributes $cU_0V_0$, whereas the
+$B_3$ term contributes $c^2B_{3,0}^2$. Conjugation does not change the
+coefficient of this real square. Theorem~\ref{thm:parity} applies with
+$a=1$ and $b=2$.
+
+\begin{corollary}
+The full replacement of this raw pair cannot eliminate its two partial
+helper coordinates by integral diagonal Laurent weights in the retained
+quadratic equations. The conclusion applies to both general quartics,
+and to both the original and strengthened v78 presentations. It also
+applies when the odd and even factor exponents are changed by arbitrary
+even integers while the indicated point row is retained.
+\end{corollary}
+\begin{proof}
+The two constructions share these point and fourth-factor equations.
+The v78 strengthening changes only the first three factors. More general
+parity-preserving exponent changes retain the hypotheses of the theorem.
+\end{proof}
+
+The same proof applies to a proposed full pair involving any raw
+reciprocal whose retained point equation supplies the two indicated
+bilinear monomials. This condition must be checked in each application;
+it is not asserted for arbitrary elliptic charts or every possible
+choice of detector.
+
+\section{An exact certificate and its limitations}
+The independently runnable checker
+\begin{center}\small
+\nolinkurl{computation/variable_reductions_v79/quartics/}\par
+\nolinkurl{check_hyperbolic_parity.py}
+\end{center}
+reads the pinned Laurent source and actual fourth-factor assignment,
+checks the two source monomials and their substitution, and verifies
+$c((U+V)/2)^2-c^3((U-V)/(2c))^2=cUV$ coefficient by coefficient.
+It records the four integer-weight equations in unknowns
+$(w_s,w_U,w_V,w_B,r,r')$. Adding all four equations modulo two gives
+$0=1$. This is a complete finite certificate; it uses neither a numerical
+search range nor an optimizer's infeasibility report.
+
+The result explains a failure of a particular algebraic compression.
+It proves no global minimum of 165 or 180 variables, and does not
+exclude smaller quartics from other charts, other gate equations,
+nonlinear transformations, or different arithmetic constructions.
+No variable-count improvement is inferred from this obstruction.
+
+\begin{thebibliography}{9}
+\bibitem{Audit} Z diophantine in Q project, \emph{Audit and extension of the
+shared-product quartics}, 19 November 2026,
+\nolinkurl{papers/quartic/shared_product_audit_20261119_v78.tex}.
+\bibitem{Chart} Z diophantine in Q project, \emph{A 193-coordinate quartic},
+v74, \nolinkurl{papers/quartic/quartic193_20261117_v74.tex}.
+\end{thebibliography}
+\end{document}

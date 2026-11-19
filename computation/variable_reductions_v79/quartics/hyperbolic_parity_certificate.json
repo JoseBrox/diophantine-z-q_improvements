@@ -1,0 +1,86 @@
+{
+  "schema": "hyperbolic-integral-weight-parity/v79",
+  "status": "PASS",
+  "source": "computation/quartic/seven_units193_v74/primitive/laurent-source.json",
+  "source_sha256": "d14f1031ed3306e228fbf2b019654b6f8c41382c2fd571775130500d1ae418f1",
+  "source_row": "new1.d_piF.0",
+  "factor_assignment": [
+    "A1",
+    "B3",
+    "A4"
+  ],
+  "replacement": "A1=(U+V)/2; A4=(U-V)/(2*c)",
+  "required_factor_monomials": [
+    "c*U*V",
+    "c^2*B3^2"
+  ],
+  "variables": [
+    "w(s1)",
+    "w(U)",
+    "w(V)",
+    "w(B3)",
+    "r_point",
+    "r_factor"
+  ],
+  "integer_weight_equations": {
+    "matrix": [
+      [
+        1,
+        1,
+        0,
+        0,
+        -1,
+        0
+      ],
+      [
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0
+      ],
+      [
+        0,
+        1,
+        1,
+        0,
+        0,
+        -1
+      ],
+      [
+        0,
+        0,
+        0,
+        2,
+        0,
+        -1
+      ]
+    ],
+    "rhs": [
+      0,
+      0,
+      -1,
+      -2
+    ]
+  },
+  "modulo_two_certificate": {
+    "multiplier": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "left": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "right": 1
+  },
+  "also_covers": "Any changes of the odd factor exponent by an even integer and of the even square exponent by an even integer; any number of stored c powers.",
+  "scope": "Only the specified full hyperbolic substitution with retained raw reciprocal point equation and termwise integral diagonal Laurent compilation to quadrics. Does not exclude different charts, nonlinear transformations, other equations, arithmetic restrictions, or a smaller quartic."
+}
