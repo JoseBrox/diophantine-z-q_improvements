@@ -184,9 +184,12 @@ def verify(report_path=None):
     readme = (ROOT/'README.md').read_text()
     section = re.search(r'(?ms)^## Contributors and citation\n.*?(?=^## |\Z)', readme)
     assert section and hashlib.sha256(section.group().encode()).hexdigest() == CONTRIBUTORS_HASH
-    for value in ('4,863,007,848,923,136', '230,932,097', '**193**',
-                  'docs/results_20261117_v75.md', 'data/results_20261117_v75.json'):
-        assert value in readme, value
+    historical_guide = (ROOT/'docs/results_20261117_v75.md').read_text()
+    for value in ('4,863,007,848,923,136', '230,932,097', '**193-variable quartic**',
+                  'data/results_20261117_v75.json'):
+        assert value in historical_guide, value
+    assert 'docs/results_20261117_v75.md' in readme
+    assert re.search(r'\[historical results JSON\]\((data/results_20261117_v75\.json)\)', readme)
     for path in ['README.md', 'docs/results_20261117_v75.md'] + [p+'/README.md' for p in PACKAGES]:
         contents = (ROOT/path).read_text()
         assert '$' not in contents and r'\operatorname' not in contents, path

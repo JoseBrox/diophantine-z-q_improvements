@@ -83,8 +83,9 @@ def main(output):
     for name in ['README.md','negative_results/README.md',PACKAGE+'/README.md','docs/results_20261117_v73.md']:
         text=(ROOT/name).read_text()
         assert '$'not in text and r'\operatorname'not in text,name
-    assert '**194**'in readme and '2,765'in readme and '2,621'in readme
-    link=re.search(r'\[results JSON\]\((data/results_[^)]*\.json)\)',readme)
+    historical_guide=(ROOT/'docs/results_20261117_v73.md').read_text()
+    assert '194 coordinates'in historical_guide and '2,765'in historical_guide and '2,621'in historical_guide
+    link=re.search(r'\[historical results JSON\]\((data/results_20261117_v75\.json)\)',readme)
     assert link
     latest=json.loads((ROOT/link.group(1)).read_text())
     # Later releases retain the complete former record under its original ID.

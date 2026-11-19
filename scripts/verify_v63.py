@@ -148,7 +148,9 @@ def main(output):
                       if row['id'] == 'ordinary_abc11')
     assert current_11['variables'] == 11
     assert int(current_11['degree_upper_bound']) <= 234157441
-    assert f"{int(current_11['degree_upper_bound']):,}" in readme and '**229**' in readme
+    assert f"{int(current_11['degree_upper_bound']):,}" in readme
+    historical_guide = (ROOT / 'docs/results_20261117_v63.md').read_text()
+    assert '**229**' in historical_guide
 
     builds = json.loads((ROOT / 'data/audits/tex_build_20261117_v63.json').read_text())
     assert {row['paper'] for row in builds['papers']} == set(PAPERS)

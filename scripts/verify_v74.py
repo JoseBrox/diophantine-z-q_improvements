@@ -135,9 +135,11 @@ def verify(output=None):
     readme = (ROOT / 'README.md').read_text()
     section = re.search(r'(?ms)^## Contributors and citation\n.*?(?=^## |\Z)', readme)
     assert section and hashlib.sha256(section.group().encode()).hexdigest() == CONTRIBUTORS_HASH
-    for value in ['**193**', '2,770', '2,626', 'docs/results_20261117_v74.md']:
-        assert value in readme
-    link = re.search(r'\[results JSON\]\((data/results_[^)]*\.json)\)', readme)
+    historical_guide = (ROOT / 'docs/results_20261117_v74.md').read_text()
+    for value in ['193 total variables', '2,770', '2,626']:
+        assert value in historical_guide
+    assert 'docs/results_20261117_v74.md' in readme
+    link = re.search(r'\[historical results JSON\]\((data/results_20261117_v75\.json)\)', readme)
     assert link
     latest = read(ROOT / link.group(1))
     assert next(r for r in latest['current_constructions'] if r['id'] == 'quartic193') == new

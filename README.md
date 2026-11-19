@@ -60,11 +60,22 @@ Thus `H=B+1` for odd `n≥65`. This is a coefficient-height cutoff, not a suffic
 
 The eight-contact argument gives an eleven-variable family for **every fixed weak-abc exponent `1<κ<3/2`**, with suitable source parameters. Its quartic extension uses `61+r` coordinates when the explicit absorption inequality in the proof holds, also covering every fixed exponent below `3/2`. The 63- and 64-variable rows improve the supplied hypothesis exponents without increasing their counts.
 
-Current specifications: [result JSON](data/results_20261119_v78.json), [complete audit and proof guide](docs/results_20261119_v78.md), [source and certificate package](computation/coauthor_audit_v78), and [research directions](docs/research_directions.md). The two original coauthor packages and the new workstreams remain separately attributable. The verification gate materializes their pinned sources and byte-compares the regenerated data.
+Current specifications: [results JSON](data/results_20261119_v78.json), [complete audit and proof guide](docs/results_20261119_v78.md), [source and certificate package](computation/coauthor_audit_v78), and [research directions](docs/research_directions.md). The two original coauthor packages and the new workstreams remain separately attributable. The verification gate materializes their pinned sources and byte-compares the regenerated data.
 
-The [reconstructed 193-variable family](docs/results_20261117_v74.md) and the earlier [229-variable](docs/results_20261117_v68.md), [68-variable](docs/results_20261117_v65.md), and [v75 few-variable](docs/results_20261117_v75.md) constructions remain reproducible. They are historical records superseded by the table above.
+The [historical results JSON](data/results_20261117_v75.json) preserves the preceding complete records and their earlier versions. The following constructions remain reproducible and are superseded by the current table above. Their numerical bounds in the older papers and thematic sections below refer to the named historical sources.
 
-The [v76](docs/results_20261117_v76.md), [v77](docs/results_20261117_v77.md), and [new ancillary](negative_results/papers/pole_parameters/ancillary_audit_20261119_v78.tex) results preserve the precise scope of physical-lift, diagonal and selector-density obstructions. **The complete 21-variable general and 9-variable ordinary-abc targets remain unproved.** These counterexamples to specified universal specializations do not prove those global targets impossible.
+| Historical source | Variables | Certified numerical bound |
+|:--|--:|:--|
+| [Reconstructed quartic, v74](docs/results_20261117_v74.md) | **193** | Degree 4; 2,770 or 2,626 monomials. |
+| [Preceding quartic, v73](docs/results_20261117_v73.md) | **194** | Degree 4; 2,765 or 2,621 monomials. |
+| [Explicit quartic, v68](docs/results_20261117_v68.md) | **229** | Degree 4; 3,312 monomials; 74,007 ASCII bytes. |
+| [Ordinary-abc quartic, v65](docs/results_20261117_v65.md) | **68** | Degree 4; **1,078 monomials**. |
+| [General few-variable family, v72](docs/results_20261117_v72.md) | 25 | Degree at most 4,924,857,429,000,192. |
+| [General few-variable family, v75](docs/results_20261117_v75.md) | 25 | Degree at most 4,863,007,848,923,136. |
+| [Ordinary-abc family, v71](docs/results_20261117_v71.md) | 11 | Degree at most 232,094,337. |
+| [Ordinary-abc family, v75](docs/results_20261117_v75.md) | 11 | Degree at most 230,932,097. |
+
+The [physical-coordinate audit, v67](docs/results_20261117_v67.md), [v76](docs/results_20261117_v76.md), [v77](docs/results_20261117_v77.md), and [new ancillary](negative_results/papers/pole_parameters/ancillary_audit_20261119_v78.tex) results preserve the precise scope of physical-lift, diagonal and selector-density obstructions. **The complete 21-variable general and 9-variable ordinary-abc targets remain unproved.** These counterexamples to specified universal specializations do not prove those global targets impossible.
 
 ## Contributors and citation
 
@@ -110,7 +121,7 @@ The original nine-coordinate actual-trace criteria below concern their explicitl
 
 ## A single actual-trace target for nine variables
 
-The [derivative trace criterion](papers/pole_parameters/single_trace_derivative_criterion_20261117_v64.tex) replaces the two free parameters of the current single pole block by one finite quadratic equation:
+The [derivative trace criterion](papers/pole_parameters/single_trace_derivative_criterion_20261117_v64.tex) replaces the two free parameters of the v63 derivative source's single pole block by one finite quadratic equation:
 
 ```math
 Y^2=V^2+w(2-V),\qquad V=\mathrm{Tr}(W^{-1}),\quad w=\frac{u}{(1+u)^2}.
@@ -219,7 +230,7 @@ The [three-coordinate reference chart](papers/elliptic_charts/three_coordinate_r
 
 The [quadratic reference and height rescaling](papers/elliptic_charts/scaled_reference_height_20261116_v43.tex) makes both reference reciprocal abscissas linear. It preserves quadratic point and ratio rows and recovers the original fixed-index height with one rational coordinate. The reference, point, ratio and height blocks use **32 rational coordinates on the nonzero-scale locus**; their necessary explicit quadratic guard adds one, giving **33 in total**, the same as the original blocks. Detector conversion remains separate. No smaller complete quartic follows.
 
-The [quadratic reference-cover theorem](papers/elliptic_charts/reference_covers_20261116_v47.tex) gives polynomially inverse presentations with three and four field coordinates, including all four points over the two identity-reference boundaries. The four-coordinate form makes both reference reciprocal abscissas linear and remains quadratic after input scaling. Its weighted numerator and ratio equations give the physical detector products directly. A separate Jacobi chart recovers the original difference trace with one rational helper and classifies its entire zero-scale fiber. [Universal exact certificates](computation/elliptic_charts/reference_covers_v47) verify the maps and identities. Combining these blocks within a smaller complete quartic remains unproved; the ordinary-abc record stays **68**.
+The [quadratic reference-cover theorem](papers/elliptic_charts/reference_covers_20261116_v47.tex) gives polynomially inverse presentations with three and four field coordinates, including all four points over the two identity-reference boundaries. The four-coordinate form makes both reference reciprocal abscissas linear and remains quadratic after input scaling. Its weighted numerator and ratio equations give the physical detector products directly. A separate Jacobi chart recovers the original difference trace with one rational helper and classifies its entire zero-scale fiber. [Universal exact certificates](computation/elliptic_charts/reference_covers_v47) verify the maps and identities. These chart results alone gave no reduction below the historical 68-coordinate record; the current 62-coordinate construction uses the shared detector described above.
 
 The [integral Pell-label theorem](papers/integer_labels/pell_labels_20261115_v40.tex) obtains exponential growth from two exact integral labels and one finite quadratic choice. It proves sharp bounds and arbitrarily large witnesses with prescribed finite congruence data. Its [checker and certificate](computation/integer_labels/pell_compression_v40) verify the identities and exceptional cases. Its application requires exact integral labels; no reduction below 25 variables follows from this theorem alone.
 
@@ -288,7 +299,7 @@ The class `d_i=1-4w_i^*/17` is automatically a local unit at the relevant primes
 (m_iV_i^*)^2-d_i y_i^2=\frac{4w_i^*}{17},\qquad i=0,1,
 ```
 
-with the first coordinates prescribed by the actual coupled detector tuple. Further classes may depend on the existing auxiliary data, subject to the proved local and whole-character conditions. **Simultaneous prescribed-trace rational realization remains unproved. The general and weak-abc source counts remain 25 and 13; the ordinary-abc construction above uses 11.** [Exact certificates](computation/pole_parameters/adaptive_levels_v50) verify the identities and specified local examples, not uniform rational realization.
+with the first coordinates prescribed by the actual coupled detector tuple. Further classes may depend on the existing auxiliary data, subject to the proved local and whole-character conditions. **Simultaneous prescribed-trace rational realization remains unproved.** This historical adaptive-level construction retains 25 and 13 coordinates; the current weak-abc and ordinary-abc families above both use 11. [Exact certificates](computation/pole_parameters/adaptive_levels_v50) verify the identities and specified local examples, not uniform rational realization.
 
 The [norm-compatible preparation](papers/pole_parameters/norm_compatible_scalar_20261116_v47.tex) makes both associated norm conics rationally soluble throughout a prepared integer-input family. For the general source it uses an explicit degree-eight input polynomial reflecting integrality and a scalar that is a norm from `ℚ(√10657)`, preserving the 25-coordinate source and its height argument. The conditional sources already admit the same bare-norm preparation without changing their scalar. The unresolved equations require the first conic coordinates to equal the **actual prescribed detector traces**; bare conic solubility does not imply the 21/9 target.
 
@@ -384,6 +395,9 @@ The [pole-compression guide](negative_results/docs/pole_compression_obstructions
 Use **Python 3.12** for the byte-pinned legacy suite and **SymPy 1.14.0** for symbolic checks. From the repository root:
 
     python -m pip install sympy==1.14.0
+    python -B scripts/verify_v78.py
+    python -B scripts/verify_v77.py
+    python -B scripts/verify_v76.py
     python -B scripts/verify_v75.py
     python -B scripts/verify_v74.py
     python -B scripts/verify_v73.py
@@ -391,7 +405,7 @@ Use **Python 3.12** for the byte-pinned legacy suite and **SymPy 1.14.0** for sy
     python -B scripts/verify_v71.py
     python -B scripts/verify_v70.py
     python -B scripts/verify_v69.py
-python -B scripts/verify_v68.py
+    python -B scripts/verify_v68.py
     python -B scripts/verify_v67.py
     python -B scripts/verify_v66.py
     python -B scripts/verify_v65.py
@@ -433,7 +447,7 @@ The complete TeX manuscripts are the mathematical deliverables. They are compile
 
 ## Attribution and review scope
 
-The 198-variable parent of the current 195-variable construction was supplied in Gabriel Conant's research archive with ChatGPT. Its [original attribution and source](sources/h10_quartic198/README.md) are retained. The [pinned upstream 214-variable source](computation/quartic/balanced214_v24/source) and its hashes remain a separate dependency. The current work is maintained in this repository and does not modify the upstream repository.
+The 198-variable parent of the historical 195-variable construction was supplied in Gabriel Conant's research archive with ChatGPT. Its [original attribution and source](sources/h10_quartic198/README.md) are retained. The [pinned upstream 214-variable source](computation/quartic/balanced214_v24/source) and its hashes remain a separate dependency. The current work is maintained in this repository and does not modify the upstream repository.
 
 The congruent-twist pole realization uses **Jaswal, Hexagon 2611.00331v2, Theorem 1.2**, with the preparation hypotheses stated in the [pole paper](papers/pole_parameters/congruent_twist_poles_20261114_v27.tex). The supplied finite-family strengthening is used only in the separate compatible-pole results. Bibliographies, [arithmetic dependencies](docs/arithmetic_inputs.md), and [THIRD_PARTY.md](THIRD_PARTY.md) retain the source distinctions.
 

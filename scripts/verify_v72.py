@@ -88,8 +88,9 @@ def main(report_path):
     for name in ('README.md', 'negative_results/README.md', PACKAGE+'/README.md'):
         text = (ROOT/name).read_text()
         assert '$' not in text and r'\operatorname' not in text, name
-    assert '4,924,857,429,000,192' in readme and '5,059,009,872,658,432' not in readme
-    record_link = re.search(r'\[results JSON\]\((data/results_[^)]*\.json)\)', readme)
+    historical_guide = (ROOT/'docs/results_20261117_v72.md').read_text()
+    assert '4,924,857,429,000,192' in historical_guide and '5,059,009,872,658,432' not in historical_guide
+    record_link = re.search(r'\[historical results JSON\]\((data/results_20261117_v75\.json)\)', readme)
     assert record_link
     latest = json.loads((ROOT/record_link.group(1)).read_text())
     latest_general = next(row for row in latest['current_constructions'] if row['id'] == 'general25')

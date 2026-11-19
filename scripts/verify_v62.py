@@ -114,7 +114,8 @@ def main(output):
     # Historical records remain available after the public table advances.
     assert (ROOT/'data/results_20261117_v62.json').is_file()
     assert (ROOT/'docs/results_20261117_v62.md').is_file()
-    assert '**229**' in readme
+    historical_guide = (ROOT/'docs/results_20261117_v62.md').read_text()
+    assert '**229 total rational variables**' in historical_guide
 
     builds=json.loads((ROOT/'data/audits/tex_build_20261117_v62.json').read_text())
     assert {row['paper'] for row in builds['papers']}==set(PAPERS)

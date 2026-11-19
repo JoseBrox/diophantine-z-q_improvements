@@ -116,7 +116,8 @@ def main(output):
     section = re.search(r'(?ms)^## Contributors and citation\n.*?(?=^## |\Z)', readme)
     assert section and hashlib.sha256(section.group().encode()).hexdigest() == CONTRIBUTORS_HASH
     assert 'docs/results_20261117_v67.md' in readme
-    assert 'data/results_20261117_v65.json' in readme
+    historical_guide = (ROOT / 'docs/results_20261117_v67.md').read_text()
+    assert 'data/results_20261117_v65.json' in historical_guide
     assert r'\(' not in readme and r'\[' not in readme
 
     report = dict(schema='diophantine-exact-verification/v67', status='PASS',
