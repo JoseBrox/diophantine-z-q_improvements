@@ -1,0 +1,49 @@
+{
+  "attribution": "Based on notes of Gabe Conant with Astra 6.2",
+  "checks": {
+    "field_definition_component_identities": 2,
+    "local_preparation_expansion": true,
+    "native_forward_residuals": 3,
+    "native_input_forward_and_reverse": 2,
+    "native_reverse_residuals": 3,
+    "native_square_relations": 2,
+    "no_auxiliary_coordinate_inverted": true,
+    "norm_over_trace_valuation_identity": true,
+    "norm_trace_rescaling_and_inverse_identities": 4,
+    "real_bound_identity": true,
+    "universal_detection_threshold_identities": 2,
+    "universal_odd_parity_identities": 2,
+    "weakened_threshold_identity": true
+  },
+  "coefficient_d": 9792,
+  "published_general_variable_counts_unchanged": [
+    165,
+    180
+  ],
+  "remaining_tasks": [
+    "realize the stated local approximation patterns in the full ordered elliptic converse",
+    "encode tau_hat*sigma=R^4 without retaining or adding an R^2 register",
+    "verify the entire downstream quadratic table, maps, and every zero fiber before a census claim"
+  ],
+  "schema": "v81-general-local-scalar-checkpoint-1",
+  "source_sha256": {
+    "computation/quartic/seven_units193_v74/primitive/laurent-source.json": "d14f1031ed3306e228fbf2b019654b6f8c41382c2fd571775130500d1ae418f1",
+    "computation/variable_reductions_v81/general/README.md": "3c079b7e7733f901aa2596e23af8ae3c920934137ddda0570af3a42349a43aec",
+    "computation/variable_reductions_v81/general/check.py": "cce25c223f52871b10bef1d414e6a547741df09c51aa81f3cf6c70a64454e7de",
+    "papers/quartic/quartic193_20261117_v74.tex": "7dd6f0b37a2e3f8e22511c13e21fdc2faeabf5b3094abcf0c0861ffa2e70d09e",
+    "papers/quartic/shared_product_audit_20261119_v78.tex": "37bad3c83e17fdac48dc662fa6a16b58ea8277970cfe2df52dfa4ee442191c41",
+    "sources/h10_quartic198/arithmetic/inverse_vieta_198.tex": "3f8a91ccffc6c7138c166532fd2732f89448284f42d011d41b287260d4e1c5de"
+  },
+  "status": "local lemma and rational identities only; no smaller defining quartic",
+  "universal_local_result": {
+    "conclusion": "one common slot w has v_w(Z)>9*mu/4 and v_w(f)>7*mu/4",
+    "hypotheses": [
+      "K=Q(sqrt(2)); R>0; Z in K; f in K nonzero",
+      "p does not divide 2*9792; mu=v_p(R)>0 is odd",
+      "b=R*(R+9792)*tau^2 has no negative odd p-adic valuation",
+      "J=Z^2/R^5+f^2/R^4; tau=Norm(J)/Trace(J)"
+    ],
+    "method": "universal parity and valuation proof; not a finite-prime enumeration",
+    "zero_Z_case_included": true
+  }
+}

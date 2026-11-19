@@ -1,5 +1,27 @@
 # Attribution and source material
 
+## Rationality descent and rank stability (v81)
+
+The number-field descent architecture is due to **Hector Pasten and
+Xavier Vidaux, *On Hilbert's tenth problem for number fields*,
+arXiv:2611.24748v1 (18 November 2026)**:
+[primary source](https://arxiv.org/html/2611.24748v1), Theorem 1.1 and
+Sections 2–6. The repository's amplified descent, all-rational and real
+approximation, cubic rational map, prepared-pole replacement and
+coordinate encodings are subsequent extensions, explicitly separated
+from that source in their proofs.
+
+The quadratic-field application uses **David Zywina, *Rank one elliptic
+curves and rank stability*, arXiv:2505.16960v1, Theorem 1.2**:
+[primary source](https://arxiv.org/html/2505.16960v1). The prepared pole
+and rational witness density use Burungale's published Theorem B in
+its beta-seven, eta-one classes, as specified below. These external
+papers are cited, not redistributed. Composition with the rational
+integer constructions retains their original attribution to **notes
+of Gabe Conant with Astra 6.2** and all their stated arithmetic inputs.
+
+## Earlier source map
+
 The explicit arithmetic constructions build on the mathematical sources in [elliotglazer/diophantine-z-q](https://github.com/elliotglazer/diophantine-z-q). The source pins distinguish the coefficient expressions from the arithmetic proofs supporting their interpretation.
 
 | Material used | Pinned source |

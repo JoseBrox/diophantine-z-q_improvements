@@ -1,0 +1,623 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools,booktabs,microtype}
+\usepackage[margin=25mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\DeclareMathOperator{\Nm}{Nm}
+\DeclareMathOperator{\rank}{rank}
+\title{A ten-coordinate definition of the rational subfield\\
+by a guarded finite algebra}
+\author{\(\Z\Q\) Diophantine Project}
+\date{19 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+The amplified rationality detector of the preceding v81 paper can be
+compressed from sixteen to ten total coordinates over the ambient
+number field. Four point ordinates and two intrinsic-pole roots are
+encoded in a finite algebra of rank \(64\). The proof supplies rational
+point preimages, verifies every guard at all geometric characters,
+uses the actual class-seven intrinsic-pole witnesses, and gives a
+finite separating menu with \(10081\) entries. A shifted characteristic
+determinant combines the primitive element and the inverse of every
+guard in one coordinate; it does not require the primitive element
+to be nonzero. The resulting integer polynomial is specified by finite
+products and determinants, has content one, and has explicit degree
+and coefficient bounds in the fixed circuit data. Its arithmetic
+assumptions remain the six-point height inequality, positive elliptic
+rank stable from \(\Q\), and Burungale's published simultaneous-twist
+theorem. The exceptional-set correction is ineffective. This is a
+definition of \(\Q\) inside a number field, not a reduction of the
+separate variable counts for defining \(\Z\) over \(\Q\).
+\end{abstract}
+
+\section{Arithmetic assumptions and the uncompressed source}
+
+Fix a number field \(K\). Assume that an elliptic curve \(E/\Q\) has
+\[
+ 0<\rank E(\Q)=\rank E(K).
+\]
+Choose \(m\ge1\) with \(mE(K)\subset E(\Q)\); such an \(m\) exists
+because the quotient of these finitely generated groups is finite.
+Use an integral short Weierstrass equation
+\begin{equation}\label{eq:curve}
+ E:\quad y^2=F(x),\qquad F(X)=X^3+aX+b,\qquad
+ a,b\in\Z,\quad 4a^3+27b^2\ne0.
+\end{equation}
+Put \(\xi=-x/y\) and
+\[
+ \Gamma^\circ=\{Q\in mE(K)\setminus\{O\}:x(Q)y(Q)\ne0\},\qquad
+ \mathcal A=\{\xi(U)/\xi(V):U,V\in\Gamma^\circ\}\subset\Q^\times.
+\]
+
+The preceding paper~\cite{amplified} proves the following source
+statement, with its local propagation and completeness audited
+independently. Set
+\begin{equation}\label{eq:f}
+ f(T)=\frac{T^3-2}{T^3-3},\qquad
+ \mathcal M=\{\pm1,\pm2,\pm3,\pm5,\pm6,\pm7,\pm10,\pm14\},
+\end{equation}
+and
+\begin{equation}\label{eq:pole}
+ P_d(v,s)=d(d+v^2)^2s^4-d(d-v^2)^2(1-d)^2.
+\end{equation}
+For \(g=f(t)\), \(\lambda,\beta\in\mathcal A\), define
+\begin{equation}\label{eq:sourceinputs}
+ b_1=\frac{(\lambda-g)^2(1+g)^2}{g^3},\qquad
+ b_2=(\beta-t)^2\left(\frac{(1+\lambda)^2}{\lambda}\right)^3.
+\end{equation}
+Require \(g\ne0,\infty\), and require, for some
+\(\mu_1,\mu_2\in\mathcal M\), pole equations over \(K\)
+\[
+                    Z_i^2=P_{b_i/\mu_i}(v_i,s_i)\qquad(i=1,2).
+\]
+Here all coordinates are quantified in \(K\); the rationality of
+\(\lambda,\beta\) follows from rank stability.
+
+Let \(D\) be the reduced divisor of the six roots of
+\((T^3-2)(T^3-3)\). Assume the one-divisor lower bound
+\begin{equation}\label{eq:height}
+ N^{(1)}(D,t)\ge\theta h(t)-C\quad(t\in K\setminus D),
+ \qquad \theta>7/2.
+\end{equation}
+Ordinary \(abc\) over \(K\) implies this estimate. The source predicate
+contains every rational input and only finitely many irrational inputs.
+Consequently there is \(H\in\Z[T]\), with no rational root, such that
+adjoining \(H(t)\ne0\) makes this predicate define exactly \(\Q\).
+One can take the product of the primitive minimal polynomials of the
+irrational accepted inputs. No effective specification of \(H\) is asserted.
+
+The pole completeness used here is the class-seven consequence of
+Burungale's published Theorem~B~\cite{Burungale}. Its precise density
+form is proved again in Section~\ref{sec:density}; a square-class-one
+extension is not assumed. The rationality-descent architecture is due
+to Hector Pasten and Xavier Vidaux~\cite{PV}. The amplification and
+preparation are the preceding project work~\cite{amplified}; the
+finite-algebra compression below is a further improvement. The
+eleven-coordinate rational-integer theorem used only in the final
+composition corollary originates in notes of \textbf{Gabe Conant with
+Astra 6.2}, with the project's subsequent audits and improvements.
+
+\begin{theorem}\label{thm:main}
+Under the stated stable-rank, height, and class-seven arithmetic inputs,
+there is a polynomial in \(\Z[T,X_1,X_2,X_3,X_4,v_1,s_1,v_2,s_2,Z]\)
+whose input projection over \(K\) is exactly \(\Q\).
+Thus the definition uses at most ten total \(K\)-coordinates,
+including its distinguished input.
+The finite determinant specification below has integer content one.
+Its degree, support, and coefficient bounds are given in
+Section~\ref{sec:bounds}.
+\end{theorem}
+
+\section{Approximation with rational point preimages}
+
+We will use the stronger completeness option in which all four
+elliptic preimages lie in \(E(\Q)\). The positive-rank subgroup
+\(\Gamma_0=mE(\Q)\subseteq mE(K)\) suffices.
+
+\begin{lemma}\label{lem:approx}
+Ratios \(\xi(U)/\xi(V)\), with
+\(U,V\in\Gamma_0\) in the allowed affine chart, approximate any rational
+target simultaneously at the real place and at any specified finite
+set of rational primes. They can avoid any fixed finite set of rational
+values. The two points have rational affine preimages under \([m]\).
+\end{lemma}
+\begin{proof}
+This is the approximation proof of~\cite{amplified}, applied to
+\(\Gamma_0\) instead of \(mE(K)\). For completeness, for a nonzero
+target \(a_0/b_0\), integral formal multiplication gives
+\[
+ \xi([a_0]Q)=a_0z+z^2F_{a_0}(z),\quad
+ \xi([b_0]Q)=b_0z+z^2F_{b_0}(z),\quad z=\xi(Q).
+\]
+If \(v_p(z)>v_p(b_0)\), the error of the ratio has valuation at least
+\(v_p(z)-2v_p(b_0)\). The subgroup lying in any chosen finite list
+of deep formal neighborhoods has finite index and positive rank.
+Nonzero multiples of a nontorsion point in it approach \(O\) in the
+compact group \(E(\mathbb R)\). The ratio then approaches \(a_0/b_0\)
+really while preserving the finite-place bounds. Zero targets and
+finite avoidance follow by first choosing a nearby nonzero rational
+target outside the forbidden set and shrinking its neighborhoods.
+The proof may be performed in \(mE(\Q)\) throughout, so both points
+have rational preimages. The deep formal points have nonzero
+abscissa and ordinate.
+\end{proof}
+
+For any fixed \(t\in\Q\), the values \(f(t)=0,\infty,-1\) are impossible
+by the rational-root test. Choose the first ratio \(\lambda\) close
+to \(g=f(t)\) really and at all needed finite primes, avoiding
+\[
+                       \{0,1,-1,g,-g\}.
+\]
+After fixing it, choose the second ratio \(\beta\) close to \(t\),
+avoiding \(\{t,-t\}\). The second finite-place preparation includes
+every numerator and denominator prime of the already chosen
+\(\lambda(1+\lambda)\). The proof of~\cite{amplified} therefore gives,
+for both actual source inputs,
+\begin{equation}\label{eq:preparedb}
+ \begin{gathered}
+ b_i\ne0,\quad |b_i|<1,\quad b_i\text{ has square reduced denominator},\\
+ v_2(b_i)\ge5,\quad v_3(b_i),v_5(b_i),v_7(b_i)\ge1.
+ \end{gathered}
+\end{equation}
+The additional finite forbidden values do not change that proof.
+For each \(i\), a choice \(\mu_i\in\mathcal M\) makes
+\begin{equation}\label{eq:preparedd}
+ \begin{gathered}
+ d_i=b_i/\mu_i:\qquad 0<d_i<1,\quad
+ d_i\text{ has square reduced denominator},\\
+ d_i\in7\Q_2^{\times2},\qquad v_2(d_i)\ge4.
+ \end{gathered}
+\end{equation}
+Indeed, choose \(\mu_i b_i>0\) and \(-\mu_i b_i\in\Q_2^{\times2}\).
+The prescribed valuations prevent an odd denominator at the primes
+dividing \(\mu_i\), and \(b_i/\mu_i\) has the same square class as
+\(\mu_i b_i\).
+
+\section{The exact class-seven density input}\label{sec:density}
+
+\begin{lemma}\label{lem:density}
+For every rational \(d\) satisfying~\eqref{eq:preparedd}, the projection
+to the \((v,s)\)-plane of rational solutions
+\(Y^2=P_d(v,s)\) is Zariski dense, including over \(\overline\Q\).
+This follows from the published case
+\(\beta\equiv7\pmod8,\ \eta\equiv1\pmod8\) of Burungale's Theorem~B.
+\end{lemma}
+\begin{proof}
+Write \(d=N/Q_0^2\) in lowest terms, with \(0<N<Q_0^2\).
+Let \(\beta_0,\eta\) be the positive squarefree representatives of
+\(d\) and \(1-d\). The integer numerators \(N,Q_0^2-N\) are coprime,
+so \(\beta_0,\eta\) are coprime. The two-adic assumptions give
+\(\beta_0\equiv7\pmod8\) and \(\eta\equiv1\pmod8\).
+At every odd prime dividing \(\beta_0\), the number \(1-d\) is a
+unit congruent to one; thus \(\eta\) is a local square. At every
+odd prime dividing \(\eta\), the number \(d\) is a unit congruent to
+one; thus \(\beta_0\) is a local square.
+
+The cited Theorem~B supplies a positive \(n\) for which
+\(E_n:y^2=x^3-n^2x\) and \(E_{n\eta}\) both have positive rank and
+points with nonzero abscissa in \(\beta_0\Q^{\times2}=d\Q^{\times2}\).
+Write \(1-d=\eta c^2\) and scale the second curve to
+\(E_{n(1-d)}\). On each curve the abscissa square-class map is a
+homomorphism into \(\Q^\times/\Q^{\times2}\); its value is unchanged
+upon adding a point in \(2E_l(\Q)\). Hence each prescribed class
+contains infinitely many rational points. Discard the finitely many
+torsion points and choose the two points independently:
+\[
+ R=(d a_1^2,a_1U)\in E_n(\Q),\qquad
+ R'=(d a_2^2,a_2V)\in E_{n(1-d)}(\Q).
+\]
+Their positive abscissas exceed the positive curve parameters, so
+all the following denominators are nonzero and \(0<e<1\):
+\[
+ e=\frac{n}{d a_1^2},\qquad p_0=\frac{U}{d a_1^2},\qquad
+ s=\frac{a_2}{a_1},\qquad q_0=\frac{V}{d a_1^2}.
+\]
+The curve equations give
+\[
+ p_0^2=d(1-e^2),\qquad
+ q_0^2=d\bigl(s^4-e^2(1-d)^2\bigr).
+\]
+Put \(v=p_0/(1+e)\). Then
+\[
+ e=\frac{d-v^2}{d+v^2},\qquad
+ p_0=\frac{2dv}{d+v^2},\qquad Y=(d+v^2)q_0
+\]
+give exactly \(Y^2=P_d(v,s)\).
+
+As \(R\) varies there are infinitely many distinct \(a_1^2\), hence
+infinitely many \(e\) and \(v^2=d(1-e)/(1+e)\). For every fixed first
+point, the independently varying second point gives infinitely many
+\(s\). A polynomial over \(\overline\Q\) vanishing at every such pair
+vanishes as a polynomial in \(s\) for infinitely many \(v\), so every
+coefficient vanishes identically. This proves the asserted density.
+No assertion for the square class \(\beta_0=1\) is used.
+\end{proof}
+
+In particular, any finite list of nonzero polynomials in the two actual
+pole parameters can be avoided while retaining rational witnesses.
+This is an avoidance statement; it does not prescribe a new rational
+square at some other character.
+
+\section{A polynomial finite algebra in nine base coordinates}
+
+Since \(\xi\circ[m]\) is odd under \((x,y)\mapsto(x,-y)\), choose
+nonzero \(u_m,v_m\in\Z[X]\) such that
+\begin{equation}\label{eq:xi-map}
+              \xi([m](x,y))=y\,u_m(x)/v_m(x)
+\end{equation}
+as a rational function on \(E\). Divide out common polynomial factors.
+This function can be computed by the usual multiplication formulas.
+On the chart \(F(x)u_m(x)v_m(x)\ne0\), its image under \([m]\)
+lies in \(\Gamma^\circ\) whenever the point lies in \(E(K)\).
+Indeed, on a short Weierstrass model, \(\xi\) vanishes at \(O\) and
+at points with \(x=0\), and has a pole at every point with
+\(y=0,x\ne0\). If \((0,0)\) is on the curve, \(\xi\) has a zero
+there. Thus a finite nonzero value lies in the stated chart.
+Conversely, a preimage of a point in \(\Gamma^\circ\) has
+\(F u_m v_m\ne0\): it cannot be a two-torsion point, and the reduced
+expression has neither a zero nor a pole there.
+
+Use the polynomial ring in nine base coordinates
+\[
+ \mathfrak R=\Z[T,X_1,X_2,X_3,X_4,v_1,s_1,v_2,s_2].
+\]
+Set \(F_i=F(X_i)\), \(u_i=u_m(X_i)\), and \(v_i^*=v_m(X_i)\);
+the superscript distinguishes \(v_i^*\) from the free pole parameter.
+Form the free rank-sixteen algebra
+\[
+ \mathfrak A_0=\mathfrak R[Y_1,Y_2,Y_3,Y_4]/
+                    (Y_i^2-F_i:1\le i\le4).
+\]
+Its specified basis is the set of squarefree monomials in the four
+\(Y_i\). Define the following elements and scalar polynomials:
+\[
+ \Lambda=Y_1Y_2u_1v_2^*,\quad L=F_2u_2v_1^*,\qquad
+ B=Y_3Y_4u_3v_4^*,\quad M=F_4u_4v_3^*.
+\]
+Whenever the displayed scalar factors are nonzero,
+\(\lambda=\Lambda/L\) and \(\beta=B/M\) are exactly the two
+ratios of~\eqref{eq:xi-map}. Also
+\[
+                     S=\Lambda^2=F_1F_2u_1^2(v_2^*)^2\in\mathfrak R.
+\]
+With \(P=T^3-2\) and \(Q=T^3-3\), put
+\begin{align}
+ A_1&=(\Lambda Q-PL)^2(P+Q)^2,&
+ B_1&=L^2QP^3,\label{eq:a1}\\
+ A_2&=(B-TM)^2(L+\Lambda)^6\Lambda,&
+ B_2&=M^2L^3S^2.\label{eq:a2}
+\end{align}
+Then \(b_i=A_i/B_i\) are exactly~\eqref{eq:sourceinputs}.
+For the second identity use \(1/\Lambda^3=\Lambda/S^2\).
+Both \(B_i\) are scalar polynomials, so no algebra-valued denominator
+is hidden in these formulas.
+
+Fix one of the \(16^2\) pairs \((\mu_1,\mu_2)\), and set
+\(C_i=\mu_iB_i\). Define
+\begin{equation}\label{eq:radicands}
+ R_i=A_iC_i^3(A_i+C_iv_i^2)^2s_i^4
+       -A_iC_i(A_i-C_iv_i^2)^2(C_i-A_i)^2\in\mathfrak A_0.
+\end{equation}
+The identity
+\[
+                     R_i=C_i^6P_{A_i/C_i}(v_i,s_i)
+\]
+holds whenever \(C_i\ne0\). Adjoin the two monic quadratic roots:
+\[
+ \mathfrak A=\mathfrak A_0[W_1,W_2]/(W_1^2-R_1,\ W_2^2-R_2).
+\]
+This algebra is free of rank \(64\). Its specified basis consists of
+the squarefree monomials in the six generators. Under a field-valued
+character, the original pole root is \(Z_i=W_i/C_i^3\).
+
+\section{All-character guards and rational completeness}
+
+For \(a\in\mathfrak A_0\), let \(N_0(a)\in\mathfrak R\) be the determinant
+of multiplication by \(a\) in its rank-sixteen basis. For the current
+multiplier pair define
+\begin{equation}\label{eq:guard}
+ G_*=
+ H(T)P Q(P+Q)\!
+ \left(\prod_{i=1}^4F_i u_i v_i^*\right)
+ N_0(A_1)N_0(A_2)N_0(R_1)N_0(R_2)\in\mathfrak R.
+\end{equation}
+The condition \(G_*\ne0\) makes \(L,M,S,B_1,B_2,C_1,C_2\) nonzero.
+It also makes \(A_1,A_2,R_1,R_2\) units in the specialized point
+algebra. The four nonzero \(F_i\) make that algebra finite etale in
+characteristic zero, and the two unit radicands make the full algebra
+finite etale of rank \(64\).
+
+\begin{lemma}\label{lem:guards}
+For every \(t\in\Q\), there are rational values of the other eight
+base coordinates, a multiplier pair, and a rational character of
+the resulting algebra \(\mathfrak A\), for which \(G_*\ne0\).
+\end{lemma}
+\begin{proof}
+Choose \(\lambda,\beta\) as in Section~2 using rational preimages.
+The four chosen abscissas are rational, and the point algebra
+\(\mathfrak A_0\otimes\Q\) is split: its sixteen geometric characters
+independently change the signs of the four nonzero rational ordinates.
+They change \(\lambda\) to \(\lambda\) or \(-\lambda\), and \(\beta\)
+to \(\beta\) or \(-\beta\). Every point-chart factor in~\eqref{eq:guard}
+is nonzero. Also \(H(t)P(t)Q(t)(P(t)+Q(t))\ne0\), since none of these
+polynomials has a rational root.
+
+The avoidance \(\lambda\notin\{\pm g,\pm1\}\) and
+\(\beta\notin\{\pm t\}\) makes both source inputs nonzero at every
+point character. Thus \(N_0(A_1)N_0(A_2)\ne0\). Choose
+\(\mu_1,\mu_2\) satisfying~\eqref{eq:preparedd} at the selected
+rational character.
+
+For either pole block, every other point character sends \(A_i/C_i\)
+to a nonzero rational number \(d'\). Its radicand is
+\(C_i^6P_{d'}(v_i,s_i)\), a nonzero polynomial in the two free
+parameters: the coefficient of \(s_i^4\) is
+\(C_i^6d'(d'+v_i^2)^2\), which is not the zero polynomial.
+Consequently the product over all sixteen point characters, namely
+\(N_0(R_i)\), is a nonzero polynomial in these two parameters.
+Apply Lemma~\ref{lem:density} to the actual prepared \(d_i\), avoiding
+that product. The selected pole root remains rational and all other
+radicands become nonzero. Perform this independently for the two
+blocks. Every factor of \(G_*\) is now nonzero, and the selected
+point and pole values give a rational character of \(\mathfrak A\).
+\end{proof}
+
+This proof requires only avoidance of nonzero polynomials at the other
+characters. Those other characters need not themselves have rational
+pole witnesses. For arbitrary base values over \(K\), the point
+characters need not be rational either; their role in the soundness
+argument is through finite-algebra units.
+
+\section{A finite primitive menu and one guarded encoder}
+
+For \(1\le j\le10081\), set
+\[
+ \alpha_j=Y_1+jY_2+j^2Y_3+j^3Y_4+j^4W_1+j^5W_2.
+\]
+Let \(M_j\) be its \(64\times64\) multiplication matrix in the specified
+basis of \(\mathfrak A\). Let
+\[
+ \Delta_j=\det[\,1,\alpha_j,\alpha_j^2,\ldots,\alpha_j^{63}\,]
+                 \in\mathfrak R,
+\]
+where the bracket denotes the matrix of coefficient columns in that
+basis. Define \(G_j=G_*\Delta_j\) and the single-coordinate polynomial
+\begin{equation}\label{eq:encoder}
+           E_{\mu_1,\mu_2,j}(Z)
+           =\det\bigl(G_j(ZI_{64}-M_j)-I_{64}\bigr)
+           \in\mathfrak R[Z].
+\end{equation}
+
+\begin{lemma}\label{lem:separator}
+At every characteristic-zero specialization with \(G_*\ne0\), at least
+one \(j\in\{1,\ldots,10081\}\) has \(\Delta_j\ne0\).
+\end{lemma}
+\begin{proof}
+The specialized algebra is etale of rank \(64\), so it has \(64\)
+distinct geometric characters. For any two different characters,
+their values differ on at least one of its six named generators.
+The difference of their values on
+\(Y_1+JY_2+\cdots+J^5W_2\) is therefore a nonzero polynomial in \(J\)
+of degree at most five. It vanishes at at most five integers.
+There are \(\binom{64}{2}=2016\) pairs of characters. Hence at most
+\(5\cdot2016=10080\) integers fail to separate some pair.
+The menu of \(10081\) distinct integers contains a separator.
+
+For such a separator, the evaluation matrix of
+\(1,\alpha_j,\ldots,\alpha_j^{63}\) is a Vandermonde matrix with
+nonzero determinant. The evaluation matrix of any basis of an etale
+algebra is invertible after passing to a splitting field. Therefore
+\(\Delta_j\ne0\).
+\end{proof}
+
+\begin{lemma}\label{lem:encoder}
+For a specialization of the nine base coordinates in \(K\), a root
+in \(K\) of~\eqref{eq:encoder} exists if and only if
+\(G_j\ne0\) and the specialized algebra has a \(K\)-valued character.
+\end{lemma}
+\begin{proof}
+If \(G_j=0\), the determinant is \(\det(-I_{64})=1\).
+Thus every root forces \(G_j\ne0\), and hence \(\Delta_j\ne0\).
+The powers \(1,\alpha_j,\ldots,\alpha_j^{63}\) are then a basis.
+The minimal polynomial of \(\alpha_j\) has degree \(64\) and equals
+its multiplication characteristic polynomial \(p_j\). The algebra is
+isomorphic to \(K[A]/(p_j(A))\).
+
+When \(G_j\ne0\), equation~\eqref{eq:encoder} is
+\[
+              G_j^{64}p_j(Z-1/G_j)=0.
+\]
+Its root supplies the \(K\)-valued character
+\(\alpha_j\mapsto Z-1/G_j\). Conversely, if \(\chi\) is a
+\(K\)-valued character, take \(Z=\chi(\alpha_j)+1/G_j\).
+No nonzero condition on \(\chi(\alpha_j)\) is required.
+\end{proof}
+
+The shift by the guard inverse is essential to this formula. Replacing
+it without proof by a determinant of \(ZG_jM_j-I\) would impose an
+additional nonvanishing condition on the selected primitive value.
+
+\section{The complete polynomial and source equivalence}
+
+Define
+\begin{equation}\label{eq:final}
+ \mathcal F(T,X_1,X_2,X_3,X_4,v_1,s_1,v_2,s_2,Z)
+  =\prod_{(\mu_1,\mu_2)\in\mathcal M^2}
+       \ \prod_{j=1}^{10081}E_{\mu_1,\mu_2,j}(Z).
+\end{equation}
+All factors reuse the same ten coordinates. The algebras, guards,
+and multiplication matrices in a factor are constructed using that
+factor's multiplier pair.
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}: soundness]
+Suppose \(\mathcal F=0\) at a tuple in \(K^{10}\). One factor vanishes.
+Lemma~\ref{lem:encoder} gives a \(K\)-valued character \(\chi\) and
+all guards in \(G_*\). The four points
+\[
+                       (X_i,\chi(Y_i))\in E(K)
+\]
+lie in the chart of~\eqref{eq:xi-map}. Their images under \([m]\)
+belong to \(\Gamma^\circ\subset E(\Q)\), so the recovered
+\(\lambda=\chi(\Lambda)/L\) and \(\beta=\chi(B)/M\) are in
+\(\mathcal A\subset\Q^\times\).
+
+Equations~\eqref{eq:a1}--\eqref{eq:a2} recover the exact source inputs
+\(b_i=\chi(A_i)/B_i\). Since \(C_i\ne0\), the roots
+\(\chi(W_i)/C_i^3\) satisfy precisely
+\(Z_i^2=P_{b_i/\mu_i}(v_i,s_i)\).
+The contact denominators and \(H(T)\) are nonzero. Thus this tuple
+gives an accepted tuple of the corrected source predicate, whose
+input belongs to \(\Q\).
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}: completeness]
+For \(t\in\Q\), Lemma~\ref{lem:guards} gives rational values of the
+other eight base coordinates and a multiplier pair for which \(G_*\ne0\)
+and the specialized algebra has a rational character \(\chi\).
+Lemma~\ref{lem:separator} supplies a \(j\) with \(\Delta_j\ne0\).
+Then \(Z=\chi(\alpha_j)+1/G_j\) is rational, and its factor in
+\eqref{eq:final} vanishes by Lemma~\ref{lem:encoder}.
+This proves completeness with all witnesses in \(\Q\subset K\).
+\end{proof}
+
+No inverse coordinate besides the encoder \(Z\) has been used.
+The six monic algebraic generators are not free coordinates. The
+complete census is
+\[
+ \underbrace{1}_{\text{input}}+
+ \underbrace{4}_{\text{point abscissas}}+
+ \underbrace{4}_{\text{pole parameters}}+
+ \underbrace{1}_{\text{encoder}}=10.
+\]
+
+\section{Degree, support, and coefficient normalization}\label{sec:bounds}
+
+The finite products and matrices above are a literal specification;
+they need not be expanded to define the polynomial. Put
+\[
+ n_{\rm fac}=16^2\cdot10081=2\,580\,736.
+\]
+Let \(d_M\) be a common upper bound for the total degrees, in the nine
+base coordinates, of all entries in the six generator multiplication
+matrices, over all multiplier pairs. Let \(h_*\) bound the degrees
+of all guards \(G_*\). These are finite circuit data determined by
+the chosen multiplication map, \(H\), and the displayed formulas.
+
+The entries in \(M_j\) have degree at most \(d_M\).
+The coefficient column of \(\alpha_j^r\) has degree at most \(rd_M\);
+therefore
+\[
+ \deg\Delta_j\le\left(\sum_{r=0}^{63}r\right)d_M=2016d_M.
+\]
+Consequently a valid bound for the total degree of~\eqref{eq:final} is
+\begin{equation}\label{eq:degree}
+ D_{\rm tot}
+ =n_{\rm fac}\,64\bigl(h_*+2016d_M+\max\{1,d_M\}\bigr).
+\end{equation}
+Its support has cardinality at most \(\binom{D_{\rm tot}+10}{10}\).
+These are bounds, not claims of exact degree or support.
+
+Every multiplication matrix and every guard has integer polynomial
+entries. Each factor in~\eqref{eq:encoder} is primitive. Indeed, modulo
+any rational prime, if \(G_j\) becomes the zero polynomial the factor
+is the constant one; otherwise its leading coefficient in \(Z\) is
+the nonzero polynomial \(G_j^{64}\). Thus no prime divides every
+coefficient of a factor. Gauss's lemma makes the product primitive.
+
+For an explicit coefficient bound in the same data, write
+\(\|A\|_1\) for the sum of absolute values of the coefficients of an
+integer polynomial. Let
+\[
+ B_*=\max_{\mu_1,\mu_2,j}
+ \left(1+\|G_j\|_1
+       \left(1+\max_{r,s}\|(M_j)_{rs}\|_1\right)\right).
+\]
+The determinant expansion gives
+\[
+ \|\mathcal F\|_1
+ \le \left(64!\,B_*^{64}\right)^{n_{\rm fac}}.
+\]
+In particular the coefficient height is at most this bound.
+No effective numerical values for the exceptional correction \(H\),
+the rank-stability multiplier, or these circuit bounds are claimed.
+
+\section{Composition and limits}
+
+\begin{corollary}
+If an \(N\)-coordinate rational polynomial defines \(\Z\) over \(\Q\),
+then, under the hypotheses of Theorem~\ref{thm:main}, \(\Z\) has a
+definition over \(K\) in \(10N\) total \(K\)-coordinates.
+Its ring of integers has a definition in
+\(10N[K:\Q]\) total \(K\)-coordinates.
+The project's eleven-coordinate theorem therefore gives \(110\)
+and \(110[K:\Q]\), with all of that theorem's retained premises.
+\end{corollary}
+\begin{proof}
+Restrict each of the \(N\) original coordinates, including the input,
+by a separate copy of the ten-coordinate selector. This uses
+\(N+9N=10N\) coordinates. For the ring of integers, expand in an
+integral basis and eliminate the last coefficient using the
+distinguished input, as in~\cite{amplified}. This multiplies the count
+by \([K:\Q]\).
+\end{proof}
+
+For quadratic \(K\), Zywina's Theorem~1.2~\cite{Zywina}, with base
+field \(\Q\), supplies the stable rank-one elliptic curve. Thus the
+displayed counts become \(110\) for \(\Z\) in \(K\) and \(220\) for
+\(\mathcal O_K\), under the stated height and arithmetic inputs.
+They are field-valued existence bounds, not rational-variable records,
+quartic bounds, or effective coefficient lists.
+
+The compression changes how six finite roots and all guards are encoded.
+It does not replace either free intrinsic-pole parameter by a prescribed
+rational equality. In particular it does not solve the separate
+realization problem needed to lower the \(25/11\) counts over \(\Q\).
+
+There is also a precise limit on the contact-map degree within the
+stated amplification criterion. A rational map of degree at most two
+has at most four distinct odd-order zeros and poles, including infinity.
+Thus \(r\le4\), and the ordinary-\(abc\) coefficient
+\(r-4-2\epsilon\) cannot exceed \(2/k\) for any finite \(k\ge1\).
+The cubic map is therefore minimal for this particular criterion.
+This is not a lower bound for all possible rationality constructions.
+
+\section{Independent verification}
+
+The independent compression checker reconstructs the source input
+identities and the pole-root clearing, verifies the separating bound
+and coordinate census, and checks the encoder on exact finite-algebra
+fixtures. The accompanying review separately checks rational preimages,
+the published class-seven density input, all-character guards, and the
+two directions of source equivalence. A finite fixture does not prove
+the universal primitive-element argument or the arithmetic premises;
+those proofs are given above and in the cited source.
+
+\begin{thebibliography}{9}\footnotesize\raggedright
+\setlength{\itemsep}{1pt}
+\bibitem{amplified} \(\Z\Q\) Diophantine Project,
+\emph{Amplified rationality descent: a cubic rational map and a
+sixteen-coordinate selector}, 19 November 2026,
+\nolinkurl{papers/number_fields/amplified_rationality_descent_20261119_v81.tex}.
+\bibitem{PV} H.~Pasten and X.~Vidaux,
+\emph{On Hilbert's tenth problem for number fields},
+arXiv:2611.24748v1, 18 November 2026,
+\url{https://arxiv.org/html/2611.24748v1}.
+\bibitem{Burungale} A.~Burungale,
+\emph{A Diophantine definition of \(\Z\) in \(\Q\)},
+arXiv:2611.16130v1, Theorem~B,
+\url{https://arxiv.org/html/2611.16130v1}.
+\bibitem{intrinsic} \(\Z\Q\) Diophantine Project,
+\emph{A two-coordinate pole test of coefficient height four},
+17 November 2026,
+\nolinkurl{papers/pole_parameters/intrinsic_pole_20261117_v56.tex}.
+\bibitem{Zywina} D.~Zywina,
+\emph{Rank one elliptic curves and rank stability},
+arXiv:2505.16960v1, Theorem~1.2,
+\url{https://arxiv.org/html/2505.16960v1}.
+\end{thebibliography}
+\end{document}

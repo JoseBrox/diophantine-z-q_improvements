@@ -13,6 +13,8 @@ jobs:
         with:
           python-version: '3.12'
       - run: python -m pip install sympy==1.14.0
+      - name: Verify the 56-variable quartic and amplified number-field descent
+        run: python -B scripts/verify_v81.py --report /tmp/v81-verification.json
       - name: Verify the 58-variable quartic and the published-theorem pole transfer
         run: python -B scripts/verify_v80.py --report /tmp/v80-verification.json
       - name: Verify the 59-variable quartic, physical maps and scoped parity certificate

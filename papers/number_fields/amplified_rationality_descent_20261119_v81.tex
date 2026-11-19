@@ -1,0 +1,573 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools,booktabs,microtype}
+\usepackage[margin=25mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\DeclareMathOperator{\Tr}{Tr}\DeclareMathOperator{\Nm}{Nm}
+\title{Amplified rationality descent:\\a cubic rational map and a sixteen-coordinate selector}
+\author{\(\Z\Q\) Diophantine Project}
+\date{19 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+We audit the rationality-descent method of Pasten and Vidaux,
+arXiv:2611.24748v1, and give several quantitative strengthenings.
+Formal elliptic ratios approximate arbitrary rational targets
+simultaneously at the real place and at finitely many finite places.
+This supplies every rational input, eliminating the final quotient of
+two separately defined sets. A two-sided odd-valuation transfer and an
+odd denominator power amplify the resulting divisibility. The auxiliary
+map can be $(T^3-2)/(T^3-3)$ instead of a polynomial of degree at least
+seven. Prepared intrinsic pole equations suffice; their use gives a
+definition of $\Q$ inside the ambient number field in sixteen total
+coordinates. The assumptions are a specified truncated-height inequality,
+positive elliptic rank stable from $\Q$, and the cited native-pole
+completeness theorem. Ordinary $abc$ over the ambient field supplies the
+height inequality. The correction for the finitely many irrational
+exceptions is ineffective. These field-valued coordinate counts do not
+reduce any of the separate counts for defining $\Z$ over $\Q$.
+\end{abstract}
+
+\section{Source audit and scope}
+
+Pasten and Vidaux~\cite{PV} use an elliptic curve of positive rank
+stable from $\Q$ to a number field $K$, two rational approximation
+parameters, an even-pole predicate, and an $abc$ height inequality to
+exclude all but finitely many irrational inputs. Their Theorem~1.1
+assumes $abc$ over $K$ and
+\[
+ 0<\operatorname{rank}E(\Q)=\operatorname{rank}E(K)
+ \quad\text{for an elliptic curve }E/\Q.
+\]
+Their quadratic-field corollary uses Zywina's Theorem~1.2~\cite{Zywina}
+with base field $\Q$. It does not supply this same stable $E/\Q$
+for every higher-degree field. The source proof's use of a rational
+approximation parameter at every prime over one rational prime, and its
+passage to the Galois closure, are valid after excluding the fixed
+ramified primes. We found no gap in that transfer under its stated
+arithmetic inputs.
+
+The descent architecture is due to \textbf{Hector Pasten and Xavier
+Vidaux}. The results below are subsequent project strengthenings:
+all-rational and real approximation, amplification, a two-sided cubic
+map, a prepared-pole replacement, and a complete coordinate census.
+The rational-integer polynomials used only in the final composition
+corollary originate in \textbf{notes of Gabe Conant with Astra 6.2},
+with the project audits and improvements recorded in v78--v81.
+
+We do not independently prove $abc$, Zywina's theorem, or Burungale's
+simultaneous-twist theorem. The latter is used in precisely its published
+square classes through the native converse proved from it in
+v80~\cite{Burungale,v80}. In particular, no square-class-one extension
+of that theorem is assumed here.
+
+\section{Approximation at all rational targets}
+
+Fix an integral Weierstrass model of $E/\Q$ and an integer $m\ge1$
+such that $\Gamma=mE(K)\subseteq E(\Q)$. Such an integer exists under
+the rank hypothesis because $E(K)/E(\Q)$ is finite. Let
+\[
+ \xi=-x/y,\qquad
+ \Gamma^\circ=\{P\in\Gamma\setminus\{O\}:x(P)y(P)\ne0\},
+ \qquad
+ \mathcal A=\{\xi(U)/\xi(V):U,V\in\Gamma^\circ\}.
+\]
+The set $\mathcal A$ is Diophantine over $K$ and is contained in
+$\Q^\times$. Both membership statements follow from the algebraic
+graph of $[m]$ and the explicitly guarded rational map $\xi$.
+
+\begin{lemma}\label{lem:density}
+Given a rational number $q$, finitely many rational primes, and prescribed
+neighborhoods of $q$ in their completions and in $\mathbb R$, there
+exists an element of $\mathcal A$ in all these neighborhoods.
+It can also avoid any prescribed finite subset of $\Q$.
+\end{lemma}
+\begin{proof}
+First let $q=a/b\ne0$, with nonzero integers $a,b$.
+For a point $Q$ sufficiently deep in each formal group, put $z=\xi(Q)$.
+The integral multiplication series give
+\[
+ \xi([a]Q)=az+z^2F_a(z),\qquad
+ \xi([b]Q)=bz+z^2F_b(z),\qquad F_a,F_b\in\Z[[z]].
+\]
+If $v_p(z)>v_p(b)$, then
+\[
+ \frac{\xi([a]Q)}{\xi([b]Q)}-\frac ab
+ =\frac{z\{bF_a(z)-aF_b(z)\}}{b\{b+zF_b(z)\}},
+ \qquad
+ v_p\left(\frac{\xi([a]Q)}{\xi([b]Q)}-\frac ab\right)
+ \ge v_p(z)-2v_p(b).
+\]
+Thus an arbitrary prescribed finite-place accuracy follows by choosing
+the formal neighborhoods sufficiently deep. Non-torsion points in these
+neighborhoods and their nonzero multiples have $xy\ne0$; this follows
+from the local expansions at $O$, not from non-torsion alone.
+
+The subgroup of $\Gamma$ lying in all these neighborhoods has finite
+index and contains a non-torsion point $R$. The compact group $E(\mathbb R)$
+has nonzero multiples $Q_j=[n_j]R$ tending to $O$. They remain in all
+the finite-place neighborhoods. The real formal expansion then gives
+$\xi([a]Q_j)/\xi([b]Q_j)\longrightarrow a/b$. This proves the
+simultaneous assertion for nonzero $q$.
+
+For zero targets or finite avoidance, first choose a nonzero rational
+$q'$ in the required open neighborhoods and outside the finite forbidden
+set, by weak approximation. Shrink the neighborhoods around $q'$ to
+exclude that set, and apply what was just proved. If the finite prime
+set was empty, one may add a single prime to ensure the displayed
+formal guards. No effective index bound is asserted.
+\end{proof}
+
+\section{Amplification and propagation of both valuation signs}
+
+All valuations at finite primes of a number field are integral discrete
+valuations; heights and counting functions are normalized by the field
+degree. Let $f\in\Q(T)$ be nonconstant. For $g=f(t)\ne0,\infty$ and
+$\lambda,\beta\in\mathcal A$ define
+\begin{equation}\label{eq:inputs}
+ A_g(\lambda)=\frac{(\lambda-g)^2(1+g)^2}{g^3},\qquad
+ B_k(t,\lambda,\beta)
+ =(\beta-t)^2\left(\frac{(1+\lambda)^2}{\lambda}\right)^{2k-1},
+ \quad k\ge1.
+\end{equation}
+There is no division by $1+g$ or $1+\lambda$. Their zero fibers must
+therefore not be silently removed.
+
+Suppose a Diophantine pole predicate $\Psi$ excludes negative odd
+valuations outside a fixed finite set of primes. Write $\Theta_{f,k}(t)$
+for the existence of $\lambda,\beta\in\mathcal A$ such that both
+expressions in~\eqref{eq:inputs} belong to $\Psi$, with the two displayed
+nonzero denominators guarded.
+
+\begin{lemma}\label{lem:local}
+Let $p$ be a rational prime unramified in $K$, with every prime of $K$
+above $p$ nonexceptional. Let $e=v_{\mathfrak p}(g)$ be nonzero and odd
+at one prime $\mathfrak p$ above $p$.
+If the first membership holds, then $v_{\mathfrak p}(\lambda)=e$.
+At every prime $\mathfrak q$ above $p$,
+both memberships imply
+\[
+             v_{\mathfrak q}(\beta-t)\ge k.
+\]
+\end{lemma}
+\begin{proof}
+If $\lambda=g$, the first conclusion is immediate. Otherwise its
+valuation is
+\[
+ 2v(\lambda-g)-3e+2\min(0,e),
+\]
+an odd integer. It must be positive. For $e>0$ this forces
+$v(\lambda-g)>3e/2>e$; for $e<0$ it forces
+$v(\lambda-g)>e/2>e$. In either case $v(\lambda)=e$.
+As $\lambda\in\Q$, this valuation equals $e$ at every prime above
+the same unramified rational prime.
+
+At such a prime the valuation of $(1+\lambda)^2/\lambda$ is $-|e|$.
+Unless $\beta=t$, the second input has odd valuation
+\[
+        2v(\beta-t)-(2k-1)|e|.
+\]
+It is positive, so $v(\beta-t)>(k-1/2)|e|\ge k-1/2$, proving
+the integral lower bound. The case $\beta=t$ has infinite valuation
+and already has rational input. If $\lambda=-1$, the first conclusion
+excludes every consumed odd prime; no extra infinite exception is
+created by the zero second input. The same observation treats $g=-1$.
+\end{proof}
+
+Let $D$ be an effective reduced divisor defined over $\Q$, supported
+at zeros and poles of $f$ whose multiplicities are odd. Put $r=\deg D$.
+At good reduction primes the odd contacts with $D$ are among the primes
+of odd valuation of $f(t)$, including negative valuations. If $N_D^{\rm odd}$
+counts those contacts once, then
+\begin{equation}\label{eq:odd-lower}
+ 2N^{(1)}(D,t)\le N(D,t)+N_D^{\rm odd}(t)+O(1),\qquad
+ N(D,t)\le r h(t)+O(1).
+\end{equation}
+Indeed, at every positive contact multiplicity $n$, the elementary
+inequality $2\le n+(n\bmod2)$ applies. At a pole use a local reciprocal
+parameter. Fixed bad primes contribute only bounded truncated errors.
+
+\begin{theorem}\label{thm:amplification}
+Assume, for all $t\in K$ outside $D$, the single-divisor estimate
+\[
+              N^{(1)}(D,t)\ge\theta h(t)-C,
+              \qquad 2\theta-r>2/k.
+\]
+Then $\Theta_{f,k}(K)\setminus\Q$ is finite, independently of any
+completeness assertion about $\Psi$.
+\end{theorem}
+\begin{proof}
+Let $t$ be an irrational accepted input and choose an embedding $\sigma$
+of $K$ into its Galois closure $L$ such that $\sigma(t)\ne t$.
+Exclude the fixed rational primes ramified in $L$ or lying below a
+pole-predicate exception. For each remaining rational prime $p$ below
+an odd contact, Lemma~\ref{lem:local} gives
+$v_{\mathfrak P}(\beta-t)\ge k$ at every $\mathfrak P\mid p$ in $L$.
+Since $\beta$ is rational and $\sigma$ permutes these primes, it also
+gives $v_{\mathfrak P}(\beta-\sigma(t))\ge k$. Hence
+\[
+ k\sum_{p\ {m consumed}}\log p
+ \le h(t-\sigma(t))\le2h(t)+\log2.
+\]
+The degree-normalized odd-contact count in $K$ is at most this sum
+plus a fixed constant. Combining this bound with~\eqref{eq:odd-lower}
+gives
+\[
+ (2\theta-r)h(t)-O(1)
+ \le N_D^{\rm odd}(t)
+ \le\frac{2}{k}h(t)+O(1).
+\]
+The strict gap bounds $h(t)$, and Northcott's theorem makes the
+irrational accepted set finite. The pole or zero fibers excluded in
+the definition are finite and do not affect this conclusion.
+\end{proof}
+
+Under $abc$ over $K$, its standard fixed-divisor consequence supplies
+$\theta=r-2-\epsilon$. Thus $r-4-2\epsilon>2/k$ suffices.
+The source's positive-contact polynomial construction can also be
+amplified directly: replacing its second denominator $\lambda$ by
+$\lambda^{2k-1}$ gives an upper bound $2h(t)/k+O(1)$.
+A squarefree polynomial of degree five then suffices with $k=3$.
+This increases a fixed exponent, without adding a witness coordinate.
+
+\section{A cubic rational map}
+
+Take
+\begin{equation}\label{eq:cubic}
+              f(T)=\frac{T^3-2}{T^3-3},\qquad k=2.
+\end{equation}
+The two cubics are squarefree and coprime: their discriminants are
+$-108,-243$, and their difference is one. The divisor $D$ of their
+six roots is reduced, rational, and has degree six. Its support comprises
+six simple zeros or poles of $f$; infinity is neither. The three fibers
+$f=0,\infty,-1$ contain no rational point, by the rational-root test
+applied to $T^3-2,T^3-3,2T^3-5$.
+
+Theorem~\ref{thm:amplification} needs only
+\[
+                  N^{(1)}(D,t)\ge(7/2+\eta)h(t)-C
+                  \quad\text{for some }\eta>0.
+\]
+Ordinary $abc$ over $K$ gives this with any fixed
+$0<\epsilon<1/2$, since $r-2-\epsilon=4-\epsilon$.
+For example $\epsilon=1/4$ yields an odd-contact lower coefficient
+$3/2$, an upper coefficient $1$, and a strict margin $1/2$.
+Only this one fixed six-point divisor is needed. Increasing $k$ allows
+any fixed lower coefficient $\theta>3$, with $k>1/(\theta-3)$.
+
+\section{Prepared intrinsic poles suffice}
+
+Let
+\[
+ \mathcal M=\{\pm1,\pm2,\pm3,\pm5,\pm6,\pm7,\pm10,\pm14\}.
+\]
+Define $\Psi(b)$ over any number field by the finite disjunction, for
+$\mu\in\mathcal M$, of
+\begin{equation}\label{eq:intrinsic}
+ \exists v,s,Y:\quad
+ \mu^5Y^2-\mu^2b(b+\mu v^2)^2s^4
+                    +b(b-\mu v^2)^2(\mu-b)^2=0.
+\end{equation}
+Denote the polynomial on the left by $\Omega_\mu(b;v,s,Y)$.
+Equivalently $Y^2=P_d(v,s)$, where $d=b/\mu$ and
+\[
+ P_d(v,s)=d(d+v^2)^2s^4-d(d-v^2)^2(1-d)^2.
+\]
+This is the intrinsic pole of v56~\cite{v56}; the clearing in
+\eqref{eq:intrinsic} is literal, with no division by a variable.
+
+\begin{lemma}\label{lem:prepared}
+The predicate $\Psi$ excludes negative odd valuations outside primes
+over $2,3,5,7$. It contains zero. It also contains every nonzero rational
+$b$ with square reduced denominator such that
+\[
+ |b|<1,\quad v_2(b)\ge5,\quad
+                v_3(b),v_5(b),v_7(b)\ge1.
+\]
+\end{lemma}
+\begin{proof}
+Outside the indicated primes $v(d)=v(b)$. Suppose this is negative
+and odd. The valuations of $d$ and $v^2$ have opposite parity, so
+$d+v^2$ and $d-v^2$ have the same finite valuation $a$.
+The two terms of $P_d$ have respective valuations
+\[
+ v(d)+2a+4v(s),\qquad3v(d)+2a.
+\]
+If $s\ne0$ they are distinct odd integers, because equality would
+give $2v(s)=v(d)$. Their difference cannot be a square. If $s=0$,
+the second term alone has odd valuation. The case $v=0$ is covered
+by $a=v(d)$. Thus no zero-coordinate loophole occurs. For $b=0$,
+take $Y=0$.
+
+For a prepared rational $b$, choose $\mu\in\mathcal M$ so that
+$\mu b>0$ and $-\mu b\in\Q_2^{\times2}$. The sixteen multipliers
+represent all real and two-adic square classes. Then $d=b/\mu$ is
+positive and below one, is in $7\Q_2^{\times2}$, and has
+$v_2(d)\ge4$. It still has square reduced denominator: the only
+new denominators could be at $2,3,5,7$, but each prime occurs in $\mu$
+with exponent at most one and the prescribed valuations prevent them.
+The native converse of v80, derived from the published Theorem~B of
+Burungale~\cite{Burungale,v80}, supplies the intrinsic witnesses.
+Its equivalence with $P_d$ is established in v56. Alternatively, the
+two curve points may be normalized and the first conic parametrized
+as in the next section, with calibration equal to zero and $H=1-d$.
+\end{proof}
+
+\begin{proposition}\label{prop:rational-completeness}
+With~\eqref{eq:cubic} and the predicate~\eqref{eq:intrinsic}, every
+rational $t$ satisfies $\Theta_{f,2}(t)$.
+\end{proposition}
+\begin{proof}
+Fix $t\in\Q$ and write $g=f(t)\in\Q\setminus\{0,-1\}$.
+Choose $\lambda\in\mathcal A$ sufficiently close to $g$ at the real
+place and at every prime in the support of $g(1+g)$, together with
+$2,3,5,7$. Avoid $0,-1,g$. At every one of these finitely many primes,
+the valuation of $A_g(\lambda)$ can be made arbitrarily large, and
+its nonzero real absolute value arbitrarily small.
+At every other prime, $g$ and $1+g$ are units, so
+$v_p(A_g(\lambda))=2v_p(\lambda-g)$ is even. Consequently this first
+input satisfies every preparation in Lemma~\ref{lem:prepared}.
+
+Only now fix $\lambda$. Choose $\beta\in\mathcal A$ sufficiently
+close to $t$ at the real place and at every prime in the supports of
+$t$ and $\lambda(1+\lambda)$, together with $2,3,5,7$; omit the
+support of $t$ if $t=0$. Avoid $t$. The nonzero second input in
+\eqref{eq:inputs} is then arbitrarily small really and arbitrarily
+integral at all these finite primes. Outside them its valuation is
+$2v_p(\beta-t)$, hence even. It too satisfies the prepared-pole lemma.
+This order includes every new numerator or denominator prime of the
+actual chosen $\lambda$. No simultaneous prescribed square, or
+unstated global approximation theorem, is being assumed.
+\end{proof}
+
+\section{Sixteen coordinates and finite corrections}
+
+\begin{theorem}\label{thm:sixteen}
+Suppose the stable-positive-rank hypothesis holds for $K$, the native
+pole converse used in Lemma~\ref{lem:prepared} holds, and the six-point
+height estimate of Section~4 holds. Then $\Q$ has a Diophantine
+definition inside $K$ in at most \textbf{sixteen total $K$-coordinates},
+including the input, with integer coefficients. In particular this
+holds under $abc$ over $K$ and the cited arithmetic inputs.
+\end{theorem}
+\begin{proof}
+The preceding results show that the set defined by $\Theta_{f,2}$
+contains $\Q$ and has only finitely many irrational members.
+Let $H\in\Z[T]$ be the product of the primitive minimal polynomials
+of these exceptional members, or $H=1$ if there are none. It has no
+rational root. Thus
+\[
+                         \Theta_{f,2}(t)\ \wedge\ H(t)\ne0
+\]
+defines $\Q$ exactly. The set, and therefore $H$, need not be effective.
+
+For each of $\lambda$ and $\beta$, use two affine preimages on $E(K)$
+under $[m]$. Four affine points use eight coordinates and four curve
+equations. Their images under $[m]$, and then their two $\xi$-ratios,
+are rational functions of these coordinates; no separate $\lambda$
+or $\beta$ variable is needed. Standard division polynomials express
+these maps on the required affine charts. Their nonzero denominators,
+and the nonzero abscissa and ordinate of each image, are guarded.
+Every desired point in $\Gamma^\circ$ has an affine preimage. Choose
+the standard division-polynomial formulas for the coordinates of $[m]$:
+their affine denominators vanish only at points mapping to the identity.
+Consequently every preimage of a point in $\Gamma^\circ$ is permitted by
+these charts. The additional nonzero image-coordinate guards hold by the
+definition of $\Gamma^\circ$.
+
+Each of the two intrinsic pole blocks uses precisely the three
+coordinates $v,s,Y$. Substitute the rational expressions for their
+inputs and clear denominators. One common coordinate $z_0$ imposes
+$z_0\mathcal G=1$, where $\mathcal G$ is the product of every required
+denominator, nonzero chart numerator, $f$ numerator, and $H(t)$.
+There is no guard on $Y$, $s$, or $v$, and none on $1+\lambda$ is
+needed. Thus the count is
+\[
+              1+8+2\cdot3+1=16.
+\]
+For each pole block, take the product of its sixteen cleared residuals
+over $\mu\in\mathcal M$. The resulting equation asserts its finite
+disjunction independently of the other block. Together with the four
+curve equations and the common guard this gives seven polynomial
+residuals. All coefficients are rational, and integral after clearing
+fixed denominators. Each terminal residual~\eqref{eq:intrinsic} has
+degree nine, thirteen monomials, and integer content one; across the
+menu its maximum coefficient height is $14^5=537824$. The per-block
+product multiplies the terminal degree by at most sixteen.
+
+These seven equations may be combined without another coordinate.
+Choose a rational prime $p$ unramified in $K$; the polynomial $Z^7-p$
+is Eisenstein at any prime over $p$, so is irreducible over $K$.
+The rational norm form of $\Q(p^{1/7})$ in its power basis is therefore
+anisotropic after extension to $K$. Applying it to the seven residuals
+is equivalent to their simultaneous vanishing. A product over a field
+vanishes exactly when one factor vanishes, so the separate finite choices
+introduce neither a coordinate nor a false branch. If $K$ has a real
+embedding, the sum of the seven residual squares is an alternative
+single equation; over a general number field a sum of squares alone
+would not be valid.
+
+For a finite degree bound, write the two substituted pole inputs as
+$b_i=A_i/B_i$, with numerator and denominator degrees at most $d_0$.
+Multiplication of $\Omega_\mu(A_i/B_i;v_i,s_i,Y_i)$ by $B_i^5$ gives
+\[
+\begin{split}
+ &\mu^5Y_i^2B_i^5
+ -\mu^2A_i(A_i+\mu v_i^2B_i)^2s_i^4B_i^2\\
+ &\hspace{13mm}+A_i(A_i-\mu v_i^2B_i)^2(\mu B_i-A_i)^2.
+\end{split}
+\]
+Its total degree is at most $5d_0+8$. If $g_0=\deg\mathcal G$, the
+single norm equation therefore has degree at most
+\[
+                 7\max\{3,16(5d_0+8),g_0+1\}.
+\]
+This is a bound in the chosen multiplication maps and finite correction;
+no uniform numerical degree or coefficient-height bound is asserted when
+those data are ineffective.
+\end{proof}
+
+There is an alternative finite correction with a degree bound independent
+of the cardinality of the exceptional set. The power-shift lemma of
+v69~\cite{v69} supplies a fixed integer $B$ avoiding that finite set
+on the image of $x\mapsto x^\ell+B$, where $\ell$ reflects rationality
+in $K$. Then $\Theta_{f,2}(x^\ell+B)$ defines $\Q$, in the same sixteen
+coordinates. Its degree is at most $\ell$ times that of the uncorrected
+polynomial. One may take any prime $\ell$ with $\ell-1>[K:\Q]$.
+The shift can lie in a prescribed integral progression, but is generally
+ineffective. This construction also preserves rational coefficients.
+
+\begin{corollary}\label{cor:composition}
+If a polynomial in $N$ total rational coordinates defines $\Z$ over
+$\Q$, then the selector above gives a definition of $\Z$ inside $K$
+in $16N$ total $K$-coordinates. The ring of integers of $K$, of degree
+$d$ over $\Q$, has a definition in $16dN$ total $K$-coordinates.
+Using the project's eleven-coordinate polynomial gives $176$ and
+$176d$, respectively, under that polynomial's explicitly retained
+arithmetic inputs as well as the hypotheses above.
+\end{corollary}
+\begin{proof}
+Restrict each of the $N$ original coordinates, including its input,
+using an independent copy of the sixteen-coordinate selector. The
+total is $N+15N=16N$. For the ring, use an integral basis and eliminate
+the last basis coefficient by the distinguished input, as in v12
+and v69~\cite{v12,v69}. This gives exactly $d$ times the previous
+coordinate count. Restricting the original input as well as the
+witnesses is essential. Finally $abc$ over $K$ implies ordinary
+rational $abc$ by restricting to rational triples; outside finitely
+many ramified primes the normalized radical contributions agree.
+\end{proof}
+
+For a quadratic field, Zywina's cited theorem supplies the stable
+rank-one curve, so the corresponding counts are $176$ for $\Z$ and
+$352$ for its ring of integers, with the hypotheses in the corollary.
+These are existence bounds over that quadratic field. They are not
+rational-variable counts for a polynomial over $\Q$, nor quartic-degree
+claims, nor effective specifications of a sufficient correction parameter.
+
+\section{An explicit full Pheidas menu}
+
+Although the sixteen-coordinate construction needs only prepared inputs,
+the full even-pole predicate in the source can also be made explicit.
+For $\mu\in\mathcal M$ choose $\gamma$ from the following sets and put
+$\delta=\mu\gamma$:
+\[
+\begin{array}{c|c}
+\mu&\gamma\\\hline
+\pm1,\pm2&7\\
+\pm3,\pm6&7,23,39,15\\
+\pm5,\pm10&31,7,55,15\\
+\pm7,\pm14&15,31,7,119
+\end{array}
+\]
+There are $4+16+16+16=52$ choices. Every $\gamma$ is positive and
+congruent to seven modulo eight. For each $p=3,5,7$, its four listed
+values represent the four square classes of $\Q_p^\times$, as checked
+by valuation parity and the Legendre symbol of the unit part.
+Consequently, after $\mu b>0$ and $-\mu b\in\Q_2^{\times2}$ have
+been arranged, one can choose $\gamma$ so that $\delta b$ is positive
+and a square at every prime dividing $2\mu$. These are exactly the
+local conditions needed in Burungale's completeness proof; its remaining
+finite support conditions are imposed on the free calibration parameter.
+All excluded primes lie in
+\[
+                     \{2,3,5,7,11,13,17,23,31\}.
+\]
+
+For completeness, the two curve conditions of that full predicate admit
+the following smaller chart. Write $a=\mu b$, let $t_0$ be its calibration
+parameter, put
+\[
+ U=\frac{1-\delta b t_0^2}{\mu(1+\delta b t_0^2)},\qquad H_0=1-aU^2,
+\]
+and normalize the first square-abscissa multiplier to one. The resulting
+conics are $Y_0^2=a^3-aE^2$ and
+$Z_0^2=a^3w^4-aE^2H_0^2$. Their first conic is parametrized by
+\[
+ E=\frac{a(a-r^2)}{a+r^2},\qquad
+ Y_0=\frac{2a^2r}{a+r^2},
+\]
+and the second becomes
+\[
+ Z_1^2=a(a+r^2)^2w^4-a(a-r^2)^2H_0^2.
+\]
+This uses only $t_0,r,w,Z_1$, with the displayed denominators and
+$a(a-r^2)wH_0$ nonzero. The missing first-conic point $E=-a$ is
+irrelevant for completeness: the supplied positive twist parameter
+and positive first abscissa give $E>0,a>0$. The zero input is a separate
+trivial branch. This chart supplies an eighteen-coordinate alternative
+to Theorem~\ref{thm:sixteen} without the real-preparation simplification;
+it is not the preferred sixteen-coordinate result.
+
+\section{Limits and verification}
+
+The decisive field comparison is $t-\sigma(t)\ne0$. It disappears
+when $t\in\Q$, so this argument does not distinguish rational integers
+from other rationals. Neither formal approximation nor real recurrence
+imposes a new exact square at a prescribed original detector tuple.
+In particular, the separate $25/11$ constructions still need their
+global rational-realization arguments for a variable saving.
+
+The independent checker verifies the cubic divisors, exact margins,
+the cleared intrinsic polynomial, local valuation cases, conic maps,
+the multiplier menus, and coordinate census. Universal approximation,
+valuation propagation, finite correction, and composition are proved
+above and reviewed separately. A finite valuation grid is only a
+regression check. No computation here establishes the cited arithmetic
+theorems or an effective exceptional-height bound.
+
+\begin{thebibliography}{9}\footnotesize\raggedright
+\setlength{\itemsep}{1pt}
+\bibitem{PV} H.~Pasten and X.~Vidaux,
+\emph{On Hilbert's tenth problem for number fields},
+arXiv:2611.24748v1, 18 November 2026,
+\url{https://arxiv.org/html/2611.24748v1}.
+\bibitem{Zywina} D.~Zywina,
+\emph{Rank one elliptic curves and rank stability},
+arXiv:2505.16960v1, Theorem~1.2,
+\url{https://arxiv.org/html/2505.16960v1}.
+\bibitem{Burungale} A.~Burungale,
+\emph{A Diophantine definition of $\Z$ in $\Q$},
+arXiv:2611.16130v1, Theorem~B and Section~3,
+\url{https://arxiv.org/html/2611.16130v1}.
+\bibitem{v80} \(\Z\Q\) Diophantine Project,
+\emph{One-helper pole normalization: an ordinary-abc quartic in 58 coordinates},
+\nolinkurl{papers/quartic_existence/one_helper58_20261119_v80.tex}.
+\bibitem{v56} \(\Z\Q\) Diophantine Project,
+\emph{Intrinsic pole predicate},
+\nolinkurl{papers/pole_parameters/intrinsic_pole_20261117_v56.tex}.
+\bibitem{v69} \(\Z\Q\) Diophantine Project,
+\emph{Power shifts and finite exceptions in Diophantine definitions},
+\nolinkurl{papers/number_fields/power_shifts_and_finite_exceptions_20261117_v69.tex}.
+\bibitem{v12} \(\Z\Q\) Diophantine Project,
+\emph{Number-field definability and quantitative composition},
+\nolinkurl{papers/number_fields/number_field_definability_20261109_v12.tex}.
+\bibitem{v78} G.~Conant, with Astra 6.2, supplied construction notes;
+project audit and improvements,
+\nolinkurl{papers/conditional_few_variables/twelve_contact_first_scale_20261119_v78.tex}.
+\end{thebibliography}
+\end{document}

@@ -1,4 +1,4 @@
-> **Current and retained checks.** Current counts, exact specifications and arithmetic qualifications are in the [README](../README.md), [v80 result records](../data/results_20261119_v80.json), and [v80 proof guide](results_20261119_v80.md). The full ordered sequence is in the [CI workflow](../.github/workflows/verify.yml). Historical source equations and their checks below remain available for reproduction.
+> **Current and retained checks.** Current counts, exact specifications and arithmetic qualifications are in the [README](../README.md), [v81 result records](../data/results_20261119_v81.json), and [v81 proof guide](results_20261119_v81.md). The full ordered sequence is in the [CI workflow](../.github/workflows/verify.yml). Historical source equations and their checks below remain available for reproduction.
 
 # Reproducing the mathematical data
 
@@ -7,10 +7,18 @@
 Use **Python 3.12** and **SymPy 1.14.0** for the complete current sequence. Run the new exact gate and its source audit with:
 
 ```sh
+python -B scripts/verify_v81.py --report /tmp/v81-verification.json
 python -B scripts/verify_v80.py --report /tmp/v80-verification.json
 python -B scripts/verify_v79.py --report /tmp/v79-verification.json
 python -B scripts/verify_v78.py --report /tmp/v78-verification.json
 ```
+
+The v81 gate independently expands every coefficient of the 56-variable
+quartic, reconstructs its nonlinear contact and two-adic identities,
+and checks the amplified number-field descent and finite-algebra
+encoding. It preserves the prior review pins and compares regenerated
+quartic data byte for byte in a temporary tree. The number-field counts
+refer to Q inside K, under their separate stated hypotheses.
 
 The v80 gate reconstructs the 58-variable abc quartic, including its one-helper normalization and the exact native map from the published pole theorem. The v79 gate preserves the 59-variable construction in a temporary tree, independently checks every coefficient and physical source map, and verifies the general-pole normalization and scoped parity certificate. The v78 gate restores the pinned notes of **Gabe Conant with Astra 6.2** and replays their source checks and subsequent extensions. The original attribution-era review hashes remain authenticated by exact reverse edits. Neither gate establishes the retained arithmetic premises or an effective shift for an existence family.
 

@@ -1,8 +1,24 @@
-> **Source map through v59.** The numerical table below is historical. Current records are in the [v80 result table](../data/results_20261119_v80.json) and [v80 proof guide](results_20261119_v80.md). The 58-variable quartic uses Burungale, arXiv:2611.16130v1, Theorem B in its stated square class seven; it does not require the square-class-one strengthening retained in the v79 construction. Other elliptic, comparison, trace and prime-pattern inputs remain explicit in its proof.
+> **Source map through v59.** The numerical table below is historical. Current records are in the [v81 result table](../data/results_20261119_v81.json) and [v81 proof guide](results_20261119_v81.md). The 56-variable quartic uses Burungale, arXiv:2611.16130v1, Theorem B in its stated square class seven; it does not require the square-class-one strengthening retained in the v79 construction. Other elliptic, comparison, trace and prime-pattern inputs remain explicit in its proof.
 
 # Arithmetic inputs, theorem scope, and effectiveness
 
 The construction theorems identify rational input projections with $\mathbb Z$ under the arithmetic inputs stated in each paper. Every variable count includes the input. A finite coefficient specification and a certified sufficient value of its fixed parameter are separate conclusions.
+
+## Number-field descent added in v81
+
+The rationality-descent additions in v81 have a separate scope, specified
+in the [v81 guide](results_20261119_v81.md). Their essential inputs are
+the height inequality for the six roots of `(T^3-2)(T^3-3)` with truncated
+coefficient greater than 7/2, and an E/Q with
+`0 < rank E(Q) = rank E(K)`. Ordinary abc over K supplies the first
+condition; [Zywina's Theorem 1.2](https://arxiv.org/html/2505.16960v1)
+supplies the second for quadratic K/Q. The architecture is due to
+[Pasten and Vidaux, arXiv:2611.24748v1](https://arxiv.org/html/2611.24748v1).
+Prepared pole completeness and density use precisely Burungale's
+published beta-seven, eta-one Theorem B. Composition with a Z-over-Q
+polynomial retains **all** its original arithmetic inputs. The finite
+exception correction remains ineffective. These field results do not
+impose the unresolved square equality at the original 25/11 detectors.
 
 ## Constructions at the v59 checkpoint
 
