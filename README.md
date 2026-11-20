@@ -61,6 +61,9 @@ Cite this work as "ℤℚ Diophantine Project contributors. ℤ is Diophantine i
 
 ## Source attribution
 
+The **fixed Busy Beaver–coefficient 163-variable quartic** in v86/v87 uses **Elliot Glazer's agentic research notes and Version 22 manuscript** for the explicit Busy Beaver record argument and the inherited quantitative geometry and compiler. Version 22 credits its Busy Beaver estimate and receiving-source checks to an **OpenAI Codex agent** within Elliot Glazer's research program. The original 163-variable polynomial and exact coefficient tables are from **José Brox's scalar-point construction**, building on **Gabe Conant's notes with Astra 6.2**; the v86/v87 quantitative refinements are subsequent work. See the [per-source attribution record](THIRD_PARTY.md#busy-beaver-effectivity-elliot-glazers-agentic-notes-v86v87), [v86 proof](papers/quartic/bb163_fixed_20261120_v86.tex) and [v87 proof](papers/quartic/bb163_compact_record_20261120_v87.tex).
+
+
 The new shared-product quartics, positive-factor encodings, weak-abc single-pole construction and related realization notes were supplied in **Gabe Conant's notes with Astra 6.2**, in `H10-quartic-constructions.zip` and `H10-eleven-variable-constructions.zip`. The [attribution record](computation/coauthor_audit_v78/ATTRIBUTION.md) identifies the original material and subsequent audit work. The supplied source bytes and checksum lists are preserved.
 
 The earlier 198-variable archive retains its own [Gabriel Conant and ChatGPT attribution](sources/h10_quartic198/README.md). The arithmetic inputs include the separately identified Sun, Jaswal and Burungale results and the supplied simultaneous-twist strengthening. Their exact statements, versions, use and review limitations are recorded in [arithmetic inputs](docs/arithmetic_inputs.md), the individual proofs and [THIRD_PARTY.md](THIRD_PARTY.md).

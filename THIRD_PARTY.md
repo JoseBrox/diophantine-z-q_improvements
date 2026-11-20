@@ -20,6 +20,10 @@ papers are cited, not redistributed. Composition with the rational
 integer constructions retains their original attribution to **notes
 of Gabe Conant with Astra 6.2** and all their stated arithmetic inputs.
 
+## Busy Beaver effectivity: Elliot Glazer's agentic notes (v86–v87)
+
+The **explicit numerical Busy Beaver parameter** for the 163-variable quartic was derived using the agentic research notes and [Version 22 manuscript](https://github.com/elliotglazer/private-diophantine/blob/4b43ba288b9b8639cc5cc85f8c1507d64c698659/manuscripts/quartic_v22.tex) of **Elliot Glazer's research project** (pinned commit `4b43ba288b9b8639cc5cc85f8c1507d64c698659`; access to the private repository may require permission). Version 22 specifically attributes its new Busy Beaver estimate and receiving-source checks to an **OpenAI Codex agent**; it acknowledges Elliot Glazer's direction of the broader agentic research. The v86/v87 papers use that quantitative Vojta record method and its geometric/compiler arguments, then sharpen the record scale and coefficient bounds. Separately, the underlying 163-variable scalar-point construction and tables are **José Brox's**, based on **Gabe Conant's** shared-product constructions with Astra 6.2. Each contribution is separately identified; the published finite regression checks are not independent proofs of all source mathematics.
+
 ## Earlier source map
 
 The explicit arithmetic constructions build on the mathematical sources in [elliotglazer/diophantine-z-q](https://github.com/elliotglazer/diophantine-z-q). The source pins distinguish the coefficient expressions from the arithmetic proofs supporting their interpretation.
