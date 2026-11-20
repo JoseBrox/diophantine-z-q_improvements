@@ -1,0 +1,296 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\BB}{\operatorname{BB}}
+\newcommand{\Tr}{\operatorname{Tr}}
+\title{A fixed 163-variable quartic with a sharper explicit Busy Beaver index}
+\author{Z diophantine in Q project}
+\date{20 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+The numerical Busy Beaver specialization established in the supplied
+Version 22 manuscript is improved from index \(2^{1500}\) to an explicit
+249-digit index less than \(2^{827}\). The coefficient upper bound
+improves from \(\BB(2^{2000})\) to \(\BB(2^{1012})\).
+The reduction is achieved by evaluating the quantitative Vojta constants
+exactly and sharpening the hardwired-record and compiler estimates.
+All source arithmetic and geometric hypotheses are retained.
+\end{abstract}
+
+\section{Statement and provenance}
+Fix the two-symbol, blank-tape, one-tape, two-way-infinite-tape
+halting-time Busy Beaver convention with an uncounted halting state,
+counted halting transition and permitted unused working states.
+Put
+\[
+t_0=2^{20}(2^{620}+2^{186}+1)(2^{186}+3),\quad
+N=\BB(t_0),\quad C=149^N.
+\]
+Let \(F_N\) be the 163-variable quartic given by the complete coefficient
+tables in the project v82 package, including the input as coordinate one.
+There are exactly three \(C\)-dependent coefficients:
+\[
+[x_{78}^2x_{90}]F_N=-6615898C^2,\quad
+[x_{78}x_{90}]F_N=-298C^2,\quad
+[x_{78}^2]F_N=22201C^4.
+\]
+All remaining 2786 coefficients are fixed integers.
+
+\begin{theorem}\label{thm:main}
+Under the inherited arithmetic, weighted-height geometry, and
+register-to-binary compiler lemmas of the uploaded Version~22
+manuscript, the fixed polynomial \(F_{\BB(t_0)}\)
+defines \(\Z\) Diophantinely in \(\Q\).
+It has 163 total variables, degree four, 2789 nonzero monomials and
+integer content one. Moreover
+\[
+2^{826}<t_0<2^{827},\qquad
+H(F_{\BB(t_0)})=149^{4\BB(t_0)+2}<\BB(2^{1012}).
+\]
+\end{theorem}
+
+The supplied source is the pinned
+\texttt{quartic\_v22.tex}, original commit
+\texttt{4b43ba288b9b8639cc5cc85f8c1507d64c698659};
+its complete SHA-256 is recorded in the accompanying project report.
+Its quantitative record construction is in its
+Version~22 Part~I, and its original compiler precedes the
+physical tables. The inherited project proofs are
+\texttt{scalar\_point163\_179\_20261120\_v82.tex}
+and the corresponding original physical coefficient tables.
+No claim is made that the current computation alone has
+independently reproved the complete inherited arithmetic foundations.
+
+\section{Quantitative geometry}
+Write \(E:y^2=x^3-(3-\sqrt2)^2x\) over
+\(K=\Q(\sqrt2)\), \(R_0=(1+\sqrt2,2\sqrt2)\)
+and \(P_0=2R_0\).
+For four finite points \(Q_i=[m_i]R_0+\tau_i\),
+where \(\tau_i\in E[2](K)\), put
+\[
+S=\sum_{i=1}^4m_i^2,\quad
+T=7+\tfrac14\Tr\bigl(x(Q_1)+r x(Q_2)+x(Q_3)+x(Q_4)\bigr),
+\qquad r\in\Q_{>0}.
+\]
+Freezing zero-index finite torsion values yields at most 256
+strata. With \(k\ge1\) active coordinates the graph
+\(V\subset E_0^{2k}\times(\mathbf P^1_r\times\mathbf P^1_T)\)
+satisfies
+\[
+\dim V=2k+1\le9,\quad m=\dim V+1\le10,\quad
+N_A+1\le3^8,\quad N_P+1=4,
+\quad \deg V\le10!3^8.
+\]
+The source establishes \(h(V)<2^{150}\),
+\(h_{\rm add},C_{\rm haut}<100\), and
+\(\widehat h_{A_k}=\alpha S\), \(\alpha\ge3/4\).
+Its positive-weight pole argument excludes positive-dimensional
+constant translates through every actual rational parameter \(r>0\).
+The graph and height hypotheses of von Buhren's
+\emph{quantitative} Theorem~3.1, printed p.~312, therefore apply.
+
+At \(k=4\), let
+\[
+\begin{split}
+\Lambda&=
+ 2^{m^2}(8m\dim V)^{m\dim V}
+ (N_A+1)(N_P+1)(\deg V)^{3m},\\
+\psi&=\prod_{j=2}^{m\dim V}(3j+1).
+\end{split}
+\]
+Exact integer arithmetic gives
+\[
+\operatorname{bitlength}(\Lambda)=2004,\qquad
+\operatorname{bitlength}(\psi)=602.
+\]
+The published formulae are
+\[
+e_1=8\Lambda^\psi,\quad e_2=2\Lambda^{2\psi},
+\quad\mu=4\Lambda^\psi,\quad
+e_3=(4(N_A+1))^{2m^2\dim V}
+ \Lambda^{8\psi}\max(h(V),h_{\rm add},C_{\rm haut}).
+\]
+Hence the following explicit upper bounds hold:
+\[
+\begin{aligned}
+\log_2e_1&<3+2004\psi,&
+\log_2(e_2^2)&<2+8016\psi,\\
+\log_2\mu&<2+2004\psi,&
+\log_2e_3&<27150+16032\psi.
+\end{aligned}
+\]
+Since \(\psi<2^{602}\) and \(16032<2^{14}\),
+the last bound is strictly less than \(2^{616}-8\).
+The other bounds have a larger margin.
+The cells of diameter at most \(1/e_1\)
+covering the normalized direction cube \([-1,1]^4\)
+number at most \(\lceil4e_1+1\rceil^4<(8e_1)^4\).
+The quantitative theorem allows at most nine rapidly growing
+records in one cell and stratum, so
+\[
+\log_2\bigl(256\cdot9\lceil4e_1+1\rceil^4\bigr)
+<36+8016\psi<2^{616}.
+\]
+
+\begin{lemma}\label{lem:U}
+For \(U=2^{2^{616}}\), the explicit Vojta constants
+\(e_2^2,e_3,\mu\) are less than \(U/100\).
+There are fewer than \(U\) records across all strata.
+\end{lemma}
+\begin{proof}
+The preceding bounds and the source's positive-weight
+noncancellation lemma prove the statement by the
+pigeonhole argument of quantitative Theorem~3.1.
+\end{proof}
+
+\section{Discrete record height and the arithmetic threshold}
+Enumerate each rational \(r>0\) and four finite encoded points
+\(4|m_i|+e_i\) in finite shells.
+For a reduced rational \(z\), write
+\(b(z)=\operatorname{bitlength}(\max(|\operatorname{num}z|,
+\operatorname{den}z))\), so \(h(z)\le b(z)\le2h(z)+1\).
+Initialize \(R_*=U\).
+Declare a record when
+\[
+S>UR_*,\qquad S>U(b(r)+b(T)),
+\]
+then replace \(R_*\) by \(S\).
+The record count \(j_*<U\) by Lemma~\ref{lem:U}.
+Let \(R_f\) be its last \(S\), or \(U\) if none occurs.
+The running-record argument gives
+\[
+S\le2U(h(r)+h(T))+U(R_f+2).
+\]
+The actual source labels satisfy \(B^2\le9S+1\).
+Therefore
+\[
+B^2\le A(h(r)+h(T))+J,\qquad
+A=U^2,\quad J=U^2(R_f+3).
+\]
+
+\begin{lemma}\label{lem:threshold}
+The sharpened expression
+\[
+G(R_f)=U^3(R_f+3)
+\]
+is a sufficient defining threshold for every integer
+\(N\ge G(R_f)\). It improves \(U^{1000}(R_f+3)\)
+from the supplied Version~22 proof.
+\end{lemma}
+\begin{proof}
+The unchanged center-one contact bounds give
+\(H_2<2^{4000000}<U\) and \(K=2^{330770}<U\).
+Put \(c=|a|\), \(\tau=h(\beta)\), and
+\(L_N=\lfloor9(2N-1)/4\rfloor+1\ge N\).
+For each rational zero,
+\[
+B\ge c\ge149^{L_N},\quad
+\tau\le K149^{-N}c(1+\log c/3),\quad
+h(R_s)\le4\tau+(2N+1)\log149+\log1801500.
+\]
+If \(N\ge U^3(R_f+3)\), the scalar-height term satisfies
+\[
+\frac{Ah(R_s)}{B^2}
+\le45U^3N149^{-2N}
+\le45N^2 149^{-2N}
+<\tfrac14.
+\]
+Also \(J+A\log2<U^2(R_f+4)<N<B^2/4\).
+
+If the comparison residual \(\Delta\ne0\),
+the original cubic divisibility \(M_j^3\mid a\Delta\)
+and \(|a\Delta|\le14B^5\) imply
+\[
+B^2/2<10U^3B^{35/18},
+\qquad\text{hence }B^{1/18}<20U^3.
+\]
+But \(B\ge149^N\ge149^{U^3}>U^{1000}\)
+contradicts this for \(U>2^{16}\).
+Thus \(\Delta=0\).
+If the input error numerator \(J_X\ne0\), the original
+linear divisibility, Lucas bounds, and the same absorption give
+\[
+\log B\le\tfrac75\tau+10\log U
+<0.11c+\tfrac{c\log c}{30}
+<0.1c\log c.
+\]
+The retained Lucas lower bound
+\(\log B\ge(c-6)\log(c-3)>0.45c\log c\)
+contradicts this. Thus \(J_X=0\), and
+the original half-integrality and squarefree denominator argument
+gives \(X\in\Z\).
+Integer completeness is uniform already for \(N\ge1\)
+in the inherited ordered construction.
+\end{proof}
+
+\section{Explicit state and coefficient bounds}
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+The Version~22 reference selector has 1506 AST nodes, 16 functions,
+call depth 10, no imports or dynamic calls and maximum tuple length 3.
+Change its record scale from \(2^{2^{1000}}\) to \(2^{2^{616}}\)
+and the arithmetic threshold exponent from 1000 to 3.
+The source's register-machine construction has fewer than
+\(2^{186}\) fixed core instructions and counters.
+Hardwiring \(0\le j_*<U\) uses at most \(2^{616}\) bits;
+the two-scratch-register loader uses fewer than 16 counter
+instructions per bit. Thus
+\[
+L<2^{620}+2^{186},\qquad R<2^{186}+2.
+\]
+The reviewed unary-block/binary-tape conversion uses fewer than
+\(2^{20}(L+1)(R+1)\) working states. Consequently its state count
+is strictly less than
+\[
+2^{20}(2^{620}+2^{186}+1)(2^{186}+3)=t_0<2^{827}.
+\]
+For the actual last-record ordinal \(j_*\), the resulting program
+halts after more than \(G(R_f)\) transitions. Padding its unused
+states proves \(G(R_f)<\BB(t_0)\).
+Lemma~\ref{lem:threshold} proves the defining assertion.
+
+For the coefficient bound, \(2^{826}<t_0<2^{827}\).
+A maximizing \(t_0\)-state halting table uses next-state width
+\(827\), so its hardwired \(2t_0\) transition entries, each of
+\(830\) bits, occupy fewer than \(2^{838}\) bits.
+The source's explicit interpreter and two-counter bit loader
+therefore give \(L<2^{843}\), \(R<2^{149}\), and fewer than
+\[
+2^{20}(L+1)(R+1)<2^{1012}
+\]
+binary working states. This program computes
+\(149^{4\BB(t_0)+2}+1\), clocks more than this many transitions,
+and then halts. Padding proves
+\[
+149^{4\BB(t_0)+2}+1<\BB(2^{1012}).
+\]
+Since \(\BB(t_0)\ge t_0>53\), the v82 exact height formula
+\(\max\{126616122944180358034867798936,149^{4N+2}\}\)
+equals \(149^{4N+2}\). The polynomial tables prove
+the remaining coefficient and variable assertions.
+\end{proof}
+
+\paragraph{Verification scope.}
+The accompanying independent gate recomputes the integer
+\(\Lambda,\psi\), the record and machine bounds, and the source
+selector's AST without executing it. It does not independently
+reprove all analytic, arithmetic, or finite-state compiler
+lemmas inherited from the 3-MB Version~22 manuscript.
+
+\begin{thebibliography}{9}
+\bibitem{v22} \emph{Z is Diophantine in Q}, Version 22,
+supplied \texttt{quartic\_v22.tex}, commit
+\texttt{4b43ba288b9b8639cc5cc85f8c1507d64c698659}.
+\bibitem{v82} Z diophantine in Q project,
+\emph{A scalar-point sharing construction in 163 and 179 variables},
+v82, exact physical and coefficient tables.
+\bibitem{VB} J. von Buhren,
+\emph{Borne de hauteur semi-effective pour le probl\`eme de
+Mordell--Lang dans une vari\'et\'e ab\'elienne},
+J. Th\'eorie des Nombres de Bordeaux \textbf{29} (2017),
+307--320, Theorem~3.1, printed p.~312.
+\end{thebibliography}
+\end{document}

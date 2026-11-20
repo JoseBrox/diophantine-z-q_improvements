@@ -13,6 +13,8 @@ jobs:
         with:
           python-version: '3.12'
       - run: python -m pip install sympy==1.14.0 passagemath-pari==10.8.14
+      - name: Verify explicit v86 Busy Beaver record and state bounds
+        run: python -B scripts/verify_v86.py --report /tmp/v86-verification.json
       - name: Verify the conditional BB cutoff and explicit-constant gap
         run: python -B scripts/verify_v85.py --report /tmp/v85-verification.json
       - name: Verify Busy Beaver coefficient profiles and expanded TXT file sizes
