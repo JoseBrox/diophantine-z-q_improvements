@@ -6,6 +6,8 @@ The current unrestricted-degree counts remain **25** and **11**, and the ordinar
 
 The [v83 exact-square checkpoint](../computation/actual_square_v83/README.md) constructs a new balanced normalization with `1+d` a rational square at the raw contact scalar. Its actual pole input is `e=4d/V²`, so the required condition is still `V²+4d` being a rational square. Exact prepared counterexamples exclude the corresponding universal genus-one and zero-parameter replacements; none is asserted to occur at the actual elliptic trace. No defining-variable count changes.
 
+The [additional research routes](research_routes_20261120.md) prove a complex-multiplication local comparison with three rational point charts and a different one-parameter sound cover. The former still needs an ordered contact construction controlling all auxiliary indices; the latter still needs actual rational realization. Neither is recorded as a new defining-variable bound.
+
 ## Immediate constructive targets
 
 1. **Identify an external input with the new elliptic quotient.** The [prepared divisibility theorem](../papers/elliptic_divisibility/prepared_eds_divisibility_20261120_v82.tex) forces `h | j` with two rational elliptic point charts and one pole block. Every nonzero integral quotient `j/h` occurs after choosing a suitable reference. Its five-coordinate specification does not yet enforce `X=j/h`. A height argument must handle an arbitrarily large quotient; a carrier depending only on the reference leaves this uncontrolled, while including the second point can demand more contact-prime support than the reference provides.
