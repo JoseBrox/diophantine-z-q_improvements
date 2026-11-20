@@ -16,14 +16,16 @@ The reductions **193→165, 229→180, 68→62 and 13→11** come from **notes o
 
 “None” in the height-hypothesis column means **no additional conjecture beyond the arithmetic premises explicitly retained in the proof**. A complete independent audit of all inherited elliptic, prime-pattern, pole-realization and height foundations has not been established.
 
-| Construction | Additional height hypothesis | Total variables | Degree | Coefficients and effectiveness |
-|:--|:--|--:|:--|:--|
-| [General few-variable family](papers/few_variables25/four_contact_scalar_20261119_v78.tex) | None | **25** | **≤ 87,778,394,112** | Four-contact scalar and projective two-root encoder; sufficient odd exponent ineffective. |
-| [General quartic family](papers/quartic/scalar_point163_179_20261120_v82.tex) | None | **163** | **4, exact** | 137 quadratic squares; 2,789 monomials; defining threshold ineffective. |
-| [Fully specified general polynomial](papers/few_variables25/four_contact_scalar_20261119_v78.tex) | None | **27** | **≤ 335,647,080,448** | Explicit `L=143`; coefficient height < `2^(2^46)`. |
-| [Fully specified quartic](papers/quartic/scalar_point163_179_20261120_v82.tex) | None | **179** | **4, exact** | 151 quadratic squares; 3,036 monomials; 748-bit exact height. |
-| [Few-variable family under abc](papers/conditional_few_variables/twelve_contact_first_scale_20261119_v78.tex) | Ordinary rational abc | **11** | **≤ 6,361,985** | Twelve contacts at the first height scale; sufficient fixed odd shift ineffective. |
-| [Quartic family under abc](papers/quartic_existence/paired_contact56_20261119_v81.tex) | Ordinary rational abc | **56** | **4, exact** | 46 quadratic squares; 809 monomials; sufficient fixed odd shift ineffective. |
+| Construction | Additional height hypothesis | Total variables | Degree | Coefficients and effectiveness | Expanded TXT size (kB) |
+|:--|:--|--:|:--|--:|--:|
+| [General few-variable family](papers/few_variables25/four_contact_scalar_20261119_v78.tex) | None | **25** | **≤ 87,778,394,112** | Four-contact scalar and projective two-root encoder; sufficient odd exponent ineffective. | Not expanded; <2^848 (L=143 fixture bound) |
+| [General quartic family](papers/quartic/scalar_point163_179_20261120_v82.tex) | None | **163** | **4, exact** | 137 quadratic squares; 2,789 monomials; defining threshold ineffective. | [60.905](computation/expanded_text_v84/quartic163-N1.txt) (N=1 fixture; [BB formula](docs/busy_beaver_and_expanded_sizes_20261120_v84.md)) |
+| [Fully specified general polynomial](papers/few_variables25/four_contact_scalar_20261119_v78.tex) | None | **27** | **≤ 335,647,080,448** | Explicit `L=143`; coefficient height < `2^(2^46)`. | Not expanded; <2^965 (L=143 upper bound) |
+| [Fully specified quartic](papers/quartic/scalar_point163_179_20261120_v82.tex) | None | **179** | **4, exact** | 151 quadratic squares; 3,036 monomials; 748-bit exact height. | [66.903](computation/expanded_text_v84/quartic179.txt) |
+| [Few-variable family under abc](papers/conditional_few_variables/twelve_contact_first_scale_20261119_v78.tex) | Ordinary rational abc | **11** | **≤ 6,361,985** | Twelve contacts at the first height scale; sufficient fixed odd shift ineffective. | Not expanded; <2^227 (B=3 fixture bound) |
+| [Quartic family under abc](papers/quartic_existence/paired_contact56_20261119_v81.tex) | Ordinary rational abc | **56** | **4, exact** | 46 quadratic squares; 809 monomials; sufficient fixed odd shift ineffective. | [11.562](computation/expanded_text_v84/quartic56-B3.txt) (B=3 fixture) |
+
+The last column gives **decimal kB (1 kB = 1,000 bytes)** for single-line ASCII, fully expanded TXT files with `X` as the input, `x2`, ... as other variables, and no final newline. Numeric quartic sizes are **measured exactly**. The 163-variable `N=1` and 56-variable `B=3` members are algebraic **fixtures, not certified defining members**. The other entries are extremely loose **upper bounds for the indicated stored circuit member**, not measurements or predictions of the first defining member. See [fully expanded TXT files and exact size formulas](docs/busy_beaver_and_expanded_sizes_20261120_v84.md).
 
 The unrestricted-degree bounds describe complete finite determinant specifications; those enormous polynomials have not been fully expanded. All displayed quartics are exactly expanded. Every construction has integer content one, with primitive normalization where needed. Small coefficient fixtures and coefficient-height cutoffs are not sufficient defining parameters.
 
@@ -37,7 +39,9 @@ The general quartic family has exact coefficient height
 H(F_N)=\max\{126616122944180358034867798936,\;149^{4N+2}\},\qquad N\ge1.
 ```
 
-A sufficient defining `N` exists under the retained premises, but its value is ineffective. The [complete 163-variable coefficient table](computation/variable_reductions_v82/general/quartic163/polynomial.json) and [quadratic equations](computation/variable_reductions_v82/general/quartic163/quadrics.json) are supplied.
+A sufficient defining `N` exists under the retained premises, but its value is ineffective. The [Busy Beaver coefficient specialization](docs/busy_beaver_and_expanded_sizes_20261120_v84.md) gives an exact symbolic specification of all 2,789 expanded monomials: only the coefficients of `x78^2*x90`, `x78*x90` and `x78^2` vary, respectively as `-6615898*149^(2*BB(t))`, `-298*149^(2*BB(t))`, and `22201*149^(4*BB(t))`. For every **sufficiently large fixed Busy Beaver index** `t`, the polynomial defines the integers under the inherited premises. The current ineffective threshold does **not** certify any particular index, including `2^1000`. The [symbolic expanded TXT](computation/expanded_text_v84/quartic163-BB_t-symbolic.txt) is **60.929 kB**, but its three coefficients are not in decimal. The exact size of the true decimal-expanded file is given in the linked supplement.
+
+The [complete 163-variable coefficient table](computation/variable_reductions_v82/general/quartic163/polynomial.json) and [quadratic equations](computation/variable_reductions_v82/general/quartic163/quadrics.json) are supplied.
 
 For the fully specified 179-variable quartic, put `C0=A0*B_*^4`, where `A0=645904574641049503754777843805872291231896003979` and `B_*=14904184670611231`. Its exact coefficient height is `C0²`, of **748 bits**. The [expanded coefficient table](computation/variable_reductions_v82/general/quartic179/polynomial.json), [quadratic equations](computation/variable_reductions_v82/general/quartic179/quadrics.json), and [independent reconstruction](computation/variable_reductions_v82/general/check.py) are supplied. This reduces the variable count while increasing the height from the preceding 108-bit, 180-variable member; that member and the original presentation from Gabe Conant with Astra 6.2 remain in their dated packages.
 
@@ -90,6 +94,8 @@ Use **Python 3.12**, **SymPy 1.14.0**, and **PassageMath PARI 10.8.14**. The new
 
 ```sh
 python -m pip install sympy==1.14.0 passagemath-pari==10.8.14
+python -B scripts/verify_v84.py --report /tmp/v84-verification.json
+python -B scripts/verify_v83.py --report /tmp/v83-verification.json
 python -B scripts/verify_v82.py --report /tmp/v82-verification.json
 python -B scripts/verify_v81.py --report /tmp/v81-verification.json
 python -B scripts/verify_v80.py --report /tmp/v80-verification.json

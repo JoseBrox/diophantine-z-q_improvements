@@ -1,0 +1,71 @@
+{
+  "schema": "diophantine-compact-expanded-ascii/v84",
+  "date": "2026-11-20",
+  "kilobyte_bytes": 1000,
+  "convention": "ASCII, one line, no whitespace or trailing newline; X is input coordinate 1, other variables x2...; * for multiplication, ^ for powers, decimal integer coefficients, published first-appearance monomial order after collecting like terms.",
+  "artifacts": {
+    "quartic163-N1.txt": {
+      "bytes": 60905,
+      "kB": 60.905,
+      "monomials": 2789,
+      "variables": 163,
+      "parameter": "N=1",
+      "defining_member_certified": false,
+      "git_blob_sha1": "8f25380cc58899e8796757f66014bd3ec008e3d7"
+    },
+    "quartic179.txt": {
+      "bytes": 66903,
+      "kB": 66.903,
+      "monomials": 3036,
+      "variables": 179,
+      "parameter": null,
+      "defining_member_certified": true,
+      "git_blob_sha1": "3bf6b0f970470813a286c16b91e44225ff23d725"
+    },
+    "quartic56-B3.txt": {
+      "bytes": 11562,
+      "kB": 11.562,
+      "monomials": 809,
+      "variables": 56,
+      "parameter": "B=3",
+      "defining_member_certified": false,
+      "git_blob_sha1": "a5363f8a125d86683fa9c619b18fb21aed3f2aa4"
+    },
+    "quartic163-BB_t-symbolic.txt": {
+      "bytes": 60929,
+      "kB": 60.929,
+      "monomials": 2789,
+      "variables": 163,
+      "parameter": "N=BB(t), only three symbolic coefficient expressions; not decimal expanded",
+      "defining_member_certified_only_for_sufficiently_large_t": true,
+      "explicit_sufficient_t_certified": false,
+      "git_blob_sha1": "0b4ff3dd05ec86a3093b5c94bbd8398ee424b795"
+    }
+  },
+  "bb163_decimal_size_bytes": "60872 + digits(6615898*149^(2*BB(t))) + digits(298*149^(2*BB(t))) + digits(22201*149^(4*BB(t)))",
+  "bb163_decimal_size_kB_asymptotic": "60.872 + 0.017385490147298192*BB(t) + O(0.001), decimal kB",
+  "unexpanded_fixture_upper_bounds_kB": {
+    "general25": {
+      "strict_power_of_two": 848,
+      "fixture": "L=143",
+      "defining_member_certified": false,
+      "measured": false,
+      "kind": "very loose upper bound, not an estimate"
+    },
+    "explicit27": {
+      "strict_power_of_two": 965,
+      "fixture": "L=143",
+      "defining_member_certified": true,
+      "measured": false,
+      "kind": "very loose upper bound, not an estimate"
+    },
+    "ordinary_abc11": {
+      "strict_power_of_two": 227,
+      "fixture": "B=3",
+      "defining_member_certified": false,
+      "measured": false,
+      "kind": "very loose upper bound, not an estimate"
+    }
+  },
+  "method": "upper bounds from strict support <= 2^s and log2 L1 bounds E in data/results_20261120_v82.json, using log10(2)<31/100, bounded variable-monomial notation; rigorous only for the stored fixture."
+}
