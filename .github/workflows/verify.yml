@@ -13,6 +13,8 @@ jobs:
         with:
           python-version: '3.12'
       - run: python -m pip install sympy==1.14.0 passagemath-pari==10.8.14
+      - name: Verify the conditional BB cutoff and explicit-constant gap
+        run: python -B scripts/verify_v85.py --report /tmp/v85-verification.json
       - name: Verify Busy Beaver coefficient profiles and expanded TXT file sizes
         run: python -B scripts/verify_v84.py --report /tmp/v84-verification.json
       - name: Verify exact scalar squares and the actual-trace research limitations
