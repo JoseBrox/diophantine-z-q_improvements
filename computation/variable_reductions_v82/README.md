@@ -28,4 +28,8 @@ the external arithmetic premises or the open global realization statement.
 
 `manual_review.json` binds the separate proof review and explicitly records
 its limits. `manifest.json` binds all package files and the three manuscripts.
-Earlier review hashes and regression checks remain unchanged.
+Earlier review hashes and regression checks remain active. The added
+`manual_review_followup.json` binds the quadratic-progression corollary,
+corrected encoder reference, separate review, and final rendering. Exact
+reverse edits authenticate the initially reviewed genus-one source; its
+original review and TeX hashes have not been rewritten.

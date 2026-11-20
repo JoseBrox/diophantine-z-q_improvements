@@ -24,6 +24,7 @@ PAPERS={
     'papers/pole_parameters/genus_one_sound_criterion_20261120_v82.tex',
 }
 CONTRIBUTORS_HASH='bec5e749954eb50b1206e43bc7b27462419ac135762f820a201e528b222b3285'
+GENUS_PAPER='papers/pole_parameters/genus_one_sound_criterion_20261120_v82.tex'
 
 
 def read(p):
@@ -32,6 +33,23 @@ def read(p):
 
 def sha(p):
     return hashlib.sha256(p.read_bytes()).hexdigest()
+
+
+def historical_genus_hash():
+    """Authenticate the published initial review by exact reverse edits."""
+    certificate=read(PACKAGE/'abc/revision_review.json')
+    source=(ROOT/GENUS_PAPER).read_text()
+    assert hashlib.sha256(source.encode()).hexdigest()==certificate['final_sha256']
+    previous=len(source)
+    for edit in certificate['reverse_edits']:
+        start,end=edit['start'],edit['end']
+        assert 0<=start<=end<=previous
+        assert source[start:end]==edit['final_text']
+        source=source[:start]+edit['initial_text']+source[end:]
+        previous=start
+    restored=hashlib.sha256(source.encode()).hexdigest()
+    assert restored==certificate['initial_sha256']
+    return restored
 
 
 def main():
@@ -54,10 +72,27 @@ def main():
         assert sha(p)==h,str(p.relative_to(ROOT))
     review=read(PACKAGE/'manual_review.json')
     assert review['status']=='PASS under the stated arithmetic premises'
+    original_genus_hash=historical_genus_hash()
     for name,h in review['reviewed_sha256'].items():
-        assert sha(ROOT/name)==h,name
+        current_hash=original_genus_hash if name==GENUS_PAPER else sha(ROOT/name)
+        assert current_hash==h,name
     assert review['actual_rational_realization_proved'] is False
     assert review['non_author_mathematical_review_claimed'] is False
+    followup=read(PACKAGE/'manual_review_followup.json')
+    assert followup['status']=='PASS'
+    assert followup['initial_review_sha256']==sha(PACKAGE/'manual_review.json')
+    assert followup['actual_rational_realization_proved'] is False
+    for name,h in followup['reviewed_sha256'].items():
+        assert sha(ROOT/name)==h,name
+    audit=read(PACKAGE/'abc/independent_review/manual_review.json')
+    assert audit['status']=='PASS' and audit['reverse_edit_verified']
+    assert audit['initial_reviewed_manuscript_sha256']==original_genus_hash
+    assert audit['final_manuscript_sha256']==sha(ROOT/GENUS_PAPER)
+    for name,h in audit['independent_review_files'].items():
+        assert sha(PACKAGE/'abc/independent_review'/name)==h,name
+    for name in ('check_genus_one.py','certificate.json','common_level_scope.md'):
+        assert sha(PACKAGE/'abc'/name)==audit['package_source_pins'][name],name
+    assert sha(PACKAGE/'abc/tex_review_followup.json')==audit['package_source_pins']['tex_review.json']
 
     previous=read(ROOT/'data/results_20261119_v81.json')
     current=read(ROOT/'data/results_20261120_v82.json')
@@ -94,6 +129,9 @@ def main():
     assert research['genus_one_criterion']['sound_total_coordinates']==10
     assert research['genus_one_criterion']['actual_input_rational_realization_proved'] is False
     assert research['genus_one_criterion']['counterexample_claimed_at_actual_detector'] is False
+    progression=research['genus_one_criterion']['quadratic_progression_suffices']
+    assert progression['one_fixed_source_constant_required'] is True
+    assert progression['actual_realization_on_any_progression_proved'] is False
     assert all(r['defines_Z_in_Q'] is False for r in research.values())
 
     readme=(ROOT/'README.md').read_text()
@@ -111,10 +149,20 @@ def main():
     builds=read(ROOT/'data/audits/tex_build_20261120_v82.json')
     assert {r['paper'] for r in builds['papers']}==PAPERS
     for row in builds['papers']:
+        source_hash=original_genus_hash if row['paper']==GENUS_PAPER else sha(ROOT/row['paper'])
+        assert source_hash==row['source_sha256']
+        assert row['returncode']==row['overfull_boxes']==row['undefined_references']==0
+        assert row['all_rendered_pages_reviewed'] and row['pages']>0
+        assert len(row['page_sha256'])==row['pages']
+    final_builds=read(ROOT/'data/audits/tex_build_20261120_v82_followup.json')
+    assert {r['paper'] for r in final_builds['papers']}==PAPERS
+    for row in final_builds['papers']:
         assert sha(ROOT/row['paper'])==row['source_sha256']
         assert row['returncode']==row['overfull_boxes']==row['undefined_references']==0
         assert row['all_rendered_pages_reviewed'] and row['pages']>0
         assert len(row['page_sha256'])==row['pages']
+    final_genus=next(r for r in final_builds['papers'] if r['paper']==GENUS_PAPER)
+    assert final_genus['pdf_sha256']==audit['package_source_pins']['genus_one_sound_criterion_20261120_v82.pdf']
 
     stages=[]
     env=dict(os.environ,PYTHONDONTWRITEBYTECODE='1')
@@ -138,6 +186,7 @@ def main():
     run(PACKAGE/'eds/check_eds_detector.py')
     run(PACKAGE/'eds/check_eds_detector.py','--pari')
     run(PACKAGE/'abc/check_genus_one.py')
+    run(PACKAGE/'abc/check_independent.py')
     independent=read(PACKAGE/'general/independent.json')
     assert [r['variables'] for r in independent['checks']]==[163,179]
     for name,h in independent['published_dependencies_sha256'].items():
@@ -153,6 +202,9 @@ def main():
         'unchanged_variable_counts':current['unchanged_variable_counts'],
         'elliptic_divisibility_is_not_an_integer_definition':True,
         'actual_genus_one_realization_remains_unproved':True,
+        'quadratic_progression_criterion_proved':True,
+        'independent_Kummer_reconstruction_preserved':True,
+        'initial_genus_source_authenticated_by_exact_reverse_edits':True,
         'tex_papers_reviewed':len(builds['papers']),
         'tex_pages_reviewed':sum(r['pages'] for r in builds['papers']),
         'scope':'Exact physical maps, expansions, algebraic descent, finite fixtures and review pins. '

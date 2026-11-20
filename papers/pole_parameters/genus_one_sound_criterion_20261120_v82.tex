@@ -110,6 +110,36 @@ as in the source. This proof uses the stated rational-point hypothesis;
 local solubility does not supply it.
 \end{proof}
 
+\begin{corollary}[One quadratic progression is sufficient]\label{cor:progression}
+Fix one admissible source constant \(B\) for which the preceding
+soundness argument holds. It is enough to prove the additional
+actual-input hypothesis of Theorem~\ref{thm:criterion} at source inputs
+\(cm^2+b\) for all but finitely many \(m\in\Z\), where
+\(c>0\) is one fixed squarefree integer and \(b\in\Z\) is fixed.
+The source constant \(B\) must be the same throughout this progression.
+For example, actual witnesses at \(2m^2+1\) would suffice; their
+existence is not asserted here.
+\end{corollary}
+\begin{proof}
+Independently of completeness, the guarded construction in the preceding
+proof gives a polynomial \(P_B(T,\mathbf Y)\) in ten coordinates whose
+rational projection is contained in \(\Z\). Substitute
+\(T=cX^2+b\). If \(X=a/q\) is reduced, with \(q>0\), and this
+substituted polynomial has a rational zero, then \(ca^2/q^2\in\Z\).
+Thus \(q^2\mid c\), and squarefreeness gives \(q=1\).
+The projection remains sound for \(\Z\).
+
+Let \(F\subset\Z\) contain the finitely many omitted integers, including
+any integer whose source input \(cm^2+b\) is zero. Then
+\[
+ \left(\prod_{m\in F}(X-m)\right)P_B(cX^2+b,\mathbf Y)
+\]
+defines all of \(\Z\) and has the same ten coordinates. This is the
+elementary rational-input version of the power-shift and finite-exception
+method in \cite{powers}. It weakens the open global realization target;
+it does not establish that target on any progression.
+\end{proof}
+
 \section{Everywhere-local solubility}
 \begin{theorem}\label{thm:local}
 Suppose \(d>0\), \(V\ne0\), \(d\in7\Q_2^{\times2}\), and
@@ -308,10 +338,15 @@ Gabe Conant with Astra 6.2, source notes and project audit,
 
 \bibitem{encoder}
 Project v81 finite-algebra audit,
-\emph{Amplified rationality descent},
-\nolinkurl{papers/number_fields/amplified_rationality_descent_20261119_v81.tex}.
+\emph{A ten-coordinate definition of the rational subfield by a guarded finite algebra},
+\nolinkurl{papers/number_fields/ten_coordinate_rationality_20261119_v81.tex}.
 The field-rationality theorem itself is not being used to define
 \(\Z\subset\Q\); only its algebraic compression is used.
+
+\bibitem{powers}
+Project finite-exception audit,
+\emph{Power shifts and finite exceptions}, v69,
+\nolinkurl{papers/number_fields/power_shifts_and_finite_exceptions_20261117_v69.tex}.
 
 \bibitem{burungale}
 A.~Burungale, \emph{A Diophantine definition of \(\Z\) in \(\Q\)},
