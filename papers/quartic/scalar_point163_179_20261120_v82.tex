@@ -1,0 +1,867 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=26mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs,longtable,hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{remark}\newtheorem{remark}[theorem]{Remark}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\newcommand{\Tr}{\operatorname{Tr}}\newcommand{\Nm}{\operatorname{Nm}}
+\newcommand{\ord}{\operatorname{ord}}
+\title{A scalar-point sharing construction in 163 and 179 variables}
+\author{Z diophantine in Q project}
+\date{20 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+We reduce the retained general quartic constructions from 165 to 163
+and from 180 to 179 total rational coordinates, including the input.
+A partial-trace scalar detector guards its own nonzero quotient.
+Scaling the scalar inverse-Vieta chart by that quotient removes its
+two slope coordinates. A positive variable weight removes the need
+for an additional reciprocal in the general family; the fixed member
+uses one reciprocal and retains its effective unweighted height bound. A changed cleared
+comparison yields the divisibility $M_j^3\mid a\Delta$, sufficient
+for the original global height argument. We give the ordered integer
+construction, including its scalar denominators and zero fibers, and
+independent exact checks of all rows and expanded coefficients.
+The defining assertions retain the explicitly stated arithmetic
+interfaces of the source constructions. The 163-variable threshold
+is ineffective; the 179-variable coefficient table is fully specified.
+\end{abstract}
+
+\paragraph{Source credit.}
+The underlying supplied constructions and notes are by Gabe Conant
+with Astra~6.2, as audited in~\cite{Shared}. The scalar and point
+changes proved here are subsequent project work based on those notes.
+The published source tables are retained unchanged.
+
+\section{Statements and retained arithmetic inputs}
+Let $K=\Q(\sqrt2)$, put $d_0=3-\sqrt2$, $D=d_0^2=11-6\sqrt2$,
+and consider
+\[
+ E:y^2=x^3-Dx,\qquad R_0=(1+\sqrt2,2\sqrt2),\qquad P_0=2R_0.
+\]
+For a finite nonzero abscissa write $f(Q)=1/x(Q)$; where the
+ordinate is nonzero, write $z(Q)=-x(Q)/y(Q)$.
+For the reference point $H$ put
+\[
+ f=f(H),\quad S=y(H)/x(H),\quad T_H=y(H-P_0)/x(H-P_0).
+\]
+The scalar normalizer will be denoted by $R$, to distinguish it
+from the fixed elliptic point $R_0$.
+
+The arithmetic interfaces are precisely those retained by the
+shared-product audit~\cite{Shared}, with the source conventions of
+\cite{General,Effective}. More explicitly, we retain:
+\begin{enumerate}
+\item the group description $E(K)=\Z R_0+E[2](K)$, the complete
+finite point charts and label conventions, and the relative
+order-four formal-logarithm estimate at consumed good primes;
+\item the fixed reference exclusions at 149 and the scalar
+contact-height bound, with the same exceptional sets;
+\item the full-domain reflected ten-contact height estimates
+(center $1$ in the general construction, center $3/22$ in the
+effective construction), including the midpoint of radical one;
+\item the positive four-point trace-height estimates for every finite
+difference allowed by the charts, including finite two-torsion
+differences: the height theorem for varying positive weights in
+\cite{Weighted} for the general family, and the retained effective
+unweighted estimate for the fixed member;
+\item the native pole obstruction against negative odd valuations
+at consumed primes and its prepared-realization interface for
+actual positive inputs below 17, with square reduced denominator
+and the prescribed local squares of depths $4,2,2$ at $2,3,17$;
+\item the fixed-data Gaussian prime-pattern and compatible
+annihilation supplier with arbitrary finite avoidance, arbitrarily
+large fixed prime and slope cutoffs, the stated synchronization,
+and the finite-index compact-component recurrence used in the
+ordered source proof.
+\end{enumerate}
+The effective assertion additionally retains the numerical
+contact-height estimates of~\cite{Effective}. The new scalar
+preparation is proved below from the same formal-group and
+recurrence inputs; it is not assumed as a replacement interface.
+The native realization hypothesis is not removed or inferred from
+the finite coefficient calculations.
+
+Set
+\[
+ \beta=51X^2+2504,\qquad
+ r=\beta(\beta-1)(\beta-2401)(32\beta+343).
+\]
+For the family take
+\begin{equation}\label{eq:Rfamily}
+ C=149^N,\qquad R=\frac{149C^2r}{1+149^2r},\qquad N\ge1.
+\end{equation}
+For the fixed member use
+\begin{equation}\label{eq:Rfixed}
+ R=\frac{A_{\rm a}r}{1+25r},\qquad A_{\rm a}=A_0B_{\rm a}^4,
+\end{equation}
+where
+\begin{align*}
+ A_0={}&23\cdot149\cdot263\cdot337\cdot631\cdot1063\cdot1093
+ \cdot1171\\
+ &{}\cdot1439\cdot2161\cdot2437\cdot2837\cdot2851\cdot3187
+ \cdot3343\cdot3793\\
+ ={}&645904574641049503754777843805872291231896003979.
+\end{align*}
+The additional fixed factor is
+\[
+ B_{\rm a}=263\cdot2161\cdot2437\cdot2837\cdot3793
+          =14904184670611231.
+\]
+Both normalizers are positive on every rational input.
+
+\begin{theorem}\label{thm:main}
+Under the respective retained arithmetic interfaces, the exact
+tables accompanying this paper define polynomials with rational
+input projection $\Z$ as follows.
+\begin{enumerate}
+\item The family has 163 total variables and defines $\Z$ for
+every sufficiently large fixed $N$. Its sufficient threshold is
+ineffective. For every $N\ge1$ it has degree exactly four,
+137 quadratic residuals, 2789 monomials, content one, and exact
+coefficient height
+\[
+ \max\{126616122944180358034867798936,149^{4N+2}\}.
+\]
+\item The fixed member has 179 total variables, 151 quadratic
+residuals, 3036 monomials, degree exactly four and content one.
+Its exact coefficient height is $A_{\rm a}^2$, which has 748 bits.
+\end{enumerate}
+In both cases the input is coordinate one and the polynomial is
+the sum of the squares of the listed ordinary quadratic residuals.
+\end{theorem}
+
+The savings concern variable count. The fixed coefficient height
+is larger than that of the previous 180-variable member.
+The square register $R^2$ remains in the construction; its removal
+is not asserted.
+
+\section{The partial-trace scalar detector}
+Let $Z\in K$ and define
+\begin{equation}\label{eq:scalar}
+ J=\frac{Z^2}{R^5}+\frac{f^2}{R^4},\qquad
+ \tau\Tr\left(\frac{Z^2}{R^5}\right)=\Nm(J),\qquad
+ b_s=R(R+9792)\tau^2.
+\end{equation}
+Here $f\ne0$ is supplied by the retained reference chart.
+At both real embeddings $J>0$. If $Z=0$, the middle equation
+would give $0=\Nm(f^2/R^4)>0$. Hence $Z\ne0$ and
+\[
+ \Tr(Z^2/R^5)>0,\qquad \tau>0,\qquad b_s>0.
+\]
+In particular the trace denominator is guarded by the equations,
+without a new reciprocal coordinate.
+
+\begin{lemma}\label{lem:scalar}
+Let $p\nmid2\cdot9792$ and let $\mu=v_p(R)>0$ be odd. If the
+native pole obstruction holds for $b_s$, some valuation slot of
+$K$ above $p$ satisfies
+\[
+             v(Z)>\frac{9\mu}{4},\qquad
+             v(f)>\frac{7\mu}{4}.
+\]
+\end{lemma}
+\begin{proof}
+Normalize $v(p)=1$ and count the two slots with multiplicity at
+an inert prime. They are unramified. Write
+\[
+ a_i=2v_i(Z)-5\mu,\quad b_i=2v_i(f)-4\mu,\quad
+ w_i=v_i(J)=\min(a_i,b_i).
+\]
+The first valuation is odd and the second even, so they cannot
+cancel. Since $v_p(b_s)=\mu+2v_p(\tau)$ is odd, the obstruction
+gives $v_p(\tau)>-\mu/2$. The trace inequality gives
+\begin{align*}
+ v_p(\tau)
+ &=w_1+w_2-v_p\Tr(Z^2/R^5)\\
+ &\le w_1+w_2-\min(a_1,a_2)
+ \le w_1+w_2-\min(w_1,w_2)=\max(w_1,w_2).
+\end{align*}
+Thus both summands in $J$ have valuation greater than $-\mu/2$
+at one common slot, proving the inequalities.
+\end{proof}
+
+At 149 the known reference norm computations exclude the
+forbidden reference strata before any quotient is used. Their
+nonzero norms $41^2/64$, $17^2/64$, $63^2/64$ and $7$ are
+149-adic units, whereas Lemma~\ref{lem:scalar} forces positive
+depth. Hence $S$ and $T_H$ are nonzero. Once the scalar point
+is recovered below, $Z=2z(Q_2)/z(H)$ and the retained formal
+isometry gives
+\begin{equation}\label{eq:scalarindex}
+                         v_p(a)>9\mu/4,
+ \qquad a=2\nu(Q_2)\in\Z\setminus\{0\}.
+\end{equation}
+Indeed $H$ is formal at the successful slot. The point $Q_2$
+is formal or reduces to $(0,0)$; translation by that two-torsion
+point changes $z$ by a sign. Multiplication by two removes the
+torsion label, and $h=\nu(H)\in\frac12\Z$ is $p$-integral.
+The argument is the source scalar extraction with the same
+common-slot bounds, so the scalar radical-height constants are
+unchanged.
+
+Put
+\[
+ \widehat J=R^4J,\qquad \widehat\tau=R^4\tau,
+ \qquad L=\widehat J-f^2.
+\]
+The scalar field equations become
+\begin{equation}\label{eq:scalarquadratic}
+                 RL=Z^2,\qquad
+                 \widehat\tau\Tr(L)=\Nm(\widehat J).
+\end{equation}
+The field square $f^2$ is already stored by the source detector.
+Consequently these are ordinary quadratic component equations.
+
+\section{The point chart and its exceptional fibers}
+Use six field coordinates $U,V,W,r_0^*,P^*,r_2^*$, the retained
+field ratio $A=L_2$ and reciprocal squares $F_U=f(U_2)^2$,
+$F_V=f(V_2)^2$. Define the field expression
+\[
+                         M=-2S-W
+\]
+without adding coordinates. Impose
+\begin{equation}\label{eq:point}
+\begin{aligned}
+ UV&=LP^*,&P^*W&=Rr_0^*,\\
+ r_0^*(U+V-W-4S)+DRL&=0,&
+ LP^*+W(U+V)&=M^2,\\
+ r_2^*&=(r_0^*)^2,&F_Ur_2^*&=U^2,\\
+ F_Vr_2^*&=V^2,&A(U+M)&=2SZ.
+\end{aligned}
+\end{equation}
+Each displayed row is quadratic over $K$. The rational components
+are the rows recorded in the complete physical tables.
+
+\begin{proposition}\label{prop:point}
+Equations~\eqref{eq:scalarquadratic} and~\eqref{eq:point} recover
+the complete normalized scalar inverse-Vieta chart and its actual
+primary and scalar quotients. They exclude none of its required
+finite tangent or alternate two-torsion witnesses.
+\end{proposition}
+\begin{proof}
+We already know $R,Z,L\ne0$. If $r_0^*=0$, the sum row gives
+$DRL=0$, a contradiction. Thus $P^*,W$ are nonzero by the
+product row, and $U,V$ are nonzero by $UV=LP^*$. Define
+\[
+ (u,v,w,m,\rho)=(U,V,W,M,r_0^*)/Z,
+ \qquad p=P^*/R,\quad \rho_2=r_2^*/Z^2.
+\]
+Direct division gives
+\begin{equation}\label{eq:oldpoint}
+\begin{aligned}
+ uv&=p,&pw&=\rho,\\
+ \rho(u+v+w+2m)+D&=0,&p+w(u+v)&=m^2,\\
+ \rho_2&=\rho^2,&F_U\rho_2&=u^2,&F_V\rho_2&=v^2.
+\end{aligned}
+\end{equation}
+These are exactly the complete normalized source identities.
+They recover the two finite numerator points and their finite
+difference $Q_2$, with $p=x(Q_2)$. The last row in
+\eqref{eq:point} and the definition of $M$ give
+\[
+                     A(u+m)=2S,\qquad Z(m+w)=-2S.
+\]
+Since $S\ne0$, the primary denominator $u+m$ and the scalar
+denominator $m+w$ are nonzero. The original point interpretation
+therefore recovers $Z=2z(Q_2)/z(H)$. In particular $Q_2$ has
+nonzero ordinate, so it is nontorsion under the retained group
+description and $a\ne0$.
+
+There is no division by $m+v$: it may vanish, giving the allowed
+finite alternate two-torsion point. The complete source point
+interpretation also includes tangent secants. Conversely a source
+finite nontorsion scalar triple with its nonzero actual $Z$ gives
+\eqref{eq:point} by multiplying $u,v,w,m,\rho$ by $Z$, putting
+$P^*=Rx(Q_2)$ and $r_2^*=Z^2\rho_2$. The identities above show
+that both eliminated components of $M$ then equal $-2S-W$.
+\end{proof}
+
+For the general family use the weighted aggregate
+\begin{equation}\label{eq:weightedaggregate}
+ T=7+\frac14\Tr\bigl(x(Q_1)+R x(Q_2)+x(Q_3)+x(Q_4)\bigr).
+\end{equation}
+Its scalar-point contribution is $P^*$, so its row is quadratic
+without another inverse coordinate. The other three contributions
+and all four actual difference points are unchanged. This removes
+two rational coordinates in the general family. The uniform weighted
+height argument is given below.
+
+The fixed member retains its original unweighted aggregate and the
+effective height constants. There $x(Q_2)=P^*/R$, and we add one
+rational coordinate $R^{-1}$, guarded by $R R^{-1}=1$, so its two
+aggregate components remain quadratic. It therefore saves one
+rational coordinate. The variable-weight theorem is not used to
+claim an effective 178-variable defining member.
+
+\section{The homogeneous native pole}
+Retain the rational register $R_2=R^2$. Set
+\[
+ \sigma=1/\tau,\quad B=b_s/\tau,\quad
+ (E,U_s,V_s,P_s,Q_s)=(e,u_s,v_s,p_s,q_s)/\tau,
+ \quad P_2=p_s^2/\tau,\quad Q_2^*=q_s^2/\tau.
+\]
+The complete quadratic block is
+\begin{equation}\label{eq:native}
+\begin{aligned}
+ \widehat\tau\sigma&=R_2^2,&B\sigma&=R_2+9792R,\\
+ \sigma P_2&=P_s^2,&\sigma Q_2^*&=Q_s^2,\\
+ 3E^2-34E\sigma-289\sigma^2+17BP_2&=0,\\
+ E(17\sigma-B)-17U_sV_s&=0,\\
+ U_s^2+34U_sV_s-867V_s^2-17BQ_2^*&=0.
+\end{aligned}
+\end{equation}
+The first row guards $\widehat\tau$ and $\sigma$, since $R\ne0$.
+With $\tau=\widehat\tau/R^4$, recover
+\[
+ b_s=\tau B,\qquad
+ (e,u_s,v_s,p_s,q_s)=\tau(E,U_s,V_s,P_s,Q_s).
+\]
+The last three residuals are exactly $\sigma^2$ times
+\[
+\begin{aligned}
+ 3e^2-34e-289+17b_sp_s^2&=0,\\
+ e(17-b_s)-17u_sv_s&=0,\\
+ u_s^2+34u_sv_s-867v_s^2-17b_sq_s^2&=0.
+\end{aligned}
+\]
+These are the retained native pole equations. No native auxiliary
+coordinate is inverted, so all of their zero-coordinate branches
+are preserved.
+
+\section{The changed comparison and the weighted integer error}
+The old cleared comparison would become cubic after the point
+scaling. Replace it by the quadratic field expression
+\begin{equation}\label{eq:Enew}
+       E_2^*=A\overline{(V+M)}+2\overline{T_H}\,\overline Z.
+\end{equation}
+It uses the existing two error coordinates and their square
+registers. At a consumed slot let
+\[
+ s_2=y(U_2)/x(U_2)=u+m,\qquad
+ t_2=y(V_2)/x(V_2)=-(v+m),\qquad
+ C_2=A-\overline{2T_H/t_2}.
+\]
+The reciprocal tests make the indicated points formal and the
+local quotients defined. Since $V+M=-Zt_2$, the exact identity is
+\begin{equation}\label{eq:Eidentity}
+                  E_2^*=\overline{(V+M)}C_2
+                         =-\overline{Zt_2}C_2.
+\end{equation}
+
+Let $m_2=2\nu(U_2)$, $n_2=2\nu(V_2)$, and $a=m_2-n_2$.
+All of these are $p$-integral. The primary reference label is
+$h=\nu(H)$ and the opposite label is $h-1$.
+At the opposite slot $H-P_0$ is formal. Independently doubling
+$R_0$ gives
+\[
+ z(P_0)=\frac{232+86\sqrt2}{357},\qquad
+ \Nm(z(P_0))=\frac{328}{1071}.
+\]
+Its support is contained in $\{2,3,7,17,41\}$, already excepted.
+Hence $z(H)$ is a unit at that opposite slot.
+
+Suppose $v(E_2^*)\ge k$, with $k\le4$. If the opposite valuation
+of $z(Q_2)$ is nonpositive, then $V_2$ is finite formal and
+\[
+ v\bigl(\overline{Zt_2}\bigr)
+ =v_{\mathrm{opp}}(z(Q_2))-v_{\mathrm{opp}}(z(H))
+                         -v_{\mathrm{opp}}(z(V_2))\le-1.
+\]
+Thus $v(aC_2)\ge k$. If $z(Q_2)$ has positive opposite
+valuation, translate by $(0,0)$ if necessary. The formal
+isometry, after multiplication by two, gives
+\[
+ v_{\mathrm{opp}}(z(Q_2))-v_{\mathrm{opp}}(z(V_2))
+                         =v_p(a)-v_p(n_2).
+\]
+The index $n_2$ is nonzero because $V_2$ is finite formal.
+Equation~\eqref{eq:Eidentity} now gives
+$v(aC_2)=v(E_2^*)+v_p(n_2)\ge k$ again.
+
+Put $A'=\overline{2T_H/t_2}$. The relative order-four estimates,
+used without assuming either ratio integral, state
+\[
+       hA-m_2=\varepsilon_1,\qquad
+       (h-1)A'-n_2=\varepsilon_2,
+       \qquad v(\varepsilon_i)\ge4.
+\]
+Subtracting, and using $C_2=A-A'$, yields
+\begin{equation}\label{eq:weighted}
+ a(A-a)=-a(h-1)C_2+a(\varepsilon_1-\varepsilon_2),
+ \qquad v\bigl(a(A-a)\bigr)\ge k.
+\end{equation}
+This step precedes integrality transfer.
+
+Use the same first, second and fourth field factors as in the
+enhanced source. In the third factor retain the $c^5E_3^4$ term
+but replace $-c^7E_2^4$ by $-c^{11}(E_2^*)^4$. Its hyperbolic
+pair is now
+\[
+ \mathcal X=E_3^2+c^3(E_2^*)^2,\qquad
+ \mathcal Y=E_3^2-c^3(E_2^*)^2,
+ \qquad c^5\mathcal X\mathcal Y
+       =c^5E_3^4-c^{11}(E_2^*)^4.
+\]
+The inverse uses only the already guarded $c\ne0$. All retained
+square rows receive this same inverse substitution.
+The valuation classes modulo four are unchanged. The existing
+shared gate therefore gives a common successful slot where every
+factor term has valuation greater than $-\mu/4$. In particular
+\[
+                    v(E_2^*)>43\mu/16,\qquad v(E_2^*)\ge3.
+\]
+All other enhanced comparison and homogeneous Lucas precisions
+remain four; the input precision remains three.
+
+Let
+\[
+ \Delta=t^2-(a+1)(a-1)tb+(a-1)^2b^2-1\in\Z
+\]
+be the source integer Lucas residual. If $v_p(a)\ge3$,
+$p^3\mid a\Delta$ is automatic. Otherwise
+\eqref{eq:weighted} makes $A-a$ integral of positive valuation,
+so $A$ is integral. The other label comparisons transfer their
+integrality as in the source. The elementary polynomial difference
+between the actual homogeneous Lucas ratio and $\Delta$, using
+\eqref{eq:weighted}, gives $p^3\mid a\Delta$. Taking the
+squarefree products separately proves
+\begin{equation}\label{eq:radicals}
+ M_j^3\mid a\Delta\quad(\Delta\ne0),\qquad
+ M_j^3\mid J_X\quad(J_X\ne0),
+\end{equation}
+where $J_X=|\operatorname{num}(\beta-n)|$ is unchanged.
+No coprimality between the distinct $M_j$ is asserted. Radical
+one, global alternate zero ordinates and other allowed finite
+boundary cases are included: the implication at each consumed
+prime is proved before its quotients are used.
+
+\section{Global soundness}
+All four actual finite difference points and their labels have
+been preserved. Put
+\[
+ B_0=\max(1,|n|,|a|,|t|,|b|).
+\]
+For the general family apply the positive weighted trace theorem
+of~\cite[Theorem 1.1]{Weighted} with the fixed polynomials
+$(w_1,w_2,w_3,w_4)=(1,r,1,1)$ and parameter $r=R>0$.
+It gives constants $A,J$ such that
+\begin{equation}\label{eq:weightedheight}
+                  B_0^2\le A\bigl(h(R)+h(T)\bigr)+J.
+\end{equation}
+The constants depend only on these fixed polynomials, the fixed
+curve and the fixed finite-rank group; they do not depend on $N$,
+$R$, the input, or any point index.
+
+For clarity, the published family theorem used in that result is
+\cite[Theorem 1.1, p.~308]{VB}. Its additive constant is uniform
+in the parameter of one fixed projective family and fixed
+finite-rank group, but ineffective. Here that family has parameter
+$(R,T)\in\mathbf P^1\times\mathbf P^1$ and does not contain $N$
+in its defining equations. The proof in~\cite{Weighted} checks
+the projectively normal embedding and excludes positive-dimensional
+constant translates through every actual tuple: within a conjugate
+block the pole coefficients are sums of positive rational multiples
+of squares, while between blocks the two conjugate generators are
+independent modulo torsion. Torsion coordinates are frozen in
+finitely many cases. Thus finite two-torsion points, negative or
+repeated indices and the graph boundary create no additional
+exception. The required group hypothesis is the one already retained.
+
+Let $\tau_\beta=h(\beta)$. Elementary height inequalities give,
+for every rational input and $N\ge1$,
+\begin{equation}\label{eq:Rheight}
+ h(r)\le4\tau_\beta+\log1801500,\qquad
+ h(R)\le4\tau_\beta+(2N+1)\log149+\log1801500.
+\end{equation}
+Indeed the four linear factors of $r$ contribute row sums
+$1,2,2402,375$, and the matrix for
+$R=149^{2N+1}r/(1+149^2r)$ has largest row sum
+$149^{2N+1}$. The scalar estimates give a fixed $K_0$ with
+\[
+ L_N=\lfloor9(2N-1)/4\rfloor+1,\quad
+ |a|\ge149^{L_N},\quad
+ \tau_\beta\le K_0\,149^{-L_N}|a|.
+\]
+Consequently, uniformly for $B_0\ge|a|\ge149^{L_N}$,
+\[
+ A h(R)+J= o(B_0^2)\quad\hbox{as }N\longrightarrow\infty.
+\]
+For example, divide the upper bound from~\eqref{eq:Rheight}
+by $B_0^2$: its first term is at most
+$4AK_0\,149^{-2L_N}$ and its remaining terms are
+$O((N+1)149^{-2L_N})$, with constants fixed before $N$.
+
+If $\Delta\ne0$, then $a\Delta\ne0$ and
+$|a\Delta|\le14B_0^5$. The retained two-contact height implication
+for any nonzero integer $J_0$ with $M_j^3\mid J_0$, together
+with~\eqref{eq:weightedheight}, gives
+\[
+ B_0^2\le C_1|J_0|^{7/18}+A h(R)+C_2.
+\]
+Take $J_0=a\Delta$ and first choose $N$ large enough that the
+added scalar-height terms are at most $B_0^2/2$. Then
+\[
+                     B_0^2/2\le C_3B_0^{35/18}.
+\]
+Since $35/18<2$, $B_0$ is bounded by a constant independent of
+$N$. Increasing $N$ now makes $149^{L_N}$ exceed this bound. Thus
+$\Delta=0$. The retained Lucas descent gives
+\[
+ \log B_0\ge(|a|-6)\log(|a|-3),
+\]
+If $J_X\ne0$, use $M_j\mid J_X$ and
+$J_X\le4B_0e^{\tau_\beta}$. The same absorption gives
+$B_0^2/2\le C_4B_0^{7/6}e^{7\tau_\beta/6}$, hence
+$\log B_0\le(7/5)\tau_\beta+C_5$, with $C_5$ independent of
+$N$. This contradicts the Lucas bound for every sufficiently
+large fixed $N$. All constants were fixed before this choice;
+no height constant depending on $N$ is being hidden in the argument.
+Consequently
+$\beta=n\in\frac12\Z$. Writing $X=u/v$ in lowest terms gives
+$v^2\mid102$, and the squarefreeness of 102 gives $X\in\Z$.
+
+\subsection*{The explicit endpoint}
+For every prime $p\mid A_0$, exhaustive exact residue checks give
+$r(X)(1+25r(X))\ne0$ for all $X\in\mathbb F_p$. If $v_p(X)<0$,
+the leading coefficient $32\cdot51^4$ is a unit and
+$v_p(r)=v_p(1+25r)=8v_p(X)$. Thus, for \emph{every rational input},
+the fixed member has $v_p(R)=5$ if $p\mid B_{\rm a}$ and
+$v_p(R)=1$ at the other anchor primes. Equation~\eqref{eq:scalarindex}
+gives $v_p(a)\ge12$ and $v_p(a)\ge3$, respectively. These primes
+are disjoint from the scalar radical $M_S(\beta)$, so
+\begin{equation}\label{eq:anchorbound}
+ \begin{gathered}
+ L_{\rm a}M_S(\beta)^3\mid |a|,\qquad
+ L_{\rm a}=A_0^3B_{\rm a}^9\ge2^{960},\\
+ |a|\ge L_{\rm a},\qquad
+ h(\beta)<2^{238}L_{\rm a}^{-1}|a|<|a|/2.
+ \end{gathered}
+\end{equation}
+
+The effective three-contact constants are retained exactly:
+\[
+ \mathcal C<2^{300},\quad J_*<2^{75},\quad K_*=2^{304},
+ \qquad E(M)<(21/10)M^{1/6006}.
+\]
+Apply the source reflected-height calculation to $J=a\Delta$.
+For $\Delta\ne0$, including $|J|=1$, it gives
+\[
+ B_0^2<121\mathcal C\sqrt{21/10}\,
+ |J|^{1/3+1/36036}
+ \left(\log J_*+\tfrac16\log|J|\right).
+\]
+Using $|J|\le14B_0^5$ and $s=\log B_0$, the exact estimates
+\[
+ \sqrt{21/10}<3/2,\quad 14^{1/3}<5/2,\quad
+ 14^{1/36036}<10001/10000,\quad \log2<7/10,\quad\log14<4
+\]
+give
+\begin{equation}\label{eq:endpoint}
+       e^{(1/3-5/36036)s}<500\,2^{300}(54+5s/6).
+\end{equation}
+The third estimate follows already from the first four terms of
+the binomial expansion of $(1+1/10000)^{36036}$.
+The quotient of the two sides, excluding the constant coefficient,
+is increasing for $s\ge0$, because
+$1/3-5/36036>5/324$. At $s=960\log2$, its left side divided
+by $2^{300}$ is strictly greater than
+\[
+ 2^{20}(1-280/3003)=2^{20}\frac{2723}{3003}>307000,
+\]
+using $e^{-x}>1-x$, while the right side divided by $2^{300}$
+is below $500(54+800\cdot7/10)=307000$. This contradicts
+\eqref{eq:endpoint}, so $\Delta=0$.
+
+For the remaining input error, the original weaker $M_j\mid J_X$
+suffices. The unchanged coarse bound and~\eqref{eq:anchorbound}
+give $s<240+|a|$. The retained Lucas lower bound is larger than
+$2(|a|-6)>240+|a|$ for $|a|\ge2^{960}$. Hence $J_X=0$ and
+$X\in\Z$ for this actual fixed table.
+
+\section{Ordered integer completeness}
+Fix an integer $X$. Every choice below is made before the later
+prime data on which it is permitted to depend.
+
+\subsection*{Uniform real neighborhoods}
+Let $\mathcal T$ be the identity component of the closure of the
+cyclic orbit of $P_0$ in the product of the two real elliptic groups.
+Both projections of $\mathcal T$ are nontrivial: a real embedding
+cannot make the algebraic nontorsion point $P_0$ torsion. Choose
+$H_*$ near the identity in $\mathcal T$, nonzero in both
+projections, with $|f(H_*)^{(i)}|<1$, and put $Q_*=H_*$.
+The quotient $2z(Q_*)/z(H_*)$ is 2 at both embeddings.
+Small fixed neighborhoods therefore give
+\begin{equation}\label{eq:realbox}
+       |f(H)^{(i)}|\le1,\qquad 1\le|Z^{(i)}|\le3
+                         \quad(i=1,2).
+\end{equation}
+Every finite-index subgroup has the same connected orbit closure.
+Include the finite component index in the progressions. Each
+resulting residue class then has closure $\mathcal T$, so the
+retained recurrence supplies these real returns together with all
+finite congruences. After the scalar root is fixed, the finitely
+many other chart exclusions can be avoided inside the reference
+neighborhood; multiplication by any of its nonzero fixed labels
+is nonconstant on $\mathcal T$.
+
+For $R\ge1$,~\eqref{eq:realbox} gives
+\[
+ J^{(i)}\le\frac{R+9}{R^5},\quad
+ \Tr(Z^2/R^5)\ge\frac2{R^5},\quad
+ \tau\le\frac{(R+9)^2}{2R^5}.
+\]
+Consequently
+\begin{equation}\label{eq:realbound}
+ 0<b_s\le\frac{(R+9792)(R+9)^4}{4R^9}
+                   \le\frac{24482500}{R^4}<17\qquad(R>100).
+\end{equation}
+This is a uniform bound independent of the integer input or the
+time required for a real return. For~\eqref{eq:Rfamily},
+$R\ge149^{2N+1}/22202>100$ when $N\ge1$; for~\eqref{eq:Rfixed},
+$R\ge A_{\rm a}/26>100$.
+
+\subsection*{The scalar finite places, including all new denominators}
+Put $K_s=R(R+9792)$. For a reduced rational $R=u/v$,
+\[
+                  K_s=\frac{u(u+9792v)}{v^2},\qquad
+                  \gcd(u(u+9792v),v)=1.
+\]
+Thus every odd valuation of $K_s$ is positive. Prepare the finite
+set consisting of all these odd-valuation primes and $2,3,17$.
+The source integer congruences give
+$v_2(R)\in\{2,3\}$ and $v_3(R)=v_{17}(R)=0$, for both
+normalizers. Since $9792=2^6 3^2 17$, the rational $K_s$ is a
+square in $\Q_2$, $\Q_3$, and $\Q_{17}$.
+
+First choose $H=[h]P_0$, $64\mid h$, arbitrarily deep in the
+formal group at both slots of each prepared prime, while in the
+fixed real neighborhood. Include the fixed reduction orders and
+component index in this modulus. At each of the finitely many
+places choose a positive exact integer depth $t_p$ for
+$\lambda=a/h$, large enough for the eventual scalar requirements
+but smaller than twice the minimum reference formal depth by an
+arbitrarily large fixed margin. Then choose $a=2a_0\in6\Z$ in
+these exact residue classes and with $Q_2=[a_0]P_0$ in its real
+neighborhood. The recurrence supplies arbitrarily large positive
+$a_0$ in each such progression.
+
+Here is the precise local reason that these choices are compatible.
+Write $d_w=v_w(z(H))$. On a sufficiently deep formal subgroup,
+the formal logarithm has derivative one, $f(H)=z(H)^2$ times a
+unit, and
+\[
+ Z=\lambda(1+\epsilon_w),\qquad
+ v_w(\epsilon_w)\ge4d_w-O_p(1).
+\]
+At good consumed primes this is the retained order-four estimate;
+at each fixed preparation prime it also follows by expansion of
+the convergent formal logarithm, with a fixed denominator loss.
+The scalar root is deeper than $H$, and the rational logarithm
+ratio is exactly $a/h$. Given any fixed $q\ge2$, the requirements
+\begin{equation}\label{eq:prep}
+ v_w(\epsilon_w)\ge q,
+ \qquad v_w(Rf^2/\lambda^2)=v_p(R)+4d_w-2t_p\ge q
+\end{equation}
+hold by taking the reference depth first sufficiently large and
+then choosing $t_p$ in the nonempty interval between the fixed
+lower requirement and approximately $2\min_w d_w$. Exact depth
+is an open congruence condition. Chinese remaindering combines
+the finitely many such choices with $3\mid a_0$ and the component
+and reduction orders.
+
+Under~\eqref{eq:prep}, $J=\lambda^2R^{-5}$ times a field unit
+congruent to one, while
+$\Tr(Z^2/R^5)=2\lambda^2R^{-5}$ times a rational unit.
+This includes $p=2$, since $q\ge2$ excludes trace cancellation.
+Hence the actual input satisfies
+\begin{equation}\label{eq:taudepth}
+                    v_p(\tau)=2t_p-5v_p(R)-v_p(2).
+\end{equation}
+Choose the fixed lower requirements for $t_p$ so that $\tau$ is
+integral at every odd-support prime and so that $b_s$ has depths
+at least $4,2,2$ at $2,3,17$. Its local squareclasses there are
+those of $K_s$, so they are the required squares.
+
+No control of new denominator primes of $\tau$ is missing.
+Outside the prepared set $v_p(K_s)$ is even, so
+\[
+                     v_p(b_s)=v_p(K_s)+2v_p(\tau)
+\]
+is even, however negative $v_p(\tau)$ may be. At an odd-support
+prime $v_p(K_s)>0$ and $v_p(\tau)\ge0$, so $v_p(b_s)>0$.
+Thus every negative valuation of the actual $b_s$ is even: its
+reduced denominator is a square. Together with~\eqref{eq:realbound}
+and the local preparations, this establishes every retained native
+realization hypothesis for the new scalar input.
+After $a_0$ is fixed, all these conditions are open in the reference
+point. Shrink to a reference progression preserving them and the
+real bounds. This progression is fixed before any comparison
+prime is selected.
+
+\subsection*{The remaining roots and the comparison primes}
+Choose the Lucas roots and the other three finite point differences
+exactly as in the source. With $a\in6\Z$, the retained recurrence
+gives positive integral $t$ and odd $b>1$ with $\Delta=0$.
+The four points and all shifts are now fixed. In the general family
+$Q_1,Q_2$ are nonzero doubles, so at each real embedding their
+abscissas exceed $d_0$, while the other two are at least $-d_0$.
+Since $R>100$, the weighted sum is greater than $(R-1)d_0>0$,
+and~\eqref{eq:weightedaggregate} gives $T>7$, still greater than
+the contact diameter four. The fixed member retains exactly the
+source shift separation. Enlarge avoidance to include the support of $R$,
+the support of the
+fixed nonzero coordinates of $Q_2$, the previous preparation
+moduli, and the source's fixed denominators and guards.
+At every selected prime, $z(Q_2)$ is then a unit at both slots.
+
+Use the same compatible prime supplier and synchronized reference
+progression. Its successful primary and opposite formal depths
+are equal to some $d\ge1$; only the smaller initial depth is raised.
+It is neither necessary nor possible to require both $h$ and
+$h-1$ divisible by the prime. At the opposite slot $z(H)$ is a
+unit, so~\eqref{eq:Eidentity} has denominator factor of depth
+$-d$. The ordinary ratio comparison has depth at least $4d$,
+and therefore
+\[
+                  v(E_2^*)\ge3d,\qquad v(E_3)\ge2d.
+\]
+Since $v_p(c)=-1$ on these selected witnesses, the changed factor
+terms have positive valuations
+\[
+              v(c^{11}(E_2^*)^4)\ge12d-11>0,
+ \qquad v(c^5E_3^4)\ge8d-5>0.
+\]
+All other terms retain their source positive depths. Consequently
+the common product is one modulo $p$ at the successful slot; at
+the other slot it is a unit of residue one or has a pole. The
+same shared norm/trace gate gives $D_{\rm gate}$ of positive
+valuation, and every actual comparison-pole input has selected
+valuation one.
+
+At the previously prepared finite places and the real places,
+the new test $E_2^*$ is a regular bounded function on the shrunken
+neighborhoods. The unchanged contact asymptotics make all weights
+tend to zero with pairwise ratios tending to one. The changed
+factor still tends to one, as do all other factors, so the actual
+comparison inputs preserve their local classes and tend to
+$(204/409)^2\in(0,17)$ at the real place. Their parity away from
+their own selected supports is unchanged. Apply the retained native
+realization theorem independently to the scalar input and to every
+comparison input, then fill the complete point charts and all helper
+coordinates. The invertible Laurent maps yield rational zeros of
+the final quadrics. No earlier root or prime choice is revisited.
+This proves integer completeness and finishes Theorem~\ref{thm:main}.
+
+\section{Exact tables, maps and independent verification}
+The reproducibility package is
+\begin{center}\small
+\nolinkurl{computation/variable_reductions_v82/general/}.
+\end{center}
+Its two complete physical source tables are Laurent polynomials
+in $C,c,R$ and the source-labelled ordinary coordinates. The
+literal ordinary quadratic tables are in the corresponding
+\texttt{quartic163/} and \texttt{quartic179/} directories.
+For an ordinary source coordinate the recorded map is
+\[
+       x_i^{\rm source}=C^{k_i}c^{e_i}R^{r_i}x_i^{\rm stored},
+\]
+with $C$ omitted in the fixed member. Every row is multiplied by
+a nonzero Laurent monomial and a rational scalar to become a
+primitive ordinary quadratic. Coordinate one is unchanged.
+The common literal guard rows are
+\[
+ c c^{-1}=1,\qquad c^{-2}=(c^{-1})^2,
+ \qquad R_2=R^2.
+\]
+The fixed member additionally has $R R^{-1}=1$. The family
+has no inverse of $R$, so its zero fiber must be checked before
+using a Laurent inverse. The input coordinate and the input-square
+and scalar pair registers have $R$-weight zero, whereas source
+label 101 has $R$-weight $-1$ and $C$-weight one. If $e_{101}$
+is its recorded $c$-weight, define
+$\rho=c^{e_{101}-1}x_{101}^{\rm stored}$, using only the
+already guarded $c$. The ordinary input rows give, even at $R=0$,
+\[
+ \rho=r(X)>0,\qquad R(1+149^2\rho)=149C^2\rho.
+\]
+Here the second row is the forced-normalizer row after clearing
+its single $R^{-1}$ factor; the other input rows need no power
+of $R$ cleared. Therefore $R>0$ follows before any inverse
+Laurent substitution. Every recorded monomial map is consequently
+invertible on every rational zero, not merely on a generic open
+set chosen afterwards.
+The hyperbolic inverse is applied in all affected rows.
+The two deleted source coordinates are 188 and 189. Source
+label 114 stores $R^{-1}$ only in the fixed member.
+
+The defining polynomial is exactly the sum of squares of the
+listed rows, so over $\Q$ its zero set is their common zero set.
+No zero-set assertion is inferred from numerical sampling.
+The expanded coefficient tables, exact support, primitive content
+and heights are checked independently. In the family the only
+nonconstant coefficient profiles are
+\[
+                    -298C^2,\qquad-6615898C^2,\qquad22201C^4
+\]
+on three distinct monomials. For $C=149^N$, $N\ge1$, their
+maximum is $149^{4N+2}$; the largest fixed coefficient is the
+constant displayed in Theorem~\ref{thm:main}.
+
+From the repository root run
+\begin{center}\small
+\texttt{python -B computation/variable\_reductions\_v82/general/check.py}.
+\end{center}
+The default checker writes no files and imports no construction
+producer. It reconstructs all retained rows from the literal
+published v78 quadratic and weight tables; reconstructs the new
+field rows directly over $\Q(\sqrt2)$; reverses every compiled
+map; checks the universal point, comparison and native-pole
+identities; independently expands both complete sums of squares;
+and verifies the exact anchor and endpoint inequalities.
+Its immutable receipt pins the dependency and output hashes.
+These finite checks certify the stated algebra and arithmetic
+inequalities. The global defining theorem follows from the proof
+and its explicitly retained arithmetic interfaces.
+
+\begin{thebibliography}{9}\raggedright
+\bibitem{Shared}
+\emph{Audit and extension of the shared-product quartics}, v78,
+\nolinkurl{papers/quartic/shared_product_audit_20261119_v78.tex},
+including the enhanced 165/180 tables and their arithmetic interfaces.
+
+\bibitem{General}
+\emph{A quartic in 193 variables}, v74,
+\nolinkurl{papers/quartic/quartic193_20261117_v74.tex},
+especially the complete inverse-Vieta scalar chart, relative formal
+errors, unweighted trace height, and ordered synchronized witnesses.
+
+\bibitem{Effective}
+\emph{A compact explicit quartic in 229 variables}, v68,
+\nolinkurl{papers/quartic/quartic229_compact_20261117_v68.tex},
+especially the effective reflected height estimates, scalar radical
+bound, three-contact endpoint, and full integer preparation.
+
+\bibitem{Weighted}
+\emph{Heights of positive weighted elliptic traces}, v27,
+\nolinkurl{papers/trace_heights/weighted_trace_20261114_v27.tex},
+Theorem 1.1 and its proof, including variable positive polynomial
+weights and all finite torsion strata.
+
+\bibitem{VB}
+J. von Buhren, \emph{Borne de hauteur semi-effective pour le
+probl\`eme de Mordell--Lang dans une vari\'et\'e ab\'elienne},
+Journal de Th\'eorie des Nombres de Bordeaux \textbf{29} (2017),
+307--320, Theorem 1.1, printed p.~308.
+\url{https://www.numdam.org/article/JTNB_2017__29_1_307_0.pdf}.
+
+\bibitem{LocalCheckpoint}
+\emph{A two-term scalar detector and its remaining quadratic-encoding
+problem}, v81,
+\nolinkurl{computation/variable_reductions_v81/general/README.md}.
+The present partial-trace detector replaces that checkpoint's trace
+denominator and completes a different point-coordinate saving.
+\end{thebibliography}
+\end{document}

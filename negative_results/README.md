@@ -2,12 +2,13 @@
 
 This directory contains proved negative results, separated from the constructive results in [papers](../papers). Each obstruction concerns the precise equations, arithmetic family, or geometric presentation stated in its manuscript. Failure of a replacement on all prepared inputs does not exclude a construction whose actual witnesses lie in a smaller, separately proved locus.
 
-The [current construction table](../README.md#current-constructions--17-november-2026) gives the positive bounds. No result in this directory establishes a number field whose ring of integers is not Diophantine in its fraction field.
+The [current construction table](../README.md) gives the positive bounds. No result in this directory establishes a number field whose ring of integers is not Diophantine in its fraction field.
 
 ## Pole predicates and contact functions
 
 | Manuscript | Result and scope |
 |:--|:--|
+| [One-parameter genus-one criterion and shifted-abscissa obstruction](../papers/pole_parameters/genus_one_sound_criterion_20261120_v82.tex) | Every prepared scalar fiber is locally soluble, but an exact nonsquare-input example excludes rational points even for all three shifted abscissas and all multipliers supported on 2, 3, 5, 7. This is prepared scalar data, not a claimed actual detector tuple; the ten-coordinate actual-input criterion remains open. |
 | [Raw abscissa preparation](papers/pole_parameters/raw_abscissa_preparation_20261117_v75.tex) | At an actual multiplication tuple and physical slope, both specified raw replacements give negative odd pole valuations at 76777 despite all pre-pole guards and real bounds. Three exact implementations certify the obstruction. Other tuples and a new completeness argument remain open. |
 | [Odd halfpoint cosets](papers/pole_parameters/odd_coset_raw_20261117_v76.tex) | Restricting to odd inputs and odd multiples of P/2 does not automatically repair the raw squared variant: an actual physical slope progression has pole valuation -11 at 85817. This does not assert selected-prime or complete fixed-place preparation, or global failure of the coset. |
 | [Native pole witnesses and ramification](papers/pole_parameters/native_pole_ramification_20261117_v75.tex) | A built-in norm at an actual seven-contact tuple gives no native witness. More generally native witnesses force even ramification above negative odd contact poles, with genus at least 1+d(r-4)/4. The specified abelian families have constant slopes. Individual rational points, constant-slope families and global realization remain open. |

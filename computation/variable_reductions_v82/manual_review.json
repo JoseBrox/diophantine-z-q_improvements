@@ -1,0 +1,63 @@
+{
+  "schema": "diophantine-proof-review/v82",
+  "status": "PASS under the stated arithmetic premises",
+  "reviewed_sha256": {
+    "papers/quartic/scalar_point163_179_20261120_v82.tex": "9d01d64d095c0420379ad78bfcfca2be31fb3e69bc29eb4ef3e18fafdcda4293",
+    "papers/elliptic_divisibility/prepared_eds_divisibility_20261120_v82.tex": "f348407203a559b40e7abbdb101aa0419863798e1c4c993a74e95c9625f93888",
+    "papers/pole_parameters/genus_one_sound_criterion_20261120_v82.tex": "bdddcd16c1c75af73c1dabb68a4072c20986cc494bfe63a2589a7ae8bdd03d8b",
+    "computation/variable_reductions_v82/general/check.py": "3fecd66b864a1e4538c1e64b5b32595ff0e81025af7b12373f37c14ab092a9ac",
+    "computation/variable_reductions_v82/general/arithmetic.json": "6690214e0fc0d1c35007a344ebb87ded4cc73cf22eda725d2b7b83ff769023de",
+    "computation/variable_reductions_v82/general/independent.json": "f3e93cd692e887feec7170ff4fad573893778398363fea85436d06efab9edfd5",
+    "computation/variable_reductions_v82/eds/check_eds_detector.py": "3d4a38b2de22932809a3921f4d6917793ce89a4b818612a239a5ac85bf1f39bc",
+    "computation/variable_reductions_v82/eds/eds_detector_certificate.json": "2f82763aa370f0e7f766d91901474ff1d7667e10e9d04d463baf2a0e910fcb0f",
+    "computation/variable_reductions_v82/eds/eds_detector_pari_certificate.json": "e1ae579b14c26b6eb9f38aa9b17e37652c5e0a53e7ba8f42fe4b3e676cf718a0",
+    "computation/variable_reductions_v82/abc/check_genus_one.py": "e57a607e57e2fd076c6a23dd3910def6bb5f90aa4e99814d9fe2d98e9723b589",
+    "computation/variable_reductions_v82/abc/certificate.json": "29e3c541c0096836fde4b7054617a7f0ee1014be9b2bd2425a5b38e88ab60c93",
+    "papers/trace_heights/weighted_trace_20261114_v27.tex": "75ff9bc3bf6ebee4ae200568a1537b3e24fede021aa0262368f7babc494018fe",
+    "papers/pole_parameters/intrinsic_pole_20261117_v56.tex": "6242584d1083fa503ac140d720b30cb83e3c6979bd22ea2f38541a45e2b37640"
+  },
+  "review_scope": [
+    "Partial-trace valuation proof, positivity guards and common successful slot",
+    "Scalar-point inverse chart including all allowed finite zero branches",
+    "Cleared comparison precision, weighted integer error and 35/18 absorption",
+    "Uniform positive weighted trace constants fixed before family parameter; direct ordinary input-row exclusion of R=0",
+    "Ordered real and finite-place scalar preparation, newly introduced denominator primes, synchronized depth-one comparisons",
+    "Mixed fixed anchor, all residue checks and exact effective endpoint inequalities",
+    "EDS local divisibility detector, 77/303 primitive-prime margin, reference-dependent global preparation, rank-eight encoding",
+    "Genus-one local soundness and everywhere-local proof; exact rank-one Kummer obstruction; actual-tuple scope"
+  ],
+  "review_method": "Separate-agent mathematical review plus primary-agent reconstruction and review of the final transfers. Exact quartic reconstruction does not import the producer. Primary sources for the weighted-height and primitive-divisor inputs and the rational curve generators were reopened.",
+  "reviewed_primary_sources": [
+    {
+      "url": "https://www.numdam.org/article/JTNB_2017__29_1_307_0.pdf",
+      "location": "Theorem 1.1, p. 308",
+      "use": "Fixed family and fixed finite-rank group; parameter-uniform ineffective additive constant"
+    },
+    {
+      "url": "https://arxiv.org/pdf/math/0412473",
+      "location": "Proposition 3.10(iii) and proof",
+      "use": "Ordinary-abc odd primitive denominator input, with a new direct proof for the chosen curve"
+    },
+    {
+      "url": "https://www.lmfdb.org/EllipticCurve/Q/256/b/1",
+      "location": "Mordell-Weil group structure and generators",
+      "use": "Rank one with free generator (2,2) and rational two-torsion (0,0)"
+    },
+    {
+      "url": "https://arxiv.org/html/2611.16130v1",
+      "location": "Theorem B",
+      "use": "Published square-class-seven intrinsic pole realization"
+    }
+  ],
+  "all_arithmetic_foundations_independently_reproved": false,
+  "non_author_mathematical_review_claimed": false,
+  "actual_rational_realization_proved": false,
+  "quartic_R_square_removed": false,
+  "few_variable_counts_unchanged": [
+    25,
+    11
+  ],
+  "abc_quartic_count_unchanged": 56,
+  "counterexample_is_an_actual_detector_tuple": false,
+  "checks_do_not_establish_global_minimality": true
+}

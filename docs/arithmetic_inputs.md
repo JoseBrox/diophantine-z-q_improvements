@@ -1,8 +1,16 @@
-> **Source map through v59.** The numerical table below is historical. Current records are in the [v81 result table](../data/results_20261119_v81.json) and [v81 proof guide](results_20261119_v81.md). The 56-variable quartic uses Burungale, arXiv:2611.16130v1, Theorem B in its stated square class seven; it does not require the square-class-one strengthening retained in the v79 construction. Other elliptic, comparison, trace and prime-pattern inputs remain explicit in its proof.
+> **Source map through v59.** The numerical table below is historical. Current records are in the [v82 result table](../data/results_20261120_v82.json) and [v82 proof guide](results_20261120_v82.md). The 56-variable quartic uses Burungale, arXiv:2611.16130v1, Theorem B in its stated square class seven; it does not require the square-class-one strengthening retained in the v79 construction. Other elliptic, comparison, trace and prime-pattern inputs remain explicit in its proof.
 
 # Arithmetic inputs, theorem scope, and effectiveness
 
 The construction theorems identify rational input projections with $\mathbb Z$ under the arithmetic inputs stated in each paper. Every variable count includes the input. A finite coefficient specification and a certified sufficient value of its fixed parameter are separate conclusions.
+
+## Scalar-point and divisibility results added in v82
+
+The [163/179 quartic transfer](../papers/quartic/scalar_point163_179_20261120_v82.tex) retains the named group, relative formal-logarithm, modular contact-height, native-pole realization, and quantified prime-pattern/recurrence interfaces of its source constructions. Its new local scalar and ordered global witness arguments are proved in the manuscript. The 163-variable family additionally uses the existing positive weighted trace theorem, whose application of von Buhren's published family height theorem has constants independent of the family parameter and an ineffective additive constant. The 179-variable member uses the retained effective unweighted bound. The finite coefficient check is not a proof of these external foundations.
+
+The [prepared elliptic divisibility subrelation](../papers/elliptic_divisibility/prepared_eds_divisibility_20261120_v82.tex) uses ordinary rational abc for eventual odd primitive denominator primes; a direct exponent-one proof is included, with Cornelissen–Zahidi Proposition 3.10(iii) and Silverman Lemma 13 as primary antecedents. It uses the recorded generator for LMFDB 256.b1 and exactly Burungale's published class-seven pole theorem. It does not assume a separate inert-prime conjecture and does not identify an external input with the elliptic quotient.
+
+The [ten-coordinate criterion](../papers/pole_parameters/genus_one_sound_criterion_20261120_v82.tex) has an additional **unproved actual-input rational-point hypothesis**. Everywhere-local solubility of its prepared fibers is proved. The prepared global counterexample uses unconditional algebraic rank bounds from PARI, not BSD, and is not asserted to occur at the actual source tuple. Neither research result changes the 25/11 definition records.
 
 ## Number-field descent added in v81
 

@@ -1,0 +1,450 @@
+\documentclass[11pt]{article}
+\usepackage[margin=27mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,booktabs,microtype,hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\F}{\mathbb F}
+\newcommand{\Nm}{\operatorname{Nm}}
+\newcommand{\rad}{\operatorname{rad}}
+\newcommand{\hhat}{\widehat h}
+\title{A prepared elliptic divisibility detector\\and its five-coordinate encoding}
+\author{\(\Z\Q\) Diophantine Project}
+\date{20 November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+A rational function of two points on \(y^2=x^3-2x\) has square reduced
+denominator when the second point is an integral multiple of the first.
+An odd primitive denominator divisor gives the converse for sufficiently
+large reference indices, conditional on ordinary rational \(abc\).
+The function admits a fixed class-seven preparation for every integral
+quotient after the reference point is chosen. Together with the published
+intrinsic-pole theorem and a finite-algebra encoder, this gives a
+five-coordinate subrelation of elliptic index divisibility in which every
+nonzero integral quotient occurs. It need not accept every preassigned
+divisible pair. It does not identify an external rational input with that
+quotient and therefore does not lower a defining-variable bound for
+\(\Z\subset\Q\).
+\end{abstract}
+
+\paragraph{Provenance.}
+The surrounding project incorporates the constructions and notes of Gabe
+Conant with Astra~6.2. The detector and normalization below are subsequent
+project work. The arithmetic realization used for the terminal pole is
+precisely the published class-seven form of Burungale's Theorem~B; no
+stronger square-class premise is added.
+
+\section{An elementary detector}
+
+Let \(E_a:y^2=x^3+ax\), where \(a\in\Z\setminus\{0\}\), and let \(H,U\)
+be non-torsion rational points. Define
+\begin{equation}\label{eq:b}
+ q=x(U),\qquad g=1+q^2,\qquad
+ N=y(H)+q^2g,\qquad b(H,U)=\frac{N}{g^2}.
+\end{equation}
+The denominator \(g\) has no rational zero. Formal parameters are
+\(\xi=-x/y\), and valuations satisfy \(v_p(p)=1\).
+
+\begin{lemma}\label{lem:multiple}
+Suppose \(U=[m]H\) for a nonzero integer \(m\). At every odd good prime
+\(p\nmid a-1\), the valuation \(v_p(b(H,U))\) is not negative odd.
+At any prime, including a bad prime, if \(H\) is formal of depth
+\(e_H=v_p(\xi(H))\ge1\), then \(U\) is formal of depth \(e_U\ge e_H\), and
+\begin{equation}\label{eq:near-one}
+                         v_p(b(H,U)-1)=4e_U.
+\end{equation}
+\end{lemma}
+\begin{proof}
+For a formal point \(Q\) on this integral short Weierstrass model,
+\[
+ v_p(x(Q))=-2e_Q,\qquad v_p(y(Q))=-3e_Q.
+\]
+The formal multiplication series is integral, so \(e_U\ge e_H\).
+If \(U\) is formal, \(q^2g\) has valuation \(-8e_U\). This is smaller
+than \(v_p(y(H))\), whether \(H\) is formal or nonformal. Thus \(b\)
+is a unit. When \(H\) is formal, the exact identity
+\[
+                   b-1=\frac{y(H)-1-q^2}{g^2}
+\]
+has numerator valuation \(-4e_U\), proving \eqref{eq:near-one}.
+
+Suppose instead that \(U\) is nonformal. Then \(H\) is nonformal, and
+both points have integral affine coordinates. A unit \(g\) makes \(b\)
+integral. If \(v_p(g)>0\), then \(q^2\equiv-1\pmod p\). The reduction
+of \(U\) is outside \(E[2]\): a two-torsion abscissa has \(q=0\) or
+\(q^2=-a\), giving respectively \(g=1\) or \(g=1-a\).
+Since multiplication preserves \(E[2]\), the reduction of \(H\) is
+also outside \(E[2]\). Consequently \(y(H)\), and then \(N\), is a
+unit. Therefore \(v_p(b)=-2v_p(g)\) is even.
+\end{proof}
+
+\begin{lemma}\label{lem:reject}
+At a good prime, suppose that \(H\) is formal of positive odd depth
+\(e_H\), whereas \(U\) is nonformal. Then
+\[
+                v_p(b(H,U))=-3e_H-2v_p(1+x(U)^2)<0
+\]
+is odd.
+\end{lemma}
+\begin{proof}
+The summand \(q^2g\) is integral and \(y(H)\) has valuation
+\(-3e_H<0\), so the latter dominates \(N\). The denominator subtracts
+an even nonnegative valuation.
+\end{proof}
+
+The asymmetry in \eqref{eq:b} is deliberate. For true multiples, the
+normalization approaches one uniformly in \(m\) at a prepared finite
+place. Thus a fixed scaling works even when \(v_2(m)\) is arbitrarily large.
+
+\section{Ordinary \(abc\) and odd primitive divisors}
+
+We use the classical curve and point
+\begin{equation}\label{eq:curve}
+ E:y^2=x^3-2x,\qquad P_0=(2,2),\qquad
+ P=[2]P_0=(9/4,-21/8).
+\end{equation}
+The Mordell--Weil group is
+\(E(\Q)=\Z P_0\oplus\langle(0,0)\rangle\), as recorded for
+LMFDB~256.b1, Cremona~256b1 \cite{LMFDB}. Exact rank bounds and the
+torsion order can also be checked with PARI/GP; the companion audit
+distinguishes those checks from the recorded generator assertion.
+
+The elementary two-descent map \(x\bmod\Q^{\times2}\) takes the values
+\(2\) and \(-2\) on \(P_0\) and \((0,0)\). Its image therefore has order
+four, and its kernel is
+\begin{equation}\label{eq:chart}
+ 2E(\Q)=\Z P,\qquad
+ x=r^2,\quad y=r\eta,\quad \eta^2=r^4-2
+\end{equation}
+on the nonzero affine chart. The torsion point is excluded. The point
+ordinate is nonzero on every rational solution of this chart.
+
+We normalize the canonical height by
+\(h(x(Q))=2\hhat(Q)+O(1)\).
+The eventual odd-primitive-divisor assertion below is the denominator
+case of Cornelissen--Zahidi, Proposition~3.10(iii) \cite{CZ}, which cites
+Silverman, Lemma~13 \cite{Silverman}. Those results require ordinary
+rational \(abc\), not an additional inert-prime conjecture. For this
+specific curve one can make the \(abc\) step transparent as follows.
+
+\begin{proposition}\label{prop:odd}
+Assume ordinary rational \(abc\). Write
+\[
+ x([h]P)=(A_h/B_h)^2,\qquad
+ \gcd(A_h,B_h)=1,\quad B_h>0.
+\]
+For every sufficiently large positive \(h\), the product \(Q_h\) of
+primitive prime divisors of \(B_h\) occurring with exponent exactly one
+satisfies
+\begin{equation}\label{eq:primitive-mass}
+                       \log Q_h\ge \frac15 h^2\hhat(P).
+\end{equation}
+In particular, one may require an odd primitive divisor outside any
+prescribed finite set of primes.
+\end{proposition}
+\begin{proof}
+The chart \eqref{eq:chart} supplies an integer \(C_h\) with
+\[
+ C_h^2+2B_h^4=A_h^4.
+\]
+If \(B_h\) were odd, reduction modulo \(16\) would make \(C_h^2\)
+equal to \(14\) or \(15\), which is impossible. Thus \(B_h\) is even,
+and \(A_h,C_h\) are odd. The three terms in this equation are coprime.
+Also \(|C_h|\le A_h^2\) and \(|A_h|>B_h\).
+Apply rational \(abc\) with \(\epsilon=1/100\):
+\[
+ |A_h|^4\ll \rad(2A_hB_hC_h)^{101/100}
+          \le (2|A_h|^3\rad(B_h))^{101/100}.
+\]
+Writing \(L_h=\log|A_h|\), this gives
+\begin{equation}\label{eq:radical}
+                    \log\rad(B_h)\ge \frac{97}{101}L_h-O(1).
+\end{equation}
+Let \(V_h\) be the part of \(B_h\) supported on primes whose exponent
+in \(B_h\) is at least two. Since
+\(\rad(B_h)\le B_h/\sqrt{V_h}\), we obtain
+\begin{equation}\label{eq:powerful}
+                     \log V_h\le\frac8{101}L_h+O(1).
+\end{equation}
+
+Let \(D_h\) be the full nonprimitive part of \(B_h\). At a good odd
+prime whose rank of apparition is \(r\mid h\), the formal-group identity
+is
+\[
+        v_p(B_h)=v_p(B_r)+v_p(h/r).
+\]
+For a nonprimitive prime choose a prime divisor \(q\mid h/r\).
+The term \(B_{h/q}\) has the same valuation, except that choosing
+\(q=p\) can lose one. Consequently, up to the contribution of the
+fixed bad primes,
+\[
+                    D_h\mid h\prod_{q\mid h,\ q\ {\rm prime}}B_{h/q}.
+\]
+The fixed-prime contribution is \(O(\log h)\) by the formal group
+after entering its fixed open subgroup. Canonical-height bounds give
+\[
+ \log D_h\le h^2\hhat(P)\sum_{q\mid h}q^{-2}+O((\log h)^2)
+          <\frac23 h^2\hhat(P)+O((\log h)^2).
+\]
+Here the sum is bounded by \(\zeta(2)-1<2/3\); no estimate uniform
+in the curve is needed.
+
+The classical Siegel approximation estimate for multiples of a fixed
+non-torsion point gives
+\[
+        \log B_h\sim L_h\sim h^2\hhat(P).
+\]
+This is the same denominator-height input used in the proof of
+\cite[Proposition~3.10]{CZ}. Removing the nonprimitive part and the
+part \eqref{eq:powerful} leaves
+\[
+ \log Q_h\ge
+ \left(1-\frac23-\frac8{101}-o(1)\right)h^2\hhat(P).
+\]
+The constant \(1-2/3-8/101=77/303\) exceeds \(1/5\), proving
+\eqref{eq:primitive-mass}. A fixed finite set contributes at most
+the sum of the logarithms of its primes to \(Q_h\), so it can be avoided.
+\end{proof}
+
+\begin{corollary}\label{cor:division}
+Fix a finite set \(S\) containing the bad primes. There is an
+ineffective \(h_0\) such that, for nonzero \(h,j\in\Z\) with
+\(|h|>h_0\),
+\[
+ H=[h]P,\quad U=[j]P,\quad
+ b(H,U)\text{ has no negative odd valuation outside }S
+ \quad\Longrightarrow\quad h\mid j.
+\]
+\end{corollary}
+\begin{proof}
+Choose a primitive exponent-one prime \(p\notin S\) of \(B_{|h|}\).
+At a good prime its rank of apparition is the reduction order
+\(|h|\) of \(P\). Thus \(H\) is formal of odd depth, and if
+\(h\nmid j\), then \(U\) is nonformal. Lemma~\ref{lem:reject}
+contradicts the assumed denominator condition. Signs do not affect
+the denominator or reduction order.
+\end{proof}
+
+\section{A fixed class-seven preparation}
+
+Put
+\begin{equation}\label{eq:d}
+               d(H,U)=\frac{112}{841}b(H,U)
+                     =7(4/29)^2b(H,U),\qquad
+               S=\{2,3,7,29\}.
+\end{equation}
+For \(a=-2\), the extra excluded prime in Lemma~\ref{lem:multiple}
+is \(3\). The scaling does not change valuations outside \(S\).
+
+\begin{proposition}\label{prop:prepare}
+For every nonzero \(m\in\Z\), there are arbitrarily large positive
+\(h\) such that \(H=[h]P\), \(U=[m]H\), and
+\begin{equation}\label{eq:prepared}
+ 0<d<1,\qquad d\in7\Q_2^{\times2},\qquad v_2(d)=4,\qquad
+ d\text{ has square reduced denominator}.
+\end{equation}
+The reference can avoid any fixed finite set and all nonidentical
+point guards used below.
+\end{proposition}
+\begin{proof}
+Require \(H\) to be formal at all primes in \(S\). This is one
+divisibility condition on \(h\), because the relevant local
+quotients are finite. Equation~\eqref{eq:near-one} yields
+\(b\in1+p^4\Z_p\) at these primes, uniformly for the integral
+multiplier \(m\). In particular \(b\) is a two-adic square.
+The valuations of \(d\) at \(2,3,7,29\) are respectively
+\(4,0,1,-2\). At every other prime, Lemma~\ref{lem:multiple}
+shows that its negative valuations are even.
+
+Fix a compact real arc \(I\) around \(-P\) in the identity
+component, small enough that \(0<y(H)<3\) on \(I\). The formula
+\[
+ b(H,U)=\frac{y(H)}{(1+x(U)^2)^2}
+             +\frac{x(U)^2}{1+x(U)^2}
+\]
+gives \(0<b<4\) there, independently of \(m\). Thus
+\(0<d<448/841<1\).
+Positive multiples in the fixed divisibility progression are dense
+in the real identity component: this is the elementary density of
+a non-torsion element in the circle, and remains true after taking
+any nonzero fixed multiple. Such \(h\) therefore enter \(I\)
+arbitrarily late.
+
+On the curve \(U=[m]H\), the signed numerators
+\[
+             x([m]H)^2(1+x([m]H)^2)\pm y(H)
+\]
+are nonzero rational functions. At \(H=O\), their two summands
+have pole orders eight and three. Each therefore has only finitely
+many zeros. The point-map denominators and every other already
+verified nonzero rational guard can likewise be avoided without
+losing the choice.
+\end{proof}
+
+This is completeness for every quotient after choosing its reference.
+It is not a characterization of all preassigned divisible pairs:
+the fixed scaling need not prepare every pair \((H,[m]H)\).
+
+\section{The finite algebra and five coordinates}
+
+The intrinsic pole theorem \cite{Intrinsic,Burungale} uses
+\begin{equation}\label{eq:intrinsic}
+ Y^2=P_d(v,s)
+   :=d(d+v^2)^2s^4-d(d-v^2)^2(1-d)^2.
+\end{equation}
+Its rational solutions exclude negative odd valuations of \(d\)
+at every prime, including all zero-coordinate cases. For inputs
+\eqref{eq:prepared}, the published class-seven Theorem~B supplies
+rational solutions with Zariski-dense projection to \((v,s)\).
+The complete verification of its square-class and local hypotheses
+is the one in \cite{Intrinsic}; neither a beta-one extension nor
+a rational point on a prescribed fiber is inferred from density.
+
+Use the two charts
+\[
+ H=(r^2,r\eta),\quad U=(t^2,t\theta),\qquad
+ \eta^2=r^4-2,\quad \theta^2=t^4-2.
+\]
+Set
+\begin{equation}\label{eq:AG}
+ G=29(1+t^4),\qquad A=112(r\eta+t^4+t^8),\qquad d=A/G^2.
+\end{equation}
+The invertible change \(Z=G^5Y\) clears \eqref{eq:intrinsic} to
+\begin{equation}\label{eq:terminal}
+\begin{split}
+ Z^2={}&A G^4(A+G^2v^2)^2s^4\\
+       &-A(A-G^2v^2)^2(G^2-A)^2=:R.
+\end{split}
+\end{equation}
+The two point equations and this monic quadratic equation define
+a finite algebra of rank eight over \(\Q[r,t,v,s]\).
+The terminal radicand has total degree \(48\) and \(162\) monomials
+before reducing powers of \(\eta\). Its weighted degree is also
+\(48\) when \(\eta,\theta\) have weight two.
+
+For soundness exclude the finite index set \(0<|h|\le h_0\) by
+\[
+                         \prod_{k=1}^{h_0}(r^2-x([k]P))\ne0.
+\]
+This product, the point radicands, and the two signed values
+of \(A\) enter the scalar guard. The signed-\(A\) zeros are
+avoided in Proposition~\ref{prop:prepare}. For the resulting
+fixed point algebra, the two signed values of the terminal
+radicand are nonzero polynomials in \(v,s\): their leading
+\(s^4\) coefficient is nonzero because the signed \(d\) is
+nonzero. Intrinsic-pole density therefore avoids their product.
+This makes the full algebra etale without adding a free coordinate.
+
+For completeness of the compression argument, write
+\(\alpha_j=\eta+j\theta+j^2Z\), \(1\le j\le57\).
+Any pair of distinct geometric characters excludes at most two
+values of \(j\), since its difference is a nonzero polynomial
+of degree at most two. There are \(\binom82=28\) pairs.
+Hence one member separates all eight characters.
+Let \(\Delta_j\) be its power-basis determinant, \(M_j\) its
+multiplication matrix, and \(c_j\) the product of \(\Delta_j\)
+with the scalar guards. After clearing their fixed rational
+coefficient denominators, define
+\[
+                         E_j(T)=\det(c_j(TI-M_j)-I).
+\]
+If \(c_j=0\), then \(E_j=1\). If \(E_j(T)=0\), then
+\(c_j\ne0\) and \(T-1/c_j\) is a rational eigenvalue of a
+primitive element, giving a rational character of the algebra.
+Conversely a rational character gives the root
+\(T=\chi(\alpha_j)+1/c_j\). The product of the \(57\) factors
+therefore encodes the guarded source with one additional
+rational variable.
+
+\begin{theorem}\label{thm:subrelation}
+Assume ordinary rational \(abc\) and the published class-seven
+intrinsic-pole realization. The preceding finite specification
+uses five total rational coordinates \(r,t,v,s,T\).
+Every solution represents nonzero \(H=[h]P,U=[j]P\) with
+\(h\mid j\). Every nonzero integral quotient \(m\) occurs in a
+solution with \(U=[m]H\) for a suitable reference \(H\).
+The specification need not accept every fixed divisible pair.
+\end{theorem}
+\begin{proof}
+A rational character gives \eqref{eq:intrinsic}, so \(d\) has
+no negative odd valuation. Outside \(S\), the same holds for
+\(b\). The finite index guard and Corollary~\ref{cor:division}
+give \(h\mid j\).
+For a prescribed nonzero \(m\), choose the reference by
+Proposition~\ref{prop:prepare}, then use intrinsic-pole density
+and the separating menu as just described.
+\end{proof}
+
+\section{The unresolved input-projection step}
+
+Theorem~\ref{thm:subrelation} does not identify a free rational
+number \(X\) with \(j/h\). Its five-coordinate count is a count
+for a subrelation on elliptic point charts, not a count for a
+polynomial with input projection \(\Z\).
+
+The most direct additional comparison is
+\(\xi(U)/\xi(H)-X\). Once \(U=[m]H\), its formal logarithmic
+limit is \(m-X\), but a local divisibility conclusion leaves
+an upper height term \(\log(1+|m|)\).
+A contact height carrier involving \(U\) grows on the order
+of \(m^2h^2\), whereas the primes supporting the one-sided
+formal comparison come from the denominator of \(H\), of
+logarithmic size on the order of \(h^2\). This cannot supply
+uniform completeness for unbounded \(m\).
+A carrier involving only \(H\) and \(X\) avoids that support
+defect but leaves \(\log(1+|m|)\) uncontrolled.
+
+An independent point \(A=[n]P\) and a further divisibility
+condition \((h-1)\mid(j-n)\) yield only
+\[
+                              m\equiv n\pmod{h-1}.
+\]
+No sufficient bound on \(m-n\) has yet been established.
+Density, local approximation, and the two divisibilities alone
+do not turn this congruence into equality.
+Consequently no nine- or ten-variable definition of the
+ordinary integers is asserted here.
+
+\section{Exact checks and their limits}
+
+The companion \nolinkurl{check_eds_detector.py} is read-only by
+default. It verifies the universal \(G^{10}\) clearing,
+the identity for \(b-1\), the degree and coefficient expansion
+of \eqref{eq:terminal}, \(288\) exact true-multiple fixtures,
+primitive-odd rejection fixtures, and six fully prepared
+inputs at \(H=[68]P_0\).
+The optional \nolinkurl{--pari} mode checks exact rank bounds,
+torsion order, and conductor using PARI/GP.
+The finite computations do not prove \(abc\), the infinite
+odd-primitive theorem, the intrinsic-pole realization, or
+the unresolved input-projection step.
+
+\begin{thebibliography}{9}
+\bibitem{CZ}
+G. Cornelissen and K. Zahidi,
+\emph{Elliptic divisibility sequences and undecidable problems about
+rational points}, J. reine angew. Math. 613 (2007), 1--33.
+Version used: arXiv:math/0412473v3, Proposition~3.10 and its proof.
+\url{https://arxiv.org/pdf/math/0412473}.
+\bibitem{Silverman}
+J. H. Silverman, \emph{Wieferich's criterion and the abc-conjecture},
+J. Number Theory 30 (1988), 226--237, Lemma~13.
+\url{https://doi.org/10.1016/0022-314X(88)90019-4}.
+\bibitem{LMFDB}
+The LMFDB Collaboration, \emph{Elliptic curve 256.b1}
+(Cremona 256b1), consulted 20 November 2026.
+\url{https://www.lmfdb.org/EllipticCurve/Q/256/b/1}.
+\bibitem{Burungale}
+A. Burungale, \emph{A Diophantine definition of \(\Z\) in \(\Q\)},
+arXiv:2611.16130v1, Theorem~B.
+\url{https://arxiv.org/abs/2611.16130}.
+\bibitem{Intrinsic}
+\(\Z\Q\) Diophantine Project, \emph{An intrinsic pole block with two
+parameters}, 17 November 2026, v56.
+\nolinkurl{papers/pole_parameters/intrinsic_pole_20261117_v56.tex}.
+\end{thebibliography}
+\end{document}

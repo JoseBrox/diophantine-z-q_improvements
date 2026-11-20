@@ -1,0 +1,326 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools,booktabs}
+\usepackage[margin=1in]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
+\usepackage{xurl}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\F}{\mathbb F}
+\newcommand{\vp}{v_p}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}\newtheorem{remark}[theorem]{Remark}
+\title{A one-parameter pole criterion and an obstruction\ to shifted abscissa menus}
+\author{Project research note}
+\date{20 November 2026, revision v82}
+\begin{document}
+\maketitle
+\begin{abstract}
+A genus-one equation with one free pole parameter gives the local
+inequality required by the existing eleven-variable construction. Every
+prepared scalar fibre is everywhere locally soluble. We give an exact
+nonsquare-\(u\) counterexample to rational solubility, even after allowing
+all three shifted elliptic abscissas and the standard sixteen scalar
+multipliers. The rational-rank bound is certified by algebraic descent.
+The counterexample is prepared parameter data, not a claimed value of the
+actual contact detector. No smaller definition of \(\Z\) is established.
+\end{abstract}
+
+This note develops the source notes of \textbf{Gabe Conant with Astra 6.2}.
+It separates a proved soundness criterion from its open actual-input
+completeness requirement. All references to the eleven-variable source
+mean the guarded construction in \cite{eleven}; its ordinary rational
+\(abc\) premise is retained.
+
+\section{A sound one-parameter criterion}
+Let \(u,V\in\Q\), with \(u(1+u)V\ne0\), and put
+\begin{equation}\label{eq:data}
+ w=\frac{u}{(1+u)^2},\qquad d=7w,\qquad
+ H=V^2+d,\qquad N=dH.
+\end{equation}
+The proposed replacement for the two intrinsic pole parameters is
+\begin{equation}\label{eq:cover}
+ C_{d,V}:\qquad Y^2=d(s^4-H^2).
+\end{equation}
+Only \(s\) would be a free rational coordinate; \(Y\) is a terminal
+quadratic root in the finite algebra. When a nonzero point is needed for
+finite avoidance, we impose \(sY\ne0\).
+
+\begin{lemma}\label{lem:sound}
+Let \(p\notin\{2,7\}\) and suppose \(\mu=\vp(u)>0\) is odd.
+A rational solution of \eqref{eq:cover} implies
+\begin{equation}\label{eq:needed}
+ 2\vp(V)<\mu.
+\end{equation}
+In particular \(\vp(4d/V^2)>0\) is odd.
+\end{lemma}
+\begin{proof}
+Here \(\vp(d)=\mu\). Equality \(2\vp(V)=\mu\) is impossible.
+If \(2\vp(V)>\mu\), then \(\vp(H)=\mu\). For \(s\ne0\), the two
+terms on the right of \eqref{eq:cover} have valuations
+\(\mu+4\vp(s)\) and \(3\mu\). These are distinct odd integers, since
+equality would require \(\vp(s)=\mu/2\). Their sum is not a square.
+For \(s=0\), the single nonzero term also has odd valuation. This includes
+\(Y=0\), since cancellation of the two terms was excluded.
+\end{proof}
+
+The displayed inequality is the scalar conclusion used by the current
+source to extract its six local tests. The derivative contact radical and
+the subsequent height comparison are unchanged. This gives the following
+precise reduction criterion, rather than an additional consequence of
+ordinary \(abc\).
+
+\begin{theorem}[Actual-input criterion]\label{thm:criterion}
+Retain ordinary rational \(abc\) and all premises and base guards of
+\cite{eleven}. Suppose that for every nonzero integer input there is a
+choice of its actual prepared source witnesses such that
+\eqref{eq:cover} has a rational point with \(sY\ne0\). Then replacing the
+intrinsic pole by \eqref{eq:cover}, and using the same finite-algebra
+compression, gives a defining polynomial with ten rational coordinates.
+The additional actual-input rational-point hypothesis is not proved here.
+\end{theorem}
+\begin{proof}
+Lemma~\ref{lem:sound} gives precisely the existing local extraction at each
+positive odd contact valuation; the existing height argument therefore
+proves soundness. The polynomial change
+\begin{equation}\label{eq:map}
+ x=d s^2,\qquad y=d sY
+\end{equation}
+maps \eqref{eq:cover} to \(E_N:y^2=x^3-N^2x\).
+The hypotheses \(sY\ne0\) give a point outside the rational two-torsion.
+A congruent-number curve has rational torsion \(\Z/2\Z\times\Z/2\Z\),
+so this point has infinite order. Its odd multiples retain the same
+abscissa square class, and hence give infinitely many rational \(s\)
+on the cover. One can therefore avoid the finitely many terminal zeros
+at all point-algebra characters. Each such polynomial in \(s\) is nonzero:
+its leading coefficient is the same nonzero scalar \(d\).
+The already guarded point algebra has rank \(64\); the terminal root
+makes rank \(128\), and one primitive-element coordinate suffices as in
+\cite{encoder}. The count is
+\[
+ \underbrace{1}_{\text{input}}+
+ \underbrace{6}_{\text{three point blocks}}+
+ \underbrace{1}_{\text{contact slope}}+
+ \underbrace{1}_{s}+
+ \underbrace{1}_{\text{encoder}}=10.
+\]
+Zero input can be added by the same finite exceptional-fibre convention
+as in the source. This proof uses the stated rational-point hypothesis;
+local solubility does not supply it.
+\end{proof}
+
+\section{Everywhere-local solubility}
+\begin{theorem}\label{thm:local}
+Suppose \(d>0\), \(V\ne0\), \(d\in7\Q_2^{\times2}\), and
+\(e=4d/V^2\) has square reduced denominator. Then \(C_{d,V}\) has a
+point over every completion of \(\Q\). At every completion the points
+can be chosen with \(sY\ne0\).
+\end{theorem}
+\begin{proof}
+Write \(H=V^2+d>0\). At an odd prime \(p\), let \(\mu=\vp(d)\).
+If \(\mu\) is odd, including a negative odd value, the denominator
+condition on \(e\) implies \(\mu-2\vp(V)>0\). Consequently
+\(H/V^2\in1+p\Z_p\) is a square. A point with \(s^2=H\) and \(Y=0\)
+is smooth; its local neighbourhood contains points with \(sY\ne0\).
+
+Now let \(\mu=2m\). If \(d\) is a local square, a sufficiently negative value
+of \(\vp(s)\) makes \(d s^4(1-H^2/s^4)\) a square.
+If \(-d\) is a local square, \(s=0\) supplies a smooth point, which can
+again be perturbed. Suppose neither is a square. If \(\vp(V)<m\),
+then \(H\) is a square as before. Otherwise \(\vp(H)=2m\): higher
+valuation would force the residue of \(-d p^{-2m}\) to be a square.
+Write \(d=p^{2m}D\), \(H=p^{2m}H_0\), and set
+\(s=p^m s_0\), \(Y=p^{3m}Y_0\). This gives
+\[
+ Y_0^2=D(s_0^4-H_0^2),\qquad D,H_0\in\Z_p^\times.
+\]
+Its smooth projective reduction is a genus-one curve: the four roots
+of the quartic are distinct over \(\overline\F_p\). The genus-one Weil
+bound gives an \(\F_p\)-point. Its points at infinity are not rational
+over \(\F_p\), since \(D\) is a nonsquare, so an affine smooth point
+lifts. A local disk avoids the finitely many zeros of \(sY\).
+
+At \(2\), \(-d\in\Q_2^{\times2}\), so \(s=0\) supplies a smooth
+point and the same perturbation applies. Over \(\mathbb R\), choose
+\(s>\sqrt H\). No assumption on the denominator of \(d\) itself was
+used.
+\end{proof}
+
+\section{The shifted-abscissa menu}
+In addition to \eqref{eq:cover}, setting \(x+N=d s^2\) or
+\(x-N=d s^2\) gives the two covers
+\begin{align}
+ Y^2&=d(s^2-H)(s^2-2H),\label{eq:plus}\\
+ Y^2&=d(s^2+H)(s^2+2H).\label{eq:minus}
+\end{align}
+The maps have \(y=d sY\) and respectively
+\(x=d s^2-N\), \(x=d s^2+N\).
+These covers, or finite menus of fixed square-class multipliers, cost
+no additional free coordinate.
+
+\begin{lemma}\label{lem:shifts}
+At an odd prime, if \(\vp(N)\) is even, every nonzero one of
+\(x,x-N,x+N\) at a rational point of \(E_N\) has even valuation.
+Thus requiring any of these coordinates to lie in
+\(\kappa d\Q^{\times2}\), with \(\vp(\kappa)\) even, retains the
+obstruction of Lemma~\ref{lem:sound} when \(\vp(d)\) is odd and \(2\vp(V)>\vp(d)\).
+\end{lemma}
+\begin{proof}
+Write \(N=p^{2j}N_0\) with \(N_0\) a unit and scale
+\(x=p^{2j}X\), \(y=p^{3j}Y\). If \(\vp(X)<0\), the equation
+\(Y^2=X(X-N_0)(X+N_0)\) forces \(3\vp(X)\) even.
+If \(X\) is integral, at most one of the three factors has positive
+valuation; its valuation is even. The nonzero coordinates at a
+ two-torsion point are \(\pm N_0,\pm2N_0\), which are units.
+At a bad candidate valuation, \(\vp(H)=\vp(d)\), so
+\(\vp(N)=2\vp(d)\), whereas \(\kappa d\) has odd valuation.
+\end{proof}
+
+\section{An exact obstruction with nonsquare input}
+\begin{theorem}\label{thm:counter}
+There is prepared rational data \eqref{eq:data} with nonsquare \(u\),
+\(0<V<2\), \(0<e=4d/V^2<1\), square reduced denominators for both
+\(d,e\), and
+\[
+ d,e\in7\Q_2^{\times2},\qquad
+ v_2(u)=-8,\quad v_2(d)=8,\quad v_2(V)=1,\quad v_2(e)=8.
+\]
+Nevertheless no rational point on \(E_{dH}\) has any nonzero coordinate
+\(x,x-dH,x+dH\) in \(\kappa d\Q^{\times2}\) for any nonzero rational
+\(\kappa\) supported on \(\{2,3,5,7\}\). The exclusion remains true
+after multiplying \(\kappa\) by any integral power of \(dH\).
+\end{theorem}
+\begin{proof}
+Set
+\[
+ \beta=119=7\cdot17,\qquad \eta=52985=5\cdot10597,
+ \qquad N_0=\beta\eta=6305215.
+\]
+Both \(17\) and \(10597\) are prime. The exact algebraic descent
+computation in the accompanying checker gives
+\begin{equation}\label{eq:rank}
+ \operatorname{rank}E_{N_0}(\Q)=1,
+ \qquad E_{N_0}(\Q)_{\mathrm{tors}}\cong(\Z/2\Z)^2.
+\end{equation}
+In PARI/GP notation the complete rank output is
+\begin{verbatim}
+[1,1,2,[[-6002500,4729026750]]].
+\end{verbatim}
+The first two entries are unconditional lower and upper rank bounds
+from two-descent and the Cassels pairing \cite{pari}. This is not an
+analytic-rank approximation. The displayed point \(R\) satisfies
+\begin{equation}\label{eq:point}
+ x(R)=-2450^2,\quad x(R)-N_0=-35\cdot593^2,\quad
+ x(R)+N_0=35\cdot93^2.
+\end{equation}
+
+Use the Kummer map \(\delta(P)=(x(P),x(P)-N_0)\) modulo squares,
+whose kernel is \(2E_{N_0}(\Q)\); see \cite[Section~3.2]{burungale}.
+The two torsion generators have classes \((-1,-N_0)\) and \((N_0,2)\).
+The class of \(R\) is \((-1,-35)\), and its normalized class is
+\((1,180149)\), distinct from the normalized torsion class. It follows
+from \eqref{eq:rank} that these three classes generate the entire
+Kummer image. All nonzero coordinates \(x,x-N_0,x+N_0\), including
+the exceptional coordinates at two-torsion, therefore belong to
+\begin{equation}\label{eq:G}
+ \mathcal G=\langle-1,2,35,N_0\rangle
+       \subset\Q^\times/\Q^{\times2}.
+\end{equation}
+Every class in \(\mathcal G\) has equal valuation parity at \(17\) and
+\(10597\). The class of \(\kappa\beta\) has unequal parity there for
+every \(\kappa\) in the theorem. Multiplication by \(N_0\) changes
+both parities and cannot fix this discrepancy.
+
+For explicit prepared data, use
+\begin{gather*}
+ 213^2+119\cdot8^2=52985,\qquad
+ t=\frac{19}{16},\quad u=17t^2=\frac{6137}{256},\quad
+ r=\frac{t}{1+u}=\frac{304}{6393},\\
+ d=119r^2=\frac{10997504}{40870449},\qquad
+ V=\frac{213}{8}r=\frac{2698}{2131},\qquad
+ H=52985\left(\frac r8\right)^2.
+\end{gather*}
+Then \(d=7u/(1+u)^2\), \(H=V^2+d\), and
+\[
+ dH=N_0\left(\frac{r^2}{8}\right)^2,
+ \qquad e=\frac{4d}{V^2}=\frac{30464}{45369}
+                    =119\left(\frac{16}{213}\right)^2.
+\]
+All bounds, denominator assertions and valuations in the statement follow
+by exact rational arithmetic. The scaling from \(E_{dH}\) to \(E_{N_0}\)
+multiplies every shifted abscissa by a rational square. Its target class
+is \(d\Q^{\times2}=119\Q^{\times2}\), excluded by \eqref{eq:G}.
+\end{proof}
+
+The selected-prime residue pattern is already present in this example:
+\(17\equiv1\pmod8\), \((7/17)=-1\), and \(v_{17}(u)=1\).
+Also \(\eta\equiv1\pmod8\), and \(\eta\) is a square in both
+\(\Q_7\) and \(\Q_{17}\). Thus even the idealized single-leaf star
+pattern does not imply rational realization. The exclusion contains the
+usual sixteen multipliers
+\(\{\pm1,\pm2,\pm3,\pm5,\pm6,\pm7,\pm10,\pm14\}\).
+
+\begin{remark}[Depth and real size]
+The failure is not confined to the displayed two-adic depth or real size.
+The conic \(a^2+119b^2=52985\) is rational and has the point \((213,8)\).
+Weak approximation on this conic lets \(q=a/b\) be simultaneously positive
+and arbitrarily large over \(\mathbb R\), and have \(v_2(q)=-k\) for
+any prescribed \(k\ge2\). Indeed its two-adic branch near
+\((\sqrt{52985},0)\) has precisely these points. Then
+\(e=4\cdot119/q^2\) is arbitrarily small and has
+\(v_2(e)=2+2k\). Its reduced denominator remains square: at a prime
+of \(119\), the conic equation and coprimality with \(52985\) force
+\(a\) integral and a unit, \(b\) integral, hence \(v_p(q)\le0\).
+At other odd primes the valuations of \(e\) are even.
+
+Now choose a rational \(t\) large and positive over \(\mathbb R\), with
+\(v_2(t)=-(k+1)\), and a unit at \(17\). With
+\(u=17t^2\), \(r=t/(1+u)\), \(d=119r^2\), and \(V=qr\), the same
+curve square class \(N_0\) and the same global obstruction persist.
+One obtains \(0<V<2\), \(v_2(V)=1\), and \(v_{17}(u)=1\).
+Choosing \(v_7(t)\ge1\) as well makes the reduced denominator
+of \(d\) square. This variation does not assert actual contact realization.
+\end{remark}
+
+\section{Verification and the remaining question}
+The package \texttt{check\_genus\_one.py} reconstructs the three curve maps,
+checks the prepared tuple and norm identity, computes both algebraic rank
+bounds, enumerates all eight Kummer classes, and verifies the excluded
+square classes. It independently applies \texttt{ellrank} to the
+\(2\)-isogenous curve \(y^2=x^3+4N_0^2x\), obtaining the same rank
+interval \([1,1]\); this is a second specialization of the same library
+algorithm. The default check is read-only against \texttt{certificate.json}.
+The recorded runtime is PARI/GP~2.17.4 through PassageMath~10.8.14.
+
+The local theorem is proved above, not inferred from checking finitely
+many places. The counterexample is not claimed to equal the derivative
+contact value and trace supplied by \cite{eleven}. The new ten-coordinate
+criterion therefore remains open on those actual inputs. Additional
+local preparation, or the standard shifted-abscissa menu alone, does not
+supply its missing global rational-point theorem.
+
+\begin{thebibliography}{9}
+\bibitem{eleven}
+Gabe Conant with Astra 6.2, source notes and project audit,
+\emph{Twelve contact shifts at the first mixed-power scale}, v78,
+\nolinkurl{papers/conditional_few_variables/twelve_contact_first_scale_20261119_v78.tex}.
+
+\bibitem{encoder}
+Project v81 finite-algebra audit,
+\emph{Amplified rationality descent},
+\nolinkurl{papers/number_fields/amplified_rationality_descent_20261119_v81.tex}.
+The field-rationality theorem itself is not being used to define
+\(\Z\subset\Q\); only its algebraic compression is used.
+
+\bibitem{burungale}
+A.~Burungale, \emph{A Diophantine definition of \(\Z\) in \(\Q\)},
+arXiv:2611.16130v1, Section~3.2,
+\url{https://arxiv.org/html/2611.16130v1}.
+
+\bibitem{pari}
+The PARI Group, \emph{PARI/GP function catalogue: Elliptic curves},
+\texttt{ellrank}, documentation of unconditional rank bounds,
+\url{https://pari.math.u-bordeaux.fr/dochtml/html/Elliptic_curves.html#ellrank}.
+\end{thebibliography}
+\end{document}

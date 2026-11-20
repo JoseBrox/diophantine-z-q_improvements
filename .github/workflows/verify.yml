@@ -12,7 +12,9 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - run: python -m pip install sympy==1.14.0
+      - run: python -m pip install sympy==1.14.0 passagemath-pari==10.8.14
+      - name: Verify the 163 and 179 quartics, elliptic divisibility and actual-realization criterion
+        run: python -B scripts/verify_v82.py --report /tmp/v82-verification.json
       - name: Verify the 56-variable quartic and amplified number-field descent
         run: python -B scripts/verify_v81.py --report /tmp/v81-verification.json
       - name: Verify the 58-variable quartic and the published-theorem pole transfer

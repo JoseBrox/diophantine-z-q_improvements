@@ -125,3 +125,12 @@ The six integration papers, current proof guide, package documentation and
 main README use this named attribution. The earlier 198-variable archive
 is separately attributed above and is not relabeled as part of these new
 notes.
+
+
+## Elliptic divisibility and algebraic descent (v82)
+
+The prepared divisibility detector cites **G. Cornelissen and K. Zahidi, Elliptic divisibility sequences and undecidable problems about rational points**, Journal für die reine und angewandte Mathematik 613 (2007), 1–33, [arXiv:math/0412473v3](https://arxiv.org/pdf/math/0412473), Proposition 3.10(iii), and **J. H. Silverman, Wieferich's criterion and the abc-conjecture**, Journal of Number Theory 30 (1988), 226–237, [doi:10.1016/0022-314X(88)90019-4](https://doi.org/10.1016/0022-314X(88)90019-4), Lemma 13. The v82 manuscript also supplies its own direct ordinary-abc argument for the specified curve. These papers are cited, not redistributed.
+
+The curve and recorded Mordell–Weil generators are sourced to **The LMFDB Collaboration**, [elliptic curve 256.b1](https://www.lmfdb.org/EllipticCurve/Q/256/b/1), consulted 20 November 2026. The exact rank, torsion and conductor checks are distinguished from that generator assertion.
+
+The new genus-one obstruction uses **PARI/GP 2.17.4**, through **PassageMath PARI 10.8.14**, for unconditional algebraic lower and upper rank bounds; see the [ellrank documentation](https://pari.math.u-bordeaux.fr/dochtml/html/Elliptic_curves.html#ellrank). The code, exact Kummer calculation and certificates are project work. No analytic-rank or BSD inference is made, and a second descent on an isogenous curve is not represented as an independently implemented algorithm.

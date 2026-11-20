@@ -1,17 +1,21 @@
-> **Current and retained checks.** Current counts, exact specifications and arithmetic qualifications are in the [README](../README.md), [v81 result records](../data/results_20261119_v81.json), and [v81 proof guide](results_20261119_v81.md). The full ordered sequence is in the [CI workflow](../.github/workflows/verify.yml). Historical source equations and their checks below remain available for reproduction.
+> **Current and retained checks.** Current counts, exact specifications and arithmetic qualifications are in the [README](../README.md), [v82 result records](../data/results_20261120_v82.json), and [v82 proof guide](results_20261120_v82.md). The full ordered sequence is in the [CI workflow](../.github/workflows/verify.yml). Historical source equations and their checks below remain available for reproduction.
 
 # Reproducing the mathematical data
 
 ## Current verification
 
-Use **Python 3.12** and **SymPy 1.14.0** for the complete current sequence. Run the new exact gate and its source audit with:
+Use **Python 3.12**, **SymPy 1.14.0**, and **PassageMath PARI 10.8.14** for the complete current sequence. Run the new exact gate and its source audit with:
 
 ```sh
+python -m pip install sympy==1.14.0 passagemath-pari==10.8.14
+python -B scripts/verify_v82.py --report /tmp/v82-verification.json
 python -B scripts/verify_v81.py --report /tmp/v81-verification.json
 python -B scripts/verify_v80.py --report /tmp/v80-verification.json
 python -B scripts/verify_v79.py --report /tmp/v79-verification.json
 python -B scripts/verify_v78.py --report /tmp/v78-verification.json
 ```
+
+The v82 gate independently reconstructs and expands the 163/179 quartics, checks all rational inverse maps including the family fiber at `R=0`, and reproduces the coefficient files in a temporary directory. It also runs the exact elliptic divisibility fixtures and PARI algebraic descents for the prepared genus-one counterexample. Those research results do not assert a new 25/11 bound. All published inputs are read-only during verification.
 
 The v81 gate independently expands every coefficient of the 56-variable
 quartic, reconstructs its nonlinear contact and two-adic identities,
