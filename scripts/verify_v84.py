@@ -123,7 +123,8 @@ def main():
     readme=(ROOT/"README.md").read_text()
     current_table=readme.split("## Current constructions",1)[1].split("## Coefficients",1)[0]
     assert "Expanded TXT size (kB)" in current_table
-    assert "60.905" in current_table and "66.903" in current_table and "11.562" in current_table
+    for name in ("quartic163-N1.txt","quartic179.txt","quartic56-B3.txt"):
+        assert f'{receipt["artifacts"][name]["bytes"]/1000:.3f}' in current_table,name
     assert "BB(t)" in readme
     print("BB profile, literal-byte formula, three coarse fixture bounds and README: PASS")
     result={"schema":"diophantine-expanded-txt-verification/v84","status":"PASS",
