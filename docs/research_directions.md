@@ -4,6 +4,8 @@ The [v82 continuation](results_20261120_v82.md) proves general quartics in **163
 
 The current unrestricted-degree counts remain **25** and **11**, and the ordinary-abc quartic remains **56**. No reduction of those counts is proved in v82. Every count includes the input. The priorities remain variable count, degree, then coefficient height; no global minimum or complete independent audit of all inherited arithmetic foundations is asserted.
 
+The [v83 exact-square checkpoint](../computation/actual_square_v83/README.md) constructs a new balanced normalization with `1+d` a rational square at the raw contact scalar. Its actual pole input is `e=4d/V²`, so the required condition is still `V²+4d` being a rational square. Exact prepared counterexamples exclude the corresponding universal genus-one and zero-parameter replacements; none is asserted to occur at the actual elliptic trace. No defining-variable count changes.
+
 ## Immediate constructive targets
 
 1. **Identify an external input with the new elliptic quotient.** The [prepared divisibility theorem](../papers/elliptic_divisibility/prepared_eds_divisibility_20261120_v82.tex) forces `h | j` with two rational elliptic point charts and one pole block. Every nonzero integral quotient `j/h` occurs after choosing a suitable reference. Its five-coordinate specification does not yet enforce `X=j/h`. A height argument must handle an arbitrarily large quotient; a carrier depending only on the reference leaves this uncontrolled, while including the second point can demand more contact-prime support than the reference provides.

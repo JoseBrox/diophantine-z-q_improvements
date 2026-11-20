@@ -8,12 +8,15 @@ Use **Python 3.12**, **SymPy 1.14.0**, and **PassageMath PARI 10.8.14** for the 
 
 ```sh
 python -m pip install sympy==1.14.0 passagemath-pari==10.8.14
+python -B scripts/verify_v83.py --report /tmp/v83-verification.json
 python -B scripts/verify_v82.py --report /tmp/v82-verification.json
 python -B scripts/verify_v81.py --report /tmp/v81-verification.json
 python -B scripts/verify_v80.py --report /tmp/v80-verification.json
 python -B scripts/verify_v79.py --report /tmp/v79-verification.json
 python -B scripts/verify_v78.py --report /tmp/v78-verification.json
 ```
+
+The v83 research gate checks the new raw-scalar square identity and exact prepared counterexamples, while binding the unchanged current result record. The universal valuation and approximation arguments have separate written proofs. It does not infer actual elliptic-trace realization from these checks.
 
 The v82 gate independently reconstructs and expands the 163/179 quartics, checks all rational inverse maps including the family fiber at `R=0`, and reproduces the coefficient files in a temporary directory. It also runs the exact elliptic divisibility fixtures and PARI algebraic descents for the prepared genus-one counterexample. Those research results do not assert a new 25/11 bound. All published inputs are read-only during verification.
 
