@@ -12,7 +12,7 @@ The requested **Version 59** was not located in the exposed main branch, manuscr
 
 ## Contributions and retained sources
 
-Version 19 integrates José Brox's 195-variable quartic family and Gemini Carbon's explicit 250-variable construction. The 195-variable charts retain Gabriel Conant's inverse Vieta and affine-label contributions. The effective three-detector method builds on the project's earlier sum-height and additive constructions. The center $3/11$ also occurs in the upstream contact families; its existence is not claimed as a new discovery here.
+Version 19 integrates Jose Brox's 195-variable quartic family and Gemini Carbon's explicit 250-variable construction. The 195-variable charts retain Gabriel Conant's inverse Vieta and affine-label contributions. The effective three-detector method builds on the project's earlier sum-height and additive constructions. The center $3/11$ also occurs in the upstream contact families; its existence is not claimed as a new discovery here.
 
 The upstream 250-variable presentation starts from a 244-variable, 216-row quadratic family. Six coordinates and equations form a constant ladder that reduces the size of displayed coefficients. Since this repository gives variable count priority over coefficient size, the 244-variable family is the relevant intermediate comparison. It remains a source construction, not an additional current record competing with the complete 229-variable result.
 
