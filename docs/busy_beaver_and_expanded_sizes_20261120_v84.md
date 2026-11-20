@@ -25,7 +25,7 @@ x_{78}^2&22201 C^4.
 \]
 All remaining 2,786 coefficients are fixed integers. They are printed
 in the [published table](../computation/variable_reductions_v82/general/quartic163/polynomial.json)
-and in the [60,905-byte \(N=1\) fixture](../computation/expanded_text_v84/quartic163-N1.txt).
+and in the [60,907-byte \(N=1\) fixture](../computation/expanded_text_v84/quartic163-N1.txt).
 
 For \(M=\mathrm{BB}(t)\), the entire specialized polynomial is therefore
 specified by
@@ -63,34 +63,89 @@ certified defining coefficients. No claim to an explicit *numerical*
 163-variable defining polynomial follows just from the growth of
 Busy Beaver.
 
+
+## One exact Busy Beaver–oracle index (not an evaluated numeral)
+
+There is a rigorous way to specify **one** successful index using
+ordinary halting-time Busy Beaver queries, without assuming an
+effective numeric bound for the weighted height constant. This does
+**not** produce or certify a numerical value of the index.
+
+Fix a deterministic enumeration of all pairs
+\((N,(X,x_2,\ldots,x_{163}))\) with \(N\ge m\) and all coordinates
+rational, and fix an effective compiler to the chosen standard
+blank-tape, two-symbol Turing-machine model. The program \(T_m\)
+checks the **exact** integer quartic \(F_N\) on each enumerated
+tuple, and halts if and only if it finds \(F_N=0\) with
+\(X\notin\mathbb Z\). Computing each \(F_N\) is effective because
+its coefficient table has only the three explicit \(149^{2N}\)
+and \(149^{4N}\) profiles shown above.
+
+Let \(s(m)\) be the number of states in the compiled program \(T_m\).
+By the definition of halting-time Busy Beaver, **if \(T_m\) ever
+halts, then it halts within \(\mathrm{BB}(s(m))\) steps**. Thus the
+following algorithm is exact, relative to a Busy Beaver oracle:
+
+```text
+for m = 2, 3, 4, ...:
+    P = compile_the_fixed_counterexample_enumerator(m)
+    H = BB(number_of_states(P))
+    if P does not halt within H execution steps:
+        return m
+```
+
+Define \(t_\star\) to be its output. The v82 eventual-definability
+theorem implies that some \(N_0\) excludes all noninteger rational
+zeros for every \(N\ge N_0\), so the scan stops at or before
+\(\max(2,N_0)\). On stopping, no bad rational zero exists for any
+\(N\ge t_\star\). Also \(\mathrm{BB}(t_\star)\ge t_\star\), since
+\(t_\star\ge2\) and a two-symbol \(t_\star\)-state machine can make
+at least \(t_\star\) transitions before halting. Therefore
+
+\[
+\boxed{F^{\rm BB}_{t_\star}
+      =F_{\,\mathrm{BB}(t_\star)}
+      \text{ defines }\mathbb Z\text{ in }\mathbb Q}
+\]
+
+under the retained arithmetic premises. This is **an exact,
+BB-oracle-specified fixed index**, and not merely an assertion that
+some index exists. It uses a sequence of BB queries and a fixed
+compiler; it does not identify \(t_\star\) as an ordinary decimal
+integer, and cannot honestly be advertised as a numerically
+specified Busy Beaver coefficient. In particular, the current
+proof does not justify choosing \(t=10^6\), \(2^{1000}\), or any
+other preselected numeral. Replacing the uncomputable oracle with
+a finite simulation or an arbitrary lower bound is invalid.
+
 ## Fully expanded decimal text sizes
 
 Here a kilobyte is **1,000 bytes**, not 1,024 bytes. A compact
 expanded TXT is one ASCII line, with no spaces or final newline,
-using `X` for coordinate one, `x2`, ..., `xN` for the remaining
+using `x1` for coordinate one, `x2`, ..., `xN` for the remaining
 coordinates, `*` for products, `^` for exponents, and **decimal**
 integer coefficients. Like monomials are collected. These are
 measurements of the complete polynomial, not of the JSON table.
 
 | Polynomial | Parameters | Monomials | Exact decimal TXT size |
 |---|---|---:|---:|
-| [163-variable family fixture](../computation/expanded_text_v84/quartic163-N1.txt) | \(N=1\), **not certified defining** | 2789 | **60,905 bytes = 60.905 kB** |
-| [179-variable fixed polynomial](../computation/expanded_text_v84/quartic179.txt) | Fixed defining coefficients | 3036 | **66,903 bytes = 66.903 kB** |
-| [56-variable ordinary-abc fixture](../computation/expanded_text_v84/quartic56-B3.txt) | \(B=3\), **not certified defining** | 809 | **11,562 bytes = 11.562 kB** |
+| [163-variable family fixture](../computation/expanded_text_v84/quartic163-N1.txt) | \(N=1\), **not certified defining** | 2789 | **60,907 bytes = 60.907 kB** |
+| [179-variable fixed polynomial](../computation/expanded_text_v84/quartic179.txt) | Fixed defining coefficients | 3036 | **66,905 bytes = 66.905 kB** |
+| [56-variable ordinary-abc fixture](../computation/expanded_text_v84/quartic56-B3.txt) | \(B=3\), **not certified defining** | 809 | **11,564 bytes = 11.564 kB** |
 
-The symbolic 163-variable Busy Beaver file has exactly 60,929 ASCII
-bytes (60.929 kB) but does **not** count as a decimal-coefficient file.
+The symbolic 163-variable Busy Beaver file has exactly 60,931 ASCII
+bytes (60.931 kB) but does **not** count as a decimal-coefficient file.
 
 Define \(d(m)=\lfloor\log_{10}(m)\rfloor+1\) for positive integers \(m\).
 For **any \(N\ge1\)**, the exact number of bytes in the 163-variable
 fully decimal-expanded TXT under the convention above is
 \[
-\boxed{\ S_{163}(N)=60872+
+\boxed{\ S_{163}(N)=60874+
  d(6615898\cdot149^{2N})+
  d(298\cdot149^{2N})+
  d(22201\cdot149^{4N}).\ }
 \]
-The 60,872-byte term includes all other coefficients, signs, and
+The 60,874-byte term includes all other coefficients, signs, and
 monomials. In particular, substituting \(N=\mathrm{BB}(t)\) gives an
 **exact numerical-file-size formula in terms of Busy Beaver**:
 \[
@@ -99,7 +154,7 @@ S_{163}^{\rm BB}(t)
 \quad\text{bytes},
 \]
 or about \(0.01738549\,\mathrm{BB}(t)\) kB, plus the fixed
-60.872 kB notation cost. No astronomically long decimal file was
+60.874 kB notation cost. No astronomically long decimal file was
 claimed to have been generated.
 
 For the large finite-determinant constructions, no decimal expansion

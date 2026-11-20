@@ -26,7 +26,7 @@ def monomial_text(indices: list[int]) -> str:
     parts = []
     for index, block in groupby(indices):
         exponent = len(list(block))
-        variable = "X" if index == 1 else f"x{index}"
+        variable = f"x{index}"
         parts.append(variable + (f"^{exponent}" if exponent > 1 else ""))
     return "*".join(parts)
 
@@ -44,7 +44,8 @@ def render(source: Path, parameter: int | None, symbolic: bool) -> tuple[str, in
             coefficients[key] = int(coefficients.get(key, 0)) + base * parameter**power
 
     out = []
-    for key, raw in coefficients.items():
+    for key in sorted(coefficients):
+        raw = coefficients[key]
         if symbolic:
             coeff, power = raw
         else:

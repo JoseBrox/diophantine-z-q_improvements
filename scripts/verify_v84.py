@@ -10,6 +10,7 @@ import argparse
 import hashlib
 import json
 import re
+import importlib.util
 
 ROOT=Path(__file__).resolve().parents[1]
 PACKAGE=ROOT/"computation/expanded_text_v84"
@@ -36,14 +37,15 @@ def parse_numeric(text:str)->dict[tuple[int,...],int]:
             if component.isdecimal():
                 c*=int(component)
                 continue
-            match=re.fullmatch(r"(X|x[1-9][0-9]*)(?:\^([1-4]))?",component)
+            match=re.fullmatch(r"(x[1-9][0-9]*)(?:\^([1-4]))?",component)
             assert match,component
-            variable=1 if match[1]=="X" else int(match[1][1:])
+            variable=int(match[1][1:])
             indices.extend([variable]*int(match[2] or 1))
         assert c != 0
         key=tuple(sorted(indices))
         assert key not in result,f"duplicate monomial: {key}"
         result[key]=c
+    assert list(result)==sorted(result), "noncanonical monomial order"
     return result
 
 def expected_monomials(spec:dict,parameter:int)->dict[tuple[int,...],int]:
@@ -59,6 +61,10 @@ def main():
     receipt=json.loads((PACKAGE/"size_report.json").read_text())
     assert receipt["schema"]=="diophantine-compact-expanded-ascii/v84"
     assert receipt["kilobyte_bytes"]==1000
+    ref_path=ROOT/"computation/quartic/explicit229_compact_v68/upstream/measure_plain_text.py"
+    spec_ref=importlib.util.spec_from_file_location("elliot_plain_text_reference",ref_path)
+    reference=importlib.util.module_from_spec(spec_ref)
+    spec_ref.loader.exec_module(reference)
     for filename,(source,parameter,n,terms) in SPECS.items():
         data=json.loads((ROOT/source).read_text())
         assert data["variables"]==n
@@ -68,6 +74,7 @@ def main():
         assert git_blob_hash(raw)==record["git_blob_sha1"]
         table=parse_numeric(raw.decode("ascii"))
         assert table==expected_monomials(data,parameter),filename
+        assert reference.render(table)==raw.decode("ascii"), "Elliot explicit-record text mismatch"
         assert len(table)==terms==record["monomials"]
         print(f"{filename}: PASS, {len(raw)} exact bytes, {terms} monomials")
     p163=json.loads((ROOT/SPECS["quartic163-N1.txt"][0]).read_text())
@@ -77,7 +84,7 @@ def main():
     symbolic_path="quartic163-BB_t-symbolic.txt"
     symbolic_raw=(PACKAGE/symbolic_path).read_bytes()
     assert git_blob_hash(symbolic_raw)==receipt["artifacts"][symbolic_path]["git_blob_sha1"]
-    assert len(symbolic_raw)==receipt["artifacts"][symbolic_path]["bytes"]==60929
+    assert len(symbolic_raw)==receipt["artifacts"][symbolic_path]["bytes"]==60931
     symbolic=symbolic_raw.decode("ascii")
     assert symbolic.count("BB(t)") == 3
     replacements=[
@@ -94,11 +101,11 @@ def main():
     digits=lambda value:len(str(value))
     for n in (1,2,10,100):
         c=149**n
-        formula=60872+digits(6615898*c**2)+digits(298*c**2)+digits(22201*c**4)
+        formula=60874+digits(6615898*c**2)+digits(298*c**2)+digits(22201*c**4)
         if n==1:
-            assert formula==60905
+            assert formula==60907
         # Check the three independently evaluated profile lengths.
-        assert formula > 60872
+        assert formula > 60874
     records=json.loads((ROOT/"data/results_20261120_v82.json").read_text())
     current={r["id"]:r for r in records["current_constructions"]}
     for key,exponent in (("general25",848),("explicit27",965),("ordinary_abc11",227)):
@@ -120,8 +127,8 @@ def main():
     assert "BB(t)" in readme
     print("BB profile, literal-byte formula, three coarse fixture bounds and README: PASS")
     result={"schema":"diophantine-expanded-txt-verification/v84","status":"PASS",
-            "quartic163_N1_bytes":60905,"quartic179_bytes":66903,
-            "quartic56_B3_bytes":11562,"quartic163_BB_symbolic_bytes":60929,
+            "quartic163_N1_bytes":60907,"quartic179_bytes":66905,
+            "quartic56_B3_bytes":11564,"quartic163_BB_symbolic_bytes":60931,
             "defining_index_for_163_fixed_BB_member_certified":False,
             "all_numeric_text_reparsed_and_compared_exactly":True}
     if args.report:
