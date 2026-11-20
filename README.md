@@ -53,7 +53,7 @@ This repository belongs to the ℤℚ Diophantine Project, which uses the collec
 
 This repository includes updated results and more related work: polynomial witnesses of unrestricted degree but lower number of variables, results conditional on the abc conjecture, etc.
 
-Cite this work as "ℤℚ Diophantine Project contributors. _ℤ is Diophantine in ℚ_. 2026. https://github.com/elliotglazer/diophantine-z-q". If you want to include any of the related results specific to this repository, please add "https://github.com/JoseBrox/diophantine-z-q_improvements" to the end of the reference.
+Cite this work as "ℤℚ Diophantine Project contributors. ℤ is Diophantine in ℚ. 2026. https://github.com/elliotglazer/diophantine-z-q". If you want to include any of the related results specific to this repository, please add "https://github.com/JoseBrox/diophantine-z-q_improvements" to the end of the reference.
 
 ## Source attribution
 
