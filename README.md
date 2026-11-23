@@ -39,7 +39,7 @@ The [results JSON](data/results_20261123_v88.json) records all five new finite-a
 
 The [undecidability category](undecidability/README.md) counts existential
 rational unknowns; the integer instance is encoded in coefficients.
-The [v98 continuation](docs/results_20261123_v98.md) gives the current
+The [v99 continuation](docs/results_20261123_v99.md) gives the current
 complete quartic tables and the research checkpoint. The [v93 continuation](docs/results_20261123_v93.md) supplies corrected
 quartic sources, smaller complete tables, and lower general-degree bounds.
 
@@ -48,9 +48,9 @@ quartic sources, smaller complete tables, and lower general-degree bounds.
 | Unrestricted degree | No additional abc hypothesis | **82** | Proved transfer under retained arithmetic premises; degree below `2^532` |
 | Unrestricted degree, specified source | No additional abc hypothesis | **100** | Proved transfer under retained arithmetic premises; degree below `2^578` |
 | Unrestricted degree | Ordinary rational abc | **52** | Proved transfer under retained arithmetic premises; degree below `2^425` |
-| Quartic transfer | No additional abc hypothesis | **973** | Signed Pell power recovery; 827 quadratic residuals; retained arithmetic premises |
-| Quartic transfer, specified source | No additional abc hypothesis | **1,147** | Corrected Jones source; 997 quadratic residuals; retained arithmetic premises |
-| Quartic transfer | Ordinary rational abc | **697** | Signed Pell power recovery; 592 quadratic residuals; retained arithmetic premises |
+| Quartic transfer | No additional abc hypothesis | **972** | Signed Pell power recovery; 826 quadratic residuals; retained arithmetic premises |
+| Quartic transfer, specified source | No additional abc hypothesis | **1,146** | Corrected Jones source; 996 quadratic residuals; retained arithmetic premises |
+| Quartic transfer | Ordinary rational abc | **696** | Signed Pell power recovery; 591 quadratic residuals; retained arithmetic premises |
 
 The [corrected-source proof](undecidability/source_repair_v93/corrected_jones_source.tex)
 ([PDF](undecidability/source_repair_v93/corrected_jones_source.pdf)) replaces
@@ -100,8 +100,12 @@ The [signed-power continuation](undecidability/pell_signed_q_v98/signed_q_and_ab
 removes both newly introduced positivity wrappers. Signed prefix estimates
 recover the positive power at the end, while the existing integer Pell
 margin absorbs the auxiliary index bound. Reusing an existing fourth power
-in the abc chart gives the current **973 / 1147 / 697** variable counts.
+in the abc chart gives **973 / 1147 / 697** variable counts.
 No integer predicate is removed or added in this last step.
+The [exact product elimination](undecidability/pell_product_v99/pell_product_elimination.tex)
+then replaces `p=2*U*sr2` by `p=2*a*sr-2*sr^2`, using the retained
+`a=(U+1)*sr`. Removing the duplicate square register saves one coordinate
+and row in every route, giving the current **972 / 1146 / 696** counts.
 
 The [paired spectral encoder](undecidability/papers/paired_spectral_encoder.tex)
 ([PDF](undecidability/papers/paired_spectral_encoder.pdf)) lowers the

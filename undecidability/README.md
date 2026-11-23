@@ -37,9 +37,9 @@ the historical encoders; all historical specifications remain unchanged.
 
 | Integer interface | Rational unknowns | Quadratic residuals | Additional height hypothesis |
 |:--|--:|--:|:--|
-| General | **973** | **827** | No additional abc |
-| Specified | **1147** | **997** | No additional abc |
-| Ordinary abc | **697** | **592** | Ordinary rational abc |
+| General | **972** | **826** | No additional abc |
+| Specified | **1146** | **996** | No additional abc |
+| Ordinary abc | **696** | **591** | Ordinary rational abc |
 
 The [corrected-source theorem](source_repair_v93/corrected_jones_source.tex)
 ([PDF](source_repair_v93/corrected_jones_source.pdf)) uses Jones's 1980
@@ -79,10 +79,15 @@ The general sufficient defining coefficient may have to be increased.
 The [signed-power proof](pell_signed_q_v98/signed_q_and_absorbed_bound.tex)
 removes both added positivity wrappers by a signed prefix estimate and an
 absorbed integer margin. The abc chart also reuses its existing fourth
-power. The current complete systems have **973 / 1147 / 697** variables;
+power. These complete systems have **973 / 1147 / 697** variables;
 see the [v98 report](../docs/results_20261123_v98.md) and
 [full tables](pell_signed_q_v98). These changes keep all thirteen integer
 certificates in the general and abc constructions.
+The [product identity](pell_product_v99/pell_product_elimination.tex)
+then removes one square register from each route by an exact polynomial
+inverse lift. This gives the current **972 / 1146 / 696** variable counts,
+with **826 / 996 / 591** quadratic residuals. See the
+[v99 report](../docs/results_20261123_v99.md) and [full tables](pell_product_v99).
 
 ### Method and intermediate improvements
 

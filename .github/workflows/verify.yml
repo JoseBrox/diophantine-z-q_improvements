@@ -13,6 +13,8 @@ jobs:
         with:
           python-version: '3.12'
       - run: python -m pip install sympy==1.14.0 passagemath-pari==10.8.14
+      - name: Verify exact Pell product elimination in all interfaces
+        run: python -B scripts/verify_v99.py --report /tmp/v99-verification.json
       - name: Verify signed power recovery and the absorbed Pell bound
         run: python -B scripts/verify_v98.py --report /tmp/v98-verification.json
       - name: Verify short Pell powers and thirteen-input complete tables

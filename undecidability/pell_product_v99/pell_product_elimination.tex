@@ -1,0 +1,83 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=23mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs,hyperref,xurl}
+\hypersetup{hidelinks}
+\setlength{\emergencystretch}{2em}
+\newtheorem*{proposition}{Proposition}
+\begin{document}
+\begin{center}
+{\Large One product identity removes a quadratic coordinate}\\[6pt]
+\(\mathbb Z\mathbb Q\) Diophantine Project\qquad 23 November 2026
+\end{center}
+
+The corrected source stores \(R=\texttt{sr}=r\,s\,n^2\), together
+with \(U=w\,n^2\), and has the three quadratic residuals
+\[
+ f_{\rm sq}=R_2-R^2,\qquad
+ f_a=a-(U+1)R,\qquad f_p=p-2UR_2.
+\]
+The register \(R_2=\texttt{sr2}\) occurs only in \(f_{\rm sq}\)
+and \(f_p\). Retain \(f_a\), delete \(R_2,f_{\rm sq}\), and replace
+\(f_p\) by the quadratic residual
+\[
+                         g_p=p-2aR+2R^2.
+\]
+
+\begin{proposition}
+This transformation is an exact equivalence on the entire rational
+zero set after forgetting \(R_2\). Its inverse lift is unique and
+polynomial. It saves one coordinate and one residual, independently
+of any integer predicate or nonzero guard.
+\end{proposition}
+\begin{proof}
+The identity
+\[
+                  g_p=f_p+2U f_{\rm sq}-2R f_a
+\]
+shows that every old solution gives a new solution. Conversely,
+assign \(R_2=R^2\). Then \(f_{\rm sq}=0\), and the same identity
+gives \(f_p=g_p+2R f_a=0\). The lift is forced by the deleted
+square equation. No division is used; in particular \(R=0\),
+\(U=0\), and \(a=0\) cause no exceptional branch. Every other
+residual is copied unchanged after coordinate renumbering.
+\end{proof}
+
+Applying the transformation to the latest complete tables gives:
+\begin{center}
+\begin{tabular}{lrrrr}
+\toprule
+Interface & Old variables & New variables & Old rows & New rows\\
+\midrule
+General & 973 & 972 & 827 & 826\\
+Specified & 1147 & 1146 & 997 & 996\\
+Ordinary \(abc\) & 697 & 696 & 592 & 591\\
+\bottomrule
+\end{tabular}
+\end{center}
+The general and ordinary-\(abc\) predecessors are the complete
+signed-power tables in \nolinkurl{undecidability/pell_signed_q_v98/};
+the specified predecessor is
+\nolinkurl{undecidability/pell_halftrace_v96/halftrace_m179_quadrics.json}.
+The sums of squares still have degree exactly four, since retained
+nonzero quadratic homogeneous parts cannot cancel in a real sum of
+squares. All arithmetic-interface premises, instance ranges, integer
+inputs, and the cited Jones coding theorem are unchanged. This is an
+unconditional algebraic simplification of those systems; it introduces
+no unconditional undecidability assertion.
+
+The three full tables are \nolinkurl{product_general_quadrics.json},
+\nolinkurl{product_specified_quadrics.json}, and
+\nolinkurl{product_abc_quadrics.json}, each paired with a certificate
+in the present directory. Run
+\begin{verbatim}
+python undecidability/pell_product_v99/build_product.py
+python undecidability/pell_product_v99/verify_product.py
+\end{verbatim}
+The independent checker imports no builder. It verifies both polynomial
+identities, the two old occurrences of \(R_2\), the exact replacement
+row, every unchanged row, coefficient integrality, complete support,
+degree, metadata and file hashes. The recovery conventions
+\(\texttt{M\_recovery}=\texttt{sr}\) and
+\(\texttt{a\_recovery}=(U+1)\texttt{sr}\) are retained; the obsolete
+square-register description is preserved only as predecessor history.
+\end{document}
