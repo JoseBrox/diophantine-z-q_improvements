@@ -1,3 +1,7 @@
+## Priorities after the Bhargava–Burungale v2 audit
+
+The [v88 continuation](results_20261123_v88.md) integrates a product pole into all five few-variable routes and lowers their degrees. The remaining numerical variable counts are unchanged. The next tasks are a complete rational-coordinate compilation of the improved BB quadratic index model; global rational realization at actual detector functions, possibly after proving a common input-squareclass condition; and new quadratic charts or row combinations beyond the now excluded two-unit Laurent deletion of the shared R² register. The [full route status](bb_all_route_status_20261123_v88.md) records the exact hypotheses and unresolved conditions.
+
 # Research directions
 
 The [v82 continuation](results_20261120_v82.md) proves general quartics in **163 and 179 total variables**, retaining the source arithmetic premises. The partial-trace scalar and a scaled point chart remove two field components; a positive weighted trace removes another rational coordinate from the ineffective family. The ordered global witness construction, zero-coordinate branches, full quadratic maps, and coefficient expansions are supplied. The fixed 179-variable member retains an effective unweighted height argument. Contributions originating in **notes of Gabe Conant with Astra 6.2** remain distinguished from the subsequent project work.

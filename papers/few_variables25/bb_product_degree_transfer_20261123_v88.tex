@@ -1,0 +1,553 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=27mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs,hyperref}
+\usepackage{xurl,microtype}
+\setlength{\emergencystretch}{3em}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\newcommand{\Tr}{\operatorname{Tr}}\newcommand{\sqf}{\operatorname{sqf}}
+\title{Product poles and lower degrees in the few-variable constructions}
+\author{\(\Z\Q\) Diophantine Project: audit and continuation}
+\date{23 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+We integrate the square-denominator criterion of Bhargava--Burungale,
+arXiv:2611.16130v2, into the current finite-algebra constructions. Splitting
+off an already available square factor before using their product equation
+makes the radicand linear in the actual detector input. A class-seven
+rescaling of the four-contact scalar makes the general sources compatible
+with the published converse. Complete exact specifications give degree
+bounds $48\,318\,382\,080$, $183\,368\,679\,424$ and $3\,261\,569$
+in respectively 25, 27 and 11 total variables; the last construction
+assumes ordinary rational abc. The 27-variable parameter remains $L=143$.
+The other sufficient parameters remain ineffective. The two weak-abc
+eleven-variable routes also improve, to degree bounds $16\,460\,929$
+and $9\,808\,001$. All non-pole arithmetic
+premises of the source constructions are expressly retained. These are
+degree improvements, not new numerical variable-count records.
+\end{abstract}
+
+\paragraph{Attribution.}
+The square-denominator theorem and its congruent-number-curve proof are
+due to Bhargava and Burungale \cite{BB}. The source positive-factor,
+terminal-root and projective encodings are from Gabe Conant's notes with
+Astra~6.2, audited in v78. The point charts, contact-height reductions and
+four-contact scalar are earlier project work. The normalized product
+transfer, class-seven scalar, and present degree ledgers are subsequent
+deductions. Dated sources and their hashes are preserved.
+
+\section{Precise scope}
+The base constructions are the two v78 papers \cite{scalar,twelve}.
+Their retained inputs include the normalized elliptic group over
+$\Q(\sqrt2)$, the appropriate trace or effective abscissa-sum height
+theorem, the modular contact-height estimate or ordinary abc, and the
+compatible simultaneous prime-pattern and index-refinement assertions.
+The present proof replaces the old native-pole converse by
+\cite[Lemma 2.2]{BB}; it does not establish those other inputs independently.
+In particular it does not identify the paper's Green--Tao prime-progressions
+lemma with the stronger simultaneous pattern used in our current sources.
+
+Every coordinate count includes the input $X$. All polynomials below
+are fully specified by finite multiplication algebras and determinants,
+not by an unevaluated existence of coefficients. For the ineffective
+families the fixed parameter is specified symbolically and the displayed
+small member is only an algebraic fixture.
+
+\begin{theorem}\label{main}
+Under the corresponding retained premises, the following integer-polynomial
+families have rational input projection exactly $\Z$.
+\begin{center}\small
+\begin{tabular}{lrrr}
+\toprule
+Route&Total variables&Degree at most&Support less than\\\midrule
+General, sufficiently large odd $L$&25&$48\,318\,382\,080$&$2^{793}$\\
+Fully specified, $L=143$&27&$183\,368\,679\,424$&$2^{906}$\\
+Ordinary abc, sufficiently large odd $B$&11&$3\,261\,569$&$2^{202}$\\\bottomrule
+\end{tabular}
+\end{center}
+The fully specified member has coefficient height less than $2^{2^{45}}$.
+At the stored $L=143$ general fixture and $B=3$ abc fixture the coefficient
+one-norm bounds are respectively
+$2^{6235064631296}$ and $2^{12940032}$; neither fixture is asserted to be
+a defining member. The degree and support bounds are uniform in the
+admissible fixed parameters. Dividing by integer content makes each
+polynomial primitive without increasing these bounds.
+\end{theorem}
+
+\section{Normalize before forming the product pole}
+Call $e\in\Q^\times$ prepared if it has square reduced denominator and
+\[
+ 0<e<1,\qquad v_2(e)\ge3,\qquad\sqf(e)\equiv7\pmod8.
+\]
+The final two conditions imply an even $v_2(e)\ge4$.
+
+\begin{lemma}\label{pole}
+Let $e=dk^2$ with $d,k\in\Q^\times$. Then the predicate
+\begin{equation}\label{product}
+ Y^2=(1-e)(v^4-d^2)(s^4-d^2),\qquad v,s,Y\in\Q,
+\end{equation}
+implies that $e$ has square reduced denominator. If $e$ is prepared,
+the predicate has solutions, and its rational solutions project to a
+Zariski-dense subset of the $(v,s)$-plane. Terminal zero roots are permitted.
+\end{lemma}
+\begin{proof}
+Substitute $(s_0,t_0,z_0)=(kv,ks,k^4Y)$ in BB's equation
+\[
+ z_0^2=(1-e)(s_0^4-e^2)(t_0^4-e^2).
+\]
+Both quartic factors acquire the factor $k^4$, so this is an exact
+equivalence. For soundness, if $v_p(e)<0$ is odd, then $v_p(1-e)$ is
+odd and each quartic has finite even valuation, since the competing
+valuations $4v_p(s_0)$ and $2v_p(e)$ cannot agree. Their product is
+nonzero of odd valuation. This works at two as well as at odd primes.
+
+For completeness put $j=\sqf(e)$ and $h=\sqf(1-e)$. BB Theorem~2.3
+supplies points of prescribed abscissa squareclass on $E_n$ and $E_{nh}$;
+when $h=1$ one may use the same positive-rank curve in both positions.
+Odd multiples of either non-torsion point keep its Kummer abscissa class.
+The nonconstant maps used in BB's proof of Lemma~2.2 therefore give
+infinitely many rational first and second parameters, independently.
+Every pair has the required product squareclass. The product of two
+infinite subsets of $\Q$ is Zariski dense in $\mathbb A^2$; scaling by
+$k^{-1}$ preserves this property. Consequently finitely many nonzero
+polynomial guards can be avoided. No uniform statement is made for a
+guard that becomes identically zero after a proposed parameter identification.
+\end{proof}
+
+The crucial algebraic feature is linear dependence on $e$ in
+\eqref{product}. The preceding native equation had radicand
+\[
+ d(d+v^2)^2s^4-d(d-v^2)^2(1-e)^2.
+\]
+It is quadratic in the complicated detector expression $e$. The
+representative $d$ is already produced by the circuit's square-factor
+extraction; it requires no extra free variable. The new predicate still
+has two retained rational parameters and one terminal algebraic root.
+The degree-seven birational version in the companion twist note is
+nonmonic in its last variable; converting it into the monic tower used
+here restores the degree-nine product. Its smaller displayed degree is
+therefore not by itself an additional determinant-degree improvement.
+
+\section{A compatible four-contact scalar}
+For odd $L\ge3$ put
+\begin{align*}
+ \beta&=1632X^2+2477,& A&=\beta(\beta-1),\\
+ B_0&=(\beta-2401)(32\beta+343),&
+ T_L&=\bigl(1224(67^{(L+1)/2}+1)\bigr)^2,\\
+ q&=T_LA/B_0,&
+ \rho_*&=102^2\,67^L\frac{7q}{(1+7q)^2}.
+\end{align*}
+Here $B_0$ denotes a contact polynomial, not the separate abc shift $B$.
+The target remains $\tau=X^2+1$.
+
+\begin{lemma}\label{scalarlemma}
+For every rational $X$, $\rho_*$ is defined, positive, less than $1/167$,
+and $v_{67}(\rho_*)=L$. Its negative valuations are even. For integral
+$X$ it lies in $7\Q_2^{\times2}$, has $v_2(\rho_*)\ge10$,
+$v_3(\rho_*)=6$, and $v_{17}(\rho_*)\ge4$. Moreover
+\begin{equation}\label{height}
+ h(\rho_*)\le4h(\beta)+2L\log67+66\log2
+             <4h(\beta)+2L\log67+128.
+\end{equation}
+\end{lemma}
+\begin{proof}
+All four contact factors are positive because $\beta\ge2477$.
+The old scalar $\rho=102^2\,67^Lq/(1+q)^2$ satisfies
+$0<\rho<33/(144\cdot67)<1/167$, as $B_0/A<33$.
+Also $q>T_L/33>1$, and
+\[
+ \frac{\rho_*}{\rho}=7\left(\frac{1+q}{1+7q}\right)^2<1.
+\]
+At integral 67-adic $X$, exact enumeration of the 67 residue classes
+gives $AB_0(B_0+7\cdot1224^2A)\not\equiv0\pmod {67}$.
+At negative $v_{67}(X)$ cancel the common valuation of $A,B_0$;
+their ratio is $1/32$ modulo 67 and
+$32+7\cdot1224^2\equiv22\pmod {67}$. Thus the valuation is exactly $L$.
+
+For nonzero rational $u$, every negative valuation of $u/(1+u)^2$
+is even: if $v_p(u)\ne0$ the resulting valuation is $|v_p(u)|$;
+otherwise it is $-2v_p(1+u)$. Apply this to $u=7q$ and observe
+that the remaining factors are a square and $67^L$, whose total
+67-adic valuation has just been computed as positive. This argument
+does not assert that $v_7(\rho_*)$ is positive; it may be negative even.
+
+For integer $X$, $\beta\equiv13\pmod {32}$, so
+$v_2(A)=v_2(B_0)=2$ and $AB_0/16\equiv3\pmod8$.
+The old scalar was a 2-adic square; the ratio above changes its class
+to seven. Since $v_2(T_L)\ge8$, its depth is at least ten.
+The factor seven is a 3-adic square and the two normalizers are units
+there, preserving depth six. At seventeen the depth remains at least
+four, while the squareclass changes to seven. The old 17-adic square
+requirement was used for the replaced level-17 pole converse; it is
+not a hypothesis of BB Lemma~2.2 or of the deep formal-subgroup reference
+choice, which uses continuity and valuation depth.
+
+Finally $\|A\|_1=2$, $\|B_0\|_1=900064$, and
+$T_L\le F_0\,67^L$, with $F_0=4\cdot1224^2\cdot67=401511168$.
+After removing the factor $67^{2L}$, the numerator and denominator
+coefficient one-norms of this degree-four rational map are bounded by
+\[
+ 7\cdot102^2F_0\cdot2\cdot900064=52638002498271117312,
+ \qquad(900064+14F_0)^2=31607518344686765056.
+\]
+Both are less than $2^{66}$. The elementary height inequality for a
+rational map proves \eqref{height}.
+\end{proof}
+
+\section{Arithmetic transfer and retained thresholds}
+In both general sources replace $\rho$ by $\rho_*$, and replace each
+native-pole block by \eqref{product}, extracting $e=dk^2$ in the same
+coefficient DAG. Leave the point charts, comparisons, contact locations,
+weights, and unsquared scales as in v78. The finite exceptional set already
+contains seven. Outside it, scalar squareclasses are multiplied by the
+unit seven, so the parity of each consumed valuation is unchanged.
+At a finite contact the old and new normalizers are units when $v_p(q)>0$;
+when $v_p(q)<0$ the valuation of $q/(1+q)^2$ and that of
+$7q/(1+7q)^2$ is $-v_p(q)$. Thus positive odd contact valuations and
+their exact depths agree. The fixed 67-adic depth remains $L$.
+The square-denominator implication of Lemma~\ref{pole} therefore supplies
+every old local exclusion and divisibility statement.
+
+The scalar contact radical, exceptional sets, positive scale properties
+and target inequality $h(X^2+1)\le h(\beta)$ are unchanged.
+The stronger estimate \eqref{height} implies the old $+128$ bound.
+Consequently the entire effective three-scale ledger in
+\cite[Sections 4--5]{scalar} applies verbatim, including the exact
+inequalities
+\[
+ 67^{287}\ge120\cdot2^{342},\qquad
+ 67^{287}-1\ge2^{1727},\qquad
+ 2^{1727-3\cdot551}12^6>18^3(2400+7\cdot1727)^6.
+\]
+They certify $L=143$ for the 27-variable source. For the two-scale source
+the same old height contradiction has an ineffective constant; its
+sufficient fixed odd $L$ remains ineffective.
+
+For completeness first fix integral $X$ and the nonzero root label
+$X^2+1$. Make the reference, Lucas-label, point and prime choices in
+the source order. The actual pole inputs in this source are
+\begin{equation}\label{actual}
+ e_j=\frac{4\rho_*R_j}{\Tr(W_j^{-1})^2}.
+\end{equation}
+There is no extra $(1+\rho_*R_j)^2$ normalizer in \eqref{actual}.
+At newly selected primes the successful-slot construction makes the trace
+a unit and the input valuation positive odd. At the finitely many primes
+in the scalar's support, the reference neighborhoods give the old
+nonnegative odd valuations and preserve all even negative valuations.
+Elsewhere the weight has even valuation and division by a square does
+not change parity. Thus each $e_j$ has square reduced denominator.
+At two, $R_j$ is close to one and the trace to two, so $e_j$ is in
+$7\Q_2^{\times2}$ with depth at least ten. At the chosen real character
+the existing neighborhoods give $R_j<2$ and $\Tr(W_j^{-1})>1$;
+hence $0<e_j<8\rho_*<1$. These are precisely the hypotheses of
+Lemma~\ref{pole}. Its density avoids the remaining nonidentically-zero
+guards. This proves completeness with the same retained variables.
+
+For the ordinary-abc source no scalar change is required. In the v78
+notation its actual input is
+\[
+ \eta=7u\left(\frac{N(W)}{(1+u)W_0}\right)^2,
+ \qquad d=7u.
+\]
+The existing completeness proof prepares $\eta$ in class seven with
+square denominator, the required depth and $0<\eta<1$; the v80
+published-theorem transfer explicitly checks the intrinsic-pole
+preparation. Replace only its last radicand by
+$(1-\eta)(v^4-d^2)(s^4-d^2)$. The twelve contact locations, first
+height scale, even-valuation comparisons and balancing are unchanged.
+The sufficient odd shift remains ineffective under ordinary abc.
+
+\section{Balancing the squareclass representative}\label{sec:balanced}
+The general-source degree bounds use a further rational coordinate
+change. For any guarded nonzero factor $M$, replace an extraction
+$e=d_{\rm old}k_{\rm old}^2$ by
+\[
+ d=d_{\rm old}M^2,\qquad k=k_{\rm old}/M.
+\]
+The product-pole charts are isomorphic by
+$(v,s,Y)_{\rm new}=(Mv,Ms,M^4Y)_{\rm old}$. Thus existence, density,
+terminal zero roots and the number of free variables are unchanged.
+Every factor selected below was already required to be nonzero.
+
+Here is a semantic specification of the selected normalization.
+For detector $j$, write its scaled slope as the exact stored circuit
+$a_j=N_j/D_j$, with $D_0=1$ and
+$D_j=(B_0+7T_LA)^2$ for $j\ge1$. In order, take the ten contacts
+\[
+ (4j+2+\Theta,\ 4j+4+\Theta),\qquad
+ \Theta=(0,-1/2,-1,1/2399,-32/407).
+\]
+For a contact $\theta_{j,\ell}=a/b$ in lowest terms, $b>0$, put
+$L_{j,\ell}=bN_j-aD_j$. Exact independent circuit replay gives
+\[
+ d_{j,\rm old}^{-1}=C_jAB_0\prod_{\ell=1}^{10}L_{j,\ell},
+\quad C_j=4879476\ (j\ge1),\quad
+C_0=4879476(2\cdot2399\cdot407)^2.
+\]
+Choose
+\[
+ M_0=A\prod_{\ell=1}^{6}L_{0,\ell},\qquad
+ M_j=A(\beta-2401)\prod_{\ell=1}^{5}L_{j,\ell}\quad(j\ge1).
+\]
+Consequently
+\[
+ d_0=\frac{A\prod_{\ell=1}^{6}L_{0,\ell}}
+ {C_0B_0\prod_{\ell=7}^{10}L_{0,\ell}},\qquad
+ d_j=\frac{A(\beta-2401)\prod_{\ell=1}^{5}L_{j,\ell}}
+ {C_j(32\beta+343)\prod_{\ell=6}^{10}L_{j,\ell}}\quad(j\ge1).
+\]
+The numerator/denominator degree pairs are $(10,8)$ and $(71,67)$.
+The total guard degrees remain 8215 and 14398. The complete coefficient
+DAG fixes all constants and the choice of rational circuit, so the
+formula does not depend on an arbitrary rescaling of $N_j,D_j$.
+The finite search covered eighteen initial menus per route and all
+fifty-five scalar/contact prefix menus; the selected combined choices
+were then rebuilt and independently checked in both complete sources.
+No global optimality of this factor redistribution is asserted.
+
+\section{Zero strata, exact specifications and degree calculation}
+The terminal-root policy is part of the new specification. One must
+not silently impose nonzero terminal ordinates: at another algebraic
+character the expression $e$ may equal one, making its radicand zero.
+The final positive encoders of v78 allow all terminal zero roots.
+Their inherited formal source-level ordinate guards are explicitly
+removed, and the independent checker verifies that no denominator or
+retained guard depends on such a root. The final polynomial is the
+specified positive encoder, not the legacy guarded-source formula alone.
+
+The point-prefix algebra, ordered point-guard recovery and positivity
+guard deletions are unchanged. For one terminal root use its bounded
+linear separator; for three use the audited cubic signed separator.
+For two use the projective separator from Gabe Conant's notes with
+Astra~6.2. The last construction gives numerator and denominator
+operators $N_1,D_1$, with $D_1$ nonzero on every geometric character.
+The equations are respectively the integral determinants
+\[
+ \det(I-YG\operatorname{Mult}(\Omega))=0,
+ \qquad
+ \det(\operatorname{Mult}(D_1)-YG\operatorname{Mult}(N_1))=0.
+\]
+The abc polynomial additionally has the source input factor $X$.
+Multiplication on each Artin local factor has its residue character on
+the diagonal, so nonreduced terminal specializations do not create
+additional rational zeros. Rational-character recovery and the
+subsequent arithmetic implications are those proved in the cited
+source encoder papers, with the new terminal equations supplied above.
+
+Here are the complete final degree data. For 25 variables the last
+column is both the projective numerator and denominator degree;
+in the other two rows it is the separator degree.
+\begin{center}\begin{tabular}{rrrr}
+\toprule
+Variables&Algebra rank $n$&Guard degree $g$&Operator degree $w$\\\midrule
+25&$2^{20}$&8215&37864\\
+27&$2^{21}$&14398&73038\\
+11&128&650&24830\\\bottomrule
+\end{tabular}\end{center}
+Consequently the bounds are $n(1+g+w)$ in the first two rows and
+$1+n(1+g+w)$ in the third. The coefficient log-one-norm bounds
+at the stored fixtures are respectively
+\[
+ 6235064631296,\qquad28636742680576,\qquad12940032.
+\]
+For total degree $D$, input-factor indicator $\epsilon$ and $v$ total
+variables, the support bound is the exact integer
+\[
+ {D-\epsilon+v\choose v}-{D-\epsilon-n+v-1\choose v},
+\]
+rounded upward to the displayed strict power of two.
+
+The retained-coordinate counts are also explicit: the general source
+has one input, eight root-chart parameters, ten auxiliary point
+parameters, one slope, four or six pole parameters and one final
+encoder variable. The abc source has one input, six point parameters,
+one contact parameter, two pole parameters and one encoder variable.
+Thus the counts are still 25, 27 and 11.
+
+The package \path{computation/bhargava_burungale_v88} contains every
+coefficient DAG, point/pole relation, denominator, guard, norm factor,
+and final bound. The producer is rebuilt from the byte-pinned v78
+archives. The independent checker does not import the new producer:
+it reconstructs every changed scalar and pole, proves $dk^2=e$ exactly,
+compares unchanged charts and tests with their sources, and replays
+every operator majorant and guard deletion. A separate standard-library
+checker verifies scalar residues, exceptional sets and effective
+inequalities. These finite checks do not prove the imported infinite
+arithmetic statements; their scope is recorded explicitly.
+
+\section{The weak-$abc$ eleven-variable routes}
+\label{sec:weak-bb}
+Let $W_\kappa$ be the weak rational $abc$ inequality with exponent
+$\kappa$, as in the v78 single-pole theorem \cite{weak}. Retain that theorem's
+elliptic group and point-chart identification, one-point trace-height
+bound, formal-comparison assertions, and quantified prime-pattern
+selection with finite congruences, reduction orders and approximation.
+The following modification replaces its native pole converse by the
+stated class-seven case of Bhargava--Burungale Lemma~2.2 and Theorem~2.3.
+
+\begin{theorem}
+For each fixed $1<\kappa<3/2$, the v78 eleven-variable construction
+admits the Bhargava--Burungale product pole without changing its contact
+scalar, point charts, physical tests, or height inequality. In particular,
+the following bounds hold for every sufficiently large fixed odd shift
+$B$, under $W_\kappa$ and the retained premises just stated:
+\[
+\begin{array}{c|c|c|r|r|r}
+\kappa&e&k&\text{old degree bound}&\text{new degree bound}&
+\text{support bound}\\\hline
+121/100&6&6&32542081&16460929&<2^{225}\\
+16/15&4&5&19366273&9808001&<2^{218}
+\end{array}
+\]
+Every count is eleven total rational coordinates, including the input.
+The sufficient shift remains ineffective. The tabulated coefficient
+bounds at $B=3$ are reproducibility fixtures, not certified defining
+specializations.
+\end{theorem}
+
+\begin{proof}
+Use the original notation
+\[
+ x=a-z,\quad y=a+z,\quad P=G(x),\quad Q=G(y),
+ \quad J=(x-1)(y-1),\quad F=P^2+Q^3,
+\]
+\[
+ u=\frac{J^{8(k-1)}PQF^2}
+ {(P^3+Q^5)(P+Q^k)(P^k+Q)},\qquad
+ W=\prod_{i=1}^6(1+(t_i/u)^2),\quad V=\operatorname{Tr}(W^{-1}),
+\]
+\[
+ b=\frac{4u}{(1+u)^2V^2}.
+\]
+Keep every one of these rational expressions and all six physical tests.
+Replace only the final pole input by $\epsilon=7b$. Choose a square
+extraction $\epsilon=d_0t_0^2$ and the positive contact sum
+$\delta=P+Q^k$. Put
+\[
+ d=d_0/\delta^2,\qquad t=t_0\delta,
+ \qquad \epsilon=dt^2.
+\]
+The new two-parameter terminal quadratic equation is
+\begin{equation}\label{eq:weak-bb-pole}
+ Y^2=(1-\epsilon)(v^4-d^2)(s^4-d^2).
+\end{equation}
+The monic product-pole equation with input $\epsilon$ is recovered by
+$v_{\mathrm{old}}=tv$, $s_{\mathrm{old}}=ts$, and
+$Y_{\mathrm{old}}=t^4Y$; its radicand is $t^8$ times the right side of
+\eqref{eq:weak-bb-pole}. Thus the scaling preserves rational solutions
+and density on the existing nonzero input and square-multiplier locus.
+
+For soundness, the old scalar-height argument supplies positive odd
+valuation primes outside a fixed set $S$ containing $2,3,7,17$.
+At such a prime, $v_p(\epsilon)=v_p(b)$ and
+$v_p(d)\equiv v_p(b)\equiv v_p(u)\pmod2$. If $v_p(\epsilon)<0$ is odd,
+then $v_p(1-\epsilon)$ is odd, whereas each factor $v^4-d^2$ or
+$s^4-d^2$ has even valuation: its two summands have different valuations
+modulo four. A zero factor cannot occur in this case, including when
+$v=0$ or $s=0$. This contradicts \eqref{eq:weak-bb-pole}, even when
+$Y=0$. Hence the same negative-odd-valuation obstruction holds.
+All local saturation estimates of v78 therefore apply unchanged. In
+particular, with $\nu=v_p(u)>0$ odd and the old $q_*\le0$, one obtains
+$0<v_p(b)\le\nu+2q_*$ and then the original congruence $X\equiv n\pmod p$.
+The scalar-height margins remain
+\[
+ \lambda=8374/14641>1/2,
+ \qquad \lambda=99/160>1/2,
+\]
+respectively. The general condition for $1<\kappa<3/2$ is unchanged.
+
+For completeness, retain the ordered integer witnesses of v78. Its
+all-prime argument already proves that the reduced denominator of $b$
+is a square, and at every fixed place its local preparation has
+$b z^8\longrightarrow1$ as $z\longrightarrow\infty$.
+Enlarge the temporary fixed preparation by the prime seven before
+applying the prime-pattern theorem. Require $v_7(z)<0$ sufficiently
+negative, so that $v_7(b)=-8v_7(z)$ is nonnegative and even. The product
+$\epsilon=7b$ then has no negative odd valuation at seven; outside seven
+this follows from the square denominator of $b$.
+At two retain $b\in\mathbb Q_2^{\times2}$ and take
+$v_2(b)\ge4$ even. Then $\epsilon$ has two-adic square class seven and
+$1-\epsilon$ is a two-adic square. The real preparation can be strengthened
+to $0<b<1/7$, giving $0<\epsilon<1$. These are finitely many prescribed
+neighborhood conditions of precisely the type already included in the
+retained selection and recurrence premise. They are imposed before
+choosing the contact primes and do not change the order of choices.
+
+Writing the positive squarefree parts of $\epsilon$ and $1-\epsilon$
+as $\beta$ and $\eta$, respectively, gives
+$\beta\equiv7\pmod8$, $\eta\equiv1\pmod8$, and
+$\gcd(\beta,\eta)=1$. The local quadratic residue conditions follow
+from $\epsilon+(1-\epsilon)=1$ and its square reduced denominator.
+Bhargava--Burungale's stated class-seven theorem and the product-pole
+parameterization therefore give rational witnesses whose $(v,s)$
+projection is Zariski dense. The finite-character guard avoidance
+argument transfers under the displayed nonzero rational scaling.
+
+The old conic denominator $\tau^2+51d$ is absent. Accordingly, the final
+compiler removes nine automatic guards, not the previous ten: the
+root-ordinate and two auxiliary-abscissa factors before character
+extraction, the root-abscissa factor afterward, four positive contact
+sums, and the odd-weight normalizer $1+u$. The original balancing and
+positive-product stages remain unchanged. The terminal root guard is
+suppressed by the same final-root theorem; no earlier denominator or
+retained guard depends on that root. Its zero stratum is included.
+
+The unchanged three point blocks and the new terminal square block have
+ranks $4,4,4,2$. The retained ten free coordinates and one encoder give
+rank $128$ and eleven total variables. The independently reconstructed
+pairs of guard and separator bounds are
+\[
+ (g,w)=(490,128110),\qquad (418,76206).
+\]
+Thus $\deg F_B\le1+128(1+g+w)$ gives the displayed degree bounds.
+The same integer determinant has coefficient of $XY^0$ equal to one,
+so its content is one. At $B=3$, the independently checked coefficient
+one-norm bounds are
+$2^{66654464}$ and $2^{42394624}$, respectively.
+\end{proof}
+
+The new checker reconstructs the unchanged contact and detector
+expressions, every physical point/test comparison, the identity
+$\epsilon=dt^2$, the product pole, all square extractions, all independent
+operator and subalgebra-norm majorants, the terminal zero-root condition,
+and the staged guard and determinant bounds. Its finite checks do not
+prove the quantified arithmetic premises or an effective value of $B$.
+
+\section{Variable-count limitations}
+The product substitution lowers circuit degrees because it simplifies
+dependence on a high-degree detector. It removes no free parameter.
+The finite-support twist theorem in the companion note can share
+parameters only when all actual inputs have one common squareclass.
+That condition has not been proved for the present multiple detectors.
+Nor does the published theorem give rational points on every proposed
+one-parameter slice through an actual detector fiber.
+
+The 163-, 179- and 56-variable quartic records, and the conditional
+number-field counts, are therefore unchanged. The 21/9-variable targets
+still require a global rational-realization theorem with every physical
+lift and denominator condition. None of the new finite computations
+establishes it.
+
+\begin{thebibliography}{9}\raggedright
+\bibitem{BB} M. Bhargava and A. Burungale,
+\emph{A Diophantine definition of $\Z$ in $\Q$},
+arXiv:2611.16130v2, 19 November 2026,
+\url{https://arxiv.org/html/2611.16130v2}.
+\bibitem{scalar} $\Z\Q$ Diophantine Project,
+\emph{Four scalar contacts and unsquared comparison scales}, v78,
+19 November 2026; complete source in this repository.
+\bibitem{twelve} $\Z\Q$ Diophantine Project,
+\emph{Twelve contacts at the first height scale}, v78,
+19 November 2026; complete source in this repository.
+\bibitem{weak} $\Z\Q$ Diophantine Project,
+\emph{The single-pole eleven-coordinate construction under weak abc},
+v78, 19 November 2026;
+\path{papers/conditional_few_variables/weak11_audit_and_transfer_20261119_v78.tex}.
+\bibitem{coauthor} Gabe Conant with Astra~6.2,
+\emph{H10-quartic-constructions} and
+\emph{H10-eleven-variable-constructions}, research bundles,
+18 November 2026; archived with attribution and checksums in v78.
+\end{thebibliography}
+\end{document}

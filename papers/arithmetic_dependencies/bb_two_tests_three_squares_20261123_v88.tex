@@ -1,0 +1,610 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools,microtype}
+\usepackage[margin=26mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\DeclareMathOperator{\Tr}{Tr}\DeclareMathOperator{\Num}{Num}
+\setlength{\emergencystretch}{2em}
+\title{Two height tests and a three-square interval\protect\\
+in the Bhargava--Burungale construction}
+\author{ZQ Diophantine Project}
+\date{23 November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+We transfer the project's aggregate-trace height method to the carrier
+over $\Q(\sqrt{13})$ in Bhargava--Burungale, arXiv:2611.16130v2.
+This reduces their five arithmetic tests for squaring to two, with the
+same local predicate. A fixed power of one rational trace also removes
+the need for their large elliptic multiplication map. Independently,
+a fixed $2$-adic coset permits
+three rational squares in the final interval condition in place of
+four. Relative to the same quadratic presentation of their set $T$,
+the quartic wrapper therefore uses $r+18$, rather than $r+19$,
+auxiliary rational variables. The parameter $r$ is not evaluated;
+these results do not assert a new numerical defining-variable record.
+All assertions retain the stated Bhargava--Burungale arithmetic inputs.
+The local construction also defines every fixed quadratic relation
+directly; in particular multiplication requires two tests, without
+three calls to a squaring relation.
+\end{abstract}
+
+\section{Data and dependence}
+Put
+\[
+ F=\Q(\sqrt{13}),\qquad d=\frac{1+\sqrt{13}}2,\qquad
+ E/F:y^2=x^3-d^2x,\qquad \Gamma=2E(F).
+\]
+Write $\sigma$ for the nontrivial automorphism of $F/\Q$.
+Bhargava--Burungale \cite[Lemmas 4.1--4.2]{BB} prove that
+$\Gamma$ is infinite cyclic and Diophantine. Fix its generator $P_0$.
+For $P_j=n_jP_0$, put $\Delta=n_1^2-n_2$.
+
+Use the local predicate $\mathcal C(P_1,P_2;\xi)$ of
+\cite[Definition 5.3]{BB} without alteration. Let
+\[
+ G(X)=(X^2-1)(X^2-9)(X^2-25),\qquad
+ M(\xi)=\prod_{\substack{p>25\\v_p(G(\xi))>0\text{ odd}}}p.
+\]
+The two imported conclusions required below are
+\begin{align}
+ h(\xi)&\le H M(\xi)^{24}\quad(G(\xi)\ne0),\label{eq:height}\tag{H}\\
+ \mathcal C(P_1,P_2;\xi)&\Longrightarrow M(\xi)^{24}\mid\Delta.
+ \label{eq:div}\tag{D}
+\end{align}
+They are \cite[Proposition 3.1 and Lemma 5.4]{BB}. The construction
+of witnesses when $\Delta=0$ is their Lemma 5.2 and the argument of
+Lemma 5.6. We explicitly check below that the latter applies to any
+fixed finite collection of rational shifts.
+
+The additional published height input is von Buhren's family theorem
+\cite[Theorem 1.1, p.~308]{VB}. The argument in the next section is
+the specialization to this carrier of the project's positive
+weighted-trace argument \cite{Weighted}. Thus the aggregate-trace
+method is prior project work; the present result is its transfer to
+the different carrier and its use to shorten the BB test list.
+
+\section{Aggregate trace on the BB carrier}
+Define $x^*(O)=0$ and $x^*(P)=x(P)$ for $P\ne O$. This is a
+piecewise definition, not the value of the rational function $x$ at
+its pole. Its use in a Diophantine relation means a finite disjunction
+according to which points are $O$.
+
+\begin{theorem}\label{thm:trace}
+There are constants $A>0$, $J\ge0$ such that for all integers
+$k_1,k_2$,
+\[
+ k_1^2+k_2^2\le A h\!\left(
+ \Tr_{F/\Q}\bigl(x^*(k_1P_0)+x^*(k_2P_0)\bigr)
+ \right)+J.
+\]
+The constants are independent of the indices. The additive constant
+is not made effective by the proof.
+\end{theorem}
+\begin{proof}
+At the embedding $\sqrt{13}>0$, set
+$d_+=d$ and $d_-=-d^\sigma$. Both are positive, and $d_+d_-=3$.
+Their squareclasses are independent in $F(i)^\times/F(i)^{\times2}$.
+Indeed, an element of the real field $F$ that is a square in $F(i)$
+is either a square or minus a square in $F$. Neither $d_+$ nor
+$-d_+$ is a square in $F$, by their real signs; the same holds for
+$d_-$. Their product is $3$, and neither $3$ nor $-3$ is a square in
+$F$ (the former would give $\Q(\sqrt3)\subseteq F$).
+
+Over $F(i,\sqrt{d_+},\sqrt{d_-})$, identify both curves with
+$E_0:Y^2=X^3-X$ by division of the coordinates by
+$(d_+,d_+^{3/2})$ and $(d_-,d_-^{3/2})$. Let $R,R'$ be the
+images of $P_0,P_0^\sigma$. They are independent modulo torsion
+over $\Z[i]$. An automorphism fixing $F(i,\sqrt{d_+})$ and
+negating $\sqrt{d_-}$ fixes $R$ and negates $R'$; subtracting the
+conjugate of a proposed relation proves independence, since a nonzero
+endomorphism of an elliptic curve is an isogeny.
+
+First omit the indices that are zero. There are only finitely many
+such patterns; suppose $k\in\{1,2\}$ indices remain. On $E_0^{2k}$
+consider
+\[
+ \mathcal F=d_+\sum_{j=1}^k x_j+d_-\sum_{j=1}^k x'_j.
+\]
+At our point the coordinates are $[k_j]R,[k_j]R'$, and
+$\mathcal F$ is the required rational trace. No positive-dimensional
+abelian translate through this point, meeting the domain of
+$\mathcal F$, can have constant $\mathcal F$. To prove this, take an
+elliptic direction in such an abelian subvariety and parametrize it
+by $E_0$ with coordinate endomorphisms $\alpha_j,\alpha'_j\in\Z[i]$.
+If two first-block coordinates have a common pole, eliminating the
+parameter gives
+\[
+ (k_i\alpha_j-k_j\alpha_i)R=O,
+ \qquad\text{hence}\qquad k_i\alpha_j=k_j\alpha_i.
+\]
+The leading coefficient of their combined double pole, including all
+first-block coordinates with that pole, is therefore
+\[
+ \frac{d_+}{\alpha_i^2}\sum_j(k_i/k_j)^2\ne0.
+\]
+The sum is a positive rational number. A common pole between the two
+blocks would give a nontrivial $\Z[i]$-relation between $R$ and $R'$,
+which is impossible. The same positive-sum argument applies within
+the second block. At least one coordinate of the direction is
+nonconstant, so there is an uncancelled pole.
+
+Take the integral reduced closure of the graph of $\mathcal F$ in
+$E_0^{2k}\times\mathbf P^1$. A positive-dimensional abelian translate
+contained in a fiber and passing through our point would meet the
+rational-function domain densely, contrary to the preceding paragraph.
+The points under consideration belong to the fixed finite-rank
+subgroup generated by $R$ in the first block and $R'$ in the second.
+They belong to the set $C(\Gamma',\epsilon)$ of \cite{VB} with error
+point zero. Thus the subgroup does not vary with the indices.
+
+For completeness, embed each $E_0$ by $\mathcal O(3O)$ and its
+product by Segre. Restriction of sections in every positive degree is
+surjective: for one factor this follows from
+\[
+0\to\mathcal O_{\mathbf P^2}(n-3)\to\mathcal O_{\mathbf P^2}(n)
+ \to\mathcal O_{E_0}(3nO)\to0
+\]
+and $H^1(\mathbf P^2,\mathcal O(n-3))=0$; take tensor products for
+the product embedding. This checks condition (1.1) of \cite{VB}.
+The line bundle is ample and symmetric, and the parameter space is
+the projective line with its standard height. The theorem bounds the
+canonical product height by $A_0h(\mathcal F)+J_0$.
+Pointed-isomorphism invariance and Galois invariance identify that
+height with a fixed positive multiple of
+$2\sum_j k_j^2\widehat h(P_0)$. Divide by this positive coefficient
+and take the maximum constants over the zero-index patterns. The
+all-zero pattern is immediate.
+\end{proof}
+
+\section{Prime progressions for arbitrary rational shifts}
+\begin{lemma}\label{lem:progression}
+Let $\mathcal P$ be a set of primes of positive relative upper
+density, let $B,\Theta\subset\Q$ be finite, and let $L_0>0$.
+There exist $s\in\Q$ and a positive integer $T$ such that
+\[
+ T(s+\beta-\theta)\in\mathcal P,\qquad
+ s+\beta-\theta>L_0
+ \quad(\beta\in B,\theta\in\Theta),
+\]
+and every displayed prime is coprime to $T$. For each fixed $\beta$,
+distinct $\theta$ give distinct primes. One may additionally require
+that $T$ be divisible by any prescribed positive integer.
+\end{lemma}
+\begin{proof}
+Choose a positive integer $D$ divisible by the prescribed integer and
+clearing all denominators in $B-\Theta$. Choose an integer $m$ so that
+\[
+ r_{\beta,\theta}=m+D(\beta-\theta)>
+ \max(DL_0,1)
+\]
+for every pair. Discard the finitely many primes at most $D$ from
+$\mathcal P$. By Green--Tao \cite[Theorem 1.2]{GT}, this set contains
+an arithmetic progression $q_0,q_0+v,\ldots,q_0+Nv$ with $v>0$ and
+$N\ge\max r_{\beta,\theta}$. Put
+\[
+ T=Dv,\qquad s=\frac{q_0+mv}{Dv}.
+\]
+Then $T(s+\beta-\theta)=q_0+r_{\beta,\theta}v=p$ is a prime
+in $\mathcal P$. We have $p>D$ and $p>v$, so $p$ divides neither
+$D$ nor $v$. This is the needed denominator-cancellation check.
+The lower bound and distinctness follow directly.
+\end{proof}
+
+\begin{proposition}\label{prop:finite}
+If $\Delta=0$, then for every finite $B\subset\Q$ there is
+$s\in\Q$ such that $\mathcal C(P_1,P_2;s+\beta)$ holds for all
+$\beta\in B$, with separate witnesses at the different shifts.
+\end{proposition}
+\begin{proof}
+Use Lemma~\ref{lem:progression} with primes congruent to $17$ modulo
+$312$ and exceeding $25$, with $\Theta=\{-5,-3,-1,1,3,5\}$,
+$L_0=2$, and $14\mid D$. At each shift, the sextic is the product
+of six distinct chosen primes divided by $T^6$, with no cancellation.
+Consequently the verification in \cite[Lemma 5.6]{BB} applies at
+each shift separately. Its six triples handle those six primes; at
+$2,7$ the denominator has exactly the same preparation as in that
+proof. Nothing in that verification uses the special origin or the
+number of the shifts.
+\end{proof}
+
+\section{Two tests for squaring}
+For a positive integer $m$, put
+\[
+ T_m=\Tr_{F/\Q}\bigl(x^*(mP_1)+x^*(mP_2)\bigr).
+\]
+Theorem~\ref{thm:trace} gives
+\begin{equation}\label{eq:amp}
+ m^2(n_1^2+n_2^2)\le A h(T_m)+J,
+\end{equation}
+with the same $A,J$ for every $m$.
+
+\begin{theorem}\label{thm:two}
+Fix an integer $m\ge1$ such that
+\[
+ m^2>2AH+A\log 2+J.
+\]
+Then $n_2=n_1^2$ is equivalent to the existence of $s\in\Q$ with
+\[
+ \mathcal C(P_1,P_2;s),\qquad
+ \mathcal C(P_1,P_2;s+T_m).
+\]
+\end{theorem}
+\begin{proof}
+If $\Delta\ne0$, \eqref{eq:height} and \eqref{eq:div} bound each
+of $h(s),h(s+T_m)$ by $H|\Delta|$. Subtracting gives
+\[
+ h(T_m)\le2H|\Delta|+\log2.
+\]
+Let $S=n_1^2+n_2^2\ge1$. Since the indices are integers,
+$|\Delta|\le n_1^2+|n_2|\le S$. Substitution in
+\eqref{eq:amp} gives
+$m^2S\le(2AH+A\log2+J)S$, a contradiction. Conversely,
+Proposition~\ref{prop:finite} applies to $B=\{0,T_m\}$.
+\end{proof}
+
+The identity case may instead be handled by the disjunction
+$(P_1,P_2)=(O,O)$, or $P_1,P_2\ne O$ and the two displayed tests.
+This avoids any need to evaluate the abscissa at $O$ in the nonzero
+branch. All the operations are Diophantine because $m$ is fixed.
+
+\subsection{Power amplification without elliptic multiplication}
+The positivity of doubled points permits a further simplification.
+Put
+\[
+ T=\Tr_{F/\Q}\bigl(x^*(P_1)+x^*(P_2)\bigr),\qquad
+ A_*=A+\frac{J}{\log3}.
+\]
+If $(P_1,P_2)\ne(O,O)$, then $T>\sqrt{13}>3$. Indeed, at
+each real embedding a nonzero doubled point has abscissa greater
+than the absolute value of the corresponding conjugate of $d$;
+the trace of each nonzero summand is greater than
+$d-d^\sigma=\sqrt{13}$. Hence $h(T)\ge\log3$, and
+Theorem~\ref{thm:trace} yields
+\begin{equation}\label{eq:noerror}
+ n_1^2+n_2^2\le A_* h(T).
+\end{equation}
+
+\begin{theorem}\label{thm:power}
+Choose any fixed positive integer $k$ satisfying
+$k>A_*(2H+\log2)$. The squaring relation is equivalent to
+\[
+ \exists s\in\Q:\quad
+ \mathcal C(P_1,P_2;s),\qquad
+ \mathcal C(P_1,P_2;s+T^k).
+\]
+One may choose $k$ to be a power of two. No large elliptic
+multiplication map occurs in this formula.
+\end{theorem}
+\begin{proof}
+If $\Delta\ne0$, set $S=n_1^2+n_2^2\ge1$ and combine
+\eqref{eq:height}, \eqref{eq:div}, and \eqref{eq:noerror}:
+\[
+ \frac{k}{A_*}S\le k h(T)=h(T^k)
+ \le 2H|\Delta|+\log2\le(2H+\log2)S,
+\]
+contrary to the choice of $k$. If $\Delta=0$, use
+Proposition~\ref{prop:finite} with $B=\{0,T^k\}$, including
+$T=0$ in the all-zero case.
+\end{proof}
+
+For an unrestricted-degree formula, substituting $T^k$ introduces
+no new retained rational parameter. For a quadratic circuit,
+choosing $k=2^j$ computes this power by $j$ successive squarings.
+This is a circuit prescription rather than a numerical bound on $j$:
+the constants have not been evaluated.
+
+The original proof has five copies of $\mathcal C$, each containing
+six Gaussian point triples. The new proof has two copies: the number
+of triples drops from $30$ to $12$, and the number of auxiliary
+Gaussian points $U_j$ from $90$ to $36$. These are counts of blocks
+and points, not counts of the final rational coordinates after
+encoding group membership, division, and DPRM arithmetic.
+
+\section{Direct quadratic relations and multiplication}
+The local argument is not specific to squaring. Fix
+$F_0\in\Z[X_1,\ldots,X_s]$ of total degree at most two. For
+$P_j=n_jP_0$ ($1\le j\le s$), put
+$\Delta_{F_0}=F_0(n_1,\ldots,n_s)$ and keep $n_0=1$.
+We describe a predicate $\mathcal C_{F_0}(P_1,\ldots,P_s;\xi)$.
+It is the BB predicate with the following explicit changes only.
+
+For each $1\le\ell\le6$, choose $U_j\in\Gamma+[i]\Gamma$
+for $0\le j\le s$, put $V_j=P_j-U_j$, and form the formal-log
+ratios, separately for each tuple,
+\[
+ B_j=\frac{f(z(U_j))}{f(z(U_0))},\qquad
+ C_j=\left(\frac{f(z(V_j))}{f(z(V_0))}\right)^\sigma,
+ \qquad 1\le j\le s.
+\]
+Here $z=-x/y$, $\rho=1/x$, their values at $O$ are zero, and
+$f$ is the degree-$21$ truncation in BB (5.2). Require the reference
+ratios to be defined. With $G(\xi)\ne0$, $R=14G(\xi)$, and
+$H_R(X)=R/(R+X^2)$, use
+\begin{align*}
+ W_\ell={}&
+ \prod_{j=0}^{s}H_R(\rho(U_j))H_R(\rho(V_j^\sigma))\,
+ \prod_{j=1}^{s}H_R\!\left(\frac{B_j-C_j}{R^{23}}\right)\\
+ &\hspace{20mm}\cdot
+ H_R\!\left(\frac{F_0(B_1,\ldots,B_s)}{R^{23}}\right).
+\end{align*}
+There are $3(s+1)$ factors. Require rational $c,a_\xi,b_\xi,z_\xi$
+such that
+\begin{gather*}
+ w_0=1-\operatorname{N}_{F(i)/\Q}
+      \left(\prod_{\ell=1}^{6}(1-W_\ell)\right),\qquad
+ c(R+w_0^2)^2=2R,\\
+ (1-c)(a_\xi^4-c^2)(b_\xi^4-c^2)=z_\xi^2.
+\end{gather*}
+Every quotient in these expressions is required to be defined.
+
+\begin{lemma}\label{lem:quadraticlocal}
+The predicate $\mathcal C_{F_0}$ implies
+$M(\xi)^{24}\mid\Delta_{F_0}$. If $\Delta_{F_0}=0$, then for
+every finite set $B\subset\Q$ there is a common shift $v\in\Q$
+such that $\mathcal C_{F_0}(P_1,\ldots,P_s;v+\beta)$ holds for
+every $\beta\in B$.
+\end{lemma}
+\begin{proof}
+Fix $p>25$ and a place $\mathfrak p$ of $F(i)$ above $p$, with
+$v(p)=1$. The required local conditions are
+\begin{gather*}
+ v(\rho(U_j)),\ v(\rho(V_j^\sigma))\ge1
+       \quad(0\le j\le s),\\
+ B_j-C_j\equiv0\pmod{\mathfrak p^{24}}
+       \quad(1\le j\le s),\qquad
+ F_0(B_1,\ldots,B_s)\equiv0\pmod{\mathfrak p^{24}}.
+\end{gather*}
+Write $U_j=[\gamma_j]P_0$, $V_j=[\delta_j]P_0$ with Gaussian
+integers $\gamma_j+\delta_j=n_j$. In particular,
+$\gamma_0+\delta_0=1$. The first local conditions put all points
+in the appropriate formal groups. BB's relative logarithm estimate
+$f(z(Q))/\log_E(z(Q))\in1+\mathfrak p^{24}$ gives
+\[
+ \gamma_0B_j\equiv\gamma_j,\qquad
+ \delta_0C_j\equiv\delta_j\pmod{\mathfrak p^{24}}.
+\]
+The errors here are integral Gaussian indices times elements of
+$\mathfrak p^{24}$, so this assertion does not assume that $B_j$
+or $C_j$ is integral. Using the comparison condition gives
+\[
+ B_j=(\gamma_0+\delta_0)B_j
+      \equiv\gamma_j+\delta_j=n_j\pmod{\mathfrak p^{24}}.
+\]
+Thus $B_j$ is integral. Evaluation of the integral polynomial $F_0$
+now gives $\Delta_{F_0}\equiv0\pmod{p^{24}}$. Zero numerator
+points cause no exception: their index and logarithm ratio are both
+zero, while the two reference denominators remain guarded.
+
+Suppose $p\mid M(\xi)$ and let $w=v_p(R)>0$, which is odd.
+At every place above $p$, all $H_R$-values are integral because
+\[
+ v(H_R(X))=\max(0,w-2v(X)).
+\]
+If a formal-group condition fails, its $\rho$-value has valuation
+at most zero. If a congruence fails, its normalized argument has
+valuation at most $23-23w\le0$. Hence a failure makes the relevant
+$W_\ell$ divisible by $\mathfrak p^w$. If every tuple failed at
+every place above $p$, the product inside the norm would be $1$
+modulo $p^w$ in the integral closure, so its norm would be $1$
+modulo $p^w$. This would give $v_p(w_0)\ge w$, then
+$v_p(R+w_0^2)=w$ and $v_p(c)=-w$, contradicting the square-denominator
+implication of BB Lemma 2.2. Some tuple succeeds above each such
+$p$, proving $M(\xi)^{24}\mid\Delta_{F_0}$.
+
+For the converse, suppose $\Delta_{F_0}=0$ and select the common
+shift by Lemma~\ref{lem:progression}, exactly as in
+Proposition~\ref{prop:finite}. Fix one of the six primes at one
+shift. It is congruent to $17$ modulo $312$, so it splits completely
+in $F(i)$, the reduction is ordinary, and the conjugate curve is a
+nonsquare quadratic twist. At a selected place its two Frobenius
+endomorphisms are $[\pi]$ and $[-\pi]$, with
+$\pi\in\Z[i]$, $\pi\overline\pi=p$, and
+$\pi\equiv1\pmod{2\Z[i]}$. Put
+\[
+ U_j=\left[\frac{1-\pi}{2}\right]P_j,
+ \qquad V_j=\left[\frac{1+\pi}{2}\right]P_j
+ \quad(0\le j\le s).
+\]
+Since $P_j=[2]Q_j$ with $Q_j\in E(F)$, these become
+$[1-\pi]Q_j$ and, after conjugation, $[1+\pi]Q_j^\sigma$.
+Both reduce to $O$. The exact logarithm ratios are $n_j$, so their
+truncations are congruent to $n_j$ modulo $p^{24}$. Integral
+polynomial evaluation proves the last local congruence. The
+multipliers are nonzero, and the formal logarithm is injective here,
+so the reference denominators are nonzero.
+
+At this chosen prime $v_p(R)=1$; every argument in the displayed
+$W_\ell$ has positive valuation. Thus $W_\ell\equiv1$ at the
+chosen place. All factors for every tuple are integral above $p$,
+so the norm of their product of complements is divisible by $p$.
+Consequently $w_0\equiv1\pmod p$ and $v_p(c)=1$. There are still
+only six selected primes at each shift, irrespective of $s$.
+
+Finally, $R=14p_1\cdots p_6/T^6>2$, with $14\mid T$. At $2,7$,
+write $w=v_\ell(R)\le-5$, odd. Then
+$v_\ell(R+w_0^2)=\min(w,2v_\ell(w_0))\le w$, so $c$ has
+positive valuation there, and $v_2(c)\ge6$. Its valuations outside
+$2,7,p_1,\ldots,p_6$ are even, its squareclass is
+$7p_1\cdots p_6\equiv7\pmod8$, and $0<c\le2/R<1$.
+The odd valuation of $R$ at a split selected prime prevents
+$R+X^2$ from vanishing for $X\in F(i)$; the rational denominator
+$R+w_0^2$ is also positive. BB Lemma 2.2 supplies
+$a_\xi,b_\xi,z_\xi$. This proves all definedness, valuation and
+real requirements at every shift.
+\end{proof}
+
+The proof of Theorem~\ref{thm:trace} works for every fixed finite
+number of indices, with constants depending on that number: the same
+pole argument excludes all positive-dimensional abelian translates.
+Apply it also to the fixed extra point $P_0$ and set
+\[
+ T=\Tr_{F/\Q}\left(x(P_0)+\sum_{j=1}^{s}x^*(P_j)\right),
+ \qquad S=1+\sum_{j=1}^{s}n_j^2.
+\]
+Then $T>\sqrt{13}>3$, and there is $A_{*,s}>0$ with
+$S\le A_{*,s}h(T)$. Let $C_{F_0}$ be the sum of the absolute
+values of the coefficients of $F_0$, increased to at least one.
+Every monomial of degree at most two has absolute value at most $S$,
+so $|\Delta_{F_0}|\le C_{F_0}S$. Any smaller positive constant
+with this proved bound may be used instead.
+
+\begin{theorem}\label{thm:quadratic}
+Choose a fixed positive integer
+$k>A_{*,s}(2HC_{F_0}+\log2)$. Then
+$F_0(n_1,\ldots,n_s)=0$ is equivalent to
+\[
+ \exists v\in\Q:\quad
+ \mathcal C_{F_0}(P_1,\ldots,P_s;v),\qquad
+ \mathcal C_{F_0}(P_1,\ldots,P_s;v+T^k).
+\]
+\end{theorem}
+\begin{proof}
+If $\Delta_{F_0}\ne0$, the two tests bound $h(T^k)$ by
+$2H|\Delta_{F_0}|+\log2$. This contradicts
+$h(T^k)=kh(T)\ge kS/A_{*,s}$ and the choice of $k$.
+The converse is Lemma~\ref{lem:quadraticlocal} with shifts
+$0,T^k$.
+\end{proof}
+
+In particular, use $F_0=X_1X_2-X_3$ to define multiplication
+directly. Here the sharper constant $C_{F_0}=1/2$ is valid, since
+\[
+ 2|n_1n_2-n_3|\le n_1^2+n_2^2+n_3^2+1=S.
+\]
+Thus $k>A_{*,3}(H+\log2)$ suffices. It uses two predicate blocks
+with six Gaussian quadruples
+each, hence $48$ auxiliary Gaussian points. Three calls to the
+two-test squaring relation use $108$ such points, while the original
+five-test implementation uses $270$. These figures count only the
+$U_j$ points and do not include point encodings, intermediate outputs,
+or the final rational variables. Addition remains the elliptic group
+law. The direct quadratic interface is useful when compiling the
+DPRM arithmetic, but its full coordinate cost still requires a
+separate compiler calculation.
+
+\section{Three squares for the final interval}
+Write
+\[
+ y(P)=a(P)+b(P)\sqrt{13}\qquad(P\in\Gamma\setminus\{O\}).
+\]
+\begin{lemma}\label{lem:coset}
+There is a coset $\mathcal K=P_*+[N]\Gamma$ such that
+\[
+ v_2(a(P))=-2,\qquad v_2(b(P))=-3\qquad(P\in\mathcal K),
+\]
+and the pairs $(a(P),b(P))$, $P\in\mathcal K$, are dense in
+$\mathbb R^2$.
+\end{lemma}
+\begin{proof}
+Take $Q=(d+1,d+2)\in E(F)$ and $P_*=2Q$. Direct duplication gives
+\[
+ x(P_*)=\frac{187+19\sqrt{13}}{72},\qquad
+ y(P_*)=-\frac{205}{108}-\frac{191}{216}\sqrt{13}.
+\]
+Thus the two valuations at $P_*$ are $-2,-3$. They persist in a
+sufficiently small neighborhood of $P_*$ in $E(F\otimes\Q_2)$.
+Choose an open subgroup $U$ of the compact local group with
+$P_*+U$ in this neighborhood. The quotient by $U$ is finite, so a
+positive integer $N$ has $[N]\Gamma\subseteq U$.
+
+The independence modulo torsion used in \cite[Lemma 4.2]{BB}
+persists after multiplication by $N$. Consequently the real closure
+of $[N]\Gamma$ is still the product of the two identity circles.
+Translating by $P_*\in\Gamma$ leaves that closure unchanged.
+The same coordinate argument as in that lemma gives the asserted
+density in $\mathbb R^2$.
+\end{proof}
+
+\begin{lemma}\label{lem:three}
+For every $q\in\Z$ and every $\epsilon>0$, there is
+$P'\in\Gamma\setminus\{O\}$ such that
+\[
+ a(P')<q<b(P'),\qquad b(P')-a(P')<\epsilon,
+\]
+and $(q-a(P'))(b(P')-q)$ is a sum of three rational squares.
+\end{lemma}
+\begin{proof}
+Choose $P'$ from the dense coset of Lemma~\ref{lem:coset} with
+the displayed real inequalities. Since $v_2(q)\ge0$, the positive
+rational number $r=(q-a(P'))(b(P')-q)$ has $v_2(r)=-5$.
+Write $r=A/B$ in lowest terms, with $A,B>0$. The integer $AB$ has
+odd $2$-adic valuation, so is not of the form $4^a(8b+7)$.
+The Legendre--Gauss three-square theorem, in the form recorded in
+\cite{Squares}, writes $AB=x_1^2+x_2^2+x_3^2$ with integers $x_i$.
+Then $r=\sum_i(x_i/B)^2$.
+\end{proof}
+
+Fix $C_0$ as in \cite[Theorem A]{BB}, and keep exactly its original
+set $T_{C_0}$. In particular, no extra coset condition is added to
+the definition of $T$ or to its quadratic presentation.
+
+\begin{theorem}\label{thm:wrapper}
+In \cite[Theorem A]{BB}, the condition $a\le q\le b$ can be
+replaced by
+\[
+ (q-a)(b-q)=v_1^2+v_2^2+v_3^2,\qquad v_i\in\Q.
+\]
+If $T_{C_0}$ has a quadratic presentation with $r$ auxiliary
+variables, the resulting definition of $\Z$ has a quartic
+presentation with at most $r+18$ auxiliary variables besides $q$.
+\end{theorem}
+\begin{proof}
+Since $(u,a,b)\in T$ implies $a\le b$, the new condition implies
+$a\le q\le b$. Thus the original soundness proof applies unchanged.
+For completeness, choose the point supplying $u$ exactly as in BB,
+then apply Lemma~\ref{lem:three} with
+$\epsilon=C_0^{-\Num(u)^{24}}$. The interval still contains the
+integer $q$, hence defines an element of the same $T$.
+
+Keep the nine intermediates in \cite[Remark 6.1]{BB}, the six
+variables $u,a,b,s_0,t_0,z_0$, and the $r$ variables in the chosen
+quadratic presentation of $T$. Add the three $v_i$ instead of four.
+Every equation is quadratic, including the new interval equation.
+Their sum of squares is quartic and the count is $r+9+6+3=r+18$.
+\end{proof}
+
+\section{Scope and further work}
+Neither shortening above supplies a rational point on the project's
+one-parameter actual detector fibers. In particular it does not
+identify the genus-one quotient with its required physical lift.
+The integers $k,C_0$ and the DPRM presentation are fixed existential
+data here; no numerical value of $r$ is claimed. The two-test
+construction can reduce the cost of compiling that arithmetic model,
+but an actual compiler and proof-preserving interface comparison are
+needed before advertising any final variable count.
+
+The companion checker verifies the duplication seed, its valuation
+identity for every integer input, the split-sextic identity, the
+formal-log coefficients used by BB, and sample congruence-class
+identities by exact arithmetic. It does not prove the cited height,
+density, three-square, or prime progression theorems.
+
+\begin{thebibliography}{9}
+\bibitem{BB} M.~Bhargava and A.~Burungale,
+\emph{A Diophantine definition of $\Z$ in $\Q$},
+arXiv:2611.16130v2, 19 November 2026.
+\url{https://arxiv.org/html/2611.16130v2}.
+\bibitem{VB} J.~von Buhren,
+\emph{Borne de hauteur semi-effective pour le probl\`eme de
+Mordell--Lang dans une vari\'et\'e ab\'elienne},
+J.~Th\'eor. Nombres Bordeaux \textbf{29} (2017), 307--320,
+Theorem 1.1.
+\url{https://www.numdam.org/article/JTNB_2017__29_1_307_0.pdf}.
+\bibitem{Weighted} ZQ Diophantine Project,
+\emph{Heights of positive weighted elliptic traces}, 14 November 2026,
+\nolinkurl{papers/trace_heights/weighted_trace_20261114_v27.tex}.
+\bibitem{GT} B.~Green and T.~Tao,
+\emph{The primes contain arbitrarily long arithmetic progressions},
+Ann. of Math. \textbf{167} (2008), 481--547, Theorem 1.2.
+\url{https://annals.math.princeton.edu/wp-content/uploads/annals-v167-n2-p03.pdf}.
+\bibitem{Squares} L.~Goldmakher and P.~Pollack,
+\emph{Refinements of Lagrange's four-square theorem},
+statement of the Legendre--Gauss three-square theorem.
+\url{https://www.pollack-math.net/4squares-arxiv.pdf}.
+\end{thebibliography}
+\end{document}

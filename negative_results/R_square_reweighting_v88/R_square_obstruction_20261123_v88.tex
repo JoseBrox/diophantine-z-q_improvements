@@ -1,0 +1,146 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=27mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs,hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newcommand{\R}{\mathbb R}
+\title{The shared square register cannot be removed by Laurent reweighting}
+\author{\(\mathbb Z\mathbb Q\) Diophantine Project}
+\date{23 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+For each of the retained 163- and 179-coordinate quartics, deleting the
+single register for the square of the scalar normalizer cannot be achieved
+by any diagonal Laurent reweighting in the two existing units while the
+physical equations and other unit registers are retained. The obstruction
+already holds for real weights. Six source rows give a short convex
+inequality proof; independently checkable integer certificates give the
+same conclusion. This is a restriction on the specified compilation,
+not a lower bound for quartics defining the integers.
+\end{abstract}
+
+\paragraph{Attribution and scope.}
+The shared-product constructions originate in the notes of Gabe Conant
+with Astra 6.2. The scalar-point construction and current physical source
+rows are those of Jose Brox's project continuation v82. The present
+exclusion is a subsequent deduction. It does not alter any arithmetic
+premise or polynomial record. Its source is
+\path{papers/quartic/scalar_point163_179_20261120_v82.tex}
+and the corresponding \texttt{source163.json} and
+\texttt{source179.json} physical tables.
+
+\section{The compilation model}
+Let \(c,R\ne0\) be the two units. Remove the register \(R_2=R^2\)
+and its defining row. Keep all remaining physical variables, equations,
+and the unit registers for \(c,c^{-1},c^{-2},R\); the 179-coordinate
+source also keeps \(R^{-1}\). A diagonal Laurent reweighting replaces
+each remaining physical variable \(v_i\) by
+\(c^{a_i}R^{b_i}y_i\) and divides each row by a fixed monomial
+\(c^{A_j}R^{B_j}\). It must represent every resulting term by a
+polynomial of total degree at most two using the retained registers.
+No row combinations, nonlinear changes, or additional registers are
+allowed. Fixed nonzero rational constants and powers of the fixed
+coefficient parameter have weight zero. Actual Laurent exponents are
+integral; allowing real weight vectors only relaxes the necessary conditions.
+
+Put \(e_c=(1,0)\), \(e_R=(0,1)\). The convex hull of exponent
+vectors attainable with one unit slot is
+\[
+ P_{163}=\operatorname{conv}\{(-2,0),(1,0),(0,1)\},\qquad
+ P_{179}=\operatorname{conv}\{(-2,0),(1,0),(0,1),(0,-1)\}.
+\]
+The exponent \((0,0)\) corresponds to an unused slot. If a term
+already contains two physical coordinates, its residual unit exponent
+must be zero. A term with no physical coordinate must have residual
+exponent in \(2P_m\). These are necessary conditions, whether or not
+the weights are integral.
+
+\section{Six physical rows}
+Use the source-coordinate names
+\[
+ F=v_{65},\quad J_0=v_{109},\quad J_1=v_{110},\quad
+ T=v_{111},\quad \sigma=v_{104},\quad B=v_{105},\quad
+ E=v_{11},\quad P=v_{193}.
+\]
+The two sources contain the following terms with nonzero coefficients.
+Only the indicated terms of each row are needed.
+\begin{center}\small
+\begin{tabular}{ll}
+\toprule
+Source row & Selected terms, up to nonzero rational constants\\
+\midrule
+\texttt{new.det0.factor0.0}&\(1,\ c^2F^2\)\\
+\texttt{v82.point.product.0}&\(c^{-1}FP,\ J_1P\)\\
+\texttt{v82.scalar.partial\_trace}&\(J_0^2,\ J_1^2,\ J_0T\)\\
+\texttt{v82.scalar.middle}&\(E\sigma,\ EB\)\\
+\texttt{v82.scalar.input}&\(B\sigma,\ R\)\\
+\texttt{v82.scalar.inverse}&\(T\sigma,\ R^4\)\\
+\bottomrule
+\end{tabular}
+\end{center}
+In the last two rows the eliminated \(R_2\) has been replaced literally
+by \(R^2\). All selected physical monomials remain distinct, so none
+can cancel under a diagonal rescaling.
+
+\begin{lemma}
+If such a reweighting exists, there are vectors \(t,s\in\R^2\)
+satisfying
+\begin{equation}\label{ineq}
+ -t-2e_c\in P_m,\qquad
+ e_R-2s\in2P_m,\qquad
+ 4e_R-t-s\in2P_m.
+\end{equation}
+\end{lemma}
+\begin{proof}
+Write \(w_i\) for the weight of a physical coordinate and \(r_j\)
+for that of a row. Quadratic terms must have residual exponent zero.
+The point-product row therefore gives \(w_{J_1}=w_F-e_c\).
+The partial-trace row gives
+\(w_{J_0}=w_{J_1}=w_T=:t\), so \(w_F=t+e_c\).
+The detector row has weight \(2w_F+2e_c\). Its constant term
+therefore requires \(-2w_F-2e_c\in2P_m\), or
+\(-t-2e_c\in P_m\).
+
+The middle pole row gives \(w_\sigma=w_B=:s\). The input
+row has weight \(2s\); its linear \(R\) term requires
+\(e_R-2s\in2P_m\). The inverse row has weight \(t+s\);
+its \(R^4\) term requires \(4e_R-t-s\in2P_m\).
+This proves all three necessary conditions.
+\end{proof}
+
+\begin{theorem}
+Neither retained general quartic admits a termwise quadratic compilation
+of the stated kind after deleting its \(R^2\) register. This remains
+true when both unit weights and all row weights are allowed to vary.
+\end{theorem}
+\begin{proof}
+For the 163-coordinate source, the second coordinate of every point of
+\(P_{163}\) lies in \([0,1]\). Apply this linear functional to
+\eqref{ineq}: it gives \(t_R\le0\), \(s_R\le1/2\), and
+\(t_R+s_R\ge2\), a contradiction.
+
+For the 179-coordinate source, use the linear functional
+\(\ell(a,b)=a+2b\). Its minimum and maximum on \(P_{179}\)
+are \(-2\) and \(2\). The first relation in \eqref{ineq} gives
+\(-\ell(t)-2\ge-2\), hence \(\ell(t)\le0\).
+The second gives \(2-2\ell(s)\ge-4\), hence \(\ell(s)\le3\).
+The third gives \(8-\ell(t)-\ell(s)\le4\), hence
+\(\ell(t)+\ell(s)\ge4\), again a contradiction.
+\end{proof}
+
+\section{Exact certificate and consequences}
+The accompanying standard-library checker reconstructs the available
+unit-exponent polygons, binds each selected inequality to a nonzero term
+of the physical source, and sums integer inequalities exactly. The
+19-term certificates give respectively \(0\le-9\) and \(0\le-6\).
+No optimization program is required to verify them. The search that
+discovered the certificates used linear programming, but the proof and
+final verification use only exact integer arithmetic.
+
+The obstruction identifies a specific limitation of reweighting. A
+smaller quartic might still follow from nonlinear coordinate changes,
+variable-dependent combinations of equations, a different native pole
+presentation, different point charts, or a different arithmetic source.
+None of these possibilities is excluded by this theorem. In particular
+the theorem does not prove a global minimum of 163 or 179 variables.
+\end{document}

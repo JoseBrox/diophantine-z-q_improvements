@@ -1,3 +1,9 @@
+## Bhargava–Burungale v2 audit and transfers (v88)
+
+The [v88 audit](results_20261123_v88.md) and [complete route map](bb_all_route_status_20261123_v88.md) supersede the numerical summary in this historical source map. All five current few-variable routes now use the stated class-seven product criterion of Bhargava–Burungale v2, Lemma 2.2, after the separately proved preparation and square-factor normalization. The 25/27 routes use the new scalar; the weak-abc11 routes use seven times their old weight and additional preparation at seven. This replaces their old pole-converse input. Their other elliptic, height, modular and quantified prime-pattern premises remain explicit.
+
+The finite-support twist extension allows overlapping complement prime supports. The BB index model admits two tests instead of five, direct quadratic relations, and an interval wrapper with one fewer rational variable. These are proved subsystem improvements; the paper's unspecified index-presentation parameter r remains unevaluated. No new numerical defining-variable record is claimed, and the 21/9 actual-realization gap remains open. The detailed audit checks BB's external theorem interfaces without claiming an independent proof of every inherited project foundation.
+
 > **Source map through v59.** The numerical table below is historical. Current records are in the [v82 result table](../data/results_20261120_v82.json) and [v82 proof guide](results_20261120_v82.md). The 56-variable quartic uses Burungale, arXiv:2611.16130v1, Theorem B in its stated square class seven; it does not require the square-class-one strengthening retained in the v79 construction. Other elliptic, comparison, trace and prime-pattern inputs remain explicit in its proof.
 
 # Arithmetic inputs, theorem scope, and effectiveness

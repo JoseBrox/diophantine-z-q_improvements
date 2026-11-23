@@ -10,26 +10,30 @@ whose rational input projection is the integers, under the arithmetic premises s
 
 **Every variable count includes the input.** Degree means total degree. Coefficient height is the maximum absolute integer coefficient after the fixed parameters have been substituted. We optimize variable count, then degree, then coefficient height. No global minimum is claimed.
 
-## Current constructions — 20 November 2026
+## Current constructions — 23 November 2026
 
 The reductions **193→165, 229→180, 68→62 and 13→11** come from **notes of Gabe Conant with Astra 6.2**. They have been audited and integrated here, with further degree, coefficient and hypothesis improvements. The [source audit](docs/results_20261119_v78.md) distinguishes those contributions from the subsequent work. The [v81 continuation](docs/results_20261119_v81.md) further reduces the ordinary-abc quartic through **62→59→58→56 variables**, using a nonlinear contact rechart and the published pole theorem directly. The [v82 continuation](docs/results_20261120_v82.md) reduces the general quartics to **163 and 179 variables**, with complete ordered witness constructions.
+
+The [Bhargava–Burungale v2 audit](docs/results_20261123_v88.md) now lowers the degrees in **all five current few-variable routes**, using a normalized product pole, a class-seven scalar and balanced squareclass representatives. It also proves an overlapping-support simultaneous-twist theorem, two-test quadratic arithmetic in the BB index model, and a three-square interval wrapper. The last improvement saves one rational variable relative to the paper's still-unspecified parameter `r`; it is not a new numerical defining-variable record. All new proofs, complete specifications, independent checks and [all-route qualifications](docs/bb_all_route_status_20261123_v88.md) are supplied.
 
 “None” in the height-hypothesis column means **no additional conjecture beyond the arithmetic premises explicitly retained in the proof**. A complete independent audit of all inherited elliptic, prime-pattern, pole-realization and height foundations has not been established.
 
 | Construction | Additional height hypothesis | Total variables | Degree | Coefficients and effectiveness | Expanded TXT size (kB) |
 |:--|:--|--:|:--|--:|--:|
-| [General few-variable family](papers/few_variables25/four_contact_scalar_20261119_v78.tex) | None | **25** | **≤ 87,778,394,112** | Four-contact scalar and projective two-root encoder; sufficient odd exponent ineffective. | Not expanded; <2^848 (L=143 fixture bound) |
+| [General few-variable family](papers/few_variables25/bb_product_degree_transfer_20261123_v88.tex) | None | **25** | **≤ 48,318,382,080** | Balanced BB product pole and projective encoder; sufficient odd exponent ineffective. | Not expanded; <2^825 (L=143 fixture bound) |
 | [General quartic family](papers/quartic/scalar_point163_179_20261120_v82.tex) | None | **163** | **4, exact** | 137 quadratic squares; 2,789 monomials; [fixed Busy Beaver member](docs/results_20261120_v87.md), t=t1<2^826, source dependencies retained. | [60.907](computation/expanded_text_v84/quartic163-N1.txt) (N=1 fixture; [BB formula](docs/busy_beaver_and_expanded_sizes_20261120_v84.md)) |
-| [Fully specified general polynomial](papers/few_variables25/four_contact_scalar_20261119_v78.tex) | None | **27** | **≤ 335,647,080,448** | Explicit `L=143`; coefficient height < `2^(2^46)`. | Not expanded; <2^965 (L=143 upper bound) |
+| [Fully specified general polynomial](papers/few_variables25/bb_product_degree_transfer_20261123_v88.tex) | None | **27** | **≤ 183,368,679,424** | Explicit `L=143`; coefficient height < `2^(2^45)`. | Not expanded; <2^941 (L=143 upper bound) |
 | [Fully specified quartic](papers/quartic/scalar_point163_179_20261120_v82.tex) | None | **179** | **4, exact** | 151 quadratic squares; 3,036 monomials; 748-bit exact height. | [66.905](computation/expanded_text_v84/quartic179.txt) |
-| [Few-variable family under abc](papers/conditional_few_variables/twelve_contact_first_scale_20261119_v78.tex) | Ordinary rational abc | **11** | **≤ 6,361,985** | Twelve contacts at the first height scale; sufficient fixed odd shift ineffective. | Not expanded; <2^227 (B=3 fixture bound) |
+| [Few-variable family under abc](papers/few_variables25/bb_product_degree_transfer_20261123_v88.tex) | Ordinary rational abc | **11** | **≤ 3,261,569** | Twelve contacts and normalized BB product pole; sufficient fixed odd shift ineffective. | Not expanded; <2^215 (B=3 fixture bound) |
 | [Quartic family under abc](papers/quartic_existence/paired_contact56_20261119_v81.tex) | Ordinary rational abc | **56** | **4, exact** | 46 quadratic squares; 809 monomials; sufficient fixed odd shift ineffective. | [11.564](computation/expanded_text_v84/quartic56-B3.txt) (B=3 fixture) |
+
+The two eleven-variable routes under weak rational abc at exponents `121/100` and `16/15` have degree bounds **16,460,929** and **9,808,001**, respectively. Their sufficient odd shifts remain ineffective. See the [v88 theorem](papers/few_variables25/bb_product_degree_transfer_20261123_v88.pdf) for all five degree improvements and retained assumptions.
 
 The last column gives **decimal kB (1 kB = 1,000 bytes)** for single-line ASCII, fully expanded TXT files with `x1` as the input, `x2`, ... as other variables, and no final newline. Numeric quartic sizes are **measured exactly**. The 163-variable `N=1` and 56-variable `B=3` members are algebraic **fixtures, not certified defining members**. The other entries are extremely loose **upper bounds for the indicated stored circuit member**, not measurements or predictions of the first defining member. See [fully expanded TXT files and exact size formulas](docs/busy_beaver_and_expanded_sizes_20261120_v84.md).
 
 The unrestricted-degree bounds describe complete finite determinant specifications; those enormous polynomials have not been fully expanded. All displayed quartics are exactly expanded. Every construction has integer content one, with primitive normalization where needed. Small coefficient fixtures and coefficient-height cutoffs are not sufficient defining parameters.
 
-The [results JSON](data/results_20261120_v82.json) records the exact specifications, source assumptions and parameter qualifications. Weaker fixed-exponent versions of abc and alternative coefficient presentations are retained in the [detailed proof guide](docs/results_20261119_v78.md#weaker-hypotheses-and-generalizations).
+The [v88 results JSON](data/results_20261123_v88.json) records all five new finite-algebra specifications and parameter qualifications; the [v82 records](data/results_20261120_v82.json) preserve the unchanged quartic specifications. The new fixture TXT upper bounds use the same exact character-count argument as v84, replayed in the v88 gate. Weaker fixed-exponent versions of abc and alternative coefficient presentations are retained in the [detailed proof guide](docs/results_20261119_v78.md#weaker-hypotheses-and-generalizations).
 
 ## Coefficients and explicit files
 
@@ -76,7 +80,7 @@ The [Pasten–Vidaux continuation](docs/results_20261119_v81.md) gives a separat
 
 ## Open reductions and proved obstructions
 
-The unrestricted-degree counts **25 and 11**, and the ordinary-abc quartic count **56**, remain unchanged. The [exact-square checkpoint](computation/actual_square_v83/README.md) isolates the remaining actual-trace requirement and proves further prepared-fibre obstructions. The general quartic improvements retain the shared square coordinate for `R²`; eliminating it is still open. A proved [parity obstruction](papers/quartic/hyperbolic_parity_20261119_v79.tex) rules out one proposed full-pair compression in the retained integral Laurent chart; it does not establish a lower bound for arbitrary quartics.
+The unrestricted-degree counts **25 and 11**, and the ordinary-abc quartic count **56**, remain unchanged. The [exact-square checkpoint](computation/actual_square_v83/README.md) isolates the remaining actual-trace requirement and proves further prepared-fibre obstructions. The general quartic improvements retain the shared square coordinate for `R²`. The [v88 obstruction](negative_results/R_square_reweighting_v88/R_square_obstruction_20261123_v88.tex) excludes deleting it by diagonal Laurent reweighting in both existing units; different charts and nonlinear row combinations remain open. A proved [parity obstruction](papers/quartic/hyperbolic_parity_20261119_v79.tex) rules out one proposed full-pair compression in the retained integral Laurent chart; it does not establish a lower bound for arbitrary quartics.
 
 The new [elliptic divisibility detector](papers/elliptic_divisibility/prepared_eds_divisibility_20261120_v82.tex) uses five coordinates for a prepared subrelation in which every nonzero integral quotient occurs, under ordinary abc and the published pole realization. It does not identify that quotient with an external rational input. A [one-parameter genus-one criterion](papers/pole_parameters/genus_one_sound_criterion_20261120_v82.tex) would give ten coordinates if its actual detector fibers have rational points. Every prepared scalar fiber is locally soluble, but an exact prepared counterexample rules out inferring rational points from those local conditions alone. Neither result is a new definition of the integers.
 
@@ -101,6 +105,7 @@ Use **Python 3.12**, **SymPy 1.14.0**, and **PassageMath PARI 10.8.14**. The new
 
 ```sh
 python -m pip install sympy==1.14.0 passagemath-pari==10.8.14
+python -B scripts/verify_v88.py --report /tmp/v88-verification.json
 python -B scripts/verify_v84.py --report /tmp/v84-verification.json
 python -B scripts/verify_v83.py --report /tmp/v83-verification.json
 python -B scripts/verify_v82.py --report /tmp/v82-verification.json
