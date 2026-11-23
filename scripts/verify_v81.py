@@ -20,7 +20,7 @@ import tempfile
 ROOT = Path(__file__).resolve().parents[1]
 PACKAGE = ROOT/'computation/variable_reductions_v81'
 FIELD = ROOT/'computation/number_fields/pasten_vidaux_v81'
-CONTRIBUTORS_HASH = 'bec5e749954eb50b1206e43bc7b27462419ac135762f820a201e528b222b3285'
+CONTRIBUTORS_HASH = '7c4e19ff00bd3f87f97db5ba836cea716e72fa8b583756c1a4fd7c5b5a075214'
 QUARTIC_PAPER = 'papers/quartic_existence/paired_contact56_20261119_v81.tex'
 FIELD_PAPERS = {
     'papers/number_fields/amplified_rationality_descent_20261119_v81.tex',

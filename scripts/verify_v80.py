@@ -20,7 +20,7 @@ import tempfile
 ROOT = Path(__file__).resolve().parents[1]
 PACKAGE = ROOT / 'computation/variable_reductions_v80'
 PAPER = 'papers/quartic_existence/one_helper58_20261119_v80.tex'
-CONTRIBUTORS_HASH = 'bec5e749954eb50b1206e43bc7b27462419ac135762f820a201e528b222b3285'
+CONTRIBUTORS_HASH = '7c4e19ff00bd3f87f97db5ba836cea716e72fa8b583756c1a4fd7c5b5a075214'
 
 
 def read(path):

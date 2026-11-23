@@ -109,6 +109,12 @@ def main():
         assert records['route_bounds']['ordinary_abc11']['degree_upper_bound'] == 3261569
         assert records['route_bounds']['weak_abc11']['degree_upper_bound'] == 16460929
         assert records['route_bounds']['strong_weak_abc11']['degree_upper_bound'] == 9808001
+        baseline = json.loads((ROOT/'data/results_20261120_v82.json').read_text())
+        expected_current = [dict(id=key, **row) for key, row in records['route_bounds'].items()]
+        expected_current += [row for row in baseline['current_constructions']
+                             if row['id'] not in records['route_bounds']]
+        assert records['current_constructions'] == expected_current
+        assert len(expected_current) == 11
         for row in records['route_bounds'].values():
             digits = row['coefficient_log2_l1_bound_for_stored_member']*31//100+2
             monomial = row['variables']*(6+len(str(row['degree_upper_bound'])))

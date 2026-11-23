@@ -6,7 +6,7 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 PACKAGE='computation/quartic/cleared_comparisons194_v73'
 PAPER='papers/quartic/quartic194_20261117_v73.tex'
-CONTRIBUTORS_HASH='bec5e749954eb50b1206e43bc7b27462419ac135762f820a201e528b222b3285'
+CONTRIBUTORS_HASH='7c4e19ff00bd3f87f97db5ba836cea716e72fa8b583756c1a4fd7c5b5a075214'
 
 def digest(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 

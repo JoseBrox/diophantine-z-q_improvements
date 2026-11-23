@@ -20,7 +20,7 @@ HALF = 'negative_results/papers/elliptic_charts/half_scalar_helper_20261117_v70.
 HP = 'negative_results/computation/half_scalar_helper_v70'
 ARITHMETIC = 'papers/pole_parameters/actual_trace_arithmetic_20261117_v70.tex'
 AP = 'computation/pole_parameters/actual_trace_arithmetic_v70'
-CONTRIBUTORS_HASH = 'bec5e749954eb50b1206e43bc7b27462419ac135762f820a201e528b222b3285'
+CONTRIBUTORS_HASH = '7c4e19ff00bd3f87f97db5ba836cea716e72fa8b583756c1a4fd7c5b5a075214'
 
 
 def digest(path):

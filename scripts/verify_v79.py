@@ -22,7 +22,7 @@ PAPERS = {
     'papers/quartic_existence/single_derivative59_20261119_v79.tex',
     'papers/quartic/hyperbolic_parity_20261119_v79.tex',
 }
-CONTRIBUTORS_HASH = 'bec5e749954eb50b1206e43bc7b27462419ac135762f820a201e528b222b3285'
+CONTRIBUTORS_HASH = '7c4e19ff00bd3f87f97db5ba836cea716e72fa8b583756c1a4fd7c5b5a075214'
 
 
 def read(path):
@@ -87,7 +87,16 @@ def main():
                           if row['id'].startswith('ordinary_abc_quartic'))
     assert latest_quartic['degree'] == 4 and latest_quartic['variables'] <= 59
     assert any(f"| **{latest_quartic['variables']}** | **4, exact** |" in line for line in abc_rows)
-    assert any('| **11** | **≤ 6,361,985** |' in line for line in abc_rows)
+    historical_few = next(row for row in current['current_constructions']
+                          if row['id'] == 'ordinary_abc11')
+    assert historical_few['variables'] == 11
+    assert historical_few['degree_upper_bound'] == 6361985
+    latest_few = next(row for row in latest['current_constructions']
+                      if row['id'] == 'ordinary_abc11')
+    assert latest_few['variables'] == 11
+    assert latest_few['degree_upper_bound'] <= historical_few['degree_upper_bound']
+    assert any(f"| **11** | **≤ {latest_few['degree_upper_bound']:,}** |" in line
+               for line in abc_rows)
     assert '$' not in readme and r'\(' not in readme and r'\[' not in readme
 
     builds = read(ROOT / 'data/audits/tex_build_20261119_v79.json')

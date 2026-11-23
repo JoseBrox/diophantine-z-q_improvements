@@ -19,7 +19,7 @@ PACKAGES = [
     'computation/quartic/local_detector_factors_v66',
     'negative_results/computation/point_roles_v66',
 ]
-CONTRIBUTORS_HASH = 'bec5e749954eb50b1206e43bc7b27462419ac135762f820a201e528b222b3285'
+CONTRIBUTORS_HASH = '7c4e19ff00bd3f87f97db5ba836cea716e72fa8b583756c1a4fd7c5b5a075214'
 
 
 def digest(path):
