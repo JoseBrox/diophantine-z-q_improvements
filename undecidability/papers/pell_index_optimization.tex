@@ -1,0 +1,593 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,hyperref,xurl}
+\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newcommand{\Z}{\mathbb Z}\newcommand{\N}{\mathbb Z_{\ge0}}
+\newcommand{\Q}{\mathbb Q}
+\title{An exact three-Pell index certificate\\and nine fewer quadratic coordinates}
+\author{\(\mathbb Z\mathbb Q\) Diophantine Project}
+\date{23 November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+We prove from elementary Pell identities the precise three-Pell block
+occurring in the emended Jones system.  Its asserted meaning is the
+value of a Pell sequence at an odd prescribed index.  The proof needs
+no source-universality hypothesis.  It also gives an equivalent bridge
+with one fewer squaring operation, a generalization to arbitrary
+indices at least two, and a signed-witness argument which removes
+two positivity wrappers.  A single quadratic square equation replaces
+a third three-coordinate positivity wrapper.  Together these save
+nine coordinates in the previously compiled quadratic core, with no
+integer predicate omitted.  This settles local arithmetic obligations;
+the full universality of the historical polynomial system remains a
+separate issue.
+\end{abstract}
+
+\section{Elementary facts used in the proof}
+
+For an integer \(a\ge2\), put \(D=a^2-1\) and define
+\[
+ X_j(a)+Y_j(a)\sqrt D=(a+\sqrt D)^j \qquad(j\in\Z).
+\]
+Then \(X_{-j}=X_j\), \(Y_{-j}=-Y_j\), and
+\[
+ X_0=1,\quad X_1=a,\qquad Y_0=0,\quad Y_1=1.
+\]
+Both sequences satisfy \(Z_{j+2}=2aZ_{j+1}-Z_j\).
+For nonnegative indices, \(X_j\) is strictly increasing and \(Y_j\)
+is strictly increasing; moreover \(Y_j\ge j\), with strict inequality
+for \(j\ge2\).  These statements follow immediately from the recurrence
+or multiplication by \(a+\sqrt D\).
+
+\begin{lemma}[Classification and two congruences]\label{classification}
+Every positive integer solution \(x,y\) of
+\(x^2-(a^2-1)y^2=1\) has the form \((X_j(a),Y_j(a))\) for a unique
+integer \(j\ge1\).  Also
+\[
+ Y_j(a)\equiv j\pmod2,
+ \qquad Y_j(A)\equiv j\pmod M \quad\hbox{if } A\equiv1\pmod M.
+\]
+For every positive integer \(M\), there is a positive \(j\) with
+\(M\mid Y_j(a)\).
+\end{lemma}
+\begin{proof}
+For the classification, if \(y=1\) then \(x=a\).  If \(y>1\),
+multiply \(x+y\sqrt D\) by \(a-\sqrt D\).  The new integer
+coordinates are
+\[
+             x'=ax-Dy,\qquad y'=ay-x.
+\]
+The norm is still one.  Since
+\(\sqrt D\,y<x<ay\) and \(\sqrt D>a-1\), one has
+\(x'>0\) and \(0<y'<y\).  Descent gives a power of
+\(a+\sqrt D\), and strict monotonicity gives uniqueness.
+The two congruences follow from the recurrence, reduced modulo two
+and modulo \(M\), respectively.  Finally multiplication by
+\(a+\sqrt D\) is a unit operation in the finite ring
+\((\Z/M\Z)[T]/(T^2-D)\).  Some positive power is one, and
+the coefficient of \(T\) in that power is \(Y_j(a)\).
+\end{proof}
+
+\begin{lemma}[A square-divisibility step down]\label{stepdown}
+Let \(p,q\ge1\), and put \(c=Y_p(a)\).
+If \(c^2\mid Y_q(a)\), then \(c\mid q\).
+In fact \(pc\mid q\).
+\end{lemma}
+\begin{proof}
+Write \(q=kp+r\), where \(0\le r<p\), and put \(d=X_p(a)\).
+Modulo \(c\), multiplication by
+\((d+c\sqrt D)^k\) gives
+\[
+               Y_q(a)\equiv d^kY_r(a)\pmod c.
+\]
+The norm identity gives \(\gcd(c,d)=1\), and
+\(0\le Y_r(a)<Y_p(a)=c\).  Thus \(r=0\), so \(q=kp\).
+Now the binomial expansion of \((d+c\sqrt D)^k\) gives
+\[
+               Y_q(a)\equiv k d^{k-1}c\pmod {c^2}.
+\]
+The assumed divisibility implies \(c\mid k\), proving the stronger
+conclusion.  The argument also covers \(c=1\).
+\end{proof}
+
+\begin{lemma}[The trace residue determines an index]\label{trace}
+Let \(q>p\ge1\), put \(F=X_q(a)\), and let \(t\in\Z\).
+Then
+\[
+      X_t(a)\equiv X_p(a)\pmod F
+      \quad\Longleftrightarrow\quad
+      t\equiv p\ \hbox{or }-p\pmod {4q}.
+\]
+\end{lemma}
+\begin{proof}
+The double-angle identities give
+\[
+ X_{2q}=2X_q^2-1\equiv-1\pmod F,
+ \qquad Y_{2q}=2X_qY_q\equiv0\pmod F.
+\]
+Therefore \(X_{2q+j}\equiv-X_j\pmod F\) for every integer \(j\).
+Together with \(X_{-j}=X_j\), this reduces any residue \(X_t\)
+to \(\sigma X_r\), where \(0\le r\le q\) and
+\(\sigma\in\{1,-1\}\).  More precisely, write
+\(t=2qk+s\), \(0\le s<2q\).  If \(s\le q\), use
+\(r=s,\sigma=(-1)^k\); otherwise use
+\(r=2q-s,\sigma=(-1)^{k+1}\).
+
+If \(\sigma=1\), strict monotonicity and
+\(0<X_p<F\), \(0<X_r\le F\), imply \(r=p\).
+If \(\sigma=-1\) and \(r=q\), the residue is zero and cannot
+equal \(X_p\).  If \(r<q\), then, since \(q\ge2\),
+\[
+       0<X_r+X_p\le2X_{q-1}<X_q=F.
+\]
+The strict final inequality follows from
+\(X_q=2aX_{q-1}-X_{q-2}\) and
+\(X_{q-2}<X_{q-1}\).  So the negative sign is impossible.
+The cases \(r=p,\sigma=1\) in the preceding explicit reduction
+are exactly \(t\equiv\pm p\pmod {4q}\).  The reverse implication
+follows from the same double-angle identities.
+\end{proof}
+
+\section{The exact odd-index certificate}
+
+\begin{theorem}\label{odd}
+Let \(a,B,c,d\) be positive integers such that
+\(a\ge2\), \(B\ge3\) is odd, and \(c>B\).
+For either of the choices
+\begin{align}
+ G_{\rm old}&=a+F^2(d^2-a),\label{oldG}\\
+ G_{\rm new}&=a+F^2(c+1-a),\label{newG}
+\end{align}
+the following assertions are equivalent:
+\begin{enumerate}
+\item \(c=Y_B(a)\) and \(d=X_B(a)\).
+\item There are positive integers \(i,F,j,o\) such that
+\begin{align}
+ d^2&=(a^2-1)c^2+1,\label{pell1}\\
+ F^2&=(a^2-1)i^2c^4+1,\label{pell2}\\
+ (d+oF)^2&=(G^2-1)(B+jc)^2+1.\label{pell3}
+\end{align}
+\end{enumerate}
+Thus replacing \eqref{oldG} by \eqref{newG} preserves the
+existence of positive integer witnesses, in both directions.
+\end{theorem}
+\begin{proof}
+Assume the three equations.  By Lemma~\ref{classification}, write
+\[
+    c=Y_p(a),\quad d=X_p(a),\qquad
+    ic^2=Y_q(a),\quad F=X_q(a)
+\]
+with \(p,q\ge1\).  Since \(c>B\ge3\), one has \(p\ge2\),
+\(c\ge Y_2(a)=2a\), and \(p<c\).
+Lemma~\ref{stepdown} gives \(c\mid q\), so \(q\ge c>p\).
+Both choices of \(G\) satisfy \(G>a\), and
+\[
+ d^2\equiv F^2\equiv1\pmod c,
+ \qquad G\equiv1\pmod c,
+ \qquad G\equiv a\pmod F.                         \tag{*}
+\]
+For \(G_{\rm new}\), positivity uses \(c+1-a>0\).
+
+Apply Lemma~\ref{classification} to \eqref{pell3}, obtaining
+\[
+                 B+jc=Y_t(G),\qquad d+oF=X_t(G)
+\]
+for a positive integer \(t\).  The first two congruences in (*)
+and Lemma~\ref{classification} imply \(t\equiv B\pmod c\).
+The recurrence for \(X_t\) and the last congruence in (*) imply
+\[
+                  X_t(a)\equiv X_t(G)\equiv d=X_p(a)\pmod F.
+\]
+Lemma~\ref{trace} gives \(t\equiv\pm p\pmod {4q}\), hence
+\(B\equiv\pm p\pmod c\).  As \(0<B,p<c\), either \(B=p\)
+or \(B=c-p\).  But \(c\equiv p\pmod2\), whereas \(B\) is odd.
+The second alternative is impossible, proving \(p=B\).
+
+Conversely, assume \(c=Y_B(a),d=X_B(a)\).
+One may take the explicit index \(q=Bc\): expanding
+\((d+c\sqrt D)^c\) shows \(c^2\mid Y_q(a)\).
+Set
+\[
+                   i=Y_q(a)/c^2,\qquad F=X_q(a).
+\]
+All are positive integers and satisfy the first two equations.
+For either choice of \(G\), properties (*) hold and \(G>a\).
+Put
+\[
+             H=Y_B(G),\qquad I=X_B(G),\qquad
+             j=(H-B)/c,\qquad o=(I-d)/F.
+\]
+The congruences (*) make \(j,o\) integers.  They are positive:
+\(Y_B(G)>B\) for \(B\ge2\), and \(X_B(G)>X_B(a)\)
+because \(G>a\).  For the latter inequality one can use
+\(X_B(A)=\bigl((A+\sqrt{A^2-1})^B+
+(A+\sqrt{A^2-1})^{-B}\bigr)/2\), which is strictly increasing
+for real \(A>1\).  Finally the norm identity for \(I,H\)
+is exactly \eqref{pell3}.
+\end{proof}
+
+\begin{corollary}[One less squaring operation]
+In any polynomial construction using the old block with these
+hypotheses, the substitution \(G_{\rm old}\mapsto G_{\rm new}\)
+is valid at the level of existential positive integer solutions.
+If an additional coordinate storing \(d^2\) was used only to form
+\(G_{\rm old}\), that coordinate and its defining quadratic row
+can be removed.  The first Pell equation itself already uses the
+quadratic monomial \(d^2\) and does not require a separate register.
+\end{corollary}
+
+\section{A generalization without the odd-index restriction}
+
+\begin{theorem}\label{arbitrary}
+Let \(a\ge2\), \(B\ge2\), \(c>B\), and \(d>0\) be integers.
+Then \(c=Y_B(a)\), \(d=X_B(a)\) if and only if positive integer
+witnesses \(i,F,j,o\) satisfy
+\[
+ d^2=(a^2-1)c^2+1,
+ \qquad F^2=4(a^2-1)i^2c^4+1,
+\]
+\[
+ (d+oF)^2=(G^2-1)(B+2jc)^2+1,
+ \qquad G=a+F^2(2c+1-a).
+\]
+\end{theorem}
+\begin{proof}
+Follow the preceding proof, with \(Y_q(a)=2ic^2\).
+Now \(F^2\equiv1\pmod {2c}\), so \(G\equiv1\pmod {2c}\).
+The last Pell index satisfies \(t\equiv B\pmod {2c}\).
+Lemma~\ref{stepdown} still gives \(c\mid q\), and
+Lemma~\ref{trace} gives \(t\equiv\pm p\pmod {4q}\), hence
+\(B\equiv\pm p\pmod {2c}\).
+Since \(0<B,p<c\), the negative alternative is impossible
+without a parity assumption.  Conversely one may choose \(q=2Bc\),
+since the preceding binomial expansion and the doubling identity give
+\(2c^2\mid Y_q(a)\).  Take the last index to be \(B\),
+as before.  All the resulting quotients are positive integers.
+\end{proof}
+
+\section{Signed witnesses in a rational quadratic system}
+
+\begin{lemma}[A signed trace residue]\label{signedtrace}
+Under the hypotheses of Lemma~\ref{trace},
+\[
+ X_t(a)\equiv X_p(a)\text{ or }-X_p(a)\pmod {X_q(a)}
+ \quad\Longleftrightarrow\quad
+ t\equiv p\text{ or }-p\pmod {2q}.
+\]
+\end{lemma}
+\begin{proof}
+The positive residue is Lemma~\ref{trace}.  The identity
+\(X_{t+2q}\equiv-X_t\pmod {X_q}\) turns the negative residue
+into the positive one.  The four resulting classes modulo \(4q\)
+are exactly the two displayed classes modulo \(2q\).
+\end{proof}
+
+\begin{proposition}[No sign guard on the final norm root]
+\label{signedblock}
+Let \(a\ge2\), let \(B\ge3\) be odd, and let \(c,d\in\Z\)
+satisfy \(|c|>B\) and \(d^2=(a^2-1)c^2+1\).
+Let \(i\in\Z\setminus\{0\}\), \(j,o\in\Z\), and \(F\in\Q\)
+satisfy the second and third norm equations
+\eqref{pell2}--\eqref{pell3}, with \(G\) given by either
+\eqref{oldG} or \eqref{newG}.  No sign assumption is made on
+\(F\), \(B+jc\), or \(d+oF\).
+Then
+\[
+                         |c|=Y_B(a),\qquad |d|=X_B(a).
+\]
+If \(c,d>0\), the projected pair is therefore exactly the same
+as in Theorem~\ref{odd}, and positive witnesses can be reconstructed.
+\end{proposition}
+\begin{proof}
+Set \(C=|c|\).  The first norm gives
+\(C=Y_p(a), |d|=X_p(a)\) for some \(p\ge2\), so
+\(C\ge2a\) and \(p<C\).  The second norm shows that the
+rational number \(F\) has integer square.  Hence \(F\) is an
+integer, and \(F\ne0\).  Classifying its absolute values gives
+\[
+                  |i|C^2=Y_q(a),\qquad |F|=X_q(a),
+\]
+where \(C\mid q\) and \(q\ge C>p\).
+
+For the old bridge \(G>a\).  For the new bridge, if \(c>0\)
+then \(G>a\); if \(c<0\), then
+\[
+ G=a-F^2(C+a-1)\le1-C\le-3.
+\]
+Thus \(|G|\ge2\) in every case.  Also
+\(G\equiv1\pmod C\) and \(G\equiv a\pmod {|F|}\).
+The quantity \(H=B+jc\) cannot be zero, because \(0<B<C\).
+The last norm then also makes \(I=d+oF\) nonzero.
+For the signed parameter \(G\), Pell classification says that
+\[
+          H=\varepsilon Y_t(G),\qquad I=\varepsilon'X_t(G)
+\]
+for some \(t\ge1\) and independent signs
+\(\varepsilon,\varepsilon'\in\{1,-1\}\).
+This follows from the classification at \(|G|\), using
+\(X_t(-A)=(-1)^tX_t(A)\) and
+\(Y_t(-A)=(-1)^{t-1}Y_t(A)\).
+
+Reduction of the first relation modulo \(C\) gives
+\(t\equiv\pm B\pmod C\).  Reduction of the second modulo
+\(|F|\) gives \(X_t(a)\equiv\pm X_p(a)\pmod {|F|}\).
+Lemma~\ref{signedtrace} yields \(t\equiv\pm p\pmod {2q}\),
+so \(B\equiv\pm p\pmod C\).  The parity argument of
+Theorem~\ref{odd} again excludes \(B=C-p\).  Thus \(p=B\).
+\end{proof}
+
+\section{The inequality makes the congruence and root positive}
+
+\begin{proposition}[Automatic positivity of \(c-B\)]\label{phi}
+Let \(r,s,w,n\) be positive integers, \(n\ge2\), and put
+\[
+ Y=sn^2,\qquad B=2r+1,\qquad
+ a=(wn^2+1)rsn^2.
+\]
+Let \(p\) be either \(2ws^2r^2n^2\) or
+\(2ws^2r^2n^6\).  Suppose that \(c,d,k,h\) are integers,
+\(\tau\in\Q\), and
+\begin{equation}\label{smallpell}
+ \tau^2=(p^2-1)k^2+1,\qquad
+ k=r+1+h(p-1),\qquad
+ k^2-4(c-kY)^2>0.
+\end{equation}
+Suppose also that the signed three-Pell equations in
+Proposition~\ref{signedblock} hold, without initially assuming
+\(|c|>B\).  Then
+\[
+           k>0,\qquad c>B,\qquad h>0,
+           \qquad c=Y_B(a),\quad |d|=X_B(a).
+\]
+In particular, if \(c=B+\varphi\), then \(\varphi>0\)
+is automatic.
+\end{proposition}
+\begin{proof}
+The defining formulas imply
+\begin{equation}\label{bounds}
+       Y\ge4,\qquad p\ge8r^2,\qquad 2a<p^2.
+\end{equation}
+For the last inequality it suffices to use the smaller value of \(p\).
+After division by \(2rsn^2\), it reduces to
+\[
+        wn^2+1<2w^2s^3r^3n^2,
+\]
+which follows from \(wn^2\ge4\) and \(w,s,r\ge1\).
+Also \(p-1>2(r+1)\).  The congruence for \(k\) therefore
+implies \(|k|\ge r+1\).
+
+The strict inequality in \eqref{smallpell} says
+\[
+                   \left|\frac ck-Y\right|<\frac12.
+\]
+Thus \(c\) and \(k\) have the same sign, and
+\[
+ |c|>|k|(Y-1/2)\ge(r+1)(Y-1/2)>2r+1=B.
+\]
+Proposition~\ref{signedblock} now applies and gives
+\(|c|=Y_B(a)\), \(|d|=X_B(a)\).
+
+Since \(\tau^2\) is an integer, \(\tau\) is an integer.
+Classify the first norm in \eqref{smallpell} to obtain
+\(|k|=Y_\ell(p)\) for some \(\ell\ge1\).
+Suppose \(k<0\).  The congruence
+\(Y_\ell(p)\equiv\ell\pmod {p-1}\) gives
+\[
+       \ell\equiv-(r+1)\pmod {p-1},
+       \qquad \ell\ge p-r-2\ge4r+1.
+\]
+The final inequality follows from
+\(p\ge8r^2\) and \(8r^2-5r-3\ge0\) for \(r\ge1\).
+The elementary recurrence bounds give
+\[
+ |k|=Y_\ell(p)>p^{\ell-1}\ge p^{4r},
+ \qquad |c|=Y_{2r+1}(a)<(2a)^{2r}<p^{4r}.
+\]
+This contradicts \(|c|>|k|(Y-1/2)>|k|\).  Hence \(k>0\),
+and consequently \(c>0\), proving \(c>B\).
+
+Finally \(k=r+1+h(p-1)>0\) and \(p-1>r+1\) force
+\(h\ge0\).  If \(h=0\), then \(k=r+1\ge2\), \(k<2p\),
+and
+\[
+         (pk-1)^2<(pk)^2-k^2+1<(pk)^2,
+\]
+contradicting that \(\tau^2\) is an integer square.
+Thus \(h>0\) as well.
+\end{proof}
+
+\section{One square selects the positive first root}
+
+\begin{lemma}[The odd-index square]\label{oddsquare}
+For every integer \(r\ge0\),
+\[
+ X_{2r+1}(a)-1
+       =(a-1)\bigl(Y_{r+1}(a)+Y_r(a)\bigr)^2.
+\]
+\end{lemma}
+\begin{proof}
+Write \(X=X_r(a),Y=Y_r(a)\).  Since
+\(Y_{r+1}=X+aY\) and \(X^2=1+(a^2-1)Y^2\), expansion gives
+\[
+ (a-1)(Y_{r+1}+Y_r)^2
+   =a-1+2(a^2-1)XY+2a(a^2-1)Y^2.
+\]
+The addition and doubling identities give the same expression for
+\(X_{2r+1}-1\).
+\end{proof}
+
+\begin{proposition}[A one-coordinate replacement for \(\gamma>0\)]
+\label{gamma}
+Assume the hypotheses of Proposition~\ref{phi}, and also let
+\(b\ge2\), \(n\ge b\), and \(\gamma\in\Z\) satisfy
+\[
+                 d=bw+(a-2)c+(4a-5)\gamma.
+\]
+Adjoin one rational coordinate \(\zeta\) and the quadratic equation
+\begin{equation}\label{branch}
+                         \zeta^2=(a-1)(d-1).
+\end{equation}
+Then \(d>0\) and \(\gamma>0\).
+Conversely every positive solution of the old source block admits
+a rational, in fact integral, \(\zeta\) satisfying \eqref{branch}.
+\end{proposition}
+\begin{proof}
+Since \(a>1\), equation \eqref{branch} gives \(d\ge1\).
+The norm and \(c>B\) exclude \(d=1\), so \(d>0\).
+Proposition~\ref{phi} therefore gives
+\(c=Y_B(a)\), \(d=X_B(a)\).
+Put \(R_j=X_j(a)-(a-2)Y_j(a)\).  Multiplication gives
+\[
+ R_0=1,\quad R_1=2,\quad
+ R_{j+1}=2R_j+(4a-5)Y_j(a),\quad R_2=4a-1.
+\]
+Thus \(R_B\ge R_2>a\).  Also
+\[
+                   a=(wn^2+1)rsn^2>wn^4\ge wb^4>wb.
+\]
+Consequently
+\[
+           \gamma=\frac{R_B-bw}{4a-5}>0.
+\]
+For completeness, Lemma~\ref{oddsquare} permits
+\(\zeta=(a-1)(Y_{r+1}(a)+Y_r(a))\), proving the converse.
+\end{proof}
+
+\begin{corollary}[Nine coordinates removed from the compiled core]
+Suppose a quadratic core has the displayed formulas and retains the
+integer predicates for all its integer inputs, including the
+nonzero integer \(i\), while ordinary positivity is implemented by
+three-coordinate triangular-number wrappers.  The following changes
+preserve its equivalence with the positive source system:
+\begin{enumerate}
+\item replace \(G_{\rm old}\) by \(G_{\rm new}\) and remove the
+separate \(d^2\) register used only by the old bridge;
+\item remove the positivity wrappers for \(I=d+oF\) and
+\(\varphi=c-(2r+1)\);
+\item replace the positivity wrapper for \(\gamma\) by
+the single equation \eqref{branch} and its coordinate \(\zeta\).
+\end{enumerate}
+The net coordinate saving is \(1+3+3+(3-1)=9\).
+The net equation saving is three: one square-register row and
+two positivity rows disappear, while the third positivity row is
+replaced by \eqref{branch}.  No integer predicate is discarded.
+\end{corollary}
+\begin{proof}
+Every positive source solution admits the new branch coordinate by
+Lemma~\ref{oddsquare}; the old and new bridge projections agree by
+Theorem~\ref{odd}.  Conversely Proposition~\ref{phi} restores
+\(c>B\) and \(h>0\), Proposition~\ref{gamma} restores \(d>0\)
+and \(\gamma>0\), and Proposition~\ref{signedblock} identifies
+the exact first Pell pair.  The constructive part of
+Theorem~\ref{odd} then replaces \(i,F,j,o\) by positive
+witnesses for the old block.  They occur outside the block only
+in their integrality predicates and the defining arithmetic
+registers, which can be chosen anew.  The remaining source
+coordinates and their equations are unchanged.
+\end{proof}
+
+\section{Application to the complete rational quadratic tables}
+
+The reduction has been applied to each complete stored system, including
+the integral-input certificates and all their guards.  The resulting counts
+are as follows; the first two rows begin with the global-contact-gauge
+tables, and the last begins with the shared-reference ordinary-abc table.
+\[
+\begin{array}{c|rr|rr}
+\text{integer interface}&\text{old variables}&\text{old rows}
+ &\text{new variables}&\text{new rows}\\\hline
+163&1185&1095&1176&1092\\
+179&1355&1241&1346&1238\\
+56\text{ (ordinary abc)}&846&728&837&725
+\end{array}
+\]
+All residuals remain quadratic with integral parameter-polynomial
+coefficients.  Their sum of squares is consequently a polynomial of total
+degree four with the same rational solution set.  The instance parameters
+occur in the coefficients and are not counted as existential unknowns.
+The table compiler checks that the deleted square register occurs only in
+its defining equation, the first norm, and the old bridge.  Each deleted
+positivity coordinate occurs only in its own wrapper.  All other residuals
+are preserved literally, up to coordinate numbering.
+
+The complete systems are in
+\nolinkurl{undecidability/coefficients/jones1980_pell_core/}.
+They are produced by
+\nolinkurl{undecidability/code/build_pell_core_reduction.py}
+with option \texttt{--include-abc}.  The independent table checker
+\nolinkurl{undecidability/verify_pell_core_reduction.py}
+with the same option verifies every unchanged row, the three modified
+formulas, coefficient domains, support, hashes and counts.  Its checks
+are finite algebra; the existential equivalence follows from the proofs
+above, together with the retained simultaneous integer-certificate
+interfaces.
+
+These counts are exact algebraic checkpoints.  Their interpretation as
+undecidability bounds still assumes the explicitly unverified
+source-universality assertion \(\mathcal U_{\rm em}\), as well as the
+chosen integer interface's stated arithmetic premises.  The third row
+also assumes ordinary rational abc.  No global minimum is claimed.
+
+\section{The linear congruence and the remaining global obligation}
+
+Put \(R_j=X_j(a)-(a-2)Y_j(a)\).  Direct multiplication gives
+\[
+ R_{j+1}-2R_j=(4a-5)Y_j(a),\qquad R_0=1.
+\]
+Thus the local certificate also gives the exact congruence
+\[
+         X_B(a)-(a-2)Y_B(a)\equiv2^B\pmod {4a-5}.
+\]
+Consequently, after the three-Pell block is established, the linear
+row in the emended Jones system is precisely a positive-quotient
+version of
+\[
+                      bw\equiv2^{2r+1}\pmod {4a-5}.
+\]
+Converting this congruence to an exact power relation requires the
+remaining binomial-approximation inequalities and their size bounds.
+The present theorem does not supply those bounds.
+
+The earlier source audit also records an unresolved difference in
+the auxiliary parameter \(p\).  The printed older display uses
+\(p=2ws^2r^2n^2\) \cite[Theorem 3]{Jones80}.
+Under the natural identification
+\[
+        U=2rsn^2,\qquad V=wn^2,\qquad A=2a=U(V+1),
+\]
+the modern BDHMS Pell/binomial bridge \cite[Definition 4.1 and
+the square condition (4.2b)]{BDHMS} instead has parameter
+\(U^2V/2=2ws^2r^2n^6\).  This is a concrete discrepancy in
+the attempted identification, not a proof that the older system is
+nonuniversal.  It must be resolved before importing a complete
+universality assertion.  In particular, the elementary results here
+do not discharge the source hypothesis \(\mathcal U_{\rm em}\),
+and they do not justify replacing \(q=b^{5^{60}}\) by \(q=b^5\).
+
+The accompanying exact checker
+\nolinkurl{undecidability/verify_pell_index_optimization.py}
+verifies the polynomial identities, produces explicit positive and
+signed Pell witnesses, and checks a finite collection of trace residues.
+Its finite examples are illustrations of the proved lemmas, not a
+substitute for them.  It also verifies the separate negative-input
+counterexample in \texttt{negative\_mixed\_witness.tex}.
+
+\begin{thebibliography}{9}
+\bibitem{Jones80}
+J. P. Jones, \emph{Undecidable Diophantine equations},
+Bulletin of the American Mathematical Society (New Series)
+\textbf{3}, no.~2 (1980), 859--862, Theorem~3, p.~861.
+\url{https://doi.org/10.1090/S0273-0979-1980-14832-6}.
+\bibitem{BDHMS}
+J. Bayer, M. David, M. Ha{\ss}ler, Y. Matiyasevich and D. Schleicher,
+\emph{Diophantine equations over \(\Z\): universal bounds and parallel
+formalization}, arXiv:2506.20909v3, 22 October 2026.
+\url{https://arxiv.org/abs/2506.20909v3}.
+\end{thebibliography}
+
+\end{document}

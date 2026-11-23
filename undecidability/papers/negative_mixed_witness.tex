@@ -1,0 +1,74 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\newtheorem{proposition}{Proposition}
+\title{The mixed-integer source does not force its ninth input to be nonnegative}
+\author{\(\mathbb Z\mathbb Q\) Diophantine Project}
+\date{23 November 2026}
+\begin{document}
+\maketitle
+
+Use the notation of the exact BDHMS coefficient recipe in
+\texttt{finite\_wrapper\_transfer.tex}: the source is
+\(Q(a,f,g,h,k,l,w,x,y,n)\), with eight integer inputs and one
+nonnegative integer input.  The coding quantities are denoted by
+\(B_0,N,S_0,T_0,R_0,X,Y\), to distinguish them from the final
+relation-combining arguments \(S,T,R\).
+The primary source is J.~Bayer, M.~David, M.~Ha{\ss}ler,
+Y.~Matiyasevich and D.~Schleicher, \emph{Diophantine equations over
+\(\mathbb Z\): universal bounds and parallel formalization},
+arXiv:2506.20909v3, Definitions 2.1, 4.1 and 5.3;
+\url{https://arxiv.org/abs/2506.20909v3}.
+
+\begin{proposition}
+For every integer-coefficient input polynomial \(P\) and every
+natural-number instance parameter \(a\), the constructed source
+\(Q\) has a solution with all nine inputs integral and \(n=-7\);
+it also has one with \(n=-9\).  Consequently the other eight
+integrality conditions do not make \(n\ge0\) or \(R>0\) automatic.
+\end{proposition}
+\begin{proof}
+Choose
+\[
+                f=g=l=x=0,\qquad w=2,\qquad y=0.
+\]
+Then \(b=1\), and \(B_0=\beta\) is divisible by four.
+The constant digit of the mask is \(B_0-1\), whereas all higher
+digits multiply positive powers of \(B_0\).  Thus the mask is odd,
+and \(T_0\) is odd.  Also \(N\) is even.  It follows that
+\[
+ R_0=(S_0+T_0+1)N+T_0+1
+\]
+is even, and hence \(X=(N-1)R_0\) is even.  Therefore the
+additional choices
+\[
+                         h=X,\qquad k=X/2
+\]
+are integers.
+
+The bridge definitions now give, by direct substitution,
+\[
+ U=V=A=0,\quad B_1=2X+1,\quad C=J=1,\quad D=E=0,
+ \quad F=G=I=1.
+\]
+In particular,
+\[
+        A_1=1,\qquad A_2=A_3=0,\qquad
+        S=-5,\quad T=R=0,\quad Z_0=2.
+\]
+Every sign factor defining \(Q\) is therefore
+\(25(n+8+\varepsilon_1)\).  The other two signs have no
+effect, so exactly
+\[
+                     Q(n)=25^8(n+9)^4(n+7)^4.
+\]
+Both displayed negative inputs are roots, independently of the
+input polynomial and the instance parameter.
+\end{proof}
+
+This explicit obstruction does not contradict the published source
+theorem, which requires \(n\ge0\).  It explains why the finite-wrapper
+transfer retains both the ninth integer predicate and a genuine
+nonnegative representation.  The construction also shows that merely
+requiring all nine inputs to be integers cannot replace that wrapper.
+\end{document}

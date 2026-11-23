@@ -1,0 +1,599 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=26mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,booktabs,hyperref,xurl}
+\setlength{\emergencystretch}{3em}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Res}{\operatorname{Res}}
+\newcommand{\End}{\operatorname{End}}
+\newcommand{\Hom}{\operatorname{Hom}}
+\title{Further point-chart reductions and precise obstructions}
+\author{\(\mathbb Z\mathbb Q\) Diophantine Project}
+\date{23 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+We record an exact common-point chart reduction and several scoped
+obstructions to further identifications. Once the contact gauge is
+shared, two private rational coordinates can be removed from each
+input chart at the cost of four common coordinates, without changing
+any detector or its degree. Separately, the two rational parameters
+of the existing elliptic point chart cannot be replaced by one
+input-independent rational parameter with finite algebraic fibers:
+the relevant restriction of scalars is simple over \(\Q\), and
+Mordell--Lang makes every infinite subset of its cyclic orbit
+Zariski dense. We also show why the alternate numerator point,
+or all of its slope or reciprocal-abscissa data, cannot simply
+be identified across distinct input labels. These are statements
+about specified constructions, not lower bounds for all
+Diophantine representations.
+\end{abstract}
+
+\section{An exact reduction of a finite-pair chart}
+\label{sec:chart}
+
+Let \(F_0\) be a field of characteristic zero and let \(D\in
+F_0^\times\). On
+\[
+                         E_D:y^2=x^3-Dx
+\]
+the source finite-pair chart has coordinates \(s,t,F,G,\eta,d\)
+and equations
+\begin{align}
+ d&=F(\eta+s+t),& d&=\eta G,\label{eq:pair1}\\
+ D(F+G)&=(s-t)\eta-t^2,&
+ 1&=d(s-t)-DFG.\label{eq:pair2}
+\end{align}
+Its point interpretation is
+\[
+                U=(F^{-1},s/F),\qquad V=(G^{-1},t/G).
+\]
+The chart includes the tangent case and finite two-torsion
+differences; \(d\) is allowed to vanish. The source proof
+\cite[Section 3]{physical} gives its full converse.
+
+\begin{lemma}[The common curve identity]\label{lem:identity}
+Put
+\[
+\begin{split}
+ r_1&=d-F(\eta+s+t),\\
+ r_3&=D(F+G)-(s-t)\eta+t^2,\\
+ r_4&=d(s-t)-DFG-1 .
+\end{split}
+\]
+Then the polynomial identity
+\begin{equation}\label{eq:identity}
+        Fs^2+DF^2-1=r_4-(s-t)r_1+Fr_3
+\end{equation}
+holds over \(\Z[D,s,t,F,G,\eta,d]\).
+\end{lemma}
+\begin{proof}
+Substitute the three displayed expressions. The terms involving
+\(d\), \(FG\), and \(\eta(s-t)F\) cancel. The remaining
+quadratic expression in \(s,t\) is
+\(F((s-t)(s+t)+t^2)=Fs^2\), giving the identity.
+\end{proof}
+
+\begin{proposition}[Eliminating a private chart field]
+\label{prop:physical}
+Suppose \(k\) copies of the chart share \(s,F\). Introduce
+one common field coordinate \(x\), and replace the \(k\)
+charts by
+\begin{equation}\label{eq:commoncurve}
+                    Fx=1,\qquad x=s^2+DF
+\end{equation}
+and, for \(1\le i\le k\),
+\begin{equation}\label{eq:reduced}
+ F(\eta_i+s+t_i)=\eta_iG_i,\qquad
+ D(F+G_i)=(s-t_i)\eta_i-t_i^2 .
+\end{equation}
+All these equations are quadratic. Their projection to the
+retained coordinates is exactly that of the original shared
+charts. The eliminated value is uniquely recovered as
+\[
+                     d_i=F(\eta_i+s+t_i).
+\]
+\end{proposition}
+\begin{proof}
+An original chart satisfies \(Fs^2+DF^2=1\) by
+Lemma~\ref{lem:identity}, so \(F\ne0\). Taking \(x=F^{-1}\)
+gives \eqref{eq:commoncurve}, while the two formulas for
+\(d_i\) give the first equation in \eqref{eq:reduced}.
+The second is an unchanged source equation.
+
+Conversely \eqref{eq:commoncurve} gives
+\(Fs^2+DF^2=1\). Define \(d_i\) as above. Both equations
+in \eqref{eq:pair1} hold, and \(r_3=0\).
+Identity \eqref{eq:identity} then gives \(r_4=0\).
+Every original chart is recovered. No division by
+\(s,t_i,\eta_i,G_i\), or \(d_i\) was introduced. In
+particular the zero-\(d_i\) and tangent boundary cases
+are preserved.
+\end{proof}
+
+For \(F_0=\Q(\sqrt2)\), each field coordinate is represented
+by two rational coordinates and each field equation by its
+two rational components. Proposition~\ref{prop:physical}
+would save \(2k-2\) rational coordinates before the source
+Laurent compilation.
+
+\subsection{The obstruction in the old stored scales}
+
+In both quartic interfaces the common source fields are
+\[
+ s=X_{201}+\sqrt2X_{202},\qquad
+ F=X_{205}+\sqrt2X_{206}.
+\]
+They have contact weight zero. The private fields
+\(t,\eta\) also have contact weight zero, whereas
+the physical \(G,d\) have weight one:
+\[
+                          G=c\,\widetilde G,\qquad
+                          d=c\,\widetilde d .
+\]
+All these fields have zero scalar-normalizer weight.
+Simply substituting \(G=c\widetilde G\) in the first
+equation of \eqref{eq:reduced} produces
+\[
+              F(\eta+s+t)-c\eta\widetilde G=0.
+\]
+The last term is cubic in the stored coordinates. Multiplying
+the equation by one Laurent monomial cannot make both its
+ordinary quadratic terms and its \(c\)-weighted quadratic
+term have residual contact exponent zero. Thus direct
+deletion of \(d\), with the other scales and the existing
+quadratic-unit compilation unchanged, does not establish
+a quartic saving.
+
+\subsection{A shared contact gauge removes that obstruction}
+
+\begin{theorem}[Quadratic reduction with a common gauge]
+\label{thm:stored}
+Suppose the \(k\) input charts have a common nonzero contact
+gauge \(c\), common fields \(s,F\), and the private stored
+fields \(t_i,\eta_i,\widetilde G_i,\widetilde d_i\) just
+described. Assume \(\widetilde d_i\) occurs nowhere outside
+its own finite-pair chart.
+Introduce two common field coordinates \(x,\widehat F\)
+and the three common field equations
+\begin{equation}\label{eq:common-scaled}
+                  F=c\widehat F,\qquad
+                  Fx=1,\qquad x=s^2+DF.
+\end{equation}
+For each input retain only
+\begin{equation}\label{eq:storedreduced}
+ \widehat F(\eta_i+s+t_i)=\eta_i\widetilde G_i,\qquad
+ D(F+c\widetilde G_i)=(s-t_i)\eta_i-t_i^2 .
+\end{equation}
+The resulting system is quadratic and has exactly the
+same projection as the original system. Over \(\Q(\sqrt2)\)
+it saves
+\[
+                       2k-4\quad\text{rational coordinates}
+\]
+and \(4k-6\) rational quadratic residuals. For \(k=12\)
+the savings are 20 coordinates and 42 residuals.
+\end{theorem}
+\begin{proof}
+Since \(c\ne0\), define
+\[
+ \widetilde d_i=\widehat F(\eta_i+s+t_i),\qquad
+ G_i=c\widetilde G_i,\qquad d_i=c\widetilde d_i .
+\]
+The first relation in \eqref{eq:common-scaled} and the
+first relation in \eqref{eq:storedreduced} give
+\[
+          d_i=F(\eta_i+s+t_i)=\eta_iG_i.
+\]
+The second relation in \eqref{eq:storedreduced} is the
+old sum relation. The two common curve relations give
+the old unit relation by Lemma~\ref{lem:identity}.
+Thus all old equations are recovered. Conversely every
+old solution has \(F\ne0\), so
+\(x=F^{-1}\) and \(\widehat F=F/c\) satisfy all the new
+relations. These choices are unique.
+
+Every monomial in the displayed equations has degree
+at most two. No detector or pole equation changes.
+We delete \(k\) field coordinates and add two, giving
+\(2k-4\) fewer rational coordinates. The old charts
+have \(4k\) field equations; the new charts have \(2k+3\).
+Taking rational components gives a saving
+\(2(4k-(2k+3))=4k-6\).
+\end{proof}
+
+The source labels deleted by this theorem are
+211 and 212 in every input block. Direct inspection of
+the two published source tables shows that they occur
+only in \texttt{new1.d\_piF},
+\texttt{new1.d\_Gh}, and \texttt{new1.unit}.
+Their normalizer and parameter weights vanish, and their
+contact weights are one. Thus no hidden substitution
+into a detector is needed. The theorem is a local
+algebraic replacement; the existence of a shared contact
+gauge is a separate arithmetic assertion.
+
+\section{Why the alternate numerator cannot simply be shared}
+
+Let \(P_0\) be a nontorsion point on \(E_D\), and write
+\(\Gamma=\Z P_0\). For the common numerator
+\(U=[j]P_0\), the alternate points are
+\[
+                         V_i=U-[n_i]P_0.
+\]
+All statements below concern finite points with nonzero
+abscissa, as required by the existing charts.
+
+\begin{proposition}\label{prop:alternate}
+For integer labels \(n_i\):
+\begin{enumerate}
+\item If \(V_i=V_l\), then \(n_i=n_l\).
+\item The function \(y/x\) is injective on the finite
+points of \(\Gamma\) with nonzero abscissa. Consequently
+sharing the slope \(y(V_i)/x(V_i)\) also forces \(n_i=n_l\).
+\item If \(1/x(V_i)=1/x(V_l)\), then either \(n_i=n_l\)
+or \(2j=n_i+n_l\). Therefore three distinct labels
+cannot all share one reciprocal abscissa.
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+The first assertion follows by subtracting the point
+equalities and using that \(P_0\) is nontorsion.
+
+For the second put \(T_0=(0,0)\), the nonzero point
+of order two. If \(s=y/x\) is fixed, the abscissa
+satisfies
+\[
+                         x^2-s^2x-D=0.
+\]
+Two points with this slope either have the same
+abscissa and are equal, or their abscissas have
+product \(-D\). In the latter case the addition
+formula gives the other point as
+\[
+            T_0-Q=\left(-D/x(Q),-Dy(Q)/x(Q)^2\right),
+\]
+whose slope is again \(s\). Their sum is \(T_0\).
+Two elements of the torsion-free group \(\Gamma\)
+cannot sum to nonzero torsion. Thus the latter case
+does not occur in \(\Gamma\).
+
+Finally equal reciprocal abscissas mean equal
+abscissas. On the Weierstrass curve this gives
+\(V_l=V_i\) or \(V_l=-V_i\).
+The latter equality is equivalent to
+\([2j-n_i-n_l]P_0=O\), and hence
+\(2j=n_i+n_l\). A fixed abscissa has at most two
+points above it, so it cannot contain three distinct
+\(V_i\).
+\end{proof}
+
+For the quartic input labels
+\(n_i=51X_i^2+2504\), inputs \(0,1,2\) give three
+distinct labels. This supplies an explicit obstruction
+to identifying all their alternate reciprocal
+abscissas. These observations do not exclude a
+different detector with a different point interpretation.
+
+\section{A restriction-of-scalars obstruction to a one-parameter chart}
+\label{sec:restriction}
+
+We now use the actual source curve
+\[
+ K=\Q(\sqrt2),\qquad d=3-\sqrt2,\qquad
+ D=d^2=11-6\sqrt2,\qquad E:y^2=x^3-Dx.
+\]
+Let \(\overline E\) denote its conjugate under the
+nontrivial automorphism of \(K/\Q\). Write
+\(\mathcal A=\Res_{K/\Q}E\).
+This is an abelian surface with
+\(\mathcal A(\Q)=E(K)\).
+
+\begin{lemma}\label{lem:noisogeny}
+There is no nonzero \(K\)-homomorphism
+\(E\longrightarrow\overline E\).
+\end{lemma}
+\begin{proof}
+Put \(d'=3+\sqrt2\). Since \(dd'=7\), the conjugate
+coefficient satisfies
+\[
+                  \frac{\overline D}{49D}
+                      =\left(\frac{d'}7\right)^4
+                      =d^{-4}.
+\]
+Thus \(\overline E\) is \(K\)-isomorphic to the
+quadratic 7-twist of \(E\). More explicitly, with
+\[
+                         u=\frac{\sqrt7}{d},
+\]
+the map
+\[
+              \psi:E\longrightarrow\overline E,\qquad
+              (x,y)\longmapsto(u^2x,u^3y)
+\]
+is an isomorphism over \(K(\sqrt7)\), because
+\(u^4D=\overline D\).
+
+The geometric endomorphism ring of this \(j=1728\)
+elliptic curve is \(\Z[\mathrm i]\), with the
+order-four automorphism
+\[
+                       [\mathrm i](x,y)=(-x,\mathrm i y).
+\]
+One can see the assertion directly over \(\mathbb C\):
+the period lattice is stable under multiplication
+by \(\mathrm i\), and hence is homothetic to an ideal
+of the principal ideal domain \(\Z[\mathrm i]\).
+Its multiplier ring is therefore \(\Z[\mathrm i]\).
+Every endomorphism is defined over \(K(\mathrm i)\).
+
+The real quadratic extension \(K(\sqrt7)\) is not
+contained in \(K(\mathrm i)\): the maximal real
+subfield of the latter is \(K\). Choose an absolute
+Galois automorphism \(\sigma\) fixing \(K(\mathrm i)\)
+and sending \(\sqrt7\) to \(-\sqrt7\). Then
+\(\sigma(\psi)=-\psi\), while \(\sigma\) fixes every
+geometric endomorphism of \(E\).
+
+If \(\varphi:E\to\overline E\) were a nonzero
+\(K\)-homomorphism, the endomorphism
+\(\alpha=\psi^{-1}\varphi\) would satisfy both
+\(\sigma(\alpha)=\alpha\) and
+\(\sigma(\alpha)=-\alpha\). The torsion-free ring
+\(\Z[\mathrm i]\) then gives \(\alpha=0\), a
+contradiction.
+\end{proof}
+
+\begin{proposition}\label{prop:simple}
+The abelian surface \(\mathcal A\) is simple over
+\(\Q\).
+\end{proposition}
+\begin{proof}
+If a proper nonzero abelian subvariety \(B\) were
+defined over \(\Q\), it would have dimension one.
+After base change to \(K\),
+\[
+                      \mathcal A_K\simeq E\times\overline E.
+\]
+The two projections of \(B_K\) are conjugate. If one
+were zero then both would be zero, contrary to the
+inclusion of \(B_K\). Both are therefore nonzero
+homomorphisms of elliptic curves, hence isogenies
+defined over \(K\). Composing one with the dual of
+the other gives a nonzero \(K\)-homomorphism from
+\(E\) to \(\overline E\), contradicting
+Lemma~\ref{lem:noisogeny}.
+\end{proof}
+
+\begin{lemma}\label{lem:nontorsion}
+The source point
+\[
+ P=\left(\frac{57-28\sqrt2}{8},
+         \frac{-660+417\sqrt2}{32}\right)
+\]
+is nontorsion.
+\end{lemma}
+\begin{proof}
+The displayed coordinates satisfy the curve equation
+by exact substitution. In \(K_2=\Q_2(\sqrt2)\),
+normalize the valuation by \(v(\sqrt2)=1\), so
+\(v(2)=2\). The two coordinate valuations are
+\[
+                         v(x(P))=-6,\qquad v(y(P))=-9.
+\]
+For the numerator of \(x(P)\), the terms have
+valuations \(0\) and \(5\); for the numerator of
+\(y(P)\), they have valuations \(4\) and \(1\).
+These unequal valuations give the displayed values
+after dividing by 8 and 32. Hence
+\[
+                          v(z(P))=3>v(2).
+\]
+
+The integral Weierstrass model has a formal group
+at the identity, even though the special fiber
+has bad reduction elsewhere. For any integer \(m\),
+its multiplication series has integral coefficients
+and begins \(mT\). At parameter depth \(v(T)>2\),
+the higher terms of \([2](T)\) have valuation at
+least \(2v(T)>v(T)+2\), so
+\[
+                          v([2](T))=v(T)+2.
+\]
+For odd \(m\), the linear term is a unit times
+\(T\) and all higher terms have greater valuation,
+so \(v([m](T))=v(T)\). It follows that for every
+nonzero integer \(m\),
+\[
+                  v(z([m]P))=3+2v_2(m)<\infty.
+\]
+Thus no nonzero multiple of \(P\) is the identity.
+\end{proof}
+
+\begin{theorem}[Density of every infinite orbit subset]
+\label{thm:dense}
+Let \(\widetilde P\in\mathcal A(\Q)\) correspond
+to \(P\in E(K)\). Every infinite subset of
+\(\Z\widetilde P\) is Zariski dense in
+\(\mathcal A\).
+\end{theorem}
+\begin{proof}
+The Zariski closure of the group
+\(\Z\widetilde P\) is an algebraic subgroup defined
+over \(\Q\). Its identity component has positive
+dimension by Lemma~\ref{lem:nontorsion}, so
+Proposition~\ref{prop:simple} makes it all of
+\(\mathcal A\). The same is true for the closure
+of \(m\Z\widetilde P\) whenever \(m\ne0\).
+
+Apply the classical Mordell--Lang theorem for
+abelian varieties to a closed subvariety \(V\)
+and the finitely generated group
+\(\Gamma=\Z\widetilde P\). In the form used here,
+\(V\cap\Gamma\) is a finite union of cosets of
+subgroups of \(\Gamma\), each contained in \(V\)
+\cite{Faltings,Mazur}. If \(V\cap\Gamma\) is
+infinite, at least one such subgroup is nonzero.
+Every nonzero subgroup of \(\Gamma\simeq\Z\) is
+\(m\Gamma\) for some \(m\ge1\), whose Zariski
+closure is all of \(\mathcal A\).
+Its coset therefore forces \(V=\mathcal A\).
+\end{proof}
+
+\begin{corollary}[Precisely scoped chart obstruction]
+\label{cor:oneparameter}
+No input-independent finite algebraic chart over
+one rational base parameter, nor any fixed finite
+collection of such charts, can contain all the
+points
+\[
+                        [(x^2+1)]P,\qquad x\in\Z .
+\]
+The same statement holds for any infinite set of
+distinct integer multiples of \(P\).
+\end{corollary}
+\begin{proof}
+By a chart of the indicated kind we mean a finite
+algebra over an open subset of \(\mathbb A^1_\Q\),
+with finitely many algebraic generators, optional
+nonvanishing guards, and an algebraic map on the
+guarded open subset to \(\mathcal A\).
+A finite algebra has the same dimension as its
+base, at most one. The closure of its image
+therefore has dimension at most one. Finitely
+many charts give a finite union of such proper
+closed subsets of the two-dimensional
+\(\mathcal A\).
+
+The points in the displayed set are infinite
+and distinct after replacing \(x\) by nonnegative
+integers. Theorem~\ref{thm:dense} makes that set
+Zariski dense in \(\mathcal A\), which is
+incompatible with the preceding image bound.
+Nonreduced finite algebras and extra finite root
+stages do not alter the dimension argument.
+\end{proof}
+
+\paragraph{Scope of the obstruction.}
+The qualifier \emph{input-independent} is essential.
+If the chart coefficients also depend on the existing
+input \(X\), its base may be
+\(\operatorname{Spec}\Q[X,t]\), of dimension two;
+the argument above then gives no obstruction.
+The same caveat applies to dependence on another
+variable shared by the whole construction. The
+integer indices used to choose elliptic multiples
+are not automatically rational base coordinates:
+one cannot count an integer label as an
+algebraically available variable without an
+actual polynomial construction. Nothing here
+is a lower bound for the number of variables
+in an arbitrary Diophantine definition of
+\(\Z\) or in an undecidability reduction.
+
+\section{A local check against an unsafe detector replacement}
+
+One tempting way to remove the old contact weight
+of \(G\) would replace its \(c^2G^2\) contribution
+by \(-7c^4G^2\). A nonsquare condition on 7 at
+the newly chosen completeness primes does not
+justify the same change in soundness. The consumed
+primes in the soundness argument range outside
+a finite exceptional set; they are not all
+required to make 7 nonsquare.
+
+Here is a concrete failure of the attempted
+noncancellation rule. At \(p=113\), choose an
+embedding \(K\hookrightarrow\Q_{113}\) and
+formal curve points with parameters
+\[
+                 z(V)=25p,\qquad z(H)=p^2,\qquad c=p^{-1}.
+\]
+The formal expansion is
+\(f(Q)=z(Q)^2+O(z(Q)^6)\). Consequently
+\[
+ G=f(V)=25^2p^2+O(p^6),\qquad
+ f(H)=p^4+O(p^{12}),
+\]
+and
+\[
+        1+c^4f(H)^4-7c^4G^2
+                  =1-7\cdot25^4+O(p^4).
+\]
+Since
+\[
+       1-7\cdot25^4=-2734374,\qquad
+       v_{113}(2734374)=1,
+\]
+this expression has positive valuation one.
+Thus the old residue-class argument that each
+factor has nonpositive valuation cannot be
+reused from reciprocal parity alone.
+This is a counterexample to that proposed
+local noncancellation inference, not a
+counterexample to every possible redesigned
+complete system. A repair would need an
+additional soundness argument; no improved
+numerical bound is claimed from this replacement.
+
+\section{Reproducibility and current obligations}
+
+The exact symbolic identities, the twist ratio,
+the displayed point's curve equation and local
+valuations, and the \(113\)-adic integer check
+are replayed by
+\nolinkurl{undecidability/check_point_chart_lemmas.py}.
+The geometric endomorphism and Mordell--Lang
+arguments are mathematical proofs and are not
+asserted to be certified by that computation.
+
+The algebraic saving of
+Theorem~\ref{thm:stored} is available when the
+common-contact-gauge theorem and its full
+quadratic compilation have been supplied.
+The simple alternate-point and one-parameter
+obstructions show why several more direct
+identifications cannot complete the task.
+These results preserve the distinction between
+proved chart transformations, arithmetic
+interface hypotheses, and unresolved attempts.
+
+\begin{thebibliography}{9}
+\bibitem{physical}
+\(\mathbb Z\mathbb Q\) Diophantine Project,
+\emph{A quartic in 193 rational coordinates},
+v74, 17 November 2026.
+\nolinkurl{papers/quartic/quartic193_20261117_v74.tex}.
+
+\bibitem{scalar}
+\(\mathbb Z\mathbb Q\) Diophantine Project,
+\emph{A scalar-point sharing construction in 163
+and 179 variables}, v82, 20 November 2026.
+\nolinkurl{papers/quartic/scalar_point163_179_20261120_v82.tex}.
+Complete maps:
+\nolinkurl{computation/variable_reductions_v82/general/}.
+
+\bibitem{Faltings}
+G. Faltings, \emph{The general case of S. Lang's
+conjecture}, in V. Cristante and W. Messing (eds.),
+\emph{Barsotti Symposium in Algebraic Geometry},
+Perspectives in Mathematics 15, Academic Press,
+1994, pp.\ 175--182.
+\url{https://doi.org/10.1016/B978-0-12-197270-7.50012-7}.
+
+\bibitem{Mazur}
+B. Mazur, \emph{Abelian varieties and the
+Mordell--Lang conjecture}, in
+\emph{Model Theory, Algebra, and Geometry},
+MSRI Publications 39, 2000, pp.\ 199--227,
+Theorem 3.1 and the discussion following it.
+\url{https://library2.msri.org/books/Book39/files/mazur.pdf}.
+The explicit characteristic-zero formulation
+was also read at the university-hosted mirror
+\url{https://math.unm.edu/~buium/Mazurmordelllang.pdf}.
+\end{thebibliography}
+\end{document}

@@ -106,6 +106,9 @@ in a coefficient where the builder uses **Latin a**. Matiyasevich's
 Pell row. The full universality proof for this precise emended system has
 not been verified. We state that missing assertion explicitly as **`U_em`**.
 It is separate from abc and from the integer predicate's arithmetic premises.
+The new independent Pell audit also exposes an `n^2` versus `n^6`
+discrepancy in the natural identification with the modern binomial bridge.
+The old source parameter is preserved literally in every table above.
 
 The [shared-reference construction](papers/shared_quartic_checkpoint.tex)
 first gave 2086/2278/846. A [reciprocal-input rechart](papers/reciprocal_reference_checkpoint.tex)
@@ -113,21 +116,29 @@ then removes one coordinate and one row in each general system.
 The [common-point theorem](papers/common_points_quartic_checkpoint.tex)
 ([PDF](papers/common_points_quartic_checkpoint.pdf)) identifies 54/50
 actual common physical coordinates, including the newly shared input
-numerator point:
+numerator point, giving the intermediate 1601/1837 bounds. The subsequent
+[global-contact theorem](papers/global_gauge_quartic_checkpoint.tex) gives
+1185/1355, and the [Pell-core theorem](papers/pell_index_optimization.tex)
+([PDF](papers/pell_index_optimization.pdf)) removes nine more coordinates
+from each complete system, also improving the abc checkpoint:
 
 | Integer interface | Independent combined system | Current checkpoint | Quadratic residuals | Additional height hypothesis |
 |:--|--:|--:|--:|:--|
-| General, 163 coordinates | 2,195 | **1,601** | 1,599 | No additional abc |
-| Specified, 179 coordinates | 2,387 | **1,837** | 1,811 | No additional abc |
-| Ordinary-abc, 56 coordinates | 911 | **846** | 728 | Ordinary rational abc |
+| General, 163 coordinates | 2,195 | **1,176** | 1,092 | No additional abc |
+| Specified, 179 coordinates | 2,387 | **1,346** | 1,238 | No additional abc |
+| Ordinary-abc, 56 coordinates | 911 | **837** | 725 | Ordinary rational abc |
 
 The physical function dictionary, all normalization weights, and the
 stronger common-index precision are proved before the registers are
-identified. The private contact gauges remain separate. Every residual is
+identified. The current construction uses one global contact gauge. Its proof controls
+foreign contact poles and fixed-place limits; it does not assume that the
+contacts of arbitrary rational solutions are disjoint. Every residual is
 supplied in the [independent tables](coefficients/jones1980),
 [shared-reference tables](coefficients/jones1980_shared),
 [reciprocal tables](coefficients/jones1980_shared_reciprocal) and
-[current common-point tables](coefficients/jones1980_common_points).
+[common-point tables](coefficients/jones1980_common_points),
+[global-gauge tables](coefficients/jones1980_global_gauge), and
+[current Pell-core tables](coefficients/jones1980_pell_core).
 Their sums of squares have degree exactly four. The complete tables are
 reconstructed row by row, including every removed duplicate.
 **Their undecidability interpretation remains conditional on `U_em`** and
@@ -143,6 +154,26 @@ universal **57-positive-integer-variable / 47-quadratic** theorem.
 The earlier **2,539 / 2,779 / 934** candidates were registered first in the
 [baseline checkpoint](checkpoints/baseline_20261123.md). Their historical
 status is preserved in the registry.
+
+## Independently proved local improvements
+
+The [Pell-index proof](papers/pell_index_optimization.tex) classifies the
+three-Pell block from elementary descent, divisibility and trace residues.
+It replaces `G=a+F^2(d^2-a)` by `G=a+F^2(c+1-a)`, removes the separate
+`d^2` register, proves two positivity wrappers unnecessary, and replaces
+another by `zeta^2=(a-1)(d-1)`. All twelve integrality tests remain.
+The theorem also covers arbitrary prescribed indices after a parity adjustment.
+
+The [negative-witness proof](papers/negative_mixed_witness.tex) gives an
+explicit specialization, for every mixed source polynomial and instance,
+with `Q(n)=25^8(n+9)^4(n+7)^4`. Thus the other eight integer predicates do not
+force the ninth input to be nonnegative; that restriction cannot be omitted.
+The finite-wrapper theorem retains it.
+
+The [point-chart paper](papers/point_chart_research.tex) proves the exact
+chart reduction and specific obstructions to sharing alternate numerator
+points or replacing their two parameters by one input-independent parameter.
+Those obstructions do not constitute a general lower bound.
 
 ## Limitations and further work
 
@@ -172,6 +203,11 @@ python -B undecidability/verify_finite_wrapper.py
 python -B undecidability/verify_finite_wrapper_compiler.py
 python -B undecidability/verify_reciprocal_reference.py
 python -B undecidability/verify_common_points.py
+python -B undecidability/verify_global_gauge.py
+python -B undecidability/verify_pell_core_reduction.py --include-abc
+python -B undecidability/verify_pell_index_optimization.py
+python -B undecidability/check_point_chart_lemmas.py
+python -B scripts/verify_v91.py
 python -B scripts/verify_v90.py
 python -B scripts/verify_v89.py
 ```
@@ -181,5 +217,5 @@ qualifications. A `PASS` verifies the stated finite identities and counts;
 it does not discharge arithmetic foundations or `U_em`. Proofs, source
 citations and the verification scope are in the manuscripts. The
 [machine-readable registry](results.json) separates proved transfers from
-source-audit checkpoints; the [project report](../docs/results_20261123_v90.md)
+source-audit checkpoints; the [project report](../docs/results_20261123_v91.md)
 summarizes the mathematical changes and their limits.

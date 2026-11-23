@@ -50,9 +50,9 @@ universal equation and one positivity coordinate into the finite algebra.
 | Unrestricted degree | No additional abc hypothesis | **82** | Proved transfer under retained source arithmetic premises; degree below `2^650` |
 | Unrestricted degree, specified source | No additional abc hypothesis | **100** | Proved transfer under retained source arithmetic premises; degree below `2^714` |
 | Unrestricted degree | Ordinary rational abc | **52** | Proved transfer under retained source arithmetic premises; degree below `2^500` |
-| Quartic checkpoint | No additional abc hypothesis | **1,601** | Conditional on emended-source universality `U_em`; 1,599 quadratic residuals |
-| Quartic checkpoint, specified source | No additional abc hypothesis | **1,837** | Conditional on `U_em`; 1,811 quadratic residuals |
-| Quartic checkpoint | Ordinary rational abc | **846** | Conditional on `U_em`; 728 quadratic residuals |
+| Quartic checkpoint | No additional abc hypothesis | **1,176** | Conditional on emended-source universality `U_em`; 1,092 quadratic residuals |
+| Quartic checkpoint, specified source | No additional abc hypothesis | **1,346** | Conditional on `U_em`; 1,238 quadratic residuals |
+| Quartic checkpoint | Ordinary rational abc | **837** | Conditional on `U_em`; 725 quadratic residuals |
 
 All rows retain the chosen integer predicate's stated arithmetic premises.
 “No additional abc” does not assert an independent proof of those premises.
@@ -63,18 +63,21 @@ minimum claimed. The **83 / 101 / 53** versions have smaller degree ceilings
 `2^413 / 2^477 / 2^263`; the [earlier 227/245/101 theorem](undecidability/papers/transfer_general_degree.tex)
 has the smaller common ceiling `2*eta(58,4)`. All remain registered as tradeoffs.
 
-The [quartic checkpoint proof](undecidability/papers/common_points_quartic_checkpoint.tex)
-and [complete sparse systems](undecidability/coefficients/jones1980_common_points)
-identify 54 or 50 actual common rational coordinates, with each physical
-function and its normalization audited. Their separate source audit found
-that Jones's 1980 display prints Greek alpha where the emended system uses
-Latin a, while the author-written 1999 account has a different Pell-row typo.
-Universality of the precise emended system is therefore explicitly unverified.
+The [global-contact theorem](undecidability/papers/global_gauge_quartic_checkpoint.tex)
+shares one contact gauge and removes a private point field in each input
+block. The independently proved [three-Pell index theorem](undecidability/papers/pell_index_optimization.tex)
+([PDF](undecidability/papers/pell_index_optimization.pdf)) then removes nine
+more coordinates, including two positivity wrappers and most of a third.
+The [complete sparse systems](undecidability/coefficients/jones1980_pell_core)
+retain all twelve integer certificates. Source discrepancies remain explicit:
+Greek alpha versus Latin a, a separate impossible Pell-row typo in the
+later account, and an `n^2` versus `n^6` binomial-parameter mismatch.
+Universality of the exact emended source remains unverified.
 The [literal later-system audit](undecidability/papers/mt_source_audit.tex)
 proves a reversible **62/50 to 57/45** reduction; it does not independently
 reprove the alleged universal **57/47** result.
 
-The [registry](undecidability/results.json), [detailed report](docs/results_20261123_v90.md)
+The [registry](undecidability/results.json), [detailed report](docs/results_20261123_v91.md)
 and [project research document](docs/research_directions.md#undecidability-in-bounded-numbers-of-rational-unknowns)
 separate proved transfers, retained arithmetic premises and source-audit
 checkpoints. A quartic bound near 263 has not been established.
@@ -149,6 +152,7 @@ Use **Python 3.12**, **SymPy 1.14.0**, and **PassageMath PARI 10.8.14**. The new
 
 ```sh
 python -m pip install sympy==1.14.0 passagemath-pari==10.8.14
+python -B scripts/verify_v91.py
 python -B scripts/verify_v90.py
 python -B scripts/verify_v89.py
 python -B scripts/verify_v88.py --report /tmp/v88-verification.json

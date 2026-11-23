@@ -1,0 +1,883 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs,longtable,hyperref,xurl,microtype}
+\setlength{\emergencystretch}{3em}
+\hypersetup{hidelinks}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\title{One contact gauge in a combined quadratic system\\
+Quartic checkpoints in 1185 and 1355 variables}
+\author{\(\mathbb Z\mathbb Q\) Diophantine Project}
+\date{23 November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+We construct complete rational quadratic systems with 1185 variables
+and 1095 equations, or 1355 variables and 1241 equations. Their sums of
+squares have degree exactly four. The starting systems have 1601 and
+1837 variables and contain twelve integrality certificates. We replace
+their twelve contact gauges by the sum of all contact weights. This
+preserves the original blockwise valuation argument and its height
+thresholds, while allowing 91 or 93 stored coordinates to be shared.
+Reordering the three common detector factors saves their intermediate
+products, and an exact finite-pair identity removes one private field
+from each input chart at the cost of two common fields.
+
+We supply the full arithmetic transfer under the retained interfaces,
+the physical-function dictionary, exact reconstruction maps, and a
+complete independent coefficient verifier. The universality assertion
+\(U_{\mathrm{em}}\) for the frozen emended integer source remains open.
+The work therefore supplies conditional quartic reductions and exact
+algebraic checkpoints, not an unconditional undecidability theorem.
+\end{abstract}
+
+\section{Scope, hypotheses, and the fixed starting system}
+
+The predecessor systems \cite{common} have 1601 variables and 1599
+quadratic equations in the general interface, or 1837 variables and
+1811 equations in the specified interface. Both use the same optimized
+outer circuit, with 251 rational coordinates and 219 quadratic
+equations. Eleven ordinary integer inputs and one reciprocal integer
+input are certified by the 163-coordinate or 179-coordinate
+integer-defining interface. Those counts include the distinguished
+input of a defining block.
+
+The outer circuit in this paper is frozen exactly as in the predecessor
+tables. In particular, this paper does not repair or assert universality
+of its underlying emended positive-integer source. We denote that
+unresolved assertion by \(U_{\mathrm{em}}\), as in the source
+reconciliation of \cite{outer}. The consulted source displays have
+incompatible coefficients and Pell-row typography; the exact published
+universality theorem for the frozen emendation has not been verified.
+Any later correction to that integer source must receive its own
+reconstruction proof. The coefficient tables here record
+\texttt{source\_universality\_verified: false} and
+\texttt{unconditional\_undecidability\_claim: false}.
+
+The retained arithmetic interfaces are those stated in
+\cite{gate,scalar,common}: the group and formal-logarithm descriptions on
+the specified elliptic curve over \(K=\Q(\sqrt2)\); ordered scalar
+extraction and preparation; full-domain reflected-contact and positive
+aggregate height estimates; the native-pole obstruction and prepared
+realization theorem; and the finite-family Gaussian prime supplier,
+including its stated recurrence and all-sign order coprimality. The
+simultaneous common-point construction of \cite{common,crt} is used
+without changing the private input differences. The general route
+retains its sufficiently large fixed defining parameter, whose
+threshold is ineffective. The specified route retains its already
+specified parameter and estimates. No ordinary rational \(abc\)
+assumption is added by the present transfer.
+
+All comparisons of rational zero sets below are under these explicit
+interfaces. A finite coefficient check verifies polynomial identities,
+counts, and maps; it does not establish the retained arithmetic
+premises or \(U_{\mathrm{em}}\).
+
+\section{One contact gauge for all input blocks}
+\label{sec:global-contact-gauge}
+
+Let the input blocks be indexed by \(1\le i\le k\), and let
+\(0\le j<e\) index their contact arguments, where \(e=2\)
+for the general interface and \(e=3\) for the specified
+interface. Retain every block's original contact function
+\(q_{ij}\), original contact argument, and original aggregate
+relation. We make the single change
+\begin{equation}\label{eq:global-contact-sum}
+                    c=\sum_{i=1}^{k}\sum_{j=0}^{e-1}q_{ij},
+                    \qquad c\ne0,
+\end{equation}
+in place of the \(k\) separate contact sums. Every product
+\(W_i\in K=\mathbb Q(\sqrt2)\), every rational norm/trace
+error \(D_i\), and every native-pole witness remains private
+to its input block. Define
+\begin{equation}\label{eq:global-gates}
+ \begin{split}
+ D_i\operatorname{Tr}(W_i)&=\operatorname{N}(W_i-1),\\
+ s_{ij}&=c-q_{ij},\qquad
+ g_{ij}=1+D_i^2+\frac{s_{ij}^2}{q_{ij}} .
+ \end{split}
+\end{equation}
+The actual comparison-pole arguments remain
+\begin{equation}\label{eq:global-pole}
+               b_{ij}=(408/409)^2 R_{ij}g_{ij}^2/4,
+\end{equation}
+with precisely the source contact functions \(R_{ij}\)
+and source cleared equations. No new division or
+nonvanishing condition at an old boundary is introduced.
+
+The original proof of the shared gate uses the equality
+\(c=q_{ij}+s_{ij}\), rather than the number of summands in
+the definition of \(c\). We give the entire valuation
+argument because projecting the new system to an old
+block does not restore that block's former contact-sum
+identity.
+
+\begin{lemma}[The gate with an arbitrary common gauge]
+\label{lem:global-gate}
+Fix an input block \(i\), one of its consumed primes
+\(p\), and a contact \(j\) with
+\[
+            v_p(q_{ij})=-\mu,\qquad
+            v_p(R_{ij})=\mu,\qquad \mu>0\ \hbox{odd}.
+\]
+Retain the source pole obstruction and the source
+exceptional-prime exclusions. Every rational solution
+of \eqref{eq:global-gates}--\eqref{eq:global-pole}
+satisfies
+\begin{equation}\label{eq:global-gate-bounds}
+ v_p(D_i)>-\mu/4,\qquad
+ v_p(s_{ij})>-3\mu/4,\qquad v_p(c)=-\mu.
+\end{equation}
+If every factor of \(W_i\) has nonpositive valuation
+at both conjugate slots above \(p\), then one slot has
+\[
+                              v(W_i)>-\mu/4 .
+\]
+No property of the other input blocks is required
+for this conclusion.
+\end{lemma}
+\begin{proof}
+First, the norm/trace equation forces
+\(\operatorname{Tr}(W_i)\ne0\). Otherwise
+\(\operatorname{N}(W_i-1)=0\), and the field property
+would give \(W_i=1\), whose trace is 2. The same
+equation rules out \(W_i=0\), since its right side
+would be 1. Thus \(D_i\) is the actual rational
+norm/trace quotient.
+
+Put \(v(0)=+\infty\). If \(g_{ij}\ne0\), then
+\eqref{eq:global-pole} has odd valuation
+\[
+       \mu+2v_p(g_{ij})+2v_p(408/409).
+\]
+Outside the source exceptional set,
+\(v_p(408/409)\le0\). This includes \(p=409\),
+where its negative value strengthens the
+obstruction. Since a negative odd pole valuation
+is forbidden, \(v_p(g_{ij})>-\mu/2\).
+The same inequality is automatic if \(g_{ij}=0\).
+
+The nonconstant summands of \(g_{ij}\) have
+valuations \(2v_p(D_i)\), which is even, and
+\(2v_p(s_{ij})+\mu\), which is odd.
+A negative minimum is therefore unique and
+cannot cancel with the other summand or the
+constant term. Both summands must have valuation
+greater than \(-\mu/2\). This proves the first
+two inequalities in \eqref{eq:global-gate-bounds}.
+Since \(v_p(s_{ij})>-\mu\), the equality
+\(c=q_{ij}+s_{ij}\) gives \(v_p(c)=-\mu\).
+This argument does not use
+\eqref{eq:global-contact-sum}.
+
+At the two conjugate slots, counted with
+repetition in the inert case, let \(w_1,w_2\)
+be the valuations of \(W_i\). They are
+nonpositive by the hypothesis. If either is
+zero the conclusion holds. Otherwise both
+are negative, so
+\[
+ v_p\operatorname{N}(W_i-1)=w_1+w_2,\qquad
+ v_p\operatorname{Tr}(W_i)\ge\min(w_1,w_2).
+\]
+Consequently
+\[
+           v_p(D_i)\le\max(w_1,w_2).
+\]
+The already proved lower bound on \(v_p(D_i)\)
+gives the required slot.
+\end{proof}
+
+\subsection{Soundness and the unchanged height thresholds}
+
+Retain all four field-factor polynomials of the v82
+interface, with their enhanced powers of \(c\).
+For \(v_p(c)=-\mu\), \(\mu\) odd, the source
+residue-class argument gives a unique minimum in
+each factor, a nonpositive factor valuation, and
+residue one for a factor of valuation zero.
+These statements depend on the value of \(c\)
+and on the unchanged point relations; they
+do not depend on how many contact functions
+were added to form \(c\).
+
+Lemma~\ref{lem:global-gate} therefore supplies,
+for every consumed contact of every input block,
+the same successful slot as in v82. Every
+factor and every one of its terms has valuation
+greater than \(-\mu/4\). The original reciprocal,
+cleared-comparison, input, and weighted scalar
+estimates follow with exactly their former
+constants. In particular, each block recovers
+its original integer-label divisibilities
+\[
+       M_{ij}^{\,3}\mid a\Delta,\qquad
+       M_{ij}^{\,3}\mid
+       \left|\operatorname{num}(\beta_i-n_i)\right|
+\]
+when the corresponding residual is nonzero,
+with the same treatment of radical one,
+zero alternate ordinates, and finite two-torsion
+boundaries as in the source.
+
+The later height argument is unchanged
+block by block. Its quantities are the block's
+scalar normalizer \(R_i\), input \(\beta_i\),
+four actual point differences, contact
+arguments and radicals. In the general route
+the decisive bound is
+\[
+ B_i^2\le A\bigl(h(R_i)+h(T_i)\bigr)+J,
+ \qquad
+ B_i=\max(1,|n_i|,|a|,|t|,|b|),
+\]
+followed by the source contact-height estimates.
+There is no bound on \(h(c)\) in that argument.
+The specified route likewise uses its original
+aggregate shifts, anchor, and three-contact
+height constants. Those expressions have not
+been changed. Thus neither the sufficient
+general-family threshold nor the certified
+specified endpoint is enlarged by \(k\).
+Every distinguished rational input is integral.
+
+This soundness proof makes no disjointness
+assumption on contact radicals of an arbitrary
+rational solution. The disjointness used next
+belongs only to completeness.
+
+\paragraph{The midpoint boundary \(q_{ij}=-1\).}
+All original cleared contact and pole rows are
+retained. If \(q_{ij}=-1\), it has no negative
+odd valuation at any prime, so its consumed
+radical is one. In the reflected source
+contact equations this is the midpoint fiber,
+which is explicitly included in the retained
+full-domain contact-height estimate. The
+associated radical divisibilities are vacuous.
+The pole quotient involving \(1+q_{ij}\) is
+used only at consumed primes, where
+\(v_p(q_{ij})<0\) forces \(1+q_{ij}\ne0\).
+At the midpoint itself we use the cleared
+rows, not that quotient. Those rows may
+force the cleared gate value to zero and
+leave the pole argument free; no step of
+the soundness argument above requires a
+quotient on this fiber.
+
+\subsection{Ordered simultaneous completeness}
+
+Fix an arbitrary tuple of integer inputs.
+Use the previously proved simultaneous scalar
+preparation and common-index construction:
+choose the private input root points, common
+\(H\), common scalar and Lucas point roles,
+and the common input numerator. Keep the
+scalar normalizers and scalar-pole witnesses
+private. Choose all the finite and real
+neighborhoods on which the relevant physical
+tests are bounded. The point differences
+and their aggregate shifts are fixed at
+this stage.
+
+Translate the finite contact lists as in
+the common-point proof, so that lists from
+different input blocks are disjoint.
+The different lists \emph{within} one input
+block are also disjoint here. In the general
+quartic source their fixed translation
+difference is \(T_i>7\), while the reflected
+contact set has diameter four. In the
+specified three-argument source the two
+successive shifts have the retained lower
+bounds seven and nine, while the contact
+diameter is \(25/11\). These are the
+integer-witness separation bounds in
+\nolinkurl{papers/quartic/shared_product_audit_20261119_v78.tex},
+Section \emph{Integer completeness and the
+order of choices}; the v82 scalar-point
+proof retains exactly those shifts.
+Thus no selected contact in this quartic
+construction is a pole of a second weight,
+whether from the same input or another.
+The same finite-family prime supplier
+applies to their union. Enlarge fixed
+avoidance to include the values at every
+contact of the denominators and other
+contact functions, all fixed nonzero
+root multipliers, and all earlier
+preparation moduli. The common-index
+CRT and high-precision approximation
+preserve the source synchronized formal
+depths and all original local inequalities.
+
+At a selected contact belonging to \((i,j)\),
+the weight \(q_{ij}\) has valuation \(-1\).
+Every other weight in the finite global
+sum is integral at that prime: its
+distinct fixed contact factors and
+denominators are units by the prime
+selection and avoidance conditions.
+It follows that
+\[
+                    v_p(c)=-1,\qquad
+                    s_{ij}=c-q_{ij}\in\mathbb Z_p .
+\]
+The block \(i\) detector consequently has
+exactly its former successful-slot
+behavior: \(W_i\equiv1\pmod p\) there,
+while at the other slot every factor
+is either a unit of residue one or
+has a pole. If the other \(W_i\) value
+is a unit, its trace is 2 modulo \(p\)
+and the shifted norm has positive
+valuation. If it has pole order \(r\),
+the trace has valuation \(-r\) and the
+shifted norm has valuation at least
+\(1-r\). In both cases
+\[
+                  v_p(D_i)>0,\qquad
+                  g_{ij}\equiv1\pmod p,\qquad
+                  v_p(b_{ij})=1 .
+\]
+The case \(D_i=0\) is included.
+
+It is unnecessary for \(W_l\), with \(l\ne i\),
+to be successful at this prime. For any
+foreign pole input \(b_{lr}\), the source
+contact factorization gives even valuation
+of \(R_{lr}\) away from its own selected
+support. Formula \eqref{eq:global-pole}
+changes that valuation only by the
+valuation of a rational square. It
+therefore remains even, even if \(c\),
+\(D_l\), or \(g_{lr}\) has a pole.
+Foreign contacts cannot create a negative
+odd denominator valuation. Combining
+this parity statement with the positive
+odd valuations at each pole's own
+selected contacts gives the same
+square-reduced-denominator property
+as in the source.
+
+At every prepared finite place and at
+real infinity the reflected contact
+functions have the common leading
+asymptotic
+\[
+ q_{ij}(\lambda+\delta_i+u_{ij})
+             =\kappa\lambda^{-2}+O(\lambda^{-3}),
+                         \qquad\kappa>0,
+\]
+where all shifts have already been fixed.
+For the fixed total number \(m=ke\)
+of contact functions,
+\[
+ c=m\kappa\lambda^{-2}+O(\lambda^{-3}),\qquad
+ \frac{(c-q_{ij})^2}{q_{ij}}
+       =(m-1)^2\kappa\lambda^{-2}+O(\lambda^{-3})
+       \longrightarrow0 .
+\]
+All physical tests are bounded on the
+chosen neighborhoods, and each nonconstant
+detector term contains a positive power
+of \(c\). Thus
+\[
+          W_i\longrightarrow1,\qquad
+          D_i\longrightarrow0,\qquad
+          g_{ij}\longrightarrow1 .
+\]
+These are the required limits also at
+two; no division of two vanishing
+quantities is being left unjustified.
+No division by \(m\) or \(m-1\) is used.
+If a prepared prime divides either fixed
+integer, a leading coefficient can have
+greater valuation, which does not affect
+any of the stated limits.
+Fixed finite divisibility in the prime
+supplier and an arbitrarily large real
+slope make all the limits sufficiently
+close simultaneously.
+
+The actual native-pole inputs retain the
+source local square classes at \(2,3,17\)
+and tend at the real place to
+\((204/409)^2\in(0,17)\). For sufficiently
+large real slope all weights are positive,
+so \(c>0\), and the signed factors remain
+positive on the prepared neighborhoods.
+Apply the retained native realization
+theorem to each actual comparison pole
+and each scalar pole independently.
+Finally fill all point charts and helper
+registers using the common nonzero
+gauge \(c\). This proves simultaneous
+completeness without revisiting any
+earlier root or contact choice.
+
+\begin{theorem}[The global contact gauge]
+\label{thm:global-gauge}
+Under the same retained arithmetic
+interfaces and fixed defining parameter
+as the common-point construction, replacing
+the individual contact sums by
+\eqref{eq:global-contact-sum}, with private
+\(W_i,D_i\) and pole witnesses, preserves
+the rational input projection
+\(\mathbb Z^k\). No new prime-selection,
+height, or pole-realization hypothesis
+is required.
+\end{theorem}
+\begin{proof}
+Soundness follows from
+Lemma~\ref{lem:global-gate} and the
+unchanged source extraction and height
+argument. The ordered construction above
+gives a rational witness for each integer
+tuple. The literal guard \(c\,c^{-1}=1\)
+is retained in the compiled system.
+\end{proof}
+
+\section{Removing a private field from every input pair}
+\label{sec:global-input-pair}
+
+The shared gauge now permits a quadratic
+chart reduction which was unavailable
+when the gauges differed between input
+blocks. Let
+\[
+      s=y(U)/x(U),\qquad F=1/x(U)
+\]
+be the common input-numerator fields.
+For block \(i\), the original physical
+finite-pair chart is
+\[
+\begin{split}
+ d_i&=F(\eta_i+s+t_i)=\eta_iG_i,\\
+ D(F+G_i)&=(s-t_i)\eta_i-t_i^2,\\
+ 1&=d_i(s-t_i)-DFG_i,
+                         \qquad D=11-6\sqrt2 .
+\end{split}
+\]
+Its stored scales in both interfaces are
+\[
+             G_i=c\,\widetilde G_i,\qquad
+             d_i=c\,\widetilde d_i,
+\]
+while \(s,F,t_i,\eta_i\) have contact
+weight zero. The two rational coordinates
+of \(\widetilde d_i\) occur only in this
+chart.
+
+Introduce two common fields \(x,\widehat F\)
+and impose
+\begin{equation}\label{eq:global-common-U}
+               F=c\widehat F,\qquad
+               Fx=1,\qquad x=s^2+DF .
+\end{equation}
+Replace every input pair by just the
+two field equations
+\begin{equation}\label{eq:global-short-pair}
+ \widehat F(\eta_i+s+t_i)=\eta_i\widetilde G_i,\qquad
+ D(F+c\widetilde G_i)=(s-t_i)\eta_i-t_i^2 .
+\end{equation}
+All monomials have degree at most two.
+
+\begin{lemma}[Exact chart projection]\label{lem:global-short-pair}
+Equations \eqref{eq:global-common-U} and
+\eqref{eq:global-short-pair} have exactly
+the same projection to retained variables
+as the original \(k\) charts with common
+\(s,F,c\ne0\). They save \(2k-4\)
+rational coordinates and \(4k-6\)
+rational quadratic residuals.
+\end{lemma}
+\begin{proof}
+For one original chart put
+\[
+ r_1=d-F(\eta+s+t),\quad
+ r_3=D(F+G)-(s-t)\eta+t^2,\quad
+ r_4=d(s-t)-DFG-1.
+\]
+Direct expansion gives
+\[
+                  Fs^2+DF^2-1
+                   =r_4-(s-t)r_1+Fr_3 .
+\]
+An original solution therefore has
+\(F\ne0\), and the unique values
+\(x=F^{-1}\), \(\widehat F=F/c\)
+satisfy all the new equations.
+
+Conversely define
+\(\widetilde d_i=\widehat F(\eta_i+s+t_i)\),
+\(G_i=c\widetilde G_i\), and
+\(d_i=c\widetilde d_i\).
+The first two old chart relations follow
+from \eqref{eq:global-short-pair} and
+\(F=c\widehat F\). The common curve
+relations give \(Fs^2+DF^2=1\).
+The displayed identity therefore supplies
+the old unit relation. Every original
+chart is recovered, including its
+tangent and zero-\(d_i\) boundaries.
+No division by a private chart field
+has been imposed.
+
+We remove one field per input and add
+two common fields, a saving of \(2k-4\)
+rational coordinates. The \(4k\)
+original field equations become
+\(2k+3\), giving \(4k-6\) fewer
+rational component equations.
+For \(k=12\) these savings are
+20 coordinates and 42 residuals.
+\end{proof}
+
+This algebraic replacement changes no
+detector, contact function, or pole
+equation. Its exact identity and
+source-coordinate occurrence obligations
+are also recorded in the independent
+checker
+\nolinkurl{undecidability/check_point_chart_lemmas.py}.
+\section{The common physical functions and their stored coordinates}
+\label{sec:global-dictionary}
+
+We now identify every coordinate counted as common. This is essential:
+equality of polynomial row names alone does not justify identifying
+independent witnesses. The common reference \(H\), the common numerator
+\(U_1\), and the common point roles 2, 3, and 4 are supplied by the
+ordered construction proved in \cite{common,crt}. The new theorem above
+also makes their contact gauge \(c\) common. The input differences
+\(Q_{1,i}\), their alternate points \(V_{1,i}\), the scalar normalizers
+\(R_i\), the contact arguments, and the native-pole witnesses remain
+private.
+
+Write
+\[
+ f=\frac1{x(H)},\qquad S=\frac{y(H)}{x(H)},\qquad
+ T_H=\frac{y(H-P_0)}{x(H-P_0)},\qquad R_H=f(H-P_0)^2.
+\]
+For the common finite pairs in roles 3 and 4, and for the common input
+numerator in role 1, use the fields \(s_j,t_j,F_j,G_j,\eta_j,d_j\)
+defined by the finite-pair equations of the preceding section.
+Thus \(F_1,s_1\) are common, while \(G_{1,i},t_{1,i},\eta_{1,i}\)
+remain private. For role 2, retain the normalized inverse-Vieta fields
+\(U,V,W,Z,r,r_2\), where
+\[
+ Z=2z(Q_2)/z(H),\qquad
+ (U,V,W)=Z(u,v,w),\qquad r=Z\rho,\qquad r_2=r^2.
+\]
+The role-2 ratios and reciprocal squares are
+\(A=L_2\), \(F_{U_2}=f(U_2)^2\), and
+\(F_{V_2}=f(V_2)^2\). None of these actual physical functions depends
+on the private scalar normalizer \(R_i\).
+
+Put \(M=-2S-W\). The common comparison fields are
+\[
+ E_2^*=A\overline{V+M}+2\overline{T_H}\,\overline Z,
+ \quad E_3=S\overline{t_3}-\overline{T_H}s_3,
+ \quad E_4=S\overline{t_4}-\overline{T_H}s_4.
+\]
+For the Lucas circuit write
+\[
+ \mathcal C=(A-1)(s_4+4S),\qquad
+ \mathcal P s_3=2Ss_4,\qquad
+ \mathcal Q=(A+1)\mathcal P,
+ \qquad
+ \mathcal H=\mathcal P^2+\mathcal C^2-\mathcal C\mathcal Q-s_4^2.
+\]
+The completeness construction chooses the finite neighborhoods where
+\(s_3\ne0\), so the same \(\mathcal P\) fills every block. No new
+inverse of \(s_3\) is imposed on an arbitrary rational solution.
+
+The four mixed square fields now shared are
+\[
+ E_3^2-c^3(E_2^*)^2,\quad E_3^2+c^3(E_2^*)^2,
+ \quad E_4^2+c\mathcal H^2,\quad E_4^2-c\mathcal H^2.
+\]
+Their products supply exactly the original enhanced comparison terms.
+The three common detector factors, before the unchanged stored
+normalizations, are
+\begin{align*}
+ \Phi_1&=1+c^2F_3^2+c^4\overline{F_{V_2}}^{\,2}
+                +c^5E_4^4-c^7\mathcal H^4,\\
+ \Phi_2&=1+c^2\overline{G_4}^{\,2}+c^4F_{U_2}^2
+                +c^5E_3^4-c^{11}(E_2^*)^4,\\
+ \Phi_3&=1+cF_1^2+c^2\overline{G_3}^{\,2}
+                -c^3F_4^2+c^4\overline{R_H}^{\,2}.
+\end{align*}
+The private factor \(\Phi_{0,i}\), containing the input comparison,
+is unchanged. In particular no detector coefficient, sign, or
+valuation profile has been altered to obtain these savings.
+
+Let \(X_j\) denote the literal physical source coordinates, and
+\(Y_j\) their stored coordinates before final renumbering. Their maps
+are
+\begin{equation}\label{eq:global-stored-map}
+                 X_j=c^{\omega_j}R_i^{\rho_j}C^{\kappa_j}Y_j.
+\end{equation}
+Here \(C\) is fixed and common, and equals 1 in the specified interface.
+The source's fixed factor of two in certain imaginary components is
+retained. The following complete dictionary lists pairs of rational
+coordinates; hence each field contributes two. All listed coordinates
+have \(\rho_j=0\), except that the pair \(190:191\) is omitted in
+the 163-coordinate interface because its stored \(R_i\)-weight is
+\(-1\). Common powers of \(c\) and \(C\) do not obstruct sharing.
+
+\begin{center}\small
+\begin{longtable}{@{}p{67mm}p{58mm}r r@{}}
+\toprule
+Actual common functions & Source pairs & 163 & 179\\
+\midrule\endfirsthead
+\toprule
+Actual common functions & Source pairs & 163 & 179\\
+\midrule\endhead
+\(f,S,R_H,f^2,T_H\) & \(15:16,17:18,19:20,64:65,150:151\) &10&10\\
+\(A,Z,U,V,W,F_{U_2},F_{V_2},r_2\) &
+\(\begin{gathered}33:34,102:103,182:187,\\54:55,23:24,194:195\end{gathered}\)&16&16\\
+\(r\), where its stored normalizer weight vanishes & \(190:191\)&0&2\\
+\(E_2^*,E_3,E_4\)&\(35:36,39:40,43:44\)&6&6\\
+\(\mathcal P,\mathcal C,\mathcal Q,\mathcal H\)&\(41:42,46:47,48:49,50:51\)&8&8\\
+The four mixed square fields displayed above & \(66:73\)&8&8\\
+All six finite-pair fields of role 3 & \(213:224\)&12&12\\
+All six finite-pair fields of role 4 & \(225:236\)&12&12\\
+\(s_1,F_1\), the common input numerator &\(201:202,205:206\)&4&4\\
+\(F_1+cF_4\)&\(610:611\)&2&2\\
+\(\Phi_1,\Phi_2,\Phi_3\), with their original fixed normalizations
+&\(120:125\)&6&6\\
+The two reordered products defined below &\(128:131\)&4&4\\
+\(c,c^{-1},c^{-2}\)&\(400,401,402\)&3&3\\
+\midrule
+Total common rational coordinates&&91&93\\
+\bottomrule
+\end{longtable}
+\end{center}
+
+For clarity, some of these functions are not equal to the raw source
+pair. For example
+\[
+ X_{33}+\sqrt2X_{34}=cA/C,\qquad
+ X_{35}+\sqrt2X_{36}=cE_2^*,\qquad
+ X_{50}+2\sqrt2X_{51}=c\mathcal H.
+\]
+The fields \(F_{U_2},F_{V_2},R_H\) likewise retain their fixed
+imaginary-component convention. Once \(c\) and \(C\) are common,
+the entire scale in \eqref{eq:global-stored-map} is common precisely
+for the coordinates counted above. The verifier checks every relevant
+\(R_i\)-weight directly against the source map. The private fields
+\(R_i x(Q_2)\), the scalar trace data, and the private input alternate
+point are excluded from the dictionary.
+
+\section{Reordering the common detector products}
+
+Let \(f_0,f_1,f_2,f_3\) denote the stored field factors, with their
+source normalizations already included, and put \(v=c^{-2}\).
+Both source interfaces have the following stored multiplication
+chain:
+\[
+                vA_i=f_{0,i}f_1,\qquad
+                vB_i=A_i f_2,\qquad
+                vW_i=B_i f_3.
+\]
+The registers \(A_i,B_i\), source pairs \(128:129\) and
+\(130:131\), occur only in these equations. Replace them by the
+common registers \(A_*,B_*\) defined by
+\begin{equation}\label{eq:global-reordered-product}
+                vA_*=f_1f_2,\qquad
+                vB_*=A_*f_3,\qquad
+                vW_i=f_{0,i}B_*.
+\end{equation}
+All equations remain quadratic over \(K\), and hence give two
+rational quadratics each. Because \(c\ne0\), both chains yield
+exactly
+\[
+                       W_i=c^6f_{0,i}f_1f_2f_3.
+\]
+Conversely their intermediate registers are uniquely recovered by
+the displayed products. This is an exact change of auxiliary
+coordinates; it does not identify the different \(W_i\).
+It saves four rational coordinates per additional input block.
+The compiler's occurrence check excludes all other uses of the
+redefined registers.
+
+\section{Compiling the global contact sum at quadratic degree}
+
+Every old block stored all but its last contact weight. The last was
+the difference between its local gauge and the preceding weights.
+Introduce one independent physical last weight \(Q_i\) per block.
+Its stored variable is \(Y_{i,*}=Q_i/c^2\), the same contact weight
+as the other stored contact weights. The only three local equations
+to be changed are the last balanced pole, inverse, and gate equations.
+In physical variables they become
+\begin{align}
+ 167281\,c\,b_i(1+Q_i)-166464\,c^2n_i^2&=0,\label{eq:last-pole}\\
+ c-Q_i\iota_i&=0,\label{eq:last-inverse}\\
+ 2cn_i-1-D_i^2-c\iota_i+2c-Q_i&=0.\label{eq:last-gate}
+\end{align}
+The \(n_i,D_i,\iota_i\) here denote physical gate coordinates,
+unrelated to integer point indices. Substituting the old expression
+for \(Q_i\) recovers the three old physical residuals identically.
+The exact existing Laurent row scales transform these equations into
+ordinary quadratics. The independent verifier checks those three
+physical identities and all stored monomials directly.
+
+Write \(u=c^{-1}\) and \(v=c^{-2}\), and let \(Y\) be the new
+last stored weight. For the 163-coordinate interface the stored rows
+are
+\begin{align*}
+ 167281 B(v+Y)-166464 N^2&=0,\\
+ uv-IY&=0,\\
+ 2Nv-E^2-Iu+2uv-v^2-vY&=0.
+\end{align*}
+For the 179-coordinate interface they are
+\begin{align*}
+ 167281 B(v+Y)-166464 N^2&=0,\\
+ uv-IY&=0,\\
+ 2Nu-E^2-Ic+2u-v-Y&=0.
+\end{align*}
+The letters \(B,N,I,E\) in these displays are the exact stored
+coordinates specified by the table maps. Their different scales
+account for the difference between the two third rows.
+
+Since every physical weight is \(c^2Y_{ij}\), the global sum becomes
+the linear equation
+\begin{equation}\label{eq:linear-weight-sum}
+                         \sum_{i,j}Y_{ij}=u.
+\end{equation}
+Eliminate the last new weight from this equation by affine
+substitution. There are twelve newly introduced last weights and one
+is eliminated, so the cost is eleven rational coordinates and no
+extra residual. The inverse equation \eqref{eq:last-inverse}
+continues to force that last weight to be nonzero. No hidden
+division by the eliminated affine expression is performed.
+
+\section{Exact counts and the resulting quartics}
+
+The starting coordinate counts are 1601 and 1837. They already shared
+54 and 50 rational coordinates, respectively. The common dictionary
+increases these to 91 and 93, saving \(11(91-54)=407\) and
+\(11(93-50)=473\) further coordinates. The global contact sum costs
+eleven coordinates; the common-input chart removes twenty. Thus
+\[
+       1601-407+11-20=1185,\qquad
+       1837-473+11-20=1355.
+\]
+Independently, from the original 251-coordinate outer circuit the
+same counts are
+\[
+       251+12(m-1)-11s+11-24+4,
+       \qquad (m,s)=(163,91)\ \hbox{or}\ (179,93).
+\]
+The chart replacement removes 42 quadratic residuals. After all
+identifications and product reordering, there are respectively 462
+and 528 literal duplicate residuals. Consequently
+\[
+              1599-42-462=1095,\qquad
+              1811-42-528=1241.
+\]
+Each deleted duplicate is listed with the name of its retained
+identical equation; these are literal polynomial identities, not
+an assertion about generic rank or a heuristic equation count.
+
+\begin{theorem}[Conditional quartic transfer]
+Retain the stated arithmetic interfaces and the selected defining
+parameters. The complete tables constructed here have 1185 or 1355
+rational coordinates and 1095 or 1241 quadratic residuals. Their
+outer input projection is exactly that of the frozen emended
+positive-integer source, on its retained cofinite parameter set.
+Their sums of squares have degree exactly four.
+
+If, in addition, \(U_{\mathrm{em}}\) holds for that exact frozen
+integer source, these families yield the corresponding undecidability
+reductions. This additional universality assertion remains unresolved.
+No unconditional undecidability bound or global minimum follows from
+the finite verifications.
+\end{theorem}
+\begin{proof}
+Given a rational solution, expand all shared coordinates into their
+separate block copies. Recover the old intermediate product registers
+from their unique products, recover every deleted input-chart field
+by the exact chart identity, and recover the eliminated weight by
+\eqref{eq:linear-weight-sum}. The global-gauge soundness proof applies
+to each block independently and makes every distinguished input
+integral. This uses the new gate proof, not a claim that the former
+local contact sums are restored. The unchanged outer reconstruction
+then gives a positive-integer witness for the exact emended source.
+
+Conversely, start from such a positive-integer witness. The common
+reference and common numerator preparation applies to its finite
+tuple of integral inputs. The global-gauge completeness proof fills
+the private contacts, products, and poles. Every function in the
+dictionary is genuinely common on those witnesses. The exact chart
+replacement and reordered products therefore fill the complete new
+system. This proves equality of projections without
+\(U_{\mathrm{em}}\); that assertion is invoked only for the
+undecidability consequence.
+
+All residuals are ordinary quadratic polynomials with integer
+coefficient polynomials in the declared fixed parameters. A sum of
+rational squares vanishes exactly when each residual does. At least
+one retained residual, \(cu-1\), has nonzero quadratic part. The sum
+of squares of the leading quadratic forms cannot vanish identically
+over the reals, so the resulting polynomial has degree exactly four.
+\end{proof}
+
+\paragraph{Complete reproducible data.}
+The producer and independent verifier are
+\begin{center}\small
+\nolinkurl{undecidability/code/build_global_gauge.py},\\
+\nolinkurl{undecidability/verify_global_gauge.py}.
+\end{center}
+The complete sparse residual tables and certificates are in
+\begin{center}\small
+\nolinkurl{undecidability/coefficients/jones1980_global_gauge/}.
+\end{center}
+They contain every variable name, every residual monomial and
+coefficient, the source maps, the coordinate removals, every duplicate
+row, and the predecessor and table hashes. The verifier independently
+reconstructs each retained and replacement residual; checks the exact
+physical gate substitutions and the common-field identity; audits the
+complete occurrences of deleted and redefined fields; checks degree
+and full variable support; and compares the complete output bytes.
+The mathematical status fields are also mandatory checks. Run
+\begin{center}\small
+\texttt{python undecidability/verify\_global\_gauge.py}
+\end{center}
+from the repository root. The verifier is read-only.
+
+\begin{thebibliography}{9}
+\bibitem{outer} ZQ Diophantine Project,
+\emph{The emended Jones outer system and its quartic transfer},
+\nolinkurl{undecidability/papers/jones1980_quartic_transfer.tex},
+23 November 2026; especially the source reconciliation.
+\bibitem{common} ZQ Diophantine Project,
+\emph{Common physical points in a combined quadratic system},
+\nolinkurl{undecidability/papers/common_points_quartic_checkpoint.tex},
+23 November 2026.
+\bibitem{crt} ZQ Diophantine Project,
+\emph{A common numerator point for simultaneous integer certificates},
+\nolinkurl{undecidability/papers/common_numerator_transfers.tex},
+23 November 2026; the all-sign order assertion and fixed-modulus
+compatibility, including avoidance of seven.
+\bibitem{gate} ZQ Diophantine Project, based on the supplied
+constructions of Gabe Conant with Astra 6.2,
+\emph{Audit and extension of the shared-product quartics},
+\nolinkurl{papers/quartic/shared_product_audit_20261119_v78.tex},
+19 November 2026.
+\bibitem{scalar} ZQ Diophantine Project,
+\emph{Scalar and point reductions to 163 and 179 coordinates},
+\nolinkurl{papers/quartic/scalar_point163_179_20261120_v82.tex},
+20 November 2026; independently reconstructed physical equations in
+\nolinkurl{computation/variable_reductions_v82/general/check.py}.
+\bibitem{pair} ZQ Diophantine Project,
+\emph{An exact input-pair chart reduction and its contact-scale obstruction},
+\nolinkurl{undecidability/papers/point_chart_research.tex},
+23 November 2026.
+\end{thebibliography}
+\end{document}

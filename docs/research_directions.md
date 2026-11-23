@@ -44,18 +44,21 @@ zero terminal roots and guards vanishing at unselected characters. The
 earlier **227 / 245 / 101**, **99 / 117 / 69**, and other intermediate bounds
 remain registered as variable--degree tradeoffs.
 
-The directly optimized quartic systems reach **1601 / 1837 / 846**, with
-**1599 / 1811 / 728** quadratic residuals. The first two new
-[checkpoints](../undecidability/papers/common_points_quartic_checkpoint.tex)
-include a reciprocal-input rechart and 54/50 common physical coordinates.
-The [complete tables](../undecidability/coefficients/jones1980_common_points)
-and independent row-by-row projection checks are supplied. The ordinary-abc
-846-variable checkpoint is unchanged.
+The directly optimized quartic systems reach **1176 / 1346 / 837**, with
+**1092 / 1238 / 725** quadratic residuals. The
+[global-contact proof](../undecidability/papers/global_gauge_quartic_checkpoint.tex)
+permits a common normalization, identifies further physical coordinates,
+reorders common products, and removes a private field from each point chart.
+The independent [Pell-index proof](../undecidability/papers/pell_index_optimization.tex)
+then removes nine outer coordinates and three rows, without removing any
+integer certificate. [Complete tables](../undecidability/coefficients/jones1980_pell_core)
+and exact row-by-row checks accompany the proofs.
 
 Their undecidability interpretation additionally needs **`U_em`**, the
 universality of the precise emended 28-variable source. The 1980 original
 prints Greek alpha in one place where the builder uses Latin a; the 1999
 author-written account supports Latin a but prints an impossible Pell row.
+A further audit finds an `n^2` versus `n^6` mismatch in the binomial bridge.
 The [source reconciliation](../undecidability/papers/jones1980_quartic_transfer.tex)
 states exactly which corrections were made. Local plausibility does not
 replace the full universality proof. The literal Mishchenko--Treier
@@ -63,6 +66,12 @@ transcription admits a reversible **57-variable / 45-row** reduction, but
 its universality remains unresolved. The alleged universal **57/47** system
 has not been independently reproved, and a quartic bound near 263 has not
 been established.
+
+The [negative-input witness](../undecidability/papers/negative_mixed_witness.tex)
+proves that nonnegativity of the ninth mixed-source input does not follow
+from the other eight integer conditions. The finite-wrapper theorem retains
+that condition. The [point-chart paper](../undecidability/papers/point_chart_research.tex)
+records precise obstructions to two tempting shared-point constructions.
 
 The next source task is to audit the complete Jones 1982 proof or give a
 direct universality proof for the exact emended system. The next construction
