@@ -12,6 +12,29 @@ The [v83 exact-square checkpoint](../computation/actual_square_v83/README.md) co
 
 The [additional research routes](research_routes_20261120.md) prove a complex-multiplication local comparison with three rational point charts and a different one-parameter sound cover. The former still needs an ordered contact construction controlling all auxiliary indices; the latter still needs actual rational realization. Neither is recorded as a new defining-variable bound.
 
+## Undecidability in bounded numbers of rational unknowns
+
+The [new undecidability category](../undecidability/README.md) asks for the
+smallest upper bounds we can prove for rational-solvability decision problems,
+both for quartics and with unrestricted degree. The instance is specified by
+integer coefficients; it is not another existential coordinate. This objective
+is different from the defining-variable counts in the main construction table.
+
+The initial [checkpoint](../undecidability/checkpoints/baseline_20261123.md)
+registers the previous `15m+94` quartic transfer: 2,539 for the general
+163-coordinate predicate, 2,779 for the fully specified 179-coordinate
+predicate, and 934 under ordinary abc using the 56-coordinate predicate.
+Its source system and full combined quadratic compilation are being independently
+reconstructed. All inherited arithmetic interfaces remain explicit.
+
+The constructive tasks are to reprove the classical small universal integer
+systems, minimize the subset of coordinates requiring integer certificates,
+prove any simultaneous sharing of certificate witnesses, and optimize the
+resulting quadratic system. Higher-degree universal polynomials offer a
+separate route to much smaller rational counts. A bound near 263 for that
+route must not be reported as a quartic bound. Proved transfer theorems,
+certificates, and important partial results will be registered separately.
+
 ## Immediate constructive targets
 
 1. **Identify an external input with the new elliptic quotient.** The [prepared divisibility theorem](../papers/elliptic_divisibility/prepared_eds_divisibility_20261120_v82.tex) forces `h | j` with two rational elliptic point charts and one pole block. Every nonzero integral quotient `j/h` occurs after choosing a suitable reference. Its five-coordinate specification does not yet enforce `X=j/h`. A height argument must handle an arbitrarily large quotient; a carrier depending only on the reference leaves this uncontrolled, while including the second point can demand more contact-prime support than the reference provides.

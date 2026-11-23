@@ -8,7 +8,7 @@ F(X,Y_1,\ldots,Y_m)
 
 whose rational input projection is the integers, under the arithmetic premises stated in each construction.
 
-**Every variable count includes the input.** Degree means total degree. Coefficient height is the maximum absolute integer coefficient after the fixed parameters have been substituted. We optimize variable count, then degree, then coefficient height. No global minimum is claimed.
+**Every defining-polynomial variable count includes the input.** The separate undecidability category below counts existential rational unknowns; its instance input is encoded in the coefficients. Degree means total degree. Coefficient height is the maximum absolute integer coefficient after the fixed parameters have been substituted. We optimize variable count, then degree, then coefficient height. No global minimum is claimed.
 
 ## Current constructions — 23 November 2026
 
@@ -34,6 +34,26 @@ The last column gives **decimal kB (1 kB = 1,000 bytes)** for single-line ASCII,
 The unrestricted-degree bounds describe complete finite determinant specifications; those enormous polynomials have not been fully expanded. All displayed quartics are exactly expanded. Every construction has integer content one, with primitive normalization where needed. Small coefficient fixtures and coefficient-height cutoffs are not sufficient defining parameters.
 
 The [results JSON](data/results_20261123_v88.json) records all five new finite-algebra specifications and parameter qualifications; the [v82 records](data/results_20261120_v82.json) preserve the unchanged quartic specifications. The new fixture TXT upper bounds use the same exact character-count argument as v84, replayed in the v88 gate. Weaker fixed-exponent versions of abc and alternative coefficient presentations are retained in the [detailed proof guide](docs/results_20261119_v78.md#weaker-hypotheses-and-generalizations).
+
+## Fewest variables currently recorded for undecidability
+
+The new [undecidability category](undecidability/README.md) records reductions to
+the rational-solvability decision problem, separately from definitions of the
+integers. Its initial registration preserves the preceding session's quartic
+transfer checkpoint, with its status explicit:
+
+| Degree restriction | Additional height hypothesis | Rational unknowns | Status |
+|:--|:--|--:|:--|
+| Quartic | No additional abc hypothesis | 2,539 | [Previous transfer checkpoint](undecidability/checkpoints/baseline_20261123.md); independent source audit in progress |
+| Quartic, fully specified source | No additional abc hypothesis | 2,779 | Same transfer with the 179-coordinate integer predicate |
+| Quartic | Ordinary rational abc | 934 | Same transfer with the 56-coordinate integer predicate |
+
+All three retain the source integer predicates' stated arithmetic premises.
+They are upper bounds reported by the previous construction, not unconditional
+theorems or claims of a global least value. The [registry](undecidability/results.json)
+will distinguish audited theorems from research checkpoints, including new
+unrestricted-degree results. The [project research document](docs/research_directions.md#undecidability-in-bounded-numbers-of-rational-unknowns)
+records this separate research objective.
 
 ## Coefficients and explicit files
 
