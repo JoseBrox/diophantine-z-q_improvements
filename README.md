@@ -39,38 +39,42 @@ The [results JSON](data/results_20261123_v88.json) records all five new finite-a
 
 The [undecidability category](undecidability/README.md) counts existential
 rational unknowns in a decision problem; its integer instance is a coefficient
-parameter. The new [joint-certificate theorem](undecidability/papers/shared_integer_transfers.tex)
-([PDF](undecidability/papers/shared_integer_transfers.pdf)) shares seven point
-roles, one contact parameter and one finite-algebra encoder.
+parameter. The [common-numerator theorem](undecidability/papers/common_numerator_transfers.tex)
+shares one more elliptic point across all integer inputs. The
+[finite-wrapper theorem](undecidability/papers/finite_wrapper_transfer.tex)
+([PDF](undecidability/papers/finite_wrapper_transfer.pdf)) then absorbs the
+universal equation and one positivity coordinate into the finite algebra.
 
 | Degree restriction | Additional height hypothesis | Rational unknowns | Status |
 |:--|:--|--:|:--|
-| Unrestricted degree | No additional abc hypothesis | **99** | Proved transfer under retained source arithmetic premises; degree below `2^526` |
-| Unrestricted degree, specified source | No additional abc hypothesis | **117** | Proved transfer under retained source arithmetic premises; degree below `2^591` |
-| Unrestricted degree | Ordinary rational abc | **69** | Proved transfer under retained source arithmetic premises; degree below `2^377` |
-| Quartic checkpoint | No additional abc hypothesis | **2,086** | Conditional on emended-source universality `U_em`; 1,776 quadratic residuals |
-| Quartic checkpoint, specified source | No additional abc hypothesis | **2,278** | Conditional on `U_em`; 1,944 quadratic residuals |
+| Unrestricted degree | No additional abc hypothesis | **82** | Proved transfer under retained source arithmetic premises; degree below `2^650` |
+| Unrestricted degree, specified source | No additional abc hypothesis | **100** | Proved transfer under retained source arithmetic premises; degree below `2^714` |
+| Unrestricted degree | Ordinary rational abc | **52** | Proved transfer under retained source arithmetic premises; degree below `2^500` |
+| Quartic checkpoint | No additional abc hypothesis | **1,601** | Conditional on emended-source universality `U_em`; 1,599 quadratic residuals |
+| Quartic checkpoint, specified source | No additional abc hypothesis | **1,837** | Conditional on `U_em`; 1,811 quadratic residuals |
 | Quartic checkpoint | Ordinary rational abc | **846** | Conditional on `U_em`; 728 quadratic residuals |
 
 All rows retain the chosen integer predicate's stated arithmetic premises.
 “No additional abc” does not assert an independent proof of those premises.
-The general 99-variable and abc 69-variable routes have ineffective sufficient
-fixed parameters; stored small members are algebraic fixtures. The 117-variable
+The general 82-variable and abc 52-variable routes have ineffective sufficient
+fixed parameters; stored small members are algebraic fixtures. The 100-variable
 route uses the specified `L=143` source. These are upper bounds, with no global
-minimum claimed. The [earlier 227/245/101 theorem](undecidability/papers/transfer_general_degree.tex)
-remains a useful tradeoff with the smaller common degree bound `2*eta(58,4)`.
+minimum claimed. The **83 / 101 / 53** versions have smaller degree ceilings
+`2^413 / 2^477 / 2^263`; the [earlier 227/245/101 theorem](undecidability/papers/transfer_general_degree.tex)
+has the smaller common ceiling `2*eta(58,4)`. All remain registered as tradeoffs.
 
-The [quartic checkpoint proof](undecidability/papers/shared_quartic_checkpoint.tex)
-and [complete sparse systems](undecidability/coefficients/jones1980_shared)
-include direct combined-system optimizations. Their separate source audit
-found that Jones's 1980 display prints Greek alpha where the emended system
-uses Latin a, while the author-written 1999 account has a different Pell-row
-typo. Universality of the precise emended system is therefore explicitly
-unverified. The [literal later-system audit](undecidability/papers/mt_source_audit.tex)
+The [quartic checkpoint proof](undecidability/papers/common_points_quartic_checkpoint.tex)
+and [complete sparse systems](undecidability/coefficients/jones1980_common_points)
+identify 54 or 50 actual common rational coordinates, with each physical
+function and its normalization audited. Their separate source audit found
+that Jones's 1980 display prints Greek alpha where the emended system uses
+Latin a, while the author-written 1999 account has a different Pell-row typo.
+Universality of the precise emended system is therefore explicitly unverified.
+The [literal later-system audit](undecidability/papers/mt_source_audit.tex)
 proves a reversible **62/50 to 57/45** reduction; it does not independently
 reprove the alleged universal **57/47** result.
 
-The [registry](undecidability/results.json), [detailed report](docs/results_20261123_v89.md)
+The [registry](undecidability/results.json), [detailed report](docs/results_20261123_v90.md)
 and [project research document](docs/research_directions.md#undecidability-in-bounded-numbers-of-rational-unknowns)
 separate proved transfers, retained arithmetic premises and source-audit
 checkpoints. A quartic bound near 263 has not been established.
@@ -145,6 +149,7 @@ Use **Python 3.12**, **SymPy 1.14.0**, and **PassageMath PARI 10.8.14**. The new
 
 ```sh
 python -m pip install sympy==1.14.0 passagemath-pari==10.8.14
+python -B scripts/verify_v90.py
 python -B scripts/verify_v89.py
 python -B scripts/verify_v88.py --report /tmp/v88-verification.json
 python -B scripts/verify_v84.py --report /tmp/v84-verification.json

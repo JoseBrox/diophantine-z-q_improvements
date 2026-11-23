@@ -1,0 +1,167 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=28mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs}
+\usepackage[hidelinks]{hyperref}
+\usepackage{xurl,microtype}
+\setlength{\emergencystretch}{3em}
+\newcommand{\Q}{\mathbb Q}
+\newtheorem{proposition}{Proposition}
+\title{A reciprocal chart saving one coordinate\\in the shared-reference quartic construction}
+\author{ZQ Diophantine Project}
+\date{23 November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+We remove one coordinate and one quadratic equation from each of the two
+general shared-reference constructions. The resulting complete systems
+have 2085 coordinates and 1775 quadratic rows, or 2277 coordinates and 1943
+quadratic rows. The change is a rational bijection using existing nonzero
+units, and all six affected equations are displayed and checked exactly.
+The numerical counts and finite algebra are verified. Any undecidability
+interpretation remains conditional on the explicitly unresolved source
+universality hypothesis \(U_{\mathrm{em}}\) and on the retained arithmetic
+interfaces; this note asserts no unconditional undecidability bound.
+\end{abstract}
+
+The starting systems, their simultaneous completeness proof, and their
+coefficient tables are given in the companion
+\nolinkurl{shared_quartic_checkpoint.tex}. The exact source obligation
+\(U_{\mathrm{em}}\) and the discrepancy between the consulted published
+displays are explained there and in
+\nolinkurl{jones1980_quartic_transfer.tex}. The present change is independent
+of that obligation: it proves equivalence of the displayed rational
+systems. The 56-coordinate ordinary-\(abc\) route is not altered.
+
+\section{A reciprocal input without an additional coordinate}
+\label{sec:reciprocal-reference-rechart}
+
+The preceding shared-reference compilation introduced an ordinary input
+\(i\) and a row \(iv=1\), where \(v\) is the outer coordinate denoted
+\texttt{i\_inverse}.  This permits all reference functions to be shared
+in their actual physical scale.  For the general 163- and 179-coordinate
+interfaces, one can instead store \(i\) in an existing witness coordinate.
+The following improvement is a rational change of coordinates, so it adds
+no arithmetic assumption.  Its use as an undecidability reduction still
+requires the unresolved hypothesis \(U_{\mathrm{em}}\) and every retained
+arithmetic interface.
+
+\begin{proposition}\label{prop:reciprocal-reference-rechart}
+The shared-reference systems with \(2086\) and \(2278\) coordinates have
+rationally equivalent presentations with, respectively,
+\[
+\begin{array}{c|cc}
+\text{integrality interface}&\text{coordinates}&\text{quadratic rows}\\\hline
+163&2085&1775\\
+179&2277&1943.
+\end{array}
+\]
+The outer input projection and the ten common reference functions are
+preserved.  The sum of the squares of the new rows has degree exactly four.
+\end{proposition}
+
+\begin{proof}
+Work in the integer block that certifies \(i=1/v\).  Denote its old
+coordinates by \(Z_j\), with \(Z_1=i\).  In the 163-coordinate block let
+\[
+       q=Z_{159},\qquad q^{-1}=Z_{160},\qquad q^{-2}=Z_{161};
+\]
+in the 179-coordinate block, after the already recorded three-register
+rechart, the corresponding indices are \(162,163,164\).  The two literal
+unit rows force \(q\ne0\) and give the indicated inverse values.  The
+outer equation \(vE=c^2\), with \(c>0\), already forces \(v\ne0\).
+
+Replace three witnesses, retaining their coordinate slots, by \(t,h,r\).
+For the 163-coordinate interface define the old witnesses from the new by
+\begin{equation}\label{eq:reciprocal-chart-163}
+       Z_{37}=\frac{t}{vq},\qquad
+       Z_{77}=\frac{h}{vq},\qquad
+       Z_{78}=\frac{r}{v}.
+\end{equation}
+For the 179-coordinate interface instead use
+\begin{equation}\label{eq:reciprocal-chart-179}
+       Z_{37}=\frac{t}{vq},\qquad
+       Z_{77}=\frac{h}{vq},\qquad
+       Z_{78}=\frac{r}{v^2q^2}.
+\end{equation}
+All other coordinates are unchanged.  These transformations and their
+inverses are rational because \(v,q\ne0\).  None of the ten reference
+coordinates has index \(37,77,78\), so their common physical values are
+unaffected.
+
+Here is the complete transformed subsystem.  Put \(R=Z_{90}\), and let
+\((j_0,j_1)=(117,118)\) for the 163-coordinate interface and
+\((j_0,j_1)=(118,119)\) for the 179-coordinate interface.  Four rows are
+common to both presentations:
+\begin{align}
+ 1-vt&=0,\label{eq:reciprocal-input-unit}\\
+ 2601t^2+255102tv-4hv+6255001v^2&=0,\label{eq:reciprocal-pair}\\
+ v(-Z_{17}+Z_{23}+2504Z_{j_0})+51tZ_{j_0}&=0,
+       \label{eq:reciprocal-cleared-real}\\
+ v(-Z_{18}+Z_{24}+2504Z_{j_1})+51tZ_{j_1}&=0.
+       \label{eq:reciprocal-cleared-imag}
+\end{align}
+For the 163-coordinate interface the remaining two rows are
+\begin{align}
+ 15531948th+291790992tv-512h^2+767410608hv
+       +14315517724v^2+vr&=0,\label{eq:reciprocal-product-163}\\
+ 22201rR+vR-149C^2r&=0,\label{eq:reciprocal-forced-163}
+\end{align}
+where \(C\) is its coefficient parameter, not a quantified coordinate.
+For the fixed 179-coordinate interface they are
+\begin{align}
+ 15531948th+291790992tv-512h^2+767410608hv
+       +14315517724v^2+rR&=0,\label{eq:reciprocal-product-179}\\
+ 25rR-A_*r+v^2&=0.\label{eq:reciprocal-forced-179}
+\end{align}
+Here \(A_*\) is exactly the fixed integer in that interface's original
+row \nolinkurl{scalar.forced_prime.definition}; no coefficient is changed.
+Its decimal expansion is stored, without abbreviation, in the generator
+and in each complete coefficient table.
+
+For clarity, every row multiplication can be checked directly.  First set
+\(Z_1=1/v\) in the old equations.  The old input-square equation is
+\(Z_1^2-qZ_{37}=0\); multiplication by \(v^2\) gives
+\eqref{eq:reciprocal-input-unit}.  The old
+\nolinkurl{scalar.rPair1.definition} and
+\nolinkurl{scalar.four_contact_product.definition} rows, after the
+appropriate substitution, become the displayed pair and product rows
+when multiplied by \(v^2q^2\).  The forced-prime row is multiplied by
+\(v\) in the 163-coordinate case and by \(v^2q^2\) in the
+179-coordinate case.  Each old \texttt{input.cleared} row is multiplied
+by \(vq\).  These multipliers are all nonzero.  An occurrence audit of
+the complete source table shows that these six rows are the only rows
+containing \(Z_1,Z_{37},Z_{77},Z_{78}\).  Thus no unlisted equation
+requires alteration, and every new row has degree at most two.
+
+On a solution of the old shared-reference system, define the new witnesses
+by the inverse of \eqref{eq:reciprocal-chart-163} or
+\eqref{eq:reciprocal-chart-179}.  Since \(iv=1\), the old input-square
+row gives \(t=vqi^2/q=vi^2=i\).  Hence the new system is satisfied after
+deleting the old external coordinate \(i\) and its row \(iv=1\).
+Conversely, a solution of the new system satisfies \(vt=1\).  Reconstruct
+\(i=t=1/v\), reconstruct the three old witnesses using the displayed
+formulas, and divide the six new rows by their nonzero multipliers.  This
+recovers every old equation, including \(iv=1\).  The two constructions
+are inverse on rational solutions and fix all outer coordinates.
+
+One coordinate and one row have therefore been removed in each case.
+The new input-unit row has the nonzero quadratic term \(-vt\).
+Over \(\mathbb Q\), the sum of the squares of the quadratic homogeneous
+parts cannot vanish identically: evaluating at a real point with a
+nonzero such part gives a positive value.  Consequently the sum of the
+squares of all residuals has degree exactly four and vanishes precisely
+when they all vanish.
+\end{proof}
+
+\paragraph{Reproducibility and scope.}
+The separate generator \texttt{build\_reciprocal\_reference.py} starts from
+the complete shared-reference tables.  It independently substitutes the
+rational changes above into all source rows, checks the six resulting
+identities exactly, checks that every occurrence of the changed registers
+is included, and materializes the full new quadratic systems.  Their
+certificates retain \(U_{\mathrm{em}}\) as explicitly unverified.
+This one-coordinate improvement applies to the two general interfaces;
+no analogous saving for the 56-coordinate ordinary-\(abc\) interface is
+asserted here.
+
+\end{document}

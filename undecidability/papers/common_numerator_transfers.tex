@@ -1,0 +1,972 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=26mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,booktabs,hyperref,xurl}
+\setlength{\emergencystretch}{3em}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\N}{\mathbb N}
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\Nm}{\operatorname{N}}
+\title{A common numerator point for simultaneous integer certificates\\
+and rational undecidability in 83, 101, and 53 variables}
+\author{\(\mathbb Z\mathbb Q\) Diophantine Project}
+\date{23 November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+We improve the simultaneous integer certificates of the preceding
+99-, 117-, and 69-variable transfer by using one numerator point for
+all input blocks. The numerator index is selected independently of the
+reference index. Disjoint contact families and an all-sign coprimality
+property of the retained prime supplier allow the same numerator point
+to approximate different integer multiples of the reference point at
+different selected primes. This saves two rational coordinates for
+every input after the first.
+
+The resulting joint certificates for \(\Z^k\) use \(7k+18\) coordinates
+in the general two-detector route, \(9k+18\) in the specified
+three-detector route, and \(5k+6\) in the ordinary-\(abc\) route.
+The mixed-integer universality theorem gives 83, 101, and 53 rational
+unknowns, with degree bounds strictly below \(2^{413},2^{477}\), and
+\(2^{263}\), respectively. All retained non-pole arithmetic premises
+are stated explicitly; the first two routes introduce no additional
+\(abc\) hypothesis. These are general-degree statements, not quartic
+undecidability bounds. Complete coefficient circuits, source maps,
+guard lists, and exact degree certificates accompany the proof.
+\end{abstract}
+
+\section{Statement and retained premises}
+
+We use the project sources with full auxiliary elliptic charts,
+the four-contact scalar or twelve-contact construction of v78,
+and the normalized Bhargava--Burungale product poles of v88
+\cite{v78,v88}. The preceding simultaneous construction is
+\cite{shared}. Its proof and complete coefficient circuits are
+retained. The new operation identifies its private numerator point
+across input blocks. We prove that this identification preserves
+completeness; soundness will follow by projection to each unchanged
+source block.
+
+The arithmetic dependencies retained from these sources are the
+elliptic-group and chart interpretations, the stated trace or effective
+abscissa-sum height and contact-height bounds, the finite prime-pattern
+supplier, and the compatible finite-place and compact-real recurrence
+statements. The ordinary-\(abc\) route also retains ordinary rational
+\(abc\). The prime supplier is used for every fixed finite rational
+contact list, with arbitrary fixed divisibility and finite avoidance;
+its all-sign order-coprimality assertion is given explicitly in
+Section~\ref{sec:crt}. These arithmetic dependencies are not proved
+by the coefficient verification.
+
+The v88 product-pole completion uses the published
+Bhargava--Burungale theorem \cite{BB}. It does not retain the earlier
+native-pole realization premise. All pole parameters remain private
+to their original input and detector. In particular, this proof
+does not identify distinct square classes or request a common pole
+witness.
+
+\begin{theorem}\label{thm:main}
+Under the corresponding retained source premises, for every fixed
+integer \(k\ge1\) there is an integer polynomial with \(k\)
+distinguished rational inputs whose input projection is exactly
+\(\Z^k\), with the following total numbers of rational coordinates:
+\[
+\begin{array}{c|c|c}
+\text{route}&\text{coordinates}&\text{source parameter}\\ \hline
+\text{general two-detector}&7k+18&\text{sufficiently large fixed odd }L\\
+\text{specified three-detector}&9k+18&L=143\\
+\text{ordinary }abc&5k+6&\text{sufficiently large fixed odd }B .
+\end{array}
+\]
+The sufficient thresholds in the first and third lines are the
+single-input soundness thresholds; they are not increased with \(k\).
+Consequently rational polynomial solvability is undecidable in
+83, 101, and 53 unknowns, respectively, under the stated premises.
+The final polynomials may be taken to have degrees strictly below
+\(2^{413},2^{477}\), and \(2^{263}\), respectively.
+\end{theorem}
+
+The first and third assertions are existence statements for a fixed
+defining member when the sufficient parameter threshold is ineffective.
+The stored general fixture \(L=143\) and ordinary-\(abc\) fixture \(B=3\)
+do not certify sufficient parameters for those two routes. The specified
+three-detector \(L=143\) member is the one certified by its source.
+All degree bounds are uniform in these fixed coefficient parameters.
+These qualifications are part of the theorem, not exceptions supplied
+by the finite verifier.
+
+\section{Point roles and the new choice}
+\label{sec:roles}
+
+Put
+\[
+ K=\Q(\sqrt2),\qquad D=11-6\sqrt2,\qquad E:y^2=x^3-Dx,
+\]
+\[
+ P=\left(\frac{57-28\sqrt2}{8},\frac{-660+417\sqrt2}{32}\right).
+\]
+The source fixes the interpretation of \(P\) as its generator of
+\(2E(K)\). Write
+\[
+              f(Q)=\frac1{x(Q)},\qquad z(Q)=-\frac{x(Q)}{y(Q)}.
+\]
+Every division below retains the source denominator guard.
+The nonzero integer label for an input \(X_i\in\Z\) is
+\[
+                    n_i=X_i^2+1,\qquad A_i=[n_i]P .
+\]
+The root point \(A_i\) remains private. This also handles \(X_i=0\),
+for which \(n_i=1\).
+
+In the general routes the common root labels \(a,t,b\) and the
+common point roles from \cite{shared} are
+\[
+\begin{split}
+ S&=[a]P,\quad T=[t]P,\quad Z=[b]P,\quad H=[h]P,\\
+ U_S&=[ha]P,\quad U_T=[ht]P,\quad U_Z=[hb]P.
+\end{split}
+\]
+Previously the remaining numerator was \(U_{A_i}=[hn_i]P\).
+We replace all these numerator roles by a single point
+\[
+                              U=[j]P,
+\]
+where \(j\) is a new integer \emph{label in the completeness proof},
+not an additional quantified coordinate. It need not equal any
+of the integers \(hn_i\). The equations retain the same rational
+point chart for the numerator and every original comparison test.
+The two input-dependent ratios now are
+\begin{equation}\label{eq:ratios}
+ r=\frac{z(U)}{z(H)},\qquad
+ r_i'=\overline{\frac{z(U-A_i)}{z(H-P)}}.
+\end{equation}
+The bar denotes conjugation in \(K/\Q\).
+
+The ordinary-\(abc\) source has only the roles \(A_i,H,U_{A_i}\).
+After the same identification it has private \(A_i\) and common
+\(H,U\). Its original nonzero source input is replaced throughout
+by \(n_i=X_i^2+1\); the separate zero-input polynomial factor is
+omitted. This is legitimate because
+\[
+              X\in\Z\quad\Longleftrightarrow\quad X^2+1\in\Z
+              \qquad(X\in\Q).
+\]
+For the reverse implication, write \(X=r/s\) in lowest terms;
+integrality forces \(s^2\mid r^2\), and hence \(s=1\).
+
+Each point role has two retained rational chart coordinates.
+Identifying the numerator therefore saves \(2(k-1)\) retained
+coordinates. Its three finite chart generators are identified as
+well, but those generators are eliminated by the finite-algebra
+encoder and are not rational unknowns. The remainder of the proof
+justifies this saving.
+
+\section{Contact families remain disjoint}
+\label{sec:contacts}
+
+We retain exactly the contact substitutions of \cite{shared}.
+For clarity we recall why contacts belonging to different inputs
+cannot coincide.
+
+In the general routes let \(e=2\) or \(3\) be the number of
+detectors. The v88 scalar for block \(i\) is
+\[
+ \beta_i=1632X_i^2+2477,\qquad
+ A_i^{\rm sc}=\beta_i(\beta_i-1),\qquad
+ B_i^{\rm sc}=(\beta_i-2401)(32\beta_i+343).
+\]
+\[
+ T_L^{\rm sc}=\bigl(1224(67^{(L+1)/2}+1)\bigr)^2,\qquad
+ \rho_i=102^2\,67^L
+ \frac{7T_L^{\rm sc}A_i^{\rm sc}B_i^{\rm sc}}
+ {(B_i^{\rm sc}+7T_L^{\rm sc}A_i^{\rm sc})^2}.
+\]
+For integer inputs these are fixed positive numbers with
+\(0<\rho_i<1/167\), square reduced denominator, and the source
+class-seven and finite-depth properties. Put
+\[
+ x(A_i)+x(S)+x(T)+x(Z)=\mathcal U_i+\sqrt2\mathcal S_i.
+\]
+The two-detector scales are
+\[
+           \alpha_{i0}=1,\qquad
+           \alpha_{i1}=1+\rho_i(2\mathcal U_i)^2 ,
+\]
+and the three-detector scales are
+\[
+ \alpha_{i0}=1,\quad
+ \alpha_{i1}=1+\rho_i\mathcal U_i^2,\quad
+ \alpha_{i2}=1+\rho_i(\mathcal U_i+\mathcal S_i)^2 .
+\]
+All are at least one and depend only on root points and inputs;
+in particular they do not depend on the new \(U\).
+For \(0\le i<k\) retain the common-parameter substitution
+\[
+ t_{i\ell}=\alpha_{i\ell}(\lambda+100i),\qquad
+ \delta_{i\ell}=t_{i\ell}+\ell+1 .
+\]
+With
+\[
+ \Theta=\{0,-1/2,-1,1/2399,-32/407\},\qquad
+ \Theta_\ell=(4\ell+2+\Theta)\cup(4\ell+4+\Theta),
+\]
+the contact function is
+\begin{equation}\label{eq:R}
+ R_{i\ell}=
+ \frac{\prod_{\theta\in\Theta_\ell}(t_{i\ell}-\theta)}
+      {\delta_{i\ell}^{10}}.
+\end{equation}
+As a function of \(\lambda\), its contact positions are
+\[
+             d=\theta/\alpha_{i\ell}-100i.
+\]
+They lie in the pairwise disjoint intervals
+\((-100i,-100i+13)\). Repeated positions within one input block
+may be merged, keeping all their detector incidences. They impose
+the same integer label \(n_i\), so no conflict results.
+
+For the ordinary-\(abc\) source put
+\[
+ \beta_i=n_i^2+B,\quad T_i=\Tr x(A_i),\quad
+ a_i=\beta_i^4+T_i^4,\quad z_i=a_i(z+100i).
+\]
+Here \(a_i\ge81\) for the source range \(B\ge3\), and \(a_i\) is
+fixed before the reference and numerator choices. If
+\[
+ \mathcal C=\{-9,-8,-7,-5,-4,-3,-2,-1,6,10,11,12\},
+\]
+the normalized positions are
+\[
+                      d=\pm(1+c/a_i)-100i,\qquad c\in\mathcal C.
+\]
+They lie in \((-100i-2,-100i+2)\), again disjoint for different
+inputs. No size assumption on \(n_i\) is needed.
+
+Let \(\mathcal D_i\) be the resulting set of distinct positions
+assigned to input \(i\), and \(\mathcal D=\bigcup_i\mathcal D_i\).
+All these finite sets are fixed before prime selection.
+
+\section{The common-index Chinese remainder theorem}
+\label{sec:crt}
+
+The key arithmetic input is the all-sign conclusion of the pinned
+Sun prime-pattern source \cite[Theorem 4.1, label
+\texttt{an:thm:patterns}]{patterns}. It states the following.
+For any distinct integral coefficients \(c_d\), any prescribed
+divisibility of \(w\), any odd squarefree avoidance integer \(M_1\)
+with \(7\nmid M_1\), and arbitrary positive lower bounds, there
+are \(u,w>0\) such that all
+\[
+                    p_d=u+c_dw^2
+\]
+are large primes, \(u/w^2\) is arbitrarily large, and their
+Gaussian generators satisfy
+\begin{equation}\label{eq:gaussian}
+ \pi_d\equiv9\pmod {16},\qquad
+ \pi_d\equiv1+3\mathrm i\pmod7,\qquad
+ \pi_d\equiv\mathrm i\pmod {M_1}.
+\end{equation}
+The two orders at one position have greatest common divisor four.
+At distinct positions any common divisor of either order at one
+position and either order at the other is a power of two.
+Both orders are prime to \(M_1\). The rational contact formulation
+used in the project follows after a fixed denominator dilation.
+We use this assertion as part of the retained prime supplier;
+we do not add a stronger prime selection hypothesis.
+
+Write the divided annihilator orders as
+\[
+             u_d=\frac{\Nm(\pi_d-1)}4,\qquad
+             v_d=\frac{\Nm(\pi_d+1)}4 .
+\]
+The symbol \(\mathrm i\) in \eqref{eq:gaussian} is the Gaussian
+unit and is unrelated to the input index \(i\).
+The normalization in the elliptic source makes \(u_d\) an
+annihilator for \(P\) in the primary slot and \(v_d\) an
+annihilator in the opposite slot. The residue modulo sixteen gives
+\begin{equation}\label{eq:twodepth}
+                     v_2(u_d)=4,\qquad v_2(v_d)=0 .
+\end{equation}
+Indeed, writing \(\pi=a+b\mathrm i\), one has \(a\equiv9\) and
+\(b\equiv0\pmod {16}\); hence
+\(v_2((a-1)^2+b^2)=6\) and
+\(v_2((a+1)^2+b^2)=2\).
+It follows that
+\begin{equation}\label{eq:ordercoprime}
+ \gcd(u_d,v_e)=1\quad(d,e\in\mathcal D),\qquad
+ \gcd(v_d,v_e)=1\quad(d\ne e).
+\end{equation}
+The second assertion uses the same-sign part of the pinned theorem,
+not merely its explicitly displayed cross-sign corollary.
+
+\begin{lemma}[Compatibility with a fixed preparation modulus]
+\label{lem:avoidance}
+Let \(M\) be any fixed positive integer divisible by \(64\).
+The prime selection can ensure that the odd parts of every
+\(u_d,v_d\) are prime to \(M\), and that all \(p_d\) are prime
+to \(M\).
+\end{lemma}
+\begin{proof}
+In \eqref{eq:gaussian} take \(M_1\) to be the product of the
+odd prime divisors of \(M\), omitting \(7\).
+For each such odd prime \(q\ne7\), the two norms are \(2\pmod q\).
+At seven the separate residue in \eqref{eq:gaussian} gives
+\[
+     \Nm(\pi_d-1)\equiv2\pmod7,\qquad
+     \Nm(\pi_d+1)\equiv6\pmod7.
+\]
+Thus seven is automatically avoided; the restriction
+\(7\nmid M_1\) loses nothing. Division by four is harmless at
+every odd prime. Finally choose the selected primes larger
+than every prime divisor of \(M\).
+\end{proof}
+
+We also need a different coprimality fact: every selected prime
+must avoid every selected annihilator. Choose a denominator
+\(D_0\) for the contact positions, put \(v=D_0^2w^2\), and use
+\[
+                 \lambda=u/v,\qquad p_d=u-dv
+\]
+(or the analogous common variable \(z=u/v\)).
+The supplier applies to the resulting integral quadratic coefficients.
+Impose \(\lambda>4\max_d|d|\) and \(u\ge100\).
+Then every selected prime belongs to \((3u/4,5u/4)\).
+The source reduction orders are even, and Hasse's bound gives
+\[
+ \#E(\mathbb F_{p_e})
+ \le p_e+1+2\sqrt{p_e}
+ <\frac54u+1+\sqrt{5u}<\frac32u.
+\]
+If \(p_d\) divided one of these even orders, that order would
+be at least \(2p_d>3u/2\), a contradiction. Consequently
+\begin{equation}\label{eq:primeorder}
+                  \gcd(p_d,\prod_eu_ev_e)=1 .
+\end{equation}
+This cluster argument permits prime-power refinements. It does
+not replace the order-order coprimality in
+\eqref{eq:ordercoprime}.
+
+\begin{lemma}[Two common indices]\label{lem:indices}
+Suppose that \(M\) preserves the fixed-place preparations and
+is divisible by \(64\) and by the component-group order of the
+compact real cyclic closure used in the source. Fix allowed
+initial indices \(h_0,j_0\) divisible by \(64\).
+There are positive integers \(h,j\), with independent real
+returns to their prescribed allowed neighborhoods, such that
+for \(d\in\mathcal D_i\)
+\begin{align}
+ h&\equiv h_0\pmod M,& h&\equiv0\pmod {u_d},&
+ h&\equiv1\pmod {v_d},&
+ h&\equiv p_d\pmod {p_d^2},\label{eq:hcrt}\\
+ j&\equiv j_0\pmod M,& j&\equiv0\pmod {u_d},&
+ j&\equiv n_i\pmod {v_d},&
+ j&\equiv hn_i\pmod {p_d^5}.\label{eq:jcrt}
+\end{align}
+The exponent \(5\) can be replaced by any prescribed larger
+finite exponent, separately at each selected prime.
+\end{lemma}
+\begin{proof}
+First apply the generalized Chinese remainder theorem to
+\eqref{eq:hcrt}. The only overlap with \(M\) of the primary
+orders has two-part \(16\), on which \(h_0\) vanishes. The
+primary residues are all zero. The opposite orders are odd,
+pairwise coprime, and coprime to all primary orders by
+\eqref{eq:ordercoprime}. They are prime to \(M\) by
+Lemma~\ref{lem:avoidance}. The selected prime squares are
+mutually coprime and prime to every other modulus by
+\eqref{eq:primeorder} and finite avoidance. Thus all residues
+are compatible.
+
+After selecting \(h\), apply the same argument to
+\eqref{eq:jcrt}. The crucial additional fact is that distinct
+opposite orders are pairwise coprime, so they may receive
+unrelated residues \(n_i\). A repeated contact position belongs
+to only one input block and receives only that block's residue.
+The residue \(j_0\) agrees with all zero primary residues on
+their common two-part. The prime-power conditions are independent
+of these order conditions. The same argument works for any
+higher prescribed precision.
+
+It remains to preserve the real returns. Let \(G\) be the compact
+closure of the cyclic orbit in the product of the source real
+groups. If an integer \(m\) is divisible by the order of
+\(G/G^0\), then \([m]G=G^0\): multiplication by \(m\) is
+surjective on the connected compact torus \(G^0\) and kills
+the component group. Hence the orbit of any arithmetic
+progression with such step is dense in the component specified
+by its residue. The final progressions in \eqref{eq:hcrt} and
+\eqref{eq:jcrt} refine the original classes modulo \(M\), so
+they retain the prescribed components and admit arbitrarily
+large positive indices in the prescribed nonempty open
+neighborhoods. The indices are chosen independently.
+\end{proof}
+
+\section{Formal estimates at a selected contact}
+\label{sec:formal}
+
+Fix \(d\in\mathcal D_i\) and write \(p=p_d\).
+Enlarge the fixed avoidance set before prime selection to
+contain all bad primes, the supports of every nonzero root
+label \(n_i,a,t,b\), all scalars and scales, all contact
+differences, \(D_0\), and the preparation modulus and chart
+denominators. Thus \(n_i\) is a \(p\)-adic unit.
+
+At the primary slot the congruences modulo \(u_d\) put
+\(H=[h]P\) and \(U=[j]P\) in the formal group. At the opposite
+slot the congruences modulo \(v_d\) put \(H-P\) and \(U-A_i\)
+in the formal group. Set \(\epsilon_i=j-hn_i\). Then
+\[
+       v_p(h)=1,\qquad v_p(h-1)=0,\qquad
+       v_p(\epsilon_i)\ge5.
+\]
+The exact formal-logarithm ratios are
+\begin{equation}\label{eq:exactratios}
+ \frac jh=n_i+\frac{\epsilon_i}{h},\qquad
+ \frac{j-n_i}{h-1}=n_i+\frac{\epsilon_i}{h-1}.
+\end{equation}
+This follows by applying the formal logarithm after multiplying
+\(P\) by the appropriate annihilator; that annihilator is
+prime to \(p\). In particular the first ratio is \(n_i\)
+modulo \(p^4\), and the second is \(n_i\) modulo \(p^5\).
+Their difference is exactly
+\begin{equation}\label{eq:difference}
+ \frac jh-\frac{j-n_i}{h-1}
+             =-\frac{\epsilon_i}{h(h-1)}
+             \equiv0\pmod {p^4}.
+\end{equation}
+
+For the source curve, the local parameter satisfies
+\(\log_E(z)=z+O(z^5)\) at every retained good odd place.
+Thus the ratio of two local parameters is its logarithm ratio
+times a unit congruent to one modulo the fourth power of the
+smaller parameter ideal. The primary parameters have depth
+at least two: since \(p\nmid u_d\) and \(u_d\mid h\), the
+point \([h/p]P\) is already formal, and multiplication by \(p\)
+adds one to its positive depth. The primary \(U\) has the
+same depth because \(j/h\) is a unit. The opposite parameters
+have depth at least one, and their logarithm ratio is also a
+unit. It follows from \eqref{eq:exactratios}--\eqref{eq:difference}
+that the actual ratios in \eqref{eq:ratios} satisfy, in the
+successful comparison embedding,
+\begin{equation}\label{eq:truncated}
+                   r-n_i\in p^4\mathcal O,\qquad
+                   r-r_i'\in p^4\mathcal O .
+\end{equation}
+Here the opposite value is transported by the source conjugation
+to the comparison slot, as in its original paired-ratio test.
+
+The primary reciprocal abscissas have depth at least four and
+the opposite reciprocal abscissas depth at least two, since
+\(f=z^2+O(z^6)\). These are at least the original required
+depths. Every other numerator in the general source retains
+its exact definition \([ha]P,[ht]P,[hb]P\); their paired
+comparisons and Lucas residual estimates are unchanged.
+The new numerator therefore satisfies all the same positive
+detector valuations at this contact as the old point
+\([hn_i]P\).
+
+The reference condition \(h\equiv p\pmod {p^2}\) also retains
+the source scalar normalization: the primary reference is
+of depth at least two, while \(H\) reduces to \(P\) in the
+opposite slot. The six scalar components are functions of
+\(H,S\) alone. Their nonvanishing denominator and forbidden
+valuation checks are consequently exactly those already proved
+for the simultaneous source in \cite{shared}.
+
+Thus every contact of every block has its original successful-slot
+inverse detector congruent to one, with the opposite contribution
+zero or one. In particular the reciprocal trace remains a unit.
+This assertion uses the original positive detector estimates;
+it does not assume equality \(U=[hn_i]P\) away from the contact.
+
+\section{Fixed-place and real preparation}
+\label{sec:fixed}
+
+One must also check the places prepared \emph{before} the contacts
+are selected. A common ratio cannot be arbitrarily close to
+distinct \(n_i\) at one fixed place. The detector formulas
+do not require such a condition.
+
+\subsection{General two- and three-detector routes}
+
+For fixed integer inputs, the joint scalar preparation in
+\cite{shared} first chooses a common initial \(H=[h_0]P\)
+deep in the formal groups at the finite union of all fixed
+preparation places and near the identity at the real embeddings.
+It then chooses \(c\in6\Z_{>0}\), with \(a=c+1\), so that
+\([c]P=S-P\) is still closer to the identity. The six rational
+components of
+\[
+                       f(H),\quad f(S-P),\quad z(S-P)/z(H)
+\]
+meet the finitely many required tolerances simultaneously.
+The Lucas recurrence gives fixed positive odd \(t,b\), and
+all root points and contact scales are then fixed.
+
+This scalar preparation is independent of the private numerator
+point. Choose an allowed initial \(U=[j_0]P\), with \(64\mid j_0\),
+avoiding the finitely many poles and excluded point-chart fibers
+of \(U\) and every \(U-A_i\). For fixed nonzero labels, the
+preimages of forbidden points under multiplication or translation
+are finite. The allowed orbit and its real recurrence therefore
+permit this choice. Shrink the reference and numerator
+neighborhoods so that every raw comparison function of every
+block is finite there. On smaller compact real neighborhoods
+and sufficiently small finite-place neighborhoods these
+finitely many functions are uniformly bounded. Include the
+corresponding local congruences in \(M\).
+
+The source's first ten detector factors have the form
+\[
+             1+\left(\frac{C}{\delta_{i\ell}^2q_{i\ell}}\right)^2,
+             \qquad q_{i\ell}=\rho_iR_{i\ell};
+\]
+its remaining comparison factors have the form
+\[
+       1+\left(\frac{C^2}
+        {\delta_{i\ell}^2q_{i\ell}^{\,2a_r-1}}\right)^2,
+                 \qquad a_r\in\{1,3\}.
+\]
+At each previously prepared finite or real place, let the common
+contact parameter tend to infinity. Then
+\[
+             R_{i\ell}\longrightarrow1,\qquad
+             \delta_{i\ell}^{-1}\longrightarrow0,
+\]
+whereas \(\rho_i\ne0\) is fixed. Uniform boundedness of \(C\)
+therefore makes every comparison factor tend to one. This
+applies in particular to the input test \(C=r-n_i\), irrespective
+of whether its fixed-place valuation is positive, zero, or
+negative.
+
+The scalar factors do not have this slope suppression, but their
+six components are independent of \(U\) and were already
+prepared. They retain precisely the old finite and real bounds.
+Thus the common numerator introduces no new fixed-place
+approximation requirement on \(r\).
+
+Prescribed divisibility of the prime-pattern denominator \(w\)
+makes the contact parameter sufficiently large at every prepared
+finite place, simultaneously. The finite avoidance set includes
+the supports of the scalars, scales, and common contact
+denominator. Fresh prime values force the numerator \(u\) to
+be a unit at those places, so increasing the prescribed
+denominator valuation has the intended effect. An arbitrarily
+large real slope supplies the real limits. The subsequent
+refinements \eqref{eq:hcrt}--\eqref{eq:jcrt} preserve the
+chosen bounded neighborhoods by their residues modulo \(M\)
+and independent real returns.
+
+\subsection{Ordinary rational \(abc\)}
+
+In this route the raw tests are
+\[
+ f(H),\ f(U),\ \overline{f(H-P)},\
+ \overline{f(U-A_i)},\ r-r_i',\ r-n_i .
+\]
+Let \(C_{i1},\ldots,C_{i4}\) be the first four tests, and
+let \(C_{i5},C_{i6}\) be the squares of the last two.
+Put
+\[
+ G_0(t)=\prod_{c\in\mathcal C}(t+c),\qquad
+ F_i=G_0(a_i-z_i)G_0(a_i+z_i),\qquad
+ H_{a,i}=\tfrac12\partial F_i/\partial a_i,\qquad
+ u_i=-12F_i/H_{a,i}.
+\]
+The derivative is taken with \(z_i\) formally held fixed,
+\emph{before} substituting \(z_i=a_i(z+100i)\).
+The balancing factors are
+\begin{equation}\label{eq:abc-balance}
+ R_{ir}=\frac{C_{ir}^2}{u_i(1+u_i^2C_{ir}^2)},\qquad
+ W_i=\prod_{r=1}^{6}(1+R_{ir}^2).
+\end{equation}
+
+For completeness, a common bounded neighborhood with nonzero
+tests can be chosen before selecting the slope. Choose a fixed
+allowed \(U_0=[j_0]P\), with \(64\mid j_0\), away from every
+forbidden point of \(U\) and \(U-A_i\), and with \(z(U_0)\ne0\)
+at all the finitely many relevant embeddings. Choose \(H_0\)
+sufficiently close to the identity at the prepared finite and
+real places. The ratio \(z(U_0)/z(H_0)\) then has arbitrarily
+large absolute value at each such place, whereas every ratio
+\(\overline{z(U_0-A_i)/z(H_0-P)}\) stays bounded. The
+denominator \(z(-P)\) is fixed and nonzero. The same ratio
+also dominates the finitely many fixed \(n_i\). Thus all target
+and paired-ratio tests are nonzero. The reciprocal-abscissa
+tests are finite and nonzero after the point guards are avoided.
+Take sufficiently small neighborhoods to preserve nonvanishing,
+their finite valuations, and all the source chart conditions.
+Include the finite restrictions in \(M\).
+
+At every fixed prepared place and at real infinity,
+\[
+                    u_i\sim a_i(z+100i)^2 .
+\]
+For fixed nonzero \(C_{ir}\), \eqref{eq:abc-balance} therefore
+tends to zero as the common slope tends to infinity, uniformly
+on the chosen neighborhoods. An identically zero raw test,
+if retained, contributes the factor one instead. In particular
+one again does not require \(r\) to approach different \(n_i\)
+at the prime two.
+
+The source trace lemma gives
+\[
+ n_i^2T_i-57/4\in16\Z_2,\qquad
+ v_2(T_i)=-2-2v_2(n_i),
+\]
+and its square-class conclusion makes \(a_i\) a
+\(\Q_2\)-square. Hence the substituted contact parameter has
+the same 2-adic square-class preparation as in the source.
+All other effects of the finitely many fixed \(a_i\) are
+absorbed in the fixed preparation and avoidance sets.
+The prime-power CRT refinements again preserve all those
+neighborhoods.
+
+\section{Pole completion and both directions of the equivalence}
+\label{sec:complete}
+
+We now finish the ordered completeness proof. For integer inputs,
+choose their private roots and the fixed common scalar/root
+data as in Section~\ref{sec:fixed}. Choose safe initial \(H,U\)
+neighborhoods and \(M\). The contact sets are now fixed.
+Apply the retained prime supplier once to their union with
+the avoidance and slope conditions stated above. Select
+\(h,j\) by Lemma~\ref{lem:indices}, preserving the finite
+preparations and real neighborhoods. Sections~\ref{sec:formal}
+and \ref{sec:fixed} verify every changed local comparison.
+All other source comparisons are unchanged.
+
+For the general routes the actual pole inputs are
+\[
+             e_{i\ell}=
+       \frac{4\rho_iR_{i\ell}}
+            {\Tr(W_{i\ell}^{-1})^2}.
+\]
+The source parity argument gives square reduced denominator.
+At two these lie in \(7\Q_2^{\times2}\) with depth at least
+ten, and the real preparation gives
+\[
+                    0<e_{i\ell}<8\rho_i<1 .
+\]
+The new numerator preserves every input to that parity and
+trace-unit argument. For the ordinary-\(abc\) route the
+corresponding actual inputs are
+\[
+         e_i=\frac{28u_i}{(1+u_i)^2\Tr(W_i^{-1})^2},
+                       \qquad d_i=7u_i .
+\]
+They have exactly the v88 square-denominator, class-seven,
+depth, and \(0<e_i<1\) properties. None of these values is
+identified between inputs.
+
+For every detector retain the existing guarded square
+extraction \(e=dk^2\) and the v88 normalized product equation
+\[
+                 Y^2=(1-e)(v^4-d^2)(s^4-d^2).
+\]
+Its two parameters \(v,s\) are private rational unknowns.
+The v88 transfer from Bhargava--Burungale Lemma 2.2 and
+Theorem 2.3 supplies them independently with a dense choice
+of allowed parameter pairs. The finite residual pole guards
+can therefore be avoided. The terminal root \(Y=0\) is
+permitted; no terminal nonzero guard is introduced.
+This proves simultaneous completeness at the level of the
+guarded point and pole equations.
+
+Conversely, project any rational solution of the new equations
+to one original source block. Every rational expression,
+point relation, detector relation, and denominator guard of
+that block is still present after the common-variable
+substitution. The original soundness theorem therefore
+forces the block's input to be an integer. In the ordinary-\(abc\)
+route it first forces \(X_i^2+1\) to be an integer, and the
+elementary reduced-denominator argument in
+Section~\ref{sec:roles} forces \(X_i\in\Z\).
+This argument is valid for all rational solutions, not merely
+the constructed integer witnesses. It proves that the joint
+input projection is exactly \(\Z^k\).
+
+\section{Finite algebra and complete polynomial specification}
+\label{sec:polynomial}
+
+We recall enough of the finite construction to specify the
+output unambiguously. A root point has two retained rational
+coordinates \(h_0,h_1\) and uses
+\[
+ h=h_0+h_1\sqrt2,\qquad x=h^2,\qquad
+ j^2=h^4-D,\qquad y=hj.
+\]
+An auxiliary point instead retains the two rational components
+of \(x\), with \(j^2=x^3-Dx\), \(y=j\).
+In either case write the square input as \(A+B\sqrt2\).
+Its free rank-four algebra has basis \(1,U,V,W\) and table
+\[
+\begin{array}{lll}
+ U^2=2A+2W,& V^2=A-W,& UV=2B,\\
+ UW=AU-2BV,& VW=BU-AV,& W^2=A^2-2B^2.
+\end{array}
+\]
+The square root is \((U+V\sqrt2)/2\). This table is valid
+at every base specialization, including nonreduced ones.
+Each terminal pole supplies a monic quadratic stage of rank two.
+
+Take one point algebra for each common role and one for each
+private root \(A_i\), tensor them, and adjoin all the private
+terminal quadratic stages. Let \(g\) be the product of every
+retained source guard numerator after the common-numerator
+substitution. The construction of \cite{shared} handles
+guarded rational denominators without requiring them to be
+nonzero at unselected characters. It gives an integer
+polynomial \(\Phi_k\), using just one additional rational
+encoder coordinate, such that
+\[
+ \exists U_*\in\Q\ \Phi_k(\mathbf X,\mathbf w,U_*)=0
+ \quad\Longleftrightarrow\quad
+ \exists\phi:A\longrightarrow\Q\quad\phi(g)\ne0 .
+\]
+No reducedness or monogenicity hypothesis is used. In particular,
+any number of terminal zero roots is allowed.
+
+For a directly usable specification, if \(A\) is the finite
+algebra of rank \(n\), choose generating elements
+\(\theta_1,\ldots,\theta_m\), put
+\(\gamma_0=g,\gamma_r=g\theta_r\), and let \(A_r\) be their
+multiplication matrices. Set \(\ell=m+1\), \(J=\ell(n+1)^2\),
+and
+\[
+\begin{split}
+ \widetilde A_r&=\operatorname{diag}(A_r,0),\qquad
+ D_r=\widetilde A_r\otimes I-I\otimes\widetilde A_r,\\
+ \prod_{r=0}^{m}\det(TI-D_r)
+       &=T^J+a_1T^{J-1}+\cdots+a_J,\qquad a_0=1,\\
+ R_0&=2+(n+1)+\sum_{r,v,w}(A_r)_{vw}^2+\sum_{j=1}^{J}a_j^2,\\
+ B_0&=(n+1)R_0,\qquad K_0=R_0(2B_0)^{J-1}.
+\end{split}
+\]
+For \(0\le s\le J\) put
+\[
+ \Delta_s=a_s^2,\quad
+ C_s=\Delta_s+(4\ell B_0+2)K_0,\quad
+ M_s=\Delta_s\sum_{r=0}^{m}C_s^{\,r+1}\Delta_s^{\,m-r}A_r .
+\]
+The required encoder is
+\begin{equation}\label{eq:encoder}
+ \Phi_k=
+ \prod_{s=0}^{J}
+ \left(\det(I-U_*M_s)^2+\sum_{j=s+1}^{J}a_j^2\right).
+\end{equation}
+After the guarded denominator normalization, these are
+polynomials with integer coefficients. The proof in
+\cite{shared} separates the values of all permitted geometric
+characters from each other and from zero on the actual last
+nonzero coefficient stratum. A rational determinant root then
+selects a character fixed by Galois, hence a rational character.
+Nilpotent multiplicities do not affect the argument.
+
+\section{Coordinate and degree ledgers}
+\label{sec:counts}
+
+For the general routes the retained rational coordinates are
+\[
+\begin{array}{lr}
+ \text{inputs}&k\\
+ \text{private root charts }A_i&2k\\
+ \text{eight common point charts}&16\\
+ \text{one common contact parameter}&1\\
+ \text{private product-pole parameters}&2ek\\
+ \text{one finite-algebra encoder}&1.
+\end{array}
+\]
+Thus the total is \((3+2e)k+18\). The finite algebra has rank
+\[
+                   4^{k+8}2^{ek}=2^{16+(2+e)k}.
+\]
+For ordinary \(abc\) there are two common point charts, so
+the total is
+\[
+                    k+2k+4+1+2k+1=5k+6,
+\]
+and the finite rank is \(4^{k+2}2^k=2^{4+3k}\).
+
+We use the mixed-integer universal polynomial with eight
+integer unknowns and one nonnegative integer unknown
+\cite[Theorem 1.1(i)]{SunHTP}. The latter is represented by
+\[
+                         L_+(s,t,u)=s^2+t^2+u^2+u.
+\]
+Every integral rational value of \(L_+\) is nonnegative since
+\(L_+\ge-1/4\), and every \(n\ge0\) occurs: represent
+\(4n+1\) by three integer squares, exactly one odd, and
+divide the resulting identity by four. Substituting \(L_+\)
+for the ninth input in both the universal polynomial and
+\(\Phi_9\) replaces one coordinate by three. Combining the
+two equalities by a sum of squares adds no coordinate.
+The totals are therefore
+\[
+                 (7\cdot9+18)+2=83,\qquad
+                 (9\cdot9+18)+2=101,\qquad
+                 (5\cdot9+6)+2=53.
+\]
+The instance integer occurs in the coefficients, not among
+the unknowns.
+
+For completeness the operator-degree induction from
+\cite{shared} gives the following exact ledger.
+Assign weight one to retained coordinates, weight zero to
+fixed coefficient parameters, maximum at an addition, and
+sum at a product. The point table gives multiplication
+degree bounds \(a,a,2a\) for \(U,V,W\) when
+\(\deg A,\deg B\le a\). A terminal monic equation
+\(q^2+c=0\) gives degree bound \(\deg M_c\) for
+multiplication by \(q\). Its coefficients and every guard
+are checked not to depend on terminal roots. Tensor
+extensions leave preceding bounds unchanged.
+
+The point algebra over \(\Q\) is generated by \(U,V\), since
+\(W=U^2/2-A\); these two generators and every terminal root
+suffice for \eqref{eq:encoder}. If \(d_g\) is the sum of the
+guard operator-degree bounds and \(d_\theta\) is the largest
+generator bound, one may take \(d=d_g+d_\theta\).
+\begin{center}
+\begin{tabular}{lrrrrr}
+\toprule
+Route&rank \(n\)&\(\ell\)&\(d_g\)&\(d_\theta\)&\(d\)\\
+\midrule
+General&\(2^{52}\)&53&2201826&100232&2302058\\
+Specified&\(2^{61}\)&62&4025982&100232&4126214\\
+Ordinary \(abc\)&\(2^{31}\)&32&3103028&206888&3309916\\
+\bottomrule
+\end{tabular}
+\end{center}
+The joint-certificate degree is bounded by
+\begin{equation}\label{eq:degree}
+ D_{\Phi}=2n(J+1)\left[1+d\{1+2J(1+\ell(J+1))\}\right],
+             \qquad J=\ell(n+1)^2 .
+\end{equation}
+For a fully bounded mixed universal source use the proved
+universal pair \((58,4)\) in
+\cite[Theorem 3, Definition 5.3 and Section 6.1]{BDHMS}.
+After the nonnegative wrapper its degree is at most
+\[
+ \eta(\nu,\delta)=15616+233856\delta+
+       (233952\delta+467712\delta^2)(2\delta+1)^{\nu+1}.
+\]
+The final sum of squares thus has degree at most
+\(\max\{2\eta(58,4),4D_\Phi\}\). Substituting the exact
+integers above gives
+\[
+\begin{array}{c|c|c}
+ \text{route}&\text{rational unknowns}&\text{degree strictly below}\\ \hline
+ \text{general}&83&2^{413}\\
+ \text{specified}&101&2^{477}\\
+ \text{ordinary }abc&53&2^{263}.
+\end{array}
+\]
+These are certified upper bounds, not attained degrees or
+claims of optimality.
+
+\section{Reproducibility and precise scope}
+
+The complete new specifications are in
+\nolinkurl{undecidability/common_numerator_sources/}, with
+one \texttt{common\_source.json.gz} and one certificate for
+each of \texttt{general25}, \texttt{explicit27}, and
+\texttt{abc11}. The builder
+\nolinkurl{undecidability/code/build_common_numerator.py}
+starts from the published joint coefficient circuits.
+It identifies exactly the two retained coordinates and
+three finite generators named \texttt{blocki.UA} with
+\texttt{shared.UA}. It substitutes through the entire
+coefficient circuit, unifies only identical point blocks,
+deduplicates identical guards, and composes every original
+source-coordinate and coefficient-node map.
+
+The independent replay
+\nolinkurl{undecidability/verify_common_numerator.py}
+checks the complete transformation, source projections,
+point multiplication identities, count and dependency
+conditions, and the integer degree bounds. Its certificate is
+\nolinkurl{undecidability/certificates/common_numerator_transfers.json}.
+The numbers of coefficient nodes are respectively
+41491, 58303, and 12890; the numbers of distinct retained
+guard nodes are 635, 905, and 206. The retained tuple
+coordinate counts, before the mixed wrapper, are 81, 99,
+and 51. These are finite, exact specifications; the final
+determinant polynomials have not been expanded.
+
+Changing an ineffective fixed parameter to an actual
+defining member requires rebuilding the corresponding
+v88 native source and applying the same two sharing
+transformations. The circuit degrees are unchanged:
+\(L\) enters coefficient constants such as \(67^L\), not
+exponents of rational coordinates, and \(B\) is a fixed
+coefficient parameter. Therefore the stated degree
+ceilings hold for actual defining members as well as
+for the algebraic fixtures. Finite verification does not
+certify the arithmetic projection of a fixture.
+
+Finally, the new congruence argument applies to numerator
+roles belonging to distinct input contact families. It
+does not identify the different label numerators inside
+one input block: a single opposite annihilator would then
+receive potentially different labels modulo the same
+modulus. Nor does this construction change the quartic
+degree restriction. It supplies a proved reduction in the
+number of variables for general fixed degree under the
+retained source premises, and makes no global minimality
+claim.
+
+\begin{thebibliography}{9}
+\bibitem{shared}
+\(\mathbb Z\mathbb Q\) Diophantine Project,
+\emph{Shared integer certificates and rational undecidability in
+99, 117, and 69 variables}, 23 November 2026.
+\nolinkurl{undecidability/papers/shared_integer_transfers.tex}.
+
+\bibitem{v78}
+\(\mathbb Z\mathbb Q\) Diophantine Project,
+\emph{Four-contact scalar reduction}, v78, and
+\emph{Twelve-contact first-scale construction}, v78 (2026).
+\nolinkurl{papers/few_variables25/four_contact_scalar_20261119_v78.tex};
+\nolinkurl{papers/conditional_few_variables/twelve_contact_first_scale_20261119_v78.tex}.
+
+\bibitem{v88}
+\(\mathbb Z\mathbb Q\) Diophantine Project,
+\emph{Product poles and lower degrees in the few-variable
+constructions}, v88 (2026).
+\nolinkurl{papers/few_variables25/bb_product_degree_transfer_20261123_v88.tex}.
+
+\bibitem{patterns}
+Pinned Sun source, \texttt{sun-2610.20691v2-P103q.tex},
+Theorem 4.1, label \texttt{an:thm:patterns}, upstream commit
+\texttt{14e8f601fe0d9173d4a5f084aedc3e07066a7688}.
+\url{https://github.com/JoseBrox/diophantine-z-q_improvements/blob/14e8f601fe0d9173d4a5f084aedc3e07066a7688/quartics/quartic-1272/sources/sun-2610.20691v2-P103q.tex}.
+The read source has SHA256
+\nolinkurl{b561d39ffc0e46798bd6ad5d3cfb8b543b75871780758876a8af67fb6daf15ba}.
+Its all-sign order assertion is already part of the prime supplier
+cited in the project arithmetic dependencies.
+
+\bibitem{BB}
+M. Bhargava and A. Burungale, the square-denominator and
+product-pole results audited in v88,
+\url{https://arxiv.org/abs/2611.16130v2},
+Lemma 2.2 and Theorem 2.3.
+
+\bibitem{SunHTP}
+Z.-W. Sun, \emph{Further results on Hilbert's Tenth Problem},
+Science China Mathematics \textbf{64} (2021), 281--306,
+\url{https://arxiv.org/abs/1704.03504}, Theorem 1.1(i).
+
+\bibitem{BDHMS}
+J. Bayer, M. David, M. Ha{\ss}ler, Y. Matiyasevich and
+D. Schleicher,
+\emph{Diophantine equations over the integers: universal
+bounds and parallel formalization}, version 3, 22 October 2026,
+\url{https://arxiv.org/abs/2506.20909v3}.
+\end{thebibliography}
+\end{document}

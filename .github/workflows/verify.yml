@@ -13,6 +13,8 @@ jobs:
         with:
           python-version: '3.12'
       - run: python -m pip install sympy==1.14.0 passagemath-pari==10.8.14
+      - name: Verify common numerator, finite wrapper and combined quadratic reductions
+        run: python -B scripts/verify_v90.py --report /tmp/v90-verification.json
       - name: Verify bounded-variable undecidability transfers and source qualifications
         run: python -B scripts/verify_v89.py --report /tmp/v89-verification.json
       - name: Verify Bhargava-Burungale v2 transfers, all five degree ledgers and scoped obstructions

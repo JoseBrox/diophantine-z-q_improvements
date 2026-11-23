@@ -74,3 +74,32 @@ If this proposal is established, the arithmetic would differ from the existing e
 ## Current deliverables and remaining work
 
 The clean results to use are the 99-, 117-, and 69-variable transfer manuscript, its complete native-source DAG transformations, and its exact degree and count ledgers. Further work should first settle the numerator-index congruence compatibility and the finite-place preparations for a common $U$. Pole-parameter identifications should not be inferred from density or from the number of finite roots eliminated by the encoder.
+
+
+## v90 continuation: the common numerator is now proved
+
+The common-numerator question left open above is resolved by
+[`common_numerator_transfers.tex`](../papers/common_numerator_transfers.tex).
+The all-sign clause of the already retained prime-pattern theorem supplies
+coprime opposite-slot orders for distinct contact positions. One reference
+index and one independent numerator index may consequently serve every
+input. The proof includes the common two-part, automatic seven avoidance,
+fresh-prime/order coprimality, arbitrary prime-power refinements, real
+returns and the fixed-place suppression argument. No private pole roots
+or pole parameters are identified.
+
+This gives joint integer counts `7k+18`, `9k+18`, `5k+6`, and rational
+undecidability transfers 83/101/53 under the stated premises. The separate
+finite-wrapper theorem lowers these to 82/100/52 by absorbing a monic
+rank-sixteen source/positivity algebra. All nine integer predicates remain.
+
+The direct quadratic compilation now reaches 1601/1837, with 1599/1811
+rows, under the same explicit `U_em` qualification. It identifies 54/50
+physical rational coordinates; the source maps and full quadratic tables
+are provided. The ordinary-abc quartic checkpoint remains 846/728.
+
+These results do not resolve the private translated-point or pole sharing
+questions. They do not establish the alleged universal 57/47 system or a
+quartic bound near 263. Further count changes require a complete quadratic
+rechart and both directions of its equivalence; removing a variable from
+a rational formula while creating a cubic residual is not such a change.

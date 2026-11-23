@@ -1,0 +1,653 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,booktabs,hyperref}
+\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\newcommand{\N}{\mathbb Z_{\ge0}}\newcommand{\A}{\mathcal A}
+\newcommand{\trdeg}{\operatorname{trdeg}}
+\title{Absorbing the mixed-integer wrapper into a finite algebra\\
+Rational undecidability in 82, 100, and 52 variables}
+\author{\(\mathbb Z\mathbb Q\) Diophantine Project}
+\date{23 November 2026}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+The mixed-integer universal equation uses eight integer inputs and one
+nonnegative integer input.  The previous construction imposed nine
+integer predicates and represented the last input by three rational
+coordinates.  We retain all nine integer predicates, but absorb the
+universal equation and one of the three coordinates into the joint
+finite algebra.  The added algebra has rank sixteen and is generated
+by one element.  This reduces the common-numerator constructions from
+83, 101, and 53 coordinates to 82, 100, and 52, respectively.  The last
+number retains ordinary rational \(abc\); the first two introduce no
+\(abc\) assumption.  All three retain the arithmetic premises of their
+underlying integer predicates.  We give the exact polynomial recipe,
+both directions of the equivalence, denominator bookkeeping, and
+certified total-degree bounds \(2^{650}\), \(2^{714}\), and \(2^{500}\).
+The final polynomials have unrestricted degree; no quartic conclusion
+is drawn.
+\end{abstract}
+
+\section{The source theorem and the improvement}
+
+Bayer, David, Ha{\ss}ler, Matiyasevich and Schleicher
+\cite[Definition 5.3 and Theorem 3]{BDHMS} give an explicit construction
+with the following property.  Given
+\(P(a,z_1,\ldots,z_\nu)\in\Z[a,z_1,\ldots,z_\nu]\), it constructs
+\[
+ Q(a,f,g,h,k,l,w,x,y,n)\in\Z[a,f,g,h,k,l,w,x,y,n]
+\]
+such that, for every \(a\in\N\),
+\begin{equation}\label{source}
+ \exists z\in\N^\nu\ P(a,z)=0
+ \quad\Longleftrightarrow\quad
+ \exists f,g,h,k,l,w,x,y\in\Z,\ n\in\N\ Q(a,f,g,h,k,l,w,x,y,n)=0.
+\end{equation}
+This refines the mixed-domain construction of
+Sun \cite[Theorem 1.1(i)]{Sun}.  The integer predicates used in the
+project have a finite-root presentation: ordinary rational coordinates
+specify a finite algebra, and a guarded rational character of that
+algebra is equivalent to a successful predicate.
+
+The conjunction of nine such predicates has already been constructed
+with one joint finite-algebra encoder and with common reference and
+numerator points \cite{Sharing}.  Its ordinary coordinates include the
+nine inputs.  The nonnegative input was then replaced by
+\[
+                 n=s^2+t^2+u^2+u.
+\]
+The improvement in this paper removes \(n\) from the ordinary coordinates
+and retains only \(s,t\) from this wrapper.  Both \(n\) and the missing
+\(u\) are recovered from finite algebra generators.  The final
+single-coordinate encoder handles these generators together with all
+previous finite witnesses.
+
+\begin{theorem}\label{main}
+Apply the construction below to the three common-numerator joint
+integer predicates.  It gives rational undecidability bounds of
+\[
+                 82,\qquad 100,\qquad 52
+\]
+variables, respectively.  The first route retains its sufficiently
+large fixed, possibly ineffective parameter; the second uses the
+explicit three-detector parameter \(L=143\); the third retains ordinary
+rational \(abc\) and its sufficiently large fixed odd parameter.
+The respective integer-coefficient polynomials may be chosen with
+total degrees strictly less than
+\[
+                       2^{650},\qquad 2^{714},\qquad 2^{500}.
+\]
+No integer predicate is omitted.  These conclusions retain exactly the
+arithmetic premises of the corresponding joint predicates, and are
+independent of the quarantined quartic universality transcription.
+\end{theorem}
+
+The extra finite algebra has rank \(16\), not sixteen new quantified
+coordinates.  Its rational characters are handled by the existing
+single-coordinate encoder.
+
+\section{An exact recipe for the mixed-integer polynomial}
+
+We specify the source to make the crucial leading coefficient
+auditable.  The notation follows \cite[Definitions 2.1, 4.1 and 5.3]{BDHMS},
+with subscripts to distinguish different auxiliary expressions.
+
+First replace \(P\) by
+\[
+ \overline P(a,z_1,\ldots,z_{\nu+1})
+       =P(a,z_1,\ldots,z_\nu)^2+(z_{\nu+1}-1)^2.
+\]
+Put \(v=\nu+1\), let \(\Delta=\deg\overline P\), and write
+\(\overline P=\sum_I c_I Z^I\), where \(I=(I_0,\ldots,I_v)\).
+Set
+\[
+ L_P=\sum_I|c_I|,\qquad n_j=(\Delta+1)^j,
+\]
+and choose the smallest power \(\beta=4^r\) satisfying
+\[
+                       \beta>2\Delta!L_P(v+2)^\Delta.
+\]
+Define
+\[
+ \alpha=\Delta(\Delta+1)^v+1,\qquad
+ \gamma=\beta^{(\Delta+1)^v},\qquad
+ b=1+3(2a+1)f,\qquad \mu=\gamma b^\alpha,\qquad B_0=\beta b^\Delta.
+\]
+For the mask set
+\[
+ M_0=\sum_{j=0}^{n_v}m_j B_0^j,\qquad
+ m_j=
+ \begin{cases}
+ B_0-b,&j\in\{n_1,\ldots,n_v\},\\
+ B_0-1,&\text{otherwise}.
+ \end{cases}
+\]
+The coefficient-encoding polynomial and the value polynomial are
+\[
+ \operatorname{coeffs}(B_0)
+ =\sum_{\lVert I\rVert\le\Delta}
+ I!(\Delta-\lVert I\rVert)!\,c_I\,
+ B_0^{\,n_{v+1}-\sum_{j=0}^{v}I_jn_j},
+\]
+\[
+ c=1+aB_0+g,\qquad
+ K_0=c^\Delta\operatorname{coeffs}(B_0)
+           +\frac{B_0}{2}\sum_{j=0}^{(2\Delta+1)n_v}B_0^j.
+\]
+The displayed exponents are nonnegative.  Since \(\beta\) is a power
+of four, \(B_0/2\) is an integer-coefficient polynomial.  Finally put
+\[
+ \begin{gathered}
+ N_0=B_0^{n_v+1},\qquad
+ N_1=4B_0^{(2\Delta+1)n_v+1},\qquad N=N_0N_1,\\
+ S_0=g+2K_0N_0,\qquad
+ T_0=M_0+(B_0-2)B_0^{n_{v+1}}N_0,\\
+ R_0=(S_0+T_0+1)N+T_0+1,\qquad
+ X=(N-1)R_0,\qquad Y=N^2.
+ \end{gathered}
+\]
+Thus \(b,\mu,X,Y\) are explicitly specified integer-coefficient
+polynomials in \(a,f,g\).  The remaining bridge polynomials are
+\begin{align*}
+ U&=2lXY,& V&=4gwY,\\
+ A&=U(V+1),& B_1&=2X+1,\\
+ C&=B_1+(A-2)h,& D&=(A^2-4)C^2+4,\\
+ E&=C^2Dx,& F&=4(A^2-4)E^2+1,\\
+ G&=1+CDF-2(A+2)(A-2)^2E^2,\\
+ H&=C+B_1F+(2y-1)CF,\\
+ I&=(G^2-1)H^2+1,& J&=X+1+k(U^2V-2).
+\end{align*}
+Define
+\begin{equation}\label{M3data}
+ \begin{gathered}
+ A_1=b,\qquad A_2=DFI,\qquad A_3=(U^4V^2-4)J^2+4,\\
+ S=2A-5,\qquad T=3bwC-2(b^2w^2-1),\\
+ R=f^2l^2x^2
+       \left[8\mu^3gJ^2
+       -g^2\left\{32(C-lJY)^2\mu^3+g^2J^2\right\}\right],\\
+ Z_0=1+A_1^2+A_2^2+A_3^2.
+ \end{gathered}
+\end{equation}
+None of these expressions depends on \(n\).  The source polynomial is
+\begin{equation}\label{Qproduct}
+ Q(n)=
+ \prod_{\varepsilon\in\{\pm1\}^3}
+ \left[
+ S^2n+T^2
+ -S^2(2R-1)\left(
+ T^2+Z_0^3+
+ \varepsilon_1\sqrt{A_1}
+ +\varepsilon_2Z_0\sqrt{A_2}
+ +\varepsilon_3Z_0^2\sqrt{A_3}
+ \right)\right].
+\end{equation}
+The product is an integer polynomial: changing each formal square
+root's sign permutes its factors, so only even powers of that square
+root remain.  Formula \eqref{Qproduct} is a coefficient prescription;
+it does not introduce three more ordinary variables.
+
+\begin{lemma}\label{leading}
+The degree of \(Q\) in \(n\) is exactly \(8\), and its leading
+coefficient is \(S^{16}\).  Moreover, \(S\ne0\) at every integral
+specialization of \(a,f,g,h,k,l,w,x,y\).
+\end{lemma}
+\begin{proof}
+There are eight factors in \eqref{Qproduct}, each with leading
+coefficient \(S^2\) in \(n\).  The polynomial \(S\) is not identically
+zero.  At an integral specialization, \(A\) is an integer, hence
+\(2A-5\) is odd and cannot vanish.  In fact \(U\), and therefore \(A\),
+is even, so \(S\equiv3\pmod4\).
+\end{proof}
+
+\section{The monic rank-sixteen wrapper}
+
+Introduce a formal variable \(m\), and define
+\begin{equation}\label{Pm}
+ \mathcal P(m)=
+ \prod_{\varepsilon\in\{\pm1\}^3}
+ \left[
+ m+T^2
+ -S^2(2R-1)\left(
+ T^2+Z_0^3+
+ \varepsilon_1\sqrt{A_1}
+ +\varepsilon_2Z_0\sqrt{A_2}
+ +\varepsilon_3Z_0^2\sqrt{A_3}
+ \right)\right].
+\end{equation}
+It is monic of degree eight, with integer-polynomial coefficients,
+and satisfies the exact identity
+\begin{equation}\label{Pidentity}
+                         \mathcal P(S^2n)=Q(n).
+\end{equation}
+
+For a prescription involving no formal radicals, put
+\[
+ \kappa=S^2(2R-1),\qquad z=m+T^2-\kappa(T^2+Z_0^3),
+\]
+\[
+ a_1=\kappa^2A_1,\qquad
+ a_2=\kappa^2Z_0^2A_2,\qquad
+ a_3=\kappa^2Z_0^4A_3.
+\]
+Then
+\begin{equation}\label{radicalfree}
+ \mathcal P(m)=
+ \left[(z^2+a_3-a_1-a_2)^2+4z^2a_3-4a_1a_2\right]^2
+ -16z^2a_3(z^2+a_3-a_1-a_2)^2.
+\end{equation}
+Indeed, first take the product over the signs of
+\(\sqrt{a_1},\sqrt{a_2}\), which is
+\(((z+\sqrt{a_3})^2-a_1-a_2)^2-4a_1a_2\), and then multiply
+its two conjugates with respect to \(\sqrt{a_3}\).
+
+Let \(R_{\mathrm{base}}\) be the polynomial ring in the retained
+ordinary coordinates, including the eight integer-source coordinates
+and two new coordinates \(s,t\).  Adjoin
+\begin{equation}\label{wrapperalgebra}
+ \mathcal B=
+ R_{\mathrm{base}}[m,\xi]/
+ \left(\mathcal P(m),\
+       \xi^2+S\xi+S^2(s^2+t^2)-m\right).
+\end{equation}
+Both equations are monic in the newly adjoined generator.  Hence
+\(\mathcal B\) is free of rank \(8\cdot2=16\), with basis
+\[
+                    \{m^j,m^j\xi:0\le j<8\}.
+\]
+Also
+\[
+                     m=\xi^2+S\xi+S^2(s^2+t^2),
+\]
+so \(\xi\) alone generates this algebra over its base.  Equivalently,
+it is the monic degree-sixteen algebra
+\[
+ R_{\mathrm{base}}[\xi]/
+ \left(\mathcal P\bigl(\xi^2+S\xi+S^2(s^2+t^2)\bigr)\right).
+\]
+The two-stage basis is more convenient for degree estimates.
+
+Add \(S\) to the selected-character guard.  At any rational character
+with \(S\ne0\), define
+\begin{equation}\label{recovery}
+                         n=\frac m{S^2},\qquad u=\frac{\xi}{S}.
+\end{equation}
+Then \eqref{wrapperalgebra} gives
+\begin{equation}\label{recovered}
+          Q(n)=0,\qquad n=s^2+t^2+u^2+u.
+\end{equation}
+
+\begin{lemma}[The integer nonnegative wrapper]\label{nonnegative}
+For an integer \(n\),
+\[
+ n\ge0
+ \quad\Longleftrightarrow\quad
+ n=s^2+t^2+u^2+u
+ \text{ for some }s,t,u\in\Q.
+\]
+In the forward direction the three witnesses can be integers.
+\end{lemma}
+\begin{proof}
+The displayed expression is
+\(s^2+t^2+(u+\tfrac12)^2-\tfrac14\), so it is at least
+\(-\tfrac14\).  An integral value is therefore nonnegative.
+Conversely, for \(n\ge0\), the integer \(4n+1\), being congruent to
+\(1\) modulo four, is not of the excluded form \(4^a(8b+7)\) in the
+three-squares theorem.  Write it as three integer squares.  Exactly
+one of the three integers is odd; write it as \(2u+1\), and the two
+even integers as \(2s,2t\).  Division by four gives the identity.
+This is also \cite[Lemma 6.1]{BDHMS}.
+\end{proof}
+
+Crucially, this lemma is applied only after the ninth integer predicate
+has certified \(n=m/S^2\in\Z\).  A rational root of \(\mathcal P\)
+does not, by itself, imply that \(m/S^2\) is integral.  The original
+divisibility information encoded by \(M_3\) is not being discarded.
+
+\section{Merging with the nine integer predicates}
+
+The joint common-numerator sources have ordinary input coordinates
+\(f,g,h,k,l,w,x,y,n\), ordinary elliptic-chart and pole parameters,
+point blocks of rank four, and terminal monic quadratic pole blocks.
+Their retained guards contain no terminal pole roots.  Each point
+block has basis \(1,U_0,V_0,W_0\), with coefficient polynomials
+\(A_0,B_0\) depending only on that point's retained coordinates.
+In particular those coefficients are independent of all nine inputs.
+This last assertion is checked directly on every actual source DAG
+by the accompanying verifier.
+
+Start with the wrapper algebra \eqref{wrapperalgebra}.  Adjoin the old
+point blocks once each, substitute \(n=m/S^2\) in every other coefficient
+and guard, and then adjoin the terminal quadratic roots, clearing
+denominators monically.  The order is important: a pole coefficient
+may now depend on \(m\), but it depends on no subsequent pole root.
+
+For example, suppose an old pole satisfies
+\[
+                              q^2+c(n)=0
+\]
+and \(e\) is an upper bound for the degree of \(c\) in \(n\).
+Then
+\[
+                       \widetilde c=S^{2e}c(m/S^2)
+\]
+is a polynomial element of the preceding algebra.  Replacing the finite
+root by \(\widetilde q=S^e q\) gives the monic equation
+\[
+                           \widetilde q^{\,2}+\widetilde c=0.
+\]
+It is reversible at every selected character since \(S\ne0\).
+For each old polynomial guard \(g_j(n)\), choose an upper bound \(e_j\)
+for its degree in \(n\) and retain
+\[
+                    \widetilde g_j=S^{2e_j}g_j(m/S^2).
+\]
+The single new guard is
+\[
+                                  S\prod_j\widetilde g_j.
+\]
+It selects exactly the old allowed characters with \(S\ne0\).
+No denominator is required to be nonzero at every unselected character.
+Zero terminal pole roots remain permitted.
+
+\begin{proposition}\label{equivalence}
+At a fixed natural-number parameter \(a\), a guarded rational character
+of the enlarged finite algebra exists for some ordinary retained
+coordinates if and only if the right side of \eqref{source} holds.
+\end{proposition}
+\begin{proof}
+Suppose first that the right side of \eqref{source} holds.  The nine
+integer inputs admit a simultaneous witness in the appropriate
+common-numerator joint predicate.  By Lemma~\ref{leading}, \(S\ne0\).
+Choose integers \(s,t,u\) from Lemma~\ref{nonnegative}, and put
+\(m=S^2n\), \(\xi=Su\).  Identity \eqref{Pidentity} and the wrapper
+identity show that these satisfy \eqref{wrapperalgebra}.  Rescale every
+old terminal root by its prescribed power of \(S\).  Every new guard
+is nonzero at this character, because its old guard and \(S\) are
+nonzero.  Thus the enlarged algebra has a permitted rational character.
+
+Conversely, a permitted rational character gives \(S\ne0\), so all
+rescalings can be inverted.  The old joint predicate then certifies
+each of \(f,g,h,k,l,w,x,y,n=m/S^2\) as an integer.  The wrapper gives
+\(Q(n)=0\) and the identity in \eqref{recovered}.  By
+Lemma~\ref{nonnegative}, \(n\ge0\).  Thus all hypotheses on the right
+side of \eqref{source} are satisfied.  Applying the published
+mixed-integer theorem yields the left side of \eqref{source}.
+\end{proof}
+
+The one-coordinate guarded-character theorem \cite{Encoder} applies
+to the enlarged finite free algebra.  It produces one
+integer-coefficient polynomial.  There is no remaining external source
+equation or external positivity equation to combine by another sum of
+squares.
+
+\section{The coordinate ledger}
+
+The nine integer predicates still have nine input arguments, but their
+last argument \(m/S^2\) is now an element of the finite algebra.  It is
+not an ordinary quantified coordinate.  The previous common numerator
+point is retained, and the private root point for each of the nine
+inputs is also retained.
+
+\begin{center}
+\begin{tabular}{lrrr}
+\toprule
+Ordinary rational coordinates & General & Explicit & Ordinary \(abc\)\\
+\midrule
+Eight unrestricted integer-source inputs &8&8&8\\
+Shared elliptic-point coordinates &16&16&4\\
+Private root-point coordinates &18&18&18\\
+Common contact coordinate &1&1&1\\
+Private pole parameters &36&54&18\\
+Two remaining three-squares parameters &2&2&2\\
+One joint finite-algebra encoder &1&1&1\\
+\midrule
+Total &82&100&52\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The finite roots \(m,\xi\), the point-algebra generators, and the
+terminal pole roots are internal to the encoder.  They add no entries
+to this table.  The original finite-algebra ranks were
+\(2^{52},2^{61},2^{31}\); the new ranks are
+\[
+                              2^{56},\qquad2^{65},\qquad2^{35}.
+\]
+Since \(\xi\) generates both new wrapper stages, the numbers \(\ell\)
+of guarded separating elements increase by one, to \(54,63,33\).
+
+\section{An explicit uniform degree bound}
+
+We recall the elementary bound proved in \cite{Encoder}.  If a finite
+free algebra has rank \(r\), if \(\ell\) is the number of elements
+\(g,g\theta_1,\ldots,g\theta_{\ell-1}\), and if the entries of their
+multiplication matrices have total degree at most \(d\), set
+\[
+ \mathcal J=\ell(r+1)^2,\qquad
+ \mathcal D(r,\ell,d)=
+ 2r(\mathcal J+1)
+ \left[1+d\{1+2\mathcal J(1+\ell(\mathcal J+1))\}\right].
+\]
+The final single-coordinate polynomial has degree at most
+\(\mathcal D(r,\ell,d)\).  Nilpotents and exceptional specializations
+do not invalidate this bound.
+
+For the classical universal pair of 58 unknowns and degree
+four \cite{Jones}, the construction in \cite[Theorem A and Section 6.1]{BDHMS}
+supplies the bound
+\begin{equation}\label{delta}
+ \begin{split}
+ \delta&=15616+233856\cdot4
+       +(233952\cdot4+467712\cdot4^2)\,9^{59}\\
+ &<2^{211}.
+ \end{split}
+\end{equation}
+If the classical source is stated for positive integers, the shifts
+\(z_i\mapsto z_i+1\) put it over \(\N\) without changing its degree
+or its number of unknowns.  The displayed value is a bound for the source
+after the original ternary substitution,
+so it also bounds the degrees of \(Q\) and \(S\).  It bounds the
+coefficients of \(\mathcal P\) as well.  Indeed, writing
+\[
+ \mathcal P(m)=\sum_{j=0}^{8}p_jm^j,\qquad
+ Q(n)=\sum_{j=0}^{8}q_jn^j,
+\]
+identity \eqref{Pidentity} gives
+\(q_j=S^{2j}p_j\).  In an integral polynomial ring,
+\(\deg p_j\le\deg q_j\le\delta\) whenever \(p_j\ne0\).
+
+Consequently multiplication by \(m\), in the standard rank-eight
+basis, has matrix entries of degree at most \(\delta\).
+In the rank-sixteen basis used above, multiplication by \(\xi\) has
+block matrix
+\[
+ \begin{pmatrix}
+ 0&M_m-S^2(s^2+t^2)I_8\\
+ I_8&-SI_8
+ \end{pmatrix}.
+\]
+Its entries have degree at most \(2\delta+2\).
+
+Let \(D\) be one of the old coefficient-DAG degree bounds, evaluated
+with ordinary inputs of weight one and point generators weighted by
+their multiplication-matrix degrees.  It bounds the degree in the last
+input \(n\), as well as the degree of every multiplication-matrix
+entry.  Since point-block coefficients do not depend on \(n\), the
+cleared expression
+\[
+                              S^{2D}f(m/S^2)
+\]
+has multiplication-matrix degree at most \(D(2\delta+1)\).
+To see this, an entry monomial with \(n\)-exponent \(j\) has remaining
+ordinary-coordinate degree at most \(D-j\).  After substitution and
+clearing, its degree is at most
+\[
+ j\delta+2(D-j)\delta+(D-j)\le D(2\delta+1).
+\]
+The same estimate follows operation by operation through the
+coefficient DAG, without expanding the matrices.
+
+Write \(d_g\) for the old guard bound and \(d_\theta\) for the largest
+old separating-generator bound.  Rescaling the pole roots and clearing
+the guards as above gives
+\[
+ d'_g\le d_g(2\delta+1)+\delta,\qquad
+ d'_\theta\le d_\theta(2\delta+1).
+\]
+The second bound also dominates \(2\delta+2\), since every route has
+\(d_\theta\ge100232\).  Therefore it is enough to use
+\begin{equation}\label{newd}
+                      d'=(d_g+d_\theta)(2\delta+1)+\delta.
+\end{equation}
+Only one factor \(S\) is needed in the product guard; all other cleared
+denominators are powers of that same nonzero factor.
+
+\begin{center}
+\begin{tabular}{lrrrr}
+\toprule
+Route & \(r\) & \(\ell\) & \(d_g+d_\theta\) & Final degree\\
+\midrule
+General &\(2^{56}\)&54&2302058&\(<2^{650}\)\\
+Explicit &\(2^{65}\)&63&4126214&\(<2^{714}\)\\
+Ordinary \(abc\)&\(2^{35}\)&33&3309916&\(<2^{500}\)\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+These are exact integer upper-bound calculations using
+\(\mathcal D(r,\ell,d')\).  Unlike the earlier wrapper, this construction
+does not multiply the final degree bound by four: the source equation
+and the quadratic positivity identity are already relations of the
+finite algebra.  The family parameters occur only in fixed
+coefficients, so the estimates are uniform in their admissible fixed
+values.
+
+\section{A general equation-absorption principle}
+
+The preceding construction is an especially simple instance of a
+general algebraic device.
+
+\begin{proposition}[Absorbing a finite equation]\label{absorb}
+Suppose a rational predicate has ordinary coordinates \((t,x)\),
+a triangular finite-root presentation, and a selected-character
+nonzero guard.  Impose in addition
+\[
+              P(t,x)=a_dx^d+\cdots+a_0=0,\qquad a_d\ne0,\quad d\ge1,
+\]
+where the coefficients are integer polynomials in \(t\).
+Then \(x\) can be removed from the ordinary coordinates by adding a
+finite monic stage of rank \(d\), keeping one final joint encoder.
+\end{proposition}
+\begin{proof}
+Adjoin \(\eta=a_dx\) by the monic relation
+\[
+ \eta^d+\sum_{j=0}^{d-1}a_j a_d^{d-1-j}\eta^j=0,
+\]
+retain \(a_d\) in the guard, and substitute \(x=\eta/a_d\) throughout
+the old presentation.  Clear all new denominators by monic rescaling
+in the triangular order.  At a selected character the process is
+reversible, and every monic extension remains finite free.  Apply the
+single-coordinate guarded-character encoder to the entire algebra.
+\end{proof}
+
+One may use the actual nonzero degree on finitely many coefficient
+strata, recording the vanishing higher coefficients as polynomial
+conditions and taking a finite disjunction.  However, a stratum on
+which \(P(t,x)\) is identically zero in \(x\) does not by itself permit
+eliminating \(x\).  It requires a separate construction or another
+finite equation.  The present application avoids this issue because
+\(S\ne0\) on every certified integer-source tuple, and its monic wrapper
+has degree sixteen at every base specialization.
+
+The saving comes from merging a finite algebraic constraint with the
+existing encoder.  It does not establish that a source integer
+variable has become automatically integral, nor does it justify
+dropping any of the nine integer predicates.
+
+\section{Reproducibility and status}
+
+The checker
+\nolinkurl{undecidability/verify_finite_wrapper.py}
+verifies the radical-free norm identity, the monic degrees and leading
+coefficients, the exact wrapper identity, the independence of all
+point coefficients from the nine inputs in the actual source DAGs,
+and the three numerical degree and coordinate ledgers.  Its report is
+\nolinkurl{undecidability/certificates/finite_wrapper_transfer.json}.
+The coefficient prescription consists of
+\eqref{M3data}--\eqref{Qproduct},
+\eqref{radicalfree}, \eqref{wrapperalgebra}, the pinned common-numerator
+DAGs, the specified rescalings, and the determinant formula of
+\cite{Encoder}.  Expanding the final polynomial is unnecessary and
+would be impractical.
+
+The executable compiler
+\nolinkurl{undecidability/code/build_finite_wrapper.py} accepts sparse
+integer coefficients of any supplied \(P(a,z_1,\ldots,z_\nu)\).
+It constructs the complete BDHMS bridge, the eight monic coefficients,
+and every transformed coefficient and guard of the joint source.
+The long geometric sums are evaluated as polynomial circuits by binary
+doubling.  For example, the mask is constructed as
+\[
+ (B_0-1)\sum_{j=0}^{n_v}B_0^j
+       -(b-1)\sum_{i=1}^{v}B_0^{n_i},
+\]
+so its circuit has size polynomial in the bit lengths of the exponents.
+Enormous fixed powers remain power nodes.
+
+The separate checker
+\nolinkurl{undecidability/verify_finite_wrapper_compiler.py}
+exactly replays each homogenization instruction and checks the
+triangular finite-stage dependencies, sparse coding constants, ranks,
+guards and coordinate counts.  It also performs explicitly labelled
+finite-field diagnostics of all coefficient nodes and of the
+multiquadratic norm.  These diagnostics supplement, rather than
+replace, the exact identities proved above.  The stored example
+\(P(a,z_1)=z_1^2-a\) is a compiler fixture, not a universal polynomial
+or an undecidability witness.  A 58-variable degree-four sparse
+stress fixture verifies that the large coding exponents can be
+handled without their expansion.
+
+The argument proves a further reduction for unrestricted degree.
+The separate quartic checkpoint still carries its explicit
+universality hypothesis; this paper neither imports that hypothesis
+nor resolves its source discrepancy.
+
+\begin{thebibliography}{9}
+\bibitem{BDHMS}
+J. Bayer, M. David, M. Ha{\ss}ler, Y. Matiyasevich and D. Schleicher,
+\emph{Diophantine equations over \(\Z\): universal bounds and parallel
+formalization}, arXiv:2506.20909v3, 22 October 2026.
+Definitions 2.1, 4.1 and 5.3; Lemmas 5.1 and 6.1; Theorems 3 and A.
+\url{https://arxiv.org/abs/2506.20909v3}.
+
+\bibitem{Sun}
+Z.-W. Sun, \emph{Further results on Hilbert's Tenth Problem},
+Science China Mathematics \textbf{64} (2021), 281--306.
+\url{https://arxiv.org/abs/1704.03504}.
+
+\bibitem{Jones}
+J. P. Jones, \emph{Universal Diophantine equation},
+Journal of Symbolic Logic \textbf{47} (1982), 549--571.
+
+\bibitem{Encoder}
+\(\Z\Q\) Diophantine Project,
+\emph{One rational coordinate for a finite family of algebraic witnesses},
+23 November 2026.
+\nolinkurl{undecidability/papers/joint_finite_algebra_encoder.tex}.
+
+\bibitem{Sharing}
+\(\Z\Q\) Diophantine Project,
+\emph{A common numerator point for simultaneous integer certificates
+and rational undecidability in 83, 101, and 53 variables},
+23 November 2026.
+\nolinkurl{undecidability/papers/common_numerator_transfers.tex};
+source and degree certificate:
+\nolinkurl{undecidability/certificates/common_numerator_transfers.json}.
+\end{thebibliography}
+\end{document}
