@@ -1,0 +1,418 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,booktabs,hyperref,xurl}
+\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\Z}{\mathbb Z}\newcommand{\Q}{\mathbb Q}
+\title{Signed binomial witnesses force their own positivity\\and save five quadratic coordinates}
+\author{\(\mathbb Z\mathbb Q\) Diophantine Project}
+\date{23 November 2026}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+In the corrected Pell certificate for central-binomial divisibility,
+the two auxiliary inputs \(w,s\) need no positivity wrappers once
+\(s\ne0\) is enforced. We prove this for every integer modulus
+\(M\ge16\), uniformly in the prescribed index. The proof classifies
+all signs of both Pell parameters. The negative first-sequence branch
+turns the power-of-two congruence into its multiplicative inverse;
+an explicit size bound excludes that branch and every negative input.
+Replacing two three-coordinate positivity wrappers by the single
+quadratic guard \(s s_{\rm inv}=1\) saves five coordinates and one
+residual. This local result is unconditional. Its application to
+undecidability retains the corrected source's cited coding theorem and
+every arithmetic hypothesis of the rational integer interface.
+\end{abstract}
+
+\section{The exact signed statement}
+
+For an integer \(a\) with \(|a|\ge2\), define the polynomial Pell
+sequences by
+\[
+ X_0(a)=1,\quad X_1(a)=a,\qquad
+ Y_0(a)=0,\quad Y_1(a)=1,\qquad
+ Z_{j+2}(a)=2aZ_{j+1}(a)-Z_j(a).
+\]
+They satisfy
+\[
+ X_j(a)^2-(a^2-1)Y_j(a)^2=1,
+ \quad X_j(-a)=(-1)^jX_j(a),
+ \quad Y_j(-a)=(-1)^{j-1}Y_j(a).
+\]
+We use the elementary Pell classification, index congruences, and
+signed trace lemma proved in \cite{Pell}; the extension to negative
+parameters needed here is proved explicitly below.
+
+\begin{theorem}[Automatic positivity]\label{main}
+Let \(r,M,b\in\Z\) satisfy
+\[
+ r\ge1,\qquad M\ge16,\qquad 2\le b\le2M.
+\]
+Let \(w,s,c,d,k,h,\gamma,j,o\) be integers, let
+\(i\in\Z\setminus\{0\}\), and let \(\tau,F,\zeta\in\Q\).
+Assume \(s\ne0\), and put
+\begin{equation}\label{definitions}
+ Y=sM,\quad B=2r+1,\quad
+ a=(wM+1)rY,\quad p=2wr^2Y^2M.
+\end{equation}
+Suppose
+\begin{align}
+ k&=r+1+h(p-1),&\tau^2&=(p^2-1)k^2+1,\label{small}\\
+ k^2-4(c-kY)^2&>0,\label{close}\\
+ d&=bw+(a-2)c+(4a-5)\gamma,\label{linear}\\
+ d^2&=(a^2-1)c^2+1,\label{norm1}\\
+ F^2&=(a^2-1)i^2c^4+1,\label{norm2}\\
+ (d+oF)^2&=(G^2-1)(B+jc)^2+1,
+ &G&=a+F^2(c+1-a),\label{norm3}\\
+ \zeta^2&=(a-1)(d-1).\label{root}
+\end{align}
+Then
+\[
+ w>0,\qquad s>0,\qquad c>0,\qquad bw=2^B.
+\]
+Consequently the signed block has exactly the same projected
+\((r,M,b)\)-solutions as the positive binomial certificate of
+\cite{Binomial}. In particular it forces
+\(M\mid\binom{2r}{r}\).
+\end{theorem}
+
+The final consequence uses the previously proved signed reconstruction:
+once \(w,s>0\), the retained equations restore \(c>B\),
+\(h>0\), \(d>0\), and \(\gamma>0\); positive \(i,F,j,o\)
+can be chosen anew. No new integer predicate is implicit in this
+statement. The reciprocal coordinate used in the full rational tables
+is discussed in Section~\ref{implementation}.
+
+\section{The first Pell index for either sign of the parameter}
+
+\begin{lemma}\label{signedindex}
+Let \(a,c,d,B\) be integers with \(|a|\ge2\), \(B\ge3\)
+odd, and \(|c|>B\). Assume \eqref{norm1}--\eqref{norm3} with
+\(i\in\Z\setminus\{0\}\), \(j,o\in\Z\), and \(F\in\Q\).
+Put \(A=|a|\). Then
+\[
+ |c|=Y_B(A),\qquad |d|=X_B(A).
+\]
+If \eqref{root} also holds, then \(d=X_B(a)\).
+\end{lemma}
+\begin{proof}
+Write \(C=|c|\). By Pell classification at \(A\), the first norm
+gives \(C=Y_t(A)\), \(|d|=X_t(A)\) for some \(t\ge2\).
+Thus \(C\ge2A\) and \(t<C\). Since a rational number with
+integer square is an integer, the second norm makes \(F\) an integer.
+It is nonzero, and classification gives
+\[
+ |i|C^2=Y_q(A),\qquad |F|=X_q(A).
+\]
+The square-divisibility step-down of \cite{Pell} yields \(C\mid q\),
+so \(q\ge C>t\).
+
+The bridge has absolute value at least two for every sign of \(a,c\).
+If \(c=C>0\), then \(c+1-a\ge C+1-A>0\), and \(F^2\ge1\)
+implies \(G\ge c+1\ge5\). If \(c=-C<0\), then
+\(c+1-a\le1-A<0\), so \(G\le c+1\le-3\).
+The norm congruences also give
+\[
+ G\equiv1\pmod C,\qquad G\equiv a\pmod {|F|}.
+\]
+Since \(0<B<C\), the integer \(B+jc\) is nonzero. Signed Pell
+classification at \(G\) therefore writes the last norm as
+\[
+ B+jc=\varepsilon Y_v(G),\qquad
+ d+oF=\varepsilon'X_v(G)
+\]
+with \(v\ge1\) and independent signs \(\varepsilon,\varepsilon'\).
+Reduction modulo \(C\) gives \(v\equiv\pm B\pmod C\).
+Reduction modulo \(|F|\), followed by
+\(X_v(a)=\operatorname{sgn}(a)^vX_v(A)\), gives
+\[
+ X_v(A)\equiv\pm X_t(A)\pmod{X_q(A)}.
+\]
+The signed trace lemma yields \(v\equiv\pm t\pmod{2q}\), hence
+\(B\equiv\pm t\pmod C\). Because \(0<B,t<C\), either
+\(B=t\) or \(B=C-t\). The second alternative is impossible:
+\(C\equiv t\pmod2\) makes \(C-t\) even, while \(B\) is odd.
+Thus \(t=B\).
+
+Finally \(|d|=X_B(A)>1\). If \(a>0\), equation \eqref{root}
+forces \(d\ge1\); if \(a<0\), it forces \(d\le1\).
+Therefore \(d=\operatorname{sgn}(a)X_B(A)=X_B(a)\), since \(B\)
+is odd.
+\end{proof}
+
+\section{Both small-parameter signs and a uniform size bound}
+
+\begin{proof}[Proof of Theorem~\ref{main}]
+The inequality \eqref{close} first forces \(k\ne0\) and gives
+\begin{equation}\label{half}
+ \left|\frac ck-Y\right|<\frac12.
+\end{equation}
+Since \(|Y|=|s|M\ge16\), it follows that \(c\ne0\).
+
+We first exclude \(w=0\). Then \(p=0\), and the first norm makes
+\(\tau\) an integer and gives \(k=\pm1\), \(\tau=0\).
+The integer \(c/k-Y\) has absolute value less than \(1/2\),
+so \(c=kY\). Now \(a=rY\), and the first large norm would give
+\[
+ d^2=(rY^2)^2-Y^2+1.
+\]
+This lies strictly between \((rY^2-1)^2\) and \((rY^2)^2\):
+the two positive gaps are \((2r-1)Y^2\) and \(Y^2-1\).
+That is impossible for an integer square. Hence \(w\ne0\).
+
+Write
+\[
+ \sigma=\operatorname{sgn}(w),\quad
+ \epsilon=\operatorname{sgn}(s),\quad
+ U=|w|M\ge16,\quad Z=|s|M\ge16,
+\]
+and put
+\begin{equation}\label{AP}
+ A=|a|=rZ(U+\sigma),\qquad
+ P=|p|=2r^2Z^2U.
+\end{equation}
+In particular \(A\ge2\), \(P\ge8192r^2\), and
+\begin{equation}\label{rough}
+ P-1>5r+1,\qquad 2A<P^2,\qquad P>A.
+\end{equation}
+For the middle inequality use \(A\le rZ(U+1)\) and
+\(P^2/(2rZ(U+1))=2r^3Z^3U^2/(U+1)>1\).
+The others follow directly from \(U,Z\ge16\).
+
+The congruence for \(k\) has modulus
+\(|p-1|=P-\sigma>2(r+1)\), so \(|k|\ge r+1\).
+Equation \eqref{half} gives
+\[
+ |c|>|k|(Z-1/2)\ge(r+1)(Z-1/2)>B.
+\]
+Lemma~\ref{signedindex} now proves, with \(C=|c|\),
+\begin{equation}\label{largevalues}
+ C=Y_{2r+1}(A),\qquad d=X_{2r+1}(a).
+\end{equation}
+
+Again \(\tau\) is an integer. Pell classification of its norm gives
+\(|k|=Y_\ell(P)\) for an integer \(\ell\ge1\).
+The elementary recurrence bounds and \eqref{rough} give
+\[
+ C<(2A)^{2r}<P^{4r}.
+\]
+Since \(|k|<C\), the bound
+\(Y_\ell(P)>P^{\ell-1}\) for \(\ell\ge2\) excludes
+\(\ell\ge4r+1\). Thus \(\ell\le4r\).
+
+If \(\sigma=1\), then
+\(Y_\ell(P)\equiv\ell\pmod{P-1}\). If \(\sigma=-1\),
+then
+\(Y_\ell(P)\equiv(-1)^{\ell-1}\ell\pmod{P+1}\).
+These are the recurrence specialized at \(1\) and \(-1\).
+Because \(\ell\le4r\) and the modulus is greater than \(5r+1\),
+the congruence \(k\equiv r+1\pmod{p-1}\) forces
+\begin{equation}\label{smallvalue}
+ \ell=r+1,\qquad k=\sigma^r K,
+ \qquad K=Y_{r+1}(P)>0.
+\end{equation}
+Equation \eqref{half} then yields
+\begin{equation}\label{signc}
+ \operatorname{sgn}(c)=\epsilon\sigma^r,
+ \qquad \left|\frac CK-Z\right|<\frac12.
+\end{equation}
+
+We need a uniform estimate which works for \(U-1\) as well as \(U+1\).
+For real \(x\ge2\), write
+\[
+ f_j(x)=\frac{Y_j(x)}{(2x)^{j-1}}.
+\]
+The normalized Pell lemma in \cite{Binomial} gives
+\[
+ 1-\frac{j-2}{4x^2}\le f_j(x)\le1\qquad(j\ge2).
+\]
+It also proves that \(f_j(x)\) is nondecreasing in \(x\) and
+strictly decreasing in \(j\) from \(j=2\) onward. Since \(P>A\),
+\(f_{2r+1}(A)<f_{r+1}(P)\). The leading terms in their ratio give
+\[
+ \rho=\left(\frac{(U+\sigma)^2}{U}\right)^r,
+ \qquad \frac CK=\rho\frac{f_{2r+1}(A)}{f_{r+1}(P)}.
+\]
+Moreover
+\[
+ f_{2r+1}(A)>1-\frac{1}{2Z^2(U-1)^2}.
+\]
+Indeed \((2r-1)/(4r^2)<1/2\) and \(A\ge rZ(U-1)\).
+Using \(f_{r+1}(P)\le1\), we obtain the convenient loose bound
+\begin{equation}\label{ratio}
+ 0<\rho-\frac CK<\frac{\rho}{Z^2(U-1)^2}.
+\end{equation}
+The denominator is at least \(16\), and
+\(\rho>(U-2)^r\). Equations \eqref{signc} and \eqref{ratio}
+therefore imply
+\[
+ Z>\frac{15}{16}(U-2)^r-\frac12
+   >\frac78(U-2)^r.
+\]
+The final inequality follows from \((U-2)^r\ge14\).
+Consequently
+\begin{equation}\label{size}
+ A>\frac78 r(U-1)(U-2)^r>2U4^r.
+\end{equation}
+For the last step, divide by \(U4^r\) and use
+\[
+ \frac78r\frac{U-1}{U}\left(\frac{U-2}{4}\right)^r
+ \ge\frac78\cdot\frac{15}{16}\cdot\frac{14}{4}
+ =\frac{735}{256}>2.
+\]
+
+\section*{The two congruence branches}
+
+For the signed integer parameter \(a\), define
+\[
+ R_j^-=X_j(a)-(a-2)Y_j(a),\qquad
+ R_j^+=X_j(a)+(a-2)Y_j(a).
+\]
+The polynomial addition and norm identities give
+\begin{equation}\label{congruences}
+ R_{j+1}^-=2R_j^-+(4a-5)Y_j(a),\qquad R_0^-=1,
+ \qquad R_j^-R_j^+=1+(4a-5)Y_j(a)^2.
+\end{equation}
+Thus, for \(m=4a-5\),
+\[
+ R_B^-\equiv2^B\pmod m,\qquad
+ 2^B R_B^+\equiv1\pmod m.
+\]
+These identities require no sign assumption on \(a\).
+As \(B\) is odd, \(Y_B(a)=Y_B(A)=C\), while
+\eqref{largevalues} already gives \(d=X_B(a)\).
+
+The input bound implies \(|bw|\le2U\). From \eqref{size},
+\begin{equation}\label{modulusbound}
+ |m|\ge4A-5>8U4^r-5>4U4^r+1.
+\end{equation}
+If \(c=-C\), the linear row identifies \(bw\) with
+\(R_B^+\) modulo \(m\). Hence
+\(bw2^B\equiv1\pmod m\). But
+\[
+ 0<|bw2^B-1|\le4U4^r+1<|m|.
+\]
+The first inequality uses that the nonzero integer \(bw\) has
+absolute value at least two. This is impossible for a multiple of
+\(m\). Therefore \(c=C>0\).
+
+The linear row now gives \(bw\equiv2^B\pmod m\). Also
+\[
+ |bw-2^B|\le2U+2\cdot4^r<4U4^r+1<|m|.
+\]
+It follows that \(bw=2^B\), so \(w>0\). Equation \eqref{signc}
+then forces \(s>0\). The previously proved positive binomial
+certificate and signed reconstruction give the final divisibility
+statement, as described after Theorem~\ref{main}.
+\end{proof}
+
+\section{A necessary nonzero guard}\label{implementation}
+
+The hypothesis \(s\ne0\) cannot simply be omitted. For example,
+take \(r=1\), \(M=256\), \(b=16\) and
+\[
+ w=1,\ s=0,\ a=p=c=0,\ k=h=i=F=d=1,\
+ \tau=\zeta=j=o=0,\ \gamma=3.
+\]
+Then \(Y=0\), \(B=3\), \(G=1\). Every displayed equation
+and the strict inequality hold, but
+\(256\nmid\binom21\). This is an exact counterexample to deleting
+both positivity wrappers with no replacement guard.
+
+In the complete rational tables, the input predicates already make
+\(s,w,c,h,\gamma,j,o\) integers; all other integer coordinates are
+reconstructed in the established dependency order. Add one rational
+coordinate \(s_{\rm inv}\) and the quadratic equation
+\begin{equation}\label{guard}
+                         s s_{\rm inv}=1.
+\end{equation}
+This ensures \(|sM|\ge16\) before the Pell argument begins.
+The inequality first gives \(k\ne0\), and if \(c=0\) it would
+give \((1-4s^2M^2)k^2>0\), a contradiction. Thus \(c\ne0\)
+is established independently of any Pell classification. The existing
+row \(vE=c^2\) now gives \(v\ne0\), legitimizing the retained
+reciprocal predicate and the reconstruction \(i=1/v\in\Z\setminus\{0\}\).
+The norm rows then give the required integrality of \(F\) and
+\(\tau\). Theorem~\ref{main} applies without a circular sign or
+nonzero assumption.
+
+In the corrected Jones source, \(q=b^{5^{60}}\), \(n=q^{16}\),
+and \(M=n^2\), while the retained source prefix gives \(b\ge2\).
+Thus \(M\ge16\) and \(b\le2M\) hold with room to spare.
+
+\begin{corollary}[Five fewer coordinates]\label{saving}
+In each corrected complete quadratic table, delete the rows
+\texttt{jones1980.positive.w} and \texttt{jones1980.positive.s}
+and their six private coordinates. Add \eqref{guard} and its one
+new coordinate. Every other row remains literally unchanged after
+coordinate renumbering. This preserves rational solvability, saves
+five coordinates and one row, and retains degree four after taking
+the sum of the squared residuals.
+\end{corollary}
+\begin{proof}
+An old rational zero has positive integral \(s\), so it extends by
+\(s_{\rm inv}=1/s\). Conversely, a new rational zero satisfies the
+noncircular reconstruction just proved; Theorem~\ref{main} yields
+positive integers \(w,s\). Each has the existing three-triangular-number
+positivity representation, so the six old private coordinates can be
+restored without changing any retained coordinate. The occurrence
+audit verifies that they occur nowhere else. The count is
+\(6-1=5\) coordinates and \(2-1=1\) rows.
+\end{proof}
+
+Applied after the source correction and the ceiling power circuit,
+and after fixed contact offsets for the ordinary-\(abc\) interface,
+the exact complete counts are
+\begin{center}
+\begin{tabular}{lrrrr}
+\toprule
+Interface & Old variables & New variables & Old rows & New rows\\
+\midrule
+General &1074&1069&924&923\\
+Specified &1254&1249&1080&1079\\
+Ordinary rational \(abc\)&786&781&685&684\\
+\bottomrule
+\end{tabular}
+\end{center}
+These are conditional undecidability transfers under exactly the
+retained rational integer-interface premises and the corrected source's
+explicitly cited Jones coding theorem. The sign theorem and the
+five-coordinate equivalence themselves require no such external
+arithmetic premise. The new result applies to the corrected \(n^6\)
+block; no claim is made for the historical \(n^2\) parameter.
+
+\section{Exact artifacts}
+
+The complete tables and their hashes are built and independently
+checked by
+\begin{verbatim}
+python undecidability/source_repair_v93/build_signed_positivity.py
+python undecidability/source_repair_v93/verify_signed_positivity.py
+\end{verbatim}
+The checker audits every discarded coordinate occurrence, every
+retained residual, the nonzero guard, counts, support, degree, and
+deterministic reproduction. It also checks the polynomial congruence
+identities and the zero-\(s\) counterexample exactly. Its finite Pell
+examples illustrate the sign cases; the quantified proof is the
+argument above.
+
+\begin{thebibliography}{9}
+\bibitem{Pell} \(\mathbb Z\mathbb Q\) Diophantine Project,
+\emph{An exact three-Pell index certificate and nine fewer quadratic
+coordinates}, 23 November 2026.\par
+\nolinkurl{undecidability/papers/pell_index_optimization.tex}.
+\bibitem{Binomial} \(\mathbb Z\mathbb Q\) Diophantine Project,
+\emph{An exact Pell certificate for a power of two and central-binomial
+divisibility}, 23 November 2026.\par
+\nolinkurl{undecidability/papers/binomial_pell_certificate.tex}.
+\bibitem{Corrected} \(\mathbb Z\mathbb Q\) Diophantine Project,
+\emph{A corrected quartic source from Jones's binomial theorem},
+23 November 2026.\par
+\nolinkurl{undecidability/source_repair_v93/corrected_jones_source.tex}.
+\end{thebibliography}
+\end{document}

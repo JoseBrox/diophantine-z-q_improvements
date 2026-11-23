@@ -79,6 +79,7 @@ def build_data(old):
         "M_recovery", "a_recovery", "detector_trace_status",
         "global_gauge_scope", "global_gauge_status", "scalar_norm_status",
         "scalar_rechart_status",
+        "pell_core_equivalence_scope",
     )
     new["source_repair_historical_source_metadata"] = {
         key: old[key] for key in historical_keys if key in old
@@ -112,6 +113,7 @@ def build_data(old):
         "retained_arithmetic_interfaces": True,
         "pell_core_source_p_parameter": "2*w*s^2*r^2*n^6",
         "pell_core_source_discrepancy": "Replaced by the independently proved binomial block; historical n^2 tables remain unchanged.",
+        "pell_core_equivalence_scope": "Existential equivalence with the corrected positive source, retaining every integer predicate; Pell witnesses may be reconstructed.",
         "M_recovery": "sr",
         "a_recovery": "(U+1)*sr",
     })

@@ -14,9 +14,9 @@ The [additional research routes](research_routes_20261120.md) prove a complex-mu
 
 ## Undecidability in bounded numbers of rational unknowns
 
-The [v93 continuation](results_20261123_v93.md) gives corrected quartic
-transfers in **1074 / 1254 / 786** rational unknowns, with
-**924 / 1080 / 685** quadratic residuals. The instance is a coefficient
+The [v94 continuation](results_20261123_v94.md) gives corrected quartic
+transfers in **1043 / 1223 / 781** rational unknowns, with
+**907 / 1063 / 684** quadratic residuals. The instance is a coefficient
 parameter. The third route assumes ordinary rational abc; all routes retain
 their integer predicate's stated arithmetic premises.
 
@@ -35,6 +35,9 @@ separates all abc contact sets using distinct cosets modulo the 2-adic integers.
 A fixed grid with denominator 16 handles 12 inputs. A common contact square
 then yields the tuple formula `48k+8` coordinates and `41k+5` rows.
 These two changes save 29 in each route and another 22 in the abc route.
+A shared affine contact progression saves another 26 variables in each
+general route. The corrected signed binomial block forces positivity of
+w and s once s is nonzero, saving five more variables in all three routes.
 Every remaining residual and denominator guard is retained explicitly.
 
 For unrestricted degree, **82 / 100 / 52** remains the smallest recorded
@@ -50,7 +53,7 @@ The existing smaller specialized 25/27/11 defining-polynomial bounds remain
 unchanged. No unverified universal source pair is substituted.
 
 A quartic bound near 263 is not established. Further work targets common
-contact-power circuits, signed source witnesses, fewer integrality inputs,
+fewer integrality inputs, additional common contact circuits,
 and a new simultaneous pole realization theorem. A reduction must preserve
 quadratic degree and supply all physical reconstruction maps; a high-degree
 encoder does not by itself yield a small quartic.

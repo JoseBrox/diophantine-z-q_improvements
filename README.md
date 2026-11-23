@@ -39,7 +39,8 @@ The [results JSON](data/results_20261123_v88.json) records all five new finite-a
 
 The [undecidability category](undecidability/README.md) counts existential
 rational unknowns; the integer instance is encoded in coefficients.
-The [v93 continuation](docs/results_20261123_v93.md) supplies corrected
+The [v94 continuation](docs/results_20261123_v94.md) supplies smaller complete
+quartic tables. The [v93 continuation](docs/results_20261123_v93.md) supplies corrected
 quartic sources, smaller complete tables, and lower general-degree bounds.
 
 | Degree restriction | Additional height hypothesis | Rational unknowns | Status |
@@ -47,9 +48,9 @@ quartic sources, smaller complete tables, and lower general-degree bounds.
 | Unrestricted degree | No additional abc hypothesis | **82** | Proved transfer under retained arithmetic premises; degree below `2^532` |
 | Unrestricted degree, specified source | No additional abc hypothesis | **100** | Proved transfer under retained arithmetic premises; degree below `2^578` |
 | Unrestricted degree | Ordinary rational abc | **52** | Proved transfer under retained arithmetic premises; degree below `2^425` |
-| Quartic transfer | No additional abc hypothesis | **1,074** | Corrected Jones source; 924 quadratic residuals; retained arithmetic premises |
-| Quartic transfer, specified source | No additional abc hypothesis | **1,254** | Corrected Jones source; 1,080 quadratic residuals; retained arithmetic premises |
-| Quartic transfer | Ordinary rational abc | **786** | Corrected Jones source; 685 quadratic residuals; retained arithmetic premises |
+| Quartic transfer | No additional abc hypothesis | **1,043** | Corrected Jones source; 907 quadratic residuals; retained arithmetic premises |
+| Quartic transfer, specified source | No additional abc hypothesis | **1,223** | Corrected Jones source; 1,063 quadratic residuals; retained arithmetic premises |
+| Quartic transfer | Ordinary rational abc | **781** | Corrected Jones source; 684 quadratic residuals; retained arithmetic premises |
 
 The [corrected-source proof](undecidability/source_repair_v93/corrected_jones_source.tex)
 ([PDF](undecidability/source_repair_v93/corrected_jones_source.pdf)) replaces
@@ -71,6 +72,13 @@ with fixed dyadic offsets and sharing one contact square. The
 retain all twelve integrality certificates. Earlier global contact,
 scalar-point, norm-polynomial, and detector-trace reductions remain part
 of the general systems.
+The [shared contact progression](undecidability/general_contact_v94/affine_contact_progressions.tex)
+saves another **26 variables** in each general route. The
+[signed binomial theorem](undecidability/source_repair_v93/signed_binomial_positivity.tex)
+then saves **five** in every route by recovering two positive signs and
+retaining one essential nonzero guard. The
+[final general tables](undecidability/general_contact_v94) and signed abc
+table retain all twelve integer certificates.
 
 The [paired spectral encoder](undecidability/papers/paired_spectral_encoder.tex)
 ([PDF](undecidability/papers/paired_spectral_encoder.pdf)) lowers the

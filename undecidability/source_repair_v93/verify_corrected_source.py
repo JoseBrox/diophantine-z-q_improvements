@@ -66,6 +66,8 @@ def check_table(m, variant="baseline"):
     assert new["unconditional_undecidability_claim"] is False
     assert new["M_recovery"] == "sr"
     assert new["a_recovery"] == "(U+1)*sr"
+    assert "corrected positive source" in new["pell_core_equivalence_scope"]
+    assert new["source_repair_historical_source_metadata"]["pell_core_equivalence_scope"] == old["pell_core_equivalence_scope"]
     assert new["source_repair_historical_source_metadata"]["M_recovery"] == "sr*n2"
     assert new["source_repair_historical_source_metadata"]["a_recovery"] == "(U+1)*sr*n2"
     for key in ("detector_trace_status", "global_gauge_scope", "global_gauge_status",

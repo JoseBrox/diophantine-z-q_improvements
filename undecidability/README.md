@@ -37,9 +37,9 @@ the historical encoders; all historical specifications remain unchanged.
 
 | Integer interface | Rational unknowns | Quadratic residuals | Additional height hypothesis |
 |:--|--:|--:|:--|
-| General | **1074** | **924** | No additional abc |
-| Specified | **1254** | **1080** | No additional abc |
-| Ordinary abc | **786** | **685** | Ordinary rational abc |
+| General | **1043** | **907** | No additional abc |
+| Specified | **1223** | **1063** | No additional abc |
+| Ordinary abc | **781** | **684** | Ordinary rational abc |
 
 The [corrected-source theorem](source_repair_v93/corrected_jones_source.tex)
 ([PDF](source_repair_v93/corrected_jones_source.pdf)) uses Jones's 1980
@@ -56,7 +56,13 @@ saves 22 further coordinates in the abc route. Its general tuple certificate
 uses `48k+8` coordinates and `41k+5` quadratic rows, including the k inputs.
 Completeness is proved for nonzero integer tuples, which includes all
 positive witnesses used in the source reduction. All twelve integer tests
-remain. See the [v93 report](../docs/results_20261123_v93.md).
+remain. The [common contact progression](general_contact_v94/affine_contact_progressions.tex)
+saves 26 further variables in each general route, and the
+[signed source theorem](source_repair_v93/signed_binomial_positivity.tex)
+saves five in all routes. Their complete compositions and independent
+checks are recorded in the [v94 report](../docs/results_20261123_v94.md);
+source correction and degree improvements are in the
+[v93 report](../docs/results_20261123_v93.md).
 
 ### Method and intermediate improvements
 
