@@ -60,6 +60,11 @@ Their final [combined tables](../undecidability/coefficients/jones1980_detector_
 contain every residual. These three changes save 73/63 coordinates from
 the previous 1176/1346 combined systems.
 
+The [ceiling-binary circuit](../undecidability/papers/ceiling_power_quartic_checkpoint.tex)
+further lowers these counts to **1074 / 1254 / 808**, with **924 / 1080 / 696**
+quadratic residuals. It computes the fixed power in 139 actual coordinates,
+saving 29 in each route with a full nonzero-base and reconstruction proof.
+
 Their undecidability interpretation additionally needs **`U_em`**, the
 universality of the precise emended 28-variable source. The 1980 original
 prints Greek alpha in one place where the builder uses Latin a; the 1999

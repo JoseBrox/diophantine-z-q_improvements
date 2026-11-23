@@ -1,0 +1,271 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs,xurl,hyperref}
+\hypersetup{hidelinks}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newcommand{\Q}{\mathbb Q}
+\title{A quadratic ceiling-binary circuit for a fixed power}
+\author{Z diophantine in Q project}
+\date{23 November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+A known nonzero base permits a power step of the form
+$v'=v^2/b$ to be imposed by one quadratic equation.  Ceiling-binary
+prefixes therefore compute an arbitrary fixed positive power with one
+coordinate per binary position, including its subtraction step.  In the
+combined Jones systems, the existing projective input square supplies
+$b^3$ and $b^5$ in two coordinates.  Computing $b^{5^{60}}$ then takes
+137 more coordinates, replacing the preceding 168-coordinate circuit.
+The complete quartic counts fall from $1103,1283,837$ to
+$1074,1254,808$.  We give full reconstruction maps, verify the nonzero
+base before using division, and supply every resulting quadratic row.
+This is an exact transformation of the preceding systems; their source
+and arithmetic qualifications remain unchanged.
+\end{abstract}
+
+\section{The fixed-power circuit}
+
+Let $M\ge1$ be an integer and put $L=\lceil\log_2 M\rceil$, with
+$L=0$ when $M=1$.  Define integer exponents
+\[
+ e_j=\left\lceil\frac{M}{2^{L-j}}\right\rceil
+ \quad(0\le j\le L),\qquad
+ \delta_j=2e_{j-1}-e_j\quad(1\le j\le L).
+\]
+Then $e_0=1$, $e_L=M$, and every $\delta_j$ is either zero or one.
+These statements are exact identities of integers, not estimates for a
+numerical power evaluation.
+
+\begin{theorem}\label{thm:power}
+Let $K$ be a field and let $b\in K$ be nonzero.  Set $v_0=b$.
+The following $L$ quadratic equations have a unique solution in
+$v_1,\ldots,v_L$:
+\begin{equation}\label{eq:circuit}
+ \begin{cases}
+ v_j-v_{j-1}^2=0,&\delta_j=0,\\
+ bv_j-v_{j-1}^2=0,&\delta_j=1.
+ \end{cases}
+\end{equation}
+That solution is $v_j=b^{e_j}$.  In particular its final coordinate is
+$b^M$.  More generally, any already certified prefix $v_0=b^A$, with
+$A=\lceil M/2^h\rceil$, starts the same construction with only $h$
+new coordinates and equations.
+\end{theorem}
+
+\begin{proof}
+For every real $t$, the difference
+$2\lceil t\rceil-\lceil2t\rceil$ belongs to $\{0,1\}$.
+Apply this with $t=M/2^{L-j+1}$.  Inductively, the first row of
+\eqref{eq:circuit} gives $v_j=b^{2e_{j-1}}$, while the second gives
+$v_j=b^{2e_{j-1}-1}$ because $b\ne0$.  These are exactly $b^{e_j}$.
+Each row is linear in its new coordinate with nonzero coefficient
+one or $b$, so the solution is unique.  The same argument applies
+to the shorter sequence beginning at $A$.
+\end{proof}
+
+If nonvanishing of $b$ is not supplied by the surrounding system, the
+extra equation $bt=1$ supplies it with one extra coordinate.  We do not
+need that extra coordinate in the application below.  The theorem also
+works for negative rational bases.  It asserts no representation of
+$0^M$ by a chain that contains a division step.
+
+\section{The base and prefix in the complete systems}
+
+The retained outer variables include $b,B_5,g,t,m,q$, with coefficient
+parameters $x,z,u,y$ in the positive-integer source.  Each positivity
+wrapper has the form
+\begin{equation}\label{eq:positive}
+ 2A-2=\sum_{j=1}^3 a_j(a_j+1).
+\end{equation}
+For rational witnesses, $a_j(a_j+1)\ge-1/4$, so every such wrapper
+already implies $A\ge5/8>0$, before any integrality conclusion.
+In particular the retained wrapper for $\theta=B_5-2z$ implies
+$B_5>2z$.
+
+In the general and specified interfaces write $c$ for the nonzero
+common contact normalizer and $w_b$ for the stored input square.  The
+literal input and unit equations imply
+\[
+ b^2=cw_b,\qquad u_c=c^{-1},
+\]
+where $u_c$ is an existing coordinate.  The unchanged two prefix rows
+are
+\begin{equation}\label{eq:prefix}
+ u_c B_3=bw_b,\qquad u_c B_5=B_3w_b.
+\end{equation}
+Consequently $B_3=b^3$ and $B_5=b^5$, without division by $b$.
+In the ordinary-$abc$ table the same equations have $c=u_c=1$.
+Its input square is an unscaled coordinate $w_b=b^2$.
+The coordinate called $B_3$ here has the retained machine name
+\texttt{power\_001}; $B_5$ is called \texttt{B5}.
+
+\begin{lemma}\label{lem:base}
+For the retained positive integer parameters, every rational solution
+of the unchanged input, unit, prefix, and positivity equations has
+$b>0$.  This statement does not use any of the replaced power rows.
+\end{lemma}
+\begin{proof}
+Equations \eqref{eq:prefix} give $B_5=b^5$ as just shown.  Since
+$z\ge0$ and the $\theta$ wrapper gives $B_5>2z$, we have $b^5>0$,
+and hence $b>0$.
+\end{proof}
+
+There is a second independent nonvanishing argument useful for other
+power charts.  The unchanged wrappers give $g,t,m,\theta,\alpha>0$;
+the defining rows give $e=y+m\theta>0$ and $\ell=u+t\theta>0$.
+After undoing the existing invertible input-square rescaling, the
+alpha row is
+\[
+ \alpha=(b-xy)q^2-e\ell g^2>0.
+\]
+It follows that $q\ne0$ and $b>xy$.  This argument likewise does not
+assume a power relation between $q$ and $b$.  Thus the new construction
+does not rely on a circular interpretation of its division steps.
+
+\section{The 139-coordinate application}
+
+Put
+\[
+ M=5^{60}=867361737988403547205962240695953369140625.
+\]
+Its binary length is 140, and
+\[
+ \left\lceil\frac{M}{2^{137}}\right\rceil=5.
+\]
+Keep the two old prefix coordinates $B_3,B_5$, and take
+\[
+ e_j=\left\lceil\frac{M}{2^{137-j}}\right\rceil,
+ \quad 0\le j\le137.
+\]
+Beginning with $v_0=B_5$, Theorem~\ref{thm:power} adds 137 coordinates,
+the last of which is the already named outer coordinate $q$.
+The first exponents are $5,10,20,40,80,160$; the full recurrence,
+including every choice of digit, is stored in the coefficient tables.
+Exactly 78 of its 137 steps have $\delta_j=1$.
+
+The old signed addition chain had 169 computed powers.  Its $b^2$
+coordinate had already been removed using the integrality block's input
+square, leaving 168 actual power coordinates.  The new circuit uses
+$2+137=139$, including $B_3,B_5,q$.  In literal table terms it deletes
+165 private intermediate coordinates and adds 136, for a saving of 29.
+It deletes 166 rows and adds 137, also saving 29 rows.  The two unchanged
+prefix rows are counted only once.
+
+\begin{theorem}\label{thm:application}
+For each admissible fixed coefficient choice, the complete preceding
+systems and the new systems have identical rational solution projections
+to all coordinates outside the power circuit.  The new counts are
+\begin{center}
+\begin{tabular}{lrrrr}
+\toprule
+Interface & Old variables & New variables & Old rows & New rows\\
+\midrule
+General &1103&1074&953&924\\
+Specified &1283&1254&1109&1080\\
+Ordinary rational $abc$ &837&808&725&696\\
+\bottomrule
+\end{tabular}
+\end{center}
+The sums of squares of the new residuals have total degree exactly four.
+The variable counts exclude the integer instance encoded in coefficients.
+\end{theorem}
+
+\begin{proof}
+By Lemma~\ref{lem:base}, both systems have $b\ne0$ before interpreting
+either circuit.  The old chain is a sequence of multiplication steps
+and divisions by already computed positive powers of $b$.  Its complete
+exponent certificate gives $q=b^M$.  Theorem~\ref{thm:power} gives the
+same conclusion for the new chain.  Starting with a solution of either
+system, compute each removed power as its specified integer power of
+the same $b$.  This recovers all rows of the other system.  Every other
+coordinate and every other residual is preserved literally, up to the
+renumbering of coordinates.
+
+The full occurrence audit proves that no deleted intermediate occurs
+outside a deleted power row.  This makes the substitution valid for the
+complete systems, including the scalar, contact, positivity, and Pell
+blocks.  The two coordinate maps are inverse on their solution sets,
+since both circuits have uniquely determined intermediates at fixed $b$.
+
+Each new row has degree at most two and integer coefficients.  A sum
+of rational squares is zero exactly when each summand is zero.  At least
+one unchanged outer row has a nonzero quadratic homogeneous part, so the
+sum of squares has degree exactly four: the sum of squares of the leading
+quadratic parts is a nonzero polynomial over the ordered field $\Q$.
+The direct census above gives the displayed counts.
+\end{proof}
+
+\section{A restricted optimality statement}
+
+The numerical count is not a general lower bound for polynomial
+encodings.  There is, however, a simple lower bound for the exact
+positive-power chart used here.
+
+\begin{proposition}
+Suppose the initially available monomial coordinates have base
+exponents at most two and all base exponents are nonnegative.
+Each subsequent coordinate is determined linearly by a quadratic
+binomial equation whose other coordinates are already available.
+Then computing the power $b^M$, for $M=5^{60}$, requires at least
+139 subsequent coordinates.  The present 139-coordinate circuit
+attains this bound within that chart.
+\end{proposition}
+
+\begin{proof}
+Assign exponent zero to the independent common normalizers.
+If $E$ is the largest available exponent, the new exponent has the
+form $a+b-d$ with $0\le a,b,d\le E$, allowing an omitted factor
+to have exponent zero.  It is at most $2E$.  Thus after $t$ new
+coordinates the largest exponent is at most $2^{t+1}$.  Since
+$2^{139}<5^{60}<2^{140}$, one needs $t\ge139$.
+The projective input square has base exponent two, and the unchanged
+prefix \eqref{eq:prefix} and every new ceiling step satisfy the stated
+rules with nonnegative exponents.  There are exactly 139 new power
+coordinates relative to that initial pool.
+\end{proof}
+
+The proposition does not cover negative-power coordinates, nontriangular
+systems, other algebraic variables, Pell certificates, changes to the
+universal source, or the use of source equations to avoid computing this
+power.  Those possibilities remain open.
+
+\section{Reproducibility and qualifications}
+
+The complete tables and certificates are in
+\nolinkurl{undecidability/coefficients/jones1980_ceiling_power/}.
+The builder is
+\nolinkurl{undecidability/code/build_ceiling_power.py}; it also accepts
+an explicit predecessor and output path for composition with independent
+changes.  The independent checker
+\nolinkurl{undecidability/verify_ceiling_power.py} reconstructs the exponent
+recurrence from the actual new equations, checks the old and new
+coordinate occurrences, compares every unchanged residual, verifies
+integer parameter-polynomial coefficients and degree, and reproduces
+the canonical files byte for byte.  Its small rational examples supplement
+the exact exponent certificate; they do not replace it.
+
+The first two predecessors are the detector-trace and Pell systems
+\cite{detector,pell}; the third is the shared-reference system after
+the Pell reduction.  Their precise emended source universality premise
+$U_{\rm em}$ is retained in these historical tables.  In particular this
+transformation does not correct the printed $n^2$ binomial parameter,
+nor assert universality of a corrected source.  A separate corrected
+source may be composed with this transformation after its proof is
+supplied.  Every retained integer-predicate arithmetic premise remains
+as stated in the predecessor papers.  The ordinary-$abc$ qualification
+applies to the third row only.  None of these algebraic transformations
+claims an unconditional solution of Hilbert's tenth problem over $\Q$,
+or a quartic bound near 263.
+
+\begin{thebibliography}{9}
+\bibitem{detector} Z diophantine in Q project,
+\emph{A rational trace in place of each private detector product},
+\nolinkurl{undecidability/papers/detector_trace_compression.tex}.
+\bibitem{pell} Z diophantine in Q project,
+\emph{Pell index optimization},
+\nolinkurl{undecidability/papers/pell_index_optimization.tex}.
+\end{thebibliography}
+\end{document}

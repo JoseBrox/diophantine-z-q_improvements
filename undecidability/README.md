@@ -128,9 +128,9 @@ current general and specified counts:
 
 | Integer interface | Independent combined system | Current checkpoint | Quadratic residuals | Additional height hypothesis |
 |:--|--:|--:|--:|:--|
-| General, 163 coordinates | 2,195 | **1,103** | 953 | No additional abc |
-| Specified, 179 coordinates | 2,387 | **1,283** | 1,109 | No additional abc |
-| Ordinary-abc, 56 coordinates | 911 | **837** | 725 | Ordinary rational abc |
+| General, 163 coordinates | 2,195 | **1,074** | 924 | No additional abc |
+| Specified, 179 coordinates | 2,387 | **1,254** | 1,080 | No additional abc |
+| Ordinary-abc, 56 coordinates | 911 | **808** | 696 | Ordinary rational abc |
 
 The physical function dictionary, all normalization weights, and the
 stronger common-index precision are proved before the registers are
@@ -183,6 +183,19 @@ Every reduction has full reconstruction maps and an exact occurrence audit.
 | Common norm coefficients | 1122 | 1302 |
 | Detector trace | 1112 | 1292 |
 | After the separate Pell reduction | **1103** | **1283** |
+
+## Quadratic ceiling-binary power circuit
+
+The [new power theorem](papers/ceiling_power_quartic_checkpoint.tex)
+([PDF](papers/ceiling_power_quartic_checkpoint.pdf)) replaces the 168 stored
+powers computing `b^(5^60)` by **139 coordinates**. Starting at the existing
+`b^5`, its 137 ceiling-binary steps use either `v_next=v^2` or
+`b*v_next=v^2`. The unchanged prefix and positivity equations already force
+`b>0`. The complete counts are **1074 / 1254 / 808**, with
+**924 / 1080 / 696** quadratic residuals. Every non-power row is preserved
+literally. The [tables](coefficients/jones1980_ceiling_power) and independent
+checker also prove a restricted 139-coordinate lower bound within the stated
+nonnegative-exponent triangular monomial chart; no global minimum is claimed.
 
 ## Independently proved local improvements
 
