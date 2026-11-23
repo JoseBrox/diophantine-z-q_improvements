@@ -1,0 +1,359 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,booktabs,hyperref,xurl}
+\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\Z}{\mathbb Z}\newcommand{\Q}{\mathbb Q}
+\title{A single integer quotient for the third Pell certificate}
+\author{\(\mathbb Z\mathbb Q\) Diophantine Project}
+\date{23 November 2026}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+The third Pell equation in the corrected Jones source used two integer
+quotients: one fixed its second coordinate modulo the first Pell
+coordinate, and another fixed its trace modulo an auxiliary Pell
+trace. We replace these by two congruences on the second coordinate
+alone, and encode both congruences with one integer quotient. An
+elementary signed congruence lemma for the Pell second-coordinate
+sequence proves soundness. Every positive source witness has a new
+witness with the quotient positive. One new quadratic product register
+replaces the discarded source coordinate, so the outer system has the
+same size and one entire integer predicate can be removed. The general,
+specified, and ordinary rational-\(abc\) complete tables decrease to
+983, 1148, and 734 coordinates, respectively, with 855, 998, and 643
+quadratic residuals. This local algebraic and Pell
+reduction is unconditional; the undecidability transfer retains the
+stated arithmetic premises of its integer interface and the cited
+Jones coding theorem.
+\end{abstract}
+
+\section{A second-coordinate congruence lemma}
+
+For an integer \(A\ge2\), write
+\[
+ X_n(A)+Y_n(A)\sqrt{A^2-1}
+       =(A+\sqrt{A^2-1})^n,\qquad n\ge0.
+\]
+Thus \(X_0=1,Y_0=0,X_1=A,Y_1=1\), and both sequences
+satisfy \(Z_{n+2}=2AZ_{n+1}-Z_n\). For negative integer
+parameters we use these same integer polynomials; then
+\[
+ X_n(-A)=(-1)^nX_n(A),\qquad
+ Y_n(-A)=(-1)^{n-1}Y_n(A).
+\]
+All congruences below use a positive modulus unless explicitly stated.
+
+\begin{lemma}[The signed \(Y\)-congruence]\label{Ylemma}
+Let \(A\ge2\), \(q\ge2\), and \(0<t<q\) be integers. For
+every integer \(v\ge0\),
+\[
+ Y_v(A)\equiv\pm Y_t(A)\pmod{X_q(A)}
+ \quad\Longrightarrow\quad
+ v\equiv\pm t\pmod{2q}.
+\]
+\end{lemma}
+\begin{proof}
+Suppress the argument \(A\) and put \(N=X_q\). The Pell addition
+identities and the norm identity give
+\[
+ X_{2q}=2X_q^2-1\equiv-1\pmod N,
+ \qquad Y_{2q}=2X_qY_q\equiv0\pmod N.
+\]
+Consequently
+\[
+ Y_{v+2q}\equiv-Y_v\pmod N,
+ \qquad Y_{2q-j}\equiv Y_j\pmod N\quad(0\le j\le2q).
+\]
+Reduction modulo \(4q\), followed by reflection around \(q\),
+therefore gives some \(j\in\{0,\ldots,q\}\) such that
+\[
+ Y_v\equiv\varepsilon Y_j\pmod N,
+ \qquad v\equiv\pm j\pmod{2q},\qquad\varepsilon\in\{1,-1\}.
+\]
+
+The sequence \(Y_n\) is strictly increasing for \(n\ge0\), and
+\(Y_q>2Y_{q-1}\) for \(q\ge2\). For example the recurrence
+gives \(Y_2=2A>2Y_1\), and if \(Y_j>Y_{j-1}\) then
+\(Y_{j+1}=(2A-1)Y_j+(Y_j-Y_{j-1})>2Y_j\).
+The identity \(X_q=AY_q-Y_{q-1}\) now yields
+\[
+ X_q-(Y_q+Y_{q-1})=(A-1)Y_q-2Y_{q-1}>0.
+\]
+Since \(t\le q-1\), we have
+\[
+ 0<Y_j+Y_t\le Y_q+Y_{q-1}<N.
+\]
+Thus \(Y_j\equiv-Y_t\pmod N\) is impossible, and
+\(Y_j\equiv Y_t\pmod N\) implies equality because both values
+lie in \([0,N)\). Strict monotonicity gives \(j=t\). Substituting
+this in the congruence for \(v\) proves the lemma.
+\end{proof}
+
+\section{The third norm with one integer quotient}
+
+\begin{theorem}[A one-quotient index certificate]\label{index}
+Let \(a,c,d,B,i,J\) be integers satisfying
+\[
+ |a|\ge2,\qquad B\ge3\text{ odd},\qquad |c|>B,\qquad i\ne0.
+\]
+Let \(F,I\in\Q\), and suppose
+\begin{align}
+ d^2-(a^2-1)c^2&=1,\label{norm1}\\
+ F^2-(a^2-1)i^2c^4&=1.\label{norm2}
+\end{align}
+Set
+\begin{align}
+ G&=a+F^2(c+1-a),\label{bridge}\\
+ H&=c+F^2(B-c)+cFJ.\label{CRT}
+\end{align}
+Assume
+\begin{equation}\label{norm3}
+                       I^2-(G^2-1)H^2=1.
+\end{equation}
+Then
+\[
+              |c|=Y_B(|a|),\qquad |d|=X_B(|a|).
+\]
+If a rational \(\zeta\) also satisfies
+\(\zeta^2=(a-1)(d-1)\), then \(d=X_B(a)\).
+\end{theorem}
+\begin{proof}
+Put \(A=|a|\) and \(C=|c|\). Integral Pell classification
+in \eqref{norm1} gives
+\[
+ C=Y_t(A),\qquad |d|=X_t(A)
+\]
+for an integer \(t\ge2\), since \(C>B\ge3\). In particular
+\(C\ge2A\) and \(0<t<C\). A rational number whose square is
+an integer is an integer, so \eqref{norm2} makes \(F\) integral.
+Pell classification gives
+\[
+ |i|C^2=Y_q(A),\qquad |F|=X_q(A)
+\]
+for an integer \(q\ge1\). The square-divisibility step-down
+lemma proved in \cite{Pell} states that
+\(Y_t(A)^2\mid Y_q(A)\) implies \(Y_t(A)\mid q\).
+Therefore \(C\mid q\), whence \(q\ge C>t\), in particular
+\(q\ge2\). Also
+\begin{equation}\label{Fcong}
+ F^2\equiv1\pmod C,\qquad \gcd(C,F)=1.
+\end{equation}
+
+All coordinates in \eqref{bridge}--\eqref{CRT} are now integers.
+The bridge is nondegenerate for every sign of \(a,c\). If
+\(c=C>0\), then \(c+1-a\ge C+1-A>0\) and \(F^2\ge1\)
+give \(G\ge c+1\ge5\). If \(c=-C<0\), then
+\(c+1-a\le1-A<0\), so \(G\le c+1\le-3\).
+Thus \(|G|\ge2\). Moreover
+\[
+ G\equiv1\pmod C,\qquad G\equiv a\pmod {|F|}.
+\]
+Equations \eqref{CRT} and \eqref{Fcong} give the two congruences
+\begin{equation}\label{bothcong}
+                    H\equiv B\pmod C,
+                    \qquad H\equiv c\pmod {|F|}.
+\end{equation}
+Since \(0<B<C\), the first congruence implies \(H\ne0\).
+The last norm makes \(I\) an integer. Signed Pell classification
+at \(G\) consequently gives
+\[
+                  H=\varepsilon Y_v(G),\qquad v\ge1,
+                  \quad\varepsilon\in\{1,-1\}.
+\]
+
+The recurrence at parameter \(1\) gives \(Y_v(1)=v\).
+The first congruence in \eqref{bothcong} therefore yields
+\(v\equiv\pm B\pmod C\). Reducing the second congruence
+modulo \(|F|=X_q(A)\), using \(G\equiv a\) and the sign
+identity for \(Y_v(-A)\), gives
+\[
+                   Y_v(A)\equiv\pm Y_t(A)\pmod{X_q(A)}.
+\]
+Lemma~\ref{Ylemma} implies \(v\equiv\pm t\pmod{2q}\).
+Because \(C\mid q\), we obtain \(B\equiv\pm t\pmod C\).
+Both \(B\) and \(t\) lie strictly between \(0\) and \(C\),
+so either \(B=t\) or \(B=C-t\). The recurrence modulo two
+gives \(C=Y_t(A)\equiv t\pmod2\); hence \(C-t\) is even,
+while \(B\) is odd. The second case is impossible and \(t=B\).
+
+Finally \(|d|=X_B(A)>1\). If \(a>0\), the square equation
+for \(\zeta\) forces \(d\ge1\); if \(a<0\), it forces
+\(d\le1\). Since \(B\) is odd, this says precisely
+\(d=X_B(a)\).
+\end{proof}
+
+\begin{proposition}[Positive completeness]\label{complete}
+Suppose \(a\ge2\), \(B\ge3\) is odd,
+\(c=Y_B(a)>B\), \(d=X_B(a)\), and positive integers \(i,F\)
+satisfy \eqref{norm2}. Then positive integers \(J,H,I\) satisfying
+\eqref{bridge}--\eqref{norm3} exist.
+\end{proposition}
+\begin{proof}
+As in Theorem~\ref{index}, write \(F=X_q(a)\) with \(c\mid q\).
+Then \(G\ge c+1\ge2\), \(G\equiv1\pmod c\), and
+\(G\equiv a\pmod F\). For any sufficiently large integer
+\(L\ge0\), put
+\[
+ v=B+4qL,\qquad H=Y_v(G),\qquad I=X_v(G).
+\]
+The Pell norm is automatic. Reduction modulo \(c\) gives
+\(H\equiv v\equiv B\pmod c\). The identities used in
+Lemma~\ref{Ylemma} give period \(4q\) for \(Y_v(a)\) modulo
+\(F\), hence
+\[
+ H\equiv Y_v(a)\equiv Y_B(a)=c\pmod F.
+\]
+Because \(F^2\equiv1\pmod c\), the integer
+\(H-c-F^2(B-c)\) is divisible by both \(c\) and \(F\).
+They are coprime, so
+\[
+                   J=\frac{H-c-F^2(B-c)}{cF}
+\]
+is an integer. As \(L\) grows, \(H\) tends to positive infinity
+while the other terms are fixed. Thus \(J>0\) for all sufficiently
+large \(L\), establishing the claim including its positivity.
+\end{proof}
+
+\section{Compatibility with the signed binomial block}
+
+In the corrected source of \cite{Corrected}, and after the signed
+positivity reduction of \cite{Signed}, the relevant parameters are
+\[
+ M=n^2\ge16,\quad r\ge1,\quad B=2r+1,\quad
+ Y=sM,\quad a=(wM+1)rY,\quad p=2wr^2Y^2M,
+\]
+where \(s\ne0\), \(w,s\in\Z\), and \(2\le b\le2M\).
+The small Pell equation, its integer congruence quotient, and
+\(k^2-4(c-kY)^2>0\) are unchanged. The proof of the automatic
+positivity theorem first excludes \(w=0\), then establishes
+\(|a|\ge2\), \(|c|>B\), and the integrality of every input needed
+by Theorem~\ref{index}. Those arguments precede, and do not use,
+the old third-Pell index lemma. Substituting Theorem~\ref{index}
+for that lemma gives exactly the same conclusion
+\[
+                 |c|=Y_B(|a|),\qquad d=X_B(a).
+\]
+The rest of the signed proof uses these conclusions, the unchanged
+linear power-of-two congruence, and the small Pell equation; it does
+not use either of the discarded third-norm quotient equations.
+Therefore it again forces \(w,s,c>0\),
+\(bw=2^{2r+1}\), and \(M\mid\binom{2r}{r}\).
+
+The reciprocal guard has the same noncircular order as before.
+Since \(s\ne0\) and \(M\ge16\), the strict inequality implies
+\(k,c\ne0\). The retained equation \(vE=c^2\) forces \(v\ne0\),
+so the integer predicate for \(1/v\) gives
+\(i\in\Z\setminus\{0\}\); the second norm then gives integral
+\(F\). In the ordinary-\(abc\) interface the explicit row
+\(vi=1\) is retained as well. No new nonzero assumption is implicit.
+
+Conversely, the corrected positive source has its positive local
+Pell witnesses by the established binomial certificate.
+Proposition~\ref{complete} supplies a positive new quotient \(J\).
+Thus all eleven remaining integer inputs can be taken nonzero, as
+required by the fixed-contact ordinary-\(abc\) completeness theorem.
+The new system has the same projection on the coding-prefix inputs
+and on the instance \(x\). This is existential equivalence of the
+source projections: the integer quotient named \(j\) in the new table
+means \(J\), and it need not equal the old quotient named \(j\).
+
+\section{Complete quadratic compilation and counts}
+
+The complete predecessor tables already store
+\(F_2=F^2\), \(r,c,F,H,I,G\). Introduce the single new register
+\(C_F=cF\), delete the source coordinate \(o\), and replace
+\[
+                       H=2r+1+jc,\qquad I=d+oF
+\]
+by the two quadratic rows
+\begin{equation}\label{tworows}
+            C_F=cF,\qquad H=c+F_2(2r+1-c)+C_Fj.
+\end{equation}
+Retain the third norm and all other source rows, and interpret the
+integral input \(j\) as the new quotient \(J\). There is one fewer
+source coordinate and one new product coordinate, so the outer
+coordinate count is unchanged. Two old residuals are replaced by two
+new residuals, so the outer row count is also unchanged.
+
+The ordinary-\(abc\) predecessor's \(o\)-input certificate has
+47 private auxiliary coordinates and 41 private quadratic residuals.
+After the row \(I=d+oF\) is removed, none of those coordinates,
+nor \(o\) itself, occurs in any retained source or other certificate
+row. Deleting this certificate and adding \(C_F\) therefore changes
+the total variable count by \(-48+1=-47\), and the row count by
+\(-41\). All eleven retained fixed contact offsets are still distinct
+modulo \(\Z_2\); the removed offset was \(9/16\), and keeping the
+other original offsets causes no collision. The common reference
+certificate and common contact square remain. The simultaneous
+completeness theorem for a finite family applies directly to the
+eleven retained inputs; no unused twelfth integer witness is needed.
+
+\begin{corollary}[A 734-coordinate ordinary-\(abc\) quartic]\label{abc}
+Under exactly the arithmetic hypotheses of the retained ordinary
+rational-\(abc\) integer interface, and using the cited Jones coding
+theorem as in \cite{Corrected}, the new complete family has
+undecidable rational solvability. Its instance is the coefficient
+\(x\), its fixed source parameters are \(z,u,y\), and it has
+734 rational unknowns and 643 quadratic residuals.
+Squaring and summing those residuals gives a polynomial of degree
+exactly four, with coefficients in \(\Z[x,z,u,y]\).
+\end{corollary}
+\begin{proof}
+Soundness of the eleven retained integer predicates and
+Theorem~\ref{index}, in the signed reconstruction just described,
+recover a solution of the corrected coding source. Conversely a
+positive corrected source witness extends by
+Proposition~\ref{complete}, and finite-family simultaneous
+completeness supplies the eleven rational integer certificates.
+The coefficient table makes the two row changes in \eqref{tworows},
+deletes exactly the private certificate just counted, and preserves
+all denominator guards. Thus the counts are
+\(781-47=734\) and \(684-41=643\). Every retained or added row
+has degree at most two, and the coefficient domain is unchanged.
+A sum of rational squares vanishes if and only if all its terms
+vanish. At least one row has a nonzero quadratic homogeneous part;
+the sum of the squares of these parts cannot vanish identically over
+the reals. Thus the degree is exactly four.
+\end{proof}
+
+\input{undecidability/pell_crt_v95/contact_block_deletion.tex}
+
+\section{Exact artifacts and scope of verification}
+
+The independent scripts
+\begin{verbatim}
+python undecidability/pell_crt_v95/verify_y_congruence.py
+python undecidability/pell_crt_v95/verify_crt_abc.py
+python undecidability/pell_crt_v95/verify_crt_general.py
+\end{verbatim}
+check the recurrence identities, signed congruence examples, positive
+CRT lifts, every coefficient occurrence needed for deletion, every
+unchanged row, counts, degree, coefficient hashes, and deterministic
+rebuilding. Finite examples do not prove the quantified Pell theorem;
+its proof is the argument above. These checks neither reprove the
+external Jones coding theorem nor discharge any arithmetic premise
+of the integer interfaces. No global minimum or 263-variable quartic
+is claimed.
+
+\begin{thebibliography}{9}
+\small
+\setlength{\itemsep}{2pt}
+\bibitem{Pell} \(\mathbb Z\mathbb Q\) Diophantine Project,
+\emph{An exact three-Pell index certificate and nine fewer quadratic
+coordinates}, 23 November 2026.\par
+\nolinkurl{undecidability/papers/pell_index_optimization.tex}.
+\bibitem{Corrected} \(\mathbb Z\mathbb Q\) Diophantine Project,
+\emph{A corrected quartic source from Jones's binomial theorem},
+23 November 2026.\par
+\nolinkurl{undecidability/source_repair_v93/corrected_jones_source.tex}.
+\bibitem{Signed} \(\mathbb Z\mathbb Q\) Diophantine Project,
+\emph{Signed binomial witnesses force their own positivity and save
+five quadratic coordinates}, 23 November 2026.\par
+\nolinkurl{undecidability/source_repair_v93/signed_binomial_positivity.tex}.
+\end{thebibliography}
+\end{document}

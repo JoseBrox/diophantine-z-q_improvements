@@ -1,0 +1,103 @@
+\section{Deleting one member of the simultaneous integer family}
+\label{sec:delete-integer-family-member}
+
+The new CRT bridge needs the integer quotient $j$, now interpreted as
+$J$, but no longer needs the old integer $o$. The general and specified
+rational interfaces can therefore be instantiated with eleven input
+blocks. This is a new application of their finite-family theorem; it
+does not assert that a rational zero of an eleven-block system extends
+to a zero of the former twelve-block system with a prescribed $o$.
+
+Here is the required family argument. Keep the blocks indexed by
+\[
+              0,1,2,3,4,5,6,7,8,10,11,
+\]
+with the original ordered labels $b,g,t,m,w,s,h,c,\gamma,j,i$.
+The reference block $b$, common point roles, common input numerator,
+common contact gauge, and reciprocal $i$ chart remain. For $e=2$
+general contacts or $e=3$ specified contacts, define the gauge by the
+sum of the retained weights only. Thus its number of summands is now
+$m=22$ or $m=33$, respectively.
+
+The soundness proof of the global gauge uses a consumed prime of one
+retained weight, its own complementary sum, the unchanged scalar and
+point relations, and its own pole obstruction. It makes no assumption
+that another input block exists. All remaining height estimates use
+the same finite-family inequalities, with fewer summands; the former
+twelve-block upper bounds are still sufficient. Hence every remaining
+distinguished input is an integer under the same arithmetic premises.
+The affine contact chart is reconstructed with the seven common
+coefficient registers exactly as before.
+
+For completeness, start with the eleven desired integer inputs and
+choose their point data and aggregate shifts by the existing ordered
+simultaneous preparation. Take the common contact spacing sufficiently
+large to separate the translated finite lists. The displayed indices
+are distinct integers, so the interval-separation proof applies even
+though index $9$ has been omitted. Invoke the same finite-family prime
+supplier on their union, with the same finite avoidance and all-sign
+common-index congruences. At each selected contact, only its own weight
+has negative odd valuation, and all other retained weights are integral.
+At foreign contacts, the same rational-square parity argument applies.
+At the prepared finite places and at infinity,
+\[
+ q_\nu=\kappa\lambda^{-2}+O(\lambda^{-3}),\qquad
+ \rho=m\kappa\lambda^{-2}+O(\lambda^{-3}),\qquad
+ \frac{(\rho-q_\nu)^2}{q_\nu}
+       =(m-1)^2\kappa\lambda^{-2}+O(\lambda^{-3})\longrightarrow0.
+\]
+No division by $m$ or $m-1$ is needed. The physical tests are bounded
+on the previously chosen neighborhoods; their nonconstant detector
+terms tend to zero. The actual pole arguments thus retain the required
+local square classes at $2,3,17$ and the same real limit. Choosing
+sufficient finite divisibility and a large real slope gives every
+remaining native-pole witness. This proves the eleven-block
+simultaneous completeness assertion.
+
+These are precisely the arguments in
+\emph{One contact gauge in a combined quadratic system},
+\nolinkurl{undecidability/papers/global_gauge_quartic_checkpoint.tex},
+Sections 2 and 3, and
+\emph{A common arithmetic progression of contact arguments},
+\nolinkurl{undecidability/general_contact_v94/affine_contact_progressions.tex},
+with a smaller finite family. No new prime-supplier premise, positivity
+assumption on an arbitrary rational zero, or pairwise radical
+disjointness assumption is introduced.
+
+\paragraph{Complete coefficient audit.}
+In the signed affine-contact tables, the literal private coordinates
+are $o$ and every name beginning \texttt{int\_o\_}. There are $61$
+of them in the general table and $76$ in the specified table. The
+private integer-certificate rows number $46$ and $59$. Each interface
+also has four private \texttt{global.o.} input-pair rows, one private
+\texttt{scalar\_norm.o.} row, and one private
+\texttt{detector\_trace.o.} row. Their deletion removes $52$ and
+$65$ quadratic rows, respectively.
+
+Apart from the old source row $I-d-oF$, the only occurrences of these
+private coordinates outside those rows lie in three rows of the last
+reciprocal-$i$ contact. They are exactly the eliminated global-sum
+contributions of the removed weights. The general contributions are
+\texttt{int\_o\_153} and
+\texttt{int\_o\_last\_contact\_weight}; the specified contributions
+are \texttt{int\_o\_154}, \texttt{int\_o\_155}, and
+\texttt{int\_o\_last\_contact\_weight}.
+Deleting their terms from these three rows compiles the smaller global
+sum. All other retained rows, including the common gauge guards and
+the private guards of every retained block, are literally unchanged.
+
+The CRT source then drops $I-d-oF$, replaces the old definition of $H$,
+and adds one coordinate $CF$ with the equation $CF-cF=0$. Its new
+quadratic $H$ equation is
+\[
+              H-c-2rF_2-F_2+cF_2-(CF)j=0,
+              \qquad F_2=F^2.
+\]
+Thus the source row count is unchanged, and its additional coordinate
+offsets one of the deleted private coordinates. The full counts become
+$1043-61+1=983$ variables and $907-52=855$ rows in the general
+interface, and $1223-76+1=1148$ variables and $1063-65=998$ rows in
+the specified interface. The exact coefficient checker independently
+verifies every private support, every deleted global-sum term, every
+unchanged row, the new source equations, coefficient domains, guards,
+degree, counts, and complete coordinate support.

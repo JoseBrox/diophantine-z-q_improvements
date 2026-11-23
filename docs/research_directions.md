@@ -14,9 +14,9 @@ The [additional research routes](research_routes_20261120.md) prove a complex-mu
 
 ## Undecidability in bounded numbers of rational unknowns
 
-The [v94 continuation](results_20261123_v94.md) gives corrected quartic
-transfers in **1043 / 1223 / 781** rational unknowns, with
-**907 / 1063 / 684** quadratic residuals. The instance is a coefficient
+The [v95 continuation](results_20261123_v95.md) gives corrected quartic
+transfers in **983 / 1148 / 734** rational unknowns, with
+**855 / 998 / 643** quadratic residuals. The instance is a coefficient
 parameter. The third route assumes ordinary rational abc; all routes retain
 their integer predicate's stated arithmetic premises.
 
@@ -38,6 +38,10 @@ These two changes save 29 in each route and another 22 in the abc route.
 A shared affine contact progression saves another 26 variables in each
 general route. The corrected signed binomial block forces positivity of
 w and s once s is nonzero, saving five more variables in all three routes.
+The one-quotient Pell theorem combines two third-norm congruences in a
+single integer quotient, removing one entire integrality block. The
+complete systems now retain eleven certificates and save a further
+60 / 75 / 47 variables.
 Every remaining residual and denominator guard is retained explicitly.
 
 For unrestricted degree, **82 / 100 / 52** remains the smallest recorded

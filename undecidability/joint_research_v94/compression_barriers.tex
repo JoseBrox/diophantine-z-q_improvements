@@ -1,0 +1,247 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs,hyperref,xurl}
+\setlength{\emergencystretch}{2em}
+\hypersetup{hidelinks}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\title{Three exact boundaries for further witness compression}
+\author{\(\Z\Q\) Diophantine Project}
+\date{23 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+We isolate three precise limitations of natural compression attempts.
+The existing 139-coordinate circuit for the fixed power $b^{5^{60}}$
+is optimal in a triangular quadratic binomial model even when negative
+and fractional Laurent exponents are allowed. A single quadratic
+integer-valued test cannot recognize an unrestricted rational integer
+tuple of length at least two. Finally, an explicit Pell family shows
+that summing the private ordinary-$abc$ height expressions into one
+common expression destroys the height contraction needed by the old
+soundness argument. These are proved boundaries for specified methods,
+not lower bounds for arbitrary Diophantine witnesses. No variable-count
+improvement or new undecidability assertion is claimed by this note.
+\end{abstract}
+
+\section{A Laurent-exponent lower bound for the fixed-power circuit}
+
+The initial available values are $1,b,b^2$, with $b>0$ allowed to vary
+in an open interval. A \emph{triangular quadratic binomial step} adjoins
+one nonzero coordinate $v$ and one relation between two monomials of
+total degree at most two in $v$ and the preceding coordinates. Both
+monomial coefficients are nonzero constants independent of $b$.
+Every coordinate is required to have the form $c b^e$, with $c\ne0$
+constant and $e\in\Q$. A relation from which the new coordinate
+cancels entirely is not a determining step. Negative exponents,
+fractional exponents, repeated old factors, and constant monomials are
+all permitted. The model includes the ceiling-binary power circuit
+of~\cite{ceiling}, but not arbitrary auxiliary rational functions or
+simultaneously implicit blocks.
+
+\begin{theorem}\label{width}
+If the old exponent interval is $[m,M]$, with $m\le0\le M$, one
+quadratic binomial step enlarges its width by at most a factor two.
+Starting from $\{0,1,2\}$, after $L$ new coordinates the interval
+width is therefore at most $2^{L+1}$.
+\end{theorem}
+\begin{proof}
+All values are nonzero, so common monomial factors may be cancelled.
+After cancellation the new coordinate occurs on just one side. Its
+remaining multiplicity is either one or two. An identity between
+$c_1b^{e_1}$ and $c_2b^{e_2}$ on an open interval forces
+$e_1=e_2$. Fixed nonzero coefficients do not change this conclusion.
+
+If the multiplicity is two, the other side contains at most two old
+factors. Missing factors have exponent zero. The new exponent is
+$(e_i+e_j)/2$, which belongs to $[m,M]$.
+
+If the multiplicity is one, its side contains at most one old factor,
+and the other side at most two. Again use zero exponents for missing
+factors. The new exponent is
+\[
+                        e=e_i+e_j-e_k.
+\]
+Thus $2m-M\le e\le2M-m$. If $e\in[m,M]$, the interval is
+unchanged. If $e>M$, its new width is
+$e-m\le2(M-m)$; if $e<m$, its new width is
+$M-e\le2(M-m)$. These cases prove the assertion. They include
+repeated factors and all signs of the old exponents. A cancelled
+relation with no new coordinate either supplies an old consistency
+condition or is inconsistent; it cannot define a new exponent.
+
+The initial width is two. Iterating the bound gives $2^{L+1}$.
+A zero coefficient, a zero coordinate, or a coefficient depending on
+$b$ would fall outside the stated model; none is silently used here.
+\end{proof}
+
+\begin{corollary}\label{optimal}
+In this model, computing $b^{5^{60}}$ with $b^2$ initially available
+requires at least 139 new coordinates. The existing circuit attains
+this bound, so 139 is optimal in this model.
+\end{corollary}
+\begin{proof}
+The exact inequalities are
+\[
+ 2^{139}<5^{60}=867361737988403547205962240695953369140625<2^{140}.
+\]
+The exponent zero remains available, so an interval containing the
+positive target exponent has width at least $5^{60}$. With $L\le138$,
+Theorem~\ref{width} gives width at most $2^{139}$, a contradiction.
+
+For the upper bound, adjoin $b^3$ and $b^5$ by
+$b^3=b\,b^2$ and $b^5=b^3b^2$. Put
+\[
+ e_j=\left\lceil\frac{5^{60}}{2^{137-j}}\right\rceil
+ \quad(0\le j\le137).
+\]
+Then $e_0=5$, $e_{137}=5^{60}$, and
+$e_j=2e_{j-1}-\varepsilon_j$ with
+$\varepsilon_j\in\{0,1\}$. Introduce the 137 subsequent powers by
+\[
+ v_j=v_{j-1}^2\quad(\varepsilon_j=0),\qquad
+ b v_j=v_{j-1}^2\quad(\varepsilon_j=1).
+\]
+There are $2+137=139$ new coordinates. The guard $b\ne0$ gives a
+unique rational lift in either case. The earlier complete system
+supplies that guard as proved in~\cite{ceiling}.
+\end{proof}
+
+Both $b^3$ and $b^5$ are counted here; only $1,b,b^2$ are free
+initial data. If additional powers are supplied without charging their
+construction, the lower-bound input must be changed accordingly.
+This corollary does not exclude a more economical construction using
+nonmonomial intermediate values, a nontriangular system, the remaining
+source equations, or a different universal source.
+
+\section{One quadratic integer test cannot replace a whole tuple}
+
+\begin{theorem}\label{quad}
+Let $r\ge2$, and let $f\in\Q[X_1,\ldots,X_r]$ have total degree
+at most two. Suppose $f(\Z^r)\subseteq\Z$. Then there is
+$x\in\Q^r\setminus\Z^r$ with $f(x)\in\Z$.
+Thus $f(x)\in\Z$ cannot, by itself, characterize $x\in\Z^r$.
+\end{theorem}
+\begin{proof}
+If $f$ is constant, the assertion is immediate. If its degree is one,
+choose $a\in\Z^r$ and a nonzero rational vector in the kernel of its
+linear part. The resulting rational line through $a$ has constant
+value $f(a)\in\Z$ and contains nonintegral rational points.
+
+Suppose $f$ has degree two. Choose $a\in\Z^r$ with
+$\nabla f(a)\ne0$. Such a point exists because a nonzero rational
+polynomial cannot vanish on the whole integer grid. Translation gives
+\[
+                   f(a+x)-f(a)=L(x)+Q(x),
+\]
+where $L$ is a nonzero rational linear form and $Q$ a nonzero
+rational homogeneous quadratic form. For every rational direction $v$
+with $L(v)Q(v)\ne0$, the point
+\[
+                   x(v)=-\frac{L(v)}{Q(v)}v
+\]
+satisfies $L(x(v))+Q(x(v))=0$.
+
+Choose a rational direction $v_0$ for which this denominator and
+numerator are nonzero. On a sufficiently small closed real neighborhood
+of $v_0$ both remain bounded away from zero, and $x(v)$ is bounded.
+There are infinitely many distinct rational projective directions in
+this neighborhood because $r\ge2$. Their images $x(v)$ are nonzero
+and have those same distinct directions, so they are distinct.
+Thus the level set $f=f(a)$ contains infinitely many bounded rational
+points $a+x(v)$. Only finitely many of these can be integer points.
+A nonintegral one has $f$-value $f(a)\in\Z$, as required.
+\end{proof}
+
+For the usual sum of squares, the familiar exact example is
+$(3/5)^2+(4/5)^2=1$. The theorem covers every rational quadratic
+polynomial that is integer-valued on the integer grid, including affine
+and degenerate forms. It concerns an unrestricted tuple and one test.
+It says nothing about higher-degree tests, several tests, quantified
+auxiliary coordinates, or the special subvariety cut out by the outer
+universal system.
+
+\section{A shared height sum loses the scalar contraction}
+
+The ordinary-$abc$ integer predicate uses the private expression
+\[
+                    M_i=B+2(X_i^8+T_i^2).
+\]
+Its soundness proof applies a two-term mixed-power height inequality;
+see~\cite{abc56,signed}. A tempting coordinate saving would replace all
+private expressions by
+\begin{equation}\label{commonM}
+                    M=B+2\sum_{i=1}^k(X_i^8+T_i^2).
+\end{equation}
+The following elementary obstruction is independent of $abc$.
+As usual, $h(A/D)=\log\max(|A|,D)$ for a reduced rational number
+with positive denominator.
+
+\begin{proposition}\label{height}
+Fix $k\ge3$ and $B\in\Q$. There are rational tuples with every
+$X_i>0$, with $M=B+2k$ in~\eqref{commonM}, and with
+$h(X_1)$ arbitrarily large. In particular no inequality
+\[
+                  \max_i h(X_i)\le C h(M)+C'
+\]
+with fixed finite constants $C,C'$ holds for all such rational tuples.
+\end{proposition}
+\begin{proof}
+Start with $(n_0,t_0)=(1,0)$ and recursively set
+\[
+ (n_{j+1},t_{j+1})=(3n_j+4t_j,\;2n_j+3t_j).
+\]
+Direct expansion preserves $n_j^2-2t_j^2=1$. For $j\ge1$ both
+coordinates are positive, and $n_j\ge3^j$, so $n_j$ is unbounded.
+Write $n=n_j$, $t=t_j$ and set
+\[
+ X_1=1/n,\qquad X_2=\cdots=X_k=1,
+\]
+\[
+ T_1=\frac{n^4-1}{n^4},\quad
+ T_2=\frac{2nt}{n^4},\quad
+ T_3=\frac{2t}{n^4},\qquad T_i=0\quad(i>3).
+\]
+The norm identity gives the exact sum of three squares
+\[
+ (n^4-1)^2+(2nt)^2+(2t)^2
+ =n^8-2n^4+1+2(n^2-1)(n^2+1)=n^8-1.
+\]
+Consequently $\sum_iT_i^2=1-n^{-8}$ and
+$\sum_iX_i^8=k-1+n^{-8}$. Their sum is exactly $k$, whereas
+$h(X_1)=\log n\longrightarrow\infty$.
+\end{proof}
+
+The first three $T_i$ in this family are strictly positive. The
+counterexample invalidates an unrestricted scalar height bound for
+\eqref{commonM}. It does \emph{not} assert that these $T_i$ occur as
+elliptic traces of valid point charts, or that the whole modified
+Diophantine system has a nonintegral solution. A sharing theorem
+exploiting those extra elliptic or source constraints could still exist;
+it would require a new proof rather than the former two-term bound.
+
+\section{Exact reproducibility and status}
+
+The adjacent \texttt{verify\_compression\_barriers.py} independently
+reconstructs the 139-step exponent sequence, checks the strict integer
+inequalities in Corollary~\ref{optimal}, exercises the interval lemma
+on signed rational edge cases, checks the quadratic level-set identity
+symbolically, and verifies the first twelve Pell height counterexamples
+by exact rational arithmetic. Its deterministic JSON output is recorded
+in \texttt{certificate.json}. Finite examples do not replace the
+universal proofs above. No complete coefficient table or result census
+is modified, and no arithmetic premise is added.
+
+\begin{thebibliography}{9}
+\bibitem{ceiling} \(\Z\Q\) Diophantine Project,
+\emph{A quadratic ceiling-binary circuit for a fixed power},
+\nolinkurl{undecidability/papers/ceiling_power_quartic_checkpoint.tex}.
+\bibitem{abc56} \(\Z\Q\) Diophantine Project,
+\emph{Paired contact coordinates: an ordinary-abc quartic in 56 variables},
+\nolinkurl{papers/quartic_existence/paired_contact56_20261119_v81.tex}.
+\bibitem{signed} \(\Z\Q\) Diophantine Project,
+\emph{Signed mixed-power heights and single-cover criteria},
+\nolinkurl{papers/elliptic_heights/signed_mixed_power_height_20261117_v58.tex}.
+\end{thebibliography}
+\end{document}
