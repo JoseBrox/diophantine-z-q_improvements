@@ -23,7 +23,7 @@ PAPERS={
     'papers/elliptic_divisibility/prepared_eds_divisibility_20261120_v82.tex',
     'papers/pole_parameters/genus_one_sound_criterion_20261120_v82.tex',
 }
-CONTRIBUTORS_HASH='bec5e749954eb50b1206e43bc7b27462419ac135762f820a201e528b222b3285'
+CONTRIBUTORS_HASH='7c4e19ff00bd3f87f97db5ba836cea716e72fa8b583756c1a4fd7c5b5a075214'
 GENUS_PAPER='papers/pole_parameters/genus_one_sound_criterion_20261120_v82.tex'
 
 
@@ -138,7 +138,7 @@ def main():
     contributors=re.search(r'(?ms)^## Contributors and citation\n.*?(?=^## |\Z)',readme)
     assert contributors and hashlib.sha256(contributors.group().encode()).hexdigest()==CONTRIBUTORS_HASH
     assert 'notes of Gabe Conant with Astra 6.2' in readme
-    assert '[results JSON](data/results_20261120_v82.json)' in readme
+    assert '[v82 records](data/results_20261120_v82.json)' in readme
     rows=[line for line in readme.splitlines() if '| Ordinary rational abc |' in line]
     assert len(rows)==2
     assert any('| **11** |' in row and '4, exact' not in row for row in rows)

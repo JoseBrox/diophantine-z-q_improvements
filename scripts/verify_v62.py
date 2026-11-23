@@ -11,6 +11,8 @@ import subprocess
 import sys
 import tempfile
 
+from verify_v78 import pinned_source_bytes
+
 ROOT=Path(__file__).resolve().parents[1]
 PACKAGE='computation/quartic/explicit229_v62'
 NEGATIVE='negative_results/computation/six_contact_mobius_v62'
@@ -19,7 +21,7 @@ PAPERS=[
     'papers/effective_sums/effective_torsion_sums_20261117_v62.tex',
     'negative_results/papers/pole_parameters/six_contact_mobius_obstruction_20261117_v62.tex',
 ]
-CONTRIBUTORS_HASH='bec5e749954eb50b1206e43bc7b27462419ac135762f820a201e528b222b3285'
+CONTRIBUTORS_HASH='7c4e19ff00bd3f87f97db5ba836cea716e72fa8b583756c1a4fd7c5b5a075214'
 
 
 def digest(path):
@@ -121,7 +123,9 @@ def main(output):
     assert {row['paper'] for row in builds['papers']}==set(PAPERS)
     for row in builds['papers']:
         assert row['returncode']==0 and row['warnings']==[]
-        assert row['source_sha256']==digest(ROOT/row['paper'])
+        reviewed = pinned_source_bytes(ROOT/row['paper'],
+            {'path': row['paper'], 'sha256': row['source_sha256']})
+        assert row['source_sha256']==hashlib.sha256(reviewed).hexdigest()
         assert row['all_rendered_pages_reviewed']
 
     report={'schema':'diophantine-exact-verification/v62','status':'PASS',

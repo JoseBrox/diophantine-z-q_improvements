@@ -15,7 +15,7 @@ PAPER='negative_results/papers/pole_parameters/input_only_weight_false_witnesses
 PACKAGE='negative_results/computation/input_only_weight_v61'
 LEVEL_PAPER='papers/pole_parameters/varying_level_pole_fibers_20261117_v61.tex'
 LEVEL_PACKAGE='computation/pole_parameters/varying_levels_v61'
-CONTRIBUTORS_HASH='bec5e749954eb50b1206e43bc7b27462419ac135762f820a201e528b222b3285'
+CONTRIBUTORS_HASH='7c4e19ff00bd3f87f97db5ba836cea716e72fa8b583756c1a4fd7c5b5a075214'
 
 
 def digest(path):

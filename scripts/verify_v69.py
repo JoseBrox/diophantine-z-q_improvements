@@ -17,7 +17,7 @@ POWER_PACKAGE = 'computation/number_fields/power_shifts_v69'
 TRACE_PACKAGE = 'negative_results/computation/actual_trace_curves_v69'
 SEARCH = 'computation/quartic/search194_v69'
 SUN = 'docs/audits/sun_v2_20261117_v69'
-CONTRIBUTORS_HASH = 'bec5e749954eb50b1206e43bc7b27462419ac135762f820a201e528b222b3285'
+CONTRIBUTORS_HASH = '7c4e19ff00bd3f87f97db5ba836cea716e72fa8b583756c1a4fd7c5b5a075214'
 
 
 def digest(path):

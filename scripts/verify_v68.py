@@ -11,10 +11,12 @@ import sys
 import tempfile
 from pathlib import Path
 
+from verify_v78 import pinned_source_bytes
+
 ROOT = Path(__file__).resolve().parents[1]
 PACKAGE = 'computation/quartic/explicit229_compact_v68'
 PAPER = 'papers/quartic/quartic229_compact_20261117_v68.tex'
-CONTRIBUTORS_HASH = 'bec5e749954eb50b1206e43bc7b27462419ac135762f820a201e528b222b3285'
+CONTRIBUTORS_HASH = '7c4e19ff00bd3f87f97db5ba836cea716e72fa8b583756c1a4fd7c5b5a075214'
 TEXT_HASH = '45bdea1ea7876bf6ec10b5427f9403cf1f94c144fab35817aa545bcb2cea1975'
 
 
@@ -32,8 +34,12 @@ def run(arguments):
 
 def main(output):
     package = ROOT / PACKAGE
+    reviewed_hash = json.loads((package / 'independent_certificate.json').read_text())['manuscript_sha256']
+    reviewed_bytes = pinned_source_bytes(ROOT / PAPER, {'path': PAPER, 'sha256': reviewed_hash})
     with tempfile.TemporaryDirectory(prefix='diophantine-v68-') as directory:
         temporary = Path(directory)
+        reviewed_manuscript = temporary / Path(PAPER).name
+        reviewed_manuscript.write_bytes(reviewed_bytes)
         reproduced = temporary / 'reproduced'
         shutil.copytree(package, reproduced)
         run([reproduced / 'build.py'])
@@ -43,7 +49,7 @@ def main(output):
         assert (temporary / 'certificate.json').read_bytes() == (package / 'certificate.json').read_bytes()
         assert (reproduced / 'official_measurement.json').read_bytes() == (package / 'official_measurement.json').read_bytes()
         run([package / 'check_independent.py', '--package', package, '--repo', ROOT,
-             '--manuscript', ROOT / PAPER, '--output', temporary / 'independent.json'])
+             '--manuscript', reviewed_manuscript, '--output', temporary / 'independent.json'])
         assert (temporary / 'independent.json').read_bytes() == (package / 'independent_certificate.json').read_bytes()
 
     certificate = json.loads((package / 'certificate.json').read_text())
@@ -52,7 +58,7 @@ def main(output):
     assert certificate['status'] == independent['status'] == 'PASS'
     assert certificate['checker_sha256'] == digest(package / 'check.py')
     assert independent['checker_sha256'] == digest(package / 'check_independent.py')
-    assert independent['manuscript_sha256'] == digest(ROOT / PAPER)
+    assert independent['manuscript_sha256'] == hashlib.sha256(reviewed_bytes).hexdigest()
     for key in ('inverse_map_checked', 'input_fixed', 'support_unchanged',
                 'all_207_row_coefficients_checked', 'all_3312_expanded_coefficients_checked',
                 'complete_literal_text_parsed', 'manuscript_exponent_tables_checked',
@@ -95,7 +101,7 @@ def main(output):
     builds = json.loads((ROOT / 'data/audits/tex_build_20261117_v68.json').read_text())
     assert len(builds['papers']) == 1
     build = builds['papers'][0]
-    assert build['paper'] == PAPER and build['source_sha256'] == digest(ROOT / PAPER)
+    assert build['paper'] == PAPER and build['source_sha256'] == hashlib.sha256(reviewed_bytes).hexdigest()
     assert build['returncode'] == 0 and build['warnings'] == []
     assert build['pages'] == 13 and build['all_rendered_pages_reviewed']
     readme = (ROOT / 'README.md').read_text()

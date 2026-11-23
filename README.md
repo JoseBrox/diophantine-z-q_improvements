@@ -33,7 +33,7 @@ The last column gives **decimal kB (1 kB = 1,000 bytes)** for single-line ASCII,
 
 The unrestricted-degree bounds describe complete finite determinant specifications; those enormous polynomials have not been fully expanded. All displayed quartics are exactly expanded. Every construction has integer content one, with primitive normalization where needed. Small coefficient fixtures and coefficient-height cutoffs are not sufficient defining parameters.
 
-The [v88 results JSON](data/results_20261123_v88.json) records all five new finite-algebra specifications and parameter qualifications; the [v82 records](data/results_20261120_v82.json) preserve the unchanged quartic specifications. The new fixture TXT upper bounds use the same exact character-count argument as v84, replayed in the v88 gate. Weaker fixed-exponent versions of abc and alternative coefficient presentations are retained in the [detailed proof guide](docs/results_20261119_v78.md#weaker-hypotheses-and-generalizations).
+The [results JSON](data/results_20261123_v88.json) records all five new finite-algebra specifications and parameter qualifications; the [v82 records](data/results_20261120_v82.json) preserve the unchanged quartic specifications. The new fixture TXT upper bounds use the same exact character-count argument as v84, replayed in the v88 gate. Weaker fixed-exponent versions of abc and alternative coefficient presentations are retained in the [detailed proof guide](docs/results_20261119_v78.md#weaker-hypotheses-and-generalizations).
 
 ## Coefficients and explicit files
 
