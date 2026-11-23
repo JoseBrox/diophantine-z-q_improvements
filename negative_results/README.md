@@ -1,3 +1,7 @@
+## Two-unit shared-square obstruction (v88)
+
+The [new theorem](R_square_reweighting_v88/R_square_obstruction_20261123_v88.tex) excludes deleting the shared R² register from the current 163/179 physical systems by arbitrary diagonal Laurent reweightings in both existing units, even with real weights and independently reweighted rows. Six rows give a short convex proof; [exact integer certificates and checker](R_square_reweighting_v88/check_two_unit_certificate.py) give contradictions 0≤−9 and 0≤−6. This is a limitation of the specified retained equations and registers, not a global lower bound for quartic definitions.
+
 # Obstructions and lower bounds
 
 This directory contains proved negative results, separated from the constructive results in [papers](../papers). Each obstruction concerns the precise equations, arithmetic family, or geometric presentation stated in its manuscript. Failure of a replacement on all prepared inputs does not exclude a construction whose actual witnesses lie in a smaller, separately proved locus.

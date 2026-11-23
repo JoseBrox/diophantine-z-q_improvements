@@ -24,6 +24,27 @@ def read(path):
 def digest(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
+def pinned_source_bytes(path, row):
+    """Recover two frozen source texts after the authorized spelling correction.
+
+    Both the current bytes and the reconstructed historical bytes are pinned.
+    This preserves the original archive hashes without reverting public names.
+    No mathematical text, source binding, or expected hash is relaxed.
+    """
+    raw = path.read_bytes()
+    current = hashlib.sha256(raw).hexdigest()
+    if current == row['sha256']:
+        return raw
+    repairs = read(ROOT / 'data/audits/source_name_compatibility_20261123.json')
+    repair = repairs['files'][row['path']]
+    assert current == repair['current_sha256'], row['path']
+    assert row['sha256'] == repair['historical_sha256'], row['path']
+    before, after = repair['current_text'].encode(), repair['historical_text'].encode()
+    assert raw.count(before) == 1, row['path']
+    restored = raw.replace(before, after)
+    assert hashlib.sha256(restored).hexdigest() == row['sha256'], row['path']
+    return restored
+
 def authenticate_reviewed_source(path, expected):
     """Keep the original review pins after the named-attribution correction.
 
@@ -56,12 +77,12 @@ def materialize(destination):
     for archive, rows in bindings['source_files'].items():
         for row in rows:
             source = PACKAGE / row['package_override'] if 'package_override' in row else ROOT / row['path']
-            assert digest(source) == row['sha256'], row['path']
+            raw = pinned_source_bytes(source, row)
             union.setdefault(row['path'], row['sha256'])
             assert union[row['path']] == row['sha256']
             for path in (target/archive/'source'/row['path'], destination/'diophantine'/row['path']):
                 path.parent.mkdir(parents=True, exist_ok=True)
-                shutil.copy2(source, path)
+                path.write_bytes(raw)
     for local, paper in read(PACKAGE/'paper_paths.json').items():
         path = target/local
         path.parent.mkdir(parents=True, exist_ok=True)

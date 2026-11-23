@@ -1,5 +1,54 @@
 # Attribution and source material
 
+## Bhargava–Burungale v2 and the v88 continuation
+
+The primary source is **Manjul Bhargava and Ashay Burungale, A Diophantine
+definition of Z in Q, arXiv:2611.16130v2 (19 November 2026)**,
+[versioned primary text](https://arxiv.org/html/2611.16130v2).
+Section 2 supplies the prescribed-class simultaneous twists and product
+square-denominator criterion. Sections 3–6 supply the specific height bound,
+rank-one carrier, Gaussian local model, prime-progressions and interval
+definition. The earlier v56/v80 integration of Burungale's v1 theorem
+and its dense-witness consequence remains prior project work.
+
+The new finite-support theorem permits overlapping complement supports.
+Its rank-one input is checked directly against **Ye Tian, Xinyi Yuan and
+Shou-Wu Zhang, Genus periods, genus points and congruent number problem**,
+[author PDF](https://web.math.princeton.edu/~shouwu/publications/cn.pdf),
+especially the proof of Theorem 3.5(2), printed page 760. Rédei conventions
+are checked against the primary source cited in the twist manuscript.
+The aggregate-trace method is the project's earlier von Buhren application;
+v88 transfers it to the different BB carrier and shortens the tests.
+
+The Section 3 and prime-progression audits use these primary sources:
+
+- **Rafael von Känel and Arno Kret**, Integral points on coarse Hilbert
+  moduli schemes, arXiv:2307.06944, Theorem 7.1 and its exponent refinement:
+  [primary text](https://ar5iv.labs.arxiv.org/html/2307.06944).
+- **Noam D. Elkies**, Shimura curve computations, arXiv:math/0005160:
+  [primary PDF](https://arxiv.org/pdf/math/0005160).
+- **Kevin Buzzard**, Integral models of certain Shimura curves:
+  [author PDF](https://www.ma.imperial.ac.uk/~buzzard/maths/research/papers/shimura.pdf).
+- **Fabien Pazuki**, Theta height and Faltings height:
+  [published PDF](https://www.numdam.org/item/10.24033/bsmf.2623.pdf).
+- **Ben Green and Terence Tao**, The primes contain arbitrarily long
+  arithmetic progressions, Annals of Mathematics 167 (2008), Theorem 1.2:
+  [published PDF](https://annals.math.princeton.edu/wp-content/uploads/annals-v167-n2-p03.pdf).
+- **Jérôme von Buhren**, the 2017 family height theorem already cited below,
+  [Theorem 1.1](https://www.numdam.org/article/JTNB_2017__29_1_307_0.pdf).
+- **Leo Goldmakher and Paul Pollack**, A refinement of Lagrange's four-square
+  theorem, American Mathematical Monthly 125 (2018), 258–263; its statement
+  of the Legendre–Gauss theorem is used for the interval refinement:
+  [author PDF](https://www.pollack-math.net/4squares-arxiv.pdf).
+
+The new finite-algebra producers adapt the v78 sources originating in
+**Gabe Conant's notes with Astra 6.2**, retaining their source bindings.
+The normalized product transfers, scalar normalization, degree refinements,
+direct quadratic relation, three-square wrapper, overlapping-support theorem
+and two-unit reweighting obstruction are subsequent project deductions.
+Each proof distinguishes external inputs and finite checks. External
+papers are linked, not redistributed; their original rights are retained.
+
 ## Rationality descent and rank stability (v81)
 
 The number-field descent architecture is due to **Hector Pasten and

@@ -1,0 +1,537 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools,booktabs,microtype}
+\usepackage[margin=26mm]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\usepackage{xurl}
+\setlength{\emergencystretch}{3em}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}\newtheorem{remark}[theorem]{Remark}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}\newcommand{\F}{\mathbb F}
+\DeclareMathOperator{\sqf}{sqf}\DeclareMathOperator{\Cl}{Cl}
+\DeclareMathOperator{\Sel}{Sel}\newcommand{\Sha}{\mathop{\amalg}}
+\title{Finite-support simultaneous twists and degree-seven pole equations}
+\author{ZQ Diophantine Project}
+\date{23 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+We audit the square-denominator and prescribed-squareclass arguments in
+Bhargava--Burungale, arXiv:2611.16130v2, Section~2. Their subdivided-star
+construction extends to every admissible divisor of one fixed finite
+prime support, with no pairwise-coprimality requirement on the divisors.
+One twist parameter works for the entire family, and its extra prime
+factors may avoid any fixed finite set. We deduce a common-parameter
+result for native pole blocks with the same input squareclass. A
+rank-one Kummer obstruction explains why this theorem cannot join two
+different squareclasses congruent to seven modulo eight. Separately,
+a birational rearrangement lowers the square-denominator equation from
+total degree nine to seven, without lowering its three-witness count.
+The existing complete defining-variable bounds are not improved by
+these subsystem results alone.
+\end{abstract}
+
+\section{Audit of the arithmetic input}
+For $D\ne0$ put $E_D:y^2=x^3-D^2x$. Throughout this note,
+$[a/p]\in\F_2$ denotes the additive Legendre symbol at an odd prime
+$p\nmid a$: it is zero for a quadratic residue and one otherwise.
+All squarefree representatives of positive rational numbers are positive.
+
+Bhargava--Burungale's Lemma~2.2 gives the implication
+\begin{equation}\label{eq:BB}
+ (1-c)(s^4-c^2)(t^4-c^2)=z^2
+ \quad\Longrightarrow\quad c\text{ has square reduced denominator}
+ \qquad(c\in\Q^\times).
+\end{equation}
+Its valuation argument is valid at every prime, including two, and
+permits zero witnesses: if $v_p(c)<0$ is odd, the valuations of
+$s^4$ and $c^2$ differ, so both quartic factors have finite even
+valuation, while $1-c$ has odd valuation. The product is consequently
+nonzero of odd valuation.
+
+For the converse the exact preparation is
+\begin{equation}\label{eq:prep}
+ 0<c<1,\qquad c\text{ has square reduced denominator},\qquad
+ v_2(c)\ge3,\qquad\sqf(c)\equiv7\pmod8.
+\end{equation}
+The last condition implies that $v_2(c)$ is even, so the displayed
+lower bound is equivalent to $v_2(c)\ge4$ here. With
+$j=\sqf(c)$ and $k=\sqf(1-c)$, the square-denominator condition
+is what proves $\gcd(j,k)=1$ and the mutual local-square conditions.
+It must not be omitted. Also $k\equiv1\pmod8$.
+The case $k=1$ is harmless, either by the source's explicit solution
+or by its twist construction with an empty second leaf set.
+
+The source's descent equations are
+\begin{equation}\label{eq:descent}
+ Aa=D_yb,\qquad Ab=D_yb+D_za,
+\end{equation}
+where $A_{pq}=[q/p]$ off the diagonal, $A\mathbf1=0$,
+$y_p=[-1/p]$, and $z_p=[2/p]$. The normalization by the two
+rational two-torsion points separately fixes the sign of the first
+Kummer coordinate and the parity at two of the second. At a prime
+$p\mid D$, the translated first coordinate has nonpositive valuation,
+so $1\pm D/X$ are local squares. This gives exactly
+\eqref{eq:descent}; it also handles a local two-torsion representative
+by its limiting Kummer value. No surjectivity from these linear
+conditions to rational points is used: positive rank is established
+separately.
+
+The source's genus criterion is supplied by the older
+Tian--Yuan--Zhang theorem. For squarefree $D\equiv5\pmod8$, define
+$\gamma(h)=\#(2\Cl(\Q(\sqrt{-h})))\bmod2$. Then
+\begin{equation}\label{eq:genus}
+ \sum_{\substack{D=d_0\cdots d_r\\
+ d_0\equiv7\ (8),\ d_1\equiv3\ (8)\\
+ d_i\equiv1\ (8)\ (i\ge2)}}\prod_i\gamma(d_i)=1
+ \quad\Longrightarrow\quad
+ \operatorname{ord}_{s=1}L(E_D,s)=1.
+\end{equation}
+Here $r\ge1$, all factors exceed one, and the factors after $d_1$
+are unordered. The decisive precise reference is the \emph{proof}
+of \cite[Theorem~3.5(2), p.~760]{TYZ}: its second bracketed sum has
+$d_0\equiv7$, and the total residue forces $d_1\equiv3$.
+Oddness puts the genus point outside $A(K_D)^-+A[4]$.
+Lemma~3.18 of that paper shows that a torsion genus point would
+belong to $A[4]$, hence the point is non-torsion. The opening
+assertion of Theorem~3.5 identifies its rational tensor class with
+the vector defined on p.~739, which is zero if the analytic invariant
+$\mathcal L(D)$ is zero. By the definition on p.~722 and the root
+number $-1$, the analytic rank is exactly one. Thus no conjectural
+converse to Gross--Zagier is being substituted at this step.
+The source also cites \cite[Theorem~2.1, Table~2, row~5(b)]{Smith};
+the argument here was checked directly against the published
+Tian--Yuan--Zhang paper and does not require an independent reading
+of Smith's table.
+
+
+The R\'edei minor formulas also agree with the primary matrix convention
+in \cite[Theorem~3.1 and (16)]{Stevenhagen}. For $h\equiv3,7\pmod8$,
+quadratic reciprocity identifies that matrix with $A_h$, whose left and
+right kernels both contain $\mathbf1$. For $h\equiv1\pmod8$, ordering
+the ramified prime two first gives the full matrix
+$\bigl(\begin{smallmatrix}0&y^t\\z&A_h\end{smallmatrix}\bigr)$.
+Deleting its first row and an odd-prime column gives
+$(z\mid A_h^{(v)})$. Its determinant detects maximal possible rank,
+since the deleted row is the sum of the others and the original kernel
+contains $(0,\mathbf1)$. Thus the displayed minor test is precisely
+vanishing of the four-rank, equivalently oddness of $\#(2\Cl)$.
+
+Finally, a one-dimensional normalized descent space together with
+analytic rank one yields algebraic rank one and finite $\Sha$ by
+Gross--Zagier--Kolyvagin. The exact Selmer sequence then gives
+$\Sha[2]=0$, so the finite order of $\Sha$ is odd. This does not
+assert the full BSD leading-coefficient formula. No defect was
+found in these Section~2 deductions. This audit does not reprove
+the external genus-point or Gross--Zagier--Kolyvagin theorems.
+
+\section{One twist for every admissible divisor of a finite support}
+
+\begin{theorem}[Finite-support simultaneous twists]\label{thm:finite}
+Let $j$ be positive squarefree with $j\equiv7\pmod8$, let $J$
+be its prime support, and let $K$ be a finite set of odd primes
+outside $J$. Assume $[j/q]=0$ for every $q\in K$. Set
+\[
+ \mathcal K=\left\{k:\ k\mid\prod_{q\in K}q,\quad
+ k\equiv1\pmod8,\quad[k/p]=0\text{ for every }p\in J\right\}.
+\]
+There are infinitely many positive squarefree $n\equiv5\pmod8$,
+with $j\mid n$ and $\gcd(n,\prod_{q\in K}q)=1$, such that for
+every $k\in\mathcal K$:
+\begin{enumerate}
+\item $E_{nk}$ has analytic and algebraic rank one;
+\item its Tate--Shafarevich group is finite of odd order;
+\item it has a rational point with nonzero ordinate and abscissa in
+$j\Q^{\times2}$.
+\end{enumerate}
+The additional prime factors of $n/j$ can avoid any prescribed finite
+set. The construction has exactly $2|J|+|K|$ prime factors in $n$.
+In particular, any finite family of squarefree $k_i\equiv1\pmod8$
+satisfying the original mutual-square conditions with $j$ may be used
+simultaneously, even when the $k_i$ have arbitrary common prime factors.
+\end{theorem}
+
+\begin{proof}
+Choose $p_*\in J$ and draw a star on $J$ with centre $p_*$.
+Draw a second star with centre a new prime $p_0\equiv3\pmod8$
+and leaves $K$. Subdivide each of the $|J|-1+|K|$ edges by a
+new prime $\ell\equiv1\pmod8$. Prescribe a nonsquare symbol
+between $\ell$ and each of its two neighbours, and square symbols
+between $\ell$ and every other original vertex and every other
+subdivision prime. Choose the subdivision primes successively,
+outside the prescribed exceptional set and $J\cup K$.
+The symbol at $p_0$, which has not yet been chosen, is postponed.
+For $p\in J$ prescribe
+\begin{equation}\label{eq:p0}
+ [p_0/p]=\deg_J(p)+y_p\quad\text{in }\F_2,
+\end{equation}
+where the degree is before subdivision. Also prescribe
+$[p_0/\ell]=0$ on the first star and $1$ on the second star.
+Reciprocity is compatible because every subdivision prime is one
+modulo eight. The Chinese remainder theorem and Dirichlet's theorem
+give the desired primes. With all subdivision primes fixed, $p_0$
+ranges over an infinite Dirichlet set. Put
+\[
+ n=j p_0\prod_{\ell}\ell.
+\]
+All factors are distinct; the asserted residue, support, avoidance,
+and prime-factor count follow.
+
+Fix an arbitrary $k\in\mathcal K$. In the descent system for
+$D=nk$, a second-star leaf $q\in K$ occurs exactly when $q\mid k$;
+\emph{every subdivision prime still occurs}. At a subdivision
+vertex having both original neighbours present, its equations force
+the two neighbours' $a$-labels to agree and their $b$-labels to agree.
+At a second-star subdivision vertex whose $K$-neighbour is absent,
+its equations instead force its own labels to equal those of $p_0$.
+Thus the original labels are constant on each of the two stars.
+Write their two common pairs as $(a_1,b_1),(a_2,b_2)$.
+
+The equations at the original noncentral leaves uniquely determine
+the remaining subdivision labels. Summing the original rows in
+either star cancels the subdivision terms. The absent-leaf terms
+also cancel, because their labels equal the centre's. The resulting
+system has
+\[
+ \overline A=\begin{pmatrix}1&1\\0&0\end{pmatrix},\qquad
+ \overline y=(1,1),\qquad\overline z=(0,1).
+\]
+Indeed, $\sum_{p\in J}[p_0/p]=1$, since the sum of the star's
+degrees is even and $\sum_{p\in J}y_p=1$.
+The extra first-to-second symbols sum to $[k/p]=0$ at each
+$p\in J$. In the reverse direction, reciprocity changes the
+$p_0$ sum to zero, while each selected $q$ has $[j/q]=0$.
+The residues of $j$ and $p_0k$ are seven and three modulo eight,
+respectively. This proves the displayed reduced data for every
+admissible subset of $K$.
+
+The reduced system is the line
+\[
+ (a_1,b_1,a_2,b_2)=(\epsilon,\epsilon,0,0),\qquad\epsilon\in\F_2.
+\]
+For its nonzero vector the $a$-labels at all subdivision vertices
+are zero. At a first-star leaf $p$, this follows from
+\eqref{eq:p0} and $[k/p]=0$; at a second-star leaf it follows
+from $[j/q]=0$; at an absent leaf's subdivision vertex it follows
+from the centre label zero. Therefore the nonzero $a$-vector is
+exactly the characteristic vector of $J$. The full descent space
+has dimension one, because all subdivision labels are uniquely
+determined and the centre equations are precisely the summed
+conditions already imposed.
+
+It remains to evaluate \eqref{eq:genus}. The determinant form of
+R\'edei's formula used in \cite[(2.5)]{BB} is
+\[
+ \gamma(h)=
+ \begin{cases}
+ \det A_h^{(v,v)},&h\equiv3,7\pmod8,\\
+ \det\bigl(A_h^{(v)}\mid z_h\bigr),&h\equiv1\pmod8,
+ \end{cases}
+\]
+where $(v,v)$ deletes row and column $v$, $(v)$ deletes only
+column $v$, and an empty determinant is one.
+If a subdivision prime lies in a factor containing neither of its
+neighbours, that factor's determinant is zero (also for a singleton
+subdivision prime). If it lies in a factor with exactly one neighbour,
+expansion after deleting that neighbour's column removes the subdivision
+prime without changing $\gamma$.
+
+Order the subdivided edges with both original endpoints present.
+In any nonzero summand whose original endpoints are separated, take
+the first such edge and move its subdivision prime to the other endpoint's
+factor. The preceding deletion rule preserves the term. This operation
+is an involution without fixed points; it preserves the original-vertex
+partition and all residue classes, and it works with unordered
+residue-one factors. A subdivision vertex with an absent $K$-neighbour
+must stay with $p_0$ in every nonzero term.
+
+Consequently only the factorization into the two complete remaining
+stars survives. Their residues are seven and three. Neither can join
+the other, since the product has residue five, and there is no factor
+made solely of subdivision primes. For either surviving factor,
+delete its centre. Each present leaf and its subdivision vertex then
+form a pair whose row and column expansions contribute one. After
+these pairs are removed, absent leaves of the second star leave an
+identity matrix. Both determinants are therefore one. This proves
+that the genus sum is odd for every $k\in\mathcal K$.
+
+Now \eqref{eq:genus} gives analytic rank one. The rational and Selmer
+Kummer images inject into the one-dimensional normalized descent
+space, whose unique nonzero vector has first class $j$. Positive rank
+ensures that a nonzero rational class exists, so that class is realized.
+The rank and $\Sha$ assertions follow exactly as in Section~1.
+Since the choices were uniform in $k$ and only $p_0$ varies, all
+conclusions are simultaneous.
+\end{proof}
+
+\begin{remark}[Scope relative to earlier project work]
+The earlier project finite-family theorem on the row-5(a) route uses
+an input class congruent to one modulo eight and pairwise-coprime
+auxiliary twists; its change-of-base argument covers some overlaps.
+Theorem~\ref{thm:finite} treats the class-seven route and permits all
+overlaps. It neither changes the earlier theorem's hypotheses nor
+claims that class-one and class-seven inputs are interchangeable.
+\end{remark}
+
+\section{Parameter sharing and its exact limitation}
+The existing native pole radicand is
+\begin{equation}\label{eq:native}
+ P_d(v,s)=d(d+v^2)^2s^4-d(d-v^2)^2(1-d)^2.
+\end{equation}
+The two-coordinate existence and finite-guard density theorem for
+one prepared input was already proved in the project's v56 note.
+It is not new here.
+
+A \emph{retained parameter} means a freely chosen rational coordinate
+before finite-algebra elimination, as in \cite{Common}. A square root
+of a specified rational function is a finite choice, but its rationality
+must still be imposed. Counting retained parameters therefore does not
+by itself count the existential variables in a defining polynomial.
+
+\begin{corollary}[Common input squareclass]\label{cor:sharing}
+Let $d_1,\ldots,d_m$ satisfy \eqref{eq:prep}, and suppose they
+have a common squarefree representative $j$. Let $h$ be the number
+of their distinct nontrivial complement squareclasses.
+Their native pole blocks admit a common construction with $h+1$
+retained rational parameters, together with finite quadratic choices.
+The available tuples of those retained parameters are Zariski dense.
+Extra guards can be imposed whenever their polynomials remain
+nonzero after the sharing substitutions.
+\end{corollary}
+\begin{proof}
+Write $d_i=j r_i^2$ and $1-d_i=k_i h_i^2$, with
+$r_i,h_i\in\Q^\times$. Preparation supplies the hypotheses of
+Theorem~\ref{thm:finite} for every $k_i$. Choose its common $n$.
+Choose a rational non-torsion point
+$R_0=(j a_0^2,y_0)$ on $E_n$, and independently choose
+$R_k=(j a_k^2,y_k)$ on $E_{nk}$ for each distinct nontrivial $k$.
+Their odd multiples keep the same abscissa squareclass and supply
+infinitely many choices. Set
+\[
+ e=\frac{n}{j a_0^2},\quad
+ p=\frac{y_0}{j a_0^3},\quad v=\frac{p}{1+e},\quad
+ S_k=\frac{a_k}{a_0}.
+\]
+Then $0<e<1$, $p^2=j(1-e^2)$, and
+$e=(j-v^2)/(j+v^2)$. For the trivial complement put $S_1=1$.
+Scaling $R_k$ by $(x,y)\mapsto(h_i^2x,h_i^3y)$ gives the
+second point needed for the native pole block at $d_i$.
+The exact substitutions are
+\[
+ v_i=r_i v,\qquad s_i=h_iS_{k_i},
+\]
+and the polynomial identity is
+\begin{equation}\label{eq:sharingidentity}
+ P_{d_i}(v_i,s_i)=r_i^6h_i^4j
+ \bigl((j+v^2)^2S_{k_i}^4-k_i^2(j-v^2)^2\bigr).
+\end{equation}
+For every nontrivial $k$, the curve equation gives
+\[
+ \left(\frac{(j+v^2)y_k}{j a_0^2a_k}\right)^2
+ =j\bigl((j+v^2)^2S_k^4-k^2(j-v^2)^2\bigr).
+\]
+Thus the radicands in \eqref{eq:sharingidentity} are rational squares.
+For $k_i=1$, the rightmost radicand is $4j^2v^2$,
+so no second free parameter is needed. Repeated complement classes
+use the same $S_k$.
+
+Varying $R_0$ supplies infinitely many $v$; for each fixed choice,
+each independent $R_k$ supplies infinitely many $S_k$. Successive
+coefficient comparison proves Zariski density in $\mathbb A^{h+1}$.
+For a uniform coefficient construction one need not use the
+squarefree integers as variable coefficients. Retain $v_*=r_1v$,
+and, for a representative index $a$ of each nontrivial complement
+class, retain $s_a=h_aS_{k_a}$. For an index $i$ in that class,
+adjoin finite rational square roots
+\[
+ \alpha_i^2=d_i/d_1,\qquad
+ \beta_i^2=(1-d_i)/(1-d_a),
+\]
+and set $v_i=\alpha_i v_*$ and $s_i=\beta_i s_a$.
+The finite equation for that class is
+\[
+ Y_a^2=d_1(d_1+v_*^2)^2s_a^4
+       -d_1(d_1-v_*^2)^2(1-d_a)^2,
+\]
+and the original terminal ordinate is
+$Y_i=\alpha_i^3\beta_i^2Y_a$.
+For a trivial complement adjoin $s_i^2=1-d_i$ and take
+$Y_i=2d_iv_i(1-d_i)$.
+All divisions are defined at the prepared rational input.
+There are finitely many index-groupings for fixed $m$.
+These formulas use only existing input functions, retained coordinates
+and finite square choices; $j,k_i,n$ occur only in the existence proof.
+\end{proof}
+
+The finite choices in this corollary are not cost-free rational
+witnesses. A complete construction must impose their rationality,
+check the hypotheses of its finite-algebra encoder, and account for
+any new generators, guards and separating coordinates. In particular,
+$1-d_a$ can vanish at another algebraic character of a larger source
+even when the selected prepared value satisfies $0<d_a<1$.
+One must justify the required localization or handle that stratum;
+density of the retained parameters cannot make this fixed zero
+denominator invertible. Only guards that remain nonzero after the
+sharing substitutions can be avoided. Thus $h+1$ is the retained
+parameter count of this pole subsystem, and is not automatically
+subtractable from a complete route's defining-variable count.
+
+The parameter-sharing pattern was already present for the class-one
+route in \cite{Common}; the new content here is the class-seven
+finite-family input without an overlap restriction.
+
+\begin{remark}[All complements square]
+If $h=0$ and zero terminal ordinates are allowed, each block also has
+$v_i=0$, $s_i=\sqrt{1-d_i}$ and $Y_i=0$. Thus this special locus
+needs no retained free pole coordinate, only finite square choices.
+This specialization has no parameter-density assertion and may violate
+extra guards, especially a guard requiring a nonzero terminal ordinate.
+The $h+1$ construction above remains useful when generic guard avoidance
+is needed.
+\end{remark}
+
+The existing complete routes do not prove that their distinct native
+pole inputs have one common squareclass. In the eleven-variable route
+there is already only one native block. Thus this corollary establishes
+no smaller complete defining-variable count.
+
+The following obstruction was already recorded in the project's v82
+common-level applicability note; its proof is included to make the
+limitation of the new theorem explicit.
+
+\begin{proposition}[Rank-one obstruction to mixing input classes]
+Let $n>0$ be squarefree with $n\equiv5\pmod8$, and assume
+$\operatorname{rank}E_n(\Q)=1$. If $E_n(\Q)$ has a non-torsion
+point with abscissa in $j\Q^{\times2}$ for positive squarefree
+$j\equiv7\pmod8$, then $j$ is the only positive squarefree
+representative congruent to seven modulo eight in its abscissa
+squareclass image. In particular two distinct such $j$ cannot be
+combined on the same rank-one $E_n$.
+\end{proposition}
+\begin{proof}
+The abscissa Kummer homomorphism $\delta_x$ has
+$\delta_x(O)=1$, $\delta_x((0,0))=-1$, and
+$\delta_x((n,0))=n$. It factors through $E_n(\Q)/2E_n(\Q)$,
+which has order eight. The classes $-1,n,j$ are independent:
+the positive torsion classes are $1,n$, of residues one and five,
+whereas $j$ has residue seven. Hence the image is exactly
+$\langle-1,n,j\rangle$. Its positive representatives are those of
+$1,n,j,nj$, with residues $1,5,7,3$ modulo eight. Removing a common
+odd square does not change the residue. Only $j$ has residue seven.
+\end{proof}
+
+The simultaneous theorem supplies a common \emph{twist parameter}.
+It does not generally supply equal abscissas on its different curves,
+nor does it prove a prescribed value of the actual elliptic detector
+trace. The project's prepared counterexamples on $E_{5235}$,
+$E_{3615}$ and $E_{791}$ therefore remain relevant. No inference
+from local solubility to rational solubility is made here.
+
+\section{A degree-seven square-denominator equation}
+\begin{proposition}\label{prop:seven}
+For $c\in\Q^\times$, the existence of $s,t,r\in\Q$ satisfying
+\begin{equation}\label{eq:seven}
+ (s^2+c)(t^2-c)=(1-c)r^2(s^2-c)(t^2+c)
+\end{equation}
+implies that $c$ has square reduced denominator. For every $c$
+satisfying \eqref{eq:prep}, solutions exist. This equation has total
+degree seven, twelve monomials and coefficient height one.
+It retains three rational witnesses.
+\end{proposition}
+\begin{proof}
+Suppose $v_p(c)=m<0$ is odd. For any rational $s$,
+\[
+ v_p(s^2+c)=v_p(s^2-c)=\min(2v_p(s),m),
+\]
+including $s=0$, and similarly for $t$. All four factors are nonzero.
+If $r=0$, \eqref{eq:seven} is impossible. Otherwise the right side
+has valuation equal to the left side plus $m+2v_p(r)$, a nonzero
+odd integer. This is a contradiction. The argument includes $p=2$.
+
+On the prepared locus, $c$ is a positive nonsquare and $c\ne1$.
+Thus every factor used in the following divisions is nonzero.
+Given \eqref{eq:BB}, set
+\[
+ r=\frac{z}{(1-c)(s^2-c)(t^2+c)}.
+\]
+It satisfies \eqref{eq:seven}. Conversely any solution of
+\eqref{eq:seven} gives \eqref{eq:BB} by
+$z=(1-c)r(s^2-c)(t^2+c)$. The exact residual identity is
+\begin{align*}
+ &(1-c)(s^4-c^2)(t^4-c^2)
+   -\bigl((1-c)r(s^2-c)(t^2+c)\bigr)^2\\
+ &\quad=(1-c)(s^2-c)(t^2+c)
+ \bigl((s^2+c)(t^2-c)-(1-c)r^2(s^2-c)(t^2+c)\bigr).
+\end{align*}
+Existence follows from the audited converse in Section~1. Expansion
+gives the stated degree, number of monomials and height.
+\end{proof}
+
+For example, the prepared value $c=112/225$ has
+\[
+ s=\frac{28}{15},\qquad t=\frac{644}{825},\qquad r=\frac{15}{29}.
+\]
+It corresponds to $z=657707008/765703125$ in \eqref{eq:BB}.
+The shortcut $s=t$ or $s=-t$ cannot work at this $c$: it would
+make $1-c=113/225$ a square, since $s^4-c^2\ne0$.
+Thus the birational degree reduction does not collapse the two
+independent quartic coordinates.
+
+Equation~\eqref{eq:seven} is quadratic in $r$ with nonconstant
+leading coefficient. Turning it into a monic quadratic by clearing
+its leading coefficient recovers a degree-nine radicand. It must not
+be advertised as an automatic improvement to the existing monic
+finite-algebra compiler or to its variable counts.
+
+\section{Exact checks and limits of the certificate}
+The accompanying standard Python/SymPy checker verifies the
+polynomial residual identity and the displayed rational witness.
+It constructs a concrete overlapping family with
+\[
+ j=7,\quad K=\{113,137,193\},\quad
+ n=7\cdot19\cdot449\cdot953\cdot1009=57422493709.
+\]
+For every one of the eight divisors $k$ of $113\cdot137\cdot193$,
+it computes the normalized descent matrix over $\F_2$, checks its
+one-dimensional kernel and prescribed first vector, and computes
+the full unordered genus sum, obtaining one. A second example uses
+$j=3\cdot5\cdot17=255$ and $K=\{409\}$.
+It also checks 289 deterministic formal graph fibres, including
+arbitrary reciprocity-compatible symbols and absent leaves.
+Eleven small R\'edei parity computations are independently compared
+with class numbers obtained by enumerating reduced primitive binary
+quadratic forms. These checks support the explicit algebra and graph
+implementation; the proof of the infinite-family theorem is the
+argument in Section~2, using the external genus-point criterion.
+The checker does not numerically compute the analytic ranks or
+search for rational points on the large example curves.
+
+\begin{thebibliography}{9}
+\bibitem{BB} M. Bhargava and A. Burungale,
+\emph{A Diophantine definition of $\Z$ in $\Q$},
+arXiv:2611.16130v2, 19 November 2026, Section~2.
+\url{https://arxiv.org/html/2611.16130v2}.
+\bibitem{TYZ} Y. Tian, X. Yuan and S.-W. Zhang,
+\emph{Genus periods, genus points and congruent number problem},
+Asian J. Math. \textbf{21} (2017), 721--774, especially
+pp.~722, 739--740, 754 and 760.
+\url{https://web.math.princeton.edu/~shouwu/publications/cn.pdf}.
+\bibitem{Smith} A. Smith,
+\emph{The congruent numbers have positive natural density},
+arXiv:1603.08479v2 (2016).
+\url{https://arxiv.org/abs/1603.08479}.
+\bibitem{Stevenhagen} P. Stevenhagen,
+\emph{Redei reciprocity, governing fields and negative Pell},
+Math. Proc. Cambridge Philos. Soc. \textbf{172} (2022), 627--654,
+Theorem~3.1 and equation~(16).
+\url{https://doi.org/10.1017/S0305004121000335}.
+\bibitem{Native} ZQ Diophantine Project,
+\emph{A two-coordinate pole test of coefficient height four},
+17 November 2026, v56,
+\nolinkurl{papers/pole_parameters/intrinsic_pole_20261117_v56.tex}.
+\bibitem{Common} ZQ Diophantine Project,
+\emph{Common twists for several pole inputs}, 14 November 2026, v30,
+\nolinkurl{papers/pole_parameters/common_twists_20261114_v30.tex}.
+\end{thebibliography}
+\end{document}
