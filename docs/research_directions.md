@@ -14,9 +14,9 @@ The [additional research routes](research_routes_20261120.md) prove a complex-mu
 
 ## Undecidability in bounded numbers of rational unknowns
 
-The [v96 continuation](results_20261123_v96.md) gives corrected quartic
-transfers in **982 / 1147 / 733** rational unknowns, with
-**854 / 997 / 642** quadratic residuals. The instance is a coefficient
+The [v97 continuation](results_20261123_v97.md) gives corrected quartic
+transfers in **979 / 1147 / 704** rational unknowns, with
+**829 / 997 / 595** quadratic residuals. The instance is a coefficient
 parameter. The third route assumes ordinary rational abc; all routes retain
 their integer predicate's stated arithmetic premises.
 
@@ -45,6 +45,13 @@ complete systems now retain eleven certificates and save a further
 A new Pell half-trace square simultaneously selects the required sign
 and excludes s=0, absorbing its reciprocal guard and saving one further
 variable and row in every system.
+The new short Pell power certificate now resolves the geometric-quotient
+integrality cycle: two extra integer inputs replace 137 power coordinates,
+with a net saving of three general and 29 abc variables. The new source
+uses the cofinite tail x>32z; general and abc constructions have thirteen
+integer inputs, while the specified eleven-input construction stays smaller.
+This bypasses the proved triangular rational-function circuit lower bound
+by using certified integers and the remaining source constraints.
 Every remaining residual and denominator guard is retained explicitly.
 
 For unrestricted degree, **82 / 100 / 52** remains the smallest recorded

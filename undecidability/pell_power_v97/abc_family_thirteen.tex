@@ -1,0 +1,77 @@
+\subsection*{The complete thirteen-input ordinary-\(abc\) family}
+
+The existing fixed-offset theorem in
+\nolinkurl{undecidability/papers/abc_fixed_contact_offsets_v93.tex}
+is stated for an arbitrary fixed number \(k\) of nonzero integer
+inputs. After common-reference and common-square sharing, its count,
+including the inputs, is \(48k+8\) coordinates and \(41k+5\)
+quadratic residuals. Its soundness applies to every rational zero;
+its simultaneous completeness supplies every tuple in
+\((\Z\setminus\{0\})^k\), under the same retained arithmetic
+premises and the same sufficiently large fixed odd coefficient.
+
+The eleven retained inputs use the old dyadic offsets
+\[
+       0,1,2,3,4,5,6,7,8,10,11\quad\hbox{divided by }16.
+\]
+Assign \(\delta\) offset \(9/16\) and \(\alpha_*\) offset
+\(12/16\). These are precisely thirteen distinct cosets modulo
+\(\Z_2\). For each nonzero integer input, the individual contact
+positions are in \(\Z_2\); subtracting these offsets therefore
+separates all the contact lists. The finite-family supplier applies
+to this larger fixed union, with the previous common reference,
+the same six shared reference coordinates, and the same common
+contact square. Its temporary finite avoidance is enlarged by the
+new positions, their differences, and denominators exactly as in
+the fixed-offset theorem. No uniform bound on an input-dependent
+annihilation order is needed, and no moving reference-dependent
+offset is introduced.
+
+For soundness, each of the thirteen blocks recovers a complete copy
+of the integer-defining interface. Thus all old inputs and the new
+\(\delta,\alpha_*\) are integers, which is exactly the integrality
+premise used in Lemma~\ref{lambda}. For completeness, start with a
+positive corrected source witness. Theorem~\ref{main} supplies
+\(\delta,\alpha_*>0\), while the retained positive reconstruction
+supplies nonzero values of the other eleven inputs. The
+thirteen-input fixed-offset theorem therefore supplies all the
+rational integer certificates simultaneously. This is an application
+of the existing arbitrary-fixed-\(k\) theorem, with no extension of
+its arithmetic hypotheses.
+
+The coefficient construction copies the old \(o\) block, whose
+input had offset \(9/16\), twice. That block has 47 private
+auxiliary coordinates and 41 residuals after sharing. One copy is
+renamed for \(\delta\) without changing its offset. To obtain the
+\(\alpha_*\) copy, write \(z\) and \(q_z=z^2\) for the shared
+contact coordinates and make the simultaneous affine substitution
+\[
+             z\longmapsto z+\frac3{16},\qquad
+             q_z\longmapsto q_z+\frac38z+\frac9{256}.
+\]
+The shared square equation makes the second substituted value exactly
+\((z+3/16)^2\). Hence the physical offset changes from \(9/16\)
+to \(12/16\), in every affected residual, including squared
+occurrences of a contact invariant. All substitutions are affine
+in the stored coordinates, so each residual remains quadratic.
+Constant denominators are cleared and only nonzero rational row
+scalings are used. All six common reference coordinates are kept
+unchanged. A new rational zero consequently recovers the old
+single-block equations; conversely the chosen thirteen physical
+contact witnesses satisfy their copied equations.
+
+The two new integer inputs and their private certificates add
+\(2+2\cdot47=96\) coordinates and \(82\) residuals to the source
+core. The complete table has 704 coordinates and 595 quadratic
+residuals. Its sole polynomial is the sum of their squares, with
+integer coefficients in the fixed parameters and the instance.
+It has degree exactly four because an unchanged input-square row
+has a nonzero quadratic homogeneous part. Over \(\Q\), its zero
+set is exactly the simultaneous zero set of all 595 residuals.
+The file
+\nolinkurl{undecidability/pell_power_v97/pell_power_abc_quadrics.json}
+specifies every coordinate and coefficient; the independent checker
+reconstructs all 82 copied rows, the source-core rows, every
+unchanged predecessor row, the guards, and the thirteen dyadic
+cosets. The source-coding theorem and all retained ordinary-\(abc\)
+interface premises remain explicit qualifications.

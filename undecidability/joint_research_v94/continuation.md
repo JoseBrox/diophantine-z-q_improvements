@@ -1,6 +1,8 @@
 # Contact spacing: a compatibility gap and an adaptive route
 
-This is a research checkpoint, not a new variable-count claim. The proved
+This is a research checkpoint, not a new variable-count claim. A fresh
+independent audit verified the local valuation calculations below but found
+the reference-dependence obstruction described in the final section. The proved
 progression construction remains the one in
 `undecidability/general_contact_v94/affine_contact_progressions.tex`.
 The local calculations below identify a more specific next step and the
@@ -130,7 +132,7 @@ The actual scalar pole input `R(R+9792)*tau^2` therefore has valuation
 `1+9792/R` is a two-adic square. Thus the proposed relative depth
 satisfies the scalar preparation at two independently of `H_2`.
 
-The remaining compatibility task is to combine this exact relative
+One compatibility task is to combine this exact relative
 depth with every odd-place annihilation and precision congruence in
 the ordered preparation. Allowing `H_2` to exceed the two-parts of
 the finitely many relevant reduction orders appears to resolve the
@@ -214,9 +216,11 @@ With `K=H_2+8`, it has valuation `-4H_2-42`, while the contact
 bound is `-4H_2-36`. For any distinct original block indices in
 `{0,...,11}`, `v_2(i-j)<=3`, so `v_2((i-j)D)` is strictly below
 that contact bound. The fixed-place separation argument would then
-separate all the lists. The spacing is rational and fixed before
-contact primes are selected. Its real sign is irrelevant to this
-valuation argument and to the later large-slope asymptotics.
+separate all the lists for a fixed reference point. Its real sign is
+irrelevant to this valuation argument. However, the spacing depends on
+the reference point: it has not been shown to remain fixed during the
+later selected-prime construction. This is the decisive obstruction
+identified in the independent audit below.
 
 The coordinate `r_1` is named `common_scalar_r_imag` in the general
 table and `int_b_113` in the specified table. Thus it is already
@@ -243,8 +247,43 @@ inverse to replace
 \]
 
 These equations are quadratic. The four common fourth-power
-coefficient rows remain unchanged. Exact complete coefficient
-transformation, guard reconstruction, deterministic rebuilding,
-independent verification, and a fresh audit of the ordered arithmetic
-choice remain necessary. Until those are completed, this file records
-a route and its precise obligations, not a revised result census.
+coefficient rows remain unchanged. The complete candidate tables in
+`undecidability/adaptive_contact_v97/` have now been compiled, and an
+independent verifier checks every changed and unchanged coefficient,
+the existing gauge guards, rational soundness reconstruction, support,
+degree, and counts. These checks establish only the algebraic operation.
+
+## Decisive audit finding: the spacing moves with the reference
+
+The source chooses the difference points `Q_1,Q_2,Q_3,Q_4` and their
+contact shifts before selecting comparison primes. It subsequently
+changes the reference index `h` to satisfy the primary and opposite
+formal congruences at those primes, while preserving the earlier
+finite and real neighborhoods. The difference points and their
+aggregate contact shifts remain fixed during that later change.
+
+By contrast, `r_*=Z*rho_sec` is built from `H=[h]P_0`,
+`U_2=[h]Q_2`, and `V_2=[h-1]Q_2`. It therefore changes when `h`
+is retuned. The proposed `D=2^(-24)*r_1` would move the translated
+contact positions after the primes had been selected for them.
+Preserving a two-adic valuation or a small neighborhood is insufficient:
+the supplier requires the exact fixed rational coefficients.
+
+No reference-invariance identity for `r_1` has been proved, and the
+retained supplier is not a theorem for this moving family. Choosing
+the primes from a preliminary `h` and then adjusting `h` through their
+congruences is therefore circular in this candidate. The candidate
+tables are not accepted undecidability witnesses and their smaller
+algebraic censuses are not result counts.
+
+A next route should use an actual difference-point invariant. For
+example, the real component of `x(Q_2)` is independent of the later
+reference change, and its square has a sufficiently negative valuation
+after a suitable fixed dyadic multiplier. But that square is not
+currently an affine combination of the relevant stored coordinates,
+and the complete cost of introducing and using it has not yielded a
+coordinate saving. Another possibility is an existing stored
+reference-invariant expression with the same valuation growth.
+Either route needs both a strict quadratic coefficient implementation
+and the original ordered prime-construction proof. This checkpoint
+adds no hypothesis or numerical bound to the accepted constructions.

@@ -1,0 +1,394 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,booktabs,hyperref,xurl}
+\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\Z}{\mathbb Z}\newcommand{\Q}{\mathbb Q}
+\title{A short Pell replacement for the fixed Jones power}
+\author{\(\mathbb Z\mathbb Q\) Diophantine Project}
+\date{23 November 2026}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We replace the long fixed-power circuit for \(q=b^{5^{60}}\) by a
+constant-size quadratic Pell certificate with two additional integer
+inputs. A specially chosen auxiliary parameter first makes the
+geometric quotient \((q^4-1)/(b^5-1)\) integral without knowing the
+exponent. The retained binomial block can then be reconstructed in a
+noncircular order. Its explicit growth estimates recover the intended
+exponent and exclude the unwanted signed Pell branch. Only two new
+positivity requirements are needed. Complete coefficient tables using
+thirteen integer inputs have 704 variables and 595 quadratic residuals
+for the ordinary-\(abc\) interface, or 979 variables and 829 residuals
+for the general interface; their sums of squares have degree four.
+The local source equivalence
+requires no additional arithmetic or coding hypothesis. Its application
+to rational undecidability retains the stated hypotheses of the
+chosen integer interface and the previously cited Jones coding theorem.
+\end{abstract}
+
+\section{The exact replacement}
+
+Set \(L=5^{60}\) and \(T_b=b^5-1\). Retain the corrected source,
+its one-quotient third Pell certificate, and its half-trace branch
+square from \cite{CRT,Halftrace}, but delete the fixed-power circuit
+for \(q=b^L\). The existing integer inputs and all other equations
+are retained. Restrict the integer instance to the cofinite range
+\[
+                              x>32z.
+\]
+Introduce two integer inputs \(\delta,\alpha_*\), and define
+\begin{align}
+ A_0&=(b^9+8b^5+b-8)/2,& A&=A_0+5T_bs,\label{A}\\
+ m_*&=2bA-b^2-1,& C_*&=L+\delta(A-1).\label{mC}
+\end{align}
+Require a rational \(D_*\) to satisfy
+\begin{align}
+ D_*^2-(A^2-1)C_*^2&=1,\label{norm}\\
+ q&=D_*-(A-b)C_*-\alpha_*m_*,\label{q}
+\end{align}
+and add precisely the two strict inequalities
+\begin{equation}\label{ineq}
+                         q>b^5,\qquad C_*^2<c^2.
+\end{equation}
+Here \(s,c\) are the retained integer inputs of the binomial block.
+The new \(\alpha_*\) is unrelated to the retained positive source
+slack \(\alpha\). The old guard \(b^5-2z>0\), with integral
+\(b\) and \(z\ge1\), still gives \(b\ge2\).
+
+\section{Integral reconstruction before exponent recovery}
+
+\begin{lemma}\label{parameter}
+For integers \(b\ge2\) and \(s\), the quantities in
+\eqref{A}--\eqref{mC} satisfy
+\[
+ A_0,A,m_*\in\Z,\quad A\equiv1\pmod5,\quad
+ m_*=T_b(b^5+8b+1+10bs),\quad |A|\ge2,\quad 0<A_0<b^{16}.
+\]
+\end{lemma}
+\begin{proof}
+The powers \(b^9\) and \(b\) have the same parity.
+Modulo five, \(b^9\equiv b^5\equiv b\), so
+\(2A_0\equiv10b-8\equiv2\), whence \(A_0\equiv A\equiv1\).
+Direct expansion proves the displayed factorization of \(m_*\).
+If \(A=1\), it would imply \(T_b\mid-(b-1)^2\), impossible
+because \(0<(b-1)^2<T_b\). The congruence modulo five excludes
+\(A=0,-1\), proving \(|A|\ge2\).
+Finally \(A_0>0\), and \(8b^5\le b^8\), \(b<b^8\) give
+\[
+       2A_0<b^9+2b^8\le2b^9<2b^{16}.
+\]
+\end{proof}
+
+Use the integer polynomial Pell sequences \(X_j(A),Y_j(A)\),
+defined by \(X_0=1,Y_0=0,X_1=A,Y_1=1\) and the recurrence
+\(Z_{j+2}=2AZ_{j+1}-Z_j\). For negative parameters,
+\[
+ X_j(-A)=(-1)^jX_j(A),\qquad
+ Y_j(-A)=(-1)^{j-1}Y_j(A).
+\]
+Integral Pell classification at \(|A|\ge2\) is proved in
+\cite{Index}.
+
+\begin{lemma}[The geometric quotient is already integral]\label{lambda}
+With integer \(b,s,\delta,\alpha_*\), \(b\ge2\), and
+\eqref{A}--\eqref{q}, the quantities \(C_*,D_*,q\) are integers
+and \(q\equiv\pm1\pmod{T_b}\). Hence the retained equation
+\(\lambda T_b=q^4-1\) gives \(\lambda\in\Z\). Under
+\(q>b^5\), this integer is positive.
+\end{lemma}
+\begin{proof}
+First \(C_*\in\Z\). The norm makes \(D_*^2\) integral, so
+rationality makes \(D_*\) integral; then \eqref{q} makes \(q\)
+integral. Signed Pell classification gives some \(\nu\ge0\) and
+independent signs with
+\[
+                         C_*=\pm Y_\nu(A),\qquad D_*=\pm X_\nu(A).
+\]
+The zero index is allowed here. As \(A\equiv1\pmod5\), the
+recurrence gives \(Y_\nu(A)\equiv\nu\pmod5\). Equation
+\eqref{mC} makes \(5\mid C_*\), and thus \(5\mid\nu\).
+
+Put \(R_j=X_j(A)-(A-b)Y_j(A)\). The addition and norm identities
+give
+\begin{equation}\label{rec}
+\begin{split}
+ R_0&=1,\qquad R_{j+1}=bR_j+m_*Y_j(A),\\
+ R_j\bigl(X_j(A)+(A-b)Y_j(A)\bigr)&=1+m_*Y_j(A)^2.
+\end{split}
+\end{equation}
+Modulo \(T_b\), these give \(R_j\equiv b^j\) and the other
+factor congruent to \(b^{-j}\), since \(\gcd(b,T_b)=1\).
+The four signs of \(C_*,D_*\) therefore make
+\(D_*-(A-b)C_*\) congruent to one of
+\(\pm b^\nu,\pm b^{-\nu}\). All are \(\pm1\) because
+\(5\mid\nu\) and \(b^5\equiv1\pmod{T_b}\).
+Now use \(T_b\mid m_*\) and \eqref{q}. The conclusions about
+\(\lambda\) follow because \(T_b>0\) and \(q>b^5\).
+\end{proof}
+
+This recovers both \(q\) and \(\lambda\) integrally before proving
+\(q=b^L\), before knowing \(s>0\), and before invoking the source's
+binomial Pell indices.
+
+\section{The cofinite tail restores prefix positivity}
+
+Let \(n=q^{16}\), \(M=n^2=q^{32}\), and retain the source formula
+\[
+                         r=S(M-n)+T(M-1),
+\]
+with \(S,T\) as in the corrected Jones coding prefix.
+
+\begin{lemma}\label{prefix}
+The retained source guards, \(x>32z\), positive integral
+\(\lambda\), and integral \(q>b^5\) imply
+\[
+                        S,T\in\Z_{>0},\qquad
+                        r\ge M>b^{160}\ge2^{160}>L.
+\]
+\end{lemma}
+\begin{proof}
+The positive integer inputs \(g,t,m\) give
+\(e=y+m(b^5-2z)>0\) and
+\(\ell=u+t(b^5-2z)>0\). The retained positive slack says
+\[
+                       e\ell g^2<(b-xy)q^2.
+\]
+Thus \(b>xy\ge x>32z\), and \(x\le b-1\).
+Since \(2z<b\), one has \(e,\ell\ge b^5-b+2\ge b^4\),
+and hence \(g<q/b^3\). The quantity \(c_0=1+xb^5+g\)
+satisfies
+\[
+                  0<c_0<b^6+q/b^3<(b+b^{-3})q<2bq,
+\]
+using \(q>b^5\). Consequently
+\[
+ b^5(1+q^4)-2zc_0^4
+       >b^5+b^4q^4(b-32z)>0.
+\]
+The original prefix expression
+\[
+ S=g+eq^3+\ell q^5+
+       [2ec_0^4+\lambda\{b^5(1+q^4)-2zc_0^4\}]q^4
+\]
+is positive. Also \(\ell<bq^2\), so
+\[
+ T=q^3-(b-1)\ell+(b^5-2z)\lambda q^3+(b^5-2)q^5>0,
+\]
+because \((b^5-2)q^3>b(b-1)\). All quantities are integral.
+Therefore \(S,T\ge1\) and
+\(r\ge2M-n-1\ge M\) for \(n\ge2\).
+Finally \(M=q^{32}>b^{160}\), while
+\(L=5^{60}<2^{140}<2^{160}\).
+\end{proof}
+
+Every prerequisite of the retained signed binomial argument now has
+its established noncircular reconstruction. In particular \(r,a,p,k\)
+are integral; the half-trace square excludes \(s=0\); the strict
+small-Pell inequality gives \(c\ne0\); the reciprocal row then
+legitimizes the integer \(i\ne0\). Also \(M>2^{160}\) and
+\(2\le b<q\le2M\). The local theorems of
+\cite{Signed,CRT,Halftrace} therefore give
+\begin{equation}\label{canonical}
+\begin{split}
+ &w,s,c>0,\qquad bw=2^{2r+1},\\
+ &c=Y_{2r+1}(a),\qquad d=X_{2r+1}(a),\qquad
+ M\mid\binom{2r}{r}.
+\end{split}
+\end{equation}
+These local theorems require the stated integral parameters and
+bounds, not the equality \(q=b^L\) now being recovered.
+
+\section{Growth identifies the auxiliary index and its sign}
+
+Put \(U=wM\), \(Z=sM\), \(B=2r+1\), so \(a=rsM(U+1)\).
+The signed binomial proof supplies \(Z>\tfrac78(U-2)^r\).
+
+\begin{lemma}\label{growth}
+Every proposed solution satisfies
+\[
+ U\ge4^r,\quad s>U^{r-2},\quad a<s^2,\quad
+ s>L+6r+2,\quad A-1>L+6r,\quad m_*>s>0.
+\]
+\end{lemma}
+\begin{proof}
+From \(bw=2^{2r+1}\) and \(b\le2M\) one gets \(U\ge4^r\),
+so \(2r/U\le1/2\). Bernoulli's inequality gives
+\((1-2/U)^r\ge1-2r/U\ge1/2\). As \(M\le U\),
+\[
+ s>\frac7{16}\frac{U^r}{M}\ge\frac7{16}U^{r-1}>U^{r-2}.
+\]
+Also \(2r<U\) and \(r>2^{160}\), so
+\[
+                       a<2rsU^2<sU^3<s^2.
+\]
+Since \(r>L\), the elementary inequality \(4^r>7r+2\) for
+\(r\ge3\) gives \(s>U\ge4^r>L+6r+2\).
+Now \(A=A_0+5T_bs>s\) because \(s>0,A_0>0,T_b\ge31\).
+Finally
+\[
+                   m_*>10bT_bs-b^2-1>s;
+\]
+the last step follows from \(s\ge1,T_b\ge b\), and
+\(10b^2-1>b^2+1\).
+\end{proof}
+
+\begin{lemma}\label{index}
+The index in Lemma~\ref{lambda} is \(\nu=L\), and
+\(C_*=Y_L(A)>0\).
+\end{lemma}
+\begin{proof}
+After Lemma~\ref{growth}, \(A>0\).
+If \(C_*=0\), then \(A-1\mid L\) by \eqref{mC},
+contradicting \(A-1>L\). Thus \(\nu\ge1\).
+Elementary Pell growth and \eqref{ineq} give
+\[
+ A^{\nu-1}\le Y_\nu(A)=|C_*|
+       <c=Y_{2r+1}(a)<(2a)^{2r}<s^{6r}.
+\]
+Since \(A>s\), this implies \(\nu\le6r\).
+Reduction of \(C_*=L+\delta(A-1)\) modulo \(A-1\) gives
+\(\nu\equiv L\) or \(-L\), according to its sign.
+The bounds \(0<\nu\le6r\) and \(A-1>L+6r\) allow only
+\(\nu=L\) with the positive sign. In the negative case,
+\(A-1\) would divide the positive integer \(\nu+L<A-1\).
+\end{proof}
+
+\begin{theorem}[Exact power recovery and completeness]\label{main}
+Every rational solution of the replacement satisfies \(q=b^L\).
+Conversely every old corrected source solution with \(x>32z\)
+extends to a replacement solution with \(\delta,\alpha_*>0\).
+The two sources have the same coding-prefix and instance projection.
+\end{theorem}
+\begin{proof}
+By Lemma~\ref{index}, \(C_*=Y_L(A)>0\) and
+\(D_*=\pm X_L(A)\). Set \(K=b^L\).
+The identities \eqref{rec}, now modulo \(m_*>0\), give
+\[
+ \begin{array}{ll}
+ D_*=X_L(A):&q\equiv K\pmod{m_*},\\
+ D_*=-X_L(A):&qK\equiv-1\pmod{m_*}.
+ \end{array}
+\]
+The inverse congruence is legitimate since
+\(m_*\equiv-1\pmod b\). As \(b<q=M^{1/32}\le U^{1/32}\),
+\[
+                  qK\le U^{(L+1)/32}\le U^{(6r+1)/32}.
+\]
+For \(r\ge4\), one has \((6r+1)/32+1\le r-2\). Since \(U>2\),
+\[
+ 0<qK+1\le2qK\le2U^{(6r+1)/32}<U^{r-2}<s<m_*.
+\]
+Thus the negative-trace case is impossible. In the positive case,
+\(|q-K|<qK+1<m_*\), so the congruence forces \(q=K=b^L\).
+
+Conversely take an old corrected source solution.
+It has \(q=b^L>b^5\), the canonical values \eqref{canonical},
+and all the same growth bounds. Since
+\(s>U^{r-2}>b^{16}>A_0\),
+\[
+                       A<(1+5T_b)s<5b^5s<a,
+\]
+where \(a\ge Ms>5b^5s\). Also \(L<r<2r+1\).
+Set \(C_*=Y_L(A)\), \(D_*=X_L(A)\). Monotonicity in the
+positive parameter and index gives
+\(0<C_*<Y_{2r+1}(a)=c\), proving the second bound in
+\eqref{ineq}. The recurrence modulo \(A-1\) makes
+\[
+                      \delta=\frac{Y_L(A)-L}{A-1}
+\]
+an integer, positive because \(Y_L(A)>L\).
+Iteration of \eqref{rec} gives
+\[
+ R_L-b^L=m_*\sum_{j=0}^{L-1}b^{L-1-j}Y_j(A).
+\]
+The sum is a positive integer because \(L\ge2\).
+Choose it as \(\alpha_*\); this proves \eqref{q}.
+Every other coordinate is retained. Conversely the already proved
+power equality restores the deleted circuit by its defining values.
+\end{proof}
+
+Deleting the finitely many old instance values \(x\le32z\) preserves
+undecidability: a decision procedure for a cofinite tail, together
+with a fixed finite lookup table, would decide the original set.
+
+\section{Quadratic compilation}
+
+Apart from its two integer inputs, the replacement uses six new
+rational registers
+\[
+                         b_4,A,C_*,D_*,m_*,A_C.
+\]
+For the ordinary-\(abc\) interface, the existing input square is
+\(b_2=b^2\), and the new equations are
+\begin{align*}
+ b_4&=b_2^2,& b^5&=b\,b_4,\\
+ 2A&=b_4b^5+8b^5+b-8+10(b^5-1)s,&&\\
+ C_*&=L+\delta(A-1),& A_C&=AC_*,\\
+ D_*^2-A_C^2+C_*^2&=1,&m_*&=2bA-b^2-1,\\
+ q&=D_*-A_C+bC_*-\alpha_*m_* .&&
+\end{align*}
+Here \(b^5\) is a retained coordinate, so all residuals are quadratic.
+The general interface stores \(b^2/\rho\) and \(1/\rho^2\);
+there the first row is instead
+\((1/\rho^2)b_4=(b^2/\rho)^2\).
+The retained global gauge guard already gives \(\rho\ne0\), so
+this has the same unique value \(b_4=b^4\).
+No new reciprocal is introduced. The row for \(b^5\) replaces
+the one using the discarded \(b^3\) register.
+
+Each strict integer inequality in \eqref{ineq} uses three rational
+triangular-number coordinates and one quadratic residual. The private
+positive representatives required by these rows exist for every
+positive integer value. The new integer inputs \(\delta,\alpha_*\)
+are positive in the completeness proof, so the nonzero-input scope
+of the ordinary-\(abc\) simultaneous certificate is respected.
+
+The source proof above is independent of the choice of integer
+interface. A complete quartic record must additionally instantiate
+its thirteen integer certificates and shared contacts. The exact
+coefficient builders and independent audits accompanying this paper
+perform that step. The resulting arithmetic transfer retains all
+premises of the chosen interface and the same cited Jones coding
+theorem; no new source universality assumption is introduced.
+
+\input{undecidability/pell_power_v97/abc_family_thirteen.tex}
+\input{undecidability/pell_power_v97/thirteen_general_blocks.tex}
+
+\section{Exact local-lemma verification}
+
+The independent script
+\begin{verbatim}
+python undecidability/pell_power_v97/verify_power_lemmas.py
+\end{verbatim}
+checks the parameter factorization, parity and congruence statements,
+Pell recurrence and product identities, all signed congruence
+branches, and the deliberately permitted preliminary index zero.
+Its finite fixtures include negative auxiliary parameters. The
+quantified arguments are the proofs above; finite fixtures do not
+replace them. The complete-table checkers in the preceding two
+sections additionally audit every coefficient change, shared-family
+lift, count, guard, and hash.
+
+\begin{thebibliography}{9}
+\small\setlength{\itemsep}{2pt}
+\bibitem{Index} \(\mathbb Z\mathbb Q\) Diophantine Project,
+\emph{An exact three-Pell index certificate and nine fewer quadratic
+coordinates}.\par
+\nolinkurl{undecidability/papers/pell_index_optimization.tex}.
+\bibitem{Signed} \(\mathbb Z\mathbb Q\) Diophantine Project,
+\emph{Signed binomial witnesses force their own positivity and save
+five quadratic coordinates}.\par
+\nolinkurl{undecidability/source_repair_v93/signed_binomial_positivity.tex}.
+\bibitem{CRT} \(\mathbb Z\mathbb Q\) Diophantine Project,
+\emph{A single integer quotient for the third Pell certificate}.\par
+\nolinkurl{undecidability/pell_crt_v95/one_quotient_pell.tex}.
+\bibitem{Halftrace} \(\mathbb Z\mathbb Q\) Diophantine Project,
+\emph{A Pell half-trace square absorbs a nonzero guard}.\par
+\nolinkurl{undecidability/pell_halftrace_v96/halftrace_guard.tex}.
+\end{thebibliography}
+\end{document}
