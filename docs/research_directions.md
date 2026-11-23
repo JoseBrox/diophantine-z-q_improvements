@@ -20,12 +20,21 @@ both for quartics and with unrestricted degree. The instance is specified by
 integer coefficients; it is not another existential coordinate. This objective
 is different from the defining-variable counts in the main construction table.
 
+The proved [mixed-domain transfer](../undecidability/papers/transfer_general_degree.tex)
+now gives **227** rational unknowns in unrestricted degree from the general
+25-coordinate predicate, **245** from the fully specified 27-coordinate
+predicate, and **101** under ordinary abc from the 11-coordinate predicate.
+The formula is `9m+2`; it retains the integer predicate's stated arithmetic
+premises. It crosses the numerical target 263 in unrestricted degree.
+
 The initial [checkpoint](../undecidability/checkpoints/baseline_20261123.md)
-registers the previous `15m+94` quartic transfer: 2,539 for the general
+registers the previous `15m+94` quartic candidate transfer: 2,539 for the general
 163-coordinate predicate, 2,779 for the fully specified 179-coordinate
 predicate, and 934 under ordinary abc using the 56-coordinate predicate.
 Its source system and full combined quadratic compilation are being independently
-reconstructed. All inherited arithmetic interfaces remain explicit.
+reconstructed. A discrepancy in the printed final Pell equation prevents
+promoting these counts to proved undecidability bounds. All inherited
+arithmetic interfaces remain explicit.
 
 The constructive tasks are to reprove the classical small universal integer
 systems, minimize the subset of coordinates requiring integer certificates,

@@ -1,0 +1,368 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools,booktabs,hyperref}
+\usepackage[margin=27mm]{geometry}
+\setlength{\emergencystretch}{1em}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}\newcommand{\N}{\mathbb N}
+\title{An unrestricted-degree undecidability transfer in $9m+2$ rational unknowns}
+\author{\(\Z\Q\) Diophantine Project}
+\date{23 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+Suppose an integer polynomial in $m$ total rational coordinates, including its
+input, has input projection exactly $\Z$. We prove that rational solvability of
+polynomial equations is then undecidable in $9m+2$ unknowns. The construction
+combines the published nine-unknown mixed-domain theorem of Sun with a ternary
+quadratic expression whose integral values over the rationals are exactly the
+nonnegative integers. Substituting this expression directly removes its output
+coordinate. For the project's current defining-polynomial premises this gives
+227 unknowns in the general route, 245 in the fully specified route, and 101
+under ordinary rational abc. These are unrestricted-degree conclusions. Their
+arithmetic assumptions are precisely those of the chosen definition of the
+integers; no unconditional claim about those inherited assumptions is made.
+\end{abstract}
+
+\section{What is counted}
+Write $\N=\{0,1,2,\ldots\}$. A defining polynomial is a fixed
+$F\in\Z[T,Y_1,\ldots,Y_{m-1}]$ such that, for every $t\in\Q$,
+\begin{equation}\label{defining}
+ t\in\Z\quad\Longleftrightarrow\quad
+ \exists\mathbf y\in\Q^{m-1}\ F(t,\mathbf y)=0.
+\end{equation}
+Thus $m$ includes the input coordinate $T$. If the existence or defining property
+of $F$ is proved only under specified premises, all consequences below inherit
+those premises. The transfer arguments themselves introduce no number-theoretic
+conjecture.
+
+For undecidability, the input to the decision problem is the finite coefficient
+list of a polynomial, and the unknowns are its rational arguments. A natural
+number $a$ coding a decision instance is substituted into the coefficients
+before asking for a rational solution; it is not a quantified unknown. If one
+instead retains $a$ as a displayed variable of the universal family, one must
+add one to the counts in this paper.
+
+\section{A ternary wrapper with rational witnesses}
+Define
+\[
+ L(s,t,u)=s^2+t^2+u^2+u.
+\]
+\begin{lemma}\label{wrapper}
+For every $n\in\Z$,
+\[
+ n\ge0\quad\Longleftrightarrow\quad
+ \exists s,t,u\in\Q\quad n=L(s,t,u).
+\]
+Moreover, witnesses can be chosen integral in the forward direction.
+\end{lemma}
+\begin{proof}
+If $n\ge0$, then $4n+1$ is not of the form $4^a(8b+7)$. The
+Gauss--Legendre three-square theorem therefore gives
+$4n+1=A^2+B^2+C^2$ with $A,B,C\in\Z$. Exactly one of the three
+squares is odd, as is seen by reducing modulo four. Reorder them so that
+$A=2s$, $B=2t$, and $C=2u+1$. Subtracting one and dividing by four gives
+the required identity with integral witnesses. Conversely, for rational
+$s,t,u$ one has
+\[
+ L(s,t,u)=s^2+t^2+(u+\tfrac12)^2-\tfrac14\ge-\tfrac14.
+\]
+If this value is an integer, it is nonnegative.
+\end{proof}
+
+The requirement that $L(s,t,u)$ be integral is indispensable; its rational
+values need not be nonnegative. Formula~\eqref{defining} supplies exactly that
+requirement in the construction below. The witnesses $s,t,u$ themselves
+need no integrality certificates.
+
+\begin{proposition}[Optimality among quadratic wrappers]\label{wrapperoptimal}
+There is no rational polynomial $P\in\Q[S,T]$ of degree at most two such that
+\[
+ P(\Q^2)\cap\Z=\N.
+\]
+Consequently the three rational coordinates of Lemma~\ref{wrapper} cannot be
+replaced by two while retaining a single quadratic substitution and the same
+integral-value criterion.
+\end{proposition}
+\begin{proof}
+Suppose such a $P$ exists. Since zero belongs to its image, choose
+$\mathbf a\in\Q^2$ with $P(\mathbf a)=0$. After multiplying the argument by a
+sufficiently divisible positive integer $M$, all coefficients of
+$P(\mathbf a+M\mathbf X)$ are integral. Thus its values at $\Z^2$ are integers.
+If the quadratic homogeneous part has a negative direction, it has a rational
+negative direction by continuity, and hence an integral one after scaling.
+The values along that integral line are negative for sufficiently large
+arguments, a contradiction. The quadratic part is therefore positive
+semidefinite. Its kernel is a rational subspace. A nonzero linear part on
+that kernel would again give arbitrarily negative integral values along an
+integral line. Hence the linear part vanishes on the kernel.
+
+It follows by solving a rational linear system and completing the square
+that $P=c+q$, after a rational affine change of coordinates, where $c\in\Q$
+and $q$ is a positive semidefinite rational quadratic form. If $q$ has rank
+zero the image is constant, so it cannot contain $\N$. If its rank is one,
+write $q=aU^2$ with $a>0$ rational. At any prime $p$ outside a finite set,
+every nonzero rational value of $q$ has even $p$-adic valuation. Choose a
+nonnegative integer $n$ with $v_p(n-c)=1$, which is possible by prescribing
+one residue class modulo $p^2$. Then $n$ is not represented.
+
+If $q$ has rank two, rational diagonalization writes
+$q=a(U^2+dV^2)$ with $a,d>0$ rational. The quadratic field
+$\Q(\sqrt{-d})$ has infinitely many inert primes, by the usual quadratic
+case of Dirichlet's theorem on primes in arithmetic progressions. Choose
+one outside the numerator and denominator primes of $a,d$ and the
+denominator primes of $c$, and different
+from two. At this prime $-d$ is a nonsquare. For any nonzero rational pair
+$(U,V)$, put $e=\min\{v_p(U),v_p(V)\}$. Dividing by $p^{2e}$ leaves a unit,
+since a nontrivial zero of $U^2+dV^2$ modulo $p$ is impossible. Consequently
+$v_p(q)=2e$ is even. Again choose $n\in\N$ with $v_p(n-c)=1$. This
+contradicts representation of every nonnegative integer.
+\end{proof}
+
+\section{The mixed-domain universal input}
+We use the following published theorem, identifying the imported mathematical
+input rather than presenting it as a new proof of the DPRM theorem.
+
+\begin{theorem}[Sun's mixed-domain theorem]\label{sun}
+For every recursively enumerable $A\subseteq\N$ there is an integer polynomial
+$Q_A(a,z_1,\ldots,z_8,n)$ such that, for every $a\in\N$,
+\[
+ a\in A\quad\Longleftrightarrow\quad
+ \exists z_1,\ldots,z_8\in\Z\ \exists n\in\N\quad
+ Q_A(a,z_1,\ldots,z_8,n)=0.
+\]
+\end{theorem}
+This is a direct consequence of \cite[Theorem 1.1(i), equations (1.2)--(1.3)]{Sun}.
+Sun proves the stronger forward statement that all nine integer witnesses can
+be required to exceed any prescribed bound. A later construction and detailed
+formalization appear in \cite[Theorem 3 and Definition 5.3]{BDHMS}. The theorem
+has eight unrestricted integer witnesses and one nonnegative integer witness;
+treating all nine as positive unnecessarily increases the cost over $\Q$.
+
+\section{The transfer theorem and its proof}
+\begin{theorem}\label{main}
+Assume \eqref{defining}. For every recursively enumerable $A\subseteq\N$ there is
+an integer-polynomial family $G_A(a,\mathbf v)$ with at most $9m+2$ rational
+unknowns $\mathbf v$ such that, for all $a\in\N$,
+\[
+ a\in A\quad\Longleftrightarrow\quad
+ \exists\mathbf v\in\Q^{9m+2}\ G_A(a,\mathbf v)=0.
+\]
+In particular, no algorithm decides rational solvability for every integer
+polynomial in at most $9m+2$ unknowns.
+\end{theorem}
+\begin{proof}
+Choose $Q_A$ as in Theorem~\ref{sun}. Introduce eight rational coordinates
+$z_1,\ldots,z_8$, three rational coordinates $s,t,u$, and nine independent
+blocks $\mathbf y^{(i)}\in\Q^{m-1}$, $1\le i\le9$. Put
+\begin{align}\label{construction}
+ G_A={}&Q_A(a,z_1,\ldots,z_8,L(s,t,u))^2\notag\\
+ &+\sum_{i=1}^{8}F(z_i,\mathbf y^{(i)})^2
+   +F(L(s,t,u),\mathbf y^{(9)})^2.
+\end{align}
+This is an integer polynomial. Its number of rational coordinates is
+\[
+ 8+3+9(m-1)=9m+2.
+\]
+Suppose first that $G_A=0$ at a rational point. Every displayed summand
+is a square in the ordered field $\Q$, so every squared expression is zero.
+By \eqref{defining}, $z_1,\ldots,z_8$ and $L(s,t,u)$ are integers.
+Lemma~\ref{wrapper} gives $L(s,t,u)\ge0$. The remaining equation is precisely
+a witness to $a\in A$ in Theorem~\ref{sun}.
+
+Conversely, suppose $a\in A$. Choose the integer witnesses $z_1,\ldots,z_8,n$
+from Theorem~\ref{sun}. By Lemma~\ref{wrapper}, choose integral $s,t,u$ with
+$n=L(s,t,u)$. Apply \eqref{defining} independently to the nine integers
+$z_1,\ldots,z_8,n$, obtaining all nine rational witness blocks. Every term
+in \eqref{construction} is zero, so $G_A$ has a rational zero.
+
+Finally take $A$ recursively enumerable but not recursive. Once $F$ and $Q_A$
+are fixed, the map $a\mapsto G_A(a,\mathbf v)$ is computable, because it is
+substitution into a fixed polynomial with integer coefficients. A decision
+algorithm for rational solvability in the displayed number of unknowns
+would decide membership in $A$, a contradiction.
+\end{proof}
+
+The fixed polynomial $F$ need not have an effectively known construction
+parameter for this existence form of undecidability. Every fixed finite
+integer coefficient list is computable and can be built into a Turing machine.
+An explicitly evaluable reduction requires an explicitly specified defining
+member; an ineffective existence assertion alone must not be described as an
+implemented numerical reduction.
+
+\begin{proposition}[General mixed-domain count]\label{mixed}
+Suppose a set is represented by a polynomial over $r$ unrestricted integer
+unknowns and $s$ nonnegative integer unknowns. Under \eqref{defining}, it has a
+rational-polynomial representation with
+\[
+ rm+s(m+2)=(r+s)m+2s
+\]
+rational unknowns. The same count holds with strictly positive integer unknowns
+by replacing $L$ with $1+L$.
+\end{proposition}
+\begin{proof}
+For each unrestricted integer coordinate retain its input and use one
+$(m-1)$-coordinate block for $F$. For each nonnegative coordinate substitute
+an independent copy of $L$ directly into the source polynomial and into
+its copy of $F$. This costs three rational coordinates and $m-1$ witnesses.
+The equivalence follows exactly as in Theorem~\ref{main}; for strict positivity,
+integer values of $1+L$ are at least one and every positive integer occurs.
+\end{proof}
+
+\section{Degree bounds and source qualifications}
+If $F$ has degree $D$ and the mixed-domain source polynomial has degree $d$,
+then the elementary bound obtained from \eqref{construction} is
+\[
+ \deg G_A\le4\max(D,d).
+\]
+A better recorded bound uses the explicit source of \cite{BDHMS}. There the
+polynomial obtained after substituting $n=L(s,t,u)$ already has degree at most
+\begin{equation}\label{eta}
+ \eta(\nu,\delta)=15616+233856\delta
+   +233952\delta(2\delta+1)^{\nu+1}
+   +467712\delta^2(2\delta+1)^{\nu+1},
+\end{equation}
+whenever $(\nu,\delta)$ is a universal pair over the nonnegative integers.
+This is the same substitution used in their Section 6.1. Therefore
+\begin{equation}\label{degree}
+ \deg G_A\le\max\{2\eta(\nu,\delta),4D\}.
+\end{equation}
+Using the published $(58,4)$ pair gives
+\begin{align*}
+ \eta(58,4)
+ &=1681043235226619916301182624511918527834137733707408448335539840,\\
+ 2\eta(58,4)
+ &=3362086470453239832602365249023837055668275467414816896671079680.
+\end{align*}
+The exact integer has been recomputed directly from \eqref{eta}.
+
+For completeness, \cite{BDHMS} also states the smaller numerical value
+\[
+ \eta(32,12)=950817549694171759711025515571236610412597656252821888.
+\]
+The authors expressly note that Jones mentions $(32,12)$ without giving its
+proof. We do not promote this smaller degree to the principal audited bound.
+This qualification does not affect the variable count in Theorem~\ref{main}.
+The present note does not claim to have rerun the authors' Isabelle development.
+The formulas and theorem statements were checked in version 3 of their paper,
+dated 22 October 2026; its degree formula agrees with version 2.
+
+\section{Application to the current project routes}
+\begin{center}
+\begin{tabular}{lrrl}\toprule
+Defining route & $m$ & Rational unknowns & Status inherited\\\midrule
+General few-variable &25&227&Retained arithmetic premises\\
+Fully specified general &27&245&Retained arithmetic premises\\
+Ordinary rational abc &11&101&abc and retained premises\\\bottomrule
+\end{tabular}
+\end{center}
+The input counts and degree bounds used here are those of the project's
+v88 defining-polynomial ledger: respectively $D\le48318382080$,
+$D\le183368679424$, and $D\le3261569$. In every case $4D<2\eta(58,4)$,
+so \eqref{degree} gives one common explicit degree upper bound above.
+These are bounds for undecidability, not lower bounds or claims of optimality.
+They are not quartic results. Replacing the large-degree expressions by
+quadratic circuits adds coordinates and requires a separate count.
+
+The ordinary-abc route is deliberately retained as a separate row. The
+no-additional-abc routes still inherit the arithmetic interfaces of their
+chosen $F$, so the numerical conclusions must not be called unconditional
+merely because abc is absent. An independent proof of those interfaces
+would immediately make the corresponding numerical application unconditional.
+
+\section{A precise obstruction to a tempting compression}
+The following elementary observation rules out replacing arbitrary tuples
+of integer inputs by fewer homogeneous integral-valued tests. It does not
+rule out systems with additional constraints or shared witness constructions.
+
+\begin{proposition}\label{homogeneous}
+Let $1\le k<r$ and let
+$H_1,\ldots,H_k\in\Z[X_1,\ldots,X_r]$ be homogeneous polynomials of positive
+degrees. There are infinitely many primes $p$ and tuples
+$\mathbf q\in\Z[1/p]^r\setminus\Z^r$ such that
+$H_j(\mathbf q)\in\Z$ for every $j$.
+\end{proposition}
+\begin{proof}
+Over the algebraic closure of $\Q$, fewer than $r$ positive-degree homogeneous
+equations in $r$ variables have a common nonzero zero. One way to see this
+is the projective dimension theorem; equivalently, the ideal generated by
+$k$ elements has height at most $k$, whereas the irrelevant maximal ideal
+has height $r$. Choose such a zero $\boldsymbol\alpha$ and normalize one
+nonzero coordinate to one. Its coordinates lie in a number field $K$.
+
+There are infinitely many rational primes for which $K$ embeds into $\Q_p$.
+For a short justification choose an integral primitive element of $K$ with
+minimal polynomial $P\in\Z[T]$. Infinitely many primes divide nonzero values
+of $P$ (Schur's elementary theorem). To recall the elementary argument for Schur's assertion, if all these prime
+divisors belonged to a finite set $S$, choose $a$ with $A=P(a)\ne0$ and put
+$Q(T)=P(a+AT)/A\in\Z[T]$. Then $Q(0)=1$. For a multiple $M$ of all
+primes in $S$, every $Q(Mk)$ is congruent to one at those primes, whereas
+$|Q(Mk)|>1$ for some $k$. A prime divisor of that value is outside $S$,
+a contradiction. Except for finitely many primes dividing
+the discriminant, each such divisor gives a simple root of $P$ modulo $p$,
+which lifts by Hensel's lemma to a root in $\Q_p$ and hence an embedding
+$K\hookrightarrow\Q_p$. Exclude also the finitely many denominator primes
+of the coordinates of $\boldsymbol\alpha$ in an integral basis. All its
+coordinates then lie in $\Z_p$, and the normalized coordinate is still one.
+
+Let $D=\max_j\deg H_j$. Choose an integer vector $\mathbf a$ congruent to
+the embedded vector $\boldsymbol\alpha$ modulo $p^D$, choosing the normalized
+coordinate to be exactly one. Then $H_j(\mathbf a)$ is divisible by $p^D$.
+For $d_j=\deg H_j\le D$, homogeneity gives
+\[
+ H_j(\mathbf a/p)=p^{-d_j}H_j(\mathbf a)\in\Z.
+\]
+The normalized coordinate of $\mathbf a/p$ is $1/p$, so this tuple is not
+integral. All but finitely many primes supplied above work.
+\end{proof}
+
+In particular, an integral value of a sum of even powers or of a homogeneous
+norm form cannot, without other constraints, force all of two or more rational
+arguments to be integers. This explains why replacing the fifteen input
+certificates in the earlier quartic construction by one such expression
+is not a valid shortcut. The proposition does not assert a lower bound for
+arbitrary definitions or arbitrary universal systems.
+
+
+\section{Why the ninth integer certificate cannot simply be omitted}
+The mixed-domain proof uses the final integer witness to enforce divisibility,
+in addition to positivity and square conditions. Keeping a rational ternary
+wrapper while discarding its integrality test loses that information.
+Here is an exact counterexample to that attempted use of the relation-combining
+lemma. The polynomial $M_3$ used in \cite{Sun,BDHMS} is the product over all
+sign choices of the expressions
+\[
+ \begin{gathered}
+ S^2n+T^2-S^2(2R-1)
+ \left(T^2+X^3+\varepsilon_1\sqrt{A_1}
+       +\varepsilon_2X\sqrt{A_2}+\varepsilon_3X^2\sqrt{A_3}\right),
+ \\
+ X=1+A_1^2+A_2^2+A_3^2.
+ \end{gathered}
+\]
+Take $A_1=A_2=A_3=1$, $R=1$, $S=3$, and $T=1$. Then $X=4$,
+and the all-positive factor vanishes at
+\[
+ n=1+64+1+4+16-\frac19=\frac{773}{9}
+   =L\left(\frac{17}{3},\frac{22}{3},0\right).
+\]
+Nevertheless $S\nmid T$. Thus the sign condition supplied by $L$ and
+rational solvability of $M_3=0$ do not suffice for the integral
+relation-combining theorem. This example is a counterexample to the proposed
+general lemma; it does not claim to realize all the additional source-circuit
+relations simultaneously.
+
+\begin{thebibliography}{9}
+\bibitem{Sun} Z.-W. Sun, \emph{Further results on Hilbert's Tenth Problem},
+Science China Mathematics \textbf{64} (2021), 281--306.
+\url{https://arxiv.org/abs/1704.03504}; version 7, 28 January 2021.
+\bibitem{BDHMS} J. Bayer, M. David, M. Ha\ss ler, Y. Matiyasevich, and D. Schleicher,
+\emph{Diophantine equations over $\mathbb Z$: universal bounds and parallel formalization},
+\url{https://arxiv.org/abs/2506.20909v3}, 22 October 2026.
+Theorem 3, Definition 5.3, Theorem A, and Section 6.1.
+\bibitem{Jones} J. P. Jones, \emph{Universal Diophantine equation},
+Journal of Symbolic Logic \textbf{47} (1982), 549--571,
+\url{https://doi.org/10.2307/2273588}.
+\end{thebibliography}
+\end{document}

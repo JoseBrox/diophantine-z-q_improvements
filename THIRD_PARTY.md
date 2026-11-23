@@ -153,6 +153,28 @@ The primitive-prime argument builds on the duplication and canonical-height meth
 
 The fixed rational carrier obstruction uses Siegel's theorem in rational-function form as stated in **A. Levin, Siegel's theorem and the Shafarevich conjecture, Journal de Théorie des Nombres de Bordeaux 24 (2012), 705–727, Theorem 1.1**, [doi:10.5802/jtnb.818](https://doi.org/10.5802/jtnb.818), [published PDF](https://www.numdam.org/article/JTNB_2012__24_3_705_0.pdf). The proof checks positive genus and nonconstant input on each relevant degeneration component. It concerns intended integer witnesses of the specified support architecture. These external sources are cited, not redistributed.
 
+## Universal integer systems and rational undecidability transfers (v89)
+
+The mixed-domain source is **Zhi-Wei Sun, Further results on Hilbert's Tenth
+Problem**, Science China Mathematics 64 (2021), 281--306,
+[arXiv:1704.03504v7](https://arxiv.org/abs/1704.03504v7), Theorem 1.1(i).
+The explicit degree calculation uses **Jonas Bayer, Marco David, Malte Haßler,
+Yuri Matiyasevich and Dierk Schleicher, Diophantine equations over the integers:
+universal bounds and parallel formalization**,
+[arXiv:2506.20909v3](https://arxiv.org/abs/2506.20909v3), 22 October 2026.
+Their smaller degree based on the unproved `(32,12)` source pair is not adopted
+as the principal bound. These papers are cited, not redistributed.
+
+The initial quartic checkpoint used the equations printed by **Alexei
+Mishchenko and Alexander Treier, Universal input of knapsack problem for
+groups**, J. Phys. Conf. Ser. 1050 (2018), 012054,
+[doi:10.1088/1742-6596/1050/1/012054](https://doi.org/10.1088/1742-6596/1050/1/012054),
+and their attribution to **James P. Jones, Universal Diophantine equation**,
+J. Symbolic Logic 47 (1982), 549--571. The new audit distinguishes exact
+algebraic transformations of that printed system from its unresolved source
+equivalence. The `9m+2` rational transfer, rational wrapper use, and stated
+homogeneous-integrality obstruction are the present project's arguments.
+
 ## Local fibers and varying rational levels
 
 The varying-level pole theorem retains Burungale's exact simultaneous-twist input above. Its local proof uses **W. Aitken and F. Lemmermeyer, Counterexamples to the Hasse principle, Theorem 6 and Appendix C**, [author manuscript](https://public.csusm.edu/aitken_html/CounterHasse.pdf), for a nontrivial point on a nonsingular binary quartic over an odd residue field. The exact rational maps, infinite selected levels, character guards and explicit examples are proved in the repository. The external paper is cited, not redistributed.

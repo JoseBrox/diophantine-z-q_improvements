@@ -6,7 +6,43 @@ input specifying an instance is part of its coefficients and is not counted.
 The defining-polynomial tables elsewhere in the repository include their input.
 All numbers below are upper bounds; no global least value is claimed.
 
-## Initial registration, 23 November 2026
+## Proved unrestricted-degree transfers, 23 November 2026
+
+The [complete theorem](papers/transfer_general_degree.tex), also available as
+a [PDF](papers/transfer_general_degree.pdf), proves
+
+```math
+N=9m+2.
+```
+
+Sun's published mixed-domain theorem requires eight arbitrary integer
+unknowns and one nonnegative integer unknown. We substitute
+`s^2+t^2+u^2+u` for the last coordinate and certify its integrality with the
+same integer predicate. Its value is at least `-1/4`, hence nonnegative
+whenever integral; all nonnegative integers occur. This saves the output
+coordinate and needs three rational, rather than integer, square witnesses.
+
+| Defining route | Additional height hypothesis | Rational unknowns | Status |
+|:--|:--|--:|:--|
+| General 25-coordinate predicate | No additional abc hypothesis | **227** | Proved transfer, retaining source arithmetic premises |
+| Fully specified 27-coordinate predicate | No additional abc hypothesis | **245** | Proved transfer, retaining source arithmetic premises |
+| Ordinary-abc 11-coordinate predicate | Ordinary rational abc | **101** | Proved transfer, retaining source arithmetic premises |
+
+All have the explicit common degree upper bound `2*eta(58,4)`, recorded in
+the [certificate](certificates/transfer_general_degree.json). The transfer is
+generalized to `r` integer and `s` nonnegative integer unknowns, with count
+`(r+s)*m+2*s`. The manuscript also proves an obstruction to replacing arbitrary
+tuple integrality by fewer homogeneous tests and gives a counterexample to
+simply dropping the last integrality certificate.
+
+Reproduce the exact ledger with:
+
+```sh
+python -B undecidability/verify_transfer_general_degree.py
+python -B scripts/verify_v89.py
+```
+
+## Initial quartic registration and source audit
 
 The previous research session obtained the transfer formula
 
@@ -15,7 +51,7 @@ N=15m+94,
 ```
 
 where the integer predicate has `m` total coordinates and is a sum of squares
-of quadratic polynomials. The source is a universal positive-integer quadratic
+of quadratic polynomials. The intended source is a universal positive-integer quadratic
 system. Its source audit and a new independent reconstruction are in progress.
 The [baseline checkpoint](checkpoints/baseline_20261123.md) records exactly
 which claims are inherited and the earlier transcription correction.
@@ -31,6 +67,11 @@ the defining theorems' explicit arithmetic interfaces, as well as the
 universal integer system used in the transfer. An algebraic count does not
 establish those arithmetic interfaces. In particular a small stored fixture
 must not be substituted for a defining parameter.
+
+The printed final Pell equation has a missing-square discrepancy with the
+classical source. The full source equivalence has therefore not been
+established, and the old counts remain checkpoints rather than proved
+undecidability bounds.
 
 The machine-readable [registry](results.json) separates imported checkpoints
 from subsequently proved transfer theorems. New systems, proofs, certificates,

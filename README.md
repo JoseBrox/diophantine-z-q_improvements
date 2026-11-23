@@ -37,23 +37,31 @@ The [results JSON](data/results_20261123_v88.json) records all five new finite-a
 
 ## Fewest variables currently recorded for undecidability
 
-The new [undecidability category](undecidability/README.md) records reductions to
+The [undecidability category](undecidability/README.md) records reductions to
 the rational-solvability decision problem, separately from definitions of the
-integers. Its initial registration preserves the preceding session's quartic
-transfer checkpoint, with its status explicit:
+integers. The proved [mixed-domain transfer](undecidability/papers/transfer_general_degree.tex)
+uses `9m+2` rational unknowns when an integer predicate has `m` total coordinates:
 
 | Degree restriction | Additional height hypothesis | Rational unknowns | Status |
 |:--|:--|--:|:--|
-| Quartic | No additional abc hypothesis | 2,539 | [Previous transfer checkpoint](undecidability/checkpoints/baseline_20261123.md); independent source audit in progress |
-| Quartic, fully specified source | No additional abc hypothesis | 2,779 | Same transfer with the 179-coordinate integer predicate |
-| Quartic | Ordinary rational abc | 934 | Same transfer with the 56-coordinate integer predicate |
+| Unrestricted degree | No additional abc hypothesis | **227** | Proved transfer from the 25-coordinate integer predicate |
+| Unrestricted degree, fully specified source | No additional abc hypothesis | **245** | Proved transfer from the 27-coordinate integer predicate |
+| Unrestricted degree | Ordinary rational abc | **101** | Proved transfer from the 11-coordinate integer predicate |
 
-All three retain the source integer predicates' stated arithmetic premises.
-They are upper bounds reported by the previous construction, not unconditional
-theorems or claims of a global least value. The [registry](undecidability/results.json)
-will distinguish audited theorems from research checkpoints, including new
-unrestricted-degree results. The [project research document](docs/research_directions.md#undecidability-in-bounded-numbers-of-rational-unknowns)
-records this separate research objective.
+All three retain the source integer predicates' stated arithmetic premises;
+the transfer itself introduces no additional conjecture. They are upper bounds,
+not claims of a global least value. An explicit common degree upper bound is
+`2*eta(58,4) < 3.363*10^63`, with the full integer, source audit, proof and
+exact checker in the [new report](docs/results_20261123_v89.md).
+
+The earlier quartic candidates **2,539 / 2,779 / 934** remain in the
+[historical checkpoint](undecidability/checkpoints/baseline_20261123.md).
+Their universal source is under audit: the printed final Pell equation has
+a missing-square discrepancy, so those candidates are not promoted to proved
+undecidability bounds. The [registry](undecidability/results.json) distinguishes
+the proved transfers from those checkpoints. The
+[project research document](docs/research_directions.md#undecidability-in-bounded-numbers-of-rational-unknowns)
+tracks the separate quartic objective.
 
 ## Coefficients and explicit files
 
