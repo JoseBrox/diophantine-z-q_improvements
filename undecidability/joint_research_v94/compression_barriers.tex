@@ -15,7 +15,9 @@
 We isolate three precise limitations of natural compression attempts.
 The existing 139-coordinate circuit for the fixed power $b^{5^{60}}$
 is optimal in a triangular quadratic binomial model even when negative
-and fractional Laurent exponents are allowed. A single quadratic
+and fractional Laurent exponents are allowed. A second proof extends
+the same optimality to arbitrary rational-function intermediate values
+and quadratic equations selecting a rational-function branch. A single quadratic
 integer-valued test cannot recognize an unrestricted rational integer
 tuple of length at least two. Finally, an explicit Pell family shows
 that summing the private ordinary-$abc$ height expressions into one
@@ -111,9 +113,82 @@ supplies that guard as proved in~\cite{ceiling}.
 Both $b^3$ and $b^5$ are counted here; only $1,b,b^2$ are free
 initial data. If additional powers are supplied without charging their
 construction, the lower-bound input must be changed accordingly.
-This corollary does not exclude a more economical construction using
-nonmonomial intermediate values, a nontriangular system, the remaining
-source equations, or a different universal source.
+The preceding proof is restricted to Laurent powers. The next result
+covers arbitrary rational-function intermediate values, which may
+vanish and may have poles. Neither result treats nontriangular systems,
+additional relations from the outer source, or a different universal source.
+
+\section{The same optimum for arbitrary rational-function circuits}
+
+The initial data are again $b,b^2$. Now require each successive
+coordinate to be a rational function of $b$, without a monomial
+restriction. Its defining polynomial has total degree at most two in
+that coordinate and the preceding coordinates, with fixed rational
+coefficients independent of $b$. The polynomial must genuinely
+constrain the new coordinate after the preceding functions are
+substituted. We allow a quadratic equation to select a branch already
+known to be a rational function of $b$. Equalities hold as
+rational-function identities, or equivalently on a nonempty open
+interval avoiding their finitely many poles. This is a statement about
+such a chosen common rational-function branch, not about arbitrary
+choices of separate rational witnesses at each input value.
+
+\begin{theorem}\label{rational}
+Suppose the old coordinates have representations $P_i(b)/P_0(b)$
+with $P_0\ne0$ and all polynomial degrees at most $D$. After one
+permitted step they admit a common-denominator representation with
+polynomial degrees at most $2D$. If the defining row is genuinely
+quadratic in the new coordinate, degree $D$ already suffices.
+Consequently computing $b^{5^{60}}$ from $b,b^2$ still requires at
+least 139 additional coordinates, and the existing ceiling circuit is
+optimal in this rational-function model as well.
+\end{theorem}
+\begin{proof}
+Write the row as
+\[
+                 \alpha v^2+L(x)v+Q(x)=0,
+\]
+where $\alpha\in\Q$, $L$ is affine linear in the preceding
+coordinates, and $Q$ has degree at most two. After substitution set
+\[
+ A=P_0L(P/P_0),\qquad C=P_0^2Q(P/P_0).
+\]
+These are polynomials with $\deg A\le D$, $\deg C\le2D$.
+
+If $\alpha=0$, the genuine-constraint assumption gives $A\ne0$:
+otherwise the substituted row is either inconsistent or imposes no
+condition on $v$. We have $v=-C/(P_0A)$. Use the new common
+denominator $P_0A$, old numerators $P_iA$, and new numerator $-C$.
+All have degree at most $2D$. A zero new numerator is allowed.
+
+If $\alpha\ne0$, put $W=P_0v\in\Q(b)$. It satisfies
+\[
+                         \alpha W^2+AW+C=0.
+\]
+Write $W=R/S$ in lowest terms in $\Q[b]$. After multiplying by
+$S^2$, the equation shows that $S$ divides $\alpha R^2$.
+Coprimality of $R,S$, and $\alpha\ne0$ constant, imply that $S$
+is constant. Thus $W$ is a polynomial. If $\deg W>D$, the term
+$\alpha W^2$ has degree strictly greater than both $AW$ and $C$,
+so its leading coefficient cannot cancel. This contradiction proves
+$\deg W\le D$. The old common denominator $P_0$, together with
+the new numerator $W$, therefore suffices. The case $W=0$ is immediate.
+
+Initially use $P_0=1$, $P_1=b$, $P_2=b^2$, with $D=2$.
+After $L$ coordinates the degree bound is at most $2^{L+1}$.
+If the output equals $b^M$ for $M=5^{60}$, its numerator and the
+nonzero common denominator satisfy $P_{\rm out}=b^MP_0$.
+Hence $\deg P_{\rm out}=M+\deg P_0\ge M$. The strict integer
+inequality $2^{139}<M$ rules out $L\le138$. Corollary~\ref{optimal}
+supplies the matching 139-coordinate upper bound.
+\end{proof}
+
+This proof does not assume that intermediate values are nonzero.
+It does assume a common rational-function branch and triangular
+construction. In particular it does not supply a lower bound for
+simultaneously implicit quadratic systems, for algebraic-function
+branches of positive genus, or for the entire Diophantine transfer.
+No hidden coefficient depending on $b$ is permitted.
 
 \section{One quadratic integer test cannot replace a whole tuple}
 
@@ -225,7 +300,7 @@ it would require a new proof rather than the former two-term bound.
 
 The adjacent \texttt{verify\_compression\_barriers.py} independently
 reconstructs the 139-step exponent sequence, checks the strict integer
-inequalities in Corollary~\ref{optimal}, exercises the interval lemma
+inequalities and rational-function degree recursion, exercises the interval lemma
 on signed rational edge cases, checks the quadratic level-set identity
 symbolically, and verifies the first twelve Pell height counterexamples
 by exact rational arithmetic. Its deterministic JSON output is recorded

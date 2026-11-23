@@ -1,0 +1,214 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs,hyperref,xurl}
+\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\Z}{\mathbb Z}\newcommand{\Q}{\mathbb Q}
+\title{A Pell half-trace square absorbs a nonzero guard}
+\author{\(\mathbb Z\mathbb Q\) Diophantine Project}
+\date{23 November 2026}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+In the corrected signed binomial source, one square equation chooses
+the sign of the first Pell trace, while a separate reciprocal ensures
+that its parameter is nonzero. A different square equation performs
+both jobs. Its right side is four times an even-index Pell half-trace
+square on every intended witness, and equals two on the unwanted
+zero-parameter branch. An existing product coordinate makes the new
+equation quadratic. This saves one variable and one residual in each
+complete table, giving general, specified, and ordinary rational-\(abc\)
+quartics with 982, 1147, and 733 rational variables. The local result
+is unconditional; each undecidability transfer retains all arithmetic
+premises of its integer interface and its cited classical coding theorem.
+\end{abstract}
+
+\section{The replacement square}
+
+For an integer \(a\), use the polynomial Pell sequences
+\[
+ X_n(a)+Y_n(a)\sqrt{a^2-1}
+       =(a+\sqrt{a^2-1})^n
+\]
+or equivalently their usual integer polynomial recurrence. The
+addition identities remain polynomial identities for every signed
+parameter \(a\).
+
+\begin{lemma}[Sign and completeness]\label{branch}
+Let \(a,c,d\in\Z\) satisfy
+\[
+ |a|\ge2,\qquad |c|>1,\qquad d^2-(a^2-1)c^2=1.
+\]
+If \(\zeta\in\Q\) satisfies
+\begin{equation}\label{newroot}
+                 \zeta^2=2\bigl(ad+(a^2-1)c+1\bigr),
+\end{equation}
+then \(ad>0\). Conversely, if
+\(c=Y_B(a)\), \(d=X_B(a)\), and \(B\ge1\) is odd, then
+\eqref{newroot} has a rational, indeed integral, solution.
+\end{lemma}
+\begin{proof}
+Put \(A=|a|\) and \(D=a^2-1\ge3\). The norm forces
+\(d\ne0\). If \(ad<0\), then \(ad=-A|d|\). For \(c<0\),
+\(Dc+1<0\), so the right side of \eqref{newroot} is negative.
+For \(c>0\), the hypothesis gives \(c\ge2\), and
+\[
+ A^2d^2-(Dc+1)^2
+   =(D+1)(Dc^2+1)-(Dc+1)^2
+   =D(c-1)^2>0.
+\]
+Both \(A|d|\) and \(Dc+1\) are positive, hence
+\(A|d|>Dc+1\). Again the right side of \eqref{newroot}
+is negative. A rational square cannot be negative, proving \(ad>0\).
+
+For the converse the addition and doubling identities give
+\[
+ ad+(a^2-1)c=X_{B+1}(a),\qquad
+ X_{B+1}(a)+1=2X_{(B+1)/2}(a)^2.
+\]
+Thus \(\zeta=2X_{(B+1)/2}(a)\) satisfies \eqref{newroot}.
+\end{proof}
+
+\section{Excluding the zero-parameter branch first}
+
+The retained corrected source has integral \(r,s,w,c,h\), rational
+\(\tau\), and
+\[
+ Y=sM,\quad a=(wM+1)rY,\quad p=2wr^2Y^2M,\quad
+ k=r+1+h(p-1),\qquad M=n^2\ge16.
+\]
+It also has the two relations
+\begin{equation}\label{small}
+ \tau^2=(p^2-1)k^2+1,
+ \qquad k^2-4(c-kY)^2>0.
+\end{equation}
+The strict inequality is represented by the existing positivity row.
+The source-prefix reconstruction establishes the integrality just
+listed before any use of \(s\ne0\) or of Pell classification.
+
+\begin{lemma}[The new square excludes \(s=0\)]\label{nonzero}
+With the retained source relations above, the first Pell norm
+\(d^2-(a^2-1)c^2=1\), and \eqref{newroot}, one has \(s\ne0\).
+\end{lemma}
+\begin{proof}
+Suppose \(s=0\). Then \(Y=a=p=0\), while
+\(k=r+1-h\) is an integer. The strict inequality in \eqref{small}
+implies \(k\ne0\). The norm for \(\tau\) says
+\(\tau^2+k^2=1\), so \(k=\pm1\), \(\tau=0\).
+The inequality now gives \(1-4c^2>0\). Since \(c\) is an
+integer, \(c=0\). The first Pell norm then gives \(d=\pm1\),
+and \eqref{newroot} reduces to \(\zeta^2=2\), impossible over
+\(\Q\). This contradiction proves the claim. It does not use the
+reciprocal for the later integer witness \(i\), any sign of \(w\),
+or the third Pell equation.
+\end{proof}
+
+\begin{theorem}[A guard-free equivalent source]\label{source}
+In the eleven-integer-input source of \cite{CRT}, replace the private
+square equation
+\[
+                   \zeta^2=(a-1)(d-1)
+\]
+by \eqref{newroot}, and delete the reciprocal equation
+\(s s_{\rm inv}=1\) and its private coordinate \(s_{\rm inv}\).
+The new and old systems have the same projection on their coding
+prefix and instance. All other source coordinates and integer input
+predicates remain as before; the private square witness can be
+rechosen.
+\end{theorem}
+\begin{proof}
+For a new rational solution, Lemma~\ref{nonzero} first recovers
+\(s\ne0\). The proof of the signed binomial theorem in
+\cite{Signed} then excludes \(w=0\), proves \(|a|\ge2\) and
+\(|c|>B=2r+1\ge3\), and establishes the noncircular reciprocal
+guard for \(i\). These arguments precede the selection of the first
+Pell trace's sign. The one-quotient index theorem of \cite{CRT}
+gives
+\[
+                   |c|=Y_B(|a|),\qquad |d|=X_B(|a|).
+\]
+Lemma~\ref{branch} supplies \(ad>0\), hence \(d=X_B(a)\)
+because \(B\) is odd. The remainder of the signed binomial proof
+therefore applies verbatim and gives \(w,s,c>0\) and the required
+central-binomial divisibility and power-of-two relation. The old
+reciprocal can be restored as \(s_{\rm inv}=1/s\). The old square
+witness can also be restored: for \(B=2r+1\), the polynomial
+identity
+\[
+ (a-1)(X_B(a)-1)
+   =\bigl((a-1)(Y_{r+1}(a)+Y_r(a))\bigr)^2
+\]
+gives it explicitly. Since that old square coordinate occurred only
+in its single defining row, rechoosing it affects nothing else.
+
+Conversely, every old source solution reconstructs the positive
+canonical first Pell values \(c=Y_B(a)\), \(d=X_B(a)\).
+Lemma~\ref{branch} gives the new square witness. Drop
+\(s_{\rm inv}\), keep every other coordinate, and every new
+relation holds. No integer input is added or dropped in this step.
+\end{proof}
+
+\section{Quadratic implementation and complete counts}
+
+Every predecessor table already contains the register
+\(A_c=ac\) with the row \(A_c-ac=0\). Equation
+\eqref{newroot} is therefore implemented by the single quadratic
+residual
+\begin{equation}\label{quad}
+                    \zeta^2-2ad-2aA_c+2c-2.
+\end{equation}
+It replaces one old quadratic residual and uses the same private
+square coordinate. Removing \(s_{\rm inv}\) and its row saves
+one coordinate and one row. Exact occurrence checks certify that
+\(s_{\rm inv}\) occurred only in the deleted guard, and that the
+square coordinate occurs only in the changed row.
+
+Applying this transformation to the complete v95 tables gives
+\begin{center}
+\begin{tabular}{lrrrr}
+\toprule
+Interface&Old variables&New variables&Old rows&New rows\\
+\midrule
+General&983&982&855&854\\
+Specified&1148&1147&998&997\\
+Ordinary rational \(abc\)&734&733&643&642\\
+\bottomrule
+\end{tabular}
+\end{center}
+The input \(x\) remains a coefficient; \(z,u,y\) remain the fixed
+coding parameters. Coefficients remain in \(\Z[x,z,u,y]\), and
+the sum of the squared residuals still has degree exactly four.
+Theorem~\ref{source} and the previously proved complete transfer
+give undecidability under exactly the arithmetic premises of each
+retained integer interface and the same cited Jones coding theorem.
+The local guard absorption itself is unconditional.
+
+\section{Reproducibility}
+
+Run
+\begin{verbatim}
+python undecidability/pell_halftrace_v96/build_halftrace.py
+python undecidability/pell_halftrace_v96/verify_halftrace.py
+\end{verbatim}
+The independent verifier checks both polynomial identities, signed
+Pell fixtures, the zero-\(s\) obstruction, all private occurrences,
+every unchanged residual, complete coordinate support, quadratic
+degree, counts, hashes, and deterministic rebuilding. The proof of
+the quantified source equivalence is Theorem~\ref{source}; finite
+fixtures do not replace that proof.
+
+\begin{thebibliography}{9}
+\small\setlength{\itemsep}{2pt}
+\bibitem{Signed} \(\mathbb Z\mathbb Q\) Diophantine Project,
+\emph{Signed binomial witnesses force their own positivity and save
+five quadratic coordinates}, 23 November 2026.\par
+\nolinkurl{undecidability/source_repair_v93/signed_binomial_positivity.tex}.
+\bibitem{CRT} \(\mathbb Z\mathbb Q\) Diophantine Project,
+\emph{A single integer quotient for the third Pell certificate},
+23 November 2026.\par
+\nolinkurl{undecidability/pell_crt_v95/one_quotient_pell.tex}.
+\end{thebibliography}
+\end{document}

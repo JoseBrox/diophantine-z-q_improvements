@@ -24,6 +24,26 @@ def verify():
         exponents.add(new)
         assert max(exponents)-min(exponents) <= 2*old_width
     assert target in exponents
+    rational_degree = 2
+    for _ in range(139):
+        rational_degree *= 2
+    assert rational_degree == 2**140 and rational_degree//2 < target <= rational_degree
+    base=sp.symbols('base')
+    # An explicit nonmonomial rational-function step with a nonconstant old denominator.
+    p0=base**2+1
+    p1=base**2-base
+    p2=base+1
+    a=p0+2*p1-p2
+    c=p1*p2+p0*p0
+    fresh=-c/(p0*a)
+    assert sp.cancel((1+2*p1/p0-p2/p0)*fresh+(p1*p2+p0*p0)/p0**2)==0
+    assert max(sp.degree(poly,base) for poly in (p0*a,p1*a,p2*a,c)) <= 4
+    # A genuinely quadratic row with a rational-function root needs no degree increase.
+    w=base**2-base+1
+    aa=base+3
+    cc=-w*w-aa*w
+    assert sp.expand(w*w+aa*w+cc)==0
+    assert sp.degree(w,base)<=2 and sp.degree(aa,base)<=2 and sp.degree(cc,base)<=4
 
     edge_cases = 0
     for old in ([F(0)], [F(0),F(1)], [F(-1),F(0)],
@@ -65,11 +85,14 @@ def verify():
     return {'status':'PASS', 'target_exponent':str(target),
             'strict_lower_power':139,'strict_upper_power':140,
             'power_coordinates':139,'triangular_laurent_lower_bound':139,
+            'triangular_rational_function_lower_bound':139,
+            'common_numerator_degree_after_139_steps':str(rational_degree),
             'rational_interval_edge_cases':edge_cases,
             'quadratic_level_identity':True,'pell_norm_identity':True,
             'height_sum_identity':True,'height_counterexample_tuple_length':k,
             'height_counterexamples':examples,
-            'scope':['Triangular quadratic binomial Laurent coordinates only',
+            'scope':['Triangular quadratic binomial Laurent coordinates, including fractional powers',
+                     'Triangular quadratic circuits on a common rational-function branch',
                      'One quadratic integer-valued test on an unrestricted tuple',
                      'Unrestricted shared-height inequality, without elliptic constraints'],
             'new_undecidability_claim':False,'new_variable_count_claim':False}

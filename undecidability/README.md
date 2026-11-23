@@ -37,9 +37,9 @@ the historical encoders; all historical specifications remain unchanged.
 
 | Integer interface | Rational unknowns | Quadratic residuals | Additional height hypothesis |
 |:--|--:|--:|:--|
-| General | **983** | **855** | No additional abc |
-| Specified | **1148** | **998** | No additional abc |
-| Ordinary abc | **734** | **643** | Ordinary rational abc |
+| General | **982** | **854** | No additional abc |
+| Specified | **1147** | **997** | No additional abc |
+| Ordinary abc | **733** | **642** | Ordinary rational abc |
 
 The [corrected-source theorem](source_repair_v93/corrected_jones_source.tex)
 ([PDF](source_repair_v93/corrected_jones_source.pdf)) uses Jones's 1980
@@ -66,7 +66,11 @@ source correction and degree improvements are in the
 The [one-quotient Pell theorem](pell_crt_v95/one_quotient_pell.tex) removes
 one integrality predicate, saving another **60 / 75 / 47** variables.
 The [v95 report](../docs/results_20261123_v95.md) records the complete
-eleven-block systems and exact coefficient audits.
+eleven-block systems and exact coefficient audits. The
+[half-trace square](pell_halftrace_v96/halftrace_guard.tex) then absorbs
+the s-nonzero guard, saving one more variable and row in each route.
+The [v96 report](../docs/results_20261123_v96.md) is the current
+continuation checkpoint.
 
 ### Method and intermediate improvements
 
