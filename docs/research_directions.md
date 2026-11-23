@@ -14,8 +14,8 @@ The [additional research routes](research_routes_20261120.md) prove a complex-mu
 
 ## Undecidability in bounded numbers of rational unknowns
 
-The [v99 continuation](results_20261123_v99.md) gives corrected quartic
-transfers in **972 / 1146 / 696** rational unknowns, with
+The [v100 continuation](results_20261123_v100.md) gives corrected quartic
+transfers in **971 / 1145 / 696** rational unknowns, with
 **826 / 996 / 591** quadratic residuals. The instance is a coefficient
 parameter. The third route assumes ordinary rational abc; all routes retain
 their integer predicate's stated arithmetic premises.
@@ -58,6 +58,9 @@ the auxiliary index bound. The abc chart reuses a fourth-power coordinate.
 This saves six more variables in general and seven under ordinary abc.
 The retained product identity a=(U+1)*sr then eliminates the sr2 square
 register in every route, saving one further variable and row exactly.
+An existing aggregate shift now supplies the contact spacing, fixed
+before prime selection. This resolves the earlier ordering issue by a
+different invariant and saves one variable in both general routes.
 Every remaining residual and denominator guard is retained explicitly.
 
 For unrestricted degree, **82 / 100 / 52** remains the smallest recorded

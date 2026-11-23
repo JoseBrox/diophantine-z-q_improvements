@@ -37,8 +37,8 @@ the historical encoders; all historical specifications remain unchanged.
 
 | Integer interface | Rational unknowns | Quadratic residuals | Additional height hypothesis |
 |:--|--:|--:|:--|
-| General | **972** | **826** | No additional abc |
-| Specified | **1146** | **996** | No additional abc |
+| General | **971** | **826** | No additional abc |
+| Specified | **1145** | **996** | No additional abc |
 | Ordinary abc | **696** | **591** | Ordinary rational abc |
 
 The [corrected-source theorem](source_repair_v93/corrected_jones_source.tex)
@@ -85,9 +85,15 @@ see the [v98 report](../docs/results_20261123_v98.md) and
 certificates in the general and abc constructions.
 The [product identity](pell_product_v99/pell_product_elimination.tex)
 then removes one square register from each route by an exact polynomial
-inverse lift. This gives the current **972 / 1146 / 696** variable counts,
+inverse lift. This gives **972 / 1146 / 696** variable counts,
 with **826 / 996 / 591** quadratic residuals. See the
 [v99 report](../docs/results_20261123_v99.md) and [full tables](pell_product_v99).
+The [aggregate-spacing proof](aggregate_spacing_v100/aggregate_spacing.tex)
+then determines the spacing from already fixed difference points. Its
+affine substitution removes one variable in the general and specified
+systems. The current counts are **971 / 1145 / 696**; see the
+[v100 report](../docs/results_20261123_v100.md) and
+[complete tables](aggregate_spacing_v100).
 
 ### Method and intermediate improvements
 

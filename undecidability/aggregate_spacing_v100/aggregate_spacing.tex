@@ -1,0 +1,267 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs,hyperref,xurl}
+\hypersetup{hidelinks}
+\setlength{\emergencystretch}{2em}
+\newtheorem{lemma}{Lemma}\newtheorem{theorem}[lemma]{Theorem}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\title{A retained aggregate shift supplies the common contact spacing}
+\author{\(\mathbb Z\mathbb Q\) Diophantine Project}
+\date{23 November 2026}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+The arithmetic-progression contact construction uses a free spacing
+coordinate. We identify an existing aggregate shift whose two-adic
+valuation is exactly the common lower bound for every contact list.
+One sixteenth of this shift separates up to sixteen indexed blocks.
+It depends only on fixed difference points, so it remains fixed when
+the reference index is subsequently adjusted at comparison primes.
+The stored spacing is an affine combination of two retained contact
+coordinates in both the general and specified charts. This removes
+one coordinate without changing the number or degree of the rows.
+\end{abstract}
+
+\section{The fixed difference points and the order of choices}
+
+Use the simultaneous preparation of \cite{Shared} and the affine
+contact progression of \cite{Progression}. The scalar label in this
+section is denoted \(a_s\); it is unrelated to the Pell parameter
+of the outer source. Write \(K=v_2(a_s)\). The original preparation
+in both charts \cite{Scalar,Shared}
+chooses \(64\mid h\) and a positive exact depth
+\(v_2(a_s/h)\); hence \(K\ge2\) already holds. No fixed upper
+bound on this depth is imposed. Its compatibility with the odd-place
+annihilation orders is precisely the retained simultaneous preparation.
+
+For each integer input \(X_i\), put \(\beta_i=51X_i^2+2504\).
+The common Lucas sequence is
+\[
+ U_0=0,\quad U_1=1,\quad U_{n+1}=(a_s+1)U_n-U_{n-1},
+ \qquad t=U_{a_s},\quad b_s=U_{a_s-1}/(a_s-1).
+\]
+The fixed difference points are
+\[
+ Q_{1,i}=[2\beta_i]R_0,\quad Q_2=[a_s]R_0,
+ \quad Q_3=[t]R_0,\quad Q_4=[(b_s-1)/2]R_0.
+\]
+They are fixed before the contact primes are chosen and do not change
+when the reference index \(h\) is later retuned. Their coordinates,
+and the input-dependent scalar normalizers \(R_i\), determine all
+aggregate shifts below.
+
+\section{The common Lucas point strictly dominates at two}
+
+Normalize the valuation on \(\Q_2(\sqrt2)\) by \(v_2(2)=1\).
+The established formal calculation on the source curve \cite{Formal} gives, for
+every nonzero even integer \(n\),
+\begin{equation}\label{formal}
+ v_2\bigl(x([n]R_0)\bigr)=-2v_2(n)-1.
+\end{equation}
+If \(x=x_0+x_1\sqrt2\), its two summands have valuations in
+distinct cosets modulo \(\Z\). Since \eqref{formal} is integral,
+the real component has exactly that valuation and the imaginary
+component has valuation at least that value.
+
+\begin{lemma}\label{Lucas}
+For \(a_s\in6\Z_{>0}\) and \(K=v_2(a_s)\ge2\),
+\[
+ v_2(t)=2K+1,\qquad v_2(b_s-1)=K.
+\]
+\end{lemma}
+\begin{proof}
+Put \(P=a_s+1\). The recurrence gives
+\(U_3=P^2-1=a_s(a_s+2)\), of valuation \(K+1\), and
+\(V_3=P^3-3P\equiv2\pmod4\) for the companion trace sequence.
+The addition identity gives \(U_{3m}/U_3=U_m(V_3)\).
+For a recurrence parameter congruent to two modulo four, an odd
+index has odd \(U\)-value, and every companion trace value is
+congruent to two modulo four. The doubling identity
+\(U_{2j}=U_jV_j\) therefore contributes exactly one factor of
+two at each doubling. Thus \(v_2(U_{3m}/U_3)=v_2(m)\).
+Taking \(m=a_s/3\) gives the first formula.
+
+For the second, write \(a_s-1=6l-1\), and regard \(U_n\)
+as an integer polynomial in \(P\). At \(P=1\), the recurrence
+and its derivative give
+\(U_{6l-1}(1)=-1\), \(U'_{6l-1}(1)=-2l\).
+Taylor expansion at \(P=1\), with \(P-1=a_s\), yields
+\(U_{a_s-1}(a_s+1)\equiv-1\pmod{2^{K+1}}\).
+Thus its difference from \(a_s-1\) has valuation exactly \(K\).
+Division by the odd integer \(a_s-1\) proves the result.
+\end{proof}
+
+The elementary integer-label and scalar-normalizer calculations \cite{Scalar} give
+\(v_2(\beta_i)\le3\) and \(v_2(R_i)\in\{2,3\}\).
+Consequently the valuations of the real components in the four root
+contributions are
+\begin{center}
+\begin{tabular}{lc}
+\toprule
+Contribution & Real-component valuation\\
+\midrule
+\(x(Q_{1,i})\) & at least \(-9\)\\
+\(R_i x(Q_2)\) & at least \(-2K+1\)\\
+\(x(Q_2)\) in the specified chart & \(-2K-1\)\\
+\(x(Q_3)\) & exactly \(-4K-3\)\\
+\(x(Q_4)\) & exactly \(-2K+1\)\\
+\bottomrule
+\end{tabular}
+\end{center}
+For \(K\ge2\), the \(Q_3\) term has strictly smaller valuation
+than every other contribution. Every imaginary component has at
+least the same lower bound \(-4K-3\).
+
+\section{The retained shift separates every contact list}
+
+In the general chart the aggregate is
+\[
+ T_i=7+\frac14\operatorname{Tr}
+       \bigl(x(Q_{1,i})+R_i x(Q_2)+x(Q_3)+x(Q_4)\bigr).
+\]
+The preceding strict dominance gives
+\begin{equation}\label{Tval}
+                         v_2(T_i)=-4K-4.
+\end{equation}
+Its two internally disjoint contact lists are translates of the fixed
+contact set by \(0\) and \(T_i\). The fixed contact constants are
+two-adically integral, so every contact position belongs to
+\(2^{-4K-4}\Z_2\).
+
+In the specified chart write
+\[
+ S_{0,i}+S_{1,i}\sqrt2=x(Q_{1,i})+x(Q_2)+x(Q_3)+x(Q_4).
+\]
+Its two successive shifts are
+\[
+ T_i=13+S_{0,i}/2,\qquad V_i=17+(S_{0,i}-S_{1,i})/2.
+\]
+Again \(v_2(T_i)=-4K-4\), while
+\(v_2(V_i)\ge-4K-4\). All fixed contact constants have valuation
+at least \(-1\). Thus the three lists, translated by \(0,T_i,T_i+V_i\),
+have the same common lower bound.
+
+\begin{lemma}[Spacing from one fixed aggregate]\label{separation}
+Choose the input block labelled \(b\) as the root block and put
+\(D=T_b/16\). For distinct block indices \(i,j\) in
+\(\{0,\ldots,15\}\), the translated contact lists
+\(\mathcal A_i-iD\) and \(\mathcal A_j-jD\) are disjoint.
+\end{lemma}
+\begin{proof}
+The valuation of every difference of two old contact positions is
+at least \(-4K-4\). But \(v_2(D)=-4K-8\), and
+\(v_2(i-j)\le3\), so
+\[
+                  v_2((i-j)D)\le-4K-5.
+\]
+These quantities cannot be equal. This proves the assertion,
+including repeated integer inputs.
+\end{proof}
+
+The choice of \(D\) is made entirely from the fixed difference
+points. It therefore stays fixed during every later reference-index
+congruence and approximation step. Apply the original finite-family
+supplier to the disjoint translated lists, with the same enlargement
+of finite avoidance as in \cite{Progression}. No moving coefficients
+occur. The common slope \(\lambda\) is still free to satisfy the
+selected-prime congruences and the retained local and real limits.
+At all those places \(iD\) is a fixed rational translation, so the
+old asymptotic \(q(\lambda+iD+u)=\kappa\lambda^{-2}
++O(\lambda^{-3})\) and every global-gauge argument apply unchanged.
+
+\section{Affine substitution in the complete quadratic charts}
+
+Write \(t=\texttt{int\_b\_2}\), \(t'=\texttt{int\_b\_68}\),
+and \(d=\texttt{contact\_common\_spacing}\). In the general
+chart \(t=\lambda/\rho\), \(t'=(\lambda+T_b)/\rho\),
+and the spacing coordinate is \(d=D/\rho\). In the specified
+chart \(t=\lambda\), \(t'=\lambda+T_b\), and \(d=D\).
+Thus in both charts the exact substitution is
+\begin{equation}\label{substitution}
+                              d=(t'-t)/16.
+\end{equation}
+The respective retained aggregate rows have constant terms fourteen
+and twenty-six, and exactly give these physical shifts.
+
+\begin{theorem}
+In either complete affine-contact table with block indices contained
+in \(\{0,\ldots,15\}\), substitute \eqref{substitution} everywhere
+and delete \(d\). The resulting complete system has one fewer
+variable, the same number of quadratic residuals, and the same outer
+integer-input projection under the retained arithmetic interfaces.
+\end{theorem}
+\begin{proof}
+For soundness assign \(d\) by \eqref{substitution}; every old row is
+then exactly the substituted row. No division by a variable occurs,
+and every inherited gauge guard remains. Conversely choose the
+simultaneous integer witness using Lemma~\ref{separation}. The original
+progression construction then satisfies \eqref{substitution} and
+fills every other coordinate as before. Because the substitution is
+affine with rational constant coefficients, all rows remain quadratic;
+clearing constant denominators gives integer polynomial coefficients.
+\end{proof}
+
+The historical candidate using a scalar secant coordinate remains
+unproved because that coordinate moves with the reference. The present
+argument uses an invariant of the fixed difference points and does not
+assert any property of that earlier candidate.
+
+\section{Complete tables and verification}
+
+Apply the affine substitution to the frozen product-elimination
+predecessors in
+\nolinkurl{undecidability/pell_product_v99/}. The general family has
+thirteen blocks indexed by \(0,\ldots,8,10,\ldots,13\); the
+specified family has eleven blocks indexed by
+\(0,\ldots,8,10,11\). Both lie within the stated sixteen-index
+range. The complete censuses are
+\begin{center}
+\begin{tabular}{lrrrr}
+\toprule
+Interface & Old variables & New variables & Old rows & New rows\\
+\midrule
+General & 972 & 971 & 826 & 826\\
+Specified & 1146 & 1145 & 996 & 996\\
+\bottomrule
+\end{tabular}
+\end{center}
+All source equations and integer predicates remain unchanged. The
+ordinary-\(abc\) interface uses its existing fixed offsets and is
+unaffected by this transformation. The general fixed parameter and
+the specified arithmetic interfaces retain precisely their existing
+scopes; no extra prime-supplier or source-universality hypothesis is
+introduced.
+
+The deterministic builder and the independent audit are
+\begin{verbatim}
+python undecidability/aggregate_spacing_v100/build_aggregate_spacing.py
+python undecidability/aggregate_spacing_v100/verify_aggregate_spacing.py
+\end{verbatim}
+The checker imports no builder. It expands the affine substitution
+independently, checks all fourteen or twenty-two changed rows and
+all 812 or 974 unchanged rows, verifies constant row multipliers,
+integer polynomial coefficients, full coordinate support, degree,
+the retained aggregate and gauge rows, metadata, and hashes. It also
+checks seventy-five exact modular Lucas fixtures and all 120 positive
+differences among sixteen indices. The finite fixtures support the
+arithmetic proof without replacing its quantified statements.
+
+\begin{thebibliography}{9}
+\small\setlength{\itemsep}{2pt}
+\bibitem{Shared} \(\mathbb Z\mathbb Q\) Diophantine Project,
+\emph{Shared quartic checkpoint}, simultaneous scalar preparation and
+fixed difference-point construction.
+\par\nolinkurl{undecidability/papers/shared_quartic_checkpoint.tex}.
+\bibitem{Progression} \(\mathbb Z\mathbb Q\) Diophantine Project,
+\emph{A common arithmetic progression of contact arguments and shared
+coefficients of their centered powers}.
+\par\nolinkurl{undecidability/general_contact_v94/affine_contact_progressions.tex}.
+\bibitem{Formal} \(\mathbb Z\mathbb Q\) Diophantine Project,
+\emph{Paired contact quartic construction}, formal-parameter calculation.
+\par\nolinkurl{papers/quartic_existence/paired_contact56_20261119_v81.tex}.
+\bibitem{Scalar} \(\mathbb Z\mathbb Q\) Diophantine Project,
+\emph{Scalar point charts for the general and specified interfaces}.
+\par\nolinkurl{papers/quartic/scalar_point163_179_20261120_v82.tex}.
+\end{thebibliography}
+\end{document}
