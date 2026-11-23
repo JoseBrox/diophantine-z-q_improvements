@@ -1,0 +1,322 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs,hyperref,xurl,microtype}
+\setlength{\emergencystretch}{3em}
+\hypersetup{hidelinks}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\Nm}{\operatorname{N}}
+\title{A common quadratic norm polynomial\\
+and the removal of private field coordinates}
+\author{\(\mathbb Z\mathbb Q\) Diophantine Project}
+\date{23 November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+We give an exact compression of a family of quadratic norm quotients.
+If all blocks have the same two field quantities \(K,Q\), then the
+norms of \(K+RQ\), as the rational scalar \(R\) varies, are evaluations
+of one quadratic polynomial. Three common rational coefficients replace
+two private rational coordinates in every block. For twelve blocks this
+removes 21 variables and 21 quadratic equations, including all zero-case
+and occurrence checks. Applied to the completed scalar-chart tables,
+the construction gives 1122 variables and 966 quadratic equations, or
+1302 variables and 1122 equations. These counts precede the separate
+nine-variable Pell reduction. The resulting quartics retain the
+arithmetic interfaces of their predecessors and the unresolved source
+universality assertion \(U_{\mathrm{em}}\); no unconditional
+undecidability claim is made.
+\end{abstract}
+
+\section{The algebraic reduction}
+
+Let \(L/\Q\) be a quadratic field, with its nontrivial automorphism
+written \(z\mapsto\overline z\). Write \(\Tr\) and \(\Nm\) for
+the field trace and norm. Suppose that \(K,Q\in L\) are common
+quantities, that \(Q\ne0\), and that
+\begin{equation}\label{traceQ}
+                           \Tr(Q)\ne0.
+\end{equation}
+The letter \(K\) here denotes a field element, rather than a field.
+For each \(1\le i\le k\), let \(R_i\in\Q^\times\) and
+\(\tau_i\in\Q\), and suppose that a register \(R_{2,i}=R_i^2\)
+is already present. The old private variable is a field element
+\(J_i\in L\), constrained by
+\begin{equation}\label{old}
+ R_i(J_i-Q)=K,\qquad
+ \tau_i\Tr(J_i-Q)=\Nm(J_i).
+\end{equation}
+The first equation has two rational components; the second has one.
+
+\begin{lemma}[The common denominator is forced]\label{denom}
+If \(k\ge1\) and \eqref{old} holds, then \(T:=\Tr(K)\ne0\).
+\end{lemma}
+\begin{proof}
+If \(T=0\), the first equation and \(R_i\ne0\) give
+\(\Tr(J_i-Q)=0\). The second gives \(\Nm(J_i)=0\), so
+\(J_i=0\), because \(L\) is a field. The first equation is
+then \(K=-R_iQ\), whence \(T=-R_i\Tr(Q)\ne0\), a contradiction.
+\end{proof}
+
+Introduce three common rational variables \(A,B,C\), and impose
+\begin{align}
+ A T&=\Nm(K),&
+ B T&=\Tr(K\overline Q),&
+ C T&=\Nm(Q).                                    \label{coefficients}
+\end{align}
+The new private equation is
+\begin{equation}\label{new}
+                  R_i\tau_i=A+B R_i+C R_{2,i}.
+\end{equation}
+
+\begin{theorem}[Exact norm compression]\label{compression}
+Under the assumptions just stated, \eqref{old} for every \(i\)
+and \eqref{coefficients}--\eqref{new} have exactly the same
+projection to all retained coordinates. The deleted private values
+are uniquely recovered by
+\begin{equation}\label{recover}
+                           J_i=Q+K/R_i.
+\end{equation}
+If \(K,Q\) are represented by their two rational components and
+\(R_{2,i}\) is an existing coordinate, all new equations have total
+degree at most two. The transformation removes \(2k-3\) rational
+coordinates and \(2k-3\) rational quadratic equations.
+\end{theorem}
+\begin{proof}
+For any rational \(R\), direct multiplication gives
+\begin{equation}\label{normexpansion}
+ \Nm(K+RQ)=\Nm(K)+R\Tr(K\overline Q)+R^2\Nm(Q).
+\end{equation}
+Suppose first that the old equations hold. Lemma~\ref{denom}
+allows the unique definitions in \eqref{coefficients}. By
+\eqref{recover},
+\[
+ \Tr(J_i-Q)=T/R_i,\qquad
+ \Nm(J_i)=R_i^{-2}\Nm(K+R_iQ).
+\]
+Multiplying the old trace equation by \(R_i^2\), and using
+\eqref{normexpansion}, yields
+\[
+ R_i\tau_i T=\Nm(K)+R_i\Tr(K\overline Q)+R_i^2\Nm(Q).
+\]
+Division by \(T\), together with \(R_{2,i}=R_i^2\), gives
+\eqref{new}.
+
+Conversely suppose that all the new equations hold. Their last
+common equation gives \(CT=\Nm(Q)\ne0\), so \(T\ne0\)
+without any additional inverse coordinate. Define \(J_i\) by
+\eqref{recover}; this uses only the already required \(R_i\ne0\).
+The first old equation follows immediately. Multiplying
+\eqref{new} by \(T\) and applying the three common equations
+gives the displayed norm equality, and division by \(R_i^2\)
+recovers the second old equation. Thus every old private equation
+is restored.
+
+Norms and traces of quadratic-field elements have degree at most
+two in their rational components. Hence all three common equations
+are quadratic, as is \eqref{new}. We delete the \(2k\) rational
+components of the \(J_i\), and add three rational coordinates.
+The \(3k\) old rational residuals become \(k+3\), giving the
+same saving \(2k-3\) in their number.
+\end{proof}
+
+\begin{remark}[The trace hypothesis has a precise role]
+Condition \eqref{traceQ} is needed for the old-to-new direction.
+For example, in \(L=\Q(\sqrt2)\), let \(k=1\), \(R_1=1\),
+\(Q=\sqrt2\), \(K=-\sqrt2\), and \(J_1=0\). Then
+\eqref{old} holds for every \(\tau_1\), but \(T=0\) and
+\(CT=\Nm(Q)=-2\) is impossible. In the application below,
+\(Q\) is a nonzero square in a real quadratic field, so
+\eqref{traceQ} is automatic.
+\end{remark}
+
+\section{Application to the combined quadratic systems}
+
+In the predecessor construction \cite{rechart}, the field is
+\(L=\Q(\sqrt2)\), and the common quantities are
+\[
+ Q=f^2,\qquad f=1/x(H)\ne0,\qquad K=Z^2.
+\]
+The old field variable is \(J_i=\widehat J_i\), and
+\(\tau_i=\widehat\tau_i\). The literal predecessor equations
+are precisely \eqref{old}. Their other scalar and native-pole
+equations use \(\widehat\tau_i\), the existing \(R_i^2\), and
+the other native-pole variables, and do not use \(\widehat J_i\).
+The preceding scalar-chart reduction removed all occurrences of
+\(\widehat J_i\) from the common point relations.
+
+Since \(f=f_0+f_1\sqrt2\ne0\),
+\[
+                   \Tr(Q)=2(f_0^2+2f_1^2)>0,
+ \qquad \Nm(Q)=\Nm(f)^2>0.
+\]
+The reference chart already forces \(f\ne0\). The scalar
+normalizer is the unchanged, strictly positive source rational
+function of the distinguished input; thus \(R_i\ne0\) is
+retained. Neither fact depends on the deleted private norm rows.
+Consequently Theorem~\ref{compression} applies to the entire
+rational zero set under the predecessor's stated interpretation.
+
+\subsection{Every boundary is accounted for}
+
+No inverse of \(A\), \(B\), \(\tau_i\), or a component of
+\(K\) or \(Q\) is introduced. In particular \(B=0\) is
+allowed. The only divisions in the proof are by \(R_i\) and
+\(T\), whose nonvanishing has been proved. The new common
+equation \(CT=\Nm(Q)\) also excludes \(Z=0\), since
+\(K=Z^2=0\) would give \(T=0\). Conversely the old equations
+exclude this case by Lemma~\ref{denom}. Thus the reduction
+does not discard an old zero branch. All point charts, including
+their finite tangent and alternate two-torsion fibers, and all
+native-pole equations remain literally unchanged.
+
+In this application \(T=\Tr(Z^2)>0\). It follows that
+\(A>0\) and \(C>0\), but these inequalities are consequences,
+not additional constraints or positivity wrappers.
+
+\subsection{The exact rational equations and storage conventions}
+
+Write
+\[
+ K=K_0+K_1\sqrt2,\qquad Q=Q_0+Q_1\sqrt2.
+\]
+The three common residuals, without an extra trace register, are
+\begin{align}
+ 2K_0A-K_0^2+2K_1^2&=0,\
+ 2K_0B-2K_0Q_0+4K_1Q_1&=0,\
+ 2K_0C-Q_0^2+2Q_1^2&=0.                        \label{componentrows}
+\end{align}
+For each block the fourth kind of row is
+\[
+             R_i\widehat\tau_i-A-BR_i-C R_{2,i}=0.
+\]
+The existing common source field \(Q\) is stored as
+\[
+           Q_0=Y_{64},\qquad Q_1=2Y_{65},
+\]
+where \(Y_j\) denotes the stored value with physical source
+label \(j\), rather than its final renumbered column.
+The factor two in the imaginary component is essential.
+Both interface maps give source labels 64 and 65 contact weight
+one and scalar-normalizer weight zero; their physical-function
+normalization cancels the common contact gauge. Accordingly the
+displayed \(Y_{64},2Y_{65}\) are the components of the actual
+field \(f^2\), with no additional factor of the contact gauge.
+The literal retained square equations are
+\[
+ Y_{15}Y_{16}=Y_{65},\qquad
+ Y_{15}^2+2Y_{16}^2=Y_{64}.
+\]
+
+The fields \(Z\) and \(\widehat J_i\), and the scalar
+\(\widehat\tau_i\), have zero contact, normalizer, and parameter
+weights. Their physical source labels are respectively
+102--103, 109--110, and 111. The latter three labels are final
+local columns 86--88 in both interfaces. The final local columns
+89 and 90 are the unchanged \(R_i^2\) and \(R_i\) registers.
+The scalar-chart predecessor has already made the two components
+of \(K=Z^2\) common, with explicit quadratic square equations.
+
+\section{Counts, scope, and reproducibility}
+
+There are twelve integer-certificate blocks: eleven ordinary inputs
+and one reciprocal input. Therefore \(2k-3=21\).
+\begin{center}
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+Interface & Old variables & Old rows & New variables & New rows\\
+\midrule
+General 163-coordinate interface &1143&987&1122&966\\
+Specified 179-coordinate interface&1323&1143&1302&1122\\
+\bottomrule
+\end{tabular}
+\end{center}
+The complete new tables are stored in
+\nolinkurl{undecidability/coefficients/jones1980_scalar_norm/}.
+Their sums of squares have degree exactly four. All twelve input
+certificates and the outer source are retained. In particular,
+this compression introduces no extra ordinary rational \(abc\)
+assumption and changes no height threshold or prime-selection
+condition. It is an algebraic equivalence after the preceding
+common-point construction.
+
+The independent Pell reduction \cite{pell} removes nine additional
+outer coordinates and three additional rows. Its affected rows and
+variables are disjoint from those of the present transformation.
+Their combination therefore gives 1113 variables with 963 rows,
+or 1293 variables with 1119 rows. These combined counts refer to
+the composition of the two certified transformations; the tables
+in the directory above deliberately precede the Pell transformation.
+
+The source universality assertion \(U_{\mathrm{em}}\) remains
+unresolved, including the discrepancies in the consulted Jones
+source displays. None of the algebraic equivalences proved here
+establishes that assertion. All numerical quartic undecidability
+claims must retain it and the predecessor arithmetic interfaces.
+
+The deterministic compiler is
+\nolinkurl{undecidability/code/build_scalar_norm_compression.py}.
+The independent verifier
+\nolinkurl{undecidability/verify_scalar_norm_compression.py}
+does not import that compiler. It checks the norm identity, the
+three old private rows in each block, the exact new rows, every
+unchanged residual, the complete occurrence list of the 24
+removed coordinates, all relevant source scales, the retained
+square and normalizer rows, integrality of every coefficient,
+quadratic degree, support, counts, and file hashes. Its finite
+checks establish those algebraic and coefficient statements;
+the automatic trace guard and rational-solution equivalence are
+proved above.
+
+\section{A broader norm-polynomial principle}
+
+The reason for the saving is not specific to the numerical
+elliptic curve. For a degree-\(d\) number field and common field
+elements \(K,Q\), the expression
+\[
+                      \Nm(K+RQ)=\sum_{j=0}^d c_jR^j
+\]
+has \(d+1\) common rational coefficients. If a system contains
+private field variables \(J_i=Q+K/R_i\), the norm-trace equation
+\(\tau_i\Tr(J_i-Q)=\Nm(J_i)\) is equivalent, whenever
+\(T=\Tr(K)\ne0\), to
+\[
+                  \tau_i R_i^{d-1}
+                        =\sum_{j=0}^d (c_j/T)R_i^j.
+\]
+Thus the private field elements can be eliminated in favor of
+one common list of scalar coefficients. If all needed powers
+of \(R_i\) are already registered, these last private equations
+are quadratic. In higher degree, the common coefficient
+definitions themselves may require additional multiplication
+registers; they must be counted before claiming a numerical
+saving. In degree two there are exactly three coefficient
+definitions and each is already quadratic, which is why the
+present saving is exactly \(2k-3\) with no omitted register.
+
+\enlargethispage{\baselineskip}
+\begin{thebibliography}{9}\small
+\bibitem{rechart}
+\(\mathbb Z\mathbb Q\) Diophantine Project,
+\emph{Factoring the scalar normalizer out of common point charts},
+23 November 2026.
+\nolinkurl{undecidability/papers/scalar_rechart_quartic_checkpoint.tex}.
+
+\bibitem{scalar}
+\(\mathbb Z\mathbb Q\) Diophantine Project,
+\emph{A scalar-point sharing construction in 163 and 179 variables},
+v82, 20 November 2026.
+\nolinkurl{papers/quartic/scalar_point163_179_20261120_v82.tex}.
+
+\bibitem{pell}
+\(\mathbb Z\mathbb Q\) Diophantine Project,
+\emph{An independent Pell-index proof and quadratic optimization},
+23 November 2026.
+\nolinkurl{undecidability/papers/pell_index_optimization.tex}.
+\end{thebibliography}
+\end{document}

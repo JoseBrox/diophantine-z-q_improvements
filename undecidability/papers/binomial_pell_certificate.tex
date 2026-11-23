@@ -1,0 +1,487 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,hyperref,xurl}
+\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Q}{\mathbb Q}
+\title{An exact Pell certificate for a power of two\\and central-binomial divisibility}
+\author{\(\mathbb Z\mathbb Q\) Diophantine Project}
+\date{23 November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+We independently prove a polynomial certificate for the conjunction
+that \(b\) is a positive power of two and that an integer \(M\)
+divides \(\binom{2r}{r}\).  The hypotheses are only
+\(r\ge1\), \(M\ge2\), and \(2\le b\le2M\).
+The proof identifies two Pell indices exactly, gives a uniform
+one-sided approximation with an explicit error bound, and proves
+both directions by integer rounding.  The specialization \(M=n^2\)
+uses \(p=2ws^2r^2n^6\); this differs from the \(n^2\) printed
+in the historical Jones display.  The theorem is a proved local
+certificate, not an assertion that the historical display has been
+independently proved universal.  Its quadratic implementation costs
+no more coordinates than the corresponding previously compiled block.
+\end{abstract}
+
+\section{The polynomial certificate}
+
+For an integer \(A\ge2\), define the Pell sequences by
+\[
+ X_j(A)+Y_j(A)\sqrt{A^2-1}
+       =(A+\sqrt{A^2-1})^j\qquad(j\ge0).
+\]
+Thus \(X_0=1,X_1=A,Y_0=0,Y_1=1\), and each sequence
+satisfies \(Z_{j+2}=2AZ_{j+1}-Z_j\).
+
+\begin{theorem}[A generalized binomial certificate]\label{main}
+Let \(r,M,b\) be integers satisfying
+\[
+                    r\ge1,\qquad M\ge2,\qquad 2\le b\le2M.
+\]
+Then the following are equivalent.
+\begin{enumerate}
+\item \(b=2^e\) for an integer \(e\ge1\), and
+\(M\mid\binom{2r}{r}\).
+\item There are positive integers
+\[
+                 w,s,a,p,k,\tau,h,c,d,\varphi,\gamma,\eta,i,F,j,o
+\]
+satisfying the following equations:
+\begin{align}
+ a&=(wM+1)rsM,&p&=2ws^2r^2M^3,\label{ap}\\
+ k&=r+1+h(p-1),&\tau^2&=(p^2-1)k^2+1,\label{small}\\
+ 4(c-ksM)^2+\eta&=k^2,&c&=2r+1+\varphi,\label{close}\\
+ d&=bw+(a-2)c+(4a-5)\gamma,\label{linear}\\
+ d^2&=(a^2-1)c^2+1,\label{pell1}\\
+ F^2&=(a^2-1)i^2c^4+1,\label{pell2}\\
+ (d+oF)^2&=(G^2-1)(2r+1+jc)^2+1,\label{pell3}\\
+ G&=a+F^2(c+1-a).\label{bridge}
+\end{align}
+Here \(G\) abbreviates the displayed expression and need not be
+regarded as a separate variable.  The alternative expression
+\(G=a+F^2(d^2-a)\) gives the same equivalence.
+\end{enumerate}
+In every positive solution the following identities are forced:
+\begin{gather}
+ bw=2^{2r+1},\qquad
+ c=Y_{2r+1}(a),\qquad d=X_{2r+1}(a),\qquad
+ k=Y_{r+1}(p),\label{forced}\\
+ sM=\sum_{j=0}^{r}\binom{2r}{j}(wM)^{r-j}.
+ \label{forcedY}
+\end{gather}
+\end{theorem}
+
+The bound \(b\le2M\) allows nonsquare moduli and, for example,
+\(b=4,M=2,r=1\).  In the application with \(M=n^2\),
+the earlier assumptions \(n\ge b\ge2\) imply the present
+hypotheses with room to spare.
+
+\section{The exact Pell index}
+
+We include the elementary index argument so that the proof of
+Theorem~\ref{main} does not depend on an unproved source assertion.
+
+\begin{lemma}[Pell classification and elementary estimates]\label{basic}
+For \(A\ge2\), every positive integer solution of
+\(x^2-(A^2-1)y^2=1\) is
+\((X_t(A),Y_t(A))\) for a unique integer \(t\ge1\).
+For \(t\ge2\),
+\[
+ (2A-1)^{t-1}<Y_t(A)\le(2A)^{t-1},\qquad
+ Y_t(A)>A^{t-1}.
+\]
+Also \(Y_t(A)\equiv t\pmod2\), and
+\(Y_t(A)\equiv t\pmod L\) whenever \(A\equiv1\pmod L\).
+\end{lemma}
+\begin{proof}
+For classification, if \(y>1\), multiplication by
+\(A-\sqrt{A^2-1}\) sends \((x,y)\) to
+\[
+       (Ax-(A^2-1)y,\ Ay-x).
+\]
+Both coordinates are positive integers, the norm remains one,
+and the second coordinate is smaller than \(y\).  Indeed
+\(\sqrt{A^2-1}\,y<x<Ay\), and \(\sqrt{A^2-1}>A-1\).
+Descent ends at \((A,1)\).  The recurrence proves strict
+monotonicity and uniqueness.  Since \(0<Y_{t-1}<Y_t\) for
+\(t\ge2\), the recurrence gives
+\((2A-1)Y_t<Y_{t+1}<2AY_t\).  Starting with \(Y_2=2A\)
+gives the bounds, including \(Y_t>A^{t-1}\).
+Reducing the recurrence modulo two, or modulo \(L\) with
+\(A\equiv1\pmod L\), proves the congruences.
+\end{proof}
+
+\begin{lemma}[An odd prescribed index]\label{index}
+Let \(a\ge2\), let \(B\ge3\) be odd, and let \(c>B,d>0\)
+be integers.  Equations \eqref{pell1}--\eqref{pell3}, with
+\(2r+1\) replaced by \(B\), have positive integer witnesses
+\(i,F,j,o\) if and only if
+\[
+                         c=Y_B(a),\qquad d=X_B(a).
+\]
+Either expression for \(G\) in Theorem~\ref{main} is allowed.
+\end{lemma}
+\begin{proof}
+Write \(D=a^2-1\).  By classification,
+\[
+ c=Y_t(a),\quad d=X_t(a),\qquad ic^2=Y_q(a),\quad F=X_q(a).
+\]
+We first show that \(tc\mid q\).  Write \(q=vt+u\),
+\(0\le u<t\).  Modulo \(c\), the addition formula gives
+\(Y_q\equiv d^vY_u\).  The norm gives \(\gcd(c,d)=1\),
+and \(0\le Y_u<c\), so \(u=0\).  Expansion of
+\((d+c\sqrt D)^v\) then gives
+\(Y_q\equiv vd^{v-1}c\pmod{c^2}\).  Thus \(c\mid v\).
+In particular \(c\mid q\) and \(q\ge c>t\); here
+\(t<c\) follows from \(c>B\ge3\) and Lemma~\ref{basic}.
+
+Both bridges satisfy
+\[
+             G>a,\qquad G\equiv1\pmod c,
+                       \qquad G\equiv a\pmod F.
+\]
+For the new bridge use \(c\ge Y_2(a)=2a\); for the old
+one use \(d^2\equiv1\pmod c\).  The last norm equation
+has a positive Pell index \(v\), so
+\[
+             B+jc=Y_v(G),\qquad d+oF=X_v(G).
+\]
+It follows that \(v\equiv B\pmod c\) and
+\(X_v(a)\equiv X_t(a)\pmod{X_q(a)}\).
+
+The latter congruence implies \(v\equiv\pm t\pmod{4q}\).
+For completeness, the doubling identities give
+\(X_{2q+u}\equiv-X_u\pmod{X_q}\), while \(X_{-u}=X_u\).
+These reduce each residue to \(\pm X_u\), \(0\le u\le q\).
+The positive values are distinct in \([1,X_q]\), and the
+negative possibility cannot equal \(X_t\), since
+\(0<X_u+X_t\le2X_{q-1}<X_q\) when \(u<q\).
+The case \(u=q\) is zero modulo \(X_q\) and is also impossible.
+This proves the stated index congruence.
+
+Thus \(B\equiv\pm t\pmod c\).  Since \(0<B,t<c\),
+either \(B=t\) or \(B=c-t\).  The second alternative is
+excluded by \(c\equiv t\pmod2\) and the oddness of \(B\).
+This proves necessity.
+
+Conversely suppose \(c=Y_B(a),d=X_B(a)\).  Set \(q=Bc\).
+The binomial expansion of \((d+c\sqrt D)^c\) shows that
+\(c^2\mid Y_q(a)\).  Set
+\[
+ i=Y_q(a)/c^2,\quad F=X_q(a),\quad
+ j=(Y_B(G)-B)/c,\quad o=(X_B(G)-d)/F.
+\]
+The displayed congruences for \(G\) show that the last two
+quotients are integers.  They are positive because \(G>a\),
+\(B\ge3\), \(Y_B(G)>B\), and \(X_B(G)>X_B(a)\).
+The norm identities give all three equations.
+\end{proof}
+
+\section{A uniform one-sided approximation}
+
+\begin{lemma}[Normalized Pell values]\label{normal}
+Put \(A_t(x)=Y_t(x)/(2x)^{t-1}\) for real \(x\ge2\) and
+integers \(t\ge1\).  Then
+\[
+              1-\frac{t-2}{4x^2}\le A_t(x)\le1
+                         \qquad(t\ge2).
+\]
+For fixed \(x\), the sequence is strictly decreasing from
+\(t=2\) onward; for fixed \(t\), it is nondecreasing in \(x\).
+\end{lemma}
+\begin{proof}
+The recurrence gives
+\[
+        A_1=A_2=1,\qquad
+        A_{t+1}=A_t-\frac{A_{t-1}}{4x^2}.
+\]
+The Pell values are positive, so the normalized sequence decreases
+and remains positive.  Summing the successive differences and using
+\(A_{t-1}\le1\) gives the lower bound.
+
+For monotonicity in \(x\), the recurrence and the identity
+\(Y_t(\cos\theta)=\sin(t\theta)/\sin\theta\) show that
+the roots of the polynomial \(Y_t(x)\) are
+\(\cos(j\pi/t)\), \(1\le j<t\), and its leading
+coefficient is \(2^{t-1}\).  Pairing opposite roots gives
+\[
+ A_t(x)=\prod_{j=1}^{\lfloor(t-1)/2\rfloor}
+       \left(1-\frac{\cos^2(j\pi/t)}{x^2}\right).
+\]
+Every factor is positive and nondecreasing for \(x\ge2\).
+The possible zero root contributes the factor one.
+\end{proof}
+
+\begin{lemma}[Ratio estimate]\label{ratio}
+Let \(r\ge1\), \(Y,V\ge2\) be integers, and put
+\[
+ a=rY(V+1),\quad p=2r^2Y^2V,\quad
+ C=Y_{2r+1}(a),\quad K=Y_{r+1}(p),\quad
+ \rho=\frac{(V+1)^{2r}}{V^r}.
+\]
+Then
+\[
+        0<\rho-\frac CK<\frac{\rho}{Y^2V^2}.
+\]
+\end{lemma}
+\begin{proof}
+Since \(p>a\), Lemma~\ref{normal} gives
+\(A_{2r+1}(a)<A_{r+1}(p)\).  The leading terms cancel as
+\[
+          \frac{(2a)^{2r}}{(2p)^r}=\rho.
+\]
+This proves the strict upper estimate \(C/K<\rho\).
+
+Put \(\varepsilon=1/(2Y^2V^2)\le1/32\).
+The deficits in the two normalized Pell values satisfy
+\[
+ \frac{2r-1}{4a^2}<\varepsilon,
+ \qquad
+ \frac{r-1}{4p^2}<\varepsilon.
+\]
+For the first inequality substitute \(a=rY(V+1)\) and use
+\((2r-1)V^2<2r^2(V+1)^2\); for the second substitute
+\(p=2r^2Y^2V\) and use \(r-1<8r^4Y^2\).
+Thus both normalized values lie in \((1-\varepsilon,1]\).
+Their ratio differs from one by less than
+\(\varepsilon/(1-\varepsilon)<2\varepsilon\).
+Multiplying by \(\rho\) proves the asserted lower estimate.
+\end{proof}
+
+\section{Proof of the certificate}
+
+\begin{proof}[Proof of Theorem~\ref{main}: necessity]
+Suppose a positive solution is given.  Put
+\[
+              B=2r+1,\qquad Y=sM,\qquad V=wM.
+\]
+Then \(Y,V\ge2\), and \eqref{ap} becomes
+\(a=rY(V+1)\), \(p=2r^2Y^2V\).
+Lemma~\ref{index} gives \(c=Y_B(a),d=X_B(a)\).
+The inequality in \eqref{close} says
+\begin{equation}\label{half}
+                   \left|\frac ck-Y\right|<\frac12.
+\end{equation}
+
+We next determine the other Pell index.  From \eqref{small},
+\(k=Y_\ell(p)\) for a positive integer \(\ell\), and
+\(\ell\equiv r+1\pmod{p-1}\).  The defining formulas give
+\[
+           p\ge16r^2,\qquad p-1>r+1,\qquad 2a<p^2.
+\]
+For the last inequality,
+\(p^2/(2a)=2r^3Y^3V^2/(V+1)>1\).
+If \(\ell\ne r+1\), then
+\(\ell\ge p+r\ge4r+1\).  Lemma~\ref{basic} would imply
+\[
+       k>p^{\ell-1}\ge p^{4r},\qquad
+       c<(2a)^{2r}<p^{4r}.
+\]
+This contradicts \(c>k(Y-1/2)>k\), from \eqref{half}.
+Therefore \(\ell=r+1\).
+
+Let \(\rho\) be as in Lemma~\ref{ratio}, and put
+\(E=\rho-c/k\).  That lemma gives
+\begin{equation}\label{Ebound}
+       0<E<\frac{\rho}{Y^2V^2},\qquad
+       \delta:=\frac1{Y^2V^2}\le\frac1{16}.
+\end{equation}
+Since \(\rho=(V+2+1/V)^r>4^r\), equations
+\eqref{half}--\eqref{Ebound} imply
+\[
+       Y>\frac{15}{16}4^r-\frac12
+        >\frac{2}{3} 4^r.
+\]
+The final inequality holds already for \(r=1\): its difference
+is \((13/48)4^r-1/2>0\).  Consequently
+\begin{equation}\label{a-bounds}
+      a=rY(V+1)>2\cdot4^r=2^B,
+      \qquad a\ge2(V+1)>2V\ge bw.
+\end{equation}
+The last inequality uses \(b\le2M\).
+
+Set \(R_t=X_t(a)-(a-2)Y_t(a)\).  The addition identities give
+\[
+ R_0=1,\quad R_1=2,\qquad
+ R_{t+1}=2R_t+(4a-5)Y_t(a).
+\]
+Hence \(R_B\equiv2^B\pmod{4a-5}\).
+Equation \eqref{linear} gives the same residue for \(bw\).
+Both \(bw\) and \(2^B\) are strictly between zero and \(a\),
+while \(4a-5>a\), since \(a\ge6\).  Their congruence therefore
+forces \(bw=2^B\).  In particular \(b\ge2\) is a power of two.
+
+Expand the rational number \(\rho\) as
+\[
+ \rho=T+\theta,\qquad
+ T=\sum_{j=0}^r\binom{2r}{j}V^{r-j},\qquad
+ \theta=\sum_{j=r+1}^{2r}\binom{2r}{j}V^{r-j}.
+\]
+Here \(T\) is an integer, and symmetry of the binomial
+coefficients gives
+\begin{equation}\label{tail}
+ 0<\theta<\frac{4^r}{2V}
+        =\frac{b}{4M}\le\frac12.
+\end{equation}
+The inequality is strict even when \(r=1\), since
+\(\sum_{j=r+1}^{2r}\binom{2r}{j}<4^r/2\).
+
+Equations \eqref{half}--\eqref{Ebound} also give
+\[
+ \frac\rho Y<\frac{1+1/(2Y)}{1-\delta}
+             \le\frac{5/4}{15/16}=\frac43,
+ \qquad E<\frac4{3YV^2}\le\frac16.
+\]
+Since \(c/k=T+\theta-E\), equation \eqref{half} places
+the integer \(Y-T\) strictly between \(-2/3\) and \(1\).
+Thus \(Y=T\), proving \eqref{forcedY}.
+As \(M\mid Y\) and \(M\mid V\), reduction of this identity
+modulo \(M\) gives \(M\mid\binom{2r}{r}\).
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{main}: sufficiency]
+Suppose \(b=2^e\), \(e\ge1\), and
+\(M\mid\binom{2r}{r}\).  Since
+\[
+      b\le2M\le2\binom{2r}{r}<2\cdot4^r=2^{2r+1},
+\]
+the integer
+\[
+                         w=2^{2r+1}/b
+\]
+is positive.  Put \(V=wM\) and define
+\[
+ T=\sum_{j=0}^r\binom{2r}{j}V^{r-j},\qquad
+ Y=T,\qquad s=T/M.
+\]
+The divisibility hypothesis and \(M\mid V\) show that \(s\)
+is an integer.  It is positive, and \(Y\ge V^r\ge2\).
+Define \(a,p\) by \eqref{ap}, and set
+\[
+ c=Y_{2r+1}(a),\quad d=X_{2r+1}(a),\quad
+ k=Y_{r+1}(p),\quad \tau=X_{r+1}(p).
+\]
+The congruence \(Y_{r+1}(p)\equiv r+1\pmod{p-1}\)
+gives an integer \(h=(k-r-1)/(p-1)>0\).
+Also \(\varphi=c-(2r+1)>0\).
+
+The same expansion \(\rho=T+\theta\) satisfies
+\(0<\theta<1/2\), by \eqref{tail}.  Lemma~\ref{ratio} gives
+\[
+ 0<E=\rho-c/k<\frac{\rho}{Y^2V^2}
+       =\frac{1+\theta/Y}{YV^2}
+       <\frac5{4YV^2}\le\frac5{32}<\frac12.
+\]
+Thus \(-1/2<\theta-E=c/k-Y<1/2\), and
+\(\eta=k^2-4(c-kY)^2\) is a positive integer.
+
+The recurrence for \(R_t\) gives
+\(R_{2r+1}\equiv2^{2r+1}=bw\pmod{4a-5}\), so
+\[
+                    \gamma=\frac{R_{2r+1}-bw}{4a-5}
+\]
+is an integer.  It is positive: \(R_2=4a-1>a\), the
+sequence \(R_t\) is increasing for \(t\ge1\), and
+\(a\ge2(V+1)>2V\ge bw\).  Lemma~\ref{index} supplies
+positive integers \(i,F,j,o\) for either bridge.
+All the required equations now hold.
+\end{proof}
+
+\section{Consequences for the compiled systems}
+
+\begin{corollary}[The square-modulus specialization]
+Let \(r\ge1\), \(n\ge b\ge2\).  In Theorem~\ref{main},
+put \(M=n^2\).  The resulting polynomial block is equivalent to
+\[
+              b\text{ is a power of two},\qquad
+                     n^2\mid\binom{2r}{r}.
+\]
+Its auxiliary Pell parameter is
+\[
+                         p=2ws^2r^2n^6.
+\]
+\end{corollary}
+
+\begin{proposition}[No additional quadratic coordinates]
+Suppose the older quadratic core has already retained \(n^2\)
+as a coordinate and implemented the six-coordinate block
+\[
+ L_0=sr,\quad L_{0,2}=L_0^2,\quad U=wn^2,\quad
+ p=2U L_{0,2},\quad Y=sn^2,
+\]
+\[
+                    2L_0a=(p+2L_{0,2})n^2.
+\]
+After the previously made elimination of the temporary product
+\(rY\), the replacement block can use six coordinates
+\(L,L_2,U,p,Y,a\) with equations
+\begin{gather}
+ Y=sn^2,\qquad L=rY,\qquad L_2=L^2,
+ \qquad U=wn^2,\label{quad1}\\
+                  p=2UL_2,\qquad a=(U+1)L.
+                  \label{quad2}
+\end{gather}
+These are quadratic and imply exactly
+\(a=(wn^2+1)rsn^2\), \(p=2ws^2r^2n^6\), for all
+integer values, including zero and negative values.
+Thus the correction of this local certificate
+requires no increase in the six coordinates or six equations.
+\end{proposition}
+\begin{proof}
+The first four equations give \(L=rsn^2\).
+The two equations in \eqref{quad2} give the required \(p\) and
+\(a\) directly, without division.  Conversely the defining values satisfy
+all six equations.  Every displayed equation has total degree
+at most two in its coordinates, with \(n^2\) read as the
+already available square coordinate.  In the old block the last
+equation gives \(a=(U+1)L_0n^2\) because \(L_0=sr>0\).
+The six-coordinate comparison refers to the already reduced core,
+not an unreduced expression containing a seventh temporary product.
+\end{proof}
+
+The positivity reductions proved in the companion manuscript
+\emph{An exact three-Pell index certificate and nine fewer quadratic
+coordinates} apply to this \(n^6\) block as well as to the earlier
+\(n^2\) block.  In particular, the new bridge and the one-square
+choice of the positive root do not change Theorem~\ref{main}.
+
+\paragraph{Source status.}
+The historical page \cite[Theorem 3, p.~861]{Jones80}, inspected as
+an image, prints \(p=2ws^2r^2n^2\).  We have not changed that
+transcription or the meaning of the repository's hypothesis
+\(\mathcal U_{\rm em}\).  The theorem in this paper is instead
+an independently proved replacement of the final local block.
+It does not prove that the first, coding part of the historical
+system is universal, nor does it verify the alleged 57-variable,
+47-quadratic source.  Promoting a complete corrected source to an
+undecidability theorem still requires a precise audit of that coding
+part and its underlying universality argument.  The giant power
+\(q=b^{5^{60}}\) has not been reduced or altered here.
+
+\paragraph{Reproducibility.}
+The exact checker
+\nolinkurl{undecidability/verify_binomial_pell_certificate.py}
+verifies the polynomial identities, the coefficient-neutral
+quadratic replacement, finite exact ratio examples, and explicit
+binomial examples.  It also expands one full three-Pell witness.
+These finite calculations illustrate and audit the formulas; the
+proof for all parameters is the argument above.
+
+\begin{thebibliography}{9}
+\bibitem{Jones80}
+J. P. Jones, \emph{Undecidable Diophantine equations},
+Bulletin of the American Mathematical Society (New Series)
+\textbf{3}, no.~2 (1980), 859--862.
+\url{https://doi.org/10.1090/S0273-0979-1980-14832-6}.
+\bibitem{ProjectPell}
+\(\mathbb Z\mathbb Q\) Diophantine Project,
+\emph{An exact three-Pell index certificate and nine fewer quadratic
+coordinates}, 23 November 2026.
+\nolinkurl{undecidability/papers/pell_index_optimization.tex}.
+\end{thebibliography}
+\end{document}

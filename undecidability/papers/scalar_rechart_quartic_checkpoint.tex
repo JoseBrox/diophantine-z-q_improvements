@@ -1,0 +1,386 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs,longtable,xurl,hyperref}
+\renewcommand{\labelitemi}{\(\bullet\)}
+\hypersetup{hidelinks}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{remark}\newtheorem{remark}[theorem]{Remark}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\Nm}{\operatorname{N}}
+\title{Removing private scalar normalizers from a common point chart}
+\author{Z diophantine in Q project}
+\date{23 November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+We give three exact changes to the complete quadratic systems with a
+common contact normalization. The changes replace private multiples of
+the same scalar point by common coordinates and remove reciprocal
+normalizers that the new coordinates make unnecessary. The resulting
+systems have 1143 variables and 987 quadratic equations in the general
+family, and 1323 variables and 1143 quadratic equations in the specified
+coefficient family. These counts precede the separate nine-variable
+Pell reduction. Every coefficient table is materialized, and an
+independent checker reconstructs every row and verifies the recovery
+identities. This paper proves equivalence to the preceding systems;
+it does not prove their unresolved source universality hypothesis.
+\end{abstract}
+
+\section{Statement and scope}
+
+The preceding common-normalization construction has twelve rational
+integrality blocks, one for each input of the retained emended Jones
+system. Its two complete tables have respectively 1185 variables and
+1095 equations, or 1355 variables and 1241 equations
+\cite{global}. The latter table uses the specified effective integrality
+interface; the former belongs to the family with an ineffective
+sufficient threshold. In both tables, each residual is an ordinary
+quadratic polynomial with integer coefficients in the fixed parameters.
+
+The source hypothesis denoted by \(U_{\rm em}\) is the universality of
+the precise emended source recorded in the repository. It has not been
+independently established. In particular, its printed scalar parameter
+still contains \(n^2\); this paper makes no correction to that formula
+and does not silently substitute a different source. The arithmetic
+interfaces stated in \cite{global,scalar} are also retained. No new
+\(abc\) assumption is introduced. These qualifications apply equally
+before and after the changes proved here.
+
+\begin{theorem}\label{thm:main}
+There are exact changes of auxiliary coordinates between the complete
+common-normalization systems and complete quadratic systems with the
+following counts:
+\begin{center}
+\begin{tabular}{lrrrr}
+\toprule
+Interface & Old variables & New variables & Old equations & New equations\\
+\midrule
+General, 163 coordinates &1185&1143&1095&987\\
+Specified, 179 coordinates &1355&1323&1241&1143\\
+\bottomrule
+\end{tabular}
+\end{center}
+For every admissible fixed parameter choice, the changes preserve the
+rational solution projection to all source inputs. Each new system therefore has a sum of squares
+of quadratic residuals of degree exactly four, in the stated number of
+rational variables. All arithmetic and universality hypotheses of the
+predecessor are preserved without strengthening.
+\end{theorem}
+
+The independent Pell-core reduction removes another nine coordinates
+and three equations \cite{pell}. It concerns different coordinates and
+rows. Applying it after this theorem gives, respectively, 1134 variables
+with 984 equations, and 1314 variables with 1140 equations. Those
+combined counts are not already included in the two tables of this
+paper. Neither statement asserts a global minimum, nor undecidability
+under hypotheses that have not been proved.
+
+\section{The common and private quantities}
+
+Work over the field \(K=\Q(\sqrt2)\) and put
+\[
+                       D=11-6\sqrt2.
+\]
+A field coordinate is represented by its two rational components. If
+\(a=a_0+a_1\sqrt2\) and \(b=b_0+b_1\sqrt2\), multiplication is
+\[
+ ab=(a_0b_0+2a_1b_1)+(a_0b_1+a_1b_0)\sqrt2.
+\]
+Thus a quadratic equation over \(K\) gives two ordinary rational
+quadratic equations.
+
+Let \(i=1,\ldots,k\) index the integrality blocks; the complete
+application uses \(k=12\). Each block has its own positive rational
+normalizer \(R_i\), field coordinate \(\widehat J_i\), and rational
+coordinate \(\widehat\tau_i\). The fields
+\[
+        f,\quad S,\quad Z,\quad U,\quad V,\quad W,
+        \quad F_U,\quad F_V,\quad A
+\]
+are already common in the preceding construction. The square \(f^2\)
+is stored there. Write
+\[
+                 L_i=\widehat J_i-f^2,
+                 \qquad M=-2S-W.
+\]
+The scalar equations are
+\begin{equation}\label{eq:scalar}
+       R_iL_i=Z^2,\qquad
+       \widehat\tau_i\Tr(L_i)=\Nm(\widehat J_i).
+\end{equation}
+The field \(L_i\) and \(M\) are expressions, not extra coordinates.
+
+The old scalar point chart uses private fields \(P_i^*\) and
+\(r_i^*\), with a common field \(r_2\), and satisfies
+\begin{equation}\label{eq:old}
+\begin{aligned}
+ UV&=L_iP_i^*,& P_i^*W&=R_i r_i^*,\\
+ r_i^*(U+V-W-4S)+DR_iL_i&=0,&
+ L_iP_i^*+W(U+V)&=M^2,\\
+ r_2&=(r_i^*)^2,& F_Ur_2&=U^2,\\
+ F_Vr_2&=V^2,& A(U+M)&=2SZ.
+\end{aligned}
+\end{equation}
+These are physical coordinates, before their monomial rescalings in
+the stored rational tables. The point construction in \cite{scalar}
+identifies \(P_i^*=R_i x(Q_2)\); we shall not need to assume this
+interpretation in order to prove the algebraic sharing.
+
+The stored general table uses \(\widetilde r_i=R_i r_i^*\), so its
+copies of the third and fifth equations in \eqref{eq:old} are
+\begin{equation}\label{eq:stored-r}
+\begin{aligned}
+ \widetilde r_i(U+V-W-4S)+D R_{2,i}L_i&=0,\\
+ R_{2,i}r_2-\widetilde r_i^2&=0,
+ \qquad R_{2,i}=R_i^2.
+\end{aligned}
+\end{equation}
+The specified table already stores \(r_i^*=r\) as a common field.
+Its stored square is \(r_2/c\), where the nonzero global normalizer
+\(c\) is common. Consequently its square equation is
+\(c(r_2/c)=r^2\), still quadratic. No change to this convention
+is needed.
+
+\section{Nonvanishing on the full rational solution set}
+
+\begin{lemma}\label{lem:nonzero}
+In both the old and new systems, \(R_i\ne0\), \(f\ne0\), and
+\(Z\ne0\) on every rational solution. These facts hold before
+applying an integrality or universality conclusion.
+\end{lemma}
+\begin{proof}
+The retained rational normalizer has, for a rational input \(X\),
+the form
+\[
+ \beta=51X^2+2504,\qquad
+ r_X=\beta(\beta-1)(\beta-2401)(32\beta+343)>0.
+\]
+In the general family,
+\[
+ R_i=\frac{149C^2r_X}{1+149^2r_X},\qquad C=149^N\ne0;
+\]
+in the specified family,
+\[
+ R_i=\frac{A_{\rm a}r_X}{1+25r_X},\qquad A_{\rm a}>0.
+\]
+The reciprocal input block uses its retained guarded rational input;
+the same argument applies. The common reference chart explicitly
+guards the finite nonzero reciprocal \(f\), as in
+\cite{scalar,global}.
+
+If \(Z=0\), the first equation of \eqref{eq:scalar} implies
+\(L_i=0\), and hence \(\widehat J_i=f^2\). The second then gives
+\(\Nm(f^2)=0\), impossible in the field \(K\) when \(f\ne0\).
+In the new system, the equation \(K_0=Z^2\) and
+\(R_iL_i=K_0\) give the identical argument. Here \(K_0\) is the
+field square coordinate introduced below, not the ground field.
+\end{proof}
+
+\section{One common scalar abscissa}
+
+Introduce common fields
+\[
+                         K_0=Z^2,\qquad p,
+\]
+and, in the general table, a common field \(r\). Replace the first
+five equations in \eqref{eq:old}, together with the first equation
+in \eqref{eq:scalar}, by
+\begin{equation}\label{eq:new}
+\begin{aligned}
+ K_0&=Z^2,& R_i(\widehat J_i-f^2)&=K_0,\\
+ UV&=K_0p,&pW&=r,\\
+ r(U+V-W-4S)+DK_0&=0,&UV+W(U+V)&=M^2,\\
+ r_2&=r^2.
+\end{aligned}
+\end{equation}
+Only the equation containing \(R_i\) is repeated for each block.
+Retain the trace equation, the last three equations of
+\eqref{eq:old}, and every other unchanged source equation.
+Each equation in \eqref{eq:new} is quadratic in the stored rational
+coordinates. In the specified table, its last equation is written
+\(c(r_2/c)=r^2\).
+
+\begin{proposition}\label{prop:rechart}
+For every \(k\ge1\), equations \eqref{eq:scalar} and
+\eqref{eq:old} are equivalent to the stated new equations, with
+recovery maps
+\[
+       P_i^*=R_ip,\qquad r_i^*=r,\qquad
+       \widetilde r_i=R_ir.
+\]
+The equivalence holds on the full solution sets satisfying the
+retained scalar and reference equations.
+\end{proposition}
+\begin{proof}
+Start with an old solution. By Lemma~\ref{lem:nonzero},
+\(Z^2\ne0\) and \(R_i\ne0\). From \(R_iL_i=Z^2\) and
+\(UV=L_iP_i^*\), we obtain
+\[
+                 \frac{P_i^*}{R_i}=\frac{UV}{Z^2}.
+\]
+The right side is independent of \(i\). Define it to be \(p\).
+The old equation \(P_i^*W=R_i r_i^*\) then gives
+\(r_i^*=pW\); all these fields have the same value \(r\).
+Substituting in the remaining equations gives \eqref{eq:new}.
+The changes to the aggregate contributions are
+\[
+          P_i^*\longmapsto R_ip\quad\hbox{in the general family},
+          \qquad \frac{P_i^*}{R_i}\longmapsto p
+             \quad\hbox{in the specified family}.
+\]
+The former is quadratic and the latter linear.
+
+Conversely, take a new solution. Define \(P_i^*=R_ip\) and
+\(r_i^*=r\), and use \(\widetilde r_i=R_ir\) in the general
+stored table. Then \(L_iP_i^*=K_0p=UV\) and
+\(P_i^*W=R_ir\). The remaining old equations follow directly
+from \eqref{eq:new} and the retained equality \(R_{2,i}=R_i^2\).
+The aggregate substitutions are exact identities.
+
+Only \(R_i\) and \(Z^2\), whose nonvanishing is already proved,
+were divided out. No secant denominator, alternate-point ordinate,
+or native-pole auxiliary was inverted. Finite tangent branches and
+allowed alternate two-torsion branches therefore remain present.
+For completeness, the new sum equation forces \(r\ne0\), since
+\(D K_0\ne0\). Thus \(pW=r\) forces \(p,W\ne0\), and
+\(UV=K_0p\) forces \(U,V\ne0\). No additional zero component of
+the point chart has been introduced.
+\end{proof}
+
+The proof admits a useful general form: whenever a collection of
+quadratic blocks contains \(R_iL_i=K_0\), \(UV=L_iP_i\), and
+the common \(K_0\) is nonzero, the quotients \(P_i/R_i\) are
+already forced to coincide. Introducing that common quotient can
+remove the private multiplication registers while retaining degree
+two. This is stronger than choosing simultaneous witnesses that
+happen to agree: the agreement holds on every solution of the old
+system.
+
+\section{Removing twelve inverse normalizers}
+
+The specified predecessor has an extra coordinate
+\(R_i^{-1}\) and its guard \(R_i R_i^{-1}=1\). After
+Proposition~\ref{prop:rechart}, that inverse disappears from both
+aggregate components. Its only remaining substantive occurrence is
+in a homogeneous native-pole input equation.
+
+We describe the complete change, so that zero auxiliary branches
+are explicitly covered. Use physical native-pole coordinates
+\[
+           E,U_s,V_s,P_s,Q_s,\sigma,B,P_2,Q_2.
+\]
+The pole equations can be written
+\begin{equation}\label{eq:pole}
+\begin{aligned}
+ \widehat\tau_i\sigma&=R_{2,i}^{\,2},&
+ B\sigma&=R_{2,i}+9792R_i,\\
+ \sigma P_2&=P_s^2,&\sigma Q_2&=Q_s^2,\\
+ 3E^2-34E\sigma-289\sigma^2+17BP_2&=0,\\
+ E(17\sigma-B)-17U_sV_s&=0,\\
+ U_s^2+34U_sV_s-867V_s^2-17BQ_2&=0.
+\end{aligned}
+\end{equation}
+All rows are quadratic, using the already retained coordinate
+\(R_{2,i}=R_i^2\).
+
+The specified predecessor stores each of these nine coordinates
+divided by \(R_i\). Denote those old coordinates by primes. Its
+first two equations are consequently
+\[
+ \widehat\tau_i\sigma'=R_iR_{2,i},\qquad
+ B'\sigma'=1+9792R_i^{-1}.
+\]
+The other five equations have exactly the same quadratic shape in
+the primed coordinates, because every term has degree two.
+
+\begin{lemma}\label{lem:pole}
+Replacing the nine primed coordinates by their unprimed physical
+values, using \eqref{eq:pole}, and deleting \(R_i^{-1}\) and its
+unit equation preserves the complete rational solution projection.
+\end{lemma}
+\begin{proof}
+The forward map multiplies each primed coordinate by \(R_i\).
+Multiply the old first equation by \(R_i\), and the old second
+by \(R_i^2\); use \(R_{2,i}=R_i^2\). This gives the first two
+equations of \eqref{eq:pole}. Multiplication by \(R_i^2\) gives
+the remaining five equations. Conversely divide the nine new
+coordinates by the nonzero rational \(R_i\), and restore the
+unique coordinate \(R_i^{-1}\). The inverse calculations give
+the old system. No native-pole coordinate is assumed nonzero.
+In particular a zero value of any of \(E,U_s,V_s,P_s,Q_s,P_2,Q_2\)
+is transported without exclusion.
+\end{proof}
+
+The general table already has the unprimed form
+\eqref{eq:pole}; it needs no pole reweighting. This distinction is
+why the third reduction saves twelve variables only in the
+specified table.
+
+\section{Coordinate counts and exact verification}
+
+For arbitrary \(k\), the general table loses \(2k\) rational
+coordinates for the private \(\widetilde r_i\) and \(2k\) for
+the private \(P_i^*\), and adds six for \(r,p,K_0\). Its saving
+is \(4k-6\). The specified table already shares \(r\); it loses
+\(2k\) coordinates for \(P_i^*\), adds four for \(p,K_0\), and
+loses the \(k\) inverse-normalizer coordinates of
+Lemma~\ref{lem:pole}. Its saving is \(3k-4\).
+
+For \(k=12\), these are respectively 42 and 32. In the general
+case five old field equations per block are replaced by six common
+field equations, a saving of \(10k-12=108\) rational rows. In the
+specified case four old field equations per block and one common
+field square equation are replaced by six common field equations;
+the twelve inverse unit equations are also removed. The saving is
+\(8k+2-12+k=98\) rows. The private scalar field equations are
+modified but their number is unchanged. This proves the counts in
+Theorem~\ref{thm:main}.
+
+The fixed source residuals outside the integrality blocks are
+untouched. A nonzero square monomial remains in a residual, so
+the sum of squared residuals has degree exactly four: its leading
+homogeneous part is a sum of squares over the real field and cannot
+cancel identically. Over \(\Q\), a sum of rational squares is zero
+if and only if every residual is zero.
+
+The reproducible implementation consists of:
+\begin{itemize}
+\item
+\nolinkurl{undecidability/code/build_scalar_rechart.py}, which reads
+the frozen complete predecessor tables and writes the new tables;
+\item
+\nolinkurl{undecidability/verify_scalar_rechart.py}, which independently
+reconstructs every retained and changed row in \(\Q[\sqrt2]\),
+checks the polynomial recovery identities, audits every occurrence
+of each deleted or reweighted coordinate, and verifies the census,
+degree, integer coefficient domain, and source-status fields;
+\item the complete coefficient tables and hash certificates in
+\nolinkurl{undecidability/coefficients/jones1980_scalar_rechart/}.
+\end{itemize}
+The exact checker additionally rebuilds each table and compares its
+canonical serialized bytes. Its input and output hashes prevent a
+successful check from being confused with a check of a different
+predecessor. These finite checks support the algebraic compilation.
+They do not certify the retained arithmetic interfaces or
+\(U_{\rm em}\), which remain explicitly identified hypotheses.
+
+\begin{thebibliography}{9}
+\bibitem{global}
+Z diophantine in Q project,
+\emph{One contact gauge in a combined quadratic system},
+23 November 2026,
+\nolinkurl{undecidability/papers/global_gauge_quartic_checkpoint.tex}.
+\bibitem{scalar}
+Z diophantine in Q project,
+\emph{A scalar-point sharing construction in 163 and 179 variables},
+20 November 2026,
+\nolinkurl{papers/quartic/scalar_point163_179_20261120_v82.tex}.
+\bibitem{pell}
+Z diophantine in Q project,
+\emph{Pell index optimization}, 23 November 2026,
+\nolinkurl{undecidability/papers/pell_index_optimization.tex}.
+\end{thebibliography}
+\end{document}

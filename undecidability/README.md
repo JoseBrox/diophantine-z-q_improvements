@@ -120,12 +120,16 @@ numerator point, giving the intermediate 1601/1837 bounds. The subsequent
 [global-contact theorem](papers/global_gauge_quartic_checkpoint.tex) gives
 1185/1355, and the [Pell-core theorem](papers/pell_index_optimization.tex)
 ([PDF](papers/pell_index_optimization.pdf)) removes nine more coordinates
-from each complete system, also improving the abc checkpoint:
+from each complete system, also improving the abc checkpoint. Further
+[scalar-point](papers/scalar_rechart_quartic_checkpoint.tex),
+[scalar-norm](papers/scalar_norm_compression.tex), and
+[detector-trace](papers/detector_trace_compression.tex) reductions give the
+current general and specified counts:
 
 | Integer interface | Independent combined system | Current checkpoint | Quadratic residuals | Additional height hypothesis |
 |:--|--:|--:|--:|:--|
-| General, 163 coordinates | 2,195 | **1,176** | 1,092 | No additional abc |
-| Specified, 179 coordinates | 2,387 | **1,346** | 1,238 | No additional abc |
+| General, 163 coordinates | 2,195 | **1,103** | 953 | No additional abc |
+| Specified, 179 coordinates | 2,387 | **1,283** | 1,109 | No additional abc |
 | Ordinary-abc, 56 coordinates | 911 | **837** | 725 | Ordinary rational abc |
 
 The physical function dictionary, all normalization weights, and the
@@ -138,7 +142,10 @@ supplied in the [independent tables](coefficients/jones1980),
 [reciprocal tables](coefficients/jones1980_shared_reciprocal) and
 [common-point tables](coefficients/jones1980_common_points),
 [global-gauge tables](coefficients/jones1980_global_gauge), and
-[current Pell-core tables](coefficients/jones1980_pell_core).
+[Pell-core tables](coefficients/jones1980_pell_core),
+[scalar-norm tables](coefficients/jones1980_scalar_norm),
+[detector-trace tables](coefficients/jones1980_detector_trace), and
+[current combined tables](coefficients/jones1980_detector_pell).
 Their sums of squares have degree exactly four. The complete tables are
 reconstructed row by row, including every removed duplicate.
 **Their undecidability interpretation remains conditional on `U_em`** and
@@ -155,6 +162,28 @@ The earlier **2,539 / 2,779 / 934** candidates were registered first in the
 [baseline checkpoint](checkpoints/baseline_20261123.md). Their historical
 status is preserved in the registry.
 
+## Further exact reductions of the combined system
+
+The [scalar rechart](papers/scalar_rechart_quartic_checkpoint.tex) shares
+one scalar abscissa and its products, and removes twelve now-unnecessary
+inverse normalizers in the specified interface. It saves 42/32 coordinates.
+The [norm-polynomial compression](papers/scalar_norm_compression.tex) then
+uses the three common coefficients of `N(K+RQ)/Tr(K)` to eliminate each
+private two-component scalar field, saving another 21 coordinates.
+The [detector-trace compression](papers/detector_trace_compression.tex)
+replaces each private detector product by its appropriately normalized
+rational trace. Two common field components suffice; the norm of that
+field is inlined as a quadratic expression. This saves ten more coordinates.
+Every reduction has full reconstruction maps and an exact occurrence audit.
+
+| Stage, before the nine-coordinate Pell reduction | General | Specified |
+|:--|--:|--:|
+| Global contact gauge | 1185 | 1355 |
+| Scalar rechart | 1143 | 1323 |
+| Common norm coefficients | 1122 | 1302 |
+| Detector trace | 1112 | 1292 |
+| After the separate Pell reduction | **1103** | **1283** |
+
 ## Independently proved local improvements
 
 The [Pell-index proof](papers/pell_index_optimization.tex) classifies the
@@ -163,6 +192,13 @@ It replaces `G=a+F^2(d^2-a)` by `G=a+F^2(c+1-a)`, removes the separate
 `d^2` register, proves two positivity wrappers unnecessary, and replaces
 another by `zeta^2=(a-1)(d-1)`. All twelve integrality tests remain.
 The theorem also covers arbitrary prescribed indices after a parity adjustment.
+
+The [binomial certificate](papers/binomial_pell_certificate.tex) proves,
+for `r>=1`, `M>=2`, and `2<=b<=2M`, an exact polynomial characterization
+of `b` being a power of two and `M` dividing `binom(2r,r)`. A one-sided
+Pell approximation and integer rounding prove both directions. Setting
+`M=n^2` explains the corrected `n^6` parameter. This is an independent
+local theorem; it does not verify the complete source coding argument.
 
 The [negative-witness proof](papers/negative_mixed_witness.tex) gives an
 explicit specialization, for every mixed source polynomial and instance,
@@ -207,6 +243,7 @@ python -B undecidability/verify_global_gauge.py
 python -B undecidability/verify_pell_core_reduction.py --include-abc
 python -B undecidability/verify_pell_index_optimization.py
 python -B undecidability/check_point_chart_lemmas.py
+python -B scripts/verify_v92.py
 python -B scripts/verify_v91.py
 python -B scripts/verify_v90.py
 python -B scripts/verify_v89.py
@@ -217,5 +254,5 @@ qualifications. A `PASS` verifies the stated finite identities and counts;
 it does not discharge arithmetic foundations or `U_em`. Proofs, source
 citations and the verification scope are in the manuscripts. The
 [machine-readable registry](results.json) separates proved transfers from
-source-audit checkpoints; the [project report](../docs/results_20261123_v91.md)
+source-audit checkpoints; the [project report](../docs/results_20261123_v92.md)
 summarizes the mathematical changes and their limits.

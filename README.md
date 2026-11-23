@@ -50,8 +50,8 @@ universal equation and one positivity coordinate into the finite algebra.
 | Unrestricted degree | No additional abc hypothesis | **82** | Proved transfer under retained source arithmetic premises; degree below `2^650` |
 | Unrestricted degree, specified source | No additional abc hypothesis | **100** | Proved transfer under retained source arithmetic premises; degree below `2^714` |
 | Unrestricted degree | Ordinary rational abc | **52** | Proved transfer under retained source arithmetic premises; degree below `2^500` |
-| Quartic checkpoint | No additional abc hypothesis | **1,176** | Conditional on emended-source universality `U_em`; 1,092 quadratic residuals |
-| Quartic checkpoint, specified source | No additional abc hypothesis | **1,346** | Conditional on `U_em`; 1,238 quadratic residuals |
+| Quartic checkpoint | No additional abc hypothesis | **1,103** | Conditional on emended-source universality `U_em`; 953 quadratic residuals |
+| Quartic checkpoint, specified source | No additional abc hypothesis | **1,283** | Conditional on `U_em`; 1,109 quadratic residuals |
 | Quartic checkpoint | Ordinary rational abc | **837** | Conditional on `U_em`; 725 quadratic residuals |
 
 All rows retain the chosen integer predicate's stated arithmetic premises.
@@ -64,20 +64,26 @@ minimum claimed. The **83 / 101 / 53** versions have smaller degree ceilings
 has the smaller common ceiling `2*eta(58,4)`. All remain registered as tradeoffs.
 
 The [global-contact theorem](undecidability/papers/global_gauge_quartic_checkpoint.tex)
-shares one contact gauge and removes a private point field in each input
-block. The independently proved [three-Pell index theorem](undecidability/papers/pell_index_optimization.tex)
-([PDF](undecidability/papers/pell_index_optimization.pdf)) then removes nine
-more coordinates, including two positivity wrappers and most of a third.
-The [complete sparse systems](undecidability/coefficients/jones1980_pell_core)
-retain all twelve integer certificates. Source discrepancies remain explicit:
-Greek alpha versus Latin a, a separate impossible Pell-row typo in the
-later account, and an `n^2` versus `n^6` binomial-parameter mismatch.
-Universality of the exact emended source remains unverified.
+permits common scalar coordinates. The [scalar norm theorem](undecidability/papers/scalar_norm_compression.tex)
+then replaces twelve private fields by three common rational coefficients,
+and the [detector trace theorem](undecidability/papers/detector_trace_compression.tex)
+([PDF](undecidability/papers/detector_trace_compression.pdf)) replaces twelve
+more private fields by twelve traces and one common field. The independent
+[Pell reduction](undecidability/papers/pell_index_optimization.tex) removes
+nine further outer coordinates. The [complete final tables](undecidability/coefficients/jones1980_detector_pell)
+retain all twelve integer certificates.
+
+The [independent binomial proof](undecidability/papers/binomial_pell_certificate.tex)
+handles arbitrary moduli `M>=2` and `2<=b<=2M`. Its square-modulus version
+requires `n^6`, whereas the old printed source uses `n^2`. That correction
+has not been silently made in the headline tables. Together with the
+previous Greek-alpha/Latin-a and Pell-row discrepancies, it leaves
+universality of the precise old emended source unverified.
 The [literal later-system audit](undecidability/papers/mt_source_audit.tex)
 proves a reversible **62/50 to 57/45** reduction; it does not independently
 reprove the alleged universal **57/47** result.
 
-The [registry](undecidability/results.json), [detailed report](docs/results_20261123_v91.md)
+The [registry](undecidability/results.json), [detailed report](docs/results_20261123_v92.md)
 and [project research document](docs/research_directions.md#undecidability-in-bounded-numbers-of-rational-unknowns)
 separate proved transfers, retained arithmetic premises and source-audit
 checkpoints. A quartic bound near 263 has not been established.
@@ -152,6 +158,7 @@ Use **Python 3.12**, **SymPy 1.14.0**, and **PassageMath PARI 10.8.14**. The new
 
 ```sh
 python -m pip install sympy==1.14.0 passagemath-pari==10.8.14
+python -B scripts/verify_v92.py
 python -B scripts/verify_v91.py
 python -B scripts/verify_v90.py
 python -B scripts/verify_v89.py

@@ -44,15 +44,21 @@ zero terminal roots and guards vanishing at unselected characters. The
 earlier **227 / 245 / 101**, **99 / 117 / 69**, and other intermediate bounds
 remain registered as variable--degree tradeoffs.
 
-The directly optimized quartic systems reach **1176 / 1346 / 837**, with
-**1092 / 1238 / 725** quadratic residuals. The
+The directly optimized quartic systems reach **1103 / 1283 / 837**, with
+**953 / 1109 / 725** quadratic residuals. The
 [global-contact proof](../undecidability/papers/global_gauge_quartic_checkpoint.tex)
 permits a common normalization, identifies further physical coordinates,
 reorders common products, and removes a private field from each point chart.
 The independent [Pell-index proof](../undecidability/papers/pell_index_optimization.tex)
 then removes nine outer coordinates and three rows, without removing any
 integer certificate. [Complete tables](../undecidability/coefficients/jones1980_pell_core)
-and exact row-by-row checks accompany the proofs.
+and exact row-by-row checks accompany the proofs. The current general
+counts additionally use the [scalar rechart](../undecidability/papers/scalar_rechart_quartic_checkpoint.tex),
+the [common norm polynomial](../undecidability/papers/scalar_norm_compression.tex),
+and the [detector trace](../undecidability/papers/detector_trace_compression.tex).
+Their final [combined tables](../undecidability/coefficients/jones1980_detector_pell)
+contain every residual. These three changes save 73/63 coordinates from
+the previous 1176/1346 combined systems.
 
 Their undecidability interpretation additionally needs **`U_em`**, the
 universality of the precise emended 28-variable source. The 1980 original
@@ -72,6 +78,11 @@ proves that nonnegativity of the ninth mixed-source input does not follow
 from the other eight integer conditions. The finite-wrapper theorem retains
 that condition. The [point-chart paper](../undecidability/papers/point_chart_research.tex)
 records precise obstructions to two tempting shared-point constructions.
+
+The [generalized binomial certificate](../undecidability/papers/binomial_pell_certificate.tex)
+now proves the corrected local `n^6` block independently, and even permits
+arbitrary moduli `M>=2` with `2<=b<=2M`. This does not establish the
+universality of the unchanged old `n^2` source or its coding prefix.
 
 The next source task is to audit the complete Jones 1982 proof or give a
 direct universality proof for the exact emended system. The next construction

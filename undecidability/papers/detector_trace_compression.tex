@@ -1,0 +1,233 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs,xurl,hyperref}
+\hypersetup{hidelinks}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\Nm}{\operatorname{N}}
+\title{A rational trace in place of each private detector product}
+\author{Z diophantine in Q project}
+\date{23 November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+We prove an algebraic compression for any number of quadratic-field
+product and norm--trace constraints with a common factor. A single
+rational trace replaces each private field product; one common field
+is added. For twelve blocks this saves ten rational coordinates and
+ten quadratic equations. Applied after the common contact, scalar
+point, and scalar norm reductions, it gives complete quadratic tables
+in 1112 and 1292 variables. The separate Pell reduction then gives
+1103 and 1283 variables. The proof includes both coordinate maps and
+all exceptional fibers. The arithmetic interfaces and the unresolved
+source universality assertion of the preceding work are retained.
+\end{abstract}
+
+\section{An exact algebraic compression}
+
+Let \(K/F\) be a quadratic field extension of characteristic different
+from two, with conjugation, trace, and norm denoted by
+\(\overline{\phantom{x}}\), \(\Tr\), and \(\Nm\). In the application
+\(F=\Q\) and \(K=\Q(\sqrt2)\). Let \(u,h\in F\) be nonzero
+common parameters or already guarded coordinates. For
+\(i=1,\ldots,r\), suppose \(a_i,W_i,B\in K\) and \(D_i\in F\)
+satisfy
+\begin{equation}\label{eq:old}
+       a_i B=uW_i,\qquad
+       (D_i+h)\Tr(W_i)=\Nm(W_i)+h^2.
+\end{equation}
+The field \(B\) is common. Assume that the private coordinates
+\(W_i\) occur nowhere else in the system. All other occurrences
+of \(a_i,B,D_i,u,h\) may be retained without change.
+
+\begin{theorem}\label{thm:compression}
+For every \(r\ge1\), system \eqref{eq:old} has exactly the same
+projection to its other coordinates as the system with one common
+field \(v\in K\), rational coordinates \(t_i\in F\), and equations
+\begin{equation}\label{eq:new}
+ \overline B v=hu,\qquad
+ h t_i=\Tr(v a_i),\qquad
+ (D_i+h)t_i=\Nm(a_i)+\Nm(v).
+\end{equation}
+All equations are quadratic in their coordinates. Over a quadratic
+extension, this replaces \(2r\) rational product coordinates by
+\(r+2\) rational coordinates and replaces \(3r\) rational equations
+by \(2r+2\). Thus it saves \(r-2\) coordinates and equations.
+\end{theorem}
+
+\begin{proof}
+If an old solution had \(W_i=0\), its second equation would give
+\(h^2=0\), impossible. Hence \(W_i\ne0\), and the first equation
+forces \(B\ne0\). Because \(K\) is a field, \(\Nm(B)\ne0\).
+Define
+\begin{equation}\label{eq:forward}
+             v=\frac{hu}{\overline B},\qquad
+             t_i=\frac{\Tr(v a_i)}{h}.
+\end{equation}
+Then \(\overline Bv=hu\). The identities
+\[
+ \frac1{\overline B}=\frac{B}{\Nm(B)},\qquad
+ t_i=\frac{u\Tr(a_iB)}{\Nm(B)},\qquad
+ \Nm(v)=\frac{h^2u^2}{\Nm(B)}
+\]
+give the exact residual identity
+\begin{align}\label{eq:identity}
+ &(D_i+h)t_i-\Nm(a_i)-\Nm(v)\nonumber\\
+ &\qquad=\frac{u^2}{\Nm(B)}
+ \bigl((D_i+h)\Tr(W_i)-\Nm(W_i)-h^2\bigr),
+ \qquad W_i=\frac{a_iB}{u}.
+\end{align}
+This proves all equations of the new system.
+
+Conversely, start with a new solution. The equation
+\(\overline Bv=hu\ne0\) forces \(B,v\ne0\). Define
+\[
+                            W_i=\frac{a_iB}{u}.
+\]
+The common equation and the trace equation imply the identities
+in \eqref{eq:forward}. The nonzero multiplier
+\(u^2/\Nm(B)\) in \eqref{eq:identity} then proves the old
+norm--trace equation. This recovers every removed equation.
+
+The maps divide only by \(u,h,B\), whose nonvanishing has just
+been proved or was already guarded. In particular no division by
+\(t_i\), \(D_i+h\), or a private component of \(a_i\) is made.
+The equivalence therefore concerns the whole solution set, not a
+generic open subset chosen after discarding exceptional fibers.
+Finally, one field equation has two rational components, while a
+trace or norm equation is a single rational equation. This proves
+the stated counts.
+\end{proof}
+
+\section{The ordinary quadratic component equations}
+
+Write
+\[
+ B=b_0+b_1\sqrt2,\qquad v=v_0+v_1\sqrt2,
+ \qquad a_i=a_{i0}+a_{i1}\sqrt2.
+\]
+The common field equation in \eqref{eq:new} is precisely
+\begin{equation}\label{eq:components-common}
+                  b_0v_0-2b_1v_1=hu,\qquad
+                  b_0v_1-b_1v_0=0.
+\end{equation}
+The two equations for block \(i\) are
+\begin{equation}\label{eq:components-private}
+\begin{aligned}
+ h t_i&=2v_0a_{i0}+4v_1a_{i1},\\
+ (D_i+h)t_i&=a_{i0}^2-2a_{i1}^2+v_0^2-2v_1^2.
+\end{aligned}
+\end{equation}
+No separate coordinate for \(\Nm(v)\) is needed: it is already
+a quadratic expression and appears with coefficient one. Similarly,
+\(hu\) is quadratic in the existing coordinates. These observations
+are essential for obtaining the full saving \(r-2\).
+
+\section{Application to the complete combined systems}
+
+The common-contact construction stores nonzero rational coordinates
+\(c,c^{-1},c^{-2}\) with the literal quadratic guards
+\[
+                    c\,c^{-1}=1,\qquad c^{-2}=(c^{-1})^2.
+\]
+In both coefficient families put \(u=c^{-2}\). In the general
+family take \(h=c^{-2}\); in the specified family take
+\(h=c^{-1}\). Both are already stored and nonzero.
+
+The product of the three common detector factors is the common
+field \(B\). The remaining factor is the private field \(a_i\).
+The retained final multiplication rows and norm-error row are
+exactly \eqref{eq:old}. In the specified table the literal constant
+in the norm row is \(c^{-2}\), equal to \(h^2\) by the retained
+unit guard. An exhaustive occurrence check confirms that the two
+components of each \(W_i\) occur in exactly those three rows.
+Thus Theorem~\ref{thm:compression} applies without changing any
+contact gate, arithmetic estimate, scalar block, or input chart.
+
+The default complete predecessors are the scalar-norm tables
+\cite{norm}, which already include the common-contact and
+scalar-point reductions \cite{global,point}. There are twelve
+blocks. The finite counts are
+\begin{center}
+\begin{tabular}{lrrrr}
+\toprule
+Interface & Old variables & New variables & Old equations & New equations\\
+\midrule
+General &1122&1112&966&956\\
+Specified &1302&1292&1122&1112\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The nine-coordinate, three-equation Pell reduction
+\cite{pell} affects disjoint coordinates and rows. It therefore
+commutes with this change and gives the further complete counts
+\[
+ \begin{array}{c|cc}
+ &\text{rational variables}&\text{quadratic equations}\\\hline
+ \text{general}&1103&953\\
+ \text{specified}&1283&1109.
+ \end{array}
+\]
+The displayed tables before the Pell step and the combined tables
+after that step have distinct files; the Pell saving must be counted
+only once.
+
+The emended Jones source still carries the unresolved universality
+hypothesis \(U_{\rm em}\). Its frozen parameter involving \(n^2\)
+has not been altered here. The arithmetic interfaces of the
+predecessor remain hypotheses as stated in the cited project papers.
+This exact equivalence introduces no \(abc\) assumption, but it
+does not remove an existing unproved hypothesis or establish the
+claimed 57-variable universal source. In particular, the counts
+above are certified complete quadratic checkpoints, with exactly
+the conditional mathematical interpretation of their predecessors.
+
+\section{Reproducibility and verification}
+
+The implementation
+\nolinkurl{undecidability/code/build_detector_trace.py}
+reads a complete predecessor, removes only the audited product
+coordinates and rows, and writes every new ordinary quadratic
+residual. Its optional baseline-directory and baseline-prefix
+arguments permit composition with the independent source-core
+changes. The default output is stored in
+\nolinkurl{undecidability/coefficients/jones1980_detector_trace/}.
+
+The independent checker
+\nolinkurl{undecidability/verify_detector_trace.py}
+reconstructs every old product and norm row from the field formulas,
+checks the literal unit equations, verifies the complete occurrence
+lists, and reconstructs every row of the new table. It also checks
+\eqref{eq:identity} as an exact rational-function identity in
+independent indeterminates, the coordinate census, degree at most
+two, integer coefficient domain, complete coordinate support,
+canonical rebuilt bytes, and the predecessor and result hashes.
+The table certificates explicitly retain the unverified source
+status. No numerical testing is used to replace a proof of
+equivalence or a coefficient identity.
+
+Over \(\Q\), the sum of the squares of the listed residuals
+vanishes exactly when every residual vanishes. The unchanged outer
+system contains nonzero quadratic leading terms, so that sum has
+degree exactly four. The coefficient files specify this quartic
+without requiring an expanded list of its monomials.
+
+\begin{thebibliography}{9}
+\bibitem{global} Z diophantine in Q project,
+\emph{One contact gauge in a combined quadratic system},
+\nolinkurl{undecidability/papers/global_gauge_quartic_checkpoint.tex}.
+\bibitem{point} Z diophantine in Q project,
+\emph{Removing private scalar normalizers from a common point chart},
+\nolinkurl{undecidability/papers/scalar_rechart_quartic_checkpoint.tex}.
+\bibitem{norm} Z diophantine in Q project,
+\emph{Scalar norm compression},
+\nolinkurl{undecidability/papers/scalar_norm_compression.tex}.
+\bibitem{pell} Z diophantine in Q project,
+\emph{Pell index optimization},
+\nolinkurl{undecidability/papers/pell_index_optimization.tex}.
+\end{thebibliography}
+\end{document}
