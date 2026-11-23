@@ -1,0 +1,205 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=27mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\title{An obstruction to compressing tuple integrality by polynomial tests}
+\author{\(\mathbb Z\mathbb Q\) Diophantine Project}
+\date{23 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+Fewer than $r$ polynomial integer-value tests cannot recognize all integral
+points of $\Q^r$, even when rational coefficients are allowed. The
+polynomials need not be homogeneous. In fact, for
+infinitely many rational primes there are nonintegral tuples, with no
+other denominator primes, on which all the tests are integral. The proof
+uses a positive-dimensional algebraic fiber, a branch at infinity, and
+$p$-adic approximation. This rules out a broad class of direct certificate
+compressions; it says nothing against sharing existential witnesses or
+using additional equations in a universal system.
+\end{abstract}
+
+\begin{theorem}\label{main}
+Let $0\le k<r$, and let $F_1,\ldots,F_k\in\Z[X_1,\ldots,X_r]$.
+There are infinitely many rational primes $p$ for which there are tuples
+\[
+ c\in\Z[1/p]^r\setminus\Z^r,
+ \qquad F_i(c)\in\Z\quad(1\le i\le k).
+\]
+For each of these primes, the denominator exponents of such tuples are
+unbounded. Consequently an equivalence
+\[
+ x\in\Z^r\quad\Longleftrightarrow\quad
+ F_1(x),\ldots,F_k(x)\in\Z
+ \qquad(x\in\Q^r)
+\]
+requires $k\ge r$.
+\end{theorem}
+
+We first give the geometric and local details used in the proof.
+The elementary case $k=0$ is also covered by the argument.
+
+\begin{lemma}[Infinitely many degree-one places]\label{places}
+For every number field $K$ and every finite set $S$ of rational primes,
+there is a rational prime $p\notin S$ and an embedding $K\hookrightarrow\Q_p$.
+The primes admitting such an embedding form an infinite set.
+\end{lemma}
+\begin{proof}
+Choose an integral primitive element for $K$, with monic minimal polynomial
+$f\in\Z[T]$. A nonconstant integral polynomial has infinitely many prime
+divisors of its nonzero integer values. Here is Schur's elementary argument.
+If the set of such primes were finite, translate the variable to make
+$a=f(0)\ne0$, and let $M$ be their product. For an integer $t$,
+\[
+ f(aMt)=a\bigl(1+Mt\,b(t)\bigr)
+\]
+with $b\in\Z[T]$. The second factor is congruent to one at every alleged
+prime divisor. For some $t$ its absolute value exceeds one, so it has a
+prime divisor outside that set, a contradiction.
+
+Apply this fact after excluding $S$ and the finitely many divisors of the
+discriminant of $f$. For any remaining prime divisor $p$ of $f(n)$, the
+residue of $n$ is a simple root of $f$ modulo $p$. Hensel lifting supplies
+a root in $\Z_p$. Evaluation at this root gives an embedding
+$K\simeq\Q[T]/(f)\hookrightarrow\Q_p$. The same proof works after
+excluding any further finite set.
+\end{proof}
+
+\begin{lemma}[An unbounded local branch]\label{branch}
+Let $V\subset\mathbb A^r_{\Q}$ be an affine algebraic set having a
+positive-dimensional geometric component. There are a number field $K$,
+a finite set $S$ of rational primes, a smooth projective curve $C/K$,
+a point $P\in C(K)$, and rational functions $x_1,\ldots,x_r\in K(C)$
+with the following properties.
+\begin{enumerate}
+\item On a nonempty open subset of $C$, the tuple $(x_1,\ldots,x_r)$ lies
+in $V$.
+\item Some $x_j$ has a pole at $P$.
+\item For every embedding $K\hookrightarrow\Q_p$ with $p\notin S$,
+there are $\Q_p$-points in that open subset, arbitrarily close to $P$,
+on which $v_p(x_j)$ tends to $-\infty$.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+Choose a geometrically irreducible affine curve on a positive-dimensional
+geometric component,
+by intersecting with sufficiently many general hyperplanes. All the
+finitely many coefficients involved are algebraic, so the curve is
+defined over a number field. Take the normalization of its projective
+closure and enlarge the field if necessary. In characteristic zero this
+is a smooth projective curve $C$. The original affine coordinate functions
+are rational functions $x_i$ on $C$.
+
+At least one of these functions is nonconstant. A nonconstant rational
+function on a projective curve has a pole; otherwise it would be a global
+regular function and hence constant. Choose such a pole $P$, and enlarge
+$K$ once more so that $P$ is $K$-rational. The removed points of the
+original affine curve form a finite set on $C$.
+
+Choose a local parameter $t\in K(C)$ at $P$. If $e=-\operatorname{ord}_P(x_j)>0$,
+then locally
+\[
+                         x_j=t^{-e}u,
+\]
+where $u$ is regular and $u(P)\ne0$. Shrink an affine neighborhood of $P$
+so that $u$ is a unit and $t$ is an etale coordinate there. These choices
+involve only finitely many coefficients and nonzero determinants. Exclude
+the rational primes dividing the norms of their denominators and nonzero
+constant values, as well as the finitely many primes of bad reduction. This is a finite set $S$.
+
+After any embedding at a remaining prime, the implicit function form of
+Hensel's lemma gives a $p$-adic neighborhood of $P$ parameterized by an
+open ball around $t=0$. In particular it contains points with $t=p^n$
+for every sufficiently large $n$. The value $u$ is a $p$-adic unit on a
+sufficiently small such neighborhood, so
+\[
+                         v_p(x_j)=-en.
+\]
+Nonzero sufficiently small $t$ avoids the finitely many removed points.
+This proves all three assertions. The standard facts used here are
+normalization of a projective curve, the existence of a uniformizer at a
+smooth rational point, and Hensel's local inverse theorem; no rational
+parameterization of $C$ is assumed.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{main}]
+Consider the fiber through the origin
+\[
+ V=\{x:F_i(x)=F_i(0)\text{ for }1\le i\le k\}.
+\]
+It is nonempty. The height bound for an ideal generated by $k$ elements
+in $\overline{\Q}[X_1,\ldots,X_r]$ gives every irreducible component
+dimension at least $r-k>0$. Apply Lemma~\ref{branch}. By
+Lemma~\ref{places}, infinitely many primes admit the required embeddings
+and avoid its finite exceptional set.
+
+Fix one such prime. The branch provides a tuple $x\in V(\Q_p)$ with a
+coordinate of arbitrarily negative valuation. Since $F_i(x)=F_i(0)\in\Z$,
+continuity gives a $p$-adic neighborhood of $x$ on which every $F_i$ takes
+values in $\Z_p$. Shrink this neighborhood so that the chosen coordinate
+has exactly the same negative valuation as at $x$.
+
+The ring $\Z[1/p]$ is dense in $\Q_p$: finite truncations of a $p$-adic
+expansion lie in this ring. Hence this neighborhood contains
+$c\in\Z[1/p]^r$. Each $F_i(c)$ belongs to $\Z[1/p]$, because $F_i$ has
+integer coefficients, and also belongs to $\Z_p$. The elementary identity
+\[
+                         \Z[1/p]\cap\Z_p=\Z
+\]
+therefore gives $F_i(c)\in\Z$. The retained negative valuation proves
+$c\notin\Z^r$. Its possible denominator exponent tends to infinity along
+the branch. This proves the theorem.
+\end{proof}
+
+\begin{corollary}[Rational-coefficient tests]\label{rational-coefficients}
+Let $0\le k<r$ and $F_1,\ldots,F_k\in\Q[X_1,\ldots,X_r]$.
+Suppose there is an integral tuple $a\in\Z^r$ such that
+$F_i(a)\in\Z$ for every $i$. Then the conclusion of
+Theorem~\ref{main} holds: for infinitely many rational primes $p$ there
+are nonintegral tuples $c\in\Z[1/p]^r$ with all $F_i(c)\in\Z$, and
+their $p$-denominator exponents are unbounded.
+
+Consequently no family of fewer than $r$ rational-coefficient
+polynomials recognizes $\Z^r$ by simultaneous integrality of its values.
+This includes integer-valued polynomials, whose coefficients need not
+themselves be integers.
+\end{corollary}
+\begin{proof}
+Choose a positive integer $D$ clearing the denominators of all
+nonconstant coefficients of all translated polynomials $F_i(a+X)$.
+Their constant terms are already integers. Hence
+\[
+                       G_i(X)=F_i(a+DX)\in\Z[X_1,\ldots,X_r],
+\]
+because each nonconstant monomial acquires at least one factor of $D$.
+Apply Theorem~\ref{main} to $G_1,\ldots,G_k$ and discard the finitely
+many primes dividing $D$. For every remaining prime and every resulting
+tuple $b$, set $c=a+Db$. Then $c\in\Z[1/p]^r$ and
+$F_i(c)=G_i(b)\in\Z$. Whenever $v_p(b_j)<0$, integrality of $a_j$ and
+$v_p(D)=0$ give $v_p(c_j)=v_p(b_j)$. Thus nonintegrality and arbitrarily
+large denominator exponents are preserved. A purported recognition of
+$\Z^r$ automatically satisfies the hypothesis at $a=0$, which proves
+the final assertion.
+\end{proof}
+
+\section*{Exact scope for the undecidability project}
+The theorem strengthens the homogeneous obstruction in the general-degree
+transfer note: it permits arbitrary degrees and lower-order terms;
+Corollary~\ref{rational-coefficients} also permits rational coefficients.
+It
+shows that one cannot repair the failure merely by excluding finitely
+many denominator primes. It is a lower bound only for the stated model
+of direct polynomial integer-value tests on all of $\Q^r$.
+
+It does not forbid simultaneous integer-defining systems with shared
+elliptic points, contact parameters, or finite-algebra encoders. Those
+systems have additional existential witnesses. It also does not apply
+automatically to a tuple constrained to solve a universal quadratic
+system: the final rational approximation in the proof preserves
+integrality of the polynomial values but need not preserve other
+polynomial equalities exactly. No global lower bound for the number of
+variables in rational undecidability follows.
+\end{document}

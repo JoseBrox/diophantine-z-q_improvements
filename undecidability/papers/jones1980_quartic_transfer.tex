@@ -1,0 +1,954 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,longtable,booktabs,hyperref}
+\usepackage{xurl}
+\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\Np}{\mathbb Z_{>0}}
+\newcommand{\tri}[1]{\mathcal T(#1)}
+\title{A conditional quartic checkpoint from an emended Jones system\\with twelve integrality inputs}
+\author{\(\mathbb Z\mathbb Q\) Diophantine Project}
+\date{23 November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+Starting from an explicitly emended Jones-type system, we construct
+a rational quadratic system with 255 coordinates and 223 equations, together
+with eleven ordinary integer-input requirements and one reciprocal
+integer-input requirement. A quadratic definition of the integers in the
+rationals with \(m\) total coordinates and \(q_0\) equations therefore gives
+a quartic undecidability transfer, conditional on the source-universality
+hypothesis $\mathcal U_{\rm em}$, in \(12m+243\) rational unknowns, using
+\(223+12q_0\) quadratic squares. The corresponding baseline bounds are
+2199, 2391 and 915 for the project's 163-, 179- and 56-coordinate
+integrality interfaces. Eliminating one further product register gives the general bound
+$12m+242$. Direct optimization of the actual project blocks gives
+$12m+239$, namely $2195$, $2387$ and $911$, with $1863$, $2031$
+and $771$ quadratic residuals. All hypotheses of the selected integrality
+interface remain in force. The coefficient identities and equivalence with
+the displayed source are proved. The universality premise is unresolved:
+the original 1980 and author-written 1999 displays contain different errors.
+
+The proof uses geometric-quotient integrality, a reciprocal homogeneous
+chart, automatic positivity from a cofinite restriction of the instance
+parameter, automatic positivity of a Pell congruence quotient, and powers
+of a Pell unit to recover positive congruence witnesses. A fixed signed
+addition chain computes the large power in Jones's source with 169
+quadratic rows. Every step is reversible at the level of existence of
+solutions. The accompanying exact checker reconstructs the quadratic core
+and its counts.
+\end{abstract}
+
+\section{Statement and source scope}
+A quadratic integrality interface of size \((m,q_0)\) is a list
+\[
+ Q_1(v,\mathbf w),\ldots,Q_{q_0}(v,\mathbf w)
+ \in\Z[v,w_1,\ldots,w_{m-1}]
+\]
+of polynomials of total degree at most two such that, for every \(v\in\Q\),
+\begin{equation}\label{integer-interface}
+ v\in\Z\quad\Longleftrightarrow\quad
+ \exists\mathbf w\in\Q^{m-1}\quad
+ Q_1(v,\mathbf w)=\cdots=Q_{q_0}(v,\mathbf w)=0.
+\end{equation}
+Every hypothesis needed to establish \eqref{integer-interface} is part of
+the assumptions of a transfer using that interface.
+
+\begin{theorem}\label{main}
+Assume \eqref{integer-interface} and Hypothesis $\mathcal U_{\rm em}$
+stated below. There is a family of integer-coefficient
+polynomials of degree exactly four in
+\[
+ \boxed{12m+243}
+\]
+rational unknowns whose solvability is undecidable. Each polynomial is a
+sum of \(223+12q_0\) squares of quadratic residuals. The family is indexed
+by a positive integer instance parameter, which occurs in its
+coefficients and is not counted as an existential unknown.
+\end{theorem}
+
+This is a reduction theorem. It does not establish an integrality
+interface independently. In particular, ``no additional \(abc\)
+hypothesis'' for a project interface does not mean that its other retained
+arithmetic premises have been independently discharged.
+
+The system is assembled from Jones \cite{Jones80}, Theorem~3,
+p.~861, and Matiyasevich's author-written account \cite{Mat99}, p.~191.
+The first prints Greek $\alpha$ in a coefficient where the second prints
+Latin $a$; the second has a separate impossible Pell row. Our displayed
+system uses the Latin-$a$ form and the correct Pell row. The detailed
+source comparison and the exact unverified universality hypothesis are
+in Section~\ref{sec:source-reconciliation}.
+
+We prove the complete quadratic compilation, including reconstruction of
+positive integer witnesses. We do not infer universality from an
+emendation, and none of the numerical quartic bounds here is registered
+as a verified undecidability result without $\mathcal U_{\rm em}$.
+The alleged 57-variable/47-quadratic theorem has not been independently
+reproved. A reversible 62-variable/50-row to 57-variable/45-row reduction
+of the literal Mishchenko--Treier transcription is recorded separately;
+its universality also remains unresolved.
+
+\section{The precise emended source system}
+Fix positive integer parameters \(z,u,y\). Under Hypothesis
+$\mathcal U_{\rm em}$ they can be chosen so that the solvable positive
+inputs form a computably enumerable nonrecursive set \(W\). Put
+\[
+ L=5^{60}=867361737988403547205962240695953369140625.
+\]
+The emended system has the following 28 positive integer unknowns:
+\[
+ a,b,c,d,e,F,g,h,i,j,k,\ell,m,n,o,p,q,r,s,t,w,
+ \alpha,\gamma,\eta,\theta,\lambda,\tau,\varphi.
+\]
+We write the source root \(f\) as \(F\) to distinguish it from the final
+polynomial. The eighteen source equations are
+\begin{align}
+ e\ell g^2+\alpha&=(b-xy)q^2,\label{J1}\\
+ q&=b^L,\label{J2}\\
+ \lambda+q^4&=1+\lambda b^5,\label{J3}\\
+ \theta+2z&=b^5,\label{J4}\\
+ \ell&=u+t\theta,\qquad e=y+m\theta,\label{J5}\\
+ n&=q^{16},\label{J7}\\
+ r&=\bigl[g+eq^3+\ell q^5+
+     \{2(e-z\lambda)(1+xb^5+g)^4+\lambda b^5+
+          \lambda b^5q^4\}q^4\bigr](n^2-n)\notag\\
+ &\quad+\bigl[q^3-b\ell+\ell+\theta\lambda q^3+
+                    (b^5-2)q^5\bigr](n^2-1),\label{J8}\\
+ p&=2ws^2r^2n^2,\label{J9}\\
+ p^2k^2-k^2+1&=\tau^2,\label{J10}\\
+ 4(c-ksn^2)^2+\eta&=k^2,\label{J11}\\
+ k&=r+1+h(p-1),\label{J12}\\
+ a&=(wn^2+1)rsn^2,\label{J13}\\
+ c&=2r+1+\varphi,\label{J14}\\
+ d&=bw+ca-2c+4a\gamma-5\gamma,\label{J15}\\
+ d^2&=(a^2-1)c^2+1,\label{J16}\\
+ F^2&=(a^2-1)i^2c^4+1,\label{J17}\\
+ (d+oF)^2&=\bigl((a+F^2(d^2-a))^2-1\bigr)
+                      (2r+1+jc)^2+1.\label{J18}
+\end{align}
+The line \eqref{J5} contains two equations. In particular, the exponent
+of \(n\) in \eqref{J9} is \emph{two}; the last norm coefficient is a
+square minus one; and \eqref{J17} contains \(i^2c^4\), with no additive
+one inside that product. These are decisive source features.
+
+We will restrict the instance to
+\begin{equation}\label{tail}
+ x>2z.
+\end{equation}
+This restriction discards finitely many instances of the one fixed
+nonrecursive set. It preserves undecidability: a decision procedure for
+the remaining tail, combined with a finite hardcoded table for the
+omitted instances, would decide the entire set. No variable or equation
+is required to impose \eqref{tail}, since \(x\) and \(z\) are
+coefficients of each instance polynomial.
+
+\section{Three elementary lemmas}
+\begin{lemma}[Rational roots of monic equations]\label{monic}
+If a rational number satisfies a monic polynomial with integer
+coefficients, it is an integer. In particular, a rational number whose
+square is an integer is an integer.
+\end{lemma}
+\begin{proof}
+Write the number as \(A/B\) in lowest terms with \(B>0\), substitute
+in a monic equation of degree \(d\), and multiply by \(B^d\).
+Reduction modulo \(B\) gives \(B\mid A^d\), so \(B=1\).
+\end{proof}
+
+\begin{lemma}[Three triangular witnesses]\label{triangular}
+For an integer \(v\),
+\[
+ v>0\quad\Longleftrightarrow\quad
+ \exists t_1,t_2,t_3\in\Q\quad
+ 2v-2=\sum_{j=1}^3t_j(t_j+1).
+\]
+Moreover, the displayed equality implies \(v>0\) even if \(v\) is
+initially only rational.
+\end{lemma}
+\begin{proof}
+Each \(t(t+1)/2\) is at least \(-1/8\), so the equality implies
+\(v\ge5/8>0\). Conversely, Gauss's theorem that every nonnegative
+integer is a sum of three triangular numbers applies to \(v-1\).
+\end{proof}
+
+\begin{lemma}[A reciprocal integer input without an extra coordinate]
+\label{reciprocal}
+Suppose an integer input \(i\) of \eqref{integer-interface} occurs in a
+quadratic construction through \(E=iC\), with \(C\ne0\). Replace the
+coordinate \(i\) by \(v\), replace this equality by \(vE=C\), and
+replace each integrality residual by
+\[
+ \widehat Q_j(v,\mathbf w')
+    =v^2Q_j(1/v,\mathbf w'/v).
+\]
+These are polynomials of degree at most two. Their rational solutions
+are equivalent to the original solutions with \(i\ne0\), by
+\(i=1/v\) and \(\mathbf w=\mathbf w'/v\). The variable count is
+unchanged.
+\end{lemma}
+\begin{proof}
+Every monomial of \(Q_j\) has degree at most two, so multiplication
+by \(v^2\) clears its denominator. The equation \(vE=C\ne0\)
+forces \(v\ne0\). Division by \(v^2\) then recovers exactly
+\eqref{integer-interface} at \(i=1/v\). Conversely, multiply each
+old auxiliary witness by \(v=1/i\). No point at \(v=0\) survives.
+\end{proof}
+
+\section{A quadratic circuit for the source}
+The twelve initially free coordinates are
+\begin{equation}\label{free12}
+ b,g,t,m,w,s,h,\varphi,\gamma,o,j,v.
+\end{equation}
+We attach ordinary integrality requirements to the first eleven, and a
+reciprocal integrality requirement \(1/v\in\Z\) to the last. Three
+further free coordinates are \(\lambda,F,\tau\). All other core
+coordinates will be outputs of the following quadratic relations, except
+for the nonzero reciprocal chart already described.
+
+\subsection{The fixed power}
+Put \(P_1=b\). For an addition step \(e=a+b\), introduce \(P_e\)
+and the equation
+\[
+ P_e-P_aP_b=0.
+\]
+For a subtraction step \(e=a-b>0\), introduce \(P_e\) and the equation
+\[
+ P_eP_b-P_a=0.
+\]
+Provided the original \(b\ne0\), induction shows that every coordinate
+is exactly \(P_e=b^e\), including all quotient steps. This is an exact
+power identity, not a general inference that dividing integers preserves
+integrality. The initial addition steps establish $P_5=b^5$ before any quotient
+is taken. Therefore the guard $P_5-2z>0$ below forces $b\ne0$
+without a circular appeal to a quotient step.
+
+The following signed binary expansion determines our chain:
+\[
+ L=\sum_{(a,d)\in\mathcal D} d\,2^a,
+\]
+where
+\begin{align*}
+\mathcal D=\{&(0,-15),(5,13),(10,3),(16,-7),(21,-13),\\
+ &(27,9),(32,9),(38,11),(45,1),(50,9),\\
+ &(57,-5),(63,-5),(69,1),(76,5),(82,9),\\
+ &(89,-15),(94,7),(99,15),(104,1),(109,-13),\\
+ &(114,-3),(119,5),(124,15),(130,-3),(137,5)\}.
+\end{align*}
+First compute \(P_2\), followed by
+\(P_3,P_5,P_7,P_9,P_{11},P_{13},P_{15}\), using addition of the
+exponent 2. This costs eight coordinates. Start the running value at
+\(P_5\), the leading digit. Reading the remaining positions from 136
+down to 0, double its exponent at every position, and add or subtract
+the indicated odd exponent when the digit is nonzero. There are 137
+doublings and 24 digit updates, nine of which are subtractions.
+Every intermediate exponent is positive. Thus the total is
+\[
+ 8+137+24=169
+\]
+new coordinates and quadratic rows. Set \(B=P_5\) and \(q=P_L\).
+Both are already among these coordinates. The companion checker verifies
+the signed expansion and every step with exact integers.
+
+\subsection{The remaining rows}
+Introduce the power coordinates
+\[
+ q_2=q^2,\quad q_3=qq_2,\quad q_4=q_2^2,\quad q_5=qq_4,
+ \quad q_8=q_4^2,\quad n=q_8^2,\quad n_2=n^2.
+\]
+The names are coordinates, not unexpanded high-degree expressions.
+Define the affine expressions
+\[
+ \theta=B-2z,\qquad c_0=1+xB+g.
+\]
+Retain the quadratic relation
+\[
+ \lambda(B-1)=q_4-1.
+\]
+Introduce
+\begin{align*}
+ \ell&=u+t\theta,&e&=y+m\theta,\\
+ c_{02}&=c_0^2,&c_{04}&=c_{02}^2,&V&=c_{04}q_4,\\
+ S&=g+eq_3+\ell q_5+2(e-z\lambda)V
+                      +(\lambda+q_4-1)(q_4+q_8),\\
+ T&=(1-b)\ell+[q_4+(1-2z)\lambda]q_3+(B-2)q_5,\\
+ r&=S(n_2-n)+T(n_2-1),\\
+ e\ell_*&=e\ell,&g_2&=g^2.
+\end{align*}
+Here \(e\ell_*\) is one coordinate naming the product \(e\ell\);
+in the code it is named \texttt{el}. Define the quadratic expression
+\[
+ \alpha=(b-xy)q_2-e\ell_*g_2.
+\]
+The regroupings of \(S,T\) use only
+\(\lambda B=\lambda+q_4-1\), and hence recover exactly the two
+brackets in \eqref{J8}.
+
+Continue with
+\begin{align*}
+ s_r&=sr,&s_{r2}&=s_r^2,&U&=wn_2,&p&=2Us_{r2},\\
+ Y&=sn_2,&M&=rY,&a&=(U+1)M,\\
+ k&=r+1+h(p-1),&p_k&=pk,\\
+ \tau^2-p_k^2+k^2-1&=0.
+\end{align*}
+Let \(c=2r+1+\varphi\) be an affine expression rather than a separate
+coordinate. Introduce \(Y_K=Yk\), and define
+\[
+ \eta=k^2-4(c-Y_K)^2.
+\]
+Finally introduce
+\begin{align*}
+ d&=bw+ca-2c+4a\gamma-5\gamma,&a_c&=ac,&C_2&=c^2,&d_2&=d^2,\\
+ d_2-a_c^2+C_2-1&=0,\\
+ vE&=C_2,&A_E&=aE,&F_2&=F^2,\\
+ F_2-A_E^2+E^2-1&=0,\\
+ G&=a+F_2(d_2-a),&H&=2r+1+jc,&I&=d+oF,&G_H&=GH,\\
+ I^2-G_H^2+H^2-1&=0.
+\end{align*}
+Every displayed residual is quadratic. In particular, the final line is
+exactly \(I^2-(G^2-1)H^2=1\).
+
+\subsection{The eleven positivity requirements}
+Use Lemma~\ref{triangular}, with a separate triple for each entry, to
+impose
+\begin{equation}\label{guards}
+ g,t,m,w,s,\varphi,\gamma,I,\theta,\alpha,\eta>0.
+\end{equation}
+The expressions \(\theta,\alpha,\eta\) have degree at most two, so
+substitution into their three-triangular residuals preserves quadratic
+degree. No separate coordinate for any of them is needed. We will prove
+that the omitted source signs, including those of \(r,h,i,j,o,F\), can
+be recovered without further positivity coordinates.
+
+\section{Integer reconstruction and automatic positivity}
+\begin{lemma}[The geometric quotient]\label{lambda}
+Suppose \(b\in\Z\), \(B=b^5>2z>0\), \(q=b^L\), and
+\(\lambda(B-1)=q^4-1\). Then \(b\ge2\), and \(\lambda\) is a
+positive integer.
+\end{lemma}
+\begin{proof}
+The inequality gives \(b\ge2\) and \(B>1\). Put
+\(J=4\cdot5^{59}\). Then \(q^4=B^J\), and the unique rational
+value satisfying the equation is
+\[
+ \lambda=1+B+\cdots+B^{J-1}\in\Np.
+\]
+\end{proof}
+
+\begin{lemma}[A cofinite restriction removes the sign of \(r\)]
+\label{rpositive}
+For \(x>2z\), the integer inputs, circuit equations and positivity
+conditions in \eqref{guards} already force \(r>0\), without a
+positivity wrapper for \(r\).
+\end{lemma}
+\begin{proof}
+The power equations and \(\theta>0\) give \(b\ge2\), and
+Lemma~\ref{lambda} gives \(\lambda>0\). Since \(m,t,u,y\ge1\),
+\(e,\ell\ge\theta+1>0\). The condition \(\alpha>0\) gives
+\[
+ e\ell g^2<(b-xy)q^2,
+\]
+so \(b>xy\ge x>2z\). In particular \(2z\le b-1\), and
+\[
+ e,\ell\ge b^5-b+2\ge b^4.
+\]
+Therefore \(g^2<q^2/b^7\), whence \(g<q/b^3\). Also
+\(x\le b-1\), and \(L\ge8\), so
+\[
+ 0<c_0=1+xb^5+g<b^6+q/b^3
+       \le q(1/b^2+1/b^3)\le 3q/8<q.
+\]
+The original expression for the first bracket is
+\[
+ S=g+eq^3+\ell q^5+
+ \bigl[2ec_0^4+\lambda\{B(1+q^4)-2zc_0^4\}\bigr]q^4.
+\]
+Since \(B>2z\) and \(q^4>c_0^4\), all bracketed terms are positive,
+so \(S>0\).
+
+Similarly, the original expression for the second bracket is
+\[
+ T=q^3-(b-1)\ell+\theta\lambda q^3+(B-2)q^5.
+\]
+The same \(\alpha\) inequality gives \(\ell<bq^2\). Since
+\((B-2)q^3>b(b-1)\) for \(b\ge2\) and \(q\ge b\), we obtain
+\(T>0\). Finally \(n=q^{16}>1\), so
+\(r=S(n^2-n)+T(n^2-1)>0\).
+\end{proof}
+
+\begin{proposition}\label{integer-reconstruction}
+Every rational solution of the constructed system and the twelve
+integrality interfaces has integer values in all source coordinates
+apart from the positive choices that will be made for \(i,j,o,F,\tau\).
+All the circuit coordinates other than \(v\) and its reciprocal-block
+witnesses are integral.
+\end{proposition}
+\begin{proof}
+The eleven ordinary inputs are integers. The guard \(\theta>0\)
+forces \(b\ne0\); every power coordinate is exactly a positive power
+of the integer \(b\), even across quotient steps. The remaining power
+coordinates, \(\theta,e,\ell\), are therefore integers.
+Lemma~\ref{lambda} gives \(\lambda\in\Z\).
+All rows defining \(S,T,r,p,a,k,c,d\) and their product registers are
+integer polynomial assignments. Hence they and \(\alpha,\eta\) are
+integers. Lemma~\ref{rpositive} gives \(r\ge1\), so
+\(c=2r+1+\varphi>0\).
+
+Now \(vE=C_2=c^2>0\) forces \(v\ne0\). By the reciprocal
+integrality interface, \(i=1/v\in\Z\setminus\{0\}\). Thus
+\(E=ic^2\) and \(A_E=aE\) are integers. The norm row gives
+\[
+ F^2=(a^2-1)i^2c^4+1\in\Z,
+\]
+so \(F\in\Z\) by Lemma~\ref{monic}. Similarly,
+\(\tau^2=p^2k^2-k^2+1\in\Z\) forces \(\tau\in\Z\).
+The remaining definitions give integral \(G,H,I,G_H\).
+\end{proof}
+
+\begin{lemma}[The congruence quotient \(h\) is automatically positive]
+\label{hpositive}
+The preceding conditions force \(k>0\) and \(h\ge1\).
+\end{lemma}
+\begin{proof}
+Here \(Y=sn^2\ge1\), \(c>0\), and
+\(\eta=k^2-4(c-Yk)^2>0\). If \(k\le0\), then
+\(c-Yk\ge c+|k|>|k|\), a contradiction. Thus \(k>0\).
+Since \(p=2ws^2r^2n^2\ge r+2\), a negative integer \(h\)
+would give \(k=r+1+h(p-1)\le0\). Therefore \(h\ge0\).
+If \(h=0\), then \(k=r+1\) satisfies \(1<k<2p\). The norm row
+would put the integer square \(\tau^2\) strictly between consecutive
+squares:
+\[
+ (pk-1)^2<(pk)^2-k^2+1=\tau^2<(pk)^2.
+\]
+The first inequality is equivalent to \(k(2p-k)>0\); the second uses
+\(k>1\). This contradiction proves \(h\ge1\).
+\end{proof}
+
+\section{Recovering positive Pell congruence witnesses}
+\begin{lemma}[Pell solutions with preserved residue classes]\label{pell-lift}
+Let \(D\in\Np\) be nonsquare. Suppose \(X,Y\in\Z\),
+\(X>0\), \(Y\ne0\), and \(X^2-DY^2=1\). For every positive
+integer modulus \(M\), there are arbitrarily large positive integers
+\(X',Y'\) with
+\[
+ (X')^2-D(Y')^2=1,\qquad X'\equiv X\pmod M,\qquad
+ Y'\equiv Y\pmod M.
+\]
+\end{lemma}
+\begin{proof}
+The unit \(U=X+Y\sqrt D\) has inverse \(X-Y\sqrt D\) in
+\(\Z[\sqrt D]\). Both real conjugates are positive because
+\(X>|Y|\sqrt D\). The image of \(U\) in the finite ring
+\((\Z/M\Z)[T]/(T^2-D)\) is a unit, and so has a finite order \(k\).
+For every integer \(t\equiv1\pmod k\), write
+\(U^t=X_t+Y_t\sqrt D\). The coefficients are integers, satisfy the
+same norm equation and have the required residues. If \(U>1\), take
+such \(t\to+\infty\); if \(0<U<1\), take such \(t\to-\infty\).
+Then \(U^t\to+\infty\), its conjugate tends to zero, and both
+\(X_t,Y_t\) tend to \(+\infty\).
+\end{proof}
+
+\begin{proposition}\label{positive-reconstruction}
+Every rational solution of the constructed system on the instance tail
+\(x>2z\) yields a positive integer solution of all eighteen original
+equations of the displayed emended source.
+\end{proposition}
+\begin{proof}
+The integer reconstruction and previous sign arguments already give
+positive values of $b,g,t,m,w,s,h,\varphi,\gamma$ and of
+$\theta,\lambda,e,\ell,q,n,r,p,k,a,c,\alpha,\eta$.
+In fact \(a=(wn^2+1)rsn^2>2\), and
+\[
+ d=(a-2)c+(4a-5)\gamma+bw>0.
+\]
+The source norms give \(d^2\ge a^2\) and \(F^2>1\). Replace
+\(F,o\) simultaneously by \(-F,-o\) if \(F<0\); this preserves
+\(I=d+oF\), every norm, and integrality. Thus assume \(F>0\).
+Replace the nonzero source value \(i\) by \(|i|\), which is allowed
+because the original equations contain it only through \(i^2\).
+
+We have
+\[
+ G=a+F^2(d^2-a)>1,
+\]
+so \(D=G^2-1\) is positive and nonsquare. Let \(B_0=2r+1\).
+Since \(c=B_0+\varphi>B_0>0\) and \(j\in\Z\), the integer
+\(H=B_0+jc\) is nonzero. The guard \(I>0\) and the final norm
+allow Lemma~\ref{pell-lift} with modulus \(Fc\).
+Choose a resulting positive solution \(I',H'\) with
+\(I'>d\) and \(H'>B_0\). Its residues give positive integers
+\[
+ o'=\frac{I'-d}{F},\qquad
+ j'=\frac{H'-B_0}{c}.
+\]
+Replacing \(o,j\) by \(o',j'\) preserves every original equation:
+they occur only in the final norm. This step proves that neither
+\(o>0\) nor \(j>0\) needs its own rational positivity wrapper.
+Finally replace \(\tau\) by \(|\tau|\); it is nonzero because
+\(p\ge2\) and \(k>0\). All 28 original coordinates are now positive
+integers and satisfy \eqref{J1}--\eqref{J18}.
+\end{proof}
+
+\section{Completeness, counts, and the final quartic}
+Given a positive integer source solution, set \(v=1/i\) and assign every
+power and product register its displayed value. The regrouped \(S,T\)
+relations follow from \eqref{J3}. Every expression in
+\eqref{guards} is a positive integer, including
+\(I=d+oF>0\), so Lemma~\ref{triangular} supplies its triple.
+Choose ordinary witnesses for the eleven integer interfaces, and choose
+reciprocal-chart witnesses by scaling ordinary witnesses for \(i\) by
+\(v\), as in Lemma~\ref{reciprocal}. This constructs a rational
+solution of every new row. Together with
+Proposition~\ref{positive-reconstruction}, this proves the exact
+existence equivalence.
+
+The coordinate count can be audited without expanding a high-degree
+polynomial:
+\begin{center}
+\begin{tabular}{lr}
+\toprule
+Coordinates & Number\\
+\midrule
+The twelve free coordinates \eqref{free12}, plus \(\lambda,F,\tau\)&15\\
+The fixed signed power chain &169\\
+\(q_2,q_3,q_4,q_5,q_8,n,n_2\)&7\\
+\(\ell,e,c_{02},c_{04},V,S,T,r,e\ell_*,g_2\)&10\\
+\(s_r,s_{r2},U,p,Y,M,a,k,p_k,Y_K\)&10\\
+\(d,a_c,C_2,d_2,E,A_E,F_2,G,H,I,G_H\)&11\\
+\midrule
+Core before positivity &222\\
+Eleven positivity triples &33\\
+\midrule
+Rational core &255\\
+Twelve integrality blocks, using existing input coordinates &\(12(m-1)\)\\
+\bottomrule
+\end{tabular}
+\end{center}
+There are 212 core rows before the positivity requirements, and 223 after
+them. The twelve integrality blocks add \(12q_0\) rows. Sum the squares
+of every resulting residual. All residuals have integer coefficients
+and degree at most two, and at least one has a nonzero quadratic part.
+The sum has degree exactly four: the sum of the squares of the
+quadratic homogeneous parts cannot vanish identically over the reals.
+Over \(\Q\), its vanishing is equivalent to the vanishing of every
+residual. This proves Theorem~\ref{main}.
+
+\begin{center}
+\begin{tabular}{lrrrr}
+\toprule
+Integrality interface & \(m\)&\(q_0\)& Rational unknowns & Squares\\
+\midrule
+General project interface &163&137&2199&1867\\
+Fully specified project interface &179&151&2391&2035\\
+Ordinary-\(abc\) project interface &56&46&915&775\\
+\bottomrule
+\end{tabular}
+\end{center}
+These are baseline counts before any further algebraic sharing between
+the quadratic core and the particular integrality blocks. An improvement
+by such sharing must be proved for the combined system, with its
+coefficient table and a complete reverse reconstruction.
+
+\section{Verification and qualifications}
+The implementation is \texttt{jones1980\_system.py}. Running
+\begin{verbatim}
+python jones1980_system.py --report jones1980_certificate.json
+\end{verbatim}
+checks the exact signed power chain, both bracket regroupings, the
+source exponent in \(p\), the final squared Pell coefficient, all
+quadratic degrees, all occurring coordinates, and the numerical counts.
+Its structured builder exposes the eleven ordinary and one reciprocal
+integer inputs separately, so a combined-system compiler can attach the
+right block without silently treating \(v\) as an integer.
+
+The program does not prove the external integrality interface. The proof
+above does not identify a global minimum in the number of unknowns. The
+169-step power chain is the best among the explicit window chains tested
+by the accompanying search, not a proof of optimality among all
+addition--subtraction chains. Nor does the cofinite argument justify
+changing the exponent \(5^{60}\) to a different large exponent; the
+source exponent is retained exactly.
+
+\section{Optimization of the actual combined quadratic system}\label{sec:combined}
+
+The project interfaces have input-square coordinates that can be reused by
+the universal circuit. We now construct the combined system itself, rather
+than applying the variable-count formula to independent copies and stopping
+there. The transformations in this section preserve existence of rational
+solutions in both directions. The arithmetic hypotheses of each interface
+remain exactly those of that interface.
+
+\subsection{An elimination valid for every quadratic integrality interface}
+In the core, put \(s_r=sr\), with \(s_{r,2}=s_r^2\), and write
+\(n_2=n^2\). The relevant rows are
+\[
+ Y=sn_2,\quad M=rY,\quad U=wn_2,\quad
+ p=2U s_{r,2},\quad a=(U+1)M.
+\]
+The register \(M\) occurs only in its definition and in the last row.
+Delete its definition and replace the last row by
+\begin{equation}\label{eq:combined-a}
+                  2s_r a=(p+2s_{r,2})n_2.
+\end{equation}
+This is an ordinary quadratic equation. The positivity argument already
+proved gives \(s_r=sr>0\). Consequently the remaining rows imply
+\[
+ a=\frac{2(U+1)s_r^2n_2}{2s_r}=(U+1)s_rn_2,
+ \qquad M=s_rn_2=rY.
+\]
+Thus the deleted register is recovered uniquely, the old row for \(a\)
+holds, and \(a\) is an integer whenever the preceding core registers are
+integers. There is no division by a possibly zero coordinate.
+
+This alone reduces the general transfer bound from \(12m+243\) to
+\(12m+242\), with \(222+12q_0\) quadratic residuals. The next three
+savings use the particular integer interfaces in the project.
+
+\begin{theorem}[Improved general quadratic transfer]
+Under \eqref{integer-interface} and $\mathcal U_{\rm em}$, rational quartic
+solvability is undecidable in $12m+242$ unknowns. The polynomial is a sum
+of $222+12q_0$ quadratic squares.
+\end{theorem}
+\begin{proof}
+Apply Theorem~\ref{main} and the reversible elimination
+\eqref{eq:combined-a}. Every positivity and integrality argument survives
+by the reconstruction just proved.
+\end{proof}
+
+\subsection{The input-square profile}
+Suppose an integer block for an input \(X\) contains coordinates satisfying
+\begin{equation}\label{eq:square-profile}
+ X^2=uq,\qquad qq^{-1}=1,\qquad q^{-2}=(q^{-1})^2.
+\end{equation}
+Here \(q^{-1}\) and \(q^{-2}\) denote actual stored coordinates, with the
+displayed literal equations; these symbols do not conceal extra variables.
+The 163-coordinate table has
+\[
+ (u,q,q^{-1},q^{-2})=(Z_{37},Z_{159},Z_{160},Z_{161}).
+\]
+The 56-coordinate table has the simpler relation \(X^2=Z_{29}\), so all
+the arguments below apply with \(u=Z_{29}\) and \(q=q^{-1}=q^{-2}=1\).
+The 179-coordinate table admits the equivalent profile described below.
+
+\subsection{Sharing the square of the integer base}
+The universal power chain begins with \(b_2=b^2\). In the block testing
+the integer input \(b\), write \(b^2=u_bq_b\). Delete the coordinate
+\(b_2\) and its defining row. A subsequent multiplication row
+\(V=b_2W\) becomes
+\[
+                   Vq_b^{-1}=u_bW,
+\]
+and a row \(V=b_2^2\) becomes
+\[
+                   Vq_b^{-2}=u_b^2.
+\]
+Both replacements are quadratic and equivalent to the original rows because
+\(q_b\ne0\). Signed power-chain rows involving \(b_2\) are treated by
+the same multiplication by the appropriate existing inverse coordinate.
+The exact compiler checks every occurrence in the supplied chain. No other
+part of the universal circuit uses \(b_2\).
+
+\subsection{Sharing the square of \(g\)}
+Originally \(g_2=g^2\) occurs only in its defining row and in the positivity
+test for
+\[
+                   \alpha=(b-xy)q^2-e\ell g^2.
+\]
+The core stores a register \(e_\ell=e\ell\). Distinguish the large power
+\(q=b^{5^{60}}\) in this formula from the unit \(q_g\) in the integer
+block for \(g\), where \(g^2=u_gq_g\).
+Replace the stored register \(e_\ell\) by \(e_\ell'=q_g e_\ell\).
+Its defining equation and the expression for \(\alpha\) become
+\[
+ e_\ell' q_g^{-1}=e\ell,
+ \qquad \alpha=(b-xy)q^2-e_\ell'u_g.
+\]
+These are quadratic expressions. Delete \(g_2\) and its defining row;
+its value is recovered as \(u_gq_g\). The old value of \(e_\ell\) is
+\(e_\ell' q_g^{-1}\). This change preserves exactly the positivity
+condition on \(\alpha\), since \(e_\ell'u_g=e\ell g^2\).
+
+\subsection{Sharing the square of the large Pell congruence modulus}
+The source expression \(c=2r+1+\varphi\) is affine. Exchange the coordinate
+\(\varphi\) for \(c\) by the inverse substitution
+\(\varphi=c-2r-1\), and test integrality of \(c\) instead of
+\(\varphi\). The value \(r\) is already integral before this step, so
+the two integrality requirements are equivalent. Retain the full guard
+\(c-2r-1>0\); replacing it merely by \(c>0\) would be insufficient.
+
+In the integer block for \(c\), write \(c^2=u_cq_c\). The core register
+\(C_2=c^2\) has just two further occurrences:
+\[
+                  d_2-a_c^2+C_2-1=0,
+                  \qquad vE=C_2,
+\]
+where \(a_c=ac\) and \(v\) is the reciprocal input used to test
+\(i=1/v\in\Z\). Replace \(C_2\) by \(u_cq_c\) in these two rows,
+then delete its defining row and coordinate. Both rows remain quadratic.
+The second row continues to guard \(v\ne0\): the integer block gives
+\(u_cq_c=c^2\), and \(c>2r+1>0\).
+
+The reciprocal integer block is the homogeneous block already proved:
+if a source residual has homogeneous parts \(Q_2+Q_1+Q_0\), its new row is
+\[
+           Q_2(1,\mathbf w')+vQ_1(1,\mathbf w')+v^2Q_0=0.
+\]
+It equals \(v^2Q(1/v,\mathbf w'/v)\). This uses exactly \(m-1\) block
+witness coordinates. The compiler checks this identity separately for
+every source row, including the literal unit guards of that block.
+
+\subsection{A three-register rechart of the 179-coordinate interface}
+The existing fixed interface contains
+\[
+ X^2=Z_{37}Z_{163},\quad Z_{162}Z_{163}=1,
+ \quad Z_{164}=Z_{163}^2.
+\]
+Put \(q_*=Z_{162}\), so \(Z_{163}=q_*^{-1}\) and
+\(Z_{164}=q_*^{-2}\). Change precisely three coordinates:
+\[
+ Z_{37}^{\rm old}=q_*^2Z_{37}^{\rm new},\qquad
+ Z_{77}^{\rm old}=q_*^2Z_{77}^{\rm new},\qquad
+ Z_{78}^{\rm old}=q_*^4Z_{78}^{\rm new}.
+\]
+All other coordinates remain unchanged. The input-square row becomes
+\(X^2=q_*Z_{37}^{\rm new}\). Divide the three rows named
+\nolinkurl{scalar.rPair1.definition},
+\nolinkurl{scalar.four_contact_product.definition}, and
+\nolinkurl{scalar.forced_prime.definition} by \(q_*^4\).
+Divide \nolinkurl{input.cleared.0} and \nolinkurl{input.cleared.1} by \(q_*^2\).
+These are the only other rows containing a changed coordinate.
+
+For example, the first scalar row becomes
+\[
+ 2601(Z_{37}^{\rm new})^2
+ +255102Z_{37}^{\rm new}Z_{163}
+ -4Z_{77}^{\rm new}Z_{163}+6255001Z_{164}=0.
+\]
+Writing \(A_*\) for the fixed integer coefficient in the original
+forced-normalizer row, the other two scalar rows become
+\begin{align*}
+ &15531948Z_{37}^{\rm new}Z_{77}^{\rm new}
+ +291790992Z_{37}^{\rm new}Z_{163}
+ -512(Z_{77}^{\rm new})^2\\
+ &\qquad+767410608Z_{77}^{\rm new}Z_{163}
+ +Z_{78}^{\rm new}Z_{90}+14315517724Z_{164}=0,\\
+ &-A_*Z_{78}^{\rm new}+25Z_{78}^{\rm new}Z_{90}+Z_{164}=0.
+\end{align*}
+The two input-comparison rows, with \((a,b,h)=(17,23,118)\) or
+\((18,24,119)\), become
+\[
+              (-Z_a+Z_b+2504Z_h)Z_{163}
+                   +51Z_{37}^{\rm new}Z_h=0.
+\]
+Every displayed row is quadratic. The two literal unit rows are retained
+unchanged, so the coordinate transformation is reversible on every rational
+zero. This establishes the profile \eqref{eq:square-profile} with
+\((u,q,q^{-1},q^{-2})=(Z_{37}^{\rm new},Z_{162},Z_{163},Z_{164})\).
+
+\subsection{Resulting bounds and reproducible specifications}
+The preceding four eliminations remove four coordinates and four rows from
+the 255-coordinate, 223-row rational core. Its optimized version therefore
+has 251 coordinates and 219 rows. There remain eleven ordinary integer
+inputs and one reciprocal integer input. For each of the three audited
+project block formats, the resulting counts are
+\begin{equation}\label{eq:combined-count}
+ \boxed{\quad N=251+12(m-1)=12m+239,\qquad
+                R=219+12q_0.\quad}
+\end{equation}
+
+\begin{center}
+\begin{tabular}{rrrr}
+\toprule
+Integer interface \(m\)&Block rows \(q_0\)&Rational unknowns \(N\)&Quadratic rows \(R\)\\
+\midrule
+163&137&2195&1863\\
+179&151&2387&2031\\
+56&46&911&771\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The parameters \(x,z,u,y\), and the fixed coefficient parameter of an
+integrality interface, occur only in coefficients and are not existential
+unknowns. The cofinite restriction \(x>2z\) established earlier is retained.
+For the 163- and 56-coordinate families, one fixes a defining coefficient
+member under the respective retained premises before applying the reduction.
+The 179-coordinate interface has its explicitly specified coefficients.
+
+The complete sparse lists of ordinary quadratic residuals are generated by
+\nolinkurl{build_jones1980_combined.py}. They include all twelve actual
+integer blocks, the reciprocal homogenization, and all modified core rows.
+The receipts record the input source hashes, the exact variable counts,
+every occurring coordinate, all rechart identities, and integrality of the
+coefficient polynomials in the fixed parameters. No expanded sum of squares
+is needed to specify the resulting polynomial exactly.
+
+Finally, the defining polynomial is the sum of the squares of these
+residuals. Over \(\Q\), this sum vanishes if and only if every residual
+vanishes. Its degree is exactly four: at least one residual has a nonzero
+homogeneous quadratic part, and a sum of real squares of such parts cannot
+be the zero polynomial. The computations verify the finite algebra and the
+complete specification. They do not discharge any retained arithmetic
+premise, establish global minimality, or independently reprove the full
+unverified universality hypothesis $\mathcal U_{\rm em}$.
+
+\section{Source reconciliation and the remaining universality obligation}
+\label{sec:source-reconciliation}
+
+The quadratic elimination and rational-certificate arguments in this paper
+are exact for the displayed polynomial system.  A separate question is
+whether that precise system has the classical universality property.  The
+source audit uncovered a genuine discrepancy which must be retained in
+the statement of the result.
+
+Jones's 1980 announcement, \emph{Undecidable Diophantine equations},
+\emph{Bulletin of the American Mathematical Society} (New Series)
+\textbf{3} (1980), 859--862, states Theorem~3 on page~861 without its
+proof.  In its displayed equation for $d$, the printed coefficient is
+Greek $\alpha$:
+\[
+                   d=bw+ca-2c+4\alpha\gamma-5\gamma.
+\]
+This has been checked on the original scan, by comparing the glyph with
+the first-row slack $\alpha$ and with several occurrences of Latin $a$.
+It is not merely an OCR discrepancy.  The construction in the present
+paper instead uses
+\begin{equation}\label{eq:emended-d}
+                   d=bw+ca-2c+(4a-5)\gamma.
+\end{equation}
+
+An independent author-written source supports the Latin-$a$ form:
+Yuri Matiyasevich, \emph{Hilbert's tenth problem: A two-way bridge between
+number theory and computer science}, in C.~S.~Calude (ed.),
+\emph{People and Ideas in Theoretical Computer Science}, Springer,
+Singapore, 1999, pp.~177--204.  Its page~191 explicitly gives
+\eqref{eq:emended-d}, in a displayed system asserted to be universal and
+attributed to Jones's 1982 article.  All other equations agree with the
+present system, with the following additional exception: its Pell row
+is printed
+\[
+                         p^2k^2-k^2=1=\tau^2.
+\]
+The present construction uses the correct Pell equation printed in the
+1980 announcement,
+\begin{equation}\label{eq:emended-tau}
+                         p^2k^2-k^2+1=\tau^2.
+\end{equation}
+The literal 1999 row cannot hold for the intended positive integers
+$p\ge2$, $k\ge1$, since $(p^2-1)k^2\ge3$.  The online version also
+contains a font-rendering defect in many minus signs; this is distinct
+from the displayed equality-sign error.
+
+Thus no consulted complete display is literally identical to the
+system used here.  The two corrections are strongly supported by the
+sources and by the local mathematics, but that evidence is not a
+replacement for checking the full universality proof.  The following
+elementary computation explains the role of Latin $a$.
+
+\begin{lemma}[The power-of-two Pell congruence]
+Let $a\ge2$ be an integer and define integers $X_n,Y_n$ by
+\[
+ X_n+Y_n\sqrt{a^2-1}=(a+\sqrt{a^2-1})^n
+ \qquad(n\ge0).
+\]
+Then
+\[
+             X_n-(a-2)Y_n\equiv2^n\pmod{4a-5}.
+\]
+\end{lemma}
+\begin{proof}
+Set $R_n=X_n-(a-2)Y_n$.  The two standard multiplication recurrences
+give
+\[
+ R_{n+1}=2X_n+(2a-1)Y_n,
+ \qquad
+ R_{n+1}-2R_n=(4a-5)Y_n.
+\]
+Since $R_0=1$, induction proves the congruence.  No relation with the
+unrelated slack $\alpha$ occurs in this calculation.
+\end{proof}
+
+The 1975 paper of Matiyasevich and Robinson,
+\emph{Reduction of an arbitrary Diophantine equation to one in
+13 unknowns}, \emph{Acta Arithmetica} \textbf{27} (1975), 521--553,
+Theorem~4 on pages~532--533, independently supplies the classical
+three-Pell-equation bridge.  Its notation and its auxiliary factors
+differ from the system above.  Invoking that theorem alone does not
+prove every specialization and substitution needed for the complete
+Jones system, and in particular does not settle the above source
+discrepancy by itself.
+
+For a fully rigorous checkpoint the extra premise is therefore stated
+explicitly:
+\begin{quote}
+\textbf{Hypothesis $\mathcal U_{\rm em}$:}
+The displayed 28-variable positive-integer system, with
+\eqref{eq:emended-d} and \eqref{eq:emended-tau}, has the universality
+property asserted in Jones's theorem; in particular, for some fixed
+positive integer coefficients $z,u,y$, its solvable positive input
+values $x$ form a nonrecursive set.
+\end{quote}
+Under this premise, the exact quadratic reduction and its stated
+variable count give the claimed undecidability transfer.  Without it,
+the coefficient construction and both directions of its equivalence
+with the displayed system remain proved, but the undecidability label
+is not yet established.  This is a source-verification premise and is
+unrelated to $abc$.
+
+The remaining task is concrete: obtain and verify the relevant complete
+proof in Jones, \emph{Universal diophantine equation},
+\emph{Journal of Symbolic Logic} \textbf{47} (1982), 549--571,
+DOI~10.2307/2273588, or prove directly that the precise emended system is
+equivalent to an independently verified universal exponential or
+binomial-coefficient system.  It is not enough to check the local Pell
+congruence, or to copy an unverified secondary transcription.
+
+The original scan used for the 1980 comparison is reproduced on PDF
+page~53 (zero-based page~52) of Gabriel Robins's University of Virginia
+slides:
+\url{https://www.cs.virginia.edu/~robins/cs3102/slides/Theory_Slides_Russell_Hardy_Ramanujan_Ramsey_Hilbert_v61.pdf}.
+The author-written 1999 chapter is available from the editor's academic
+site at
+\url{https://www.cs.auckland.ac.nz/~cristian/tcspi/ch9.pdf}.
+The 1975 authors' scan is available at
+\url{https://logic.pdmi.ras.ru/~yumat/papers/23_paper/23_home.html}.
+
+\begin{thebibliography}{9}
+\bibitem{Mat99} Yu. Matiyasevich,
+\emph{Hilbert's tenth problem: A two-way bridge between number theory and computer science},
+in C.~S.~Calude (ed.), \emph{People and Ideas in Theoretical Computer Science},
+Springer, Singapore, 1999, pp.~177--204.
+\url{https://www.cs.auckland.ac.nz/~cristian/tcspi/ch9.pdf}.
+\bibitem{Jones80} J. P. Jones,
+\emph{Undecidable Diophantine equations},
+Bulletin of the American Mathematical Society (New Series)
+\textbf{3} (1980), 859--862.
+\href{https://doi.org/10.1090/S0273-0979-1980-14832-6}{doi:10.1090/S0273-0979-1980-14832-6}.
+Theorem~3, p.~861; its printed display is compared with the emended system above.
+\bibitem{Jones82} J. P. Jones,
+\emph{Universal diophantine equation}, Journal of Symbolic Logic
+\textbf{47} (1982), 549--571.
+\href{https://doi.org/10.2307/2273588}{doi:10.2307/2273588}.
+\bibitem{MT} A. Mishchenko and A. Treier,
+\emph{Universal input of knapsack problem for groups},
+Journal of Physics: Conference Series \textbf{1050} (2018), 012054.
+\href{https://doi.org/10.1088/1742-6596/1050/1/012054}{doi:10.1088/1742-6596/1050/1/012054}.
+Its explicit transcription is not used for the present theorem.
+\bibitem{MR} Yu. Matiyasevich and J. Robinson,
+\emph{Reduction of an arbitrary Diophantine equation to one in 13
+unknowns}, Acta Arithmetica \textbf{27} (1975), 521--553.
+The author's public copy is at
+\url{https://logic.pdmi.ras.ru/~yumat/papers/23_paper/23_home.html}.
+\bibitem{Scan} G. Robins, University of Virginia, theory lecture slides,
+\emph{Russell, Hardy, Ramanujan, Ramsey, Hilbert}, version 61,
+PDF page 53 reproduces the original Jones page 861.
+\url{https://www.cs.virginia.edu/~robins/cs3102/slides/Theory_Slides_Russell_Hardy_Ramanujan_Ramsey_Hilbert_v61.pdf}.
+Used to inspect the primary-source mathematical display, not as a
+replacement theorem.
+\end{thebibliography}
+\end{document}

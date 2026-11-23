@@ -1,0 +1,599 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs,longtable,hyperref,microtype}
+\setlength{\emergencystretch}{3em}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\title{A shared-reference quartic checkpoint\\with an explicit source-universality obligation}
+\author{\(\mathbb Z\mathbb Q\) Diophantine Project}
+\date{23 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+We construct complete rational quadratic systems with 2086, 2278, and
+846 coordinates and, respectively, 1776, 1944, and 728 residuals. Their
+sums of squares are quartics. The construction shares the actual elliptic
+reference point among twelve integer-certification blocks, after proving
+a simultaneous witness theorem under the source arithmetic interfaces.
+The last route additionally assumes ordinary rational \(abc\).
+
+The undecidability interpretation is conditional on a separate, explicit
+hypothesis \(\mathcal U_{\rm em}\): universality of the precise emended
+positive-integer source system. The consulted displays disagree in a
+coefficient and contain a separate Pell-row typo. That source-verification
+obligation has not been discharged. The numerical counts and finite
+algebraic transformations are verified independently of
+\(\mathcal U_{\rm em}\); this paper does not claim an unconditional
+undecidability bound or a global minimum.
+\end{abstract}
+
+\section{Scope and the exact unresolved source assertion}
+The independent-block construction is recorded in the companion paper
+\nolinkurl{jones1980_quartic_transfer.tex} and its complete tables. Its
+optimized outer circuit has 251 coordinates and 219 quadratic residuals,
+with eleven ordinary integer inputs and one reciprocal integer input.
+The present paper changes the way those twelve integrality requirements
+are implemented.
+
+There are two distinct kinds of assumptions. The integer-defining
+interfaces retain their stated elliptic, height, finite prime-pattern,
+recurrence, and native-pole premises; the 56-coordinate interface also
+uses ordinary rational \(abc\). In addition, an undecidability conclusion
+from this particular outer circuit requires the following assertion.
+\begin{quote}
+\textbf{Hypothesis \(\mathcal U_{\rm em}\).}
+The precise displayed 28-variable positive-integer system used in the
+companion paper, with
+\[
+ d=bw+ca-2c+(4a-5)\gamma,
+ \qquad (p^2-1)k^2+1=\tau^2,
+\]
+has the asserted universality property: for some fixed positive integer
+coefficients \(z,u,y\), the positive input values \(x\) for which it is
+soluble form a nonrecursive set.
+\end{quote}
+Jones's 1980 announcement prints Greek \(\alpha\) in place of Latin
+\(a\) in the coefficient of \(4\gamma\). Matiyasevich's 1999 survey
+supports the Latin-\(a\) form but prints a separate, impossible equality
+in the Pell row. No complete consulted display is therefore literally
+identical to the emended system used here. The companion source audit
+states the discrepancy and the remaining proof obligation in full.
+The local Pell identities supporting the emendations do not themselves
+prove \(\mathcal U_{\rm em}\).
+
+Throughout, an undecidability statement about the final quartics is to
+be read with \(\mathcal U_{\rm em}\) and the selected integrality
+interface's premises. The simultaneous integer-witness theorems below
+concern the integrality interfaces themselves and do not need
+\(\mathcal U_{\rm em}\). The composition with the emended outer circuit
+is an existence equivalence; its undecidability label additionally needs
+that source hypothesis. Counts include every existential rational
+unknown. The instance parameter \(x\), restricted to the cofinite range
+\(x>2z\), is a coefficient parameter and is not an unknown.
+
+\paragraph{Attribution.}
+The defining blocks build on the supplied notes of Gabe Conant with
+Astra 6.2 and the subsequent project constructions. This paper proves
+new simultaneous-witness and register-sharing deductions from their
+explicitly retained interfaces; it does not replace their arithmetic
+hypotheses by finite computation.
+
+\section{Simultaneous integral witnesses with one reference point}
+\label{sec:shared-reference}
+
+The general 163-coordinate defining system admits a genuine simultaneous
+improvement.  Its reference point need not be chosen independently for
+each input.  The assertion below uses the arithmetic interfaces retained
+in the source manuscript
+\texttt{scalar\_point163\_179\_20261120\_v82.tex}; it does not establish
+those interfaces.  In particular, its prime supplier is required to
+apply to every fixed finite family of rational contact positions, with
+arbitrary finite avoidance and the compatible annihilation conditions.
+No uniformity in a family that has not yet been fixed is needed.
+
+\begin{theorem}[Shared reference for finitely many inputs]
+\label{thm:shared-reference}
+Fix a positive integer $k$ and a parameter $N$ for which the retained
+general 163-coordinate system defines $\mathbb Z$ over $\mathbb Q$.
+In $k$ copies of that system, identify the ten stored reference
+coordinates
+\[
+                 15,16,17,18,19,20,50,51,103,104.
+\]
+The resulting quadratic system has rational input projection
+$\mathbb Z^k$.  It can be written with
+\[
+                  153k+10\quad\hbox{coordinates},\qquad
+                  129k+8\quad\hbox{quadratic residuals}.
+\]
+The coordinate count includes all $k$ distinguished inputs.  The sum
+of the squares of these residuals is a quartic with the same input
+projection.  The retained parameter threshold is unchanged.
+\end{theorem}
+
+\paragraph{Which coordinates are identified.}
+The physical source labels of these coordinates are, respectively,
+\[
+                 15,16,17,18,19,20,64,65,150,151.
+\]
+In the literal map in
+\nolinkurl{computation/variable_reductions_v82/general/quartic163/maps.json},
+every one has $c$-weight $1$, $R$-weight $0$, and parameter-weight $0$.
+The physical reference functions are source coordinates divided by
+$c$.  Their stored coordinates are therefore the actual reference
+functions, independent of the input-dependent scalar normalizer, of
+the contact parameter, and of the contact gauge $c$.  Six coordinates
+give the retained reference chart, two give its reciprocal square,
+and two give the alternate reference ratio.  Once the actual point
+$H$ is fixed, all ten have fixed values; this is not an identification
+of freely chosen elliptic points.
+
+The proof must verify a common choice of $H$, rather than merely
+observe that these coordinates have the same names.  We give that
+verification in the order in which the choices are made.
+
+\begin{lemma}[Joint scalar preparation]
+\label{lem:joint-scalar-preparation}
+For any finite list of integer inputs $x_1,\ldots,x_k$, the ordered
+scalar preparation in the 163-coordinate construction can be carried
+out with one reference point $H=[h]P_0$ and one scalar difference
+point $Q_2=[a]R_0$, with $a\in6\mathbb Z_{>0}$.  Every input retains
+its own normalizer $R_i$, scalar quotient $\tau_i$, and scalar pole
+witnesses.  The integer $a$ may be arbitrarily large.
+\end{lemma}
+\begin{proof}
+Write
+\[
+ \beta_i=51x_i^2+2504,\qquad
+ r_i=\beta_i(\beta_i-1)(\beta_i-2401)(32\beta_i+343),\qquad
+ R_i=\frac{149^{2N+1}r_i}{1+149^2r_i}.
+\]
+All these numbers are fixed before any comparison prime is selected.
+For $N\ge1$ the source estimate gives $R_i>100$.
+Let $\mathcal P$ be the finite union, over all $i$, of the primes
+where $R_i(R_i+9792)$ has odd valuation, together with $2,3,17$.
+Every odd valuation in that union is positive.  Moreover every
+$R_i(R_i+9792)$ is a square at $2,3,17$, by the same integer-input
+congruences as in the one-input proof.
+
+Choose $H$ sufficiently deep at both places over every $p\in\mathcal
+P$, with $64\mid h$, and within the source real neighborhood of the
+identity.  Write $d_w=v_w(z(H))$ at a place $w$ over $p$.  For each
+$p$, choose one positive exact depth
+\[
+                         t_p=v_p(a/h).
+\]
+The lower bound on $t_p$ is the maximum of the finitely many lower
+bounds needed for the inputs $i=1,\ldots,k$.  The reference depths
+are chosen first sufficiently large that this lower bound is smaller
+than
+\[
+             2\min_{w\mid p} d_w+
+             \tfrac12\min_i v_p(R_i)-q/2,
+\]
+where $q\ge2$ is any fixed required accuracy.  Such a choice is
+possible since the lower bounds are fixed before the reference depths
+are increased.  This gives, simultaneously for every $i$ and every
+$w\mid p$,
+\[
+ v_w(\epsilon_w)\ge q,\qquad
+ v_p(R_i)+4d_w-2t_p\ge q,
+ \qquad Z=(a/h)(1+\epsilon_w).
+\]
+These are exactly the two inequalities used in the source scalar
+preparation, now with their maxima and minima taken over a finite
+list.  Exact depth is a nonempty open congruence condition.  The
+Chinese remainder theorem combines these conditions with $a=2a_0$,
+$3\mid a_0$, and the fixed component and reduction-order congruences.
+The retained recurrence gives arbitrarily large positive choices of
+$a_0$ in that progression with $Q_2=[a_0]P_0$ in the source real
+neighborhood.
+
+The scalar trace calculation consequently gives, for every $i$,
+\[
+              v_p(\tau_i)=2t_p-5v_p(R_i)-v_p(2).
+\]
+The common lower bound on $t_p$ makes all $\tau_i$ integral on the
+odd supports and gives the prescribed depths at $2,3,17$.  Outside
+$\mathcal P$ the parity argument for the reduced denominator applies
+separately to each $R_i(R_i+9792)\tau_i^2$.  There is no requirement
+that the different $\tau_i$ be equal.
+
+The source real neighborhoods can also be common: they give
+$|f(H)^{(j)}|\le1$ and $1\le|Z^{(j)}|\le3$ at both real embeddings,
+and hence for every $i$
+\[
+       0<R_i(R_i+9792)\tau_i^2
+         \le\frac{24482500}{R_i^4}<17.
+\]
+Thus every actual scalar input satisfies its realization hypotheses.
+After $a$ is fixed these conditions are open in $H$.  Intersect the
+finitely many reference neighborhoods and retain a progression through
+the chosen $h$ preserving all of them.  This intersection is nonempty
+because it contains that chosen reference point.  It is fixed before
+comparison primes are selected.
+\end{proof}
+
+\begin{lemma}[Separating all fixed contact lists]
+\label{lem:contact-offsets}
+Let $\Theta\subset\mathbb Q$ be the source contact set, of diameter
+four, and suppose $T_1,\ldots,T_k>7$ are fixed rational numbers.
+There are integers $\delta_1,\ldots,\delta_k$ such that the $2k$
+sets
+\[
+       \delta_i+\Theta,\qquad \delta_i+T_i+\Theta
+                      \quad(1\le i\le k)
+\]
+are pairwise disjoint.  Consequently the retained fixed-family prime
+supplier applies once to their union.
+\end{lemma}
+\begin{proof}
+The two sets belonging to a single $i$ are disjoint since $T_i$ is
+larger than the diameter.  Having chosen the first $i-1$ integers,
+choose $\delta_i$ so large that both new sets lie strictly to the
+right of every previously chosen set.  This proves the assertion
+by induction.  All positions are fixed rational numbers before the
+prime supplier is invoked.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:shared-reference}]
+Soundness is immediate from the one-input theorem: every retained
+block still satisfies every original residual, with the identified
+coordinates simply assigned common values.  Thus each of its inputs
+is integral.  This argument does not require distinct inputs or
+distinct contact radicals on an arbitrary rational solution.
+
+For completeness fix an arbitrary tuple in $\mathbb Z^k$.  Apply
+Lemma~\ref{lem:joint-scalar-preparation}.  The common scalar label
+$a\in6\mathbb Z_{>0}$ then supplies the common Lucas labels $t$ and
+odd $b>1$ from the source recurrence.  Put
+\[
+ Q_{1,i}=[\beta_i]P_0,\qquad Q_2=[a]R_0,\qquad
+ Q_3=[t]R_0,\qquad Q_4=[(b-1)/2]R_0.
+\]
+These points are fixed and nonzero nontorsion.  Every input retains
+its own aggregate
+\[
+ T_i=7+\frac14\operatorname{Tr}
+          \bigl(x(Q_{1,i})+R_i x(Q_2)+x(Q_3)+x(Q_4)\bigr)>7.
+\]
+All forbidden finite chart points can be avoided by shrinking the
+common reference neighborhood.  There are only finitely many such
+conditions; multiplication by each fixed nonzero root label is
+nonconstant on the relevant connected real orbit closure.
+
+Keep the contact parameter $\lambda_i$ of every block independent
+in the equations.  Choose the integers $\delta_i$ in
+Lemma~\ref{lem:contact-offsets} and, solely when constructing this
+witness, set $\lambda_i=\lambda+\delta_i$.  The $\delta_i$ are
+not additional quantified variables or extra equations.  The single
+finite-family prime supplier is applied to the union of these fixed
+translated positions, after enlarging finite avoidance to include
+all the normalizers, all fixed nonzero root multipliers, all fixed
+chart denominators, and the previous preparation moduli.
+
+The successful reference annihilation conditions concern $h$ and
+$h-1$.  They are the same conditions for every input: the primary
+reference is formal in one slot and its translate by $P_0$ is formal
+in the other slot.  The different $\beta_i$ multiply the same
+generator and are units at the selected primes; they prescribe no
+conflicting residues for $h$.  The source half-generator conditions
+are retained for the common points $Q_2,Q_3,Q_4$.
+
+The source short-interval argument makes all selected primes
+coprime to every selected reduction order and to the earlier
+preparation moduli.  The same synchronization therefore applies to
+the entire finite family.  At each selected prime only the smaller
+of the two initial reference depths is increased, by specifying the
+valuation of $h$ or of $h-1$; equal initial depths require neither
+to be divisible by the prime.  These additional prime-power
+conditions are mutually coprime and preserve every earlier
+annihilation congruence.  The source compact-component recurrence
+preserves the real return on the resulting progression.
+
+For each block, its two contact lists now have the same properties
+used in its original proof.  At a selected prime belonging to that
+block, its successful and opposite reference depths are synchronized,
+all required root multipliers are units, and all its detector terms
+have the original positive depth.  Thus its comparison inputs have
+selected valuation one.  At fixed places the expansion
+\[
+ q(\lambda+u)=\kappa\lambda^{-2}+O(\lambda^{-3}),\qquad \kappa>0,
+\]
+holds for every one of the finitely many fixed shifts $u$; the source
+local preparation and real limits apply to all blocks simultaneously.
+Every actual scalar and comparison-pole input receives its own native
+realization witnesses.  Filling the complete finite charts from the
+one final $H$ gives identical values in the ten reference coordinates.
+This proves completeness, including tuples with repeated entries.
+
+Identifying ten coordinates in all $k$ copies saves $10(k-1)$,
+so the total is $163k-10(k-1)=153k+10$.  The six rows named
+\texttt{sharedT.reference.relation}$j$.\texttt{$\ell$}, with
+$1\le j\le3$ and $0\le\ell\le1$, become identical in all copies.
+So do the two rows
+\texttt{testSquare.40.0.0.definition} and
+\texttt{testSquare.40.0.1.definition}.  Dropping their duplicate
+copies leaves $137k-8(k-1)=129k+8$ residuals.  Every retained
+residual is still quadratic.  The input-square residual has a
+nonzero quadratic part, so their sum of squares has degree exactly
+four over the real field $\mathbb Q$.
+\end{proof}
+
+\begin{remark}[Use inside a universal quadratic system]
+If a quadratic outer system has $b$ rational coordinates, including
+$k$ coordinates whose integrality is certified by unmodified copies
+of the 163-coordinate system, the shared-reference construction has
+\[
+                    b+152k+10
+\]
+coordinates, compared with $b+162k$ for independent certificates.
+This formula presupposes that no subsequent homogenization changes
+the ten reference coordinates in only some blocks.  Such a block
+can be excluded from the sharing, or its specific coordinate changes
+must be accounted for separately.  Identifying coordinates merely
+because their source labels agree after different gauges would not
+justify this formula.
+\end{remark}
+
+\begin{remark}[What is not shared]
+The argument does not identify the normalizers $R_i$, scalar pole
+quotients, contact parameters, or contact gauges.  Independent contact
+parameters are essential to the proof: setting every $\lambda_i$
+equal would produce repeated contact poles when inputs coincide.
+The offset construction uses their existing freedom to give a valid
+simultaneous witness.  More extensive sharing of the scalar and
+comparison circuits requires a separate joint compilation and cannot
+be inferred from the ten-coordinate identification alone.
+\end{remark}
+
+\section{The fixed and ordinary-\(abc\) interfaces}
+
+\subsection{The fixed 179-coordinate interface}
+The shared-reference proof also applies to the fixed 179-coordinate
+interface. Here the identified stored coordinates are
+\[
+                15,16,17,18,19,20,50,51,104,105.
+\]
+Their physical labels are again \(15,16,17,18,19,20,64,65,150,151\),
+all with \(c\)-weight one and \(R\)-weight zero. The same eight reference
+rows are duplicated. The three-register rechart used in the combined
+compiler changes none of these coordinates or rows.
+
+For completeness, the fixed normalizers are
+\[
+ R_i=A_*r_i/(1+25r_i)>100,
+\]
+with \(A_*\) the fixed source integer. Their square-class preparation is
+identical to the one-input preparation: \(R_i(R_i+9792)\) has only positive
+odd valuations, and is a square in \(\Q_2,\Q_3,\Q_{17}\). Take the finite
+union of their odd supports, the maximum of all required lower scalar
+depths, and reference formal depths large enough for all the resulting
+strict inequalities. This supplies a single reference point and a single
+positive scalar label for every input. The same common label supplies the
+Lucas labels. Each block keeps its own scalar quotient and native pole
+witnesses.
+
+The effective construction has its original unweighted aggregate and its
+original contact lists. After all point differences have been chosen,
+these lists are fixed, finite, and internally separated by the source
+construction. Translate the whole contact list of block \(i\) by a fixed
+integer \(\delta_i\), choosing these integers successively so that different
+blocks' lists are disjoint. This is achieved by setting that block's free
+contact parameter equal to the common slope plus \(\delta_i\) solely in
+the completeness construction. The fixed-family prime supplier applies
+to the union. The shared reference annihilation conditions are the same
+conditions on \(h\) and \(h-1\) as before, and finite avoidance is enlarged
+to the union of the finitely many earlier exceptional sets. All fixed-place
+and real preparations persist because their slope asymptotics are unchanged
+by fixed translations. This proves simultaneous completeness. Soundness
+uses each original 179-coordinate block separately, and hence retains its
+effective coefficients and height bounds without alteration.
+
+Consequently \(k\) copies have a simultaneous presentation in
+\[
+                       169k+10
+\]
+coordinates, including their \(k\) inputs, with \(143k+8\) quadratic rows.
+
+\subsection{Nonzero inputs for the 56-coordinate ordinary-\(abc\) interface}
+For this interface it suffices to prove simultaneous completeness for
+nonzero integer inputs. This restricted assertion avoids the special
+zero-input reference in the source; no assertion that every tuple involving
+zero has a common reference is needed below.
+
+\begin{proposition}\label{prop:abc-common-reference}
+Fix a defining odd coefficient parameter of the 56-coordinate interface,
+under ordinary rational \(abc\) and all its retained arithmetic premises.
+Identify coordinates \(2,3,4,5,6,7\) in \(k\) copies of its quadratic
+system. Every rational solution has integral inputs. Every tuple in
+\((\Z\setminus\{0\})^k\) has a rational solution of this shared system.
+It has \(50k+6\) coordinates, including the inputs, and \(42k+4\) rows.
+\end{proposition}
+
+\begin{proof}
+The four rows named \texttt{reference.primitive.1} through
+\texttt{reference.primitive.4} involve exactly coordinates \(2,\ldots,7\)
+and fixed coefficients. These are the six actual reference-chart
+coordinates; they do not depend on the input or the contact gauge. Each
+original block remains a solution of its own integer-defining system,
+so soundness is unchanged.
+
+For completeness fix nonzero integers \(n_1,\ldots,n_k\). The parent
+multiplication family uses
+\[
+ U_i=[n_i]H,\qquad V_i=[n_i](H-R_0),\qquad U_i-V_i=[n_i]R_0.
+\]
+Thus the scaled trace
+\[
+ T_i=n_i^2\operatorname{Tr}x([n_i]R_0)
+\]
+is fixed independently of the later reference choice. So are
+\[
+ M_i=B+2(n_i^8+T_i^2),\qquad a_i=M_i^4+16>16.
+\]
+The two-adic source lemma gives \(a_i\in\Q_2^{\times2}\) for every \(i\).
+
+First choose a permissible common reference neighborhood. For a nonzero
+label \(n_i\), multiplication by \(n_i\) on the elliptic curve is
+nonconstant and has finite fibers. The forbidden finite chart points for
+all the \(U_i,V_i,H,H-R_0\) therefore exclude only finitely many points
+from the reference orbit. Choose one reference in the cyclic orbit avoiding
+their finite union, and take sufficiently small real and fixed-place
+neighborhoods in which all the finitely many raw tests are defined and
+bounded. These are the bounded neighborhoods required by the source
+prime-pattern construction. They have a common point by their construction;
+an arbitrary intersection of independently chosen neighborhoods is not
+being assumed nonempty.
+
+For block \(i\), the sixteen fixed contact positions are
+\[
+       \pm(a_i+r),\qquad r\in\{-8,-7,-4,-1,1,4,7,8\}.
+\]
+They are internally distinct because \(a_i>16\). Choose integers
+\(\delta_i\) so that the translated lists
+\(\delta_i\pm(a_i+r)\) are pairwise disjoint over all blocks. Retain
+independent contact variables \(z_i\) in the equations, and choose
+\(z_i=z+\delta_i\) only for this witness. Enlarge the fixed preparation
+set to include the supports of every \(n_i\), every contact position and
+its nonzero pairwise differences, every \(a_i\), and the source chart
+exclusions. Choose a common integer \(D_0>0\) clearing the finitely many
+rational contact denominators. The retained fixed-family supplier then
+applies to the \(16k\) distinct forms
+\[
+       N+D_0^2\bigl(\delta_i\pm(a_i+r)\bigr)L^2,
+       \qquad z=N/(D_0^2L^2).
+\]
+All listed primes have the required finite avoidance. The reference
+conditions at them are the same successful primary and opposite
+conditions on \(h\) and \(h-1\). Since every \(n_i\) is a unit at the
+selected primes, multiplication by \(n_i\) introduces no conflicting
+reference congruence. The compatible annihilation refinements and the
+compact-component recurrence are applied to this one finite union.
+
+At each selected contact of block \(i\), exactly one of its sixteen
+factors has simple vanishing. The original derivative identity therefore
+gives contact-quotient valuation one, and the original point preparations
+give positive valuation of that block's shifted norm/trace gate. All its
+selected native-pole valuations are consequently the same as in the
+one-input proof. The factorization argument outside its selected support
+is unchanged; a prime selected for a different block is simply an
+unselected prime in this argument.
+
+At the finitely many fixed places, take the denominator of the common
+slope \(z\) sufficiently deep for all blocks. Since \(\delta_i\) is fixed,
+\(z_i/z\) tends to one at those places and at real infinity. Thus the
+source asymptotics
+\[
+                 u_i\sim z_i^2/a_i,\qquad c_i\sim a_i/z_i^2
+\]
+hold simultaneously. The bounded raw point tests give
+\(W_i-1=O(c_i)\), \(D_i=O(c_i^2)\), and the native-pole value is
+asymptotic to \(7c_i\). At two, every \(a_i\) is a square, so the native
+input lies in \(7\Q_2^{\times2}\) with the required arbitrarily large
+positive valuation. At real infinity it lies in \((0,1)\), and the source
+parity argument gives a square reduced denominator for each block.
+Apply the stated native-pole realization separately to all these actual
+inputs. The one final reference point gives the same six reference
+coordinates in every block, proving completeness.
+
+Identifying six coordinates saves \(6(k-1)\); deleting the four repeated
+reference rows saves \(4(k-1)\). This gives the displayed counts.
+\end{proof}
+
+\section{Common references in the optimized Jones system}
+The optimized independent-block construction has 251 outer coordinates and
+219 outer rows. Its integer requirements consist of eleven ordinary inputs
+and the reciprocal input \(1/v\). To share all references in the same
+coordinate scale, introduce one further coordinate \(i\), impose
+\[
+                              iv=1,
+\]
+and use an ordinary integer block for \(i\). This replaces the homogeneous
+reciprocal block, whose witness coordinates were scaled by \(v\). No
+additional arithmetic assumption is introduced: the new equation makes
+\(i=1/v\) exactly.
+
+All twelve integer blocks are now unhomogenized and may share their actual
+reference coordinates. For the 163- and 179-coordinate interfaces, identify
+the ten coordinates just proved to be simultaneous. For the 56-coordinate
+interface, use Proposition~\ref{prop:abc-common-reference}. Its nonzero-input
+restriction is sufficient: in the completeness direction choose a positive
+integer witness of Jones's original universal system, before applying the
+sign and reciprocal changes. All twelve inputs to the integer blocks are
+then positive. In the soundness direction, every individual block still
+certifies integrality, including if a relaxed outer solution initially has
+some zero input. Thus no unproved common-reference statement at zero is
+used.
+
+The resulting full counts are
+\begin{center}
+\begin{tabular}{rrrrr}
+\toprule
+Interface&Outer coordinates&Shared coordinates saved&Total coordinates&Total rows\\
+\midrule
+163&252&110&2086&1776\\
+179&252&110&2278&1944\\
+56&252&66&846&728\\
+\bottomrule
+\end{tabular}
+\end{center}
+For example the first count is \(252+12(163-1)-110=2086\), while its row
+count is \(220+12\cdot137-88=1776\). The analogous ordinary-\(abc\) count
+is \(252+12(56-1)-66=846\), with \(220+12\cdot46-44=728\) rows.
+
+The separate compiler \texttt{build\_shared\_reference.py} starts from the
+complete independent-block tables, replaces the reciprocal block by its
+ordinary version and the literal row \(iv=1\), identifies precisely the
+proved reference coordinates, and verifies that every discarded duplicate
+row is identical to its retained representative. It leaves the original
+tables unchanged. All residuals remain ordinary quadrics; all coordinates
+occur. Their sum of squares has degree exactly four and the required
+existence equivalence. The source-universality hypothesis \(\mathcal U_{\rm em}\), the source arithmetic premises, the ordinary
+\(abc\) hypothesis for the 56-coordinate interface, and the cofinite
+restriction on the instance parameter are all retained.
+
+\section{Reproduction and the limits of the certificate}
+From the repository root, run
+\begin{verbatim}
+python -B undecidability/verify_shared_reference.py
+\end{verbatim}
+The verifier reconstructs every table from the preserved independent-block
+baseline, checks the extra literal reciprocal equation, checks every
+discarded row against its retained representative, and independently
+inspects integer coefficient polynomials, quadratic degrees, coordinate
+support, and the constant quadratic terms ensuring exact degree four.
+It also verifies that the source-universality qualification is present
+in every table and receipt. A PASS certifies these finite facts. It does
+not certify \(\mathcal U_{\rm em}\), the retained infinite arithmetic
+interfaces, or minimality.
+
+\begin{thebibliography}{9}
+\bibitem{Jones80} J. P. Jones, \emph{Undecidable Diophantine equations},
+Bulletin of the American Mathematical Society (New Series)
+\textbf{3} (1980), 859--862.
+\href{https://doi.org/10.1090/S0273-0979-1980-14832-6}{doi:10.1090/S0273-0979-1980-14832-6}.
+\bibitem{Jones82} J. P. Jones, \emph{Universal diophantine equation},
+Journal of Symbolic Logic \textbf{47} (1982), 549--571.
+\href{https://doi.org/10.2307/2273588}{doi:10.2307/2273588}.
+\bibitem{Mat99} Yu. Matiyasevich, \emph{Hilbert's tenth problem: A two-way
+bridge between number theory and computer science}, in C. S. Calude (ed.),
+\emph{People and Ideas in Theoretical Computer Science}, Springer,
+Singapore, 1999, pp. 177--204.
+\url{https://www.cs.auckland.ac.nz/~cristian/tcspi/ch9.pdf}.
+\bibitem{General} \(\mathbb Z\mathbb Q\) Diophantine Project,
+\emph{A scalar-point sharing construction in 163 and 179 variables},
+20 November 2026, repository manuscript
+\nolinkurl{papers/quartic/scalar_point163_179_20261120_v82.tex}.
+\bibitem{ABC} \(\mathbb Z\mathbb Q\) Diophantine Project,
+\emph{Paired contact coordinates: an ordinary-abc quartic in 56 variables},
+19 November 2026, repository manuscript
+\nolinkurl{papers/quartic_existence/paired_contact56_20261119_v81.tex}.
+\bibitem{Companion} \(\mathbb Z\mathbb Q\) Diophantine Project,
+\emph{A direct quadratic compilation of the emended universal system},
+23 November 2026, companion checkpoint and source reconciliation,
+\nolinkurl{undecidability/papers/jones1980_quartic_transfer.tex}.
+\end{thebibliography}
+\end{document}

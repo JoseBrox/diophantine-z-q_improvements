@@ -1,0 +1,312 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=26mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,hyperref}
+\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\newcommand{\A}{\mathcal A}
+\newcommand{\Mat}{\operatorname{Mat}}
+\newcommand{\Spec}{\operatorname{Spec}}
+\title{One rational coordinate for a finite family of algebraic witnesses}
+\author{\(\mathbb Z\mathbb Q\) Diophantine Project}
+\date{23 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+We give an explicit integer polynomial whose one extra rational coordinate
+encodes the existence of a rational character of a finite commutative
+algebra on which a prescribed guard is nonzero. The construction tolerates
+arbitrary nilpotents and arbitrarily many zero terminal square roots.
+It uses the characteristic polynomial of all differences of generator
+values, coefficient strata, a separating element, and one determinant.
+Thus independent finite-root encoders can be merged without identifying
+any of their ordinary rational witnesses. The construction has a stated
+finite degree bound and is also applicable after separately justified
+sharing of ordinary witnesses.
+\end{abstract}
+
+\section{Statement}
+Put $R=\Z[T_1,\ldots,T_b]$. Let $\A$ be a commutative unital $R$-algebra
+free of rank $n\ge1$ as an $R$-module. Fix a basis, elements
+$\theta_1,\ldots,\theta_m\in\A$ generating
+$\A\otimes_{\mathbb Z}\mathbb Q$ as a $\mathbb Q[T_1,\ldots,T_b]$-algebra, and a guard
+$g\in\A$. For a rational specialization $t\in\Q^b$, write
+$\A_t=\A\otimes_{R,t}\Q$. A character means a unital algebra homomorphism.
+
+\begin{theorem}\label{main}
+An explicit polynomial $F\in R[U]$ can be constructed such that
+\begin{equation}\label{equivalence}
+ \exists u\in\Q\quad F(t,u)=0
+ \quad\Longleftrightarrow\quad
+ \exists\phi:\A_t\longrightarrow\Q\quad\phi(g)\ne0
+\end{equation}
+for every $t\in\Q^b$. Neither reducedness nor etaleness of $\A_t$ is
+assumed. In particular, zero roots in any number of quadratic stages are
+permitted. If $d$ bounds the total degree of the multiplication-matrix
+entries of $g,g\theta_1,\ldots,g\theta_m$, set
+\[
+ \ell=m+1,\qquad J=\ell(n+1)^2.
+\]
+One may take
+\begin{equation}\label{degree}
+ \deg F\le
+ 2n(J+1)\bigl[1+d\{1+2J(1+\ell(J+1))\}\bigr].
+\end{equation}
+The bound measures degree in all base coordinates and $U$.
+\end{theorem}
+
+The guard may be a product. It then requires each of its factors to be
+nonzero at the selected character, without imposing nonvanishing at
+unselected characters. No variables beyond $U$ are used in this theorem.
+
+\section{Spectra, including nonreduced algebras}
+
+\begin{lemma}\label{spectrum}
+Let $A$ be a finite-dimensional commutative $\Q$-algebra. The eigenvalues
+of multiplication by $a\in A$, over $\overline{\Q}$, are the values
+$\sigma(a)$ of its geometric characters, with positive multiplicities.
+Consequently, for two copies of its multiplication matrix, the eigenvalues
+of $M_a\otimes I-I\otimes M_a$ are all differences
+$\sigma(a)-\tau(a)$, with multiplicities.
+\end{lemma}
+\begin{proof}
+The commuting multiplication operators can be simultaneously triangularized
+over an algebraically closed field. Each diagonal entry is additive,
+multiplicative and sends the identity to one, and so is a character.
+Alternatively, decompose $A\otimes\overline{\Q}$ as a product of local
+Artinian algebras; on each factor multiplication by $a$ is its residue
+value plus a nilpotent operator. The tensor difference of upper triangular
+matrices has the stated diagonal entries. Neither argument requires that
+the nilpotent operators vanish.
+\end{proof}
+
+\section{A completely specified polynomial}
+Define
+\[
+ \gamma_0=g,\qquad \gamma_i=g\theta_i\quad(1\le i\le m),
+ \qquad A_i=M_{\gamma_i}\in\Mat_n(R).
+\]
+Set $N=n+1$ and adjoin an extra zero eigenvalue:
+\[
+ \widetilde A_i=\begin{pmatrix}A_i&0\\0&0\end{pmatrix},\qquad
+ D_i=\widetilde A_i\otimes I_N-I_N\otimes\widetilde A_i.
+\]
+The extra eigenvalue is used to separate every permitted character from
+zero. Compute the single monic polynomial
+\begin{equation}\label{differencepolynomial}
+ \chi(Z)=\prod_{i=0}^{m}\det(ZI_{N^2}-D_i)
+       =Z^J+a_1Z^{J-1}+\cdots+a_J,
+ \qquad a_0=1.
+\end{equation}
+Its roots comprise every difference of two character values of a
+$\gamma_i$, and every such value itself and its negative.
+
+The following are polynomials in the base coordinates:
+\begin{align}
+ R_0&=2+N+\sum_{i=0}^{m}\sum_{v,w=1}^{n}(A_i)_{vw}^2
+                         +\sum_{j=1}^{J}a_j^2,\label{Rbound}\\
+ B_0&=NR_0,\qquad K=R_0(2B_0)^{J-1}.\label{Kbound}
+\end{align}
+For each $s=0,\ldots,J$, put
+\begin{align}
+ \Delta_s&=a_s^2,& C_s&=\Delta_s+(4\ell B_0+2)K,\label{Cs}\\
+ M_s&=\Delta_s\sum_{i=0}^{m}
+                   C_s^{i+1}\Delta_s^{m-i}A_i,&
+ H_s(U)&=\det(I_n-UM_s).\label{Ms}
+\end{align}
+Finally define
+\begin{equation}\label{Fformula}
+ \boxed{\displaystyle
+ F(T,U)=\prod_{s=0}^{J}
+       \left(H_s(U)^2+\sum_{j=s+1}^{J}a_j^2\right).}
+\end{equation}
+All empty sums are zero. Every determinant, sum and product is finite,
+and every entry belongs to $R$. This is an explicit coefficient
+specification for an integer polynomial, even when expanding it would
+be impractical.
+
+\section{Why the element separates the permitted characters}
+Fix a rational base specialization. Thus all matrix entries and coefficients
+below are real rational numbers, although their eigenvalues may be complex.
+Let $s$ be the largest index with $a_s\ne0$, taking $s=0$ if all
+$a_1,\ldots,a_J$ vanish. Then
+\[
+ \chi(Z)=Z^{J-s}(Z^s+a_1Z^{s-1}+\cdots+a_s).
+\]
+Every eigenvalue of $\widetilde A_i$ has absolute value at most $B_0$:
+each matrix entry has absolute value at most $R_0$, and the maximum row
+sum bounds the spectral radius. Hence every root of $\chi$ has absolute
+value at most $2B_0$.
+
+If $\delta$ is a nonzero root of $\chi$, the product of its $s$ nonzero
+roots, counted with multiplicity, has absolute value $|a_s|$. Therefore
+\begin{equation}\label{lowerseparation}
+ |\delta|\ge\frac{|a_s|}{(2B_0)^{s-1}}
+       \ge\frac{a_s^2}{R_0(2B_0)^{J-1}}
+       =\frac{\Delta_s}{K}=:\varepsilon.
+\end{equation}
+We used $|a_s|\le R_0$ and $2B_0>1$. When $s=0$ there are no nonzero
+roots and the following separation statements are vacuous unless a
+permitted character exists; such a character would itself give a
+nonzero root through $\gamma_0$ and the extra zero eigenvalue. Indeed,
+when $s=0$ all $\gamma_i$ have only zero character values; then
+$H_0(U)=1$ and there is no permitted character.
+
+Since $\Delta_s>0$, put
+\[
+             B=\frac{C_s}{\Delta_s}
+               =1+\frac{4\ell B_0+2}{\varepsilon}>1.
+\]
+For any two different vectors in
+\[
+ \bigl\{(\sigma(\gamma_0),\ldots,\sigma(\gamma_m)):\sigma
+                 \text{ a geometric character}\bigr\}\cup\{0\},
+\]
+let $h$ be their largest differing coordinate. Its difference has absolute
+value at least $\varepsilon$, by \eqref{lowerseparation}; every coordinate
+difference has absolute value at most $2B_0$. The leading term of their
+weighted difference satisfies
+\[
+ \left|B^{h+1}\delta_h\right|\ge\varepsilon B^{h+1},
+ \qquad
+ \left|\sum_{i<h}B^{i+1}\delta_i\right|
+        \le2\ell B_0B^h<\varepsilon B^{h+1}.
+\]
+Thus the weighted sums are distinct. The matrix in \eqref{Ms} is
+multiplication by
+\[
+ \beta_s=\Delta_s^{m+2}\sum_{i=0}^{m}B^{i+1}\gamma_i.
+\]
+The scalar factor is nonzero and does not affect separation.
+
+If $\sigma(g)=0$, every $\sigma(\gamma_i)$ is zero and
+$\sigma(\beta_s)=0$. If $\sigma(g)\ne0$, the vector is nonzero and
+$\sigma(\beta_s)\ne0$. Finally, two characters with nonzero guard have
+different vectors unless they are the same character: recover their
+generator values as $\sigma(\theta_i)=\sigma(\gamma_i)/\sigma(\gamma_0)$.
+Consequently $\beta_s$ separates all permitted characters and sends
+exactly the excluded characters to zero.
+
+\section{Rationality and the coefficient strata}
+
+\begin{proof}[Proof of Theorem~\ref{main}, equivalence]
+For the actual last nonzero coefficient index $s$, suppose first that a
+permitted character $\phi:\A_t\to\Q$ exists. Its value
+$\phi(\beta_s)$ is a nonzero rational number. Choose
+$u=1/\phi(\beta_s)$. Lemma~\ref{spectrum} gives $H_s(u)=0$;
+all $a_j$ for $j>s$ vanish, so \eqref{Fformula} is zero.
+
+Conversely, suppose $F(t,u)=0$ with $t,u$ rational. One factor of
+\eqref{Fformula} is zero. It is a sum of rational squares, so its
+$H_s(u)$ and all its tail coefficients vanish. If $a_s=0$, then
+$\Delta_s=0$, $M_s=0$ and $H_s(u)=1$, a contradiction. Thus $s$ is
+exactly the largest nonzero coefficient index. The determinant equality
+also implies $u\ne0$ and supplies a geometric character $\sigma$ with
+\[
+                         \sigma(\beta_s)=1/u\in\Q^\times.
+\]
+This character has nonzero guard. Every Galois conjugate of $\sigma$
+has the same $\beta_s$ value, because that value is rational. Separation
+therefore makes every such conjugate the same character. In particular,
+every generator value $\sigma(\theta_i)$ is fixed by the absolute
+Galois group of $\Q$, hence belongs to $\Q$. The character takes values
+in $\Q$ and has nonzero guard, as required.
+\end{proof}
+
+\begin{proof}[Proof of the degree bound]
+The entries of $D_i$ have degree at most $d$, so
+$\deg a_j\le jd\le Jd$. It follows that
+\[
+ \deg R_0\le2Jd,\quad
+ \deg\Delta_s\le2Jd,\quad
+ \deg K\le2J^2d,\quad
+ \deg C_s\le2J(J+1)d.
+\]
+In the sum defining $M_s$, the largest bound comes from $i=m=\ell-1$.
+Every entry of that matrix has degree at most
+\[
+ d_\beta=d+2Jd+2\ell J(J+1)d
+          =d\{1+2J(1+\ell(J+1))\}.
+\]
+Hence $\deg H_s\le n(1+d_\beta)$. This bound also dominates the
+degrees needed for the squared tail coefficients in \eqref{Fformula}.
+There are $J+1$ factors, proving \eqref{degree}.
+\end{proof}
+
+\section{Clearing denominators without losing selected characters}
+A useful input model is a triangular finite-root specification. At each
+stage a root $\theta$ satisfies a monic polynomial with coefficients
+rational in the ordinary base coordinates and preceding roots. Collect
+its denominators in a common expression $D$, and include $D$ in the
+nonzero guard at the selected character. If
+\[
+ \theta^e+\sum_{j=0}^{e-1}\frac{N_j}{D}\theta^j=0,
+\]
+replace the finite root by $\xi=D\theta$. The equation becomes the monic
+relation
+\[
+                 \xi^e+\sum_{j=0}^{e-1}N_jD^{e-1-j}\xi^j=0.
+\]
+On the guarded locus this is reversible by $\theta=\xi/D$. Continue
+in the triangular order, clearing the new denominators after each
+substitution. A finite tower of monic polynomial extensions is free, with
+basis the monomials whose exponent in each generator is below its stage
+degree. The rank is the product of the stage degrees. All source guards
+become a single polynomial guard after multiplying their numerators and
+the recorded denominators. Thus Theorem~\ref{main} applies.
+
+This procedure does not require a denominator to be nonzero at every
+geometric character. The product guard selects the allowed characters.
+Characters at which a cleared denominator vanishes remain in the finite
+algebra and are rejected by the same separator. No extra ordinary
+rational coordinate is introduced when a finite root is rescaled.
+
+\section{Merging independent encoders}
+
+\begin{corollary}\label{merge}
+Suppose each of $k$ finite-root predicates has $b_i$ ordinary rational
+base coordinates, a finite free algebra of rank $n_i$, and a polynomial
+nonzero guard. Their conjunction is expressible with all ordinary base
+coordinates and just one additional rational coordinate. Its finite
+algebra can be taken to be the tensor product, of rank $\prod_i n_i$,
+and its guard to be the product of the guards. No simultaneous
+realization assertion beyond the original separate predicates is needed.
+\end{corollary}
+\begin{proof}
+A character of the tensor product into $\Q$ is exactly a collection of
+characters of its factors into $\Q$, agreeing on the rational base.
+Its product guard is nonzero exactly when all original guards are nonzero.
+Apply Theorem~\ref{main}. In particular, a tensor product such as
+$\Q[\epsilon,\delta]/(\epsilon^2,\delta^2)$ presents no difficulty;
+monogenicity of the full nonreduced algebra is never used.
+\end{proof}
+
+Applied to a source integer predicate with $m$ total rational coordinates,
+comprising $m-1$ ordinary base coordinates and one final finite-root encoder, $k$ independent input
+tests use $k(m-1)+1$ coordinates including the $k$ inputs. The mixed source
+with eight integer unknowns and one nonnegative unknown then uses
+\[
+                    9(m-1)+1-1+3=9m-6.
+\]
+Here the nonnegative input is replaced by $s^2+t^2+u^2+u$, whose integral
+values are exactly the nonnegative integers. For the ordinary-$abc$
+interface first feed each finite-root source $X_i^2+1$. This expression is
+positive and is integral exactly when $X_i$ is integral, so the external
+zero-input factor is unnecessary. Thus the project's
+25-, 27- and ordinary-abc 11-coordinate finite-root interfaces give
+respective unrestricted-degree transfer counts
+\[
+                              219,\qquad237,\qquad93.
+\]
+These applications retain all the arithmetic premises of the relevant
+integer predicates. They need a different determinant specification from
+nine separate polynomials. The old numerical degree bound must not be
+reused without checking \eqref{degree} for the new matrices.
+
+Further identification of ordinary base coordinates requires a separate
+simultaneous-completeness proof. Once such a proof is supplied, the same
+encoder applies to the resulting joint triangular root algebra. For a
+shared root one includes its monic equation once, so consistency of its
+selected value across all blocks is imposed automatically.
+\end{document}

@@ -1,0 +1,468 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=26mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,longtable,booktabs,hyperref}
+\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\Np}{\mathbb Z_{>0}}
+\title{Checkpoint: an algebraic audit of the printed quadratic system:\\57 positive integer unknowns and 45 equations}
+\author{\(\mathbb Z\mathbb Q\) Diophantine Project}
+\date{23 November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+We give a complete reversible reduction of the explicit quadratic system of
+Mishchenko and Treier from 62 positive integer unknowns and 50 equations to
+57 positive integer unknowns and 45 equations. Thus the previously quoted
+bound of 57 unknowns and 47 equations follows, with two equations to spare, at the level of the literal printed equations.
+The reduction is proved directly; the universality of this particular printed system is not verified here.
+A subsequent source comparison found apparent discrepancies in its Pell block;
+therefore its transfer bounds remain conditional checkpoints. We record the parameter convention, the full source system,
+the reverse map, and a machine-checkable exact algebraic audit. We also
+supply a self-contained proof that fifteen integrality conditions and eighteen
+positivity conditions suffice for its rational realization.
+\end{abstract}
+
+\section{Precisely what is being established}
+Fix positive integers \(z,u,y\), which are the source parameters coding a
+computably enumerable set, and a positive integer instance \(x\). Put
+\[
+ a=(2z)^{5^{59}},\qquad \kappa=5^{59}.
+\]
+Throughout this note, \(x,z,u,y,a,\kappa\) are coefficients, not unknowns.
+The degree of an instance polynomial is measured only in its existential
+unknowns. This is the convention relevant to undecidability of a class of
+polynomial equations. It differs from the convention in an integrality
+definition, where the distinguished rational input is a coordinate.
+
+Mishchenko and Treier \cite{MT}, Section~4, present equations (8)--(57) and
+state that their positive integer solvability is equivalent to membership
+of \(x\) in the set coded by \(z,u,y\). Their source is Jones
+\cite{Jones}, equations (D1)--(D37). The construction below does not assume
+any version of the \(abc\) conjecture. A transfer to rational undecidability
+using a particular definition of \(\Z\) in \(\Q\), however, retains every
+hypothesis of that definition.
+
+The frequently quoted pair ``57 unknowns, 47 quadratics'' occurs in the
+MathOverflow discussion \cite{MO} as a consequence of Jones's Theorem~3.
+That discussion is a lead to the primary source, not the proof used here.
+Our argument establishes the stronger pair \((57,45)\) by explicitly
+reversible algebraic changes to \cite{MT}.
+
+\begin{remark}[Limit of the source audit]
+All fifty rows below were compared with the publicly accessible full text
+of \cite{MT}. In particular, the exponent on \(\Gamma_{19}\) in (40) is
+\emph{two}. Replacing it by a linear term changes the solution set and is
+invalid. The complete 1982 Jones article was not available for a fresh
+line-by-line reconstruction of its coding proof during this audit. Thus we
+prove the algebraic reduction independently. Universality of this literal
+printed system remains the separate unverified hypothesis $\mathsf U_{MT}$. The symbolic checker proves identities and counts,
+not universality or the external arithmetic foundations of the project.
+\end{remark}
+
+\section{Source discrepancy: promotion is blocked}
+The count and affine equivalence below concern the literal printed system.
+They do not certify its universality. In particular, (16) and (53) imply
+\[
+ I^2-(G-1)H^2=1,
+\]
+whereas Jones's 1980 Theorem~3 has a final Pell equation with coefficient
+\(G^2-1\). The square is visible in the original scanned page, independently
+of its OCR transcription. The standard Pell-index construction of Matiyasevich
+and Robinson (1975), Theorem~4, also has \(G^2-1\). These two equations are
+not interchangeable: for \(A=2,E=4,F=7\), the displayed formula
+\(G=A+F^2(F^2-A)\) gives \(G=2305\) and \(G-1=48^2\); then
+\(I^2-(G-1)H^2=1\) has no integer solution with \(H>0\), by factoring.
+The equation with \(G^2-1\) has its usual nontrivial Pell solutions.
+This is a counterexample to replacing the local Pell relation, not a
+counterexample to the full source universality assertion.
+
+Other discrepancies needing explanation are \(E=iC^2+1\) versus a multiple
+of \(C^2\), and the use of \(F^2\) rather than \(D^2\) in the expression
+for \(G\). Some changes may be legitimate variants, but they must be
+proved, not silently corrected. Accordingly, whenever universality is
+invoked below, it is an additional unverified hypothesis \(\mathsf U_{MT}\).
+The separate file \texttt{jones1980\_system.py} instead reconstructs the
+literal 1980 primary-source theorem and avoids these discrepancies.
+
+\section{The complete source system}
+There are 26 symbols \(\Gamma_1,\ldots,\Gamma_{26}\), twenty named symbols
+\[
+B,D_1,C_1,c,e,\ell,S,T,N,R,P,K,M,U,Y,D,I,E,G,H,
+\]
+and sixteen further symbols
+\[
+\alpha,\Delta,\varepsilon,g,t,m,\lambda,\gamma,o,F,i,j,h,w,s,\varphi.
+\]
+All 62 symbols range over \(\Np\). Upper-case \(G\) and lower-case
+\(\gamma\) are distinct from the symbols \(\Gamma_j\).
+The following equations reproduce the mathematical system of \cite{MT},
+with the source row numbers retained.
+\allowdisplaybreaks
+\begin{align}
+\Gamma_1&=\Gamma_{26}^{2} &&\tag{8}\\
+\Gamma_2&=MU &&\tag{9}\\
+\Gamma_3&=B(2\Gamma_{23}-B)-1 &&\tag{10}\\
+\Gamma_4&=\Gamma_{23}C_1 &&\tag{11}\\
+\Gamma_5&=c^2 &&\tag{12}\\
+\Gamma_6&=\Gamma_5^2 &&\tag{13}\\
+\Gamma_8&=\Gamma_{24}^2 &&\tag{14}\\
+\Gamma_9&=\lambda B &&\tag{15}\\
+\Gamma_{10}&=GH &&\tag{16}\\
+\Gamma_{11}&=F^2 &&\tag{17}\\
+\Gamma_{12}&=\Gamma_{23}E &&\tag{18}\\
+\Gamma_{13}&=\Gamma_{25}^2 &&\tag{19}\\
+\Gamma_{14}&=\Gamma_{23}\Gamma_{25} &&\tag{20}\\
+\Gamma_{15}&=N^2 &&\tag{21}\\
+\Gamma_{16}&=YK &&\tag{22}\\
+\Gamma_{18}&=PK &&\tag{23}\\
+\Gamma_{20}&=\Gamma_8\Gamma_{24} &&\tag{24}\\
+\Gamma_{21}&=\Gamma_8^2 &&\tag{25}\\
+\Gamma_{22}&=\Gamma_6\Gamma_{20} &&\tag{26}\\
+B&=2a\Gamma_1^2+1 &&\tag{27}\\
+D_1&=\Gamma_{24}+C_1(\Gamma_{23}-B)+\alpha\Gamma_3 &&\tag{28}\\
+(\Gamma_4-C_1)(\Gamma_4+C_1)+1&=D_1^2 &&\tag{29}\\
+C_1&=\kappa+\Delta(\Gamma_{23}-1) &&\tag{30}\\
+c&=1+(\Gamma_{26}-\varepsilon)B+g &&\tag{31}\\
+e+2z\Gamma_{26}\ell+2zB\Gamma_6+\Gamma_7&=2z\Gamma_{24} &&\tag{32}\\
+\ell&=u+t(B-2z) &&\tag{33}\\
+e&=y+m(B-2z) &&\tag{34}\\
+S&=g-4z^2\Gamma_{22}+\ell\Gamma_{24}+e(\Gamma_8+4z\Gamma_{22})\notag\\
+ &\quad+2z\Gamma_9(-2z\Gamma_{22}+\Gamma_{20}+\Gamma_{21}) &&\tag{35}\\
+T&=\Gamma_{24}-1-(\Gamma_{26}-1)\ell
+ +(\Gamma_9-2\lambda z)(\Gamma_{24}+\Gamma_8)\notag\\
+ &\quad+2z(B-2)\Gamma_{21} &&\tag{36}\\
+N&=16z\Gamma_{20}\Gamma_8 &&\tag{37}\\
+R&=S(\Gamma_{15}-N)+(T+1)(\Gamma_{15}-1) &&\tag{38}\\
+P&=2M\Gamma_2 &&\tag{39}\\
+(K-\Gamma_{18})(K+\Gamma_{18})+\Gamma_{19}^{2}&=1 &&\tag{40}\\
+(2\Gamma_{25}-2\Gamma_{16}-K)(2\Gamma_{25}-2\Gamma_{16}+K)
+ +\Gamma_{17}&=0 &&\tag{41}\\
+K&=R+1+h(P-1) &&\tag{42}\\
+M&=RY &&\tag{43}\\
+U&=\Gamma_{15}w &&\tag{44}\\
+Y&=\Gamma_{15}s &&\tag{45}\\
+D&=-2\Gamma_{25}-5\gamma+\Gamma_{26}w
+       +\Gamma_{23}(\Gamma_{25}+4\gamma) &&\tag{46}\\
+I&=D+oF &&\tag{47}\\
+(D-\Gamma_{14})(D+\Gamma_{14})+\Gamma_{13}&=1 &&\tag{48}\\
+E&=i\Gamma_{13}+1 &&\tag{49}\\
+(\Gamma_{12}-E)(\Gamma_{12}+E)-\Gamma_{11}+1&=0 &&\tag{50}\\
+G&=\Gamma_{23}+\Gamma_{11}(\Gamma_{11}-\Gamma_{23}) &&\tag{51}\\
+H&=2R+1+j\Gamma_{25} &&\tag{52}\\
+I^2+H(H-\Gamma_{10})&=1 &&\tag{53}\\
+\Gamma_{23}&=\Gamma_2+M &&\tag{54}\\
+\Gamma_{24}&=1+\Gamma_9-\lambda &&\tag{55}\\
+\Gamma_{25}&=2R+1+C_1+\varphi &&\tag{56}\\
+\Gamma_{26}&=\varepsilon+x. &&\tag{57}
+\end{align}
+
+\section{A reversible reduction to 57 unknowns}
+\begin{lemma}[Affine elimination with a positivity check]
+Suppose a polynomial system includes \(v=L(\mathbf t)\), where \(L\)
+is affine in the remaining unknowns. Delete this equation and substitute
+\(L\) for \(v\) in every remaining equation. If the reduced positive
+integer solutions always satisfy \(L(\mathbf t)>0\), restriction and
+reconstruction give mutually inverse maps on positive integer solutions.
+The degree bound of the equations does not increase.
+\end{lemma}
+\begin{proof}
+Restriction satisfies the substituted rows. Conversely the prescribed
+value of \(v\) is an integer, is positive by hypothesis, and satisfies
+both the deleted and substituted rows. The two operations are inverse.
+Substituting affine polynomials cannot increase total degree.
+\end{proof}
+
+\begin{theorem}\label{thm5745}
+For each fixed \(x,z,u,y\in\Np\), the source system is equivalent to a
+system of 45 quadratic equations in 57 positive integer unknowns. The
+transformation is effective in the fixed parameters.
+\end{theorem}
+\begin{proof}
+Make the five simultaneous substitutions
+\begin{equation}\label{substitutions}
+\begin{aligned}
+\Gamma_{23}&=\Gamma_2+M,&
+\Gamma_{24}&=1+\Gamma_9-\lambda,\\
+\Gamma_{25}&=2R+1+C_1+\varphi,&
+\Gamma_{26}&=\varepsilon+x,\\
+c&=1+xB+g.
+\end{aligned}
+\end{equation}
+Delete rows (31) and (54)--(57). Row (31) becomes an identity because
+\(\Gamma_{26}-\varepsilon=x\). Each right-hand side in
+\eqref{substitutions} is affine in the remaining unknowns.
+Four reconstructed coordinates are manifestly positive. For the remaining
+one, retained rows (15) and (27) give
+\[
+\Gamma_{24}=1+\lambda(B-1)>0,
+\qquad B=2a\Gamma_1^2+1>1.
+\]
+Thus every positive integer solution of the 45 retained rows reconstructs
+all five omitted positive integers and satisfies all fifty source rows.
+Conversely, every source solution restricts to a solution of the retained
+rows. There are \(62-5=57\) unknowns and \(50-5=45\) equations, each of
+degree at most two.
+\end{proof}
+
+A complete specification of the reduced equations is: take every source
+row except (31), (54), (55), (56), (57), and perform
+\eqref{substitutions}. This convention avoids a second fifty-line list
+whose only difference is repeated affine expansion. The accompanying
+Python module constructs the expanded residuals with the source row
+numbers intact.
+
+\begin{remark}[Why the instance parameter must remain a coefficient]
+For fixed \(x\), the expression \(1+xB+g\) is affine in \(B,g\).
+If \(x\) were itself counted as an unknown, substituting it into (12)
+would create the degree-four term \(x^2B^2\). Theorem~\ref{thm5745}
+therefore establishes a family of quadratic systems indexed effectively
+by \(x\); it does not assert a jointly quadratic presentation in which
+\(x\) is also a coordinate. For undecidability this effective family is
+exactly what is required.
+\end{remark}
+
+Taking the sum of the squares of the 45 residuals gives a polynomial of
+degree exactly four in 57 unknowns. It has the same zero set over every
+ordered field. The degree is exactly four because at least one residual
+has a nonzero degree-two homogeneous part, and a sum of real squares of
+those homogeneous parts cannot vanish identically. Under the additional hypothesis \(\mathsf U_{MT}\), the family is undecidable over \(\Np\).
+Duplicating two rows gives the weaker bound with exactly 47 rows if that
+presentation is desired.
+
+\section{Fifteen integrality conditions suffice}
+For this section the 62 source coordinates range over \(\Q\). Impose
+integrality only on the following fifteen coordinates:
+\begin{equation}\label{fifteen}
+\alpha,\Delta,\varepsilon,g,t,m,\lambda,\gamma,o,i,j,h,w,s,\varphi.
+\end{equation}
+In particular, \(F\) is not in this list.
+
+\begin{lemma}\label{monic}
+If \(r\in\Q\) and \(r^d\in\Z\) for an integer \(d\ge1\), then
+\(r\in\Z\).
+\end{lemma}
+\begin{proof}
+Write \(r=a/b\) with coprime integers \(a,b\) and \(b>0\).
+The condition \(b^d\mid a^d\) forces \(b=1\).
+\end{proof}
+
+\begin{proposition}\label{integral}
+Every rational solution of all fifty source rows satisfying
+\eqref{fifteen} is integral in every coordinate.
+\end{proposition}
+\begin{proof}
+Successively use the source equations to construct integers in the
+following order:
+\[
+\begin{gathered}
+\Gamma_{26},\Gamma_1,B,\Gamma_9,c,\ell,e,\Gamma_5,
+\Gamma_{24},\Gamma_6,\Gamma_8,\Gamma_{20},\Gamma_{21},
+\Gamma_7,\Gamma_{22},T,N,\Gamma_{15},S,R,\\
+U,Y,M,\Gamma_2,P,\Gamma_{23},\Gamma_3,C_1,K,
+\Gamma_4,\Gamma_{16},\Gamma_{18},D_1,
+\Gamma_{25},\Gamma_{13},\Gamma_{14},\Gamma_{17},D,H,E,\Gamma_{12}.
+\end{gathered}
+\]
+Each step is an equality with coefficient \(1\) or \(-1\) on the newly
+constructed coordinate and an integer polynomial in coordinates already
+known to be integral. Next (50), used in the direction
+\[
+\Gamma_{11}=(\Gamma_{12}-E)(\Gamma_{12}+E)+1,
+\]
+gives \(\Gamma_{11}\in\Z\). Equation (17) and
+Lemma~\ref{monic} give \(F\in\Z\). Rows (47), (51), (16) then give
+\(I,G,\Gamma_{10}\in\Z\). Finally (40) gives
+\(\Gamma_{19}^2=1+\Gamma_{18}^2-K^2\in\Z\), and
+Lemma~\ref{monic} gives \(\Gamma_{19}\in\Z\).
+No division by a variable coefficient has been used.
+\end{proof}
+
+\section{Eighteen positivity conditions suffice}
+Impose strict positivity on the sixteen primitive coordinates consisting
+of \eqref{fifteen} together with \(F\), and also on the two slack
+coordinates \(\Gamma_7,\Gamma_{17}\). No separate sign condition is
+needed for \(\Gamma_{19}\), because it occurs only squared.
+
+\begin{proposition}\label{positive}
+Suppose a rational solution satisfies \eqref{fifteen}, all sixteen
+primitive positivity conditions, and
+\(\Gamma_7,\Gamma_{17}>0\). After replacing \(\Gamma_{19}\) by its
+absolute value if necessary, it is a positive integer source solution.
+\end{proposition}
+\begin{proof}
+Proposition~\ref{integral} first makes every coordinate integral.
+Since \(x,\varepsilon\ge1\), \(\Gamma_{26}\ge2\), and hence
+\(\Gamma_1\ge4\). Since \(a\ge2z\), (27) gives
+\(B\ge64z+1>2z\). Consequently
+\[
+c=1+xB+g>0,\quad
+\ell=u+t(B-2z)>0,\quad e=y+m(B-2z)>z.
+\]
+Also
+\(\Gamma_{24}=1+\lambda(B-1)\ge B\), so all its positive powers
+and the powers of \(c\) occurring in (12)--(14), (24)--(26) are positive.
+
+From (32) and \(\Gamma_7>0\),
+\begin{equation}\label{slackidentity}
+\Gamma_{24}=\Gamma_{26}\ell+B\Gamma_6+
+                 \frac{e+\Gamma_7}{2z}>B\Gamma_6.
+\end{equation}
+Since \(B>2z\),
+\[
+\Gamma_{20}+\Gamma_{21}-2z\Gamma_{22}
+ =\Gamma_{20}(1+\Gamma_{24}-2z\Gamma_6)>0.
+\]
+Rearrange (35) as
+\[
+S=g+\ell\Gamma_{24}+e\Gamma_8+4z(e-z)\Gamma_{22}
+ +2z\Gamma_9(\Gamma_{20}+\Gamma_{21}-2z\Gamma_{22}),
+\]
+which is positive. The first part of (36) is positive because
+\[
+\Gamma_{24}-1-(\Gamma_{26}-1)\ell
+ =\ell+B\Gamma_6-1+\frac{e+\Gamma_7}{2z}>0.
+\]
+The rest of (36) is positive, since
+\(\Gamma_9-2\lambda z=\lambda(B-2z)>0\) and \(B>2\).
+Thus \(T>0\). Now \(N=16z\Gamma_{24}^5>B\), so \(R>0\) by (38).
+
+Rows (44), (45), (43), (9) give \(U,Y,M,\Gamma_2>0\), and indeed
+\(M=RY\ge N^2>B\). Therefore
+\[
+\Gamma_{23}=\Gamma_2+M>B,
+\qquad \Gamma_3=B(2\Gamma_{23}-B)-1>0.
+\]
+Rows (30), (39), (42) yield \(C_1>0\), \(P\ge2\), \(K>0\).
+Then \(\Gamma_4,\Gamma_{16},\Gamma_{18}>0\). Every term on the
+right of (28) is positive, so \(D_1>0\); this uses
+\(\Gamma_{23}>B\) and does not require a separate Pell sign argument.
+Rows (56), (19), (20), (49), (18) give
+\(\Gamma_{25},\Gamma_{13},\Gamma_{14},E,\Gamma_{12}>0\).
+By (46),
+\[
+D=(\Gamma_{23}-2)\Gamma_{25}+(4\Gamma_{23}-5)\gamma
+      +\Gamma_{26}w>0,
+\]
+since \(\Gamma_{23}>B\ge65\). Hence \(I=D+oF>0\) and
+\(H=2R+1+j\Gamma_{25}>0\). Row (53) gives
+\[
+H(H-\Gamma_{10})=1-I^2\le0,
+\]
+so \(\Gamma_{10}\ge H>0\). Equation (16) then gives \(G>0\).
+The coordinate \(\Gamma_{11}=F^2\) is positive. Finally,
+\[
+\Gamma_{19}^2=1+(P^2-1)K^2\ge4,
+\]
+so its absolute value is a positive integer. Its sign change preserves
+every row. This proves positivity of all coordinates.
+\end{proof}
+
+\section{A general rational transfer bound}
+Assume that a system of \(q\) quadratic equations in \(m\) rational
+coordinates, including its distinguished input \(v\), defines exactly
+\(v\in\Z\). This is an explicit hypothesis of the following theorem.
+
+For any integer \(n\), Gauss's three-triangular-number theorem gives
+\begin{equation}\label{tri}
+n>0\quad\Longleftrightarrow\quad
+\exists a,b,c\in\Q\quad
+ 2n-2=a(a+1)+b(b+1)+c(c+1).
+\end{equation}
+For the converse, each triangular term \(r(r+1)/2\) is at least
+\(-1/8\), so \(n\ge5/8>0\). For the forward direction, represent
+\(n-1\) as a sum of three triangular numbers with integer arguments.
+
+\begin{theorem}\label{transfer}
+Under the stated \((m,q)\) integrality hypothesis and the unverified
+source-universality hypothesis \(\mathsf U_{MT}\), there is an effective
+family of quartic rational equations with undecidable solvability in at
+most
+\[
+ N=15m+94
+\]
+unknowns. It is a sum of \(61+15q\) quadratic squares. Every hypothesis
+of the chosen integrality definition is retained.
+\end{theorem}
+\begin{proof}
+Start with the 57-coordinate, 45-row reduced system. Attach fifteen copies
+of the integrality system at the inputs \eqref{fifteen}, with disjoint
+auxiliary witnesses. This costs \(15(m-1)\) coordinates. Attach the
+sixteen positivity equations \eqref{tri} for the primitive coordinates,
+at a cost of 48 coordinates and sixteen rows.
+
+Each of \(\Gamma_7\) and \(\Gamma_{17}\) appears in exactly one
+row, with constant coefficient one. In that row substitute
+\[
+\Gamma_j=1+\frac12\sum_{k=1}^3 t_{jk}(t_{jk}+1),
+\qquad j\in\{7,17\},
+\]
+then clear the constant denominator. This removes two coordinates and
+adds six, while keeping both modified rows quadratic. All reconstructed
+source coordinates are integral by Proposition~\ref{integral}; hence
+\eqref{tri} and Proposition~\ref{positive} give source soundness.
+Completeness follows from integer source witnesses and Gauss's theorem.
+
+The number of coordinates is
+\[
+(57-2)+48+6+15(m-1)=15m+94,
+\]
+and the number of residuals is \(45+16+15q\). Sum their squares.
+\end{proof}
+
+For the project's 163-coordinate, 137-row integrality interface this
+formula gives \(N=2539\), with 2116 quadratic squares. For the
+179-coordinate, 151-row interface it gives \(N=2779\), with 2326
+squares. For the 56-coordinate, 46-row ordinary-\(abc\) interface it
+gives \(N=934\), with 751 squares. These are transfer counts, not an
+independent proof of any of the integrality interfaces.
+
+\section{Reproducible algebra and remaining questions}
+Run
+\begin{verbatim}
+python mt_quadratic_system.py --report source_audit_certificate.json
+\end{verbatim}
+The checker reconstructs all source rows, checks all five substitutions
+as polynomial identities, counts variables actually occurring, verifies
+the degree bound, tests that the crucial Pell root is squared, and
+constructs an acyclic orientation of 45 assignment rows. The five other
+rows are (29), (40), (48), (50), (53). The integrality proof uses row (50)
+to construct \(\Gamma_{11}\), while the assignment graph instead regards
+\(F\) as primitive and uses row (17); these are two different legitimate
+orientations and should not be conflated.
+
+No assertion of minimality follows. In particular, a successful reduction
+of the number of integrality inputs would save roughly \(m\) coordinates
+at once, while further affine substitutions save only a bounded number.
+Dropping an integrality condition merely because a rational coordinate
+multiplied by an integer is integral is invalid. Likewise, a rational
+solution of a Pell conic need not be an integer solution. Any future
+compression must preserve the integer reconstruction argument or replace
+it with a new one.
+
+\begin{thebibliography}{9}
+\bibitem{MT} A. Mishchenko and A. Treier,
+\emph{Universal input of knapsack problem for groups},
+Journal of Physics: Conference Series \textbf{1050} (2018), 012054.
+\href{https://doi.org/10.1088/1742-6596/1050/1/012054}{doi:10.1088/1742-6596/1050/1/012054}.
+Mathematical source: Section~4, equations (8)--(57).
+Public full text inspected at
+\url{https://www.researchgate.net/publication/326636381_Universal_input_of_knapsack_problem_for_groups}.
+The article is distributed under CC BY 3.0; this note attributes its source
+system and adds independent changes of coordinates and proofs.
+\bibitem{Jones} J. P. Jones, \emph{Universal diophantine equation},
+Journal of Symbolic Logic \textbf{47} (1982), 549--571.
+\href{https://doi.org/10.2307/2273588}{doi:10.2307/2273588}.
+\bibitem{Jones80} J. P. Jones, \emph{Undecidable diophantine equations},
+Bulletin of the American Mathematical Society \textbf{3} (1980), 859--862.
+\href{https://doi.org/10.1090/S0273-0979-1980-14832-6}{doi:10.1090/S0273-0979-1980-14832-6}.
+\bibitem{MO} MathOverflow, \emph{Minimum size of undecidable quadratic
+Diophantine problems}, question 294432 (2018),
+\url{https://mathoverflow.net/questions/294432/minimum-size-of-undecidable-quadratic-diophantine-problems}.
+Used only to identify the provenance of the previously quoted 57/47 bound.
+\end{thebibliography}
+\end{document}

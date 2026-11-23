@@ -1,0 +1,39 @@
+{
+  "status": "PASS",
+  "examples": [
+    {
+      "algebra": "Q[t]/(t^2-2)",
+      "guard": "1",
+      "rational_character": false,
+      "last_nonzero_coefficient": 10,
+      "selected_determinant_degree": 2,
+      "check": "positive nonsquare quadratic discriminant"
+    },
+    {
+      "algebra": "Q[e,f]/(e^2,f^2)",
+      "guard": "1",
+      "rational_character": true,
+      "nonreduced": true,
+      "nonmonogenic": true,
+      "last_nonzero_coefficient": 8,
+      "selected_determinant_degree": 4,
+      "check": "exact fourth power and explicit rational root"
+    },
+    {
+      "algebra": "Q[t]/(t^2)",
+      "guard": "t",
+      "rational_character_with_nonzero_guard": false,
+      "last_nonzero_coefficient": 0,
+      "selected_determinant": "1"
+    },
+    {
+      "algebra": "Q[t,v]/(t^2-1,v^2-2(t+1))",
+      "guard": "t+1",
+      "denominator_vanishes_on_excluded_characters": true,
+      "permitted_rational_characters": 2,
+      "selected_determinant_degree": 2,
+      "check": "two distinct explicit rational roots; inactive nilpotent factor contributes one"
+    }
+  ],
+  "scope": "Exact finite examples covering nonrational, nonmonogenic, zero-guard, and character-dependent denominator cases; the general theorem is proved in TeX."
+}

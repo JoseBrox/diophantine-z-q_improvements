@@ -14,35 +14,55 @@ The [additional research routes](research_routes_20261120.md) prove a complex-mu
 
 ## Undecidability in bounded numbers of rational unknowns
 
-The [new undecidability category](../undecidability/README.md) asks for the
-smallest upper bounds we can prove for rational-solvability decision problems,
-both for quartics and with unrestricted degree. The instance is specified by
-integer coefficients; it is not another existential coordinate. This objective
-is different from the defining-variable counts in the main construction table.
+The [undecidability category](../undecidability/README.md) records quartic and
+unrestricted-degree decision-problem bounds. The instance input is a coefficient
+parameter, so these counts differ from the defining-polynomial table.
 
-The proved [mixed-domain transfer](../undecidability/papers/transfer_general_degree.tex)
-now gives **227** rational unknowns in unrestricted degree from the general
-25-coordinate predicate, **245** from the fully specified 27-coordinate
-predicate, and **101** under ordinary abc from the 11-coordinate predicate.
-The formula is `9m+2`; it retains the integer predicate's stated arithmetic
-premises. It crosses the numerical target 263 in unrestricted degree.
+The [new joint theorem](../undecidability/papers/shared_integer_transfers.tex)
+reduces the unrestricted-degree counts from **227 / 245 / 101** to
+**99 / 117 / 69**. The first two need no additional abc hypothesis; the last
+uses ordinary rational abc. All retain the source arithmetic premises.
+The respective explicit degree ceilings are `2^526`, `2^591`, and `2^377`.
+The 99 and 69 sufficient parameters are ineffective; the 117 source is
+specified. The earlier theorem has a substantially smaller degree and remains
+registered as a variable--degree tradeoff.
 
-The initial [checkpoint](../undecidability/checkpoints/baseline_20261123.md)
-registers the previous `15m+94` quartic candidate transfer: 2,539 for the general
-163-coordinate predicate, 2,779 for the fully specified 179-coordinate
-predicate, and 934 under ordinary abc using the 56-coordinate predicate.
-Its source system and full combined quadratic compilation are being independently
-reconstructed. A discrepancy in the printed final Pell equation prevents
-promoting these counts to proved undecidability bounds. All inherited
-arithmetic interfaces remain explicit.
+The proof combines a mixed-domain universal equation, a three-coordinate
+nonnegative wrapper, simultaneous elliptic witnesses, disjoint translated
+contact families, and one guarded finite-algebra encoder. The encoder is
+proved for nonreduced algebras and arbitrary terminal zero roots. Its
+independent-only version first gives **219 / 237 / 93**; sharing ordinary
+coordinates supplies the further reduction. The common degree calculation
+uses complete coefficient circuits, not sampled arithmetic witnesses.
 
-The constructive tasks are to reprove the classical small universal integer
-systems, minimize the subset of coordinates requiring integer certificates,
-prove any simultaneous sharing of certificate witnesses, and optimize the
-resulting quadratic system. Higher-degree universal polynomials offer a
-separate route to much smaller rational counts. A bound near 263 for that
-route must not be reported as a quartic bound. Proved transfer theorems,
-certificates, and important partial results will be registered separately.
+The directly optimized quartic systems reach **2086 / 2278 / 846** with
+**1776 / 1944 / 728** quadratic residuals. These are exact, important
+[checkpoints](../undecidability/papers/shared_quartic_checkpoint.tex), with
+[all residuals](../undecidability/coefficients/jones1980_shared) supplied.
+Their undecidability interpretation additionally needs **`U_em`**, the
+universality of the precise emended 28-variable source. The 1980 original
+prints Greek alpha in one place where the builder uses Latin a; the 1999
+author-written account supports Latin a but prints an impossible Pell row.
+The [reconciliation and full algebraic reduction](../undecidability/papers/jones1980_quartic_transfer.tex)
+state exactly which corrections were made. Checking their local plausibility
+does not replace checking the complete universality proof.
+
+The literal Mishchenko--Treier transcription admits a reversible
+**57-variable / 45-row** reduction, but its universality is unresolved.
+The alleged universal **57/47** system has not been independently reproved.
+A quartic bound near 263 has not been established. The next source task is
+to obtain and audit the complete Jones 1982 proof or give a direct
+universality proof for the exact emended system. The next construction
+task is to reduce private point or pole parameters with a proved simultaneous
+realization theorem, then compile the combined quadratics afresh.
+
+The [polynomial-test obstruction](../undecidability/papers/polynomial_integrality_obstruction.tex)
+now covers arbitrary rational-coefficient polynomials: fewer than `r`
+integer-value tests cannot recognize all integral `r`-tuples. It does not
+exclude sharing existential geometry or using source equations. The
+[further-reduction checkpoint](../undecidability/checkpoints/further_reductions_20261123.md)
+records specific obstructions and remaining opportunities without claiming
+an optimal variable count.
 
 ## Immediate constructive targets
 
