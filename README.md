@@ -39,7 +39,7 @@ The [results JSON](data/results_20261123_v88.json) records all five new finite-a
 
 The [undecidability category](undecidability/README.md) counts existential
 rational unknowns; the integer instance is encoded in coefficients.
-The [v97 continuation](docs/results_20261123_v97.md) gives the current
+The [v98 continuation](docs/results_20261123_v98.md) gives the current
 complete quartic tables and the research checkpoint. The [v93 continuation](docs/results_20261123_v93.md) supplies corrected
 quartic sources, smaller complete tables, and lower general-degree bounds.
 
@@ -48,9 +48,9 @@ quartic sources, smaller complete tables, and lower general-degree bounds.
 | Unrestricted degree | No additional abc hypothesis | **82** | Proved transfer under retained arithmetic premises; degree below `2^532` |
 | Unrestricted degree, specified source | No additional abc hypothesis | **100** | Proved transfer under retained arithmetic premises; degree below `2^578` |
 | Unrestricted degree | Ordinary rational abc | **52** | Proved transfer under retained arithmetic premises; degree below `2^425` |
-| Quartic transfer | No additional abc hypothesis | **979** | New Pell power source; 829 quadratic residuals; retained arithmetic premises |
+| Quartic transfer | No additional abc hypothesis | **973** | Signed Pell power recovery; 827 quadratic residuals; retained arithmetic premises |
 | Quartic transfer, specified source | No additional abc hypothesis | **1,147** | Corrected Jones source; 997 quadratic residuals; retained arithmetic premises |
-| Quartic transfer | Ordinary rational abc | **704** | New Pell power source; 595 quadratic residuals; retained arithmetic premises |
+| Quartic transfer | Ordinary rational abc | **697** | Signed Pell power recovery; 592 quadratic residuals; retained arithmetic premises |
 
 The [corrected-source proof](undecidability/source_repair_v93/corrected_jones_source.tex)
 ([PDF](undecidability/source_repair_v93/corrected_jones_source.pdf)) replaces
@@ -86,7 +86,7 @@ further variables, with full support and global-gauge reconstruction audits.
 Finally, the [half-trace square](undecidability/pell_halftrace_v96/halftrace_guard.tex)
 selects the required sign and excludes the zero-s branch in one equation,
 saving another variable and row in all routes. The
-[current complete tables](undecidability/pell_halftrace_v96) have eleven
+[eleven-predicate tables](undecidability/pell_halftrace_v96) have eleven
 integer certificates.
 The [new Pell power certificate](undecidability/pell_power_v97/pell_power_replacement.tex)
 ([PDF](undecidability/pell_power_v97/pell_power_replacement.pdf)) then
@@ -95,6 +95,13 @@ resolves the earlier geometric-quotient integrality cycle and gives
 **979 / 704** variables in the general / abc routes, with thirteen integer
 certificates. The specified route retains **1147**. The general sufficient
 fixed coefficient may have to be increased.
+The [signed-power continuation](undecidability/pell_signed_q_v98/signed_q_and_absorbed_bound.tex)
+([PDF](undecidability/pell_signed_q_v98/signed_q_and_absorbed_bound.pdf))
+removes both newly introduced positivity wrappers. Signed prefix estimates
+recover the positive power at the end, while the existing integer Pell
+margin absorbs the auxiliary index bound. Reusing an existing fourth power
+in the abc chart gives the current **973 / 1147 / 697** variable counts.
+No integer predicate is removed or added in this last step.
 
 The [paired spectral encoder](undecidability/papers/paired_spectral_encoder.tex)
 ([PDF](undecidability/papers/paired_spectral_encoder.pdf)) lowers the

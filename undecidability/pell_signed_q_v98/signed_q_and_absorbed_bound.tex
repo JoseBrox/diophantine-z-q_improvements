@@ -1,0 +1,303 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,booktabs,hyperref,xurl}
+\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newcommand{\Z}{\mathbb Z}\newcommand{\Q}{\mathbb Q}
+\title{Signed power recovery and an absorbed Pell bound\\save six quadratic coordinates}
+\author{\(\mathbb Z\mathbb Q\) Diophantine Project}
+\date{23 November 2026}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+The short Pell replacement for the Jones power introduces two strict
+inequalities. Both separate positivity wrappers can be removed.
+First, the retained coding slack and a congruence already force a large
+absolute value of the proposed power; a signed estimate proves the
+required prefix growth even when that power is initially negative.
+The final Pell congruences then recover its positive value. Second,
+the auxiliary index bound can be absorbed into an existing integral
+small-Pell margin. These changes save six variables and two quadratic
+residuals. Reusing an existing fourth-power register saves one further
+variable and row in the ordinary-\(abc\) interface. The complete
+general and ordinary-\(abc\) tables become respectively \(973/827\)
+and \(697/592\). All integer interfaces and the cited coding theorem
+are retained.
+\end{abstract}
+
+\section{The two changes and their scope}
+
+Use the source and the two complete thirteen-input interfaces in
+\cite{Power}. Set \(L=5^{60}\), \(T_b=b^5-1\), and retain
+\[
+ A_0=\frac{b^9+8b^5+b-8}{2},\qquad A=A_0+5T_bs,
+ \qquad m_*=2bA-b^2-1.
+\]
+The auxiliary Pell certificate has integer inputs \(\delta,\alpha_*\)
+and equations
+\[
+ C_*=L+\delta(A-1),\qquad
+ D_*^2-(A^2-1)C_*^2=1,\qquad
+ q=D_*-(A-b)C_*-\alpha_*m_*.
+\]
+Retain the cofinite instance range \(x>32z\), where all coding
+parameters \(x,y,u,z\) are positive integers. Delete the separate
+inequality \(q>b^5\). In Section~\ref{sec:absorbed-bound}, we also
+delete the separate inequality \(C_*^2<c^2\) while strengthening
+the existing small-Pell margin. Each deleted inequality had three
+private positivity coordinates and one quadratic residual.
+
+The first argument below temporarily retains \(C_*^2<c^2\).
+The second argument restores that bound from the strengthened margin
+before it is needed. This order makes the composition noncircular.
+The claimed equivalence concerns the coding-prefix and instance
+projection; private positivity representatives can be chosen anew.
+
+\section{The proposed power has a large absolute value}
+
+The preliminary integral reconstruction in \cite{Power} does not
+require \(q>b^5\). It gives
+\[
+ A,C_*,D_*,q\in\Z,\qquad |A|\ge2,\qquad
+ q\equiv\pm1\pmod{T_b}.
+\]
+Indeed \(A\equiv1\pmod5\), the congruence for \(C_*\) forces its
+Pell index to be divisible by five, and the four signed Pell branches
+reduce to \(\pm b^{\pm\nu}\) modulo \(T_b\).
+The retained equation \(\lambda T_b=q^4-1\) therefore makes
+\(\lambda\) integral even before the sign or exponent of \(q\)
+is known.
+
+Put \(Q=|q|\), and use the positive integral prefix inputs \(g,t,m\).
+As in \cite{Power}, write
+\[
+ e=y+m(b^5-2z),\qquad
+ \ell=u+t(b^5-2z),\qquad c_0=1+xb^5+g.
+\]
+The retained guards imply \(b\ge2\), \(e,\ell>0\), and
+\begin{equation}\label{eq:slack}
+                    e\ell g^2<(b-xy)q^2.
+\end{equation}
+
+\begin{lemma}\label{lem:large-Q}
+Every proposed solution satisfies
+\[
+ b>xy\ge x>32z,\quad Q\ge b^5-2\ge b^4,\quad \lambda>0,
+ \qquad e,\ell<\frac{Q^2}{b^3},\quad g<\frac{Q}{b^3},
+ \qquad 0<c_0<bQ.
+\]
+\end{lemma}
+\begin{proof}
+The left side of \eqref{eq:slack} is positive, so \(q\ne0\) and
+\(b>xy\). In particular \(2z<b\) and \(x\le b-1\). Hence
+\[
+             e,\ell\ge b^5-b+2\ge b^4.
+\]
+Since \(g\ge1\), equation~\eqref{eq:slack} gives \(Q^2>b^7\).
+Thus \(Q>1\). The congruence \(q\equiv\pm1\pmod{T_b}\)
+then implies \(Q\ge T_b-1=b^5-2\), and this is at least
+\(b^4\) for \(b\ge2\). Consequently \(\lambda>0\).
+Dividing \eqref{eq:slack} by the lower bounds for the other
+positive factors gives \(e,\ell<Q^2/b^3\) and
+\(g<Q/b^{7/2}<Q/b^3\).
+
+As \(b^5\le Q+2\), we have
+\[
+ c_0<1+(b-1)b^5+Q/b^3
+       \le(b-1)Q+(2b-1)+Q/b^3<bQ.
+\]
+The last step follows from
+\(Q(1-b^{-3})\ge b^4-b\ge7b>2b-1\).
+\end{proof}
+
+\section{Signed prefix growth}
+
+Retain the exact source expressions
+\begin{align*}
+ S={}&g+eq^3+\ell q^5+
+   \left[2ec_0^4+\lambda\{b^5(1+q^4)-2zc_0^4\}\right]q^4,\\
+ T={}&q^3-(b-1)\ell+(b^5-2z)\lambda q^3+(b^5-2)q^5,\\
+ n={}&q^{16}=Q^{16},\qquad M=n^2=Q^{32},\qquad
+ r=S(M-n)+T(M-1).
+\end{align*}
+The expression \(T\) need not be positive at this stage.
+
+\begin{lemma}\label{lem:prefix}
+Every proposed solution satisfies
+\[
+ S>14Q^7,\qquad |T|<2Q^7,\qquad
+ r\ge M\ge b^{128}>2^{640}>L.
+\]
+\end{lemma}
+\begin{proof}
+Put \(E=b^5(1+Q^4)-2zc_0^4\). Since \(c_0<bQ\) and
+\(2z<b/16\),
+\[
+ E>b^5+b^4Q^4(b-2z)>\frac{15}{16}b^5Q^4.
+\]
+Also
+\(\lambda=(Q^4-1)/(b^5-1)>Q^4/(2b^5)\), since \(Q\ge2\).
+Allowing either sign for the two odd powers in \(S\) gives
+\[
+ \begin{split}
+ S&>\frac{15}{32}Q^{12}-eQ^3-\ell Q^5\\
+  &>\frac{15}{32}Q^{12}-\frac{Q^5+Q^7}{b^3}
+   \ge\left(15-\frac14\right)Q^7>14Q^7.
+ \end{split}
+\]
+Here \(Q^5\ge32\), \(Q^5\le Q^7\), and \(b^3\ge8\).
+
+For \(\theta=b^5-2z\), one has \(0<\theta<T_b\).
+Therefore
+\[
+ \begin{split}
+ |T|&\le Q^3+(b-1)\ell+\theta\lambda Q^3+(b^5-2)Q^5\\
+     &<Q^7+\frac{Q^2}{b^2}+Q^6<2Q^7.
+ \end{split}
+\]
+The middle inequality uses \(\theta\lambda<Q^4-1\) and
+\(b^5-2\le Q\). The last follows already from \(Q,b\ge2\).
+
+In particular \(S>2|T|+2\). As \(n\ge2\),
+\[
+ \begin{split}
+ r&>(2|T|+2)(M-n)-|T|(M-1)\\
+  &=|T|(n-1)^2+2(M-n)\ge M.
+ \end{split}
+\]
+Finally \(Q\ge b^4\) gives \(M\ge b^{128}\), and
+\(b>32z\ge32\) gives \(b^{128}>2^{640}>L\).
+All quantities required to be integral in this reconstruction are
+integral before any Pell index is identified.
+\end{proof}
+
+The retained signed binomial and half-trace arguments now apply:
+they need integral \(r,M\), \(r\ge1\), \(M\ge16\), and
+\(2\le b\le2M\), rather than a preliminary sign for \(q\).
+They give the canonical positive \(w,s,c\),
+\(bw=2^{2r+1}\), and the same growth estimates used in
+\cite{Power}. Set \(U=wM\). In particular
+\[
+ s>U^{r-2},\quad a<s^2,\quad A-1>L+6r,\quad m_*>s,
+ \quad C_*=Y_L(A)>0.
+\]
+The proof of the last conclusion uses the retained
+\(C_*^2<c^2\); Section~\ref{sec:absorbed-bound} supplies it
+from the final system's strengthened margin. Every use of
+\(b<q\le U^{1/32}\) in the power proof is replaced by
+\(b<Q=M^{1/32}\le U^{1/32}\).
+
+\begin{theorem}[Exact recovery without a sign guard]\label{thm:signed-q}
+The source with the separate inequality \(q>b^5\) deleted
+still forces \(q=b^L\). It has the same coding-prefix and
+instance projection as the predecessor.
+\end{theorem}
+\begin{proof}
+Set \(K=b^L>1\). The two remaining trace signs in the auxiliary
+Pell norm give, exactly as in \cite{Power},
+\[
+ D_*=X_L(A):\ q\equiv K\pmod{m_*},\qquad
+ D_*=-X_L(A):\ qK\equiv-1\pmod{m_*}.
+\]
+Since \(b<Q\le U^{1/32}\) and \(L<r\),
+\[
+ QK+1\le2QK\le2U^{(6r+1)/32}<U^{r-2}<s<m_*.
+\]
+The strict middle comparison follows from
+\((6r+1)/32+1\le r-2\) for \(r\ge4\) and \(U>2\).
+The negative trace would make \(m_*\) divide \(qK+1\).
+This integer is nonzero because \(q\in\Z\) and \(K>1\),
+but has absolute value at most \(QK+1<m_*\), a contradiction.
+For the positive trace,
+\[
+                  |q-K|\le Q+K\le QK+1<m_*.
+\]
+Its congruence therefore forces \(q=K=b^L>0\).
+This equality restores the deleted inequality and its positivity
+representatives. Conversely an old witness plainly satisfies the
+system after that inequality is deleted.
+\end{proof}
+
+\input{undecidability/pell_signed_q_v98/bound_absorption.tex}
+
+\section{Complete tables and exact verification}
+
+The two changes leave the thirteen integer inputs, every contact
+family, every reciprocal guard, and all arithmetic-interface
+hypotheses unchanged. In each complete predecessor table, delete
+the six coordinates
+\[
+ \texttt{power\_positive\_q\_1,2,3},\qquad
+ \texttt{power\_positive\_bound\_1,2,3}
+\]
+and their two private residuals. In the retained
+\texttt{jones1980.positive.eta} residual, add exactly the monomial
+\(-2\,\texttt{power\_C}^2\).
+
+For the ordinary-\(abc\) interface there is one further exact
+substitution. The retained rows
+\[
+ \texttt{int\_b\_29}=b^2,\qquad
+ \texttt{int\_b\_30}=\texttt{int\_b\_29}^{\,2}
+\]
+already compute \(b^4\). Replace \texttt{power\_b4} by
+\texttt{int\_b\_30} in the \(b^5\) and \(A\) definition rows,
+and delete \texttt{power\_b4} and its duplicate defining row.
+These are its only three occurrences. The substitution leaves every
+residual quadratic and is exactly reversible by assigning
+\texttt{power\_b4}=\texttt{int\_b\_30}. The general interface
+stores projectively normalized powers and does not have this same
+unscaled fourth-power register, so this additional saving is asserted
+only for the ordinary-\(abc\) table. All other coefficients remain
+unchanged.
+
+\begin{center}
+\begin{tabular}{lrrrr}
+\toprule
+Interface & Old variables & New variables & Old rows & New rows\\
+\midrule
+General & 979 & 973 & 829 & 827\\
+Ordinary \(abc\) & 704 & 697 & 595 & 592\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The sum of squares of all residuals has degree exactly four and
+vanishes over \(\Q\) exactly when every residual vanishes.
+Exact degree follows from a retained residual with a nonzero quadratic
+homogeneous part: its square cannot be cancelled in a real sum of squares.
+The retained general family has its sufficiently large fixed
+parameter as in \cite{Power}; no effective value is asserted.
+The ordinary-\(abc\) family retains its stated arithmetic premise.
+The source equivalence introduces no extra universality assumption
+and retains the previously cited Jones coding theorem.
+
+The builder and independent checker are
+\begin{verbatim}
+python undecidability/pell_signed_q_v98/build_signed_q.py
+python undecidability/pell_signed_q_v98/verify_signed_q.py
+\end{verbatim}
+The checker imports no builder. It checks the exact deleted rows,
+every occurrence of the six removed coordinates, the strengthened
+margin, the two ordinary-\(abc\) fourth-power substitutions, all
+826 or 589 unchanged rows, full support, degree, interface metadata,
+predecessor hashes, and output certificates. The quantified arithmetic
+arguments are the proofs above.
+
+The independent \texttt{verify\_signed\_q\_lemmas.py} checks three
+symbolic identities, exact signed-congruence and prefix-bound fixtures,
+the integer margin inequality, signed guard recovery, and the Pell
+growth estimates used in completeness. Its reproducible receipt is
+\texttt{signed\_q\_lemmas\_certificate.json}. These finite checks audit
+the algebra and edge cases; they do not replace the quantified proofs.
+
+\begin{thebibliography}{9}
+\small\setlength{\itemsep}{2pt}
+\bibitem{Power} \(\mathbb Z\mathbb Q\) Diophantine Project,
+\emph{A short Pell replacement for the fixed Jones power}.
+\par\nolinkurl{undecidability/pell_power_v97/pell_power_replacement.tex}.
+\end{thebibliography}
+\end{document}

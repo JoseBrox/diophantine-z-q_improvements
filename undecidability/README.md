@@ -37,9 +37,9 @@ the historical encoders; all historical specifications remain unchanged.
 
 | Integer interface | Rational unknowns | Quadratic residuals | Additional height hypothesis |
 |:--|--:|--:|:--|
-| General | **979** | **829** | No additional abc |
+| General | **973** | **827** | No additional abc |
 | Specified | **1147** | **997** | No additional abc |
-| Ordinary abc | **704** | **595** | Ordinary rational abc |
+| Ordinary abc | **697** | **592** | Ordinary rational abc |
 
 The [corrected-source theorem](source_repair_v93/corrected_jones_source.tex)
 ([PDF](source_repair_v93/corrected_jones_source.pdf)) uses Jones's 1980
@@ -74,8 +74,15 @@ eleven-predicate systems. The [new Pell power source](pell_power_v97/pell_power_
 then recovers the fixed exponent using two extra integer predicates and
 the remaining source constraints. The complete thirteen-predicate systems
 reach **979 / 704** in the general / abc routes; the specified route keeps
-**1147**. See the [current v97 checkpoint](../docs/results_20261123_v97.md).
+**1147**. See the [v97 checkpoint](../docs/results_20261123_v97.md).
 The general sufficient defining coefficient may have to be increased.
+The [signed-power proof](pell_signed_q_v98/signed_q_and_absorbed_bound.tex)
+removes both added positivity wrappers by a signed prefix estimate and an
+absorbed integer margin. The abc chart also reuses its existing fourth
+power. The current complete systems have **973 / 1147 / 697** variables;
+see the [v98 report](../docs/results_20261123_v98.md) and
+[full tables](pell_signed_q_v98). These changes keep all thirteen integer
+certificates in the general and abc constructions.
 
 ### Method and intermediate improvements
 

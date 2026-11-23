@@ -14,9 +14,9 @@ The [additional research routes](research_routes_20261120.md) prove a complex-mu
 
 ## Undecidability in bounded numbers of rational unknowns
 
-The [v97 continuation](results_20261123_v97.md) gives corrected quartic
-transfers in **979 / 1147 / 704** rational unknowns, with
-**829 / 997 / 595** quadratic residuals. The instance is a coefficient
+The [v98 continuation](results_20261123_v98.md) gives corrected quartic
+transfers in **973 / 1147 / 697** rational unknowns, with
+**827 / 997 / 592** quadratic residuals. The instance is a coefficient
 parameter. The third route assumes ordinary rational abc; all routes retain
 their integer predicate's stated arithmetic premises.
 
@@ -52,6 +52,10 @@ uses the cofinite tail x>32z; general and abc constructions have thirteen
 integer inputs, while the specified eleven-input construction stays smaller.
 This bypasses the proved triangular rational-function circuit lower bound
 by using certified integers and the remaining source constraints.
+The two added positivity wrappers can now be removed: a signed prefix
+estimate works with abs(q), and the existing integer eta margin absorbs
+the auxiliary index bound. The abc chart reuses a fourth-power coordinate.
+This saves six more variables in general and seven under ordinary abc.
 Every remaining residual and denominator guard is retained explicitly.
 
 For unrestricted degree, **82 / 100 / 52** remains the smallest recorded
@@ -66,7 +70,7 @@ recipe handles repeated roots, nilpotents, and guards at excluded characters.
 The existing smaller specialized 25/27/11 defining-polynomial bounds remain
 unchanged. No unverified universal source pair is substituted.
 
-A quartic bound near 263 is not established. Further work targets common
+A quartic bound near 263 is not established. Further work targets
 fewer integrality inputs, additional common contact circuits,
 and a new simultaneous pole realization theorem. A reduction must preserve
 quadratic degree and supply all physical reconstruction maps; a high-degree
