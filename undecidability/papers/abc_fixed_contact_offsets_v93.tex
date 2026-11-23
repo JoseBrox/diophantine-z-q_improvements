@@ -1,0 +1,295 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs,hyperref,xurl,microtype}
+\setlength{\emergencystretch}{3em}
+\hypersetup{hidelinks}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\title{Fixed dyadic translations for simultaneous contact certificates}
+\author{\(\mathbb Z\mathbb Q\) Diophantine Project}
+\date{23 November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+The ordinary-abc quartic interface has one contact parameter for each
+integer input. Its previous simultaneous-witness proof separated contact
+lists by translations chosen after the inputs were known. We give fixed
+translations that work for every integer tuple: distinct cosets modulo
+the two-adic integers separate all the lists because their original
+positions are two-adic integers. This reduces twelve contact coordinates
+to one. A common square then removes all twelve private sum invariants,
+at the cost of one coordinate and one equation. All substitutions are
+affine, so no degree is increased. The resulting complete table has 786
+variables and 685 quadratic residuals after the independently compiled
+ceiling-power reduction; applying only the present transformation to the
+preceding 837-variable Pell table gives 815 variables and 714 residuals.
+The arithmetic premises, ordinary rational abc, ineffective sufficient
+shift, and unresolved emended-source universality assertion are retained.
+\end{abstract}
+
+\section{A fixed-place separation lemma}
+
+Normalize the rational valuation by \(v_p(p)=1\).
+
+\begin{lemma}\label{lem:separation}
+Let \(\mathcal A_0,\ldots,\mathcal A_{k-1}\) be finite sets in
+\(\Q\cap\Z_p\). Choose \(e\ge0\) with \(p^e\ge k\), and set
+\[
+                  \delta_i=i/p^e\quad(0\le i<k).
+\]
+The sets \(\mathcal A_i-\delta_i\) are pairwise disjoint.
+These same fixed translations work for every possible choice of the
+sets in \(\Q\cap\Z_p\).
+\end{lemma}
+\begin{proof}
+For \(i\ne j\), the nonzero integer \(i-j\) has absolute value less
+than \(p^e\), so \(v_p(i-j)<e\). Thus
+\(v_p(\delta_i-\delta_j)<0\), whereas every difference between
+elements of \(\mathcal A_i\) and \(\mathcal A_j\) is in \(\Z_p\).
+Equality of two translated positions would equate these quantities,
+which is impossible.
+\end{proof}
+
+The argument also applies when every \(\mathcal A_i\) lies in
+\(p^{-L}\Z_p\), for one fixed integer \(L\ge0\): use
+\(\delta_i=i/p^{L+e}\).
+There is no bound on the real size or cardinality of the sets.
+Internal coincidences in an individual set are not removed by the lemma;
+they must be dealt with by the original construction.
+
+\section{Application to the ordinary-abc source}
+
+We use the complete 56-coordinate interface of~\cite{abc56} and the
+shared-reference theorem of~\cite{reference}. In that interface the
+input is \(X\), the reference curve is
+\[
+ E:y^2=x^3-(11-6\sqrt2)x,\qquad
+ R_0=(1+\sqrt2,2\sqrt2),
+\]
+and the integer-witness trace for \(X=n\ne0\) is
+\[
+ T_n=n^2\operatorname{Tr}x([n]R_0).
+\]
+Its proved two-adic trace lemma gives \(T_n\in\Z_2\). With the
+sufficiently large fixed odd source parameter \(B\), put
+\[
+ M_n=B+2(n^8+T_n^2),\qquad a_n=M_n^4+16.
+\]
+Consequently \(M_n\in\Z_2^\times\), \(a_n\in\Z_2\), and in fact
+\(a_n\equiv1\pmod8\) is a nonzero two-adic square. The use of
+two-adic integrality here is restricted to constructing integer
+witnesses. It is not assumed for arbitrary rational zeros.
+
+Let
+\[
+ \mathcal R=\{-8,-7,-4,-1,1,4,7,8\},\qquad
+ \mathcal A_n=\{\pm(a_n+r):r\in\mathcal R\}.
+\]
+Every position belongs to \(\Z_2\). Also \(a_n>16\), so these sixteen
+positions are internally distinct. For \(k\) input blocks indexed by
+\(0,\ldots,k-1\), replace their separate physical contact variables by
+\begin{equation}\label{eq:affine}
+                   z_i=z+\delta_i,
+ \qquad\delta_i=i/2^e,\quad 2^e\ge k.
+\end{equation}
+The actual positions as functions of \(z\) are
+\(\mathcal A_{n_i}-\delta_i\). Lemma~\ref{lem:separation} makes the
+whole collection of \(16k\) positions distinct, uniformly in the
+nonzero integer tuple.
+
+\begin{theorem}\label{thm:tuple}
+Fix a defining odd parameter \(B\) for the 56-coordinate interface,
+under ordinary rational abc and its stated arithmetic premises.
+In \(k\) copies identify the six reference coordinates exactly as
+in~\cite{reference}, make substitutions~\eqref{eq:affine}, and use the
+common contact square described below.
+Every rational solution has integral inputs. Every tuple in
+\((\Z\setminus\{0\})^k\) has a rational solution.
+The resulting system has
+\[
+                   48k+8\quad\text{coordinates},\qquad
+                   41k+5\quad\text{quadratic residuals},
+\]
+including its \(k\) distinguished inputs. Its sum of squares has degree
+exactly four. The sufficient parameter threshold is unchanged.
+\end{theorem}
+
+\begin{proof}
+For soundness, recover the old \(z_i\) from~\eqref{eq:affine}. Every
+block is a solution of its unmodified 56-coordinate source. Its
+integer-defining theorem therefore applies directly. In particular,
+soundness requires neither two-adic integrality of the new center values
+nor disjointness of their contact lists. No independent zero-input
+simultaneous-completeness assertion is used.
+
+For completeness fix nonzero integers \(n_0,\ldots,n_{k-1}\). Follow
+the common-reference proof of~\cite{reference}, choosing
+\[
+ U_i=[n_i]H,\quad V_i=[n_i](H-R_0),\quad U_i-V_i=[n_i]R_0.
+\]
+The traces \(T_{n_i}\), centers \(a_{n_i}\), and all contact positions
+are now fixed independently of the later reference choice. Choose a
+common reference neighborhood avoiding the finitely many forbidden
+points of every block, as in that proof. The finite tests are bounded
+there. The fixed dyadic translations now separate the contact lists;
+there is no input-dependent choice of offsets.
+
+Enlarge finite avoidance to contain the supports of the input integers,
+contact positions, all their nonzero differences, centers, chart
+denominators, and the translations. This is a finite set fixed before
+prime selection; it is not a change to the fixed exceptional set in
+the source soundness theorem. Choose an integer \(D_0>0\) such that
+\(D_0^2(d-\delta_i)\in\Z\) for every \(d\in\mathcal A_{n_i}\).
+The retained finite-family prime supplier applies to
+\[
+ N-D_0^2(d-\delta_i)L^2,
+ \qquad z=\frac{N}{D_0^2L^2}.
+\]
+These are distinct fixed rational contact positions, exactly the type
+of family allowed in the previous shared-reference construction.
+Use its same primary and opposite reference congruences, compatible
+annihilation refinements, and real recurrence. At a selected prime
+precisely one factor of precisely one contact polynomial vanishes
+simply. The unchanged derivative identity gives contact-quotient
+valuation one; the unchanged point preparation gives positive
+valuation of the relevant detector error. Thus the selected native
+pole valuations are the same as before.
+
+For the other primes the source factorization and parity argument
+applies separately to each block. Fixed translation denominators
+introduce no missing case: they were explicitly included in finite
+preparation. At any fixed finite place, take the denominator of \(z\)
+sufficiently deep that
+\[
+                   z_i/z=1+\delta_i/z\longrightarrow1
+\]
+for all \(i\). The same limit holds as \(z\) tends to real infinity.
+The source estimates consequently hold simultaneously:
+\[
+ u_i\sim z_i^2/a_{n_i},\qquad c_i\sim a_{n_i}/z_i^2,
+ \qquad W_i-1=O(c_i),\qquad D_i=O(c_i^2).
+\]
+At two the centers are squares, so every actual pole input remains
+in \(7\Q_2^{\times2}\), with arbitrarily large positive valuation.
+At infinity each lies in \((0,1)\). Its reduced denominator is a
+square by the same selected-prime and unselected-prime argument as
+before. Apply the retained native-pole realization independently to
+the actual inputs. This fills all blocks with their common reference
+and with the exact affine contact parameters~\eqref{eq:affine}.
+
+The shared-reference system has \(50k+6\) coordinates and
+\(42k+4\) rows. Equation~\eqref{eq:affine} replaces its \(k\) contact
+variables by one and is implemented by substitution, hence removes
+\(k-1\) coordinates without adding equations. The common-square
+substitution of the next section removes another \(k-1\) coordinates
+and \(k-1\) equations, by an exact algebraic equivalence.
+Affine substitution and constant denominator clearing preserve degree
+at most two. An
+unchanged input-square residual has nonzero quadratic part, so the
+sum of squares has degree exactly four over \(\Q\).
+\end{proof}
+
+\section{Literal coordinate transformation and complete counts}
+
+The source contact variable is local coordinate 48; it occurs only in
+the row named \texttt{contact.difference}. If coordinates 49 and 50
+are denoted by \(T_i,S_i\), that residual is
+\[
+                         S_i-T_i-2z_i^2.
+\]
+After~\eqref{eq:affine}, introduce one common coordinate \(q\), impose
+\(q=z^2\), and make the affine substitutions
+\begin{equation}\label{eq:sum-elimination}
+               S_i=T_i+2q+4\delta_i z+2\delta_i^2.
+\end{equation}
+Delete all \(k\) private difference rows. Their substituted residuals
+are identically \(2(q-z^2)\), so the one new square row is equivalent
+to all of them. Every occurrence of \(S_i\) in the remaining source
+rows is replaced by~\eqref{eq:sum-elimination}, including its squared
+occurrences. Since this substitution is affine in the retained
+coordinates, every row stays quadratic. Conversely a new solution
+uniquely recovers the old \(S_i,z_i\), and an old solution satisfying
+\eqref{eq:affine} has the unique extension \(q=z^2\).
+This proves an exact equivalence on the whole rational zero set,
+including \(z=0\), \(T_i=0\), and every other allowed boundary.
+
+The eliminated local sum coordinate is 50 and the retained difference
+coordinate is 49. The common square is named
+\texttt{abc\_common\_contact\_square}. Each of the five affected row
+types is transformed: \texttt{contact.sum}, \texttt{contact.A1},
+\texttt{contact.A2}, \texttt{contact.partialCombined}, and
+\texttt{contact.derivativeQuotient}. All other rows are copied
+literally after renumbering. Nonzero constant denominators are cleared
+and each changed row is divided by its integer content. For twelve
+blocks we take \(e=4\), so all offsets have denominator dividing 16.
+No variable
+denominator or new guard is introduced.
+
+For the emended Jones source the twelve certified input names are,
+in the order assigned offsets,
+\[
+                b,g,t,m,w,s,h,c,\gamma,o,j,i.
+\]
+The last block's stored prefix remains \texttt{int\_i\_reciprocal},
+but its distinguished ordinary input is \(i\), with the retained
+equation \(i\,i_{\rm inverse}=1\). No reciprocal chart is changed.
+
+Every positive integer source solution supplies nonzero values of all
+twelve inputs. Theorem~\ref{thm:tuple} therefore gives completeness of
+the source transfer. Conversely every new rational solution extends to
+the previous complete table and hence to its integer source under the
+same retained arithmetic premises. Thus the complete outer-instance
+projection is unchanged, even though the present substitution is not
+a bijection on every tuple of old auxiliary witnesses.
+
+\begin{center}
+\begin{tabular}{lrrr}
+\toprule
+Predecessor & Old coordinates & New coordinates & Rows\\
+\midrule
+Shared reference and Pell reduction &837&815&714\\
+Further ceiling-power reduction &808&786&685\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The output is the sum of the squares of the complete listed integral
+quadratic residuals. The integer instance occurs in the coefficients,
+not among the displayed rational unknowns. Universality of the exact
+emended source remains the separate assertion \(U_{\rm em}\), and
+has not been established by the present theorem. Ordinary rational
+abc, the source elliptic, height, prime-supplier and recurrence
+premises, and the sufficiently large ineffective odd parameter are
+all retained. The stored small \(B\) member is only an algebraic
+fixture. No unconditional undecidability bound or global minimum is
+asserted.
+
+\section{Reproducibility}
+
+The complete producer and independent checker are
+\begin{center}\small
+\nolinkurl{undecidability/joint_detector_v93/build_abc_fixed_offsets.py}\\
+\nolinkurl{undecidability/joint_detector_v93/verify_abc_fixed_offsets.py}.
+\end{center}
+Both accept an explicit predecessor path. The producer uses rational
+coefficient dictionaries; the checker independently uses symbolic
+affine substitution and primitive polynomial normalization. The
+checker reconstructs every changed row, compares every unchanged row,
+checks complete occurrence lists, exact counts, coefficient domains,
+parameter qualifications and file hashes. The general separation and
+arithmetic-completeness arguments are proofs above; finite valuation
+examples in the checker are only illustrations.
+
+\begin{thebibliography}{9}
+\bibitem{abc56} \(\Z\Q\) Diophantine Project,
+\emph{Paired contact coordinates: an ordinary-abc quartic in 56 variables},
+19 November 2026,
+\nolinkurl{papers/quartic_existence/paired_contact56_20261119_v81.tex}.
+\bibitem{reference} \(\Z\Q\) Diophantine Project,
+\emph{A shared-reference quartic checkpoint with an explicit
+source-universality obligation}, 23 November 2026,
+\nolinkurl{undecidability/papers/shared_quartic_checkpoint.tex}.
+\end{thebibliography}
+\end{document}

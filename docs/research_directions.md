@@ -14,95 +14,53 @@ The [additional research routes](research_routes_20261120.md) prove a complex-mu
 
 ## Undecidability in bounded numbers of rational unknowns
 
-The [undecidability category](../undecidability/README.md) records quartic and
-unrestricted-degree decision-problem bounds. The instance input is a coefficient
-parameter, so these counts differ from the defining-polynomial table.
+The [v93 continuation](results_20261123_v93.md) gives corrected quartic
+transfers in **1074 / 1254 / 786** rational unknowns, with
+**924 / 1080 / 685** quadratic residuals. The instance is a coefficient
+parameter. The third route assumes ordinary rational abc; all routes retain
+their integer predicate's stated arithmetic premises.
 
-The [common-numerator theorem](../undecidability/papers/common_numerator_transfers.tex)
-gives joint integer certificates in **`7k+18` / `9k+18` / `5k+6`** total
-coordinates. It uses the all-sign coprimality clause of the already retained
-prime-pattern theorem: one numerator index can receive different prescribed
-residues at the disjoint contact families. Exact prime-power refinements
-preserve all local depths. At prepared fixed places, bounded comparison
-functions are suppressed by the existing contact weights. This proves the
-previously open common-numerator step, without identifying private pole roots.
-
-For nine integer inputs, the mixed-domain universal equation first gives
-**83 / 101 / 53** rational unknowns and degree ceilings
-`2^413 / 2^477 / 2^263`. The [finite-wrapper theorem](../undecidability/papers/finite_wrapper_transfer.tex)
-then gives **82 / 100 / 52**, at the larger degree ceilings
-`2^650 / 2^714 / 2^500`. It retains all nine integer certificates, monicizes
-the degree-eight equation in the last input, and absorbs that input and
-one positivity witness into a rank-sixteen finite algebra. The first two
-routes introduce no abc hypothesis; the last retains ordinary rational abc.
-All retain the source arithmetic premises. The 82 and 52 sufficient fixed
-parameters are ineffective; the 100-variable source is specified.
-
-Complete coefficient circuits and independent exact degree ledgers accompany
-the proofs. The single-coordinate finite-algebra encoder permits nilpotents,
-zero terminal roots and guards vanishing at unselected characters. The
-earlier **227 / 245 / 101**, **99 / 117 / 69**, and other intermediate bounds
-remain registered as variable--degree tradeoffs.
-
-The directly optimized quartic systems reach **1103 / 1283 / 837**, with
-**953 / 1109 / 725** quadratic residuals. The
-[global-contact proof](../undecidability/papers/global_gauge_quartic_checkpoint.tex)
-permits a common normalization, identifies further physical coordinates,
-reorders common products, and removes a private field from each point chart.
-The independent [Pell-index proof](../undecidability/papers/pell_index_optimization.tex)
-then removes nine outer coordinates and three rows, without removing any
-integer certificate. [Complete tables](../undecidability/coefficients/jones1980_pell_core)
-and exact row-by-row checks accompany the proofs. The current general
-counts additionally use the [scalar rechart](../undecidability/papers/scalar_rechart_quartic_checkpoint.tex),
-the [common norm polynomial](../undecidability/papers/scalar_norm_compression.tex),
-and the [detector trace](../undecidability/papers/detector_trace_compression.tex).
-Their final [combined tables](../undecidability/coefficients/jones1980_detector_pell)
-contain every residual. These three changes save 73/63 coordinates from
-the previous 1176/1346 combined systems.
+The [source repair](../undecidability/source_repair_v93/corrected_jones_source.tex)
+reduces a new 28-positive-integer source to Jones's 1980 Theorem 2, using
+the independently proved central-binomial certificate with `n^6`.
+Only the rows defining the reused `sr` register and `a` change. The coding
+theorem is cited externally, not independently reproved; the old `U_em`
+premise is absent from the new tables. Historical `n^2` tables keep their
+old qualifications, and the alleged 57/47 universal system is still unverified.
 
 The [ceiling-binary circuit](../undecidability/papers/ceiling_power_quartic_checkpoint.tex)
-further lowers these counts to **1074 / 1254 / 808**, with **924 / 1080 / 696**
-quadratic residuals. It computes the fixed power in 139 actual coordinates,
-saving 29 in each route with a full nonzero-base and reconstruction proof.
+computes `b^(5^60)` in 139 stored coordinates instead of 168. Its nonzero-base
+proof precedes every division. The [fixed-contact theorem](../undecidability/papers/abc_fixed_contact_offsets_v93.tex)
+separates all abc contact sets using distinct cosets modulo the 2-adic integers.
+A fixed grid with denominator 16 handles 12 inputs. A common contact square
+then yields the tuple formula `48k+8` coordinates and `41k+5` rows.
+These two changes save 29 in each route and another 22 in the abc route.
+Every remaining residual and denominator guard is retained explicitly.
 
-Their undecidability interpretation additionally needs **`U_em`**, the
-universality of the precise emended 28-variable source. The 1980 original
-prints Greek alpha in one place where the builder uses Latin a; the 1999
-author-written account supports Latin a but prints an impossible Pell row.
-A further audit finds an `n^2` versus `n^6` mismatch in the binomial bridge.
-The [source reconciliation](../undecidability/papers/jones1980_quartic_transfer.tex)
-states exactly which corrections were made. Local plausibility does not
-replace the full universality proof. The literal Mishchenko--Treier
-transcription admits a reversible **57-variable / 45-row** reduction, but
-its universality remains unresolved. The alleged universal **57/47** system
-has not been independently reproved, and a quartic bound near 263 has not
-been established.
+For unrestricted degree, **82 / 100 / 52** remains the smallest recorded
+variable triple, with lower degree ceilings **2^532 / 2^578 / 2^425**.
+The **83 / 101 / 53** tradeoffs now have ceilings **2^302 / 2^349 / 2^212**,
+and the **99 / 117 / 69** tradeoffs have **2^384 / 2^430 / 2^278**.
+The [paired spectral theorem](../undecidability/papers/paired_spectral_encoder.tex)
+removes the mandatory zero differences and pairs opposite differences.
+Separating the spectral envelope from characteristic-coefficient size lowers
+the encoder's rank growth from order n^7 to order n^5. The complete coefficient
+recipe handles repeated roots, nilpotents, and guards at excluded characters.
+The existing smaller specialized 25/27/11 defining-polynomial bounds remain
+unchanged. No unverified universal source pair is substituted.
 
-The [negative-input witness](../undecidability/papers/negative_mixed_witness.tex)
-proves that nonnegativity of the ninth mixed-source input does not follow
-from the other eight integer conditions. The finite-wrapper theorem retains
-that condition. The [point-chart paper](../undecidability/papers/point_chart_research.tex)
-records precise obstructions to two tempting shared-point constructions.
-
-The [generalized binomial certificate](../undecidability/papers/binomial_pell_certificate.tex)
-now proves the corrected local `n^6` block independently, and even permits
-arbitrary moduli `M>=2` with `2<=b<=2M`. This does not establish the
-universality of the unchanged old `n^2` source or its coding prefix.
-
-The next source task is to audit the complete Jones 1982 proof or give a
-direct universality proof for the exact emended system. The next construction
-task is to eliminate private translated-point registers while preserving
-quadratic degree, or prove a new simultaneous pole realization theorem.
-Each proposed sharing must be checked in physical coordinates before the
-Laurent normalization is compiled. General-degree gains alone do not give
-quartic gains.
+A quartic bound near 263 is not established. Further work targets common
+contact-power circuits, signed source witnesses, fewer integrality inputs,
+and a new simultaneous pole realization theorem. A reduction must preserve
+quadratic degree and supply all physical reconstruction maps; a high-degree
+encoder does not by itself yield a small quartic.
 
 The [polynomial-test obstruction](../undecidability/papers/polynomial_integrality_obstruction.tex)
-covers rational-coefficient polynomials: fewer than `r` integer-value tests
-cannot recognize all integral `r`-tuples. It does not exclude shared
-existential geometry or additional source equations. The
-[further-reduction checkpoint](../undecidability/checkpoints/further_reductions_20261123.md)
-records specific obstructions and the resolved common-numerator question.
+excludes fewer than r rational-polynomial integer-value tests for all of Z^r,
+but not shared existential witnesses or additional source equations.
+The negative ninth-input witness prevents omitting nonnegativity from the
+mixed universal source. All these limitations and historical formulas are
+preserved in the [registry](../undecidability/results.json) and dated reports.
 
 ## Immediate constructive targets
 

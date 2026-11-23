@@ -1,0 +1,391 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,booktabs,hyperref,xurl}
+\setlength{\emergencystretch}{3em}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\newcommand{\A}{\mathcal A}\newcommand{\Mat}{\operatorname{Mat}}
+\title{Paired spectral differences and lower-degree\\
+guarded finite-algebra encoders}
+\author{\(\mathbb Z\mathbb Q\) Diophantine Project}
+\date{23 November 2026}
+\begin{document}\maketitle
+
+\begin{abstract}
+We improve the complete one-coordinate encoding of a guarded rational
+character of a finite commutative algebra. We remove the mandatory
+diagonal zero factors and pair opposite spectral differences, then use
+separate bounds for the eigenvalues and the characteristic coefficients.
+For algebra rank \(n\), fixed generator count, and multiplication-entry
+degree \(d\), the degree bound falls from order \(n^7d\) to order
+\(n^5d\). The proof includes nilpotents, repeated roots, an empty permitted
+locus, and denominators vanishing at excluded characters.
+
+Applied to the existing rational-undecidability transfers, this lowers
+the degree ceilings in 82, 100, and 52 variables from
+\(2^{650},2^{714},2^{500}\) to \(2^{532},2^{578},2^{425}\).
+The 83-, 101-, and 53-variable tradeoffs instead have ceilings
+\(2^{302},2^{349},2^{212}\). All inequalities are strict. The variable
+counts and every retained arithmetic premise are unchanged; the
+52- and 53-variable routes retain ordinary rational \(abc\).
+\end{abstract}
+
+\section{The algebraic theorem}
+
+Let \(R=\Z[T_1,\ldots,T_b]\), and let \(\A\) be a commutative unital
+\(R\)-algebra free of rank \(n\ge1\), with a specified basis. Choose
+\(\theta_1,\ldots,\theta_m\) that generate
+\(\A\otimes\Q\) over \(\Q[T_1,\ldots,T_b]\), and a guard
+\(g\in\A\). The guard is required to be nonzero only at the selected
+character. Put
+\[
+ \gamma_0=g,\qquad \gamma_i=g\theta_i\ (1\le i\le m),
+ \qquad A_i=M_{\gamma_i},\qquad \ell=m+1.
+\]
+The notation \(M_a\) means multiplication by \(a\) in the fixed basis.
+Assume all entries of the \(A_i\) have total degree at most \(d\ge0\).
+
+\begin{theorem}\label{main}
+The coefficient recipe below constructs \(F\in R[U]\) such that,
+for every \(t\in\Q^b\),
+\[
+ \exists u\in\Q\ F(t,u)=0
+ \quad\Longleftrightarrow\quad
+ \exists\phi:\A_t\longrightarrow\Q\quad\phi(g)\ne0,
+ \qquad \A_t=\A\otimes_{R,t}\Q.
+\]
+No reducedness or separability assumption is needed. With
+\[
+                  J=\frac{\ell n(n+1)}2,
+\]
+the total degree satisfies
+\begin{equation}\label{degree}
+ \boxed{\deg F\le
+  2n(J+1)\bigl[1+d\{1+(4+6\ell)J\}\bigr].}
+\end{equation}
+There is exactly one extra rational coordinate, \(U\).
+\end{theorem}
+
+The earlier encoder \cite{old} used \(J_0=\ell(n+1)^2\) and the bound
+\[
+ 2n(J_0+1)\bigl[1+d\{1+2J_0(1+\ell(J_0+1))\}\bigr].
+\]
+The new formula has the same logical input and output. It may replace
+that encoder without changing any source equations or witnesses.
+
+\section{Removing diagonal zeros and pairing opposite differences}
+
+Put \(N=n+1\) and augment every multiplication matrix by one zero block:
+\[
+ \widetilde A_i=\operatorname{diag}(A_i,0),\qquad
+ D_i=\widetilde A_i\otimes I_N-I_N\otimes\widetilde A_i.
+\]
+
+\begin{lemma}\label{paired}
+There is a unique monic \(q_i(V)\in R[V]\), of degree
+\(N(N-1)/2\), such that the polynomial identity
+\[
+                 \det(ZI_{N^2}-D_i)=Z^Nq_i(Z^2)
+\]
+holds in \(R[Z]\). If each entry of \(A_i\) has degree at most \(d\),
+the coefficient of \(V^{N(N-1)/2-j}\) in \(q_i\) has degree at
+most \(2jd\).
+\end{lemma}
+\begin{proof}
+Work first over an algebraic closure of the fraction field of \(R\).
+Triangularize \(\widetilde A_i\), with diagonal entries
+\(\lambda_1,\ldots,\lambda_N\), repeated according to multiplicity.
+The tensor difference has diagonal entries
+\(\lambda_a-\lambda_b\). The \(N\) diagonal pairs \(a=b\) contribute
+\(Z^N\). Each pair \(a<b\) contributes
+\[
+ (Z-\lambda_a+\lambda_b)(Z+\lambda_a-\lambda_b)
+       =Z^2-(\lambda_a-\lambda_b)^2.
+\]
+Thus division by \(Z^N\) has only even exponents. The original
+determinant has coefficients in \(R\); deleting the identically zero
+coefficients and halving the exponents therefore constructs \(q_i\)
+in \(R[V]\), without any division of coefficients. The identity in
+the fraction field is consequently an identity in \(R[Z]\).
+
+The coefficient in question is the characteristic coefficient of
+index \(2j\) of the matrix \(D_i\). It is a sum of principal minors
+of size \(2j\), so its degree is at most \(2jd\).
+\end{proof}
+
+This argument allows further zero differences and nilpotent matrices.
+It removes only the universally present \(N\) diagonal factors.
+After any rational specialization, the eigenvalues of multiplication
+are the geometric character values, with positive multiplicities.
+For example, on a local Artinian component, multiplication by an
+element is its residue value plus a nilpotent operator. Hence all
+character differences, and the differences of a character value from
+the extra zero, occur among the spectral differences above.
+
+Define
+\begin{equation}\label{psi}
+ \psi(V)=\prod_{i=0}^m q_i(V)
+        =V^J+a_1V^{J-1}+\cdots+a_J,\qquad a_0=1.
+\end{equation}
+Every coefficient satisfies \(\deg a_j\le2jd\). The roots of
+\(\psi\) are the \emph{squares} of the relevant spectral differences.
+
+\section{The complete integer-polynomial recipe}
+
+Use the following spectral envelope, which deliberately contains
+no characteristic coefficients:
+\begin{equation}\label{envelope}
+ R_0=2+N+\sum_{i=0}^m\sum_{v,w=1}^n(A_i)_{vw}^2,
+       \qquad B_0=NR_0.
+\end{equation}
+For every \(s\in\{0,\ldots,J\}\), define
+\begin{align}
+ \Delta_s&=a_s^2,\qquad
+ K_s=(1+\Delta_s)(2B_0)^{J-1},\label{K}\\
+ C_s&=\Delta_s+(4\ell B_0+2)K_s,\label{C}\\
+ M_s&=\Delta_s\sum_{i=0}^m
+       C_s^{i+1}\Delta_s^{m-i}A_i,\qquad
+ H_s(U)=\det(I_n-UM_s).\label{matrix}
+\end{align}
+Here \(J\ge1\), so all exponents are nonnegative integers.
+Finally set
+\begin{equation}\label{F}
+ \boxed{F(T,U)=\prod_{s=0}^J
+       \left[H_s(U)^2+\sum_{j=s+1}^J a_j^2\right].}
+\end{equation}
+Equations \eqref{psi}--\eqref{F}, the multiplication matrices, and the
+identity of Lemma~\ref{paired} specify every coefficient by finite
+integer-polynomial operations. An empty tail sum is zero.
+
+\section{Separation, rationality, and all coefficient strata}
+
+Fix a rational specialization of the base coordinates. All matrix
+entries and characteristic coefficients in this section are rational
+real numbers, although the eigenvalues may be complex. Every entry
+has absolute value at most \(R_0\); the row-sum spectral bound shows
+that every eigenvalue of \(\widetilde A_i\) has modulus at most
+\(B_0\). Every difference has modulus at most \(2B_0\).
+
+Let \(s\) be the largest index with \(a_s\ne0\), including \(s=0\)
+when all the nonleading coefficients vanish. If \(s\ge1\), any
+nonzero spectral difference \(\delta\) has \(\delta^2\) among
+the \(s\) nonzero roots of \(\psi\). Their product has modulus
+\(|a_s|\). Consequently
+\[
+       |\delta|\ge\frac{\sqrt{|a_s|}}{(2B_0)^{s-1}}.
+\]
+For every real \(t\ge0\),
+\(t^2/(1+t^2)\le\sqrt t\): if \(t\le1\), use
+\(t^2\le\sqrt t\), and if \(t\ge1\), use
+\(t^2/(1+t^2)\le1\le\sqrt t\). Since \(2B_0>1\), this gives
+\begin{equation}\label{epsilon}
+  |\delta|\ge
+  \frac{a_s^2}{(1+a_s^2)(2B_0)^{J-1}}
+       =\frac{\Delta_s}{K_s}=:\epsilon>0.
+\end{equation}
+This is the step that separates the coefficient bound from the
+low-degree matrix envelope.
+
+Put \(L=C_s/\Delta_s=1+(4\ell B_0+2)/\epsilon\). Consider the vectors
+\[
+  v_\sigma=(\sigma(\gamma_0),\ldots,\sigma(\gamma_m))
+\]
+for geometric characters \(\sigma\), together with the zero vector.
+For two distinct such vectors let \(h\) be the last differing index.
+Their difference in coordinate \(h\) has modulus at least \(\epsilon\).
+All coordinate differences have modulus at most \(2B_0\). Therefore
+\[
+ \left|L^{h+1}(v_\sigma-v_\tau)_h\right|
+       \ge\epsilon L^{h+1},\qquad
+ \left|\sum_{i<h}L^{i+1}(v_\sigma-v_\tau)_i\right|
+       \le2\ell B_0L^h<\epsilon L^{h+1}.
+\]
+The weighted sums cannot coincide. The matrix \(M_s\) is multiplication by
+\[
+ \beta_s=\Delta_s^{m+2}\sum_{i=0}^m L^{i+1}\gamma_i.
+\]
+The nonzero scalar factor does not affect separation. If
+\(\sigma(g)=0\), its entire vector and its \(\beta_s\) value are zero.
+If \(\sigma(g)\ne0\), the vector is nonzero. Two such characters
+with the same vector agree on every generator, since
+\(\sigma(\theta_i)=\sigma(\gamma_i)/\sigma(\gamma_0)\).
+Thus \(\beta_s\) separates all permitted characters and sends
+precisely the excluded characters to zero.
+
+If the true index is \(s=0\), every squared difference is zero.
+The extra zero eigenvalue implies that all \(\gamma_i\) have only
+zero character values. There is no permitted character, all the
+\(M_s\) have only zero eigenvalues, and every relevant determinant
+is one.
+
+\begin{proof}[Proof of the equivalence in Theorem~\ref{main}]
+Suppose a permitted rational character \(\phi\) exists. The true
+index satisfies \(s\ge1\), and \(\phi(\beta_s)\in\Q^\times\).
+Taking \(u=1/\phi(\beta_s)\) makes \(H_s(u)=0\), while all later
+coefficients vanish. Hence \(F(t,u)=0\).
+
+Conversely, if \(F(t,u)=0\), one factor in \eqref{F} vanishes.
+It is a sum of rational squares, so its determinant and all tail
+coefficients vanish. If its \(a_s\) were zero, then
+\(\Delta_s=0\), \(M_s=0\), and \(H_s(u)=1\), impossible.
+Thus this factor has the true last nonzero coefficient index.
+The determinant supplies a geometric character with
+\(\sigma(\beta_s)=1/u\in\Q^\times\), in particular \(u\ne0\).
+It has nonzero guard. Every Galois conjugate of this character has
+the same rational \(\beta_s\) value; separation makes every such
+conjugate identical. All generator values are therefore rational,
+so \(\sigma\) is a character into \(\Q\) with nonzero guard.
+\end{proof}
+
+The reasoning uses eigenvalues with their algebraic multiplicities,
+not simple roots or one-dimensional eigenspaces. Repeated roots and
+nilpotents are therefore covered. If a source denominator vanishes
+at an excluded character, that character still maps to zero under
+the separator. There is no need to invert its denominator.
+
+\section{The degree calculation}
+
+Lemma~\ref{paired} and the product \eqref{psi} give
+\(\deg a_j\le2jd\). From \eqref{envelope}--\eqref{C},
+\[
+ \deg R_0,\deg B_0\le2d,\qquad
+ \deg\Delta_s\le4Jd,\qquad
+ \deg K_s\le(6J-2)d,\qquad
+ \deg C_s\le6Jd.
+\]
+The largest entry-degree bound in \eqref{matrix} is obtained at
+\(i=m\), and is
+\[
+                    d_\beta=d+(4+6\ell)Jd.
+\]
+Consequently \(\deg H_s\le n(1+d_\beta)\). The square of each
+tail coefficient has degree at most \(4Jd\), which is bounded by
+\(2n(1+d_\beta)\). There are \(J+1\) factors in \eqref{F};
+this proves \eqref{degree}, including \(d=0\).
+
+\section{Application to the current undecidability transfers}
+
+The sources, rational coordinates, and finite algebras are exactly
+those of the common-numerator and finite-wrapper papers
+\cite{common,wrapper}. In particular every one of the nine integer
+predicates remains present. The final polynomial is obtained by
+applying \eqref{F} to their already specified multiplication algebra.
+No coefficient in a source DAG is changed. The integer instance is
+encoded in coefficients and is not a quantified rational coordinate.
+
+The finite-wrapper algebras have ranks \(2^{56},2^{65},2^{35}\)
+and \(\ell=54,63,33\), respectively. Their multiplication-entry
+degree bounds are those independently replayed in the source ledger.
+For clarity, let
+\[
+ \delta=15616+233856\cdot4+
+           (233952\cdot4+467712\cdot4^2)9^{59}.
+\]
+This is the retained universal-pair \((58,4)\) source bound. If
+\(d_0=d_g+d_\theta\) is the common-numerator operator bound, the
+finite-wrapper bound used here is
+\[
+                         d=d_0(2\delta+1)+\delta.
+\]
+The three values of \(d_0\) are
+\(2302058,4126214,3309916\). Substitution in \eqref{degree}
+gives the first three rows below.
+
+\begin{center}\small
+\begin{tabular}{lrrr}
+\toprule
+Construction & Rational variables & Old ceiling & New ceiling\\
+\midrule
+Finite wrapper, general &82&\(2^{650}\)&\(2^{532}\)\\
+Finite wrapper, specified &100&\(2^{714}\)&\(2^{578}\)\\
+Finite wrapper, ordinary \(abc\)&52&\(2^{500}\)&\(2^{425}\)\\
+Common numerator, general &83&\(2^{413}\)&\(2^{302}\)\\
+Common numerator, specified &101&\(2^{477}\)&\(2^{349}\)\\
+Common numerator, ordinary \(abc\)&53&\(2^{263}\)&\(2^{212}\)\\
+Earlier shared points, general &99&\(2^{526}\)&\(2^{384}\)\\
+Earlier shared points, specified &117&\(2^{591}\)&\(2^{430}\)\\
+Earlier shared points, ordinary \(abc\)&69&\(2^{377}\)&\(2^{278}\)\\
+\bottomrule
+\end{tabular}
+\end{center}
+All displayed ceilings are strict upper bounds, not exact polynomial
+degrees. For the common-numerator and earlier shared-point routes,
+the final degree bound is
+\[
+                     \max\{4\mathcal D,2\delta\},
+\]
+where \(\mathcal D\) is \eqref{degree}. The factor four accounts
+for the ternary nonnegative substitution and the final sum of squares.
+The \(53\)-variable encoder contribution alone is below \(2^{196}\),
+but its source contribution forces the stated ceiling \(2^{212}\).
+Omitting this source floor would give an invalid degree claim.
+
+All general and specified rows retain the arithmetic premises of
+their integer predicates. The general and ordinary-\(abc\) sufficient
+fixed parameters remain ineffective. The specified route retains
+its fixed \(L=143\) member. The new algebraic theorem introduces no
+additional arithmetic hypothesis. These transfers do not depend on
+the separate unresolved emended Jones source \(U_{\rm em}\).
+
+The current single-input constructions in 25, 27, and 11 variables
+already use stronger, specialized point and terminal-root encoders.
+Their v88 degree bounds remain
+\[
+ 48{,}318{,}382{,}080,\quad183{,}368{,}679{,}424,\quad
+ 3{,}261{,}569,
+\]
+with \(16{,}460{,}929\) and \(9{,}808{,}001\) for the two weak-\(abc\)
+11-variable variants. The generic theorem here does not improve
+those five specialized bounds, and no change to them is claimed.
+
+\section{Exact specification and verification scope}
+
+The directory \nolinkurl{undecidability/alternative_v93} contains
+\nolinkurl{paired_spectral.py}, implementing every step of
+\eqref{psi}--\eqref{F}, and
+\nolinkurl{check_paired_spectral.py}, an independent spectrum and
+degree-ledger checker. Its exact report is
+\nolinkurl{certificate.json}. The sources and their certificates
+are pinned by SHA-256. The checker replays multiplication-entry
+degree bounds from the full common-numerator and shared source DAGs
+and checks the finite-wrapper degree rescaling independently.
+
+Small exact examples compare the computed squared-difference
+polynomial with the independent unordered-pair product of known
+spectra. They include nonsplit quadratic fields, nonreal spectra,
+zero terminal roots, independent nilpotents in a nonmonogenic
+algebra, a nilpotent guard excluding every character, and a denominator
+vanishing on excluded nonreduced components. A symbolic family
+checks the diagonal quotient and even-power identity before
+specialization. Every wrong coefficient stratum is checked exactly.
+These finite tests support the coefficient construction; the
+universal equivalence is the proof above. The enormous final
+polynomials and multiplication matrices have not been expanded.
+
+\begin{thebibliography}{9}
+\bibitem{old}
+\(\Z\Q\) Diophantine Project,
+\emph{One rational coordinate for a finite family of algebraic witnesses},
+23 November 2026.
+\nolinkurl{undecidability/papers/joint_finite_algebra_encoder.tex}.
+\bibitem{common}
+\(\Z\Q\) Diophantine Project,
+\emph{A common numerator point for simultaneous integer certificates
+and rational undecidability in 83, 101, and 53 variables},
+23 November 2026.
+\nolinkurl{undecidability/papers/common_numerator_transfers.tex}.
+\bibitem{wrapper}
+\(\Z\Q\) Diophantine Project,
+\emph{Absorbing the mixed-integer wrapper into a finite algebra:
+Rational undecidability in 82, 100, and 52 variables},
+23 November 2026.
+\nolinkurl{undecidability/papers/finite_wrapper_transfer.tex}.
+\bibitem{v88}
+\(\Z\Q\) Diophantine Project,
+\emph{Product poles and lower degrees in the few-variable constructions},
+23 November 2026.
+\nolinkurl{papers/few_variables25/bb_product_degree_transfer_20261123_v88.tex}.
+\end{thebibliography}
+\end{document}

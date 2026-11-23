@@ -38,62 +38,60 @@ The [results JSON](data/results_20261123_v88.json) records all five new finite-a
 ## Fewest variables currently recorded for undecidability
 
 The [undecidability category](undecidability/README.md) counts existential
-rational unknowns in a decision problem; its integer instance is a coefficient
-parameter. The [common-numerator theorem](undecidability/papers/common_numerator_transfers.tex)
-shares one more elliptic point across all integer inputs. The
-[finite-wrapper theorem](undecidability/papers/finite_wrapper_transfer.tex)
-([PDF](undecidability/papers/finite_wrapper_transfer.pdf)) then absorbs the
-universal equation and one positivity coordinate into the finite algebra.
+rational unknowns; the integer instance is encoded in coefficients.
+The [v93 continuation](docs/results_20261123_v93.md) supplies corrected
+quartic sources, smaller complete tables, and lower general-degree bounds.
 
 | Degree restriction | Additional height hypothesis | Rational unknowns | Status |
 |:--|:--|--:|:--|
-| Unrestricted degree | No additional abc hypothesis | **82** | Proved transfer under retained source arithmetic premises; degree below `2^650` |
-| Unrestricted degree, specified source | No additional abc hypothesis | **100** | Proved transfer under retained source arithmetic premises; degree below `2^714` |
-| Unrestricted degree | Ordinary rational abc | **52** | Proved transfer under retained source arithmetic premises; degree below `2^500` |
-| Quartic checkpoint | No additional abc hypothesis | **1,074** | Conditional on emended-source universality `U_em`; 924 quadratic residuals |
-| Quartic checkpoint, specified source | No additional abc hypothesis | **1,254** | Conditional on `U_em`; 1,080 quadratic residuals |
-| Quartic checkpoint | Ordinary rational abc | **808** | Conditional on `U_em`; 696 quadratic residuals |
+| Unrestricted degree | No additional abc hypothesis | **82** | Proved transfer under retained arithmetic premises; degree below `2^532` |
+| Unrestricted degree, specified source | No additional abc hypothesis | **100** | Proved transfer under retained arithmetic premises; degree below `2^578` |
+| Unrestricted degree | Ordinary rational abc | **52** | Proved transfer under retained arithmetic premises; degree below `2^425` |
+| Quartic transfer | No additional abc hypothesis | **1,074** | Corrected Jones source; 924 quadratic residuals; retained arithmetic premises |
+| Quartic transfer, specified source | No additional abc hypothesis | **1,254** | Corrected Jones source; 1,080 quadratic residuals; retained arithmetic premises |
+| Quartic transfer | Ordinary rational abc | **786** | Corrected Jones source; 685 quadratic residuals; retained arithmetic premises |
 
-All rows retain the chosen integer predicate's stated arithmetic premises.
-“No additional abc” does not assert an independent proof of those premises.
-The general 82-variable and abc 52-variable routes have ineffective sufficient
-fixed parameters; stored small members are algebraic fixtures. The 100-variable
-route uses the specified `L=143` source. These are upper bounds, with no global
-minimum claimed. The **83 / 101 / 53** versions have smaller degree ceilings
-`2^413 / 2^477 / 2^263`; the [earlier 227/245/101 theorem](undecidability/papers/transfer_general_degree.tex)
-has the smaller common ceiling `2*eta(58,4)`. All remain registered as tradeoffs.
-
-The [global-contact theorem](undecidability/papers/global_gauge_quartic_checkpoint.tex)
-permits common scalar coordinates. The [scalar norm theorem](undecidability/papers/scalar_norm_compression.tex)
-then replaces twelve private fields by three common rational coefficients,
-and the [detector trace theorem](undecidability/papers/detector_trace_compression.tex)
-([PDF](undecidability/papers/detector_trace_compression.pdf)) replaces twelve
-more private fields by twelve traces and one common field. The independent
-[Pell reduction](undecidability/papers/pell_index_optimization.tex) removes
-nine further outer coordinates. The [complete final tables](undecidability/coefficients/jones1980_detector_pell)
-retain all twelve integer certificates.
+The [corrected-source proof](undecidability/source_repair_v93/corrected_jones_source.tex)
+([PDF](undecidability/source_repair_v93/corrected_jones_source.pdf)) replaces
+the questionable expanded source by a new system reduced to **Jones's 1980
+Theorem 2**, using the independently proved binomial certificate with
+`p=2*w*s^2*r^2*n^6`. Only two quadratic rows change, without additional
+coordinates. This removes the old emendation premise `U_em` from the new
+transfers. Jones's coding theorem remains an explicitly cited external
+result; its coding proof and every inherited integrality foundation have
+not been independently reproved here. The historical `n^2` tables and their
+`U_em` qualification remain unchanged.
 
 The [ceiling-binary power theorem](undecidability/papers/ceiling_power_quartic_checkpoint.tex)
-([PDF](undecidability/papers/ceiling_power_quartic_checkpoint.pdf)) then replaces
-the 168-coordinate fixed-power circuit by 139 coordinates, saving **29**
-variables and rows in all three systems. Its full reconstruction proves the
-base nonzero before any division. The [new complete tables](undecidability/coefficients/jones1980_ceiling_power)
-retain the predecessor source qualifications.
+reduces 168 power coordinates to 139, saving **29 variables** in every
+quartic route. The [fixed-contact theorem](undecidability/papers/abc_fixed_contact_offsets_v93.tex)
+then saves **22 more** in the abc route by separating all contact families
+with fixed dyadic offsets and sharing one contact square. The
+[complete corrected tables](undecidability/source_repair_v93/coefficients)
+retain all twelve integrality certificates. Earlier global contact,
+scalar-point, norm-polynomial, and detector-trace reductions remain part
+of the general systems.
 
-The [independent binomial proof](undecidability/papers/binomial_pell_certificate.tex)
-handles arbitrary moduli `M>=2` and `2<=b<=2M`. Its square-modulus version
-requires `n^6`, whereas the old printed source uses `n^2`. That correction
-has not been silently made in the headline tables. Together with the
-previous Greek-alpha/Latin-a and Pell-row discrepancies, it leaves
-universality of the precise old emended source unverified.
-The [literal later-system audit](undecidability/papers/mt_source_audit.tex)
-proves a reversible **62/50 to 57/45** reduction; it does not independently
-reprove the alleged universal **57/47** result.
+The [paired spectral encoder](undecidability/papers/paired_spectral_encoder.tex)
+([PDF](undecidability/papers/paired_spectral_encoder.pdf)) lowers the
+unrestricted-degree ceilings by removing diagonal spectral zeros, pairing
+opposite differences, and separating the eigenvalue and coefficient bounds.
+The **83 / 101 / 53** tradeoffs now have degree ceilings
+`2^302 / 2^349 / 2^212`. The earlier **99 / 117 / 69** tradeoffs improve to
+`2^384 / 2^430 / 2^278`. Variable counts and source arithmetic premises are
+unchanged. The [full coefficient recipe and degree certificates](undecidability/alternative_v93)
+cover nilpotents, repeated roots, and denominators at excluded characters.
 
-The [registry](undecidability/results.json), [detailed report](docs/results_20261123_v92.md)
-and [project research document](docs/research_directions.md#undecidability-in-bounded-numbers-of-rational-unknowns)
-separate proved transfers, retained arithmetic premises and source-audit
-checkpoints. A quartic bound near 263 has not been established.
+All displayed bounds retain the chosen integer predicate's stated arithmetic
+premises. “No additional abc” does not assert their independent proof.
+The general and abc sufficient parameters remain ineffective; stored small
+members are algebraic fixtures. The specified route uses its stated sufficient
+parameter. No global minimum is claimed. The alleged historical universal
+**57-positive-integer-variable / 47-quadratic** system has not been
+independently reproved, and a quartic bound near **263** is not established.
+The [registry](undecidability/results.json) and
+[project research document](docs/research_directions.md#undecidability-in-bounded-numbers-of-rational-unknowns)
+record all qualifications and historical tradeoffs.
 
 ## Coefficients and explicit files
 

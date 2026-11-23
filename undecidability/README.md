@@ -14,9 +14,9 @@ The [common-numerator proof](papers/common_numerator_transfers.tex) and
 
 | Source route | Additional height hypothesis | Rational unknowns | Degree strictly below |
 |:--|:--|--:|--:|
-| General two-detector source | No additional abc hypothesis | **82** | `2^650` |
-| Specified three-detector source, `L=143` | No additional abc hypothesis | **100** | `2^714` |
-| Ordinary-abc source | Ordinary rational abc | **52** | `2^500` |
+| General two-detector source | No additional abc hypothesis | **82** | `2^532` |
+| Specified three-detector source, `L=143` | No additional abc hypothesis | **100** | `2^578` |
+| Ordinary-abc source | Ordinary rational abc | **52** | `2^425` |
 
 These are proved transfer theorems **under the source's retained arithmetic
 premises**. Those premises have not all been independently proved here.
@@ -25,6 +25,38 @@ pole converse premise is not reintroduced. The general and abc sufficient
 fixed parameters remain ineffective. The stored general `L=143` and abc
 `B=3` sources are algebraic fixtures, not certified defining members.
 The 100-variable source uses its specified sufficient parameter.
+
+The new [paired spectral theorem](papers/paired_spectral_encoder.tex)
+([PDF](papers/paired_spectral_encoder.pdf)) gives these smaller degree
+ceilings using the same source algebras and the same variable counts.
+The complete coefficient recipe and independent degree ledger are in
+[alternative_v93](alternative_v93). Earlier degree bounds below identify
+the historical encoders; all historical specifications remain unchanged.
+
+## Current corrected quartic transfers
+
+| Integer interface | Rational unknowns | Quadratic residuals | Additional height hypothesis |
+|:--|--:|--:|:--|
+| General | **1074** | **924** | No additional abc |
+| Specified | **1254** | **1080** | No additional abc |
+| Ordinary abc | **786** | **685** | Ordinary rational abc |
+
+The [corrected-source theorem](source_repair_v93/corrected_jones_source.tex)
+([PDF](source_repair_v93/corrected_jones_source.pdf)) uses Jones's 1980
+Theorem 2 and the independently proved `n^6` binomial block. The new tables
+therefore do not assume `U_em`; they retain all arithmetic premises of the
+integer interfaces and cite the classical coding theorem externally.
+This is a new source, not a proof that the old expanded source was correct.
+The [complete tables](source_repair_v93/coefficients) include every quadratic
+row and every parameter. Squaring and summing gives degree exactly four.
+
+The [ceiling power circuit](papers/ceiling_power_quartic_checkpoint.tex)
+saves 29 coordinates in every route. The [fixed dyadic contact grid](papers/abc_fixed_contact_offsets_v93.tex)
+saves 22 further coordinates in the abc route. Its general tuple certificate
+uses `48k+8` coordinates and `41k+5` quadratic rows, including the k inputs.
+Completeness is proved for nonzero integer tuples, which includes all
+positive witnesses used in the source reduction. All twelve integer tests
+remain. See the [v93 report](../docs/results_20261123_v93.md).
 
 ### Method and intermediate improvements
 
@@ -73,7 +105,8 @@ supplier allows different target residues at the disjoint input contact
 families. Prime-power refinements preserve the formal depths, and the
 existing contact weights suppress bounded comparisons at fixed places.
 The new tuple counts are **`7k+18` / `9k+18` / `5k+6`**, giving
-**83 / 101 / 53**, with degree ceilings `2^413 / 2^477 / 2^263`.
+**83 / 101 / 53**, with the original degree ceilings `2^413 / 2^477 / 2^263`
+(now `2^302 / 2^349 / 2^212` using the paired spectral encoder).
 The [new complete circuits](common_numerator_sources) and
 [exact certificate](certificates/common_numerator_transfers.json) are supplied.
 
@@ -91,7 +124,7 @@ The [executable compiler and format guide](finite_wrapper_sources/README.md)
 turn any supplied sparse source polynomial into the whole coefficient DAG;
 the stored demonstration is explicitly nonuniversal.
 
-## Quartic checkpoints: source universality remains unresolved
+## Historical quartic checkpoints: old source universality unresolved
 
 The [direct quadratic compilation](papers/jones1980_quartic_transfer.tex)
 ([PDF](papers/jones1980_quartic_transfer.pdf)) proves an exact equivalence

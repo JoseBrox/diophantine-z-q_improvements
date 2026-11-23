@@ -1,0 +1,260 @@
+{
+  "status": "PASS",
+  "schema": "paired-spectral-encoder/v1",
+  "coefficient_recipe": "paired_spectral.py and ../papers/paired_spectral_encoder.tex",
+  "degree_formula": "2*n*(J+1)*(1+d*(1+(4+6*ell)*J)), J=ell*n*(n+1)/2",
+  "finite_examples": [
+    {
+      "algebra": "Q[t]/(t^2-(-2))",
+      "guard": "1",
+      "rational_character": false,
+      "J": 6,
+      "stratum": 5,
+      "checks": "unordered spectral pairs; all strata; exact discriminant or nilpotent determinant"
+    },
+    {
+      "algebra": "Q[t]/(t^2-(0))",
+      "guard": "1",
+      "rational_character": true,
+      "J": 6,
+      "stratum": 2,
+      "checks": "unordered spectral pairs; all strata; exact discriminant or nilpotent determinant"
+    },
+    {
+      "algebra": "Q[t]/(t^2-(1))",
+      "guard": "1",
+      "rational_character": true,
+      "J": 6,
+      "stratum": 5,
+      "checks": "unordered spectral pairs; all strata; exact discriminant or nilpotent determinant"
+    },
+    {
+      "algebra": "Q[t]/(t^2-(2))",
+      "guard": "1",
+      "rational_character": false,
+      "J": 6,
+      "stratum": 5,
+      "checks": "unordered spectral pairs; all strata; exact discriminant or nilpotent determinant"
+    },
+    {
+      "algebra": "Q[t]/(t^2-(4))",
+      "guard": "1",
+      "rational_character": true,
+      "J": 6,
+      "stratum": 5,
+      "checks": "unordered spectral pairs; all strata; exact discriminant or nilpotent determinant"
+    },
+    {
+      "algebra": "Q[e,f]/(e^2,f^2)",
+      "guard": "1",
+      "rational_character": true,
+      "nonmonogenic": true,
+      "nonreduced": true,
+      "J": 30,
+      "stratum": 4,
+      "checks": "unordered spectral pairs; all strata; exact fourth-power determinant"
+    },
+    {
+      "algebra": "Q[t]/(t^2)",
+      "guard": "t",
+      "rational_character": false,
+      "all_characters_excluded": true,
+      "J": 6,
+      "stratum": 0
+    },
+    {
+      "algebra": "Q[t,v]/(t^2-1,v^2-2(t+1))",
+      "guard": "t+1",
+      "permitted_rational_characters": 2,
+      "excluded_nonreduced_part": true,
+      "J": 30,
+      "stratum": 19,
+      "checks": "selected-character denominator and exact quadratic determinant"
+    },
+    {
+      "algebra": "Q[a][t]/(t^2-a)",
+      "symbolic": true,
+      "checks": "exact mandatory diagonal quotient; even-power substitution; coefficient degree bounds"
+    }
+  ],
+  "degree_ledgers": {
+    "finite_wrapper": {
+      "source": "undecidability/certificates/finite_wrapper_transfer.json",
+      "source_sha256": "d3f1da45f31e9f8880928425bee0544cbea06492c391d40af1e658bd01c5b9ab",
+      "routes": {
+        "general25": {
+          "variables": 82,
+          "algebra_rank": "72057594037927936",
+          "gamma_count": 54,
+          "gamma_matrix_degree_bound": "7739719737041879609180852041619940796616126720103752262925280683823338",
+          "paired_difference_degree": "140192015180440347915878439912996864",
+          "encoder_degree_bound": "7190438702619015249369831997888573073088717700529622964817930330923545970915036053270268251038119446438891382251685096257165303584202505447406281165718211788800",
+          "final_degree_bound": "7190438702619015249369831997888573073088717700529622964817930330923545970915036053270268251038119446438891382251685096257165303584202505447406281165718211788800",
+          "old_degree_strict_power2": 650,
+          "final_degree_strict_power2": 532,
+          "source_degree_floor_applied": false,
+          "ordinary_rational_abc_required": false,
+          "retained_source_arithmetic_premises": true
+        },
+        "explicit27": {
+          "variables": 100,
+          "algebra_rank": "36893488147419103232",
+          "gamma_count": 63,
+          "gamma_matrix_degree_bound": "13872689944637979769261452224818267304735745423641294993889210710397574",
+          "paired_difference_degree": "42875578232038246397547345413046496395264",
+          "encoder_degree_bound": "718825933193847323490152377533653544676518592860088259603098851677160675573430925192716048438258567532951874202142337294660314675254995158129549498671491483072014093039697920",
+          "final_degree_bound": "718825933193847323490152377533653544676518592860088259603098851677160675573430925192716048438258567532951874202142337294660314675254995158129549498671491483072014093039697920",
+          "old_degree_strict_power2": 714,
+          "final_degree_strict_power2": 578,
+          "source_degree_floor_applied": false,
+          "ordinary_rational_abc_required": false,
+          "retained_source_arithmetic_premises": true
+        },
+        "abc11": {
+          "variables": 52,
+          "algebra_rank": "34359738368",
+          "gamma_count": 33,
+          "gamma_matrix_degree_bound": "11128225482979941000387806676770607163867843496141514790770401708956636",
+          "paired_difference_degree": "19479761742404222189568",
+          "encoder_degree_bound": "58617111216869018953328426076413964092490760801191136783478484784281902507130048398028713796739697258242085486654564711291420672",
+          "final_degree_bound": "58617111216869018953328426076413964092490760801191136783478484784281902507130048398028713796739697258242085486654564711291420672",
+          "old_degree_strict_power2": 500,
+          "final_degree_strict_power2": 425,
+          "source_degree_floor_applied": false,
+          "ordinary_rational_abc_required": true,
+          "retained_source_arithmetic_premises": true
+        }
+      }
+    },
+    "common_numerator": {
+      "source": "undecidability/certificates/common_numerator_transfers.json",
+      "source_sha256": "811872527bac56283e8e2ed1e413089cd24fa2ca917fcb806a805573b4dcb8da",
+      "routes": {
+        "general25": {
+          "variables": 83,
+          "algebra_rank": "4503599627370496",
+          "gamma_count": 53,
+          "gamma_matrix_degree_bound": "2302058",
+          "paired_difference_degree": "537483854496769385579992284397568",
+          "encoder_degree_bound": "1928824657462911256862880837959259113425838767746376391435539463429640840809900080518660096",
+          "final_degree_bound": "7715298629851645027451523351837036453703355070985505565742157853718563363239600322074640384",
+          "old_degree_strict_power2": 413,
+          "final_degree_strict_power2": 302,
+          "source_degree_floor_applied": false,
+          "ordinary_rational_abc_required": false,
+          "retained_source_arithmetic_premises": true
+        },
+        "explicit27": {
+          "variables": 101,
+          "algebra_rank": "2305843009213693952",
+          "gamma_count": 62,
+          "gamma_matrix_degree_bound": "4126214",
+          "paired_difference_degree": "164824271477329568311553208760387239936",
+          "encoder_degree_bound": "194375558412939941002995923839037171470838464705298566964624437656955067179513136717611536203936968998912",
+          "final_degree_bound": "777502233651759764011983695356148685883353858821194267858497750627820268718052546870446144815747875995648",
+          "old_degree_strict_power2": 477,
+          "final_degree_strict_power2": 349,
+          "source_degree_floor_applied": false,
+          "ordinary_rational_abc_required": false,
+          "retained_source_arithmetic_premises": true
+        },
+        "abc11": {
+          "variables": 53,
+          "algebra_rank": "2147483648",
+          "gamma_count": 32,
+          "gamma_matrix_degree_bound": "3309916",
+          "paired_difference_degree": "73786976329197944832",
+          "encoder_degree_bound": "15170235855277816084250300063219258444992997853470331502592",
+          "final_degree_bound": "3362086470453239832602365249023837055668275467414816896671079680",
+          "old_degree_strict_power2": 263,
+          "final_degree_strict_power2": 212,
+          "source_degree_floor_applied": true,
+          "ordinary_rational_abc_required": true,
+          "retained_source_arithmetic_premises": true
+        }
+      }
+    },
+    "shared_integer": {
+      "source": "undecidability/certificates/shared_integer_transfers.json",
+      "source_sha256": "3d999ef71f0bced924c14f4b8400bbe43ec8b5a5a7a01b7453eedfc91b2732c2",
+      "routes": {
+        "general25": {
+          "variables": 99,
+          "algebra_rank": "295147905179352825856",
+          "gamma_count": 69,
+          "gamma_matrix_degree_bound": "2302122",
+          "paired_difference_degree": "3005373864645728509318707135566064516071424",
+          "encoder_degree_bound": "5130637469241713970625858118039328880164918261867602515292374449406107895057058888897403541921286813480018719539200",
+          "final_degree_bound": "20522549876966855882503432472157315520659673047470410061169497797624431580228235555589614167685147253920074878156800",
+          "old_degree_strict_power2": 526,
+          "final_degree_strict_power2": 384,
+          "source_degree_floor_applied": false,
+          "ordinary_rational_abc_required": false,
+          "retained_source_arithmetic_premises": true
+        },
+        "explicit27": {
+          "variables": 117,
+          "algebra_rank": "151115727451828646838272",
+          "gamma_count": 78,
+          "gamma_matrix_degree_bound": "4126278",
+          "paired_difference_degree": "890602560248518965780376338449855586420060585984",
+          "encoder_degree_bound": "466882959724434676397637313910946176508531230637284686916373266719071152623128782685232577099527760985198834484193822876442296320",
+          "final_degree_bound": "1867531838897738705590549255643784706034124922549138747665493066876284610492515130740930308398111043940795337936775291505769185280",
+          "old_degree_strict_power2": 591,
+          "final_degree_strict_power2": 430,
+          "source_degree_floor_applied": false,
+          "ordinary_rational_abc_required": false,
+          "retained_source_arithmetic_premises": true
+        },
+        "abc11": {
+          "variables": 69,
+          "algebra_rank": "140737488355328",
+          "gamma_count": 48,
+          "gamma_matrix_degree_bound": "3309980",
+          "paired_difference_degree": "475368975085589403260984229888",
+          "encoder_degree_bound": "61476577439859719427427487325021471496561732898339454015444312412316890482264244224",
+          "final_degree_bound": "245906309759438877709709949300085885986246931593357816061777249649267561929056976896",
+          "old_degree_strict_power2": 377,
+          "final_degree_strict_power2": 278,
+          "source_degree_floor_applied": false,
+          "ordinary_rational_abc_required": true,
+          "retained_source_arithmetic_premises": true
+        }
+      }
+    },
+    "single_input_scope": {
+      "source": "data/results_20261123_v88.json",
+      "source_sha256": "b896ae5355e867959ca95df5d5840cb5189baac5c80d995b89fbc4ccad898c64",
+      "route_names": [
+        "general25",
+        "explicit27",
+        "ordinary_abc11",
+        "weak_abc11",
+        "strong_weak_abc11"
+      ],
+      "variables": [
+        25,
+        27,
+        11,
+        11,
+        11
+      ],
+      "specialized_degree_bounds": [
+        48318382080,
+        183368679424,
+        3261569,
+        16460929,
+        9808001
+      ],
+      "generic_degree_formula_even_at_d1_ell1": [
+        "6338265090418942832547723214848",
+        "202824289464804639957543563558912",
+        "174518895104",
+        "174518895104",
+        "174518895104"
+      ],
+      "change": "None. The universal encoder does not replace their stronger specialized source encoders."
+    }
+  },
+  "scope": "Exact small-algebra identities, coefficient-stratum checks, pinned source-DAG degree replay and numerical ledgers. General equivalence is proved in the manuscript; source arithmetic is retained and no variable reduction is claimed."
+}

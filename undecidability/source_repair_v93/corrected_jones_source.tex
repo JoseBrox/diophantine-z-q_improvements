@@ -1,0 +1,343 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,booktabs,hyperref,xurl}
+\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\Z}{\mathbb Z}\newcommand{\Q}{\mathbb Q}
+\title{A corrected quartic source from Jones's binomial theorem}
+\author{\(\mathbb Z\mathbb Q\) Diophantine Project}
+\date{23 November 2026}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+The previous quartic tables were compiled from an emended display of
+Jones's 1980 Theorem~3. Their precise source universality was left as
+the unverified premise \(\mathcal U_{\rm em}\). Here we replace that
+source, rather than asserting that the old display was correct.
+Jones's preceding Theorem~2 is an exponential--binomial coding theorem.
+The independently proved binomial certificate supplies its polynomial
+replacement, with the required exponent \(n^6\), and gives an exact
+equivalence to that classical theorem. Only two quadratic residuals
+change in each of the existing tables; neither the coordinate count nor
+the number of residuals increases. The new source uses Jones's
+Theorem~2 as an explicitly identified external result. We do not claim
+to have independently reproved its coding argument, or the arithmetic
+premises of the project's rational integer predicates.
+\end{abstract}
+
+\section{The precise external theorem}
+
+Fix positive integers \(x,z,u,y\), and set
+\[
+ L=5^{60},\qquad B=b^5,\qquad C=1+xB+g.
+\]
+To avoid confusing the source's unrelated uses of a small letter, write
+\(\omega\) for an exponent and \(\nu\) for a binomial quotient.
+Jones's 1980 Theorem~2 \cite[p.~860]{Jones80} asserts that
+\(x\in W_{z,u,y}\) if and only if the following relations have positive
+integer witnesses
+\[
+ b,e,g,\ell,m,n,q,r,t,\omega,\alpha,\nu,\theta,\lambda:
+\]
+\begin{align}
+ e\ell g^2+\alpha&=(b-xy)q^2,&q&=b^L,\label{prefix1}\\
+ \lambda+q^4&=1+\lambda B,&\theta+2z&=B,\label{prefix2}\\
+ \ell&=u+t\theta,&e&=y+m\theta,\label{prefix3}\\
+ b&=2^\omega,&n&=q^{16},\label{exp}\\
+ r&=S(n^2-n)+T(n^2-1),&\nu n^2&=\binom{2r}{r},\label{binom}
+\end{align}
+where the two displayed polynomial abbreviations are
+\begin{align}
+ S&=g+eq^3+\ell q^5+
+       \bigl(2(e-z\lambda)C^4+\lambda B+\lambda Bq^4\bigr)q^4,
+       \label{S}\\
+ T&=q^3-b\ell+\ell+\theta\lambda q^3+(B-2)q^5.
+       \label{T}
+\end{align}
+The family \(W_{z,u,y}\) enumerates the computably enumerable sets.
+In particular, some fixed \(z,u,y\) give a nonrecursive set.
+
+The source being cited is \emph{Theorem~2}, not the faulty expanded
+Theorem~3. The 1980 note states its theorems without proofs; the
+paper \cite{Jones82} is the later full treatment. Our use of the
+classical coding theorem is an external input, not a claim of a new
+independent proof. A public transcription of the original four-page
+note was checked at \cite{Transcription}; it reproduces the coding
+prefix and its single central-binomial condition. The exact polynomial
+replacement below is proved from the project's separate, complete Pell
+certificate, independently of any source emendation.
+
+\section{A corrected polynomial replacement}
+
+For an integer \(a\ge2\), define Pell sequences by
+\[
+ X_j(a)+Y_j(a)\sqrt{a^2-1}
+       =(a+\sqrt{a^2-1})^j,\qquad j\ge0.
+\]
+The following local result has a complete elementary proof in
+\cite[Theorem~1]{Binomial}.
+
+\begin{lemma}[The independently proved local certificate]\label{local}
+Let \(r,M,b\in\Z\) with \(r\ge1\), \(M\ge2\), and
+\(2\le b\le2M\). Then
+\[
+ b\text{ is a positive power of }2,
+ \qquad M\mid\binom{2r}{r}
+\]
+is equivalent to the existence of positive integer witnesses
+\(w,s,a,p,k,\tau,h,c,d,\varphi,\gamma,\eta,i,F,j,o\)
+satisfying
+\begin{align}
+ a&=(wM+1)rsM,&p&=2ws^2r^2M^3,\label{ap}\\
+ k&=r+1+h(p-1),&\tau^2&=(p^2-1)k^2+1,\label{small}\\
+ 4(c-ksM)^2+\eta&=k^2,&c&=2r+1+\varphi,\label{close}\\
+ d&=bw+(a-2)c+(4a-5)\gamma,\label{linear}\\
+ d^2&=(a^2-1)c^2+1,\label{norm1}\\
+ F^2&=(a^2-1)i^2c^4+1,\label{norm2}\\
+ (d+oF)^2&=(G^2-1)(2r+1+jc)^2+1,\label{norm3}\\
+ G&=a+F^2(c+1-a).\label{bridge}
+\end{align}
+The alternative bridge \(G=a+F^2(d^2-a)\) is equivalent as
+well. Every positive solution forces
+\[
+ bw=2^{2r+1},\qquad c=Y_{2r+1}(a),\qquad d=X_{2r+1}(a),
+ \qquad k=Y_{r+1}(p).
+\]
+\end{lemma}
+
+\begin{theorem}[A corrected classical universal source]\label{corrected}
+Retain \eqref{prefix1}--\eqref{prefix3}, the equation \(n=q^{16}\),
+and the equation for \(r\) in \eqref{binom}, with \(S,T\) defined
+by \eqref{S}--\eqref{T}. Delete \(\omega,\nu\), the exponential
+equation \(b=2^\omega\), and the binomial equation in
+\eqref{binom}. Adjoin the polynomial equations in
+Lemma~\ref{local} with \(M=n^2\).
+
+The resulting system has 28 positive integer unknowns and is solvable
+if and only if \(x\in W_{z,u,y}\). Its Pell parameter is
+\begin{equation}\label{n6}
+                         p=2ws^2r^2n^6.
+\end{equation}
+This theorem uses Jones's Theorem~2 and Lemma~\ref{local}; it does
+not use \(\mathcal U_{\rm em}\), \(\mathsf U_{MT}\), or a
+literal transcription of either expanded historical source.
+\end{theorem}
+\begin{proof}
+First suppose that the relations of Jones's Theorem~2 hold. The equation
+\(b=2^\omega\) gives \(b\ge2\). Because \(q=b^L\) and
+\(n=q^{16}\), we have \(n\ge b\), whence
+\[
+ n^2\ge2,\qquad 2\le b\le2n^2.
+\]
+The positive binomial quotient \(\nu\) gives
+\(n^2\mid\binom{2r}{r}\). Lemma~\ref{local} now supplies all
+sixteen new witnesses, and every unchanged equation remains true.
+
+Conversely, suppose that the corrected polynomial system has positive
+integer witnesses. The positivity of \(\theta=b^5-2z\), with
+\(z\ge1\), implies \(b\ge2\). Again \(n\ge b\), so all
+hypotheses of Lemma~\ref{local} hold with \(M=n^2\). The lemma
+gives an integer \(\omega\ge1\) such that \(b=2^\omega\), and
+the quotient
+\[
+                        \nu=\binom{2r}{r}/n^2
+\]
+is a positive integer. These restore exactly the two deleted relations
+of Theorem~2. Therefore \(x\in W_{z,u,y}\).
+
+The original theorem has fourteen unknowns; we delete two and adjoin
+sixteen, giving \(14-2+16=28\). The symbols \(G,S,T,B,C,M\)
+in this statement are polynomial abbreviations, not additional
+unknowns. Equation \eqref{n6} is \eqref{ap} with \(M=n^2\).
+\end{proof}
+
+\begin{remark}[What this does and does not repair]
+The theorem establishes a new, corrected complete source. It does not
+assert that replacing \(n^2\) by \(n^6\) in the old system preserves
+that old system's solution set. In particular, it does not prove the
+repository's old premise \(\mathcal U_{\rm em}\). The historical
+tables retain their previous statements and their previous qualification.
+\end{remark}
+
+\section{Two residual changes in the complete quadratic tables}
+
+The current tables use an already stored coordinate \(n_2=n^2\).
+Their six-coordinate local block, after the earlier elimination of
+a temporary product, is
+\begin{align*}
+ Y&=sn_2,&L_0&=sr,&L_{0,2}&=L_0^2,&U&=wn_2,\\
+ p&=2UL_{0,2},&&2L_0a=(p+2L_{0,2})n_2.
+\end{align*}
+Here the literal register names in the coefficient tables are
+\(\mathtt{sr}=L_0\), \(\mathtt{sr2}=L_{0,2}\).
+
+\begin{proposition}[A division-free corrected block]\label{two}
+Reuse the same six coordinates \(Y,L,L_2,U,p,a\), but replace the
+two rows defining \(L_0\) and \(a\) by
+\[
+                         L=rY,\qquad a=(U+1)L.
+\]
+Retain the other four rows, interpreting the reused registers as
+\(\mathtt{sr}=L\), \(\mathtt{sr2}=L_2\). The resulting block is
+\begin{equation}\label{block}
+ Y=sn_2,\quad L=rY,\quad L_2=L^2,\quad U=wn_2,
+ \quad p=2UL_2,\quad a=(U+1)L.
+\end{equation}
+It implies exactly
+\[
+                  a=(wn^2+1)rsn^2,
+                  \qquad p=2ws^2r^2n^6.
+\]
+Every row has total degree at most two. No coordinate, row, integer
+predicate, reciprocal guard, or positivity witness is added.
+\end{proposition}
+\begin{proof}
+Direct substitution in \eqref{block} gives
+\(L=rsn^2\), \(L_2=r^2s^2n^4\), and both required formulas.
+Conversely, the defining values of the six coordinates satisfy every
+row. No division is made. An exact occurrence audit of each complete
+predecessor table verifies that the register \(\mathtt{sr}\)
+occurs only in its defining row, its square row, and the row defining
+\(a\). Its square occurs in its definition, the row for \(p\),
+and the old row for \(a\). Thus the changes above have no unaccounted
+effect elsewhere in the complete system.
+\end{proof}
+
+The existing twelve integrality predicates, the cofinite instance
+restriction \(x>2z\), and the reconstruction of every other integer
+coordinate are unchanged. In particular the new register \(L=rY\)
+is an integer when its predecessor inputs are integers. The signed-Pell
+and positivity reductions of \cite{Pell} explicitly cover both the
+\(n^2\) and \(n^6\) choices of \(p\). They therefore apply to
+the corrected block. The row
+\[
+                        \zeta^2=(a-1)(d-1)
+\]
+continues to choose the positive root, and the new bridge
+\eqref{bridge} is legitimate. All coefficient-sharing and rational
+rechart transformations outside this local block are preserved
+literally.
+
+The reciprocal guard has a noncircular reconstruction order. At the
+stage when the positive integer inputs \(s,n\) have been recovered,
+\(Y=sn^2\ge4\). The retained equation
+\(\eta=k^2-4(c-kY)^2>0\) first gives \(k\ne0\). If \(c=0\),
+it would instead give
+\(\eta=(1-4Y^2)k^2\le0\), a contradiction. Thus \(c\ne0\)
+without using the later Pell conclusion \(c>2r+1\). The row
+\(vE=c^2\) now forces \(v\ne0\), so the reciprocal integer
+predicate legitimately recovers \(i=1/v\in\Z\).
+The monic norm equations then give the required integrality of
+\(F\) and \(\tau\), before the signed-Pell argument reconstructs
+their positive representatives and the remaining positive source
+witnesses.
+
+\begin{corollary}[Corrected quartic transfers]\label{transfer}
+Use any of the project's current twelve-input integrality interfaces,
+with all of its stated arithmetic hypotheses. Apply
+Proposition~\ref{two} to the complete tables of v92. For the fixed
+coefficients \(z,u,y\) supplied by Jones's Theorem~2, the resulting
+family has undecidable rational solvability. The counts are
+\begin{center}
+\begin{tabular}{lrr}
+\toprule
+Interface & Rational unknowns & Quadratic residuals\\
+\midrule
+General &1103&953\\
+Specified &1283&1109\\
+Ordinary rational \(abc\)&837&725\\
+\bottomrule
+\end{tabular}
+\end{center}
+The instance \(x\) occurs in the coefficients. Squaring and summing
+the residuals produces a polynomial of degree exactly four.
+The source premise \(\mathcal U_{\rm em}\) is absent for these
+new tables; Jones's stated coding theorem is the external source.
+\end{corollary}
+\begin{proof}
+Rational soundness of the integer interfaces and the existing
+reconstruction prove that every rational zero gives a positive
+integer solution of the corrected source, after reconstructing the
+signed Pell witnesses as in \cite{Pell}. Theorem~\ref{corrected}
+therefore gives membership in the chosen nonrecursive set.
+Conversely, each member has a corrected positive source witness, and
+the retained completeness theorems for the shared integer predicates
+give a rational zero of the complete table.
+
+Deleting the finitely many instance values \(x\le2z\) does not
+make a nonrecursive set recursive: a decision procedure for its tail,
+together with a fixed finite lookup table, would decide the original
+set. The effective family on this cofinite tail is therefore
+undecidable. Proposition~\ref{two} changes no counts. A sum of
+rational squares vanishes precisely when every residual vanishes.
+At least one residual has a nonzero quadratic homogeneous part;
+the sum of the squares of such parts cannot vanish identically over
+the reals, so the total degree is exactly four.
+\end{proof}
+
+This corollary does not independently establish the project's integer
+predicates. In particular ``general'' does not mean that every retained
+elliptic, prime-pattern, pole, and height input has been independently
+proved here. The small stored source members remain fixtures where the
+original interface has an ineffective sufficiently large parameter.
+The ceiling-binary power circuit and the ordinary-\(abc\) fixed-offset
+contact chart compose with this two-row repair. Their changes do not
+touch the two replaced rows. The composed, source-corrected tables have
+respectively \(1074\), \(1254\), and \(786\) coordinates, and
+\(924\), \(1080\), and \(685\) residuals. The intermediate
+ordinary-\(abc\) ceiling table has \(808\) coordinates and \(696\)
+residuals. Their independent arithmetic-equivalence proofs remain
+separate inputs; the source repair itself saves no coordinates.
+
+\section{Reproducibility and provenance}
+
+Run from the repository root:
+\begin{verbatim}
+python undecidability/source_repair_v93/build_corrected_source.py \
+  --include-compositions
+python undecidability/source_repair_v93/verify_corrected_source.py
+\end{verbatim}
+The builder checks the exact old local rows and the occurrences of
+the reused register before modifying the complete sparse coefficient
+table. The independent verifier checks the two new polynomial formulas,
+compares every unchanged residual by variable name, verifies full
+coordinate support and degree, and checks deterministic reproduction
+and hashes of all seven complete tables. These are exact algebraic
+checks, not a machine proof of Jones's coding theorem or of the
+external rational integer predicates.
+
+The mathematical source of the coding prefix is Jones. The local
+Pell and binomial proofs and the coordinate-preserving replacement are
+project work from v91--v93. The supplied tables preserve the attribution
+of every earlier rational integer interface.
+
+\begin{thebibliography}{9}
+\bibitem{Jones80} J. P. Jones,
+\emph{Undecidable Diophantine equations},
+Bulletin of the American Mathematical Society (New Series)
+\textbf{3}, no.~2 (1980), 859--862, Theorem~2, p.~860.
+\url{https://doi.org/10.1090/S0273-0979-1980-14832-6}.
+\bibitem{Jones82} J. P. Jones,
+\emph{Universal diophantine equation}, Journal of Symbolic Logic
+\textbf{47} (1982), 549--571.
+\url{https://doi.org/10.2307/2273588}.
+\bibitem{Transcription} Public transcription of the original Jones
+1980 note, inspected 23 November 2026:
+\url{https://doczz.net/doc/7703447/undecidable-diophantine-equations}.
+Used to inspect the primary source's Theorem~2, not as an independent
+mathematical authority. The journal citation above identifies the theorem.
+\bibitem{Binomial} \(\mathbb Z\mathbb Q\) Diophantine Project,
+\emph{An exact Pell certificate for a power of two and central-binomial
+divisibility}, 23 November 2026.
+\nolinkurl{undecidability/papers/binomial_pell_certificate.tex}.
+\bibitem{Pell} \(\mathbb Z\mathbb Q\) Diophantine Project,
+\emph{An exact three-Pell index certificate and nine fewer quadratic
+coordinates}, 23 November 2026.
+\nolinkurl{undecidability/papers/pell_index_optimization.tex}.
+\end{thebibliography}
+\end{document}
