@@ -1,0 +1,245 @@
+\documentclass[10pt]{article}
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,booktabs,hyperref,xurl,microtype}
+\setlength{\emergencystretch}{3em}
+\hypersetup{hidelinks}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\title{One half-trace square removes an integer block:\\an ordinary-abc quartic in 605 variables}
+\author{\(\Z\Q\) Diophantine Project}
+\date{24 November 2026}
+\begin{document}\maketitle
+
+\begin{abstract}
+The source's integral prefix forces its first Pell parameter to be
+divisible by three, before any use of integrality of the coordinate
+\(c\). The signed shifted-trace Pell theorem then recovers \(c\)
+from one rational half-trace square. We replace the entire ordinary-abc
+integer certificate for \(c\) by that square, retaining its still-used
+\(c^2\) register as an ordinary source coordinate. The complete table
+decreases from 645 variables and 564 quadratic residuals to 605 variables
+and 528 residuals, with twelve remaining integer predicates. Soundness
+and completeness hold on the source-instance projection under the same
+retained arithmetic-interface, ordinary rational abc and coding premises.
+\end{abstract}
+
+\section{The exact result}
+
+The predecessor is the complete directly scaled common-point table
+of~\cite{scaled}. All its arithmetic-interface premises, ordinary
+rational abc, and the ineffective sufficiently large odd defining
+coefficient remain in force. The externally cited Jones coding theorem
+also remains required. The new arithmetic input is the elementary
+integrality theorem proved in~\cite{integrality}, not a further
+conjectural premise.
+
+\begin{theorem}\label{thm:main}
+The complete table supplied here has 605 rational unknowns and 528
+quadratic residuals. Its sum of squared residuals has degree exactly
+four. Under the same retained premises as the 645/564 predecessor,
+its source-instance projection agrees with that predecessor's projection.
+It has twelve ordinary-abc integer predicates; integrality of the
+source outputs \(c,d\) follows from the retained source equations
+and one added half-trace square.
+\end{theorem}
+
+The twelve certified inputs are
+\[
+ b,g,t,m,w,s,h,\gamma,j,i_{\rm half},
+       \mathrm{power\_delta},\mathrm{power\_alpha}.
+\]
+The coordinate \(c\) remains a rational unknown of the polynomial
+system. Its separate elliptic integer predicate is removed. No
+universality assumption for the historically emended source is added,
+and no unconditional undecidability assertion over \(\Q\) is made.
+
+\section{Why the half-trace square certifies integrality}
+
+We record the precise theorem being applied.
+
+\begin{lemma}[Signed shifted-trace Pell integrality]\label{lem:integer}
+Suppose \(a\in3\Z\), \(c,d,\zeta\in\Q\), and
+\begin{equation}\label{eq:integrality}
+ d^2-(a^2-1)c^2=1,\qquad T=d-(a-2)c\in\Z,
+ \qquad \zeta^2=2\bigl(ad+(a^2-1)c+1\bigr).
+\end{equation}
+Then \(c,d\in\Z\). The conclusion includes negative \(a\)
+and \(a=0\).
+\end{lemma}
+\begin{proof}
+This is the one-square theorem of~\cite{integrality}. Its denominator
+argument is short enough to make the application explicit. Put
+\(D=4a-5\), \(\kappa=a-2\), and \(L_a=2a^2-2a-1\).
+The first two equations give
+\[
+ Dc^2-2\kappa Tc-(T^2-1)=0,\qquad
+ (Dc-\kappa T)^2=(a^2-1)T^2-D.
+\]
+The latter rational square root is integral, so \(Dc\in\Z\).
+Thus the reduced denominator \(N\) of \(c\) divides \(|D|\).
+The half-trace relation becomes
+\[
+             \zeta^2=2L_ac+2aT+2,
+             \qquad 8L_a+3=D(4a+1).
+\]
+Since \(3\mid a\), the odd integer \(D\) is prime to three,
+and \(\gcd(2L_a,N)=1\). The right side has reduced denominator
+exactly \(N\). Therefore \(N\) is a square.
+
+The exact signed rational Pell classification in~\cite{integrality}
+now excludes every nonintegral orbit. For \(a\ge3\) divisible by
+three, its nonintegral orbit has denominator \(4a-5\equiv3\pmod4\).
+For \(a=-A\le-3\) with \(3\mid A\), its sole nonintegral
+orbit has denominator \(4A+5\equiv2\pmod3\); the possible
+additional seed exists only if \(4A+5\) is a square, which this
+congruence excludes. At \(a=0\), the only nonintegral possibilities
+are \(c=\pm3/5,\pm4/5\), with denominator five. None of these
+denominators is a square. Consequently \(c\in\Z\), and
+\(d=(a-2)c+T\in\Z\).
+\end{proof}
+
+The preliminary signed-source argument~\cite[Section 2]{signed}
+uses the certified inputs other than \(c\) to recover integral
+\(q,\lambda,S,T_0,r,n,M,a\). In particular the auxiliary power
+block first makes \(q\) integral and gives
+\(q\equiv\pm1\pmod{b^5-1}\), hence
+\(\lambda=(q^4-1)/(b^5-1)\in\Z\). None of this uses the
+first-Pell index classification or assumes \(c\in\Z\).
+The retained prefix equations then give
+\begin{equation}\label{eq:prefix}
+ n=q^{16},\quad M=q^{32}=n^2,\quad
+ r=S(M-n)+T_0(M-1),\quad a=(wM+1)rsM.
+\end{equation}
+If \(3\mid q\), then \(3\mid M\). Otherwise
+\(n\equiv M\equiv1\pmod3\), so \(3\mid r\). In both
+cases \(3\mid a\). This precedes the later power-of-two recovery;
+it does not assume the eventual identity for \(q\).
+
+The retained first linear row is
+\[
+                d=(a-2)c+bw+(4a-5)\gamma.
+\]
+Thus its shifted trace is integral, using only the twelve retained
+integer inputs and the reconstructed \(a\). All hypotheses of
+Lemma~\ref{lem:integer} are now available without circularity.
+
+\section{The literal quadratic replacement}
+
+The predecessor already stores \(A_c=ac\). Its \(c\)-certificate
+also stores \(C_2=c^2\), used outside that certificate in the source
+rows
+\[
+             d^2-A_c^2+C_2-1=0,\qquad
+             E-(2i_{\rm half}+1)C_2=0.
+\]
+Retain \(C_2\), rename it \texttt{source\_c\_square}, and retain
+its defining row \(c^2-C_2=0\), now named as an ordinary source
+definition. No new square register is introduced.
+
+Delete every other row of the \(c\)-integer block, including its
+private scaled-point equations. Add one rational coordinate \(\zeta\)
+and the single quadratic residual
+\begin{equation}\label{eq:new}
+                     \zeta^2-2ad-2aA_c+2c-2=0.
+\end{equation}
+The retained equation \(A_c=ac\) makes this exactly the half-trace
+square of Lemma~\ref{lem:integer}. Every other source row and every
+remaining integer-certificate row is unchanged after the one coordinate
+renaming and reindexing.
+
+The full occurrence audit finds exactly 41 deleted rational coordinates,
+all private to the discarded rows. The shared reference chart, common
+physical point, reciprocal product, contact-square and contact-grid
+coordinates remain. The twelve surviving contact offsets keep their
+original positions in the same dyadic grid; the omitted contact list
+is simply absent. No offset is relabeled and no simultaneous arithmetic
+condition is strengthened.
+
+\section{Soundness and completeness on the instance projection}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+For soundness, consider any rational zero of the new table. The
+shared rows and the twelve complete remaining integer blocks are
+unchanged. The blockwise polynomial reconstructions of~\cite{scaled}
+therefore recover each of their original integer certificates. Those
+reconstructions require no row from the discarded \(c\) block;
+their shared fields are all retained. Thus the twelve listed inputs
+are integers.
+
+The preliminary source argument gives the integral prefix
+\eqref{eq:prefix}, so \(3\mid a\). The first linear row gives
+the integral shifted trace. The retained first norm, \(A_c=ac\),
+and \(C_2=c^2\) give its Pell norm. Equation~\eqref{eq:new}
+gives its half-trace square. Lemma~\ref{lem:integer} now proves
+\(c,d\in\Z\), including every signed and zero-parameter case.
+All integer inputs required by the old source soundness theorem have
+therefore been recovered. Apply that theorem to obtain the same
+source-instance conclusion. This does not require recreating old
+\(c\)-certificate auxiliaries while fixing arbitrary surviving
+elliptic witnesses.
+
+For completeness, choose the source's canonical positive witnesses.
+They have \(B=2r+1\), \(c=Y_B(a)\), \(d=X_B(a)\), and
+\[
+ ad+(a^2-1)c=X_{2r+2}(a)=2X_{r+1}(a)^2-1.
+\]
+Set \(\zeta=2X_{r+1}(a)\). It satisfies~\eqref{eq:new}.
+The old common-point completeness theorem supplies all thirteen
+integer certificates for these positive witnesses; forget the private
+\(c\) block and retain its \(c^2\) register as the source square.
+Every new row holds. Equivalently, choose the same simultaneous
+construction for the twelve remaining inputs. This proves the
+claimed source-instance equivalence.
+
+Exactly 37 old residuals and 41 now-unused coordinates are deleted.
+One residual and one coordinate are added, so the complete counts are
+\[
+                    645-41+1=605,\qquad
+                    564-37+1=528.
+\]
+Every residual has degree at most two in the unknowns, with integer
+polynomial coefficients in the retained parameters. The unchanged
+\(b^2\)-register residual has nonzero quadratic part, and sums of
+squares of rational leading quadratic forms cannot cancel. The sum
+of squares therefore has degree exactly four.
+\end{proof}
+
+\section{Complete-table verification}
+
+The directory supplies the complete sparse table, deterministic compiler,
+independent checker, metadata certificate and exact verification receipt.
+Run from the repository root:
+\begin{center}\small
+\texttt{python -B}\enspace\nolinkurl{undecidability/abc_pell_integrality_v108/build_abc_integrality.py}\\
+\texttt{python -B}\enspace\nolinkurl{undecidability/abc_pell_integrality_v108/verify_abc_integrality.py}.
+\end{center}
+The checker imports no compiler. It compares all 526 unchanged rows
+under the coordinate renaming, verifies the renamed square row and new
+half-trace, audits every occurrence of all 41 removed coordinates,
+and checks the complete shared and contact interfaces. It independently
+interprets the ten source-prefix rows needed for~\eqref{eq:prefix},
+checks all 27 residue cases modulo three, verifies the three symbolic
+denominator identities, and checks 32 exact canonical half-trace
+fixtures. It also checks coefficient domains, support, degree, counts
+and hashes. The quantified signed integrality theorem is proved
+in~\cite{integrality}; the finite fixtures do not replace that proof
+or certify the retained elliptic arithmetic premises.
+
+\small
+\begin{thebibliography}{9}\raggedright
+\setlength{\itemsep}{2pt}
+\bibitem{scaled} \(\Z\Q\) Diophantine Project,
+\emph{Directly scaled private points: a 645-variable ordinary-abc quartic
+transfer}, 24 November 2026,
+\nolinkurl{undecidability/abc_scaled_point_v106/scaled_private_points.tex};
+complete predecessor
+\nolinkurl{undecidability/abc_scaled_point_v106/scaled_point_abc_quadrics.json}.
+\bibitem{integrality} Project, \emph{A half-trace square replaces the
+c-integrality predicate}, 24 November 2026,
+\nolinkurl{undecidability/pell_integrality_replacement_v106/pell_integrality_replacement.tex}.
+\bibitem{signed} Project, \emph{Both first-Pell signs have the same
+coding projection}, 23 November 2026,
+\nolinkurl{undecidability/pell_signed_branch_v101/signed_branch_projection.tex}.
+\end{thebibliography}
+\end{document}
