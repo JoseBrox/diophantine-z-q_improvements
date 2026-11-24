@@ -1,0 +1,391 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,booktabs,hyperref,xurl,microtype}
+\setlength{\emergencystretch}{3em}
+\hypersetup{hidelinks}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\newcommand{\Tr}{\operatorname{Tr}}\newcommand{\Nm}{\operatorname{N}}
+\title{A common numerator compresses reciprocal products\\
+in the ordinary-abc quartic transfer}
+\author{\(\Z\Q\) Diophantine Project}
+\date{24 November 2026}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We share the physical numerator point in a finite family of ordinary-abc
+integer certificates. The input-scaled point coordinates remain private.
+Instead we compress their two reciprocal-product fields: their common
+part is a quadratic polynomial in the input, and a difference of squares
+expresses their product using one private field. Six shared rational
+coordinates replace two private coordinates per input. All residuals stay
+quadratic. For the thirteen-predicate corrected Jones source this reduces
+695 variables to 675, with 594 quadratic residuals. The retained arithmetic
+premises, ordinary rational abc, and ineffective defining shift are unchanged.
+Every rational zero has an explicit polynomial lift to the predecessor;
+completeness uses a new simultaneous choice of elliptic witnesses.
+\end{abstract}
+
+\section{Scope and the tuple theorem}
+
+We use the 56-coordinate ordinary-abc interface of~\cite{paired}, with
+the shared reference and fixed dyadic contact translations
+of~\cite{reference,offsets}. This interface retains the elliptic group,
+formal comparison, trace-index, finite prime-pattern, local preparation,
+real recurrence, and pole-realization assertions stated in those sources.
+Ordinary rational abc is additional. The present argument proves no new
+arithmetic foundation. Its pole equations are unchanged; no general-route
+pole replacement is silently imported into this different interface.
+
+The fixed positive odd coefficient $B$ must be a sufficiently large
+defining member of that interface. The threshold remains ineffective.
+The new system is a restriction followed by algebraic compression, so its
+soundness requires no increase of that threshold.
+
+\begin{theorem}\label{thm:tuple}
+Under the retained premises, for $k\ge1$ the ordinary-abc interface has
+a simultaneous quadratic presentation with
+\[
+                  46k+14\quad\text{rational coordinates},\qquad
+                  41k+9\quad\text{quadratic residuals},
+\]
+including the $k$ distinguished inputs. Every rational solution has
+integral inputs. Every tuple in $(\Z\setminus\{0\})^k$ has a rational
+solution. Its sum of squared residuals has degree exactly four.
+For $k>3$ this improves the preceding $48k+8$ coordinate count.
+\end{theorem}
+
+The integer tuple theorem is enough for the corrected Jones reduction:
+the signed-branch theorem~\cite{signed} reconstructs positive witnesses
+for all thirteen certified inputs. The source instance is a coefficient,
+not an additional unknown.
+
+\begin{corollary}\label{cor:675}
+The complete table supplied with this paper has 675 rational unknowns
+and 594 quadratic residuals. Its instance projection agrees with the
+695-variable ordinary-abc predecessor. Its undecidability interpretation
+retains that predecessor's arithmetic premises, ordinary rational abc,
+and the externally cited Jones coding theorem. It adds no universality
+premise for the historically emended source and asserts no unconditional
+undecidability result over $\Q$.
+\end{corollary}
+
+\section{The common physical numerator}
+
+Set
+\[
+ K=\Q(\rho),\quad \rho^2=2,\quad \Delta=11-6\rho,\quad
+ E:y^2=x^3-\Delta x,\quad R_0=(1+\rho,2\rho).
+\]
+Write $f(Q)=1/x(Q)$ and $S_Q=y(Q)/x(Q)$ on the allowed chart.
+The fixed-difference witnesses for inputs $n_i\ne0$ use
+\[
+ A_i=[n_i]R_0,\qquad H=[h]R_0,\qquad
+ U_i=[n_i]H,\quad V_i=U_i-A_i.
+\]
+The contact center depends only on $n_i$ and $A_i$:
+\[
+ T_i=n_i^2\Tr x(A_i),\quad
+ M_i=B+2(n_i^8+T_i^2),\quad a_i=M_i^4+16.
+\]
+For $2^e\ge k$, the retained contact substitution is
+$z_i=z+i/2^e$. The sixteen positions of block $i$ are
+\[
+ \mathcal D_i=\{\pm(a_i+r)-i/2^e:
+                    r\in\{-8,-7,-4,-1,1,4,7,8\}\}.
+\]
+The existing two-adic trace lemma gives $a_i\in\Z_2$, and distinct
+offsets have distinct cosets modulo $\Z_2$. Thus the $\mathcal D_i$
+are pairwise disjoint, uniformly in the integer tuple. They are fixed
+before the prime selection or the numerator choice.
+
+\begin{lemma}\label{lem:common}
+The simultaneous completeness proof may choose a single physical
+numerator
+\[
+                  U=[j]R_0,\qquad V_i=U-A_i
+\]
+for all blocks, retaining their fixed differences, centers, offsets,
+and one common reference $H$.
+\end{lemma}
+\begin{proof}
+We specify the extra order condition, its half-generator issue, and
+the local approximation, rather than appealing only to density.
+At the contact prime $p_d$ put
+\[
+ u_d=\Nm(\pi_d-1)/4,\qquad v_d=\Nm(\pi_d+1)/4.
+\]
+The retained Gaussian residues and all-sign order assertion give
+\[
+ v_2(u_d)=4,\quad v_2(v_d)=0,\quad
+ \gcd(u_d,v_e)=1\ (d,e),\quad
+ \gcd(v_d,v_e)=1\ (d\ne e).
+\]
+The last assertion is needed because the opposite orders will receive
+different residues $n_i$. It is the same-sign part of the retained
+finite prime supplier, recorded explicitly in~\cite[Section 2]{primes}
+and used in the common-numerator CRT of~\cite{common}. It is not inferred
+from coprimality of the selected primes alone.
+
+These divided orders annihilate $R_0$, not only $P=2R_0$.
+Indeed the halving lemma of~\cite[Section 5]{half}, already used in
+the ordinary-abc source~\cite[Section 7]{secants}, applies to the prescribed
+Gaussian residue $\pi\equiv9\pmod {16}$. It makes the three abscissa
+differences $1+\rho$, $2/(1+\rho)$ and $4$ squares in each reduction.
+Thus $R_0\in2E(\mathbb F_p)$ there. Full rational two-torsion then
+makes $\#E(\mathbb F_p)/4$ an annihilator of $R_0$. No restriction on
+the parity of $n_i$ is introduced.
+
+Before selecting primes, choose allowed reference and numerator
+neighborhoods in the cyclic orbit. The finitely many functions attached
+to $H,H-R_0,U,U-A_i$ exclude only finitely many orbit points; choose
+initial indices divisible by 64 outside that set. Shrink their finitely
+many real and fixed-place neighborhoods so all the required chart
+functions are bounded. Let $M$ preserve those neighborhoods and include
+the order of the compact real component group. Take $64\mid M$.
+Include all input supports, contact denominators and differences,
+bad chart primes, and preparation data in finite avoidance.
+
+The supplier makes the odd parts of all $u_d,v_d$ prime to $M$.
+At seven this follows from its fixed residue $1+3\mathrm i$, whose
+adjacent norms are $2$ and $6$ modulo seven; every other fixed odd
+prime is handled by its permitted avoidance modulus. Choose the prime
+values in the short interval used in~\cite{common}, so that
+\[
+                 \gcd\bigl(p_d,\prod_e u_e v_e\bigr)=1.
+\]
+For clarity, with contact values $p_d=u-dD_0^2w^2$, a sufficiently
+large slope gives $3u/4<p_d<5u/4$. Hasse's bound makes every relevant
+even reduction order less than $3u/2$. If $p_d$ divided another such
+order, that even order would be at least $2p_d>3u/2$, a contradiction.
+This permits arbitrary additional prime-power precision.
+
+Choose the reference index $h$ by its original congruences and real
+return. For each $d\in\mathcal D_i$ impose
+\[
+ j\equiv j_0\pmod M,\qquad j\equiv0\pmod{u_d},\qquad
+ j\equiv n_i\pmod{v_d},\qquad
+ j\equiv n_i h\pmod{p_d^{L_d}}.
+\]
+The opposite orders are pairwise coprime and prime to every primary
+order; primary residues are all zero. Their common two-part is
+compatible with $64\mid j_0$. The selected prime powers are coprime
+to every other modulus. Hence the generalized CRT gives a progression
+for $j$. Its step preserves the required real component, and the
+retained recurrence chooses $[j]R_0$ in the prescribed real neighborhood.
+Finite-place neighborhoods remain preserved by $M$.
+
+At the primary slot $U$ reduces to the identity. At the opposite
+slot $U-A_i$ reduces to the identity. Moreover $j-n_i h$ is divisible
+by both associated annihilators and by $p_d^{L_d}$. As $L_d$ increases,
+the formal group makes $U-[n_i]H$ tend to the identity at both slots.
+Consequently $(U,U-A_i)$ approximates
+$([n_i]H,[n_i](H-R_0))$ to any required finite precision. The existing
+source inequalities for
+\[
+ C_i=n_i S_U-S_H,\quad I_i=n_i S_{U-A_i}-S_{H-R_0},\quad
+ J_i=n_i^2f(H)f(U),\quad K_i'=n_i^2f(H-R_0)f(U-A_i)
+\]
+are open conditions at these allowed local points. Choose each $L_d$
+large enough to retain the error valuations at least three, reciprocal
+product valuations at least four, and every strict detector inequality.
+Zero errors cause no problem: the requirement that their valuation
+exceed a fixed bound is still open. At the other slot the points reduce
+to the same $\pm R_0,\pm A_i$ as before; their required unit conditions
+are preserved.
+
+At fixed places and real infinity the raw tests stay bounded on the
+chosen neighborhoods. The same contact limits hold simultaneously:
+$c_i\sim a_i/z_i^2$, $W_i-1=O(c_i)$ and $D_i=O(c_i^2)$.
+For the actual retained normalizer these imply
+\[
+ \alpha_i=c_i^{-1}+O(c_i^2),\qquad
+ \tau_i=1+O(c_i),\qquad b_i=7c_i\tau_i^2\sim7c_i.
+\]
+Thus sufficiently large real $z$ gives $0<b_i<1$. At two, the
+unchanged trace lemma gives $a_i\in\Q_2^{\times2}$. A sufficiently
+deep denominator makes $c_i/(a_i/z_i^2)$ a square unit and $c_i$
+a square of arbitrarily large positive even valuation. The unit
+$\tau_i$ then gives exactly $b_i\in7\Q_2^{\times2}$, with the
+same required depth as before. At seven, sufficiently positive
+$v_7(c_i)$ and bounded raw tests give $v_7(\tau_i)=0$, hence
+$v_7(b_i)=1+v_7(c_i)>0$. No special equality of the raw tests is
+needed at either place.
+
+Outside the fixed preparation set the contact factorization is
+unchanged. Its only positive odd valuations of $u_i=1/c_i$ occur
+at the selected contacts, already checked. Negative odd valuations
+of $u_i$ at other primes give positive odd valuations of $b_i$ by
+the original uniform normalizer lemma, which explicitly allows
+arbitrary actual point denominators. At even valuations the square
+$\tau_i^2$ preserves parity. This proves the square reduced
+denominator of every $b_i$, including any new denominators of the
+shared numerator point. The private pole witnesses are supplied
+independently by the unchanged interface. All differences
+$U-(U-A_i)=A_i$, and hence all height centers and contact lists,
+stayed fixed throughout.
+\end{proof}
+
+\section{Algebraic compression with quadratic equations}
+
+The physical shared numerator does not make the source's scaled
+coordinates $X_i S_U$ and $X_i^2 f(U)$ identical. We leave those
+coordinates and the full translated-secant chart unchanged.
+The useful shared quantity is
+\[
+                  J=f(H)f(U)\in K,
+             \qquad J_i=X_i^2J.
+\]
+Let $v=v_H$ be the existing common reference coordinate, and introduce
+three common field coordinates $J,E,\mathcal K$, with
+\begin{equation}\label{eq:common-coefficients}
+                         E=vJ,\qquad \mathcal K=J^2.
+\end{equation}
+They cost six rational coordinates and four quadratic component rows.
+
+For block $i$, let $\mathcal U_i,\mathcal V_i$ be the old hyperbolic
+reciprocal-product coordinates. Their physical interpretation in the
+Laurent-packed source is
+\[
+ \mathcal U_i=J_i+c_i\overline{K_i'},\qquad
+ \mathcal V_i=J_i-c_i\overline{K_i'}.
+\]
+Replace these two fields by one private field $L_i$ and use the
+polynomial reconstruction
+\begin{equation}\label{eq:lift}
+        \mathcal U_i=X_i^2J+L_i,\qquad
+        \mathcal V_i=X_i^2J-L_i.
+\end{equation}
+The already stored coordinates $b_{2,i}=X_i^2$ and $b_{4,i}=X_i^4$
+are retained. Therefore the first reciprocal-product row becomes
+$u_HF_i=b_{2,i}E$, where $u_H$ is affine in the reference coordinates
+and $F_i$ is the unchanged scaled reciprocal abscissa. The second
+product row depends only on the difference $2L_i$. Finally,
+\begin{equation}\label{eq:difference-squares}
+           \mathcal U_i\mathcal V_i=b_{4,i}\mathcal K-L_i^2.
+\end{equation}
+Each new expression is quadratic in retained or new coordinates.
+No input inverse, common contact gauge, or new denominator guard is used.
+
+These are all occurrences of $\mathcal U_i,\mathcal V_i$ in the complete
+source: the two components of the first product, the two components
+of the second product, and the two detector product components.
+The supplied checker audits that complete occurrence list, including
+the reciprocal-labelled $i$ input and both added fixed-power inputs.
+
+\begin{lemma}\label{lem:lift}
+Every rational zero of the compressed system lifts polynomially to a
+zero of the entire predecessor. Conversely, every predecessor zero
+satisfying $J_i=X_i^2J$ for a common field $J$ has an extension to the
+compressed system. These claims include zero input values and all
+allowed tangent, zero-ordinate and torsion-difference fibers.
+\end{lemma}
+\begin{proof}
+Use~\eqref{eq:lift} and~\eqref{eq:common-coefficients}. The first and
+second product equations are recovered by substitution.
+The equality $b_{2,i}^2=b_{4,i}$, still imposed in every block, recovers
+\eqref{eq:difference-squares}. Every other equation is unchanged.
+All lifts are polynomial, so none fails on a zero fiber. Conversely
+take $L_i=(\mathcal U_i-\mathcal V_i)/2$ and set $E=vJ$, $\mathcal K=J^2$.
+The asserted common part gives~\eqref{eq:lift}; substitution proves
+all new equations. Division by two is the only division.
+\end{proof}
+
+To make the certificate auditable, write a field as $a_0+a_1\rho$.
+The four common rows are
+\[
+ E_0-v_0J_0-2v_1J_1,\quad E_1-v_0J_1-v_1J_0,\quad
+ K_0-J_0^2-2J_1^2,\quad K_1-2J_0J_1.
+\]
+Call these $e_0,e_1,k_0,k_1$. Before the harmless primitive row
+divisions, the differences between substituted old and new first
+product rows are $2b_{2,i}e_0$ and $-2b_{2,i}e_1$.
+For the second product rows the differences are zero.
+For detector component $j$ the difference is
+\[
+            -b_{2,i}^2 k_j+(b_{2,i}^2-b_{4,i})K_j.
+\]
+These exact identities prove ideal membership in explicitly retained
+equations; a numerical sample of elliptic points is not used for the lift.
+
+\section{Counts, source projection, and verification}
+
+The fixed-offset predecessor has $48k+8$ coordinates and $41k+5$
+rows. Replacing two private fields by one saves $2k$ rational
+coordinates. Adding the three common fields costs six. This gives
+$46k+14$ coordinates and $41k+9$ rows. Lemma~\ref{lem:lift} proves
+soundness by projection to each original integer certificate.
+Lemma~\ref{lem:common} supplies a common physical $U$ for every nonzero
+integer tuple, hence a common $J=f(H)f(U)$; the converse lift gives
+completeness. This proves Theorem~\ref{thm:tuple}.
+
+For the thirteen-predicate Jones source, start with the complete
+695/590 table of~\cite{signed}. Exactly 52 old reciprocal-product
+coordinates are replaced by 26 private and 6 common coordinates.
+Thus the count is $695-52+26+6=675$; four rows are added, giving 594.
+The corrected source's canonical positive integer witnesses supply the
+nonzero tuple required by Theorem~\ref{thm:tuple}. Conversely the
+polynomial lift recovers every original source row with the same
+instance. This proves Corollary~\ref{cor:675}.
+
+The sum of squares has degree exactly four: an unchanged input-square
+residual has nonzero quadratic part, and the squared leading quadratic
+parts cannot cancel over $\Q$. There is no claim of a bijection with
+all predecessor auxiliary tuples. The arithmetic completeness step
+reselects elliptic witnesses; the algebraic lift applies to every new
+rational zero.
+
+The complete coefficient table, deterministic builder, and independent
+checker are in the present directory. Run
+\begin{center}\small
+\texttt{python -B}\enspace\nolinkurl{undecidability/abc_common_numerator_v103/build_common_numerator.py}\\
+\texttt{python -B}\enspace\nolinkurl{undecidability/abc_common_numerator_v103/verify_common_numerator.py}.
+\end{center}
+The checker imports no builder. It verifies all 78 changed rows by the
+displayed polynomial identities, all 512 unchanged rows literally,
+all four common equations, every removed-coordinate occurrence, every
+input-fourth-power relation, the coefficient ring, full coordinate
+support, degree, counts, hashes and metadata. Its finite verification
+does not prove the retained arithmetic premises or provide a sufficient
+numerical $B$.
+
+\small
+\begin{thebibliography}{9}\raggedright
+\setlength{\itemsep}{2pt}
+\bibitem{paired} \(\Z\Q\) Diophantine Project,
+\emph{Paired contact coordinates: an ordinary-abc quartic in 56 variables},
+19 November 2026,
+\nolinkurl{papers/quartic_existence/paired_contact56_20261119_v81.tex}.
+The paired chart and Laurent packing derive from Gabe Conant's notes
+with Astra 6.2, audited in v78.
+\bibitem{reference} Project, \emph{A shared-reference quartic checkpoint},
+23 November 2026,
+\nolinkurl{undecidability/papers/shared_quartic_checkpoint.tex}.
+\bibitem{offsets} Project, \emph{Fixed dyadic translations for simultaneous
+contact certificates}, 23 November 2026,
+\nolinkurl{undecidability/papers/abc_fixed_contact_offsets_v93.tex}.
+\bibitem{common} Project, \emph{A common numerator point for simultaneous
+integer certificates}, 23 November 2026,
+\nolinkurl{undecidability/papers/common_numerator_transfers.tex},
+Sections 4--6; see also
+\nolinkurl{undecidability/papers/common_points_quartic_checkpoint.tex}.
+\bibitem{primes} Project, \emph{Arithmetic dependencies of the construction
+with 29 variables}, 8 November 2026,
+\nolinkurl{papers/arithmetic_dependencies/arithmetic_dependencies_20261108_v8.tex},
+Section 2 (the retained Sun finite prime-pattern assertion).
+\bibitem{half} Project, \emph{Heights of positive weighted elliptic traces},
+14 November 2026,
+\nolinkurl{papers/trace_heights/weighted_trace_20261114_v27.tex}, Section 5.
+\bibitem{secants} Project, \emph{A quartic in 68 variables from translated
+secants}, 17 November 2026,
+\nolinkurl{papers/quartic_existence/quartic_abc68_20261117_v65.tex}.
+\bibitem{signed} Project, \emph{The signed first-Pell branch},
+23 November 2026,
+\nolinkurl{undecidability/pell_signed_branch_v101/signed_branch_projection.tex};
+complete predecessor
+\nolinkurl{undecidability/pell_signed_branch_v101/signed_branch_abc_quadrics.json}.
+\end{thebibliography}
+\end{document}
