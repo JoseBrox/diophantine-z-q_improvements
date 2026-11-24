@@ -92,8 +92,8 @@ by taking a projective compactification of its graph and resolving
 outside that stratum in characteristic zero.
 
 Take a log resolution of the inverse image of \(D\), again unchanged
-over the open of witnesses away from \(D\). The resulting smooth
-proper morphism will be denoted \(\bar f:\bar V\to B\). We assume the
+over the open of witnesses away from \(D\). The resulting proper morphism with smooth source
+will be denoted \(\bar f:\bar V\to B\). We assume the
 guarded witnesses lift to it; the preceding construction ensures this
 for a smooth stratum away from the boundary. The Cartier divisor
 \(\bar f^*D\) now has simple normal crossings after base change to a
@@ -186,9 +186,9 @@ would violate the required completeness here.
 The local geometry is related to the arithmetic-surjectivity
 criteria for fibrations studied by Loughran and Smeets,
 *Fibrations with few rational points*, Geom. Funct. Anal. 26
-(2016), 1449--1482, and Loughran, Skorobogatov and Smeets,
+(2016), 1449--1482, [DOI](https://doi.org/10.1007/s00039-016-0381-8), and Loughran, Skorobogatov and Smeets,
 *Pseudo-split fibers and arithmetic surjectivity*, Ann. Sci. Éc.
-Norm. Supér. 53 (2020), 1037--1070. We only use the elementary
+Norm. Supér. 53 (2020), 1037--1070, [DOI](https://doi.org/10.24033/asens.2439). We only use the elementary
 smoothness and multiple-divisor arguments above, not their global
 surjectivity theorems. In particular no pseudo-split criterion
 for all modifications is asserted for the present source.
@@ -215,3 +215,6 @@ They do not prohibit all-prime comparisons with new moving residue
 conditions depending on auxiliary variables, nor a genuinely global
 rational-point obstruction. No quotient cap or new numerical
 defining-variable count is established.
+
+
+**Continuation.** The [seven-coordinate conic alternatives](../../../papers/elliptic_divisibility/one_conic_foreign_charge_20261124/README.md) also give a literal all-depth charge into the denominator heights of two rational conic coordinates, avoiding the extra BB pole. Their universal rational parametrization is why they do not contradict the boundary obstruction.
