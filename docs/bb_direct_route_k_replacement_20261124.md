@@ -1,6 +1,6 @@
-# Checkpoint: a direct eight-multiplier replacement for Route K's pole input
+# Direct Bhargava–Burungale replacement for Route K's pole input
 
-Date: 24 November 2026. Status: **proved elementary reduction, conditional on the rational-solubility conclusion of Bhargava–Burungale, Lemma 2.2**, arXiv:2611.16130v2, https://arxiv.org/html/2611.16130v2. This is an additive research note, not a change to any existing polynomial or Lean kernel claim.
+Date: 24 November 2026. Status: **proved elementary reduction, conditional on the rational-solubility conclusion of Bhargava–Burungale, Lemma 2.2**, arXiv:2611.16130v2, https://arxiv.org/html/2611.16130v2. The new four-variable degree-56 pole theorem below is an additive clean result; it does not change an existing global polynomial or Lean kernel claim. The earlier partial checkpoints are retained in Git history.
 
 ## Exact statement
 
@@ -62,6 +62,10 @@ It has **four total variables** (one rational input and **three** rational witne
 \]
 
 **Scope:** This gives an improved *existential pole predicate*, not a quartic construction in four variables. Its degree-56 polynomial is a direct factored specification, with no additional existential multiplier or Boolean variables. Changing a source template to use it requires the complete global compiler/guard and caller proof. The v88 project paper's degree-seven identity, not a fresh theorem of Bhargava–Burungale, supplies this extra degree reduction.
+
+## Exact regression test
+
+Run `python -B scripts/verify_bb_direct_route_k_20261124.py` from the repository root (requires SymPy). It checks all eight degree-seven factors, all sixteen parity/residue combinations, denominator preservation on sample prepared inputs, the source rational example, and the birational polynomial identity. These finite checks are separate from the universal mathematical proofs and the external Bhargava–Burungale input.
 
 ## Integration boundaries
 
