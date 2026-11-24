@@ -49,16 +49,18 @@ The [results JSON](data/results_20261123_v88.json) records all five new finite-a
 
 The [undecidability category](undecidability/README.md) counts existential
 rational unknowns; the integer instance is encoded in coefficients.
-The [v142–v144 continuation](docs/results_20261124_v144.md) gives the current bounds, uniform quartic compilers and eight-certificate source, with the [current frontier ledger](undecidability/frontier_20261124_v144.json).
+The [v145–v146 continuation](docs/results_20261124_v146.md) gives the current bounds, uniform quartic compilers and eight-certificate source, with the [current frontier ledger](undecidability/frontier_20261124_v146.json).
 
 | Degree restriction | Additional height hypothesis | Rational unknowns | Status |
 |:--|:--|--:|:--|
 | Unrestricted degree | No additional abc hypothesis | **48** | Direct-index transfer with the accepted ten-integer source; retained modular, trace-height and other arithmetic inputs |
 | Unrestricted degree, specified source | No additional abc hypothesis | **50** | Algorithmically specified direct-index transfer with the accepted ten-integer source; retained full-family modular and abscissa-sum inputs |
 | Unrestricted degree | Ordinary rational abc | **36** | One selective derivative pole and finite-algebra encoding; retained arithmetic premises |
-| Quartic transfer | No additional abc hypothesis | **612** | Symmetric quadratic radix packing and reduced Lucas amplifier; 547 residuals; 8 integer predicates |
-| Quartic transfer, specified source | No additional abc hypothesis | **632** | Symmetric quadratic radix packing and reduced Lucas amplifier; effective parameter recipe; 565 residuals; 8 integer predicates |
-| Quartic transfer | Ordinary rational abc | **292** | Rational harmonic selector; 241 residuals; 12 integer predicates |
+| Quartic transfer | No additional abc hypothesis | **566** | Sparse quadratic radix packing and coupled private comparisons; 501 residuals; 8 integer predicates |
+| Quartic transfer, specified source | No additional abc hypothesis | **584** | Sparse quadratic radix packing and coupled private comparisons; effective parameter recipe; 517 residuals; 8 integer predicates |
+| Quartic transfer | Ordinary rational abc | **291** | Scaled unit selector; 240 residuals; 12 integer predicates |
+
+The [v145 sparse radix](undecidability/sparse_radix_v145/README.md) and [v146 coupled private tests](undecidability/coupled_comparison_v146/README.md) further reduce the preferred counts to 566/584; the [scaled unit selector](undecidability/abc_scaled_unit_v145/README.md) gives 291 under ordinary rational abc. Joint small/third Pell replacement is not yet established.
 
 The [eight-certificate packed source](undecidability/packed_quadrics_v142/README.md) gives 619/639 variables without dense quartic expansion; the [reduced reference and Lucas amplifier](undecidability/packed_lucas_v143/README.md) then give 612/632. These are uniform instance compilers with algebraic coefficient fixtures, not a numerically instantiated nonrecursive set. The [certificate-deletion obstruction](undecidability/eight_source_obstruction_v144/README.md) constructs false witnesses for bare deletion of h, j or i_half; six/seven-certificate replacements remain open. The [ten-certificate alternatives](undecidability/ten_certificate_v132/README.md) are retained historically. The [direct-index anchor refinement](undecidability/direct_index_anchor_v129/README.md) replaces large contact-shift powers by linear shifts without changing the 48/50 counts.
 
