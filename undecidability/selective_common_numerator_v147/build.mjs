@@ -184,18 +184,19 @@ function build(src,contacts){
  const J= freg("G_selective_J"), J2=fd("G_selective_J2",fq(J)), Wg=fa(asF(u),...failures);
  const W=fd("G_combinedFailure",fa(fq(Wg),fm(asF(C),J2)));
  const E=reg("G_error");row("global.norm_trace",sub(mul(E,trace(W)),norm(W)));const E2=define("G_error2",sq(E)), E4=define("G_error4",sq(E2));
- let all=pairs.concat(labels),agg=fa(...all.map(p=>p.absc),fscale(d,all.length),fcon(1000));
+ let all=pairs.concat(labels),agg=fa(...all.map(p=>p.absc),fscale(d,all.length),fcon(4294967296));
  let U=define("G_aggregate_U",agg[0]);let V=contacts===3?define("G_aggregate_V",agg[1]):null;
- let lambda=reg("G_lambda"),ts=[lambda,add(lambda,U)];if(contacts===3){let V2=define("G_aggregate_V2",sq(V));ts.push(add(ts[1],con(1000),V2))}
+ let lambda=reg("G_lambda"),ts=[lambda,add(lambda,U)];if(contacts===3){let V2=define("G_aggregate_V2",sq(V));ts.push(add(ts[1],con(4294967296),V2))}
  const theta0=[[0n,1n],[-1n,2n],[-1n,1n],[1n,2399n],[-32n,407n]], ref=contacts===2?rat(2):rat(3,11);
- const roots=theta0.flatMap(t=>[rat(...t),ra(ref,rat(-t[0],t[1]))]);
- const groupRoots=inputs.map((_,i)=>roots.map(a=>ra(a,rat(20*i))));
+ const center=rat(ref[0],2n*ref[1]), shifts=theta0.map(t=>ra(t,rat(-center[0],center[1])));
+ const scales=inputs.map((_,i)=>16n**BigInt(i));
+ const groupRoots=scales.map(l=>shifts.flatMap(t=>{const r=rm(t,rat(l));return [ra(center,r),ra(center,rat(-r[0],r[1]))];}));
  if(new Set(groupRoots.flat().map(a=>a.join("/"))).size!==10*inputs.length)throw Error("contact collisions");
- const coeffs=groupRoots.map(rr=>{let co=[rat(1)];for(let a of rr){let next=Array.from({length:co.length+1},()=>rat(0));for(let i=0;i<co.length;i++){next[i]=ra(next[i],rm(co[i],rat(-a[0],a[1])));next[i+1]=ra(next[i+1],co[i])}co=next;}return co;});
+ const coeffs=scales.map(l=>{let co=[rat(1)];for(let t of shifts){const r=rm(t,rat(l)),a=rm(r,r);let next=Array.from({length:co.length+1},()=>rat(0));for(let i=0;i<co.length;i++){next[i]=ra(next[i],rm(co[i],rat(-a[0],a[1])));next[i+1]=ra(next[i+1],co[i])}co=next;}return co;});
  const qs=[], qij=[];
  for(let j=0;j<contacts;j++){
-  const n="G_contact"+j,t=ts[j],powers=[one,t];
-  for(let k=2;k<=10;k++)powers.push(define(n+"_power"+k,mul(t,powers[k-1])));
+  const n="G_contact"+j,t=ts[j],T=define(n+"_center_square",sq(sub(t,con(...center)))),powers=[one,T];
+  for(let k=2;k<=5;k++)powers.push(define(n+"_power"+k,mul(T,powers[k-1])));
   const qi=coeffs.map((co,i)=>{const q=reg(n+"_group"+i),den=add(...co.map((a,k)=>sc(powers[k],...a)));row(n+".group"+i,sub(mul(q,den),one));return q;});
   qij.push(qi);qs.push(sc(add(...qi),1,inputs.length));
  }
