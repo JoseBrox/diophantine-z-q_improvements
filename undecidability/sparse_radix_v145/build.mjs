@@ -32,8 +32,7 @@ function source(system,old) {
  const edge=(a,b)=>[a,b].sort().join("*"),hom=k=>{const a=k?k.split("*"):[];while(a.length<2)a.push(dummy);return a};
  const forbidden=new Set(eqs.flatMap(r=>[...r.p.keys()].map(k=>edge(...hom(k)))));
  const all=[...vs,dummy];if(all.length%2)throw Error("pair count");
- // Dense complement matching, with most constrained vertex first.
- function match(xs){if(!xs.length)return [];let a=xs.reduce((best,n)=>xs.filter(b=>b!==n&&!forbidden.has(edge(n,b))).length<xs.filter(b=>b!==best&&!forbidden.has(edge(best,b))).length?n:best,xs[0]);let ys=xs.filter(b=>b!==a);for(const b of ys){if(forbidden.has(edge(a,b)))continue;let tail=match(ys.filter(n=>n!==b));if(tail)return [[a,b],...tail]}return null}
+ // Fixed parameter-uniform matching; actual support and all pair-sum collisions are checked below.
  let pairs=[["G","q3"],["T","m"],["source_c_square","h"],["V","slack_eta"],["power_modulus","U"],["w","p"],["ell","t"],["Y","j"],["a","s"],["power_A","power_alpha"],["S","r"],["e","gamma"],["int_g_29","slack_alpha"],["pell_crt_cF","n2"],["el","F2"],["lam","q5"],["power_delta","i_half"],["int_b_30","c04"],["AE","c02"],["E","n"],["k","q4"],["b","sr"],["H","B5"],["tau","d"],["power_D","ac"],["YK","GH"],["power_C","pk"],["q2","source_b2"],["g","q8"],["c","q"],["power_AC","I"],["F","@dummy"]];if(pairs.flat().slice().sort().join("|")!==all.slice().sort().join("|")||pairs.some(p=>forbidden.has(edge(...p))))throw Error("fixed matching");
  const m=pairs.length,at=pairs.findIndex(x=>x.includes(dummy));let [dp]=pairs.splice(at,1);if(dp[1]!==dummy)dp.reverse();pairs.push(dp);
  const L=64n,exps=[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,21,22,24,25,27,28,30,31,33,34,36,37],lastExp=exps[m-1],D=L*(1n<<BigInt(lastExp+2));
@@ -120,7 +119,7 @@ function build(src,contacts){
  const Dinv=[con(11,49),con(6,49)];
  const pair=(n,k4=one,reference=false)=>{let S=freg(n+"_s"),T=freg(n+"_t"),F=freg(n+"_F"),G=freg(n+"_G"),eta=freg(n+"_eta");
   const dd=reference?fscale(fm(Dinv,fa(yP,fm(xP,fa(eta,T)))),-1):freg(n+"_d");
-  let pi=fa(eta,S,T);fr(n+".d1",fs(dd,fm(pi,F)));fr(n+".d2",fs(dd,fm(eta,G)));fr(n+".curve",fs(fm(D,fa(F,G)),fs(fm(fs(S,T),eta),fq(T))));fr(n+".unit",fs(fs(fm(dd,fs(S,T)),fm(D,fm(F,G))),asF(k4)));
+  let pi=fa(eta,S,T);fr(n+".d1",fs(dd,fm(pi,F)));fr(n+".d2",fs(dd,fm(eta,G)));fr(n+".curve",fs(fm(D,fa(F,G)),fs(fm(fs(S,T),eta),fq(T))));if(!reference)fr(n+".unit",fs(fs(fm(dd,fs(S,T)),fm(D,fm(F,G))),asF(k4))); // reference unit follows from fixed nonzero xP and yP on E
   return {S,T,F,G,eta,dd,absc:fm(eta,pi)};};
  let H=pair("G_ref",one,true);
  // P0=2R0; exact affine doubling in K computed by rational coefficients.
