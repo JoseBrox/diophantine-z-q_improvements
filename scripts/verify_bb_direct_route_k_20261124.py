@@ -9,7 +9,7 @@ from itertools import product
 from math import isqrt
 import sympy as S
 
-MENU = (1, 2, 3, 5, 6, 7, 10, 14)
+MENU = (1, 2, 3, 5, 6, 10, 15, 30)
 B, s, t, r = S.symbols("B s t r")
 
 def factor(m):
@@ -39,13 +39,13 @@ for m in MENU:
 assert 7*len(MENU) == 56  # Degree of product is the sum in an integral domain.
 
 for f, odd_unit in product((0, 1), (1, 3, 5, 7)):
-    m0 = next(a for a in (1, 3, 5, 7) if (a*odd_unit) % 8 == 7)
+    m0 = next(a for a in (1, 3, 5, 15) if (a*odd_unit) % 8 == 7)
     m = (2**f)*m0
     assert m in MENU
     assert (odd_unit * pow(m0, -1, 8)) % 8 == 7
     B0 = Fraction((2**(4+f))*3*5*7*odd_unit, 1009**2)
     assert 0 < B0 < 1
-    assert all(valuation(B0, p) >= 1 for p in (3, 5, 7))
+    assert all(valuation(B0, p) >= 1 for p in (3, 5))
     assert valuation(B0, 2) >= 4
     c = B0/m
     assert c.denominator == isqrt(c.denominator)**2
