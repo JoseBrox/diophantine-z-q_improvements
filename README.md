@@ -49,18 +49,18 @@ The [results JSON](data/results_20261123_v88.json) records all five new finite-a
 
 The [undecidability category](undecidability/README.md) counts existential
 rational unknowns; the integer instance is encoded in coefficients.
-The [v139–v141 continuation](docs/results_20261124_v141.md) gives the current bounds, complete quartic tables and the eight-certificate alternative, with the [current frontier ledger](undecidability/frontier_20261124_v141.json).
+The [v142–v144 continuation](docs/results_20261124_v144.md) gives the current bounds, uniform quartic compilers and eight-certificate source, with the [current frontier ledger](undecidability/frontier_20261124_v144.json).
 
 | Degree restriction | Additional height hypothesis | Rational unknowns | Status |
 |:--|:--|--:|:--|
 | Unrestricted degree | No additional abc hypothesis | **48** | Direct-index transfer with the accepted ten-integer source; retained modular, trace-height and other arithmetic inputs |
 | Unrestricted degree, specified source | No additional abc hypothesis | **50** | Algorithmically specified direct-index transfer with the accepted ten-integer source; retained full-family modular and abscissa-sum inputs |
 | Unrestricted degree | Ordinary rational abc | **36** | One selective derivative pole and finite-algebra encoding; retained arithmetic premises |
-| Quartic transfer | No additional abc hypothesis | **622** | Shared scalar and Boolean comparison detector; 533 residuals; 12 integer predicates |
-| Quartic transfer, specified source | No additional abc hypothesis | **642** | Shared scalar and Boolean comparison detector, effective parameter recipe; 551 residuals; 12 integer predicates |
+| Quartic transfer | No additional abc hypothesis | **612** | Symmetric quadratic radix packing and reduced Lucas amplifier; 547 residuals; 8 integer predicates |
+| Quartic transfer, specified source | No additional abc hypothesis | **632** | Symmetric quadratic radix packing and reduced Lucas amplifier; effective parameter recipe; 565 residuals; 8 integer predicates |
 | Quartic transfer | Ordinary rational abc | **292** | Rational harmonic selector; 241 residuals; 12 integer predicates |
 
-The [ten-certificate alternatives](undecidability/ten_certificate_v132/README.md) use 879/907 quartic variables: fewer integer predicates at a higher total cost than the preferred shared comparison tables. The [direct-index anchor refinement](undecidability/direct_index_anchor_v129/README.md) replaces large contact-shift powers by linear shifts without changing the 48/50 counts.
+The [eight-certificate packed source](undecidability/packed_quadrics_v142/README.md) gives 619/639 variables without dense quartic expansion; the [reduced reference and Lucas amplifier](undecidability/packed_lucas_v143/README.md) then give 612/632. These are uniform instance compilers with algebraic coefficient fixtures, not a numerically instantiated nonrecursive set. The [certificate-deletion obstruction](undecidability/eight_source_obstruction_v144/README.md) constructs false witnesses for bare deletion of h, j or i_half; six/seven-certificate replacements remain open. The [ten-certificate alternatives](undecidability/ten_certificate_v132/README.md) are retained historically. The [direct-index anchor refinement](undecidability/direct_index_anchor_v129/README.md) replaces large contact-shift powers by linear shifts without changing the 48/50 counts.
 
 The 48/50 bounds use [Sun's ten-unknown theorem](https://arxiv.org/abs/2609.01594), accepted as a project coding source (see the [source-review clarification](docs/audits/sun_september_20261124/README.md)). The 36 bound uses the published mixed-domain source. The earlier 52/54 bounds remain available as alternative coding-source transfers. All new transfers have their stated retained arithmetic premises; no unconditional undecidability or global minimality is claimed. The [Sun-audit refinement](undecidability/direct_index_transfer_v127/README.md) keeps 48/50 unknowns with precision floor(D/2)+1 and whole-guard tagged determinants of degree strictly below 11·2^96 δ and 11·2^98 δ respectively (δ is a computable coefficient/operator-degree majorant, not numerically evaluated for the full source). The [v108 continuation](docs/results_20261124_v108.md) preserves the earlier tables and the interrupted-results reconstruction.
 
