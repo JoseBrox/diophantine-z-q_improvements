@@ -14,11 +14,27 @@ The [additional research routes](research_routes_20261120.md) prove a complex-mu
 
 ## Undecidability in bounded numbers of rational unknowns
 
-The [v103 continuation](results_20261124_v103.md) gives corrected quartic
-transfers in **963 / 1140 / 695** rational unknowns, with
-**818 / 991 / 590** quadratic residuals. The instance is a coefficient
+The [v108 continuation](results_20261124_v108.md) gives corrected quartic
+transfers in **887 / 1052 / 605** rational unknowns, with
+**750 / 913 / 528** quadratic residuals. The instance is a coefficient
 parameter. The third route assumes ordinary rational abc; all routes retain
 their integer predicate's stated arithmetic premises.
+
+The decisive new result is the [half-trace integrality theorem](../undecidability/pell_integrality_replacement_v106/README.md):
+the complete source supplies `3|a`, which rules out every fractional Pell
+orbit once one half-trace is a rational square. This removes the entire c
+predicate and leaves **12 / 10 / 12** integer certificates. The earlier
+reported 948/1127 stage has been independently reconstructed; its original
+files and the reported 649 table were not recovered. All current pole
+realizations have direct BB-native audits; the other premises remain.
+
+The target near **263** is open. Next investigate whether the full source
+growth and small-Pell closeness force `c^2|E`; integral E and F alone are
+insufficient, as the [exact subsystem witness](../undecidability/pell_quotient_obstruction_v109/README.md)
+shows. The alternative [unary outer compiler](../undecidability/unary_outer_checkpoint_v109/README.md)
+reduces the outer exponential values to three and the central-binomial test
+to four quadrics. Its lower circuits and integer domains must still be
+compiled and counted before it can yield a new global bound.
 
 The [source repair](../undecidability/source_repair_v93/corrected_jones_source.tex)
 reduces a new 28-positive-integer source to Jones's 1980 Theorem 2, using

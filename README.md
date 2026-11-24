@@ -39,8 +39,9 @@ The [results JSON](data/results_20261123_v88.json) records all five new finite-a
 
 The [undecidability category](undecidability/README.md) counts existential
 rational unknowns; the integer instance is encoded in coefficients.
-The [v103 continuation](docs/results_20261124_v103.md) gives the current
-complete quartic tables and the source-research checkpoints. The [v93 continuation](docs/results_20261123_v93.md) supplies corrected
+The [v108 continuation](docs/results_20261124_v108.md) gives the current
+complete quartic tables, the reconstructed interrupted results, and the new
+Pell integrality theorem. The [v93 continuation](docs/results_20261123_v93.md) supplies corrected
 quartic sources, smaller complete tables, and lower general-degree bounds.
 
 | Degree restriction | Additional height hypothesis | Rational unknowns | Status |
@@ -48,9 +49,20 @@ quartic sources, smaller complete tables, and lower general-degree bounds.
 | Unrestricted degree | No additional abc hypothesis | **82** | Proved transfer under retained arithmetic premises; degree below `2^532` |
 | Unrestricted degree, specified source | No additional abc hypothesis | **100** | Proved transfer under retained arithmetic premises; degree below `2^578` |
 | Unrestricted degree | Ordinary rational abc | **52** | Proved transfer under retained arithmetic premises; degree below `2^425` |
-| Quartic transfer | No additional abc hypothesis | **963** | Shared contact denominators; 818 quadratic residuals; retained arithmetic premises |
-| Quartic transfer, specified source | No additional abc hypothesis | **1,140** | Shared contact denominators; 991 quadratic residuals; retained arithmetic premises |
-| Quartic transfer | Ordinary rational abc | **695** | Signed Pell power recovery; 590 quadratic residuals; retained arithmetic premises |
+| Quartic transfer | No additional abc hypothesis | **887** | Half-trace replaces c-integrality; 750 quadratic residuals; 12 integer predicates; retained arithmetic premises |
+| Quartic transfer, specified source | No additional abc hypothesis | **1,052** | Half-trace replaces c-integrality; 913 quadratic residuals; 10 integer predicates; retained arithmetic premises |
+| Quartic transfer | Ordinary rational abc | **605** | Shared point chart and c-integrality replacement; 528 quadratic residuals; 12 integer predicates; retained arithmetic premises |
+
+**Current quartic proof trail:** the [new arithmetic theorem](undecidability/pell_integrality_replacement_v106/pell_integrality_replacement.tex)
+proves c-integrality from the retained norm, shifted trace, the source's
+modulo-three condition, and one half-trace square. The complete
+[887/1052 tables](undecidability/c_integrality_reduction_v106/README.md) and
+[605 table](undecidability/abc_pell_integrality_v108/README.md) include all
+coordinate and shared-contact changes. Their native pole realizations use
+Bhargava–Burungale directly, including the [twelve abc poles](undecidability/abc_bb_native_v107/README.md).
+The reported 948/1127 stage has been independently reconstructed; the original
+reported 649 artifact remains unlocated. The [integrated verification receipt](undecidability/certificates/verification_v108.json)
+records the exact tables and their limits. The target near 263 is still open.
 
 **Proof trail for the 82 / 100 / 52 unrestricted-degree results:** the [common-numerator theorem](undecidability/papers/common_numerator_transfers.tex) first gives 83 / 101 / 53 unknowns; the [finite-wrapper theorem](undecidability/papers/finite_wrapper_transfer.tex) absorbs one coordinate into a rank-sixteen finite algebra, giving 82 / 100 / 52; the [paired-spectral theorem](undecidability/papers/paired_spectral_encoder.tex) gives the strict degree ceilings in the table without changing these counts. The exact [finite-wrapper certificate](undecidability/certificates/finite_wrapper_transfer.json), [paired-spectral degree certificate](undecidability/alternative_v93/certificate.json), [results registry](undecidability/results.json), and independent [v90](scripts/verify_v90.py) and [v93](scripts/verify_v93.py) verification scripts record the counts, source hashes, and degree arithmetic. These are transfer theorems *under the retained arithmetic premises*; the gigantic determinant polynomials are specified but not expanded, and no global minimality is asserted.
 

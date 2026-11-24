@@ -39,9 +39,19 @@ the historical encoders; all historical specifications remain unchanged.
 
 | Integer interface | Rational unknowns | Quadratic residuals | Additional height hypothesis |
 |:--|--:|--:|:--|
-| General | **963** | **818** | No additional abc |
-| Specified | **1140** | **991** | No additional abc |
-| Ordinary abc | **695** | **590** | Ordinary rational abc |
+| General | **887** | **750** | No additional abc |
+| Specified | **1052** | **913** | No additional abc |
+| Ordinary abc | **605** | **528** | Ordinary rational abc |
+
+The [current report](../docs/results_20261124_v108.md),
+[general/specified proofs and tables](c_integrality_reduction_v106/README.md),
+and [abc proof and table](abc_pell_integrality_v108/README.md) specify these
+quartics completely. They retain 12 / 10 / 12 integer predicates and the
+stated arithmetic interfaces. The [integrated checker](../scripts/verify_v108.py)
+and [receipt](certificates/verification_v108.json) audit all thirteen new
+complete tables and the separate arithmetic checkpoints. The original
+reported 948/1127/649 artifacts were not located: 948/1127 were independently
+reconstructed, and a new 605-variable abc construction improves on 649.
 
 The [corrected-source theorem](source_repair_v93/corrected_jones_source.tex)
 ([PDF](source_repair_v93/corrected_jones_source.pdf)) uses Jones's 1980
@@ -118,6 +128,34 @@ This preserves each entire rational zero set bijectively. The
 The [new source-frontier checkpoint](source_frontier_v103/README.md) proves
 an integral-trace criterion and identifies a unary-exponential source;
 neither removes an integer predicate at this stage.
+
+The [input-comparison identity](input_comparison_v105/README.md)
+independently reconstructs **948 / 1127** from v102 and gives **943 / 1124**
+after combining the shared denominators with
+[BB-native poles](quadratic_reduction_v104/README.md). Under ordinary abc,
+the [common numerator](abc_common_numerator_v103/README.md),
+[odd quotient](odd_pell_quotient_v104/README.md),
+[point rechart](abc_point_rechart_v105/README.md), and
+[directly scaled chart](abc_scaled_point_v106/README.md) give
+**675, 674, 656, and 645** variables. All zero-input fibers and changed
+coordinate occurrences are included in the exact audits.
+
+The [signed Pell classification](pell_classification_reconstructed_v105/README.md)
+then leads to a [new integrality theorem](pell_integrality_replacement_v106/README.md):
+when the source supplies `3|a`, the retained integral shifted trace and
+one half-trace square force c and d to be integers. Deleting the complete
+c predicate gives the current **887 / 1052 / 605** bounds, with full
+shared-contact reconstruction and canonical completeness witnesses.
+The [abc pole audit](abc_bb_native_v107/README.md) also supplies all twelve
+remaining native CM poles directly from Bhargava–Burungale, without changing
+the table. Other arithmetic interfaces and the external coding theorem remain.
+
+The target near **263** remains open. The
+[second-quotient counterexample](pell_quotient_obstruction_v109/README.md)
+isolates the missing c-square divisibility; it is a subsystem counterexample,
+not a full-source one. A [three-power outer compiler](unary_outer_checkpoint_v109/README.md)
+is proved for the alternative unary exponential source, but its lower
+circuits and exponential graphs remain uncompiled, so it supplies no new N.
 
 ### Method and intermediate improvements
 
