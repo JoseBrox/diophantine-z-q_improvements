@@ -215,7 +215,7 @@ Original project contributions are under **CC BY 4.0**. Third-party material ret
 
 ## Number-field results
 
-The following are the current unrestricted-degree upper bounds, including all input coordinates. Let (d=[K:\mathbb Q]). All rows retain the cited elliptic group, height, local approximation, and pole-realization premises relevant to their proofs.
+The following are the current unrestricted-degree upper bounds, including all input coordinates. Let $d=[K:\mathbb Q]$. All rows retain the cited elliptic group, height, local approximation, and pole-realization premises relevant to their proofs.
 
 | Construction | Additional hypotheses | Total coordinates |
 |:--|:--|--:|
@@ -224,9 +224,11 @@ The following are the current unrestricted-degree upper bounds, including all in
 | [Rational integers in K](papers/number_fields/ambient_selective_detector_20261124/README.md) | Ordinary abc over K and stable positive rank of some elliptic curve over Q | **54** |
 | [Ring of integers of K](papers/number_fields/ambient_selective_detector_20261124/README.md) | Same | **15d+39** (**69** in quadratic degree) |
 | [Rational integers and ring of integers, no quadratic subfield](papers/number_fields/ambient_selective_detector_20261124/README.md) | Same, K contains no quadratic subfield | **48 / (15d+33)** |
-| [Original-carrier rank-stability alternative](papers/number_fields/carrier_rank_stability_20261124/README.md) | Ordinary abc over K, K disjoint from Q(sqrt(2)), rank stability of the particular original carrier in the compositum | **11 / (3d+8)** (**14** in quadratic degree) |
+| [Original-carrier rank-stability alternative](papers/number_fields/carrier_rank_stability_20261124/README.md) | Ordinary abc over K, K disjoint from Q(sqrt(2)), rank stability of the particular original carrier in the compositum | **11 / (3d+8)** |
+| [Two proved rank-stable cubics: real cyclotomic fields of conductors 7 and 9](papers/number_fields/cubic_carrier_stability_20261124/README.md) | Ordinary abc over K; carrier-specific rank premise now proved unconditionally | **11 / 17** |
+| [Gaussian-module alternative for K = Q(i)](papers/number_fields/gaussian_carrier_transfer_20261124/README.md) | Ordinary abc over K; rank two over Q(sqrt(2),i) proved unconditionally | **18 / 14** |
 
-The last row has a different, stronger carrier-specific rank premise; it is not asserted for every quadratic field. Zywina's theorem supplies the *some-curve-over-Q* stable-rank premise for quadratic K, as in v81, not the original-carrier premise. The ring-of-integers polynomial has coefficients in the ring of integers of K. The sufficient shifts and rationality corrections remain ineffective.
+The original-carrier alternative has a different rank premise. The [exact cubic descents](papers/number_fields/cubic_carrier_stability_20261124/README.md) prove that premise for both listed cubics, without a Sha hypothesis. The [twist audit](papers/number_fields/carrier_twist_parity_20261124/README.md) proves rank one for the original carrier and seven other rational twists, and odd 2-infinity Selmer corank for every rational twist. Thus ordinary rank stability in disjoint quadratic fields is impossible if their twists have finite 2-primary Sha; it already fails unconditionally in the listed examples. The Gaussian-module route bypasses the rank growth in Q(i) by using a rank-one module over Z[i]. Zywina's theorem supplies the *some-curve-over-Q* stable-rank premise used for the 18-coordinate definition of Z in Q(i), as in v81, not the original-carrier premise. The new carrier-specific existence proof also avoids assuming exact saturation of the original point. The ring-of-integers polynomial has coefficients in the ring of integers of K. The sufficient shifts and rationality corrections remain ineffective.
 
 The [function-field preprint audit](docs/pasten_vidaux_function_fields_audit_20261124.md) examines Pasten–Vidaux, [arXiv:2611.31218v1](https://arxiv.org/abs/2611.31218), and improves the auxiliary contact degree from twice the geometric Galois-closure degree plus five to **2[K:F]+5**. It completes the local two-isogeny table, expands Frobenius synchronization and proves the exact limits of the characteristic-zero transfer. The isotrivial Sha-finiteness argument does not carry over to number fields.
 
@@ -237,6 +239,8 @@ The chronological arithmetic progress starts with the [v81 amplification](docs/r
 The current unrestricted-degree counts **25 / 27 / 11** and quartic counts **163 / 178 / 54** over Q remain unchanged by the function-field audit. The [exact-square checkpoint](computation/actual_square_v83/README.md) isolates the remaining actual-trace requirement and proves further prepared-fibre obstructions. The general quartic improvements retain the shared square coordinate for `R²`. The [v88 obstruction](negative_results/R_square_reweighting_v88/R_square_obstruction_20261123_v88.tex) excludes deleting it by diagonal Laurent reweighting in both existing units; different charts and nonlinear row combinations remain open. A proved [parity obstruction](papers/quartic/hyperbolic_parity_20261119_v79.tex) rules out one proposed full-pair compression in the retained integral Laurent chart; it does not establish a lower bound for arbitrary quartics.
 
 The new [elliptic divisibility detector](papers/elliptic_divisibility/prepared_eds_divisibility_20261120_v82.tex) uses five coordinates for a prepared subrelation in which every nonzero integral quotient occurs, under ordinary abc and the published pole realization. It does not identify that quotient with an external rational input. A [one-parameter genus-one criterion](papers/pole_parameters/genus_one_sound_criterion_20261120_v82.tex) would give ten coordinates if its actual detector fibers have rational points. Every prepared scalar fiber is locally soluble, but an exact prepared counterexample rules out inferring rational points from those local conditions alone. Neither result is a new definition of the integers.
+
+The [uniform-pole geometric obstruction](papers/pole_parameters/uniform_pole_geometric_obstructions_20261124/README.md) proves that the prepared scalar set is non-thin, so a standalone generically finite pole cannot be complete and sound. Under all-prime local soundness, a complete one-parameter menu must have a geometrically integral branch of genus at least one, and every multisection has even ramification at the scalar's infinity. These obstructions do not settle the actual-source genus-one realization problem or exclude a detector-coupled replacement.
 
 The complete general and conditional **21/9-variable targets remain unproved**. The main unresolved step is global rational realization at the actual elliptic detector values, with every physical lift and denominator condition satisfied. Local solubility, a rational point on an auxiliary cover, and successful finite searches do not establish that step.
 
@@ -259,6 +263,9 @@ Use **Python 3.12**, **SymPy 1.14.0**, and **PassageMath PARI 10.8.14**. The new
 
 ```sh
 python -m pip install sympy==1.14.0 passagemath-pari==10.8.14
+python -B papers/number_fields/carrier_twist_parity_20261124/verify.py
+python -B papers/number_fields/cubic_carrier_stability_20261124/verify.py
+python -B papers/number_fields/cubic_carrier_stability_20261124/verify_conductor9.py
 python -B scripts/verify_v92.py
 python -B scripts/verify_v91.py
 python -B scripts/verify_v90.py
