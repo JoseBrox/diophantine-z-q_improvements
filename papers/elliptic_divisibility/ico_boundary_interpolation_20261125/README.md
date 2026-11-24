@@ -148,6 +148,19 @@ This does **not** give a global solution. It transfers the dangerous primes to o
 \]
 Consequently the ordinary-abc fixed-curve contact mechanism creates new boundary primes. Section 4 makes this obstruction precise even if arbitrary integer mixed coefficients and unbounded degrees are allowed. The local change nevertheless shows that direct rejection of all numerator-point denominator primes is not necessary for an ico cap: some of those primes can pass through a three-unit reduction.
 
+### No local obstruction at any sufficiently large prime
+
+In fact every \(w\in\mathbb Q\setminus\{0,1\}\) admits a nonboundary guarded lift over \(\mathbb Q_p\) at every \(p>11\). We give explicit choices in all valuation regimes. The guard \(a_0+a_2\ne0\) follows from \(A=t(a_0+a_2)\ne0\).
+
+* If \(v_p(w)=-k<0\), take \(t=2/w\). The preceding computation gives valuations \((-k,-k,-2k,-2k,-k)\) for \((a_0,a_1,a_2,a_3,A)\).
+* If \(v_p(w)=k>0\), take \(t=2w\). The valuations are \((0,0,k,k,k)\): the leading terms of \(a_2,a_3,A\) are \(w,w,2w\), respectively. Thus \(Z_2,Z_3,Z_4\) are units and the first two normalized coordinates have positive valuation.
+* If \(v_p(w-1)=k>0\), take \(t=2w-1\). Writing \(w=1+\delta\), the leading terms of \(a_0,a_1,a_3\) are \(2\delta,-\delta,-\delta\), while \(a_2,A\) are units. The valuations are \((k,k,0,k,0)\). Hence the projective reduction has exactly the three nonzero coordinates \(0,1,3\).
+* Otherwise \(w\) and \(w-1\) are units. The five polynomials \(a_0,a_1,a_2,a_3,A\) are nonzero modulo \(p\), of degrees at most \(2,1,2,2,2\), respectively, even when \(w^2+w-1=0\bmod p\). There are at most nine forbidden residues of \(t\). Since \(p>11\), choose any other residue. All five values are units.
+
+These choices prove the existence of an open \(p\)-adic neighborhood of good lifts at every \(p>11\); the valuation patterns also prove all the local guards. Thus ordinary weak approximation gives rational plane lifts avoiding the boundary at any **prescribed finite set** of primes greater than 11, while retaining any compatible nonempty real guarded open condition. The exceptional small primes can be placed in the allowed support once and for all. This is not a solution of the global support problem. New boundary primes at unprescribed places are not controlled by weak approximation.
+
+For example, at fixed \(w\) and a fixed finite allowed set \(S\), (4) and the inverse chart imply that there are only finitely many rational \(t\) whose boundary radical is supported in \(S\). Local flexibility at every prime therefore must not be interpreted as a global weak-approximation theorem for the desired \(S\)-integral lifts.
+
 ## 4. Fixed rational graph obstruction (also for one reference per input)
 
 Fix any rational function \(t=T(w)\) over \(\mathbb Q\) such that the guarded plane chart is defined generically. The induced nonconstant map
@@ -182,4 +195,6 @@ In particular both fixed choices \(t=2\) and \(t=2/w\) fail as general completen
 
 The central positive result is the exact optimal interpolation (2)-(6). It removes all unnecessary restrictions on the degree and the magnitude of integer mixed coefficients. The mixed-domain nine-coordinate candidate is now explicit. But the arithmetic issue is intrinsic boundary avoidance, not linear algebra over the coefficients. A genuine completion requires a varying arithmetic lift, rather than a fixed rational graph of the existing numerator coordinate, and an existential way to enforce its boundary support. Neither is established here.
 
-The standard-library symbolic/exact checker verifies the gcd identity on finite fields, the integer interpolation on exact rational chart fixtures, the resultant table and the pole-redirection formulas. It does not prove ordinary abc, the external effective Mordell theorem or the missing global realization.
+The [exact SymPy and rational-arithmetic checker](../../../scripts/verify_ico_interpolation_20261125.py) verifies the gcd identity on finite fields, the integer interpolation on exact rational chart fixtures, the resultant table and the pole-redirection formulas. It does not prove ordinary abc, the external effective Mordell theorem or the missing global realization.
+
+The executed checker passed 277,082 projective finite-field points (1,135 on the ico surface), 2,890 local lifts, 1,090 rational chart interpolation fixtures, 32 elliptic interpolation fixtures, and all ten exact resultants and pole-redirection identities. The initial recursive Euclidean algorithm exceeded Python's recursion limit on a large exact fixture; it was replaced by the iterative Euclidean algorithm, and the complete check then passed. The elliptic fixtures do not include the original BB preparation or prove all-integer completeness.
