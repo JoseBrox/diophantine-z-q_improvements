@@ -1,0 +1,17 @@
+name: Verify weighted explicit defining quartic
+on:
+  push:
+    paths:
+      - 'computation/weighted_explicit178_20261124/**'
+      - '.github/workflows/weighted-explicit178.yml'
+  workflow_dispatch:
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -B computation/weighted_explicit178_20261124/verify.py
+      - run: python -B negative_results/defining_gate_obstructions_20261124/verify.py
