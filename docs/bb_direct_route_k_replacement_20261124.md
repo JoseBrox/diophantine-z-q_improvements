@@ -30,7 +30,38 @@ Furthermore \(v_2(B/m)=v_2(B)-f\ge3\), and \(0<B/m<1\). At each odd \(p\mid m\),
 \[
 (m-B)(m^2s^4-B^2)(m^2t^4-B^2)-m^5z^2=0.
 \]
-For each fixed \(m\), it has total degree nine. The eight-way disjunction is algebraically expressible. This does **not** by itself give a quartic or a smaller global variable count; compilation and the consumer's exact scale need separate checks.
+For each fixed \(m\), it has total degree nine. The eight-way disjunction is algebraically expressible. The **degree-seven** birational form in the next section is preferable. This does **not** by itself give a quartic or a smaller global variable count; compilation and the consumer's exact scale need separate checks.
+
+## A smaller four-variable, degree-56 polynomial
+
+The project's already-reviewed v88 paper `papers/arithmetic_dependencies/finite_support_twists_20261123_v88.tex`, Proposition on the degree-seven pole equation, gives
+\[
+(s^2+c)(t^2-c)=(1-c)r^2(s^2-c)(t^2+c).
+\]
+For every nonzero rational \(c\), this implies square denominator. Conversely every \(c\) satisfying the preparation in Proposition 2 has a solution. The second implication is obtained from Bhargava–Burungale Lemma 2.2 by the explicitly proved rational substitution in the v88 paper, with all denominators nonzero because \(\operatorname{sqf}(c)\equiv7\pmod8\).
+
+For each **fixed integer** \(m\in\mathcal M\), clear denominators after setting \(c=B/m\):
+\[
+H_m(B,s,t,r)=m(ms^2+B)(mt^2-B)
+-(m-B)r^2(ms^2-B)(mt^2+B).
+\]
+Define the single, explicit integer polynomial
+\[
+\boxed{\mathscr P(B,s,t,r)=\prod_{m\in\{1,2,3,5,6,7,10,14\}}H_m(B,s,t,r).}
+\]
+It has **four total variables** (one rational input and **three** rational witnesses), and **total degree exactly 56**, since each factor has degree seven and its degree-seven highest homogeneous component is nonzero. Over \(\mathbb Q\), \(\mathscr P=0\) if and only if one of the eight factors vanishes. Proposition 1's soundness proof applies to each such factor, by the independent valuation proof in v88; Proposition 2's multiplier selection supplies a factor having a rational zero. Consequently this *single* polynomial has precisely the two one-sided properties required of a pole detector:
+\[
+\begin{aligned}
+&B\neq0,\ \mathscr P(B,s,t,r)=0
+\ \Longrightarrow\ 
+ v_p(B)\notin\{-1,-3,-5,\dots\}\quad(p\notin\{2,3,5,7\}),\\
+&0<B<1,\ \text{square denominator},\ v_2(B)\ge4,\ 
+ v_3(B),v_5(B),v_7(B)\ge1
+\ \Longrightarrow\ \exists s,t,r\in\mathbb Q:\ \mathscr P(B,s,t,r)=0.
+\end{aligned}
+\]
+
+**Scope:** This gives an improved *existential pole predicate*, not a quartic construction in four variables. Its degree-56 polynomial is a direct factored specification, with no additional existential multiplier or Boolean variables. Changing a source template to use it requires the complete global compiler/guard and caller proof. The v88 project paper's degree-seven identity, not a fresh theorem of Bhargava–Burungale, supplies this extra degree reduction.
 
 ## Integration boundaries
 
