@@ -1,0 +1,257 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs,xurl,hyperref}
+\hypersetup{hidelinks}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newcommand{\Q}{\mathbb Q}
+\title{One polynomial denominator for a progression of contact equations}
+\author{Z diophantine in Q project}
+\date{24 November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+Polynomial division replaces each contact combination register by a
+shared coefficient representation of its denominator. Applied to the
+retained contact progression and its sixteenth endpoint, this gives
+complete systems with 963 variables and 818 quadratic equations in the
+general route, and 1140 variables and 991 equations in the specified
+route. These are exact rational changes of coordinates from the v102
+systems: they preserve their entire rational zero sets, including all
+exceptional inverse-weight values. All thirteen or eleven integer
+predicates and every arithmetic premise remain unchanged.
+\end{abstract}
+
+\section{The elementary reduction}
+
+Fix rational constants $A,B,C,D,E,F$ with $C\ne0$. Let $\kappa$
+be a nonzero rational coordinate, or the constant one. Suppose existing
+coordinates $u,f$ satisfy
+\begin{equation}\label{square}
+                            u^2=\kappa f.
+\end{equation}
+The two contact equations, with private coordinates $W,t$, are
+\begin{align}
+ \mathcal C&=Auf+(Bu+Cf)(W+\kappa)-\kappa t=0,\label{comb}\\
+ \mathcal R&=(Du+Ef+F\kappa)(W+\kappa)+ft=0.\label{rel}
+\end{align}
+Assume that $t$ occurs nowhere else in the complete system. Occurrences
+of $W$ elsewhere are permitted, and will be changed affinely below.
+Define the quadratic expressions
+\begin{align}
+ P_*&=Cf^2+Buf+E\kappa f+D\kappa u+F\kappa^2,\label{P}\\
+ R_*&=A(B^2-CE)uf+A(BE-CD)\kappa f\nonumber\\
+    &\hspace{13mm}+A(BD-CF)\kappa u+ABF\kappa^2.\label{R}
+\end{align}
+Introduce the affine replacement
+\begin{equation}\label{V}
+                  V=C^2(W+\kappa)+ACu-AB\kappa.
+\end{equation}
+If $p$ is an already represented coordinate satisfying
+\begin{equation}\label{p}
+                             \kappa p=P_*,
+\end{equation}
+then replace the two contact equations by the single quadratic equation
+\begin{equation}\label{new}
+                                  pV+R_*=0.
+\end{equation}
+Here $V$ replaces $W$, rather than being added as another coordinate.
+
+\begin{lemma}\label{lemma}
+Under \eqref{square} and \eqref{p}, the replacement preserves the full
+rational solution set bijectively after deleting $t$. Neither $V$ nor
+$W$, $p$, or $P_*$ is required to be nonzero.
+\end{lemma}
+\begin{proof}
+There is the exact polynomial identity
+\begin{equation}\label{identity}
+ P_*V+\kappa R_*-C^2(\kappa\mathcal R+f\mathcal C)
+       =AC(Bf+D\kappa)(u^2-\kappa f),
+\end{equation}
+where $V$ is given by \eqref{V}. The verifier expands both sides in
+independent symbols and checks this identity over $\mathbb Z$.
+An old solution therefore gives \eqref{new}, since $\kappa\ne0$.
+Conversely, recover the old coordinates uniquely by
+\begin{equation}\label{recovery}
+ W=\frac{V-ACu-(C^2-AB)\kappa}{C^2},\qquad
+ t=\frac{Auf+(Bu+Cf)(W+\kappa)}{\kappa}.
+\end{equation}
+The combination equation holds by definition; \eqref{identity} now
+gives $C^2\kappa\mathcal R=0$, hence the other old equation. These
+maps divide only by the stated nonzero constant $C$ and the already
+nonzero $\kappa$. Every occurrence of $W$ in another quadratic row is
+changed by the affine first expression in \eqref{recovery}, so its
+degree remains at most two.
+\end{proof}
+
+For motivation, in the unscaled coordinate $x=u/\kappa$ the relevant
+denominator is
+\[
+ P(x)=Cx^4+Bx^3+Ex^2+Dx+F.
+\]
+Polynomial division of $Ax^5$ by $P(x)$ has quotient
+$Ax/C-AB/C^2$. Subtracting this linear quotient from the old inverse
+weight gives \eqref{V}. The remainder is only cubic, so
+\eqref{square} represents it quadratically through $uf,f,u,1$.
+The division is an identity of polynomials with a fixed nonzero leading
+coefficient; it does not require that $P(x)$ be nonzero.
+
+\section{Sharing the denominator coefficients}
+
+Suppose a finite set $J\subset\Q$ labels contacts with retained affine
+coordinate expressions
+\begin{equation}\label{progression}
+ u(j)=u_0+2jv+j^2w,\qquad
+ f(j)=f_0+ja_1+j^2a_2+j^3a_3+j^4a_4.
+\end{equation}
+The existing system ensures $u(j)^2=\kappa f(j)$. In particular this
+follows from $u_0^2=\kappa f_0$ and the four retained equations
+\[
+ \kappa a_1=4u_0v,\quad
+ \kappa a_2=2u_0w+4v^2,\quad
+ \kappa a_3=4vw,\quad \kappa a_4=w^2.
+\]
+Indeed the discrepancy in the identity for general $j$ is the sum of
+the root discrepancy and the four discrepancies weighted by
+$-j,-j^2,-j^3,-j^4$.
+
+Form the degree-eight polynomial in an indeterminate $T$,
+\begin{equation}\label{common}
+ \Pi(T)=C f(T)^2+B u(T)f(T)+E\kappa f(T)
+                          +D\kappa u(T)+F\kappa^2.
+\end{equation}
+Add nine common coordinates $p_0,\ldots,p_8$ and the nine quadratic rows
+\begin{equation}\label{coeff}
+                      \kappa p_j=[T^j]\Pi(T),\qquad 0\le j\le8.
+\end{equation}
+All coefficients of $u(T),f(T)$ are existing coordinates or affine
+expressions in those coordinates, so every right side is quadratic.
+For a contact at index $j$, use $p(j)=\sum_{h=0}^8p_hj^h$ in
+\eqref{new}. This is an affine expression in the new coordinates and
+therefore preserves degree two.
+
+\begin{theorem}\label{general}
+For $r$ contacts of the form \eqref{comb}--\eqref{rel} along
+\eqref{progression}, with $r$ private combination registers occurring
+only in their own two equations, the construction deletes those $r$
+registers and replaces them by nine common registers. It saves $r-9$
+variables and $r-9$ quadratic rows. The rational zero sets before and
+after the construction are bijective under the explicit maps above.
+The index set may contain zero or negative indices; the spacing can
+vanish; and all inverse weights, including zero values, are covered.
+\end{theorem}
+\begin{proof}
+Given an old solution, \eqref{coeff} has a unique solution because
+$\kappa\ne0$. Apply Lemma~\ref{lemma} to each contact. Conversely,
+those common equations imply \eqref{p} at every contact index, so the
+lemma reconstructs all deleted coordinates and rows. Each forward and
+backward coordinate map is rational and inverse to the other. The
+change from $2r$ rows to $r+9$ rows gives the stated count.
+\end{proof}
+
+\section{Application to the complete v102 systems}
+
+The v102 endpoint theorem \cite{endpoint} already identifies the second
+contact of the root block as index 16 of the common progression. Its
+square and fourth-power registers have been recharted to the same
+gauge as all the first contacts. Set $u_0=\mathtt{int\_b\_60}$,
+$f_0=\mathtt{int\_b\_61}$,
+$u_{16}=\mathtt{int\_b\_69}$,
+$f_{16}=\mathtt{int\_b\_70}$, and use
+\[
+ v=\frac{u_{16}-u_0-256w}{32},\qquad
+ a_1=\frac{f_{16}-f_0-256a_2-4096a_3-65536a_4}{16}.
+\]
+These affine expressions are exactly those already retained by v102;
+no new choice of contacts is made.
+
+For the general route, $\kappa=1$ and
+\begin{align*}
+ A&=3813373161796,&B&=122376041313918,\\
+ C&=-35893742479489,&D&=141822723674536,\\
+ E&=-192222345736537,&F&=-39896049934224.
+\end{align*}
+Its first contacts have indices
+$0,1,2,3,4,5,6,7,8,10,11,12,13$; adding the root second contact
+at index 16 gives $r=14$. For the specified route,
+$\kappa=\rho=\mathtt{int\_b\_162}$ is already guarded by
+$\rho\mathtt{int\_b\_163}=1$, and
+\begin{align*}
+ A&=7878870169,&B&=1229741066709366,\\
+ C&=-6786192246520,&D&=476802068222265625,\\
+ E&=-42042541279847500,&F&=-1738195040039062500.
+\end{align*}
+Its first contact indices are
+$0,1,2,3,4,5,6,7,8,10,11$; the same endpoint adds the twelfth
+contact. Every displayed constant is checked against the literal
+source rows, including the row normalization factors.
+
+The deleted coordinates are the first-contact combination registers
+$\mathtt{int\_block\_62}$ and the root second-contact register
+$\mathtt{int\_b\_71}$. The inverse registers retain their names but
+now store $V$ in \eqref{V}; this changed interpretation is recorded
+explicitly in the complete tables. Other contact lists are unchanged.
+An exhaustive occurrence check verifies that each deleted coordinate
+occurs in exactly its combination and relation rows. Every changed
+occurrence of each inverse register is included, in particular its
+inverse-weight and gate rows.
+
+\begin{center}
+\begin{tabular}{lrrrr}
+\toprule
+Route & Old variables & New variables & Old rows & New rows\\
+\midrule
+General & 968 & 963 & 823 & 818\\
+Specified & 1143 & 1140 & 994 & 991\\
+\bottomrule
+\end{tabular}
+\end{center}
+The ordinary-$abc$ route, which uses another contact chart, remains
+695 variables and 590 quadratic rows. The sums of squared residuals
+are polynomials of degree exactly four: a retained outer row has a
+nonzero quadratic part, and a sum of real squares of homogeneous
+quadratic parts cannot cancel identically.
+
+The exact changes preserve all thirteen integer predicates of the
+general route and all eleven of the specified route. They change no
+coefficient parameter or arithmetic interface. The general route's
+sufficient parameter remains ineffective. All conclusions about
+undecidability are still under the retained arithmetic premises of the
+integer interfaces and the externally cited Jones coding theorem.
+This paper establishes no unconditional undecidability conclusion,
+no global minimality result, and no quartic bound close to 263.
+
+\section{Reproduction and verification scope}
+
+The deterministic compiler and independent checker are
+\begin{quote}\small
+\nolinkurl{undecidability/quadratic_reduction_v103/build_contact_denominator.py}\\
+\nolinkurl{undecidability/quadratic_reduction_v103/verify_contact_denominator.py}.
+\end{quote}
+The complete row tables and adjacent certificates are
+\begin{quote}\small
+\nolinkurl{denominator_general_quadrics.json},\quad
+\nolinkurl{denominator_general_certificate.json},\\
+\nolinkurl{denominator_specified_quadrics.json},\quad
+\nolinkurl{denominator_specified_certificate.json}.
+\end{quote}
+The checker imports no compiler. It proves \eqref{identity} symbolically,
+pins the retained root and four progression rows, independently selects
+the contact indices and constants, checks every omitted-coordinate
+occurrence, derives each changed row from the recovery map, and checks
+every unchanged row literally. It verifies the nine coefficient equations,
+complete coordinate support, coefficient domain, degree, counts, parameter
+and integer-predicate preservation, and input/output SHA-256 hashes.
+Its result is a finite algebraic audit and does not independently prove
+the inherited arithmetic interfaces.
+
+\begin{thebibliography}{9}
+\bibitem{endpoint} Z diophantine in Q project,
+\emph{Contact endpoint reuse}, 23 November 2026,
+\nolinkurl{undecidability/contact_endpoint_v102/contact_endpoint_reuse.tex}.
+\bibitem{progression} Z diophantine in Q project,
+\emph{Affine contact progressions}, 23 November 2026,
+\nolinkurl{undecidability/general_contact_v94/affine_contact_progressions.tex}.
+\end{thebibliography}
+\end{document}
