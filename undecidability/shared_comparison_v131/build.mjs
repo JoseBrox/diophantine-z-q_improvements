@@ -18,7 +18,7 @@ function build(src,contacts){
  const sub=(p,q)=>add(p,sc(q,-1));
  const mul=(p,q)=>{let out=new Map();for(let [m,a] of p)for(let [n,b] of q){let k=[...m.split(",").filter(Boolean),...n.split(",").filter(Boolean)].map(Number).sort((a,b)=>a-b).join(",");let c=rm(a,b);let z=out.has(k)?ra(out.get(k),c):c;if(z[0])out.set(k,z);else out.delete(k)}return out};
  const sq=p=>mul(p,p);
- const row=(n,p)=>{let d=1n;for(let [a,b] of p.values())d=d/gcd(d,b)*b;let ts=[...p].map(([m,[a,b]])=>({coefficient:String(a*(d/b)),monomial:m?m.split(",").map(Number):[]}));if(ts.some(t=>t.monomial.length>2))throw Error("not quadratic "+n);residuals.push({name:n,terms:ts})};
+ const row=(n,p)=>{let d=1n;for(let [a,b] of p.values())d=d/gcd(d,b)*b;let ts=[...p].filter(([,c])=>c[0]!==0n).map(([m,[a,b]])=>({coefficient:String(a*(d/b)),monomial:m?m.split(",").map(Number):[]}));if(ts.some(t=>t.monomial.length>2))throw Error("not quadratic "+n);residuals.push({name:n,terms:ts})};
  const define=(n,p)=>{let x=reg(n);row(n,sub(x,p));return x};
  const fcon=(a,b=0)=>[con(a),con(b)], asF=x=>[x,con(0)], freg=n=>[reg(n+"_0"),reg(n+"_1")];
  const fa=(...pp)=>[add(...pp.map(x=>x[0])),add(...pp.map(x=>x[1]))];
@@ -65,7 +65,7 @@ function build(src,contacts){
   // introduced in the following one row only.
   let R=reg(n+"_scalar_R");
   let rr=sub(mul(R,add(one,sc(r,22201))),zero);
-  row(n+".scalar_R",rr); let sr=residuals[residuals.length-1];sr.terms.push({coefficient:"-149*C_parameter^2",monomial:[idx.get(n+"_r")]});
+  row(n+".scalar_R",rr); let sr=residuals[residuals.length-1];sr.terms.push({coefficient:"-149*C_parameter**2",monomial:[idx.get(n+"_r")]});
   let Rsq=define(n+"_Rsq",sq(R)),R4=define(n+"_R4",sq(Rsq)),R5=define(n+"_R5",mul(R4,R));
   let Ahat=reg(n+"_tauhat");row(n+".tauhat",sub(mul(Ahat,Tn),add(An,mul(R,Bn),mul(Rsq,Cn))));
   let tau=reg(n+"_tau");row(n+".tau",sub(mul(tau,R5),Ahat));let tau2=define(n+"_tau2",sq(tau)),b=define(n+"_bs",sc(mul(add(Rsq,sc(R,9792)),tau2),7,9));pole(n+"_scalarpole",b);
@@ -90,11 +90,11 @@ function build(src,contacts){
  let all=pairs.concat(labels),agg=fa(...all.map(p=>p.absc),fscale(d,all.length),fcon(20));
  let U=define("G_aggregate_U",agg[0]);let V=contacts===3?define("G_aggregate_V",agg[1]):null;
  let lambda=reg("G_lambda"),ts=[lambda,add(lambda,U)];if(contacts===3){let V2=define("G_aggregate_V2",sq(V));ts.push(add(ts[1],con(10),V2))}
- const thetas=[];for(let s of [2n,4n])for(let [a,b] of [[0n,1n],[-1n,2n],[-1n,1n],[1n,2399n],[-32n,407n]])thetas.push(rat(s*b+a,b));
+ const theta0=[[0n,1n],[-1n,2n],[-1n,1n],[1n,2399n],[-32n,407n]];const ref=contacts===2?rat(2):rat(3,11);const thetas=[...theta0,...theta0.map(t=>ra(ref,rat(-t[0],t[1])))];
  // q=(t+1)^8/G(t), G monic. Complete set of denominator guards.
  const qs=[];
  for(let j=0;j<contacts;j++){
-  let n="G_contact"+j,t=ts[j],d=add(t,one),d2=define(n+"_d2",sq(d)),d4=define(n+"_d4",sq(d2)),d8=define(n+"_d8",sq(d4)),di=reg(n+"_dinv");row(n+".dinv",sub(mul(di,d),one));
+  let n="G_contact"+j,t=ts[j],d=add(t,con(3)),d2=define(n+"_d2",sq(d)),d4=define(n+"_d4",sq(d2)),d8=define(n+"_d8",sq(d4)),di=reg(n+"_dinv");row(n+".dinv",sub(mul(di,d),one));
   let prod=sub(t,con(...thetas[0]));for(let k=1;k<thetas.length;k++)prod=define(n+"_G"+k,mul(prod,sub(t,con(...thetas[k]))));
   let q=reg(n+"_q");row(n+".contact",sub(mul(q,prod),d8));qs.push(q);
   let g=reg(n+"_gate");row(n+".gate",sub(mul(q,sub(sub(g,one),E2)),sq(sub(C,q))));
@@ -104,6 +104,6 @@ function build(src,contacts){
  row("global.gauge",sub(C,add(...qs)));
  const supports=new Set(residuals.flatMap(q=>q.terms.flatMap(t=>t.monomial)));
  if(supports.size!==names.length||residuals.some(q=>q.terms.some(t=>t.monomial.length>2||!t.coefficient)))throw Error("support");
- return {schema:"zq-undecidability-shared-comparison-v131",variables:names.length,quadratic_rows:residuals.length,parameters:[...src.parameters.filter(x=>x!=="B_abc"),"C_parameter"],variable_names:names,residuals,degree:4,source_inputs:inputs,integer_certificates:12,comparison_poles:contacts,scalar_poles:12,instance_input_in_coefficients:true,source_coding_theorem:src.source_coding_theorem,retains_all_arithmetic_premises:true,arithmetic_scope:"see README; full-family modular contact height, scalar extraction, shared formal/CRT, trace/abscissa height, BB existence",predecessor_git_blob:"94da64905107446920903f889265038b161f2f6f"};
+ return {schema:"zq-undecidability-shared-comparison-v131",variables:names.length,quadratic_rows:residuals.length,parameters:[...src.parameters.filter(x=>x!=="B_abc"),"C_parameter"],variable_names:names,residuals,degree:4,source_inputs:inputs,integer_certificates:12,comparison_poles:contacts,scalar_poles:12,instance_input_in_coefficients:true,source_coding_theorem:src.source_coding_theorem,retains_all_arithmetic_premises:true,arithmetic_scope:"see README; original reflected modular contact height for each route, scalar extraction, shared formal/CRT, trace/abscissa height, BB existence",predecessor_git_blob:"94da64905107446920903f889265038b161f2f6f"};
 }
 for(const c of [2,3]){const out=build(JSON.parse(raw),c),s=JSON.stringify(out,null,2)+'\n',p=new URL(c===2?'general_quadrics.json':'specified_quadrics.json',import.meta.url);if(process.argv.includes('--write'))fs.writeFileSync(p,s);else if(fs.readFileSync(p,'utf8')!==s)throw Error('replay mismatch');console.log(c,out.variables,out.quadratic_rows);}
