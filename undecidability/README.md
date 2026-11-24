@@ -33,6 +33,8 @@ The complete coefficient recipe and independent degree ledger are in
 [alternative_v93](alternative_v93). Earlier degree bounds below identify
 the historical encoders; all historical specifications remain unchanged.
 
+**Certificates and replay:** [finite-wrapper identity/count ledger](certificates/finite_wrapper_transfer.json), [paired-spectral degree ledger](alternative_v93/certificate.json), and [machine-readable records](results.json). The independent [v90](../scripts/verify_v90.py) and [v93](../scripts/verify_v93.py) gates check the stored source hashes, finite-algebra ranks, variable counts, and strict degree ceilings. They do not independently establish the infinite arithmetic premises of the integer predicates. The final large determinant polynomials are specified by finite coefficient recipes, not fully expanded.
+
 ## Current corrected quartic transfers
 
 | Integer interface | Rational unknowns | Quadratic residuals | Additional height hypothesis |
