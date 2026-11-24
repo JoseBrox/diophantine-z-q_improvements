@@ -9,17 +9,17 @@ counted. This is a separate objective from minimizing the total coordinates
 of a polynomial defining the integers. All recorded numbers are upper bounds;
 no global least value is claimed.
 
-## Current frontier (v138)
+## Current frontier (v141)
 
-See the [continuation report](../docs/results_20261124_v138.md) and [current frontier ledger](frontier_20261124_v138.json).
+See the [continuation report](../docs/results_20261124_v141.md) and [current frontier ledger](frontier_20261124_v141.json).
 
 | Route | Quartic unknowns | Quadratic residuals | Unrestricted degree | Alternative published coding source |
 |:--|--:|--:|--:|--:|
-| General | **651** | 562 | **48** | 52 |
-| Specified | **671** | 580 | **50** | 54 |
+| General | **622** | 533 | **48** | 52 |
+| Specified | **642** | 551 | **50** | 54 |
 | Ordinary rational abc | **292** | 241 | **36** | 36 |
 
-The [recursive scalar detector](recursive_scalar_v136/README.md) reduces twelve scalar poles to one and gives 663/683 variables. The [guarded linear-target chart](guarded_target_v137/README.md) reduces these to 651/671. The [independent prefix alternative](independent_prefix_v138/README.md) reconstructs prefix integrality without the old short-power quotients, with 657/677 variables and still twelve certified integers. These constructions retain the full-domain H4.1 height premise and the other project arithmetic premises.
+The [recursive scalar detector](recursive_scalar_v136/README.md) reduces twelve scalar poles to one and gives 663/683 variables. The [guarded linear-target chart](guarded_target_v137/README.md) reduces these to 651/671. The [shared Boolean comparison detector](boolean_comparison_v139/README.md) compresses these to 622/642. The [guarded independent-prefix repair](independent_prefix_guarded_v140/README.md) gives 628/648, superseding v138 because of a missing nonzero-branch justification. The [eight-source alternative](eight_source_v141/README.md) genuinely reduces the number of certified integers to eight using a different coding theorem; its uniform quartic upper bounds 2434/2454 are not preferred total counts. These constructions retain the full-domain H4.1 height premise and the other project arithmetic premises.
 
 The [weighted private charts](weighted_private_v133/README.md) and [normalized scalar circuit](scalar_normalized_v134/README.md) improve 848/876 to 774/795 and then 750/771. The [local merger obstruction](scalar_merger_obstruction_v135/README.md) excludes fixed rational-function replacements of the separate local pole tests on independent scalar inputs; the [short-power obstruction](short_power_obstruction_v135/README.md) records the remaining prefix-integrality gap. The [shared comparison theorem](shared_comparison_v131/README.md) uses two/three comparison poles in total for all twelve certified source integers. The specified construction uses an effective sufficient parameter recipe. The [harmonic selector](abc_harmonic_selector_v130/README.md) saves three more variables over [v128](abc_curve_chart_elimination_v128/README.md). The [ten-certificate alternatives](ten_certificate_v132/README.md) restore the long power chain and give 879/907 unknowns, a tradeoff rather than a reduction of the preferred counts.
 

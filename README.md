@@ -49,15 +49,15 @@ The [results JSON](data/results_20261123_v88.json) records all five new finite-a
 
 The [undecidability category](undecidability/README.md) counts existential
 rational unknowns; the integer instance is encoded in coefficients.
-The [v136–v138 continuation](docs/results_20261124_v138.md) gives the current bounds and complete quartic tables, with the [current frontier ledger](undecidability/frontier_20261124_v138.json).
+The [v139–v141 continuation](docs/results_20261124_v141.md) gives the current bounds, complete quartic tables and the eight-certificate alternative, with the [current frontier ledger](undecidability/frontier_20261124_v141.json).
 
 | Degree restriction | Additional height hypothesis | Rational unknowns | Status |
 |:--|:--|--:|:--|
 | Unrestricted degree | No additional abc hypothesis | **48** | Direct-index transfer with the accepted ten-integer source; retained modular, trace-height and other arithmetic inputs |
 | Unrestricted degree, specified source | No additional abc hypothesis | **50** | Algorithmically specified direct-index transfer with the accepted ten-integer source; retained full-family modular and abscissa-sum inputs |
 | Unrestricted degree | Ordinary rational abc | **36** | One selective derivative pole and finite-algebra encoding; retained arithmetic premises |
-| Quartic transfer | No additional abc hypothesis | **651** | Recursive shared scalar detector and guarded linear targets; 562 residuals; 12 integer predicates |
-| Quartic transfer, specified source | No additional abc hypothesis | **671** | Recursive shared scalar detector and guarded linear targets, effective parameter recipe; 580 residuals; 12 integer predicates |
+| Quartic transfer | No additional abc hypothesis | **622** | Shared scalar and Boolean comparison detector; 533 residuals; 12 integer predicates |
+| Quartic transfer, specified source | No additional abc hypothesis | **642** | Shared scalar and Boolean comparison detector, effective parameter recipe; 551 residuals; 12 integer predicates |
 | Quartic transfer | Ordinary rational abc | **292** | Rational harmonic selector; 241 residuals; 12 integer predicates |
 
 The [ten-certificate alternatives](undecidability/ten_certificate_v132/README.md) use 879/907 quartic variables: fewer integer predicates at a higher total cost than the preferred shared comparison tables. The [direct-index anchor refinement](undecidability/direct_index_anchor_v129/README.md) replaces large contact-shift powers by linear shifts without changing the 48/50 counts.
