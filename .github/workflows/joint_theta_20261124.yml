@@ -1,0 +1,21 @@
+name: Joint rationality and theta exact checks
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'papers/number_fields/joint_rationality_20261124/**'
+      - 'papers/number_fields/absorbed_joint_rationality_20261124/**'
+      - 'undecidability/positivity_theta_reduction_20261124/**'
+      - '.github/workflows/joint_theta_20261124.yml'
+  workflow_dispatch:
+jobs:
+  exact-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python undecidability/positivity_theta_reduction_20261124/verify.py
+      - run: python papers/number_fields/joint_rationality_20261124/verify.py
+      - run: python papers/number_fields/absorbed_joint_rationality_20261124/verify.py
