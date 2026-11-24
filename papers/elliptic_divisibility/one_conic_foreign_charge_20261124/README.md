@@ -274,7 +274,7 @@ a bounded-degree exception locus.
 
 ## Verification and status
 
-The accompanying checker tests the exact conic parametrization,
+The [standard-library checker](../../../scripts/verify_foreign_charge_20261124.py) tests the exact conic parametrization,
 odd-depth numerator inequalities, all-depth denominator
 inequalities, explicit rational elliptic fixtures, and the
 torsion-divisor degree census. No conjectural mass or rank input
@@ -282,3 +282,5 @@ is certified by finite checks. Both variants are complete
 extensions of the old six-coordinate relation and hence **not**
 definitions of the integers. No new unrestricted-degree or
 quartic defining-polynomial record is claimed.
+
+The executed checker passed 32,000 synthetic conic valuation profiles, 163 exact odd-depth and 184 exact all-depth foreign-prime conic fixtures, and the torsion-grid degree census for 24 multipliers. The same script checks the older BB charge. Run from the repository root with `python -B scripts/verify_foreign_charge_20261124.py`.
