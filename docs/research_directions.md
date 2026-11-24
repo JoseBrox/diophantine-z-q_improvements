@@ -14,9 +14,9 @@ The [additional research routes](research_routes_20261120.md) prove a complex-mu
 
 ## Undecidability in bounded numbers of rational unknowns
 
-The [v102 continuation](results_20261123_v102.md) gives corrected quartic
-transfers in **968 / 1143 / 695** rational unknowns, with
-**823 / 994 / 590** quadratic residuals. The instance is a coefficient
+The [v103 continuation](results_20261124_v103.md) gives corrected quartic
+transfers in **963 / 1140 / 695** rational unknowns, with
+**818 / 991 / 590** quadratic residuals. The instance is a coefficient
 parameter. The third route assumes ordinary rational abc; all routes retain
 their integer predicate's stated arithmetic premises.
 
@@ -70,6 +70,16 @@ of the common progression. Its square and fourth power replace two shared
 coefficients and two redundant rows in both general routes. The c-integrality
 checkpoint proves that the norm subsystem alone is insufficient; its
 full-source question remains open and no c predicate is removed.
+Polynomial division now replaces the private contact combinations along the
+existing progression by nine shared denominator coefficients, saving five
+general and three specified variables. The transformation is bijective on
+the full rational zero set, including zero inverse weights. A Vandermonde
+checkpoint excludes fewer helpers only within this affine evaluation class.
+The new integral-trace lemma makes certifying c equivalent to certifying d
+in the first Pell block; neither integrality condition follows independently
+yet. A separate Jones–Matiyasevich unary-exponential source has only two
+natural-number unknowns in an inequality, but its polynomial compilation
+and exponential-certificate costs remain unproved.
 Every remaining residual and denominator guard is retained explicitly.
 
 For unrestricted degree, **82 / 100 / 52** remains the smallest recorded

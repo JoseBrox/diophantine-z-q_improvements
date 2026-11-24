@@ -37,8 +37,8 @@ the historical encoders; all historical specifications remain unchanged.
 
 | Integer interface | Rational unknowns | Quadratic residuals | Additional height hypothesis |
 |:--|--:|--:|:--|
-| General | **968** | **823** | No additional abc |
-| Specified | **1143** | **994** | No additional abc |
+| General | **963** | **818** | No additional abc |
+| Specified | **1140** | **991** | No additional abc |
 | Ordinary abc | **695** | **590** | Ordinary rational abc |
 
 The [corrected-source theorem](source_repair_v93/corrected_jones_source.tex)
@@ -101,11 +101,21 @@ prefix. Deleting its sign square gives **970 / 1145 / 695**
 counts; see the [v101 report](../docs/results_20261123_v101.md).
 The [contact-endpoint rechart](contact_endpoint_v102/contact_endpoint_reuse.tex)
 then reuses two endpoint powers to eliminate two shared coefficients and
-two rows. The current counts are **968 / 1143 / 695**, with
+two rows. The intermediate counts are **968 / 1143 / 695**, with
 **823 / 994 / 590** residuals; see the [v102 report](../docs/results_20261123_v102.md).
 The [c-integrality checkpoint](c_integrality_checkpoint_v102/README.md)
 gives an exact counterfamily for the three-norm subsystem, while leaving
 the full-source integrality question open and retaining the c predicate.
+The [shared-denominator theorem](quadratic_reduction_v103/contact_denominator_compression.tex)
+([PDF](quadratic_reduction_v103/contact_denominator_compression.pdf)) then replaces
+fourteen or twelve private contact-combination coordinates by nine common
+coefficients, giving **963 / 1140 / 695** and **818 / 991 / 590** rows.
+This preserves each entire rational zero set bijectively. The
+[v103 report](../docs/results_20261124_v103.md) and
+[complete tables](quadratic_reduction_v103) supply the proof and exact audit.
+The [new source-frontier checkpoint](source_frontier_v103/README.md) proves
+an integral-trace criterion and identifies a unary-exponential source;
+neither removes an integer predicate at this stage.
 
 ### Method and intermediate improvements
 

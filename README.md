@@ -39,8 +39,8 @@ The [results JSON](data/results_20261123_v88.json) records all five new finite-a
 
 The [undecidability category](undecidability/README.md) counts existential
 rational unknowns; the integer instance is encoded in coefficients.
-The [v102 continuation](docs/results_20261123_v102.md) gives the current
-complete quartic tables and the research checkpoint. The [v93 continuation](docs/results_20261123_v93.md) supplies corrected
+The [v103 continuation](docs/results_20261124_v103.md) gives the current
+complete quartic tables and the source-research checkpoints. The [v93 continuation](docs/results_20261123_v93.md) supplies corrected
 quartic sources, smaller complete tables, and lower general-degree bounds.
 
 | Degree restriction | Additional height hypothesis | Rational unknowns | Status |
@@ -48,8 +48,8 @@ quartic sources, smaller complete tables, and lower general-degree bounds.
 | Unrestricted degree | No additional abc hypothesis | **82** | Proved transfer under retained arithmetic premises; degree below `2^532` |
 | Unrestricted degree, specified source | No additional abc hypothesis | **100** | Proved transfer under retained arithmetic premises; degree below `2^578` |
 | Unrestricted degree | Ordinary rational abc | **52** | Proved transfer under retained arithmetic premises; degree below `2^425` |
-| Quartic transfer | No additional abc hypothesis | **968** | Signed Pell power recovery; 823 quadratic residuals; retained arithmetic premises |
-| Quartic transfer, specified source | No additional abc hypothesis | **1,143** | Corrected Jones source; 994 quadratic residuals; retained arithmetic premises |
+| Quartic transfer | No additional abc hypothesis | **963** | Shared contact denominators; 818 quadratic residuals; retained arithmetic premises |
+| Quartic transfer, specified source | No additional abc hypothesis | **1,140** | Shared contact denominators; 991 quadratic residuals; retained arithmetic premises |
 | Quartic transfer | Ordinary rational abc | **695** | Signed Pell power recovery; 590 quadratic residuals; retained arithmetic premises |
 
 The [corrected-source proof](undecidability/source_repair_v93/corrected_jones_source.tex)
@@ -120,7 +120,15 @@ signed auxiliary solution to the former sign-selected system.
 The [contact-endpoint identities](undecidability/contact_endpoint_v102/contact_endpoint_reuse.tex)
 then replace two common power coefficients with the already stored
 second-contact square and fourth power. This exact guarded rechart gives
-the current **968 / 1143 / 695** quartic counts.
+the intermediate **968 / 1143 / 695** quartic counts.
+The [shared-denominator identity](undecidability/quadratic_reduction_v103/contact_denominator_compression.tex)
+([PDF](undecidability/quadratic_reduction_v103/contact_denominator_compression.pdf))
+then replaces private contact combinations by nine common polynomial coefficients.
+It gives **963 / 1140 / 695**, with **818 / 991 / 590** quadratic residuals,
+by a bijective rational reconstruction of the complete previous zero sets.
+A [new source checkpoint](undecidability/source_frontier_v103/README.md) proves
+that an integral first Pell trace would already force c to be integral;
+it keeps the c predicate and records a different classical exponential source.
 
 The [paired spectral encoder](undecidability/papers/paired_spectral_encoder.tex)
 ([PDF](undecidability/papers/paired_spectral_encoder.pdf)) lowers the

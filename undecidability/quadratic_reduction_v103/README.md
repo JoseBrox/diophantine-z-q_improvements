@@ -37,7 +37,7 @@ For a common square/fourth-power progression, `P` is a polynomial of degree eigh
 
 ## Files and reproduction
 
-- `contact_denominator_compression.tex`: complete proof, exact constant tuples, guards, inverse maps, and counts.
+- `contact_denominator_compression.tex` / `.pdf`: complete proof, exact constant tuples, guards, inverse maps, and counts.
 - `denominator_general_quadrics.json`, `denominator_specified_quadrics.json`: complete coefficient tables.
 - Adjacent `_certificate.json` files: source hashes, transformation dictionaries, occurrence lists, and result hashes.
 - `build_contact_denominator.py`: deterministic compiler.
@@ -53,3 +53,5 @@ python -B undecidability/quadratic_reduction_v103/verify_contact_denominator.py
 The checker proves the displayed identity and the retained progression identity, checks the original contact templates, reconstructs every changed row, compares every unchanged row, and verifies degree, coefficients, complete support, counts, and hashes. These finite checks do not prove the inherited arithmetic premises or the externally cited Jones coding theorem. The sufficient general parameter remains ineffective. No quartic bound near 263 is asserted.
 
 The exploratory `search_affine.py` also checks the rank of all quadratic homogeneous row parts over rational constant combinations, expanding fixed parameters into separate monomials. The three predecessor ranks are 823, 994, and 590: there is no nontrivial rational constant row combination with zero quadratic part in that restricted search. This is not a lower bound for guarded, nonlinear, or parameter-dependent changes.
+
+The [coefficient-span checkpoint](coefficient_span_checkpoint.md) proves that the nine new denominator helpers are necessary within the restricted class retaining this progression and using rational constant affine evaluation. It does not rule out a nonlinear change of coordinates or use of further source equations.
