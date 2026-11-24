@@ -7,3 +7,7 @@ Proof, complete quadrics, symbolic expanded coefficients, a finite coefficient f
 The new contact weight is (H^2/A-1+1/H), with A and H the asymmetrically normalized eight-root contact products. Its odd-prime support is bounded below by (23h(M)/20-O(1)), whereas the input error contributes at most (1002h(M)/997+O(\log(1+|m|))). This removes the need for the fourth power of the height parameter and the derivative circuit. Integer completeness is proved separately at the selected primes, the nonselected primes, and the prepared fixed places.
 
 Retained hypotheses and effectivity are exactly as stated in the proof. In particular B=1 is a coefficient fixture, not an effective defining cutoff.
+
+The independent exact construction check [passed on GitHub Actions](https://github.com/JoseBrox/diophantine-z-q_improvements/actions/runs/45376829320). The B=1 fixture has 11,174 bytes and coefficient height 5,531,402,752.
+
+[Two scoped obstructions](../negative_results/defining_gate_obstructions_20261124/README.md) record the full rank of the quadratic parts of the 163/179/54 tables and an elementary obstruction to a universal single rational-function parity-OR gate for arbitrary scalar inputs. These do not establish global lower bounds.
