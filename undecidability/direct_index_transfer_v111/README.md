@@ -6,7 +6,7 @@ Let Q(a,Z_1,...,Z_k) be a fixed integer polynomial, a a nonnegative integer coef
 
 Under these inputs, there is a family of integer polynomials with a uniformly bounded (not here numerically evaluated) degree, defining the same instance set as existence of integral Z with Q(a,Z)=0, in **4k+8** rational unknowns (two-contact version), or **4k+10** rational unknowns (three-contact version). The first has a fixed ineffective amplification exponent; the second gives an algorithmically specified sufficient exponent. No ordinary abc assumption is added. No assertion is made that the imported arithmetic inputs have all been proved independently. The three-contact version uses the explicitly retained full-family modular input, not the old coefficient L=143; it is a new source rather than a coefficient compression of that source.
 
-Using the published mixed-domain theorem and its ternary positivity substitution (transfer_general_degree.tex, Lemma 2.1), k=11 gives 52 and 54. Using Zhi-Wei Sun, *Ten unknowns for Hilbert's tenth problem over the integers*, arXiv:2609.01594 (1 September 2026), Theorem 1.1, k=10 gives 48 and 50. The latter numbers additionally import the new preprint's theorem; its proof is not independently audited here. The published-source bounds are recorded separately. Unlike an application of k separate rational integer definitions, the present proof tests Q directly on elliptic indices.
+Using the published mixed-domain theorem and its ternary positivity substitution (transfer_general_degree.tex, Lemma 2.1), k=11 gives 52 and 54. Using Zhi-Wei Sun, *Ten unknowns for Hilbert's tenth problem over the integers*, arXiv:2609.01594 (1 September 2026), Theorem 1.1, k=10 gives 48 and 50. The ten-integer theorem is an accepted project coding source, as clarified in the [source-review record](../../docs/audits/sun_september_20261124/README.md). The alternative published-source bounds are recorded separately. Unlike an application of k separate rational integer definitions, the present proof tests Q directly on elliptic indices.
 
 ## 1. Nonzero labels and a uniform height parameter
 
@@ -120,7 +120,7 @@ The degree is bounded uniformly in a since Q,L,J and all the operations, sizes a
 ## References and replay
 
 - [Original mixed-source transfer](../papers/transfer_general_degree.tex) and [source formula](../papers/finite_wrapper_transfer.tex).
-- [Sun 2026, Theorem 1.1](https://arxiv.org/abs/2609.01594), imported only for the smaller 48/50 counts.
+- [Sun 2026, Theorem 1.1](https://arxiv.org/abs/2609.01594), accepted coding source for the 48/50 counts.
 - [Contact-height input and effective ledger](../../papers/few_variables25/four_contact_scalar_20261119_v78.tex).
 - [Effective sum theorem and local log expansion](../../papers/effective_sums/effective_elliptic_sums_20261108_v10.tex).
 - [Aggregate trace theorem](../../papers/trace_heights/aggregate_trace_height_20261108_v9.tex).

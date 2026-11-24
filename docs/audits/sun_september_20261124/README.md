@@ -1,0 +1,9 @@
+# Sun coding-source status clarification (2026-11-24)
+
+The project author has explicitly confirmed acceptance of the September Sun preprint and requested that its consequences be used in the preferred tables, rather than classified as an additional unaccepted preprint input. This records that review decision; it does not claim a fresh independent full audit in this continuation. The mathematical citation remains necessary.
+
+The September source is Z.-W. Sun, [Ten unknowns for Hilbert's tenth problem over the integers](https://arxiv.org/abs/2609.01594), Theorem 1.1. It gives the ten-integer coding source used by v111. It is bibliographically distinct from the prime-pattern paper [arXiv:2610.20691](https://arxiv.org/abs/2610.20691) and the later [arXiv:2611.14605](https://arxiv.org/abs/2611.14605) construction audited in [v69](../sun_v2_20261117_v69/audit.md). The present acceptance does not silently certify every recursive arithmetic supplier of those other arguments.
+
+A fresh local check of September Lemma 5.2 confirms the valuation argument for the product of the three factors `(T+SY)^2 - gamma*S^2`, gamma in {13,17,221}: if v_p(T)<v_p(S), each factor has valuation 2v_p(T), hence their product cannot be divisible by S^6. The converse uses the intersective CRT construction in the source. This local check is not a replacement for the author's confirmed prior acceptance of the entire coding theorem.
+
+Preferred unrestricted counts: **48 / 50 / 36** (general / specified / ordinary rational abc). The alternative 52/54 constructions remain valid. Historical certificate fields naming the previously additional preprint are retained for reproducibility. This review decision does not discharge the explicitly retained modular, elliptic, prime-pattern, height or pole-realization premises of the rational transfers.

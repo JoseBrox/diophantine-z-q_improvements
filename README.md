@@ -8,7 +8,7 @@ F(X,Y_1,\ldots,Y_m)
 
 whose rational input projection is the integers, under the arithmetic premises stated in each construction.
 
-**Every defining-polynomial variable count includes the input.** The separate [undecidability category](#fewest-variables-currently-recorded-for-undecidability) counts existential rational unknowns; its instance input is encoded in the coefficients. **The 25 / 27 / 11 bounds for defining the integers are not in conflict with the 52 / 54 / 36 unrestricted-degree undecidability bounds:** they answer different questions and use different variable-counting conventions. Degree means total degree. Coefficient height is the maximum absolute integer coefficient after the fixed parameters have been substituted. We optimize variable count, then degree, then coefficient height. No global minimum is claimed.
+**Every defining-polynomial variable count includes the input.** The separate [undecidability category](#fewest-variables-currently-recorded-for-undecidability) counts existential rational unknowns; its instance input is encoded in the coefficients. **The 25 / 27 / 11 bounds for defining the integers are not in conflict with the 48 / 50 / 36 unrestricted-degree undecidability bounds:** they answer different questions and use different variable-counting conventions. Degree means total degree. Coefficient height is the maximum absolute integer coefficient after the fixed parameters have been substituted. We optimize variable count, then degree, then coefficient height. No global minimum is claimed.
 
 ## Current constructions — 24 November 2026
 
@@ -49,14 +49,14 @@ The [v121 continuation](docs/results_20261124_v121.md) gives the current bounds 
 
 | Degree restriction | Additional height hypothesis | Rational unknowns | Status |
 |:--|:--|--:|:--|
-| Unrestricted degree | No additional abc hypothesis | **52** | Direct-index transfer under the stated modular, trace-height and other retained inputs; **48** additionally importing Sun 2026 |
-| Unrestricted degree, specified source | No additional abc hypothesis | **54** | Algorithmically specified direct-index transfer, retaining full-family modular and abscissa-sum inputs; **50** additionally importing Sun 2026 |
+| Unrestricted degree | No additional abc hypothesis | **48** | Direct-index transfer with the accepted ten-integer source; retained modular, trace-height and other arithmetic inputs |
+| Unrestricted degree, specified source | No additional abc hypothesis | **50** | Algorithmically specified direct-index transfer with the accepted ten-integer source; retained full-family modular and abscissa-sum inputs |
 | Unrestricted degree | Ordinary rational abc | **36** | One selective derivative pole and finite-algebra encoding; retained arithmetic premises |
 | Quartic transfer | No additional abc hypothesis | **884** | Theta positivity deletion; 749 residuals; 12 integer predicates |
 | Quartic transfer, specified source | No additional abc hypothesis | **1,049** | Theta positivity deletion; 912 residuals; 10 integer predicates |
 | Quartic transfer | Ordinary rational abc | **323** | Signed-abscissa comparison, mean-shifted cubic chart and exact elimination; 272 residuals; 12 integer predicates |
 
-The smaller 48/50 bounds use an additional external source theorem from [Sun's 2026 preprint](https://arxiv.org/abs/2609.01594), not independently audited here. The 52/54/36 bounds use the previous published mixed-domain source. All new transfers have their stated retained arithmetic premises; no unconditional undecidability or global minimality is claimed. The unrestricted-degree recipes have finite uniform degrees, without a new numerical degree comparison claim here. The [v108 continuation](docs/results_20261124_v108.md) preserves the earlier tables and the interrupted-results reconstruction.
+The 48/50 bounds use [Sun's ten-unknown theorem](https://arxiv.org/abs/2609.01594), accepted as a project coding source (see the [source-review clarification](docs/audits/sun_september_20261124/README.md)). The 36 bound uses the published mixed-domain source. The earlier 52/54 bounds remain available as alternative coding-source transfers. All new transfers have their stated retained arithmetic premises; no unconditional undecidability or global minimality is claimed. The unrestricted-degree recipes have finite uniform degrees, without a new numerical degree comparison claim here. The [v108 continuation](docs/results_20261124_v108.md) preserves the earlier tables and the interrupted-results reconstruction.
 
 **Historical v108 quartic proof trail:** the [new arithmetic theorem](undecidability/pell_integrality_replacement_v106/pell_integrality_replacement.tex)
 proves c-integrality from the retained norm, shifted trace, the source's
