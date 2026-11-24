@@ -2,7 +2,7 @@
 
 ## Conditional theorem
 
-Let L0=Q(sqrt(2)), E/L0:y^2=x^3-(11-6sqrt(2))x, with the original v110 hypothesis 2E(L0)=Z P and its trace-height, comparison, simultaneous prime-pattern and recurrence inputs. Let K be a number field linearly disjoint from L0. Assume ordinary abc over K, the BB rational prepared-pole realization, and the additional hypothesis
+Let L0=Q(sqrt(2)), E/L0:y^2=x^3-(11-6sqrt(2))x, with the original v110 non-torsion point P and its trace-height, comparison, simultaneous prime-pattern and recurrence inputs (the exact saturation statement 2E(L0)=Z P is not needed). Let K be a number field linearly disjoint from L0. Assume ordinary abc over K, the BB rational prepared-pole realization, and the additional hypothesis
 
     rank E(K L0) = rank E(L0) = 1.
 
@@ -10,7 +10,7 @@ Then Z^k in K^k has an integer-coefficient polynomial definition in **3k+8** tot
 
 ## Proof
 
-By finite generation and rank equality, E(K L0)/2E(L0) is a finite abelian group. Choose a fixed positive integer M annihilating it. Then M E(K L0) is a subgroup of 2E(L0)=Z P, of positive rank one. Thus there exists a fixed positive integer c for which M E(K L0)=Z P_*=Z [c]P. The finite existence of M and c suffices; neither is a quantified polynomial coordinate.
+By finite generation, the rank-one hypothesis, and the fact that P is non-torsion, E(K L0)/Z P is a finite abelian group. Choose a fixed positive integer M annihilating it. Then M E(K L0) is a subgroup of Z P, of positive rank one. Thus there exists a fixed positive integer c for which M E(K L0)=Z P_*=Z [c]P. The finite existence of M and c suffices; neither is a quantified polynomial coordinate.
 
 Use the ambient selective detector of the companion note, but replace its k+2 rational point charts by arbitrary affine preimages Q_i,Q_H,Q_U on E over K L0, applying the fixed multiplication map [M]. Their images A_i,H,U automatically lie in Z P_*. In particular every image is rational over L0, without a separate rationality selector. Because K and L0 are linearly disjoint, the unique expression of an image coordinate as a+b sqrt(2), a,b in K, has a,b in Q whenever the image lies in L0. This is false without the disjointness hypothesis: the rank-two algebra would split and its two slots could then choose unrelated images.
 
@@ -28,4 +28,6 @@ The integral-basis substitution gives the ring of integers with coefficients in 
 
 ## Limits and research direction
 
-This shows exactly which additional rank theorem would remove the entire cost of rationality descent in the ordinary-abc route. It is not enough to know that some elliptic curve over Q has stable positive rank over K. One needs rank stability for this specific E over L0 in the compositum, or a different carrier for which the group, local comparison and compatible prime-pattern inputs are reestablished. For a quadratic K disjoint from L0 this condition is equivalent to rank zero of the corresponding quadratic twist of E over L0. We have not proved that rank-zero theorem for all such quadratic twists, and it need not hold for every K. The fully specified non-abc sources have different index-anchor and height constraints; replacing their generator requires a separate proof and their explicit cutoff is not transferred by this argument.
+This shows exactly which additional rank theorem would remove the entire cost of rationality descent in the ordinary-abc route. It is not enough to know that some elliptic curve over Q has stable positive rank over K. One needs rank stability for this specific E over L0 in the compositum, or a different carrier for which the group, local comparison and compatible prime-pattern inputs are reestablished. For a quadratic K disjoint from L0 this condition is equivalent to rank zero of the corresponding quadratic twist of E over L0. The [new twist-parity theorem](../carrier_twist_parity_20261124/README.md) shows that every rational quadratic twist has odd 2-infinity Selmer corank, hence positive rank if its 2-primary Sha is finite. Thus ordinary rank stability is conditionally impossible in every disjoint quadratic field, and fails unconditionally in the explicit quadratic examples there. By contrast, rank stability is established unconditionally in the [two explicit cyclic cubic fields](../cubic_carrier_stability_20261124/README.md), giving 11 / 17 coordinates under the other retained inputs. The [Gaussian-module alternative](../gaussian_carrier_transfer_20261124/README.md) gives a different route in Q(i). The fully specified non-abc sources have different index-anchor and height constraints; replacing their generator requires a separate proof and their explicit cutoff is not transferred by this argument.
+
+For K=Q the independently proved carrier rank one and non-torsion of P already suffice for the arbitrary-degree 11-coordinate existence theorem by the same fixed-multiplication argument, without the saturation hypothesis. This is a change of the point-chart presentation and not a transfer of the old numerical degree bound; all remaining arithmetic inputs are unchanged.
