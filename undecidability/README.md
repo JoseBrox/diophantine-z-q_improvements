@@ -37,8 +37,8 @@ the historical encoders; all historical specifications remain unchanged.
 
 | Integer interface | Rational unknowns | Quadratic residuals | Additional height hypothesis |
 |:--|--:|--:|:--|
-| General | **970** | **825** | No additional abc |
-| Specified | **1145** | **996** | No additional abc |
+| General | **968** | **823** | No additional abc |
+| Specified | **1143** | **994** | No additional abc |
 | Ordinary abc | **695** | **590** | Ordinary rational abc |
 
 The [corrected-source theorem](source_repair_v93/corrected_jones_source.tex)
@@ -97,8 +97,15 @@ systems. These counts are **971 / 1145 / 696**; see the
 The [signed first-Pell theorem](pell_signed_branch_v101/signed_branch_projection.tex)
 then admits both trace signs, recovers binomial divisibility with an
 alternating sum, and reconstructs positive witnesses for the same coding
-prefix. Deleting its sign square gives the current **970 / 1145 / 695**
+prefix. Deleting its sign square gives **970 / 1145 / 695**
 counts; see the [v101 report](../docs/results_20261123_v101.md).
+The [contact-endpoint rechart](contact_endpoint_v102/contact_endpoint_reuse.tex)
+then reuses two endpoint powers to eliminate two shared coefficients and
+two rows. The current counts are **968 / 1143 / 695**, with
+**823 / 994 / 590** residuals; see the [v102 report](../docs/results_20261123_v102.md).
+The [c-integrality checkpoint](c_integrality_checkpoint_v102/README.md)
+gives an exact counterfamily for the three-norm subsystem, while leaving
+the full-source integrality question open and retaining the c predicate.
 
 ### Method and intermediate improvements
 

@@ -1,0 +1,270 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs,hyperref,xurl}
+\hypersetup{hidelinks}
+\setlength{\emergencystretch}{2em}
+\newtheorem{proposition}{Proposition}\newtheorem{theorem}[proposition]{Theorem}
+\newcommand{\Q}{\mathbb Q}
+\title{Two contact endpoints replace two shared power coefficients}
+\author{\(\mathbb Z\mathbb Q\) Diophantine Project}
+\date{23 November 2026}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+The retained aggregate-spacing identity makes the root block's second
+contact the sixteenth point of the common progression. Its centered
+square and fourth power can therefore replace two common interpolation
+coefficients. A guarded rechart first puts its four contact registers
+in the same gauge as the first contact; the recharted inverse and gate
+rows remain quadratic. Two affine eliminations then remove two
+coordinates, and exact polynomial identities remove two redundant
+residuals. The resulting complete general and specified systems have
+968 variables with 823 rows and 1143 variables with 994 rows,
+respectively. This step is a rational zero-set equivalence and needs
+no additional arithmetic completeness or prime-supplier argument.
+\end{abstract}
+
+\section{The endpoint already present in the system}
+
+Use the aggregate-spacing systems of \cite{Spacing}, including the
+subsequent sign-square deletion on the general route \cite{Branch}.
+Write \(\rho\) for the common contact gauge and retain its exact
+guards
+\[
+                 \rho\epsilon=1,\qquad \epsilon_2=\epsilon^2.
+\]
+The root block is labelled \(b\). Its first and second contact
+coordinates are \(t=\texttt{int\_b\_2}\) and
+\(t'=\texttt{int\_b\_68}\). The proved spacing is
+\[
+ D=T_b/16,\qquad d=(t'-t)/16,
+\]
+where \(T_b\) is the root block's first physical aggregate shift.
+In the general chart \(t=\lambda/\rho\),
+\(t'=(\lambda+T_b)/\rho\), and \(d=D/\rho\).
+In the specified chart the corresponding three coordinates are
+unscaled. Thus the already present second contact has physical
+argument \(\lambda+16D\). It is not a new contact or a new input
+block.
+
+Retain the root centered powers \(u,f\), and denote the common
+progression coefficients by \(v,w,a_1,a_2,a_3,a_4\). Their
+established formulas are
+\begin{equation}\label{interpolation}
+ u_i=u+2iv+i^2w,\qquad
+ f_i=f+ia_1+i^2a_2+i^3a_3+i^4a_4.
+\end{equation}
+In the general chart \(u_i=(\lambda+iD-1)^2\) and
+\(f_i=(\lambda+iD-1)^4\). In the specified chart
+\[
+ u_i=\rho\bigl(22(\lambda+iD)-3\bigr)^2,
+ \qquad f_i=\rho\bigl(22(\lambda+iD)-3\bigr)^4.
+\]
+The endpoint's old stored powers use a different gauge. We align
+that gauge before applying \eqref{interpolation} at \(i=16\).
+
+\section{A guarded rechart of four private registers}
+
+Reinterpret the root second contact's square, fourth power,
+combination and inverse-weight registers. Their literal names are
+\[
+ \texttt{int\_b\_69},\quad\texttt{int\_b\_70},\quad
+ \texttt{int\_b\_71},\quad
+ \begin{cases}
+ \texttt{int\_b\_158}&\text{general},\\
+ \texttt{int\_b\_160}&\text{specified}.
+ \end{cases}
+\]
+For all four coordinates, the recovery of the old value from the new
+one is
+\begin{equation}\label{rechart}
+ \text{old value}=\epsilon^k\,\text{new value},\qquad
+ k=\begin{cases}1&\text{general},\\2&\text{specified}.\end{cases}
+\end{equation}
+The retained unit guard makes this a rational bijection. Denote the
+new square and fourth-power values by \(u_*,f_*\).
+
+\begin{proposition}\label{chart}
+After \eqref{rechart}, all second-contact rows remain equivalent to
+quadratic rows. The new powers \(u_*,f_*\) have exactly the gauge
+of the first-contact powers in \eqref{interpolation}.
+\end{proposition}
+\begin{proof}
+The complete occurrence audit finds the four recharted coordinates
+only in the following six rows. Substitute \eqref{rechart}, use the
+two gauge identities, and multiply by the displayed nonzero factor:
+\begin{center}
+\begin{tabular}{lc}
+\toprule
+Second-contact row & Factor multiplying the substituted row\\
+\midrule
+Centered square & \(1\)\\
+Centered fourth power & \(\rho^{2k}\)\\
+Contact combination & \(\rho^{2k}\)\\
+Contact relation & \(\rho^{2k}\)\\
+Inverse weight & \(\rho^k\)\\
+Gate & \(1\)\\
+\bottomrule
+\end{tabular}
+\end{center}
+The square and fourth-power rows become, respectively,
+\[
+ \begin{array}{ll}
+ \text{general}:&
+ t'^2-2\epsilon t'+\epsilon_2-\epsilon_2u_*=0,
+ \qquad u_*^2-f_*=0,\\[2pt]
+ \text{specified}:&
+ (22t'-3)^2-\epsilon u_*=0,
+ \qquad u_*^2-\rho f_*=0.
+ \end{array}
+\]
+These are the first-contact chart equations at \(t'\).
+The combination and relation rows become literal copies of the
+first-contact polynomials with their argument and four private
+registers renamed. This statement includes every numerical coefficient;
+the independent checker derives it directly by Laurent substitution.
+
+Let \(R_*\) denote the new inverse-weight register, and let \(W_*\)
+be the retained second contact weight. The inverse row becomes
+\[
+ \epsilon_2-W_*R_*=0\quad\text{in the general chart},\qquad
+ \epsilon-W_*R_*=0\quad\text{in the specified chart}.
+\]
+In the general gate row, the old term \(-\epsilon R_{\rm old}\)
+becomes \(-\epsilon_2R_*\). In the specified gate row, the old
+term \(-\rho R_{\rm old}\) becomes \(-\epsilon R_*\).
+Every other gate term is unchanged. These expressions are quadratic.
+No native-pole row, point row, contact weight, or gauge guard changes.
+This verifies the whole rechart and proves the proposition.
+\end{proof}
+
+\section{Two affine eliminations and two exact identities}
+
+At the endpoint \(i=16\), equation \eqref{interpolation} becomes
+\[
+ u_*=u+32v+256w,\qquad
+ f_*=f+16a_1+256a_2+4096a_3+65536a_4.
+\]
+Eliminate the two common coordinates by the affine substitutions
+\begin{equation}\label{eliminate}
+ v=\frac{u_*-u-256w}{32},\qquad
+ a_1=\frac{f_*-f-256a_2-4096a_3-65536a_4}{16}.
+\end{equation}
+All occurrences in the entire table receive these substitutions.
+Because their coefficients are rational constants, quadratic degree
+is preserved.
+
+Here are the exact identities reconstructing the two endpoint power
+rows that can now be deleted. Use the unscaled progression residuals
+of \cite{Progression}:
+\[
+ \begin{array}{lll}
+ \text{general}:&R_v=\epsilon_2v-d(t-\epsilon),
+ &R_w=\epsilon_2w-d^2,\\
+ \text{specified}:&R_v=\epsilon v-22d(22t-3),
+ &R_w=\epsilon w-484d^2.
+ \end{array}
+\]
+Put \(\chi=1\) in the general chart and \(\chi=\rho\)
+in the specified chart, and define
+\[
+ \begin{aligned}
+ R_1&=\chi a_1-4uv,&R_2&=\chi a_2-2uw-4v^2,\\
+ R_3&=\chi a_3-4vw,&R_4&=\chi a_4-w^2.
+ \end{aligned}
+\]
+Let \(Q_0,P_0\) be the retained root first-contact square and
+fourth-power rows, with \(P_0=u^2-\chi f\).
+After \eqref{eliminate} and \(d=(t'-t)/16\), the recharted
+endpoint residuals satisfy the literal polynomial identities
+\begin{equation}\label{identities}
+ \begin{split}
+ Q_*&=Q_0-32R_v-256R_w,\\
+ P_*&=P_0-16R_1-256R_2-4096R_3-65536R_4,
+ \qquad P_*=u_*^2-\chi f_*.
+ \end{split}
+\end{equation}
+The rational constant row normalizations in the stored table are
+accounted for by the coefficient certificate. In particular the
+existing mixed and spacing rows are \(16R_v,256R_w\) in the
+general chart and \(8R_v,64R_w\) in the specified chart.
+
+\begin{theorem}[Exact guarded equivalence]
+The rechart \eqref{rechart}, substitutions \eqref{eliminate}, and
+deletion of the endpoint square and fourth-power rows give a
+bijective rational reconstruction of the predecessor zero set.
+All existing source, integer-interface and contact-supplier hypotheses
+remain unchanged.
+\end{theorem}
+\begin{proof}
+Given a new solution, assign \(v,a_1\) by \eqref{eliminate}.
+Every retained recharted row then holds by its defining substitution.
+Equations \eqref{identities} restore the omitted endpoint rows.
+Proposition~\ref{chart} recovers all old coordinates by
+\eqref{rechart}, using only the already retained nonzero gauge.
+
+Conversely start with a predecessor solution and apply the inverse
+of \eqref{rechart}. Its first and second contact arguments differ
+by exactly \(16D\), because the aggregate-spacing identity is
+already imposed. The retained first power and progression rows
+therefore force the endpoint square and fourth power to be the
+values in \eqref{interpolation}. Their old defining rows make
+\(u_*,f_*\) exactly those values. Hence \eqref{eliminate} holds
+for the old \(v,a_1\), and deleting them gives a new solution.
+Both directions determine every reconstructed coordinate uniquely.
+No arithmetic witness is reselected in this argument.
+\end{proof}
+
+\section{The complete tables and their independent audit}
+
+The general predecessor is the frozen sign-square table from
+\nolinkurl{undecidability/pell_signed_branch_v101/}; the specified
+predecessor is the frozen aggregate-spacing table from
+\nolinkurl{undecidability/aggregate_spacing_v100/}. Their exact
+censuses are
+\begin{center}
+\begin{tabular}{lrrrr}
+\toprule
+Interface & Old variables & New variables & Old rows & New rows\\
+\midrule
+General & 970 & 968 & 825 & 823\\
+Specified & 1145 & 1143 & 996 & 994\\
+\bottomrule
+\end{tabular}
+\end{center}
+The ordinary-\(abc\) system is unchanged at 695 variables and
+590 quadratic residuals. Each complete system gives the usual
+quartic sum of squares. The present equivalence adds no arithmetic
+or source-universality hypothesis and makes no new effective claim
+about the general fixed parameter.
+
+The deterministic compiler and independent audit are
+\begin{verbatim}
+python undecidability/contact_endpoint_v102/build_contact_endpoint.py
+python undecidability/contact_endpoint_v102/verify_contact_endpoint.py
+\end{verbatim}
+The compiler copies the first-contact combination templates. The
+checker instead reconstructs each old polynomial directly by the
+guarded Laurent substitution \(\rho=R,\epsilon=R^{-1}\),
+\(\epsilon_2=R^{-2}\) and \eqref{rechart}. It then checks both
+affine eliminations and the two omitted-row identities. It audits
+all 32 or 28 changed rows, all 791 or 966 unchanged rows, every
+occurrence of the four recharted coordinates, both literal gauge
+guards, support, degree, integer coefficient rings, metadata, and
+hashes. It imports no compiler.
+
+\begin{thebibliography}{9}
+\small\setlength{\itemsep}{2pt}
+\bibitem{Spacing} \(\mathbb Z\mathbb Q\) Diophantine Project,
+\emph{A retained aggregate shift supplies the common contact spacing}.
+\par\nolinkurl{undecidability/aggregate_spacing_v100/aggregate_spacing.tex}.
+\bibitem{Progression} \(\mathbb Z\mathbb Q\) Diophantine Project,
+\emph{A common arithmetic progression of contact arguments and shared
+coefficients of their centered powers}.
+\par\nolinkurl{undecidability/general_contact_v94/affine_contact_progressions.tex}.
+\bibitem{Branch} \(\mathbb Z\mathbb Q\) Diophantine Project,
+\emph{Both first-Pell signs have the same coding projection}.
+\par\nolinkurl{undecidability/pell_signed_branch_v101/signed_branch_projection.tex}.
+\end{thebibliography}
+\end{document}

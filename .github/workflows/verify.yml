@@ -13,6 +13,8 @@ jobs:
         with:
           python-version: '3.12'
       - run: python -m pip install sympy==1.14.0 passagemath-pari==10.8.14
+      - name: Verify contact endpoint reuse and c-integrality obstruction
+        run: python -B scripts/verify_v102.py --report /tmp/v102-verification.json
       - name: Verify signed first-Pell projection and sign-square deletion
         run: python -B scripts/verify_v101.py --report /tmp/v101-verification.json
       - name: Verify contact spacing from fixed aggregate shifts
