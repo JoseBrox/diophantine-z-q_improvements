@@ -9,17 +9,17 @@ counted. This is a separate objective from minimizing the total coordinates
 of a polynomial defining the integers. All recorded numbers are upper bounds;
 no global least value is claimed.
 
-## Current frontier (v132)
+## Current frontier (v135)
 
-See the [continuation report](../docs/results_20261124_v132.md) and [current frontier ledger](frontier_20261124_v132.json).
+See the [continuation report](../docs/results_20261124_v135.md) and [current frontier ledger](frontier_20261124_v135.json).
 
 | Route | Quartic unknowns | Quadratic residuals | Unrestricted degree | Alternative published coding source |
 |:--|--:|--:|--:|--:|
-| General | **848** | 737 | **48** | 52 |
-| Specified | **876** | 763 | **50** | 54 |
+| General | **750** | 639 | **48** | 52 |
+| Specified | **771** | 658 | **50** | 54 |
 | Ordinary rational abc | **292** | 241 | **36** | 36 |
 
-The [shared comparison theorem](shared_comparison_v131/README.md) uses two/three comparison poles in total for all twelve certified source integers. The specified construction uses an effective sufficient parameter recipe. The [harmonic selector](abc_harmonic_selector_v130/README.md) saves three more variables over [v128](abc_curve_chart_elimination_v128/README.md). The [ten-certificate alternatives](ten_certificate_v132/README.md) restore the long power chain and give 879/907 unknowns, a tradeoff rather than a reduction of the preferred counts.
+The [weighted private charts](weighted_private_v133/README.md) and [normalized scalar circuit](scalar_normalized_v134/README.md) improve 848/876 to 774/795 and then 750/771. The [local merger obstruction](scalar_merger_obstruction_v135/README.md) excludes fixed rational-function replacements of the separate local pole tests on independent scalar inputs; the [short-power obstruction](short_power_obstruction_v135/README.md) records the remaining prefix-integrality gap. The [shared comparison theorem](shared_comparison_v131/README.md) uses two/three comparison poles in total for all twelve certified source integers. The specified construction uses an effective sufficient parameter recipe. The [harmonic selector](abc_harmonic_selector_v130/README.md) saves three more variables over [v128](abc_curve_chart_elimination_v128/README.md). The [ten-certificate alternatives](ten_certificate_v132/README.md) restore the long power chain and give 879/907 unknowns, a tradeoff rather than a reduction of the preferred counts.
 
 The [direct-index](direct_index_transfer_v111/README.md) and [selective-pole](abc_selective_pole_v110/README.md) constructions give the unrestricted bounds. The [shorter logarithm and whole-guard tagged encoder](direct_index_transfer_v127/README.md) and the [computed height-anchor refinement](direct_index_anchor_v129/README.md) retain 48/50 while simplifying the detector shifts; Sun's ten-integer coding theorem is an accepted source in the project. All transfers retain their stated arithmetic and coding premises; no unconditional H10(Q) theorem or global minimum is claimed. The corrected targets remain open.
 
