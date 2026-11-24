@@ -19,9 +19,9 @@ ROOT = HERE.parent.parent
 OLD = ROOT / "computation/variable_reductions_v82/general"
 
 TABLES = {
-    "first": {3: 5, -34: 0, -289: -5, 17: 3},
-    "middle": {17: 5, -1: -3, -17: -5},
-    "second": {1: 5, 34: 0, -867: -5, -17: -3},
+    "first": {3: 9, -34: 0, -289: -9, 17: 7},
+    "middle": {17: 9, -1: -7, -17: -9},
+    "second": {1: 9, 34: 0, -867: -9, -17: -7},
 }
 
 
@@ -90,13 +90,13 @@ def dict_of(row):
 
 
 def arithmetic_fixture():
-    # An exact prepared positive input, including the extra p=5 condition.
+    # An exact prepared positive input, including the p=7 integrality condition.
     # This fixture deliberately tests the permitted zero-ordinate branches.
-    t = Fraction(28001, 40001)
+    t = Fraction(3777, 4001)
     d = 1 - t*t
-    b = Fraction(5, 3)*d
+    b = Fraction(9, 7)*d
     e, p, u, v, q = Fraction(1), Fraction(0), t, t, Fraction(0)
-    assert 0 < b < 1 and d == Fraction(3, 5)*b
+    assert 0 < b < 1 and d == Fraction(7, 9)*b
     def vp(x, prime):
         nn, dd, count = x.numerator, x.denominator, 0
         while nn % prime == 0:
@@ -106,7 +106,7 @@ def arithmetic_fixture():
             dd //= prime
             count -= 1
         return count
-    assert vp(b, 2) == 6 and vp(b, 3) == 0 and vp(b, 5) == 4
+    assert vp(b, 2) == 6 and vp(b, 3) == 2 and vp(b, 7) == 0
     assert isqrt(b.denominator)**2 == b.denominator
     assert e*e + d*p*p == 1
     assert u*v == e*(1-d)
@@ -114,9 +114,9 @@ def arithmetic_fixture():
     sig = Fraction(3, 5)
     E, B, U, V = (sig*e, sig*b, sig*u, sig*v)
     P2, Q2 = sig*p*p, sig*q*q
-    assert 5*E*E - 5*sig*sig + 3*B*P2 == 0
-    assert 5*U*V - 5*E*sig + 3*E*B == 0
-    assert 5*U*U - 5*V*V - 3*B*Q2 == 0
+    assert 9*E*E - 9*sig*sig + 7*B*P2 == 0
+    assert 9*U*V - 9*E*sig + 7*E*B == 0
+    assert 9*U*U - 9*V*V - 7*B*Q2 == 0
     # The older non-CM pole is a different predicate, not equivalent by algebra.
     assert 3*e*e-34*e-289+17*b*p*p != 0
     return str(b)
