@@ -1,0 +1,18 @@
+import assert from 'node:assert/strict';
+const pell=(a,n)=>{let x=1n,y=0n;for(let k=0n;k<n;k++)[x,y]=[a*x+(a*a-1n)*y,x+a*y];return [x,y]};
+const b=4n,M=16n,r=1n,w=2n,s=1n,Y=s*M,U=w*M,a=(U+1n)*r*Y,p=2n*U*r*r*Y*Y,[d,c]=pell(a,3n);
+const den=1000000000000000000000000000001n,n=61035156310236228945882358n,DD=p*p-1n,kn=2n*n*den,kd=den*den-DD*n*n,tn=den*den+DD*n*n;
+const en=kn*kn-4n*(c*kd-Y*kn)**2n,ed=kd*kd;
+assert(kd>0n&&en>ed&&kd%2n===1n);
+assert.equal(tn*tn-DD*kn*kn,kd*kd);
+assert((kn-(r+1n)*kd)%((p-1n)*kd)!==0n);
+assert.equal((8n*en-5n*ed)%8n,3n);
+const [d5,c5]=pell(3n,5n),[F,E]=pell(3n,5n*c5),i=E/(c5*c5),jn=F*F*(c5-3n)-c5,jd=c5*F;
+assert.equal(E%(c5*c5),0n);assert.equal(i%2n,1n);assert(jn>0n&&jn%jd!==0n);
+assert.equal((c5+F*F*(3n-c5))*jd+c5*F*jn,0n);
+const [zeta0]=pell(3n,3n);assert.equal((2n*zeta0)**2n,2n*(3n*d5+8n*c5+1n));
+const ss=5n,aa=(U+1n)*r*M*ss,pp=2n*U*r*r*M*M*ss*ss;
+assert.equal((aa*aa-1n)%7n,0n);assert((aa*aa-1n)%49n!==0n);assert((pp*pp-1n)%7n!==0n);
+const [I,H]=pell(c5+1n,3n);assert((H-3n)%c5===0n&&(H-3n)/c5>0n);
+assert.equal(I*I-((c5+1n)**2n-1n)*H*H,1n);
+console.log(JSON.stringify({h_conic_fixture:true,j_wrong_index_fixture:true,distinct_field_fixture:true,i_zero_branch_fixture:true}));
