@@ -1,3 +1,5 @@
+> **Erratum (v140):** The changed auxiliary parameter invalidates the reuse of the v101 exclusion of s=0. Use the [guarded repair v140](../independent_prefix_guarded_v140/README.md). Historical tables are retained.
+
 # Independent prefix integrality and a packed power congruence (v138)
 
 **657 / 677 variables, 568 / 586 quadratic residuals.** This alternative to v137 has six extra rational coordinates, but removes the dependency of prefix integrality on the two old short-power quotients. The long power chain is not restored. The number of certified source integers is still twelve: two new ones replace the two old ones. The smaller v137 counts remain preferred. All arithmetic and coding premises of v137 are retained.
