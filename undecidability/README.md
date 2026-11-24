@@ -37,9 +37,9 @@ the historical encoders; all historical specifications remain unchanged.
 
 | Integer interface | Rational unknowns | Quadratic residuals | Additional height hypothesis |
 |:--|--:|--:|:--|
-| General | **971** | **826** | No additional abc |
+| General | **970** | **825** | No additional abc |
 | Specified | **1145** | **996** | No additional abc |
-| Ordinary abc | **696** | **591** | Ordinary rational abc |
+| Ordinary abc | **695** | **590** | Ordinary rational abc |
 
 The [corrected-source theorem](source_repair_v93/corrected_jones_source.tex)
 ([PDF](source_repair_v93/corrected_jones_source.pdf)) uses Jones's 1980
@@ -91,9 +91,14 @@ with **826 / 996 / 591** quadratic residuals. See the
 The [aggregate-spacing proof](aggregate_spacing_v100/aggregate_spacing.tex)
 then determines the spacing from already fixed difference points. Its
 affine substitution removes one variable in the general and specified
-systems. The current counts are **971 / 1145 / 696**; see the
+systems. These counts are **971 / 1145 / 696**; see the
 [v100 report](../docs/results_20261123_v100.md) and
 [complete tables](aggregate_spacing_v100).
+The [signed first-Pell theorem](pell_signed_branch_v101/signed_branch_projection.tex)
+then admits both trace signs, recovers binomial divisibility with an
+alternating sum, and reconstructs positive witnesses for the same coding
+prefix. Deleting its sign square gives the current **970 / 1145 / 695**
+counts; see the [v101 report](../docs/results_20261123_v101.md).
 
 ### Method and intermediate improvements
 

@@ -1,0 +1,140 @@
+{
+  "degree": 4,
+  "instance_range": "positive integer x > 32*z",
+  "integer_blocks": 13,
+  "interface": "general",
+  "ordinary_integer_inputs": [
+    "b",
+    "g",
+    "t",
+    "m",
+    "w",
+    "s",
+    "h",
+    "c",
+    "gamma",
+    "j",
+    "power_delta",
+    "power_alpha"
+  ],
+  "pell_signed_branch_binomial_recovery": "Signed Pell estimates and M>=4*b give the exact alternating truncation abs(s)*M=sum_{j=0}^r binomial(2*r,j)*sigma^j*U^(r-j), U=abs(w)*M.",
+  "pell_signed_branch_integer_interfaces_unchanged": true,
+  "pell_signed_branch_phi_recovery_scope": "Only after canonical positive witnesses are reselected does phi=c-(2*r+1)>0 recover the old positive coordinate.",
+  "pell_signed_branch_positive_completeness": "Every coding-prefix solution can be represented with all thirteen integer inputs positive, so the retained simultaneous integer-interface completeness theorems apply.",
+  "pell_signed_branch_predecessor": "undecidability/aggregate_spacing_v100/aggregate_spacing_general_quadrics.json",
+  "pell_signed_branch_predecessor_guard_metadata": {
+    "pell_core_equivalence_scope": "Existential equivalence with the corrected positive source, retaining every integer predicate; Pell witnesses may be reconstructed.",
+    "pell_core_positive_root": "pell_d_positive_square^2=2*(a*d+(a^2-1)*c+1), implemented using ac=a*c",
+    "pell_halftrace_changed_row": "jones1980.pell_positive_root",
+    "pell_halftrace_completeness": "For c=Y_B(a), d=X_B(a), B odd, choose the square coordinate 2*X_((B+1)/2)(a).",
+    "pell_halftrace_integer_inputs_unchanged": true,
+    "pell_halftrace_new_equation": "pell_d_positive_square^2=2*a*d+2*a*ac-2*c+2, with ac=a*c",
+    "pell_halftrace_nonzero_scope": "s=0 forces p=a=c=0, k=+/-1, d=+/-1; the new square would equal2, impossible over Q.",
+    "pell_halftrace_predecessor": "undecidability/pell_crt_v95/pell_crt_m163_quadrics.json",
+    "pell_halftrace_predecessor_sha256": "968ab0d7a507b98fcedd02c294fed59139cc02d44ef9af67ec877f3b23da68eb",
+    "pell_halftrace_previous_positive_root": "pell_d_positive_square^2=(a-1)*(d-1)",
+    "pell_halftrace_private_occurrences": {
+      "pell_d_positive_square": [
+        "jones1980.pell_positive_root"
+      ],
+      "s_inverse": [
+        "jones1980.s.nonzero"
+      ]
+    },
+    "pell_halftrace_proof": "undecidability/pell_halftrace_v96/halftrace_guard.tex",
+    "pell_halftrace_removed_coordinate": "s_inverse",
+    "pell_halftrace_removed_row": "jones1980.s.nonzero",
+    "pell_halftrace_savings": {
+      "coordinates": 1,
+      "quadratic_rows": 1
+    },
+    "pell_halftrace_sign_scope": "For |a|>=2 and |c|>1, the norm and new square force a*d>0.",
+    "pell_power_signed_branches": "Auxiliary C=0 and all negative/inverse Pell branches explicitly excluded in the proof",
+    "pell_signed_q_final_recovery": "Signed congruences and Q*b^L+1<modulus force q=b^L>0",
+    "phi_recovery": "c - 2*r - 1",
+    "signed_binomial_positivity_added_coordinate": "s_inverse",
+    "signed_binomial_positivity_added_row": "jones1980.s.nonzero",
+    "signed_binomial_positivity_coordinate_saving": 5,
+    "signed_binomial_positivity_integer_predicates_unchanged": true,
+    "signed_binomial_positivity_modulus_hypothesis": "M=n^2 >= 16, automatic from the retained q=b^(5^60), n=q^16 and b>=2",
+    "signed_binomial_positivity_new_equation": "s*s_inverse=1",
+    "signed_binomial_positivity_old_positive_inputs_recovered": [
+      "w",
+      "s"
+    ],
+    "signed_binomial_positivity_predecessor": "undecidability/general_contact_v94/affine_contact_m163_quadrics.json",
+    "signed_binomial_positivity_predecessor_sha256": "7ec1c7b0762c046ab0532c3b81533b502c20ccc07e4ae72ab3a12e3bc0015baf",
+    "signed_binomial_positivity_private_occurrences": {
+      "positive_s_1": [
+        "jones1980.positive.s"
+      ],
+      "positive_s_2": [
+        "jones1980.positive.s"
+      ],
+      "positive_s_3": [
+        "jones1980.positive.s"
+      ],
+      "positive_w_1": [
+        "jones1980.positive.w"
+      ],
+      "positive_w_2": [
+        "jones1980.positive.w"
+      ],
+      "positive_w_3": [
+        "jones1980.positive.w"
+      ]
+    },
+    "signed_binomial_positivity_proof": "undecidability/source_repair_v93/signed_binomial_positivity.tex",
+    "signed_binomial_positivity_removed_coordinates": [
+      "positive_s_1",
+      "positive_s_2",
+      "positive_s_3",
+      "positive_w_1",
+      "positive_w_2",
+      "positive_w_3"
+    ],
+    "signed_binomial_positivity_removed_rows": [
+      "jones1980.positive.s",
+      "jones1980.positive.w"
+    ],
+    "signed_binomial_positivity_row_saving": 1,
+    "signed_binomial_positivity_zero_s_exclusion_required": true,
+    "source_universality_verification_scope": "Reduction through the one-quotient binomial certificate to the corrected Jones (1980) Theorem 2 source; its external coding theorem and all integer-interface premises are retained."
+  },
+  "pell_signed_branch_predecessor_sha256": "c75f58d9f9e2fd5a5828e0df062cca329da4c676fb9381acc5d0dae45311bd16",
+  "pell_signed_branch_private_occurrences": [
+    "jones1980.pell_positive_root"
+  ],
+  "pell_signed_branch_projection_scope": "Same coding-prefix and instance projection; arbitrary retained signed auxiliary values need not extend to the predecessor. Positive binomial, CRT, power and integer-interface witnesses can be chosen anew.",
+  "pell_signed_branch_proof": "undecidability/pell_signed_branch_v101/signed_branch_projection.tex",
+  "pell_signed_branch_removed_coordinate": "pell_d_positive_square",
+  "pell_signed_branch_removed_row": "jones1980.pell_positive_root",
+  "pell_signed_branch_same_auxiliary_lift_claim": false,
+  "pell_signed_branch_savings": {
+    "coordinates": 1,
+    "quadratic_rows": 1
+  },
+  "pell_signed_branch_signed_guarantees": {
+    "auxiliary_power": "power_C=Y_(5^60)(power_A)>0 and power_D=X_(5^60)(power_A); abs(power_A)>=2",
+    "binomial": "n^2 divides binomial(2*r,r)",
+    "first_coordinate": "c=sigma*Y_(2*r+1)(abs(a))",
+    "first_trace": "d=sigma*X_(2*r+1)(a)",
+    "fixed_power": "q=b^(5^60)",
+    "nonzero": "s!=0 and w!=0",
+    "power_of_two": "b*w=sigma*2^(2*r+1)",
+    "s_sign": "sign(s)=sigma^(r+1)",
+    "sigma": "sign(w)"
+  },
+  "pell_signed_branch_zero_exclusion": "The strengthened margin makes s=0 imply c=power_C=0 and A0-1 divides5^60; the factor (b-1)*H0(b), H0(1)=25 and b>32 give a contradiction modulo125.",
+  "quadratic_rows": 825,
+  "reciprocal_integer_inputs": [
+    "i_inverse"
+  ],
+  "retained_arithmetic_interfaces": true,
+  "source_coding_theorem": "J. P. Jones, Undecidable Diophantine equations, Bull. Amer. Math. Soc. (N.S.) 3 (1980), 859-862, Theorem 2, p. 860, doi:10.1090/S0273-0979-1980-14832-6",
+  "source_coding_theorem_independently_reproved": false,
+  "source_universality_hypothesis": null,
+  "table_sha256": "cad9fae54f71d2ed963183da38124bbde53236d4696d4f7a88c32ae53bb7c084",
+  "unconditional_undecidability_claim": false,
+  "variables": 970
+}

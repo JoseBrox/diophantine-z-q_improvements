@@ -39,7 +39,7 @@ The [results JSON](data/results_20261123_v88.json) records all five new finite-a
 
 The [undecidability category](undecidability/README.md) counts existential
 rational unknowns; the integer instance is encoded in coefficients.
-The [v100 continuation](docs/results_20261123_v100.md) gives the current
+The [v101 continuation](docs/results_20261123_v101.md) gives the current
 complete quartic tables and the research checkpoint. The [v93 continuation](docs/results_20261123_v93.md) supplies corrected
 quartic sources, smaller complete tables, and lower general-degree bounds.
 
@@ -48,9 +48,9 @@ quartic sources, smaller complete tables, and lower general-degree bounds.
 | Unrestricted degree | No additional abc hypothesis | **82** | Proved transfer under retained arithmetic premises; degree below `2^532` |
 | Unrestricted degree, specified source | No additional abc hypothesis | **100** | Proved transfer under retained arithmetic premises; degree below `2^578` |
 | Unrestricted degree | Ordinary rational abc | **52** | Proved transfer under retained arithmetic premises; degree below `2^425` |
-| Quartic transfer | No additional abc hypothesis | **971** | Signed Pell power recovery; 826 quadratic residuals; retained arithmetic premises |
+| Quartic transfer | No additional abc hypothesis | **970** | Signed Pell power recovery; 825 quadratic residuals; retained arithmetic premises |
 | Quartic transfer, specified source | No additional abc hypothesis | **1,145** | Corrected Jones source; 996 quadratic residuals; retained arithmetic premises |
-| Quartic transfer | Ordinary rational abc | **696** | Signed Pell power recovery; 591 quadratic residuals; retained arithmetic premises |
+| Quartic transfer | Ordinary rational abc | **695** | Signed Pell power recovery; 590 quadratic residuals; retained arithmetic premises |
 
 The [corrected-source proof](undecidability/source_repair_v93/corrected_jones_source.tex)
 ([PDF](undecidability/source_repair_v93/corrected_jones_source.pdf)) replaces
@@ -109,8 +109,14 @@ and row in every route, giving **972 / 1146 / 696** counts.
 The [fixed aggregate-spacing theorem](undecidability/aggregate_spacing_v100/aggregate_spacing.tex)
 then replaces the free contact spacing by one sixteenth of a retained
 aggregate fixed before prime selection. Its affine coordinate formula
-saves one more variable in each general route, giving the current
+saves one more variable in each general route, giving
 **971 / 1145 / 696** counts without an additional supplier premise.
+The [signed first-Pell theorem](undecidability/pell_signed_branch_v101/signed_branch_projection.tex)
+then removes the sign square from both short-power systems. An alternating
+binomial truncation handles negative witnesses, and positive witnesses
+are rebuilt for the same coding prefix. The current counts are
+**970 / 1145 / 695**; this is projection equivalence, not a lift of every
+signed auxiliary solution to the former sign-selected system.
 
 The [paired spectral encoder](undecidability/papers/paired_spectral_encoder.tex)
 ([PDF](undecidability/papers/paired_spectral_encoder.pdf)) lowers the

@@ -1,0 +1,523 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,booktabs,hyperref,xurl}
+\hypersetup{hidelinks}
+\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\Z}{\mathbb Z}\newcommand{\Q}{\mathbb Q}
+\title{Both first-Pell signs have the same coding projection}
+\author{\(\mathbb Z\mathbb Q\) Diophantine Project}
+\date{23 November 2026}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+The short-power source with the strengthened small-Pell margin no
+longer needs its first-Pell sign square. The margin and the special
+auxiliary parameter exclude the zero branch by a five-adic divisibility
+obstruction. For the remaining branches, the old congruences force
+the absolute power-of-two relation. An alternating binomial truncation
+recovers central-binomial divisibility even when the original quotient
+is negative. The auxiliary power index and its trace sign are then
+recovered with either sign of the auxiliary parameter. Positive source
+witnesses can consequently be reconstructed for the same coding prefix.
+This deletes one private coordinate and one quadratic residual on the
+two short-power routes. The equivalence is a statement about existence
+and coding projection; it does not assert that every surviving auxiliary
+coordinate extends to the old sign-selected zero set.
+\end{abstract}
+
+\section{Retained source and precise claim}
+
+Use the complete source of \cite{SignedQ}, with its strengthened margin
+and the cofinite instance range \(x>32z\). The product simplification
+of \cite{Product} may be applied independently. Set
+\[
+ L=5^{60},\quad T_b=b^5-1,\quad
+ A_0=\frac{b^9+8b^5+b-8}{2},\quad A=A_0+5T_bs,
+ \quad m_*=2bA-b^2-1.
+\]
+Retain integer inputs \(b,w,s,c,h,\gamma,J,\delta,\alpha_*\),
+the nonzero reciprocal integer input \(i\), and all prefix inputs.
+The reciprocal for \(i\) is reconstructed only after \(c\ne0\),
+as explained below. The auxiliary power relations are
+\begin{equation}\label{power}
+ C_*=L+\delta(A-1),\qquad
+ D_*^2-(A^2-1)C_*^2=1,\qquad
+ q=D_*-(A-b)C_*-\alpha_*m_*.
+\end{equation}
+The retained binomial relations have
+\begin{equation}\label{bin-def}
+ Y=sM,\quad B=2r+1,\quad
+ a=(wM+1)rY,\quad p=2wr^2Y^2M,
+ \quad k=r+1+h(p-1)
+\end{equation}
+and
+\begin{align}
+ \tau^2-(p^2-1)k^2&=1,\label{small}\\
+ \eta-C_*^2&>0,&\eta&=k^2-4(c-kY)^2,\label{margin}\\
+ d&=bw+(a-2)c+(4a-5)\gamma,\label{linear}\\
+ d^2-(a^2-1)c^2&=1,\label{first}\\
+ F^2-(a^2-1)i^2c^4&=1,\label{second}\\
+ G&=a+F^2(c+1-a),& H&=c+F^2(B-c)+cFJ,\label{crt}\\
+ I^2-(G^2-1)H^2&=1.\label{third}
+\end{align}
+All Pell trace witnesses are initially rational. Delete the sole
+equation for the private rational coordinate \(\zeta\):
+\begin{equation}\label{deleted}
+                 \zeta^2=2\bigl(ad+(a^2-1)c+1\bigr).
+\end{equation}
+
+\begin{theorem}\label{main}
+Every rational solution of this modified source satisfies
+\[
+ b\text{ is a positive power of two},\qquad
+ M\mid\binom{2r}{r},\qquad q=b^L.
+\]
+It has an old sign-selected source witness for the same coding prefix
+and instance, after the binomial and auxiliary-power witnesses are
+chosen anew. Conversely every old source witness projects to a new
+one by forgetting \(\zeta\). Thus deleting \eqref{deleted} preserves
+the instance projection and rational undecidability transfer under
+the same retained arithmetic-interface and coding premises.
+\end{theorem}
+
+Use the polynomial Pell sequences \(X_j(t),Y_j(t)\), with
+\(X_0=1,X_1=t,Y_0=0,Y_1=1\) and recurrence
+\(Z_{j+2}=2tZ_{j+1}-Z_j\). In particular
+\[
+ X_j(-t)=(-1)^jX_j(t),\qquad
+ Y_j(-t)=(-1)^{j-1}Y_j(t).
+\]
+We use the fully signed index theorem of \cite{CRT}, which concludes
+\(\lvert c\rvert=Y_B(\lvert a\rvert)\) and
+\(\lvert d\rvert=X_B(\lvert a\rvert)\) without any sign square.
+
+\section{Reconstruction before the first Pell index}
+
+The preliminary power argument of \cite{Power} uses neither
+\eqref{deleted} nor \(s\ne0\). For integer \(b\ge2\) and signed
+integer \(s\), it proves
+\[
+ A_0,A,m_*\in\Z,\quad A\equiv1\pmod5,\quad |A|\ge2,
+ \quad 0<A_0<b^{16},
+ \quad m_*=T_b(b^5+8b+1+10bs).
+\]
+Indeed parity makes \(A_0\) integral, and reduction modulo five
+gives \(A\equiv1\). The factorization excludes \(A=1\), since
+it would imply \(T_b\mid-(b-1)^2\); the congruence excludes
+\(A=0,-1\). Equations \eqref{power} then make \(C_*,D_*,q\)
+integral. Pell classification permits index zero at this stage and
+gives \(C_*=\pm Y_\nu(A)\). Its congruence modulo five makes
+\(5\mid\nu\). The identities
+\begin{equation}\label{power-rec}
+ \begin{split}
+ R_j&=X_j(A)-(A-b)Y_j(A),\qquad R_0=1,\\
+ R_{j+1}&=bR_j+m_*Y_j(A),\\
+ R_j\bigl(X_j(A)+(A-b)Y_j(A)\bigr)&=1+m_*Y_j(A)^2
+ \end{split}
+\end{equation}
+make all four trace/coordinate signs congruent to
+\(\pm b^{\pm\nu}\equiv\pm1\pmod{T_b}\). Hence
+\[
+ q\equiv\pm1\pmod{T_b},\qquad
+ \lambda=(q^4-1)/T_b\in\Z.
+\]
+This argument does not invoke a sign of \(w,s,q,A\).
+
+The signed-prefix lemmas in \cite{SignedQ} use only this integral
+reconstruction, the unchanged positive prefix inputs, and the slack
+inequality \(e\ell g^2<(b-xy)q^2\). With \(Q=|q|\), they give
+\begin{equation}\label{prefix}
+ b>xy\ge x>32z\ge32,\quad Q\ge b^5-2\ge b^4,
+ \quad M=Q^{32},\quad r\ge M\ge b^{128}>2^{640}>L.
+\end{equation}
+In particular \(r,M\) are positive integers, \(b<Q\),
+\(M\ge4b\), and \(M\ge16\). None of these conclusions uses
+the first Pell sign square or any nonzero assertion about \(s\).
+
+\begin{lemma}[The strengthened margin excludes zero]\label{nonzero}
+The relations reconstructed so far imply \(s\ne0\).
+\end{lemma}
+\begin{proof}
+Suppose \(s=0\). Then \(Y=a=p=0\), while \(k=r+1-h\)
+is an integer. The strict margin implies \(k\ne0\), and
+\eqref{small} says \(\tau^2+k^2=1\). Thus \(k=\pm1\),
+\(\tau=0\). Since \(c,C_*\) are integers, the inequality
+\(1-4c^2-C_*^2>0\) gives \(c=C_*=0\). Now \(A=A_0\),
+so \eqref{power} forces \(A_0-1\mid L=5^{60}\).
+
+For \(N_j(b)=1+b+\cdots+b^{j-1}\), factor
+\begin{equation}\label{factor}
+ A_0-1=(b-1)H_0(b),\qquad
+ H_0(b)=\frac{N_9(b)+8N_5(b)+1}{2}.
+\end{equation}
+The numerator is even for every integer \(b\). Also \(H_0(1)=25\),
+and its positive coefficients imply \(H_0(b)>25\) for \(b\ge2\).
+If \(A_0-1\mid5^{60}\), then its positive factor \(b-1\)
+equals \(5^a\) for some integer \(a\ge0\). Since \(b>32\),
+one has \(a\ge3\). Thus \(b\equiv1\pmod{125}\), and
+\eqref{factor}, with two invertible modulo 125, gives
+\[
+                        H_0(b)\equiv25\pmod{125}.
+\]
+Consequently \(v_5(H_0(b))=2\). A positive divisor of \(5^{60}\)
+with that valuation is exactly 25, contradicting \(H_0(b)>25\).
+\end{proof}
+
+The margin now gives \(k\ne0\),
+\begin{equation}\label{half}
+ \left|\frac ck-Y\right|<\frac12,\qquad
+ |c|>|k|(|Y|-1/2)>|k|>0,
+ \qquad |C_*|<|k|<|c|,
+\end{equation}
+because \(|Y|\ge M\ge16\). This also justifies the retained
+reciprocal reconstruction: the row \(vE=c^2\) forces \(v\ne0\),
+and its integer predicate supplies \(i=1/v\in\Z\setminus\{0\}\).
+The ordinary-\(abc\) chart additionally retains its explicit
+\(vi=1\) row. No new reciprocal or positivity input is introduced.
+
+\section{Both signs of the first trace}
+
+\begin{lemma}\label{signed-binomial}
+The retained binomial relations imply
+\[
+ |bw|=2^{2r+1},\qquad
+ \operatorname{sgn}(c)=\operatorname{sgn}(w),\qquad
+ \operatorname{sgn}(s)=\operatorname{sgn}(w)^{r+1}.
+\]
+If \(\sigma=\operatorname{sgn}(w)\), \(U=|w|M\),
+\(Z=|s|M\), \(a_1=|a|\), \(P=|p|\), then
+\begin{gather}
+ C:=|c|=Y_{2r+1}(a_1),\qquad K:=|k|=Y_{r+1}(P),\label{values}\\
+ a_1=rZ(U+\sigma),\qquad P=2r^2Z^2U,\qquad
+ \left|\frac CK-Z\right|<\frac12,\label{magnitudes}\\
+ \rho=\left(\frac{(U+\sigma)^2}{U}\right)^r,\qquad
+ 0<\rho-\frac CK<\frac{\rho}{Z^2(U-1)^2},\label{ratio}\\
+ Z>\frac78(U-2)^r,\qquad a_1>2U4^r.\label{rough-growth}
+\end{gather}
+\end{lemma}
+\begin{proof}
+The preliminary arguments of \cite[Section 3]{Signed} use no sign
+selection. For clarity, if \(w=0\), then \(p=0\), \(k=\pm1\),
+and \eqref{half} forces \(c=kY\). The first norm would then give
+\(d^2=(rY^2)^2-Y^2+1\), strictly between the consecutive squares
+\((rY^2-1)^2\) and \((rY^2)^2\). Here \(d\in\Z\) by
+\eqref{linear}. Thus \(w\ne0\), so \(U,Z\ge16\).
+
+The expressions in \eqref{magnitudes} give \(a_1\ge2\),
+\(P-1>5r+1\), \(2a_1<P^2\), and \(P>a_1\).
+The congruence for \(k\), modulo \(|p-1|=P-\sigma\), gives
+\(|k|\ge r+1\); hence \eqref{half} gives \(|c|>2r+1=B\).
+The one-quotient index theorem of \cite{CRT}, with \eqref{first}
+through \eqref{third}, yields
+\[
+                C=Y_B(a_1),\qquad |d|=X_B(a_1).
+\]
+The small norm makes \(\tau\) integral and writes
+\(|k|=Y_\ell(P)\) for \(\ell\ge1\). The bounds
+\(|k|<C<(2a_1)^{2r}<P^{4r}\) force \(\ell\le4r\).
+Reducing \(k\equiv r+1\pmod{p-1}\), using
+\(Y_\ell(P)\equiv\ell\pmod{P-1}\) or
+\(Y_\ell(P)\equiv(-1)^{\ell-1}\ell\pmod{P+1}\),
+now forces
+\[
+                         \ell=r+1,\qquad k=\sigma^rK.
+\]
+The modulus is greater than \(5r+1\), so no other signed residue
+in the displayed index range can occur. Equation \eqref{half}
+therefore gives \eqref{magnitudes} and
+\(\operatorname{sgn}(c)=\operatorname{sgn}(s)\sigma^r\).
+
+For completeness, put \(f_j(t)=Y_j(t)/(2t)^{j-1}\) for \(t\ge2\).
+The normalized Pell lemma of \cite{Binomial} gives
+\(1-(j-2)/(4t^2)\le f_j(t)\le1\), monotonicity in \(t\),
+and strict decrease in \(j\) from index two. Thus
+\[
+ \frac CK=\rho\frac{f_{2r+1}(a_1)}{f_{r+1}(P)}<\rho,
+ \qquad
+ f_{2r+1}(a_1)>1-\frac1{2Z^2(U-1)^2}.
+\]
+These imply \eqref{ratio}. Since \(\rho>(U-2)^r\),
+\eqref{magnitudes} gives
+\[
+ Z>\frac{15}{16}(U-2)^r-\frac12>\frac78(U-2)^r.
+\]
+Multiplying by \(r(U-1)\) proves \eqref{rough-growth}; explicitly,
+\[
+ \frac78r\frac{U-1}{U}\left(\frac{U-2}{4}\right)^r
+ \ge\frac78\cdot\frac{15}{16}\cdot\frac{14}{4}
+ =\frac{735}{256}>2.
+\]
+
+It remains to handle both independent first-Pell signs. Since \(B\)
+is odd, write
+\[
+              d=\varepsilon X_B(a),\qquad
+              c=\kappa Y_B(a),\qquad
+              \varepsilon,\kappa\in\{1,-1\}.
+\]
+Here \(Y_B(a)=C>0\), irrespective of the sign of \(a\).
+For \(m_0=4a-5\), the polynomial identities
+\[
+ \begin{split}
+ R_j^-&=X_j(a)-(a-2)Y_j(a),\quad
+ R_j^+=X_j(a)+(a-2)Y_j(a),\\
+ R_{j+1}^-&=2R_j^-+m_0Y_j(a),\quad R_0^-=1,\qquad
+ R_j^-R_j^+=1+m_0Y_j(a)^2
+ \end{split}
+\]
+give \(R_B^-\equiv2^B\) and \(2^BR_B^+\equiv1\pmod{m_0}\).
+The input bound \(b\le2M\) gives \(|bw|\le2U\), and
+\eqref{rough-growth} gives
+\begin{equation}\label{m0-bound}
+ |m_0|\ge4a_1-5>8U4^r-5>4U4^r+1.
+\end{equation}
+If \(\kappa=-\varepsilon\), the linear row gives
+\(bw2^B\equiv\varepsilon\pmod{m_0}\). This is impossible:
+\[
+ 0<|bw2^B-\varepsilon|\le4U4^r+1<|m_0|.
+\]
+The first inequality follows from \(|bw|\ge2\).
+Hence \(\kappa=\varepsilon\). The direct congruence and
+\[
+ |bw-\varepsilon2^B|\le2U+2\cdot4^r<|m_0|
+\]
+force \(bw=\varepsilon2^B\). Since \(b>0\), this means
+\(\varepsilon=\kappa=\sigma\). The signs of \(c\) and \(s\)
+follow from their already established relation.
+\end{proof}
+
+\section{Alternating truncation recovers divisibility}
+
+\begin{lemma}\label{rounding}
+With the notation of Lemma~\ref{signed-binomial},
+\begin{equation}\label{truncation}
+ Z=\sum_{j=0}^r\binom{2r}{j}\sigma^jU^{r-j}.
+\end{equation}
+In particular \(M\mid\binom{2r}{r}\).
+\end{lemma}
+\begin{proof}
+Call the integer on the right of \eqref{truncation} \(T_\sigma\).
+Expanding \(\rho=(U+\sigma)^{2r}/U^r\) gives
+\[
+ |\rho-T_\sigma|
+ \le\sum_{j=r+1}^{2r}\binom{2r}{j}U^{r-j}
+ <\frac{4^r/U}{1-1/U}.
+\]
+The exact absolute power relation gives
+\(U=2\cdot4^rM/b\). Since \(M\ge4b\) and \(U\ge16\),
+\begin{equation}\label{tail}
+ |\rho-T_\sigma|<\frac{b}{2M}\frac{16}{15}
+ \le\frac{2}{15}<\frac14.
+\end{equation}
+This estimate holds for both \(\sigma=1\) and \(\sigma=-1\).
+
+Put \(E=\rho-C/K>0\) and \(D=Z^2(U-1)^2\). Equation
+\eqref{ratio} says \(E<\rho/D=(C/K+E)/D\), so
+\[
+ E<\frac{C/K}{D-1}<\frac{Z+1/2}{Z^2(U-1)^2-1}<\frac14.
+\]
+The last inequality follows from \(U,Z\ge16\):
+\(Z^2(U-1)^2>4Z+3\). Consequently
+\[
+ |Z-T_\sigma|
+ \le|Z-C/K|+|C/K-\rho|+|\rho-T_\sigma|
+ <\frac12+\frac14+\frac14=1.
+\]
+Both numbers are integers, so they are equal. As \(M\mid U\)
+and \(M\mid Z\), reduction modulo \(M\) gives
+\(M\mid\sigma^r\binom{2r}{r}\), which is the desired divisibility.
+\end{proof}
+
+This is the point where the strengthened prefix bound matters:
+the conclusion uses \(M\ge4b\), not merely \(b\le2M\).
+For negative \(w\), the quotient \(s\) need not be positive,
+and the alternating formula must not be replaced by the old positive
+truncation while keeping the same auxiliary coordinates.
+
+\section{Power recovery with a signed auxiliary parameter}
+
+Let \(S_1=|s|\), retaining the notation \(S,T\) of the coding
+prefix separately. From \(|bw|=2^{2r+1}\) and \(b\le2M\),
+\(U\ge4^r\). Bernoulli's inequality gives
+\((1-2/U)^r\ge1-2r/U\ge1/2\). Lemma~\ref{signed-binomial}
+therefore implies
+\begin{equation}\label{growth}
+ S_1>\frac7{16}\frac{U^r}{M}
+ \ge\frac7{16}U^{r-1}>U^{r-2},\qquad
+ |a|<2rS_1U^2<S_1U^3<S_1^2.
+\end{equation}
+Here \(M\le U\), \(2r<U\), and \(r\ge M>2^{640}\).
+Moreover
+\[
+ S_1>U\ge4^r>7r+2>L+6r+2,\qquad
+ S_1>U\ge M\ge b^{128}>A_0.
+\]
+For \(s>0\), the definition gives \(A>S_1\); for \(s<0\),
+it gives \(A=A_0-5T_bS_1<-S_1\). Consequently
+\begin{equation}\label{signed-A}
+ |A|>S_1,\qquad |A-1|>L+6r,\qquad |m_*|>S_1.
+\end{equation}
+For the last assertion, if \(A<0\) it is immediate. If \(A>0\),
+then \(m_*>2bS_1-b^2-1>S_1\), using \(S_1>b^{16}\).
+
+Pell classification in \eqref{power} writes
+\(C_*=\epsilon_*Y_\nu(A)\), \(D_*=\tau_*X_\nu(A)\),
+with \(\nu\ge0\) and independent signs. If \(\nu=0\), the
+congruence for \(C_*\) would make \(|A-1|\mid L\), contrary
+to \eqref{signed-A}. For \(\nu\ge1\), elementary Pell growth,
+\eqref{half}, and \eqref{growth} give
+\[
+ |A|^{\nu-1}\le|C_*|<|c|
+ =Y_{2r+1}(|a|)<(2|a|)^{2r}<S_1^{6r}.
+\]
+Thus \(\nu\le6r\). Reduction modulo the positive modulus
+\(|A-1|\) gives \(\epsilon_*\nu\equiv L\), because
+\(A\equiv1\pmod{|A-1|}\) even when \(A<0\). Since
+\(|A-1|>L+6r\), this forces \(\epsilon_*=1\) and \(\nu=L\).
+In particular
+\[
+                  C_*=Y_L(A)>0,
+\]
+where the positivity also uses that \(L\) is odd.
+
+Put \(K_*=b^L>1\). The polynomial identities \eqref{power-rec}
+are valid with either sign of \(A\) and \(m_*\). They give
+\[
+ \begin{array}{ll}
+ D_*=X_L(A):&q\equiv K_*\pmod{|m_*|},\\
+ D_*=-X_L(A):&qK_*\equiv-1\pmod{|m_*|}.
+ \end{array}
+\]
+The inverse is legitimate since \(m_*\equiv-1\pmod b\).
+Since \(b<Q=M^{1/32}\le U^{1/32}\) and \(L<r\),
+\[
+ QK_*+1\le2QK_*\le2U^{(6r+1)/32}
+ <U^{r-2}<S_1<|m_*|.
+\]
+For the strict middle inequality use \(U>2\), \(r\ge4\), and
+\((6r+1)/32+1\le r-2\). In the negative trace case,
+\(qK_*+1\) is a nonzero integer, since \(K_*>1\); its absolute
+value is at most \(QK_*+1<|m_*|\). It cannot be a multiple
+of \(|m_*|\). Thus \(D_*=X_L(A)\). Now
+\(|q-K_*|\le Q+K_*\le QK_*+1<|m_*|\), so the direct
+congruence forces \(q=K_*=b^L\).
+
+\section{Rebuilding positive witnesses and the exact deletion}
+
+\begin{proof}[Completion of Theorem~\ref{main}]
+Lemma~\ref{signed-binomial} makes the positive integer \(b\) a
+divisor of \(2^{2r+1}\), hence a positive power of two.
+Lemma~\ref{rounding} supplies \(M\mid\binom{2r}{r}\), and
+the preceding section supplies \(q=b^L\). Keep the coding-prefix
+inputs, including \(b,q,r,M\), fixed. The positive binomial
+certificate of \cite[Theorem 1]{Binomial} reconstructs positive
+\(w,s,c,h,\gamma,i\) and the canonical first and small Pell
+witnesses for exactly this \((r,M,b)\). The positive-completeness
+proposition of \cite{CRT} supplies a positive one-quotient witness
+\(J\). These choices need not agree with the original signed
+auxiliary coordinates.
+
+The auxiliary power completion in \cite{Power} supplies positive
+\(\delta,\alpha_*\) and \(C_*=Y_L(A),D_*=X_L(A)\) for
+the newly chosen positive \(s\). The absorbed-margin completeness
+proof in \cite{SignedQ} applies with the same prefix bounds:
+its canonical integer margin satisfies \(\eta\ge k>C_*^2\).
+Thus the old positivity representatives can be chosen anew.
+Finally the first-Pell half-trace identity gives
+\(\zeta=2X_{r+1}(a)\), restoring \eqref{deleted}.
+
+Every required integer input can therefore be chosen positive.
+This permits the same thirteen-input general and ordinary-\(abc\)
+interfaces to be reconstructed under their existing completeness
+hypotheses, including the nonzero-input condition of the latter.
+No particular old interface witness is required to survive this
+reconstruction. Conversely, forgetting \(\zeta\) in any old
+witness leaves every new row satisfied. This proves precisely the
+claimed equivalence on coding-prefix and instance projections.
+\end{proof}
+
+The implemented half-trace residual is
+\[
+                    \zeta^2-2ad-2aA_c+2c-2,
+                    \qquad A_c=ac.
+\]
+Its private coordinate \(\zeta\) occurs in no other residual.
+Deleting this coordinate and row preserves the quadratic degree of
+all remaining residuals; their real sum of squares still has degree
+exactly four. This is one coordinate and one row on each of the two
+short-power routes. The specified route still has its long fixed-power
+circuit and does not have this strengthened auxiliary margin, so
+no sign-square deletion is asserted there.
+
+The complete predecessor is the general aggregate-spacing table in
+\nolinkurl{undecidability/aggregate_spacing_v100/}, or the ordinary-\(abc\)
+product table in \nolinkurl{undecidability/pell_product_v99/}.
+The exact counts are
+\begin{center}
+\begin{tabular}{lrrrr}
+\toprule
+Interface & Old variables & New variables & Old rows & New rows\\
+\midrule
+General & 971 & 970 & 826 & 825\\
+Ordinary \(abc\) & 696 & 695 & 591 & 590\\
+\bottomrule
+\end{tabular}
+\end{center}
+The independent full-table checker verifies the sole old occurrence of
+\texttt{pell\_d\_positive\_square}, the exact deleted
+\texttt{jones1980.pell\_positive\_root} row, and every retained row.
+All thirteen integer-input interfaces remain. Historical metadata that
+asserted positivity of the actual \(w,s\), or presence of a half-trace
+square, is moved to predecessor history. The active metadata records
+the signed conclusions and projection-only equivalence above.
+The two tables and their certificates are reproduced with
+\begin{verbatim}
+python undecidability/pell_signed_branch_v101/build_signed_branch.py
+python undecidability/pell_signed_branch_v101/verify_signed_branch.py
+\end{verbatim}
+
+The independent script \texttt{verify\_signed\_branch\_lemmas.py}
+checks the parameter factorization, five-adic obstruction, signed
+recurrence identities, alternating truncations, normalization and
+modulus estimates, and exact signed binomial fixtures. It imports
+no table builder. Its certificate records the scope of finite checks;
+the quantified projection equivalence is the proof above.
+In particular, it checks all 58 divisor candidates
+\(b-1=5^a\), \(3\le a\le60\), after the proved zero-branch
+reduction. Its ten large exact signed-binomial fixtures check the
+first and small norms, integer congruence quotients, old strict margin,
+and rounding estimates; they do not claim to instantiate the entire
+coding prefix or the enormous third-Pell completion. The negative
+\(w\) fixtures have negative right side in \eqref{deleted}, illustrating
+why an identical-coordinate lift must not be claimed.
+
+\begin{thebibliography}{9}
+\small\setlength{\itemsep}{2pt}
+\bibitem{Binomial} \(\mathbb Z\mathbb Q\) Diophantine Project,
+\emph{An exact Pell certificate for a power of two and central-binomial
+divisibility}.\par
+\nolinkurl{undecidability/papers/binomial_pell_certificate.tex}.
+\bibitem{Signed} \(\mathbb Z\mathbb Q\) Diophantine Project,
+\emph{Signed binomial witnesses force their own positivity and save
+five quadratic coordinates}.\par
+\nolinkurl{undecidability/source_repair_v93/signed_binomial_positivity.tex}.
+\bibitem{CRT} \(\mathbb Z\mathbb Q\) Diophantine Project,
+\emph{A single integer quotient for the third Pell certificate}.\par
+\nolinkurl{undecidability/pell_crt_v95/one_quotient_pell.tex}.
+\bibitem{Power} \(\mathbb Z\mathbb Q\) Diophantine Project,
+\emph{A short Pell replacement for the fixed Jones power}.\par
+\nolinkurl{undecidability/pell_power_v97/pell_power_replacement.tex}.
+\bibitem{SignedQ} \(\mathbb Z\mathbb Q\) Diophantine Project,
+\emph{Signed power recovery and an absorbed Pell bound save six
+quadratic coordinates}.\par
+\nolinkurl{undecidability/pell_signed_q_v98/signed_q_and_absorbed_bound.tex}.
+\bibitem{Product} \(\mathbb Z\mathbb Q\) Diophantine Project,
+\emph{One product identity removes a quadratic coordinate}.\par
+\nolinkurl{undecidability/pell_product_v99/pell_product_elimination.tex}.
+\end{thebibliography}
+\end{document}
