@@ -9,17 +9,19 @@ counted. This is a separate objective from minimizing the total coordinates
 of a polynomial defining the integers. All recorded numbers are upper bounds;
 no global least value is claimed.
 
-## Current frontier (v128)
+## Current frontier (v132)
 
-See the [continuation report](../docs/results_20261124_v128.md) and the [current frontier ledger](frontier_20261124_v128.json). The new exact quartic tables and finite-algebra transfers give:
+See the [continuation report](../docs/results_20261124_v132.md) and [current frontier ledger](frontier_20261124_v132.json).
 
 | Route | Quartic unknowns | Quadratic residuals | Unrestricted degree | Alternative published coding source |
 |:--|--:|--:|--:|--:|
-| General | **884** | 749 | **48** | 52 |
-| Specified | **1049** | 912 | **50** | 54 |
-| Ordinary rational abc | **295** | 244 | **36** | 36 |
+| General | **848** | 737 | **48** | 52 |
+| Specified | **876** | 763 | **50** | 54 |
+| Ordinary rational abc | **292** | 241 | **36** | 36 |
 
-The [theta reduction](positivity_theta_reduction_20261124/README.md) gives the two general quartics. The [signed-abscissa transfer](abc_signed_abscissa_v119/README.md), [mean-shifted cubic](abc_mean_shifted_curve_v120/README.md), and [exact elimination](exact_multiroute_elimination_v121/README.md) give the 323-variable predecessor; the [nested parity selector](abc_nested_selector_v122/README.md) improves it to 319 variables; the [scalar alternate failures](abc_scalar_failures_v123/README.md) give a 312-variable construction; the [exact normalized moments](abc_normalized_moments_v124/README.md) reduce it further to 309 variables; the [Sun-audit interpolation](abc_interpolated_mean_v125/README.md) and [paired denominator bound](abc_paired_height_v126/README.md) give 303 and 302 variables, respectively; the [exact curve-chart elimination](abc_curve_chart_elimination_v128/README.md) gives the current 295 variables. The earlier 519-variable stage is superseded, with its proof retained. The [direct-index](direct_index_transfer_v111/README.md) and [selective-pole](abc_selective_pole_v110/README.md) theorems give the unrestricted-degree results. These are proved transfers under their stated retained arithmetic and coding premises, with Sun's ten-integer coding theorem accepted by the project for 48/50 ([review clarification](../docs/audits/sun_september_20261124/README.md)). The specified direct-index route is algorithmically specified and uses the full-family modular contact-height premise rather than the old fixed L=143 interface. The [shorter logarithm and whole-guard tagged encoder](direct_index_transfer_v127/README.md) give strict parametric total-degree bounds 11·2^96 δ and 11·2^98 δ for the Sun-source 48/50 transfers, where δ is defined in the proof. No numerical value for the full source's δ is claimed. The target near 263 and every global minimum remain open.
+The [shared comparison theorem](shared_comparison_v131/README.md) uses two/three comparison poles in total for all twelve certified source integers. The specified construction uses an effective sufficient parameter recipe. The [harmonic selector](abc_harmonic_selector_v130/README.md) saves three more variables over [v128](abc_curve_chart_elimination_v128/README.md). The [ten-certificate alternatives](ten_certificate_v132/README.md) restore the long power chain and give 879/907 unknowns, a tradeoff rather than a reduction of the preferred counts.
+
+The [direct-index](direct_index_transfer_v111/README.md) and [selective-pole](abc_selective_pole_v110/README.md) constructions give the unrestricted bounds. The [shorter logarithm and whole-guard tagged encoder](direct_index_transfer_v127/README.md) and the [computed height-anchor refinement](direct_index_anchor_v129/README.md) retain 48/50 while simplifying the detector shifts; Sun's ten-integer coding theorem is an accepted source in the project. All transfers retain their stated arithmetic and coding premises; no unconditional H10(Q) theorem or global minimum is claimed. The corrected targets remain open.
 
 ## Earlier unrestricted-degree results (v108 baseline)
 

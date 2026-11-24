@@ -47,16 +47,18 @@ The [results JSON](data/results_20261123_v88.json) records all five new finite-a
 
 The [undecidability category](undecidability/README.md) counts existential
 rational unknowns; the integer instance is encoded in coefficients.
-The [v128 continuation](docs/results_20261124_v128.md) gives the current bounds and complete quartic tables, with the [current frontier ledger](undecidability/frontier_20261124_v128.json).
+The [v129–v132 continuation](docs/results_20261124_v132.md) gives the current bounds and complete quartic tables, with the [current frontier ledger](undecidability/frontier_20261124_v132.json).
 
 | Degree restriction | Additional height hypothesis | Rational unknowns | Status |
 |:--|:--|--:|:--|
 | Unrestricted degree | No additional abc hypothesis | **48** | Direct-index transfer with the accepted ten-integer source; retained modular, trace-height and other arithmetic inputs |
 | Unrestricted degree, specified source | No additional abc hypothesis | **50** | Algorithmically specified direct-index transfer with the accepted ten-integer source; retained full-family modular and abscissa-sum inputs |
 | Unrestricted degree | Ordinary rational abc | **36** | One selective derivative pole and finite-algebra encoding; retained arithmetic premises |
-| Quartic transfer | No additional abc hypothesis | **884** | Theta positivity deletion; 749 residuals; 12 integer predicates |
-| Quartic transfer, specified source | No additional abc hypothesis | **1,049** | Theta positivity deletion; 912 residuals; 10 integer predicates |
-| Quartic transfer | Ordinary rational abc | **295** | Interpolated mean, paired denominator height, and exact curve-chart elimination; 244 residuals; 12 integer predicates |
+| Quartic transfer | No additional abc hypothesis | **848** | Shared two-contact comparison; 737 residuals; 12 integer predicates |
+| Quartic transfer, specified source | No additional abc hypothesis | **876** | Shared three-contact comparison, effective parameter recipe; 763 residuals; 12 integer predicates |
+| Quartic transfer | Ordinary rational abc | **292** | Rational harmonic selector; 241 residuals; 12 integer predicates |
+
+The [ten-certificate alternatives](undecidability/ten_certificate_v132/README.md) use 879/907 quartic variables: fewer integer predicates at a higher total cost than the preferred shared comparison tables. The [direct-index anchor refinement](undecidability/direct_index_anchor_v129/README.md) replaces large contact-shift powers by linear shifts without changing the 48/50 counts.
 
 The 48/50 bounds use [Sun's ten-unknown theorem](https://arxiv.org/abs/2609.01594), accepted as a project coding source (see the [source-review clarification](docs/audits/sun_september_20261124/README.md)). The 36 bound uses the published mixed-domain source. The earlier 52/54 bounds remain available as alternative coding-source transfers. All new transfers have their stated retained arithmetic premises; no unconditional undecidability or global minimality is claimed. The [Sun-audit refinement](undecidability/direct_index_transfer_v127/README.md) keeps 48/50 unknowns with precision floor(D/2)+1 and whole-guard tagged determinants of degree strictly below 11·2^96 δ and 11·2^98 δ respectively (δ is a computable coefficient/operator-degree majorant, not numerically evaluated for the full source). The [v108 continuation](docs/results_20261124_v108.md) preserves the earlier tables and the interrupted-results reconstruction.
 
@@ -167,7 +169,7 @@ The general and abc sufficient parameters remain ineffective; stored small
 members are algebraic fixtures. The specified route uses its stated sufficient
 parameter. No global minimum is claimed. The alleged historical universal
 **57-positive-integer-variable / 47-quadratic** system has not been
-independently reproved, and a quartic bound near **263** is not established.
+independently reproved, and the corrected quartic research targets remain unestablished.
 The [registry](undecidability/results.json) and
 [project research document](docs/research_directions.md#undecidability-in-bounded-numbers-of-rational-unknowns)
 record all qualifications and historical tradeoffs.
