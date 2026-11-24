@@ -9,15 +9,17 @@ counted. This is a separate objective from minimizing the total coordinates
 of a polynomial defining the integers. All recorded numbers are upper bounds;
 no global least value is claimed.
 
-## Current frontier (v148)
+## Current frontier (v150)
 
-See the [continuation report](../docs/results_20261124_v148.md) and [current frontier ledger](frontier_20261124_v148.json).
+See the [continuation report](../docs/results_20261125_v150.md) and [current frontier ledger](frontier_20261125_v150.json).
 
 | Route | Quartic unknowns | Quadratic residuals | Unrestricted degree | Alternative published coding source |
 |:--|--:|--:|--:|--:|
-| General | **527** | 476 | **48** | 52 |
-| Specified | **560** | 507 | **50** | 54 |
+| General | **510** | 459 | **48** | 52 |
+| Specified | **542** | 489 | **50** | 54 |
 | Ordinary rational abc | **290** | 239 | **36** | 36 |
+
+The [fractional-linear scalar recursion](fractional_linear_scalar_v149/README.md) gives 519/552; the [reciprocal interpolation and contact gate](reciprocal_interpolation_v150/README.md) gives 510/542 with eight certified integers. The [shifted shared Pell rounding theorem](shared_pell_rounding_v150/README.md) closes the signed binomial-margin gap, conditional on integral small and third ordinates. Joint rational-ordinate integrality remains open. The abc frontier is unchanged.
 
 The [sparse radix and exact contact compression](sparse_radix_v145/README.md) gives 594/612, and the [coupled private comparison detector](coupled_comparison_v146/README.md) gives 566/584, retaining eight integer certificates and all arithmetic premises. The [scaled unit selector](abc_scaled_unit_v145/README.md) gives 291 under ordinary rational abc. The [selective common numerator](selective_common_numerator_v147/README.md) further gives 527/560 under the retained full all-sign order compatibility, and the [coupled abc moment](abc_coupled_moment_v148/README.md) gives 290. The [shared Pell core](shared_pell_core_v148/README.md) recovers both quotients when the ordinates are integral; the full rational replacement remains open.
 
