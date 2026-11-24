@@ -8,6 +8,10 @@ This directory contains proved negative results, separated from the constructive
 
 The [current construction table](../README.md) gives the positive bounds. No result in this directory establishes a number field whose ring of integers is not Diophantine in its fraction field.
 
+## Exponential quotient-cap obstructions
+
+The [ico multiplication-boundary theorem](papers/elliptic_divisibility/ico_multiplication_boundary_20261125.md) uses ordinary rational abc, the Hilbert moduli interpretation and weak boundedness of period maps to exclude a finite menu of rational-function lifts on the reference curve for sufficiently large fixed multipliers with arbitrarily large references, even if the degrees of the maps and the integer mixed coefficients are unbounded. It concerns the controlled-diagonal-support ico strategy, not arbitrary arithmetic lifts or a global lower bound. The companion [optimal interpolation theorem](../papers/elliptic_divisibility/ico_boundary_interpolation_20261125/README.md) proves the minimal diagonal radical and local solvability while excluding fixed graphs of the numerator coordinate even in a one-reference-per-input strategy.
+
 ## Pole predicates and contact functions
 
 | Manuscript | Result and scope |
