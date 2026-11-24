@@ -43,7 +43,7 @@ The [results JSON](data/results_20261123_v88.json) records all five new finite-a
 
 The [undecidability category](undecidability/README.md) counts existential
 rational unknowns; the integer instance is encoded in coefficients.
-The [v113 continuation](docs/results_20261124_v113.md) gives the current bounds, complete quartic tables, direct-index and selective-pole proofs, and the [current frontier ledger](undecidability/frontier_20261124_v113.json).
+The [v121 continuation](docs/results_20261124_v121.md) gives the current bounds and complete quartic tables, with the [current frontier ledger](undecidability/frontier_20261124_v121.json).
 
 | Degree restriction | Additional height hypothesis | Rational unknowns | Status |
 |:--|:--|--:|:--|
@@ -52,7 +52,7 @@ The [v113 continuation](docs/results_20261124_v113.md) gives the current bounds,
 | Unrestricted degree | Ordinary rational abc | **36** | One selective derivative pole and finite-algebra encoding; retained arithmetic premises |
 | Quartic transfer | No additional abc hypothesis | **884** | Theta positivity deletion; 749 residuals; 12 integer predicates |
 | Quartic transfer, specified source | No additional abc hypothesis | **1,049** | Theta positivity deletion; 912 residuals; 10 integer predicates |
-| Quartic transfer | Ordinary rational abc | **519** | Aggregate contacts, theta deletion and one shared native pole; 466 residuals; 12 integer predicates |
+| Quartic transfer | Ordinary rational abc | **323** | Signed-abscissa comparison, mean-shifted cubic chart and exact elimination; 272 residuals; 12 integer predicates |
 
 The smaller 48/50 bounds use an additional external source theorem from [Sun's 2026 preprint](https://arxiv.org/abs/2609.01594), not independently audited here. The 52/54/36 bounds use the previous published mixed-domain source. All new transfers have their stated retained arithmetic premises; no unconditional undecidability or global minimality is claimed. The unrestricted-degree recipes have finite uniform degrees, without a new numerical degree comparison claim here. The [v108 continuation](docs/results_20261124_v108.md) preserves the earlier tables and the interrupted-results reconstruction.
 
