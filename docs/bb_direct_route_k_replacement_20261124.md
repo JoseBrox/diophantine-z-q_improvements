@@ -13,7 +13,7 @@ For a rational \(B\ne0\), let \(\Psi(B)\) mean that **some** \(m\in\mathcal M\) 
 
 **Proposition 1 (stronger soundness).** If \(\Psi(B)\), then for every prime \(p\notin\{2,3,5,7\}\), \(v_p(B)\) is not negative and odd.
 
-**Proposition 2 (broader completeness).** If \(B\in\mathbb Q\) has square reduced denominator, \(0<B<1\), and \(v_2(B)\ge4\), then \(\Psi(B)\), provided the converse of Bhargava–Burungale Lemma 2.2 holds. No preparation at 3, 5, 7, or 13 is necessary for this direction.
+**Proposition 2 (broader completeness).** If \(B\in\mathbb Q\) has square reduced denominator, \(0<B<1\), and \(v_2(B)\ge4\), and \(v_p(B)\ge1\) at \(p=3,5,7\), then \(\Psi(B)\), provided the converse of Bhargava–Burungale Lemma 2.2 holds. The additional local conditions \(v_p(B)\ge1\) for \(p=3,5,7\) are required to ensure that division by \(m\) preserves square denominators. No condition at 13 is needed.
 
 ## Proof
 
@@ -24,7 +24,7 @@ For Proposition 2, write \(B=bq^2\) with \(b>0\) squarefree and \(q\in\mathbb Q^
 B/m=(b_0/m_0)q^2,
 \qquad\operatorname{sqf}(B/m)\equiv b_0m_0\equiv7\pmod8.
 \]
-Furthermore \(v_2(B/m)=v_2(B)-f\ge3\), and \(0<B/m<1\). A square denominator is preserved by rational-square scaling, so Lemma 2.2 applies to \(c=B/m\). This proves Proposition 2 conditional only on the cited converse. The reduction is fully elementary; it does not assume Route K, CR3, Proposition N, or any general 2-converse.
+Furthermore \(v_2(B/m)=v_2(B)-f\ge3\), and \(0<B/m<1\). At each odd \(p\mid m\), the assumption \(v_p(B)\ge1\) gives \(v_p(B/m)\ge0\). At \(2\), the valuation is at least 3. At every other prime, \(v_p(B/m)=v_p(B)\), whose negative valuations are even by hypothesis. Hence \(c=B/m\) really has square reduced denominator, and Lemma 2.2 applies. This proves Proposition 2 conditional only on the cited converse. The reduction is fully elementary; it does not assume Route K, CR3, Proposition N, or any general 2-converse.
 
 **Polynomial form:** multiplying \(F(B/m;s,t,z)=0\) by \(m^5\) gives the integer-coefficient equation
 \[
@@ -35,6 +35,6 @@ For each fixed \(m\), it has total degree nine. The eight-way disjunction is alg
 ## Integration boundaries
 
 1. The original Route K pole polynomial is **different**. This is a replacement for its *function* (soundness/completeness), not a proof of its identical zero set.
-2. The original proof allows input \(B\) as prepared by the old callers. Those inputs satisfy the above broader completeness hypotheses; a compiler refactor must separately preserve every other denominator, guard, and degree.
+2. The local integrality assumptions at 3, 5 and 7 cannot simply be dropped: for example, if a selected multiplier is divisible by 3 and \(v_3(B)=-2\), then \(v_3(B/m)=-3\). The original proof allows input \(B\) as prepared by the old callers. Those inputs satisfy the above broader completeness hypotheses; a compiler refactor must separately preserve every other denominator, guard, and degree.
 3. This note is an independent strengthening of the multiplier menu, **not** an independent proof of Bhargava–Burungale Theorem 2.3. Their finite star construction and TYZ genus-point input are audited in the existing v88 manuscripts and should stay cited.
 4. The result can be used as a new no-CR3 arithmetic interface in the project. Do not remove the original certified Route K implementation until a replacement Lean assembly builds and the final polynomial/variable count is independently checked.
