@@ -8,7 +8,7 @@ F(X,Y_1,\ldots,Y_m)
 
 whose rational input projection is the integers, under the arithmetic premises stated in each construction.
 
-**Every defining-polynomial variable count includes the input.** The separate undecidability category below counts existential rational unknowns; its instance input is encoded in the coefficients. Degree means total degree. Coefficient height is the maximum absolute integer coefficient after the fixed parameters have been substituted. We optimize variable count, then degree, then coefficient height. No global minimum is claimed.
+**Every defining-polynomial variable count includes the input.** The separate [undecidability category](#fewest-variables-currently-recorded-for-undecidability) counts existential rational unknowns; its instance input is encoded in the coefficients. **The 25 / 27 / 11 bounds for defining the integers are not in conflict with the 82 / 100 / 52 unrestricted-degree undecidability bounds:** they answer different questions and use different variable-counting conventions. Degree means total degree. Coefficient height is the maximum absolute integer coefficient after the fixed parameters have been substituted. We optimize variable count, then degree, then coefficient height. No global minimum is claimed.
 
 ## Current constructions — 24 November 2026
 
@@ -51,6 +51,8 @@ quartic sources, smaller complete tables, and lower general-degree bounds.
 | Quartic transfer | No additional abc hypothesis | **963** | Shared contact denominators; 818 quadratic residuals; retained arithmetic premises |
 | Quartic transfer, specified source | No additional abc hypothesis | **1,140** | Shared contact denominators; 991 quadratic residuals; retained arithmetic premises |
 | Quartic transfer | Ordinary rational abc | **695** | Signed Pell power recovery; 590 quadratic residuals; retained arithmetic premises |
+
+**Proof trail for the 82 / 100 / 52 unrestricted-degree results:** the [common-numerator theorem](undecidability/papers/common_numerator_transfers.tex) first gives 83 / 101 / 53 unknowns; the [finite-wrapper theorem](undecidability/papers/finite_wrapper_transfer.tex) absorbs one coordinate into a rank-sixteen finite algebra, giving 82 / 100 / 52; the [paired-spectral theorem](undecidability/papers/paired_spectral_encoder.tex) gives the strict degree ceilings in the table without changing these counts. The exact [finite-wrapper certificate](undecidability/certificates/finite_wrapper_transfer.json), [paired-spectral degree certificate](undecidability/alternative_v93/certificate.json), [results registry](undecidability/results.json), and independent [v90](scripts/verify_v90.py) and [v93](scripts/verify_v93.py) verification scripts record the counts, source hashes, and degree arithmetic. These are transfer theorems *under the retained arithmetic premises*; the gigantic determinant polynomials are specified but not expanded, and no global minimality is asserted.
 
 The [corrected-source proof](undecidability/source_repair_v93/corrected_jones_source.tex)
 ([PDF](undecidability/source_repair_v93/corrected_jones_source.pdf)) replaces
