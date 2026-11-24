@@ -100,4 +100,19 @@ for a0 in [-17,1,17,12345]:
         # exact z^7 coefficient from the 8 linear factors
         coeff=sg**7*sum(a0+r for r in (-8,-7,-4,-1,1,4,7,8))
         assert coeff==sg*8*a0
+from collections import Counter as Counts
+fixture=defaultdict(int)
+for (_,m),v in out.items(): fixture[m]+=v
+fixture={m:v for m,v in fixture.items() if v}
+def ascii_term(m,v,first):
+    a=abs(v)
+    powers=Counts(m)
+    body='*'.join('x'+str(i)+('^'+str(k) if k>1 else '') for i,k in sorted(powers.items()))
+    return ('-' if v<0 else ('' if first else '+'))+('' if a==1 and body else str(a)+('*' if body else ''))+body
+txt=''.join(ascii_term(m,v,i==0) for i,(m,v) in enumerate(sorted(fixture.items())))
+assert (here/'expanded-B1.txt').read_bytes()==txt.encode('ascii')
+f=certificate['fixture_B1']
+assert f['expanded_bytes']==len(txt)
+assert f['monomials']==len(fixture)
+assert int(f['coefficient_height'])==max(map(abs,fixture.values()))
 print('PASS 54 variables, 44 quadrics,',len(out),'parameter-separated quartic terms')

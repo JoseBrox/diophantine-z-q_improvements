@@ -6,7 +6,7 @@ This is a new contact construction, not a diagonal rescaling of the v81 contact 
 
 ## 1. Source and the new weight
 
-Keep the first 35 residuals and their point, gate, pole and zero-fibre interpretations from the v81 table. In particular use its coordinates X, T_sc=2x8, c=x43, u=x44=1/c, and d_s=x42=uD. The gate uses alpha=u+d_s^2, tau=alpha/(1+alpha), and physical pole argument b=7c tau^2. The pole and gate have exactly their old equations. Only the height equation and the contact circuit change.
+Keep the first 35 residuals (before the height equation) and their point, gate, pole and zero-fibre interpretations from the v81 table. In particular use its coordinates X, T_sc=2x8, c=x43, u=x44=1/c, and d_s=x42=uD. The gate uses alpha=u+d_s^2, tau=alpha/(1+alpha), and physical pole argument b=7c tau^2. The pole and gate have exactly their old equations. Only the height equation and the contact circuit change.
 
 Put M=B+8(X^8+T_sc^2), a=M+16, x=a-z, y=a+z. Define
 \[
@@ -88,3 +88,7 @@ qH&=1,&(c+1-q)A&=H^2.
 The second value equation excludes y=0 because P(0) is nonzero. The inverse row forces H nonzero; the last row forces A nonzero. The retained c u=1 excludes c=0. These are all required new guards and every row is quadratic. Conversely the displayed rational expressions give all eight registers. Thus the complete count is 45+8+1=54, with 44 residuals and a primitive quartic sum of squares, not merely a partial encoding of the contact formulas.
 
 The exact coefficient tables are provided alongside this proof. Run verify.py with repository root as its working directory. It independently checks all unchanged rows, the height change, the expanded new identities, the full coefficient expansion, degree and primitive content, and finite valuation and asymptotic identities. These computations verify the algebra and rational margins; the arithmetic theorem follows from the proofs above and the retained source premises.
+
+## Fixture and verification
+
+The expanded ASCII fixture `expanded-B1.txt` has 788 monomials, coefficient height 5531402752, and 11174 bytes. It is not asserted to define the integers. The theorem concerns sufficiently large fixed B congruent to 1 modulo 8. The row and expanded coefficient tables retain their full symbolic dependence on B.
