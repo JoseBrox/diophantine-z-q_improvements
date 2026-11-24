@@ -1,0 +1,26 @@
+const fs=require('fs'), path=require('path');
+const combine=function combine(a,b,old){
+ const assert=(x,m)=>{if(!x)throw Error(m)};
+ const nameRow=(q,names)=>({name:q.name,terms:q.terms.map(t=>({coefficient:String(t.coefficient),monomial:t.monomial.map(i=>names[i-1])}))});
+ const norm=q=>JSON.stringify(q.terms.map(t=>[t.monomial.slice().sort().join("*"),t.coefficient]).sort((x,y)=>x[0].localeCompare(y[0])));
+ const rows=(t)=>new Map(t.residuals.map(q=>[q.name,nameRow(q,t.variable_names)]));
+ const ra=rows(a),rb=rows(b),ro=rows(old);
+ const removed=old.variable_names.filter(n=>!b.variable_names.includes(n));
+ const removedRows=[...ro.keys()].filter(n=>!rb.has(n));
+ const changed=[...rb.keys()].filter(n=>!ro.has(n)||norm(rb.get(n))!==norm(ro.get(n)));
+ assert(removed.length===3&&removedRows.length===3&&changed.length===2,"exact theta delta");
+ assert(removed.every(n=>a.variable_names.includes(n)),"theta coord lost");
+ for(const n of removedRows)assert(ra.has(n)&&norm(ra.get(n))===norm(ro.get(n)),"contact overlap "+n);
+ for(const n of changed)for(const t of rb.get(n).terms)assert(t.monomial.every(v=>a.variable_names.includes(v)&&!removed.includes(v)),"changed support");
+ const names=a.variable_names.filter(n=>!removed.includes(n)),map=new Map(names.map((n,i)=>[n,i+1]));
+ const rr=[...ra].filter(([n])=>!removedRows.includes(n)).map(([n,q])=>q).concat(changed.map(n=>rb.get(n)));
+ const residuals=rr.map(q=>({name:q.name,terms:q.terms.map(t=>({coefficient:t.coefficient,monomial:t.monomial.map(n=>{assert(map.has(n),"unmapped "+n);return map.get(n)}).sort((x,y)=>x-y)}))}));
+ assert(names.length===557&&residuals.length===482,"count");
+ assert(residuals.every(q=>q.terms.every(t=>t.monomial.length<=2)),"degree");
+ assert(new Set(residuals.flatMap(q=>q.terms.flatMap(t=>t.monomial))).size===557,"full support");
+ return {...a,status:"proved_conditional_on_retained_ordinary_abc_and_arithmetic_source_inputs",predecessors:["../abc_aggregate_contacts_v109/quadrics.json","../positivity_theta_reduction_20261124/abc_quadrics.json"],variables:names.length,variable_names:names,residuals,removed_coordinates_from_v109:removed,removed_rows_from_v109:removedRows,added_rows_from_v109:changed,verification:{quadratic_rows:residuals.length,full_support:true,disjoint_transformations:true}};
+};
+const read=p=>JSON.parse(fs.readFileSync(path.join(__dirname,p),'utf8'));
+const t=combine(read('../abc_aggregate_contacts_v109/quadrics.json'),read('../positivity_theta_reduction_20261124/abc_quadrics.json'),read('../abc_pell_integrality_v108/c_integrality_abc_quadrics.json'));
+if(process.argv.includes('--write'))fs.writeFileSync(path.join(__dirname,'quadrics.json'),JSON.stringify(t)+'\n');else if(JSON.stringify(t)!==JSON.stringify(read('quadrics.json')))throw Error('output mismatch');
+console.log('PASS',t.variables,t.residuals.length);
