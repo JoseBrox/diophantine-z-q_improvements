@@ -1,0 +1,532 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs,xurl,hyperref}
+\hypersetup{hidelinks}
+\setlength{\emergencystretch}{3em}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\Z}{\mathbb Z}
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\Nm}{N}
+\DeclareMathOperator{\sqf}{sqf}
+\title{Congruent-number poles in the complete combined quartic systems}
+\author{Z diophantine in Q project}
+\date{24 November 2026}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We replace all 39 or 44 private non-CM pole blocks in the complete
+combined general and specified systems by congruent-number poles.
+The resulting systems retain 963 variables and 818 quadratic rows,
+or 1140 variables and 991 rows. Exactly 117 or 132 rows change.
+Their integer-input interpretation uses Bhargava--Burungale's
+Theorem~2.3 instead of the former non-CM pole realization input.
+We prove the simultaneous local preparation with the actual shared
+reference point, scalar point, and global contact gauge, and give
+all six physical coordinate maps. The other arithmetic interfaces
+and the external integer-coding theorem remain premises. This is
+a reduction of assumptions, not a further reduction of variables
+or a bijection between the old and new rational zero sets.
+\end{abstract}
+
+\section{Statement and precise scope}
+
+The predecessors are the complete contact-denominator systems in
+\cite{v103}. They contain thirteen integer predicates in the general
+route and eleven in the specified route. The general route uses two
+comparison poles and one scalar pole per predicate; the specified
+route uses three comparison poles and one scalar pole. Each pole
+has private auxiliary coordinates, even though the physical point
+data and contact gauge have already been shared.
+
+We retain the predecessor's elliptic carrier over $K=\Q(\sqrt2)$,
+point-chart interpretation, formal-logarithm estimates, height bounds,
+finite-family prime supplier, all-sign reduction-order coprimality,
+and compatible finite-place and compact-real recurrence. The
+general defining parameter retains its ineffective sufficiently
+large threshold; the specified parameter is unchanged. The later
+published integer-coding theorem recorded in the full tables is an
+external premise, and is not independently proved here. Historical
+papers in the dependency chain sometimes discuss an older emended
+source: those historical source obligations are not substituted for
+the current table's source-coding metadata.
+
+The one arithmetic premise removed here is realization of the old
+non-CM pole predicate. In particular, the new construction does not
+invoke the old Theorem~5.3, Route~K, its certified-rank input, or the
+project's Proposition~N. It invokes the rational-point conclusion of
+Bhargava--Burungale~\cite[Theorem~2.3]{BB}. We verify the translation
+and every additional preparation condition below. Finite coefficient
+checks establish neither that theorem nor the other retained
+arithmetic interfaces.
+
+\begin{theorem}\label{main}
+Under the retained non-pole arithmetic interfaces and the cited
+Bhargava--Burungale result, the new systems have the same intended
+integer-input projection as the predecessor systems. They have,
+respectively, $(N,r)=(963,818)$ and $(1140,991)$, where $N$ counts
+rational variables and $r$ counts quadratic residuals. Their sums
+of squared residuals have degree exactly four. No complete old/new
+rational zero-set bijection is asserted.
+\end{theorem}
+
+\section{The elementary obstruction and the external point input}
+
+For a nonzero rational $d$, consider
+\begin{equation}\label{cm}
+ e^2+dp^2=1,\qquad uv=e(1-d),\qquad u^2-v^2=dq^2.
+\end{equation}
+The letters $p,q$ in this display are rational auxiliaries, not primes.
+
+\begin{lemma}\label{obstruction}
+Every rational solution of \eqref{cm} has square reduced denominator
+for $d$: each negative valuation of $d$ is even.
+\end{lemma}
+\begin{proof}
+Suppose $v_\ell(d)=\nu<0$ is odd. In the first equation the two
+summand valuations have different parity whenever $p\ne0$. Neither
+can be negative, and $e$ is a unit. If $p=0$, then $e=\pm1$, with
+the same conclusion. The middle equation gives $uv\ne0$ and
+$v_\ell(u)+v_\ell(v)=\nu$. If $q=0$, the last equation implies
+$v_\ell(u)=v_\ell(v)$. If $q\ne0$ and these two valuations differ,
+the left side has even valuation whereas the right side has odd
+valuation. Thus they again coincide. Their sum is even, a
+contradiction. This includes $\ell=2$.
+\end{proof}
+
+\begin{proposition}[Prepared existence]\label{existence}
+Assume the rational-point assertion of \cite[Theorem~2.3]{BB}.
+If $0<d<1$, $d$ has square reduced denominator,
+$v_2(d)\ge4$, and $d\in7\Q_2^{\times2}$, then \eqref{cm} has
+rational solutions.
+\end{proposition}
+\begin{proof}
+Write $d=A/B^2$ in lowest terms with $A,B>0$. The positive
+squarefree representatives $j=\sqf(d)$ and $k=\sqf(1-d)$ are
+coprime, because $A$ and $B^2-A$ are coprime. They are odd,
+$j\equiv7\pmod8$, and $k\equiv1\pmod8$. At a prime dividing
+$j$, $1-d$ is a unit congruent to one, so $k$ is a local square.
+At a prime dividing $k$, $d$ is a unit congruent to one, so $j$
+is a local square. These verify the mutual-square conditions in
+the cited theorem. If $k=1$, put $1-d=r^2$ and take
+$e=1$, $p=q=0$, $u=v=r$; this allowed zero branch already proves
+the assertion.
+
+For $k>1$, the theorem supplies a positive $n$ and points of
+nonzero ordinate on
+\[
+ E_n:y^2=x^3-n^2x,\qquad E_{nk}:y^2=x^3-n^2k^2x,
+\]
+whose abscissas lie in $j\Q^{\times2}=d\Q^{\times2}$.
+Writing $1-d=kc^2$, scale the second point by
+$(x,y)\mapsto(c^2x,c^3y)$. Thus there are points
+\[
+ (da^2,aU)\in E_n(\Q),\qquad
+ (db^2,bV)\in E_{n(1-d)}(\Q),\qquad abUV\ne0.
+\]
+Their equations are
+\[
+ U^2=d^3a^4-dn^2,\qquad
+ V^2=d^3b^4-dn^2(1-d)^2.
+\]
+Define
+\begin{equation}\label{pointrecipe}
+ e=\frac{n}{da^2},\quad p=\frac{U}{d^2a^2},\quad
+ u=\frac ba,\quad v=\frac{e(1-d)}u,\quad
+ q=\frac{V}{d^2ab}.
+\end{equation}
+Direct substitution gives all three equations \eqref{cm}.
+The independent verifier checks these identities as rational
+identities in the two curve residuals. No density assertion or
+additional nonzero condition on the pole auxiliaries is needed:
+the complete tables retain private affine pole witnesses, with no
+finite-algebra encoder or guard dividing by $p$, $q$, or $e$.
+\end{proof}
+
+Put $d=7b/9$. Clearing the constant denominator gives the new
+physical pole equations
+\begin{equation}\label{newphysical}
+ 9e^2-9+7bp^2=0,\quad
+ 9e-7eb-9uv=0,\quad
+ 9u^2-9v^2-7bq^2=0.
+\end{equation}
+By Lemma~\ref{obstruction}, these exclude every negative odd
+valuation of $b$ outside $\{7\}$: the change at $3$ is by $-2$,
+which preserves oddness and negativity. The prime $7$ is already
+excluded from the consumed height radicals. For example, the
+retained fixed height set in \cite[Section~5]{v62} is
+\[
+ S=\{2,3,5,7,11,13,17,37,41,2399\},
+\]
+and \cite[Section~5]{v82} also explicitly includes $7$ among its
+existing exclusions. No contact-height constant changes.
+
+For completeness, the old preparation gives square-denominator
+inputs $b>0$, which are $2$-adic squares of valuation at least four
+and $3$-adic squares of valuation at least two. We now arrange
+simultaneously that $b<1$ and $v_7(b)\ge0$. Then $0<d<7/9$,
+$v_2(d)\ge4$, and $d\in7\Q_2^{\times2}$. At $3$,
+$v_3(d)=v_3(b)-2\ge0$; at $7$, $v_7(d)=v_7(b)+1\ge1$.
+All other negative valuations remain even. Hence
+Proposition~\ref{existence} applies to every actual input.
+
+\section{Simultaneous preparation with shared physical points}
+
+Fix the finite tuple of integer inputs. The retained normalizers
+$R_i>100$ are fixed before the common point choices. Their positivity
+also holds on every rational input: in the source notation
+\[
+ \beta=51X^2+2504,\qquad
+ r=\beta(\beta-1)(\beta-2401)(32\beta+343)>0,
+\]
+and $R=149C^2r/(1+149^2r)$ or $R=A_{\rm a}r/(1+25r)$.
+The lower bound $R_i>100$ on integer witnesses is the one already
+used in \cite{v82}. We keep every scalar pole private, while
+using one reference point $H$, one scalar point $Q_2$, and the
+common Lucas roles furnished by the finite-family construction
+\cite{common,global}. The contact-progression and endpoint changes
+\cite{progression,aggregate,v102,v103} retain these physical choices.
+
+\subsection{One scalar depth for every input}
+
+Write $H=[h]P_0$, $Q_2=[a_0]P_0$, $a=2a_0$, and
+$\ell=a/h$. The letter $\ell$ here is a rational index ratio.
+Let $z=x/y$ be the fixed formal parameter, $f=1/x(H)$, and
+$Z=2z(Q_2)/z(H)$. For each normalizer the actual scalar quantities
+are exactly those of \cite[Sections~2 and 7]{v82}:
+\begin{equation}\label{scalar}
+ J_i=\frac{Z^2}{R_i^5}+\frac{f^2}{R_i^4},\quad
+ \tau_i\Tr\left(\frac{Z^2}{R_i^5}\right)=\Nm(J_i),\quad
+ b_{s,i}=K_i\tau_i^2,\quad K_i=R_i(R_i+9792).
+\end{equation}
+The finite preparation set is the union, over all inputs, of the
+odd-valuation supports of $K_i$, the original exceptional preparation
+primes, and $7$. This is a finite union after all $R_i$ are fixed.
+
+At $7$, put $r_i=v_7(R_i)$ and $k_i=v_7(K_i)$. Choose one integer
+\begin{equation}\label{tchoice}
+ t\ge\max\left(1,\max_i\left\lceil\frac{10r_i-k_i}{4}\right\rceil\right),
+\end{equation}
+increased if an original preparation requirement asks for a larger
+depth. Choose one common reference point deep enough that, at both
+places $w$ above $7$, with $d_w=v_w(z(H))$ and some fixed $q\ge2$,
+\begin{equation}\label{deep}
+ 4d_w-c_7\ge q,\qquad r_i+4d_w-2t\ge q\quad\hbox{for every }i.
+\end{equation}
+Here $c_7$ is a fixed formal-expansion denominator loss. The curve
+$y^2=x^3-(11-6\sqrt2)x$ need not have good reduction at each place
+above $7$. On a sufficiently deep formal subgroup its convergent
+short-Weierstrass logarithm has leading term $z$ and next possible
+term of order five. This gives, with a fixed loss on that subgroup,
+\[
+ f=z(H)^2\cdot\text{unit},\qquad
+ Z=\ell(1+\epsilon_w),\qquad v_w(\epsilon_w)\ge4d_w-c_7.
+\]
+This is the same fixed-prime formal preparation used in
+\cite[Section~7]{v82}; no good-reduction assertion at $7$ is needed.
+
+Choose the common scalar index with the exact open condition
+$v_7(a/h)=t$. Chinese remaindering combines this with all original
+prepared-place conditions, $a\in6\Z$, and the fixed component and
+reduction orders. The retained recurrence supplies the simultaneous
+real return. Conditions \eqref{deep} imply that $J_i$ is
+$\ell^2R_i^{-5}$ times a field unit congruent to one, and its trace
+denominator in \eqref{scalar} is $2\ell^2R_i^{-5}$ times a rational
+unit. Consequently
+\begin{equation}\label{depth}
+ v_7(\tau_i)=2t-5r_i,\qquad
+ v_7(b_{s,i})=k_i+4t-10r_i\ge0
+\end{equation}
+for every input, using the same $H$ and $a_0$.
+
+At any other prepared rational prime $p$, the identical calculation
+from the source gives
+\[
+ v_p(\tau_i)=2t_p-5v_p(R_i)-v_p(2).
+\]
+Choose the one common lower requirement for $t_p$ as the maximum
+over the finite input list, then increase the common reference
+depth to allow it. Thus the previous squareclasses and depths at
+$2,3,17$, and all odd-support integrality conditions, hold
+simultaneously. This does not select a separate reference or scalar
+point for different inputs.
+
+For clarity, no new denominator prime of $\tau_i$ escapes the
+argument. If $R_i=u/v$ is reduced, then
+\[
+ K_i=\frac{u(u+9792v)}{v^2},\qquad
+ \gcd\bigl(u(u+9792v),v\bigr)=1.
+\]
+Every odd valuation of $K_i$ is positive and lies in the preparation
+set. At such a prime we require $\tau_i$ integral. Outside that set
+$v_p(K_i)$ is even, so $v_p(K_i\tau_i^2)$ is even regardless of
+any denominator of $\tau_i$. This proves square denominators for
+all actual scalar inputs.
+
+The single real box
+\[
+ |f^{(j)}|\le1,\qquad 1\le|Z^{(j)}|\le3\quad(j=1,2)
+\]
+works for every $R_i$. The existing estimate gives
+\[
+ 0<b_{s,i}\le\frac{24482500}{R_i^4}<1.
+\]
+After $a_0$ is fixed, shrink the common reference progression to
+preserve these real and finite open conditions. This happens before
+the comparison primes are chosen. Later high-precision reference
+and common-numerator choices remain inside this progression.
+
+\subsection{The actual common contact gauge at the added prime}
+
+After the private root differences, common scalar and Lucas roles,
+and aggregate shifts are fixed, there are $m=26$ comparison
+contacts in the general system or $m=33$ in the specified system.
+The progression includes the retained sixteenth endpoint. Write
+its common contact parameter as $\lambda_c$ and all already fixed
+shifts as $\delta_{ij}$. The shared gauge is the actual sum
+\[
+ \rho=\sum_{i,j}q_{ij}(\lambda_c+\delta_{ij}).
+\]
+At each prepared finite place, including $7$, and at real infinity,
+the reflected contact functions satisfy the existing asymptotic
+\[
+ q_{ij}=\kappa\lambda_c^{-2}+O(\lambda_c^{-3}),\qquad
+ \rho=m\kappa\lambda_c^{-2}+O(\lambda_c^{-3}),\qquad\kappa\ne0.
+\]
+In particular,
+\begin{equation}\label{gaugeasymptotic}
+ \frac{(\rho-q_{ij})^2}{q_{ij}}
+       =(m-1)^2\kappa\lambda_c^{-2}+O(\lambda_c^{-3})\longrightarrow0.
+\end{equation}
+No division by $m$ or $m-1$ is used. All physical tests are bounded
+on the chosen common point neighborhoods, and each nonconstant
+detector term contains a positive power of $\rho$. Thus
+\[
+ W_i\longrightarrow1,\qquad
+ D_i=\frac{\Nm(W_i-1)}{\Tr(W_i)}\longrightarrow0,
+\]
+with trace tending to $2$, a $7$-adic unit. The physical gate and
+pole input are
+\begin{equation}\label{comparisoninput}
+ g_{ij}=1+D_i^2+\frac{(\rho-q_{ij})^2}{q_{ij}},\qquad
+ b_{ij}=\left(\frac{204}{409}\right)^2\frac{g_{ij}^2}{1+q_{ij}}.
+\end{equation}
+Consequently every $b_{ij}$ tends to $(204/409)^2$, a $7$-adic
+unit and a real number in $(0,1)$. A single sufficiently small
+neighborhood of $1/\lambda_c=0$ at $7$, and a sufficiently large
+real slope, give $v_7(b_{ij})=0$ and $0<b_{ij}<1$ for the whole
+finite list. The previous preparations at $2,3,17$ persist.
+
+This limiting argument uses the sum of all actual contact weights,
+not the former two- or three-term sum of one input block. The
+retained finite-family supplier permits fixed finite divisibility,
+finite avoidance, and an arbitrarily large real slope; its
+high-precision common-index construction preserves all prescribed
+point neighborhoods. Apply it after adjoining $7$ to the fixed
+preparation set and to the fresh-prime avoidance set. The source
+separation argument, including the common spacing and endpoint,
+is unchanged because all shifts were fixed before this step.
+
+At a fresh prime of a contact $(i,j)$, its own weight has valuation
+$-1$ and all other weights are integral. Hence $v_p(\rho)=-1$,
+$\rho-q_{ij}$ is integral, and the original synchronized formal
+depths give $D_i\equiv0$, $g_{ij}\equiv1$, and $v_p(b_{ij})=1$.
+For a foreign pole, its contact factor has even valuation and the
+gate changes it only by a rational square. Its valuation is
+therefore even, even if the foreign gate has a pole. These are
+exactly the global-gauge parity arguments of \cite{global}.
+They prove square reduced denominators for every actual comparison
+input while retaining the new integrality at $7$.
+
+All shared physical choices are now fixed. Apply
+Proposition~\ref{existence} independently to the 39 or 44 private
+pole inputs, and fill their private stored coordinates as below.
+No scalar, root, contact, or numerator choice is revisited after
+these pole witnesses have been chosen.
+
+\section{Six exact physical charts and the complete row change}
+
+The old physical triple was
+\begin{equation}\label{oldphysical}
+ 3e^2-34e-289+17bp^2=0,\quad
+ 17e-eb-17uv=0,\quad
+ u^2+34uv-867v^2-17bq^2=0.
+\end{equation}
+For every pole let $E,B,U,V,P,Q$ denote its six stored coordinates.
+There are nonzero scale quantities $s_1,s_2,S$ with $S^2=s_1s_2$.
+The physical dictionary is
+\begin{equation}\label{dictionary}
+ E=s_1e,\quad B=s_2b,\quad U=Su,\quad V=Sv,\quad
+ P=\frac{s_1^2}{s_2}p^2,\quad Q=s_1q^2.
+\end{equation}
+The two retained square rows are $p_*^2=\gamma_pP$ and
+$q_*^2=\gamma_qQ$. All six charts are listed here; $R$ is the
+private positive normalizer, $\epsilon=\rho^{-1}$ is the guarded
+common inverse gauge, and $\sigma$ is the private scalar scale.
+
+\begin{center}\small
+\begin{tabular}{@{}lccccccc@{}}
+\toprule
+Chart & $s_1$ & $s_2$ & $S$ & $\gamma_p$ & $\gamma_q$
+ & $p_*/p$ & $q_*/q$\\
+\midrule
+General 0 & $1$ & $\epsilon^2$ & $\epsilon$ & $R^2$ & $R^2$
+ & $R/\epsilon$ & $R$\\
+General 1 & $1$ & $\epsilon^2$ & $\epsilon$ & $1$ & $R^2$
+ & $1/\epsilon$ & $R$\\
+Specified 0 & $R^2$ & $1$ & $R$ & $\epsilon^2$ & $R^2$
+ & $\epsilon R^2$ & $R^2$\\
+Specified 1 & $R^2$ & $1$ & $R$ & $\epsilon^2$ & $\epsilon^2$
+ & $\epsilon R^2$ & $\epsilon R$\\
+Specified 2 & $\epsilon^2$ & $1$ & $\epsilon$ & $\epsilon^2$ & $\epsilon^2$
+ & $\epsilon^3$ & $\epsilon^2$\\
+Scalar & $\sigma$ & $\sigma$ & $\sigma$ & $\sigma$ & $\sigma$
+ & $\sigma$ & $\sigma$\\
+\bottomrule
+\end{tabular}
+\end{center}
+The existing square registers for $R^2$ and $\epsilon^2$ are used
+in the literal rows. The guard $\rho\epsilon=1$ gives
+$\epsilon\ne0$. The scalar inverse row
+$\sigma\widehat\tau=R^4$ gives $\sigma\ne0$, since $R>0$.
+Thus every map and inverse in the table divides only by quantities
+already forced nonzero; no pole auxiliary itself is inverted.
+
+In these stored coordinates the old three rows are
+\begin{align*}
+ 3E^2-34Es_1-289s_1^2+17BP&=0,\\
+ 17Es_2-EB-17UV&=0,\\
+ U^2+34UV-867V^2-17BQ&=0.
+\end{align*}
+Replace them by
+\begin{equation}\label{storednew}
+\begin{aligned}
+ 9E^2-9s_1^2+7BP&=0,\\
+ 9Es_2-7EB-9UV&=0,\\
+ 9U^2-9V^2-7BQ&=0.
+\end{aligned}
+\end{equation}
+The literal residuals have degree at most two, because $s_1,s_2$
+are existing coordinates or constants. Substitution of
+\eqref{dictionary} turns both old and new triples into their
+physical triples multiplied by $s_1^2,S^2,S^2$, respectively.
+The unchanged square rows recover rational $p$ and $q$ by the
+last two columns of the table, including $p=0$ or $q=0$.
+
+\subsection{Coordinate and occurrence audit}
+
+Each input uses its original local coordinate prefix. In the
+reciprocal input block the prefix is \texttt{int\_i\_reciprocal};
+all others use \texttt{int\_}\emph{label}. The index dictionary is
+\begin{center}\small
+\begin{tabular}{@{}lrrrrrrrr@{}}
+\toprule
+Role & $E$ & $U$ & $V$ & $B$ & $P$ & $Q$ & $p_*$ & $q_*$\\
+\midrule
+Comparison 0 & 3&4&66&64&65&67&5&6\\
+Comparison 1 & 7&8&75&73&74&76&9&10\\
+Comparison 2 (specified) &166&167&176&174&175&177&168&169\\
+Scalar &11&12&84&82&83&85&13&14\\
+\bottomrule
+\end{tabular}
+\end{center}
+The normalizer and its square are local indices $90,89$; scalar
+$\sigma$ is index $81$. In the root block, the common
+$(\rho,\epsilon,\epsilon^2)$ are $(159,160,161)$ in the general
+system and $(162,163,164)$ in the specified system. These are
+names inherited from earlier charts, not final positions after
+renumbering. The verifier resolves them through the full table.
+
+The independent checker imports no builder code. It reconstructs
+each old and new pole row from this index dictionary and the six
+physical maps, pins all 166 square rows, and verifies that every
+other row is literally identical. It also checks both common
+gauge guards, each scalar inverse and input equation, all variable
+occurrences, coefficient rings, degrees, source metadata, and
+file hashes. Its totals are
+\begin{center}
+\begin{tabular}{@{}lrrrrrr@{}}
+\toprule
+System & Variables & Rows & Poles & Changed & Unchanged & Square rows\\
+\midrule
+General &963&818&39&117&701&78\\
+Specified &1140&991&44&132&859&88\\
+\bottomrule
+\end{tabular}
+\end{center}
+The full coefficient tables, not only the changed blocks, are
+included. Their sum of squares vanishes exactly when all listed
+quadratic residuals vanish over $\Q$. There is a nonzero quadratic
+residual, so its degree is exactly four, since squared real leading
+forms cannot cancel.
+
+\section{Completing the implication and limits of the checkpoint}
+
+For soundness, restore the unchanged contact, point, and normalizer
+interpretations through the previous guarded charts. Each new
+private pole has the physical interpretation \eqref{newphysical},
+so Lemma~\ref{obstruction} supplies the same obstruction at every
+consumed prime. The global-gauge valuation proof, scalar extraction,
+and height comparison use only that obstruction, not the old
+non-CM coefficients. They therefore give the same integrality
+conclusions for the thirteen or eleven distinguished inputs.
+If a contact lies at its allowed midpoint boundary, use its
+retained cleared rows, as in \cite{global}; the quotient
+\eqref{comparisoninput} is used for completeness and at consumed
+primes, never to discard that boundary.
+
+For completeness, Section~3 prepares all actual inputs with the
+same common physical points and gauge. Proposition~\ref{existence}
+then supplies private rational poles, and Section~4 fills their
+stored coordinates. The remaining rows are those of the inherited
+simultaneous construction. This proves Theorem~\ref{main} under
+its stated premises. It neither maps arbitrary old pole witnesses
+to new ones nor identifies their full zero sets.
+
+The finite audit verifies the algebra and gives one prepared local
+example:
+\[
+ b=\frac{144}{841},\quad d=\frac{112}{841},\quad
+ (e,p,u,v,q)=\left(\frac34,\frac{29}{16},
+                 \frac{27}{29},\frac{81}{116},\frac{27}{16}\right).
+\]
+This is a pole witness, not a witness for the complete integer
+system and not computational evidence replacing the cited arithmetic
+theorem. The checkpoint reduces arithmetic dependencies while
+preserving the existing variable bounds. It makes no global
+minimality claim and no claim that the quartic target $263$ has
+been reached.
+
+\begin{thebibliography}{9}
+\bibitem{BB} M. Bhargava and A. Burungale,
+\emph{A Diophantine definition of $\Z$ in $\Q$},
+arXiv:2611.16130v2, Theorem~2.3 and Lemma~2.2.
+\url{https://arxiv.org/html/2611.16130v2}.
+\bibitem{v82} \emph{A scalar-point sharing construction in 163 and
+179 variables}, v82, especially Sections~2, 5, and 7.
+\nolinkurl{papers/quartic/scalar_point163_179_20261120_v82.tex}.
+\bibitem{v62} The fixed three-contact height construction, v62,
+Section~5, \emph{Arithmetic inputs and the finite exceptional set}.
+\nolinkurl{papers/quartic/quartic229_20261117_v62.tex}.
+\bibitem{common} \emph{Common physical points in a combined quadratic
+system}, including the common-numerator all-sign CRT construction.
+\nolinkurl{undecidability/papers/common_points_quartic_checkpoint.tex}.
+\bibitem{global} \emph{One contact gauge in a combined quadratic
+system}, Section~2.
+\nolinkurl{undecidability/papers/global_gauge_quartic_checkpoint.tex}.
+\bibitem{progression} \emph{A common arithmetic progression of contact
+arguments and shared coefficients of their centered powers}.
+\nolinkurl{undecidability/general_contact_v94/affine_contact_progressions.tex}.
+\bibitem{aggregate} The aggregate-spacing checkpoint.
+\nolinkurl{undecidability/aggregate_spacing_v100/aggregate_spacing.tex}.
+\bibitem{v102} \emph{Two retained endpoint powers replace two contact
+helpers}.
+\nolinkurl{undecidability/contact_endpoint_v102/contact_endpoint_reuse.tex}.
+\bibitem{v103} \emph{One polynomial denominator for a progression of
+contact equations}.
+\nolinkurl{undecidability/quadratic_reduction_v103/contact_denominator_compression.tex}.
+\end{thebibliography}
+\end{document}

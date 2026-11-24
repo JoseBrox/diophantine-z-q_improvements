@@ -1,0 +1,95 @@
+{
+  "physical_maps": {
+    "general.detector0": {
+      "p_coordinate_multiplier": "R/eps",
+      "q_coordinate_multiplier": "R",
+      "sigma1": "1",
+      "sigma2": "eps**2",
+      "square_multiplier_p": "R**2",
+      "square_multiplier_q": "R**2",
+      "uv_scale": "eps"
+    },
+    "general.detector1": {
+      "p_coordinate_multiplier": "1/eps",
+      "q_coordinate_multiplier": "R",
+      "sigma1": "1",
+      "sigma2": "eps**2",
+      "square_multiplier_p": "1",
+      "square_multiplier_q": "R**2",
+      "uv_scale": "eps"
+    },
+    "scalar": {
+      "p_coordinate_multiplier": "sigma",
+      "q_coordinate_multiplier": "sigma",
+      "sigma1": "sigma",
+      "sigma2": "sigma",
+      "square_multiplier_p": "sigma",
+      "square_multiplier_q": "sigma",
+      "uv_scale": "sigma"
+    },
+    "specified.detector0": {
+      "p_coordinate_multiplier": "R**2*eps",
+      "q_coordinate_multiplier": "R**2",
+      "sigma1": "R**2",
+      "sigma2": "1",
+      "square_multiplier_p": "eps**2",
+      "square_multiplier_q": "R**2",
+      "uv_scale": "R"
+    },
+    "specified.detector1": {
+      "p_coordinate_multiplier": "R**2*eps",
+      "q_coordinate_multiplier": "R*eps",
+      "sigma1": "R**2",
+      "sigma2": "1",
+      "square_multiplier_p": "eps**2",
+      "square_multiplier_q": "eps**2",
+      "uv_scale": "R"
+    },
+    "specified.detector2": {
+      "p_coordinate_multiplier": "eps**3",
+      "q_coordinate_multiplier": "eps**2",
+      "sigma1": "eps**2",
+      "sigma2": "1",
+      "square_multiplier_p": "eps**2",
+      "square_multiplier_q": "eps**2",
+      "uv_scale": "eps"
+    }
+  },
+  "point_construction": {
+    "b": "144/841",
+    "d": "112/841",
+    "e": "3/4",
+    "p": "29/16",
+    "q": "27/16",
+    "scope": "One exact prepared CM-pole witness; not a full-source witness or proof of BB",
+    "u": "27/29",
+    "v": "81/116"
+  },
+  "results": [
+    {
+      "changed_rows": 117,
+      "interface": "general",
+      "pinned_square_rows": 78,
+      "poles": 39,
+      "quadratic_rows": 818,
+      "source_sha256": "fc602943bab429f6b408aef88c86753e6f2f819412773f1fccb73462ac5df5f0",
+      "status": "PASS",
+      "table_sha256": "e39471a034e659c6dcd0cf567102683535ebd12c4e6587565ba74f2e125f549b",
+      "unchanged_rows": 701,
+      "variables": 963
+    },
+    {
+      "changed_rows": 132,
+      "interface": "specified",
+      "pinned_square_rows": 88,
+      "poles": 44,
+      "quadratic_rows": 991,
+      "source_sha256": "9deaedc7d589680d1fb99a94a22409d321ac10486b8d8acf9812f71ccebe37d9",
+      "status": "PASS",
+      "table_sha256": "068628388755c724556d5679f336eb88bfb054df8bf9bb1a83920582cb7d959e",
+      "unchanged_rows": 859,
+      "variables": 1140
+    }
+  ],
+  "scope": "Exact physical maps and complete coefficient audit. External BB point existence and retained non-pole arithmetic interfaces are not proved by this finite check."
+}
