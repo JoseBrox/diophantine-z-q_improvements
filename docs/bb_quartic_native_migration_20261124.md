@@ -1,5 +1,7 @@
 # Checkpoint: native-pole replacement in the 163- and 179-variable quartics
 
+> **Historical checkpoint, superseded on 24 November 2026.** This records the initial valid but less economical scaling (d=7b/17^2). The active, independently reconstructed systems use the smaller scaling (d=7b/9), after strengthening the integer-witness real preparation from (b<17) to (b<1); see [the complete proof](../papers/quartic/bb_native_quartics_20261124.tex), [current tables and checks](../computation/bb_native_quartic_20261124/README.md), and [current results](results_20261124_bb_native.md). An intervening proposal (d=3b/5) was **rejected**: the comparison inputs are (5)-adic units, and division by (5) creates a negative odd valuation. The active (7b/9) construction has no such obstruction. This checkpoint does **not** define the current polynomial.
+
 **24 November 2026.** Working checkpoint; retain all historical v82 coefficient files.
 
 ## Arithmetic replacement
