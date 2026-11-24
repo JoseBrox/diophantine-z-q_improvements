@@ -98,134 +98,164 @@ on congruent-number curves; only the \emph{application}
 avoids constructing them anew.
 \end{remark}
 
-\section{The smaller rational normalization}
+\section{Preparation and a small rational normalization}
 
-The previous quartic systems use an input $b$ for each
-pole block. In their ordered integer-witness construction
-all such inputs are positive and have square denominators.
-The source also arranges $v_2(b)\ge4$ and
-$b\in\Q_2^{\times2}$.
+The previously specified quartic systems~\cite{V82} use one
+rational input $b$ for each elliptic-curve pole condition.
+Their ordered construction of witnesses for integer inputs
+already makes these numbers positive with square denominators,
+$2$-adic squares of valuation at least four, and $3$-adic
+squares of valuation at least two. The original real interval
+$0<b<17$ can be reduced to $0<b<1$ without changing any
+equation. We first make this precise.
 
-The previously recorded real bound for the scalar pole is
-\[
-0<b_s\le\frac{24482500}{R^4},\qquad R>100.
-\]
-In particular
-\begin{equation}\label{eq:small}
- 0<b_s<\frac{24482500}{10^8}<1.
-\end{equation}
-For each comparison pole the fixed limiting input is
-\[
- \left(\frac{204}{409}\right)^2\in(0,1).
-\]
-The unchanged real recurrence and the ability to shrink
-the finitely many prescribed neighborhoods therefore
-arrange $0<b_j<1$ for all comparison inputs as well.
-No new height estimate is involved.
-
-\begin{proposition}[Preparation at the prime five]
-\label{prop:prep}
-Under the fixed finite-place preparation and compatible
-recurrence hypotheses of~\cite[Section~7]{V82}, the
-integer-witness construction may additionally require
-$v_5(b_s)\ge1$ and $v_5(b_j)=0$ at every comparison pole.
-The already specified real conditions, chart guards and
-subsequent prime selections are unchanged.
-\end{proposition}
+\begin{lemma}[Smaller real intervals]\label{lem:real}
+For integer inputs, the old ordered source construction
+can be made to satisfy $0<b<1$ for every scalar and
+comparison pole input, while preserving the other
+preparation conditions.
+\end{lemma}
 \begin{proof}
-The source's finite-place construction accepts an arbitrarily
-enlarged fixed finite set of congruence and formal-depth
-conditions before choosing the auxiliary indices.
-For the scalar pole, $b_s=R(R+9792)\tau^2$.
-At $5$, its valuation differs from $2v_5(\tau)$ by the
-fixed integer $v_5(R(R+9792))$.
-Choose the reference point deeply enough in the formal group
-at both places over $5$, and then the exact rational index
-depth so that $v_5(\tau)$ exceeds the corresponding lower
-bound. The same formal-logarithm expansion and trace
-formula used at the old preparation places apply at $5$;
-the denominator loss is a fixed constant and the interval
-of available depths remains nonempty after increasing the
-reference depth. This ensures $v_5(b_s)\ge1$.
-
-For the comparison poles, the limiting input
-$(204/409)^2$ is a $5$-adic unit because neither $204$
-nor $409$ is divisible by $5$. Its pole input is a
-rational function regular at the prescribed limiting
-configuration. Choose the corresponding $5$-adic
-neighborhood sufficiently small; the input then remains
-a unit, without imposing a new equation. The source's
-simultaneous recurrence and prime-selection statements
-allow these finitely many conditions to be imposed
-together with the real neighborhoods and the original
-finite avoidance set. All choices precede the later
-fresh prime selection, so the order of construction is
-unchanged. The prime $5$ already belongs to the fixed
-height-theorem exceptional set
-$\{2,3,5,7,11,13,17,37,41,2399\}$
-of~\cite[Section~4]{V62}; no height bound is enlarged.
+The previous scalar estimate~\cite[Section~7]{V82} gives
+\[
+  0<b_s\le \frac{24482500}{R^4},\qquad R>100,
+\]
+so $b_s<24482500/10^8<1$ already. Every comparison
+input approaches
+\[
+ c_*=\left(\frac{204}{409}\right)^2\in(0,1)
+\]
+in the relevant real neighborhood. There are only
+finitely many comparison poles. Shrinking those
+neighborhoods keeps them all inside $(0,1)$ and
+preserves their other open inequalities. The retained
+real recurrence permits this simultaneous shrinking
+before the later prime selection. No additional height
+estimate or rational variable is needed.
 \end{proof}
 
-\begin{theorem}[A congruent-number pole on the prepared inputs]
-\label{thm:pole}
-For the inputs $b$ of Proposition~\ref{prop:prep}, put
+\begin{lemma}[A fixed additional local condition]
+\label{lem:seven}
+The previous ordered integer-completeness construction
+can also arrange that every pole input $b$ is
+$7$-adically integral, without changing its scalar,
+prime-pattern or real arguments.
+\end{lemma}
+\begin{proof}
+The source recurrence supplies arbitrary prescribed
+finite local approximation and exact formal-group
+depths, with finitely many denominator guards.
+Enlarge its finite preparation set by the prime $7$.
+At the scalar pole,
 \[
- d=\frac{3b}{5}.
+ b_s=K_s\tau^2,\qquad K_s=R(R+9792).
 \]
-The following three polynomial equations have rational
-solutions in the five auxiliary variables $e,p,u,v,q$:
+The source's exact-depth construction (choose a
+sufficiently deep reference point first, then the
+rational index depth) works at any fixed prime of
+good or potentially good reduction with a fixed
+formal-logarithm denominator loss; the source
+already imposes such conditions at its finite
+exceptional primes. At the added prime $7$ choose
+the depth so that
+\[
+  2v_7(\tau)\ge -v_7(K_s).
+\]
+This ensures $v_7(b_s)\ge0$. The interval of
+allowable index depths remains nonempty because
+the reference depth may be increased arbitrarily
+before the scalar index is chosen.
+
+For the comparison poles, the source expressions
+are rational functions regular at their prescribed
+local limiting data. Their prepared limiting value
+is $c_*=(204/409)^2$, a $7$-adic unit, since
+$7\nmid204\cdot409$. Thus the same local
+approximation, chosen sufficiently close at $7$,
+gives $v_7(b_j)=0$ at every comparison pole.
+These are finitely many open conditions and are
+combined with the original finite congruences by
+the unchanged simultaneous recurrence. No
+condition is imposed on arbitrary rational zeros
+of the polynomial.
+\end{proof}
+
+\begin{theorem}[Congruent-number pole replacing the old pole]
+\label{thm:pole}
+For every input $b$ produced as in
+Lemmas~\ref{lem:real}--\ref{lem:seven}, the three
+quadratic equations
 \begin{equation}\label{eq:scaled}
- 5e^2-5+3bp^2=0,\qquad
- 5uv-5e+3eb=0,\qquad
- 5u^2-5v^2-3bq^2=0.
+ 9e^2-9+7bp^2=0,\qquad
+ 9uv-9e+7eb=0,\qquad
+ 9u^2-9v^2-7bq^2=0
 \end{equation}
-For an arbitrary nonzero rational $b$, any rational
-solution of \eqref{eq:scaled} excludes
-$v_\ell(b)<0$ odd at every prime $\ell\notin\{3,5\}$.
+have rational solutions. These solutions can be
+chosen in the dense nondegenerate locus required
+by the retained finite-algebra guard arguments.
+
+Conversely, for any $b\in\Q^\times$,
+the existence of rational solutions of
+\eqref{eq:scaled} implies that $v_\ell(b)$
+is not negative and odd for any
+prime $\ell\ne7$.
 \end{theorem}
 \begin{proof}
-On the prepared input $0<b<1$, we have $0<d<3/5<1$.
-The rational multiplier $3/5$ represents the odd
-$2$-adic unit squareclass $7$; since $b$ is a $2$-adic
-square with even valuation at least four, $d$ has the
-squareclass and depth required in Theorem~\ref{thm:bb}.
-The negative valuations of $b$ are even. At $3$,
-$v_3(d)=v_3(b)+1\ge1$ by the original preparation;
-at $5$, $v_5(d)=v_5(b)-1\ge-1$, and the scalar
-condition of Proposition~\ref{prop:prep} ensures
-this valuation is nonnegative. For comparison poles
-$v_5(b)=0$, however, this calculation only gives
-$v_5(d)=-1$, which is \emph{not} a square denominator;
-such inputs require the stronger preparation
-$v_5(b)\ge1$. This is imposed as an additional
-finite-depth requirement on those poles.
-At all other primes the negative valuations remain
-even. Theorem~\ref{thm:bb} supplies the rational
-solution of \eqref{eq:scaled}.
+Put
+\[
+ d=\frac{7b}{9}.
+\]
+By Lemma~\ref{lem:real}, $0<d<7/9<1$.
+At $2$ the factor $7/9$ represents the
+unit squareclass $7$, so
+$d\in7\Q_2^{\times2}$ and
+$v_2(d)=v_2(b)\ge4$.
+All negative valuations of $b$ are even.
+For primes other than $3$ and $7$,
+$v_\ell(d)=v_\ell(b)$.
+At $3$,
+$v_3(d)=v_3(b)-2\ge0$ by the original
+prepared depth. At $7$,
+$v_7(d)=v_7(b)+1\ge1$
+by Lemma~\ref{lem:seven}.
+Consequently $d$ has a square denominator
+and satisfies every hypothesis of
+Theorem~\ref{thm:bb}. The latter gives
+the prescribed rational solutions to
+\eqref{eq:cm} and their dense
+nondegenerate variations; multiplying
+those equations by $9$ gives
+\eqref{eq:scaled}.
 
-For soundness, \eqref{eq:scaled} is simply
-\eqref{eq:cm} after multiplication by $5$ and
-substitution $d=3b/5$. By Lemma~\ref{lem:sound},
-$d$ has square denominator. At all primes other than
-$3$ and $5$, $v_\ell(d)=v_\ell(b)$; hence
-$v_\ell(b)$ cannot be negative and odd there.
+For the converse, the equations
+\eqref{eq:scaled} are
+\eqref{eq:cm} after substituting
+$d=7b/9$. Lemma~\ref{lem:sound}
+therefore applies. For $\ell\ne7$
+the valuations of $b$ and $d$ differ
+by either zero or $-2$ (at $\ell=3$).
+If $v_\ell(b)$ were negative and odd,
+then $v_\ell(d)$ would also be negative
+and odd, which is impossible.
 \end{proof}
 
-\begin{remark}[A necessary correction to the preparation]
-A $5$-adic unit $b$ cannot be divided by $5$
-without creating an odd negative valuation.
-Therefore the comparison-pole preparation in
-Proposition~\ref{prop:prep} must strengthen
-$v_5(b_j)=0$ to $v_5(b_j)\ge1$, which is
-\emph{not} compatible with keeping the pole input
-near the $5$-adic unit $(204/409)^2$.
-Accordingly the above proof does \emph{not} establish
-Theorem~\ref{thm:pole} for the comparison poles.
-The coefficient constructions below are exact,
-but the full global integer-completeness statement
-for those new tables remains conditional on a new
-compatible $5$-adic preparation or a different
-normalization of the comparison inputs.
+\begin{remark}[Choice of scaling]
+The earlier checkpoint used $d=7b/17^2$,
+which works for the larger real interval
+$b<17$ but has larger coefficients.
+The sharper real bound allows $7/9$.
+A tempting smaller ratio $d=3b/5$
+does \emph{not} work with the existing
+$5$-adic comparison preparation: the
+comparison inputs tend to a $5$-adic unit,
+whereas dividing by $5$ would create
+an odd negative valuation. That rejected
+option is not used in the certified
+systems. Since the original height
+exceptional set includes $7$, the
+new soundness exception adds no height
+cost, including at the fixed numerical
+endpoint~\cite{V62}.
 \end{remark}
 
 \section{Quadratic systems and exact coefficient tables}
@@ -302,11 +332,14 @@ The former source versions and their coefficient tables
 remain unchanged. The current exact new systems remove
 every use of the original non-CM pole \emph{within their
 defining equations}; they do not imply the original
-non-CM restricted converse theorem. Full unconditional
-transfer of the earlier definition result remains subject
-to the local comparison-pole issue explicitly identified
-above, independently of the cited deep elliptic,
-height and prime-pattern hypotheses.
+non-CM restricted converse theorem. The pole realization is supplied by
+Theorem~\ref{thm:pole}, independently of the original
+non-CM restricted converse or Route~K. The inherited
+elliptic carrier, height, comparison and prime-pattern
+inputs remain as explicitly stated in~\cite{V82}.
+The validity of the whole construction is conditional
+on those retained external arithmetic inputs;
+finite algebraic checks do not prove them.
 
 \begin{thebibliography}{9}
 \bibitem{BB}
