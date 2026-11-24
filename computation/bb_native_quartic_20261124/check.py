@@ -121,6 +121,40 @@ def arithmetic_fixture():
     assert 3*e*e-34*e-289+17*b*p*p != 0
     return str(b)
 
+def verify_decimal_text(n, polynomial):
+    """Independently serialize the numerical expansion; no output newline."""
+    terms = defaultdict(int)
+    for t in polynomial["terms"]:
+        mon = tuple(t["monomial"])
+        power = int(t["parameterPower"])
+        a = int(t["coefficient"])
+        terms[mon] += a * (149**power if n == 163 else 1)
+    terms = {mon:a for mon,a in terms.items() if a}
+    def display_mon(mon):
+        pieces = []
+        i = 0
+        while i < len(mon):
+            j = i+1
+            while j < len(mon) and mon[j] == mon[i]:
+                j += 1
+            pieces.append(f"x{mon[i]}" + (f"^{j-i}" if j-i > 1 else ""))
+            i = j
+        return "*".join(pieces)
+    parts = []
+    for mon,a in sorted(terms.items()):
+        sign = "-" if a < 0 else ("+" if parts else "")
+        amount = abs(a)
+        mtxt = display_mon(mon)
+        value = (("" if amount == 1 else str(amount)+"*") + mtxt) if mtxt else str(amount)
+        parts.append(sign+value)
+    txt = "".join(parts)
+    suffix = "-N1" if n == 163 else ""
+    filename = HERE / f"expanded/quartic{n}{suffix}.txt"
+    assert filename.read_text() == txt, filename
+    assert len(txt) == {163:60638, 179:66484}[n]
+    return len(txt)
+
+
 def check(n):
     source = json.loads((OLD / f"source{n}.json").read_text())
     maps = json.loads((OLD / f"quartic{n}/maps.json").read_text())
@@ -181,6 +215,7 @@ def check(n):
         base=645904574641049503754777843805872291231896003979
         boost=14904184670611231
         assert maximum == (base*boost**4)**2 and maximum.bit_length() == 748
+    verify_decimal_text(n, polynomial)
     return n, len(new["residuals"]), len(stored), len(changed), maximum.bit_length()
 
 
