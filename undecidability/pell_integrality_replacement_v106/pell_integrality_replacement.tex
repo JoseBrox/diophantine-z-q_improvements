@@ -1,0 +1,274 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,booktabs,hyperref,xurl}
+\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newcommand{\Z}{\mathbb Z}\newcommand{\Q}{\mathbb Q}
+\title{A half-trace square replaces the c-integrality predicate}
+\author{\(\mathbb Z\mathbb Q\) Diophantine Project}
+\date{24 November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+An exact rational Pell classification turns one rational half-trace
+square into a certificate of integrality for the source coordinate
+\(c\). The required divisibility \(3\mid a\) already follows from
+the integral coding prefix, before its final power recovery and without
+assuming \(c\) integral. This permits the c-integer interface to be
+replaced by the single half-trace row previously deleted in v101.
+The argument treats both signs of \(a\) and the zero case.
+Complete-table coordinate savings are separate compiler results;
+this checkpoint asserts the arithmetic replacement theorem and its
+source soundness and completeness.
+\end{abstract}
+
+\section{Only three possible negative-parameter seed orbits}
+
+We use the proved rational classification of~\cite{Classification}.
+For an integer \(a\), set
+\[
+ \Delta=a^2-1,\qquad D=4a-5,
+ \qquad d^2-\Delta c^2=1,\qquad T=d-(a-2)c\in\Z.
+\]
+For \(|a|\ge2\), every solution is a signed translate of a
+fundamental-interval seed under multiplication by
+\(|a|+\sqrt\Delta\), and these translations preserve the exact
+reduced denominator of \(c\). For \(a\ge3\), the nonintegral
+orbit has denominator \(D/\gcd(D,3)\); at \(a=2\) all solutions
+are integral.
+
+The negative-parameter finite seed list admits the following stronger
+description.
+
+\begin{lemma}\label{negative}
+Let \(a=-A\le-2\) and \(K=4A+5\). The complete set of distinct
+fundamental-interval seeds is
+\begin{equation}\label{two-seeds}
+ (c_0,d_0)=(0,1),\qquad
+ (c_2,d_2)=\left(\frac3K,\frac{5A+4}K\right),
+\end{equation}
+and, if and only if \(K=h^2\) for an integer \(h>0\), the
+additional seed
+\begin{equation}\label{third-seed}
+                  (c_h,d_h)=\left(\frac2h,\frac{2A+1}h\right).
+\end{equation}
+\end{lemma}
+\begin{proof}
+The earlier classification says that seeds correspond precisely to
+integers \(1\le t\le2A+1\) for which
+\begin{equation}\label{seed-test}
+                         v^2=(A^2-1)t^2+K
+\end{equation}
+is an integer square, with \(v>0\). The coordinates are
+\[
+ c_t=\frac{(A+2)t-v}K,\qquad
+ d_t=\frac{(A+2)v-(A^2-1)t}K.
+\]
+If \(v>At\), then
+\[
+                  K-t^2=v^2-A^2t^2\ge2At+1.
+\]
+For \(t\ge3\), its left side is at most \(4A-4\), while
+its right side is at least \(6A+1\), a contradiction. Thus
+\(t=1\) or \(t=2\), giving respectively \(v=A+2\) and
+\(v=2A+1\), and the two seeds in \eqref{two-seeds}.
+
+If \(v\le At\), put \(j=At-v\). By \eqref{seed-test},
+\(v>t\sqrt{A^2-1}\), so
+\[
+ 0\le j<\frac{t}{A+\sqrt{A^2-1}}
+       <\frac{2A+1}{2A-1}<2.
+\]
+Thus \(j\) is zero or one. At \(j=1\), equation
+\eqref{seed-test} becomes
+\[
+                   (t+2)(t-2A-2)=0,
+\]
+contradicting the range of \(t\). At \(j=0\), it becomes
+\(t^2=K\). Conversely, when \(K=h^2\), one has
+\(1<h<2A+2\), so \(t=h\) is in range and gives
+\eqref{third-seed}. Since \(K\ge13\), this positive integer
+\(h\) is at least five and differs from one and two.
+\end{proof}
+
+\section{A square denominator forces integrality}
+
+\begin{lemma}\label{square-denominator}
+Suppose \(a\in3\Z\), \(c,d\in\Q\),
+\(d^2-(a^2-1)c^2=1\), and \(T=d-(a-2)c\in\Z\).
+If the reduced positive denominator of \(c\) is a square, then
+\(c,d\in\Z\).
+\end{lemma}
+\begin{proof}
+If \(a\ge3\), then \(3\nmid D\). A nonintegral solution
+would have denominator \(D\), by the positive-parameter
+classification. But \(D=4a-5\equiv3\pmod4\) is not a square.
+
+If \(a=-A\le-3\), then \(3\mid A\) and
+\(K=4A+5\equiv2\pmod3\) is nonsquare. Lemma~\ref{negative}
+therefore leaves just the two seeds \eqref{two-seeds}. The nonintegral
+seed has denominator \(K\), since \(3\nmid K\), and this
+nonsquare denominator persists along its entire orbit.
+
+At \(a=0\), the exact zero-case classification in~\cite{Classification}
+gives
+\[
+                  c\in\{0,\pm1,\pm3/5,\pm4/5\}.
+\]
+The only nonintegral denominator is five, which is not a square.
+These exhaust the multiples of three. In every case \(c\in\Z\),
+and then \(d=(a-2)c+T\in\Z\).
+\end{proof}
+
+\begin{theorem}[One-square integrality certificate]\label{main}
+Let \(a\in3\Z\), \(c,d,\zeta\in\Q\), and suppose
+\begin{equation}\label{certificate}
+ \begin{gathered}
+ d^2-(a^2-1)c^2=1,\qquad T=d-(a-2)c\in\Z,\\
+ \zeta^2=2\bigl(ad+(a^2-1)c+1\bigr).
+ \end{gathered}
+\end{equation}
+Then \(c,d\in\Z\).
+\end{theorem}
+\begin{proof}
+Write \(\kappa=a-2\). Substituting \(d=\kappa c+T\) into
+the norm gives
+\[
+ Dc^2-2\kappa Tc-(T^2-1)=0,\qquad
+ (Dc-\kappa T)^2=(a^2-1)T^2-D.
+\]
+The latter right side is an integer. Its rational square root is
+therefore an integer, so \(Dc\in\Z\). This argument also
+applies at \(a=0\). Let \(N\) be the reduced positive denominator
+of \(c\); thus \(N\mid|D|\).
+
+Set \(L_a=2a^2-2a-1\). The half-trace equation reads
+\[
+                      \zeta^2=2L_a c+2aT+2.
+\]
+The identity
+\begin{equation}\label{gcd-identity}
+                      8L_a+3=D(4a+1)
+\end{equation}
+shows that \(\gcd(L_a,D)\) divides three. Since \(3\mid a\),
+the integer \(D\) is prime to three; it is also odd. Consequently
+\(\gcd(2L_a,N)=1\), and the reduced denominator of
+\(2L_a c+2aT+2\) is exactly \(N\). A rational square has a
+square reduced denominator. Hence \(N\) is a square, and
+Lemma~\ref{square-denominator} gives the conclusion.
+\end{proof}
+
+The hypothesis \(3\mid a\) cannot simply be omitted from this
+signed theorem. The exact values
+\[
+ a=-5,\qquad c=-\frac3{25},\qquad d=-\frac{29}{25},
+ \qquad T=-2,\qquad\zeta=\frac{14}5
+\]
+satisfy every equation in \eqref{certificate}, with nonintegral \(c\).
+The retained source excludes this example by Lemma~\ref{prefix} below.
+
+\section{The retained prefix supplies the arithmetic hypothesis}
+
+\begin{lemma}\label{prefix}
+For integers \(q,S,T_0,w,s\), define
+\[
+ n=q^{16},\qquad M=q^{32}=n^2,\qquad
+ r=S(M-n)+T_0(M-1),\qquad a=(wM+1)rsM.
+\]
+Then \(3\mid Mr\), and hence \(3\mid a\).
+\end{lemma}
+\begin{proof}
+Modulo three, \(n\) and \(M\) are both zero when \(3\mid q\)
+and are both one otherwise. In the first case \(3\mid M\);
+in the second \(3\mid M-n\) and \(3\mid M-1\), so
+\(3\mid r\). No positivity or power-of-two hypothesis is used.
+\end{proof}
+
+The current source has exactly this integral prefix; its preliminary
+reconstruction is given in~\cite[Section 2]{Signed}. The integer
+inputs \(w,s,\gamma\) are retained. The integral recovery of
+\(q,S,T_0\) uses the independent auxiliary power block and the
+prefix equations, before the first-Pell index argument; it does not
+use \(c\in\Z\). The first linear row is
+\[
+                   d=(a-2)c+bw+(4a-5)\gamma.
+\]
+It therefore gives precisely the integral shifted trace required by
+Theorem~\ref{main}. Theorem~\ref{main} now recovers \(c,d\in\Z\)
+before any remaining use of integral first-Pell classification.
+
+In the specified interface, the retained explicit fixed-power circuit
+makes \(q\) integral directly, and the same prefix lemma applies.
+
+This order is noncircular. In particular no use of \(q=b^{5^{60}}\)
+or of \(b\) being a power of two is needed to establish \(3\mid a\).
+Both source signs are covered. The case \(a=0\), needed before
+the source excludes \(s=0\), is included in the theorem.
+
+\section{Canonical completeness and the quadratic interface}
+
+The canonical positive source witnesses use \(a\ge2\),
+\(B=2r+1\), and
+\[
+                     c=Y_B(a),\qquad d=X_B(a),
+\]
+where \(X_j+Y_j\sqrt{a^2-1}=(a+\sqrt{a^2-1})^j\).
+The addition and doubling identities give
+\[
+ ad+(a^2-1)c=X_{B+1}(a)=X_{2r+2}(a)
+                         =2X_{r+1}(a)^2-1.
+\]
+Hence
+\begin{equation}\label{complete-root}
+                            \zeta=2X_{r+1}(a)
+\end{equation}
+supplies the half-trace square. This is precisely the row removed in
+v101; its canonical completion was already recorded
+in~\cite[Section 6]{Signed}.
+
+The replacement therefore preserves source-instance soundness and
+completeness: remove the c-integer predicate, restore the half-trace
+square, infer \(c\in\Z\) by Theorem~\ref{main}, and apply the
+existing source argument. In the other direction, choose canonical
+positive witnesses and \eqref{complete-root}, then apply simultaneous
+integer-interface completeness to the reduced tuple of integer inputs.
+The elliptic witnesses are chosen anew. All remaining interface and
+coding premises remain in force.
+
+With the already stored coordinate \(A_c=ac\), the restored row is
+the quadratic polynomial
+\[
+                    \zeta^2-2ad-2aA_c+2c-2=0.
+\]
+A complete compiler must retain the definition of \(A_c\), and
+replace any still-used register borrowed from the removed c chart.
+In particular, if that chart supplied \(C_2=c^2\), retain one
+ordinary quadratic square row for \(C_2\). Counting private
+coordinates and common shared rows is a separate exact-table task.
+No numerical bound follows from this manuscript alone.
+
+\section{Reproducibility}
+
+The independent checker verifies the symbolic denominator identity,
+compares the three-seed formula with the original integer-square test
+over a finite parameter range, checks square-denominator exclusions,
+and checks exact prefix congruences and canonical half-trace completions.
+The quantified statements are proved above. Run from the repository root:
+{\small\begin{verbatim}
+python -B \
+  undecidability/pell_integrality_replacement_v106/verify_replacement.py
+\end{verbatim}}
+
+\begin{thebibliography}{9}
+\small
+\bibitem{Classification} Project, \emph{Rational Pell solutions with
+an integral shifted trace}, reconstructed checkpoint v105,
+24 November 2026.\par
+\nolinkurl{undecidability/pell_classification_reconstructed_v105/pell_classification.tex}.
+\bibitem{Signed} Project, \emph{Both first-Pell signs have the same
+coding projection}, v101, 23 November 2026.\par
+\nolinkurl{undecidability/pell_signed_branch_v101/signed_branch_projection.tex}.
+\end{thebibliography}
+\end{document}
