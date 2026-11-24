@@ -9,15 +9,17 @@ counted. This is a separate objective from minimizing the total coordinates
 of a polynomial defining the integers. All recorded numbers are upper bounds;
 no global least value is claimed.
 
-## Current frontier (v144)
+## Current frontier (v146)
 
-See the [continuation report](../docs/results_20261124_v144.md) and [current frontier ledger](frontier_20261124_v144.json).
+See the [continuation report](../docs/results_20261124_v146.md) and [current frontier ledger](frontier_20261124_v146.json).
 
 | Route | Quartic unknowns | Quadratic residuals | Unrestricted degree | Alternative published coding source |
 |:--|--:|--:|--:|--:|
-| General | **612** | 547 | **48** | 52 |
-| Specified | **632** | 565 | **50** | 54 |
-| Ordinary rational abc | **292** | 241 | **36** | 36 |
+| General | **566** | 501 | **48** | 52 |
+| Specified | **584** | 517 | **50** | 54 |
+| Ordinary rational abc | **291** | 240 | **36** | 36 |
+
+The [sparse radix and exact contact compression](sparse_radix_v145/README.md) gives 594/612, and the [coupled private comparison detector](coupled_comparison_v146/README.md) gives 566/584, retaining eight integer certificates and all arithmetic premises. The [scaled unit selector](abc_scaled_unit_v145/README.md) gives 291 under ordinary rational abc. Joint small/third Pell replacement remains open.
 
 The [recursive scalar detector](recursive_scalar_v136/README.md) reduces twelve scalar poles to one and gives 663/683 variables. The [guarded linear-target chart](guarded_target_v137/README.md) reduces these to 651/671. The [shared Boolean comparison detector](boolean_comparison_v139/README.md) compresses these to 622/642. The [guarded independent-prefix repair](independent_prefix_guarded_v140/README.md) gives 628/648, superseding v138 because of a missing nonzero-branch justification. The [eight-source alternative](eight_source_v141/README.md) genuinely reduces the number of certified integers to eight using a different coding theorem; its uniform quartic upper bounds 2434/2454 are not preferred total counts. The [symmetric quadratic radix packing](packed_quadrics_v142/README.md) makes eight certificates competitive at 619/639; the [reduced Lucas amplifier and reference chart](packed_lucas_v143/README.md) reach 612/632. Both are uniform compilers, with exact algebraic fixtures rather than a chosen numerical nonrecursive source. The [full-source deletion obstructions](eight_source_obstruction_v144/README.md) show that simply dropping h, j or i_half admits false instances; six/seven-certificate constructions are not established. These constructions retain the full-domain H4.1 height premise and the other project arithmetic premises.
 
