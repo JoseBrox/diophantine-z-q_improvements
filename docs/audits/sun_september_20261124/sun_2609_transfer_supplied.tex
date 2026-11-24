@@ -1,0 +1,1119 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=27mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,booktabs,array,hyperref,xurl,microtype}
+\setlength{\emergencystretch}{3em}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}\newcommand{\N}{\mathbb N}
+\newcommand{\A}{\mathcal A}\newcommand{\Tr}{\operatorname{Tr}}\newcommand{\Nm}{\operatorname{N}}\newcommand{\rad}{\operatorname{rad}}\newcommand{\ord}{\operatorname{ord}}
+\newcommand{\OK}{\mathcal O_K}\newcommand{\vp}{v_p}\newcommand{\Sp}{\operatorname{Spec}}
+\title{Intersective divisibility, local interpolation, and\protect\\valuation-tagged finite algebras\protect\\\large Extensions of Sun's ten-unknown construction for the $\Z\Q$ Diophantine Project}
+\author{$\Z\Q$ Diophantine Project --- technical research note}
+\date{24 November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+Starting from Sun's arXiv:2609.01594v2, we prove an optimal degree-five
+replacement for the degree-six intersective divisibility gadget, valid over
+all number fields and rings of $S$-integers. The replacement allows exact
+prescription of positive local valuations and unit parts. We give a uniform
+valuation-isometric interpolation theorem for Lucas matrices and formal elliptic
+groups. We sharpen the direct elliptic-index transfer in the project: for a
+source of degree $D$, the quantitative modular-height argument needs only
+precision $\lfloor D/2\rfloor+1$ in place of $3D+1$, with explicit constants
+and a substantially shorter formal-logarithm polynomial. Finally, using
+fixed prime-adic valuation tags, we give a direct simultaneous-square
+polynomial and a guarded two-stage finite-algebra encoder. For the actual
+21-point, two- or three-pole direct-index architectures, the latter has
+single-branch total-degree bounds $2^{140}\delta$ and $2^{143}\delta$
+(the full 11-branch bounds are multiplied by 11), where
+$\delta$ is a precisely specified computable operator/coefficient-degree
+majorant. It requires the same single encoder coordinate, no spectral
+difference polynomial, and tolerates zero terminal roots and nonreduced
+specializations. These are proved algebraic and conditional arithmetic
+improvements, not new global variable-count records. All underlying elliptic, prime-pattern, modular-height and
+pole-realization premises of the receiving project constructions are retained.
+\end{abstract}
+
+\tableofcontents
+
+\section{Scope, attribution, and the receiving constructions}
+Sun \cite{sun26} proves a ten-integer-variable universal coding theorem.
+The project's preceding audit accepted the theorem subject to the minor
+repairs recorded there. The construction uses a modified Lucas certificate,
+residue-class interpolation, an intersective polynomial, and a single
+homogeneous square/divisibility merger. The September source is distinct
+from Sun's later prime-pattern papers. We use Theorem 1.1 of \cite{sun26}
+as a coding theorem, not as an assertion that Lucas certificates over
+$\Q$ have the same integer-index characterization. All new lemmas below
+are independently proved, including both directions and exceptional fibers.
+The ideas of intersectivity and merging, and the particular application to
+Lucas interpolation, are due to Sun and the classical work he cites; no
+priority claim is made for the classical intersective quintic itself.
+
+The receiving repository \cite{repo} currently records $25/27/11$
+coordinates for the unrestricted-degree integer definitions, and
+$163/178/54$ for the quartics. The corresponding unrestricted-degree
+undecidability frontier is $48/50/36$ existential coordinates, with the
+first two using Sun's ten-integer source through the direct-index transfer
+\cite{index}. The current quartic frontier is $884/1049/309$ coordinates
+\cite{v124}. The last route in each list assumes ordinary rational $abc$;
+all routes retain other arithmetic premises documented in their source
+proofs. Counts for defining the integers include the input; undecidability
+counts do not count the instance, which occurs in the coefficients.
+
+This note has three distinct kinds of conclusions: unconditional
+algebraic/number-theoretic lemmas; sharpened transfer theorems under the
+explicitly retained premises of \cite{index}; and obstructions or
+conditional opportunities for further coordinate savings. It does not
+certify any new quartic table, remove the retained arithmetic hypotheses,
+or identify a new sufficient numerical cutoff for the ineffective families.
+The degree multipliers in Section~\ref{sec:receive} do not include a numerical
+expansion of the (very large) coding polynomial or its input-dependent
+coefficient DAG.
+
+\section{An optimal intersective divisibility gadget}\label{sec:quintic}
+Call $f\in\Z[X]$ \emph{intersective} if it has a root modulo every positive
+integer. Equivalently it has a root in $\Z_p$ for every prime $p$, by CRT
+and compactness. We require also that $f$ have no root in the ambient
+field. Sun's Lemmas 5.1--5.2 use the monic sextic
+$(X^2-13)(X^2-17)(X^2-221)$. The following quintic is sufficient.
+
+\begin{theorem}\label{thm:quintic}
+The polynomial
+\[
+ P(X)=(X^3-X-1)(X^2-X+6)=X^5-X^4+5X^3-5X-6
+\]
+has no rational root and has a simple root modulo every rational prime.
+No nonconstant polynomial of degree less than five with rational
+coefficients can have a root in every $\Q_p$ but no root in $\Q$.
+\end{theorem}
+\begin{proof}
+The cubic is irreducible by the rational-root test (its only possible
+integer roots are $\pm1$), and its discriminant is $-23$. The quadratic
+has the same discriminant and is irreducible. At $p=2$ the quadratic has
+simple roots $0,1$ and the cubic has neither. At $p=23$ the cubic has the
+simple root $3$ (its derivative there is $26$), at which the quadratic has
+value $12$ modulo 23. At any other odd prime the cubic is separable. If
+it has no linear factor, its Frobenius permutation is a 3-cycle, which
+is even; hence the discriminant is a nonzero square modulo $p$, and the
+quadratic splits. If the cubic has precisely one linear factor, the
+permutation is a transposition, the discriminant is a nonsquare, and that
+linear root is not a quadratic root. If the cubic splits, it has three
+distinct roots and at most two of them can also be quadratic roots. In
+each case at least one root of the product is simple. The discriminant
+criterion follows from the alternating Vandermonde product of the three
+roots: Frobenius fixes it precisely for an even permutation. Hensel's
+lemma now gives a $\Z_p$ root at every prime.
+
+For minimality, work more generally over a number field $K$. If a
+polynomial with no $K$-root has degree at most four, its distinct
+irreducible factors are either a single irreducible factor of degree
+2, 3 or 4, or at most two quadratics. An irreducible factor of degree
+at least two has a transitive Galois action on its roots; the average
+number of fixed points is one, while the identity fixes more than one.
+Thus some group element has no fixed point. For two quadratic factors,
+the compositum of their splitting fields has an automorphism nontrivial
+on both quadratic fields (also when the fields coincide). This gives
+an element with no fixed root of either factor. Chebotarev's density
+theorem supplies an unramified prime of this Frobenius conjugacy class,
+outside the finite set of coefficient denominators, leading coefficients
+and discriminants of the distinct irreducible factors. No root exists
+in the corresponding completion: after making the factors monic with
+integral coefficients, any local root would be integral and reduce to
+a fixed root of Frobenius. Repeated factors do not change this argument.
+This proves the lower bound, over $\Q$ and indeed over every number field.
+\end{proof}
+
+\begin{theorem}[Number-field version]\label{thm:nf}
+For every number field $K$ there is an effectively constructed monic
+quintic $P_K\in\Z[X]$ with no root in $K$ and a simple root modulo every
+rational prime. In particular it is intersective in $\OK$ and has a root
+in every nonarchimedean completion of $K$.
+\end{theorem}
+\begin{proof}
+Choose a rational prime $\ell\equiv1\pmod {12}$ unramified in $K$;
+Dirichlet's theorem gives such a prime, and trial search is effective.
+The integer 3 is a nonzero square modulo $\ell$ by quadratic reciprocity.
+Consequently $4-27a^2\equiv0\pmod\ell$ has a solution $a$ not divisible
+by $\ell$. Lift the solution modulo $\ell^2$ so that
+$v_\ell(4-27a^2)=1$, possible since the derivative $-54a$ is a unit.
+By CRT take $a$ odd, and put
+\[
+ f_a=X^3-X-a,\qquad D=4-27a^2,\qquad q_a=X^2-X+(1-D)/4.
+\]
+The integer $(1-D)/4$ is well defined. The cubic is irreducible over
+$\Q$ by reduction modulo 2; its discriminant is $D$. The field generated
+by a cubic root has discriminant divisible by $\ell$ (the index square
+in the polynomial-discriminant identity cannot remove a valuation of
+one), hence is ramified at $\ell$. The discriminant quadratic field
+$\Q(\sqrt D)$ is also ramified at $\ell$. Neither field can be contained
+in $K$, since ramification indices multiply in towers. Thus neither
+factor has a root in $K$.
+
+At an odd prime $p\mid D$, the cubic has a double root and a distinct
+simple root in $\mathbb F_p$. Indeed $p\ne3$, and a triple root would
+force its $X$ coefficient to vanish; the unique repeated root is fixed
+by Frobenius, and so is the remaining root. For each such prime choose
+$c$ modulo $p$ so that this simple root is not a root of $q_a(X-c)$.
+There is only one forbidden class because $q_a$ has a double root modulo
+$p$. Choose one integer $c$ satisfying these finitely many conditions.
+Set $P_K=f_a(X)q_a(X-c)$. At odd primes not dividing $D$ the three
+Frobenius cases in Theorem~\ref{thm:quintic} still apply, independent of
+the translation $c$. At 2 the cubic is irreducible; since $a$ is odd,
+$D\equiv1\pmod8$, and the quadratic has two simple roots modulo 2.
+At primes dividing $D$ the chosen translation preserves a simple root
+of the product. This proves the assertion. A $\Z_p$ root maps to a root
+in each $\mathcal O_{K,\mathfrak p}$ over $p$, so CRT in $\OK$ supplies
+a root modulo every nonzero ideal.
+\end{proof}
+
+\begin{lemma}[Exact local preparation]\label{lem:exact}
+Let $P$ be either quintic above. For any finite set of rational primes
+$p$, integers $e_p\ge1$, units $u_p\in\Z_p^\times$, and precision
+$k_p\ge1$, there are infinitely many $y\in\Z$ with
+\[
+ P(y)\equiv p^{e_p}u_p\pmod {p^{e_p+k_p}}\quad\text{for every selected }p.
+\]
+One can require $y$ arbitrarily large of either sign. A congruence for
+$y$ at other primes may be appended. In a number field one may similarly
+prescribe values in $\mathfrak p\mathcal O_{K,\mathfrak p}$ to finite
+precision at distinct prime ideals, with $y\in\OK$.
+\end{lemma}
+\begin{proof}
+At a simple residue root $r$, the polynomial $P(X)-t$ for any
+$t\in p\Z_p$ has a unique $\Z_p$ root congruent to $r$ modulo $p$.
+Use $t=p^{e_p}u_p$, retain its residue to the prescribed precision,
+and apply CRT. The resulting integer progression is unbounded in
+both directions. The proof over $K$ is identical in each local ring,
+since the derivative at the lifted simple rational residue root
+remains a unit; use the ideal CRT. Positive depths are essential:
+for example $P(y)$ is even for every integer $y$, so arbitrary depth
+zero at 2 cannot be claimed. No restriction at unselected primes is
+implied.
+\end{proof}
+
+\begin{theorem}[Divisibility with a nonzero guard]\label{thm:div}
+Let $R=\mathcal O_{K,S}$ for a finite set of inverted finite primes,
+and use $P_K$ from Theorem~\ref{thm:nf} (use $P$ over $\Q$). Define the
+homogenization $F(X,S_0)=S_0^5P_K(X/S_0)\in\Z[X,S_0]$. For
+$S_0,T,\xi\in R$, $S_0\ne0$, one has
+\begin{equation}\label{eq:div}
+ (S_0\mid_R T\text{ and }\xi\ne0)
+ \ \Longleftrightarrow\ \exists Y\in R:\quad
+ \xi S_0^5\mid_R F(T+S_0Y,S_0).
+\end{equation}
+More generally, for $x\in K$ and $\xi\in R$,
+\begin{equation}\label{eq:rational}
+ x\in R,\ \xi\ne0
+ \quad\Longleftrightarrow\quad
+ \exists Y,Z\in R:\ P_K(x+Y)=\xi Z.
+\end{equation}
+\end{theorem}
+\begin{proof}
+For $S_0\ne0$ the homogeneous value never vanishes on $K$ because
+$P_K$ is rootless. Thus the divisibility on the right in \eqref{eq:div}
+excludes $\xi=0$, under the convention $a\mid b$ iff $b=az$ for
+some $z\in R$. If $v_\mathfrak p(T)<v_\mathfrak p(S_0)$ at an uninverted
+prime then $v_\mathfrak p(T+S_0Y)=v_\mathfrak p(T)$. Since $P_K$ is monic
+with integral coefficients, $v_\mathfrak p(P_K(w))=5v_\mathfrak p(w)$
+when $v_\mathfrak p(w)<0$. Therefore $F$ has valuation
+$5v_\mathfrak p(T)$, less than $v_\mathfrak p(\xi S_0^5)$. This
+contradicts divisibility. Conversely, if $x=T/S_0\in R$ and
+$\xi\ne0$, select a root of $P_K$ modulo $\xi R$ by CRT in $R$.
+Translate it by $-x$ to obtain $Y$ and multiply by $S_0^5$.
+The same monicity argument, now applied directly to $x+Y$, proves
+\eqref{eq:rational}. Conversely choose the same residue root and set
+$Z=P_K(x+Y)/\xi\in R$.
+\end{proof}
+
+The formula remains valid if an existing integral witness $Y$ is free
+to range through a progression $Y_0+MR$ with $(M,\xi)=R$; CRT chooses
+the required residue of $Y$ modulo $\xi$. More generally one only needs
+the intersection of the two residue conditions to be nonempty. If several
+independent shifts are constrained to be the same, pairwise coprime
+moduli suffice; overlapping moduli need an actual compatibility check.
+Thus the replacement is degree-optimal within the class of monic rootless
+intersective univariate polynomials. Whenever the receiving use of Sun's Lemma 5.2 requires only its
+equivalence and his Theorem 4.1 permits an arbitrary prescribed residue
+class, the same residue-selection argument works for the quintic.
+The replacement pair is $(\xi S_0^5,F(T+S_0Y,S_0))$ in place of
+$(\xi S_0^6,R_{\rm old})$. This saves one in the degree of the
+homogeneous gadget without adding a witness. The full Section 7
+coefficient source has not been regenerated; no new global degree
+record or minimum for the final universal polynomial is claimed.
+
+\begin{remark}[Sharp limitations]
+If $Y$ is allowed to range over $K$ without the integrality requirement,
+\eqref{eq:rational} fails: over $\Q$, take $x=1/2$, $Y=-1/2$, $\xi=1$,
+$Z=P(0)=-6$. If $\xi$ is not integral at the relevant prime, take
+$x=1/2$, $Y=0$, $\xi=P(1/2)$, $Z=1$. If $S_0=0$, the homogeneous
+formula admits the spurious branch $T=0$ regardless of $\xi$.
+The missing $S_0\ne0$ hypothesis must therefore be supplied by the
+receiving circuit. Further, $P(X)=0$ has points in every finite
+completion and a real point (the cubic has odd degree), but no rational
+point. It is a particularly economical counterexample to replacing
+global rational realizability by finite local tests. This is relevant to
+the project's physical-lift and pole-realization problems; it does not
+replace the Bhargava--Burungale global point theorem.
+\end{remark}
+
+\paragraph{Quartic accounting.}
+The new quintic need not save quadratic registers. For example a direct
+quadratic compilation of $F(T+S_0Y,S_0)=\xi S_0^5 Z$ uses
+$X=T+S_0Y$, $s_2=S_0^2$, $b=X^2-s_2$, $c=Xb-S_0s_2$,
+$d=X^2-XS_0+6s_2$, $s_4=s_2^2$, $s_5=S_0s_4$, $w=\xi Z$,
+and $cd=s_5w$. These are eight private registers beyond $Z$.
+The original sextic admits seven: $X,s_2,x_2=X^2$,
+$b=(x_2-13s_2)(x_2-17s_2)$, $s_4=s_2^2$, $s_6=s_2s_4$,
+$w=\xi Z$, and $b(x_2-221s_2)=s_6w$. The degree improvement is
+therefore not a quartic-variable saving by this straightforward compiler.
+
+\section{Valuation-isometric interpolation}\label{sec:interp}
+Sun's Section 4 obtains full residue-class interpolation by choosing a
+Lucas recurrence at suitable indices. The following local formulation
+isolates the algebraic mechanism, applies to other recurrences, and
+makes explicit the compatibility requirements for elliptic applications.
+
+\begin{theorem}[Matrix and algebra version]\label{thm:matrix}
+Let $B$ be a finite free $\Z_p$-algebra (not necessarily commutative),
+$g=1+p^d a\in B$, $d\ge1$ for odd $p$ and $d\ge2$ for $p=2$.
+Let $L:B\to\Z_p$ be linear with $L(a)$ a unit. Then
+\[
+ f(n)=p^{-d}L(g^n-1),\qquad n\in\Z,
+\]
+satisfies $v_p(f(n)-f(m))=v_p(n-m)$ for $n\ne m$. It induces a
+permutation of every $\Z/p^k\Z$, and extends to a bijective isometry
+of $\Z_p$. The result also holds with $L(x)$ replaced by $L(bx)$
+provided $L(ba)$ is a unit.
+\end{theorem}
+\begin{proof}
+The element $g$ is a unit by the convergent geometric series. For $h>0$,
+\[
+ g^h-1=h p^d a+\sum_{j=2}^h\binom hj p^{dj}a^j.
+\]
+The elementary identity $j\binom hj=h\binom{h-1}{j-1}$ gives
+$v_p(\binom hj)\ge v_p(h)-v_p(j)$. For $j\ge2$,
+$(j-1)d-v_p(j)\ge1$ in the stated cases. Indeed for odd $p$,
+$p^{j-1}>j$ for $j\ge2$; for $p=2$ the factor $2(j-1)$ is sufficient.
+The remainder lies in $p^{d+v_p(h)+1}B$. For $n>m$, multiply by $g^m$;
+its reduction modulo $p$ is one even when $m$ is negative. Applying
+$L$ yields the asserted exact valuation. The other order follows by
+negation. The isometry descends to an injection and hence a bijection
+on each finite residue ring; inverse limits give the extension.
+\end{proof}
+
+For the Lucas sequence $u_0=0,u_1=1,u_{n+1}=A u_n-u_{n-1}$ put
+$M_A=\left(\begin{smallmatrix}A&-1\\1&0\end{smallmatrix}\right)$.
+Its lower-left entry in $M_A^n$ is $u_n$ for every $n\in\Z$.
+If $M_A^r=I+p^d B_0$ and the lower-left entry of $M_A^b B_0$ is a
+unit, Theorem~\ref{thm:matrix} shows that
+\[
+ n\longmapsto \frac{u_{b+rn}(A)-u_b(A)}{p^d}
+\]
+is a permutation modulo every $p^k$. This gives simultaneous
+interpolation across distinct primes by CRT, even with different
+recurrences and starting indices (the common parameter $n$ is used in
+each recurrence). The unit condition is indispensable; the theorem
+is not a replacement for Sun's proof that his actual parameters satisfy
+it. The depth hypothesis at 2 is sharp in general: $g=-1$, $d=1$,
+$a=-1$ gives a two-valued function.
+
+\begin{theorem}[Elliptic version]\label{thm:ellinterp}
+Let $E$ have good reduction over a finite extension $L/\Q_p$, with
+valuation normalized by $v(p)=1$. Suppose $Q$ is a nonzero point in
+the formal subgroup with $d=v(z(Q))>1/(p-1)$, where $z=-x/y$ is a
+minimal integral formal parameter. Let $R$ be any point in the formal
+subgroup (including the identity). Then for distinct integers $n,m$,
+\[
+ v\bigl(z(R+[n]Q)-z(R+[m]Q)\bigr)=d+v_p(n-m).
+\]
+For $L=\Q_p$, the normalized map
+$(z(R+[n]Q)-z(R))/p^d$ permutes every residue ring $\Z/p^k\Z$.
+For general $L$ its image is a single $\Z_p$-parameter family, not
+necessarily all of $\mathcal O_L$ after normalization.
+\end{theorem}
+\begin{proof}
+The formal logarithm is an isometric group isomorphism on points of
+parameter depth greater than $1/(p-1)$: its invariant differential
+has integral coefficients and the term of degree $j\ge2$ has valuation
+at least $jd-v_p(j)>d$. The formal inverse exists on this depth
+ball, by the usual inverse power series or the strict contraction
+of the higher terms. Thus $v(z([h]Q))=d+v_p(h)$ for nonzero $h$.
+The formal group law satisfies $F(X,Y)-X=Y(1+H(X,Y))$ with
+$H\in (X,Y)\mathcal O_L[[X,Y]]$ because its linear part is $X+Y$.
+Take $X=z(R+[m]Q)$ and $Y=z([n-m]Q)$ in the maximal ideal to
+obtain the displayed valuation. The permutation proof is as in
+Theorem~\ref{thm:matrix}. Over an unramified extension of residue
+degree $f>1$, the residues of a single integer parameter modulo $p$
+have at most $p$ values, not $p^f$, proving the limitation.
+\end{proof}
+
+For a global rank-one point $P$, at finitely many good places let
+$r_\mathfrak p$ be the order of its reduction and choose a common
+multiple $r$ such that $[r]P$ has the required depth at every place.
+Then the normalized scalar-multiple maps above interpolate arbitrary
+integer-parameter residues at distinct underlying rational primes.
+At two places over the same rational prime the congruences on the
+single multiplier must agree modulo the smaller modulus. If the
+reference pair is $[h]P,[h-1]P$, high depth at both split places
+is not automatic: when the reduction orders are prime to $p$ and
+$z([r_\mathfrak p]P)$ has depth one in both slots, depth at least two
+would force $p\mid h$ and $p\mid h-1$ respectively, which is impossible.
+This explains why replacing logarithm precision by deeper reference
+points would require new arithmetic premises rather than a CRT trick.
+
+\section{Shorter logarithms and sharper source precision}\label{sec:precision}
+We now use the direct-index source \cite{index} as a fixed receiving
+construction. We give details because changing the precision in this
+source affects the height contradiction and completeness simultaneously.
+Let $Q(a,Z_1,\ldots,Z_k)$ be the fixed integer coding polynomial;
+allow also a finite system $Q_1=\cdots=Q_s=0$. The source uses a common
+shift $\sigma\in\{0,\ldots,k\}$ so that $m_i=Z_i+\sigma$ are nonzero,
+$m_0=a+1$, and
+\[
+ \Psi_{\sigma,j}(M_0,\ldots,M_k)=Q_j(M_0-1,M_1-\sigma,\ldots,M_k-\sigma).
+\]
+Set $D_j=\max(1,\max_\sigma\deg\Psi_{\sigma,j})$ and
+$C_j=\max(1,\max_\sigma\|\Psi_{\sigma,j}\|_1)$, where the latter is
+the sum of absolute integer coefficients. Write
+$B=\max(1,|m_0|,\ldots,|m_k|)$. If a residual $N_j=\Psi_{\sigma,j}(m)$
+is nonzero then $1\le|N_j|\le C_j B^{D_j}$.
+
+\subsection{Logarithm truncation}
+On the project's curve over $K=\Q(\sqrt2)$, with $D_E=11-6\sqrt2$,
+the formal logarithm of $z=-x/y$ is \cite{index,ellheight}
+\[
+ \ell(z)=\sum_{r\ge0}\frac{(-1)^r\binom{2r}{r}D_E^r}{4r+1}z^{4r+1}.
+\]
+One may derive it by putting $w=1/x$, so $z^2=w/(1-D_Ew^2)$
+and differentiating; the invariant differential is
+$dz/(\sqrt{1+4D_Ez^4})$, whose binomial expansion gives the series.
+For clarity, differentiating $z=-x/y$ and using $y^2=x^3-D_Ex$
+gives $dz/(dx/(2y))=(x^2+D_E)/(x^2-D_E)$, whose square is
+$1+4D_Ez^4$ and whose value at the identity is one.
+
+\begin{lemma}[Short truncation]\label{lem:short}
+Let $L\ge1$ and $p_0\ge3$ be an integer lower bound for the odd
+unramified good residue primes under consideration. Take
+\begin{equation}\label{eq:cutoff}
+ r_0=\min\{r\ge1: 4r-\lfloor\log_{p_0}(4r+1)\rfloor\ge L\},\qquad
+ \ell^{[L]}(z)=\sum_{r=0}^{r_0-1}
+ \frac{(-1)^r\binom{2r}{r}D_E^r}{4r+1}z^{4r+1}.
+\end{equation}
+For $v_p(z)\ge1$ and $p\ge p_0$, $z\ne0$, the exact ratio
+$\ell^{[L]}(z)/\ell(z)$ belongs to $1+p^L\mathcal O_v$.
+The cutoff is computable by integer powers alone. One has
+$r_0\le\lceil L/3\rceil$; if $p_0>4\lceil L/4\rceil+1$, then
+$r_0=\lceil L/4\rceil$. The polynomial degree is at most $4r_0-3$.
+\end{lemma}
+\begin{proof}
+The relative term of index $r\ge1$ has valuation at least
+$4r-v_p(4r+1)\ge4r-\lfloor\log_{p_0}(4r+1)\rfloor$.
+The integer function $n-\lfloor\log_{p_0}(n+1)\rfloor$ is
+nondecreasing: at each step the floor increases by at most one.
+Also $3^{r+1}>4r+1$ for $r\ge1$ by induction, so the bound is
+at least $3r$. Thus $\ell(z)/z$ is a unit and the omitted relative
+terms have valuation at least $L$. This proves the ratio estimate
+and the first cutoff bound. If the stated strict inequality for
+$p_0$ holds, the floor is zero at $r=\lceil L/4\rceil$; smaller $r$
+cannot work because $4r<L$.
+\end{proof}
+
+\subsection{The direct-index residue test}
+The point charts, guards and coefficients are those of \cite{index}:
+$A_i=[m_i]P$, $U_i=[j_i]P$, common $H=[h]P$, with finite nonzero
+points and $h\ne0,\pm1$. Write $f(Q)=1/x(Q)$, $z(Q)=-x(Q)/y(Q)$,
+and for a contact argument $t$ put
+\begin{align*}
+ \Theta&=\{0,-1/2,-1,1/2399,-32/407\},\qquad
+ \Delta=t+1,\\
+ G(t)&=\prod_{\theta\in(2+\Theta)\cup(4+\Theta)}(t-\theta),\qquad u=G(t)/\Delta^{10}.
+\end{align*}
+Include the existing exclusions (bad primes, coefficient primes,
+contact differences and $\Delta$ at contact, ramified primes, etc.)
+in the fixed finite set $S$. All divisions and nonzero guards of the
+source remain; zero comparison and terminal test values are permitted.
+Take precision $L=\max_j L_j$. Use
+\[
+ r_i=\frac{\ell^{[L]}(z(U_i))}{\ell^{[L]}(z(H))},\qquad
+ r'_i=\overline{\frac{\ell^{[L]}(z(U_i-A_i))}{\ell^{[L]}(z(H-P))}}.
+\]
+The input list of field-valued tests $C$ comprises, each divided by
+$\Delta^2$, the following entries:
+\begin{align*}
+ &f(H),\ f(U_i),\ \overline{f(H-P)},\ \overline{f(U_i-A_i)},\\
+ &(r_i-r'_i)/u^{L-1},\qquad
+ \Psi_{\sigma,j}(a+1,r_1,\ldots,r_k)/u^{L_j-1}.
+\end{align*}
+Duplicate tests can be omitted. The project uses the exact product gate
+\begin{equation}\label{eq:gate}
+ D_C=\frac{C^2}{1+uC^2},\quad W=\prod_C(1+D_C^2/u),\quad V=\Tr(W^{-1}),\quad
+ e=7u\left(\frac{16}{101(1+u)V}\right)^2,
+\end{equation}
+with terminal normalized BB product pole
+$q^2=(1-e)(v^4-(7u)^2)(w^4-(7u)^2)$.
+Its unconditional local soundness is included here to specify exactly
+what the changed tests require. At an unramified odd consumed prime
+$p\notin S$ with $\nu=v_p(u)>0$ odd, both competing denominator
+valuations in $D_C$ differ in parity, so $v_p(D_C)=\max(2v_p(C),-\nu)$.
+The same unequal-parity argument gives $v_p(1+D_C^2/u)=\min(0,2v_p(D_C)-\nu)$.
+The product pole forces $e$ not to have negative odd valuation:
+otherwise $v_p(7u)$ is odd, each quartic factor has even valuation
+without cancellation, and $1-e$ has odd valuation. Since $v_p(e)$
+is odd at the consumed prime, it is strictly positive. Writing $q_0$
+for the maximum of the slot valuations of $W$, $v_p(V)\ge-q_0$, and
+\[
+ 0<v_p(e)\le \nu+2q_0.
+\]
+In a slot attaining $q_0$ every factor valuation is $>-\nu/2$, hence
+$v_p(D_C)>\nu/4$ and $v_p(C)>0$ for every test. The reciprocal tests
+place the required points in their formal subgroups (in the relevant
+split slots or at the unramified place). At such a contact $\Delta$
+is a unit. The formal logarithm is additive, and by multiplying the
+base point into the formal subgroup its exact ratios are $j_i/h$ and
+$(j_i-m_i)/(h-1)$. Lemma~\ref{lem:short} gives
+\[
+ h r_i\equiv j_i,\qquad (h-1)r'_i\equiv j_i-m_i\pmod {p^L}.
+\]
+This assertion does not require $r_i$ to be integral initially: the
+relative errors are multiplied by the integer indices. The comparison
+imposes $r_i-r'_i\equiv0\pmod {p^L}$, because $(L-1)\nu+1\ge L$.
+Subtracting gives $r_i\equiv m_i\pmod {p^L}$, including integrality
+of $r_i$ in that slot. Evaluating the integer polynomial then yields
+$p^{L_j}\mid N_j$ for every $j$. The unramified hypothesis allows
+this conclusion over $\Z$. The product $M_S(t)$ of all the consumed
+positive odd primes therefore satisfies
+\begin{equation}\label{eq:raddiv}
+ M_S(t)^{L_j}\mid N_j\quad\text{for each }j.
+\end{equation}
+
+\subsection{A sharper height contradiction}
+The retained quantitative modular input in \cite{index} is
+\begin{equation}\label{eq:modular}
+ h(t)\le 2^{551} M(t)(199+\tfrac12\log M(t))^2,
+\end{equation}
+where $M(t)$ is its consumed-prime radical with the theorem's own
+exclusions. Enlarge $S$ to include those exclusions as in the original
+transfer. If $R_S$ is the product of primes in $S$ (or an integer upper
+bound), $M(t)\le R_S M_S(t)$. This is a retained premise, not an
+independent proof of the modular estimate.
+
+\begin{theorem}[Improved effective precision]\label{thm:precision}
+For each source residual of degree bound $D_j$ one may take
+$L_j=\lfloor D_j/2\rfloor+1$. Put $b(N)=\lfloor\log_2 N\rfloor+1$
+for positive integers, and $C'_j=\lceil C_j^{1/L_j}\rceil$.
+If $N_j\ne0$, the tests imply $h(t)\le H_j B^2$, where the explicit
+integer constant
+\begin{equation}\label{eq:H}
+ H_j=2^{551} R_S C'_j(199+b(R_S)+b(C'_j)+2L_j)^2
+\end{equation}
+is independent of the instance $a$ and the witnesses. The same
+48/50-variable direct-index transfers follow with the shorter
+truncation of Lemma~\ref{lem:short}, under their retained arithmetic
+premises; the three-contact sufficient exponent is effective.
+\end{theorem}
+\begin{proof}
+By \eqref{eq:raddiv}, $M_S(t)\le C'_j B^{\alpha}$ with
+$\alpha=D_j/L_j<2$ and $2-\alpha=\eta\ge1/L_j$.
+Use this bound in \eqref{eq:modular}; with
+$A=199+b(R_S)+b(C'_j)$ the result is at most
+$2^{551}R_SC'_j B^\alpha(A+\log B)^2$.
+For $x=\log B\ge0$,
+$e^{-\eta x/2}(A+x)\le A+2/\eta\le A+2L_j$ (maximize
+$x e^{-\eta x/2}$, or use the elementary exponential bound).
+Squaring proves \eqref{eq:H}.
+
+Let $H_* = \max_j H_j$. If some source residual is nonzero, the bound
+holds at every contact argument with this common constant. For the
+two-contact transfer use $t_0=\lambda$, $t_1=\lambda+T^J$ with
+$T=\Tr(\sum_{i=0}^k x(A_i))>1$. The source's aggregate trace-height
+premise gives $B^2\le A_*h(T)$ with a fixed $A_*$ after absorbing its
+additive constant (as in \cite{index}). Since
+$J h(T)\le h(t_0)+h(t_1)+\log2\le 2H_*B^2+\log2$, any fixed integer
+$J>A_*(2H_*+1)$ contradicts $B^2\le A_* h(T)$.
+For the specified three-contact route write
+$Z=\sum_{i=0}^k x(A_i)=U+V_1\sqrt2$ and take
+$t_0=\lambda,t_1=\lambda+U^J,t_2=\lambda+V_1^J$.
+The source supplies $B^2\le K_r(h(U)+h(V_1))$ with
+$r=k+1$, $a_r=(r-1)2^{r-1}$ and $K_r=18+a_r^2+2r2^{r-1}$.
+Hence $J B^2\le K_r(4H_* B^2+2\log2)$, contradicted by the effective
+even integer $J=2K_r(4H_*+3)$. It follows that every residual is zero.
+
+For completeness fix an integer solution and the common shift,
+choose $A_i$ and the aggregate before selecting primes, and set
+$U_i=[hm_i]P$ as in the source. At selected primes, all successful-slot
+reciprocal tests are positive and the exact log ratios are $m_i$;
+Lemma~\ref{lem:short} makes the comparison positive after division
+by $u^{L-1}$ and the polynomial tests positive after division by
+$u^{L_j-1}$ (the selected contact valuations equal one).
+The source's fixed-place/real approximation first chooses $H$ away
+from the finitely many zeros and poles of the new nonzero rational
+logarithm functions, then preserves their bounded neighborhoods.
+A nonconstant point map composed with a nonzero rational function
+has only finitely many zeros on the elliptic curve; the reference
+logarithms are nonzero rational functions because their linear term
+is $z$. Include their coefficient denominator primes in $S$; the
+shorter polynomial uses a prefix of the old coefficient list, so
+this introduces no additional primes beyond those already excluded
+in the previous precision-$3D+1$ transfer. At all other places the
+source's parity and preparation calculations for \eqref{eq:gate}
+are unchanged: they use boundedness at fixed places, the selected
+unit trace, and the square factor, not the value of $L$. The BB
+prepared pole theorem supplies the terminal solutions. This is
+exactly the source's order of witness choices, with the same
+ordinary coordinates and fewer logarithm terms. All its prime-pattern,
+recurrence, modular and height premises are still required.
+\end{proof}
+
+If only an ineffective power estimate $h(t)\le H M_S(t)^E$ is retained,
+with fixed $E>0$, use any integer $L_j\ge1$ satisfying $L_j\ge ED_j/2$:
+then $h(t)\le H (C'_j)^E B^2$. This improves the old sufficient
+precision $3D+1$ when its exponent was $E=3$. In the effective
+logarithmic estimate \eqref{eq:modular}, strict inequality $D_j/L_j<2$
+is essential to this particular argument: at equality the square of
+$\log B$ is not absorbed by a fixed $B^2$ constant. For a source system,
+testing each residual individually rather than a single sum of squares
+reduces the precision determined by its degree. Different $L_j$ also
+reduce the powers of $u$ in the individual tests. The tradeoff is the
+number of factors of $W$; a global determinant-degree comparison needs
+its coefficient DAG, not only the precision bound.
+
+\section{Valuation-tagged simultaneous-square polynomials}\label{sec:square}
+Sun's Lemma 2.6 uses a Matiyasevich--Robinson polynomial to merge square
+conditions and divisibility. Here a fixed prime-adic tag replaces the
+large variable-dependent positional base. This also works for rational
+radicands, including negative values and zero roots.
+
+\begin{theorem}[Tagged radical merger]\label{thm:square}
+For $k\ge1$ choose an odd integer $m\ge k$ and a rational prime $p$.
+Define
+\begin{equation}\label{eq:J}
+ J_{k,m}(A_1,\ldots,A_k,Z)=
+ \prod_{\varepsilon\in\{\pm1\}^k}
+ \left(Z-\sum_{i=0}^{k-1}\varepsilon_{i+1}p^i
+ A_{i+1}^{(m-1)/2}\sqrt{A_{i+1}}\right).
+\end{equation}
+It belongs to $\Z[A_1,\ldots,A_k,Z]$, is monic of degree $2^k$ in $Z$,
+and has total degree at most $2^k\max(1,m/2)$. For every rational tuple
+$A$, it has a rational root if and only if all $A_i$ are rational squares.
+For integral $A$ the equivalent root can be taken integral, and any
+rational root is integral. Moreover the signed sum separates the
+\emph{distinct} geometric characters of the tensor square-root algebra,
+even in specializations with zero radicands.
+\end{theorem}
+\begin{proof}
+Changing any formal radical's sign permutes the factors, so in the
+expansion every radical exponent is even. This proves polynomiality,
+monicity and the degree bound, using weight $m/2$ per radical term.
+Fix a rational specialization, and choose one extension of the
+$p$-adic valuation to the splitting field. The difference of the signed
+sums at two distinct characters is a nonempty sum of terms
+$\pm2 p^i A_{i+1}^{(m-1)/2}\sqrt{A_{i+1}}$ with nonzero radicands.
+Their valuations are
+\[
+ v_p(2)+i+(m/2)v_p(A_{i+1}).
+\]
+Equality for different indices would give $2(i-j)\equiv0\pmod m$.
+Since $m$ is odd and $|i-j|<m$, this is impossible. The unique term of
+least valuation prevents cancellation. Thus the signed sum separates
+characters. If its value is rational, every absolute Galois conjugate
+has the same value, so separation fixes the character and all its
+radicals are rational. Conversely rational radicals plainly give a
+rational root. Rational roots of monic integral quadratics are integral,
+which proves the integer assertion. Sign changes on zero roots do not
+change the geometric character, and the proof never assumes reducedness
+of the tensor algebra.
+\end{proof}
+
+The same proof holds over any number field using a fixed prime ideal
+with normalized discrete valuation and an element of valuation one
+in place of $p$, with coefficients in $\OK$ if this element is integral.
+The Galois action is then over $K$. Anisotropic coefficient aggregation
+in later applications over nonreal $K$ requires the modification in
+Section~\ref{sec:guard}, not an unqualified sum of squares.
+
+\begin{corollary}[Homogeneous merger]\label{cor:H}
+For integers $S,T,M$ and $A_i$, $S\ne0$, put
+\[
+ H_{k,m}(A,S,T,M)=S^{2^k}J_{k,m}(A,M-T/S).
+\]
+Then $\exists M\in\Z:H_{k,m}=0$ is equivalent to the conjunction
+$A_i\in\Z^2$ for all $i$ and $S\mid T$. The formula extends polynomially
+to $S=0$ with value $(-T)^{2^k}$. For $k=4$, $m=5$, one may use
+$\deg J_{4,5}\le40$ and $\deg H_{4,5}\le56$ in independent variables.
+\end{corollary}
+\begin{proof}
+For $S\ne0$, a zero gives the rational root $M-T/S$; by
+Theorem~\ref{thm:square} all $A_i$ are integer squares and the root
+is an integer. Hence $T/S\in\Z$. Conversely choose a signed sum of
+integer roots and add $T/S$ to form $M$. The product representation
+has factors $SM-T-S\sum \varepsilon_i p^{i-1}A_i^{(m-1)/2}\sqrt{A_i}$,
+which proves the polynomial extension and degree estimate. In
+particular at $S=0$ every factor is $-T$.
+\end{proof}
+
+Combining Corollary~\ref{cor:H} with Theorem~\ref{thm:div} gives
+replacements for both of Sun's packaging gadgets, at the level of
+the exact square/divisibility equivalences. If the source square inputs are
+polynomials of maximum degree $a$, and its new modulus and numerator
+are $\Sigma,\Theta$ of degrees $s,t$, then a fully explicit degree
+majorant for the resulting $H_{4,5}$ is
+\[
+ 16\max\{s+1,t,s+5a/2\},\quad
+ s\le\deg\xi+5\deg S_0,\qquad
+ t\le5\max(\deg T_0,\deg S_0+1).
+\]
+The last witness $M$ must remain integral; merely allowing a rational
+root loses the divisibility information, e.g. all $A_i=1$,
+$S=2,T=1$. The substitution uses the same number of source unknowns.
+No new numerical total-degree bound for Sun's entire source polynomial
+is asserted without expanding its complete Section 7 coefficient DAG.
+
+\section{A guarded encoder from a known separator}\label{sec:guard}
+The project's general finite-algebra encoder \cite{encoder} constructs
+a separator by spectral difference polynomials of all guarded generators.
+The next theorem separates the two tasks. Whenever an inexpensive
+separator of geometric characters is already known, a determinant
+coefficient formula extracts only the allowed characters, without
+multiplying the separator by the character-dependent guard (which can
+destroy injectivity). No new ordinary coordinate is introduced.
+
+\begin{theorem}[Guard extraction]\label{thm:guard}
+Let $R=\Q[T_1,\ldots,T_b]$, let $\A$ be a finite free commutative
+unital $R$-algebra of rank $N\ge1$, and let $g,\beta\in\A$. Suppose
+that at every rational specialization $T=t$, the values of $\beta$
+on distinct geometric characters are distinct and nonzero. Then one
+explicit polynomial $F(T,Y)$ with a single extra rational coordinate
+satisfies
+\[
+ \exists Y\in\Q:F(t,Y)=0
+ \iff \exists \chi:\A_t\to\Q:\ \chi(g)\ne0.
+\]
+If $d_g,d_\beta$ bound the degrees of multiplication-matrix entries
+for $g,\beta$, respectively, then
+\begin{equation}\label{eq:guarddeg}
+ \deg F\le 2\sum_{r=1}^N\max\{r^2 d_g+r(d_\beta+1),\ N d_g\}.
+\end{equation}
+Multiplication by a fixed integer clears coefficient denominators.
+\end{theorem}
+\begin{proof}
+Let $M_g,M_\beta$ denote the multiplication matrices. Compute
+\begin{align*}
+ A(X)&=\det(I_N+X M_g)=1+\sum_{r=1}^N a_r X^r,\\
+ C(X,Z)&=\det(I_N+X M_g(ZI_N-M_\beta)),\\
+ c_r(Z)&=[X^r]C(X,Z)=\sum_{j=0}^r c_{r,j}Z^{r-j}.
+\end{align*}
+In particular $c_{r,0}=a_r$. Set
+\begin{equation}\label{eq:guardpoly}
+ H_r(Y)=1+\sum_{j=1}^r c_{r,j} a_r^{j-1}Y^j,
+ \qquad
+ F=\prod_{r=1}^N\left(H_r(Y)^2+\sum_{s=r+1}^N a_s^2\right).
+\end{equation}
+At a specialization, all multiplication matrices are simultaneously
+triangularizable over $\overline\Q$. The diagonal entries are the
+character values with positive multiplicities, whether or not the
+algebra is reduced. Let $r_*$ be the number of nonzero guard values
+counted with multiplicity. Then $a_{r_*}$ is the product of these
+nonzero values (if $r_*=0$ use $a_0=1$), $a_s=0$ for $s>r_*$, and
+$c_s(Z)=0$ for $s>r_*$. At $r=r_*>0$,
+\[
+ c_r(Z)=a_r\prod_{\chi(g)\ne0}(Z-\chi(\beta)),\qquad
+ H_r(Y)=\prod_{\chi(g)\ne0}(1-a_rY\chi(\beta)),
+\]
+where both products count multiplicities. For $r>r_*$, $H_r=1$.
+For $r<r_*$ the tail sum has the nonzero square $a_{r_*}^2$.
+If $r_*=0$ no factor of $F$ can vanish. Thus a rational zero is
+exactly a rational value $1/(a_rY)$ of the separator at an allowed
+character; the nonzero hypothesis ensures the converse as well.
+All Galois conjugates of such a character have the same separator
+value, so separation forces the character itself to be rational.
+
+For the degree bound, determinant minors give
+$\deg a_r\le r d_g$ and $\deg c_{r,j}\le r d_g+j d_\beta$, since
+each coefficient in $Z$ uses exactly $j$ factors from $M_\beta$.
+The corresponding term of $H_r$ has total degree at most
+$j(r d_g+d_\beta+1)$. Sum the doubled maxima, including tail squares,
+to obtain \eqref{eq:guarddeg}. No extra root, guard reciprocal, or
+coefficient-stratum coordinate is needed.
+\end{proof}
+
+\begin{remark}
+The constant term one in $H_r$ is crucial. Directly using $c_r(Y)$
+with the tail vanishing would accept an identically zero $c_r$ at
+strata $r>r_*$. The construction above automatically rejects them.
+For an arbitrary number field $K$, replace the sum of squares in each
+factor by an anisotropic norm form in its $1+N-r$ arguments. For instance
+choose a field extension of that degree via an Eisenstein polynomial
+at a finite prime and take the norm of the linear combination in a
+basis. A norm is zero only for the zero element. This gives the same
+one-coordinate equivalence over $K$ with a corresponding degree bound
+using that norm-form degree rather than two.
+\end{remark}
+
+For independent rational quadratic roots one may use the separator
+$\beta=1+\sum_{i=1}^k p^i A_i^{(m-1)/2}\sqrt{A_i}$ with odd $m>k$.
+The difference argument of Theorem~\ref{thm:square} proves separation;
+the same valuation classes including the constant tag zero show that
+$\beta$ never vanishes. Theorem~\ref{thm:guard} therefore encodes any
+polynomial guard on these characters, with no generic spectral
+separation step. The following section handles the actual two-layer
+project architecture, where pole radicands are not independent of
+point-root choices.
+
+\section{Two-layer point and pole encoder}\label{sec:receive}
+\subsection{Algebra and valuation bounds}
+Use the rank-four project point algebra over $\Q[T]$ for each square
+abscissa chart. Over $K=\Q(\sqrt2)$ it is a tensor of the two quadratic
+root algebras
+\[
+ j_i^2=A_i+B_i\sqrt2=:a_i,\qquad (j_i')^2=A_i-B_i\sqrt2=:a_i'.
+\]
+Here the rational basis is $1,U_i,V_i,W_i$, with
+$j_i=(U_i+V_i\sqrt2)/2$, $j_i'=(U_i-V_i\sqrt2)/2$,
+$W_i=j_i j_i'$. The stated multiplication table is precisely this
+invariant algebra, including at zero roots. Let there be $b$ point
+blocks, $n=2b$ radical slots, and $N_0=4^b$ point-algebra rank. Let the
+terminal layer consist of $c$ monic quadratic roots $q_j^2=C_j$ whose
+radicands lie in the point algebra (they may depend on all point roots,
+but not on one another). The full algebra has rank $N=N_0 2^c$.
+Write $C_j=\sum_\alpha C_{j,\alpha}e_\alpha$ in the rational tensor
+point basis. Its coefficients are polynomials in the ordinary base
+coordinates, after the receiving source's monic denominator clearing.
+All guards, including those denominators, are included in one element
+$g$; the proof permits $g$ to vanish on any subset of characters.
+
+For the actual square-abscissa charts, $a_i=h_i^4-(3-\sqrt2)^2$,
+where $h_i\in K$ has rational components. It is never zero at a rational
+base specialization: if $h_i^4=(3-\sqrt2)^2$ then
+$h_i^2=\pm(3-\sqrt2)$, whose norm would imply $\Nm(h_i)^2=7$.
+Thus $N_i=A_i^2-2B_i^2$ is always nonzero. This property is used for
+the denominator of the scale below; it does not impose nonzero pole
+roots. For other first-layer architectures with zero radicands, a
+finite branch on which $N_i$ vanish suffices: omit their scale factors,
+impose the zero equalities by a sum of squares, include the other $N_i$
+in the guard, and take the finite product over branches.
+
+Fix $p=7$, and embed $K$ into $\Q_7$ with $\sqrt2\equiv-3\pmod7$.
+Then $\pi=3+\sqrt2$ satisfies $v_7(\pi)=1$, $v_7(\bar\pi)=0$ because
+$\pi\bar\pi=7$. All point radicands at a rational base specialization
+lie in $\Q_7$. Every point-root value lies in the same compositum of
+quadratic extensions of $\Q_7$, with ramification index at most two.
+Indeed the squareclass group of an odd local field is generated by
+a uniformizer and a nonsquare residue unit: the unit quadratic extension
+is unramified, the uniformizer quadratic extension has ramification
+index two. Therefore every nonzero value $C_j$ has valuation in
+$\tfrac12\Z$, and every nonzero terminal root in $\tfrac14\Z$.
+
+For rational $x$ define
+\[
+ A_p(x)=\frac1{1+px^2},\qquad
+ B_p(x)=\frac{px}{1+px^2}\quad (x\ne0).
+\]
+Unequal parity of the two denominator valuations gives
+\begin{equation}\label{eq:scaleval}
+ v_p(A_p(x))\ge\max(0,-v_p(x)),\quad
+ v_p(B_p(x))\ge |v_p(x)|.
+\end{equation}
+The first expression is one at zero; neither denominator can vanish.
+Put
+\begin{equation}\label{eq:scale}
+ W=\prod_{i=1}^b A_p(A_i)A_p(B_i)B_p(N_i)
+     \prod_{j=1}^c\prod_\alpha A_p(C_{j,\alpha})=\frac{W_N}{W_D}.
+\end{equation}
+Use the literal numerator and denominator from this product, without
+cancellation. At a rational specialization $W$ is nonzero. Let
+$D_*$ be the sum of all the right-hand valuation bounds in
+\eqref{eq:scaleval} used in this product (zero contributes zero).
+Then $v_p(W)\ge D_*$, and for each nonzero first-layer radicand
+$|v_p(a_i)|,|v_p(a_i')|\le D_*$. In fact their valuations are bounded
+below by $-\max(0,-v_p(A_i),-v_p(B_i))$ and above by $v_p(N_i)$
+minus the lower bound for the conjugate. Every tensor basis element
+$e_\alpha$ is a sum of products of at most $n$ first-layer roots
+with unit coefficients (at 7, $2$ and $\sqrt2$ are units), so has
+valuation at least $-nD_*/2$. It follows that
+\begin{equation}\label{eq:terminalbound}
+ v_p(C_j)\ge-(n+2)D_*/2,\qquad
+ v_p(q_j)\ge-(n+2)D_*/4,
+\end{equation}
+including zero values with valuation $+\infty$. These bounds hold for
+\emph{all} geometric characters, including those excluded by $g$.
+
+\subsection{The separator and its proof}
+\begin{theorem}[Two-layer tagged separator]\label{thm:two}
+Choose odd integers $m>n$ and $l>c$, put
+$\lambda_i=\pi^{2i-1}\bar\pi^{2i}$ and $h_*=m+l(n+2)$, and define
+\begin{align*}
+ b_1&=1+\sum_{i=1}^b\bigl(\lambda_i j_i^m+\bar\lambda_i(j_i')^m\bigr),\\
+ b_2&=\sum_{j=1}^c p^j q_j^l,\qquad E=p^{n+1}W^{h_*},\\
+ \beta&=W_D^{h_*} b_1+p^{n+1}W_N^{h_*} b_2.
+\end{align*}
+The element $\beta$ belongs to the full rational polynomial algebra
+and has distinct, nonzero values on all geometric characters at every
+rational specialization. With Theorem~\ref{thm:guard} it yields a
+one-coordinate guarded finite-algebra encoder for the point and pole
+tower, even when terminal roots vanish or the tower is nonreduced.
+\end{theorem}
+\begin{proof}
+The two terms of each point pair are conjugate under the scalar
+involution $\sqrt2\mapsto-\sqrt2$, which interchanges $j_i,j_i'$;
+thus $b_1$ descends to the rational algebra. The other terms are
+rational polynomials in its generators. The factor $W_D^{h_*}$ is
+nonzero at all rational specializations, so it suffices to prove
+separation for $b_1+Eb_2$.
+
+The point terms have valuations $k+(m/2)v_p(a)$ with tags
+$k=1,\ldots,n$ and $v_p(a)\in\Z$. Their valuation classes are
+pairwise distinct, also distinct from the constant one (tag zero),
+because $m$ is odd and $m>n$. Consequently $b_1$ never vanishes and
+$v_p(b_1)\le0$. At two different point characters the difference
+$b_1(\chi)-b_1(\psi)$ is a nonempty sum of changed-sign terms.
+It has a unique term of least valuation by the same argument (the
+factor 2 is a unit), and
+\[
+ v_p(b_1(\chi)-b_1(\psi))\le n+mD_*/2.
+\]
+By \eqref{eq:terminalbound}, the valuation of each $b_2$ value and
+hence any difference of two such values is at least
+$-l(n+2)D_*/4$. Meanwhile
+$v_p(E)\ge n+1+[m+l(n+2)]D_*$. Hence the terminal perturbation has
+valuation strictly greater than $n+mD_*/2$; it cannot cancel the
+point difference or the value of $b_1$ itself. This proves separation
+between different point characters and nonvanishing everywhere.
+
+For two characters over the same point character, the terminal
+radicands are identical. If the characters are distinct, their
+terminal values differ in sign at some nonzero root. The difference
+of the $b_2$ values has nonzero summands with valuations
+$j+l v_p(q_j)\in j+(l/4)\Z$. Equality between distinct tags would
+imply $4(i-j)\equiv0\pmod l$, impossible because $l$ is odd and
+$l>c$. The unique least valuation prevents cancellation. Since $E$
+is nonzero, this proves separation within each point fiber. All
+arguments use only distinct geometric characters, not nilpotent
+parts of the algebra. The determinant proof already covers nilpotents.
+\end{proof}
+
+\subsection{Explicit degree ledger and project application}
+Let $\delta\ge1$ be any integer majorant of the following finite list:
+\begin{itemize}
+\item total degrees of the $A_i,B_i$ and all polynomial basis coefficients
+$C_{j,\alpha}$ after monic denominator clearing;
+\item total degrees of all entries of the full multiplication matrices
+of $j_i,j_i'$ over $K$ and $q_j$, and of $g$ over $\Q$.
+\end{itemize}
+All these quantities are computable from the receiving coefficient
+DAG and its explicit multiplication tables. This definition of
+$\delta$ is not the $g,g\theta$ majorant of the older generic encoder.
+No numerical evaluation of $\delta$ for the entire universal source
+is being assumed. The literal scale numerator degree is at most
+$2b\delta$ and denominator degree at most $(8b+2cN_0)\delta$:
+for each point norm $N_i$ the degrees are at most $2\delta$, and its
+three denominator factors cost $2\delta+2\delta+4\delta$; each terminal
+coefficient contributes at most $2\delta$. Matrix powers give
+\begin{equation}\label{eq:beta-degree}
+ d_\beta\le B_*\delta,\quad
+ B_*=[m+l(n+2)](8b+2cN_0)+\max(m,l).
+\end{equation}
+Thus the degree of the guarded encoder is at most $K_*\delta$, where
+\begin{equation}\label{eq:degreeK}
+ K_*=2\left[\frac{N(N+1)(2N+1)}6
+ +(B_*+1)\frac{N(N+1)}2+N^2\right].
+\end{equation}
+This follows by majorizing the maximum in \eqref{eq:guarddeg} by the
+sum and using $\delta\ge1$. It is a deliberately conservative bound.
+
+The direct-index transfers \cite{index} have $2k+1$ independent point
+blocks and two or three terminal roots. With Sun's ten-integer source,
+$k=10$, $b=21$, $n=42$, $m=43$, $N_0=2^{42}$. Use $l=3,5$ respectively.
+The exact integer arithmetic in \eqref{eq:beta-degree}--\eqref{eq:degreeK}
+gives the following ledger:
+\begin{center}\small
+\begin{tabular}{lrrrrr}\toprule
+Route & $c$ & $N$ & $h_*$ & $B_*$ & $K_*<$\\\midrule
+48 unknowns & 2 & $2^{44}$ & 175 & 3078632557802243 & $2^{140}$\\
+50 unknowns & 3 & $2^{45}$ & 263 & 6940117394566339 & $2^{143}$\\\bottomrule
+\end{tabular}
+\end{center}
+The single-branch degree bounds are therefore strictly below
+$2^{140}\delta$ and $2^{143}\delta$. The original transfer takes the
+product of $k+1=11$ common-shift branch polynomials. If each branch
+uses the same majorant $\delta$ (take their maximum), the bounds on
+the entire instance polynomial are strictly below
+$11\cdot2^{140}\delta$ and $11\cdot2^{143}\delta$, respectively.
+All coefficients can be obtained by the finite formulas above.
+No spectral differences of guarded generators need be formed. This
+improves the generic encoder's rank dependence, from a bound of order
+$N^7$ for fixed generator count and entry-degree majorant to the
+explicit bound \eqref{eq:degreeK} with $B_*=O(N_0)$ for a fixed
+number of stages and tags (with the displayed polynomial dependence
+on $b,c$). A numerical comparison to every older specialized encoder
+requires their actual coefficient DAGs and is not asserted.
+
+The 48/50 variable counts remain exactly as in \cite{index}:
+$2(2k+1)$ point parameters, one common slope, $2c$ pole parameters,
+and the single encoder. The shorter logarithm in Section~\ref{sec:precision}
+changes only the terminal radicands and the guards; the algebra shape
+and nonzero point-norm proof remain valid. Thus the two improvements
+compose. The fully specified route continues to use its full-family
+modular-height premise, not the unrelated fixed $L=143$ construction.
+
+For the 25/27/11 definitions, the rank-four point prefix and independent
+terminal quadratic shape are also promising for this method, but their
+current v88 specialized positive/projective encoders already have much
+smaller degree formulas than the generic spectral encoder. Replacing
+those encoders without comparing their actual degrees would not be
+justified. The 36-unknown source includes a mixed-integer rank-sixteen
+wrapper preceding the terminal pole. The two-layer theorem does not
+apply literally to that wrapper. One can split its rank-eight signed
+sum into three independent radicals and its final quadratic into a
+third layer; the general multi-stage idea described below is a
+separate checkpoint, not a claimed 36-route degree record.
+
+\section{Further transfers and the remaining variable-count problem}
+\subsection{More layers: a precise extension principle}
+The two-layer argument has a general form. Suppose a tower has finitely
+many stages, each adjoining several independent square roots of elements
+of preceding stages. At a fixed odd prime, the splitting field of
+all roots through stage $r$ has ramification index dividing $2^r$:
+inductively each new stage is contained in the compositum of quadratic
+extensions of the previous local field, whose ramification index is
+at most two. Thus differences of two sign choices at the first stage
+where characters differ can be tagged modulo $m_r/2^r$ with odd
+$m_r$ larger than the number of tags in that stage. To make later
+stages negligible, one needs a rational nonzero scale with sufficiently
+large valuation relative to both upper and lower valuations of all
+nonzero radicands.
+
+Such a scale can be constructed by coefficient strata without computing
+spectral differences. For a radicand $C$ in a preceding finite free
+algebra of rank $d$, compute the monic characteristic polynomial
+$X^d+a_1X^{d-1}+\cdots+a_d$ of multiplication by $C$.
+At a specialization let $s$ be its last nonzero coefficient index
+(or $s=0$). Put $D^- = \sum_j\max(0,-v_p(a_j))$ with zero contributing
+zero. Every eigenvalue has valuation at least $-D^-$: otherwise the
+leading term of the monic equation has strictly smaller valuation
+than every other term. If $s>0$, the product of the nonzero eigenvalues
+counted with multiplicity is $\pm a_s$, so each nonzero eigenvalue
+has valuation at most $|v_p(a_s)|+(d-1)D^-$. It follows that
+\[
+ B_p(a_s)\prod_{j=1}^d A_p(a_j)^d
+\]
+has valuation at least a common absolute-valuation bound for all
+nonzero eigenvalues. For $s=0$ omit the $B_p$ factor. Take the product
+of these scales over radicands, branch on the finite coefficient strata
+using equalities $a_j=0$ for $j>s$ and guard $a_s\ne0$ for $s>0$.
+One can then choose a common $E$ of valuation greater than
+$\max_r m_r'$ plus $\max_r m_r$ times the sum of these bounds, where
+$m_r'$ counts the tags at stage $r$, and form the hierarchical sum
+$1+\sum_r E^{r-1} b_r$ with $b_r$ the tagged sum at that stage.
+At the first stage where two characters differ, its difference has a
+unique least-valuation summand, and all later differences have larger
+valuation after factoring out $E^{r-1}$. At the first stage, the constant
+one and nonzero tags give nonvanishing by the same residue calculation;
+later terms cannot cancel it. Clear rational scale denominators,
+apply Theorem~\ref{thm:guard} in each allowed coefficient stratum, add
+the stratum equalities by sums of squares, and take the product over
+strata. Invalid strata with a vanishing last coefficient are rejected
+by the guard; strata with a nonzero tail are rejected by the equalities.
+This proves a finite one-coordinate encoder for such towers, allowing
+zero radicands. The number of strata may be large; the sharper bound
+of Section~\ref{sec:receive} avoids them for the actual two-layer
+architecture. A numerical degree ledger for the mixed wrapper is left
+open rather than inferred from the two-layer formula.
+
+\subsection{Integrality absorption and its limits}
+There is a useful generic coordinate-saving criterion, independent of
+Sun's particular source. Suppose a rational integer-tuple detector
+certifies $r$ ordinary inputs integral, and a source further adjoins
+monic algebraic equations over the ring generated by those integer
+inputs, with the additional roots required rational. Then all these
+roots are integral: $\Z$ is integrally closed in $\Q$, or simply apply
+the rational-root theorem successively. They require no additional
+integer predicates. They can be included in the same joint finite
+algebra as the detector, provided all relations, leading coefficients
+and guards are encoded with the correct selected-character semantics.
+Over a number field the identical assertion holds with $\OK$ and $K$.
+For example in the $3r+8$ selective ordinary-$abc$ tuple architecture
+\cite{selective}, an applicable triangular monic source can be coded
+with $3r+8$ ordinary coordinates rather than testing its additional
+monic roots as independent integer inputs. This is a criterion, not
+a new universal source with fewer than ten integers.
+
+Two tempting misapplications fail. First, Sun's final homogeneous
+merger has leading coefficient $S^{2^k}$ rather than one. Rescaling to
+$m'=S M$ makes a monic equation for $m'$, not for $M$. A rational
+character does not imply $M\in\Z$ (see the explicit $S=2,T=1$
+example following Corollary~\ref{cor:H}). That integer quotient carries
+essential divisibility. Second, in the direct-index transfer actual
+integer labels are elliptic indices, not ordinary rational base
+coordinates of its finite algebra. Eliminating an integer root by
+only testing that a monic polynomial has roots modulo the selected
+primes would accept the intersective quintic with no global rational
+root. Neither argument removes a certified source input.
+
+\subsection{Status and next steps}
+\begin{center}\small
+\begin{tabular}{p{0.46\linewidth}p{0.45\linewidth}}\toprule
+Proved improvement & Scope and remaining restriction\\\midrule
+Degree-five intersective merger; simple local roots; all number fields
+ & Lower degree at the coding-gadget level. No new integer unknown saved.\\
+Tagged simultaneous-square and homogeneous merger
+ & $\deg J_4\le40$, $\deg H_4\le56$ in independent inputs; keep integer quotient.\\
+Precision $\lfloor D/2\rfloor+1$ and short logarithm
+ & Direct 48/50 transfer with same arithmetic premises.\\
+One-coordinate guarded tagged encoder, two-layer degree ledger
+ & Actual direct-index architecture; no full coefficient expansion.\\
+Multi-stage and monic absorption criteria
+ & Need explicit new source/degree ledger for further counts.\\\bottomrule
+\end{tabular}
+\end{center}
+The main next step for the quartic frontier is an actual low-quadratic-cost
+source with fewer certified integral inputs, not merely a lower-degree
+intersective polynomial. The next step for unrestricted degree is to
+rebuild the direct-index coefficient DAG with the shorter logarithm and
+new encoder, and compare exact numerical degree bounds to the present
+specialized positive/projective encoders. For number fields the
+intersective polynomial and local interpolation transfer directly, but
+neither proves stable rank, a modular height inequality, or global
+rational points of the required pole fibers. The new results do not
+establish the outstanding 21/9 defining-coordinate targets or the
+quartic target near 263. No conjecture is silently promoted to a theorem.
+
+\section*{Verification and provenance}
+The accompanying exact Python script checks the quintic expansion,
+discriminant and resultant, existence of simple roots at all primes
+in a finite test range, exact local lifting samples, the matrix
+interpolation permutation at sample primes (including the 2-adic
+threshold), the tagged square valuation arithmetic, the guarded
+coefficient formula on small algebras with zero roots and excluded
+characters, truncation inequalities, and the degree-multiplier ledger.
+The executed script returned 303 prime-root checks, 219 exact local
+lifts, six number-field fixtures, five scalar and 98 Lucas permutations,
+4,000 cutoff checks, 4,800 tag checks, seven guarded tensor examples,
+seven distinct characters in a two-layer example, and two degree ledgers.
+These are finite regression checks; the proofs in the body establish
+the general algebraic statements. The preceding audit of Sun's source
+was used, and the repository's receiving proof files were consulted.
+During this continuation the arXiv full-text endpoint failed on repeated
+retrieval attempts after the abstract/introduction was retrieved;
+we therefore do not assert a fresh line-by-line recompilation of the
+entire Section 7 source. The precise new gadget substitutions and
+transfer proofs above do not depend on such a recompilation. No
+repository modifications or full CI runs are claimed in this note.
+
+\begin{thebibliography}{99}
+\bibitem{sun26} Z.-W. Sun, \emph{Ten unknowns for Hilbert's tenth problem over the integers}, arXiv:2609.01594v2, 2 September 2026.
+\url{https://arxiv.org/abs/2609.01594v2}.
+\bibitem{repo} $\Z\Q$ Diophantine Project, \emph{Polynomial presentations of the integers over the rationals}, Jose Brox's improvement repository, README, accessed 24 November 2026.
+\url{https://github.com/JoseBrox/diophantine-z-q_improvements}.
+\bibitem{index} Project, \emph{Direct polynomial testing on elliptic indices}, v111, \url{https://github.com/JoseBrox/diophantine-z-q_improvements/blob/main/undecidability/direct_index_transfer_v111/README.md}.
+\bibitem{v124} Project, \emph{Continuation v124: exact normalized moments}, \url{https://github.com/JoseBrox/diophantine-z-q_improvements/blob/main/docs/results_20261124_v124.md}.
+\bibitem{ellheight} Project, \emph{Effective elliptic sums}, v10, \url{https://github.com/JoseBrox/diophantine-z-q_improvements/blob/main/papers/effective_sums/effective_elliptic_sums_20261108_v10.tex}.
+\bibitem{encoder} Project, \emph{One rational coordinate for a finite family of algebraic witnesses}, 23 November 2026, \url{https://github.com/JoseBrox/diophantine-z-q_improvements/blob/main/undecidability/papers/joint_finite_algebra_encoder.tex}.
+\bibitem{selective} Project, \emph{One selective pole for all integer inputs}, v110, \url{https://github.com/JoseBrox/diophantine-z-q_improvements/blob/main/undecidability/abc_selective_pole_v110/README.md}.
+\bibitem{bb} M. Bhargava and A. Burungale, arXiv:2611.16130v2, Lemma 2.2 and Theorem 2.3, \url{https://arxiv.org/abs/2611.16130v2}; application in the project's \emph{Product poles and lower degrees in the few-variable constructions}, v88, \url{https://github.com/JoseBrox/diophantine-z-q_improvements/blob/main/papers/few_variables25/bb_product_degree_transfer_20261123_v88.tex}.
+\end{thebibliography}
+\end{document}
