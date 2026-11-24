@@ -145,7 +145,7 @@ record all qualifications and historical tradeoffs.
 
 ## Direct Bhargava–Burungale pole without Route K (24 November 2026)
 
-An [audited eight-multiplier pole replacement](docs/bb_direct_route_k_replacement_20261124.md) combines Bhargava–Burungale v2, Lemma 2.2 with the project's previously proved degree-seven equation. It yields a **single integer polynomial of degree 56 in four total variables** (one input, three witnesses) with square-denominator soundness outside \(\{2,3,5,7\}\), and completeness for the original Route K prepared inputs. The coefficient identity, sample witness and residue selection have an [independent exact checker](scripts/verify_bb_direct_route_k_20261124.py). This is a **standalone pole predicate**, not a four-variable definition of the integers or a new global quartic count. Replacing the historical Route K consumers in Lean and the global compiler remains a separate migration.
+An [audited eight-multiplier pole replacement](docs/bb_direct_route_k_replacement_20261124.md) combines Bhargava–Burungale v2, Lemma 2.2 with the project's previously proved degree-seven equation. It yields a **single integer polynomial of degree 56 in four total variables** (one input, three witnesses) with square-denominator soundness outside \(\{2,3,5\}\), and completeness for the original Route K prepared inputs. The coefficient identity, sample witness and residue selection have an [independent exact checker](scripts/verify_bb_direct_route_k_20261124.py). This is a **standalone pole predicate**, not a four-variable definition of the integers or a new global quartic count. Replacing the historical Route K consumers in Lean and the global compiler remains a separate migration.
 
 ## Coefficients and explicit files
 
