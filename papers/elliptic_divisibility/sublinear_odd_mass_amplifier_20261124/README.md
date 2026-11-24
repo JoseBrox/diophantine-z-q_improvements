@@ -23,7 +23,7 @@ for some fixed \(d\ge1,\eta>0,C_0>0\) and threshold \(c_0\). The constants may b
 
 **Theorem.** Under (OM) and the corresponding original arithmetic premises, the Lucas-free constructions give **19 and 21 total rational coordinates**, respectively for the two-scale and three-scale routes. The coefficient threshold for the three-scale route is effective relative to valid effective data \(d,\eta,C_0,c_0\) for (OM) and the retained explicit height constants. No extra free coordinate is needed to increase the scalar precision.
 
-We do not establish (OM) from the original modular and prime-pattern premises, nor assert it is logically independent of them. It remains an additional condition. Since \(d=1\) already follows from the previously proved weak-abc duplication mass at exponent below \(3/2\) over \(K\), the present theorem is a strictly weaker **sufficient target**, not a new no-additional-abc theorem.
+We do not establish (OM) from the original modular and prime-pattern premises, nor assert it is logically independent of them. It remains an additional condition. Since \(d=1\) already follows from the previously proved weak-abc duplication mass at exponent below \(3/2\) over \(K\), the present theorem is a weaker **sufficient target**, not a new no-additional-abc theorem.
 
 ## 2. One weight for any fixed bounded odd depth
 
@@ -135,3 +135,6 @@ All the new operations are rational functions of the same existing point charts 
 for \(k_{\mathrm{scales}}=2,3\). The symbol \(k\) used for the scalar precision is not the number of comparison poles. No new ordinary coordinate appears, and no claim of a particular numerical degree ceiling or quartic transfer is made.
 
 This isolates a much weaker missing arithmetic statement: \(\liminf_{|c|\to\infty}\log(1+\mathcal M_d(c))/\log |c|>0\) for **some fixed** \(d\) suffices. A bound growing merely as a fixed power of \(\log|c|\), or just infinitude of non-Wieferich primes, would not give the exponent comparison in (4). The original retained modular height is polynomial in the *product* of odd contact primes and by itself supplies no such power lower bound on logarithmic denominator mass. Neither (OM) nor the quotient-size cap is proved under the original premises here.
+## Reproduction
+
+`python -B scripts/verify_sublinear_odd_mass_20261124.py` checks 39,360 component valuation profiles, 6,208 scalar precision inequalities, and rational examples of the strict exponent margins. The universally quantified inequalities are proved above. The checker does not establish (OM).
