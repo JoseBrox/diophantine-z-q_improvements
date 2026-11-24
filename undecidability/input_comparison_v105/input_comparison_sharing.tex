@@ -1,0 +1,273 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs,xurl,hyperref}
+\hypersetup{hidelinks}
+\setlength{\emergencystretch}{3em}
+\hyphenation{two}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newcommand{\Q}{\mathbb Q}
+\title{Sharing squared input comparisons in the complete quartic systems}
+\author{Z diophantine in Q project}
+\date{24 November 2026}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+A retained scalar square identity expresses each squared input
+comparison through two common field coefficients. The comparison
+field itself can then be removed from every ordinary integrality
+block. This saves 20 rational variables and quadratic equations in
+the general system and 16 in the specified system. Applied to the
+frozen v102 tables, it gives 948 variables and 803 equations, or
+1127 variables and 978 equations. Applied after the contact
+compression and BB-native pole replacement, it gives preferred
+complete systems with 943 variables and 798 equations, or 1124
+variables and 975 equations. The present change is an exact
+bijection of rational zero sets; it adds no arithmetic assumption.
+The 948/1127 construction is independently reconstructed, rather
+than recovered from the unavailable original files.
+\end{abstract}
+
+\section{The identity behind the saving}
+
+Work in $K=\Q(\sqrt2)$, so each field quantity has two rational
+components. Let $\rho,\epsilon$ be retained rational coordinates
+with the existing guard
+\begin{equation}\label{guard}
+                         \rho\epsilon=1.
+\end{equation}
+The fields $S,s$ below are already common to all the ordinary
+integer blocks. For each block $i$, the table contains rational
+coordinates $Y_i,P_i$ satisfying
+\begin{equation}\label{pair}
+ 2601Y_i^2+255102\epsilon Y_i+6255001\epsilon^2
+                                      -4\epsilon P_i=0.
+\end{equation}
+The literal row uses the existing square register $\epsilon_2$ in
+place of $\epsilon^2$; its retained guard is
+$\epsilon_2-\epsilon^2=0$, and the checker pins both guards.
+Its private input-comparison field $I_i$ is defined by
+\begin{equation}\label{input}
+ \epsilon I_i+\epsilon(2504s-S)+51sY_i=0.
+\end{equation}
+In every other occurrence $I_i$ appears only through its square,
+in the field equation
+\begin{equation}\label{square}
+                         \epsilon M_i+L_i-2I_i^2=0,
+\end{equation}
+where $L_i,M_i$ are other retained fields. This occurrence statement
+is checked against every row of each complete predecessor table.
+
+Introduce just two common fields $B,C$ by
+\begin{equation}\label{common}
+              \epsilon B=(S-3s)s,\qquad \epsilon C=s^2.
+\end{equation}
+Use the quadratic expression
+\begin{equation}\label{A}
+                         A=S^2-5008Ss+15015s^2;
+\end{equation}
+$A$ is not a new coordinate. Delete $I_i$ and its defining equation
+\eqref{input}, and replace \eqref{square} by
+\begin{equation}\label{replacement}
+           \epsilon M_i+L_i-2A+204BY_i-8CP_i=0.
+\end{equation}
+The two rational components of \eqref{replacement} are ordinary
+quadratic residuals, including after the expression \eqref{A}
+is expanded. The common definitions \eqref{common} are quadratic.
+
+\begin{lemma}\label{identity}
+Under \eqref{guard}--\eqref{common},
+\begin{equation}\label{evaluation}
+                          I_i^2=A-102BY_i+4CP_i.
+\end{equation}
+\end{lemma}
+\begin{proof}
+Let $w_i=51\rho Y_i+2501$. Equation \eqref{pair}, multiplied
+by $\rho^2$, is precisely $w_i^2=4\rho P_i$.
+Equation \eqref{input} becomes $I_i=(S-3s)-w_i s$. Therefore
+\begin{align*}
+ I_i^2
+  &=(S-3s)^2-2(2501+51\rho Y_i)(S-3s)s+4\rho P_i s^2\\
+  &=S^2-5008Ss+15015s^2-102BY_i+4CP_i.
+\end{align*}
+\end{proof}
+
+For an entirely polynomial certificate, suppress the subscript and
+put
+\[
+\begin{aligned}
+ a&=S-2504s,\qquad U=\epsilon I-\epsilon a+51sY,\\
+ R&=2601Y^2+255102\epsilon Y+6255001\epsilon^2-4\epsilon P,\\
+ U_B&=\epsilon B-(S-3s)s,\qquad U_C=\epsilon C-s^2.
+\end{aligned}
+\]
+With $A$ exactly as in \eqref{A}, the identity is
+\begin{equation}\label{polynomial}
+\begin{split}
+ \epsilon^2(I^2-A+102BY-4CP)
+   ={}&U(\epsilon I+\epsilon a-51sY)+s^2R\\
+     &+102\epsilon YU_B-4\epsilon PU_C.
+\end{split}
+\end{equation}
+The independent checker expands this in unrelated symbolic
+variables and obtains zero discrepancy. A field identity holds
+componentwise over $\Q$.
+
+\begin{theorem}[Exact reconstruction]\label{bijection}
+For $k$ ordinary blocks of the stated form, replacing their private
+comparison fields by \eqref{common} and \eqref{replacement} gives
+a bijection between the complete old and new rational zero sets.
+It saves $2k-4$ rational coordinates and $2k-4$ quadratic residuals.
+The only division in the maps is by the already nonzero $\epsilon$.
+\end{theorem}
+\begin{proof}
+From an old solution, define $B=(S-3s)s/\epsilon$ and
+$C=s^2/\epsilon$, and delete the $I_i$. Lemma~\ref{identity}
+gives every new row. Conversely, reconstruct uniquely
+\begin{equation}\label{recover}
+                   I_i=S-2504s-51\rho sY_i.
+\end{equation}
+The old input definition follows from \eqref{guard}. Identity
+\eqref{polynomial}, the retained pair relation, and the common
+definitions give \eqref{evaluation}; hence \eqref{replacement}
+recovers the old square row. No other row contains a deleted
+coordinate. The added fields and deleted fields are unique in
+both directions, so the maps are inverse.
+
+There is no nonzero requirement on $S,s,I_i,Y_i$, or $P_i$.
+In particular $P_i=0$, a vanishing comparison, or any allowed
+point-chart boundary is retained. The construction deletes $k$
+two-component fields and adds two such fields. It deletes $k$
+two-component definitions, replaces the same number of square
+equations one for one, and adds two two-component definitions.
+Both savings are consequently $2k-4$.
+\end{proof}
+
+\section{The exact tables and the reciprocal exception}
+
+The coordinate names in the complete tables of \cite{v102,v103,bb}
+use historical local indices, independent of their final positions.
+The common fields and gauges are
+\begin{center}
+\begin{tabular}{@{}lccc@{}}
+\toprule
+Interface & $S$ & $s$ & $(\rho,\epsilon)$\\
+\midrule
+General & \texttt{int\_b\_17:18} & \texttt{int\_b\_117:118}
+ & \texttt{int\_b\_159:160}\\
+Specified & \texttt{int\_b\_17:18} & \texttt{int\_b\_118:119}
+ & \texttt{int\_b\_162:163}\\
+\bottomrule
+\end{tabular}
+\end{center}
+Each pair denotes real and $\sqrt2$ components in that order.
+For every ordinary input label, the local dictionary is
+\begin{center}
+\begin{tabular}{@{}lccccc@{}}
+\toprule
+Quantity & $I_i$ & $Y_i$ & $P_i$ & $L_i$ & $M_i$\\
+\midrule
+Local index & $23:24$ & $37$ & $77$ & $46:47$ & $48:49$\\
+\bottomrule
+\end{tabular}
+\end{center}
+The retained scalar row is
+\texttt{integer.}\emph{label}\texttt{.scalar.rPair1.definition}.
+The deleted field definition is
+\texttt{integer.}\emph{label}\texttt{.input.cleared.0/1};
+the replaced square rows have the additional suffix
+\texttt{.square.0/1}.
+
+The general ordinary labels are
+\[
+ b,g,t,m,w,s,h,c,\gamma,j,\mathrm{power\_delta},\mathrm{power\_alpha},
+\]
+so $k=12$. The specified ordinary labels are the first ten, so
+$k=10$. Both systems also retain their one reciprocal integrality
+predicate. Its corresponding rows use \texttt{i\_inverse} in
+place of $\epsilon$ in \eqref{input} and \eqref{pair}, while the
+coefficient of $M_i$ in \eqref{square} still is $\epsilon$.
+We leave its two comparison coordinates and every one of its
+rows unchanged. No identification of these distinct gauges is
+used. The complete number of integer predicates remains thirteen
+or eleven.
+
+\section{Independent reconstruction and the preferred composition}
+
+The user reported earlier checked counts 948 and 1127. Those
+original files and commits were not recovered from the available
+workspace and repository history. The present construction
+independently recovers the reported counts by applying
+Theorem~\ref{bijection} to the pinned v102 endpoint tables. The
+separate preferred tables apply the same operation to the complete
+BB-native v104 tables, which already include the v103 contact
+denominator compression. The exact counts are
+\begin{center}
+\begin{tabular}{@{}llrrrr@{}}
+\toprule
+Stage & Interface & Old $N$ & New $N$ & Old rows & New rows\\
+\midrule
+Reconstructed v102 & General &968&948&823&803\\
+Reconstructed v102 & Specified &1143&1127&994&978\\
+Preferred v104 & General &963&943&818&798\\
+Preferred v104 & Specified &1140&1124&991&975\\
+\bottomrule
+\end{tabular}
+\end{center}
+The changed input rows and coordinates are disjoint from the
+contact-denominator and BB-native pole changes. The preferred
+tables keep every BB-native pole row and every contact-compression
+row, with only the required coordinate renumbering. The present
+bijection is with each specified predecessor. The earlier
+BB-native migration preserves the integer-input projection under
+its retained arithmetic premises; it does not claim a bijection
+with the old non-CM pole zero set.
+
+The compiler produces all four complete coefficient tables and
+their metadata certificates. The independent checker imports no
+compiler code. It derives field components by reduction modulo
+$z^2-2$, checks \eqref{polynomial} symbolically, pins the existing
+inverse-gauge guard and every retained scalar-pair row, and audits
+every occurrence of each deleted coordinate. It compares every
+retained row through named monomials, checking literal coefficients
+independently of renumbering. Its row totals are
+\begin{center}
+\begin{tabular}{@{}llrrrr@{}}
+\toprule
+Stage & Interface & Deleted & Replaced & Added & Unchanged\\
+\midrule
+Reconstructed & General &24&24&4&775\\
+Reconstructed & Specified &20&20&4&954\\
+Preferred & General &24&24&4&770\\
+Preferred & Specified &20&20&4&951\\
+\bottomrule
+\end{tabular}
+\end{center}
+It also verifies the complete variable support, coefficient
+rings, degree bounds, source metadata, inherited BB-native
+metadata, and SHA-256 file hashes. The sum of the squared
+residuals is a quartic with the stated number of variables and
+exactly the same rational zeros as its quadratic system.
+
+No height, prime supplier, common-point choice, pole realization,
+or integer-coding assertion is added by this reduction. The
+reconstructed v102 systems retain their old arithmetic premises;
+the preferred systems retain the BB-native premise set of
+\cite{bb}. These bounds remain above the requested quartic target
+263. The proven saving comes from sharing the square of a
+comparison rather than storing the comparison itself.
+
+\begin{thebibliography}{9}
+\bibitem{v102} \emph{Two retained endpoint powers replace two contact
+helpers}.
+\nolinkurl{undecidability/contact_endpoint_v102/contact_endpoint_reuse.tex}.
+\bibitem{v103} \emph{One polynomial denominator for a progression of
+contact equations}.
+\nolinkurl{undecidability/quadratic_reduction_v103/contact_denominator_compression.tex}.
+\bibitem{bb} \emph{Congruent-number poles in the complete combined
+quartic systems}.
+\nolinkurl{undecidability/quadratic_reduction_v104/bb_native_combined.tex}.
+\end{thebibliography}
+\end{document}
+
