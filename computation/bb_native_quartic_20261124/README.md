@@ -16,8 +16,8 @@ The original v82 tables remain unmodified and available for exact comparison.
 
 | Source | Total variables | Quadratic rows | Changed rows | Monomials | Degree | Content |
 |---|---:|---:|---:|---:|---:|---:|
-| \`quartic163\` | 163 | 137 | 9 | 2771 | 4 | 1 |
-| \`quartic179\` | 179 | 151 | 12 | 3012 | 4 | 1 |
+| `quartic163` | 163 | 137 | 9 | 2771 | 4 | 1 |
+| `quartic179` | 179 | 151 | 12 | 3012 | 4 | 1 |
 
 The three replaced rows in **each** pole block come from
 \[
@@ -40,8 +40,8 @@ each comparison input approaches \((204/409)^2<1\).
 At the additional fixed prime 7 the scalar input can be made integral
 by the same arbitrary-depth formal recurrence; each comparison
 input can be taken a 7-adic unit, as its limiting value is a unit.
-Then \(d=7b/9\) has square denominator and is a 7-adic-unit
-squareclass at 2, with valuation at least four, so BB gives rational
+Then \(d=7b/9\) has square denominator and lies in the 2-adic squareclass \(7\mathbb Q_2^{\times2}\),
+with 2-adic valuation at least four, so BB gives rational
 pole witnesses. The changed equations exclude negative odd
 denominator valuations at **every** prime other than 7 for arbitrary
 rational zeros, stronger than the previous fixed exceptional-prime
