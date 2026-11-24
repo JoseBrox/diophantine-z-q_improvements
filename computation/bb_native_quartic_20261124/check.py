@@ -10,7 +10,7 @@ from collections import defaultdict
 from fractions import Fraction
 from functools import reduce
 from itertools import product
-from math import gcd
+from math import gcd, isqrt
 from pathlib import Path
 import json
 
@@ -19,9 +19,9 @@ ROOT = HERE.parent.parent
 OLD = ROOT / "computation/variable_reductions_v82/general"
 
 TABLES = {
-    "first": {3: 289, -34: 0, -289: -289, 17: 7},
-    "middle": {17: 289, -1: -7, -17: -289},
-    "second": {1: 289, 34: 0, -867: -289, -17: -7},
+    "first": {3: 5, -34: 0, -289: -5, 17: 3},
+    "middle": {17: 5, -1: -3, -17: -5},
+    "second": {1: 5, 34: 0, -867: -5, -17: -3},
 }
 
 
@@ -90,24 +90,36 @@ def dict_of(row):
 
 
 def arithmetic_fixture():
-    d = Fraction(112, 841)
-    b = Fraction(4624, 841)
-    e, p, u, v, q = (Fraction(3, 4), Fraction(29, 16), Fraction(27, 29),
-                       Fraction(81, 116), Fraction(27, 16))
-    assert d == Fraction(7, 289) * b and 0 < b < 17
+    # An exact prepared positive input, including the extra p=5 condition.
+    # This fixture deliberately tests the permitted zero-ordinate branches.
+    t = Fraction(28001, 40001)
+    d = 1 - t*t
+    b = Fraction(5, 3)*d
+    e, p, u, v, q = Fraction(1), Fraction(0), t, t, Fraction(0)
+    assert 0 < b < 1 and d == Fraction(3, 5)*b
+    def vp(x, prime):
+        nn, dd, count = x.numerator, x.denominator, 0
+        while nn % prime == 0:
+            nn //= prime
+            count += 1
+        while dd % prime == 0:
+            dd //= prime
+            count -= 1
+        return count
+    assert vp(b, 2) == 6 and vp(b, 3) == 0 and vp(b, 5) == 4
+    assert isqrt(b.denominator)**2 == b.denominator
     assert e*e + d*p*p == 1
     assert u*v == e*(1-d)
     assert u*u-v*v == d*q*q
     sig = Fraction(3, 5)
     E, B, U, V = (sig*e, sig*b, sig*u, sig*v)
     P2, Q2 = sig*p*p, sig*q*q
-    assert 289*E*E - 289*sig*sig + 7*B*P2 == 0
-    assert 289*U*V - 289*E*sig + 7*E*B == 0
-    assert 289*U*U - 289*V*V - 7*B*Q2 == 0
-    # The original equations are not tautologically equivalent to these.
+    assert 5*E*E - 5*sig*sig + 3*B*P2 == 0
+    assert 5*U*V - 5*E*sig + 3*E*B == 0
+    assert 5*U*U - 5*V*V - 3*B*Q2 == 0
+    # The older non-CM pole is a different predicate, not equivalent by algebra.
     assert 3*e*e-34*e-289+17*b*p*p != 0
     return str(b)
-
 
 def check(n):
     source = json.loads((OLD / f"source{n}.json").read_text())
