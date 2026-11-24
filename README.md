@@ -49,18 +49,18 @@ The [results JSON](data/results_20261123_v88.json) records all five new finite-a
 
 The [undecidability category](undecidability/README.md) counts existential
 rational unknowns; the integer instance is encoded in coefficients.
-The [v145–v146 continuation](docs/results_20261124_v146.md) gives the current bounds, uniform quartic compilers and eight-certificate source, with the [current frontier ledger](undecidability/frontier_20261124_v146.json).
+The [v147–v148 continuation](docs/results_20261124_v148.md) gives the current bounds, uniform quartic compilers and eight-certificate source, with the [current frontier ledger](undecidability/frontier_20261124_v148.json).
 
 | Degree restriction | Additional height hypothesis | Rational unknowns | Status |
 |:--|:--|--:|:--|
 | Unrestricted degree | No additional abc hypothesis | **48** | Direct-index transfer with the accepted ten-integer source; retained modular, trace-height and other arithmetic inputs |
 | Unrestricted degree, specified source | No additional abc hypothesis | **50** | Algorithmically specified direct-index transfer with the accepted ten-integer source; retained full-family modular and abscissa-sum inputs |
 | Unrestricted degree | Ordinary rational abc | **36** | One selective derivative pole and finite-algebra encoding; retained arithmetic premises |
-| Quartic transfer | No additional abc hypothesis | **566** | Sparse quadratic radix packing and coupled private comparisons; 501 residuals; 8 integer predicates |
-| Quartic transfer, specified source | No additional abc hypothesis | **584** | Sparse quadratic radix packing and coupled private comparisons; effective parameter recipe; 517 residuals; 8 integer predicates |
-| Quartic transfer | Ordinary rational abc | **291** | Scaled unit selector; 240 residuals; 12 integer predicates |
+| Quartic transfer | No additional abc hypothesis | **527** | Sparse packing and selective common numerator; 476 residuals; 8 integer predicates |
+| Quartic transfer, specified source | No additional abc hypothesis | **560** | Sparse packing and selective common numerator; effective parameter recipe; 507 residuals; 8 integer predicates |
+| Quartic transfer | Ordinary rational abc | **290** | Coupled weighted moment; 239 residuals; 12 integer predicates |
 
-The [v145 sparse radix](undecidability/sparse_radix_v145/README.md) and [v146 coupled private tests](undecidability/coupled_comparison_v146/README.md) further reduce the preferred counts to 566/584; the [scaled unit selector](undecidability/abc_scaled_unit_v145/README.md) gives 291 under ordinary rational abc. Joint small/third Pell replacement is not yet established.
+The [v145 sparse radix](undecidability/sparse_radix_v145/README.md) and [v146 coupled private tests](undecidability/coupled_comparison_v146/README.md) further reduce the preferred counts to 566/584; the [scaled unit selector](undecidability/abc_scaled_unit_v145/README.md) gives 291 under ordinary rational abc. The [selective common numerator](undecidability/selective_common_numerator_v147/README.md) gives 527/560, and the [coupled abc moment](undecidability/abc_coupled_moment_v148/README.md) gives 290. The [shared Pell core](undecidability/shared_pell_core_v148/README.md) proves joint quotient recovery on integral ordinates; the full rational replacement remains open.
 
 The [eight-certificate packed source](undecidability/packed_quadrics_v142/README.md) gives 619/639 variables without dense quartic expansion; the [reduced reference and Lucas amplifier](undecidability/packed_lucas_v143/README.md) then give 612/632. These are uniform instance compilers with algebraic coefficient fixtures, not a numerically instantiated nonrecursive set. The [certificate-deletion obstruction](undecidability/eight_source_obstruction_v144/README.md) constructs false witnesses for bare deletion of h, j or i_half; six/seven-certificate replacements remain open. The [ten-certificate alternatives](undecidability/ten_certificate_v132/README.md) are retained historically. The [direct-index anchor refinement](undecidability/direct_index_anchor_v129/README.md) replaces large contact-shift powers by linear shifts without changing the 48/50 counts.
 
