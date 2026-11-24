@@ -1,5 +1,9 @@
 # Attribution and source material
 
+## Pasten–Vidaux function-field preprint and 24 November continuation
+
+**Hector Pasten and Xavier Vidaux, Diophantine sets over global function fields, arXiv:2611.31218v1 (23 November 2026)**, [versioned primary text](https://arxiv.org/html/2611.31218v1), supplies the characteristic-p Pheidas predicate, rational-subfield and polynomial-ring descent, and isotrivial simultaneous two-isogeny argument. Its arithmetic precursor is their arXiv:2611.24748v1. The [section-by-section audit](docs/pasten_vidaux_function_fields_audit_20261124.md) distinguishes the authors' statements from the project's completed local table, conjugate-discriminant Chebotarev improvement, torsion-supported approximation, selective rationality transfer, ambient-field height and contact argument, and conditional original-carrier rank alternative. No third-party source bytes or theorem beyond their cited scope are claimed as original project work. The auxiliary rank-stability input of Zywina, the v110 rational index and prime-pattern inputs, and Bhargava–Burungale's prepared-pole theorem retain their previous attribution and precise hypotheses.
+
 ## Bhargava–Burungale v2 and the v88 continuation
 
 The primary source is **Manjul Bhargava and Ashay Burungale, A Diophantine
