@@ -49,16 +49,18 @@ The [results JSON](data/results_20261123_v88.json) records all five new finite-a
 
 The [undecidability category](undecidability/README.md) counts existential
 rational unknowns; the integer instance is encoded in coefficients.
-The [v147–v148 continuation](docs/results_20261124_v148.md) gives the current bounds, uniform quartic compilers and eight-certificate source, with the [current frontier ledger](undecidability/frontier_20261124_v148.json).
+The [v149–v150 continuation](docs/results_20261125_v150.md) gives the current bounds, uniform quartic compilers and eight-certificate source, with the [current frontier ledger](undecidability/frontier_20261125_v150.json).
 
 | Degree restriction | Additional height hypothesis | Rational unknowns | Status |
 |:--|:--|--:|:--|
 | Unrestricted degree | No additional abc hypothesis | **48** | Direct-index transfer with the accepted ten-integer source; retained modular, trace-height and other arithmetic inputs |
 | Unrestricted degree, specified source | No additional abc hypothesis | **50** | Algorithmically specified direct-index transfer with the accepted ten-integer source; retained full-family modular and abscissa-sum inputs |
 | Unrestricted degree | Ordinary rational abc | **36** | One selective derivative pole and finite-algebra encoding; retained arithmetic premises |
-| Quartic transfer | No additional abc hypothesis | **527** | Sparse packing and selective common numerator; 476 residuals; 8 integer predicates |
-| Quartic transfer, specified source | No additional abc hypothesis | **560** | Sparse packing and selective common numerator; effective parameter recipe; 507 residuals; 8 integer predicates |
+| Quartic transfer | No additional abc hypothesis | **510** | Sparse packing, fractional-linear scalar recursion and reciprocal interpolation; 459 residuals; 8 integer predicates |
+| Quartic transfer, specified source | No additional abc hypothesis | **542** | Sparse packing, fractional-linear scalar recursion and reciprocal interpolation; effective parameter recipe; 489 residuals; 8 integer predicates |
 | Quartic transfer | Ordinary rational abc | **290** | Coupled weighted moment; 239 residuals; 12 integer predicates |
+
+The [fractional-linear scalar recursion](undecidability/fractional_linear_scalar_v149/README.md) gives 519/552. The [reciprocal interpolation and contact gate](undecidability/reciprocal_interpolation_v150/README.md) gives the preferred 510/542, with eight certified integers and unchanged arithmetic premises. The [shifted shared Pell rounding theorem](undecidability/shared_pell_rounding_v150/README.md) establishes signed binomial equivalence conditional on integral small and third ordinates; a seven-certificate rational construction remains open.
 
 The [v145 sparse radix](undecidability/sparse_radix_v145/README.md) and [v146 coupled private tests](undecidability/coupled_comparison_v146/README.md) further reduce the preferred counts to 566/584; the [scaled unit selector](undecidability/abc_scaled_unit_v145/README.md) gives 291 under ordinary rational abc. The [selective common numerator](undecidability/selective_common_numerator_v147/README.md) gives 527/560, and the [coupled abc moment](undecidability/abc_coupled_moment_v148/README.md) gives 290. The [shared Pell core](undecidability/shared_pell_core_v148/README.md) proves joint quotient recovery on integral ordinates; the full rational replacement remains open.
 
