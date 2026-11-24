@@ -43,6 +43,8 @@ The [results JSON](data/results_20261123_v88.json) records all five new finite-a
 
 ## Fewest variables currently recorded for undecidability
 
+**Corrected research targets (24 November 2026):** quartic **163 / 178 / 54**, unrestricted degree **25 / 27 / 11**, in general / specified / ordinary-abc order. See [target clarification](undecidability/research_targets_20261124.md). These are goals, not established bounds. The earlier 263 target was a mistaken prospective target.
+
 The [undecidability category](undecidability/README.md) counts existential
 rational unknowns; the integer instance is encoded in coefficients.
 The [v128 continuation](docs/results_20261124_v128.md) gives the current bounds and complete quartic tables, with the [current frontier ledger](undecidability/frontier_20261124_v128.json).
@@ -67,7 +69,7 @@ coordinate and shared-contact changes. Their native pole realizations use
 Bhargava–Burungale directly, including the [twelve abc poles](undecidability/abc_bb_native_v107/README.md).
 The reported 948/1127 stage has been independently reconstructed; the original
 reported 649 artifact remains unlocated. The [integrated verification receipt](undecidability/certificates/verification_v108.json)
-records the exact tables and their limits. The target near 263 is still open.
+records the exact tables and their limits. The historical target of 263 has been corrected to the targets above.
 
 **Proof trail for the 82 / 100 / 52 unrestricted-degree results:** the [common-numerator theorem](undecidability/papers/common_numerator_transfers.tex) first gives 83 / 101 / 53 unknowns; the [finite-wrapper theorem](undecidability/papers/finite_wrapper_transfer.tex) absorbs one coordinate into a rank-sixteen finite algebra, giving 82 / 100 / 52; the [paired-spectral theorem](undecidability/papers/paired_spectral_encoder.tex) gives the strict degree ceilings in the table without changing these counts. The exact [finite-wrapper certificate](undecidability/certificates/finite_wrapper_transfer.json), [paired-spectral degree certificate](undecidability/alternative_v93/certificate.json), [results registry](undecidability/results.json), and independent [v90](scripts/verify_v90.py) and [v93](scripts/verify_v93.py) verification scripts record the counts, source hashes, and degree arithmetic. These are transfer theorems *under the retained arithmetic premises*; the gigantic determinant polynomials are specified but not expanded, and no global minimality is asserted.
 

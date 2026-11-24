@@ -1,5 +1,8 @@
 # Variable bounds for undecidability over the rationals
 
+
+**Corrected research targets (24 November 2026):** quartic **163 / 178 / 54**, unrestricted degree **25 / 27 / 11**, in general / specified / ordinary-abc order. See [target clarification](research_targets_20261124.md). These are goals, not established bounds. The earlier 263 target was a mistaken prospective target.
+
 Here `N` counts existential rational unknowns in a decision problem. The
 integer input specifying an instance occurs in its coefficients and is not
 counted. This is a separate objective from minimizing the total coordinates
@@ -162,7 +165,7 @@ The [abc pole audit](abc_bb_native_v107/README.md) also supplies all twelve
 remaining native CM poles directly from Bhargava–Burungale, without changing
 the table. Other arithmetic interfaces and the external coding theorem remain.
 
-The target near **263** remains open. The
+The earlier prospective target near 263 has been superseded by the corrected target ledger. The
 [second-quotient counterexample](pell_quotient_obstruction_v109/README.md)
 isolates the missing c-square divisibility; it is a subsystem counterexample,
 not a full-source one. A [three-power outer compiler](unary_outer_checkpoint_v109/README.md)
