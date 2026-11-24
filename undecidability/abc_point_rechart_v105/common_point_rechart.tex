@@ -1,0 +1,306 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,booktabs,hyperref,xurl,microtype}
+\setlength{\emergencystretch}{3em}
+\hypersetup{hidelinks}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\newcommand{\re}{\operatorname{re}}
+\title{Sharing the physical numerator chart\\in the ordinary-abc quartic transfer}
+\author{\(\Z\Q\) Diophantine Project}
+\date{24 November 2026}
+\begin{document}\maketitle
+
+\begin{abstract}
+After sharing a physical numerator point and compressing reciprocal
+products, its whole point chart can also be shared. Two field quadrics
+describe each private point relative to the common numerator: the former
+scale equation follows from an exact polynomial identity. One common
+reference quotient removes the need for private scaled reciprocal
+abscissas. The resulting presentation has 656 rational coordinates and
+575 quadratic residuals, down from the explicit 674/593 predecessor.
+Every new rational zero lifts polynomially to that complete predecessor,
+even at zero values of the distinguished inputs. Completeness uses the
+previously proved common-numerator arithmetic construction. All its
+retained arithmetic premises, ordinary rational abc, and ineffective
+defining coefficient remain unchanged.
+\end{abstract}
+
+\section{Scope and statement}
+
+We start with the complete odd-Pell table of~\cite{odd}, incorporating
+the common physical numerator theorem of~\cite{common}. The latter
+uses the ordinary-abc integer interface of~\cite{paired}, the translated
+secants of~\cite{secant}, and the arithmetic assertions retained there.
+In particular the elliptic group, comparison, trace-index, prime-pattern,
+local preparation, real recurrence and pole-realization assertions are
+still premises. The sufficient odd positive coefficient remains
+ineffective. This note is an algebraic refinement of that conditional
+transfer; it supplies no new unconditional undecidability theorem over
+\(\Q\).
+
+\begin{theorem}\label{thm:main}
+Under exactly the premises of~\cite{common}, its simultaneous ordinary-abc
+integer interface admits a presentation with
+\[
+                44k+22\quad\text{rational coordinates},\qquad
+                39k+17\quad\text{quadratic residuals}.
+\]
+The coordinates include the \(k\) distinguished inputs. Every rational
+zero has integral inputs, and every tuple of nonzero integers has a
+rational witness. Applied to the thirteen certified inputs of the
+odd-Pell source~\cite{odd}, this gives a complete table with 656 rational
+unknowns and 575 quadratic residuals. Its instance projection agrees
+with that of the complete 674-variable predecessor.
+\end{theorem}
+
+The source instance is a coefficient, not another unknown. The source's
+canonical positive witnesses, including its new odd-Pell half-quotient,
+satisfy the nonzero-input condition needed for completeness. Soundness
+does not assume that condition. The externally cited Jones coding
+theorem remains required; no universality assumption for the historically
+emended source is added.
+
+\section{The two-equation private point chart}
+
+Put
+\[
+ K=\Q(\rho),\qquad \rho^2=2,\qquad \Delta=11-6\rho,
+ \qquad E:y^2=x^3-\Delta x.
+\]
+Every field coordinate means two rational coordinates in the basis
+\(1,\rho\); \(\re(a+b\rho)=a\), and a bar denotes conjugation.
+Write \(f(Q)=1/x(Q)\) and \(S_Q=y(Q)/x(Q)\). For the common physical
+numerator \(U\), retain fields \(S=S_U\) and \(F=f(U)\). Its curve
+equation is
+\begin{equation}\label{eq:C}
+                    C:=FS^2+\Delta F^2-1=0.
+\end{equation}
+For a private point \(V\), retain \(t=S_V\), \(G=f(V)\), and the
+translated-secant field \(h\). Set \(\pi=h+S+t\) and impose
+\begin{equation}\label{eq:AB}
+ A:=\pi F-Gh=0,\qquad
+ B:=\Delta(F+G)-(S-t)h+t^2=0.
+\end{equation}
+
+\begin{lemma}\label{lem:chart}
+Equations~\eqref{eq:C}--\eqref{eq:AB} recover the full unscaled
+translated-secant chart. In particular both reciprocal abscissas are
+nonzero, the two points are distinct, and its difference output is
+\(h\pi=x(U-V)\). No nonzero ordinate, chord parameter, or difference
+abscissa is assumed.
+\end{lemma}
+\begin{proof}
+The following identities hold as polynomials over \(K\):
+\begin{align}
+ Gh(S-t)-\Delta FG-1
+   &=C-FB-(S-t)A, \label{eq:scale}\\
+ Gt^2+\Delta G^2-1-C
+   &=(G-F)B-(S-t)A. \label{eq:privatecurve}
+\end{align}
+Thus setting \(d=Gh\) gives all four original field equations
+\[
+ d=\pi F,\quad d=Gh,\quad
+ \Delta(F+G)=(S-t)h-t^2,\quad
+ 1=d(S-t)-\Delta FG.
+\]
+The curve identities give \(F,G\ne0\). If \(F=G\) and \(S=t\),
+then \(A=0\) gives \(S=0\), and \(B=0\) gives \(2\Delta F=0\),
+a contradiction. The geometric interpretation, including tangent and
+two-torsion fibers, now follows from the original secant chart
+\cite[Proposition 2.1]{secant}.
+
+For completeness, the inverse formulas are
+\[
+ h=\frac{(S+t)F}{G-F}\quad(G\ne F),\qquad
+ h=\frac{\Delta(F+G)+t^2}{S-t}\quad(S\ne t).
+\]
+The curve identities make them agree on the overlap, and the two opens
+cover all allowed distinct points. This also shows directly why an
+individual zero ordinate creates no missing case.
+\end{proof}
+
+The common cubic equation~\eqref{eq:C} is kept quadratic by a shared
+field \(S_2=S^2\): impose \(S_2-S^2=0\) and
+\(FS_2+\Delta F^2-1=0\). Because these fields are shared, their cost
+is independent of the number of inputs.
+
+\section{The complete quadratic substitution}
+
+Let \(X_i\) be the distinguished input. The predecessor retains
+\(X_{2,i}=X_i^2\), \(X_{4,i}=X_{2,i}^2\), and scalar chart units
+\(c_i\epsilon_i=1\). Its shared reference fields are
+\[
+ R=S_H,\quad T=S_{H-R_0},\quad v=v_H,
+ \qquad R_0=(1+\rho,2\rho).
+\]
+The other reference elements are affine expressions
+\[
+ u=(\rho-1)(v-(4-2\rho)-R),\qquad
+ w=(\rho-1)(v-(4-2\rho)+T).
+\]
+The retained reference chart makes \(u,w,v\) nonzero. Previously shared
+fields \(J=f(H)f(U)\) and \(K=J^2\) remain, including the two
+component equations for \(K-J^2\). Introduce a common reference
+quotient \(\sigma\), a common product \(S_R\), and impose
+\begin{equation}\label{eq:common}
+       uF=vJ,\qquad w\sigma=v,\qquad S_R=SR.
+\end{equation}
+Together with the two field equations involving \(S_2\), these are
+ten rational quadratic residuals.
+
+For input \(i\), retain private fields \(t_i,G_i,h_i\), a scalar
+\(q_i\), and a scalar \(\omega_i\), with
+\begin{align}
+ A_i&=B_i=0, &
+ q_i&=\re\bigl(h_i(h_i+S+t_i)\bigr), \label{eq:private}\\
+ a_i^{\rm old}&=X_{2,i}q_i, &
+ t_i^{\rm old}&=X_it_i, &
+ \omega_i&=c_iX_{2,i}. \label{eq:scaleout}
+\end{align}
+Here \(a_i^{\rm old}\) is the retained half-trace coordinate and
+\(t_i^{\rm old}\) is the retained input-scaled ordinate-ratio field.
+The reciprocal compression of~\cite{common} retained one private field
+\(L_i\). Its second product relation becomes
+\begin{equation}\label{eq:reciprocal}
+                    \sigma\overline{L_i}=\omega_iG_i.
+\end{equation}
+These are eleven rational quadratic residuals per block. Keeping
+\(\omega_i\) scalar costs one rational coordinate; retaining a scaled
+field \(c_iX_i^2G_i\) would instead cost two.
+
+If \(P_i,Q_i\) are the predecessor's two comparison fields, replace
+its first comparison equation by
+\begin{equation}\label{eq:comparison}
+        2(X_{2,i}S_2-2X_iS_R+R^2)-P_i-c_iQ_i=0.
+\end{equation}
+This still consists of two rational quadrics. Its second comparison
+equation is unchanged, using the retained \(t_i^{\rm old}\). All
+height, contact, detector, pole, power-coding and source rows not
+explicitly listed here remain literally unchanged after reindexing.
+
+\section{Polynomial soundness, including zero inputs}
+
+\begin{lemma}\label{lem:lift}
+Every rational zero of the new table extends to a zero of the complete
+674-variable predecessor, with exactly the same distinguished inputs
+and source instance. No division by any \(X_i\) is required.
+\end{lemma}
+\begin{proof}
+For each deleted coordinate use
+\begin{align*}
+ s_i^{\rm old}&=X_iS,& F_i^{\rm old}&=X_{2,i}F,&
+ G_i^{\rm old}&=\omega_iG_i,\\
+ h_i^{\rm old}&=X_ih_i,&
+ d_i^{\rm old}&=\omega_iX_iG_ih_i,&
+ E^{\rm old}&=vJ.
+\end{align*}
+These are polynomial expressions. Equations~\eqref{eq:scaleout}
+also give the required already-retained scaled point and half-trace
+coordinates. Use the retained equations \(X_{2,i}=X_i^2\),
+\(X_{4,i}=X_i^4\), and \(c_i\epsilon_i=1\).
+The old pair first-product, second-product, and secant residuals become,
+respectively, \(X_i^3A_i\), zero, and \(-X_i^2B_i\). The old scale
+residual becomes
+\[
+ c_iX_i^4\bigl(C-FB_i-(S-t_i)A_i\bigr)=0
+\]
+by~\eqref{eq:scale}. The half-trace residual is
+\(X_i^2\bigl(q_i-\re(h_i(h_i+S+t_i))\bigr)=0\).
+
+The first reciprocal-product residual is \(X_i^2(uF-vJ)=0\).
+For the second, the exact identity
+\begin{align*}
+ v\overline{L_i}-w\omega_iG_i
+  &=w(\sigma\overline{L_i}-\omega_iG_i)
+        -(w\sigma-v)\overline{L_i}
+\end{align*}
+uses only the new rows. Finally \(S_2=S^2\), \(S_R=SR\) and
+\(X_{2,i}=X_i^2\) identify~\eqref{eq:comparison} with
+\(2(s_i^{\rm old}-R)^2-P_i-c_iQ_i=0\). The removed definition of
+\(E\) holds by construction. Every remaining predecessor row is
+unchanged and contains no deleted coordinate.
+
+In particular these identities still hold when \(X_i=0\). They
+give soundness on every new rational fiber, regardless of whether
+the new restrictions admit witnesses for every zero-input tuple.
+\end{proof}
+
+\section{Completeness, counts and certificates}
+
+For a nonzero integer tuple, the common-numerator theorem
+\cite[Lemma 3]{common} chooses one physical \(U\), one reference
+\(H\), and private \(V_i=U-[X_i]R_0\), with all required comparison
+prime, fixed-place, real, contact and pole conditions. That theorem
+uses the full all-sign order congruences and arbitrarily accurate local
+approximation. We do not add any extra simultaneous arithmetic
+constraint. Choose \(S,F,t_i,G_i,h_i\) from these points by
+Lemma~\ref{lem:chart}, set \(\sigma=v/w\), \(S_2=S^2\),
+\(S_R=SR\), \(q_i=\re(h_i(h_i+S+t_i))\) and
+\(\omega_i=c_iX_i^2\). The old reciprocal relation, divided by
+the reference unit \(w\), gives~\eqref{eq:reciprocal}. All new
+equations hold. The pole arguments and values used for completeness
+are exactly those in~\cite{common}.
+
+In the tuple presentation, replace ten old rational point coordinates
+per input by eight new private coordinates. Remove the two coordinates
+of \(E\), and add the ten coordinates of \(S,F,S_2,S_R,\sigma\).
+Starting from \(46k+14\) coordinates this gives
+\[
+       (46k+14)-10k-2+8k+10=44k+22.
+\]
+Thirteen old rows per block are replaced by eleven; two comparison
+rows per block are changed but not added. The two old \(E\)-definition
+rows are replaced by ten common rows. Thus the row count is
+\[
+                   (41k+9)-2k-2+10=39k+17.
+\]
+For thirteen inputs the saving is eighteen coordinates and eighteen
+rows. Starting from the odd-Pell 674/593 table gives 656/575. This
+proves Theorem~\ref{thm:main}. Completeness reselects elliptic
+witnesses; it is not a bijection on arbitrary predecessor auxiliary
+tuples.
+
+Every residual has total degree at most two in the unknowns, with
+integer polynomial coefficients in the retained parameters. The sum
+of their squares has degree exactly four: the unchanged input-square
+residual has a nonzero quadratic part, and squares of rational leading
+quadratic forms cannot cancel.
+
+The deterministic builder and independent checker are supplied in
+this directory. Run from the repository root:
+\begin{center}\small
+\texttt{python -B}\enspace\nolinkurl{undecidability/abc_point_rechart_v105/build_point_rechart.py}\\
+\texttt{python -B}\enspace\nolinkurl{undecidability/abc_point_rechart_v105/verify_point_rechart.py}.
+\end{center}
+The independent checker imports no builder. It interprets 197 old
+rows, verifies 179 new or changed rows and 396 unchanged rows, audits
+every occurrence of all 132 removed coordinates, and checks the eight
+universal field identities used in the lift. It also verifies degree,
+coefficient domain, full coordinate support, counts and hashes. These
+finite checks certify the algebraic presentation and its reconstruction,
+not the retained arithmetic premises or a numerical defining parameter.
+
+\small
+\begin{thebibliography}{9}\raggedright
+\setlength{\itemsep}{2pt}
+\bibitem{odd} \(\Z\Q\) Diophantine Project,
+\emph{An odd second-Pell quotient removes one inverse}, 24 November 2026,
+\nolinkurl{undecidability/odd_pell_quotient_v104/odd_pell_quotient.tex};
+complete predecessor
+\nolinkurl{undecidability/odd_pell_quotient_v104/odd_quotient_abc_quadrics.json}.
+\bibitem{common} Project, \emph{A common numerator compresses reciprocal
+products in the ordinary-abc quartic transfer}, 24 November 2026,
+\nolinkurl{undecidability/abc_common_numerator_v103/common_numerator.tex}.
+\bibitem{paired} Project, \emph{Paired contact coordinates: an ordinary-abc
+quartic in 56 variables}, 19 November 2026,
+\nolinkurl{papers/quartic_existence/paired_contact56_20261119_v81.tex}.
+The paired chart and Laurent packing derive from Gabe Conant's notes
+with Astra 6.2, audited in v78.
+\bibitem{secant} Project, \emph{A quartic in 68 variables from translated
+secants}, 17 November 2026,
+\nolinkurl{papers/quartic_existence/quartic_abc68_20261117_v65.tex}.
+\end{thebibliography}
+\end{document}
