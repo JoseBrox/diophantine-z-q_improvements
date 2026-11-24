@@ -1,0 +1,346 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs,xurl,hyperref}
+\hypersetup{hidelinks}
+\setlength{\emergencystretch}{3em}
+\hyphenation{two}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newcommand{\Q}{\mathbb Q}\newcommand{\Z}{\mathbb Z}
+\title{Removing the c-integer predicate from the combined quartics}
+\author{Z diophantine in Q project}
+\date{24 November 2026}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+The proved half-trace integrality theorem replaces one complete
+integer predicate in each of the current general and specified
+quadratic systems. After preserving the outer source's square
+relations and updating the actual shared contact sum, the complete
+systems have 887 variables and 750 quadratic equations, or 1052
+variables and 913 equations. These improve the 943/798 and
+1124/975 predecessors by 56 and 72 variables. The general system
+restores one half-trace square; the specified system already
+retains it. All remaining poles keep their BB-native interpretation.
+The equivalence concerns the coded-instance projection under the
+retained arithmetic interfaces. It is not a bijection of complete
+auxiliary zero sets.
+\end{abstract}
+
+\section{The arithmetic replacement and its order of use}
+
+We use the proved theorem in \cite{replacement}, including its
+signed rational Pell classification. Its exact statement is:
+\begin{theorem}[Half-trace integrality]\label{arithmetic}
+Suppose $a\in3\Z$, $c,d,\zeta\in\Q$, and
+\[
+ d^2-(a^2-1)c^2=1,\qquad
+ T=d-(a-2)c\in\Z,\qquad
+ \zeta^2=2\bigl(ad+(a^2-1)c+1\bigr).
+\]
+Then $c,d\in\Z$. The assertion includes $a=0$.
+\end{theorem}
+
+For completeness, the denominator mechanism is as follows. Set
+$D=4a-5$ and $L_a=2a^2-2a-1$. Substitution of
+$d=(a-2)c+T$ gives
+\[
+ (Dc-(a-2)T)^2=(a^2-1)T^2-D.
+\]
+Its right side is integral. A rational square root of an integer
+is integral, so $Dc\in\Z$. If $N$ is the positive reduced
+denominator of $c$, then $N\mid|D|$. Since
+\[
+                 8L_a+3=D(4a+1)
+\]
+and $3\mid a$, one has $\gcd(2L_a,N)=1$. The half-trace square
+is $2L_a c+2aT+2$, whose reduced denominator is therefore
+exactly $N$. It follows that $N$ is a square.
+
+The rational Pell classification in \cite{replacement} now excludes
+every nonintegral orbit. For $a\ge3$ divisible by three, a
+nonintegral orbit has exact denominator $4a-5\equiv3\pmod4$.
+For $a=-A\le-3$ with $3\mid A$, it has exact denominator
+$4A+5\equiv2\pmod3$; the additional seed orbit requires $4A+5$
+to be a square and is unavailable. At $a=0$, the only
+nonintegral denominator is five. Thus none has square denominator.
+This uses the proved classification, not a finite search over Pell
+solutions.
+
+\subsection{The source gives the hypotheses before c is certified}
+
+The retained preliminary source reconstruction yields integral
+$q,S_0,T_0,w,s,b,\gamma$ without using $c\in\Z$.
+For the general route this is the preliminary auxiliary-power and
+prefix argument of \cite[Section~2]{signed}; for the specified
+route $q$ is given by the retained explicit integer power circuit.
+The literal source equations give
+\[
+ n=q^{16},\quad M=n^2=q^{32},\quad
+ r=S_0(M-n)+T_0(M-1),\quad
+ a=(wM+1)rsM.
+\]
+Modulo three, either $M\equiv0$, or $M\equiv n\equiv1$.
+In the latter case $r\equiv0$. Hence $3\mid Mr$ and $3\mid a$,
+before a final identity for the power or a first-Pell index is used.
+
+The retained linear row is
+\[
+                    d=(a-2)c+bw+(4a-5)\gamma,
+\]
+so its shifted trace is integral. The source already stores
+$A_c=ac$. The quadratic half-trace row is
+\begin{equation}\label{half}
+             \zeta^2-2ad-2aA_c+2c-2=0.
+\end{equation}
+It is named \texttt{jones1980.pell\_positive\_root}, and its
+coordinate is \texttt{pell\_d\_positive\_square}.
+The general predecessor had removed this row in v101.
+The specified predecessor still contains both the row and coordinate.
+Thus only the general system needs to add them back.
+
+Theorem~\ref{arithmetic} now proves $c,d\in\Z$ before any later
+use of integral first-Pell classification. In particular the
+zero case $a=0$ is handled before the source excludes $s=0$.
+This avoids assuming the very integrality supplied by the deleted
+predicate.
+
+\subsection{Canonical completeness}
+
+For a positive canonical coding witness the retained source has
+$a\ge2$, $B=2r+1$, $c=Y_B(a)$ and $d=X_B(a)$, with the
+standard Pell sequences. Their identities give
+\[
+ ad+(a^2-1)c=X_{B+1}(a)
+            =X_{2r+2}(a)=2X_{r+1}(a)^2-1.
+\]
+Consequently $\zeta=2X_{r+1}(a)$ supplies \eqref{half}.
+The existing positive source witness can therefore be chosen
+before constructing the smaller tuple of integer-interface
+witnesses. This preserves the coded instance, not every
+arbitrary signed auxiliary witness of the predecessor.
+
+\section{Removing the borrowed square without losing a source equation}
+
+The c-integer block supplied a helper $X_c$, literally
+\texttt{int\_c\_37}, with
+\begin{equation}\label{square}
+                             c^2-\rho X_c=0.
+\end{equation}
+Here $\rho$ is the common contact gauge and the retained
+$\rho\epsilon=1$ guard makes it nonzero. Once the c-interface
+rows are removed, the only remaining occurrences of $X_c$ are
+\[
+ d^2-A_c^2+\rho X_c-1=0,\qquad Ev-\rho X_c=0,
+\]
+where $v=\texttt{i\_inverse}$ belongs to the retained reciprocal
+integer input. Replace these rows by
+\begin{equation}\label{outer}
+                 d^2-A_c^2+c^2-1=0,\qquad Ev-c^2=0.
+\end{equation}
+They remain quadratic. The first new residual is the old
+residual plus \eqref{square}; the second is the old residual
+minus \eqref{square}. Conversely $X_c=\epsilon c^2$ recovers
+all three old equations from \eqref{outer} and the gauge guard.
+This exact elimination divides by neither $c$ nor $v$ and
+preserves the case $c=0$.
+
+The definition $A_c-ac=0$ is retained literally. Thus the first
+equation of \eqref{outer} is exactly the first Pell norm used by
+Theorem~\ref{arithmetic}. We remove the square helper and its
+defining row, saving one more coordinate and row than a version
+that retains this borrowed source helper.
+
+\section{The actual contact sum after deleting one predicate}
+
+All coordinates whose names start with \texttt{int\_c\_} are
+removed. The c-private rows have prefixes
+\[
+ \texttt{integer.c.},\quad \texttt{global.c.},\quad
+ \texttt{scalar\_norm.c.},\quad \texttt{detector\_trace.c.}.
+\]
+These include its point, scalar, contact, comparison, and pole
+equations. Common reference, numerator, scalar, detector, and
+contact-coefficient rows remain. In particular the root b-block
+and the common spacing $D=T_b/16$ remain unchanged.
+
+The compiled predecessors have already eliminated the final
+contact weight of the reciprocal block using the shared sum.
+In the stored normalization, if $\omega_*$ denotes this omitted
+last weight, the identity is
+\begin{equation}\label{oldsum}
+                   \omega_*=\epsilon-\sum_{\nu\ne *}\omega_\nu.
+\end{equation}
+The common physical rescaling of all these weights is unchanged.
+The c-weights removed from the sum are
+\begin{center}
+\begin{tabular}{@{}ll@{}}
+\toprule
+General & \texttt{int\_c\_153}, \texttt{int\_c\_last\_contact\_weight}\\
+Specified & \texttt{int\_c\_154}, \texttt{int\_c\_155},
+ \texttt{int\_c\_last\_contact\_weight}\\
+\bottomrule
+\end{tabular}
+\end{center}
+The new expression is
+\begin{equation}\label{newsum}
+ \omega_*^{\rm new}
+   =\epsilon-\sum_{\substack{\nu\ne *\\\nu\notin c}}\omega_\nu
+   =\omega_*^{\rm old}+\sum_{\nu\in c}\omega_\nu.
+\end{equation}
+This is a new shared-gauge condition for the reduced tuple.
+It does not assert that an omitted physical contact function
+vanishes, nor supply an extension to the old full gauge sum.
+
+There are exactly three retained occurrences of the eliminated
+weight. Write $\epsilon_2$ for the existing square register,
+$B_*,G_*,V_*,D_*$ for the final reciprocal pole input, gate,
+inverse-weight register, and norm error. The three rows before
+substitution are
+\begin{align}
+ 167281B_*(\epsilon_2+\omega_*)-166464G_*^2&=0,\label{pole}\\
+ \epsilon\epsilon_2-\omega_*V_*&=0,\label{inverse}
+\end{align}
+and, in the general route,
+\begin{equation}\label{ggate}
+ 2\epsilon\epsilon_2-\epsilon V_*-\epsilon_2^2
+          +2\epsilon_2G_*-\epsilon_2\omega_*-D_*^2=0,
+\end{equation}
+or, in the specified route,
+\begin{equation}\label{sgate}
+ 2\epsilon G_*+2\epsilon-\epsilon_2-\rho V_*-\omega_*-D_*^2=0.
+\end{equation}
+Their local index dictionaries are
+\begin{center}
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+Interface & $B_*$ & $G_*$ & $V_*$ & $D_*$\\
+\midrule
+General &73&72&158&156\\
+Specified &174&173&161&158\\
+\bottomrule
+\end{tabular}
+\end{center}
+Every index uses the \texttt{int\_i\_reciprocal} prefix.
+The checker derives both old and new rows from these templates
+and \eqref{oldsum}--\eqref{newsum}. Equivalently, for compilation
+one deletes the c-weight monomials in those three expanded rows.
+No other retained row contains a deleted contact weight.
+
+\subsection{Why the same interface theorem applies}
+
+The global-gauge proof \cite{global,bb} works for any fixed finite
+tuple of integer inputs. Its soundness lemma uses the identity
+$\rho=q_j+(\rho-q_j)$ for each remaining contact, and its
+completeness construction applies the finite-family prime supplier
+to the remaining distinct contacts. Deleting the c-contact lists
+introduces no new collision or denominator condition. The retained
+first-contact indices are the previous index list with index seven
+removed; the labels of the other contacts are not renumbered.
+The sixteenth endpoint and every interpolation definition remain.
+
+The physical sum now has 24 comparison weights in the general
+route and 30 in the specified route. At a selected prime only
+the selected weight has its prescribed pole, so the new gauge
+still has valuation $-1$. Foreign-contact parity and the height
+estimates are unchanged. At the fixed prepared primes and at
+real infinity the same finite-family asymptotic is
+\[
+ q_j=\kappa\lambda^{-2}+O(\lambda^{-3}),\qquad
+ \rho=m\kappa\lambda^{-2}+O(\lambda^{-3}),\quad m=24\text{ or }30,
+\]
+and
+\[
+ \frac{(\rho-q_j)^2}{q_j}
+       =(m-1)^2\kappa\lambda^{-2}+O(\lambda^{-3})\longrightarrow0.
+\]
+The proof divides by neither $m$ nor $m-1$. The same common
+finite neighborhoods and shared scalar-depth construction therefore
+give BB-prepared comparison and scalar inputs for the reduced
+tuple. Its 36 or 40 private pole blocks retain the coefficients
+and interpretation from \cite{bb}.
+
+For completeness all these interface witnesses are chosen anew
+after the canonical coding data are fixed. For soundness the
+remaining predicates first certify their own distinguished inputs;
+the source argument in Section~1 then supplies integrality of $c$.
+There is no attempted projection of a new auxiliary zero into an
+old c-certificate with the former gauge.
+
+\section{Complete systems, counts, and independent verification}
+
+\begin{theorem}\label{main}
+Under the same retained non-pole arithmetic interfaces, BB-native
+pole theorem, and external Jones coding theorem as the preferred
+v105 systems, the new complete systems have the same coded-instance
+projection. Their sums of squares are quartics in 887 and 1052
+rational variables, respectively. No new arithmetic hypothesis or
+numerical height threshold is introduced.
+\end{theorem}
+\begin{proof}
+Theorem~\ref{arithmetic}, \eqref{outer}, and the remaining
+integer predicates give source soundness. Canonical completion
+of \eqref{half} and the reduced simultaneous interface construction
+give source-instance completeness. Every listed residual is an
+ordinary quadratic; its sum of squares vanishes over $\Q$ exactly
+when every residual vanishes. Nonzero quadratic leading forms
+make the degree exactly four.
+\end{proof}
+
+The complete census is
+\begin{center}
+\begin{tabular}{@{}lrrrrrr@{}}
+\toprule
+Interface & Old $N$ & Removed & Added & New $N$ & Old rows & New rows\\
+\midrule
+General &943&57&1&887&798&750\\
+Specified &1124&72&0&1052&975&913\\
+\bottomrule
+\end{tabular}
+\end{center}
+The general system deletes 49 rows, changes five, and adds the
+one half-trace row. Its other 744 rows are identical up to
+coordinate renumbering. The specified system deletes 62 rows,
+changes five, and has 908 unchanged rows, including its existing
+half-trace row. The resulting predicate counts are twelve and
+ten, respectively. They include the retained reciprocal input
+in each route.
+
+The independent verifier imports no compiler code. It pins both
+predecessor SHA-256 hashes, audits every occurrence of all 57 or
+72 removed coordinates, checks the two source-square identities,
+the inverse-gauge guards, the source linear and product rows,
+and the exact half-trace polynomial. It derives all three changed
+contact rows independently from the omitted-weight formulas.
+Every other row is compared by named monomials. It also checks
+the updated predicate, contact and pole metadata, complete variable
+support, coefficient rings, degree bounds, and output hashes.
+
+The separate arithmetic theorem has its own proof and verifier
+\cite{replacement}. These finite checks do not prove the retained
+height, prime supplier, elliptic carrier, BB, or coding theorems.
+Earlier hashes and coordinate maps in inherited metadata describe
+historical stages. The current certificate explicitly records
+source-instance equivalence and rejects an old/new zero-set
+bijection claim.
+
+\begin{thebibliography}{9}
+\bibitem{replacement} \emph{A half-trace square replaces the
+c-integrality predicate}, including the signed rational Pell
+classification and its separate audit.
+\nolinkurl{undecidability/pell_integrality_replacement_v106/pell_integrality_replacement.tex}.
+\bibitem{signed} \emph{Both first-Pell signs have the same coding
+projection}.
+\nolinkurl{undecidability/pell_signed_branch_v101/signed_branch_projection.tex}.
+\bibitem{input} \emph{Sharing squared input comparisons in the
+complete quartic systems}.
+\nolinkurl{undecidability/input_comparison_v105/input_comparison_sharing.tex}.
+\bibitem{global} \emph{One contact gauge in a combined quadratic system}.
+\nolinkurl{undecidability/papers/global_gauge_quartic_checkpoint.tex}.
+\bibitem{bb} \emph{Congruent-number poles in the complete combined
+quartic systems}.
+\nolinkurl{undecidability/quadratic_reduction_v104/bb_native_combined.tex}.
+\end{thebibliography}
+\end{document}
+
