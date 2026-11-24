@@ -1,0 +1,318 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,booktabs,hyperref,xurl}
+\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newcommand{\Z}{\mathbb Z}\newcommand{\Q}{\mathbb Q}
+\title{Rational Pell solutions with an integral shifted trace}
+\author{\(\mathbb Z\mathbb Q\) Diophantine Project}
+\date{Reconstructed checkpoint, 24 November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+We classify rational solutions of a Pell norm for which
+\(d-(a-2)c\) is integral. For positive \(a\ge2\) there are exactly
+two unit orbits, coincident at \(a=2\); the nonintegral orbit has a
+single explicit denominator. For negative parameters a finite seed
+classification replaces the two-orbit statement. A reflection preserves
+the exact shifted trace while interchanging the positive-parameter
+integral and nonintegral branches. We also resolve the zero-parameter
+edge case used in the source's nonvanishing argument. These are newly
+reconstructed proofs, not a recovered copy of the previous conversation.
+No integrality predicate is deleted and no numerical undecidability
+bound is asserted.
+\end{abstract}
+
+\section{Denominators and the unit action}
+
+Throughout this section let \(a\in\Z\), \(|a|\ge2\), and put
+\[
+ A=|a|,\qquad \Delta=a^2-1,\qquad \kappa=a-2,\qquad D=4a-5.
+\]
+The number \(\Delta\) is positive and nonsquare. Consider rational
+\(c,d\) satisfying
+\begin{equation}\label{system}
+ d^2-\Delta c^2=1,\qquad T=d-\kappa c\in\Z.
+\end{equation}
+Substitution gives
+\begin{equation}\label{quadratic}
+ Dc^2-2\kappa Tc-(T^2-1)=0,
+ \qquad (Dc-\kappa T)^2=\Delta T^2-D.
+\end{equation}
+The second expression is an integer square whenever its square root
+is rational. Consequently
+\begin{equation}\label{v}
+ v:=Dc-\kappa T=\Delta c-\kappa d\in\Z,\qquad Dc\in\Z.
+\end{equation}
+In particular the reduced denominator of \(c\) divides \(|D|\)
+and is odd.
+
+Let \(\epsilon=A+\sqrt\Delta>1\). Multiplication of
+\(d+c\sqrt\Delta\) by \(\epsilon\) or \(\epsilon^{-1}\)
+acts, respectively, by
+\begin{align}
+ (d,c)&\longmapsto(Ad+\Delta c,\ d+Ac),\label{forward}\\
+ (d,c)&\longmapsto(Ad-\Delta c,\ -d+Ac).\label{backward}
+\end{align}
+These transformations preserve the norm and are mutual inverses.
+Their new shifted traces are
+\begin{align}
+ T_+&=(A-a+2)T+Dc,\label{traceplus}\\
+ T_-&=(A+a-2)T-Dc.\label{traceminus}
+\end{align}
+Thus both remain integral by \eqref{v}. Their second coordinates
+are
+\[
+ c_+=T+(A+a-2)c,\qquad c_-=-T+(A-a+2)c.
+\]
+For \(a\ge2\) the two multipliers are \(2a-2\) and \(2\),
+both coprime to \(D\), since \(D=2(2a-2)-1\) is odd.
+For \(a=-A\le-2\) they are \(-2\) and \(2A+2\), both
+coprime to \(4A+5=2(2A+2)+1\). Hence each unit action preserves
+the exact reduced denominator of \(c\).
+
+There is a canonical fundamental interval for this action. Since
+\(d^2=1+\Delta c^2\), the coordinate \(d\) is nonzero.
+After replacing \((d,c)\) by its negative if necessary, assume
+\(d>0\). Then \(\lambda=d+c\sqrt\Delta>0\). There is a
+unique integer \(n\) such that
+\[
+                  1\le\lambda\epsilon^{-n}<\epsilon.
+\]
+For the corresponding pair \((d_0,c_0)\), this is equivalent to
+\begin{equation}\label{interval}
+       0\le c_0<1,\qquad d_0=\sqrt{1+\Delta c_0^2}>0.
+\end{equation}
+Indeed \(\lambda\mapsto(\lambda-\lambda^{-1})/(2\sqrt\Delta)\)
+is strictly increasing, with values zero at one and one at
+\(\epsilon\). The shifted trace at this representative is integral.
+
+\section{The positive-parameter classification}
+
+\begin{theorem}\label{positive}
+For \(a\ge2\), put
+\[
+ \rho=\frac{2a^2-4a+3+2(a-2)\sqrt\Delta}{D}.
+\]
+All rational solutions of \eqref{system} are exactly
+\begin{equation}\label{two}
+ d+c\sqrt\Delta=\sigma\epsilon^n
+ \quad\text{or}\quad
+ d+c\sqrt\Delta=\sigma\rho\epsilon^n,
+ \qquad \sigma\in\{1,-1\},\quad n\in\Z.
+\end{equation}
+At \(a=2\), \(\rho=1\), so there is one orbit and every solution
+is integral. At \(a\ge3\), the two orbits are distinct. The first
+has integral \(c,d\), and every second-orbit solution has
+\begin{equation}\label{denominator}
+                 \operatorname{den}(c)=\frac{D}{\gcd(D,3)}>1.
+\end{equation}
+\end{theorem}
+\begin{proof}
+Reduce to \eqref{interval}. Its shifted trace is
+\[
+ f(c_0)=\sqrt{1+\Delta c_0^2}-(a-2)c_0.
+\]
+It is positive, since \(\sqrt\Delta>a-2\). Moreover \(f\) is
+convex on \([0,1]\), with \(f(0)=1\), \(f(1)=2\), so
+\(f(c_0)\le1+c_0<2\). Integrality forces \(f(c_0)=1\).
+Equation \eqref{quadratic}, with \(T=1\), therefore gives
+\[
+                 c_0=0\quad\text{or}\quad c_0=\frac{2(a-2)}D.
+\]
+The first has \(d_0=1\). The second has
+\[
+ d_0=1+(a-2)c_0=\frac{2a^2-4a+3}D.
+\]
+Both are norm-one points with integral shifted trace one. For
+\(a\ge3\), the second satisfies \(0<c_0<1\), so its orbit is
+distinct from the first by uniqueness of the fundamental representative.
+For \(a=2\) the two points coincide. Conversely every signed unit
+translate of these seeds satisfies \eqref{system}, by
+\eqref{traceplus}--\eqref{traceminus}.
+
+The first orbit is integral because the unit and its inverse have
+integer coordinates. The second seed has reduced denominator
+\[
+ \frac{D}{\gcd(D,2(a-2))}=\frac{D}{\gcd(D,3)}.
+\]
+For \(a\ge3\) this exceeds one. The denominator invariance already
+proved extends the formula to every signed translate.
+\end{proof}
+
+The exceptional factor three is exact, not a heuristic local bound.
+For instance, \(a=5\) gives denominator five, while \(a=8\) gives
+denominator nine. These include the rational examples in the existing
+v102 checkpoint~\cite{Obstruction}.
+
+\section{The negative-parameter classification}
+
+The source currently permits a signed \(a\) before its Pell argument,
+so Theorem~\ref{positive} alone is insufficient for a predicate deletion.
+
+\begin{theorem}\label{negative}
+Suppose \(a=-A\le-2\), and put \(K=4A+5\). For each integer
+\(t\in\{1,\ldots,2A+1\}\) such that
+\begin{equation}\label{seed-square}
+                       v^2=(A^2-1)t^2+K
+\end{equation}
+is an integer square, take the positive square root \(v\) and set
+\begin{equation}\label{negative-seeds}
+ c_t=\frac{(A+2)t-v}{K},\qquad
+ d_t=\frac{(A+2)v-(A^2-1)t}{K}.
+\end{equation}
+These are distinct fundamental-interval representatives. Every solution
+of \eqref{system} has a unique form
+\[
+       d+c\sqrt\Delta=\sigma(d_t+c_t\sqrt\Delta)\epsilon^n,
+ \qquad \sigma\in\{1,-1\},\ n\in\Z.
+\]
+The exact denominator on this orbit is
+\[
+ \operatorname{den}(c)=
+ \frac{K}{\gcd\bigl(K,(A+2)t-v\bigr)}.
+\]
+\end{theorem}
+\begin{proof}
+At \eqref{interval}, the shifted trace is
+\[
+ g(c_0)=\sqrt{1+\Delta c_0^2}+(A+2)c_0.
+\]
+This function increases strictly from \(g(0)=1\) to
+\(g(1)=2A+2\). Hence its integer value belongs to the stated
+finite range. Equation \eqref{v} now reads
+\(v=\Delta c_0+(A+2)d_0>0\) and gives \eqref{seed-square}.
+Solving for \(c_0,d_0\) gives \eqref{negative-seeds}.
+
+Conversely, fix an admissible \(t,v\). For \(t=1\), one has
+\(v=A+2\) and obtains \((c_t,d_t)=(0,1)\). For \(t>1\),
+\((A+2)^2t^2-v^2=K(t^2-1)>0\), so \(c_t>0\).
+The formula for \(d_t\) is positive, since
+\((A+2)v>\sqrt\Delta\,v>\Delta t\).
+Direct substitution gives the norm one and shifted trace \(t\).
+Consequently \(g(c_t)=t<2A+2=g(1)\), so \(c_t<1\).
+The strict increase of \(g\) makes distinct \(t\)'s give distinct
+seeds. The fundamental-interval uniqueness gives the claimed complete
+orbit decomposition. The denominator formula follows directly from
+\eqref{negative-seeds} and its invariance under the unit action.
+\end{proof}
+
+There need not be only two seeds. At \(a=-5\), precisely
+\(t=1,2,5\) occur, giving
+\[
+ (c_t,d_t)=(0,1),\quad(3/25,29/25),\quad(2/5,11/5).
+\]
+Thus even the possible nonintegral denominators differ between the
+positive and negative parameter cases.
+
+\section{A reflection invisible to the first linear equation}
+
+\begin{proposition}\label{reflection}
+For any \(a\in\Z\), put \(\Delta=a^2-1\), \(D=4a-5\),
+and \(\kappa=a-2\). If rational \(c,d\) satisfy the norm equation
+and \(T=d-\kappa c\), then
+\begin{equation}\label{reflection-formula}
+ c^\#=\frac{2\kappa T}{D}-c,\qquad
+ d^\#=\frac{2\Delta T}{D}-d
+\end{equation}
+satisfy the same norm and the same value of \(T\). This is an
+involution. For \(a\ge3\), it interchanges the two orbits of
+Theorem~\ref{positive}.
+\end{proposition}
+\begin{proof}
+The two roots of the first equation in \eqref{quadratic} sum to
+\(2\kappa T/D\). Hence \(c^\#\) is its other root. Since
+\(\kappa^2+D=\Delta\), the stated formula for \(d^\#\) equals
+\(T+\kappa c^\#\), proving both assertions. Applying the same root
+exchange twice returns the original point.
+
+For positive \(a\), observe that
+\[
+ \rho=\frac{\sqrt\Delta+\kappa}{\sqrt\Delta-\kappa},\qquad
+ d^\#+c^\#\sqrt\Delta
+       =\frac{\rho}{d+c\sqrt\Delta}.
+\]
+Thus \(\sigma\epsilon^n\) maps to
+\(\sigma\rho\epsilon^{-n}\), and conversely. The two orbits
+are distinct when \(a\ge3\).
+\end{proof}
+
+The first linear source equation has the form
+\(T=bw+D\gamma\), with the other displayed inputs integral.
+The reflection preserves its entire right side, not merely a congruence
+class. That equation therefore cannot exclude the nonintegral branch.
+The exact rational family in~\cite{Obstruction} additionally survives
+the subsequent norm/CRT subsystem. It fails the full source's closeness
+and growth conditions; neither it nor the classification is a full-source
+counterexample.
+
+\section{The zero-parameter edge case and the remaining task}
+
+\begin{lemma}\label{zero}
+If \(a=0\), \(c,d\in\Q\), \(d^2+c^2=1\), and
+\(d+2c\in\Z\), then
+\[
+ (c,d)\in\{(0,\pm1),(\pm1,0),
+ (4/5,-3/5),(-4/5,3/5),(3/5,4/5),(-3/5,-4/5)\}.
+\]
+In particular \(|c|<1/2\) implies \(c=0\).
+\end{lemma}
+\begin{proof}
+Cauchy--Schwarz gives \(|T|=|d+2c|\le\sqrt5\), so
+\(T\in\{-2,-1,0,1,2\}\). Substitution gives
+\[
+                   c=\frac{2T\pm\sqrt{5-T^2}}5.
+\]
+At \(T=0\) the square root is irrational. The four remaining
+values give precisely the listed eight points.
+\end{proof}
+
+In the existing source proof~\cite{Signed}, the assumption \(s=0\)
+forces \(a=Y=p=0\), \(k=\pm1\), and the strict strengthened
+margin forces \(|c|<1/2\). Lemma~\ref{zero} therefore recovers
+\(c=0\) without a c-integrality assumption. The same margin then
+gives \(C_*=0\), since \(C_*\) is independently integral.
+The existing contradiction with \(A_0-1\mid5^{60}\) applies.
+This repairs that preliminary nonzero step if the c predicate is
+tentatively removed. It does not prove any subsequent integral Pell
+index assertion for the remaining rational orbits.
+
+The precise unresolved task is to use the full small-Pell equation,
+its closeness inequality, the reconstructed large source parameters,
+and the remaining Pell relations to rule out all nonintegral seeds and
+their translates. Neither the positive-parameter classification nor
+its signed extension does that. All current numerical bounds and
+integer predicates are retained.
+
+\section{Verification scope and provenance}
+
+This checkpoint was reconstructed on 24 November 2026 after the earlier
+conversation was reported to have ended during publication. It is not
+identified with any unlocated original artifact or numerical claim.
+The preceding committed v102 obstruction is the comparison point.
+
+The independent script \texttt{verify\_classification.py} checks
+symbolic identities and exhaustively enumerates the fundamental
+interval for a finite range of positive and negative parameters using
+rational square tests. It compares that enumeration with the stated
+seeds, checks exact orbit normalization, signed forward and inverse
+translations, denominator invariance, the reflection, and the zero
+edge case. The quantified proof is the one given above; finite checks
+are not substituted for it. Run from the repository root:
+{\small\begin{verbatim}
+python -B \
+  undecidability/pell_classification_reconstructed_v105/verify_classification.py
+\end{verbatim}}
+
+\begin{thebibliography}{9}
+\small
+\bibitem{Obstruction} Project, \emph{Checkpoint: the three Pell norms
+do not by themselves certify c}, v102, 23 November 2026.
+\par\nolinkurl{undecidability/c_integrality_checkpoint_v102/README.md}.
+\bibitem{Signed} Project, \emph{Both first-Pell signs have the same
+coding projection}, v101, 23 November 2026.
+\par\nolinkurl{undecidability/pell_signed_branch_v101/signed_branch_projection.tex}.
+\end{thebibliography}
+\end{document}
