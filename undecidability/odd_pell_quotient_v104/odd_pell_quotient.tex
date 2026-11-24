@@ -1,0 +1,211 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,booktabs,hyperref,xurl}
+\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newcommand{\Z}{\mathbb Z}\newcommand{\Q}{\mathbb Q}
+\title{An odd second-Pell quotient removes one inverse}
+\author{\(\mathbb Z\mathbb Q\) Diophantine Project}
+\date{24 November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+The standard positive completion of the second Pell equation already
+permits its nonzero integer quotient to be odd. Certifying its half-shift
+therefore makes nonvanishing automatic and removes one reciprocal
+coordinate. Composing this observation with the common-numerator
+ordinary-\(abc\) table gives 674 rational unknowns and 593 quadratic
+residuals. Every retained arithmetic premise and the external Jones
+coding theorem remain required. The equivalence is on source-instance
+projections, since the integer-certificate witnesses must be chosen for
+a different integer input.
+\end{abstract}
+
+\section{Oddness in the existing positive completion}
+
+For integers \(a\ge2\), define
+\[
+ X_n(a)+Y_n(a)\sqrt{a^2-1}
+       =(a+\sqrt{a^2-1})^n,\qquad n\ge0.
+\]
+Both sequences satisfy \(Z_{n+2}=2aZ_{n+1}-Z_n\), with
+\(Y_0=0,Y_1=1\). The binomial certificate of~\cite{Binomial}
+and the one-quotient third-Pell completion of~\cite{CRT} use
+\(B=2r+1\ge3\) and
+\[
+              c=Y_B(a),\qquad d=X_B(a).
+\]
+The second Pell norm is
+\begin{equation}\label{norm}
+                F^2-(a^2-1)i^2c^4=1.
+\end{equation}
+
+\begin{lemma}\label{odd}
+For every integer \(a\ge2\) and odd integer \(B\ge3\), put
+\(c=Y_B(a)\), \(d=X_B(a)\), and \(q=Bc\). Then
+\[
+ F=X_q(a),\qquad i=Y_q(a)/c^2
+\]
+are positive integers satisfying \eqref{norm}, with \(i>1\)
+and \(i\) odd.
+\end{lemma}
+\begin{proof}
+Modulo two the recurrence for \(Y_n\) reads
+\(Y_{n+2}\equiv Y_n\), so \(Y_n(a)\equiv n\pmod2\).
+Consequently \(c,q,Y_q(a)\) are odd.
+
+Put \(\Delta=a^2-1\). Expanding
+\[
+ (a+\sqrt\Delta)^{Bc}=(d+c\sqrt\Delta)^c
+\]
+and comparing second coordinates gives
+\[
+ Y_q(a)=\sum_{\substack{1\le j\le c\\j\ {
+\rm odd}}}
+       \binom cj d^{c-j}c^j\Delta^{(j-1)/2}.
+\]
+The \(j=1\) summand is \(c^2d^{c-1}\), and every other
+summand contains \(c^3\). Thus \(c^2\mid Y_q(a)\).
+Since both numerator and divisor are odd, \(i\) is odd.
+Moreover all summands are positive, giving
+\(i\ge d^{c-1}>1\): indeed \(c=Y_B(a)>B\ge3\) and
+\(d=X_B(a)>1\). The Pell norm for index \(q\) gives
+\eqref{norm}.
+\end{proof}
+
+The index \(q=Bc\) is already the explicit choice in the positive
+completion of~\cite{Binomial}. Thus oddness introduces no new
+divisibility or padding hypothesis. The positive third-Pell completion
+in~\cite[Proposition 3]{CRT} applies to every positive \(i,F\)
+satisfying \eqref{norm}, so it applies to this choice. Its third index
+may still be increased in the prescribed arithmetic progression to make
+the remaining quotient positive.
+
+\section{The new integer input and the one-row replacement}
+
+The complete predecessor is the 675-coordinate, 594-row
+ordinary-\(abc\) table of~\cite{Common}. It has a certified
+integer input \(i\), a private rational coordinate \(v\), and
+two rows
+\begin{equation}\label{old}
+                         iv=1,\qquad vE=C_2.
+\end{equation}
+Its retained integer-input chart for \(c\) supplies \(C_2=c^2\).
+The coordinate \(v\) occurs nowhere else.
+
+Replace the certified integer input \(i\) by an integer input \(h_i\)
+and interpret the actual source quotient as
+\begin{equation}\label{new-i}
+                              i=2h_i+1.
+\end{equation}
+Delete \(v\) and both rows in \eqref{old}, and insert
+\begin{equation}\label{new}
+                           E=(2h_i+1)C_2.
+\end{equation}
+This is a quadratic polynomial equation in the retained coordinates.
+All other source rows are unchanged. The former \(i\)-certificate
+now certifies \(h_i\), with the same shared elliptic coordinates and
+the same contact offset. Its internal role labels are retained to make
+the table comparison transparent.
+
+\begin{theorem}\label{projection}
+Under exactly the arithmetic-interface premises of the predecessor,
+the replacement \eqref{new-i}--\eqref{new} preserves its source-instance
+projection. The new complete table has 674 rational unknowns and 593
+quadratic residuals, with all thirteen integer predicates retained.
+Its sum of squared residuals has degree exactly four, and has the same
+conditional rational-undecidability interpretation as the predecessor.
+\end{theorem}
+\begin{proof}
+For soundness, the retained integer interface makes \(h_i\in\Z\).
+Therefore \(i=2h_i+1\) is an odd, nonzero integer. The retained
+\(c\)-square row gives \(C_2=c^2\), and \eqref{new} gives
+\(E=ic^2\). Thus the old outer relations \eqref{old} hold after
+setting \(v=1/i\). In particular the second Pell norm and every
+other integer-source hypothesis are recovered in the same order as
+in the preceding signed-source proof. That proof yields the required
+coding instance. This argument uses the soundness of the integer
+interface directly; it does not assert that an elliptic certificate
+for \(h_i\) is a certificate for \(i\).
+
+For completeness, start from any member of the source's represented
+set. Choose the positive corrected binomial witnesses as before,
+including \(c=Y_B(a)\). Lemma~\ref{odd} gives a positive odd
+\(i>1\), so \(h_i=(i-1)/2\) is a positive integer.
+The positive third-Pell completion supplies the remaining quotient,
+and the other positive source coordinates and the strengthened
+margin are obtained as in the predecessor. The choices of \(i,F\)
+do not enter that margin or the short fixed-power certificate.
+
+Apply the retained simultaneous integer-interface completeness theorem
+to the new thirteen-input tuple, using \(h_i\) in place of \(i\).
+Every input is nonzero; this verifies the required completeness
+hypothesis. Choose its common numerator and all auxiliary elliptic
+witnesses afresh. Equation \eqref{new} now holds with \(E=ic^2\),
+and every other source row holds. This proves equality of instance
+projections, without claiming that an arbitrary old witness has an
+odd quotient or that its old elliptic coordinates survive unchanged.
+
+One coordinate is deleted. Two rows are replaced by one, and the
+coordinate relabeling adds no coordinate. Hence the new counts are
+\(675-1=674\) and \(594-1=593\). All rows have degree at most
+two, and at least one unchanged row has nonzero quadratic homogeneous
+part. Over \(\Q\), a sum of squares vanishes precisely when every
+summand vanishes; over \(\mathbb R\), the sum of squares of the
+nonzero leading quadratic parts is not identically zero. Thus the sum
+has degree exactly four. The source and arithmetic premises are
+unchanged.
+\end{proof}
+
+\section{Exact implementation and verification scope}
+
+The deleted coordinate is \texttt{i\_inverse}; the old coordinate
+\texttt{i} is relabeled \texttt{i\_half}. The two old rows are
+\texttt{integer.i\_reciprocal.unit} and
+\texttt{jones1980.E.reciprocal}. The new row is
+\[
+ \mathtt{E}-2\,\mathtt{i\_half}\cdot\mathtt{int\_c\_29}
+                     -\mathtt{int\_c\_29}=0.
+\]
+The full occurrence audit finds that the old \texttt{i} occurs only
+in its own square row and the deleted unit row. The inverse occurs
+only in the two replaced rows. Every other row agrees exactly after
+the coordinate relabeling. The surviving \texttt{integer.i.*} labels
+and \texttt{int\_i\_reciprocal\_*} names are historical interface
+role names, not assertions that a reciprocal remains.
+
+The independent verifier imports no builder. It checks the complete
+row comparison, coefficient ring, degree, support, variable counts,
+input relabeling and source qualifications. It also checks six exact
+Pell fixtures by separate powering and recurrence calculations. These
+fixtures illustrate the quantified proof of Lemma~\ref{odd}; they
+are not full witnesses for the universal coding prefix.
+
+The deterministic scripts, full coefficient table and certificates
+are in \nolinkurl{undecidability/odd_pell_quotient_v104/}.
+Run from the repository root:
+\begin{verbatim}
+python -B undecidability/odd_pell_quotient_v104/build_odd_quotient.py
+python -B undecidability/odd_pell_quotient_v104/verify_odd_quotient.py
+\end{verbatim}
+
+No general or specified-interface numerical saving is asserted here:
+those routes use genuine reciprocal integrality charts, and their
+coordinate and nonzero bookkeeping differ from the ordinary-input
+\(abc\) chart used in this theorem.
+
+\begin{thebibliography}{9}
+\small
+\bibitem{Binomial} Project, \emph{An exact Pell certificate for a power
+of two and central-binomial divisibility}, 23 November 2026.\par
+\nolinkurl{undecidability/papers/binomial_pell_certificate.tex}.
+\bibitem{CRT} Project, \emph{A single integer quotient for the third
+Pell certificate}, 23 November 2026.\par
+\nolinkurl{undecidability/pell_crt_v95/one_quotient_pell.tex}.
+\bibitem{Common} Project, \emph{A common numerator compresses reciprocal
+products in the ordinary-abc quartic}, 24 November 2026.\par
+\nolinkurl{undecidability/abc_common_numerator_v103/common_numerator.tex}.
+\end{thebibliography}
+\end{document}
