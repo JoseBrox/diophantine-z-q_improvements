@@ -6,17 +6,17 @@ counted. This is a separate objective from minimizing the total coordinates
 of a polynomial defining the integers. All recorded numbers are upper bounds;
 no global least value is claimed.
 
-## Current frontier (v123)
+## Current frontier (v124)
 
-See the [continuation report](../docs/results_20261124_v123.md) and the [current frontier ledger](frontier_20261124_v123.json). The new exact quartic tables and finite-algebra transfers give:
+See the [continuation report](../docs/results_20261124_v124.md) and the [current frontier ledger](frontier_20261124_v124.json). The new exact quartic tables and finite-algebra transfers give:
 
 | Route | Quartic unknowns | Quadratic residuals | Unrestricted degree | Alternative published coding source |
 |:--|--:|--:|--:|--:|
 | General | **884** | 749 | **48** | 52 |
 | Specified | **1049** | 912 | **50** | 54 |
-| Ordinary rational abc | **312** | 260 | **36** | 36 |
+| Ordinary rational abc | **309** | 257 | **36** | 36 |
 
-The [theta reduction](positivity_theta_reduction_20261124/README.md) gives the two general quartics. The [signed-abscissa transfer](abc_signed_abscissa_v119/README.md), [mean-shifted cubic](abc_mean_shifted_curve_v120/README.md), and [exact elimination](exact_multiroute_elimination_v121/README.md) give the 323-variable predecessor; the [nested parity selector](abc_nested_selector_v122/README.md) improves it to 319 variables; the [scalar alternate failures](abc_scalar_failures_v123/README.md) give the current 312-variable construction. The earlier 519-variable stage is superseded, with its proof retained. The [direct-index](direct_index_transfer_v111/README.md) and [selective-pole](abc_selective_pole_v110/README.md) theorems give the unrestricted-degree results. These are proved transfers under their stated retained arithmetic and coding premises, with Sun's ten-integer coding theorem accepted by the project for 48/50 ([review clarification](../docs/audits/sun_september_20261124/README.md)). The specified direct-index route is algorithmically specified and uses the full-family modular contact-height premise rather than the old fixed L=143 interface. Uniform degree bounds exist for the new unrestricted-degree recipes, without a new numerical degree comparison claim here. The target near 263 and every global minimum remain open.
+The [theta reduction](positivity_theta_reduction_20261124/README.md) gives the two general quartics. The [signed-abscissa transfer](abc_signed_abscissa_v119/README.md), [mean-shifted cubic](abc_mean_shifted_curve_v120/README.md), and [exact elimination](exact_multiroute_elimination_v121/README.md) give the 323-variable predecessor; the [nested parity selector](abc_nested_selector_v122/README.md) improves it to 319 variables; the [scalar alternate failures](abc_scalar_failures_v123/README.md) give a 312-variable construction; the [exact normalized moments](abc_normalized_moments_v124/README.md) reduce it further to the current 309 variables. The earlier 519-variable stage is superseded, with its proof retained. The [direct-index](direct_index_transfer_v111/README.md) and [selective-pole](abc_selective_pole_v110/README.md) theorems give the unrestricted-degree results. These are proved transfers under their stated retained arithmetic and coding premises, with Sun's ten-integer coding theorem accepted by the project for 48/50 ([review clarification](../docs/audits/sun_september_20261124/README.md)). The specified direct-index route is algorithmically specified and uses the full-family modular contact-height premise rather than the old fixed L=143 interface. Uniform degree bounds exist for the new unrestricted-degree recipes, without a new numerical degree comparison claim here. The target near 263 and every global minimum remain open.
 
 ## Earlier unrestricted-degree results (v108 baseline)
 
