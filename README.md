@@ -8,7 +8,7 @@ F(X,Y_1,\ldots,Y_m)
 
 whose rational input projection is the integers, under the arithmetic premises stated in each construction.
 
-**Every defining-polynomial variable count includes the input.** The separate [undecidability category](#fewest-variables-currently-recorded-for-undecidability) counts existential rational unknowns; its instance input is encoded in the coefficients. **The 25 / 27 / 11 bounds for defining the integers are not in conflict with the 82 / 100 / 52 unrestricted-degree undecidability bounds:** they answer different questions and use different variable-counting conventions. Degree means total degree. Coefficient height is the maximum absolute integer coefficient after the fixed parameters have been substituted. We optimize variable count, then degree, then coefficient height. No global minimum is claimed.
+**Every defining-polynomial variable count includes the input.** The separate [undecidability category](#fewest-variables-currently-recorded-for-undecidability) counts existential rational unknowns; its instance input is encoded in the coefficients. **The 25 / 27 / 11 bounds for defining the integers are not in conflict with the 52 / 54 / 36 unrestricted-degree undecidability bounds:** they answer different questions and use different variable-counting conventions. Degree means total degree. Coefficient height is the maximum absolute integer coefficient after the fixed parameters have been substituted. We optimize variable count, then degree, then coefficient height. No global minimum is claimed.
 
 ## Current constructions — 24 November 2026
 
@@ -39,21 +39,20 @@ The [results JSON](data/results_20261123_v88.json) records all five new finite-a
 
 The [undecidability category](undecidability/README.md) counts existential
 rational unknowns; the integer instance is encoded in coefficients.
-The [v108 continuation](docs/results_20261124_v108.md) gives the current
-complete quartic tables, the reconstructed interrupted results, and the new
-Pell integrality theorem. The [v93 continuation](docs/results_20261123_v93.md) supplies corrected
-quartic sources, smaller complete tables, and lower general-degree bounds.
+The [v113 continuation](docs/results_20261124_v113.md) gives the current bounds, complete quartic tables, direct-index and selective-pole proofs, and the [current frontier ledger](undecidability/frontier_20261124_v113.json).
 
 | Degree restriction | Additional height hypothesis | Rational unknowns | Status |
 |:--|:--|--:|:--|
-| Unrestricted degree | No additional abc hypothesis | **82** | Proved transfer under retained arithmetic premises; degree below `2^532` |
-| Unrestricted degree, specified source | No additional abc hypothesis | **100** | Proved transfer under retained arithmetic premises; degree below `2^578` |
-| Unrestricted degree | Ordinary rational abc | **52** | Proved transfer under retained arithmetic premises; degree below `2^425` |
-| Quartic transfer | No additional abc hypothesis | **887** | Half-trace replaces c-integrality; 750 quadratic residuals; 12 integer predicates; retained arithmetic premises |
-| Quartic transfer, specified source | No additional abc hypothesis | **1,052** | Half-trace replaces c-integrality; 913 quadratic residuals; 10 integer predicates; retained arithmetic premises |
-| Quartic transfer | Ordinary rational abc | **605** | Shared point chart and c-integrality replacement; 528 quadratic residuals; 12 integer predicates; retained arithmetic premises |
+| Unrestricted degree | No additional abc hypothesis | **52** | Direct-index transfer under the stated modular, trace-height and other retained inputs; **48** additionally importing Sun 2026 |
+| Unrestricted degree, specified source | No additional abc hypothesis | **54** | Algorithmically specified direct-index transfer, retaining full-family modular and abscissa-sum inputs; **50** additionally importing Sun 2026 |
+| Unrestricted degree | Ordinary rational abc | **36** | One selective derivative pole and finite-algebra encoding; retained arithmetic premises |
+| Quartic transfer | No additional abc hypothesis | **884** | Theta positivity deletion; 749 residuals; 12 integer predicates |
+| Quartic transfer, specified source | No additional abc hypothesis | **1,049** | Theta positivity deletion; 912 residuals; 10 integer predicates |
+| Quartic transfer | Ordinary rational abc | **519** | Aggregate contacts, theta deletion and one shared native pole; 466 residuals; 12 integer predicates |
 
-**Current quartic proof trail:** the [new arithmetic theorem](undecidability/pell_integrality_replacement_v106/pell_integrality_replacement.tex)
+The smaller 48/50 bounds use an additional external source theorem from [Sun's 2026 preprint](https://arxiv.org/abs/2609.01594), not independently audited here. The 52/54/36 bounds use the previous published mixed-domain source. All new transfers have their stated retained arithmetic premises; no unconditional undecidability or global minimality is claimed. The unrestricted-degree recipes have finite uniform degrees, without a new numerical degree comparison claim here. The [v108 continuation](docs/results_20261124_v108.md) preserves the earlier tables and the interrupted-results reconstruction.
+
+**Historical v108 quartic proof trail:** the [new arithmetic theorem](undecidability/pell_integrality_replacement_v106/pell_integrality_replacement.tex)
 proves c-integrality from the retained norm, shifted trace, the source's
 modulo-three condition, and one half-trace square. The complete
 [887/1052 tables](undecidability/c_integrality_reduction_v106/README.md) and
@@ -210,7 +209,7 @@ Original project contributions are under **CC BY 4.0**. Third-party material ret
 
 ## Number-field results
 
-The [Pasten–Vidaux continuation](docs/results_20261119_v81.md) gives a separate [ten-variable definition of the rational subfield inside K](papers/number_fields/ten_coordinate_rationality_20261119_v81.tex), under abc over K, an elliptic curve over Q whose positive rank stays unchanged over K, and the stated published pole theorem. The proof amplifies odd valuations, uses the cubic rational map `(T³−2)/(T³−3)`, and encodes six algebraic roots with one guarded determinant coordinate. Zywina's theorem supplies the stable-rank curve for quadratic K. Composing with the eleven-variable rational construction gives **110 variables for the integers inside K**, and **220 for the ring of integers when K is quadratic**, retaining that construction's arithmetic premises. These are existence bounds over K, with an ineffective correction; they do not change the rational-variable table above.
+The [Pasten–Vidaux continuation](docs/results_20261119_v81.md) gives a separate [ten-variable definition of the rational subfield inside K](papers/number_fields/ten_coordinate_rationality_20261119_v81.tex), under abc over K, an elliptic curve over Q whose positive rank stays unchanged over K, and the stated published pole theorem. The proof amplifies odd valuations, uses the cubic rational map `(T³−2)/(T³−3)`, and encodes six algebraic roots with one guarded determinant coordinate. Zywina's theorem supplies the stable-rank curve for quadratic K. Composing with the eleven-variable rational construction gives **110 variables for the integers inside K**, and **220 for the ring of integers when K is quadratic**, retaining that construction's arithmetic premises. These are existence bounds over K, with an ineffective correction. The [joint rationality continuation](papers/number_fields/joint_rationality_20261124/README.md) replaces separate rationality tests by 7k+3 coordinates for k tests, improving 110/220 to **80/157** under the stated retained premises. These do not change the rational-variable table above.
 
 ## Open reductions and proved obstructions
 

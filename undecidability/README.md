@@ -6,7 +6,19 @@ counted. This is a separate objective from minimizing the total coordinates
 of a polynomial defining the integers. All recorded numbers are upper bounds;
 no global least value is claimed.
 
-## Current unrestricted-degree results
+## Current frontier (v113)
+
+See the [continuation report](../docs/results_20261124_v113.md) and the [current frontier ledger](frontier_20261124_v113.json). The new exact quartic tables and finite-algebra transfers give:
+
+| Route | Quartic unknowns | Quadratic residuals | Unrestricted degree (published source) | Unrestricted degree (additional Sun 2026 preprint) |
+|:--|--:|--:|--:|--:|
+| General | **884** | 749 | **52** | **48** |
+| Specified | **1049** | 912 | **54** | **50** |
+| Ordinary rational abc | **519** | 466 | **36** | — |
+
+The [theta reduction](positivity_theta_reduction_20261124/README.md) gives the two general quartics. The [single shared native pole](abc_shared_native_pole_v113/README.md) and [independent audit](abc_shared_native_pole_v113/certificate.json) give the abc quartic. The [direct-index](direct_index_transfer_v111/README.md) and [selective-pole](abc_selective_pole_v110/README.md) theorems give the unrestricted-degree results. These are proved transfers under their stated retained arithmetic and coding premises, with a separate additional external preprint input for 48/50. The specified direct-index route is algorithmically specified and uses the full-family modular contact-height premise rather than the old fixed L=143 interface. Uniform degree bounds exist for the new unrestricted-degree recipes, without a new numerical degree comparison claim here. The target near 263 and every global minimum remain open.
+
+## Earlier unrestricted-degree results (v108 baseline)
 
 The [common-numerator proof](papers/common_numerator_transfers.tex) and
 [finite-wrapper proof](papers/finite_wrapper_transfer.tex)
@@ -35,7 +47,7 @@ the historical encoders; all historical specifications remain unchanged.
 
 **Certificates and replay:** [finite-wrapper identity/count ledger](certificates/finite_wrapper_transfer.json), [paired-spectral degree ledger](alternative_v93/certificate.json), and [machine-readable records](results.json). The independent [v90](../scripts/verify_v90.py) and [v93](../scripts/verify_v93.py) gates check the stored source hashes, finite-algebra ranks, variable counts, and strict degree ceilings. They do not independently establish the infinite arithmetic premises of the integer predicates. The final large determinant polynomials are specified by finite coefficient recipes, not fully expanded.
 
-## Current corrected quartic transfers
+## Earlier corrected quartic transfers (v108 baseline)
 
 | Integer interface | Rational unknowns | Quadratic residuals | Additional height hypothesis |
 |:--|--:|--:|:--|
@@ -43,7 +55,7 @@ the historical encoders; all historical specifications remain unchanged.
 | Specified | **1052** | **913** | No additional abc |
 | Ordinary abc | **605** | **528** | Ordinary rational abc |
 
-The [current report](../docs/results_20261124_v108.md),
+The [v108 report](../docs/results_20261124_v108.md),
 [general/specified proofs and tables](c_integrality_reduction_v106/README.md),
 and [abc proof and table](abc_pell_integrality_v108/README.md) specify these
 quartics completely. They retain 12 / 10 / 12 integer predicates and the
