@@ -1,3 +1,7 @@
+## Current BB-native quartics (24 November 2026)
+
+The [new proof](../papers/quartic/bb_native_quartics_20261124.tex), [result ledger](results_20261124_bb_native.md) and [complete coefficient package](../computation/bb_native_quartic_20261124/README.md) now supply the **preferred 163- and 179-variable general quartics**, replacing the old native non-CM pole input by the congruent-number criterion from Bhargava–Burungale v2. The new 137/151-row quadratic systems have 2,771/3,012 expanded monomials and the same exact coefficient heights as the historical v82 systems. No Route K/CR₃/old Theorem 5.3 assumption enters these **new** defining polynomials. All other elliptic, geometry, comparison, height and prime-pattern premises remain inherited, and the fixed 179 coefficient specification is retained. The historical v82/Busy Beaver materials are preserved without changing their claims.
+
 ## Bhargava–Burungale v2 audit and transfers (v88)
 
 The [v88 audit](results_20261123_v88.md) and [complete route map](bb_all_route_status_20261123_v88.md) supersede the numerical summary in this historical source map. All five current few-variable routes now use the stated class-seven product criterion of Bhargava–Burungale v2, Lemma 2.2, after the separately proved preparation and square-factor normalization. The 25/27 routes use the new scalar; the weak-abc11 routes use seven times their old weight and additional preparation at seven. This replaces their old pole-converse input. Their other elliptic, height, modular and quantified prime-pattern premises remain explicit.
