@@ -113,7 +113,7 @@ def main():
     contributors=re.search(r'(?ms)^## Contributors and citation\n.*?(?=^## |\Z)',readme)
     assert contributors and hashlib.sha256(contributors.group().encode()).hexdigest()==CONTRIBUTORS_HASH
     assert 'notes of Gabe Conant with Astra 6.2' in readme
-    rows=[line for line in readme.splitlines() if '| Ordinary rational abc |' in line]
+    rows=[line for line in readme.split("## Fewest variables currently recorded for undecidability", 1)[0].splitlines() if '| Ordinary rational abc |' in line]
     assert len(rows)==2
     current_link=re.search(r'\[results JSON\]\((data/results_[^)]*\.json)\)',readme)
     assert current_link

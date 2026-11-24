@@ -53,7 +53,7 @@ def main():
     assert "Kleene" in note
     table=(ROOT/"README.md").read_text()
     assert "Expanded TXT size (kB)" in table
-    assert table.count("| Ordinary rational abc |")==2
+    assert table.split("## Fewest variables currently recorded for undecidability", 1)[0].count("| Ordinary rational abc |")==2
     out={"schema":"bb-conditional-threshold/v85","status":"PASS",
          "conditional_index":"max(3,M)",
          "numeric_M_certified":False,"numeric_t_certified":False,

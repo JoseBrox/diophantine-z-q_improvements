@@ -77,7 +77,7 @@ def main():
     section = re.search(r'(?ms)^## Contributors and citation\n.*?(?=^## |\Z)', readme)
     assert section and hashlib.sha256(section.group().encode()).hexdigest() == CONTRIBUTORS_HASH
     assert 'notes of Gabe Conant with Astra 6.2' in readme
-    abc_rows = [line for line in readme.splitlines() if '| Ordinary rational abc |' in line]
+    abc_rows = [line for line in readme.split("## Fewest variables currently recorded for undecidability", 1)[0].splitlines() if '| Ordinary rational abc |' in line]
     assert len(abc_rows) == 2
     # Keep the complete historical 59-variable audit while README advances.
     record_link = re.search(r'\[results JSON\]\((data/results_[^)]*\.json)\)', readme)

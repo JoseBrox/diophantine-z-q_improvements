@@ -139,7 +139,7 @@ def main():
     assert contributors and hashlib.sha256(contributors.group().encode()).hexdigest()==CONTRIBUTORS_HASH
     assert 'notes of Gabe Conant with Astra 6.2' in readme
     assert '[v82 records](data/results_20261120_v82.json)' in readme
-    rows=[line for line in readme.splitlines() if '| Ordinary rational abc |' in line]
+    rows=[line for line in readme.split("## Fewest variables currently recorded for undecidability", 1)[0].splitlines() if '| Ordinary rational abc |' in line]
     assert len(rows)==2
     assert any('| **11** |' in row and '4, exact' not in row for row in rows)
     assert any('| **56** | **4, exact** |' in row for row in rows)
