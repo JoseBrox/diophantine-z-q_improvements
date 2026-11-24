@@ -19,3 +19,5 @@ The author-supplied [Sun transfer note](sun_2609_transfer_supplied.tex) is prese
 - The [v127 direct-index recipe](../../../undecidability/direct_index_transfer_v127/README.md) integrates the smaller logarithm precision and two-layer tagged separator. Its new whole-prefix guard argument uses simultaneous real preparation for every ordinate-sign choice, improving the rank-dependent degree bound without changing the 48/50 unknown counts.
 
 The note's integrality-absorption criterion remains useful but does not yet supply a smaller universal integer source: a monic rescaling of Sun's final homogeneous merger does not establish integrality of the unscaled quotient. Nor do the local tests replace global pole realizability. All prior arithmetic premises are retained.
+
+The subsequent [v128 exact curve rechart](../../../undecidability/abc_curve_chart_elimination_v128/README.md) reduces 302 to 295 coordinates with 244 quadratic residuals, by homogeneous numerator equations, inlining the opposite square, eliminating the shifted center, and moving a common coefficient into every private error square. This is a bijective algebraic recovery of the v126 zero set.

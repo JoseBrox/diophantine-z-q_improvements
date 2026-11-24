@@ -45,7 +45,7 @@ The [results JSON](data/results_20261123_v88.json) records all five new finite-a
 
 The [undecidability category](undecidability/README.md) counts existential
 rational unknowns; the integer instance is encoded in coefficients.
-The [v127 continuation](docs/results_20261124_v127.md) gives the current bounds and complete quartic tables, with the [current frontier ledger](undecidability/frontier_20261124_v127.json).
+The [v128 continuation](docs/results_20261124_v128.md) gives the current bounds and complete quartic tables, with the [current frontier ledger](undecidability/frontier_20261124_v128.json).
 
 | Degree restriction | Additional height hypothesis | Rational unknowns | Status |
 |:--|:--|--:|:--|
@@ -54,7 +54,7 @@ The [v127 continuation](docs/results_20261124_v127.md) gives the current bounds 
 | Unrestricted degree | Ordinary rational abc | **36** | One selective derivative pole and finite-algebra encoding; retained arithmetic premises |
 | Quartic transfer | No additional abc hypothesis | **884** | Theta positivity deletion; 749 residuals; 12 integer predicates |
 | Quartic transfer, specified source | No additional abc hypothesis | **1,049** | Theta positivity deletion; 912 residuals; 10 integer predicates |
-| Quartic transfer | Ordinary rational abc | **302** | Exact mean interpolation, shorter selector and paired denominator height; 251 residuals; 12 integer predicates |
+| Quartic transfer | Ordinary rational abc | **295** | Interpolated mean, paired denominator height, and exact curve-chart elimination; 244 residuals; 12 integer predicates |
 
 The 48/50 bounds use [Sun's ten-unknown theorem](https://arxiv.org/abs/2609.01594), accepted as a project coding source (see the [source-review clarification](docs/audits/sun_september_20261124/README.md)). The 36 bound uses the published mixed-domain source. The earlier 52/54 bounds remain available as alternative coding-source transfers. All new transfers have their stated retained arithmetic premises; no unconditional undecidability or global minimality is claimed. The [Sun-audit refinement](undecidability/direct_index_transfer_v127/README.md) keeps 48/50 unknowns with precision floor(D/2)+1 and whole-guard tagged determinants of degree strictly below 11·2^96 δ and 11·2^98 δ respectively (δ is a computable coefficient/operator-degree majorant, not numerically evaluated for the full source). The [v108 continuation](docs/results_20261124_v108.md) preserves the earlier tables and the interrupted-results reconstruction.
 
