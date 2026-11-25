@@ -316,3 +316,26 @@ the local full-depth deficit inequality including nonformal
 branches, and the strict exponent comparisons. These finite
 checks do not prove the retained arithmetic inputs, the
 full-denominator asymptotic, or the missing charge realization.
+
+## 6. Subsequent restriction and exact checks
+
+[The finite-cover obstruction](finite_cover_obstruction.md) proves that a
+bounded-height charge with infinitely many admissible T for each fixed
+large Q cannot be realized by a fixed-degree algebraic cover of the
+elliptic curve E in T alone. Thus the 17/19 conditional implication does
+not provide a viable cofinal construction in that subclass. On the
+quadratic carrier, conjugate-coupled covers of the Weil restriction,
+noncofinal choices of T, and additional free auxiliary data are not
+excluded by that proof.
+
+[The double-quotient note](double_quotient.md) applies full denominator
+mass to foreign-prime charging without abc and gives a size bound in
+terms of two charge heights, not an actual upper bound for those heights.
+
+Run `node verify.js` in this directory. Executed exact BigInt checks:
+8,550 anchor fixtures (4,500 odd-valuation persistence and 27 new odd
+contact instances); 205,400 formal/nonformal local deficit inequalities;
+60 square-abscissa points of the rational curve; 22 double-quotient
+fixtures and 82 local depth multiplication identities; 300 actual
+all-depth deficit divisibilities. These are checks of arithmetic and
+finite identities, not proofs of the missing predicate.
