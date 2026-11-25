@@ -1,6 +1,6 @@
 # v150: signed binomial rounding for the coprime Pell merger
 
-**Partial rational shared-certificate result.** The redesigned modulus of v148 does support the complete binomial equivalence *if* the two small/third Pell ordinates are integral. In particular the change p -> p+1 does not create a rounding gap. Joint rational-ordinate integrality from one certified sum L=h+j remains open; no seven-integer construction follows here.
+**Partial rational shared-certificate result.** The redesigned modulus of v148 does support the complete binomial equivalence *if* the two small/third Pell ordinates are integral. In particular the change p -> p+1 does not create a rounding gap. The [subsequent v151 global obstruction](../shared_pell_global_obstruction_v151/README.md) disproves joint rational-ordinate integrality from this single sum, with full false packed-source witnesses. The conditional rounding theorem remains valid; no seven-integer construction follows here.
 
 Use the equations and hypotheses of [v148](../shared_pell_core_v148/README.md), including the retained shifted first trace
 
