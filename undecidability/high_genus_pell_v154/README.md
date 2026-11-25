@@ -64,3 +64,21 @@ There is a direct local obstruction for every power \(d\). Fix any nondegenerate
 has a unit solution \(t\in\mathbb Z_p^\times\): its reduction has a nonzero simple root because \(-1\) is a \(d\)-th power modulo \(p\) and \(p\nmid d\). Set \(j=p^{-e}t\). Both affine ordinates have negative valuation \(-e\). Since \(A,D\) are square units, their norm equations have roots in \(\mathbb Q_p\) by Hensel applied after dividing by the square leading terms. Both quotients are nonintegral and \(\Lambda=h^d+j^d\) is exactly the prescribed integer. This is only a local example; it does not contradict the global finiteness theorem.
 
 The two-moment repair in v153 is sound but retains two certified integers. The candidate (1) really uses one certified integer and prevents the previous infinite deformation while preserving canonical completeness; it is **not a sound transfer until the remaining global rational-point problem is solved**. No quartic count is assigned to it. The next concrete task is to exploit the special Pell coefficients and the ample freedom of the third exponent to impose further equations or a uniform rational-point exclusion, not to infer integrality from genus alone.
+
+
+### A global warning, even for genuine Pell discriminants
+
+The abstract power-sum lemma cannot be strengthened to integrality for arbitrary admissible Pell coefficients. For \(d=2\), set
+\[
+ A=D=24=5^2-1,\qquad n_1=n_2=1,\qquad b_1=b_2=2,
+\]
+\[
+ h=\frac{198}{5},\quad j=\frac{11}{5},\quad
+ k=\frac{208}{5},\quad H=\frac{21}{5},\quad
+ \tau=\frac{1019}{5},\quad I=\frac{103}{5}.
+\]
+Direct calculation gives both norms exactly, and
+\[
+ h^2+j^2=1573>2^2+2^2+2.
+\]
+Thus this guarded genus-five fiber has nonintegral rational points, with positive quotients and coprime moduli. This is an example for the abstract family only; it is **not** a false witness for the specialized packed source, whose congruence moduli and offsets are highly constrained. The latter exclusion problem remains open. It underscores why the genus result alone cannot be promoted to a seven-integer transfer.
