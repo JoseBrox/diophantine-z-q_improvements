@@ -1,5 +1,7 @@
 # v148: shared small/third Pell congruence core, and its remaining obstruction
 
+**Subsequent status (v151):** the [global counterexample theorem](../shared_pell_global_obstruction_v151/README.md) disproves the shared-sum integrality implication even on false packed prefixes. The conditional index theorem below, with integral ordinates, remains valid.
+
 This is a **partial source result**, not a seven-integer undecidability transfer. The eight certificates of v147 remain in its actual compiler. The construction below changes the small Pell parameter and the second-norm quotient, so the old binomial-rounding and exceptional-fiber arguments cannot simply be quoted for it.
 
 ## 1. Coprime-modulus index theorem conditional on two integral ordinates
