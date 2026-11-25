@@ -79,11 +79,11 @@ All are positive integers. Set c=Y_B(a), d=X_B(a). The retained shifted-trace co
 
 Indeed the recurrence for R_n=X_n(a)-(a-2)Y_n(a) is R_(n+1)=2R_n+(4a-5)Y_n(a), R_0=1, and bw=2^B. The halftrace square has witness zeta=2X_(r+1)(a) by the addition/doubling identities. The first norm is automatic, and c>B and c>a. This stage does not depend on the truth of the binomial divisibility.
 
-Choose a sufficiently large positive integer q divisible by the order of the norm-one Pell matrix at a modulo M*c^2. Then
+Choose a sufficiently large positive integer q divisible by both c and the order of the norm-one Pell matrix at a modulo M*c^2. Then
 
     F=X_q(a), i'=Y_q(a)/(M*c^2)
 
-are positive integers, and the redesigned second norm F^2-(a^2-1)*(M*i'*c^2)^2=1 holds. We have gcd(c,F)=1, c|q by the v95 square-divisibility step-down lemma, and F^2=1 mod c. Put G=a+F^2*(c+1-a)>=2.
+are positive integers, and the redesigned second norm F^2-(a^2-1)*(M*i'*c^2)^2=1 holds. We have gcd(c,F)=1, c|q by choice of q, and F^2=1 mod c. Put G=a+F^2*(c+1-a)>=2.
 
 The v95 third-Pell congruence construction applies to every v=B+4q*l, l a nonnegative integer:
 
@@ -126,4 +126,23 @@ The crucial distinction from v150 is that its conditional rounding theorem assum
 
 ## Reference and verification scope
 
-The genus-one and non-torsion proof above is exact and works on arbitrarily large actual packed instances. The only external arithmetic results used are the classical elliptic formal-group/reduction theorem (Silverman, *The Arithmetic of Elliptic Curves*, 2nd ed., IV.6.4, VII.2.2 and VII.3.4), Riemann-Hurwitz, the established v95 Pell identities/step-down argument, and Legendre's three-square theorem. No numerical computation of the astronomical canonical third-Pell witness or of a universal-source rational zero is claimed. An independent modular verifier below checks the disjoint-branch obstruction and a small exact good-reduction profile; these checks are supplemental to the proof, not evidence replacing it.
+The genus-one and non-torsion proof above is exact and works on arbitrarily large actual packed instances. The only external arithmetic results used are the classical elliptic formal-group/reduction theorem (Silverman, *The Arithmetic of Elliptic Curves*, 2nd ed., IV.6.4, VII.2.2 and VII.3.4), Riemann-Hurwitz, the established v95 Pell identities, and Legendre's three-square theorem. No numerical computation of the astronomical canonical third-Pell witness or of a universal-source rational zero is claimed. The independent [verify.py](verify.py) checks the disjoint-branch obstruction, a small exact good-reduction profile, a rational nonintegral point obtained by an osculating quadratic on its quartic model, and the finite-prime freezing of the third exponent. These checks are supplemental to the proof, not evidence replacing it. The numerical example is for the general genus-one lemma, not a numerical instantiation of the full packed source.
+
+
+### Small exact illustration of the genus-one mechanism
+
+For A=D=3, beta=1, k0=1, t0=2, G=2 and v=2, the fixed-sum curve is
+
+    T^2=1+3*K^2, I^2=1+3*(5-K)^2.
+
+It has origin (1,2,7). At the good prime 7 its point (1,2,-7) reduces to the origin. The fixed exclusion constant B_*=432 is a unit at 7. An explicit nonintegral point is
+
+    K=1952365/331837, T=-3397838/331837,
+    H=-293180/331837, I=-606613/331837.
+
+Here K+H=5 and both norm residuals vanish exactly. This follows from the rational conic parameter K=2t/(1-3t²), T=(1+3t²)/(1-3t²), and the quartic
+F(t)=(1-3t²)²+3(5(1-3t²)-2t)². Its osculating quadratic Q(t)=(-8931t²-1200t+2993)/343 at t=1/3 satisfies
+
+    F(t)-Q(t)^2=15(3t-1)^3(1751t+1115)/117649.
+
+The fourth root t=-1115/1751 yields the displayed point with I=Q(t)/(1-3t²). The abstract non-torsion and approximation proof, rather than this small illustration, supplies the full packed-source obstruction.
