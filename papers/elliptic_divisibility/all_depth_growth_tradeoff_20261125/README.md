@@ -21,7 +21,7 @@ theorem are retained. The elementary height arguments use the
 usual canonical height and Siegel's theorem in height form.
 For the full-denominator asymptotic see also Streng, *Divisibility
 sequences for elliptic curves with complex multiplication*,
-Algebra & Number Theory 2 (2008), Lemma 4.3,
+Algebra & Number Theory 2 (2008), pp. 197–198 (the height estimate following (3.10)),
 https://msp.org/ant/2008/2-2/ant-v2-n2-p04-p.pdf.
 No abc or (OM) is used in the tradeoff or anchor.
 
