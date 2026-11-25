@@ -20,7 +20,12 @@ After Q and s have been fixed, the remaining auxiliary choices are
 finite algebraic choices over the variable point T on E. In particular,
 they form finite-type covers of open subsets of E with a uniform
 degree bound \(d_{\max}\) on their nonconstant curve components.
-The guards are algebraic nonvanishing conditions. This includes
+All remaining auxiliary values may lie in K, and every such K-valued
+lift satisfying the equations and guards is an accepted tuple (the charge
+s itself is still rational). A restriction that certain remaining
+K-valued auxiliary coordinates must be rational, not merely K-valued,
+is not covered by this argument unless it is already encoded by the
+algebraic cover. The guards are algebraic nonvanishing conditions. This includes
 successive monic finite-root equations with a fixed number of roots
 and fixed degrees, possibly followed by additional polynomial equalities.
 
