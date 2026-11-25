@@ -54,7 +54,7 @@ primes, using the fixed-entry formal-depth formula. This is
 uniform even for moving h and j.
 By Siegel's theorem in height form (or the full-denominator
 asymptotic of Streng, Algebra & Number Theory 2 (2008),
-Lemma 4.3),
+pp. 197–198 (the height estimate following (3.10))),
 \[
  \log B_j=qj^2+o(j^2),\qquad \log B_h\le qh^2+O(1).
 \]
