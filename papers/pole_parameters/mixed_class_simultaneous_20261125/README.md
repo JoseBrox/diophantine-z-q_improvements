@@ -120,7 +120,7 @@ We describe explicitly the changes to the general v78/v88 source. In this sectio
 \]
 This is integral for integral input, divisible by \(466!\) there, and reflects integrality: at a denominator prime of \(X_0\) all factors have its negative valuation. No root or point is added.
 
-Use the source scalar \(\rho_*\) of v88 multiplied by \((7/11)^2\), denoted \(\rho\). The source target is still \(\tau=X^2+1\), with \(\beta=1632X^2+2477\). Use its original root and reference preparation. At primes over 7, the fixed generator \(P=((57-28\sqrt2)/8,(-660+417\sqrt2)/32)\) reduces to nonsingular points; the smooth group orders at the two places are 7 and 8, respectively. Thus \([56]P\) is in both formal subgroups. We may take \(a-1\) divisible by 56 and 6 in the source scalar-index preparation. Choose the Lucas index \(k>0\) divisible by \(a-2\) and congruent to 1 modulo 6 (since \(a\equiv1\bmod6\), these conditions are compatible). The source labels \(t=U_{k+1}(a), b=U_k(a)/(a-2)\) are positive odd integers, and, by the recurrence at \(a\equiv1\bmod56\), satisfy \(t\equiv1,b\equiv-1\bmod56\). Also \(\tau\equiv1\bmod56\). All four root abscissas are therefore integral at both places over 7. Their two rational components are 7-integral. Directly at \(X\equiv0\bmod7\), the four scalar factors and \(T_L\) are 7-units: \(67\equiv4\bmod7\) and no power of 4 is -1. Hence \(v_7(\rho)=3\). The source scales \(\alpha_j=1+\rho T_j^2\), with \(\alpha_0=1\), are all congruent to 1 modulo 49.
+Use the source scalar \(\rho_*\) of v88 multiplied by \((7/9)^2\), denoted \(\rho\). This scalar multiplier is important: the tempting denominator 11 can turn a positive odd valuation at 11 into a negative odd valuation. The power of 3 instead changes the prepared valuation at 3 from 6 to 2, preserving the square-denominator property. The source target is still \(\tau=X^2+1\), with \(\beta=1632X^2+2477\). Use its original root and reference preparation. At primes over 7, the fixed generator \(P=((57-28\sqrt2)/8,(-660+417\sqrt2)/32)\) reduces to nonsingular points; the smooth group orders at the two places are 7 and 8, respectively. Thus \([56]P\) is in both formal subgroups. We may take \(a-1\) divisible by 56 and 6 in the source scalar-index preparation. Choose the Lucas index \(k>0\) divisible by \(a-2\) and congruent to 1 modulo 6 (since \(a\equiv1\bmod6\), these conditions are compatible). The source labels \(t=U_{k+1}(a), b=U_k(a)/(a-2)\) are positive odd integers, and, by the recurrence at \(a\equiv1\bmod56\), satisfy \(t\equiv1,b\equiv-1\bmod56\). Also \(\tau\equiv1\bmod56\). All four root abscissas are therefore integral at both places over 7. Their two rational components are 7-integral. Directly at \(X\equiv0\bmod7\), the four scalar factors and \(T_L\) are 7-units: \(67\equiv4\bmod7\) and no power of 4 is -1. Hence \(v_7(\rho)=3\). The source scales \(\alpha_j=1+\rho T_j^2\), with \(\alpha_0=1\), are all congruent to 1 modulo 49.
 
 For the main reduction set
 \[
@@ -148,8 +148,8 @@ Take \(q_1=113,q_2=233\). Restrict the fixed odd \(L\) to
 \]
 The period is twice the lcm of \(q_i(q_i-1)\), so all \(\rho/7\) residues modulo \(q_i^2\) agree with those at \(L=3,X=0\). Indeed \(466!\) is divisible by \(56,q_i^2\), and the corresponding rational scalar denominators at this specialization are units, checked exactly below. Write \(H=3^{30}=205891132094649\), \(M=67q_1^2q_2^2=46445488147\). Use two menus of 11 fixed integers
 \[
- m_{1,l}=9387653880+lM,\qquad
- m_{2,l}=28588858863+lM,\qquad 0\le l\le10.
+ m_{1,l}=32764985881+lM,\qquad
+ m_{2,l}=4885738625+lM,\qquad 0\le l\le10.
 \]
 All are positive, less than \(H\), and congruent to 1 modulo 67. Their square residues are pairwise distinct at every prime outside the fixed support of their nonzero pairwise squared differences. Avoid this support and that of the menus themselves and \(H\) at every selected contact prime.
 
