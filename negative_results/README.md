@@ -10,6 +10,10 @@ The [current construction table](../README.md) gives the positive bounds. No res
 
 ## Exponential quotient-cap obstructions
 
+The [generalized-Szpiro obstruction](papers/elliptic_divisibility/ico_szpiro_obstruction_20261125.md) extends the ico limitation to arbitrary arithmetic lifts: a uniform boundary radical budget at one reference per unbounded multiplier would contradict generalized Szpiro in bounded-degree dimension two. Under ordinary rational abc the indecomposable Torelli case necessarily has large decomposable good-reduction prime mass. Generalized Szpiro is a separate conjecture; neither assertion proves unconditional failure of all lifts.
+
+
+
 The [ico multiplication-boundary theorem](papers/elliptic_divisibility/ico_multiplication_boundary_20261125.md) uses ordinary rational abc, the Hilbert moduli interpretation and weak boundedness of period maps to exclude a finite menu of rational-function lifts on the reference curve for sufficiently large fixed multipliers with arbitrarily large references, even if the degrees of the maps and the integer mixed coefficients are unbounded. It concerns the controlled-diagonal-support ico strategy, not arbitrary arithmetic lifts or a global lower bound. The companion [optimal interpolation theorem](../papers/elliptic_divisibility/ico_boundary_interpolation_20261125/README.md) proves the minimal diagonal radical and local solvability while excluding fixed graphs of the numerator coordinate even in a one-reference-per-input strategy.
 
 ## Pole predicates and contact functions
