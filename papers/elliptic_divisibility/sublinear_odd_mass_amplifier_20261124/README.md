@@ -25,6 +25,40 @@ for some fixed \(d\ge1,\eta>0,C_0>0\) and threshold \(c_0\). The constants may b
 
 We do not establish (OM) from the original modular and prime-pattern premises, nor assert it is logically independent of them. It remains an additional condition. Since \(d=1\) already follows from the previously proved weak-abc duplication mass at exponent below \(3/2\) over \(K\), the present theorem is a weaker **sufficient target**, not a new no-additional-abc theorem.
 
+## Arithmetic status clarification (26 November 2026)
+
+(OM) is a conjectural quantitative condition on the **fixed elliptic
+carrier and generator**, not on the coefficients or degree of a
+candidate witness polynomial. Its assertion is uniform for every
+sufficiently large absolute index, with one fixed depth bound d.
+No proof without an additional height hypothesis is presently supplied
+by the project, and no counterexample on this carrier is known here.
+It is not claimed logically independent of the original premises.
+The 18/20-coordinate mixed-pole continuation therefore remains in a
+separate conditional category.
+
+For example, apply (OM) along arbitrarily large prime indices ell.
+Exclude the finitely many rational primes at which P itself reduces
+to the identity, and the prime ell. Their total contribution is at most
+a fixed constant plus d log ell. Every remaining contributing prime
+has a slot in which the reduction of P has order ell, since the
+order divides the prime ell and is not one. Each fixed rational prime
+can account for at most two distinct such prime orders on this
+quadratic carrier. Thus (OM) would imply infinitely many distinct
+primes with bounded odd maximum depth at prime-order contacts.
+This illustrates why a finite denominator calculation cannot establish
+the uniform mass statement. The unconditional full denominator-height
+asymptotic does not give a lower bound for this restricted mass.
+
+The proof of the sufficient weak-abc implication is in
+[duplication_mass_and_bounded_quotients_20261124](../duplication_mass_and_bounded_quotients_20261124/README.md),
+Section 2: for weak abc **over K** with exponent kappa < 3/2 the
+maximum-one mass is at least (3/kappa - 2) hhat(P) c^2 - O(1).
+Ordinary rational abc is not silently substituted for the stated
+number-field hypothesis. The original Lucas-based 22/24 routes do
+not use (OM). The all-depth deficit route is a possible replacement,
+not a proof that (OM) can already be removed.
+
 ## 2. One weight for any fixed bounded odd depth
 
 For \(Q=[c]P\ne O\) write \(y(Q)=y_0+y_1\sqrt2\). Set the fixed odd integer \(s=6d-1\), and choose a branch \(\epsilon\in\{1,2\}\) with
