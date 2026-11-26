@@ -63,14 +63,14 @@ Consider any proposed cap predicate over the fixed base \(X,H\), whose
 remaining auxiliary equations (including the charge witnesses, if used)
 form a curve mapping nonconstantly and finitely on an open subset to
 the variable elliptic point \(U\). Suppose there is an accepted rational
-point on a component whose smooth projective normalization is a
+point with a rational lift to a component whose smooth projective normalization is a
 geometrically integral curve of genus one. Assume that all rational lifts
 satisfying the indicated algebraic guards and finitely many open local
 conditions are accepted; in particular no additional coupled predicate
 with unproved completeness may be silently imposed. Then this component
 cannot enforce any finite upper bound on \(|m|\) for this fixed \(X,H\).
 
-For the proof one can take the accepted smooth rational point as origin
+For the proof take the rational lift of the accepted point as origin
 on the normalization, with image \(U_0=[j_0]P\). The map to \(E\) is
 an isogeny of degree \(d>0\) followed by translation by \(U_0\).
 Composing with its dual gives rational lifts of all
