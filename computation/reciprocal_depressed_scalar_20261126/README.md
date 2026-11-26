@@ -99,3 +99,11 @@ and independently expands and parses the final polynomial.
 No independent proof of the inherited modular, point group,
 prime-pattern, trace or BB realization theorems is claimed.
 No new variable-count record is claimed.
+
+An executed independent BigInt replay reconstructed both specialized sums
+of squares from their rows, checked the two changed rows and the unchanged
+rows against the parents, and parsed the full 175-variable TXT expansion
+back into the same coefficient dictionary. The results were degree four,
+content one, 2,858/3,202 monomials, and maximum coefficient bit length 936.
+The separate Python verifier is supplied for reproducibility; it was not
+executed in that replay.
