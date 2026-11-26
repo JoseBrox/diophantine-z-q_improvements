@@ -278,3 +278,46 @@ The independent Python checker is provided for reproducibility;
 it is not claimed to have been executed by the connector.
 The proof of the imported H4.1, point group, prime-pattern and
 BB realization assertions is not part of these finite tests.
+
+
+## 6. Restricted obstruction to another contact-register deletion
+
+For the isolated reflected contact graph, a direct exact quadratic
+replacement using only two private helpers is impossible under the
+following geometric hypotheses. Work over the algebraic closure of Q;
+the two visible coordinates are the physical affine t and w, and
+the three or more quadratic equations in t,w and the two helpers
+have a component which projects dominantly onto the exact contact
+graph (and not dominantly onto the entire (t,w)-plane).
+
+Indeed \(w=G(t)/(t^{10}-G(t))\), where \(G(t)\) is the monic
+degree-ten split contact polynomial with no root at zero.
+The numerator and denominator are coprime and the denominator
+has degree less than ten. Hence \(\mathbf Q(t)/\mathbf Q(w)\)
+has degree ten (equivalently the equation
+\((1+w)G(t)=w t^{10}\) is irreducible over \(\mathbf Q(w)\)).
+After fixing generic w, a component in affine three-space
+(t and the two helpers) defined by quadratic equations has
+degree at most eight: intersect successively with quadrics
+until its codimension is reached, or use the usual degree
+bound for components of an intersection of quadrics.
+The projection to the t-line cannot have ten distinct
+points on the generic graph, since a linear projection
+does not increase degree. More directly, apply the bound
+to the union of the generic-fibre components arising from
+the one dominant component of the original system: the
+ten conjugate t-values all occur, and each contributes
+at least one component of positive degree. The corresponding
+component of the original system has degree at most
+\(2^{4-\dim V}\le8\), and its intersection with a generic
+w-hyperplane has degree at most eight. This contradiction
+proves the restricted assertion.
+
+This is **not** a lower bound for general quartic definitions or even
+for charts required to be correct only on rational points. It excludes
+the exact, geometrically dominant, isolated two-helper re-encoding of
+the same graph. A smaller construction can still use a different
+arithmetic weight, an algebraic covering visible only on rational
+points, or sharing with the other detector/point equations. In
+particular it explains why the contact-configuration search improves
+the numerical constant rather than by itself saving a private helper.
