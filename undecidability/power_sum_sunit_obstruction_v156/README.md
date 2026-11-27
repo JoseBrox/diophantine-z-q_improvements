@@ -2,7 +2,7 @@
 
 **The proposed power-sum integrality theorem of v154 is false on the actual sparse-packed source, for every fixed even exponent \(d\) with \(1\le v_2(d)\le40\).** In particular, it fails for the genus-five and genus-25 candidates \(d=2,4\), not merely for an abstract choice of Pell coefficients. For every instance of the uniform v145/v155 packed source, one can choose a false packed digit tuple, satisfy every row of the proposed v148/v150/v154 replacement, including the strict real margin and its actual rational triangular equations, and have \(h,j>0\) nonintegral with a single certified integer \(\Lambda=h^d+j^d\) satisfying the v154 size guard. Both reduced denominators are powers of the same prime. There are arbitrarily large common denominator exponents and, for fixed admissible small-Pell witness, arbitrarily large distinct \(\Lambda\)'s.
 
-The proof is unconditional arithmetic. Its only non-elementary number-theoretic existence input is the classical finiteness of the ideal class group of a quadratic number field. No abc, elliptic rank hypothesis, conjecture about rational points on varying higher-genus curves, primitive divisor theorem, or prime-pattern hypothesis is used. It rules out the proposed seven-certificate source for the covered exponents, **not** other nonlinear certificates or a general lower bound. The preferred v155 polynomial systems still use the separate certificates and are not affected.
+The proof is unconditional arithmetic. It uses the classical finiteness of the ideal class group of a quadratic number field, Hensel lifting, irrational rotation, and the three- and four-square theorems. No abc, elliptic rank hypothesis, conjecture about rational points on varying higher-genus curves, primitive divisor theorem, or prime-pattern hypothesis is used. It rules out the proposed seven-certificate source for the covered exponents, **not** other nonlinear certificates or a general lower bound. The preferred v155 polynomial systems still use the separate certificates and are not affected.
 
 Throughout, \(X_n(a)+Y_n(a)\sqrt{a^2-1}=(a+\sqrt{a^2-1})^n\), also for negative integer exponents, so \(Y_{-n}=-Y_n\). In this document \(d\) denotes the exponent of the nonlinear certificate; the first Pell trace is denoted by \(d_0\).
 
@@ -264,12 +264,27 @@ The S-unit argument gives a test for other proposed nonlinear integer certificat
  \Phi_{\rm top}(h_*,j_*)=0\bmod p,\qquad
  \partial_2\Phi_{\rm top}(h_*,j_*)\ne0\bmod p,
 \]
-the same construction makes \(\Phi(h,j)\) integral with both \(h,j\) nonintegral, and arbitrary prescribed real small-ordinate margin. To see this, at fixed \(h_p=p^E h\) use the integer polynomial in \(J_p\)
+the same construction makes \(\Phi(h,j)\) integral with both \(h,j\) nonintegral, and arbitrary prescribed real small-ordinate margin. To see this, at fixed \(h_p=p^E h\) use the polynomial over \(\mathbb Z_p\) in \(J_p\)
 \(p^{D_0 E}\Phi(h_p/p^E,J_p/p^E)\). Its reduction is \(\Phi_{\rm top}(h_*,J_p)\); it has a simple root at \(j_*\). Hensel gives a target \(J_p\equiv j_*\bmod p\). Equation (10) and the principal-unit variation approximate that root modulo \(p^{D_0 E}\), proving the integrality globally. If the polynomial tends to positive infinity as \(j\to+\infty\) with this \(h\) fixed, any lower guard on its value can also be met. In the pure power-sum case the Teichmüller argument was stronger because no derivative assumption on \(d\bmod p\) was needed. This is a sufficient counterexample criterion, not a universal obstruction for every polynomial.
 
 The fixed finite table proves failure for every \(d\) with \(1\le v_2(d)\le40\). It does not prove failure for exponents with \(2^{41}\mid d\), or for an additional equation coupling the rational witnesses to other variables in a genuinely different way. In the ordinary straightforward quadratic compilation a pure power exponent with \(v_2(d)\ge41\) would already require many successive squares of both quotients; no general arithmetic-circuit lower bound is asserted. The present result is a strong reason to abandon the unmodified power-sum merger as a practical source reduction, not a proof that all seven-integer sources are impossible.
 
-## 5. Exact certificates, references and verification scope
+
+## 5. Why a straightforward polynomial upper cap on the third quotient is not a canonical repair
+
+There is also an elementary size obstacle to supplementing the power sum by an upper bound of fixed polynomial degree in the pre-third-Pell data. This statement concerns the positive canonical binomial completion with arbitrarily large intended index \(B=2r+1\); it is not a claim about arbitrary alternative source presentations.
+
+For \(c=Y_B(a)\), the positive second norm has \(F=X_q(a)\) with \(q\ge c>B\), so \(F>c\ge2a\). The bridge satisfies \(G=a+F^2(c+1-a)>F^2\) and \(|b_2|=|c+F^2(B-c)|\le F^2c\). For any *integral* third quotient \(j\) with the two exact retained congruences, the signed v95 comparison modulo \(F\) gives \(v\equiv\pm B\bmod2q\) for the absolute third Pell index \(v\). Because \(0<B<q\), \(v\ge B\). Thus
+\[
+ |H|=Y_v(G)\ge G^{B-1}>F^{2B-2},\qquad
+ |j|=\frac{|H-b_2|}{cF}>
+ \frac{F^{2B-2}-F^3}{F^2}\ge\frac12 F^{2B-4}.
+\]
+The last inequality holds for \(B\ge3,F\ge2\). On these same canonical completions the old pre-third parameters \(a,c,d_0,w,s,M,r,b,P,G,F,i',\gamma,b_1,n_1,b_2,n_2\) are bounded in magnitude by fixed powers of \(F\) with absolute constant factors: \(w,s,M,r,b\le a\), \(d_0\le ac\), \(P\le1+2a^2\), \(G\le a+F^2(c+1)\), \(i'\le F\), \(|\gamma|\le d_0+ac+bw\), \(n_1=M^2,n_2=cF\), and \(b_2\) has the preceding bound. Here the inequalities involving \(b\) use \(b\le M/4\), and the positivity of the canonical parameters is essential.
+
+Consequently a fixed polynomial magnitude bound on \(|j|\), or on the positive even-power sum \(\Lambda\ge j^d\), expressed solely in this list of already fixed pre-third-Pell data, cannot preserve the binomial completion for all valid prefixes with unbounded \(B\). A bound using the exponent \(B\) in an essential way, a different relation, or a different coding source could behave differently. This rules out one simple proposed response to the unbounded third-unit variation of the counterexample proof. It is not a lower bound on the size of every possible witness system.
+
+## 6. Exact certificates, references and verification scope
 
 The modular table contains 106 literal rows covering all 120 pairs \((v_2(d),z_0\bmod3)\) with \(1\le v_2(d)\le40\). It uses twelve primes, the largest \(6597069766657=3\cdot2^{41}+1\). The [independent verifier](verify.mjs) checks primality by exact order certificates (an element of order \(p-1\) modulo every prime divisor forces that prime divisor to be \(p\)), the residue identities (14),(17),(20), the exact 2-power orders, and the coverage. It also independently checks the derivative and lift calculations modulo \(p^2\) on four representative large \(r\)'s per profile. All computations are exact integers; no factorization of the astronomical Pell numbers is performed. See the [executed receipt](verification.json). The finite checks verify the finite constants in a quantified proof, not a finite numerical search extrapolated to all source instances.
 
