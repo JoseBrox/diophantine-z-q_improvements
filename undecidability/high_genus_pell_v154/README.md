@@ -1,5 +1,7 @@
 # v154: higher-genus nonlinear shared Pell candidates
 
+**Subsequent status (v156):** the [global S-unit obstruction](../power_sum_sunit_obstruction_v156/README.md) disproves joint integrality for this specialized packed-source candidate for every even exponent \(d\) with \(1\le v_2(d)\le40\), including \(d=2,4\). It constructs full false witnesses using the actual coefficients and strict triangular margin. The genus calculation and canonical completeness below remain valid; the conjectured soundness in that exponent range is false, not merely open.
+
 **Proved canonical completeness and elimination of the fixed-fiber elliptic deformation; integrality soundness remains open.** These candidates are not installed in a preferred quartic compiler and give no new bound on the number of independently certified source integers.
 
 Let the fixed source data be as in the redesigned v148/v150 binomial block, keeping the other certified integer inputs and their exact guards. Abstractly, write the two affine congruence rows and norms as
